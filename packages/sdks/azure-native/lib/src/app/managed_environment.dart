@@ -18,7 +18,7 @@ import 'vnet_configuration_response.dart';
 ///
 /// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -172,6 +172,64 @@ import 'vnet_configuration_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_managedenvironment" "managedEnvironment" {
+///   app_logs_configuration = {
+///     log_analytics_configuration = {
+///       customer_id = "string"
+///       shared_key  = "string"
+///     }
+///   }
+///   availability_zones = ["1", "2", "3"]
+///   custom_domain_configuration = {
+///     certificate_password = "1234"
+///     certificate_value    = "Y2VydA=="
+///     dns_suffix           = "www.my-name.com"
+///   }
+///   dapr_ai_connection_string     = "InstrumentationKey=00000000-0000-0000-0000-000000000000;IngestionEndpoint=https://northcentralus-0.in.applicationinsights.azure.com/"
+///   environment_name              = "testcontainerenv"
+///   infrastructure_resource_group = "myInfrastructureRgName"
+///   location                      = "East US"
+///   resource_group_name           = "examplerg"
+///   vnet_configuration = {
+///     infrastructure_subnet_id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/RGName/providers/Microsoft.Network/virtualNetworks/VNetName/subnets/subnetName1"
+///   }
+///   workload_profiles {
+///     enable_fips           = true
+///     maximum_count         = 12
+///     minimum_count         = 3
+///     name                  = "My-GP-01"
+///     workload_profile_type = "GeneralPurpose"
+///   }
+///   workload_profiles {
+///     maximum_count         = 6
+///     minimum_count         = 3
+///     name                  = "My-MO-01"
+///     workload_profile_type = "MemoryOptimized"
+///   }
+///   workload_profiles {
+///     maximum_count         = 6
+///     minimum_count         = 3
+///     name                  = "My-CO-01"
+///     workload_profile_type = "ComputeOptimized"
+///   }
+///   workload_profiles {
+///     name                  = "My-consumption-01"
+///     workload_profile_type = "Consumption"
+///   }
+///   zone_redundant = true
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -185,8 +243,8 @@ import 'vnet_configuration_response.dart';
 /// import com.pulumi.azurenative.app.inputs.CustomDomainConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.VnetConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.WorkloadProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -56,6 +56,22 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resources_azurecliscript" "azureCliScript" {
+///   resource_group_name = "script-rg"
+///   script_name         = "MyDeploymentScript"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +80,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.resources.AzureCliScript;
 /// import com.pulumi.azurenative.resources.AzureCliScriptArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -163,6 +179,22 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resources_azurecliscript" "azureCliScript" {
+///   resource_group_name = "script-rg"
+///   script_name         = "MyDeploymentScript"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -171,8 +203,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.resources.AzureCliScript;
 /// import com.pulumi.azurenative.resources.AzureCliScriptArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -270,6 +302,22 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resources_azurecliscript" "azureCliScript" {
+///   resource_group_name = "script-rg"
+///   script_name         = "MyDeploymentScript"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -278,8 +326,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.resources.AzureCliScript;
 /// import com.pulumi.azurenative.resources.AzureCliScriptArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -377,6 +425,22 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resources_azurecliscript" "azureCliScript" {
+///   resource_group_name = "script-rg"
+///   script_name         = "MyDeploymentScript"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -385,8 +449,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.resources.AzureCliScript;
 /// import com.pulumi.azurenative.resources.AzureCliScriptArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -484,6 +548,22 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resources_azurecliscript" "azureCliScript" {
+///   resource_group_name = "script-rg"
+///   script_name         = "MyDeploymentScript"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -492,8 +572,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.resources.AzureCliScript;
 /// import com.pulumi.azurenative.resources.AzureCliScriptArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -591,6 +671,22 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resources_azurecliscript" "azureCliScript" {
+///   resource_group_name = "script-rg"
+///   script_name         = "MyDeploymentScript"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -599,8 +695,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.resources.AzureCliScript;
 /// import com.pulumi.azurenative.resources.AzureCliScriptArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -683,12 +779,12 @@ class AzureCliScript extends pulumi.CustomResource {
   /// Type of the script.
   /// Expected value is 'AzureCLI'.
   late final pulumi.Output<String> kind;
-  /// The location of the ACI and the storage account for the deployment script.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-  /// Name of this resource.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// List of script outputs.
-  late final pulumi.Output<Map<String, dynamic>> outputs;
+  late final pulumi.Output<dynamic> outputs;
   /// Uri for the script. This is the entry point for the external script.
   late final pulumi.Output<String?> primaryScriptUri;
   /// State of the script execution. This only appears in the response.
@@ -703,13 +799,13 @@ class AzureCliScript extends pulumi.CustomResource {
   late final pulumi.Output<StorageAccountConfigurationResponse?> storageAccountSettings;
   /// Supporting files for the external script.
   late final pulumi.Output<List<String>?> supportingScriptUris;
-  /// The system metadata related to this resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Maximum allowed script execution time specified in ISO 8601 format. Default value is P1D
   late final pulumi.Output<String?> timeout;
-  /// Type of this resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [AzureCliScript].
@@ -737,7 +833,7 @@ class AzureCliScript extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    outputs = registerOutput<Map<String, dynamic>>('outputs');
+    outputs = registerOutput<dynamic>('outputs');
     primaryScriptUri = registerOutput<String?>('primaryScriptUri');
     provisioningState = registerOutput<String>('provisioningState');
     retentionInterval = registerOutput<String>('retentionInterval');

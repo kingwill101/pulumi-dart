@@ -22,4 +22,3 @@ enum RequestType {
     throw ArgumentError('Unknown RequestType value: $value');
   }
 }
-

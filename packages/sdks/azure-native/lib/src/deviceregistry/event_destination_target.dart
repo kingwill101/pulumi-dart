@@ -15,4 +15,3 @@ enum EventDestinationTarget {
     throw ArgumentError('Unknown EventDestinationTarget value: $value');
   }
 }
-

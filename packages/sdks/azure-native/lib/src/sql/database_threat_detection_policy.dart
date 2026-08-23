@@ -71,6 +71,32 @@ import 'database_threat_detection_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_databasethreatdetectionpolicy" "databaseThreatDetectionPolicy" {
+///   database_name              = "testdb"
+///   disabled_alerts            = "Sql_Injection;Usage_Anomaly;"
+///   email_account_admins       = "Enabled"
+///   email_addresses            = "test@microsoft.com;user@microsoft.com"
+///   resource_group_name        = "securityalert-4799"
+///   retention_days             = 6
+///   security_alert_policy_name = "default"
+///   server_name                = "securityalert-6440"
+///   state                      = "Enabled"
+///   storage_account_access_key = "sdlfkjabc+sdlfkjsdlkfsjdfLDKFTERLKFDFKLjsdfksjdflsdkfD2342309432849328476458/3RSD=="
+///   storage_endpoint           = "https://mystorage.blob.core.windows.net"
+///   use_server_default         = "Enabled"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +105,8 @@ import 'database_threat_detection_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.DatabaseThreatDetectionPolicy;
 /// import com.pulumi.azurenative.sql.DatabaseThreatDetectionPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -228,6 +254,27 @@ import 'database_threat_detection_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_databasethreatdetectionpolicy" "databaseThreatDetectionPolicy" {
+///   database_name              = "testdb"
+///   resource_group_name        = "securityalert-4799"
+///   security_alert_policy_name = "default"
+///   server_name                = "securityalert-6440"
+///   state                      = "Enabled"
+///   storage_account_access_key = "sdlfkjabc+sdlfkjsdlkfsjdfLDKFTERLKFDFKLjsdfksjdflsdkfD2342309432849328476458/3RSD=="
+///   storage_endpoint           = "https://mystorage.blob.core.windows.net"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -236,8 +283,8 @@ import 'database_threat_detection_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.DatabaseThreatDetectionPolicy;
 /// import com.pulumi.azurenative.sql.DatabaseThreatDetectionPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -1,8 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_response.dart';
-import 'identity_response.dart';
+import 'identity_machine_learning_dataset_response.dart';
 import 'machine_learning_dataset_args.dart';
-import 'sku_response.dart';
+import 'sku_machine_learning_dataset_response.dart';
 
 /// Machine Learning dataset object wrapped into ARM resource envelope.
 ///
@@ -88,6 +88,37 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_machinelearningdataset" "machineLearningDataset" {
+///   dataset_name = "datasetName123"
+///   dataset_type = "file"
+///   parameters = {
+///     path = {
+///       data_path = {
+///         datastore_name = "testblobfromarm"
+///         relative_path  = "UI/03-26-2020_083359_UTC/latin1encoding.csv"
+///       }
+///     }
+///   }
+///   registration = {
+///     description = "test description"
+///     name        = "datasetName123"
+///   }
+///   resource_group_name = "acjain-mleastUS2"
+///   skip_validation     = false
+///   workspace_name      = "acjain-mleastUS2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +131,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.machinelearningservices.inputs.DatasetCreateRequestPathArgs;
 /// import com.pulumi.azurenative.machinelearningservices.inputs.DatasetCreateRequestDataPathArgs;
 /// import com.pulumi.azurenative.machinelearningservices.inputs.DatasetCreateRequestRegistrationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -224,7 +255,7 @@ class MachineLearningDataset extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The identity of the resource.
-  late final pulumi.Output<IdentityResponse?> identity;
+  late final pulumi.Output<IdentityMachineLearningDatasetResponse?> identity;
   /// Specifies the location of the resource.
   late final pulumi.Output<String?> location;
   /// Specifies the name of the resource.
@@ -232,7 +263,7 @@ class MachineLearningDataset extends pulumi.CustomResource {
   /// Dataset properties
   late final pulumi.Output<DatasetResponse> properties;
   /// The sku of the workspace.
-  late final pulumi.Output<SkuResponse?> sku;
+  late final pulumi.Output<SkuMachineLearningDatasetResponse?> sku;
   /// Contains resource tags defined as key/value pairs.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Specifies the type of the resource.
@@ -253,11 +284,11 @@ class MachineLearningDataset extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<IdentityMachineLearningDatasetResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityMachineLearningDatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     properties = registerOutput<DatasetResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuMachineLearningDatasetResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuMachineLearningDatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

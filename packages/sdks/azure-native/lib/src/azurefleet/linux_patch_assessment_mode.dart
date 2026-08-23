@@ -19,4 +19,3 @@ enum LinuxPatchAssessmentMode {
     throw ArgumentError('Unknown LinuxPatchAssessmentMode value: $value');
   }
 }
-

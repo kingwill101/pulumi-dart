@@ -14,7 +14,7 @@ import 'list_batch_account_keys_result.dart';
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_batch_get_application_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApplicationResult> getApplication(
@@ -34,7 +34,7 @@ Future<GetApplicationResult> getApplication(
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_batch_get_application_package_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApplicationPackageResult> getApplicationPackage(
@@ -54,7 +54,7 @@ Future<GetApplicationPackageResult> getApplicationPackage(
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_batch_get_batch_account_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetBatchAccountResult> getBatchAccount(
@@ -74,7 +74,7 @@ Future<GetBatchAccountResult> getBatchAccount(
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_batch_get_pool_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPoolResult> getPool(
@@ -94,7 +94,7 @@ Future<GetPoolResult> getPool(
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_batch_list_batch_account_keys_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListBatchAccountKeysResult> listBatchAccountKeys(

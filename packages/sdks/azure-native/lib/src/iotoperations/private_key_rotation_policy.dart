@@ -15,4 +15,3 @@ enum PrivateKeyRotationPolicy {
     throw ArgumentError('Unknown PrivateKeyRotationPolicy value: $value');
   }
 }
-

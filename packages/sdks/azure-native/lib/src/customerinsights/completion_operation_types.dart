@@ -16,4 +16,3 @@ enum CompletionOperationTypes {
     throw ArgumentError('Unknown CompletionOperationTypes value: $value');
   }
 }
-

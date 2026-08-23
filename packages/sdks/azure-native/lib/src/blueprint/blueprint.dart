@@ -104,6 +104,44 @@ import 'resource_group_definition_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_blueprint" "blueprint" {
+///   blueprint_name = "simpleBlueprint"
+///   description    = "blueprint contains all artifact kinds {'template', 'rbac', 'policy'}"
+///   parameters = {
+///     "costCenter" = {
+///       display_name = "force cost center tag for all resources under given subscription."
+///       type         = "string"
+///     }
+///     "owners" = {
+///       display_name = "assign owners to subscription along with blueprint assignment."
+///       type         = "array"
+///     }
+///     "storageAccountType" = {
+///       display_name = "storage account type."
+///       type         = "string"
+///     }
+///   }
+///   resource_groups = {
+///     "storageRG" = {
+///       description  = "Contains storageAccounts that collect all shoebox logs."
+///       display_name = "storage resource group"
+///     }
+///   }
+///   resource_scope = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup"
+///   target_scope   = "subscription"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +150,8 @@ import 'resource_group_definition_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.Blueprint;
 /// import com.pulumi.azurenative.blueprint.BlueprintArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -320,6 +358,35 @@ import 'resource_group_definition_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_blueprint" "blueprint" {
+///   blueprint_name = "simpleBlueprint"
+///   description    = "An example blueprint containing an RG with two tags."
+///   resource_groups = {
+///     "myRGName" = {
+///       display_name = "My Resource Group"
+///       location     = "westus"
+///       name         = "myRGName"
+///       tags = {
+///         "costcenter"  = "123456"
+///         "nameOnlyTag" = ""
+///       }
+///     }
+///   }
+///   resource_scope = "providers/Microsoft.Management/managementGroups/{ManagementGroupId}"
+///   target_scope   = "subscription"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -328,8 +395,8 @@ import 'resource_group_definition_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.Blueprint;
 /// import com.pulumi.azurenative.blueprint.BlueprintArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -524,6 +591,44 @@ import 'resource_group_definition_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_blueprint" "blueprint" {
+///   blueprint_name = "simpleBlueprint"
+///   description    = "blueprint contains all artifact kinds {'template', 'rbac', 'policy'}"
+///   parameters = {
+///     "costCenter" = {
+///       display_name = "force cost center tag for all resources under given subscription."
+///       type         = "string"
+///     }
+///     "owners" = {
+///       display_name = "assign owners to subscription along with blueprint assignment."
+///       type         = "array"
+///     }
+///     "storageAccountType" = {
+///       display_name = "storage account type."
+///       type         = "string"
+///     }
+///   }
+///   resource_groups = {
+///     "storageRG" = {
+///       description  = "Contains storageAccounts that collect all shoebox logs."
+///       display_name = "storage resource group"
+///     }
+///   }
+///   resource_scope = "subscriptions/00000000-0000-0000-0000-000000000000"
+///   target_scope   = "subscription"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -532,8 +637,8 @@ import 'resource_group_definition_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.Blueprint;
 /// import com.pulumi.azurenative.blueprint.BlueprintArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

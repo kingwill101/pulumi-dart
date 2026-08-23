@@ -17,4 +17,3 @@ enum ApplicationGatewayRedirectType {
     throw ArgumentError('Unknown ApplicationGatewayRedirectType value: $value');
   }
 }
-

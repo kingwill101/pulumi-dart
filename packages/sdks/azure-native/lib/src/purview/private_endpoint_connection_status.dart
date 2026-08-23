@@ -1,10 +1,10 @@
 /// The status.
 enum PrivateEndpointConnectionStatus {
-  valueUnknown("Unknown"),
-  valuePending("Pending"),
-  valueApproved("Approved"),
-  valueRejected("Rejected"),
-  valueDisconnected("Disconnected");
+  unknown("Unknown"),
+  pending("Pending"),
+  approved("Approved"),
+  rejected("Rejected"),
+  disconnected("Disconnected");
 
   const PrivateEndpointConnectionStatus(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum PrivateEndpointConnectionStatus {
     throw ArgumentError('Unknown PrivateEndpointConnectionStatus value: $value');
   }
 }
-

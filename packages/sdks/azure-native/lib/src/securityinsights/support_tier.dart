@@ -16,4 +16,3 @@ enum SupportTier {
     throw ArgumentError('Unknown SupportTier value: $value');
   }
 }
-

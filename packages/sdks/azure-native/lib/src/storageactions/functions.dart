@@ -5,6 +5,8 @@ import 'get_storage_task_result.dart';
 /// Get the storage task properties
 ///
 /// Uses Azure REST API version 2023-01-01.
+///
+/// Other available API versions: 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storageactions [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storageactions_get_storage_task_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetStorageTaskResult> getStorageTask(

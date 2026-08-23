@@ -15,4 +15,3 @@ enum KeyRotationPolicyActionType {
     throw ArgumentError('Unknown KeyRotationPolicyActionType value: $value');
   }
 }
-

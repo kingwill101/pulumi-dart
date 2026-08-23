@@ -11,7 +11,7 @@ class GetUserArgs {
   final pulumi.Input<String>? expand;
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The name of the User
+  /// The name of the user profile.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
@@ -19,7 +19,7 @@ class GetUserArgs {
   /// Creates a new [GetUserArgs].
   /// [expand] Specify the $expand query. Example: 'properties($select=identity)'
   /// [labName] The name of the lab.
-  /// [name] The name of the User
+  /// [name] The name of the user profile.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetUserArgs({
     this.expand,
@@ -46,4 +46,3 @@ class GetUserArgs {
     );
   }
 }
-

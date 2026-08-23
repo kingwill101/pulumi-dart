@@ -11,7 +11,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -172,6 +172,62 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_managednetworkfabric_networktonetworkinterconnect" "networkToNetworkInterconnect" {
+///   egress_acl_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl"
+///   export_route_policy = {
+///     export_ipv4_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy"
+///     export_ipv6_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy"
+///   }
+///   import_route_policy = {
+///     import_ipv4_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy"
+///     import_ipv6_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy"
+///   }
+///   ingress_acl_id     = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl"
+///   is_management_type = "True"
+///   layer2_configuration = {
+///     interfaces = ["/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkDevices/example-networkDevice/networkInterfaces/example-networkInterface"]
+///     mtu        = 1500
+///   }
+///   network_fabric_name                  = "example-fabric"
+///   network_to_network_interconnect_name = "example-nni"
+///   nni_type                             = "CE"
+///   npb_static_route_configuration = {
+///     bfd_configuration = {
+///       interval_in_milli_seconds = 300
+///       multiplier                = 25
+///     }
+///     ipv4_routes = [{
+///       "nextHop" = ["21.20.20.20"]
+///       "prefix"  = "20.0.0.12/30"
+///     }]
+///     ipv6_routes = [{
+///       "nextHop" = ["4FFE:FFFF:0:CD30::ac"]
+///       "prefix"  = "3FFE:FFFF:0:CD30::ac/127"
+///     }]
+///   }
+///   option_b_layer3_configuration = {
+///     peer_asn              = 61234
+///     primary_ipv4_prefix   = "10.0.0.12/30"
+///     primary_ipv6_prefix   = "4FFE:FFFF:0:CD30::a8/127"
+///     secondary_ipv4_prefix = "40.0.0.14/30"
+///     secondary_ipv6_prefix = "6FFE:FFFF:0:CD30::ac/127"
+///     vlan_id               = 1234
+///   }
+///   resource_group_name = "example-rg"
+///   use_option_b        = "True"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -186,8 +242,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.NpbStaticRouteConfigurationArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.BfdConfigurationArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -338,7 +394,7 @@ import 'system_data_response.dart';
 ///         }],
 ///     },
 ///     option_b_layer3_configuration={
-///         "peer_asn": 61234,
+///         "peer_asn": float(61234),
 ///         "primary_ipv4_prefix": "10.0.0.12/30",
 ///         "primary_ipv6_prefix": "4FFE:FFFF:0:CD30::a8/127",
 ///         "secondary_ipv4_prefix": "40.0.0.14/30",

@@ -2,15 +2,16 @@
 
 import 'assigned_standard_item_response.dart';
 import 'standard_assignment_metadata_response.dart';
-import 'standard_assignment_properties_response_attestation_data.dart';
-import 'standard_assignment_properties_response_exemption_data.dart';
+import 'standard_assignment_properties_attestation_data_response.dart';
+import 'standard_assignment_properties_exemption_data_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getStandardAssignment.
 class GetStandardAssignmentResult {
   /// Standard item with key as applied to this standard assignment over the given scope
   final AssignedStandardItemResponse? assignedStandard;
   /// Additional data about assignment that has Attest effect
-  final StandardAssignmentPropertiesResponseAttestationData? attestationData;
+  final StandardAssignmentPropertiesAttestationDataResponse? attestationData;
   /// The Azure API version of the resource.
   final String azureApiVersion;
   /// Description of the standardAssignment
@@ -22,16 +23,18 @@ class GetStandardAssignmentResult {
   /// Excluded scopes, filter out the descendants of the scope (on management scopes)
   final List<String>? excludedScopes;
   /// Additional data about assignment that has Exempt effect
-  final StandardAssignmentPropertiesResponseExemptionData? exemptionData;
+  final StandardAssignmentPropertiesExemptionDataResponse? exemptionData;
   /// Expiration date of this assignment as a full ISO date
   final String? expiresOn;
-  /// Resource Id
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// The standard assignment metadata.
   final StandardAssignmentMetadataResponse? metadata;
-  /// Resource name
+  /// The name of the resource
   final String name;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetStandardAssignmentResult].
@@ -44,10 +47,11 @@ class GetStandardAssignmentResult {
   /// [excludedScopes] Excluded scopes, filter out the descendants of the scope (on management scopes)
   /// [exemptionData] Additional data about assignment that has Exempt effect
   /// [expiresOn] Expiration date of this assignment as a full ISO date
-  /// [id] Resource Id
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [metadata] The standard assignment metadata.
-  /// [name] Resource name
-  /// [type] Resource type
+  /// [name] The name of the resource
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetStandardAssignmentResult({
     this.assignedStandard,
     this.attestationData,
@@ -61,6 +65,7 @@ class GetStandardAssignmentResult {
     required this.id,
     this.metadata,
     required this.name,
+    required this.systemData,
     required this.type,
   });
 
@@ -78,6 +83,7 @@ class GetStandardAssignmentResult {
       'id': id,
       'metadata': ?metadata?.toMap(),
       'name': name,
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -85,19 +91,19 @@ class GetStandardAssignmentResult {
   factory GetStandardAssignmentResult.fromMap(Map<String, dynamic> map) {
     return GetStandardAssignmentResult(
       assignedStandard: (() { final guardedValue = map['assignedStandard']; if (guardedValue == null) return null; return AssignedStandardItemResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      attestationData: (() { final guardedValue = map['attestationData']; if (guardedValue == null) return null; return StandardAssignmentPropertiesResponseAttestationData.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      attestationData: (() { final guardedValue = map['attestationData']; if (guardedValue == null) return null; return StandardAssignmentPropertiesAttestationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       azureApiVersion: map['azureApiVersion'] as String,
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       effect: (() { final guardedValue = map['effect']; if (guardedValue == null) return null; return guardedValue as String; })(),
       excludedScopes: (() { final guardedValue = map['excludedScopes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      exemptionData: (() { final guardedValue = map['exemptionData']; if (guardedValue == null) return null; return StandardAssignmentPropertiesResponseExemptionData.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      exemptionData: (() { final guardedValue = map['exemptionData']; if (guardedValue == null) return null; return StandardAssignmentPropertiesExemptionDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       expiresOn: (() { final guardedValue = map['expiresOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return StandardAssignmentMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: map['name'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

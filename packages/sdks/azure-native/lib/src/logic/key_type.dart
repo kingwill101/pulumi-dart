@@ -16,4 +16,3 @@ enum KeyType {
     throw ArgumentError('Unknown KeyType value: $value');
   }
 }
-

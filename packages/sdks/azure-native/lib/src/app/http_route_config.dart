@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-10-02-preview.
 ///
-/// Other available API versions: 2024-10-02-preview, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-10-02-preview, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -132,6 +132,47 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_httprouteconfig" "httpRouteConfig" {
+///   environment_name = "testcontainerenv"
+///   http_route_name  = "httproutefriendlyname"
+///   properties = {
+///     custom_domains = [{
+///       "bindingType"   = "SniEnabled"
+///       "certificateId" = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/examplerg/providers/Microsoft.App/managedEnvironments/testcontainerenv/certificates/certificate-1"
+///       "name"          = "example.com"
+///     }]
+///     rules = [{
+///       "description" = "random-description"
+///       "routes" = [{
+///         "action" = {
+///           "prefixRewrite" = "/v1/api"
+///         }
+///         "match" = {
+///           "caseSensitive" = true
+///           "path"          = "/v1"
+///         }
+///       }]
+///       "targets" = [{
+///         "containerApp" = "capp-1"
+///         "revision"     = "rev-1"
+///         "weight"       = 100
+///       }]
+///     }]
+///   }
+///   resource_group_name = "examplerg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +182,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.HttpRouteConfig;
 /// import com.pulumi.azurenative.app.HttpRouteConfigArgs;
 /// import com.pulumi.azurenative.app.inputs.HttpRouteConfigPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -408,6 +449,46 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_httprouteconfig" "httpRouteConfig" {
+///   environment_name = "testcontainerenv"
+///   http_route_name  = "httproutefriendlyname"
+///   properties = {
+///     custom_domains = [{
+///       "bindingType"   = "Disabled"
+///       "certificateId" = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/examplerg/providers/Microsoft.App/managedEnvironments/testcontainerenv/certificates/certificate-1"
+///       "name"          = "example.com"
+///     }]
+///     rules = [{
+///       "description" = "random-description"
+///       "routes" = [{
+///         "action" = {
+///           "prefixRewrite" = "/v1/api"
+///         }
+///         "match" = {
+///           "caseSensitive"       = true
+///           "pathSeparatedPrefix" = "/v1"
+///         }
+///       }]
+///       "targets" = [{
+///         "containerApp" = "capp-1"
+///         "label"        = "label-1"
+///       }]
+///     }]
+///   }
+///   resource_group_name = "examplerg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -417,8 +498,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.HttpRouteConfig;
 /// import com.pulumi.azurenative.app.HttpRouteConfigArgs;
 /// import com.pulumi.azurenative.app.inputs.HttpRouteConfigPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -680,6 +761,46 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_httprouteconfig" "httpRouteConfig" {
+///   environment_name = "testcontainerenv"
+///   http_route_name  = "httproutefriendlyname"
+///   properties = {
+///     custom_domains = [{
+///       "bindingType"   = "Disabled"
+///       "certificateId" = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/examplerg/providers/Microsoft.App/managedEnvironments/testcontainerenv/certificates/certificate-1"
+///       "name"          = "example.com"
+///     }]
+///     rules = [{
+///       "description" = "random-description"
+///       "routes" = [{
+///         "action" = {
+///           "prefixRewrite" = "/v1/api"
+///         }
+///         "match" = {
+///           "caseSensitive" = true
+///           "prefix"        = "/v1"
+///         }
+///       }]
+///       "targets" = [{
+///         "containerApp" = "capp-1"
+///         "label"        = "label-1"
+///       }]
+///     }]
+///   }
+///   resource_group_name = "examplerg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -689,8 +810,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.HttpRouteConfig;
 /// import com.pulumi.azurenative.app.HttpRouteConfigArgs;
 /// import com.pulumi.azurenative.app.inputs.HttpRouteConfigPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

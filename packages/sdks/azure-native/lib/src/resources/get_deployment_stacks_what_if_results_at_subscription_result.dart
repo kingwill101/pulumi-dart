@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'deployment_stacks_what_if_result_properties_response.dart';
+import 'deployment_stacks_what_if_result_properties_deployment_stacks_what_if_results_at_subscription_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getDeploymentStacksWhatIfResultsAtSubscription.
@@ -14,7 +14,7 @@ class GetDeploymentStacksWhatIfResultsAtSubscriptionResult {
   /// The name of the resource
   final String name;
   /// The resource-specific properties for this resource.
-  final DeploymentStacksWhatIfResultPropertiesResponse properties;
+  final DeploymentStacksWhatIfResultPropertiesDeploymentStacksWhatIfResultsAtSubscriptionResponse properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// Resource tags.
@@ -61,11 +61,10 @@ class GetDeploymentStacksWhatIfResultsAtSubscriptionResult {
       id: map['id'] as String,
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: DeploymentStacksWhatIfResultPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      properties: DeploymentStacksWhatIfResultPropertiesDeploymentStacksWhatIfResultsAtSubscriptionResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'get_employee_result.dart';
 ///
 /// Uses Azure REST API version 2021-11-01.
 ///
-/// Other available API versions: 2021-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native widget [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native widget [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_widget_get_employee_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetEmployeeResult> getEmployee(

@@ -68,6 +68,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hybridnetwork_configurationgroupschema" "configurationGroupSchema" {
+///   configuration_group_schema_name = "testConfigurationGroupSchema"
+///   location                        = "westUs2"
+///   properties = {
+///     description       = "Schema with no secrets"
+///     schema_definition = "{\"type\":\"object\",\"properties\":{\"interconnect-groups\":{\"type\":\"object\",\"properties\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"international-interconnects\":{\"type\":\"array\",\"item\":{\"type\":\"string\"}},\"domestic-interconnects\":{\"type\":\"array\",\"item\":{\"type\":\"string\"}}}}},\"interconnect-group-assignments\":{\"type\":\"object\",\"properties\":{\"type\":\"object\",\"properties\":{\"ssc\":{\"type\":\"string\"},\"interconnects-interconnects\":{\"type\":\"string\"}}}}},\"required\":[\"interconnect-groups\",\"interconnect-group-assignments\"]}"
+///   }
+///   publisher_name      = "testPublisher"
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +99,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hybridnetwork.ConfigurationGroupSchema;
 /// import com.pulumi.azurenative.hybridnetwork.ConfigurationGroupSchemaArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.ConfigurationGroupSchemaPropertiesFormatArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

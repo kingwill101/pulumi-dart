@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-06-15.
 ///
-/// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -285,6 +285,82 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_managednetworkfabric_networktaprule" "networkTapRule" {
+///   annotation         = "annotation"
+///   configuration_type = "File"
+///   dynamic_match_configurations {
+///     ip_groups {
+///       ip_address_type = "IPv4"
+///       ip_prefixes     = ["10.10.10.10/30"]
+///       name            = "example-ipGroup1"
+///     }
+///     port_groups {
+///       name  = "example-portGroup1"
+///       ports = ["100-200"]
+///     }
+///     port_groups {
+///       name  = "example-portGroup2"
+///       ports = ["900", "1000-2000"]
+///     }
+///     vlan_groups {
+///       name  = "exmaple-vlanGroup"
+///       vlans = ["10", "100-200"]
+///     }
+///   }
+///   location = "eastus"
+///   match_configurations {
+///     actions {
+///       destination_id           = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourcegroups/example-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/example-neighborGroup"
+///       is_timestamp_enabled     = "True"
+///       match_configuration_name = "match1"
+///       truncate                 = "100"
+///       type                     = "Drop"
+///     }
+///     ip_address_type = "IPv4"
+///     match_conditions {
+///       encapsulation_type = "None"
+///       ip_condition = {
+///         ip_group_names   = ["example-ipGroup"]
+///         ip_prefix_values = ["10.10.10.10/20"]
+///         prefix_type      = "Prefix"
+///         type             = "SourceIP"
+///       }
+///       port_condition = {
+///         layer4_protocol  = "TCP"
+///         port_group_names = ["example-portGroup1"]
+///         port_type        = "SourcePort"
+///         ports            = ["100"]
+///       }
+///       protocol_types = ["TCP"]
+///       vlan_match_condition = {
+///         inner_vlans      = ["11-20"]
+///         vlan_group_names = ["exmaple-vlanGroup"]
+///         vlans            = ["10"]
+///       }
+///     }
+///     match_configuration_name = "config1"
+///     sequence_number          = 10
+///   }
+///   network_tap_rule_name       = "example-tapRule"
+///   polling_interval_in_seconds = 30
+///   resource_group_name         = "example-rg"
+///   tags = {
+///     "keyID" = "keyValue"
+///   }
+///   tap_rules_url = "https://microsoft.com/a"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -295,8 +371,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.managednetworkfabric.NetworkTapRuleArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.CommonDynamicMatchConfigurationArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.NetworkTapRuleMatchConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -526,7 +602,7 @@ import 'system_data_response.dart';
 ///             },
 ///         }],
 ///         "match_configuration_name": "config1",
-///         "sequence_number": 10,
+///         "sequence_number": float(10),
 ///     }],
 ///     network_tap_rule_name="example-tapRule",
 ///     polling_interval_in_seconds=30,

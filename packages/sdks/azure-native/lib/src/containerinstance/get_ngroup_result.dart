@@ -16,44 +16,44 @@ class GetNGroupResult {
   final List<ContainerGroupProfileStubResponse>? containerGroupProfiles;
   /// The elastic profile.
   final ElasticProfileResponse? elasticProfile;
-  /// The resource id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// The identity of the NGroup, if configured.
   final NGroupIdentityResponse? identity;
-  /// The resource location.
+  /// The geo-location where the resource lives
   final String? location;
-  /// The resource name.
+  /// The name of the resource
   final String name;
   /// Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
   final PlacementProfileResponse? placementProfile;
   /// The provisioning state, which only appears in the response.
   final String provisioningState;
-  /// Metadata pertaining to creation and last modification of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-  /// The resource tags.
+  /// Resource tags.
   final Map<String, String>? tags;
-  /// The resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// Used by the customer to specify the way to update the Container Groups in NGroup.
   final UpdateProfileResponse? updateProfile;
-  /// The zones for the container group.
+  /// The availability zones.
   final List<String>? zones;
 
   /// Creates a new [GetNGroupResult].
   /// [azureApiVersion] The Azure API version of the resource.
   /// [containerGroupProfiles] The Container Group Profiles that could be used in the NGroups resource.
   /// [elasticProfile] The elastic profile.
-  /// [id] The resource id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [identity] The identity of the NGroup, if configured.
-  /// [location] The resource location.
-  /// [name] The resource name.
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the resource
   /// [placementProfile] Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
   /// [provisioningState] The provisioning state, which only appears in the response.
-  /// [systemData] Metadata pertaining to creation and last modification of the resource.
-  /// [tags] The resource tags.
-  /// [type] The resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [tags] Resource tags.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updateProfile] Used by the customer to specify the way to update the Container Groups in NGroup.
-  /// [zones] The zones for the container group.
+  /// [zones] The availability zones.
   const GetNGroupResult({
     required this.azureApiVersion,
     this.containerGroupProfiles,
@@ -109,4 +109,3 @@ class GetNGroupResult {
     );
   }
 }
-

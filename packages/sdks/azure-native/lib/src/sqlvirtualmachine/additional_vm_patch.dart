@@ -15,4 +15,3 @@ enum AdditionalVmPatch {
     throw ArgumentError('Unknown AdditionalVmPatch value: $value');
   }
 }
-

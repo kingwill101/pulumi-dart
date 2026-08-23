@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'migrate_project_properties_response.dart';
+import 'migrate_project_properties_migrate_projects_controller_migrate_project_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getMigrateProjectsControllerMigrateProject.
@@ -16,7 +16,7 @@ class GetMigrateProjectsControllerMigrateProjectResult {
   /// Name of the project.
   final String name;
   /// Properties of a migrate project.
-  final MigrateProjectPropertiesResponse properties;
+  final MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse properties;
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
   /// Type of the object = [Microsoft.Migrate/migrateProjects].
@@ -62,10 +62,9 @@ class GetMigrateProjectsControllerMigrateProjectResult {
       id: map['id'] as String,
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: MigrateProjectPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      properties: MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

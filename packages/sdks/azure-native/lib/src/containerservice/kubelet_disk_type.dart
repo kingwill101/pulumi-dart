@@ -15,4 +15,3 @@ enum KubeletDiskType {
     throw ArgumentError('Unknown KubeletDiskType value: $value');
   }
 }
-

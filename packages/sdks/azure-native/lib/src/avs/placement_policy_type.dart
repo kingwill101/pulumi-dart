@@ -15,4 +15,3 @@ enum PlacementPolicyType {
     throw ArgumentError('Unknown PlacementPolicyType value: $value');
   }
 }
-

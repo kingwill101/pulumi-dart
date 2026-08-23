@@ -15,4 +15,3 @@ enum IntegrationRuntimeEdition {
     throw ArgumentError('Unknown IntegrationRuntimeEdition value: $value');
   }
 }
-

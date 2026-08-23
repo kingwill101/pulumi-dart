@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01-preview.
 ///
-/// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview, 2025-05-01-preview, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -112,6 +112,48 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_eventhub_eventhub" "eventHub" {
+///   capture_description = {
+///     destination = {
+///       archive_name_format = "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"
+///       blob_container      = "container"
+///       identity = {
+///         type                   = "UserAssigned"
+///         user_assigned_identity = "/subscriptions/SampleSubscription/resourceGroups/ResurceGroupSample/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ud2"
+///       }
+///       name                        = "EventHubArchive.AzureBlockBlob"
+///       storage_account_resource_id = "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-Storage-SouthCentralUS/providers/Microsoft.ClassicStorage/storageAccounts/arjunteststorage"
+///     }
+///     enabled             = true
+///     encoding            = "Avro"
+///     interval_in_seconds = 120
+///     size_limit_in_bytes = 10485763
+///   }
+///   event_hub_name            = "sdk-EventHub-6547"
+///   message_retention_in_days = 4
+///   namespace_name            = "sdk-Namespace-5357"
+///   partition_count           = 4
+///   resource_group_name       = "Default-NotificationHubs-AustraliaEast"
+///   retention_description = {
+///     cleanup_policy                    = "Compact"
+///     retention_time_in_hours           = 96
+///     tombstone_retention_time_in_hours = 1
+///   }
+///   status        = "Active"
+///   user_metadata = "key"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -124,8 +166,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventhub.inputs.DestinationArgs;
 /// import com.pulumi.azurenative.eventhub.inputs.CaptureIdentityArgs;
 /// import com.pulumi.azurenative.eventhub.inputs.RetentionDescriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -232,13 +274,13 @@ import 'system_data_response.dart';
 ///         "size_limit_in_bytes": 10485763,
 ///     },
 ///     event_hub_name="sdk-EventHub-6547",
-///     message_retention_in_days=4,
+///     message_retention_in_days=float(4),
 ///     namespace_name="sdk-Namespace-5357",
-///     partition_count=4,
+///     partition_count=float(4),
 ///     resource_group_name="Default-NotificationHubs-AustraliaEast",
 ///     retention_description={
 ///         "cleanup_policy": azure_native.eventhub.CleanupPolicyRetentionDescription.COMPACT,
-///         "retention_time_in_hours": 96,
+///         "retention_time_in_hours": float(96),
 ///         "tombstone_retention_time_in_hours": 1,
 ///     },
 ///     status=azure_native.eventhub.EntityStatus.ACTIVE,

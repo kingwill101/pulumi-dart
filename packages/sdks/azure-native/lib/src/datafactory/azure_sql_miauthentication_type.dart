@@ -1,9 +1,9 @@
 /// The type used for authentication. Type: string.
 enum AzureSqlMIAuthenticationType {
-  valueSQL("SQL"),
-  valueServicePrincipal("ServicePrincipal"),
-  valueSystemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
-  valueUserAssignedManagedIdentity("UserAssignedManagedIdentity");
+  sQL("SQL"),
+  servicePrincipal("ServicePrincipal"),
+  systemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
+  userAssignedManagedIdentity("UserAssignedManagedIdentity");
 
   const AzureSqlMIAuthenticationType(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum AzureSqlMIAuthenticationType {
     throw ArgumentError('Unknown AzureSqlMIAuthenticationType value: $value');
   }
 }
-

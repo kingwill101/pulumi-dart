@@ -1,15 +1,15 @@
 /// The type of compute
 enum ComputeType {
-  valueAKS("AKS"),
-  valueKubernetes("Kubernetes"),
-  valueAmlCompute("AmlCompute"),
-  valueComputeInstance("ComputeInstance"),
-  valueDataFactory("DataFactory"),
-  valueVirtualMachine("VirtualMachine"),
-  valueHDInsight("HDInsight"),
-  valueDatabricks("Databricks"),
-  valueDataLakeAnalytics("DataLakeAnalytics"),
-  valueSynapseSpark("SynapseSpark");
+  aKS("AKS"),
+  kubernetes("Kubernetes"),
+  amlCompute("AmlCompute"),
+  computeInstance("ComputeInstance"),
+  dataFactory("DataFactory"),
+  virtualMachine("VirtualMachine"),
+  hDInsight("HDInsight"),
+  databricks("Databricks"),
+  dataLakeAnalytics("DataLakeAnalytics"),
+  synapseSpark("SynapseSpark");
 
   const ComputeType(this.wireValue);
   final String wireValue;
@@ -23,4 +23,3 @@ enum ComputeType {
     throw ArgumentError('Unknown ComputeType value: $value');
   }
 }
-

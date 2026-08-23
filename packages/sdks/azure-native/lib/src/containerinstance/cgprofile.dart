@@ -11,7 +11,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-11-01-preview.
 ///
-/// Other available API versions: 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-09-01, 2026-06-01-preview, 2026-07-01, 2026-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -165,6 +165,56 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerinstance_cgprofile" "cgProfile" {
+///   confidential_compute_properties = {
+///     cce_policy = "eyJhbGxvd19hbGwiOiB0cnVlLCAiY29udGFpbmVycyI6IHsibGVuZ3RoIjogMCwgImVsZW1lbnRzIjogbnVsbH19"
+///   }
+///   container_group_profile_name = "demo1"
+///   containers {
+///     command = []
+///     image   = "confiimage"
+///     name    = "accdemo"
+///     ports {
+///       port = 8000
+///     }
+///     resources = {
+///       requests = {
+///         cpu          = 1
+///         memory_in_gb = 1.5
+///       }
+///     }
+///     security_context = {
+///       capabilities = {
+///         add = ["CAP_NET_ADMIN"]
+///       }
+///       privileged = false
+///     }
+///   }
+///   ip_address = {
+///     ports = [{
+///       "port"     = 8000
+///       "protocol" = "TCP"
+///     }]
+///     type = "Public"
+///   }
+///   location            = "westeurope"
+///   os_type             = "Linux"
+///   resource_group_name = "demo"
+///   sku                 = "Confidential"
+///   zones               = ["1"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -180,8 +230,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.containerinstance.inputs.SecurityContextDefinitionArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.SecurityContextCapabilitiesDefinitionArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.IpAddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -305,7 +355,7 @@ import 'system_data_response.dart';
 ///         }],
 ///         "resources": {
 ///             "requests": {
-///                 "cpu": 1,
+///                 "cpu": float(1),
 ///                 "memory_in_gb": 1.5,
 ///             },
 ///         },
@@ -537,6 +587,63 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerinstance_cgprofile" "cgProfile" {
+///   container_group_profile_name = "demo1"
+///   containers {
+///     command = []
+///     image   = "nginx"
+///     name    = "demo1"
+///     ports {
+///       port = 80
+///     }
+///     resources = {
+///       requests = {
+///         cpu          = 1
+///         memory_in_gb = 1.5
+///       }
+///     }
+///   }
+///   extensions {
+///     extension_type = "kube-proxy"
+///     name           = "kube-proxy"
+///     protected_settings = {
+///       "kubeConfig" = "<kubeconfig encoded string>"
+///     }
+///     settings = {
+///       "clusterCidr" = "10.240.0.0/16"
+///       "kubeVersion" = "v1.9.10"
+///     }
+///     version = "1.0"
+///   }
+///   extensions {
+///     extension_type = "realtime-metrics"
+///     name           = "vk-realtime-metrics"
+///     version        = "1.0"
+///   }
+///   ip_address = {
+///     ports = [{
+///       "port"     = 80
+///       "protocol" = "TCP"
+///     }]
+///     type = "Private"
+///   }
+///   location            = "eastus2"
+///   os_type             = "Linux"
+///   resource_group_name = "demo"
+///   zones               = ["1"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -550,8 +657,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.containerinstance.inputs.ResourceRequestsArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.DeploymentExtensionSpecArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.IpAddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -687,7 +794,7 @@ import 'system_data_response.dart';
 ///         }],
 ///         "resources": {
 ///             "requests": {
-///                 "cpu": 1,
+///                 "cpu": float(1),
 ///                 "memory_in_gb": 1.5,
 ///             },
 ///         },
@@ -905,6 +1012,52 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerinstance_cgprofile" "cgProfile" {
+///   container_group_profile_name = "demo1"
+///   containers {
+///     command = []
+///     image   = "nginx"
+///     name    = "demo1"
+///     ports {
+///       port = 80
+///     }
+///     resources = {
+///       requests = {
+///         cpu          = 1
+///         memory_in_gb = 1.5
+///       }
+///     }
+///   }
+///   encryption_properties = {
+///     identity       = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/container-group-identity"
+///     key_name       = "test-key"
+///     key_version    = "<key version>"
+///     vault_base_url = "https://testkeyvault.vault.azure.net"
+///   }
+///   ip_address = {
+///     ports = [{
+///       "port"     = 80
+///       "protocol" = "TCP"
+///     }]
+///     type = "Public"
+///   }
+///   location            = "eastus2"
+///   os_type             = "Linux"
+///   resource_group_name = "demo"
+///   zones               = ["1"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -918,8 +1071,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.containerinstance.inputs.ResourceRequestsArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.EncryptionPropertiesArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.IpAddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1032,7 +1185,7 @@ import 'system_data_response.dart';
 ///         }],
 ///         "resources": {
 ///             "requests": {
-///                 "cpu": 1,
+///                 "cpu": float(1),
 ///                 "memory_in_gb": 1.5,
 ///             },
 ///         },
@@ -1337,6 +1490,95 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerinstance_cgprofile" "cgProfile" {
+///   container_group_profile_name = "demo1"
+///   containers {
+///     command = []
+///     image   = "nginx"
+///     name    = "demo1"
+///     ports {
+///       port = 80
+///     }
+///     resources = {
+///       requests = {
+///         cpu = 1
+///         gpu = {
+///           count = 1
+///           sku   = "K80"
+///         }
+///         memory_in_gb = 1.5
+///       }
+///     }
+///     volume_mounts {
+///       mount_path = "/mnt/volume1"
+///       name       = "volume1"
+///       read_only  = false
+///     }
+///     volume_mounts {
+///       mount_path = "/mnt/volume2"
+///       name       = "volume2"
+///       read_only  = false
+///     }
+///     volume_mounts {
+///       mount_path = "/mnt/volume3"
+///       name       = "volume3"
+///       read_only  = true
+///     }
+///   }
+///   diagnostics = {
+///     log_analytics = {
+///       log_type = "ContainerInsights"
+///       metadata = {
+///         "pod-uuid" = "test-metadata-value"
+///       }
+///       workspace_id          = "workspaceid"
+///       workspace_key         = "workspaceKey"
+///       workspace_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/microsoft.operationalinsights/workspaces/workspace"
+///     }
+///   }
+///   ip_address = {
+///     ports = [{
+///       "port"     = 80
+///       "protocol" = "TCP"
+///     }]
+///     type = "Public"
+///   }
+///   location            = "west us"
+///   os_type             = "Linux"
+///   resource_group_name = "demo"
+///   volumes {
+///     azure_file = {
+///       share_name           = "shareName"
+///       storage_account_key  = "accountKey"
+///       storage_account_name = "accountName"
+///     }
+///     name = "volume1"
+///   }
+///   volumes {
+///     empty_dir = {}
+///     name      = "volume2"
+///   }
+///   volumes {
+///     name = "volume3"
+///     secret = {
+///       "secretKey1" = "SecretValue1InBase64"
+///       "secretKey2" = "SecretValue2InBase64"
+///     }
+///   }
+///   zones = ["1"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1354,8 +1596,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.containerinstance.inputs.IpAddressArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.VolumeArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.AzureFileVolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1559,7 +1801,7 @@ import 'system_data_response.dart';
 ///         }],
 ///         "resources": {
 ///             "requests": {
-///                 "cpu": 1,
+///                 "cpu": float(1),
 ///                 "gpu": {
 ///                     "count": 1,
 ///                     "sku": azure_native.containerinstance.GpuSku.K80,

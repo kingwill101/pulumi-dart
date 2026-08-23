@@ -32,6 +32,8 @@ class GetRedisEnterpriseResult {
   final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
   /// Current provisioning status of the cluster
   final String provisioningState;
+  /// Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set.
+  final String publicNetworkAccess;
   /// Version of redis the cluster supports, e.g. '6'
   final String redisVersion;
   /// Explains the current redundancy strategy of the cluster, which affects the expected SLA.
@@ -60,6 +62,7 @@ class GetRedisEnterpriseResult {
   /// [name] The name of the resource
   /// [privateEndpointConnections] List of private endpoint connections associated with the specified Redis Enterprise cluster
   /// [provisioningState] Current provisioning status of the cluster
+  /// [publicNetworkAccess] Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set.
   /// [redisVersion] Version of redis the cluster supports, e.g. '6'
   /// [redundancyMode] Explains the current redundancy strategy of the cluster, which affects the expected SLA.
   /// [resourceState] Current resource status of the cluster
@@ -80,6 +83,7 @@ class GetRedisEnterpriseResult {
     required this.name,
     required this.privateEndpointConnections,
     required this.provisioningState,
+    required this.publicNetworkAccess,
     required this.redisVersion,
     required this.redundancyMode,
     required this.resourceState,
@@ -103,6 +107,7 @@ class GetRedisEnterpriseResult {
       'name': name,
       'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
       'provisioningState': provisioningState,
+      'publicNetworkAccess': publicNetworkAccess,
       'redisVersion': redisVersion,
       'redundancyMode': redundancyMode,
       'resourceState': resourceState,
@@ -127,6 +132,7 @@ class GetRedisEnterpriseResult {
       name: map['name'] as String,
       privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
+      publicNetworkAccess: map['publicNetworkAccess'] as String,
       redisVersion: map['redisVersion'] as String,
       redundancyMode: map['redundancyMode'] as String,
       resourceState: map['resourceState'] as String,
@@ -137,4 +143,3 @@ class GetRedisEnterpriseResult {
     );
   }
 }
-

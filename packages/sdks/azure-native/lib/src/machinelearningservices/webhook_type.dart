@@ -1,6 +1,6 @@
 /// [Required] Specifies the type of service to send a callback
 enum WebhookType {
-  valueAzureDevOps("AzureDevOps");
+  azureDevOps("AzureDevOps");
 
   const WebhookType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum WebhookType {
     throw ArgumentError('Unknown WebhookType value: $value');
   }
 }
-

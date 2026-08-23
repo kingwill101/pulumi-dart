@@ -16,4 +16,3 @@ enum GallerySharingPermissionTypes {
     throw ArgumentError('Unknown GallerySharingPermissionTypes value: $value');
   }
 }
-

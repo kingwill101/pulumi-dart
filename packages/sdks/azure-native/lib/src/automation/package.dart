@@ -6,9 +6,9 @@ import 'system_data_response.dart';
 
 /// Definition of the Package type.
 ///
-/// Uses Azure REST API version 2023-05-15-preview. In version 2.x of the Azure Native provider, it used API version 2023-05-15-preview.
+/// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2023-05-15-preview.
 ///
-/// Other available API versions: 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -76,6 +76,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_package" "package" {
+///   automation_account_name = "myAutomationAccount33"
+///   content_link = {
+///     content_hash = {
+///       algorithm = "sha265"
+///       value     = "07E108A962B81DD9C9BAA89BB47C0F6EE52B29E83758B07795E408D258B2B87A"
+///     }
+///     uri = "https://teststorage.blob.core.windows.net/dsccomposite/OmsCompositeResources.zip"
+///   }
+///   package_name             = "OmsCompositeResources"
+///   resource_group_name      = "rg"
+///   runtime_environment_name = "runtimeEnvironmentName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +111,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.automation.PackageArgs;
 /// import com.pulumi.azurenative.automation.inputs.ContentLinkArgs;
 /// import com.pulumi.azurenative.automation.inputs.ContentHashArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

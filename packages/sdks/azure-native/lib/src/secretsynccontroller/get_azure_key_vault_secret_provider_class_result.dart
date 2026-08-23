@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'azure_resource_manager_common_types_extended_location_response.dart';
+import 'extended_location_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getAzureKeyVaultSecretProviderClass.
@@ -10,7 +10,7 @@ class GetAzureKeyVaultSecretProviderClassResult {
   /// The user assigned managed identity client ID that should be used to access the Azure Key Vault.
   final String clientId;
   /// The complex type of the extended location.
-  final AzureResourceManagerCommonTypesExtendedLocationResponse? extendedLocation;
+  final ExtendedLocationResponse? extendedLocation;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// The name of the Azure Key Vault to sync secrets from.
@@ -84,7 +84,7 @@ class GetAzureKeyVaultSecretProviderClassResult {
     return GetAzureKeyVaultSecretProviderClassResult(
       azureApiVersion: map['azureApiVersion'] as String,
       clientId: map['clientId'] as String,
-      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       keyvaultName: map['keyvaultName'] as String,
       location: map['location'] as String,
@@ -98,4 +98,3 @@ class GetAzureKeyVaultSecretProviderClassResult {
     );
   }
 }
-

@@ -11,13 +11,13 @@ class GetCredentialArgs {
   final pulumi.Input<String> automationAccountName;
   /// The name of credential.
   final pulumi.Input<String> credentialName;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetCredentialArgs].
   /// [automationAccountName] The name of the automation account.
   /// [credentialName] The name of credential.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetCredentialArgs({
     required this.automationAccountName,
     required this.credentialName,
@@ -40,4 +40,3 @@ class GetCredentialArgs {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum RecoveryPlanGroupType {
     throw ArgumentError('Unknown RecoveryPlanGroupType value: $value');
   }
 }
-

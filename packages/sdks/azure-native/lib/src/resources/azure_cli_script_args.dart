@@ -28,7 +28,7 @@ class AzureCliScriptArgs {
   /// Type of the script.
   /// Expected value is 'AzureCLI'.
   final pulumi.Input<String> kind;
-  /// The location of the ACI and the storage account for the deployment script.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// Uri for the script. This is the entry point for the external script.
   final pulumi.Input<String>? primaryScriptUri;
@@ -58,7 +58,7 @@ class AzureCliScriptArgs {
   /// [forceUpdateTag] Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID.
   /// [identity] Optional property. Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported.
   /// [kind] Type of the script.
-  /// [location] The location of the ACI and the storage account for the deployment script.
+  /// [location] The geo-location where the resource lives
   /// [primaryScriptUri] Uri for the script. This is the entry point for the external script.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [retentionInterval] Interval for which the service retains the script resource after it reaches a terminal state. Resource will be deleted when this duration expires. Duration is based on ISO 8601 pattern (for example P1D means one day).
@@ -135,4 +135,3 @@ class AzureCliScriptArgs {
     );
   }
 }
-

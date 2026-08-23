@@ -11,13 +11,13 @@ class GetJobScheduleArgs {
   final pulumi.Input<String> automationAccountName;
   /// The job schedule name.
   final pulumi.Input<String> jobScheduleId;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetJobScheduleArgs].
   /// [automationAccountName] The name of the automation account.
   /// [jobScheduleId] The job schedule name.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetJobScheduleArgs({
     required this.automationAccountName,
     required this.jobScheduleId,
@@ -40,4 +40,3 @@ class GetJobScheduleArgs {
     );
   }
 }
-

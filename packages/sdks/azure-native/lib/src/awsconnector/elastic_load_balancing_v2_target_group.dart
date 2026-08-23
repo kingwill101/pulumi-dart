@@ -187,6 +187,75 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_elasticloadbalancingv2targetgroup" "elasticLoadBalancingV2TargetGroup" {
+///   location = "uyngtpdaililbq"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "avccwbbipudnfjximva"
+///     aws_account_id = "vjdgbgqisnvysonxlwjoczc"
+///     aws_properties = {
+///       health_check_enabled          = true
+///       health_check_interval_seconds = 16
+///       health_check_path             = "exmwepsqjmnvppxuwwvineim"
+///       health_check_port             = "cjuqka"
+///       health_check_protocol         = "vkarvxh"
+///       health_check_timeout_seconds  = 13
+///       healthy_threshold_count       = 21
+///       ip_address_type               = "da"
+///       load_balancer_arns            = ["tzafgmrxzoifkxbmzsivajwdwedjw"]
+///       matcher = {
+///         grpc_code = "tbnxw"
+///         http_code = "pavevmyswjhnoptlankjaiieao"
+///       }
+///       name             = "ruyunzpgs"
+///       port             = 9
+///       protocol         = "cltdmqhlrmrhgdamynxpmnbshrth"
+///       protocol_version = "rpqn"
+///       tags = [{
+///         "key"   = "fkysin"
+///         "value" = "ivjhgawgxhfvwiyaeruurbpkyx"
+///       }]
+///       target_group_arn = "nlyfkpaomu"
+///       target_group_attributes = [{
+///         "key"   = "edcafpxbnifvdfchilay"
+///         "value" = "fiffi"
+///       }]
+///       target_group_full_name = "xhghbskmnfhkswoncku"
+///       target_group_name      = "b"
+///       target_type            = "eekpandbuoghdxtg"
+///       targets = [{
+///         "availabilityZone" = "degmktltnufhywqic"
+///         "id"               = "dpaky"
+///         "port"             = 13
+///       }]
+///       unhealthy_threshold_count = 14
+///       vpc_id                    = "leubklsppgcmljbowvzpwvwya"
+///     }
+///     aws_region        = "qlfglghejmmlo"
+///     aws_source_schema = "cljfeojrexeruhvjklisrmf"
+///     aws_tags = {
+///       "key5023" = "tfayscxthf"
+///     }
+///     public_cloud_connectors_resource_id = "agzteeghhpawmqbjrdkgduq"
+///     public_cloud_resource_name          = "muortngxuegbngvcemmzovetqah"
+///   }
+///   resource_group_name = "rgelasticLoadBalancingV2TargetGroup"
+///   tags = {
+///     "key6050" = "pemhzyusesfpizecwecekae"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -198,8 +267,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.ElasticLoadBalancingV2TargetGroupPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsElasticLoadBalancingV2TargetGroupPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.MatcherArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -17,7 +17,7 @@ import 'virtual_machine_instance_view_response.dart';
 ///
 /// Uses Azure REST API version 2025-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-07-01-preview.
 ///
-/// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -108,6 +108,36 @@ import 'virtual_machine_instance_view_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_virtualmachineinstance" "virtualMachineInstance" {
+///   create_from_local = true
+///   extended_location = {
+///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
+///     type = "CustomLocation"
+///   }
+///   network_profile = {
+///     network_interfaces = [{
+///       "id" = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/networkInterfaces/test-nic"
+///     }]
+///   }
+///   resource_uri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.HybridCompute/machines/DemoVM"
+///   storage_profile = {
+///     data_disks = [{
+///       "id" = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.AzureStackHCI/virtualHardDisks/test-vhd"
+///     }]
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +149,8 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesNetworkProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesStorageProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -339,6 +369,50 @@ import 'virtual_machine_instance_view_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_virtualmachineinstance" "virtualMachineInstance" {
+///   extended_location = {
+///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
+///     type = "CustomLocation"
+///   }
+///   hardware_profile = {
+///     vm_size = "Default"
+///   }
+///   network_profile = {
+///     network_interfaces = [{
+///       "id" = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/networkInterfaces/test-nic"
+///     }]
+///   }
+///   os_profile = {
+///     admin_password = "password"
+///     admin_username = "localadmin"
+///     computer_name  = "luamaster"
+///   }
+///   resource_uri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.HybridCompute/machines/DemoVM"
+///   security_profile = {
+///     enable_tpm = true
+///     uefi_settings = {
+///       secure_boot_enabled = true
+///     }
+///   }
+///   storage_profile = {
+///     image_reference = {
+///       id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/galleryImages/test-gallery-image"
+///     }
+///     vm_config_storage_path_id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/storageContainers/test-container"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -355,8 +429,8 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesSecurityProfileUefiSettingsArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesStorageProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.ImageArmReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -641,6 +715,54 @@ import 'virtual_machine_instance_view_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_virtualmachineinstance" "virtualMachineInstance" {
+///   extended_location = {
+///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
+///     type = "CustomLocation"
+///   }
+///   hardware_profile = {
+///     virtual_machine_gp_us = [{
+///       "assignmentType"  = "GpuDDA"
+///       "partitionSizeMB" = 0
+///     }]
+///     vm_size = "Default"
+///   }
+///   network_profile = {
+///     network_interfaces = [{
+///       "id" = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/networkInterfaces/test-nic"
+///     }]
+///   }
+///   os_profile = {
+///     admin_password = "password"
+///     admin_username = "localadmin"
+///     computer_name  = "luamaster"
+///   }
+///   resource_uri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.HybridCompute/machines/DemoVM"
+///   security_profile = {
+///     enable_tpm = true
+///     uefi_settings = {
+///       secure_boot_enabled = true
+///     }
+///   }
+///   storage_profile = {
+///     image_reference = {
+///       id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/galleryImages/test-gallery-image"
+///     }
+///     vm_config_storage_path_id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/storageContainers/test-container"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -657,8 +779,8 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesSecurityProfileUefiSettingsArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesStorageProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.ImageArmReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -767,7 +889,7 @@ import 'virtual_machine_instance_view_response.dart';
 ///     hardware_profile={
 ///         "virtual_machine_gpus": [{
 ///             "assignment_type": azure_native.azurestackhci.GpuAssignmentTypeEnum.GPU_DDA,
-///             "partition_size_mb": 0,
+///             "partition_size_mb": float(0),
 ///         }],
 ///         "vm_size": azure_native.azurestackhci.VmSizeEnum.DEFAULT,
 ///     },
@@ -944,6 +1066,50 @@ import 'virtual_machine_instance_view_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_virtualmachineinstance" "virtualMachineInstance" {
+///   extended_location = {
+///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
+///     type = "CustomLocation"
+///   }
+///   hardware_profile = {
+///     vm_size = "Default"
+///   }
+///   network_profile = {
+///     network_interfaces = [{
+///       "id" = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/networkInterfaces/test-nic"
+///     }]
+///   }
+///   os_profile = {
+///     admin_password = "password"
+///     admin_username = "localadmin"
+///     computer_name  = "luamaster"
+///   }
+///   resource_uri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.HybridCompute/machines/DemoVM"
+///   security_profile = {
+///     enable_tpm = true
+///     uefi_settings = {
+///       secure_boot_enabled = true
+///     }
+///   }
+///   storage_profile = {
+///     image_reference = {
+///       id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/marketplaceGalleryImages/test-marketplace-gallery-image"
+///     }
+///     vm_config_storage_path_id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/storageContainers/test-container"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -960,8 +1126,8 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesSecurityProfileUefiSettingsArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesStorageProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.ImageArmReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1221,6 +1387,45 @@ import 'virtual_machine_instance_view_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_virtualmachineinstance" "virtualMachineInstance" {
+///   extended_location = {
+///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
+///     type = "CustomLocation"
+///   }
+///   hardware_profile = {
+///     vm_size = "Default"
+///   }
+///   network_profile = {
+///     network_interfaces = [{
+///       "id" = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/networkInterfaces/test-nic"
+///     }]
+///   }
+///   resource_uri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.HybridCompute/machines/DemoVM"
+///   security_profile = {
+///     enable_tpm = true
+///     uefi_settings = {
+///       secure_boot_enabled = true
+///     }
+///   }
+///   storage_profile = {
+///     os_disk = {
+///       id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/virtualHardDisks/test-vhd"
+///     }
+///     vm_config_storage_path_id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/storageContainers/test-container"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1236,8 +1441,8 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesSecurityProfileUefiSettingsArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesStorageProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesStorageProfileOsDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1496,6 +1701,53 @@ import 'virtual_machine_instance_view_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_virtualmachineinstance" "virtualMachineInstance" {
+///   extended_location = {
+///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
+///     type = "CustomLocation"
+///   }
+///   hardware_profile = {
+///     vm_size = "Default"
+///   }
+///   network_profile = {
+///     network_interfaces = [{
+///       "id" = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/networkInterfaces/test-nic"
+///     }]
+///   }
+///   os_profile = {
+///     admin_password = "password"
+///     admin_username = "localadmin"
+///     computer_name  = "luamaster"
+///     windows_configuration = {
+///       provision_vm_config_agent = true
+///     }
+///   }
+///   resource_uri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.HybridCompute/machines/DemoVM"
+///   security_profile = {
+///     enable_tpm = true
+///     uefi_settings = {
+///       secure_boot_enabled = true
+///     }
+///   }
+///   storage_profile = {
+///     image_reference = {
+///       id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/galleryImages/test-gallery-image"
+///     }
+///     vm_config_storage_path_id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/storageContainers/test-container"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1513,8 +1765,8 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesSecurityProfileUefiSettingsArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesStorageProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.ImageArmReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

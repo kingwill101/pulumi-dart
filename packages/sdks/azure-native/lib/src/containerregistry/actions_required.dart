@@ -15,4 +15,3 @@ enum ActionsRequired {
     throw ArgumentError('Unknown ActionsRequired value: $value');
   }
 }
-

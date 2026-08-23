@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSoftwareUpdateConfigurationByNameArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the software update configuration to be created.
   final pulumi.Input<String> softwareUpdateConfigurationName;
 
   /// Creates a new [GetSoftwareUpdateConfigurationByNameArgs].
   /// [automationAccountName] The name of the automation account.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [softwareUpdateConfigurationName] The name of the software update configuration to be created.
   const GetSoftwareUpdateConfigurationByNameArgs({
     required this.automationAccountName,
@@ -40,4 +40,3 @@ class GetSoftwareUpdateConfigurationByNameArgs {
     );
   }
 }
-

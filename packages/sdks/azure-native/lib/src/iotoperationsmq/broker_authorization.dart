@@ -140,6 +140,45 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperationsmq_brokerauthorization" "brokerAuthorization" {
+///   authorization_name = "C15G"
+///   authorization_policies = {
+///     enable_cache = true
+///     rules = [{
+///       "brokerResources" = [{
+///         "method" = "Connect"
+///         "topics" = ["v"]
+///       }]
+///       "principals" = {
+///         "attributes" = [{}]
+///         "clientids"  = ["smrfzvniq"]
+///         "usernames"  = ["jtwwmsrzriat"]
+///       }
+///     }]
+///   }
+///   broker_name = "7E0-tXS-6u1h-Vx396----"
+///   extended_location = {
+///     name = "an"
+///     type = "CustomLocation"
+///   }
+///   listener_ref        = ["mxgpbyb"]
+///   location            = "bvgohixie"
+///   mq_name             = "Zz22-b2VC-9"
+///   resource_group_name = "rgiotoperationsmq"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +189,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperationsmq.BrokerAuthorizationArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.AuthorizationConfigArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.ExtendedLocationPropertyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -1,9 +1,9 @@
 /// The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
 enum IntegrationRuntimeSsisCatalogPricingTier {
-  valueBasic("Basic"),
-  valueStandard("Standard"),
-  valuePremium("Premium"),
-  valuePremiumRS("PremiumRS");
+  basic("Basic"),
+  standard("Standard"),
+  premium("Premium"),
+  premiumRS("PremiumRS");
 
   const IntegrationRuntimeSsisCatalogPricingTier(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum IntegrationRuntimeSsisCatalogPricingTier {
     throw ArgumentError('Unknown IntegrationRuntimeSsisCatalogPricingTier value: $value');
   }
 }
-

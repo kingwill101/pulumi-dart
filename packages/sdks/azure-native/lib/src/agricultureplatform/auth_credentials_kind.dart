@@ -15,4 +15,3 @@ enum AuthCredentialsKind {
     throw ArgumentError('Unknown AuthCredentialsKind value: $value');
   }
 }
-

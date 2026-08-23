@@ -15,4 +15,3 @@ enum PoolIdentityType {
     throw ArgumentError('Unknown PoolIdentityType value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum ElasticVolumePolicyEnforcement {
     throw ArgumentError('Unknown ElasticVolumePolicyEnforcement value: $value');
   }
 }
-

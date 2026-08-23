@@ -380,6 +380,150 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_autoscalesetting" "autoscaleSetting" {
+///   autoscale_setting_name = "MySetting"
+///   enabled                = true
+///   location               = "West US"
+///   notifications {
+///     email = {
+///       custom_emails                          = ["gu@ms.com", "ge@ns.net"]
+///       send_to_subscription_administrator     = true
+///       send_to_subscription_co_administrators = true
+///     }
+///     operation = "Scale"
+///     webhooks {
+///       properties  = {}
+///       service_uri = "http://myservice.com"
+///     }
+///   }
+///   predictive_autoscale_policy = {
+///     scale_mode = "Enabled"
+///   }
+///   profiles {
+///     capacity = {
+///       default = "1"
+///       maximum = "10"
+///       minimum = "1"
+///     }
+///     fixed_date = {
+///       end       = "2015-03-05T14:30:00Z"
+///       start     = "2015-03-05T14:00:00Z"
+///       time_zone = "UTC"
+///     }
+///     name = "adios"
+///     rules {
+///       metric_trigger = {
+///         divide_per_instance = false
+///         metric_name         = "Percentage CPU"
+///         metric_resource_uri = "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc"
+///         operator            = "GreaterThan"
+///         statistic           = "Average"
+///         threshold           = 10
+///         time_aggregation    = "Average"
+///         time_grain          = "PT1M"
+///         time_window         = "PT5M"
+///       }
+///       scale_action = {
+///         cooldown  = "PT5M"
+///         direction = "Increase"
+///         type      = "ChangeCount"
+///         value     = "1"
+///       }
+///     }
+///     rules {
+///       metric_trigger = {
+///         divide_per_instance = false
+///         metric_name         = "Percentage CPU"
+///         metric_resource_uri = "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc"
+///         operator            = "GreaterThan"
+///         statistic           = "Average"
+///         threshold           = 15
+///         time_aggregation    = "Average"
+///         time_grain          = "PT2M"
+///         time_window         = "PT5M"
+///       }
+///       scale_action = {
+///         cooldown  = "PT6M"
+///         direction = "Decrease"
+///         type      = "ChangeCount"
+///         value     = "2"
+///       }
+///     }
+///   }
+///   profiles {
+///     capacity = {
+///       default = "1"
+///       maximum = "10"
+///       minimum = "1"
+///     }
+///     name = "saludos"
+///     recurrence = {
+///       frequency = "Week"
+///       schedule = {
+///         days      = ["1"]
+///         hours     = [5]
+///         minutes   = [15]
+///         time_zone = "UTC"
+///       }
+///     }
+///     rules {
+///       metric_trigger = {
+///         divide_per_instance = false
+///         metric_name         = "Percentage CPU"
+///         metric_resource_uri = "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc"
+///         operator            = "GreaterThan"
+///         statistic           = "Average"
+///         threshold           = 10
+///         time_aggregation    = "Average"
+///         time_grain          = "PT1M"
+///         time_window         = "PT5M"
+///       }
+///       scale_action = {
+///         cooldown  = "PT5M"
+///         direction = "Increase"
+///         type      = "ChangeCount"
+///         value     = "1"
+///       }
+///     }
+///     rules {
+///       metric_trigger = {
+///         divide_per_instance = false
+///         metric_name         = "Percentage CPU"
+///         metric_resource_uri = "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc"
+///         operator            = "GreaterThan"
+///         statistic           = "Average"
+///         threshold           = 15
+///         time_aggregation    = "Average"
+///         time_grain          = "PT2M"
+///         time_window         = "PT5M"
+///       }
+///       scale_action = {
+///         cooldown  = "PT6M"
+///         direction = "Decrease"
+///         type      = "ChangeCount"
+///         value     = "2"
+///       }
+///     }
+///   }
+///   resource_group_name = "TestingMetricsScaleSet"
+///   tags = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+///   target_resource_uri = "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -396,8 +540,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.inputs.TimeWindowArgs;
 /// import com.pulumi.azurenative.monitor.inputs.RecurrenceArgs;
 /// import com.pulumi.azurenative.monitor.inputs.RecurrentScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -748,7 +892,7 @@ import 'system_data_response.dart';
 ///                         "metric_resource_uri": "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc",
 ///                         "operator": azure_native.monitor.ComparisonOperationType.GREATER_THAN,
 ///                         "statistic": azure_native.monitor.MetricStatisticType.AVERAGE,
-///                         "threshold": 10,
+///                         "threshold": float(10),
 ///                         "time_aggregation": azure_native.monitor.TimeAggregationType.AVERAGE,
 ///                         "time_grain": "PT1M",
 ///                         "time_window": "PT5M",
@@ -767,7 +911,7 @@ import 'system_data_response.dart';
 ///                         "metric_resource_uri": "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc",
 ///                         "operator": azure_native.monitor.ComparisonOperationType.GREATER_THAN,
 ///                         "statistic": azure_native.monitor.MetricStatisticType.AVERAGE,
-///                         "threshold": 15,
+///                         "threshold": float(15),
 ///                         "time_aggregation": azure_native.monitor.TimeAggregationType.AVERAGE,
 ///                         "time_grain": "PT2M",
 ///                         "time_window": "PT5M",
@@ -805,7 +949,7 @@ import 'system_data_response.dart';
 ///                         "metric_resource_uri": "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc",
 ///                         "operator": azure_native.monitor.ComparisonOperationType.GREATER_THAN,
 ///                         "statistic": azure_native.monitor.MetricStatisticType.AVERAGE,
-///                         "threshold": 10,
+///                         "threshold": float(10),
 ///                         "time_aggregation": azure_native.monitor.TimeAggregationType.AVERAGE,
 ///                         "time_grain": "PT1M",
 ///                         "time_window": "PT5M",
@@ -824,7 +968,7 @@ import 'system_data_response.dart';
 ///                         "metric_resource_uri": "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc",
 ///                         "operator": azure_native.monitor.ComparisonOperationType.GREATER_THAN,
 ///                         "statistic": azure_native.monitor.MetricStatisticType.AVERAGE,
-///                         "threshold": 15,
+///                         "threshold": float(15),
 ///                         "time_aggregation": azure_native.monitor.TimeAggregationType.AVERAGE,
 ///                         "time_grain": "PT2M",
 ///                         "time_window": "PT5M",

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'system_data_response.dart';
 
 /// Result data returned by listWebAppPublishingCredentials.
 class ListWebAppPublishingCredentialsResult {
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Kind of resource.
   final String? kind;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
   /// Password used for publishing.
   final String? publishingPassword;
@@ -19,19 +20,22 @@ class ListWebAppPublishingCredentialsResult {
   final String publishingUserName;
   /// Url of SCM site.
   final String? scmUri;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [ListWebAppPublishingCredentialsResult].
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] Kind of resource.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [publishingPassword] Password used for publishing.
   /// [publishingPasswordHash] Password hash used for publishing.
   /// [publishingPasswordHashSalt] Password hash salt used for publishing.
   /// [publishingUserName] Username used for publishing.
   /// [scmUri] Url of SCM site.
-  /// [type] Resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const ListWebAppPublishingCredentialsResult({
     required this.id,
     this.kind,
@@ -41,6 +45,7 @@ class ListWebAppPublishingCredentialsResult {
     this.publishingPasswordHashSalt,
     required this.publishingUserName,
     this.scmUri,
+    required this.systemData,
     required this.type,
   });
 
@@ -54,6 +59,7 @@ class ListWebAppPublishingCredentialsResult {
       'publishingPasswordHashSalt': ?publishingPasswordHashSalt,
       'publishingUserName': publishingUserName,
       'scmUri': ?scmUri,
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -68,8 +74,8 @@ class ListWebAppPublishingCredentialsResult {
       publishingPasswordHashSalt: (() { final guardedValue = map['publishingPasswordHashSalt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publishingUserName: map['publishingUserName'] as String,
       scmUri: (() { final guardedValue = map['scmUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

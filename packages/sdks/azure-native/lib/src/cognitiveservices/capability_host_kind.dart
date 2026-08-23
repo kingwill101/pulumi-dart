@@ -14,4 +14,3 @@ enum CapabilityHostKind {
     throw ArgumentError('Unknown CapabilityHostKind value: $value');
   }
 }
-

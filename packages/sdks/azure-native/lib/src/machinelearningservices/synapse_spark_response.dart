@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'error_response_response.dart';
-import 'synapse_spark_response_properties.dart';
+import 'synapse_spark_properties_response.dart';
 
 /// A SynapseSpark compute.
 class SynapseSparkResponse {
@@ -21,7 +21,7 @@ class SynapseSparkResponse {
   final pulumi.Input<bool> isAttachedCompute;
   /// The time at which the compute was last modified.
   final pulumi.Input<String> modifiedOn;
-  final pulumi.Input<SynapseSparkResponseProperties>? properties;
+  final pulumi.Input<SynapseSparkPropertiesResponse>? properties;
   /// Errors during provisioning
   final pulumi.Input<List<ErrorResponseResponse>> provisioningErrors;
   /// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
@@ -64,7 +64,7 @@ class SynapseSparkResponse {
       'disableLocalAuth': ?disableLocalAuth,
       'isAttachedCompute': isAttachedCompute,
       'modifiedOn': modifiedOn,
-      'properties': ?pulumi.Input.mapOptionalInputValue<SynapseSparkResponseProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<SynapseSparkPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'provisioningErrors': pulumi.Input.mapInputValue<List<ErrorResponseResponse>, List<Map<String, dynamic>>>(provisioningErrors, (value) => pulumi.Input.encodeList<ErrorResponseResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'resourceId': ?resourceId,
@@ -80,11 +80,10 @@ class SynapseSparkResponse {
       disableLocalAuth: (() { final guardedValue = map['disableLocalAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isAttachedCompute: pulumi.Input.fromValue(map['isAttachedCompute'] as bool),
       modifiedOn: pulumi.Input.fromValue(map['modifiedOn'] as String),
-      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SynapseSparkResponseProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SynapseSparkPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       provisioningErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<ErrorResponseResponse>(map['provisioningErrors']!, (value) => ErrorResponseResponse.fromMap((value as Map).cast<String, dynamic>()))),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

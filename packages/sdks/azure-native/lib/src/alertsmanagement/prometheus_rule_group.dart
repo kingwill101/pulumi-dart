@@ -167,6 +167,66 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_alertsmanagement_prometheusrulegroup" "prometheusRuleGroup" {
+///   cluster_name        = "myClusterName"
+///   description         = "This is the description of the following rule group"
+///   enabled             = true
+///   interval            = "PT10M"
+///   location            = "East US"
+///   resource_group_name = "promResourceGroup"
+///   rule_group_name     = "myPrometheusRuleGroup"
+///   rules {
+///     expression = "histogram_quantile(0.99, sum(rate(jobs_duration_seconds_bucket{service=\"billing-processing\"}[5m])) by (job_type))"
+///     labels = {
+///       "team" = "prod"
+///     }
+///     record = "job_type:billing_jobs_duration_seconds:99p5m"
+///   }
+///   rules {
+///     actions {
+///       action_group_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourcegroups/myrg/providers/microsoft.insights/actiongroups/myactiongroup"
+///       action_properties = {
+///         "key11" = "value11"
+///         "key12" = "value12"
+///       }
+///     }
+///     actions {
+///       action_group_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourcegroups/myrg/providers/microsoft.insights/actiongroups/myotheractiongroup"
+///       action_properties = {
+///         "key21" = "value21"
+///         "key22" = "value22"
+///       }
+///     }
+///     alert = "Billing_Processing_Very_Slow"
+///     annotations = {
+///       "annotationName1" = "annotationValue1"
+///     }
+///     enabled    = true
+///     expression = "job_type:billing_jobs_duration_seconds:99p5m > 30"
+///     for        = "PT5M"
+///     labels = {
+///       "team" = "prod"
+///     }
+///     resolve_configuration = {
+///       auto_resolved   = true
+///       time_to_resolve = "PT10M"
+///     }
+///     severity = 2
+///   }
+///   scopes = ["/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/myResourceGroup/providers/microsoft.monitor/accounts/myAzureMonitorWorkspace"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +237,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.alertsmanagement.PrometheusRuleGroupArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.PrometheusRuleArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.PrometheusRuleResolveConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -507,6 +567,44 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_alertsmanagement_prometheusrulegroup" "prometheusRuleGroup" {
+///   cluster_name        = "myClusterName"
+///   description         = "This is a rule group with culster centric configuration"
+///   interval            = "PT10M"
+///   location            = "East US"
+///   resource_group_name = "promResourceGroup"
+///   rule_group_name     = "myPrometheusRuleGroup"
+///   rules {
+///     alert = "Billing_Processing_Very_Slow"
+///     annotations = {
+///       "annotationName1" = "annotationValue1"
+///     }
+///     enabled    = true
+///     expression = "job_type:billing_jobs_duration_seconds:99p5m > 30"
+///     for        = "PT5M"
+///     labels = {
+///       "team" = "prod"
+///     }
+///     resolve_configuration = {
+///       auto_resolved   = true
+///       time_to_resolve = "PT10M"
+///     }
+///     severity = 2
+///   }
+///   scopes = ["/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/myResourceGroup/providers/microsoft.monitor/accounts/myAzureMonitorWorkspace", "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myClusterName"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -517,8 +615,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.alertsmanagement.PrometheusRuleGroupArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.PrometheusRuleArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.PrometheusRuleResolveConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

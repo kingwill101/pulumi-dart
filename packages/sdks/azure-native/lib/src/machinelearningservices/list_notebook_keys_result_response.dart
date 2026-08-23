@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListNotebookKeysResultResponse {
+  /// The primary access key of the Notebook
   final pulumi.Input<String> primaryAccessKey;
+  /// The secondary access key of the Notebook
   final pulumi.Input<String> secondaryAccessKey;
 
   /// Creates a new [ListNotebookKeysResultResponse].
-  /// [primaryAccessKey] Required.
-  /// [secondaryAccessKey] Required.
+  /// [primaryAccessKey] The primary access key of the Notebook
+  /// [secondaryAccessKey] The secondary access key of the Notebook
   const ListNotebookKeysResultResponse({
     required this.primaryAccessKey,
     required this.secondaryAccessKey,
@@ -28,4 +30,3 @@ class ListNotebookKeysResultResponse {
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-03-02. In version 2.x of the Azure Native provider, it used API version 2022-07-02.
 ///
-/// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02, 2026-03-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -67,6 +67,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_diskaccessaprivateendpointconnection" "diskAccessAPrivateEndpointConnection" {
+///   disk_access_name                 = "myDiskAccess"
+///   private_endpoint_connection_name = "myPrivateEndpointConnection"
+///   private_link_service_connection_state = {
+///     description = "Approving myPrivateEndpointConnection"
+///     status      = "Approved"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +97,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.DiskAccessAPrivateEndpointConnection;
 /// import com.pulumi.azurenative.compute.DiskAccessAPrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.compute.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

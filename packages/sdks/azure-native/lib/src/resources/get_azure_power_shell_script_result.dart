@@ -24,19 +24,19 @@ class GetAzurePowerShellScriptResult {
   final List<EnvironmentVariableResponse>? environmentVariables;
   /// Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID.
   final String? forceUpdateTag;
-  /// String Id used to locate any resource on Azure.
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
   /// Optional property. Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported.
   final ManagedServiceIdentityResponse? identity;
   /// Type of the script.
   /// Expected value is 'AzurePowerShell'.
   final String kind;
-  /// The location of the ACI and the storage account for the deployment script.
+  /// The geo-location where the resource lives
   final String location;
-  /// Name of this resource.
+  /// The name of the resource
   final String name;
   /// List of script outputs.
-  final Map<String, dynamic> outputs;
+  final dynamic outputs;
   /// Uri for the script. This is the entry point for the external script.
   final String? primaryScriptUri;
   /// State of the script execution. This only appears in the response.
@@ -51,13 +51,13 @@ class GetAzurePowerShellScriptResult {
   final StorageAccountConfigurationResponse? storageAccountSettings;
   /// Supporting files for the external script.
   final List<String>? supportingScriptUris;
-  /// The system metadata related to this resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Maximum allowed script execution time specified in ISO 8601 format. Default value is P1D
   final String? timeout;
-  /// Type of this resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetAzurePowerShellScriptResult].
@@ -68,11 +68,11 @@ class GetAzurePowerShellScriptResult {
   /// [containerSettings] Container settings.
   /// [environmentVariables] The environment variables to pass over to the script.
   /// [forceUpdateTag] Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID.
-  /// [id] String Id used to locate any resource on Azure.
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [identity] Optional property. Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported.
   /// [kind] Type of the script.
-  /// [location] The location of the ACI and the storage account for the deployment script.
-  /// [name] Name of this resource.
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the resource
   /// [outputs] List of script outputs.
   /// [primaryScriptUri] Uri for the script. This is the entry point for the external script.
   /// [provisioningState] State of the script execution. This only appears in the response.
@@ -81,10 +81,10 @@ class GetAzurePowerShellScriptResult {
   /// [status] Contains the results of script execution.
   /// [storageAccountSettings] Storage Account settings.
   /// [supportingScriptUris] Supporting files for the external script.
-  /// [systemData] The system metadata related to this resource.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [timeout] Maximum allowed script execution time specified in ISO 8601 format. Default value is P1D
-  /// [type] Type of this resource.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetAzurePowerShellScriptResult({
     this.arguments,
     required this.azPowerShellVersion,
@@ -155,7 +155,7 @@ class GetAzurePowerShellScriptResult {
       kind: map['kind'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      outputs: (map['outputs'] as Map).cast<String, dynamic>(),
+      outputs: map['outputs'],
       primaryScriptUri: (() { final guardedValue = map['primaryScriptUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
       retentionInterval: map['retentionInterval'] as String,
@@ -170,4 +170,3 @@ class GetAzurePowerShellScriptResult {
     );
   }
 }
-

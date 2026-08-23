@@ -3,9 +3,9 @@ import 'policy_restriction_args.dart';
 
 /// Policy restriction contract details.
 ///
-/// Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-05-01-preview.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01-preview.
 ///
-/// Other available API versions: 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -59,6 +59,25 @@ import 'policy_restriction_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_policyrestriction" "policyRestriction" {
+///   policy_restriction_id = "policyRestriction1"
+///   require_base          = "true"
+///   resource_group_name   = "rg1"
+///   scope                 = "Sample Path to the policy document."
+///   service_name          = "apimService1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +86,8 @@ import 'policy_restriction_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.PolicyRestriction;
 /// import com.pulumi.azurenative.apimanagement.PolicyRestrictionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

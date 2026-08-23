@@ -15,4 +15,3 @@ enum AutoScalingResourceMetricName {
     throw ArgumentError('Unknown AutoScalingResourceMetricName value: $value');
   }
 }
-

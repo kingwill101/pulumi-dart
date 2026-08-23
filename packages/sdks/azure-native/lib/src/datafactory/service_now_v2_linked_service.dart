@@ -107,4 +107,3 @@ class ServiceNowV2LinkedService {
     );
   }
 }
-

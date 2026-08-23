@@ -105,6 +105,46 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_organizationsorganization" "organizationsOrganization" {
+///   location = "fnzfxrkfm"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "zitrzzdipihyovymdibklklp"
+///     aws_account_id = "jusgdaxywgsswam"
+///     aws_properties = {
+///       arn                      = "fzkwsgtciqziilbltckzwq"
+///       feature_set              = "ALL"
+///       id                       = "tqnrsqnzkqywpecutoxisdogfsu"
+///       management_account_arn   = "aobzot"
+///       management_account_email = "vvcketnvinjxxhqabioa"
+///       management_account_id    = "bvkksaokvmucejmtqhlwqoiuluet"
+///       root_id                  = "jtmupzgyvqhoiag"
+///     }
+///     aws_region        = "gogfumxcpzmqfcpynwlbjhjax"
+///     aws_source_schema = "pdqllbj"
+///     aws_tags = {
+///       "key8866" = "zzxfaowxlvuuzuc"
+///     }
+///     public_cloud_connectors_resource_id = "xdnn"
+///     public_cloud_resource_name          = "vvwkbodgowhbhletjswxg"
+///   }
+///   resource_group_name = "rgorganizationsOrganization"
+///   tags = {
+///     "key6745" = "seperqgwgodhrcsengozvpmpqcp"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +155,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.OrganizationsOrganizationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.OrganizationsOrganizationPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsOrganizationsOrganizationPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

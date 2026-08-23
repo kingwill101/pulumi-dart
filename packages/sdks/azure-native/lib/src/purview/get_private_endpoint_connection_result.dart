@@ -2,15 +2,15 @@
 
 import 'private_endpoint_response.dart';
 import 'private_link_service_connection_state_response.dart';
-import 'proxy_resource_response_system_data.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getPrivateEndpointConnection.
 class GetPrivateEndpointConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-  /// Gets or sets the identifier.
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-  /// Gets or sets the name.
+  /// The name of the resource
   final String name;
   /// The private endpoint information.
   final PrivateEndpointResponse? privateEndpoint;
@@ -18,20 +18,20 @@ class GetPrivateEndpointConnectionResult {
   final PrivateLinkServiceConnectionStateResponse? privateLinkServiceConnectionState;
   /// The provisioning state.
   final String provisioningState;
-  /// Metadata pertaining to creation and last modification of the resource.
-  final ProxyResourceResponseSystemData systemData;
-  /// Gets or sets the type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetPrivateEndpointConnectionResult].
   /// [azureApiVersion] The Azure API version of the resource.
-  /// [id] Gets or sets the identifier.
-  /// [name] Gets or sets the name.
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [name] The name of the resource
   /// [privateEndpoint] The private endpoint information.
   /// [privateLinkServiceConnectionState] The private link service connection state.
   /// [provisioningState] The provisioning state.
-  /// [systemData] Metadata pertaining to creation and last modification of the resource.
-  /// [type] Gets or sets the type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetPrivateEndpointConnectionResult({
     required this.azureApiVersion,
     required this.id,
@@ -64,9 +64,8 @@ class GetPrivateEndpointConnectionResult {
       privateEndpoint: (() { final guardedValue = map['privateEndpoint']; if (guardedValue == null) return null; return PrivateEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       privateLinkServiceConnectionState: (() { final guardedValue = map['privateLinkServiceConnectionState']; if (guardedValue == null) return null; return PrivateLinkServiceConnectionStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       provisioningState: map['provisioningState'] as String,
-      systemData: ProxyResourceResponseSystemData.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

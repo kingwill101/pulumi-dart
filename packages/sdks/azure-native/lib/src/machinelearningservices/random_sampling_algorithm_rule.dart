@@ -1,7 +1,7 @@
 /// The specific type of random algorithm
 enum RandomSamplingAlgorithmRule {
-  valueRandom("Random"),
-  valueSobol("Sobol");
+  random("Random"),
+  sobol("Sobol");
 
   const RandomSamplingAlgorithmRule(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum RandomSamplingAlgorithmRule {
     throw ArgumentError('Unknown RandomSamplingAlgorithmRule value: $value');
   }
 }
-

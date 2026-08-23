@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 class GetPrivateLinkScopedResourceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// The kind of scoped Azure monitor resource.
   final String? kind;
@@ -18,20 +18,20 @@ class GetPrivateLinkScopedResourceResult {
   final String provisioningState;
   /// The location of a scoped subscription. Only needs to be specified for metric dataplane subscriptions.
   final String? subscriptionLocation;
-  /// System data
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetPrivateLinkScopedResourceResult].
   /// [azureApiVersion] The Azure API version of the resource.
-  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] The kind of scoped Azure monitor resource.
   /// [linkedResourceId] The resource id of the scoped Azure monitor resource.
   /// [name] The name of the resource
   /// [provisioningState] State of the Azure monitor resource.
   /// [subscriptionLocation] The location of a scoped subscription. Only needs to be specified for metric dataplane subscriptions.
-  /// [systemData] System data
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetPrivateLinkScopedResourceResult({
     required this.azureApiVersion,
@@ -73,4 +73,3 @@ class GetPrivateLinkScopedResourceResult {
     );
   }
 }
-

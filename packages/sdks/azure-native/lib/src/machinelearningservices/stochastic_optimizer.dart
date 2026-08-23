@@ -1,9 +1,9 @@
-/// Type of optimizer.
+/// Stochastic optimizer for image models.
 enum StochasticOptimizer {
-  valueNone("None"),
-  valueSgd("Sgd"),
-  valueAdam("Adam"),
-  valueAdamw("Adamw");
+  none("None"),
+  sgd("Sgd"),
+  adam("Adam"),
+  adamw("Adamw");
 
   const StochasticOptimizer(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum StochasticOptimizer {
     throw ArgumentError('Unknown StochasticOptimizer value: $value');
   }
 }
-

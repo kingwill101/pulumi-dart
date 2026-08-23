@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_properties_response.dart';
 import 'principal_response.dart';
 import 'role_management_policy_approval_rule_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getRoleManagementPolicy.
 class GetRoleManagementPolicyResult {
@@ -15,7 +16,7 @@ class GetRoleManagementPolicyResult {
   final String? displayName;
   /// The readonly computed rule applied to the policy.
   final List<RoleManagementPolicyApprovalRuleResponse> effectiveRules;
-  /// The role management policy Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// The role management policy is default policy.
   final bool? isOrganizationDefault;
@@ -23,7 +24,7 @@ class GetRoleManagementPolicyResult {
   final PrincipalResponse lastModifiedBy;
   /// The last modified date time.
   final String lastModifiedDateTime;
-  /// The role management policy name.
+  /// The name of the resource
   final String name;
   /// Additional properties of scope
   final PolicyPropertiesResponse policyProperties;
@@ -31,7 +32,9 @@ class GetRoleManagementPolicyResult {
   final List<RoleManagementPolicyApprovalRuleResponse>? rules;
   /// The role management policy scope.
   final String? scope;
-  /// The role management policy type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetRoleManagementPolicyResult].
@@ -39,15 +42,16 @@ class GetRoleManagementPolicyResult {
   /// [description] The role management policy description.
   /// [displayName] The role management policy display name.
   /// [effectiveRules] The readonly computed rule applied to the policy.
-  /// [id] The role management policy Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [isOrganizationDefault] The role management policy is default policy.
   /// [lastModifiedBy] The name of the entity last modified it
   /// [lastModifiedDateTime] The last modified date time.
-  /// [name] The role management policy name.
+  /// [name] The name of the resource
   /// [policyProperties] Additional properties of scope
   /// [rules] The rule applied to the policy.
   /// [scope] The role management policy scope.
-  /// [type] The role management policy type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetRoleManagementPolicyResult({
     required this.azureApiVersion,
     this.description,
@@ -61,6 +65,7 @@ class GetRoleManagementPolicyResult {
     required this.policyProperties,
     this.rules,
     this.scope,
+    required this.systemData,
     required this.type,
   });
 
@@ -78,6 +83,7 @@ class GetRoleManagementPolicyResult {
       'policyProperties': policyProperties.toMap(),
       'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<RoleManagementPolicyApprovalRuleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'scope': ?scope,
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -96,8 +102,8 @@ class GetRoleManagementPolicyResult {
       policyProperties: PolicyPropertiesResponse.fromMap((map['policyProperties']! as Map).cast<String, dynamic>()),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleManagementPolicyApprovalRuleResponse>(guardedValue, (value) => RoleManagementPolicyApprovalRuleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

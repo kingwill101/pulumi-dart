@@ -3,9 +3,9 @@ import 'api_issue_comment_args.dart';
 
 /// Issue Comment Contract details.
 ///
-/// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -28,7 +28,7 @@ import 'api_issue_comment_args.dart';
 ///         ResourceGroupName = "rg1",
 ///         ServiceName = "apimService1",
 ///         Text = "Issue comment.",
-///         UserId = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1",
+///         UserId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1",
 ///     });
 ///
 /// });
@@ -54,13 +54,35 @@ import 'api_issue_comment_args.dart';
 /// 			ResourceGroupName: pulumi.String("rg1"),
 /// 			ServiceName:       pulumi.String("apimService1"),
 /// 			Text:              pulumi.String("Issue comment."),
-/// 			UserId:            pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1"),
+/// 			UserId:            pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_apiissuecomment" "apiIssueComment" {
+///   api_id              = "57d1f7558aa04f15146d9d8a"
+///   comment_id          = "599e29ab193c3c0bd0b3e2fb"
+///   created_date        = "2018-02-01T22:21:20.467Z"
+///   issue_id            = "57d2ef278aa04f0ad01d6cdc"
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   text                = "Issue comment."
+///   user_id             = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1"
 /// }
 ///
 /// ```
@@ -73,8 +95,8 @@ import 'api_issue_comment_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.ApiIssueComment;
 /// import com.pulumi.azurenative.apimanagement.ApiIssueCommentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -94,7 +116,7 @@ import 'api_issue_comment_args.dart';
 ///             .resourceGroupName("rg1")
 ///             .serviceName("apimService1")
 ///             .text("Issue comment.")
-///             .userId("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1")
+///             .userId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1")
 ///             .build());
 ///
 ///     }
@@ -114,7 +136,7 @@ import 'api_issue_comment_args.dart';
 ///     resourceGroupName: "rg1",
 ///     serviceName: "apimService1",
 ///     text: "Issue comment.",
-///     userId: "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1",
+///     userId: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1",
 /// });
 ///
 /// ```
@@ -131,7 +153,7 @@ import 'api_issue_comment_args.dart';
 ///     resource_group_name="rg1",
 ///     service_name="apimService1",
 ///     text="Issue comment.",
-///     user_id="/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1")
+///     user_id="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1")
 ///
 /// ```
 ///
@@ -147,7 +169,7 @@ import 'api_issue_comment_args.dart';
 ///       resourceGroupName: rg1
 ///       serviceName: apimService1
 ///       text: Issue comment.
-///       userId: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1
+///       userId: /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1
 ///
 /// ```
 ///

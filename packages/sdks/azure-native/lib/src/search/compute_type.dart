@@ -15,4 +15,3 @@ enum ComputeType {
     throw ArgumentError('Unknown ComputeType value: $value');
   }
 }
-

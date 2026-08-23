@@ -11,13 +11,13 @@ class GetExperimentArgs {
   final pulumi.Input<String> experimentName;
   /// The Profile identifier associated with the Tenant and Partner
   final pulumi.Input<String> profileName;
-  /// Name of the Resource group within the Azure subscription.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetExperimentArgs].
   /// [experimentName] The Experiment identifier associated with the Experiment
   /// [profileName] The Profile identifier associated with the Tenant and Partner
-  /// [resourceGroupName] Name of the Resource group within the Azure subscription.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetExperimentArgs({
     required this.experimentName,
     required this.profileName,
@@ -40,4 +40,3 @@ class GetExperimentArgs {
     );
   }
 }
-

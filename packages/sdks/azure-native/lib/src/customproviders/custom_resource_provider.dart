@@ -85,6 +85,33 @@ import 'custom_resource_provider_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_customproviders_customresourceprovider" "customResourceProvider" {
+///   actions {
+///     endpoint     = "https://mytestendpoint/"
+///     name         = "TestAction"
+///     routing_type = "Proxy"
+///   }
+///   location               = "eastus"
+///   resource_group_name    = "testRG"
+///   resource_provider_name = "newrp"
+///   resource_types {
+///     endpoint     = "https://mytestendpoint2/"
+///     name         = "TestResource"
+///     routing_type = "Proxy,Cache"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +122,8 @@ import 'custom_resource_provider_args.dart';
 /// import com.pulumi.azurenative.customproviders.CustomResourceProviderArgs;
 /// import com.pulumi.azurenative.customproviders.inputs.CustomRPActionRouteDefinitionArgs;
 /// import com.pulumi.azurenative.customproviders.inputs.CustomRPResourceTypeRouteDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

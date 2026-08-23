@@ -17,4 +17,3 @@ enum CertificateSource {
     throw ArgumentError('Unknown CertificateSource value: $value');
   }
 }
-

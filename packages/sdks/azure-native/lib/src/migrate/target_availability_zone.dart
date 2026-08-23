@@ -17,4 +17,3 @@ enum TargetAvailabilityZone {
     throw ArgumentError('Unknown TargetAvailabilityZone value: $value');
   }
 }
-

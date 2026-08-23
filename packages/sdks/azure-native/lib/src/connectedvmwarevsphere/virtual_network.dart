@@ -70,6 +70,29 @@ import 'virtual_network_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_connectedvmwarevsphere_virtualnetwork" "virtualNetwork" {
+///   extended_location = {
+///     name = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.ExtendedLocation/customLocations/contoso"
+///     type = "customLocation"
+///   }
+///   location             = "East US"
+///   mo_ref_id            = "aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+///   resource_group_name  = "testrg"
+///   v_center_id          = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/ContosoVCenter"
+///   virtual_network_name = "ProdNetwork"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +102,8 @@ import 'virtual_network_args.dart';
 /// import com.pulumi.azurenative.connectedvmwarevsphere.VirtualNetwork;
 /// import com.pulumi.azurenative.connectedvmwarevsphere.VirtualNetworkArgs;
 /// import com.pulumi.azurenative.connectedvmwarevsphere.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

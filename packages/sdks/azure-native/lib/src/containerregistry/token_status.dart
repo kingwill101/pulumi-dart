@@ -15,4 +15,3 @@ enum TokenStatus {
     throw ArgumentError('Unknown TokenStatus value: $value');
   }
 }
-

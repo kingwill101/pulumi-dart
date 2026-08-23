@@ -72,6 +72,30 @@ import 'connection_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_web_connection" "connection" {
+///   connection_name = "testManagedApi"
+///   properties = {
+///     api = {
+///       id = "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/providers/Microsoft.Web/locations/centralus/managedApis/testManagedApi"
+///     }
+///     custom_parameter_values = {}
+///     display_name            = "testManagedApi"
+///     parameter_values        = {}
+///   }
+///   resource_group_name = "testResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +106,8 @@ import 'connection_args.dart';
 /// import com.pulumi.azurenative.web.ConnectionArgs;
 /// import com.pulumi.azurenative.web.inputs.ApiConnectionDefinitionPropertiesArgs;
 /// import com.pulumi.azurenative.web.inputs.ApiReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -83,6 +83,31 @@ import 'wsfc_domain_credentials_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sqlvirtualmachine_sqlvirtualmachine" "sqlVirtualMachine" {
+///   location                              = "northeurope"
+///   resource_group_name                   = "testrg"
+///   sql_virtual_machine_group_resource_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/testvmgroup"
+///   sql_virtual_machine_name              = "testvm"
+///   virtual_machine_resource_id           = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachines/testvm2"
+///   wsfc_domain_credentials = {
+///     cluster_bootstrap_account_password = "<Password>"
+///     cluster_operator_account_password  = "<Password>"
+///     sql_service_account_password       = "<Password>"
+///   }
+///   wsfc_static_ip = "10.0.0.7"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +117,8 @@ import 'wsfc_domain_credentials_response.dart';
 /// import com.pulumi.azurenative.sqlvirtualmachine.SqlVirtualMachine;
 /// import com.pulumi.azurenative.sqlvirtualmachine.SqlVirtualMachineArgs;
 /// import com.pulumi.azurenative.sqlvirtualmachine.inputs.WsfcDomainCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -337,6 +362,70 @@ import 'wsfc_domain_credentials_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sqlvirtualmachine_sqlvirtualmachine" "sqlVirtualMachine" {
+///   auto_backup_settings = {
+///     backup_schedule_type     = "Manual"
+///     backup_system_dbs        = true
+///     days_of_week             = ["Monday", "Friday"]
+///     enable                   = true
+///     enable_encryption        = true
+///     full_backup_frequency    = "Weekly"
+///     full_backup_start_time   = 6
+///     full_backup_window_hours = 11
+///     log_backup_frequency     = 10
+///     password                 = "<Password>"
+///     retention_period         = 17
+///     storage_access_key       = "<primary storage access key>"
+///     storage_account_url      = "https://teststorage.blob.core.windows.net/"
+///     storage_container_name   = "testcontainer"
+///   }
+///   auto_patching_settings = {
+///     day_of_week                      = "Sunday"
+///     enable                           = true
+///     maintenance_window_duration      = 60
+///     maintenance_window_starting_hour = 2
+///   }
+///   key_vault_credential_settings = {
+///     enable = false
+///   }
+///   location            = "northeurope"
+///   resource_group_name = "testrg"
+///   server_configurations_management_settings = {
+///     additional_features_server_configurations = {
+///       is_r_services_enabled = false
+///     }
+///     sql_connectivity_update_settings = {
+///       connectivity_type         = "PRIVATE"
+///       port                      = 1433
+///       sql_auth_update_password  = "<password>"
+///       sql_auth_update_user_name = "sqllogin"
+///     }
+///     sql_storage_update_settings = {
+///       disk_configuration_type = "NEW"
+///       disk_count              = 1
+///       starting_device_id      = 2
+///     }
+///     sql_workload_type_update_settings = {
+///       sql_workload_type = "OLTP"
+///     }
+///   }
+///   sql_image_sku               = "Enterprise"
+///   sql_server_license_type     = "PAYG"
+///   sql_virtual_machine_name    = "testvm"
+///   virtual_machine_resource_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachines/testvm"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -353,8 +442,8 @@ import 'wsfc_domain_credentials_response.dart';
 /// import com.pulumi.azurenative.sqlvirtualmachine.inputs.SqlConnectivityUpdateSettingsArgs;
 /// import com.pulumi.azurenative.sqlvirtualmachine.inputs.SqlStorageUpdateSettingsArgs;
 /// import com.pulumi.azurenative.sqlvirtualmachine.inputs.SqlWorkloadTypeUpdateSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -669,6 +758,30 @@ import 'wsfc_domain_credentials_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sqlvirtualmachine_sqlvirtualmachine" "sqlVirtualMachine" {
+///   location                 = "northeurope"
+///   resource_group_name      = "testrg"
+///   sql_virtual_machine_name = "testvm"
+///   storage_configuration_settings = {
+///     disk_configuration_type = "EXTEND"
+///     sql_data_settings = {
+///       luns = [2]
+///     }
+///   }
+///   virtual_machine_resource_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachines/testvm"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -679,8 +792,8 @@ import 'wsfc_domain_credentials_response.dart';
 /// import com.pulumi.azurenative.sqlvirtualmachine.SqlVirtualMachineArgs;
 /// import com.pulumi.azurenative.sqlvirtualmachine.inputs.StorageConfigurationSettingsArgs;
 /// import com.pulumi.azurenative.sqlvirtualmachine.inputs.SQLStorageSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -869,6 +982,45 @@ import 'wsfc_domain_credentials_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sqlvirtualmachine_sqlvirtualmachine" "sqlVirtualMachine" {
+///   location                 = "northeurope"
+///   resource_group_name      = "testrg"
+///   sql_virtual_machine_name = "testvm"
+///   storage_configuration_settings = {
+///     disk_configuration_type = "NEW"
+///     sql_data_settings = {
+///       default_file_path = "F:\\folderpath\\"
+///       luns              = [0]
+///     }
+///     sql_log_settings = {
+///       default_file_path = "G:\\folderpath\\"
+///       luns              = [1]
+///     }
+///     sql_system_db_on_data_disk = true
+///     sql_temp_db_settings = {
+///       data_file_count   = 8
+///       data_file_size    = 256
+///       data_growth       = 512
+///       default_file_path = "D:\\TEMP"
+///       log_file_size     = 256
+///       log_growth        = 512
+///     }
+///     storage_workload_type = "OLTP"
+///   }
+///   virtual_machine_resource_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachines/testvm"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -880,8 +1032,8 @@ import 'wsfc_domain_credentials_response.dart';
 /// import com.pulumi.azurenative.sqlvirtualmachine.inputs.StorageConfigurationSettingsArgs;
 /// import com.pulumi.azurenative.sqlvirtualmachine.inputs.SQLStorageSettingsArgs;
 /// import com.pulumi.azurenative.sqlvirtualmachine.inputs.SQLTempDbSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1082,6 +1234,28 @@ import 'wsfc_domain_credentials_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sqlvirtualmachine_sqlvirtualmachine" "sqlVirtualMachine" {
+///   location                 = "northeurope"
+///   resource_group_name      = "testrg"
+///   sql_virtual_machine_name = "testvm"
+///   virtual_machine_identity_settings = {
+///     resource_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourcegroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testvmidentity"
+///     type        = "UserAssigned"
+///   }
+///   virtual_machine_resource_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachines/testvm"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1091,8 +1265,8 @@ import 'wsfc_domain_credentials_response.dart';
 /// import com.pulumi.azurenative.sqlvirtualmachine.SqlVirtualMachine;
 /// import com.pulumi.azurenative.sqlvirtualmachine.SqlVirtualMachineArgs;
 /// import com.pulumi.azurenative.sqlvirtualmachine.inputs.VirtualMachineIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1438,6 +1612,119 @@ import 'wsfc_domain_credentials_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sqlvirtualmachine_sqlvirtualmachine" "sqlVirtualMachine" {
+///   assessment_settings = {
+///     enable          = true
+///     run_immediately = true
+///     schedule = {
+///       day_of_week     = "Sunday"
+///       enable          = true
+///       start_time      = "23:17"
+///       weekly_interval = 1
+///     }
+///   }
+///   auto_backup_settings = {
+///     backup_schedule_type     = "Manual"
+///     backup_system_dbs        = true
+///     enable                   = true
+///     enable_encryption        = true
+///     full_backup_frequency    = "Daily"
+///     full_backup_start_time   = 6
+///     full_backup_window_hours = 11
+///     log_backup_frequency     = 10
+///     password                 = "<Password>"
+///     retention_period         = 17
+///     storage_access_key       = "<primary storage access key>"
+///     storage_account_url      = "https://teststorage.blob.core.windows.net/"
+///     storage_container_name   = "testcontainer"
+///   }
+///   auto_patching_settings = {
+///     day_of_week                      = "Sunday"
+///     enable                           = true
+///     maintenance_window_duration      = 60
+///     maintenance_window_starting_hour = 2
+///   }
+///   enable_automatic_upgrade = true
+///   key_vault_credential_settings = {
+///     enable = false
+///   }
+///   least_privilege_mode = "Enabled"
+///   location             = "northeurope"
+///   resource_group_name  = "testrg"
+///   server_configurations_management_settings = {
+///     additional_features_server_configurations = {
+///       is_r_services_enabled = false
+///     }
+///     azure_ad_authentication_settings = {
+///       client_id = "11111111-2222-3333-4444-555555555555"
+///     }
+///     sql_connectivity_update_settings = {
+///       connectivity_type         = "PRIVATE"
+///       port                      = 1433
+///       sql_auth_update_password  = "<password>"
+///       sql_auth_update_user_name = "sqllogin"
+///     }
+///     sql_instance_settings = {
+///       collation                                = "SQL_Latin1_General_CP1_CI_AS"
+///       is_ifi_enabled                           = true
+///       is_lpim_enabled                          = true
+///       is_optimize_for_ad_hoc_workloads_enabled = true
+///       max_dop                                  = 8
+///       max_server_memory_mb                     = 128
+///       min_server_memory_mb                     = 0
+///     }
+///     sql_storage_update_settings = {
+///       disk_configuration_type = "NEW"
+///       disk_count              = 1
+///       starting_device_id      = 2
+///     }
+///     sql_workload_type_update_settings = {
+///       sql_workload_type = "OLTP"
+///     }
+///   }
+///   sql_image_sku            = "Enterprise"
+///   sql_server_license_type  = "PAYG"
+///   sql_virtual_machine_name = "testvm"
+///   storage_configuration_settings = {
+///     disk_configuration_type     = "NEW"
+///     enable_storage_config_blade = true
+///     sql_data_settings = {
+///       default_file_path = "F:\\folderpath\\"
+///       luns              = [0]
+///       use_storage_pool  = false
+///     }
+///     sql_log_settings = {
+///       default_file_path = "G:\\folderpath\\"
+///       luns              = [1]
+///       use_storage_pool  = false
+///     }
+///     sql_system_db_on_data_disk = true
+///     sql_temp_db_settings = {
+///       data_file_count   = 8
+///       data_file_size    = 256
+///       data_growth       = 512
+///       default_file_path = "D:\\TEMP"
+///       log_file_size     = 256
+///       log_growth        = 512
+///       luns              = [2]
+///       use_storage_pool  = false
+///     }
+///     storage_workload_type = "OLTP"
+///   }
+///   virtual_machine_resource_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachines/testvm"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1461,8 +1748,8 @@ import 'wsfc_domain_credentials_response.dart';
 /// import com.pulumi.azurenative.sqlvirtualmachine.inputs.StorageConfigurationSettingsArgs;
 /// import com.pulumi.azurenative.sqlvirtualmachine.inputs.SQLStorageSettingsArgs;
 /// import com.pulumi.azurenative.sqlvirtualmachine.inputs.SQLTempDbSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1939,6 +2226,24 @@ import 'wsfc_domain_credentials_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sqlvirtualmachine_sqlvirtualmachine" "sqlVirtualMachine" {
+///   location                    = "northeurope"
+///   resource_group_name         = "testrg"
+///   sql_virtual_machine_name    = "testvm"
+///   virtual_machine_resource_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachines/testvm"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1947,8 +2252,8 @@ import 'wsfc_domain_credentials_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sqlvirtualmachine.SqlVirtualMachine;
 /// import com.pulumi.azurenative.sqlvirtualmachine.SqlVirtualMachineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

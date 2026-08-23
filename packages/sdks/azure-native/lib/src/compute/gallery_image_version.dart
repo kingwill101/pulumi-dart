@@ -12,7 +12,7 @@ import 'validations_profile_response.dart';
 ///
 /// Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2022-03-03.
 ///
-/// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03, 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -191,6 +191,70 @@ import 'validations_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_galleryimageversion" "galleryImageVersion" {
+///   gallery_image_name         = "myGalleryImageName"
+///   gallery_image_version_name = "1.0.0"
+///   gallery_name               = "myGalleryName"
+///   location                   = "West US"
+///   publishing_profile = {
+///     target_regions = [{
+///       "encryption" = {
+///         "dataDiskImages" = [{
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherWestUSDiskEncryptionSet"
+///           "lun"                 = 0
+///           }, {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myWestUSDiskEncryptionSet"
+///           "lun"                 = 1
+///         }]
+///         "osDiskImage" = {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myWestUSDiskEncryptionSet"
+///         }
+///       }
+///       "excludeFromLatest"    = false
+///       "name"                 = "West US"
+///       "regionalReplicaCount" = 2
+///       }, {
+///       "encryption" = {
+///         "dataDiskImages" = [{
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherEastUSDiskEncryptionSet"
+///           "lun"                 = 0
+///           }, {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myEastUSDiskEncryptionSet"
+///           "lun"                 = 1
+///         }]
+///         "osDiskImage" = {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myEastUSDiskEncryptionSet"
+///         }
+///       }
+///       "excludeFromLatest"    = false
+///       "name"                 = "East US"
+///       "regionalReplicaCount" = 2
+///       "storageAccountType"   = "Standard_ZRS"
+///     }]
+///   }
+///   resource_group_name = "myResourceGroup"
+///   safety_profile = {
+///     allow_deletion_of_replicated_locations = false
+///     block_deletion_before_end_of_life      = false
+///   }
+///   storage_profile = {
+///     source = {
+///       virtual_machine_id = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/virtualMachines/{vmName}"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -203,8 +267,8 @@ import 'validations_profile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.GalleryImageVersionSafetyProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryImageVersionStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryArtifactVersionFullSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -635,6 +699,70 @@ import 'validations_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_galleryimageversion" "galleryImageVersion" {
+///   gallery_image_name         = "myGalleryImageName"
+///   gallery_image_version_name = "1.0.0"
+///   gallery_name               = "myGalleryName"
+///   location                   = "West US"
+///   publishing_profile = {
+///     target_regions = [{
+///       "encryption" = {
+///         "dataDiskImages" = [{
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherWestUSDiskEncryptionSet"
+///           "lun"                 = 0
+///           }, {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myWestUSDiskEncryptionSet"
+///           "lun"                 = 1
+///         }]
+///         "osDiskImage" = {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myWestUSDiskEncryptionSet"
+///         }
+///       }
+///       "excludeFromLatest"    = false
+///       "name"                 = "West US"
+///       "regionalReplicaCount" = 1
+///       }, {
+///       "encryption" = {
+///         "dataDiskImages" = [{
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherEastUSDiskEncryptionSet"
+///           "lun"                 = 0
+///           }, {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myEastUSDiskEncryptionSet"
+///           "lun"                 = 1
+///         }]
+///         "osDiskImage" = {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myEastUSDiskEncryptionSet"
+///         }
+///       }
+///       "excludeFromLatest"    = false
+///       "name"                 = "East US"
+///       "regionalReplicaCount" = 2
+///       "storageAccountType"   = "Standard_ZRS"
+///     }]
+///   }
+///   resource_group_name = "myResourceGroup"
+///   safety_profile = {
+///     allow_deletion_of_replicated_locations = false
+///     block_deletion_before_end_of_life      = false
+///   }
+///   storage_profile = {
+///     source = {
+///       community_gallery_image_id = "/communityGalleries/{communityGalleryName}/images/{communityGalleryImageName}"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -647,8 +775,8 @@ import 'validations_profile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.GalleryImageVersionSafetyProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryImageVersionStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryArtifactVersionFullSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1079,6 +1207,70 @@ import 'validations_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_galleryimageversion" "galleryImageVersion" {
+///   gallery_image_name         = "myGalleryImageName"
+///   gallery_image_version_name = "1.0.0"
+///   gallery_name               = "myGalleryName"
+///   location                   = "West US"
+///   publishing_profile = {
+///     target_regions = [{
+///       "encryption" = {
+///         "dataDiskImages" = [{
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherWestUSDiskEncryptionSet"
+///           "lun"                 = 0
+///           }, {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myWestUSDiskEncryptionSet"
+///           "lun"                 = 1
+///         }]
+///         "osDiskImage" = {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myWestUSDiskEncryptionSet"
+///         }
+///       }
+///       "excludeFromLatest"    = false
+///       "name"                 = "West US"
+///       "regionalReplicaCount" = 1
+///       }, {
+///       "encryption" = {
+///         "dataDiskImages" = [{
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherEastUSDiskEncryptionSet"
+///           "lun"                 = 0
+///           }, {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myEastUSDiskEncryptionSet"
+///           "lun"                 = 1
+///         }]
+///         "osDiskImage" = {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myEastUSDiskEncryptionSet"
+///         }
+///       }
+///       "excludeFromLatest"    = false
+///       "name"                 = "East US"
+///       "regionalReplicaCount" = 2
+///       "storageAccountType"   = "Standard_ZRS"
+///     }]
+///   }
+///   resource_group_name = "myResourceGroup"
+///   safety_profile = {
+///     allow_deletion_of_replicated_locations = false
+///     block_deletion_before_end_of_life      = false
+///   }
+///   storage_profile = {
+///     source = {
+///       id = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1091,8 +1283,8 @@ import 'validations_profile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.GalleryImageVersionSafetyProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryImageVersionStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryArtifactVersionFullSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1442,6 +1634,42 @@ import 'validations_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_galleryimageversion" "galleryImageVersion" {
+///   gallery_image_name         = "myGalleryImageName"
+///   gallery_image_version_name = "1.0.0"
+///   gallery_name               = "myGalleryName"
+///   location                   = "West US"
+///   publishing_profile = {
+///     replication_mode = "Shallow"
+///     target_regions = [{
+///       "excludeFromLatest"    = false
+///       "name"                 = "West US"
+///       "regionalReplicaCount" = 1
+///     }]
+///   }
+///   resource_group_name = "myResourceGroup"
+///   safety_profile = {
+///     allow_deletion_of_replicated_locations = false
+///     block_deletion_before_end_of_life      = false
+///   }
+///   storage_profile = {
+///     source = {
+///       id = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1454,8 +1682,8 @@ import 'validations_profile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.GalleryImageVersionSafetyProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryImageVersionStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryArtifactVersionFullSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1759,6 +1987,70 @@ import 'validations_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_galleryimageversion" "galleryImageVersion" {
+///   gallery_image_name         = "myGalleryImageName"
+///   gallery_image_version_name = "1.0.0"
+///   gallery_name               = "myGalleryName"
+///   location                   = "West US"
+///   publishing_profile = {
+///     target_regions = [{
+///       "encryption" = {
+///         "dataDiskImages" = [{
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherWestUSDiskEncryptionSet"
+///           "lun"                 = 0
+///           }, {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myWestUSDiskEncryptionSet"
+///           "lun"                 = 1
+///         }]
+///         "osDiskImage" = {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myWestUSDiskEncryptionSet"
+///         }
+///       }
+///       "excludeFromLatest"    = false
+///       "name"                 = "West US"
+///       "regionalReplicaCount" = 1
+///       }, {
+///       "encryption" = {
+///         "dataDiskImages" = [{
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherEastUSDiskEncryptionSet"
+///           "lun"                 = 0
+///           }, {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myEastUSDiskEncryptionSet"
+///           "lun"                 = 1
+///         }]
+///         "osDiskImage" = {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myEastUSDiskEncryptionSet"
+///         }
+///       }
+///       "excludeFromLatest"    = false
+///       "name"                 = "East US"
+///       "regionalReplicaCount" = 2
+///       "storageAccountType"   = "Standard_ZRS"
+///     }]
+///   }
+///   resource_group_name = "myResourceGroup"
+///   safety_profile = {
+///     allow_deletion_of_replicated_locations = false
+///     block_deletion_before_end_of_life      = false
+///   }
+///   storage_profile = {
+///     source = {
+///       id = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionName}"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1771,8 +2063,8 @@ import 'validations_profile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.GalleryImageVersionSafetyProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryImageVersionStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryArtifactVersionFullSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2213,6 +2505,74 @@ import 'validations_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_galleryimageversion" "galleryImageVersion" {
+///   gallery_image_name         = "myGalleryImageName"
+///   gallery_image_version_name = "1.0.0"
+///   gallery_name               = "myGalleryName"
+///   location                   = "West US"
+///   publishing_profile = {
+///     target_regions = [{
+///       "encryption" = {
+///         "dataDiskImages" = [{
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myWestUSDiskEncryptionSet"
+///           "lun"                 = 1
+///         }]
+///         "osDiskImage" = {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myWestUSDiskEncryptionSet"
+///         }
+///       }
+///       "excludeFromLatest"    = false
+///       "name"                 = "West US"
+///       "regionalReplicaCount" = 1
+///       }, {
+///       "encryption" = {
+///         "dataDiskImages" = [{
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myEastUSDiskEncryptionSet"
+///           "lun"                 = 1
+///         }]
+///         "osDiskImage" = {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myEastUSDiskEncryptionSet"
+///         }
+///       }
+///       "excludeFromLatest"    = false
+///       "name"                 = "East US"
+///       "regionalReplicaCount" = 2
+///       "storageAccountType"   = "Standard_ZRS"
+///     }]
+///   }
+///   resource_group_name = "myResourceGroup"
+///   safety_profile = {
+///     allow_deletion_of_replicated_locations = false
+///     block_deletion_before_end_of_life      = false
+///   }
+///   storage_profile = {
+///     data_disk_images = [{
+///       "hostCaching" = "None"
+///       "lun"         = 1
+///       "source" = {
+///         "id" = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/disks/{dataDiskName}"
+///       }
+///     }]
+///     os_disk_image = {
+///       host_caching = "ReadOnly"
+///       source = {
+///         id = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/snapshots/{osSnapshotName}"
+///       }
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2226,8 +2586,8 @@ import 'validations_profile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.GalleryImageVersionStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryOSDiskImageArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryDiskImageSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2724,6 +3084,86 @@ import 'validations_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_galleryimageversion" "galleryImageVersion" {
+///   gallery_image_name         = "myGalleryImageName"
+///   gallery_image_version_name = "1.0.0"
+///   gallery_name               = "myGalleryName"
+///   location                   = "West US"
+///   publishing_profile = {
+///     target_regions = [{
+///       "encryption" = {
+///         "dataDiskImages" = [{
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherDiskEncryptionSet"
+///           "lun"                 = 1
+///         }]
+///         "osDiskImage" = {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myDiskEncryptionSet"
+///         }
+///       }
+///       "excludeFromLatest"    = false
+///       "name"                 = "West US"
+///       "regionalReplicaCount" = 1
+///       }, {
+///       "excludeFromLatest"    = false
+///       "name"                 = "East US"
+///       "regionalReplicaCount" = 2
+///       "storageAccountType"   = "Standard_ZRS"
+///     }]
+///   }
+///   resource_group_name = "myResourceGroup"
+///   safety_profile = {
+///     allow_deletion_of_replicated_locations = false
+///     block_deletion_before_end_of_life      = false
+///   }
+///   security_profile = {
+///     uefi_settings = {
+///       additional_signatures = {
+///         db = [{
+///           "type"  = "x509"
+///           "value" = ["<x509 value>"]
+///         }]
+///         dbx = [{
+///           "type"  = "x509"
+///           "value" = ["<x509 value>"]
+///         }]
+///         kek = [{
+///           "type"  = "sha256"
+///           "value" = ["<sha256 value>"]
+///         }]
+///       }
+///       signature_template_names = ["MicrosoftUefiCertificateAuthorityTemplate"]
+///     }
+///   }
+///   storage_profile = {
+///     data_disk_images = [{
+///       "hostCaching" = "None"
+///       "lun"         = 1
+///       "source" = {
+///         "storageAccountId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/{storageAccount}"
+///         "uri"              = "https://gallerysourcencus.blob.core.windows.net/myvhds/Windows-Server-2012-R2-20171216-en.us-128GB.vhd"
+///       }
+///     }]
+///     os_disk_image = {
+///       host_caching = "ReadOnly"
+///       source = {
+///         storage_account_id = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/{storageAccount}"
+///         uri                = "https://gallerysourcencus.blob.core.windows.net/myvhds/Windows-Server-2012-R2-20171216-en.us-128GB.vhd"
+///       }
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2740,8 +3180,8 @@ import 'validations_profile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.GalleryImageVersionStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryOSDiskImageArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryDiskImageSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3208,6 +3648,67 @@ import 'validations_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_galleryimageversion" "galleryImageVersion" {
+///   gallery_image_name         = "myGalleryImageName"
+///   gallery_image_version_name = "1.0.0"
+///   gallery_name               = "myGalleryName"
+///   location                   = "West US"
+///   publishing_profile = {
+///     target_regions = [{
+///       "encryption" = {
+///         "dataDiskImages" = [{
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherDiskEncryptionSet"
+///           "lun"                 = 1
+///         }]
+///         "osDiskImage" = {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myDiskEncryptionSet"
+///         }
+///       }
+///       "excludeFromLatest"    = false
+///       "name"                 = "West US"
+///       "regionalReplicaCount" = 1
+///       }, {
+///       "excludeFromLatest"    = false
+///       "name"                 = "East US"
+///       "regionalReplicaCount" = 2
+///       "storageAccountType"   = "Standard_ZRS"
+///     }]
+///   }
+///   resource_group_name = "myResourceGroup"
+///   safety_profile = {
+///     allow_deletion_of_replicated_locations = false
+///     block_deletion_before_end_of_life      = false
+///   }
+///   storage_profile = {
+///     data_disk_images = [{
+///       "hostCaching" = "None"
+///       "lun"         = 1
+///       "source" = {
+///         "storageAccountId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/{storageAccount}"
+///         "uri"              = "https://gallerysourcencus.blob.core.windows.net/myvhds/Windows-Server-2012-R2-20171216-en.us-128GB.vhd"
+///       }
+///     }]
+///     os_disk_image = {
+///       host_caching = "ReadOnly"
+///       source = {
+///         storage_account_id = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/{storageAccount}"
+///         uri                = "https://gallerysourcencus.blob.core.windows.net/myvhds/Windows-Server-2012-R2-20171216-en.us-128GB.vhd"
+///       }
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3221,8 +3722,8 @@ import 'validations_profile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.GalleryImageVersionStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryOSDiskImageArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryDiskImageSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3479,7 +3980,7 @@ import 'validations_profile_response.dart';
 ///                         new AzureNative.Compute.Inputs.AdditionalReplicaSetArgs
 ///                         {
 ///                             RegionalReplicaCount = 1,
-///                             StorageAccountType = "PreviumV2_LRS",
+///                             StorageAccountType = AzureNative.Compute.StorageAccountType.PremiumV2_LRS,
 ///                         },
 ///                     },
 ///                     Encryption = new AzureNative.Compute.Inputs.EncryptionImagesArgs
@@ -3575,7 +4076,7 @@ import 'validations_profile_response.dart';
 /// 						AdditionalReplicaSets: compute.AdditionalReplicaSetArray{
 /// 							&compute.AdditionalReplicaSetArgs{
 /// 								RegionalReplicaCount: pulumi.Int(1),
-/// 								StorageAccountType:   pulumi.String("PreviumV2_LRS"),
+/// 								StorageAccountType:   pulumi.String(compute.StorageAccountType_PremiumV2_LRS),
 /// 							},
 /// 						},
 /// 						Encryption: &compute.EncryptionImagesArgs{
@@ -3639,6 +4140,73 @@ import 'validations_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_galleryimageversion" "galleryImageVersion" {
+///   gallery_image_name         = "myGalleryImageName"
+///   gallery_image_version_name = "1.0.0"
+///   gallery_name               = "myGalleryName"
+///   location                   = "West US"
+///   publishing_profile = {
+///     target_regions = [{
+///       "additionalReplicaSets" = [{
+///         "regionalReplicaCount" = 1
+///         "storageAccountType"   = "PremiumV2_LRS"
+///       }]
+///       "encryption" = {
+///         "dataDiskImages" = [{
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherWestUSDiskEncryptionSet"
+///           "lun"                 = 0
+///           }, {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myWestUSDiskEncryptionSet"
+///           "lun"                 = 1
+///         }]
+///         "osDiskImage" = {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myWestUSDiskEncryptionSet"
+///         }
+///       }
+///       "excludeFromLatest"    = false
+///       "name"                 = "West US"
+///       "regionalReplicaCount" = 1
+///       }, {
+///       "encryption" = {
+///         "dataDiskImages" = [{
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherEastUSDiskEncryptionSet"
+///           "lun"                 = 0
+///           }, {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myEastUSDiskEncryptionSet"
+///           "lun"                 = 1
+///         }]
+///         "osDiskImage" = {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myEastUSDiskEncryptionSet"
+///         }
+///       }
+///       "excludeFromLatest"    = false
+///       "name"                 = "East US"
+///       "regionalReplicaCount" = 2
+///       "storageAccountType"   = "Standard_ZRS"
+///     }]
+///   }
+///   resource_group_name = "myResourceGroup"
+///   safety_profile = {
+///     allow_deletion_of_replicated_locations = false
+///   }
+///   storage_profile = {
+///     source = {
+///       id = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3651,8 +4219,8 @@ import 'validations_profile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.GalleryImageVersionSafetyProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryImageVersionStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryArtifactVersionFullSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3674,7 +4242,7 @@ import 'validations_profile_response.dart';
 ///                     TargetRegionArgs.builder()
 ///                         .additionalReplicaSets(AdditionalReplicaSetArgs.builder()
 ///                             .regionalReplicaCount(1)
-///                             .storageAccountType("PreviumV2_LRS")
+///                             .storageAccountType("PremiumV2_LRS")
 ///                             .build())
 ///                         .encryption(EncryptionImagesArgs.builder()
 ///                             .dataDiskImages(
@@ -3745,7 +4313,7 @@ import 'validations_profile_response.dart';
 ///             {
 ///                 additionalReplicaSets: [{
 ///                     regionalReplicaCount: 1,
-///                     storageAccountType: "PreviumV2_LRS",
+///                     storageAccountType: azure_native.compute.StorageAccountType.PremiumV2_LRS,
 ///                 }],
 ///                 encryption: {
 ///                     dataDiskImages: [
@@ -3816,7 +4384,7 @@ import 'validations_profile_response.dart';
 ///             {
 ///                 "additional_replica_sets": [{
 ///                     "regional_replica_count": 1,
-///                     "storage_account_type": "PreviumV2_LRS",
+///                     "storage_account_type": azure_native.compute.StorageAccountType.PREMIUM_V2_LRS,
 ///                 }],
 ///                 "encryption": {
 ///                     "data_disk_images": [
@@ -3885,7 +4453,7 @@ import 'validations_profile_response.dart';
 ///         targetRegions:
 ///           - additionalReplicaSets:
 ///               - regionalReplicaCount: 1
-///                 storageAccountType: PreviumV2_LRS
+///                 storageAccountType: PremiumV2_LRS
 ///             encryption:
 ///               dataDiskImages:
 ///                 - diskEncryptionSetId: /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherWestUSDiskEncryptionSet
@@ -4094,6 +4662,70 @@ import 'validations_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_galleryimageversion" "galleryImageVersion" {
+///   gallery_image_name         = "myGalleryImageName"
+///   gallery_image_version_name = "1.0.0"
+///   gallery_name               = "myGalleryName"
+///   location                   = "West US"
+///   publishing_profile = {
+///     target_regions = [{
+///       "encryption" = {
+///         "dataDiskImages" = [{
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherWestUSDiskEncryptionSet"
+///           "lun"                 = 0
+///           }, {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myWestUSDiskEncryptionSet"
+///           "lun"                 = 1
+///         }]
+///         "osDiskImage" = {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myWestUSDiskEncryptionSet"
+///         }
+///       }
+///       "excludeFromLatest"    = false
+///       "name"                 = "West US"
+///       "regionalReplicaCount" = 1
+///       }, {
+///       "encryption" = {
+///         "dataDiskImages" = [{
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherEastUSDiskEncryptionSet"
+///           "lun"                 = 0
+///           }, {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myEastUSDiskEncryptionSet"
+///           "lun"                 = 1
+///         }]
+///         "osDiskImage" = {
+///           "diskEncryptionSetId" = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myEastUSDiskEncryptionSet"
+///         }
+///       }
+///       "excludeFromLatest"    = false
+///       "name"                 = "East US"
+///       "regionalReplicaCount" = 2
+///       "storageAccountType"   = "Standard_ZRS"
+///     }]
+///   }
+///   resource_group_name = "myResourceGroup"
+///   safety_profile = {
+///     allow_deletion_of_replicated_locations = false
+///     block_deletion_before_end_of_life      = false
+///   }
+///   storage_profile = {
+///     source = {
+///       id = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -4106,8 +4738,8 @@ import 'validations_profile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.GalleryImageVersionSafetyProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryImageVersionStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryArtifactVersionFullSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

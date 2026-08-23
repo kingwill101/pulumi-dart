@@ -56,6 +56,23 @@ import 'suspension_details_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_kusto_readwritedatabase" "readWriteDatabase" {
+///   cluster_name        = "kustoCluster"
+///   database_name       = "kustoReadOnlyDatabase"
+///   resource_group_name = "kustorptest"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +81,8 @@ import 'suspension_details_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.kusto.ReadWriteDatabase;
 /// import com.pulumi.azurenative.kusto.ReadWriteDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -177,6 +194,27 @@ import 'suspension_details_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_kusto_readwritedatabase" "readWriteDatabase" {
+///   caller_role         = "Admin"
+///   cluster_name        = "kustoCluster"
+///   database_name       = "KustoDatabase8"
+///   kind                = "ReadWrite"
+///   location            = "westus"
+///   resource_group_name = "kustorptest"
+///   soft_delete_period  = "P1D"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -185,8 +223,8 @@ import 'suspension_details_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.kusto.ReadWriteDatabase;
 /// import com.pulumi.azurenative.kusto.ReadWriteDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

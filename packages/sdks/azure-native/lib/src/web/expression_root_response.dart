@@ -14,6 +14,7 @@ class ExpressionRootResponse {
   final pulumi.Input<List<ExpressionResponse>>? subexpressions;
   /// The text.
   final pulumi.Input<String>? text;
+  /// Anything
   final pulumi.Input<dynamic>? value;
 
   /// Creates a new [ExpressionRootResponse].
@@ -21,7 +22,7 @@ class ExpressionRootResponse {
   /// [path] The path.
   /// [subexpressions] The sub expressions.
   /// [text] The text.
-  /// [value] Optional.
+  /// [value] Anything
   const ExpressionRootResponse({
     this.error,
     this.path,
@@ -50,4 +51,3 @@ class ExpressionRootResponse {
     );
   }
 }
-

@@ -39,4 +39,3 @@ class AzureArcK8sClusterNFVIDetailsResponse {
     );
   }
 }
-

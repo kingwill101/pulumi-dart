@@ -1,7 +1,7 @@
 /// Whether or not public network access is allowed for the data factory.
 enum PublicNetworkAccess {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const PublicNetworkAccess(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum PublicNetworkAccess {
     throw ArgumentError('Unknown PublicNetworkAccess value: $value');
   }
 }
-

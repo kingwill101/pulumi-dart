@@ -428,6 +428,158 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ecsservice" "ecsService" {
+///   location = "xqpjwxermnqxbnitxykbnjhw"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "advapj"
+///     aws_account_id = "egkrtzylfud"
+///     aws_properties = {
+///       capacity_provider_strategy = [{
+///         "base"             = 4
+///         "capacityProvider" = "wlfpynlwozihqvkgynmdqqmojbs"
+///         "weight"           = 28
+///       }]
+///       cluster = "rdbkmvsugiuvbwkuzagsnrx"
+///       deployment_configuration = {
+///         alarms = {
+///           alarm_names = ["cibbvixciizruhpdxhpkifpwsaq"]
+///           enable      = true
+///           rollback    = true
+///         }
+///         deployment_circuit_breaker = {
+///           enable   = true
+///           rollback = true
+///         }
+///         maximum_percent         = 14
+///         minimum_healthy_percent = 21
+///       }
+///       deployment_controller = {
+///         type = "CODE_DEPLOY"
+///       }
+///       desired_count                     = 21
+///       enable_ecs_managed_tags           = true
+///       enable_execute_command            = true
+///       health_check_grace_period_seconds = 1
+///       launch_type                       = "EC2"
+///       load_balancers = [{
+///         "containerName"    = "vjvntpnuzyftbm"
+///         "containerPort"    = 17
+///         "loadBalancerName" = "eryjxwmbfkms"
+///         "targetGroupArn"   = "woxbyyccpmqyiy"
+///       }]
+///       name = "vo"
+///       network_configuration = {
+///         awsvpc_configuration = {
+///           assign_public_ip = "DISABLED"
+///           security_groups  = ["uoauevqyxylmvje"]
+///           subnets          = ["gkqxeakxvyw"]
+///         }
+///       }
+///       placement_constraints = [{
+///         "expression" = "hxzfzxbfmqqiwgbpgn"
+///         "type"       = "distinctInstance"
+///       }]
+///       placement_strategies = [{
+///         "field" = "tyrqdzgjrkwfhzwebvqld"
+///         "type"  = "binpack"
+///       }]
+///       platform_version    = "sfsqyvslsustugopfnnzssjli"
+///       propagate_tags      = "SERVICE"
+///       role                = "te"
+///       scheduling_strategy = "DAEMON"
+///       service_arn         = "zuuoanjk"
+///       service_connect_configuration = {
+///         enabled = true
+///         log_configuration = {
+///           log_driver = "xwshxwanyuqrfzboxwfv"
+///           secret_options = [{
+///             "name"      = "uxsxwquwbafmsmbyyivhsjrjmfpmim"
+///             "valueFrom" = "jnygsbiroyjlgrhs"
+///           }]
+///         }
+///         namespace = "tlewpbulbuguuuvq"
+///         services = [{
+///           "clientAliases" = [{
+///             "dnsName" = "hnnavbjclqhbdebomjoqzo"
+///             "port"    = 16
+///           }]
+///           "discoveryName"       = "zuhijazofg"
+///           "ingressPortOverride" = 26
+///           "portName"            = "q"
+///           "timeout" = {
+///             "idleTimeoutSeconds"       = 11
+///             "perRequestTimeoutSeconds" = 22
+///           }
+///           "tls" = {
+///             "issuerCertificateAuthority" = {
+///               "awsPcaAuthorityArn" = "fqrmk"
+///             }
+///             "kmsKey"  = "jdjym"
+///             "roleArn" = "stdhwuiylmutipeonkolqjnbqelds"
+///           }
+///         }]
+///       }
+///       service_name = "lyblywxxfszkgaaornuxliolfbft"
+///       service_registries = [{
+///         "containerName" = "ppbxlxmpdbri"
+///         "containerPort" = 7
+///         "port"          = 6
+///         "registryArn"   = "qmfm"
+///       }]
+///       tags = [{
+///         "key"   = "dteknaijsygghfdplikegztgz"
+///         "value" = "qukd"
+///       }]
+///       task_definition = "fozrumijzejhpjxeqkmthsswwuden"
+///       volume_configurations = [{
+///         "managedEBSVolume" = {
+///           "encrypted"      = true
+///           "filesystemType" = "ugwxqcjnrqonyao"
+///           "iops"           = 10
+///           "kmsKeyId"       = "oyuobklzhgpvg"
+///           "roleArn"        = "gdudzczxymgopjjzqubzphgdi"
+///           "sizeInGiB"      = 15
+///           "snapshotId"     = "yff"
+///           "tagSpecifications" = [{
+///             "propagateTags" = "SERVICE"
+///             "resourceType"  = "tocxgkuiblcccawaenqv"
+///             "tags" = [{
+///               "key"   = "dteknaijsygghfdplikegztgz"
+///               "value" = "qukd"
+///             }]
+///           }]
+///           "throughput" = 3
+///           "volumeType" = "uwvjfmuzpksfpnfsukbunbuqcwxslx"
+///         }
+///         "name" = "zkqnipaoexthwwot"
+///       }]
+///     }
+///     aws_region        = "pwmulwhqhosmbthwzammshywxzaxhi"
+///     aws_source_schema = "woodigpcfntomkursi"
+///     aws_tags = {
+///       "key3094" = "gxbzlhku"
+///     }
+///     public_cloud_connectors_resource_id = "ghyukpeo"
+///     public_cloud_resource_name          = "jumpzlzalckrkaqg"
+///   }
+///   resource_group_name = "rgecsService"
+///   tags = {
+///     "key8484" = "nnsyti"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -446,8 +598,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsVpcConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ServiceConnectConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LogConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

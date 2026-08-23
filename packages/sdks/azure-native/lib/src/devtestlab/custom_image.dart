@@ -3,6 +3,7 @@ import 'custom_image_args.dart';
 import 'custom_image_properties_custom_response.dart';
 import 'custom_image_properties_from_plan_response.dart';
 import 'custom_image_properties_from_vm_response.dart';
+import 'system_data_response.dart';
 
 /// A custom image.
 ///
@@ -79,6 +80,33 @@ import 'custom_image_properties_from_vm_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devtestlab_customimage" "customImage" {
+///   description         = "My Custom Image"
+///   lab_name            = "{labName}"
+///   name                = "{customImageName}"
+///   resource_group_name = "resourceGroupName"
+///   tags = {
+///     "tagName1" = "tagValue1"
+///   }
+///   vm = {
+///     linux_os_info = {
+///       linux_os_state = "NonDeprovisioned"
+///     }
+///     source_vm_id = "/subscriptions/{subscriptionId}/resourcegroups/resourceGroupName/providers/microsoft.devtestlab/labs/{labName}/virtualmachines/{vmName}"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +117,8 @@ import 'custom_image_properties_from_vm_response.dart';
 /// import com.pulumi.azurenative.devtestlab.CustomImageArgs;
 /// import com.pulumi.azurenative.devtestlab.inputs.CustomImagePropertiesFromVmArgs;
 /// import com.pulumi.azurenative.devtestlab.inputs.LinuxOsInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -207,19 +235,21 @@ class CustomImage extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// Whether or not the custom images underlying offer/plan has been enabled for programmatic deployment
   late final pulumi.Output<bool?> isPlanAuthorized;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
   /// The Managed Image Id backing the custom image.
   late final pulumi.Output<String?> managedImageId;
   /// The Managed Snapshot Id backing the custom image.
   late final pulumi.Output<String?> managedSnapshotId;
-  /// The name of the resource.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
-  /// The tags of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
@@ -254,6 +284,7 @@ class CustomImage extends pulumi.CustomResource {
     managedSnapshotId = registerOutput<String?>('managedSnapshotId');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');

@@ -1,78 +1,536 @@
-// ignore_for_file: unused_element, unnecessary_cast
-
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'featureset_specification.dart';
-import 'materialization_settings.dart';
+import 'featureset_version_args.dart';
+import 'featureset_version_properties_response.dart';
+import 'system_data_response.dart';
 
-/// DTO object representing feature set version
-class FeaturesetVersion {
-  /// The asset description text.
-  final pulumi.Input<String>? description;
-  /// Specifies list of entities
-  final pulumi.Input<List<String>>? entities;
-  /// If the name version are system generated (anonymous registration).
-  final pulumi.Input<bool>? isAnonymous;
-  /// Is the asset archived?
-  final pulumi.Input<bool>? isArchived;
-  /// Specifies the materialization settings
-  final pulumi.Input<MaterializationSettings>? materializationSettings;
-  /// The asset property dictionary.
-  final pulumi.Input<Map<String, String>>? properties;
-  /// Specifies the feature spec details
-  final pulumi.Input<FeaturesetSpecification>? specification;
-  /// Specifies the asset stage
-  final pulumi.Input<String>? stage;
-  /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+/// Azure Resource Manager resource envelope.
+///
+/// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
+///
+/// Other available API versions: 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
+/// {{% examples %}}
+/// ## Example Usage
+/// {{% example %}}
+/// ### CreateOrUpdate Workspace Featureset Version.
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var featuresetVersion = new AzureNative.MachineLearningServices.FeaturesetVersion("featuresetVersion", new()
+///     {
+///         Name = "string",
+///         Properties = new AzureNative.MachineLearningServices.Inputs.FeaturesetVersionPropertiesArgs
+///         {
+///             Description = "string",
+///             Entities = new[]
+///             {
+///                 "string",
+///             },
+///             IsAnonymous = false,
+///             IsArchived = false,
+///             MaterializationSettings = new AzureNative.MachineLearningServices.Inputs.MaterializationSettingsArgs
+///             {
+///                 Notification = new AzureNative.MachineLearningServices.Inputs.NotificationSettingArgs
+///                 {
+///                     EmailOn = new[]
+///                     {
+///                         AzureNative.MachineLearningServices.EmailNotificationEnableType.JobFailed,
+///                     },
+///                     Emails = new[]
+///                     {
+///                         "string",
+///                     },
+///                 },
+///                 Resource = new AzureNative.MachineLearningServices.Inputs.MaterializationComputeResourceArgs
+///                 {
+///                     InstanceType = "string",
+///                 },
+///                 Schedule = new AzureNative.MachineLearningServices.Inputs.RecurrenceTriggerArgs
+///                 {
+///                     EndTime = "string",
+///                     Frequency = AzureNative.MachineLearningServices.RecurrenceFrequency.Day,
+///                     Interval = 1,
+///                     Schedule = new AzureNative.MachineLearningServices.Inputs.RecurrenceScheduleArgs
+///                     {
+///                         Hours = new[]
+///                         {
+///                             1,
+///                         },
+///                         Minutes = new[]
+///                         {
+///                             1,
+///                         },
+///                         MonthDays = new[]
+///                         {
+///                             1,
+///                         },
+///                         WeekDays = new[]
+///                         {
+///                             AzureNative.MachineLearningServices.WeekDay.Monday,
+///                         },
+///                     },
+///                     StartTime = "string",
+///                     TimeZone = "string",
+///                     TriggerType = "Recurrence",
+///                 },
+///                 SparkConfiguration =
+///                 {
+///                     { "string", "string" },
+///                 },
+///                 StoreType = AzureNative.MachineLearningServices.MaterializationStoreType.Online,
+///             },
+///             Properties =
+///             {
+///                 { "string", "string" },
+///             },
+///             Specification = new AzureNative.MachineLearningServices.Inputs.FeaturesetSpecificationArgs
+///             {
+///                 Path = "string",
+///             },
+///             Stage = "string",
+///             Tags =
+///             {
+///                 { "string", "string" },
+///             },
+///         },
+///         ResourceGroupName = "test-rg",
+///         Version = "string",
+///         WorkspaceName = "my-aml-workspace",
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	machinelearningservices "github.com/pulumi/pulumi-azure-native-sdk/machinelearningservices/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := machinelearningservices.NewFeaturesetVersion(ctx, "featuresetVersion", &machinelearningservices.FeaturesetVersionArgs{
+/// 			Name: pulumi.String("string"),
+/// 			Properties: &machinelearningservices.FeaturesetVersionPropertiesArgs{
+/// 				Description: pulumi.String("string"),
+/// 				Entities: pulumi.StringArray{
+/// 					pulumi.String("string"),
+/// 				},
+/// 				IsAnonymous: pulumi.Bool(false),
+/// 				IsArchived:  pulumi.Bool(false),
+/// 				MaterializationSettings: &machinelearningservices.MaterializationSettingsArgs{
+/// 					Notification: &machinelearningservices.NotificationSettingArgs{
+/// 						EmailOn: pulumi.StringArray{
+/// 							pulumi.String(machinelearningservices.EmailNotificationEnableTypeJobFailed),
+/// 						},
+/// 						Emails: pulumi.StringArray{
+/// 							pulumi.String("string"),
+/// 						},
+/// 					},
+/// 					Resource: &machinelearningservices.MaterializationComputeResourceArgs{
+/// 						InstanceType: pulumi.String("string"),
+/// 					},
+/// 					Schedule: &machinelearningservices.RecurrenceTriggerArgs{
+/// 						EndTime:   pulumi.String("string"),
+/// 						Frequency: pulumi.String(machinelearningservices.RecurrenceFrequencyDay),
+/// 						Interval:  pulumi.Int(1),
+/// 						Schedule: &machinelearningservices.RecurrenceScheduleArgs{
+/// 							Hours: pulumi.IntArray{
+/// 								pulumi.Int(1),
+/// 							},
+/// 							Minutes: pulumi.IntArray{
+/// 								pulumi.Int(1),
+/// 							},
+/// 							MonthDays: pulumi.IntArray{
+/// 								pulumi.Int(1),
+/// 							},
+/// 							WeekDays: pulumi.StringArray{
+/// 								pulumi.String(machinelearningservices.WeekDayMonday),
+/// 							},
+/// 						},
+/// 						StartTime:   pulumi.String("string"),
+/// 						TimeZone:    pulumi.String("string"),
+/// 						TriggerType: pulumi.String("Recurrence"),
+/// 					},
+/// 					SparkConfiguration: pulumi.StringMap{
+/// 						"string": pulumi.String("string"),
+/// 					},
+/// 					StoreType: pulumi.String(machinelearningservices.MaterializationStoreTypeOnline),
+/// 				},
+/// 				Properties: pulumi.StringMap{
+/// 					"string": pulumi.String("string"),
+/// 				},
+/// 				Specification: &machinelearningservices.FeaturesetSpecificationArgs{
+/// 					Path: pulumi.String("string"),
+/// 				},
+/// 				Stage: pulumi.String("string"),
+/// 				Tags: pulumi.StringMap{
+/// 					"string": pulumi.String("string"),
+/// 				},
+/// 			},
+/// 			ResourceGroupName: pulumi.String("test-rg"),
+/// 			Version:           pulumi.String("string"),
+/// 			WorkspaceName:     pulumi.String("my-aml-workspace"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_featuresetversion" "featuresetVersion" {
+///   name = "string"
+///   properties = {
+///     description  = "string"
+///     entities     = ["string"]
+///     is_anonymous = false
+///     is_archived  = false
+///     materialization_settings = {
+///       notification = {
+///         email_on = ["JobFailed"]
+///         emails   = ["string"]
+///       }
+///       resource = {
+///         instance_type = "string"
+///       }
+///       schedule = {
+///         end_time  = "string"
+///         frequency = "Day"
+///         interval  = 1
+///         schedule = {
+///           hours      = [1]
+///           minutes    = [1]
+///           month_days = [1]
+///           week_days  = ["Monday"]
+///         }
+///         start_time   = "string"
+///         time_zone    = "string"
+///         trigger_type = "Recurrence"
+///       }
+///       spark_configuration = {
+///         "string" = "string"
+///       }
+///       store_type = "Online"
+///     }
+///     properties = {
+///       "string" = "string"
+///     }
+///     specification = {
+///       path = "string"
+///     }
+///     stage = "string"
+///     tags = {
+///       "string" = "string"
+///     }
+///   }
+///   resource_group_name = "test-rg"
+///   version             = "string"
+///   workspace_name      = "my-aml-workspace"
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.machinelearningservices.FeaturesetVersion;
+/// import com.pulumi.azurenative.machinelearningservices.FeaturesetVersionArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.FeaturesetVersionPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.MaterializationSettingsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.NotificationSettingArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.MaterializationComputeResourceArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.RecurrenceTriggerArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.RecurrenceScheduleArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.FeaturesetSpecificationArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var featuresetVersion = new FeaturesetVersion("featuresetVersion", FeaturesetVersionArgs.builder()
+///             .name("string")
+///             .properties(FeaturesetVersionPropertiesArgs.builder()
+///                 .description("string")
+///                 .entities("string")
+///                 .isAnonymous(false)
+///                 .isArchived(false)
+///                 .materializationSettings(MaterializationSettingsArgs.builder()
+///                     .notification(NotificationSettingArgs.builder()
+///                         .emailOn("JobFailed")
+///                         .emails("string")
+///                         .build())
+///                     .resource(MaterializationComputeResourceArgs.builder()
+///                         .instanceType("string")
+///                         .build())
+///                     .schedule(Map.ofEntries(
+///                         Map.entry("endTime", "string"),
+///                         Map.entry("frequency", "Day"),
+///                         Map.entry("interval", 1),
+///                         Map.entry("schedule", RecurrenceScheduleArgs.builder()
+///                             .hours(1)
+///                             .minutes(1)
+///                             .monthDays(1)
+///                             .weekDays("Monday")
+///                             .build()),
+///                         Map.entry("startTime", "string"),
+///                         Map.entry("timeZone", "string"),
+///                         Map.entry("triggerType", "Recurrence")
+///                     ))
+///                     .sparkConfiguration(Map.of("string", "string"))
+///                     .storeType("Online")
+///                     .build())
+///                 .properties(Map.of("string", "string"))
+///                 .specification(FeaturesetSpecificationArgs.builder()
+///                     .path("string")
+///                     .build())
+///                 .stage("string")
+///                 .tags(Map.of("string", "string"))
+///                 .build())
+///             .resourceGroupName("test-rg")
+///             .version("string")
+///             .workspaceName("my-aml-workspace")
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const featuresetVersion = new azure_native.machinelearningservices.FeaturesetVersion("featuresetVersion", {
+///     name: "string",
+///     properties: {
+///         description: "string",
+///         entities: ["string"],
+///         isAnonymous: false,
+///         isArchived: false,
+///         materializationSettings: {
+///             notification: {
+///                 emailOn: [azure_native.machinelearningservices.EmailNotificationEnableType.JobFailed],
+///                 emails: ["string"],
+///             },
+///             resource: {
+///                 instanceType: "string",
+///             },
+///             schedule: {
+///                 endTime: "string",
+///                 frequency: azure_native.machinelearningservices.RecurrenceFrequency.Day,
+///                 interval: 1,
+///                 schedule: {
+///                     hours: [1],
+///                     minutes: [1],
+///                     monthDays: [1],
+///                     weekDays: [azure_native.machinelearningservices.WeekDay.Monday],
+///                 },
+///                 startTime: "string",
+///                 timeZone: "string",
+///                 triggerType: "Recurrence",
+///             },
+///             sparkConfiguration: {
+///                 string: "string",
+///             },
+///             storeType: azure_native.machinelearningservices.MaterializationStoreType.Online,
+///         },
+///         properties: {
+///             string: "string",
+///         },
+///         specification: {
+///             path: "string",
+///         },
+///         stage: "string",
+///         tags: {
+///             string: "string",
+///         },
+///     },
+///     resourceGroupName: "test-rg",
+///     version: "string",
+///     workspaceName: "my-aml-workspace",
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// featureset_version = azure_native.machinelearningservices.FeaturesetVersion("featuresetVersion",
+///     name="string",
+///     properties={
+///         "description": "string",
+///         "entities": ["string"],
+///         "is_anonymous": False,
+///         "is_archived": False,
+///         "materialization_settings": {
+///             "notification": {
+///                 "email_on": [azure_native.machinelearningservices.EmailNotificationEnableType.JOB_FAILED],
+///                 "emails": ["string"],
+///             },
+///             "resource": {
+///                 "instance_type": "string",
+///             },
+///             "schedule": {
+///                 "end_time": "string",
+///                 "frequency": azure_native.machinelearningservices.RecurrenceFrequency.DAY,
+///                 "interval": 1,
+///                 "schedule": {
+///                     "hours": [1],
+///                     "minutes": [1],
+///                     "month_days": [1],
+///                     "week_days": [azure_native.machinelearningservices.WeekDay.MONDAY],
+///                 },
+///                 "start_time": "string",
+///                 "time_zone": "string",
+///                 "trigger_type": "Recurrence",
+///             },
+///             "spark_configuration": {
+///                 "string": "string",
+///             },
+///             "store_type": azure_native.machinelearningservices.MaterializationStoreType.ONLINE,
+///         },
+///         "properties": {
+///             "string": "string",
+///         },
+///         "specification": {
+///             "path": "string",
+///         },
+///         "stage": "string",
+///         "tags": {
+///             "string": "string",
+///         },
+///     },
+///     resource_group_name="test-rg",
+///     version="string",
+///     workspace_name="my-aml-workspace")
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   featuresetVersion:
+///     type: azure-native:machinelearningservices:FeaturesetVersion
+///     properties:
+///       name: string
+///       properties:
+///         description: string
+///         entities:
+///           - string
+///         isAnonymous: false
+///         isArchived: false
+///         materializationSettings:
+///           notification:
+///             emailOn:
+///               - JobFailed
+///             emails:
+///               - string
+///           resource:
+///             instanceType: string
+///           schedule:
+///             endTime: string
+///             frequency: Day
+///             interval: 1
+///             schedule:
+///               hours:
+///                 - 1
+///               minutes:
+///                 - 1
+///               monthDays:
+///                 - 1
+///               weekDays:
+///                 - Monday
+///             startTime: string
+///             timeZone: string
+///             triggerType: Recurrence
+///           sparkConfiguration:
+///             string: string
+///           storeType: Online
+///         properties:
+///           string: string
+///         specification:
+///           path: string
+///         stage: string
+///         tags:
+///           string: string
+///       resourceGroupName: test-rg
+///       version: string
+///       workspaceName: my-aml-workspace
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% /examples %}}
+///
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:machinelearningservices:FeaturesetVersion string /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}
+/// ```
+class FeaturesetVersion extends pulumi.CustomResource {
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// The name of the resource
+  late final pulumi.Output<String> name;
+  /// [Required] Additional attributes of the entity.
+  late final pulumi.Output<FeaturesetVersionPropertiesResponse> properties;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  late final pulumi.Output<String> type;
 
   /// Creates a new [FeaturesetVersion].
-  /// [description] The asset description text.
-  /// [entities] Specifies list of entities
-  /// [isAnonymous] If the name version are system generated (anonymous registration).
-  /// [isArchived] Is the asset archived?
-  /// [materializationSettings] Specifies the materialization settings
-  /// [properties] The asset property dictionary.
-  /// [specification] Specifies the feature spec details
-  /// [stage] Specifies the asset stage
-  /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  const FeaturesetVersion({
-    this.description,
-    this.entities,
-    this.isAnonymous,
-    this.isArchived,
-    this.materializationSettings,
-    this.properties,
-    this.specification,
-    this.stage,
-    this.tags,
-  });
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'description': ?description,
-      'entities': ?entities,
-      'isAnonymous': ?isAnonymous,
-      'isArchived': ?isArchived,
-      'materializationSettings': ?pulumi.Input.mapOptionalInputValue<MaterializationSettings, Map<String, dynamic>>(materializationSettings, (value) => value.toMap()),
-      'properties': ?properties,
-      'specification': ?pulumi.Input.mapOptionalInputValue<FeaturesetSpecification, Map<String, dynamic>>(specification, (value) => value.toMap()),
-      'stage': ?stage,
-      'tags': ?tags,
-    };
-  }
-
-  factory FeaturesetVersion.fromMap(Map<String, dynamic> map) {
-    return FeaturesetVersion(
-      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      entities: (() { final guardedValue = map['entities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      isAnonymous: (() { final guardedValue = map['isAnonymous']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      isArchived: (() { final guardedValue = map['isArchived']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      materializationSettings: (() { final guardedValue = map['materializationSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MaterializationSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      specification: (() { final guardedValue = map['specification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesetSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      stage: (() { final guardedValue = map['stage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-    );
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [FeaturesetVersion]. {@macro pulumi_machinelearningservices_featureset_version_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  FeaturesetVersion(
+    String name, {
+    FeaturesetVersionArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:machinelearningservices:FeaturesetVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<FeaturesetVersionPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeaturesetVersionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
   }
 }
-

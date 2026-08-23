@@ -17,7 +17,7 @@ class GetComputeResult {
   final String? location;
   /// The name of the resource
   final String name;
-  /// Compute properties
+  /// The resource-specific properties for this resource.
   final AKSResponse properties;
   /// The sku of the workspace.
   final SkuResponse? sku;
@@ -34,7 +34,7 @@ class GetComputeResult {
   /// [identity] The identity of the resource.
   /// [location] Specifies the location of the resource.
   /// [name] The name of the resource
-  /// [properties] Compute properties
+  /// [properties] The resource-specific properties for this resource.
   /// [sku] The sku of the workspace.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Contains resource tags defined as key/value pairs.
@@ -82,4 +82,3 @@ class GetComputeResult {
     );
   }
 }
-

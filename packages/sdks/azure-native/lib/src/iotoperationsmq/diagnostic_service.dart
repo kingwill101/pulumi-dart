@@ -96,6 +96,42 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperationsmq_diagnosticservice" "diagnosticService" {
+///   data_export_frequency_seconds = 26084
+///   diagnostic_service_name       = "73-1El3-1"
+///   extended_location = {
+///     name = "an"
+///     type = "CustomLocation"
+///   }
+///   image = {
+///     pull_policy  = "imfuzvqxgbdwliqnn"
+///     pull_secrets = "klnqimxqsrdwhcqldjvdtsrs"
+///     repository   = "m"
+///     tag          = "jygfdiamhhm"
+///   }
+///   location                             = "sbhavoiabxjpuq"
+///   log_format                           = "i"
+///   log_level                            = "aomqhmpa"
+///   max_data_storage_size                = 3757017229
+///   metrics_port                         = 37109
+///   mq_name                              = "6RCAgs-XQ-Y2HsUF2"
+///   open_telemetry_traces_collector_addr = "ggqmprmjlmmkfdpb"
+///   resource_group_name                  = "rgiotoperationsmq"
+///   stale_data_timeout_seconds           = 51616
+///   tags                                 = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +142,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperationsmq.DiagnosticServiceArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.ExtendedLocationPropertyArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.ContainerImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

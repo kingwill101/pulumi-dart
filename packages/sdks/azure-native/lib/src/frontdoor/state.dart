@@ -1,7 +1,7 @@
 /// The state of the Experiment
 enum State {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const State(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum State {
     throw ArgumentError('Unknown State value: $value');
   }
 }
-

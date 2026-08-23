@@ -16,4 +16,3 @@ enum OsDiskStorageAccountType {
     throw ArgumentError('Unknown OsDiskStorageAccountType value: $value');
   }
 }
-

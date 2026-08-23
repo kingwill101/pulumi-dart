@@ -21,4 +21,3 @@ enum WeekDay {
     throw ArgumentError('Unknown WeekDay value: $value');
   }
 }
-

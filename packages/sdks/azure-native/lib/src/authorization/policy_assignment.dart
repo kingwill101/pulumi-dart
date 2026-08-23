@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2022-06-01.
 ///
-/// Other available API versions: 2020-09-01, 2021-06-01, 2022-06-01, 2023-04-01, 2024-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-09-01, 2021-06-01, 2022-06-01, 2023-04-01, 2024-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -100,6 +100,39 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_policyassignment" "policyAssignment" {
+///   description  = "Force resource names to begin with given DeptA and end with -LC"
+///   display_name = "Enforce resource naming rules"
+///   metadata = {
+///     "assignedBy" = "Special Someone"
+///   }
+///   non_compliance_messages {
+///     message = "Resource names must start with 'DeptA' and end with '-LC'."
+///   }
+///   parameters = {
+///     "prefix" = {
+///       value = "DeptA"
+///     }
+///     "suffix" = {
+///       value = "-LC"
+///     }
+///   }
+///   policy_assignment_name = "EnforceNaming"
+///   policy_definition_id   = "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming"
+///   scope                  = "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +142,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.authorization.PolicyAssignment;
 /// import com.pulumi.azurenative.authorization.PolicyAssignmentArgs;
 /// import com.pulumi.azurenative.authorization.inputs.NonComplianceMessageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -303,6 +336,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_policyassignment" "policyAssignment" {
+///   description      = "Force resource names to begin with given DeptA and end with -LC"
+///   display_name     = "Enforce resource naming rules"
+///   enforcement_mode = "Enroll"
+///   metadata = {
+///     "assignedBy" = "Special Someone"
+///   }
+///   parameters = {
+///     "prefix" = {
+///       value = "DeptA"
+///     }
+///     "suffix" = {
+///       value = "-LC"
+///     }
+///   }
+///   policy_assignment_name = "EnforceNamingEnroll"
+///   policy_definition_id   = "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming"
+///   scope                  = "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -311,8 +375,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.PolicyAssignment;
 /// import com.pulumi.azurenative.authorization.PolicyAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -507,6 +571,41 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_policyassignment" "policyAssignment" {
+///   description      = "Force resource names to begin with given DeptA and end with -LC"
+///   display_name     = "Enforce resource naming rules"
+///   enforcement_mode = "Default"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location = "eastus"
+///   metadata = {
+///     "assignedBy" = "Foo Bar"
+///   }
+///   parameters = {
+///     "prefix" = {
+///       value = "DeptA"
+///     }
+///     "suffix" = {
+///       value = "-LC"
+///     }
+///   }
+///   policy_assignment_name = "EnforceNaming"
+///   policy_definition_id   = "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming"
+///   scope                  = "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -516,8 +615,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.authorization.PolicyAssignment;
 /// import com.pulumi.azurenative.authorization.PolicyAssignmentArgs;
 /// import com.pulumi.azurenative.authorization.inputs.IdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -718,6 +817,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_policyassignment" "policyAssignment" {
+///   display_name = "Enforce security policies"
+///   non_compliance_messages {
+///     message = "Resources must comply with all internal security policies. See <internal site URL> for more info."
+///   }
+///   non_compliance_messages {
+///     message                        = "Resource names must start with 'DeptA' and end with '-LC'."
+///     policy_definition_reference_id = "10420126870854049575"
+///   }
+///   non_compliance_messages {
+///     message                        = "Storage accounts must have firewall rules configured."
+///     policy_definition_reference_id = "8572513655450389710"
+///   }
+///   policy_assignment_name = "securityInitAssignment"
+///   policy_definition_id   = "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policySetDefinitions/securityInitiative"
+///   scope                  = "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -727,8 +855,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.authorization.PolicyAssignment;
 /// import com.pulumi.azurenative.authorization.PolicyAssignmentArgs;
 /// import com.pulumi.azurenative.authorization.inputs.NonComplianceMessageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -958,6 +1086,45 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_policyassignment" "policyAssignment" {
+///   definition_version = "1.*.*"
+///   description        = "Limit the resource location and resource SKU"
+///   display_name       = "Limit the resource location and resource SKU"
+///   metadata = {
+///     "assignedBy" = "Special Someone"
+///   }
+///   overrides {
+///     kind = "policyEffect"
+///     selectors {
+///       in   = ["Limit_Skus", "Limit_Locations"]
+///       kind = "policyDefinitionReferenceId"
+///     }
+///     value = "Audit"
+///   }
+///   overrides {
+///     kind = "definitionVersion"
+///     selectors {
+///       in   = ["eastUSEuap", "centralUSEuap"]
+///       kind = "resourceLocation"
+///     }
+///     value = "2.*.*"
+///   }
+///   policy_assignment_name = "CostManagement"
+///   policy_definition_id   = "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policySetDefinitions/CostManagement"
+///   scope                  = "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -967,8 +1134,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.authorization.PolicyAssignment;
 /// import com.pulumi.azurenative.authorization.PolicyAssignmentArgs;
 /// import com.pulumi.azurenative.authorization.inputs.OverrideArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1221,6 +1388,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_policyassignment" "policyAssignment" {
+///   description  = "Limit the resource location and resource SKU"
+///   display_name = "Limit the resource location and resource SKU"
+///   metadata = {
+///     "assignedBy" = "Special Someone"
+///   }
+///   policy_assignment_name = "CostManagement"
+///   policy_definition_id   = "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policySetDefinitions/CostManagement"
+///   resource_selectors {
+///     name = "SDPRegions"
+///     selectors {
+///       in   = ["eastus2euap", "centraluseuap"]
+///       kind = "resourceLocation"
+///     }
+///   }
+///   scope = "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1230,8 +1426,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.authorization.PolicyAssignment;
 /// import com.pulumi.azurenative.authorization.PolicyAssignmentArgs;
 /// import com.pulumi.azurenative.authorization.inputs.ResourceSelectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1420,6 +1616,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_policyassignment" "policyAssignment" {
+///   description      = "Force resource names to begin with given DeptA and end with -LC"
+///   display_name     = "Enforce resource naming rules"
+///   enforcement_mode = "DoNotEnforce"
+///   metadata = {
+///     "assignedBy" = "Special Someone"
+///   }
+///   parameters = {
+///     "prefix" = {
+///       value = "DeptA"
+///     }
+///     "suffix" = {
+///       value = "-LC"
+///     }
+///   }
+///   policy_assignment_name = "EnforceNaming"
+///   policy_definition_id   = "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming"
+///   scope                  = "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1428,8 +1655,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.PolicyAssignment;
 /// import com.pulumi.azurenative.authorization.PolicyAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -15,4 +15,3 @@ enum UpdateWebhookKey {
     throw ArgumentError('Unknown UpdateWebhookKey value: $value');
   }
 }
-

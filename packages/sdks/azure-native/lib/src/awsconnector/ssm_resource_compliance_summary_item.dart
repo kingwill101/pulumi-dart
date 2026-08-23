@@ -170,6 +170,75 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ssmresourcecompliancesummaryitem" "ssmResourceComplianceSummaryItem" {
+///   location = "kr"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "s"
+///     aws_account_id = "taqkptjbkqarwksdmfumdyi"
+///     aws_properties = {
+///       compliance_type = "fblmjhswva"
+///       compliant_summary = {
+///         compliant_count = 2
+///         severity_summary = {
+///           critical_count      = 7
+///           high_count          = 18
+///           informational_count = 17
+///           low_count           = 19
+///           medium_count        = 20
+///           unspecified_count   = 11
+///         }
+///       }
+///       execution_summary = {
+///         execution_id   = "ngwakxvtdysew"
+///         execution_time = "2024-10-08T03:48:53.913Z"
+///         execution_type = "wjneewwqlrtdntdsot"
+///       }
+///       non_compliant_summary = {
+///         non_compliant_count = 18
+///         severity_summary = {
+///           critical_count      = 7
+///           high_count          = 18
+///           informational_count = 17
+///           low_count           = 19
+///           medium_count        = 20
+///           unspecified_count   = 11
+///         }
+///       }
+///       overall_severity = {
+///         value = "CRITICAL"
+///       }
+///       resource_id   = "muhsukivzcqvnlxiyrudvdymmii"
+///       resource_type = "rphjdvzvwasngsqoozoivduj"
+///       status = {
+///         value = "COMPLIANT"
+///       }
+///     }
+///     aws_region        = "hkemdhobdaxfwcvdjohvqtwpmjezu"
+///     aws_source_schema = "ppxlpfsm"
+///     aws_tags = {
+///       "key3567" = "prmmwewyaitggucnntudddji"
+///     }
+///     public_cloud_connectors_resource_id = "lghqnauuu"
+///     public_cloud_resource_name          = "qvohsbyuajd"
+///   }
+///   resource_group_name = "rgssmResourceComplianceSummaryItem"
+///   tags = {
+///     "key3147" = "qdybk"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -186,8 +255,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.NonCompliantSummaryArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ComplianceSeverityEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ComplianceStatusEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -2,13 +2,13 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// Identity that will be used to access key vault for encryption at rest
+/// Identity object used for encryption.
 class IdentityForCmkResponse {
-  /// The ArmId of the user assigned identity that will be used to access the customer managed key vault
+  /// UserAssignedIdentity to be used to fetch the encryption key from keyVault
   final pulumi.Input<String>? userAssignedIdentity;
 
   /// Creates a new [IdentityForCmkResponse].
-  /// [userAssignedIdentity] The ArmId of the user assigned identity that will be used to access the customer managed key vault
+  /// [userAssignedIdentity] UserAssignedIdentity to be used to fetch the encryption key from keyVault
   const IdentityForCmkResponse({
     this.userAssignedIdentity,
   });
@@ -25,4 +25,3 @@ class IdentityForCmkResponse {
     );
   }
 }
-

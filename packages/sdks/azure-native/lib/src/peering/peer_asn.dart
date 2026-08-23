@@ -93,6 +93,38 @@ import 'peer_asn_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_peering_peerasn" "peerAsn" {
+///   peer_asn      = 65000
+///   peer_asn_name = "peerAsnName"
+///   peer_contact_detail {
+///     email = "noc@contoso.com"
+///     phone = "+1 (234) 567-8999"
+///     role  = "Noc"
+///   }
+///   peer_contact_detail {
+///     email = "abc@contoso.com"
+///     phone = "+1 (234) 567-8900"
+///     role  = "Policy"
+///   }
+///   peer_contact_detail {
+///     email = "xyz@contoso.com"
+///     phone = "+1 (234) 567-8900"
+///     role  = "Technical"
+///   }
+///   peer_name = "Contoso"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +134,8 @@ import 'peer_asn_args.dart';
 /// import com.pulumi.azurenative.peering.PeerAsn;
 /// import com.pulumi.azurenative.peering.PeerAsnArgs;
 /// import com.pulumi.azurenative.peering.inputs.ContactDetailArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

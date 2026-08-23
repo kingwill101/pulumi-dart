@@ -1,9 +1,9 @@
 /// The health status of the resource.
 enum HealthStatus {
-  valueUndetermined("Undetermined"),
-  valueHealthy("Healthy"),
-  valueWarning("Warning"),
-  valueUnhealthy("Unhealthy");
+  undetermined("Undetermined"),
+  healthy("Healthy"),
+  warning("Warning"),
+  unhealthy("Unhealthy");
 
   const HealthStatus(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum HealthStatus {
     throw ArgumentError('Unknown HealthStatus value: $value');
   }
 }
-

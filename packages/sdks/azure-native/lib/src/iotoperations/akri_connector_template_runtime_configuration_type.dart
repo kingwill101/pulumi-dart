@@ -15,4 +15,3 @@ enum AkriConnectorTemplateRuntimeConfigurationType {
     throw ArgumentError('Unknown AkriConnectorTemplateRuntimeConfigurationType value: $value');
   }
 }
-

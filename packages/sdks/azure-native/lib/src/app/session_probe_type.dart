@@ -15,4 +15,3 @@ enum SessionProbeType {
     throw ArgumentError('Unknown SessionProbeType value: $value');
   }
 }
-

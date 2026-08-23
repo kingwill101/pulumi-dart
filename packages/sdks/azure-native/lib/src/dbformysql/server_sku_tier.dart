@@ -16,4 +16,3 @@ enum ServerSkuTier {
     throw ArgumentError('Unknown ServerSkuTier value: $value');
   }
 }
-

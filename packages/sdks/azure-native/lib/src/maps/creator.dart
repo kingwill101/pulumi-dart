@@ -73,6 +73,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_maps_creator" "creator" {
+///   account_name = "myMapsAccount"
+///   creator_name = "myCreator"
+///   location     = "eastus2"
+///   properties = {
+///     storage_units = 5
+///   }
+///   resource_group_name = "myResourceGroup"
+///   tags = {
+///     "test" = "true"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +106,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.maps.Creator;
 /// import com.pulumi.azurenative.maps.CreatorArgs;
 /// import com.pulumi.azurenative.maps.inputs.CreatorPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

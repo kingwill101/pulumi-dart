@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -64,6 +64,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_edge_sitereference" "siteReference" {
+///   context_name = "testname"
+///   properties = {
+///     site_id = "xxjpxdcaumewwgpbwzkcrgrcw"
+///   }
+///   resource_group_name = "rgconfigurationmanager"
+///   site_reference_name = "testname"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +93,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.edge.SiteReference;
 /// import com.pulumi.azurenative.edge.SiteReferenceArgs;
 /// import com.pulumi.azurenative.edge.inputs.SiteReferencePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

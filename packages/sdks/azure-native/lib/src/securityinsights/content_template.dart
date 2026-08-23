@@ -11,7 +11,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 ///
-/// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -229,6 +229,98 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_contenttemplate" "contentTemplate" {
+///   author = {
+///     email = "support@microsoft.com"
+///     name  = "Microsoft"
+///   }
+///   content_id         = "8365ebfe-a381-45b7-ad08-7d818070e11f"
+///   content_kind       = "AnalyticsRule"
+///   content_product_id = "str.azure-sentinel-solution-str-ar-cbfe4fndz66bi"
+///   display_name       = "API Protection workbook template"
+///   main_template = {
+///     "$schema"        = "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#"
+///     "contentVersion" = "1.0.1"
+///     "resources" = [{
+///       "apiVersion" = "2022-04-01-preview"
+///       "kind"       = "Scheduled"
+///       "location"   = "[parameters('workspace-location')]"
+///       "name"       = "8365ebfe-a381-45b7-ad08-7d818070e11f"
+///       "properties" = {
+///         "description"         = "Creates an incident when a large number of Critical/High severity CrowdStrike Falcon sensor detections is triggered by a single user"
+///         "displayName"         = "Critical or High Severity Detections by User"
+///         "enabled"             = false
+///         "query"               = "..."
+///         "queryFrequency"      = "PT1H"
+///         "queryPeriod"         = "PT1H"
+///         "severity"            = "High"
+///         "status"              = "Available"
+///         "suppressionDuration" = "PT1H"
+///         "suppressionEnabled"  = false
+///         "triggerOperator"     = "GreaterThan"
+///         "triggerThreshold"    = 0
+///       }
+///       "type" = "Microsoft.SecurityInsights/AlertRuleTemplates"
+///       }, {
+///       "apiVersion" = "2022-01-01-preview"
+///       "name"       = "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat('AnalyticsRule-', last(split([resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', 8365ebfe-a381-45b7-ad08-7d818070e11f)],'/'))))]"
+///       "properties" = {
+///         "author" = {
+///           "email" = "support@microsoft.com"
+///           "name"  = "Microsoft"
+///         }
+///         "contentId"   = "4465ebde-b381-45f7-ad08-7d818070a11c"
+///         "description" = "CrowdStrike Falcon Endpoint Protection Analytics Rule 1"
+///         "kind"        = "AnalyticsRule"
+///         "parentId"    = "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', 8365ebfe-a381-45b7-ad08-7d818070e11f)]"
+///         "source" = {
+///           "kind"     = "Solution"
+///           "name"     = "str"
+///           "sourceId" = "str.azure-sentinel-solution-str"
+///         }
+///         "support" = {
+///           "email" = "support@microsoft.com"
+///           "link"  = "https://support.microsoft.com/"
+///           "name"  = "Microsoft Corporation"
+///           "tier"  = "Microsoft"
+///         }
+///         "version" = "1.0.0"
+///       }
+///       "type" = "Microsoft.OperationalInsights/workspaces/providers/metadata"
+///     }]
+///   }
+///   package_id          = "str.azure-sentinel-solution-str"
+///   package_kind        = "Solution"
+///   package_name        = "str"
+///   package_version     = "1.0.0"
+///   resource_group_name = "myRg"
+///   source = {
+///     kind      = "Solution"
+///     name      = "str"
+///     source_id = "str.azure-sentinel-solution-str"
+///   }
+///   support = {
+///     email = "support@microsoft.com"
+///     link  = "https://support.microsoft.com/"
+///     name  = "Microsoft Corporation"
+///     tier  = "Microsoft"
+///   }
+///   template_id    = "str.azure-sentinel-solution-str"
+///   version        = "1.0.1"
+///   workspace_name = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -240,8 +332,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.securityinsights.inputs.MetadataAuthorArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.MetadataSourceArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.MetadataSupportArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -265,7 +357,7 @@ import 'system_data_response.dart';
 ///             .mainTemplate(Map.ofEntries(
 ///                 Map.entry("$schema", "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#"),
 ///                 Map.entry("contentVersion", "1.0.1"),
-///                 Map.entry("resources",
+///                 Map.entry("resources", Arrays.asList(
 ///                     Map.ofEntries(
 ///                         Map.entry("apiVersion", "2022-04-01-preview"),
 ///                         Map.entry("kind", "Scheduled"),
@@ -313,7 +405,7 @@ import 'system_data_response.dart';
 ///                             Map.entry("version", "1.0.0")
 ///                         )),
 ///                         Map.entry("type", "Microsoft.OperationalInsights/workspaces/providers/metadata")
-///                     ))
+///                     )))
 ///             ))
 ///             .packageId("str.azure-sentinel-solution-str")
 ///             .packageKind("Solution")

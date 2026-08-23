@@ -16,4 +16,3 @@ enum AdvertiseMode {
     throw ArgumentError('Unknown AdvertiseMode value: $value');
   }
 }
-

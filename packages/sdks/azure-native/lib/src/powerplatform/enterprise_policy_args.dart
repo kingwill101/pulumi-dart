@@ -13,7 +13,7 @@ import 'properties_network_injection.dart';
 class EnterprisePolicyArgs {
   /// The encryption settings for a configuration store.
   final pulumi.Input<PropertiesEncryption>? encryption;
-  /// Name of the EnterprisePolicy.
+  /// The EnterprisePolicy name.
   final pulumi.Input<String>? enterprisePolicyName;
   /// The health status of the resource.
   final pulumi.Input<String>? healthStatus;
@@ -34,7 +34,7 @@ class EnterprisePolicyArgs {
 
   /// Creates a new [EnterprisePolicyArgs].
   /// [encryption] The encryption settings for a configuration store.
-  /// [enterprisePolicyName] Name of the EnterprisePolicy.
+  /// [enterprisePolicyName] The EnterprisePolicy name.
   /// [healthStatus] The health status of the resource.
   /// [identity] The identity of the EnterprisePolicy.
   /// [kind] The kind (type) of Enterprise Policy.
@@ -86,4 +86,3 @@ class EnterprisePolicyArgs {
     );
   }
 }
-

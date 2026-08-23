@@ -15,4 +15,3 @@ enum ImageSecurityType {
     throw ArgumentError('Unknown ImageSecurityType value: $value');
   }
 }
-

@@ -72,6 +72,27 @@ import 'private_endpoint_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_streamanalytics_privateendpoint" "privateEndpoint" {
+///   cluster_name = "testcluster"
+///   manual_private_link_service_connections {
+///     group_ids               = ["groupIdFromResource"]
+///     private_link_service_id = "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateLinkServices/testPls"
+///   }
+///   private_endpoint_name = "testpe"
+///   resource_group_name   = "sjrg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +102,8 @@ import 'private_endpoint_args.dart';
 /// import com.pulumi.azurenative.streamanalytics.PrivateEndpoint;
 /// import com.pulumi.azurenative.streamanalytics.PrivateEndpointArgs;
 /// import com.pulumi.azurenative.streamanalytics.inputs.PrivateLinkServiceConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

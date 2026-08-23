@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// A status describing the success/failure of the extension's enablement/disablement operation.
+/// A status describing the success/failure of the enablement/disablement operation.
 class OperationStatusResponse {
   /// The operation status code.
   final pulumi.Input<String>? code;
@@ -31,4 +31,3 @@ class OperationStatusResponse {
     );
   }
 }
-

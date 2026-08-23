@@ -62,6 +62,24 @@ import 'resource_reference_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_logic_integrationserviceenvironmentmanagedapi" "integrationServiceEnvironmentManagedApi" {
+///   api_name                             = "servicebus"
+///   integration_service_environment_name = "testIntegrationServiceEnvironment"
+///   location                             = "brazilsouth"
+///   resource_group                       = "testResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +88,8 @@ import 'resource_reference_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.logic.IntegrationServiceEnvironmentManagedApi;
 /// import com.pulumi.azurenative.logic.IntegrationServiceEnvironmentManagedApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

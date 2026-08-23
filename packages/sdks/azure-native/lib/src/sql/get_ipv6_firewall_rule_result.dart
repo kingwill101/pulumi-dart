@@ -54,4 +54,3 @@ class GetIPv6FirewallRuleResult {
     );
   }
 }
-

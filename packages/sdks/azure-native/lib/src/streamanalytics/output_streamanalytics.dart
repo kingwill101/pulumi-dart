@@ -77,6 +77,32 @@ import 'output_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_streamanalytics_output" "output" {
+///   datasource = {
+///     "accountId"             = "someAccountId"
+///     "accountKey"            = "accountKey=="
+///     "collectionNamePattern" = "collection"
+///     "database"              = "db01"
+///     "documentId"            = "documentId"
+///     "partitionKey"          = "key"
+///     "type"                  = "Microsoft.Storage/DocumentDB"
+///   }
+///   job_name            = "sj2331"
+///   output_name         = "output3022"
+///   resource_group_name = "sjrg7983"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +111,8 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -234,6 +260,27 @@ import 'output_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_streamanalytics_output" "output" {
+///   datasource = {
+///     "topic" = "EdgeTopic1"
+///     "type"  = "GatewayMessageBus"
+///   }
+///   job_name            = "sj2331"
+///   output_name         = "output3022"
+///   resource_group_name = "sjrg7983"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -242,8 +289,8 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -383,6 +430,33 @@ import 'output_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_streamanalytics_output" "output" {
+///   datasource = {
+///     "dataset"                = "someDataset"
+///     "groupId"                = "ac40305e-3e8d-43ac-8161-c33799f43e95"
+///     "groupName"              = "MyPowerBIGroup"
+///     "refreshToken"           = "someRefreshToken=="
+///     "table"                  = "someTable"
+///     "tokenUserDisplayName"   = "Bob Smith"
+///     "tokenUserPrincipalName" = "bobsmith@contoso.com"
+///     "type"                   = "PowerBI"
+///   }
+///   job_name            = "sj2331"
+///   output_name         = "output3022"
+///   resource_group_name = "sjrg7983"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -391,8 +465,8 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -575,6 +649,38 @@ import 'output_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_streamanalytics_output" "output" {
+///   datasource = {
+///     "propertyColumns"        = ["column1", "column2"]
+///     "queueName"              = "sdkqueue"
+///     "serviceBusNamespace"    = "sdktest"
+///     "sharedAccessPolicyKey"  = "sharedAccessPolicyKey="
+///     "sharedAccessPolicyName" = "RootManageSharedAccessKey"
+///     "systemPropertyColumns" = {
+///       "MessageId"    = "col3"
+///       "PartitionKey" = "col4"
+///     }
+///     "type" = "Microsoft.ServiceBus/Queue"
+///   }
+///   job_name            = "sj5095"
+///   output_name         = "output3456"
+///   resource_group_name = "sjrg3410"
+///   serialization = {
+///     "type" = "Avro"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -583,8 +689,8 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -790,6 +896,36 @@ import 'output_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_streamanalytics_output" "output" {
+///   datasource = {
+///     "propertyColumns"        = ["column1", "column2"]
+///     "serviceBusNamespace"    = "sdktest"
+///     "sharedAccessPolicyKey"  = "sharedAccessPolicyKey="
+///     "sharedAccessPolicyName" = "RootManageSharedAccessKey"
+///     "topicName"              = "sdktopic"
+///     "type"                   = "Microsoft.ServiceBus/Topic"
+///   }
+///   job_name            = "sj7094"
+///   output_name         = "output7886"
+///   resource_group_name = "sjrg6450"
+///   serialization = {
+///     "encoding"       = "UTF8"
+///     "fieldDelimiter" = ","
+///     "type"           = "Csv"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -798,8 +934,8 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1003,6 +1139,39 @@ import 'output_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_streamanalytics_output" "output" {
+///   datasource = {
+///     "container"   = "state"
+///     "dateFormat"  = "yyyy/MM/dd"
+///     "pathPattern" = "{date}/{time}"
+///     "storageAccounts" = [{
+///       "accountKey"  = "accountKey=="
+///       "accountName" = "someAccountName"
+///     }]
+///     "timeFormat" = "HH"
+///     "type"       = "Microsoft.Storage/Blob"
+///   }
+///   job_name            = "sj900"
+///   output_name         = "output1623"
+///   resource_group_name = "sjrg5023"
+///   serialization = {
+///     "encoding"       = "UTF8"
+///     "fieldDelimiter" = ","
+///     "type"           = "Csv"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1011,8 +1180,8 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1211,6 +1380,39 @@ import 'output_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_streamanalytics_output" "output" {
+///   datasource = {
+///     "accountName"            = "someaccount"
+///     "dateFormat"             = "yyyy/MM/dd"
+///     "filePathPrefix"         = "{date}/{time}"
+///     "refreshToken"           = "someRefreshToken=="
+///     "tenantId"               = "cea4e98b-c798-49e7-8c40-4a2b3beb47dd"
+///     "timeFormat"             = "HH"
+///     "tokenUserDisplayName"   = "Bob Smith"
+///     "tokenUserPrincipalName" = "bobsmith@contoso.com"
+///     "type"                   = "Microsoft.DataLake/Accounts"
+///   }
+///   job_name            = "sj3310"
+///   output_name         = "output5195"
+///   resource_group_name = "sjrg6912"
+///   serialization = {
+///     "encoding" = "UTF8"
+///     "format"   = "Array"
+///     "type"     = "Json"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1219,8 +1421,8 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1403,6 +1605,31 @@ import 'output_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_streamanalytics_output" "output" {
+///   datasource = {
+///     "database" = "zhayaSQLpool"
+///     "password" = "password123"
+///     "server"   = "asatestserver"
+///     "table"    = "test2"
+///     "type"     = "Microsoft.Sql/Server/DataWarehouse"
+///     "user"     = "tolladmin"
+///   }
+///   job_name            = "sjName"
+///   output_name         = "dwOutput"
+///   resource_group_name = "sjrg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1411,8 +1638,8 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1562,6 +1789,30 @@ import 'output_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_streamanalytics_output" "output" {
+///   datasource = {
+///     "functionAppName" = "functionappforasaautomation"
+///     "functionName"    = "HttpTrigger2"
+///     "maxBatchCount"   = 100
+///     "maxBatchSize"    = 256
+///     "type"            = "Microsoft.AzureFunction"
+///   }
+///   job_name            = "sjName"
+///   output_name         = "azureFunction1"
+///   resource_group_name = "sjrg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1570,8 +1821,8 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1628,8 +1879,8 @@ import 'output_args.dart';
 ///     datasource={
 ///         "function_app_name": "functionappforasaautomation",
 ///         "function_name": "HttpTrigger2",
-///         "max_batch_count": 100,
-///         "max_batch_size": 256,
+///         "max_batch_count": float(100),
+///         "max_batch_size": float(256),
 ///         "type": "Microsoft.AzureFunction",
 ///     },
 ///     job_name="sjName",
@@ -1719,6 +1970,31 @@ import 'output_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_streamanalytics_output" "output" {
+///   datasource = {
+///     "database" = "someDatabase"
+///     "password" = "somePassword"
+///     "server"   = "someServer"
+///     "table"    = "someTable"
+///     "type"     = "Microsoft.Sql/Server/Database"
+///     "user"     = "<user>"
+///   }
+///   job_name            = "sj6458"
+///   output_name         = "output1755"
+///   resource_group_name = "sjrg2157"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1727,8 +2003,8 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1891,6 +2167,33 @@ import 'output_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_streamanalytics_output" "output" {
+///   datasource = {
+///     "accountKey"      = "accountKey=="
+///     "accountName"     = "someAccountName"
+///     "batchSize"       = 25
+///     "columnsToRemove" = ["column1", "column2"]
+///     "partitionKey"    = "partitionKey"
+///     "rowKey"          = "rowKey"
+///     "table"           = "samples"
+///     "type"            = "Microsoft.Storage/Table"
+///   }
+///   job_name            = "sj2790"
+///   output_name         = "output958"
+///   resource_group_name = "sjrg5176"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1899,8 +2202,8 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2081,6 +2384,36 @@ import 'output_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_streamanalytics_output" "output" {
+///   datasource = {
+///     "eventHubName"           = "sdkeventhub"
+///     "partitionKey"           = "partitionKey"
+///     "serviceBusNamespace"    = "sdktest"
+///     "sharedAccessPolicyKey"  = "sharedAccessPolicyKey="
+///     "sharedAccessPolicyName" = "RootManageSharedAccessKey"
+///     "type"                   = "Microsoft.ServiceBus/EventHub"
+///   }
+///   job_name            = "sj3310"
+///   output_name         = "output5195"
+///   resource_group_name = "sjrg6912"
+///   serialization = {
+///     "encoding" = "UTF8"
+///     "format"   = "Array"
+///     "type"     = "Json"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2089,8 +2422,8 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

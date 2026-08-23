@@ -14,14 +14,14 @@ class IntegrationRuntimeArgs {
   final pulumi.Input<String>? integrationRuntimeName;
   /// Integration runtime properties.
   final pulumi.Input<ManagedIntegrationRuntime> properties;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [IntegrationRuntimeArgs].
   /// [factoryName] The factory name.
   /// [integrationRuntimeName] The integration runtime name.
   /// [properties] Integration runtime properties.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const IntegrationRuntimeArgs({
     required this.factoryName,
     this.integrationRuntimeName,
@@ -47,4 +47,3 @@ class IntegrationRuntimeArgs {
     );
   }
 }
-

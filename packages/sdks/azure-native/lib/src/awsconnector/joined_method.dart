@@ -15,4 +15,3 @@ enum JoinedMethod {
     throw ArgumentError('Unknown JoinedMethod value: $value');
   }
 }
-

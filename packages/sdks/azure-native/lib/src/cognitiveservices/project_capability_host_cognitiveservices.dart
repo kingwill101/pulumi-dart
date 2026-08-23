@@ -4,9 +4,9 @@ import 'project_capability_host_response.dart';
 
 /// Azure Resource Manager resource envelope for Project CapabilityHost.
 ///
-/// Uses Azure REST API version 2025-04-01-preview.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -91,6 +91,30 @@ import 'project_capability_host_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cognitiveservices_projectcapabilityhost" "projectCapabilityHost" {
+///   account_name         = "account-1"
+///   capability_host_name = "capabilityHostName"
+///   project_capability_host_properties = {
+///     ai_services_connections    = ["aoai_connection"]
+///     storage_connections        = ["blob_connection"]
+///     thread_storage_connections = ["aca_connection"]
+///     vector_store_connections   = ["acs_connection"]
+///   }
+///   project_name        = "project-1"
+///   resource_group_name = "test-rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +122,8 @@ import 'project_capability_host_response.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cognitiveservices.ProjectCapabilityHost;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -13,7 +13,7 @@ class DatabricksSparkPythonActivity {
   /// Activity description.
   final pulumi.Input<String>? description;
   /// A list of libraries to be installed on the cluster that will execute the job.
-  final pulumi.Input<List<Map<String, dynamic>>>? libraries;
+  final pulumi.Input<List<dynamic>>? libraries;
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReference>? linkedServiceName;
   /// Activity name.
@@ -83,7 +83,7 @@ class DatabricksSparkPythonActivity {
     return DatabricksSparkPythonActivity(
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependency>(guardedValue, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      libraries: (() { final guardedValue = map['libraries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<Map<String, dynamic>>()); })(),
+      libraries: (() { final guardedValue = map['libraries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -96,4 +96,3 @@ class DatabricksSparkPythonActivity {
     );
   }
 }
-

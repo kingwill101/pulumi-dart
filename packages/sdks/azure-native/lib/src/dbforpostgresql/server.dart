@@ -17,7 +17,7 @@ import 'user_assigned_identity_response.dart';
 ///
 /// Uses Azure REST API version 2025-08-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
 ///
-/// Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2026-01-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -68,7 +68,7 @@ import 'user_assigned_identity_response.dart';
 ///             StorageSizeGB = 256,
 ///             Tier = AzureNative.DBforPostgreSQL.AzureManagedDiskPerformanceTier.P15,
 ///         },
-///         Version = AzureNative.DBforPostgreSQL.PostgresMajorVersion.PostgresMajorVersion_16,
+///         Version = AzureNative.DBforPostgreSQL.PostgresMajorVersion.PostgresMajorVersion_17,
 ///     });
 ///
 /// });
@@ -116,13 +116,57 @@ import 'user_assigned_identity_response.dart';
 /// 				StorageSizeGB: pulumi.Int(256),
 /// 				Tier:          pulumi.String(dbforpostgresql.AzureManagedDiskPerformanceTierP15),
 /// 			},
-/// 			Version: pulumi.String(dbforpostgresql.PostgresMajorVersion_16),
+/// 			Version: pulumi.String(dbforpostgresql.PostgresMajorVersion_17),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_server" "server" {
+///   administrator_login          = "examplelogin"
+///   administrator_login_password = "examplepassword"
+///   backup = {
+///     backup_retention_days = 7
+///     geo_redundant_backup  = "Disabled"
+///   }
+///   cluster = {
+///     cluster_size          = 2
+///     default_database_name = "clusterdb"
+///   }
+///   create_mode = "Create"
+///   high_availability = {
+///     mode = "Disabled"
+///   }
+///   location = "eastus"
+///   network = {
+///     public_network_access = "Disabled"
+///   }
+///   resource_group_name = "exampleresourcegroup"
+///   server_name         = "exampleserver"
+///   sku = {
+///     name = "Standard_D4ds_v5"
+///     tier = "GeneralPurpose"
+///   }
+///   storage = {
+///     auto_grow       = "Disabled"
+///     storage_size_gb = 256
+///     tier            = "P15"
+///   }
+///   version = "17"
 /// }
 ///
 /// ```
@@ -141,8 +185,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.NetworkArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.SkuArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.StorageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -184,7 +228,7 @@ import 'user_assigned_identity_response.dart';
 ///                 .storageSizeGB(256)
 ///                 .tier("P15")
 ///                 .build())
-///             .version("16")
+///             .version("17")
 ///             .build());
 ///
 ///     }
@@ -226,7 +270,7 @@ import 'user_assigned_identity_response.dart';
 ///         storageSizeGB: 256,
 ///         tier: azure_native.dbforpostgresql.AzureManagedDiskPerformanceTier.P15,
 ///     },
-///     version: azure_native.dbforpostgresql.PostgresMajorVersion.PostgresMajorVersion_16,
+///     version: azure_native.dbforpostgresql.PostgresMajorVersion.PostgresMajorVersion_17,
 /// });
 ///
 /// ```
@@ -265,7 +309,7 @@ import 'user_assigned_identity_response.dart';
 ///         "storage_size_gb": 256,
 ///         "tier": azure_native.dbforpostgresql.AzureManagedDiskPerformanceTier.P15,
 ///     },
-///     version=azure_native.dbforpostgresql.PostgresMajorVersion.POSTGRES_MAJOR_VERSION_16)
+///     version=azure_native.dbforpostgresql.PostgresMajorVersion.POSTGRES_MAJOR_VERSION_17)
 ///
 /// ```
 ///
@@ -297,7 +341,7 @@ import 'user_assigned_identity_response.dart';
 ///         autoGrow: Disabled
 ///         storageSizeGB: 256
 ///         tier: P15
-///       version: '16'
+///       version: '17'
 ///
 /// ```
 ///
@@ -350,7 +394,7 @@ import 'user_assigned_identity_response.dart';
 ///             { "InCustomerVnet", "false" },
 ///             { "InMicrosoftVnet", "true" },
 ///         },
-///         Version = AzureNative.DBforPostgreSQL.PostgresMajorVersion.PostgresMajorVersion_17,
+///         Version = AzureNative.DBforPostgreSQL.PostgresMajorVersion.PostgresMajorVersion_18,
 ///     });
 ///
 /// });
@@ -399,13 +443,58 @@ import 'user_assigned_identity_response.dart';
 /// 				"InCustomerVnet":  pulumi.String("false"),
 /// 				"InMicrosoftVnet": pulumi.String("true"),
 /// 			},
-/// 			Version: pulumi.String(dbforpostgresql.PostgresMajorVersion_17),
+/// 			Version: pulumi.String(dbforpostgresql.PostgresMajorVersion_18),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_server" "server" {
+///   administrator_login          = "exampleadministratorlogin"
+///   administrator_login_password = "examplepassword"
+///   availability_zone            = "1"
+///   backup = {
+///     backup_retention_days = 7
+///     geo_redundant_backup  = "Enabled"
+///   }
+///   create_mode = "Create"
+///   high_availability = {
+///     mode = "ZoneRedundant"
+///   }
+///   location = "eastus"
+///   network = {
+///     public_network_access = "Enabled"
+///   }
+///   resource_group_name = "exampleresourcegroup"
+///   server_name         = "exampleserver"
+///   sku = {
+///     name = "Standard_D4ds_v5"
+///     tier = "GeneralPurpose"
+///   }
+///   storage = {
+///     auto_grow       = "Disabled"
+///     storage_size_gb = 512
+///     tier            = "P20"
+///   }
+///   tags = {
+///     "InCustomerVnet"  = "false"
+///     "InMicrosoftVnet" = "true"
+///   }
+///   version = "18"
 /// }
 ///
 /// ```
@@ -423,8 +512,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.NetworkArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.SkuArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.StorageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -467,7 +556,7 @@ import 'user_assigned_identity_response.dart';
 ///                 Map.entry("InCustomerVnet", "false"),
 ///                 Map.entry("InMicrosoftVnet", "true")
 ///             ))
-///             .version("17")
+///             .version("18")
 ///             .build());
 ///
 ///     }
@@ -510,7 +599,7 @@ import 'user_assigned_identity_response.dart';
 ///         InCustomerVnet: "false",
 ///         InMicrosoftVnet: "true",
 ///     },
-///     version: azure_native.dbforpostgresql.PostgresMajorVersion.PostgresMajorVersion_17,
+///     version: azure_native.dbforpostgresql.PostgresMajorVersion.PostgresMajorVersion_18,
 /// });
 ///
 /// ```
@@ -550,7 +639,7 @@ import 'user_assigned_identity_response.dart';
 ///         "InCustomerVnet": "false",
 ///         "InMicrosoftVnet": "true",
 ///     },
-///     version=azure_native.dbforpostgresql.PostgresMajorVersion.POSTGRES_MAJOR_VERSION_17)
+///     version=azure_native.dbforpostgresql.PostgresMajorVersion.POSTGRES_MAJOR_VERSION_18)
 ///
 /// ```
 ///
@@ -583,7 +672,7 @@ import 'user_assigned_identity_response.dart';
 ///       tags:
 ///         InCustomerVnet: 'false'
 ///         InMicrosoftVnet: 'true'
-///       version: '17'
+///       version: '18'
 ///
 /// ```
 ///
@@ -637,7 +726,7 @@ import 'user_assigned_identity_response.dart';
 ///             { "InCustomerVnet", "true" },
 ///             { "InMicrosoftVnet", "false" },
 ///         },
-///         Version = AzureNative.DBforPostgreSQL.PostgresMajorVersion.PostgresMajorVersion_17,
+///         Version = AzureNative.DBforPostgreSQL.PostgresMajorVersion.PostgresMajorVersion_18,
 ///     });
 ///
 /// });
@@ -687,13 +776,59 @@ import 'user_assigned_identity_response.dart';
 /// 				"InCustomerVnet":  pulumi.String("true"),
 /// 				"InMicrosoftVnet": pulumi.String("false"),
 /// 			},
-/// 			Version: pulumi.String(dbforpostgresql.PostgresMajorVersion_17),
+/// 			Version: pulumi.String(dbforpostgresql.PostgresMajorVersion_18),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_server" "server" {
+///   administrator_login          = "exampleadministratorlogin"
+///   administrator_login_password = "examplepassword"
+///   availability_zone            = "1"
+///   backup = {
+///     backup_retention_days = 7
+///     geo_redundant_backup  = "Enabled"
+///   }
+///   create_mode = "Create"
+///   high_availability = {
+///     mode = "SameZone"
+///   }
+///   location = "eastus"
+///   network = {
+///     delegated_subnet_resource_id     = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.Network/virtualNetworks/examplevirtualnetwork/subnets/examplesubnet"
+///     private_dns_zone_arm_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.Network/privateDnsZones/exampleprivatednszone.private.postgres.database"
+///   }
+///   resource_group_name = "exampleresourcegroup"
+///   server_name         = "exampleserver"
+///   sku = {
+///     name = "Standard_D4ds_v5"
+///     tier = "GeneralPurpose"
+///   }
+///   storage = {
+///     auto_grow       = "Disabled"
+///     storage_size_gb = 512
+///     tier            = "P20"
+///   }
+///   tags = {
+///     "InCustomerVnet"  = "true"
+///     "InMicrosoftVnet" = "false"
+///   }
+///   version = "18"
 /// }
 ///
 /// ```
@@ -711,8 +846,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.NetworkArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.SkuArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.StorageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -756,7 +891,7 @@ import 'user_assigned_identity_response.dart';
 ///                 Map.entry("InCustomerVnet", "true"),
 ///                 Map.entry("InMicrosoftVnet", "false")
 ///             ))
-///             .version("17")
+///             .version("18")
 ///             .build());
 ///
 ///     }
@@ -800,7 +935,7 @@ import 'user_assigned_identity_response.dart';
 ///         InCustomerVnet: "true",
 ///         InMicrosoftVnet: "false",
 ///     },
-///     version: azure_native.dbforpostgresql.PostgresMajorVersion.PostgresMajorVersion_17,
+///     version: azure_native.dbforpostgresql.PostgresMajorVersion.PostgresMajorVersion_18,
 /// });
 ///
 /// ```
@@ -841,7 +976,7 @@ import 'user_assigned_identity_response.dart';
 ///         "InCustomerVnet": "true",
 ///         "InMicrosoftVnet": "false",
 ///     },
-///     version=azure_native.dbforpostgresql.PostgresMajorVersion.POSTGRES_MAJOR_VERSION_17)
+///     version=azure_native.dbforpostgresql.PostgresMajorVersion.POSTGRES_MAJOR_VERSION_18)
 ///
 /// ```
 ///
@@ -875,7 +1010,7 @@ import 'user_assigned_identity_response.dart';
 ///       tags:
 ///         InCustomerVnet: 'true'
 ///         InMicrosoftVnet: 'false'
-///       version: '17'
+///       version: '18'
 ///
 /// ```
 ///
@@ -932,6 +1067,26 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_server" "server" {
+///   create_mode               = "ReviveDropped"
+///   location                  = "eastus"
+///   point_in_time_utc         = "2025-06-01T18:30:22.123456Z"
+///   resource_group_name       = "exampleresourcegroup"
+///   server_name               = "exampleserver"
+///   source_server_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/exampledeletedserver"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -940,8 +1095,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbforpostgresql.Server;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1063,6 +1218,26 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_server" "server" {
+///   create_mode               = "PointInTimeRestore"
+///   location                  = "eastus"
+///   point_in_time_utc         = "2025-06-01T18:35:22.123456Z"
+///   resource_group_name       = "exampleresourcegroup"
+///   server_name               = "exampleserver"
+///   source_server_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/examplesourceserver"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1071,8 +1246,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbforpostgresql.Server;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1225,6 +1400,40 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_server" "server" {
+///   create_mode = "GeoRestore"
+///   data_encryption = {
+///     geo_backup_key_uri                   = "https://examplegeoredundantkeyvault.vault.azure.net/keys/examplekey"
+///     geo_backup_user_assigned_identity_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/examplegeoredundantidentity"
+///     primary_key_uri                      = "https://exampleprimarykeyvault.vault.azure.net/keys/examplekey"
+///     primary_user_assigned_identity_id    = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleprimaryidentity"
+///     type                                 = "AzureKeyVault"
+///   }
+///   identity = {
+///     type = "UserAssigned"
+///     user_assigned_identities = {
+///       "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/examplegeoredundantidentity" = {}
+///       "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleprimaryidentity"      = {}
+///     }
+///   }
+///   location                  = "eastus"
+///   point_in_time_utc         = "2025-06-01T18:35:22.123456Z"
+///   resource_group_name       = "exampleresourcegroup"
+///   server_name               = "exampleserver"
+///   source_server_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/examplesourceserver"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1235,8 +1444,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.ServerArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.DataEncryptionArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.UserAssignedIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1446,6 +1655,40 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_server" "server" {
+///   create_mode = "GeoRestore"
+///   data_encryption = {
+///     geo_backup_key_uri                   = "https://examplegeoredundantkeyvault.vault.azure.net/keys/examplekey/yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+///     geo_backup_user_assigned_identity_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/examplegeoredundantidentity"
+///     primary_key_uri                      = "https://exampleprimarykeyvault.vault.azure.net/keys/examplekey/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+///     primary_user_assigned_identity_id    = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleprimaryidentity"
+///     type                                 = "AzureKeyVault"
+///   }
+///   identity = {
+///     type = "UserAssigned"
+///     user_assigned_identities = {
+///       "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/examplegeoredundantidentity" = {}
+///       "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleprimaryidentity"      = {}
+///     }
+///   }
+///   location                  = "eastus"
+///   point_in_time_utc         = "2025-06-01T18:35:22.123456Z"
+///   resource_group_name       = "exampleresourcegroup"
+///   server_name               = "exampleserver"
+///   source_server_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/examplesourceserver"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1456,8 +1699,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.ServerArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.DataEncryptionArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.UserAssignedIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1638,7 +1881,7 @@ import 'user_assigned_identity_response.dart';
 ///             StorageSizeGB = 512,
 ///             Tier = AzureNative.DBforPostgreSQL.AzureManagedDiskPerformanceTier.P20,
 ///         },
-///         Version = AzureNative.DBforPostgreSQL.PostgresMajorVersion.PostgresMajorVersion_17,
+///         Version = AzureNative.DBforPostgreSQL.PostgresMajorVersion.PostgresMajorVersion_18,
 ///     });
 ///
 /// });
@@ -1692,13 +1935,63 @@ import 'user_assigned_identity_response.dart';
 /// 				StorageSizeGB: pulumi.Int(512),
 /// 				Tier:          pulumi.String(dbforpostgresql.AzureManagedDiskPerformanceTierP20),
 /// 			},
-/// 			Version: pulumi.String(dbforpostgresql.PostgresMajorVersion_17),
+/// 			Version: pulumi.String(dbforpostgresql.PostgresMajorVersion_18),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_server" "server" {
+///   administrator_login          = "exampleadministratorlogin"
+///   administrator_login_password = "examplepassword"
+///   auth_config = {
+///     active_directory_auth = "Enabled"
+///     password_auth         = "Enabled"
+///     tenant_id             = "tttttt-tttt-tttt-tttt-tttttttttttt"
+///   }
+///   availability_zone = "1"
+///   backup = {
+///     backup_retention_days = 7
+///     geo_redundant_backup  = "Disabled"
+///   }
+///   create_mode = "Create"
+///   data_encryption = {
+///     type = "SystemManaged"
+///   }
+///   high_availability = {
+///     mode = "Disabled"
+///   }
+///   location = "eastus"
+///   network = {
+///     delegated_subnet_resource_id     = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.Network/virtualNetworks/examplevirtualnetwork/subnets/examplesubnet"
+///     private_dns_zone_arm_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourcegroups/exampleresourcegroup/providers/Microsoft.Network/privateDnsZones/exampleprivatednszone.postgres.database.azure.com"
+///   }
+///   resource_group_name = "exampleresourcegroup"
+///   server_name         = "exampleserver"
+///   sku = {
+///     name = "Standard_D4ds_v5"
+///     tier = "GeneralPurpose"
+///   }
+///   storage = {
+///     auto_grow       = "Disabled"
+///     storage_size_gb = 512
+///     tier            = "P20"
+///   }
+///   version = "18"
 /// }
 ///
 /// ```
@@ -1718,8 +2011,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.NetworkArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.SkuArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.StorageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1767,7 +2060,7 @@ import 'user_assigned_identity_response.dart';
 ///                 .storageSizeGB(512)
 ///                 .tier("P20")
 ///                 .build())
-///             .version("17")
+///             .version("18")
 ///             .build());
 ///
 ///     }
@@ -1815,7 +2108,7 @@ import 'user_assigned_identity_response.dart';
 ///         storageSizeGB: 512,
 ///         tier: azure_native.dbforpostgresql.AzureManagedDiskPerformanceTier.P20,
 ///     },
-///     version: azure_native.dbforpostgresql.PostgresMajorVersion.PostgresMajorVersion_17,
+///     version: azure_native.dbforpostgresql.PostgresMajorVersion.PostgresMajorVersion_18,
 /// });
 ///
 /// ```
@@ -1860,7 +2153,7 @@ import 'user_assigned_identity_response.dart';
 ///         "storage_size_gb": 512,
 ///         "tier": azure_native.dbforpostgresql.AzureManagedDiskPerformanceTier.P20,
 ///     },
-///     version=azure_native.dbforpostgresql.PostgresMajorVersion.POSTGRES_MAJOR_VERSION_17)
+///     version=azure_native.dbforpostgresql.PostgresMajorVersion.POSTGRES_MAJOR_VERSION_18)
 ///
 /// ```
 ///
@@ -1897,7 +2190,7 @@ import 'user_assigned_identity_response.dart';
 ///         autoGrow: Disabled
 ///         storageSizeGB: 512
 ///         tier: P20
-///       version: '17'
+///       version: '18'
 ///
 /// ```
 ///
@@ -1962,7 +2255,7 @@ import 'user_assigned_identity_response.dart';
 ///             StorageSizeGB = 512,
 ///             Tier = AzureNative.DBforPostgreSQL.AzureManagedDiskPerformanceTier.P20,
 ///         },
-///         Version = AzureNative.DBforPostgreSQL.PostgresMajorVersion.PostgresMajorVersion_17,
+///         Version = AzureNative.DBforPostgreSQL.PostgresMajorVersion.PostgresMajorVersion_18,
 ///     });
 ///
 /// });
@@ -2021,13 +2314,68 @@ import 'user_assigned_identity_response.dart';
 /// 				StorageSizeGB: pulumi.Int(512),
 /// 				Tier:          pulumi.String(dbforpostgresql.AzureManagedDiskPerformanceTierP20),
 /// 			},
-/// 			Version: pulumi.String(dbforpostgresql.PostgresMajorVersion_17),
+/// 			Version: pulumi.String(dbforpostgresql.PostgresMajorVersion_18),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_server" "server" {
+///   administrator_login          = "exampleadministratorlogin"
+///   administrator_login_password = "examplepassword"
+///   availability_zone            = "1"
+///   backup = {
+///     backup_retention_days = 7
+///     geo_redundant_backup  = "Disabled"
+///   }
+///   create_mode = "Create"
+///   data_encryption = {
+///     geo_backup_key_uri                   = ""
+///     geo_backup_user_assigned_identity_id = ""
+///     primary_key_uri                      = "https://exampleprimarykeyvault.vault.azure.net/keys/examplekey"
+///     primary_user_assigned_identity_id    = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleprimaryidentity"
+///     type                                 = "AzureKeyVault"
+///   }
+///   high_availability = {
+///     mode = "ZoneRedundant"
+///   }
+///   identity = {
+///     type = "UserAssigned"
+///     user_assigned_identities = {
+///       "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleprimaryidentity" = {}
+///     }
+///   }
+///   location = "eastus"
+///   network = {
+///     delegated_subnet_resource_id     = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.Network/virtualNetworks/examplevirtualnetwork/subnets/examplesubnet"
+///     private_dns_zone_arm_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourcegroups/exampleresourcegroup/providers/Microsoft.Network/privateDnsZones/exampleprivatednszone.postgres.database.azure.com"
+///   }
+///   resource_group_name = "exampleresourcegroup"
+///   server_name         = "exampleserver"
+///   sku = {
+///     name = "Standard_D4ds_v5"
+///     tier = "GeneralPurpose"
+///   }
+///   storage = {
+///     auto_grow       = "Disabled"
+///     storage_size_gb = 512
+///     tier            = "P20"
+///   }
+///   version = "18"
 /// }
 ///
 /// ```
@@ -2047,8 +2395,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.NetworkArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.SkuArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.StorageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2100,7 +2448,7 @@ import 'user_assigned_identity_response.dart';
 ///                 .storageSizeGB(512)
 ///                 .tier("P20")
 ///                 .build())
-///             .version("17")
+///             .version("18")
 ///             .build());
 ///
 ///     }
@@ -2153,7 +2501,7 @@ import 'user_assigned_identity_response.dart';
 ///         storageSizeGB: 512,
 ///         tier: azure_native.dbforpostgresql.AzureManagedDiskPerformanceTier.P20,
 ///     },
-///     version: azure_native.dbforpostgresql.PostgresMajorVersion.PostgresMajorVersion_17,
+///     version: azure_native.dbforpostgresql.PostgresMajorVersion.PostgresMajorVersion_18,
 /// });
 ///
 /// ```
@@ -2203,7 +2551,7 @@ import 'user_assigned_identity_response.dart';
 ///         "storage_size_gb": 512,
 ///         "tier": azure_native.dbforpostgresql.AzureManagedDiskPerformanceTier.P20,
 ///     },
-///     version=azure_native.dbforpostgresql.PostgresMajorVersion.POSTGRES_MAJOR_VERSION_17)
+///     version=azure_native.dbforpostgresql.PostgresMajorVersion.POSTGRES_MAJOR_VERSION_18)
 ///
 /// ```
 ///
@@ -2245,7 +2593,7 @@ import 'user_assigned_identity_response.dart';
 ///         autoGrow: Disabled
 ///         storageSizeGB: 512
 ///         tier: P20
-///       version: '17'
+///       version: '18'
 ///
 /// ```
 ///
@@ -2310,7 +2658,7 @@ import 'user_assigned_identity_response.dart';
 ///             StorageSizeGB = 512,
 ///             Tier = AzureNative.DBforPostgreSQL.AzureManagedDiskPerformanceTier.P20,
 ///         },
-///         Version = AzureNative.DBforPostgreSQL.PostgresMajorVersion.PostgresMajorVersion_17,
+///         Version = AzureNative.DBforPostgreSQL.PostgresMajorVersion.PostgresMajorVersion_18,
 ///     });
 ///
 /// });
@@ -2369,13 +2717,68 @@ import 'user_assigned_identity_response.dart';
 /// 				StorageSizeGB: pulumi.Int(512),
 /// 				Tier:          pulumi.String(dbforpostgresql.AzureManagedDiskPerformanceTierP20),
 /// 			},
-/// 			Version: pulumi.String(dbforpostgresql.PostgresMajorVersion_17),
+/// 			Version: pulumi.String(dbforpostgresql.PostgresMajorVersion_18),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_server" "server" {
+///   administrator_login          = "exampleadministratorlogin"
+///   administrator_login_password = "examplepassword"
+///   availability_zone            = "1"
+///   backup = {
+///     backup_retention_days = 7
+///     geo_redundant_backup  = "Disabled"
+///   }
+///   create_mode = "Create"
+///   data_encryption = {
+///     geo_backup_key_uri                   = ""
+///     geo_backup_user_assigned_identity_id = ""
+///     primary_key_uri                      = "https://exampleprimarykeyvault.vault.azure.net/keys/examplekey/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+///     primary_user_assigned_identity_id    = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleprimaryidentity"
+///     type                                 = "AzureKeyVault"
+///   }
+///   high_availability = {
+///     mode = "ZoneRedundant"
+///   }
+///   identity = {
+///     type = "UserAssigned"
+///     user_assigned_identities = {
+///       "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleprimaryidentity" = {}
+///     }
+///   }
+///   location = "eastus"
+///   network = {
+///     delegated_subnet_resource_id     = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.Network/virtualNetworks/examplevirtualnetwork/subnets/examplesubnet"
+///     private_dns_zone_arm_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourcegroups/exampleresourcegroup/providers/Microsoft.Network/privateDnsZones/exampleprivatednszone.postgres.database.azure.com"
+///   }
+///   resource_group_name = "exampleresourcegroup"
+///   server_name         = "exampleserver"
+///   sku = {
+///     name = "Standard_D4ds_v5"
+///     tier = "GeneralPurpose"
+///   }
+///   storage = {
+///     auto_grow       = "Disabled"
+///     storage_size_gb = 512
+///     tier            = "P20"
+///   }
+///   version = "18"
 /// }
 ///
 /// ```
@@ -2395,8 +2798,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.NetworkArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.SkuArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.StorageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2448,7 +2851,7 @@ import 'user_assigned_identity_response.dart';
 ///                 .storageSizeGB(512)
 ///                 .tier("P20")
 ///                 .build())
-///             .version("17")
+///             .version("18")
 ///             .build());
 ///
 ///     }
@@ -2501,7 +2904,7 @@ import 'user_assigned_identity_response.dart';
 ///         storageSizeGB: 512,
 ///         tier: azure_native.dbforpostgresql.AzureManagedDiskPerformanceTier.P20,
 ///     },
-///     version: azure_native.dbforpostgresql.PostgresMajorVersion.PostgresMajorVersion_17,
+///     version: azure_native.dbforpostgresql.PostgresMajorVersion.PostgresMajorVersion_18,
 /// });
 ///
 /// ```
@@ -2551,7 +2954,7 @@ import 'user_assigned_identity_response.dart';
 ///         "storage_size_gb": 512,
 ///         "tier": azure_native.dbforpostgresql.AzureManagedDiskPerformanceTier.P20,
 ///     },
-///     version=azure_native.dbforpostgresql.PostgresMajorVersion.POSTGRES_MAJOR_VERSION_17)
+///     version=azure_native.dbforpostgresql.PostgresMajorVersion.POSTGRES_MAJOR_VERSION_18)
 ///
 /// ```
 ///
@@ -2593,7 +2996,7 @@ import 'user_assigned_identity_response.dart';
 ///         autoGrow: Disabled
 ///         storageSizeGB: 512
 ///         tier: P20
-///       version: '17'
+///       version: '18'
 ///
 /// ```
 ///
@@ -2628,7 +3031,6 @@ import 'user_assigned_identity_response.dart';
 ///             },
 ///         },
 ///         Location = "eastus",
-///         PointInTimeUTC = "2025-06-01T18:35:22.123456Z",
 ///         ResourceGroupName = "exampleresourcegroup",
 ///         ServerName = "exampleserver",
 ///         SourceServerResourceId = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/examplesourceserver",
@@ -2665,7 +3067,6 @@ import 'user_assigned_identity_response.dart';
 /// 				},
 /// 			},
 /// 			Location:               pulumi.String("eastus"),
-/// 			PointInTimeUTC:         pulumi.String("2025-06-01T18:35:22.123456Z"),
 /// 			ResourceGroupName:      pulumi.String("exampleresourcegroup"),
 /// 			ServerName:             pulumi.String("exampleserver"),
 /// 			SourceServerResourceId: pulumi.String("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/examplesourceserver"),
@@ -2675,6 +3076,38 @@ import 'user_assigned_identity_response.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_server" "server" {
+///   create_mode = "Replica"
+///   data_encryption = {
+///     geo_backup_key_uri                   = ""
+///     geo_backup_user_assigned_identity_id = ""
+///     primary_key_uri                      = "https://exampleprimarykeyvault.vault.azure.net/keys/examplekey/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+///     primary_user_assigned_identity_id    = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleprimaryidentity"
+///     type                                 = "AzureKeyVault"
+///   }
+///   identity = {
+///     type = "UserAssigned"
+///     user_assigned_identities = {
+///       "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleprimaryidentity" = {}
+///     }
+///   }
+///   location                  = "eastus"
+///   resource_group_name       = "exampleresourcegroup"
+///   server_name               = "exampleserver"
+///   source_server_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/examplesourceserver"
 /// }
 ///
 /// ```
@@ -2689,8 +3122,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.ServerArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.DataEncryptionArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.UserAssignedIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2717,7 +3150,6 @@ import 'user_assigned_identity_response.dart';
 ///                     .build()))
 ///                 .build())
 ///             .location("eastus")
-///             .pointInTimeUTC("2025-06-01T18:35:22.123456Z")
 ///             .resourceGroupName("exampleresourcegroup")
 ///             .serverName("exampleserver")
 ///             .sourceServerResourceId("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/examplesourceserver")
@@ -2748,7 +3180,6 @@ import 'user_assigned_identity_response.dart';
 ///         },
 ///     },
 ///     location: "eastus",
-///     pointInTimeUTC: "2025-06-01T18:35:22.123456Z",
 ///     resourceGroupName: "exampleresourcegroup",
 ///     serverName: "exampleserver",
 ///     sourceServerResourceId: "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/examplesourceserver",
@@ -2776,7 +3207,6 @@ import 'user_assigned_identity_response.dart';
 ///         },
 ///     },
 ///     location="eastus",
-///     point_in_time_utc="2025-06-01T18:35:22.123456Z",
 ///     resource_group_name="exampleresourcegroup",
 ///     server_name="exampleserver",
 ///     source_server_resource_id="/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/examplesourceserver")
@@ -2801,7 +3231,6 @@ import 'user_assigned_identity_response.dart';
 ///           ? /subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleprimaryidentity
 ///           : {}
 ///       location: eastus
-///       pointInTimeUTC: 2025-06-01T18:35:22.123456Z
 ///       resourceGroupName: exampleresourcegroup
 ///       serverName: exampleserver
 ///       sourceServerResourceId: /subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/examplesourceserver

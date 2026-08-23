@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'amazon_mwsobject_dataset_response.dart';
 import 'dataset_args.dart';
+import 'system_data_response.dart';
 
 /// Dataset resource type.
 ///
@@ -114,6 +115,49 @@ import 'dataset_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datafactory_dataset" "dataset" {
+///   dataset_name = "exampleDataset"
+///   factory_name = "exampleFactoryName"
+///   properties = {
+///     "fileName" = {
+///       "type"  = "Expression"
+///       "value" = "@dataset().MyFileName"
+///     }
+///     "folderPath" = {
+///       "type"  = "Expression"
+///       "value" = "@dataset().MyFolderPath"
+///     }
+///     "format" = {
+///       "type" = "TextFormat"
+///     }
+///     "linkedServiceName" = {
+///       "referenceName" = "exampleLinkedService"
+///       "type"          = "LinkedServiceReference"
+///     }
+///     "parameters" = {
+///       "MyFileName" = {
+///         "type" = "String"
+///       }
+///       "MyFolderPath" = {
+///         "type" = "String"
+///       }
+///     }
+///     "type" = "AzureBlob"
+///   }
+///   resource_group_name = "exampleResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -122,8 +166,8 @@ import 'dataset_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.Dataset;
 /// import com.pulumi.azurenative.datafactory.DatasetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -385,6 +429,50 @@ import 'dataset_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datafactory_dataset" "dataset" {
+///   dataset_name = "exampleDataset"
+///   factory_name = "exampleFactoryName"
+///   properties = {
+///     "description" = "Example description"
+///     "fileName" = {
+///       "type"  = "Expression"
+///       "value" = "@dataset().MyFileName"
+///     }
+///     "folderPath" = {
+///       "type"  = "Expression"
+///       "value" = "@dataset().MyFolderPath"
+///     }
+///     "format" = {
+///       "type" = "TextFormat"
+///     }
+///     "linkedServiceName" = {
+///       "referenceName" = "exampleLinkedService"
+///       "type"          = "LinkedServiceReference"
+///     }
+///     "parameters" = {
+///       "MyFileName" = {
+///         "type" = "String"
+///       }
+///       "MyFolderPath" = {
+///         "type" = "String"
+///       }
+///     }
+///     "type" = "AzureBlob"
+///   }
+///   resource_group_name = "exampleResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -393,8 +481,8 @@ import 'dataset_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.Dataset;
 /// import com.pulumi.azurenative.datafactory.DatasetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -564,13 +652,15 @@ import 'dataset_args.dart';
 class Dataset extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// Etag identifies change in the resource.
+  /// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
   late final pulumi.Output<String> etag;
-  /// The resource name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Dataset properties.
   late final pulumi.Output<AmazonMWSObjectDatasetResponse> properties;
-  /// The resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [Dataset].
@@ -591,6 +681,7 @@ class Dataset extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     properties = registerOutput<AmazonMWSObjectDatasetResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmazonMWSObjectDatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

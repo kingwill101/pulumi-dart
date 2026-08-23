@@ -20,4 +20,3 @@ enum AssessmentDayOfWeek {
     throw ArgumentError('Unknown AssessmentDayOfWeek value: $value');
   }
 }
-

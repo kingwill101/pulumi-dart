@@ -7,7 +7,7 @@ import 'security_assessment_metadata_properties_response_response_publish_dates.
 ///
 /// Uses Azure REST API version 2021-06-01. In version 2.x of the Azure Native provider, it used API version 2021-06-01.
 ///
-/// Other available API versions: 2020-01-01, 2025-05-04-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-01-01, 2025-05-04. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -85,6 +85,30 @@ import 'security_assessment_metadata_properties_response_response_publish_dates.
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_assessmentmetadatainsubscription" "assessmentMetadataInSubscription" {
+///   assessment_metadata_name = "ca039e75-a276-4175-aebc-bcd41e4b14b7"
+///   assessment_type          = "CustomerManaged"
+///   categories               = ["Compute"]
+///   description              = "Install an endpoint protection solution on your virtual machines scale sets, to protect them from threats and vulnerabilities."
+///   display_name             = "Install endpoint protection solution on virtual machine scale sets"
+///   implementation_effort    = "Low"
+///   remediation_description  = "To install an endpoint protection solution: 1.  <a href=\"https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#how-do-i-turn-on-antimalware-in-my-virtual-machine-scale-set\">Follow the instructions in How do I turn on antimalware in my virtual machine scale set</a>"
+///   severity                 = "Medium"
+///   threats                  = ["dataExfiltration", "dataSpillage", "maliciousInsider"]
+///   user_impact              = "Low"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +117,8 @@ import 'security_assessment_metadata_properties_response_response_publish_dates.
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.AssessmentMetadataInSubscription;
 /// import com.pulumi.azurenative.security.AssessmentMetadataInSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

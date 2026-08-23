@@ -4,9 +4,9 @@ import 'request_contract_response.dart';
 
 /// API Operation details.
 ///
-/// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -130,6 +130,48 @@ import 'request_contract_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_apioperation" "apiOperation" {
+///   api_id       = "PetStoreTemplate2"
+///   description  = "This can only be done by the logged in user."
+///   display_name = "createUser2"
+///   method       = "POST"
+///   operation_id = "newoperations"
+///   request = {
+///     description      = "Created user object"
+///     headers          = []
+///     query_parameters = []
+///     representations = [{
+///       "contentType" = "application/json"
+///       "schemaId"    = "592f6c1d0af5840ca8897f0c"
+///       "typeName"    = "User"
+///     }]
+///   }
+///   resource_group_name = "rg1"
+///   responses {
+///     description = "successful operation"
+///     representations {
+///       content_type = "application/xml"
+///     }
+///     representations {
+///       content_type = "application/json"
+///     }
+///     status_code = 200
+///   }
+///   service_name = "apimService1"
+///   url_template = "/user1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +182,8 @@ import 'request_contract_response.dart';
 /// import com.pulumi.azurenative.apimanagement.ApiOperationArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.RequestContractArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.ResponseContractArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

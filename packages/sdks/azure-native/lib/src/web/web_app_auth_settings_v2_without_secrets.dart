@@ -4,13 +4,14 @@ import 'global_validation_response.dart';
 import 'http_settings_response.dart';
 import 'identity_providers_response.dart';
 import 'login_response.dart';
+import 'system_data_response.dart';
 import 'web_app_auth_settings_v2_without_secrets_args.dart';
 
 /// Configuration settings for the Azure App Service Authentication / Authorization V2 feature.
 ///
-/// Uses Azure REST API version 2024-04-01.
+/// Uses Azure REST API version 2025-05-01.
 ///
-/// Other available API versions: 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -49,7 +50,7 @@ import 'web_app_auth_settings_v2_without_secrets_args.dart';
 ///                 ApiPrefix = "/authv2/",
 ///             },
 ///         },
-///         IdentityProviders = new AzureNative.Web.Inputs.IdentityProvidersArgs
+///         IdentityProviders = new AzureNative.Web.Inputs.IdentityProvidersV1Args
 ///         {
 ///             Google = new AzureNative.Web.Inputs.GoogleArgs
 ///             {
@@ -149,7 +150,7 @@ import 'web_app_auth_settings_v2_without_secrets_args.dart';
 /// 					ApiPrefix: pulumi.String("/authv2/"),
 /// 				},
 /// 			},
-/// 			IdentityProviders: &web.IdentityProvidersArgs{
+/// 			IdentityProviders: &web.IdentityProvidersV1Args{
 /// 				Google: &web.GoogleArgs{
 /// 					Enabled: pulumi.Bool(true),
 /// 					Login: &web.LoginScopesArgs{
@@ -208,6 +209,79 @@ import 'web_app_auth_settings_v2_without_secrets_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_web_webappauthsettingsv2withoutsecrets" "webAppAuthSettingsV2WithoutSecrets" {
+///   global_validation = {
+///     excluded_paths                = ["/nosecrets/Path"]
+///     require_authentication        = true
+///     unauthenticated_client_action = "Return403"
+///   }
+///   http_settings = {
+///     forward_proxy = {
+///       convention               = "Standard"
+///       custom_host_header_name  = "authHeader"
+///       custom_proto_header_name = "customProtoHeader"
+///     }
+///     require_https = true
+///     routes = {
+///       api_prefix = "/authv2/"
+///     }
+///   }
+///   identity_providers = {
+///     google = {
+///       enabled = true
+///       login = {
+///         scopes = ["admin"]
+///       }
+///       registration = {
+///         client_id                  = "42d795a9-8abb-4d06-8534-39528af40f8e.apps.googleusercontent.com"
+///         client_secret_setting_name = "ClientSecret"
+///       }
+///       validation = {
+///         allowed_audiences = ["https://example.com"]
+///       }
+///     }
+///   }
+///   login = {
+///     allowed_external_redirect_urls = ["https://someurl.com"]
+///     cookie_expiration = {
+///       convention         = "IdentityProviderDerived"
+///       time_to_expiration = "2022:09-01T00:00Z"
+///     }
+///     nonce = {
+///       validate_nonce = true
+///     }
+///     preserve_url_fragments_for_logins = true
+///     routes = {
+///       logout_endpoint = "https://app.com/logout"
+///     }
+///     token_store = {
+///       enabled = true
+///       file_system = {
+///         directory = "/wwwroot/sites/example"
+///       }
+///       token_refresh_extension_hours = 96
+///     }
+///   }
+///   name = "sitef6141"
+///   platform = {
+///     config_file_path = "/auth/config.json"
+///     enabled          = true
+///     runtime_version  = "~1"
+///   }
+///   resource_group_name = "testrg123"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -220,7 +294,7 @@ import 'web_app_auth_settings_v2_without_secrets_args.dart';
 /// import com.pulumi.azurenative.web.inputs.HttpSettingsArgs;
 /// import com.pulumi.azurenative.web.inputs.ForwardProxyArgs;
 /// import com.pulumi.azurenative.web.inputs.HttpSettingsRoutesArgs;
-/// import com.pulumi.azurenative.web.inputs.IdentityProvidersArgs;
+/// import com.pulumi.azurenative.web.inputs.IdentityProvidersV1Args;
 /// import com.pulumi.azurenative.web.inputs.GoogleArgs;
 /// import com.pulumi.azurenative.web.inputs.LoginScopesArgs;
 /// import com.pulumi.azurenative.web.inputs.ClientRegistrationArgs;
@@ -232,8 +306,8 @@ import 'web_app_auth_settings_v2_without_secrets_args.dart';
 /// import com.pulumi.azurenative.web.inputs.TokenStoreArgs;
 /// import com.pulumi.azurenative.web.inputs.FileSystemTokenStoreArgs;
 /// import com.pulumi.azurenative.web.inputs.AuthPlatformArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -262,7 +336,7 @@ import 'web_app_auth_settings_v2_without_secrets_args.dart';
 ///                     .apiPrefix("/authv2/")
 ///                     .build())
 ///                 .build())
-///             .identityProviders(IdentityProvidersArgs.builder()
+///             .identityProviders(IdentityProvidersV1Args.builder()
 ///                 .google(GoogleArgs.builder()
 ///                     .enabled(true)
 ///                     .login(LoginScopesArgs.builder()
@@ -434,7 +508,7 @@ import 'web_app_auth_settings_v2_without_secrets_args.dart';
 ///             "file_system": {
 ///                 "directory": "/wwwroot/sites/example",
 ///             },
-///             "token_refresh_extension_hours": 96,
+///             "token_refresh_extension_hours": float(96),
 ///         },
 ///     },
 ///     name="sitef6141",
@@ -521,15 +595,17 @@ class WebAppAuthSettingsV2WithoutSecrets extends pulumi.CustomResource {
   late final pulumi.Output<HttpSettingsResponse?> httpSettings;
   /// The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
   late final pulumi.Output<IdentityProvidersResponse?> identityProviders;
-  /// Kind of resource.
+  /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   late final pulumi.Output<String?> kind;
   /// The configuration settings of the login flow of users using App Service Authentication/Authorization.
   late final pulumi.Output<LoginResponse?> login;
-  /// Resource Name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The configuration settings of the platform of App Service Authentication/Authorization.
   late final pulumi.Output<AuthPlatformResponse?> platform;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [WebAppAuthSettingsV2WithoutSecrets].
@@ -554,6 +630,7 @@ class WebAppAuthSettingsV2WithoutSecrets extends pulumi.CustomResource {
     login = registerOutput<LoginResponse?>('login', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoginResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     platform = registerOutput<AuthPlatformResponse?>('platform', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthPlatformResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

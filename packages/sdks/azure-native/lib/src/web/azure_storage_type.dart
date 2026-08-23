@@ -15,4 +15,3 @@ enum AzureStorageType {
     throw ArgumentError('Unknown AzureStorageType value: $value');
   }
 }
-

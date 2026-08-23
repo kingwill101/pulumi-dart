@@ -8,9 +8,9 @@ import 'amount.dart';
 /// {@endtemplate}
 /// {@macro pulumi_education_lab_args_doc}
 class LabArgs {
-  /// The ID that uniquely identifies a billing account.
+  /// The name of the billing account.
   final pulumi.Input<String> billingAccountName;
-  /// The ID that uniquely identifies a billing profile.
+  /// The name of the billing profile.
   final pulumi.Input<String> billingProfileName;
   /// Default monetary cap for each student in this lab
   final pulumi.Input<Amount> budgetPerStudent;
@@ -22,20 +22,20 @@ class LabArgs {
   final pulumi.Input<String> displayName;
   /// Default expiration date for each student in this lab
   final pulumi.Input<String> expirationDate;
-  /// The ID that uniquely identifies an invoice section.
+  /// The name of the invoice section.
   final pulumi.Input<String> invoiceSectionName;
   /// Amount value.
   final pulumi.Input<double>? value;
 
   /// Creates a new [LabArgs].
-  /// [billingAccountName] The ID that uniquely identifies a billing account.
-  /// [billingProfileName] The ID that uniquely identifies a billing profile.
+  /// [billingAccountName] The name of the billing account.
+  /// [billingProfileName] The name of the billing profile.
   /// [budgetPerStudent] Default monetary cap for each student in this lab
   /// [currency] The type of currency being used for the value.
   /// [description] Detail description of this lab
   /// [displayName] Lab Display Name
   /// [expirationDate] Default expiration date for each student in this lab
-  /// [invoiceSectionName] The ID that uniquely identifies an invoice section.
+  /// [invoiceSectionName] The name of the invoice section.
   /// [value] Amount value.
   const LabArgs({
     required this.billingAccountName,
@@ -77,4 +77,3 @@ class LabArgs {
     );
   }
 }
-

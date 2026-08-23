@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'component_container_response.dart';
+import 'component_container_properties_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getRegistryComponentContainer.
 class GetRegistryComponentContainerResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-  /// [Required] Additional attributes of the entity.
-  final ComponentContainerResponse componentContainerProperties;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
   /// The name of the resource
   final String name;
+  /// [Required] Additional attributes of the entity.
+  final ComponentContainerPropertiesResponse properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -20,16 +20,16 @@ class GetRegistryComponentContainerResult {
 
   /// Creates a new [GetRegistryComponentContainerResult].
   /// [azureApiVersion] The Azure API version of the resource.
-  /// [componentContainerProperties] [Required] Additional attributes of the entity.
   /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [name] The name of the resource
+  /// [properties] [Required] Additional attributes of the entity.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetRegistryComponentContainerResult({
     required this.azureApiVersion,
-    required this.componentContainerProperties,
     required this.id,
     required this.name,
+    required this.properties,
     required this.systemData,
     required this.type,
   });
@@ -37,9 +37,9 @@ class GetRegistryComponentContainerResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'componentContainerProperties': componentContainerProperties.toMap(),
       'id': id,
       'name': name,
+      'properties': properties.toMap(),
       'systemData': systemData.toMap(),
       'type': type,
     };
@@ -48,12 +48,11 @@ class GetRegistryComponentContainerResult {
   factory GetRegistryComponentContainerResult.fromMap(Map<String, dynamic> map) {
     return GetRegistryComponentContainerResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      componentContainerProperties: ComponentContainerResponse.fromMap((map['componentContainerProperties']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
+      properties: ComponentContainerPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

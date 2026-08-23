@@ -53,6 +53,23 @@ import 'scope_assignment_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_managednetwork_scopeassignment" "scopeAssignment" {
+///   assigned_managed_network = "/subscriptions/subscriptionA/resourceGroups/myResourceGroup/providers/Microsoft.ManagedNetwork/managedNetworks/myManagedNetwork"
+///   scope                    = "subscriptions/subscriptionC"
+///   scope_assignment_name    = "subscriptionCAssignment"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -61,8 +78,8 @@ import 'scope_assignment_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.managednetwork.ScopeAssignment;
 /// import com.pulumi.azurenative.managednetwork.ScopeAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

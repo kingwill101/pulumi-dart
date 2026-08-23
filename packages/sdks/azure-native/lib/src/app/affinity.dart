@@ -15,4 +15,3 @@ enum Affinity {
     throw ArgumentError('Unknown Affinity value: $value');
   }
 }
-

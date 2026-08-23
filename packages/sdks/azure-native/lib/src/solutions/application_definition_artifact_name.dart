@@ -17,4 +17,3 @@ enum ApplicationDefinitionArtifactName {
     throw ArgumentError('Unknown ApplicationDefinitionArtifactName value: $value');
   }
 }
-

@@ -2,12 +2,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'content_source_response.dart';
 import 'dsc_configuration_args.dart';
 import 'dsc_configuration_parameter_response.dart';
+import 'system_data_response.dart';
 
 /// Definition of the configuration type.
 ///
-/// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
+/// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 ///
-/// Other available API versions: 2015-10-31, 2019-06-01, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2019-06-01, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -95,6 +96,34 @@ import 'dsc_configuration_parameter_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_dscconfiguration" "dscConfiguration" {
+///   automation_account_name = "myAutomationAccount18"
+///   configuration_name      = "SetupServer"
+///   description             = "sample configuration"
+///   location                = "East US 2"
+///   name                    = "SetupServer"
+///   resource_group_name     = "rg"
+///   source = {
+///     hash = {
+///       algorithm = "sha256"
+///       value     = "A9E5DB56BA21513F61E0B3868816FDC6D4DF5131F5617D7FF0D769674BD5072F"
+///     }
+///     type  = "embeddedContent"
+///     value = "Configuration SetupServer {\r\n    Node localhost {\r\n                               WindowsFeature IIS {\r\n                               Name = \"Web-Server\";\r\n            Ensure = \"Present\"\r\n        }\r\n    }\r\n}"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +134,8 @@ import 'dsc_configuration_parameter_response.dart';
 /// import com.pulumi.azurenative.automation.DscConfigurationArgs;
 /// import com.pulumi.azurenative.automation.inputs.ContentSourceArgs;
 /// import com.pulumi.azurenative.automation.inputs.ContentHashArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -250,8 +279,8 @@ class DscConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<int?> jobCount;
   /// Gets or sets the last modified time.
   late final pulumi.Output<String?> lastModifiedTime;
-  /// The Azure Region where the resource lives
-  late final pulumi.Output<String?> location;
+  /// The geo-location where the resource lives
+  late final pulumi.Output<String> location;
   /// Gets or sets verbose log option.
   late final pulumi.Output<bool?> logVerbose;
   /// The name of the resource
@@ -266,9 +295,11 @@ class DscConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<ContentSourceResponse?> source;
   /// Gets or sets the state of the configuration.
   late final pulumi.Output<String?> state;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [DscConfiguration].
@@ -291,7 +322,7 @@ class DscConfiguration extends pulumi.CustomResource {
     etag = registerOutput<String?>('etag');
     jobCount = registerOutput<int?>('jobCount');
     lastModifiedTime = registerOutput<String?>('lastModifiedTime');
-    location = registerOutput<String?>('location');
+    location = registerOutput<String>('location');
     logVerbose = registerOutput<bool?>('logVerbose');
     this.name = registerOutput<String>('name');
     nodeConfigurationCount = registerOutput<int?>('nodeConfigurationCount');
@@ -299,6 +330,7 @@ class DscConfiguration extends pulumi.CustomResource {
     provisioningState = registerOutput<String?>('provisioningState');
     source = registerOutput<ContentSourceResponse?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContentSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String?>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -15,4 +15,3 @@ enum RollingUpgradeMode {
     throw ArgumentError('Unknown RollingUpgradeMode value: $value');
   }
 }
-

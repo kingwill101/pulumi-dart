@@ -15,4 +15,3 @@ enum OperationLevelMetricsConfig {
     throw ArgumentError('Unknown OperationLevelMetricsConfig value: $value');
   }
 }
-

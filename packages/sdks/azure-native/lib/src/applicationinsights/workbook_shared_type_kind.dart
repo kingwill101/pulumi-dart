@@ -1,6 +1,6 @@
 /// The kind of workbook. Only valid value is shared.
 enum WorkbookSharedTypeKind {
-  valueShared("shared");
+  shared("shared");
 
   const WorkbookSharedTypeKind(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum WorkbookSharedTypeKind {
     throw ArgumentError('Unknown WorkbookSharedTypeKind value: $value');
   }
 }
-

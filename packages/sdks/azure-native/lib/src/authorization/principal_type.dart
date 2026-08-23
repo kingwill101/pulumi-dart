@@ -1,10 +1,12 @@
 /// The principal type of the assigned principal ID.
 enum PrincipalType {
-  valueUser("User"),
-  valueGroup("Group"),
-  valueServicePrincipal("ServicePrincipal"),
-  valueForeignGroup("ForeignGroup"),
-  valueDevice("Device");
+  user("User"),
+  group("Group"),
+  servicePrincipal("ServicePrincipal"),
+  foreignGroup("ForeignGroup"),
+  device("Device"),
+  agentUser("AgentUser"),
+  agentServicePrincipal("AgentServicePrincipal");
 
   const PrincipalType(this.wireValue);
   final String wireValue;
@@ -18,4 +20,3 @@ enum PrincipalType {
     throw ArgumentError('Unknown PrincipalType value: $value');
   }
 }
-

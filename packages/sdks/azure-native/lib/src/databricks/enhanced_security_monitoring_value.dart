@@ -1,6 +1,6 @@
 enum EnhancedSecurityMonitoringValue {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const EnhancedSecurityMonitoringValue(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum EnhancedSecurityMonitoringValue {
     throw ArgumentError('Unknown EnhancedSecurityMonitoringValue value: $value');
   }
 }
-

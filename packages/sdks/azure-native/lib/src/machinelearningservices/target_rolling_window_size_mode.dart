@@ -1,7 +1,7 @@
 /// [Required] TargetRollingWindowSiz detection mode.
 enum TargetRollingWindowSizeMode {
-  valueAuto("Auto"),
-  valueCustom("Custom");
+  auto("Auto"),
+  custom("Custom");
 
   const TargetRollingWindowSizeMode(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum TargetRollingWindowSizeMode {
     throw ArgumentError('Unknown TargetRollingWindowSizeMode value: $value');
   }
 }
-

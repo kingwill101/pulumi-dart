@@ -96,6 +96,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_botservice_botconnection" "botConnection" {
+///   connection_name = "sampleConnection"
+///   location        = "West US"
+///   properties = {
+///     client_id     = "sampleclientid"
+///     client_secret = "samplesecret"
+///     parameters = [{
+///       "key"   = "key1"
+///       "value" = "value1"
+///       }, {
+///       "key"   = "key2"
+///       "value" = "value2"
+///     }]
+///     scopes              = "samplescope"
+///     service_provider_id = "serviceproviderid"
+///   }
+///   resource_group_name = "OneResourceGroupName"
+///   resource_name       = "samplebotname"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +136,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.botservice.BotConnection;
 /// import com.pulumi.azurenative.botservice.BotConnectionArgs;
 /// import com.pulumi.azurenative.botservice.inputs.ConnectionSettingPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

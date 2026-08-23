@@ -21,4 +21,3 @@ enum ScanStatus {
     throw ArgumentError('Unknown ScanStatus value: $value');
   }
 }
-

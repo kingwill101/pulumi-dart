@@ -122,6 +122,45 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_job" "job" {
+///   job_name = "test-job"
+///   properties = {
+///     source = {
+///       "buildResultId" = "<default>"
+///       "type"          = "BuildResult"
+///     }
+///     template = {
+///       args = ["arg1", "arg2"]
+///       environment_variables = [{
+///         "name"  = "key1"
+///         "value" = "value1"
+///         }, {
+///         "name"  = "env2"
+///         "value" = "value2"
+///         }, {
+///         "name"        = "secretKey1"
+///         "secretValue" = "secretValue1"
+///       }]
+///     }
+///     trigger_config = {
+///       trigger_type = "Manual"
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -133,8 +172,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.inputs.JobResourcePropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.JobExecutionTemplateArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ManualJobTriggerConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

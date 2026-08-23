@@ -68,6 +68,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_privatelinkscope" "privateLinkScope" {
+///   access_mode_settings = {
+///     exclusions            = []
+///     ingestion_access_mode = "Open"
+///     query_access_mode     = "Open"
+///   }
+///   location            = "Global"
+///   resource_group_name = "my-resource-group"
+///   scope_name          = "my-privatelinkscope"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +99,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.PrivateLinkScope;
 /// import com.pulumi.azurenative.monitor.PrivateLinkScopeArgs;
 /// import com.pulumi.azurenative.monitor.inputs.AccessModeSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -219,6 +241,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_privatelinkscope" "privateLinkScope" {
+///   access_mode_settings = {
+///     exclusions            = []
+///     ingestion_access_mode = "Open"
+///     query_access_mode     = "Open"
+///   }
+///   location            = "Global"
+///   resource_group_name = "my-resource-group"
+///   scope_name          = "my-privatelinkscope"
+///   tags = {
+///     "Tag1" = "Value1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +275,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.PrivateLinkScope;
 /// import com.pulumi.azurenative.monitor.PrivateLinkScopeArgs;
 /// import com.pulumi.azurenative.monitor.inputs.AccessModeSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -337,7 +384,7 @@ class PrivateLinkScope extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it.
   late final pulumi.Output<String> provisioningState;
-  /// System data
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;

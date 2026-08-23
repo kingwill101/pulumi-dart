@@ -16,4 +16,3 @@ enum EnforcementMode {
     throw ArgumentError('Unknown EnforcementMode value: $value');
   }
 }
-

@@ -71,6 +71,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dnsresolver_privateresolvervirtualnetworklink" "privateResolverVirtualNetworkLink" {
+///   dns_forwarding_ruleset_name = "sampleDnsForwardingRuleset"
+///   metadata = {
+///     "additionalProp1" = "value1"
+///   }
+///   resource_group_name = "sampleResourceGroup"
+///   virtual_network = {
+///     id = "/subscriptions/0403cfa9-9659-4f33-9f30-1f191c51d111/resourceGroups/sampleVnetResourceGroupName/providers/Microsoft.Network/virtualNetworks/sampleVirtualNetwork"
+///   }
+///   virtual_network_link_name = "sampleVirtualNetworkLink"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +103,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dnsresolver.PrivateResolverVirtualNetworkLink;
 /// import com.pulumi.azurenative.dnsresolver.PrivateResolverVirtualNetworkLinkArgs;
 /// import com.pulumi.azurenative.dnsresolver.inputs.SubResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// The type of placement policy for a service fabric service. Following are the possible values.
+/// The name of the domain that should used for placement as per this policy.
 class ServicePlacementNonPartiallyPlaceServicePolicy {
   /// The type of placement policy for a service fabric service. Following are the possible values.
   /// Expected value is 'NonPartiallyPlaceService'.
@@ -26,4 +26,3 @@ class ServicePlacementNonPartiallyPlaceServicePolicy {
     );
   }
 }
-

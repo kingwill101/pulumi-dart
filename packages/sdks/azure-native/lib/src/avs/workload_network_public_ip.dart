@@ -60,6 +60,25 @@ import 'workload_network_public_ipargs.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_avs_workloadnetworkpublicip" "workloadNetworkPublicIP" {
+///   display_name          = "publicIP1"
+///   number_of_public_i_ps = 32
+///   private_cloud_name    = "cloud1"
+///   public_ip_id          = "publicIP1"
+///   resource_group_name   = "group1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +87,8 @@ import 'workload_network_public_ipargs.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.avs.WorkloadNetworkPublicIP;
 /// import com.pulumi.azurenative.avs.WorkloadNetworkPublicIPArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -114,7 +133,7 @@ import 'workload_network_public_ipargs.dart';
 ///
 /// workload_network_public_ip = azure_native.avs.WorkloadNetworkPublicIP("workloadNetworkPublicIP",
 ///     display_name="publicIP1",
-///     number_of_public_ips=32,
+///     number_of_public_ips=float(32),
 ///     private_cloud_name="cloud1",
 ///     public_ip_id="publicIP1",
 ///     resource_group_name="group1")

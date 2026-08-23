@@ -88,6 +88,34 @@ import 'virtual_machine_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_scvmm_virtualmachine" "virtualMachine" {
+///   cloud_id = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.SCVMM/Clouds/HRCloud"
+///   extended_location = {
+///     name = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.Arc/customLocations/contoso"
+///     type = "customLocation"
+///   }
+///   hardware_profile = {
+///     cpu_count = 4
+///     memory_mb = 4096
+///   }
+///   location             = "East US"
+///   resource_group_name  = "testrg"
+///   template_id          = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.SCVMM/VirtualMachineTemplates/HRVirtualMachineTemplate"
+///   virtual_machine_name = "DemoVM"
+///   vmm_server_id        = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.SCVMM/VMMServers/ContosoVMMServer"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +126,8 @@ import 'virtual_machine_args.dart';
 /// import com.pulumi.azurenative.scvmm.VirtualMachineArgs;
 /// import com.pulumi.azurenative.scvmm.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.scvmm.inputs.HardwareProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

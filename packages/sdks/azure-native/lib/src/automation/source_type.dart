@@ -1,8 +1,8 @@
 /// The source type. Must be one of VsoGit, VsoTfvc, GitHub, case sensitive.
 enum SourceType {
-  valueVsoGit("VsoGit"),
-  valueVsoTfvc("VsoTfvc"),
-  valueGitHub("GitHub");
+  vsoGit("VsoGit"),
+  vsoTfvc("VsoTfvc"),
+  gitHub("GitHub");
 
   const SourceType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum SourceType {
     throw ArgumentError('Unknown SourceType value: $value');
   }
 }
-

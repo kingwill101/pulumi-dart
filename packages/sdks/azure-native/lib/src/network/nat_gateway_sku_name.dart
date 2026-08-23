@@ -14,4 +14,3 @@ enum NatGatewaySkuName {
     throw ArgumentError('Unknown NatGatewaySkuName value: $value');
   }
 }
-

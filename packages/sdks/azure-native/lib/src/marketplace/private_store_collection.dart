@@ -69,6 +69,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_marketplace_privatestorecollection" "privateStoreCollection" {
+///   all_subscriptions  = false
+///   claim              = ""
+///   collection_id      = "d0f5aa2c-ecc3-4d87-906a-f8c486dcc4f1"
+///   collection_name    = "Test Collection"
+///   private_store_id   = "a0e28e55-90c4-41d8-8e34-bb7ef7775406"
+///   subscriptions_list = ["b340914e-353d-453a-85fb-8f9b65b51f91", "f2baa04d-5bfc-461b-b6d8-61b403c9ec48"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +97,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.marketplace.PrivateStoreCollection;
 /// import com.pulumi.azurenative.marketplace.PrivateStoreCollectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

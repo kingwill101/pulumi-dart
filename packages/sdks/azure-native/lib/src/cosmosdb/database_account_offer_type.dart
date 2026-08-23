@@ -14,4 +14,3 @@ enum DatabaseAccountOfferType {
     throw ArgumentError('Unknown DatabaseAccountOfferType value: $value');
   }
 }
-

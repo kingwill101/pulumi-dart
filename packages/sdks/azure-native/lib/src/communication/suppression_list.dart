@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2023-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 ///
-/// Other available API versions: 2024-09-01-preview, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-09-01-preview, 2025-05-01-preview, 2025-09-01, 2026-03-18. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -60,6 +60,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_communication_suppressionlist" "suppressionList" {
+///   domain_name           = "contoso.com"
+///   email_service_name    = "contosoEmailService"
+///   list_name             = "contosoNewsAlerts"
+///   resource_group_name   = "contosoResourceGroup"
+///   suppression_list_name = "aaaa1111-bbbb-2222-3333-aaaa11112222"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +87,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.communication.SuppressionList;
 /// import com.pulumi.azurenative.communication.SuppressionListArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

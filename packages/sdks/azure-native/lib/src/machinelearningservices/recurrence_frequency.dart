@@ -1,10 +1,10 @@
 /// [Required] The frequency to trigger schedule.
 enum RecurrenceFrequency {
-  valueMinute("Minute"),
-  valueHour("Hour"),
-  valueDay("Day"),
-  valueWeek("Week"),
-  valueMonth("Month");
+  minute("Minute"),
+  hour("Hour"),
+  day("Day"),
+  week("Week"),
+  month("Month");
 
   const RecurrenceFrequency(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum RecurrenceFrequency {
     throw ArgumentError('Unknown RecurrenceFrequency value: $value');
   }
 }
-

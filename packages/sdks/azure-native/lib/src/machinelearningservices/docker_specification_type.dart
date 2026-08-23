@@ -15,4 +15,3 @@ enum DockerSpecificationType {
     throw ArgumentError('Unknown DockerSpecificationType value: $value');
   }
 }
-

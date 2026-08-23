@@ -7,6 +7,8 @@ import 'workload_impact_properties_response.dart';
 ///
 /// Uses Azure REST API version 2024-05-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-05-01-preview.
 ///
+/// Other available API versions: 2025-01-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native impact [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -89,6 +91,36 @@ import 'workload_impact_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_impact_workloadimpact" "workloadImpact" {
+///   properties = {
+///     arm_correlation_ids = ["00000000-0000-0000-0000-000000000000"]
+///     client_incident_details = {
+///       client_incident_id     = "AA123"
+///       client_incident_source = "Jira"
+///     }
+///     impact_category      = "ArmOperation"
+///     impact_description   = "deletion of resource failed"
+///     impacted_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-rg/providers/Microsoft.Sql/sqlserver/dbservercontext"
+///     start_date_time      = "2022-06-15T05:59:46.6517821Z"
+///     workload = {
+///       context = "webapp/scenario1"
+///       toolset = "Other"
+///     }
+///   }
+///   workload_impact_name = "impact-002"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +132,8 @@ import 'workload_impact_properties_response.dart';
 /// import com.pulumi.azurenative.impact.inputs.WorkloadImpactPropertiesArgs;
 /// import com.pulumi.azurenative.impact.inputs.ClientIncidentDetailsArgs;
 /// import com.pulumi.azurenative.impact.inputs.WorkloadArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -305,6 +337,45 @@ import 'workload_impact_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_impact_workloadimpact" "workloadImpact" {
+///   properties = {
+///     client_incident_details = {
+///       client_incident_id     = "AA123"
+///       client_incident_source = "Jira"
+///     }
+///     connectivity = {
+///       port     = 1443
+///       protocol = "TCP"
+///       source = {
+///         azure_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceSub/providers/Microsoft.compute/virtualmachines/vm1"
+///       }
+///       target = {
+///         azure_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceSub/providers/Microsoft.compute/virtualmachines/vm2"
+///       }
+///     }
+///     impact_category      = "Resource.Connectivity"
+///     impact_description   = "conection failure"
+///     impacted_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-rg/providers/Microsoft.Sql/sqlserver/dbservercontext"
+///     start_date_time      = "2022-06-15T05:59:46.6517821Z"
+///     workload = {
+///       context = "webapp/scenario1"
+///       toolset = "Other"
+///     }
+///   }
+///   workload_impact_name = "impact-001"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -318,8 +389,8 @@ import 'workload_impact_properties_response.dart';
 /// import com.pulumi.azurenative.impact.inputs.ConnectivityArgs;
 /// import com.pulumi.azurenative.impact.inputs.SourceOrTargetArgs;
 /// import com.pulumi.azurenative.impact.inputs.WorkloadArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -532,6 +603,35 @@ import 'workload_impact_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_impact_workloadimpact" "workloadImpact" {
+///   properties = {
+///     client_incident_details = {
+///       client_incident_id     = "AA123"
+///       client_incident_source = "Jira"
+///     }
+///     impact_category      = "Availability"
+///     impact_description   = "read calls failed"
+///     impacted_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-rg/providers/Microsoft.Sql/sqlserver/dbservercontext"
+///     start_date_time      = "2022-06-15T05:59:46.6517821Z"
+///     workload = {
+///       context = "webapp/scenario1"
+///       toolset = "Other"
+///     }
+///   }
+///   workload_impact_name = "impact-002"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -543,8 +643,8 @@ import 'workload_impact_properties_response.dart';
 /// import com.pulumi.azurenative.impact.inputs.WorkloadImpactPropertiesArgs;
 /// import com.pulumi.azurenative.impact.inputs.ClientIncidentDetailsArgs;
 /// import com.pulumi.azurenative.impact.inputs.WorkloadArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -738,6 +838,41 @@ import 'workload_impact_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_impact_workloadimpact" "workloadImpact" {
+///   properties = {
+///     client_incident_details = {
+///       client_incident_id     = "AA123"
+///       client_incident_source = "Jira"
+///     }
+///     impact_category      = "Resource.Performance"
+///     impact_description   = "high cpu utilization"
+///     impacted_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-rg/providers/Microsoft.Sql/sqlserver/dbservercontext"
+///     performance = [{
+///       "actual"     = 90
+///       "expected"   = 60
+///       "metricName" = "CPU"
+///       "unit"       = "garbage"
+///     }]
+///     start_date_time = "2022-06-15T05:59:46.6517821Z"
+///     workload = {
+///       context = "webapp/scenario1"
+///       toolset = "Other"
+///     }
+///   }
+///   workload_impact_name = "impact-002"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -749,8 +884,8 @@ import 'workload_impact_properties_response.dart';
 /// import com.pulumi.azurenative.impact.inputs.WorkloadImpactPropertiesArgs;
 /// import com.pulumi.azurenative.impact.inputs.ClientIncidentDetailsArgs;
 /// import com.pulumi.azurenative.impact.inputs.WorkloadArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -835,8 +970,8 @@ import 'workload_impact_properties_response.dart';
 ///         "impact_description": "high cpu utilization",
 ///         "impacted_resource_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-rg/providers/Microsoft.Sql/sqlserver/dbservercontext",
 ///         "performance": [{
-///             "actual": 90,
-///             "expected": 60,
+///             "actual": float(90),
+///             "expected": float(60),
 ///             "metric_name": "CPU",
 ///             "unit": "garbage",
 ///         }],

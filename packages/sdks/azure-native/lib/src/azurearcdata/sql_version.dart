@@ -20,4 +20,3 @@ enum SqlVersion {
     throw ArgumentError('Unknown SqlVersion value: $value');
   }
 }
-

@@ -37,4 +37,3 @@ class IPv4FirewallRuleResponse {
     );
   }
 }
-

@@ -17,4 +17,3 @@ enum CacheIdentityType {
     throw ArgumentError('Unknown CacheIdentityType value: $value');
   }
 }
-

@@ -14,4 +14,3 @@ enum DynamicThresholdModel {
     throw ArgumentError('Unknown DynamicThresholdModel value: $value');
   }
 }
-

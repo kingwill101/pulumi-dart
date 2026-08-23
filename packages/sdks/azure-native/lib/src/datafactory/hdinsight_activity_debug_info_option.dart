@@ -1,8 +1,8 @@
 /// Debug info option.
 enum HDInsightActivityDebugInfoOption {
-  valueNone("None"),
-  valueAlways("Always"),
-  valueFailure("Failure");
+  none("None"),
+  always("Always"),
+  failure("Failure");
 
   const HDInsightActivityDebugInfoOption(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum HDInsightActivityDebugInfoOption {
     throw ArgumentError('Unknown HDInsightActivityDebugInfoOption value: $value');
   }
 }
-

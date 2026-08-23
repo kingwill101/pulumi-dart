@@ -64,6 +64,27 @@ import 'database_account_sql_database_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cosmosdb_databaseaccountsqldatabase" "databaseAccountSqlDatabase" {
+///   account_name  = "ddb1"
+///   database_name = "databaseName"
+///   options       = {}
+///   resource = {
+///     id = "databaseName"
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +94,8 @@ import 'database_account_sql_database_args.dart';
 /// import com.pulumi.azurenative.cosmosdb.DatabaseAccountSqlDatabase;
 /// import com.pulumi.azurenative.cosmosdb.DatabaseAccountSqlDatabaseArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.SqlDatabaseResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

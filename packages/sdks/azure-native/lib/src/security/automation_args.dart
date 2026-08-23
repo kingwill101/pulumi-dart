@@ -20,15 +20,15 @@ class AutomationArgs {
   final pulumi.Input<bool>? isEnabled;
   /// Kind of the resource
   final pulumi.Input<String>? kind;
-  /// Location where the resource is stored
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-  /// The name of the resource group within the user's subscription. The name is case insensitive.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// A collection of scopes on which the security automations logic is applied. Supported scopes are the subscription itself or a resource group under that subscription. The automation will only apply on defined scopes.
   final pulumi.Input<List<AutomationScope>>? scopes;
   /// A collection of the source event types which evaluate the security automation set of rules.
   final pulumi.Input<List<AutomationSource>>? sources;
-  /// A list of key value pairs that describe the resource.
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [AutomationArgs].
@@ -37,11 +37,11 @@ class AutomationArgs {
   /// [description] The security automation description.
   /// [isEnabled] Indicates whether the security automation is enabled.
   /// [kind] Kind of the resource
-  /// [location] Location where the resource is stored
-  /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
+  /// [location] The geo-location where the resource lives
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scopes] A collection of scopes on which the security automations logic is applied. Supported scopes are the subscription itself or a resource group under that subscription. The automation will only apply on defined scopes.
   /// [sources] A collection of the source event types which evaluate the security automation set of rules.
-  /// [tags] A list of key value pairs that describe the resource.
+  /// [tags] Resource tags.
   const AutomationArgs({
     this.actions,
     this.automationName,
@@ -85,4 +85,3 @@ class AutomationArgs {
     );
   }
 }
-

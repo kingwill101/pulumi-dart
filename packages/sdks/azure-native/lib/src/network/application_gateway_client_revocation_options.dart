@@ -15,4 +15,3 @@ enum ApplicationGatewayClientRevocationOptions {
     throw ArgumentError('Unknown ApplicationGatewayClientRevocationOptions value: $value');
   }
 }
-

@@ -73,6 +73,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_orbital_edgesite" "edgeSite" {
+///   edge_site_name = "es1"
+///   global_communications_site = {
+///     id = "/subscriptions/c1be1141-a7c9-4aac-9608-3c2e2f1152c3/providers/Microsoft.Orbital/globalCommunicationsSites/contoso-Vernon"
+///   }
+///   location            = "westus"
+///   resource_group_name = "rg1"
+///   tags = {
+///     "tag1" = "value1"
+///     "tag2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +106,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.orbital.EdgeSite;
 /// import com.pulumi.azurenative.orbital.EdgeSiteArgs;
 /// import com.pulumi.azurenative.orbital.inputs.EdgeSitesPropertiesGlobalCommunicationsSiteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -11,7 +11,7 @@ import 'dsc_configuration_parameter.dart';
 class DscConfigurationArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-  /// The create or update parameters for configuration.
+  /// The configuration name.
   final pulumi.Input<String>? configurationName;
   /// Gets or sets the description of the configuration.
   final pulumi.Input<String>? description;
@@ -25,7 +25,7 @@ class DscConfigurationArgs {
   final pulumi.Input<String>? name;
   /// Gets or sets the configuration parameters.
   final pulumi.Input<Map<String, DscConfigurationParameter>>? parameters;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the source.
   final pulumi.Input<ContentSource> source;
@@ -34,14 +34,14 @@ class DscConfigurationArgs {
 
   /// Creates a new [DscConfigurationArgs].
   /// [automationAccountName] The name of the automation account.
-  /// [configurationName] The create or update parameters for configuration.
+  /// [configurationName] The configuration name.
   /// [description] Gets or sets the description of the configuration.
   /// [location] Gets or sets the location of the resource.
   /// [logProgress] Gets or sets progress log option.
   /// [logVerbose] Gets or sets verbose log option.
   /// [name] Gets or sets name of the resource.
   /// [parameters] Gets or sets the configuration parameters.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [source] Gets or sets the source.
   /// [tags] Gets or sets the tags attached to the resource.
   const DscConfigurationArgs({
@@ -90,4 +90,3 @@ class DscConfigurationArgs {
     );
   }
 }
-

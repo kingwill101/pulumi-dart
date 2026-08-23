@@ -7,30 +7,30 @@ import 'system_data_response.dart';
 class GetAlertProcessingRuleByNameResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-  /// Azure resource Id
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-  /// Resource location
+  /// The geo-location where the resource lives
   final String location;
-  /// Azure resource name
+  /// The name of the resource
   final String name;
   /// Alert processing rule properties.
   final AlertProcessingRulePropertiesResponse properties;
-  /// Alert processing rule system data.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-  /// Resource tags
+  /// Resource tags.
   final Map<String, String>? tags;
-  /// Azure resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetAlertProcessingRuleByNameResult].
   /// [azureApiVersion] The Azure API version of the resource.
-  /// [id] Azure resource Id
-  /// [location] Resource location
-  /// [name] Azure resource name
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the resource
   /// [properties] Alert processing rule properties.
-  /// [systemData] Alert processing rule system data.
-  /// [tags] Resource tags
-  /// [type] Azure resource type
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [tags] Resource tags.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetAlertProcessingRuleByNameResult({
     required this.azureApiVersion,
     required this.id,
@@ -68,4 +68,3 @@ class GetAlertProcessingRuleByNameResult {
     );
   }
 }
-

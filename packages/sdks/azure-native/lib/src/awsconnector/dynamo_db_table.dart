@@ -343,6 +343,129 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_dynamodbtable" "dynamoDbTable" {
+///   location = "fmkjilswdjyisfuwxuj"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "gimtbcfiznraniycjyalnwrfstm"
+///     aws_account_id = "dejqcxb"
+///     aws_properties = {
+///       arn = "qbvqgymuxfzuwybdspdhcuvfouwnet"
+///       attribute_definitions = [{
+///         "attributeName" = "caryhpofnkqtoc"
+///         "attributeType" = "bcmjgzaljcemcrswr"
+///       }]
+///       billing_mode = "pwxrsjcybdcidejuhvrckvxyxad"
+///       contributor_insights_specification = {
+///         enabled = true
+///       }
+///       deletion_protection_enabled = true
+///       global_secondary_indexes = [{
+///         "contributorInsightsSpecification" = {
+///           "enabled" = true
+///         }
+///         "indexName" = "uqlzacnvsvayrvirrwwttb"
+///         "keySchema" = [{
+///           "attributeName" = "wisgqkyoouaxivtrtay"
+///           "keyType"       = "kwkqgbxrwnoklpgmoypovxe"
+///         }]
+///         "projection" = {
+///           "nonKeyAttributes" = ["loqmvohtjsscueegam"]
+///           "projectionType"   = "atbzepkydpgudoaqi"
+///         }
+///         "provisionedThroughput" = {
+///           "readCapacityUnits"  = 10
+///           "writeCapacityUnits" = 28
+///         }
+///       }]
+///       import_source_specification = {
+///         input_compression_type = "bjswmnwxleqmcth"
+///         input_format           = "grnhhysgejvbnecrqoynjomz"
+///         input_format_options = {
+///           csv = {
+///             delimiter   = "qzowvvpwwhptthlgvrtnpyjszetrt"
+///             header_list = ["gminuylhgebpjx"]
+///           }
+///         }
+///         s3_bucket_source = {
+///           s3_bucket       = "exulhkspgmo"
+///           s3_bucket_owner = "pyawhaxbwqhgarz"
+///           s3_key_prefix   = "ogjgqdsvu"
+///         }
+///       }
+///       key_schema = [{
+///         "attributeName" = "wisgqkyoouaxivtrtay"
+///         "keyType"       = "kwkqgbxrwnoklpgmoypovxe"
+///       }]
+///       kinesis_stream_specification = {
+///         approximate_creation_date_time_precision = "MICROSECOND"
+///         stream_arn                               = "qldltl"
+///       }
+///       local_secondary_indexes = [{
+///         "indexName" = "gintyosxvkjqpe"
+///         "keySchema" = [{
+///           "attributeName" = "wisgqkyoouaxivtrtay"
+///           "keyType"       = "kwkqgbxrwnoklpgmoypovxe"
+///         }]
+///         "projection" = {
+///           "nonKeyAttributes" = ["loqmvohtjsscueegam"]
+///           "projectionType"   = "atbzepkydpgudoaqi"
+///         }
+///       }]
+///       point_in_time_recovery_specification = {
+///         point_in_time_recovery_enabled = true
+///       }
+///       provisioned_throughput = {
+///         read_capacity_units  = 10
+///         write_capacity_units = 28
+///       }
+///       resource_policy = {}
+///       sse_specification = {
+///         kms_master_key_id = "rvwuejohzknzrntkvprgxt"
+///         sse_enabled       = true
+///         sse_type          = "osjalywculjbrystezvjojxe"
+///       }
+///       stream_arn = "xvkrzs"
+///       stream_specification = {
+///         resource_policy  = {}
+///         stream_view_type = "wemod"
+///       }
+///       table_class = "tmbfrfbppwhjpm"
+///       table_name  = "mqvlcdboopn"
+///       tags = [{
+///         "key"   = "txipennfw"
+///         "value" = "dkgweupnz"
+///       }]
+///       time_to_live_specification = {
+///         attribute_name = "sxbfejubturdtyusqywguqni"
+///         enabled        = true
+///       }
+///     }
+///     aws_region        = "rdzrhtbydhmaxzuwe"
+///     aws_source_schema = "sqkkuxwamzevkp"
+///     aws_tags = {
+///       "key3791" = "iikafuvbjkvnbogujm"
+///     }
+///     public_cloud_connectors_resource_id = "nugnoqcknmrrminwvfvloqsporjd"
+///     public_cloud_resource_name          = "lkbwyvnzooydbnembmykhmw"
+///   }
+///   resource_group_name = "rgdynamoDBTable"
+///   tags = {
+///     "key2178" = "lyeternduvkobwvqhpicnxel"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -365,8 +488,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.SSESpecificationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.StreamSpecificationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.TimeToLiveSpecificationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

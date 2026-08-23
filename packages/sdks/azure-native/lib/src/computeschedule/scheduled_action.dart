@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-04-15-preview.
 ///
-/// Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native computeschedule [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2026-01-01-preview, 2026-03-01-preview, 2026-04-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native computeschedule [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -145,6 +145,54 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_computeschedule_scheduledaction" "scheduledAction" {
+///   location = "vmuhgdgipeypkcv"
+///   properties = {
+///     action_type = "Start"
+///     disabled    = true
+///     end_time    = "2025-04-17T00:23:55.286Z"
+///     notification_settings = [{
+///       "destination" = "wbhryycyolvnypjxzlawwvb"
+///       "disabled"    = true
+///       "language"    = "en-us"
+///       "type"        = "Email"
+///     }]
+///     resource_type = "VirtualMachine"
+///     schedule = {
+///       deadline_type = "Unknown"
+///       execution_parameters = {
+///         optimization_preference = "Cost"
+///         retry_policy = {
+///           retry_count             = 17
+///           retry_window_in_minutes = 29
+///         }
+///       }
+///       requested_days_of_the_month = [15]
+///       requested_months            = ["January"]
+///       requested_week_days         = ["Monday"]
+///       scheduled_time              = "19:00:00"
+///       time_zone                   = "g"
+///     }
+///     start_time = "2025-04-17T00:23:55.281Z"
+///   }
+///   resource_group_name   = "rgcomputeschedule"
+///   scheduled_action_name = "myScheduledAction"
+///   tags = {
+///     "key2102" = "obwsqwdydpkscnzceopxgkrhrxtdhv"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -157,8 +205,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.computeschedule.inputs.ScheduledActionsScheduleArgs;
 /// import com.pulumi.azurenative.computeschedule.inputs.ExecutionParametersArgs;
 /// import com.pulumi.azurenative.computeschedule.inputs.RetryPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -15,4 +15,3 @@ enum SerialPortState {
     throw ArgumentError('Unknown SerialPortState value: $value');
   }
 }
-

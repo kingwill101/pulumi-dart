@@ -16,4 +16,3 @@ enum DeploymentModelVersionUpgradeOption {
     throw ArgumentError('Unknown DeploymentModelVersionUpgradeOption value: $value');
   }
 }
-

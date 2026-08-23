@@ -13,14 +13,14 @@ class GetIntegrationRuntimeObjectMetadatumArgs {
   final pulumi.Input<String> integrationRuntimeName;
   /// Metadata path.
   final pulumi.Input<String>? metadataPath;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetIntegrationRuntimeObjectMetadatumArgs].
   /// [factoryName] The factory name.
   /// [integrationRuntimeName] The integration runtime name.
   /// [metadataPath] Metadata path.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetIntegrationRuntimeObjectMetadatumArgs({
     required this.factoryName,
     required this.integrationRuntimeName,
@@ -46,4 +46,3 @@ class GetIntegrationRuntimeObjectMetadatumArgs {
     );
   }
 }
-

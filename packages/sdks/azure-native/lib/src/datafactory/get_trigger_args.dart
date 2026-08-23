@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTriggerArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The trigger name.
   final pulumi.Input<String> triggerName;
 
   /// Creates a new [GetTriggerArgs].
   /// [factoryName] The factory name.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [triggerName] The trigger name.
   const GetTriggerArgs({
     required this.factoryName,
@@ -40,4 +40,3 @@ class GetTriggerArgs {
     );
   }
 }
-

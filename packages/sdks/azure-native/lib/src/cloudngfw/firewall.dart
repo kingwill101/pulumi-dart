@@ -1,7 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_resource_manager_managed_identity_properties_response.dart';
 import 'dnssettings_response.dart';
 import 'firewall_args.dart';
+import 'managed_identity_properties_response.dart';
 import 'marketplace_details_response.dart';
 import 'network_profile_response.dart';
 import 'panorama_config_response.dart';
@@ -14,7 +14,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-05-23. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -340,6 +340,132 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cloudngfw_firewall" "firewall" {
+///   associated_rulestack = {
+///     location     = "eastus"
+///     resource_id  = "lrs1"
+///     rulestack_id = "PANRSID"
+///   }
+///   dns_settings = {
+///     dns_servers = [{
+///       "address"    = "20.22.92.111"
+///       "resourceId" = "/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-egressNatIp1"
+///     }]
+///     enable_dns_proxy = "DISABLED"
+///     enabled_dns_type = "CUSTOM"
+///   }
+///   firewall_name = "firewall1"
+///   front_end_settings {
+///     backend_configuration = {
+///       address = {
+///         address     = "20.22.32.136"
+///         resource_id = "/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-frontendSettingIp2"
+///       }
+///       port = "80"
+///     }
+///     frontend_configuration = {
+///       address = {
+///         address     = "20.22.91.251"
+///         resource_id = "/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-frontendSettingIp1"
+///       }
+///       port = "80"
+///     }
+///     name     = "frontendsetting11"
+///     protocol = "TCP"
+///   }
+///   identity = {
+///     type = "None"
+///     user_assigned_identities = {
+///       "key16" = {
+///         client_id    = "aaaa"
+///         principal_id = "aaaaaaaaaaaaaaa"
+///       }
+///     }
+///   }
+///   is_panorama_managed = "TRUE"
+///   location            = "eastus"
+///   marketplace_details = {
+///     marketplace_subscription_status = "PendingFulfillmentStart"
+///     offer_id                        = "liftr-pan-ame-test"
+///     publisher_id                    = "isvtestuklegacy"
+///   }
+///   network_profile = {
+///     egress_nat_ip = [{
+///       "address"    = "20.22.92.111"
+///       "resourceId" = "/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-egressNatIp1"
+///     }]
+///     enable_egress_nat                    = "ENABLED"
+///     network_type                         = "VNET"
+///     private_source_nat_rules_destination = ["20.22.92.11"]
+///     public_ips = [{
+///       "address"    = "20.22.92.11"
+///       "resourceId" = "/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-PublicIp1"
+///     }]
+///     trusted_ranges = ["20.22.92.11"]
+///     vnet_configuration = {
+///       ip_of_trust_subnet_for_udr = {
+///         address     = "10.1.1.0/24"
+///         resource_id = "/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/os-liftr-integration/providers/Microsoft.Network/virtualNetworks/os-liftr-integration-vnet/subnets/os-liftr-integration-untrust-subnet"
+///       }
+///       trust_subnet = {
+///         address_space = "10.1.1.0/24"
+///         resource_id   = "/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/os-liftr-integration/providers/Microsoft.Network/virtualNetworks/os-liftr-integration-vnet/subnets/os-liftr-integration-trust-subnet"
+///       }
+///       un_trust_subnet = {
+///         address_space = "10.1.1.0/24"
+///         resource_id   = "/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/os-liftr-integration/providers/Microsoft.Network/virtualNetworks/os-liftr-integration-vnet/subnets/os-liftr-integration-untrust-subnet"
+///       }
+///       vnet = {
+///         address_space = "10.1.0.0/16"
+///         resource_id   = "/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/os-liftr-integration/providers/Microsoft.Network/virtualNetworks/os-liftr-integration-vnet"
+///       }
+///     }
+///     vwan_configuration = {
+///       ip_of_trust_subnet_for_udr = {
+///         address     = "10.1.1.0/24"
+///         resource_id = "/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/os-liftr-integration/providers/Microsoft.Network/virtualNetworks/os-liftr-integration-vnet/subnets/os-liftr-integration-untrust-subnet"
+///       }
+///       network_virtual_appliance_id = "2bf4a339-294d-4c25-b0b2-ef649e9f5c12"
+///       trust_subnet = {
+///         address_space = "10.1.1.0/24"
+///         resource_id   = "/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/os-liftr-integration/providers/Microsoft.Network/virtualNetworks/os-liftr-integration-vnet/subnets/os-liftr-integration-trust-subnet"
+///       }
+///       un_trust_subnet = {
+///         address_space = "10.1.1.0/24"
+///         resource_id   = "/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/os-liftr-integration/providers/Microsoft.Network/virtualNetworks/os-liftr-integration-vnet/subnets/os-liftr-integration-untrust-subnet"
+///       }
+///       v_hub = {
+///         address_space = "10.1.1.0/24"
+///         resource_id   = "/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/os-liftr-integration/providers/Microsoft.Network/virtualNetworks/os-liftr-integration-vnet/subnets/os-liftr-integration-untrust-subnet"
+///       }
+///     }
+///   }
+///   pan_etag = "2bf4a339-294d-4c25-b0b2-ef649e9f5c12"
+///   panorama_config = {
+///     config_string = "bas64EncodedString"
+///   }
+///   plan_data = {
+///     billing_cycle = "MONTHLY"
+///     plan_id       = "liftrpantestplan"
+///     usage_type    = "PAYG"
+///   }
+///   resource_group_name = "firewall-rg"
+///   tags = {
+///     "tagName" = "value"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -361,8 +487,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cloudngfw.inputs.VwanConfigurationArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.PanoramaConfigArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.PlanDataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -915,6 +1041,40 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cloudngfw_firewall" "firewall" {
+///   dns_settings  = {}
+///   firewall_name = "firewall1"
+///   location      = "eastus"
+///   marketplace_details = {
+///     offer_id     = "liftr-pan-ame-test"
+///     publisher_id = "isvtestuklegacy"
+///   }
+///   network_profile = {
+///     enable_egress_nat = "ENABLED"
+///     network_type      = "VNET"
+///     public_ips = [{
+///       "address"    = "20.22.92.11"
+///       "resourceId" = "/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-PublicIp1"
+///     }]
+///   }
+///   plan_data = {
+///     billing_cycle = "MONTHLY"
+///     plan_id       = "liftrpantestplan"
+///   }
+///   resource_group_name = "firewall-rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -927,8 +1087,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cloudngfw.inputs.MarketplaceDetailsArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.NetworkProfileArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.PlanDataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1070,7 +1230,7 @@ class Firewall extends pulumi.CustomResource {
   /// Frontend settings for Firewall
   late final pulumi.Output<List<Map<String, dynamic>>?> frontEndSettings;
   /// The managed service identities assigned to this resource.
-  late final pulumi.Output<AzureResourceManagerManagedIdentityPropertiesResponse?> identity;
+  late final pulumi.Output<ManagedIdentityPropertiesResponse?> identity;
   /// Panorama Managed: Default is False. Default will be CloudSec managed
   late final pulumi.Output<String?> isPanoramaManaged;
   /// Strata Cloud Managed: Default is False. Default will be CloudSec managed
@@ -1118,7 +1278,7 @@ class Firewall extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dnsSettings = registerOutput<DNSSettingsResponse>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DNSSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     frontEndSettings = registerOutput<List<Map<String, dynamic>>?>('frontEndSettings');
-    identity = registerOutput<AzureResourceManagerManagedIdentityPropertiesResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureResourceManagerManagedIdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<ManagedIdentityPropertiesResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedIdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isPanoramaManaged = registerOutput<String?>('isPanoramaManaged');
     isStrataCloudManaged = registerOutput<String?>('isStrataCloudManaged');
     location = registerOutput<String>('location');

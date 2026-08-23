@@ -17,4 +17,3 @@ enum PurgeableOrchestrationState {
     throw ArgumentError('Unknown PurgeableOrchestrationState value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum DaprMetadataRequired {
     throw ArgumentError('Unknown DaprMetadataRequired value: $value');
   }
 }
-

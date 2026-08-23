@@ -67,6 +67,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_privateendpointconnectionoperation" "privateEndpointConnectionOperation" {
+///   private_endpoint_connection_name = "sakanwar1204project1634pe.bf42f8a1-09f5-4ee4-aea6-a019cc60f9d7"
+///   private_link_service_connection_state = {
+///     actions_required = ""
+///     status           = "Approved"
+///   }
+///   project_name        = "sakanwar1204project"
+///   resource_group_name = "sakanwar"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +97,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.migrate.PrivateEndpointConnectionOperation;
 /// import com.pulumi.azurenative.migrate.PrivateEndpointConnectionOperationArgs;
 /// import com.pulumi.azurenative.migrate.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

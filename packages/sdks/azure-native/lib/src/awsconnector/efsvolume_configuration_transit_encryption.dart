@@ -15,4 +15,3 @@ enum EFSVolumeConfigurationTransitEncryption {
     throw ArgumentError('Unknown EFSVolumeConfigurationTransitEncryption value: $value');
   }
 }
-

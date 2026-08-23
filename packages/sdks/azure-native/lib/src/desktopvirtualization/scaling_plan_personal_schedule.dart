@@ -7,7 +7,7 @@ import 'time_response.dart';
 ///
 /// Uses Azure REST API version 2024-04-03. In version 2.x of the Azure Native provider, it used API version 2024-11-01-preview.
 ///
-/// Other available API versions: 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-10-10, 2025-11-01-preview, 2026-01-01-preview, 2026-03-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -150,6 +150,61 @@ import 'time_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_desktopvirtualization_scalingplanpersonalschedule" "scalingPlanPersonalSchedule" {
+///   days_of_week                           = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+///   off_peak_action_on_disconnect          = "None"
+///   off_peak_action_on_logoff              = "Deallocate"
+///   off_peak_minutes_to_wait_on_disconnect = 10
+///   off_peak_minutes_to_wait_on_logoff     = 10
+///   off_peak_start_time = {
+///     hour   = 20
+///     minute = 0
+///   }
+///   off_peak_start_vm_on_connect       = "Enable"
+///   peak_action_on_disconnect          = "None"
+///   peak_action_on_logoff              = "Deallocate"
+///   peak_minutes_to_wait_on_disconnect = 10
+///   peak_minutes_to_wait_on_logoff     = 10
+///   peak_start_time = {
+///     hour   = 8
+///     minute = 0
+///   }
+///   peak_start_vm_on_connect                = "Enable"
+///   ramp_down_action_on_disconnect          = "None"
+///   ramp_down_action_on_logoff              = "Deallocate"
+///   ramp_down_minutes_to_wait_on_disconnect = 10
+///   ramp_down_minutes_to_wait_on_logoff     = 10
+///   ramp_down_start_time = {
+///     hour   = 18
+///     minute = 0
+///   }
+///   ramp_down_start_vm_on_connect         = "Enable"
+///   ramp_up_action_on_disconnect          = "None"
+///   ramp_up_action_on_logoff              = "None"
+///   ramp_up_auto_start_hosts              = "All"
+///   ramp_up_minutes_to_wait_on_disconnect = 10
+///   ramp_up_minutes_to_wait_on_logoff     = 10
+///   ramp_up_start_time = {
+///     hour   = 6
+///     minute = 0
+///   }
+///   ramp_up_start_vm_on_connect = "Enable"
+///   resource_group_name         = "resourceGroup1"
+///   scaling_plan_name           = "scalingPlan1"
+///   scaling_plan_schedule_name  = "scalingPlanScheduleWeekdays1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -159,8 +214,8 @@ import 'time_response.dart';
 /// import com.pulumi.azurenative.desktopvirtualization.ScalingPlanPersonalSchedule;
 /// import com.pulumi.azurenative.desktopvirtualization.ScalingPlanPersonalScheduleArgs;
 /// import com.pulumi.azurenative.desktopvirtualization.inputs.TimeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -4,9 +4,9 @@ import 'system_data_response.dart';
 
 /// Definition of the Runtime Environment type.
 ///
-/// Uses Azure REST API version 2023-05-15-preview. In version 2.x of the Azure Native provider, it used API version 2023-05-15-preview.
+/// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2023-05-15-preview.
 ///
-/// Other available API versions: 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -25,13 +25,13 @@ import 'system_data_response.dart';
 ///         AutomationAccountName = "myAutomationAccount9",
 ///         DefaultPackages =
 ///         {
-///             { "Az", "8.3.0" },
+///             { "Az", "12.3.0" },
 ///         },
 ///         Language = "PowerShell",
 ///         Location = "East US 2",
 ///         ResourceGroupName = "rg",
 ///         RuntimeEnvironmentName = "myRuntimeEnvironmentName",
-///         Version = "7.1",
+///         Version = "7.4",
 ///     });
 ///
 /// });
@@ -52,19 +52,42 @@ import 'system_data_response.dart';
 /// 		_, err := automation.NewRuntimeEnvironment(ctx, "runtimeEnvironment", &automation.RuntimeEnvironmentArgs{
 /// 			AutomationAccountName: pulumi.String("myAutomationAccount9"),
 /// 			DefaultPackages: pulumi.StringMap{
-/// 				"Az": pulumi.String("8.3.0"),
+/// 				"Az": pulumi.String("12.3.0"),
 /// 			},
 /// 			Language:               pulumi.String("PowerShell"),
 /// 			Location:               pulumi.String("East US 2"),
 /// 			ResourceGroupName:      pulumi.String("rg"),
 /// 			RuntimeEnvironmentName: pulumi.String("myRuntimeEnvironmentName"),
-/// 			Version:                pulumi.String("7.1"),
+/// 			Version:                pulumi.String("7.4"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_runtimeenvironment" "runtimeEnvironment" {
+///   automation_account_name = "myAutomationAccount9"
+///   default_packages = {
+///     "Az" = "12.3.0"
+///   }
+///   language                 = "PowerShell"
+///   location                 = "East US 2"
+///   resource_group_name      = "rg"
+///   runtime_environment_name = "myRuntimeEnvironmentName"
+///   version                  = "7.4"
 /// }
 ///
 /// ```
@@ -77,8 +100,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.automation.RuntimeEnvironment;
 /// import com.pulumi.azurenative.automation.RuntimeEnvironmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -92,12 +115,12 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var runtimeEnvironment = new RuntimeEnvironment("runtimeEnvironment", RuntimeEnvironmentArgs.builder()
 ///             .automationAccountName("myAutomationAccount9")
-///             .defaultPackages(Map.of("Az", "8.3.0"))
+///             .defaultPackages(Map.of("Az", "12.3.0"))
 ///             .language("PowerShell")
 ///             .location("East US 2")
 ///             .resourceGroupName("rg")
 ///             .runtimeEnvironmentName("myRuntimeEnvironmentName")
-///             .version("7.1")
+///             .version("7.4")
 ///             .build());
 ///
 ///     }
@@ -112,13 +135,13 @@ import 'system_data_response.dart';
 /// const runtimeEnvironment = new azure_native.automation.RuntimeEnvironment("runtimeEnvironment", {
 ///     automationAccountName: "myAutomationAccount9",
 ///     defaultPackages: {
-///         Az: "8.3.0",
+///         Az: "12.3.0",
 ///     },
 ///     language: "PowerShell",
 ///     location: "East US 2",
 ///     resourceGroupName: "rg",
 ///     runtimeEnvironmentName: "myRuntimeEnvironmentName",
-///     version: "7.1",
+///     version: "7.4",
 /// });
 ///
 /// ```
@@ -130,13 +153,13 @@ import 'system_data_response.dart';
 /// runtime_environment = azure_native.automation.RuntimeEnvironment("runtimeEnvironment",
 ///     automation_account_name="myAutomationAccount9",
 ///     default_packages={
-///         "Az": "8.3.0",
+///         "Az": "12.3.0",
 ///     },
 ///     language="PowerShell",
 ///     location="East US 2",
 ///     resource_group_name="rg",
 ///     runtime_environment_name="myRuntimeEnvironmentName",
-///     version="7.1")
+///     version="7.4")
 ///
 /// ```
 ///
@@ -147,12 +170,12 @@ import 'system_data_response.dart';
 ///     properties:
 ///       automationAccountName: myAutomationAccount9
 ///       defaultPackages:
-///         Az: 8.3.0
+///         Az: 12.3.0
 ///       language: PowerShell
 ///       location: East US 2
 ///       resourceGroupName: rg
 ///       runtimeEnvironmentName: myRuntimeEnvironmentName
-///       version: '7.1'
+///       version: '7.4'
 ///
 /// ```
 ///

@@ -3,9 +3,9 @@ import 'product_api_link_args.dart';
 
 /// Product-API link details.
 ///
-/// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -21,7 +21,7 @@ import 'product_api_link_args.dart';
 /// {
 ///     var productApiLink = new AzureNative.ApiManagement.ProductApiLink("productApiLink", new()
 ///     {
-///         ApiId = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api",
+///         ApiId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api",
 ///         ApiLinkId = "link1",
 ///         ProductId = "testproduct",
 ///         ResourceGroupName = "rg1",
@@ -44,7 +44,7 @@ import 'product_api_link_args.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := apimanagement.NewProductApiLink(ctx, "productApiLink", &apimanagement.ProductApiLinkArgs{
-/// 			ApiId:             pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api"),
+/// 			ApiId:             pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api"),
 /// 			ApiLinkId:         pulumi.String("link1"),
 /// 			ProductId:         pulumi.String("testproduct"),
 /// 			ResourceGroupName: pulumi.String("rg1"),
@@ -59,6 +59,25 @@ import 'product_api_link_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_productapilink" "productApiLink" {
+///   api_id              = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api"
+///   api_link_id         = "link1"
+///   product_id          = "testproduct"
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +86,8 @@ import 'product_api_link_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.ProductApiLink;
 /// import com.pulumi.azurenative.apimanagement.ProductApiLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -81,7 +100,7 @@ import 'product_api_link_args.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var productApiLink = new ProductApiLink("productApiLink", ProductApiLinkArgs.builder()
-///             .apiId("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api")
+///             .apiId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api")
 ///             .apiLinkId("link1")
 ///             .productId("testproduct")
 ///             .resourceGroupName("rg1")
@@ -98,7 +117,7 @@ import 'product_api_link_args.dart';
 /// import * as azure_native from "@pulumi/azure-native";
 ///
 /// const productApiLink = new azure_native.apimanagement.ProductApiLink("productApiLink", {
-///     apiId: "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api",
+///     apiId: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api",
 ///     apiLinkId: "link1",
 ///     productId: "testproduct",
 ///     resourceGroupName: "rg1",
@@ -112,7 +131,7 @@ import 'product_api_link_args.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// product_api_link = azure_native.apimanagement.ProductApiLink("productApiLink",
-///     api_id="/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api",
+///     api_id="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api",
 ///     api_link_id="link1",
 ///     product_id="testproduct",
 ///     resource_group_name="rg1",
@@ -125,7 +144,7 @@ import 'product_api_link_args.dart';
 ///   productApiLink:
 ///     type: azure-native:apimanagement:ProductApiLink
 ///     properties:
-///       apiId: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api
+///       apiId: /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api
 ///       apiLinkId: link1
 ///       productId: testproduct
 ///       resourceGroupName: rg1

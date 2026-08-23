@@ -15,4 +15,3 @@ enum LeastPrivilegeMode {
     throw ArgumentError('Unknown LeastPrivilegeMode value: $value');
   }
 }
-

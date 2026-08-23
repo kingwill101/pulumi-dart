@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CredentialArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-  /// The parameters supplied to the create or update credential operation.
+  /// The name of credential.
   final pulumi.Input<String>? credentialName;
   /// Gets or sets the description of the credential.
   final pulumi.Input<String>? description;
@@ -17,18 +17,18 @@ class CredentialArgs {
   final pulumi.Input<String> name;
   /// Gets or sets the password of the credential.
   final pulumi.Input<String> password;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the user name of the credential.
   final pulumi.Input<String> userName;
 
   /// Creates a new [CredentialArgs].
   /// [automationAccountName] The name of the automation account.
-  /// [credentialName] The parameters supplied to the create or update credential operation.
+  /// [credentialName] The name of credential.
   /// [description] Gets or sets the description of the credential.
   /// [name] Gets or sets the name of the credential.
   /// [password] Gets or sets the password of the credential.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userName] Gets or sets the user name of the credential.
   const CredentialArgs({
     required this.automationAccountName,
@@ -64,4 +64,3 @@ class CredentialArgs {
     );
   }
 }
-

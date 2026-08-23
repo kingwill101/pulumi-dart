@@ -15,4 +15,3 @@ enum OSFeedType {
     throw ArgumentError('Unknown OSFeedType value: $value');
   }
 }
-

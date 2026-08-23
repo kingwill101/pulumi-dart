@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01-preview.
 ///
-/// Other available API versions: 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -91,6 +91,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_startstopmanagedinstanceschedule" "startStopManagedInstanceSchedule" {
+///   description           = "This is a schedule for our Dev/Test environment."
+///   managed_instance_name = "schedulemi"
+///   resource_group_name   = "schedulerg"
+///   schedule_list {
+///     start_day  = "Thursday"
+///     start_time = "18:00"
+///     stop_day   = "Thursday"
+///     stop_time  = "17:00"
+///   }
+///   schedule_list {
+///     start_day  = "Thursday"
+///     start_time = "15:00"
+///     stop_day   = "Thursday"
+///     stop_time  = "14:00"
+///   }
+///   start_stop_schedule_name = "default"
+///   time_zone_id             = "Central European Standard Time"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +131,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.sql.StartStopManagedInstanceSchedule;
 /// import com.pulumi.azurenative.sql.StartStopManagedInstanceScheduleArgs;
 /// import com.pulumi.azurenative.sql.inputs.ScheduleItemArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -294,6 +325,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_startstopmanagedinstanceschedule" "startStopManagedInstanceSchedule" {
+///   managed_instance_name = "schedulemi"
+///   resource_group_name   = "schedulerg"
+///   schedule_list {
+///     start_day  = "Thursday"
+///     start_time = "18:00"
+///     stop_day   = "Thursday"
+///     stop_time  = "17:00"
+///   }
+///   schedule_list {
+///     start_day  = "Thursday"
+///     start_time = "15:00"
+///     stop_day   = "Thursday"
+///     stop_time  = "14:00"
+///   }
+///   start_stop_schedule_name = "default"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -303,8 +363,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.sql.StartStopManagedInstanceSchedule;
 /// import com.pulumi.azurenative.sql.StartStopManagedInstanceScheduleArgs;
 /// import com.pulumi.azurenative.sql.inputs.ScheduleItemArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

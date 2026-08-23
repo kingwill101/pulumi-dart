@@ -15,4 +15,3 @@ enum DiskDeleteOptionTypes {
     throw ArgumentError('Unknown DiskDeleteOptionTypes value: $value');
   }
 }
-

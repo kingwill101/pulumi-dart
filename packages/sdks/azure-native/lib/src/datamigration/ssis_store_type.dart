@@ -14,4 +14,3 @@ enum SsisStoreType {
     throw ArgumentError('Unknown SsisStoreType value: $value');
   }
 }
-

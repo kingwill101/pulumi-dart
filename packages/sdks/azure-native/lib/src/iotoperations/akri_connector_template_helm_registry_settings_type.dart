@@ -15,4 +15,3 @@ enum AkriConnectorTemplateHelmRegistrySettingsType {
     throw ArgumentError('Unknown AkriConnectorTemplateHelmRegistrySettingsType value: $value');
   }
 }
-

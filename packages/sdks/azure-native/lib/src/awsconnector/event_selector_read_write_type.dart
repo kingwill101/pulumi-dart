@@ -16,4 +16,3 @@ enum EventSelectorReadWriteType {
     throw ArgumentError('Unknown EventSelectorReadWriteType value: $value');
   }
 }
-

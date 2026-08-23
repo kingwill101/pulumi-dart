@@ -23,7 +23,7 @@ class GetAutomationAccountResult {
   final EncryptionPropertiesResponse? encryption;
   /// Gets or sets the etag of the resource.
   final String? etag;
-  /// Fully qualified resource Id for the resource
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Identity for the resource.
   final IdentityResponse? identity;
@@ -31,8 +31,8 @@ class GetAutomationAccountResult {
   final String? lastModifiedBy;
   /// Gets the last modified time.
   final String lastModifiedTime;
-  /// The Azure Region where the resource lives
-  final String? location;
+  /// The geo-location where the resource lives
+  final String location;
   /// The name of the resource
   final String name;
   /// List of Automation operations supported by the Automation resource provider.
@@ -43,11 +43,11 @@ class GetAutomationAccountResult {
   final SkuResponse? sku;
   /// Gets status of account.
   final String state;
-  /// Resource system metadata.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// Resource tags.
   final Map<String, String>? tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetAutomationAccountResult].
@@ -58,19 +58,19 @@ class GetAutomationAccountResult {
   /// [disableLocalAuth] Indicates whether requests using non-AAD authentication are blocked
   /// [encryption] Encryption properties for the automation account
   /// [etag] Gets or sets the etag of the resource.
-  /// [id] Fully qualified resource Id for the resource
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [identity] Identity for the resource.
   /// [lastModifiedBy] Gets or sets the last modified by.
   /// [lastModifiedTime] Gets the last modified time.
-  /// [location] The Azure Region where the resource lives
+  /// [location] The geo-location where the resource lives
   /// [name] The name of the resource
   /// [privateEndpointConnections] List of Automation operations supported by the Automation resource provider.
   /// [publicNetworkAccess] Indicates whether traffic on the non-ARM endpoint (Webhook/Agent) is allowed from the public internet
   /// [sku] Gets or sets the SKU of account.
   /// [state] Gets status of account.
-  /// [systemData] Resource system metadata.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
-  /// [type] The type of the resource.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetAutomationAccountResult({
     this.automationHybridServiceUrl,
     required this.azureApiVersion,
@@ -83,7 +83,7 @@ class GetAutomationAccountResult {
     this.identity,
     this.lastModifiedBy,
     required this.lastModifiedTime,
-    this.location,
+    required this.location,
     required this.name,
     this.privateEndpointConnections,
     this.publicNetworkAccess,
@@ -107,7 +107,7 @@ class GetAutomationAccountResult {
       'identity': ?identity?.toMap(),
       'lastModifiedBy': ?lastModifiedBy,
       'lastModifiedTime': lastModifiedTime,
-      'location': ?location,
+      'location': location,
       'name': name,
       'privateEndpointConnections': ?(() { final guardedValue = privateEndpointConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'publicNetworkAccess': ?publicNetworkAccess,
@@ -132,7 +132,7 @@ class GetAutomationAccountResult {
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       lastModifiedBy: (() { final guardedValue = map['lastModifiedBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastModifiedTime: map['lastModifiedTime'] as String,
-      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: map['location'] as String,
       name: map['name'] as String,
       privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as bool; })(),
@@ -144,4 +144,3 @@ class GetAutomationAccountResult {
     );
   }
 }
-

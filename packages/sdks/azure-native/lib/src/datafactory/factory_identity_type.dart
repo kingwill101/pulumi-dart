@@ -1,8 +1,8 @@
 /// The identity type.
 enum FactoryIdentityType {
-  valueSystemAssigned("SystemAssigned"),
-  valueUserAssigned("UserAssigned"),
-  valueSystemAssignedUserAssigned("SystemAssigned,UserAssigned");
+  systemAssigned("SystemAssigned"),
+  userAssigned("UserAssigned"),
+  systemAssignedUserAssigned("SystemAssigned,UserAssigned");
 
   const FactoryIdentityType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum FactoryIdentityType {
     throw ArgumentError('Unknown FactoryIdentityType value: $value');
   }
 }
-

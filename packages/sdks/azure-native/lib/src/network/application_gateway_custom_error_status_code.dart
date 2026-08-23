@@ -22,4 +22,3 @@ enum ApplicationGatewayCustomErrorStatusCode {
     throw ArgumentError('Unknown ApplicationGatewayCustomErrorStatusCode value: $value');
   }
 }
-

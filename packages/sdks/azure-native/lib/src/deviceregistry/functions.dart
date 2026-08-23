@@ -32,7 +32,7 @@ import 'get_schema_version_result.dart';
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2023-11-01-preview, 2024-09-01-preview, 2025-07-01-preview, 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-11-01-preview, 2024-09-01-preview, 2025-07-01-preview, 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deviceregistry_get_asset_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAssetResult> getAsset(
@@ -52,7 +52,7 @@ Future<GetAssetResult> getAsset(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2023-11-01-preview, 2024-09-01-preview, 2025-07-01-preview, 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-11-01-preview, 2024-09-01-preview, 2025-07-01-preview, 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deviceregistry_get_asset_endpoint_profile_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAssetEndpointProfileResult> getAssetEndpointProfile(
@@ -71,6 +71,8 @@ Future<GetAssetEndpointProfileResult> getAssetEndpointProfile(
 /// Get a Credential
 ///
 /// Uses Azure REST API version 2025-11-01-preview.
+///
+/// Other available API versions: 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deviceregistry_get_credential_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCredentialResult> getCredential(
@@ -126,7 +128,7 @@ Future<GetDiscoveredAssetEndpointProfileResult> getDiscoveredAssetEndpointProfil
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
 ///
-/// Other available API versions: 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deviceregistry_get_namespace_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNamespaceResult> getNamespace(
@@ -146,7 +148,7 @@ Future<GetNamespaceResult> getNamespace(
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
 ///
-/// Other available API versions: 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deviceregistry_get_namespace_asset_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNamespaceAssetResult> getNamespaceAsset(
@@ -166,7 +168,7 @@ Future<GetNamespaceAssetResult> getNamespaceAsset(
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
 ///
-/// Other available API versions: 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deviceregistry_get_namespace_device_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNamespaceDeviceResult> getNamespaceDevice(
@@ -186,7 +188,7 @@ Future<GetNamespaceDeviceResult> getNamespaceDevice(
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
 ///
-/// Other available API versions: 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deviceregistry_get_namespace_discovered_asset_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNamespaceDiscoveredAssetResult> getNamespaceDiscoveredAsset(
@@ -206,7 +208,7 @@ Future<GetNamespaceDiscoveredAssetResult> getNamespaceDiscoveredAsset(
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
 ///
-/// Other available API versions: 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deviceregistry_get_namespace_discovered_device_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNamespaceDiscoveredDeviceResult> getNamespaceDiscoveredDevice(
@@ -225,6 +227,8 @@ Future<GetNamespaceDiscoveredDeviceResult> getNamespaceDiscoveredDevice(
 /// Get a Policy
 ///
 /// Uses Azure REST API version 2025-11-01-preview.
+///
+/// Other available API versions: 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deviceregistry_get_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPolicyResult> getPolicy(
@@ -244,7 +248,7 @@ Future<GetPolicyResult> getPolicy(
 ///
 /// Uses Azure REST API version 2024-09-01-preview.
 ///
-/// Other available API versions: 2025-07-01-preview, 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-07-01-preview, 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deviceregistry_get_schema_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSchemaResult> getSchema(
@@ -264,7 +268,7 @@ Future<GetSchemaResult> getSchema(
 ///
 /// Uses Azure REST API version 2024-09-01-preview.
 ///
-/// Other available API versions: 2025-07-01-preview, 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-07-01-preview, 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deviceregistry_get_schema_registry_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSchemaRegistryResult> getSchemaRegistry(
@@ -284,7 +288,7 @@ Future<GetSchemaRegistryResult> getSchemaRegistry(
 ///
 /// Uses Azure REST API version 2024-09-01-preview.
 ///
-/// Other available API versions: 2025-07-01-preview, 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-07-01-preview, 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deviceregistry_get_schema_version_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSchemaVersionResult> getSchemaVersion(

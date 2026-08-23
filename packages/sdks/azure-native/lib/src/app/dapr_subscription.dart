@@ -89,6 +89,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_daprsubscription" "daprSubscription" {
+///   bulk_subscribe = {
+///     enabled               = true
+///     max_await_duration_ms = 500
+///     max_messages_count    = 123
+///   }
+///   environment_name    = "myenvironment"
+///   name                = "mysubscription"
+///   pubsub_name         = "mypubsubcomponent"
+///   resource_group_name = "examplerg"
+///   routes = {
+///     default = "/products"
+///   }
+///   scopes = ["warehouseapp", "customersupportapp"]
+///   topic  = "inventory"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +127,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.DaprSubscriptionArgs;
 /// import com.pulumi.azurenative.app.inputs.DaprSubscriptionBulkSubscribeOptionsArgs;
 /// import com.pulumi.azurenative.app.inputs.DaprSubscriptionRoutesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -267,6 +295,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_daprsubscription" "daprSubscription" {
+///   environment_name    = "myenvironment"
+///   name                = "mysubscription"
+///   pubsub_name         = "mypubsubcomponent"
+///   resource_group_name = "examplerg"
+///   routes = {
+///     default = "/products"
+///   }
+///   topic = "inventory"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -276,8 +326,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.DaprSubscription;
 /// import com.pulumi.azurenative.app.DaprSubscriptionArgs;
 /// import com.pulumi.azurenative.app.inputs.DaprSubscriptionRoutesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -443,6 +493,39 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_daprsubscription" "daprSubscription" {
+///   environment_name = "myenvironment"
+///   metadata = {
+///     "foo"   = "bar"
+///     "hello" = "world"
+///   }
+///   name                = "mysubscription"
+///   pubsub_name         = "mypubsubcomponent"
+///   resource_group_name = "examplerg"
+///   routes = {
+///     default = "/products"
+///     rules = [{
+///       "match" = "event.type == 'widget'"
+///       "path"  = "/widgets"
+///       }, {
+///       "match" = "event.type == 'gadget'"
+///       "path"  = "/gadgets"
+///     }]
+///   }
+///   topic = "inventory"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -452,8 +535,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.DaprSubscription;
 /// import com.pulumi.azurenative.app.DaprSubscriptionArgs;
 /// import com.pulumi.azurenative.app.inputs.DaprSubscriptionRoutesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

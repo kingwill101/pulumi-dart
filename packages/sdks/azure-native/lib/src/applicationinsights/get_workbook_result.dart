@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'system_data_response.dart';
-import 'workbook_resource_response_identity.dart';
+import 'workbook_resource_identity_response.dart';
 
 /// Result data returned by getWorkbook.
 class GetWorkbookResult {
@@ -15,10 +15,10 @@ class GetWorkbookResult {
   final String displayName;
   /// Resource etag
   final String? etag;
-  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Identity used for BYOS
-  final WorkbookResourceResponseIdentity? identity;
+  final WorkbookResourceIdentityResponse? identity;
   /// The kind of workbook. Only valid value is shared.
   final String? kind;
   /// The geo-location where the resource lives
@@ -33,7 +33,7 @@ class GetWorkbookResult {
   final String? sourceId;
   /// The resourceId to the storage account when bring your own storage is used
   final String? storageUri;
-  /// Metadata pertaining to creation and last modification of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// Resource tags.
   final Map<String, String>? tags;
@@ -52,7 +52,7 @@ class GetWorkbookResult {
   /// [description] The description of the workbook.
   /// [displayName] The user-defined name (display name) of the workbook.
   /// [etag] Resource etag
-  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [identity] Identity used for BYOS
   /// [kind] The kind of workbook. Only valid value is shared.
   /// [location] The geo-location where the resource lives
@@ -61,7 +61,7 @@ class GetWorkbookResult {
   /// [serializedData] Configuration of this particular workbook. Configuration data is a string containing valid JSON
   /// [sourceId] ResourceId for a source resource.
   /// [storageUri] The resourceId to the storage account when bring your own storage is used
-  /// [systemData] Metadata pertaining to creation and last modification of the resource.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [timeModified] Date and time in UTC of the last modification that was made to this workbook definition.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -123,7 +123,7 @@ class GetWorkbookResult {
       displayName: map['displayName'] as String,
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return WorkbookResourceResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return WorkbookResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: map['location'] as String,
       name: map['name'] as String,
@@ -140,4 +140,3 @@ class GetWorkbookResult {
     );
   }
 }
-

@@ -27,7 +27,7 @@ class AppServiceEnvironmentArgs {
   final pulumi.Input<int>? ipsslAddressCount;
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   final pulumi.Input<String>? kind;
-  /// Resource Location.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// Front-end VM size, e.g. "Medium", "Large".
   final pulumi.Input<String>? multiSize;
@@ -35,7 +35,7 @@ class AppServiceEnvironmentArgs {
   final pulumi.Input<String>? name;
   /// Full view of networking configuration for an ASE.
   final pulumi.Input<AseV3NetworkingConfiguration>? networkingConfiguration;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
@@ -57,11 +57,11 @@ class AppServiceEnvironmentArgs {
   /// [internalLoadBalancingMode] Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
   /// [ipsslAddressCount] Number of IP SSL addresses reserved for the App Service Environment.
   /// [kind] Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
-  /// [location] Resource Location.
+  /// [location] The geo-location where the resource lives
   /// [multiSize] Front-end VM size, e.g. "Medium", "Large".
   /// [name] Name of the App Service Environment.
   /// [networkingConfiguration] Full view of networking configuration for an ASE.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [upgradePreference] Upgrade Preference
   /// [userWhitelistedIpRanges] User added ip ranges to whitelist on ASE db
@@ -134,4 +134,3 @@ class AppServiceEnvironmentArgs {
     );
   }
 }
-

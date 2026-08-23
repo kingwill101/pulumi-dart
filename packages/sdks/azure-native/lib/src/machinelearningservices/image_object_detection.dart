@@ -12,11 +12,11 @@ import 'mltable_job_input.dart';
 class ImageObjectDetection {
   /// [Required] Limit settings for the AutoML job.
   final pulumi.Input<ImageLimitSettings> limitSettings;
-  /// Log verbosity for the job.
+  /// Enum for setting log verbosity.
   final pulumi.Input<String>? logVerbosity;
   /// Settings used for training the model.
   final pulumi.Input<ImageModelSettingsObjectDetection>? modelSettings;
-  /// Primary metric to optimize for this task.
+  /// Primary metrics for Image ObjectDetection task.
   final pulumi.Input<String>? primaryMetric;
   /// Search space for sampling different combinations of models and their hyperparameters.
   final pulumi.Input<List<ImageModelDistributionSettingsObjectDetection>>? searchSpace;
@@ -39,9 +39,9 @@ class ImageObjectDetection {
 
   /// Creates a new [ImageObjectDetection].
   /// [limitSettings] [Required] Limit settings for the AutoML job.
-  /// [logVerbosity] Log verbosity for the job.
+  /// [logVerbosity] Enum for setting log verbosity.
   /// [modelSettings] Settings used for training the model.
-  /// [primaryMetric] Primary metric to optimize for this task.
+  /// [primaryMetric] Primary metrics for Image ObjectDetection task.
   /// [searchSpace] Search space for sampling different combinations of models and their hyperparameters.
   /// [sweepSettings] Model sweeping and hyperparameter sweeping related settings.
   /// [targetColumnName] Target column name: This is prediction values column.
@@ -95,4 +95,3 @@ class ImageObjectDetection {
     );
   }
 }
-

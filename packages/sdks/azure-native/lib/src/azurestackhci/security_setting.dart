@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-11-01-preview.
 ///
-/// Other available API versions: 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview, 2026-04-01-preview, 2026-04-30, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -63,6 +63,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_securitysetting" "securitySetting" {
+///   cluster_name                                                   = "myCluster"
+///   resource_group_name                                            = "test-rg"
+///   secured_core_compliance_assignment                             = "Audit"
+///   security_settings_name                                         = "default"
+///   smb_encryption_for_intra_cluster_traffic_compliance_assignment = "Audit"
+///   wdac_compliance_assignment                                     = "ApplyAndAutoCorrect"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +91,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.azurestackhci.SecuritySetting;
 /// import com.pulumi.azurenative.azurestackhci.SecuritySettingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

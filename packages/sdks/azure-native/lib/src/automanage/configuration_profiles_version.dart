@@ -94,6 +94,40 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automanage_configurationprofilesversion" "configurationProfilesVersion" {
+///   configuration_profile_name = "customConfigurationProfile"
+///   location                   = "East US"
+///   properties = {
+///     configuration = {
+///       "Antimalware/Enable"                = false
+///       "AzureSecurityCenter/Enable"        = true
+///       "Backup/Enable"                     = false
+///       "BootDiagnostics/Enable"            = true
+///       "ChangeTrackingAndInventory/Enable" = true
+///       "GuestConfiguration/Enable"         = true
+///       "LogAnalytics/Enable"               = true
+///       "UpdateManagement/Enable"           = true
+///       "VMInsights/Enable"                 = true
+///     }
+///   }
+///   resource_group_name = "myResourceGroupName"
+///   tags = {
+///     "Organization" = "Administration"
+///   }
+///   version_name = "version1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +137,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.automanage.ConfigurationProfilesVersion;
 /// import com.pulumi.azurenative.automanage.ConfigurationProfilesVersionArgs;
 /// import com.pulumi.azurenative.automanage.inputs.ConfigurationProfilePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

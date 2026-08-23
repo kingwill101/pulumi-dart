@@ -184,6 +184,58 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_offazurespringboot_springbootapp" "springbootapp" {
+///   properties = {
+///     app_name = "wrauwfegjfccym"
+///     app_port = 12
+///     app_type = "axzunlh"
+///     application_configurations = [{
+///       "key"   = "wrbnwhqxjextxgdfbonuynvs"
+///       "value" = "jnmaf"
+///     }]
+///     artifact_name     = "wrauwfegjfccym"
+///     binding_ports     = [11]
+///     build_jdk_version = "ipzruwqqulkpvhzymqegntz"
+///     certificates      = ["xpiqqob"]
+///     checksum          = "gpzumvbzfnhhmuehveanctiamr"
+///     dependencies      = ["zrtted"]
+///     environments      = ["afhprevtcx"]
+///     instance_count    = 5
+///     instances = [{
+///       "instanceCount" = 5
+///       "jvmMemoryInMB" = 128
+///       "machineArmId"  = "lsstlommxuskyhnwyxh"
+///     }]
+///     jar_file_location  = "wfptqclncaqycyfbfih"
+///     jvm_memory_in_mb   = 1
+///     jvm_options        = ["nytejjoytevmvlgnfwb"]
+///     last_modified_time = "2022-12-02T09:28:24.094Z"
+///     machine_arm_ids    = ["lsstlommxuskyhnwyxh"]
+///     miscs = [{
+///       "key"   = "fobsfetkynfmkziei"
+///       "value" = "k"
+///     }]
+///     runtime_jdk_version      = "eblzujbsulpeilykqyjso"
+///     servers                  = ["gvfhsohasdx"]
+///     spring_boot_version      = "euggigfiii"
+///     static_content_locations = ["wvvajfkbtmjftir"]
+///   }
+///   resource_group_name = "rgspringbootapps"
+///   site_name           = "pdfosfhtemfsaglvwjdyqlyeipucrd"
+///   springbootapps_name = "ofjeesoahqtnovlbuvflyknpbhcpeqqhekntvqxyemuwbcqnuxjgfhsf"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +245,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.offazurespringboot.Springbootapp;
 /// import com.pulumi.azurenative.offazurespringboot.SpringbootappArgs;
 /// import com.pulumi.azurenative.offazurespringboot.inputs.SpringbootappsPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -442,6 +494,23 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_offazurespringboot_springbootapp" "springbootapp" {
+///   resource_group_name = "rgspringbootapps"
+///   site_name           = "pdfosfhtemfsaglvwjdyqlyeipucrd"
+///   springbootapps_name = "ofjeesoahqtnovlbuvflyknpbhcpeqqhekntvqxyemuwbcqnuxjgfhsf"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -450,8 +519,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.offazurespringboot.Springbootapp;
 /// import com.pulumi.azurenative.offazurespringboot.SpringbootappArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

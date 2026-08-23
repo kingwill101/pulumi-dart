@@ -31,7 +31,7 @@ import 'get_single_server_virtual_network_rule_result.dart';
 ///
 /// Uses Azure REST API version 2023-12-30.
 ///
-/// Other available API versions: 2022-01-01, 2023-06-01-preview, 2023-06-30, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-01-01, 2023-06-01-preview, 2023-06-30, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dbformysql_get_azure_adadministrator_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAzureADAdministratorResult> getAzureADAdministrator(
@@ -51,7 +51,7 @@ Future<GetAzureADAdministratorResult> getAzureADAdministrator(
 ///
 /// Uses Azure REST API version 2023-12-30.
 ///
-/// Other available API versions: 2022-01-01, 2023-06-01-preview, 2023-06-30, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-01-01, 2023-06-01-preview, 2023-06-30, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dbformysql_get_configuration_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetConfigurationResult> getConfiguration(
@@ -71,7 +71,7 @@ Future<GetConfigurationResult> getConfiguration(
 ///
 /// Uses Azure REST API version 2023-12-30.
 ///
-/// Other available API versions: 2022-01-01, 2023-06-01-preview, 2023-06-30, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-01-01, 2023-06-01-preview, 2023-06-30, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dbformysql_get_database_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDatabaseResult> getDatabase(
@@ -91,7 +91,7 @@ Future<GetDatabaseResult> getDatabase(
 ///
 /// Uses Azure REST API version 2023-12-30.
 ///
-/// Other available API versions: 2022-01-01, 2023-06-01-preview, 2023-06-30, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-01-01, 2023-06-01-preview, 2023-06-30, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dbformysql_get_firewall_rule_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFirewallRuleResult> getFirewallRule(
@@ -111,7 +111,7 @@ Future<GetFirewallRuleResult> getFirewallRule(
 ///
 /// Uses Azure REST API version 2024-10-01-preview.
 ///
-/// Other available API versions: 2022-01-01, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-12-01-preview, 2023-12-30, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-01-01, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-12-01-preview, 2023-12-30, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
 Future<GetGetPrivateDnsZoneSuffixExecuteResult> getGetPrivateDnsZoneSuffixExecute(
   {
@@ -129,6 +129,8 @@ Future<GetGetPrivateDnsZoneSuffixExecuteResult> getGetPrivateDnsZoneSuffixExecut
 /// Get backup for a given server.
 ///
 /// Uses Azure REST API version 2025-06-01-preview.
+///
+/// Other available API versions: 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dbformysql_get_long_running_backup_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetLongRunningBackupResult> getLongRunningBackup(
@@ -148,7 +150,7 @@ Future<GetLongRunningBackupResult> getLongRunningBackup(
 ///
 /// Uses Azure REST API version 2023-06-30.
 ///
-/// Other available API versions: 2022-09-30-preview, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-30-preview, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dbformysql_get_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
@@ -168,7 +170,7 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
 ///
 /// Uses Azure REST API version 2024-02-01-preview.
 ///
-/// Other available API versions: 2022-01-01, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-06-01-preview, 2024-10-01-preview, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-01-01, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-06-01-preview, 2024-10-01-preview, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dbformysql_get_server_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetServerResult> getServer(

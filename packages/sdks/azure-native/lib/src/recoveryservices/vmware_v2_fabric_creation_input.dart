@@ -44,4 +44,3 @@ class VMwareV2FabricCreationInput {
     );
   }
 }
-

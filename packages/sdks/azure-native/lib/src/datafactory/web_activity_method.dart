@@ -1,9 +1,9 @@
 /// Rest API method for target endpoint.
 enum WebActivityMethod {
-  valueGET("GET"),
-  valuePOST("POST"),
-  valuePUT("PUT"),
-  valueDELETE("DELETE");
+  gET("GET"),
+  pOST("POST"),
+  pUT("PUT"),
+  dELETE("DELETE");
 
   const WebActivityMethod(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum WebActivityMethod {
     throw ArgumentError('Unknown WebActivityMethod value: $value');
   }
 }
-

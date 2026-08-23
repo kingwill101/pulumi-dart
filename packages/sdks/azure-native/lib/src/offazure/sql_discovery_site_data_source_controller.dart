@@ -60,6 +60,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_offazure_sqldiscoverysitedatasourcecontroller" "sqlDiscoverySiteDataSourceController" {
+///   discovery_site_data_source_name = "jN--823UiQ"
+///   discovery_site_id               = "ndmdh"
+///   resource_group_name             = "rgmigrate"
+///   site_name                       = "v-MwBCpvV-"
+///   sql_site_name                   = "NO-8-W75XK5-4Xfs54I-n"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +87,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.offazure.SqlDiscoverySiteDataSourceController;
 /// import com.pulumi.azurenative.offazure.SqlDiscoverySiteDataSourceControllerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

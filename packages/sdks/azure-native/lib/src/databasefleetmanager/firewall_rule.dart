@@ -66,6 +66,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databasefleetmanager_firewallrule" "firewallRule" {
+///   firewall_rule_name = "allow-10-0-0-0-24-to-10-1-0-0-24"
+///   fleet_name         = "data-fleet-01"
+///   fleetspace_name    = "prod-environment"
+///   properties = {
+///     end_ip_address   = "10.0.0.255"
+///     start_ip_address = "10.0.0.0"
+///   }
+///   resource_group_name = "rg-networking-operations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +97,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.databasefleetmanager.FirewallRule;
 /// import com.pulumi.azurenative.databasefleetmanager.FirewallRuleArgs;
 /// import com.pulumi.azurenative.databasefleetmanager.inputs.FirewallRulePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

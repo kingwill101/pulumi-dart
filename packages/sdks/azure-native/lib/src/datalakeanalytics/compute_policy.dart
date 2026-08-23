@@ -61,6 +61,27 @@ import 'compute_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datalakeanalytics_computepolicy" "computePolicy" {
+///   account_name                      = "contosoadla"
+///   compute_policy_name               = "test_policy"
+///   max_degree_of_parallelism_per_job = 10
+///   min_priority_per_job              = 30
+///   object_id                         = "776b9091-8916-4638-87f7-9c989a38da98"
+///   object_type                       = "User"
+///   resource_group_name               = "contosorg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +90,8 @@ import 'compute_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datalakeanalytics.ComputePolicy;
 /// import com.pulumi.azurenative.datalakeanalytics.ComputePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

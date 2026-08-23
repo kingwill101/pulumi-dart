@@ -15,4 +15,3 @@ enum StatefulRuleOptionsRuleOrder {
     throw ArgumentError('Unknown StatefulRuleOptionsRuleOrder value: $value');
   }
 }
-

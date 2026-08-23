@@ -1,7 +1,7 @@
 /// The connection mode used to access CosmosDB account. Type: string.
 enum CosmosDbConnectionMode {
-  valueGateway("Gateway"),
-  valueDirect("Direct");
+  gateway("Gateway"),
+  direct("Direct");
 
   const CosmosDbConnectionMode(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum CosmosDbConnectionMode {
     throw ArgumentError('Unknown CosmosDbConnectionMode value: $value');
   }
 }
-

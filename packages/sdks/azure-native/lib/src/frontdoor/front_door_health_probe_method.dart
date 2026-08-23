@@ -1,7 +1,7 @@
 /// Configures which HTTP method to use to probe the backends defined under backendPools.
 enum FrontDoorHealthProbeMethod {
-  valueGET("GET"),
-  valueHEAD("HEAD");
+  gET("GET"),
+  hEAD("HEAD");
 
   const FrontDoorHealthProbeMethod(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum FrontDoorHealthProbeMethod {
     throw ArgumentError('Unknown FrontDoorHealthProbeMethod value: $value');
   }
 }
-

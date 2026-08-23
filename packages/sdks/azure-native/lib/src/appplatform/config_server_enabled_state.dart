@@ -15,4 +15,3 @@ enum ConfigServerEnabledState {
     throw ArgumentError('Unknown ConfigServerEnabledState value: $value');
   }
 }
-

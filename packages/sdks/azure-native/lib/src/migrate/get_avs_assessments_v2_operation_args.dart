@@ -40,4 +40,3 @@ class GetAvsAssessmentsV2OperationArgs {
     );
   }
 }
-

@@ -90,6 +90,38 @@ import 'task_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datamigration_task" "task" {
+///   group_name   = "DmsSdkRg"
+///   project_name = "DmsSdkProject"
+///   properties = {
+///     "input" = {
+///       "targetConnectionInfo" = {
+///         "authentication"         = "SqlAuthentication"
+///         "dataSource"             = "ssma-test-server.database.windows.net"
+///         "encryptConnection"      = true
+///         "password"               = "testpassword"
+///         "trustServerCertificate" = true
+///         "type"                   = "SqlConnectionInfo"
+///         "userName"               = "testuser"
+///       }
+///     }
+///     "taskType" = "ConnectToTarget.SqlDb"
+///   }
+///   service_name = "DmsSdkService"
+///   task_name    = "DmsSdkTask"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +130,8 @@ import 'task_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datamigration.Task;
 /// import com.pulumi.azurenative.datamigration.TaskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

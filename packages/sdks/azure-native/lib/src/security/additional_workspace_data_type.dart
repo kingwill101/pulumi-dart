@@ -1,7 +1,7 @@
 /// Data types sent to workspace.
 enum AdditionalWorkspaceDataType {
-  valueAlerts("Alerts"),
-  valueRawEvents("RawEvents");
+  alerts("Alerts"),
+  rawEvents("RawEvents");
 
   const AdditionalWorkspaceDataType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum AdditionalWorkspaceDataType {
     throw ArgumentError('Unknown AdditionalWorkspaceDataType value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum KubernetesSecretType {
     throw ArgumentError('Unknown KubernetesSecretType value: $value');
   }
 }
-

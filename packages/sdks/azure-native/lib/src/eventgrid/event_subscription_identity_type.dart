@@ -15,4 +15,3 @@ enum EventSubscriptionIdentityType {
     throw ArgumentError('Unknown EventSubscriptionIdentityType value: $value');
   }
 }
-

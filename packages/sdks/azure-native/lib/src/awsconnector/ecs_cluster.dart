@@ -182,6 +182,71 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ecscluster" "ecsCluster" {
+///   location = "jvggofkffzhlultqukgoqtb"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "mpaxeywurctxasgtrtckgeoeqmeec"
+///     aws_account_id = "emdtbelvualaeqexsrbhvczjsy"
+///     aws_properties = {
+///       arn                = "mgzeckagdmmepybkhhylkhxzv"
+///       capacity_providers = ["rqrmclul"]
+///       cluster_name       = "eavbe"
+///       cluster_settings = [{
+///         "name"  = "elsikbbzpkzaghwtqd"
+///         "value" = "gbnpceuced"
+///       }]
+///       configuration = {
+///         execute_command_configuration = {
+///           kms_key_id = "budbdglk"
+///           log_configuration = {
+///             cloud_watch_encryption_enabled = true
+///             cloud_watch_log_group_name     = "eiskop"
+///             s3_bucket_name                 = "sfcsij"
+///             s3_encryption_enabled          = true
+///             s3_key_prefix                  = "gfqnhjcnamxvhrllkzrzdbqzsnkj"
+///           }
+///           logging = "rspegmyokypfqdocdrothsgivaqf"
+///         }
+///       }
+///       default_capacity_provider_strategy = [{
+///         "base"             = 16
+///         "capacityProvider" = "kttxptzsaauhguaygucxzzvrbriev"
+///         "weight"           = 1
+///       }]
+///       service_connect_defaults = {
+///         namespace = "mwpjrqkazpcetkgyfplp"
+///       }
+///       tags = [{
+///         "key"   = "pmgixnftvmfbxgjyulnrh"
+///         "value" = "dsvfiamfdrnwqretfcu"
+///       }]
+///     }
+///     aws_region        = "qwurftmiaqdjvlbsxtmdosiauw"
+///     aws_source_schema = "dnbeeswitidsf"
+///     aws_tags = {
+///       "key3315" = "bczizbtmiazzuhju"
+///     }
+///     public_cloud_connectors_resource_id = "jbtlcmxmtlcgoxfktpqbi"
+///     public_cloud_resource_name          = "nquaerebgaopkptxxbreyhr"
+///   }
+///   resource_group_name = "rgecsCluster"
+///   tags = {
+///     "key1755" = "o"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -196,8 +261,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.ExecuteCommandConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ExecuteCommandLogConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ServiceConnectDefaultsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

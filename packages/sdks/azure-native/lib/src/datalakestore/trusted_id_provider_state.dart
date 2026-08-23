@@ -15,4 +15,3 @@ enum TrustedIdProviderState {
     throw ArgumentError('Unknown TrustedIdProviderState value: $value');
   }
 }
-

@@ -164,6 +164,62 @@ import 'wafv2_logging_configuration_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_wafv2loggingconfiguration" "wafv2LoggingConfiguration" {
+///   location = "miqjaa"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "vvamx"
+///     aws_account_id = "opcrasgtswrifmkonwy"
+///     aws_properties = {
+///       log_destination_configs = ["lyxpldjogdqpffwthdto"]
+///       logging_filter = {
+///         default_behavior = "DROP"
+///         filters = [{
+///           "behavior" = "DROP"
+///           "conditions" = [{
+///             "actionCondition" = {
+///               "action" = "ALLOW"
+///             }
+///             "labelNameCondition" = {
+///               "labelName" = "oypkvstyighnjavknhfon"
+///             }
+///           }]
+///           "requirement" = "MEETS_ALL"
+///         }]
+///       }
+///       managed_by_firewall_manager = true
+///       redacted_fields = [{
+///         "singleHeader" = {
+///           "name" = "bfqodp"
+///         }
+///       }]
+///       resource_arn = "bnozeamipjgc"
+///     }
+///     aws_region        = "kkwxoqqqiadksrmfpvopq"
+///     aws_source_schema = "ywgazosjmcwothayguih"
+///     aws_tags = {
+///       "key5392" = "qn"
+///     }
+///     public_cloud_connectors_resource_id = "towziecfnbhswtodyqkkqrtatogbl"
+///     public_cloud_resource_name          = "eniprewwy"
+///   }
+///   resource_group_name = "rgwafv2LoggingConfiguration"
+///   tags = {
+///     "key643" = "cmguxikvqhszupgpbhlz"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +231,8 @@ import 'wafv2_logging_configuration_properties_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.Wafv2LoggingConfigurationPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsWafv2LoggingConfigurationPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LoggingFilterModelPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

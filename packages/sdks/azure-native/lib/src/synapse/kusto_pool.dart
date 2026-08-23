@@ -78,6 +78,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_synapse_kustopool" "kustoPool" {
+///   enable_purge            = true
+///   enable_streaming_ingest = true
+///   kusto_pool_name         = "kustoclusterrptest4"
+///   location                = "westus"
+///   resource_group_name     = "kustorptest"
+///   sku = {
+///     capacity = 2
+///     name     = "Storage optimized"
+///     size     = "Medium"
+///   }
+///   workspace_name = "synapseWorkspaceName"
+///   workspace_uid  = "11111111-2222-3333-444444444444"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +113,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.synapse.KustoPool;
 /// import com.pulumi.azurenative.synapse.KustoPoolArgs;
 /// import com.pulumi.azurenative.synapse.inputs.AzureSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

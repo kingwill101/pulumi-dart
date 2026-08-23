@@ -1,9 +1,9 @@
 /// State indicating the status of the enterprise grade CDN serving traffic to the static web app.
 enum EnterpriseGradeCdnStatus {
-  valueEnabled("Enabled"),
-  valueEnabling("Enabling"),
-  valueDisabled("Disabled"),
-  valueDisabling("Disabling");
+  enabled("Enabled"),
+  enabling("Enabling"),
+  disabled("Disabled"),
+  disabling("Disabling");
 
   const EnterpriseGradeCdnStatus(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum EnterpriseGradeCdnStatus {
     throw ArgumentError('Unknown EnterpriseGradeCdnStatus value: $value');
   }
 }
-

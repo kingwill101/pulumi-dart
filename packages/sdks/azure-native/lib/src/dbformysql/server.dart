@@ -15,7 +15,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-01-01.
 ///
-/// Other available API versions: 2022-01-01, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-06-01-preview, 2024-10-01-preview, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-01-01, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-06-01-preview, 2024-10-01-preview, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -124,6 +124,50 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbformysql_server" "server" {
+///   administrator_login          = "cloudsa"
+///   administrator_login_password = "your_password"
+///   availability_zone            = "1"
+///   backup = {
+///     backup_interval_hours = 24
+///     backup_retention_days = 7
+///     geo_redundant_backup  = "Disabled"
+///   }
+///   create_mode = "Default"
+///   high_availability = {
+///     mode                      = "ZoneRedundant"
+///     standby_availability_zone = "3"
+///   }
+///   location            = "southeastasia"
+///   resource_group_name = "testrg"
+///   server_name         = "mysqltestserver"
+///   sku = {
+///     name = "Standard_D2ds_v4"
+///     tier = "GeneralPurpose"
+///   }
+///   storage = {
+///     auto_grow          = "Disabled"
+///     iops               = 600
+///     storage_redundancy = "LocalRedundancy"
+///     storage_size_gb    = 100
+///   }
+///   tags = {
+///     "num" = "1"
+///   }
+///   version = "5.7"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -136,8 +180,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dbformysql.inputs.HighAvailabilityArgs;
 /// import com.pulumi.azurenative.dbformysql.inputs.MySQLServerSkuArgs;
 /// import com.pulumi.azurenative.dbformysql.inputs.StorageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -346,6 +390,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbformysql_server" "server" {
+///   create_mode               = "Replica"
+///   location                  = "SoutheastAsia"
+///   resource_group_name       = "testgr"
+///   server_name               = "replica-server"
+///   source_server_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testgr/providers/Microsoft.DBforMySQL/flexibleServers/source-server"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -354,8 +417,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbformysql.Server;
 /// import com.pulumi.azurenative.dbformysql.ServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -489,6 +552,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbformysql_server" "server" {
+///   create_mode           = "PointInTimeRestore"
+///   location              = "SoutheastAsia"
+///   resource_group_name   = "TargetResourceGroup"
+///   restore_point_in_time = "2021-06-24T00:00:37.467Z"
+///   server_name           = "targetserver"
+///   sku = {
+///     name = "Standard_D14_v2"
+///     tier = "GeneralPurpose"
+///   }
+///   source_server_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/flexibleServers/sourceserver"
+///   tags = {
+///     "num" = "1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -498,8 +588,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dbformysql.Server;
 /// import com.pulumi.azurenative.dbformysql.ServerArgs;
 /// import com.pulumi.azurenative.dbformysql.inputs.MySQLServerSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -27,4 +27,3 @@ enum AzureManagedDiskPerformanceTier {
     throw ArgumentError('Unknown AzureManagedDiskPerformanceTier value: $value');
   }
 }
-

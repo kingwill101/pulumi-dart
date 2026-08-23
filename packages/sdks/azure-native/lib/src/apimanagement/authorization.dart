@@ -4,9 +4,9 @@ import 'authorization_error_response.dart';
 
 /// Authorization contract.
 ///
-/// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
 ///
-/// Other available API versions: 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -62,6 +62,26 @@ import 'authorization_error_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_authorization" "authorization" {
+///   authorization_id          = "authz2"
+///   authorization_provider_id = "aadwithauthcode"
+///   authorization_type        = "OAuth2"
+///   o_auth2_grant_type        = "AuthorizationCode"
+///   resource_group_name       = "rg1"
+///   service_name              = "apimService1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +90,8 @@ import 'authorization_error_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.Authorization;
 /// import com.pulumi.azurenative.apimanagement.AuthorizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -159,8 +179,8 @@ import 'authorization_error_response.dart';
 ///         OAuth2GrantType = AzureNative.ApiManagement.OAuth2GrantType.AuthorizationCode,
 ///         Parameters =
 ///         {
-///             { "clientId", "53790925-fdd3-4b80-bc7a-4c3aaf25801d" },
-///             { "clientSecret", "xxxxxxxxxxxxxxx~xxxxxxxxx" },
+///             { "clientId", "clientsecretid" },
+///             { "clientSecret", "clientsecretvalue" },
 ///         },
 ///         ResourceGroupName = "rg1",
 ///         ServiceName = "apimService1",
@@ -187,8 +207,8 @@ import 'authorization_error_response.dart';
 /// 			AuthorizationType:       pulumi.String(apimanagement.AuthorizationTypeOAuth2),
 /// 			OAuth2GrantType:         pulumi.String(apimanagement.OAuth2GrantTypeAuthorizationCode),
 /// 			Parameters: pulumi.StringMap{
-/// 				"clientId":     pulumi.String("53790925-fdd3-4b80-bc7a-4c3aaf25801d"),
-/// 				"clientSecret": pulumi.String("xxxxxxxxxxxxxxx~xxxxxxxxx"),
+/// 				"clientId":     pulumi.String("clientsecretid"),
+/// 				"clientSecret": pulumi.String("clientsecretvalue"),
 /// 			},
 /// 			ResourceGroupName: pulumi.String("rg1"),
 /// 			ServiceName:       pulumi.String("apimService1"),
@@ -202,6 +222,30 @@ import 'authorization_error_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_authorization" "authorization" {
+///   authorization_id          = "authz1"
+///   authorization_provider_id = "aadwithclientcred"
+///   authorization_type        = "OAuth2"
+///   o_auth2_grant_type        = "AuthorizationCode"
+///   parameters = {
+///     "clientId"     = "clientsecretid"
+///     "clientSecret" = "clientsecretvalue"
+///   }
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -210,8 +254,8 @@ import 'authorization_error_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.Authorization;
 /// import com.pulumi.azurenative.apimanagement.AuthorizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -229,8 +273,8 @@ import 'authorization_error_response.dart';
 ///             .authorizationType("OAuth2")
 ///             .oAuth2GrantType("AuthorizationCode")
 ///             .parameters(Map.ofEntries(
-///                 Map.entry("clientId", "53790925-fdd3-4b80-bc7a-4c3aaf25801d"),
-///                 Map.entry("clientSecret", "xxxxxxxxxxxxxxx~xxxxxxxxx")
+///                 Map.entry("clientId", "clientsecretid"),
+///                 Map.entry("clientSecret", "clientsecretvalue")
 ///             ))
 ///             .resourceGroupName("rg1")
 ///             .serviceName("apimService1")
@@ -251,8 +295,8 @@ import 'authorization_error_response.dart';
 ///     authorizationType: azure_native.apimanagement.AuthorizationType.OAuth2,
 ///     oAuth2GrantType: azure_native.apimanagement.OAuth2GrantType.AuthorizationCode,
 ///     parameters: {
-///         clientId: "53790925-fdd3-4b80-bc7a-4c3aaf25801d",
-///         clientSecret: "xxxxxxxxxxxxxxx~xxxxxxxxx",
+///         clientId: "clientsecretid",
+///         clientSecret: "clientsecretvalue",
 ///     },
 ///     resourceGroupName: "rg1",
 ///     serviceName: "apimService1",
@@ -270,8 +314,8 @@ import 'authorization_error_response.dart';
 ///     authorization_type=azure_native.apimanagement.AuthorizationType.O_AUTH2,
 ///     o_auth2_grant_type=azure_native.apimanagement.OAuth2GrantType.AUTHORIZATION_CODE,
 ///     parameters={
-///         "clientId": "53790925-fdd3-4b80-bc7a-4c3aaf25801d",
-///         "clientSecret": "xxxxxxxxxxxxxxx~xxxxxxxxx",
+///         "clientId": "clientsecretid",
+///         "clientSecret": "clientsecretvalue",
 ///     },
 ///     resource_group_name="rg1",
 ///     service_name="apimService1")
@@ -288,8 +332,8 @@ import 'authorization_error_response.dart';
 ///       authorizationType: OAuth2
 ///       oAuth2GrantType: AuthorizationCode
 ///       parameters:
-///         clientId: 53790925-fdd3-4b80-bc7a-4c3aaf25801d
-///         clientSecret: xxxxxxxxxxxxxxx~xxxxxxxxx
+///         clientId: clientsecretid
+///         clientSecret: clientsecretvalue
 ///       resourceGroupName: rg1
 ///       serviceName: apimService1
 ///

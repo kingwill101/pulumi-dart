@@ -15,4 +15,3 @@ enum TranslateRequiredQueryParametersConduct {
     throw ArgumentError('Unknown TranslateRequiredQueryParametersConduct value: $value');
   }
 }
-

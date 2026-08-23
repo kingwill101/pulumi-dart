@@ -108,6 +108,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_scheduledaction" "scheduledAction" {
+///   display_name = "Monthly Cost By Resource"
+///   kind         = "Email"
+///   name         = "monthlyCostByResource"
+///   notification = {
+///     subject = "Cost by resource this month"
+///     to      = ["user@gmail.com", "team@gmail.com"]
+///   }
+///   schedule = {
+///     days_of_week   = ["Monday"]
+///     end_date       = "2021-06-19T22:21:51.1287144Z"
+///     frequency      = "Monthly"
+///     hour_of_day    = 10
+///     start_date     = "2020-06-19T22:21:51.1287144Z"
+///     weeks_of_month = ["First", "Third"]
+///   }
+///   status  = "Enabled"
+///   view_id = "/providers/Microsoft.CostManagement/views/swaggerExample"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -118,8 +149,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.costmanagement.ScheduledActionArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.NotificationPropertiesArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.SchedulePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

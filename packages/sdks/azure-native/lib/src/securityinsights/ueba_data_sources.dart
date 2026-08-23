@@ -17,4 +17,3 @@ enum UebaDataSources {
     throw ArgumentError('Unknown UebaDataSources value: $value');
   }
 }
-

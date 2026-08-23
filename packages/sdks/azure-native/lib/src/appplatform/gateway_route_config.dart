@@ -105,6 +105,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_gatewayrouteconfig" "gatewayRouteConfig" {
+///   gateway_name = "default"
+///   properties = {
+///     app_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/apps/myApp"
+///     open_api = {
+///       uri = "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v3.0/petstore.json"
+///     }
+///     protocol = "HTTPS"
+///     routes = [{
+///       "filters"    = ["StripPrefix=2", "RateLimit=1,1s"]
+///       "predicates" = ["Path=/api5/customer/**"]
+///       "ssoEnabled" = true
+///       "title"      = "myApp route config"
+///     }]
+///   }
+///   resource_group_name = "myResourceGroup"
+///   route_config_name   = "myRouteConfig"
+///   service_name        = "myservice"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +146,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.GatewayRouteConfigArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.GatewayRouteConfigPropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.GatewayRouteConfigOpenApiPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

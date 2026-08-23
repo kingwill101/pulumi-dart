@@ -16,4 +16,3 @@ enum SkuScaleType {
     throw ArgumentError('Unknown SkuScaleType value: $value');
   }
 }
-

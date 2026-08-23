@@ -14,4 +14,3 @@ enum ClusterSkuNameEnum {
     throw ArgumentError('Unknown ClusterSkuNameEnum value: $value');
   }
 }
-

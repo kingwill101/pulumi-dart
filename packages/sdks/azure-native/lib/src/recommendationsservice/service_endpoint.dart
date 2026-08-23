@@ -73,6 +73,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_recommendationsservice_serviceendpoint" "serviceEndpoint" {
+///   account_name = "sampleAccount"
+///   location     = "West US"
+///   properties = {
+///     pre_allocated_capacity = 100
+///   }
+///   resource_group_name   = "rg"
+///   service_endpoint_name = "s1"
+///   tags = {
+///     "Environment" = "Prod"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +106,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.recommendationsservice.ServiceEndpoint;
 /// import com.pulumi.azurenative.recommendationsservice.ServiceEndpointArgs;
 /// import com.pulumi.azurenative.recommendationsservice.inputs.ServiceEndpointResourcePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

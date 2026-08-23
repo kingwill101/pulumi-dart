@@ -8,7 +8,7 @@ import 'virtual_network_subnet_arm_reference_response.dart';
 
 /// Nat Gateway resource properties
 class NatGatewayPropertiesResponse {
-  /// List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet
+  /// List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet. Removed in 2026-04-01-preview; use InboundRule Child resource instead.
   final pulumi.Input<List<InboundNATRuleResponse>>? inboundNATRules;
   /// Provisioning state of the public IP
   final pulumi.Input<String> provisioningState;
@@ -20,7 +20,7 @@ class NatGatewayPropertiesResponse {
   final pulumi.Input<List<VirtualNetworkSubnetArmReferenceResponse>> subnets;
 
   /// Creates a new [NatGatewayPropertiesResponse].
-  /// [inboundNATRules] List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet
+  /// [inboundNATRules] List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet. Removed in 2026-04-01-preview; use InboundRule Child resource instead.
   /// [provisioningState] Provisioning state of the public IP
   /// [publicIPAddresses] List of public ip addresses that the gateway can use for NAT.
   /// [status] The observed state of Nat Gateway
@@ -53,4 +53,3 @@ class NatGatewayPropertiesResponse {
     );
   }
 }
-

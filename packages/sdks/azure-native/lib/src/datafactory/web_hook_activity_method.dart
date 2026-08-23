@@ -1,6 +1,6 @@
 /// Rest API method for target endpoint.
 enum WebHookActivityMethod {
-  valuePOST("POST");
+  pOST("POST");
 
   const WebHookActivityMethod(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum WebHookActivityMethod {
     throw ArgumentError('Unknown WebHookActivityMethod value: $value');
   }
 }
-

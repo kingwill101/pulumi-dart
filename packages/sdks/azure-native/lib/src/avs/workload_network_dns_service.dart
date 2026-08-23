@@ -73,6 +73,29 @@ import 'workload_network_dns_service_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_avs_workloadnetworkdnsservice" "workloadNetworkDnsService" {
+///   default_dns_zone    = "defaultDnsZone1"
+///   display_name        = "dnsService1"
+///   dns_service_id      = "dnsService1"
+///   dns_service_ip      = "5.5.5.5"
+///   fqdn_zones          = ["fqdnZone1"]
+///   log_level           = "INFO"
+///   private_cloud_name  = "cloud1"
+///   resource_group_name = "group1"
+///   revision            = 1
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +104,8 @@ import 'workload_network_dns_service_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.avs.WorkloadNetworkDnsService;
 /// import com.pulumi.azurenative.avs.WorkloadNetworkDnsServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -142,7 +165,7 @@ import 'workload_network_dns_service_args.dart';
 ///     log_level=azure_native.avs.DnsServiceLogLevelEnum.INFO,
 ///     private_cloud_name="cloud1",
 ///     resource_group_name="group1",
-///     revision=1)
+///     revision=float(1))
 ///
 /// ```
 ///

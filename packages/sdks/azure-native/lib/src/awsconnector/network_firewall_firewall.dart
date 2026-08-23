@@ -144,6 +144,57 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_networkfirewallfirewall" "networkFirewallFirewall" {
+///   location = "shwlgihd"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "zc"
+///     aws_account_id = "tcfbgbhrgcpvphfftvjmhjqg"
+///     aws_properties = {
+///       delete_protection                 = true
+///       description                       = "yjsjz"
+///       endpoint_ids                      = ["ivgfubgdwmucvasgqbxyoxs"]
+///       firewall_arn                      = "eukqjtyapnpaslgpyrjsuuuvrja"
+///       firewall_id                       = "ecwdwcfmctxuqrpliya"
+///       firewall_name                     = "rbcjdcahhnsogdcoklk"
+///       firewall_policy_arn               = "evdxwcayrnvbn"
+///       firewall_policy_change_protection = true
+///       subnet_change_protection          = true
+///       subnet_mappings = [{
+///         "ipAddressType" = "gkcalzfxwkomabldynmunz"
+///         "subnetId"      = "kmo"
+///       }]
+///       tags = [{
+///         "key"   = "kasiukxlhrjduzsis"
+///         "value" = "fnavszvtxyetugcmqvandzxjawuq"
+///       }]
+///       vpc_id = "cxrvqz"
+///     }
+///     aws_region        = "ctyppkrhygaywzprynu"
+///     aws_source_schema = "syydqlqovymaflzph"
+///     aws_tags = {
+///       "key9022" = "plamuzuouuqwcslfbnicnejtvd"
+///     }
+///     public_cloud_connectors_resource_id = "qjo"
+///     public_cloud_resource_name          = "hloidqb"
+///   }
+///   resource_group_name = "rgnetworkFirewallFirewall"
+///   tags = {
+///     "key1029" = "evfw"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -154,8 +205,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.NetworkFirewallFirewallArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.NetworkFirewallFirewallPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsNetworkFirewallFirewallPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

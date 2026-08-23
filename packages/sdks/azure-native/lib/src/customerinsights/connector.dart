@@ -73,6 +73,32 @@ import 'connector_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_customerinsights_connector" "connector" {
+///   connector_name = "testConnector"
+///   connector_properties = {
+///     "connectionKeyVaultUrl" = {
+///       "organizationId"  = "XXX"
+///       "organizationUrl" = "https://XXX.crmlivetie.com/"
+///     }
+///   }
+///   connector_type      = "AzureBlob"
+///   description         = "Test connector"
+///   display_name        = "testConnector"
+///   hub_name            = "sdkTestHub"
+///   resource_group_name = "TestHubRG"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +107,8 @@ import 'connector_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.customerinsights.Connector;
 /// import com.pulumi.azurenative.customerinsights.ConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

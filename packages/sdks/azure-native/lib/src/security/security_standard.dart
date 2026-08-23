@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_standard_args.dart';
 import 'standard_metadata_response.dart';
+import 'system_data_response.dart';
 
 /// Security Standard on a resource
 ///
@@ -84,6 +85,32 @@ import 'standard_metadata_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_securitystandard" "securityStandard" {
+///   assessments {
+///     assessment_key = "1195afff-c881-495e-9bc5-1486211ae03f"
+///   }
+///   assessments {
+///     assessment_key = "dbd0cb49-b563-45e7-9724-889e799fa648"
+///   }
+///   cloud_providers          = ["GCP"]
+///   description              = "description of Azure Test Security Standard 1"
+///   display_name             = "Azure Test Security Standard 1"
+///   policy_set_definition_id = "/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/providers/Microsoft.Authorization/policySetDefinitions/patchorchestration-applicationversions"
+///   scope                    = "providers/Microsoft.Management/managementGroups/contoso"
+///   standard_id              = "8bb8be0a-6010-4789-812f-e4d661c4ed0e"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +120,8 @@ import 'standard_metadata_response.dart';
 /// import com.pulumi.azurenative.security.SecurityStandard;
 /// import com.pulumi.azurenative.security.SecurityStandardArgs;
 /// import com.pulumi.azurenative.security.inputs.PartialAssessmentPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -265,6 +292,31 @@ import 'standard_metadata_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_securitystandard" "securityStandard" {
+///   assessments {
+///     assessment_key = "1195afff-c881-495e-9bc5-1486211ae03f"
+///   }
+///   assessments {
+///     assessment_key = "dbd0cb49-b563-45e7-9724-889e799fa648"
+///   }
+///   cloud_providers = ["GCP"]
+///   description     = "description of Azure Test Security Standard 1"
+///   display_name    = "Azure Test Security Standard 1"
+///   scope           = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/gcpResourceGroup/providers/Microsoft.Security/securityConnectors/gcpconnector"
+///   standard_id     = "8bb8be0a-6010-4789-812f-e4d661c4ed0e"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -274,8 +326,8 @@ import 'standard_metadata_response.dart';
 /// import com.pulumi.azurenative.security.SecurityStandard;
 /// import com.pulumi.azurenative.security.SecurityStandardArgs;
 /// import com.pulumi.azurenative.security.inputs.PartialAssessmentPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -444,6 +496,32 @@ import 'standard_metadata_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_securitystandard" "securityStandard" {
+///   assessments {
+///     assessment_key = "1195afff-c881-495e-9bc5-1486211ae03f"
+///   }
+///   assessments {
+///     assessment_key = "dbd0cb49-b563-45e7-9724-889e799fa648"
+///   }
+///   cloud_providers          = ["GCP"]
+///   description              = "description of Azure Test Security Standard 1"
+///   display_name             = "Azure Test Security Standard 1"
+///   policy_set_definition_id = "/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/providers/Microsoft.Authorization/policySetDefinitions/patchorchestration-applicationversions"
+///   scope                    = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23"
+///   standard_id              = "8bb8be0a-6010-4789-812f-e4d661c4ed0e"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -453,8 +531,8 @@ import 'standard_metadata_response.dart';
 /// import com.pulumi.azurenative.security.SecurityStandard;
 /// import com.pulumi.azurenative.security.SecurityStandardArgs;
 /// import com.pulumi.azurenative.security.inputs.PartialAssessmentPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -573,13 +651,15 @@ class SecurityStandard extends pulumi.CustomResource {
   late final pulumi.Output<String?> displayName;
   /// The security standard metadata.
   late final pulumi.Output<StandardMetadataResponse?> metadata;
-  /// Resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The policy set definition id associated with the standard.
   late final pulumi.Output<String?> policySetDefinitionId;
   /// Standard type (Custom or Default or Compliance only currently)
   late final pulumi.Output<String> standardType;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [SecurityStandard].
@@ -605,6 +685,7 @@ class SecurityStandard extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     policySetDefinitionId = registerOutput<String?>('policySetDefinitionId');
     standardType = registerOutput<String>('standardType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

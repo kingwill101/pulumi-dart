@@ -1,14 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'system_data_response.dart';
+import 'virtual_network_properties_response.dart';
+import 'virtual_network_response_extended_location.dart';
 import 'virtual_network_retrieve_args.dart';
-import 'virtual_networks_properties_response.dart';
-import 'virtual_networks_response_extended_location.dart';
 
-/// The virtualNetworks resource definition.
+/// The Virtual Network resource definition.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2023-11-15-preview, 2024-01-01, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcontainerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-11-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcontainerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -24,34 +24,41 @@ import 'virtual_networks_response_extended_location.dart';
 /// {
 ///     var virtualNetworkRetrieve = new AzureNative.HybridContainerService.VirtualNetworkRetrieve("virtualNetworkRetrieve", new()
 ///     {
-///         ExtendedLocation = new AzureNative.HybridContainerService.Inputs.VirtualNetworksExtendedLocationArgs
+///         ExtendedLocation = new AzureNative.HybridContainerService.Inputs.VirtualNetworkExtendedLocationArgs
 ///         {
 ///             Name = "/subscriptions/a3e42606-29b1-4d7d-b1d9-9ff6b9d3c71b/resourcegroups/test-arcappliance-resgrp/providers/microsoft.extendedlocation/customlocations/testcustomlocation",
-///             Type = "CustomLocation",
+///             Type = AzureNative.HybridContainerService.ExtendedLocationTypes.CustomLocation,
 ///         },
 ///         Location = "westus",
-///         Properties = new AzureNative.HybridContainerService.Inputs.VirtualNetworksPropertiesArgs
+///         Properties = new AzureNative.HybridContainerService.Inputs.VirtualNetworkPropertiesArgs
 ///         {
-///             InfraVnetProfile = new AzureNative.HybridContainerService.Inputs.VirtualNetworksPropertiesInfraVnetProfileArgs
+///             DnsServers = new[]
 ///             {
-///                 Hci = new AzureNative.HybridContainerService.Inputs.VirtualNetworksPropertiesHciArgs
+///                 "192.168.0.1",
+///             },
+///             Gateway = "192.168.0.1",
+///             InfraVnetProfile = new AzureNative.HybridContainerService.Inputs.VirtualNetworkPropertiesInfraVnetProfileArgs
+///             {
+///                 Hci = new AzureNative.HybridContainerService.Inputs.VirtualNetworkPropertiesHciArgs
 ///                 {
 ///                     MocGroup = "target-group",
 ///                     MocLocation = "MocLocation",
-///                     MocVnetName = "test-vnet",
+///                     MocVnetName = "vnet1",
 ///                 },
 ///             },
+///             IpAddressPrefix = "192.168.0.0/16",
 ///             VipPool = new[]
 ///             {
-///                 new AzureNative.HybridContainerService.Inputs.VirtualNetworksPropertiesVipPoolArgs
+///                 new AzureNative.HybridContainerService.Inputs.VirtualNetworkPropertiesVipPoolArgs
 ///                 {
 ///                     EndIP = "192.168.0.50",
 ///                     StartIP = "192.168.0.10",
 ///                 },
 ///             },
+///             VlanID = 10,
 ///             VmipPool = new[]
 ///             {
-///                 new AzureNative.HybridContainerService.Inputs.VirtualNetworksPropertiesVmipPoolArgs
+///                 new AzureNative.HybridContainerService.Inputs.VirtualNetworkPropertiesVmipPoolArgs
 ///                 {
 ///                     EndIP = "192.168.0.130",
 ///                     StartIP = "192.168.0.110",
@@ -59,7 +66,7 @@ import 'virtual_networks_response_extended_location.dart';
 ///             },
 ///         },
 ///         ResourceGroupName = "test-arcappliance-resgrp",
-///         VirtualNetworksName = "test-vnet-static",
+///         VirtualNetworkName = "test-vnet-static",
 ///     });
 ///
 /// });
@@ -78,40 +85,88 @@ import 'virtual_networks_response_extended_location.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := hybridcontainerservice.NewVirtualNetworkRetrieve(ctx, "virtualNetworkRetrieve", &hybridcontainerservice.VirtualNetworkRetrieveArgs{
-/// 			ExtendedLocation: &hybridcontainerservice.VirtualNetworksExtendedLocationArgs{
+/// 			ExtendedLocation: &hybridcontainerservice.VirtualNetworkExtendedLocationArgs{
 /// 				Name: pulumi.String("/subscriptions/a3e42606-29b1-4d7d-b1d9-9ff6b9d3c71b/resourcegroups/test-arcappliance-resgrp/providers/microsoft.extendedlocation/customlocations/testcustomlocation"),
-/// 				Type: pulumi.String("CustomLocation"),
+/// 				Type: pulumi.String(hybridcontainerservice.ExtendedLocationTypesCustomLocation),
 /// 			},
 /// 			Location: pulumi.String("westus"),
-/// 			Properties: &hybridcontainerservice.VirtualNetworksPropertiesArgs{
-/// 				InfraVnetProfile: &hybridcontainerservice.VirtualNetworksPropertiesInfraVnetProfileArgs{
-/// 					Hci: &hybridcontainerservice.VirtualNetworksPropertiesHciArgs{
+/// 			Properties: &hybridcontainerservice.VirtualNetworkPropertiesArgs{
+/// 				DnsServers: pulumi.StringArray{
+/// 					pulumi.String("192.168.0.1"),
+/// 				},
+/// 				Gateway: pulumi.String("192.168.0.1"),
+/// 				InfraVnetProfile: &hybridcontainerservice.VirtualNetworkPropertiesInfraVnetProfileArgs{
+/// 					Hci: &hybridcontainerservice.VirtualNetworkPropertiesHciArgs{
 /// 						MocGroup:    pulumi.String("target-group"),
 /// 						MocLocation: pulumi.String("MocLocation"),
-/// 						MocVnetName: pulumi.String("test-vnet"),
+/// 						MocVnetName: pulumi.String("vnet1"),
 /// 					},
 /// 				},
-/// 				VipPool: hybridcontainerservice.VirtualNetworksPropertiesVipPoolArray{
-/// 					&hybridcontainerservice.VirtualNetworksPropertiesVipPoolArgs{
+/// 				IpAddressPrefix: pulumi.String("192.168.0.0/16"),
+/// 				VipPool: hybridcontainerservice.VirtualNetworkPropertiesVipPoolArray{
+/// 					&hybridcontainerservice.VirtualNetworkPropertiesVipPoolArgs{
 /// 						EndIP:   pulumi.String("192.168.0.50"),
 /// 						StartIP: pulumi.String("192.168.0.10"),
 /// 					},
 /// 				},
-/// 				VmipPool: hybridcontainerservice.VirtualNetworksPropertiesVmipPoolArray{
-/// 					&hybridcontainerservice.VirtualNetworksPropertiesVmipPoolArgs{
+/// 				VlanID: pulumi.Int(10),
+/// 				VmipPool: hybridcontainerservice.VirtualNetworkPropertiesVmipPoolArray{
+/// 					&hybridcontainerservice.VirtualNetworkPropertiesVmipPoolArgs{
 /// 						EndIP:   pulumi.String("192.168.0.130"),
 /// 						StartIP: pulumi.String("192.168.0.110"),
 /// 					},
 /// 				},
 /// 			},
-/// 			ResourceGroupName:   pulumi.String("test-arcappliance-resgrp"),
-/// 			VirtualNetworksName: pulumi.String("test-vnet-static"),
+/// 			ResourceGroupName:  pulumi.String("test-arcappliance-resgrp"),
+/// 			VirtualNetworkName: pulumi.String("test-vnet-static"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hybridcontainerservice_virtualnetworkretrieve" "virtualNetworkRetrieve" {
+///   extended_location = {
+///     name = "/subscriptions/a3e42606-29b1-4d7d-b1d9-9ff6b9d3c71b/resourcegroups/test-arcappliance-resgrp/providers/microsoft.extendedlocation/customlocations/testcustomlocation"
+///     type = "CustomLocation"
+///   }
+///   location = "westus"
+///   properties = {
+///     dns_servers = ["192.168.0.1"]
+///     gateway     = "192.168.0.1"
+///     infra_vnet_profile = {
+///       hci = {
+///         moc_group     = "target-group"
+///         moc_location  = "MocLocation"
+///         moc_vnet_name = "vnet1"
+///       }
+///     }
+///     ip_address_prefix = "192.168.0.0/16"
+///     vip_pool = [{
+///       "endIP"   = "192.168.0.50"
+///       "startIP" = "192.168.0.10"
+///     }]
+///     vlan_id = 10
+///     vmip_pool = [{
+///       "endIP"   = "192.168.0.130"
+///       "startIP" = "192.168.0.110"
+///     }]
+///   }
+///   resource_group_name  = "test-arcappliance-resgrp"
+///   virtual_network_name = "test-vnet-static"
 /// }
 ///
 /// ```
@@ -124,12 +179,12 @@ import 'virtual_networks_response_extended_location.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.hybridcontainerservice.VirtualNetworkRetrieve;
 /// import com.pulumi.azurenative.hybridcontainerservice.VirtualNetworkRetrieveArgs;
-/// import com.pulumi.azurenative.hybridcontainerservice.inputs.VirtualNetworksExtendedLocationArgs;
-/// import com.pulumi.azurenative.hybridcontainerservice.inputs.VirtualNetworksPropertiesArgs;
-/// import com.pulumi.azurenative.hybridcontainerservice.inputs.VirtualNetworksPropertiesInfraVnetProfileArgs;
-/// import com.pulumi.azurenative.hybridcontainerservice.inputs.VirtualNetworksPropertiesHciArgs;
-/// import java.util.List;
+/// import com.pulumi.azurenative.hybridcontainerservice.inputs.VirtualNetworkExtendedLocationArgs;
+/// import com.pulumi.azurenative.hybridcontainerservice.inputs.VirtualNetworkPropertiesArgs;
+/// import com.pulumi.azurenative.hybridcontainerservice.inputs.VirtualNetworkPropertiesInfraVnetProfileArgs;
+/// import com.pulumi.azurenative.hybridcontainerservice.inputs.VirtualNetworkPropertiesHciArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -142,30 +197,34 @@ import 'virtual_networks_response_extended_location.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var virtualNetworkRetrieve = new VirtualNetworkRetrieve("virtualNetworkRetrieve", VirtualNetworkRetrieveArgs.builder()
-///             .extendedLocation(VirtualNetworksExtendedLocationArgs.builder()
+///             .extendedLocation(VirtualNetworkExtendedLocationArgs.builder()
 ///                 .name("/subscriptions/a3e42606-29b1-4d7d-b1d9-9ff6b9d3c71b/resourcegroups/test-arcappliance-resgrp/providers/microsoft.extendedlocation/customlocations/testcustomlocation")
 ///                 .type("CustomLocation")
 ///                 .build())
 ///             .location("westus")
-///             .properties(VirtualNetworksPropertiesArgs.builder()
-///                 .infraVnetProfile(VirtualNetworksPropertiesInfraVnetProfileArgs.builder()
-///                     .hci(VirtualNetworksPropertiesHciArgs.builder()
+///             .properties(VirtualNetworkPropertiesArgs.builder()
+///                 .dnsServers("192.168.0.1")
+///                 .gateway("192.168.0.1")
+///                 .infraVnetProfile(VirtualNetworkPropertiesInfraVnetProfileArgs.builder()
+///                     .hci(VirtualNetworkPropertiesHciArgs.builder()
 ///                         .mocGroup("target-group")
 ///                         .mocLocation("MocLocation")
-///                         .mocVnetName("test-vnet")
+///                         .mocVnetName("vnet1")
 ///                         .build())
 ///                     .build())
-///                 .vipPool(VirtualNetworksPropertiesVipPoolArgs.builder()
+///                 .ipAddressPrefix("192.168.0.0/16")
+///                 .vipPool(VirtualNetworkPropertiesVipPoolArgs.builder()
 ///                     .endIP("192.168.0.50")
 ///                     .startIP("192.168.0.10")
 ///                     .build())
-///                 .vmipPool(VirtualNetworksPropertiesVmipPoolArgs.builder()
+///                 .vlanID(10)
+///                 .vmipPool(VirtualNetworkPropertiesVmipPoolArgs.builder()
 ///                     .endIP("192.168.0.130")
 ///                     .startIP("192.168.0.110")
 ///                     .build())
 ///                 .build())
 ///             .resourceGroupName("test-arcappliance-resgrp")
-///             .virtualNetworksName("test-vnet-static")
+///             .virtualNetworkName("test-vnet-static")
 ///             .build());
 ///
 ///     }
@@ -180,28 +239,32 @@ import 'virtual_networks_response_extended_location.dart';
 /// const virtualNetworkRetrieve = new azure_native.hybridcontainerservice.VirtualNetworkRetrieve("virtualNetworkRetrieve", {
 ///     extendedLocation: {
 ///         name: "/subscriptions/a3e42606-29b1-4d7d-b1d9-9ff6b9d3c71b/resourcegroups/test-arcappliance-resgrp/providers/microsoft.extendedlocation/customlocations/testcustomlocation",
-///         type: "CustomLocation",
+///         type: azure_native.hybridcontainerservice.ExtendedLocationTypes.CustomLocation,
 ///     },
 ///     location: "westus",
 ///     properties: {
+///         dnsServers: ["192.168.0.1"],
+///         gateway: "192.168.0.1",
 ///         infraVnetProfile: {
 ///             hci: {
 ///                 mocGroup: "target-group",
 ///                 mocLocation: "MocLocation",
-///                 mocVnetName: "test-vnet",
+///                 mocVnetName: "vnet1",
 ///             },
 ///         },
+///         ipAddressPrefix: "192.168.0.0/16",
 ///         vipPool: [{
 ///             endIP: "192.168.0.50",
 ///             startIP: "192.168.0.10",
 ///         }],
+///         vlanID: 10,
 ///         vmipPool: [{
 ///             endIP: "192.168.0.130",
 ///             startIP: "192.168.0.110",
 ///         }],
 ///     },
 ///     resourceGroupName: "test-arcappliance-resgrp",
-///     virtualNetworksName: "test-vnet-static",
+///     virtualNetworkName: "test-vnet-static",
 /// });
 ///
 /// ```
@@ -213,28 +276,32 @@ import 'virtual_networks_response_extended_location.dart';
 /// virtual_network_retrieve = azure_native.hybridcontainerservice.VirtualNetworkRetrieve("virtualNetworkRetrieve",
 ///     extended_location={
 ///         "name": "/subscriptions/a3e42606-29b1-4d7d-b1d9-9ff6b9d3c71b/resourcegroups/test-arcappliance-resgrp/providers/microsoft.extendedlocation/customlocations/testcustomlocation",
-///         "type": "CustomLocation",
+///         "type": azure_native.hybridcontainerservice.ExtendedLocationTypes.CUSTOM_LOCATION,
 ///     },
 ///     location="westus",
 ///     properties={
+///         "dns_servers": ["192.168.0.1"],
+///         "gateway": "192.168.0.1",
 ///         "infra_vnet_profile": {
 ///             "hci": {
 ///                 "moc_group": "target-group",
 ///                 "moc_location": "MocLocation",
-///                 "moc_vnet_name": "test-vnet",
+///                 "moc_vnet_name": "vnet1",
 ///             },
 ///         },
+///         "ip_address_prefix": "192.168.0.0/16",
 ///         "vip_pool": [{
 ///             "end_ip": "192.168.0.50",
 ///             "start_ip": "192.168.0.10",
 ///         }],
+///         "vlan_id": 10,
 ///         "vmip_pool": [{
 ///             "end_ip": "192.168.0.130",
 ///             "start_ip": "192.168.0.110",
 ///         }],
 ///     },
 ///     resource_group_name="test-arcappliance-resgrp",
-///     virtual_networks_name="test-vnet-static")
+///     virtual_network_name="test-vnet-static")
 ///
 /// ```
 ///
@@ -248,19 +315,24 @@ import 'virtual_networks_response_extended_location.dart';
 ///         type: CustomLocation
 ///       location: westus
 ///       properties:
+///         dnsServers:
+///           - 192.168.0.1
+///         gateway: 192.168.0.1
 ///         infraVnetProfile:
 ///           hci:
 ///             mocGroup: target-group
 ///             mocLocation: MocLocation
-///             mocVnetName: test-vnet
+///             mocVnetName: vnet1
+///         ipAddressPrefix: 192.168.0.0/16
 ///         vipPool:
 ///           - endIP: 192.168.0.50
 ///             startIP: 192.168.0.10
+///         vlanID: 10
 ///         vmipPool:
 ///           - endIP: 192.168.0.130
 ///             startIP: 192.168.0.110
 ///       resourceGroupName: test-arcappliance-resgrp
-///       virtualNetworksName: test-vnet-static
+///       virtualNetworkName: test-vnet-static
 ///
 /// ```
 ///
@@ -272,19 +344,20 @@ import 'virtual_networks_response_extended_location.dart';
 /// An existing resource can be imported using its type token, name, and identifier, e.g.
 ///
 /// ```sh
-/// $ pulumi import azure-native:hybridcontainerservice:VirtualNetworkRetrieve test-vnet-static /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworksName}
+/// $ pulumi import azure-native:hybridcontainerservice:VirtualNetworkRetrieve test-vnet-static /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}
 /// ```
 class VirtualNetworkRetrieve extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  late final pulumi.Output<VirtualNetworksResponseExtendedLocation?> extendedLocation;
+  /// Extended location pointing to the underlying infrastructure
+  late final pulumi.Output<VirtualNetworkResponseExtendedLocation?> extendedLocation;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// The name of the resource
   late final pulumi.Output<String> name;
-  /// HybridAKSNetworkSpec defines the desired state of HybridAKSNetwork
-  late final pulumi.Output<VirtualNetworksPropertiesResponse> properties;
-  /// Metadata pertaining to creation and last modification of the resource.
+  /// Properties of the virtual network resource
+  late final pulumi.Output<VirtualNetworkPropertiesResponse> properties;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -306,10 +379,10 @@ class VirtualNetworkRetrieve extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    extendedLocation = registerOutput<VirtualNetworksResponseExtendedLocation?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworksResponseExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extendedLocation = registerOutput<VirtualNetworkResponseExtendedLocation?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkResponseExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<VirtualNetworksPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworksPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<VirtualNetworkPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

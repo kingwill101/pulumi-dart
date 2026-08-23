@@ -99,6 +99,43 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_route53domainsdomainsummary" "route53DomainsDomainSummary" {
+///   location = "yuzdde"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "wrwdlajgtnvqtehqwjewdams"
+///     aws_account_id = "vcuytljgzjlxqbqafyjyotrm"
+///     aws_properties = {
+///       auto_renew    = true
+///       domain_name   = "zvofrrcpsq"
+///       expiry        = "2024-10-08T03:54:06.143Z"
+///       transfer_lock = true
+///     }
+///     aws_region        = "kfqnxegwwlydcxbrps"
+///     aws_source_schema = "tmisqqzyhunvwrvagqsndin"
+///     aws_tags = {
+///       "key3432" = "uypuabeq"
+///     }
+///     public_cloud_connectors_resource_id = "xghzjqidhyawkmjgmcylp"
+///     public_cloud_resource_name          = "l"
+///   }
+///   resource_group_name = "rgroute53DomainsDomainSummary"
+///   tags = {
+///     "key9394" = "fo"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +146,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.Route53DomainsDomainSummaryArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.Route53DomainsDomainSummaryPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsRoute53DomainsDomainSummaryPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

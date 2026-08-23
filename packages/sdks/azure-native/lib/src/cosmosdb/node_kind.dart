@@ -14,4 +14,3 @@ enum NodeKind {
     throw ArgumentError('Unknown NodeKind value: $value');
   }
 }
-

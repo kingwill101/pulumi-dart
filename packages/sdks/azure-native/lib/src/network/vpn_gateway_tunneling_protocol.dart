@@ -15,4 +15,3 @@ enum VpnGatewayTunnelingProtocol {
     throw ArgumentError('Unknown VpnGatewayTunnelingProtocol value: $value');
   }
 }
-

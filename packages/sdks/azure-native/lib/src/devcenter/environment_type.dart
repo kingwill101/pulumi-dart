@@ -65,6 +65,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devcenter_environmenttype" "environmentType" {
+///   dev_center_name       = "Contoso"
+///   display_name          = "Dev"
+///   environment_type_name = "DevTest"
+///   resource_group_name   = "rg1"
+///   tags = {
+///     "Owner" = "superuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +94,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.devcenter.EnvironmentType;
 /// import com.pulumi.azurenative.devcenter.EnvironmentTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

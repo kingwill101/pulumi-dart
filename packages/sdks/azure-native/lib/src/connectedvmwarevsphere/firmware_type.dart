@@ -15,4 +15,3 @@ enum FirmwareType {
     throw ArgumentError('Unknown FirmwareType value: $value');
   }
 }
-

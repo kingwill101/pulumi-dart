@@ -18,4 +18,3 @@ enum DeploymentStatus {
     throw ArgumentError('Unknown DeploymentStatus value: $value');
   }
 }
-

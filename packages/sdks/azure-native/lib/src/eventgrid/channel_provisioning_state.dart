@@ -20,4 +20,3 @@ enum ChannelProvisioningState {
     throw ArgumentError('Unknown ChannelProvisioningState value: $value');
   }
 }
-

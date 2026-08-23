@@ -61,6 +61,25 @@ import 'user_assigned_service_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_connector" "connector" {
+///   connector_name      = "C1"
+///   location            = "westcentralus"
+///   resource_group_name = "test-rg"
+///   source_resource_id  = "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.Workloads/sapVirtualInstances/X00"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +88,8 @@ import 'user_assigned_service_identity_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.Connector;
 /// import com.pulumi.azurenative.workloads.ConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

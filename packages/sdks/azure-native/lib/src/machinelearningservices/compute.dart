@@ -7,9 +7,9 @@ import 'system_data_response.dart';
 
 /// Machine Learning compute object wrapped into ARM resource envelope.
 ///
-/// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+/// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 ///
-/// Other available API versions: 2021-03-01-preview, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-03-01-preview, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -103,6 +103,43 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_compute" "compute" {
+///   compute_name = "compute123"
+///   location     = "eastus"
+///   properties = {
+///     "computeType" = "AmlCompute"
+///     "properties" = {
+///       "enableNodePublicIp"          = true
+///       "isolatedNetwork"             = false
+///       "osType"                      = "Windows"
+///       "remoteLoginPortPublicAccess" = "NotSpecified"
+///       "scaleSettings" = {
+///         "maxNodeCount"                = 1
+///         "minNodeCount"                = 0
+///         "nodeIdleTimeBeforeScaleDown" = "PT5M"
+///       }
+///       "virtualMachineImage" = {
+///         "id" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/galleries/myImageGallery/images/myImageDefinition/versions/0.0.1"
+///       }
+///       "vmPriority" = "Dedicated"
+///       "vmSize"     = "STANDARD_NC6"
+///     }
+///   }
+///   resource_group_name = "testrg123"
+///   workspace_name      = "workspaces123"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +148,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Compute;
 /// import com.pulumi.azurenative.machinelearningservices.ComputeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -301,6 +338,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_compute" "compute" {
+///   compute_name = "compute123"
+///   location     = "eastus"
+///   properties = {
+///     "computeType" = "DataFactory"
+///   }
+///   resource_group_name = "testrg123"
+///   workspace_name      = "workspaces123"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -309,8 +367,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Compute;
 /// import com.pulumi.azurenative.machinelearningservices.ComputeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -438,6 +496,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_compute" "compute" {
+///   compute_name = "compute123"
+///   location     = "eastus"
+///   properties = {
+///     "computeType" = "AKS"
+///   }
+///   resource_group_name = "testrg123"
+///   workspace_name      = "workspaces123"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -446,8 +525,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Compute;
 /// import com.pulumi.azurenative.machinelearningservices.ComputeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -555,36 +634,48 @@ import 'system_data_response.dart';
 ///                             {
 ///                                 Name = "connect",
 ///                                 Protocol = AzureNative.MachineLearningServices.Protocol.Http,
-///                                 Published = 8787,
+///                                 Published = 4444,
 ///                                 Target = 8787,
 ///                             },
 ///                         },
 ///                         EnvironmentVariables =
 ///                         {
-///                             { "test_variable", new AzureNative.MachineLearningServices.Inputs.EnvironmentVariableArgs
+///                             { "RSP_LICENSE", new AzureNative.MachineLearningServices.Inputs.EnvironmentVariableArgs
 ///                             {
 ///                                 Type = AzureNative.MachineLearningServices.EnvironmentVariableType.Local,
-///                                 Value = "test_value",
+///                                 Value = "XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX",
 ///                             } },
 ///                         },
 ///                         Image = new AzureNative.MachineLearningServices.Inputs.ImageArgs
 ///                         {
-///                             Reference = "ghcr.io/azure/rocker-rstudio-ml-verse:latest",
+///                             Reference = "ghcr.io/azure/rstudio-workbench:latest",
 ///                             Type = AzureNative.MachineLearningServices.ImageType.Docker,
 ///                         },
-///                         Name = "rstudio",
+///                         Kernel = new AzureNative.MachineLearningServices.Inputs.JupyterKernelConfigArgs
+///                         {
+///                             Argv = new[]
+///                             {
+///                                 "option1",
+///                                 "option2",
+///                                 "option3",
+///                             },
+///                             DisplayName = "TestKernel",
+///                             Language = "python",
+///                         },
+///                         Name = "rstudio-workbench",
 ///                         Volumes = new[]
 ///                         {
 ///                             new AzureNative.MachineLearningServices.Inputs.VolumeDefinitionArgs
 ///                             {
-///                                 ReadOnly = false,
-///                                 Source = "/home/azureuser/cloudfiles",
-///                                 Target = "/home/azureuser/cloudfiles",
+///                                 ReadOnly = true,
+///                                 Source = "/mnt/azureuser/",
+///                                 Target = "/home/testuser/",
 ///                                 Type = AzureNative.MachineLearningServices.VolumeDefinitionType.Bind,
 ///                             },
 ///                         },
 ///                     },
 ///                 },
+///                 EnableSSO = true,
 ///                 PersonalComputeInstanceSettings = new AzureNative.MachineLearningServices.Inputs.PersonalComputeInstanceSettingsArgs
 ///                 {
 ///                     AssignedUser = new AzureNative.MachineLearningServices.Inputs.AssignedUserArgs
@@ -640,31 +731,41 @@ import 'system_data_response.dart';
 /// 								&machinelearningservices.EndpointArgs{
 /// 									Name:      pulumi.String("connect"),
 /// 									Protocol:  pulumi.String(machinelearningservices.ProtocolHttp),
-/// 									Published: pulumi.Int(8787),
+/// 									Published: pulumi.Int(4444),
 /// 									Target:    pulumi.Int(8787),
 /// 								},
 /// 							},
 /// 							EnvironmentVariables: machinelearningservices.EnvironmentVariableMap{
-/// 								"test_variable": &machinelearningservices.EnvironmentVariableArgs{
+/// 								"RSP_LICENSE": &machinelearningservices.EnvironmentVariableArgs{
 /// 									Type:  pulumi.String(machinelearningservices.EnvironmentVariableTypeLocal),
-/// 									Value: pulumi.String("test_value"),
+/// 									Value: pulumi.String("XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX"),
 /// 								},
 /// 							},
 /// 							Image: &machinelearningservices.ImageArgs{
-/// 								Reference: pulumi.String("ghcr.io/azure/rocker-rstudio-ml-verse:latest"),
+/// 								Reference: pulumi.String("ghcr.io/azure/rstudio-workbench:latest"),
 /// 								Type:      pulumi.String(machinelearningservices.ImageTypeDocker),
 /// 							},
-/// 							Name: pulumi.String("rstudio"),
+/// 							Kernel: &machinelearningservices.JupyterKernelConfigArgs{
+/// 								Argv: pulumi.StringArray{
+/// 									pulumi.String("option1"),
+/// 									pulumi.String("option2"),
+/// 									pulumi.String("option3"),
+/// 								},
+/// 								DisplayName: pulumi.String("TestKernel"),
+/// 								Language:    pulumi.String("python"),
+/// 							},
+/// 							Name: pulumi.String("rstudio-workbench"),
 /// 							Volumes: machinelearningservices.VolumeDefinitionArray{
 /// 								&machinelearningservices.VolumeDefinitionArgs{
-/// 									ReadOnly: pulumi.Bool(false),
-/// 									Source:   pulumi.String("/home/azureuser/cloudfiles"),
-/// 									Target:   pulumi.String("/home/azureuser/cloudfiles"),
+/// 									ReadOnly: pulumi.Bool(true),
+/// 									Source:   pulumi.String("/mnt/azureuser/"),
+/// 									Target:   pulumi.String("/home/testuser/"),
 /// 									Type:     pulumi.String(machinelearningservices.VolumeDefinitionTypeBind),
 /// 								},
 /// 							},
 /// 						},
 /// 					},
+/// 					EnableSSO: pulumi.Bool(true),
 /// 					PersonalComputeInstanceSettings: &machinelearningservices.PersonalComputeInstanceSettingsArgs{
 /// 						AssignedUser: &machinelearningservices.AssignedUserArgs{
 /// 							ObjectId: pulumi.String("00000000-0000-0000-0000-000000000000"),
@@ -692,6 +793,78 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_compute" "compute" {
+///   compute_name = "compute123"
+///   location     = "eastus"
+///   properties = {
+///     "computeType" = "ComputeInstance"
+///     "properties" = {
+///       "applicationSharingPolicy"         = "Personal"
+///       "computeInstanceAuthorizationType" = "personal"
+///       "customServices" = [{
+///         "docker" = {
+///           "privileged" = true
+///         }
+///         "endpoints" = [{
+///           "name"      = "connect"
+///           "protocol"  = "http"
+///           "published" = 4444
+///           "target"    = 8787
+///         }]
+///         "environmentVariables" = {
+///           "RSP_LICENSE" = {
+///             "type"  = "local"
+///             "value" = "XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX"
+///           }
+///         }
+///         "image" = {
+///           "reference" = "ghcr.io/azure/rstudio-workbench:latest"
+///           "type"      = "docker"
+///         }
+///         "kernel" = {
+///           "argv"        = ["option1", "option2", "option3"]
+///           "displayName" = "TestKernel"
+///           "language"    = "python"
+///         }
+///         "name" = "rstudio-workbench"
+///         "volumes" = [{
+///           "readOnly" = true
+///           "source"   = "/mnt/azureuser/"
+///           "target"   = "/home/testuser/"
+///           "type"     = "bind"
+///         }]
+///       }]
+///       "enableSSO" = true
+///       "personalComputeInstanceSettings" = {
+///         "assignedUser" = {
+///           "objectId" = "00000000-0000-0000-0000-000000000000"
+///           "tenantId" = "00000000-0000-0000-0000-000000000000"
+///         }
+///       }
+///       "sshSettings" = {
+///         "sshPublicAccess" = "Disabled"
+///       }
+///       "subnet" = {
+///         "id" = "test-subnet-resource-id"
+///       }
+///       "vmSize" = "STANDARD_NC6"
+///     }
+///   }
+///   resource_group_name = "testrg123"
+///   workspace_name      = "workspaces123"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -700,8 +873,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Compute;
 /// import com.pulumi.azurenative.machinelearningservices.ComputeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -728,25 +901,34 @@ import 'system_data_response.dart';
 ///                         .endpoints(EndpointArgs.builder()
 ///                             .name("connect")
 ///                             .protocol("http")
-///                             .published(8787)
+///                             .published(4444)
 ///                             .target(8787)
 ///                             .build())
-///                         .environmentVariables(Map.of("test_variable", EnvironmentVariableArgs.builder()
+///                         .environmentVariables(Map.of("RSP_LICENSE", EnvironmentVariableArgs.builder()
 ///                             .type("local")
-///                             .value("test_value")
+///                             .value("XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX")
 ///                             .build()))
 ///                         .image(ImageArgs.builder()
-///                             .reference("ghcr.io/azure/rocker-rstudio-ml-verse:latest")
+///                             .reference("ghcr.io/azure/rstudio-workbench:latest")
 ///                             .type("docker")
 ///                             .build())
-///                         .name("rstudio")
+///                         .kernel(JupyterKernelConfigArgs.builder()
+///                             .argv(
+///                                 "option1",
+///                                 "option2",
+///                                 "option3")
+///                             .displayName("TestKernel")
+///                             .language("python")
+///                             .build())
+///                         .name("rstudio-workbench")
 ///                         .volumes(VolumeDefinitionArgs.builder()
-///                             .readOnly(false)
-///                             .source("/home/azureuser/cloudfiles")
-///                             .target("/home/azureuser/cloudfiles")
+///                             .readOnly(true)
+///                             .source("/mnt/azureuser/")
+///                             .target("/home/testuser/")
 ///                             .type("bind")
 ///                             .build())
 ///                         .build())
+///                     .enableSSO(true)
 ///                     .personalComputeInstanceSettings(PersonalComputeInstanceSettingsArgs.builder()
 ///                         .assignedUser(AssignedUserArgs.builder()
 ///                             .objectId("00000000-0000-0000-0000-000000000000")
@@ -790,27 +972,37 @@ import 'system_data_response.dart';
 ///                 endpoints: [{
 ///                     name: "connect",
 ///                     protocol: azure_native.machinelearningservices.Protocol.Http,
-///                     published: 8787,
+///                     published: 4444,
 ///                     target: 8787,
 ///                 }],
 ///                 environmentVariables: {
-///                     test_variable: {
+///                     RSP_LICENSE: {
 ///                         type: azure_native.machinelearningservices.EnvironmentVariableType.Local,
-///                         value: "test_value",
+///                         value: "XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX",
 ///                     },
 ///                 },
 ///                 image: {
-///                     reference: "ghcr.io/azure/rocker-rstudio-ml-verse:latest",
+///                     reference: "ghcr.io/azure/rstudio-workbench:latest",
 ///                     type: azure_native.machinelearningservices.ImageType.Docker,
 ///                 },
-///                 name: "rstudio",
+///                 kernel: {
+///                     argv: [
+///                         "option1",
+///                         "option2",
+///                         "option3",
+///                     ],
+///                     displayName: "TestKernel",
+///                     language: "python",
+///                 },
+///                 name: "rstudio-workbench",
 ///                 volumes: [{
-///                     readOnly: false,
-///                     source: "/home/azureuser/cloudfiles",
-///                     target: "/home/azureuser/cloudfiles",
+///                     readOnly: true,
+///                     source: "/mnt/azureuser/",
+///                     target: "/home/testuser/",
 ///                     type: azure_native.machinelearningservices.VolumeDefinitionType.Bind,
 ///                 }],
 ///             }],
+///             enableSSO: true,
 ///             personalComputeInstanceSettings: {
 ///                 assignedUser: {
 ///                     objectId: "00000000-0000-0000-0000-000000000000",
@@ -851,27 +1043,37 @@ import 'system_data_response.dart';
 ///                 "endpoints": [{
 ///                     "name": "connect",
 ///                     "protocol": azure_native.machinelearningservices.Protocol.HTTP,
-///                     "published": 8787,
+///                     "published": 4444,
 ///                     "target": 8787,
 ///                 }],
 ///                 "environment_variables": {
-///                     "test_variable": {
+///                     "RSP_LICENSE": {
 ///                         "type": azure_native.machinelearningservices.EnvironmentVariableType.LOCAL,
-///                         "value": "test_value",
+///                         "value": "XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX",
 ///                     },
 ///                 },
 ///                 "image": {
-///                     "reference": "ghcr.io/azure/rocker-rstudio-ml-verse:latest",
+///                     "reference": "ghcr.io/azure/rstudio-workbench:latest",
 ///                     "type": azure_native.machinelearningservices.ImageType.DOCKER,
 ///                 },
-///                 "name": "rstudio",
+///                 "kernel": {
+///                     "argv": [
+///                         "option1",
+///                         "option2",
+///                         "option3",
+///                     ],
+///                     "display_name": "TestKernel",
+///                     "language": "python",
+///                 },
+///                 "name": "rstudio-workbench",
 ///                 "volumes": [{
-///                     "read_only": False,
-///                     "source": "/home/azureuser/cloudfiles",
-///                     "target": "/home/azureuser/cloudfiles",
+///                     "read_only": True,
+///                     "source": "/mnt/azureuser/",
+///                     "target": "/home/testuser/",
 ///                     "type": azure_native.machinelearningservices.VolumeDefinitionType.BIND,
 ///                 }],
 ///             }],
+///             "enable_sso": True,
 ///             "personal_compute_instance_settings": {
 ///                 "assigned_user": {
 ///                     "object_id": "00000000-0000-0000-0000-000000000000",
@@ -910,21 +1112,29 @@ import 'system_data_response.dart';
 ///               endpoints:
 ///                 - name: connect
 ///                   protocol: http
-///                   published: 8787
+///                   published: 4444
 ///                   target: 8787
 ///               environmentVariables:
-///                 test_variable:
+///                 RSP_LICENSE:
 ///                   type: local
-///                   value: test_value
+///                   value: XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX
 ///               image:
-///                 reference: ghcr.io/azure/rocker-rstudio-ml-verse:latest
+///                 reference: ghcr.io/azure/rstudio-workbench:latest
 ///                 type: docker
-///               name: rstudio
+///               kernel:
+///                 argv:
+///                   - option1
+///                   - option2
+///                   - option3
+///                 displayName: TestKernel
+///                 language: python
+///               name: rstudio-workbench
 ///               volumes:
-///                 - readOnly: false
-///                   source: /home/azureuser/cloudfiles
-///                   target: /home/azureuser/cloudfiles
+///                 - readOnly: true
+///                   source: /mnt/azureuser/
+///                   target: /home/testuser/
 ///                   type: bind
+///           enableSSO: true
 ///           personalComputeInstanceSettings:
 ///             assignedUser:
 ///               objectId: 00000000-0000-0000-0000-000000000000
@@ -1059,6 +1269,53 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_compute" "compute" {
+///   compute_name = "compute123"
+///   location     = "eastus"
+///   properties = {
+///     "computeType" = "ComputeInstance"
+///     "properties" = {
+///       "applicationSharingPolicy"         = "Personal"
+///       "computeInstanceAuthorizationType" = "personal"
+///       "personalComputeInstanceSettings" = {
+///         "assignedUser" = {
+///           "objectId" = "00000000-0000-0000-0000-000000000000"
+///           "tenantId" = "00000000-0000-0000-0000-000000000000"
+///         }
+///       }
+///       "schedules" = {
+///         "computeStartStop" = [{
+///           "action" = "Stop"
+///           "cron" = {
+///             "expression" = "0 18 * * *"
+///             "startTime"  = "2021-04-23T01:30:00"
+///             "timeZone"   = "Pacific Standard Time"
+///           }
+///           "status"      = "Enabled"
+///           "triggerType" = "Cron"
+///         }]
+///       }
+///       "sshSettings" = {
+///         "sshPublicAccess" = "Disabled"
+///       }
+///       "vmSize" = "STANDARD_NC6"
+///     }
+///   }
+///   resource_group_name = "testrg123"
+///   workspace_name      = "workspaces123"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1067,8 +1324,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Compute;
 /// import com.pulumi.azurenative.machinelearningservices.ComputeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1300,6 +1557,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_compute" "compute" {
+///   compute_name = "compute123"
+///   location     = "eastus"
+///   properties = {
+///     "computeType" = "ComputeInstance"
+///     "properties" = {
+///       "vmSize" = "STANDARD_NC6"
+///     }
+///   }
+///   resource_group_name = "testrg123"
+///   workspace_name      = "workspaces123"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1308,8 +1589,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Compute;
 /// import com.pulumi.azurenative.machinelearningservices.ComputeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1466,6 +1747,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_compute" "compute" {
+///   compute_name = "compute123"
+///   location     = "eastus"
+///   properties = {
+///     "computeType" = "AmlCompute"
+///     "description" = "some compute"
+///     "properties" = {
+///       "scaleSettings" = {
+///         "maxNodeCount"                = 4
+///         "minNodeCount"                = 4
+///         "nodeIdleTimeBeforeScaleDown" = "PT5M"
+///       }
+///     }
+///   }
+///   resource_group_name = "testrg123"
+///   workspace_name      = "workspaces123"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1474,8 +1784,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Compute;
 /// import com.pulumi.azurenative.machinelearningservices.ComputeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1644,6 +1954,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_compute" "compute" {
+///   compute_name = "compute123"
+///   location     = "eastus"
+///   properties = {
+///     "computeType" = "AKS"
+///     "description" = "some compute"
+///     "properties" = {
+///       "agentCount" = 4
+///     }
+///     "resourceId" = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourcegroups/testrg123/providers/Microsoft.ContainerService/managedClusters/compute123-56826-c9b00420020b2"
+///   }
+///   resource_group_name = "testrg123"
+///   workspace_name      = "workspaces123"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1652,8 +1988,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Compute;
 /// import com.pulumi.azurenative.machinelearningservices.ComputeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1763,7 +2099,7 @@ class Compute extends pulumi.CustomResource {
   late final pulumi.Output<String?> location;
   /// The name of the resource
   late final pulumi.Output<String> name;
-  /// Compute properties
+  /// The resource-specific properties for this resource.
   late final pulumi.Output<AKSResponse> properties;
   /// The sku of the workspace.
   late final pulumi.Output<SkuResponse?> sku;

@@ -1,11 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'certificate_configuration_response.dart';
 import 'policy_args.dart';
+import 'policy_properties_response.dart';
 import 'system_data_response.dart';
 
 /// A Credential Policy
 ///
 /// Uses Azure REST API version 2025-11-01-preview.
+///
+/// Other available API versions: 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -21,20 +23,23 @@ import 'system_data_response.dart';
 /// {
 ///     var policy = new AzureNative.DeviceRegistry.Policy("policy", new()
 ///     {
-///         Certificate = new AzureNative.DeviceRegistry.Inputs.CertificateConfigurationArgs
-///         {
-///             CertificateAuthorityConfiguration = new AzureNative.DeviceRegistry.Inputs.CertificateAuthorityConfigurationArgs
-///             {
-///                 KeyType = AzureNative.DeviceRegistry.SupportedKeyType.ECC,
-///             },
-///             LeafCertificateConfiguration = new AzureNative.DeviceRegistry.Inputs.LeafCertificateConfigurationArgs
-///             {
-///                 ValidityPeriodInDays = 10,
-///             },
-///         },
 ///         Location = "zjqtuvprnxvimzkkxaobgkm",
 ///         NamespaceName = "mynamespace",
 ///         PolicyName = "mypolicy",
+///         Properties = new AzureNative.DeviceRegistry.Inputs.PolicyPropertiesArgs
+///         {
+///             Certificate = new AzureNative.DeviceRegistry.Inputs.CertificateConfigurationArgs
+///             {
+///                 CertificateAuthorityConfiguration = new AzureNative.DeviceRegistry.Inputs.CertificateAuthorityConfigurationArgs
+///                 {
+///                     KeyType = AzureNative.DeviceRegistry.SupportedKeyType.ECC,
+///                 },
+///                 LeafCertificateConfiguration = new AzureNative.DeviceRegistry.Inputs.LeafCertificateConfigurationArgs
+///                 {
+///                     ValidityPeriodInDays = 10,
+///                 },
+///             },
+///         },
 ///         ResourceGroupName = "rgdeviceregistry",
 ///         Tags =
 ///         {
@@ -58,17 +63,19 @@ import 'system_data_response.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := deviceregistry.NewPolicy(ctx, "policy", &deviceregistry.PolicyArgs{
-/// 			Certificate: &deviceregistry.CertificateConfigurationArgs{
-/// 				CertificateAuthorityConfiguration: &deviceregistry.CertificateAuthorityConfigurationArgs{
-/// 					KeyType: pulumi.String(deviceregistry.SupportedKeyTypeECC),
-/// 				},
-/// 				LeafCertificateConfiguration: &deviceregistry.LeafCertificateConfigurationArgs{
-/// 					ValidityPeriodInDays: pulumi.Int(10),
+/// 			Location:      pulumi.String("zjqtuvprnxvimzkkxaobgkm"),
+/// 			NamespaceName: pulumi.String("mynamespace"),
+/// 			PolicyName:    pulumi.String("mypolicy"),
+/// 			Properties: &deviceregistry.PolicyPropertiesArgs{
+/// 				Certificate: &deviceregistry.CertificateConfigurationArgs{
+/// 					CertificateAuthorityConfiguration: &deviceregistry.CertificateAuthorityConfigurationArgs{
+/// 						KeyType: pulumi.String(deviceregistry.SupportedKeyTypeECC),
+/// 					},
+/// 					LeafCertificateConfiguration: &deviceregistry.LeafCertificateConfigurationArgs{
+/// 						ValidityPeriodInDays: pulumi.Int(10),
+/// 					},
 /// 				},
 /// 			},
-/// 			Location:          pulumi.String("zjqtuvprnxvimzkkxaobgkm"),
-/// 			NamespaceName:     pulumi.String("mynamespace"),
-/// 			PolicyName:        pulumi.String("mypolicy"),
 /// 			ResourceGroupName: pulumi.String("rgdeviceregistry"),
 /// 			Tags: pulumi.StringMap{
 /// 				"key1088": pulumi.String("xzrpbqsac"),
@@ -83,6 +90,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_deviceregistry_policy" "policy" {
+///   location       = "zjqtuvprnxvimzkkxaobgkm"
+///   namespace_name = "mynamespace"
+///   policy_name    = "mypolicy"
+///   properties = {
+///     certificate = {
+///       certificate_authority_configuration = {
+///         key_type = "ECC"
+///       }
+///       leaf_certificate_configuration = {
+///         validity_period_in_days = 10
+///       }
+///     }
+///   }
+///   resource_group_name = "rgdeviceregistry"
+///   tags = {
+///     "key1088" = "xzrpbqsac"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -91,11 +129,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.deviceregistry.Policy;
 /// import com.pulumi.azurenative.deviceregistry.PolicyArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.PolicyPropertiesArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.CertificateConfigurationArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.CertificateAuthorityConfigurationArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.LeafCertificateConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -108,17 +147,19 @@ import 'system_data_response.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var policy = new Policy("policy", PolicyArgs.builder()
-///             .certificate(CertificateConfigurationArgs.builder()
-///                 .certificateAuthorityConfiguration(CertificateAuthorityConfigurationArgs.builder()
-///                     .keyType("ECC")
-///                     .build())
-///                 .leafCertificateConfiguration(LeafCertificateConfigurationArgs.builder()
-///                     .validityPeriodInDays(10)
-///                     .build())
-///                 .build())
 ///             .location("zjqtuvprnxvimzkkxaobgkm")
 ///             .namespaceName("mynamespace")
 ///             .policyName("mypolicy")
+///             .properties(PolicyPropertiesArgs.builder()
+///                 .certificate(CertificateConfigurationArgs.builder()
+///                     .certificateAuthorityConfiguration(CertificateAuthorityConfigurationArgs.builder()
+///                         .keyType("ECC")
+///                         .build())
+///                     .leafCertificateConfiguration(LeafCertificateConfigurationArgs.builder()
+///                         .validityPeriodInDays(10)
+///                         .build())
+///                     .build())
+///                 .build())
 ///             .resourceGroupName("rgdeviceregistry")
 ///             .tags(Map.of("key1088", "xzrpbqsac"))
 ///             .build());
@@ -133,17 +174,19 @@ import 'system_data_response.dart';
 /// import * as azure_native from "@pulumi/azure-native";
 ///
 /// const policy = new azure_native.deviceregistry.Policy("policy", {
-///     certificate: {
-///         certificateAuthorityConfiguration: {
-///             keyType: azure_native.deviceregistry.SupportedKeyType.ECC,
-///         },
-///         leafCertificateConfiguration: {
-///             validityPeriodInDays: 10,
-///         },
-///     },
 ///     location: "zjqtuvprnxvimzkkxaobgkm",
 ///     namespaceName: "mynamespace",
 ///     policyName: "mypolicy",
+///     properties: {
+///         certificate: {
+///             certificateAuthorityConfiguration: {
+///                 keyType: azure_native.deviceregistry.SupportedKeyType.ECC,
+///             },
+///             leafCertificateConfiguration: {
+///                 validityPeriodInDays: 10,
+///             },
+///         },
+///     },
 ///     resourceGroupName: "rgdeviceregistry",
 ///     tags: {
 ///         key1088: "xzrpbqsac",
@@ -157,17 +200,19 @@ import 'system_data_response.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// policy = azure_native.deviceregistry.Policy("policy",
-///     certificate={
-///         "certificate_authority_configuration": {
-///             "key_type": azure_native.deviceregistry.SupportedKeyType.ECC,
-///         },
-///         "leaf_certificate_configuration": {
-///             "validity_period_in_days": 10,
-///         },
-///     },
 ///     location="zjqtuvprnxvimzkkxaobgkm",
 ///     namespace_name="mynamespace",
 ///     policy_name="mypolicy",
+///     properties={
+///         "certificate": {
+///             "certificate_authority_configuration": {
+///                 "key_type": azure_native.deviceregistry.SupportedKeyType.ECC,
+///             },
+///             "leaf_certificate_configuration": {
+///                 "validity_period_in_days": 10,
+///             },
+///         },
+///     },
 ///     resource_group_name="rgdeviceregistry",
 ///     tags={
 ///         "key1088": "xzrpbqsac",
@@ -180,14 +225,15 @@ import 'system_data_response.dart';
 ///   policy:
 ///     type: azure-native:deviceregistry:Policy
 ///     properties:
-///       certificate:
-///         certificateAuthorityConfiguration:
-///           keyType: ECC
-///         leafCertificateConfiguration:
-///           validityPeriodInDays: 10
 ///       location: zjqtuvprnxvimzkkxaobgkm
 ///       namespaceName: mynamespace
 ///       policyName: mypolicy
+///       properties:
+///         certificate:
+///           certificateAuthorityConfiguration:
+///             keyType: ECC
+///           leafCertificateConfiguration:
+///             validityPeriodInDays: 10
 ///       resourceGroupName: rgdeviceregistry
 ///       tags:
 ///         key1088: xzrpbqsac
@@ -207,14 +253,12 @@ import 'system_data_response.dart';
 class Policy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// The certificate configuration.
-  late final pulumi.Output<CertificateConfigurationResponse?> certificate;
   /// The geo-location where the resource lives
-  late final pulumi.Output<String> location;
+  late final pulumi.Output<String?> location;
   /// The name of the resource
   late final pulumi.Output<String> name;
-  /// The status of the last operation.
-  late final pulumi.Output<String> provisioningState;
+  /// The RP-specific properties for this resource.
+  late final pulumi.Output<PolicyPropertiesResponse> properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -237,10 +281,9 @@ class Policy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    certificate = registerOutput<CertificateConfigurationResponse?>('certificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    location = registerOutput<String>('location');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    provisioningState = registerOutput<String>('provisioningState');
+    properties = registerOutput<PolicyPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

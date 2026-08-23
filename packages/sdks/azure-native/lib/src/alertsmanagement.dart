@@ -15,6 +15,7 @@ export 'alertsmanagement/alert_processing_rule_properties.dart';
 export 'alertsmanagement/alert_processing_rule_properties_response.dart';
 export 'alertsmanagement/alert_rule_state.dart';
 export 'alertsmanagement/condition.dart';
+export 'alertsmanagement/condition_alert_processing_rule_by_name_response.dart';
 export 'alertsmanagement/condition_response.dart';
 export 'alertsmanagement/conditions.dart';
 export 'alertsmanagement/conditions_response.dart';

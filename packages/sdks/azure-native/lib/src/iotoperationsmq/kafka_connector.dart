@@ -263,6 +263,113 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperationsmq_kafkaconnector" "kafkaConnector" {
+///   client_id_prefix = "yybbbeowkw"
+///   extended_location = {
+///     name = "an"
+///     type = "CustomLocation"
+///   }
+///   image = {
+///     pull_policy  = "imfuzvqxgbdwliqnn"
+///     pull_secrets = "klnqimxqsrdwhcqldjvdtsrs"
+///     repository   = "m"
+///     tag          = "jygfdiamhhm"
+///   }
+///   instances = 55252
+///   kafka_connection = {
+///     authentication = {
+///       auth_type = {
+///         sasl = {
+///           sasl_type = "plain"
+///           token = {
+///             key_vault = {
+///               username = "fb"
+///               vault = {
+///                 credentials = {
+///                   service_principal_local_secret_name = "wuimjwpbhoglbsxxa"
+///                 }
+///                 directory_id = "eyjniptiykzcgbzok"
+///                 name         = "lxmwfan"
+///               }
+///               vault_secret = {
+///                 name    = "bmectskddmpjxnsogwooexj"
+///                 version = "unjfbf"
+///               }
+///             }
+///             secret_name = "hxmqokubwldgjdtjv"
+///           }
+///         }
+///         system_assigned_managed_identity = {
+///           audience       = "kjderojhpehosgfcrxxbh"
+///           extension_name = "cyckjqqzspleajbtkniwrfsqygjfhe"
+///         }
+///         x509 = {
+///           key_vault = {
+///             vault = {
+///               credentials = {
+///                 service_principal_local_secret_name = "wuimjwpbhoglbsxxa"
+///               }
+///               directory_id = "eyjniptiykzcgbzok"
+///               name         = "lxmwfan"
+///             }
+///             vault_ca_chain_secret = {
+///               name    = "bmectskddmpjxnsogwooexj"
+///               version = "unjfbf"
+///             }
+///             vault_cert = {
+///               name    = "bmectskddmpjxnsogwooexj"
+///               version = "unjfbf"
+///             }
+///           }
+///           secret_name = "jlrjvqyoygynlpsekfbvyrpu"
+///         }
+///       }
+///       enabled = true
+///     }
+///     endpoint = "odxpssuhjkbonjmbhbebfjcah"
+///     tls = {
+///       tls_enabled                       = true
+///       trusted_ca_certificate_config_map = "kndjozglnxsgnzxq"
+///     }
+///   }
+///   kafka_connector_name = "V5--OL8-R"
+///   local_broker_connection = {
+///     authentication = {
+///       kubernetes = {
+///         secret_path                = "soukzfkouir"
+///         service_account_token_name = "suwetviuhmhorhvsidlznnufe"
+///       }
+///     }
+///     endpoint = "xc"
+///     tls = {
+///       tls_enabled                       = true
+///       trusted_ca_certificate_config_map = "rinkomfeznsfedbmllxlbmmhc"
+///     }
+///   }
+///   location  = "mpbupgmqssnb"
+///   log_level = "g"
+///   mq_name   = "s47Lj-S2S-Q-XY"
+///   node_tolerations = {
+///     effect   = "eeswvciblqmmaeesjoflyvxqbz"
+///     key      = "wbrstdwxgm"
+///     operator = "lbegegneekwnyodtzraarivtwhmzep"
+///     value    = "sfafsjdcezdmkwibxeluukxgl"
+///   }
+///   resource_group_name = "rgiotoperationsmq"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -291,8 +398,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.LocalBrokerKubernetesAuthenticationArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.LocalBrokerConnectionTlsArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.NodeTolerationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

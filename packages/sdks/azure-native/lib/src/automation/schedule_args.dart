@@ -22,7 +22,7 @@ class ScheduleArgs {
   final pulumi.Input<dynamic>? interval;
   /// Gets or sets the name of the Schedule.
   final pulumi.Input<String> name;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The schedule name.
   final pulumi.Input<String>? scheduleName;
@@ -39,7 +39,7 @@ class ScheduleArgs {
   /// [frequency] Gets or sets the frequency of the schedule.
   /// [interval] Gets or sets the interval of the schedule.
   /// [name] Gets or sets the name of the Schedule.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scheduleName] The schedule name.
   /// [startTime] Gets or sets the start time of the schedule.
   /// [timeZone] Gets or sets the time zone of the schedule.
@@ -89,4 +89,3 @@ class ScheduleArgs {
     );
   }
 }
-

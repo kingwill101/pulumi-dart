@@ -16,4 +16,3 @@ enum NetworkFunctionType {
     throw ArgumentError('Unknown NetworkFunctionType value: $value');
   }
 }
-

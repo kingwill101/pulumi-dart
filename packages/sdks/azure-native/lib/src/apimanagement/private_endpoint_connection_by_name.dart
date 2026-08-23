@@ -5,9 +5,9 @@ import 'private_link_service_connection_state_response.dart';
 
 /// The Private Endpoint Connection resource.
 ///
-/// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -23,7 +23,7 @@ import 'private_link_service_connection_state_response.dart';
 /// {
 ///     var privateEndpointConnectionByName = new AzureNative.ApiManagement.PrivateEndpointConnectionByName("privateEndpointConnectionByName", new()
 ///     {
-///         Id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/connectionName",
+///         Id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/connectionName",
 ///         PrivateEndpointConnectionName = "privateEndpointConnectionName",
 ///         Properties = new AzureNative.ApiManagement.Inputs.PrivateEndpointConnectionRequestPropertiesArgs
 ///         {
@@ -53,7 +53,7 @@ import 'private_link_service_connection_state_response.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := apimanagement.NewPrivateEndpointConnectionByName(ctx, "privateEndpointConnectionByName", &apimanagement.PrivateEndpointConnectionByNameArgs{
-/// 			Id:                            pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/connectionName"),
+/// 			Id:                            pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/connectionName"),
 /// 			PrivateEndpointConnectionName: pulumi.String("privateEndpointConnectionName"),
 /// 			Properties: &apimanagement.PrivateEndpointConnectionRequestPropertiesArgs{
 /// 				PrivateLinkServiceConnectionState: &apimanagement.PrivateLinkServiceConnectionStateArgs{
@@ -73,6 +73,30 @@ import 'private_link_service_connection_state_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_privateendpointconnectionbyname" "privateEndpointConnectionByName" {
+///   id                               = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/connectionName"
+///   private_endpoint_connection_name = "privateEndpointConnectionName"
+///   properties = {
+///     private_link_service_connection_state = {
+///       description = "The Private Endpoint Connection is approved."
+///       status      = "Approved"
+///     }
+///   }
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +107,8 @@ import 'private_link_service_connection_state_response.dart';
 /// import com.pulumi.azurenative.apimanagement.PrivateEndpointConnectionByNameArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.PrivateEndpointConnectionRequestPropertiesArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -97,7 +121,7 @@ import 'private_link_service_connection_state_response.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var privateEndpointConnectionByName = new PrivateEndpointConnectionByName("privateEndpointConnectionByName", PrivateEndpointConnectionByNameArgs.builder()
-///             .id("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/connectionName")
+///             .id("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/connectionName")
 ///             .privateEndpointConnectionName("privateEndpointConnectionName")
 ///             .properties(PrivateEndpointConnectionRequestPropertiesArgs.builder()
 ///                 .privateLinkServiceConnectionState(PrivateLinkServiceConnectionStateArgs.builder()
@@ -119,7 +143,7 @@ import 'private_link_service_connection_state_response.dart';
 /// import * as azure_native from "@pulumi/azure-native";
 ///
 /// const privateEndpointConnectionByName = new azure_native.apimanagement.PrivateEndpointConnectionByName("privateEndpointConnectionByName", {
-///     id: "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/connectionName",
+///     id: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/connectionName",
 ///     privateEndpointConnectionName: "privateEndpointConnectionName",
 ///     properties: {
 ///         privateLinkServiceConnectionState: {
@@ -138,7 +162,7 @@ import 'private_link_service_connection_state_response.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// private_endpoint_connection_by_name = azure_native.apimanagement.PrivateEndpointConnectionByName("privateEndpointConnectionByName",
-///     id="/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/connectionName",
+///     id="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/connectionName",
 ///     private_endpoint_connection_name="privateEndpointConnectionName",
 ///     properties={
 ///         "private_link_service_connection_state": {
@@ -156,7 +180,7 @@ import 'private_link_service_connection_state_response.dart';
 ///   privateEndpointConnectionByName:
 ///     type: azure-native:apimanagement:PrivateEndpointConnectionByName
 ///     properties:
-///       id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/connectionName
+///       id: /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/connectionName
 ///       privateEndpointConnectionName: privateEndpointConnectionName
 ///       properties:
 ///         privateLinkServiceConnectionState:

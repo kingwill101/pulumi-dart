@@ -86,6 +86,35 @@ import 'task_run_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerregistry_taskrun" "taskRun" {
+///   force_update_tag    = "test"
+///   registry_name       = "myRegistry"
+///   resource_group_name = "myResourceGroup"
+///   run_request = {
+///     "credentials"          = {}
+///     "encodedTaskContent"   = "c3RlcHM6IAogIC0gY21kOiB7eyAuVmFsdWVzLmNvbW1hbmQgfX0K"
+///     "encodedValuesContent" = "Y29tbWFuZDogYmFzaCBlY2hvIHt7LlJ1bi5SZWdpc3RyeX19Cg=="
+///     "platform" = {
+///       "architecture" = "amd64"
+///       "os"           = "Linux"
+///     }
+///     "type"   = "EncodedTaskRunRequest"
+///     "values" = []
+///   }
+///   task_run_name = "myRun"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +123,8 @@ import 'task_run_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.containerregistry.TaskRun;
 /// import com.pulumi.azurenative.containerregistry.TaskRunArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

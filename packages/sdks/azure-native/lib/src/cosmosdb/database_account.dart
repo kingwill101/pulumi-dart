@@ -14,7 +14,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-10-15.
 ///
-/// Other available API versions: 2015-04-01, 2015-04-08, 2015-11-06, 2016-03-19, 2016-03-31, 2019-08-01, 2019-12-12, 2020-03-01, 2020-04-01, 2020-06-01-preview, 2020-09-01, 2021-01-15, 2021-03-01-preview, 2021-03-15, 2021-04-01-preview, 2021-04-15, 2021-05-15, 2021-06-15, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-04-01, 2015-04-08, 2015-11-06, 2016-03-19, 2016-03-31, 2019-08-01, 2019-12-12, 2020-03-01, 2020-04-01, 2020-06-01-preview, 2020-09-01, 2021-01-15, 2021-03-01-preview, 2021-03-15, 2021-04-01-preview, 2021-04-15, 2021-05-15, 2021-06-15, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview, 2026-03-15, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -84,6 +84,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cosmosdb_databaseaccount" "databaseAccount" {
+///   account_name                = "ddb1"
+///   create_mode                 = "Default"
+///   database_account_offer_type = "Standard"
+///   location                    = "westus"
+///   locations {
+///     failover_priority = 0
+///     is_zone_redundant = false
+///     location_name     = "southcentralus"
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +117,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cosmosdb.DatabaseAccount;
 /// import com.pulumi.azurenative.cosmosdb.DatabaseAccountArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.LocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -341,6 +365,64 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cosmosdb_databaseaccount" "databaseAccount" {
+///   account_name = "ddb1"
+///   api_properties = {
+///     server_version = "3.2"
+///   }
+///   backup_policy = {
+///     "continuousModeProperties" = {
+///       "tier" = "Continuous30Days"
+///     }
+///     "type" = "Continuous"
+///   }
+///   consistency_policy = {
+///     default_consistency_level = "BoundedStaleness"
+///     max_interval_in_seconds   = 10
+///     max_staleness_prefix      = 200
+///   }
+///   create_mode                 = "Restore"
+///   database_account_offer_type = "Standard"
+///   enable_analytical_storage   = true
+///   enable_free_tier            = false
+///   key_vault_key_uri           = "https://myKeyVault.vault.azure.net"
+///   kind                        = "GlobalDocumentDB"
+///   location                    = "westus"
+///   locations {
+///     failover_priority = 0
+///     is_zone_redundant = false
+///     location_name     = "southcentralus"
+///   }
+///   minimal_tls_version = "Tls"
+///   resource_group_name = "rg1"
+///   restore_parameters = {
+///     databases_to_restore = [{
+///       "collectionNames" = ["collection1", "collection2"]
+///       "databaseName"    = "db1"
+///       }, {
+///       "collectionNames" = ["collection3", "collection4"]
+///       "databaseName"    = "db2"
+///     }]
+///     restore_mode              = "PointInTime"
+///     restore_source            = "/subscriptions/subid/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/1a97b4bb-f6a0-430e-ade1-638d781830cc"
+///     restore_timestamp_in_utc  = "2021-03-11T22:05:09Z"
+///     restore_with_ttl_disabled = false
+///     source_backup_location    = "westus"
+///   }
+///   tags = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -353,8 +435,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cosmosdb.inputs.ConsistencyPolicyArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.LocationArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.RestoreParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -505,7 +587,7 @@ import 'system_data_response.dart';
 ///     consistency_policy={
 ///         "default_consistency_level": azure_native.cosmosdb.DefaultConsistencyLevel.BOUNDED_STALENESS,
 ///         "max_interval_in_seconds": 10,
-///         "max_staleness_prefix": 200,
+///         "max_staleness_prefix": float(200),
 ///     },
 ///     create_mode=azure_native.cosmosdb.CreateMode.RESTORE,
 ///     database_account_offer_type=azure_native.cosmosdb.DatabaseAccountOfferType.STANDARD,

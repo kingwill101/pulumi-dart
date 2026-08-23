@@ -1,8 +1,8 @@
 /// [Required] Specifies the feature filter to leverage when selecting features to calculate metrics over.
 enum MonitoringFeatureFilterType {
-  valueAllFeatures("AllFeatures"),
-  valueTopNByAttribution("TopNByAttribution"),
-  valueFeatureSubset("FeatureSubset");
+  allFeatures("AllFeatures"),
+  topNByAttribution("TopNByAttribution"),
+  featureSubset("FeatureSubset");
 
   const MonitoringFeatureFilterType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum MonitoringFeatureFilterType {
     throw ArgumentError('Unknown MonitoringFeatureFilterType value: $value');
   }
 }
-

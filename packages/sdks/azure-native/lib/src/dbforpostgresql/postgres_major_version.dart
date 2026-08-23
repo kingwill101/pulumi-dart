@@ -21,4 +21,3 @@ enum PostgresMajorVersion {
     throw ArgumentError('Unknown PostgresMajorVersion value: $value');
   }
 }
-

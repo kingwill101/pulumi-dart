@@ -1,9 +1,10 @@
-/// Connection status of the service consumer with the service provider
+/// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -&gt; Approved (Service provider approves the connection request)\r\nPending -&gt; Rejected (Service provider rejects the connection request)\r\nPending -&gt; Disconnected (Service provider deletes the connection)\r\nApproved -&gt; Rejected (Service provider rejects the approved connection)\r\nApproved -&gt; Disconnected (Service provider deletes the connection)\r\nRejected -&gt; Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -&gt; Disconnected (Service provider deletes the connection)
 enum EndpointServiceConnectionStatus {
-  valueApproved("Approved"),
-  valuePending("Pending"),
-  valueRejected("Rejected"),
-  valueDisconnected("Disconnected");
+  approved("Approved"),
+  pending("Pending"),
+  rejected("Rejected"),
+  disconnected("Disconnected"),
+  timeout("Timeout");
 
   const EndpointServiceConnectionStatus(this.wireValue);
   final String wireValue;
@@ -17,4 +18,3 @@ enum EndpointServiceConnectionStatus {
     throw ArgumentError('Unknown EndpointServiceConnectionStatus value: $value');
   }
 }
-

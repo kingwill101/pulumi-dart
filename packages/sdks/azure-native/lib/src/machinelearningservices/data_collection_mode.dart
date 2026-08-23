@@ -1,7 +1,7 @@
 /// Enable or disable data collection.
 enum DataCollectionMode {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const DataCollectionMode(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum DataCollectionMode {
     throw ArgumentError('Unknown DataCollectionMode value: $value');
   }
 }
-

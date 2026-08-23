@@ -21,4 +21,3 @@ enum SecretPermissions {
     throw ArgumentError('Unknown SecretPermissions value: $value');
   }
 }
-

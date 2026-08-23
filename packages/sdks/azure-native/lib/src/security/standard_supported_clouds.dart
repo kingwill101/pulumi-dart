@@ -1,7 +1,7 @@
 /// The cloud that the standard is supported on.
 enum StandardSupportedClouds {
-  valueAWS("AWS"),
-  valueGCP("GCP");
+  aWS("AWS"),
+  gCP("GCP");
 
   const StandardSupportedClouds(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum StandardSupportedClouds {
     throw ArgumentError('Unknown StandardSupportedClouds value: $value');
   }
 }
-

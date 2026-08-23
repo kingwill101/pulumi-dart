@@ -65,6 +65,27 @@ import 'peering_service_sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_peering_peeringservice" "peeringService" {
+///   location                          = "eastus"
+///   peering_service_location          = "state1"
+///   peering_service_name              = "peeringServiceName"
+///   peering_service_provider          = "serviceProvider1"
+///   provider_backup_peering_location  = "peeringLocation2"
+///   provider_primary_peering_location = "peeringLocation1"
+///   resource_group_name               = "rgName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +94,8 @@ import 'peering_service_sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.peering.PeeringService;
 /// import com.pulumi.azurenative.peering.PeeringServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

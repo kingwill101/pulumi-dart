@@ -69,6 +69,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_notificationhubs_privateendpointconnection" "privateEndpointConnection" {
+///   namespace_name                   = "nh-sdk-ns"
+///   private_endpoint_connection_name = "nh-sdk-ns.1fa229cd-bf3f-47f0-8c49-afb36723997e"
+///   properties = {
+///     private_link_service_connection_state = {
+///       status = "Approved"
+///     }
+///   }
+///   resource_group_name = "5ktrial"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +101,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.notificationhubs.PrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.notificationhubs.inputs.PrivateEndpointConnectionPropertiesArgs;
 /// import com.pulumi.azurenative.notificationhubs.inputs.RemotePrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

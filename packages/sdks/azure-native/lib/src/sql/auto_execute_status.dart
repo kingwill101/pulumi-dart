@@ -16,4 +16,3 @@ enum AutoExecuteStatus {
     throw ArgumentError('Unknown AutoExecuteStatus value: $value');
   }
 }
-

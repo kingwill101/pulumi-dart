@@ -1,7 +1,7 @@
 /// The encryption keySource (provider). Possible values (case-insensitive):  Default, Microsoft.Keyvault
 enum KeySource {
-  valueDefault("Default"),
-  valueMicrosoftKeyvault("Microsoft.Keyvault");
+  default_("Default"),
+  microsoftKeyvault("Microsoft.Keyvault");
 
   const KeySource(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum KeySource {
     throw ArgumentError('Unknown KeySource value: $value');
   }
 }
-

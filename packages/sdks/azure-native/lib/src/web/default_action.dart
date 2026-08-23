@@ -1,7 +1,7 @@
 /// Default action for scm access restriction if no rules are matched.
 enum DefaultAction {
-  valueAllow("Allow"),
-  valueDeny("Deny");
+  allow("Allow"),
+  deny("Deny");
 
   const DefaultAction(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum DefaultAction {
     throw ArgumentError('Unknown DefaultAction value: $value');
   }
 }
-

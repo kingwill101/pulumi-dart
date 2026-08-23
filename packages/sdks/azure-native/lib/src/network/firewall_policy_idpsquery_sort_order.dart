@@ -15,4 +15,3 @@ enum FirewallPolicyIDPSQuerySortOrder {
     throw ArgumentError('Unknown FirewallPolicyIDPSQuerySortOrder value: $value');
   }
 }
-

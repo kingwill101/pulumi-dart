@@ -15,4 +15,3 @@ enum VaultType {
     throw ArgumentError('Unknown VaultType value: $value');
   }
 }
-

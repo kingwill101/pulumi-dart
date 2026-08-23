@@ -16,4 +16,3 @@ enum AvsAssessmentScenario {
     throw ArgumentError('Unknown AvsAssessmentScenario value: $value');
   }
 }
-

@@ -1,7 +1,7 @@
 /// Enum indicating if this favorite definition is owned by a specific user or is shared between all users with access to the Application Insights component.
 enum FavoriteType {
-  valueShared("shared"),
-  valueUser("user");
+  shared("shared"),
+  user("user");
 
   const FavoriteType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum FavoriteType {
     throw ArgumentError('Unknown FavoriteType value: $value');
   }
 }
-

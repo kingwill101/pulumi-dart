@@ -1,10 +1,10 @@
 /// [Required] Specifies the type of job.
 enum JobType {
-  valueAutoML("AutoML"),
-  valueCommand("Command"),
-  valueSweep("Sweep"),
-  valuePipeline("Pipeline"),
-  valueSpark("Spark");
+  autoML("AutoML"),
+  command("Command"),
+  sweep("Sweep"),
+  pipeline("Pipeline"),
+  spark("Spark");
 
   const JobType(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum JobType {
     throw ArgumentError('Unknown JobType value: $value');
   }
 }
-

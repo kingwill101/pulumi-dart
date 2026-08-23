@@ -16,4 +16,3 @@ enum MsiIdentityType {
     throw ArgumentError('Unknown MsiIdentityType value: $value');
   }
 }
-

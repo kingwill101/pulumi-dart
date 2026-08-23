@@ -17,4 +17,3 @@ enum WebApplicationFirewallAction {
     throw ArgumentError('Unknown WebApplicationFirewallAction value: $value');
   }
 }
-

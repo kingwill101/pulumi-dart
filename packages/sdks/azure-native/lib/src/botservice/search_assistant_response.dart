@@ -44,4 +44,3 @@ class SearchAssistantResponse {
     );
   }
 }
-

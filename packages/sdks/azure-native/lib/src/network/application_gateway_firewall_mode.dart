@@ -15,4 +15,3 @@ enum ApplicationGatewayFirewallMode {
     throw ArgumentError('Unknown ApplicationGatewayFirewallMode value: $value');
   }
 }
-

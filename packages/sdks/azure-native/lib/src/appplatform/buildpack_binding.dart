@@ -91,6 +91,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_buildpackbinding" "buildpackBinding" {
+///   build_service_name     = "default"
+///   builder_name           = "default"
+///   buildpack_binding_name = "myBuildpackBinding"
+///   properties = {
+///     binding_type = "ApplicationInsights"
+///     launch_properties = {
+///       properties = {
+///         "abc"           = "def"
+///         "any-string"    = "any-string"
+///         "sampling-rate" = "12.0"
+///       }
+///       secrets = {
+///         "connection-string" = "XXXXXXXXXXXXXXXXX=XXXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXX;XXXXXXXXXXXXXXXXX=XXXXXXXXXXXXXXXXXXX"
+///       }
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +133,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.BuildpackBindingArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.BuildpackBindingPropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.BuildpackBindingLaunchPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

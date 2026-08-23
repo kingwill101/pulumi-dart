@@ -15,4 +15,3 @@ enum IntegrationRuntimeLicenseType {
     throw ArgumentError('Unknown IntegrationRuntimeLicenseType value: $value');
   }
 }
-

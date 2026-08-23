@@ -15,4 +15,3 @@ enum HttpProtocol {
     throw ArgumentError('Unknown HttpProtocol value: $value');
   }
 }
-

@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-08-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01-preview.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2026-01-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -95,6 +95,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_migration" "migration" {
+///   dbs_to_migrate          = ["exampledatabase1", "exampledatabase2", "exampledatabase3", "exampledatabase4"]
+///   location                = "eastus"
+///   migration_mode          = "Offline"
+///   migration_name          = "examplemigration"
+///   migration_option        = "Validate"
+///   overwrite_dbs_in_target = "True"
+///   resource_group_name     = "exampleresourcegroup"
+///   secret_parameters = {
+///     admin_credentials = {
+///       source_server_password = "examplesourcepassword"
+///       target_server_password = "exampletargetpassword"
+///     }
+///   }
+///   server_name                  = "exampleserver"
+///   source_db_server_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBForPostgreSql/servers/examplesource"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +134,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.MigrationArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.MigrationSecretParametersArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.AdminCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -311,6 +340,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_migration" "migration" {
+///   dbs_to_migrate      = ["exampledatabase1", "exampledatabase2", "exampledatabase3", "exampledatabase4"]
+///   location            = "eastus"
+///   migration_mode      = "Offline"
+///   migration_name      = "examplemigration"
+///   resource_group_name = "exampleresourcegroup"
+///   secret_parameters = {
+///     admin_credentials = {
+///       source_server_password = "examplesourcepassword"
+///       target_server_password = "exampletargetpassword"
+///     }
+///     source_server_username = "newadmin@examplesource"
+///     target_server_username = "targetadmin"
+///   }
+///   server_name                  = "exampleserver"
+///   source_db_server_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBForPostgreSql/servers/examplesource"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -321,8 +379,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.MigrationArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.MigrationSecretParametersArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.AdminCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -529,6 +587,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_migration" "migration" {
+///   dbs_to_migrate          = ["exampledatabase1", "exampledatabase2", "exampledatabase3", "exampledatabase4"]
+///   location                = "eastus"
+///   migration_mode          = "Offline"
+///   migration_name          = "examplemigration"
+///   overwrite_dbs_in_target = "True"
+///   resource_group_name     = "exampleresourcegroup"
+///   secret_parameters = {
+///     admin_credentials = {
+///       source_server_password = "xxxxxxxx"
+///       target_server_password = "xxxxxxxx"
+///     }
+///   }
+///   server_name                                  = "exampleserver"
+///   source_db_server_fully_qualified_domain_name = "examplesource.contoso.com"
+///   source_db_server_resource_id                 = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBForPostgreSql/servers/examplesource"
+///   target_db_server_fully_qualified_domain_name = "exampletarget.contoso.com"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -539,8 +627,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.MigrationArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.MigrationSecretParametersArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.AdminCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -753,6 +841,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_migration" "migration" {
+///   dbs_to_migrate          = ["exampledatabase1", "exampledatabase2", "exampledatabase3", "exampledatabase4"]
+///   location                = "eastus"
+///   migration_mode          = "Offline"
+///   migration_name          = "examplemigration"
+///   migration_option        = "ValidateAndMigrate"
+///   overwrite_dbs_in_target = "True"
+///   resource_group_name     = "exampleresourcegroup"
+///   secret_parameters = {
+///     admin_credentials = {
+///       source_server_password = "examplesourcepassword"
+///       target_server_password = "exampletargetpassword"
+///     }
+///   }
+///   server_name                  = "exampleserver"
+///   source_db_server_resource_id = "examplesource:5432@exampleuser"
+///   source_type                  = "OnPremises"
+///   ssl_mode                     = "Prefer"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -763,8 +882,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.MigrationArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.MigrationSecretParametersArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.AdminCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -977,6 +1096,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_migration" "migration" {
+///   dbs_to_migrate                 = ["exampledatabase1", "exampledatabase2", "exampledatabase3", "exampledatabase4"]
+///   location                       = "eastus"
+///   migration_instance_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBForPostgreSql/flexibleServers/examplesourcemigration"
+///   migration_mode                 = "Offline"
+///   migration_name                 = "examplemigration"
+///   overwrite_dbs_in_target        = "True"
+///   resource_group_name            = "exampleresourcegroup"
+///   secret_parameters = {
+///     admin_credentials = {
+///       source_server_password = "examplesourcepassword"
+///       target_server_password = "exampletargetpassword"
+///     }
+///   }
+///   server_name                  = "exampleserver"
+///   source_db_server_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBForPostgreSql/servers/examplesource"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -987,8 +1135,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.MigrationArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.MigrationSecretParametersArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.AdminCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1193,6 +1341,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_migration" "migration" {
+///   dbs_to_migrate          = ["exampledatabase1", "exampledatabase2", "exampledatabase3", "exampledatabase4"]
+///   location                = "eastus"
+///   migrate_roles           = "True"
+///   migration_mode          = "Offline"
+///   migration_name          = "examplemigration"
+///   overwrite_dbs_in_target = "True"
+///   resource_group_name     = "exampleresourcegroup"
+///   secret_parameters = {
+///     admin_credentials = {
+///       source_server_password = "examplesourcepassword"
+///       target_server_password = "exampletargetpassword"
+///     }
+///   }
+///   server_name                  = "exampleserver"
+///   source_db_server_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBForPostgreSql/servers/examplesource"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1203,8 +1380,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.MigrationArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.MigrationSecretParametersArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.AdminCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1407,6 +1584,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_migration" "migration" {
+///   dbs_to_migrate          = ["exampledatabase1", "exampledatabase2", "exampledatabase3", "exampledatabase4"]
+///   location                = "eastus"
+///   migration_mode          = "Offline"
+///   migration_name          = "examplemigration"
+///   overwrite_dbs_in_target = "True"
+///   resource_group_name     = "exampleresourcegroup"
+///   secret_parameters = {
+///     admin_credentials = {
+///       source_server_password = "examplesourcepassword"
+///       target_server_password = "exampletargetpassword"
+///     }
+///   }
+///   server_name                  = "exampleserver"
+///   source_db_server_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBForPostgreSql/servers/examplesource"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1417,8 +1622,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.MigrationArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.MigrationSecretParametersArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.AdminCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -1,7 +1,7 @@
 /// Activity state. This is an optional property and if not provided, the state will be Active by default.
 enum ActivityState {
-  valueActive("Active"),
-  valueInactive("Inactive");
+  active("Active"),
+  inactive("Inactive");
 
   const ActivityState(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ActivityState {
     throw ArgumentError('Unknown ActivityState value: $value');
   }
 }
-

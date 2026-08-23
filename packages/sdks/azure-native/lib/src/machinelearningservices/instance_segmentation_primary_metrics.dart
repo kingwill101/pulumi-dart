@@ -1,6 +1,6 @@
-/// Primary metric to optimize for this task.
+/// Primary metrics for InstanceSegmentation tasks.
 enum InstanceSegmentationPrimaryMetrics {
-  valueMeanAveragePrecision("MeanAveragePrecision");
+  meanAveragePrecision("MeanAveragePrecision");
 
   const InstanceSegmentationPrimaryMetrics(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum InstanceSegmentationPrimaryMetrics {
     throw ArgumentError('Unknown InstanceSegmentationPrimaryMetrics value: $value');
   }
 }
-

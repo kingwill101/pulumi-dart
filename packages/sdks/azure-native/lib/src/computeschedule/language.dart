@@ -14,4 +14,3 @@ enum Language {
     throw ArgumentError('Unknown Language value: $value');
   }
 }
-

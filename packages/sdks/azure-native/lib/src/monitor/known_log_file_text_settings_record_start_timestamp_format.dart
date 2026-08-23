@@ -22,4 +22,3 @@ enum KnownLogFileTextSettingsRecordStartTimestampFormat {
     throw ArgumentError('Unknown KnownLogFileTextSettingsRecordStartTimestampFormat value: $value');
   }
 }
-

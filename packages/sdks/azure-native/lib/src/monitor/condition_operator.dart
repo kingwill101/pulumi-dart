@@ -1,11 +1,17 @@
-/// The criteria operator. Relevant and required only for rules of the kind LogAlert.
+/// Operator used in the filtering condition.
 enum ConditionOperator {
-  valueEquals("Equals"),
-  valueGreaterThan("GreaterThan"),
-  valueGreaterThanOrEqual("GreaterThanOrEqual"),
-  valueLessThan("LessThan"),
-  valueLessThanOrEqual("LessThanOrEqual"),
-  valueGreaterOrLessThan("GreaterOrLessThan");
+  equal("eq"),
+  notEqual("ne"),
+  lessThan("lt"),
+  lessThanOrEqual("lte"),
+  greaterThan("gt"),
+  greaterThanOrEqual("gte"),
+  in_("in"),
+  notIn("notin"),
+  startsWith("startswith"),
+  notStartsWith("notstartswith"),
+  contains("contains"),
+  notContains("notcontains");
 
   const ConditionOperator(this.wireValue);
   final String wireValue;
@@ -19,4 +25,3 @@ enum ConditionOperator {
     throw ArgumentError('Unknown ConditionOperator value: $value');
   }
 }
-

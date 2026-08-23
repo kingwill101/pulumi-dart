@@ -15,4 +15,3 @@ enum ContainerType {
     throw ArgumentError('Unknown ContainerType value: $value');
   }
 }
-

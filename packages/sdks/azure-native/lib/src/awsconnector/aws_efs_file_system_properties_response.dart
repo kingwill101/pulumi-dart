@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_policy_response.dart';
 import 'elastic_file_system_tag_response.dart';
 import 'file_system_protection_response.dart';
-import 'lifecycle_policy_response.dart';
+import 'lifecycle_policy_efs_file_system_response.dart';
 import 'replication_configuration_response.dart';
 
 /// Definition of awsEfsFileSystem
@@ -30,7 +30,7 @@ class AwsEfsFileSystemPropertiesResponse {
   /// The ID of the kms-key-long to be used to protect the encrypted file system. This parameter is only required if you want to use a nondefault kms-key. If this parameter is not specified, the default kms-key for EFS is used. This ID can be in one of the following formats:  +  Key ID - A unique identifier of the key, for example ``1234abcd-12ab-34cd-56ef-1234567890ab``.  +  ARN - An Amazon Resource Name (ARN) for the key, for example ``arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab``.  +  Key alias - A previously created display name for a key, for example ``alias/projectKey1``.  +  Key alias ARN - An ARN for a key alias, for example ``arn:aws:kms:us-west-2:444455556666:alias/projectKey1``.   If ``KmsKeyId`` is specified, the ``Encrypted`` parameter must be set to true.
   final pulumi.Input<String>? kmsKeyId;
   /// An array of ``LifecyclePolicy`` objects that define the file system's ``LifecycleConfiguration`` object. A ``LifecycleConfiguration`` object informs Lifecycle management of the following:  +  When to move files in the file system from primary storage to IA storage.  + When to move files in the file system from primary storage or IA storage to Archive storage. +  When to move files that are in IA or Archive storage to primary storage.    EFS requires that each ``LifecyclePolicy`` object have only a single transition. This means that in a request body, ``LifecyclePolicies`` needs to be structured as an array of ``LifecyclePolicy`` objects, one object for each transition, ``TransitionToIA``, ``TransitionToArchive`` ``TransitionToPrimaryStorageClass``. See the example requests in the following section for more information.
-  final pulumi.Input<List<LifecyclePolicyResponse>>? lifecyclePolicies;
+  final pulumi.Input<List<LifecyclePolicyEfsFileSystemResponse>>? lifecyclePolicies;
   /// The Performance mode of the file system. We recommend ``generalPurpose`` performance mode for all file systems. File systems using the ``maxIO`` performance mode can scale to higher levels of aggregate throughput and operations per second with a tradeoff of slightly higher latencies for most file operations. The performance mode can't be changed after the file system has been created. The ``maxIO`` mode is not supported on One Zone file systems.  Due to the higher per-operation latencies with Max I/O, we recommend using General Purpose performance mode for all file systems.  Default is ``generalPurpose``.
   final pulumi.Input<String>? performanceMode;
   /// The throughput, measured in mebibytes per second (MiBps), that you want to provision for a file system that you're creating. Required if ``ThroughputMode`` is set to ``provisioned``. Valid values are 1-3414 MiBps, with the upper limit depending on Region. To increase this limit, contact SUP. For more information, see [Amazon EFS quotas that you can increase](https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits) in the *Amazon EFS User Guide*.
@@ -86,7 +86,7 @@ class AwsEfsFileSystemPropertiesResponse {
       'fileSystemProtection': ?pulumi.Input.mapOptionalInputValue<FileSystemProtectionResponse, Map<String, dynamic>>(fileSystemProtection, (value) => value.toMap()),
       'fileSystemTags': ?pulumi.Input.mapOptionalInputValue<List<ElasticFileSystemTagResponse>, List<Map<String, dynamic>>>(fileSystemTags, (value) => pulumi.Input.encodeList<ElasticFileSystemTagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kmsKeyId': ?kmsKeyId,
-      'lifecyclePolicies': ?pulumi.Input.mapOptionalInputValue<List<LifecyclePolicyResponse>, List<Map<String, dynamic>>>(lifecyclePolicies, (value) => pulumi.Input.encodeList<LifecyclePolicyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'lifecyclePolicies': ?pulumi.Input.mapOptionalInputValue<List<LifecyclePolicyEfsFileSystemResponse>, List<Map<String, dynamic>>>(lifecyclePolicies, (value) => pulumi.Input.encodeList<LifecyclePolicyEfsFileSystemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'performanceMode': ?performanceMode,
       'provisionedThroughputInMibps': ?provisionedThroughputInMibps,
       'replicationConfiguration': ?pulumi.Input.mapOptionalInputValue<ReplicationConfigurationResponse, Map<String, dynamic>>(replicationConfiguration, (value) => value.toMap()),
@@ -106,7 +106,7 @@ class AwsEfsFileSystemPropertiesResponse {
       fileSystemProtection: (() { final guardedValue = map['fileSystemProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FileSystemProtectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       fileSystemTags: (() { final guardedValue = map['fileSystemTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ElasticFileSystemTagResponse>(guardedValue, (value) => ElasticFileSystemTagResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      lifecyclePolicies: (() { final guardedValue = map['lifecyclePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LifecyclePolicyResponse>(guardedValue, (value) => LifecyclePolicyResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      lifecyclePolicies: (() { final guardedValue = map['lifecyclePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LifecyclePolicyEfsFileSystemResponse>(guardedValue, (value) => LifecyclePolicyEfsFileSystemResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       performanceMode: (() { final guardedValue = map['performanceMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisionedThroughputInMibps: (() { final guardedValue = map['provisionedThroughputInMibps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       replicationConfiguration: (() { final guardedValue = map['replicationConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReplicationConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -114,4 +114,3 @@ class AwsEfsFileSystemPropertiesResponse {
     );
   }
 }
-

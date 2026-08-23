@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_review_history_definition_by_id_args.dart';
 import 'access_review_recurrence_range_response.dart';
+import 'system_data_response.dart';
 
 /// Access Review History Definition.
 ///
@@ -27,7 +28,7 @@ class AccessReviewHistoryDefinitionById extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> instances;
   /// The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
   late final pulumi.Output<int?> interval;
-  /// The access review history definition unique id.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The identity id
   late final pulumi.Output<String> principalId;
@@ -45,7 +46,9 @@ class AccessReviewHistoryDefinitionById extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> scopes;
   /// This read-only field specifies the of the requested review history data. This is either requested, in-progress, done or error.
   late final pulumi.Output<String> status;
-  /// The resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The user principal name(if valid)
   late final pulumi.Output<String> userPrincipalName;
@@ -79,6 +82,7 @@ class AccessReviewHistoryDefinitionById extends pulumi.CustomResource {
     reviewHistoryPeriodStartDateTime = registerOutput<String>('reviewHistoryPeriodStartDateTime');
     scopes = registerOutput<List<Map<String, dynamic>>?>('scopes');
     status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     userPrincipalName = registerOutput<String>('userPrincipalName');
   }

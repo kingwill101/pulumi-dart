@@ -19,4 +19,3 @@ enum ResourceHealthStatus {
     throw ArgumentError('Unknown ResourceHealthStatus value: $value');
   }
 }
-

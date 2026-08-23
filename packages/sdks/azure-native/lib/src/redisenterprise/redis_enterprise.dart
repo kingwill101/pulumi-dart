@@ -6,9 +6,9 @@ import 'sku_response.dart';
 
 /// Describes the Redis Enterprise cluster
 ///
-/// Uses Azure REST API version 2025-05-01-preview.
+/// Uses Azure REST API version 2025-07-01.
 ///
-/// Other available API versions: 2020-10-01-preview, 2021-02-01-preview, 2021-03-01, 2021-08-01, 2022-01-01, 2022-11-01-preview, 2023-03-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-03-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-10-01, 2025-04-01, 2025-07-01, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-10-01-preview, 2021-02-01-preview, 2021-03-01, 2021-08-01, 2022-01-01, 2022-11-01-preview, 2023-03-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-03-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-10-01, 2025-04-01, 2025-05-01-preview, 2025-08-01-preview, 2026-02-01-preview, 2026-05-01-preview, 2026-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// ## Import
 ///
 /// An existing resource can be imported using its type token, name, and identifier, e.g.
@@ -39,6 +39,8 @@ class RedisEnterprise extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// Current provisioning status of the cluster
   late final pulumi.Output<String> provisioningState;
+  /// Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set.
+  late final pulumi.Output<String> publicNetworkAccess;
   /// Version of redis the cluster supports, e.g. '6'
   late final pulumi.Output<String> redisVersion;
   /// Explains the current redundancy strategy of the cluster, which affects the expected SLA.
@@ -79,6 +81,7 @@ class RedisEnterprise extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String>('publicNetworkAccess');
     redisVersion = registerOutput<String>('redisVersion');
     redundancyMode = registerOutput<String>('redundancyMode');
     resourceState = registerOutput<String>('resourceState');

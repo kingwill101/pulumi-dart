@@ -40,4 +40,3 @@ class GetGen1EnvironmentArgs {
     );
   }
 }
-

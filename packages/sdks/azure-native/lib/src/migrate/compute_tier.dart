@@ -17,4 +17,3 @@ enum ComputeTier {
     throw ArgumentError('Unknown ComputeTier value: $value');
   }
 }
-

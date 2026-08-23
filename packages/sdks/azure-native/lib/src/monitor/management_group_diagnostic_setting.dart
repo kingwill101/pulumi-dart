@@ -76,6 +76,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_managementgroupdiagnosticsetting" "managementGroupDiagnosticSetting" {
+///   event_hub_authorization_rule_id = "/subscriptions/fb9f25f9-5785-4510-a38f-a62f188eb9f8/resourceGroups/montest/providers/microsoft.eventhub/namespaces/mynamespace/authorizationrules/myrule"
+///   event_hub_name                  = "myeventhub"
+///   logs {
+///     category_group = "allLogs"
+///     enabled        = true
+///   }
+///   management_group_id    = "testChildMG7"
+///   marketplace_partner_id = "/subscriptions/abcdeabc-1234-1234-ab12-123a1234567a/resourceGroups/test-rg/providers/Microsoft.Datadog/monitors/dd1"
+///   name                   = "setting1"
+///   storage_account_id     = "/subscriptions/bfaef57f-297e-4210-bfe5-27c18cc671f7/resourceGroups/FuncAppRunners/providers/Microsoft.Storage/storageAccounts/testpersonalb6a5"
+///   workspace_id           = "/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/mgTest/providers/Microsoft.OperationalInsights/workspaces/mgTestWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +110,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.ManagementGroupDiagnosticSetting;
 /// import com.pulumi.azurenative.monitor.ManagementGroupDiagnosticSettingArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ManagementGroupLogSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -252,6 +277,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_managementgroupdiagnosticsetting" "managementGroupDiagnosticSetting" {
+///   event_hub_authorization_rule_id = "/subscriptions/fb9f25f9-5785-4510-a38f-a62f188eb9f8/resourceGroups/montest/providers/microsoft.eventhub/namespaces/mynamespace/authorizationrules/myrule"
+///   event_hub_name                  = "myeventhub"
+///   logs {
+///     category = "Administrative"
+///     enabled  = true
+///   }
+///   logs {
+///     category = "Policy"
+///     enabled  = true
+///   }
+///   management_group_id    = "testChildMG7"
+///   marketplace_partner_id = "/subscriptions/abcdeabc-1234-1234-ab12-123a1234567a/resourceGroups/test-rg/providers/Microsoft.Datadog/monitors/dd1"
+///   name                   = "setting1"
+///   storage_account_id     = "/subscriptions/bfaef57f-297e-4210-bfe5-27c18cc671f7/resourceGroups/FuncAppRunners/providers/Microsoft.Storage/storageAccounts/testpersonalb6a5"
+///   workspace_id           = "/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/mgTest/providers/Microsoft.OperationalInsights/workspaces/mgTestWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -261,8 +315,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.ManagementGroupDiagnosticSetting;
 /// import com.pulumi.azurenative.monitor.ManagementGroupDiagnosticSettingArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ManagementGroupLogSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

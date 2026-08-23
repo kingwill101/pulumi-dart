@@ -79,6 +79,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotcentral_app" "app" {
+///   display_name = "My IoT Central App"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location            = "westus"
+///   resource_group_name = "resRg"
+///   resource_name       = "myIoTCentralApp"
+///   sku = {
+///     name = "ST2"
+///   }
+///   subdomain = "my-iot-central-app"
+///   template  = "iotc-pnp-preview@1.0.0"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +115,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotcentral.AppArgs;
 /// import com.pulumi.azurenative.iotcentral.inputs.SystemAssignedServiceIdentityArgs;
 /// import com.pulumi.azurenative.iotcentral.inputs.AppSkuInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

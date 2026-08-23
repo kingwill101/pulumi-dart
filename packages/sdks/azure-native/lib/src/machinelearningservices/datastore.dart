@@ -5,9 +5,9 @@ import 'system_data_response.dart';
 
 /// Azure Resource Manager resource envelope.
 ///
-/// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+/// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 ///
-/// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -23,7 +23,8 @@ import 'system_data_response.dart';
 /// {
 ///     var datastore = new AzureNative.MachineLearningServices.Datastore("datastore", new()
 ///     {
-///         DatastoreProperties = new AzureNative.MachineLearningServices.Inputs.AzureDataLakeGen1DatastoreArgs
+///         Name = "string",
+///         Properties = new AzureNative.MachineLearningServices.Inputs.AzureDataLakeGen1DatastoreArgs
 ///         {
 ///             Credentials = new AzureNative.MachineLearningServices.Inputs.ServicePrincipalDatastoreCredentialsArgs
 ///             {
@@ -46,7 +47,6 @@ import 'system_data_response.dart';
 ///                 { "string", "string" },
 ///             },
 ///         },
-///         Name = "string",
 ///         ResourceGroupName = "test-rg",
 ///         SkipValidation = false,
 ///         WorkspaceName = "my-aml-workspace",
@@ -68,7 +68,8 @@ import 'system_data_response.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := machinelearningservices.NewDatastore(ctx, "datastore", &machinelearningservices.DatastoreArgs{
-/// 			DatastoreProperties: &machinelearningservices.AzureDataLakeGen1DatastoreArgs{
+/// 			Name: pulumi.String("string"),
+/// 			Properties: &machinelearningservices.AzureDataLakeGen1DatastoreArgs{
 /// 				Credentials: machinelearningservices.ServicePrincipalDatastoreCredentials{
 /// 					AuthorityUrl:    "string",
 /// 					ClientId:        "00000000-1111-2222-3333-444444444444",
@@ -87,7 +88,6 @@ import 'system_data_response.dart';
 /// 					"string": pulumi.String("string"),
 /// 				},
 /// 			},
-/// 			Name:              pulumi.String("string"),
 /// 			ResourceGroupName: pulumi.String("test-rg"),
 /// 			SkipValidation:    pulumi.Bool(false),
 /// 			WorkspaceName:     pulumi.String("my-aml-workspace"),
@@ -101,6 +101,43 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_datastore" "datastore" {
+///   name = "string"
+///   properties = {
+///     "credentials" = {
+///       "authorityUrl"    = "string"
+///       "clientId"        = "00000000-1111-2222-3333-444444444444"
+///       "credentialsType" = "ServicePrincipal"
+///       "resourceUrl"     = "string"
+///       "secrets" = {
+///         "clientSecret" = "string"
+///         "secretsType"  = "ServicePrincipal"
+///       }
+///       "tenantId" = "00000000-1111-2222-3333-444444444444"
+///     }
+///     "datastoreType" = "AzureDataLakeGen1"
+///     "description"   = "string"
+///     "storeName"     = "string"
+///     "tags" = {
+///       "string" = "string"
+///     }
+///   }
+///   resource_group_name = "test-rg"
+///   skip_validation     = false
+///   workspace_name      = "my-aml-workspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +146,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Datastore;
 /// import com.pulumi.azurenative.machinelearningservices.DatastoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -123,7 +160,8 @@ import 'system_data_response.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var datastore = new Datastore("datastore", DatastoreArgs.builder()
-///             .datastoreProperties(AzureDataLakeGen1DatastoreArgs.builder()
+///             .name("string")
+///             .properties(AzureDataLakeGen1DatastoreArgs.builder()
 ///                 .credentials(ServicePrincipalDatastoreCredentialsArgs.builder()
 ///                     .authorityUrl("string")
 ///                     .clientId("00000000-1111-2222-3333-444444444444")
@@ -140,7 +178,6 @@ import 'system_data_response.dart';
 ///                 .storeName("string")
 ///                 .tags(Map.of("string", "string"))
 ///                 .build())
-///             .name("string")
 ///             .resourceGroupName("test-rg")
 ///             .skipValidation(false)
 ///             .workspaceName("my-aml-workspace")
@@ -156,7 +193,8 @@ import 'system_data_response.dart';
 /// import * as azure_native from "@pulumi/azure-native";
 ///
 /// const datastore = new azure_native.machinelearningservices.Datastore("datastore", {
-///     datastoreProperties: {
+///     name: "string",
+///     properties: {
 ///         credentials: {
 ///             authorityUrl: "string",
 ///             clientId: "00000000-1111-2222-3333-444444444444",
@@ -175,7 +213,6 @@ import 'system_data_response.dart';
 ///             string: "string",
 ///         },
 ///     },
-///     name: "string",
 ///     resourceGroupName: "test-rg",
 ///     skipValidation: false,
 ///     workspaceName: "my-aml-workspace",
@@ -188,7 +225,8 @@ import 'system_data_response.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// datastore = azure_native.machinelearningservices.Datastore("datastore",
-///     datastore_properties={
+///     name="string",
+///     properties={
 ///         "credentials": {
 ///             "authority_url": "string",
 ///             "client_id": "00000000-1111-2222-3333-444444444444",
@@ -207,7 +245,6 @@ import 'system_data_response.dart';
 ///             "string": "string",
 ///         },
 ///     },
-///     name="string",
 ///     resource_group_name="test-rg",
 ///     skip_validation=False,
 ///     workspace_name="my-aml-workspace")
@@ -219,7 +256,8 @@ import 'system_data_response.dart';
 ///   datastore:
 ///     type: azure-native:machinelearningservices:Datastore
 ///     properties:
-///       datastoreProperties:
+///       name: string
+///       properties:
 ///         credentials:
 ///           authorityUrl: string
 ///           clientId: 00000000-1111-2222-3333-444444444444
@@ -234,7 +272,6 @@ import 'system_data_response.dart';
 ///         storeName: string
 ///         tags:
 ///           string: string
-///       name: string
 ///       resourceGroupName: test-rg
 ///       skipValidation: false
 ///       workspaceName: my-aml-workspace
@@ -254,7 +291,8 @@ import 'system_data_response.dart';
 /// {
 ///     var datastore = new AzureNative.MachineLearningServices.Datastore("datastore", new()
 ///     {
-///         DatastoreProperties = new AzureNative.MachineLearningServices.Inputs.AzureDataLakeGen2DatastoreArgs
+///         Name = "string",
+///         Properties = new AzureNative.MachineLearningServices.Inputs.AzureDataLakeGen2DatastoreArgs
 ///         {
 ///             AccountName = "string",
 ///             Credentials = new AzureNative.MachineLearningServices.Inputs.ServicePrincipalDatastoreCredentialsArgs
@@ -280,7 +318,6 @@ import 'system_data_response.dart';
 ///                 { "string", "string" },
 ///             },
 ///         },
-///         Name = "string",
 ///         ResourceGroupName = "test-rg",
 ///         SkipValidation = false,
 ///         WorkspaceName = "my-aml-workspace",
@@ -302,7 +339,8 @@ import 'system_data_response.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := machinelearningservices.NewDatastore(ctx, "datastore", &machinelearningservices.DatastoreArgs{
-/// 			DatastoreProperties: &machinelearningservices.AzureDataLakeGen2DatastoreArgs{
+/// 			Name: pulumi.String("string"),
+/// 			Properties: &machinelearningservices.AzureDataLakeGen2DatastoreArgs{
 /// 				AccountName: pulumi.String("string"),
 /// 				Credentials: machinelearningservices.ServicePrincipalDatastoreCredentials{
 /// 					AuthorityUrl:    "string",
@@ -324,7 +362,6 @@ import 'system_data_response.dart';
 /// 					"string": pulumi.String("string"),
 /// 				},
 /// 			},
-/// 			Name:              pulumi.String("string"),
 /// 			ResourceGroupName: pulumi.String("test-rg"),
 /// 			SkipValidation:    pulumi.Bool(false),
 /// 			WorkspaceName:     pulumi.String("my-aml-workspace"),
@@ -338,6 +375,46 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_datastore" "datastore" {
+///   name = "string"
+///   properties = {
+///     "accountName" = "string"
+///     "credentials" = {
+///       "authorityUrl"    = "string"
+///       "clientId"        = "00000000-1111-2222-3333-444444444444"
+///       "credentialsType" = "ServicePrincipal"
+///       "resourceUrl"     = "string"
+///       "secrets" = {
+///         "clientSecret" = "string"
+///         "secretsType"  = "ServicePrincipal"
+///       }
+///       "tenantId" = "00000000-1111-2222-3333-444444444444"
+///     }
+///     "datastoreType" = "AzureDataLakeGen2"
+///     "description"   = "string"
+///     "endpoint"      = "string"
+///     "filesystem"    = "string"
+///     "protocol"      = "string"
+///     "tags" = {
+///       "string" = "string"
+///     }
+///   }
+///   resource_group_name = "test-rg"
+///   skip_validation     = false
+///   workspace_name      = "my-aml-workspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -346,8 +423,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Datastore;
 /// import com.pulumi.azurenative.machinelearningservices.DatastoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -360,7 +437,8 @@ import 'system_data_response.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var datastore = new Datastore("datastore", DatastoreArgs.builder()
-///             .datastoreProperties(AzureDataLakeGen2DatastoreArgs.builder()
+///             .name("string")
+///             .properties(AzureDataLakeGen2DatastoreArgs.builder()
 ///                 .accountName("string")
 ///                 .credentials(ServicePrincipalDatastoreCredentialsArgs.builder()
 ///                     .authorityUrl("string")
@@ -380,7 +458,6 @@ import 'system_data_response.dart';
 ///                 .protocol("string")
 ///                 .tags(Map.of("string", "string"))
 ///                 .build())
-///             .name("string")
 ///             .resourceGroupName("test-rg")
 ///             .skipValidation(false)
 ///             .workspaceName("my-aml-workspace")
@@ -396,7 +473,8 @@ import 'system_data_response.dart';
 /// import * as azure_native from "@pulumi/azure-native";
 ///
 /// const datastore = new azure_native.machinelearningservices.Datastore("datastore", {
-///     datastoreProperties: {
+///     name: "string",
+///     properties: {
 ///         accountName: "string",
 ///         credentials: {
 ///             authorityUrl: "string",
@@ -418,7 +496,6 @@ import 'system_data_response.dart';
 ///             string: "string",
 ///         },
 ///     },
-///     name: "string",
 ///     resourceGroupName: "test-rg",
 ///     skipValidation: false,
 ///     workspaceName: "my-aml-workspace",
@@ -431,7 +508,8 @@ import 'system_data_response.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// datastore = azure_native.machinelearningservices.Datastore("datastore",
-///     datastore_properties={
+///     name="string",
+///     properties={
 ///         "account_name": "string",
 ///         "credentials": {
 ///             "authority_url": "string",
@@ -453,7 +531,6 @@ import 'system_data_response.dart';
 ///             "string": "string",
 ///         },
 ///     },
-///     name="string",
 ///     resource_group_name="test-rg",
 ///     skip_validation=False,
 ///     workspace_name="my-aml-workspace")
@@ -465,7 +542,8 @@ import 'system_data_response.dart';
 ///   datastore:
 ///     type: azure-native:machinelearningservices:Datastore
 ///     properties:
-///       datastoreProperties:
+///       name: string
+///       properties:
 ///         accountName: string
 ///         credentials:
 ///           authorityUrl: string
@@ -483,7 +561,6 @@ import 'system_data_response.dart';
 ///         protocol: string
 ///         tags:
 ///           string: string
-///       name: string
 ///       resourceGroupName: test-rg
 ///       skipValidation: false
 ///       workspaceName: my-aml-workspace
@@ -503,7 +580,8 @@ import 'system_data_response.dart';
 /// {
 ///     var datastore = new AzureNative.MachineLearningServices.Datastore("datastore", new()
 ///     {
-///         DatastoreProperties = new AzureNative.MachineLearningServices.Inputs.AzureFileDatastoreArgs
+///         Name = "string",
+///         Properties = new AzureNative.MachineLearningServices.Inputs.AzureFileDatastoreArgs
 ///         {
 ///             AccountName = "string",
 ///             Credentials = new AzureNative.MachineLearningServices.Inputs.AccountKeyDatastoreCredentialsArgs
@@ -525,7 +603,6 @@ import 'system_data_response.dart';
 ///                 { "string", "string" },
 ///             },
 ///         },
-///         Name = "string",
 ///         ResourceGroupName = "test-rg",
 ///         SkipValidation = false,
 ///         WorkspaceName = "my-aml-workspace",
@@ -547,7 +624,8 @@ import 'system_data_response.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := machinelearningservices.NewDatastore(ctx, "datastore", &machinelearningservices.DatastoreArgs{
-/// 			DatastoreProperties: &machinelearningservices.AzureFileDatastoreArgs{
+/// 			Name: pulumi.String("string"),
+/// 			Properties: &machinelearningservices.AzureFileDatastoreArgs{
 /// 				AccountName: pulumi.String("string"),
 /// 				Credentials: machinelearningservices.AccountKeyDatastoreCredentials{
 /// 					CredentialsType: "AccountKey",
@@ -565,7 +643,6 @@ import 'system_data_response.dart';
 /// 					"string": pulumi.String("string"),
 /// 				},
 /// 			},
-/// 			Name:              pulumi.String("string"),
 /// 			ResourceGroupName: pulumi.String("test-rg"),
 /// 			SkipValidation:    pulumi.Bool(false),
 /// 			WorkspaceName:     pulumi.String("my-aml-workspace"),
@@ -579,6 +656,42 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_datastore" "datastore" {
+///   name = "string"
+///   properties = {
+///     "accountName" = "string"
+///     "credentials" = {
+///       "credentialsType" = "AccountKey"
+///       "secrets" = {
+///         "key"         = "string"
+///         "secretsType" = "AccountKey"
+///       }
+///     }
+///     "datastoreType" = "AzureFile"
+///     "description"   = "string"
+///     "endpoint"      = "string"
+///     "fileShareName" = "string"
+///     "protocol"      = "string"
+///     "tags" = {
+///       "string" = "string"
+///     }
+///   }
+///   resource_group_name = "test-rg"
+///   skip_validation     = false
+///   workspace_name      = "my-aml-workspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -587,8 +700,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Datastore;
 /// import com.pulumi.azurenative.machinelearningservices.DatastoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -601,7 +714,8 @@ import 'system_data_response.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var datastore = new Datastore("datastore", DatastoreArgs.builder()
-///             .datastoreProperties(AzureFileDatastoreArgs.builder()
+///             .name("string")
+///             .properties(AzureFileDatastoreArgs.builder()
 ///                 .accountName("string")
 ///                 .credentials(AccountKeyDatastoreCredentialsArgs.builder()
 ///                     .credentialsType("AccountKey")
@@ -617,7 +731,6 @@ import 'system_data_response.dart';
 ///                 .protocol("string")
 ///                 .tags(Map.of("string", "string"))
 ///                 .build())
-///             .name("string")
 ///             .resourceGroupName("test-rg")
 ///             .skipValidation(false)
 ///             .workspaceName("my-aml-workspace")
@@ -633,7 +746,8 @@ import 'system_data_response.dart';
 /// import * as azure_native from "@pulumi/azure-native";
 ///
 /// const datastore = new azure_native.machinelearningservices.Datastore("datastore", {
-///     datastoreProperties: {
+///     name: "string",
+///     properties: {
 ///         accountName: "string",
 ///         credentials: {
 ///             credentialsType: "AccountKey",
@@ -651,7 +765,6 @@ import 'system_data_response.dart';
 ///             string: "string",
 ///         },
 ///     },
-///     name: "string",
 ///     resourceGroupName: "test-rg",
 ///     skipValidation: false,
 ///     workspaceName: "my-aml-workspace",
@@ -664,7 +777,8 @@ import 'system_data_response.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// datastore = azure_native.machinelearningservices.Datastore("datastore",
-///     datastore_properties={
+///     name="string",
+///     properties={
 ///         "account_name": "string",
 ///         "credentials": {
 ///             "credentials_type": "AccountKey",
@@ -682,7 +796,6 @@ import 'system_data_response.dart';
 ///             "string": "string",
 ///         },
 ///     },
-///     name="string",
 ///     resource_group_name="test-rg",
 ///     skip_validation=False,
 ///     workspace_name="my-aml-workspace")
@@ -694,7 +807,8 @@ import 'system_data_response.dart';
 ///   datastore:
 ///     type: azure-native:machinelearningservices:Datastore
 ///     properties:
-///       datastoreProperties:
+///       name: string
+///       properties:
 ///         accountName: string
 ///         credentials:
 ///           credentialsType: AccountKey
@@ -708,7 +822,6 @@ import 'system_data_response.dart';
 ///         protocol: string
 ///         tags:
 ///           string: string
-///       name: string
 ///       resourceGroupName: test-rg
 ///       skipValidation: false
 ///       workspaceName: my-aml-workspace
@@ -728,7 +841,8 @@ import 'system_data_response.dart';
 /// {
 ///     var datastore = new AzureNative.MachineLearningServices.Datastore("datastore", new()
 ///     {
-///         DatastoreProperties = new AzureNative.MachineLearningServices.Inputs.AzureBlobDatastoreArgs
+///         Name = "string",
+///         Properties = new AzureNative.MachineLearningServices.Inputs.AzureBlobDatastoreArgs
 ///         {
 ///             AccountName = "string",
 ///             ContainerName = "string",
@@ -750,7 +864,6 @@ import 'system_data_response.dart';
 ///                 { "string", "string" },
 ///             },
 ///         },
-///         Name = "string",
 ///         ResourceGroupName = "test-rg",
 ///         SkipValidation = false,
 ///         WorkspaceName = "my-aml-workspace",
@@ -772,7 +885,8 @@ import 'system_data_response.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := machinelearningservices.NewDatastore(ctx, "datastore", &machinelearningservices.DatastoreArgs{
-/// 			DatastoreProperties: &machinelearningservices.AzureBlobDatastoreArgs{
+/// 			Name: pulumi.String("string"),
+/// 			Properties: &machinelearningservices.AzureBlobDatastoreArgs{
 /// 				AccountName:   pulumi.String("string"),
 /// 				ContainerName: pulumi.String("string"),
 /// 				Credentials: machinelearningservices.AccountKeyDatastoreCredentials{
@@ -790,7 +904,6 @@ import 'system_data_response.dart';
 /// 					"string": pulumi.String("string"),
 /// 				},
 /// 			},
-/// 			Name:              pulumi.String("string"),
 /// 			ResourceGroupName: pulumi.String("test-rg"),
 /// 			SkipValidation:    pulumi.Bool(false),
 /// 			WorkspaceName:     pulumi.String("my-aml-workspace"),
@@ -804,6 +917,42 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_datastore" "datastore" {
+///   name = "string"
+///   properties = {
+///     "accountName"   = "string"
+///     "containerName" = "string"
+///     "credentials" = {
+///       "credentialsType" = "AccountKey"
+///       "secrets" = {
+///         "key"         = "string"
+///         "secretsType" = "AccountKey"
+///       }
+///     }
+///     "datastoreType" = "AzureBlob"
+///     "description"   = "string"
+///     "endpoint"      = "core.windows.net"
+///     "protocol"      = "https"
+///     "tags" = {
+///       "string" = "string"
+///     }
+///   }
+///   resource_group_name = "test-rg"
+///   skip_validation     = false
+///   workspace_name      = "my-aml-workspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -812,8 +961,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Datastore;
 /// import com.pulumi.azurenative.machinelearningservices.DatastoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -826,7 +975,8 @@ import 'system_data_response.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var datastore = new Datastore("datastore", DatastoreArgs.builder()
-///             .datastoreProperties(AzureBlobDatastoreArgs.builder()
+///             .name("string")
+///             .properties(AzureBlobDatastoreArgs.builder()
 ///                 .accountName("string")
 ///                 .containerName("string")
 ///                 .credentials(AccountKeyDatastoreCredentialsArgs.builder()
@@ -842,7 +992,6 @@ import 'system_data_response.dart';
 ///                 .protocol("https")
 ///                 .tags(Map.of("string", "string"))
 ///                 .build())
-///             .name("string")
 ///             .resourceGroupName("test-rg")
 ///             .skipValidation(false)
 ///             .workspaceName("my-aml-workspace")
@@ -858,7 +1007,8 @@ import 'system_data_response.dart';
 /// import * as azure_native from "@pulumi/azure-native";
 ///
 /// const datastore = new azure_native.machinelearningservices.Datastore("datastore", {
-///     datastoreProperties: {
+///     name: "string",
+///     properties: {
 ///         accountName: "string",
 ///         containerName: "string",
 ///         credentials: {
@@ -876,7 +1026,6 @@ import 'system_data_response.dart';
 ///             string: "string",
 ///         },
 ///     },
-///     name: "string",
 ///     resourceGroupName: "test-rg",
 ///     skipValidation: false,
 ///     workspaceName: "my-aml-workspace",
@@ -889,7 +1038,8 @@ import 'system_data_response.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// datastore = azure_native.machinelearningservices.Datastore("datastore",
-///     datastore_properties={
+///     name="string",
+///     properties={
 ///         "account_name": "string",
 ///         "container_name": "string",
 ///         "credentials": {
@@ -907,7 +1057,6 @@ import 'system_data_response.dart';
 ///             "string": "string",
 ///         },
 ///     },
-///     name="string",
 ///     resource_group_name="test-rg",
 ///     skip_validation=False,
 ///     workspace_name="my-aml-workspace")
@@ -919,7 +1068,8 @@ import 'system_data_response.dart';
 ///   datastore:
 ///     type: azure-native:machinelearningservices:Datastore
 ///     properties:
-///       datastoreProperties:
+///       name: string
+///       properties:
 ///         accountName: string
 ///         containerName: string
 ///         credentials:
@@ -933,7 +1083,6 @@ import 'system_data_response.dart';
 ///         protocol: https
 ///         tags:
 ///           string: string
-///       name: string
 ///       resourceGroupName: test-rg
 ///       skipValidation: false
 ///       workspaceName: my-aml-workspace
@@ -953,10 +1102,10 @@ import 'system_data_response.dart';
 class Datastore extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// [Required] Additional attributes of the entity.
-  late final pulumi.Output<AzureBlobDatastoreResponse> datastoreProperties;
   /// The name of the resource
   late final pulumi.Output<String> name;
+  /// [Required] Additional attributes of the entity.
+  late final pulumi.Output<AzureBlobDatastoreResponse> properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -977,8 +1126,8 @@ class Datastore extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    datastoreProperties = registerOutput<AzureBlobDatastoreResponse>('datastoreProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureBlobDatastoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    properties = registerOutput<AzureBlobDatastoreResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureBlobDatastoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

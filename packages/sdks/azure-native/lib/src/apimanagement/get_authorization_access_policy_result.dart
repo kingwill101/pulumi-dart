@@ -3,6 +3,8 @@
 
 /// Result data returned by getAuthorizationAccessPolicy.
 class GetAuthorizationAccessPolicyResult {
+  /// The allowed Azure Active Directory Application IDs
+  final List<String>? appIds;
   /// The Azure API version of the resource.
   final String azureApiVersion;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -17,6 +19,7 @@ class GetAuthorizationAccessPolicyResult {
   final String type;
 
   /// Creates a new [GetAuthorizationAccessPolicyResult].
+  /// [appIds] The allowed Azure Active Directory Application IDs
   /// [azureApiVersion] The Azure API version of the resource.
   /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [name] The name of the resource
@@ -24,6 +27,7 @@ class GetAuthorizationAccessPolicyResult {
   /// [tenantId] The Tenant Id
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetAuthorizationAccessPolicyResult({
+    this.appIds,
     required this.azureApiVersion,
     required this.id,
     required this.name,
@@ -34,6 +38,7 @@ class GetAuthorizationAccessPolicyResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'appIds': ?appIds,
       'azureApiVersion': azureApiVersion,
       'id': id,
       'name': name,
@@ -45,6 +50,7 @@ class GetAuthorizationAccessPolicyResult {
 
   factory GetAuthorizationAccessPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetAuthorizationAccessPolicyResult(
+      appIds: (() { final guardedValue = map['appIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
@@ -54,4 +60,3 @@ class GetAuthorizationAccessPolicyResult {
     );
   }
 }
-

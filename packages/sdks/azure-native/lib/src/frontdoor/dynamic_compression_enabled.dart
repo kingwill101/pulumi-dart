@@ -1,7 +1,7 @@
 /// Whether to use dynamic compression for cached content
 enum DynamicCompressionEnabled {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const DynamicCompressionEnabled(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum DynamicCompressionEnabled {
     throw ArgumentError('Unknown DynamicCompressionEnabled value: $value');
   }
 }
-

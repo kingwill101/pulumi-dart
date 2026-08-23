@@ -15,4 +15,3 @@ enum LinkRole {
     throw ArgumentError('Unknown LinkRole value: $value');
   }
 }
-

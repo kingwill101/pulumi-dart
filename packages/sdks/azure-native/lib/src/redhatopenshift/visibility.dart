@@ -15,4 +15,3 @@ enum Visibility {
     throw ArgumentError('Unknown Visibility value: $value');
   }
 }
-

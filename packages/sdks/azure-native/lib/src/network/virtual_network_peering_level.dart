@@ -17,4 +17,3 @@ enum VirtualNetworkPeeringLevel {
     throw ArgumentError('Unknown VirtualNetworkPeeringLevel value: $value');
   }
 }
-

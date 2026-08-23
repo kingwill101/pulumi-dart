@@ -15,4 +15,3 @@ enum BackendPoolType {
     throw ArgumentError('Unknown BackendPoolType value: $value');
   }
 }
-

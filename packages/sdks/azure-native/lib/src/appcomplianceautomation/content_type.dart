@@ -14,4 +14,3 @@ enum ContentType {
     throw ArgumentError('Unknown ContentType value: $value');
   }
 }
-

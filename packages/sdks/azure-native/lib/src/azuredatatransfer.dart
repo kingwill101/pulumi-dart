@@ -28,6 +28,7 @@ export 'azuredatatransfer/flow_profile_rulesets_response.dart';
 export 'azuredatatransfer/flow_profile_status.dart';
 export 'azuredatatransfer/flow_properties.dart';
 export 'azuredatatransfer/flow_properties_response.dart';
+export 'azuredatatransfer/flow_propertieslist_list_flows_by_pipeline_response.dart';
 export 'azuredatatransfer/flow_response.dart';
 export 'azuredatatransfer/flow_status.dart';
 export 'azuredatatransfer/flow_type.dart';

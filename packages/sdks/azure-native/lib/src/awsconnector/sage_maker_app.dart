@@ -126,6 +126,53 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_sagemakerapp" "sageMakerApp" {
+///   location = "wnlhgbkbelgwiwhnismoau"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "jlzaozimvtjn"
+///     aws_account_id = "lgqcehdauhqdqezactw"
+///     aws_properties = {
+///       app_arn   = "gher"
+///       app_name  = "evzkcyynebo"
+///       app_type  = "Canvas"
+///       domain_id = "dkqxukvimzaw"
+///       resource_spec = {
+///         instance_type                = "ml.c5.12xlarge"
+///         sage_maker_image_arn         = "pgukixbhpruaz"
+///         sage_maker_image_version_arn = "juqpu"
+///       }
+///       tags = [{
+///         "key"   = "bwiejavqzxocieoyuhmayxvf"
+///         "value" = "oiirwwaoqv"
+///       }]
+///       user_profile_name = "hqjtakkgaetxvrmswgdzfbnna"
+///     }
+///     aws_region        = "tnogtlqasqlenkt"
+///     aws_source_schema = "xshoewjusdxuy"
+///     aws_tags = {
+///       "key2126" = "vfltdeknkbeu"
+///     }
+///     public_cloud_connectors_resource_id = "vaphifjjavrvy"
+///     public_cloud_resource_name          = "ptlnykuziapscweekj"
+///   }
+///   resource_group_name = "rgsageMakerApp"
+///   tags = {
+///     "key3532" = "z"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -137,8 +184,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.SageMakerAppPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsSageMakerAppPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ResourceSpecArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

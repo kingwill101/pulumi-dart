@@ -15,4 +15,3 @@ enum EncryptionConfigType {
     throw ArgumentError('Unknown EncryptionConfigType value: $value');
   }
 }
-

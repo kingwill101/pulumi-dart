@@ -22,4 +22,3 @@ enum Geo {
     throw ArgumentError('Unknown Geo value: $value');
   }
 }
-

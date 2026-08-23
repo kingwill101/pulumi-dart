@@ -17,4 +17,3 @@ enum InventoryType {
     throw ArgumentError('Unknown InventoryType value: $value');
   }
 }
-

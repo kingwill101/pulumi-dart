@@ -54,6 +54,23 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_easm_labelbyworkspace" "labelByWorkspace" {
+///   label_name          = "ThisisaLabel"
+///   resource_group_name = "dummyrg"
+///   workspace_name      = "ThisisaWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -62,8 +79,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.easm.LabelByWorkspace;
 /// import com.pulumi.azurenative.easm.LabelByWorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

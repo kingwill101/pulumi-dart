@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeviceSecurityGroupArgs {
   /// The name of the device security group. Note that the name of the device security group is case insensitive.
   final pulumi.Input<String> deviceSecurityGroupName;
-  /// The identifier of the resource.
+  /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceId;
 
   /// Creates a new [GetDeviceSecurityGroupArgs].
   /// [deviceSecurityGroupName] The name of the device security group. Note that the name of the device security group is case insensitive.
-  /// [resourceId] The identifier of the resource.
+  /// [resourceId] The fully qualified Azure Resource manager identifier of the resource.
   const GetDeviceSecurityGroupArgs({
     required this.deviceSecurityGroupName,
     required this.resourceId,
@@ -34,4 +34,3 @@ class GetDeviceSecurityGroupArgs {
     );
   }
 }
-

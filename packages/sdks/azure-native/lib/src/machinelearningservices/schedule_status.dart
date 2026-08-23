@@ -1,7 +1,7 @@
 /// Is the schedule enabled or disabled?
 enum ScheduleStatus {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const ScheduleStatus(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ScheduleStatus {
     throw ArgumentError('Unknown ScheduleStatus value: $value');
   }
 }
-

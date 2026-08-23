@@ -67,6 +67,30 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devspaces_controller" "controller" {
+///   location            = "eastus"
+///   name                = "myControllerResource"
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     name = "S1"
+///     tier = "Standard"
+///   }
+///   tags                                     = {}
+///   target_container_host_credentials_base64 = "QmFzZTY0IEVuY29kZWQgVmFsdWUK"
+///   target_container_host_resource_id        = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myCluster"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +100,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.devspaces.Controller;
 /// import com.pulumi.azurenative.devspaces.ControllerArgs;
 /// import com.pulumi.azurenative.devspaces.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

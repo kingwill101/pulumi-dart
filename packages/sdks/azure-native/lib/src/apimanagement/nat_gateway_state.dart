@@ -15,4 +15,3 @@ enum NatGatewayState {
     throw ArgumentError('Unknown NatGatewayState value: $value');
   }
 }
-

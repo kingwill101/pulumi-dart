@@ -16,4 +16,3 @@ enum DiskConfigurationType {
     throw ArgumentError('Unknown DiskConfigurationType value: $value');
   }
 }
-

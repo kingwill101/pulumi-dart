@@ -112,6 +112,47 @@ import 'spark_config_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_synapse_bigdatapool" "bigDataPool" {
+///   auto_pause = {
+///     delay_in_minutes = 15
+///     enabled          = true
+///   }
+///   auto_scale = {
+///     enabled        = true
+///     max_node_count = 50
+///     min_node_count = 3
+///   }
+///   big_data_pool_name       = "ExamplePool"
+///   default_spark_log_folder = "/logs"
+///   is_autotune_enabled      = false
+///   library_requirements = {
+///     content  = ""
+///     filename = "requirements.txt"
+///   }
+///   location            = "West US 2"
+///   node_count          = 4
+///   node_size           = "Medium"
+///   node_size_family    = "MemoryOptimized"
+///   resource_group_name = "ExampleResourceGroup"
+///   spark_events_folder = "/events"
+///   spark_version       = "3.3"
+///   tags = {
+///     "key" = "value"
+///   }
+///   workspace_name = "ExampleWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +164,8 @@ import 'spark_config_properties_response.dart';
 /// import com.pulumi.azurenative.synapse.inputs.AutoPausePropertiesArgs;
 /// import com.pulumi.azurenative.synapse.inputs.AutoScalePropertiesArgs;
 /// import com.pulumi.azurenative.synapse.inputs.LibraryRequirementsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

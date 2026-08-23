@@ -14,4 +14,3 @@ enum CostAllocationPolicyType {
     throw ArgumentError('Unknown CostAllocationPolicyType value: $value');
   }
 }
-

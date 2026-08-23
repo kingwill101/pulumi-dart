@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01.
 ///
-/// Other available API versions: 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-07-17-preview, 2025-08-18-preview, 2026-05-01-preview, 2026-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -65,6 +65,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_confluent_organizationenvironmentbyid" "organizationEnvironmentById" {
+///   environment_id      = "env-1"
+///   organization_name   = "myOrganization"
+///   resource_group_name = "myResourceGroup"
+///   stream_governance_config = {
+///     package = "ESSENTIALS"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +94,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.confluent.OrganizationEnvironmentById;
 /// import com.pulumi.azurenative.confluent.OrganizationEnvironmentByIdArgs;
 /// import com.pulumi.azurenative.confluent.inputs.StreamGovernanceConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

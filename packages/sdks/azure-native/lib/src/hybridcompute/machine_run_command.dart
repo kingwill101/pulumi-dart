@@ -9,7 +9,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-07-31-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-03-preview.
 ///
-/// Other available API versions: 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13, 2025-02-19-preview, 2025-06-01, 2025-08-21-preview, 2025-09-16-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcompute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13, 2025-02-19-preview, 2025-06-01, 2025-08-21-preview, 2025-09-16-preview, 2026-02-12-preview, 2026-06-04-preview, 2026-06-16-preview, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcompute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -103,6 +103,41 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hybridcompute_machineruncommand" "machineRunCommand" {
+///   async_execution = false
+///   error_blob_uri  = "https://mystorageaccount.blob.core.windows.net/mycontainer/MyScriptError.txt"
+///   location        = "eastus2"
+///   machine_name    = "myMachine"
+///   output_blob_uri = "https://mystorageaccount.blob.core.windows.net/myscriptoutputcontainer/MyScriptoutput.txt"
+///   parameters {
+///     name  = "param1"
+///     value = "value1"
+///   }
+///   parameters {
+///     name  = "param2"
+///     value = "value2"
+///   }
+///   resource_group_name = "myResourceGroup"
+///   run_as_password     = "<runAsPassword>"
+///   run_as_user         = "user1"
+///   run_command_name    = "myRunCommand"
+///   source = {
+///     script = "Write-Host Hello World!"
+///   }
+///   timeout_in_seconds = 3600
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +148,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hybridcompute.MachineRunCommandArgs;
 /// import com.pulumi.azurenative.hybridcompute.inputs.RunCommandInputParameterArgs;
 /// import com.pulumi.azurenative.hybridcompute.inputs.MachineRunCommandScriptSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

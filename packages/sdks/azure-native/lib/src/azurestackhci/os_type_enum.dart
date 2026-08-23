@@ -15,4 +15,3 @@ enum OsTypeEnum {
     throw ArgumentError('Unknown OsTypeEnum value: $value');
   }
 }
-

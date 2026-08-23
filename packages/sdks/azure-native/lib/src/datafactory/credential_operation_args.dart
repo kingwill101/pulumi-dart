@@ -14,14 +14,14 @@ class CredentialOperationArgs {
   final pulumi.Input<String> factoryName;
   /// Properties of credentials.
   final pulumi.Input<ManagedIdentityCredential> properties;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [CredentialOperationArgs].
   /// [credentialName] Credential name
   /// [factoryName] The factory name.
   /// [properties] Properties of credentials.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const CredentialOperationArgs({
     this.credentialName,
     required this.factoryName,
@@ -47,4 +47,3 @@ class CredentialOperationArgs {
     );
   }
 }
-

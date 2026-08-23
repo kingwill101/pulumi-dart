@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of any error encountered on last collection attempt
 class ConnectorCollectionErrorInfoResponse {
-  /// Short error message
+  /// Short error code
   final pulumi.Input<String> errorCode;
   /// External Provider error message
-  final pulumi.Input<String>? errorInnerMessage;
+  final pulumi.Input<String> errorInnerMessage;
   /// Detailed error message
   final pulumi.Input<String> errorMessage;
-  /// Time the error started occurring (Last time error occurred in lastRun)
+  /// Time the error started occurring (Last time error occurred in lastChecked)
   final pulumi.Input<String> errorStartTime;
 
   /// Creates a new [ConnectorCollectionErrorInfoResponse].
-  /// [errorCode] Short error message
+  /// [errorCode] Short error code
   /// [errorInnerMessage] External Provider error message
   /// [errorMessage] Detailed error message
-  /// [errorStartTime] Time the error started occurring (Last time error occurred in lastRun)
+  /// [errorStartTime] Time the error started occurring (Last time error occurred in lastChecked)
   const ConnectorCollectionErrorInfoResponse({
     required this.errorCode,
-    this.errorInnerMessage,
+    required this.errorInnerMessage,
     required this.errorMessage,
     required this.errorStartTime,
   });
@@ -28,7 +28,7 @@ class ConnectorCollectionErrorInfoResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'errorCode': errorCode,
-      'errorInnerMessage': ?errorInnerMessage,
+      'errorInnerMessage': errorInnerMessage,
       'errorMessage': errorMessage,
       'errorStartTime': errorStartTime,
     };
@@ -37,10 +37,9 @@ class ConnectorCollectionErrorInfoResponse {
   factory ConnectorCollectionErrorInfoResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorCollectionErrorInfoResponse(
       errorCode: pulumi.Input.fromValue(map['errorCode'] as String),
-      errorInnerMessage: (() { final guardedValue = map['errorInnerMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      errorInnerMessage: pulumi.Input.fromValue(map['errorInnerMessage'] as String),
       errorMessage: pulumi.Input.fromValue(map['errorMessage'] as String),
       errorStartTime: pulumi.Input.fromValue(map['errorStartTime'] as String),
     );
   }
 }
-

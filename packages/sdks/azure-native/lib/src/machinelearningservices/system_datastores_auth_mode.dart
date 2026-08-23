@@ -1,8 +1,8 @@
 /// The auth mode used for accessing the system datastores of the workspace.
 enum SystemDatastoresAuthMode {
-  valueAccessKey("AccessKey"),
-  valueIdentity("Identity"),
-  valueUserDelegationSAS("UserDelegationSAS");
+  accessKey("AccessKey"),
+  identity("Identity"),
+  userDelegationSAS("UserDelegationSAS");
 
   const SystemDatastoresAuthMode(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum SystemDatastoresAuthMode {
     throw ArgumentError('Unknown SystemDatastoresAuthMode value: $value');
   }
 }
-

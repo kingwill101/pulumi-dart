@@ -67,6 +67,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_servergroupprivateendpointconnection" "serverGroupPrivateEndpointConnection" {
+///   cluster_name                     = "testcluster"
+///   private_endpoint_connection_name = "private-endpoint-connection-name"
+///   private_link_service_connection_state = {
+///     description = "Approved by johndoe@contoso.com"
+///     status      = "Approved"
+///   }
+///   resource_group_name = "TestGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +97,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.ServerGroupPrivateEndpointConnection;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerGroupPrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

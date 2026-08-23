@@ -7,7 +7,7 @@ import 'web_pub_sub_hub_properties_response.dart';
 ///
 /// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native webpubsub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-08-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native webpubsub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -142,6 +142,50 @@ import 'web_pub_sub_hub_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_webpubsub_webpubsubhub" "webPubSubHub" {
+///   hub_name = "exampleHub"
+///   properties = {
+///     anonymous_connect_policy = "allow"
+///     event_handlers = [{
+///       "auth" = {
+///         "managedIdentity" = {
+///           "resource" = "abc"
+///         }
+///         "type" = "ManagedIdentity"
+///       }
+///       "systemEvents"     = ["connect", "connected"]
+///       "urlTemplate"      = "http://host.com"
+///       "userEventPattern" = "*"
+///     }]
+///     event_listeners = [{
+///       "endpoint" = {
+///         "eventHubName"            = "eventHubName1"
+///         "fullyQualifiedNamespace" = "example.servicebus.windows.net"
+///         "type"                    = "EventHub"
+///       }
+///       "filter" = {
+///         "systemEvents"     = ["connected", "disconnected"]
+///         "type"             = "EventName"
+///         "userEventPattern" = "*"
+///       }
+///     }]
+///     web_socket_keep_alive_interval_in_seconds = 50
+///   }
+///   resource_group_name = "myResourceGroup"
+///   resource_name       = "myWebPubSubService"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -151,8 +195,8 @@ import 'web_pub_sub_hub_properties_response.dart';
 /// import com.pulumi.azurenative.webpubsub.WebPubSubHub;
 /// import com.pulumi.azurenative.webpubsub.WebPubSubHubArgs;
 /// import com.pulumi.azurenative.webpubsub.inputs.WebPubSubHubPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -188,9 +232,9 @@ import 'web_pub_sub_hub_properties_response.dart';
 ///                         Map.entry("type", "EventHub")
 ///                     ))
 ///                     .filter(Map.ofEntries(
-///                         Map.entry("systemEvents",
+///                         Map.entry("systemEvents", Arrays.asList(
 ///                             "connected",
-///                             "disconnected"),
+///                             "disconnected")),
 ///                         Map.entry("type", "EventName"),
 ///                         Map.entry("userEventPattern", "*")
 ///                     ))

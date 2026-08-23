@@ -1,9 +1,9 @@
 /// Specifies the stores to which materialization should happen
 enum MaterializationStoreType {
-  valueNone("None"),
-  valueOnline("Online"),
-  valueOffline("Offline"),
-  valueOnlineAndOffline("OnlineAndOffline");
+  none("None"),
+  online("Online"),
+  offline("Offline"),
+  onlineAndOffline("OnlineAndOffline");
 
   const MaterializationStoreType(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum MaterializationStoreType {
     throw ArgumentError('Unknown MaterializationStoreType value: $value');
   }
 }
-

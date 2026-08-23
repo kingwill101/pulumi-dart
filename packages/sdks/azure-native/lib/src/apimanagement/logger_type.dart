@@ -16,4 +16,3 @@ enum LoggerType {
     throw ArgumentError('Unknown LoggerType value: $value');
   }
 }
-

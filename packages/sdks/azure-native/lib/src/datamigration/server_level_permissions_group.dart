@@ -18,4 +18,3 @@ enum ServerLevelPermissionsGroup {
     throw ArgumentError('Unknown ServerLevelPermissionsGroup value: $value');
   }
 }
-

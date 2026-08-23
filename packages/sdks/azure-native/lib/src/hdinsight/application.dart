@@ -138,6 +138,48 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hdinsight_application" "application" {
+///   application_name = "hue"
+///   cluster_name     = "cluster1"
+///   properties = {
+///     application_type = "CustomApplication"
+///     compute_profile = {
+///       roles = [{
+///         "hardwareProfile" = {
+///           "vmSize" = "Standard_D12_v2"
+///         }
+///         "name"                = "edgenode"
+///         "targetInstanceCount" = 1
+///       }]
+///     }
+///     errors = []
+///     https_endpoints = [{
+///       "accessModes"     = ["WebPage"]
+///       "destinationPort" = 20000
+///       "subDomainSuffix" = "dss"
+///     }]
+///     install_script_actions = [{
+///       "name"       = "app-install-app1"
+///       "parameters" = "-version latest -port 20000"
+///       "roles"      = ["edgenode"]
+///       "uri"        = "https://.../install.sh"
+///     }]
+///     uninstall_script_actions = []
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -148,8 +190,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hdinsight.ApplicationArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.ApplicationPropertiesArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.ComputeProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

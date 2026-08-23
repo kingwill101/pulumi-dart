@@ -20,7 +20,7 @@ class RoleDefinitionArgs {
   final pulumi.Input<String>? roleName;
   /// The role type.
   final pulumi.Input<String>? roleType;
-  /// The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+  /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> scope;
 
   /// Creates a new [RoleDefinitionArgs].
@@ -30,7 +30,7 @@ class RoleDefinitionArgs {
   /// [roleDefinitionId] The ID of the role definition.
   /// [roleName] The role name.
   /// [roleType] The role type.
-  /// [scope] The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+  /// [scope] The fully qualified Azure Resource manager identifier of the resource.
   const RoleDefinitionArgs({
     this.assignableScopes,
     this.description,
@@ -65,4 +65,3 @@ class RoleDefinitionArgs {
     );
   }
 }
-

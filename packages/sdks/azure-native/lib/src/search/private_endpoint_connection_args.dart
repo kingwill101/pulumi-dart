@@ -12,7 +12,7 @@ class PrivateEndpointConnectionArgs {
   final pulumi.Input<String>? privateEndpointConnectionName;
   /// Describes the properties of an existing private endpoint connection to the Azure AI Search service.
   final pulumi.Input<PrivateEndpointConnectionProperties>? properties;
-  /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Azure AI Search service associated with the specified resource group.
   final pulumi.Input<String> searchServiceName;
@@ -20,7 +20,7 @@ class PrivateEndpointConnectionArgs {
   /// Creates a new [PrivateEndpointConnectionArgs].
   /// [privateEndpointConnectionName] The name of the private endpoint connection to the Azure AI Search service with the specified resource group.
   /// [properties] Describes the properties of an existing private endpoint connection to the Azure AI Search service.
-  /// [resourceGroupName] The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [searchServiceName] The name of the Azure AI Search service associated with the specified resource group.
   const PrivateEndpointConnectionArgs({
     this.privateEndpointConnectionName,
@@ -47,4 +47,3 @@ class PrivateEndpointConnectionArgs {
     );
   }
 }
-

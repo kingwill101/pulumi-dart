@@ -8,10 +8,10 @@ import 'mltable_data.dart';
 /// {@endtemplate}
 /// {@macro pulumi_machinelearningservices_registry_data_version_args_doc}
 class RegistryDataVersionArgs {
-  /// [Required] Additional attributes of the entity.
-  final pulumi.Input<MLTableData> dataVersionBaseProperties;
   /// Container name.
   final pulumi.Input<String> name;
+  /// [Required] Additional attributes of the entity.
+  final pulumi.Input<MLTableData> properties;
   /// Name of Azure Machine Learning registry. This is case-insensitive
   final pulumi.Input<String> registryName;
   /// The name of the resource group. The name is case insensitive.
@@ -20,14 +20,14 @@ class RegistryDataVersionArgs {
   final pulumi.Input<String>? version;
 
   /// Creates a new [RegistryDataVersionArgs].
-  /// [dataVersionBaseProperties] [Required] Additional attributes of the entity.
   /// [name] Container name.
+  /// [properties] [Required] Additional attributes of the entity.
   /// [registryName] Name of Azure Machine Learning registry. This is case-insensitive
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] Version identifier.
   const RegistryDataVersionArgs({
-    required this.dataVersionBaseProperties,
     required this.name,
+    required this.properties,
     required this.registryName,
     required this.resourceGroupName,
     this.version,
@@ -35,8 +35,8 @@ class RegistryDataVersionArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataVersionBaseProperties': pulumi.Input.mapInputValue<MLTableData, Map<String, dynamic>>(dataVersionBaseProperties, (value) => value.toMap()),
       'name': name,
+      'properties': pulumi.Input.mapInputValue<MLTableData, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'registryName': registryName,
       'resourceGroupName': resourceGroupName,
       'version': ?version,
@@ -45,12 +45,11 @@ class RegistryDataVersionArgs {
 
   factory RegistryDataVersionArgs.fromMap(Map<String, dynamic> map) {
     return RegistryDataVersionArgs(
-      dataVersionBaseProperties: pulumi.Input.fromValue(MLTableData.fromMap((map['dataVersionBaseProperties']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
+      properties: pulumi.Input.fromValue(MLTableData.fromMap((map['properties']! as Map).cast<String, dynamic>())),
       registryName: pulumi.Input.fromValue(map['registryName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

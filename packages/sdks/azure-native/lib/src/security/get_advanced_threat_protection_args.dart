@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_security_get_advanced_threat_protection_args_doc}
 class GetAdvancedThreatProtectionArgs {
-  /// The identifier of the resource.
+  /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceId;
   /// Advanced Threat Protection setting name.
   final pulumi.Input<String> settingName;
 
   /// Creates a new [GetAdvancedThreatProtectionArgs].
-  /// [resourceId] The identifier of the resource.
+  /// [resourceId] The fully qualified Azure Resource manager identifier of the resource.
   /// [settingName] Advanced Threat Protection setting name.
   const GetAdvancedThreatProtectionArgs({
     required this.resourceId,
@@ -34,4 +34,3 @@ class GetAdvancedThreatProtectionArgs {
     );
   }
 }
-

@@ -156,6 +156,63 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_avsassessmentsv2operation" "avsAssessmentsV2Operation" {
+///   assessment_name = "assessmentName"
+///   project_name    = "contosoProject"
+///   properties = {
+///     fallback_machine_assessment_arm_id = "tpjvxfcyxsgngqdxyrrfh"
+///     scope = {
+///       azure_resource_graph_query = "ylnfwgptlyzwzkotmunbx"
+///       scope_type                 = "ServerGroupId"
+///       server_group_id            = "fxonspfmzfuiaepr"
+///     }
+///     settings = {
+///       avs_assessment_scenario = "Unknown"
+///       azure_location          = "actuloeieva"
+///       billing_settings = {
+///         licensing_program = "Retail"
+///         subscription_id   = "xvtuenxmmjuqlhgmvev"
+///       }
+///       cpu_headroom                             = 27
+///       currency                                 = "Unknown"
+///       dedupe_compression                       = 26
+///       discount_percentage                      = 27
+///       environment_type                         = "Production"
+///       external_storage_types                   = ["Unknown"]
+///       failures_to_tolerate_and_raid_level_list = ["Unknown"]
+///       is_stretch_cluster_enabled               = true
+///       is_vcf_byol_enabled                      = true
+///       mem_overcommit                           = 11
+///       node_types                               = ["Unknown"]
+///       performance_data = {
+///         percentile           = "Unknown"
+///         perf_data_end_time   = "2025-02-21T05:36:34.751Z"
+///         perf_data_start_time = "2025-02-21T05:36:34.751Z"
+///         time_range           = "Day"
+///       }
+///       savings_settings = {
+///         azure_offer_code = "Unknown"
+///         savings_options  = "None"
+///       }
+///       scaling_factor        = 28
+///       sizing_criterion      = "PerformanceBased"
+///       vcpu_oversubscription = 25
+///     }
+///   }
+///   resource_group_name = "rgavsAssessments"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -170,8 +227,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.migrate.inputs.BillingSettingsArgs;
 /// import com.pulumi.azurenative.migrate.inputs.PerformanceDataArgs;
 /// import com.pulumi.azurenative.migrate.inputs.SavingsSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -307,16 +364,16 @@ import 'system_data_response.dart';
 ///                 "licensing_program": azure_native.migrate.LicensingProgram.RETAIL,
 ///                 "subscription_id": "xvtuenxmmjuqlhgmvev",
 ///             },
-///             "cpu_headroom": 27,
+///             "cpu_headroom": float(27),
 ///             "currency": azure_native.migrate.AzureCurrency.UNKNOWN,
-///             "dedupe_compression": 26,
-///             "discount_percentage": 27,
+///             "dedupe_compression": float(26),
+///             "discount_percentage": float(27),
 ///             "environment_type": azure_native.migrate.EnvironmentType.PRODUCTION,
 ///             "external_storage_types": [azure_native.migrate.ExternalStorageType.UNKNOWN],
 ///             "failures_to_tolerate_and_raid_level_list": [azure_native.migrate.FttAndRaidLevel.UNKNOWN],
 ///             "is_stretch_cluster_enabled": True,
 ///             "is_vcf_byol_enabled": True,
-///             "mem_overcommit": 11,
+///             "mem_overcommit": float(11),
 ///             "node_types": [azure_native.migrate.AzureAvsNodeType.UNKNOWN],
 ///             "performance_data": {
 ///                 "percentile": "Unknown",
@@ -328,9 +385,9 @@ import 'system_data_response.dart';
 ///                 "azure_offer_code": azure_native.migrate.AzureOffer.UNKNOWN,
 ///                 "savings_options": azure_native.migrate.SavingsOptions.NONE,
 ///             },
-///             "scaling_factor": 28,
+///             "scaling_factor": float(28),
 ///             "sizing_criterion": azure_native.migrate.AssessmentSizingCriterion.PERFORMANCE_BASED,
-///             "vcpu_oversubscription": 25,
+///             "vcpu_oversubscription": float(25),
 ///         },
 ///     },
 ///     resource_group_name="rgavsAssessments")

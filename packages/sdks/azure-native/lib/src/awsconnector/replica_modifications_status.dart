@@ -15,4 +15,3 @@ enum ReplicaModificationsStatus {
     throw ArgumentError('Unknown ReplicaModificationsStatus value: $value');
   }
 }
-

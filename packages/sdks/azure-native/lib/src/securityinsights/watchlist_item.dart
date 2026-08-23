@@ -7,7 +7,7 @@ import 'watchlist_user_info_response.dart';
 ///
 /// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -76,6 +76,32 @@ import 'watchlist_user_info_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_watchlistitem" "watchlistItem" {
+///   items_key_value = {
+///     "Business tier"  = "10.0.2.0/24"
+///     "Data tier"      = "10.0.2.0/24"
+///     "Gateway subnet" = "10.0.255.224/27"
+///     "Private DMZ in" = "10.0.0.0/27"
+///     "Public DMZ out" = "10.0.0.96/27"
+///     "Web Tier"       = "10.0.1.0/24"
+///   }
+///   resource_group_name = "myRg"
+///   watchlist_alias     = "highValueAsset"
+///   watchlist_item_id   = "82ba292c-dc97-4dfc-969d-d4dd9e666842"
+///   workspace_name      = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +110,8 @@ import 'watchlist_user_info_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.securityinsights.WatchlistItem;
 /// import com.pulumi.azurenative.securityinsights.WatchlistItemArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

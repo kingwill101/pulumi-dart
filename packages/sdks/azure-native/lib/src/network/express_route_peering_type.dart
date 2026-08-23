@@ -16,4 +16,3 @@ enum ExpressRoutePeeringType {
     throw ArgumentError('Unknown ExpressRoutePeeringType value: $value');
   }
 }
-

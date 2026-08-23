@@ -23,4 +23,3 @@ enum ServerPortOperator {
     throw ArgumentError('Unknown ServerPortOperator value: $value');
   }
 }
-

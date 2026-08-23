@@ -14,19 +14,20 @@ class AppServiceEnvironmentPrivateEndpointConnectionArgs {
   final pulumi.Input<String>? kind;
   /// Name of the App Service Environment.
   final pulumi.Input<String> name;
+  /// Name of the private endpoint connection.
   final pulumi.Input<String>? privateEndpointConnectionName;
   /// The state of a private link connection
   final pulumi.Input<PrivateLinkConnectionState>? privateLinkServiceConnectionState;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [AppServiceEnvironmentPrivateEndpointConnectionArgs].
   /// [ipAddresses] Private IPAddresses mapped to the remote private endpoint
   /// [kind] Kind of resource.
   /// [name] Name of the App Service Environment.
-  /// [privateEndpointConnectionName] Optional.
+  /// [privateEndpointConnectionName] Name of the private endpoint connection.
   /// [privateLinkServiceConnectionState] The state of a private link connection
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const AppServiceEnvironmentPrivateEndpointConnectionArgs({
     this.ipAddresses,
     this.kind,
@@ -58,4 +59,3 @@ class AppServiceEnvironmentPrivateEndpointConnectionArgs {
     );
   }
 }
-

@@ -20,4 +20,3 @@ enum PrivateKeyAlgorithm {
     throw ArgumentError('Unknown PrivateKeyAlgorithm value: $value');
   }
 }
-

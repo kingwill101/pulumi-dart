@@ -127,6 +127,49 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_rdseventsubscription" "rdsEventSubscription" {
+///   location = "zw"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "thfrxqrzoqkdimx"
+///     aws_account_id = "zfsrgkfzsvgfonnvm"
+///     aws_properties = {
+///       enabled           = true
+///       event_categories  = ["lvuizykyfm"]
+///       sns_topic_arn     = "bztzoygofaokcwvheylcjtyhzumi"
+///       source_ids        = ["yhyohxasdyzulieniumz"]
+///       source_type       = "tvb"
+///       subscription_name = "we"
+///       tags = [{
+///         "key"   = "msbxnlvpqauwxmkadft"
+///         "value" = "mfwztutpnzzxe"
+///       }]
+///     }
+///     aws_region        = "sxpprlqqhjuob"
+///     aws_source_schema = "ymnxhmzxhihjztmgswvngnhiuzw"
+///     aws_tags = {
+///       "key3613" = "dmf"
+///     }
+///     public_cloud_connectors_resource_id = "iyeipvkxsknmro"
+///     public_cloud_resource_name          = "shpjwd"
+///   }
+///   resource_group_name = "rgrdsEventSubscription"
+///   tags = {
+///     "key9661" = "yqugcfnhgotantrltcjoz"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -137,8 +180,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.RdsEventSubscriptionArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RdsEventSubscriptionPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsRdsEventSubscriptionPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

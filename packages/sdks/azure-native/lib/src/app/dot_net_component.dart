@@ -72,6 +72,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_dotnetcomponent" "dotNetComponent" {
+///   component_type = "AspireDashboard"
+///   configurations {
+///     property_name = "dashboard-theme"
+///     value         = "dark"
+///   }
+///   environment_name    = "myenvironment"
+///   name                = "mydotnetcomponent"
+///   resource_group_name = "examplerg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +103,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.DotNetComponent;
 /// import com.pulumi.azurenative.app.DotNetComponentArgs;
 /// import com.pulumi.azurenative.app.inputs.DotNetComponentConfigurationPropertyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -235,6 +257,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_dotnetcomponent" "dotNetComponent" {
+///   component_type = "AspireDashboard"
+///   configurations {
+///     property_name = "dashboard-theme"
+///     value         = "dark"
+///   }
+///   environment_name    = "myenvironment"
+///   name                = "mydotnetcomponent"
+///   resource_group_name = "examplerg"
+///   service_binds {
+///     name       = "yellowcat"
+///     service_id = "/subscriptions/8efdecc5-919e-44eb-b179-915dca89ebf9/resourceGroups/examplerg/providers/Microsoft.App/managedEnvironments/myenvironment/dotNetComponents/yellowcat"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -245,8 +293,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.DotNetComponentArgs;
 /// import com.pulumi.azurenative.app.inputs.DotNetComponentConfigurationPropertyArgs;
 /// import com.pulumi.azurenative.app.inputs.DotNetComponentServiceBindArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

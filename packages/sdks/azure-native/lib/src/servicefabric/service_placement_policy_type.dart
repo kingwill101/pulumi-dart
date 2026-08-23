@@ -1,10 +1,10 @@
 /// The type of placement policy for a service fabric service. Following are the possible values.
 enum ServicePlacementPolicyType {
-  invalidDomain("InvalidDomain"),
-  requiredDomain("RequiredDomain"),
-  preferredPrimaryDomain("PreferredPrimaryDomain"),
-  requiredDomainDistribution("RequiredDomainDistribution"),
-  nonPartiallyPlaceService("NonPartiallyPlaceService");
+  valueInvalidDomain("InvalidDomain"),
+  valueRequiredDomain("RequiredDomain"),
+  valuePreferredPrimaryDomain("PreferredPrimaryDomain"),
+  valueRequiredDomainDistribution("RequiredDomainDistribution"),
+  valueNonPartiallyPlaceService("NonPartiallyPlaceService");
 
   const ServicePlacementPolicyType(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum ServicePlacementPolicyType {
     throw ArgumentError('Unknown ServicePlacementPolicyType value: $value');
   }
 }
-

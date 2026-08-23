@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -105,6 +105,40 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_managednetworkfabric_networkfabriccontroller" "networkFabricController" {
+///   annotation = "annotation"
+///   infrastructure_express_route_connections {
+///     express_route_authorization_key = "1234ABCD-0A1B-1234-5678-123456ABCDEF"
+///     express_route_circuit_id        = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName"
+///   }
+///   ipv4_address_space                     = "172.253.0.0/19"
+///   ipv6_address_space                     = "::/60"
+///   is_workload_management_network_enabled = "True"
+///   location                               = "eastus"
+///   managed_resource_group_configuration = {
+///     location = "eastus"
+///     name     = "managedResourceGroupName"
+///   }
+///   network_fabric_controller_name = "example-networkController"
+///   nfc_sku                        = "Standard"
+///   resource_group_name            = "example-rg"
+///   workload_express_route_connections {
+///     express_route_authorization_key = "xxxxx"
+///     express_route_circuit_id        = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +149,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.managednetworkfabric.NetworkFabricControllerArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.ExpressRouteConnectionInformationArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.ManagedResourceGroupConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

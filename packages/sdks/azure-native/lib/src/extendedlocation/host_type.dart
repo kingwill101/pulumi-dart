@@ -1,6 +1,6 @@
 /// Type of host the Custom Locations is referencing (Kubernetes, etc...).
 enum HostType {
-  valueKubernetes("Kubernetes");
+  kubernetes("Kubernetes");
 
   const HostType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum HostType {
     throw ArgumentError('Unknown HostType value: $value');
   }
 }
-

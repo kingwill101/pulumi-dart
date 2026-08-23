@@ -1,10 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'subnet_response.dart';
+import 'subnet_response_v2.dart';
 import 'virtual_network_appliance_args.dart';
 
 /// A virtual network appliance in a resource group.
 ///
 /// Uses Azure REST API version 2025-05-01.
+///
+/// Other available API versions: 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -25,7 +27,7 @@ import 'virtual_network_appliance_args.dart';
 ///         ResourceGroupName = "rg1",
 ///         Subnet = new AzureNative.Network.Inputs.SubnetArgs
 ///         {
-///             Id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/rg1-vnet/subnets/default",
+///             Id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/rg1-vnet/subnets/default",
 ///         },
 ///         VirtualNetworkApplianceName = "test-vna",
 ///     });
@@ -50,7 +52,7 @@ import 'virtual_network_appliance_args.dart';
 /// 			Location:          pulumi.String("eastus"),
 /// 			ResourceGroupName: pulumi.String("rg1"),
 /// 			Subnet: &network.SubnetTypeArgs{
-/// 				Id: pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/rg1-vnet/subnets/default"),
+/// 				Id: pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/rg1-vnet/subnets/default"),
 /// 			},
 /// 			VirtualNetworkApplianceName: pulumi.String("test-vna"),
 /// 		})
@@ -59,6 +61,27 @@ import 'virtual_network_appliance_args.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_virtualnetworkappliance" "virtualNetworkAppliance" {
+///   bandwidth_in_gbps   = "100"
+///   location            = "eastus"
+///   resource_group_name = "rg1"
+///   subnet = {
+///     id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/rg1-vnet/subnets/default"
+///   }
+///   virtual_network_appliance_name = "test-vna"
 /// }
 ///
 /// ```
@@ -72,8 +95,8 @@ import 'virtual_network_appliance_args.dart';
 /// import com.pulumi.azurenative.network.VirtualNetworkAppliance;
 /// import com.pulumi.azurenative.network.VirtualNetworkApplianceArgs;
 /// import com.pulumi.azurenative.network.inputs.SubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -90,7 +113,7 @@ import 'virtual_network_appliance_args.dart';
 ///             .location("eastus")
 ///             .resourceGroupName("rg1")
 ///             .subnet(SubnetArgs.builder()
-///                 .id("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/rg1-vnet/subnets/default")
+///                 .id("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/rg1-vnet/subnets/default")
 ///                 .build())
 ///             .virtualNetworkApplianceName("test-vna")
 ///             .build());
@@ -109,7 +132,7 @@ import 'virtual_network_appliance_args.dart';
 ///     location: "eastus",
 ///     resourceGroupName: "rg1",
 ///     subnet: {
-///         id: "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/rg1-vnet/subnets/default",
+///         id: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/rg1-vnet/subnets/default",
 ///     },
 ///     virtualNetworkApplianceName: "test-vna",
 /// });
@@ -125,7 +148,7 @@ import 'virtual_network_appliance_args.dart';
 ///     location="eastus",
 ///     resource_group_name="rg1",
 ///     subnet={
-///         "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/rg1-vnet/subnets/default",
+///         "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/rg1-vnet/subnets/default",
 ///     },
 ///     virtual_network_appliance_name="test-vna")
 ///
@@ -140,7 +163,7 @@ import 'virtual_network_appliance_args.dart';
 ///       location: eastus
 ///       resourceGroupName: rg1
 ///       subnet:
-///         id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/rg1-vnet/subnets/default
+///         id: /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/rg1-vnet/subnets/default
 ///       virtualNetworkApplianceName: test-vna
 ///
 /// ```
@@ -173,7 +196,7 @@ class VirtualNetworkAppliance extends pulumi.CustomResource {
   /// The resource GUID property of the virtual network appliance resource.
   late final pulumi.Output<String> resourceGuid;
   /// The reference to the subnet resource.
-  late final pulumi.Output<SubnetResponse?> subnet;
+  late final pulumi.Output<SubnetResponseV2?> subnet;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Resource type.
@@ -201,7 +224,7 @@ class VirtualNetworkAppliance extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
-    subnet = registerOutput<SubnetResponse?>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subnet = registerOutput<SubnetResponseV2?>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetResponseV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

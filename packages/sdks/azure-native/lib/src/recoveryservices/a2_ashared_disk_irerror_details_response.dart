@@ -49,4 +49,3 @@ class A2ASharedDiskIRErrorDetailsResponse {
     );
   }
 }
-

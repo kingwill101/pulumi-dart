@@ -1,6 +1,6 @@
 enum BlobEventTypes {
-  valueMicrosoftStorageBlobCreated("Microsoft.Storage.BlobCreated"),
-  valueMicrosoftStorageBlobDeleted("Microsoft.Storage.BlobDeleted");
+  microsoftStorageBlobCreated("Microsoft.Storage.BlobCreated"),
+  microsoftStorageBlobDeleted("Microsoft.Storage.BlobDeleted");
 
   const BlobEventTypes(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum BlobEventTypes {
     throw ArgumentError('Unknown BlobEventTypes value: $value');
   }
 }
-

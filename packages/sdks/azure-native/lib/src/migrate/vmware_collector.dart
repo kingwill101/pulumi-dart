@@ -81,6 +81,36 @@ import 'vmware_collector_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_vmwarecollector" "vMwareCollector" {
+///   e_tag        = "\"01003d32-0000-0d00-0000-5d74d2e50000\""
+///   project_name = "abgoyalWEselfhostb72bproject"
+///   properties = {
+///     agent_properties = {
+///       spn_details = {
+///         application_id = "fc717575-8173-4b21-92a5-658b655e613e"
+///         audience       = "https://72f988bf-86f1-41af-91ab-2d7cd011db47/PortalvCenterbc2fagentauthaadapp"
+///         authority      = "https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47"
+///         object_id      = "29d94f38-db94-4980-aec0-0cfd55ab1cd0"
+///         tenant_id      = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+///       }
+///     }
+///     discovery_site_id = "/subscriptions/6393a73f-8d55-47ef-b6dd-179b3e0c7910/resourceGroups/abgoyal-westEurope/providers/Microsoft.OffAzure/VMwareSites/PortalvCenterbc2fsite"
+///   }
+///   resource_group_name    = "abgoyal-westEurope"
+///   vm_ware_collector_name = "PortalvCenterbc2fcollector"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +122,8 @@ import 'vmware_collector_args.dart';
 /// import com.pulumi.azurenative.migrate.inputs.CollectorPropertiesArgs;
 /// import com.pulumi.azurenative.migrate.inputs.CollectorAgentPropertiesArgs;
 /// import com.pulumi.azurenative.migrate.inputs.CollectorBodyAgentSpnPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -15,4 +15,3 @@ enum VNetSolutionType {
     throw ArgumentError('Unknown VNetSolutionType value: $value');
   }
 }
-

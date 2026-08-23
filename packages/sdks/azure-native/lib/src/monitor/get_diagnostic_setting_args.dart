@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDiagnosticSettingArgs {
   /// The name of the diagnostic setting.
   final pulumi.Input<String> name;
-  /// The identifier of the resource.
+  /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
   /// Creates a new [GetDiagnosticSettingArgs].
   /// [name] The name of the diagnostic setting.
-  /// [resourceUri] The identifier of the resource.
+  /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   const GetDiagnosticSettingArgs({
     required this.name,
     required this.resourceUri,
@@ -34,4 +34,3 @@ class GetDiagnosticSettingArgs {
     );
   }
 }
-

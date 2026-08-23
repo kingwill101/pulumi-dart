@@ -1,6 +1,6 @@
 /// Describes what tool created this Application Insights component. Customers using this API should set this to the default 'rest'.
 enum RequestSource {
-  valueRest("rest");
+  rest("rest");
 
   const RequestSource(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum RequestSource {
     throw ArgumentError('Unknown RequestSource value: $value');
   }
 }
-

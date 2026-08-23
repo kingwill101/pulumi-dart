@@ -1,19 +1,19 @@
 /// SCM type.
 enum ScmType {
-  valueNone("None"),
-  valueDropbox("Dropbox"),
-  valueTfs("Tfs"),
-  valueLocalGit("LocalGit"),
-  valueGitHub("GitHub"),
-  valueCodePlexGit("CodePlexGit"),
-  valueCodePlexHg("CodePlexHg"),
-  valueBitbucketGit("BitbucketGit"),
-  valueBitbucketHg("BitbucketHg"),
-  valueExternalGit("ExternalGit"),
-  valueExternalHg("ExternalHg"),
-  valueOneDrive("OneDrive"),
-  valueVSO("VSO"),
-  valueVSTSRM("VSTSRM");
+  none("None"),
+  dropbox("Dropbox"),
+  tfs("Tfs"),
+  localGit("LocalGit"),
+  gitHub("GitHub"),
+  codePlexGit("CodePlexGit"),
+  codePlexHg("CodePlexHg"),
+  bitbucketGit("BitbucketGit"),
+  bitbucketHg("BitbucketHg"),
+  externalGit("ExternalGit"),
+  externalHg("ExternalHg"),
+  oneDrive("OneDrive"),
+  vSO("VSO"),
+  vSTSRM("VSTSRM");
 
   const ScmType(this.wireValue);
   final String wireValue;
@@ -27,4 +27,3 @@ enum ScmType {
     throw ArgumentError('Unknown ScmType value: $value');
   }
 }
-

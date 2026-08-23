@@ -15,4 +15,3 @@ enum ClusterUpgradeMode {
     throw ArgumentError('Unknown ClusterUpgradeMode value: $value');
   }
 }
-

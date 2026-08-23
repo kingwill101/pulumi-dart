@@ -90,6 +90,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_orbital_groundstation" "groundStation" {
+///   altitude_meters = 1500.83
+///   capabilities    = ["Communication"]
+///   city            = "redmond"
+///   global_communications_site = {
+///     id = "/subscriptions/c1be1141-a7c9-4aac-9608-3c2e2f1152c3/providers/Microsoft.Orbital/globalCommunicationsSites/contoso-Vernon"
+///   }
+///   ground_station_name = "westus_gs1"
+///   latitude_degrees    = -122.122
+///   location            = "westus"
+///   longitude_degrees   = 47.674
+///   provider_name       = "Microsoft"
+///   resource_group_name = "rg1"
+///   tags = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +129,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.orbital.GroundStation;
 /// import com.pulumi.azurenative.orbital.GroundStationArgs;
 /// import com.pulumi.azurenative.orbital.inputs.GroundStationsPropertiesGlobalCommunicationsSiteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

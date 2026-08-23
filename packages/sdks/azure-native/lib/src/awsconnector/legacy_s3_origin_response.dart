@@ -31,4 +31,3 @@ class LegacyS3OriginResponse {
     );
   }
 }
-

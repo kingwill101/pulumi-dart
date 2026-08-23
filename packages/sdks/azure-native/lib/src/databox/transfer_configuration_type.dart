@@ -15,4 +15,3 @@ enum TransferConfigurationType {
     throw ArgumentError('Unknown TransferConfigurationType value: $value');
   }
 }
-

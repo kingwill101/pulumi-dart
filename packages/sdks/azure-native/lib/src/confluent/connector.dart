@@ -9,7 +9,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01.
 ///
-/// Other available API versions: 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-07-17-preview, 2025-08-18-preview, 2026-05-01-preview, 2026-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -44,7 +44,7 @@ import 'system_data_response.dart';
 ///         OrganizationName = "myOrganization",
 ///         PartnerConnectorInfo = new AzureNative.Confluent.Inputs.KafkaAzureBlobStorageSinkConnectorInfoArgs
 ///         {
-///             ApiKey = "xxxxxxx",
+///             ApiKey = "*******",
 ///             ApiSecret = "*******",
 ///             AuthType = AzureNative.Confluent.AuthType.KAFKA_API_KEY,
 ///             FlushSize = "1000",
@@ -94,7 +94,7 @@ import 'system_data_response.dart';
 /// 			EnvironmentId:    pulumi.String("env-12132"),
 /// 			OrganizationName: pulumi.String("myOrganization"),
 /// 			PartnerConnectorInfo: &confluent.KafkaAzureBlobStorageSinkConnectorInfoArgs{
-/// 				ApiKey:               pulumi.String("xxxxxxx"),
+/// 				ApiKey:               pulumi.String("*******"),
 /// 				ApiSecret:            pulumi.String("*******"),
 /// 				AuthType:             pulumi.String(confluent.AuthType_KAFKA_API_KEY),
 /// 				FlushSize:            pulumi.String("1000"),
@@ -119,6 +119,49 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_confluent_connector" "connector" {
+///   cluster_id = "dlz-f3a90de"
+///   connector_basic_info = {
+///     connector_class = "AZUREBLOBSTORAGESINK"
+///     connector_name  = "connector-1"
+///     connector_type  = "SINK"
+///   }
+///   connector_name = "connector-1"
+///   connector_service_type_info = {
+///     "connectorServiceType" = "AzureBlobStorageSinkConnector"
+///     "storageAccountKey"    = "*******"
+///     "storageAccountName"   = "stcfaccount-1"
+///     "storageContainerName" = "continer-1"
+///   }
+///   environment_id    = "env-12132"
+///   organization_name = "myOrganization"
+///   partner_connector_info = {
+///     "apiKey"               = "*******"
+///     "apiSecret"            = "*******"
+///     "authType"             = "KAFKA_API_KEY"
+///     "flushSize"            = "1000"
+///     "inputFormat"          = "JSON"
+///     "maxTasks"             = "2"
+///     "outputFormat"         = "JSON"
+///     "partnerConnectorType" = "KafkaAzureBlobStorageSink"
+///     "timeInterval"         = "DAILY"
+///     "topics"               = ["topic-1"]
+///     "topicsDir"            = "topicsDir"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +171,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.confluent.Connector;
 /// import com.pulumi.azurenative.confluent.ConnectorArgs;
 /// import com.pulumi.azurenative.confluent.inputs.ConnectorInfoBaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -158,7 +201,7 @@ import 'system_data_response.dart';
 ///             .environmentId("env-12132")
 ///             .organizationName("myOrganization")
 ///             .partnerConnectorInfo(KafkaAzureBlobStorageSinkConnectorInfoArgs.builder()
-///                 .apiKey("xxxxxxx")
+///                 .apiKey("*******")
 ///                 .apiSecret("*******")
 ///                 .authType("KAFKA_API_KEY")
 ///                 .flushSize("1000")
@@ -199,7 +242,7 @@ import 'system_data_response.dart';
 ///     environmentId: "env-12132",
 ///     organizationName: "myOrganization",
 ///     partnerConnectorInfo: {
-///         apiKey: "xxxxxxx",
+///         apiKey: "*******",
 ///         apiSecret: "*******",
 ///         authType: azure_native.confluent.AuthType.KAFKA_API_KEY,
 ///         flushSize: "1000",
@@ -237,7 +280,7 @@ import 'system_data_response.dart';
 ///     environment_id="env-12132",
 ///     organization_name="myOrganization",
 ///     partner_connector_info={
-///         "api_key": "xxxxxxx",
+///         "api_key": "*******",
 ///         "api_secret": "*******",
 ///         "auth_type": azure_native.confluent.AuthType.KAFK_A_AP_I_KEY,
 ///         "flush_size": "1000",
@@ -272,7 +315,7 @@ import 'system_data_response.dart';
 ///       environmentId: env-12132
 ///       organizationName: myOrganization
 ///       partnerConnectorInfo:
-///         apiKey: xxxxxxx
+///         apiKey: '*******'
 ///         apiSecret: '*******'
 ///         authType: KAFKA_API_KEY
 ///         flushSize: '1000'

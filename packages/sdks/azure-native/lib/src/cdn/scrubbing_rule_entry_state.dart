@@ -15,4 +15,3 @@ enum ScrubbingRuleEntryState {
     throw ArgumentError('Unknown ScrubbingRuleEntryState value: $value');
   }
 }
-

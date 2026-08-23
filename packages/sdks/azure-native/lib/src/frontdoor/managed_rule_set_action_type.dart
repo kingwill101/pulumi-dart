@@ -1,8 +1,8 @@
 /// Defines the rule set action.
 enum ManagedRuleSetActionType {
-  valueBlock("Block"),
-  valueLog("Log"),
-  valueRedirect("Redirect");
+  block("Block"),
+  log("Log"),
+  redirect("Redirect");
 
   const ManagedRuleSetActionType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum ManagedRuleSetActionType {
     throw ArgumentError('Unknown ManagedRuleSetActionType value: $value');
   }
 }
-

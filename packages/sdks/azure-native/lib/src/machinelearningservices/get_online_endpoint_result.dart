@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'managed_service_identity_response.dart';
-import 'online_endpoint_response.dart';
+import 'online_endpoint_properties_response.dart';
 import 'sku_response.dart';
 import 'system_data_response.dart';
 
@@ -20,7 +20,7 @@ class GetOnlineEndpointResult {
   /// The name of the resource
   final String name;
   /// [Required] Additional attributes of the entity.
-  final OnlineEndpointResponse onlineEndpointProperties;
+  final OnlineEndpointPropertiesResponse properties;
   /// Sku details required for ARM contract for Autoscaling.
   final SkuResponse? sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -37,7 +37,7 @@ class GetOnlineEndpointResult {
   /// [kind] Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
   /// [location] The geo-location where the resource lives
   /// [name] The name of the resource
-  /// [onlineEndpointProperties] [Required] Additional attributes of the entity.
+  /// [properties] [Required] Additional attributes of the entity.
   /// [sku] Sku details required for ARM contract for Autoscaling.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
@@ -49,7 +49,7 @@ class GetOnlineEndpointResult {
     this.kind,
     required this.location,
     required this.name,
-    required this.onlineEndpointProperties,
+    required this.properties,
     this.sku,
     required this.systemData,
     this.tags,
@@ -64,7 +64,7 @@ class GetOnlineEndpointResult {
       'kind': ?kind,
       'location': location,
       'name': name,
-      'onlineEndpointProperties': onlineEndpointProperties.toMap(),
+      'properties': properties.toMap(),
       'sku': ?sku?.toMap(),
       'systemData': systemData.toMap(),
       'tags': ?tags,
@@ -80,7 +80,7 @@ class GetOnlineEndpointResult {
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      onlineEndpointProperties: OnlineEndpointResponse.fromMap((map['onlineEndpointProperties']! as Map).cast<String, dynamic>()),
+      properties: OnlineEndpointPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
@@ -88,4 +88,3 @@ class GetOnlineEndpointResult {
     );
   }
 }
-

@@ -19,4 +19,3 @@ enum FttAndRaidLevel {
     throw ArgumentError('Unknown FttAndRaidLevel value: $value');
   }
 }
-

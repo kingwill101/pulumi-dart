@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
 ///
-/// Other available API versions: 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -69,6 +69,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_akriconnector" "akriConnector" {
+///   akri_connector_template_name = "resource-name123"
+///   connector_name               = "resource-name123"
+///   extended_location = {
+///     name = "subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup123/providers/Microsoft.ExtendedLocation/customLocations/resource-name123"
+///     type = "CustomLocation"
+///   }
+///   instance_name       = "resource-name123"
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +100,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.AkriConnector;
 /// import com.pulumi.azurenative.iotoperations.AkriConnectorArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

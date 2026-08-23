@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -105,6 +105,41 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_localuser" "localUser" {
+///   account_name            = "sto2527"
+///   allow_acl_authorization = true
+///   group_id                = 2000
+///   has_ssh_password        = true
+///   home_directory          = "homedirectory"
+///   permission_scopes {
+///     permissions   = "rwd"
+///     resource_name = "share1"
+///     service       = "file"
+///   }
+///   permission_scopes {
+///     permissions   = "rw"
+///     resource_name = "share2"
+///     service       = "file"
+///   }
+///   resource_group_name = "res6977"
+///   ssh_authorized_keys {
+///     description = "key name"
+///     key         = "ssh-rsa keykeykeykeykey="
+///   }
+///   username = "user1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +150,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.storage.LocalUserArgs;
 /// import com.pulumi.azurenative.storage.inputs.PermissionScopeArgs;
 /// import com.pulumi.azurenative.storage.inputs.SshPublicKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -306,6 +341,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_localuser" "localUser" {
+///   account_name        = "sto2527"
+///   extended_groups     = [1001, 1005, 2005]
+///   is_nf_sv3_enabled   = true
+///   resource_group_name = "res6977"
+///   username            = "user1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -314,8 +368,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.storage.LocalUser;
 /// import com.pulumi.azurenative.storage.LocalUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -466,6 +520,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_localuser" "localUser" {
+///   account_name            = "sto2527"
+///   allow_acl_authorization = false
+///   extended_groups         = [1001, 1005, 2005]
+///   group_id                = 3000
+///   has_shared_key          = false
+///   has_ssh_key             = false
+///   has_ssh_password        = false
+///   home_directory          = "homedirectory2"
+///   is_nf_sv3_enabled       = true
+///   resource_group_name     = "res6977"
+///   username                = "user1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -474,8 +553,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.storage.LocalUser;
 /// import com.pulumi.azurenative.storage.LocalUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -40,7 +40,7 @@ class GetServiceResult {
   final String name;
   /// Network specific rules that determine how the Azure AI Search service may be reached.
   final NetworkRuleSetResponse? networkRuleSet;
-  /// The number of partitions in the search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
+  /// The number of partitions in the dedicated search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
   final int? partitionCount;
   /// The list of private endpoint connections to the Azure AI Search service.
   final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
@@ -48,9 +48,9 @@ class GetServiceResult {
   final String provisioningState;
   /// This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
   final String? publicNetworkAccess;
-  /// The number of replicas in the search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
+  /// The number of replicas in the dedicated search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
   final int? replicaCount;
-  /// Sets options that control the availability of semantic search. This configuration is only possible for certain Azure AI Search SKUs in certain locations.
+  /// Specifies the availability and billing plan for semantic search on the Azure AI Search service. This configuration is only available for certain pricing tiers in certain regions.
   final String? semanticSearch;
   /// The date and time the search service was last upgraded. This field will be null until the service gets upgraded for the first time.
   final String serviceUpgradedAt;
@@ -86,12 +86,12 @@ class GetServiceResult {
   /// [location] The geo-location where the resource lives
   /// [name] The name of the resource
   /// [networkRuleSet] Network specific rules that determine how the Azure AI Search service may be reached.
-  /// [partitionCount] The number of partitions in the search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
+  /// [partitionCount] The number of partitions in the dedicated search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
   /// [privateEndpointConnections] The list of private endpoint connections to the Azure AI Search service.
   /// [provisioningState] The state of the last provisioning operation performed on the search service. Provisioning is an intermediate state that occurs while service capacity is being established. After capacity is set up, provisioningState changes to either 'Succeeded' or 'Failed'. Client applications can poll provisioning status (the recommended polling interval is from 30 seconds to one minute) by using the Get Search Service operation to see when an operation is completed. If you are using the free service, this value tends to come back as 'Succeeded' directly in the call to Create search service. This is because the free service uses capacity that is already set up.
   /// [publicNetworkAccess] This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
-  /// [replicaCount] The number of replicas in the search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
-  /// [semanticSearch] Sets options that control the availability of semantic search. This configuration is only possible for certain Azure AI Search SKUs in certain locations.
+  /// [replicaCount] The number of replicas in the dedicated search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
+  /// [semanticSearch] Specifies the availability and billing plan for semantic search on the Azure AI Search service. This configuration is only available for certain pricing tiers in certain regions.
   /// [serviceUpgradedAt] The date and time the search service was last upgraded. This field will be null until the service gets upgraded for the first time.
   /// [sharedPrivateLinkResources] The list of shared private link resources managed by the Azure AI Search service.
   /// [sku] The SKU of the search service, which determines price tier and capacity limits. This property is required when creating a new search service.
@@ -201,4 +201,3 @@ class GetServiceResult {
     );
   }
 }
-

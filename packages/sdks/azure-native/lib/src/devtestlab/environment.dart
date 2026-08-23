@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_args.dart';
 import 'environment_deployment_properties_response.dart';
+import 'system_data_response.dart';
 
 /// An environment, which is essentially an ARM template deployment.
 ///
@@ -65,6 +66,28 @@ import 'environment_deployment_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devtestlab_environment" "environment" {
+///   deployment_properties = {
+///     arm_template_id = "/subscriptions/{subscriptionId}/resourceGroups/resourceGroupName/providers/Microsoft.DevTestLab/labs/{labName}/artifactSources/{artifactSourceName}/armTemplates/{armTemplateName}"
+///     parameters      = []
+///   }
+///   lab_name            = "{labName}"
+///   name                = "{environmentName}"
+///   resource_group_name = "resourceGroupName"
+///   user_name           = "@me"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +97,8 @@ import 'environment_deployment_properties_response.dart';
 /// import com.pulumi.azurenative.devtestlab.Environment;
 /// import com.pulumi.azurenative.devtestlab.EnvironmentArgs;
 /// import com.pulumi.azurenative.devtestlab.inputs.EnvironmentDeploymentPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -170,17 +193,19 @@ class Environment extends pulumi.CustomResource {
   late final pulumi.Output<String> createdByUser;
   /// The deployment properties of the environment.
   late final pulumi.Output<EnvironmentDeploymentPropertiesResponse?> deploymentProperties;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
-  /// The name of the resource.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
   /// The identifier of the resource group containing the environment's resources.
   late final pulumi.Output<String> resourceGroupId;
-  /// The tags of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
@@ -207,6 +232,7 @@ class Environment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     resourceGroupId = registerOutput<String>('resourceGroupId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');

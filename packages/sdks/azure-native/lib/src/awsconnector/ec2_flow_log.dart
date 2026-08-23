@@ -138,6 +138,59 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ec2flowlog" "ec2FlowLog" {
+///   location = "iheortzyczwfplyjuuqwhdtpscn"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "ilajcrcqxitnhyhorqitssmvsfwen"
+///     aws_account_id = "shsomlkgpjnxnonvrv"
+///     aws_properties = {
+///       deliver_cross_account_role  = "upu"
+///       deliver_logs_permission_arn = "sfhmarwniuptmkaegsplmsozsmc"
+///       destination_options = {
+///         file_format                = "parquet"
+///         hive_compatible_partitions = true
+///         per_hour_partition         = true
+///       }
+///       id                       = "idflwxdxpu"
+///       log_destination          = "ztqhcrirplxmgncvubutyzqefvd"
+///       log_destination_type     = "cloud-watch-logs"
+///       log_format               = "miqwrkvqyq"
+///       log_group_name           = "gptervjekilsbzqokcmrbumaie"
+///       max_aggregation_interval = 15
+///       resource_id              = "mokmavuqvq"
+///       resource_type            = "NetworkInterface"
+///       tags = [{
+///         "key"   = "hpdlgqvamjjtqreaoxergrowvu"
+///         "value" = "qdqsngozfinennzbilnzeemjzilpb"
+///       }]
+///       traffic_type = "ACCEPT"
+///     }
+///     aws_region        = "stazvnpsmrpkoxyyzngdkkuif"
+///     aws_source_schema = "pnjgqxqhnwhcs"
+///     aws_tags = {
+///       "key3000" = "acmzumzbkwgpabbmyshaigqlt"
+///     }
+///     public_cloud_connectors_resource_id = "djh"
+///     public_cloud_resource_name          = "ymv"
+///   }
+///   resource_group_name = "rgec2FlowLog"
+///   tags = {
+///     "key8783" = "hbgkwojrzrpoaac"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -149,8 +202,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2FlowLogPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2FlowLogPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.DestinationOptionsModelPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

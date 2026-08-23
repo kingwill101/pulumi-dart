@@ -21,4 +21,3 @@ enum ResourceProviderType {
     throw ArgumentError('Unknown ResourceProviderType value: $value');
   }
 }
-

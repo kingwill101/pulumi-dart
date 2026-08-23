@@ -17,4 +17,3 @@ enum SslMode {
     throw ArgumentError('Unknown SslMode value: $value');
   }
 }
-

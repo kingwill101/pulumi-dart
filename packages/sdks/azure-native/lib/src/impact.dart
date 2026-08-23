@@ -18,6 +18,7 @@ export 'impact/get_connector_args.dart';
 export 'impact/get_connector_result.dart';
 export 'impact/get_insight_args.dart';
 export 'impact/get_insight_result.dart';
+export 'impact/get_upload_service_upload_token_result.dart';
 export 'impact/get_workload_impact_args.dart';
 export 'impact/get_workload_impact_result.dart';
 export 'impact/impact_details.dart';

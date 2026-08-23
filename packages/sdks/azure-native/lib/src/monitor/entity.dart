@@ -234,6 +234,81 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_entity" "entity" {
+///   azure_monitor_workspace_name = "myWorkspace"
+///   entity_name                  = "entity1"
+///   health_model_name            = "myHealthModel"
+///   properties = {
+///     alerts = {
+///       degraded = {
+///         action_group_ids = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Insights/actionGroups/myactiongroup"]
+///         description      = "Alert description"
+///         severity         = "Sev4"
+///       }
+///       unhealthy = {
+///         action_group_ids = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Insights/actionGroups/myactiongroup"]
+///         description      = "Alert description"
+///         severity         = "Sev1"
+///       }
+///     }
+///     canvas_position = {
+///       x = 14
+///       y = 13
+///     }
+///     display_name     = "My entity"
+///     health_objective = 62
+///     icon = {
+///       custom_data = "rcitntvapruccrhtxmkqjphbxunkz"
+///       icon_name   = "Custom"
+///     }
+///     impact = "Standard"
+///     kind   = "User Flow"
+///     signals = {
+///       azure_log_analytics = {
+///         authentication_setting              = "B3P1X3e-FZtZ-4Ak-2VLHGQ-4m4-05DE-XNW5zW3P-46XY-DC3SSX"
+///         log_analytics_workspace_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.OperationalInsights/workspaces/myworkspace"
+///         signal_assignments = [{
+///           "signalDefinitions" = ["B3P1X3e-FZtZ-4Ak-2VLHGQ-4m4-05DE-XNW5zW3P-46XY-DC3SSX"]
+///         }]
+///       }
+///       azure_monitor_workspace = {
+///         authentication_setting              = "B3P1X3e-FZtZ-4Ak-2VLHGQ-4m4-05DE-XNW5zW3P-46XY-DC3SSX"
+///         azure_monitor_workspace_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Monitor/accounts/myworkspace"
+///         signal_assignments = [{
+///           "signalDefinitions" = ["sigdef2"]
+///           }, {
+///           "signalDefinitions" = ["sigdef3"]
+///         }]
+///       }
+///       azure_resource = {
+///         authentication_setting = "B3P1X3e-FZtZ-4Ak-2VLHGQ-4m4-05DE-XNW5zW3P-46XY-DC3SSX"
+///         azure_resource_id      = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1"
+///         signal_assignments = [{
+///           "signalDefinitions" = ["sigdef1"]
+///         }]
+///       }
+///       dependencies = {
+///         aggregation_type = "WorstOf"
+///       }
+///     }
+///     tags = {
+///       "key1376" = "ixfvzsfnpvkkbrce"
+///     }
+///   }
+///   resource_group_name = "rgopenapi"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -252,8 +327,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.inputs.AzureMonitorWorkspaceSignalGroupArgs;
 /// import com.pulumi.azurenative.monitor.inputs.AzureResourceSignalGroupArgs;
 /// import com.pulumi.azurenative.monitor.inputs.DependenciesSignalGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -429,11 +504,11 @@ import 'system_data_response.dart';
 ///             },
 ///         },
 ///         "canvas_position": {
-///             "x": 14,
-///             "y": 13,
+///             "x": float(14),
+///             "y": float(13),
 ///         },
 ///         "display_name": "My entity",
-///         "health_objective": 62,
+///         "health_objective": float(62),
 ///         "icon": {
 ///             "custom_data": "rcitntvapruccrhtxmkqjphbxunkz",
 ///             "icon_name": "Custom",

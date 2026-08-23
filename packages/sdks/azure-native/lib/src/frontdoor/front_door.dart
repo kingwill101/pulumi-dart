@@ -4,9 +4,9 @@ import 'front_door_args.dart';
 
 /// Front Door represents a collection of backend endpoints to route traffic to along with rules that specify how traffic is sent there.
 ///
-/// Uses Azure REST API version 2021-06-01.
+/// Uses Azure REST API version 2025-11-01.
 ///
-/// Other available API versions: 2019-04-01, 2019-05-01, 2020-01-01, 2020-04-01, 2020-05-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2018-08-01, 2019-04-01, 2019-05-01, 2020-01-01, 2020-04-01, 2020-05-01, 2021-06-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -309,6 +309,117 @@ import 'front_door_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_frontdoor_frontdoor" "frontDoor" {
+///   backend_pools {
+///     backends {
+///       address    = "w3.contoso.com"
+///       http_port  = 80
+///       https_port = 443
+///       priority   = 2
+///       weight     = 1
+///     }
+///     backends {
+///       address                       = "contoso.com.website-us-west-2.othercloud.net"
+///       http_port                     = 80
+///       https_port                    = 443
+///       priority                      = 1
+///       private_link_approval_message = "Please approve the connection request for this Private Link"
+///       private_link_location         = "eastus"
+///       private_link_resource_id      = "/subscriptions/subid/resourcegroups/rg1/providers/Microsoft.Network/privateLinkServices/pls1"
+///       weight                        = 2
+///     }
+///     backends {
+///       address                       = "10.0.1.5"
+///       http_port                     = 80
+///       https_port                    = 443
+///       priority                      = 1
+///       private_link_alias            = "APPSERVER.d84e61f0-0870-4d24-9746-7438fa0019d1.westus2.azure.privatelinkservice"
+///       private_link_approval_message = "Please approve this request to connect to the Private Link"
+///       weight                        = 1
+///     }
+///     health_probe_settings = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/healthProbeSettings/healthProbeSettings1"
+///     }
+///     load_balancing_settings = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/loadBalancingSettings/loadBalancingSettings1"
+///     }
+///     name = "backendPool1"
+///   }
+///   backend_pools_settings = {
+///     enforce_certificate_name_check = "Enabled"
+///     send_recv_timeout_seconds      = 60
+///   }
+///   enabled_state   = "Enabled"
+///   front_door_name = "frontDoor1"
+///   frontend_endpoints {
+///     host_name                      = "www.contoso.com"
+///     name                           = "frontendEndpoint1"
+///     session_affinity_enabled_state = "Enabled"
+///     session_affinity_ttl_seconds   = 60
+///     web_application_firewall_policy_link = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoorWebApplicationFirewallPolicies/policy1"
+///     }
+///   }
+///   frontend_endpoints {
+///     host_name = "frontDoor1.azurefd.net"
+///     name      = "default"
+///   }
+///   health_probe_settings {
+///     enabled_state       = "Enabled"
+///     health_probe_method = "HEAD"
+///     interval_in_seconds = 120
+///     name                = "healthProbeSettings1"
+///     path                = "/"
+///     protocol            = "Http"
+///   }
+///   load_balancing_settings {
+///     name                        = "loadBalancingSettings1"
+///     sample_size                 = 4
+///     successful_samples_required = 2
+///   }
+///   location            = "westus"
+///   resource_group_name = "rg1"
+///   routing_rules {
+///     accepted_protocols = ["Http"]
+///     enabled_state      = "Enabled"
+///     frontend_endpoints {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/frontendEndpoints/frontendEndpoint1"
+///     }
+///     frontend_endpoints {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/frontendEndpoints/default"
+///     }
+///     name              = "routingRule1"
+///     patterns_to_match = ["/*"]
+///     route_configuration = {
+///       "backendPool" = {
+///         "id" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/backendPools/backendPool1"
+///       }
+///       "odataType" = "#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration"
+///     }
+///     rules_engine = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/rulesEngines/rulesEngine1"
+///     }
+///     web_application_firewall_policy_link = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoorWebApplicationFirewallPolicies/policy1"
+///     }
+///   }
+///   tags = {
+///     "tag1" = "value1"
+///     "tag2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -326,8 +437,8 @@ import 'front_door_args.dart';
 /// import com.pulumi.azurenative.frontdoor.inputs.LoadBalancingSettingsModelArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.RoutingRuleArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

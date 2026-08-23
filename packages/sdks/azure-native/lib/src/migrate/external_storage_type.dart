@@ -18,4 +18,3 @@ enum ExternalStorageType {
     throw ArgumentError('Unknown ExternalStorageType value: $value');
   }
 }
-

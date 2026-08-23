@@ -1,8 +1,8 @@
 /// The event streaming service type
 enum EventStreamingType {
-  valueNone("None"),
-  valueManaged("Managed"),
-  valueAzure("Azure");
+  none("None"),
+  managed("Managed"),
+  azure("Azure");
 
   const EventStreamingType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum EventStreamingType {
     throw ArgumentError('Unknown EventStreamingType value: $value');
   }
 }
-

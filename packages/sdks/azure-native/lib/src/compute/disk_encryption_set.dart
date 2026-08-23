@@ -9,7 +9,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-03-02. In version 2.x of the Azure Native provider, it used API version 2022-07-02.
 ///
-/// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02, 2026-03-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -75,6 +75,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_diskencryptionset" "diskEncryptionSet" {
+///   active_key = {
+///     key_url = "https://myvaultdifferentsub.vault-int.azure-int.net/keys/{key}"
+///   }
+///   disk_encryption_set_name = "myDiskEncryptionSet"
+///   encryption_type          = "EncryptionAtRestWithCustomerKey"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location            = "West US"
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +109,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.DiskEncryptionSetArgs;
 /// import com.pulumi.azurenative.compute.inputs.KeyForDiskEncryptionSetArgs;
 /// import com.pulumi.azurenative.compute.inputs.EncryptionSetIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -239,6 +263,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_diskencryptionset" "diskEncryptionSet" {
+///   active_key = {
+///     key_url = "https://myvmvault.vault-int.azure-int.net/keys/{key}"
+///     source_vault = {
+///       id = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myVMVault"
+///     }
+///   }
+///   disk_encryption_set_name = "myDiskEncryptionSet"
+///   encryption_type          = "EncryptionAtRestWithCustomerKey"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location            = "West US"
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -250,8 +301,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.KeyForDiskEncryptionSetArgs;
 /// import com.pulumi.azurenative.compute.inputs.SourceVaultArgs;
 /// import com.pulumi.azurenative.compute.inputs.EncryptionSetIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

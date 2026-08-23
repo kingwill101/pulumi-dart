@@ -26,4 +26,3 @@ enum RRType {
     throw ArgumentError('Unknown RRType value: $value');
   }
 }
-

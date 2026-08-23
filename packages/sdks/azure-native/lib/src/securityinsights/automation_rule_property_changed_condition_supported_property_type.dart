@@ -15,4 +15,3 @@ enum AutomationRulePropertyChangedConditionSupportedPropertyType {
     throw ArgumentError('Unknown AutomationRulePropertyChangedConditionSupportedPropertyType value: $value');
   }
 }
-

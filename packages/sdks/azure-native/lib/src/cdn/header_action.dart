@@ -16,4 +16,3 @@ enum HeaderAction {
     throw ArgumentError('Unknown HeaderAction value: $value');
   }
 }
-

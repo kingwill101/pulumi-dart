@@ -16,4 +16,3 @@ enum ResourceValidation {
     throw ArgumentError('Unknown ResourceValidation value: $value');
   }
 }
-

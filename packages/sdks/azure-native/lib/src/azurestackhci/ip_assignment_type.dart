@@ -15,4 +15,3 @@ enum IpAssignmentType {
     throw ArgumentError('Unknown IpAssignmentType value: $value');
   }
 }
-

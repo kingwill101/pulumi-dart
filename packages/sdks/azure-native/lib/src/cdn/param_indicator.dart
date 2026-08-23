@@ -16,4 +16,3 @@ enum ParamIndicator {
     throw ArgumentError('Unknown ParamIndicator value: $value');
   }
 }
-

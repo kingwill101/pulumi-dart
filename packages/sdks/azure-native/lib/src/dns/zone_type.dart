@@ -15,4 +15,3 @@ enum ZoneType {
     throw ArgumentError('Unknown ZoneType value: $value');
   }
 }
-

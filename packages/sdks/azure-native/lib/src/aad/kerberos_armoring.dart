@@ -15,4 +15,3 @@ enum KerberosArmoring {
     throw ArgumentError('Unknown KerberosArmoring value: $value');
   }
 }
-

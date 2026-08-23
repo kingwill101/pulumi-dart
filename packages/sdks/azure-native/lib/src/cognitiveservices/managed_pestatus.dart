@@ -1,3 +1,4 @@
+/// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 enum ManagedPEStatus {
   valueInactive("Inactive"),
   valueActive("Active"),
@@ -15,4 +16,3 @@ enum ManagedPEStatus {
     throw ArgumentError('Unknown ManagedPEStatus value: $value');
   }
 }
-

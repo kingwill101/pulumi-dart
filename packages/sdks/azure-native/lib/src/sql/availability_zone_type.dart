@@ -17,4 +17,3 @@ enum AvailabilityZoneType {
     throw ArgumentError('Unknown AvailabilityZoneType value: $value');
   }
 }
-

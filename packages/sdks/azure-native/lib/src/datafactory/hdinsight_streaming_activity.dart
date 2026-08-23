@@ -15,7 +15,7 @@ class HDInsightStreamingActivity {
   /// Command line environment values.
   final pulumi.Input<List<dynamic>>? commandEnvironment;
   /// Allows user to specify defines for streaming job request.
-  final pulumi.Input<Map<String, dynamic>>? defines;
+  final pulumi.Input<dynamic>? defines;
   /// Activity depends on condition.
   final pulumi.Input<List<ActivityDependency>>? dependsOn;
   /// Activity description.
@@ -129,7 +129,7 @@ class HDInsightStreamingActivity {
       arguments: (() { final guardedValue = map['arguments']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       combiner: (() { final guardedValue = map['combiner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       commandEnvironment: (() { final guardedValue = map['commandEnvironment']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
-      defines: (() { final guardedValue = map['defines']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      defines: (() { final guardedValue = map['defines']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependency>(guardedValue, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fileLinkedService: (() { final guardedValue = map['fileLinkedService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -150,4 +150,3 @@ class HDInsightStreamingActivity {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum Layer4Protocol {
     throw ArgumentError('Unknown Layer4Protocol value: $value');
   }
 }
-

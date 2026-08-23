@@ -1,11 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_sync_rule_args.dart';
-import 'resource_sync_rule_properties_response_selector.dart';
+import 'resource_sync_rule_properties_selector_response.dart';
 import 'system_data_response.dart';
 
 /// Resource Sync Rules definition.
 ///
 /// Uses Azure REST API version 2021-08-31-preview. In version 2.x of the Azure Native provider, it used API version 2021-08-31-preview.
+///
+/// Other available API versions: 2024-09-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native extendedlocation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -73,6 +75,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_extendedlocation_resourcesyncrule" "resourceSyncRule" {
+///   child_resource_name = "resourceSyncRule01"
+///   location            = "West US"
+///   priority            = 999
+///   resource_group_name = "testresourcegroup"
+///   resource_name       = "customLocation01"
+///   selector = {
+///     match_labels = {
+///       "key1" = "value1"
+///     }
+///   }
+///   target_resource_group = "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/testresourcegroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +109,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.extendedlocation.ResourceSyncRule;
 /// import com.pulumi.azurenative.extendedlocation.ResourceSyncRuleArgs;
 /// import com.pulumi.azurenative.extendedlocation.inputs.ResourceSyncRulePropertiesSelectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -190,8 +217,8 @@ class ResourceSyncRule extends pulumi.CustomResource {
   /// Provisioning State for the Resource Sync Rule.
   late final pulumi.Output<String> provisioningState;
   /// A label selector is composed of two parts, matchLabels and matchExpressions. The first part, matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is 'key', the operator is 'In', and the values array contains only 'value'. The second part, matchExpressions is a list of resource selector requirements. Valid operators include In, NotIn, Exists, and DoesNotExist. The values set must be non-empty in the case of In and NotIn. The values set must be empty in the case of Exists and DoesNotExist. All of the requirements, from both matchLabels and matchExpressions must all be satisfied in order to match.
-  late final pulumi.Output<ResourceSyncRulePropertiesResponseSelector?> selector;
-  /// Metadata pertaining to creation and last modification of the resource
+  late final pulumi.Output<ResourceSyncRulePropertiesSelectorResponse?> selector;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -219,7 +246,7 @@ class ResourceSyncRule extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     priority = registerOutput<int?>('priority');
     provisioningState = registerOutput<String>('provisioningState');
-    selector = registerOutput<ResourceSyncRulePropertiesResponseSelector?>('selector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSyncRulePropertiesResponseSelector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selector = registerOutput<ResourceSyncRulePropertiesSelectorResponse?>('selector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSyncRulePropertiesSelectorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     targetResourceGroup = registerOutput<String?>('targetResourceGroup');

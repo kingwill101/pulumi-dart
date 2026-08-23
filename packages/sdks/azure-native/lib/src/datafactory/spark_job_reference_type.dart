@@ -1,6 +1,6 @@
 /// Synapse spark job reference type.
 enum SparkJobReferenceType {
-  valueSparkJobDefinitionReference("SparkJobDefinitionReference");
+  sparkJobDefinitionReference("SparkJobDefinitionReference");
 
   const SparkJobReferenceType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum SparkJobReferenceType {
     throw ArgumentError('Unknown SparkJobReferenceType value: $value');
   }
 }
-

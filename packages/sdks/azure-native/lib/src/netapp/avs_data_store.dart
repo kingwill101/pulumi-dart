@@ -15,4 +15,3 @@ enum AvsDataStore {
     throw ArgumentError('Unknown AvsDataStore value: $value');
   }
 }
-

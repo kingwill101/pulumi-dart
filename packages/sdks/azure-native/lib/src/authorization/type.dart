@@ -16,4 +16,3 @@ enum Type {
     throw ArgumentError('Unknown Type value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum AdoptionPolicy {
     throw ArgumentError('Unknown AdoptionPolicy value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum LargeFileSharesState {
     throw ArgumentError('Unknown LargeFileSharesState value: $value');
   }
 }
-

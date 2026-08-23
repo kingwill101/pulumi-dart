@@ -179,4 +179,3 @@ class PostgreSqlV2LinkedServiceResponse {
     );
   }
 }
-

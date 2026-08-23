@@ -2,13 +2,13 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_group_response.dart';
-import 'connectivity_group_item_response.dart';
+import 'connectivity_group_itemlist_active_connectivity_configuration_response.dart';
 import 'hub_response.dart';
 
 /// Active connectivity configuration.
 class ActiveConnectivityConfigurationResponse {
   /// Groups for configuration
-  final pulumi.Input<List<ConnectivityGroupItemResponse>> appliesToGroups;
+  final pulumi.Input<List<ConnectivityGroupItemlistActiveConnectivityConfigurationResponse>>? appliesToGroups;
   /// Deployment time string.
   final pulumi.Input<String>? commitTime;
   /// Effective configuration groups.
@@ -23,7 +23,7 @@ class ActiveConnectivityConfigurationResponse {
   final pulumi.Input<String>? displayName;
   /// List of hubItems
   final pulumi.Input<List<HubResponse>>? hubs;
-  /// Connectivity configuration ID.
+  /// Resource ID.
   final pulumi.Input<String>? id;
   /// Flag if global mesh is supported.
   final pulumi.Input<String>? isGlobal;
@@ -31,8 +31,6 @@ class ActiveConnectivityConfigurationResponse {
   final pulumi.Input<String> provisioningState;
   /// Deployment region.
   final pulumi.Input<String>? region;
-  /// Unique identifier for this resource.
-  final pulumi.Input<String> resourceGuid;
 
   /// Creates a new [ActiveConnectivityConfigurationResponse].
   /// [appliesToGroups] Groups for configuration
@@ -43,13 +41,12 @@ class ActiveConnectivityConfigurationResponse {
   /// [description] A description of the connectivity configuration.
   /// [displayName] A friendly name for the resource.
   /// [hubs] List of hubItems
-  /// [id] Connectivity configuration ID.
+  /// [id] Resource ID.
   /// [isGlobal] Flag if global mesh is supported.
   /// [provisioningState] The provisioning state of the connectivity configuration resource.
   /// [region] Deployment region.
-  /// [resourceGuid] Unique identifier for this resource.
   const ActiveConnectivityConfigurationResponse({
-    required this.appliesToGroups,
+    this.appliesToGroups,
     this.commitTime,
     this.configurationGroups,
     required this.connectivityTopology,
@@ -61,12 +58,11 @@ class ActiveConnectivityConfigurationResponse {
     this.isGlobal,
     required this.provisioningState,
     this.region,
-    required this.resourceGuid,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appliesToGroups': pulumi.Input.mapInputValue<List<ConnectivityGroupItemResponse>, List<Map<String, dynamic>>>(appliesToGroups, (value) => pulumi.Input.encodeList<ConnectivityGroupItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'appliesToGroups': ?pulumi.Input.mapOptionalInputValue<List<ConnectivityGroupItemlistActiveConnectivityConfigurationResponse>, List<Map<String, dynamic>>>(appliesToGroups, (value) => pulumi.Input.encodeList<ConnectivityGroupItemlistActiveConnectivityConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'commitTime': ?commitTime,
       'configurationGroups': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationGroupResponse>, List<Map<String, dynamic>>>(configurationGroups, (value) => pulumi.Input.encodeList<ConfigurationGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'connectivityTopology': connectivityTopology,
@@ -78,13 +74,12 @@ class ActiveConnectivityConfigurationResponse {
       'isGlobal': ?isGlobal,
       'provisioningState': provisioningState,
       'region': ?region,
-      'resourceGuid': resourceGuid,
     };
   }
 
   factory ActiveConnectivityConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ActiveConnectivityConfigurationResponse(
-      appliesToGroups: pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectivityGroupItemResponse>(map['appliesToGroups']!, (value) => ConnectivityGroupItemResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      appliesToGroups: (() { final guardedValue = map['appliesToGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectivityGroupItemlistActiveConnectivityConfigurationResponse>(guardedValue, (value) => ConnectivityGroupItemlistActiveConnectivityConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       commitTime: (() { final guardedValue = map['commitTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       configurationGroups: (() { final guardedValue = map['configurationGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigurationGroupResponse>(guardedValue, (value) => ConfigurationGroupResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       connectivityTopology: pulumi.Input.fromValue(map['connectivityTopology'] as String),
@@ -96,8 +91,6 @@ class ActiveConnectivityConfigurationResponse {
       isGlobal: (() { final guardedValue = map['isGlobal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      resourceGuid: pulumi.Input.fromValue(map['resourceGuid'] as String),
     );
   }
 }
-

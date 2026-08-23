@@ -18,4 +18,3 @@ enum Operation {
     throw ArgumentError('Unknown Operation value: $value');
   }
 }
-

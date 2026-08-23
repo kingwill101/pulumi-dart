@@ -68,6 +68,28 @@ import 'tab_state_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_testbase_draftpackage" "draftPackage" {
+///   app_file_name          = "TestBaseM365DigitalClock.msi"
+///   application_name       = "contoso-package"
+///   draft_package_name     = "61d99543-14ff-47ae-bf03-8a8b8445502e"
+///   resource_group_name    = "contoso-rg1"
+///   source_type            = "Native"
+///   test_base_account_name = "contoso-testBaseAccount1"
+///   use_sample             = false
+///   version                = "1.0"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +98,8 @@ import 'tab_state_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.testbase.DraftPackage;
 /// import com.pulumi.azurenative.testbase.DraftPackageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -76,4 +76,3 @@ enum ResourceSpecInstanceType {
     throw ArgumentError('Unknown ResourceSpecInstanceType value: $value');
   }
 }
-

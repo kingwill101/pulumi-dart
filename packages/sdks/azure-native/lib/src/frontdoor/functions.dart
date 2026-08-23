@@ -10,11 +10,11 @@ import 'get_policy_result.dart';
 import 'get_rules_engine_args.dart';
 import 'get_rules_engine_result.dart';
 
-/// Defines the properties of an Experiment
+/// Gets an Experiment by ExperimentName
 ///
-/// Uses Azure REST API version 2019-11-01.
+/// Uses Azure REST API version 2025-11-01.
 ///
-/// Other available API versions: 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-11-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_frontdoor_get_experiment_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetExperimentResult> getExperiment(
@@ -32,9 +32,9 @@ Future<GetExperimentResult> getExperiment(
 
 /// Gets a Front Door with the specified Front Door name under the specified subscription and resource group.
 ///
-/// Uses Azure REST API version 2021-06-01.
+/// Uses Azure REST API version 2025-11-01.
 ///
-/// Other available API versions: 2019-04-01, 2019-05-01, 2020-01-01, 2020-04-01, 2020-05-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2018-08-01, 2019-04-01, 2019-05-01, 2020-01-01, 2020-04-01, 2020-05-01, 2021-06-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_frontdoor_get_front_door_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFrontDoorResult> getFrontDoor(
@@ -50,11 +50,11 @@ Future<GetFrontDoorResult> getFrontDoor(
   return GetFrontDoorResult.fromMap(result);
 }
 
-/// Defines an Network Experiment Profile and lists of Experiments
+/// Gets an NetworkExperiment Profile by ProfileName
 ///
-/// Uses Azure REST API version 2019-11-01.
+/// Uses Azure REST API version 2025-11-01.
 ///
-/// Other available API versions: 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-11-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_frontdoor_get_network_experiment_profile_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNetworkExperimentProfileResult> getNetworkExperimentProfile(
@@ -72,9 +72,9 @@ Future<GetNetworkExperimentProfileResult> getNetworkExperimentProfile(
 
 /// Retrieve protection policy with specified name within a resource group.
 ///
-/// Uses Azure REST API version 2024-02-01.
+/// Uses Azure REST API version 2025-11-01.
 ///
-/// Other available API versions: 2019-03-01, 2019-10-01, 2020-04-01, 2020-11-01, 2021-06-01, 2022-05-01, 2025-03-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2018-08-01, 2019-03-01, 2019-10-01, 2020-04-01, 2020-11-01, 2021-06-01, 2022-05-01, 2024-02-01, 2025-03-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_frontdoor_get_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPolicyResult> getPolicy(
@@ -92,9 +92,9 @@ Future<GetPolicyResult> getPolicy(
 
 /// Gets a Rules Engine Configuration with the specified name within the specified Front Door.
 ///
-/// Uses Azure REST API version 2021-06-01.
+/// Uses Azure REST API version 2025-11-01.
 ///
-/// Other available API versions: 2020-01-01, 2020-04-01, 2020-05-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-01-01, 2020-04-01, 2020-05-01, 2021-06-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_frontdoor_get_rules_engine_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRulesEngineResult> getRulesEngine(

@@ -3,36 +3,40 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'jit_network_access_policy_virtual_machine_response.dart';
 import 'jit_network_access_request_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getJitNetworkAccessPolicy.
 class GetJitNetworkAccessPolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-  /// Resource Id
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Kind of the resource
   final String? kind;
   /// Location where the resource is stored
   final String location;
-  /// Resource name
+  /// The name of the resource
   final String name;
   /// Gets the provisioning state of the Just-in-Time policy.
   final String provisioningState;
   final List<JitNetworkAccessRequestResponse>? requests;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// Configurations for Microsoft.Compute/virtualMachines resource type.
   final List<JitNetworkAccessPolicyVirtualMachineResponse> virtualMachines;
 
   /// Creates a new [GetJitNetworkAccessPolicyResult].
   /// [azureApiVersion] The Azure API version of the resource.
-  /// [id] Resource Id
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] Kind of the resource
   /// [location] Location where the resource is stored
-  /// [name] Resource name
+  /// [name] The name of the resource
   /// [provisioningState] Gets the provisioning state of the Just-in-Time policy.
   /// [requests] Optional.
-  /// [type] Resource type
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualMachines] Configurations for Microsoft.Compute/virtualMachines resource type.
   const GetJitNetworkAccessPolicyResult({
     required this.azureApiVersion,
@@ -42,6 +46,7 @@ class GetJitNetworkAccessPolicyResult {
     required this.name,
     required this.provisioningState,
     this.requests,
+    required this.systemData,
     required this.type,
     required this.virtualMachines,
   });
@@ -55,6 +60,7 @@ class GetJitNetworkAccessPolicyResult {
       'name': name,
       'provisioningState': provisioningState,
       'requests': ?(() { final guardedValue = requests; if (guardedValue == null) return null; return pulumi.Input.encodeList<JitNetworkAccessRequestResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'systemData': systemData.toMap(),
       'type': type,
       'virtualMachines': pulumi.Input.encodeList<JitNetworkAccessPolicyVirtualMachineResponse, Map<String, dynamic>>(virtualMachines, (value) => value.toMap()),
     };
@@ -69,9 +75,9 @@ class GetJitNetworkAccessPolicyResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       requests: (() { final guardedValue = map['requests']; if (guardedValue == null) return null; return pulumi.Input.decodeList<JitNetworkAccessRequestResponse>(guardedValue, (value) => JitNetworkAccessRequestResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       virtualMachines: pulumi.Input.decodeList<JitNetworkAccessPolicyVirtualMachineResponse>(map['virtualMachines']!, (value) => JitNetworkAccessPolicyVirtualMachineResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
-

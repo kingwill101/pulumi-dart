@@ -15,4 +15,3 @@ enum DataAccountType {
     throw ArgumentError('Unknown DataAccountType value: $value');
   }
 }
-

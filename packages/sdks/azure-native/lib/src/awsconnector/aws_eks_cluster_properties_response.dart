@@ -9,7 +9,7 @@ import 'connector_config_response_response.dart';
 import 'encryption_config_response.dart';
 import 'identity_response.dart';
 import 'kubernetes_network_config_response_response.dart';
-import 'logging_response.dart';
+import 'logging_eks_cluster_response.dart';
 import 'outpost_config_response_response.dart';
 import 'vpc_config_response_response.dart';
 
@@ -40,7 +40,7 @@ class AwsEksClusterPropertiesResponse {
   /// &lt;p&gt;The Kubernetes network configuration for the cluster.&lt;/p&gt;
   final pulumi.Input<KubernetesNetworkConfigResponseResponse>? kubernetesNetworkConfig;
   /// &lt;p&gt;The logging configuration for your cluster.&lt;/p&gt;
-  final pulumi.Input<LoggingResponse>? logging;
+  final pulumi.Input<LoggingEksClusterResponse>? logging;
   /// &lt;p&gt;The name of your cluster.&lt;/p&gt;
   final pulumi.Input<String>? name;
   /// &lt;p&gt;An object representing the configuration of your local Amazon EKS cluster on an Amazon Web Services Outpost. This object isn't available for clusters on the Amazon Web Services cloud.&lt;/p&gt;
@@ -118,7 +118,7 @@ class AwsEksClusterPropertiesResponse {
       'id': ?id,
       'identity': ?pulumi.Input.mapOptionalInputValue<IdentityResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'kubernetesNetworkConfig': ?pulumi.Input.mapOptionalInputValue<KubernetesNetworkConfigResponseResponse, Map<String, dynamic>>(kubernetesNetworkConfig, (value) => value.toMap()),
-      'logging': ?pulumi.Input.mapOptionalInputValue<LoggingResponse, Map<String, dynamic>>(logging, (value) => value.toMap()),
+      'logging': ?pulumi.Input.mapOptionalInputValue<LoggingEksClusterResponse, Map<String, dynamic>>(logging, (value) => value.toMap()),
       'name': ?name,
       'outpostConfig': ?pulumi.Input.mapOptionalInputValue<OutpostConfigResponseResponse, Map<String, dynamic>>(outpostConfig, (value) => value.toMap()),
       'platformVersion': ?platformVersion,
@@ -144,7 +144,7 @@ class AwsEksClusterPropertiesResponse {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       kubernetesNetworkConfig: (() { final guardedValue = map['kubernetesNetworkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KubernetesNetworkConfigResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      logging: (() { final guardedValue = map['logging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoggingResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      logging: (() { final guardedValue = map['logging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoggingEksClusterResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       outpostConfig: (() { final guardedValue = map['outpostConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OutpostConfigResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       platformVersion: (() { final guardedValue = map['platformVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -156,4 +156,3 @@ class AwsEksClusterPropertiesResponse {
     );
   }
 }
-

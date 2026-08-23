@@ -68,4 +68,3 @@ class GetS3AccessPointResult {
     );
   }
 }
-

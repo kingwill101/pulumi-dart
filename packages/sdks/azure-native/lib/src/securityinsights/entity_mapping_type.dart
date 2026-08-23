@@ -31,4 +31,3 @@ enum EntityMappingType {
     throw ArgumentError('Unknown EntityMappingType value: $value');
   }
 }
-

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'monitoring_tag_rules_properties_response.dart';
+import 'monitoring_tag_rules_properties_tag_rule_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getTagRule.
@@ -12,7 +12,7 @@ class GetTagRuleResult {
   /// Name of the rule set.
   final String name;
   /// Properties of the monitoring tag rules.
-  final MonitoringTagRulesPropertiesResponse properties;
+  final MonitoringTagRulesPropertiesTagRuleResponse properties;
   /// The system metadata relating to this resource
   final SystemDataResponse systemData;
   /// The type of the rule set.
@@ -50,10 +50,9 @@ class GetTagRuleResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: MonitoringTagRulesPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      properties: MonitoringTagRulesPropertiesTagRuleResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

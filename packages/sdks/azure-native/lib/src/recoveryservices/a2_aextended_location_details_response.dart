@@ -32,4 +32,3 @@ class A2AExtendedLocationDetailsResponse {
     );
   }
 }
-

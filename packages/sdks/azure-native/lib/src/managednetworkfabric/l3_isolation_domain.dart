@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -118,6 +118,45 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_managednetworkfabric_l3isolationdomain" "l3IsolationDomain" {
+///   aggregate_route_configuration = {
+///     ipv4_routes = [{
+///       "prefix" = "10.0.0.0/24"
+///     }]
+///     ipv6_routes = [{
+///       "prefix" = "3FFE:FFFF:0:CD30::a0/29"
+///     }]
+///   }
+///   annotation = "annotation"
+///   connected_subnet_route_policy = {
+///     export_route_policy = {
+///       export_ipv4_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy"
+///       export_ipv6_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy"
+///     }
+///     export_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"
+///   }
+///   l3_isolation_domain_name       = "example-l3domain"
+///   location                       = "eastus"
+///   network_fabric_id              = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric"
+///   redistribute_connected_subnets = "True"
+///   redistribute_static_routes     = "False"
+///   resource_group_name            = "example-rg"
+///   tags = {
+///     "keyID" = "KeyValue"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -129,8 +168,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.AggregateRouteConfigurationArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.ConnectedSubnetRoutePolicyArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.L3ExportRoutePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

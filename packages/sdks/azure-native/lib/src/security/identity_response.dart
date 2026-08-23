@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Identity for the resource.
 class IdentityResponse {
-  /// The principal ID of resource identity.
+  /// The principal ID of resource identity. The value must be an UUID.
   final pulumi.Input<String> principalId;
-  /// The tenant ID of resource.
+  /// The tenant ID of resource. The value must be an UUID.
   final pulumi.Input<String> tenantId;
   /// The identity type.
   final pulumi.Input<String>? type;
 
   /// Creates a new [IdentityResponse].
-  /// [principalId] The principal ID of resource identity.
-  /// [tenantId] The tenant ID of resource.
+  /// [principalId] The principal ID of resource identity. The value must be an UUID.
+  /// [tenantId] The tenant ID of resource. The value must be an UUID.
   /// [type] The identity type.
   const IdentityResponse({
     required this.principalId,
@@ -37,4 +37,3 @@ class IdentityResponse {
     );
   }
 }
-

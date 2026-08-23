@@ -130,6 +130,45 @@ import 'cost_allocation_rule_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_costallocationrule" "costAllocationRule" {
+///   billing_account_id = "100"
+///   properties = {
+///     description = "This is a testRule"
+///     details = {
+///       source_resources = [{
+///         "name"         = "ResourceGroupName"
+///         "resourceType" = "Dimension"
+///         "values"       = ["sampleRG", "secondRG"]
+///       }]
+///       target_resources = [{
+///         "name"         = "ResourceGroupName"
+///         "policyType"   = "FixedProportion"
+///         "resourceType" = "Dimension"
+///         "values" = [{
+///           "name"       = "destinationRG"
+///           "percentage" = 45
+///           }, {
+///           "name"       = "destinationRG2"
+///           "percentage" = 54
+///         }]
+///       }]
+///     }
+///     status = "Active"
+///   }
+///   rule_name = "testRule"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +179,8 @@ import 'cost_allocation_rule_properties_response.dart';
 /// import com.pulumi.azurenative.costmanagement.CostAllocationRuleArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.CostAllocationRulePropertiesArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.CostAllocationRuleDetailsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -254,11 +293,11 @@ import 'cost_allocation_rule_properties_response.dart';
 ///                 "values": [
 ///                     {
 ///                         "name": "destinationRG",
-///                         "percentage": 45,
+///                         "percentage": float(45),
 ///                     },
 ///                     {
 ///                         "name": "destinationRG2",
-///                         "percentage": 54,
+///                         "percentage": float(54),
 ///                     },
 ///                 ],
 ///             }],
@@ -426,6 +465,48 @@ import 'cost_allocation_rule_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_costallocationrule" "costAllocationRule" {
+///   billing_account_id = "100"
+///   properties = {
+///     description = "This is a testRule"
+///     details = {
+///       source_resources = [{
+///         "name"         = "category"
+///         "resourceType" = "Tag"
+///         "values"       = ["devops"]
+///       }]
+///       target_resources = [{
+///         "name"         = "ResourceGroupName"
+///         "policyType"   = "FixedProportion"
+///         "resourceType" = "Dimension"
+///         "values" = [{
+///           "name"       = "destinationRG"
+///           "percentage" = 33.33
+///           }, {
+///           "name"       = "destinationRG2"
+///           "percentage" = 33.33
+///           }, {
+///           "name"       = "destinationRG3"
+///           "percentage" = 33.34
+///         }]
+///       }]
+///     }
+///     status = "Active"
+///   }
+///   rule_name = "testRule"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -436,8 +517,8 @@ import 'cost_allocation_rule_properties_response.dart';
 /// import com.pulumi.azurenative.costmanagement.CostAllocationRuleArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.CostAllocationRulePropertiesArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.CostAllocationRuleDetailsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

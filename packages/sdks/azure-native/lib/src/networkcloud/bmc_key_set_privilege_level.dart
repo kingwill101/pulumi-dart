@@ -15,4 +15,3 @@ enum BmcKeySetPrivilegeLevel {
     throw ArgumentError('Unknown BmcKeySetPrivilegeLevel value: $value');
   }
 }
-

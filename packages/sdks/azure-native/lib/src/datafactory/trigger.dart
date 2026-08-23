@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'blob_events_trigger_response.dart';
+import 'system_data_response.dart';
 import 'trigger_args.dart';
 
 /// Trigger resource type.
@@ -27,17 +28,17 @@ import 'trigger_args.dart';
 ///             {
 ///                 new AzureNative.DataFactory.Inputs.TriggerPipelineReferenceArgs
 ///                 {
-///                     Parameters =
+///                     Parameters = new Dictionary<string, object?>
 ///                     {
-///                         { "OutputBlobNameList", new[]
+///                         ["OutputBlobNameList"] = new[]
 ///                         {
 ///                             "exampleoutput.csv",
-///                         } },
+///                         },
 ///                     },
 ///                     PipelineReference = new AzureNative.DataFactory.Inputs.PipelineReferenceArgs
 ///                     {
 ///                         ReferenceName = "examplePipeline",
-///                         Type = "PipelineReference",
+///                         Type = AzureNative.DataFactory.PipelineReferenceType.PipelineReference,
 ///                     },
 ///                 },
 ///             },
@@ -75,14 +76,14 @@ import 'trigger_args.dart';
 /// 			Properties: &datafactory.ScheduleTriggerArgs{
 /// 				Pipelines: datafactory.TriggerPipelineReferenceArray{
 /// 					&datafactory.TriggerPipelineReferenceArgs{
-/// 						Parameters: pulumi.Map{
-/// 							"OutputBlobNameList": pulumi.Any{
+/// 						Parameters: pulumi.Any(map[string]interface{}{
+/// 							"OutputBlobNameList": []string{
 /// 								"exampleoutput.csv",
 /// 							},
-/// 						},
+/// 						}),
 /// 						PipelineReference: &datafactory.PipelineReferenceArgs{
 /// 							ReferenceName: pulumi.String("examplePipeline"),
-/// 							Type:          pulumi.String("PipelineReference"),
+/// 							Type:          pulumi.String(datafactory.PipelineReferenceTypePipelineReference),
 /// 						},
 /// 					},
 /// 				},
@@ -107,6 +108,42 @@ import 'trigger_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datafactory_trigger" "trigger" {
+///   factory_name = "exampleFactoryName"
+///   properties = {
+///     "pipelines" = [{
+///       "parameters" = {
+///         "OutputBlobNameList" = ["exampleoutput.csv"]
+///       }
+///       "pipelineReference" = {
+///         "referenceName" = "examplePipeline"
+///         "type"          = "PipelineReference"
+///       }
+///     }]
+///     "recurrence" = {
+///       "endTime"   = "2018-06-16T00:55:13.8441801Z"
+///       "frequency" = "Minute"
+///       "interval"  = 4
+///       "startTime" = "2018-06-16T00:39:13.8441801Z"
+///       "timeZone"  = "UTC"
+///     }
+///     "type" = "ScheduleTrigger"
+///   }
+///   resource_group_name = "exampleResourceGroup"
+///   trigger_name        = "exampleTrigger"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +152,8 @@ import 'trigger_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.Trigger;
 /// import com.pulumi.azurenative.datafactory.TriggerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -132,7 +169,7 @@ import 'trigger_args.dart';
 ///             .factoryName("exampleFactoryName")
 ///             .properties(ScheduleTriggerArgs.builder()
 ///                 .pipelines(TriggerPipelineReferenceArgs.builder()
-///                     .parameters(Map.of("OutputBlobNameList", "exampleoutput.csv"))
+///                     .parameters(Map.of("OutputBlobNameList", Arrays.asList("exampleoutput.csv")))
 ///                     .pipelineReference(PipelineReferenceArgs.builder()
 ///                         .referenceName("examplePipeline")
 ///                         .type("PipelineReference")
@@ -169,7 +206,7 @@ import 'trigger_args.dart';
 ///             },
 ///             pipelineReference: {
 ///                 referenceName: "examplePipeline",
-///                 type: "PipelineReference",
+///                 type: azure_native.datafactory.PipelineReferenceType.PipelineReference,
 ///             },
 ///         }],
 ///         recurrence: {
@@ -200,7 +237,7 @@ import 'trigger_args.dart';
 ///             },
 ///             "pipeline_reference": {
 ///                 "reference_name": "examplePipeline",
-///                 "type": "PipelineReference",
+///                 "type": azure_native.datafactory.PipelineReferenceType.PIPELINE_REFERENCE,
 ///             },
 ///         }],
 ///         "recurrence": {
@@ -264,17 +301,17 @@ import 'trigger_args.dart';
 ///             {
 ///                 new AzureNative.DataFactory.Inputs.TriggerPipelineReferenceArgs
 ///                 {
-///                     Parameters =
+///                     Parameters = new Dictionary<string, object?>
 ///                     {
-///                         { "OutputBlobNameList", new[]
+///                         ["OutputBlobNameList"] = new[]
 ///                         {
 ///                             "exampleoutput.csv",
-///                         } },
+///                         },
 ///                     },
 ///                     PipelineReference = new AzureNative.DataFactory.Inputs.PipelineReferenceArgs
 ///                     {
 ///                         ReferenceName = "examplePipeline",
-///                         Type = "PipelineReference",
+///                         Type = AzureNative.DataFactory.PipelineReferenceType.PipelineReference,
 ///                     },
 ///                 },
 ///             },
@@ -313,14 +350,14 @@ import 'trigger_args.dart';
 /// 				Description: pulumi.String("Example description"),
 /// 				Pipelines: datafactory.TriggerPipelineReferenceArray{
 /// 					&datafactory.TriggerPipelineReferenceArgs{
-/// 						Parameters: pulumi.Map{
-/// 							"OutputBlobNameList": pulumi.Any{
+/// 						Parameters: pulumi.Any(map[string]interface{}{
+/// 							"OutputBlobNameList": []string{
 /// 								"exampleoutput.csv",
 /// 							},
-/// 						},
+/// 						}),
 /// 						PipelineReference: &datafactory.PipelineReferenceArgs{
 /// 							ReferenceName: pulumi.String("examplePipeline"),
-/// 							Type:          pulumi.String("PipelineReference"),
+/// 							Type:          pulumi.String(datafactory.PipelineReferenceTypePipelineReference),
 /// 						},
 /// 					},
 /// 				},
@@ -345,6 +382,43 @@ import 'trigger_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datafactory_trigger" "trigger" {
+///   factory_name = "exampleFactoryName"
+///   properties = {
+///     "description" = "Example description"
+///     "pipelines" = [{
+///       "parameters" = {
+///         "OutputBlobNameList" = ["exampleoutput.csv"]
+///       }
+///       "pipelineReference" = {
+///         "referenceName" = "examplePipeline"
+///         "type"          = "PipelineReference"
+///       }
+///     }]
+///     "recurrence" = {
+///       "endTime"   = "2018-06-16T00:55:14.905167Z"
+///       "frequency" = "Minute"
+///       "interval"  = 4
+///       "startTime" = "2018-06-16T00:39:14.905167Z"
+///       "timeZone"  = "UTC"
+///     }
+///     "type" = "ScheduleTrigger"
+///   }
+///   resource_group_name = "exampleResourceGroup"
+///   trigger_name        = "exampleTrigger"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -353,8 +427,8 @@ import 'trigger_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.Trigger;
 /// import com.pulumi.azurenative.datafactory.TriggerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -371,7 +445,7 @@ import 'trigger_args.dart';
 ///             .properties(ScheduleTriggerArgs.builder()
 ///                 .description("Example description")
 ///                 .pipelines(TriggerPipelineReferenceArgs.builder()
-///                     .parameters(Map.of("OutputBlobNameList", "exampleoutput.csv"))
+///                     .parameters(Map.of("OutputBlobNameList", Arrays.asList("exampleoutput.csv")))
 ///                     .pipelineReference(PipelineReferenceArgs.builder()
 ///                         .referenceName("examplePipeline")
 ///                         .type("PipelineReference")
@@ -409,7 +483,7 @@ import 'trigger_args.dart';
 ///             },
 ///             pipelineReference: {
 ///                 referenceName: "examplePipeline",
-///                 type: "PipelineReference",
+///                 type: azure_native.datafactory.PipelineReferenceType.PipelineReference,
 ///             },
 ///         }],
 ///         recurrence: {
@@ -441,7 +515,7 @@ import 'trigger_args.dart';
 ///             },
 ///             "pipeline_reference": {
 ///                 "reference_name": "examplePipeline",
-///                 "type": "PipelineReference",
+///                 "type": azure_native.datafactory.PipelineReferenceType.PIPELINE_REFERENCE,
 ///             },
 ///         }],
 ///         "recurrence": {
@@ -498,13 +572,15 @@ import 'trigger_args.dart';
 class Trigger extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// Etag identifies change in the resource.
+  /// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
   late final pulumi.Output<String> etag;
-  /// The resource name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Properties of the trigger.
   late final pulumi.Output<BlobEventsTriggerResponse> properties;
-  /// The resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [Trigger].
@@ -525,6 +601,7 @@ class Trigger extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     properties = registerOutput<BlobEventsTriggerResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlobEventsTriggerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

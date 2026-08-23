@@ -57,6 +57,25 @@ import 'single_server_database_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_singleserverdatabase" "singleServerDatabase" {
+///   charset             = "UTF8"
+///   collation           = "English_United States.1252"
+///   database_name       = "db1"
+///   resource_group_name = "TestGroup"
+///   server_name         = "testserver"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +84,8 @@ import 'single_server_database_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServerDatabase;
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServerDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

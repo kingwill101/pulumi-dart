@@ -16,4 +16,3 @@ enum ManagedInstanceProxyOverride {
     throw ArgumentError('Unknown ManagedInstanceProxyOverride value: $value');
   }
 }
-

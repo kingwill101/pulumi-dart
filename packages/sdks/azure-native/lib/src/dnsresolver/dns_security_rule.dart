@@ -91,6 +91,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dnsresolver_dnssecurityrule" "dnsSecurityRule" {
+///   action = {
+///     action_type         = "Block"
+///     block_response_code = "SERVFAIL"
+///   }
+///   dns_resolver_domain_lists {
+///     id = "/subscriptions/abdd4249-9f34-4cc6-8e42-c2e32110603e/resourceGroups/sampleResourceGroup/providers/Microsoft.Network/dnsResolverDomainLists/sampleDnsResolverDomainList"
+///   }
+///   dns_resolver_policy_name = "sampleDnsResolverPolicy"
+///   dns_security_rule_name   = "sampleDnsSecurityRule"
+///   dns_security_rule_state  = "Enabled"
+///   location                 = "westus2"
+///   priority                 = 100
+///   resource_group_name      = "sampleResourceGroup"
+///   tags = {
+///     "key1" = "value1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +131,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dnsresolver.DnsSecurityRuleArgs;
 /// import com.pulumi.azurenative.dnsresolver.inputs.DnsSecurityRuleActionArgs;
 /// import com.pulumi.azurenative.dnsresolver.inputs.SubResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

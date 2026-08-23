@@ -1,8 +1,8 @@
 /// This specifies the behavior for the autoReview feature when an access review completes.
 enum DefaultDecisionType {
-  valueApprove("Approve"),
-  valueDeny("Deny"),
-  valueRecommendation("Recommendation");
+  approve("Approve"),
+  deny("Deny"),
+  recommendation("Recommendation");
 
   const DefaultDecisionType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum DefaultDecisionType {
     throw ArgumentError('Unknown DefaultDecisionType value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum CloudEventAttributeType {
     throw ArgumentError('Unknown CloudEventAttributeType value: $value');
   }
 }
-

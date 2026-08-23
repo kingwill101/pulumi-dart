@@ -1,73 +1,67 @@
-// ignore_for_file: unused_element, unnecessary_cast
-
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'endpoint_auth_keys.dart';
+import 'managed_service_identity_response.dart';
+import 'online_endpoint_args.dart';
+import 'online_endpoint_properties_response.dart';
+import 'sku_response.dart';
+import 'system_data_response.dart';
 
-/// Online endpoint configuration
-class OnlineEndpoint {
-  /// [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
-  final pulumi.Input<String> authMode;
-  /// ARM resource ID of the compute if it exists.
-  /// optional
-  final pulumi.Input<String>? compute;
-  /// Description of the inference endpoint.
-  final pulumi.Input<String>? description;
-  /// EndpointAuthKeys to set initially on an Endpoint.
-  /// This property will always be returned as null. AuthKey values must be retrieved using the ListKeys API.
-  final pulumi.Input<EndpointAuthKeys>? keys;
-  /// Percentage of traffic to be mirrored to each deployment without using returned scoring. Traffic values need to sum to utmost 50.
-  final pulumi.Input<Map<String, int>>? mirrorTraffic;
-  /// Property dictionary. Properties can be added, but not removed or altered.
-  final pulumi.Input<Map<String, String>>? properties;
-  /// Set to "Enabled" for endpoints that should allow public access when Private Link is enabled.
-  final pulumi.Input<String>? publicNetworkAccess;
-  /// Percentage of traffic from endpoint to divert to each deployment. Traffic values need to sum to 100.
-  final pulumi.Input<Map<String, int>>? traffic;
+/// Concrete tracked resource types can be created by aliasing this type using a specific property type.
+///
+/// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+///
+/// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:machinelearningservices:OnlineEndpoint string /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}
+/// ```
+class OnlineEndpoint extends pulumi.CustomResource {
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// Managed service identity (system assigned and/or user assigned identities)
+  late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+  /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
+  late final pulumi.Output<String?> kind;
+  /// The geo-location where the resource lives
+  late final pulumi.Output<String> location;
+  /// The name of the resource
+  late final pulumi.Output<String> name;
+  /// [Required] Additional attributes of the entity.
+  late final pulumi.Output<OnlineEndpointPropertiesResponse> properties;
+  /// Sku details required for ARM contract for Autoscaling.
+  late final pulumi.Output<SkuResponse?> sku;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  late final pulumi.Output<String> type;
 
   /// Creates a new [OnlineEndpoint].
-  /// [authMode] [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
-  /// [compute] ARM resource ID of the compute if it exists.
-  /// [description] Description of the inference endpoint.
-  /// [keys] EndpointAuthKeys to set initially on an Endpoint.
-  /// [mirrorTraffic] Percentage of traffic to be mirrored to each deployment without using returned scoring. Traffic values need to sum to utmost 50.
-  /// [properties] Property dictionary. Properties can be added, but not removed or altered.
-  /// [publicNetworkAccess] Set to "Enabled" for endpoints that should allow public access when Private Link is enabled.
-  /// [traffic] Percentage of traffic from endpoint to divert to each deployment. Traffic values need to sum to 100.
-  const OnlineEndpoint({
-    required this.authMode,
-    this.compute,
-    this.description,
-    this.keys,
-    this.mirrorTraffic,
-    this.properties,
-    this.publicNetworkAccess,
-    this.traffic,
-  });
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'authMode': authMode,
-      'compute': ?compute,
-      'description': ?description,
-      'keys': ?pulumi.Input.mapOptionalInputValue<EndpointAuthKeys, Map<String, dynamic>>(keys, (value) => value.toMap()),
-      'mirrorTraffic': ?mirrorTraffic,
-      'properties': ?properties,
-      'publicNetworkAccess': ?publicNetworkAccess,
-      'traffic': ?traffic,
-    };
-  }
-
-  factory OnlineEndpoint.fromMap(Map<String, dynamic> map) {
-    return OnlineEndpoint(
-      authMode: pulumi.Input.fromValue(map['authMode'] as String),
-      compute: (() { final guardedValue = map['compute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      keys: (() { final guardedValue = map['keys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointAuthKeys.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      mirrorTraffic: (() { final guardedValue = map['mirrorTraffic']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, int>()); })(),
-      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      traffic: (() { final guardedValue = map['traffic']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, int>()); })(),
-    );
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [OnlineEndpoint]. {@macro pulumi_machinelearningservices_online_endpoint_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  OnlineEndpoint(
+    String name, {
+    OnlineEndpointArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:machinelearningservices:OnlineEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<OnlineEndpointPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OnlineEndpointPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }
-

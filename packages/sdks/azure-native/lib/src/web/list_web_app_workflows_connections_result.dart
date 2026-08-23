@@ -1,35 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'workflow_envelope_response_properties.dart';
+import 'system_data_response.dart';
+import 'workflow_envelope_properties_response.dart';
 
 /// Result data returned by listWebAppWorkflowsConnections.
 class ListWebAppWorkflowsConnectionsResult {
-  /// The resource id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// The resource kind.
   final String? kind;
   /// The resource location.
   final String? location;
-  /// Gets the resource name.
+  /// The name of the resource
   final String name;
   /// Additional workflow properties.
-  final WorkflowEnvelopeResponseProperties properties;
-  /// Gets the resource type.
+  final WorkflowEnvelopePropertiesResponse properties;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [ListWebAppWorkflowsConnectionsResult].
-  /// [id] The resource id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] The resource kind.
   /// [location] The resource location.
-  /// [name] Gets the resource name.
+  /// [name] The name of the resource
   /// [properties] Additional workflow properties.
-  /// [type] Gets the resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const ListWebAppWorkflowsConnectionsResult({
     required this.id,
     this.kind,
     this.location,
     required this.name,
     required this.properties,
+    required this.systemData,
     required this.type,
   });
 
@@ -40,6 +45,7 @@ class ListWebAppWorkflowsConnectionsResult {
       'location': ?location,
       'name': name,
       'properties': properties.toMap(),
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -50,9 +56,9 @@ class ListWebAppWorkflowsConnectionsResult {
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: WorkflowEnvelopeResponseProperties.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      properties: WorkflowEnvelopePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

@@ -1,5 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_resource_manager_common_types_extended_location_response.dart';
+import 'extended_location_response.dart';
 import 'pipeline_group_args.dart';
 import 'pipeline_group_properties_response.dart';
 import 'system_data_response.dart';
@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 ///
-/// Other available API versions: 2023-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-01-preview, 2025-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -217,6 +217,78 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_pipelinegroup" "pipelineGroup" {
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/myTestCustomLocation"
+///     type = "CustomLocation"
+///   }
+///   location            = "eastus2"
+///   pipeline_group_name = "plGroup1"
+///   properties = {
+///     exporters = [{
+///       "azureMonitorWorkspaceLogs" = {
+///         "api" = {
+///           "dataCollectionEndpointUrl" = "https://logs-myingestion-eb0s.eastus-1.ingest.monitor.azure.com"
+///           "dataCollectionRule"        = "dcr-00000000000000000000000000000000"
+///           "schema" = {
+///             "recordMap" = [{
+///               "from" = "body"
+///               "to"   = "Body"
+///               }, {
+///               "from" = "severity_text"
+///               "to"   = "SeverityText"
+///               }, {
+///               "from" = "time_unix_nano"
+///               "to"   = "TimeGenerated"
+///             }]
+///           }
+///           "stream" = "Custom-MyTableRawData_CL"
+///         }
+///         "concurrency" = {
+///           "batchQueueSize" = 100
+///           "workerCount"    = 4
+///         }
+///       }
+///       "name" = "my-workspace-logs-exporter1"
+///       "type" = "AzureMonitorWorkspaceLogs"
+///     }]
+///     processors = []
+///     receivers = [{
+///       "name" = "udp-receiver1"
+///       "type" = "UDP"
+///       "udp" = {
+///         "encoding" = "utf-8"
+///         "endpoint" = "0.0.0.0:518"
+///       }
+///     }]
+///     service = {
+///       pipelines = [{
+///         "exporters"  = ["my-workspace-logs-exporter1"]
+///         "name"       = "MyPipelineForLogs1"
+///         "processors" = []
+///         "receivers"  = ["udp-receiver1"]
+///         "type"       = "Logs"
+///       }]
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   tags = {
+///     "tag1" = "A"
+///     "tag2" = "B"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +300,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs;
 /// import com.pulumi.azurenative.monitor.inputs.PipelineGroupPropertiesArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -740,6 +812,87 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_pipelinegroup" "pipelineGroup" {
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/myTestCustomLocation"
+///     type = "CustomLocation"
+///   }
+///   location            = "eastus2"
+///   pipeline_group_name = "plGroup1"
+///   properties = {
+///     exporters = [{
+///       "azureMonitorWorkspaceLogs" = {
+///         "api" = {
+///           "dataCollectionEndpointUrl" = "https://logs-myingestion-eb0s.eastus-1.ingest.monitor.azure.com"
+///           "dataCollectionRule"        = "dcr-00000000000000000000000000000000"
+///           "schema" = {
+///             "recordMap" = [{
+///               "from" = "body"
+///               "to"   = "Body"
+///               }, {
+///               "from" = "severity_text"
+///               "to"   = "SeverityText"
+///               }, {
+///               "from" = "time_unix_nano"
+///               "to"   = "TimeGenerated"
+///             }]
+///           }
+///           "stream" = "Custom-MyTableRawData_CL"
+///         }
+///         "concurrency" = {
+///           "batchQueueSize" = 100
+///           "workerCount"    = 4
+///         }
+///       }
+///       "name" = "my-workspace-logs-exporter1"
+///       "type" = "AzureMonitorWorkspaceLogs"
+///     }]
+///     processors = []
+///     receivers = [{
+///       "name" = "udp-receiver1"
+///       "type" = "UDP"
+///       "udp" = {
+///         "encoding" = "utf-8"
+///         "endpoint" = "0.0.0.0:518"
+///         "jsonArrayMapper" = {
+///           "destinationField" = {
+///             "destination" = "attributes"
+///           }
+///           "keys" = ["key1", "key2", "key3"]
+///           "sourceField" = {
+///             "fieldName" = "field1"
+///           }
+///         }
+///       }
+///     }]
+///     service = {
+///       pipelines = [{
+///         "exporters"  = ["my-workspace-logs-exporter1"]
+///         "name"       = "MyPipelineForLogs1"
+///         "processors" = []
+///         "receivers"  = ["udp-receiver1"]
+///         "type"       = "Logs"
+///       }]
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   tags = {
+///     "tag1" = "A"
+///     "tag2" = "B"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -751,8 +904,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs;
 /// import com.pulumi.azurenative.monitor.inputs.PipelineGroupPropertiesArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1295,6 +1448,80 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_pipelinegroup" "pipelineGroup" {
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/myTestCustomLocation"
+///     type = "CustomLocation"
+///   }
+///   location            = "eastus2"
+///   pipeline_group_name = "plGroup1"
+///   properties = {
+///     exporters = [{
+///       "azureMonitorWorkspaceLogs" = {
+///         "api" = {
+///           "dataCollectionEndpointUrl" = "https://logs-myingestion-eb0s.eastus-1.ingest.monitor.azure.com"
+///           "dataCollectionRule"        = "dcr-00000000000000000000000000000000"
+///           "schema" = {
+///             "recordMap" = [{
+///               "from" = "body"
+///               "to"   = "Body"
+///               }, {
+///               "from" = "severity_text"
+///               "to"   = "SeverityText"
+///               }, {
+///               "from" = "time_unix_nano"
+///               "to"   = "TimeGenerated"
+///             }]
+///           }
+///           "stream" = "Custom-MyTableRawData_CL"
+///         }
+///         "concurrency" = {
+///           "batchQueueSize" = 100
+///           "workerCount"    = 4
+///         }
+///       }
+///       "name" = "my-workspace-logs-exporter1"
+///       "type" = "AzureMonitorWorkspaceLogs"
+///     }]
+///     processors = [{
+///       "name" = "batch-processor1"
+///       "type" = "Batch"
+///     }]
+///     receivers = [{
+///       "name" = "syslog-receiver1"
+///       "syslog" = {
+///         "endpoint" = "0.0.0.0:514"
+///       }
+///       "type" = "Syslog"
+///     }]
+///     service = {
+///       pipelines = [{
+///         "exporters"  = ["my-workspace-logs-exporter1"]
+///         "name"       = "MyPipelineForLogs1"
+///         "processors" = ["batch-processor1"]
+///         "receivers"  = ["syslog-receiver1"]
+///         "type"       = "Logs"
+///       }]
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   tags = {
+///     "tag1" = "A"
+///     "tag2" = "B"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1306,8 +1533,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs;
 /// import com.pulumi.azurenative.monitor.inputs.PipelineGroupPropertiesArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1820,6 +2047,84 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_pipelinegroup" "pipelineGroup" {
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/myTestCustomLocation"
+///     type = "CustomLocation"
+///   }
+///   location            = "eastus2"
+///   pipeline_group_name = "plGroup1"
+///   properties = {
+///     exporters = [{
+///       "azureMonitorWorkspaceLogs" = {
+///         "api" = {
+///           "dataCollectionEndpointUrl" = "https://logs-myingestion-eb0s.eastus-1.ingest.monitor.azure.com"
+///           "dataCollectionRule"        = "dcr-00000000000000000000000000000000"
+///           "schema" = {
+///             "recordMap" = [{
+///               "from" = "body"
+///               "to"   = "Body"
+///               }, {
+///               "from" = "severity_text"
+///               "to"   = "SeverityText"
+///               }, {
+///               "from" = "time_unix_nano"
+///               "to"   = "TimeGenerated"
+///             }]
+///           }
+///           "stream" = "Custom-MyTableRawData_CL"
+///         }
+///         "cache" = {
+///           "maxStorageUsage" = 100
+///           "retentionPeriod" = 10
+///         }
+///         "concurrency" = {
+///           "batchQueueSize" = 100
+///           "workerCount"    = 4
+///         }
+///       }
+///       "name" = "my-workspace-logs-exporter1"
+///       "type" = "AzureMonitorWorkspaceLogs"
+///     }]
+///     processors = [{
+///       "name" = "batch-processor1"
+///       "type" = "Batch"
+///     }]
+///     receivers = [{
+///       "name" = "syslog-receiver1"
+///       "syslog" = {
+///         "endpoint" = "0.0.0.0:514"
+///       }
+///       "type" = "Syslog"
+///     }]
+///     service = {
+///       pipelines = [{
+///         "exporters"  = ["my-workspace-logs-exporter1"]
+///         "name"       = "MyPipelineForLogs1"
+///         "processors" = ["batch-processor1"]
+///         "receivers"  = ["syslog-receiver1"]
+///         "type"       = "Logs"
+///       }]
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   tags = {
+///     "tag1" = "A"
+///     "tag2" = "B"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1831,8 +2136,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs;
 /// import com.pulumi.azurenative.monitor.inputs.PipelineGroupPropertiesArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2360,6 +2665,84 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_pipelinegroup" "pipelineGroup" {
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/myTestCustomLocation"
+///     type = "CustomLocation"
+///   }
+///   location            = "eastus2"
+///   pipeline_group_name = "plGroup1"
+///   properties = {
+///     exporters = [{
+///       "azureMonitorWorkspaceLogs" = {
+///         "api" = {
+///           "dataCollectionEndpointUrl" = "https://logs-myingestion-eb0s.eastus-1.ingest.monitor.azure.com"
+///           "dataCollectionRule"        = "dcr-00000000000000000000000000000000"
+///           "schema" = {
+///             "recordMap" = [{
+///               "from" = "body"
+///               "to"   = "Body"
+///               }, {
+///               "from" = "severity_text"
+///               "to"   = "SeverityText"
+///               }, {
+///               "from" = "time_unix_nano"
+///               "to"   = "TimeGenerated"
+///             }]
+///           }
+///           "stream" = "Custom-MyTableRawData_CL"
+///         }
+///         "concurrency" = {
+///           "batchQueueSize" = 100
+///           "workerCount"    = 4
+///         }
+///       }
+///       "name" = "my-workspace-logs-exporter1"
+///       "type" = "AzureMonitorWorkspaceLogs"
+///     }]
+///     networking_configurations = [{
+///       "externalNetworkingMode" = "LoadBalancerOnly"
+///       "host"                   = "azuremonitorpipeline.contoso.com"
+///       "routes" = [{
+///         "receiver" = "syslog-receiver1"
+///       }]
+///     }]
+///     processors = []
+///     receivers = [{
+///       "name" = "syslog-receiver1"
+///       "syslog" = {
+///         "endpoint" = "0.0.0.0:514"
+///       }
+///       "type" = "Syslog"
+///     }]
+///     service = {
+///       pipelines = [{
+///         "exporters"  = ["my-workspace-logs-exporter1"]
+///         "name"       = "MyPipelineForLogs1"
+///         "processors" = []
+///         "receivers"  = ["syslog-receiver1"]
+///         "type"       = "Logs"
+///       }]
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   tags = {
+///     "tag1" = "A"
+///     "tag2" = "B"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2371,8 +2754,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs;
 /// import com.pulumi.azurenative.monitor.inputs.PipelineGroupPropertiesArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2683,7 +3066,7 @@ class PipelineGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The complex type of the extended location.
-  late final pulumi.Output<AzureResourceManagerCommonTypesExtendedLocationResponse?> extendedLocation;
+  late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// The name of the resource
@@ -2712,7 +3095,7 @@ class PipelineGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    extendedLocation = registerOutput<AzureResourceManagerCommonTypesExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     properties = registerOutput<PipelineGroupPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineGroupPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

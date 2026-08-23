@@ -56,6 +56,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_synapseworkspacesqlpooltabledatasetmapping" "synapseWorkspaceSqlPoolTableDataSetMapping" {
+///   account_name            = "Account1"
+///   data_set_mapping_name   = "DatasetMapping1"
+///   resource_group_name     = "SampleResourceGroup"
+///   share_subscription_name = "ShareSubscription1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +82,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.SynapseWorkspaceSqlPoolTableDataSetMapping;
 /// import com.pulumi.azurenative.datashare.SynapseWorkspaceSqlPoolTableDataSetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -175,6 +193,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_synapseworkspacesqlpooltabledatasetmapping" "synapseWorkspaceSqlPoolTableDataSetMapping" {
+///   account_name            = "Account1"
+///   data_set_mapping_name   = "DatasetMapping1"
+///   resource_group_name     = "SampleResourceGroup"
+///   share_subscription_name = "ShareSubscription1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +219,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.SynapseWorkspaceSqlPoolTableDataSetMapping;
 /// import com.pulumi.azurenative.datashare.SynapseWorkspaceSqlPoolTableDataSetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -294,6 +330,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_synapseworkspacesqlpooltabledatasetmapping" "synapseWorkspaceSqlPoolTableDataSetMapping" {
+///   account_name            = "Account1"
+///   data_set_mapping_name   = "DatasetMapping1"
+///   resource_group_name     = "SampleResourceGroup"
+///   share_subscription_name = "ShareSubscription1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -302,8 +356,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.SynapseWorkspaceSqlPoolTableDataSetMapping;
 /// import com.pulumi.azurenative.datashare.SynapseWorkspaceSqlPoolTableDataSetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -413,6 +467,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_synapseworkspacesqlpooltabledatasetmapping" "synapseWorkspaceSqlPoolTableDataSetMapping" {
+///   account_name            = "Account1"
+///   data_set_mapping_name   = "DatasetMapping1"
+///   resource_group_name     = "SampleResourceGroup"
+///   share_subscription_name = "ShareSubscription1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -421,8 +493,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.SynapseWorkspaceSqlPoolTableDataSetMapping;
 /// import com.pulumi.azurenative.datashare.SynapseWorkspaceSqlPoolTableDataSetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -538,6 +610,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_synapseworkspacesqlpooltabledatasetmapping" "synapseWorkspaceSqlPoolTableDataSetMapping" {
+///   account_name                                 = "consumerAccount"
+///   data_set_id                                  = "3dc64e49-1fc3-4186-b3dc-d388c4d3076a"
+///   data_set_mapping_name                        = "datasetMappingName1"
+///   kind                                         = "SynapseWorkspaceSqlPoolTable"
+///   resource_group_name                          = "SampleResourceGroup"
+///   share_subscription_name                      = "ShareSubscription1"
+///   synapse_workspace_sql_pool_table_resource_id = "/subscriptions/0f3dcfc3-18f8-4099-b381-8353e19d43a7/resourceGroups/SampleResourceGroup/providers/Microsoft.Synapse/workspaces/ExampleWorkspace/sqlPools/ExampleSqlPool/schemas/dbo/tables/table1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -546,8 +639,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.SynapseWorkspaceSqlPoolTableDataSetMapping;
 /// import com.pulumi.azurenative.datashare.SynapseWorkspaceSqlPoolTableDataSetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -1,8 +1,8 @@
 /// Defines what this IP filter will be used for. This is to support IP filtering on proxies.
 enum IpFilterTag {
-  valueDefault("Default"),
-  valueXffProxy("XffProxy"),
-  valueServiceTag("ServiceTag");
+  default_("Default"),
+  xffProxy("XffProxy"),
+  serviceTag("ServiceTag");
 
   const IpFilterTag(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum IpFilterTag {
     throw ArgumentError('Unknown IpFilterTag value: $value');
   }
 }
-

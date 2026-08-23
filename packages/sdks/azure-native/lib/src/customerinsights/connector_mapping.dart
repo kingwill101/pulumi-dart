@@ -138,6 +138,58 @@ import 'connector_mapping_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_customerinsights_connectormapping" "connectorMapping" {
+///   connector_name   = "testConnector8858"
+///   description      = "Test mapping"
+///   display_name     = "testMapping12491"
+///   entity_type      = "Interaction"
+///   entity_type_name = "TestInteractionType2967"
+///   hub_name         = "sdkTestHub"
+///   mapping_name     = "testMapping12491"
+///   mapping_properties = {
+///     availability = {
+///       frequency = "Hour"
+///       interval  = 5
+///     }
+///     complete_operation = {
+///       completion_operation_type = "DeleteFile"
+///       destination_folder        = "fakePath"
+///     }
+///     error_management = {
+///       error_limit           = 10
+///       error_management_type = "StopImport"
+///     }
+///     file_filter = "unknown"
+///     folder_path = "http://sample.dne/file"
+///     format = {
+///       column_delimiter = "|"
+///       format_type      = "TextFormat"
+///     }
+///     has_header = false
+///     structure = [{
+///       "columnName"   = "unknown1"
+///       "isEncrypted"  = false
+///       "propertyName" = "unknwon1"
+///       }, {
+///       "columnName"   = "unknown2"
+///       "isEncrypted"  = true
+///       "propertyName" = "unknwon2"
+///     }]
+///   }
+///   resource_group_name = "TestHubRG"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -151,8 +203,8 @@ import 'connector_mapping_properties_response.dart';
 /// import com.pulumi.azurenative.customerinsights.inputs.ConnectorMappingCompleteOperationArgs;
 /// import com.pulumi.azurenative.customerinsights.inputs.ConnectorMappingErrorManagementArgs;
 /// import com.pulumi.azurenative.customerinsights.inputs.ConnectorMappingFormatArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

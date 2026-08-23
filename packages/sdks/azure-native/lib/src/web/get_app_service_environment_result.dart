@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ase_v3_networking_configuration_response.dart';
 import 'custom_dns_suffix_configuration_response.dart';
 import 'name_value_pair_response.dart';
+import 'system_data_response.dart';
 import 'virtual_network_profile_response.dart';
 
 /// Result data returned by getAppServiceEnvironment.
@@ -22,7 +23,7 @@ class GetAppServiceEnvironmentResult {
   final int? frontEndScaleFactor;
   /// Flag that displays whether an ASE has linux workers or not
   final bool hasLinuxWorkers;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
   final String? internalLoadBalancingMode;
@@ -30,7 +31,7 @@ class GetAppServiceEnvironmentResult {
   final int? ipsslAddressCount;
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   final String? kind;
-  /// Resource Location.
+  /// The geo-location where the resource lives
   final String location;
   /// Maximum number of VMs in the App Service Environment.
   final int maximumNumberOfMachines;
@@ -38,7 +39,7 @@ class GetAppServiceEnvironmentResult {
   final int multiRoleCount;
   /// Front-end VM size, e.g. "Medium", "Large".
   final String? multiSize;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
   /// Full view of networking configuration for an ASE.
   final AseV3NetworkingConfigurationResponse? networkingConfiguration;
@@ -49,9 +50,11 @@ class GetAppServiceEnvironmentResult {
   /// &lt;code&gt;true&lt;/code&gt; if the App Service Environment is suspended; otherwise, &lt;code&gt;false&lt;/code&gt;. The environment can be suspended, e.g. when the management endpoint is no longer available
   /// (most likely because NSG blocked the incoming traffic).
   final bool suspended;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
   /// Resource tags.
   final Map<String, String>? tags;
-  /// Resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// Whether an upgrade is available for this App Service Environment.
   final String upgradeAvailability;
@@ -72,21 +75,22 @@ class GetAppServiceEnvironmentResult {
   /// [dnsSuffix] DNS suffix of the App Service Environment.
   /// [frontEndScaleFactor] Scale factor for front-ends.
   /// [hasLinuxWorkers] Flag that displays whether an ASE has linux workers or not
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [internalLoadBalancingMode] Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
   /// [ipsslAddressCount] Number of IP SSL addresses reserved for the App Service Environment.
   /// [kind] Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
-  /// [location] Resource Location.
+  /// [location] The geo-location where the resource lives
   /// [maximumNumberOfMachines] Maximum number of VMs in the App Service Environment.
   /// [multiRoleCount] Number of front-end instances.
   /// [multiSize] Front-end VM size, e.g. "Medium", "Large".
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [networkingConfiguration] Full view of networking configuration for an ASE.
   /// [provisioningState] Provisioning state of the App Service Environment.
   /// [status] Current status of the App Service Environment.
   /// [suspended] &lt;code&gt;true&lt;/code&gt; if the App Service Environment is suspended; otherwise, &lt;code&gt;false&lt;/code&gt;. The environment can be suspended, e.g. when the management endpoint is no longer available
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
-  /// [type] Resource type.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [upgradeAvailability] Whether an upgrade is available for this App Service Environment.
   /// [upgradePreference] Upgrade Preference
   /// [userWhitelistedIpRanges] User added ip ranges to whitelist on ASE db
@@ -113,6 +117,7 @@ class GetAppServiceEnvironmentResult {
     required this.provisioningState,
     required this.status,
     required this.suspended,
+    required this.systemData,
     this.tags,
     required this.type,
     required this.upgradeAvailability,
@@ -144,6 +149,7 @@ class GetAppServiceEnvironmentResult {
       'provisioningState': provisioningState,
       'status': status,
       'suspended': suspended,
+      'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
       'upgradeAvailability': upgradeAvailability,
@@ -176,6 +182,7 @@ class GetAppServiceEnvironmentResult {
       provisioningState: map['provisioningState'] as String,
       status: map['status'] as String,
       suspended: map['suspended'] as bool,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       upgradeAvailability: map['upgradeAvailability'] as String,
@@ -186,4 +193,3 @@ class GetAppServiceEnvironmentResult {
     );
   }
 }
-

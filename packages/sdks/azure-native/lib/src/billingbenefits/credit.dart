@@ -12,7 +12,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
 ///
-/// Other available API versions: 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billingbenefits [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-12-01-preview, 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billingbenefits [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -88,6 +88,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_billingbenefits_credit" "credit" {
+///   credit = {
+///     amount        = 20000
+///     currency_code = "USD"
+///     grain         = "FullTerm"
+///   }
+///   credit_name         = "credit_20231212"
+///   end_at              = "2024-01-12T00:00:00Z"
+///   location            = "global"
+///   product_code        = "0002d726-0000-0160-330f-a0b98cdbbdc4"
+///   resource_group_name = "resource_group_name_01"
+///   start_at            = "2023-12-12T00:00:00Z"
+///   tags = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +126,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.billingbenefits.Credit;
 /// import com.pulumi.azurenative.billingbenefits.CreditArgs;
 /// import com.pulumi.azurenative.billingbenefits.inputs.CommitmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -163,7 +192,7 @@ import 'system_data_response.dart';
 ///
 /// credit = azure_native.billingbenefits.Credit("credit",
 ///     credit={
-///         "amount": 20000,
+///         "amount": float(20000),
 ///         "currency_code": "USD",
 ///         "grain": azure_native.billingbenefits.CommitmentGrain.FULL_TERM,
 ///     },
@@ -340,6 +369,60 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_billingbenefits_credit" "credit" {
+///   breakdown {
+///     allocation = {
+///       amount        = 25000
+///       currency_code = "USD"
+///       grain         = "FullTerm"
+///     }
+///     dimensions {
+///       key   = "productFamily"
+///       value = "Azure"
+///     }
+///     dimensions {
+///       key   = "productCode"
+///       value = "00002b30-0000-0260-d348-f3ffcd565473"
+///     }
+///     dimensions {
+///       key   = "creditType"
+///       value = "EndCustomerInvestmentCredit"
+///     }
+///     dimensions {
+///       key   = "supplierType"
+///       value = "External"
+///     }
+///     end_at   = "2025-08-31T23:59:59.999Z"
+///     start_at = "2025-08-01T00:00:00Z"
+///   }
+///   credit = {
+///     amount        = 25000
+///     currency_code = "USD"
+///     grain         = "FullTerm"
+///   }
+///   credit_name         = "credit_20231212"
+///   end_at              = "2025-08-31T23:59:59.999Z"
+///   location            = "global"
+///   product_code        = "00002b30-0000-0260-d348-f3ffcd565473"
+///   resource_group_name = "resource_group_name_01"
+///   start_at            = "2025-08-01T00:00:00Z"
+///   tags = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -350,8 +433,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.billingbenefits.CreditArgs;
 /// import com.pulumi.azurenative.billingbenefits.inputs.CreditBreakdownItemArgs;
 /// import com.pulumi.azurenative.billingbenefits.inputs.CommitmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -470,7 +553,7 @@ import 'system_data_response.dart';
 /// credit = azure_native.billingbenefits.Credit("credit",
 ///     breakdown=[{
 ///         "allocation": {
-///             "amount": 25000,
+///             "amount": float(25000),
 ///             "currency_code": "USD",
 ///             "grain": azure_native.billingbenefits.CommitmentGrain.FULL_TERM,
 ///         },
@@ -496,7 +579,7 @@ import 'system_data_response.dart';
 ///         "start_at": "2025-08-01T00:00:00Z",
 ///     }],
 ///     credit={
-///         "amount": 25000,
+///         "amount": float(25000),
 ///         "currency_code": "USD",
 ///         "grain": azure_native.billingbenefits.CommitmentGrain.FULL_TERM,
 ///     },
@@ -617,6 +700,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_billingbenefits_credit" "credit" {
+///   credit_name = "credit_20231212"
+///   location    = "global"
+///   policies = {
+///     expiration = "SuspendBillingProfile"
+///     redemption = "AutoRedeem"
+///   }
+///   product_code        = "0002d726-0000-0160-330f-a0b98cdbbdc4"
+///   resource_group_name = "resource_group_name_01"
+///   tags = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -626,8 +735,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.billingbenefits.Credit;
 /// import com.pulumi.azurenative.billingbenefits.CreditArgs;
 /// import com.pulumi.azurenative.billingbenefits.inputs.CreditPoliciesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

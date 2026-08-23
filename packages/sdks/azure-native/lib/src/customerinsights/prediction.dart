@@ -100,6 +100,43 @@ import 'prediction_response_system_generated_entities.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_customerinsights_prediction" "prediction" {
+///   auto_analyze = true
+///   description = {
+///     "en-us" = "sdktest"
+///   }
+///   display_name = {
+///     "en-us" = "sdktest"
+///   }
+///   hub_name                   = "sdkTestHub"
+///   involved_interaction_types = []
+///   involved_kpi_types         = []
+///   involved_relationships     = []
+///   mappings = {
+///     grade  = "sdktest_Grade"
+///     reason = "sdktest_Reason"
+///     score  = "sdktest_Score"
+///   }
+///   negative_outcome_expression = "Customers.FirstName = 'Mike'"
+///   positive_outcome_expression = "Customers.FirstName = 'David'"
+///   prediction_name             = "sdktest"
+///   primary_profile_type        = "Customers"
+///   resource_group_name         = "TestHubRG"
+///   scope_expression            = "*"
+///   score_label                 = "score label"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +146,8 @@ import 'prediction_response_system_generated_entities.dart';
 /// import com.pulumi.azurenative.customerinsights.Prediction;
 /// import com.pulumi.azurenative.customerinsights.PredictionArgs;
 /// import com.pulumi.azurenative.customerinsights.inputs.PredictionMappingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

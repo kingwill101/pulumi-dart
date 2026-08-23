@@ -15,4 +15,3 @@ enum ApplicationGatewayRequestRoutingRuleType {
     throw ArgumentError('Unknown ApplicationGatewayRequestRoutingRuleType value: $value');
   }
 }
-

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'automation_args.dart';
+import 'system_data_response.dart';
 
 /// The security automation resource.
 ///
@@ -103,6 +104,38 @@ import 'automation_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_automation" "automation" {
+///   actions = [{
+///     "actionType"         = "LogicApp"
+///     "logicAppResourceId" = "/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1"
+///     "uri"                = "https://exampleTriggerUri1.com"
+///   }]
+///   automation_name     = "exampleAutomation"
+///   description         = "An example of a security automation that triggers one LogicApp resource (myTest1) on any security assessment"
+///   is_enabled          = true
+///   location            = "Central US"
+///   resource_group_name = "exampleResourceGroup"
+///   scopes {
+///     description = "A description that helps to identify this scope - for example: security assessments that relate to the resource group myResourceGroup within the subscription a5caac9c-5c04-49af-b3d0-e204f40345d5"
+///     scope_path  = "/subscriptions/a5caac9c-5c04-49af-b3d0-e204f40345d5/resourceGroups/myResourceGroup"
+///   }
+///   sources {
+///     event_source = "Assessments"
+///   }
+///   tags = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +146,8 @@ import 'automation_args.dart';
 /// import com.pulumi.azurenative.security.AutomationArgs;
 /// import com.pulumi.azurenative.security.inputs.AutomationScopeArgs;
 /// import com.pulumi.azurenative.security.inputs.AutomationSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -352,6 +385,46 @@ import 'automation_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_automation" "automation" {
+///   actions = [{
+///     "actionType"         = "LogicApp"
+///     "logicAppResourceId" = "/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1"
+///     "uri"                = "https://exampleTriggerUri1.com"
+///   }]
+///   automation_name     = "exampleAutomation"
+///   description         = "An example of a security automation that triggers one LogicApp resource (myTest1) on any high severity security assessment"
+///   is_enabled          = true
+///   location            = "Central US"
+///   resource_group_name = "exampleResourceGroup"
+///   scopes {
+///     description = "A description that helps to identify this scope - for example: security assessments that relate to the resource group myResourceGroup within the subscription a5caac9c-5c04-49af-b3d0-e204f40345d5"
+///     scope_path  = "/subscriptions/a5caac9c-5c04-49af-b3d0-e204f40345d5/resourceGroups/myResourceGroup"
+///   }
+///   sources {
+///     event_source = "Assessments"
+///     rule_sets {
+///       rules {
+///         expected_value  = "High"
+///         operator        = "Equals"
+///         property_j_path = "properties.metadata.severity"
+///         property_type   = "String"
+///       }
+///     }
+///   }
+///   tags = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -362,8 +435,8 @@ import 'automation_args.dart';
 /// import com.pulumi.azurenative.security.AutomationArgs;
 /// import com.pulumi.azurenative.security.inputs.AutomationScopeArgs;
 /// import com.pulumi.azurenative.security.inputs.AutomationSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -631,6 +704,46 @@ import 'automation_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_automation" "automation" {
+///   actions = [{
+///     "actionType"         = "LogicApp"
+///     "logicAppResourceId" = "/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1"
+///     "uri"                = "https://exampleTriggerUri1.com"
+///   }]
+///   automation_name     = "exampleAutomation"
+///   description         = "An example of a security automation that triggers one LogicApp resource (myTest1) on any security assessment of type customAssessment"
+///   is_enabled          = false
+///   location            = "Central US"
+///   resource_group_name = "exampleResourceGroup"
+///   scopes {
+///     description = "A description that helps to identify this scope - for example: security assessments that relate to the resource group myResourceGroup within the subscription a5caac9c-5c04-49af-b3d0-e204f40345d5"
+///     scope_path  = "/subscriptions/a5caac9c-5c04-49af-b3d0-e204f40345d5/resourceGroups/myResourceGroup"
+///   }
+///   sources {
+///     event_source = "Assessments"
+///     rule_sets {
+///       rules {
+///         expected_value  = "customAssessment"
+///         operator        = "Equals"
+///         property_j_path = "$.Entity.AssessmentType"
+///         property_type   = "String"
+///       }
+///     }
+///   }
+///   tags = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -641,8 +754,8 @@ import 'automation_args.dart';
 /// import com.pulumi.azurenative.security.AutomationArgs;
 /// import com.pulumi.azurenative.security.inputs.AutomationScopeArgs;
 /// import com.pulumi.azurenative.security.inputs.AutomationSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -810,17 +923,19 @@ class Automation extends pulumi.CustomResource {
   late final pulumi.Output<bool?> isEnabled;
   /// Kind of the resource
   late final pulumi.Output<String?> kind;
-  /// Location where the resource is stored
+  /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
-  /// Resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// A collection of scopes on which the security automations logic is applied. Supported scopes are the subscription itself or a resource group under that subscription. The automation will only apply on defined scopes.
   late final pulumi.Output<List<Map<String, dynamic>>?> scopes;
   /// A collection of the source event types which evaluate the security automation set of rules.
   late final pulumi.Output<List<Map<String, dynamic>>?> sources;
-  /// A list of key value pairs that describe the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [Automation].
@@ -847,6 +962,7 @@ class Automation extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     scopes = registerOutput<List<Map<String, dynamic>>?>('scopes');
     sources = registerOutput<List<Map<String, dynamic>>?>('sources');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

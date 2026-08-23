@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_response.dart';
 import 'security_operator_args.dart';
+import 'system_data_response.dart';
 
 /// Security operator under a given subscription and pricing
 ///
@@ -52,6 +53,22 @@ import 'security_operator_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_securityoperator" "securityOperator" {
+///   pricing_name           = "CloudPosture"
+///   security_operator_name = "DefenderCSPMSecurityOperator"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -60,8 +77,8 @@ import 'security_operator_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.SecurityOperator;
 /// import com.pulumi.azurenative.security.SecurityOperatorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -129,9 +146,11 @@ class SecurityOperator extends pulumi.CustomResource {
   late final pulumi.Output<String> azureApiVersion;
   /// Identity for the resource.
   late final pulumi.Output<IdentityResponse?> identity;
-  /// Resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [SecurityOperator].
@@ -151,6 +170,7 @@ class SecurityOperator extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

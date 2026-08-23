@@ -1,12 +1,12 @@
 /// The type of the environment data.
 enum EnvironmentType {
-  valueAwsAccount("AwsAccount"),
-  valueGcpProject("GcpProject"),
-  valueGithubScope("GithubScope"),
-  valueAzureDevOpsScope("AzureDevOpsScope"),
-  valueGitlabScope("GitlabScope"),
-  valueDockerHubOrganization("DockerHubOrganization"),
-  valueJFrogArtifactory("JFrogArtifactory");
+  awsAccount("AwsAccount"),
+  gcpProject("GcpProject"),
+  githubScope("GithubScope"),
+  azureDevOpsScope("AzureDevOpsScope"),
+  gitlabScope("GitlabScope"),
+  dockerHubOrganization("DockerHubOrganization"),
+  jFrogArtifactory("JFrogArtifactory");
 
   const EnvironmentType(this.wireValue);
   final String wireValue;
@@ -20,4 +20,3 @@ enum EnvironmentType {
     throw ArgumentError('Unknown EnvironmentType value: $value');
   }
 }
-

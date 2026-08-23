@@ -15,4 +15,3 @@ enum AutoProtectionOfDataDisk {
     throw ArgumentError('Unknown AutoProtectionOfDataDisk value: $value');
   }
 }
-

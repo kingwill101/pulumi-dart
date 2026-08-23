@@ -19,4 +19,3 @@ enum NoncurrentVersionTransitionStorageClass {
     throw ArgumentError('Unknown NoncurrentVersionTransitionStorageClass value: $value');
   }
 }
-

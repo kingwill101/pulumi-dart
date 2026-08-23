@@ -68,6 +68,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_scvmm_availabilityset" "availabilitySet" {
+///   availability_set_name = "hr-avset"
+///   extended_location = {
+///     name = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.Arc/customLocations/contoso"
+///     type = "customLocation"
+///   }
+///   location            = "East US"
+///   resource_group_name = "testrg"
+///   vmm_server_id       = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.ScVmm/VMMServers/ContosoVMMServer"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +99,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.scvmm.AvailabilitySet;
 /// import com.pulumi.azurenative.scvmm.AvailabilitySetArgs;
 /// import com.pulumi.azurenative.scvmm.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

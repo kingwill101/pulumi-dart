@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'advanced_threat_protection_args.dart';
+import 'system_data_response.dart';
 
 /// The Advanced Threat Protection resource.
 ///
@@ -55,6 +56,23 @@ import 'advanced_threat_protection_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_advancedthreatprotection" "advancedThreatProtection" {
+///   is_enabled   = true
+///   resource_id  = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/SampleRG/providers/Microsoft.Storage/storageAccounts/samplestorageaccount"
+///   setting_name = "current"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +81,8 @@ import 'advanced_threat_protection_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.AdvancedThreatProtection;
 /// import com.pulumi.azurenative.security.AdvancedThreatProtectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -136,9 +154,11 @@ class AdvancedThreatProtection extends pulumi.CustomResource {
   late final pulumi.Output<String> azureApiVersion;
   /// Indicates whether Advanced Threat Protection is enabled.
   late final pulumi.Output<bool?> isEnabled;
-  /// Resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [AdvancedThreatProtection].
@@ -158,6 +178,7 @@ class AdvancedThreatProtection extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     isEnabled = registerOutput<bool?>('isEnabled');
     this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

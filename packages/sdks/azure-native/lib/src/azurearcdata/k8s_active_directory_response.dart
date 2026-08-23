@@ -43,4 +43,3 @@ class K8sActiveDirectoryResponse {
     );
   }
 }
-

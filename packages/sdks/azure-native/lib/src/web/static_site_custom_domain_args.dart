@@ -7,22 +7,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_web_static_site_custom_domain_args_doc}
 class StaticSiteCustomDomainArgs {
-  /// The custom domain to create.
+  /// The custom domain name.
   final pulumi.Input<String>? domainName;
   /// Kind of resource.
   final pulumi.Input<String>? kind;
   /// Name of the static site.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Validation method for adding a custom domain
   final pulumi.Input<String>? validationMethod;
 
   /// Creates a new [StaticSiteCustomDomainArgs].
-  /// [domainName] The custom domain to create.
+  /// [domainName] The custom domain name.
   /// [kind] Kind of resource.
   /// [name] Name of the static site.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [validationMethod] Validation method for adding a custom domain
   const StaticSiteCustomDomainArgs({
     this.domainName,
@@ -52,4 +52,3 @@ class StaticSiteCustomDomainArgs {
     );
   }
 }
-

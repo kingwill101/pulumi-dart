@@ -55,4 +55,3 @@ class X12ProcessingSettings {
     );
   }
 }
-

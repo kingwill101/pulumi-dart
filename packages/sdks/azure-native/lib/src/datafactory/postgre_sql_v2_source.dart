@@ -68,4 +68,3 @@ class PostgreSqlV2Source {
     );
   }
 }
-

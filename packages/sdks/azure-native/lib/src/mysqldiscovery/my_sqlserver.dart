@@ -75,6 +75,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_mysqldiscovery_mysqlserver" "mySQLServer" {
+///   host_ip             = ["127.0.0.1", "127.0.0.2"]
+///   host_name           = "test.mysql.server"
+///   machine_id          = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourcegroups/demoRG/providers/Microsoft.OffAzure/serverSites/xxx/machines/xxx"
+///   mysql_version       = "8.0"
+///   number_of_database  = 16
+///   port_number         = "3306"
+///   resource_group_name = "testrg"
+///   server_name         = "testServerName"
+///   site_name           = "testSite"
+///   support_status      = "Mainstream"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +107,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.mysqldiscovery.MySQLServer;
 /// import com.pulumi.azurenative.mysqldiscovery.MySQLServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -150,7 +174,7 @@ import 'system_data_response.dart';
 ///     host_name="test.mysql.server",
 ///     machine_id="/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourcegroups/demoRG/providers/Microsoft.OffAzure/serverSites/xxx/machines/xxx",
 ///     mysql_version="8.0",
-///     number_of_database=16,
+///     number_of_database=float(16),
 ///     port_number="3306",
 ///     resource_group_name="testrg",
 ///     server_name="testServerName",

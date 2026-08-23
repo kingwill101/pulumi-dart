@@ -5,7 +5,7 @@ import 'system_data_response.dart';
 
 /// Result data returned by getCodeSigningAccount.
 class GetCodeSigningAccountResult {
-  /// The URI of the trusted signing account which is used during signing files.
+  /// The URI of the artifact signing account which is used during signing files.
   final String accountUri;
   /// The Azure API version of the resource.
   final String azureApiVersion;
@@ -15,9 +15,9 @@ class GetCodeSigningAccountResult {
   final String location;
   /// The name of the resource
   final String name;
-  /// Status of the current operation on trusted signing account.
+  /// Status of the current operation on artifact signing account.
   final String provisioningState;
-  /// SKU of the trusted signing account.
+  /// SKU of the artifact signing account.
   final AccountSkuResponse? sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
@@ -27,13 +27,13 @@ class GetCodeSigningAccountResult {
   final String type;
 
   /// Creates a new [GetCodeSigningAccountResult].
-  /// [accountUri] The URI of the trusted signing account which is used during signing files.
+  /// [accountUri] The URI of the artifact signing account which is used during signing files.
   /// [azureApiVersion] The Azure API version of the resource.
   /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [location] The geo-location where the resource lives
   /// [name] The name of the resource
-  /// [provisioningState] Status of the current operation on trusted signing account.
-  /// [sku] SKU of the trusted signing account.
+  /// [provisioningState] Status of the current operation on artifact signing account.
+  /// [sku] SKU of the artifact signing account.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -80,4 +80,3 @@ class GetCodeSigningAccountResult {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum RuleIsCompressionEnabled {
     throw ArgumentError('Unknown RuleIsCompressionEnabled value: $value');
   }
 }
-

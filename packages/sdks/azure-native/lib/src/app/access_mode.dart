@@ -15,4 +15,3 @@ enum AccessMode {
     throw ArgumentError('Unknown AccessMode value: $value');
   }
 }
-

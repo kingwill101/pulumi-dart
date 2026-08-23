@@ -20,17 +20,17 @@ class IotSecuritySolutionArgs {
   final pulumi.Input<List<String>>? export;
   /// IoT Hub resource IDs
   final pulumi.Input<List<String>> iotHubs;
-  /// The resource location.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// List of the configuration status for each recommendation type.
   final pulumi.Input<List<RecommendationConfigurationProperties>>? recommendationsConfiguration;
-  /// The name of the resource group within the user's subscription. The name is case insensitive.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the IoT Security solution.
   final pulumi.Input<String>? solutionName;
   /// Status of the IoT Security solution.
   final pulumi.Input<String>? status;
-  /// Resource tags
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
   /// Unmasked IP address logging status
   final pulumi.Input<String>? unmaskedIpLoggingStatus;
@@ -45,12 +45,12 @@ class IotSecuritySolutionArgs {
   /// [displayName] Resource display name.
   /// [export] List of additional options for exporting to workspace data.
   /// [iotHubs] IoT Hub resource IDs
-  /// [location] The resource location.
+  /// [location] The geo-location where the resource lives
   /// [recommendationsConfiguration] List of the configuration status for each recommendation type.
-  /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [solutionName] The name of the IoT Security solution.
   /// [status] Status of the IoT Security solution.
-  /// [tags] Resource tags
+  /// [tags] Resource tags.
   /// [unmaskedIpLoggingStatus] Unmasked IP address logging status
   /// [userDefinedResources] Properties of the IoT Security solution's user defined resources.
   /// [workspace] Workspace resource ID
@@ -109,4 +109,3 @@ class IotSecuritySolutionArgs {
     );
   }
 }
-

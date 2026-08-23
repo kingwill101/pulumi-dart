@@ -133,6 +133,54 @@ import 'peering_sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_peering_peering" "peering" {
+///   direct = {
+///     connections = [{
+///       "bandwidthInMbps" = 10000
+///       "bgpSession" = {
+///         "maxPrefixesAdvertisedV4" = 1000
+///         "maxPrefixesAdvertisedV6" = 100
+///         "md5AuthenticationKey"    = "test-md5-auth-key"
+///         "sessionPrefixV4"         = "192.168.0.0/31"
+///         "sessionPrefixV6"         = "fd00::0/127"
+///       }
+///       "connectionIdentifier"   = "5F4CB5C7-6B43-4444-9338-9ABC72606C16"
+///       "peeringDBFacilityId"    = 99999
+///       "sessionAddressProvider" = "Peer"
+///       "useForPeeringService"   = false
+///       }, {
+///       "bandwidthInMbps"        = 10000
+///       "connectionIdentifier"   = "8AB00818-D533-4504-A25A-03A17F61201C"
+///       "peeringDBFacilityId"    = 99999
+///       "sessionAddressProvider" = "Microsoft"
+///       "useForPeeringService"   = true
+///     }]
+///     direct_peering_type = "Edge"
+///     peer_asn = {
+///       id = "/subscriptions/subId/providers/Microsoft.Peering/peerAsns/myAsn1"
+///     }
+///   }
+///   kind                = "Direct"
+///   location            = "eastus"
+///   peering_location    = "peeringLocation0"
+///   peering_name        = "peeringName"
+///   resource_group_name = "rgName"
+///   sku = {
+///     name = "Basic_Direct_Free"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -144,8 +192,8 @@ import 'peering_sku_response.dart';
 /// import com.pulumi.azurenative.peering.inputs.PeeringPropertiesDirectArgs;
 /// import com.pulumi.azurenative.peering.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.peering.inputs.PeeringSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -435,6 +483,48 @@ import 'peering_sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_peering_peering" "peering" {
+///   direct = {
+///     connections = [{
+///       "bandwidthInMbps" = 10000
+///       "bgpSession" = {
+///         "maxPrefixesAdvertisedV4"     = 1000
+///         "maxPrefixesAdvertisedV6"     = 100
+///         "microsoftSessionIPv4Address" = "192.168.0.123"
+///         "peerSessionIPv4Address"      = "192.168.0.234"
+///         "sessionPrefixV4"             = "192.168.0.0/24"
+///       }
+///       "connectionIdentifier"   = "5F4CB5C7-6B43-4444-9338-9ABC72606C16"
+///       "peeringDBFacilityId"    = 99999
+///       "sessionAddressProvider" = "Peer"
+///       "useForPeeringService"   = true
+///     }]
+///     direct_peering_type = "IxRs"
+///     peer_asn = {
+///       id = "/subscriptions/subId/providers/Microsoft.Peering/peerAsns/myAsn1"
+///     }
+///   }
+///   kind                = "Direct"
+///   location            = "eastus"
+///   peering_location    = "peeringLocation0"
+///   peering_name        = "peeringName"
+///   resource_group_name = "rgName"
+///   sku = {
+///     name = "Premium_Direct_Free"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -446,8 +536,8 @@ import 'peering_sku_response.dart';
 /// import com.pulumi.azurenative.peering.inputs.PeeringPropertiesDirectArgs;
 /// import com.pulumi.azurenative.peering.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.peering.inputs.PeeringSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -722,6 +812,54 @@ import 'peering_sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_peering_peering" "peering" {
+///   exchange = {
+///     connections = [{
+///       "bgpSession" = {
+///         "maxPrefixesAdvertisedV4" = 1000
+///         "maxPrefixesAdvertisedV6" = 100
+///         "md5AuthenticationKey"    = "test-md5-auth-key"
+///         "peerSessionIPv4Address"  = "192.168.2.1"
+///         "peerSessionIPv6Address"  = "fd00::1"
+///       }
+///       "connectionIdentifier" = "CE495334-0E94-4E51-8164-8116D6CD284D"
+///       "peeringDBFacilityId"  = 99999
+///       }, {
+///       "bgpSession" = {
+///         "maxPrefixesAdvertisedV4" = 1000
+///         "maxPrefixesAdvertisedV6" = 100
+///         "md5AuthenticationKey"    = "test-md5-auth-key"
+///         "peerSessionIPv4Address"  = "192.168.2.2"
+///         "peerSessionIPv6Address"  = "fd00::2"
+///       }
+///       "connectionIdentifier" = "CDD8E673-CB07-47E6-84DE-3739F778762B"
+///       "peeringDBFacilityId"  = 99999
+///     }]
+///     peer_asn = {
+///       id = "/subscriptions/subId/providers/Microsoft.Peering/peerAsns/myAsn1"
+///     }
+///   }
+///   kind                = "Exchange"
+///   location            = "eastus"
+///   peering_location    = "peeringLocation0"
+///   peering_name        = "peeringName"
+///   resource_group_name = "rgName"
+///   sku = {
+///     name = "Basic_Exchange_Free"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -733,8 +871,8 @@ import 'peering_sku_response.dart';
 /// import com.pulumi.azurenative.peering.inputs.PeeringPropertiesExchangeArgs;
 /// import com.pulumi.azurenative.peering.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.peering.inputs.PeeringSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

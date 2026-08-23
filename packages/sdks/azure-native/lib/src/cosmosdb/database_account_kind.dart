@@ -16,4 +16,3 @@ enum DatabaseAccountKind {
     throw ArgumentError('Unknown DatabaseAccountKind value: $value');
   }
 }
-

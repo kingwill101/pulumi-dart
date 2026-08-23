@@ -17,4 +17,3 @@ enum SourceKind {
     throw ArgumentError('Unknown SourceKind value: $value');
   }
 }
-

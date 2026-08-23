@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 ///
-/// Other available API versions: 2023-04-01, 2023-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-04-01, 2023-09-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -114,6 +114,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_maintenance_configurationassignmentsforresourcegroup" "configurationAssignmentsForResourceGroup" {
+///   configuration_assignment_name = "workervmConfiguration"
+///   filter = {
+///     locations      = ["Japan East", "UK South"]
+///     resource_types = ["Microsoft.HybridCompute/machines", "Microsoft.Compute/virtualMachines"]
+///     tag_settings = {
+///       filter_operator = "Any"
+///       tags = {
+///         "tag1" = ["tag1Value1", "tag1Value2", "tag1Value3"]
+///         "tag2" = ["tag2Value1", "tag2Value2", "tag2Value3"]
+///       }
+///     }
+///   }
+///   maintenance_configuration_id = "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourcegroups/examplerg/providers/Microsoft.Maintenance/maintenanceConfigurations/configuration1"
+///   resource_group_name          = "examplerg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -124,8 +152,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.maintenance.ConfigurationAssignmentsForResourceGroupArgs;
 /// import com.pulumi.azurenative.maintenance.inputs.ConfigurationAssignmentFilterPropertiesArgs;
 /// import com.pulumi.azurenative.maintenance.inputs.TagSettingsPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -149,14 +177,14 @@ import 'system_data_response.dart';
 ///                 .tagSettings(TagSettingsPropertiesArgs.builder()
 ///                     .filterOperator("Any")
 ///                     .tags(Map.ofEntries(
-///                         Map.entry("tag1",
+///                         Map.entry("tag1", Arrays.asList(
 ///                             "tag1Value1",
 ///                             "tag1Value2",
-///                             "tag1Value3"),
-///                         Map.entry("tag2",
+///                             "tag1Value3")),
+///                         Map.entry("tag2", Arrays.asList(
 ///                             "tag2Value1",
 ///                             "tag2Value2",
-///                             "tag2Value3")
+///                             "tag2Value3"))
 ///                     ))
 ///                     .build())
 ///                 .build())

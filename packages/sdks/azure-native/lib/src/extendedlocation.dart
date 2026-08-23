@@ -1,7 +1,7 @@
 export 'extendedlocation/custom_location.dart';
 export 'extendedlocation/custom_location_args.dart';
 export 'extendedlocation/custom_location_properties_authentication.dart';
-export 'extendedlocation/custom_location_properties_response_authentication.dart';
+export 'extendedlocation/custom_location_properties_authentication_response.dart';
 export 'extendedlocation/functions.dart';
 export 'extendedlocation/get_custom_location_args.dart';
 export 'extendedlocation/get_custom_location_result.dart';
@@ -13,6 +13,6 @@ export 'extendedlocation/identity_response.dart';
 export 'extendedlocation/resource_identity_type.dart';
 export 'extendedlocation/resource_sync_rule.dart';
 export 'extendedlocation/resource_sync_rule_args.dart';
-export 'extendedlocation/resource_sync_rule_properties_response_selector.dart';
 export 'extendedlocation/resource_sync_rule_properties_selector.dart';
+export 'extendedlocation/resource_sync_rule_properties_selector_response.dart';
 export 'extendedlocation/system_data_response.dart';

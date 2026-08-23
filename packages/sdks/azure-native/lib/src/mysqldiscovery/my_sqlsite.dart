@@ -68,6 +68,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_mysqldiscovery_mysqlsite" "mySQLSite" {
+///   extended_location = {
+///     name = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.ExtendedLocation/customLocations/contoso"
+///     type = "customLocation"
+///   }
+///   location            = "East US"
+///   master_site_id      = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.OffAzure/MasterSites/xxx"
+///   migrate_project_id  = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourcegroups/demoRG/providers/microsoft.migrate/migrateprojects/xxx"
+///   resource_group_name = "testrg"
+///   site_name           = "testSite"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +100,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.mysqldiscovery.MySQLSite;
 /// import com.pulumi.azurenative.mysqldiscovery.MySQLSiteArgs;
 /// import com.pulumi.azurenative.mysqldiscovery.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

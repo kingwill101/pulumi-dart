@@ -43,6 +43,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     new AzureNative.AwsConnector.Inputs.DimensionArgs
 ///                     {
+///                         Name = "bfnmnqiewf",
 ///                         Value = "lnphxdrevivdil",
 ///                     },
 ///                 },
@@ -70,6 +71,7 @@ import 'system_data_response.dart';
 ///                                 {
 ///                                     new AzureNative.AwsConnector.Inputs.DimensionArgs
 ///                                     {
+///                                         Name = "bfnmnqiewf",
 ///                                         Value = "lnphxdrevivdil",
 ///                                     },
 ///                                 },
@@ -153,6 +155,7 @@ import 'system_data_response.dart';
 /// 					DatapointsToAlarm:  pulumi.Int(30),
 /// 					Dimensions: awsconnector.DimensionArray{
 /// 						&awsconnector.DimensionArgs{
+/// 							Name:  pulumi.String("bfnmnqiewf"),
 /// 							Value: pulumi.String("lnphxdrevivdil"),
 /// 						},
 /// 					},
@@ -173,6 +176,7 @@ import 'system_data_response.dart';
 /// 								Metric: &awsconnector.MetricArgs{
 /// 									Dimensions: awsconnector.DimensionArray{
 /// 										&awsconnector.DimensionArgs{
+/// 											Name:  pulumi.String("bfnmnqiewf"),
 /// 											Value: pulumi.String("lnphxdrevivdil"),
 /// 										},
 /// 									},
@@ -226,6 +230,88 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_cloudwatchalarm" "cloudWatchAlarm" {
+///   location = "nbymldrgacokglzmyglynjohhnj"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "uhqszqzfmdpnmiwu"
+///     aws_account_id = "qcoqhrkbfdowqmkzarqbtwcprj"
+///     aws_properties = {
+///       actions_enabled     = true
+///       alarm_actions       = ["ydnvbaggrnyxwzika"]
+///       alarm_description   = "idvyiwmbllvlfvjcibommfbp"
+///       alarm_name          = "ooriavzb"
+///       arn                 = "twsifnftkdrfzflvvsuka"
+///       comparison_operator = "qo"
+///       datapoints_to_alarm = 30
+///       dimensions = [{
+///         "name"  = "bfnmnqiewf"
+///         "value" = "lnphxdrevivdil"
+///       }]
+///       evaluate_low_sample_count_percentile = "oihpnjstsw"
+///       evaluation_periods                   = 15
+///       extended_statistic                   = "czkqsxjyzryvvkzoshk"
+///       insufficient_data_actions            = ["dfkb"]
+///       metric_name                          = "bkdkskukix"
+///       metrics = [{
+///         "accountId"  = "rbtogpxgrissdcvqupcuhqqesz"
+///         "expression" = "hhxrpieqtbvafrujybxxa"
+///         "id"         = "zcevmcxhujphx"
+///         "label"      = "jmeaobrgk"
+///         "metricStat" = {
+///           "metric" = {
+///             "dimensions" = [{
+///               "name"  = "bfnmnqiewf"
+///               "value" = "lnphxdrevivdil"
+///             }]
+///             "metricName" = "mabmwxjydr"
+///             "namespace"  = "wwoppcactqawdnkpxvjlo"
+///           }
+///           "period" = 22
+///           "stat"   = "znmppqcobugvvlzccemylhxzsfsg"
+///           "unit"   = "vu"
+///         }
+///         "period"     = 27
+///         "returnData" = true
+///       }]
+///       namespace  = "ptrnxovqoagxfepnjkpewbbusjkkzr"
+///       ok_actions = ["afskbnaohvdlb"]
+///       period     = 5
+///       statistic  = "yrrnvsfpyvhnzlmw"
+///       tags = [{
+///         "key"   = "mdkzoktp"
+///         "value" = "zswuuw"
+///       }]
+///       threshold           = 17
+///       threshold_metric_id = "sqtfzityufokpxbthucjitcljvo"
+///       treat_missing_data  = "iqrbyvljxufjwybtkjc"
+///       unit                = "vbjipwqqaobwlyebv"
+///     }
+///     aws_region        = "afpgkhpukllavze"
+///     aws_source_schema = "drehzmurfidpdlcf"
+///     aws_tags = {
+///       "key6400" = "ivxpvjindvijzvpazekctf"
+///     }
+///     public_cloud_connectors_resource_id = "upovlpslvvatbmxiuwhvj"
+///     public_cloud_resource_name          = "sjxcsoycs"
+///   }
+///   resource_group_name = "rgcloudWatchAlarm"
+///   tags = {
+///     "key7594" = "abbryoyexzxxwsdyfpvtliccd"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -236,8 +322,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.CloudWatchAlarmArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CloudWatchAlarmPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsCloudWatchAlarmPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -264,6 +350,7 @@ import 'system_data_response.dart';
 ///                     .comparisonOperator("qo")
 ///                     .datapointsToAlarm(30)
 ///                     .dimensions(DimensionArgs.builder()
+///                         .name("bfnmnqiewf")
 ///                         .value("lnphxdrevivdil")
 ///                         .build())
 ///                     .evaluateLowSampleCountPercentile("oihpnjstsw")
@@ -279,6 +366,7 @@ import 'system_data_response.dart';
 ///                         .metricStat(MetricStatArgs.builder()
 ///                             .metric(MetricArgs.builder()
 ///                                 .dimensions(DimensionArgs.builder()
+///                                     .name("bfnmnqiewf")
 ///                                     .value("lnphxdrevivdil")
 ///                                     .build())
 ///                                 .metricName("mabmwxjydr")
@@ -338,6 +426,7 @@ import 'system_data_response.dart';
 ///             comparisonOperator: "qo",
 ///             datapointsToAlarm: 30,
 ///             dimensions: [{
+///                 name: "bfnmnqiewf",
 ///                 value: "lnphxdrevivdil",
 ///             }],
 ///             evaluateLowSampleCountPercentile: "oihpnjstsw",
@@ -353,6 +442,7 @@ import 'system_data_response.dart';
 ///                 metricStat: {
 ///                     metric: {
 ///                         dimensions: [{
+///                             name: "bfnmnqiewf",
 ///                             value: "lnphxdrevivdil",
 ///                         }],
 ///                         metricName: "mabmwxjydr",
@@ -413,6 +503,7 @@ import 'system_data_response.dart';
 ///             "comparison_operator": "qo",
 ///             "datapoints_to_alarm": 30,
 ///             "dimensions": [{
+///                 "name": "bfnmnqiewf",
 ///                 "value": "lnphxdrevivdil",
 ///             }],
 ///             "evaluate_low_sample_count_percentile": "oihpnjstsw",
@@ -428,6 +519,7 @@ import 'system_data_response.dart';
 ///                 "metric_stat": {
 ///                     "metric": {
 ///                         "dimensions": [{
+///                             "name": "bfnmnqiewf",
 ///                             "value": "lnphxdrevivdil",
 ///                         }],
 ///                         "metric_name": "mabmwxjydr",
@@ -448,7 +540,7 @@ import 'system_data_response.dart';
 ///                 "key": "mdkzoktp",
 ///                 "value": "zswuuw",
 ///             }],
-///             "threshold": 17,
+///             "threshold": float(17),
 ///             "threshold_metric_id": "sqtfzityufokpxbthucjitcljvo",
 ///             "treat_missing_data": "iqrbyvljxufjwybtkjc",
 ///             "unit": "vbjipwqqaobwlyebv",
@@ -488,7 +580,8 @@ import 'system_data_response.dart';
 ///           comparisonOperator: qo
 ///           datapointsToAlarm: 30
 ///           dimensions:
-///             - value: lnphxdrevivdil
+///             - name: bfnmnqiewf
+///               value: lnphxdrevivdil
 ///           evaluateLowSampleCountPercentile: oihpnjstsw
 ///           evaluationPeriods: 15
 ///           extendedStatistic: czkqsxjyzryvvkzoshk
@@ -503,7 +596,8 @@ import 'system_data_response.dart';
 ///               metricStat:
 ///                 metric:
 ///                   dimensions:
-///                     - value: lnphxdrevivdil
+///                     - name: bfnmnqiewf
+///                       value: lnphxdrevivdil
 ///                   metricName: mabmwxjydr
 ///                   namespace: wwoppcactqawdnkpxvjlo
 ///                 period: 22

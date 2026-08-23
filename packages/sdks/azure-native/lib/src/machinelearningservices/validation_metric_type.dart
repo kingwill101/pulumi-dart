@@ -1,9 +1,9 @@
-/// Metric computation method to use for validation metrics.
+/// Metric computation method to use for validation metrics in image tasks.
 enum ValidationMetricType {
-  valueNone("None"),
-  valueCoco("Coco"),
-  valueVoc("Voc"),
-  valueCocoVoc("CocoVoc");
+  none("None"),
+  coco("Coco"),
+  voc("Voc"),
+  cocoVoc("CocoVoc");
 
   const ValidationMetricType(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum ValidationMetricType {
     throw ArgumentError('Unknown ValidationMetricType value: $value');
   }
 }
-

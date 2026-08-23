@@ -1,9 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'system_data_response.dart';
 import 'user_args.dart';
 import 'user_identity_response.dart';
 import 'user_secret_store_response.dart';
 
-/// Profile of a lab user.
+/// A user profile.
 ///
 /// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 ///
@@ -88,6 +89,38 @@ import 'user_secret_store_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devtestlab_user" "user" {
+///   identity = {
+///     app_id         = "{appId}"
+///     object_id      = "{objectId}"
+///     principal_id   = "{principalId}"
+///     principal_name = "{principalName}"
+///     tenant_id      = "{tenantId}"
+///   }
+///   lab_name            = "{devtestlabName}"
+///   location            = "{location}"
+///   name                = "{userName}"
+///   resource_group_name = "resourceGroupName"
+///   secret_store = {
+///     key_vault_id  = "{keyVaultId}"
+///     key_vault_uri = "{keyVaultUri}"
+///   }
+///   tags = {
+///     "tagName1" = "tagValue1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +131,8 @@ import 'user_secret_store_response.dart';
 /// import com.pulumi.azurenative.devtestlab.UserArgs;
 /// import com.pulumi.azurenative.devtestlab.inputs.UserIdentityArgs;
 /// import com.pulumi.azurenative.devtestlab.inputs.UserSecretStoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -228,17 +261,19 @@ class User extends pulumi.CustomResource {
   late final pulumi.Output<String> createdDate;
   /// The identity of the user.
   late final pulumi.Output<UserIdentityResponse?> identity;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
-  /// The name of the resource.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
   /// The secret store of the user.
   late final pulumi.Output<UserSecretStoreResponse?> secretStore;
-  /// The tags of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
@@ -264,6 +299,7 @@ class User extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     secretStore = registerOutput<UserSecretStoreResponse?>('secretStore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserSecretStoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');

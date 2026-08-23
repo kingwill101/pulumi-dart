@@ -80,4 +80,3 @@ class Db2ProviderInstancePropertiesResponse {
     );
   }
 }
-

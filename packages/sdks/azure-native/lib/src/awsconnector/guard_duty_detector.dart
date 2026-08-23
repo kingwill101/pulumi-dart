@@ -175,6 +175,69 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_guarddutydetector" "guardDutyDetector" {
+///   location = "sxpvpkjhhmcssseznufvqer"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "bdql"
+///     aws_account_id = "lgyellrapjphgbfhni"
+///     aws_properties = {
+///       data_sources = {
+///         kubernetes = {
+///           audit_logs = {
+///             enable = true
+///           }
+///         }
+///         malware_protection = {
+///           scan_ec2_instance_with_findings = {
+///             ebs_volumes = true
+///           }
+///         }
+///         s3_logs = {
+///           enable = true
+///         }
+///       }
+///       enable = true
+///       features = [{
+///         "additionalConfiguration" = [{
+///           "name"   = "lkkifsmqcaujhderxjzcmezjh"
+///           "status" = "wbjikrlaxrtwpwiexknat"
+///         }]
+///         "name"   = "aoocmexbklfmzmglxopv"
+///         "status" = "DISABLED"
+///       }]
+///       finding_publishing_frequency = "ed"
+///       id                           = "vakfpotktucclwwqxkczvzrw"
+///       tags = [{
+///         "key"   = "fezaldlvzejdwknyannwfh"
+///         "value" = "edlendjmyszkw"
+///       }]
+///     }
+///     aws_region        = "wtiiifsewygmgbdcebhl"
+///     aws_source_schema = "coaitkvmjezenllwmaouhnwfmjjbxa"
+///     aws_tags = {
+///       "key6130" = "qomcwrehzvdlpltzqhdzxu"
+///     }
+///     public_cloud_connectors_resource_id = "infmmygcbbjb"
+///     public_cloud_resource_name          = "hkdypyaxoeszbx"
+///   }
+///   resource_group_name = "rgguardDutyDetector"
+///   tags = {
+///     "key3628" = "pguiezvqu"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -191,8 +254,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.CFNMalwareProtectionConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CFNScanEc2InstanceWithFindingsConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CFNS3LogsConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

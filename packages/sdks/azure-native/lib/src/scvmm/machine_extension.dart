@@ -72,6 +72,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_scvmm_machineextension" "machineExtension" {
+///   extension_name      = "CustomScriptExtension"
+///   location            = "eastus2euap"
+///   publisher           = "Microsoft.Compute"
+///   resource_group_name = "myResourceGroup"
+///   settings = {
+///     "commandToExecute" = "powershell.exe -c \"Get-Process | Where-Object { $_.CPU -gt 10000 }\""
+///   }
+///   type                 = "CustomScriptExtension"
+///   type_handler_version = "1.10"
+///   virtual_machine_name = "myMachine"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +104,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.scvmm.MachineExtension;
 /// import com.pulumi.azurenative.scvmm.MachineExtensionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

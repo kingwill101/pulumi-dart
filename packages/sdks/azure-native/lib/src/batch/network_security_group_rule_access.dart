@@ -15,4 +15,3 @@ enum NetworkSecurityGroupRuleAccess {
     throw ArgumentError('Unknown NetworkSecurityGroupRuleAccess value: $value');
   }
 }
-

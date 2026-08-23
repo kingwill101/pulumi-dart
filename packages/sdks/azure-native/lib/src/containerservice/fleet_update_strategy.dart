@@ -7,7 +7,7 @@ import 'update_run_strategy_response.dart';
 ///
 /// Uses Azure REST API version 2024-05-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-08-15-preview.
 ///
-/// Other available API versions: 2023-08-15-preview, 2023-10-15, 2024-02-02-preview, 2024-04-01, 2025-03-01, 2025-04-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-08-15-preview, 2023-10-15, 2024-02-02-preview, 2024-04-01, 2025-03-01, 2025-04-01-preview, 2025-08-01-preview, 2026-02-01-preview, 2026-03-02-preview, 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -88,6 +88,32 @@ import 'update_run_strategy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_fleetupdatestrategy" "fleetUpdateStrategy" {
+///   fleet_name          = "fleet1"
+///   resource_group_name = "rg1"
+///   strategy = {
+///     stages = [{
+///       "afterStageWaitInSeconds" = 3600
+///       "groups" = [{
+///         "name" = "group-a"
+///       }]
+///       "name" = "stage1"
+///     }]
+///   }
+///   update_strategy_name = "strartegy1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +123,8 @@ import 'update_run_strategy_response.dart';
 /// import com.pulumi.azurenative.containerservice.FleetUpdateStrategy;
 /// import com.pulumi.azurenative.containerservice.FleetUpdateStrategyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.UpdateRunStrategyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

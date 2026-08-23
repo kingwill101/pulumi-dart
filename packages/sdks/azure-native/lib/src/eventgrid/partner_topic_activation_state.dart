@@ -16,4 +16,3 @@ enum PartnerTopicActivationState {
     throw ArgumentError('Unknown PartnerTopicActivationState value: $value');
   }
 }
-

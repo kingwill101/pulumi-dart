@@ -15,4 +15,3 @@ enum RecordingFrequency {
     throw ArgumentError('Unknown RecordingFrequency value: $value');
   }
 }
-

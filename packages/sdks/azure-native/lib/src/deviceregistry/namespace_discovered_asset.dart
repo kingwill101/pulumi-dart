@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
 ///
-/// Other available API versions: 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -551,6 +551,209 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_deviceregistry_namespacediscoveredasset" "namespaceDiscoveredAsset" {
+///   asset_type_refs = ["myAssetTypeRef1", "myAssetTypeRef2"]
+///   attributes = {
+///     "floor" = "1"
+///   }
+///   datasets {
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3"
+///       last_updated_on          = "2024-04-09T14:20:00.52Z"
+///       name                     = "dataset1DataPoint1"
+///       type_ref                 = "dataset1DataPoint1TypeRef"
+///     }
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4"
+///       last_updated_on          = "2024-04-09T14:20:00.52Z"
+///       name                     = "dataset1DataPoint2"
+///       type_ref                 = "dataset1DataPoint2TypeRef"
+///     }
+///     data_source           = "nsu=http://microsoft.com/Opc/OpcPlc/Boiler;i=5"
+///     dataset_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///     destinations = [{
+///       "configuration" = {
+///         "key" = "dataset1"
+///       }
+///       "target" = "BrokerStateStore"
+///     }]
+///     last_updated_on = "2024-04-09T14:20:00.52Z"
+///     name            = "dataset1"
+///     type_ref        = "dataset1TypeRef"
+///   }
+///   default_datasets_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///   default_datasets_destinations = [{
+///     "configuration" = {
+///       "key" = "defaultValue"
+///     }
+///     "target" = "BrokerStateStore"
+///   }]
+///   default_events_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///   default_events_destinations = [{
+///     "configuration" = {
+///       "path" = "/tmp"
+///     }
+///     "target" = "Storage"
+///   }]
+///   default_management_groups_configuration = "{\"retryCount\":10,\"retryBackoffInterval\":15}"
+///   default_streams_configuration           = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///   default_streams_destinations = [{
+///     "configuration" = {
+///       "qos"    = "Qos0"
+///       "retain" = "Never"
+///       "topic"  = "/contoso/test"
+///       "ttl"    = 3600
+///     }
+///     "target" = "Mqtt"
+///   }]
+///   device_ref = {
+///     device_name   = "myDevice"
+///     endpoint_name = "opcuaendpointname"
+///   }
+///   discovered_asset_name = "my-discoveredasset-1"
+///   discovery_id          = "11111111-1111-1111-1111-111111111111"
+///   documentation_uri     = "https://www.example.com/manual"
+///   events {
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt6"
+///       last_updated_on          = "2024-04-09T14:20:00.52Z"
+///       name                     = "event1DataPoint1"
+///     }
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt7"
+///       last_updated_on          = "2024-04-09T14:20:00.52Z"
+///       name                     = "event1DataPoint2"
+///     }
+///     destinations = [{
+///       "configuration" = {
+///         "qos"    = "Qos0"
+///         "retain" = "Keep"
+///         "topic"  = "/contoso/testEvent1"
+///         "ttl"    = 7200
+///       }
+///       "target" = "Mqtt"
+///     }]
+///     event_configuration = "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}"
+///     event_notifier      = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3"
+///     last_updated_on     = "2024-04-09T14:20:00.52Z"
+///     name                = "event1"
+///     type_ref            = "event1Ref"
+///   }
+///   events {
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt9"
+///       last_updated_on          = "2024-04-09T14:20:00.52Z"
+///       name                     = "event2DataPoint1"
+///     }
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt10"
+///       last_updated_on          = "2024-04-09T14:20:00.52Z"
+///       name                     = "event2DataPoint2"
+///     }
+///     destinations = [{
+///       "configuration" = {
+///         "path" = "/tmp/event2"
+///       }
+///       "target" = "Storage"
+///     }]
+///     event_configuration = "{\"publishingInterval\":7,\"samplingInterval\":8,\"queueSize\":4}"
+///     event_notifier      = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4"
+///     last_updated_on     = "2024-04-09T14:20:00.52Z"
+///     name                = "event2"
+///     type_ref            = "event2Ref"
+///   }
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/location1"
+///     type = "CustomLocation"
+///   }
+///   hardware_revision = "1.0"
+///   location          = "West Europe"
+///   management_groups {
+///     actions {
+///       action_configuration = "{\"retryCount\":5,\"retryBackoffInterval\":5}"
+///       action_type          = "Call"
+///       last_updated_on      = "2024-04-09T14:20:00.52Z"
+///       name                 = "action1"
+///       target_uri           = "/onvif/device_service?ONVIFProfile=Profile1"
+///       timeout_in_seconds   = 60
+///       topic                = "/contoso/managementGroup1/action1"
+///       type_ref             = "action1TypeRef"
+///     }
+///     actions {
+///       action_configuration = "{\"retryCount\":5,\"retryBackoffInterval\":5}"
+///       action_type          = "Call"
+///       last_updated_on      = "2024-04-09T14:20:00.52Z"
+///       name                 = "action2"
+///       target_uri           = "/onvif/device_service?ONVIFProfile=Profile2"
+///       timeout_in_seconds   = 60
+///       topic                = "/contoso/managementGroup1/action2"
+///       type_ref             = "action2TypeRef"
+///     }
+///     default_timeout_in_seconds     = 100
+///     default_topic                  = "/contoso/managementGroup1"
+///     last_updated_on                = "2024-04-09T14:20:00.52Z"
+///     management_group_configuration = "{\"retryCount\":10,\"retryBackoffInterval\":15}"
+///     name                           = "managementGroup1"
+///     type_ref                       = "managementGroup1TypeRef"
+///   }
+///   manufacturer        = "Contoso"
+///   manufacturer_uri    = "https://www.contoso.com/manufacturerUri"
+///   model               = "ContosoModel"
+///   namespace_name      = "my-namespace-1"
+///   product_code        = "SA34VDG"
+///   resource_group_name = "myResourceGroup"
+///   serial_number       = "64-103816-519918-8"
+///   software_revision   = "2.0"
+///   streams {
+///     destinations = [{
+///       "configuration" = {
+///         "path" = "/tmp/stream1"
+///       }
+///       "target" = "Storage"
+///     }]
+///     last_updated_on      = "2024-04-09T14:20:00.52Z"
+///     name                 = "stream1"
+///     stream_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///     type_ref             = "stream1TypeRef"
+///   }
+///   streams {
+///     destinations = [{
+///       "configuration" = {
+///         "qos"    = "Qos0"
+///         "retain" = "Never"
+///         "topic"  = "/contoso/testStream2"
+///         "ttl"    = 7200
+///       }
+///       "target" = "Mqtt"
+///     }]
+///     last_updated_on      = "2024-04-09T14:20:00.52Z"
+///     name                 = "stream2"
+///     stream_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///     type_ref             = "stream2TypeRef"
+///   }
+///   tags = {
+///     "site" = "building-1"
+///   }
+///   version = 73766
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -565,8 +768,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.NamespaceDiscoveredManagementGroupArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.NamespaceDiscoveredStreamArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -632,7 +835,7 @@ import 'system_data_response.dart';
 ///                     .qos("Qos0")
 ///                     .retain("Never")
 ///                     .topic("/contoso/test")
-///                     .ttl(3600)
+///                     .ttl(3600.0)
 ///                     .build())
 ///                 .target("Mqtt")
 ///                 .build())
@@ -663,7 +866,7 @@ import 'system_data_response.dart';
 ///                             .qos("Qos0")
 ///                             .retain("Keep")
 ///                             .topic("/contoso/testEvent1")
-///                             .ttl(7200)
+///                             .ttl(7200.0)
 ///                             .build())
 ///                         .target("Mqtt")
 ///                         .build())
@@ -761,7 +964,7 @@ import 'system_data_response.dart';
 ///                             .qos("Qos0")
 ///                             .retain("Never")
 ///                             .topic("/contoso/testStream2")
-///                             .ttl(7200)
+///                             .ttl(7200.0)
 ///                             .build())
 ///                         .target("Mqtt")
 ///                         .build())
@@ -1054,7 +1257,7 @@ import 'system_data_response.dart';
 ///             "qos": azure_native.deviceregistry.MqttDestinationQos.QOS0,
 ///             "retain": azure_native.deviceregistry.TopicRetainType.NEVER,
 ///             "topic": "/contoso/test",
-///             "ttl": 3600,
+///             "ttl": float(3600),
 ///         },
 ///         "target": "Mqtt",
 ///     }],
@@ -1086,7 +1289,7 @@ import 'system_data_response.dart';
 ///                     "qos": azure_native.deviceregistry.MqttDestinationQos.QOS0,
 ///                     "retain": azure_native.deviceregistry.TopicRetainType.KEEP,
 ///                     "topic": "/contoso/testEvent1",
-///                     "ttl": 7200,
+///                     "ttl": float(7200),
 ///                 },
 ///                 "target": "Mqtt",
 ///             }],
@@ -1187,7 +1390,7 @@ import 'system_data_response.dart';
 ///                     "qos": azure_native.deviceregistry.MqttDestinationQos.QOS0,
 ///                     "retain": azure_native.deviceregistry.TopicRetainType.NEVER,
 ///                     "topic": "/contoso/testStream2",
-///                     "ttl": 7200,
+///                     "ttl": float(7200),
 ///                 },
 ///                 "target": "Mqtt",
 ///             }],
@@ -1200,7 +1403,7 @@ import 'system_data_response.dart';
 ///     tags={
 ///         "site": "building-1",
 ///     },
-///     version=73766)
+///     version=float(73766))
 ///
 /// ```
 ///

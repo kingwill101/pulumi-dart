@@ -1,6 +1,6 @@
 /// The time cursor used in Summary rules bins processing, e.g. TimeGenerated.
 enum TimeSelectorEnum {
-  valueTimeGenerated("TimeGenerated");
+  timeGenerated("TimeGenerated");
 
   const TimeSelectorEnum(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum TimeSelectorEnum {
     throw ArgumentError('Unknown TimeSelectorEnum value: $value');
   }
 }
-

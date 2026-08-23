@@ -17,4 +17,3 @@ enum NginxIngressControllerType {
     throw ArgumentError('Unknown NginxIngressControllerType value: $value');
   }
 }
-

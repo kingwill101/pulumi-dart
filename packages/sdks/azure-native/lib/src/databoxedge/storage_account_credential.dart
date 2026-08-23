@@ -76,6 +76,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databoxedge_storageaccountcredential" "storageAccountCredential" {
+///   account_key = {
+///     encryption_algorithm       = "AES256"
+///     encryption_cert_thumbprint = "2A9D8D6BE51574B5461230AEF02F162C5F01AD31"
+///     value                      = "lAeZEYi6rNP1/EyNaVUYmTSZEYyaIaWmwUsGwek0+xiZj54GM9Ue9/UA2ed/ClC03wuSit2XzM/cLRU5eYiFBwks23rGwiQOr3sruEL2a74EjPD050xYjA6M1I2hu/w2yjVHhn5j+DbXS4Xzi+rHHNZK3DgfDO3PkbECjPck+PbpSBjy9+6Mrjcld5DIZhUAeMlMHrFlg+WKRKB14o/og56u5/xX6WKlrMLEQ+y6E18dUwvWs2elTNoVO8PBE8SM/CfooX4AMNvaNdSObNBPdP+F6Lzc556nFNWXrBLRt0vC7s9qTiVRO4x/qCNaK/B4y7IqXMllwQFf4Np9UQ2ECA=="
+///   }
+///   account_type        = "BlobStorage"
+///   alias               = "sac1"
+///   device_name         = "testedgedevice"
+///   name                = "sac1"
+///   resource_group_name = "GroupForEdgeAutomation"
+///   ssl_status          = "Disabled"
+///   user_name           = "cisbvt"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +111,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.databoxedge.StorageAccountCredential;
 /// import com.pulumi.azurenative.databoxedge.StorageAccountCredentialArgs;
 /// import com.pulumi.azurenative.databoxedge.inputs.AsymmetricEncryptedSecretArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

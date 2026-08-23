@@ -1,7 +1,7 @@
 /// Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
 enum EnforceCertificateNameCheckEnabledState {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const EnforceCertificateNameCheckEnabledState(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum EnforceCertificateNameCheckEnabledState {
     throw ArgumentError('Unknown EnforceCertificateNameCheckEnabledState value: $value');
   }
 }
-

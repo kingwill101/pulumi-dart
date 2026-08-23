@@ -1,47 +1,245 @@
-// ignore_for_file: unused_element, unnecessary_cast
-
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'component_container_args.dart';
+import 'component_container_properties_response.dart';
+import 'system_data_response.dart';
 
-/// Component container definition.
-/// &lt;see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" /&gt;
-class ComponentContainer {
-  /// The asset description text.
-  final pulumi.Input<String>? description;
-  /// Is the asset archived?
-  final pulumi.Input<bool>? isArchived;
-  /// The asset property dictionary.
-  final pulumi.Input<Map<String, String>>? properties;
-  /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+/// Azure Resource Manager resource envelope.
+///
+/// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+///
+/// Other available API versions: 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
+/// {{% examples %}}
+/// ## Example Usage
+/// {{% example %}}
+/// ### CreateOrUpdate Workspace Component Container.
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var componentContainer = new AzureNative.MachineLearningServices.ComponentContainer("componentContainer", new()
+///     {
+///         Name = "string",
+///         Properties = new AzureNative.MachineLearningServices.Inputs.ComponentContainerPropertiesArgs
+///         {
+///             Description = "string",
+///             Properties =
+///             {
+///                 { "string", "string" },
+///             },
+///             Tags =
+///             {
+///                 { "string", "string" },
+///             },
+///         },
+///         ResourceGroupName = "test-rg",
+///         WorkspaceName = "my-aml-workspace",
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	machinelearningservices "github.com/pulumi/pulumi-azure-native-sdk/machinelearningservices/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := machinelearningservices.NewComponentContainer(ctx, "componentContainer", &machinelearningservices.ComponentContainerArgs{
+/// 			Name: pulumi.String("string"),
+/// 			Properties: &machinelearningservices.ComponentContainerPropertiesArgs{
+/// 				Description: pulumi.String("string"),
+/// 				Properties: pulumi.StringMap{
+/// 					"string": pulumi.String("string"),
+/// 				},
+/// 				Tags: pulumi.StringMap{
+/// 					"string": pulumi.String("string"),
+/// 				},
+/// 			},
+/// 			ResourceGroupName: pulumi.String("test-rg"),
+/// 			WorkspaceName:     pulumi.String("my-aml-workspace"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_componentcontainer" "componentContainer" {
+///   name = "string"
+///   properties = {
+///     description = "string"
+///     properties = {
+///       "string" = "string"
+///     }
+///     tags = {
+///       "string" = "string"
+///     }
+///   }
+///   resource_group_name = "test-rg"
+///   workspace_name      = "my-aml-workspace"
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.machinelearningservices.ComponentContainer;
+/// import com.pulumi.azurenative.machinelearningservices.ComponentContainerArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComponentContainerPropertiesArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var componentContainer = new ComponentContainer("componentContainer", ComponentContainerArgs.builder()
+///             .name("string")
+///             .properties(ComponentContainerPropertiesArgs.builder()
+///                 .description("string")
+///                 .properties(Map.of("string", "string"))
+///                 .tags(Map.of("string", "string"))
+///                 .build())
+///             .resourceGroupName("test-rg")
+///             .workspaceName("my-aml-workspace")
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const componentContainer = new azure_native.machinelearningservices.ComponentContainer("componentContainer", {
+///     name: "string",
+///     properties: {
+///         description: "string",
+///         properties: {
+///             string: "string",
+///         },
+///         tags: {
+///             string: "string",
+///         },
+///     },
+///     resourceGroupName: "test-rg",
+///     workspaceName: "my-aml-workspace",
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// component_container = azure_native.machinelearningservices.ComponentContainer("componentContainer",
+///     name="string",
+///     properties={
+///         "description": "string",
+///         "properties": {
+///             "string": "string",
+///         },
+///         "tags": {
+///             "string": "string",
+///         },
+///     },
+///     resource_group_name="test-rg",
+///     workspace_name="my-aml-workspace")
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   componentContainer:
+///     type: azure-native:machinelearningservices:ComponentContainer
+///     properties:
+///       name: string
+///       properties:
+///         description: string
+///         properties:
+///           string: string
+///         tags:
+///           string: string
+///       resourceGroupName: test-rg
+///       workspaceName: my-aml-workspace
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% /examples %}}
+///
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:machinelearningservices:ComponentContainer string /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}
+/// ```
+class ComponentContainer extends pulumi.CustomResource {
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// The name of the resource
+  late final pulumi.Output<String> name;
+  /// [Required] Additional attributes of the entity.
+  late final pulumi.Output<ComponentContainerPropertiesResponse> properties;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  late final pulumi.Output<String> type;
 
   /// Creates a new [ComponentContainer].
-  /// [description] The asset description text.
-  /// [isArchived] Is the asset archived?
-  /// [properties] The asset property dictionary.
-  /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  const ComponentContainer({
-    this.description,
-    this.isArchived,
-    this.properties,
-    this.tags,
-  });
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'description': ?description,
-      'isArchived': ?isArchived,
-      'properties': ?properties,
-      'tags': ?tags,
-    };
-  }
-
-  factory ComponentContainer.fromMap(Map<String, dynamic> map) {
-    return ComponentContainer(
-      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      isArchived: (() { final guardedValue = map['isArchived']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-    );
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [ComponentContainer]. {@macro pulumi_machinelearningservices_component_container_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  ComponentContainer(
+    String name, {
+    ComponentContainerArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:machinelearningservices:ComponentContainer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<ComponentContainerPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComponentContainerPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
   }
 }
-

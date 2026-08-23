@@ -1,10 +1,10 @@
 /// The kind (type) of Enterprise Policy.
 enum EnterprisePolicyKind {
-  valueLockbox("Lockbox"),
-  valuePrivateEndpoint("PrivateEndpoint"),
-  valueEncryption("Encryption"),
-  valueNetworkInjection("NetworkInjection"),
-  valueIdentity("Identity");
+  lockbox("Lockbox"),
+  privateEndpoint("PrivateEndpoint"),
+  encryption("Encryption"),
+  networkInjection("NetworkInjection"),
+  identity("Identity");
 
   const EnterprisePolicyKind(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum EnterprisePolicyKind {
     throw ArgumentError('Unknown EnterprisePolicyKind value: $value');
   }
 }
-

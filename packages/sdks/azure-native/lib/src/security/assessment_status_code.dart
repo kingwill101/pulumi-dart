@@ -16,4 +16,3 @@ enum AssessmentStatusCode {
     throw ArgumentError('Unknown AssessmentStatusCode value: $value');
   }
 }
-

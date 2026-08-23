@@ -11,13 +11,13 @@ class GetDscConfigurationArgs {
   final pulumi.Input<String> automationAccountName;
   /// The configuration name.
   final pulumi.Input<String> configurationName;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetDscConfigurationArgs].
   /// [automationAccountName] The name of the automation account.
   /// [configurationName] The configuration name.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetDscConfigurationArgs({
     required this.automationAccountName,
     required this.configurationName,
@@ -40,4 +40,3 @@ class GetDscConfigurationArgs {
     );
   }
 }
-

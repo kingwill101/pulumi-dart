@@ -58,6 +58,7 @@ export 'elastic/monitored_subscription_response.dart';
 export 'elastic/monitoring_status.dart';
 export 'elastic/monitoring_tag_rules_properties.dart';
 export 'elastic/monitoring_tag_rules_properties_response.dart';
+export 'elastic/monitoring_tag_rules_properties_tag_rule_response.dart';
 export 'elastic/open_ai.dart';
 export 'elastic/open_aiargs.dart';
 export 'elastic/open_aiintegration_properties.dart';

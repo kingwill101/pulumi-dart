@@ -6,7 +6,7 @@ import 'pipeline_reference_response.dart';
 /// Pipeline that needs to be triggered with the given parameters.
 class TriggerPipelineReferenceResponse {
   /// Pipeline parameters.
-  final pulumi.Input<Map<String, dynamic>>? parameters;
+  final pulumi.Input<dynamic>? parameters;
   /// Pipeline reference.
   final pulumi.Input<PipelineReferenceResponse>? pipelineReference;
 
@@ -27,9 +27,8 @@ class TriggerPipelineReferenceResponse {
 
   factory TriggerPipelineReferenceResponse.fromMap(Map<String, dynamic> map) {
     return TriggerPipelineReferenceResponse(
-      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       pipelineReference: (() { final guardedValue = map['pipelineReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

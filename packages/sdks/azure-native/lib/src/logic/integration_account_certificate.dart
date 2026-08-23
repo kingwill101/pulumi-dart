@@ -76,6 +76,32 @@ import 'key_vault_key_reference_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_logic_integrationaccountcertificate" "integrationAccountCertificate" {
+///   certificate_name         = "testCertificate"
+///   integration_account_name = "testIntegrationAccount"
+///   key = {
+///     key_name = "<keyName>"
+///     key_vault = {
+///       id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourcegroups/testResourceGroup/providers/microsoft.keyvault/vaults/<keyVaultName>"
+///     }
+///     key_version = "87d9764197604449b9b8eb7bd8710868"
+///   }
+///   location            = "brazilsouth"
+///   public_certificate  = "<publicCertificateValue>"
+///   resource_group_name = "testResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +112,8 @@ import 'key_vault_key_reference_response.dart';
 /// import com.pulumi.azurenative.logic.IntegrationAccountCertificateArgs;
 /// import com.pulumi.azurenative.logic.inputs.KeyVaultKeyReferenceArgs;
 /// import com.pulumi.azurenative.logic.inputs.KeyVaultKeyReferenceKeyVaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

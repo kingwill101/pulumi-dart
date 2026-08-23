@@ -15,4 +15,3 @@ enum DomainJoinType {
     throw ArgumentError('Unknown DomainJoinType value: $value');
   }
 }
-

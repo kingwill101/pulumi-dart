@@ -15,4 +15,3 @@ enum ServiceMeshMode {
     throw ArgumentError('Unknown ServiceMeshMode value: $value');
   }
 }
-

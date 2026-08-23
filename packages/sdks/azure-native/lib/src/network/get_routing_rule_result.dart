@@ -87,4 +87,3 @@ class GetRoutingRuleResult {
     );
   }
 }
-

@@ -1,4 +1,4 @@
-/// Sets options that control the availability of semantic search. This configuration is only possible for certain Azure AI Search SKUs in certain locations.
+/// Specifies the availability and billing plan for semantic search on the Azure AI Search service. This configuration is only available for certain pricing tiers in certain regions.
 enum SearchSemanticSearch {
   disabled("disabled"),
   free("free"),
@@ -16,4 +16,3 @@ enum SearchSemanticSearch {
     throw ArgumentError('Unknown SearchSemanticSearch value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum CrossTenantTokenValidation {
     throw ArgumentError('Unknown CrossTenantTokenValidation value: $value');
   }
 }
-

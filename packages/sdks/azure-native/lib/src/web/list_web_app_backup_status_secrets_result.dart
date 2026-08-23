@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_backup_setting_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by listWebAppBackupStatusSecrets.
 class ListWebAppBackupStatusSecretsResult {
@@ -17,7 +18,7 @@ class ListWebAppBackupStatusSecretsResult {
   final List<DatabaseBackupSettingResponse> databases;
   /// Timestamp when this backup finished.
   final String finishedTimeStamp;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Kind of resource.
   final String? kind;
@@ -25,7 +26,7 @@ class ListWebAppBackupStatusSecretsResult {
   final String lastRestoreTimeStamp;
   /// Details regarding this backup. Might contain an error message.
   final String log;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
   /// True if this backup has been created due to a schedule being triggered.
   final bool scheduled;
@@ -35,7 +36,9 @@ class ListWebAppBackupStatusSecretsResult {
   final String status;
   /// SAS URL for the storage account container which contains this backup.
   final String storageAccountUrl;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// Size of the original web app which has been backed up.
   final double websiteSizeInBytes;
@@ -47,16 +50,17 @@ class ListWebAppBackupStatusSecretsResult {
   /// [created] Timestamp of the backup creation.
   /// [databases] List of databases included in the backup.
   /// [finishedTimeStamp] Timestamp when this backup finished.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] Kind of resource.
   /// [lastRestoreTimeStamp] Timestamp of a last restore operation which used this backup.
   /// [log] Details regarding this backup. Might contain an error message.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [scheduled] True if this backup has been created due to a schedule being triggered.
   /// [sizeInBytes] Size of the backup in bytes.
   /// [status] Backup status.
   /// [storageAccountUrl] SAS URL for the storage account container which contains this backup.
-  /// [type] Resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [websiteSizeInBytes] Size of the original web app which has been backed up.
   const ListWebAppBackupStatusSecretsResult({
     required this.backupId,
@@ -74,6 +78,7 @@ class ListWebAppBackupStatusSecretsResult {
     required this.sizeInBytes,
     required this.status,
     required this.storageAccountUrl,
+    required this.systemData,
     required this.type,
     required this.websiteSizeInBytes,
   });
@@ -95,6 +100,7 @@ class ListWebAppBackupStatusSecretsResult {
       'sizeInBytes': sizeInBytes,
       'status': status,
       'storageAccountUrl': storageAccountUrl,
+      'systemData': systemData.toMap(),
       'type': type,
       'websiteSizeInBytes': websiteSizeInBytes,
     };
@@ -117,9 +123,9 @@ class ListWebAppBackupStatusSecretsResult {
       sizeInBytes: map['sizeInBytes'] as double,
       status: map['status'] as String,
       storageAccountUrl: map['storageAccountUrl'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       websiteSizeInBytes: map['websiteSizeInBytes'] as double,
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum Access {
     throw ArgumentError('Unknown Access value: $value');
   }
 }
-

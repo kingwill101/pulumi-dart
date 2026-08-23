@@ -91,6 +91,38 @@ import 'certificate_order_contact_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_certificateregistration_appservicecertificateorder" "appServiceCertificateOrder" {
+///   auto_renew             = true
+///   certificate_order_name = "SampleCertificateOrderName"
+///   certificates = {
+///     "SampleCertName1" = {
+///       key_vault_id          = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourcegroups/testrg123/providers/microsoft.keyvault/vaults/SamplevaultName"
+///       key_vault_secret_name = "SampleSecretName1"
+///     }
+///     "SampleCertName2" = {
+///       key_vault_id          = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourcegroups/testrg123/providers/microsoft.keyvault/vaults/SamplevaultName"
+///       key_vault_secret_name = "SampleSecretName2"
+///     }
+///   }
+///   distinguished_name  = "CN=SampleCustomDomain.com"
+///   key_size            = 2048
+///   location            = "Global"
+///   product_type        = "StandardDomainValidatedSsl"
+///   resource_group_name = "testrg123"
+///   validity_in_years   = 2
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +131,8 @@ import 'certificate_order_contact_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.certificateregistration.AppServiceCertificateOrder;
 /// import com.pulumi.azurenative.certificateregistration.AppServiceCertificateOrderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

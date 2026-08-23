@@ -114,6 +114,42 @@ import 'database_account_cassandra_table_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cosmosdb_databaseaccountcassandratable" "databaseAccountCassandraTable" {
+///   account_name  = "ddb1"
+///   keyspace_name = "tableName"
+///   options       = {}
+///   resource = {
+///     default_ttl = 100
+///     id          = "tableName"
+///     schema = {
+///       cluster_keys = [{
+///         "name"    = "columnA"
+///         "orderBy" = "Asc"
+///       }]
+///       columns = [{
+///         "name" = "columnA"
+///         "type" = "Ascii"
+///       }]
+///       partition_keys = [{
+///         "name" = "columnA"
+///       }]
+///     }
+///   }
+///   resource_group_name = "rg1"
+///   table_name          = "tableName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -124,8 +160,8 @@ import 'database_account_cassandra_table_args.dart';
 /// import com.pulumi.azurenative.cosmosdb.DatabaseAccountCassandraTableArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.CassandraTableResourceArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.CassandraSchemaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

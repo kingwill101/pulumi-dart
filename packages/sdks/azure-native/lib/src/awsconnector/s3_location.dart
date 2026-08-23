@@ -43,4 +43,3 @@ class S3Location {
     );
   }
 }
-

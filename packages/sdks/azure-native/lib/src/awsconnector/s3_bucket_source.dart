@@ -37,4 +37,3 @@ class S3BucketSource {
     );
   }
 }
-

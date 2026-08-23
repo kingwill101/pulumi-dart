@@ -16,4 +16,3 @@ enum PredictiveAutoscalePolicyScaleMode {
     throw ArgumentError('Unknown PredictiveAutoscalePolicyScaleMode value: $value');
   }
 }
-

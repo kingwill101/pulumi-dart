@@ -17,4 +17,3 @@ enum IPVersion {
     throw ArgumentError('Unknown IPVersion value: $value');
   }
 }
-

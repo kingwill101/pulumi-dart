@@ -74,6 +74,32 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_vmwarecloudsimple_dedicatedcloudnode" "dedicatedCloudNode" {
+///   availability_zone_id      = "az1"
+///   dedicated_cloud_node_name = "myNode"
+///   id                        = "general"
+///   location                  = "westus"
+///   name                      = "CS28-Node"
+///   nodes_count               = 1
+///   placement_group_id        = "n1"
+///   purchase_id               = "56acbd46-3d36-4bbf-9b08-57c30fdf6932"
+///   resource_group_name       = "myResourceGroup"
+///   sku = {
+///     name = "VMware_CloudSimple_CS28"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +109,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.vmwarecloudsimple.DedicatedCloudNode;
 /// import com.pulumi.azurenative.vmwarecloudsimple.DedicatedCloudNodeArgs;
 /// import com.pulumi.azurenative.vmwarecloudsimple.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

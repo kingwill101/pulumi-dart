@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_network_get_virtual_network_appliance_args_doc}
 class GetVirtualNetworkApplianceArgs {
-  /// The name of the resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the virtual network appliance.
   final pulumi.Input<String> virtualNetworkApplianceName;
 
   /// Creates a new [GetVirtualNetworkApplianceArgs].
-  /// [resourceGroupName] The name of the resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualNetworkApplianceName] The name of the virtual network appliance.
   const GetVirtualNetworkApplianceArgs({
     required this.resourceGroupName,
@@ -34,4 +34,3 @@ class GetVirtualNetworkApplianceArgs {
     );
   }
 }
-

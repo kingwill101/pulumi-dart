@@ -15,4 +15,3 @@ enum ImageTagMutability {
     throw ArgumentError('Unknown ImageTagMutability value: $value');
   }
 }
-

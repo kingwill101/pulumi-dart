@@ -1,5 +1,5 @@
 enum MonitoringNotificationType {
-  valueAmlNotification("AmlNotification");
+  amlNotification("AmlNotification");
 
   const MonitoringNotificationType(this.wireValue);
   final String wireValue;
@@ -13,4 +13,3 @@ enum MonitoringNotificationType {
     throw ArgumentError('Unknown MonitoringNotificationType value: $value');
   }
 }
-

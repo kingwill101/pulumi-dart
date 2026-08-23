@@ -55,6 +55,24 @@ import 'trusted_id_provider_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datalakestore_trustedidprovider" "trustedIdProvider" {
+///   account_name             = "contosoadla"
+///   id_provider              = "https://sts.windows.net/ea9ec534-a3e3-4e45-ad36-3afc5bb291c1"
+///   resource_group_name      = "contosorg"
+///   trusted_id_provider_name = "test_trusted_id_provider_name"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +81,8 @@ import 'trusted_id_provider_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datalakestore.TrustedIdProvider;
 /// import com.pulumi.azurenative.datalakestore.TrustedIdProviderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

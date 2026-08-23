@@ -1,7 +1,7 @@
 /// Type of the script.
 enum ScriptType {
-  valueAzurePowerShell("AzurePowerShell"),
-  valueAzureCLI("AzureCLI");
+  azurePowerShell("AzurePowerShell"),
+  azureCLI("AzureCLI");
 
   const ScriptType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ScriptType {
     throw ArgumentError('Unknown ScriptType value: $value');
   }
 }
-

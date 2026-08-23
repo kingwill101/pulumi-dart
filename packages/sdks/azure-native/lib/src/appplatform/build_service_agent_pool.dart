@@ -71,6 +71,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_buildserviceagentpool" "buildServiceAgentPool" {
+///   agent_pool_name    = "default"
+///   build_service_name = "default"
+///   properties = {
+///     pool_size = {
+///       name = "S3"
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +104,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.BuildServiceAgentPoolArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.BuildServiceAgentPoolPropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.BuildServiceAgentPoolSizePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

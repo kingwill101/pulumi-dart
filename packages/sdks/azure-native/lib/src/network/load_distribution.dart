@@ -16,4 +16,3 @@ enum LoadDistribution {
     throw ArgumentError('Unknown LoadDistribution value: $value');
   }
 }
-

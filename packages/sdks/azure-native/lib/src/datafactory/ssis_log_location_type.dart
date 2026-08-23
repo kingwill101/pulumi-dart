@@ -1,6 +1,6 @@
 /// The type of SSIS log location.
 enum SsisLogLocationType {
-  valueFile("File");
+  file("File");
 
   const SsisLogLocationType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum SsisLogLocationType {
     throw ArgumentError('Unknown SsisLogLocationType value: $value');
   }
 }
-

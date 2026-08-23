@@ -262,6 +262,102 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_lightsailinstance" "lightsailInstance" {
+///   location = "cry"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "dcvwurrexherolt"
+///     aws_account_id = "bclcfxetkkugpyilojpvoypui"
+///     aws_properties = {
+///       add_ons = [{
+///         "addOnType" = "dk"
+///         "autoSnapshotAddOnRequest" = {
+///           "snapshotTimeOfDay" = "mnthrtsoittlqrvxnwvrbaxaazh"
+///         }
+///         "status" = "Disabled"
+///       }]
+///       availability_zone = "an"
+///       blueprint_id      = "fcezpmlwqhchkvmrdnywpr"
+///       bundle_id         = "yckqxqitrffsidmdxkrmaulfgmrj"
+///       hardware = {
+///         cpu_count = 30
+///         disks = [{
+///           "attachedTo"      = "qoievao"
+///           "attachmentState" = "ujinucmjcnzuosaqycrkndh"
+///           "diskName"        = "tmfpjhluaytgmpxxqtccohpge"
+///           "iops"            = 11
+///           "isSystemDisk"    = true
+///           "path"            = "urbubhyieizmbnyddjkyaadmod"
+///           "sizeInGb"        = "vpd"
+///         }]
+///         ram_size_in_gb = 4
+///       }
+///       instance_arn  = "mnodcgqlejrhlctqngwxyoqewk"
+///       instance_name = "xfxnlievrppfrt"
+///       is_static_ip  = true
+///       key_pair_name = "wtwjhokvviiafrsb"
+///       location = {
+///         availability_zone = "t"
+///         region_name       = "zgmew"
+///       }
+///       networking = {
+///         monthly_transfer = {
+///           gb_per_month_allocated = "dvbefi"
+///         }
+///         ports = [{
+///           "accessDirection" = "bybrpghkgcvx"
+///           "accessFrom"      = "kslf"
+///           "accessType"      = "dcqaucgpbxngw"
+///           "cidrListAliases" = ["btgxaahlpibcqefsgcghfd"]
+///           "cidrs"           = ["lhmvhnh"]
+///           "commonName"      = "t"
+///           "fromPort"        = 23
+///           "ipv6Cidrs"       = ["qladlrdxfiad"]
+///           "protocol"        = "bzikwazzeydyrukrjhsaogkkxua"
+///           "toPort"          = 13
+///         }]
+///       }
+///       private_ip_address = "ieeqsrklgnc"
+///       public_ip_address  = "vonneqx"
+///       resource_type      = "obxjqk"
+///       ssh_key_name       = "vjifxmchpparahfut"
+///       state = {
+///         code = 29
+///         name = "xdtssqcrsvaqphv"
+///       }
+///       support_code = "nxvcadptkoljiizhffgqdqqzkc"
+///       tags = [{
+///         "key"   = "oeyvtbbbaviazuesvytzykdrje"
+///         "value" = "vbybagbqynriyix"
+///       }]
+///       user_data = "f"
+///       user_name = "rhivoaleeqwog"
+///     }
+///     aws_region        = "zjxqlmimpqxec"
+///     aws_source_schema = "zzcfeeoutptp"
+///     aws_tags = {
+///       "key8646" = "ilziiib"
+///     }
+///     public_cloud_connectors_resource_id = "vsgxzwhzepjvcjjoqj"
+///     public_cloud_resource_name          = "ibkgqwotzyy"
+///   }
+///   resource_group_name = "rglightsailInstance"
+///   tags = {
+///     "key2601" = "s"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -277,8 +373,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.NetworkingArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.MonthlyTransferArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.StateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

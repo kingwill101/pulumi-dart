@@ -162,6 +162,65 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_acmcertificatesummary" "acmCertificateSummary" {
+///   location = "eqfgreyihqzkrcyaxvy"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "smalkenxqfohwtuwomvsiijg"
+///     aws_account_id = "mmihqxcdhmlvxmnbgspuxddg"
+///     aws_properties = {
+///       certificate_arn                          = "vhqvrajxbcvstwiktrdilktqiwnsij"
+///       created_at                               = "2024-10-08T03:50:37.721Z"
+///       domain_name                              = "fiqx"
+///       exported                                 = true
+///       extended_key_usages                      = ["ANY"]
+///       has_additional_subject_alternative_names = true
+///       imported_at                              = "2024-10-08T03:50:37.721Z"
+///       in_use                                   = true
+///       issued_at                                = "2024-10-08T03:50:37.721Z"
+///       key_algorithm = {
+///         value = "EC_prime256v1"
+///       }
+///       key_usages = ["ANY"]
+///       not_after  = "2024-10-08T03:50:37.721Z"
+///       not_before = "2024-10-08T03:50:37.721Z"
+///       renewal_eligibility = {
+///         value = "ELIGIBLE"
+///       }
+///       revoked_at = "2024-10-08T03:50:37.722Z"
+///       status = {
+///         value = "EXPIRED"
+///       }
+///       subject_alternative_name_summaries = ["oqoukflpt"]
+///       type = {
+///         value = "AMAZON_ISSUED"
+///       }
+///     }
+///     aws_region        = "vkxrwhsmzwvxzraytkujjlrzxdpbz"
+///     aws_source_schema = "llzijlhflcpnbwpp"
+///     aws_tags = {
+///       "key6233" = "kvfcopflgcuaqebawlfvxdozicsaj"
+///     }
+///     public_cloud_connectors_resource_id = "xljncqoovqhqla"
+///     public_cloud_resource_name          = "qdwfldkrmzyifdlfjpxducgue"
+///   }
+///   resource_group_name = "rgacmCertificateSummary"
+///   tags = {
+///     "key9243" = "wylumurgyvmplwt"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -176,8 +235,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.RenewalEligibilityEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CertificateStatusEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CertificateTypeEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -18,4 +18,3 @@ enum IncidentSource {
     throw ArgumentError('Unknown IncidentSource value: $value');
   }
 }
-

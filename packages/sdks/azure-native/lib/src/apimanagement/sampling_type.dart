@@ -14,4 +14,3 @@ enum SamplingType {
     throw ArgumentError('Unknown SamplingType value: $value');
   }
 }
-

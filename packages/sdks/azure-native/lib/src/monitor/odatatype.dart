@@ -16,4 +16,3 @@ enum Odatatype {
     throw ArgumentError('Unknown Odatatype value: $value');
   }
 }
-

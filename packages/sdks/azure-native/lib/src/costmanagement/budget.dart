@@ -199,6 +199,63 @@ import 'notification_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_budget" "budget" {
+///   amount      = 100.65
+///   budget_name = "TestBudget"
+///   category    = "Cost"
+///   e_tag       = "\"1d34d016a593709\""
+///   filter = {
+///     and = [{
+///       "dimensions" = {
+///         "name"     = "ResourceId"
+///         "operator" = "In"
+///         "values"   = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/MSVM2", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/platformcloudplatformGeneric1"]
+///       }
+///       }, {
+///       "tags" = {
+///         "name"     = "category"
+///         "operator" = "In"
+///         "values"   = ["Dev", "Prod"]
+///       }
+///       }, {
+///       "tags" = {
+///         "name"     = "department"
+///         "operator" = "In"
+///         "values"   = ["engineering", "sales"]
+///       }
+///     }]
+///   }
+///   notifications = {
+///     "Actual_GreaterThan_80_Percent" = {
+///       contact_emails = ["johndoe@contoso.com", "janesmith@contoso.com"]
+///       contact_groups = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/microsoft.insights/actionGroups/SampleActionGroup"]
+///       contact_roles  = ["Contributor", "Reader"]
+///       enabled        = true
+///       locale         = "en-us"
+///       operator       = "GreaterThan"
+///       threshold      = 80
+///       threshold_type = "Actual"
+///     }
+///   }
+///   scope      = "subscriptions/00000000-0000-0000-0000-000000000000"
+///   time_grain = "Monthly"
+///   time_period = {
+///     end_date   = "2024-10-31T00:00:00Z"
+///     start_date = "2023-04-01T00:00:00Z"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -209,8 +266,8 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.BudgetArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -412,7 +469,7 @@ import 'notification_response.dart';
 ///             "enabled": True,
 ///             "locale": azure_native.costmanagement.CultureCode.EN_US,
 ///             "operator": azure_native.costmanagement.BudgetNotificationOperatorType.GREATER_THAN,
-///             "threshold": 80,
+///             "threshold": float(80),
 ///             "threshold_type": azure_native.costmanagement.ThresholdType.ACTUAL,
 ///         },
 ///     },
@@ -568,6 +625,40 @@ import 'notification_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_budget" "budget" {
+///   budget_name = "TestAlertRule"
+///   category    = "ReservationUtilization"
+///   e_tag       = "\"1d34d016a593709\""
+///   filter      = {}
+///   notifications = {
+///     "Actual_LessThan_99_Percent" = {
+///       contact_emails = ["johndoe@contoso.com", "janesmith@contoso.com"]
+///       enabled        = true
+///       frequency      = "Weekly"
+///       locale         = "en-us"
+///       operator       = "LessThan"
+///       threshold      = 99
+///     }
+///   }
+///   scope      = "providers/Microsoft.Billing/billingAccounts/123456"
+///   time_grain = "Last7Days"
+///   time_period = {
+///     end_date   = "2025-04-01T00:00:00Z"
+///     start_date = "2023-04-01T00:00:00Z"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -578,8 +669,8 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.BudgetArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -671,7 +762,7 @@ import 'notification_response.dart';
 ///             "frequency": azure_native.costmanagement.Frequency.WEEKLY,
 ///             "locale": azure_native.costmanagement.CultureCode.EN_US,
 ///             "operator": azure_native.costmanagement.BudgetNotificationOperatorType.LESS_THAN,
-///             "threshold": 99,
+///             "threshold": float(99),
 ///         },
 ///     },
 ///     scope="providers/Microsoft.Billing/billingAccounts/123456",
@@ -824,6 +915,46 @@ import 'notification_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_budget" "budget" {
+///   budget_name = "TestAlertRule"
+///   category    = "ReservationUtilization"
+///   e_tag       = "\"1d34d016a593709\""
+///   filter = {
+///     dimensions = {
+///       name     = "ReservationId"
+///       operator = "In"
+///       values   = ["00000000-0000-0000-0000-000000000000", "00000000-0000-0000-0000-000000000001", "00000000-0000-0000-0000-000000000002"]
+///     }
+///   }
+///   notifications = {
+///     "Actual_LessThan_99_Percent" = {
+///       contact_emails = ["johndoe@contoso.com", "janesmith@contoso.com"]
+///       enabled        = true
+///       frequency      = "Weekly"
+///       locale         = "en-us"
+///       operator       = "LessThan"
+///       threshold      = 99
+///     }
+///   }
+///   scope      = "providers/Microsoft.Billing/billingAccounts/123456"
+///   time_grain = "Last7Days"
+///   time_period = {
+///     end_date   = "2025-04-01T00:00:00Z"
+///     start_date = "2023-04-01T00:00:00Z"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -835,8 +966,8 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetComparisonExpressionArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -956,7 +1087,7 @@ import 'notification_response.dart';
 ///             "frequency": azure_native.costmanagement.Frequency.WEEKLY,
 ///             "locale": azure_native.costmanagement.CultureCode.EN_US,
 ///             "operator": azure_native.costmanagement.BudgetNotificationOperatorType.LESS_THAN,
-///             "threshold": 99,
+///             "threshold": float(99),
 ///         },
 ///     },
 ///     scope="providers/Microsoft.Billing/billingAccounts/123456",
@@ -1116,6 +1247,46 @@ import 'notification_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_budget" "budget" {
+///   budget_name = "TestAlertRule"
+///   category    = "ReservationUtilization"
+///   e_tag       = "\"1d34d016a593709\""
+///   filter = {
+///     dimensions = {
+///       name     = "ReservedResourceType"
+///       operator = "In"
+///       values   = ["VirtualMachines", "SqlDatabases", "CosmosDb"]
+///     }
+///   }
+///   notifications = {
+///     "Actual_LessThan_99_Percent" = {
+///       contact_emails = ["johndoe@contoso.com", "janesmith@contoso.com"]
+///       enabled        = true
+///       frequency      = "Weekly"
+///       locale         = "en-us"
+///       operator       = "LessThan"
+///       threshold      = 99
+///     }
+///   }
+///   scope      = "providers/Microsoft.Billing/billingAccounts/123456"
+///   time_grain = "Last7Days"
+///   time_period = {
+///     end_date   = "2025-04-01T00:00:00Z"
+///     start_date = "2023-04-01T00:00:00Z"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1127,8 +1298,8 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetComparisonExpressionArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1248,7 +1419,7 @@ import 'notification_response.dart';
 ///             "frequency": azure_native.costmanagement.Frequency.WEEKLY,
 ///             "locale": azure_native.costmanagement.CultureCode.EN_US,
 ///             "operator": azure_native.costmanagement.BudgetNotificationOperatorType.LESS_THAN,
-///             "threshold": 99,
+///             "threshold": float(99),
 ///         },
 ///     },
 ///     scope="providers/Microsoft.Billing/billingAccounts/123456",
@@ -1408,6 +1579,46 @@ import 'notification_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_budget" "budget" {
+///   budget_name = "TestAlertRule"
+///   category    = "ReservationUtilization"
+///   e_tag       = "\"1d34d016a593709\""
+///   filter = {
+///     dimensions = {
+///       name     = "ReservationId"
+///       operator = "In"
+///       values   = ["00000000-0000-0000-0000-000000000000", "00000000-0000-0000-0000-000000000001", "00000000-0000-0000-0000-000000000002"]
+///     }
+///   }
+///   notifications = {
+///     "Actual_LessThan_99_Percent" = {
+///       contact_emails = ["johndoe@contoso.com", "janesmith@contoso.com"]
+///       enabled        = true
+///       frequency      = "Daily"
+///       locale         = "en-us"
+///       operator       = "LessThan"
+///       threshold      = 99
+///     }
+///   }
+///   scope      = "providers/Microsoft.Billing/billingAccounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj_2023-04-01/billingProfiles/KKKK-LLLL-MMM-NNN"
+///   time_grain = "Last30Days"
+///   time_period = {
+///     end_date   = "2025-04-01T00:00:00Z"
+///     start_date = "2023-04-01T00:00:00Z"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1419,8 +1630,8 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetComparisonExpressionArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1540,7 +1751,7 @@ import 'notification_response.dart';
 ///             "frequency": azure_native.costmanagement.Frequency.DAILY,
 ///             "locale": azure_native.costmanagement.CultureCode.EN_US,
 ///             "operator": azure_native.costmanagement.BudgetNotificationOperatorType.LESS_THAN,
-///             "threshold": 99,
+///             "threshold": float(99),
 ///         },
 ///     },
 ///     scope="providers/Microsoft.Billing/billingAccounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj_2023-04-01/billingProfiles/KKKK-LLLL-MMM-NNN",
@@ -1700,6 +1911,46 @@ import 'notification_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_budget" "budget" {
+///   budget_name = "TestAlertRule"
+///   category    = "ReservationUtilization"
+///   e_tag       = "\"1d34d016a593709\""
+///   filter = {
+///     dimensions = {
+///       name     = "ReservedResourceType"
+///       operator = "In"
+///       values   = ["VirtualMachines", "SqlDatabases", "CosmosDb"]
+///     }
+///   }
+///   notifications = {
+///     "Actual_LessThan_99_Percent" = {
+///       contact_emails = ["johndoe@contoso.com", "janesmith@contoso.com"]
+///       enabled        = true
+///       frequency      = "Daily"
+///       locale         = "en-us"
+///       operator       = "LessThan"
+///       threshold      = 99
+///     }
+///   }
+///   scope      = "providers/Microsoft.Billing/billingAccounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj_2023-04-01/billingProfiles/KKKK-LLLL-MMM-NNN"
+///   time_grain = "Last30Days"
+///   time_period = {
+///     end_date   = "2025-04-01T00:00:00Z"
+///     start_date = "2023-04-01T00:00:00Z"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1711,8 +1962,8 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetComparisonExpressionArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1832,7 +2083,7 @@ import 'notification_response.dart';
 ///             "frequency": azure_native.costmanagement.Frequency.DAILY,
 ///             "locale": azure_native.costmanagement.CultureCode.EN_US,
 ///             "operator": azure_native.costmanagement.BudgetNotificationOperatorType.LESS_THAN,
-///             "threshold": 99,
+///             "threshold": float(99),
 ///         },
 ///     },
 ///     scope="providers/Microsoft.Billing/billingAccounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj_2023-04-01/billingProfiles/KKKK-LLLL-MMM-NNN",
@@ -1969,6 +2220,40 @@ import 'notification_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_budget" "budget" {
+///   budget_name = "TestAlertRule"
+///   category    = "ReservationUtilization"
+///   e_tag       = "\"1d34d016a593709\""
+///   filter      = {}
+///   notifications = {
+///     "Actual_LessThan_99_Percent" = {
+///       contact_emails = ["johndoe@contoso.com", "janesmith@contoso.com"]
+///       enabled        = true
+///       frequency      = "Daily"
+///       locale         = "en-us"
+///       operator       = "LessThan"
+///       threshold      = 99
+///     }
+///   }
+///   scope      = "providers/Microsoft.Billing/billingAccounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj_2023-04-01/billingProfiles/KKKK-LLLL-MMM-NNN"
+///   time_grain = "Last30Days"
+///   time_period = {
+///     end_date   = "2025-04-01T00:00:00Z"
+///     start_date = "2023-04-01T00:00:00Z"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1979,8 +2264,8 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.BudgetArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2072,7 +2357,7 @@ import 'notification_response.dart';
 ///             "frequency": azure_native.costmanagement.Frequency.DAILY,
 ///             "locale": azure_native.costmanagement.CultureCode.EN_US,
 ///             "operator": azure_native.costmanagement.BudgetNotificationOperatorType.LESS_THAN,
-///             "threshold": 99,
+///             "threshold": float(99),
 ///         },
 ///     },
 ///     scope="providers/Microsoft.Billing/billingAccounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj_2023-04-01/billingProfiles/KKKK-LLLL-MMM-NNN",
@@ -2225,6 +2510,46 @@ import 'notification_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_budget" "budget" {
+///   budget_name = "TestAlertRule"
+///   category    = "ReservationUtilization"
+///   e_tag       = "\"1d34d016a593709\""
+///   filter = {
+///     dimensions = {
+///       name     = "ReservationId"
+///       operator = "In"
+///       values   = ["00000000-0000-0000-0000-000000000000", "00000000-0000-0000-0000-000000000001", "00000000-0000-0000-0000-000000000002"]
+///     }
+///   }
+///   notifications = {
+///     "Actual_LessThan_99_Percent" = {
+///       contact_emails = ["johndoe@contoso.com", "janesmith@contoso.com"]
+///       enabled        = true
+///       frequency      = "Daily"
+///       locale         = "en-us"
+///       operator       = "LessThan"
+///       threshold      = 99
+///     }
+///   }
+///   scope      = "providers/Microsoft.Billing/billingAccounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj_2023-04-01/customers/000000-1111-2222-3333-444444444444"
+///   time_grain = "Last30Days"
+///   time_period = {
+///     end_date   = "2025-04-01T00:00:00Z"
+///     start_date = "2023-04-01T00:00:00Z"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2236,8 +2561,8 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetComparisonExpressionArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2357,7 +2682,7 @@ import 'notification_response.dart';
 ///             "frequency": azure_native.costmanagement.Frequency.DAILY,
 ///             "locale": azure_native.costmanagement.CultureCode.EN_US,
 ///             "operator": azure_native.costmanagement.BudgetNotificationOperatorType.LESS_THAN,
-///             "threshold": 99,
+///             "threshold": float(99),
 ///         },
 ///     },
 ///     scope="providers/Microsoft.Billing/billingAccounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj_2023-04-01/customers/000000-1111-2222-3333-444444444444",
@@ -2517,6 +2842,46 @@ import 'notification_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_budget" "budget" {
+///   budget_name = "TestAlertRule"
+///   category    = "ReservationUtilization"
+///   e_tag       = "\"1d34d016a593709\""
+///   filter = {
+///     dimensions = {
+///       name     = "ReservedResourceType"
+///       operator = "In"
+///       values   = ["VirtualMachines", "SqlDatabases", "CosmosDb"]
+///     }
+///   }
+///   notifications = {
+///     "Actual_LessThan_99_Percent" = {
+///       contact_emails = ["johndoe@contoso.com", "janesmith@contoso.com"]
+///       enabled        = true
+///       frequency      = "Daily"
+///       locale         = "en-us"
+///       operator       = "LessThan"
+///       threshold      = 99
+///     }
+///   }
+///   scope      = "providers/Microsoft.Billing/billingAccounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj_2023-04-01/customers/000000-1111-2222-3333-444444444444"
+///   time_grain = "Last30Days"
+///   time_period = {
+///     end_date   = "2025-04-01T00:00:00Z"
+///     start_date = "2023-04-01T00:00:00Z"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2528,8 +2893,8 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetComparisonExpressionArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2649,7 +3014,7 @@ import 'notification_response.dart';
 ///             "frequency": azure_native.costmanagement.Frequency.DAILY,
 ///             "locale": azure_native.costmanagement.CultureCode.EN_US,
 ///             "operator": azure_native.costmanagement.BudgetNotificationOperatorType.LESS_THAN,
-///             "threshold": 99,
+///             "threshold": float(99),
 ///         },
 ///     },
 ///     scope="providers/Microsoft.Billing/billingAccounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj_2023-04-01/customers/000000-1111-2222-3333-444444444444",
@@ -2786,6 +3151,40 @@ import 'notification_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_budget" "budget" {
+///   budget_name = "TestAlertRule"
+///   category    = "ReservationUtilization"
+///   e_tag       = "\"1d34d016a593709\""
+///   filter      = {}
+///   notifications = {
+///     "Actual_LessThan_99_Percent" = {
+///       contact_emails = ["johndoe@contoso.com", "janesmith@contoso.com"]
+///       enabled        = true
+///       frequency      = "Daily"
+///       locale         = "en-us"
+///       operator       = "LessThan"
+///       threshold      = 99
+///     }
+///   }
+///   scope      = "providers/Microsoft.Billing/billingAccounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj_2023-04-01/customers/000000-1111-2222-3333-444444444444"
+///   time_grain = "Last30Days"
+///   time_period = {
+///     end_date   = "2025-04-01T00:00:00Z"
+///     start_date = "2023-04-01T00:00:00Z"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2796,8 +3195,8 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.BudgetArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2889,7 +3288,7 @@ import 'notification_response.dart';
 ///             "frequency": azure_native.costmanagement.Frequency.DAILY,
 ///             "locale": azure_native.costmanagement.CultureCode.EN_US,
 ///             "operator": azure_native.costmanagement.BudgetNotificationOperatorType.LESS_THAN,
-///             "threshold": 99,
+///             "threshold": float(99),
 ///         },
 ///     },
 ///     scope="providers/Microsoft.Billing/billingAccounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj_2023-04-01/customers/000000-1111-2222-3333-444444444444",

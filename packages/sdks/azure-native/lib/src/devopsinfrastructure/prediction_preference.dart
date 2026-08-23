@@ -18,4 +18,3 @@ enum PredictionPreference {
     throw ArgumentError('Unknown PredictionPreference value: $value');
   }
 }
-

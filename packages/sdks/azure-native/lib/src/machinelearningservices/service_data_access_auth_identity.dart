@@ -1,8 +1,8 @@
 /// Indicates which identity to use to authenticate service data access to customer's storage.
 enum ServiceDataAccessAuthIdentity {
-  valueNone("None"),
-  valueWorkspaceSystemAssignedIdentity("WorkspaceSystemAssignedIdentity"),
-  valueWorkspaceUserAssignedIdentity("WorkspaceUserAssignedIdentity");
+  none("None"),
+  workspaceSystemAssignedIdentity("WorkspaceSystemAssignedIdentity"),
+  workspaceUserAssignedIdentity("WorkspaceUserAssignedIdentity");
 
   const ServiceDataAccessAuthIdentity(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum ServiceDataAccessAuthIdentity {
     throw ArgumentError('Unknown ServiceDataAccessAuthIdentity value: $value');
   }
 }
-

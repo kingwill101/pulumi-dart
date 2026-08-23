@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'aksschema_response_properties.dart';
+import 'aksschema_properties_response.dart';
 import 'error_response_response.dart';
 
 /// A Machine Learning compute based on AKS.
@@ -22,7 +22,7 @@ class AKSResponse {
   /// The time at which the compute was last modified.
   final pulumi.Input<String> modifiedOn;
   /// AKS properties
-  final pulumi.Input<AKSSchemaResponseProperties>? properties;
+  final pulumi.Input<AKSSchemaPropertiesResponse>? properties;
   /// Errors during provisioning
   final pulumi.Input<List<ErrorResponseResponse>> provisioningErrors;
   /// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
@@ -65,7 +65,7 @@ class AKSResponse {
       'disableLocalAuth': ?disableLocalAuth,
       'isAttachedCompute': isAttachedCompute,
       'modifiedOn': modifiedOn,
-      'properties': ?pulumi.Input.mapOptionalInputValue<AKSSchemaResponseProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<AKSSchemaPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'provisioningErrors': pulumi.Input.mapInputValue<List<ErrorResponseResponse>, List<Map<String, dynamic>>>(provisioningErrors, (value) => pulumi.Input.encodeList<ErrorResponseResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'resourceId': ?resourceId,
@@ -81,11 +81,10 @@ class AKSResponse {
       disableLocalAuth: (() { final guardedValue = map['disableLocalAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isAttachedCompute: pulumi.Input.fromValue(map['isAttachedCompute'] as bool),
       modifiedOn: pulumi.Input.fromValue(map['modifiedOn'] as String),
-      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AKSSchemaResponseProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AKSSchemaPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       provisioningErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<ErrorResponseResponse>(map['provisioningErrors']!, (value) => ErrorResponseResponse.fromMap((value as Map).cast<String, dynamic>()))),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

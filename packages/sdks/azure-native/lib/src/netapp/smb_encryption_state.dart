@@ -15,4 +15,3 @@ enum SmbEncryptionState {
     throw ArgumentError('Unknown SmbEncryptionState value: $value');
   }
 }
-

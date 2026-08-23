@@ -15,4 +15,3 @@ enum PricingTier {
     throw ArgumentError('Unknown PricingTier value: $value');
   }
 }
-

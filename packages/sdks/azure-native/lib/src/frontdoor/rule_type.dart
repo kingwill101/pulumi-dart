@@ -1,7 +1,7 @@
 /// Describes type of rule.
 enum RuleType {
-  valueMatchRule("MatchRule"),
-  valueRateLimitRule("RateLimitRule");
+  matchRule("MatchRule"),
+  rateLimitRule("RateLimitRule");
 
   const RuleType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum RuleType {
     throw ArgumentError('Unknown RuleType value: $value');
   }
 }
-

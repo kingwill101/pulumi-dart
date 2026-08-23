@@ -7,10 +7,12 @@ import 'function_app_config_response.dart';
 import 'host_name_ssl_state_response.dart';
 import 'hosting_environment_profile_response.dart';
 import 'managed_service_identity_response.dart';
+import 'outbound_vnet_routing_response.dart';
 import 'resource_config_response.dart';
 import 'site_config_response.dart';
 import 'site_dns_config_response.dart';
 import 'slot_swap_status_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getWebAppSlot.
 class GetWebAppSlotResult {
@@ -22,6 +24,10 @@ class GetWebAppSlotResult {
   final String azureApiVersion;
   /// &lt;code&gt;true&lt;/code&gt; to enable client affinity; &lt;code&gt;false&lt;/code&gt; to stop sending session affinity cookies, which route client requests in the same session to the same instance. Default is &lt;code&gt;true&lt;/code&gt;.
   final bool? clientAffinityEnabled;
+  /// &lt;code&gt;true&lt;/code&gt; to enable client affinity partitioning using CHIPS cookies, this will add the &lt;code&gt;partitioned&lt;/code&gt; property to the affinity cookies; &lt;code&gt;false&lt;/code&gt; to stop sending partitioned affinity cookies. Default is &lt;code&gt;false&lt;/code&gt;.
+  final bool? clientAffinityPartitioningEnabled;
+  /// &lt;code&gt;true&lt;/code&gt; to override client affinity cookie domain with X-Forwarded-Host request header. &lt;code&gt;false&lt;/code&gt; to use default domain. Default is &lt;code&gt;false&lt;/code&gt;.
+  final bool? clientAffinityProxyEnabled;
   /// &lt;code&gt;true&lt;/code&gt; to enable client certificate authentication (TLS mutual authentication); otherwise, &lt;code&gt;false&lt;/code&gt;. Default is &lt;code&gt;false&lt;/code&gt;.
   final bool? clientCertEnabled;
   /// client certificate authentication comma-separated exclusion paths
@@ -68,7 +74,7 @@ class GetWebAppSlotResult {
   final bool? httpsOnly;
   /// Hyper-V sandbox.
   final bool? hyperV;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Managed service identity.
   final ManagedServiceIdentityResponse? identity;
@@ -86,17 +92,19 @@ class GetWebAppSlotResult {
   final String? kind;
   /// Last time the app was modified, in UTC. Read-only.
   final String lastModifiedTimeUtc;
-  /// Resource Location.
+  /// The geo-location where the resource lives
   final String location;
   /// Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
   final String? managedEnvironmentId;
   /// Maximum number of workers.
   /// This only applies to Functions container.
   final int maxNumberOfWorkers;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
   /// List of IP addresses that the app uses for outbound connections (e.g. database access). Includes VIPs from tenants that site can be hosted with current settings. Read-only.
   final String outboundIpAddresses;
+  /// Property to configure various outbound traffic routing options over virtual network for a site
+  final OutboundVnetRoutingResponse? outboundVnetRouting;
   /// List of IP addresses that the app uses for outbound connections (e.g. database access). Includes VIPs from all tenants except dataComponent. Read-only.
   final String possibleOutboundIpAddresses;
   /// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string.
@@ -115,39 +123,35 @@ class GetWebAppSlotResult {
   final bool? scmSiteAlsoStopped;
   /// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   final String? serverFarmId;
-  /// Configuration of the app.
+  /// Configuration of an App Service app. This property is not returned in response to normal create and read requests since it may contain sensitive information.
   final SiteConfigResponse? siteConfig;
   /// Current SKU of application based on associated App Service Plan. Some valid SKU values are Free, Shared, Basic, Dynamic, FlexConsumption, Standard, Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2
   final String sku;
   /// Status of the last deployment slot swap operation.
   final SlotSwapStatusResponse slotSwapStatus;
+  /// Whether to enable ssh access.
+  final bool? sshEnabled;
   /// Current state of the app.
   final String state;
   /// Checks if Customer provided storage account is required
   final bool? storageAccountRequired;
   /// App suspended till in case memory-time quota is exceeded.
   final String suspendedTill;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Specifies which deployment slot this app will swap into. Read-only.
   final String targetSwapSlot;
   /// Azure Traffic Manager hostnames associated with the app. Read-only.
   final List<String> trafficManagerHostNames;
-  /// Resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// State indicating whether the app has exceeded its quota usage. Read-only.
   final String usageState;
   /// Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration.
   /// This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
   final String? virtualNetworkSubnetId;
-  /// To enable Backup and Restore operations over virtual network
-  final bool? vnetBackupRestoreEnabled;
-  /// To enable accessing content over virtual network
-  final bool? vnetContentShareEnabled;
-  /// To enable pulling image over Virtual Network
-  final bool? vnetImagePullEnabled;
-  /// Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
-  final bool? vnetRouteAllEnabled;
   /// Workload profile name for function app to execute on.
   final String? workloadProfileName;
 
@@ -156,6 +160,8 @@ class GetWebAppSlotResult {
   /// [availabilityState] Management information availability state for the app.
   /// [azureApiVersion] The Azure API version of the resource.
   /// [clientAffinityEnabled] &lt;code&gt;true&lt;/code&gt; to enable client affinity; &lt;code&gt;false&lt;/code&gt; to stop sending session affinity cookies, which route client requests in the same session to the same instance. Default is &lt;code&gt;true&lt;/code&gt;.
+  /// [clientAffinityPartitioningEnabled] &lt;code&gt;true&lt;/code&gt; to enable client affinity partitioning using CHIPS cookies, this will add the &lt;code&gt;partitioned&lt;/code&gt; property to the affinity cookies; &lt;code&gt;false&lt;/code&gt; to stop sending partitioned affinity cookies. Default is &lt;code&gt;false&lt;/code&gt;.
+  /// [clientAffinityProxyEnabled] &lt;code&gt;true&lt;/code&gt; to override client affinity cookie domain with X-Forwarded-Host request header. &lt;code&gt;false&lt;/code&gt; to use default domain. Default is &lt;code&gt;false&lt;/code&gt;.
   /// [clientCertEnabled] &lt;code&gt;true&lt;/code&gt; to enable client certificate authentication (TLS mutual authentication); otherwise, &lt;code&gt;false&lt;/code&gt;. Default is &lt;code&gt;false&lt;/code&gt;.
   /// [clientCertExclusionPaths] client certificate authentication comma-separated exclusion paths
   /// [clientCertMode] This composes with ClientCertEnabled setting.
@@ -176,7 +182,7 @@ class GetWebAppSlotResult {
   /// [hostingEnvironmentProfile] App Service Environment to use for the app.
   /// [httpsOnly] HttpsOnly: configures a web site to accept only https requests. Issues redirect for
   /// [hyperV] Hyper-V sandbox.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [identity] Managed service identity.
   /// [inProgressOperationId] Specifies an operation id if this site has a pending operation.
   /// [ipMode] Specifies the IP mode of the app.
@@ -185,11 +191,12 @@ class GetWebAppSlotResult {
   /// [keyVaultReferenceIdentity] Identity to use for Key Vault Reference authentication.
   /// [kind] Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   /// [lastModifiedTimeUtc] Last time the app was modified, in UTC. Read-only.
-  /// [location] Resource Location.
+  /// [location] The geo-location where the resource lives
   /// [managedEnvironmentId] Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
   /// [maxNumberOfWorkers] Maximum number of workers.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [outboundIpAddresses] List of IP addresses that the app uses for outbound connections (e.g. database access). Includes VIPs from tenants that site can be hosted with current settings. Read-only.
+  /// [outboundVnetRouting] Property to configure various outbound traffic routing options over virtual network for a site
   /// [possibleOutboundIpAddresses] List of IP addresses that the app uses for outbound connections (e.g. database access). Includes VIPs from all tenants except dataComponent. Read-only.
   /// [publicNetworkAccess] Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string.
   /// [redundancyMode] Site redundancy mode
@@ -199,28 +206,28 @@ class GetWebAppSlotResult {
   /// [resourceGroup] Name of the resource group the app belongs to. Read-only.
   /// [scmSiteAlsoStopped] &lt;code&gt;true&lt;/code&gt; to stop SCM (KUDU) site when the app is stopped; otherwise, &lt;code&gt;false&lt;/code&gt;. The default is &lt;code&gt;false&lt;/code&gt;.
   /// [serverFarmId] Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
-  /// [siteConfig] Configuration of the app.
+  /// [siteConfig] Configuration of an App Service app. This property is not returned in response to normal create and read requests since it may contain sensitive information.
   /// [sku] Current SKU of application based on associated App Service Plan. Some valid SKU values are Free, Shared, Basic, Dynamic, FlexConsumption, Standard, Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2
   /// [slotSwapStatus] Status of the last deployment slot swap operation.
+  /// [sshEnabled] Whether to enable ssh access.
   /// [state] Current state of the app.
   /// [storageAccountRequired] Checks if Customer provided storage account is required
   /// [suspendedTill] App suspended till in case memory-time quota is exceeded.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [targetSwapSlot] Specifies which deployment slot this app will swap into. Read-only.
   /// [trafficManagerHostNames] Azure Traffic Manager hostnames associated with the app. Read-only.
-  /// [type] Resource type.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [usageState] State indicating whether the app has exceeded its quota usage. Read-only.
   /// [virtualNetworkSubnetId] Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration.
-  /// [vnetBackupRestoreEnabled] To enable Backup and Restore operations over virtual network
-  /// [vnetContentShareEnabled] To enable accessing content over virtual network
-  /// [vnetImagePullEnabled] To enable pulling image over Virtual Network
-  /// [vnetRouteAllEnabled] Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
   /// [workloadProfileName] Workload profile name for function app to execute on.
   const GetWebAppSlotResult({
     this.autoGeneratedDomainNameLabelScope,
     required this.availabilityState,
     required this.azureApiVersion,
     this.clientAffinityEnabled,
+    this.clientAffinityPartitioningEnabled,
+    this.clientAffinityProxyEnabled,
     this.clientCertEnabled,
     this.clientCertExclusionPaths,
     this.clientCertMode,
@@ -255,6 +262,7 @@ class GetWebAppSlotResult {
     required this.maxNumberOfWorkers,
     required this.name,
     required this.outboundIpAddresses,
+    this.outboundVnetRouting,
     required this.possibleOutboundIpAddresses,
     this.publicNetworkAccess,
     this.redundancyMode,
@@ -267,19 +275,17 @@ class GetWebAppSlotResult {
     this.siteConfig,
     required this.sku,
     required this.slotSwapStatus,
+    this.sshEnabled,
     required this.state,
     this.storageAccountRequired,
     required this.suspendedTill,
+    required this.systemData,
     this.tags,
     required this.targetSwapSlot,
     required this.trafficManagerHostNames,
     required this.type,
     required this.usageState,
     this.virtualNetworkSubnetId,
-    this.vnetBackupRestoreEnabled,
-    this.vnetContentShareEnabled,
-    this.vnetImagePullEnabled,
-    this.vnetRouteAllEnabled,
     this.workloadProfileName,
   });
 
@@ -289,6 +295,8 @@ class GetWebAppSlotResult {
       'availabilityState': availabilityState,
       'azureApiVersion': azureApiVersion,
       'clientAffinityEnabled': ?clientAffinityEnabled,
+      'clientAffinityPartitioningEnabled': ?clientAffinityPartitioningEnabled,
+      'clientAffinityProxyEnabled': ?clientAffinityProxyEnabled,
       'clientCertEnabled': ?clientCertEnabled,
       'clientCertExclusionPaths': ?clientCertExclusionPaths,
       'clientCertMode': ?clientCertMode,
@@ -323,6 +331,7 @@ class GetWebAppSlotResult {
       'maxNumberOfWorkers': maxNumberOfWorkers,
       'name': name,
       'outboundIpAddresses': outboundIpAddresses,
+      'outboundVnetRouting': ?outboundVnetRouting?.toMap(),
       'possibleOutboundIpAddresses': possibleOutboundIpAddresses,
       'publicNetworkAccess': ?publicNetworkAccess,
       'redundancyMode': ?redundancyMode,
@@ -335,19 +344,17 @@ class GetWebAppSlotResult {
       'siteConfig': ?siteConfig?.toMap(),
       'sku': sku,
       'slotSwapStatus': slotSwapStatus.toMap(),
+      'sshEnabled': ?sshEnabled,
       'state': state,
       'storageAccountRequired': ?storageAccountRequired,
       'suspendedTill': suspendedTill,
+      'systemData': systemData.toMap(),
       'tags': ?tags,
       'targetSwapSlot': targetSwapSlot,
       'trafficManagerHostNames': trafficManagerHostNames,
       'type': type,
       'usageState': usageState,
       'virtualNetworkSubnetId': ?virtualNetworkSubnetId,
-      'vnetBackupRestoreEnabled': ?vnetBackupRestoreEnabled,
-      'vnetContentShareEnabled': ?vnetContentShareEnabled,
-      'vnetImagePullEnabled': ?vnetImagePullEnabled,
-      'vnetRouteAllEnabled': ?vnetRouteAllEnabled,
       'workloadProfileName': ?workloadProfileName,
     };
   }
@@ -358,6 +365,8 @@ class GetWebAppSlotResult {
       availabilityState: map['availabilityState'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
       clientAffinityEnabled: (() { final guardedValue = map['clientAffinityEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      clientAffinityPartitioningEnabled: (() { final guardedValue = map['clientAffinityPartitioningEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      clientAffinityProxyEnabled: (() { final guardedValue = map['clientAffinityProxyEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       clientCertEnabled: (() { final guardedValue = map['clientCertEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       clientCertExclusionPaths: (() { final guardedValue = map['clientCertExclusionPaths']; if (guardedValue == null) return null; return guardedValue as String; })(),
       clientCertMode: (() { final guardedValue = map['clientCertMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -392,6 +401,7 @@ class GetWebAppSlotResult {
       maxNumberOfWorkers: map['maxNumberOfWorkers'] as int,
       name: map['name'] as String,
       outboundIpAddresses: map['outboundIpAddresses'] as String,
+      outboundVnetRouting: (() { final guardedValue = map['outboundVnetRouting']; if (guardedValue == null) return null; return OutboundVnetRoutingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       possibleOutboundIpAddresses: map['possibleOutboundIpAddresses'] as String,
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
       redundancyMode: (() { final guardedValue = map['redundancyMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -404,21 +414,18 @@ class GetWebAppSlotResult {
       siteConfig: (() { final guardedValue = map['siteConfig']; if (guardedValue == null) return null; return SiteConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       sku: map['sku'] as String,
       slotSwapStatus: SlotSwapStatusResponse.fromMap((map['slotSwapStatus']! as Map).cast<String, dynamic>()),
+      sshEnabled: (() { final guardedValue = map['sshEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       state: map['state'] as String,
       storageAccountRequired: (() { final guardedValue = map['storageAccountRequired']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       suspendedTill: map['suspendedTill'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       targetSwapSlot: map['targetSwapSlot'] as String,
       trafficManagerHostNames: (map['trafficManagerHostNames'] as List).cast<String>(),
       type: map['type'] as String,
       usageState: map['usageState'] as String,
       virtualNetworkSubnetId: (() { final guardedValue = map['virtualNetworkSubnetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      vnetBackupRestoreEnabled: (() { final guardedValue = map['vnetBackupRestoreEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      vnetContentShareEnabled: (() { final guardedValue = map['vnetContentShareEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      vnetImagePullEnabled: (() { final guardedValue = map['vnetImagePullEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      vnetRouteAllEnabled: (() { final guardedValue = map['vnetRouteAllEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       workloadProfileName: (() { final guardedValue = map['workloadProfileName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
-

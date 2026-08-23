@@ -17,4 +17,3 @@ enum SensitivityLabelRank {
     throw ArgumentError('Unknown SensitivityLabelRank value: $value');
   }
 }
-

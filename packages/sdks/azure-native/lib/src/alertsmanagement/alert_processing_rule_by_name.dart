@@ -94,6 +94,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_alertsmanagement_alertprocessingrulebyname" "alertProcessingRuleByName" {
+///   alert_processing_rule_name = "AddActionGroupToSubscription"
+///   location                   = "Global"
+///   properties = {
+///     actions = [{
+///       "actionGroupIds" = ["/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/ActionGroup1"]
+///       "actionType"     = "AddActionGroups"
+///     }]
+///     description = "Add ActionGroup1 to all alerts in the subscription"
+///     enabled     = true
+///     scopes      = ["/subscriptions/subId1"]
+///   }
+///   resource_group_name = "alertscorrelationrg"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +130,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByName;
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByNameArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.AlertProcessingRulePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -313,6 +340,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_alertsmanagement_alertprocessingrulebyname" "alertProcessingRuleByName" {
+///   alert_processing_rule_name = "AddActionGroupsBySeverity"
+///   location                   = "Global"
+///   properties = {
+///     actions = [{
+///       "actionGroupIds" = ["/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/AGId1", "/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/AGId2"]
+///       "actionType"     = "AddActionGroups"
+///     }]
+///     conditions = [{
+///       "field"    = "Severity"
+///       "operator" = "Equals"
+///       "values"   = ["sev0", "sev1"]
+///     }]
+///     description = "Add AGId1 and AGId2 to all Sev0 and Sev1 alerts in these resourceGroups"
+///     enabled     = true
+///     scopes      = ["/subscriptions/subId1/resourceGroups/RGId1", "/subscriptions/subId1/resourceGroups/RGId2"]
+///   }
+///   resource_group_name = "alertscorrelationrg"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -322,8 +381,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByName;
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByNameArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.AlertProcessingRulePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -556,6 +615,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_alertsmanagement_alertprocessingrulebyname" "alertProcessingRuleByName" {
+///   alert_processing_rule_name = "RemoveActionGroupsMaintenanceWindow"
+///   location                   = "Global"
+///   properties = {
+///     actions = [{
+///       "actionType" = "RemoveAllActionGroups"
+///     }]
+///     description = "Removes all ActionGroups from all Alerts on VMName during the maintenance window"
+///     enabled     = true
+///     schedule = {
+///       effective_from  = "2021-04-15T18:00:00"
+///       effective_until = "2021-04-15T20:00:00"
+///       time_zone       = "Pacific Standard Time"
+///     }
+///     scopes = ["/subscriptions/subId1/resourceGroups/RGId1/providers/Microsoft.Compute/virtualMachines/VMName"]
+///   }
+///   resource_group_name = "alertscorrelationrg"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -566,8 +656,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByNameArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.AlertProcessingRulePropertiesArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.ScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -777,6 +867,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_alertsmanagement_alertprocessingrulebyname" "alertProcessingRuleByName" {
+///   alert_processing_rule_name = "RemoveActionGroupsSpecificAlertRule"
+///   location                   = "Global"
+///   properties = {
+///     actions = [{
+///       "actionType" = "RemoveAllActionGroups"
+///     }]
+///     conditions = [{
+///       "field"    = "AlertRuleId"
+///       "operator" = "Equals"
+///       "values"   = ["/subscriptions/suubId1/resourceGroups/Rgid2/providers/microsoft.insights/activityLogAlerts/RuleName"]
+///     }]
+///     description = "Removes all ActionGroups from all Alerts that fire on above AlertRule"
+///     enabled     = true
+///     scopes      = ["/subscriptions/subId1"]
+///   }
+///   resource_group_name = "alertscorrelationrg"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -786,8 +907,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByName;
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByNameArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.AlertProcessingRulePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1032,6 +1153,46 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_alertsmanagement_alertprocessingrulebyname" "alertProcessingRuleByName" {
+///   alert_processing_rule_name = "RemoveActionGroupsRecurringMaintenance"
+///   location                   = "Global"
+///   properties = {
+///     actions = [{
+///       "actionType" = "RemoveAllActionGroups"
+///     }]
+///     conditions = [{
+///       "field"    = "TargetResourceType"
+///       "operator" = "Equals"
+///       "values"   = ["microsoft.compute/virtualmachines"]
+///     }]
+///     description = "Remove all ActionGroups from all Vitual machine Alerts during the recurring maintenance"
+///     enabled     = true
+///     schedule = {
+///       recurrences = [{
+///         "daysOfWeek"     = ["Saturday", "Sunday"]
+///         "endTime"        = "04:00:00"
+///         "recurrenceType" = "Weekly"
+///         "startTime"      = "22:00:00"
+///       }]
+///       time_zone = "India Standard Time"
+///     }
+///     scopes = ["/subscriptions/subId1/resourceGroups/RGId1", "/subscriptions/subId1/resourceGroups/RGId2"]
+///   }
+///   resource_group_name = "alertscorrelationrg"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1042,8 +1203,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByNameArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.AlertProcessingRulePropertiesArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.ScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1325,6 +1486,43 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_alertsmanagement_alertprocessingrulebyname" "alertProcessingRuleByName" {
+///   alert_processing_rule_name = "RemoveActionGroupsOutsideBusinessHours"
+///   location                   = "Global"
+///   properties = {
+///     actions = [{
+///       "actionType" = "RemoveAllActionGroups"
+///     }]
+///     description = "Remove all ActionGroups outside business hours"
+///     enabled     = true
+///     schedule = {
+///       recurrences = [{
+///         "endTime"        = "09:00:00"
+///         "recurrenceType" = "Daily"
+///         "startTime"      = "17:00:00"
+///         }, {
+///         "daysOfWeek"     = ["Saturday", "Sunday"]
+///         "recurrenceType" = "Weekly"
+///       }]
+///       time_zone = "Eastern Standard Time"
+///     }
+///     scopes = ["/subscriptions/subId1"]
+///   }
+///   resource_group_name = "alertscorrelationrg"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1335,8 +1533,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByNameArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.AlertProcessingRulePropertiesArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.ScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1501,17 +1699,17 @@ import 'system_data_response.dart';
 class AlertProcessingRuleByName extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// Resource location
+  /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-  /// Azure resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Alert processing rule properties.
   late final pulumi.Output<AlertProcessingRulePropertiesResponse> properties;
-  /// Alert processing rule system data.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-  /// Resource tags
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Azure resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [AlertProcessingRuleByName].

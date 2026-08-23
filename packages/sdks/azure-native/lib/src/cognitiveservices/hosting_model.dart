@@ -17,4 +17,3 @@ enum HostingModel {
     throw ArgumentError('Unknown HostingModel value: $value');
   }
 }
-

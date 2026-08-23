@@ -1,6 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connector_args.dart';
-import 'connector_collection_info_response.dart';
+import 'connector_collection_info_connector_response.dart';
 
 /// The Connector model definition
 ///
@@ -64,6 +64,28 @@ import 'connector_collection_info_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_connector" "connector" {
+///   connector_name      = "AWSBillingAccount"
+///   credentials_key     = "arn:aws:iam::123456789012:role/AzureCostManagementRole"
+///   credentials_secret  = "external-id"
+///   display_name        = "AWS-Consolidated-1"
+///   location            = "westus"
+///   report_id           = "HourlyWithResources"
+///   resource_group_name = "rg1"
+///   status              = "active"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +94,8 @@ import 'connector_collection_info_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.costmanagement.Connector;
 /// import com.pulumi.azurenative.costmanagement.ConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -164,7 +186,7 @@ class Connector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Collection information
-  late final pulumi.Output<ConnectorCollectionInfoResponse> collection;
+  late final pulumi.Output<ConnectorCollectionInfoConnectorResponse> collection;
   /// Connector definition creation datetime
   late final pulumi.Output<String> createdOn;
   /// Credentials authentication key (eg AWS ARN)
@@ -205,7 +227,7 @@ class Connector extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    collection = registerOutput<ConnectorCollectionInfoResponse>('collection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorCollectionInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    collection = registerOutput<ConnectorCollectionInfoConnectorResponse>('collection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorCollectionInfoConnectorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdOn = registerOutput<String>('createdOn');
     credentialsKey = registerOutput<String?>('credentialsKey');
     displayName = registerOutput<String?>('displayName');

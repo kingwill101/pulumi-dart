@@ -16,4 +16,3 @@ enum PreferredRoutingGateway {
     throw ArgumentError('Unknown PreferredRoutingGateway value: $value');
   }
 }
-

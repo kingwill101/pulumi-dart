@@ -14,4 +14,3 @@ enum SqlSourcePlatform {
     throw ArgumentError('Unknown SqlSourcePlatform value: $value');
   }
 }
-

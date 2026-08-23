@@ -16,4 +16,3 @@ enum OpenSearchWarmPartitionInstanceType {
     throw ArgumentError('Unknown OpenSearchWarmPartitionInstanceType value: $value');
   }
 }
-

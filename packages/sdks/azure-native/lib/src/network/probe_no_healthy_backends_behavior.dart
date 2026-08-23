@@ -15,4 +15,3 @@ enum ProbeNoHealthyBackendsBehavior {
     throw ArgumentError('Unknown ProbeNoHealthyBackendsBehavior value: $value');
   }
 }
-

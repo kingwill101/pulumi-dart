@@ -1,9 +1,9 @@
 /// The authentication method used to access the Hive server.
 enum HiveAuthenticationType {
-  valueAnonymous("Anonymous"),
-  valueUsername("Username"),
-  valueUsernameAndPassword("UsernameAndPassword"),
-  valueWindowsAzureHDInsightService("WindowsAzureHDInsightService");
+  anonymous("Anonymous"),
+  username("Username"),
+  usernameAndPassword("UsernameAndPassword"),
+  windowsAzureHDInsightService("WindowsAzureHDInsightService");
 
   const HiveAuthenticationType(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum HiveAuthenticationType {
     throw ArgumentError('Unknown HiveAuthenticationType value: $value');
   }
 }
-

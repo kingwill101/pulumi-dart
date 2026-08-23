@@ -15,4 +15,3 @@ enum SessionHostComponentUpdateType {
     throw ArgumentError('Unknown SessionHostComponentUpdateType value: $value');
   }
 }
-

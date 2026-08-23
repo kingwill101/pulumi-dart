@@ -15,4 +15,3 @@ enum LocalStorageDiskType {
     throw ArgumentError('Unknown LocalStorageDiskType value: $value');
   }
 }
-

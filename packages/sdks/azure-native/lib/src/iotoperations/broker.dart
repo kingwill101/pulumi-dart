@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01-preview.
 ///
-/// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -400,6 +400,161 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_broker" "broker" {
+///   broker_name = "resource-name123"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     advanced = {
+///       clients = {
+///         max_keep_alive_seconds     = 3744
+///         max_message_expiry_seconds = 3263
+///         max_packet_size_bytes      = 3029
+///         max_receive_maximum        = 2365
+///         max_session_expiry_seconds = 3859
+///         subscriber_queue_limit = {
+///           length   = 6
+///           strategy = "None"
+///         }
+///       }
+///       encrypt_internal_traffic = "Enabled"
+///       internal_certs = {
+///         duration = "bchrc"
+///         private_key = {
+///           algorithm       = "Ec256"
+///           rotation_policy = "Always"
+///         }
+///         renew_before = "xkafmpgjfifkwwrhkswtopdnne"
+///       }
+///     }
+///     cardinality = {
+///       backend_chain = {
+///         partitions        = 11
+///         redundancy_factor = 5
+///         workers           = 15
+///       }
+///       frontend = {
+///         replicas = 2
+///         workers  = 6
+///       }
+///     }
+///     diagnostics = {
+///       logs = {
+///         level = "rnmwokumdmebpmfxxxzvvjfdywotav"
+///       }
+///       metrics = {
+///         prometheus_port = 7581
+///       }
+///       self_check = {
+///         interval_seconds = 158
+///         mode             = "Enabled"
+///         timeout_seconds  = 14
+///       }
+///       traces = {
+///         cache_size_megabytes = 28
+///         mode                 = "Enabled"
+///         self_tracing = {
+///           interval_seconds = 22
+///           mode             = "Enabled"
+///         }
+///         span_channel_capacity = 1000
+///       }
+///     }
+///     disk_backed_message_buffer = {
+///       ephemeral_volume_claim_spec = {
+///         access_modes = ["nuluhigrbb"]
+///         data_source = {
+///           api_group = "npqapyksvvpkohujx"
+///           kind      = "wazgyb"
+///           name      = "cwhsgxxcxsyppoefm"
+///         }
+///         data_source_ref = {
+///           api_group = "mnfnykznjjsoqpfsgdqioupt"
+///           kind      = "odynqzekfzsnawrctaxg"
+///           name      = "envszivbbmixbyddzg"
+///           namespace = "etcfzvxqd"
+///         }
+///         resources = {
+///           limits = {
+///             "key2719" = "hmphcrgctu"
+///           }
+///           requests = {
+///             "key2909" = "txocprnyrsgvhfrg"
+///           }
+///         }
+///         selector = {
+///           match_expressions = [{
+///             "key"      = "e"
+///             "operator" = "In"
+///             "values"   = ["slmpajlywqvuyknipgztsonqyybt"]
+///           }]
+///           match_labels = {
+///             "key6673" = "wlngfalznwxnurzpgxomcxhbqefpr"
+///           }
+///         }
+///         storage_class_name = "sseyhrjptkhrqvpdpjmornkqvon"
+///         volume_mode        = "rxvpksjuuugqnqzeiprocknbn"
+///         volume_name        = "c"
+///       }
+///       max_size = "500M"
+///       persistent_volume_claim_spec = {
+///         access_modes = ["nuluhigrbb"]
+///         data_source = {
+///           api_group = "npqapyksvvpkohujx"
+///           kind      = "wazgyb"
+///           name      = "cwhsgxxcxsyppoefm"
+///         }
+///         data_source_ref = {
+///           api_group = "mnfnykznjjsoqpfsgdqioupt"
+///           kind      = "odynqzekfzsnawrctaxg"
+///           name      = "envszivbbmixbyddzg"
+///           namespace = "etcfzvxqd"
+///         }
+///         resources = {
+///           limits = {
+///             "key2719" = "hmphcrgctu"
+///           }
+///           requests = {
+///             "key2909" = "txocprnyrsgvhfrg"
+///           }
+///         }
+///         selector = {
+///           match_expressions = [{
+///             "key"      = "e"
+///             "operator" = "In"
+///             "values"   = ["slmpajlywqvuyknipgztsonqyybt"]
+///           }]
+///           match_labels = {
+///             "key6673" = "wlngfalznwxnurzpgxomcxhbqefpr"
+///           }
+///         }
+///         storage_class_name = "sseyhrjptkhrqvpdpjmornkqvon"
+///         volume_mode        = "rxvpksjuuugqnqzeiprocknbn"
+///         volume_name        = "c"
+///       }
+///     }
+///     generate_resource_limits = {
+///       cpu = "Enabled"
+///     }
+///     memory_profile = "Tiny"
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -431,8 +586,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.VolumeClaimResourceRequirementsArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.VolumeClaimSpecSelectorArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.GenerateResourceLimitsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -751,7 +906,7 @@ import 'system_data_response.dart';
 ///                 "max_receive_maximum": 2365,
 ///                 "max_session_expiry_seconds": 3859,
 ///                 "subscriber_queue_limit": {
-///                     "length": 6,
+///                     "length": float(6),
 ///                     "strategy": azure_native.iotoperations.SubscriberMessageDropStrategy.NONE,
 ///                 },
 ///             },
@@ -1099,6 +1254,47 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_broker" "broker" {
+///   broker_name = "resource-name123"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     cardinality = {
+///       backend_chain = {
+///         partitions        = 2
+///         redundancy_factor = 2
+///         workers           = 2
+///       }
+///       frontend = {
+///         replicas = 2
+///         workers  = 2
+///       }
+///     }
+///     disk_backed_message_buffer = {
+///       max_size = "50M"
+///     }
+///     generate_resource_limits = {
+///       cpu = "Enabled"
+///     }
+///     memory_profile = "Medium"
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1114,8 +1310,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.FrontendArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DiskBackedMessageBufferArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.GenerateResourceLimitsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1324,6 +1520,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_broker" "broker" {
+///   broker_name = "resource-name123"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     memory_profile = "Tiny"
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1334,8 +1554,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.BrokerArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.BrokerPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1513,6 +1733,44 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_broker" "broker" {
+///   broker_name = "resource-name123"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     cardinality = {
+///       backend_chain = {
+///         partitions        = 2
+///         redundancy_factor = 2
+///         workers           = 2
+///       }
+///       frontend = {
+///         replicas = 2
+///         workers  = 2
+///       }
+///     }
+///     generate_resource_limits = {
+///       cpu = "Enabled"
+///     }
+///     memory_profile = "Low"
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1527,8 +1785,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.BackendChainArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.FrontendArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.GenerateResourceLimitsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

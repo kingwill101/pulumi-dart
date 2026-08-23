@@ -139,6 +139,52 @@ import 'system_assigned_service_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_export" "export" {
+///   definition = {
+///     data_set = {
+///       configuration = {
+///         columns = ["Date", "MeterId", "ResourceId", "ResourceLocation", "Quantity"]
+///       }
+///       granularity = "Daily"
+///     }
+///     timeframe = "MonthToDate"
+///     type      = "ActualCost"
+///   }
+///   delivery_info = {
+///     destination = {
+///       container        = "exports"
+///       resource_id      = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Storage/storageAccounts/ccmeastusdiag182"
+///       root_folder_path = "ad-hoc"
+///     }
+///   }
+///   export_name = "TestExport"
+///   format      = "Csv"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location = "centralus"
+///   schedule = {
+///     recurrence = "Weekly"
+///     recurrence_period = {
+///       from = "2020-06-01T00:00:00Z"
+///       to   = "2020-10-31T00:00:00Z"
+///     }
+///     status = "Active"
+///   }
+///   scope = "providers/Microsoft.Billing/billingAccounts/123456"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -155,8 +201,8 @@ import 'system_assigned_service_identity_response.dart';
 /// import com.pulumi.azurenative.costmanagement.inputs.SystemAssignedServiceIdentityArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.ExportScheduleArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.ExportRecurrencePeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -469,6 +515,52 @@ import 'system_assigned_service_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_export" "export" {
+///   definition = {
+///     data_set = {
+///       configuration = {
+///         columns = ["Date", "MeterId", "ResourceId", "ResourceLocation", "Quantity"]
+///       }
+///       granularity = "Daily"
+///     }
+///     timeframe = "MonthToDate"
+///     type      = "ActualCost"
+///   }
+///   delivery_info = {
+///     destination = {
+///       container        = "exports"
+///       resource_id      = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Storage/storageAccounts/ccmeastusdiag182"
+///       root_folder_path = "ad-hoc"
+///     }
+///   }
+///   export_name = "TestExport"
+///   format      = "Csv"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location = "centralus"
+///   schedule = {
+///     recurrence = "Weekly"
+///     recurrence_period = {
+///       from = "2020-06-01T00:00:00Z"
+///       to   = "2020-10-31T00:00:00Z"
+///     }
+///     status = "Active"
+///   }
+///   scope = "providers/Microsoft.Billing/billingAccounts/12/departments/1234"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -485,8 +577,8 @@ import 'system_assigned_service_identity_response.dart';
 /// import com.pulumi.azurenative.costmanagement.inputs.SystemAssignedServiceIdentityArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.ExportScheduleArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.ExportRecurrencePeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -799,6 +891,52 @@ import 'system_assigned_service_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_export" "export" {
+///   definition = {
+///     data_set = {
+///       configuration = {
+///         columns = ["Date", "MeterId", "ResourceId", "ResourceLocation", "Quantity"]
+///       }
+///       granularity = "Daily"
+///     }
+///     timeframe = "MonthToDate"
+///     type      = "ActualCost"
+///   }
+///   delivery_info = {
+///     destination = {
+///       container        = "exports"
+///       resource_id      = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Storage/storageAccounts/ccmeastusdiag182"
+///       root_folder_path = "ad-hoc"
+///     }
+///   }
+///   export_name = "TestExport"
+///   format      = "Csv"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location = "centralus"
+///   schedule = {
+///     recurrence = "Weekly"
+///     recurrence_period = {
+///       from = "2020-06-01T00:00:00Z"
+///       to   = "2020-10-31T00:00:00Z"
+///     }
+///     status = "Active"
+///   }
+///   scope = "providers/Microsoft.Billing/billingAccounts/100/enrollmentAccounts/456"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -815,8 +953,8 @@ import 'system_assigned_service_identity_response.dart';
 /// import com.pulumi.azurenative.costmanagement.inputs.SystemAssignedServiceIdentityArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.ExportScheduleArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.ExportRecurrencePeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1129,6 +1267,52 @@ import 'system_assigned_service_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_export" "export" {
+///   definition = {
+///     data_set = {
+///       configuration = {
+///         columns = ["Date", "MeterId", "ResourceId", "ResourceLocation", "Quantity"]
+///       }
+///       granularity = "Daily"
+///     }
+///     timeframe = "MonthToDate"
+///     type      = "ActualCost"
+///   }
+///   delivery_info = {
+///     destination = {
+///       container        = "exports"
+///       resource_id      = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Storage/storageAccounts/ccmeastusdiag182"
+///       root_folder_path = "ad-hoc"
+///     }
+///   }
+///   export_name = "TestExport"
+///   format      = "Csv"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location = "centralus"
+///   schedule = {
+///     recurrence = "Weekly"
+///     recurrence_period = {
+///       from = "2020-06-01T00:00:00Z"
+///       to   = "2020-10-31T00:00:00Z"
+///     }
+///     status = "Active"
+///   }
+///   scope = "providers/Microsoft.Management/managementGroups/TestMG"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1145,8 +1329,8 @@ import 'system_assigned_service_identity_response.dart';
 /// import com.pulumi.azurenative.costmanagement.inputs.SystemAssignedServiceIdentityArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.ExportScheduleArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.ExportRecurrencePeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1459,6 +1643,52 @@ import 'system_assigned_service_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_export" "export" {
+///   definition = {
+///     data_set = {
+///       configuration = {
+///         columns = ["Date", "MeterId", "ResourceId", "ResourceLocation", "Quantity"]
+///       }
+///       granularity = "Daily"
+///     }
+///     timeframe = "MonthToDate"
+///     type      = "ActualCost"
+///   }
+///   delivery_info = {
+///     destination = {
+///       container        = "exports"
+///       resource_id      = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Storage/storageAccounts/ccmeastusdiag182"
+///       root_folder_path = "ad-hoc"
+///     }
+///   }
+///   export_name = "TestExport"
+///   format      = "Csv"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location = "centralus"
+///   schedule = {
+///     recurrence = "Weekly"
+///     recurrence_period = {
+///       from = "2020-06-01T00:00:00Z"
+///       to   = "2020-10-31T00:00:00Z"
+///     }
+///     status = "Active"
+///   }
+///   scope = "subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1475,8 +1705,8 @@ import 'system_assigned_service_identity_response.dart';
 /// import com.pulumi.azurenative.costmanagement.inputs.SystemAssignedServiceIdentityArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.ExportScheduleArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.ExportRecurrencePeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1789,6 +2019,52 @@ import 'system_assigned_service_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_export" "export" {
+///   definition = {
+///     data_set = {
+///       configuration = {
+///         columns = ["Date", "MeterId", "ResourceId", "ResourceLocation", "Quantity"]
+///       }
+///       granularity = "Daily"
+///     }
+///     timeframe = "MonthToDate"
+///     type      = "ActualCost"
+///   }
+///   delivery_info = {
+///     destination = {
+///       container        = "exports"
+///       resource_id      = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Storage/storageAccounts/ccmeastusdiag182"
+///       root_folder_path = "ad-hoc"
+///     }
+///   }
+///   export_name = "TestExport"
+///   format      = "Csv"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location = "centralus"
+///   schedule = {
+///     recurrence = "Weekly"
+///     recurrence_period = {
+///       from = "2020-06-01T00:00:00Z"
+///       to   = "2020-10-31T00:00:00Z"
+///     }
+///     status = "Active"
+///   }
+///   scope = "subscriptions/00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1805,8 +2081,8 @@ import 'system_assigned_service_identity_response.dart';
 /// import com.pulumi.azurenative.costmanagement.inputs.SystemAssignedServiceIdentityArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.ExportScheduleArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.ExportRecurrencePeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

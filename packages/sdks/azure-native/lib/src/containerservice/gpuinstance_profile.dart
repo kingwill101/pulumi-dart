@@ -18,4 +18,3 @@ enum GPUInstanceProfile {
     throw ArgumentError('Unknown GPUInstanceProfile value: $value');
   }
 }
-

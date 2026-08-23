@@ -107,4 +107,3 @@ class Office365LinkedServiceResponse {
     );
   }
 }
-

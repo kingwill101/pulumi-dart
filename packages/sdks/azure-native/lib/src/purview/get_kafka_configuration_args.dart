@@ -11,13 +11,13 @@ class GetKafkaConfigurationArgs {
   final pulumi.Input<String> accountName;
   /// Name of kafka configuration.
   final pulumi.Input<String> kafkaConfigurationName;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetKafkaConfigurationArgs].
   /// [accountName] The name of the account.
   /// [kafkaConfigurationName] Name of kafka configuration.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetKafkaConfigurationArgs({
     required this.accountName,
     required this.kafkaConfigurationName,
@@ -40,4 +40,3 @@ class GetKafkaConfigurationArgs {
     );
   }
 }
-

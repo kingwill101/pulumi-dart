@@ -11,7 +11,7 @@ class GetNotificationChannelArgs {
   final pulumi.Input<String>? expand;
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The name of the NotificationChannel
+  /// The name of the notification channel.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
@@ -19,7 +19,7 @@ class GetNotificationChannelArgs {
   /// Creates a new [GetNotificationChannelArgs].
   /// [expand] Specify the $expand query. Example: 'properties($select=webHookUrl)'
   /// [labName] The name of the lab.
-  /// [name] The name of the NotificationChannel
+  /// [name] The name of the notification channel.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetNotificationChannelArgs({
     this.expand,
@@ -46,4 +46,3 @@ class GetNotificationChannelArgs {
     );
   }
 }
-

@@ -17,4 +17,3 @@ enum RosettaNetPipRoleType {
     throw ArgumentError('Unknown RosettaNetPipRoleType value: $value');
   }
 }
-

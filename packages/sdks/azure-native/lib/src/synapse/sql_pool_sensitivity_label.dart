@@ -71,6 +71,31 @@ import 'sql_pool_sensitivity_label_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_synapse_sqlpoolsensitivitylabel" "sqlPoolSensitivityLabel" {
+///   column_name              = "myColumn"
+///   information_type         = "PhoneNumber"
+///   information_type_id      = "d22fa6e9-5ee4-3bde-4c2b-a409604c4646"
+///   label_id                 = "bf91e08c-f4f0-478a-b016-25164b2a65ff"
+///   label_name               = "PII"
+///   resource_group_name      = "myRG"
+///   schema_name              = "dbo"
+///   sensitivity_label_source = "current"
+///   sql_pool_name            = "myDatabase"
+///   table_name               = "myTable"
+///   workspace_name           = "myServer"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +104,8 @@ import 'sql_pool_sensitivity_label_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.synapse.SqlPoolSensitivityLabel;
 /// import com.pulumi.azurenative.synapse.SqlPoolSensitivityLabelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -6,7 +6,7 @@ import 'network_virtual_appliance_connection_properties_response.dart';
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01.
 ///
-/// Other available API versions: 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -94,7 +94,7 @@ import 'network_virtual_appliance_connection_properties_response.dart';
 /// 				},
 /// 				EnableInternetSecurity: pulumi.Bool(false),
 /// 				Name:                   pulumi.String("connection1"),
-/// 				RoutingConfiguration: &network.RoutingConfigurationArgs{
+/// 				RoutingConfiguration: &network.RoutingConfigurationTypeArgs{
 /// 					AssociatedRouteTable: &network.SubResourceArgs{
 /// 						Id: pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"),
 /// 					},
@@ -128,6 +128,47 @@ import 'network_virtual_appliance_connection_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_networkvirtualapplianceconnection" "networkVirtualApplianceConnection" {
+///   connection_name                = "connection1"
+///   network_virtual_appliance_name = "nva1"
+///   properties = {
+///     asn                      = 64512
+///     bgp_peer_address         = ["169.254.16.13", "169.254.16.14"]
+///     enable_internet_security = false
+///     name                     = "connection1"
+///     routing_configuration = {
+///       associated_route_table = {
+///         id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+///       }
+///       inbound_route_map = {
+///         id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap1"
+///       }
+///       outbound_route_map = {
+///         id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"
+///       }
+///       propagated_route_tables = {
+///         ids = [{
+///           "id" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+///         }]
+///         labels = ["label1"]
+///       }
+///     }
+///     tunnel_identifier = 0
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +181,8 @@ import 'network_virtual_appliance_connection_properties_response.dart';
 /// import com.pulumi.azurenative.network.inputs.RoutingConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.network.inputs.PropagatedRouteTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -237,7 +278,7 @@ import 'network_virtual_appliance_connection_properties_response.dart';
 ///     connection_name="connection1",
 ///     network_virtual_appliance_name="nva1",
 ///     properties={
-///         "asn": 64512,
+///         "asn": float(64512),
 ///         "bgp_peer_address": [
 ///             "169.254.16.13",
 ///             "169.254.16.14",
@@ -261,7 +302,7 @@ import 'network_virtual_appliance_connection_properties_response.dart';
 ///                 "labels": ["label1"],
 ///             },
 ///         },
-///         "tunnel_identifier": 0,
+///         "tunnel_identifier": float(0),
 ///     },
 ///     resource_group_name="rg1")
 ///

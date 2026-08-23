@@ -1,8 +1,8 @@
 /// Type of the CDC attribute mapping. Note: 'Advanced' mapping type is also saved as 'Derived'.
 enum MappingType {
-  valueDirect("Direct"),
-  valueDerived("Derived"),
-  valueAggregate("Aggregate");
+  direct("Direct"),
+  derived("Derived"),
+  aggregate("Aggregate");
 
   const MappingType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum MappingType {
     throw ArgumentError('Unknown MappingType value: $value');
   }
 }
-

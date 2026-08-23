@@ -72,6 +72,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_certificate" "certificate" {
+///   certificate_name = "mycertificate"
+///   properties = {
+///     "autoSync"         = "Enabled"
+///     "certVersion"      = "08a219d06d874795a96db47e06fbb01e"
+///     "keyVaultCertName" = "mycert"
+///     "type"             = "KeyVaultCertificate"
+///     "vaultUri"         = "https://myvault.vault.azure.net"
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +104,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.appplatform.Certificate;
 /// import com.pulumi.azurenative.appplatform.CertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

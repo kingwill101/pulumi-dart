@@ -15,4 +15,3 @@ enum InstanceMetadataProtocolState {
     throw ArgumentError('Unknown InstanceMetadataProtocolState value: $value');
   }
 }
-

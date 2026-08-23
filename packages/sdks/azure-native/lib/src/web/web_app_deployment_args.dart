@@ -19,7 +19,7 @@ class WebAppDeploymentArgs {
   final pulumi.Input<String>? details;
   /// End time.
   final pulumi.Input<String>? endTime;
-  /// ID of an existing deployment.
+  /// Deployment ID.
   final pulumi.Input<String>? id;
   /// Kind of resource.
   final pulumi.Input<String>? kind;
@@ -27,7 +27,7 @@ class WebAppDeploymentArgs {
   final pulumi.Input<String>? message;
   /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Start time.
   final pulumi.Input<String>? startTime;
@@ -41,11 +41,11 @@ class WebAppDeploymentArgs {
   /// [deployer] Who performed the deployment.
   /// [details] Details on deployment.
   /// [endTime] End time.
-  /// [id] ID of an existing deployment.
+  /// [id] Deployment ID.
   /// [kind] Kind of resource.
   /// [message] Details about deployment status.
   /// [name] Name of the app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [startTime] Start time.
   /// [status] Deployment status.
   const WebAppDeploymentArgs({
@@ -100,4 +100,3 @@ class WebAppDeploymentArgs {
     );
   }
 }
-

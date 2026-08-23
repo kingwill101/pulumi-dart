@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'address_prefix_item_response.dart';
 import 'configuration_group_response.dart';
-import 'network_manager_security_group_item_response.dart';
+import 'network_manager_security_group_itemlist_active_security_admin_rule_response.dart';
 
 /// Network default admin rule.
 class ActiveDefaultSecurityAdminRuleResponse {
@@ -24,7 +24,7 @@ class ActiveDefaultSecurityAdminRuleResponse {
   /// Indicates if the traffic matched against the rule in inbound or outbound.
   final pulumi.Input<String> direction;
   /// A friendly name for the rule.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String> displayName;
   /// Default rule flag.
   final pulumi.Input<String>? flag;
   /// Resource ID.
@@ -40,10 +40,8 @@ class ActiveDefaultSecurityAdminRuleResponse {
   final pulumi.Input<String> provisioningState;
   /// Deployment region.
   final pulumi.Input<String>? region;
-  /// Unique identifier for this resource.
-  final pulumi.Input<String> resourceGuid;
   /// Groups for rule collection
-  final pulumi.Input<List<NetworkManagerSecurityGroupItemResponse>>? ruleCollectionAppliesToGroups;
+  final pulumi.Input<List<NetworkManagerSecurityGroupItemlistActiveSecurityAdminRuleResponse>>? ruleCollectionAppliesToGroups;
   /// A description of the rule collection.
   final pulumi.Input<String>? ruleCollectionDescription;
   /// A display name of the rule collection.
@@ -72,7 +70,6 @@ class ActiveDefaultSecurityAdminRuleResponse {
   /// [protocol] Network protocol this rule applies to.
   /// [provisioningState] The provisioning state of the resource.
   /// [region] Deployment region.
-  /// [resourceGuid] Unique identifier for this resource.
   /// [ruleCollectionAppliesToGroups] Groups for rule collection
   /// [ruleCollectionDescription] A description of the rule collection.
   /// [ruleCollectionDisplayName] A display name of the rule collection.
@@ -88,7 +85,7 @@ class ActiveDefaultSecurityAdminRuleResponse {
     required this.destinationPortRanges,
     required this.destinations,
     required this.direction,
-    this.displayName,
+    required this.displayName,
     this.flag,
     this.id,
     required this.kind,
@@ -96,7 +93,6 @@ class ActiveDefaultSecurityAdminRuleResponse {
     required this.protocol,
     required this.provisioningState,
     this.region,
-    required this.resourceGuid,
     this.ruleCollectionAppliesToGroups,
     this.ruleCollectionDescription,
     this.ruleCollectionDisplayName,
@@ -115,7 +111,7 @@ class ActiveDefaultSecurityAdminRuleResponse {
       'destinationPortRanges': destinationPortRanges,
       'destinations': pulumi.Input.mapInputValue<List<AddressPrefixItemResponse>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<AddressPrefixItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'direction': direction,
-      'displayName': ?displayName,
+      'displayName': displayName,
       'flag': ?flag,
       'id': ?id,
       'kind': kind,
@@ -123,8 +119,7 @@ class ActiveDefaultSecurityAdminRuleResponse {
       'protocol': protocol,
       'provisioningState': provisioningState,
       'region': ?region,
-      'resourceGuid': resourceGuid,
-      'ruleCollectionAppliesToGroups': ?pulumi.Input.mapOptionalInputValue<List<NetworkManagerSecurityGroupItemResponse>, List<Map<String, dynamic>>>(ruleCollectionAppliesToGroups, (value) => pulumi.Input.encodeList<NetworkManagerSecurityGroupItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ruleCollectionAppliesToGroups': ?pulumi.Input.mapOptionalInputValue<List<NetworkManagerSecurityGroupItemlistActiveSecurityAdminRuleResponse>, List<Map<String, dynamic>>>(ruleCollectionAppliesToGroups, (value) => pulumi.Input.encodeList<NetworkManagerSecurityGroupItemlistActiveSecurityAdminRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ruleCollectionDescription': ?ruleCollectionDescription,
       'ruleCollectionDisplayName': ?ruleCollectionDisplayName,
       'ruleGroups': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationGroupResponse>, List<Map<String, dynamic>>>(ruleGroups, (value) => pulumi.Input.encodeList<ConfigurationGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -143,7 +138,7 @@ class ActiveDefaultSecurityAdminRuleResponse {
       destinationPortRanges: pulumi.Input.fromValue((map['destinationPortRanges'] as List).cast<String>()),
       destinations: pulumi.Input.fromValue(pulumi.Input.decodeList<AddressPrefixItemResponse>(map['destinations']!, (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>()))),
       direction: pulumi.Input.fromValue(map['direction'] as String),
-      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
       flag: (() { final guardedValue = map['flag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
@@ -151,8 +146,7 @@ class ActiveDefaultSecurityAdminRuleResponse {
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      resourceGuid: pulumi.Input.fromValue(map['resourceGuid'] as String),
-      ruleCollectionAppliesToGroups: (() { final guardedValue = map['ruleCollectionAppliesToGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkManagerSecurityGroupItemResponse>(guardedValue, (value) => NetworkManagerSecurityGroupItemResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      ruleCollectionAppliesToGroups: (() { final guardedValue = map['ruleCollectionAppliesToGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkManagerSecurityGroupItemlistActiveSecurityAdminRuleResponse>(guardedValue, (value) => NetworkManagerSecurityGroupItemlistActiveSecurityAdminRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ruleCollectionDescription: (() { final guardedValue = map['ruleCollectionDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleCollectionDisplayName: (() { final guardedValue = map['ruleCollectionDisplayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleGroups: (() { final guardedValue = map['ruleGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigurationGroupResponse>(guardedValue, (value) => ConfigurationGroupResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -161,4 +155,3 @@ class ActiveDefaultSecurityAdminRuleResponse {
     );
   }
 }
-

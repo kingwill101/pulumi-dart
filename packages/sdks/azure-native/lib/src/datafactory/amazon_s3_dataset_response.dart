@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'avro_format_response.dart';
 import 'dataset_compression_response.dart';
-import 'dataset_response_folder.dart';
+import 'dataset_folder_response.dart';
 import 'linked_service_reference_response.dart';
 import 'parameter_specification_response.dart';
 
@@ -18,7 +18,7 @@ class AmazonS3DatasetResponse {
   /// Dataset description.
   final pulumi.Input<String>? description;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final pulumi.Input<DatasetResponseFolder>? folder;
+  final pulumi.Input<DatasetFolderResponse>? folder;
   /// The format of files.
   final pulumi.Input<AvroFormatResponse>? format;
   /// The key of the Amazon S3 object. Type: string (or Expression with resultType string).
@@ -85,7 +85,7 @@ class AmazonS3DatasetResponse {
       'bucketName': bucketName,
       'compression': ?pulumi.Input.mapOptionalInputValue<DatasetCompressionResponse, Map<String, dynamic>>(compression, (value) => value.toMap()),
       'description': ?description,
-      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetResponseFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
+      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetFolderResponse, Map<String, dynamic>>(folder, (value) => value.toMap()),
       'format': ?pulumi.Input.mapOptionalInputValue<AvroFormatResponse, Map<String, dynamic>>(format, (value) => value.toMap()),
       'key': ?key,
       'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
@@ -106,7 +106,7 @@ class AmazonS3DatasetResponse {
       bucketName: pulumi.Input.fromValue(map['bucketName']),
       compression: (() { final guardedValue = map['compression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetCompressionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetResponseFolder.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetFolderResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AvroFormatResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       linkedServiceName: pulumi.Input.fromValue(LinkedServiceReferenceResponse.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())),
@@ -121,4 +121,3 @@ class AmazonS3DatasetResponse {
     );
   }
 }
-

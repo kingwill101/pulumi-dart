@@ -15,4 +15,3 @@ enum SoftwareAssuranceIntent {
     throw ArgumentError('Unknown SoftwareAssuranceIntent value: $value');
   }
 }
-

@@ -1,8 +1,8 @@
 /// The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.
 enum CleanupOptions {
-  valueAlways("Always"),
-  valueOnSuccess("OnSuccess"),
-  valueOnExpiration("OnExpiration");
+  always("Always"),
+  onSuccess("OnSuccess"),
+  onExpiration("OnExpiration");
 
   const CleanupOptions(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum CleanupOptions {
     throw ArgumentError('Unknown CleanupOptions value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum SchemaCompatibility {
     throw ArgumentError('Unknown SchemaCompatibility value: $value');
   }
 }
-

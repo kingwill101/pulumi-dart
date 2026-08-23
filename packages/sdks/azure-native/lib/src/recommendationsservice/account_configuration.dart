@@ -15,4 +15,3 @@ enum AccountConfiguration {
     throw ArgumentError('Unknown AccountConfiguration value: $value');
   }
 }
-

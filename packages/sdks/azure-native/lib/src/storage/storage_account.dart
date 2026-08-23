@@ -21,7 +21,7 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///
 /// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -111,6 +111,39 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_storageaccount" "storageAccount" {
+///   account_name              = "sto4445"
+///   enable_extended_groups    = true
+///   enable_https_traffic_only = false
+///   enable_nfs_v3             = true
+///   is_hns_enabled            = true
+///   kind                      = "BlockBlobStorage"
+///   location                  = "eastus"
+///   network_rule_set = {
+///     bypass         = "AzureServices"
+///     default_action = "Allow"
+///     ip_rules       = []
+///     virtual_network_rules = [{
+///       "virtualNetworkResourceId" = "/subscriptions/{subscription-id}/resourceGroups/res9101/providers/Microsoft.Network/virtualNetworks/net123/subnets/subnet12"
+///     }]
+///   }
+///   resource_group_name = "res9101"
+///   sku = {
+///     name = "Premium_LRS"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +154,8 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// import com.pulumi.azurenative.storage.StorageAccountArgs;
 /// import com.pulumi.azurenative.storage.inputs.NetworkRuleSetArgs;
 /// import com.pulumi.azurenative.storage.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -385,6 +418,67 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_storageaccount" "storageAccount" {
+///   account_name                     = "sto4445"
+///   allow_blob_public_access         = false
+///   allow_shared_key_access          = true
+///   default_to_o_auth_authentication = false
+///   encryption = {
+///     key_source                        = "Microsoft.Storage"
+///     require_infrastructure_encryption = false
+///     services = {
+///       blob = {
+///         enabled  = true
+///         key_type = "Account"
+///       }
+///       file = {
+///         enabled  = true
+///         key_type = "Account"
+///       }
+///     }
+///   }
+///   extended_location = {
+///     name = "losangeles001"
+///     type = "EdgeZone"
+///   }
+///   is_hns_enabled  = true
+///   is_sftp_enabled = true
+///   key_policy = {
+///     key_expiration_period_in_days = 20
+///   }
+///   kind                = "Storage"
+///   location            = "eastus"
+///   minimum_tls_version = "TLS1_2"
+///   resource_group_name = "res9101"
+///   routing_preference = {
+///     publish_internet_endpoints  = true
+///     publish_microsoft_endpoints = true
+///     routing_choice              = "MicrosoftRouting"
+///   }
+///   sas_policy = {
+///     expiration_action     = "Log"
+///     sas_expiration_period = "1.15:59:59"
+///   }
+///   sku = {
+///     name = "Standard_GRS"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -401,8 +495,8 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// import com.pulumi.azurenative.storage.inputs.RoutingPreferenceArgs;
 /// import com.pulumi.azurenative.storage.inputs.SasPolicyArgs;
 /// import com.pulumi.azurenative.storage.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -759,6 +853,62 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_storageaccount" "storageAccount" {
+///   account_name             = "sto4445"
+///   allow_blob_public_access = false
+///   allow_shared_key_access  = true
+///   allowed_copy_scope       = "AAD"
+///   encryption = {
+///     key_source                        = "Microsoft.Storage"
+///     require_infrastructure_encryption = false
+///     services = {
+///       blob = {
+///         enabled  = true
+///         key_type = "Account"
+///       }
+///       file = {
+///         enabled  = true
+///         key_type = "Account"
+///       }
+///     }
+///   }
+///   is_hns_enabled = true
+///   key_policy = {
+///     key_expiration_period_in_days = 20
+///   }
+///   kind                = "Storage"
+///   location            = "eastus"
+///   minimum_tls_version = "TLS1_2"
+///   resource_group_name = "res9101"
+///   routing_preference = {
+///     publish_internet_endpoints  = true
+///     publish_microsoft_endpoints = true
+///     routing_choice              = "MicrosoftRouting"
+///   }
+///   sas_policy = {
+///     expiration_action     = "Log"
+///     sas_expiration_period = "1.15:59:59"
+///   }
+///   sku = {
+///     name = "Standard_GRS"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -774,8 +924,8 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// import com.pulumi.azurenative.storage.inputs.RoutingPreferenceArgs;
 /// import com.pulumi.azurenative.storage.inputs.SasPolicyArgs;
 /// import com.pulumi.azurenative.storage.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1113,6 +1263,62 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_storageaccount" "storageAccount" {
+///   account_name             = "sto4445"
+///   allow_blob_public_access = false
+///   allow_shared_key_access  = true
+///   allowed_copy_scope       = "PrivateLink"
+///   encryption = {
+///     key_source                        = "Microsoft.Storage"
+///     require_infrastructure_encryption = false
+///     services = {
+///       blob = {
+///         enabled  = true
+///         key_type = "Account"
+///       }
+///       file = {
+///         enabled  = true
+///         key_type = "Account"
+///       }
+///     }
+///   }
+///   is_hns_enabled = true
+///   key_policy = {
+///     key_expiration_period_in_days = 20
+///   }
+///   kind                = "Storage"
+///   location            = "eastus"
+///   minimum_tls_version = "TLS1_2"
+///   resource_group_name = "res9101"
+///   routing_preference = {
+///     publish_internet_endpoints  = true
+///     publish_microsoft_endpoints = true
+///     routing_choice              = "MicrosoftRouting"
+///   }
+///   sas_policy = {
+///     expiration_action     = "Log"
+///     sas_expiration_period = "1.15:59:59"
+///   }
+///   sku = {
+///     name = "Standard_GRS"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1128,8 +1334,8 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// import com.pulumi.azurenative.storage.inputs.RoutingPreferenceArgs;
 /// import com.pulumi.azurenative.storage.inputs.SasPolicyArgs;
 /// import com.pulumi.azurenative.storage.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1476,6 +1682,66 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_storageaccount" "storageAccount" {
+///   account_name             = "sto4445"
+///   allow_blob_public_access = false
+///   allow_shared_key_access  = true
+///   encryption = {
+///     key_source                        = "Microsoft.Storage"
+///     require_infrastructure_encryption = false
+///     services = {
+///       blob = {
+///         enabled  = true
+///         key_type = "Account"
+///       }
+///       file = {
+///         enabled  = true
+///         key_type = "Account"
+///       }
+///     }
+///   }
+///   extended_location = {
+///     name = "losangeles001"
+///     type = "EdgeZone"
+///   }
+///   is_hns_enabled = true
+///   key_policy = {
+///     key_expiration_period_in_days = 20
+///   }
+///   kind                  = "Storage"
+///   location              = "eastus"
+///   minimum_tls_version   = "TLS1_2"
+///   public_network_access = "Disabled"
+///   resource_group_name   = "res9101"
+///   routing_preference = {
+///     publish_internet_endpoints  = true
+///     publish_microsoft_endpoints = true
+///     routing_choice              = "MicrosoftRouting"
+///   }
+///   sas_policy = {
+///     expiration_action     = "Log"
+///     sas_expiration_period = "1.15:59:59"
+///   }
+///   sku = {
+///     name = "Standard_GRS"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1492,8 +1758,8 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// import com.pulumi.azurenative.storage.inputs.RoutingPreferenceArgs;
 /// import com.pulumi.azurenative.storage.inputs.SasPolicyArgs;
 /// import com.pulumi.azurenative.storage.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1859,6 +2125,68 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_storageaccount" "storageAccount" {
+///   account_name                     = "sto4445"
+///   allow_blob_public_access         = false
+///   allow_shared_key_access          = true
+///   default_to_o_auth_authentication = false
+///   dns_endpoint_type                = "AzureDnsZone"
+///   encryption = {
+///     key_source                        = "Microsoft.Storage"
+///     require_infrastructure_encryption = false
+///     services = {
+///       blob = {
+///         enabled  = true
+///         key_type = "Account"
+///       }
+///       file = {
+///         enabled  = true
+///         key_type = "Account"
+///       }
+///     }
+///   }
+///   extended_location = {
+///     name = "losangeles001"
+///     type = "EdgeZone"
+///   }
+///   is_hns_enabled  = true
+///   is_sftp_enabled = true
+///   key_policy = {
+///     key_expiration_period_in_days = 20
+///   }
+///   kind                = "Storage"
+///   location            = "eastus"
+///   minimum_tls_version = "TLS1_2"
+///   resource_group_name = "res9101"
+///   routing_preference = {
+///     publish_internet_endpoints  = true
+///     publish_microsoft_endpoints = true
+///     routing_choice              = "MicrosoftRouting"
+///   }
+///   sas_policy = {
+///     expiration_action     = "Log"
+///     sas_expiration_period = "1.15:59:59"
+///   }
+///   sku = {
+///     name = "Standard_GRS"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1875,8 +2203,8 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// import com.pulumi.azurenative.storage.inputs.RoutingPreferenceArgs;
 /// import com.pulumi.azurenative.storage.inputs.SasPolicyArgs;
 /// import com.pulumi.azurenative.storage.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2250,6 +2578,68 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_storageaccount" "storageAccount" {
+///   account_name                     = "sto4445"
+///   allow_blob_public_access         = false
+///   allow_shared_key_access          = true
+///   default_to_o_auth_authentication = false
+///   dns_endpoint_type                = "Standard"
+///   encryption = {
+///     key_source                        = "Microsoft.Storage"
+///     require_infrastructure_encryption = false
+///     services = {
+///       blob = {
+///         enabled  = true
+///         key_type = "Account"
+///       }
+///       file = {
+///         enabled  = true
+///         key_type = "Account"
+///       }
+///     }
+///   }
+///   extended_location = {
+///     name = "losangeles001"
+///     type = "EdgeZone"
+///   }
+///   is_hns_enabled  = true
+///   is_sftp_enabled = true
+///   key_policy = {
+///     key_expiration_period_in_days = 20
+///   }
+///   kind                = "Storage"
+///   location            = "eastus"
+///   minimum_tls_version = "TLS1_2"
+///   resource_group_name = "res9101"
+///   routing_preference = {
+///     publish_internet_endpoints  = true
+///     publish_microsoft_endpoints = true
+///     routing_choice              = "MicrosoftRouting"
+///   }
+///   sas_policy = {
+///     expiration_action     = "Log"
+///     sas_expiration_period = "1.15:59:59"
+///   }
+///   sku = {
+///     name = "Standard_GRS"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2266,8 +2656,8 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// import com.pulumi.azurenative.storage.inputs.RoutingPreferenceArgs;
 /// import com.pulumi.azurenative.storage.inputs.SasPolicyArgs;
 /// import com.pulumi.azurenative.storage.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2637,6 +3027,66 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_storageaccount" "storageAccount" {
+///   account_name             = "sto4445"
+///   allow_blob_public_access = false
+///   allow_shared_key_access  = true
+///   encryption = {
+///     key_source                        = "Microsoft.Storage"
+///     require_infrastructure_encryption = false
+///     services = {
+///       blob = {
+///         enabled  = true
+///         key_type = "Account"
+///       }
+///       file = {
+///         enabled  = true
+///         key_type = "Account"
+///       }
+///     }
+///   }
+///   extended_location = {
+///     name = "losangeles001"
+///     type = "EdgeZone"
+///   }
+///   is_hns_enabled = true
+///   key_policy = {
+///     key_expiration_period_in_days = 20
+///   }
+///   kind                  = "Storage"
+///   location              = "eastus"
+///   minimum_tls_version   = "TLS1_2"
+///   public_network_access = "Enabled"
+///   resource_group_name   = "res9101"
+///   routing_preference = {
+///     publish_internet_endpoints  = true
+///     publish_microsoft_endpoints = true
+///     routing_choice              = "MicrosoftRouting"
+///   }
+///   sas_policy = {
+///     expiration_action     = "Log"
+///     sas_expiration_period = "1.15:59:59"
+///   }
+///   sku = {
+///     name = "Standard_GRS"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2653,8 +3103,8 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// import com.pulumi.azurenative.storage.inputs.RoutingPreferenceArgs;
 /// import com.pulumi.azurenative.storage.inputs.SasPolicyArgs;
 /// import com.pulumi.azurenative.storage.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2974,6 +3424,47 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_storageaccount" "storageAccount" {
+///   account_name            = "sto4445"
+///   allow_shared_key_access = true
+///   encryption = {
+///     key_source                        = "Microsoft.Storage"
+///     require_infrastructure_encryption = false
+///     services = {
+///       blob = {
+///         enabled  = true
+///         key_type = "Account"
+///       }
+///       file = {
+///         enabled  = true
+///         key_type = "Account"
+///       }
+///     }
+///   }
+///   kind                = "BlockBlobStorage"
+///   location            = "eastus"
+///   minimum_tls_version = "TLS1_2"
+///   resource_group_name = "res9101"
+///   sku = {
+///     name = "Premium_LRS"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2986,8 +3477,8 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// import com.pulumi.azurenative.storage.inputs.EncryptionServicesArgs;
 /// import com.pulumi.azurenative.storage.inputs.EncryptionServiceArgs;
 /// import com.pulumi.azurenative.storage.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3217,6 +3708,39 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_storageaccount" "storageAccount" {
+///   account_name = "sto4445"
+///   extended_location = {
+///     name = "losangeles001"
+///     type = "EdgeZone"
+///   }
+///   immutable_storage_with_versioning = {
+///     enabled = true
+///     immutability_policy = {
+///       allow_protected_append_writes              = true
+///       immutability_period_since_creation_in_days = 15
+///       state                                      = "Unlocked"
+///     }
+///   }
+///   kind                = "Storage"
+///   location            = "eastus"
+///   resource_group_name = "res9101"
+///   sku = {
+///     name = "Standard_GRS"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3229,8 +3753,8 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// import com.pulumi.azurenative.storage.inputs.ImmutableStorageAccountArgs;
 /// import com.pulumi.azurenative.storage.inputs.AccountImmutabilityPolicyPropertiesArgs;
 /// import com.pulumi.azurenative.storage.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3422,7 +3946,7 @@ class StorageAccount extends pulumi.CustomResource {
   late final pulumi.Output<String> lastGeoFailoverTime;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-  /// Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
+  /// Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property. Minimum TLS version 1.3 version is not supported.
   late final pulumi.Output<String?> minimumTlsVersion;
   /// The name of the resource
   late final pulumi.Output<String> name;

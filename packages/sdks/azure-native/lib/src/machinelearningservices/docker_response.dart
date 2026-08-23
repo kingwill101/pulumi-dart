@@ -2,7 +2,6 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// Docker container configuration
 class DockerResponse {
   /// Indicate whether container shall run in privileged or non-privileged mode.
   final pulumi.Input<bool>? privileged;
@@ -25,4 +24,3 @@ class DockerResponse {
     );
   }
 }
-

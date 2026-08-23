@@ -1,68 +1,90 @@
-// ignore_for_file: unused_element, unnecessary_cast
-
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'arm_resource_id.dart';
-import 'registry_private_endpoint_connection.dart';
-import 'registry_region_arm_details.dart';
+import 'arm_resource_id_response.dart';
+import 'managed_resource_group_settings_response.dart';
+import 'managed_service_identity_response.dart';
+import 'registry_args.dart';
+import 'sku_response.dart';
+import 'system_data_response.dart';
 
-/// Details of the Registry
-class Registry {
+/// Concrete tracked resource types can be created by aliasing this type using a specific property type.
+///
+/// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+///
+/// Other available API versions: 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:machinelearningservices:Registry string /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}
+/// ```
+class Registry extends pulumi.CustomResource {
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
   /// Discovery URL for the Registry
-  final pulumi.Input<String>? discoveryUrl;
+  late final pulumi.Output<String?> discoveryUrl;
+  /// Managed service identity (system assigned and/or user assigned identities)
+  late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
   /// IntellectualPropertyPublisher for the registry
-  final pulumi.Input<String>? intellectualPropertyPublisher;
+  late final pulumi.Output<String?> intellectualPropertyPublisher;
+  /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
+  late final pulumi.Output<String?> kind;
+  /// The geo-location where the resource lives
+  late final pulumi.Output<String> location;
   /// ResourceId of the managed RG if the registry has system created resources
-  final pulumi.Input<ArmResourceId>? managedResourceGroup;
+  late final pulumi.Output<ArmResourceIdResponse?> managedResourceGroup;
+  /// Managed resource group specific settings
+  late final pulumi.Output<ManagedResourceGroupSettingsResponse?> managedResourceGroupSettings;
   /// MLFlow Registry URI for the Registry
-  final pulumi.Input<String>? mlFlowRegistryUri;
+  late final pulumi.Output<String?> mlFlowRegistryUri;
+  /// The name of the resource
+  late final pulumi.Output<String> name;
   /// Is the Registry accessible from the internet?
   /// Possible values: "Enabled" or "Disabled"
-  final pulumi.Input<String>? publicNetworkAccess;
+  late final pulumi.Output<String?> publicNetworkAccess;
   /// Details of each region the registry is in
-  final pulumi.Input<List<RegistryRegionArmDetails>>? regionDetails;
+  late final pulumi.Output<List<Map<String, dynamic>>?> regionDetails;
   /// Private endpoint connections info used for pending connections in private link portal
-  final pulumi.Input<List<RegistryPrivateEndpointConnection>>? registryPrivateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>?> registryPrivateEndpointConnections;
+  /// Sku details required for ARM contract for Autoscaling.
+  late final pulumi.Output<SkuResponse?> sku;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  late final pulumi.Output<String> type;
 
   /// Creates a new [Registry].
-  /// [discoveryUrl] Discovery URL for the Registry
-  /// [intellectualPropertyPublisher] IntellectualPropertyPublisher for the registry
-  /// [managedResourceGroup] ResourceId of the managed RG if the registry has system created resources
-  /// [mlFlowRegistryUri] MLFlow Registry URI for the Registry
-  /// [publicNetworkAccess] Is the Registry accessible from the internet?
-  /// [regionDetails] Details of each region the registry is in
-  /// [registryPrivateEndpointConnections] Private endpoint connections info used for pending connections in private link portal
-  const Registry({
-    this.discoveryUrl,
-    this.intellectualPropertyPublisher,
-    this.managedResourceGroup,
-    this.mlFlowRegistryUri,
-    this.publicNetworkAccess,
-    this.regionDetails,
-    this.registryPrivateEndpointConnections,
-  });
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'discoveryUrl': ?discoveryUrl,
-      'intellectualPropertyPublisher': ?intellectualPropertyPublisher,
-      'managedResourceGroup': ?pulumi.Input.mapOptionalInputValue<ArmResourceId, Map<String, dynamic>>(managedResourceGroup, (value) => value.toMap()),
-      'mlFlowRegistryUri': ?mlFlowRegistryUri,
-      'publicNetworkAccess': ?publicNetworkAccess,
-      'regionDetails': ?pulumi.Input.mapOptionalInputValue<List<RegistryRegionArmDetails>, List<Map<String, dynamic>>>(regionDetails, (value) => pulumi.Input.encodeList<RegistryRegionArmDetails, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'registryPrivateEndpointConnections': ?pulumi.Input.mapOptionalInputValue<List<RegistryPrivateEndpointConnection>, List<Map<String, dynamic>>>(registryPrivateEndpointConnections, (value) => pulumi.Input.encodeList<RegistryPrivateEndpointConnection, Map<String, dynamic>>(value, (value) => value.toMap())),
-    };
-  }
-
-  factory Registry.fromMap(Map<String, dynamic> map) {
-    return Registry(
-      discoveryUrl: (() { final guardedValue = map['discoveryUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      intellectualPropertyPublisher: (() { final guardedValue = map['intellectualPropertyPublisher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      managedResourceGroup: (() { final guardedValue = map['managedResourceGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ArmResourceId.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      mlFlowRegistryUri: (() { final guardedValue = map['mlFlowRegistryUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      regionDetails: (() { final guardedValue = map['regionDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegistryRegionArmDetails>(guardedValue, (value) => RegistryRegionArmDetails.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      registryPrivateEndpointConnections: (() { final guardedValue = map['registryPrivateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegistryPrivateEndpointConnection>(guardedValue, (value) => RegistryPrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))); })(),
-    );
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [Registry]. {@macro pulumi_machinelearningservices_registry_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  Registry(
+    String name, {
+    RegistryArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:machinelearningservices:Registry',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    discoveryUrl = registerOutput<String?>('discoveryUrl');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    intellectualPropertyPublisher = registerOutput<String?>('intellectualPropertyPublisher');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    managedResourceGroup = registerOutput<ArmResourceIdResponse?>('managedResourceGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ArmResourceIdResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managedResourceGroupSettings = registerOutput<ManagedResourceGroupSettingsResponse?>('managedResourceGroupSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedResourceGroupSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mlFlowRegistryUri = registerOutput<String?>('mlFlowRegistryUri');
+    this.name = registerOutput<String>('name');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    regionDetails = registerOutput<List<Map<String, dynamic>>?>('regionDetails');
+    registryPrivateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>('registryPrivateEndpointConnections');
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }
-

@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWatcherArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The watcher name.
   final pulumi.Input<String> watcherName;
 
   /// Creates a new [GetWatcherArgs].
   /// [automationAccountName] The name of the automation account.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [watcherName] The watcher name.
   const GetWatcherArgs({
     required this.automationAccountName,
@@ -40,4 +40,3 @@ class GetWatcherArgs {
     );
   }
 }
-

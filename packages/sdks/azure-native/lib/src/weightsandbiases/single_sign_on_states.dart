@@ -16,4 +16,3 @@ enum SingleSignOnStates {
     throw ArgumentError('Unknown SingleSignOnStates value: $value');
   }
 }
-

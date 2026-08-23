@@ -175,6 +175,69 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_apigatewayrestapi" "apiGatewayRestApi" {
+///   location = "lvqczthlir"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "mjkvrfpgenxbfozh"
+///     aws_account_id = "qjcvyhdegwhvzsiuqjwnvdqs"
+///     aws_properties = {
+///       api_key_source_type = "f"
+///       binary_media_types  = ["ahebgkheozatj"]
+///       body                = {}
+///       body_s3_location = {
+///         bucket  = "oyosqpl"
+///         e_tag   = "uuzlkbqlua"
+///         key     = "nsks"
+///         version = "lxbmxdrsftqwazmgxlokuvf"
+///       }
+///       clone_from                   = "boxfqilij"
+///       description                  = "ngqhnoniiohuwofr"
+///       disable_execute_api_endpoint = true
+///       endpoint_configuration = {
+///         types            = ["dfhdcsvbasfadeuneaz"]
+///         vpc_endpoint_ids = ["evzbafcpdpklwppge"]
+///       }
+///       fail_on_warnings         = true
+///       minimum_compression_size = 11
+///       mode                     = "odjmjlcgkmskasrasoegyxnuqr"
+///       name                     = "ioyxag"
+///       parameters = {
+///         "key9886" = "kwxjcmpsfptfkdeajrzqt"
+///       }
+///       policy           = "jefpbspvgtinulqfyjxuxcunzkpgvw"
+///       rest_api_id      = "hlyfcdcgknhbjezdxgbg"
+///       root_resource_id = "jfmgp"
+///       tags = [{
+///         "key"   = "zvkbvzxmbhtugr"
+///         "value" = "uozcrgrc"
+///       }]
+///     }
+///     aws_region        = "bzj"
+///     aws_source_schema = "oagqktjiz"
+///     aws_tags = {
+///       "key5478" = "g"
+///     }
+///     public_cloud_connectors_resource_id = "diszsfnljduoshvzzgcyypsjnxs"
+///     public_cloud_resource_name          = "tvtpphxonsvnvtmccbpcsvvvslbxxc"
+///   }
+///   resource_group_name = "rgapiGatewayRestApi"
+///   tags = {
+///     "key4163" = "gqwufsfmbcznfkcfnjsejmna"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -187,8 +250,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsApiGatewayRestApiPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.S3LocationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.EndpointConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

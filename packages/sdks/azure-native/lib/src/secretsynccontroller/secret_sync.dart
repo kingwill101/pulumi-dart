@@ -1,5 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_resource_manager_common_types_extended_location_response.dart';
+import 'extended_location_response.dart';
 import 'secret_sync_args.dart';
 import 'secret_sync_status_response.dart';
 import 'system_data_response.dart';
@@ -92,6 +92,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_secretsynccontroller_secretsync" "secretSync" {
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-ssc-example/providers/Microsoft.ExtendedLocation/customLocations/example-custom-location"
+///     type = "CustomLocation"
+///   }
+///   kubernetes_secret_type = "Opaque"
+///   location               = "eastus"
+///   object_secret_mapping {
+///     source_path = "kv-secret-name/0"
+///     target_key  = "kv-secret-name/0"
+///   }
+///   resource_group_name        = "rg-ssc-example"
+///   secret_provider_class_name = "akvspc-ssc-example"
+///   secret_sync_name           = "secretsync-ssc-example"
+///   service_account_name       = "example-k8s-sa-name"
+///   tags = {
+///     "example-tag" = "example-tag-value"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +133,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.secretsynccontroller.SecretSyncArgs;
 /// import com.pulumi.azurenative.secretsynccontroller.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs;
 /// import com.pulumi.azurenative.secretsynccontroller.inputs.KubernetesSecretObjectMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -225,7 +256,7 @@ class SecretSync extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The complex type of the extended location.
-  late final pulumi.Output<AzureResourceManagerCommonTypesExtendedLocationResponse?> extendedLocation;
+  late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
   /// ForceSynchronization can be used to force the secret synchronization. The secret synchronization is triggered by changing the value in this field. This field is not used to resolve synchronization conflicts.
   late final pulumi.Output<String?> forceSynchronization;
   /// Type specifies the type of the Kubernetes secret object, e.g. "Opaque" or"kubernetes.io/tls". The controller must have permission to create secrets of the specified type.
@@ -266,7 +297,7 @@ class SecretSync extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    extendedLocation = registerOutput<AzureResourceManagerCommonTypesExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     forceSynchronization = registerOutput<String?>('forceSynchronization');
     kubernetesSecretType = registerOutput<String>('kubernetesSecretType');
     location = registerOutput<String>('location');

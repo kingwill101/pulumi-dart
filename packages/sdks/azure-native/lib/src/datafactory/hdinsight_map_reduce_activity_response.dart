@@ -13,7 +13,7 @@ class HDInsightMapReduceActivityResponse {
   /// Class name. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> className;
   /// Allows user to specify defines for the MapReduce job request.
-  final pulumi.Input<Map<String, dynamic>>? defines;
+  final pulumi.Input<dynamic>? defines;
   /// Activity depends on condition.
   final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
   /// Activity description.
@@ -108,7 +108,7 @@ class HDInsightMapReduceActivityResponse {
     return HDInsightMapReduceActivityResponse(
       arguments: (() { final guardedValue = map['arguments']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       className: pulumi.Input.fromValue(map['className']),
-      defines: (() { final guardedValue = map['defines']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      defines: (() { final guardedValue = map['defines']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependencyResponse>(guardedValue, (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       getDebugInfo: (() { final guardedValue = map['getDebugInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -126,4 +126,3 @@ class HDInsightMapReduceActivityResponse {
     );
   }
 }
-

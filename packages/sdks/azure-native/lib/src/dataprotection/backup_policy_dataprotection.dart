@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
 ///
-/// Other available API versions: 2023-01-01, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-02-01, 2025-07-01, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dataprotection [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-01-01, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-02-01, 2025-07-01, 2025-09-01, 2026-03-01, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dataprotection [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -263,6 +263,91 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dataprotection_backuppolicy" "backupPolicy" {
+///   backup_policy_name = "OSSDBPolicy"
+///   properties = {
+///     datasource_types = ["OssDB"]
+///     object_type      = "BackupPolicy"
+///     policy_rules = [{
+///       "backupParameters" = {
+///         "backupType" = "Full"
+///         "objectType" = "AzureBackupParams"
+///       }
+///       "dataStore" = {
+///         "dataStoreType" = "VaultStore"
+///         "objectType"    = "DataStoreInfoBase"
+///       }
+///       "name"       = "BackupWeekly"
+///       "objectType" = "AzureBackupRule"
+///       "trigger" = {
+///         "objectType" = "ScheduleBasedTriggerContext"
+///         "schedule" = {
+///           "repeatingTimeIntervals" = ["R/2019-11-20T08:00:00-08:00/P1W"]
+///         }
+///         "taggingCriteria" = [{
+///           "isDefault" = true
+///           "tagInfo" = {
+///             "tagName" = "Default"
+///           }
+///           "taggingPriority" = 99
+///           }, {
+///           "criteria" = [{
+///             "daysOfTheWeek" = ["Sunday"]
+///             "objectType"    = "ScheduleBasedBackupCriteria"
+///             "scheduleTimes" = ["2019-03-01T13:00:00Z"]
+///           }]
+///           "isDefault" = false
+///           "tagInfo" = {
+///             "tagName" = "Weekly"
+///           }
+///           "taggingPriority" = 20
+///         }]
+///       }
+///       }, {
+///       "isDefault" = true
+///       "lifecycles" = [{
+///         "deleteAfter" = {
+///           "duration"   = "P1W"
+///           "objectType" = "AbsoluteDeleteOption"
+///         }
+///         "sourceDataStore" = {
+///           "dataStoreType" = "VaultStore"
+///           "objectType"    = "DataStoreInfoBase"
+///         }
+///       }]
+///       "name"       = "Default"
+///       "objectType" = "AzureRetentionRule"
+///       }, {
+///       "isDefault" = false
+///       "lifecycles" = [{
+///         "deleteAfter" = {
+///           "duration"   = "P12W"
+///           "objectType" = "AbsoluteDeleteOption"
+///         }
+///         "sourceDataStore" = {
+///           "dataStoreType" = "VaultStore"
+///           "objectType"    = "DataStoreInfoBase"
+///         }
+///       }]
+///       "name"       = "Weekly"
+///       "objectType" = "AzureRetentionRule"
+///     }]
+///   }
+///   resource_group_name = "000pikumar"
+///   vault_name          = "PrivatePreviewVault"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -270,8 +355,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dataprotection.BackupPolicy;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -311,7 +396,7 @@ import 'system_data_response.dart';
 ///                                     .tagInfo(RetentionTagArgs.builder()
 ///                                         .tagName("Default")
 ///                                         .build())
-///                                     .taggingPriority(99)
+///                                     .taggingPriority(99.0)
 ///                                     .build(),
 ///                                 TaggingCriteriaArgs.builder()
 ///                                     .criteria(ScheduleBasedBackupCriteriaArgs.builder()
@@ -323,7 +408,7 @@ import 'system_data_response.dart';
 ///                                     .tagInfo(RetentionTagArgs.builder()
 ///                                         .tagName("Weekly")
 ///                                         .build())
-///                                     .taggingPriority(20)
+///                                     .taggingPriority(20.0)
 ///                                     .build())
 ///                             .build())
 ///                         .build(),
@@ -486,7 +571,7 @@ import 'system_data_response.dart';
 ///                             "tag_info": {
 ///                                 "tag_name": "Default",
 ///                             },
-///                             "tagging_priority": 99,
+///                             "tagging_priority": float(99),
 ///                         },
 ///                         {
 ///                             "criteria": [{
@@ -498,7 +583,7 @@ import 'system_data_response.dart';
 ///                             "tag_info": {
 ///                                 "tag_name": "Weekly",
 ///                             },
-///                             "tagging_priority": 20,
+///                             "tagging_priority": float(20),
 ///                         },
 ///                     ],
 ///                 },

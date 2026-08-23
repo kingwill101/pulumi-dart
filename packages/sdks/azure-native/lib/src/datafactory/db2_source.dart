@@ -68,4 +68,3 @@ class Db2Source {
     );
   }
 }
-

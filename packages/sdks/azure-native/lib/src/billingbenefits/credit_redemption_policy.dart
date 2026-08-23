@@ -1,8 +1,8 @@
 /// Redemption policy of the Credit
 enum CreditRedemptionPolicy {
-  valueNotApplicable("NotApplicable"),
-  valueAutoRedeem("AutoRedeem"),
-  valueManualRedeem("ManualRedeem");
+  notApplicable("NotApplicable"),
+  autoRedeem("AutoRedeem"),
+  manualRedeem("ManualRedeem");
 
   const CreditRedemptionPolicy(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum CreditRedemptionPolicy {
     throw ArgumentError('Unknown CreditRedemptionPolicy value: $value');
   }
 }
-

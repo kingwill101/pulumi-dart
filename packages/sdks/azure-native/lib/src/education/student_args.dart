@@ -8,9 +8,9 @@ import 'amount.dart';
 /// {@endtemplate}
 /// {@macro pulumi_education_student_args_doc}
 class StudentArgs {
-  /// The ID that uniquely identifies a billing account.
+  /// The name of the billing account.
   final pulumi.Input<String> billingAccountName;
-  /// The ID that uniquely identifies a billing profile.
+  /// The name of the billing profile.
   final pulumi.Input<String> billingProfileName;
   /// Student Budget
   final pulumi.Input<Amount> budget;
@@ -20,13 +20,13 @@ class StudentArgs {
   final pulumi.Input<String> expirationDate;
   /// First Name
   final pulumi.Input<String> firstName;
-  /// The ID that uniquely identifies an invoice section.
+  /// The name of the invoice section.
   final pulumi.Input<String> invoiceSectionName;
   /// Last Name
   final pulumi.Input<String> lastName;
   /// Student Role
   final pulumi.Input<String> role;
-  /// Student alias.
+  /// The student alias.
   final pulumi.Input<String>? studentAlias;
   /// Subscription alias
   final pulumi.Input<String>? subscriptionAlias;
@@ -34,16 +34,16 @@ class StudentArgs {
   final pulumi.Input<String>? subscriptionInviteLastSentDate;
 
   /// Creates a new [StudentArgs].
-  /// [billingAccountName] The ID that uniquely identifies a billing account.
-  /// [billingProfileName] The ID that uniquely identifies a billing profile.
+  /// [billingAccountName] The name of the billing account.
+  /// [billingProfileName] The name of the billing profile.
   /// [budget] Student Budget
   /// [email] Student Email
   /// [expirationDate] Date this student is set to expire from the lab.
   /// [firstName] First Name
-  /// [invoiceSectionName] The ID that uniquely identifies an invoice section.
+  /// [invoiceSectionName] The name of the invoice section.
   /// [lastName] Last Name
   /// [role] Student Role
-  /// [studentAlias] Student alias.
+  /// [studentAlias] The student alias.
   /// [subscriptionAlias] Subscription alias
   /// [subscriptionInviteLastSentDate] subscription invite last sent date
   const StudentArgs({
@@ -95,4 +95,3 @@ class StudentArgs {
     );
   }
 }
-

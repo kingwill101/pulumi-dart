@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_codesigning_certificate_profile_args_doc}
 class CertificateProfileArgs {
-  /// Trusted Signing account name.
+  /// Artifact Signing account name.
   final pulumi.Input<String> accountName;
   /// Identity validation id used for the certificate subject name.
   final pulumi.Input<String> identityValidationId;
@@ -29,7 +29,7 @@ class CertificateProfileArgs {
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [CertificateProfileArgs].
-  /// [accountName] Trusted Signing account name.
+  /// [accountName] Artifact Signing account name.
   /// [identityValidationId] Identity validation id used for the certificate subject name.
   /// [includeCity] Whether to include L in the certificate subject name. Applicable only for private trust, private trust ci profile types
   /// [includeCountry] Whether to include C in the certificate subject name. Applicable only for private trust, private trust ci profile types
@@ -82,4 +82,3 @@ class CertificateProfileArgs {
     );
   }
 }
-

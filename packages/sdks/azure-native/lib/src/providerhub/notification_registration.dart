@@ -108,6 +108,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_providerhub_notificationregistration" "notificationRegistration" {
+///   notification_registration_name = "fooNotificationRegistration"
+///   properties = {
+///     included_events = ["*/write", "Microsoft.Contoso/employees/delete"]
+///     message_scope   = "RegisteredSubscriptions"
+///     notification_endpoints = [{
+///       "locations"               = ["", "East US"]
+///       "notificationDestination" = "/subscriptions/ac6bcfb5-3dc1-491f-95a6-646b89bf3e88/resourceGroups/mgmtexp-eastus/providers/Microsoft.EventHub/namespaces/unitedstates-mgmtexpint/eventhubs/armlinkednotifications"
+///       }, {
+///       "locations"               = ["North Europe"]
+///       "notificationDestination" = "/subscriptions/ac6bcfb5-3dc1-491f-95a6-646b89bf3e88/resourceGroups/mgmtexp-northeurope/providers/Microsoft.EventHub/namespaces/europe-mgmtexpint/eventhubs/armlinkednotifications"
+///     }]
+///     notification_mode = "EventHub"
+///   }
+///   provider_namespace = "Microsoft.Contoso"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -117,8 +145,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.providerhub.NotificationRegistration;
 /// import com.pulumi.azurenative.providerhub.NotificationRegistrationArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.NotificationRegistrationPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

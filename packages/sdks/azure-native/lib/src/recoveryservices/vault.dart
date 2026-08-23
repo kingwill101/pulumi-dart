@@ -9,7 +9,7 @@ import 'vault_properties_response.dart';
 ///
 /// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 ///
-/// Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-09-30-preview, 2025-01-01, 2025-02-01, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-09-30-preview, 2025-01-01, 2025-02-01, 2025-08-01, 2026-01-01, 2026-02-01, 2026-03-31-preview, 2026-05-01, 2026-05-31-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -80,6 +80,32 @@ import 'vault_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_recoveryservices_vault" "vault" {
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location = "West US"
+///   properties = {
+///     public_network_access = "Enabled"
+///   }
+///   resource_group_name = "Default-RecoveryServices-ResourceGroup"
+///   sku = {
+///     name = "Standard"
+///   }
+///   vault_name = "swaggerExample"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +117,8 @@ import 'vault_properties_response.dart';
 /// import com.pulumi.azurenative.recoveryservices.inputs.IdentityDataArgs;
 /// import com.pulumi.azurenative.recoveryservices.inputs.VaultPropertiesArgs;
 /// import com.pulumi.azurenative.recoveryservices.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -275,6 +301,43 @@ import 'vault_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_recoveryservices_vault" "vault" {
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location = "West US"
+///   properties = {
+///     monitoring_settings = {
+///       azure_monitor_alert_settings = {
+///         alerts_for_all_failover_issues    = "Disabled"
+///         alerts_for_all_job_failures       = "Enabled"
+///         alerts_for_all_replication_issues = "Enabled"
+///       }
+///       classic_alert_settings = {
+///         alerts_for_critical_operations        = "Disabled"
+///         email_notifications_for_site_recovery = "Enabled"
+///       }
+///     }
+///     public_network_access = "Enabled"
+///   }
+///   resource_group_name = "Default-RecoveryServices-ResourceGroup"
+///   sku = {
+///     name = "Standard"
+///   }
+///   vault_name = "swaggerExample"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -289,8 +352,8 @@ import 'vault_properties_response.dart';
 /// import com.pulumi.azurenative.recoveryservices.inputs.AzureMonitorAlertSettingsArgs;
 /// import com.pulumi.azurenative.recoveryservices.inputs.ClassicAlertSettingsArgs;
 /// import com.pulumi.azurenative.recoveryservices.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -498,6 +561,36 @@ import 'vault_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_recoveryservices_vault" "vault" {
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location = "West US"
+///   properties = {
+///     public_network_access = "Enabled"
+///     redundancy_settings = {
+///       cross_region_restore             = "Enabled"
+///       standard_tier_storage_redundancy = "GeoRedundant"
+///     }
+///   }
+///   resource_group_name = "Default-RecoveryServices-ResourceGroup"
+///   sku = {
+///     name = "Standard"
+///   }
+///   vault_name = "swaggerExample"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -510,8 +603,8 @@ import 'vault_properties_response.dart';
 /// import com.pulumi.azurenative.recoveryservices.inputs.VaultPropertiesArgs;
 /// import com.pulumi.azurenative.recoveryservices.inputs.VaultPropertiesRedundancySettingsArgs;
 /// import com.pulumi.azurenative.recoveryservices.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

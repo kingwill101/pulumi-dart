@@ -22,6 +22,8 @@ class RedisEnterpriseArgs {
   final pulumi.Input<String>? location;
   /// The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions.
   final pulumi.Input<String>? minimumTlsVersion;
+  /// Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set.
+  final pulumi.Input<String> publicNetworkAccess;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU to create, which affects price, performance, and features.
@@ -38,6 +40,7 @@ class RedisEnterpriseArgs {
   /// [identity] The identity of the resource.
   /// [location] The geo-location where the resource lives
   /// [minimumTlsVersion] The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions.
+  /// [publicNetworkAccess] Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The SKU to create, which affects price, performance, and features.
   /// [tags] Resource tags.
@@ -49,6 +52,7 @@ class RedisEnterpriseArgs {
     this.identity,
     this.location,
     this.minimumTlsVersion,
+    required this.publicNetworkAccess,
     required this.resourceGroupName,
     required this.sku,
     this.tags,
@@ -63,6 +67,7 @@ class RedisEnterpriseArgs {
       'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'location': ?location,
       'minimumTlsVersion': ?minimumTlsVersion,
+      'publicNetworkAccess': publicNetworkAccess,
       'resourceGroupName': resourceGroupName,
       'sku': pulumi.Input.mapInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'tags': ?tags,
@@ -78,6 +83,7 @@ class RedisEnterpriseArgs {
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       minimumTlsVersion: (() { final guardedValue = map['minimumTlsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: pulumi.Input.fromValue(map['publicNetworkAccess'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sku: pulumi.Input.fromValue(Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -85,4 +91,3 @@ class RedisEnterpriseArgs {
     );
   }
 }
-

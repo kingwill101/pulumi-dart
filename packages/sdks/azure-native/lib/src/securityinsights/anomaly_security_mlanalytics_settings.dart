@@ -205,6 +205,71 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_anomalysecuritymlanalyticssettings" "anomalySecurityMLAnalyticsSettings" {
+///   anomaly_settings_version = 0
+///   anomaly_version          = "1.0.5"
+///   customizable_observations = {
+///     "multiSelectObservations"       = null
+///     "prioritizeExcludeObservations" = null
+///     "singleSelectObservations" = [{
+///       "description"        = "Select device vendor of network connection logs from CommonSecurityLog"
+///       "name"               = "Device vendor"
+///       "rerun"              = "RerunAlways"
+///       "sequenceNumber"     = 1
+///       "supportedValues"    = ["Palo Alto Networks", "Fortinet", "Check Point"]
+///       "supportedValuesKql" = null
+///       "value"              = ["Palo Alto Networks"]
+///       "valuesKql"          = null
+///     }]
+///     "singleValueObservations" = null
+///     "thresholdObservations" = [{
+///       "description"    = "Suppress anomalies when daily data transfered (in MB) per hour is less than the chosen value"
+///       "maximum"        = "100"
+///       "minimum"        = "1"
+///       "name"           = "Daily data transfer threshold in MB"
+///       "rerun"          = "RerunAlways"
+///       "sequenceNumber" = 1
+///       "value"          = "25"
+///       }, {
+///       "description"    = "Triggers anomalies when number of standard deviations is greater than the chosen value"
+///       "maximum"        = "10"
+///       "minimum"        = "2"
+///       "name"           = "Number of standard deviations"
+///       "rerun"          = "RerunAlways"
+///       "sequenceNumber" = 2
+///       "value"          = "3"
+///     }]
+///   }
+///   description         = "When account logs from a source region that has rarely been logged in from during the last 14 days, an anomaly is triggered."
+///   display_name        = "Login from unusual region"
+///   enabled             = true
+///   frequency           = "PT1H"
+///   is_default_settings = true
+///   kind                = "Anomaly"
+///   required_data_connectors {
+///     connector_id = "AWS"
+///     data_types   = ["AWSCloudTrail"]
+///   }
+///   resource_group_name    = "myRg"
+///   settings_definition_id = "f209187f-1d17-4431-94af-c141bf5f23db"
+///   settings_resource_name = "f209187f-1d17-4431-94af-c141bf5f23db"
+///   settings_status        = "Production"
+///   tactics                = ["Exfiltration", "CommandAndControl"]
+///   techniques             = ["T1037", "T1021"]
+///   workspace_name         = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -214,8 +279,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.securityinsights.AnomalySecurityMLAnalyticsSettings;
 /// import com.pulumi.azurenative.securityinsights.AnomalySecurityMLAnalyticsSettingsArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.SecurityMLAnalyticsSettingsDataSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -233,21 +298,21 @@ import 'system_data_response.dart';
 ///             .customizableObservations(Map.ofEntries(
 ///                 Map.entry("multiSelectObservations", null),
 ///                 Map.entry("prioritizeExcludeObservations", null),
-///                 Map.entry("singleSelectObservations", Map.ofEntries(
+///                 Map.entry("singleSelectObservations", Arrays.asList(Map.ofEntries(
 ///                     Map.entry("description", "Select device vendor of network connection logs from CommonSecurityLog"),
 ///                     Map.entry("name", "Device vendor"),
 ///                     Map.entry("rerun", "RerunAlways"),
 ///                     Map.entry("sequenceNumber", 1),
-///                     Map.entry("supportedValues",
+///                     Map.entry("supportedValues", Arrays.asList(
 ///                         "Palo Alto Networks",
 ///                         "Fortinet",
-///                         "Check Point"),
+///                         "Check Point")),
 ///                     Map.entry("supportedValuesKql", null),
-///                     Map.entry("value", "Palo Alto Networks"),
+///                     Map.entry("value", Arrays.asList("Palo Alto Networks")),
 ///                     Map.entry("valuesKql", null)
-///                 )),
+///                 ))),
 ///                 Map.entry("singleValueObservations", null),
-///                 Map.entry("thresholdObservations",
+///                 Map.entry("thresholdObservations", Arrays.asList(
 ///                     Map.ofEntries(
 ///                         Map.entry("description", "Suppress anomalies when daily data transfered (in MB) per hour is less than the chosen value"),
 ///                         Map.entry("maximum", "100"),
@@ -265,7 +330,7 @@ import 'system_data_response.dart';
 ///                         Map.entry("rerun", "RerunAlways"),
 ///                         Map.entry("sequenceNumber", 2),
 ///                         Map.entry("value", "3")
-///                     ))
+///                     )))
 ///             ))
 ///             .description("When account logs from a source region that has rarely been logged in from during the last 14 days, an anomaly is triggered.")
 ///             .displayName("Login from unusual region")

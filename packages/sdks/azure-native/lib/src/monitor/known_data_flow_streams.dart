@@ -17,4 +17,3 @@ enum KnownDataFlowStreams {
     throw ArgumentError('Unknown KnownDataFlowStreams value: $value');
   }
 }
-

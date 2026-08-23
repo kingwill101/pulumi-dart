@@ -53,7 +53,7 @@ Future<GetConsoleWithLocationResult> getConsoleWithLocation(
 ///
 /// Uses Azure REST API version 2022-12-01-preview.
 ///
-/// Other available API versions: 2019-01-01-preview, 2020-09-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native portal [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-01-01-preview, 2020-09-01-preview, 2025-04-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native portal [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_portal_get_dashboard_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDashboardResult> getDashboard(
@@ -73,7 +73,7 @@ Future<GetDashboardResult> getDashboard(
 ///
 /// Uses Azure REST API version 2022-12-01-preview.
 ///
-/// Other available API versions: 2019-01-01-preview, 2020-09-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native portal [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-01-01-preview, 2020-09-01-preview, 2025-04-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native portal [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_portal_get_tenant_configuration_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetTenantConfigurationResult> getTenantConfiguration(
@@ -129,7 +129,7 @@ Future<GetUserSettingsWithLocationResult> getUserSettingsWithLocation(
 ///
 /// Uses Azure REST API version 2022-12-01-preview.
 ///
-/// Other available API versions: 2020-09-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native portal [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-09-01-preview, 2025-04-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native portal [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
 Future<ListListTenantConfigurationViolationResult> listListTenantConfigurationViolation(
   {

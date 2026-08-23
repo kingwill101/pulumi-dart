@@ -31,4 +31,3 @@ class Gen2StorageConfigurationInput {
     );
   }
 }
-

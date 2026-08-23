@@ -5,7 +5,7 @@ import 'geo_backup_policy_args.dart';
 ///
 /// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
 ///
-/// Other available API versions: 2014-04-01, 2021-11-01, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2014-04-01, 2021-11-01, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -59,6 +59,25 @@ import 'geo_backup_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_geobackuppolicy" "geoBackupPolicy" {
+///   database_name          = "testdw"
+///   geo_backup_policy_name = "Default"
+///   resource_group_name    = "sqlcrudtest-4799"
+///   server_name            = "sqlcrudtest-5961"
+///   state                  = "Enabled"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +86,8 @@ import 'geo_backup_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.GeoBackupPolicy;
 /// import com.pulumi.azurenative.sql.GeoBackupPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

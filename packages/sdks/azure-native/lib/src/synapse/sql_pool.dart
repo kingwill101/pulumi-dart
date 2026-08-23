@@ -81,6 +81,35 @@ import 'sql_pool_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_synapse_sqlpool" "sqlPool" {
+///   collation               = ""
+///   create_mode             = ""
+///   location                = "Southeast Asia"
+///   max_size_bytes          = 0
+///   recoverable_database_id = ""
+///   resource_group_name     = "ExampleResourceGroup"
+///   sku = {
+///     name = ""
+///     tier = ""
+///   }
+///   source_database_id   = ""
+///   sql_pool_name        = "ExampleSqlPool"
+///   storage_account_type = "LRS"
+///   tags                 = {}
+///   workspace_name       = "ExampleWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +119,8 @@ import 'sql_pool_args.dart';
 /// import com.pulumi.azurenative.synapse.SqlPool;
 /// import com.pulumi.azurenative.synapse.SqlPoolArgs;
 /// import com.pulumi.azurenative.synapse.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -159,7 +188,7 @@ import 'sql_pool_args.dart';
 ///     collation="",
 ///     create_mode="",
 ///     location="Southeast Asia",
-///     max_size_bytes=0,
+///     max_size_bytes=float(0),
 ///     recoverable_database_id="",
 ///     resource_group_name="ExampleResourceGroup",
 ///     sku={

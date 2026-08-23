@@ -1,8 +1,8 @@
 /// Sql always encrypted AKV authentication type. Type: string.
 enum SqlAlwaysEncryptedAkvAuthType {
-  valueServicePrincipal("ServicePrincipal"),
-  valueManagedIdentity("ManagedIdentity"),
-  valueUserAssignedManagedIdentity("UserAssignedManagedIdentity");
+  servicePrincipal("ServicePrincipal"),
+  managedIdentity("ManagedIdentity"),
+  userAssignedManagedIdentity("UserAssignedManagedIdentity");
 
   const SqlAlwaysEncryptedAkvAuthType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum SqlAlwaysEncryptedAkvAuthType {
     throw ArgumentError('Unknown SqlAlwaysEncryptedAkvAuthType value: $value');
   }
 }
-

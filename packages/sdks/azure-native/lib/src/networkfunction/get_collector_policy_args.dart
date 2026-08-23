@@ -11,13 +11,13 @@ class GetCollectorPolicyArgs {
   final pulumi.Input<String> azureTrafficCollectorName;
   /// Collector Policy Name
   final pulumi.Input<String> collectorPolicyName;
-  /// The name of the resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetCollectorPolicyArgs].
   /// [azureTrafficCollectorName] Azure Traffic Collector name
   /// [collectorPolicyName] Collector Policy Name
-  /// [resourceGroupName] The name of the resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetCollectorPolicyArgs({
     required this.azureTrafficCollectorName,
     required this.collectorPolicyName,
@@ -40,4 +40,3 @@ class GetCollectorPolicyArgs {
     );
   }
 }
-

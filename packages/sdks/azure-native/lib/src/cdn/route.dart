@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview, 2025-12-01, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -140,6 +140,47 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cdn_route" "route" {
+///   cache_configuration = {
+///     compression_settings = {
+///       content_types_to_compress = ["text/html", "application/octet-stream"]
+///       is_compression_enabled    = true
+///     }
+///     query_parameters              = "querystring=test"
+///     query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
+///   }
+///   custom_domains {
+///     id = "/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/customDomains/domain1"
+///   }
+///   enabled_state          = "Enabled"
+///   endpoint_name          = "endpoint1"
+///   forwarding_protocol    = "MatchRequest"
+///   https_redirect         = "Enabled"
+///   link_to_default_domain = "Enabled"
+///   origin_group = {
+///     id = "/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/originGroups/originGroup1"
+///   }
+///   patterns_to_match   = ["/*"]
+///   profile_name        = "profile1"
+///   resource_group_name = "RG"
+///   route_name          = "route1"
+///   rule_sets {
+///     id = "/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/ruleSets/ruleSet1"
+///   }
+///   supported_protocols = ["Https", "Http"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -152,8 +193,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cdn.inputs.CompressionSettingsArgs;
 /// import com.pulumi.azurenative.cdn.inputs.ActivatedResourceReferenceArgs;
 /// import com.pulumi.azurenative.cdn.inputs.ResourceReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

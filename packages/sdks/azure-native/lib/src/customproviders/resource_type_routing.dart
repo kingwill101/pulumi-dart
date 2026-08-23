@@ -15,4 +15,3 @@ enum ResourceTypeRouting {
     throw ArgumentError('Unknown ResourceTypeRouting value: $value');
   }
 }
-

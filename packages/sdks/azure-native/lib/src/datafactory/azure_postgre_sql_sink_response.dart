@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_postgre_sql_sink_response_upsert_settings.dart';
+import 'azure_postgre_sql_sink_upsert_settings_response.dart';
 
 /// A copy activity Azure Database for PostgreSQL sink.
 class AzurePostgreSqlSinkResponse {
@@ -19,7 +19,7 @@ class AzurePostgreSqlSinkResponse {
   /// Expected value is 'AzurePostgreSqlSink'.
   final pulumi.Input<String> type;
   /// Azure Database for PostgreSQL upsert option settings
-  final pulumi.Input<AzurePostgreSqlSinkResponseUpsertSettings>? upsertSettings;
+  final pulumi.Input<AzurePostgreSqlSinkUpsertSettingsResponse>? upsertSettings;
   /// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
   final pulumi.Input<dynamic>? writeBatchSize;
   /// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
@@ -59,7 +59,7 @@ class AzurePostgreSqlSinkResponse {
       'sinkRetryCount': ?sinkRetryCount,
       'sinkRetryWait': ?sinkRetryWait,
       'type': type,
-      'upsertSettings': ?pulumi.Input.mapOptionalInputValue<AzurePostgreSqlSinkResponseUpsertSettings, Map<String, dynamic>>(upsertSettings, (value) => value.toMap()),
+      'upsertSettings': ?pulumi.Input.mapOptionalInputValue<AzurePostgreSqlSinkUpsertSettingsResponse, Map<String, dynamic>>(upsertSettings, (value) => value.toMap()),
       'writeBatchSize': ?writeBatchSize,
       'writeBatchTimeout': ?writeBatchTimeout,
       'writeMethod': ?writeMethod,
@@ -74,11 +74,10 @@ class AzurePostgreSqlSinkResponse {
       sinkRetryCount: (() { final guardedValue = map['sinkRetryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sinkRetryWait: (() { final guardedValue = map['sinkRetryWait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      upsertSettings: (() { final guardedValue = map['upsertSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzurePostgreSqlSinkResponseUpsertSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      upsertSettings: (() { final guardedValue = map['upsertSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzurePostgreSqlSinkUpsertSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       writeBatchSize: (() { final guardedValue = map['writeBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       writeBatchTimeout: (() { final guardedValue = map['writeBatchTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       writeMethod: (() { final guardedValue = map['writeMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

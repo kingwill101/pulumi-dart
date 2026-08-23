@@ -1,7 +1,7 @@
 /// The kind of service (Stateless or Stateful).
 enum ServiceKind {
-  stateless("Stateless"),
-  stateful("Stateful");
+  valueStateless("Stateless"),
+  valueStateful("Stateful");
 
   const ServiceKind(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ServiceKind {
     throw ArgumentError('Unknown ServiceKind value: $value');
   }
 }
-

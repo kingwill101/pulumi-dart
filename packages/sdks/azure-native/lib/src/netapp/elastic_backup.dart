@@ -7,6 +7,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
 ///
+/// Other available API versions: 2025-12-15-preview, 2026-01-15-preview, 2026-03-15-preview, 2026-04-15-preview, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -70,6 +72,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_netapp_elasticbackup" "elasticBackup" {
+///   account_name      = "account1"
+///   backup_name       = "backup1"
+///   backup_vault_name = "backupVault1"
+///   properties = {
+///     elastic_snapshot_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/elasticAccounts/account1/elasticCapacityPools/pool1/elasticVolumes/volume1/elasticSnapshots/snap1"
+///     elastic_volume_resource_id   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/elasticAccounts/account1/elasticCapacityPools/pool1/elasticVolumes/volume1"
+///     label                        = "myLabel"
+///     snapshot_usage               = "UseExistingSnapshot"
+///   }
+///   resource_group_name = "myRG"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +105,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.netapp.ElasticBackup;
 /// import com.pulumi.azurenative.netapp.ElasticBackupArgs;
 /// import com.pulumi.azurenative.netapp.inputs.ElasticBackupPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

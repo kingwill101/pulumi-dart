@@ -79,6 +79,32 @@ import 'connection_gateway_definition_response_properties.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_web_connectiongateway" "connectionGateway" {
+///   connection_gateway_name = "test123"
+///   properties = {
+///     backend_uri = "https://WABI-WEST-US-redirect.analysis.windows.net"
+///     connection_gateway_installation = {
+///       id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/providers/Microsoft.Web/locations/westus/connectionGatewayInstallations/865dccd1-5d5c-45fe-b5a0-249d4de4134c"
+///     }
+///     contact_information = ["test123@microsoft.com"]
+///     display_name        = "test123"
+///     machine_name        = "TEST123"
+///     status              = "Installed"
+///   }
+///   resource_group_name = "testResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +115,8 @@ import 'connection_gateway_definition_response_properties.dart';
 /// import com.pulumi.azurenative.web.ConnectionGatewayArgs;
 /// import com.pulumi.azurenative.web.inputs.ConnectionGatewayDefinitionPropertiesArgs;
 /// import com.pulumi.azurenative.web.inputs.ConnectionGatewayReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

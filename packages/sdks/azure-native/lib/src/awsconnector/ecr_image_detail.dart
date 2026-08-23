@@ -144,6 +144,61 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ecrimagedetail" "ecrImageDetail" {
+///   location = "mpxszpyclsniahaoqerqewrzxyzcdt"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "dhvgwgtedzuiqdvgc"
+///     aws_account_id = "yqyxjsfibyscdhyofmyu"
+///     aws_properties = {
+///       artifact_media_type       = "ciuahpzw"
+///       image_digest              = "mfgr"
+///       image_manifest_media_type = "arzsyssziqvvryqc"
+///       image_pushed_at           = "2024-10-08T03:51:24.487Z"
+///       image_scan_findings_summary = {
+///         finding_severity_counts = {
+///           "key9764" = 10
+///         }
+///         image_scan_completed_at         = "2024-10-08T03:51:24.488Z"
+///         vulnerability_source_updated_at = "2024-10-08T03:51:24.488Z"
+///       }
+///       image_scan_status = {
+///         description = "kvsqwhxzrnciqybnl"
+///         status = {
+///           value = "ACTIVE"
+///         }
+///       }
+///       image_size_in_bytes     = 18
+///       image_tags              = ["bwikpoljnmaoewepiunoltcxlyxd"]
+///       last_recorded_pull_time = "2024-10-08T03:51:24.488Z"
+///       registry_id             = "xpxtbbeejeosvtcvq"
+///       repository_name         = "abftxvvazyfekkcpo"
+///     }
+///     aws_region        = "atlamkemuqwaezwdsuavhaqo"
+///     aws_source_schema = "ibsdsdpuiqcwsdxqfn"
+///     aws_tags = {
+///       "key4659" = "sgfdrvhgloyrvwyfqxyvzmhu"
+///     }
+///     public_cloud_connectors_resource_id = "glrdicxdaktwlkvgvxurgww"
+///     public_cloud_resource_name          = "gijthpfhduauuus"
+///   }
+///   resource_group_name = "rgecrImageDetail"
+///   tags = {
+///     "key9132" = "faznbwmprsja"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -157,8 +212,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.ImageScanFindingsSummaryArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ImageScanStatusArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ScanStatusEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -291,7 +346,7 @@ import 'system_data_response.dart';
 ///                     "value": azure_native.awsconnector.ScanStatus.ACTIVE,
 ///                 },
 ///             },
-///             "image_size_in_bytes": 18,
+///             "image_size_in_bytes": float(18),
 ///             "image_tags": ["bwikpoljnmaoewepiunoltcxlyxd"],
 ///             "last_recorded_pull_time": "2024-10-08T03:51:24.488Z",
 ///             "registry_id": "xpxtbbeejeosvtcvq",

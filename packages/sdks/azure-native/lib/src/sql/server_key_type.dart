@@ -15,4 +15,3 @@ enum ServerKeyType {
     throw ArgumentError('Unknown ServerKeyType value: $value');
   }
 }
-

@@ -17,4 +17,3 @@ enum ResourceTypeCategory {
     throw ArgumentError('Unknown ResourceTypeCategory value: $value');
   }
 }
-

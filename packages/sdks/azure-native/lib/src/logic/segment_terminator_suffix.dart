@@ -18,4 +18,3 @@ enum SegmentTerminatorSuffix {
     throw ArgumentError('Unknown SegmentTerminatorSuffix value: $value');
   }
 }
-

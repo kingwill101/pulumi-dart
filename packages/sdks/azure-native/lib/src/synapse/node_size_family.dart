@@ -17,4 +17,3 @@ enum NodeSizeFamily {
     throw ArgumentError('Unknown NodeSizeFamily value: $value');
   }
 }
-

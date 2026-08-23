@@ -10,7 +10,7 @@ import 'vmss_fabric_profile_response.dart';
 ///
 /// Uses Azure REST API version 2025-01-21. In version 2.x of the Azure Native provider, it used API version 2023-10-30-preview.
 ///
-/// Other available API versions: 2023-10-30-preview, 2023-12-13-preview, 2024-03-26-preview, 2024-04-04-preview, 2024-10-19, 2025-09-20. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devopsinfrastructure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-30-preview, 2023-12-13-preview, 2024-03-26-preview, 2024-04-04-preview, 2024-10-19, 2025-09-20, 2026-04-17-preview, 2026-06-02, 2026-07-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devopsinfrastructure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -143,6 +143,53 @@ import 'vmss_fabric_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devopsinfrastructure_pool" "pool" {
+///   agent_profile = {
+///     "kind" = "Stateless"
+///   }
+///   dev_center_project_resource_id = "/subscriptions/222e81d0-cf38-4dab-baa5-289bf16baaa4/resourceGroups/rg-1es-devcenter/providers/Microsoft.DevCenter/projects/1ES"
+///   fabric_profile = {
+///     images = [{
+///       "ephemeralType" = "Automatic"
+///       "resourceId"    = "/MicrosoftWindowsServer/WindowsServer/2019-Datacenter/latest"
+///     }]
+///     kind = "Vmss"
+///     os_profile = {
+///       secrets_management_settings = {
+///         certificate_store_name = "Root"
+///         key_exportable         = false
+///         observed_certificates  = ["https://abc.vault.azure.net/secrets/one"]
+///       }
+///     }
+///     sku = {
+///       name = "Standard_D4ads_v5"
+///     }
+///   }
+///   location            = "eastus"
+///   maximum_concurrency = 10
+///   organization_profile = {
+///     "kind" = "AzureDevOps"
+///     "organizations" = [{
+///       "openAccess" = true
+///       "url"        = "https://mseng.visualstudio.com"
+///     }]
+///   }
+///   pool_name           = "pool"
+///   provisioning_state  = "Succeeded"
+///   resource_group_name = "rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -155,8 +202,8 @@ import 'vmss_fabric_profile_response.dart';
 /// import com.pulumi.azurenative.devopsinfrastructure.inputs.OsProfileArgs;
 /// import com.pulumi.azurenative.devopsinfrastructure.inputs.SecretsManagementSettingsArgs;
 /// import com.pulumi.azurenative.devopsinfrastructure.inputs.DevOpsAzureSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

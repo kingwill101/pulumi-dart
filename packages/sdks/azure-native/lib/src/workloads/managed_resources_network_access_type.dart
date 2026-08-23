@@ -15,4 +15,3 @@ enum ManagedResourcesNetworkAccessType {
     throw ArgumentError('Unknown ManagedResourcesNetworkAccessType value: $value');
   }
 }
-

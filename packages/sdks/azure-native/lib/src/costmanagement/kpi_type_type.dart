@@ -15,4 +15,3 @@ enum KpiTypeType {
     throw ArgumentError('Unknown KpiTypeType value: $value');
   }
 }
-

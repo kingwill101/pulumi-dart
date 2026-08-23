@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'express_route_circuit_peering_id.dart';
-import 'routing_configuration.dart';
+import 'routing_configuration_network.dart';
 
 /// {@template pulumi_network_express_route_connection_args_doc}
 /// The set of arguments for ExpressRouteConnection.
@@ -30,7 +30,7 @@ class ExpressRouteConnectionArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final pulumi.Input<RoutingConfiguration>? routingConfiguration;
+  final pulumi.Input<RoutingConfigurationNetwork>? routingConfiguration;
   /// The routing weight associated to the connection.
   final pulumi.Input<int>? routingWeight;
 
@@ -74,7 +74,7 @@ class ExpressRouteConnectionArgs {
       'id': ?id,
       'name': name,
       'resourceGroupName': resourceGroupName,
-      'routingConfiguration': ?pulumi.Input.mapOptionalInputValue<RoutingConfiguration, Map<String, dynamic>>(routingConfiguration, (value) => value.toMap()),
+      'routingConfiguration': ?routingConfiguration,
       'routingWeight': ?routingWeight,
     };
   }
@@ -91,9 +91,8 @@ class ExpressRouteConnectionArgs {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as RoutingConfigurationNetwork); })(),
       routingWeight: (() { final guardedValue = map['routingWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
-

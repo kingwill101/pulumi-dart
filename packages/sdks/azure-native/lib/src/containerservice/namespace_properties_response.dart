@@ -10,24 +10,24 @@ class NamespacePropertiesResponse {
   final pulumi.Input<String>? adoptionPolicy;
   /// The annotations of managed namespace.
   final pulumi.Input<Map<String, String>>? annotations;
-  /// The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
+  /// The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. Network policies are additive; if a policy or policies apply to a given pod for a given direction, the connections allowed in that direction for the pod is the union of what all applicable policies allow.
   final pulumi.Input<NetworkPoliciesResponse>? defaultNetworkPolicy;
-  /// The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
+  /// The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. Resource quotas are additive; if multiple resource quotas are applied to a given namespace, then the effective limit will be one such that all quotas on the namespace can be satisfied.
   final pulumi.Input<ResourceQuotaResponse>? defaultResourceQuota;
   /// Delete options of a namespace.
   final pulumi.Input<String>? deletePolicy;
   /// The labels of managed namespace.
   final pulumi.Input<Map<String, String>>? labels;
   /// The special FQDN used by the Azure Portal to access the Managed Cluster. This FQDN is for use only by the Azure Portal and should not be used by other clients. The Azure Portal requires certain Cross-Origin Resource Sharing (CORS) headers to be sent in some responses, which Kubernetes APIServer doesn't handle by default. This special FQDN supports CORS, allowing the Azure Portal to function properly.
-  final pulumi.Input<String>? portalFqdn;
+  final pulumi.Input<String> portalFqdn;
   /// The current provisioning state of the namespace.
   final pulumi.Input<String> provisioningState;
 
   /// Creates a new [NamespacePropertiesResponse].
   /// [adoptionPolicy] Action if Kubernetes namespace with same name already exists.
   /// [annotations] The annotations of managed namespace.
-  /// [defaultNetworkPolicy] The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
-  /// [defaultResourceQuota] The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
+  /// [defaultNetworkPolicy] The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. Network policies are additive; if a policy or policies apply to a given pod for a given direction, the connections allowed in that direction for the pod is the union of what all applicable policies allow.
+  /// [defaultResourceQuota] The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. Resource quotas are additive; if multiple resource quotas are applied to a given namespace, then the effective limit will be one such that all quotas on the namespace can be satisfied.
   /// [deletePolicy] Delete options of a namespace.
   /// [labels] The labels of managed namespace.
   /// [portalFqdn] The special FQDN used by the Azure Portal to access the Managed Cluster. This FQDN is for use only by the Azure Portal and should not be used by other clients. The Azure Portal requires certain Cross-Origin Resource Sharing (CORS) headers to be sent in some responses, which Kubernetes APIServer doesn't handle by default. This special FQDN supports CORS, allowing the Azure Portal to function properly.
@@ -39,7 +39,7 @@ class NamespacePropertiesResponse {
     this.defaultResourceQuota,
     this.deletePolicy,
     this.labels,
-    this.portalFqdn,
+    required this.portalFqdn,
     required this.provisioningState,
   });
 
@@ -51,7 +51,7 @@ class NamespacePropertiesResponse {
       'defaultResourceQuota': ?pulumi.Input.mapOptionalInputValue<ResourceQuotaResponse, Map<String, dynamic>>(defaultResourceQuota, (value) => value.toMap()),
       'deletePolicy': ?deletePolicy,
       'labels': ?labels,
-      'portalFqdn': ?portalFqdn,
+      'portalFqdn': portalFqdn,
       'provisioningState': provisioningState,
     };
   }
@@ -64,9 +64,8 @@ class NamespacePropertiesResponse {
       defaultResourceQuota: (() { final guardedValue = map['defaultResourceQuota']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceQuotaResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deletePolicy: (() { final guardedValue = map['deletePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      portalFqdn: (() { final guardedValue = map['portalFqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      portalFqdn: pulumi.Input.fromValue(map['portalFqdn'] as String),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
-

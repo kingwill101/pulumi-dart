@@ -16,4 +16,3 @@ enum RemoteAddressOperator {
     throw ArgumentError('Unknown RemoteAddressOperator value: $value');
   }
 }
-

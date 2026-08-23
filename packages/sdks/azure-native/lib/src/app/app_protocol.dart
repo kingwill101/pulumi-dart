@@ -15,4 +15,3 @@ enum AppProtocol {
     throw ArgumentError('Unknown AppProtocol value: $value');
   }
 }
-

@@ -156,6 +156,70 @@ import 'rosetta_net_process_configuration_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_logic_rosettanetprocessconfiguration" "rosettaNetProcessConfiguration" {
+///   activity_settings = {
+///     acknowledgment_of_receipt_settings = {
+///       is_non_repudiation_required    = false
+///       time_to_acknowledge_in_seconds = 600
+///     }
+///     activity_behavior = {
+///       action_type                           = "DoubleAction"
+///       is_authorization_required             = false
+///       is_secured_transport_required         = false
+///       non_repudiation_of_origin_and_content = false
+///       persistent_confidentiality_scope      = "None"
+///       response_type                         = "Async"
+///       retry_count                           = 2
+///       time_to_perform_in_seconds            = 7200
+///     }
+///     activity_type = "RequestResponse"
+///   }
+///   description = "Test description"
+///   initiator_role_settings = {
+///     action = "Purchase Order Request"
+///     business_document = {
+///       description = "A request to accept a purchase order for fulfillment.."
+///       name        = "Purchase Order Request"
+///       version     = "V02.02.00"
+///     }
+///     description            = "This partner role creates a demand for a product or service."
+///     role                   = "Buyer"
+///     role_type              = "Functional"
+///     service                = "Buyer Service"
+///     service_classification = "Business Service"
+///   }
+///   integration_account_name = "testia123"
+///   process_code             = "3A4"
+///   process_name             = "Request Purchase Order"
+///   process_version          = "V02.02.00"
+///   resource_group_name      = "testrg123"
+///   responder_role_settings = {
+///     action = "Purchase Order Confirmation Action"
+///     business_document = {
+///       description = "Formally confirms the status of line item(s) in a Purchase Order. A Purchase Order line item may have one of the following states: accepted, rejected, or pending."
+///       name        = "Purchase Order Confirmation"
+///       version     = "V02.02.00"
+///     }
+///     description            = "An organization that sells products to partners in the supply chain."
+///     role                   = "Seller"
+///     role_type              = "Organizational"
+///     service                = "Seller Service"
+///     service_classification = "Business Service"
+///   }
+///   rosetta_net_process_configuration_name = "3A4"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -169,8 +233,8 @@ import 'rosetta_net_process_configuration_args.dart';
 /// import com.pulumi.azurenative.logic.inputs.RosettaNetPipActivityBehaviorArgs;
 /// import com.pulumi.azurenative.logic.inputs.RosettaNetPipRoleSettingsArgs;
 /// import com.pulumi.azurenative.logic.inputs.RosettaNetPipBusinessDocumentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

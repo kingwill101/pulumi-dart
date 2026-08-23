@@ -108,6 +108,43 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_gateway" "gateway" {
+///   gateway_name = "default"
+///   properties = {
+///     apms = [{
+///       "resourceId" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/apms/myappinsights"
+///     }]
+///     public = true
+///     resource_requests = {
+///       cpu    = "1"
+///       memory = "1G"
+///     }
+///     response_cache_properties = {
+///       "responseCacheType" = "LocalCachePerRoute"
+///       "size"              = "5MB"
+///       "timeToLive"        = "300s"
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+///   sku = {
+///     capacity = 2
+///     name     = "E0"
+///     tier     = "Enterprise"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +156,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.inputs.GatewayPropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.GatewayResourceRequestsArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

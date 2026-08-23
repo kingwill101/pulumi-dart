@@ -17,4 +17,3 @@ enum ServiceLevel {
     throw ArgumentError('Unknown ServiceLevel value: $value');
   }
 }
-

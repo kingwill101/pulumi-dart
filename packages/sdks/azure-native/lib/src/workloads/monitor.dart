@@ -91,6 +91,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_monitor" "monitor" {
+///   app_location = "westus"
+///   app_service_plan_configuration = {
+///     capacity = 1
+///     tier     = "ElasticPremium"
+///   }
+///   location                       = "westus"
+///   log_analytics_workspace_arm_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.operationalinsights/workspaces/myWorkspace"
+///   managed_resource_group_configuration = {
+///     name = "myManagedRg"
+///   }
+///   monitor_name        = "mySapMonitor"
+///   monitor_subnet      = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"
+///   resource_group_name = "myResourceGroup"
+///   routing_preference  = "RouteAll"
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +132,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.workloads.MonitorArgs;
 /// import com.pulumi.azurenative.workloads.inputs.AppServicePlanConfigurationArgs;
 /// import com.pulumi.azurenative.workloads.inputs.ManagedResourceGroupConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -295,6 +326,40 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_monitor" "monitor" {
+///   app_location = "westus"
+///   app_service_plan_configuration = {
+///     capacity = 1
+///     tier     = "ElasticPremium"
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location                       = "westus"
+///   log_analytics_workspace_arm_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.operationalinsights/workspaces/myWorkspace"
+///   managed_resource_group_configuration = {
+///     name = "myManagedRg"
+///   }
+///   monitor_name        = "mySapMonitor"
+///   monitor_subnet      = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"
+///   resource_group_name = "myResourceGroup"
+///   routing_preference  = "RouteAll"
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -306,8 +371,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.workloads.inputs.AppServicePlanConfigurationArgs;
 /// import com.pulumi.azurenative.workloads.inputs.ManagedServiceIdentityArgs;
 /// import com.pulumi.azurenative.workloads.inputs.ManagedResourceGroupConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

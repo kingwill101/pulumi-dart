@@ -5,7 +5,7 @@ import 'configuration_policy_group_args.dart';
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -86,6 +86,35 @@ import 'configuration_policy_group_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_configurationpolicygroup" "configurationPolicyGroup" {
+///   configuration_policy_group_name = "policyGroup1"
+///   is_default                      = true
+///   policy_members {
+///     attribute_type  = "RadiusAzureGroupId"
+///     attribute_value = "6ad1bd08"
+///     name            = "policy1"
+///   }
+///   policy_members {
+///     attribute_type  = "CertificateGroupId"
+///     attribute_value = "red.com"
+///     name            = "policy2"
+///   }
+///   priority                      = 0
+///   resource_group_name           = "rg1"
+///   vpn_server_configuration_name = "vpnServerConfiguration1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +124,8 @@ import 'configuration_policy_group_args.dart';
 /// import com.pulumi.azurenative.network.ConfigurationPolicyGroup;
 /// import com.pulumi.azurenative.network.ConfigurationPolicyGroupArgs;
 /// import com.pulumi.azurenative.network.inputs.VpnServerConfigurationPolicyGroupMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

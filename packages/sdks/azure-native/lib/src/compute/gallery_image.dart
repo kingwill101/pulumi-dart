@@ -10,7 +10,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2022-03-03.
 ///
-/// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03, 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -79,6 +79,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_galleryimage" "galleryImage" {
+///   gallery_image_name = "myGalleryImageName"
+///   gallery_name       = "myGalleryName"
+///   hyper_v_generation = "V1"
+///   identifier = {
+///     offer     = "myOfferName"
+///     publisher = "myPublisherName"
+///     sku       = "mySkuName"
+///   }
+///   location            = "West US"
+///   os_state            = "Generalized"
+///   os_type             = "Windows"
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +114,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.GalleryImage;
 /// import com.pulumi.azurenative.compute.GalleryImageArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryImageIdentifierArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

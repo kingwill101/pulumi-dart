@@ -28,4 +28,3 @@ enum DeltaTableFormatEnum {
     throw ArgumentError('Unknown DeltaTableFormatEnum value: $value');
   }
 }
-

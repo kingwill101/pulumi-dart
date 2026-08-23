@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'amazon_s3_compatible_location_response.dart';
-import 'dataset_response_folder.dart';
+import 'dataset_folder_response.dart';
 import 'linked_service_reference_response.dart';
 import 'parameter_specification_response.dart';
 
@@ -25,7 +25,7 @@ class DelimitedTextDatasetResponse {
   /// When used as input, treat the first row of data as headers. When used as output,write the headers into the output as the first row of data. The default value is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? firstRowAsHeader;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final pulumi.Input<DatasetResponseFolder>? folder;
+  final pulumi.Input<DatasetFolderResponse>? folder;
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReferenceResponse> linkedServiceName;
   /// The location of the delimited text storage.
@@ -96,7 +96,7 @@ class DelimitedTextDatasetResponse {
       'encodingName': ?encodingName,
       'escapeChar': ?escapeChar,
       'firstRowAsHeader': ?firstRowAsHeader,
-      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetResponseFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
+      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetFolderResponse, Map<String, dynamic>>(folder, (value) => value.toMap()),
       'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
       'location': pulumi.Input.mapInputValue<AmazonS3CompatibleLocationResponse, Map<String, dynamic>>(location, (value) => value.toMap()),
       'nullValue': ?nullValue,
@@ -119,7 +119,7 @@ class DelimitedTextDatasetResponse {
       encodingName: (() { final guardedValue = map['encodingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       escapeChar: (() { final guardedValue = map['escapeChar']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       firstRowAsHeader: (() { final guardedValue = map['firstRowAsHeader']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetResponseFolder.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetFolderResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       linkedServiceName: pulumi.Input.fromValue(LinkedServiceReferenceResponse.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())),
       location: pulumi.Input.fromValue(AmazonS3CompatibleLocationResponse.fromMap((map['location']! as Map).cast<String, dynamic>())),
       nullValue: (() { final guardedValue = map['nullValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
@@ -132,4 +132,3 @@ class DelimitedTextDatasetResponse {
     );
   }
 }
-

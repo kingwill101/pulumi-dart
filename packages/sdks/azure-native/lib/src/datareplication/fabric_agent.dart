@@ -7,6 +7,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-09-01.
 ///
+/// Other available API versions: 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -96,6 +98,42 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datareplication_fabricagent" "fabricAgent" {
+///   fabric_agent_name = "M"
+///   fabric_name       = "wPR"
+///   properties = {
+///     authentication_identity = {
+///       aad_authority  = "bubwwbowfhdmujrt"
+///       application_id = "cwktzrwajuvfyyymfstpey"
+///       audience       = "dkjobanyqgzenivyxhvavottpc"
+///       object_id      = "khsiaqfbpuhp"
+///       tenant_id      = "joclkkdovixwapephhxaqtefubhhmq"
+///     }
+///     custom_properties = {}
+///     machine_id        = "envzcoijbqhtrpncbjbhk"
+///     machine_name      = "y"
+///     resource_access_identity = {
+///       aad_authority  = "bubwwbowfhdmujrt"
+///       application_id = "cwktzrwajuvfyyymfstpey"
+///       audience       = "dkjobanyqgzenivyxhvavottpc"
+///       object_id      = "khsiaqfbpuhp"
+///       tenant_id      = "joclkkdovixwapephhxaqtefubhhmq"
+///     }
+///   }
+///   resource_group_name = "rgswagger_2024-09-01"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -107,8 +145,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.datareplication.inputs.FabricAgentModelPropertiesArgs;
 /// import com.pulumi.azurenative.datareplication.inputs.IdentityModelArgs;
 /// import com.pulumi.azurenative.datareplication.inputs.VMwareFabricAgentModelCustomPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

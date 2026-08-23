@@ -1,7 +1,7 @@
 /// The type of this referenced entity.
 enum IntegrationRuntimeEntityReferenceType {
-  valueIntegrationRuntimeReference("IntegrationRuntimeReference"),
-  valueLinkedServiceReference("LinkedServiceReference");
+  integrationRuntimeReference("IntegrationRuntimeReference"),
+  linkedServiceReference("LinkedServiceReference");
 
   const IntegrationRuntimeEntityReferenceType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum IntegrationRuntimeEntityReferenceType {
     throw ArgumentError('Unknown IntegrationRuntimeEntityReferenceType value: $value');
   }
 }
-

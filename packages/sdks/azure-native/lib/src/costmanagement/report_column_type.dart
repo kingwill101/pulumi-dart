@@ -15,4 +15,3 @@ enum ReportColumnType {
     throw ArgumentError('Unknown ReportColumnType value: $value');
   }
 }
-

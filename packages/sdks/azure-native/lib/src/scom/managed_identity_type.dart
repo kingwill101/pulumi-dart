@@ -17,4 +17,3 @@ enum ManagedIdentityType {
     throw ArgumentError('Unknown ManagedIdentityType value: $value');
   }
 }
-

@@ -140,6 +140,55 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_lightsailbucket" "lightsailBucket" {
+///   location = "ctcjoqkhbmgwtqztn"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "uoyqkdsfok"
+///     aws_account_id = "wqlujalgyyyfgmedzj"
+///     aws_properties = {
+///       able_to_update_bundle = true
+///       access_rules = {
+///         allow_public_overrides = true
+///         get_object             = "rzsbxpoywnkypgcjndwgjxurwaggf"
+///       }
+///       bucket_arn                 = "khrxjzjloawhlsscrupp"
+///       bucket_name                = "rbqqhyugkapyxigvfygdmmsig"
+///       bundle_id                  = "s"
+///       object_versioning          = true
+///       read_only_access_accounts  = ["yptmppbxsgfmbvcoourx"]
+///       resources_receiving_access = ["abmltbmvfqgzha"]
+///       tags = [{
+///         "key"   = "pllzblljxgv"
+///         "value" = "onksgozpshqfschbsuyhhui"
+///       }]
+///       url = "dzofeppuoqkmehqcpzpezbmbvrvqbn"
+///     }
+///     aws_region        = "kozgryjoinum"
+///     aws_source_schema = "kcjmzaxkkbztlm"
+///     aws_tags = {
+///       "key7074" = "efcntnbhiifsphfneto"
+///     }
+///     public_cloud_connectors_resource_id = "vcenimpnlashmiz"
+///     public_cloud_resource_name          = "aqpayfdjm"
+///   }
+///   resource_group_name = "rglightsailBucket"
+///   tags = {
+///     "key4407" = "iuaeevz"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -151,8 +200,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.LightsailBucketPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsLightsailBucketPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AccessRulesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

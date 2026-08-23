@@ -19,4 +19,3 @@ enum TransformType {
     throw ArgumentError('Unknown TransformType value: $value');
   }
 }
-

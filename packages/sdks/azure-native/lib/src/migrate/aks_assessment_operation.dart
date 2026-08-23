@@ -106,6 +106,45 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_aksassessmentoperation" "aksAssessmentOperation" {
+///   assessment_name     = "testaksassessment"
+///   project_name        = "testproject"
+///   resource_group_name = "rgaksswagger"
+///   scope = {
+///     server_group_id = "/subscriptions/D6F60DF4-CE70-4E39-8217-B8FBE7CA85AA/resourceGroups/rgaksswagger/providers/Microsoft.Migrate/assessmentProjects/testproject/groups/testgrp"
+///   }
+///   settings = {
+///     azure_location      = "Unknown"
+///     category            = "All"
+///     consolidation       = "Full"
+///     currency            = "Unknown"
+///     discount_percentage = 15
+///     environment_type    = "Unknown"
+///     licensing_program   = "Default"
+///     performance_data = {
+///       percentile           = "Percentile50"
+///       perf_data_end_time   = "2023-11-07T06:51:24.320Z"
+///       perf_data_start_time = "2023-11-07T06:51:24.320Z"
+///       time_range           = "Day"
+///     }
+///     pricing_tier    = "Standard"
+///     savings_options = "None"
+///     scaling_factor  = 3
+///     sizing_criteria = "PerformanceBased"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -117,8 +156,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.migrate.inputs.AssessmentScopeParametersArgs;
 /// import com.pulumi.azurenative.migrate.inputs.AKSAssessmentSettingsArgs;
 /// import com.pulumi.azurenative.migrate.inputs.PerfDataSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -213,7 +252,7 @@ import 'system_data_response.dart';
 ///         "category": azure_native.migrate.AzureVmCategory.ALL,
 ///         "consolidation": azure_native.migrate.ConsolidationType.FULL,
 ///         "currency": azure_native.migrate.AzureCurrency.UNKNOWN,
-///         "discount_percentage": 15,
+///         "discount_percentage": float(15),
 ///         "environment_type": azure_native.migrate.AzureEnvironmentType.UNKNOWN,
 ///         "licensing_program": "Default",
 ///         "performance_data": {
@@ -224,7 +263,7 @@ import 'system_data_response.dart';
 ///         },
 ///         "pricing_tier": azure_native.migrate.PricingTier.STANDARD,
 ///         "savings_options": azure_native.migrate.SavingsOptions.NONE,
-///         "scaling_factor": 3,
+///         "scaling_factor": float(3),
 ///         "sizing_criteria": azure_native.migrate.AssessmentSizingCriterion.PERFORMANCE_BASED,
 ///     })
 ///

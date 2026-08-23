@@ -2,14 +2,14 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'confidential_compute_properties_response.dart';
+import 'container_container_group_profile_response.dart';
 import 'container_group_diagnostics_response.dart';
-import 'container_response.dart';
 import 'deployment_extension_spec_response.dart';
 import 'encryption_properties_response.dart';
-import 'image_registry_credential_response.dart';
-import 'init_container_definition_response.dart';
+import 'image_registry_credential_container_group_profile_response.dart';
+import 'init_container_definition_container_group_profile_response.dart';
 import 'ip_address_response.dart';
-import 'volume_response.dart';
+import 'volume_container_group_profile_response.dart';
 
 /// Result data returned by getContainerGroupProfile.
 class GetContainerGroupProfileResult {
@@ -18,7 +18,7 @@ class GetContainerGroupProfileResult {
   /// The properties for confidential container group
   final ConfidentialComputePropertiesResponse? confidentialComputeProperties;
   /// The containers within the container group.
-  final List<ContainerResponse> containers;
+  final List<ContainerContainerGroupProfileResponse> containers;
   /// The diagnostic information for a container group.
   final ContainerGroupDiagnosticsResponse? diagnostics;
   /// The encryption properties for a container group.
@@ -28,9 +28,9 @@ class GetContainerGroupProfileResult {
   /// The resource id.
   final String id;
   /// The image registry credentials by which the container group is created from.
-  final List<ImageRegistryCredentialResponse>? imageRegistryCredentials;
+  final List<ImageRegistryCredentialContainerGroupProfileResponse>? imageRegistryCredentials;
   /// The init containers for a container group.
-  final List<InitContainerDefinitionResponse>? initContainers;
+  final List<InitContainerDefinitionContainerGroupProfileResponse>? initContainers;
   /// The IP address type of the container group.
   final IpAddressResponse? ipAddress;
   /// The resource location.
@@ -55,7 +55,7 @@ class GetContainerGroupProfileResult {
   /// The resource type.
   final String type;
   /// The list of volumes that can be mounted by containers in this container group.
-  final List<VolumeResponse>? volumes;
+  final List<VolumeContainerGroupProfileResponse>? volumes;
   /// The zones for the container group.
   final List<String>? zones;
 
@@ -109,13 +109,13 @@ class GetContainerGroupProfileResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'confidentialComputeProperties': ?confidentialComputeProperties?.toMap(),
-      'containers': pulumi.Input.encodeList<ContainerResponse, Map<String, dynamic>>(containers, (value) => value.toMap()),
+      'containers': pulumi.Input.encodeList<ContainerContainerGroupProfileResponse, Map<String, dynamic>>(containers, (value) => value.toMap()),
       'diagnostics': ?diagnostics?.toMap(),
       'encryptionProperties': ?encryptionProperties?.toMap(),
       'extensions': ?(() { final guardedValue = extensions; if (guardedValue == null) return null; return pulumi.Input.encodeList<DeploymentExtensionSpecResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
-      'imageRegistryCredentials': ?(() { final guardedValue = imageRegistryCredentials; if (guardedValue == null) return null; return pulumi.Input.encodeList<ImageRegistryCredentialResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'initContainers': ?(() { final guardedValue = initContainers; if (guardedValue == null) return null; return pulumi.Input.encodeList<InitContainerDefinitionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'imageRegistryCredentials': ?(() { final guardedValue = imageRegistryCredentials; if (guardedValue == null) return null; return pulumi.Input.encodeList<ImageRegistryCredentialContainerGroupProfileResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'initContainers': ?(() { final guardedValue = initContainers; if (guardedValue == null) return null; return pulumi.Input.encodeList<InitContainerDefinitionContainerGroupProfileResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'ipAddress': ?ipAddress?.toMap(),
       'location': ?location,
       'name': name,
@@ -126,7 +126,7 @@ class GetContainerGroupProfileResult {
       'sku': ?sku,
       'tags': ?tags,
       'type': type,
-      'volumes': ?(() { final guardedValue = volumes; if (guardedValue == null) return null; return pulumi.Input.encodeList<VolumeResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'volumes': ?(() { final guardedValue = volumes; if (guardedValue == null) return null; return pulumi.Input.encodeList<VolumeContainerGroupProfileResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'zones': ?zones,
     };
   }
@@ -135,13 +135,13 @@ class GetContainerGroupProfileResult {
     return GetContainerGroupProfileResult(
       azureApiVersion: map['azureApiVersion'] as String,
       confidentialComputeProperties: (() { final guardedValue = map['confidentialComputeProperties']; if (guardedValue == null) return null; return ConfidentialComputePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      containers: pulumi.Input.decodeList<ContainerResponse>(map['containers']!, (value) => ContainerResponse.fromMap((value as Map).cast<String, dynamic>())),
+      containers: pulumi.Input.decodeList<ContainerContainerGroupProfileResponse>(map['containers']!, (value) => ContainerContainerGroupProfileResponse.fromMap((value as Map).cast<String, dynamic>())),
       diagnostics: (() { final guardedValue = map['diagnostics']; if (guardedValue == null) return null; return ContainerGroupDiagnosticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       encryptionProperties: (() { final guardedValue = map['encryptionProperties']; if (guardedValue == null) return null; return EncryptionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       extensions: (() { final guardedValue = map['extensions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentExtensionSpecResponse>(guardedValue, (value) => DeploymentExtensionSpecResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
-      imageRegistryCredentials: (() { final guardedValue = map['imageRegistryCredentials']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageRegistryCredentialResponse>(guardedValue, (value) => ImageRegistryCredentialResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      initContainers: (() { final guardedValue = map['initContainers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<InitContainerDefinitionResponse>(guardedValue, (value) => InitContainerDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      imageRegistryCredentials: (() { final guardedValue = map['imageRegistryCredentials']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageRegistryCredentialContainerGroupProfileResponse>(guardedValue, (value) => ImageRegistryCredentialContainerGroupProfileResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      initContainers: (() { final guardedValue = map['initContainers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<InitContainerDefinitionContainerGroupProfileResponse>(guardedValue, (value) => InitContainerDefinitionContainerGroupProfileResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return IpAddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
@@ -152,9 +152,8 @@ class GetContainerGroupProfileResult {
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeResponse>(guardedValue, (value) => VolumeResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeContainerGroupProfileResponse>(guardedValue, (value) => VolumeContainerGroupProfileResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }
-

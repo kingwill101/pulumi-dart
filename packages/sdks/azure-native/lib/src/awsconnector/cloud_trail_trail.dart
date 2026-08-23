@@ -251,6 +251,81 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_cloudtrailtrail" "cloudTrailTrail" {
+///   location = "lectoohspiqh"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "jlwqroammottlyguyzu"
+///     aws_account_id = "mynelopf"
+///     aws_properties = {
+///       advanced_event_selectors = [{
+///         "fieldSelectors" = [{
+///           "endsWith"      = ["xvhm"]
+///           "equals"        = ["wxznrgvwsjlxdvssmmse"]
+///           "field"         = "mq"
+///           "notEndsWith"   = ["x"]
+///           "notEquals"     = ["vglmmoivfeqg"]
+///           "notStartsWith" = ["pojptcfcw"]
+///           "startsWith"    = ["fvldfltesnmpieljtehsvxudvxdujk"]
+///         }]
+///         "name" = "ee"
+///       }]
+///       arn                            = "gbcn"
+///       cloud_watch_logs_log_group_arn = "nznfnuyxarmdmdtgjiougqgq"
+///       cloud_watch_logs_role_arn      = "umhmpx"
+///       enable_log_file_validation     = true
+///       event_selectors = [{
+///         "dataResources" = [{
+///           "type"   = "txxrjncwohiohorurqdxzabre"
+///           "values" = ["xhlnkujkbtpptbwchhh"]
+///         }]
+///         "excludeManagementEventSources" = ["r"]
+///         "includeManagementEvents"       = true
+///         "readWriteType"                 = "All"
+///       }]
+///       include_global_service_events = true
+///       insight_selectors = [{
+///         "insightType" = "brwlpasadlbwolsysta"
+///       }]
+///       is_logging            = true
+///       is_multi_region_trail = true
+///       is_organization_trail = true
+///       kms_key_id            = "myqwqkkcuyltblpdsbgestqmjs"
+///       s3_bucket_name        = "iknyfgvujttyxsralujehxb"
+///       s3_key_prefix         = "tzkelsqjqfspyoppsbhewvbenpwll"
+///       sns_topic_arn         = "owdxqmsrqylekull"
+///       sns_topic_name        = "goknthoxfekdccclolilvnyacvcop"
+///       tags = [{
+///         "key"   = "sytikpggzq"
+///         "value" = "vnsgm"
+///       }]
+///       trail_name = "oawneexezdnuouxdykllsflq"
+///     }
+///     aws_region        = "dfvobbnupacpqsgexblxjlw"
+///     aws_source_schema = "tvnaxpvricaiyoucpeauofeibwrk"
+///     aws_tags = {
+///       "key5810" = "tfepsytqwqilahaumarsjj"
+///     }
+///     public_cloud_connectors_resource_id = "i"
+///     public_cloud_resource_name          = "aidwpmbkjspiucpvmzgg"
+///   }
+///   resource_group_name = "rgcloudTrailTrail"
+///   tags = {
+///     "key8112" = "rxvuvmalioxplkvujldcyntebbsmuh"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -261,8 +336,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.CloudTrailTrailArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CloudTrailTrailPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsCloudTrailTrailPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

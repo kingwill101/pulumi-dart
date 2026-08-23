@@ -1,6 +1,6 @@
 /// Name of a service gateway SKU.
 enum ServiceGatewaySkuName {
-  valueStandard("Standard");
+  standard("Standard");
 
   const ServiceGatewaySkuName(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum ServiceGatewaySkuName {
     throw ArgumentError('Unknown ServiceGatewaySkuName value: $value');
   }
 }
-

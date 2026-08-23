@@ -1,8 +1,8 @@
 /// The protocol of the destination to where the traffic is redirected
 enum FrontDoorRedirectProtocol {
-  valueHttpOnly("HttpOnly"),
-  valueHttpsOnly("HttpsOnly"),
-  valueMatchRequest("MatchRequest");
+  httpOnly("HttpOnly"),
+  httpsOnly("HttpsOnly"),
+  matchRequest("MatchRequest");
 
   const FrontDoorRedirectProtocol(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum FrontDoorRedirectProtocol {
     throw ArgumentError('Unknown FrontDoorRedirectProtocol value: $value');
   }
 }
-

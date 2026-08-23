@@ -9,7 +9,7 @@ import 'system_data_response.dart';
 
 /// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -104,6 +104,44 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_networkcloud_baremetalmachine" "bareMetalMachine" {
+///   bare_metal_machine_name = "bareMetalMachineName"
+///   bmc_connection_string   = "bmcconnectionstring"
+///   bmc_credentials = {
+///     password = "{password}"
+///     username = "bmcuser"
+///   }
+///   bmc_mac_address  = "00:00:4f:00:57:00"
+///   boot_mac_address = "00:00:4e:00:58:af"
+///   extended_location = {
+///     name = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/clusterExtendedLocationName"
+///     type = "CustomLocation"
+///   }
+///   location            = "location"
+///   machine_details     = "User-provided machine details."
+///   machine_name        = "r01c001"
+///   machine_sku_id      = "684E-3B16-399E"
+///   rack_id             = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/racks/rackName"
+///   rack_slot           = 1
+///   resource_group_name = "resourceGroupName"
+///   serial_number       = "BM1219XXX"
+///   tags = {
+///     "key1" = "myvalue1"
+///     "key2" = "myvalue2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +152,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.networkcloud.BareMetalMachineArgs;
 /// import com.pulumi.azurenative.networkcloud.inputs.AdministrativeCredentialsArgs;
 /// import com.pulumi.azurenative.networkcloud.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,7 +252,7 @@ import 'system_data_response.dart';
 ///     machine_name="r01c001",
 ///     machine_sku_id="684E-3B16-399E",
 ///     rack_id="/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/racks/rackName",
-///     rack_slot=1,
+///     rack_slot=float(1),
 ///     resource_group_name="resourceGroupName",
 ///     serial_number="BM1219XXX",
 ///     tags={

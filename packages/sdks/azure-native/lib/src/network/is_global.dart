@@ -15,4 +15,3 @@ enum IsGlobal {
     throw ArgumentError('Unknown IsGlobal value: $value');
   }
 }
-

@@ -55,6 +55,24 @@ import 'virtual_network_rule_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datalakestore_virtualnetworkrule" "virtualNetworkRule" {
+///   account_name              = "contosoadla"
+///   resource_group_name       = "contosorg"
+///   subnet_id                 = "test_subnetId"
+///   virtual_network_rule_name = "test_virtual_network_rules_name"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +81,8 @@ import 'virtual_network_rule_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datalakestore.VirtualNetworkRule;
 /// import com.pulumi.azurenative.datalakestore.VirtualNetworkRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

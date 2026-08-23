@@ -14,4 +14,3 @@ enum ThreatIntelligenceResourceInnerKind {
     throw ArgumentError('Unknown ThreatIntelligenceResourceInnerKind value: $value');
   }
 }
-

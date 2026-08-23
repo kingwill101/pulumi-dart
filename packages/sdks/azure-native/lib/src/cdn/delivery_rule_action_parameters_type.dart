@@ -20,4 +20,3 @@ enum DeliveryRuleActionParametersType {
     throw ArgumentError('Unknown DeliveryRuleActionParametersType value: $value');
   }
 }
-

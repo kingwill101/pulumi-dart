@@ -57,6 +57,25 @@ import 'database_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbformariadb_database" "database" {
+///   charset             = "utf8"
+///   collation           = "utf8_general_ci"
+///   database_name       = "db1"
+///   resource_group_name = "TestGroup"
+///   server_name         = "testserver"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +84,8 @@ import 'database_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbformariadb.Database;
 /// import com.pulumi.azurenative.dbformariadb.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -1,8 +1,8 @@
 /// [Required] The numerical data quality metric to calculate.
 enum NumericalDataQualityMetric {
-  valueNullValueRate("NullValueRate"),
-  valueDataTypeErrorRate("DataTypeErrorRate"),
-  valueOutOfBoundsRate("OutOfBoundsRate");
+  nullValueRate("NullValueRate"),
+  dataTypeErrorRate("DataTypeErrorRate"),
+  outOfBoundsRate("OutOfBoundsRate");
 
   const NumericalDataQualityMetric(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum NumericalDataQualityMetric {
     throw ArgumentError('Unknown NumericalDataQualityMetric value: $value');
   }
 }
-

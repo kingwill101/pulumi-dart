@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-07-02-preview.
 ///
-/// Other available API versions: 2025-08-02-preview, 2025-09-02-preview, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-02-preview, 2025-09-02-preview, 2025-10-02-preview, 2026-01-02-preview, 2026-02-02-preview, 2026-03-02-preview, 2026-04-02-preview, 2026-05-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -148,6 +148,52 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_jwtauthenticator" "jwtAuthenticator" {
+///   jwt_authenticator_name = "jwt1"
+///   properties = {
+///     claim_mappings = {
+///       extra = [{
+///         "key"             = "example.com/extrakey"
+///         "valueExpression" = "claims.customfield"
+///       }]
+///       groups = {
+///         expression = "claims.groups.split(',').map(group, 'aks:jwt:' + group)"
+///       }
+///       username = {
+///         expression = "'aks:jwt:' + claims.sub"
+///       }
+///     }
+///     claim_validation_rules = [{
+///       "expression" = "has(claims.sub)"
+///       "message"    = "Sub is required"
+///       }, {
+///       "expression" = "claims.sub != ''"
+///       "message"    = "Sub cannot be empty"
+///     }]
+///     issuer = {
+///       audiences = ["https://example.com/audience1", "https://example.com/audience2"]
+///       url       = "https://example.com"
+///     }
+///     user_validation_rules = [{
+///       "expression" = "user.groups.all(group, group.startsWith('aks:jwt:admin:'))"
+///       "message"    = "Must be in admin user group"
+///     }]
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -160,8 +206,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.JWTAuthenticatorClaimMappingsArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.JWTAuthenticatorClaimMappingExpressionArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.JWTAuthenticatorIssuerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

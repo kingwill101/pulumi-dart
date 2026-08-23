@@ -1,21 +1,21 @@
 /// The type of IoT Security recommendation.
 enum RecommendationType {
-  valueIoTACRAuthentication("IoT_ACRAuthentication"),
-  valueIoTAgentSendsUnutilizedMessages("IoT_AgentSendsUnutilizedMessages"),
-  valueIoTBaseline("IoT_Baseline"),
-  valueIoTEdgeHubMemOptimize("IoT_EdgeHubMemOptimize"),
-  valueIoTEdgeLoggingOptions("IoT_EdgeLoggingOptions"),
-  valueIoTInconsistentModuleSettings("IoT_InconsistentModuleSettings"),
-  valueIoTInstallAgent("IoT_InstallAgent"),
-  valueIoTIPFilterDenyAll("IoT_IPFilter_DenyAll"),
-  valueIoTIPFilterPermissiveRule("IoT_IPFilter_PermissiveRule"),
-  valueIoTOpenPorts("IoT_OpenPorts"),
-  valueIoTPermissiveFirewallPolicy("IoT_PermissiveFirewallPolicy"),
-  valueIoTPermissiveInputFirewallRules("IoT_PermissiveInputFirewallRules"),
-  valueIoTPermissiveOutputFirewallRules("IoT_PermissiveOutputFirewallRules"),
-  valueIoTPrivilegedDockerOptions("IoT_PrivilegedDockerOptions"),
-  valueIoTSharedCredentials("IoT_SharedCredentials"),
-  valueIoTVulnerableTLSCipherSuite("IoT_VulnerableTLSCipherSuite");
+  ioTACRAuthentication("IoT_ACRAuthentication"),
+  ioTAgentSendsUnutilizedMessages("IoT_AgentSendsUnutilizedMessages"),
+  ioTBaseline("IoT_Baseline"),
+  ioTEdgeHubMemOptimize("IoT_EdgeHubMemOptimize"),
+  ioTEdgeLoggingOptions("IoT_EdgeLoggingOptions"),
+  ioTInconsistentModuleSettings("IoT_InconsistentModuleSettings"),
+  ioTInstallAgent("IoT_InstallAgent"),
+  ioTIPFilterDenyAll("IoT_IPFilter_DenyAll"),
+  ioTIPFilterPermissiveRule("IoT_IPFilter_PermissiveRule"),
+  ioTOpenPorts("IoT_OpenPorts"),
+  ioTPermissiveFirewallPolicy("IoT_PermissiveFirewallPolicy"),
+  ioTPermissiveInputFirewallRules("IoT_PermissiveInputFirewallRules"),
+  ioTPermissiveOutputFirewallRules("IoT_PermissiveOutputFirewallRules"),
+  ioTPrivilegedDockerOptions("IoT_PrivilegedDockerOptions"),
+  ioTSharedCredentials("IoT_SharedCredentials"),
+  ioTVulnerableTLSCipherSuite("IoT_VulnerableTLSCipherSuite");
 
   const RecommendationType(this.wireValue);
   final String wireValue;
@@ -29,4 +29,3 @@ enum RecommendationType {
     throw ArgumentError('Unknown RecommendationType value: $value');
   }
 }
-

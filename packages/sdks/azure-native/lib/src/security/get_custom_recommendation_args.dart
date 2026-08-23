@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomRecommendationArgs {
   /// Name of the Custom Recommendation.
   final pulumi.Input<String> customRecommendationName;
-  /// The scope of the custom recommendation. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+  /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> scope;
 
   /// Creates a new [GetCustomRecommendationArgs].
   /// [customRecommendationName] Name of the Custom Recommendation.
-  /// [scope] The scope of the custom recommendation. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+  /// [scope] The fully qualified Azure Resource manager identifier of the resource.
   const GetCustomRecommendationArgs({
     required this.customRecommendationName,
     required this.scope,
@@ -34,4 +34,3 @@ class GetCustomRecommendationArgs {
     );
   }
 }
-

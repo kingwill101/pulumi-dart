@@ -14,4 +14,3 @@ enum CredentialName {
     throw ArgumentError('Unknown CredentialName value: $value');
   }
 }
-

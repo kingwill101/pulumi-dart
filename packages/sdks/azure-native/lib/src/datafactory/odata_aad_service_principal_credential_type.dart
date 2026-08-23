@@ -1,7 +1,7 @@
 /// Specify the credential type (key or cert) is used for service principal.
 enum ODataAadServicePrincipalCredentialType {
-  valueServicePrincipalKey("ServicePrincipalKey"),
-  valueServicePrincipalCert("ServicePrincipalCert");
+  servicePrincipalKey("ServicePrincipalKey"),
+  servicePrincipalCert("ServicePrincipalCert");
 
   const ODataAadServicePrincipalCredentialType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ODataAadServicePrincipalCredentialType {
     throw ArgumentError('Unknown ODataAadServicePrincipalCredentialType value: $value');
   }
 }
-

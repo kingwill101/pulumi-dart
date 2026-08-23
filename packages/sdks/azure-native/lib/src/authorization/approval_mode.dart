@@ -1,9 +1,9 @@
 /// The type of rule
 enum ApprovalMode {
-  valueSingleStage("SingleStage"),
-  valueSerial("Serial"),
-  valueParallel("Parallel"),
-  valueNoApproval("NoApproval");
+  singleStage("SingleStage"),
+  serial("Serial"),
+  parallel("Parallel"),
+  noApproval("NoApproval");
 
   const ApprovalMode(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum ApprovalMode {
     throw ArgumentError('Unknown ApprovalMode value: $value');
   }
 }
-

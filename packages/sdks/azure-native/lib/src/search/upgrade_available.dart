@@ -15,4 +15,3 @@ enum UpgradeAvailable {
     throw ArgumentError('Unknown UpgradeAvailable value: $value');
   }
 }
-

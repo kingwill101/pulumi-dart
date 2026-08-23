@@ -53,4 +53,3 @@ class S3AccessControlPolicyArgs {
     );
   }
 }
-

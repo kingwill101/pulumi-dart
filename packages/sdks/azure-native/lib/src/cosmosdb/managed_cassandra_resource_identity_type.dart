@@ -1,7 +1,7 @@
 /// The type of the resource.
 enum ManagedCassandraResourceIdentityType {
-  valueSystemAssigned("SystemAssigned"),
-  valueNone("None");
+  systemAssigned("SystemAssigned"),
+  none("None");
 
   const ManagedCassandraResourceIdentityType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ManagedCassandraResourceIdentityType {
     throw ArgumentError('Unknown ManagedCassandraResourceIdentityType value: $value');
   }
 }
-

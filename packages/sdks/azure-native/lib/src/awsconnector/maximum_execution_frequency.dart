@@ -18,4 +18,3 @@ enum MaximumExecutionFrequency {
     throw ArgumentError('Unknown MaximumExecutionFrequency value: $value');
   }
 }
-

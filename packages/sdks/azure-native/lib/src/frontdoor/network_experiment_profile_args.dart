@@ -11,11 +11,9 @@ class NetworkExperimentProfileArgs {
   final pulumi.Input<String>? enabledState;
   /// Resource location.
   final pulumi.Input<String>? location;
-  /// The name of the Profile
-  final pulumi.Input<String>? name;
   /// The Profile identifier associated with the Tenant and Partner
   final pulumi.Input<String>? profileName;
-  /// Name of the Resource group within the Azure subscription.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
@@ -23,14 +21,12 @@ class NetworkExperimentProfileArgs {
   /// Creates a new [NetworkExperimentProfileArgs].
   /// [enabledState] The state of the Experiment
   /// [location] Resource location.
-  /// [name] The name of the Profile
   /// [profileName] The Profile identifier associated with the Tenant and Partner
-  /// [resourceGroupName] Name of the Resource group within the Azure subscription.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   const NetworkExperimentProfileArgs({
     this.enabledState,
     this.location,
-    this.name,
     this.profileName,
     required this.resourceGroupName,
     this.tags,
@@ -40,7 +36,6 @@ class NetworkExperimentProfileArgs {
     return <String, dynamic>{
       'enabledState': ?enabledState,
       'location': ?location,
-      'name': ?name,
       'profileName': ?profileName,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
@@ -51,11 +46,9 @@ class NetworkExperimentProfileArgs {
     return NetworkExperimentProfileArgs(
       enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       profileName: (() { final guardedValue = map['profileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
-

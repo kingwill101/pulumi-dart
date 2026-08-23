@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'system_data_response.dart';
 
 /// Result data returned by getWebAppDeploymentSlot.
 class GetWebAppDeploymentSlotResult {
@@ -17,19 +18,21 @@ class GetWebAppDeploymentSlotResult {
   final String? details;
   /// End time.
   final String? endTime;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Kind of resource.
   final String? kind;
   /// Details about deployment status.
   final String? message;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
   /// Start time.
   final String? startTime;
   /// Deployment status.
   final int? status;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetWebAppDeploymentSlotResult].
@@ -40,13 +43,14 @@ class GetWebAppDeploymentSlotResult {
   /// [deployer] Who performed the deployment.
   /// [details] Details on deployment.
   /// [endTime] End time.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] Kind of resource.
   /// [message] Details about deployment status.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [startTime] Start time.
   /// [status] Deployment status.
-  /// [type] Resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetWebAppDeploymentSlotResult({
     this.active,
     this.author,
@@ -61,6 +65,7 @@ class GetWebAppDeploymentSlotResult {
     required this.name,
     this.startTime,
     this.status,
+    required this.systemData,
     required this.type,
   });
 
@@ -79,6 +84,7 @@ class GetWebAppDeploymentSlotResult {
       'name': name,
       'startTime': ?startTime,
       'status': ?status,
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -98,8 +104,8 @@ class GetWebAppDeploymentSlotResult {
       name: map['name'] as String,
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

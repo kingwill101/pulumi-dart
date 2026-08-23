@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'actions.dart';
-import 'identity.dart';
+import 'microsoft_common_identity.dart';
 import 'rule_resolve_configuration.dart';
 import 'scheduled_query_rule_criteria.dart';
 
@@ -18,17 +18,17 @@ class ScheduledQueryRuleArgs {
   /// The flag which indicates whether this scheduled query rule should be stored in the customer's storage. The default is false. Relevant only for rules of the kind LogAlert.
   final pulumi.Input<bool>? checkWorkspaceAlertsStorageConfigured;
   /// The rule criteria that defines the conditions of the scheduled query rule.
-  final pulumi.Input<ScheduledQueryRuleCriteria> criteria;
+  final pulumi.Input<ScheduledQueryRuleCriteria>? criteria;
   /// The description of the scheduled query rule.
   final pulumi.Input<String>? description;
   /// The display name of the alert rule
   final pulumi.Input<String>? displayName;
   /// The flag which indicates whether this scheduled query rule is enabled. Value should be true or false
-  final pulumi.Input<bool> enabled;
+  final pulumi.Input<bool>? enabled;
   /// How often the scheduled query rule is evaluated represented in ISO 8601 duration format. Relevant and required only for rules of the kind LogAlert.
   final pulumi.Input<String>? evaluationFrequency;
   /// The identity of the resource.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<MicrosoftCommonIdentity>? identity;
   /// Indicates the type of scheduled query rule. The default is LogAlert.
   final pulumi.Input<String>? kind;
   /// The geo-location where the resource lives
@@ -44,7 +44,7 @@ class ScheduledQueryRuleArgs {
   /// The name of the rule.
   final pulumi.Input<String>? ruleName;
   /// The list of resource id's that this scheduled query rule is scoped to.
-  final pulumi.Input<List<String>> scopes;
+  final pulumi.Input<List<String>>? scopes;
   /// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert.
   final pulumi.Input<double>? severity;
   /// The flag which indicates whether the provided query should be validated or not. The default is false. Relevant only for rules of the kind LogAlert.
@@ -83,10 +83,10 @@ class ScheduledQueryRuleArgs {
     this.actions,
     this.autoMitigate,
     this.checkWorkspaceAlertsStorageConfigured,
-    required this.criteria,
+    this.criteria,
     this.description,
     this.displayName,
-    required this.enabled,
+    this.enabled,
     this.evaluationFrequency,
     this.identity,
     this.kind,
@@ -96,7 +96,7 @@ class ScheduledQueryRuleArgs {
     this.resolveConfiguration,
     required this.resourceGroupName,
     this.ruleName,
-    required this.scopes,
+    this.scopes,
     this.severity,
     this.skipQueryValidation,
     this.tags,
@@ -109,12 +109,12 @@ class ScheduledQueryRuleArgs {
       'actions': ?pulumi.Input.mapOptionalInputValue<Actions, Map<String, dynamic>>(actions, (value) => value.toMap()),
       'autoMitigate': ?autoMitigate,
       'checkWorkspaceAlertsStorageConfigured': ?checkWorkspaceAlertsStorageConfigured,
-      'criteria': pulumi.Input.mapInputValue<ScheduledQueryRuleCriteria, Map<String, dynamic>>(criteria, (value) => value.toMap()),
+      'criteria': ?pulumi.Input.mapOptionalInputValue<ScheduledQueryRuleCriteria, Map<String, dynamic>>(criteria, (value) => value.toMap()),
       'description': ?description,
       'displayName': ?displayName,
-      'enabled': enabled,
+      'enabled': ?enabled,
       'evaluationFrequency': ?evaluationFrequency,
-      'identity': ?pulumi.Input.mapOptionalInputValue<Identity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<MicrosoftCommonIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'kind': ?kind,
       'location': ?location,
       'muteActionsDuration': ?muteActionsDuration,
@@ -122,7 +122,7 @@ class ScheduledQueryRuleArgs {
       'resolveConfiguration': ?pulumi.Input.mapOptionalInputValue<RuleResolveConfiguration, Map<String, dynamic>>(resolveConfiguration, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'ruleName': ?ruleName,
-      'scopes': scopes,
+      'scopes': ?scopes,
       'severity': ?severity,
       'skipQueryValidation': ?skipQueryValidation,
       'tags': ?tags,
@@ -136,12 +136,12 @@ class ScheduledQueryRuleArgs {
       actions: (() { final guardedValue = map['actions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Actions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       autoMitigate: (() { final guardedValue = map['autoMitigate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       checkWorkspaceAlertsStorageConfigured: (() { final guardedValue = map['checkWorkspaceAlertsStorageConfigured']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      criteria: pulumi.Input.fromValue(ScheduledQueryRuleCriteria.fromMap((map['criteria']! as Map).cast<String, dynamic>())),
+      criteria: (() { final guardedValue = map['criteria']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScheduledQueryRuleCriteria.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       evaluationFrequency: (() { final guardedValue = map['evaluationFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Identity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MicrosoftCommonIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       muteActionsDuration: (() { final guardedValue = map['muteActionsDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -149,7 +149,7 @@ class ScheduledQueryRuleArgs {
       resolveConfiguration: (() { final guardedValue = map['resolveConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleResolveConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      scopes: pulumi.Input.fromValue((map['scopes'] as List).cast<String>()),
+      scopes: (() { final guardedValue = map['scopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       skipQueryValidation: (() { final guardedValue = map['skipQueryValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -158,4 +158,3 @@ class ScheduledQueryRuleArgs {
     );
   }
 }
-

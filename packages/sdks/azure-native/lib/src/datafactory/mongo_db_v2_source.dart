@@ -81,4 +81,3 @@ class MongoDbV2Source {
     );
   }
 }
-

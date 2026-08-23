@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-08-01.
 ///
-/// Other available API versions: 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-06-01-preview, 2026-01-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -62,6 +62,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_administratorsmicrosoftentra" "administratorsMicrosoftEntra" {
+///   object_id           = "oooooooo-oooo-oooo-oooo-oooooooooooo"
+///   principal_name      = "exampleuser@contoso.com"
+///   principal_type      = "User"
+///   resource_group_name = "exampleresourcegroup"
+///   server_name         = "exampleserver"
+///   tenant_id           = "tttttttt-tttt-tttt-tttt-tttttttttttt"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +90,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbforpostgresql.AdministratorsMicrosoftEntra;
 /// import com.pulumi.azurenative.dbforpostgresql.AdministratorsMicrosoftEntraArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

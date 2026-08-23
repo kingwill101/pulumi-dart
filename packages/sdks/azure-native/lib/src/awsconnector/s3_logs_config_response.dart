@@ -45,4 +45,3 @@ class S3LogsConfigResponse {
     );
   }
 }
-

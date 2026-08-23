@@ -15,4 +15,3 @@ enum VirtualNetworkEncryptionEnforcement {
     throw ArgumentError('Unknown VirtualNetworkEncryptionEnforcement value: $value');
   }
 }
-

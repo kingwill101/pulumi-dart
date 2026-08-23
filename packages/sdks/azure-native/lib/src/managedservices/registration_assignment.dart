@@ -60,6 +60,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_managedservices_registrationassignment" "registrationAssignment" {
+///   properties = {
+///     registration_definition_id = "/subscriptions/0afefe50-734e-4610-8a82-a144ahf49dea/providers/Microsoft.ManagedServices/registrationDefinitions/26c128c2-fefa-4340-9bb1-6e081c90ada2"
+///   }
+///   registration_assignment_id = "26c128c2-fefa-4340-9bb1-6e081c90ada2"
+///   scope                      = "subscription/0afefe50-734e-4610-8a82-a144ahf49dea"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +88,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.managedservices.RegistrationAssignment;
 /// import com.pulumi.azurenative.managedservices.RegistrationAssignmentArgs;
 /// import com.pulumi.azurenative.managedservices.inputs.RegistrationAssignmentPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

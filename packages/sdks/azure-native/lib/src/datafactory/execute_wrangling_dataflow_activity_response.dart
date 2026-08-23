@@ -6,7 +6,7 @@ import 'activity_policy_response.dart';
 import 'continuation_settings_reference_response.dart';
 import 'data_flow_reference_response.dart';
 import 'data_flow_staging_info_response.dart';
-import 'execute_data_flow_activity_type_properties_response_compute.dart';
+import 'execute_data_flow_activity_type_properties_compute_response.dart';
 import 'integration_runtime_reference_response.dart';
 import 'power_query_sink_mapping_response.dart';
 import 'power_query_sink_response.dart';
@@ -15,7 +15,7 @@ import 'user_property_response.dart';
 /// Execute power query activity.
 class ExecuteWranglingDataflowActivityResponse {
   /// Compute properties for data flow activity.
-  final pulumi.Input<ExecuteDataFlowActivityTypePropertiesResponseCompute>? compute;
+  final pulumi.Input<ExecuteDataFlowActivityTypePropertiesComputeResponse>? compute;
   /// Continuation settings for execute data flow activity.
   final pulumi.Input<ContinuationSettingsReferenceResponse>? continuationSettings;
   /// Continue on error setting used for data flow execution. Enables processing to continue if a sink fails. Type: boolean (or Expression with resultType boolean)
@@ -98,7 +98,7 @@ class ExecuteWranglingDataflowActivityResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compute': ?pulumi.Input.mapOptionalInputValue<ExecuteDataFlowActivityTypePropertiesResponseCompute, Map<String, dynamic>>(compute, (value) => value.toMap()),
+      'compute': ?pulumi.Input.mapOptionalInputValue<ExecuteDataFlowActivityTypePropertiesComputeResponse, Map<String, dynamic>>(compute, (value) => value.toMap()),
       'continuationSettings': ?pulumi.Input.mapOptionalInputValue<ContinuationSettingsReferenceResponse, Map<String, dynamic>>(continuationSettings, (value) => value.toMap()),
       'continueOnError': ?continueOnError,
       'dataFlow': pulumi.Input.mapInputValue<DataFlowReferenceResponse, Map<String, dynamic>>(dataFlow, (value) => value.toMap()),
@@ -122,7 +122,7 @@ class ExecuteWranglingDataflowActivityResponse {
 
   factory ExecuteWranglingDataflowActivityResponse.fromMap(Map<String, dynamic> map) {
     return ExecuteWranglingDataflowActivityResponse(
-      compute: (() { final guardedValue = map['compute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExecuteDataFlowActivityTypePropertiesResponseCompute.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      compute: (() { final guardedValue = map['compute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExecuteDataFlowActivityTypePropertiesComputeResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       continuationSettings: (() { final guardedValue = map['continuationSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContinuationSettingsReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       continueOnError: (() { final guardedValue = map['continueOnError']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       dataFlow: pulumi.Input.fromValue(DataFlowReferenceResponse.fromMap((map['dataFlow']! as Map).cast<String, dynamic>())),
@@ -144,4 +144,3 @@ class ExecuteWranglingDataflowActivityResponse {
     );
   }
 }
-

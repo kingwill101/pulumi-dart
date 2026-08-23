@@ -14,27 +14,29 @@ import 'workspace_provider_authorization.dart';
 /// {@endtemplate}
 /// {@macro pulumi_databricks_workspace_args_doc}
 class WorkspaceArgs {
-  /// Access Connector Resource that is going to be associated with Databricks Workspace
+  /// Access Connector Resource that is going to be associated with Databricks Workspace. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<WorkspacePropertiesAccessConnector>? accessConnector;
   /// The workspace provider authorizations.
   final pulumi.Input<List<WorkspaceProviderAuthorization>>? authorizations;
-  /// Properties for Default Catalog configuration during workspace creation.
+  /// The workspace compute mode. Required on create, cannot be changed. Possible values include: 'Serverless', 'Hybrid'
+  final pulumi.Input<String>? computeMode;
+  /// Properties for Default Catalog configuration during workspace creation. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<DefaultCatalogProperties>? defaultCatalog;
-  /// Gets or Sets Default Storage Firewall configuration information
+  /// Gets or Sets Default Storage Firewall configuration information. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<String>? defaultStorageFirewall;
-  /// Encryption properties for databricks workspace
+  /// Encryption properties for databricks workspace. Supported in both Serverless and Hybrid ComputeMode workspace.
   final pulumi.Input<WorkspacePropertiesEncryption>? encryption;
-  /// Contains settings related to the Enhanced Security and Compliance Add-On.
+  /// Contains settings related to the Enhanced Security and Compliance Add-On. Supported in both Serverless and Hybrid ComputeMode workspace.
   final pulumi.Input<EnhancedSecurityComplianceDefinition>? enhancedSecurityCompliance;
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-  /// The managed resource group Id.
-  final pulumi.Input<String> managedResourceGroupId;
+  /// The managed resource group Id. Required in Hybrid ComputeMode workspace. Not allowed in Serverless ComputeMode workspace.
+  final pulumi.Input<String>? managedResourceGroupId;
   /// The workspace's custom parameters.
   final pulumi.Input<WorkspaceCustomParameters>? parameters;
-  /// The network access type for accessing workspace. Set value to disabled to access workspace only via private link.
+  /// The network access type for accessing workspace. Set value to disabled to access workspace only via private link. Used to configure front-end only private link for Serverless ComputeMode workspace.
   final pulumi.Input<String>? publicNetworkAccess;
-  /// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.
+  /// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<String>? requiredNsgRules;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
@@ -48,17 +50,18 @@ class WorkspaceArgs {
   final pulumi.Input<String>? workspaceName;
 
   /// Creates a new [WorkspaceArgs].
-  /// [accessConnector] Access Connector Resource that is going to be associated with Databricks Workspace
+  /// [accessConnector] Access Connector Resource that is going to be associated with Databricks Workspace. Not allowed in Serverless ComputeMode workspace.
   /// [authorizations] The workspace provider authorizations.
-  /// [defaultCatalog] Properties for Default Catalog configuration during workspace creation.
-  /// [defaultStorageFirewall] Gets or Sets Default Storage Firewall configuration information
-  /// [encryption] Encryption properties for databricks workspace
-  /// [enhancedSecurityCompliance] Contains settings related to the Enhanced Security and Compliance Add-On.
+  /// [computeMode] The workspace compute mode. Required on create, cannot be changed. Possible values include: 'Serverless', 'Hybrid'
+  /// [defaultCatalog] Properties for Default Catalog configuration during workspace creation. Not allowed in Serverless ComputeMode workspace.
+  /// [defaultStorageFirewall] Gets or Sets Default Storage Firewall configuration information. Not allowed in Serverless ComputeMode workspace.
+  /// [encryption] Encryption properties for databricks workspace. Supported in both Serverless and Hybrid ComputeMode workspace.
+  /// [enhancedSecurityCompliance] Contains settings related to the Enhanced Security and Compliance Add-On. Supported in both Serverless and Hybrid ComputeMode workspace.
   /// [location] The geo-location where the resource lives
-  /// [managedResourceGroupId] The managed resource group Id.
+  /// [managedResourceGroupId] The managed resource group Id. Required in Hybrid ComputeMode workspace. Not allowed in Serverless ComputeMode workspace.
   /// [parameters] The workspace's custom parameters.
-  /// [publicNetworkAccess] The network access type for accessing workspace. Set value to disabled to access workspace only via private link.
-  /// [requiredNsgRules] Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.
+  /// [publicNetworkAccess] The network access type for accessing workspace. Set value to disabled to access workspace only via private link. Used to configure front-end only private link for Serverless ComputeMode workspace.
+  /// [requiredNsgRules] Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only. Not allowed in Serverless ComputeMode workspace.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The SKU of the resource.
   /// [tags] Resource tags.
@@ -67,12 +70,13 @@ class WorkspaceArgs {
   const WorkspaceArgs({
     this.accessConnector,
     this.authorizations,
+    this.computeMode,
     this.defaultCatalog,
     this.defaultStorageFirewall,
     this.encryption,
     this.enhancedSecurityCompliance,
     this.location,
-    required this.managedResourceGroupId,
+    this.managedResourceGroupId,
     this.parameters,
     this.publicNetworkAccess,
     this.requiredNsgRules,
@@ -87,12 +91,13 @@ class WorkspaceArgs {
     return <String, dynamic>{
       'accessConnector': ?pulumi.Input.mapOptionalInputValue<WorkspacePropertiesAccessConnector, Map<String, dynamic>>(accessConnector, (value) => value.toMap()),
       'authorizations': ?pulumi.Input.mapOptionalInputValue<List<WorkspaceProviderAuthorization>, List<Map<String, dynamic>>>(authorizations, (value) => pulumi.Input.encodeList<WorkspaceProviderAuthorization, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'computeMode': ?computeMode,
       'defaultCatalog': ?pulumi.Input.mapOptionalInputValue<DefaultCatalogProperties, Map<String, dynamic>>(defaultCatalog, (value) => value.toMap()),
       'defaultStorageFirewall': ?defaultStorageFirewall,
       'encryption': ?pulumi.Input.mapOptionalInputValue<WorkspacePropertiesEncryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
       'enhancedSecurityCompliance': ?pulumi.Input.mapOptionalInputValue<EnhancedSecurityComplianceDefinition, Map<String, dynamic>>(enhancedSecurityCompliance, (value) => value.toMap()),
       'location': ?location,
-      'managedResourceGroupId': managedResourceGroupId,
+      'managedResourceGroupId': ?managedResourceGroupId,
       'parameters': ?pulumi.Input.mapOptionalInputValue<WorkspaceCustomParameters, Map<String, dynamic>>(parameters, (value) => value.toMap()),
       'publicNetworkAccess': ?publicNetworkAccess,
       'requiredNsgRules': ?requiredNsgRules,
@@ -108,12 +113,13 @@ class WorkspaceArgs {
     return WorkspaceArgs(
       accessConnector: (() { final guardedValue = map['accessConnector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkspacePropertiesAccessConnector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       authorizations: (() { final guardedValue = map['authorizations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkspaceProviderAuthorization>(guardedValue, (value) => WorkspaceProviderAuthorization.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      computeMode: (() { final guardedValue = map['computeMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultCatalog: (() { final guardedValue = map['defaultCatalog']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefaultCatalogProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       defaultStorageFirewall: (() { final guardedValue = map['defaultStorageFirewall']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkspacePropertiesEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enhancedSecurityCompliance: (() { final guardedValue = map['enhancedSecurityCompliance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnhancedSecurityComplianceDefinition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      managedResourceGroupId: pulumi.Input.fromValue(map['managedResourceGroupId'] as String),
+      managedResourceGroupId: (() { final guardedValue = map['managedResourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkspaceCustomParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       requiredNsgRules: (() { final guardedValue = map['requiredNsgRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -125,4 +131,3 @@ class WorkspaceArgs {
     );
   }
 }
-

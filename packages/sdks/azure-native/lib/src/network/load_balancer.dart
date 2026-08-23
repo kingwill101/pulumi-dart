@@ -7,7 +7,7 @@ import 'load_balancer_sku_response.dart';
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -192,6 +192,72 @@ import 'load_balancer_sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+///   backend_address_pools {
+///     name = "be-lb"
+///   }
+///   frontend_ip_configurations {
+///     name = "fe-lb"
+///     subnet = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb/subnets/subnetlb"
+///     }
+///   }
+///   inbound_nat_rules {
+///     backend_port       = 3389
+///     enable_floating_ip = true
+///     enable_tcp_reset   = false
+///     frontend_ip_configuration = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"
+///     }
+///     frontend_port           = 3389
+///     idle_timeout_in_minutes = 15
+///     name                    = "in-nat-rule"
+///     protocol                = "Tcp"
+///   }
+///   load_balancer_name = "lb"
+///   load_balancing_rules {
+///     backend_address_pool = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/be-lb"
+///     }
+///     backend_port       = 80
+///     enable_floating_ip = true
+///     enable_tcp_reset   = false
+///     frontend_ip_configuration = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"
+///     }
+///     frontend_port           = 80
+///     idle_timeout_in_minutes = 15
+///     load_distribution       = "Default"
+///     name                    = "rulelb"
+///     probe = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/probes/probe-lb"
+///     }
+///     protocol = "Tcp"
+///   }
+///   location = "eastus"
+///   probes {
+///     interval_in_seconds = 15
+///     name                = "probe-lb"
+///     number_of_probes    = 2
+///     port                = 80
+///     probe_threshold     = 1
+///     protocol            = "Http"
+///     request_path        = "healthcheck.aspx"
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -207,8 +273,8 @@ import 'load_balancer_sku_response.dart';
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.network.inputs.LoadBalancingRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.ProbeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -649,6 +715,74 @@ import 'load_balancer_sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+///   backend_address_pools {
+///     name = "be-lb"
+///   }
+///   frontend_ip_configurations {
+///     name = "fe-lb"
+///     subnet = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb/subnets/subnetlb"
+///     }
+///     zones = ["1"]
+///   }
+///   inbound_nat_rules {
+///     backend_port       = 3389
+///     enable_floating_ip = true
+///     frontend_ip_configuration = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"
+///     }
+///     frontend_port           = 3389
+///     idle_timeout_in_minutes = 15
+///     name                    = "in-nat-rule"
+///     protocol                = "Tcp"
+///   }
+///   load_balancer_name = "lb"
+///   load_balancing_rules {
+///     backend_address_pool = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/be-lb"
+///     }
+///     backend_port       = 80
+///     enable_floating_ip = true
+///     frontend_ip_configuration = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"
+///     }
+///     frontend_port           = 80
+///     idle_timeout_in_minutes = 15
+///     load_distribution       = "Default"
+///     name                    = "rulelb"
+///     probe = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/probes/probe-lb"
+///     }
+///     protocol = "Tcp"
+///   }
+///   location = "eastus"
+///   probes {
+///     interval_in_seconds = 15
+///     name                = "probe-lb"
+///     number_of_probes    = 2
+///     port                = 80
+///     probe_threshold     = 1
+///     protocol            = "Http"
+///     request_path        = "healthcheck.aspx"
+///   }
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "Standard"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -665,8 +799,8 @@ import 'load_balancer_sku_response.dart';
 /// import com.pulumi.azurenative.network.inputs.LoadBalancingRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.ProbeArgs;
 /// import com.pulumi.azurenative.network.inputs.LoadBalancerSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1119,6 +1253,76 @@ import 'load_balancer_sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+///   backend_address_pools {
+///     name = "be-lb"
+///   }
+///   frontend_ip_configurations {
+///     gateway_load_balancer = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb-provider"
+///     }
+///     name = "fe-lb"
+///     subnet = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb/subnets/subnetlb"
+///     }
+///   }
+///   inbound_nat_rules {
+///     backend_port       = 3389
+///     enable_floating_ip = true
+///     frontend_ip_configuration = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"
+///     }
+///     frontend_port           = 3389
+///     idle_timeout_in_minutes = 15
+///     name                    = "in-nat-rule"
+///     protocol                = "Tcp"
+///   }
+///   load_balancer_name = "lb"
+///   load_balancing_rules {
+///     backend_address_pool = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/be-lb"
+///     }
+///     backend_port       = 80
+///     enable_floating_ip = true
+///     frontend_ip_configuration = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"
+///     }
+///     frontend_port           = 80
+///     idle_timeout_in_minutes = 15
+///     load_distribution       = "Default"
+///     name                    = "rulelb"
+///     probe = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/probes/probe-lb"
+///     }
+///     protocol = "Tcp"
+///   }
+///   location = "eastus"
+///   probes {
+///     interval_in_seconds = 15
+///     name                = "probe-lb"
+///     number_of_probes    = 2
+///     port                = 80
+///     probe_threshold     = 1
+///     protocol            = "Http"
+///     request_path        = "healthcheck.aspx"
+///   }
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "Standard"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1135,8 +1339,8 @@ import 'load_balancer_sku_response.dart';
 /// import com.pulumi.azurenative.network.inputs.LoadBalancingRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.ProbeArgs;
 /// import com.pulumi.azurenative.network.inputs.LoadBalancerSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1595,6 +1799,74 @@ import 'load_balancer_sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+///   backend_address_pools {
+///     name = "be-lb"
+///     tunnel_interfaces {
+///       identifier = 900
+///       port       = 15000
+///       protocol   = "VXLAN"
+///       type       = "Internal"
+///     }
+///     tunnel_interfaces {
+///       identifier = 901
+///       port       = 15001
+///       protocol   = "VXLAN"
+///       type       = "Internal"
+///     }
+///   }
+///   frontend_ip_configurations {
+///     name = "fe-lb"
+///     subnet = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb/subnets/subnetlb"
+///     }
+///   }
+///   load_balancer_name = "lb"
+///   load_balancing_rules {
+///     backend_address_pools {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/be-lb"
+///     }
+///     backend_port       = 0
+///     enable_floating_ip = true
+///     frontend_ip_configuration = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"
+///     }
+///     frontend_port           = 0
+///     idle_timeout_in_minutes = 15
+///     load_distribution       = "Default"
+///     name                    = "rulelb"
+///     probe = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/probes/probe-lb"
+///     }
+///     protocol = "All"
+///   }
+///   location = "eastus"
+///   probes {
+///     interval_in_seconds = 15
+///     name                = "probe-lb"
+///     number_of_probes    = 2
+///     port                = 80
+///     probe_threshold     = 1
+///     protocol            = "Http"
+///     request_path        = "healthcheck.aspx"
+///   }
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "Gateway"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1610,8 +1882,8 @@ import 'load_balancer_sku_response.dart';
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.network.inputs.ProbeArgs;
 /// import com.pulumi.azurenative.network.inputs.LoadBalancerSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2052,6 +2324,69 @@ import 'load_balancer_sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+///   backend_address_pools {
+///     name = "be-lb1"
+///   }
+///   backend_address_pools {
+///     name = "be-lb2"
+///   }
+///   frontend_ip_configurations {
+///     name = "fe-lb"
+///     subnet = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb/subnets/subnetlb"
+///     }
+///   }
+///   load_balancer_name = "lb"
+///   load_balancing_rules {
+///     backend_address_pool = {}
+///     backend_address_pools {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/be-lb1"
+///     }
+///     backend_address_pools {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/be-lb2"
+///     }
+///     backend_port       = 0
+///     enable_floating_ip = true
+///     frontend_ip_configuration = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"
+///     }
+///     frontend_port           = 0
+///     idle_timeout_in_minutes = 15
+///     load_distribution       = "Default"
+///     name                    = "rulelb"
+///     probe = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/probes/probe-lb"
+///     }
+///     protocol = "All"
+///   }
+///   location = "eastus"
+///   probes {
+///     interval_in_seconds = 15
+///     name                = "probe-lb"
+///     number_of_probes    = 2
+///     port                = 80
+///     probe_threshold     = 1
+///     protocol            = "Http"
+///     request_path        = "healthcheck.aspx"
+///   }
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "Gateway"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2067,8 +2402,8 @@ import 'load_balancer_sku_response.dart';
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.network.inputs.ProbeArgs;
 /// import com.pulumi.azurenative.network.inputs.LoadBalancerSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2490,6 +2825,69 @@ import 'load_balancer_sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+///   backend_address_pools {
+///     load_balancer_backend_addresses {
+///       load_balancer_frontend_ip_configuration = {
+///         id = "/subscriptions/subid/resourceGroups/regional-lb-rg1/providers/Microsoft.Network/loadBalancers/regional-lb/frontendIPConfigurations/fe-rlb"
+///       }
+///       name = "regional-lb1-address"
+///     }
+///     name = "be-lb"
+///   }
+///   frontend_ip_configurations {
+///     name = "fe-lb"
+///     subnet = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb/subnets/subnetlb"
+///     }
+///   }
+///   load_balancer_name = "lb"
+///   load_balancing_rules {
+///     backend_address_pool = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/be-lb"
+///     }
+///     backend_port       = 80
+///     enable_floating_ip = false
+///     frontend_ip_configuration = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"
+///     }
+///     frontend_port           = 80
+///     idle_timeout_in_minutes = 15
+///     load_distribution       = "Default"
+///     name                    = "rulelb"
+///     probe = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/probes/probe-lb"
+///     }
+///     protocol = "Tcp"
+///   }
+///   location = "eastus"
+///   probes {
+///     interval_in_seconds = 15
+///     name                = "probe-lb"
+///     number_of_probes    = 2
+///     port                = 80
+///     probe_threshold     = 1
+///     protocol            = "Http"
+///     request_path        = "healthcheck.aspx"
+///   }
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "Standard"
+///     tier = "Global"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2505,8 +2903,8 @@ import 'load_balancer_sku_response.dart';
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.network.inputs.ProbeArgs;
 /// import com.pulumi.azurenative.network.inputs.LoadBalancerSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2923,6 +3321,73 @@ import 'load_balancer_sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+///   backend_address_pools {
+///     name = "be-lb"
+///   }
+///   frontend_ip_configurations {
+///     name = "fe-lb"
+///     subnet = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb/subnets/subnetlb"
+///     }
+///   }
+///   inbound_nat_rules {
+///     backend_port       = 3389
+///     enable_floating_ip = true
+///     frontend_ip_configuration = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"
+///     }
+///     frontend_port           = 3389
+///     idle_timeout_in_minutes = 15
+///     name                    = "in-nat-rule"
+///     protocol                = "Tcp"
+///   }
+///   load_balancer_name = "lb"
+///   load_balancing_rules {
+///     backend_address_pool = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/be-lb"
+///     }
+///     backend_port       = 80
+///     enable_floating_ip = true
+///     frontend_ip_configuration = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"
+///     }
+///     frontend_port           = 80
+///     idle_timeout_in_minutes = 15
+///     load_distribution       = "Default"
+///     name                    = "rulelb"
+///     probe = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/probes/probe-lb"
+///     }
+///     protocol = "Tcp"
+///   }
+///   location = "eastus"
+///   probes {
+///     interval_in_seconds = 15
+///     name                = "probe-lb"
+///     number_of_probes    = 2
+///     port                = 80
+///     probe_threshold     = 1
+///     protocol            = "Http"
+///     request_path        = "healthcheck.aspx"
+///   }
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "Standard"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2939,8 +3404,8 @@ import 'load_balancer_sku_response.dart';
 /// import com.pulumi.azurenative.network.inputs.LoadBalancingRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.ProbeArgs;
 /// import com.pulumi.azurenative.network.inputs.LoadBalancerSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3390,6 +3855,77 @@ import 'load_balancer_sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+///   backend_address_pools {
+///     name      = "be-lb"
+///     sync_mode = "Automatic"
+///     virtual_network = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb"
+///     }
+///   }
+///   frontend_ip_configurations {
+///     name = "fe-lb"
+///     subnet = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb/subnets/subnetlb"
+///     }
+///   }
+///   inbound_nat_rules {
+///     backend_port       = 3389
+///     enable_floating_ip = true
+///     frontend_ip_configuration = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"
+///     }
+///     frontend_port           = 3389
+///     idle_timeout_in_minutes = 15
+///     name                    = "in-nat-rule"
+///     protocol                = "Tcp"
+///   }
+///   load_balancer_name = "lb"
+///   load_balancing_rules {
+///     backend_address_pool = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/be-lb"
+///     }
+///     backend_port       = 80
+///     enable_floating_ip = true
+///     frontend_ip_configuration = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"
+///     }
+///     frontend_port           = 80
+///     idle_timeout_in_minutes = 15
+///     load_distribution       = "Default"
+///     name                    = "rulelb"
+///     probe = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/probes/probe-lb"
+///     }
+///     protocol = "Tcp"
+///   }
+///   location = "eastus"
+///   probes {
+///     interval_in_seconds = 15
+///     name                = "probe-lb"
+///     number_of_probes    = 2
+///     port                = 80
+///     probe_threshold     = 1
+///     protocol            = "Http"
+///     request_path        = "healthcheck.aspx"
+///   }
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "Standard"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3406,8 +3942,8 @@ import 'load_balancer_sku_response.dart';
 /// import com.pulumi.azurenative.network.inputs.LoadBalancingRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.ProbeArgs;
 /// import com.pulumi.azurenative.network.inputs.LoadBalancerSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3800,6 +4336,49 @@ import 'load_balancer_sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+///   frontend_ip_configurations {
+///     id                           = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/test"
+///     name                         = "test"
+///     private_ip_allocation_method = "Dynamic"
+///     subnet = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/lbvnet/subnets/lbsubnet"
+///     }
+///     zones = []
+///   }
+///   inbound_nat_pools {
+///     backend_port       = 8888
+///     enable_floating_ip = true
+///     enable_tcp_reset   = true
+///     frontend_ip_configuration = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/test"
+///     }
+///     frontend_port_range_end   = 8085
+///     frontend_port_range_start = 8080
+///     id                        = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/inboundNatPools/test"
+///     idle_timeout_in_minutes   = 10
+///     name                      = "test"
+///     protocol                  = "Tcp"
+///   }
+///   load_balancer_name  = "lb"
+///   location            = "eastus"
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "Standard"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3813,8 +4392,8 @@ import 'load_balancer_sku_response.dart';
 /// import com.pulumi.azurenative.network.inputs.InboundNatPoolArgs;
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.network.inputs.LoadBalancerSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4210,6 +4789,84 @@ import 'load_balancer_sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+///   backend_address_pools {
+///     name = "be-lb"
+///   }
+///   frontend_ip_configurations {
+///     name = "fe-lb"
+///     public_ip_address = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pip"
+///     }
+///   }
+///   inbound_nat_rules {
+///     backend_port       = 3389
+///     enable_floating_ip = true
+///     frontend_ip_configuration = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"
+///     }
+///     frontend_port           = 3389
+///     idle_timeout_in_minutes = 15
+///     name                    = "in-nat-rule"
+///     protocol                = "Tcp"
+///   }
+///   load_balancer_name = "lb"
+///   load_balancing_rules {
+///     backend_address_pool = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/be-lb"
+///     }
+///     backend_port          = 80
+///     disable_outbound_snat = true
+///     enable_floating_ip    = true
+///     frontend_ip_configuration = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"
+///     }
+///     frontend_port           = 80
+///     idle_timeout_in_minutes = 15
+///     load_distribution       = "Default"
+///     name                    = "rulelb"
+///     probe = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/probes/probe-lb"
+///     }
+///     protocol = "Tcp"
+///   }
+///   location = "eastus"
+///   outbound_rules {
+///     backend_address_pool = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/be-lb"
+///     }
+///     frontend_ip_configurations {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"
+///     }
+///     name     = "rule1"
+///     protocol = "All"
+///   }
+///   probes {
+///     interval_in_seconds = 15
+///     name                = "probe-lb"
+///     number_of_probes    = 2
+///     port                = 80
+///     probe_threshold     = 1
+///     protocol            = "Http"
+///     request_path        = "healthcheck.aspx"
+///   }
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "Standard"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -4227,8 +4884,8 @@ import 'load_balancer_sku_response.dart';
 /// import com.pulumi.azurenative.network.inputs.OutboundRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.ProbeArgs;
 /// import com.pulumi.azurenative.network.inputs.LoadBalancerSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

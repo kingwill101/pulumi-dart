@@ -1,12 +1,10 @@
-/// Model size. Must be 'small', 'medium', 'large', or 'xlarge'.
-/// Note: training run may get into CUDA OOM if the model size is too big.
-/// Note: This settings is only supported for the 'yolov5' algorithm.
+/// Image model size.
 enum ModelSize {
-  valueNone("None"),
-  valueSmall("Small"),
-  valueMedium("Medium"),
-  valueLarge("Large"),
-  valueExtraLarge("ExtraLarge");
+  none("None"),
+  small("Small"),
+  medium("Medium"),
+  large("Large"),
+  extraLarge("ExtraLarge");
 
   const ModelSize(this.wireValue);
   final String wireValue;
@@ -20,4 +18,3 @@ enum ModelSize {
     throw ArgumentError('Unknown ModelSize value: $value');
   }
 }
-

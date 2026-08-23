@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'routing_configuration_response.dart';
+import 'routing_configuration_network_virtual_appliance_connection_response.dart';
 
 /// Properties of the NetworkVirtualApplianceConnection subresource.
 class NetworkVirtualApplianceConnectionPropertiesResponse {
@@ -16,7 +16,7 @@ class NetworkVirtualApplianceConnectionPropertiesResponse {
   /// The provisioning state of the NetworkVirtualApplianceConnection resource.
   final pulumi.Input<String> provisioningState;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final pulumi.Input<RoutingConfigurationResponse>? routingConfiguration;
+  final pulumi.Input<RoutingConfigurationNetworkVirtualApplianceConnectionResponse>? routingConfiguration;
   /// Unique identifier for the connection.
   final pulumi.Input<double>? tunnelIdentifier;
 
@@ -45,7 +45,7 @@ class NetworkVirtualApplianceConnectionPropertiesResponse {
       'enableInternetSecurity': ?enableInternetSecurity,
       'name': ?name,
       'provisioningState': provisioningState,
-      'routingConfiguration': ?pulumi.Input.mapOptionalInputValue<RoutingConfigurationResponse, Map<String, dynamic>>(routingConfiguration, (value) => value.toMap()),
+      'routingConfiguration': ?pulumi.Input.mapOptionalInputValue<RoutingConfigurationNetworkVirtualApplianceConnectionResponse, Map<String, dynamic>>(routingConfiguration, (value) => value.toMap()),
       'tunnelIdentifier': ?tunnelIdentifier,
     };
   }
@@ -57,9 +57,8 @@ class NetworkVirtualApplianceConnectionPropertiesResponse {
       enableInternetSecurity: (() { final guardedValue = map['enableInternetSecurity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
-      routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutingConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutingConfigurationNetworkVirtualApplianceConnectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tunnelIdentifier: (() { final guardedValue = map['tunnelIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
-

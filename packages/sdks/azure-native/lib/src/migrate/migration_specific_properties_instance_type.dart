@@ -14,4 +14,3 @@ enum MigrationSpecificPropertiesInstanceType {
     throw ArgumentError('Unknown MigrationSpecificPropertiesInstanceType value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum JobDeliveryType {
     throw ArgumentError('Unknown JobDeliveryType value: $value');
   }
 }
-

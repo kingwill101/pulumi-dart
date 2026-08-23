@@ -104,6 +104,45 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_iamaccesskeymetadatainfo" "iamAccessKeyMetadataInfo" {
+///   location = "dqubptgcoomyzlodtswea"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "gcbewovmmukvp"
+///     aws_account_id = "i"
+///     aws_properties = {
+///       access_key_id = "ybrtvadgwepioqesepjpoxemlvu"
+///       create_date   = "2024-10-08T03:50:53.022Z"
+///       status = {
+///         value = "Active"
+///       }
+///       user_name = "obogutgiddo"
+///     }
+///     aws_region        = "e"
+///     aws_source_schema = "bcflc"
+///     aws_tags = {
+///       "key5899" = "nnfwyaxbohwiqqvlegvbeuwx"
+///     }
+///     public_cloud_connectors_resource_id = "iwcumigpcnebbhmwmaerblylcgdtt"
+///     public_cloud_resource_name          = "ctvpxuzxqwzhmtivtftc"
+///   }
+///   resource_group_name = "rgiamAccessKeyMetadata"
+///   tags = {
+///     "key4454" = "phceybsnzjaxtgagqgovz"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +154,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.IamAccessKeyMetadataPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsIamAccessKeyMetadataPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.StatusTypeEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

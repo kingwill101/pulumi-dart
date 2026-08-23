@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'suppression_alerts_scope_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getAlertsSuppressionRule.
 class GetAlertsSuppressionRuleResult {
@@ -12,11 +13,11 @@ class GetAlertsSuppressionRuleResult {
   final String? comment;
   /// Expiration date of the rule, if value is not provided or provided as null there will no expiration at all
   final String? expirationDateUtc;
-  /// Resource Id
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// The last time this rule was modified
   final String lastModifiedUtc;
-  /// Resource name
+  /// The name of the resource
   final String name;
   /// The reason for dismissing the alert
   final String reason;
@@ -24,7 +25,9 @@ class GetAlertsSuppressionRuleResult {
   final String state;
   /// The suppression conditions
   final SuppressionAlertsScopeResponse? suppressionAlertsScope;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetAlertsSuppressionRuleResult].
@@ -32,13 +35,14 @@ class GetAlertsSuppressionRuleResult {
   /// [azureApiVersion] The Azure API version of the resource.
   /// [comment] Any comment regarding the rule
   /// [expirationDateUtc] Expiration date of the rule, if value is not provided or provided as null there will no expiration at all
-  /// [id] Resource Id
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [lastModifiedUtc] The last time this rule was modified
-  /// [name] Resource name
+  /// [name] The name of the resource
   /// [reason] The reason for dismissing the alert
   /// [state] Possible states of the rule
   /// [suppressionAlertsScope] The suppression conditions
-  /// [type] Resource type
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetAlertsSuppressionRuleResult({
     required this.alertType,
     required this.azureApiVersion,
@@ -50,6 +54,7 @@ class GetAlertsSuppressionRuleResult {
     required this.reason,
     required this.state,
     this.suppressionAlertsScope,
+    required this.systemData,
     required this.type,
   });
 
@@ -65,6 +70,7 @@ class GetAlertsSuppressionRuleResult {
       'reason': reason,
       'state': state,
       'suppressionAlertsScope': ?suppressionAlertsScope?.toMap(),
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -81,8 +87,8 @@ class GetAlertsSuppressionRuleResult {
       reason: map['reason'] as String,
       state: map['state'] as String,
       suppressionAlertsScope: (() { final guardedValue = map['suppressionAlertsScope']; if (guardedValue == null) return null; return SuppressionAlertsScopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

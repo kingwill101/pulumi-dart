@@ -37,7 +37,7 @@ class GetDeploymentStackAtResourceGroupResult {
   /// The duration of the last successful Deployment stack update.
   final String duration;
   /// The error detail.
-  final ErrorDetailResponse? error;
+  final ErrorDetailResponse error;
   /// An array of resources that failed to reach goal state during the most recent update. Each resourceId is accompanied by an error message.
   final List<ResourceReferenceExtendedResponse> failedResources;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -100,7 +100,7 @@ class GetDeploymentStackAtResourceGroupResult {
     this.description,
     required this.detachedResources,
     required this.duration,
-    this.error,
+    required this.error,
     required this.failedResources,
     required this.id,
     this.location,
@@ -128,7 +128,7 @@ class GetDeploymentStackAtResourceGroupResult {
       'description': ?description,
       'detachedResources': pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(detachedResources, (value) => value.toMap()),
       'duration': duration,
-      'error': ?error?.toMap(),
+      'error': error.toMap(),
       'failedResources': pulumi.Input.encodeList<ResourceReferenceExtendedResponse, Map<String, dynamic>>(failedResources, (value) => value.toMap()),
       'id': id,
       'location': ?location,
@@ -157,7 +157,7 @@ class GetDeploymentStackAtResourceGroupResult {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       detachedResources: pulumi.Input.decodeList<ResourceReferenceResponse>(map['detachedResources']!, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
       duration: map['duration'] as String,
-      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      error: ErrorDetailResponse.fromMap((map['error']! as Map).cast<String, dynamic>()),
       failedResources: pulumi.Input.decodeList<ResourceReferenceExtendedResponse>(map['failedResources']!, (value) => ResourceReferenceExtendedResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -173,4 +173,3 @@ class GetDeploymentStackAtResourceGroupResult {
     );
   }
 }
-

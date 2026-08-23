@@ -71,6 +71,31 @@ import 'volume_provider_parameters_azure_file_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabricmesh_volume" "volume" {
+///   azure_file_parameters = {
+///     account_key  = "provide-account-key-here"
+///     account_name = "sbzdemoaccount"
+///     share_name   = "sharel"
+///   }
+///   description          = "Service Fabric Mesh sample volume."
+///   location             = "EastUS"
+///   provider             = "SFAzureFile"
+///   resource_group_name  = "sbz_demo"
+///   tags                 = {}
+///   volume_resource_name = "sampleVolume"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +105,8 @@ import 'volume_provider_parameters_azure_file_response.dart';
 /// import com.pulumi.azurenative.servicefabricmesh.Volume;
 /// import com.pulumi.azurenative.servicefabricmesh.VolumeArgs;
 /// import com.pulumi.azurenative.servicefabricmesh.inputs.VolumeProviderParametersAzureFileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

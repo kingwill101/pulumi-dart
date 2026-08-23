@@ -15,4 +15,3 @@ enum HealthErrorCustomerResolvability {
     throw ArgumentError('Unknown HealthErrorCustomerResolvability value: $value');
   }
 }
-

@@ -2,7 +2,6 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// Details on the total up-time for the VM.
 class VmUptimeResponse {
   /// Number of days in a month for VM uptime.
   final pulumi.Input<double>? daysPerMonth;
@@ -31,4 +30,3 @@ class VmUptimeResponse {
     );
   }
 }
-

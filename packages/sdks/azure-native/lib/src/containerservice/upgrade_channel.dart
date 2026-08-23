@@ -18,4 +18,3 @@ enum UpgradeChannel {
     throw ArgumentError('Unknown UpgradeChannel value: $value');
   }
 }
-

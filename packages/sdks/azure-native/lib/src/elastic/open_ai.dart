@@ -56,6 +56,23 @@ import 'open_aiintegration_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_elastic_openai" "openAI" {
+///   integration_name    = "default"
+///   monitor_name        = "myMonitor"
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +81,8 @@ import 'open_aiintegration_properties_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.elastic.OpenAI;
 /// import com.pulumi.azurenative.elastic.OpenAIArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

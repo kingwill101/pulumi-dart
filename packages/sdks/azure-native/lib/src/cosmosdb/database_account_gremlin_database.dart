@@ -64,6 +64,27 @@ import 'database_account_gremlin_database_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cosmosdb_databaseaccountgremlindatabase" "databaseAccountGremlinDatabase" {
+///   account_name  = "ddb1"
+///   database_name = "databaseName"
+///   options       = {}
+///   resource = {
+///     id = "databaseName"
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +94,8 @@ import 'database_account_gremlin_database_args.dart';
 /// import com.pulumi.azurenative.cosmosdb.DatabaseAccountGremlinDatabase;
 /// import com.pulumi.azurenative.cosmosdb.DatabaseAccountGremlinDatabaseArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.GremlinDatabaseResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

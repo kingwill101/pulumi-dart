@@ -46,4 +46,3 @@ class AwsElasticLoadBalancingv2TargetHealthDescriptionPropertiesResponse {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum ServerFailureResponseMessageType {
     throw ArgumentError('Unknown ServerFailureResponseMessageType value: $value');
   }
 }
-

@@ -20,4 +20,3 @@ enum TargetHealthStateEnum {
     throw ArgumentError('Unknown TargetHealthStateEnum value: $value');
   }
 }
-

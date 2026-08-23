@@ -1,7 +1,7 @@
-/// If Enabled, allow egress public network access. If Disabled, this will create secure egress. Default: Enabled.
+/// Enum to determine whether PublicNetworkAccess is Enabled or Disabled for egress of a deployment.
 enum EgressPublicNetworkAccessType {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const EgressPublicNetworkAccessType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum EgressPublicNetworkAccessType {
     throw ArgumentError('Unknown EgressPublicNetworkAccessType value: $value');
   }
 }
-

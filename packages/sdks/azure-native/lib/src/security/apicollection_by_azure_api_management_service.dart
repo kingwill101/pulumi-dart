@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'apicollection_by_azure_api_management_service_args.dart';
+import 'system_data_response.dart';
 
 /// An API collection as represented by Microsoft Defender for APIs.
 ///
@@ -53,6 +54,23 @@ import 'apicollection_by_azure_api_management_service_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_apicollectionbyazureapimanagementservice" "apiCollectionByAzureApiManagementService" {
+///   api_id              = "echo-api"
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -61,8 +79,8 @@ import 'apicollection_by_azure_api_management_service_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.APICollectionByAzureApiManagementService;
 /// import com.pulumi.azurenative.security.APICollectionByAzureApiManagementServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -138,7 +156,7 @@ class APICollectionByAzureApiManagementService extends pulumi.CustomResource {
   late final pulumi.Output<String> discoveredVia;
   /// The display name of the API collection.
   late final pulumi.Output<String> displayName;
-  /// Resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The number of API endpoints discovered in this API collection.
   late final pulumi.Output<double> numberOfApiEndpoints;
@@ -154,7 +172,9 @@ class APICollectionByAzureApiManagementService extends pulumi.CustomResource {
   late final pulumi.Output<String> provisioningState;
   /// The highest priority sensitivity label from Microsoft Purview in this API collection.
   late final pulumi.Output<String> sensitivityLabel;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [APICollectionByAzureApiManagementService].
@@ -183,6 +203,7 @@ class APICollectionByAzureApiManagementService extends pulumi.CustomResource {
     numberOfUnauthenticatedApiEndpoints = registerOutput<double>('numberOfUnauthenticatedApiEndpoints');
     provisioningState = registerOutput<String>('provisioningState');
     sensitivityLabel = registerOutput<String>('sensitivityLabel');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

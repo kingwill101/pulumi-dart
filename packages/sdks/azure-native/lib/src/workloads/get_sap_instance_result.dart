@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'sapmigrate_error_response.dart';
+import 'sapmigrate_error_sap_instance_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getSapInstance.
@@ -12,7 +12,7 @@ class GetSapInstanceResult {
   /// The Environment; PRD, QA, DEV, etc to which SAP system belongs to. Select from the list of available dropdown values.
   final String environment;
   /// Defines the errors related to SAP Instance resource.
-  final SAPMigrateErrorResponse errors;
+  final SAPMigrateErrorSapInstanceResponse errors;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
   /// This is the SID of the production system in a landscape.  An SAP system could itself be a production SID or a part of a landscape with a different Production SID. This field can be used to relate non-prod SIDs, other components, SID (WEBDISP) to the prod SID. Enter the value of Production SID.
@@ -85,7 +85,7 @@ class GetSapInstanceResult {
       application: map['application'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
       environment: map['environment'] as String,
-      errors: SAPMigrateErrorResponse.fromMap((map['errors']! as Map).cast<String, dynamic>()),
+      errors: SAPMigrateErrorSapInstanceResponse.fromMap((map['errors']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       landscapeSid: map['landscapeSid'] as String,
       location: map['location'] as String,
@@ -98,4 +98,3 @@ class GetSapInstanceResult {
     );
   }
 }
-

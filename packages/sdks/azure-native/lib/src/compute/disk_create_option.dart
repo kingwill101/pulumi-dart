@@ -24,4 +24,3 @@ enum DiskCreateOption {
     throw ArgumentError('Unknown DiskCreateOption value: $value');
   }
 }
-

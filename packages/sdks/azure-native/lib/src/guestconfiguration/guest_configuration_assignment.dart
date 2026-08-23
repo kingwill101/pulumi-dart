@@ -99,6 +99,40 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_guestconfiguration_guestconfigurationassignment" "guestConfigurationAssignment" {
+///   guest_configuration_assignment_name = "NotInstalledApplicationForWindows"
+///   location                            = "westcentralus"
+///   name                                = "NotInstalledApplicationForWindows"
+///   properties = {
+///     context = "Azure policy"
+///     guest_configuration = {
+///       assignment_type = "ApplyAndAutoCorrect"
+///       configuration_parameter = [{
+///         "name"  = "[InstalledApplication]NotInstalledApplicationResource1;Name"
+///         "value" = "NotePad,sql"
+///       }]
+///       content_hash             = "123contenthash"
+///       content_managed_identity = "test_identity"
+///       content_uri              = "https://thisisfake/pacakge"
+///       name                     = "NotInstalledApplicationForWindows"
+///       version                  = "1.0.0.3"
+///     }
+///   }
+///   resource_group_name = "myResourceGroupName"
+///   vm_name             = "myVMName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +143,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.guestconfiguration.GuestConfigurationAssignmentArgs;
 /// import com.pulumi.azurenative.guestconfiguration.inputs.GuestConfigurationAssignmentPropertiesArgs;
 /// import com.pulumi.azurenative.guestconfiguration.inputs.GuestConfigurationNavigationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

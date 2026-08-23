@@ -15,4 +15,3 @@ enum EventGroupingAggregationKind {
     throw ArgumentError('Unknown EventGroupingAggregationKind value: $value');
   }
 }
-

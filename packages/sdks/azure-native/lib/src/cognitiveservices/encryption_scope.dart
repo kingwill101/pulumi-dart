@@ -5,9 +5,9 @@ import 'system_data_response.dart';
 
 /// Cognitive Services EncryptionScope
 ///
-/// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
+/// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 ///
-/// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -79,6 +79,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cognitiveservices_encryptionscope" "encryptionScope" {
+///   account_name          = "accountName"
+///   encryption_scope_name = "encryptionScopeName"
+///   properties = {
+///     key_source = "Microsoft.KeyVault"
+///     key_vault_properties = {
+///       identity_client_id = "00000000-0000-0000-0000-000000000000"
+///       key_name           = "DevKeyWestUS2"
+///       key_vault_uri      = "https://devkvwestus2.vault.azure.net/"
+///       key_version        = "9f85549d7bf14ff4bf178c10d3bdca95"
+///     }
+///     state = "Enabled"
+///   }
+///   resource_group_name = "resourceGroupName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +116,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cognitiveservices.EncryptionScopeArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.EncryptionScopePropertiesArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.KeyVaultPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

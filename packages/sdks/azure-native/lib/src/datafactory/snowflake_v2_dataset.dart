@@ -77,4 +77,3 @@ class SnowflakeV2Dataset {
     );
   }
 }
-

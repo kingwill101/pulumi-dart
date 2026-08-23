@@ -81,6 +81,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_configserver" "configServer" {
+///   properties = {
+///     config_server = {
+///       git_property = {
+///         label        = "master"
+///         search_paths = ["/"]
+///         uri          = "https://github.com/fake-user/fake-repository.git"
+///       }
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +117,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.inputs.ConfigServerPropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ConfigServerSettingsArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ConfigServerGitPropertyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -253,6 +278,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_configserver" "configServer" {
+///   properties = {
+///     config_server = {
+///       git_property = {
+///         label        = "master"
+///         search_paths = ["/"]
+///         uri          = "https://github.com/fake-user/fake-repository.git"
+///       }
+///     }
+///     enabled_state = "Enabled"
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -264,8 +315,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.inputs.ConfigServerPropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ConfigServerSettingsArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ConfigServerGitPropertyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

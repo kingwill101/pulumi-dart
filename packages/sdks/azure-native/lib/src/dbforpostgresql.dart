@@ -189,6 +189,7 @@ export 'dbforpostgresql/system_data_response.dart';
 export 'dbforpostgresql/trigger_cutover.dart';
 export 'dbforpostgresql/user_assigned_identity.dart';
 export 'dbforpostgresql/user_assigned_identity_response.dart';
+export 'dbforpostgresql/user_assigned_identity_server_group_cluster_response.dart';
 export 'dbforpostgresql/user_identity.dart';
 export 'dbforpostgresql/user_identity_response.dart';
 export 'dbforpostgresql/validation_details_response.dart';

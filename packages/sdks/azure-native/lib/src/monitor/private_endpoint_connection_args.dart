@@ -8,7 +8,7 @@ import 'private_link_service_connection_state.dart';
 /// {@endtemplate}
 /// {@macro pulumi_monitor_private_endpoint_connection_args_doc}
 class PrivateEndpointConnectionArgs {
-  /// The name of the private endpoint connection.
+  /// The name of the private endpoint connection associated with the Azure resource.
   final pulumi.Input<String>? privateEndpointConnectionName;
   /// A collection of information about the state of the connection between service consumer and provider.
   final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
@@ -18,7 +18,7 @@ class PrivateEndpointConnectionArgs {
   final pulumi.Input<String> scopeName;
 
   /// Creates a new [PrivateEndpointConnectionArgs].
-  /// [privateEndpointConnectionName] The name of the private endpoint connection.
+  /// [privateEndpointConnectionName] The name of the private endpoint connection associated with the Azure resource.
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scopeName] The name of the Azure Monitor PrivateLinkScope resource.
@@ -47,4 +47,3 @@ class PrivateEndpointConnectionArgs {
     );
   }
 }
-

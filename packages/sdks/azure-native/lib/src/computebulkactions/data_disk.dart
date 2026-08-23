@@ -1,0 +1,102 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'api_entity_reference.dart';
+import 'managed_disk_parameters.dart';
+import 'virtual_hard_disk.dart';
+
+/// Describes a data disk.
+class DataDisk {
+  /// Specifies the caching requirements. Possible values are: None, ReadOnly, ReadWrite. The defaulting behavior is: None for Standard storage. ReadOnly for Premium storage.
+  final pulumi.Input<String>? caching;
+  /// Specifies how the virtual machine disk should be created. Possible values are Attach, FromImage, Empty, Copy, Restore.
+  final pulumi.Input<String> createOption;
+  /// Specifies whether data disk should be deleted or detached upon VM deletion. Possible values are: Delete, Detach. The default value is set to Detach.
+  final pulumi.Input<String>? deleteOption;
+  /// Specifies the detach behavior to be used while detaching a disk or which is already in the process of detachment from the virtual machine. Supported values: ForceDetach. This feature is still in preview. To force-detach a data disk update toBeDetached to 'true' along with setting detachOption: 'ForceDetach'.
+  final pulumi.Input<String>? detachOption;
+  /// Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB' is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+  final pulumi.Input<int>? diskSizeGB;
+  /// The source user image virtual hard disk. The virtual hard disk will be copied before being attached to the virtual machine. If SourceImage is provided, the destination virtual hard drive must not exist.
+  final pulumi.Input<VirtualHardDisk>? image;
+  /// Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
+  final pulumi.Input<int> lun;
+  /// The managed disk parameters.
+  final pulumi.Input<ManagedDiskParameters>? managedDisk;
+  /// The disk name.
+  final pulumi.Input<String>? name;
+  /// The source resource identifier. It can be a snapshot, or disk restore point from which to create a disk.
+  final pulumi.Input<ApiEntityReference>? sourceResource;
+  /// Specifies whether the data disk is in process of detachment from the VirtualMachine/VirtualMachineScaleset.
+  final pulumi.Input<bool>? toBeDetached;
+  /// The virtual hard disk.
+  final pulumi.Input<VirtualHardDisk>? vhd;
+  /// Specifies whether writeAccelerator should be enabled or disabled on the disk.
+  final pulumi.Input<bool>? writeAcceleratorEnabled;
+
+  /// Creates a new [DataDisk].
+  /// [caching] Specifies the caching requirements. Possible values are: None, ReadOnly, ReadWrite. The defaulting behavior is: None for Standard storage. ReadOnly for Premium storage.
+  /// [createOption] Specifies how the virtual machine disk should be created. Possible values are Attach, FromImage, Empty, Copy, Restore.
+  /// [deleteOption] Specifies whether data disk should be deleted or detached upon VM deletion. Possible values are: Delete, Detach. The default value is set to Detach.
+  /// [detachOption] Specifies the detach behavior to be used while detaching a disk or which is already in the process of detachment from the virtual machine. Supported values: ForceDetach. This feature is still in preview. To force-detach a data disk update toBeDetached to 'true' along with setting detachOption: 'ForceDetach'.
+  /// [diskSizeGB] Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB' is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+  /// [image] The source user image virtual hard disk. The virtual hard disk will be copied before being attached to the virtual machine. If SourceImage is provided, the destination virtual hard drive must not exist.
+  /// [lun] Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
+  /// [managedDisk] The managed disk parameters.
+  /// [name] The disk name.
+  /// [sourceResource] The source resource identifier. It can be a snapshot, or disk restore point from which to create a disk.
+  /// [toBeDetached] Specifies whether the data disk is in process of detachment from the VirtualMachine/VirtualMachineScaleset.
+  /// [vhd] The virtual hard disk.
+  /// [writeAcceleratorEnabled] Specifies whether writeAccelerator should be enabled or disabled on the disk.
+  const DataDisk({
+    this.caching,
+    required this.createOption,
+    this.deleteOption,
+    this.detachOption,
+    this.diskSizeGB,
+    this.image,
+    required this.lun,
+    this.managedDisk,
+    this.name,
+    this.sourceResource,
+    this.toBeDetached,
+    this.vhd,
+    this.writeAcceleratorEnabled,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'caching': ?caching,
+      'createOption': createOption,
+      'deleteOption': ?deleteOption,
+      'detachOption': ?detachOption,
+      'diskSizeGB': ?diskSizeGB,
+      'image': ?pulumi.Input.mapOptionalInputValue<VirtualHardDisk, Map<String, dynamic>>(image, (value) => value.toMap()),
+      'lun': lun,
+      'managedDisk': ?pulumi.Input.mapOptionalInputValue<ManagedDiskParameters, Map<String, dynamic>>(managedDisk, (value) => value.toMap()),
+      'name': ?name,
+      'sourceResource': ?pulumi.Input.mapOptionalInputValue<ApiEntityReference, Map<String, dynamic>>(sourceResource, (value) => value.toMap()),
+      'toBeDetached': ?toBeDetached,
+      'vhd': ?pulumi.Input.mapOptionalInputValue<VirtualHardDisk, Map<String, dynamic>>(vhd, (value) => value.toMap()),
+      'writeAcceleratorEnabled': ?writeAcceleratorEnabled,
+    };
+  }
+
+  factory DataDisk.fromMap(Map<String, dynamic> map) {
+    return DataDisk(
+      caching: (() { final guardedValue = map['caching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createOption: pulumi.Input.fromValue(map['createOption'] as String),
+      deleteOption: (() { final guardedValue = map['deleteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      detachOption: (() { final guardedValue = map['detachOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      diskSizeGB: (() { final guardedValue = map['diskSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualHardDisk.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      lun: pulumi.Input.fromValue(map['lun'] as int),
+      managedDisk: (() { final guardedValue = map['managedDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedDiskParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceResource: (() { final guardedValue = map['sourceResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApiEntityReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      toBeDetached: (() { final guardedValue = map['toBeDetached']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      vhd: (() { final guardedValue = map['vhd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualHardDisk.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      writeAcceleratorEnabled: (() { final guardedValue = map['writeAcceleratorEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+    );
+  }
+}

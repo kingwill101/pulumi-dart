@@ -16,4 +16,3 @@ enum PortMirroringDirectionEnum {
     throw ArgumentError('Unknown PortMirroringDirectionEnum value: $value');
   }
 }
-

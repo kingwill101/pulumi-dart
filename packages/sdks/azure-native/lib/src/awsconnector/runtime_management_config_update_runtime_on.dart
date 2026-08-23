@@ -16,4 +16,3 @@ enum RuntimeManagementConfigUpdateRuntimeOn {
     throw ArgumentError('Unknown RuntimeManagementConfigUpdateRuntimeOn value: $value');
   }
 }
-

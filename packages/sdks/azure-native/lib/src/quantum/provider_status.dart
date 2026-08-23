@@ -19,4 +19,3 @@ enum ProviderStatus {
     throw ArgumentError('Unknown ProviderStatus value: $value');
   }
 }
-

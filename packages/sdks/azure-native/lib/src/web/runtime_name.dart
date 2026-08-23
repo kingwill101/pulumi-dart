@@ -1,11 +1,11 @@
 /// Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
 enum RuntimeName {
-  valueDotnetIsolated("dotnet-isolated"),
-  valueNode("node"),
-  valueJava("java"),
-  valuePowershell("powershell"),
-  valuePython("python"),
-  valueCustom("custom");
+  dotnetIsolated("dotnet-isolated"),
+  node("node"),
+  java("java"),
+  powershell("powershell"),
+  python("python"),
+  custom("custom");
 
   const RuntimeName(this.wireValue);
   final String wireValue;
@@ -19,4 +19,3 @@ enum RuntimeName {
     throw ArgumentError('Unknown RuntimeName value: $value');
   }
 }
-

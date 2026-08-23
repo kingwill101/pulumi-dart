@@ -15,4 +15,3 @@ enum EdgeMachineKind {
     throw ArgumentError('Unknown EdgeMachineKind value: $value');
   }
 }
-

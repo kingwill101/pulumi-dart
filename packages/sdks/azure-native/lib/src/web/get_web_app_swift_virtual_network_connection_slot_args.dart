@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebAppSwiftVirtualNetworkConnectionSlotArgs {
   /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the deployment slot. If a slot is not specified, the API will get a gateway for the production slot's Virtual Network.
   final pulumi.Input<String> slot;
 
   /// Creates a new [GetWebAppSwiftVirtualNetworkConnectionSlotArgs].
   /// [name] Name of the app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will get a gateway for the production slot's Virtual Network.
   const GetWebAppSwiftVirtualNetworkConnectionSlotArgs({
     required this.name,
@@ -40,4 +40,3 @@ class GetWebAppSwiftVirtualNetworkConnectionSlotArgs {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum JobTargetGroupMembershipType {
     throw ArgumentError('Unknown JobTargetGroupMembershipType value: $value');
   }
 }
-

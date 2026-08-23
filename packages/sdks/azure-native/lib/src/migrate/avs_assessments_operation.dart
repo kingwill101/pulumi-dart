@@ -135,6 +135,48 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_avsassessmentsoperation" "avsAssessmentsOperation" {
+///   assessment_name                          = "asm2"
+///   avs_assessment_scenario                  = "NewAvsSddc"
+///   azure_location                           = "EastUs"
+///   azure_offer_code                         = "MSAZR0003P"
+///   cpu_headroom                             = 12
+///   currency                                 = "USD"
+///   dedupe_compression                       = 1.5
+///   discount_percentage                      = 0
+///   external_storage_types                   = ["AnfStandard", "AnfPremium", "AnfUltra"]
+///   failures_to_tolerate_and_raid_level      = "Unknown"
+///   failures_to_tolerate_and_raid_level_list = ["Ftt1Raid1", "Ftt1Raid5", "Ftt3Raid1"]
+///   group_name                               = "kuchatur-test"
+///   is_stretch_cluster_enabled               = true
+///   is_vcf_byol_enabled                      = true
+///   mem_overcommit                           = 1
+///   node_type                                = "Unknown"
+///   node_types                               = ["AV36", "AV52", "AV36P", "AV64"]
+///   percentile                               = "Percentile95"
+///   perf_data_end_time                       = "2023-09-26T13:35:56.5671462Z"
+///   perf_data_start_time                     = "2023-09-25T13:35:56.5671462Z"
+///   project_name                             = "app18700project"
+///   provisioning_state                       = "Succeeded"
+///   reserved_instance                        = "RI3Year"
+///   resource_group_name                      = "ayagrawrg"
+///   scaling_factor                           = 1
+///   sizing_criterion                         = "AsOnPremises"
+///   time_range                               = "Day"
+///   vcpu_oversubscription                    = 4
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -143,8 +185,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.migrate.AvsAssessmentsOperation;
 /// import com.pulumi.azurenative.migrate.AvsAssessmentsOperationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -261,10 +303,10 @@ import 'system_data_response.dart';
 ///     avs_assessment_scenario=azure_native.migrate.AvsAssessmentScenario.NEW_AVS_SDDC,
 ///     azure_location=azure_native.migrate.AzureLocation.EAST_US,
 ///     azure_offer_code=azure_native.migrate.AzureOfferCode.MSAZR0003_P,
-///     cpu_headroom=12,
+///     cpu_headroom=float(12),
 ///     currency=azure_native.migrate.AzureCurrency.USD,
 ///     dedupe_compression=1.5,
-///     discount_percentage=0,
+///     discount_percentage=float(0),
 ///     external_storage_types=[
 ///         azure_native.migrate.ExternalStorageType.ANF_STANDARD,
 ///         azure_native.migrate.ExternalStorageType.ANF_PREMIUM,
@@ -279,7 +321,7 @@ import 'system_data_response.dart';
 ///     group_name="kuchatur-test",
 ///     is_stretch_cluster_enabled=True,
 ///     is_vcf_byol_enabled=True,
-///     mem_overcommit=1,
+///     mem_overcommit=float(1),
 ///     node_type=azure_native.migrate.AzureAvsNodeType.UNKNOWN,
 ///     node_types=[
 ///         azure_native.migrate.AzureAvsNodeType.AV36,
@@ -294,10 +336,10 @@ import 'system_data_response.dart';
 ///     provisioning_state=azure_native.migrate.ProvisioningState.SUCCEEDED,
 ///     reserved_instance=azure_native.migrate.AzureReservedInstance.RI3_YEAR,
 ///     resource_group_name="ayagrawrg",
-///     scaling_factor=1,
+///     scaling_factor=float(1),
 ///     sizing_criterion=azure_native.migrate.AssessmentSizingCriterion.AS_ON_PREMISES,
 ///     time_range=azure_native.migrate.TimeRange.DAY,
-///     vcpu_oversubscription=4)
+///     vcpu_oversubscription=float(4))
 ///
 /// ```
 ///

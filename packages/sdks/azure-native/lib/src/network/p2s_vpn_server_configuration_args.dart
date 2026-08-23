@@ -59,4 +59,3 @@ class P2sVpnServerConfigurationArgs {
     );
   }
 }
-

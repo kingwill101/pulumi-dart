@@ -82,6 +82,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dnsresolver_dnsforwardingruleset" "dnsForwardingRuleset" {
+///   dns_forwarding_ruleset_name = "samplednsForwardingRuleset"
+///   dns_resolver_outbound_endpoints {
+///     id = "/subscriptions/abdd4249-9f34-4cc6-8e42-c2e32110603e/resourceGroups/sampleResourceGroup/providers/Microsoft.Network/dnsResolvers/sampleDnsResolver/outboundEndpoints/sampleOutboundEndpoint0"
+///   }
+///   dns_resolver_outbound_endpoints {
+///     id = "/subscriptions/abdd4249-9f34-4cc6-8e42-c2e32110603e/resourceGroups/sampleResourceGroup/providers/Microsoft.Network/dnsResolvers/sampleDnsResolver/outboundEndpoints/sampleOutboundEndpoint1"
+///   }
+///   location            = "westus2"
+///   resource_group_name = "sampleResourceGroup"
+///   tags = {
+///     "key1" = "value1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +117,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dnsresolver.DnsForwardingRuleset;
 /// import com.pulumi.azurenative.dnsresolver.DnsForwardingRulesetArgs;
 /// import com.pulumi.azurenative.dnsresolver.inputs.SubResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

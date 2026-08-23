@@ -38,9 +38,9 @@ class VirtualMachineArgs {
   final pulumi.Input<String>? labSubnetName;
   /// The lab virtual network identifier of the virtual machine.
   final pulumi.Input<String>? labVirtualNetworkId;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-  /// The name of the LabVirtualMachine
+  /// The name of the virtual machine.
   final pulumi.Input<String>? name;
   /// The network interface properties.
   final pulumi.Input<NetworkInterfaceProperties>? networkInterface;
@@ -64,7 +64,7 @@ class VirtualMachineArgs {
   final pulumi.Input<String>? sshKey;
   /// Storage type to use for virtual machine (i.e. Standard, Premium).
   final pulumi.Input<String>? storageType;
-  /// The tags of the resource.
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
   /// The user name of the virtual machine.
   final pulumi.Input<String>? userName;
@@ -83,8 +83,8 @@ class VirtualMachineArgs {
   /// [labName] The name of the lab.
   /// [labSubnetName] The lab subnet name of the virtual machine.
   /// [labVirtualNetworkId] The lab virtual network identifier of the virtual machine.
-  /// [location] The location of the resource.
-  /// [name] The name of the LabVirtualMachine
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the virtual machine.
   /// [networkInterface] The network interface properties.
   /// [notes] The notes of the virtual machine.
   /// [ownerObjectId] The object identifier of the owner of the virtual machine.
@@ -96,7 +96,7 @@ class VirtualMachineArgs {
   /// [size] The size of the virtual machine.
   /// [sshKey] The SSH key of the virtual machine administrator.
   /// [storageType] Storage type to use for virtual machine (i.e. Standard, Premium).
-  /// [tags] The tags of the resource.
+  /// [tags] Resource tags.
   /// [userName] The user name of the virtual machine.
   const VirtualMachineArgs({
     this.allowClaim,
@@ -195,4 +195,3 @@ class VirtualMachineArgs {
     );
   }
 }
-

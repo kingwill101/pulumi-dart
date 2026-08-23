@@ -29,4 +29,3 @@ enum EventGridDataFormat {
     throw ArgumentError('Unknown EventGridDataFormat value: $value');
   }
 }
-

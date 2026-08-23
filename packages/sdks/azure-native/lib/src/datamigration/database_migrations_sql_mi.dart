@@ -126,6 +126,54 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datamigration_databasemigrationssqlmi" "databaseMigrationsSqlMi" {
+///   managed_instance_name = "managedInstance1"
+///   properties = {
+///     backup_configuration = {
+///       source_location = {
+///         file_share = {
+///           password = "placeholder"
+///           path     = "C:\\aaa\\bbb\\ccc"
+///           username = "name"
+///         }
+///       }
+///       target_location = {
+///         account_key                 = "abcd"
+///         storage_account_resource_id = "account.database.windows.net"
+///       }
+///     }
+///     kind              = "SqlMi"
+///     migration_service = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.DataMigration/sqlMigrationServices/testagent"
+///     offline_configuration = {
+///       last_backup_name = "last_backup_file_name"
+///       offline          = true
+///     }
+///     scope                = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Sql/managedInstances/instance"
+///     source_database_name = "aaa"
+///     source_sql_connection = {
+///       authentication           = "WindowsAuthentication"
+///       data_source              = "aaa"
+///       encrypt_connection       = true
+///       password                 = "placeholder"
+///       trust_server_certificate = true
+///       user_name                = "bbb"
+///     }
+///   }
+///   resource_group_name = "testrg"
+///   target_db_name      = "db1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +189,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.datamigration.inputs.TargetLocationArgs;
 /// import com.pulumi.azurenative.datamigration.inputs.OfflineConfigurationArgs;
 /// import com.pulumi.azurenative.datamigration.inputs.SqlConnectionInformationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -423,6 +471,50 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datamigration_databasemigrationssqlmi" "databaseMigrationsSqlMi" {
+///   managed_instance_name = "managedInstance1"
+///   properties = {
+///     backup_configuration = {
+///       source_location = {
+///         file_share = {
+///           password = "placeholder"
+///           path     = "C:\\aaa\\bbb\\ccc"
+///           username = "name"
+///         }
+///       }
+///       target_location = {
+///         account_key                 = "abcd"
+///         storage_account_resource_id = "account.database.windows.net"
+///       }
+///     }
+///     kind                 = "SqlMi"
+///     migration_service    = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.DataMigration/sqlMigrationServices/testagent"
+///     scope                = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Sql/managedInstances/instance"
+///     source_database_name = "aaa"
+///     source_sql_connection = {
+///       authentication           = "WindowsAuthentication"
+///       data_source              = "aaa"
+///       encrypt_connection       = true
+///       password                 = "placeholder"
+///       trust_server_certificate = true
+///       user_name                = "bbb"
+///     }
+///   }
+///   resource_group_name = "testrg"
+///   target_db_name      = "db1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -437,8 +529,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.datamigration.inputs.SqlFileShareArgs;
 /// import com.pulumi.azurenative.datamigration.inputs.TargetLocationArgs;
 /// import com.pulumi.azurenative.datamigration.inputs.SqlConnectionInformationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

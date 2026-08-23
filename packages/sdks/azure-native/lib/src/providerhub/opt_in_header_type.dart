@@ -25,4 +25,3 @@ enum OptInHeaderType {
     throw ArgumentError('Unknown OptInHeaderType value: $value');
   }
 }
-

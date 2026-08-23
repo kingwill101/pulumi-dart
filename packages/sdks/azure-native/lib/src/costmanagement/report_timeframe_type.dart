@@ -17,4 +17,3 @@ enum ReportTimeframeType {
     throw ArgumentError('Unknown ReportTimeframeType value: $value');
   }
 }
-

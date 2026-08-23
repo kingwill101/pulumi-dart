@@ -12,11 +12,11 @@ import 'mltable_job_input_response.dart';
 class ImageClassificationMultilabelResponse {
   /// [Required] Limit settings for the AutoML job.
   final pulumi.Input<ImageLimitSettingsResponse> limitSettings;
-  /// Log verbosity for the job.
+  /// Enum for setting log verbosity.
   final pulumi.Input<String>? logVerbosity;
   /// Settings used for training the model.
   final pulumi.Input<ImageModelSettingsClassificationResponse>? modelSettings;
-  /// Primary metric to optimize for this task.
+  /// Primary metrics for classification multilabel tasks.
   final pulumi.Input<String>? primaryMetric;
   /// Search space for sampling different combinations of models and their hyperparameters.
   final pulumi.Input<List<ImageModelDistributionSettingsClassificationResponse>>? searchSpace;
@@ -39,9 +39,9 @@ class ImageClassificationMultilabelResponse {
 
   /// Creates a new [ImageClassificationMultilabelResponse].
   /// [limitSettings] [Required] Limit settings for the AutoML job.
-  /// [logVerbosity] Log verbosity for the job.
+  /// [logVerbosity] Enum for setting log verbosity.
   /// [modelSettings] Settings used for training the model.
-  /// [primaryMetric] Primary metric to optimize for this task.
+  /// [primaryMetric] Primary metrics for classification multilabel tasks.
   /// [searchSpace] Search space for sampling different combinations of models and their hyperparameters.
   /// [sweepSettings] Model sweeping and hyperparameter sweeping related settings.
   /// [targetColumnName] Target column name: This is prediction values column.
@@ -95,4 +95,3 @@ class ImageClassificationMultilabelResponse {
     );
   }
 }
-

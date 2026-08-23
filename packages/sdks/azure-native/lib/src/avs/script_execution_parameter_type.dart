@@ -16,4 +16,3 @@ enum ScriptExecutionParameterType {
     throw ArgumentError('Unknown ScriptExecutionParameterType value: $value');
   }
 }
-

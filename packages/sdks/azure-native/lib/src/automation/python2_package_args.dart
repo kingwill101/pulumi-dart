@@ -12,9 +12,9 @@ class Python2PackageArgs {
   final pulumi.Input<String> automationAccountName;
   /// Gets or sets the module content link.
   final pulumi.Input<ContentLink> contentLink;
-  /// The name of python package.
+  /// The python package name.
   final pulumi.Input<String>? packageName;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the tags attached to the resource.
   final pulumi.Input<Map<String, String>>? tags;
@@ -22,8 +22,8 @@ class Python2PackageArgs {
   /// Creates a new [Python2PackageArgs].
   /// [automationAccountName] The name of the automation account.
   /// [contentLink] Gets or sets the module content link.
-  /// [packageName] The name of python package.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [packageName] The python package name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Gets or sets the tags attached to the resource.
   const Python2PackageArgs({
     required this.automationAccountName,
@@ -53,4 +53,3 @@ class Python2PackageArgs {
     );
   }
 }
-

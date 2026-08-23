@@ -68,6 +68,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicenetworking_associationsinterface" "associationsInterface" {
+///   association_name    = "as1"
+///   association_type    = "subnets"
+///   location            = "NorthCentralUS"
+///   resource_group_name = "rg1"
+///   subnet = {
+///     id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet-tc/subnets/tc-subnet"
+///   }
+///   traffic_controller_name = "tc1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +99,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.servicenetworking.AssociationsInterface;
 /// import com.pulumi.azurenative.servicenetworking.AssociationsInterfaceArgs;
 /// import com.pulumi.azurenative.servicenetworking.inputs.AssociationSubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

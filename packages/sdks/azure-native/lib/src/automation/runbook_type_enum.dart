@@ -1,14 +1,15 @@
 /// Gets or sets the type of the runbook.
 enum RunbookTypeEnum {
-  valueScript("Script"),
-  valueGraph("Graph"),
-  valuePowerShellWorkflow("PowerShellWorkflow"),
-  valuePowerShell("PowerShell"),
-  valueGraphPowerShellWorkflow("GraphPowerShellWorkflow"),
-  valueGraphPowerShell("GraphPowerShell"),
-  valuePython2("Python2"),
-  valuePython3("Python3"),
-  valuePowerShell72("PowerShell72");
+  script("Script"),
+  graph("Graph"),
+  powerShellWorkflow("PowerShellWorkflow"),
+  powerShell("PowerShell"),
+  graphPowerShellWorkflow("GraphPowerShellWorkflow"),
+  graphPowerShell("GraphPowerShell"),
+  python2("Python2"),
+  python3("Python3"),
+  python("Python"),
+  powerShell72("PowerShell72");
 
   const RunbookTypeEnum(this.wireValue);
   final String wireValue;
@@ -22,4 +23,3 @@ enum RunbookTypeEnum {
     throw ArgumentError('Unknown RunbookTypeEnum value: $value');
   }
 }
-

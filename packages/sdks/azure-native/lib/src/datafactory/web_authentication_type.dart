@@ -1,8 +1,8 @@
 /// Type of authentication used to connect to the web table source.
 enum WebAuthenticationType {
-  valueBasic("Basic"),
-  valueAnonymous("Anonymous"),
-  valueClientCertificate("ClientCertificate");
+  basic("Basic"),
+  anonymous("Anonymous"),
+  clientCertificate("ClientCertificate");
 
   const WebAuthenticationType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum WebAuthenticationType {
     throw ArgumentError('Unknown WebAuthenticationType value: $value');
   }
 }
-

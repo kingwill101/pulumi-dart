@@ -51,6 +51,22 @@ import 'support_plan_type_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_addons_supportplantype" "supportPlanType" {
+///   plan_type_name = "Standard"
+///   provider_name  = "Canonical"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -59,8 +75,8 @@ import 'support_plan_type_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.addons.SupportPlanType;
 /// import com.pulumi.azurenative.addons.SupportPlanTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

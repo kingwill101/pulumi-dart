@@ -11,7 +11,7 @@ class ListWorkflowRunActionExpressionTracesArgs {
   final pulumi.Input<String> actionName;
   /// Site name.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The workflow run name.
   final pulumi.Input<String> runName;
@@ -21,7 +21,7 @@ class ListWorkflowRunActionExpressionTracesArgs {
   /// Creates a new [ListWorkflowRunActionExpressionTracesArgs].
   /// [actionName] The workflow action name.
   /// [name] Site name.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [runName] The workflow run name.
   /// [workflowName] The workflow name.
   const ListWorkflowRunActionExpressionTracesArgs({
@@ -52,4 +52,3 @@ class ListWorkflowRunActionExpressionTracesArgs {
     );
   }
 }
-

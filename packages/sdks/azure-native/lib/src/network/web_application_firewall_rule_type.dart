@@ -16,4 +16,3 @@ enum WebApplicationFirewallRuleType {
     throw ArgumentError('Unknown WebApplicationFirewallRuleType value: $value');
   }
 }
-

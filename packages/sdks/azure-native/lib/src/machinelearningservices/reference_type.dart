@@ -1,8 +1,8 @@
 /// [Required] Specifies the type of asset reference.
 enum ReferenceType {
-  valueId("Id"),
-  valueDataPath("DataPath"),
-  valueOutputPath("OutputPath");
+  id("Id"),
+  dataPath("DataPath"),
+  outputPath("OutputPath");
 
   const ReferenceType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum ReferenceType {
     throw ArgumentError('Unknown ReferenceType value: $value');
   }
 }
-

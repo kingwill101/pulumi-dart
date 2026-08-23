@@ -23,4 +23,3 @@ enum HostNameOperator {
     throw ArgumentError('Unknown HostNameOperator value: $value');
   }
 }
-

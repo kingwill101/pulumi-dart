@@ -1,7 +1,7 @@
 /// AuthenticationType to be used for connection.
 enum SybaseAuthenticationType {
-  valueBasic("Basic"),
-  valueWindows("Windows");
+  basic("Basic"),
+  windows("Windows");
 
   const SybaseAuthenticationType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum SybaseAuthenticationType {
     throw ArgumentError('Unknown SybaseAuthenticationType value: $value');
   }
 }
-

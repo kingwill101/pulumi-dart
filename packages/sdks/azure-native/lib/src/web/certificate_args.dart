@@ -13,13 +13,13 @@ class CertificateArgs {
   final pulumi.Input<String>? domainValidationMethod;
   /// Host names the certificate applies to.
   final pulumi.Input<List<String>>? hostNames;
-  /// Key Vault Csm resource Id.
+  /// Azure Key Vault Csm resource Id.
   final pulumi.Input<String>? keyVaultId;
-  /// Key Vault secret name.
+  /// Azure Key Vault secret name.
   final pulumi.Input<String>? keyVaultSecretName;
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   final pulumi.Input<String>? kind;
-  /// Resource Location.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// Name of the certificate.
   final pulumi.Input<String>? name;
@@ -27,9 +27,9 @@ class CertificateArgs {
   final pulumi.Input<String>? password;
   /// Pfx blob.
   final pulumi.Input<String>? pfxBlob;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
+  /// Resource ID of the associated App Service plan.
   final pulumi.Input<String>? serverFarmId;
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
@@ -38,15 +38,15 @@ class CertificateArgs {
   /// [canonicalName] CNAME of the certificate to be issued via free certificate
   /// [domainValidationMethod] Method of domain validation for free cert
   /// [hostNames] Host names the certificate applies to.
-  /// [keyVaultId] Key Vault Csm resource Id.
-  /// [keyVaultSecretName] Key Vault secret name.
+  /// [keyVaultId] Azure Key Vault Csm resource Id.
+  /// [keyVaultSecretName] Azure Key Vault secret name.
   /// [kind] Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
-  /// [location] Resource Location.
+  /// [location] The geo-location where the resource lives
   /// [name] Name of the certificate.
   /// [password] Certificate password.
   /// [pfxBlob] Pfx blob.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  /// [serverFarmId] Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [serverFarmId] Resource ID of the associated App Service plan.
   /// [tags] Resource tags.
   const CertificateArgs({
     this.canonicalName,
@@ -100,4 +100,3 @@ class CertificateArgs {
     );
   }
 }
-

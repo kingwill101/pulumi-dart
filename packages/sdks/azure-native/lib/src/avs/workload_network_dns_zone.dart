@@ -71,6 +71,28 @@ import 'workload_network_dns_zone_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_avs_workloadnetworkdnszone" "workloadNetworkDnsZone" {
+///   display_name        = "dnsZone1"
+///   dns_server_ips      = ["1.1.1.1"]
+///   dns_zone_id         = "dnsZone1"
+///   domain              = []
+///   private_cloud_name  = "cloud1"
+///   resource_group_name = "group1"
+///   revision            = 1
+///   source_ip           = "8.8.8.8"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +101,8 @@ import 'workload_network_dns_zone_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.avs.WorkloadNetworkDnsZone;
 /// import com.pulumi.azurenative.avs.WorkloadNetworkDnsZoneArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -136,7 +158,7 @@ import 'workload_network_dns_zone_args.dart';
 ///     domain=[],
 ///     private_cloud_name="cloud1",
 ///     resource_group_name="group1",
-///     revision=1,
+///     revision=float(1),
 ///     source_ip="8.8.8.8")
 ///
 /// ```

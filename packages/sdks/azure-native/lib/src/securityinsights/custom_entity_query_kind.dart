@@ -14,4 +14,3 @@ enum CustomEntityQueryKind {
     throw ArgumentError('Unknown CustomEntityQueryKind value: $value');
   }
 }
-

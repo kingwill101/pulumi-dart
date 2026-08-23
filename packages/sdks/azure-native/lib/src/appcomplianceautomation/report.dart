@@ -89,6 +89,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appcomplianceautomation_report" "report" {
+///   offer_guid  = "00000000-0000-0000-0000-000000000001,00000000-0000-0000-0000-000000000002"
+///   report_name = "testReportName"
+///   resources {
+///     resource_id     = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/Microsoft.SignalRService/SignalR/mySignalRService"
+///     resource_origin = "Azure"
+///     resource_type   = "Microsoft.SignalRService/SignalR"
+///   }
+///   storage_info = {
+///     account_name    = "testStorageAccount"
+///     location        = "East US"
+///     resource_group  = "testResourceGroup"
+///     subscription_id = "00000000-0000-0000-0000-000000000000"
+///   }
+///   time_zone    = "GMT Standard Time"
+///   trigger_time = "2022-03-04T05:00:00.000Z"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +128,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appcomplianceautomation.ReportArgs;
 /// import com.pulumi.azurenative.appcomplianceautomation.inputs.ResourceMetadataArgs;
 /// import com.pulumi.azurenative.appcomplianceautomation.inputs.StorageInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

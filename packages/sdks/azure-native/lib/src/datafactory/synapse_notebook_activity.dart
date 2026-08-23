@@ -39,7 +39,7 @@ class SynapseNotebookActivity {
   /// Activity policy.
   final pulumi.Input<ActivityPolicy>? policy;
   /// Spark configuration property.
-  final pulumi.Input<Map<String, dynamic>>? sparkConfig;
+  final pulumi.Input<dynamic>? sparkConfig;
   /// The name of the big data pool which will be used to execute the notebook.
   final pulumi.Input<BigDataPoolParametrizationReference>? sparkPool;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
@@ -133,7 +133,7 @@ class SynapseNotebookActivity {
       onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<NotebookParameter>(guardedValue, (value) => NotebookParameter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActivityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      sparkConfig: (() { final guardedValue = map['sparkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      sparkConfig: (() { final guardedValue = map['sparkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sparkPool: (() { final guardedValue = map['sparkPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BigDataPoolParametrizationReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetSparkConfiguration: (() { final guardedValue = map['targetSparkConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SparkConfigurationParametrizationReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -142,4 +142,3 @@ class SynapseNotebookActivity {
     );
   }
 }
-

@@ -19,4 +19,3 @@ enum IkeIntegrity {
     throw ArgumentError('Unknown IkeIntegrity value: $value');
   }
 }
-

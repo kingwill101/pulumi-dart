@@ -1,8 +1,8 @@
 /// The authentication type to use.
 enum ImpalaAuthenticationType {
-  valueAnonymous("Anonymous"),
-  valueSASLUsername("SASLUsername"),
-  valueUsernameAndPassword("UsernameAndPassword");
+  anonymous("Anonymous"),
+  sASLUsername("SASLUsername"),
+  usernameAndPassword("UsernameAndPassword");
 
   const ImpalaAuthenticationType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum ImpalaAuthenticationType {
     throw ArgumentError('Unknown ImpalaAuthenticationType value: $value');
   }
 }
-

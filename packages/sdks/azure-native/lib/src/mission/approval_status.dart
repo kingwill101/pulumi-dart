@@ -18,4 +18,3 @@ enum ApprovalStatus {
     throw ArgumentError('Unknown ApprovalStatus value: $value');
   }
 }
-

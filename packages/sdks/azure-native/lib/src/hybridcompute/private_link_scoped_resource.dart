@@ -55,6 +55,24 @@ import 'private_link_scoped_resource_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hybridcompute_privatelinkscopedresource" "privateLinkScopedResource" {
+///   linked_resource_id  = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/myResourceGroup/providers/Microsoft.HybridCompute/Machines/machineName1"
+///   name                = "scoped-resource-name"
+///   resource_group_name = "myResourceGroup"
+///   scope_name          = "myPrivateLinkScope"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +81,8 @@ import 'private_link_scoped_resource_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.hybridcompute.PrivateLinkScopedResource;
 /// import com.pulumi.azurenative.hybridcompute.PrivateLinkScopedResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

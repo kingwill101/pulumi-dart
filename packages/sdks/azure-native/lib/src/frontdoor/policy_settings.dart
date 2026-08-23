@@ -5,6 +5,8 @@ import 'web_application_firewall_scrubbing_rules.dart';
 
 /// Defines top-level WebApplicationFirewallPolicy configuration settings.
 class PolicySettings {
+  /// Defines the Captcha cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
+  final pulumi.Input<int>? captchaExpirationInMinutes;
   /// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
   final pulumi.Input<String>? customBlockResponseBody;
   /// If the action type is block, customer can override the response status code.
@@ -25,6 +27,7 @@ class PolicySettings {
   final pulumi.Input<String>? state;
 
   /// Creates a new [PolicySettings].
+  /// [captchaExpirationInMinutes] Defines the Captcha cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
   /// [customBlockResponseBody] If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
   /// [customBlockResponseStatusCode] If the action type is block, customer can override the response status code.
   /// [enabledState] Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified.
@@ -35,6 +38,7 @@ class PolicySettings {
   /// [scrubbingRules] List of log scrubbing rules applied to the Web Application Firewall logs.
   /// [state] State of the log scrubbing config. Default value is Enabled.
   const PolicySettings({
+    this.captchaExpirationInMinutes,
     this.customBlockResponseBody,
     this.customBlockResponseStatusCode,
     this.enabledState,
@@ -48,6 +52,7 @@ class PolicySettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'captchaExpirationInMinutes': ?captchaExpirationInMinutes,
       'customBlockResponseBody': ?customBlockResponseBody,
       'customBlockResponseStatusCode': ?customBlockResponseStatusCode,
       'enabledState': ?enabledState,
@@ -62,6 +67,7 @@ class PolicySettings {
 
   factory PolicySettings.fromMap(Map<String, dynamic> map) {
     return PolicySettings(
+      captchaExpirationInMinutes: (() { final guardedValue = map['captchaExpirationInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       customBlockResponseBody: (() { final guardedValue = map['customBlockResponseBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customBlockResponseStatusCode: (() { final guardedValue = map['customBlockResponseStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -74,4 +80,3 @@ class PolicySettings {
     );
   }
 }
-

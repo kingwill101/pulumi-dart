@@ -11,7 +11,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-02-02-preview.
 ///
-/// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -178,6 +178,65 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_containerappssessionpool" "containerAppsSessionPool" {
+///   container_type = "CustomContainer"
+///   custom_container_template = {
+///     containers = [{
+///       "args"    = ["-c", "while true; do echo hello; sleep 10;done"]
+///       "command" = ["/bin/sh"]
+///       "image"   = "repo/testcontainer:v4"
+///       "name"    = "testinitcontainer"
+///       "resources" = {
+///         "cpu"    = 0.25
+///         "memory" = "0.5Gi"
+///       }
+///     }]
+///     ingress = {
+///       target_port = 80
+///     }
+///     registry_credentials = {
+///       identity = "/subscriptions/7a497526-bb8d-4816-9795-db1418a1f977/resourcegroups/test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testSP"
+///       server   = "test.azurecr.io"
+///     }
+///   }
+///   dynamic_pool_configuration = {
+///     lifecycle_configuration = {
+///       lifecycle_type              = "OnContainerExit"
+///       max_alive_period_in_seconds = 86400
+///     }
+///   }
+///   environment_id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/managedEnvironments/demokube"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location = "East US"
+///   managed_identity_settings {
+///     identity  = "system"
+///     lifecycle = "Main"
+///   }
+///   pool_management_type = "Dynamic"
+///   resource_group_name  = "rg"
+///   scale_configuration = {
+///     max_concurrent_sessions = 500
+///     ready_session_instances = 100
+///   }
+///   session_network_configuration = {
+///     status = "EgressEnabled"
+///   }
+///   session_pool_name = "testsessionpool"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +254,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.inputs.ManagedIdentitySettingArgs;
 /// import com.pulumi.azurenative.app.inputs.ScaleConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.SessionNetworkConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -585,6 +644,65 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_containerappssessionpool" "containerAppsSessionPool" {
+///   container_type = "CustomContainer"
+///   custom_container_template = {
+///     containers = [{
+///       "args"    = ["-c", "while true; do echo hello; sleep 10;done"]
+///       "command" = ["/bin/sh"]
+///       "image"   = "repo/testcontainer:v4"
+///       "name"    = "testinitcontainer"
+///       "resources" = {
+///         "cpu"    = 0.25
+///         "memory" = "0.5Gi"
+///       }
+///     }]
+///     ingress = {
+///       target_port = 80
+///     }
+///     registry_credentials = {
+///       identity = "/subscriptions/7a497526-bb8d-4816-9795-db1418a1f977/resourcegroups/test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testSP"
+///       server   = "test.azurecr.io"
+///     }
+///   }
+///   dynamic_pool_configuration = {
+///     lifecycle_configuration = {
+///       cooldown_period_in_seconds = 600
+///       lifecycle_type             = "Timed"
+///     }
+///   }
+///   environment_id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/managedEnvironments/demokube"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location = "East US"
+///   managed_identity_settings {
+///     identity  = "system"
+///     lifecycle = "Main"
+///   }
+///   pool_management_type = "Dynamic"
+///   resource_group_name  = "rg"
+///   scale_configuration = {
+///     max_concurrent_sessions = 500
+///     ready_session_instances = 100
+///   }
+///   session_network_configuration = {
+///     status = "EgressEnabled"
+///   }
+///   session_pool_name = "testsessionpool"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -602,8 +720,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.inputs.ManagedIdentitySettingArgs;
 /// import com.pulumi.azurenative.app.inputs.ScaleConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.SessionNetworkConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

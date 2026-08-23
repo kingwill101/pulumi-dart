@@ -11,13 +11,13 @@ class GetPrivateEndpointConnectionArgs {
   final pulumi.Input<String> automationAccountName;
   /// The name of the private endpoint connection.
   final pulumi.Input<String> privateEndpointConnectionName;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetPrivateEndpointConnectionArgs].
   /// [automationAccountName] The name of the automation account.
   /// [privateEndpointConnectionName] The name of the private endpoint connection.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetPrivateEndpointConnectionArgs({
     required this.automationAccountName,
     required this.privateEndpointConnectionName,
@@ -40,4 +40,3 @@ class GetPrivateEndpointConnectionArgs {
     );
   }
 }
-

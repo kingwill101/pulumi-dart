@@ -22,7 +22,7 @@ import 'list_monitor_monitored_resources_result.dart';
 ///
 /// Uses Azure REST API version 2023-10-20.
 ///
-/// Other available API versions: 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview, 2025-12-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datadog_get_billing_info_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetBillingInfoResult> getBillingInfo(
@@ -40,7 +40,7 @@ Future<GetBillingInfoResult> getBillingInfo(
 
 /// Uses Azure REST API version 2023-10-20.
 ///
-/// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview, 2025-12-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datadog_get_monitor_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetMonitorResult> getMonitor(
@@ -59,6 +59,8 @@ Future<GetMonitorResult> getMonitor(
 /// Get the default application key.
 ///
 /// Uses Azure REST API version 2025-11-03-preview.
+///
+/// Other available API versions: 2025-12-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datadog_get_monitor_default_application_key_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetMonitorDefaultApplicationKeyResult> getMonitorDefaultApplicationKey(
@@ -76,7 +78,7 @@ Future<GetMonitorDefaultApplicationKeyResult> getMonitorDefaultApplicationKey(
 
 /// Uses Azure REST API version 2023-10-20.
 ///
-/// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview, 2025-12-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datadog_get_monitor_default_key_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetMonitorDefaultKeyResult> getMonitorDefaultKey(
@@ -96,7 +98,7 @@ Future<GetMonitorDefaultKeyResult> getMonitorDefaultKey(
 ///
 /// Uses Azure REST API version 2023-10-20.
 ///
-/// Other available API versions: 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview, 2025-12-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datadog_get_monitored_subscription_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetMonitoredSubscriptionResult> getMonitoredSubscription(
@@ -116,7 +118,7 @@ Future<GetMonitoredSubscriptionResult> getMonitoredSubscription(
 ///
 /// Uses Azure REST API version 2023-10-20.
 ///
-/// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview, 2025-12-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datadog_list_monitor_api_keys_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListMonitorApiKeysResult> listMonitorApiKeys(
@@ -136,7 +138,7 @@ Future<ListMonitorApiKeysResult> listMonitorApiKeys(
 ///
 /// Uses Azure REST API version 2023-10-20.
 ///
-/// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview, 2025-12-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datadog_list_monitor_hosts_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListMonitorHostsResult> listMonitorHosts(
@@ -156,7 +158,7 @@ Future<ListMonitorHostsResult> listMonitorHosts(
 ///
 /// Uses Azure REST API version 2023-10-20.
 ///
-/// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview, 2025-12-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datadog_list_monitor_linked_resources_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListMonitorLinkedResourcesResult> listMonitorLinkedResources(
@@ -176,7 +178,7 @@ Future<ListMonitorLinkedResourcesResult> listMonitorLinkedResources(
 ///
 /// Uses Azure REST API version 2023-10-20.
 ///
-/// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview, 2025-12-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datadog_list_monitor_monitored_resources_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListMonitorMonitoredResourcesResult> listMonitorMonitoredResources(

@@ -9,18 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBatchDeploymentArgs {
   /// The identifier for the Batch deployments.
   final pulumi.Input<String> deploymentName;
-  /// Endpoint name
+  /// Name for the Batch Endpoint.
   final pulumi.Input<String> endpointName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Name of Azure Machine Learning workspace.
+  /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
   /// Creates a new [GetBatchDeploymentArgs].
   /// [deploymentName] The identifier for the Batch deployments.
-  /// [endpointName] Endpoint name
+  /// [endpointName] Name for the Batch Endpoint.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  /// [workspaceName] Name of Azure Machine Learning workspace.
+  /// [workspaceName] Azure Machine Learning Workspace Name
   const GetBatchDeploymentArgs({
     required this.deploymentName,
     required this.endpointName,
@@ -46,4 +46,3 @@ class GetBatchDeploymentArgs {
     );
   }
 }
-

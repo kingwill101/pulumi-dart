@@ -73,7 +73,7 @@ import 'list_palo_alto_networks_cloudngfw_operation_support_info_result.dart';
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_certificate_object_global_rulestack_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCertificateObjectGlobalRulestackResult> getCertificateObjectGlobalRulestack(
@@ -93,7 +93,7 @@ Future<GetCertificateObjectGlobalRulestackResult> getCertificateObjectGlobalRule
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_certificate_object_local_rulestack_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCertificateObjectLocalRulestackResult> getCertificateObjectLocalRulestack(
@@ -113,7 +113,7 @@ Future<GetCertificateObjectLocalRulestackResult> getCertificateObjectLocalRulest
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_firewall_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFirewallResult> getFirewall(
@@ -133,7 +133,7 @@ Future<GetFirewallResult> getFirewall(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_firewall_global_rulestack_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFirewallGlobalRulestackResult> getFirewallGlobalRulestack(
@@ -153,7 +153,7 @@ Future<GetFirewallGlobalRulestackResult> getFirewallGlobalRulestack(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_firewall_log_profile_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFirewallLogProfileResult> getFirewallLogProfile(
@@ -173,7 +173,7 @@ Future<GetFirewallLogProfileResult> getFirewallLogProfile(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_firewall_support_info_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFirewallSupportInfoResult> getFirewallSupportInfo(
@@ -193,7 +193,7 @@ Future<GetFirewallSupportInfoResult> getFirewallSupportInfo(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_fqdn_list_global_rulestack_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFqdnListGlobalRulestackResult> getFqdnListGlobalRulestack(
@@ -213,7 +213,7 @@ Future<GetFqdnListGlobalRulestackResult> getFqdnListGlobalRulestack(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_fqdn_list_local_rulestack_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFqdnListLocalRulestackResult> getFqdnListLocalRulestack(
@@ -233,7 +233,7 @@ Future<GetFqdnListLocalRulestackResult> getFqdnListLocalRulestack(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_global_rulestack_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGlobalRulestackResult> getGlobalRulestack(
@@ -253,7 +253,7 @@ Future<GetGlobalRulestackResult> getGlobalRulestack(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_global_rulestack_change_log_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGlobalRulestackChangeLogResult> getGlobalRulestackChangeLog(
@@ -273,7 +273,7 @@ Future<GetGlobalRulestackChangeLogResult> getGlobalRulestackChangeLog(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_local_rule_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetLocalRuleResult> getLocalRule(
@@ -293,7 +293,7 @@ Future<GetLocalRuleResult> getLocalRule(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_local_rule_counters_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetLocalRuleCountersResult> getLocalRuleCounters(
@@ -313,7 +313,7 @@ Future<GetLocalRuleCountersResult> getLocalRuleCounters(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_local_rulestack_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetLocalRulestackResult> getLocalRulestack(
@@ -333,7 +333,7 @@ Future<GetLocalRulestackResult> getLocalRulestack(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_local_rulestack_change_log_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetLocalRulestackChangeLogResult> getLocalRulestackChangeLog(
@@ -353,7 +353,7 @@ Future<GetLocalRulestackChangeLogResult> getLocalRulestackChangeLog(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_local_rulestack_support_info_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetLocalRulestackSupportInfoResult> getLocalRulestackSupportInfo(
@@ -373,7 +373,7 @@ Future<GetLocalRulestackSupportInfoResult> getLocalRulestackSupportInfo(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_post_rule_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPostRuleResult> getPostRule(
@@ -393,7 +393,7 @@ Future<GetPostRuleResult> getPostRule(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_post_rule_counters_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPostRuleCountersResult> getPostRuleCounters(
@@ -413,7 +413,7 @@ Future<GetPostRuleCountersResult> getPostRuleCounters(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_pre_rule_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPreRuleResult> getPreRule(
@@ -433,7 +433,7 @@ Future<GetPreRuleResult> getPreRule(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_pre_rule_counters_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPreRuleCountersResult> getPreRuleCounters(
@@ -453,7 +453,7 @@ Future<GetPreRuleCountersResult> getPreRuleCounters(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_prefix_list_global_rulestack_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPrefixListGlobalRulestackResult> getPrefixListGlobalRulestack(
@@ -473,7 +473,7 @@ Future<GetPrefixListGlobalRulestackResult> getPrefixListGlobalRulestack(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_prefix_list_local_rulestack_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPrefixListLocalRulestackResult> getPrefixListLocalRulestack(
@@ -493,7 +493,7 @@ Future<GetPrefixListLocalRulestackResult> getPrefixListLocalRulestack(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_list_global_rulestack_advanced_security_objects_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListGlobalRulestackAdvancedSecurityObjectsResult> listGlobalRulestackAdvancedSecurityObjects(
@@ -513,7 +513,7 @@ Future<ListGlobalRulestackAdvancedSecurityObjectsResult> listGlobalRulestackAdva
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_list_global_rulestack_app_ids_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListGlobalRulestackAppIdsResult> listGlobalRulestackAppIds(
@@ -533,7 +533,7 @@ Future<ListGlobalRulestackAppIdsResult> listGlobalRulestackAppIds(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_list_global_rulestack_countries_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListGlobalRulestackCountriesResult> listGlobalRulestackCountries(
@@ -553,7 +553,7 @@ Future<ListGlobalRulestackCountriesResult> listGlobalRulestackCountries(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_list_global_rulestack_firewalls_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListGlobalRulestackFirewallsResult> listGlobalRulestackFirewalls(
@@ -573,7 +573,7 @@ Future<ListGlobalRulestackFirewallsResult> listGlobalRulestackFirewalls(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_list_global_rulestack_predefined_url_categories_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListGlobalRulestackPredefinedUrlCategoriesResult> listGlobalRulestackPredefinedUrlCategories(
@@ -593,7 +593,7 @@ Future<ListGlobalRulestackPredefinedUrlCategoriesResult> listGlobalRulestackPred
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_list_global_rulestack_security_services_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListGlobalRulestackSecurityServicesResult> listGlobalRulestackSecurityServices(
@@ -613,7 +613,7 @@ Future<ListGlobalRulestackSecurityServicesResult> listGlobalRulestackSecuritySer
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_list_local_rulestack_advanced_security_objects_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListLocalRulestackAdvancedSecurityObjectsResult> listLocalRulestackAdvancedSecurityObjects(
@@ -633,7 +633,7 @@ Future<ListLocalRulestackAdvancedSecurityObjectsResult> listLocalRulestackAdvanc
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_list_local_rulestack_app_ids_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListLocalRulestackAppIdsResult> listLocalRulestackAppIds(
@@ -653,7 +653,7 @@ Future<ListLocalRulestackAppIdsResult> listLocalRulestackAppIds(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_list_local_rulestack_countries_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListLocalRulestackCountriesResult> listLocalRulestackCountries(
@@ -673,7 +673,7 @@ Future<ListLocalRulestackCountriesResult> listLocalRulestackCountries(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_list_local_rulestack_firewalls_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListLocalRulestackFirewallsResult> listLocalRulestackFirewalls(
@@ -693,7 +693,7 @@ Future<ListLocalRulestackFirewallsResult> listLocalRulestackFirewalls(
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_list_local_rulestack_predefined_url_categories_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListLocalRulestackPredefinedUrlCategoriesResult> listLocalRulestackPredefinedUrlCategories(
@@ -713,7 +713,7 @@ Future<ListLocalRulestackPredefinedUrlCategoriesResult> listLocalRulestackPredef
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_list_local_rulestack_security_services_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListLocalRulestackSecurityServicesResult> listLocalRulestackSecurityServices(
@@ -733,7 +733,7 @@ Future<ListLocalRulestackSecurityServicesResult> listLocalRulestackSecurityServi
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
 Future<ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult> listPaloAltoNetworksCloudngfwOperationCloudManagerTenants(
   {
@@ -752,7 +752,7 @@ Future<ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult> listPalo
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
 Future<ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult> listPaloAltoNetworksCloudngfwOperationProductSerialNumberStatus(
   {
@@ -771,7 +771,7 @@ Future<ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult> li
 ///
 /// Uses Azure REST API version 2025-05-23.
 ///
-/// Other available API versions: 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
 Future<ListPaloAltoNetworksCloudngfwOperationSupportInfoResult> listPaloAltoNetworksCloudngfwOperationSupportInfo(
   {

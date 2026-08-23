@@ -46,4 +46,3 @@ class GetSqlAssessmentV2OperationArgs {
     );
   }
 }
-

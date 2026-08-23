@@ -187,6 +187,79 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_sqlassessmentv3operation" "sqlAssessmentV3Operation" {
+///   assessment_name = "assessmentName"
+///   project_name    = "contosoProject"
+///   properties = {
+///     fallback_machine_assessment_arm_id = "jfwkifsuigza"
+///     scope = {
+///       azure_resource_graph_query = "ddqs"
+///       scope_type                 = "ServerGroupId"
+///       server_group_id            = "ppxcjyrxfmpm"
+///     }
+///     settings = {
+///       async_commit_mode_intent     = "None"
+///       azure_location               = "vtpazagckatiezkiwol"
+///       azure_security_offering_type = "NO"
+///       azure_sql_database_settings = {
+///         azure_sql_compute_tier   = "Unknown"
+///         azure_sql_data_base_type = "Unknown"
+///         azure_sql_purchase_model = "Unknown"
+///         azure_sql_service_tier   = "SqlService_Unknown"
+///       }
+///       azure_sql_managed_instance_settings = {
+///         azure_sql_instance_type = "Unknown"
+///         azure_sql_service_tier  = "SqlService_Unknown"
+///       }
+///       azure_sql_vm_settings = {
+///         instance_series = ["Unknown"]
+///       }
+///       billing_settings = {
+///         licensing_program = "Retail"
+///         subscription_id   = "sp"
+///       }
+///       currency                   = "Unknown"
+///       disaster_recovery_location = "Unknown"
+///       discount_percentage        = 8
+///       enable_hadr_assessment     = true
+///       entity_uptime = {
+///         days_per_month = 2
+///         hours_per_day  = 28
+///       }
+///       environment_type             = "Production"
+///       is_internet_access_available = true
+///       multi_subnet_intent          = "None"
+///       os_license                   = "Unknown"
+///       performance_data = {
+///         percentile           = "Unknown"
+///         perf_data_end_time   = "2025-02-21T05:15:28.133Z"
+///         perf_data_start_time = "2025-02-21T05:15:28.133Z"
+///         time_range           = "Day"
+///       }
+///       preferred_targets = ["Unknown"]
+///       savings_settings = {
+///         azure_offer_code = "Unknown"
+///         savings_options  = "None"
+///       }
+///       scaling_factor     = 27
+///       sizing_criterion   = "PerformanceBased"
+///       sql_server_license = "Unknown"
+///     }
+///   }
+///   resource_group_name = "rgsqlAssessments"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -205,8 +278,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.migrate.inputs.EntityUptimeArgs;
 /// import com.pulumi.azurenative.migrate.inputs.PerformanceDataArgs;
 /// import com.pulumi.azurenative.migrate.inputs.SavingsSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -390,7 +463,7 @@ import 'system_data_response.dart';
 ///             },
 ///             "currency": azure_native.migrate.AzureCurrency.UNKNOWN,
 ///             "disaster_recovery_location": azure_native.migrate.AzureLocation.UNKNOWN,
-///             "discount_percentage": 8,
+///             "discount_percentage": float(8),
 ///             "enable_hadr_assessment": True,
 ///             "entity_uptime": {
 ///                 "days_per_month": 2,
@@ -411,7 +484,7 @@ import 'system_data_response.dart';
 ///                 "azure_offer_code": azure_native.migrate.AzureOffer.UNKNOWN,
 ///                 "savings_options": azure_native.migrate.SavingsOptions.NONE,
 ///             },
-///             "scaling_factor": 27,
+///             "scaling_factor": float(27),
 ///             "sizing_criterion": azure_native.migrate.AssessmentSizingCriterion.PERFORMANCE_BASED,
 ///             "sql_server_license": azure_native.migrate.SqlServerLicense.UNKNOWN,
 ///         },

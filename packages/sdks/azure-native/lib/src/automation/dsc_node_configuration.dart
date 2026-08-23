@@ -1,12 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dsc_configuration_association_property_response.dart';
 import 'dsc_node_configuration_args.dart';
+import 'system_data_response.dart';
 
 /// Definition of the dsc node configuration.
 ///
-/// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
+/// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 ///
-/// Other available API versions: 2015-10-31, 2018-01-15, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2018-01-15, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -147,6 +148,37 @@ import 'dsc_node_configuration_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_dscnodeconfiguration" "dscNodeConfiguration" {
+///   automation_account_name = "myAutomationAccount20"
+///   configuration = {
+///     name = "configName"
+///   }
+///   increment_node_configuration_build = true
+///   name                               = "configName.nodeConfigName"
+///   node_configuration_name            = "configName.nodeConfigName"
+///   resource_group_name                = "rg"
+///   source = {
+///     hash = {
+///       algorithm = "sha256"
+///       value     = "6DE256A57F01BFA29B88696D5E77A383D6E61484C7686E8DB955FA10ACE9FFE5"
+///     }
+///     type    = "embeddedContent"
+///     value   = "\r\ninstance of MSFT_RoleResource as $MSFT_RoleResource1ref\r\n{\r\nResourceID = \"[WindowsFeature]IIS\";\r\n Ensure = \"Present\";\r\n SourceInfo = \"::3::32::WindowsFeature\";\r\n Name = \"Web-Server\";\r\n ModuleName = \"PsDesiredStateConfiguration\";\r\n\r\nModuleVersion = \"1.0\";\r\r\n ConfigurationName = \"configName\";\r\r\n};\r\ninstance of OMI_ConfigurationDocument\r\n\r\r\n                    {\r\n Version=\"2.0.0\";\r\n \r\r\n                        MinimumCompatibleVersion = \"1.0.0\";\r\n \r\r\n                        CompatibleVersionAdditionalProperties= {\"Omi_BaseResource:ConfigurationName\"};\r\n \r\r\n                        Author=\"weijiel\";\r\n \r\r\n                        GenerationDate=\"03/30/2017 13:40:25\";\r\n \r\r\n                        GenerationHost=\"TEST-BACKEND\";\r\n \r\r\n                        Name=\"configName\";\r\n\r\r\n                    };\r\n"
+///     version = "1.0"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -158,8 +190,8 @@ import 'dsc_node_configuration_args.dart';
 /// import com.pulumi.azurenative.automation.inputs.DscConfigurationAssociationPropertyArgs;
 /// import com.pulumi.azurenative.automation.inputs.ContentSourceArgs;
 /// import com.pulumi.azurenative.automation.inputs.ContentHashArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -387,7 +419,9 @@ class DscNodeConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<double?> nodeCount;
   /// Source of node configuration.
   late final pulumi.Output<String?> source;
-  /// The type of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [DscNodeConfiguration].
@@ -412,6 +446,7 @@ class DscNodeConfiguration extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<double?>('nodeCount');
     source = registerOutput<String?>('source');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

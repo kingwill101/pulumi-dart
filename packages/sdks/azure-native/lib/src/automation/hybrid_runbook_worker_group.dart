@@ -5,9 +5,9 @@ import 'system_data_response.dart';
 
 /// Definition of hybrid runbook worker group.
 ///
-/// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
+/// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 ///
-/// Other available API versions: 2021-06-22, 2022-02-22, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-06-22, 2022-02-22, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -64,6 +64,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_hybridrunbookworkergroup" "hybridRunbookWorkerGroup" {
+///   automation_account_name = "testaccount"
+///   credential = {
+///     name = "myRunAsCredentialName"
+///   }
+///   hybrid_runbook_worker_group_name = "TestHybridGroup"
+///   resource_group_name              = "rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +93,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.automation.HybridRunbookWorkerGroup;
 /// import com.pulumi.azurenative.automation.HybridRunbookWorkerGroupArgs;
 /// import com.pulumi.azurenative.automation.inputs.RunAsCredentialAssociationPropertyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -159,11 +179,15 @@ class HybridRunbookWorkerGroup extends pulumi.CustomResource {
   late final pulumi.Output<RunAsCredentialAssociationPropertyResponse?> credential;
   /// Type of the HybridWorkerGroup.
   late final pulumi.Output<String?> groupType;
+  /// The geo-location where the resource lives
+  late final pulumi.Output<String> location;
   /// The name of the resource
   late final pulumi.Output<String> name;
-  /// Resource system metadata.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-  /// The type of the resource.
+  /// Resource tags.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [HybridRunbookWorkerGroup].
@@ -183,8 +207,10 @@ class HybridRunbookWorkerGroup extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     credential = registerOutput<RunAsCredentialAssociationPropertyResponse?>('credential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunAsCredentialAssociationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     groupType = registerOutput<String?>('groupType');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }
 }

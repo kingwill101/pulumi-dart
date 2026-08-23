@@ -37,4 +37,3 @@ class FcmV1Credential {
     );
   }
 }
-

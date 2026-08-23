@@ -53,4 +53,3 @@ class ElasticLoadBalancingV2ListenerArgs {
     );
   }
 }
-

@@ -64,6 +64,27 @@ import 'database_account_cassandra_keyspace_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cosmosdb_databaseaccountcassandrakeyspace" "databaseAccountCassandraKeyspace" {
+///   account_name  = "ddb1"
+///   keyspace_name = "keyspaceName"
+///   options       = {}
+///   resource = {
+///     id = "keyspaceName"
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +94,8 @@ import 'database_account_cassandra_keyspace_args.dart';
 /// import com.pulumi.azurenative.cosmosdb.DatabaseAccountCassandraKeyspace;
 /// import com.pulumi.azurenative.cosmosdb.DatabaseAccountCassandraKeyspaceArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.CassandraKeyspaceResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

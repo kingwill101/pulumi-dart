@@ -6,7 +6,7 @@ import 'replication_protection_cluster_properties_response.dart';
 ///
 /// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2024-02-01.
 ///
-/// Other available API versions: 2024-02-01, 2024-04-01, 2025-01-01, 2025-02-01, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-01, 2024-04-01, 2025-01-01, 2025-02-01, 2025-08-01, 2026-01-01, 2026-02-01, 2026-03-31-preview, 2026-05-01, 2026-05-31-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -76,6 +76,32 @@ import 'replication_protection_cluster_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_recoveryservices_replicationprotectioncluster" "replicationProtectionCluster" {
+///   fabric_name = "eastus"
+///   properties = {
+///     policy_id = "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationPolicies/24-hour-retention-policy"
+///     provider_specific_details = {
+///       instance_type = "A2A"
+///     }
+///     recovery_container_id = "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/centraluseuap/replicationProtectionContainers/centraluseuap-container"
+///   }
+///   protection_container_name           = "eastus-container"
+///   replication_protection_cluster_name = "cluster12"
+///   resource_group_name                 = "resourceGroupPS1"
+///   resource_name                       = "vault1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +112,8 @@ import 'replication_protection_cluster_properties_response.dart';
 /// import com.pulumi.azurenative.recoveryservices.ReplicationProtectionClusterArgs;
 /// import com.pulumi.azurenative.recoveryservices.inputs.ReplicationProtectionClusterPropertiesArgs;
 /// import com.pulumi.azurenative.recoveryservices.inputs.A2AReplicationProtectionClusterDetailsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

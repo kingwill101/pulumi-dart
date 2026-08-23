@@ -14,4 +14,3 @@ enum TriggerKind {
     throw ArgumentError('Unknown TriggerKind value: $value');
   }
 }
-

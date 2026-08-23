@@ -26,4 +26,3 @@ enum GenerationLanguage {
     throw ArgumentError('Unknown GenerationLanguage value: $value');
   }
 }
-

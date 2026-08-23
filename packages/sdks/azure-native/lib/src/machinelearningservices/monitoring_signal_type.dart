@@ -1,10 +1,10 @@
 /// [Required] Specifies the type of signal to monitor.
 enum MonitoringSignalType {
-  valueDataDrift("DataDrift"),
-  valuePredictionDrift("PredictionDrift"),
-  valueDataQuality("DataQuality"),
-  valueFeatureAttributionDrift("FeatureAttributionDrift"),
-  valueCustom("Custom");
+  dataDrift("DataDrift"),
+  predictionDrift("PredictionDrift"),
+  dataQuality("DataQuality"),
+  featureAttributionDrift("FeatureAttributionDrift"),
+  custom("Custom");
 
   const MonitoringSignalType(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum MonitoringSignalType {
     throw ArgumentError('Unknown MonitoringSignalType value: $value');
   }
 }
-

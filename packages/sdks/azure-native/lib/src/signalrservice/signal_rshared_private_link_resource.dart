@@ -62,6 +62,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_signalrservice_signalrsharedprivatelinkresource" "signalRSharedPrivateLinkResource" {
+///   group_id                          = "sites"
+///   private_link_resource_id          = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/Microsoft.Web/sites/myWebApp"
+///   request_message                   = "Please approve"
+///   resource_group_name               = "myResourceGroup"
+///   resource_name                     = "mySignalRService"
+///   shared_private_link_resource_name = "upstream"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +90,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.signalrservice.SignalRSharedPrivateLinkResource;
 /// import com.pulumi.azurenative.signalrservice.SignalRSharedPrivateLinkResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

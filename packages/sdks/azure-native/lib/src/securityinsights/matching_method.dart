@@ -16,4 +16,3 @@ enum MatchingMethod {
     throw ArgumentError('Unknown MatchingMethod value: $value');
   }
 }
-

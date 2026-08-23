@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_cosmosdb_get_garnet_cluster_args_doc}
 class GetGarnetClusterArgs {
-  /// Garnet cache cluster name.
+  /// The name of the GarnetClusterResource
   final pulumi.Input<String> clusterName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetGarnetClusterArgs].
-  /// [clusterName] Garnet cache cluster name.
+  /// [clusterName] The name of the GarnetClusterResource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetGarnetClusterArgs({
     required this.clusterName,
@@ -34,4 +34,3 @@ class GetGarnetClusterArgs {
     );
   }
 }
-

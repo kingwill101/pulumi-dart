@@ -16,4 +16,3 @@ enum DistanceFunction {
     throw ArgumentError('Unknown DistanceFunction value: $value');
   }
 }
-

@@ -1,9 +1,9 @@
 /// The parameter defining how if AutoML should handle short time series.
 enum ShortSeriesHandlingConfiguration {
-  valueNone("None"),
-  valueAuto("Auto"),
-  valuePad("Pad"),
-  valueDrop("Drop");
+  none("None"),
+  auto("Auto"),
+  pad("Pad"),
+  drop("Drop");
 
   const ShortSeriesHandlingConfiguration(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum ShortSeriesHandlingConfiguration {
     throw ArgumentError('Unknown ShortSeriesHandlingConfiguration value: $value');
   }
 }
-

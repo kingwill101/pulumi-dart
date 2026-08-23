@@ -14,4 +14,3 @@ enum Name {
     throw ArgumentError('Unknown Name value: $value');
   }
 }
-

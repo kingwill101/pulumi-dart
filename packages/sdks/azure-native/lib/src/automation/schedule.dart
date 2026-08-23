@@ -1,12 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'advanced_schedule_response.dart';
 import 'schedule_args.dart';
+import 'system_data_response.dart';
 
 /// Definition of the schedule.
 ///
-/// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
+/// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 ///
-/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -70,6 +71,30 @@ import 'schedule_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_schedule" "schedule" {
+///   advanced_schedule       = {}
+///   automation_account_name = "myAutomationAccount33"
+///   description             = "my description of schedule goes here"
+///   expiry_time             = "2017-04-01T17:28:57.2494819Z"
+///   frequency               = "Hour"
+///   interval                = 1
+///   name                    = "mySchedule"
+///   resource_group_name     = "rg"
+///   schedule_name           = "mySchedule"
+///   start_time              = "2017-03-27T17:28:57.2494819Z"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +104,8 @@ import 'schedule_args.dart';
 /// import com.pulumi.azurenative.automation.Schedule;
 /// import com.pulumi.azurenative.automation.ScheduleArgs;
 /// import com.pulumi.azurenative.automation.inputs.AdvancedScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -207,9 +232,11 @@ class Schedule extends pulumi.CustomResource {
   late final pulumi.Output<String?> startTime;
   /// Gets the start time's offset in minutes.
   late final pulumi.Output<double> startTimeOffsetMinutes;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// Gets or sets the time zone of the schedule.
   late final pulumi.Output<String?> timeZone;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [Schedule].
@@ -241,6 +268,7 @@ class Schedule extends pulumi.CustomResource {
     nextRunOffsetMinutes = registerOutput<double?>('nextRunOffsetMinutes');
     startTime = registerOutput<String?>('startTime');
     startTimeOffsetMinutes = registerOutput<double>('startTimeOffsetMinutes');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeZone = registerOutput<String?>('timeZone');
     type = registerOutput<String>('type');
   }

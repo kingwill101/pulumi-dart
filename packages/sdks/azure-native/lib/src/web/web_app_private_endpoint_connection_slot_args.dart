@@ -14,21 +14,23 @@ class WebAppPrivateEndpointConnectionSlotArgs {
   final pulumi.Input<String>? kind;
   /// Name of the site.
   final pulumi.Input<String> name;
+  /// Name of the private endpoint connection.
   final pulumi.Input<String>? privateEndpointConnectionName;
   /// The state of a private link connection
   final pulumi.Input<PrivateLinkConnectionState>? privateLinkServiceConnectionState;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+  /// Name of the site deployment slot.
   final pulumi.Input<String> slot;
 
   /// Creates a new [WebAppPrivateEndpointConnectionSlotArgs].
   /// [ipAddresses] Private IPAddresses mapped to the remote private endpoint
   /// [kind] Kind of resource.
   /// [name] Name of the site.
-  /// [privateEndpointConnectionName] Optional.
+  /// [privateEndpointConnectionName] Name of the private endpoint connection.
   /// [privateLinkServiceConnectionState] The state of a private link connection
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  /// [slot] Required.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [slot] Name of the site deployment slot.
   const WebAppPrivateEndpointConnectionSlotArgs({
     this.ipAddresses,
     this.kind,
@@ -63,4 +65,3 @@ class WebAppPrivateEndpointConnectionSlotArgs {
     );
   }
 }
-

@@ -73,6 +73,30 @@ import 'machine_group_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_operationalinsights_machinegroup" "machineGroup" {
+///   count              = 1
+///   display_name       = "Foo"
+///   kind               = "machineGroup"
+///   machine_group_name = "ccfbf4bf-dc08-4371-9e9b-00a8d875d45a"
+///   machines {
+///     id   = "/subscriptions/63BE4E24-FDF0-4E9C-9342-6A5D5A359722/resourceGroups/rg-sm/providers/Microsoft.OperationalInsights/workspaces/D6F79F14-E563-469B-84B5-9286D2803B2F/machines/m-0fe4b501-7ac9-41d7-a4e1-1591a0789519"
+///     kind = "ref:machinewithhints"
+///   }
+///   resource_group_name = "rg-sm"
+///   workspace_name      = "D6F79F14-E563-469B-84B5-9286D2803B2F"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +106,8 @@ import 'machine_group_args.dart';
 /// import com.pulumi.azurenative.operationalinsights.MachineGroup;
 /// import com.pulumi.azurenative.operationalinsights.MachineGroupArgs;
 /// import com.pulumi.azurenative.operationalinsights.inputs.MachineReferenceWithHintsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

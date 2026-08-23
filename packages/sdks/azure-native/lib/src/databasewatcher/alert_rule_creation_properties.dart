@@ -15,4 +15,3 @@ enum AlertRuleCreationProperties {
     throw ArgumentError('Unknown AlertRuleCreationProperties value: $value');
   }
 }
-

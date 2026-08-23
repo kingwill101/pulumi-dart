@@ -11,13 +11,13 @@ class GetWebAppFunctionArgs {
   final pulumi.Input<String> functionName;
   /// Site name.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetWebAppFunctionArgs].
   /// [functionName] Function name.
   /// [name] Site name.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetWebAppFunctionArgs({
     required this.functionName,
     required this.name,
@@ -40,4 +40,3 @@ class GetWebAppFunctionArgs {
     );
   }
 }
-

@@ -57,6 +57,24 @@ import 'registered_asn_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_peering_registeredasn" "registeredAsn" {
+///   asn                 = 65000
+///   peering_name        = "peeringName"
+///   registered_asn_name = "registeredAsnName"
+///   resource_group_name = "rgName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +83,8 @@ import 'registered_asn_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.peering.RegisteredAsn;
 /// import com.pulumi.azurenative.peering.RegisteredAsnArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

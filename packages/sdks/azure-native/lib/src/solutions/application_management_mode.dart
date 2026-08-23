@@ -16,4 +16,3 @@ enum ApplicationManagementMode {
     throw ArgumentError('Unknown ApplicationManagementMode value: $value');
   }
 }
-

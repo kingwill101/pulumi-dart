@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01-preview.
 ///
-/// Other available API versions: 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview, 2025-05-01-preview, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -104,6 +104,43 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_eventhub_applicationgroup" "applicationGroup" {
+///   application_group_name      = "appGroup1"
+///   client_app_group_identifier = "SASKeyName=KeyName"
+///   is_enabled                  = true
+///   namespace_name              = "contoso-ua-test-eh-system-1"
+///   policies {
+///     metric_id            = "IncomingMessages"
+///     name                 = "ThrottlingPolicy1"
+///     rate_limit_threshold = 7912
+///     type                 = "ThrottlingPolicy"
+///   }
+///   policies {
+///     metric_id            = "IncomingBytes"
+///     name                 = "ThrottlingPolicy2"
+///     rate_limit_threshold = 3951729
+///     type                 = "ThrottlingPolicy"
+///   }
+///   policies {
+///     metric_id            = "OutgoingBytes"
+///     name                 = "ThrottlingPolicy3"
+///     rate_limit_threshold = 245175
+///     type                 = "ThrottlingPolicy"
+///   }
+///   resource_group_name = "contosotest"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +150,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventhub.ApplicationGroup;
 /// import com.pulumi.azurenative.eventhub.ApplicationGroupArgs;
 /// import com.pulumi.azurenative.eventhub.inputs.ThrottlingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -205,19 +242,19 @@ import 'system_data_response.dart';
 ///         {
 ///             "metric_id": azure_native.eventhub.MetricId.INCOMING_MESSAGES,
 ///             "name": "ThrottlingPolicy1",
-///             "rate_limit_threshold": 7912,
+///             "rate_limit_threshold": float(7912),
 ///             "type": "ThrottlingPolicy",
 ///         },
 ///         {
 ///             "metric_id": azure_native.eventhub.MetricId.INCOMING_BYTES,
 ///             "name": "ThrottlingPolicy2",
-///             "rate_limit_threshold": 3951729,
+///             "rate_limit_threshold": float(3951729),
 ///             "type": "ThrottlingPolicy",
 ///         },
 ///         {
 ///             "metric_id": azure_native.eventhub.MetricId.OUTGOING_BYTES,
 ///             "name": "ThrottlingPolicy3",
-///             "rate_limit_threshold": 245175,
+///             "rate_limit_threshold": float(245175),
 ///             "type": "ThrottlingPolicy",
 ///         },
 ///     ],

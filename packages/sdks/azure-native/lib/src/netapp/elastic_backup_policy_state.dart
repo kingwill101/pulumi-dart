@@ -15,4 +15,3 @@ enum ElasticBackupPolicyState {
     throw ArgumentError('Unknown ElasticBackupPolicyState value: $value');
   }
 }
-

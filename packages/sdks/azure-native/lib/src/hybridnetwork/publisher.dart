@@ -65,6 +65,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hybridnetwork_publisher" "publisher" {
+///   location = "eastus"
+///   properties = {
+///     scope = "Public"
+///   }
+///   publisher_name      = "TestPublisher"
+///   resource_group_name = "rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +94,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hybridnetwork.Publisher;
 /// import com.pulumi.azurenative.hybridnetwork.PublisherArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.PublisherPropertiesFormatArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

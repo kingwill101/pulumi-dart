@@ -62,4 +62,3 @@ class AwsEc2KeyPairPropertiesResponse {
     );
   }
 }
-

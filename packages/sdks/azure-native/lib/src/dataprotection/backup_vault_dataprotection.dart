@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
 ///
-/// Other available API versions: 2023-01-01, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-02-01, 2025-07-01, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dataprotection [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-01-01, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-02-01, 2025-07-01, 2025-09-01, 2026-03-01, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dataprotection [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -129,6 +129,51 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dataprotection_backupvault" "backupVault" {
+///   identity = {
+///     type = "None"
+///   }
+///   location = "WestUS"
+///   properties = {
+///     feature_settings = {
+///       cross_region_restore_settings = {
+///         state = "Enabled"
+///       }
+///     }
+///     monitoring_settings = {
+///       azure_monitor_alert_settings = {
+///         alerts_for_all_job_failures = "Enabled"
+///       }
+///     }
+///     security_settings = {
+///       soft_delete_settings = {
+///         retention_duration_in_days = 14
+///         state                      = "Enabled"
+///       }
+///     }
+///     storage_settings = [{
+///       "datastoreType" = "VaultStore"
+///       "type"          = "LocallyRedundant"
+///     }]
+///   }
+///   resource_group_name = "SampleResourceGroup"
+///   tags = {
+///     "key1" = "val1"
+///   }
+///   vault_name = "swaggerExample"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -143,8 +188,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dataprotection.inputs.AzureMonitorAlertSettingsArgs;
 /// import com.pulumi.azurenative.dataprotection.inputs.SecuritySettingsArgs;
 /// import com.pulumi.azurenative.dataprotection.inputs.SoftDeleteSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -255,7 +300,7 @@ import 'system_data_response.dart';
 ///         },
 ///         "security_settings": {
 ///             "soft_delete_settings": {
-///                 "retention_duration_in_days": 14,
+///                 "retention_duration_in_days": float(14),
 ///                 "state": "Enabled",
 ///             },
 ///         },
@@ -335,7 +380,7 @@ import 'system_data_response.dart';
 ///                     InfrastructureEncryption = AzureNative.DataProtection.InfrastructureEncryptionState.Enabled,
 ///                     KekIdentity = new AzureNative.DataProtection.Inputs.CmkKekIdentityArgs
 ///                     {
-///                         IdentityId = "/subscriptions/85bf5e8c-3084-4f42-add2-746ebb7e97b2/resourcegroups/defaultrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/examplemsi",
+///                         IdentityId = "/subscriptions/85bf5e8c-3084-4f42-add2-746ebb7e97b2/resourceGroups/defaultrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/examplemsi",
 ///                         IdentityType = AzureNative.DataProtection.IdentityType.UserAssigned,
 ///                     },
 ///                     KeyVaultProperties = new AzureNative.DataProtection.Inputs.CmkKeyVaultPropertiesArgs
@@ -401,7 +446,7 @@ import 'system_data_response.dart';
 /// 					EncryptionSettings: &dataprotection.EncryptionSettingsArgs{
 /// 						InfrastructureEncryption: pulumi.String(dataprotection.InfrastructureEncryptionStateEnabled),
 /// 						KekIdentity: &dataprotection.CmkKekIdentityArgs{
-/// 							IdentityId:   pulumi.String("/subscriptions/85bf5e8c-3084-4f42-add2-746ebb7e97b2/resourcegroups/defaultrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/examplemsi"),
+/// 							IdentityId:   pulumi.String("/subscriptions/85bf5e8c-3084-4f42-add2-746ebb7e97b2/resourceGroups/defaultrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/examplemsi"),
 /// 							IdentityType: pulumi.String(dataprotection.IdentityTypeUserAssigned),
 /// 						},
 /// 						KeyVaultProperties: &dataprotection.CmkKeyVaultPropertiesArgs{
@@ -439,6 +484,60 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dataprotection_backupvault" "backupVault" {
+///   identity = {
+///     type = "None"
+///   }
+///   location = "WestUS"
+///   properties = {
+///     monitoring_settings = {
+///       azure_monitor_alert_settings = {
+///         alerts_for_all_job_failures = "Enabled"
+///       }
+///     }
+///     security_settings = {
+///       encryption_settings = {
+///         infrastructure_encryption = "Enabled"
+///         kek_identity = {
+///           identity_id   = "/subscriptions/85bf5e8c-3084-4f42-add2-746ebb7e97b2/resourceGroups/defaultrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/examplemsi"
+///           identity_type = "UserAssigned"
+///         }
+///         key_vault_properties = {
+///           key_uri = "https://cmk2xkv.vault.azure.net/keys/Key1/0767b348bb1a4c07baa6c4ec0055d2b3"
+///         }
+///         state = "Enabled"
+///       }
+///       immutability_settings = {
+///         state = "Disabled"
+///       }
+///       soft_delete_settings = {
+///         retention_duration_in_days = 0
+///         state                      = "Off"
+///       }
+///     }
+///     storage_settings = [{
+///       "datastoreType" = "VaultStore"
+///       "type"          = "LocallyRedundant"
+///     }]
+///   }
+///   resource_group_name = "SampleResourceGroup"
+///   tags = {
+///     "key1" = "val1"
+///   }
+///   vault_name = "swaggerExample"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -455,8 +554,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dataprotection.inputs.CmkKeyVaultPropertiesArgs;
 /// import com.pulumi.azurenative.dataprotection.inputs.ImmutabilitySettingsArgs;
 /// import com.pulumi.azurenative.dataprotection.inputs.SoftDeleteSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -483,7 +582,7 @@ import 'system_data_response.dart';
 ///                     .encryptionSettings(EncryptionSettingsArgs.builder()
 ///                         .infrastructureEncryption("Enabled")
 ///                         .kekIdentity(CmkKekIdentityArgs.builder()
-///                             .identityId("/subscriptions/85bf5e8c-3084-4f42-add2-746ebb7e97b2/resourcegroups/defaultrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/examplemsi")
+///                             .identityId("/subscriptions/85bf5e8c-3084-4f42-add2-746ebb7e97b2/resourceGroups/defaultrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/examplemsi")
 ///                             .identityType("UserAssigned")
 ///                             .build())
 ///                         .keyVaultProperties(CmkKeyVaultPropertiesArgs.builder()
@@ -533,7 +632,7 @@ import 'system_data_response.dart';
 ///             encryptionSettings: {
 ///                 infrastructureEncryption: azure_native.dataprotection.InfrastructureEncryptionState.Enabled,
 ///                 kekIdentity: {
-///                     identityId: "/subscriptions/85bf5e8c-3084-4f42-add2-746ebb7e97b2/resourcegroups/defaultrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/examplemsi",
+///                     identityId: "/subscriptions/85bf5e8c-3084-4f42-add2-746ebb7e97b2/resourceGroups/defaultrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/examplemsi",
 ///                     identityType: azure_native.dataprotection.IdentityType.UserAssigned,
 ///                 },
 ///                 keyVaultProperties: {
@@ -582,7 +681,7 @@ import 'system_data_response.dart';
 ///             "encryption_settings": {
 ///                 "infrastructure_encryption": azure_native.dataprotection.InfrastructureEncryptionState.ENABLED,
 ///                 "kek_identity": {
-///                     "identity_id": "/subscriptions/85bf5e8c-3084-4f42-add2-746ebb7e97b2/resourcegroups/defaultrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/examplemsi",
+///                     "identity_id": "/subscriptions/85bf5e8c-3084-4f42-add2-746ebb7e97b2/resourceGroups/defaultrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/examplemsi",
 ///                     "identity_type": azure_native.dataprotection.IdentityType.USER_ASSIGNED,
 ///                 },
 ///                 "key_vault_properties": {
@@ -594,7 +693,7 @@ import 'system_data_response.dart';
 ///                 "state": azure_native.dataprotection.ImmutabilityState.DISABLED,
 ///             },
 ///             "soft_delete_settings": {
-///                 "retention_duration_in_days": 0,
+///                 "retention_duration_in_days": float(0),
 ///                 "state": azure_native.dataprotection.SoftDeleteState.OFF,
 ///             },
 ///         },
@@ -627,7 +726,7 @@ import 'system_data_response.dart';
 ///           encryptionSettings:
 ///             infrastructureEncryption: Enabled
 ///             kekIdentity:
-///               identityId: /subscriptions/85bf5e8c-3084-4f42-add2-746ebb7e97b2/resourcegroups/defaultrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/examplemsi
+///               identityId: /subscriptions/85bf5e8c-3084-4f42-add2-746ebb7e97b2/resourceGroups/defaultrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/examplemsi
 ///               identityType: UserAssigned
 ///             keyVaultProperties:
 ///               keyUri: https://cmk2xkv.vault.azure.net/keys/Key1/0767b348bb1a4c07baa6c4ec0055d2b3
@@ -765,6 +864,51 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dataprotection_backupvault" "backupVault" {
+///   identity = {
+///     type = "systemAssigned"
+///   }
+///   location = "WestUS"
+///   properties = {
+///     feature_settings = {
+///       cross_region_restore_settings = {
+///         state = "Enabled"
+///       }
+///     }
+///     monitoring_settings = {
+///       azure_monitor_alert_settings = {
+///         alerts_for_all_job_failures = "Enabled"
+///       }
+///     }
+///     security_settings = {
+///       soft_delete_settings = {
+///         retention_duration_in_days = 14
+///         state                      = "Enabled"
+///       }
+///     }
+///     storage_settings = [{
+///       "datastoreType" = "VaultStore"
+///       "type"          = "LocallyRedundant"
+///     }]
+///   }
+///   resource_group_name = "SampleResourceGroup"
+///   tags = {
+///     "key1" = "val1"
+///   }
+///   vault_name = "swaggerExample"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -779,8 +923,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dataprotection.inputs.AzureMonitorAlertSettingsArgs;
 /// import com.pulumi.azurenative.dataprotection.inputs.SecuritySettingsArgs;
 /// import com.pulumi.azurenative.dataprotection.inputs.SoftDeleteSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -891,7 +1035,7 @@ import 'system_data_response.dart';
 ///         },
 ///         "security_settings": {
 ///             "soft_delete_settings": {
-///                 "retention_duration_in_days": 14,
+///                 "retention_duration_in_days": float(14),
 ///                 "state": "Enabled",
 ///             },
 ///         },

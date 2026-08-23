@@ -67,6 +67,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storagesync_cloudendpoint" "cloudEndpoint" {
+///   azure_file_share_name       = "cvcloud-afscv-0719-058-a94a1354-a1fd-4e9a-9a50-919fad8c4ba4"
+///   cloud_endpoint_name         = "SampleCloudEndpoint_1"
+///   friendly_name               = "ankushbsubscriptionmgmtmab"
+///   resource_group_name         = "SampleResourceGroup_1"
+///   storage_account_resource_id = "/subscriptions/744f4d70-6d17-4921-8970-a765d14f763f/resourceGroups/tminienv59svc/providers/Microsoft.Storage/storageAccounts/tminienv59storage"
+///   storage_account_tenant_id   = "\"72f988bf-86f1-41af-91ab-2d7cd011db47\""
+///   storage_sync_service_name   = "SampleStorageSyncService_1"
+///   sync_group_name             = "SampleSyncGroup_1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +97,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.storagesync.CloudEndpoint;
 /// import com.pulumi.azurenative.storagesync.CloudEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

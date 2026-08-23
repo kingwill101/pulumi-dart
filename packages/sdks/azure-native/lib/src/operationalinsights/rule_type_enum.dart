@@ -1,6 +1,6 @@
 /// SummaryRules rule type: User.
 enum RuleTypeEnum {
-  valueUser("User");
+  user("User");
 
   const RuleTypeEnum(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum RuleTypeEnum {
     throw ArgumentError('Unknown RuleTypeEnum value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum AppServicePlanTier {
     throw ArgumentError('Unknown AppServicePlanTier value: $value');
   }
 }
-

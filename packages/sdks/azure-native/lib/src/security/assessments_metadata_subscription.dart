@@ -81,6 +81,30 @@ import 'assessments_metadata_subscription_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_assessmentsmetadatasubscription" "assessmentsMetadataSubscription" {
+///   assessment_metadata_name = "ca039e75-a276-4175-aebc-bcd41e4b14b7"
+///   assessment_type          = "CustomerManaged"
+///   categories               = ["Compute"]
+///   description              = "Install an endpoint protection solution on your virtual machines scale sets, to protect them from threats and vulnerabilities."
+///   display_name             = "Install endpoint protection solution on virtual machine scale sets"
+///   implementation_effort    = "Low"
+///   remediation_description  = "To install an endpoint protection solution: 1.  <a href=\"https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#how-do-i-turn-on-antimalware-in-my-virtual-machine-scale-set\">Follow the instructions in How do I turn on antimalware in my virtual machine scale set</a>"
+///   severity                 = "Medium"
+///   threats                  = ["dataExfiltration", "dataSpillage", "maliciousInsider"]
+///   user_impact              = "Low"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +113,8 @@ import 'assessments_metadata_subscription_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.AssessmentsMetadataSubscription;
 /// import com.pulumi.azurenative.security.AssessmentsMetadataSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

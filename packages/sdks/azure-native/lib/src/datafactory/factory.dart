@@ -5,6 +5,7 @@ import 'factory_git_hub_configuration_response.dart';
 import 'factory_identity_response.dart';
 import 'global_parameter_specification_response.dart';
 import 'purview_configuration_response.dart';
+import 'system_data_response.dart';
 
 /// Factory resource type.
 ///
@@ -58,6 +59,23 @@ import 'purview_configuration_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datafactory_factory" "factory" {
+///   factory_name        = "exampleFactoryName"
+///   location            = "East US"
+///   resource_group_name = "exampleResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +84,8 @@ import 'purview_configuration_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.Factory;
 /// import com.pulumi.azurenative.datafactory.FactoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -139,7 +157,7 @@ class Factory extends pulumi.CustomResource {
   late final pulumi.Output<String> azureApiVersion;
   /// Time the factory was created in ISO8601 format.
   late final pulumi.Output<String> createTime;
-  /// Etag identifies change in the resource.
+  /// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   late final pulumi.Output<String> eTag;
   /// Properties to enable Customer Managed Key for the factory.
   late final pulumi.Output<EncryptionConfigurationResponse?> encryption;
@@ -149,7 +167,7 @@ class Factory extends pulumi.CustomResource {
   late final pulumi.Output<FactoryIdentityResponse?> identity;
   /// The resource location.
   late final pulumi.Output<String?> location;
-  /// The resource name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Factory provisioning state, example Succeeded.
   late final pulumi.Output<String> provisioningState;
@@ -159,9 +177,11 @@ class Factory extends pulumi.CustomResource {
   late final pulumi.Output<PurviewConfigurationResponse?> purviewConfiguration;
   /// Git repo information of the factory.
   late final pulumi.Output<FactoryGitHubConfigurationResponse?> repoConfiguration;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// The resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// Version of the factory.
   late final pulumi.Output<String> version;
@@ -192,6 +212,7 @@ class Factory extends pulumi.CustomResource {
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     purviewConfiguration = registerOutput<PurviewConfigurationResponse?>('purviewConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PurviewConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     repoConfiguration = registerOutput<FactoryGitHubConfigurationResponse?>('repoConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FactoryGitHubConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');

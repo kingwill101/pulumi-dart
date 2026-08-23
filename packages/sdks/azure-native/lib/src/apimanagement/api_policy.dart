@@ -3,9 +3,9 @@ import 'api_policy_args.dart';
 
 /// Policy Contract details.
 ///
-/// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -61,6 +61,26 @@ import 'api_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_apipolicy" "apiPolicy" {
+///   api_id              = "5600b57e7e8880006a040001"
+///   format              = "xml"
+///   policy_id           = "policy"
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   value               = "<policies> <inbound /> <backend>    <forward-request />  </backend>  <outbound /></policies>"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +89,8 @@ import 'api_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.ApiPolicy;
 /// import com.pulumi.azurenative.apimanagement.ApiPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -206,6 +226,26 @@ import 'api_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_apipolicy" "apiPolicy" {
+///   api_id              = "5600b57e7e8880006a040001"
+///   format              = "rawxml"
+///   policy_id           = "policy"
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   value               = "<policies>\r\n     <inbound>\r\n     <base />\r\n  <set-header name=\"newvalue\" exists-action=\"override\">\r\n   <value>\"@(context.Request.Headers.FirstOrDefault(h => h.Ke==\"Via\"))\" </value>\r\n    </set-header>\r\n  </inbound>\r\n      </policies>"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -214,8 +254,8 @@ import 'api_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.ApiPolicy;
 /// import com.pulumi.azurenative.apimanagement.ApiPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

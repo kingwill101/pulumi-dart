@@ -92,4 +92,3 @@ class AwsEc2VpcPropertiesResponse {
     );
   }
 }
-

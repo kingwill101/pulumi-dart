@@ -14,4 +14,3 @@ enum VolumeProvider {
     throw ArgumentError('Unknown VolumeProvider value: $value');
   }
 }
-

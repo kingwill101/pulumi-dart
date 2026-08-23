@@ -72,6 +72,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databoxedge_device" "device" {
+///   device_name         = "testedgedevice"
+///   location            = "WUS"
+///   resource_group_name = "GroupForEdgeAutomation"
+///   sku = {
+///     name = "Edge"
+///     tier = "Standard"
+///   }
+///   tags = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +103,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.databoxedge.Device;
 /// import com.pulumi.azurenative.databoxedge.DeviceArgs;
 /// import com.pulumi.azurenative.databoxedge.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -224,6 +246,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databoxedge_device" "device" {
+///   data_residency = {
+///     type = "ZoneReplication"
+///   }
+///   device_name         = "testedgedevice"
+///   location            = "WUS"
+///   resource_group_name = "GroupForEdgeAutomation"
+///   sku = {
+///     name = "Edge"
+///     tier = "Standard"
+///   }
+///   tags = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -234,8 +281,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.databoxedge.DeviceArgs;
 /// import com.pulumi.azurenative.databoxedge.inputs.DataResidencyArgs;
 /// import com.pulumi.azurenative.databoxedge.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

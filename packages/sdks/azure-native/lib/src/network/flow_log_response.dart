@@ -28,8 +28,6 @@ class FlowLogResponse {
   final pulumi.Input<String> name;
   /// The provisioning state of the flow log.
   final pulumi.Input<String> provisioningState;
-  /// Optional field to filter network traffic logs based on flow states. Value of this field could be any comma separated combination string of letters B,C,E or D. B represents Begin, when a flow is created. C represents Continue for an ongoing flow generated at every five-minute interval. E represents End, when a flow is terminated. D represents Deny, when a flow is denied. If not specified, all network traffic will be logged.
-  final pulumi.Input<String>? recordTypes;
   /// Parameters that define the retention policy for flow log.
   final pulumi.Input<RetentionPolicyParametersResponse>? retentionPolicy;
   /// ID of the storage account which is used to store the flow log.
@@ -54,7 +52,6 @@ class FlowLogResponse {
   /// [location] Resource location.
   /// [name] Resource name.
   /// [provisioningState] The provisioning state of the flow log.
-  /// [recordTypes] Optional field to filter network traffic logs based on flow states. Value of this field could be any comma separated combination string of letters B,C,E or D. B represents Begin, when a flow is created. C represents Continue for an ongoing flow generated at every five-minute interval. E represents End, when a flow is terminated. D represents Deny, when a flow is denied. If not specified, all network traffic will be logged.
   /// [retentionPolicy] Parameters that define the retention policy for flow log.
   /// [storageId] ID of the storage account which is used to store the flow log.
   /// [tags] Resource tags.
@@ -72,7 +69,6 @@ class FlowLogResponse {
     this.location,
     required this.name,
     required this.provisioningState,
-    this.recordTypes,
     this.retentionPolicy,
     required this.storageId,
     this.tags,
@@ -93,7 +89,6 @@ class FlowLogResponse {
       'location': ?location,
       'name': name,
       'provisioningState': provisioningState,
-      'recordTypes': ?recordTypes,
       'retentionPolicy': ?pulumi.Input.mapOptionalInputValue<RetentionPolicyParametersResponse, Map<String, dynamic>>(retentionPolicy, (value) => value.toMap()),
       'storageId': storageId,
       'tags': ?tags,
@@ -115,7 +110,6 @@ class FlowLogResponse {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
-      recordTypes: (() { final guardedValue = map['recordTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       retentionPolicy: (() { final guardedValue = map['retentionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RetentionPolicyParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       storageId: pulumi.Input.fromValue(map['storageId'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -125,4 +119,3 @@ class FlowLogResponse {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum PollingType {
     throw ArgumentError('Unknown PollingType value: $value');
   }
 }
-

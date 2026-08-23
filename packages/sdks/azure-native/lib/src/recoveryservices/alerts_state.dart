@@ -14,4 +14,3 @@ enum AlertsState {
     throw ArgumentError('Unknown AlertsState value: $value');
   }
 }
-

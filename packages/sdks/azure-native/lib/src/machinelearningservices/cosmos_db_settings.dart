@@ -3,11 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CosmosDbSettings {
-  /// The throughput of the collections in cosmosdb database
   final pulumi.Input<int>? collectionsThroughput;
 
   /// Creates a new [CosmosDbSettings].
-  /// [collectionsThroughput] The throughput of the collections in cosmosdb database
+  /// [collectionsThroughput] Optional.
   const CosmosDbSettings({
     this.collectionsThroughput,
   });
@@ -24,4 +23,3 @@ class CosmosDbSettings {
     );
   }
 }
-

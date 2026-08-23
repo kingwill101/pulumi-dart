@@ -7,6 +7,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
 ///
+/// Other available API versions: 2025-12-15-preview, 2026-01-15-preview, 2026-03-15-preview, 2026-04-15-preview, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -70,6 +72,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_netapp_elasticbackuppolicy" "elasticBackupPolicy" {
+///   account_name       = "account1"
+///   backup_policy_name = "backupPolicyName"
+///   location           = "westus"
+///   properties = {
+///     daily_backups_to_keep   = 10
+///     monthly_backups_to_keep = 10
+///     policy_state            = "Enabled"
+///     weekly_backups_to_keep  = 10
+///   }
+///   resource_group_name = "myRG"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +105,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.netapp.ElasticBackupPolicy;
 /// import com.pulumi.azurenative.netapp.ElasticBackupPolicyArgs;
 /// import com.pulumi.azurenative.netapp.inputs.ElasticBackupPolicyPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

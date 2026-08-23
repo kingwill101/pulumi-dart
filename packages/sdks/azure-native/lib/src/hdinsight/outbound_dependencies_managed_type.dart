@@ -15,4 +15,3 @@ enum OutboundDependenciesManagedType {
     throw ArgumentError('Unknown OutboundDependenciesManagedType value: $value');
   }
 }
-

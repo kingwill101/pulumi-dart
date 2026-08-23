@@ -101,6 +101,42 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperationsmq_mqttbridgetopicmap" "mqttBridgeTopicMap" {
+///   extended_location = {
+///     name = "an"
+///     type = "CustomLocation"
+///   }
+///   location                   = "icfdftifk"
+///   mq_name                    = "52A1-D1-t--Q7O9-C-2S"
+///   mqtt_bridge_connector_name = "5sKfh6461-KDI8h-5"
+///   mqtt_bridge_connector_ref  = "aemmhvfdzmdtxwgimpaqephgo"
+///   resource_group_name        = "rgiotoperationsmq"
+///   routes {
+///     direction = "remote-to-local"
+///     name      = "u"
+///     qos       = 2
+///     shared_subscription = {
+///       group_minimum_share_number = 129
+///       group_name                 = "exnfgkdccpuvzqhxrg"
+///     }
+///     source = "xwnfgkkfezlgh"
+///     target = "mgwem"
+///   }
+///   tags           = {}
+///   topic_map_name = "5--CR4S47--UaxB4-"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +148,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.ExtendedLocationPropertyArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.MqttBridgeRoutesArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.MqttBridgeRouteSharedSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

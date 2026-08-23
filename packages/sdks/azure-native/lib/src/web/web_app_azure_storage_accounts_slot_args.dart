@@ -14,17 +14,17 @@ class WebAppAzureStorageAccountsSlotArgs {
   final pulumi.Input<String> name;
   /// Azure storage accounts.
   final pulumi.Input<Map<String, AzureStorageInfoValue>>? properties;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Name of the deployment slot. If a slot is not specified, the API will update the Azure storage account configurations for the production slot.
+  /// Name of the deployment slot. By default, this API returns the production slot.
   final pulumi.Input<String> slot;
 
   /// Creates a new [WebAppAzureStorageAccountsSlotArgs].
   /// [kind] Kind of resource.
   /// [name] Name of the app.
   /// [properties] Azure storage accounts.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  /// [slot] Name of the deployment slot. If a slot is not specified, the API will update the Azure storage account configurations for the production slot.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [slot] Name of the deployment slot. By default, this API returns the production slot.
   const WebAppAzureStorageAccountsSlotArgs({
     this.kind,
     required this.name,
@@ -53,4 +53,3 @@ class WebAppAzureStorageAccountsSlotArgs {
     );
   }
 }
-

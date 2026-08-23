@@ -7,6 +7,8 @@ import 'get_shared_limit_result.dart';
 /// Gets the properties of a guest subscription.
 ///
 /// Uses Azure REST API version 2025-08-15.
+///
+/// Other available API versions: 2026-03-20, 2026-04-30, 2026-06-01, 2026-07-01, 2026-07-31. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native computelimit [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_computelimit_get_guest_subscription_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGuestSubscriptionResult> getGuestSubscription(
@@ -25,6 +27,8 @@ Future<GetGuestSubscriptionResult> getGuestSubscription(
 /// Gets the properties of a compute limit shared by the host subscription with its guest subscriptions.
 ///
 /// Uses Azure REST API version 2025-08-15.
+///
+/// Other available API versions: 2026-03-20, 2026-04-30, 2026-06-01, 2026-07-01, 2026-07-31. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native computelimit [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_computelimit_get_shared_limit_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSharedLimitResult> getSharedLimit(

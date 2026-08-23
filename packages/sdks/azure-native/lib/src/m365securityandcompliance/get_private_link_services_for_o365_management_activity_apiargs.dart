@@ -34,4 +34,3 @@ class GetPrivateLinkServicesForO365ManagementActivityAPIArgs {
     );
   }
 }
-

@@ -7,12 +7,12 @@ import 'system_data_response.dart';
 class GetDatastoreResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-  /// [Required] Additional attributes of the entity.
-  final AzureBlobDatastoreResponse datastoreProperties;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
   /// The name of the resource
   final String name;
+  /// [Required] Additional attributes of the entity.
+  final AzureBlobDatastoreResponse properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -20,16 +20,16 @@ class GetDatastoreResult {
 
   /// Creates a new [GetDatastoreResult].
   /// [azureApiVersion] The Azure API version of the resource.
-  /// [datastoreProperties] [Required] Additional attributes of the entity.
   /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [name] The name of the resource
+  /// [properties] [Required] Additional attributes of the entity.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetDatastoreResult({
     required this.azureApiVersion,
-    required this.datastoreProperties,
     required this.id,
     required this.name,
+    required this.properties,
     required this.systemData,
     required this.type,
   });
@@ -37,9 +37,9 @@ class GetDatastoreResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'datastoreProperties': datastoreProperties.toMap(),
       'id': id,
       'name': name,
+      'properties': properties.toMap(),
       'systemData': systemData.toMap(),
       'type': type,
     };
@@ -48,12 +48,11 @@ class GetDatastoreResult {
   factory GetDatastoreResult.fromMap(Map<String, dynamic> map) {
     return GetDatastoreResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      datastoreProperties: AzureBlobDatastoreResponse.fromMap((map['datastoreProperties']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
+      properties: AzureBlobDatastoreResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

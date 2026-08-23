@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'credential_operation_args.dart';
 import 'managed_identity_credential_response.dart';
+import 'system_data_response.dart';
 
 /// Credential resource type.
 ///
@@ -24,7 +25,7 @@ import 'managed_identity_credential_response.dart';
 ///         FactoryName = "exampleFactoryName",
 ///         Properties = new AzureNative.DataFactory.Inputs.ManagedIdentityCredentialArgs
 ///         {
-///             ResourceId = "/subscriptions/12345678-1234-1234-1234-12345678abc/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami",
+///             ResourceId = "/subscriptions/12345678-1234-1234-1234-123456789012/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami",
 ///             Type = "ManagedIdentity",
 ///         },
 ///         ResourceGroupName = "exampleResourceGroup",
@@ -49,7 +50,7 @@ import 'managed_identity_credential_response.dart';
 /// 			CredentialName: pulumi.String("exampleCredential"),
 /// 			FactoryName:    pulumi.String("exampleFactoryName"),
 /// 			Properties: &datafactory.ManagedIdentityCredentialArgs{
-/// 				ResourceId: pulumi.String("/subscriptions/12345678-1234-1234-1234-12345678abc/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami"),
+/// 				ResourceId: pulumi.String("/subscriptions/12345678-1234-1234-1234-123456789012/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami"),
 /// 				Type:       pulumi.String("ManagedIdentity"),
 /// 			},
 /// 			ResourceGroupName: pulumi.String("exampleResourceGroup"),
@@ -63,6 +64,27 @@ import 'managed_identity_credential_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datafactory_credentialoperation" "credentialOperation" {
+///   credential_name = "exampleCredential"
+///   factory_name    = "exampleFactoryName"
+///   properties = {
+///     "resourceId" = "/subscriptions/12345678-1234-1234-1234-123456789012/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami"
+///     "type"       = "ManagedIdentity"
+///   }
+///   resource_group_name = "exampleResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +93,8 @@ import 'managed_identity_credential_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.CredentialOperation;
 /// import com.pulumi.azurenative.datafactory.CredentialOperationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -88,7 +110,7 @@ import 'managed_identity_credential_response.dart';
 ///             .credentialName("exampleCredential")
 ///             .factoryName("exampleFactoryName")
 ///             .properties(ManagedIdentityCredentialArgs.builder()
-///                 .resourceId("/subscriptions/12345678-1234-1234-1234-12345678abc/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami")
+///                 .resourceId("/subscriptions/12345678-1234-1234-1234-123456789012/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami")
 ///                 .type("ManagedIdentity")
 ///                 .build())
 ///             .resourceGroupName("exampleResourceGroup")
@@ -107,7 +129,7 @@ import 'managed_identity_credential_response.dart';
 ///     credentialName: "exampleCredential",
 ///     factoryName: "exampleFactoryName",
 ///     properties: {
-///         resourceId: "/subscriptions/12345678-1234-1234-1234-12345678abc/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami",
+///         resourceId: "/subscriptions/12345678-1234-1234-1234-123456789012/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami",
 ///         type: "ManagedIdentity",
 ///     },
 ///     resourceGroupName: "exampleResourceGroup",
@@ -123,7 +145,7 @@ import 'managed_identity_credential_response.dart';
 ///     credential_name="exampleCredential",
 ///     factory_name="exampleFactoryName",
 ///     properties={
-///         "resource_id": "/subscriptions/12345678-1234-1234-1234-12345678abc/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami",
+///         "resource_id": "/subscriptions/12345678-1234-1234-1234-123456789012/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami",
 ///         "type": "ManagedIdentity",
 ///     },
 ///     resource_group_name="exampleResourceGroup")
@@ -138,7 +160,7 @@ import 'managed_identity_credential_response.dart';
 ///       credentialName: exampleCredential
 ///       factoryName: exampleFactoryName
 ///       properties:
-///         resourceId: /subscriptions/12345678-1234-1234-1234-12345678abc/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami
+///         resourceId: /subscriptions/12345678-1234-1234-1234-123456789012/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami
 ///         type: ManagedIdentity
 ///       resourceGroupName: exampleResourceGroup
 ///
@@ -157,13 +179,15 @@ import 'managed_identity_credential_response.dart';
 class CredentialOperation extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// Etag identifies change in the resource.
+  /// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
   late final pulumi.Output<String> etag;
-  /// The resource name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Properties of credentials.
   late final pulumi.Output<ManagedIdentityCredentialResponse> properties;
-  /// The resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [CredentialOperation].
@@ -184,6 +208,7 @@ class CredentialOperation extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     properties = registerOutput<ManagedIdentityCredentialResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedIdentityCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

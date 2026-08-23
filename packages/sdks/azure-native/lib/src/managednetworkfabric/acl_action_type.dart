@@ -16,4 +16,3 @@ enum AclActionType {
     throw ArgumentError('Unknown AclActionType value: $value');
   }
 }
-

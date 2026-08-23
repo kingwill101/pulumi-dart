@@ -55,6 +55,24 @@ import 'server_communication_link_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_servercommunicationlink" "serverCommunicationLink" {
+///   communication_link_name = "link1"
+///   partner_server          = "sqldcrudtest-test"
+///   resource_group_name     = "sqlcrudtest-7398"
+///   server_name             = "sqlcrudtest-4645"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +81,8 @@ import 'server_communication_link_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.ServerCommunicationLink;
 /// import com.pulumi.azurenative.sql.ServerCommunicationLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_access_bridge_args.dart';
+import 'get_access_bridge_result.dart';
 import 'get_agent_pool_args.dart';
 import 'get_agent_pool_result.dart';
 import 'get_bare_metal_machine_args.dart';
@@ -19,6 +21,8 @@ import 'get_kubernetes_cluster_args.dart';
 import 'get_kubernetes_cluster_feature_args.dart';
 import 'get_kubernetes_cluster_feature_result.dart';
 import 'get_kubernetes_cluster_result.dart';
+import 'get_kubernetes_version_args.dart';
+import 'get_kubernetes_version_result.dart';
 import 'get_l2_network_args.dart';
 import 'get_l2_network_result.dart';
 import 'get_l3_network_args.dart';
@@ -36,11 +40,31 @@ import 'get_virtual_machine_result.dart';
 import 'get_volume_args.dart';
 import 'get_volume_result.dart';
 
+/// Get the properties of the provided access bridge.
+///
+/// Uses Azure REST API version 2026-01-01-preview.
+///
+/// Other available API versions: 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_access_bridge_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAccessBridgeResult> getAccessBridge(
+  GetAccessBridgeArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:networkcloud:getAccessBridge',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAccessBridgeResult.fromMap(result);
+}
+
 /// Get properties of the provided Kubernetes cluster agent pool.
 ///
 /// Uses Azure REST API version 2025-02-01.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_agent_pool_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAgentPoolResult> getAgentPool(
@@ -60,7 +84,7 @@ Future<GetAgentPoolResult> getAgentPool(
 ///
 /// Uses Azure REST API version 2025-02-01.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_bare_metal_machine_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetBareMetalMachineResult> getBareMetalMachine(
@@ -80,7 +104,7 @@ Future<GetBareMetalMachineResult> getBareMetalMachine(
 ///
 /// Uses Azure REST API version 2025-02-01.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_bare_metal_machine_key_set_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetBareMetalMachineKeySetResult> getBareMetalMachineKeySet(
@@ -100,7 +124,7 @@ Future<GetBareMetalMachineKeySetResult> getBareMetalMachineKeySet(
 ///
 /// Uses Azure REST API version 2025-02-01.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_bmc_key_set_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetBmcKeySetResult> getBmcKeySet(
@@ -120,7 +144,7 @@ Future<GetBmcKeySetResult> getBmcKeySet(
 ///
 /// Uses Azure REST API version 2025-02-01.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_cloud_services_network_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCloudServicesNetworkResult> getCloudServicesNetwork(
@@ -140,7 +164,7 @@ Future<GetCloudServicesNetworkResult> getCloudServicesNetwork(
 ///
 /// Uses Azure REST API version 2025-02-01.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_cluster_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetClusterResult> getCluster(
@@ -160,7 +184,7 @@ Future<GetClusterResult> getCluster(
 ///
 /// Uses Azure REST API version 2025-02-01.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_cluster_manager_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetClusterManagerResult> getClusterManager(
@@ -180,7 +204,7 @@ Future<GetClusterManagerResult> getClusterManager(
 ///
 /// Uses Azure REST API version 2025-02-01.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_console_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetConsoleResult> getConsole(
@@ -200,7 +224,7 @@ Future<GetConsoleResult> getConsole(
 ///
 /// Uses Azure REST API version 2025-02-01.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_kubernetes_cluster_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetKubernetesClusterResult> getKubernetesCluster(
@@ -220,7 +244,7 @@ Future<GetKubernetesClusterResult> getKubernetesCluster(
 ///
 /// Uses Azure REST API version 2025-02-01.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_kubernetes_cluster_feature_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetKubernetesClusterFeatureResult> getKubernetesClusterFeature(
@@ -236,11 +260,31 @@ Future<GetKubernetesClusterFeatureResult> getKubernetesClusterFeature(
   return GetKubernetesClusterFeatureResult.fromMap(result);
 }
 
+/// Retrieve the Kubernetes version resource that describes the available Kubernetes versions for deployment.
+///
+/// Uses Azure REST API version 2026-01-01-preview.
+///
+/// Other available API versions: 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_kubernetes_version_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetKubernetesVersionResult> getKubernetesVersion(
+  GetKubernetesVersionArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:networkcloud:getKubernetesVersion',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetKubernetesVersionResult.fromMap(result);
+}
+
 /// Get properties of the provided layer 2 (L2) network.
 ///
 /// Uses Azure REST API version 2025-02-01.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_l2_network_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetL2NetworkResult> getL2Network(
@@ -260,7 +304,7 @@ Future<GetL2NetworkResult> getL2Network(
 ///
 /// Uses Azure REST API version 2025-02-01.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_l3_network_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetL3NetworkResult> getL3Network(
@@ -280,7 +324,7 @@ Future<GetL3NetworkResult> getL3Network(
 ///
 /// Uses Azure REST API version 2025-02-01.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_metrics_configuration_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetMetricsConfigurationResult> getMetricsConfiguration(
@@ -300,7 +344,7 @@ Future<GetMetricsConfigurationResult> getMetricsConfiguration(
 ///
 /// Uses Azure REST API version 2025-02-01.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_rack_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRackResult> getRack(
@@ -320,7 +364,7 @@ Future<GetRackResult> getRack(
 ///
 /// Uses Azure REST API version 2025-02-01.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_storage_appliance_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetStorageApplianceResult> getStorageAppliance(
@@ -340,7 +384,7 @@ Future<GetStorageApplianceResult> getStorageAppliance(
 ///
 /// Uses Azure REST API version 2025-02-01.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_trunked_network_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetTrunkedNetworkResult> getTrunkedNetwork(
@@ -360,7 +404,7 @@ Future<GetTrunkedNetworkResult> getTrunkedNetwork(
 ///
 /// Uses Azure REST API version 2025-02-01.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_virtual_machine_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVirtualMachineResult> getVirtualMachine(
@@ -380,7 +424,7 @@ Future<GetVirtualMachineResult> getVirtualMachine(
 ///
 /// Uses Azure REST API version 2025-02-01.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkcloud_get_volume_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVolumeResult> getVolume(

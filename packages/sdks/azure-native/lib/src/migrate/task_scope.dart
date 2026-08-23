@@ -16,4 +16,3 @@ enum TaskScope {
     throw ArgumentError('Unknown TaskScope value: $value');
   }
 }
-

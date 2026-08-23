@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'azure_resource_manager_managed_identity_properties_response.dart';
+import 'managed_identity_properties_response.dart';
 import 'security_services_response.dart';
 import 'system_data_response.dart';
 
@@ -17,7 +17,7 @@ class GetLocalRulestackResult {
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
   /// The managed service identities assigned to this resource.
-  final AzureResourceManagerManagedIdentityPropertiesResponse? identity;
+  final ManagedIdentityPropertiesResponse? identity;
   /// The geo-location where the resource lives
   final String location;
   /// minimum version
@@ -108,7 +108,7 @@ class GetLocalRulestackResult {
       defaultMode: (() { final guardedValue = map['defaultMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return AzureResourceManagerManagedIdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedIdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: map['location'] as String,
       minAppIdVersion: (() { final guardedValue = map['minAppIdVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
@@ -123,4 +123,3 @@ class GetLocalRulestackResult {
     );
   }
 }
-

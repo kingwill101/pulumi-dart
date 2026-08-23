@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 
 /// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -91,6 +91,39 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_networkcloud_storageappliance" "storageAppliance" {
+///   administrator_credentials = {
+///     password = "{password}"
+///     username = "adminUser"
+///   }
+///   extended_location = {
+///     name = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/clusterExtendedLocationName"
+///     type = "CustomLocation"
+///   }
+///   location                 = "location"
+///   rack_id                  = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/racks/rackName"
+///   rack_slot                = 1
+///   resource_group_name      = "resourceGroupName"
+///   serial_number            = "BM1219XXX"
+///   storage_appliance_name   = "storageApplianceName"
+///   storage_appliance_sku_id = "684E-3B16-399E"
+///   tags = {
+///     "key1" = "myvalue1"
+///     "key2" = "myvalue2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +134,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.networkcloud.StorageApplianceArgs;
 /// import com.pulumi.azurenative.networkcloud.inputs.AdministrativeCredentialsArgs;
 /// import com.pulumi.azurenative.networkcloud.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -184,7 +217,7 @@ import 'system_data_response.dart';
 ///     },
 ///     location="location",
 ///     rack_id="/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/racks/rackName",
-///     rack_slot=1,
+///     rack_slot=float(1),
 ///     resource_group_name="resourceGroupName",
 ///     serial_number="BM1219XXX",
 ///     storage_appliance_name="storageApplianceName",

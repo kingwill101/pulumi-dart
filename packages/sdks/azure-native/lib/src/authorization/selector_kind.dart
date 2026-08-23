@@ -17,4 +17,3 @@ enum SelectorKind {
     throw ArgumentError('Unknown SelectorKind value: $value');
   }
 }
-

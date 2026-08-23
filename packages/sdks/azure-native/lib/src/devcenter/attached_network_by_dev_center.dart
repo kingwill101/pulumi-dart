@@ -58,6 +58,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devcenter_attachednetworkbydevcenter" "attachedNetworkByDevCenter" {
+///   attached_network_connection_name = "network-uswest3"
+///   dev_center_name                  = "Contoso"
+///   network_connection_id            = "/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/rg1/providers/Microsoft.DevCenter/NetworkConnections/network-uswest3"
+///   resource_group_name              = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +84,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.devcenter.AttachedNetworkByDevCenter;
 /// import com.pulumi.azurenative.devcenter.AttachedNetworkByDevCenterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

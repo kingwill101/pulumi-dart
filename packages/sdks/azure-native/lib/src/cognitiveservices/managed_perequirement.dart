@@ -1,3 +1,4 @@
+/// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 enum ManagedPERequirement {
   valueRequired("Required"),
   valueNotRequired("NotRequired"),
@@ -15,4 +16,3 @@ enum ManagedPERequirement {
     throw ArgumentError('Unknown ManagedPERequirement value: $value');
   }
 }
-

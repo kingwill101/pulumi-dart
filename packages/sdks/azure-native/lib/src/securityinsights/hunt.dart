@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 ///
-/// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -95,6 +95,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_hunt" "hunt" {
+///   attack_tactics    = ["Reconnaissance"]
+///   attack_techniques = ["T1595"]
+///   description       = "Log4J Hunt Description"
+///   display_name      = "Log4J new hunt"
+///   hunt_id           = "163e7b2a-a2ec-4041-aaba-d878a38f265f"
+///   hypothesis_status = "Unknown"
+///   labels            = ["Label1", "Label2"]
+///   owner = {
+///     object_id = "873b5263-5d34-4149-b356-ad341b01e123"
+///   }
+///   resource_group_name = "myRg"
+///   status              = "New"
+///   workspace_name      = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +131,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.securityinsights.Hunt;
 /// import com.pulumi.azurenative.securityinsights.HuntArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.HuntOwnerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

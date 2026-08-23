@@ -15,4 +15,3 @@ enum FirewallPolicyFilterRuleCollectionActionType {
     throw ArgumentError('Unknown FirewallPolicyFilterRuleCollectionActionType value: $value');
   }
 }
-

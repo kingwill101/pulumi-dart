@@ -1,7 +1,7 @@
 /// The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
 enum ResourceDiscoveryMode {
-  valueExistingNonCompliant("ExistingNonCompliant"),
-  valueReEvaluateCompliance("ReEvaluateCompliance");
+  existingNonCompliant("ExistingNonCompliant"),
+  reEvaluateCompliance("ReEvaluateCompliance");
 
   const ResourceDiscoveryMode(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ResourceDiscoveryMode {
     throw ArgumentError('Unknown ResourceDiscoveryMode value: $value');
   }
 }
-

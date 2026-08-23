@@ -13,7 +13,7 @@ class ListWorkflowRunActionRepetitionExpressionTracesArgs {
   final pulumi.Input<String> name;
   /// The workflow repetition.
   final pulumi.Input<String> repetitionName;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The workflow run name.
   final pulumi.Input<String> runName;
@@ -24,7 +24,7 @@ class ListWorkflowRunActionRepetitionExpressionTracesArgs {
   /// [actionName] The workflow action name.
   /// [name] Site name.
   /// [repetitionName] The workflow repetition.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [runName] The workflow run name.
   /// [workflowName] The workflow name.
   const ListWorkflowRunActionRepetitionExpressionTracesArgs({
@@ -58,4 +58,3 @@ class ListWorkflowRunActionRepetitionExpressionTracesArgs {
     );
   }
 }
-

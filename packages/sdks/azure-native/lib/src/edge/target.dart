@@ -1,5 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_resource_manager_common_types_extended_location_response.dart';
+import 'extended_location_response.dart';
 import 'system_data_response.dart';
 import 'target_args.dart';
 import 'target_properties_response.dart';
@@ -8,7 +8,7 @@ import 'target_properties_response.dart';
 ///
 /// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -100,6 +100,40 @@ import 'target_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_edge_target" "target" {
+///   extended_location = {
+///     name = "szjrwimeqyiue"
+///     type = "EdgeZone"
+///   }
+///   location = "kckloegmwsjgwtcl"
+///   properties = {
+///     capabilities         = ["grjapghdidoao"]
+///     context_id           = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+///     description          = "riabrxtvhlmizyhffdpjeyhvw"
+///     display_name         = "qjlbshhqzfmwxvvynibkoi"
+///     hierarchy_level      = "octqptfirejhjfavlnfqeiikqx"
+///     solution_scope       = "testname"
+///     state                = "active"
+///     target_specification = {}
+///   }
+///   resource_group_name = "rgconfigurationmanager"
+///   tags = {
+///     "key612" = "vtqzrk"
+///   }
+///   target_name = "testname"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +144,8 @@ import 'target_properties_response.dart';
 /// import com.pulumi.azurenative.edge.TargetArgs;
 /// import com.pulumi.azurenative.edge.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs;
 /// import com.pulumi.azurenative.edge.inputs.TargetPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -249,7 +283,7 @@ class Target extends pulumi.CustomResource {
   /// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   late final pulumi.Output<String> eTag;
   /// The complex type of the extended location.
-  late final pulumi.Output<AzureResourceManagerCommonTypesExtendedLocationResponse?> extendedLocation;
+  late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// The name of the resource
@@ -279,7 +313,7 @@ class Target extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     eTag = registerOutput<String>('eTag');
-    extendedLocation = registerOutput<AzureResourceManagerCommonTypesExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     properties = registerOutput<TargetPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -80,6 +80,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_apm" "apm" {
+///   apm_name = "myappinsights"
+///   properties = {
+///     properties = {
+///       "any-string"    = "any-string"
+///       "sampling-rate" = "12.0"
+///     }
+///     secrets = {
+///       "connection-string" = "XXXXXXXXXXXXXXXXX=XXXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXX;XXXXXXXXXXXXXXXXX=XXXXXXXXXXXXXXXXXXX"
+///     }
+///     type = "ApplicationInsights"
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +116,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.Apm;
 /// import com.pulumi.azurenative.appplatform.ApmArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ApmPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

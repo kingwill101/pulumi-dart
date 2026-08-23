@@ -15,4 +15,3 @@ enum KeyVaultNetworkAccessTypes {
     throw ArgumentError('Unknown KeyVaultNetworkAccessTypes value: $value');
   }
 }
-

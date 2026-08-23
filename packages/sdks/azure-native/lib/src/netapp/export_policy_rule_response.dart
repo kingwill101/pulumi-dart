@@ -24,14 +24,6 @@ class ExportPolicyRuleResponse {
   final pulumi.Input<bool>? kerberos5ReadOnly;
   /// Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
   final pulumi.Input<bool>? kerberos5ReadWrite;
-  /// Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
-  final pulumi.Input<bool>? kerberos5iReadOnly;
-  /// Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
-  final pulumi.Input<bool>? kerberos5iReadWrite;
-  /// Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
-  final pulumi.Input<bool>? kerberos5pReadOnly;
-  /// Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
-  final pulumi.Input<bool>? kerberos5pReadWrite;
   /// Allows NFSv3 protocol. Enable only for NFSv3 type volumes
   final pulumi.Input<bool>? nfsv3;
   /// Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
@@ -54,10 +46,6 @@ class ExportPolicyRuleResponse {
   /// [kerberos5PReadWrite] Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
   /// [kerberos5ReadOnly] Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
   /// [kerberos5ReadWrite] Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
-  /// [kerberos5iReadOnly] Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
-  /// [kerberos5iReadWrite] Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
-  /// [kerberos5pReadOnly] Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
-  /// [kerberos5pReadWrite] Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
   /// [nfsv3] Allows NFSv3 protocol. Enable only for NFSv3 type volumes
   /// [nfsv41] Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
   /// [ruleIndex] Order index
@@ -74,10 +62,6 @@ class ExportPolicyRuleResponse {
     this.kerberos5PReadWrite,
     this.kerberos5ReadOnly,
     this.kerberos5ReadWrite,
-    this.kerberos5iReadOnly,
-    this.kerberos5iReadWrite,
-    this.kerberos5pReadOnly,
-    this.kerberos5pReadWrite,
     this.nfsv3,
     this.nfsv41,
     this.ruleIndex,
@@ -97,10 +81,6 @@ class ExportPolicyRuleResponse {
       'kerberos5PReadWrite': ?kerberos5PReadWrite,
       'kerberos5ReadOnly': ?kerberos5ReadOnly,
       'kerberos5ReadWrite': ?kerberos5ReadWrite,
-      'kerberos5iReadOnly': ?kerberos5iReadOnly,
-      'kerberos5iReadWrite': ?kerberos5iReadWrite,
-      'kerberos5pReadOnly': ?kerberos5pReadOnly,
-      'kerberos5pReadWrite': ?kerberos5pReadWrite,
       'nfsv3': ?nfsv3,
       'nfsv41': ?nfsv41,
       'ruleIndex': ?ruleIndex,
@@ -121,10 +101,6 @@ class ExportPolicyRuleResponse {
       kerberos5PReadWrite: (() { final guardedValue = map['kerberos5PReadWrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kerberos5ReadOnly: (() { final guardedValue = map['kerberos5ReadOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kerberos5ReadWrite: (() { final guardedValue = map['kerberos5ReadWrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      kerberos5iReadOnly: (() { final guardedValue = map['kerberos5iReadOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      kerberos5iReadWrite: (() { final guardedValue = map['kerberos5iReadWrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      kerberos5pReadOnly: (() { final guardedValue = map['kerberos5pReadOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      kerberos5pReadWrite: (() { final guardedValue = map['kerberos5pReadWrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       nfsv3: (() { final guardedValue = map['nfsv3']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       nfsv41: (() { final guardedValue = map['nfsv41']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ruleIndex: (() { final guardedValue = map['ruleIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
@@ -133,4 +109,3 @@ class ExportPolicyRuleResponse {
     );
   }
 }
-

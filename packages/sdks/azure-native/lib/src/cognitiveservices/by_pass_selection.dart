@@ -15,4 +15,3 @@ enum ByPassSelection {
     throw ArgumentError('Unknown ByPassSelection value: $value');
   }
 }
-

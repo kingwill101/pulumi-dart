@@ -16,4 +16,3 @@ enum RoutePolicyActionType {
     throw ArgumentError('Unknown RoutePolicyActionType value: $value');
   }
 }
-

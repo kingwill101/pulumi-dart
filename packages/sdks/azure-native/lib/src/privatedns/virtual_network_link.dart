@@ -75,6 +75,31 @@ import 'virtual_network_link_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_privatedns_virtualnetworklink" "virtualNetworkLink" {
+///   location             = "Global"
+///   private_zone_name    = "privatezone1.com"
+///   registration_enabled = false
+///   resource_group_name  = "resourceGroup1"
+///   tags = {
+///     "key1" = "value1"
+///   }
+///   virtual_network = {
+///     id = "/subscriptions/virtualNetworkSubscriptionId/resourceGroups/virtualNetworkResourceGroup/providers/Microsoft.Network/virtualNetworks/virtualNetworkName"
+///   }
+///   virtual_network_link_name = "virtualNetworkLink1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +109,8 @@ import 'virtual_network_link_args.dart';
 /// import com.pulumi.azurenative.privatedns.VirtualNetworkLink;
 /// import com.pulumi.azurenative.privatedns.VirtualNetworkLinkArgs;
 /// import com.pulumi.azurenative.privatedns.inputs.SubResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

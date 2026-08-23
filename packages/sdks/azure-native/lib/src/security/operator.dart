@@ -1,14 +1,14 @@
 /// A valid comparer operator to use. A case-insensitive comparison will be applied for String PropertyType.
 enum Operator {
-  valueEquals("Equals"),
-  valueGreaterThan("GreaterThan"),
-  valueGreaterThanOrEqualTo("GreaterThanOrEqualTo"),
-  valueLesserThan("LesserThan"),
-  valueLesserThanOrEqualTo("LesserThanOrEqualTo"),
-  valueNotEquals("NotEquals"),
-  valueContains("Contains"),
-  valueStartsWith("StartsWith"),
-  valueEndsWith("EndsWith");
+  equals("Equals"),
+  greaterThan("GreaterThan"),
+  greaterThanOrEqualTo("GreaterThanOrEqualTo"),
+  lesserThan("LesserThan"),
+  lesserThanOrEqualTo("LesserThanOrEqualTo"),
+  notEquals("NotEquals"),
+  contains("Contains"),
+  startsWith("StartsWith"),
+  endsWith("EndsWith");
 
   const Operator(this.wireValue);
   final String wireValue;
@@ -22,4 +22,3 @@ enum Operator {
     throw ArgumentError('Unknown Operator value: $value');
   }
 }
-

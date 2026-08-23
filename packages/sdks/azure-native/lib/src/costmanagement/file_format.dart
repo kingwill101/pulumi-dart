@@ -14,4 +14,3 @@ enum FileFormat {
     throw ArgumentError('Unknown FileFormat value: $value');
   }
 }
-

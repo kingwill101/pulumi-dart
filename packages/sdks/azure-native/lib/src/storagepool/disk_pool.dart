@@ -98,6 +98,38 @@ import 'system_metadata_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storagepool_diskpool" "diskPool" {
+///   availability_zones = ["1"]
+///   disk_pool_name     = "myDiskPool"
+///   disks {
+///     id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vm-name_DataDisk_0"
+///   }
+///   disks {
+///     id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vm-name_DataDisk_1"
+///   }
+///   location            = "westus"
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     name = "Basic_V1"
+///     tier = "Basic"
+///   }
+///   subnet_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet"
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -108,8 +140,8 @@ import 'system_metadata_response.dart';
 /// import com.pulumi.azurenative.storagepool.DiskPoolArgs;
 /// import com.pulumi.azurenative.storagepool.inputs.DiskArgs;
 /// import com.pulumi.azurenative.storagepool.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

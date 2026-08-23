@@ -31,4 +31,3 @@ enum DeliveryRuleConditionParametersType {
     throw ArgumentError('Unknown DeliveryRuleConditionParametersType value: $value');
   }
 }
-

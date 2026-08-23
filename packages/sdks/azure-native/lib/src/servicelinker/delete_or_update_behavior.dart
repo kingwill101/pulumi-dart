@@ -15,4 +15,3 @@ enum DeleteOrUpdateBehavior {
     throw ArgumentError('Unknown DeleteOrUpdateBehavior value: $value');
   }
 }
-

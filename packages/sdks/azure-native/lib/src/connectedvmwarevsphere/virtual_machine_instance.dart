@@ -94,6 +94,36 @@ import 'virtual_machine_instance_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_connectedvmwarevsphere_virtualmachineinstance" "virtualMachineInstance" {
+///   extended_location = {
+///     name = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.ExtendedLocation/customLocations/contoso"
+///     type = "customLocation"
+///   }
+///   hardware_profile = {
+///     memory_size_mb = 4196
+///     num_cp_us      = 4
+///   }
+///   infrastructure_profile = {
+///     template_id = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.ConnectedVMwarevSphere/VirtualMachineTemplates/WebFrontEndTemplate"
+///     v_center_id = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/ContosoVCenter"
+///   }
+///   placement_profile = {
+///     resource_pool_id = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.ConnectedVMwarevSphere/ResourcePools/HRPool"
+///   }
+///   resource_uri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.HybridCompute/machines/DemoVM"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +136,8 @@ import 'virtual_machine_instance_args.dart';
 /// import com.pulumi.azurenative.connectedvmwarevsphere.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.connectedvmwarevsphere.inputs.InfrastructureProfileArgs;
 /// import com.pulumi.azurenative.connectedvmwarevsphere.inputs.PlacementProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

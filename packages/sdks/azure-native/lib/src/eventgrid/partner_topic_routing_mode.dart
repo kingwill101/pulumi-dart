@@ -16,4 +16,3 @@ enum PartnerTopicRoutingMode {
     throw ArgumentError('Unknown PartnerTopicRoutingMode value: $value');
   }
 }
-

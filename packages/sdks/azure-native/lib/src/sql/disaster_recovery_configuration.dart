@@ -53,6 +53,23 @@ import 'disaster_recovery_configuration_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_disasterrecoveryconfiguration" "disasterRecoveryConfiguration" {
+///   disaster_recovery_configuration_name = "Default"
+///   resource_group_name                  = "sqlcrudtest-4799"
+///   server_name                          = "sqlcrudtest-5961"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -61,8 +78,8 @@ import 'disaster_recovery_configuration_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.DisasterRecoveryConfiguration;
 /// import com.pulumi.azurenative.sql.DisasterRecoveryConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

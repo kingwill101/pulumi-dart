@@ -8,22 +8,22 @@ import 'account_sku.dart';
 /// {@endtemplate}
 /// {@macro pulumi_codesigning_code_signing_account_args_doc}
 class CodeSigningAccountArgs {
-  /// Trusted Signing account name.
+  /// Artifact Signing account name.
   final pulumi.Input<String>? accountName;
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// SKU of the trusted signing account.
+  /// SKU of the artifact signing account.
   final pulumi.Input<AccountSku>? sku;
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [CodeSigningAccountArgs].
-  /// [accountName] Trusted Signing account name.
+  /// [accountName] Artifact Signing account name.
   /// [location] The geo-location where the resource lives
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  /// [sku] SKU of the trusted signing account.
+  /// [sku] SKU of the artifact signing account.
   /// [tags] Resource tags.
   const CodeSigningAccountArgs({
     this.accountName,
@@ -53,4 +53,3 @@ class CodeSigningAccountArgs {
     );
   }
 }
-

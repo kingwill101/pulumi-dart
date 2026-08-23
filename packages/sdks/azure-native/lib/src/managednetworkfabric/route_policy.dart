@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -199,6 +199,66 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_managednetworkfabric_routepolicy" "routePolicy" {
+///   address_family_type = "IPv4"
+///   annotation          = "annotation"
+///   default_action      = "Deny"
+///   location            = "eastus"
+///   network_fabric_id   = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric"
+///   resource_group_name = "example-rg"
+///   route_policy_name   = "example-routePolicy"
+///   statements {
+///     action = {
+///       action_type = "Permit"
+///       ip_community_properties = {
+///         add = {
+///           ip_community_ids = ["/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipCommunities/example-ipCommunity"]
+///         }
+///         delete = {
+///           ip_community_ids = ["/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipCommunities/example-ipCommunity"]
+///         }
+///         set = {
+///           ip_community_ids = ["/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipCommunities/example-ipCommunity"]
+///         }
+///       }
+///       ip_extended_community_properties = {
+///         add = {
+///           ip_extended_community_ids = ["/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/example-ipExtendedCommunity"]
+///         }
+///         delete = {
+///           ip_extended_community_ids = ["/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/example-ipExtendedCommunity"]
+///         }
+///         set = {
+///           ip_extended_community_ids = ["/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/example-ipExtendedCommunity"]
+///         }
+///       }
+///       local_preference = 20
+///     }
+///     annotation = "annotation"
+///     condition = {
+///       ip_community_ids          = ["/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipCommunities/example-ipCommunity"]
+///       ip_extended_community_ids = ["/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/example-ipExtendedCommunity"]
+///       ip_prefix_id              = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/example-ipPrefix"
+///       type                      = "Or"
+///     }
+///     sequence_number = 7
+///   }
+///   tags = {
+///     "keyID" = "keyValue"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -214,8 +274,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.ActionIpExtendedCommunityPropertiesArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.IpExtendedCommunityIdListArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.StatementConditionPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -371,7 +431,7 @@ import 'system_data_response.dart';
 ///                     "ip_extended_community_ids": ["/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/example-ipExtendedCommunity"],
 ///                 },
 ///             },
-///             "local_preference": 20,
+///             "local_preference": float(20),
 ///         },
 ///         "annotation": "annotation",
 ///         "condition": {
@@ -380,7 +440,7 @@ import 'system_data_response.dart';
 ///             "ip_prefix_id": "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/example-ipPrefix",
 ///             "type": azure_native.managednetworkfabric.RoutePolicyConditionType.OR_,
 ///         },
-///         "sequence_number": 7,
+///         "sequence_number": float(7),
 ///     }],
 ///     tags={
 ///         "keyID": "keyValue",

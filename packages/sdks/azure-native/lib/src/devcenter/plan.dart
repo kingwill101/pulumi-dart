@@ -71,6 +71,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devcenter_plan" "plan" {
+///   location            = "centralus"
+///   plan_name           = "ContosoPlan"
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "Preview"
+///   }
+///   tags = {
+///     "CostCode" = "12345"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +103,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.devcenter.Plan;
 /// import com.pulumi.azurenative.devcenter.PlanArgs;
 /// import com.pulumi.azurenative.devcenter.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -7,7 +7,7 @@ import 'web_application_firewall_policy_args.dart';
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -756,6 +756,226 @@ import 'web_application_firewall_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_webapplicationfirewallpolicy" "webApplicationFirewallPolicy" {
+///   custom_rules {
+///     action = "Block"
+///     match_conditions {
+///       match_values = ["192.168.1.0/24", "10.0.0.0/24"]
+///       match_variables {
+///         variable_name = "RemoteAddr"
+///       }
+///       operator = "IPMatch"
+///     }
+///     name      = "Rule1"
+///     priority  = 1
+///     rule_type = "MatchRule"
+///   }
+///   custom_rules {
+///     action = "Block"
+///     match_conditions {
+///       match_values = ["192.168.1.0/24"]
+///       match_variables {
+///         variable_name = "RemoteAddr"
+///       }
+///       operator = "IPMatch"
+///     }
+///     match_conditions {
+///       match_values = ["Windows"]
+///       match_variables {
+///         selector      = "UserAgent"
+///         variable_name = "RequestHeaders"
+///       }
+///       operator = "Contains"
+///     }
+///     name      = "Rule2"
+///     priority  = 2
+///     rule_type = "MatchRule"
+///   }
+///   custom_rules {
+///     action = "Block"
+///     group_by_user_session {
+///       group_by_variables {
+///         variable_name = "ClientAddr"
+///       }
+///     }
+///     match_conditions {
+///       match_values = ["192.168.1.0/24", "10.0.0.0/24"]
+///       match_variables {
+///         variable_name = "RemoteAddr"
+///       }
+///       negation_conditon = true
+///       operator          = "IPMatch"
+///     }
+///     name                 = "RateLimitRule3"
+///     priority             = 3
+///     rate_limit_duration  = "OneMin"
+///     rate_limit_threshold = 10
+///     rule_type            = "RateLimitRule"
+///   }
+///   custom_rules {
+///     action = "JSChallenge"
+///     match_conditions {
+///       match_values = ["192.168.1.0/24"]
+///       match_variables {
+///         variable_name = "RemoteAddr"
+///       }
+///       operator = "IPMatch"
+///     }
+///     match_conditions {
+///       match_values = ["Bot"]
+///       match_variables {
+///         selector      = "UserAgent"
+///         variable_name = "RequestHeaders"
+///       }
+///       operator = "Contains"
+///     }
+///     name      = "Rule4"
+///     priority  = 4
+///     rule_type = "MatchRule"
+///   }
+///   location = "WestUs"
+///   managed_rules = {
+///     exceptions = [{
+///       "exceptionManagedRuleSets" = [{
+///         "ruleSetType"    = "OWASP"
+///         "ruleSetVersion" = "3.2"
+///       }]
+///       "matchVariable"      = "RequestURI"
+///       "valueMatchOperator" = "Contains"
+///       "values"             = ["health", "account/images", "default.aspx"]
+///       }, {
+///       "exceptionManagedRuleSets" = [{
+///         "ruleGroups" = [{
+///           "ruleGroupName" = "REQUEST-932-APPLICATION-ATTACK-RCE"
+///         }]
+///         "ruleSetType"    = "OWASP"
+///         "ruleSetVersion" = "3.2"
+///       }]
+///       "matchVariable"         = "RequestHeader"
+///       "selector"              = "User-Agent"
+///       "selectorMatchOperator" = "StartsWith"
+///       "valueMatchOperator"    = "Contains"
+///       "values"                = ["Mozilla/5.0", "Chrome/122.0.0.0"]
+///       }, {
+///       "exceptionManagedRuleSets" = [{
+///         "ruleGroups" = [{
+///           "ruleGroupName" = "BadBots"
+///           "rules" = [{
+///             "ruleId" = "100100"
+///           }]
+///         }]
+///         "ruleSetType"    = "Microsoft_BotManagerRuleSet"
+///         "ruleSetVersion" = "1.0"
+///       }]
+///       "matchVariable"      = "RemoteAddr"
+///       "valueMatchOperator" = "IPMatch"
+///       "values"             = ["1.2.3.4", "10.0.0.1/6"]
+///     }]
+///     exclusions = [{
+///       "exclusionManagedRuleSets" = [{
+///         "ruleGroups" = [{
+///           "ruleGroupName" = "REQUEST-930-APPLICATION-ATTACK-LFI"
+///           "rules" = [{
+///             "ruleId" = "930120"
+///           }]
+///           }, {
+///           "ruleGroupName" = "REQUEST-932-APPLICATION-ATTACK-RCE"
+///         }]
+///         "ruleSetType"    = "OWASP"
+///         "ruleSetVersion" = "3.2"
+///       }]
+///       "matchVariable"         = "RequestArgNames"
+///       "selector"              = "hello"
+///       "selectorMatchOperator" = "StartsWith"
+///       }, {
+///       "exclusionManagedRuleSets" = [{
+///         "ruleGroups"     = []
+///         "ruleSetType"    = "OWASP"
+///         "ruleSetVersion" = "3.1"
+///       }]
+///       "matchVariable"         = "RequestArgNames"
+///       "selector"              = "hello"
+///       "selectorMatchOperator" = "EndsWith"
+///       }, {
+///       "matchVariable"         = "RequestArgNames"
+///       "selector"              = "test"
+///       "selectorMatchOperator" = "StartsWith"
+///       }, {
+///       "matchVariable"         = "RequestArgValues"
+///       "selector"              = "test"
+///       "selectorMatchOperator" = "StartsWith"
+///     }]
+///     managed_rule_sets = [{
+///       "ruleGroupOverrides" = [{
+///         "ruleGroupName" = "REQUEST-931-APPLICATION-ATTACK-RFI"
+///         "rules" = [{
+///           "action" = "Log"
+///           "ruleId" = "931120"
+///           "state"  = "Enabled"
+///           }, {
+///           "action" = "AnomalyScoring"
+///           "ruleId" = "931130"
+///           "state"  = "Disabled"
+///         }]
+///       }]
+///       "ruleSetType"    = "OWASP"
+///       "ruleSetVersion" = "3.2"
+///       }, {
+///       "ruleGroupOverrides" = [{
+///         "ruleGroupName" = "UnknownBots"
+///         "rules" = [{
+///           "action" = "JSChallenge"
+///           "ruleId" = "300700"
+///           "state"  = "Enabled"
+///         }]
+///       }]
+///       "ruleSetType"    = "Microsoft_BotManagerRuleSet"
+///       "ruleSetVersion" = "1.0"
+///       }, {
+///       "ruleGroupOverrides" = [{
+///         "ruleGroupName" = "ExcessiveRequests"
+///         "rules" = [{
+///           "action"      = "Block"
+///           "ruleId"      = "500100"
+///           "sensitivity" = "High"
+///           "state"       = "Enabled"
+///         }]
+///       }]
+///       "ruleSetType"    = "Microsoft_HTTPDDoSRuleSet"
+///       "ruleSetVersion" = "1.0"
+///     }]
+///   }
+///   policy_name = "Policy1"
+///   policy_settings = {
+///     js_challenge_cookie_expiration_in_mins = 100
+///     log_scrubbing = {
+///       scrubbing_rules = [{
+///         "matchVariable"         = "RequestArgNames"
+///         "selector"              = "test"
+///         "selectorMatchOperator" = "Equals"
+///         "state"                 = "Enabled"
+///         }, {
+///         "matchVariable"         = "RequestIPAddress"
+///         "selectorMatchOperator" = "EqualsAny"
+///         "state"                 = "Enabled"
+///       }]
+///       state = "Enabled"
+///     }
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -768,8 +988,8 @@ import 'web_application_firewall_policy_args.dart';
 /// import com.pulumi.azurenative.network.inputs.ManagedRulesDefinitionArgs;
 /// import com.pulumi.azurenative.network.inputs.PolicySettingsArgs;
 /// import com.pulumi.azurenative.network.inputs.PolicySettingsLogScrubbingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

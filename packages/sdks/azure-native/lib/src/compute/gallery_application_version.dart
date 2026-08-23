@@ -9,7 +9,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2022-03-03.
 ///
-/// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03, 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -151,6 +151,58 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_galleryapplicationversion" "galleryApplicationVersion" {
+///   gallery_application_name         = "myGalleryApplicationName"
+///   gallery_application_version_name = "1.0.0"
+///   gallery_name                     = "myGalleryName"
+///   location                         = "West US"
+///   publishing_profile = {
+///     custom_actions = [{
+///       "description" = "This is the custom action description."
+///       "name"        = "myCustomAction"
+///       "parameters" = [{
+///         "defaultValue" = "default value of parameter."
+///         "description"  = "This is the description of the parameter"
+///         "name"         = "myCustomActionParameter"
+///         "required"     = false
+///         "type"         = "String"
+///       }]
+///       "script" = "myCustomActionScript"
+///     }]
+///     end_of_life_date = "2019-07-01T07:00:00Z"
+///     manage_actions = {
+///       install = "powershell -command \"Expand-Archive -Path package.zip -DestinationPath C:\\package\""
+///       remove  = "del C:\\package "
+///     }
+///     replica_count = 1
+///     source = {
+///       media_link = "https://mystorageaccount.blob.core.windows.net/mycontainer/package.zip?{sasKey}"
+///     }
+///     storage_account_type = "Standard_LRS"
+///     target_regions = [{
+///       "excludeFromLatest"    = false
+///       "name"                 = "West US"
+///       "regionalReplicaCount" = 1
+///       "storageAccountType"   = "Standard_LRS"
+///     }]
+///   }
+///   resource_group_name = "myResourceGroup"
+///   safety_profile = {
+///     allow_deletion_of_replicated_locations = false
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -163,8 +215,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UserArtifactManageArgs;
 /// import com.pulumi.azurenative.compute.inputs.UserArtifactSourceArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryApplicationVersionSafetyProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

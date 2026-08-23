@@ -5,7 +5,7 @@ import 'managed_database_args.dart';
 ///
 /// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
 ///
-/// Other available API versions: 2017-03-01-preview, 2018-06-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2017-03-01-preview, 2018-06-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -69,6 +69,30 @@ import 'managed_database_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_manageddatabase" "managedDatabase" {
+///   auto_complete_restore       = true
+///   collation                   = "SQL_Latin1_General_CP1_CI_AS"
+///   create_mode                 = "RestoreExternalBackup"
+///   database_name               = "managedDatabase"
+///   last_backup_name            = "last_backup_name"
+///   location                    = "southeastasia"
+///   managed_instance_name       = "managedInstance"
+///   resource_group_name         = "Default-SQL-SouthEastAsia"
+///   storage_container_sas_token = "sv=2015-12-11&sr=c&sp=rl&sig=1234"
+///   storage_container_uri       = "https://myaccountname.blob.core.windows.net/backups"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +101,8 @@ import 'managed_database_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.ManagedDatabase;
 /// import com.pulumi.azurenative.sql.ManagedDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -224,6 +248,30 @@ import 'managed_database_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_manageddatabase" "managedDatabase" {
+///   auto_complete_restore      = true
+///   collation                  = "SQL_Latin1_General_CP1_CI_AS"
+///   create_mode                = "RestoreExternalBackup"
+///   database_name              = "managedDatabase"
+///   last_backup_name           = "last_backup_name"
+///   location                   = "southeastasia"
+///   managed_instance_name      = "managedInstance"
+///   resource_group_name        = "Default-SQL-SouthEastAsia"
+///   storage_container_identity = "ManagedIdentity"
+///   storage_container_uri      = "https://myaccountname.blob.core.windows.net/backups"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -232,8 +280,8 @@ import 'managed_database_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.ManagedDatabase;
 /// import com.pulumi.azurenative.sql.ManagedDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -371,6 +419,26 @@ import 'managed_database_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_manageddatabase" "managedDatabase" {
+///   create_mode             = "Recovery"
+///   database_name           = "testdb_recovered"
+///   location                = "southeastasia"
+///   managed_instance_name   = "server1"
+///   recoverable_database_id = "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/Default-SQL-WestEurope/providers/Microsoft.Sql/managedInstances/testsvr/recoverableDatabases/testdb"
+///   resource_group_name     = "Default-SQL-SouthEastAsia"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -379,8 +447,8 @@ import 'managed_database_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.ManagedDatabase;
 /// import com.pulumi.azurenative.sql.ManagedDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -506,6 +574,28 @@ import 'managed_database_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_manageddatabase" "managedDatabase" {
+///   collation                   = "SQL_Latin1_General_CP1_CI_AS"
+///   create_mode                 = "RestoreExternalBackup"
+///   database_name               = "managedDatabase"
+///   location                    = "southeastasia"
+///   managed_instance_name       = "managedInstance"
+///   resource_group_name         = "Default-SQL-SouthEastAsia"
+///   storage_container_sas_token = "sv=2015-12-11&sr=c&sp=rl&sig=1234"
+///   storage_container_uri       = "https://myaccountname.blob.core.windows.net/backups"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -514,8 +604,8 @@ import 'managed_database_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.ManagedDatabase;
 /// import com.pulumi.azurenative.sql.ManagedDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -649,6 +739,28 @@ import 'managed_database_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_manageddatabase" "managedDatabase" {
+///   create_mode                                   = "PointInTimeRestore"
+///   cross_subscription_source_database_id         = "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/Default-SQL-SouthEastAsia/providers/Microsoft.Sql/managedInstances/testsvr2/databases/testdb"
+///   cross_subscription_target_managed_instance_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default-SQL-SouthEastAsia/providers/Microsoft.Sql/managedInstances/testsvr"
+///   database_name                                 = "managedDatabase"
+///   location                                      = "southeastasia"
+///   managed_instance_name                         = "managedInstance"
+///   resource_group_name                           = "Default-SQL-SouthEastAsia"
+///   restore_point_in_time                         = "2017-07-14T05:35:31.503Z"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -657,8 +769,8 @@ import 'managed_database_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.ManagedDatabase;
 /// import com.pulumi.azurenative.sql.ManagedDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -790,6 +902,27 @@ import 'managed_database_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_manageddatabase" "managedDatabase" {
+///   create_mode           = "PointInTimeRestore"
+///   database_name         = "managedDatabase"
+///   location              = "southeastasia"
+///   managed_instance_name = "managedInstance"
+///   resource_group_name   = "Default-SQL-SouthEastAsia"
+///   restore_point_in_time = "2017-07-14T05:35:31.503Z"
+///   source_database_id    = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default-SQL-SouthEastAsia/providers/Microsoft.Sql/managedInstances/testsvr/databases/testdb"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -798,8 +931,8 @@ import 'managed_database_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.ManagedDatabase;
 /// import com.pulumi.azurenative.sql.ManagedDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -923,6 +1056,25 @@ import 'managed_database_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_manageddatabase" "managedDatabase" {
+///   database_name         = "managedDatabase"
+///   is_ledger_on          = true
+///   location              = "southeastasia"
+///   managed_instance_name = "managedInstance"
+///   resource_group_name   = "Default-SQL-SouthEastAsia"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -931,8 +1083,8 @@ import 'managed_database_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.ManagedDatabase;
 /// import com.pulumi.azurenative.sql.ManagedDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1053,6 +1205,27 @@ import 'managed_database_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_manageddatabase" "managedDatabase" {
+///   database_name         = "managedDatabase"
+///   location              = "southeastasia"
+///   managed_instance_name = "managedInstance"
+///   resource_group_name   = "Default-SQL-SouthEastAsia"
+///   tags = {
+///     "tagKey1" = "TagValue1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1061,8 +1234,8 @@ import 'managed_database_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.ManagedDatabase;
 /// import com.pulumi.azurenative.sql.ManagedDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1181,6 +1354,24 @@ import 'managed_database_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_manageddatabase" "managedDatabase" {
+///   database_name         = "managedDatabase"
+///   location              = "southeastasia"
+///   managed_instance_name = "managedInstance"
+///   resource_group_name   = "Default-SQL-SouthEastAsia"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1189,8 +1380,8 @@ import 'managed_database_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.ManagedDatabase;
 /// import com.pulumi.azurenative.sql.ManagedDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

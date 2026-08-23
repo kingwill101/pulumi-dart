@@ -64,4 +64,3 @@ class AwsEc2InstanceStatusPropertiesResponse {
     );
   }
 }
-

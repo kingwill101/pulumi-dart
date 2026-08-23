@@ -1,10 +1,10 @@
 /// Aggregation type. Relevant and required only for rules of the kind LogAlert.
 enum TimeAggregation {
-  valueCount("Count"),
-  valueAverage("Average"),
-  valueMinimum("Minimum"),
-  valueMaximum("Maximum"),
-  valueTotal("Total");
+  count("Count"),
+  average("Average"),
+  minimum("Minimum"),
+  maximum("Maximum"),
+  total("Total");
 
   const TimeAggregation(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum TimeAggregation {
     throw ArgumentError('Unknown TimeAggregation value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum LogGroupClass {
     throw ArgumentError('Unknown LogGroupClass value: $value');
   }
 }
-

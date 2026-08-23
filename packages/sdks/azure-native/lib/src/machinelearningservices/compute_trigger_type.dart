@@ -1,7 +1,7 @@
 /// [Required] The schedule trigger type.
 enum ComputeTriggerType {
-  valueRecurrence("Recurrence"),
-  valueCron("Cron");
+  recurrence("Recurrence"),
+  cron("Cron");
 
   const ComputeTriggerType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ComputeTriggerType {
     throw ArgumentError('Unknown ComputeTriggerType value: $value');
   }
 }
-

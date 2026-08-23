@@ -1,8 +1,8 @@
 /// Determines whether the setting is enabled, disabled or report only.
 enum PIMOnlyMode {
-  valueDisabled("Disabled"),
-  valueEnabled("Enabled"),
-  valueReportOnly("ReportOnly");
+  disabled("Disabled"),
+  enabled("Enabled"),
+  reportOnly("ReportOnly");
 
   const PIMOnlyMode(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum PIMOnlyMode {
     throw ArgumentError('Unknown PIMOnlyMode value: $value');
   }
 }
-

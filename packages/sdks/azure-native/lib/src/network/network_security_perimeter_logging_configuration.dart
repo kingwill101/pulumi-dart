@@ -6,7 +6,7 @@ import 'nsp_logging_configuration_properties_response.dart';
 ///
 /// Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-06-01-preview.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -70,6 +70,26 @@ import 'nsp_logging_configuration_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_networksecurityperimeterloggingconfiguration" "networkSecurityPerimeterLoggingConfiguration" {
+///   logging_configuration_name      = "instance"
+///   network_security_perimeter_name = "nsp1"
+///   properties = {
+///     enabled_log_categories = ["NspPublicInboundPerimeterRulesDenied", "NspPublicOutboundPerimeterRulesDenied"]
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +99,8 @@ import 'nsp_logging_configuration_properties_response.dart';
 /// import com.pulumi.azurenative.network.NetworkSecurityPerimeterLoggingConfiguration;
 /// import com.pulumi.azurenative.network.NetworkSecurityPerimeterLoggingConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.NspLoggingConfigurationPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

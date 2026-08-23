@@ -16,4 +16,3 @@ enum JsonWebKeyEncryptionAlgorithm {
     throw ArgumentError('Unknown JsonWebKeyEncryptionAlgorithm value: $value');
   }
 }
-

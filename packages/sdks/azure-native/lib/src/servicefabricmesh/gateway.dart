@@ -178,6 +178,67 @@ import 'network_ref_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabricmesh_gateway" "gateway" {
+///   description = "Service Fabric Mesh sample gateway."
+///   destination_network = {
+///     name = "helloWorldNetwork"
+///   }
+///   gateway_resource_name = "sampleGateway"
+///   http {
+///     hosts {
+///       name = "contoso.com"
+///       routes {
+///         destination = {
+///           application_name = "httpHelloWorldApp"
+///           endpoint_name    = "indexHttpEndpoint"
+///           service_name     = "indexService"
+///         }
+///         match = {
+///           headers = [{
+///             "name"  = "accept"
+///             "type"  = "exact"
+///             "value" = "application/json"
+///           }]
+///           path = {
+///             rewrite = "/"
+///             type    = "prefix"
+///             value   = "/index"
+///           }
+///         }
+///         name = "index"
+///       }
+///     }
+///     name = "contosoWebsite"
+///     port = 8081
+///   }
+///   location            = "EastUS"
+///   resource_group_name = "sbz_demo"
+///   source_network = {
+///     name = "Open"
+///   }
+///   tags = {}
+///   tcp {
+///     destination = {
+///       application_name = "helloWorldApp"
+///       endpoint_name    = "helloWorldListener"
+///       service_name     = "helloWorldService"
+///     }
+///     name = "web"
+///     port = 80
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -190,8 +251,8 @@ import 'network_ref_response.dart';
 /// import com.pulumi.azurenative.servicefabricmesh.inputs.HttpConfigArgs;
 /// import com.pulumi.azurenative.servicefabricmesh.inputs.TcpConfigArgs;
 /// import com.pulumi.azurenative.servicefabricmesh.inputs.GatewayDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

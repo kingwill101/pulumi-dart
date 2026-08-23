@@ -16,4 +16,3 @@ enum ReservedInstance {
     throw ArgumentError('Unknown ReservedInstance value: $value');
   }
 }
-

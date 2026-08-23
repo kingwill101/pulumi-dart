@@ -12,7 +12,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -104,6 +104,41 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_containerappsauthconfig" "containerAppsAuthConfig" {
+///   auth_config_name   = "current"
+///   container_app_name = "testcanadacentral"
+///   encryption_settings = {
+///     container_app_auth_encryption_secret_name = "testEncryptionSecretName"
+///     container_app_auth_signing_secret_name    = "testSigningSecretName"
+///   }
+///   global_validation = {
+///     unauthenticated_client_action = "AllowAnonymous"
+///   }
+///   identity_providers = {
+///     facebook = {
+///       registration = {
+///         app_id                  = "123"
+///         app_secret_setting_name = "facebook-secret"
+///       }
+///     }
+///   }
+///   platform = {
+///     enabled = true
+///   }
+///   resource_group_name = "workerapps-rg-xj"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -118,8 +153,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.inputs.FacebookArgs;
 /// import com.pulumi.azurenative.app.inputs.AppRegistrationArgs;
 /// import com.pulumi.azurenative.app.inputs.AuthPlatformArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -350,6 +385,49 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_containerappsauthconfig" "containerAppsAuthConfig" {
+///   auth_config_name   = "current"
+///   container_app_name = "myapp"
+///   encryption_settings = {
+///     container_app_auth_encryption_secret_name = "testEncryptionSecretName"
+///     container_app_auth_signing_secret_name    = "testSigningSecretName"
+///   }
+///   global_validation = {
+///     unauthenticated_client_action = "AllowAnonymous"
+///   }
+///   identity_providers = {
+///     facebook = {
+///       registration = {
+///         app_id                  = "123"
+///         app_secret_setting_name = "facebook-secret"
+///       }
+///     }
+///   }
+///   login = {
+///     token_store = {
+///       azure_blob_storage = {
+///         blob_container_uri = "https://test.blob.core.windows.net/container1"
+///         client_id          = "00000000-0000-0000-0000-000000000000"
+///       }
+///     }
+///   }
+///   platform = {
+///     enabled = true
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -367,8 +445,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.inputs.TokenStoreArgs;
 /// import com.pulumi.azurenative.app.inputs.BlobStorageTokenStoreArgs;
 /// import com.pulumi.azurenative.app.inputs.AuthPlatformArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -628,6 +706,49 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_containerappsauthconfig" "containerAppsAuthConfig" {
+///   auth_config_name   = "current"
+///   container_app_name = "myapp"
+///   encryption_settings = {
+///     container_app_auth_encryption_secret_name = "testEncryptionSecretName"
+///     container_app_auth_signing_secret_name    = "testSigningSecretName"
+///   }
+///   global_validation = {
+///     unauthenticated_client_action = "AllowAnonymous"
+///   }
+///   identity_providers = {
+///     facebook = {
+///       registration = {
+///         app_id                  = "123"
+///         app_secret_setting_name = "facebook-secret"
+///       }
+///     }
+///   }
+///   login = {
+///     token_store = {
+///       azure_blob_storage = {
+///         blob_container_uri           = "https://test.blob.core.windows.net/container1"
+///         managed_identity_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1"
+///       }
+///     }
+///   }
+///   platform = {
+///     enabled = true
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -645,8 +766,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.inputs.TokenStoreArgs;
 /// import com.pulumi.azurenative.app.inputs.BlobStorageTokenStoreArgs;
 /// import com.pulumi.azurenative.app.inputs.AuthPlatformArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

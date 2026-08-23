@@ -1,7 +1,7 @@
 /// Specifies the type of threshold criteria
 enum CriterionType {
-  valueStaticThresholdCriterion("StaticThresholdCriterion"),
-  valueDynamicThresholdCriterion("DynamicThresholdCriterion");
+  staticThresholdCriterion("StaticThresholdCriterion"),
+  dynamicThresholdCriterion("DynamicThresholdCriterion");
 
   const CriterionType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum CriterionType {
     throw ArgumentError('Unknown CriterionType value: $value');
   }
 }
-

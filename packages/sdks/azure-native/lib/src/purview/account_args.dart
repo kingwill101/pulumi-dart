@@ -16,7 +16,7 @@ class AccountArgs {
   final pulumi.Input<Identity>? identity;
   /// Ingestion Storage Account Info
   final pulumi.Input<IngestionStorage>? ingestionStorage;
-  /// Gets or sets the location.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed.
   final pulumi.Input<String>? managedEventHubState;
@@ -26,11 +26,11 @@ class AccountArgs {
   final pulumi.Input<String>? managedResourcesPublicNetworkAccess;
   /// Gets or sets the public network access.
   final pulumi.Input<String>? publicNetworkAccess;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the Sku.
   final pulumi.Input<AccountSku>? sku;
-  /// Tags on the azure resource.
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
   /// Gets or sets the state of tenant endpoint.
   final pulumi.Input<String>? tenantEndpointState;
@@ -39,14 +39,14 @@ class AccountArgs {
   /// [accountName] The name of the account.
   /// [identity] The Managed Identity of the resource
   /// [ingestionStorage] Ingestion Storage Account Info
-  /// [location] Gets or sets the location.
+  /// [location] The geo-location where the resource lives
   /// [managedEventHubState] Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed.
   /// [managedResourceGroupName] Gets or sets the managed resource group name
   /// [managedResourcesPublicNetworkAccess] Gets or sets the public network access for managed resources.
   /// [publicNetworkAccess] Gets or sets the public network access.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] Gets or sets the Sku.
-  /// [tags] Tags on the azure resource.
+  /// [tags] Resource tags.
   /// [tenantEndpointState] Gets or sets the state of tenant endpoint.
   const AccountArgs({
     this.accountName,
@@ -97,4 +97,3 @@ class AccountArgs {
     );
   }
 }
-

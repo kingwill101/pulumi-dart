@@ -15,7 +15,7 @@ class DatabricksJobActivity {
   /// The Id of the Databricks Job to be executed. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> jobId;
   /// Job parameters to be used for each run of this job. If the job takes a parameter that is not specified, the default value from the job will be used.
-  final pulumi.Input<Map<String, dynamic>>? jobParameters;
+  final pulumi.Input<dynamic>? jobParameters;
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReference>? linkedServiceName;
   /// Activity name.
@@ -79,7 +79,7 @@ class DatabricksJobActivity {
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependency>(guardedValue, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jobId: pulumi.Input.fromValue(map['jobId']),
-      jobParameters: (() { final guardedValue = map['jobParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      jobParameters: (() { final guardedValue = map['jobParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -90,4 +90,3 @@ class DatabricksJobActivity {
     );
   }
 }
-

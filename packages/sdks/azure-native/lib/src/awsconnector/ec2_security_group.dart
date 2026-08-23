@@ -279,6 +279,100 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ec2securitygroup" "ec2SecurityGroup" {
+///   location = "vzuwiygrafixnatwfk"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "wmn"
+///     aws_account_id = "opjbipitrztwvqiwhvypn"
+///     aws_properties = {
+///       description = "hrrgskumwbylhgekdhngxjvwdnwt"
+///       group_id    = "ljankmjnfyn"
+///       group_name  = "btdfjlqbavbhlssltk"
+///       ip_permissions = [{
+///         "fromPort"   = 20
+///         "ipProtocol" = "kgjdillfenc"
+///         "ipRanges" = [{
+///           "cidrIp"      = "bvmbvmljqvxtixhffwasjzntbuc"
+///           "description" = "shzjegnqjhifwjai"
+///         }]
+///         "ipv6Ranges" = [{
+///           "cidrIpv6"    = "uxlvmqqyfplqdqzolxmmnclvmtd"
+///           "description" = "iqaupyjrvko"
+///         }]
+///         "prefixListIds" = [{
+///           "description"  = "chukmrsgeaica"
+///           "prefixListId" = "abvyhxeqhgiuwfmdproas"
+///         }]
+///         "toPort" = 22
+///         "userIdGroupPairs" = [{
+///           "description"            = "ltskpjkztpi"
+///           "groupId"                = "laktgsfwgfj"
+///           "groupName"              = "rrnebynwgsv"
+///           "peeringStatus"          = "t"
+///           "userId"                 = "chhl"
+///           "vpcId"                  = "jxcofqkxxcehakoymxojgpra"
+///           "vpcPeeringConnectionId" = "vdqrycsnfuwkgftprwierfwv"
+///         }]
+///       }]
+///       ip_permissions_egress = [{
+///         "fromPort"   = 20
+///         "ipProtocol" = "kgjdillfenc"
+///         "ipRanges" = [{
+///           "cidrIp"      = "bvmbvmljqvxtixhffwasjzntbuc"
+///           "description" = "shzjegnqjhifwjai"
+///         }]
+///         "ipv6Ranges" = [{
+///           "cidrIpv6"    = "uxlvmqqyfplqdqzolxmmnclvmtd"
+///           "description" = "iqaupyjrvko"
+///         }]
+///         "prefixListIds" = [{
+///           "description"  = "chukmrsgeaica"
+///           "prefixListId" = "abvyhxeqhgiuwfmdproas"
+///         }]
+///         "toPort" = 22
+///         "userIdGroupPairs" = [{
+///           "description"            = "ltskpjkztpi"
+///           "groupId"                = "laktgsfwgfj"
+///           "groupName"              = "rrnebynwgsv"
+///           "peeringStatus"          = "t"
+///           "userId"                 = "chhl"
+///           "vpcId"                  = "jxcofqkxxcehakoymxojgpra"
+///           "vpcPeeringConnectionId" = "vdqrycsnfuwkgftprwierfwv"
+///         }]
+///       }]
+///       owner_id = "zjetpuydwcwvcujxzfp"
+///       tags = [{
+///         "key"   = "qujkc"
+///         "value" = "jflpondfk"
+///       }]
+///       vpc_id = "prgpmjbyqcuinimbjrzfmpmme"
+///     }
+///     aws_region        = "hqrasnkghl"
+///     aws_source_schema = "qdcuf"
+///     aws_tags = {
+///       "key5646" = "rkutxmprvwlawcnhzsmyyujz"
+///     }
+///     public_cloud_connectors_resource_id = "fuzo"
+///     public_cloud_resource_name          = "laxwpziyjookzz"
+///   }
+///   resource_group_name = "rgec2SecurityGroup"
+///   tags = {
+///     "key9265" = "ixznafanbltkovpv"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -289,8 +383,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.Ec2SecurityGroupArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2SecurityGroupPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2SecurityGroupPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -16,4 +16,3 @@ enum LevelType {
     throw ArgumentError('Unknown LevelType value: $value');
   }
 }
-

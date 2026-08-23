@@ -83,6 +83,35 @@ import 'web_app_collector_operation_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_webappcollectoroperation" "webAppCollectorOperation" {
+///   agent_properties = {
+///     id                 = "fed93df5-b787-4e3f-a764-e3d2b9101a59-agent"
+///     last_heartbeat_utc = "2023-11-03T05:43:02.078Z"
+///     spn_details = {
+///       application_id = "2f70d5e8-7adc-4c64-910a-7031079efc6e"
+///       audience       = "2f70d5e8-7adc-4c64-910a-7031079efc6e"
+///       authority      = "https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47"
+///       object_id      = "2f70d5e8-7adc-4c64-910a-7031079efc6e"
+///       tenant_id      = "2f70d5e8-7adc-4c64-910a-7031079efc6e"
+///     }
+///   }
+///   collector_name      = "collector1"
+///   discovery_site_id   = "/subscriptions/4bd2aa0f-2bd2-4d67-91a8-5a4533d58600/resourceGroups/sumukk-ccy-bcs/providers/Microsoft.OffAzure/MasterSites/sumukk-ccy-bcs9880mastersite/WebAppSites/sumukk-ccy-bcs9880webappsites"
+///   project_name        = "sumukk-ccy-bcs4557project"
+///   resource_group_name = "rgopenapi"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +122,8 @@ import 'web_app_collector_operation_args.dart';
 /// import com.pulumi.azurenative.migrate.WebAppCollectorOperationArgs;
 /// import com.pulumi.azurenative.migrate.inputs.CollectorAgentPropertiesBaseArgs;
 /// import com.pulumi.azurenative.migrate.inputs.CollectorAgentSpnPropertiesBaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

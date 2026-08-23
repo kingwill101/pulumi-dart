@@ -89,4 +89,3 @@ class AmazonS3CompatibleLinkedService {
     );
   }
 }
-

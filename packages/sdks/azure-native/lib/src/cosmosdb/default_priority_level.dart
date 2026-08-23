@@ -15,4 +15,3 @@ enum DefaultPriorityLevel {
     throw ArgumentError('Unknown DefaultPriorityLevel value: $value');
   }
 }
-

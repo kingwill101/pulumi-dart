@@ -15,4 +15,3 @@ enum DnsSecurityRuleState {
     throw ArgumentError('Unknown DnsSecurityRuleState value: $value');
   }
 }
-

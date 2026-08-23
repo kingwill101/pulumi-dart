@@ -74,6 +74,29 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_blobserviceproperties" "blobServiceProperties" {
+///   account_name       = "sto8607"
+///   blob_services_name = "default"
+///   delete_retention_policy = {
+///     allow_permanent_delete = true
+///     days                   = 300
+///     enabled                = true
+///   }
+///   is_versioning_enabled = true
+///   resource_group_name   = "res4410"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +106,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.storage.BlobServiceProperties;
 /// import com.pulumi.azurenative.storage.BlobServicePropertiesArgs;
 /// import com.pulumi.azurenative.storage.inputs.DeleteRetentionPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -229,6 +252,29 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_blobserviceproperties" "blobServiceProperties" {
+///   account_name       = "sto8607"
+///   blob_services_name = "default"
+///   last_access_time_tracking_policy = {
+///     blob_type                    = ["blockBlob"]
+///     enable                       = true
+///     name                         = "AccessTimeTracking"
+///     tracking_granularity_in_days = 1
+///   }
+///   resource_group_name = "res4410"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -238,8 +284,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.storage.BlobServiceProperties;
 /// import com.pulumi.azurenative.storage.BlobServicePropertiesArgs;
 /// import com.pulumi.azurenative.storage.inputs.LastAccessTimeTrackingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -528,6 +574,54 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_blobserviceproperties" "blobServiceProperties" {
+///   account_name       = "sto8607"
+///   blob_services_name = "default"
+///   change_feed = {
+///     enabled           = true
+///     retention_in_days = 7
+///   }
+///   cors = {
+///     cors_rules = [{
+///       "allowedHeaders"  = ["x-ms-meta-abc", "x-ms-meta-data*", "x-ms-meta-target*"]
+///       "allowedMethods"  = ["GET", "HEAD", "POST", "OPTIONS", "MERGE", "PUT"]
+///       "allowedOrigins"  = ["http://www.contoso.com", "http://www.fabrikam.com"]
+///       "exposedHeaders"  = ["x-ms-meta-*"]
+///       "maxAgeInSeconds" = 100
+///       }, {
+///       "allowedHeaders"  = ["*"]
+///       "allowedMethods"  = ["GET"]
+///       "allowedOrigins"  = ["*"]
+///       "exposedHeaders"  = ["*"]
+///       "maxAgeInSeconds" = 2
+///       }, {
+///       "allowedHeaders"  = ["x-ms-meta-12345675754564*"]
+///       "allowedMethods"  = ["GET", "PUT"]
+///       "allowedOrigins"  = ["http://www.abc23.com", "https://www.fabrikam.com/*"]
+///       "exposedHeaders"  = ["x-ms-meta-abc", "x-ms-meta-data*", "x -ms-meta-target*"]
+///       "maxAgeInSeconds" = 2000
+///     }]
+///   }
+///   default_service_version = "2017-07-29"
+///   delete_retention_policy = {
+///     days    = 300
+///     enabled = true
+///   }
+///   is_versioning_enabled = true
+///   resource_group_name   = "res4410"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -539,8 +633,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.storage.inputs.ChangeFeedArgs;
 /// import com.pulumi.azurenative.storage.inputs.CorsRulesArgs;
 /// import com.pulumi.azurenative.storage.inputs.DeleteRetentionPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

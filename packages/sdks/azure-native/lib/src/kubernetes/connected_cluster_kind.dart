@@ -14,4 +14,3 @@ enum ConnectedClusterKind {
     throw ArgumentError('Unknown ConnectedClusterKind value: $value');
   }
 }
-

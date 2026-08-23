@@ -113,4 +113,3 @@ class Db2LinkedService {
     );
   }
 }
-

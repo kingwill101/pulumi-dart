@@ -18,4 +18,3 @@ enum PublicIPAddressMigrationPhase {
     throw ArgumentError('Unknown PublicIPAddressMigrationPhase value: $value');
   }
 }
-

@@ -60,6 +60,25 @@ import 'user_rule_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_userrule" "userRule" {
+///   configuration_name   = "myTestSecurityConfig"
+///   network_manager_name = "testNetworkManager"
+///   resource_group_name  = "rg1"
+///   rule_collection_name = "testRuleCollection"
+///   rule_name            = "SampleDefaultUserRule"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +87,8 @@ import 'user_rule_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.network.UserRule;
 /// import com.pulumi.azurenative.network.UserRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -235,6 +254,39 @@ import 'user_rule_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_userrule" "userRule" {
+///   configuration_name      = "myTestSecurityConfig"
+///   description             = "Sample User Rule"
+///   destination_port_ranges = ["22"]
+///   destinations {
+///     address_prefix      = "*"
+///     address_prefix_type = "IPPrefix"
+///   }
+///   direction            = "Inbound"
+///   kind                 = "Custom"
+///   network_manager_name = "testNetworkManager"
+///   protocol             = "Tcp"
+///   resource_group_name  = "rg1"
+///   rule_collection_name = "testRuleCollection"
+///   rule_name            = "SampleUserRule"
+///   source_port_ranges   = ["0-65535"]
+///   sources {
+///     address_prefix      = "*"
+///     address_prefix_type = "IPPrefix"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -244,8 +296,8 @@ import 'user_rule_args.dart';
 /// import com.pulumi.azurenative.network.UserRule;
 /// import com.pulumi.azurenative.network.UserRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.AddressPrefixItemArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

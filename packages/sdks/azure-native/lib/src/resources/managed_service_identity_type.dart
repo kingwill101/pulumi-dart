@@ -1,6 +1,6 @@
 /// Type of the managed identity.
 enum ManagedServiceIdentityType {
-  valueUserAssigned("UserAssigned");
+  userAssigned("UserAssigned");
 
   const ManagedServiceIdentityType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum ManagedServiceIdentityType {
     throw ArgumentError('Unknown ManagedServiceIdentityType value: $value');
   }
 }
-

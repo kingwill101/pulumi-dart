@@ -19,4 +19,3 @@ enum Action {
     throw ArgumentError('Unknown Action value: $value');
   }
 }
-

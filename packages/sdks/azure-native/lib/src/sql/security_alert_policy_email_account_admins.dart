@@ -15,4 +15,3 @@ enum SecurityAlertPolicyEmailAccountAdmins {
     throw ArgumentError('Unknown SecurityAlertPolicyEmailAccountAdmins value: $value');
   }
 }
-

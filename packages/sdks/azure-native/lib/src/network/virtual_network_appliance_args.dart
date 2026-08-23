@@ -14,7 +14,7 @@ class VirtualNetworkApplianceArgs {
   final pulumi.Input<String>? id;
   /// Resource location.
   final pulumi.Input<String>? location;
-  /// The name of the resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The reference to the subnet resource.
   final pulumi.Input<SubnetNetwork>? subnet;
@@ -27,7 +27,7 @@ class VirtualNetworkApplianceArgs {
   /// [bandwidthInGbps] Bandwidth of the VirtualNetworkAppliance resource in Gbps.
   /// [id] Resource ID.
   /// [location] Resource location.
-  /// [resourceGroupName] The name of the resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [subnet] The reference to the subnet resource.
   /// [tags] Resource tags.
   /// [virtualNetworkApplianceName] The name of the virtual network appliance.
@@ -65,4 +65,3 @@ class VirtualNetworkApplianceArgs {
     );
   }
 }
-

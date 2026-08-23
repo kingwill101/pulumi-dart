@@ -17,4 +17,3 @@ enum SSOSecretType {
     throw ArgumentError('Unknown SSOSecretType value: $value');
   }
 }
-

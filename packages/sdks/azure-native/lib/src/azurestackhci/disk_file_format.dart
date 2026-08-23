@@ -15,4 +15,3 @@ enum DiskFileFormat {
     throw ArgumentError('Unknown DiskFileFormat value: $value');
   }
 }
-

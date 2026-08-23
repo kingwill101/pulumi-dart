@@ -15,4 +15,3 @@ enum IntegrationRuntimeEntityReferenceType {
     throw ArgumentError('Unknown IntegrationRuntimeEntityReferenceType value: $value');
   }
 }
-

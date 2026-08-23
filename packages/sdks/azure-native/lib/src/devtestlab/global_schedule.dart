@@ -3,6 +3,7 @@ import 'day_details_response.dart';
 import 'global_schedule_args.dart';
 import 'hour_details_response.dart';
 import 'notification_settings_response.dart';
+import 'system_data_response.dart';
 import 'week_details_response.dart';
 
 /// A schedule.
@@ -85,6 +86,29 @@ import 'week_details_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devtestlab_globalschedule" "globalSchedule" {
+///   name                = "labvmautostart"
+///   resource_group_name = "resourceGroupName"
+///   status              = "Enabled"
+///   task_type           = "LabVmsStartupTask"
+///   time_zone_id        = "Hawaiian Standard Time"
+///   weekly_recurrence = {
+///     time     = "0700"
+///     weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +118,8 @@ import 'week_details_response.dart';
 /// import com.pulumi.azurenative.devtestlab.GlobalSchedule;
 /// import com.pulumi.azurenative.devtestlab.GlobalScheduleArgs;
 /// import com.pulumi.azurenative.devtestlab.inputs.WeekDetailsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -220,9 +244,9 @@ class GlobalSchedule extends pulumi.CustomResource {
   late final pulumi.Output<DayDetailsResponse?> dailyRecurrence;
   /// If the schedule will occur multiple times a day, specify the hourly recurrence.
   late final pulumi.Output<HourDetailsResponse?> hourlyRecurrence;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
-  /// The name of the resource.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Notification settings.
   late final pulumi.Output<NotificationSettingsResponse?> notificationSettings;
@@ -230,7 +254,9 @@ class GlobalSchedule extends pulumi.CustomResource {
   late final pulumi.Output<String> provisioningState;
   /// The status of the schedule (i.e. Enabled, Disabled)
   late final pulumi.Output<String?> status;
-  /// The tags of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// The resource ID to which the schedule belongs
   late final pulumi.Output<String?> targetResourceId;
@@ -238,7 +264,7 @@ class GlobalSchedule extends pulumi.CustomResource {
   late final pulumi.Output<String?> taskType;
   /// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection&lt;string&gt; TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
   late final pulumi.Output<String?> timeZoneId;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
@@ -268,6 +294,7 @@ class GlobalSchedule extends pulumi.CustomResource {
     notificationSettings = registerOutput<NotificationSettingsResponse?>('notificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     targetResourceId = registerOutput<String?>('targetResourceId');
     taskType = registerOutput<String?>('taskType');

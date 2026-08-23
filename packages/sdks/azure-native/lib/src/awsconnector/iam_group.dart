@@ -118,6 +118,47 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_iamgroup" "iamGroup" {
+///   location = "badqu"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "yvnnjydmrptjbytuyca"
+///     aws_account_id = "obfwwcnhlgytlanolsfrdn"
+///     aws_properties = {
+///       arn                 = "qaymkzqiwzdilzpmfapwpudc"
+///       group_name          = "zcmfl"
+///       managed_policy_arns = ["uqek"]
+///       path                = "liuneeastp"
+///       policies = [{
+///         "policyDocument" = {}
+///         "policyName"     = "cokejufrpuszoopjjywwxopal"
+///       }]
+///     }
+///     aws_region        = "uqzi"
+///     aws_source_schema = "kprcuajdxtfckwviyxpajstzdjeb"
+///     aws_tags = {
+///       "key9078" = "mpcfehsyuyqdbvmijur"
+///     }
+///     public_cloud_connectors_resource_id = "fjfneaczmcscofgdjnxw"
+///     public_cloud_resource_name          = "hj"
+///   }
+///   resource_group_name = "rgiamGroup"
+///   tags = {
+///     "key3844" = "pzbfdnhacakyrfejqwafqqmbdjnpx"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +169,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.IamGroupArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IamGroupPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsIamGroupPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

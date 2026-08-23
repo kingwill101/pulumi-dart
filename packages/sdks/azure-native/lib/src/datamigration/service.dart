@@ -66,6 +66,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datamigration_service" "service" {
+///   group_name   = "DmsSdkRg"
+///   location     = "southcentralus"
+///   service_name = "DmsSdkService"
+///   sku = {
+///     name = "Basic_1vCore"
+///   }
+///   virtual_subnet_id = "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmsSdkTestNetwork/providers/Microsoft.Network/virtualNetworks/DmsSdkTestNetwork/subnets/default"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +96,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.datamigration.Service;
 /// import com.pulumi.azurenative.datamigration.ServiceArgs;
 /// import com.pulumi.azurenative.datamigration.inputs.ServiceSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

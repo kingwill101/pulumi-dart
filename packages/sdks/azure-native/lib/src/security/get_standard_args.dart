@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_security_get_standard_args_doc}
 class GetStandardArgs {
-  /// The name of the resource group within the user's subscription. The name is case insensitive.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The Security Standard key - unique key for the standard type
   final pulumi.Input<String> standardId;
 
   /// Creates a new [GetStandardArgs].
-  /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [standardId] The Security Standard key - unique key for the standard type
   const GetStandardArgs({
     required this.resourceGroupName,
@@ -34,4 +34,3 @@ class GetStandardArgs {
     );
   }
 }
-

@@ -1,7 +1,7 @@
 /// Filter VMs by Any or All specified tags.
 enum TagOperators {
-  valueAll("All"),
-  valueAny("Any");
+  all("All"),
+  any("Any");
 
   const TagOperators(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum TagOperators {
     throw ArgumentError('Unknown TagOperators value: $value');
   }
 }
-

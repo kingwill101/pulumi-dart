@@ -15,4 +15,3 @@ enum InitiatedBy {
     throw ArgumentError('Unknown InitiatedBy value: $value');
   }
 }
-

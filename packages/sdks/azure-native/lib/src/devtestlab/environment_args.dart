@@ -14,13 +14,13 @@ class EnvironmentArgs {
   final pulumi.Input<EnvironmentDeploymentProperties>? deploymentProperties;
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-  /// The name of the DtlEnvironment
+  /// The name of the environment.
   final pulumi.Input<String>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// The tags of the resource.
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
   /// The name of the user profile.
   final pulumi.Input<String> userName;
@@ -29,10 +29,10 @@ class EnvironmentArgs {
   /// [armTemplateDisplayName] The display name of the Azure Resource Manager template that produced the environment.
   /// [deploymentProperties] The deployment properties of the environment.
   /// [labName] The name of the lab.
-  /// [location] The location of the resource.
-  /// [name] The name of the DtlEnvironment
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the environment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  /// [tags] The tags of the resource.
+  /// [tags] Resource tags.
   /// [userName] The name of the user profile.
   const EnvironmentArgs({
     this.armTemplateDisplayName,
@@ -71,4 +71,3 @@ class EnvironmentArgs {
     );
   }
 }
-

@@ -167,6 +167,59 @@ import 'unique_key_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cosmosdb_databaseaccountsqlcontainer" "databaseAccountSqlContainer" {
+///   account_name   = "ddb1"
+///   container_name = "containerName"
+///   database_name  = "databaseName"
+///   options        = {}
+///   resource = {
+///     conflict_resolution_policy = {
+///       conflict_resolution_path = "/path"
+///       mode                     = "LastWriterWins"
+///     }
+///     default_ttl = 100
+///     id          = "containerName"
+///     indexing_policy = {
+///       automatic      = true
+///       excluded_paths = []
+///       included_paths = [{
+///         "indexes" = [{
+///           "dataType"  = "String"
+///           "kind"      = "Range"
+///           "precision" = -1
+///           }, {
+///           "dataType"  = "Number"
+///           "kind"      = "Range"
+///           "precision" = -1
+///         }]
+///         "path" = "/*"
+///       }]
+///       indexing_mode = "Consistent"
+///     }
+///     partition_key = {
+///       kind  = "Hash"
+///       paths = ["/AccountNumber"]
+///     }
+///     unique_key_policy = {
+///       unique_keys = [{
+///         "paths" = ["/testPath"]
+///       }]
+///     }
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -180,8 +233,8 @@ import 'unique_key_policy_response.dart';
 /// import com.pulumi.azurenative.cosmosdb.inputs.IndexingPolicyArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.ContainerPartitionKeyArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.UniqueKeyPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

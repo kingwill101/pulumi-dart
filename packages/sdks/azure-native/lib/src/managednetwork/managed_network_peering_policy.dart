@@ -80,6 +80,32 @@ import 'managed_network_peering_policy_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_managednetwork_managednetworkpeeringpolicy" "managedNetworkPeeringPolicy" {
+///   managed_network_name                = "myManagedNetwork"
+///   managed_network_peering_policy_name = "myHubAndSpoke"
+///   properties = {
+///     hub = {
+///       id = "/subscriptionB/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myHubVnet"
+///     }
+///     spokes = [{
+///       "id" = "/subscriptionB/resourceGroups/myResourceGroup/providers/Microsoft.ManagedNetwork/managedNetworks/myManagedNetwork/managedNetworkGroups/myManagedNetworkGroup1"
+///     }]
+///     type = "HubAndSpokeTopology"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +116,8 @@ import 'managed_network_peering_policy_properties_response.dart';
 /// import com.pulumi.azurenative.managednetwork.ManagedNetworkPeeringPolicyArgs;
 /// import com.pulumi.azurenative.managednetwork.inputs.ManagedNetworkPeeringPolicyPropertiesArgs;
 /// import com.pulumi.azurenative.managednetwork.inputs.ResourceIdArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

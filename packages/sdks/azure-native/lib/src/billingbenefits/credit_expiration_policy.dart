@@ -1,7 +1,7 @@
 /// Expiration policy of the Credit
 enum CreditExpirationPolicy {
-  valueNone("None"),
-  valueSuspendBillingProfile("SuspendBillingProfile");
+  none("None"),
+  suspendBillingProfile("SuspendBillingProfile");
 
   const CreditExpirationPolicy(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum CreditExpirationPolicy {
     throw ArgumentError('Unknown CreditExpirationPolicy value: $value');
   }
 }
-

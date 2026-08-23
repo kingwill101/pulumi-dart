@@ -15,4 +15,3 @@ enum DiskEncryptionTarget {
     throw ArgumentError('Unknown DiskEncryptionTarget value: $value');
   }
 }
-

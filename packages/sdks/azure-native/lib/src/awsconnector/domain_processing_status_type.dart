@@ -20,4 +20,3 @@ enum DomainProcessingStatusType {
     throw ArgumentError('Unknown DomainProcessingStatusType value: $value');
   }
 }
-

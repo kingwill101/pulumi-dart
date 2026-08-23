@@ -80,6 +80,35 @@ import 'saas_subscription_level_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_saas_saassubscriptionlevel" "saasSubscriptionLevel" {
+///   location = "global"
+///   name     = "MyContosoSubscription"
+///   properties = {
+///     offer_id = "contosoOffer"
+///     payment_channel_metadata = {
+///       "AzureSubscriptionId" = "155af98a-3205-47e7-883b-a2ab9db9f88d"
+///     }
+///     payment_channel_type = "SubscriptionDelegated"
+///     publisher_id         = "microsoft-contoso"
+///     saas_resource_name   = "MyContosoSubscription"
+///     sku_id               = "free"
+///     term_id              = "hjdtn7tfnxcy"
+///   }
+///   resource_group_name = "my-saas-rg"
+///   resource_name       = "MyContosoSubscription"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +118,8 @@ import 'saas_subscription_level_args.dart';
 /// import com.pulumi.azurenative.saas.SaasSubscriptionLevel;
 /// import com.pulumi.azurenative.saas.SaasSubscriptionLevelArgs;
 /// import com.pulumi.azurenative.saas.inputs.SaasCreationPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

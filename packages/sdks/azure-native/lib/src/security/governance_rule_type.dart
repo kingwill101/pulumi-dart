@@ -1,7 +1,7 @@
 /// The rule type of the governance rule, defines the source of the rule e.g. Integrated
 enum GovernanceRuleType {
-  valueIntegrated("Integrated"),
-  valueServiceNow("ServiceNow");
+  integrated("Integrated"),
+  serviceNow("ServiceNow");
 
   const GovernanceRuleType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum GovernanceRuleType {
     throw ArgumentError('Unknown GovernanceRuleType value: $value');
   }
 }
-

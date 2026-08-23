@@ -17,4 +17,3 @@ enum StandardTierStorageRedundancy {
     throw ArgumentError('Unknown StandardTierStorageRedundancy value: $value');
   }
 }
-

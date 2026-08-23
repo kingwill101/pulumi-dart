@@ -119,4 +119,3 @@ class GetGen1EnvironmentResult {
     );
   }
 }
-

@@ -1,12 +1,12 @@
 /// Parameter type.
 enum ParameterType {
-  valueObject("Object"),
-  valueString("String"),
-  valueInt("Int"),
-  valueFloat("Float"),
-  valueBool("Bool"),
-  valueArray("Array"),
-  valueSecureString("SecureString");
+  object_("Object"),
+  string_("String"),
+  int_("Int"),
+  float("Float"),
+  bool_("Bool"),
+  array("Array"),
+  secureString("SecureString");
 
   const ParameterType(this.wireValue);
   final String wireValue;
@@ -20,4 +20,3 @@ enum ParameterType {
     throw ArgumentError('Unknown ParameterType value: $value');
   }
 }
-

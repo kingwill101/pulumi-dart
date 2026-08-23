@@ -76,6 +76,30 @@ import 'workspace_sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_operationalinsights_workspace" "workspace" {
+///   location            = "australiasoutheast"
+///   resource_group_name = "oiautorest6685"
+///   retention_in_days   = 30
+///   sku = {
+///     name = "PerGB2018"
+///   }
+///   tags = {
+///     "tag1" = "val1"
+///   }
+///   workspace_name = "oiautorest6685"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +109,8 @@ import 'workspace_sku_response.dart';
 /// import com.pulumi.azurenative.operationalinsights.Workspace;
 /// import com.pulumi.azurenative.operationalinsights.WorkspaceArgs;
 /// import com.pulumi.azurenative.operationalinsights.inputs.WorkspaceSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -13,24 +13,21 @@ class ConfigurationGroupResponse {
   final pulumi.Input<String>? displayName;
   /// Group members of network group.
   final pulumi.Input<List<GroupMembersItemResponse>>? groupMembers;
-  /// Network group ID.
+  /// Resource ID.
   final pulumi.Input<String>? id;
-  /// The type of the group member.
+  /// Group member type.
   final pulumi.Input<String>? memberType;
   /// The provisioning state of the scope assignment resource.
   final pulumi.Input<String> provisioningState;
-  /// Unique identifier for this resource.
-  final pulumi.Input<String> resourceGuid;
 
   /// Creates a new [ConfigurationGroupResponse].
   /// [conditionalMembership] Network group conditional filter.
   /// [description] A description of the network group.
   /// [displayName] A friendly name for the network group.
   /// [groupMembers] Group members of network group.
-  /// [id] Network group ID.
-  /// [memberType] The type of the group member.
+  /// [id] Resource ID.
+  /// [memberType] Group member type.
   /// [provisioningState] The provisioning state of the scope assignment resource.
-  /// [resourceGuid] Unique identifier for this resource.
   const ConfigurationGroupResponse({
     this.conditionalMembership,
     this.description,
@@ -39,7 +36,6 @@ class ConfigurationGroupResponse {
     this.id,
     this.memberType,
     required this.provisioningState,
-    required this.resourceGuid,
   });
 
   Map<String, dynamic> toMap() {
@@ -51,7 +47,6 @@ class ConfigurationGroupResponse {
       'id': ?id,
       'memberType': ?memberType,
       'provisioningState': provisioningState,
-      'resourceGuid': resourceGuid,
     };
   }
 
@@ -64,8 +59,6 @@ class ConfigurationGroupResponse {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       memberType: (() { final guardedValue = map['memberType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
-      resourceGuid: pulumi.Input.fromValue(map['resourceGuid'] as String),
     );
   }
 }
-

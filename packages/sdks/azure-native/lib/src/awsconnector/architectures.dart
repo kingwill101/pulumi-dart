@@ -15,4 +15,3 @@ enum Architectures {
     throw ArgumentError('Unknown Architectures value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum BlobAccessTier {
     throw ArgumentError('Unknown BlobAccessTier value: $value');
   }
 }
-

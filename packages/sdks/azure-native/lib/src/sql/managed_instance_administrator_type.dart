@@ -14,4 +14,3 @@ enum ManagedInstanceAdministratorType {
     throw ArgumentError('Unknown ManagedInstanceAdministratorType value: $value');
   }
 }
-

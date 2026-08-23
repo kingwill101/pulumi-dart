@@ -15,4 +15,3 @@ enum BrokerProtocolType {
     throw ArgumentError('Unknown BrokerProtocolType value: $value');
   }
 }
-

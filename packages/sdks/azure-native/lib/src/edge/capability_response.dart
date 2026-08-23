@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// Capability, to match in Solution Templates and Targets
+/// Capability, to match in Solution Templates & Targets
 class CapabilityResponse {
   /// Description of Capability
   final pulumi.Input<String> description;
@@ -37,4 +37,3 @@ class CapabilityResponse {
     );
   }
 }
-

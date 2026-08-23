@@ -1,7 +1,7 @@
 /// If set to "False", it allows the descendants of this scope to override the pricing configuration set on this scope (allows setting inherited="False"). If set to "True", it prevents overrides and forces this pricing configuration on all the descendants of this scope. This field is only available for subscription-level pricing.
 enum Enforce {
-  valueFalse("False"),
-  valueTrue("True");
+  false_("False"),
+  true_("True");
 
   const Enforce(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum Enforce {
     throw ArgumentError('Unknown Enforce value: $value');
   }
 }
-

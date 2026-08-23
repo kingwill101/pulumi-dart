@@ -6,9 +6,9 @@ import 'system_data_response.dart';
 
 /// A private endpoint connection
 ///
-/// Uses Azure REST API version 2023-05-15-preview. In version 2.x of the Azure Native provider, it used API version 2020-01-13-preview.
+/// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2020-01-13-preview.
 ///
-/// Other available API versions: 2020-01-13-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-01-13-preview, 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -67,6 +67,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_privateendpointconnection" "privateEndpointConnection" {
+///   automation_account_name          = "automationAccountName"
+///   private_endpoint_connection_name = "privateEndpointConnectionName"
+///   private_link_service_connection_state = {
+///     description = "Approved by johndoe@contoso.com"
+///     status      = "Approved"
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +97,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.automation.PrivateEndpointConnection;
 /// import com.pulumi.azurenative.automation.PrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.automation.inputs.PrivateLinkServiceConnectionStatePropertyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

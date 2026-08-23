@@ -7,17 +7,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_web_list_web_app_site_push_settings_slot_args_doc}
 class ListWebAppSitePushSettingsSlotArgs {
-  /// Name of web app.
+  /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Name of web app slot. If not specified then will default to production slot.
+  /// Name of the deployment slot. By default, this API returns the production slot.
   final pulumi.Input<String> slot;
 
   /// Creates a new [ListWebAppSitePushSettingsSlotArgs].
-  /// [name] Name of web app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  /// [slot] Name of web app slot. If not specified then will default to production slot.
+  /// [name] Name of the app.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [slot] Name of the deployment slot. By default, this API returns the production slot.
   const ListWebAppSitePushSettingsSlotArgs({
     required this.name,
     required this.resourceGroupName,
@@ -40,4 +40,3 @@ class ListWebAppSitePushSettingsSlotArgs {
     );
   }
 }
-

@@ -18,4 +18,3 @@ enum MetricStatisticType {
     throw ArgumentError('Unknown MetricStatisticType value: $value');
   }
 }
-

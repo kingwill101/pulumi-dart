@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'component_version_machinelearningservices.dart';
+import 'component_version_properties.dart';
 
 /// {@template pulumi_machinelearningservices_registry_component_version_args_doc}
 /// The set of arguments for RegistryComponentVersion.
@@ -11,7 +11,7 @@ class RegistryComponentVersionArgs {
   /// Container name.
   final pulumi.Input<String> componentName;
   /// [Required] Additional attributes of the entity.
-  final pulumi.Input<ComponentVersionMachinelearningservices> componentVersionProperties;
+  final pulumi.Input<ComponentVersionProperties> properties;
   /// Name of Azure Machine Learning registry. This is case-insensitive
   final pulumi.Input<String> registryName;
   /// The name of the resource group. The name is case insensitive.
@@ -21,13 +21,13 @@ class RegistryComponentVersionArgs {
 
   /// Creates a new [RegistryComponentVersionArgs].
   /// [componentName] Container name.
-  /// [componentVersionProperties] [Required] Additional attributes of the entity.
+  /// [properties] [Required] Additional attributes of the entity.
   /// [registryName] Name of Azure Machine Learning registry. This is case-insensitive
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] Version identifier.
   const RegistryComponentVersionArgs({
     required this.componentName,
-    required this.componentVersionProperties,
+    required this.properties,
     required this.registryName,
     required this.resourceGroupName,
     this.version,
@@ -36,7 +36,7 @@ class RegistryComponentVersionArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'componentName': componentName,
-      'componentVersionProperties': componentVersionProperties,
+      'properties': pulumi.Input.mapInputValue<ComponentVersionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'registryName': registryName,
       'resourceGroupName': resourceGroupName,
       'version': ?version,
@@ -46,11 +46,10 @@ class RegistryComponentVersionArgs {
   factory RegistryComponentVersionArgs.fromMap(Map<String, dynamic> map) {
     return RegistryComponentVersionArgs(
       componentName: pulumi.Input.fromValue(map['componentName'] as String),
-      componentVersionProperties: pulumi.Input.fromValue(map['componentVersionProperties'] as ComponentVersionMachinelearningservices),
+      properties: pulumi.Input.fromValue(ComponentVersionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
       registryName: pulumi.Input.fromValue(map['registryName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

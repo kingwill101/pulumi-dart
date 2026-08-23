@@ -65,4 +65,3 @@ class LicenseArgs {
     );
   }
 }
-

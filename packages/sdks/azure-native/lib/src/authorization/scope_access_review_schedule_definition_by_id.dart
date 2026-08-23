@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_review_recurrence_range_response.dart';
 import 'access_review_scope_response.dart';
 import 'scope_access_review_schedule_definition_by_id_args.dart';
+import 'system_data_response.dart';
 
 /// Access Review Schedule Definition.
 ///
@@ -53,6 +54,22 @@ import 'scope_access_review_schedule_definition_by_id_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_scopeaccessreviewscheduledefinitionbyid" "scopeAccessReviewScheduleDefinitionById" {
+///   schedule_definition_id = "fa73e90b-5bf1-45fd-a182-35ce5fc0674d"
+///   scope                  = "subscriptions/fa73e90b-5bf1-45fd-a182-35ce5fc0674d"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -61,8 +78,8 @@ import 'scope_access_review_schedule_definition_by_id_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.ScopeAccessReviewScheduleDefinitionById;
 /// import com.pulumi.azurenative.authorization.ScopeAccessReviewScheduleDefinitionByIdArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -152,7 +169,7 @@ class ScopeAccessReviewScheduleDefinitionById extends pulumi.CustomResource {
   late final pulumi.Output<bool?> justificationRequiredOnApproval;
   /// Flag to indicate whether sending mails to reviewers and the review creator is enabled.
   late final pulumi.Output<bool?> mailNotificationsEnabled;
-  /// The access review schedule definition unique id.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The identity id
   late final pulumi.Output<String> principalId;
@@ -176,7 +193,9 @@ class ScopeAccessReviewScheduleDefinitionById extends pulumi.CustomResource {
   late final pulumi.Output<AccessReviewScopeResponse> scope;
   /// This read-only field specifies the status of an accessReview.
   late final pulumi.Output<String> status;
-  /// The resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The user principal name(if valid)
   late final pulumi.Output<String> userPrincipalName;
@@ -220,6 +239,7 @@ class ScopeAccessReviewScheduleDefinitionById extends pulumi.CustomResource {
     reviewersType = registerOutput<String>('reviewersType');
     scope = registerOutput<AccessReviewScopeResponse>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessReviewScopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     userPrincipalName = registerOutput<String>('userPrincipalName');
   }

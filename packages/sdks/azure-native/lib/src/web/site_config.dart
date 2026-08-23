@@ -31,7 +31,7 @@ class SiteConfig {
   final pulumi.Input<ApiManagementConfig>? apiManagementConfig;
   /// App command line to launch.
   final pulumi.Input<String>? appCommandLine;
-  /// Application settings.
+  /// Application settings. This property is not returned in response to normal create and read requests since it may contain sensitive information.
   final pulumi.Input<List<NameValuePair>>? appSettings;
   /// &lt;code&gt;true&lt;/code&gt; if Auto Heal is enabled; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final pulumi.Input<bool>? autoHealEnabled;
@@ -41,7 +41,7 @@ class SiteConfig {
   final pulumi.Input<String>? autoSwapSlotName;
   /// List of Azure Storage Accounts.
   final pulumi.Input<Map<String, AzureStorageInfoValue>>? azureStorageAccounts;
-  /// Connection strings.
+  /// Connection strings. This property is not returned in response to normal create and read requests since it may contain sensitive information.
   final pulumi.Input<List<ConnStringInfo>>? connectionStrings;
   /// Cross-Origin Resource Sharing (CORS) settings.
   final pulumi.Input<CorsSettings>? cors;
@@ -71,6 +71,8 @@ class SiteConfig {
   final pulumi.Input<String>? healthCheckPath;
   /// Http20Enabled: configures a web site to allow clients to connect over http2.0
   final pulumi.Input<bool>? http20Enabled;
+  /// Http20ProxyFlag: Configures a website to allow http2.0 to pass be proxied all the way to the app. 0 = disabled, 1 = pass through all http2 traffic, 2 = pass through gRPC only.
+  final pulumi.Input<int>? http20ProxyFlag;
   /// &lt;code&gt;true&lt;/code&gt; if HTTP logging is enabled; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final pulumi.Input<bool>? httpLoggingEnabled;
   /// IP security restrictions for main.
@@ -175,12 +177,12 @@ class SiteConfig {
   /// [apiDefinition] Information about the formal API definition for the app.
   /// [apiManagementConfig] Azure API management settings linked to the app.
   /// [appCommandLine] App command line to launch.
-  /// [appSettings] Application settings.
+  /// [appSettings] Application settings. This property is not returned in response to normal create and read requests since it may contain sensitive information.
   /// [autoHealEnabled] &lt;code&gt;true&lt;/code&gt; if Auto Heal is enabled; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [autoHealRules] Auto Heal rules.
   /// [autoSwapSlotName] Auto-swap slot name.
   /// [azureStorageAccounts] List of Azure Storage Accounts.
-  /// [connectionStrings] Connection strings.
+  /// [connectionStrings] Connection strings. This property is not returned in response to normal create and read requests since it may contain sensitive information.
   /// [cors] Cross-Origin Resource Sharing (CORS) settings.
   /// [defaultDocuments] Default documents.
   /// [detailedErrorLoggingEnabled] &lt;code&gt;true&lt;/code&gt; if detailed error logging is enabled; otherwise, &lt;code&gt;false&lt;/code&gt;.
@@ -193,6 +195,7 @@ class SiteConfig {
   /// [handlerMappings] Handler mappings.
   /// [healthCheckPath] Health check path
   /// [http20Enabled] Http20Enabled: configures a web site to allow clients to connect over http2.0
+  /// [http20ProxyFlag] Http20ProxyFlag: Configures a website to allow http2.0 to pass be proxied all the way to the app. 0 = disabled, 1 = pass through all http2 traffic, 2 = pass through gRPC only.
   /// [httpLoggingEnabled] &lt;code&gt;true&lt;/code&gt; if HTTP logging is enabled; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [ipSecurityRestrictions] IP security restrictions for main.
   /// [ipSecurityRestrictionsDefaultAction] Default action for main access restriction if no rules are matched.
@@ -265,6 +268,7 @@ class SiteConfig {
     this.handlerMappings,
     this.healthCheckPath,
     this.http20Enabled,
+    this.http20ProxyFlag,
     this.httpLoggingEnabled,
     this.ipSecurityRestrictions,
     this.ipSecurityRestrictionsDefaultAction,
@@ -340,6 +344,7 @@ class SiteConfig {
       'handlerMappings': ?pulumi.Input.mapOptionalInputValue<List<HandlerMapping>, List<Map<String, dynamic>>>(handlerMappings, (value) => pulumi.Input.encodeList<HandlerMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
       'healthCheckPath': ?healthCheckPath,
       'http20Enabled': ?http20Enabled,
+      'http20ProxyFlag': ?http20ProxyFlag,
       'httpLoggingEnabled': ?httpLoggingEnabled,
       'ipSecurityRestrictions': ?pulumi.Input.mapOptionalInputValue<List<IpSecurityRestriction>, List<Map<String, dynamic>>>(ipSecurityRestrictions, (value) => pulumi.Input.encodeList<IpSecurityRestriction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipSecurityRestrictionsDefaultAction': ?ipSecurityRestrictionsDefaultAction,
@@ -416,6 +421,7 @@ class SiteConfig {
       handlerMappings: (() { final guardedValue = map['handlerMappings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HandlerMapping>(guardedValue, (value) => HandlerMapping.fromMap((value as Map).cast<String, dynamic>()))); })(),
       healthCheckPath: (() { final guardedValue = map['healthCheckPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       http20Enabled: (() { final guardedValue = map['http20Enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      http20ProxyFlag: (() { final guardedValue = map['http20ProxyFlag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       httpLoggingEnabled: (() { final guardedValue = map['httpLoggingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ipSecurityRestrictions: (() { final guardedValue = map['ipSecurityRestrictions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IpSecurityRestriction>(guardedValue, (value) => IpSecurityRestriction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipSecurityRestrictionsDefaultAction: (() { final guardedValue = map['ipSecurityRestrictionsDefaultAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -466,4 +472,3 @@ class SiteConfig {
     );
   }
 }
-

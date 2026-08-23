@@ -81,6 +81,36 @@ import 'hyper_vcollector_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_hypervcollector" "hyperVCollector" {
+///   e_tag                  = "\"00000981-0000-0300-0000-5d74cd5f0000\""
+///   hyper_v_collector_name = "migrateprojectce73collector"
+///   project_name           = "migrateprojectce73project"
+///   properties = {
+///     agent_properties = {
+///       spn_details = {
+///         application_id = "827f1053-44dc-439f-b832-05416dcce12b"
+///         audience       = "https://72f988bf-86f1-41af-91ab-2d7cd011db47/migrateprojectce73agentauthaadapp"
+///         authority      = "https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47"
+///         object_id      = "be75098e-c0fc-4ac4-98c7-282ebbcf8370"
+///         tenant_id      = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+///       }
+///     }
+///     discovery_site_id = "/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/resourceGroups/ContosoITHyperV/providers/Microsoft.OffAzure/HyperVSites/migrateprojectce73site"
+///   }
+///   resource_group_name = "contosoithyperv"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +122,8 @@ import 'hyper_vcollector_args.dart';
 /// import com.pulumi.azurenative.migrate.inputs.CollectorPropertiesArgs;
 /// import com.pulumi.azurenative.migrate.inputs.CollectorAgentPropertiesArgs;
 /// import com.pulumi.azurenative.migrate.inputs.CollectorBodyAgentSpnPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

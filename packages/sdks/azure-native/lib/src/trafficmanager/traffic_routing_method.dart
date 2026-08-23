@@ -19,4 +19,3 @@ enum TrafficRoutingMethod {
     throw ArgumentError('Unknown TrafficRoutingMethod value: $value');
   }
 }
-

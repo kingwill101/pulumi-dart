@@ -72,6 +72,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_operationalinsights_summarylog" "summaryLog" {
+///   resource_group_name = "oiautorest6685"
+///   rule_definition = {
+///     bin_delay         = 10
+///     bin_size          = 180
+///     bin_start_time    = "2020-02-03T04:05:06Z"
+///     destination_table = "MyDestinationTable_CL"
+///     query             = "MyTable_CL"
+///   }
+///   rule_type         = "User"
+///   summary_logs_name = "summarylogs1"
+///   workspace_name    = "oiautorest6685"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +106,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.operationalinsights.SummaryLog;
 /// import com.pulumi.azurenative.operationalinsights.SummaryLogArgs;
 /// import com.pulumi.azurenative.operationalinsights.inputs.RuleDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

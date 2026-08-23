@@ -5,9 +5,9 @@ import 'private_link_service_connection_state_response.dart';
 
 /// The Private Endpoint Connection resource.
 ///
-/// Uses Azure REST API version 2025-05-01-preview.
+/// Uses Azure REST API version 2025-07-01.
 ///
-/// Other available API versions: 2020-10-01-preview, 2021-02-01-preview, 2021-03-01, 2021-08-01, 2022-01-01, 2022-11-01-preview, 2023-03-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-03-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-10-01, 2025-04-01, 2025-07-01, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-10-01-preview, 2021-02-01-preview, 2021-03-01, 2021-08-01, 2022-01-01, 2022-11-01-preview, 2023-03-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-03-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-10-01, 2025-04-01, 2025-05-01-preview, 2025-08-01-preview, 2026-02-01-preview, 2026-05-01-preview, 2026-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -66,6 +66,27 @@ import 'private_link_service_connection_state_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_redisenterprise_privateendpointconnection" "privateEndpointConnection" {
+///   cluster_name                     = "cache1"
+///   private_endpoint_connection_name = "pectest01"
+///   private_link_service_connection_state = {
+///     description = "Auto-Approved"
+///     status      = "Approved"
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +96,8 @@ import 'private_link_service_connection_state_response.dart';
 /// import com.pulumi.azurenative.redisenterprise.PrivateEndpointConnection;
 /// import com.pulumi.azurenative.redisenterprise.PrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.redisenterprise.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

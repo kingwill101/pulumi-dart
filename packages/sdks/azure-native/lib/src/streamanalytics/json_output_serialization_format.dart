@@ -15,4 +15,3 @@ enum JsonOutputSerializationFormat {
     throw ArgumentError('Unknown JsonOutputSerializationFormat value: $value');
   }
 }
-

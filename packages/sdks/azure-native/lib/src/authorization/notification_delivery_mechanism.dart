@@ -1,6 +1,6 @@
 /// The type of notification.
 enum NotificationDeliveryMechanism {
-  valueEmail("Email");
+  email("Email");
 
   const NotificationDeliveryMechanism(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum NotificationDeliveryMechanism {
     throw ArgumentError('Unknown NotificationDeliveryMechanism value: $value');
   }
 }
-

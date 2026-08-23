@@ -1,9 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'site_properties_response.dart';
+import 'site_properties_sites_by_service_group_response.dart';
 import 'sites_by_service_group_args.dart';
 import 'system_data_response.dart';
 
-/// Site as ARM Resource
+/// Site as Extension Resource
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
 ///
@@ -27,6 +27,19 @@ import 'system_data_response.dart';
 ///         {
 ///             Description = "enxcmpvfvadbapo",
 ///             DisplayName = "string",
+///             Labels =
+///             {
+///                 { "key8188", "mcgnu" },
+///             },
+///             SiteAddress = new AzureNative.Edge.Inputs.SiteAddressPropertiesArgs
+///             {
+///                 City = "zkcbzjkatafo",
+///                 Country = "xeevcfvimlfzsfuxtyujw",
+///                 PostalCode = "qbrhqk",
+///                 StateOrProvince = "wk",
+///                 StreetAddress1 = "fodimymrxbhrfslsmzfhmitn",
+///                 StreetAddress2 = "widjg",
+///             },
 ///         },
 ///         ServicegroupName = "string",
 ///         SiteName = "string",
@@ -51,6 +64,17 @@ import 'system_data_response.dart';
 /// 			Properties: &edge.SitePropertiesArgs{
 /// 				Description: pulumi.String("enxcmpvfvadbapo"),
 /// 				DisplayName: pulumi.String("string"),
+/// 				Labels: pulumi.StringMap{
+/// 					"key8188": pulumi.String("mcgnu"),
+/// 				},
+/// 				SiteAddress: &edge.SiteAddressPropertiesArgs{
+/// 					City:            pulumi.String("zkcbzjkatafo"),
+/// 					Country:         pulumi.String("xeevcfvimlfzsfuxtyujw"),
+/// 					PostalCode:      pulumi.String("qbrhqk"),
+/// 					StateOrProvince: pulumi.String("wk"),
+/// 					StreetAddress1:  pulumi.String("fodimymrxbhrfslsmzfhmitn"),
+/// 					StreetAddress2:  pulumi.String("widjg"),
+/// 				},
 /// 			},
 /// 			ServicegroupName: pulumi.String("string"),
 /// 			SiteName:         pulumi.String("string"),
@@ -64,6 +88,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_edge_sitesbyservicegroup" "sitesByServiceGroup" {
+///   properties = {
+///     description  = "enxcmpvfvadbapo"
+///     display_name = "string"
+///     labels = {
+///       "key8188" = "mcgnu"
+///     }
+///     site_address = {
+///       city              = "zkcbzjkatafo"
+///       country           = "xeevcfvimlfzsfuxtyujw"
+///       postal_code       = "qbrhqk"
+///       state_or_province = "wk"
+///       street_address1   = "fodimymrxbhrfslsmzfhmitn"
+///       street_address2   = "widjg"
+///     }
+///   }
+///   servicegroup_name = "string"
+///   site_name         = "string"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +128,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.edge.SitesByServiceGroup;
 /// import com.pulumi.azurenative.edge.SitesByServiceGroupArgs;
 /// import com.pulumi.azurenative.edge.inputs.SitePropertiesArgs;
-/// import java.util.List;
+/// import com.pulumi.azurenative.edge.inputs.SiteAddressPropertiesArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -90,6 +146,15 @@ import 'system_data_response.dart';
 ///             .properties(SitePropertiesArgs.builder()
 ///                 .description("enxcmpvfvadbapo")
 ///                 .displayName("string")
+///                 .labels(Map.of("key8188", "mcgnu"))
+///                 .siteAddress(SiteAddressPropertiesArgs.builder()
+///                     .city("zkcbzjkatafo")
+///                     .country("xeevcfvimlfzsfuxtyujw")
+///                     .postalCode("qbrhqk")
+///                     .stateOrProvince("wk")
+///                     .streetAddress1("fodimymrxbhrfslsmzfhmitn")
+///                     .streetAddress2("widjg")
+///                     .build())
 ///                 .build())
 ///             .servicegroupName("string")
 ///             .siteName("string")
@@ -108,6 +173,17 @@ import 'system_data_response.dart';
 ///     properties: {
 ///         description: "enxcmpvfvadbapo",
 ///         displayName: "string",
+///         labels: {
+///             key8188: "mcgnu",
+///         },
+///         siteAddress: {
+///             city: "zkcbzjkatafo",
+///             country: "xeevcfvimlfzsfuxtyujw",
+///             postalCode: "qbrhqk",
+///             stateOrProvince: "wk",
+///             streetAddress1: "fodimymrxbhrfslsmzfhmitn",
+///             streetAddress2: "widjg",
+///         },
 ///     },
 ///     servicegroupName: "string",
 ///     siteName: "string",
@@ -123,6 +199,17 @@ import 'system_data_response.dart';
 ///     properties={
 ///         "description": "enxcmpvfvadbapo",
 ///         "display_name": "string",
+///         "labels": {
+///             "key8188": "mcgnu",
+///         },
+///         "site_address": {
+///             "city": "zkcbzjkatafo",
+///             "country": "xeevcfvimlfzsfuxtyujw",
+///             "postal_code": "qbrhqk",
+///             "state_or_province": "wk",
+///             "street_address1": "fodimymrxbhrfslsmzfhmitn",
+///             "street_address2": "widjg",
+///         },
 ///     },
 ///     servicegroup_name="string",
 ///     site_name="string")
@@ -137,6 +224,15 @@ import 'system_data_response.dart';
 ///       properties:
 ///         description: enxcmpvfvadbapo
 ///         displayName: string
+///         labels:
+///           key8188: mcgnu
+///         siteAddress:
+///           city: zkcbzjkatafo
+///           country: xeevcfvimlfzsfuxtyujw
+///           postalCode: qbrhqk
+///           stateOrProvince: wk
+///           streetAddress1: fodimymrxbhrfslsmzfhmitn
+///           streetAddress2: widjg
 ///       servicegroupName: string
 ///       siteName: string
 ///
@@ -158,7 +254,7 @@ class SitesByServiceGroup extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The resource-specific properties for this resource.
-  late final pulumi.Output<SitePropertiesResponse> properties;
+  late final pulumi.Output<SitePropertiesSitesByServiceGroupResponse> properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -180,7 +276,7 @@ class SitesByServiceGroup extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<SitePropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SitePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<SitePropertiesSitesByServiceGroupResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SitePropertiesSitesByServiceGroupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

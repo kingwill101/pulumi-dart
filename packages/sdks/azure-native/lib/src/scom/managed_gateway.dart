@@ -55,6 +55,23 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_scom_managedgateway" "managedGateway" {
+///   instance_name        = "myInstance"
+///   managed_gateway_name = "d877b154-9a8d-4bfe-8a24-20682fcf2ed3"
+///   resource_group_name  = "myResGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +80,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.scom.ManagedGateway;
 /// import com.pulumi.azurenative.scom.ManagedGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

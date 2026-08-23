@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-01-01.
 ///
-/// Other available API versions: 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-01-01, 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -144,6 +144,56 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurearcdata_sqlserveravailabilitygroup" "sqlServerAvailabilityGroup" {
+///   availability_group_name = "testAG"
+///   location                = "southeastasia"
+///   properties = {
+///     databases = {
+///       value = [{
+///         "databaseName" = "db1"
+///         }, {
+///         "databaseName" = "db2"
+///       }]
+///     }
+///     info = {
+///       basic_features                              = false
+///       db_failover                                 = true
+///       dtc_support                                 = false
+///       failure_condition_level                     = 3
+///       health_check_timeout                        = 30000
+///       is_contained                                = false
+///       is_distributed                              = false
+///       required_synchronized_secondaries_to_commit = 0
+///     }
+///     replicas = {
+///       value = [{
+///         "configure" = {
+///           "backupPriority" = 50
+///           "endpointUrl"    = "TCP://mytest60-0.mytest60-svc:5022"
+///           "sessionTimeout" = 10
+///         }
+///         "replicaName" = "testSqlServer\\INST1"
+///       }]
+///     }
+///   }
+///   resource_group_name      = "testrg"
+///   sql_server_instance_name = "testSqlServer_INST1"
+///   tags = {
+///     "mytag" = "myval"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -156,8 +206,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azurearcdata.inputs.SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.AvailabilityGroupInfoArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.SqlServerAvailabilityGroupResourcePropertiesReplicasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

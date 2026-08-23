@@ -91,6 +91,39 @@ import 'wsfc_domain_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sqlvirtualmachine_sqlvirtualmachinegroup" "sqlVirtualMachineGroup" {
+///   location                       = "northeurope"
+///   resource_group_name            = "testrg"
+///   sql_image_offer                = "SQL2016-WS2016"
+///   sql_image_sku                  = "Enterprise"
+///   sql_virtual_machine_group_name = "testvmgroup"
+///   tags = {
+///     "mytag" = "myval"
+///   }
+///   wsfc_domain_profile = {
+///     cluster_bootstrap_account   = "testrpadmin"
+///     cluster_operator_account    = "testrp@testdomain.com"
+///     cluster_subnet_type         = "MultiSubnet"
+///     domain_fqdn                 = "testdomain.com"
+///     is_sql_service_account_gmsa = false
+///     ou_path                     = "OU=WSCluster,DC=testdomain,DC=com"
+///     sql_service_account         = "sqlservice@testdomain.com"
+///     storage_account_primary_key = "<primary storage access key>"
+///     storage_account_url         = "https://storgact.blob.core.windows.net/"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +133,8 @@ import 'wsfc_domain_profile_response.dart';
 /// import com.pulumi.azurenative.sqlvirtualmachine.SqlVirtualMachineGroup;
 /// import com.pulumi.azurenative.sqlvirtualmachine.SqlVirtualMachineGroupArgs;
 /// import com.pulumi.azurenative.sqlvirtualmachine.inputs.WsfcDomainProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

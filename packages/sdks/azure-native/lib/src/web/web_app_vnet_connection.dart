@@ -1,11 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'system_data_response.dart';
 import 'web_app_vnet_connection_args.dart';
 
 /// Virtual Network information ARM resource.
 ///
-/// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+/// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// ## Import
 ///
 /// An existing resource can be imported using its type token, name, and identifier, e.g.
@@ -16,8 +17,7 @@ import 'web_app_vnet_connection_args.dart';
 class WebAppVnetConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// A certificate file (.cer) blob containing the public key of the private key used to authenticate a
-  /// Point-To-Site VPN connection.
+  /// A certificate file (.cer) blob containing the public key of the private key used to authenticate a \nPoint-To-Site VPN connection.
   late final pulumi.Output<String?> certBlob;
   /// The client certificate thumbprint.
   late final pulumi.Output<String> certThumbprint;
@@ -27,13 +27,15 @@ class WebAppVnetConnection extends pulumi.CustomResource {
   late final pulumi.Output<bool?> isSwift;
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-  /// Resource Name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// &lt;code&gt;true&lt;/code&gt; if a resync is required; otherwise, &lt;code&gt;false&lt;/code&gt;.
   late final pulumi.Output<bool> resyncRequired;
   /// The routes that this Virtual Network connection uses.
   late final pulumi.Output<List<Map<String, dynamic>>> routes;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The Virtual Network's resource ID.
   late final pulumi.Output<String?> vnetResourceId;
@@ -61,6 +63,7 @@ class WebAppVnetConnection extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resyncRequired = registerOutput<bool>('resyncRequired');
     routes = registerOutput<List<Map<String, dynamic>>>('routes');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     vnetResourceId = registerOutput<String?>('vnetResourceId');
   }

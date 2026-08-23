@@ -208,6 +208,77 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ec2networkinterface" "ec2NetworkInterface" {
+///   location = "lagtstrmaffl"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "nmgqcimbhzksweqtns"
+///     aws_account_id = "gjylibjqfzkkx"
+///     aws_properties = {
+///       connection_tracking_specification = {
+///         tcp_established_timeout = 17
+///         udp_stream_timeout      = 8
+///         udp_timeout             = 23
+///       }
+///       description         = "rjfmatpnlpzafpjsvdifepkeompzpz"
+///       enable_primary_ipv6 = true
+///       group_set           = ["dqnxzfzzixpqqapipgobuepnptfi"]
+///       id                  = "djkpriel"
+///       interface_type      = "osohhzoujznxwq"
+///       ipv4_prefix_count   = 18
+///       ipv4_prefixes = [{
+///         "ipv4Prefix" = "gptczjajfvxavzpalq"
+///       }]
+///       ipv6_address_count = 21
+///       ipv6_addresses = [{
+///         "ipv6Address" = "yltzjtkgfhbhokimzn"
+///       }]
+///       ipv6_prefix_count = 1
+///       ipv6_prefixes = [{
+///         "ipv6Prefix" = "srpldhvaafcozyarpechevrnxlf"
+///       }]
+///       primary_ipv6_address       = "uoblo"
+///       primary_private_ip_address = "qyowqxftdeptwmjwfa"
+///       private_ip_address         = "qicwhumw"
+///       private_ip_addresses = [{
+///         "primary"          = true
+///         "privateIpAddress" = "mmkedmvsclcwfvlvx"
+///       }]
+///       secondary_private_ip_address_count = 9
+///       secondary_private_ip_addresses     = ["mkvwjalereuiy"]
+///       source_dest_check                  = true
+///       subnet_id                          = "wfyytldstgkdpoffxak"
+///       tags = [{
+///         "key"   = "ecbkgvgrwffyykfpbghbipmg"
+///         "value" = "zlzzwcqgyuoe"
+///       }]
+///       vpc_id = "ykqkegxxhqsw"
+///     }
+///     aws_region        = "dpghaxzupmkfwbvir"
+///     aws_source_schema = "smaakwcpvp"
+///     aws_tags = {
+///       "key190" = "coungxpxexmyovmnasvh"
+///     }
+///     public_cloud_connectors_resource_id = "ottcocnvajfifabmlw"
+///     public_cloud_resource_name          = "pjjwxtuejzskysxlytlrcqegfkuydf"
+///   }
+///   resource_group_name = "rgec2NetworkInterface"
+///   tags = {
+///     "key2520" = "ui"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -219,8 +290,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2NetworkInterfacePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2NetworkInterfacePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ConnectionTrackingSpecificationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_link_service_connection_state.dart';
 
-/// The properties of a private endpoint connection
+/// The properties of a private endpoint connection.
 class PrivateEndpointConnectionProperties {
   /// GroupIds from the private link service resource.
   final pulumi.Input<List<String>>? groupIds;
@@ -32,4 +32,3 @@ class PrivateEndpointConnectionProperties {
     );
   }
 }
-

@@ -21,14 +21,10 @@ import 'get_automation_args.dart';
 import 'get_automation_result.dart';
 import 'get_azure_servers_setting_args.dart';
 import 'get_azure_servers_setting_result.dart';
-import 'get_connector_args.dart';
-import 'get_connector_result.dart';
-import 'get_custom_assessment_automation_args.dart';
-import 'get_custom_assessment_automation_result.dart';
-import 'get_custom_entity_store_assignment_args.dart';
-import 'get_custom_entity_store_assignment_result.dart';
 import 'get_custom_recommendation_args.dart';
 import 'get_custom_recommendation_result.dart';
+import 'get_data_scanner_args.dart';
+import 'get_data_scanner_result.dart';
 import 'get_defender_for_storage_args.dart';
 import 'get_defender_for_storage_result.dart';
 import 'get_dev_ops_configuration_args.dart';
@@ -174,7 +170,7 @@ Future<GetApplicationResult> getApplication(
 ///
 /// Uses Azure REST API version 2021-06-01.
 ///
-/// Other available API versions: 2019-01-01-preview, 2020-01-01, 2025-05-04-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-01-01-preview, 2020-01-01, 2025-05-04. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_security_get_assessment_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAssessmentResult> getAssessment(
@@ -194,7 +190,7 @@ Future<GetAssessmentResult> getAssessment(
 ///
 /// Uses Azure REST API version 2021-06-01.
 ///
-/// Other available API versions: 2020-01-01, 2025-05-04-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-01-01, 2025-05-04. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_security_get_assessment_metadata_in_subscription_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAssessmentMetadataInSubscriptionResult> getAssessmentMetadataInSubscription(
@@ -284,60 +280,6 @@ Future<GetAzureServersSettingResult> getAzureServersSetting(
   return GetAzureServersSettingResult.fromMap(result);
 }
 
-/// Details of a specific cloud account connector
-///
-/// Uses Azure REST API version 2020-01-01-preview.
-/// [args] Arguments passed to this invoke. {@macro pulumi_security_get_connector_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetConnectorResult> getConnector(
-  GetConnectorArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'azure-native:security:getConnector',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetConnectorResult.fromMap(result);
-}
-
-/// Gets a single custom assessment automation by name for the provided subscription and resource group.
-///
-/// Uses Azure REST API version 2021-07-01-preview.
-/// [args] Arguments passed to this invoke. {@macro pulumi_security_get_custom_assessment_automation_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetCustomAssessmentAutomationResult> getCustomAssessmentAutomation(
-  GetCustomAssessmentAutomationArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'azure-native:security:getCustomAssessmentAutomation',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetCustomAssessmentAutomationResult.fromMap(result);
-}
-
-/// Gets a single custom entity store assignment by name for the provided subscription and resource group.
-///
-/// Uses Azure REST API version 2021-07-01-preview.
-/// [args] Arguments passed to this invoke. {@macro pulumi_security_get_custom_entity_store_assignment_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetCustomEntityStoreAssignmentResult> getCustomEntityStoreAssignment(
-  GetCustomEntityStoreAssignmentArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'azure-native:security:getCustomEntityStoreAssignment',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetCustomEntityStoreAssignmentResult.fromMap(result);
-}
-
 /// Get a specific custom recommendation for the requested scope by customRecommendationName
 ///
 /// Uses Azure REST API version 2024-08-01.
@@ -356,11 +298,29 @@ Future<GetCustomRecommendationResult> getCustomRecommendation(
   return GetCustomRecommendationResult.fromMap(result);
 }
 
+/// Gets a data scanner resource for the specified scope.
+///
+/// Uses Azure REST API version 2026-08-01.
+/// [args] Arguments passed to this invoke. {@macro pulumi_security_get_data_scanner_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetDataScannerResult> getDataScanner(
+  GetDataScannerArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:security:getDataScanner',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetDataScannerResult.fromMap(result);
+}
+
 /// Gets the Defender for Storage settings for the specified storage account.
 ///
 /// Uses Azure REST API version 2024-10-01-preview.
 ///
-/// Other available API versions: 2022-12-01-preview, 2024-08-01-preview, 2025-01-01, 2025-02-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-12-01-preview, 2024-08-01-preview, 2025-01-01, 2025-02-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_security_get_defender_for_storage_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDefenderForStorageResult> getDefenderForStorage(
@@ -493,6 +453,8 @@ Future<GetJitNetworkAccessPolicyResult> getJitNetworkAccessPolicy(
 /// Get the Defender plans pricing configurations of the selected scope (valid scopes are resource id or a subscription id). At the resource level, supported resource types are 'VirtualMachines, VMSS and ARC Machines'.
 ///
 /// Uses Azure REST API version 2024-01-01.
+///
+/// Other available API versions: 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_security_get_pricing_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPricingResult> getPricing(
@@ -664,7 +626,7 @@ Future<GetServerVulnerabilityAssessmentResult> getServerVulnerabilityAssessment(
 ///
 /// Uses Azure REST API version 2023-02-01-preview.
 ///
-/// Other available API versions: 2020-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-07-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_security_get_sql_vulnerability_assessment_baseline_rule_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSqlVulnerabilityAssessmentBaselineRuleResult> getSqlVulnerabilityAssessmentBaselineRule(

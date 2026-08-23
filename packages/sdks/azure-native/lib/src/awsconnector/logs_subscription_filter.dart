@@ -103,6 +103,45 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_logssubscriptionfilter" "logsSubscriptionFilter" {
+///   location = "chliijcrgqpxjf"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "sbvdldikixyoalpxj"
+///     aws_account_id = "fckvzypgfibfyknjwyrvmez"
+///     aws_properties = {
+///       destination_arn = "k"
+///       distribution    = "ByLogStream"
+///       filter_name     = "tboamjix"
+///       filter_pattern  = "ui"
+///       log_group_name  = "ku"
+///       role_arn        = "qgjbnrzdeigsxsfrkkfiaf"
+///     }
+///     aws_region        = "oogmbpnzqlvdmcntbzbsi"
+///     aws_source_schema = "anvmszmmknfesvacxje"
+///     aws_tags = {
+///       "key7628" = "ipzrwulgfuznh"
+///     }
+///     public_cloud_connectors_resource_id = "ywjmogqrbdroewncecotnxyijemqjz"
+///     public_cloud_resource_name          = "gilkw"
+///   }
+///   resource_group_name = "rglogsSubscriptionFilter"
+///   tags = {
+///     "key9410" = "ajuntrgfwfnfaobudwmc"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +152,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.LogsSubscriptionFilterArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LogsSubscriptionFilterPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsLogsSubscriptionFilterPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -1,8 +1,8 @@
 /// [Required] Name of policy configuration
 enum EarlyTerminationPolicyType {
-  valueBandit("Bandit"),
-  valueMedianStopping("MedianStopping"),
-  valueTruncationSelection("TruncationSelection");
+  bandit("Bandit"),
+  medianStopping("MedianStopping"),
+  truncationSelection("TruncationSelection");
 
   const EarlyTerminationPolicyType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum EarlyTerminationPolicyType {
     throw ArgumentError('Unknown EarlyTerminationPolicyType value: $value');
   }
 }
-

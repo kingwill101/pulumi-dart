@@ -115,9 +115,9 @@ class WebAppAuthSettingsArgs {
   /// This setting is optional. If not specified, "wl.basic" is used as the default scope.
   /// Microsoft Account Scopes and permissions documentation: https://msdn.microsoft.com/en-us/library/dn631845.aspx
   final pulumi.Input<List<String>>? microsoftAccountOAuthScopes;
-  /// Name of web app.
+  /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The RuntimeVersion of the Authentication / Authorization feature in use for the current app.
   /// The setting in this value can control the behavior of certain features in the Authentication / Authorization module.
@@ -176,8 +176,8 @@ class WebAppAuthSettingsArgs {
   /// [microsoftAccountClientSecret] The OAuth 2.0 client secret that was created for the app used for authentication.
   /// [microsoftAccountClientSecretSettingName] The app setting name containing the OAuth 2.0 client secret that was created for the
   /// [microsoftAccountOAuthScopes] The OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication.
-  /// [name] Name of web app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [name] Name of the app.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [runtimeVersion] The RuntimeVersion of the Authentication / Authorization feature in use for the current app.
   /// [tokenRefreshExtensionHours] The number of hours after session token expiration that a session token can be used to
   /// [tokenStoreEnabled] &lt;code&gt;true&lt;/code&gt; to durably store platform-specific security tokens that are obtained during login flows; otherwise, &lt;code&gt;false&lt;/code&gt;.
@@ -322,4 +322,3 @@ class WebAppAuthSettingsArgs {
     );
   }
 }
-

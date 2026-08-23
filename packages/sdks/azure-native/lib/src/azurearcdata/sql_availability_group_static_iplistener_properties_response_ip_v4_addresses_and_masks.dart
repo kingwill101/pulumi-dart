@@ -30,4 +30,3 @@ class SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMask
     );
   }
 }
-

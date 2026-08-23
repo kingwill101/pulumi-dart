@@ -15,4 +15,3 @@ enum AgentAutoUpdateStatus {
     throw ArgumentError('Unknown AgentAutoUpdateStatus value: $value');
   }
 }
-

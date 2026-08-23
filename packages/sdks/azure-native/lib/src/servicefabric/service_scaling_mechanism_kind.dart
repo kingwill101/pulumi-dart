@@ -1,7 +1,7 @@
-/// Enumerates the ways that a service can be partitioned.
+/// Specifies the mechanism associated with this scaling policy.
 enum ServiceScalingMechanismKind {
-  scalePartitionInstanceCount("ScalePartitionInstanceCount"),
-  addRemoveIncrementalNamedPartition("AddRemoveIncrementalNamedPartition");
+  valueScalePartitionInstanceCount("ScalePartitionInstanceCount"),
+  valueAddRemoveIncrementalNamedPartition("AddRemoveIncrementalNamedPartition");
 
   const ServiceScalingMechanismKind(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ServiceScalingMechanismKind {
     throw ArgumentError('Unknown ServiceScalingMechanismKind value: $value');
   }
 }
-

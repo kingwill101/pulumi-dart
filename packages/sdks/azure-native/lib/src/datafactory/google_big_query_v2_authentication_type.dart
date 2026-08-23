@@ -1,7 +1,7 @@
 /// The OAuth 2.0 authentication mechanism used for authentication.
 enum GoogleBigQueryV2AuthenticationType {
-  valueServiceAuthentication("ServiceAuthentication"),
-  valueUserAuthentication("UserAuthentication");
+  serviceAuthentication("ServiceAuthentication"),
+  userAuthentication("UserAuthentication");
 
   const GoogleBigQueryV2AuthenticationType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum GoogleBigQueryV2AuthenticationType {
     throw ArgumentError('Unknown GoogleBigQueryV2AuthenticationType value: $value');
   }
 }
-

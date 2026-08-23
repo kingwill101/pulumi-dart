@@ -17,4 +17,3 @@ enum OnlineExperimentationWorkspaceSkuName {
     throw ArgumentError('Unknown OnlineExperimentationWorkspaceSkuName value: $value');
   }
 }
-

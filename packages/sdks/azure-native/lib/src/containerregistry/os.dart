@@ -15,4 +15,3 @@ enum OS {
     throw ArgumentError('Unknown OS value: $value');
   }
 }
-

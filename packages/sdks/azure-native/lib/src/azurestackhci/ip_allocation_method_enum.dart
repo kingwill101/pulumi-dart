@@ -15,4 +15,3 @@ enum IpAllocationMethodEnum {
     throw ArgumentError('Unknown IpAllocationMethodEnum value: $value');
   }
 }
-

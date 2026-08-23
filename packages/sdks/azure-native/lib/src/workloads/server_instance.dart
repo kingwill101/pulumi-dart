@@ -1,7 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_data_response.dart';
 import 'excel_performance_data_response.dart';
-import 'sapmigrate_error_response.dart';
+import 'sapmigrate_error_server_instance_response.dart';
 import 'server_instance_args.dart';
 import 'system_data_response.dart';
 
@@ -59,6 +59,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_serverinstance" "serverInstance" {
+///   resource_group_name     = "test-rg"
+///   sap_discovery_site_name = "SampleSite"
+///   sap_instance_name       = "MPP_MPP"
+///   server_instance_name    = "APP_SapServer1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +85,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ServerInstance;
 /// import com.pulumi.azurenative.workloads.ServerInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -145,7 +163,7 @@ class ServerInstance extends pulumi.CustomResource {
   /// Configuration data for this server instance.
   late final pulumi.Output<ConfigurationDataResponse> configurationData;
   /// Defines the errors related to SAP Instance resource.
-  late final pulumi.Output<SAPMigrateErrorResponse> errors;
+  late final pulumi.Output<SAPMigrateErrorServerInstanceResponse> errors;
   /// This is the Instance SID for ASCS/AP/DB instance.  An SAP system with HANA database for example could have a different SID for database Instance than that of ASCS instance.
   late final pulumi.Output<String> instanceSid;
   /// The name of the resource
@@ -185,7 +203,7 @@ class ServerInstance extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     configurationData = registerOutput<ConfigurationDataResponse>('configurationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    errors = registerOutput<SAPMigrateErrorResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SAPMigrateErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    errors = registerOutput<SAPMigrateErrorServerInstanceResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SAPMigrateErrorServerInstanceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceSid = registerOutput<String>('instanceSid');
     this.name = registerOutput<String>('name');
     operatingSystem = registerOutput<String>('operatingSystem');

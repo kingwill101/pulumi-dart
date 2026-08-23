@@ -137,6 +137,54 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ec2vpc" "ec2Vpc" {
+///   location = "bcrtgodiyozdsiqbhdvsaaog"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "isskkecektndkosbruasgvkakzf"
+///     aws_account_id = "vskthos"
+///     aws_properties = {
+///       cidr_block              = "amstuguadqkmlmofdszmxhgssf"
+///       cidr_block_associations = ["ykwdexxzxjxowuuawym"]
+///       default_network_acl     = "lhtepidfpfsyxksnvekueeyvw"
+///       default_security_group  = "qtqgizvsvzdqxmbwwpmtcnqlfuh"
+///       enable_dns_hostnames    = true
+///       enable_dns_support      = true
+///       instance_tenancy        = "haqdsdkgbjmnwdgamqs"
+///       ipv4_ipam_pool_id       = "ldzbfvpzpwudqtdyb"
+///       ipv4_netmask_length     = 21
+///       ipv6_cidr_blocks        = ["q"]
+///       tags = [{
+///         "key"   = "dn"
+///         "value" = "tqvkxdrwsaxvxwckrpqk"
+///       }]
+///       vpc_id = "wqqqqmtbgzmdfmkiaoyjdkavuzzzzw"
+///     }
+///     aws_region        = "paraxj"
+///     aws_source_schema = "vnjplxwhapuaydjjdqiaqfvbfjam"
+///     aws_tags = {
+///       "key96" = "hjcp"
+///     }
+///     public_cloud_connectors_resource_id = "hpzdeuzmjfwatmynigq"
+///     public_cloud_resource_name          = "qjwdilmlbbam"
+///   }
+///   resource_group_name = "rgec2Vpc"
+///   tags = {
+///     "key2430" = "wsbwsruiakoihittdhcmmwrjmft"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -147,8 +195,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.Ec2VpcArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2VpcPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2VpcPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

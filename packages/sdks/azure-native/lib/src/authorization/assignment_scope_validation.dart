@@ -15,4 +15,3 @@ enum AssignmentScopeValidation {
     throw ArgumentError('Unknown AssignmentScopeValidation value: $value');
   }
 }
-

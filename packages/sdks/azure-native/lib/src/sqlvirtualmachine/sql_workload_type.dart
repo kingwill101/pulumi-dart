@@ -16,4 +16,3 @@ enum SqlWorkloadType {
     throw ArgumentError('Unknown SqlWorkloadType value: $value');
   }
 }
-

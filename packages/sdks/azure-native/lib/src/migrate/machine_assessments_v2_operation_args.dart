@@ -47,4 +47,3 @@ class MachineAssessmentsV2OperationArgs {
     );
   }
 }
-

@@ -81,4 +81,3 @@ class AzureDataLakeGen1DatastoreResponse {
     );
   }
 }
-

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'global_parameter_args.dart';
 import 'global_parameter_specification_response.dart';
+import 'system_data_response.dart';
 
 /// Global parameters resource type.
 ///
@@ -68,6 +69,29 @@ import 'global_parameter_specification_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datafactory_globalparameter" "globalParameter" {
+///   factory_name          = "exampleFactoryName"
+///   global_parameter_name = "default"
+///   properties = {
+///     "waitTime" = {
+///       type  = "Int"
+///       value = 5
+///     }
+///   }
+///   resource_group_name = "exampleResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +100,8 @@ import 'global_parameter_specification_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.GlobalParameter;
 /// import com.pulumi.azurenative.datafactory.GlobalParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -215,6 +239,29 @@ import 'global_parameter_specification_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datafactory_globalparameter" "globalParameter" {
+///   factory_name          = "exampleFactoryName"
+///   global_parameter_name = "default"
+///   properties = {
+///     "waitTime" = {
+///       type  = "Int"
+///       value = 5
+///     }
+///   }
+///   resource_group_name = "exampleResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -223,8 +270,8 @@ import 'global_parameter_specification_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.GlobalParameter;
 /// import com.pulumi.azurenative.datafactory.GlobalParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -314,13 +361,15 @@ import 'global_parameter_specification_response.dart';
 class GlobalParameter extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// Etag identifies change in the resource.
+  /// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
   late final pulumi.Output<String> etag;
-  /// The resource name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Properties of the global parameter.
   late final pulumi.Output<Map<String, GlobalParameterSpecificationResponse>> properties;
-  /// The resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [GlobalParameter].
@@ -341,6 +390,7 @@ class GlobalParameter extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     properties = registerOutput<Map<String, GlobalParameterSpecificationResponse>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<GlobalParameterSpecificationResponse>(guardedValue, (value) => GlobalParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

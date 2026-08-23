@@ -77,4 +77,3 @@ class MongoDbV2CollectionDataset {
     );
   }
 }
-

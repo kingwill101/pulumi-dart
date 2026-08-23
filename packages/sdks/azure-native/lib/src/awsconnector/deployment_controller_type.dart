@@ -16,4 +16,3 @@ enum DeploymentControllerType {
     throw ArgumentError('Unknown DeploymentControllerType value: $value');
   }
 }
-

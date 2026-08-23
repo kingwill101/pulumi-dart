@@ -1,7 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'credentials_response.dart';
 import 'kafka_configuration_args.dart';
-import 'proxy_resource_response_system_data.dart';
+import 'system_data_response.dart';
 
 /// The configuration of the event streaming service resource attached to the Purview account for kafka notifications.
 ///
@@ -78,6 +78,33 @@ import 'proxy_resource_response_system_data.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_purview_kafkaconfiguration" "kafkaConfiguration" {
+///   account_name   = "account1"
+///   consumer_group = "consumerGroup"
+///   credentials = {
+///     identity_id = "/subscriptions/47e8596d-ee73-4eb2-b6b4-cc13c2b87ssd/resourceGroups/testRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testId"
+///     type        = "UserAssigned"
+///   }
+///   event_hub_partition_id   = "partitionId"
+///   event_hub_resource_id    = "/subscriptions/225be6fe-ec1c-4d51-a368-f69348d2e6c5/resourceGroups/testRG/providers/Microsoft.EventHub/namespaces/eventHubNameSpaceName"
+///   event_hub_type           = "Notification"
+///   event_streaming_state    = "Enabled"
+///   event_streaming_type     = "Azure"
+///   kafka_configuration_name = "kafkaConfigName"
+///   resource_group_name      = "rgpurview"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +114,8 @@ import 'proxy_resource_response_system_data.dart';
 /// import com.pulumi.azurenative.purview.KafkaConfiguration;
 /// import com.pulumi.azurenative.purview.KafkaConfigurationArgs;
 /// import com.pulumi.azurenative.purview.inputs.CredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -203,6 +230,7 @@ class KafkaConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<CredentialsResponse?> credentials;
   /// Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
   late final pulumi.Output<String?> eventHubPartitionId;
+  /// A type definition that refers the id to an Azure Resource Manager resource.
   late final pulumi.Output<String?> eventHubResourceId;
   /// The event hub type.
   late final pulumi.Output<String?> eventHubType;
@@ -210,11 +238,11 @@ class KafkaConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String?> eventStreamingState;
   /// The event streaming service type
   late final pulumi.Output<String?> eventStreamingType;
-  /// Gets or sets the name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
-  /// Metadata pertaining to creation and last modification of the resource.
-  late final pulumi.Output<ProxyResourceResponseSystemData> systemData;
-  /// Gets or sets the type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [KafkaConfiguration].
@@ -240,7 +268,7 @@ class KafkaConfiguration extends pulumi.CustomResource {
     eventStreamingState = registerOutput<String?>('eventStreamingState');
     eventStreamingType = registerOutput<String?>('eventStreamingType');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<ProxyResourceResponseSystemData>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProxyResourceResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

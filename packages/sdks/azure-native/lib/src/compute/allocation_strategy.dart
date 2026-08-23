@@ -16,4 +16,3 @@ enum AllocationStrategy {
     throw ArgumentError('Unknown AllocationStrategy value: $value');
   }
 }
-

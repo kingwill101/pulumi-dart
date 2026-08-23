@@ -15,4 +15,3 @@ enum MongoRoleDefinitionType {
     throw ArgumentError('Unknown MongoRoleDefinitionType value: $value');
   }
 }
-

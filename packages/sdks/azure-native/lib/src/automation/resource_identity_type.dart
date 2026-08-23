@@ -1,9 +1,9 @@
 /// The identity type.
 enum ResourceIdentityType {
-  valueSystemAssigned("SystemAssigned"),
-  valueUserAssigned("UserAssigned"),
-  valueSystemAssignedUserAssigned("SystemAssigned, UserAssigned"),
-  valueNone("None");
+  systemAssigned("SystemAssigned"),
+  userAssigned("UserAssigned"),
+  systemAssignedUserAssigned("SystemAssigned, UserAssigned"),
+  none("None");
 
   const ResourceIdentityType(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum ResourceIdentityType {
     throw ArgumentError('Unknown ResourceIdentityType value: $value');
   }
 }
-

@@ -22,4 +22,3 @@ enum TierType {
     throw ArgumentError('Unknown TierType value: $value');
   }
 }
-

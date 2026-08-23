@@ -32,4 +32,3 @@ class ListEdgeSiteL2ConnectionsResult {
     );
   }
 }
-

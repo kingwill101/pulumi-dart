@@ -2,13 +2,13 @@
 
 import 'assigned_component_item_response.dart';
 import 'assigned_standard_item_response.dart';
-import 'assignment_properties_response_additional_data.dart';
+import 'assignment_properties_additional_data_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getAssignment.
 class GetAssignmentResult {
   /// Additional data about the assignment
-  final AssignmentPropertiesResponseAdditionalData? additionalData;
+  final AssignmentPropertiesAdditionalDataResponse? additionalData;
   /// Component item with key as applied to this standard assignment over the given scope
   final AssignedComponentItemResponse? assignedComponent;
   /// Standard item with key as applied to this standard assignment over the given scope
@@ -25,23 +25,23 @@ class GetAssignmentResult {
   final String? etag;
   /// Expiration date of this assignment as a full ISO date
   final String? expiresOn;
-  /// Resource Id
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Kind of the resource
   final String? kind;
-  /// Location where the resource is stored
+  /// The geo-location where the resource lives
   final String? location;
   /// The assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
   final dynamic metadata;
-  /// Resource name
+  /// The name of the resource
   final String name;
   /// Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
   final String? scope;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-  /// A list of key value pairs that describe the resource.
+  /// Resource tags.
   final Map<String, String>? tags;
-  /// Resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetAssignmentResult].
@@ -54,15 +54,15 @@ class GetAssignmentResult {
   /// [effect] expected effect of this assignment (Disable/Exempt/etc)
   /// [etag] Entity tag is used for comparing two or more entities from the same requested resource.
   /// [expiresOn] Expiration date of this assignment as a full ISO date
-  /// [id] Resource Id
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] Kind of the resource
-  /// [location] Location where the resource is stored
+  /// [location] The geo-location where the resource lives
   /// [metadata] The assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
-  /// [name] Resource name
+  /// [name] The name of the resource
   /// [scope] Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  /// [tags] A list of key value pairs that describe the resource.
-  /// [type] Resource type
+  /// [tags] Resource tags.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetAssignmentResult({
     this.additionalData,
     this.assignedComponent,
@@ -109,7 +109,7 @@ class GetAssignmentResult {
 
   factory GetAssignmentResult.fromMap(Map<String, dynamic> map) {
     return GetAssignmentResult(
-      additionalData: (() { final guardedValue = map['additionalData']; if (guardedValue == null) return null; return AssignmentPropertiesResponseAdditionalData.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      additionalData: (() { final guardedValue = map['additionalData']; if (guardedValue == null) return null; return AssignmentPropertiesAdditionalDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       assignedComponent: (() { final guardedValue = map['assignedComponent']; if (guardedValue == null) return null; return AssignedComponentItemResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       assignedStandard: (() { final guardedValue = map['assignedStandard']; if (guardedValue == null) return null; return AssignedStandardItemResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       azureApiVersion: map['azureApiVersion'] as String,
@@ -130,4 +130,3 @@ class GetAssignmentResult {
     );
   }
 }
-

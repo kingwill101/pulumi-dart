@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -93,6 +93,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_dataflowprofile" "dataflowProfile" {
+///   dataflow_profile_name = "resource-name123"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     diagnostics = {
+///       logs = {
+///         level = "rnmwokumdmebpmfxxxzvvjfdywotav"
+///       }
+///       metrics = {
+///         prometheus_port = 7581
+///       }
+///     }
+///     instance_count = 14
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +138,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.ProfileDiagnosticsArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DiagnosticsLogsArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.MetricsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -282,6 +314,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_dataflowprofile" "dataflowProfile" {
+///   dataflow_profile_name = "aio-dataflowprofile"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     instance_count = 1
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -292,8 +348,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.DataflowProfileArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowProfilePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -439,6 +495,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_dataflowprofile" "dataflowProfile" {
+///   dataflow_profile_name = "aio-dataflowprofile"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     instance_count = 3
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -449,8 +529,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.DataflowProfileArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowProfilePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

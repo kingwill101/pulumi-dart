@@ -1,7 +1,7 @@
 /// Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
 enum AzureFileShareAccessType {
-  valueShared("Shared"),
-  valueExclusive("Exclusive");
+  shared("Shared"),
+  exclusive("Exclusive");
 
   const AzureFileShareAccessType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum AzureFileShareAccessType {
     throw ArgumentError('Unknown AzureFileShareAccessType value: $value');
   }
 }
-

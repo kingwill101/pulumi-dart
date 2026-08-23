@@ -70,6 +70,27 @@ import 'component_current_billing_feature_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_applicationinsights_componentcurrentbillingfeature" "componentCurrentBillingFeature" {
+///   current_billing_features = ["Basic", "Application Insights Enterprise"]
+///   data_volume_cap = {
+///     cap                                 = 100
+///     stop_send_notification_when_hit_cap = true
+///   }
+///   resource_group_name = "my-resource-group"
+///   resource_name       = "my-component"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +100,8 @@ import 'component_current_billing_feature_args.dart';
 /// import com.pulumi.azurenative.applicationinsights.ComponentCurrentBillingFeature;
 /// import com.pulumi.azurenative.applicationinsights.ComponentCurrentBillingFeatureArgs;
 /// import com.pulumi.azurenative.applicationinsights.inputs.ApplicationInsightsComponentDataVolumeCapArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -138,7 +159,7 @@ import 'component_current_billing_feature_args.dart';
 ///         "Application Insights Enterprise",
 ///     ],
 ///     data_volume_cap={
-///         "cap": 100,
+///         "cap": float(100),
 ///         "stop_send_notification_when_hit_cap": True,
 ///     },
 ///     resource_group_name="my-resource-group",

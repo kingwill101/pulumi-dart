@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The target Event Hub to which event data will be exported. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
 class AutomationActionEventHub {
-  /// The type of the action that will be triggered by the Automation
+  /// Enum. Indicates the action type.
   /// Expected value is 'EventHub'.
   final pulumi.Input<String> actionType;
   /// The target Event Hub connection string (it will not be included in any response).
@@ -15,7 +15,7 @@ class AutomationActionEventHub {
   final pulumi.Input<bool>? isTrustedServiceEnabled;
 
   /// Creates a new [AutomationActionEventHub].
-  /// [actionType] The type of the action that will be triggered by the Automation
+  /// [actionType] Enum. Indicates the action type.
   /// [connectionString] The target Event Hub connection string (it will not be included in any response).
   /// [eventHubResourceId] The target Event Hub Azure Resource ID.
   /// [isTrustedServiceEnabled] Indicates whether the trusted service is enabled or not.
@@ -44,4 +44,3 @@ class AutomationActionEventHub {
     );
   }
 }
-

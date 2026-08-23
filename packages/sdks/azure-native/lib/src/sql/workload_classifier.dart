@@ -5,7 +5,7 @@ import 'workload_classifier_args.dart';
 ///
 /// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
 ///
-/// Other available API versions: 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -71,6 +71,31 @@ import 'workload_classifier_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_workloadclassifier" "workloadClassifier" {
+///   context                  = "test_context"
+///   database_name            = "testdb"
+///   end_time                 = "14:00"
+///   importance               = "high"
+///   label                    = "test_label"
+///   member_name              = "dbo"
+///   resource_group_name      = "Default-SQL-SouthEastAsia"
+///   server_name              = "testsvr"
+///   start_time               = "12:00"
+///   workload_classifier_name = "wlm_workloadclassifier"
+///   workload_group_name      = "wlm_workloadgroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +104,8 @@ import 'workload_classifier_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.WorkloadClassifier;
 /// import com.pulumi.azurenative.sql.WorkloadClassifierArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -222,6 +247,26 @@ import 'workload_classifier_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_workloadclassifier" "workloadClassifier" {
+///   database_name            = "testdb"
+///   member_name              = "dbo"
+///   resource_group_name      = "Default-SQL-SouthEastAsia"
+///   server_name              = "testsvr"
+///   workload_classifier_name = "wlm_workloadclassifier"
+///   workload_group_name      = "wlm_workloadgroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -230,8 +275,8 @@ import 'workload_classifier_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.WorkloadClassifier;
 /// import com.pulumi.azurenative.sql.WorkloadClassifierArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

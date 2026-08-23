@@ -15,4 +15,3 @@ enum StorageRedundancyEnum {
     throw ArgumentError('Unknown StorageRedundancyEnum value: $value');
   }
 }
-

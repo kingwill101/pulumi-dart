@@ -63,6 +63,28 @@ import 'backup_long_term_retention_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_backuplongtermretentionpolicy" "backupLongTermRetentionPolicy" {
+///   database_name       = "testDatabase"
+///   monthly_retention   = "P1Y"
+///   policy_name         = "default"
+///   resource_group_name = "resourceGroup"
+///   server_name         = "testserver"
+///   week_of_year        = 5
+///   weekly_retention    = "P1M"
+///   yearly_retention    = "P5Y"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +93,8 @@ import 'backup_long_term_retention_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.BackupLongTermRetentionPolicy;
 /// import com.pulumi.azurenative.sql.BackupLongTermRetentionPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

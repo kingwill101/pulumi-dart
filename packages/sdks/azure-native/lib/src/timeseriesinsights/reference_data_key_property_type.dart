@@ -17,4 +17,3 @@ enum ReferenceDataKeyPropertyType {
     throw ArgumentError('Unknown ReferenceDataKeyPropertyType value: $value');
   }
 }
-

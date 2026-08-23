@@ -17,4 +17,3 @@ enum Expander {
     throw ArgumentError('Unknown Expander value: $value');
   }
 }
-

@@ -7,6 +7,8 @@ import 'alert_rule_all_of_condition_response.dart';
 ///
 /// Uses Azure REST API version 2020-10-01.
 ///
+/// Other available API versions: 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -120,6 +122,44 @@ import 'alert_rule_all_of_condition_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_activitylogalert" "activityLogAlert" {
+///   actions = {
+///     action_groups = [{
+///       "actionGroupId" = "/subscriptions/187f412d-1758-44d9-b052-169e2564721d/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/actionGroups/SampleActionGroup"
+///       "webhookProperties" = {
+///         "sampleWebhookProperty" = "SamplePropertyValue"
+///       }
+///     }]
+///   }
+///   activity_log_alert_name = "SampleActivityLogAlertRule"
+///   condition = {
+///     all_of = [{
+///       "equals" = "Administrative"
+///       "field"  = "category"
+///       }, {
+///       "equals" = "Error"
+///       "field"  = "level"
+///     }]
+///   }
+///   description         = "Description of sample Activity Log Alert rule."
+///   enabled             = true
+///   location            = "Global"
+///   resource_group_name = "MyResourceGroup"
+///   scopes              = ["/subscriptions/187f412d-1758-44d9-b052-169e2564721d"]
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -130,8 +170,8 @@ import 'alert_rule_all_of_condition_response.dart';
 /// import com.pulumi.azurenative.monitor.ActivityLogAlertArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ActionListArgs;
 /// import com.pulumi.azurenative.monitor.inputs.AlertRuleAllOfConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -405,6 +445,49 @@ import 'alert_rule_all_of_condition_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_activitylogalert" "activityLogAlert" {
+///   actions = {
+///     action_groups = [{
+///       "actionGroupId" = "/subscriptions/187f412d-1758-44d9-b052-169e2564721d/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/actionGroups/SampleActionGroup"
+///       "webhookProperties" = {
+///         "sampleWebhookProperty" = "SamplePropertyValue"
+///       }
+///     }]
+///   }
+///   activity_log_alert_name = "SampleActivityLogAlertRuleWithAnyOfCondition"
+///   condition = {
+///     all_of = [{
+///       "equals" = "ServiceHealth"
+///       "field"  = "category"
+///       }, {
+///       "anyOf" = [{
+///         "equals" = "Incident"
+///         "field"  = "properties.incidentType"
+///         }, {
+///         "equals" = "Maintenance"
+///         "field"  = "properties.incidentType"
+///       }]
+///     }]
+///   }
+///   description         = "Description of sample Activity Log Alert rule with 'anyOf' condition."
+///   enabled             = true
+///   location            = "Global"
+///   resource_group_name = "MyResourceGroup"
+///   scopes              = ["subscriptions/187f412d-1758-44d9-b052-169e2564721d"]
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -415,8 +498,8 @@ import 'alert_rule_all_of_condition_response.dart';
 /// import com.pulumi.azurenative.monitor.ActivityLogAlertArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ActionListArgs;
 /// import com.pulumi.azurenative.monitor.inputs.AlertRuleAllOfConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -704,6 +787,44 @@ import 'alert_rule_all_of_condition_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_activitylogalert" "activityLogAlert" {
+///   actions = {
+///     action_groups = [{
+///       "actionGroupId" = "/subscriptions/187f412d-1758-44d9-b052-169e2564721d/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/actionGroups/SampleActionGroup"
+///       "webhookProperties" = {
+///         "sampleWebhookProperty" = "SamplePropertyValue"
+///       }
+///     }]
+///   }
+///   activity_log_alert_name = "SampleActivityLogAlertRuleWithContainsAny"
+///   condition = {
+///     all_of = [{
+///       "equals" = "ServiceHealth"
+///       "field"  = "category"
+///       }, {
+///       "containsAny" = ["North Europe", "West Europe"]
+///       "field"       = "properties.impactedServices[*].ImpactedRegions[*].RegionName"
+///     }]
+///   }
+///   description         = "Description of sample Activity Log Alert rule with 'containsAny'."
+///   enabled             = true
+///   location            = "Global"
+///   resource_group_name = "MyResourceGroup"
+///   scopes              = ["subscriptions/187f412d-1758-44d9-b052-169e2564721d"]
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -714,8 +835,8 @@ import 'alert_rule_all_of_condition_response.dart';
 /// import com.pulumi.azurenative.monitor.ActivityLogAlertArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ActionListArgs;
 /// import com.pulumi.azurenative.monitor.inputs.AlertRuleAllOfConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

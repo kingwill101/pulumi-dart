@@ -1,8 +1,8 @@
 /// Describes the supported variable for group by
 enum VariableName {
-  valueSocketAddr("SocketAddr"),
-  valueGeoLocation("GeoLocation"),
-  valueNone("None");
+  socketAddr("SocketAddr"),
+  geoLocation("GeoLocation"),
+  none("None");
 
   const VariableName(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum VariableName {
     throw ArgumentError('Unknown VariableName value: $value');
   }
 }
-

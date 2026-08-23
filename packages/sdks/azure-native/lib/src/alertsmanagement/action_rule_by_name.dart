@@ -166,6 +166,60 @@ import 'action_rule_by_name_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_alertsmanagement_actionrulebyname" "actionRuleByName" {
+///   action_rule_name = "DailySuppression"
+///   location         = "Global"
+///   properties = {
+///     "conditions" = {
+///       "monitorCondition" = {
+///         "operator" = "Equals"
+///         "values"   = ["Fired"]
+///       }
+///       "monitorService" = {
+///         "operator" = "Equals"
+///         "values"   = ["Platform", "Application Insights"]
+///       }
+///       "severity" = {
+///         "operator" = "Equals"
+///         "values"   = ["Sev0", "Sev2"]
+///       }
+///       "targetResourceType" = {
+///         "operator" = "NotEquals"
+///         "values"   = ["Microsoft.Compute/VirtualMachines"]
+///       }
+///     }
+///     "description" = "Action rule on resource group for daily suppression"
+///     "scope" = {
+///       "scopeType" = "ResourceGroup"
+///       "values"    = ["/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg"]
+///     }
+///     "status" = "Enabled"
+///     "suppressionConfig" = {
+///       "recurrenceType" = "Daily"
+///       "schedule" = {
+///         "endDate"   = "12/18/2018"
+///         "endTime"   = "14:00:00"
+///         "startDate" = "12/09/2018"
+///         "startTime" = "06:00:00"
+///       }
+///     }
+///     "type" = "Suppression"
+///   }
+///   resource_group_name = "alertscorrelationrg"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -174,8 +228,8 @@ import 'action_rule_by_name_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.alertsmanagement.ActionRuleByName;
 /// import com.pulumi.azurenative.alertsmanagement.ActionRuleByNameArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

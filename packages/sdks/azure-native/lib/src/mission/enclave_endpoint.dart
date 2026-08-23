@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
 ///
-/// Other available API versions: 2024-06-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mission [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-06-01-preview, 2024-12-01-preview, 2025-11-01-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mission [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -88,6 +88,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_mission_enclaveendpoint" "enclaveEndpoint" {
+///   enclave_endpoint_name = "TestMyEnclaveEndpoint"
+///   location              = "West US"
+///   resource_group_name   = "rgopenapi"
+///   rule_collection {
+///     destination        = "10.0.0.0/24"
+///     endpoint_rule_name = "54CEECEF-2C30-488E-946F-D20F414D99BA"
+///     ports              = "443"
+///     protocols          = ["TCP"]
+///   }
+///   tags = {
+///     "sampletag" = "samplevalue"
+///   }
+///   virtual_enclave_name = "TestMyEnclave"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +124,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.mission.EnclaveEndpoint;
 /// import com.pulumi.azurenative.mission.EnclaveEndpointArgs;
 /// import com.pulumi.azurenative.mission.inputs.EnclaveEndpointDestinationRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

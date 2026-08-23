@@ -16,4 +16,3 @@ enum StorageWorkloadType {
     throw ArgumentError('Unknown StorageWorkloadType value: $value');
   }
 }
-

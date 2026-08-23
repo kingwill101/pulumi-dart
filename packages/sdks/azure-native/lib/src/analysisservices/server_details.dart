@@ -89,6 +89,34 @@ import 'server_details_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_analysisservices_serverdetails" "serverDetails" {
+///   as_administrators = {
+///     members = ["azsdktest@microsoft.com", "azsdktest2@microsoft.com"]
+///   }
+///   location            = "West US"
+///   resource_group_name = "TestRG"
+///   server_name         = "azsdktest"
+///   sku = {
+///     capacity = 1
+///     name     = "S1"
+///     tier     = "Standard"
+///   }
+///   tags = {
+///     "testKey" = "testValue"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +127,8 @@ import 'server_details_args.dart';
 /// import com.pulumi.azurenative.analysisservices.ServerDetailsArgs;
 /// import com.pulumi.azurenative.analysisservices.inputs.ServerAdministratorsArgs;
 /// import com.pulumi.azurenative.analysisservices.inputs.ResourceSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

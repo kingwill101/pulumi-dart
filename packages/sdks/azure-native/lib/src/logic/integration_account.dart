@@ -64,6 +64,26 @@ import 'resource_reference_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_logic_integrationaccount" "integrationAccount" {
+///   integration_account_name = "testIntegrationAccount"
+///   location                 = "westus"
+///   resource_group_name      = "testResourceGroup"
+///   sku = {
+///     name = "Standard"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +93,8 @@ import 'resource_reference_response.dart';
 /// import com.pulumi.azurenative.logic.IntegrationAccount;
 /// import com.pulumi.azurenative.logic.IntegrationAccountArgs;
 /// import com.pulumi.azurenative.logic.inputs.IntegrationAccountSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

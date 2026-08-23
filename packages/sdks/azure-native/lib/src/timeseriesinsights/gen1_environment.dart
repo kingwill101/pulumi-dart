@@ -82,6 +82,33 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_timeseriesinsights_gen1environment" "gen1Environment" {
+///   data_retention_time = "P31D"
+///   environment_name    = "env1"
+///   kind                = "Gen1"
+///   location            = "West US"
+///   partition_key_properties {
+///     name = "DeviceId1"
+///     type = "String"
+///   }
+///   resource_group_name = "rg1"
+///   sku = {
+///     capacity = 1
+///     name     = "S1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +119,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.timeseriesinsights.Gen1EnvironmentArgs;
 /// import com.pulumi.azurenative.timeseriesinsights.inputs.TimeSeriesIdPropertyArgs;
 /// import com.pulumi.azurenative.timeseriesinsights.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

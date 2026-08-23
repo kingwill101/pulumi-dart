@@ -1,8 +1,9 @@
 /// The type of the action that will be triggered by the Automation
 enum ActionType {
-  valueLogicApp("LogicApp"),
-  valueEventHub("EventHub"),
-  valueWorkspace("Workspace");
+  logicApp("LogicApp"),
+  eventHub("EventHub"),
+  workspace("Workspace"),
+  internal("Internal");
 
   const ActionType(this.wireValue);
   final String wireValue;
@@ -16,4 +17,3 @@ enum ActionType {
     throw ArgumentError('Unknown ActionType value: $value');
   }
 }
-

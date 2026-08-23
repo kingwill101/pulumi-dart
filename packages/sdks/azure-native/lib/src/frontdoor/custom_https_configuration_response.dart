@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'key_vault_certificate_source_parameters_response_vault.dart';
+import 'key_vault_certificate_source_parameters_vault_response.dart';
 
 /// Https settings for a domain
 class CustomHttpsConfigurationResponse {
@@ -18,7 +18,7 @@ class CustomHttpsConfigurationResponse {
   /// The version of the Key Vault secret representing the full certificate PFX
   final pulumi.Input<String>? secretVersion;
   /// The Key Vault containing the SSL certificate
-  final pulumi.Input<KeyVaultCertificateSourceParametersResponseVault>? vault;
+  final pulumi.Input<KeyVaultCertificateSourceParametersVaultResponse>? vault;
 
   /// Creates a new [CustomHttpsConfigurationResponse].
   /// [certificateSource] Defines the source of the SSL certificate
@@ -46,7 +46,7 @@ class CustomHttpsConfigurationResponse {
       'protocolType': protocolType,
       'secretName': ?secretName,
       'secretVersion': ?secretVersion,
-      'vault': ?pulumi.Input.mapOptionalInputValue<KeyVaultCertificateSourceParametersResponseVault, Map<String, dynamic>>(vault, (value) => value.toMap()),
+      'vault': ?pulumi.Input.mapOptionalInputValue<KeyVaultCertificateSourceParametersVaultResponse, Map<String, dynamic>>(vault, (value) => value.toMap()),
     };
   }
 
@@ -58,8 +58,7 @@ class CustomHttpsConfigurationResponse {
       protocolType: pulumi.Input.fromValue(map['protocolType'] as String),
       secretName: (() { final guardedValue = map['secretName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretVersion: (() { final guardedValue = map['secretVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vault: (() { final guardedValue = map['vault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyVaultCertificateSourceParametersResponseVault.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      vault: (() { final guardedValue = map['vault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyVaultCertificateSourceParametersVaultResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

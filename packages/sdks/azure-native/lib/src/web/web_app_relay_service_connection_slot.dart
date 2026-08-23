@@ -1,11 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'system_data_response.dart';
 import 'web_app_relay_service_connection_slot_args.dart';
 
 /// Hybrid Connection for an App Service app.
 ///
-/// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+/// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// ## Import
 ///
 /// An existing resource can be imported using its type token, name, and identifier, e.g.
@@ -22,12 +23,14 @@ class WebAppRelayServiceConnectionSlot extends pulumi.CustomResource {
   late final pulumi.Output<String?> hostname;
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-  /// Resource Name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   late final pulumi.Output<int?> port;
   late final pulumi.Output<String?> resourceConnectionString;
   late final pulumi.Output<String?> resourceType;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [WebAppRelayServiceConnectionSlot].
@@ -54,6 +57,7 @@ class WebAppRelayServiceConnectionSlot extends pulumi.CustomResource {
     port = registerOutput<int?>('port');
     resourceConnectionString = registerOutput<String?>('resourceConnectionString');
     resourceType = registerOutput<String?>('resourceType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

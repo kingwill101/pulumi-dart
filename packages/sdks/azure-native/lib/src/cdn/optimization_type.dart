@@ -18,4 +18,3 @@ enum OptimizationType {
     throw ArgumentError('Unknown OptimizationType value: $value');
   }
 }
-

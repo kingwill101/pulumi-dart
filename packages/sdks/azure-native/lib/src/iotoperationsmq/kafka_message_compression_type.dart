@@ -17,4 +17,3 @@ enum KafkaMessageCompressionType {
     throw ArgumentError('Unknown KafkaMessageCompressionType value: $value');
   }
 }
-

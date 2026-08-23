@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_security_get_security_connector_args_doc}
 class GetSecurityConnectorArgs {
-  /// The name of the resource group within the user's subscription. The name is case insensitive.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The security connector name.
   final pulumi.Input<String> securityConnectorName;
 
   /// Creates a new [GetSecurityConnectorArgs].
-  /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityConnectorName] The security connector name.
   const GetSecurityConnectorArgs({
     required this.resourceGroupName,
@@ -34,4 +34,3 @@ class GetSecurityConnectorArgs {
     );
   }
 }
-

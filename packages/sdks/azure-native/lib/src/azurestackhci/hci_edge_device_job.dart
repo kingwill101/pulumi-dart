@@ -68,6 +68,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_hciedgedevicejob" "hciEdgeDeviceJob" {
+///   edge_device_name = "default"
+///   jobs_name        = "collectLog"
+///   kind             = "HCI"
+///   properties = {
+///     "fromDate" = "2024-01-29T10:43:27.9471574Z"
+///     "jobType"  = "CollectLog"
+///     "toDate"   = "2024-01-29T10:43:27.9471574Z"
+///   }
+///   resource_uri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +99,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.azurestackhci.HciEdgeDeviceJob;
 /// import com.pulumi.azurenative.azurestackhci.HciEdgeDeviceJobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -219,6 +242,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_hciedgedevicejob" "hciEdgeDeviceJob" {
+///   edge_device_name = "default"
+///   jobs_name        = "collectLog"
+///   kind             = "HCI"
+///   properties = {
+///     "accessLevel"         = "Diagnostics"
+///     "expirationTimestamp" = "2024-01-29T10:43:27.9471574Z"
+///     "jobType"             = "RemoteSupport"
+///     "type"                = "Enable"
+///   }
+///   resource_uri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -227,8 +274,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.azurestackhci.HciEdgeDeviceJob;
 /// import com.pulumi.azurenative.azurestackhci.HciEdgeDeviceJobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -15,4 +15,3 @@ enum PaymentChannelType {
     throw ArgumentError('Unknown PaymentChannelType value: $value');
   }
 }
-

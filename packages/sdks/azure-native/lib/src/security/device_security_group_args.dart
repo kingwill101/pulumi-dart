@@ -17,7 +17,7 @@ class DeviceSecurityGroupArgs {
   final pulumi.Input<List<DenylistCustomAlertRule>>? denylistRules;
   /// The name of the device security group. Note that the name of the device security group is case insensitive.
   final pulumi.Input<String>? deviceSecurityGroupName;
-  /// The identifier of the resource.
+  /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceId;
   /// The list of custom alert threshold rules.
   final pulumi.Input<List<ThresholdCustomAlertRule>>? thresholdRules;
@@ -28,7 +28,7 @@ class DeviceSecurityGroupArgs {
   /// [allowlistRules] The allow-list custom alert rules.
   /// [denylistRules] The deny-list custom alert rules.
   /// [deviceSecurityGroupName] The name of the device security group. Note that the name of the device security group is case insensitive.
-  /// [resourceId] The identifier of the resource.
+  /// [resourceId] The fully qualified Azure Resource manager identifier of the resource.
   /// [thresholdRules] The list of custom alert threshold rules.
   /// [timeWindowRules] The list of custom alert time-window rules.
   const DeviceSecurityGroupArgs({
@@ -62,4 +62,3 @@ class DeviceSecurityGroupArgs {
     );
   }
 }
-

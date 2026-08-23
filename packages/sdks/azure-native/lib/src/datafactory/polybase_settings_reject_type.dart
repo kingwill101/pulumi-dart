@@ -1,7 +1,7 @@
 /// Reject type.
 enum PolybaseSettingsRejectType {
-  valueValue("value"),
-  valuePercentage("percentage");
+  value("value"),
+  percentage("percentage");
 
   const PolybaseSettingsRejectType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum PolybaseSettingsRejectType {
     throw ArgumentError('Unknown PolybaseSettingsRejectType value: $value');
   }
 }
-

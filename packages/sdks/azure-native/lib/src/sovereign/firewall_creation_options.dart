@@ -16,4 +16,3 @@ enum FirewallCreationOptions {
     throw ArgumentError('Unknown FirewallCreationOptions value: $value');
   }
 }
-

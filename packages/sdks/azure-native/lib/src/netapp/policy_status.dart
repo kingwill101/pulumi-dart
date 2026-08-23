@@ -15,4 +15,3 @@ enum PolicyStatus {
     throw ArgumentError('Unknown PolicyStatus value: $value');
   }
 }
-

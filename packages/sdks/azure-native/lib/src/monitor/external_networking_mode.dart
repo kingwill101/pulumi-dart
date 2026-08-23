@@ -14,4 +14,3 @@ enum ExternalNetworkingMode {
     throw ArgumentError('Unknown ExternalNetworkingMode value: $value');
   }
 }
-

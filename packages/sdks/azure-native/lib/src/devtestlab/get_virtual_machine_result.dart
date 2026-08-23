@@ -9,6 +9,7 @@ import 'data_disk_properties_response.dart';
 import 'gallery_image_reference_response.dart';
 import 'network_interface_properties_response.dart';
 import 'schedule_creation_parameter_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getVirtualMachine.
 class GetVirtualMachineResult {
@@ -46,7 +47,7 @@ class GetVirtualMachineResult {
   final String fqdn;
   /// The Microsoft Azure Marketplace image reference of the virtual machine.
   final GalleryImageReferenceResponse? galleryImageReference;
-  /// The identifier of the resource.
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
   /// Indicates whether this virtual machine uses an SSH key for authentication.
   final bool? isAuthenticationWithSshKey;
@@ -56,9 +57,9 @@ class GetVirtualMachineResult {
   final String? labVirtualNetworkId;
   /// Last known compute power state captured in DTL
   final String lastKnownPowerState;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   final String? location;
-  /// The name of the resource.
+  /// The name of the resource
   final String name;
   /// The network interface properties.
   final NetworkInterfacePropertiesResponse? networkInterface;
@@ -84,9 +85,11 @@ class GetVirtualMachineResult {
   final String? sshKey;
   /// Storage type to use for virtual machine (i.e. Standard, Premium).
   final String? storageType;
-  /// The tags of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// Resource tags.
   final Map<String, String>? tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// The unique immutable identifier of a resource (Guid).
   final String uniqueIdentifier;
@@ -113,13 +116,13 @@ class GetVirtualMachineResult {
   /// [expirationDate] The expiration date for VM.
   /// [fqdn] The fully-qualified domain name of the virtual machine.
   /// [galleryImageReference] The Microsoft Azure Marketplace image reference of the virtual machine.
-  /// [id] The identifier of the resource.
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [isAuthenticationWithSshKey] Indicates whether this virtual machine uses an SSH key for authentication.
   /// [labSubnetName] The lab subnet name of the virtual machine.
   /// [labVirtualNetworkId] The lab virtual network identifier of the virtual machine.
   /// [lastKnownPowerState] Last known compute power state captured in DTL
-  /// [location] The location of the resource.
-  /// [name] The name of the resource.
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the resource
   /// [networkInterface] The network interface properties.
   /// [notes] The notes of the virtual machine.
   /// [osType] The OS type of the virtual machine.
@@ -132,8 +135,9 @@ class GetVirtualMachineResult {
   /// [size] The size of the virtual machine.
   /// [sshKey] The SSH key of the virtual machine administrator.
   /// [storageType] Storage type to use for virtual machine (i.e. Standard, Premium).
-  /// [tags] The tags of the resource.
-  /// [type] The type of the resource.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [tags] Resource tags.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
   /// [userName] The user name of the virtual machine.
   /// [virtualMachineCreationSource] Tells source of creation of lab virtual machine. Output property only.
@@ -174,6 +178,7 @@ class GetVirtualMachineResult {
     this.size,
     this.sshKey,
     this.storageType,
+    required this.systemData,
     this.tags,
     required this.type,
     required this.uniqueIdentifier,
@@ -219,6 +224,7 @@ class GetVirtualMachineResult {
       'size': ?size,
       'sshKey': ?sshKey,
       'storageType': ?storageType,
+      'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
       'uniqueIdentifier': uniqueIdentifier,
@@ -265,6 +271,7 @@ class GetVirtualMachineResult {
       size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sshKey: (() { final guardedValue = map['sshKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageType: (() { final guardedValue = map['storageType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
@@ -273,4 +280,3 @@ class GetVirtualMachineResult {
     );
   }
 }
-

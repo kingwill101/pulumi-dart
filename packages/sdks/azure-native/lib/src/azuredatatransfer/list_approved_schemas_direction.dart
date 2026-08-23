@@ -15,4 +15,3 @@ enum ListApprovedSchemasDirection {
     throw ArgumentError('Unknown ListApprovedSchemasDirection value: $value');
   }
 }
-

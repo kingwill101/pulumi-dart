@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'agentic_application_response.dart';
+import 'agentic_application_properties_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getAgentApplication.
@@ -12,7 +12,7 @@ class GetAgentApplicationResult {
   /// The name of the resource
   final String name;
   /// [Required] Additional attributes of the entity.
-  final AgenticApplicationResponse properties;
+  final AgenticApplicationPropertiesResponse properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -50,10 +50,9 @@ class GetAgentApplicationResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: AgenticApplicationResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      properties: AgenticApplicationPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

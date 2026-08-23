@@ -1,8 +1,8 @@
 /// The frequency of the time windows.
 enum TumblingWindowFrequency {
-  valueMinute("Minute"),
-  valueHour("Hour"),
-  valueMonth("Month");
+  minute("Minute"),
+  hour("Hour"),
+  month("Month");
 
   const TumblingWindowFrequency(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum TumblingWindowFrequency {
     throw ArgumentError('Unknown TumblingWindowFrequency value: $value');
   }
 }
-

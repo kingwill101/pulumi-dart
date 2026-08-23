@@ -91,6 +91,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cdn_afdtargetgroup" "afdTargetGroup" {
+///   profile_name        = "profile1"
+///   resource_group_name = "RG"
+///   target_endpoints {
+///     ports       = [443, 80]
+///     target_fqdn = "host1.foo.com"
+///   }
+///   target_endpoints {
+///     ports       = [443, 80]
+///     target_fqdn = "host2.contoso.com"
+///   }
+///   target_group_name = "targetgroup1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +125,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cdn.AFDTargetGroup;
 /// import com.pulumi.azurenative.cdn.AFDTargetGroupArgs;
 /// import com.pulumi.azurenative.cdn.inputs.TargetEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

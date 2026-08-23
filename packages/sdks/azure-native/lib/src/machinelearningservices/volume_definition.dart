@@ -5,7 +5,6 @@ import 'bind_options.dart';
 import 'tmpfs_options.dart';
 import 'volume_options.dart';
 
-/// Describes the volume configuration for the container
 class VolumeDefinition {
   /// Bind Options of the mount
   final pulumi.Input<BindOptions>? bind;
@@ -70,4 +69,3 @@ class VolumeDefinition {
     );
   }
 }
-

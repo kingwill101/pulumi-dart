@@ -15,4 +15,3 @@ enum ReadReplicaPromoteOption {
     throw ArgumentError('Unknown ReadReplicaPromoteOption value: $value');
   }
 }
-

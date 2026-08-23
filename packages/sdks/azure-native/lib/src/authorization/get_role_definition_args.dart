@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRoleDefinitionArgs {
   /// The ID of the role definition.
   final pulumi.Input<String> roleDefinitionId;
-  /// The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+  /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> scope;
 
   /// Creates a new [GetRoleDefinitionArgs].
   /// [roleDefinitionId] The ID of the role definition.
-  /// [scope] The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+  /// [scope] The fully qualified Azure Resource manager identifier of the resource.
   const GetRoleDefinitionArgs({
     required this.roleDefinitionId,
     required this.scope,
@@ -34,4 +34,3 @@ class GetRoleDefinitionArgs {
     );
   }
 }
-

@@ -7,17 +7,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_machinelearningservices_list_batch_endpoint_keys_args_doc}
 class ListBatchEndpointKeysArgs {
-  /// Inference Endpoint name.
+  /// Name for the Batch Endpoint.
   final pulumi.Input<String> endpointName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Name of Azure Machine Learning workspace.
+  /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
   /// Creates a new [ListBatchEndpointKeysArgs].
-  /// [endpointName] Inference Endpoint name.
+  /// [endpointName] Name for the Batch Endpoint.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  /// [workspaceName] Name of Azure Machine Learning workspace.
+  /// [workspaceName] Azure Machine Learning Workspace Name
   const ListBatchEndpointKeysArgs({
     required this.endpointName,
     required this.resourceGroupName,
@@ -40,4 +40,3 @@ class ListBatchEndpointKeysArgs {
     );
   }
 }
-

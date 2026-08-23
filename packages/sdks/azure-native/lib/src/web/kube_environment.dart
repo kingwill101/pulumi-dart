@@ -4,12 +4,13 @@ import 'arc_configuration_response.dart';
 import 'container_apps_configuration_response.dart';
 import 'extended_location_response.dart';
 import 'kube_environment_args.dart';
+import 'system_data_response.dart';
 
 /// A Kubernetes cluster specialized for web workloads by Azure App Service
 ///
-/// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+/// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -61,6 +62,24 @@ import 'kube_environment_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_web_kubeenvironment" "kubeEnvironment" {
+///   location            = "East US"
+///   name                = "testkubeenv"
+///   resource_group_name = "examplerg"
+///   static_ip           = "1.2.3.4"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +88,8 @@ import 'kube_environment_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.web.KubeEnvironment;
 /// import com.pulumi.azurenative.web.KubeEnvironmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,19 +184,21 @@ class KubeEnvironment extends pulumi.CustomResource {
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
   /// Only visible within Vnet/Subnet
   late final pulumi.Output<bool?> internalLoadBalancerEnabled;
-  /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+  /// Kind of resource.
   late final pulumi.Output<String?> kind;
-  /// Resource Location.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-  /// Resource Name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Provisioning state of the Kubernetes Environment.
   late final pulumi.Output<String> provisioningState;
   /// Static IP of the KubeEnvironment
   late final pulumi.Output<String?> staticIp;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [KubeEnvironment].
@@ -209,6 +230,7 @@ class KubeEnvironment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     staticIp = registerOutput<String?>('staticIp');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

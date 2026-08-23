@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_review_reviewer_response.dart';
+import 'system_data_response.dart';
 
 /// Access Review Instance.
 class AccessReviewInstanceResponse {
@@ -9,9 +10,9 @@ class AccessReviewInstanceResponse {
   final pulumi.Input<List<AccessReviewReviewerResponse>>? backupReviewers;
   /// The DateTime when the review instance is scheduled to end.
   final pulumi.Input<String>? endDateTime;
-  /// The access review instance id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
-  /// The access review instance name.
+  /// The name of the resource
   final pulumi.Input<String> name;
   /// This is the collection of reviewers.
   final pulumi.Input<List<AccessReviewReviewerResponse>>? reviewers;
@@ -21,19 +22,22 @@ class AccessReviewInstanceResponse {
   final pulumi.Input<String>? startDateTime;
   /// This read-only field specifies the status of an access review instance.
   final pulumi.Input<String> status;
-  /// The resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final pulumi.Input<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 
   /// Creates a new [AccessReviewInstanceResponse].
   /// [backupReviewers] This is the collection of backup reviewers.
   /// [endDateTime] The DateTime when the review instance is scheduled to end.
-  /// [id] The access review instance id.
-  /// [name] The access review instance name.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  /// [name] The name of the resource
   /// [reviewers] This is the collection of reviewers.
   /// [reviewersType] This field specifies the type of reviewers for a review. Usually for a review, reviewers are explicitly assigned. However, in some cases, the reviewers may not be assigned and instead be chosen dynamically. For example managers review or self review.
   /// [startDateTime] The DateTime when the review instance is scheduled to be start.
   /// [status] This read-only field specifies the status of an access review instance.
-  /// [type] The resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const AccessReviewInstanceResponse({
     this.backupReviewers,
     this.endDateTime,
@@ -43,6 +47,7 @@ class AccessReviewInstanceResponse {
     required this.reviewersType,
     this.startDateTime,
     required this.status,
+    required this.systemData,
     required this.type,
   });
 
@@ -56,6 +61,7 @@ class AccessReviewInstanceResponse {
       'reviewersType': reviewersType,
       'startDateTime': ?startDateTime,
       'status': status,
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
     };
   }
@@ -70,8 +76,8 @@ class AccessReviewInstanceResponse {
       reviewersType: pulumi.Input.fromValue(map['reviewersType'] as String),
       startDateTime: (() { final guardedValue = map['startDateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
+      systemData: pulumi.Input.fromValue(SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>())),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -72,6 +72,30 @@ import 'workload_network_dhcp_relay_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_avs_workloadnetworkdhcp" "workloadNetworkDhcp" {
+///   dhcp_id            = "dhcp1"
+///   private_cloud_name = "cloud1"
+///   properties = {
+///     "dhcpType"      = "SERVER"
+///     "displayName"   = "dhcpConfigurations1"
+///     "leaseTime"     = 86400
+///     "revision"      = 1
+///     "serverAddress" = "40.1.5.1/24"
+///   }
+///   resource_group_name = "group1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +104,8 @@ import 'workload_network_dhcp_relay_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.avs.WorkloadNetworkDhcp;
 /// import com.pulumi.azurenative.avs.WorkloadNetworkDhcpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -140,8 +164,8 @@ import 'workload_network_dhcp_relay_response.dart';
 ///     properties={
 ///         "dhcp_type": "SERVER",
 ///         "display_name": "dhcpConfigurations1",
-///         "lease_time": 86400,
-///         "revision": 1,
+///         "lease_time": float(86400),
+///         "revision": float(1),
 ///         "server_address": "40.1.5.1/24",
 ///     },
 ///     resource_group_name="group1")

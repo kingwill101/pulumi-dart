@@ -15,4 +15,3 @@ enum PricingPolicy {
     throw ArgumentError('Unknown PricingPolicy value: $value');
   }
 }
-

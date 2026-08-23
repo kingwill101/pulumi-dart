@@ -38,4 +38,3 @@ class AwsEc2RouteTablePropertiesResponse {
     );
   }
 }
-

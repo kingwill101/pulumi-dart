@@ -1,7 +1,7 @@
 /// Describes if policy managed rules will inspect the request body content.
 enum PolicyRequestBodyCheck {
-  valueDisabled("Disabled"),
-  valueEnabled("Enabled");
+  disabled("Disabled"),
+  enabled("Enabled");
 
   const PolicyRequestBodyCheck(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum PolicyRequestBodyCheck {
     throw ArgumentError('Unknown PolicyRequestBodyCheck value: $value');
   }
 }
-

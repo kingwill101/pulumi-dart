@@ -4,6 +4,7 @@ import 'app_logs_configuration_response.dart';
 import 'arc_configuration_response.dart';
 import 'container_apps_configuration_response.dart';
 import 'extended_location_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getKubeEnvironment.
 class GetKubeEnvironmentResult {
@@ -28,23 +29,25 @@ class GetKubeEnvironmentResult {
   final String? environmentType;
   /// Extended Location.
   final ExtendedLocationResponse? extendedLocation;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Only visible within Vnet/Subnet
   final bool? internalLoadBalancerEnabled;
-  /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+  /// Kind of resource.
   final String? kind;
-  /// Resource Location.
+  /// The geo-location where the resource lives
   final String location;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
   /// Provisioning state of the Kubernetes Environment.
   final String provisioningState;
   /// Static IP of the KubeEnvironment
   final String? staticIp;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
   /// Resource tags.
   final Map<String, String>? tags;
-  /// Resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetKubeEnvironmentResult].
@@ -57,15 +60,16 @@ class GetKubeEnvironmentResult {
   /// [deploymentErrors] Any errors that occurred during deployment or deployment validation
   /// [environmentType] Type of Kubernetes Environment. Only supported for Container App Environments with value as Managed
   /// [extendedLocation] Extended Location.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [internalLoadBalancerEnabled] Only visible within Vnet/Subnet
-  /// [kind] Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
-  /// [location] Resource Location.
-  /// [name] Resource Name.
+  /// [kind] Kind of resource.
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the resource
   /// [provisioningState] Provisioning state of the Kubernetes Environment.
   /// [staticIp] Static IP of the KubeEnvironment
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
-  /// [type] Resource type.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetKubeEnvironmentResult({
     this.aksResourceID,
     this.appLogsConfiguration,
@@ -83,6 +87,7 @@ class GetKubeEnvironmentResult {
     required this.name,
     required this.provisioningState,
     this.staticIp,
+    required this.systemData,
     this.tags,
     required this.type,
   });
@@ -105,6 +110,7 @@ class GetKubeEnvironmentResult {
       'name': name,
       'provisioningState': provisioningState,
       'staticIp': ?staticIp,
+      'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
     };
@@ -128,9 +134,9 @@ class GetKubeEnvironmentResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       staticIp: (() { final guardedValue = map['staticIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
-

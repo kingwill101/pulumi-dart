@@ -62,6 +62,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_relationships_dependencyofrelationship" "dependencyOfRelationship" {
+///   name = "relationshipOne"
+///   properties = {
+///     target_id     = "/subscriptions/a925f2f7-5c63-4b7b-8799-25a5f97bc3b2/resourceGroups/testrg123/providers/Microsoft.Web/staticSites/test-site"
+///     target_tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+///   }
+///   resource_uri = "subscriptions/a925f2f7-5c63-4b7b-8799-25a5f97bc3b2/resourceGroups/testrg/providers/Microsoft.DocumentDb/databaseAccounts/test-db-account"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +91,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.relationships.DependencyOfRelationship;
 /// import com.pulumi.azurenative.relationships.DependencyOfRelationshipArgs;
 /// import com.pulumi.azurenative.relationships.inputs.DependencyOfRelationshipPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

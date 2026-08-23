@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'system_data_response.dart';
 
 /// Result data returned by getWebAppFunction.
 class GetWebAppFunctionResult {
@@ -15,7 +16,7 @@ class GetWebAppFunctionResult {
   final String? functionAppId;
   /// Function URI.
   final String? href;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// The invocation URL
   final String? invokeUrlTemplate;
@@ -25,7 +26,7 @@ class GetWebAppFunctionResult {
   final String? kind;
   /// The function language
   final String? language;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
   /// Script URI.
   final String? scriptHref;
@@ -33,11 +34,13 @@ class GetWebAppFunctionResult {
   final String? scriptRootPathHref;
   /// Secrets file URI.
   final String? secretsFileHref;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
   /// Test data used when testing via the Azure Portal.
   final String? testData;
   /// Test data URI.
   final String? testDataHref;
-  /// Resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetWebAppFunctionResult].
@@ -47,18 +50,19 @@ class GetWebAppFunctionResult {
   /// [files] File list.
   /// [functionAppId] Function App ID.
   /// [href] Function URI.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [invokeUrlTemplate] The invocation URL
   /// [isDisabled] Gets or sets a value indicating whether the function is disabled
   /// [kind] Kind of resource.
   /// [language] The function language
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [scriptHref] Script URI.
   /// [scriptRootPathHref] Script root path URI.
   /// [secretsFileHref] Secrets file URI.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [testData] Test data used when testing via the Azure Portal.
   /// [testDataHref] Test data URI.
-  /// [type] Resource type.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetWebAppFunctionResult({
     required this.azureApiVersion,
     this.config,
@@ -75,6 +79,7 @@ class GetWebAppFunctionResult {
     this.scriptHref,
     this.scriptRootPathHref,
     this.secretsFileHref,
+    required this.systemData,
     this.testData,
     this.testDataHref,
     required this.type,
@@ -97,6 +102,7 @@ class GetWebAppFunctionResult {
       'scriptHref': ?scriptHref,
       'scriptRootPathHref': ?scriptRootPathHref,
       'secretsFileHref': ?secretsFileHref,
+      'systemData': systemData.toMap(),
       'testData': ?testData,
       'testDataHref': ?testDataHref,
       'type': type,
@@ -120,10 +126,10 @@ class GetWebAppFunctionResult {
       scriptHref: (() { final guardedValue = map['scriptHref']; if (guardedValue == null) return null; return guardedValue as String; })(),
       scriptRootPathHref: (() { final guardedValue = map['scriptRootPathHref']; if (guardedValue == null) return null; return guardedValue as String; })(),
       secretsFileHref: (() { final guardedValue = map['secretsFileHref']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       testData: (() { final guardedValue = map['testData']; if (guardedValue == null) return null; return guardedValue as String; })(),
       testDataHref: (() { final guardedValue = map['testDataHref']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
-

@@ -17,9 +17,9 @@ class ArtifactSourceArgs {
   final pulumi.Input<String>? folderPath;
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-  /// The name of the ArtifactSource
+  /// The name of the artifact source.
   final pulumi.Input<String>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
@@ -29,7 +29,7 @@ class ArtifactSourceArgs {
   final pulumi.Input<String>? sourceType;
   /// Indicates if the artifact source is enabled (values: Enabled, Disabled).
   final pulumi.Input<String>? status;
-  /// The tags of the resource.
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
   /// The artifact source's URI.
   final pulumi.Input<String>? uri;
@@ -40,13 +40,13 @@ class ArtifactSourceArgs {
   /// [displayName] The artifact source's display name.
   /// [folderPath] The folder containing artifacts.
   /// [labName] The name of the lab.
-  /// [location] The location of the resource.
-  /// [name] The name of the ArtifactSource
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the artifact source.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityToken] The security token to authenticate to the artifact source.
   /// [sourceType] The artifact source's type.
   /// [status] Indicates if the artifact source is enabled (values: Enabled, Disabled).
-  /// [tags] The tags of the resource.
+  /// [tags] Resource tags.
   /// [uri] The artifact source's URI.
   const ArtifactSourceArgs({
     this.armTemplateFolderPath,
@@ -100,4 +100,3 @@ class ArtifactSourceArgs {
     );
   }
 }
-

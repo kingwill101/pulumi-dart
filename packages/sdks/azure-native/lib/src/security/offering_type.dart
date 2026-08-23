@@ -1,24 +1,24 @@
 /// The type of the security offering.
 enum OfferingType {
-  valueCspmMonitorAws("CspmMonitorAws"),
-  valueDefenderForContainersAws("DefenderForContainersAws"),
-  valueDefenderForServersAws("DefenderForServersAws"),
-  valueDefenderForDatabasesAws("DefenderForDatabasesAws"),
-  valueCspmMonitorGcp("CspmMonitorGcp"),
-  valueCspmMonitorGithub("CspmMonitorGithub"),
-  valueCspmMonitorAzureDevOps("CspmMonitorAzureDevOps"),
-  valueDefenderForServersGcp("DefenderForServersGcp"),
-  valueDefenderForContainersGcp("DefenderForContainersGcp"),
-  valueDefenderForDatabasesGcp("DefenderForDatabasesGcp"),
-  valueDefenderCspmAws("DefenderCspmAws"),
-  valueDefenderCspmGcp("DefenderCspmGcp"),
-  valueCspmMonitorGitLab("CspmMonitorGitLab"),
-  valueCspmMonitorDockerHub("CspmMonitorDockerHub"),
-  valueDefenderForContainersDockerHub("DefenderForContainersDockerHub"),
-  valueDefenderCspmDockerHub("DefenderCspmDockerHub"),
-  valueCspmMonitorJFrog("CspmMonitorJFrog"),
-  valueDefenderForContainersJFrog("DefenderForContainersJFrog"),
-  valueDefenderCspmJFrog("DefenderCspmJFrog");
+  cspmMonitorAws("CspmMonitorAws"),
+  defenderForContainersAws("DefenderForContainersAws"),
+  defenderForServersAws("DefenderForServersAws"),
+  defenderForDatabasesAws("DefenderForDatabasesAws"),
+  cspmMonitorGcp("CspmMonitorGcp"),
+  cspmMonitorGithub("CspmMonitorGithub"),
+  cspmMonitorAzureDevOps("CspmMonitorAzureDevOps"),
+  defenderForServersGcp("DefenderForServersGcp"),
+  defenderForContainersGcp("DefenderForContainersGcp"),
+  defenderForDatabasesGcp("DefenderForDatabasesGcp"),
+  defenderCspmAws("DefenderCspmAws"),
+  defenderCspmGcp("DefenderCspmGcp"),
+  cspmMonitorGitLab("CspmMonitorGitLab"),
+  cspmMonitorDockerHub("CspmMonitorDockerHub"),
+  defenderForContainersDockerHub("DefenderForContainersDockerHub"),
+  defenderCspmDockerHub("DefenderCspmDockerHub"),
+  cspmMonitorJFrog("CspmMonitorJFrog"),
+  defenderForContainersJFrog("DefenderForContainersJFrog"),
+  defenderCspmJFrog("DefenderCspmJFrog");
 
   const OfferingType(this.wireValue);
   final String wireValue;
@@ -32,4 +32,3 @@ enum OfferingType {
     throw ArgumentError('Unknown OfferingType value: $value');
   }
 }
-

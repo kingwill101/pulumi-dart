@@ -39,4 +39,3 @@ enum AzureCurrency {
     throw ArgumentError('Unknown AzureCurrency value: $value');
   }
 }
-

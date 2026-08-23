@@ -15,4 +15,3 @@ enum AccumulatedType {
     throw ArgumentError('Unknown AccumulatedType value: $value');
   }
 }
-

@@ -170,6 +170,66 @@ import 'profile_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_customerinsights_profile" "profile" {
+///   api_entity_set_name = "TestProfileType396"
+///   fields {
+///     field_name  = "Id"
+///     field_type  = "Edm.String"
+///     is_array    = false
+///     is_required = true
+///   }
+///   fields {
+///     field_name  = "ProfileId"
+///     field_type  = "Edm.String"
+///     is_array    = false
+///     is_required = true
+///   }
+///   fields {
+///     field_name  = "LastName"
+///     field_type  = "Edm.String"
+///     is_array    = false
+///     is_required = true
+///   }
+///   fields {
+///     field_name  = "TestProfileType396"
+///     field_type  = "Edm.String"
+///     is_array    = false
+///     is_required = true
+///   }
+///   fields {
+///     field_name  = "SavingAccountBalance"
+///     field_type  = "Edm.Int32"
+///     is_array    = false
+///     is_required = true
+///   }
+///   hub_name              = "sdkTestHub"
+///   large_image           = "\\\\Images\\\\LargeImage"
+///   medium_image          = "\\\\Images\\\\MediumImage"
+///   profile_name          = "TestProfileType396"
+///   resource_group_name   = "TestHubRG"
+///   schema_item_type_link = "SchemaItemTypeLink"
+///   small_image           = "\\\\Images\\\\smallImage"
+///   strong_ids {
+///     key_property_names = ["Id", "SavingAccountBalance"]
+///     strong_id_name     = "Id"
+///   }
+///   strong_ids {
+///     key_property_names = ["ProfileId", "LastName"]
+///     strong_id_name     = "ProfileId"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -180,8 +240,8 @@ import 'profile_args.dart';
 /// import com.pulumi.azurenative.customerinsights.ProfileArgs;
 /// import com.pulumi.azurenative.customerinsights.inputs.PropertyDefinitionArgs;
 /// import com.pulumi.azurenative.customerinsights.inputs.StrongIdArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

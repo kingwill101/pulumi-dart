@@ -1,7 +1,7 @@
 /// [Required] Mode for determining N-Cross validations.
 enum NCrossValidationsMode {
-  valueAuto("Auto"),
-  valueCustom("Custom");
+  auto("Auto"),
+  custom("Custom");
 
   const NCrossValidationsMode(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum NCrossValidationsMode {
     throw ArgumentError('Unknown NCrossValidationsMode value: $value');
   }
 }
-

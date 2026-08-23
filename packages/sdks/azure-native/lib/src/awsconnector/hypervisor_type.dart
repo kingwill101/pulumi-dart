@@ -15,4 +15,3 @@ enum HypervisorType {
     throw ArgumentError('Unknown HypervisorType value: $value');
   }
 }
-

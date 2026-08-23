@@ -1,11 +1,11 @@
-/// Primary metric to optimize for this task.
+/// Primary metrics for classification multilabel tasks.
 enum ClassificationMultilabelPrimaryMetrics {
-  valueAUCWeighted("AUCWeighted"),
-  valueAccuracy("Accuracy"),
-  valueNormMacroRecall("NormMacroRecall"),
-  valueAveragePrecisionScoreWeighted("AveragePrecisionScoreWeighted"),
-  valuePrecisionScoreWeighted("PrecisionScoreWeighted"),
-  valueIOU("IOU");
+  aUCWeighted("AUCWeighted"),
+  accuracy("Accuracy"),
+  normMacroRecall("NormMacroRecall"),
+  averagePrecisionScoreWeighted("AveragePrecisionScoreWeighted"),
+  precisionScoreWeighted("PrecisionScoreWeighted"),
+  iOU("IOU");
 
   const ClassificationMultilabelPrimaryMetrics(this.wireValue);
   final String wireValue;
@@ -19,4 +19,3 @@ enum ClassificationMultilabelPrimaryMetrics {
     throw ArgumentError('Unknown ClassificationMultilabelPrimaryMetrics value: $value');
   }
 }
-

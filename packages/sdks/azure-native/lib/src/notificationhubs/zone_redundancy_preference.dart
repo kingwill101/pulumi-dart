@@ -15,4 +15,3 @@ enum ZoneRedundancyPreference {
     throw ArgumentError('Unknown ZoneRedundancyPreference value: $value');
   }
 }
-

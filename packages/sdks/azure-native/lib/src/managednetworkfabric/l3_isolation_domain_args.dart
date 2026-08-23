@@ -84,4 +84,3 @@ class L3IsolationDomainArgs {
     );
   }
 }
-

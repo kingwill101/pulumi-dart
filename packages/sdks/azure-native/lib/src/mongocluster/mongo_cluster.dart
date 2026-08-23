@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2024-03-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-08-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mongocluster [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-03-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-08-01-preview, 2025-09-01, 2026-02-01-preview, 2026-06-01, 2026-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mongocluster [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -73,6 +73,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_mongocluster_mongocluster" "mongoCluster" {
+///   location           = "westus2"
+///   mongo_cluster_name = "myMongoCluster"
+///   properties = {
+///     create_mode = "PointInTimeRestore"
+///     restore_parameters = {
+///       point_in_time_utc  = "2023-01-13T20:07:35Z"
+///       source_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestResourceGroup/providers/Microsoft.DocumentDB/mongoClusters/myOtherMongoCluster"
+///     }
+///   }
+///   resource_group_name = "TestResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +107,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.mongocluster.MongoClusterArgs;
 /// import com.pulumi.azurenative.mongocluster.inputs.MongoClusterPropertiesArgs;
 /// import com.pulumi.azurenative.mongocluster.inputs.MongoClusterRestoreParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -258,6 +282,42 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_mongocluster_mongocluster" "mongoCluster" {
+///   location           = "westus2"
+///   mongo_cluster_name = "myMongoCluster"
+///   properties = {
+///     administrator = {
+///       password  = "password"
+///       user_name = "mongoAdmin"
+///     }
+///     compute = {
+///       tier = "M30"
+///     }
+///     high_availability = {
+///       target_mode = "SameZone"
+///     }
+///     server_version = "5.0"
+///     sharding = {
+///       shard_count = 1
+///     }
+///     storage = {
+///       size_gb = 128
+///     }
+///   }
+///   resource_group_name = "TestResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -272,8 +332,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.mongocluster.inputs.HighAvailabilityPropertiesArgs;
 /// import com.pulumi.azurenative.mongocluster.inputs.ShardingPropertiesArgs;
 /// import com.pulumi.azurenative.mongocluster.inputs.StoragePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -369,7 +429,7 @@ import 'system_data_response.dart';
 ///             "shard_count": 1,
 ///         },
 ///         "storage": {
-///             "size_gb": 128,
+///             "size_gb": float(128),
 ///         },
 ///     },
 ///     resource_group_name="TestResourceGroup")
@@ -463,6 +523,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_mongocluster_mongocluster" "mongoCluster" {
+///   location           = "centralus"
+///   mongo_cluster_name = "myReplicaMongoCluster"
+///   properties = {
+///     create_mode = "GeoReplica"
+///     replica_parameters = {
+///       source_location    = "eastus"
+///       source_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestResourceGroup/providers/Microsoft.DocumentDB/mongoClusters/mySourceMongoCluster"
+///     }
+///   }
+///   resource_group_name = "TestResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -473,8 +557,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.mongocluster.MongoClusterArgs;
 /// import com.pulumi.azurenative.mongocluster.inputs.MongoClusterPropertiesArgs;
 /// import com.pulumi.azurenative.mongocluster.inputs.MongoClusterReplicaParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

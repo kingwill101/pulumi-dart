@@ -14,4 +14,3 @@ enum SettingsKind {
     throw ArgumentError('Unknown SettingsKind value: $value');
   }
 }
-

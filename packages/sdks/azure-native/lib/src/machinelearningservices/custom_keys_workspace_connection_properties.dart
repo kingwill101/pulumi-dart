@@ -16,39 +16,43 @@ class CustomKeysWorkspaceConnectionProperties {
   final pulumi.Input<String>? category;
   /// Custom Keys credential object
   final pulumi.Input<CustomKeys>? credentials;
+  final pulumi.Input<String>? error;
   final pulumi.Input<String>? expiryTime;
   final pulumi.Input<bool>? isSharedToAll;
   /// Store user metadata for this connection
   final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<String>? peRequirement;
+  final pulumi.Input<String>? peStatus;
   final pulumi.Input<List<String>>? sharedUserList;
   final pulumi.Input<String>? target;
-  /// Value details of the workspace connection.
-  final pulumi.Input<String>? value;
-  /// format for the workspace connection value
-  final pulumi.Input<String>? valueFormat;
+  final pulumi.Input<bool>? useWorkspaceManagedIdentity;
 
   /// Creates a new [CustomKeysWorkspaceConnectionProperties].
   /// [authType] Authentication type of the connection target
   /// [category] Category of the connection
   /// [credentials] Custom Keys credential object
+  /// [error] Optional.
   /// [expiryTime] Optional.
   /// [isSharedToAll] Optional.
   /// [metadata] Store user metadata for this connection
+  /// [peRequirement] Optional.
+  /// [peStatus] Optional.
   /// [sharedUserList] Optional.
   /// [target] Optional.
-  /// [value] Value details of the workspace connection.
-  /// [valueFormat] format for the workspace connection value
+  /// [useWorkspaceManagedIdentity] Optional.
   const CustomKeysWorkspaceConnectionProperties({
     required this.authType,
     this.category,
     this.credentials,
+    this.error,
     this.expiryTime,
     this.isSharedToAll,
     this.metadata,
+    this.peRequirement,
+    this.peStatus,
     this.sharedUserList,
     this.target,
-    this.value,
-    this.valueFormat,
+    this.useWorkspaceManagedIdentity,
   });
 
   Map<String, dynamic> toMap() {
@@ -56,13 +60,15 @@ class CustomKeysWorkspaceConnectionProperties {
       'authType': authType,
       'category': ?category,
       'credentials': ?pulumi.Input.mapOptionalInputValue<CustomKeys, Map<String, dynamic>>(credentials, (value) => value.toMap()),
+      'error': ?error,
       'expiryTime': ?expiryTime,
       'isSharedToAll': ?isSharedToAll,
       'metadata': ?metadata,
+      'peRequirement': ?peRequirement,
+      'peStatus': ?peStatus,
       'sharedUserList': ?sharedUserList,
       'target': ?target,
-      'value': ?value,
-      'valueFormat': ?valueFormat,
+      'useWorkspaceManagedIdentity': ?useWorkspaceManagedIdentity,
     };
   }
 
@@ -71,14 +77,15 @@ class CustomKeysWorkspaceConnectionProperties {
       authType: pulumi.Input.fromValue(map['authType'] as String),
       category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomKeys.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expiryTime: (() { final guardedValue = map['expiryTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isSharedToAll: (() { final guardedValue = map['isSharedToAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      peRequirement: (() { final guardedValue = map['peRequirement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peStatus: (() { final guardedValue = map['peStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sharedUserList: (() { final guardedValue = map['sharedUserList']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      valueFormat: (() { final guardedValue = map['valueFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      useWorkspaceManagedIdentity: (() { final guardedValue = map['useWorkspaceManagedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
-

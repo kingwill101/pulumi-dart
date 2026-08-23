@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-04-03. In version 2.x of the Azure Native provider, it used API version 2022-10-14-preview.
 ///
-/// Other available API versions: 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-10-10, 2025-11-01-preview, 2026-01-01-preview, 2026-03-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -69,6 +69,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_desktopvirtualization_privateendpointconnectionbyhostpool" "privateEndpointConnectionByHostPool" {
+///   host_pool_name                   = "hostPool1"
+///   private_endpoint_connection_name = "hostPool1.377103f1-5179-4bdf-8556-4cdd3207cc5b"
+///   private_link_service_connection_state = {
+///     actions_required = "None"
+///     description      = "Approved by admin@consoto.com"
+///     status           = "Approved"
+///   }
+///   resource_group_name = "resourceGroup1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +100,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.desktopvirtualization.PrivateEndpointConnectionByHostPool;
 /// import com.pulumi.azurenative.desktopvirtualization.PrivateEndpointConnectionByHostPoolArgs;
 /// import com.pulumi.azurenative.desktopvirtualization.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

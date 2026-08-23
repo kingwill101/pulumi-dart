@@ -81,6 +81,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resources_azurepowershellscript" "azurePowerShellScript" {
+///   arguments              = "-Location 'westus' -Name \"*rg2\""
+///   az_power_shell_version = "1.7.0"
+///   cleanup_preference     = "Always"
+///   kind                   = "AzurePowerShell"
+///   location               = "westus"
+///   resource_group_name    = "script-rg"
+///   retention_interval     = "P7D"
+///   script_content         = "Param([string]$Location,[string]$Name) $deploymentScriptOutputs['test'] = 'value' Get-AzResourceGroup -Location $Location -Name $Name"
+///   script_name            = "MyDeploymentScript"
+///   supporting_script_uris = ["https://uri1.to.supporting.script", "https://uri2.to.supporting.script"]
+///   timeout                = "PT1H"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +114,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.resources.AzurePowerShellScript;
 /// import com.pulumi.azurenative.resources.AzurePowerShellScriptArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -219,12 +244,12 @@ class AzurePowerShellScript extends pulumi.CustomResource {
   /// Type of the script.
   /// Expected value is 'AzurePowerShell'.
   late final pulumi.Output<String> kind;
-  /// The location of the ACI and the storage account for the deployment script.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-  /// Name of this resource.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// List of script outputs.
-  late final pulumi.Output<Map<String, dynamic>> outputs;
+  late final pulumi.Output<dynamic> outputs;
   /// Uri for the script. This is the entry point for the external script.
   late final pulumi.Output<String?> primaryScriptUri;
   /// State of the script execution. This only appears in the response.
@@ -239,13 +264,13 @@ class AzurePowerShellScript extends pulumi.CustomResource {
   late final pulumi.Output<StorageAccountConfigurationResponse?> storageAccountSettings;
   /// Supporting files for the external script.
   late final pulumi.Output<List<String>?> supportingScriptUris;
-  /// The system metadata related to this resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Maximum allowed script execution time specified in ISO 8601 format. Default value is P1D
   late final pulumi.Output<String?> timeout;
-  /// Type of this resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [AzurePowerShellScript].
@@ -273,7 +298,7 @@ class AzurePowerShellScript extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    outputs = registerOutput<Map<String, dynamic>>('outputs');
+    outputs = registerOutput<dynamic>('outputs');
     primaryScriptUri = registerOutput<String?>('primaryScriptUri');
     provisioningState = registerOutput<String>('provisioningState');
     retentionInterval = registerOutput<String>('retentionInterval');

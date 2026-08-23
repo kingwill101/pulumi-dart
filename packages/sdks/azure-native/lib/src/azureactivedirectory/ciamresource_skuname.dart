@@ -16,4 +16,3 @@ enum CIAMResourceSKUName {
     throw ArgumentError('Unknown CIAMResourceSKUName value: $value');
   }
 }
-

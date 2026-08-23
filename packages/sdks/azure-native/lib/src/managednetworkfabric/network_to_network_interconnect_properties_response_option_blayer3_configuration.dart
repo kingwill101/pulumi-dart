@@ -61,4 +61,3 @@ class NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration {
     );
   }
 }
-

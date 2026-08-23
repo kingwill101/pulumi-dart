@@ -17,4 +17,3 @@ enum IngressTransportMethod {
     throw ArgumentError('Unknown IngressTransportMethod value: $value');
   }
 }
-

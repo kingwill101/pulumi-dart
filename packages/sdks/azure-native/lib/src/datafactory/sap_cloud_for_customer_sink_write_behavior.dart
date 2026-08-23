@@ -1,7 +1,7 @@
 /// The write behavior for the operation. Default is 'Insert'.
 enum SapCloudForCustomerSinkWriteBehavior {
-  valueInsert("Insert"),
-  valueUpdate("Update");
+  insert("Insert"),
+  update("Update");
 
   const SapCloudForCustomerSinkWriteBehavior(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum SapCloudForCustomerSinkWriteBehavior {
     throw ArgumentError('Unknown SapCloudForCustomerSinkWriteBehavior value: $value');
   }
 }
-

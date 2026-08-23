@@ -71,6 +71,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_healthdataaiservices_privateendpointconnection" "privateEndpointConnection" {
+///   deid_service_name                = "deidTest"
+///   private_endpoint_connection_name = "kgwgrrpabvrsrrvpcgcnfmyfgyrl"
+///   properties = {
+///     private_link_service_connection_state = {
+///       actions_required = "ulb"
+///       description      = "xr"
+///       status           = "Pending"
+///     }
+///   }
+///   resource_group_name = "rgopenapi"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +105,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.healthdataaiservices.PrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.healthdataaiservices.inputs.PrivateEndpointConnectionPropertiesArgs;
 /// import com.pulumi.azurenative.healthdataaiservices.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

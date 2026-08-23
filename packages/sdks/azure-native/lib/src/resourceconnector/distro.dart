@@ -14,4 +14,3 @@ enum Distro {
     throw ArgumentError('Unknown Distro value: $value');
   }
 }
-

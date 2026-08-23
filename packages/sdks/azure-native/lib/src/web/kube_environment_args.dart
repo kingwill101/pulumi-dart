@@ -28,13 +28,13 @@ class KubeEnvironmentArgs {
   final pulumi.Input<ExtendedLocation>? extendedLocation;
   /// Only visible within Vnet/Subnet
   final pulumi.Input<bool>? internalLoadBalancerEnabled;
-  /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+  /// Kind of resource.
   final pulumi.Input<String>? kind;
-  /// Resource Location.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// Name of the Kubernetes Environment.
   final pulumi.Input<String>? name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Static IP of the KubeEnvironment
   final pulumi.Input<String>? staticIp;
@@ -49,10 +49,10 @@ class KubeEnvironmentArgs {
   /// [environmentType] Type of Kubernetes Environment. Only supported for Container App Environments with value as Managed
   /// [extendedLocation] Extended Location.
   /// [internalLoadBalancerEnabled] Only visible within Vnet/Subnet
-  /// [kind] Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
-  /// [location] Resource Location.
+  /// [kind] Kind of resource.
+  /// [location] The geo-location where the resource lives
   /// [name] Name of the Kubernetes Environment.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [staticIp] Static IP of the KubeEnvironment
   /// [tags] Resource tags.
   const KubeEnvironmentArgs({
@@ -107,4 +107,3 @@ class KubeEnvironmentArgs {
     );
   }
 }
-

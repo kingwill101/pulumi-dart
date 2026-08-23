@@ -25,11 +25,11 @@ import 'system_data_response.dart';
 ///         LogAnalyticsDestinationType = "Dedicated",
 ///         Logs = new[]
 ///         {
-///             new AzureNative.Monitor.Inputs.LogSettingsArgs
+///             new AzureNative.Monitor.Inputs.DiagnosticsLogSettingsArgs
 ///             {
 ///                 CategoryGroup = "allLogs",
 ///                 Enabled = true,
-///                 RetentionPolicy = new AzureNative.Monitor.Inputs.RetentionPolicyArgs
+///                 RetentionPolicy = new AzureNative.Monitor.Inputs.MicrosoftCommonRetentionPolicyArgs
 ///                 {
 ///                     Days = 0,
 ///                     Enabled = false,
@@ -39,11 +39,11 @@ import 'system_data_response.dart';
 ///         MarketplacePartnerId = "/subscriptions/abcdeabc-1234-1234-ab12-123a1234567a/resourceGroups/test-rg/providers/Microsoft.Datadog/monitors/dd1",
 ///         Metrics = new[]
 ///         {
-///             new AzureNative.Monitor.Inputs.MetricSettingsArgs
+///             new AzureNative.Monitor.Inputs.DiagnosticsMetricSettingsArgs
 ///             {
 ///                 Category = "WorkflowMetrics",
 ///                 Enabled = true,
-///                 RetentionPolicy = new AzureNative.Monitor.Inputs.RetentionPolicyArgs
+///                 RetentionPolicy = new AzureNative.Monitor.Inputs.MicrosoftCommonRetentionPolicyArgs
 ///                 {
 ///                     Days = 0,
 ///                     Enabled = false,
@@ -75,22 +75,22 @@ import 'system_data_response.dart';
 /// 			EventHubAuthorizationRuleId: pulumi.String("/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/microsoft.eventhub/namespaces/mynamespace/authorizationrules/myrule"),
 /// 			EventHubName:                pulumi.String("myeventhub"),
 /// 			LogAnalyticsDestinationType: pulumi.String("Dedicated"),
-/// 			Logs: monitor.LogSettingsArray{
-/// 				&monitor.LogSettingsArgs{
+/// 			Logs: monitor.DiagnosticsLogSettingsArray{
+/// 				&monitor.DiagnosticsLogSettingsArgs{
 /// 					CategoryGroup: pulumi.String("allLogs"),
 /// 					Enabled:       pulumi.Bool(true),
-/// 					RetentionPolicy: &monitor.RetentionPolicyArgs{
+/// 					RetentionPolicy: &monitor.MicrosoftCommonRetentionPolicyArgs{
 /// 						Days:    pulumi.Int(0),
 /// 						Enabled: pulumi.Bool(false),
 /// 					},
 /// 				},
 /// 			},
 /// 			MarketplacePartnerId: pulumi.String("/subscriptions/abcdeabc-1234-1234-ab12-123a1234567a/resourceGroups/test-rg/providers/Microsoft.Datadog/monitors/dd1"),
-/// 			Metrics: monitor.MetricSettingsArray{
-/// 				&monitor.MetricSettingsArgs{
+/// 			Metrics: monitor.DiagnosticsMetricSettingsArray{
+/// 				&monitor.DiagnosticsMetricSettingsArgs{
 /// 					Category: pulumi.String("WorkflowMetrics"),
 /// 					Enabled:  pulumi.Bool(true),
-/// 					RetentionPolicy: &monitor.RetentionPolicyArgs{
+/// 					RetentionPolicy: &monitor.MicrosoftCommonRetentionPolicyArgs{
 /// 						Days:    pulumi.Int(0),
 /// 						Enabled: pulumi.Bool(false),
 /// 					},
@@ -110,6 +110,44 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_diagnosticsetting" "diagnosticSetting" {
+///   event_hub_authorization_rule_id = "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/microsoft.eventhub/namespaces/mynamespace/authorizationrules/myrule"
+///   event_hub_name                  = "myeventhub"
+///   log_analytics_destination_type  = "Dedicated"
+///   logs {
+///     category_group = "allLogs"
+///     enabled        = true
+///     retention_policy = {
+///       days    = 0
+///       enabled = false
+///     }
+///   }
+///   marketplace_partner_id = "/subscriptions/abcdeabc-1234-1234-ab12-123a1234567a/resourceGroups/test-rg/providers/Microsoft.Datadog/monitors/dd1"
+///   metrics {
+///     category = "WorkflowMetrics"
+///     enabled  = true
+///     retention_policy = {
+///       days    = 0
+///       enabled = false
+///     }
+///   }
+///   name               = "mysetting"
+///   resource_uri       = "subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/viruela1/providers/microsoft.logic/workflows/viruela6"
+///   storage_account_id = "/subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/apptest/providers/Microsoft.Storage/storageAccounts/appteststorage1"
+///   workspace_id       = ""
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -118,11 +156,11 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.monitor.DiagnosticSetting;
 /// import com.pulumi.azurenative.monitor.DiagnosticSettingArgs;
-/// import com.pulumi.azurenative.monitor.inputs.LogSettingsArgs;
-/// import com.pulumi.azurenative.monitor.inputs.RetentionPolicyArgs;
-/// import com.pulumi.azurenative.monitor.inputs.MetricSettingsArgs;
-/// import java.util.List;
+/// import com.pulumi.azurenative.monitor.inputs.DiagnosticsLogSettingsArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MicrosoftCommonRetentionPolicyArgs;
+/// import com.pulumi.azurenative.monitor.inputs.DiagnosticsMetricSettingsArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -138,19 +176,19 @@ import 'system_data_response.dart';
 ///             .eventHubAuthorizationRuleId("/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/microsoft.eventhub/namespaces/mynamespace/authorizationrules/myrule")
 ///             .eventHubName("myeventhub")
 ///             .logAnalyticsDestinationType("Dedicated")
-///             .logs(LogSettingsArgs.builder()
+///             .logs(DiagnosticsLogSettingsArgs.builder()
 ///                 .categoryGroup("allLogs")
 ///                 .enabled(true)
-///                 .retentionPolicy(RetentionPolicyArgs.builder()
+///                 .retentionPolicy(MicrosoftCommonRetentionPolicyArgs.builder()
 ///                     .days(0)
 ///                     .enabled(false)
 ///                     .build())
 ///                 .build())
 ///             .marketplacePartnerId("/subscriptions/abcdeabc-1234-1234-ab12-123a1234567a/resourceGroups/test-rg/providers/Microsoft.Datadog/monitors/dd1")
-///             .metrics(MetricSettingsArgs.builder()
+///             .metrics(DiagnosticsMetricSettingsArgs.builder()
 ///                 .category("WorkflowMetrics")
 ///                 .enabled(true)
-///                 .retentionPolicy(RetentionPolicyArgs.builder()
+///                 .retentionPolicy(MicrosoftCommonRetentionPolicyArgs.builder()
 ///                     .days(0)
 ///                     .enabled(false)
 ///                     .build())
@@ -277,11 +315,11 @@ import 'system_data_response.dart';
 ///         LogAnalyticsDestinationType = "Dedicated",
 ///         Logs = new[]
 ///         {
-///             new AzureNative.Monitor.Inputs.LogSettingsArgs
+///             new AzureNative.Monitor.Inputs.DiagnosticsLogSettingsArgs
 ///             {
 ///                 Category = "WorkflowRuntime",
 ///                 Enabled = true,
-///                 RetentionPolicy = new AzureNative.Monitor.Inputs.RetentionPolicyArgs
+///                 RetentionPolicy = new AzureNative.Monitor.Inputs.MicrosoftCommonRetentionPolicyArgs
 ///                 {
 ///                     Days = 0,
 ///                     Enabled = false,
@@ -291,11 +329,11 @@ import 'system_data_response.dart';
 ///         MarketplacePartnerId = "/subscriptions/abcdeabc-1234-1234-ab12-123a1234567a/resourceGroups/test-rg/providers/Microsoft.Datadog/monitors/dd1",
 ///         Metrics = new[]
 ///         {
-///             new AzureNative.Monitor.Inputs.MetricSettingsArgs
+///             new AzureNative.Monitor.Inputs.DiagnosticsMetricSettingsArgs
 ///             {
 ///                 Category = "WorkflowMetrics",
 ///                 Enabled = true,
-///                 RetentionPolicy = new AzureNative.Monitor.Inputs.RetentionPolicyArgs
+///                 RetentionPolicy = new AzureNative.Monitor.Inputs.MicrosoftCommonRetentionPolicyArgs
 ///                 {
 ///                     Days = 0,
 ///                     Enabled = false,
@@ -327,22 +365,22 @@ import 'system_data_response.dart';
 /// 			EventHubAuthorizationRuleId: pulumi.String("/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/microsoft.eventhub/namespaces/mynamespace/authorizationrules/myrule"),
 /// 			EventHubName:                pulumi.String("myeventhub"),
 /// 			LogAnalyticsDestinationType: pulumi.String("Dedicated"),
-/// 			Logs: monitor.LogSettingsArray{
-/// 				&monitor.LogSettingsArgs{
+/// 			Logs: monitor.DiagnosticsLogSettingsArray{
+/// 				&monitor.DiagnosticsLogSettingsArgs{
 /// 					Category: pulumi.String("WorkflowRuntime"),
 /// 					Enabled:  pulumi.Bool(true),
-/// 					RetentionPolicy: &monitor.RetentionPolicyArgs{
+/// 					RetentionPolicy: &monitor.MicrosoftCommonRetentionPolicyArgs{
 /// 						Days:    pulumi.Int(0),
 /// 						Enabled: pulumi.Bool(false),
 /// 					},
 /// 				},
 /// 			},
 /// 			MarketplacePartnerId: pulumi.String("/subscriptions/abcdeabc-1234-1234-ab12-123a1234567a/resourceGroups/test-rg/providers/Microsoft.Datadog/monitors/dd1"),
-/// 			Metrics: monitor.MetricSettingsArray{
-/// 				&monitor.MetricSettingsArgs{
+/// 			Metrics: monitor.DiagnosticsMetricSettingsArray{
+/// 				&monitor.DiagnosticsMetricSettingsArgs{
 /// 					Category: pulumi.String("WorkflowMetrics"),
 /// 					Enabled:  pulumi.Bool(true),
-/// 					RetentionPolicy: &monitor.RetentionPolicyArgs{
+/// 					RetentionPolicy: &monitor.MicrosoftCommonRetentionPolicyArgs{
 /// 						Days:    pulumi.Int(0),
 /// 						Enabled: pulumi.Bool(false),
 /// 					},
@@ -362,6 +400,44 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_diagnosticsetting" "diagnosticSetting" {
+///   event_hub_authorization_rule_id = "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/microsoft.eventhub/namespaces/mynamespace/authorizationrules/myrule"
+///   event_hub_name                  = "myeventhub"
+///   log_analytics_destination_type  = "Dedicated"
+///   logs {
+///     category = "WorkflowRuntime"
+///     enabled  = true
+///     retention_policy = {
+///       days    = 0
+///       enabled = false
+///     }
+///   }
+///   marketplace_partner_id = "/subscriptions/abcdeabc-1234-1234-ab12-123a1234567a/resourceGroups/test-rg/providers/Microsoft.Datadog/monitors/dd1"
+///   metrics {
+///     category = "WorkflowMetrics"
+///     enabled  = true
+///     retention_policy = {
+///       days    = 0
+///       enabled = false
+///     }
+///   }
+///   name               = "mysetting"
+///   resource_uri       = "subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/viruela1/providers/microsoft.logic/workflows/viruela6"
+///   storage_account_id = "/subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/apptest/providers/Microsoft.Storage/storageAccounts/appteststorage1"
+///   workspace_id       = ""
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -370,11 +446,11 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.monitor.DiagnosticSetting;
 /// import com.pulumi.azurenative.monitor.DiagnosticSettingArgs;
-/// import com.pulumi.azurenative.monitor.inputs.LogSettingsArgs;
-/// import com.pulumi.azurenative.monitor.inputs.RetentionPolicyArgs;
-/// import com.pulumi.azurenative.monitor.inputs.MetricSettingsArgs;
-/// import java.util.List;
+/// import com.pulumi.azurenative.monitor.inputs.DiagnosticsLogSettingsArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MicrosoftCommonRetentionPolicyArgs;
+/// import com.pulumi.azurenative.monitor.inputs.DiagnosticsMetricSettingsArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -390,19 +466,19 @@ import 'system_data_response.dart';
 ///             .eventHubAuthorizationRuleId("/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/microsoft.eventhub/namespaces/mynamespace/authorizationrules/myrule")
 ///             .eventHubName("myeventhub")
 ///             .logAnalyticsDestinationType("Dedicated")
-///             .logs(LogSettingsArgs.builder()
+///             .logs(DiagnosticsLogSettingsArgs.builder()
 ///                 .category("WorkflowRuntime")
 ///                 .enabled(true)
-///                 .retentionPolicy(RetentionPolicyArgs.builder()
+///                 .retentionPolicy(MicrosoftCommonRetentionPolicyArgs.builder()
 ///                     .days(0)
 ///                     .enabled(false)
 ///                     .build())
 ///                 .build())
 ///             .marketplacePartnerId("/subscriptions/abcdeabc-1234-1234-ab12-123a1234567a/resourceGroups/test-rg/providers/Microsoft.Datadog/monitors/dd1")
-///             .metrics(MetricSettingsArgs.builder()
+///             .metrics(DiagnosticsMetricSettingsArgs.builder()
 ///                 .category("WorkflowMetrics")
 ///                 .enabled(true)
-///                 .retentionPolicy(RetentionPolicyArgs.builder()
+///                 .retentionPolicy(MicrosoftCommonRetentionPolicyArgs.builder()
 ///                     .days(0)
 ///                     .enabled(false)
 ///                     .build())
@@ -542,7 +618,7 @@ class DiagnosticSetting extends pulumi.CustomResource {
   late final pulumi.Output<String?> serviceBusRuleId;
   /// The resource ID of the storage account to which you would like to send Diagnostic Logs.
   late final pulumi.Output<String?> storageAccountId;
-  /// The system metadata related to this resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;

@@ -1,7 +1,7 @@
 /// The OAuth 2.0 authentication mechanism used for authentication. ServiceAuthentication can only be used on self-hosted IR.
 enum GoogleAdWordsAuthenticationType {
-  valueServiceAuthentication("ServiceAuthentication"),
-  valueUserAuthentication("UserAuthentication");
+  serviceAuthentication("ServiceAuthentication"),
+  userAuthentication("UserAuthentication");
 
   const GoogleAdWordsAuthenticationType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum GoogleAdWordsAuthenticationType {
     throw ArgumentError('Unknown GoogleAdWordsAuthenticationType value: $value');
   }
 }
-

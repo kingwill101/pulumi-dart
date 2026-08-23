@@ -118,6 +118,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_operationalinsights_query" "query" {
+///   body            = "let newExceptionsTimeRange = 1d;\nlet timeRangeToCheckBefore = 7d;\nexceptions\n| where timestamp < ago(timeRangeToCheckBefore)\n| summarize count() by problemId\n| join kind= rightanti (\nexceptions\n| where timestamp >= ago(newExceptionsTimeRange)\n| extend stack = tostring(details[0].rawStack)\n| summarize count(), dcount(user_AuthenticatedId), min(timestamp), max(timestamp), any(stack) by problemId  \n) on problemId \n| order by  count_ desc\n"
+///   description     = "my description"
+///   display_name    = "Exceptions - New in the last 24 hours"
+///   id              = "a449f8af-8e64-4b3a-9b16-5a7165ff98c4"
+///   query_pack_name = "my-querypack"
+///   related = {
+///     categories = ["analytics"]
+///   }
+///   resource_group_name = "my-resource-group"
+///   tags = {
+///     "my-label"       = ["label1"]
+///     "my-other-label" = ["label2"]
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +154,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.operationalinsights.Query;
 /// import com.pulumi.azurenative.operationalinsights.QueryArgs;
 /// import com.pulumi.azurenative.operationalinsights.inputs.LogAnalyticsQueryPackQueryPropertiesRelatedArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -164,8 +191,8 @@ import 'system_data_response.dart';
 ///                 .build())
 ///             .resourceGroupName("my-resource-group")
 ///             .tags(Map.ofEntries(
-///                 Map.entry("my-label", "label1"),
-///                 Map.entry("my-other-label", "label2")
+///                 Map.entry("my-label", Arrays.asList("label1")),
+///                 Map.entry("my-other-label", Arrays.asList("label2"))
 ///             ))
 ///             .build());
 ///

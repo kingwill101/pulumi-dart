@@ -8,7 +8,7 @@ import 'workspace_resource_properties_response.dart';
 ///
 /// Uses Azure REST API version 2023-11-13-preview. In version 2.x of the Azure Native provider, it used API version 2022-01-10-preview.
 ///
-/// Other available API versions: 2022-01-10-preview, 2025-01-01-preview, 2025-08-11-preview, 2025-11-01-preview, 2025-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native quantum [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-01-10-preview, 2025-01-01-preview, 2025-08-11-preview, 2025-11-01-preview, 2025-12-15-preview, 2026-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native quantum [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -97,6 +97,36 @@ import 'workspace_resource_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_quantum_workspace" "workspace" {
+///   location = "West US"
+///   properties = {
+///     providers = [{
+///       "providerId"  = "Honeywell"
+///       "providerSku" = "Basic"
+///       }, {
+///       "providerId"  = "IonQ"
+///       "providerSku" = "Basic"
+///       }, {
+///       "providerId"  = "OneQBit"
+///       "providerSku" = "Basic"
+///     }]
+///     storage_account = "/subscriptions/1C4B2828-7D49-494F-933D-061373BE28C2/resourceGroups/quantumResourcegroup/providers/Microsoft.Storage/storageAccounts/testStorageAccount"
+///   }
+///   resource_group_name = "quantumResourcegroup"
+///   workspace_name      = "quantumworkspace1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +136,8 @@ import 'workspace_resource_properties_response.dart';
 /// import com.pulumi.azurenative.quantum.Workspace;
 /// import com.pulumi.azurenative.quantum.WorkspaceArgs;
 /// import com.pulumi.azurenative.quantum.inputs.WorkspaceResourcePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

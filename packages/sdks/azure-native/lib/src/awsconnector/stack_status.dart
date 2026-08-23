@@ -36,4 +36,3 @@ enum StackStatus {
     throw ArgumentError('Unknown StackStatus value: $value');
   }
 }
-

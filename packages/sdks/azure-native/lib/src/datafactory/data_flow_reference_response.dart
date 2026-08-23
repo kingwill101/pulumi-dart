@@ -7,7 +7,7 @@ class DataFlowReferenceResponse {
   /// Reference data flow parameters from dataset.
   final pulumi.Input<dynamic>? datasetParameters;
   /// Data flow parameters
-  final pulumi.Input<Map<String, dynamic>>? parameters;
+  final pulumi.Input<dynamic>? parameters;
   /// Reference data flow name.
   final pulumi.Input<String> referenceName;
   /// Data flow reference type.
@@ -37,10 +37,9 @@ class DataFlowReferenceResponse {
   factory DataFlowReferenceResponse.fromMap(Map<String, dynamic> map) {
     return DataFlowReferenceResponse(
       datasetParameters: (() { final guardedValue = map['datasetParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       referenceName: pulumi.Input.fromValue(map['referenceName'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -66,6 +66,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databasewatcher_alertruleresource" "alertRuleResource" {
+///   alert_rule_resource_id      = "/subscriptions/469DD77C-C8DB-47B7-B9E1-72D29F8C878Be/resourceGroups/rgWatcher/providers/microsoft.insights/scheduledqueryrules/alerts-demo"
+///   alert_rule_resource_name    = "testAlert"
+///   alert_rule_template_id      = "someTemplateId"
+///   alert_rule_template_version = "1.0"
+///   created_with_properties     = "CreatedWithActionGroup"
+///   creation_time               = "2024-07-25T15:38:47.798Z"
+///   resource_group_name         = "rgWatcher"
+///   watcher_name                = "testWatcher"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +96,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.databasewatcher.AlertRuleResource;
 /// import com.pulumi.azurenative.databasewatcher.AlertRuleResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

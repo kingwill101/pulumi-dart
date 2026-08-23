@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'hosting_environment_profile_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getCertificate.
 class GetCertificateResult {
@@ -20,41 +21,45 @@ class GetCertificateResult {
   final List<String>? hostNames;
   /// Specification for the App Service Environment to use for the certificate.
   final HostingEnvironmentProfileResponse hostingEnvironmentProfile;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Certificate issue Date.
   final String issueDate;
   /// Certificate issuer.
   final String issuer;
-  /// Key Vault Csm resource Id.
+  /// Azure Key Vault Csm resource Id.
   final String? keyVaultId;
-  /// Key Vault secret name.
+  /// Azure Key Vault secret name.
   final String? keyVaultSecretName;
   /// Status of the Key Vault secret.
   final String keyVaultSecretStatus;
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   final String? kind;
-  /// Resource Location.
+  /// The geo-location where the resource lives
   final String location;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
+  /// Certificate password.
+  final String? password;
   /// Pfx blob.
   final String? pfxBlob;
   /// Public key hash.
   final String publicKeyHash;
   /// Self link.
   final String selfLink;
-  /// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
+  /// Resource ID of the associated App Service plan.
   final String? serverFarmId;
   /// App name.
   final String siteName;
   /// Subject name of the certificate.
   final String subjectName;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Certificate thumbprint.
   final String thumbprint;
-  /// Resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// Is the certificate valid?.
   final bool valid;
@@ -68,24 +73,26 @@ class GetCertificateResult {
   /// [friendlyName] Friendly name of the certificate.
   /// [hostNames] Host names the certificate applies to.
   /// [hostingEnvironmentProfile] Specification for the App Service Environment to use for the certificate.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [issueDate] Certificate issue Date.
   /// [issuer] Certificate issuer.
-  /// [keyVaultId] Key Vault Csm resource Id.
-  /// [keyVaultSecretName] Key Vault secret name.
+  /// [keyVaultId] Azure Key Vault Csm resource Id.
+  /// [keyVaultSecretName] Azure Key Vault secret name.
   /// [keyVaultSecretStatus] Status of the Key Vault secret.
   /// [kind] Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
-  /// [location] Resource Location.
-  /// [name] Resource Name.
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the resource
+  /// [password] Certificate password.
   /// [pfxBlob] Pfx blob.
   /// [publicKeyHash] Public key hash.
   /// [selfLink] Self link.
-  /// [serverFarmId] Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
+  /// [serverFarmId] Resource ID of the associated App Service plan.
   /// [siteName] App name.
   /// [subjectName] Subject name of the certificate.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [thumbprint] Certificate thumbprint.
-  /// [type] Resource type.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [valid] Is the certificate valid?.
   const GetCertificateResult({
     required this.azureApiVersion,
@@ -105,12 +112,14 @@ class GetCertificateResult {
     this.kind,
     required this.location,
     required this.name,
+    this.password,
     this.pfxBlob,
     required this.publicKeyHash,
     required this.selfLink,
     this.serverFarmId,
     required this.siteName,
     required this.subjectName,
+    required this.systemData,
     this.tags,
     required this.thumbprint,
     required this.type,
@@ -136,12 +145,14 @@ class GetCertificateResult {
       'kind': ?kind,
       'location': location,
       'name': name,
+      'password': ?password,
       'pfxBlob': ?pfxBlob,
       'publicKeyHash': publicKeyHash,
       'selfLink': selfLink,
       'serverFarmId': ?serverFarmId,
       'siteName': siteName,
       'subjectName': subjectName,
+      'systemData': systemData.toMap(),
       'tags': ?tags,
       'thumbprint': thumbprint,
       'type': type,
@@ -168,12 +179,14 @@ class GetCertificateResult {
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: map['location'] as String,
       name: map['name'] as String,
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pfxBlob: (() { final guardedValue = map['pfxBlob']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publicKeyHash: map['publicKeyHash'] as String,
       selfLink: map['selfLink'] as String,
       serverFarmId: (() { final guardedValue = map['serverFarmId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       siteName: map['siteName'] as String,
       subjectName: map['subjectName'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       thumbprint: map['thumbprint'] as String,
       type: map['type'] as String,
@@ -181,4 +194,3 @@ class GetCertificateResult {
     );
   }
 }
-

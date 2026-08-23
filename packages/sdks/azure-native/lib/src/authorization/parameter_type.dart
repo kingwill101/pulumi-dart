@@ -20,4 +20,3 @@ enum ParameterType {
     throw ArgumentError('Unknown ParameterType value: $value');
   }
 }
-

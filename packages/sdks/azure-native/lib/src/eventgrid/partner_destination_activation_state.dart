@@ -15,4 +15,3 @@ enum PartnerDestinationActivationState {
     throw ArgumentError('Unknown PartnerDestinationActivationState value: $value');
   }
 }
-

@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_codesigning_get_certificate_profile_args_doc}
 class GetCertificateProfileArgs {
-  /// Trusted Signing account name.
+  /// Artifact Signing account name.
   final pulumi.Input<String> accountName;
   /// Certificate profile name.
   final pulumi.Input<String> profileName;
@@ -15,7 +15,7 @@ class GetCertificateProfileArgs {
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetCertificateProfileArgs].
-  /// [accountName] Trusted Signing account name.
+  /// [accountName] Artifact Signing account name.
   /// [profileName] Certificate profile name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetCertificateProfileArgs({
@@ -40,4 +40,3 @@ class GetCertificateProfileArgs {
     );
   }
 }
-

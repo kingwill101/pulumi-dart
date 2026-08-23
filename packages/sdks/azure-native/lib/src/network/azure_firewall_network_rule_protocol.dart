@@ -17,4 +17,3 @@ enum AzureFirewallNetworkRuleProtocol {
     throw ArgumentError('Unknown AzureFirewallNetworkRuleProtocol value: $value');
   }
 }
-

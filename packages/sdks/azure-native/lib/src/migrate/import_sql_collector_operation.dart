@@ -62,6 +62,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_importsqlcollectoroperation" "importSqlCollectorOperation" {
+///   import_sql_collectors_name = "importCollector"
+///   project_name               = "contosoProject"
+///   properties = {
+///     discovery_site_id = "/subscriptions/C1DB66AE-BCF9-42FD-ADC2-390E0721C351/resourceGroups/rgsqlAssessments/providers/Microsoft.OffAzure/MasterSites/testproject8566mastersite/SqlSites/testproject8566sqlsites"
+///   }
+///   resource_group_name = "rgsqlAssessments"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +91,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.migrate.ImportSqlCollectorOperation;
 /// import com.pulumi.azurenative.migrate.ImportSqlCollectorOperationArgs;
 /// import com.pulumi.azurenative.migrate.inputs.ImportSqlCollectorPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

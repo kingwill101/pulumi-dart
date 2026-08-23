@@ -14,4 +14,3 @@ enum HttpVersionOperator {
     throw ArgumentError('Unknown HttpVersionOperator value: $value');
   }
 }
-

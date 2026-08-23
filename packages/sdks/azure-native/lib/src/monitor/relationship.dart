@@ -75,6 +75,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_relationship" "relationship" {
+///   azure_monitor_workspace_name = "myWorkspace"
+///   health_model_name            = "model1"
+///   properties = {
+///     child_entity_name  = "Entity2"
+///     display_name       = "My relationship"
+///     parent_entity_name = "Entity1"
+///     tags = {
+///       "key9681" = "ixfvzsfnpvkkbrce"
+///     }
+///   }
+///   relationship_name   = "rel1"
+///   resource_group_name = "rgopenapi"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +110,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.Relationship;
 /// import com.pulumi.azurenative.monitor.RelationshipArgs;
 /// import com.pulumi.azurenative.monitor.inputs.RelationshipPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -10,6 +10,8 @@ class ComputeInstanceDataMountResponse {
   final pulumi.Input<String>? error;
   /// Mount Action.
   final pulumi.Input<String>? mountAction;
+  /// Mount Mode.
+  final pulumi.Input<String>? mountMode;
   /// name of the ComputeInstance data mount.
   final pulumi.Input<String>? mountName;
   /// Path of this data mount.
@@ -27,6 +29,7 @@ class ComputeInstanceDataMountResponse {
   /// [createdBy] who this data mount created by.
   /// [error] Error of this data mount.
   /// [mountAction] Mount Action.
+  /// [mountMode] Mount Mode.
   /// [mountName] name of the ComputeInstance data mount.
   /// [mountPath] Path of this data mount.
   /// [mountState] Mount state.
@@ -37,6 +40,7 @@ class ComputeInstanceDataMountResponse {
     this.createdBy,
     this.error,
     this.mountAction,
+    this.mountMode,
     this.mountName,
     this.mountPath,
     this.mountState,
@@ -50,6 +54,7 @@ class ComputeInstanceDataMountResponse {
       'createdBy': ?createdBy,
       'error': ?error,
       'mountAction': ?mountAction,
+      'mountMode': ?mountMode,
       'mountName': ?mountName,
       'mountPath': ?mountPath,
       'mountState': ?mountState,
@@ -64,6 +69,7 @@ class ComputeInstanceDataMountResponse {
       createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mountAction: (() { final guardedValue = map['mountAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mountMode: (() { final guardedValue = map['mountMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mountName: (() { final guardedValue = map['mountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mountPath: (() { final guardedValue = map['mountPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mountState: (() { final guardedValue = map['mountState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -73,4 +79,3 @@ class ComputeInstanceDataMountResponse {
     );
   }
 }
-

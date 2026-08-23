@@ -82,6 +82,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databasefleetmanager_fleettier" "fleetTier" {
+///   fleet_name = "critical-production-fleet"
+///   properties = {
+///     capacity                        = 4
+///     database_capacity_max           = 4
+///     database_capacity_min           = 0
+///     database_size_gb_max            = 50
+///     family                          = "Gen5"
+///     high_availability_replica_count = 5
+///     pool_num_of_databases_max       = 10
+///     pooled                          = true
+///     serverless                      = false
+///     service_tier                    = "GeneralPurpose"
+///     zone_redundancy                 = "Disabled"
+///   }
+///   resource_group_name = "rg-database-fleet-manager"
+///   tier_name           = "general-purpose-tier"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +121,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.databasefleetmanager.FleetTier;
 /// import com.pulumi.azurenative.databasefleetmanager.FleetTierArgs;
 /// import com.pulumi.azurenative.databasefleetmanager.inputs.FleetTierPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -161,8 +191,8 @@ import 'system_data_response.dart';
 ///     fleet_name="critical-production-fleet",
 ///     properties={
 ///         "capacity": 4,
-///         "database_capacity_max": 4,
-///         "database_capacity_min": 0,
+///         "database_capacity_max": float(4),
+///         "database_capacity_min": float(0),
 ///         "database_size_gb_max": 50,
 ///         "family": "Gen5",
 ///         "high_availability_replica_count": 5,

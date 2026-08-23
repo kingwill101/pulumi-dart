@@ -83,6 +83,35 @@ import 'orchestrator_instance_service_details_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_delegatednetwork_orchestratorinstanceservicedetails" "orchestratorInstanceServiceDetails" {
+///   api_server_endpoint = "https://testk8s.cloudapp.net"
+///   cluster_root_ca     = "ddsadsad344mfdsfdl"
+///   controller_details = {
+///     id = "/subscriptions/613192d7-503f-477a-9cfe-4efc3ee2bd60/resourceGroups/TestRG/providers/Microsoft.DelegatedNetwork/controller/testcontroller"
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   kind                     = "Kubernetes"
+///   location                 = "West US"
+///   orchestrator_app_id      = "546192d7-503f-477a-9cfe-4efc3ee2b6e1"
+///   orchestrator_tenant_id   = "da6192d7-503f-477a-9cfe-4efc3ee2b6c3"
+///   private_link_resource_id = "/subscriptions/613192d7-503f-477a-9cfe-4efc3ee2bd60/resourceGroups/TestRG/providers/Microsoft.Network/privateLinkServices/plresource1"
+///   resource_group_name      = "TestRG"
+///   resource_name            = "testk8s1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +122,8 @@ import 'orchestrator_instance_service_details_args.dart';
 /// import com.pulumi.azurenative.delegatednetwork.OrchestratorInstanceServiceDetailsArgs;
 /// import com.pulumi.azurenative.delegatednetwork.inputs.ControllerDetailsArgs;
 /// import com.pulumi.azurenative.delegatednetwork.inputs.OrchestratorIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -17,7 +17,7 @@ class GetFactoryDataPlaneAccessArgs {
   final pulumi.Input<String>? permissions;
   /// The name of the profile. Currently only the default is supported. The default value is DefaultProfile.
   final pulumi.Input<String>? profileName;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Start time for the token. If not specified the current time will be used.
   final pulumi.Input<String>? startTime;
@@ -28,7 +28,7 @@ class GetFactoryDataPlaneAccessArgs {
   /// [factoryName] The factory name.
   /// [permissions] The string with permissions for Data Plane access. Currently only 'r' is supported which grants read only access.
   /// [profileName] The name of the profile. Currently only the default is supported. The default value is DefaultProfile.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [startTime] Start time for the token. If not specified the current time will be used.
   const GetFactoryDataPlaneAccessArgs({
     this.accessResourcePath,
@@ -64,4 +64,3 @@ class GetFactoryDataPlaneAccessArgs {
     );
   }
 }
-

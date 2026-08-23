@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'encryption_entities_definition.dart';
 
-/// Encryption properties for databricks workspace
+/// Encryption properties for databricks workspace. Supported in both Serverless and Hybrid ComputeMode workspace.
 class WorkspacePropertiesEncryption {
   /// Encryption entities definition for the workspace.
   final pulumi.Input<EncryptionEntitiesDefinition> entities;
@@ -26,4 +26,3 @@ class WorkspacePropertiesEncryption {
     );
   }
 }
-

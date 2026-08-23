@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_web_static_site_user_provided_function_app_for_static_site_args_doc}
 class StaticSiteUserProvidedFunctionAppForStaticSiteArgs {
-  /// Name of the function app to register with the static site.
+  /// Name of the function app registered with the static site.
   final pulumi.Input<String>? functionAppName;
   /// The region of the function app registered with the static site
   final pulumi.Input<String>? functionAppRegion;
@@ -19,17 +19,17 @@ class StaticSiteUserProvidedFunctionAppForStaticSiteArgs {
   final pulumi.Input<String>? kind;
   /// Name of the static site.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [StaticSiteUserProvidedFunctionAppForStaticSiteArgs].
-  /// [functionAppName] Name of the function app to register with the static site.
+  /// [functionAppName] Name of the function app registered with the static site.
   /// [functionAppRegion] The region of the function app registered with the static site
   /// [functionAppResourceId] The resource id of the function app registered with the static site
   /// [isForced] Specify &lt;code&gt;true&lt;/code&gt; to force the update of the auth configuration on the function app even if an AzureStaticWebApps provider is already configured on the function app. The default is &lt;code&gt;false&lt;/code&gt;.
   /// [kind] Kind of resource.
   /// [name] Name of the static site.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const StaticSiteUserProvidedFunctionAppForStaticSiteArgs({
     this.functionAppName,
     this.functionAppRegion,
@@ -64,4 +64,3 @@ class StaticSiteUserProvidedFunctionAppForStaticSiteArgs {
     );
   }
 }
-

@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2023-05-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-05-01-preview.
 ///
-/// Other available API versions: 2024-11-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-11-30-preview, 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -169,6 +169,68 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_connectedcache_enterprisemcccachenodesoperation" "enterpriseMccCacheNodesOperation" {
+///   cache_node_resource_name = "fgduqdovidpemlnmhelomffuafdrbgaasqznvrdkbvspfzsnrhncdtqquhijhdpwyzwleukqldpceyxqhqlftqrr"
+///   customer_resource_name   = "nhdkvstdrrtsxxuz"
+///   location                 = "westus"
+///   properties = {
+///     additional_cache_node_properties = {
+///       bgp_configuration = {
+///         asn_to_ip_address_mapping = "fjbggfvumrn"
+///       }
+///       cache_node_properties_details_issues_list = ["ennbzfpuszgalzpawmwicaofqcwcj"]
+///       drive_configuration = [{
+///         "cacheNumber"  = 11
+///         "nginxMapping" = "cirlpkpuxg"
+///         "physicalPath" = "pcbkezoofhamkycot"
+///         "sizeInGb"     = 14
+///       }]
+///       optional_property1 = "ph"
+///       optional_property2 = "soqqgpgcbhb"
+///       optional_property3 = "fpnycrbagptsujiotnjfuhlm"
+///       optional_property4 = "gesqugrxvhxlxxyvatgrautxwlmxsf"
+///       optional_property5 = "zknjgzpaqtvdqjydd"
+///       proxy_url          = "ihkzxlzvpcywtzrogupqozkdud"
+///       proxy_url_configuration = {
+///         proxy_url = "hplstyg"
+///       }
+///     }
+///     cache_node = {
+///       cache_node_id                = "fmrjefyddfn"
+///       cache_node_name              = "qppvqxliajjfoalzjbgmxggr"
+///       cidr_csv                     = ["nlqlvrthafvvljuupcbcw"]
+///       cidr_selection_type          = 11
+///       customer_asn                 = 25
+///       customer_index               = "vafvezmelfgmjsrccjukrhppljvipg"
+///       customer_name                = "zsklcocjfjhkcpmzyefzkwamdzc"
+///       fully_qualified_resource_id  = "yeinlleavzbehelhsucb"
+///       ip_address                   = "gbfkdhloyphnpnhemwrcrxlk"
+///       is_enabled                   = true
+///       is_enterprise_managed        = true
+///       max_allowable_egress_in_mbps = 27
+///       should_migrate               = true
+///     }
+///     status_code    = "1"
+///     status_details = "lgljxmyyoakw"
+///     status_text    = "Success"
+///   }
+///   resource_group_name = "rgConnectedCache"
+///   tags = {
+///     "key259" = "qbkixjuyjkoj"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -182,8 +244,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.connectedcache.inputs.BgpConfigurationArgs;
 /// import com.pulumi.azurenative.connectedcache.inputs.ProxyUrlConfigurationArgs;
 /// import com.pulumi.azurenative.connectedcache.inputs.CacheNodeEntityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

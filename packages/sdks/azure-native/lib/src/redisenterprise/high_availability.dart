@@ -15,4 +15,3 @@ enum HighAvailability {
     throw ArgumentError('Unknown HighAvailability value: $value');
   }
 }
-

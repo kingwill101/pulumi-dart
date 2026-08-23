@@ -15,4 +15,3 @@ enum BackupPolicyStatus {
     throw ArgumentError('Unknown BackupPolicyStatus value: $value');
   }
 }
-

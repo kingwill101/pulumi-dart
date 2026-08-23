@@ -15,4 +15,3 @@ enum ElasticPoolLicenseType {
     throw ArgumentError('Unknown ElasticPoolLicenseType value: $value');
   }
 }
-

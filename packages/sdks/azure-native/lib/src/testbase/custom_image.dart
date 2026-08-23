@@ -63,6 +63,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_testbase_customimage" "customImage" {
+///   custom_image_name      = "image-2cfb2edc-13bc-4d54-8d6e-38b2a233b003"
+///   definition_name        = "contoso-image-def"
+///   resource_group_name    = "contoso-rg1"
+///   source                 = "VHD"
+///   test_base_account_name = "contoso-testBaseAccount1"
+///   version_name           = "1.0.0"
+///   vhd_id                 = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/VHDs/vhd-00ac3ccd-1503-4ee5-aa26-26569cfafe88"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +92,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.testbase.CustomImage;
 /// import com.pulumi.azurenative.testbase.CustomImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

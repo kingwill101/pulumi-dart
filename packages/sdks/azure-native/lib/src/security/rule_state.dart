@@ -1,8 +1,8 @@
 /// Possible states of the rule
 enum RuleState {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled"),
-  valueExpired("Expired");
+  enabled("Enabled"),
+  disabled("Disabled"),
+  expired("Expired");
 
   const RuleState(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum RuleState {
     throw ArgumentError('Unknown RuleState value: $value');
   }
 }
-

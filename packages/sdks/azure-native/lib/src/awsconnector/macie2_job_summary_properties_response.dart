@@ -74,4 +74,3 @@ class Macie2JobSummaryPropertiesResponse {
     );
   }
 }
-

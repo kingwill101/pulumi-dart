@@ -1,8 +1,8 @@
 /// The kind of web test this is, valid choices are ping, multistep and standard.
 enum WebTestKind {
-  valuePing("ping"),
-  valueMultistep("multistep"),
-  valueStandard("standard");
+  ping("ping"),
+  multistep("multistep"),
+  standard("standard");
 
   const WebTestKind(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum WebTestKind {
     throw ArgumentError('Unknown WebTestKind value: $value');
   }
 }
-

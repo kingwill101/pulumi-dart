@@ -17,4 +17,3 @@ enum FontSize {
     throw ArgumentError('Unknown FontSize value: $value');
   }
 }
-

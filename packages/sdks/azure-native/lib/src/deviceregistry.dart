@@ -162,6 +162,8 @@ export 'deviceregistry/outbound_endpoints.dart';
 export 'deviceregistry/outbound_endpoints_response.dart';
 export 'deviceregistry/policy.dart';
 export 'deviceregistry/policy_args.dart';
+export 'deviceregistry/policy_properties.dart';
+export 'deviceregistry/policy_properties_response.dart';
 export 'deviceregistry/schema.dart';
 export 'deviceregistry/schema_args.dart';
 export 'deviceregistry/schema_registry.dart';

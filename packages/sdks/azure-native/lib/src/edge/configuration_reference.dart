@@ -62,6 +62,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_edge_configurationreference" "configurationReference" {
+///   configuration_reference_name = "default"
+///   properties = {
+///     configuration_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgconfigurations/providers/Microsoft.Edge/configurations/aConfiguration"
+///   }
+///   resource_uri = "subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Edge/Sites/aSite"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +90,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.edge.ConfigurationReference;
 /// import com.pulumi.azurenative.edge.ConfigurationReferenceArgs;
 /// import com.pulumi.azurenative.edge.inputs.ConfigurationReferencePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

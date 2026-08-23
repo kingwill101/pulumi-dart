@@ -94,6 +94,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apicenter_environment" "environment" {
+///   description      = "The primary Azure API Management service for the European division of Contoso."
+///   environment_name = "public"
+///   kind             = "production"
+///   onboarding = {
+///     developer_portal_uri = ["https://developer.contoso.com"]
+///     instructions         = "Sign in or sign up in the specified developer portal to request API access. You must complete the internal privacy training for your account to be approved."
+///   }
+///   resource_group_name = "contoso-resources"
+///   server = {
+///     management_portal_uri = ["https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-resources/providers/Microsoft.ApiManagement/service/contoso"]
+///     type                  = "Azure API Management"
+///   }
+///   service_name   = "contoso"
+///   title          = "Contoso Europe Azure API Management"
+///   workspace_name = "default"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +133,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.apicenter.EnvironmentArgs;
 /// import com.pulumi.azurenative.apicenter.inputs.OnboardingArgs;
 /// import com.pulumi.azurenative.apicenter.inputs.EnvironmentServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

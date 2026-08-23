@@ -6,7 +6,7 @@ import 'throughput_pool_account_args.dart';
 ///
 /// Uses Azure REST API version 2024-12-01-preview.
 ///
-/// Other available API versions: 2023-11-15-preview, 2024-02-15-preview, 2024-05-15-preview, 2024-09-01-preview, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-11-15-preview, 2024-02-15-preview, 2024-05-15-preview, 2024-09-01-preview, 2025-05-01-preview, 2025-11-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -60,6 +60,25 @@ import 'throughput_pool_account_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cosmosdb_throughputpoolaccount" "throughputPoolAccount" {
+///   account_location             = "West US"
+///   account_resource_identifier  = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DocumentDB/resourceGroup/rg1/databaseAccounts/db1/"
+///   resource_group_name          = "rg1"
+///   throughput_pool_account_name = "db1"
+///   throughput_pool_name         = "tp1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +87,8 @@ import 'throughput_pool_account_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cosmosdb.ThroughputPoolAccount;
 /// import com.pulumi.azurenative.cosmosdb.ThroughputPoolAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

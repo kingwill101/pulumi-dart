@@ -69,6 +69,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_devopsconfiguration" "devOpsConfiguration" {
+///   properties = {
+///     authorization = {
+///       code = "00000000000000000000"
+///     }
+///     auto_discovery = "Enabled"
+///   }
+///   resource_group_name     = "myRg"
+///   security_connector_name = "mySecurityConnectorName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +101,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.security.DevOpsConfigurationArgs;
 /// import com.pulumi.azurenative.security.inputs.DevOpsConfigurationPropertiesArgs;
 /// import com.pulumi.azurenative.security.inputs.AuthorizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,6 +236,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_devopsconfiguration" "devOpsConfiguration" {
+///   properties = {
+///     authorization = {
+///       code = "00000000000000000000"
+///     }
+///     auto_discovery = "Disabled"
+///   }
+///   resource_group_name     = "myRg"
+///   security_connector_name = "mySecurityConnectorName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -224,8 +268,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.security.DevOpsConfigurationArgs;
 /// import com.pulumi.azurenative.security.inputs.DevOpsConfigurationPropertiesArgs;
 /// import com.pulumi.azurenative.security.inputs.AuthorizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -368,6 +412,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_devopsconfiguration" "devOpsConfiguration" {
+///   properties = {
+///     authorization = {
+///       code = "00000000000000000000"
+///     }
+///     auto_discovery           = "Disabled"
+///     top_level_inventory_list = ["org1", "org2"]
+///   }
+///   resource_group_name     = "myRg"
+///   security_connector_name = "mySecurityConnectorName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -378,8 +445,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.security.DevOpsConfigurationArgs;
 /// import com.pulumi.azurenative.security.inputs.DevOpsConfigurationPropertiesArgs;
 /// import com.pulumi.azurenative.security.inputs.AuthorizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -138,6 +138,46 @@ import 'scope_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_managednetwork_managednetwork" "managedNetwork" {
+///   location             = "eastus"
+///   managed_network_name = "myManagedNetwork"
+///   resource_group_name  = "myResourceGroup"
+///   scope = {
+///     management_groups = [{
+///       "id" = "/providers/Microsoft.Management/managementGroups/20000000-0001-0000-0000-000000000000"
+///       }, {
+///       "id" = "/providers/Microsoft.Management/managementGroups/20000000-0002-0000-0000-000000000000"
+///     }]
+///     subnets = [{
+///       "id" = "/subscriptions/subscriptionC/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetC/subnets/subnetA"
+///       }, {
+///       "id" = "/subscriptions/subscriptionC/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetC/subnets/subnetB"
+///     }]
+///     subscriptions = [{
+///       "id" = "subscriptionA"
+///       }, {
+///       "id" = "subscriptionB"
+///     }]
+///     virtual_networks = [{
+///       "id" = "/subscriptions/subscriptionC/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetA"
+///       }, {
+///       "id" = "/subscriptions/subscriptionC/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetB"
+///     }]
+///   }
+///   tags = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -147,8 +187,8 @@ import 'scope_response.dart';
 /// import com.pulumi.azurenative.managednetwork.ManagedNetwork;
 /// import com.pulumi.azurenative.managednetwork.ManagedNetworkArgs;
 /// import com.pulumi.azurenative.managednetwork.inputs.ScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

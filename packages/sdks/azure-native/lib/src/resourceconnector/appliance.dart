@@ -67,6 +67,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resourceconnector_appliance" "appliance" {
+///   distro = "AKSEdge"
+///   infrastructure_config = {
+///     provider = "VMWare"
+///   }
+///   location            = "West US"
+///   resource_group_name = "testresourcegroup"
+///   resource_name       = "appliance01"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +97,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.resourceconnector.Appliance;
 /// import com.pulumi.azurenative.resourceconnector.ApplianceArgs;
 /// import com.pulumi.azurenative.resourceconnector.inputs.AppliancePropertiesInfrastructureConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -9,7 +9,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-15-preview.
 ///
-/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -264,6 +264,103 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurearcdata_postgresinstance" "postgresInstance" {
+///   extended_location = {
+///     name = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.ExtendedLocation/customLocations/arclocation"
+///     type = "CustomLocation"
+///   }
+///   location               = "eastus"
+///   postgres_instance_name = "testpostgresInstance"
+///   properties = {
+///     admin = "admin"
+///     basic_login_information = {
+///       password = "********"
+///       username = "username"
+///     }
+///     data_controller_id = "dataControllerId"
+///     k8s_raw = {
+///       "apiVersion" = "apiVersion"
+///       "kind"       = "postgresql-12"
+///       "metadata" = {
+///         "creationTimestamp" = "2020-08-25T14:55:10Z"
+///         "generation"        = 1
+///         "name"              = "pg1"
+///         "namespace"         = "test"
+///         "resourceVersion"   = "527780"
+///         "selfLink"          = "/apis/arcdata.microsoft.com/v1alpha1/namespaces/test/postgresql-12s/pg1"
+///         "uid"               = "1111aaaa-ffff-ffff-ffff-99999aaaaaaa"
+///       }
+///       "spec" = {
+///         "backups" = {
+///           "deltaMinutes" = 3
+///           "fullMinutes"  = 10
+///           "tiers" = [{
+///             "retention" = {
+///               "maximums" = ["6", "512MB"]
+///               "minimums" = ["3"]
+///             }
+///             "storage" = {
+///               "volumeSize" = "1Gi"
+///             }
+///           }]
+///         }
+///         "engine" = {
+///           "extensions" = [{
+///             "name" = "citus"
+///           }]
+///         }
+///         "scale" = {
+///           "shards" = 3
+///         }
+///         "scheduling" = {
+///           "default" = {
+///             "resources" = {
+///               "requests" = {
+///                 "memory" = "256Mi"
+///               }
+///             }
+///           }
+///         }
+///         "service" = {
+///           "type" = "NodePort"
+///         }
+///         "storage" = {
+///           "data" = {
+///             "className" = "local-storage"
+///             "size"      = "5Gi"
+///           }
+///           "logs" = {
+///             "className" = "local-storage"
+///             "size"      = "5Gi"
+///           }
+///         }
+///       }
+///       "status" = {
+///         "externalEndpoint" = null
+///         "readyPods"        = "4/4"
+///         "state"            = "Ready"
+///       }
+///     }
+///   }
+///   resource_group_name = "testrg"
+///   sku = {
+///     dev  = true
+///     name = "default"
+///     tier = "Hyperscale"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -276,8 +373,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azurearcdata.inputs.PostgresInstancePropertiesArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.BasicLoginInformationArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.PostgresInstanceSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -319,17 +416,17 @@ import 'system_data_response.dart';
 ///                         Map.entry("backups", Map.ofEntries(
 ///                             Map.entry("deltaMinutes", 3),
 ///                             Map.entry("fullMinutes", 10),
-///                             Map.entry("tiers", Map.ofEntries(
+///                             Map.entry("tiers", Arrays.asList(Map.ofEntries(
 ///                                 Map.entry("retention", Map.ofEntries(
-///                                     Map.entry("maximums",
+///                                     Map.entry("maximums", Arrays.asList(
 ///                                         "6",
-///                                         "512MB"),
-///                                     Map.entry("minimums", "3")
+///                                         "512MB")),
+///                                     Map.entry("minimums", Arrays.asList("3"))
 ///                                 )),
 ///                                 Map.entry("storage", Map.of("volumeSize", "1Gi"))
-///                             ))
+///                             )))
 ///                         )),
-///                         Map.entry("engine", Map.of("extensions", Map.of("name", "citus"))),
+///                         Map.entry("engine", Map.of("extensions", Arrays.asList(Map.of("name", "citus")))),
 ///                         Map.entry("scale", Map.of("shards", 3)),
 ///                         Map.entry("scheduling", Map.of("default", Map.of("resources", Map.of("requests", Map.of("memory", "256Mi"))))),
 ///                         Map.entry("service", Map.of("type", "NodePort")),

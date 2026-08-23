@@ -66,6 +66,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cdn_edgeaction" "edgeAction" {
+///   edge_action_name    = "edgeAction1"
+///   location            = "global"
+///   resource_group_name = "testrg"
+///   sku = {
+///     name = "Standard"
+///     tier = "Standard"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +96,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cdn.EdgeAction;
 /// import com.pulumi.azurenative.cdn.EdgeActionArgs;
 /// import com.pulumi.azurenative.cdn.inputs.SkuTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

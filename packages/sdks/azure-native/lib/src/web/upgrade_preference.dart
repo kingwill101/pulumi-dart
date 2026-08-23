@@ -1,9 +1,9 @@
 /// Upgrade Preference
 enum UpgradePreference {
-  valueNone("None"),
-  valueEarly("Early"),
-  valueLate("Late"),
-  valueManual("Manual");
+  none("None"),
+  early("Early"),
+  late("Late"),
+  manual("Manual");
 
   const UpgradePreference(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum UpgradePreference {
     throw ArgumentError('Unknown UpgradePreference value: $value');
   }
 }
-

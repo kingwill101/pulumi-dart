@@ -32,4 +32,3 @@ class AS2AgreementContent {
     );
   }
 }
-

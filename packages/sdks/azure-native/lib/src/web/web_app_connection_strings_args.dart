@@ -14,14 +14,14 @@ class WebAppConnectionStringsArgs {
   final pulumi.Input<String> name;
   /// Connection strings.
   final pulumi.Input<Map<String, ConnStringValueTypePair>>? properties;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [WebAppConnectionStringsArgs].
   /// [kind] Kind of resource.
   /// [name] Name of the app.
   /// [properties] Connection strings.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const WebAppConnectionStringsArgs({
     this.kind,
     required this.name,
@@ -47,4 +47,3 @@ class WebAppConnectionStringsArgs {
     );
   }
 }
-

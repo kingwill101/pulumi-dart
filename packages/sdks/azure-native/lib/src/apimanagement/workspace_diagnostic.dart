@@ -1,14 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'llmdiagnostic_settings_response.dart';
 import 'pipeline_diagnostic_settings_response.dart';
 import 'sampling_settings_response.dart';
 import 'workspace_diagnostic_args.dart';
 
 /// Diagnostic details.
 ///
-/// Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
 ///
-/// Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -159,6 +158,58 @@ import 'workspace_diagnostic_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_workspacediagnostic" "workspaceDiagnostic" {
+///   always_log = "allErrors"
+///   backend = {
+///     request = {
+///       body = {
+///         bytes = 512
+///       }
+///       headers = ["Content-type"]
+///     }
+///     response = {
+///       body = {
+///         bytes = 512
+///       }
+///       headers = ["Content-type"]
+///     }
+///   }
+///   diagnostic_id = "applicationinsights"
+///   frontend = {
+///     request = {
+///       body = {
+///         bytes = 512
+///       }
+///       headers = ["Content-type"]
+///     }
+///     response = {
+///       body = {
+///         bytes = 512
+///       }
+///       headers = ["Content-type"]
+///     }
+///   }
+///   logger_id           = "/workspaces/wks1/loggers/azuremonitor"
+///   resource_group_name = "rg1"
+///   sampling = {
+///     percentage    = 50
+///     sampling_type = "fixed"
+///   }
+///   service_name = "apimService1"
+///   workspace_id = "wks1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -171,8 +222,8 @@ import 'workspace_diagnostic_args.dart';
 /// import com.pulumi.azurenative.apimanagement.inputs.HttpMessageDiagnosticArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.BodyDiagnosticSettingsArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.SamplingSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -315,7 +366,7 @@ import 'workspace_diagnostic_args.dart';
 ///     logger_id="/workspaces/wks1/loggers/azuremonitor",
 ///     resource_group_name="rg1",
 ///     sampling={
-///         "percentage": 50,
+///         "percentage": float(50),
 ///         "sampling_type": azure_native.apimanagement.SamplingType.FIXED,
 ///     },
 ///     service_name="apimService1",
@@ -383,8 +434,6 @@ class WorkspaceDiagnostic extends pulumi.CustomResource {
   late final pulumi.Output<PipelineDiagnosticSettingsResponse?> frontend;
   /// Sets correlation protocol to use for Application Insights diagnostics.
   late final pulumi.Output<String?> httpCorrelationProtocol;
-  /// Large Language Models diagnostic settings
-  late final pulumi.Output<LLMDiagnosticSettingsResponse?> largeLanguageModel;
   /// Log the ClientIP. Default is false.
   late final pulumi.Output<bool?> logClientIp;
   /// Resource Id of a target logger.
@@ -421,7 +470,6 @@ class WorkspaceDiagnostic extends pulumi.CustomResource {
     backend = registerOutput<PipelineDiagnosticSettingsResponse?>('backend', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineDiagnosticSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     frontend = registerOutput<PipelineDiagnosticSettingsResponse?>('frontend', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineDiagnosticSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpCorrelationProtocol = registerOutput<String?>('httpCorrelationProtocol');
-    largeLanguageModel = registerOutput<LLMDiagnosticSettingsResponse?>('largeLanguageModel', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LLMDiagnosticSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logClientIp = registerOutput<bool?>('logClientIp');
     loggerId = registerOutput<String>('loggerId');
     metrics = registerOutput<bool?>('metrics');

@@ -10,7 +10,7 @@ class FunctionsScaleAndConcurrency {
   final pulumi.Input<List<FunctionsAlwaysReadyConfig>>? alwaysReady;
   /// Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
   final pulumi.Input<int>? instanceMemoryMB;
-  /// The maximum number of instances for the function app.
+  /// The maximum number of on demand instances per function group.
   final pulumi.Input<int>? maximumInstanceCount;
   /// Scale and concurrency settings for the function app triggers.
   final pulumi.Input<FunctionsScaleAndConcurrencyTriggers>? triggers;
@@ -18,7 +18,7 @@ class FunctionsScaleAndConcurrency {
   /// Creates a new [FunctionsScaleAndConcurrency].
   /// [alwaysReady] 'Always Ready' configuration for the function app.
   /// [instanceMemoryMB] Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-  /// [maximumInstanceCount] The maximum number of instances for the function app.
+  /// [maximumInstanceCount] The maximum number of on demand instances per function group.
   /// [triggers] Scale and concurrency settings for the function app triggers.
   const FunctionsScaleAndConcurrency({
     this.alwaysReady,
@@ -45,4 +45,3 @@ class FunctionsScaleAndConcurrency {
     );
   }
 }
-

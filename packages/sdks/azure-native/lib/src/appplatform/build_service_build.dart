@@ -117,6 +117,44 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_buildservicebuild" "buildServiceBuild" {
+///   build_name         = "mybuild"
+///   build_service_name = "default"
+///   properties = {
+///     agent_pool = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/buildServices/default/agentPools/default"
+///     apms = [{
+///       "resourceId" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/apms/myappinsights"
+///     }]
+///     builder = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/buildServices/default/builders/default"
+///     certificates = [{
+///       "resourceId" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/certificates/mycert1"
+///       }, {
+///       "resourceId" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/certificates/mycert2"
+///     }]
+///     env = {
+///       "environmentVariable" = "test"
+///     }
+///     relative_path = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-20210601-3ed9f4a2-986b-4bbd-b833-a42dccb2f777"
+///     resource_requests = {
+///       cpu    = "1"
+///       memory = "2Gi"
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +165,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.BuildServiceBuildArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.BuildPropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.BuildResourceRequestsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -11,13 +11,13 @@ class GetPython3PackageArgs {
   final pulumi.Input<String> automationAccountName;
   /// The python package name.
   final pulumi.Input<String> packageName;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetPython3PackageArgs].
   /// [automationAccountName] The name of the automation account.
   /// [packageName] The python package name.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetPython3PackageArgs({
     required this.automationAccountName,
     required this.packageName,
@@ -40,4 +40,3 @@ class GetPython3PackageArgs {
     );
   }
 }
-

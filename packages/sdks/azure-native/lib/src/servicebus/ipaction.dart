@@ -15,4 +15,3 @@ enum IPAction {
     throw ArgumentError('Unknown IPAction value: $value');
   }
 }
-

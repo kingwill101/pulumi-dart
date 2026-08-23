@@ -25,4 +25,3 @@ class L2ConnectionsPropertiesResponseGroundStationPartnerRouter {
     );
   }
 }
-

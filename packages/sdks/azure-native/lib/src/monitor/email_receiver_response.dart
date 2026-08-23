@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EmailReceiverResponse {
   /// The email address of this receiver.
   final pulumi.Input<String> emailAddress;
-  /// The name of the email receiver. Names must be unique across all receivers within a tenant action group.
+  /// The name of the email receiver. Names must be unique across all receivers within an action group.
   final pulumi.Input<String> name;
   /// The receiver status of the e-mail.
   final pulumi.Input<String> status;
@@ -15,7 +15,7 @@ class EmailReceiverResponse {
 
   /// Creates a new [EmailReceiverResponse].
   /// [emailAddress] The email address of this receiver.
-  /// [name] The name of the email receiver. Names must be unique across all receivers within a tenant action group.
+  /// [name] The name of the email receiver. Names must be unique across all receivers within an action group.
   /// [status] The receiver status of the e-mail.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
   const EmailReceiverResponse({
@@ -43,4 +43,3 @@ class EmailReceiverResponse {
     );
   }
 }
-

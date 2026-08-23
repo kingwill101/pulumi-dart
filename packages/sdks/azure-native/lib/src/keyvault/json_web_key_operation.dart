@@ -21,4 +21,3 @@ enum JsonWebKeyOperation {
     throw ArgumentError('Unknown JsonWebKeyOperation value: $value');
   }
 }
-

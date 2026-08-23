@@ -14,4 +14,3 @@ enum TokenCertificateName {
     throw ArgumentError('Unknown TokenCertificateName value: $value');
   }
 }
-

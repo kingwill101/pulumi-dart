@@ -99,4 +99,3 @@ class AzureDataLakeGen2DatastoreResponse {
     );
   }
 }
-

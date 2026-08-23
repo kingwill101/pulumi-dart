@@ -1,7 +1,7 @@
 /// [Required] Defines supported metric goals for hyperparameter tuning
 enum Goal {
-  valueMinimize("Minimize"),
-  valueMaximize("Maximize");
+  minimize("Minimize"),
+  maximize("Maximize");
 
   const Goal(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum Goal {
     throw ArgumentError('Unknown Goal value: $value');
   }
 }
-

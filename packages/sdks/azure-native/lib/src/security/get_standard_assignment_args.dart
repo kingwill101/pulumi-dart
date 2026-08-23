@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_security_get_standard_assignment_args_doc}
 class GetStandardAssignmentArgs {
-  /// The identifier of the resource.
+  /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceId;
   /// The standard assignments assignment key - unique key for the standard assignment
   final pulumi.Input<String> standardAssignmentName;
 
   /// Creates a new [GetStandardAssignmentArgs].
-  /// [resourceId] The identifier of the resource.
+  /// [resourceId] The fully qualified Azure Resource manager identifier of the resource.
   /// [standardAssignmentName] The standard assignments assignment key - unique key for the standard assignment
   const GetStandardAssignmentArgs({
     required this.resourceId,
@@ -34,4 +34,3 @@ class GetStandardAssignmentArgs {
     );
   }
 }
-

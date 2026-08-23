@@ -115,6 +115,43 @@ import 'user_defined_resources_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_iotsecuritysolution" "iotSecuritySolution" {
+///   disabled_data_sources = []
+///   display_name          = "Solution Default"
+///   export                = []
+///   iot_hubs              = ["/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/myRg/providers/Microsoft.Devices/IotHubs/FirstIotHub"]
+///   location              = "East Us"
+///   recommendations_configuration {
+///     recommendation_type = "IoT_OpenPorts"
+///     status              = "Disabled"
+///   }
+///   recommendations_configuration {
+///     recommendation_type = "IoT_SharedCredentials"
+///     status              = "Disabled"
+///   }
+///   resource_group_name        = "MyGroup"
+///   solution_name              = "default"
+///   status                     = "Enabled"
+///   tags                       = {}
+///   unmasked_ip_logging_status = "Enabled"
+///   user_defined_resources = {
+///     query               = "where type != \"microsoft.devices/iothubs\" | where name contains \"iot\""
+///     query_subscriptions = ["075423e9-7d33-4166-8bdf-3920b04e3735"]
+///   }
+///   workspace = "/subscriptions/c4930e90-cd72-4aa5-93e9-2d081d129569/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -125,8 +162,8 @@ import 'user_defined_resources_properties_response.dart';
 /// import com.pulumi.azurenative.security.IotSecuritySolutionArgs;
 /// import com.pulumi.azurenative.security.inputs.RecommendationConfigurationPropertiesArgs;
 /// import com.pulumi.azurenative.security.inputs.UserDefinedResourcesPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -292,9 +329,9 @@ class IotSecuritySolution extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> export;
   /// IoT Hub resource IDs
   late final pulumi.Output<List<String>> iotHubs;
-  /// The resource location.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
-  /// Resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// List of the configuration status for each recommendation type.
   late final pulumi.Output<List<Map<String, dynamic>>?> recommendationsConfiguration;
@@ -302,9 +339,9 @@ class IotSecuritySolution extends pulumi.CustomResource {
   late final pulumi.Output<String?> status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-  /// Resource tags
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// Unmasked IP address logging status
   late final pulumi.Output<String?> unmaskedIpLoggingStatus;

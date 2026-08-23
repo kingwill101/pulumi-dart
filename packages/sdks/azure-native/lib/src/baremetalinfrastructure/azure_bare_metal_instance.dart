@@ -121,6 +121,49 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_baremetalinfrastructure_azurebaremetalinstance" "azureBareMetalInstance" {
+///   azure_bare_metal_instance_id   = "23415635-4d7e-41dc-9598-8194f22c24e1"
+///   azure_bare_metal_instance_name = "myBMIInstance"
+///   hardware_profile = {
+///     azure_bare_metal_instance_size = "S72"
+///     hardware_type                  = "Cisco_UCS"
+///   }
+///   hw_revision = "Rev 3"
+///   location    = "westus"
+///   network_profile = {
+///     circuit_id = "/subscriptions/f0f4887f-d13c-4943-a8ba-d7da28d2a3fd/resourceGroups/myResourceGroup/providers/Microsoft.Network/expressRouteCircuit"
+///     network_interfaces = [{
+///       "ipAddress" = "100.100.100.100"
+///     }]
+///   }
+///   os_profile = {
+///     computer_name  = "myComputerName"
+///     os_type        = "SUSE"
+///     ssh_public_key = "{ssh-rsa public key}"
+///     version        = "12 SP1"
+///   }
+///   power_state               = "started"
+///   proximity_placement_group = "/subscriptions/f0f4887f-d13c-4943-a8ba-d7da28d2a3fd/resourceGroups/myResourceGroup/providers/Microsoft.Compute/proximityPlacementGroups/myplacementgroup"
+///   resource_group_name       = "myResourceGroup"
+///   storage_profile = {
+///     nfs_ip_address = "200.200.200.200"
+///   }
+///   tags = {
+///     "testkey" = "testvalue"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -133,8 +176,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.baremetalinfrastructure.inputs.NetworkProfileArgs;
 /// import com.pulumi.azurenative.baremetalinfrastructure.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.baremetalinfrastructure.inputs.StorageProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

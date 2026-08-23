@@ -5,7 +5,7 @@ import 'system_data_response.dart';
 
 /// Uses Azure REST API version 2025-04-01-preview.
 ///
-/// Other available API versions: 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-10-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-15-preview, 2026-03-15-preview, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -70,6 +70,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_outboundrule" "outboundRule" {
+///   managed_network_name = "default"
+///   properties = {
+///     "category"    = "UserDefined"
+///     "destination" = "destination_endpoint"
+///     "status"      = "Active"
+///     "type"        = "FQDN"
+///   }
+///   resource_group_name = "test-rg"
+///   rule_name           = "rule_name_1"
+///   workspace_name      = "aml-workspace-name"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +102,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.OutboundRule;
 /// import com.pulumi.azurenative.machinelearningservices.OutboundRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

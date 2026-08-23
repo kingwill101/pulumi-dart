@@ -17,4 +17,3 @@ enum BrokerMemoryProfile {
     throw ArgumentError('Unknown BrokerMemoryProfile value: $value');
   }
 }
-

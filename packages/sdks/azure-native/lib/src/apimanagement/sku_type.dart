@@ -5,7 +5,9 @@ enum SkuType {
   valuePremium("Premium"),
   valueBasic("Basic"),
   valueConsumption("Consumption"),
-  valueIsolated("Isolated");
+  valueIsolated("Isolated"),
+  valueBasicV2("BasicV2"),
+  valueStandardV2("StandardV2");
 
   const SkuType(this.wireValue);
   final String wireValue;
@@ -19,4 +21,3 @@ enum SkuType {
     throw ArgumentError('Unknown SkuType value: $value');
   }
 }
-

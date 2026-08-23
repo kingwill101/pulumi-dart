@@ -1,8 +1,8 @@
 /// The transport protocol to use in the Thrift layer.
 enum SparkThriftTransportProtocol {
-  valueBinary("Binary"),
-  valueSASL("SASL"),
-  valueHTTP("HTTP ");
+  binary("Binary"),
+  sASL("SASL"),
+  hTTP("HTTP ");
 
   const SparkThriftTransportProtocol(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum SparkThriftTransportProtocol {
     throw ArgumentError('Unknown SparkThriftTransportProtocol value: $value');
   }
 }
-

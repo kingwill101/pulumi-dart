@@ -6,7 +6,7 @@ import 'storage_task_assignment_properties_response.dart';
 ///
 /// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 ///
-/// Other available API versions: 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -109,6 +109,43 @@ import 'storage_task_assignment_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_storagetaskassignment" "storageTaskAssignment" {
+///   account_name = "sto4445"
+///   properties = {
+///     description = "My Storage task assignment"
+///     enabled     = true
+///     execution_context = {
+///       target = {
+///         exclude_prefix = []
+///         prefix         = ["prefix1", "prefix2"]
+///       }
+///       trigger = {
+///         parameters = {
+///           start_on = "2022-11-15T21:52:47.8145095Z"
+///         }
+///         type = "RunOnce"
+///       }
+///     }
+///     report = {
+///       prefix = "container1"
+///     }
+///     task_id = "/subscriptions/1f31ba14-ce16-4281-b9b4-3e78da6e1616/resourceGroups/res4228/providers/Microsoft.StorageActions/storageTasks/mytask1"
+///   }
+///   resource_group_name          = "res4228"
+///   storage_task_assignment_name = "myassignment1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +160,8 @@ import 'storage_task_assignment_properties_response.dart';
 /// import com.pulumi.azurenative.storage.inputs.ExecutionTriggerArgs;
 /// import com.pulumi.azurenative.storage.inputs.TriggerParametersArgs;
 /// import com.pulumi.azurenative.storage.inputs.StorageTaskAssignmentReportArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -349,6 +386,39 @@ import 'storage_task_assignment_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_storagetaskassignment" "storageTaskAssignment" {
+///   account_name = "sto4445"
+///   properties = {
+///     description = "My Storage task assignment"
+///     enabled     = true
+///     execution_context = {
+///       trigger = {
+///         parameters = {
+///           start_on = "2022-11-15T21:52:47.8145095Z"
+///         }
+///         type = "RunOnce"
+///       }
+///     }
+///     report = {
+///       prefix = "container1"
+///     }
+///     task_id = "/subscriptions/1f31ba14-ce16-4281-b9b4-3e78da6e1616/resourceGroups/res4228/providers/Microsoft.StorageActions/storageTasks/mytask1"
+///   }
+///   resource_group_name          = "res4228"
+///   storage_task_assignment_name = "myassignment1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -362,8 +432,8 @@ import 'storage_task_assignment_properties_response.dart';
 /// import com.pulumi.azurenative.storage.inputs.ExecutionTriggerArgs;
 /// import com.pulumi.azurenative.storage.inputs.TriggerParametersArgs;
 /// import com.pulumi.azurenative.storage.inputs.StorageTaskAssignmentReportArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

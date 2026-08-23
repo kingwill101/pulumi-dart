@@ -64,6 +64,27 @@ import 'private_link_service_connection_state_property_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbformariadb_privateendpointconnection" "privateEndpointConnection" {
+///   private_endpoint_connection_name = "private-endpoint-connection-name"
+///   private_link_service_connection_state = {
+///     description = "Approved by johndoe@contoso.com"
+///     status      = "Approved"
+///   }
+///   resource_group_name = "Default"
+///   server_name         = "test-svr"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +94,8 @@ import 'private_link_service_connection_state_property_response.dart';
 /// import com.pulumi.azurenative.dbformariadb.PrivateEndpointConnection;
 /// import com.pulumi.azurenative.dbformariadb.PrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.dbformariadb.inputs.PrivateLinkServiceConnectionStatePropertyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

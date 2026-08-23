@@ -36,7 +36,10 @@ import 'system_data_response.dart';
 ///                     BootstrapClusterCreatorAdminPermissions = true,
 ///                 },
 ///                 Arn = "hcepxlffwylmwulxcktedclqczlia",
-///                 CertificateAuthority = null,
+///                 CertificateAuthority = new AzureNative.AwsConnector.Inputs.CertificateArgs
+///                 {
+///                     Data = "tlchvarrjfhilsdtsgqshctlli",
+///                 },
 ///                 ClientRequestToken = "zatyvyitnzgzpclfoxmzocvpc",
 ///                 ConnectorConfig = new AzureNative.AwsConnector.Inputs.ConnectorConfigResponseArgs
 ///                 {
@@ -127,6 +130,13 @@ import 'system_data_response.dart';
 ///                 PlatformVersion = "ezmalzlqyiuhsxxdribckieg",
 ///                 ResourcesVpcConfig = new AzureNative.AwsConnector.Inputs.VpcConfigResponseArgs
 ///                 {
+///                     ClusterSecurityGroupId = "bkhbpbwyholvjxqzgxngfqvfim",
+///                     EndpointPrivateAccess = true,
+///                     EndpointPublicAccess = true,
+///                     PublicAccessCidrs = new[]
+///                     {
+///                         "wjznm",
+///                     },
 ///                     SecurityGroupIds = new[]
 ///                     {
 ///                         "ljodkq",
@@ -135,6 +145,7 @@ import 'system_data_response.dart';
 ///                     {
 ///                         "pmazpgqowrfoi",
 ///                     },
+///                     VpcId = "eoosrmen",
 ///                 },
 ///                 RoleArn = "uvceqehkmdtkxgakuckm",
 ///                 Status = new AzureNative.AwsConnector.Inputs.ClusterStatusEnumValueArgs
@@ -185,9 +196,11 @@ import 'system_data_response.dart';
 /// 						},
 /// 						BootstrapClusterCreatorAdminPermissions: pulumi.Bool(true),
 /// 					},
-/// 					Arn:                  pulumi.String("hcepxlffwylmwulxcktedclqczlia"),
-/// 					CertificateAuthority: &awsconnector.CertificateArgs{},
-/// 					ClientRequestToken:   pulumi.String("zatyvyitnzgzpclfoxmzocvpc"),
+/// 					Arn: pulumi.String("hcepxlffwylmwulxcktedclqczlia"),
+/// 					CertificateAuthority: &awsconnector.CertificateArgs{
+/// 						Data: pulumi.String("tlchvarrjfhilsdtsgqshctlli"),
+/// 					},
+/// 					ClientRequestToken: pulumi.String("zatyvyitnzgzpclfoxmzocvpc"),
 /// 					ConnectorConfig: &awsconnector.ConnectorConfigResponseArgs{
 /// 						ActivationCode:   pulumi.String("pay"),
 /// 						ActivationExpiry: pulumi.String("2024-10-08T03:50:52.459Z"),
@@ -255,12 +268,19 @@ import 'system_data_response.dart';
 /// 					},
 /// 					PlatformVersion: pulumi.String("ezmalzlqyiuhsxxdribckieg"),
 /// 					ResourcesVpcConfig: &awsconnector.VpcConfigResponseArgs{
+/// 						ClusterSecurityGroupId: pulumi.String("bkhbpbwyholvjxqzgxngfqvfim"),
+/// 						EndpointPrivateAccess:  pulumi.Bool(true),
+/// 						EndpointPublicAccess:   pulumi.Bool(true),
+/// 						PublicAccessCidrs: pulumi.StringArray{
+/// 							pulumi.String("wjznm"),
+/// 						},
 /// 						SecurityGroupIds: pulumi.StringArray{
 /// 							pulumi.String("ljodkq"),
 /// 						},
 /// 						SubnetIds: pulumi.StringArray{
 /// 							pulumi.String("pmazpgqowrfoi"),
 /// 						},
+/// 						VpcId: pulumi.String("eoosrmen"),
 /// 					},
 /// 					RoleArn: pulumi.String("uvceqehkmdtkxgakuckm"),
 /// 					Status: &awsconnector.ClusterStatusEnumValueArgs{
@@ -290,6 +310,114 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ekscluster" "eksCluster" {
+///   properties = {
+///     arn            = "xhoylvamhuqnvruh"
+///     aws_account_id = "sebsvgbgzb"
+///     aws_properties = {
+///       access_config = {
+///         authentication_mode = {
+///           value = "API"
+///         }
+///         bootstrap_cluster_creator_admin_permissions = true
+///       }
+///       arn = "hcepxlffwylmwulxcktedclqczlia"
+///       certificate_authority = {
+///         data = "tlchvarrjfhilsdtsgqshctlli"
+///       }
+///       client_request_token = "zatyvyitnzgzpclfoxmzocvpc"
+///       connector_config = {
+///         activation_code   = "pay"
+///         activation_expiry = "2024-10-08T03:50:52.459Z"
+///         activation_id     = "vmvmutvfuygzczgtsutkls"
+///         provider          = "ngrakrrq"
+///         role_arn          = "jcu"
+///       }
+///       created_at = "2024-10-08T03:50:52.460Z"
+///       encryption_config = [{
+///         "provider" = {
+///           "keyArn" = "ynvyktdadcoepkg"
+///         }
+///         "resources" = ["luiywwdjzfsrozikidayeump"]
+///       }]
+///       endpoint = "bvdvtunxiggcpmncdeflirifck"
+///       health = {
+///         issues = [{
+///           "code" = {
+///             "value" = "AccessDenied"
+///           }
+///           "message"     = "mwtvogjihbqys"
+///           "resourceIds" = ["gnfkewljeibgooftzbraahnxysx"]
+///         }]
+///       }
+///       id = "zmnyjrmqynglvrhpkkqkpazfyv"
+///       identity = {
+///         oidc = {
+///           issuer = "otiqmbvjucermteuonkxgdftf"
+///         }
+///       }
+///       kubernetes_network_config = {
+///         ip_family = {
+///           value = "ipv4"
+///         }
+///         service_ipv4_cidr = "llpoqidqkuhvzzwbkiynhrucvgglk"
+///         service_ipv6_cidr = "nfdslge"
+///       }
+///       logging = {
+///         cluster_logging = [{
+///           "enabled" = true
+///           "types"   = ["api"]
+///         }]
+///       }
+///       name = "fjvxhqvmvbshnltkuozc"
+///       outpost_config = {
+///         control_plane_instance_type = "dbqfhwaxdzegqxqopkhaevcs"
+///         control_plane_placement = {
+///           group_name = "qrpyvhb"
+///         }
+///         outpost_arns = ["lkvzvf"]
+///       }
+///       platform_version = "ezmalzlqyiuhsxxdribckieg"
+///       resources_vpc_config = {
+///         cluster_security_group_id = "bkhbpbwyholvjxqzgxngfqvfim"
+///         endpoint_private_access   = true
+///         endpoint_public_access    = true
+///         public_access_cidrs       = ["wjznm"]
+///         security_group_ids        = ["ljodkq"]
+///         subnet_ids                = ["pmazpgqowrfoi"]
+///         vpc_id                    = "eoosrmen"
+///       }
+///       role_arn = "uvceqehkmdtkxgakuckm"
+///       status = {
+///         value = "ACTIVE"
+///       }
+///       tags = {
+///         "key783" = "hullzzbjeblerbopmncvydtkpcd"
+///       }
+///       version = "ngoffoetqqgv"
+///     }
+///     aws_region        = "urhi"
+///     aws_source_schema = "gkfmtslfbglu"
+///     aws_tags = {
+///       "key7789" = "hxv"
+///     }
+///     public_cloud_connectors_resource_id = "uadwidkemgzwde"
+///     public_cloud_resource_name          = "kqeiozkswbnhscn"
+///   }
+///   resource_uri = "vutdhhavszx"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -314,8 +442,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.ControlPlanePlacementResponseArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.VpcConfigResponseArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ClusterStatusEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -340,6 +468,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .arn("hcepxlffwylmwulxcktedclqczlia")
 ///                     .certificateAuthority(CertificateArgs.builder()
+///                         .data("tlchvarrjfhilsdtsgqshctlli")
 ///                         .build())
 ///                     .clientRequestToken("zatyvyitnzgzpclfoxmzocvpc")
 ///                     .connectorConfig(ConnectorConfigResponseArgs.builder()
@@ -395,8 +524,13 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .platformVersion("ezmalzlqyiuhsxxdribckieg")
 ///                     .resourcesVpcConfig(VpcConfigResponseArgs.builder()
+///                         .clusterSecurityGroupId("bkhbpbwyholvjxqzgxngfqvfim")
+///                         .endpointPrivateAccess(true)
+///                         .endpointPublicAccess(true)
+///                         .publicAccessCidrs("wjznm")
 ///                         .securityGroupIds("ljodkq")
 ///                         .subnetIds("pmazpgqowrfoi")
+///                         .vpcId("eoosrmen")
 ///                         .build())
 ///                     .roleArn("uvceqehkmdtkxgakuckm")
 ///                     .status(ClusterStatusEnumValueArgs.builder()
@@ -435,7 +569,9 @@ import 'system_data_response.dart';
 ///                 bootstrapClusterCreatorAdminPermissions: true,
 ///             },
 ///             arn: "hcepxlffwylmwulxcktedclqczlia",
-///             certificateAuthority: {},
+///             certificateAuthority: {
+///                 data: "tlchvarrjfhilsdtsgqshctlli",
+///             },
 ///             clientRequestToken: "zatyvyitnzgzpclfoxmzocvpc",
 ///             connectorConfig: {
 ///                 activationCode: "pay",
@@ -490,8 +626,13 @@ import 'system_data_response.dart';
 ///             },
 ///             platformVersion: "ezmalzlqyiuhsxxdribckieg",
 ///             resourcesVpcConfig: {
+///                 clusterSecurityGroupId: "bkhbpbwyholvjxqzgxngfqvfim",
+///                 endpointPrivateAccess: true,
+///                 endpointPublicAccess: true,
+///                 publicAccessCidrs: ["wjznm"],
 ///                 securityGroupIds: ["ljodkq"],
 ///                 subnetIds: ["pmazpgqowrfoi"],
+///                 vpcId: "eoosrmen",
 ///             },
 ///             roleArn: "uvceqehkmdtkxgakuckm",
 ///             status: {
@@ -531,7 +672,9 @@ import 'system_data_response.dart';
 ///                 "bootstrap_cluster_creator_admin_permissions": True,
 ///             },
 ///             "arn": "hcepxlffwylmwulxcktedclqczlia",
-///             "certificate_authority": {},
+///             "certificate_authority": {
+///                 "data": "tlchvarrjfhilsdtsgqshctlli",
+///             },
 ///             "client_request_token": "zatyvyitnzgzpclfoxmzocvpc",
 ///             "connector_config": {
 ///                 "activation_code": "pay",
@@ -586,8 +729,13 @@ import 'system_data_response.dart';
 ///             },
 ///             "platform_version": "ezmalzlqyiuhsxxdribckieg",
 ///             "resources_vpc_config": {
+///                 "cluster_security_group_id": "bkhbpbwyholvjxqzgxngfqvfim",
+///                 "endpoint_private_access": True,
+///                 "endpoint_public_access": True,
+///                 "public_access_cidrs": ["wjznm"],
 ///                 "security_group_ids": ["ljodkq"],
 ///                 "subnet_ids": ["pmazpgqowrfoi"],
+///                 "vpc_id": "eoosrmen",
 ///             },
 ///             "role_arn": "uvceqehkmdtkxgakuckm",
 ///             "status": {
@@ -624,7 +772,8 @@ import 'system_data_response.dart';
 ///               value: API
 ///             bootstrapClusterCreatorAdminPermissions: true
 ///           arn: hcepxlffwylmwulxcktedclqczlia
-///           certificateAuthority: {}
+///           certificateAuthority:
+///             data: tlchvarrjfhilsdtsgqshctlli
 ///           clientRequestToken: zatyvyitnzgzpclfoxmzocvpc
 ///           connectorConfig:
 ///             activationCode: pay
@@ -669,10 +818,16 @@ import 'system_data_response.dart';
 ///               - lkvzvf
 ///           platformVersion: ezmalzlqyiuhsxxdribckieg
 ///           resourcesVpcConfig:
+///             clusterSecurityGroupId: bkhbpbwyholvjxqzgxngfqvfim
+///             endpointPrivateAccess: true
+///             endpointPublicAccess: true
+///             publicAccessCidrs:
+///               - wjznm
 ///             securityGroupIds:
 ///               - ljodkq
 ///             subnetIds:
 ///               - pmazpgqowrfoi
+///             vpcId: eoosrmen
 ///           roleArn: uvceqehkmdtkxgakuckm
 ///           status:
 ///             value: ACTIVE

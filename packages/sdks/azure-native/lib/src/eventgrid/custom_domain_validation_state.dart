@@ -16,4 +16,3 @@ enum CustomDomainValidationState {
     throw ArgumentError('Unknown CustomDomainValidationState value: $value');
   }
 }
-

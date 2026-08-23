@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeploymentStacksWhatIfResultsAtManagementGroupArgs {
   /// Name of the deployment stack what-if result.
   final pulumi.Input<String> deploymentStacksWhatIfResultName;
-  /// The name of the management group. The name is case insensitive.
+  /// The management group ID.
   final pulumi.Input<String> managementGroupId;
 
   /// Creates a new [GetDeploymentStacksWhatIfResultsAtManagementGroupArgs].
   /// [deploymentStacksWhatIfResultName] Name of the deployment stack what-if result.
-  /// [managementGroupId] The name of the management group. The name is case insensitive.
+  /// [managementGroupId] The management group ID.
   const GetDeploymentStacksWhatIfResultsAtManagementGroupArgs({
     required this.deploymentStacksWhatIfResultName,
     required this.managementGroupId,
@@ -34,4 +34,3 @@ class GetDeploymentStacksWhatIfResultsAtManagementGroupArgs {
     );
   }
 }
-

@@ -1,6 +1,6 @@
 enum NGroupUpdateMode {
-  valueManual("Manual"),
-  valueRolling("Rolling");
+  manual("Manual"),
+  rolling("Rolling");
 
   const NGroupUpdateMode(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum NGroupUpdateMode {
     throw ArgumentError('Unknown NGroupUpdateMode value: $value');
   }
 }
-

@@ -221,6 +221,77 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_customizableconnectordefinition" "customizableConnectorDefinition" {
+///   connector_ui_config = {
+///     availability = {
+///       is_preview = false
+///       status     = 1
+///     }
+///     connectivity_criteria = [{
+///       "type"  = "IsConnectedQuery"
+///       "value" = ["GitHubAuditLogPolling_CL \n | summarize LastLogReceived = max(TimeGenerated)\n | project IsConnected = LastLogReceived > ago(30d)"]
+///     }]
+///     data_types = [{
+///       "lastDataReceivedQuery" = "GitHubAuditLogPolling_CL \n            | summarize Time = max(TimeGenerated)\n            | where isnotempty(Time)"
+///       "name"                  = "GitHubAuditLogPolling_CL"
+///     }]
+///     description_markdown = "The GitHub audit log connector provides the capability to ingest GitHub logs into Azure Sentinel. By connecting GitHub audit logs into Azure Sentinel, you can view this data in workbooks, use it to create custom alerts, and improve your investigation process."
+///     graph_queries = [{
+///       "baseQuery"  = "GitHubAuditLogPolling_CL"
+///       "legend"     = "GitHub audit log events"
+///       "metricName" = "Total events received"
+///     }]
+///     instruction_steps = [{
+///       "description" = "Enable GitHub audit Logs. \n Follow [this](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) to create or find your personal key"
+///       "instructions" = [{
+///         "parameters" = {
+///           "clientIdLabel"         = "Client ID"
+///           "clientSecretLabel"     = "Client Secret"
+///           "connectButtonLabel"    = "Connect"
+///           "disconnectButtonLabel" = "Disconnect"
+///         }
+///         "type" = "OAuthForm"
+///       }]
+///       "title" = "Connect GitHub Enterprise Audit Log to Azure Sentinel"
+///     }]
+///     permissions = {
+///       customs = [{
+///         "description" = "You need access to GitHub personal token, the key should have 'admin:org' scope"
+///         "name"        = "GitHub API personal token Key"
+///       }]
+///       resource_provider = [{
+///         "permissionsDisplayText" = "read and write permissions are required."
+///         "provider"               = "Microsoft.OperationalInsights/workspaces"
+///         "providerDisplayName"    = "Workspace"
+///         "requiredPermissions" = {
+///           "action" = false
+///           "delete" = false
+///           "read"   = false
+///           "write"  = true
+///         }
+///         "scope" = "Workspace"
+///       }]
+///     }
+///     publisher = "GitHub"
+///     title     = "GitHub Enterprise Audit Log"
+///   }
+///   data_connector_definition_name = "73e01a99-5cd7-4139-a149-9f2736ff2ab5"
+///   kind                           = "Customizable"
+///   resource_group_name            = "myRg"
+///   workspace_name                 = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -232,8 +303,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.securityinsights.inputs.CustomizableConnectorUiConfigArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.ConnectorDefinitionsAvailabilityArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.ConnectorDefinitionsPermissionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

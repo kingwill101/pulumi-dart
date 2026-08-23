@@ -13,7 +13,7 @@ class TextNerResponse {
   final pulumi.Input<NlpVerticalFeaturizationSettingsResponse>? featurizationSettings;
   /// Execution constraints for AutoMLJob.
   final pulumi.Input<NlpVerticalLimitSettingsResponse>? limitSettings;
-  /// Log verbosity for the job.
+  /// Enum for setting log verbosity.
   final pulumi.Input<String>? logVerbosity;
   /// Primary metric for Text-NER task.
   /// Only 'Accuracy' is supported for Text-NER, so user need not set this explicitly.
@@ -32,7 +32,7 @@ class TextNerResponse {
   /// Creates a new [TextNerResponse].
   /// [featurizationSettings] Featurization inputs needed for AutoML job.
   /// [limitSettings] Execution constraints for AutoMLJob.
-  /// [logVerbosity] Log verbosity for the job.
+  /// [logVerbosity] Enum for setting log verbosity.
   /// [primaryMetric] Primary metric for Text-NER task.
   /// [targetColumnName] Target column name: This is prediction values column.
   /// [taskType] AutoMLJob Task type.
@@ -75,4 +75,3 @@ class TextNerResponse {
     );
   }
 }
-

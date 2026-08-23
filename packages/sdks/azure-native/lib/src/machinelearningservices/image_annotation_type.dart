@@ -16,4 +16,3 @@ enum ImageAnnotationType {
     throw ArgumentError('Unknown ImageAnnotationType value: $value');
   }
 }
-

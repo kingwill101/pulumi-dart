@@ -14,4 +14,3 @@ enum FirewallPolicyNatRuleCollectionActionType {
     throw ArgumentError('Unknown FirewallPolicyNatRuleCollectionActionType value: $value');
   }
 }
-

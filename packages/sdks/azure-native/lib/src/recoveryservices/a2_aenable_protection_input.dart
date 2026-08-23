@@ -150,4 +150,3 @@ class A2AEnableProtectionInput {
     );
   }
 }
-

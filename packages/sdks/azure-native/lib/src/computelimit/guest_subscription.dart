@@ -6,6 +6,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-08-15.
 ///
+/// Other available API versions: 2026-03-20, 2026-04-30, 2026-06-01, 2026-07-01, 2026-07-31. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native computelimit [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -52,6 +54,22 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_computelimit_guestsubscription" "guestSubscription" {
+///   guest_subscription_id = "11111111-1111-1111-1111-111111111111"
+///   location              = "eastus"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -60,8 +78,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.computelimit.GuestSubscription;
 /// import com.pulumi.azurenative.computelimit.GuestSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

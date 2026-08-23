@@ -58,4 +58,3 @@ class IPv6FirewallRuleArgs {
     );
   }
 }
-

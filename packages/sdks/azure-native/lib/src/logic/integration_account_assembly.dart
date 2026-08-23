@@ -69,6 +69,29 @@ import 'integration_account_assembly_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_logic_integrationaccountassembly" "integrationAccountAssembly" {
+///   assembly_artifact_name   = "testAssembly"
+///   integration_account_name = "testIntegrationAccount"
+///   location                 = "westus"
+///   properties = {
+///     assembly_name = "System.IdentityModel.Tokens.Jwt"
+///     content       = "Base64 encoded Assembly Content"
+///     metadata      = {}
+///   }
+///   resource_group_name = "testResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +101,8 @@ import 'integration_account_assembly_args.dart';
 /// import com.pulumi.azurenative.logic.IntegrationAccountAssembly;
 /// import com.pulumi.azurenative.logic.IntegrationAccountAssemblyArgs;
 /// import com.pulumi.azurenative.logic.inputs.AssemblyPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

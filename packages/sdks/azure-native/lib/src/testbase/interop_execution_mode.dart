@@ -15,4 +15,3 @@ enum InteropExecutionMode {
     throw ArgumentError('Unknown InteropExecutionMode value: $value');
   }
 }
-

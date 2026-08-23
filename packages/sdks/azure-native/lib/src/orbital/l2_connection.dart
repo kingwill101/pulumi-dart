@@ -93,6 +93,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_orbital_l2connection" "l2Connection" {
+///   edge_site = {
+///     id = "/subscriptions/c1be1141-a7c9-4aac-9608-3c2e2f1152c3/resourceGroups/rg1/providers/Microsoft.Orbital/edgeSites/es1"
+///   }
+///   ground_station = {
+///     id = "/subscriptions/c1be1141-a7c9-4aac-9608-3c2e2f1152c3/resourceGroups/rg1/providers/Microsoft.Orbital/groundStations/gs1"
+///   }
+///   ground_station_partner_router = {
+///     name = "customerName-SiteName-01"
+///   }
+///   l2_connection_name  = "connection1"
+///   location            = "westus"
+///   name                = "customerName-SiteName-01"
+///   resource_group_name = "rg1"
+///   tags = {
+///     "tag1" = "value1"
+///     "tag2" = "value2"
+///   }
+///   vlan_id = 200
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +136,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.orbital.inputs.L2ConnectionsPropertiesEdgeSiteArgs;
 /// import com.pulumi.azurenative.orbital.inputs.L2ConnectionsPropertiesGroundStationArgs;
 /// import com.pulumi.azurenative.orbital.inputs.L2ConnectionsPropertiesGroundStationPartnerRouterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

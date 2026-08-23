@@ -81,6 +81,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_solutions_applicationdefinition" "applicationDefinition" {
+///   application_definition_name = "myManagedApplicationDef"
+///   authorizations {
+///     principal_id       = "validprincipalguid"
+///     role_definition_id = "validroleguid"
+///   }
+///   description         = "myManagedApplicationDef description"
+///   display_name        = "myManagedApplicationDef"
+///   lock_level          = "None"
+///   package_file_uri    = "https://path/to/packagezipfile"
+///   resource_group_name = "rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +114,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.solutions.ApplicationDefinition;
 /// import com.pulumi.azurenative.solutions.ApplicationDefinitionArgs;
 /// import com.pulumi.azurenative.solutions.inputs.ApplicationAuthorizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

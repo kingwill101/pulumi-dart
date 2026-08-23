@@ -15,4 +15,3 @@ enum CloudInitDataSource {
     throw ArgumentError('Unknown CloudInitDataSource value: $value');
   }
 }
-

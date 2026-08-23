@@ -14,4 +14,3 @@ enum ScrubbingRuleEntryMatchOperator {
     throw ArgumentError('Unknown ScrubbingRuleEntryMatchOperator value: $value');
   }
 }
-

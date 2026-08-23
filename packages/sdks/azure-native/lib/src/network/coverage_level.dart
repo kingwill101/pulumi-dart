@@ -19,4 +19,3 @@ enum CoverageLevel {
     throw ArgumentError('Unknown CoverageLevel value: $value');
   }
 }
-

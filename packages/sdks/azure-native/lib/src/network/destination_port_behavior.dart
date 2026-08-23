@@ -15,4 +15,3 @@ enum DestinationPortBehavior {
     throw ArgumentError('Unknown DestinationPortBehavior value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum ControllerPurpose {
     throw ArgumentError('Unknown ControllerPurpose value: $value');
   }
 }
-

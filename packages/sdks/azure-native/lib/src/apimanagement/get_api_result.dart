@@ -46,6 +46,8 @@ class GetApiResult {
   final String path;
   /// Describes on which protocols the operations in this API can be invoked.
   final List<String>? protocols;
+  /// The provisioning state
+  final String provisioningState;
   /// Absolute URL of the backend service implementing this API. Cannot be more than 2000 characters long.
   final String? serviceUrl;
   /// API identifier of the source API.
@@ -79,6 +81,7 @@ class GetApiResult {
   /// [name] The name of the resource
   /// [path] Relative URL uniquely identifying this API and all of its resource paths within the API Management service instance. It is appended to the API endpoint base URL specified during the service instance creation to form a public URL for this API.
   /// [protocols] Describes on which protocols the operations in this API can be invoked.
+  /// [provisioningState] The provisioning state
   /// [serviceUrl] Absolute URL of the backend service implementing this API. Cannot be more than 2000 characters long.
   /// [sourceApiId] API identifier of the source API.
   /// [subscriptionKeyParameterNames] Protocols over which API is made available.
@@ -105,6 +108,7 @@ class GetApiResult {
     required this.name,
     required this.path,
     this.protocols,
+    required this.provisioningState,
     this.serviceUrl,
     this.sourceApiId,
     this.subscriptionKeyParameterNames,
@@ -134,6 +138,7 @@ class GetApiResult {
       'name': name,
       'path': path,
       'protocols': ?protocols,
+      'provisioningState': provisioningState,
       'serviceUrl': ?serviceUrl,
       'sourceApiId': ?sourceApiId,
       'subscriptionKeyParameterNames': ?subscriptionKeyParameterNames?.toMap(),
@@ -164,6 +169,7 @@ class GetApiResult {
       name: map['name'] as String,
       path: map['path'] as String,
       protocols: (() { final guardedValue = map['protocols']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      provisioningState: map['provisioningState'] as String,
       serviceUrl: (() { final guardedValue = map['serviceUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sourceApiId: (() { final guardedValue = map['sourceApiId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       subscriptionKeyParameterNames: (() { final guardedValue = map['subscriptionKeyParameterNames']; if (guardedValue == null) return null; return SubscriptionKeyParameterNamesContractResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
@@ -173,4 +179,3 @@ class GetApiResult {
     );
   }
 }
-

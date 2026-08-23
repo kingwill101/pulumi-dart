@@ -16,4 +16,3 @@ enum FirewallPolicyRuleConditionType {
     throw ArgumentError('Unknown FirewallPolicyRuleConditionType value: $value');
   }
 }
-

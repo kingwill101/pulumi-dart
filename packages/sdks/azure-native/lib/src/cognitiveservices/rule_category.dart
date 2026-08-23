@@ -1,9 +1,9 @@
 /// Category of a managed network Outbound Rule of a cognitive services account.
 enum RuleCategory {
-  valueRequired("Required"),
-  valueRecommended("Recommended"),
-  valueUserDefined("UserDefined"),
-  valueDependency("Dependency");
+  required("Required"),
+  recommended("Recommended"),
+  userDefined("UserDefined"),
+  dependency("Dependency");
 
   const RuleCategory(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum RuleCategory {
     throw ArgumentError('Unknown RuleCategory value: $value');
   }
 }
-

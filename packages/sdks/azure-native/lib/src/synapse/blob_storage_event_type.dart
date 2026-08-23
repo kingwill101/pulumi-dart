@@ -15,4 +15,3 @@ enum BlobStorageEventType {
     throw ArgumentError('Unknown BlobStorageEventType value: $value');
   }
 }
-

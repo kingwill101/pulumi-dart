@@ -76,6 +76,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_scvmm_guestagent" "guestAgent" {
+///   credentials = {
+///     password = "<password>"
+///     username = "tempuser"
+///   }
+///   guest_agent_name = "default"
+///   http_proxy_config = {
+///     https_proxy = "http://192.1.2.3:8080"
+///   }
+///   provisioning_action  = "install"
+///   resource_group_name  = "testrg"
+///   virtual_machine_name = "ContosoVm"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +111,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.scvmm.GuestAgentArgs;
 /// import com.pulumi.azurenative.scvmm.inputs.GuestCredentialArgs;
 /// import com.pulumi.azurenative.scvmm.inputs.HttpProxyConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

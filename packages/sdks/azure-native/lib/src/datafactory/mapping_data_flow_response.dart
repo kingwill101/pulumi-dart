@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'data_flow_response_folder.dart';
+import 'data_flow_folder_response.dart';
 import 'data_flow_sink_response.dart';
 import 'data_flow_source_response.dart';
 import 'transformation_response.dart';
@@ -13,7 +13,7 @@ class MappingDataFlowResponse {
   /// The description of the data flow.
   final pulumi.Input<String>? description;
   /// The folder that this data flow is in. If not specified, Data flow will appear at the root level.
-  final pulumi.Input<DataFlowResponseFolder>? folder;
+  final pulumi.Input<DataFlowFolderResponse>? folder;
   /// DataFlow script.
   final pulumi.Input<String>? script;
   /// Data flow script lines.
@@ -54,7 +54,7 @@ class MappingDataFlowResponse {
     return <String, dynamic>{
       'annotations': ?annotations,
       'description': ?description,
-      'folder': ?pulumi.Input.mapOptionalInputValue<DataFlowResponseFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
+      'folder': ?pulumi.Input.mapOptionalInputValue<DataFlowFolderResponse, Map<String, dynamic>>(folder, (value) => value.toMap()),
       'script': ?script,
       'scriptLines': ?scriptLines,
       'sinks': ?pulumi.Input.mapOptionalInputValue<List<DataFlowSinkResponse>, List<Map<String, dynamic>>>(sinks, (value) => pulumi.Input.encodeList<DataFlowSinkResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -68,7 +68,7 @@ class MappingDataFlowResponse {
     return MappingDataFlowResponse(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataFlowResponseFolder.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataFlowFolderResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       script: (() { final guardedValue = map['script']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scriptLines: (() { final guardedValue = map['scriptLines']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       sinks: (() { final guardedValue = map['sinks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataFlowSinkResponse>(guardedValue, (value) => DataFlowSinkResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -78,4 +78,3 @@ class MappingDataFlowResponse {
     );
   }
 }
-

@@ -11,9 +11,9 @@ class WebAppSwiftVirtualNetworkConnectionSlotArgs {
   final pulumi.Input<String>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Name of the deployment slot. If a slot is not specified, the API will add or update connections for the production slot.
+  /// Name of the deployment slot. If a slot is not specified, the API will get a gateway for the production slot's Virtual Network.
   final pulumi.Input<String> slot;
   /// The Virtual Network subnet's resource ID. This is the subnet that this Web App will join. This subnet must have a delegation to Microsoft.Web/serverFarms defined first.
   final pulumi.Input<String>? subnetResourceId;
@@ -23,8 +23,8 @@ class WebAppSwiftVirtualNetworkConnectionSlotArgs {
   /// Creates a new [WebAppSwiftVirtualNetworkConnectionSlotArgs].
   /// [kind] Kind of resource.
   /// [name] Name of the app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  /// [slot] Name of the deployment slot. If a slot is not specified, the API will add or update connections for the production slot.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [slot] Name of the deployment slot. If a slot is not specified, the API will get a gateway for the production slot's Virtual Network.
   /// [subnetResourceId] The Virtual Network subnet's resource ID. This is the subnet that this Web App will join. This subnet must have a delegation to Microsoft.Web/serverFarms defined first.
   /// [swiftSupported] A flag that specifies if the scale unit this Web App is on supports Swift integration.
   const WebAppSwiftVirtualNetworkConnectionSlotArgs({
@@ -58,4 +58,3 @@ class WebAppSwiftVirtualNetworkConnectionSlotArgs {
     );
   }
 }
-

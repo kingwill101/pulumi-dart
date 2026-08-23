@@ -1,7 +1,7 @@
 /// operating system of target machines
 enum OperatingSystemType {
-  valueWindows("Windows"),
-  valueLinux("Linux");
+  windows("Windows"),
+  linux("Linux");
 
   const OperatingSystemType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum OperatingSystemType {
     throw ArgumentError('Unknown OperatingSystemType value: $value');
   }
 }
-

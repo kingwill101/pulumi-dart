@@ -135,6 +135,52 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databox_job" "job" {
+///   details = {
+///     "contactDetails" = {
+///       "contactName"    = "XXXX XXXX"
+///       "emailList"      = ["xxxx@xxxx.xxx"]
+///       "phone"          = "0000000000"
+///       "phoneExtension" = ""
+///     }
+///     "dataImportDetails" = [{
+///       "accountDetails" = {
+///         "dataAccountType"  = "StorageAccount"
+///         "storageAccountId" = "/subscriptions/YourSubscriptionId/resourcegroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"
+///       }
+///     }]
+///     "jobDetailsType" = "DataBox"
+///     "shippingAddress" = {
+///       "addressType"     = "Commercial"
+///       "city"            = "XXXX XXXX"
+///       "companyName"     = "XXXX XXXX"
+///       "country"         = "XX"
+///       "postalCode"      = "00000"
+///       "stateOrProvince" = "XX"
+///       "streetAddress1"  = "XXXX XXXX"
+///       "streetAddress2"  = "XXXX XXXX"
+///     }
+///   }
+///   job_name            = "TestJobName1"
+///   location            = "westus"
+///   resource_group_name = "YourResourceGroupName"
+///   sku = {
+///     name = "DataBox"
+///   }
+///   transfer_type = "ImportToAzure"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -144,8 +190,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.databox.Job;
 /// import com.pulumi.azurenative.databox.JobArgs;
 /// import com.pulumi.azurenative.databox.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -438,6 +484,54 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databox_job" "job" {
+///   details = {
+///     "contactDetails" = {
+///       "contactName"    = "XXXX XXXX"
+///       "emailList"      = ["xxxx@xxxx.xxx"]
+///       "phone"          = "0000000000"
+///       "phoneExtension" = ""
+///     }
+///     "dataImportDetails" = [{
+///       "accountDetails" = {
+///         "dataAccountType"  = "StorageAccount"
+///         "sharePassword"    = "<sharePassword>"
+///         "storageAccountId" = "/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"
+///       }
+///     }]
+///     "devicePassword" = "<devicePassword>"
+///     "jobDetailsType" = "DataBox"
+///     "shippingAddress" = {
+///       "addressType"     = "Commercial"
+///       "city"            = "XXXX XXXX"
+///       "companyName"     = "XXXX XXXX"
+///       "country"         = "XX"
+///       "postalCode"      = "00000"
+///       "stateOrProvince" = "XX"
+///       "streetAddress1"  = "XXXX XXXX"
+///       "streetAddress2"  = "XXXX XXXX"
+///     }
+///   }
+///   job_name            = "TestJobName1"
+///   location            = "westus"
+///   resource_group_name = "YourResourceGroupName"
+///   sku = {
+///     name = "DataBox"
+///   }
+///   transfer_type = "ImportToAzure"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -447,8 +541,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.databox.Job;
 /// import com.pulumi.azurenative.databox.JobArgs;
 /// import com.pulumi.azurenative.databox.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -757,6 +851,57 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databox_job" "job" {
+///   details = {
+///     "contactDetails" = {
+///       "contactName"    = "XXXX XXXX"
+///       "emailList"      = ["xxxx@xxxx.xxx"]
+///       "phone"          = "0000000000"
+///       "phoneExtension" = ""
+///     }
+///     "dataImportDetails" = [{
+///       "accountDetails" = {
+///         "dataAccountType"  = "StorageAccount"
+///         "storageAccountId" = "/subscriptions/YourSubscriptionId/resourcegroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"
+///       }
+///     }]
+///     "jobDetailsType" = "DataBox"
+///     "preferences" = {
+///       "encryptionPreferences" = {
+///         "doubleEncryption" = "Enabled"
+///       }
+///     }
+///     "shippingAddress" = {
+///       "addressType"     = "Commercial"
+///       "city"            = "XXXX XXXX"
+///       "companyName"     = "XXXX XXXX"
+///       "country"         = "XX"
+///       "postalCode"      = "00000"
+///       "stateOrProvince" = "XX"
+///       "streetAddress1"  = "XXXX XXXX"
+///       "streetAddress2"  = "XXXX XXXX"
+///     }
+///   }
+///   job_name            = "TestJobName1"
+///   location            = "westus"
+///   resource_group_name = "YourResourceGroupName"
+///   sku = {
+///     name = "DataBox"
+///   }
+///   transfer_type = "ImportToAzure"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -766,8 +911,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.databox.Job;
 /// import com.pulumi.azurenative.databox.JobArgs;
 /// import com.pulumi.azurenative.databox.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1097,6 +1242,62 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databox_job" "job" {
+///   details = {
+///     "contactDetails" = {
+///       "contactName"    = "XXXX XXXX"
+///       "emailList"      = ["xxxx@xxxx.xxx"]
+///       "phone"          = "0000000000"
+///       "phoneExtension" = ""
+///     }
+///     "dataExportDetails" = [{
+///       "accountDetails" = {
+///         "dataAccountType"  = "StorageAccount"
+///         "storageAccountId" = "/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"
+///       }
+///       "transferConfiguration" = {
+///         "transferAllDetails" = {
+///           "include" = {
+///             "dataAccountType"  = "StorageAccount"
+///             "transferAllBlobs" = true
+///             "transferAllFiles" = true
+///           }
+///         }
+///         "transferConfigurationType" = "TransferAll"
+///       }
+///     }]
+///     "jobDetailsType" = "DataBox"
+///     "shippingAddress" = {
+///       "addressType"     = "Commercial"
+///       "city"            = "XXXX XXXX"
+///       "companyName"     = "XXXX XXXX"
+///       "country"         = "XX"
+///       "postalCode"      = "00000"
+///       "stateOrProvince" = "XX"
+///       "streetAddress1"  = "XXXX XXXX"
+///       "streetAddress2"  = "XXXX XXXX"
+///     }
+///   }
+///   job_name            = "TestJobName1"
+///   location            = "westus"
+///   resource_group_name = "YourResourceGroupName"
+///   sku = {
+///     name = "DataBox"
+///   }
+///   transfer_type = "ExportFromAzure"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1106,8 +1307,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.databox.Job;
 /// import com.pulumi.azurenative.databox.JobArgs;
 /// import com.pulumi.azurenative.databox.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

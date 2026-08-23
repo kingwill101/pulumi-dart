@@ -322,4 +322,3 @@ class ListWebAppAuthSettingsResult {
     );
   }
 }
-

@@ -18,4 +18,3 @@ enum DiskSecurityTypes {
     throw ArgumentError('Unknown DiskSecurityTypes value: $value');
   }
 }
-

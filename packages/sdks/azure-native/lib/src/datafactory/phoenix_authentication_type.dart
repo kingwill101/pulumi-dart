@@ -1,8 +1,8 @@
 /// The authentication mechanism used to connect to the Phoenix server.
 enum PhoenixAuthenticationType {
-  valueAnonymous("Anonymous"),
-  valueUsernameAndPassword("UsernameAndPassword"),
-  valueWindowsAzureHDInsightService("WindowsAzureHDInsightService");
+  anonymous("Anonymous"),
+  usernameAndPassword("UsernameAndPassword"),
+  windowsAzureHDInsightService("WindowsAzureHDInsightService");
 
   const PhoenixAuthenticationType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum PhoenixAuthenticationType {
     throw ArgumentError('Unknown PhoenixAuthenticationType value: $value');
   }
 }
-

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'code_response.dart';
 import 'dead_letter_config_response.dart';
 import 'environment_response.dart';
-import 'ephemeral_storage_response.dart';
+import 'ephemeral_storage_lambda_function_response.dart';
 import 'file_system_config_response.dart';
 import 'image_config_response.dart';
 import 'logging_config_response.dart';
@@ -13,7 +13,7 @@ import 'snap_start_response.dart';
 import 'snap_start_response_response.dart';
 import 'tag_response.dart';
 import 'tracing_config_response.dart';
-import 'vpc_config_response.dart';
+import 'vpc_config_lambda_function_response.dart';
 
 /// Definition of awsLambdaFunction
 class AwsLambdaFunctionPropertiesResponse {
@@ -32,7 +32,7 @@ class AwsLambdaFunctionPropertiesResponse {
   /// Environment variables that are accessible from function code during execution. A function's environment variable settings. You can use environment variables to adjust your function's behavior without updating code. An environment variable is a pair of strings that are stored in a function's version-specific configuration.
   final pulumi.Input<EnvironmentResponse>? environment;
   /// The size of the function's ``/tmp`` directory in MB. The default value is 512, but it can be any whole number between 512 and 10,240 MB. The size of the function's ``/tmp`` directory in MB. The default value is 512, but it can be any whole number between 512 and 10,240 MB.
-  final pulumi.Input<EphemeralStorageResponse>? ephemeralStorage;
+  final pulumi.Input<EphemeralStorageLambdaFunctionResponse>? ephemeralStorage;
   /// Connection settings for an Amazon EFS file system. To connect a function to a file system, a mount target must be available in every Availability Zone that your function connects to. If your template contains an [AWS::EFS::MountTarget](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-mounttarget.html) resource, you must also specify a ``DependsOn`` attribute to ensure that the mount target is created or updated before the function. For more information about using the ``DependsOn`` attribute, see [DependsOn Attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html).
   final pulumi.Input<List<FileSystemConfigResponse>>? fileSystemConfigs;
   /// The name of the Lambda function, up to 64 characters in length. If you don't specify a name, CFN generates one. If you specify a name, you cannot perform updates that require replacement of this resource. You can perform updates that require no or some interruption. If you must replace the resource, specify a new name.
@@ -70,7 +70,7 @@ class AwsLambdaFunctionPropertiesResponse {
   /// Set ``Mode`` to ``Active`` to sample and trace a subset of incoming requests with [X-Ray](https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html). The function's [](https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html) tracing configuration. To sample and record incoming requests, set ``Mode`` to ``Active``.
   final pulumi.Input<TracingConfigResponse>? tracingConfig;
   /// For network connectivity to AWS resources in a VPC, specify a list of security groups and subnets in the VPC. When you connect a function to a VPC, it can access resources and the internet only through that VPC. For more information, see [Configuring a Lambda function to access resources in a VPC](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html). The VPC security groups and subnets that are attached to a Lambda function. When you connect a function to a VPC, Lambda creates an elastic network interface for each combination of security group and subnet in the function's VPC configuration. The function can only access resources and the internet through that VPC. For more information, see [VPC Settings](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).  When you delete a function, CFN monitors the state of its network interfaces and waits for Lambda to delete them before proceeding. If the VPC is defined in the same stack, the network interfaces need to be deleted by Lambda before CFN can delete the VPC's resources. To monitor network interfaces, CFN needs the ``ec2:DescribeNetworkInterfaces`` permission. It obtains this from the user or role that modifies the stack. If you don't provide this permission, CFN does not wait for network interfaces to be deleted.
-  final pulumi.Input<VpcConfigResponse>? vpcConfig;
+  final pulumi.Input<VpcConfigLambdaFunctionResponse>? vpcConfig;
 
   /// Creates a new [AwsLambdaFunctionPropertiesResponse].
   /// [architectures] The instruction set architecture that the function supports. Enter a string array with one of the valid values (arm64 or x86_64). The default value is ``x86_64``.
@@ -139,7 +139,7 @@ class AwsLambdaFunctionPropertiesResponse {
       'deadLetterConfig': ?pulumi.Input.mapOptionalInputValue<DeadLetterConfigResponse, Map<String, dynamic>>(deadLetterConfig, (value) => value.toMap()),
       'description': ?description,
       'environment': ?pulumi.Input.mapOptionalInputValue<EnvironmentResponse, Map<String, dynamic>>(environment, (value) => value.toMap()),
-      'ephemeralStorage': ?pulumi.Input.mapOptionalInputValue<EphemeralStorageResponse, Map<String, dynamic>>(ephemeralStorage, (value) => value.toMap()),
+      'ephemeralStorage': ?pulumi.Input.mapOptionalInputValue<EphemeralStorageLambdaFunctionResponse, Map<String, dynamic>>(ephemeralStorage, (value) => value.toMap()),
       'fileSystemConfigs': ?pulumi.Input.mapOptionalInputValue<List<FileSystemConfigResponse>, List<Map<String, dynamic>>>(fileSystemConfigs, (value) => pulumi.Input.encodeList<FileSystemConfigResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'functionName': ?functionName,
       'handler': ?handler,
@@ -158,7 +158,7 @@ class AwsLambdaFunctionPropertiesResponse {
       'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timeout': ?timeout,
       'tracingConfig': ?pulumi.Input.mapOptionalInputValue<TracingConfigResponse, Map<String, dynamic>>(tracingConfig, (value) => value.toMap()),
-      'vpcConfig': ?pulumi.Input.mapOptionalInputValue<VpcConfigResponse, Map<String, dynamic>>(vpcConfig, (value) => value.toMap()),
+      'vpcConfig': ?pulumi.Input.mapOptionalInputValue<VpcConfigLambdaFunctionResponse, Map<String, dynamic>>(vpcConfig, (value) => value.toMap()),
     };
   }
 
@@ -171,7 +171,7 @@ class AwsLambdaFunctionPropertiesResponse {
       deadLetterConfig: (() { final guardedValue = map['deadLetterConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeadLetterConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnvironmentResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      ephemeralStorage: (() { final guardedValue = map['ephemeralStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EphemeralStorageResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      ephemeralStorage: (() { final guardedValue = map['ephemeralStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EphemeralStorageLambdaFunctionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       fileSystemConfigs: (() { final guardedValue = map['fileSystemConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FileSystemConfigResponse>(guardedValue, (value) => FileSystemConfigResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       functionName: (() { final guardedValue = map['functionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       handler: (() { final guardedValue = map['handler']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -190,8 +190,7 @@ class AwsLambdaFunctionPropertiesResponse {
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TagResponse>(guardedValue, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       tracingConfig: (() { final guardedValue = map['tracingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TracingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      vpcConfig: (() { final guardedValue = map['vpcConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VpcConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      vpcConfig: (() { final guardedValue = map['vpcConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VpcConfigLambdaFunctionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

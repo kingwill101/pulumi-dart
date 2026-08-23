@@ -118,6 +118,47 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databasefleetmanager_fleetdatabase" "fleetDatabase" {
+///   database_name   = "customer-db-prod"
+///   fleet_name      = "data-fleet-01"
+///   fleetspace_name = "prod-environment"
+///   properties = {
+///     create_mode = "Default"
+///     identity = {
+///       federated_client_id = "a2b3c4d5-6789-0123-4567-89abcdef1234"
+///       identity_type       = "None"
+///       user_assigned_identities = [{
+///         "clientId"    = "a2b3c4d5-6789-0123-4567-89abcdef1234"
+///         "principalId" = "a2b3c4d5-6789-0123-4567-89abcdef1234"
+///         "resourceId"  = "/subscriptions/12345678-90ab-cdef-1234-567890abcdef/resourceGroups/rg-database-operations/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-01"
+///       }]
+///     }
+///     resource_tags = {
+///       "project" = "Customer Data"
+///     }
+///     restore_from_time    = "2024-11-06T09:16:05.048Z"
+///     source_database_name = "existing-db-prod"
+///     tier_name            = "Premium"
+///     transparent_data_encryption = {
+///       enable_auto_rotation = true
+///       key_uri              = "https://keyvaultname.vault.azure.net/keys/myKey/12345"
+///       keys                 = ["key1"]
+///     }
+///   }
+///   resource_group_name = "rg-database-operations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -129,8 +170,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.databasefleetmanager.inputs.FleetDatabasePropertiesArgs;
 /// import com.pulumi.azurenative.databasefleetmanager.inputs.IdentityArgs;
 /// import com.pulumi.azurenative.databasefleetmanager.inputs.TransparentDataEncryptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -1,7 +1,7 @@
 /// Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled'
 enum FrontDoorEnabledState {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const FrontDoorEnabledState(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum FrontDoorEnabledState {
     throw ArgumentError('Unknown FrontDoorEnabledState value: $value');
   }
 }
-

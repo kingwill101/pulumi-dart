@@ -71,6 +71,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devcenter_project" "project" {
+///   description         = "This is my first project."
+///   dev_center_id       = "/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/rg1/providers/Microsoft.DevCenter/devcenters/Contoso"
+///   display_name        = "Dev"
+///   location            = "centralus"
+///   project_name        = "DevProject"
+///   resource_group_name = "rg1"
+///   tags = {
+///     "CostCenter" = "R&D"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +102,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.devcenter.Project;
 /// import com.pulumi.azurenative.devcenter.ProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -218,6 +241,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devcenter_project" "project" {
+///   description            = "This is my first project."
+///   dev_center_id          = "/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/rg1/providers/Microsoft.DevCenter/devcenters/Contoso"
+///   location               = "centralus"
+///   max_dev_boxes_per_user = 3
+///   project_name           = "DevProject"
+///   resource_group_name    = "rg1"
+///   tags = {
+///     "CostCenter" = "R&D"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -226,8 +272,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.devcenter.Project;
 /// import com.pulumi.azurenative.devcenter.ProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

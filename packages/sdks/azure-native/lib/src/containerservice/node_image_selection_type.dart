@@ -16,4 +16,3 @@ enum NodeImageSelectionType {
     throw ArgumentError('Unknown NodeImageSelectionType value: $value');
   }
 }
-

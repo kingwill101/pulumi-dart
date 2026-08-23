@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_https_configuration_response.dart';
-import 'frontend_endpoint_update_parameters_response_web_application_firewall_policy_link.dart';
+import 'frontend_endpoint_update_parameters_web_application_firewall_policy_link_response.dart';
 
 /// A frontend endpoint used for routing.
 class FrontendEndpointResponse {
@@ -27,7 +27,7 @@ class FrontendEndpointResponse {
   /// Resource type.
   final pulumi.Input<String> type;
   /// Defines the Web Application Firewall policy for each host (if applicable)
-  final pulumi.Input<FrontendEndpointUpdateParametersResponseWebApplicationFirewallPolicyLink>? webApplicationFirewallPolicyLink;
+  final pulumi.Input<FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLinkResponse>? webApplicationFirewallPolicyLink;
 
   /// Creates a new [FrontendEndpointResponse].
   /// [customHttpsConfiguration] The configuration specifying how to enable HTTPS
@@ -67,7 +67,7 @@ class FrontendEndpointResponse {
       'sessionAffinityEnabledState': ?sessionAffinityEnabledState,
       'sessionAffinityTtlSeconds': ?sessionAffinityTtlSeconds,
       'type': type,
-      'webApplicationFirewallPolicyLink': ?pulumi.Input.mapOptionalInputValue<FrontendEndpointUpdateParametersResponseWebApplicationFirewallPolicyLink, Map<String, dynamic>>(webApplicationFirewallPolicyLink, (value) => value.toMap()),
+      'webApplicationFirewallPolicyLink': ?pulumi.Input.mapOptionalInputValue<FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLinkResponse, Map<String, dynamic>>(webApplicationFirewallPolicyLink, (value) => value.toMap()),
     };
   }
 
@@ -83,8 +83,7 @@ class FrontendEndpointResponse {
       sessionAffinityEnabledState: (() { final guardedValue = map['sessionAffinityEnabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sessionAffinityTtlSeconds: (() { final guardedValue = map['sessionAffinityTtlSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      webApplicationFirewallPolicyLink: (() { final guardedValue = map['webApplicationFirewallPolicyLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FrontendEndpointUpdateParametersResponseWebApplicationFirewallPolicyLink.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      webApplicationFirewallPolicyLink: (() { final guardedValue = map['webApplicationFirewallPolicyLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

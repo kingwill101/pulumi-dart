@@ -37,4 +37,3 @@ class O365BreakOutCategoryPoliciesResponse {
     );
   }
 }
-

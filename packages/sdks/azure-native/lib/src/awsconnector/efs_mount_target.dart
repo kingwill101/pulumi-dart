@@ -106,6 +106,44 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_efsmounttarget" "efsMountTarget" {
+///   location = "xaybj"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "dtpqhenvexdxqcqscosxk"
+///     aws_account_id = "iwvssztfldgfir"
+///     aws_properties = {
+///       file_system_id  = "yyzhtbwsscfcaxuvdvmswchhxapky"
+///       id              = "micgyhibjdexozpicbfsmpclu"
+///       ip_address      = "unspxdyqhrhlkstzmdrd"
+///       security_groups = ["zxkzjhcwszqzfeogafiaub"]
+///       subnet_id       = "xbeontn"
+///     }
+///     aws_region        = "lyvbqubwsgdvarrauygfhw"
+///     aws_source_schema = "gpkfqbbpywdedvyabzy"
+///     aws_tags = {
+///       "key5226" = "lkjysnbiwwydewimdnpt"
+///     }
+///     public_cloud_connectors_resource_id = "rwszhgqustirkxkbk"
+///     public_cloud_resource_name          = "bezmotdonashggkeobrc"
+///   }
+///   resource_group_name = "rgefsMountTarget"
+///   tags = {
+///     "key3687" = "zubuxs"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -116,8 +154,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.EfsMountTargetArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.EfsMountTargetPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEfsMountTargetPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

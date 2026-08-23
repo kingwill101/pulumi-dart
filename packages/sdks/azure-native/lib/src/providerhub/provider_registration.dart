@@ -262,6 +262,89 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_providerhub_providerregistration" "providerRegistration" {
+///   kind = "Direct"
+///   properties = {
+///     capabilities = [{
+///       "effect"  = "Allow"
+///       "quotaId" = "CSP_2015-05-01"
+///       }, {
+///       "effect"  = "Allow"
+///       "quotaId" = "CSP_MG_2017-12-01"
+///     }]
+///     custom_manifest_version = "2.0"
+///     dsts_configuration = {
+///       service_dns_name = "prds.sparta.azure.com"
+///       service_name     = "prds-shim"
+///     }
+///     legacy_namespace     = "legacyNamespace"
+///     legacy_registrations = ["legacyRegistration"]
+///     management = {
+///       incident_contact_email   = "helpme@contoso.com"
+///       incident_routing_service = "Contoso Resource Provider"
+///       incident_routing_team    = "Contoso Triage"
+///       service_tree_infos = [{
+///         "componentId" = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"
+///         "readiness"   = "InDevelopment"
+///         "serviceId"   = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"
+///       }]
+///     }
+///     management_group_global_notification_endpoints = [{
+///       "endpointUri" = "{your_management_group_notification_endpoint}"
+///     }]
+///     notification_options = "EmitSpendingLimit"
+///     notification_settings = {
+///       subscriber_settings = [{
+///         "filterRules" = [{
+///           "endpointInformation" = [{
+///             "endpoint"      = "https://userrp.azure.com/arnnotify"
+///             "endpointType"  = "Webhook"
+///             "schemaVersion" = "3.0"
+///             }, {
+///             "endpoint"      = "https://userrp.azure.com/arnnotify"
+///             "endpointType"  = "Eventhub"
+///             "schemaVersion" = "3.0"
+///           }]
+///           "filterQuery" = "Resources | where event.eventType in ('Microsoft.Network/IpAddresses/write', 'Microsoft.KeyVault/vaults/move/action')"
+///         }]
+///       }]
+///     }
+///     optional_features = ["Microsoft.Resources/PlatformSubscription"]
+///     provider_type     = "Internal"
+///     provider_version  = "2.0"
+///     resource_group_lock_option_during_move = {
+///       block_action_verb = "Action"
+///     }
+///     resource_hydration_accounts = [{
+///       "accountName"    = "classichydrationprodsn01"
+///       "subscriptionId" = "e4eae963-2d15-43e6-a097-98bd75b33edd"
+///       }, {
+///       "accountName"    = "classichydrationprodch01"
+///       "subscriptionId" = "69e69ecb-e69c-41d4-99b8-87dd12781067"
+///     }]
+///     response_options = {
+///       service_client_options_type = "DisableAutomaticDecompression"
+///     }
+///     service_name = "root"
+///     services = [{
+///       "serviceName" = "tags"
+///       "status"      = "Inactive"
+///     }]
+///   }
+///   provider_namespace = "Microsoft.Contoso"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -276,8 +359,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderManifestPropertiesNotificationSettingsArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderManifestPropertiesResponseOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -761,6 +844,59 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_providerhub_providerregistration" "providerRegistration" {
+///   properties = {
+///     capabilities = [{
+///       "effect"  = "Allow"
+///       "quotaId" = "CSP_2015-05-01"
+///       }, {
+///       "effect"  = "Allow"
+///       "quotaId" = "CSP_MG_2017-12-01"
+///     }]
+///     cross_tenant_token_validation = "EnsureSecureValidation"
+///     management = {
+///       canary_manifest_owners = ["SPARTA-PlatformServiceAdmin"]
+///       error_response_message_options = {
+///         server_failure_response_message_type = "OutageReporting"
+///       }
+///       expedited_rollout_metadata = {
+///         enabled                  = false
+///         expedited_rollout_intent = "Hotfix"
+///       }
+///       expedited_rollout_submitters = ["SPARTA-PlatformServiceOperator"]
+///       incident_contact_email       = "helpme@contoso.com"
+///       incident_routing_service     = "Contoso Resource Provider"
+///       incident_routing_team        = "Contoso Triage"
+///       pc_code                      = "P1234"
+///       profit_center_program_id     = "1234"
+///       service_tree_infos = [{
+///         "componentId" = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"
+///         "readiness"   = "InDevelopment"
+///         "serviceId"   = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"
+///       }]
+///     }
+///     provider_type    = "Internal"
+///     provider_version = "2.0"
+///     service_name     = "root"
+///     services = [{
+///       "serviceName" = "tags"
+///       "status"      = "Inactive"
+///     }]
+///   }
+///   provider_namespace = "Microsoft.Contoso"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -773,8 +909,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderManifestPropertiesManagementArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderManagementErrorResponseMessageOptionsArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderManagementExpeditedRolloutMetadataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

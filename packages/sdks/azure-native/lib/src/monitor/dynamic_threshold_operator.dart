@@ -16,4 +16,3 @@ enum DynamicThresholdOperator {
     throw ArgumentError('Unknown DynamicThresholdOperator value: $value');
   }
 }
-

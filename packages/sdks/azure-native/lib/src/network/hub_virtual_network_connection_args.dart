@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'routing_configuration.dart';
+import 'routing_configuration_network.dart';
 import 'sub_resource.dart';
 
 /// {@template pulumi_network_hub_virtual_network_connection_args_doc}
@@ -26,7 +26,7 @@ class HubVirtualNetworkConnectionArgs {
   /// The resource group name of the HubVirtualNetworkConnection.
   final pulumi.Input<String> resourceGroupName;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final pulumi.Input<RoutingConfiguration>? routingConfiguration;
+  final pulumi.Input<RoutingConfigurationNetwork>? routingConfiguration;
   /// The name of the VirtualHub.
   final pulumi.Input<String> virtualHubName;
 
@@ -64,7 +64,7 @@ class HubVirtualNetworkConnectionArgs {
       'name': ?name,
       'remoteVirtualNetwork': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(remoteVirtualNetwork, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
-      'routingConfiguration': ?pulumi.Input.mapOptionalInputValue<RoutingConfiguration, Map<String, dynamic>>(routingConfiguration, (value) => value.toMap()),
+      'routingConfiguration': ?routingConfiguration,
       'virtualHubName': virtualHubName,
     };
   }
@@ -79,9 +79,8 @@ class HubVirtualNetworkConnectionArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       remoteVirtualNetwork: (() { final guardedValue = map['remoteVirtualNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as RoutingConfigurationNetwork); })(),
       virtualHubName: pulumi.Input.fromValue(map['virtualHubName'] as String),
     );
   }
 }
-

@@ -5,7 +5,7 @@ import 'managed_disk_encryption_key_vault_properties.dart';
 
 /// The object that contains details of encryption used on the workspace.
 class ManagedDiskEncryption {
-  /// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
+  /// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<String> keySource;
   /// Key Vault input properties for encryption.
   final pulumi.Input<ManagedDiskEncryptionKeyVaultProperties> keyVaultProperties;
@@ -13,7 +13,7 @@ class ManagedDiskEncryption {
   final pulumi.Input<bool>? rotationToLatestKeyVersionEnabled;
 
   /// Creates a new [ManagedDiskEncryption].
-  /// [keySource] The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
+  /// [keySource] The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace.
   /// [keyVaultProperties] Key Vault input properties for encryption.
   /// [rotationToLatestKeyVersionEnabled] Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
   const ManagedDiskEncryption({
@@ -38,4 +38,3 @@ class ManagedDiskEncryption {
     );
   }
 }
-

@@ -39,4 +39,3 @@ class PrivateEndpointConnection {
     );
   }
 }
-

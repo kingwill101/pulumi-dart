@@ -7,6 +7,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-05-03-preview.
 ///
+/// Other available API versions: 2025-10-03, 2025-10-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -68,6 +70,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_issue" "issue" {
+///   azure_monitor_workspace_name = "myWorkspace"
+///   issue_name                   = "3f29e1b2b05f8371595dc761fed8e8b3"
+///   properties = {
+///     impact_time = "2024-12-13T02:45:33"
+///     severity    = "Sev2"
+///     status      = "New"
+///     title       = "Alert fired on VM CPU"
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +102,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.Issue;
 /// import com.pulumi.azurenative.monitor.IssueArgs;
 /// import com.pulumi.azurenative.monitor.inputs.IssuePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -5,7 +5,6 @@ import 'bind_options_response.dart';
 import 'tmpfs_options_response.dart';
 import 'volume_options_response.dart';
 
-/// Describes the volume configuration for the container
 class VolumeDefinitionResponse {
   /// Bind Options of the mount
   final pulumi.Input<BindOptionsResponse>? bind;
@@ -70,4 +69,3 @@ class VolumeDefinitionResponse {
     );
   }
 }
-

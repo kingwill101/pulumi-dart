@@ -113,6 +113,40 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_testbase_customerevent" "customerEvent" {
+///   customer_event_name = "WeeklySummary"
+///   event_name          = "WeeklySummary"
+///   receivers {
+///     receiver_type = "UserObjects"
+///     receiver_value = {
+///       user_object_receiver_value = {
+///         user_object_ids = ["245245245245325", "365365365363565"]
+///       }
+///     }
+///   }
+///   receivers {
+///     receiver_type = "DistributionGroup"
+///     receiver_value = {
+///       distribution_group_list_receiver_value = {
+///         distribution_groups = ["test@microsoft.com"]
+///       }
+///     }
+///   }
+///   resource_group_name    = "contoso-rg1"
+///   test_base_account_name = "contoso-testBaseAccount1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -125,8 +159,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.testbase.inputs.NotificationReceiverValueArgs;
 /// import com.pulumi.azurenative.testbase.inputs.UserObjectReceiverValueArgs;
 /// import com.pulumi.azurenative.testbase.inputs.DistributionGroupListReceiverValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

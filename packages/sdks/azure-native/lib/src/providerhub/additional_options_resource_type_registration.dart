@@ -15,4 +15,3 @@ enum AdditionalOptionsResourceTypeRegistration {
     throw ArgumentError('Unknown AdditionalOptionsResourceTypeRegistration value: $value');
   }
 }
-

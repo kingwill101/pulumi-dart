@@ -15,4 +15,3 @@ enum WorkloadDeploymentType {
     throw ArgumentError('Unknown WorkloadDeploymentType value: $value');
   }
 }
-

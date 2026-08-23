@@ -1,8 +1,8 @@
 /// [Required] Specifies the type of data.
 enum DataType {
-  valueUriFile("uri_file"),
-  valueUriFolder("uri_folder"),
-  valueMltable("mltable");
+  uriFile("uri_file"),
+  uriFolder("uri_folder"),
+  mltable("mltable");
 
   const DataType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum DataType {
     throw ArgumentError('Unknown DataType value: $value');
   }
 }
-

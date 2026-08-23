@@ -1,7 +1,7 @@
 /// [Required] The type of the deployment
 enum BatchDeploymentConfigurationType {
-  valueModel("Model"),
-  valuePipelineComponent("PipelineComponent");
+  model("Model"),
+  pipelineComponent("PipelineComponent");
 
   const BatchDeploymentConfigurationType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum BatchDeploymentConfigurationType {
     throw ArgumentError('Unknown BatchDeploymentConfigurationType value: $value');
   }
 }
-

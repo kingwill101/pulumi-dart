@@ -1,7 +1,7 @@
 /// Indicates whether or not the encryption is enabled for the workspace.
 enum EncryptionStatus {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const EncryptionStatus(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum EncryptionStatus {
     throw ArgumentError('Unknown EncryptionStatus value: $value');
   }
 }
-

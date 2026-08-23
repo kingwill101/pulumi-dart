@@ -1,6 +1,6 @@
 /// The ingestion type.
 enum IngestionType {
-  valueIPFIX("IPFIX");
+  iPFIX("IPFIX");
 
   const IngestionType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum IngestionType {
     throw ArgumentError('Unknown IngestionType value: $value');
   }
 }
-

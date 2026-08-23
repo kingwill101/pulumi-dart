@@ -21,7 +21,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -224,6 +224,84 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     diagnostics_profile = {
+///       boot_diagnostics = {
+///         enabled     = true
+///         storage_uri = "http://{existing-storage-account-name}.blob.core.windows.net"
+///       }
+///     }
+///     extension_profile = {
+///       extensions = [{
+///         "autoUpgradeMinorVersion" = false
+///         "name"                    = "{extension-name}"
+///         "publisher"               = "{extension-Publisher}"
+///         "settings"                = {}
+///         "suppressFailures"        = true
+///         "type"                    = "{extension-Type}"
+///         "typeHandlerVersion"      = "{handler-version}"
+///       }]
+///     }
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -244,8 +322,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -412,7 +490,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -743,6 +821,89 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     diagnostics_profile = {
+///       boot_diagnostics = {
+///         enabled     = true
+///         storage_uri = "http://{existing-storage-account-name}.blob.core.windows.net"
+///       }
+///     }
+///     extension_profile = {
+///       extensions = [{
+///         "autoUpgradeMinorVersion" = false
+///         "name"                    = "{extension-name}"
+///         "protectedSettingsFromKeyVault" = {
+///           "secretUrl" = "https://kvName.vault.azure.net/secrets/secretName/79b88b3a6f5440ffb2e73e44a0db712e"
+///           "sourceVault" = {
+///             "id" = "/subscriptions/a53f7094-a16c-47af-abe4-b05c05d0d79a/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/kvName"
+///           }
+///         }
+///         "publisher"          = "{extension-Publisher}"
+///         "settings"           = {}
+///         "type"               = "{extension-Type}"
+///         "typeHandlerVersion" = "{handler-version}"
+///       }]
+///     }
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -763,8 +924,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -941,7 +1102,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -1214,6 +1375,62 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         image = {
+///           uri = "http://{existing-storage-account-name}.blob.core.windows.net/{existing-container-name}/{existing-generalized-os-image-blob-name}.vhd"
+///         }
+///         name = "osDisk"
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1230,8 +1447,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualHardDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1353,7 +1570,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -1600,6 +1817,66 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching        = "ReadWrite"
+///         create_option  = "FromImage"
+///         name           = "osDisk"
+///         vhd_containers = ["http://{existing-storage-account-name-0}.blob.core.windows.net/vhdContainer", "http://{existing-storage-account-name-1}.blob.core.windows.net/vhdContainer", "http://{existing-storage-account-name-2}.blob.core.windows.net/vhdContainer", "http://{existing-storage-account-name-3}.blob.core.windows.net/vhdContainer", "http://{existing-storage-account-name-4}.blob.core.windows.net/vhdContainer"]
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1616,8 +1893,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1758,7 +2035,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -2008,6 +2285,64 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/{existing-custom-image-name}"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2025,8 +2360,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2152,7 +2487,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -2386,6 +2721,64 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/galleries/mySharedGallery/images/mySharedImage"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2403,8 +2796,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2530,7 +2923,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -2753,6 +3146,59 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/galleries/mySharedGallery/images/mySharedImage"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2769,8 +3215,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2886,7 +3332,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -3153,6 +3599,80 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "disableTcpStateTracking"     = true
+///         "enableAcceleratedNetworking" = true
+///         "enableIPForwarding"          = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{nicConfig1-name}"
+///         "primary" = true
+///         }, {
+///         "disableTcpStateTracking"     = false
+///         "enableAcceleratedNetworking" = false
+///         "enableIPForwarding"          = false
+///         "ipConfigurations" = [{
+///           "name"                    = "{nicConfig2-name}"
+///           "primary"                 = true
+///           "privateIPAddressVersion" = "IPv4"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-fpga-subnet-name2}"
+///           }
+///         }]
+///         "name"    = "{nicConfig2-name}"
+///         "primary" = false
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/{existing-custom-image-name}"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3170,8 +3690,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3334,7 +3854,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -3640,6 +4160,79 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     application_profile = {
+///       gallery_applications = [{
+///         "configurationReference"          = "https://mystorageaccount.blob.core.windows.net/configurations/settings.config"
+///         "enableAutomaticUpgrade"          = false
+///         "order"                           = 1
+///         "packageReferenceId"              = "/subscriptions/32c17a9e-aa7b-4ba5-a45b-e324116b6fdb/resourceGroups/myresourceGroupName2/providers/Microsoft.Compute/galleries/myGallery1/applications/MyApplication1/versions/1.0"
+///         "tags"                            = "myTag1"
+///         "treatFailureAsDeploymentFailure" = true
+///         }, {
+///         "packageReferenceId" = "/subscriptions/32c17a9e-aa7b-4ba5-a45b-e324116b6fdg/resourceGroups/myresourceGroupName3/providers/Microsoft.Compute/galleries/myGallery2/applications/MyApplication2/versions/1.1"
+///       }]
+///     }
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3658,8 +4251,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3820,7 +4413,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -4106,6 +4699,74 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location      = "westus"
+///   overprovision = false
+///   resiliency_policy = {
+///     automatic_zone_rebalancing_policy = {
+///       enabled            = true
+///       rebalance_behavior = "CreateBeforeDelete"
+///       rebalance_strategy = "Recreate"
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -4125,8 +4786,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4279,7 +4940,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     },
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -4579,6 +5240,88 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   scheduled_events_policy = {
+///     scheduled_events_additional_publishing_targets = {
+///       event_grid_and_resource_graph = {
+///         enable = true
+///       }
+///     }
+///     user_initiated_reboot = {
+///       automatically_approve = true
+///     }
+///     user_initiated_redeploy = {
+///       automatically_approve = true
+///     }
+///   }
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     hardware_profile = {
+///       vm_size_properties = {
+///         v_cp_us_available = 1
+///         v_cp_us_per_core  = 1
+///       }
+///     }
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       disk_controller_type = "NVMe"
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///     user_data = "RXhhbXBsZSBVc2VyRGF0YQ=="
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -4603,8 +5346,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4791,7 +5534,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         },
 ///     },
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -5092,6 +5835,79 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_DS1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       data_disks = [{
+///         "caching"      = "ReadWrite"
+///         "createOption" = "Empty"
+///         "diskSizeGB"   = 1023
+///         "lun"          = 0
+///         "managedDisk" = {
+///           "diskEncryptionSet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{existing-diskEncryptionSet-name}"
+///           }
+///           "storageAccountType" = "Standard_LRS"
+///         }
+///       }]
+///       image_reference = {
+///         id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/{existing-custom-image-name}"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           disk_encryption_set = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{existing-diskEncryptionSet-name}"
+///           }
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -5110,8 +5926,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
 /// import com.pulumi.azurenative.compute.inputs.DiskEncryptionSetParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5267,7 +6083,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_DS1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -5565,6 +6381,78 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///         }, {
+///         "enableAcceleratedNetworking" = false
+///         "enableFpga"                  = true
+///         "enableIPForwarding"          = false
+///         "ipConfigurations" = [{
+///           "name"                    = "{fpgaNic-Name}"
+///           "primary"                 = true
+///           "privateIPAddressVersion" = "IPv4"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-fpga-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{fpgaNic-Name}"
+///         "primary" = false
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/{existing-custom-image-name}"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -5582,8 +6470,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5742,7 +6630,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -6028,6 +6916,75 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location      = "westus"
+///   overprovision = true
+///   plan = {
+///     name      = "windows2016"
+///     product   = "windows-data-science-vm"
+///     publisher = "microsoft-ads"
+///   }
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_DS1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     security_profile = {
+///       encryption_at_host = true
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "windows-data-science-vm"
+///         publisher = "microsoft-ads"
+///         sku       = "windows2016"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadOnly"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -6047,8 +7004,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6201,7 +7158,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     },
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_DS1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -6514,6 +7471,90 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "auxiliaryMode"               = "AcceleratedConnections"
+///         "auxiliarySku"                = "A1"
+///         "disableTcpStateTracking"     = true
+///         "enableAcceleratedNetworking" = true
+///         "enableIPForwarding"          = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{nicConfig1-name}"
+///         "primary" = true
+///         }, {
+///         "disableTcpStateTracking"     = false
+///         "enableAcceleratedNetworking" = false
+///         "enableIPForwarding"          = false
+///         "ipConfigurations" = [{
+///           "name"                    = "{nicConfig2-name}"
+///           "primary"                 = true
+///           "privateIPAddressVersion" = "IPv4"
+///           "publicIPAddressConfiguration" = {
+///             "dnsSettings" = {
+///               "domainNameLabel"      = "vmsstestlabel01"
+///               "domainNameLabelScope" = "NoReuse"
+///             }
+///             "idleTimeoutInMinutes" = 10
+///             "name"                 = "publicip"
+///           }
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-fpga-subnet-name2}"
+///           }
+///         }]
+///         "name"    = "{nicConfig2-name}"
+///         "primary" = false
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/{existing-custom-image-name}"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -6531,8 +7572,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6715,7 +7756,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -7019,6 +8060,73 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     scheduled_events_profile = {
+///       os_image_notification_profile = {
+///         enable             = true
+///         not_before_timeout = "PT15M"
+///       }
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -7038,8 +8146,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7183,7 +8291,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -7451,6 +8559,72 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D2s_v3"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     security_profile = {
+///       proxy_agent_settings = {
+///         enabled = true
+///       }
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2019-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadOnly"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "StandardSSD_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -7470,8 +8644,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7613,7 +8787,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D2s_v3",
 ///         "tier": "Standard",
 ///     },
@@ -7879,6 +9053,72 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location      = "westus"
+///   overprovision = false
+///   resiliency_policy = {
+///     resilient_vm_creation_policy = {
+///       enabled = true
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -7898,8 +9138,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8046,7 +9286,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     },
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -8307,6 +9547,72 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location      = "westus"
+///   overprovision = false
+///   resiliency_policy = {
+///     resilient_vm_deletion_policy = {
+///       enabled = true
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -8326,8 +9632,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8474,7 +9780,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     },
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -8732,6 +10038,71 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "eastus2euap"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_A1"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     automatic_os_upgrade_policy = {
+///       enable_automatic_os_upgrade = true
+///     }
+///     mode = "Automatic"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     security_posture_reference = {
+///       id = "/CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2022-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         name          = "osDisk"
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -8750,8 +10121,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8891,7 +10262,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_A1",
 ///         "tier": "Standard",
 ///     },
@@ -9167,6 +10538,77 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_DC2as_v5"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     security_profile = {
+///       security_type = "ConfidentialVM"
+///       uefi_settings = {
+///         secure_boot_enabled = true
+///         v_tpm_enabled       = true
+///       }
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "2019-datacenter-cvm"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "windows-cvm"
+///         version   = "17763.2183.2109130127"
+///       }
+///       os_disk = {
+///         caching       = "ReadOnly"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           security_profile = {
+///             security_encryption_type = "VMGuestStateOnly"
+///           }
+///           storage_account_type = "StandardSSD_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -9187,8 +10629,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
 /// import com.pulumi.azurenative.compute.inputs.VMDiskSecurityProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9340,7 +10782,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_DC2as_v5",
 ///         "tier": "Standard",
 ///     },
@@ -9626,6 +11068,77 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_DC2es_v5"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     security_profile = {
+///       security_type = "ConfidentialVM"
+///       uefi_settings = {
+///         secure_boot_enabled = false
+///         v_tpm_enabled       = true
+///       }
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "2022-datacenter-cvm"
+///         publisher = "UbuntuServer"
+///         sku       = "linux-cvm"
+///         version   = "17763.2183.2109130127"
+///       }
+///       os_disk = {
+///         caching       = "ReadOnly"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           security_profile = {
+///             security_encryption_type = "NonPersistedTPM"
+///           }
+///           storage_account_type = "StandardSSD_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -9646,8 +11159,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
 /// import com.pulumi.azurenative.compute.inputs.VMDiskSecurityProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9799,7 +11312,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_DC2es_v5",
 ///         "tier": "Standard",
 ///     },
@@ -10071,6 +11584,71 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "eastus2euap"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_A1"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     automatic_os_upgrade_policy = {
+///       enable_automatic_os_upgrade = true
+///     }
+///     mode = "Automatic"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     service_artifact_reference = {
+///       id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/galleries/myGalleryName/serviceArtifacts/serviceArtifactName/vmArtifactsProfiles/vmArtifactsProfilesName"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2022-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         name          = "osDisk"
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -10089,8 +11667,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -10230,7 +11808,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_A1",
 ///         "tier": "Standard",
 ///     },
@@ -10499,6 +12077,74 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D2s_v3"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     security_profile = {
+///       security_type = "TrustedLaunch"
+///       uefi_settings = {
+///         secure_boot_enabled = true
+///         v_tpm_enabled       = true
+///       }
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "windowsserver-gen2preview-preview"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "windows10-tvm"
+///         version   = "18363.592.2001092016"
+///       }
+///       os_disk = {
+///         caching       = "ReadOnly"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "StandardSSD_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -10518,8 +12164,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -10665,7 +12311,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D2s_v3",
 ///         "tier": "Standard",
 ///     },
@@ -10934,6 +12580,72 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location      = "westus"
+///   overprovision = true
+///   plan = {
+///     name      = "windows2016"
+///     product   = "windows-data-science-vm"
+///     publisher = "microsoft-ads"
+///   }
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "windows-data-science-vm"
+///         publisher = "microsoft-ads"
+///         sku       = "windows2016"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -10952,8 +12664,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -11100,7 +12812,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     },
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -11362,6 +13074,70 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "applicationGatewayBackendAddressPools" = [{
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/applicationGateways/{existing-application-gateway-name}/backendAddressPools/{existing-backend-address-pool-name}"
+///           }]
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -11379,8 +13155,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -11518,7 +13294,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -11802,6 +13578,77 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "loadBalancerBackendAddressPools" = [{
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/{existing-load-balancer-name}/backendAddressPools/{existing-backend-address-pool-name}"
+///           }]
+///           "loadBalancerInboundNatPools" = [{
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/{existing-load-balancer-name}/inboundNatPools/{existing-nat-pool-name}"
+///           }]
+///           "name" = "{vmss-name}"
+///           "publicIPAddressConfiguration" = {
+///             "name"                   = "{vmss-name}"
+///             "publicIPAddressVersion" = "IPv4"
+///           }
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -11819,8 +13666,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -11972,7 +13819,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -12275,6 +14122,84 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   automatic_repairs_policy = {
+///     enabled      = true
+///     grace_period = "PT10M"
+///   }
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   scheduled_events_policy = {
+///     scheduled_events_additional_publishing_targets = {
+///       event_grid_and_resource_graph = {
+///         enable = true
+///       }
+///     }
+///     user_initiated_reboot = {
+///       automatically_approve = true
+///     }
+///     user_initiated_redeploy = {
+///       automatically_approve = true
+///     }
+///   }
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -12298,8 +14223,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -12482,7 +14407,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         },
 ///     },
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -12753,6 +14678,73 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     diagnostics_profile = {
+///       boot_diagnostics = {
+///         enabled     = true
+///         storage_uri = "http://{existing-storage-account-name}.blob.core.windows.net"
+///       }
+///     }
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -12772,8 +14764,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -12917,7 +14909,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -13202,6 +15194,77 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D2_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       data_disks = [{
+///         "createOption" = "Empty"
+///         "diskSizeGB"   = 1023
+///         "lun"          = 0
+///         }, {
+///         "createOption" = "Empty"
+///         "diskSizeGB"   = 1023
+///         "lun"          = 1
+///       }]
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         disk_size_gb  = 512
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -13219,8 +15282,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -13377,7 +15440,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D2_v2",
 ///         "tier": "Standard",
 ///     },
@@ -13664,6 +15727,76 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location      = "westus"
+///   overprovision = true
+///   plan = {
+///     name      = "windows2016"
+///     product   = "windows-data-science-vm"
+///     publisher = "microsoft-ads"
+///   }
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_DS1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "windows-data-science-vm"
+///         publisher = "microsoft-ads"
+///         sku       = "windows2016"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadOnly"
+///         create_option = "FromImage"
+///         diff_disk_settings = {
+///           option    = "Local"
+///           placement = "NvmeDisk"
+///         }
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -13683,8 +15816,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.DiffDiskSettingsArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -13839,7 +15972,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     },
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_DS1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -14116,6 +16249,76 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location      = "westus"
+///   overprovision = true
+///   plan = {
+///     name      = "windows2016"
+///     product   = "windows-data-science-vm"
+///     publisher = "microsoft-ads"
+///   }
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_DS1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "windows-data-science-vm"
+///         publisher = "microsoft-ads"
+///         sku       = "windows2016"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadOnly"
+///         create_option = "FromImage"
+///         diff_disk_settings = {
+///           option    = "Local"
+///           placement = "ResourceDisk"
+///         }
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -14135,8 +16338,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.DiffDiskSettingsArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -14291,7 +16494,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     },
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_DS1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -14566,6 +16769,75 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location      = "westus"
+///   overprovision = true
+///   plan = {
+///     name      = "windows2016"
+///     product   = "windows-data-science-vm"
+///     publisher = "microsoft-ads"
+///   }
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_DS1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "windows-data-science-vm"
+///         publisher = "microsoft-ads"
+///         sku       = "windows2016"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadOnly"
+///         create_option = "FromImage"
+///         diff_disk_settings = {
+///           option = "Local"
+///         }
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -14585,8 +16857,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.DiffDiskSettingsArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -14739,7 +17011,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     },
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_DS1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -15037,6 +17309,84 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     diagnostics_profile = {
+///       boot_diagnostics = {
+///         enabled     = true
+///         storage_uri = "http://{existing-storage-account-name}.blob.core.windows.net"
+///       }
+///     }
+///     extension_profile = {
+///       extensions = [{
+///         "autoUpgradeMinorVersion" = false
+///         "name"                    = "{extension-name}"
+///         "publisher"               = "{extension-Publisher}"
+///         "settings"                = {}
+///         "type"                    = "{extension-Type}"
+///         "typeHandlerVersion"      = "{handler-version}"
+///       }]
+///       extensions_time_budget = "PT1H20M"
+///     }
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -15057,8 +17407,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -15225,7 +17575,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -15513,6 +17863,72 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     diagnostics_profile = {
+///       boot_diagnostics = {
+///         enabled = true
+///       }
+///     }
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -15532,8 +17948,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -15675,7 +18091,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -15929,6 +18345,67 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -15946,8 +18423,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -16079,7 +18556,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -16325,6 +18802,67 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Premium_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -16342,8 +18880,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -16475,7 +19013,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -16744,6 +19282,78 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location                    = "westus"
+///   orchestration_mode          = "Flexible"
+///   platform_fault_domain_count = 1
+///   priority_mix_policy = {
+///     base_regular_priority_count            = 10
+///     regular_priority_percentage_above_base = 50
+///   }
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 2
+///     name     = "Standard_A8m_v2"
+///     tier     = "Standard"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_api_version = "2020-11-01"
+///       network_interface_configurations = [{
+///         "enableAcceleratedNetworking" = false
+///         "enableIPForwarding"          = true
+///         "ipConfigurations" = [{
+///           "applicationGatewayBackendAddressPools" = []
+///           "loadBalancerBackendAddressPools"       = []
+///           "name"                                  = "{vmss-name}"
+///           "primary"                               = true
+///           "publicIPAddressConfiguration" = {
+///             "idleTimeoutInMinutes" = 15
+///             "name"                 = "{vmss-name}"
+///           }
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     priority = "Spot"
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "0001-com-ubuntu-server-focal"
+///         publisher = "Canonical"
+///         sku       = "20_04-lts-gen2"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -16761,8 +19371,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -16921,7 +19531,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     },
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 2,
+///         "capacity": float(2),
 ///         "name": "Standard_A8m_v2",
 ///         "tier": "Standard",
 ///     },
@@ -17199,6 +19809,72 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   scale_in_policy = {
+///     force_deletion            = true
+///     prioritize_unhealthy_v_ms = true
+///     rules                     = ["OldestVM"]
+///   }
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -17217,8 +19893,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -17365,7 +20041,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         "rules": [azure_native.compute.VirtualMachineScaleSetScaleInRules.OLDEST_VM],
 ///     },
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -17662,6 +20338,83 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location           = "westus"
+///   orchestration_mode = "Flexible"
+///   priority_mix_policy = {
+///     base_regular_priority_count            = 4
+///     regular_priority_percentage_above_base = 50
+///   }
+///   resource_group_name    = "myResourceGroup"
+///   single_placement_group = false
+///   sku = {
+///     capacity = 10
+///     name     = "Mix"
+///   }
+///   sku_profile = {
+///     allocation_strategy = "CapacityOptimized"
+///     vm_sizes = [{
+///       "name" = "Standard_D8s_v5"
+///       }, {
+///       "name" = "Standard_E16s_v5"
+///       }, {
+///       "name" = "Standard_D2s_v5"
+///     }]
+///   }
+///   virtual_machine_profile = {
+///     billing_profile = {
+///       max_price = -1
+///     }
+///     eviction_policy = "Deallocate"
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     priority = "Spot"
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -17681,8 +20434,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -17858,7 +20611,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     resource_group_name="myResourceGroup",
 ///     single_placement_group=False,
 ///     sku={
-///         "capacity": 10,
+///         "capacity": float(10),
 ///         "name": "Mix",
 ///     },
 ///     sku_profile={
@@ -17877,7 +20630,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     },
 ///     virtual_machine_profile={
 ///         "billing_profile": {
-///             "max_price": -1,
+///             "max_price": float(-1),
 ///         },
 ///         "eviction_policy": azure_native.compute.VirtualMachineEvictionPolicyTypes.DEALLOCATE,
 ///         "network_profile": {
@@ -18182,6 +20935,86 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location           = "westus"
+///   orchestration_mode = "Flexible"
+///   priority_mix_policy = {
+///     base_regular_priority_count            = 4
+///     regular_priority_percentage_above_base = 50
+///   }
+///   resource_group_name    = "myResourceGroup"
+///   single_placement_group = false
+///   sku = {
+///     capacity = 10
+///     name     = "Mix"
+///   }
+///   sku_profile = {
+///     allocation_strategy = "Prioritized"
+///     vm_sizes = [{
+///       "name" = "Standard_D8s_v5"
+///       "rank" = 0
+///       }, {
+///       "name" = "Standard_E16s_v5"
+///       "rank" = 1
+///       }, {
+///       "name" = "Standard_D2s_v5"
+///       "rank" = 2
+///     }]
+///   }
+///   virtual_machine_profile = {
+///     billing_profile = {
+///       max_price = -1
+///     }
+///     eviction_policy = "Deallocate"
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     priority = "Spot"
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -18201,8 +21034,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -18384,7 +21217,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     resource_group_name="myResourceGroup",
 ///     single_placement_group=False,
 ///     sku={
-///         "capacity": 10,
+///         "capacity": float(10),
 ///         "name": "Mix",
 ///     },
 ///     sku_profile={
@@ -18406,7 +21239,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     },
 ///     virtual_machine_profile={
 ///         "billing_profile": {
-///             "max_price": -1,
+///             "max_price": float(-1),
 ///         },
 ///         "eviction_policy": azure_native.compute.VirtualMachineEvictionPolicyTypes.DEALLOCATE,
 ///         "network_profile": {
@@ -18682,6 +21515,76 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 2
+///     name     = "Standard_A8m_v2"
+///     tier     = "Standard"
+///   }
+///   spot_restore_policy = {
+///     enabled         = true
+///     restore_timeout = "PT1H"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     billing_profile = {
+///       max_price = -1
+///     }
+///     eviction_policy = "Deallocate"
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     priority = "Spot"
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -18701,8 +21604,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -18852,7 +21755,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 2,
+///         "capacity": float(2),
 ///         "name": "Standard_A8m_v2",
 ///         "tier": "Standard",
 ///     },
@@ -18865,7 +21768,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     },
 ///     virtual_machine_profile={
 ///         "billing_profile": {
-///             "max_price": -1,
+///             "max_price": float(-1),
 ///         },
 ///         "eviction_policy": azure_native.compute.VirtualMachineEvictionPolicyTypes.DEALLOCATE,
 ///         "network_profile": {
@@ -19138,6 +22041,75 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///       linux_configuration = {
+///         disable_password_authentication = true
+///         ssh = {
+///           public_keys = [{
+///             "keyData" = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCeClRAk2ipUs/l5voIsDC5q9RI+YSRd1Bvd/O+axgY4WiBzG+4FwJWZm/mLLe5DoOdHQwmU2FrKXZSW4w2sYE70KeWnrFViCOX5MTVvJgPE8ClugNl8RWth/tU849DvM9sT7vFgfVSHcAS2yDRyDlueii+8nF2ym8XWAPltFVCyLHRsyBp5YPqK8JFYIa1eybKsY3hEAxRCA+/7bq8et+Gj3coOsuRmrehav7rE6N12Pb80I6ofa6SM5XNYq4Xk0iYNx7R3kdz0Jj9XgZYWjAHjJmT0gTRoOnt6upOuxK7xI/ykWrllgpXrCPu3Ymz+c+ujaqcxDopnAl2lmf69/J1"
+///             "path"    = "/home/{your-username}/.ssh/authorized_keys"
+///           }]
+///         }
+///       }
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -19157,8 +22129,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -19306,7 +22278,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -19579,6 +22551,73 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     scheduled_events_profile = {
+///       terminate_notification_profile = {
+///         enable             = true
+///         not_before_timeout = "PT5M"
+///       }
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -19598,8 +22637,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -19743,7 +22782,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -20001,6 +23040,68 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///     user_data = "RXhhbXBsZSBVc2VyRGF0YQ=="
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -20018,8 +23119,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -20153,7 +23254,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -20439,6 +23540,78 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "centralus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 2
+///     name     = "Standard_A1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Automatic"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       data_disks = [{
+///         "createOption" = "Empty"
+///         "diskSizeGB"   = 1023
+///         "lun"          = 0
+///         }, {
+///         "createOption" = "Empty"
+///         "diskSizeGB"   = 1023
+///         "lun"          = 1
+///       }]
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         disk_size_gb  = 512
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+///   zones             = ["1", "3"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -20456,8 +23629,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -20621,7 +23794,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 2,
+///         "capacity": float(2),
 ///         "name": "Standard_A1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -20911,6 +24084,74 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     hardware_profile = {
+///       vm_size_properties = {
+///         v_cp_us_available = 1
+///         v_cp_us_per_core  = 1
+///       }
+///     }
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///     user_data = "RXhhbXBsZSBVc2VyRGF0YQ=="
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -20930,8 +24171,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -21077,7 +24318,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -21368,6 +24609,81 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   scheduled_events_policy = {
+///     scheduled_events_additional_publishing_targets = {
+///       event_grid_and_resource_graph = {
+///         enable = true
+///       }
+///     }
+///     user_initiated_reboot = {
+///       automatically_approve = true
+///     }
+///     user_initiated_redeploy = {
+///       automatically_approve = true
+///     }
+///   }
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_D1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name                      = "{vmss-name}"
+///   zonal_platform_fault_domain_align_mode = "Aligned"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -21390,8 +24706,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -21564,7 +24880,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         },
 ///     },
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_D1_v2",
 ///         "tier": "Standard",
 ///     },
@@ -21832,6 +25148,72 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+///   location            = "westus"
+///   overprovision       = true
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     capacity = 3
+///     name     = "Standard_DS1_v2"
+///     tier     = "Standard"
+///   }
+///   upgrade_policy = {
+///     mode = "Manual"
+///   }
+///   virtual_machine_profile = {
+///     capacity_reservation = {
+///       capacity_reservation_group = {
+///         id = "subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/CapacityReservationGroups/{crgName}"
+///       }
+///     }
+///     network_profile = {
+///       network_interface_configurations = [{
+///         "enableIPForwarding" = true
+///         "ipConfigurations" = [{
+///           "name" = "{vmss-name}"
+///           "subnet" = {
+///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           }
+///         }]
+///         "name"    = "{vmss-name}"
+///         "primary" = true
+///       }]
+///     }
+///     os_profile = {
+///       admin_password       = "{your-password}"
+///       admin_username       = "{your-username}"
+///       computer_name_prefix = "{vmss-name}"
+///     }
+///     storage_profile = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter"
+///         version   = "latest"
+///       }
+///       os_disk = {
+///         caching       = "ReadWrite"
+///         create_option = "FromImage"
+///         managed_disk = {
+///           storage_account_type = "Standard_LRS"
+///         }
+///       }
+///     }
+///   }
+///   vm_scale_set_name = "{vmss-name}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -21851,8 +25233,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -21994,7 +25376,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     overprovision=True,
 ///     resource_group_name="myResourceGroup",
 ///     sku={
-///         "capacity": 3,
+///         "capacity": float(3),
 ///         "name": "Standard_DS1_v2",
 ///         "tier": "Standard",
 ///     },

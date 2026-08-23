@@ -15,4 +15,3 @@ enum DatabaseIdentityType {
     throw ArgumentError('Unknown DatabaseIdentityType value: $value');
   }
 }
-

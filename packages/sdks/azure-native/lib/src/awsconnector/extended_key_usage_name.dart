@@ -25,4 +25,3 @@ enum ExtendedKeyUsageName {
     throw ArgumentError('Unknown ExtendedKeyUsageName value: $value');
   }
 }
-

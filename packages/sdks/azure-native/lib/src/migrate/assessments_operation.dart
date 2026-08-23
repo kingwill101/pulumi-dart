@@ -1,7 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'assessments_operation_args.dart';
 import 'system_data_response.dart';
-import 'vm_uptime_response.dart';
+import 'vm_uptime_assessments_operation_response.dart';
 
 /// Machine assessment resource.
 ///
@@ -130,6 +130,47 @@ import 'vm_uptime_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_assessmentsoperation" "assessmentsOperation" {
+///   assessment_name                = "asm1"
+///   azure_disk_types               = ["Premium", "PremiumV2", "StandardSSD"]
+///   azure_hybrid_use_benefit       = "Unknown"
+///   azure_location                 = "njxbwdtsxzhichsnk"
+///   azure_offer_code               = "Unknown"
+///   azure_pricing_tier             = "Standard"
+///   azure_storage_redundancy       = "Unknown"
+///   azure_vm_families              = ["D_series", "Lsv2_series", "M_series", "Mdsv2_series", "Msv2_series", "Mv2_series"]
+///   currency                       = "Unknown"
+///   discount_percentage            = 6
+///   ea_subscription_id             = "kwsu"
+///   group_name                     = "kuchatur-test"
+///   linux_azure_hybrid_use_benefit = "Unknown"
+///   percentile                     = "Percentile50"
+///   perf_data_end_time             = "2023-09-26T09:36:48.491Z"
+///   perf_data_start_time           = "2023-09-26T09:36:48.491Z"
+///   project_name                   = "app18700project"
+///   provisioning_state             = "Succeeded"
+///   reserved_instance              = "None"
+///   resource_group_name            = "ayagrawrg"
+///   scaling_factor                 = 24
+///   sizing_criterion               = "PerformanceBased"
+///   time_range                     = "Day"
+///   vm_uptime = {
+///     days_per_month = 13
+///     hours_per_day  = 26
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -139,8 +180,8 @@ import 'vm_uptime_response.dart';
 /// import com.pulumi.azurenative.migrate.AssessmentsOperation;
 /// import com.pulumi.azurenative.migrate.AssessmentsOperationArgs;
 /// import com.pulumi.azurenative.migrate.inputs.VmUptimeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -268,7 +309,7 @@ import 'vm_uptime_response.dart';
 ///         azure_native.migrate.AzureVmFamily.MV2_SERIES,
 ///     ],
 ///     currency=azure_native.migrate.AzureCurrency.UNKNOWN,
-///     discount_percentage=6,
+///     discount_percentage=float(6),
 ///     ea_subscription_id="kwsu",
 ///     group_name="kuchatur-test",
 ///     linux_azure_hybrid_use_benefit=azure_native.migrate.AzureHybridUseBenefit.UNKNOWN,
@@ -279,12 +320,12 @@ import 'vm_uptime_response.dart';
 ///     provisioning_state=azure_native.migrate.ProvisioningState.SUCCEEDED,
 ///     reserved_instance=azure_native.migrate.AzureReservedInstance.NONE,
 ///     resource_group_name="ayagrawrg",
-///     scaling_factor=24,
+///     scaling_factor=float(24),
 ///     sizing_criterion=azure_native.migrate.AssessmentSizingCriterion.PERFORMANCE_BASED,
 ///     time_range=azure_native.migrate.TimeRange.DAY,
 ///     vm_uptime={
-///         "days_per_month": 13,
-///         "hours_per_day": 26,
+///         "days_per_month": float(13),
+///         "hours_per_day": float(26),
 ///     })
 ///
 /// ```
@@ -446,7 +487,7 @@ class AssessmentsOperation extends pulumi.CustomResource {
   late final pulumi.Output<String> updatedTimestamp;
   /// Gets or sets the duration for which the VMs are up in the on-premises
   /// environment.
-  late final pulumi.Output<VmUptimeResponse?> vmUptime;
+  late final pulumi.Output<VmUptimeAssessmentsOperationResponse?> vmUptime;
 
   /// Creates a new [AssessmentsOperation].
   /// [name] The Pulumi resource name.
@@ -507,6 +548,6 @@ class AssessmentsOperation extends pulumi.CustomResource {
     timeRange = registerOutput<String?>('timeRange');
     type = registerOutput<String>('type');
     updatedTimestamp = registerOutput<String>('updatedTimestamp');
-    vmUptime = registerOutput<VmUptimeResponse?>('vmUptime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmUptimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vmUptime = registerOutput<VmUptimeAssessmentsOperationResponse?>('vmUptime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmUptimeAssessmentsOperationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

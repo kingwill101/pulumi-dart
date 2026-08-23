@@ -79,6 +79,32 @@ import 'role_assignment_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_customerinsights_roleassignment" "roleAssignment" {
+///   assignment_name = "assignmentName8976"
+///   hub_name        = "sdkTestHub"
+///   principals {
+///     principal_id   = "4c54c38ffa9b416ba5a6d6c8a20cbe7e"
+///     principal_type = "User"
+///   }
+///   principals {
+///     principal_id   = "93061d15a5054f2b9948ae25724cf9d5"
+///     principal_type = "User"
+///   }
+///   resource_group_name = "TestHubRG"
+///   role                = "Admin"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +114,8 @@ import 'role_assignment_args.dart';
 /// import com.pulumi.azurenative.customerinsights.RoleAssignment;
 /// import com.pulumi.azurenative.customerinsights.RoleAssignmentArgs;
 /// import com.pulumi.azurenative.customerinsights.inputs.AssignmentPrincipalArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

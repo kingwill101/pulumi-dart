@@ -1,8 +1,8 @@
 /// Enable or disable ssl for scoring
 enum SslConfigStatus {
-  valueDisabled("Disabled"),
-  valueEnabled("Enabled"),
-  valueAuto("Auto");
+  disabled("Disabled"),
+  enabled("Enabled"),
+  auto("Auto");
 
   const SslConfigStatus(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum SslConfigStatus {
     throw ArgumentError('Unknown SslConfigStatus value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum CloudServicesNetworkEnableDefaultEgressEndpoints {
     throw ArgumentError('Unknown CloudServicesNetworkEnableDefaultEgressEndpoints value: $value');
   }
 }
-

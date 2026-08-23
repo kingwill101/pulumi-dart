@@ -34,4 +34,3 @@ class GetEc2VpcPeeringConnectionArgs {
     );
   }
 }
-

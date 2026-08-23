@@ -5,7 +5,7 @@ import 'mongo_dbresource_mongo_user_definition_args.dart';
 ///
 /// Uses Azure REST API version 2025-10-15.
 ///
-/// Other available API versions: 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview, 2026-03-15, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -79,6 +79,32 @@ import 'mongo_dbresource_mongo_user_definition_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cosmosdb_mongodbresourcemongouserdefinition" "mongoDBResourceMongoUserDefinition" {
+///   account_name             = "myAccountName"
+///   custom_data              = "My custom data"
+///   database_name            = "sales"
+///   mechanisms               = "SCRAM-SHA-256"
+///   mongo_user_definition_id = "myMongoUserDefinitionId"
+///   password                 = "myPassword"
+///   resource_group_name      = "myResourceGroupName"
+///   roles {
+///     db   = "sales"
+///     role = "myReadRole"
+///   }
+///   user_name = "myUserName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +114,8 @@ import 'mongo_dbresource_mongo_user_definition_args.dart';
 /// import com.pulumi.azurenative.cosmosdb.MongoDBResourceMongoUserDefinition;
 /// import com.pulumi.azurenative.cosmosdb.MongoDBResourceMongoUserDefinitionArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.RoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

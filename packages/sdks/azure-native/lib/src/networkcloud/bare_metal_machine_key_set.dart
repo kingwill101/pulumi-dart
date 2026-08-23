@@ -5,7 +5,7 @@ import 'system_data_response.dart';
 
 /// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -133,6 +133,53 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_networkcloud_baremetalmachinekeyset" "bareMetalMachineKeySet" {
+///   azure_group_id                  = "f110271b-XXXX-4163-9b99-214d91660f0e"
+///   bare_metal_machine_key_set_name = "bareMetalMachineKeySetName"
+///   cluster_name                    = "clusterName"
+///   expiration                      = "2022-12-31T23:59:59.008Z"
+///   extended_location = {
+///     name = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/clusterExtendedLocationName"
+///     type = "CustomLocation"
+///   }
+///   jump_hosts_allowed  = ["192.0.2.1", "192.0.2.5"]
+///   location            = "location"
+///   os_group_name       = "standardAccessGroup"
+///   privilege_level     = "Standard"
+///   resource_group_name = "resourceGroupName"
+///   tags = {
+///     "key1" = "myvalue1"
+///     "key2" = "myvalue2"
+///   }
+///   user_list {
+///     azure_user_name = "userABC"
+///     description     = "Needs access for troubleshooting as a part of the support team"
+///     ssh_public_key = {
+///       key_data = "ssh-rsa AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXISTRnIDpcf5qytjs1Xo+yYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"
+///     }
+///     user_principal_name = "userABC@contoso.com"
+///   }
+///   user_list {
+///     azure_user_name = "userXYZ"
+///     description     = "Needs access for troubleshooting as a part of the support team"
+///     ssh_public_key = {
+///       key_data = "ssh-rsa AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXISTRnIDpcf5qytjs1Xo+yYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"
+///     }
+///     user_principal_name = "userABC@contoso.com"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -144,8 +191,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.networkcloud.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.networkcloud.inputs.KeySetUserArgs;
 /// import com.pulumi.azurenative.networkcloud.inputs.SshPublicKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

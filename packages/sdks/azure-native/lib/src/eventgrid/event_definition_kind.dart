@@ -14,4 +14,3 @@ enum EventDefinitionKind {
     throw ArgumentError('Unknown EventDefinitionKind value: $value');
   }
 }
-

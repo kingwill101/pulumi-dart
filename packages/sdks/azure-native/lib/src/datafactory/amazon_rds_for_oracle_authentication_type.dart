@@ -1,6 +1,6 @@
 /// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
 enum AmazonRdsForOracleAuthenticationType {
-  valueBasic("Basic");
+  basic("Basic");
 
   const AmazonRdsForOracleAuthenticationType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum AmazonRdsForOracleAuthenticationType {
     throw ArgumentError('Unknown AmazonRdsForOracleAuthenticationType value: $value');
   }
 }
-

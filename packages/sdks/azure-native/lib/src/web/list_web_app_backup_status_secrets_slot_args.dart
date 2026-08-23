@@ -9,7 +9,7 @@ import 'database_backup_setting.dart';
 /// {@endtemplate}
 /// {@macro pulumi_web_list_web_app_backup_status_secrets_slot_args_doc}
 class ListWebAppBackupStatusSecretsSlotArgs {
-  /// ID of backup.
+  /// ID of the backup.
   final pulumi.Input<String> backupId;
   /// Name of the backup.
   final pulumi.Input<String>? backupName;
@@ -21,25 +21,25 @@ class ListWebAppBackupStatusSecretsSlotArgs {
   final pulumi.Input<bool>? enabled;
   /// Kind of resource.
   final pulumi.Input<String>? kind;
-  /// Name of web app.
+  /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Name of web app slot. If not specified then will default to production slot.
+  /// Name of the deployment slot. If a slot is not specified, the API will get a backup of the production slot.
   final pulumi.Input<String> slot;
   /// SAS URL to the container.
   final pulumi.Input<String> storageAccountUrl;
 
   /// Creates a new [ListWebAppBackupStatusSecretsSlotArgs].
-  /// [backupId] ID of backup.
+  /// [backupId] ID of the backup.
   /// [backupName] Name of the backup.
   /// [backupSchedule] Schedule for the backup if it is executed periodically.
   /// [databases] Databases included in the backup.
   /// [enabled] True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
   /// [kind] Kind of resource.
-  /// [name] Name of web app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  /// [slot] Name of web app slot. If not specified then will default to production slot.
+  /// [name] Name of the app.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [slot] Name of the deployment slot. If a slot is not specified, the API will get a backup of the production slot.
   /// [storageAccountUrl] SAS URL to the container.
   const ListWebAppBackupStatusSecretsSlotArgs({
     required this.backupId,
@@ -84,4 +84,3 @@ class ListWebAppBackupStatusSecretsSlotArgs {
     );
   }
 }
-

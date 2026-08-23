@@ -18,4 +18,3 @@ enum RuntimeProtectionEnforcementLevel {
     throw ArgumentError('Unknown RuntimeProtectionEnforcementLevel value: $value');
   }
 }
-

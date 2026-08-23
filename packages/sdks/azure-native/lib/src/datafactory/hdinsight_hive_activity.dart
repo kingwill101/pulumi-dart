@@ -11,7 +11,7 @@ class HDInsightHiveActivity {
   /// User specified arguments to HDInsightActivity.
   final pulumi.Input<List<dynamic>>? arguments;
   /// Allows user to specify defines for Hive job request.
-  final pulumi.Input<Map<String, dynamic>>? defines;
+  final pulumi.Input<dynamic>? defines;
   /// Activity depends on condition.
   final pulumi.Input<List<ActivityDependency>>? dependsOn;
   /// Activity description.
@@ -42,7 +42,7 @@ class HDInsightHiveActivity {
   /// Activity user properties.
   final pulumi.Input<List<UserProperty>>? userProperties;
   /// User specified arguments under hivevar namespace.
-  final pulumi.Input<Map<String, dynamic>>? variables;
+  final pulumi.Input<dynamic>? variables;
 
   /// Creates a new [HDInsightHiveActivity].
   /// [arguments] User specified arguments to HDInsightActivity.
@@ -107,7 +107,7 @@ class HDInsightHiveActivity {
   factory HDInsightHiveActivity.fromMap(Map<String, dynamic> map) {
     return HDInsightHiveActivity(
       arguments: (() { final guardedValue = map['arguments']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
-      defines: (() { final guardedValue = map['defines']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      defines: (() { final guardedValue = map['defines']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependency>(guardedValue, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       getDebugInfo: (() { final guardedValue = map['getDebugInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -122,8 +122,7 @@ class HDInsightHiveActivity {
       storageLinkedServices: (() { final guardedValue = map['storageLinkedServices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LinkedServiceReference>(guardedValue, (value) => LinkedServiceReference.fromMap((value as Map).cast<String, dynamic>()))); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       userProperties: (() { final guardedValue = map['userProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserProperty>(guardedValue, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      variables: (() { final guardedValue = map['variables']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      variables: (() { final guardedValue = map['variables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
-

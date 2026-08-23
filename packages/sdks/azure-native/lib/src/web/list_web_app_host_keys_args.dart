@@ -7,14 +7,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_web_list_web_app_host_keys_args_doc}
 class ListWebAppHostKeysArgs {
-  /// Site name.
+  /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [ListWebAppHostKeysArgs].
-  /// [name] Site name.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [name] Name of the app.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const ListWebAppHostKeysArgs({
     required this.name,
     required this.resourceGroupName,
@@ -34,4 +34,3 @@ class ListWebAppHostKeysArgs {
     );
   }
 }
-

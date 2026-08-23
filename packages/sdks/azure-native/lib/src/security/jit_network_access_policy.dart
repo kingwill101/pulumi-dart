@@ -1,6 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'jit_network_access_policy_args.dart';
+import 'system_data_response.dart';
 
+/// Concrete proxy resource types can be created by aliasing this type using a specific property type.
+///
 /// Uses Azure REST API version 2020-01-01. In version 2.x of the Azure Native provider, it used API version 2020-01-01.
 ///
 /// {{% examples %}}
@@ -142,6 +145,53 @@ import 'jit_network_access_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_jitnetworkaccesspolicy" "jitNetworkAccessPolicy" {
+///   asc_location                   = "westeurope"
+///   jit_network_access_policy_name = "default"
+///   kind                           = "Basic"
+///   requests {
+///     requestor      = "barbara@contoso.com"
+///     start_time_utc = "2018-05-17T08:06:45.5691611Z"
+///     virtual_machines {
+///       id = "/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg1/providers/Microsoft.Compute/virtualMachines/vm1"
+///       ports {
+///         allowed_source_address_prefix = "192.127.0.2"
+///         end_time_utc                  = "2018-05-17T09:06:45.5691611Z"
+///         number                        = 3389
+///         status                        = "Initiated"
+///         status_reason                 = "UserRequested"
+///       }
+///     }
+///   }
+///   resource_group_name = "myRg1"
+///   virtual_machines {
+///     id = "/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg1/providers/Microsoft.Compute/virtualMachines/vm1"
+///     ports {
+///       allowed_source_address_prefix = "*"
+///       max_request_access_duration   = "PT3H"
+///       number                        = 22
+///       protocol                      = "*"
+///     }
+///     ports {
+///       allowed_source_address_prefix = "*"
+///       max_request_access_duration   = "PT3H"
+///       number                        = 3389
+///       protocol                      = "*"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -152,8 +202,8 @@ import 'jit_network_access_policy_args.dart';
 /// import com.pulumi.azurenative.security.JitNetworkAccessPolicyArgs;
 /// import com.pulumi.azurenative.security.inputs.JitNetworkAccessRequestArgs;
 /// import com.pulumi.azurenative.security.inputs.JitNetworkAccessPolicyVirtualMachineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -345,12 +395,14 @@ class JitNetworkAccessPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String?> kind;
   /// Location where the resource is stored
   late final pulumi.Output<String> location;
-  /// Resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Gets the provisioning state of the Just-in-Time policy.
   late final pulumi.Output<String> provisioningState;
   late final pulumi.Output<List<Map<String, dynamic>>?> requests;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// Configurations for Microsoft.Compute/virtualMachines resource type.
   late final pulumi.Output<List<Map<String, dynamic>>> virtualMachines;
@@ -375,6 +427,7 @@ class JitNetworkAccessPolicy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     requests = registerOutput<List<Map<String, dynamic>>?>('requests');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     virtualMachines = registerOutput<List<Map<String, dynamic>>>('virtualMachines');
   }

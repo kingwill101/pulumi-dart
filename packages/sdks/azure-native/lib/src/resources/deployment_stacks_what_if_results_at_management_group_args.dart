@@ -12,7 +12,7 @@ class DeploymentStacksWhatIfResultsAtManagementGroupArgs {
   final pulumi.Input<String>? deploymentStacksWhatIfResultName;
   /// The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks.
   final pulumi.Input<String>? location;
-  /// The name of the management group. The name is case insensitive.
+  /// The management group ID.
   final pulumi.Input<String> managementGroupId;
   /// The resource-specific properties for this resource.
   final pulumi.Input<DeploymentStacksWhatIfResultProperties>? properties;
@@ -22,7 +22,7 @@ class DeploymentStacksWhatIfResultsAtManagementGroupArgs {
   /// Creates a new [DeploymentStacksWhatIfResultsAtManagementGroupArgs].
   /// [deploymentStacksWhatIfResultName] Name of the deployment stack what-if result.
   /// [location] The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks.
-  /// [managementGroupId] The name of the management group. The name is case insensitive.
+  /// [managementGroupId] The management group ID.
   /// [properties] The resource-specific properties for this resource.
   /// [tags] Resource tags.
   const DeploymentStacksWhatIfResultsAtManagementGroupArgs({
@@ -53,4 +53,3 @@ class DeploymentStacksWhatIfResultsAtManagementGroupArgs {
     );
   }
 }
-

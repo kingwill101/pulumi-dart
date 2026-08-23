@@ -18,4 +18,3 @@ enum MachineGroupType {
     throw ArgumentError('Unknown MachineGroupType value: $value');
   }
 }
-

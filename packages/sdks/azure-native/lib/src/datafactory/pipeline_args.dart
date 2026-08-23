@@ -30,10 +30,10 @@ class PipelineArgs {
   final pulumi.Input<String>? pipelineName;
   /// Pipeline Policy.
   final pulumi.Input<PipelinePolicy>? policy;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Dimensions emitted by Pipeline.
-  final pulumi.Input<Map<String, dynamic>>? runDimensions;
+  final pulumi.Input<dynamic>? runDimensions;
   /// List of variables for pipeline.
   final pulumi.Input<Map<String, VariableSpecification>>? variables;
 
@@ -47,7 +47,7 @@ class PipelineArgs {
   /// [parameters] List of parameters for pipeline.
   /// [pipelineName] The pipeline name.
   /// [policy] Pipeline Policy.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [runDimensions] Dimensions emitted by Pipeline.
   /// [variables] List of variables for pipeline.
   const PipelineArgs({
@@ -94,9 +94,8 @@ class PipelineArgs {
       pipelineName: (() { final guardedValue = map['pipelineName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelinePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      runDimensions: (() { final guardedValue = map['runDimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      runDimensions: (() { final guardedValue = map['runDimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       variables: (() { final guardedValue = map['variables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<VariableSpecification>(guardedValue, (value) => VariableSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
-

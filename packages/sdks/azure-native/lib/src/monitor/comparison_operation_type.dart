@@ -19,4 +19,3 @@ enum ComparisonOperationType {
     throw ArgumentError('Unknown ComparisonOperationType value: $value');
   }
 }
-

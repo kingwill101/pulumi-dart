@@ -15,4 +15,3 @@ enum DomainType {
     throw ArgumentError('Unknown DomainType value: $value');
   }
 }
-

@@ -6,7 +6,7 @@ import 'workspace_args.dart';
 ///
 /// Uses Azure REST API version 2024-01-10. In version 2.x of the Azure Native provider, it used API version 2023-02-08-preview.
 ///
-/// Other available API versions: 2023-02-08-preview, 2025-04-01-preview, 2025-08-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotfirmwaredefense [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-08-preview, 2025-04-01-preview, 2025-08-02, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotfirmwaredefense [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -63,6 +63,26 @@ import 'workspace_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotfirmwaredefense_workspace" "workspace" {
+///   location            = "jjwbseilitjgdrhbvvkwviqj"
+///   resource_group_name = "rgworkspaces"
+///   tags = {
+///     "key450" = "rzqqumbpfsbibnpirsm"
+///   }
+///   workspace_name = "E___-3"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +91,8 @@ import 'workspace_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.iotfirmwaredefense.Workspace;
 /// import com.pulumi.azurenative.iotfirmwaredefense.WorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -185,6 +205,23 @@ import 'workspace_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotfirmwaredefense_workspace" "workspace" {
+///   location            = "jjwbseilitjgdrhbvvkwviqj"
+///   resource_group_name = "rgworkspaces"
+///   workspace_name      = "E___-3"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +230,8 @@ import 'workspace_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.iotfirmwaredefense.Workspace;
 /// import com.pulumi.azurenative.iotfirmwaredefense.WorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

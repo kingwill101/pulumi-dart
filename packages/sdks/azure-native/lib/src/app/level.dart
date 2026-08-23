@@ -19,4 +19,3 @@ enum Level {
     throw ArgumentError('Unknown Level value: $value');
   }
 }
-

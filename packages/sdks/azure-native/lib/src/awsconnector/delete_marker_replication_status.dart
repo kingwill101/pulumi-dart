@@ -15,4 +15,3 @@ enum DeleteMarkerReplicationStatus {
     throw ArgumentError('Unknown DeleteMarkerReplicationStatus value: $value');
   }
 }
-

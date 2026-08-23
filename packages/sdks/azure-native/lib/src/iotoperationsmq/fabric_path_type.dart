@@ -15,4 +15,3 @@ enum FabricPathType {
     throw ArgumentError('Unknown FabricPathType value: $value');
   }
 }
-

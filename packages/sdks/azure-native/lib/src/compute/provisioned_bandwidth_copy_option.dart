@@ -15,4 +15,3 @@ enum ProvisionedBandwidthCopyOption {
     throw ArgumentError('Unknown ProvisionedBandwidthCopyOption value: $value');
   }
 }
-

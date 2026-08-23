@@ -62,6 +62,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     new AzureNative.AwsConnector.Inputs.ParameterArgs
 ///                     {
+///                         ParameterKey = "akfjkpykscisdhjmmlmsqsokk",
 ///                         ParameterValue = "lldiqsjfqukysjecb",
 ///                     },
 ///                 },
@@ -87,6 +88,7 @@ import 'system_data_response.dart';
 ///                         {
 ///                             new AzureNative.AwsConnector.Inputs.ParameterArgs
 ///                             {
+///                                 ParameterKey = "akfjkpykscisdhjmmlmsqsokk",
 ///                                 ParameterValue = "lldiqsjfqukysjecb",
 ///                             },
 ///                         },
@@ -173,6 +175,7 @@ import 'system_data_response.dart';
 /// 					},
 /// 					Parameters: awsconnector.ParameterArray{
 /// 						&awsconnector.ParameterArgs{
+/// 							ParameterKey:   pulumi.String("akfjkpykscisdhjmmlmsqsokk"),
 /// 							ParameterValue: pulumi.String("lldiqsjfqukysjecb"),
 /// 						},
 /// 					},
@@ -191,6 +194,7 @@ import 'system_data_response.dart';
 /// 							},
 /// 							ParameterOverrides: awsconnector.ParameterArray{
 /// 								&awsconnector.ParameterArgs{
+/// 									ParameterKey:   pulumi.String("akfjkpykscisdhjmmlmsqsokk"),
 /// 									ParameterValue: pulumi.String("lldiqsjfqukysjecb"),
 /// 								},
 /// 							},
@@ -232,6 +236,85 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_cloudformationstackset" "cloudFormationStackSet" {
+///   location = "oubo"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "sldueqvlzdilykrozxapbb"
+///     aws_account_id = "jtdycoxjyvqvrxyy"
+///     aws_properties = {
+///       administration_role_arn = "ybtuoky"
+///       auto_deployment = {
+///         enabled                          = true
+///         retain_stacks_on_account_removal = true
+///       }
+///       call_as             = "DELEGATED_ADMIN"
+///       capabilities        = ["begwecrhvitloplqjhhydjwhve"]
+///       description         = "czkasvectlrpghrjojr"
+///       execution_role_name = "fclmt"
+///       managed_execution = {
+///         active = true
+///       }
+///       operation_preferences = {
+///         failure_tolerance_count      = 30
+///         failure_tolerance_percentage = 16
+///         max_concurrent_count         = 11
+///         max_concurrent_percentage    = 15
+///         region_concurrency_type      = "PARALLEL"
+///         region_order                 = ["gwaceriunclgehhoue"]
+///       }
+///       parameters = [{
+///         "parameterKey"   = "akfjkpykscisdhjmmlmsqsokk"
+///         "parameterValue" = "lldiqsjfqukysjecb"
+///       }]
+///       permission_model = "SELF_MANAGED"
+///       stack_instances_group = [{
+///         "deploymentTargets" = {
+///           "accountFilterType"     = "DIFFERENCE"
+///           "accounts"              = ["xc"]
+///           "accountsUrl"           = "nvixaunvovhintyelj"
+///           "organizationalUnitIds" = ["gnnzuj"]
+///         }
+///         "parameterOverrides" = [{
+///           "parameterKey"   = "akfjkpykscisdhjmmlmsqsokk"
+///           "parameterValue" = "lldiqsjfqukysjecb"
+///         }]
+///         "regions" = ["eyondljwt"]
+///       }]
+///       stack_set_id   = "ypfkcclgbgzikkjqfeiq"
+///       stack_set_name = "bkfqkuqedspfb"
+///       tags = [{
+///         "key"   = "rhuz"
+///         "value" = "ntm"
+///       }]
+///       template_body = "no"
+///       template_url  = "icoki"
+///     }
+///     aws_region        = "drpqdznyarlwjnjslcrmvm"
+///     aws_source_schema = "wpvatxlrosokkyqsq"
+///     aws_tags = {
+///       "key7598" = "zigarduulhgfhujfaxwpu"
+///     }
+///     public_cloud_connectors_resource_id = "eqapackzslaofkx"
+///     public_cloud_resource_name          = "dyaxkuzcwhqspayuipml"
+///   }
+///   resource_group_name = "rgcloudFormationStackSet"
+///   tags = {
+///     "key307" = "edjq"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -245,8 +328,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AutoDeploymentArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ActiveModelArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.OperationPreferencesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -286,6 +369,7 @@ import 'system_data_response.dart';
 ///                         .regionOrder("gwaceriunclgehhoue")
 ///                         .build())
 ///                     .parameters(ParameterArgs.builder()
+///                         .parameterKey("akfjkpykscisdhjmmlmsqsokk")
 ///                         .parameterValue("lldiqsjfqukysjecb")
 ///                         .build())
 ///                     .permissionModel("SELF_MANAGED")
@@ -297,6 +381,7 @@ import 'system_data_response.dart';
 ///                             .organizationalUnitIds("gnnzuj")
 ///                             .build())
 ///                         .parameterOverrides(ParameterArgs.builder()
+///                             .parameterKey("akfjkpykscisdhjmmlmsqsokk")
 ///                             .parameterValue("lldiqsjfqukysjecb")
 ///                             .build())
 ///                         .regions("eyondljwt")
@@ -357,6 +442,7 @@ import 'system_data_response.dart';
 ///                 regionOrder: ["gwaceriunclgehhoue"],
 ///             },
 ///             parameters: [{
+///                 parameterKey: "akfjkpykscisdhjmmlmsqsokk",
 ///                 parameterValue: "lldiqsjfqukysjecb",
 ///             }],
 ///             permissionModel: azure_native.awsconnector.PermissionModel.SELF_MANAGED,
@@ -368,6 +454,7 @@ import 'system_data_response.dart';
 ///                     organizationalUnitIds: ["gnnzuj"],
 ///                 },
 ///                 parameterOverrides: [{
+///                     parameterKey: "akfjkpykscisdhjmmlmsqsokk",
 ///                     parameterValue: "lldiqsjfqukysjecb",
 ///                 }],
 ///                 regions: ["eyondljwt"],
@@ -429,6 +516,7 @@ import 'system_data_response.dart';
 ///                 "region_order": ["gwaceriunclgehhoue"],
 ///             },
 ///             "parameters": [{
+///                 "parameter_key": "akfjkpykscisdhjmmlmsqsokk",
 ///                 "parameter_value": "lldiqsjfqukysjecb",
 ///             }],
 ///             "permission_model": azure_native.awsconnector.PermissionModel.SEL_F_MANAGED,
@@ -440,6 +528,7 @@ import 'system_data_response.dart';
 ///                     "organizational_unit_ids": ["gnnzuj"],
 ///                 },
 ///                 "parameter_overrides": [{
+///                     "parameter_key": "akfjkpykscisdhjmmlmsqsokk",
 ///                     "parameter_value": "lldiqsjfqukysjecb",
 ///                 }],
 ///                 "regions": ["eyondljwt"],
@@ -499,7 +588,8 @@ import 'system_data_response.dart';
 ///             regionOrder:
 ///               - gwaceriunclgehhoue
 ///           parameters:
-///             - parameterValue: lldiqsjfqukysjecb
+///             - parameterKey: akfjkpykscisdhjmmlmsqsokk
+///               parameterValue: lldiqsjfqukysjecb
 ///           permissionModel: SELF_MANAGED
 ///           stackInstancesGroup:
 ///             - deploymentTargets:
@@ -510,7 +600,8 @@ import 'system_data_response.dart';
 ///                 organizationalUnitIds:
 ///                   - gnnzuj
 ///               parameterOverrides:
-///                 - parameterValue: lldiqsjfqukysjecb
+///                 - parameterKey: akfjkpykscisdhjmmlmsqsokk
+///                   parameterValue: lldiqsjfqukysjecb
 ///               regions:
 ///                 - eyondljwt
 ///           stackSetId: ypfkcclgbgzikkjqfeiq

@@ -5,7 +5,7 @@ import 'extended_server_blob_auditing_policy_args.dart';
 ///
 /// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
 ///
-/// Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -84,6 +84,33 @@ import 'extended_server_blob_auditing_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_extendedserverblobauditingpolicy" "extendedServerBlobAuditingPolicy" {
+///   audit_actions_and_groups        = ["SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP", "BATCH_COMPLETED_GROUP"]
+///   blob_auditing_policy_name       = "default"
+///   is_azure_monitor_target_enabled = true
+///   is_storage_secondary_key_in_use = false
+///   predicate_expression            = "object_name = 'SensitiveData'"
+///   queue_delay_ms                  = 4000
+///   resource_group_name             = "blobauditingtest-4799"
+///   retention_days                  = 6
+///   server_name                     = "blobauditingtest-6440"
+///   state                           = "Enabled"
+///   storage_account_access_key      = "sdlfkjabc+sdlfkjsdlkfsjdfLDKFTERLKFDFKLjsdfksjdflsdkfD2342309432849328476458/3RSD=="
+///   storage_account_subscription_id = "00000000-1234-0000-5678-000000000000"
+///   storage_endpoint                = "https://mystorage.blob.core.windows.net"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +119,8 @@ import 'extended_server_blob_auditing_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.ExtendedServerBlobAuditingPolicy;
 /// import com.pulumi.azurenative.sql.ExtendedServerBlobAuditingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -257,6 +284,26 @@ import 'extended_server_blob_auditing_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_extendedserverblobauditingpolicy" "extendedServerBlobAuditingPolicy" {
+///   blob_auditing_policy_name  = "default"
+///   resource_group_name        = "blobauditingtest-4799"
+///   server_name                = "blobauditingtest-6440"
+///   state                      = "Enabled"
+///   storage_account_access_key = "sdlfkjabc+sdlfkjsdlkfsjdfLDKFTERLKFDFKLjsdfksjdflsdkfD2342309432849328476458/3RSD=="
+///   storage_endpoint           = "https://mystorage.blob.core.windows.net"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -265,8 +312,8 @@ import 'extended_server_blob_auditing_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.ExtendedServerBlobAuditingPolicy;
 /// import com.pulumi.azurenative.sql.ExtendedServerBlobAuditingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

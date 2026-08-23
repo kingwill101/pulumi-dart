@@ -30,13 +30,13 @@ import 'managed_cluster_workload_auto_scaler_profile_response.dart';
 import 'power_state_response.dart';
 import 'service_mesh_profile_response.dart';
 import 'system_data_response.dart';
-import 'user_assigned_identity_response.dart';
+import 'user_assigned_identity_managed_cluster_response.dart';
 
 /// Managed cluster.
 ///
 /// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 ///
-/// Other available API versions: 2019-11-01, 2020-01-01, 2020-02-01, 2020-03-01, 2020-04-01, 2020-06-01, 2020-07-01, 2020-09-01, 2020-11-01, 2020-12-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-07-01, 2021-08-01, 2021-09-01, 2021-10-01, 2021-11-01-preview, 2022-01-01, 2022-01-02-preview, 2022-02-01, 2022-02-02-preview, 2022-03-01, 2022-03-02-preview, 2022-04-01, 2022-04-02-preview, 2022-05-02-preview, 2022-06-01, 2022-06-02-preview, 2022-07-01, 2022-07-02-preview, 2022-08-02-preview, 2022-08-03-preview, 2022-09-01, 2022-09-02-preview, 2022-10-02-preview, 2022-11-01, 2022-11-02-preview, 2023-01-01, 2023-01-02-preview, 2023-02-01, 2023-02-02-preview, 2023-03-01, 2023-03-02-preview, 2023-04-01, 2023-04-02-preview, 2023-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01, 2024-07-02-preview, 2024-08-01, 2024-09-01, 2024-09-02-preview, 2024-10-01, 2024-10-02-preview, 2025-01-01, 2025-01-02-preview, 2025-02-01, 2025-02-02-preview, 2025-03-01, 2025-03-02-preview, 2025-04-01, 2025-04-02-preview, 2025-05-01, 2025-05-02-preview, 2025-06-02-preview, 2025-07-01, 2025-07-02-preview, 2025-08-01, 2025-08-02-preview, 2025-09-02-preview, 2025-10-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-11-01, 2020-01-01, 2020-02-01, 2020-03-01, 2020-04-01, 2020-06-01, 2020-07-01, 2020-09-01, 2020-11-01, 2020-12-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-07-01, 2021-08-01, 2021-09-01, 2021-10-01, 2021-11-01-preview, 2022-01-01, 2022-01-02-preview, 2022-02-01, 2022-02-02-preview, 2022-03-01, 2022-03-02-preview, 2022-04-01, 2022-04-02-preview, 2022-05-02-preview, 2022-06-01, 2022-06-02-preview, 2022-07-01, 2022-07-02-preview, 2022-08-02-preview, 2022-08-03-preview, 2022-09-01, 2022-09-02-preview, 2022-10-02-preview, 2022-11-01, 2022-11-02-preview, 2023-01-01, 2023-01-02-preview, 2023-02-01, 2023-02-02-preview, 2023-03-01, 2023-03-02-preview, 2023-04-01, 2023-04-02-preview, 2023-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01, 2024-07-02-preview, 2024-08-01, 2024-09-01, 2024-09-02-preview, 2024-10-01, 2024-10-02-preview, 2025-01-01, 2025-01-02-preview, 2025-02-01, 2025-02-02-preview, 2025-03-01, 2025-03-02-preview, 2025-04-01, 2025-04-02-preview, 2025-05-01, 2025-05-02-preview, 2025-06-02-preview, 2025-07-01, 2025-07-02-preview, 2025-08-01, 2025-08-02-preview, 2025-09-02-preview, 2025-10-01, 2025-10-02-preview, 2026-01-01, 2026-01-02-preview, 2026-02-01, 2026-02-02-preview, 2026-03-01, 2026-03-02-preview, 2026-04-01, 2026-04-02-preview, 2026-05-01, 2026-05-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// When creating a managed cluster you must define at least one agent pool inline via the `agentPoolProfiles` property. The Azure API does not currently allow this property to be updated directly. Instead, additional agent pools can be defined via the `AgentPool` resource. If needing to change the initial agent pool profile property, you can either trigger the whole cluster to be re-created by using the [replaceOnChanges resource option](https://www.pulumi.com/docs/concepts/options/replaceonchanges/), or make the change directly in Azure then use `pulumi refresh` to update the stack's stack to match.
 ///
@@ -222,6 +222,78 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     count = 3
+///     creation_data = {
+///       source_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.ContainerService/snapshots/snapshot1"
+///     }
+///     enable_fips           = true
+///     enable_node_public_ip = true
+///     mode                  = "System"
+///     name                  = "nodepool1"
+///     os_type               = "Linux"
+///     type                  = "VirtualMachineScaleSets"
+///     vm_size               = "Standard_DS2_v2"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   disk_encryption_set_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/diskEncryptionSets/des"
+///   dns_prefix             = "dnsprefix1"
+///   enable_rbac            = true
+///   kubernetes_version     = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -241,8 +313,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -678,6 +750,74 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     count                 = 3
+///     enable_node_public_ip = false
+///     mode                  = "System"
+///     name                  = "nodepool1"
+///     os_type               = "Linux"
+///     type                  = "VirtualMachineScaleSets"
+///     vm_size               = "Standard_DS2_v2"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   disk_encryption_set_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/diskEncryptionSets/des"
+///   dns_prefix             = "dnsprefix1"
+///   enable_rbac            = true
+///   kubernetes_version     = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_sku = "standard"
+///     nat_gateway_profile = {
+///       managed_outbound_ip_profile = {
+///         count = 2
+///       }
+///     }
+///     outbound_type = "managedNATGateway"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -696,8 +836,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1137,6 +1277,82 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {
+///     "azureKeyvaultSecretsProvider" = {
+///       config = {
+///         "enableSecretRotation" = "true"
+///         "rotationPollInterval" = "2m"
+///       }
+///       enabled = true
+///     }
+///   }
+///   agent_pool_profiles {
+///     count                 = 3
+///     enable_node_public_ip = true
+///     mode                  = "System"
+///     name                  = "nodepool1"
+///     os_type               = "Linux"
+///     type                  = "VirtualMachineScaleSets"
+///     vm_size               = "Standard_DS2_v2"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   disk_encryption_set_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/diskEncryptionSets/des"
+///   dns_prefix             = "dnsprefix1"
+///   enable_rbac            = true
+///   kubernetes_version     = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1155,8 +1371,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1605,6 +1821,75 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     capacity_reservation_group_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/capacityReservationGroups/crg1"
+///     count                         = 3
+///     enable_node_public_ip         = true
+///     mode                          = "System"
+///     name                          = "nodepool1"
+///     os_type                       = "Linux"
+///     type                          = "VirtualMachineScaleSets"
+///     vm_size                       = "Standard_DS2_v2"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   disk_encryption_set_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/diskEncryptionSets/des"
+///   dns_prefix             = "dnsprefix1"
+///   enable_rbac            = true
+///   kubernetes_version     = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1623,8 +1908,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2061,6 +2346,77 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     count                 = 3
+///     enable_node_public_ip = true
+///     mode                  = "System"
+///     name                  = "nodepool1"
+///     os_type               = "Linux"
+///     type                  = "VirtualMachineScaleSets"
+///     vm_size               = "Standard_DS2_v2"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   disk_encryption_set_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/diskEncryptionSets/des"
+///   dns_prefix             = "dnsprefix1"
+///   enable_rbac            = true
+///   kubernetes_version     = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   security_profile = {
+///     custom_ca_trust_certificates = ["ZHVtbXlFeGFtcGxlVGVzdFZhbHVlRm9yQ2VydGlmaWNhdGVUb0JlQWRkZWQ="]
+///   }
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2080,8 +2436,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2514,6 +2870,74 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     count                 = 3
+///     enable_node_public_ip = true
+///     host_group_id         = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/Microsoft.Compute/hostGroups/hostgroup1"
+///     name                  = "nodepool1"
+///     os_type               = "Linux"
+///     type                  = "VirtualMachineScaleSets"
+///     vm_size               = "Standard_DS2_v2"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   disk_encryption_set_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/diskEncryptionSets/des"
+///   dns_prefix             = "dnsprefix1"
+///   enable_rbac            = true
+///   kubernetes_version     = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2532,8 +2956,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2956,6 +3380,75 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     count                     = 3
+///     enable_encryption_at_host = true
+///     enable_node_public_ip     = true
+///     mode                      = "System"
+///     name                      = "nodepool1"
+///     os_type                   = "Linux"
+///     type                      = "VirtualMachineScaleSets"
+///     vm_size                   = "Standard_DS2_v2"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   disk_encryption_set_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/diskEncryptionSets/des"
+///   dns_prefix             = "dnsprefix1"
+///   enable_rbac            = true
+///   kubernetes_version     = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2974,8 +3467,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3402,6 +3895,75 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     count                 = 3
+///     enable_fips           = true
+///     enable_node_public_ip = true
+///     mode                  = "System"
+///     name                  = "nodepool1"
+///     os_type               = "Linux"
+///     type                  = "VirtualMachineScaleSets"
+///     vm_size               = "Standard_DS2_v2"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   disk_encryption_set_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/diskEncryptionSets/des"
+///   dns_prefix             = "dnsprefix1"
+///   enable_rbac            = true
+///   kubernetes_version     = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3420,8 +3982,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3868,6 +4430,81 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     count                 = 3
+///     enable_node_public_ip = true
+///     gpu_instance_profile  = "MIG3g"
+///     mode                  = "System"
+///     name                  = "nodepool1"
+///     os_type               = "Linux"
+///     type                  = "VirtualMachineScaleSets"
+///     vm_size               = "Standard_ND96asr_v4"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   disk_encryption_set_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/diskEncryptionSets/des"
+///   dns_prefix             = "dnsprefix1"
+///   enable_rbac            = true
+///   http_proxy_config = {
+///     http_proxy  = "http://myproxy.server.com:8080"
+///     https_proxy = "https://myproxy.server.com:8080"
+///     no_proxy    = ["localhost", "127.0.0.1"]
+///     trusted_ca  = "Q29uZ3JhdHMhIFlvdSBoYXZlIGZvdW5kIGEgaGlkZGVuIG1lc3NhZ2U="
+///   }
+///   kubernetes_version = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3887,8 +4524,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4366,6 +5003,80 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     count                 = 3
+///     enable_node_public_ip = true
+///     mode                  = "System"
+///     name                  = "nodepool1"
+///     os_type               = "Linux"
+///     type                  = "VirtualMachineScaleSets"
+///     vm_size               = "Standard_DS2_v2"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   disk_encryption_set_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/diskEncryptionSets/des"
+///   dns_prefix             = "dnsprefix1"
+///   enable_rbac            = true
+///   http_proxy_config = {
+///     http_proxy  = "http://myproxy.server.com:8080"
+///     https_proxy = "https://myproxy.server.com:8080"
+///     no_proxy    = ["localhost", "127.0.0.1"]
+///     trusted_ca  = "Q29uZ3JhdHMhIFlvdSBoYXZlIGZvdW5kIGEgaGlkZGVuIG1lc3NhZ2U="
+///   }
+///   kubernetes_version = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -4385,8 +5096,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4849,6 +5560,78 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     count                     = 3
+///     enable_encryption_at_host = true
+///     enable_node_public_ip     = true
+///     mode                      = "System"
+///     name                      = "nodepool1"
+///     os_type                   = "Linux"
+///     type                      = "VirtualMachineScaleSets"
+///     vm_size                   = "Standard_DS2_v2"
+///   }
+///   api_server_access_profile = {
+///     disable_run_command = true
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   dns_prefix         = "dnsprefix1"
+///   enable_rbac        = true
+///   kubernetes_version = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Base"
+///     tier = "Premium"
+///   }
+///   support_plan = "AKSLongTermSupport"
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -4868,8 +5651,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5307,6 +6090,75 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     count                    = 3
+///     enable_node_public_ip    = true
+///     mode                     = "System"
+///     name                     = "nodepool1"
+///     node_public_ip_prefix_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Network/publicIPPrefixes/public-ip-prefix"
+///     os_type                  = "Linux"
+///     type                     = "VirtualMachineScaleSets"
+///     vm_size                  = "Standard_DS2_v2"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   disk_encryption_set_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/diskEncryptionSets/des"
+///   dns_prefix             = "dnsprefix1"
+///   enable_rbac            = true
+///   kubernetes_version     = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -5325,8 +6177,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5773,6 +6625,81 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     count                 = 3
+///     enable_node_public_ip = true
+///     mode                  = "System"
+///     name                  = "nodepool1"
+///     os_sku                = "AzureLinux"
+///     os_type               = "Linux"
+///     type                  = "VirtualMachineScaleSets"
+///     vm_size               = "Standard_DS2_v2"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   disk_encryption_set_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/diskEncryptionSets/des"
+///   dns_prefix             = "dnsprefix1"
+///   enable_rbac            = true
+///   http_proxy_config = {
+///     http_proxy  = "http://myproxy.server.com:8080"
+///     https_proxy = "https://myproxy.server.com:8080"
+///     no_proxy    = ["localhost", "127.0.0.1"]
+///     trusted_ca  = "Q29uZ3JhdHMhIFlvdSBoYXZlIGZvdW5kIGEgaGlkZGVuIG1lc3NhZ2U="
+///   }
+///   kubernetes_version = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -5792,8 +6719,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6253,6 +7180,75 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     count                        = 3
+///     enable_node_public_ip        = true
+///     mode                         = "System"
+///     name                         = "nodepool1"
+///     os_type                      = "Linux"
+///     proximity_placement_group_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/proximityPlacementGroups/ppg1"
+///     type                         = "VirtualMachineScaleSets"
+///     vm_size                      = "Standard_DS2_v2"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   disk_encryption_set_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/diskEncryptionSets/des"
+///   dns_prefix             = "dnsprefix1"
+///   enable_rbac            = true
+///   kubernetes_version     = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -6271,8 +7267,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6706,6 +7702,78 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     count                 = 3
+///     enable_node_public_ip = true
+///     mode                  = "System"
+///     name                  = "nodepool1"
+///     os_type               = "Linux"
+///     type                  = "VirtualMachineScaleSets"
+///     vm_size               = "Standard_DS2_v2"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   disk_encryption_set_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/diskEncryptionSets/des"
+///   dns_prefix             = "dnsprefix1"
+///   enable_rbac            = true
+///   kubernetes_version     = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   pod_identity_profile = {
+///     allow_network_plugin_kubenet = true
+///     enabled                      = true
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -6725,8 +7793,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7169,6 +8237,77 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     count                     = 3
+///     enable_encryption_at_host = true
+///     enable_node_public_ip     = true
+///     mode                      = "System"
+///     name                      = "nodepool1"
+///     os_type                   = "Linux"
+///     type                      = "VirtualMachineScaleSets"
+///     vm_size                   = "Standard_DS2_v2"
+///   }
+///   api_server_access_profile = {
+///     disable_run_command = true
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   dns_prefix         = "dnsprefix1"
+///   enable_rbac        = true
+///   kubernetes_version = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -7188,8 +8327,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7614,6 +8753,70 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   agent_pool_profiles {
+///     count                 = 3
+///     enable_node_public_ip = true
+///     mode                  = "System"
+///     name                  = "nodepool1"
+///     os_type               = "Linux"
+///     type                  = "VirtualMachineScaleSets"
+///     vm_size               = "Standard_DS2_v2"
+///   }
+///   dns_prefix         = "dnsprefix1"
+///   kubernetes_version = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   security_profile = {
+///     defender = {
+///       log_analytics_workspace_resource_id = "/subscriptions/SUB_ID/resourcegroups/RG_NAME/providers/microsoft.operationalinsights/workspaces/WORKSPACE_NAME"
+///       security_monitoring = {
+///         enabled = true
+///       }
+///     }
+///     workload_identity = {
+///       enabled = true
+///     }
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -7633,8 +8836,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSecurityProfileDefenderSecurityMonitoringArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSecurityProfileWorkloadIdentityArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8039,6 +9242,75 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     count                 = 3
+///     enable_node_public_ip = true
+///     enable_ultra_ssd      = true
+///     mode                  = "System"
+///     name                  = "nodepool1"
+///     os_type               = "Linux"
+///     type                  = "VirtualMachineScaleSets"
+///     vm_size               = "Standard_DS2_v2"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   disk_encryption_set_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/diskEncryptionSets/des"
+///   dns_prefix             = "dnsprefix1"
+///   enable_rbac            = true
+///   kubernetes_version     = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -8057,8 +9329,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8469,6 +9741,65 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   agent_pool_profiles {
+///     count                 = 3
+///     enable_node_public_ip = true
+///     mode                  = "System"
+///     name                  = "nodepool1"
+///     os_type               = "Linux"
+///     type                  = "VirtualMachineScaleSets"
+///     vm_size               = "Standard_DS2_v2"
+///   }
+///   dns_prefix = "dnsprefix1"
+///   ingress_profile = {
+///     web_app_routing = {
+///       dns_zone_resource_ids = ["/subscriptions/SUB_ID/resourceGroups/RG_NAME/providers/Microsoft.Network/dnszones/DNS_ZONE_NAME"]
+///       enabled               = true
+///     }
+///   }
+///   kubernetes_version = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -8486,8 +9817,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8861,6 +10192,69 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     count                 = 3
+///     enable_node_public_ip = false
+///     mode                  = "System"
+///     name                  = "nodepool1"
+///     os_type               = "Linux"
+///     type                  = "VirtualMachineScaleSets"
+///     vm_size               = "Standard_DS2_v2"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   disk_encryption_set_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/diskEncryptionSets/des"
+///   dns_prefix             = "dnsprefix1"
+///   enable_rbac            = true
+///   kubernetes_version     = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_sku = "standard"
+///     outbound_type     = "userAssignedNATGateway"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -8877,8 +10271,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9290,6 +10684,78 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     count                     = 3
+///     enable_encryption_at_host = true
+///     enable_node_public_ip     = true
+///     mode                      = "System"
+///     name                      = "nodepool1"
+///     os_type                   = "Linux"
+///     type                      = "VirtualMachineScaleSets"
+///     vm_size                   = "Standard_DS2_v2"
+///   }
+///   api_server_access_profile = {
+///     enable_private_cluster             = true
+///     enable_private_cluster_public_fqdn = true
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   dns_prefix         = "dnsprefix1"
+///   enable_rbac        = true
+///   kubernetes_version = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -9309,8 +10775,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9755,6 +11221,78 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     count                     = 3
+///     enable_encryption_at_host = true
+///     enable_node_public_ip     = true
+///     mode                      = "System"
+///     name                      = "nodepool1"
+///     os_type                   = "Linux"
+///     type                      = "VirtualMachineScaleSets"
+///     vm_size                   = "Standard_DS2_v2"
+///   }
+///   api_server_access_profile = {
+///     enable_private_cluster = true
+///     private_dns_zone       = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Network/privateDnsZones/privatelink.location1.azmk8s.io"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   enable_rbac        = true
+///   fqdn_subdomain     = "domain1"
+///   kubernetes_version = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -9774,8 +11312,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -10231,6 +11769,79 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   aad_profile = {
+///     enable_azure_rbac = true
+///     managed           = true
+///   }
+///   addon_profiles = {}
+///   agent_pool_profiles {
+///     availability_zones    = ["1", "2", "3"]
+///     count                 = 3
+///     enable_node_public_ip = true
+///     mode                  = "System"
+///     name                  = "nodepool1"
+///     os_type               = "Linux"
+///     type                  = "VirtualMachineScaleSets"
+///     vm_size               = "Standard_DS1_v2"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   disk_encryption_set_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/diskEncryptionSets/des"
+///   dns_prefix             = "dnsprefix1"
+///   enable_rbac            = true
+///   kubernetes_version     = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -10250,8 +11861,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -10791,6 +12402,107 @@ import 'user_assigned_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+///   addon_profiles = {
+///     "azureKeyvaultSecretsProvider" = {
+///       config = {
+///         "enableSecretRotation" = "true"
+///         "rotationPollInterval" = "2m"
+///       }
+///       enabled = true
+///     }
+///   }
+///   agent_pool_profiles {
+///     count                 = 3
+///     enable_node_public_ip = true
+///     mode                  = "System"
+///     name                  = "nodepool1"
+///     os_type               = "Linux"
+///     type                  = "VirtualMachineScaleSets"
+///     vm_size               = "Standard_DS2_v2"
+///   }
+///   auto_scaler_profile = {
+///     scale_down_delay_after_add = "15m"
+///     scan_interval              = "20s"
+///   }
+///   disk_encryption_set_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/diskEncryptionSets/des"
+///   dns_prefix             = "dnsprefix1"
+///   enable_rbac            = true
+///   kubernetes_version     = ""
+///   linux_profile = {
+///     admin_username = "azureuser"
+///     ssh = {
+///       public_keys = [{
+///         "keyData" = "keydata"
+///       }]
+///     }
+///   }
+///   location = "location1"
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_i_ps = {
+///         count = 2
+///       }
+///     }
+///     load_balancer_sku = "standard"
+///     outbound_type     = "loadBalancer"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   service_mesh_profile = {
+///     istio = {
+///       certificate_authority = {
+///         plugin = {
+///           cert_chain_object_name = "cert-chain"
+///           cert_object_name       = "ca-cert"
+///           key_object_name        = "ca-key"
+///           key_vault_id           = "/subscriptions/854c9ddb-fe9e-4aea-8d58-99ed88282881/resourceGroups/ddama-test/providers/Microsoft.KeyVault/vaults/my-akv"
+///           root_cert_object_name  = "root-cert"
+///         }
+///       }
+///       components = {
+///         egress_gateways = [{
+///           "enabled"                  = true
+///           "gatewayConfigurationName" = "test-gateway-configuration"
+///           "name"                     = "test-istio-egress"
+///         }]
+///         ingress_gateways = [{
+///           "enabled" = true
+///           "mode"    = "Internal"
+///         }]
+///       }
+///     }
+///     mode = "Istio"
+///   }
+///   service_principal_profile = {
+///     client_id = "clientid"
+///     secret    = "secret"
+///   }
+///   sku = {
+///     name = "Basic"
+///     tier = "Free"
+///   }
+///   tags = {
+///     "archv2" = ""
+///     "tier"   = "production"
+///   }
+///   windows_profile = {
+///     admin_password = "replacePassword1234$"
+///     admin_username = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -10814,8 +12526,8 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -11240,7 +12952,7 @@ class ManagedCluster extends pulumi.CustomResource {
   /// The identity of the managed cluster, if configured.
   late final pulumi.Output<ManagedClusterIdentityResponse?> identity;
   /// The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
-  late final pulumi.Output<Map<String, UserAssignedIdentityResponse>?> identityProfile;
+  late final pulumi.Output<Map<String, UserAssignedIdentityManagedClusterResponse>?> identityProfile;
   /// Ingress profile for the managed cluster.
   late final pulumi.Output<ManagedClusterIngressProfileResponse?> ingressProfile;
   /// This is primarily used to expose different UI experiences in the portal for different kinds
@@ -11344,7 +13056,7 @@ class ManagedCluster extends pulumi.CustomResource {
     fqdnSubdomain = registerOutput<String?>('fqdnSubdomain');
     httpProxyConfig = registerOutput<ManagedClusterHTTPProxyConfigResponse?>('httpProxyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterHTTPProxyConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identity = registerOutput<ManagedClusterIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    identityProfile = registerOutput<Map<String, UserAssignedIdentityResponse>?>('identityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<UserAssignedIdentityResponse>(guardedValue, (value) => UserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    identityProfile = registerOutput<Map<String, UserAssignedIdentityManagedClusterResponse>?>('identityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<UserAssignedIdentityManagedClusterResponse>(guardedValue, (value) => UserAssignedIdentityManagedClusterResponse.fromMap((value as Map).cast<String, dynamic>())); });
     ingressProfile = registerOutput<ManagedClusterIngressProfileResponse?>('ingressProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterIngressProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     kubernetesVersion = registerOutput<String?>('kubernetesVersion');

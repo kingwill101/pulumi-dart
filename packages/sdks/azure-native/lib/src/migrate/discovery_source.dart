@@ -16,4 +16,3 @@ enum DiscoverySource {
     throw ArgumentError('Unknown DiscoverySource value: $value');
   }
 }
-

@@ -52,6 +52,23 @@ import 'import_collector_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_importcollector" "importCollector" {
+///   import_collector_name = "importCollector2952"
+///   project_name          = "rajoshCCY9671project"
+///   resource_group_name   = "markusavstestrg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -60,8 +77,8 @@ import 'import_collector_properties_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.migrate.ImportCollector;
 /// import com.pulumi.azurenative.migrate.ImportCollectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

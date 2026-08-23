@@ -25,4 +25,3 @@ enum TargetHealthReasonEnum {
     throw ArgumentError('Unknown TargetHealthReasonEnum value: $value');
   }
 }
-

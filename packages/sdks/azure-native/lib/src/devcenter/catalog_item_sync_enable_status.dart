@@ -15,4 +15,3 @@ enum CatalogItemSyncEnableStatus {
     throw ArgumentError('Unknown CatalogItemSyncEnableStatus value: $value');
   }
 }
-

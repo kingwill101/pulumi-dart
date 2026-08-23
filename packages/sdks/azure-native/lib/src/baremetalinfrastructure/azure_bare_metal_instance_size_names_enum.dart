@@ -57,4 +57,3 @@ enum AzureBareMetalInstanceSizeNamesEnum {
     throw ArgumentError('Unknown AzureBareMetalInstanceSizeNamesEnum value: $value');
   }
 }
-

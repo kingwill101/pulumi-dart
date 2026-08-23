@@ -15,4 +15,3 @@ enum DatabaseRouting {
     throw ArgumentError('Unknown DatabaseRouting value: $value');
   }
 }
-

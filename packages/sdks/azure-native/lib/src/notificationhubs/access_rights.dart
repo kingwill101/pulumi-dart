@@ -16,4 +16,3 @@ enum AccessRights {
     throw ArgumentError('Unknown AccessRights value: $value');
   }
 }
-

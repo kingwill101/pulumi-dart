@@ -17,4 +17,3 @@ enum SingleServerCreateMode {
     throw ArgumentError('Unknown SingleServerCreateMode value: $value');
   }
 }
-

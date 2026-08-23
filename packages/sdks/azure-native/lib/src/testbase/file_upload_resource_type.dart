@@ -15,4 +15,3 @@ enum FileUploadResourceType {
     throw ArgumentError('Unknown FileUploadResourceType value: $value');
   }
 }
-

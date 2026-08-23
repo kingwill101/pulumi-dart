@@ -20,4 +20,3 @@ enum WebApplicationFirewallTransform {
     throw ArgumentError('Unknown WebApplicationFirewallTransform value: $value');
   }
 }
-

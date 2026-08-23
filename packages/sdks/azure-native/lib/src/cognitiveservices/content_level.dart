@@ -1,8 +1,8 @@
 /// Level at which content is filtered.
 enum ContentLevel {
-  valueLow("Low"),
-  valueMedium("Medium"),
-  valueHigh("High");
+  low("Low"),
+  medium("Medium"),
+  high("High");
 
   const ContentLevel(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum ContentLevel {
     throw ArgumentError('Unknown ContentLevel value: $value');
   }
 }
-

@@ -23,7 +23,7 @@ class ChangeDataCaptureArgs {
   final pulumi.Input<ChangeDataCaptureFolder>? folder;
   /// CDC policy
   final pulumi.Input<MapperPolicy> policy;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// List of sources connections that can be used as sources in the CDC.
   final pulumi.Input<List<MapperSourceConnectionsInfo>> sourceConnectionsInfo;
@@ -39,7 +39,7 @@ class ChangeDataCaptureArgs {
   /// [factoryName] The factory name.
   /// [folder] The folder that this CDC is in. If not specified, CDC will appear at the root level.
   /// [policy] CDC policy
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceConnectionsInfo] List of sources connections that can be used as sources in the CDC.
   /// [status] Status of the CDC as to if it is running or stopped.
   /// [targetConnectionsInfo] List of target connections that can be used as sources in the CDC.
@@ -86,4 +86,3 @@ class ChangeDataCaptureArgs {
     );
   }
 }
-

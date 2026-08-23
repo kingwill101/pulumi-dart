@@ -1,17 +1,17 @@
 /// Match Variable
 enum RulesEngineMatchVariable {
-  valueIsMobile("IsMobile"),
-  valueRemoteAddr("RemoteAddr"),
-  valueRequestMethod("RequestMethod"),
-  valueQueryString("QueryString"),
-  valuePostArgs("PostArgs"),
-  valueRequestUri("RequestUri"),
-  valueRequestPath("RequestPath"),
-  valueRequestFilename("RequestFilename"),
-  valueRequestFilenameExtension("RequestFilenameExtension"),
-  valueRequestHeader("RequestHeader"),
-  valueRequestBody("RequestBody"),
-  valueRequestScheme("RequestScheme");
+  isMobile("IsMobile"),
+  remoteAddr("RemoteAddr"),
+  requestMethod("RequestMethod"),
+  queryString("QueryString"),
+  postArgs("PostArgs"),
+  requestUri("RequestUri"),
+  requestPath("RequestPath"),
+  requestFilename("RequestFilename"),
+  requestFilenameExtension("RequestFilenameExtension"),
+  requestHeader("RequestHeader"),
+  requestBody("RequestBody"),
+  requestScheme("RequestScheme");
 
   const RulesEngineMatchVariable(this.wireValue);
   final String wireValue;
@@ -25,4 +25,3 @@ enum RulesEngineMatchVariable {
     throw ArgumentError('Unknown RulesEngineMatchVariable value: $value');
   }
 }
-

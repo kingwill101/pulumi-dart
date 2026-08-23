@@ -25,7 +25,7 @@ class RemediationAtResourceGroupArgs {
   final pulumi.Input<int>? resourceCount;
   /// The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
   final pulumi.Input<String>? resourceDiscoveryMode;
-  /// Resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [RemediationAtResourceGroupArgs].
@@ -37,7 +37,7 @@ class RemediationAtResourceGroupArgs {
   /// [remediationName] The name of the remediation.
   /// [resourceCount] Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used.
   /// [resourceDiscoveryMode] The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
-  /// [resourceGroupName] Resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const RemediationAtResourceGroupArgs({
     this.failureThreshold,
     this.filters,
@@ -78,4 +78,3 @@ class RemediationAtResourceGroupArgs {
     );
   }
 }
-

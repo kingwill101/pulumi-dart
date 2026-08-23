@@ -45,4 +45,3 @@ class PlacementV1PlacementPolicy {
     );
   }
 }
-

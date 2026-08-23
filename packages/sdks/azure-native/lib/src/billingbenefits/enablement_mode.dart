@@ -1,8 +1,8 @@
 /// Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met.
 enum EnablementMode {
-  valueUnknown("Unknown"),
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  unknown("Unknown"),
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const EnablementMode(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum EnablementMode {
     throw ArgumentError('Unknown EnablementMode value: $value');
   }
 }
-

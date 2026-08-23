@@ -1,7 +1,7 @@
 /// [Required] The compute power action.
 enum ComputePowerAction {
-  valueStart("Start"),
-  valueStop("Stop");
+  start("Start"),
+  stop("Stop");
 
   const ComputePowerAction(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ComputePowerAction {
     throw ArgumentError('Unknown ComputePowerAction value: $value');
   }
 }
-

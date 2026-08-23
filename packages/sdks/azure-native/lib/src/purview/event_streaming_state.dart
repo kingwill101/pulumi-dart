@@ -1,7 +1,7 @@
 /// The state of the event streaming service
 enum EventStreamingState {
-  valueDisabled("Disabled"),
-  valueEnabled("Enabled");
+  disabled("Disabled"),
+  enabled("Enabled");
 
   const EventStreamingState(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum EventStreamingState {
     throw ArgumentError('Unknown EventStreamingState value: $value');
   }
 }
-

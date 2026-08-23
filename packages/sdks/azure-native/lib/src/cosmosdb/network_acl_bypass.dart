@@ -15,4 +15,3 @@ enum NetworkAclBypass {
     throw ArgumentError('Unknown NetworkAclBypass value: $value');
   }
 }
-

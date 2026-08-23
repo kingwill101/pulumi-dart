@@ -1,131 +1,67 @@
-// ignore_for_file: unused_element, unnecessary_cast
-
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'batch_pipeline_component_deployment_configuration.dart';
-import 'batch_retry_settings.dart';
-import 'code_configuration.dart';
-import 'data_path_asset_reference.dart';
-import 'deployment_resource_configuration.dart';
+import 'batch_deployment_args.dart';
+import 'batch_deployment_properties_response.dart';
+import 'managed_service_identity_response.dart';
+import 'sku_response.dart';
+import 'system_data_response.dart';
 
-/// Batch inference settings per deployment.
-class BatchDeployment {
-  /// Code configuration for the endpoint deployment.
-  final pulumi.Input<CodeConfiguration>? codeConfiguration;
-  /// Compute target for batch inference operation.
-  final pulumi.Input<String>? compute;
-  /// Properties relevant to different deployment types.
-  final pulumi.Input<BatchPipelineComponentDeploymentConfiguration>? deploymentConfiguration;
-  /// Description of the endpoint deployment.
-  final pulumi.Input<String>? description;
-  /// ARM resource ID or AssetId of the environment specification for the endpoint deployment.
-  final pulumi.Input<String>? environmentId;
-  /// Environment variables configuration for the deployment.
-  final pulumi.Input<Map<String, String>>? environmentVariables;
-  /// Error threshold, if the error count for the entire input goes above this value,
-  /// the batch inference will be aborted. Range is [-1, int.MaxValue].
-  /// For FileDataset, this value is the count of file failures.
-  /// For TabularDataset, this value is the count of record failures.
-  /// If set to -1 (the lower bound), all failures during batch inference will be ignored.
-  final pulumi.Input<int>? errorThreshold;
-  /// Logging level for batch inference operation.
-  final pulumi.Input<String>? loggingLevel;
-  /// Indicates maximum number of parallelism per instance.
-  final pulumi.Input<int>? maxConcurrencyPerInstance;
-  /// Size of the mini-batch passed to each batch invocation.
-  /// For FileDataset, this is the number of files per mini-batch.
-  /// For TabularDataset, this is the size of the records in bytes, per mini-batch.
-  final pulumi.Input<double>? miniBatchSize;
-  /// Reference to the model asset for the endpoint deployment.
-  final pulumi.Input<DataPathAssetReference>? model;
-  /// Indicates how the output will be organized.
-  final pulumi.Input<String>? outputAction;
-  /// Customized output file name for append_row output action.
-  final pulumi.Input<String>? outputFileName;
-  /// Property dictionary. Properties can be added, but not removed or altered.
-  final pulumi.Input<Map<String, String>>? properties;
-  /// Indicates compute configuration for the job.
-  /// If not provided, will default to the defaults defined in ResourceConfiguration.
-  final pulumi.Input<DeploymentResourceConfiguration>? resources;
-  /// Retry Settings for the batch inference operation.
-  /// If not provided, will default to the defaults defined in BatchRetrySettings.
-  final pulumi.Input<BatchRetrySettings>? retrySettings;
+/// Concrete tracked resource types can be created by aliasing this type using a specific property type.
+///
+/// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+///
+/// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:machinelearningservices:BatchDeployment string /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}
+/// ```
+class BatchDeployment extends pulumi.CustomResource {
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// Managed service identity (system assigned and/or user assigned identities)
+  late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+  /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
+  late final pulumi.Output<String?> kind;
+  /// The geo-location where the resource lives
+  late final pulumi.Output<String> location;
+  /// The name of the resource
+  late final pulumi.Output<String> name;
+  /// [Required] Additional attributes of the entity.
+  late final pulumi.Output<BatchDeploymentPropertiesResponse> properties;
+  /// Sku details required for ARM contract for Autoscaling.
+  late final pulumi.Output<SkuResponse?> sku;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  late final pulumi.Output<String> type;
 
   /// Creates a new [BatchDeployment].
-  /// [codeConfiguration] Code configuration for the endpoint deployment.
-  /// [compute] Compute target for batch inference operation.
-  /// [deploymentConfiguration] Properties relevant to different deployment types.
-  /// [description] Description of the endpoint deployment.
-  /// [environmentId] ARM resource ID or AssetId of the environment specification for the endpoint deployment.
-  /// [environmentVariables] Environment variables configuration for the deployment.
-  /// [errorThreshold] Error threshold, if the error count for the entire input goes above this value,
-  /// [loggingLevel] Logging level for batch inference operation.
-  /// [maxConcurrencyPerInstance] Indicates maximum number of parallelism per instance.
-  /// [miniBatchSize] Size of the mini-batch passed to each batch invocation.
-  /// [model] Reference to the model asset for the endpoint deployment.
-  /// [outputAction] Indicates how the output will be organized.
-  /// [outputFileName] Customized output file name for append_row output action.
-  /// [properties] Property dictionary. Properties can be added, but not removed or altered.
-  /// [resources] Indicates compute configuration for the job.
-  /// [retrySettings] Retry Settings for the batch inference operation.
-  const BatchDeployment({
-    this.codeConfiguration,
-    this.compute,
-    this.deploymentConfiguration,
-    this.description,
-    this.environmentId,
-    this.environmentVariables,
-    this.errorThreshold,
-    this.loggingLevel,
-    this.maxConcurrencyPerInstance,
-    this.miniBatchSize,
-    this.model,
-    this.outputAction,
-    this.outputFileName,
-    this.properties,
-    this.resources,
-    this.retrySettings,
-  });
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'codeConfiguration': ?pulumi.Input.mapOptionalInputValue<CodeConfiguration, Map<String, dynamic>>(codeConfiguration, (value) => value.toMap()),
-      'compute': ?compute,
-      'deploymentConfiguration': ?pulumi.Input.mapOptionalInputValue<BatchPipelineComponentDeploymentConfiguration, Map<String, dynamic>>(deploymentConfiguration, (value) => value.toMap()),
-      'description': ?description,
-      'environmentId': ?environmentId,
-      'environmentVariables': ?environmentVariables,
-      'errorThreshold': ?errorThreshold,
-      'loggingLevel': ?loggingLevel,
-      'maxConcurrencyPerInstance': ?maxConcurrencyPerInstance,
-      'miniBatchSize': ?miniBatchSize,
-      'model': ?pulumi.Input.mapOptionalInputValue<DataPathAssetReference, Map<String, dynamic>>(model, (value) => value.toMap()),
-      'outputAction': ?outputAction,
-      'outputFileName': ?outputFileName,
-      'properties': ?properties,
-      'resources': ?pulumi.Input.mapOptionalInputValue<DeploymentResourceConfiguration, Map<String, dynamic>>(resources, (value) => value.toMap()),
-      'retrySettings': ?pulumi.Input.mapOptionalInputValue<BatchRetrySettings, Map<String, dynamic>>(retrySettings, (value) => value.toMap()),
-    };
-  }
-
-  factory BatchDeployment.fromMap(Map<String, dynamic> map) {
-    return BatchDeployment(
-      codeConfiguration: (() { final guardedValue = map['codeConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CodeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      compute: (() { final guardedValue = map['compute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      deploymentConfiguration: (() { final guardedValue = map['deploymentConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BatchPipelineComponentDeploymentConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      environmentId: (() { final guardedValue = map['environmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      environmentVariables: (() { final guardedValue = map['environmentVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      errorThreshold: (() { final guardedValue = map['errorThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      loggingLevel: (() { final guardedValue = map['loggingLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxConcurrencyPerInstance: (() { final guardedValue = map['maxConcurrencyPerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      miniBatchSize: (() { final guardedValue = map['miniBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataPathAssetReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      outputAction: (() { final guardedValue = map['outputAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      outputFileName: (() { final guardedValue = map['outputFileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentResourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      retrySettings: (() { final guardedValue = map['retrySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BatchRetrySettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-    );
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [BatchDeployment]. {@macro pulumi_machinelearningservices_batch_deployment_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  BatchDeployment(
+    String name, {
+    BatchDeploymentArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:machinelearningservices:BatchDeployment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<BatchDeploymentPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchDeploymentPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }
-

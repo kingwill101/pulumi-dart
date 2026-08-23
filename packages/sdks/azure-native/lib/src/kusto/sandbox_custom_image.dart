@@ -5,7 +5,7 @@ import 'sandbox_custom_image_args.dart';
 ///
 /// Uses Azure REST API version 2024-04-13. In version 2.x of the Azure Native provider, it used API version 2023-08-15.
 ///
-/// Other available API versions: 2023-08-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-08-15, 2025-02-14. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -61,6 +61,26 @@ import 'sandbox_custom_image_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_kusto_sandboxcustomimage" "sandboxCustomImage" {
+///   cluster_name              = "kustoCluster"
+///   language                  = "Python"
+///   language_version          = "3.10.8"
+///   requirements_file_content = "Requests"
+///   resource_group_name       = "kustorptest"
+///   sandbox_custom_image_name = "customImage8"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +89,8 @@ import 'sandbox_custom_image_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.kusto.SandboxCustomImage;
 /// import com.pulumi.azurenative.kusto.SandboxCustomImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -192,6 +212,26 @@ import 'sandbox_custom_image_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_kusto_sandboxcustomimage" "sandboxCustomImage" {
+///   base_image_name           = "customImage1"
+///   cluster_name              = "kustoCluster"
+///   language                  = "Python"
+///   requirements_file_content = "Requests"
+///   resource_group_name       = "kustorptest"
+///   sandbox_custom_image_name = "customImage2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +240,8 @@ import 'sandbox_custom_image_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.kusto.SandboxCustomImage;
 /// import com.pulumi.azurenative.kusto.SandboxCustomImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -323,6 +363,26 @@ import 'sandbox_custom_image_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_kusto_sandboxcustomimage" "sandboxCustomImage" {
+///   base_image_name           = "Python3_10_8"
+///   cluster_name              = "kustoCluster"
+///   language                  = "Python"
+///   requirements_file_content = "Requests"
+///   resource_group_name       = "kustorptest"
+///   sandbox_custom_image_name = "customImage2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -331,8 +391,8 @@ import 'sandbox_custom_image_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.kusto.SandboxCustomImage;
 /// import com.pulumi.azurenative.kusto.SandboxCustomImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

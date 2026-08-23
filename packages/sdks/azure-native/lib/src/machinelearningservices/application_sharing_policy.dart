@@ -1,7 +1,7 @@
 /// Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
 enum ApplicationSharingPolicy {
-  valuePersonal("Personal"),
-  valueShared("Shared");
+  personal("Personal"),
+  shared("Shared");
 
   const ApplicationSharingPolicy(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ApplicationSharingPolicy {
     throw ArgumentError('Unknown ApplicationSharingPolicy value: $value');
   }
 }
-

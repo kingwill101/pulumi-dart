@@ -27,7 +27,7 @@ class WebAppHostNameBindingArgs {
   final pulumi.Input<String>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// App Service app name.
   final pulumi.Input<String>? siteName;
@@ -45,7 +45,7 @@ class WebAppHostNameBindingArgs {
   /// [hostNameType] Hostname type.
   /// [kind] Kind of resource.
   /// [name] Name of the app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] App Service app name.
   /// [sslState] SSL type
   /// [thumbprint] SSL certificate thumbprint
@@ -98,4 +98,3 @@ class WebAppHostNameBindingArgs {
     );
   }
 }
-

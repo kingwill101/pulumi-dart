@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'cluster_resource_response_properties.dart';
+import 'garnet_cluster_resource_properties_response.dart';
+import 'managed_cassandra_managed_service_identity_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getGarnetCluster.
@@ -9,12 +10,14 @@ class GetGarnetClusterResult {
   final String azureApiVersion;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+  /// Identity for the resource.
+  final ManagedCassandraManagedServiceIdentityResponse? identity;
   /// The geo-location where the resource lives
   final String location;
   /// The name of the resource
   final String name;
-  /// Properties of a Garnet cache cluster.
-  final ClusterResourceResponseProperties properties;
+  /// The resource-specific properties for this resource.
+  final GarnetClusterResourcePropertiesResponse properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// Resource tags.
@@ -25,15 +28,17 @@ class GetGarnetClusterResult {
   /// Creates a new [GetGarnetClusterResult].
   /// [azureApiVersion] The Azure API version of the resource.
   /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  /// [identity] Identity for the resource.
   /// [location] The geo-location where the resource lives
   /// [name] The name of the resource
-  /// [properties] Properties of a Garnet cache cluster.
+  /// [properties] The resource-specific properties for this resource.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetGarnetClusterResult({
     required this.azureApiVersion,
     required this.id,
+    this.identity,
     required this.location,
     required this.name,
     required this.properties,
@@ -46,6 +51,7 @@ class GetGarnetClusterResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'id': id,
+      'identity': ?identity?.toMap(),
       'location': location,
       'name': name,
       'properties': properties.toMap(),
@@ -59,13 +65,13 @@ class GetGarnetClusterResult {
     return GetGarnetClusterResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedCassandraManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      properties: ClusterResourceResponseProperties.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      properties: GarnetClusterResourcePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
-

@@ -10,7 +10,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
 ///
-/// Other available API versions: 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billingbenefits [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-12-01-preview, 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billingbenefits [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -86,6 +86,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_billingbenefits_source" "source" {
+///   credit = {
+///     amount        = 20000
+///     currency_code = "USD"
+///     grain         = "FullTerm"
+///   }
+///   credit_name             = "credit_20231212"
+///   impacted_billing_period = "202304"
+///   location                = "global"
+///   resource_group_name     = "resource_group_name_01"
+///   source_name             = "source_20231212"
+///   source_resource_id      = "/subscriptions/{subId}"
+///   tags = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +124,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.billingbenefits.Source;
 /// import com.pulumi.azurenative.billingbenefits.SourceArgs;
 /// import com.pulumi.azurenative.billingbenefits.inputs.CommitmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -161,7 +190,7 @@ import 'system_data_response.dart';
 ///
 /// source = azure_native.billingbenefits.Source("source",
 ///     credit={
-///         "amount": 20000,
+///         "amount": float(20000),
 ///         "currency_code": "USD",
 ///         "grain": azure_native.billingbenefits.CommitmentGrain.FULL_TERM,
 ///     },

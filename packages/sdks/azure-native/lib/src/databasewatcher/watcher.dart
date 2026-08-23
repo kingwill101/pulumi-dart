@@ -88,6 +88,37 @@ import 'watcher_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databasewatcher_watcher" "watcher" {
+///   datastore = {
+///     adx_cluster_resource_id    = "/subscriptions/49e0fbd3-75e8-44e7-96fd-5b64d9ad818d/resourceGroups/apiTest/providers/Microsoft.Kusto/clusters/apiTestKusto"
+///     kusto_cluster_display_name = "kustoUri-adx"
+///     kusto_cluster_uri          = "https://kustouri-adx.eastus.kusto.windows.net"
+///     kusto_data_ingestion_uri   = "https://ingest-kustouri-adx.eastus.kusto.windows.net"
+///     kusto_database_name        = "kustoDatabaseName1"
+///     kusto_management_url       = "https://portal.azure.com/"
+///     kusto_offering_type        = "adx"
+///   }
+///   default_alert_rule_identity_resource_id = "/subscriptions/469DD77C-C8DB-47B7-B9E1-72D29F8C878B/resourceGroups/rgWatcher/providers/Microsoft.ManagedIdentity/userAssignedIdentities/3pmtest"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location            = "eastus2euap"
+///   resource_group_name = "rgWatcher"
+///   tags                = {}
+///   watcher_name        = "testWatcher"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +129,8 @@ import 'watcher_args.dart';
 /// import com.pulumi.azurenative.databasewatcher.WatcherArgs;
 /// import com.pulumi.azurenative.databasewatcher.inputs.DatastoreArgs;
 /// import com.pulumi.azurenative.databasewatcher.inputs.ManagedServiceIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

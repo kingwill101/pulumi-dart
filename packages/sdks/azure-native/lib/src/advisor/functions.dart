@@ -8,7 +8,7 @@ import 'get_suppression_result.dart';
 ///
 /// Uses Azure REST API version 2023-09-01-preview.
 ///
-/// Other available API versions: 2024-11-18-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native advisor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-11-18-preview, 2025-05-01-preview, 2026-02-01-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native advisor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_advisor_get_assessment_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAssessmentResult> getAssessment(
@@ -28,7 +28,7 @@ Future<GetAssessmentResult> getAssessment(
 ///
 /// Uses Azure REST API version 2023-09-01-preview.
 ///
-/// Other available API versions: 2023-01-01, 2024-11-18-preview, 2025-01-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native advisor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-01-01, 2024-11-18-preview, 2025-01-01, 2025-05-01-preview, 2026-02-01-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native advisor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_advisor_get_suppression_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSuppressionResult> getSuppression(

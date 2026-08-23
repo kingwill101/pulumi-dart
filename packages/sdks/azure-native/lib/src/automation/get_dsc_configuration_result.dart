@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'content_source_response.dart';
 import 'dsc_configuration_parameter_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getDscConfiguration.
 class GetDscConfigurationResult {
@@ -14,14 +15,14 @@ class GetDscConfigurationResult {
   final String? description;
   /// Gets or sets the etag of the resource.
   final String? etag;
-  /// Fully qualified resource Id for the resource
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Gets or sets the job count of the configuration.
   final int? jobCount;
   /// Gets or sets the last modified time.
   final String? lastModifiedTime;
-  /// The Azure Region where the resource lives
-  final String? location;
+  /// The geo-location where the resource lives
+  final String location;
   /// Gets or sets verbose log option.
   final bool? logVerbose;
   /// The name of the resource
@@ -36,9 +37,11 @@ class GetDscConfigurationResult {
   final ContentSourceResponse? source;
   /// Gets or sets the state of the configuration.
   final String? state;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
   /// Resource tags.
   final Map<String, String>? tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetDscConfigurationResult].
@@ -46,10 +49,10 @@ class GetDscConfigurationResult {
   /// [creationTime] Gets or sets the creation time.
   /// [description] Gets or sets the description.
   /// [etag] Gets or sets the etag of the resource.
-  /// [id] Fully qualified resource Id for the resource
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [jobCount] Gets or sets the job count of the configuration.
   /// [lastModifiedTime] Gets or sets the last modified time.
-  /// [location] The Azure Region where the resource lives
+  /// [location] The geo-location where the resource lives
   /// [logVerbose] Gets or sets verbose log option.
   /// [name] The name of the resource
   /// [nodeConfigurationCount] Gets the number of compiled node configurations.
@@ -57,8 +60,9 @@ class GetDscConfigurationResult {
   /// [provisioningState] Gets or sets the provisioning state of the configuration.
   /// [source] Gets or sets the source.
   /// [state] Gets or sets the state of the configuration.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
-  /// [type] The type of the resource.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetDscConfigurationResult({
     required this.azureApiVersion,
     this.creationTime,
@@ -67,7 +71,7 @@ class GetDscConfigurationResult {
     required this.id,
     this.jobCount,
     this.lastModifiedTime,
-    this.location,
+    required this.location,
     this.logVerbose,
     required this.name,
     this.nodeConfigurationCount,
@@ -75,6 +79,7 @@ class GetDscConfigurationResult {
     this.provisioningState,
     this.source,
     this.state,
+    required this.systemData,
     this.tags,
     required this.type,
   });
@@ -88,7 +93,7 @@ class GetDscConfigurationResult {
       'id': id,
       'jobCount': ?jobCount,
       'lastModifiedTime': ?lastModifiedTime,
-      'location': ?location,
+      'location': location,
       'logVerbose': ?logVerbose,
       'name': name,
       'nodeConfigurationCount': ?nodeConfigurationCount,
@@ -96,6 +101,7 @@ class GetDscConfigurationResult {
       'provisioningState': ?provisioningState,
       'source': ?source?.toMap(),
       'state': ?state,
+      'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
     };
@@ -110,7 +116,7 @@ class GetDscConfigurationResult {
       id: map['id'] as String,
       jobCount: (() { final guardedValue = map['jobCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
       lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: map['location'] as String,
       logVerbose: (() { final guardedValue = map['logVerbose']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       name: map['name'] as String,
       nodeConfigurationCount: (() { final guardedValue = map['nodeConfigurationCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
@@ -118,9 +124,9 @@ class GetDscConfigurationResult {
       provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return ContentSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
-

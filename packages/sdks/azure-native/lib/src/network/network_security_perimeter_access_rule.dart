@@ -5,7 +5,7 @@ import 'network_security_perimeter_access_rule_args.dart';
 ///
 /// Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-06-01-preview.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -68,6 +68,26 @@ import 'network_security_perimeter_access_rule_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_networksecurityperimeteraccessrule" "networkSecurityPerimeterAccessRule" {
+///   access_rule_name                = "accessRule1"
+///   address_prefixes                = ["10.11.0.0/16", "10.10.1.0/24"]
+///   direction                       = "Inbound"
+///   network_security_perimeter_name = "nsp1"
+///   profile_name                    = "profile1"
+///   resource_group_name             = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +96,8 @@ import 'network_security_perimeter_access_rule_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.network.NetworkSecurityPerimeterAccessRule;
 /// import com.pulumi.azurenative.network.NetworkSecurityPerimeterAccessRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

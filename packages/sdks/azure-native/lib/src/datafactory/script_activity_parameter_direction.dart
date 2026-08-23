@@ -16,4 +16,3 @@ enum ScriptActivityParameterDirection {
     throw ArgumentError('Unknown ScriptActivityParameterDirection value: $value');
   }
 }
-

@@ -17,4 +17,3 @@ enum PersistedConnectionStatus {
     throw ArgumentError('Unknown PersistedConnectionStatus value: $value');
   }
 }
-

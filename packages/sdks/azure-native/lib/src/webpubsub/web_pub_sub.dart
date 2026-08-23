@@ -13,7 +13,7 @@ import 'web_pub_sub_tls_settings_response.dart';
 ///
 /// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native webpubsub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-08-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native webpubsub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -169,6 +169,61 @@ import 'web_pub_sub_tls_settings_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_webpubsub_webpubsub" "webPubSub" {
+///   disable_aad_auth   = false
+///   disable_local_auth = false
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   kind = "WebPubSub"
+///   live_trace_configuration = {
+///     categories = [{
+///       "enabled" = "true"
+///       "name"    = "ConnectivityLogs"
+///     }]
+///     enabled = "false"
+///   }
+///   location = "eastus"
+///   network_ac_ls = {
+///     default_action = "Deny"
+///     private_endpoints = [{
+///       "allow" = ["ServerConnection"]
+///       "name"  = "mywebpubsubservice.1fa229cd-bf3f-47f0-8c49-afb36723997e"
+///     }]
+///     public_network = {
+///       allow = ["ClientConnection"]
+///     }
+///   }
+///   public_network_access = "Enabled"
+///   resource_group_name   = "myResourceGroup"
+///   resource_name         = "myWebPubSubService"
+///   sku = {
+///     capacity = 1
+///     name     = "Premium_P1"
+///     tier     = "Premium"
+///   }
+///   socket_io = {
+///     service_mode = "Serverless"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///   }
+///   tls = {
+///     client_cert_enabled = false
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -184,8 +239,8 @@ import 'web_pub_sub_tls_settings_response.dart';
 /// import com.pulumi.azurenative.webpubsub.inputs.ResourceSkuArgs;
 /// import com.pulumi.azurenative.webpubsub.inputs.WebPubSubSocketIOSettingsArgs;
 /// import com.pulumi.azurenative.webpubsub.inputs.WebPubSubTlsSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

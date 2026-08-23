@@ -29,7 +29,7 @@ class WebAppFunctionArgs {
   final pulumi.Input<String>? language;
   /// Site name.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Script URI.
   final pulumi.Input<String>? scriptHref;
@@ -54,7 +54,7 @@ class WebAppFunctionArgs {
   /// [kind] Kind of resource.
   /// [language] The function language
   /// [name] Site name.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scriptHref] Script URI.
   /// [scriptRootPathHref] Script root path URI.
   /// [secretsFileHref] Secrets file URI.
@@ -124,4 +124,3 @@ class WebAppFunctionArgs {
     );
   }
 }
-

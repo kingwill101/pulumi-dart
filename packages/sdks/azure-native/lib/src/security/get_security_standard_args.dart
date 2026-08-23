@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_security_get_security_standard_args_doc}
 class GetSecurityStandardArgs {
-  /// The scope of the security standard. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+  /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> scope;
   /// The Security Standard key - unique key for the standard type
   final pulumi.Input<String> standardId;
 
   /// Creates a new [GetSecurityStandardArgs].
-  /// [scope] The scope of the security standard. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+  /// [scope] The fully qualified Azure Resource manager identifier of the resource.
   /// [standardId] The Security Standard key - unique key for the standard type
   const GetSecurityStandardArgs({
     required this.scope,
@@ -34,4 +34,3 @@ class GetSecurityStandardArgs {
     );
   }
 }
-

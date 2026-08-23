@@ -16,4 +16,3 @@ enum ScopeType {
     throw ArgumentError('Unknown ScopeType value: $value');
   }
 }
-

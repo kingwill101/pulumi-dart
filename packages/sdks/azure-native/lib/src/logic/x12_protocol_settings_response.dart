@@ -103,4 +103,3 @@ class X12ProtocolSettingsResponse {
     );
   }
 }
-

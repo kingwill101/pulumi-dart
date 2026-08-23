@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'launch_template_specification_response.dart';
+import 'launch_template_specification_eks_nodegroup_response.dart';
 import 'remote_access_response.dart';
 import 'scaling_config_response.dart';
 import 'taint_response.dart';
@@ -28,7 +28,7 @@ class AwsEksNodegroupPropertiesResponse {
   /// The Kubernetes labels to be applied to the nodes in the node group when they are created.
   final pulumi.Input<Map<String, String>>? labels;
   /// An object representing a node group's launch template specification. An object representing a launch template specification for AWS EKS Nodegroup.
-  final pulumi.Input<LaunchTemplateSpecificationResponse>? launchTemplate;
+  final pulumi.Input<LaunchTemplateSpecificationEksNodegroupResponse>? launchTemplate;
   /// The Amazon Resource Name (ARN) of the IAM role to associate with your node group.
   final pulumi.Input<String>? nodeRole;
   /// The unique name to give your node group.
@@ -105,7 +105,7 @@ class AwsEksNodegroupPropertiesResponse {
       'id': ?id,
       'instanceTypes': ?instanceTypes,
       'labels': ?labels,
-      'launchTemplate': ?pulumi.Input.mapOptionalInputValue<LaunchTemplateSpecificationResponse, Map<String, dynamic>>(launchTemplate, (value) => value.toMap()),
+      'launchTemplate': ?pulumi.Input.mapOptionalInputValue<LaunchTemplateSpecificationEksNodegroupResponse, Map<String, dynamic>>(launchTemplate, (value) => value.toMap()),
       'nodeRole': ?nodeRole,
       'nodegroupName': ?nodegroupName,
       'releaseVersion': ?releaseVersion,
@@ -130,7 +130,7 @@ class AwsEksNodegroupPropertiesResponse {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceTypes: (() { final guardedValue = map['instanceTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      launchTemplate: (() { final guardedValue = map['launchTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LaunchTemplateSpecificationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      launchTemplate: (() { final guardedValue = map['launchTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LaunchTemplateSpecificationEksNodegroupResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       nodeRole: (() { final guardedValue = map['nodeRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodegroupName: (() { final guardedValue = map['nodegroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       releaseVersion: (() { final guardedValue = map['releaseVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -144,4 +144,3 @@ class AwsEksNodegroupPropertiesResponse {
     );
   }
 }
-

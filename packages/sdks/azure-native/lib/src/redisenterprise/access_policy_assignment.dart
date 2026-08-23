@@ -4,9 +4,9 @@ import 'access_policy_assignment_properties_response_user.dart';
 
 /// Describes the access policy assignment of Redis Enterprise database
 ///
-/// Uses Azure REST API version 2025-05-01-preview.
+/// Uses Azure REST API version 2025-07-01.
 ///
-/// Other available API versions: 2024-09-01-preview, 2025-04-01, 2025-07-01, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-09-01-preview, 2025-04-01, 2025-05-01-preview, 2025-08-01-preview, 2026-02-01-preview, 2026-05-01-preview, 2026-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -67,6 +67,28 @@ import 'access_policy_assignment_properties_response_user.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_redisenterprise_accesspolicyassignment" "accessPolicyAssignment" {
+///   access_policy_assignment_name = "defaultTestEntraApp1"
+///   access_policy_name            = "default"
+///   cluster_name                  = "cache1"
+///   database_name                 = "default"
+///   resource_group_name           = "rg1"
+///   user = {
+///     object_id = "6497c918-11ad-41e7-1b0f-7c518a87d0b0"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +98,8 @@ import 'access_policy_assignment_properties_response_user.dart';
 /// import com.pulumi.azurenative.redisenterprise.AccessPolicyAssignment;
 /// import com.pulumi.azurenative.redisenterprise.AccessPolicyAssignmentArgs;
 /// import com.pulumi.azurenative.redisenterprise.inputs.AccessPolicyAssignmentPropertiesUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

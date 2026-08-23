@@ -16,4 +16,3 @@ enum FontStyle {
     throw ArgumentError('Unknown FontStyle value: $value');
   }
 }
-

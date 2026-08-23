@@ -64,6 +64,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databasewatcher_sharedprivatelinkresource" "sharedPrivateLinkResource" {
+///   dns_zone                          = "ec3ae9d410ba"
+///   group_id                          = "vault"
+///   private_link_resource_id          = "/subscriptions/49e0fbd3-75e8-44e7-96fd-5b64d9ad818d/resourceGroups/apiTest-ddat4p/providers/Microsoft.KeyVault/vaults/kvmo3ej9ih"
+///   request_message                   = "request message"
+///   resource_group_name               = "apiTest-ddat4p"
+///   shared_private_link_resource_name = "monitoringh22eed"
+///   watcher_name                      = "databasemo3ej9ih"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +93,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.databasewatcher.SharedPrivateLinkResource;
 /// import com.pulumi.azurenative.databasewatcher.SharedPrivateLinkResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

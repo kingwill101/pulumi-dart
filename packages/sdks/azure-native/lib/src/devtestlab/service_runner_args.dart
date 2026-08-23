@@ -12,22 +12,22 @@ class ServiceRunnerArgs {
   final pulumi.Input<IdentityProperties>? identity;
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-  /// The name of the ServiceRunner
+  /// The name of the service runner.
   final pulumi.Input<String>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// The tags of the resource.
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ServiceRunnerArgs].
   /// [identity] The identity of the resource.
   /// [labName] The name of the lab.
-  /// [location] The location of the resource.
-  /// [name] The name of the ServiceRunner
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the service runner.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  /// [tags] The tags of the resource.
+  /// [tags] Resource tags.
   const ServiceRunnerArgs({
     this.identity,
     required this.labName,
@@ -59,4 +59,3 @@ class ServiceRunnerArgs {
     );
   }
 }
-

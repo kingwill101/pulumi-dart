@@ -1,8 +1,8 @@
-/// Enumerates the ways that a service can be partitioned.
+/// Specifies how the service is partitioned.
 enum PartitionScheme {
-  singleton("Singleton"),
-  uniformInt64Range("UniformInt64Range"),
-  named("Named");
+  valueSingleton("Singleton"),
+  valueUniformInt64Range("UniformInt64Range"),
+  valueNamed("Named");
 
   const PartitionScheme(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum PartitionScheme {
     throw ArgumentError('Unknown PartitionScheme value: $value');
   }
 }
-

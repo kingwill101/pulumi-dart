@@ -16,4 +16,3 @@ enum ValidationLevel {
     throw ArgumentError('Unknown ValidationLevel value: $value');
   }
 }
-

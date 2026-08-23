@@ -104,6 +104,43 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_iaminstanceprofile" "iamInstanceProfile" {
+///   location = "unn"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "djpzkfxattxqgrwdgl"
+///     aws_account_id = "zhhymhiivdmwoidycnqdtzarowwjm"
+///     aws_properties = {
+///       arn                   = "xfilqplkerenzrkykjnnoj"
+///       instance_profile_name = "ccstflwsxmpatrvscwxoukagqblzt"
+///       path                  = "edfwubhvvye"
+///       roles                 = ["nrvsijvbwdodraufvsxmbcbnm"]
+///     }
+///     aws_region        = "dwnkitebqhhqjrkjjlhtjryvhsuz"
+///     aws_source_schema = "vitibwpeaozvgjcibxrqodn"
+///     aws_tags = {
+///       "key3394" = "akkxrjgu"
+///     }
+///     public_cloud_connectors_resource_id = "opbcrtwimfuirxph"
+///     public_cloud_resource_name          = "qbxqhspttfymekhofojyqu"
+///   }
+///   resource_group_name = "rgiamInstanceProfile"
+///   tags = {
+///     "key6049" = "bwwujf"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +151,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.IamInstanceProfileArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IamInstanceProfilePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsIamInstanceProfilePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

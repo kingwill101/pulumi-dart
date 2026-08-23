@@ -100,6 +100,44 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_community_communitytraining" "communityTraining" {
+///   community_training_name   = "ctApplication"
+///   disaster_recovery_enabled = true
+///   identity_configuration = {
+///     b2c_authentication_policy = "B2C_1_signup_signin"
+///     b2c_password_reset_policy = "B2C_1_pwd_reset"
+///     client_id                 = "8c92390f-2f30-493d-bd13-d3c3eba3709d"
+///     client_secret             = "idenityConfigurationClientSecret"
+///     custom_login_parameters   = "custom_hint"
+///     domain_name               = "cttenant"
+///     identity_type             = "ADB2C"
+///     teams_enabled             = false
+///     tenant_id                 = "c1ffbb60-88cf-4b83-b54f-c47ae6220c19"
+///   }
+///   location                       = "southeastasia"
+///   portal_admin_email_address     = "ctadmin@ct.com"
+///   portal_name                    = "ctwebsite"
+///   portal_owner_email_address     = "ctcontact@ct.com"
+///   portal_owner_organization_name = "CT Portal Owner Organization"
+///   resource_group_name            = "rgCommunityTaining"
+///   sku = {
+///     name = "Commercial"
+///     tier = "Standard"
+///   }
+///   zone_redundancy_enabled = true
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +148,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.community.CommunityTrainingArgs;
 /// import com.pulumi.azurenative.community.inputs.IdentityConfigurationPropertiesArgs;
 /// import com.pulumi.azurenative.community.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

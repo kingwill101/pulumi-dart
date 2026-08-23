@@ -1,10 +1,10 @@
 /// Current status of the free services
 enum FreeServicesStatus {
-  valueUnknown("Unknown"),
-  valuePending("Pending"),
-  valueActive("Active"),
-  valueCanceled("Canceled"),
-  valueCompleted("Completed");
+  unknown("Unknown"),
+  pending("Pending"),
+  active("Active"),
+  canceled("Canceled"),
+  completed("Completed");
 
   const FreeServicesStatus(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum FreeServicesStatus {
     throw ArgumentError('Unknown FreeServicesStatus value: $value');
   }
 }
-

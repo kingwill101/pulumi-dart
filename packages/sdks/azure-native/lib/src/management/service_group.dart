@@ -65,6 +65,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_management_servicegroup" "serviceGroup" {
+///   properties = {
+///     display_name = "ServiceGroup 1 Name"
+///     parent = {
+///       resource_id = "/providers/Microsoft.Management/serviceGroups/RootGroup"
+///     }
+///   }
+///   service_group_name = "ServiceGroup1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +96,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.management.ServiceGroupArgs;
 /// import com.pulumi.azurenative.management.inputs.ServiceGroupPropertiesArgs;
 /// import com.pulumi.azurenative.management.inputs.ParentServiceGroupPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

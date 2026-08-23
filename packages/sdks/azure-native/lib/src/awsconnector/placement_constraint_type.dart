@@ -15,4 +15,3 @@ enum PlacementConstraintType {
     throw ArgumentError('Unknown PlacementConstraintType value: $value');
   }
 }
-

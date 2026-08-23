@@ -13,7 +13,7 @@ class WebAppFtpAllowedSlotArgs {
   final pulumi.Input<String>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   final pulumi.Input<String> slot;
 
@@ -21,7 +21,7 @@ class WebAppFtpAllowedSlotArgs {
   /// [allow] &lt;code&gt;true&lt;/code&gt; to allow access to a publishing method; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [kind] Kind of resource.
   /// [name] Name of the app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [slot] Required.
   const WebAppFtpAllowedSlotArgs({
     required this.allow,
@@ -51,4 +51,3 @@ class WebAppFtpAllowedSlotArgs {
     );
   }
 }
-

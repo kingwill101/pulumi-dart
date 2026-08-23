@@ -15,4 +15,3 @@ enum TrafficViewEnrollmentStatus {
     throw ArgumentError('Unknown TrafficViewEnrollmentStatus value: $value');
   }
 }
-

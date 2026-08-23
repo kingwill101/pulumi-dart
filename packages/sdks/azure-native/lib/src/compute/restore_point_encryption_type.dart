@@ -16,4 +16,3 @@ enum RestorePointEncryptionType {
     throw ArgumentError('Unknown RestorePointEncryptionType value: $value');
   }
 }
-

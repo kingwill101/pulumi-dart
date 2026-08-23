@@ -16,4 +16,3 @@ enum OptimizationPreference {
     throw ArgumentError('Unknown OptimizationPreference value: $value');
   }
 }
-

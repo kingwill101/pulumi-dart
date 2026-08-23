@@ -9,18 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListAppServicePlanHybridConnectionKeysArgs {
   /// Name of the App Service plan.
   final pulumi.Input<String> name;
-  /// The name of the Service Bus namespace.
+  /// Name of the Service Bus namespace.
   final pulumi.Input<String> namespaceName;
-  /// The name of the Service Bus relay.
+  /// Name of the Service Bus relay.
   final pulumi.Input<String> relayName;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [ListAppServicePlanHybridConnectionKeysArgs].
   /// [name] Name of the App Service plan.
-  /// [namespaceName] The name of the Service Bus namespace.
-  /// [relayName] The name of the Service Bus relay.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [namespaceName] Name of the Service Bus namespace.
+  /// [relayName] Name of the Service Bus relay.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const ListAppServicePlanHybridConnectionKeysArgs({
     required this.name,
     required this.namespaceName,
@@ -46,4 +46,3 @@ class ListAppServicePlanHybridConnectionKeysArgs {
     );
   }
 }
-

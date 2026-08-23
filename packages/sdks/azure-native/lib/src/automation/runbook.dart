@@ -1,13 +1,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'content_link_response.dart';
 import 'runbook_args.dart';
 import 'runbook_draft_response.dart';
 import 'runbook_parameter_response.dart';
+import 'system_data_response.dart';
 
 /// Definition of the runbook type.
 ///
-/// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
+/// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 ///
-/// Other available API versions: 2015-10-31, 2018-06-30, 2019-06-01, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2018-06-30, 2019-06-01, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -41,7 +43,8 @@ import 'runbook_parameter_response.dart';
 ///         },
 ///         ResourceGroupName = "rg",
 ///         RunbookName = "Get-AzureVMTutorial",
-///         RunbookType = AzureNative.Automation.RunbookTypeEnum.PowerShellWorkflow,
+///         RunbookType = AzureNative.Automation.RunbookTypeEnum.PowerShell,
+///         RuntimeEnvironment = "environmentName",
 ///         Tags =
 ///         {
 ///             { "tag01", "value01" },
@@ -79,9 +82,10 @@ import 'runbook_parameter_response.dart';
 /// 				},
 /// 				Uri: pulumi.String("https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-automation-runbook-getvms/Runbooks/Get-AzureVMTutorial.ps1"),
 /// 			},
-/// 			ResourceGroupName: pulumi.String("rg"),
-/// 			RunbookName:       pulumi.String("Get-AzureVMTutorial"),
-/// 			RunbookType:       pulumi.String(automation.RunbookTypeEnumPowerShellWorkflow),
+/// 			ResourceGroupName:  pulumi.String("rg"),
+/// 			RunbookName:        pulumi.String("Get-AzureVMTutorial"),
+/// 			RunbookType:        pulumi.String(automation.RunbookTypeEnumPowerShell),
+/// 			RuntimeEnvironment: pulumi.String("environmentName"),
 /// 			Tags: pulumi.StringMap{
 /// 				"tag01": pulumi.String("value01"),
 /// 				"tag02": pulumi.String("value02"),
@@ -96,6 +100,42 @@ import 'runbook_parameter_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_runbook" "runbook" {
+///   automation_account_name = "ContoseAutomationAccount"
+///   description             = "Description of the Runbook"
+///   location                = "East US 2"
+///   log_activity_trace      = 1
+///   log_progress            = true
+///   log_verbose             = false
+///   name                    = "Get-AzureVMTutorial"
+///   publish_content_link = {
+///     content_hash = {
+///       algorithm = "SHA256"
+///       value     = "115775B8FF2BE672D8A946BD0B489918C724DDE15A440373CA54461D53010A80"
+///     }
+///     uri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-automation-runbook-getvms/Runbooks/Get-AzureVMTutorial.ps1"
+///   }
+///   resource_group_name = "rg"
+///   runbook_name        = "Get-AzureVMTutorial"
+///   runbook_type        = "PowerShell"
+///   runtime_environment = "environmentName"
+///   tags = {
+///     "tag01" = "value01"
+///     "tag02" = "value02"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +146,8 @@ import 'runbook_parameter_response.dart';
 /// import com.pulumi.azurenative.automation.RunbookArgs;
 /// import com.pulumi.azurenative.automation.inputs.ContentLinkArgs;
 /// import com.pulumi.azurenative.automation.inputs.ContentHashArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -136,7 +176,8 @@ import 'runbook_parameter_response.dart';
 ///                 .build())
 ///             .resourceGroupName("rg")
 ///             .runbookName("Get-AzureVMTutorial")
-///             .runbookType("PowerShellWorkflow")
+///             .runbookType("PowerShell")
+///             .runtimeEnvironment("environmentName")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("tag01", "value01"),
 ///                 Map.entry("tag02", "value02")
@@ -169,7 +210,8 @@ import 'runbook_parameter_response.dart';
 ///     },
 ///     resourceGroupName: "rg",
 ///     runbookName: "Get-AzureVMTutorial",
-///     runbookType: azure_native.automation.RunbookTypeEnum.PowerShellWorkflow,
+///     runbookType: azure_native.automation.RunbookTypeEnum.PowerShell,
+///     runtimeEnvironment: "environmentName",
 ///     tags: {
 ///         tag01: "value01",
 ///         tag02: "value02",
@@ -199,7 +241,8 @@ import 'runbook_parameter_response.dart';
 ///     },
 ///     resource_group_name="rg",
 ///     runbook_name="Get-AzureVMTutorial",
-///     runbook_type=azure_native.automation.RunbookTypeEnum.POWER_SHELL_WORKFLOW,
+///     runbook_type=azure_native.automation.RunbookTypeEnum.POWER_SHELL,
+///     runtime_environment="environmentName",
 ///     tags={
 ///         "tag01": "value01",
 ///         "tag02": "value02",
@@ -226,7 +269,8 @@ import 'runbook_parameter_response.dart';
 ///         uri: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-automation-runbook-getvms/Runbooks/Get-AzureVMTutorial.ps1
 ///       resourceGroupName: rg
 ///       runbookName: Get-AzureVMTutorial
-///       runbookType: PowerShellWorkflow
+///       runbookType: PowerShell
+///       runtimeEnvironment: environmentName
 ///       tags:
 ///         tag01: value01
 ///         tag02: value02
@@ -255,7 +299,8 @@ import 'runbook_parameter_response.dart';
 ///         Name = "Get-AzureVMTutorial",
 ///         ResourceGroupName = "rg",
 ///         RunbookName = "Get-AzureVMTutorial",
-///         RunbookType = AzureNative.Automation.RunbookTypeEnum.PowerShellWorkflow,
+///         RunbookType = AzureNative.Automation.RunbookTypeEnum.PowerShell,
+///         RuntimeEnvironment = "environmentName",
 ///         Tags =
 ///         {
 ///             { "tag01", "value01" },
@@ -288,7 +333,8 @@ import 'runbook_parameter_response.dart';
 /// 			Name:                  pulumi.String("Get-AzureVMTutorial"),
 /// 			ResourceGroupName:     pulumi.String("rg"),
 /// 			RunbookName:           pulumi.String("Get-AzureVMTutorial"),
-/// 			RunbookType:           pulumi.String(automation.RunbookTypeEnumPowerShellWorkflow),
+/// 			RunbookType:           pulumi.String(automation.RunbookTypeEnumPowerShell),
+/// 			RuntimeEnvironment:    pulumi.String("environmentName"),
 /// 			Tags: pulumi.StringMap{
 /// 				"tag01": pulumi.String("value01"),
 /// 				"tag02": pulumi.String("value02"),
@@ -303,6 +349,35 @@ import 'runbook_parameter_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_runbook" "runbook" {
+///   automation_account_name = "ContoseAutomationAccount"
+///   description             = "Description of the Runbook"
+///   draft                   = {}
+///   location                = "East US 2"
+///   log_progress            = false
+///   log_verbose             = false
+///   name                    = "Get-AzureVMTutorial"
+///   resource_group_name     = "rg"
+///   runbook_name            = "Get-AzureVMTutorial"
+///   runbook_type            = "PowerShell"
+///   runtime_environment     = "environmentName"
+///   tags = {
+///     "tag01" = "value01"
+///     "tag02" = "value02"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -312,8 +387,8 @@ import 'runbook_parameter_response.dart';
 /// import com.pulumi.azurenative.automation.Runbook;
 /// import com.pulumi.azurenative.automation.RunbookArgs;
 /// import com.pulumi.azurenative.automation.inputs.RunbookDraftArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -336,7 +411,8 @@ import 'runbook_parameter_response.dart';
 ///             .name("Get-AzureVMTutorial")
 ///             .resourceGroupName("rg")
 ///             .runbookName("Get-AzureVMTutorial")
-///             .runbookType("PowerShellWorkflow")
+///             .runbookType("PowerShell")
+///             .runtimeEnvironment("environmentName")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("tag01", "value01"),
 ///                 Map.entry("tag02", "value02")
@@ -362,7 +438,8 @@ import 'runbook_parameter_response.dart';
 ///     name: "Get-AzureVMTutorial",
 ///     resourceGroupName: "rg",
 ///     runbookName: "Get-AzureVMTutorial",
-///     runbookType: azure_native.automation.RunbookTypeEnum.PowerShellWorkflow,
+///     runbookType: azure_native.automation.RunbookTypeEnum.PowerShell,
+///     runtimeEnvironment: "environmentName",
 ///     tags: {
 ///         tag01: "value01",
 ///         tag02: "value02",
@@ -385,7 +462,8 @@ import 'runbook_parameter_response.dart';
 ///     name="Get-AzureVMTutorial",
 ///     resource_group_name="rg",
 ///     runbook_name="Get-AzureVMTutorial",
-///     runbook_type=azure_native.automation.RunbookTypeEnum.POWER_SHELL_WORKFLOW,
+///     runbook_type=azure_native.automation.RunbookTypeEnum.POWER_SHELL,
+///     runtime_environment="environmentName",
 ///     tags={
 ///         "tag01": "value01",
 ///         "tag02": "value02",
@@ -407,7 +485,8 @@ import 'runbook_parameter_response.dart';
 ///       name: Get-AzureVMTutorial
 ///       resourceGroupName: rg
 ///       runbookName: Get-AzureVMTutorial
-///       runbookType: PowerShellWorkflow
+///       runbookType: PowerShell
+///       runtimeEnvironment: environmentName
 ///       tags:
 ///         tag01: value01
 ///         tag02: value02
@@ -441,8 +520,8 @@ class Runbook extends pulumi.CustomResource {
   late final pulumi.Output<String?> lastModifiedBy;
   /// Gets or sets the last modified time.
   late final pulumi.Output<String?> lastModifiedTime;
-  /// The Azure Region where the resource lives
-  late final pulumi.Output<String?> location;
+  /// The geo-location where the resource lives
+  late final pulumi.Output<String> location;
   /// Gets or sets the option to log activity trace of the runbook.
   late final pulumi.Output<int?> logActivityTrace;
   /// Gets or sets progress log option.
@@ -457,13 +536,19 @@ class Runbook extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, RunbookParameterResponse>?> parameters;
   /// Gets or sets the provisioning state of the runbook.
   late final pulumi.Output<String?> provisioningState;
+  /// Gets or sets the published runbook content link.
+  late final pulumi.Output<ContentLinkResponse?> publishContentLink;
   /// Gets or sets the type of the runbook.
   late final pulumi.Output<String?> runbookType;
+  /// Runtime Environment of the runbook execution.
+  late final pulumi.Output<String?> runtimeEnvironment;
   /// Gets or sets the state of the runbook.
   late final pulumi.Output<String?> state;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [Runbook].
@@ -488,7 +573,7 @@ class Runbook extends pulumi.CustomResource {
     jobCount = registerOutput<int?>('jobCount');
     lastModifiedBy = registerOutput<String?>('lastModifiedBy');
     lastModifiedTime = registerOutput<String?>('lastModifiedTime');
-    location = registerOutput<String?>('location');
+    location = registerOutput<String>('location');
     logActivityTrace = registerOutput<int?>('logActivityTrace');
     logProgress = registerOutput<bool?>('logProgress');
     logVerbose = registerOutput<bool?>('logVerbose');
@@ -496,8 +581,11 @@ class Runbook extends pulumi.CustomResource {
     outputTypes = registerOutput<List<String>?>('outputTypes');
     parameters = registerOutput<Map<String, RunbookParameterResponse>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<RunbookParameterResponse>(guardedValue, (value) => RunbookParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String?>('provisioningState');
+    publishContentLink = registerOutput<ContentLinkResponse?>('publishContentLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContentLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     runbookType = registerOutput<String?>('runbookType');
+    runtimeEnvironment = registerOutput<String?>('runtimeEnvironment');
     state = registerOutput<String?>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

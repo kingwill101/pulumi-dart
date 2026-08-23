@@ -21,4 +21,3 @@ enum DayOfWeek {
     throw ArgumentError('Unknown DayOfWeek value: $value');
   }
 }
-

@@ -56,6 +56,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_kustodatabasedataset" "kustoDatabaseDataSet" {
+///   account_name        = "Account1"
+///   data_set_name       = "Dataset1"
+///   resource_group_name = "SampleResourceGroup"
+///   share_name          = "Share1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +82,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.KustoDatabaseDataSet;
 /// import com.pulumi.azurenative.datashare.KustoDatabaseDataSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -175,6 +193,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_kustodatabasedataset" "kustoDatabaseDataSet" {
+///   account_name        = "Account1"
+///   data_set_name       = "Dataset1"
+///   resource_group_name = "SampleResourceGroup"
+///   share_name          = "Share1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +219,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.KustoDatabaseDataSet;
 /// import com.pulumi.azurenative.datashare.KustoDatabaseDataSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -298,6 +334,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_kustodatabasedataset" "kustoDatabaseDataSet" {
+///   account_name               = "Account1"
+///   data_set_name              = "Dataset1"
+///   kind                       = "KustoDatabase"
+///   kusto_database_resource_id = "/subscriptions/433a8dfd-e5d5-4e77-ad86-90acdc75eb1a/resourceGroups/SampleResourceGroup/providers/Microsoft.Kusto/clusters/Cluster1/databases/Database1"
+///   resource_group_name        = "SampleResourceGroup"
+///   share_name                 = "Share1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -306,8 +362,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.KustoDatabaseDataSet;
 /// import com.pulumi.azurenative.datashare.KustoDatabaseDataSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -425,6 +481,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_kustodatabasedataset" "kustoDatabaseDataSet" {
+///   account_name        = "Account1"
+///   data_set_name       = "Dataset1"
+///   resource_group_name = "SampleResourceGroup"
+///   share_name          = "Share1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -433,8 +507,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.KustoDatabaseDataSet;
 /// import com.pulumi.azurenative.datashare.KustoDatabaseDataSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -544,6 +618,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_kustodatabasedataset" "kustoDatabaseDataSet" {
+///   account_name        = "Account1"
+///   data_set_name       = "Dataset1"
+///   resource_group_name = "SampleResourceGroup"
+///   share_name          = "Share1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -552,8 +644,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.KustoDatabaseDataSet;
 /// import com.pulumi.azurenative.datashare.KustoDatabaseDataSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -663,6 +755,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_kustodatabasedataset" "kustoDatabaseDataSet" {
+///   account_name        = "Account1"
+///   data_set_name       = "Dataset1"
+///   resource_group_name = "SampleResourceGroup"
+///   share_name          = "Share1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -671,8 +781,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.KustoDatabaseDataSet;
 /// import com.pulumi.azurenative.datashare.KustoDatabaseDataSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -782,6 +892,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_kustodatabasedataset" "kustoDatabaseDataSet" {
+///   account_name        = "sourceAccount"
+///   data_set_name       = "dataset1"
+///   resource_group_name = "SampleResourceGroup"
+///   share_name          = "share1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -790,8 +918,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.KustoDatabaseDataSet;
 /// import com.pulumi.azurenative.datashare.KustoDatabaseDataSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRoleManagementPolicyAssignmentArgs {
   /// The name of format {guid_guid} the role management policy assignment to get.
   final pulumi.Input<String> roleManagementPolicyAssignmentName;
-  /// The scope of the role management policy.
+  /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> scope;
 
   /// Creates a new [GetRoleManagementPolicyAssignmentArgs].
   /// [roleManagementPolicyAssignmentName] The name of format {guid_guid} the role management policy assignment to get.
-  /// [scope] The scope of the role management policy.
+  /// [scope] The fully qualified Azure Resource manager identifier of the resource.
   const GetRoleManagementPolicyAssignmentArgs({
     required this.roleManagementPolicyAssignmentName,
     required this.scope,
@@ -34,4 +34,3 @@ class GetRoleManagementPolicyAssignmentArgs {
     );
   }
 }
-

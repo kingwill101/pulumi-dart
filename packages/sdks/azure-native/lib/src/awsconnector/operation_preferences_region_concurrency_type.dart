@@ -15,4 +15,3 @@ enum OperationPreferencesRegionConcurrencyType {
     throw ArgumentError('Unknown OperationPreferencesRegionConcurrencyType value: $value');
   }
 }
-

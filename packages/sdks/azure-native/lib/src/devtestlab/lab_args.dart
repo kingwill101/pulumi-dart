@@ -17,7 +17,7 @@ class LabArgs {
   final pulumi.Input<Map<String, String>>? extendedProperties;
   /// Type of storage used by the lab. It can be either Premium or Standard. Default is Premium.
   final pulumi.Input<String>? labStorageType;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user.
   final pulumi.Input<List<String>>? mandatoryArtifactsResourceIdsLinux;
@@ -33,7 +33,7 @@ class LabArgs {
   final pulumi.Input<String> resourceGroupName;
   /// The properties of any lab support message associated with this lab
   final pulumi.Input<LabSupportProperties>? support;
-  /// The tags of the resource.
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [LabArgs].
@@ -41,14 +41,14 @@ class LabArgs {
   /// [environmentPermission] The access rights to be granted to the user when provisioning an environment
   /// [extendedProperties] Extended properties of the lab used for experimental features
   /// [labStorageType] Type of storage used by the lab. It can be either Premium or Standard. Default is Premium.
-  /// [location] The location of the resource.
+  /// [location] The geo-location where the resource lives
   /// [mandatoryArtifactsResourceIdsLinux] The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user.
   /// [mandatoryArtifactsResourceIdsWindows] The ordered list of artifact resource IDs that should be applied on all Windows VM creations by default, prior to the artifacts specified by the user.
   /// [name] The name of the lab.
   /// [premiumDataDisks] The setting to enable usage of premium data disks.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [support] The properties of any lab support message associated with this lab
-  /// [tags] The tags of the resource.
+  /// [tags] Resource tags.
   const LabArgs({
     this.announcement,
     this.environmentPermission,
@@ -98,4 +98,3 @@ class LabArgs {
     );
   }
 }
-

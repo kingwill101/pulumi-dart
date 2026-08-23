@@ -15,4 +15,3 @@ enum InstanceCollectionType {
     throw ArgumentError('Unknown InstanceCollectionType value: $value');
   }
 }
-

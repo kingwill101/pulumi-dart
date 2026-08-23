@@ -73,6 +73,31 @@ import 'linked_service_props_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_linkedservice" "linkedService" {
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   link_name = "link-1"
+///   location  = "westus"
+///   name      = "link-1"
+///   properties = {
+///     linked_service_resource_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup-1/providers/Microsoft.Synapse/workspaces/Syn-1"
+///   }
+///   resource_group_name = "resourceGroup-1"
+///   workspace_name      = "workspace-1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +108,8 @@ import 'linked_service_props_response.dart';
 /// import com.pulumi.azurenative.machinelearningservices.LinkedServiceArgs;
 /// import com.pulumi.azurenative.machinelearningservices.inputs.IdentityArgs;
 /// import com.pulumi.azurenative.machinelearningservices.inputs.LinkedServicePropsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

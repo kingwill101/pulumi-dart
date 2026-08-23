@@ -31,4 +31,3 @@ class K8sResourceRequirementsResponse {
     );
   }
 }
-

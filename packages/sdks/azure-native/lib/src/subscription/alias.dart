@@ -84,6 +84,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_subscription_alias" "alias" {
+///   alias_name = "dummyalias"
+///   properties = {
+///     additional_properties = {
+///       subscription_owner_id  = "f09b39eb-c496-482c-9ab9-afd799572f4c"
+///       subscription_tenant_id = "66f6e4d6-07dc-4aea-94ea-e12d3026a3c8"
+///       tags = {
+///         "tag1" = "Messi"
+///         "tag2" = "Ronaldo"
+///         "tag3" = "Lebron"
+///       }
+///     }
+///     billing_scope = "/billingAccounts/af6231a7-7f8d-4fcc-a993-dd8466108d07:c663dac6-a9a5-405a-8938-cd903e12ab5b_2019_05_31/billingProfiles/QWDQ-QWHI-AUW-SJDO-DJH/invoiceSections/FEUF-EUHE-ISJ-SKDW-DJH"
+///     display_name  = "Test Subscription"
+///     workload      = "Production"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +123,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.subscription.AliasArgs;
 /// import com.pulumi.azurenative.subscription.inputs.PutAliasRequestPropertiesArgs;
 /// import com.pulumi.azurenative.subscription.inputs.PutAliasRequestAdditionalPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

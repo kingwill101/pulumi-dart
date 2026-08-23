@@ -97,6 +97,42 @@ import 'tracking_data_store_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_integrationspaces_application" "application" {
+///   application_name    = "Application1"
+///   description         = "This is the user provided description of the application."
+///   location            = "CentralUS"
+///   resource_group_name = "testrg"
+///   space_name          = "Space1"
+///   tags = {
+///     "key1" = "Value1"
+///   }
+///   tracking_data_stores = {
+///     "dataStoreName1" = {
+///       data_store_ingestion_uri = "https://ingest-someClusterName.someRegionName.kusto.windows.net"
+///       data_store_resource_id   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/cluster1"
+///       data_store_uri           = "https://someClusterName.someRegionName.kusto.windows.net"
+///       database_name            = "testDatabase1"
+///     }
+///     "dataStoreName2" = {
+///       data_store_ingestion_uri = "https://ingest-someClusterName.someRegionName.kusto.windows.net"
+///       data_store_resource_id   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/cluster1"
+///       data_store_uri           = "https://someClusterName.someRegionName.kusto.windows.net"
+///       database_name            = "testDatabase1"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +141,8 @@ import 'tracking_data_store_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.integrationspaces.Application;
 /// import com.pulumi.azurenative.integrationspaces.ApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

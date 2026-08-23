@@ -18,4 +18,3 @@ enum AuthenticationType {
     throw ArgumentError('Unknown AuthenticationType value: $value');
   }
 }
-

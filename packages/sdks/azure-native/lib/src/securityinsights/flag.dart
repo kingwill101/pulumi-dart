@@ -15,4 +15,3 @@ enum Flag {
     throw ArgumentError('Unknown Flag value: $value');
   }
 }
-

@@ -10,7 +10,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -240,6 +240,82 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_managednetworkfabric_internalnetwork" "internalNetwork" {
+///   annotation = "annotation"
+///   bgp_configuration = {
+///     allow_as          = 10
+///     allow_as_override = "Enable"
+///     annotation        = "annotation"
+///     bfd_configuration = {
+///       interval_in_milli_seconds = 300
+///       multiplier                = 5
+///     }
+///     default_route_originate    = "True"
+///     ipv4_listen_range_prefixes = ["10.1.0.0/25"]
+///     ipv4_neighbor_address = [{
+///       "address" = "10.1.0.0"
+///     }]
+///     ipv6_listen_range_prefixes = ["2fff::/66"]
+///     ipv6_neighbor_address = [{
+///       "address" = "2fff::"
+///     }]
+///     peer_asn = 61234
+///   }
+///   connected_i_pv4_subnets {
+///     annotation = "annotation"
+///     prefix     = "10.0.0.0/24"
+///   }
+///   connected_i_pv6_subnets {
+///     annotation = "annotation"
+///     prefix     = "3FFE:FFFF:0:CD30::a0/29"
+///   }
+///   egress_acl_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl"
+///   export_route_policy = {
+///     export_ipv4_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"
+///     export_ipv6_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"
+///   }
+///   export_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"
+///   extension              = "NoExtension"
+///   import_route_policy = {
+///     import_ipv4_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"
+///     import_ipv6_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"
+///   }
+///   import_route_policy_id   = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"
+///   ingress_acl_id           = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl"
+///   internal_network_name    = "example-internalnetwork"
+///   is_monitoring_enabled    = "True"
+///   l3_isolation_domain_name = "example-l3domain"
+///   mtu                      = 1500
+///   resource_group_name      = "example-rg"
+///   static_route_configuration = {
+///     bfd_configuration = {
+///       interval_in_milli_seconds = 300
+///       multiplier                = 15
+///     }
+///     extension = "NoExtension"
+///     ipv4_routes = [{
+///       "nextHop" = ["10.0.0.1"]
+///       "prefix"  = "jffgck"
+///     }]
+///     ipv6_routes = [{
+///       "nextHop" = ["3ffe::1"]
+///       "prefix"  = "2fff::/64"
+///     }]
+///   }
+///   vlan_id = 755
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -254,8 +330,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.ExportRoutePolicyArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.ImportRoutePolicyArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.InternalNetworkPropertiesStaticRouteConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -431,7 +507,7 @@ import 'system_data_response.dart';
 ///         "ipv6_neighbor_address": [{
 ///             "address": "2fff::",
 ///         }],
-///         "peer_asn": 61234,
+///         "peer_asn": float(61234),
 ///     },
 ///     connected_i_pv4_subnets=[{
 ///         "annotation": "annotation",

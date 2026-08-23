@@ -17,4 +17,3 @@ enum AttachmentStatus {
     throw ArgumentError('Unknown AttachmentStatus value: $value');
   }
 }
-

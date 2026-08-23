@@ -15,4 +15,3 @@ enum BareMetalMachineKeySetPrivilegeLevel {
     throw ArgumentError('Unknown BareMetalMachineKeySetPrivilegeLevel value: $value');
   }
 }
-

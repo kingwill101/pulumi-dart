@@ -17,7 +17,7 @@ class AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs {
   final pulumi.Input<String>? kind;
   /// Name of the App Service Environment.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs].
@@ -26,7 +26,7 @@ class AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs {
   /// [keyVaultReferenceIdentity] The user-assigned identity to use for resolving the key vault certificate reference. If not specified, the system-assigned ASE identity will be used if available.
   /// [kind] Kind of resource.
   /// [name] Name of the App Service Environment.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs({
     this.certificateUrl,
     this.dnsSuffix,
@@ -58,4 +58,3 @@ class AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs {
     );
   }
 }
-

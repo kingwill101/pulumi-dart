@@ -4,9 +4,9 @@ import 'named_value_args.dart';
 
 /// NamedValue details.
 ///
-/// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -71,6 +71,27 @@ import 'named_value_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_namedvalue" "namedValue" {
+///   display_name        = "prop3name"
+///   named_value_id      = "testprop2"
+///   resource_group_name = "rg1"
+///   secret              = false
+///   service_name        = "apimService1"
+///   tags                = ["foo", "bar"]
+///   value               = "propValue"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +100,8 @@ import 'named_value_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.NamedValue;
 /// import com.pulumi.azurenative.apimanagement.NamedValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -232,6 +253,30 @@ import 'named_value_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_namedvalue" "namedValue" {
+///   display_name = "prop6namekv"
+///   key_vault = {
+///     identity_client_id = "ceaa6b06-c00f-43ef-99ac-f53d1fe876a0"
+///     secret_identifier  = "https://contoso.vault.azure.net/secrets/aadSecret"
+///   }
+///   named_value_id      = "testprop6"
+///   resource_group_name = "rg1"
+///   secret              = true
+///   service_name        = "apimService1"
+///   tags                = ["foo", "bar"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -241,8 +286,8 @@ import 'named_value_args.dart';
 /// import com.pulumi.azurenative.apimanagement.NamedValue;
 /// import com.pulumi.azurenative.apimanagement.NamedValueArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.KeyVaultContractCreatePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -355,6 +400,8 @@ class NamedValue extends pulumi.CustomResource {
   late final pulumi.Output<KeyVaultContractPropertiesResponse?> keyVault;
   /// The name of the resource
   late final pulumi.Output<String> name;
+  /// The provisioning state
+  late final pulumi.Output<String> provisioningState;
   /// Determines whether the value is a secret and should be encrypted or not. Default value is false.
   late final pulumi.Output<bool?> secret;
   /// Optional tags that when provided can be used to filter the NamedValue list.
@@ -382,6 +429,7 @@ class NamedValue extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     keyVault = registerOutput<KeyVaultContractPropertiesResponse?>('keyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyVaultContractPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
     secret = registerOutput<bool?>('secret');
     tags = registerOutput<List<String>?>('tags');
     type = registerOutput<String>('type');

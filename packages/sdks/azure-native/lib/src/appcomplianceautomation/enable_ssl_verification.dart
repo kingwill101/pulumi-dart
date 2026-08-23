@@ -15,4 +15,3 @@ enum EnableSslVerification {
     throw ArgumentError('Unknown EnableSslVerification value: $value');
   }
 }
-

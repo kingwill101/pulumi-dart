@@ -16,4 +16,3 @@ enum WsdlImportMethod {
     throw ArgumentError('Unknown WsdlImportMethod value: $value');
   }
 }
-

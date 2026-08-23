@@ -1,10 +1,10 @@
-/// [Required] Storage type backing the datastore.
+/// Enum to determine the datastore contents type.
 enum DatastoreType {
-  valueAzureBlob("AzureBlob"),
-  valueAzureDataLakeGen1("AzureDataLakeGen1"),
-  valueAzureDataLakeGen2("AzureDataLakeGen2"),
-  valueAzureFile("AzureFile"),
-  valueOneLake("OneLake");
+  azureBlob("AzureBlob"),
+  azureDataLakeGen1("AzureDataLakeGen1"),
+  azureDataLakeGen2("AzureDataLakeGen2"),
+  azureFile("AzureFile"),
+  oneLake("OneLake");
 
   const DatastoreType(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum DatastoreType {
     throw ArgumentError('Unknown DatastoreType value: $value');
   }
 }
-

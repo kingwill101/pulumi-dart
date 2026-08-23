@@ -15,4 +15,3 @@ enum PowerOnBootOption {
     throw ArgumentError('Unknown PowerOnBootOption value: $value');
   }
 }
-

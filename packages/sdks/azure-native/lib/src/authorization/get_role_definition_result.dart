@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'permission_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getRoleDefinition.
 class GetRoleDefinitionResult {
@@ -15,9 +16,9 @@ class GetRoleDefinitionResult {
   final String createdOn;
   /// The role definition description.
   final String? description;
-  /// The role definition ID.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-  /// The role definition name.
+  /// The name of the resource
   final String name;
   /// Role definition permissions.
   final List<PermissionResponse>? permissions;
@@ -25,7 +26,9 @@ class GetRoleDefinitionResult {
   final String? roleName;
   /// The role type.
   final String? roleType;
-  /// The role definition type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// Id of the user who updated the assignment
   final String updatedBy;
@@ -38,12 +41,13 @@ class GetRoleDefinitionResult {
   /// [createdBy] Id of the user who created the assignment
   /// [createdOn] Time it was created
   /// [description] The role definition description.
-  /// [id] The role definition ID.
-  /// [name] The role definition name.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  /// [name] The name of the resource
   /// [permissions] Role definition permissions.
   /// [roleName] The role name.
   /// [roleType] The role type.
-  /// [type] The role definition type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatedBy] Id of the user who updated the assignment
   /// [updatedOn] Time it was updated
   const GetRoleDefinitionResult({
@@ -57,6 +61,7 @@ class GetRoleDefinitionResult {
     this.permissions,
     this.roleName,
     this.roleType,
+    required this.systemData,
     required this.type,
     required this.updatedBy,
     required this.updatedOn,
@@ -74,6 +79,7 @@ class GetRoleDefinitionResult {
       'permissions': ?(() { final guardedValue = permissions; if (guardedValue == null) return null; return pulumi.Input.encodeList<PermissionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'roleName': ?roleName,
       'roleType': ?roleType,
+      'systemData': systemData.toMap(),
       'type': type,
       'updatedBy': updatedBy,
       'updatedOn': updatedOn,
@@ -92,10 +98,10 @@ class GetRoleDefinitionResult {
       permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PermissionResponse>(guardedValue, (value) => PermissionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       roleName: (() { final guardedValue = map['roleName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       roleType: (() { final guardedValue = map['roleType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       updatedBy: map['updatedBy'] as String,
       updatedOn: map['updatedOn'] as String,
     );
   }
 }
-

@@ -17,4 +17,3 @@ enum UsageIndicator {
     throw ArgumentError('Unknown UsageIndicator value: $value');
   }
 }
-

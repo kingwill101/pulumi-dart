@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'parameter_response.dart';
+import 'parameter_redshift_cluster_parameter_group_response.dart';
 import 'tag_response.dart';
 
 /// Definition of awsRedshiftClusterParameterGroup
@@ -13,7 +13,7 @@ class AwsRedshiftClusterParameterGroupPropertiesResponse {
   /// The name of the cluster parameter group.
   final pulumi.Input<String>? parameterGroupName;
   /// An array of parameters to be modified. A maximum of 20 parameters can be modified in a single request.
-  final pulumi.Input<List<ParameterResponse>>? parameters;
+  final pulumi.Input<List<ParameterRedshiftClusterParameterGroupResponse>>? parameters;
   /// An array of key-value pairs to apply to this resource.
   final pulumi.Input<List<TagResponse>>? tags;
 
@@ -36,7 +36,7 @@ class AwsRedshiftClusterParameterGroupPropertiesResponse {
       'description': ?description,
       'parameterGroupFamily': ?parameterGroupFamily,
       'parameterGroupName': ?parameterGroupName,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<List<ParameterResponse>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<List<ParameterRedshiftClusterParameterGroupResponse>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ParameterRedshiftClusterParameterGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
@@ -46,9 +46,8 @@ class AwsRedshiftClusterParameterGroupPropertiesResponse {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameterGroupFamily: (() { final guardedValue = map['parameterGroupFamily']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameterGroupName: (() { final guardedValue = map['parameterGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ParameterResponse>(guardedValue, (value) => ParameterResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ParameterRedshiftClusterParameterGroupResponse>(guardedValue, (value) => ParameterRedshiftClusterParameterGroupResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TagResponse>(guardedValue, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
-

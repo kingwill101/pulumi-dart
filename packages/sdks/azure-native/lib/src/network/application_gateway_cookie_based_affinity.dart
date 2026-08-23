@@ -15,4 +15,3 @@ enum ApplicationGatewayCookieBasedAffinity {
     throw ArgumentError('Unknown ApplicationGatewayCookieBasedAffinity value: $value');
   }
 }
-

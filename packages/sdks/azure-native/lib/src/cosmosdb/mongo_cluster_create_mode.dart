@@ -15,4 +15,3 @@ enum MongoClusterCreateMode {
     throw ArgumentError('Unknown MongoClusterCreateMode value: $value');
   }
 }
-

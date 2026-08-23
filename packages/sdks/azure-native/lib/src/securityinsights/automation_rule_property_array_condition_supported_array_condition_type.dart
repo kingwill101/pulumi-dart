@@ -14,4 +14,3 @@ enum AutomationRulePropertyArrayConditionSupportedArrayConditionType {
     throw ArgumentError('Unknown AutomationRulePropertyArrayConditionSupportedArrayConditionType value: $value');
   }
 }
-

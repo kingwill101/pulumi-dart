@@ -66,6 +66,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_synapse_kustopooldatabaseprincipalassignment" "kustoPoolDatabasePrincipalAssignment" {
+///   database_name             = "Kustodatabase8"
+///   kusto_pool_name           = "kustoclusterrptest4"
+///   principal_assignment_name = "kustoprincipal1"
+///   principal_id              = "87654321-1234-1234-1234-123456789123"
+///   principal_type            = "App"
+///   resource_group_name       = "kustorptest"
+///   role                      = "Admin"
+///   tenant_id                 = "12345678-1234-1234-1234-123456789123"
+///   workspace_name            = "synapseWorkspaceName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +97,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.synapse.KustoPoolDatabasePrincipalAssignment;
 /// import com.pulumi.azurenative.synapse.KustoPoolDatabasePrincipalAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

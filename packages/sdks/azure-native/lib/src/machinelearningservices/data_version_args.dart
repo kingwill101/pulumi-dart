@@ -8,10 +8,10 @@ import 'mltable_data.dart';
 /// {@endtemplate}
 /// {@macro pulumi_machinelearningservices_data_version_args_doc}
 class DataVersionArgs {
-  /// [Required] Additional attributes of the entity.
-  final pulumi.Input<MLTableData> dataVersionBaseProperties;
   /// Container name.
   final pulumi.Input<String> name;
+  /// [Required] Additional attributes of the entity.
+  final pulumi.Input<MLTableData> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Version identifier.
@@ -20,14 +20,14 @@ class DataVersionArgs {
   final pulumi.Input<String> workspaceName;
 
   /// Creates a new [DataVersionArgs].
-  /// [dataVersionBaseProperties] [Required] Additional attributes of the entity.
   /// [name] Container name.
+  /// [properties] [Required] Additional attributes of the entity.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] Version identifier.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   const DataVersionArgs({
-    required this.dataVersionBaseProperties,
     required this.name,
+    required this.properties,
     required this.resourceGroupName,
     this.version,
     required this.workspaceName,
@@ -35,8 +35,8 @@ class DataVersionArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataVersionBaseProperties': pulumi.Input.mapInputValue<MLTableData, Map<String, dynamic>>(dataVersionBaseProperties, (value) => value.toMap()),
       'name': name,
+      'properties': pulumi.Input.mapInputValue<MLTableData, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'version': ?version,
       'workspaceName': workspaceName,
@@ -45,12 +45,11 @@ class DataVersionArgs {
 
   factory DataVersionArgs.fromMap(Map<String, dynamic> map) {
     return DataVersionArgs(
-      dataVersionBaseProperties: pulumi.Input.fromValue(MLTableData.fromMap((map['dataVersionBaseProperties']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
+      properties: pulumi.Input.fromValue(MLTableData.fromMap((map['properties']! as Map).cast<String, dynamic>())),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

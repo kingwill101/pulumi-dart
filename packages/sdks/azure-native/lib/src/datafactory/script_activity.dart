@@ -15,7 +15,7 @@ class ScriptActivity {
   /// Activity description.
   final pulumi.Input<String>? description;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReference> linkedServiceName;
+  final pulumi.Input<LinkedServiceReference>? linkedServiceName;
   /// Log settings of script activity.
   final pulumi.Input<ScriptActivityTypePropertiesLogSettings>? logSettings;
   /// Activity name.
@@ -58,7 +58,7 @@ class ScriptActivity {
   const ScriptActivity({
     this.dependsOn,
     this.description,
-    required this.linkedServiceName,
+    this.linkedServiceName,
     this.logSettings,
     required this.name,
     this.onInactiveMarkAs,
@@ -76,7 +76,7 @@ class ScriptActivity {
     return <String, dynamic>{
       'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependency>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependency, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
-      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'linkedServiceName': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
       'logSettings': ?pulumi.Input.mapOptionalInputValue<ScriptActivityTypePropertiesLogSettings, Map<String, dynamic>>(logSettings, (value) => value.toMap()),
       'name': name,
       'onInactiveMarkAs': ?onInactiveMarkAs,
@@ -95,7 +95,7 @@ class ScriptActivity {
     return ScriptActivity(
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependency>(guardedValue, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      linkedServiceName: pulumi.Input.fromValue(LinkedServiceReference.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())),
+      linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       logSettings: (() { final guardedValue = map['logSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScriptActivityTypePropertiesLogSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -110,4 +110,3 @@ class ScriptActivity {
     );
   }
 }
-

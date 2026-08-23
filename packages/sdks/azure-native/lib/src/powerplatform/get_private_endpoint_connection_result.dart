@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionResult {
   final PrivateLinkServiceConnectionStateResponse privateLinkServiceConnectionState;
   /// The provisioning state of the private endpoint connection resource.
   final String provisioningState;
-  /// Metadata pertaining to creation and last modification of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
@@ -30,7 +30,7 @@ class GetPrivateEndpointConnectionResult {
   /// [privateEndpoint] The resource of private end point.
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [provisioningState] The provisioning state of the private endpoint connection resource.
-  /// [systemData] Metadata pertaining to creation and last modification of the resource.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetPrivateEndpointConnectionResult({
     required this.azureApiVersion,
@@ -69,4 +69,3 @@ class GetPrivateEndpointConnectionResult {
     );
   }
 }
-

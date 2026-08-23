@@ -12,7 +12,7 @@ class TriggerArgs {
   final pulumi.Input<String> factoryName;
   /// Properties of the trigger.
   final pulumi.Input<BlobEventsTrigger> properties;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The trigger name.
   final pulumi.Input<String>? triggerName;
@@ -20,7 +20,7 @@ class TriggerArgs {
   /// Creates a new [TriggerArgs].
   /// [factoryName] The factory name.
   /// [properties] Properties of the trigger.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [triggerName] The trigger name.
   const TriggerArgs({
     required this.factoryName,
@@ -47,4 +47,3 @@ class TriggerArgs {
     );
   }
 }
-

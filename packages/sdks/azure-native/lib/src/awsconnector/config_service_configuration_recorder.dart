@@ -173,6 +173,66 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_configserviceconfigurationrecorder" "configServiceConfigurationRecorder" {
+///   location = "uhzzvapzjrmbzxfxdqyczgmcq"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "jdsihdzklcqjurvrxp"
+///     aws_account_id = "pxxfgnveimxacjnvjtionuq"
+///     aws_properties = {
+///       name = "umkcdjmciwgorjwxtm"
+///       recording_group = {
+///         all_supported = true
+///         exclusion_by_resource_types = {
+///           resource_types = ["AWS::ACM::Certificate"]
+///         }
+///         include_global_resource_types = true
+///         recording_strategy = {
+///           use_only = {
+///             value = "ALL_SUPPORTED_RESOURCE_TYPES"
+///           }
+///         }
+///         resource_types = ["AWS::ACM::Certificate"]
+///       }
+///       recording_mode = {
+///         recording_frequency = {
+///           value = "CONTINUOUS"
+///         }
+///         recording_mode_overrides = [{
+///           "description" = "fxclcxlsumaur"
+///           "recordingFrequency" = {
+///             "value" = "CONTINUOUS"
+///           }
+///           "resourceTypes" = ["AWS::ACM::Certificate"]
+///         }]
+///       }
+///       role_arn = "alfppyafyrtgacngfxckcioci"
+///     }
+///     aws_region        = "xvzbwkxfmww"
+///     aws_source_schema = "eolodykekuepfruwphifvo"
+///     aws_tags = {
+///       "key7810" = "iwpldfrgnzxhqb"
+///     }
+///     public_cloud_connectors_resource_id = "ofuen"
+///     public_cloud_resource_name          = "sieljn"
+///   }
+///   resource_group_name = "rgconfigServiceConfigurationRecorder"
+///   tags = {
+///     "key1719" = "adugjzkmxmgtjz"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -189,8 +249,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.RecordingStrategyTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RecordingModeArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RecordingFrequencyEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

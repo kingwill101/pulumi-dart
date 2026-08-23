@@ -9,24 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOnlineDeploymentLogsArgs {
   /// The type of container to retrieve logs from.
   final pulumi.Input<String>? containerType;
-  /// The name and identifier for the endpoint.
+  /// Inference Endpoint Deployment name.
   final pulumi.Input<String> deploymentName;
-  /// Inference endpoint name.
+  /// Online Endpoint name.
   final pulumi.Input<String> endpointName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The maximum number of lines to tail.
   final pulumi.Input<int>? tail;
-  /// Name of Azure Machine Learning workspace.
+  /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
   /// Creates a new [GetOnlineDeploymentLogsArgs].
   /// [containerType] The type of container to retrieve logs from.
-  /// [deploymentName] The name and identifier for the endpoint.
-  /// [endpointName] Inference endpoint name.
+  /// [deploymentName] Inference Endpoint Deployment name.
+  /// [endpointName] Online Endpoint name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tail] The maximum number of lines to tail.
-  /// [workspaceName] Name of Azure Machine Learning workspace.
+  /// [workspaceName] Azure Machine Learning Workspace Name
   const GetOnlineDeploymentLogsArgs({
     this.containerType,
     required this.deploymentName,
@@ -58,4 +58,3 @@ class GetOnlineDeploymentLogsArgs {
     );
   }
 }
-

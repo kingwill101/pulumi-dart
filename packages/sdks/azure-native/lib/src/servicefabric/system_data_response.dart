@@ -10,7 +10,7 @@ class SystemDataResponse {
   final pulumi.Input<String>? createdBy;
   /// The type of identity that created the resource.
   final pulumi.Input<String>? createdByType;
-  /// The timestamp of resource last modification (UTC)
+  /// The timestamp of resource last modification (UTC).
   final pulumi.Input<String>? lastModifiedAt;
   /// The identity that last modified the resource.
   final pulumi.Input<String>? lastModifiedBy;
@@ -21,7 +21,7 @@ class SystemDataResponse {
   /// [createdAt] The timestamp of resource creation (UTC).
   /// [createdBy] The identity that created the resource.
   /// [createdByType] The type of identity that created the resource.
-  /// [lastModifiedAt] The timestamp of resource last modification (UTC)
+  /// [lastModifiedAt] The timestamp of resource last modification (UTC).
   /// [lastModifiedBy] The identity that last modified the resource.
   /// [lastModifiedByType] The type of identity that last modified the resource.
   const SystemDataResponse({
@@ -55,4 +55,3 @@ class SystemDataResponse {
     );
   }
 }
-

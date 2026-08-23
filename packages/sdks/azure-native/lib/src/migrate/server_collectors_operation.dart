@@ -83,6 +83,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_servercollectorsoperation" "serverCollectorsOperation" {
+///   agent_properties = {
+///     id = "498e4965-bbb1-47c2-8613-345baff9c509"
+///     spn_details = {
+///       application_id = "65153d2f-9afb-44e8-b3ca-1369150b7354"
+///       audience       = "65153d2f-9afb-44e8-b3ca-1369150b7354"
+///       authority      = "https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47"
+///       object_id      = "ddde6f96-87c8-420b-9d4d-f16a5090519e"
+///       tenant_id      = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+///     }
+///   }
+///   discovery_site_id     = "/subscriptions/4bd2aa0f-2bd2-4d67-91a8-5a4533d58600/resourceGroups/ayagrawRG/providers/Microsoft.OffAzure/ServerSites/walter7155site"
+///   project_name          = "app18700project"
+///   provisioning_state    = "Succeeded"
+///   resource_group_name   = "ayagrawRG"
+///   server_collector_name = "walter389fcollector"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +122,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.migrate.ServerCollectorsOperationArgs;
 /// import com.pulumi.azurenative.migrate.inputs.CollectorAgentPropertiesBaseArgs;
 /// import com.pulumi.azurenative.migrate.inputs.CollectorAgentSpnPropertiesBaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -7,6 +7,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
 ///
+/// Other available API versions: 2025-12-15-preview, 2026-01-15-preview, 2026-03-15-preview, 2026-04-15-preview, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -130,6 +132,50 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_netapp_elasticvolume" "elasticVolume" {
+///   account_name = "account1"
+///   location     = "eastus"
+///   pool_name    = "pool1"
+///   properties = {
+///     data_protection = {
+///       backup = {
+///         elastic_backup_policy_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/elasticAccounts/account1/elasticBackupPolicies/elasticBackupPolicy1"
+///         elastic_backup_vault_resource_id  = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/elasticAccounts/account1/elasticBackupVaults/elasticBackupVault1"
+///         policy_enforcement                = "Enforced"
+///       }
+///       snapshot = {
+///         snapshot_policy_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/elasticAccounts/account1/elasticSnapshotPolicies/policy1"
+///       }
+///     }
+///     export_policy = {
+///       rules = [{
+///         "allowedClients" = ["0.0.0.0/0"]
+///         "nfsv3"          = "Enabled"
+///         "nfsv4"          = "Disabled"
+///         "rootAccess"     = "Disabled"
+///         "ruleIndex"      = 1
+///         "unixAccessRule" = "ReadOnly"
+///       }]
+///     }
+///     file_path      = "my-unique-file-path"
+///     protocol_types = ["NFSv3"]
+///     size           = 107374182400
+///   }
+///   resource_group_name = "myRG"
+///   volume_name         = "volume1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -143,8 +189,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.netapp.inputs.ElasticVolumeBackupPropertiesArgs;
 /// import com.pulumi.azurenative.netapp.inputs.ElasticVolumeSnapshotPropertiesArgs;
 /// import com.pulumi.azurenative.netapp.inputs.ElasticExportPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -80,6 +80,33 @@ import 'vmmserver_properties_response_credentials.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_scvmm_vmmserver" "vmmServer" {
+///   credentials = {
+///     password = "password"
+///     username = "testuser"
+///   }
+///   extended_location = {
+///     name = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.Arc/customLocations/contoso"
+///     type = "customLocation"
+///   }
+///   fqdn                = "VMM.contoso.com"
+///   location            = "East US"
+///   port                = 1234
+///   resource_group_name = "testrg"
+///   vmm_server_name     = "ContosoVMMServer"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +117,8 @@ import 'vmmserver_properties_response_credentials.dart';
 /// import com.pulumi.azurenative.scvmm.VmmServerArgs;
 /// import com.pulumi.azurenative.scvmm.inputs.VMMServerPropertiesCredentialsArgs;
 /// import com.pulumi.azurenative.scvmm.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

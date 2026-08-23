@@ -20,4 +20,3 @@ enum DiskSkuName {
     throw ArgumentError('Unknown DiskSkuName value: $value');
   }
 }
-

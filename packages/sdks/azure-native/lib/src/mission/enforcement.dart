@@ -15,4 +15,3 @@ enum Enforcement {
     throw ArgumentError('Unknown Enforcement value: $value');
   }
 }
-

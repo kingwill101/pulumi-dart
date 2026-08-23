@@ -1,17 +1,24 @@
 /// Authentication type of the connection target
 enum ConnectionAuthType {
-  valuePAT("PAT"),
-  valueManagedIdentity("ManagedIdentity"),
-  valueUsernamePassword("UsernamePassword"),
-  valueNone("None"),
-  valueSAS("SAS"),
-  valueAccountKey("AccountKey"),
-  valueServicePrincipal("ServicePrincipal"),
-  valueAccessKey("AccessKey"),
-  valueApiKey("ApiKey"),
-  valueCustomKeys("CustomKeys"),
-  valueOAuth2("OAuth2"),
-  valueAAD("AAD");
+  pAT("PAT"),
+  managedIdentity("ManagedIdentity"),
+  usernamePassword("UsernamePassword"),
+  none("None"),
+  sAS("SAS"),
+  accountKey("AccountKey"),
+  servicePrincipal("ServicePrincipal"),
+  accessKey("AccessKey"),
+  apiKey("ApiKey"),
+  customKeys("CustomKeys"),
+  oAuth2("OAuth2"),
+  aAD("AAD"),
+  delegatedSAS("DelegatedSAS"),
+  projectManagedIdentity("ProjectManagedIdentity"),
+  accountManagedIdentity("AccountManagedIdentity"),
+  userEntraToken("UserEntraToken"),
+  agentUserImpersonation("AgentUserImpersonation"),
+  agenticIdentityToken("AgenticIdentityToken"),
+  agenticUser("AgenticUser");
 
   const ConnectionAuthType(this.wireValue);
   final String wireValue;
@@ -25,4 +32,3 @@ enum ConnectionAuthType {
     throw ArgumentError('Unknown ConnectionAuthType value: $value');
   }
 }
-

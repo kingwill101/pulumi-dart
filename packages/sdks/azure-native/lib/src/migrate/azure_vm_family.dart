@@ -65,4 +65,3 @@ enum AzureVmFamily {
     throw ArgumentError('Unknown AzureVmFamily value: $value');
   }
 }
-

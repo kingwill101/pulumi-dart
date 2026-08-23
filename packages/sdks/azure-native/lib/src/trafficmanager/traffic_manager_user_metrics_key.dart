@@ -45,6 +45,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_trafficmanager_trafficmanagerusermetricskey" "trafficManagerUserMetricsKey" {
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -52,8 +66,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.trafficmanager.TrafficManagerUserMetricsKey;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

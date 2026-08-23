@@ -93,6 +93,40 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_s3bucketpolicy" "s3BucketPolicy" {
+///   location = "hsbqwwdspecsoigxusdbqgilaa"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "ebpwjamccadznftkixikeutdjacadm"
+///     aws_account_id = "czyyfhht"
+///     aws_properties = {
+///       policy = "fifgvjoxnidoedtzm"
+///     }
+///     aws_region        = "mlepmxnkxjgtrqhtbaaoxuaj"
+///     aws_source_schema = "wdyfvmrsshlyadt"
+///     aws_tags = {
+///       "key5637" = "ympfubnqykwth"
+///     }
+///     public_cloud_connectors_resource_id = "n"
+///     public_cloud_resource_name          = "suksqtvhtayjy"
+///   }
+///   resource_group_name = "rgs3BucketPolicy"
+///   tags = {
+///     "key9799" = "kihjvhsun"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +137,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.S3BucketPolicyArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.S3BucketPolicyPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsS3BucketPolicyPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

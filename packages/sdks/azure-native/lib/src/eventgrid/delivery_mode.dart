@@ -15,4 +15,3 @@ enum DeliveryMode {
     throw ArgumentError('Unknown DeliveryMode value: $value');
   }
 }
-

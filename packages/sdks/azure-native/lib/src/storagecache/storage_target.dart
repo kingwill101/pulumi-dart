@@ -10,7 +10,7 @@ import 'unknown_target_response.dart';
 ///
 /// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01, 2025-07-01, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -104,6 +104,41 @@ import 'unknown_target_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storagecache_storagetarget" "storageTarget" {
+///   cache_name = "sc1"
+///   junctions {
+///     namespace_path    = "/path/on/cache"
+///     nfs_access_policy = "default"
+///     nfs_export        = "exp1"
+///     target_path       = "/path/on/exp1"
+///   }
+///   junctions {
+///     namespace_path    = "/path2/on/cache"
+///     nfs_access_policy = "rootSquash"
+///     nfs_export        = "exp2"
+///     target_path       = "/path2/on/exp2"
+///   }
+///   nfs3 = {
+///     target             = "10.0.44.44"
+///     usage_model        = "READ_ONLY"
+///     verification_timer = 30
+///   }
+///   resource_group_name = "scgroup"
+///   storage_target_name = "st1"
+///   target_type         = "nfs3"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +149,8 @@ import 'unknown_target_response.dart';
 /// import com.pulumi.azurenative.storagecache.StorageTargetArgs;
 /// import com.pulumi.azurenative.storagecache.inputs.NamespaceJunctionArgs;
 /// import com.pulumi.azurenative.storagecache.inputs.Nfs3TargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -319,6 +354,33 @@ import 'unknown_target_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storagecache_storagetarget" "storageTarget" {
+///   blob_nfs = {
+///     target             = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Storage/storageAccounts/blofnfs/blobServices/default/containers/blobnfs"
+///     usage_model        = "READ_WRITE"
+///     verification_timer = 28800
+///     write_back_timer   = 3600
+///   }
+///   cache_name = "sc1"
+///   junctions {
+///     namespace_path = "/blobnfs"
+///   }
+///   resource_group_name = "scgroup"
+///   storage_target_name = "st1"
+///   target_type         = "blobNfs"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -329,8 +391,8 @@ import 'unknown_target_response.dart';
 /// import com.pulumi.azurenative.storagecache.StorageTargetArgs;
 /// import com.pulumi.azurenative.storagecache.inputs.BlobNfsTargetArgs;
 /// import com.pulumi.azurenative.storagecache.inputs.NamespaceJunctionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -485,6 +547,29 @@ import 'unknown_target_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storagecache_storagetarget" "storageTarget" {
+///   cache_name = "sc1"
+///   nfs3 = {
+///     target             = "10.0.44.44"
+///     usage_model        = "READ_ONLY"
+///     verification_timer = 30
+///   }
+///   resource_group_name = "scgroup"
+///   storage_target_name = "st1"
+///   target_type         = "nfs3"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -494,8 +579,8 @@ import 'unknown_target_response.dart';
 /// import com.pulumi.azurenative.storagecache.StorageTarget;
 /// import com.pulumi.azurenative.storagecache.StorageTargetArgs;
 /// import com.pulumi.azurenative.storagecache.inputs.Nfs3TargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

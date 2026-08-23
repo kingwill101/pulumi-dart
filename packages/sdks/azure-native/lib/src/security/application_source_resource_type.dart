@@ -1,6 +1,6 @@
 /// The application source, what it affects, e.g. Assessments
 enum ApplicationSourceResourceType {
-  valueAssessments("Assessments");
+  assessments("Assessments");
 
   const ApplicationSourceResourceType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum ApplicationSourceResourceType {
     throw ArgumentError('Unknown ApplicationSourceResourceType value: $value');
   }
 }
-

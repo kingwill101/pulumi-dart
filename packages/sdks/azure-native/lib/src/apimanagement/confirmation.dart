@@ -15,4 +15,3 @@ enum Confirmation {
     throw ArgumentError('Unknown Confirmation value: $value');
   }
 }
-

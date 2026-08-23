@@ -15,4 +15,3 @@ enum StopHostsWhen {
     throw ArgumentError('Unknown StopHostsWhen value: $value');
   }
 }
-

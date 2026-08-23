@@ -64,6 +64,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apicenter_apiversion" "apiVersion" {
+///   api_name            = "echo-api"
+///   lifecycle_stage     = "production"
+///   resource_group_name = "contoso-resources"
+///   service_name        = "contoso"
+///   title               = "2023-01-01"
+///   version_name        = "2023-01-01"
+///   workspace_name      = "default"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +93,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apicenter.ApiVersion;
 /// import com.pulumi.azurenative.apicenter.ApiVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

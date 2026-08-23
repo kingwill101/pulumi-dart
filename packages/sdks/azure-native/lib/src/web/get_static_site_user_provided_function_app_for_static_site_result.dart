@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'system_data_response.dart';
 
 /// Result data returned by getStaticSiteUserProvidedFunctionAppForStaticSite.
 class GetStaticSiteUserProvidedFunctionAppForStaticSiteResult {
@@ -11,13 +12,15 @@ class GetStaticSiteUserProvidedFunctionAppForStaticSiteResult {
   final String? functionAppRegion;
   /// The resource id of the function app registered with the static site
   final String? functionAppResourceId;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Kind of resource.
   final String? kind;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetStaticSiteUserProvidedFunctionAppForStaticSiteResult].
@@ -25,10 +28,11 @@ class GetStaticSiteUserProvidedFunctionAppForStaticSiteResult {
   /// [createdOn] The date and time on which the function app was registered with the static site.
   /// [functionAppRegion] The region of the function app registered with the static site
   /// [functionAppResourceId] The resource id of the function app registered with the static site
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] Kind of resource.
-  /// [name] Resource Name.
-  /// [type] Resource type.
+  /// [name] The name of the resource
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetStaticSiteUserProvidedFunctionAppForStaticSiteResult({
     required this.azureApiVersion,
     required this.createdOn,
@@ -37,6 +41,7 @@ class GetStaticSiteUserProvidedFunctionAppForStaticSiteResult {
     required this.id,
     this.kind,
     required this.name,
+    required this.systemData,
     required this.type,
   });
 
@@ -49,6 +54,7 @@ class GetStaticSiteUserProvidedFunctionAppForStaticSiteResult {
       'id': id,
       'kind': ?kind,
       'name': name,
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -62,8 +68,8 @@ class GetStaticSiteUserProvidedFunctionAppForStaticSiteResult {
       id: map['id'] as String,
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

@@ -75,6 +75,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_offazure_site" "site" {
+///   location = "eastus"
+///   properties = {
+///     service_principal_identity_details = {
+///       aad_authority  = "https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47"
+///       application_id = "e9f013df-2a2a-4871-b766-e79867f30348"
+///       audience       = "https://72f988bf-86f1-41af-91ab-2d7cd011db47/MaheshSite17ac9agentauthaadapp"
+///       object_id      = "2cd492bc-7ef3-4ee0-b301-59a88108b47b"
+///       tenant_id      = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+///     }
+///   }
+///   resource_group_name = "pajindTest"
+///   site_name           = "appliance1e39site"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +111,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.offazure.SiteArgs;
 /// import com.pulumi.azurenative.offazure.inputs.SitePropertiesArgs;
 /// import com.pulumi.azurenative.offazure.inputs.SiteSpnPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

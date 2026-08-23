@@ -1,11 +1,11 @@
-/// Input Asset Delivery Mode.
+/// Enum to determine the input data delivery mode.
 enum InputDeliveryMode {
-  valueReadOnlyMount("ReadOnlyMount"),
-  valueReadWriteMount("ReadWriteMount"),
-  valueDownload("Download"),
-  valueDirect("Direct"),
-  valueEvalMount("EvalMount"),
-  valueEvalDownload("EvalDownload");
+  readOnlyMount("ReadOnlyMount"),
+  readWriteMount("ReadWriteMount"),
+  download("Download"),
+  direct("Direct"),
+  evalMount("EvalMount"),
+  evalDownload("EvalDownload");
 
   const InputDeliveryMode(this.wireValue);
   final String wireValue;
@@ -19,4 +19,3 @@ enum InputDeliveryMode {
     throw ArgumentError('Unknown InputDeliveryMode value: $value');
   }
 }
-

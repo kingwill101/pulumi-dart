@@ -17,4 +17,3 @@ enum FailoverTier {
     throw ArgumentError('Unknown FailoverTier value: $value');
   }
 }
-

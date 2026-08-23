@@ -2,8 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_endpoint_connection_args.dart';
 import 'private_endpoint_response.dart';
 import 'private_link_service_connection_state_response.dart';
+import 'system_data_response.dart';
 
-/// The Private Endpoint Connection resource.
+/// The private endpoint connection resource.
 ///
 /// Uses Azure REST API version 2023-06-01-preview.
 ///
@@ -66,6 +67,27 @@ import 'private_link_service_connection_state_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_privateendpointconnection" "privateEndpointConnection" {
+///   private_endpoint_connection_name = "private-endpoint-connection-name"
+///   private_link_service_connection_state = {
+///     description = "Approved by johndoe@contoso.com"
+///     status      = "Approved"
+///   }
+///   resource_group_name = "MyResourceGroup"
+///   scope_name          = "MyPrivateLinkScope"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +97,8 @@ import 'private_link_service_connection_state_response.dart';
 /// import com.pulumi.azurenative.monitor.PrivateEndpointConnection;
 /// import com.pulumi.azurenative.monitor.PrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.monitor.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -161,14 +183,18 @@ import 'private_link_service_connection_state_response.dart';
 class PrivateEndpointConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+  /// The group ids for the private endpoint resource.
+  late final pulumi.Output<List<String>> groupIds;
   /// The name of the resource
   late final pulumi.Output<String> name;
-  /// The resource of private end point.
+  /// The private endpoint resource.
   late final pulumi.Output<PrivateEndpointResponse?> privateEndpoint;
   /// A collection of information about the state of the connection between service consumer and provider.
   late final pulumi.Output<PrivateLinkServiceConnectionStateResponse> privateLinkServiceConnectionState;
   /// The provisioning state of the private endpoint connection resource.
   late final pulumi.Output<String> provisioningState;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -187,10 +213,12 @@ class PrivateEndpointConnection extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
+    groupIds = registerOutput<List<String>>('groupIds');
     this.name = registerOutput<String>('name');
     privateEndpoint = registerOutput<PrivateEndpointResponse?>('privateEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateLinkServiceConnectionState = registerOutput<PrivateLinkServiceConnectionStateResponse>('privateLinkServiceConnectionState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateLinkServiceConnectionStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -25,4 +25,3 @@ class InstanceIpv4PrefixResponse {
     );
   }
 }
-

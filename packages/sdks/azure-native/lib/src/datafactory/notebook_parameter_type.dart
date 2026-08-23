@@ -1,9 +1,9 @@
 /// Notebook parameter type.
 enum NotebookParameterType {
-  valueString("string"),
-  valueInt("int"),
-  valueFloat("float"),
-  valueBool("bool");
+  string_("string"),
+  int_("int"),
+  float("float"),
+  bool_("bool");
 
   const NotebookParameterType(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum NotebookParameterType {
     throw ArgumentError('Unknown NotebookParameterType value: $value');
   }
 }
-

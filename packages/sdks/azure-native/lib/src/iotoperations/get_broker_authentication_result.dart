@@ -63,4 +63,3 @@ class GetBrokerAuthenticationResult {
     );
   }
 }
-

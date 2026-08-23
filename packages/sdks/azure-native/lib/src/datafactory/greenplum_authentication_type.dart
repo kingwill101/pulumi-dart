@@ -1,6 +1,6 @@
 /// The authentication type to use. Type: string. Only used for V2.
 enum GreenplumAuthenticationType {
-  valueBasic("Basic");
+  basic("Basic");
 
   const GreenplumAuthenticationType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum GreenplumAuthenticationType {
     throw ArgumentError('Unknown GreenplumAuthenticationType value: $value');
   }
 }
-

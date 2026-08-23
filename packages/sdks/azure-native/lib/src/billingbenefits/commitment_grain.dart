@@ -1,8 +1,8 @@
 /// The grain of the commitment.
 enum CommitmentGrain {
-  valueUnknown("Unknown"),
-  valueHourly("Hourly"),
-  valueFullTerm("FullTerm");
+  hourly("Hourly"),
+  fullTerm("FullTerm"),
+  unknown("Unknown");
 
   const CommitmentGrain(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum CommitmentGrain {
     throw ArgumentError('Unknown CommitmentGrain value: $value');
   }
 }
-

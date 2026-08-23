@@ -15,4 +15,3 @@ enum AssessmentModeTypes {
     throw ArgumentError('Unknown AssessmentModeTypes value: $value');
   }
 }
-

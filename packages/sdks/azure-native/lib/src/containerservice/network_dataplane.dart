@@ -15,4 +15,3 @@ enum NetworkDataplane {
     throw ArgumentError('Unknown NetworkDataplane value: $value');
   }
 }
-

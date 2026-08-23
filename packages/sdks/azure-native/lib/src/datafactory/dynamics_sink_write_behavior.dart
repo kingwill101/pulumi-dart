@@ -1,6 +1,6 @@
 /// The write behavior for the operation.
 enum DynamicsSinkWriteBehavior {
-  valueUpsert("Upsert");
+  upsert("Upsert");
 
   const DynamicsSinkWriteBehavior(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum DynamicsSinkWriteBehavior {
     throw ArgumentError('Unknown DynamicsSinkWriteBehavior value: $value');
   }
 }
-

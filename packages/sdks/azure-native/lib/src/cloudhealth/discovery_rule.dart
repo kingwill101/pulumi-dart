@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
 ///
-/// Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2026-01-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -72,6 +72,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cloudhealth_discoveryrule" "discoveryRule" {
+///   discovery_rule_name = "myDiscoveryRule"
+///   health_model_name   = "myHealthModel"
+///   properties = {
+///     add_recommended_signals = "Enabled"
+///     authentication_setting  = "authSetting1"
+///     discover_relationships  = "Enabled"
+///     display_name            = "myDisplayName"
+///     resource_graph_query    = "resources | where subscriptionId == '7ddfffd7-9b32-40df-1234-828cbd55d6f4' | where resourceGroup == 'my-rg'"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +105,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cloudhealth.DiscoveryRule;
 /// import com.pulumi.azurenative.cloudhealth.DiscoveryRuleArgs;
 /// import com.pulumi.azurenative.cloudhealth.inputs.DiscoveryRulePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

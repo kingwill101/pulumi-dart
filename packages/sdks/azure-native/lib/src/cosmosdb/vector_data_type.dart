@@ -17,4 +17,3 @@ enum VectorDataType {
     throw ArgumentError('Unknown VectorDataType value: $value');
   }
 }
-

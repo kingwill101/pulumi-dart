@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Integration runtime reference type.
 class IntegrationRuntimeReference {
   /// Arguments for integration runtime.
-  final pulumi.Input<Map<String, dynamic>>? parameters;
+  final pulumi.Input<dynamic>? parameters;
   /// Reference integration runtime name.
   final pulumi.Input<String> referenceName;
   /// Type of integration runtime.
@@ -31,10 +31,9 @@ class IntegrationRuntimeReference {
 
   factory IntegrationRuntimeReference.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeReference(
-      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       referenceName: pulumi.Input.fromValue(map['referenceName'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

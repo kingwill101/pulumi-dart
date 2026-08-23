@@ -57,6 +57,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_hybrididentitymetadatum" "hybridIdentityMetadatum" {
+///   metadata_name        = "default"
+///   public_key           = "8ec7d60c-9700-40b1-8e6e-e5b2f6f477f2"
+///   resource_group_name  = "testrg"
+///   virtual_machine_name = "ContosoVm"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +83,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.azurestackhci.HybridIdentityMetadatum;
 /// import com.pulumi.azurenative.azurestackhci.HybridIdentityMetadatumArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

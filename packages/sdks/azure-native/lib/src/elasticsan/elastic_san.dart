@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2021-11-20-preview.
 ///
-/// Other available API versions: 2021-11-20-preview, 2022-12-01-preview, 2023-01-01, 2024-06-01-preview, 2024-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elasticsan [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-11-20-preview, 2022-12-01-preview, 2023-01-01, 2024-06-01-preview, 2024-07-01-preview, 2025-09-01, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elasticsan [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -86,6 +86,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_elasticsan_elasticsan" "elasticSan" {
+///   availability_zones          = ["1"]
+///   base_size_ti_b              = 5
+///   elastic_san_name            = "elasticsanname"
+///   extended_capacity_size_ti_b = 25
+///   location                    = "France Central"
+///   public_network_access       = "Enabled"
+///   resource_group_name         = "resourcegroupname"
+///   sku = {
+///     name = "Premium_LRS"
+///     tier = "Premium"
+///   }
+///   tags = {
+///     "key9316" = "ihndtieqibtob"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +123,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.elasticsan.ElasticSan;
 /// import com.pulumi.azurenative.elasticsan.ElasticSanArgs;
 /// import com.pulumi.azurenative.elasticsan.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -157,9 +185,9 @@ import 'system_data_response.dart';
 ///
 /// elastic_san = azure_native.elasticsan.ElasticSan("elasticSan",
 ///     availability_zones=["1"],
-///     base_size_ti_b=5,
+///     base_size_ti_b=float(5),
 ///     elastic_san_name="elasticsanname",
-///     extended_capacity_size_ti_b=25,
+///     extended_capacity_size_ti_b=float(25),
 ///     location="France Central",
 ///     public_network_access=azure_native.elasticsan.PublicNetworkAccess.ENABLED,
 ///     resource_group_name="resourcegroupname",
@@ -252,6 +280,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_elasticsan_elasticsan" "elasticSan" {
+///   base_size_ti_b              = 15
+///   elastic_san_name            = "elasticsanname"
+///   extended_capacity_size_ti_b = 27
+///   location                    = "France Central"
+///   resource_group_name         = "resourcegroupname"
+///   sku = {
+///     name = "Premium_LRS"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -261,8 +311,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.elasticsan.ElasticSan;
 /// import com.pulumi.azurenative.elasticsan.ElasticSanArgs;
 /// import com.pulumi.azurenative.elasticsan.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -312,9 +362,9 @@ import 'system_data_response.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// elastic_san = azure_native.elasticsan.ElasticSan("elasticSan",
-///     base_size_ti_b=15,
+///     base_size_ti_b=float(15),
 ///     elastic_san_name="elasticsanname",
-///     extended_capacity_size_ti_b=27,
+///     extended_capacity_size_ti_b=float(27),
 ///     location="France Central",
 ///     resource_group_name="resourcegroupname",
 ///     sku={

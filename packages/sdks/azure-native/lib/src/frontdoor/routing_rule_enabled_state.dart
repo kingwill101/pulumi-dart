@@ -1,7 +1,7 @@
 /// Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
 enum RoutingRuleEnabledState {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const RoutingRuleEnabledState(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum RoutingRuleEnabledState {
     throw ArgumentError('Unknown RoutingRuleEnabledState value: $value');
   }
 }
-

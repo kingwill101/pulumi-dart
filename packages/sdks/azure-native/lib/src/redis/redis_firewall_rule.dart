@@ -57,6 +57,25 @@ import 'redis_firewall_rule_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_redis_redisfirewallrule" "redisFirewallRule" {
+///   cache_name          = "cache1"
+///   end_ip              = "192.168.1.4"
+///   resource_group_name = "rg1"
+///   rule_name           = "rule1"
+///   start_ip            = "192.168.1.1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +84,8 @@ import 'redis_firewall_rule_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.redis.RedisFirewallRule;
 /// import com.pulumi.azurenative.redis.RedisFirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

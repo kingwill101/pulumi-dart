@@ -11,6 +11,8 @@ class GetWorkspaceGlobalSchemaResult {
   final String id;
   /// The name of the resource
   final String name;
+  /// The provisioning state
+  final String provisioningState;
   /// Schema Type. Immutable.
   final String schemaType;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -23,6 +25,7 @@ class GetWorkspaceGlobalSchemaResult {
   /// [description] Free-form schema entity description.
   /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [name] The name of the resource
+  /// [provisioningState] The provisioning state
   /// [schemaType] Schema Type. Immutable.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [value] Json-encoded string for non json-based schema.
@@ -31,6 +34,7 @@ class GetWorkspaceGlobalSchemaResult {
     this.description,
     required this.id,
     required this.name,
+    required this.provisioningState,
     required this.schemaType,
     required this.type,
     this.value,
@@ -42,6 +46,7 @@ class GetWorkspaceGlobalSchemaResult {
       'description': ?description,
       'id': id,
       'name': name,
+      'provisioningState': provisioningState,
       'schemaType': schemaType,
       'type': type,
       'value': ?value,
@@ -54,10 +59,10 @@ class GetWorkspaceGlobalSchemaResult {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
+      provisioningState: map['provisioningState'] as String,
       schemaType: map['schemaType'] as String,
       type: map['type'] as String,
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return guardedValue; })(),
     );
   }
 }
-

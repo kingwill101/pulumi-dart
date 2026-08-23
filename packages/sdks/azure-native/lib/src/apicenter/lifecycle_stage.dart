@@ -20,4 +20,3 @@ enum LifecycleStage {
     throw ArgumentError('Unknown LifecycleStage value: $value');
   }
 }
-

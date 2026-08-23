@@ -1,12 +1,12 @@
 /// [Required] Specifies the type of job.
 enum JobInputType {
-  valueLiteral("literal"),
-  valueUriFile("uri_file"),
-  valueUriFolder("uri_folder"),
-  valueMltable("mltable"),
-  valueCustomModel("custom_model"),
-  valueMlflowModel("mlflow_model"),
-  valueTritonModel("triton_model");
+  literal("literal"),
+  uriFile("uri_file"),
+  uriFolder("uri_folder"),
+  mltable("mltable"),
+  customModel("custom_model"),
+  mlflowModel("mlflow_model"),
+  tritonModel("triton_model");
 
   const JobInputType(this.wireValue);
   final String wireValue;
@@ -20,4 +20,3 @@ enum JobInputType {
     throw ArgumentError('Unknown JobInputType value: $value');
   }
 }
-

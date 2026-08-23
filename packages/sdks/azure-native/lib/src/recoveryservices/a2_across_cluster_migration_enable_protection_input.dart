@@ -38,4 +38,3 @@ class A2ACrossClusterMigrationEnableProtectionInput {
     );
   }
 }
-

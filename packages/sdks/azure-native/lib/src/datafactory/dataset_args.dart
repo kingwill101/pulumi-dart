@@ -14,14 +14,14 @@ class DatasetArgs {
   final pulumi.Input<String> factoryName;
   /// Dataset properties.
   final pulumi.Input<AmazonMWSObjectDataset> properties;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [DatasetArgs].
   /// [datasetName] The dataset name.
   /// [factoryName] The factory name.
   /// [properties] Dataset properties.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const DatasetArgs({
     this.datasetName,
     required this.factoryName,
@@ -47,4 +47,3 @@ class DatasetArgs {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum VnetLocalRouteOverrideCriteria {
     throw ArgumentError('Unknown VnetLocalRouteOverrideCriteria value: $value');
   }
 }
-

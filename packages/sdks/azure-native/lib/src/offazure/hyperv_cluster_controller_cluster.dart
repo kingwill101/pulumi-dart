@@ -69,6 +69,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_offazure_hypervclustercontrollercluster" "hypervClusterControllerCluster" {
+///   cluster_name        = "67b-v01-nC3--6tCUl"
+///   fqdn                = "rpfphmlbzericn"
+///   host_fqdn_list      = ["ozzrrnscesqywisszgtrnqkxp"]
+///   provisioning_state  = "Created"
+///   resource_group_name = "rgmigrate"
+///   run_as_account_id   = "qgqrfeczloubuaitiudd"
+///   site_name           = "7-ZE7-O1HU2-s-EyMu6"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +98,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.offazure.HypervClusterControllerCluster;
 /// import com.pulumi.azurenative.offazure.HypervClusterControllerClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -15,4 +15,3 @@ enum TransferType {
     throw ArgumentError('Unknown TransferType value: $value');
   }
 }
-

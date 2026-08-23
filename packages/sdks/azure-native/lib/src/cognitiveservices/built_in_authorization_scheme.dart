@@ -1,9 +1,9 @@
 /// Authorization scheme type.
 enum BuiltInAuthorizationScheme {
-  valueDefault("Default"),
-  valueOrganizationScope("OrganizationScope"),
-  valueChannels("Channels"),
-  valueCustom("Custom");
+  default_("Default"),
+  organizationScope("OrganizationScope"),
+  channels("Channels"),
+  custom("Custom");
 
   const BuiltInAuthorizationScheme(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum BuiltInAuthorizationScheme {
     throw ArgumentError('Unknown BuiltInAuthorizationScheme value: $value');
   }
 }
-

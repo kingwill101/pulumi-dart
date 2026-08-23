@@ -78,6 +78,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_connectedvmwarevsphere_guestagent" "guestAgent" {
+///   credentials = {
+///     password = "<password>"
+///     username = "tempuser"
+///   }
+///   http_proxy_config = {
+///     https_proxy = "http://192.1.2.3:8080"
+///   }
+///   name                           = "default"
+///   private_link_scope_resource_id = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.HybridCompute/privateLinkScopes/privateLinkScopeName"
+///   provisioning_action            = "install"
+///   resource_group_name            = "testrg"
+///   virtual_machine_name           = "ContosoVm"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +114,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.connectedvmwarevsphere.GuestAgentArgs;
 /// import com.pulumi.azurenative.connectedvmwarevsphere.inputs.GuestCredentialArgs;
 /// import com.pulumi.azurenative.connectedvmwarevsphere.inputs.HttpProxyConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

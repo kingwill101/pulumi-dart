@@ -28,7 +28,7 @@ class FactoryArgs {
   final pulumi.Input<PurviewConfiguration>? purviewConfiguration;
   /// Git repo information of the factory.
   final pulumi.Input<FactoryGitHubConfiguration>? repoConfiguration;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The resource tags.
   final pulumi.Input<Map<String, String>>? tags;
@@ -42,7 +42,7 @@ class FactoryArgs {
   /// [publicNetworkAccess] Whether or not public network access is allowed for the data factory.
   /// [purviewConfiguration] Purview information of the factory.
   /// [repoConfiguration] Git repo information of the factory.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] The resource tags.
   const FactoryArgs({
     this.encryption,
@@ -87,4 +87,3 @@ class FactoryArgs {
     );
   }
 }
-

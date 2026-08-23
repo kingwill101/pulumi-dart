@@ -15,4 +15,3 @@ enum RetryType {
     throw ArgumentError('Unknown RetryType value: $value');
   }
 }
-

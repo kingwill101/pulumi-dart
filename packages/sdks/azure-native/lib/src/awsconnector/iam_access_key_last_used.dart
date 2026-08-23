@@ -97,6 +97,42 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_iamaccesskeylastused" "iamAccessKeyLastUsed" {
+///   location = "rdt"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "xfaoulngosrepqegvmfzqcmenfiwv"
+///     aws_account_id = "lturmpd"
+///     aws_properties = {
+///       last_used_date = "2024-10-08T03:48:57.755Z"
+///       region         = "av"
+///       service_name   = "vhyurov"
+///     }
+///     aws_region        = "epaxtviqtrqqnghkgfkqhuqee"
+///     aws_source_schema = "enepzx"
+///     aws_tags = {
+///       "key9162" = "xrhekznmreqitxxw"
+///     }
+///     public_cloud_connectors_resource_id = "rwbbz"
+///     public_cloud_resource_name          = "cttx"
+///   }
+///   resource_group_name = "rgiamAccessKeyLastUsed"
+///   tags = {
+///     "key2981" = "xwkwghlklv"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -107,8 +143,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.IamAccessKeyLastUsedArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IamAccessKeyLastUsedPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsIamAccessKeyLastUsedPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

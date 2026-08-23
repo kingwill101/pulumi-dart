@@ -15,4 +15,3 @@ enum UpstreamAuthType {
     throw ArgumentError('Unknown UpstreamAuthType value: $value');
   }
 }
-

@@ -160,4 +160,3 @@ class GetClusterResult {
     );
   }
 }
-

@@ -99,6 +99,39 @@ import 'relationship_link_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_customerinsights_relationshiplink" "relationshipLink" {
+///   description = {
+///     "en-us" = "Link Description"
+///   }
+///   display_name = {
+///     "en-us" = "Link DisplayName"
+///   }
+///   hub_name         = "sdkTestHub"
+///   interaction_type = "testInteraction4332"
+///   profile_property_references {
+///     interaction_property_name = "profile1"
+///     profile_property_name     = "ProfileId"
+///   }
+///   related_profile_property_references {
+///     interaction_property_name = "profile1"
+///     profile_property_name     = "ProfileId"
+///   }
+///   relationship_link_name = "Somelink"
+///   relationship_name      = "testProfile2326994"
+///   resource_group_name    = "TestHubRG"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -108,8 +141,8 @@ import 'relationship_link_args.dart';
 /// import com.pulumi.azurenative.customerinsights.RelationshipLink;
 /// import com.pulumi.azurenative.customerinsights.RelationshipLinkArgs;
 /// import com.pulumi.azurenative.customerinsights.inputs.ParticipantProfilePropertyReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

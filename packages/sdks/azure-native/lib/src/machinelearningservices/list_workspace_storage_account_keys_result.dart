@@ -3,10 +3,11 @@
 
 /// Result data returned by listWorkspaceStorageAccountKeys.
 class ListWorkspaceStorageAccountKeysResult {
+  /// The access key of the storage
   final String userStorageKey;
 
   /// Creates a new [ListWorkspaceStorageAccountKeysResult].
-  /// [userStorageKey] Required.
+  /// [userStorageKey] The access key of the storage
   const ListWorkspaceStorageAccountKeysResult({
     required this.userStorageKey,
   });
@@ -23,4 +24,3 @@ class ListWorkspaceStorageAccountKeysResult {
     );
   }
 }
-

@@ -14,4 +14,3 @@ enum JobStepOutputType {
     throw ArgumentError('Unknown JobStepOutputType value: $value');
   }
 }
-

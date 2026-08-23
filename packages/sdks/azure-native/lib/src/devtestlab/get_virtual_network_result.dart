@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'external_subnet_response.dart';
 import 'subnet_override_response.dart';
 import 'subnet_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getVirtualNetwork.
 class GetVirtualNetworkResult {
@@ -19,19 +20,21 @@ class GetVirtualNetworkResult {
   final String? externalProviderResourceId;
   /// The external subnet properties.
   final List<ExternalSubnetResponse> externalSubnets;
-  /// The identifier of the resource.
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   final String? location;
-  /// The name of the resource.
+  /// The name of the resource
   final String name;
   /// The provisioning status of the resource.
   final String provisioningState;
   /// The subnet overrides of the virtual network.
   final List<SubnetOverrideResponse>? subnetOverrides;
-  /// The tags of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// Resource tags.
   final Map<String, String>? tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// The unique immutable identifier of a resource (Guid).
   final String uniqueIdentifier;
@@ -43,13 +46,14 @@ class GetVirtualNetworkResult {
   /// [description] The description of the virtual network.
   /// [externalProviderResourceId] The Microsoft.Network resource identifier of the virtual network.
   /// [externalSubnets] The external subnet properties.
-  /// [id] The identifier of the resource.
-  /// [location] The location of the resource.
-  /// [name] The name of the resource.
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the resource
   /// [provisioningState] The provisioning status of the resource.
   /// [subnetOverrides] The subnet overrides of the virtual network.
-  /// [tags] The tags of the resource.
-  /// [type] The type of the resource.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [tags] Resource tags.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
   const GetVirtualNetworkResult({
     this.allowedSubnets,
@@ -63,6 +67,7 @@ class GetVirtualNetworkResult {
     required this.name,
     required this.provisioningState,
     this.subnetOverrides,
+    required this.systemData,
     this.tags,
     required this.type,
     required this.uniqueIdentifier,
@@ -81,6 +86,7 @@ class GetVirtualNetworkResult {
       'name': name,
       'provisioningState': provisioningState,
       'subnetOverrides': ?(() { final guardedValue = subnetOverrides; if (guardedValue == null) return null; return pulumi.Input.encodeList<SubnetOverrideResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
       'uniqueIdentifier': uniqueIdentifier,
@@ -100,10 +106,10 @@ class GetVirtualNetworkResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       subnetOverrides: (() { final guardedValue = map['subnetOverrides']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetOverrideResponse>(guardedValue, (value) => SubnetOverrideResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
     );
   }
 }
-

@@ -220,6 +220,86 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_databasemigrationservicereplicationinstance" "databaseMigrationServiceReplicationInstance" {
+///   location = "pkvlgucpnkkigflvahztr"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "hgieneplknqcgzbvoj"
+///     aws_account_id = "zkpbtrjskcsejrxvaulidr"
+///     aws_properties = {
+///       allocated_storage          = 15
+///       auto_minor_version_upgrade = true
+///       availability_zone          = "ufwkddqfhigljgpouncfjtwjhcm"
+///       dns_name_servers           = "gjlforgdkkjubyetzafznct"
+///       engine_version             = "ugfhxgag"
+///       free_until                 = "2024-10-08T03:53:04.775Z"
+///       instance_create_time       = "2024-10-08T03:53:04.776Z"
+///       kms_key_id                 = "kxrelekeobexuugdjmttnolzsntu"
+///       multi_az                   = true
+///       network_type               = "ognalkhwgr"
+///       pending_modified_values = {
+///         allocated_storage          = 24
+///         engine_version             = "ljjlnnkamqo"
+///         multi_az                   = true
+///         network_type               = "xgynwurnwuqfirccmedvhphptwx"
+///         replication_instance_class = "nah"
+///       }
+///       preferred_maintenance_window              = "cjhj"
+///       publicly_accessible                       = true
+///       replication_instance_arn                  = "kkuagugx"
+///       replication_instance_class                = "nrejgjvmp"
+///       replication_instance_identifier           = "kmkhuvkgshmfnqrkh"
+///       replication_instance_ipv6_addresses       = ["chankbhtkfgmmql"]
+///       replication_instance_private_ip_address   = "kzpeupvtv"
+///       replication_instance_private_ip_addresses = ["wpvurjepdvyqsut"]
+///       replication_instance_public_ip_address    = "cgolgdimqmrtbs"
+///       replication_instance_public_ip_addresses  = ["laguuyhnutmqr"]
+///       replication_instance_status               = "prkwehbwglimljckrujss"
+///       replication_subnet_group = {
+///         replication_subnet_group_description = "octprj"
+///         replication_subnet_group_identifier  = "lp"
+///         subnet_group_status                  = "u"
+///         subnets = [{
+///           "subnetAvailabilityZone" = {
+///             "name" = "zkqyndrxrxjgvbcwycfd"
+///           }
+///           "subnetIdentifier" = "bbjyuchlt"
+///           "subnetStatus"     = "pzsp"
+///         }]
+///         supported_network_types = ["flrojgbtzlv"]
+///         vpc_id                  = "zsg"
+///       }
+///       secondary_availability_zone = "gfricycigffhmqcwzxxzwevrwf"
+///       vpc_security_groups = [{
+///         "status"             = "tioerjd"
+///         "vpcSecurityGroupId" = "szupfofnwyrfpcpwi"
+///       }]
+///     }
+///     aws_region        = "xflnvjqertqoawntyvmyorzemmx"
+///     aws_source_schema = "aj"
+///     aws_tags = {
+///       "key1826" = "hcitjgulaiuhknjncqdri"
+///     }
+///     public_cloud_connectors_resource_id = "oafkmlxerdytgq"
+///     public_cloud_resource_name          = "ajrdejnsykvcfzomaktse"
+///   }
+///   resource_group_name = "rgdatabaseMigrationServiceReplicationInstance"
+///   tags = {
+///     "key2694" = "vgcrgktfjprhiqwtucfsqt"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -232,8 +312,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsDatabaseMigrationServiceReplicationInstancePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ReplicationPendingModifiedValuesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ReplicationSubnetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

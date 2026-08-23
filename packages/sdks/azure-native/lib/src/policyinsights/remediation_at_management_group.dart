@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'remediation_at_management_group_args.dart';
 import 'remediation_deployment_summary_response.dart';
 import 'remediation_filters_response.dart';
-import 'remediation_properties_response_failure_threshold.dart';
+import 'remediation_properties_failure_threshold_response.dart';
 import 'system_data_response.dart';
 
 /// The remediation definition.
@@ -61,6 +61,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_policyinsights_remediationatmanagementgroup" "remediationAtManagementGroup" {
+///   management_group_id         = "financeMg"
+///   management_groups_namespace = "Microsoft.Management"
+///   policy_assignment_id        = "/providers/microsoft.management/managementGroups/financeMg/providers/microsoft.authorization/policyassignments/b101830944f246d8a14088c5"
+///   remediation_name            = "storageRemediation"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +87,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.policyinsights.RemediationAtManagementGroup;
 /// import com.pulumi.azurenative.policyinsights.RemediationAtManagementGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -151,12 +169,12 @@ class RemediationAtManagementGroup extends pulumi.CustomResource {
   /// The deployment status summary for all deployments created by the remediation.
   late final pulumi.Output<RemediationDeploymentSummaryResponse> deploymentStatus;
   /// The remediation failure threshold settings
-  late final pulumi.Output<RemediationPropertiesResponseFailureThreshold?> failureThreshold;
+  late final pulumi.Output<RemediationPropertiesFailureThresholdResponse?> failureThreshold;
   /// The filters that will be applied to determine which resources to remediate.
   late final pulumi.Output<RemediationFiltersResponse?> filters;
   /// The time at which the remediation was last updated.
   late final pulumi.Output<String> lastUpdatedOn;
-  /// The name of the remediation.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Determines how many resources to remediate at any given time. Can be used to increase or reduce the pace of the remediation. If not provided, the default parallel deployments value is used.
   late final pulumi.Output<int?> parallelDeployments;
@@ -174,7 +192,7 @@ class RemediationAtManagementGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> statusMessage;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-  /// The type of the remediation.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [RemediationAtManagementGroup].
@@ -195,7 +213,7 @@ class RemediationAtManagementGroup extends pulumi.CustomResource {
     correlationId = registerOutput<String>('correlationId');
     createdOn = registerOutput<String>('createdOn');
     deploymentStatus = registerOutput<RemediationDeploymentSummaryResponse>('deploymentStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemediationDeploymentSummaryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    failureThreshold = registerOutput<RemediationPropertiesResponseFailureThreshold?>('failureThreshold', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemediationPropertiesResponseFailureThreshold.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    failureThreshold = registerOutput<RemediationPropertiesFailureThresholdResponse?>('failureThreshold', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemediationPropertiesFailureThresholdResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     filters = registerOutput<RemediationFiltersResponse?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemediationFiltersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastUpdatedOn = registerOutput<String>('lastUpdatedOn');
     this.name = registerOutput<String>('name');

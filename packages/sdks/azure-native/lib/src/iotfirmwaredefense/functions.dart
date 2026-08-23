@@ -8,7 +8,7 @@ import 'get_workspace_result.dart';
 ///
 /// Uses Azure REST API version 2024-01-10.
 ///
-/// Other available API versions: 2023-02-08-preview, 2025-04-01-preview, 2025-08-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotfirmwaredefense [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-08-preview, 2025-04-01-preview, 2025-08-02, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotfirmwaredefense [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_iotfirmwaredefense_get_firmware_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFirmwareResult> getFirmware(
@@ -28,7 +28,7 @@ Future<GetFirmwareResult> getFirmware(
 ///
 /// Uses Azure REST API version 2024-01-10.
 ///
-/// Other available API versions: 2023-02-08-preview, 2025-04-01-preview, 2025-08-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotfirmwaredefense [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-08-preview, 2025-04-01-preview, 2025-08-02, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotfirmwaredefense [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_iotfirmwaredefense_get_workspace_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceResult> getWorkspace(

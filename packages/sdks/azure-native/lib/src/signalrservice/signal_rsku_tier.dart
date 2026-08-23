@@ -19,4 +19,3 @@ enum SignalRSkuTier {
     throw ArgumentError('Unknown SignalRSkuTier value: $value');
   }
 }
-

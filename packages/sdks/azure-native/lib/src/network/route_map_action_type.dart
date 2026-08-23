@@ -18,4 +18,3 @@ enum RouteMapActionType {
     throw ArgumentError('Unknown RouteMapActionType value: $value');
   }
 }
-

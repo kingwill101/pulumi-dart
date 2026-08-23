@@ -1,8 +1,8 @@
 /// Intended usage of the cluster
 enum ClusterPurpose {
-  valueFastProd("FastProd"),
-  valueDenseProd("DenseProd"),
-  valueDevTest("DevTest");
+  fastProd("FastProd"),
+  denseProd("DenseProd"),
+  devTest("DevTest");
 
   const ClusterPurpose(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum ClusterPurpose {
     throw ArgumentError('Unknown ClusterPurpose value: $value');
   }
 }
-

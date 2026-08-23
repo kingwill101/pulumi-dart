@@ -18,12 +18,12 @@ class ForecastingResponse {
   final pulumi.Input<ForecastingSettingsResponse>? forecastingSettings;
   /// Execution constraints for AutoMLJob.
   final pulumi.Input<TableVerticalLimitSettingsResponse>? limitSettings;
-  /// Log verbosity for the job.
+  /// Enum for setting log verbosity.
   final pulumi.Input<String>? logVerbosity;
   /// Number of cross validation folds to be applied on training dataset
   /// when validation dataset is not provided.
   final pulumi.Input<AutoNCrossValidationsResponse>? nCrossValidations;
-  /// Primary metric for forecasting task.
+  /// Primary metrics for Forecasting task.
   final pulumi.Input<String>? primaryMetric;
   /// Target column name: This is prediction values column.
   /// Also known as label column name in context of classification tasks.
@@ -55,9 +55,9 @@ class ForecastingResponse {
   /// [featurizationSettings] Featurization inputs needed for AutoML job.
   /// [forecastingSettings] Forecasting task specific inputs.
   /// [limitSettings] Execution constraints for AutoMLJob.
-  /// [logVerbosity] Log verbosity for the job.
+  /// [logVerbosity] Enum for setting log verbosity.
   /// [nCrossValidations] Number of cross validation folds to be applied on training dataset
-  /// [primaryMetric] Primary metric for forecasting task.
+  /// [primaryMetric] Primary metrics for Forecasting task.
   /// [targetColumnName] Target column name: This is prediction values column.
   /// [taskType] AutoMLJob Task type.
   /// [testData] Test data input.
@@ -128,4 +128,3 @@ class ForecastingResponse {
     );
   }
 }
-

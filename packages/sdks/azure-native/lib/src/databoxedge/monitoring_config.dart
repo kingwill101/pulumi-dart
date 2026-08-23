@@ -94,6 +94,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databoxedge_monitoringconfig" "monitoringConfig" {
+///   device_name = "testedgedevice"
+///   metric_configurations {
+///     counter_sets {
+///       counters {
+///         name = "test"
+///       }
+///     }
+///     mdm_account       = "test"
+///     metric_name_space = "test"
+///     resource_id       = "test"
+///   }
+///   resource_group_name = "GroupForEdgeAutomation"
+///   role_name           = "testrole"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +130,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.databoxedge.MonitoringConfig;
 /// import com.pulumi.azurenative.databoxedge.MonitoringConfigArgs;
 /// import com.pulumi.azurenative.databoxedge.inputs.MetricConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

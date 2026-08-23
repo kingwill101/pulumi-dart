@@ -53,4 +53,3 @@ class Macie2JobSummaryArgs {
     );
   }
 }
-

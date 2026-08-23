@@ -15,4 +15,3 @@ enum EncryptionKeySource {
     throw ArgumentError('Unknown EncryptionKeySource value: $value');
   }
 }
-

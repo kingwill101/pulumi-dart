@@ -13,14 +13,14 @@ class GetFeaturesetVersionArgs {
   final pulumi.Input<String> resourceGroupName;
   /// Version identifier. This is case-sensitive.
   final pulumi.Input<String> version;
-  /// Name of Azure Machine Learning workspace.
+  /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
   /// Creates a new [GetFeaturesetVersionArgs].
   /// [name] Container name. This is case-sensitive.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] Version identifier. This is case-sensitive.
-  /// [workspaceName] Name of Azure Machine Learning workspace.
+  /// [workspaceName] Azure Machine Learning Workspace Name
   const GetFeaturesetVersionArgs({
     required this.name,
     required this.resourceGroupName,
@@ -46,4 +46,3 @@ class GetFeaturesetVersionArgs {
     );
   }
 }
-

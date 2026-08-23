@@ -16,4 +16,3 @@ enum ContainerGroupSku {
     throw ArgumentError('Unknown ContainerGroupSku value: $value');
   }
 }
-

@@ -58,6 +58,25 @@ import 'group_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_group" "group" {
+///   e_tag               = "\"1e000c2c-0000-0d00-0000-5cdaa4190000\""
+///   group_name          = "Group2"
+///   project_name        = "abgoyalWEselfhostb72bproject"
+///   properties          = {}
+///   resource_group_name = "abgoyal-westEurope"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +86,8 @@ import 'group_properties_response.dart';
 /// import com.pulumi.azurenative.migrate.Group;
 /// import com.pulumi.azurenative.migrate.GroupArgs;
 /// import com.pulumi.azurenative.migrate.inputs.GroupPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

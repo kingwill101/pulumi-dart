@@ -1,5 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'monitoring_tag_rules_properties_response.dart';
+import 'monitoring_tag_rules_properties_tag_rule_response.dart';
 import 'system_data_response.dart';
 import 'tag_rule_args.dart';
 
@@ -57,6 +57,23 @@ import 'tag_rule_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_elastic_tagrule" "tagRule" {
+///   monitor_name        = "myMonitor"
+///   resource_group_name = "myResourceGroup"
+///   rule_set_name       = "default"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +82,8 @@ import 'tag_rule_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.elastic.TagRule;
 /// import com.pulumi.azurenative.elastic.TagRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -139,7 +156,7 @@ class TagRule extends pulumi.CustomResource {
   /// Name of the rule set.
   late final pulumi.Output<String> name;
   /// Properties of the monitoring tag rules.
-  late final pulumi.Output<MonitoringTagRulesPropertiesResponse> properties;
+  late final pulumi.Output<MonitoringTagRulesPropertiesTagRuleResponse> properties;
   /// The system metadata relating to this resource
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the rule set.
@@ -161,7 +178,7 @@ class TagRule extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<MonitoringTagRulesPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitoringTagRulesPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<MonitoringTagRulesPropertiesTagRuleResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitoringTagRulesPropertiesTagRuleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

@@ -15,7 +15,7 @@ class WatcherArgs {
   final pulumi.Input<double>? executionFrequencyInSeconds;
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the name of the script the watcher is attached to, i.e. the name of an existing runbook.
   final pulumi.Input<String>? scriptName;
@@ -33,7 +33,7 @@ class WatcherArgs {
   /// [description] Gets or sets the description.
   /// [executionFrequencyInSeconds] Gets or sets the frequency at which the watcher is invoked.
   /// [location] The geo-location where the resource lives
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scriptName] Gets or sets the name of the script the watcher is attached to, i.e. the name of an existing runbook.
   /// [scriptParameters] Gets or sets the parameters of the script.
   /// [scriptRunOn] Gets or sets the name of the hybrid worker group the watcher will run on.
@@ -82,4 +82,3 @@ class WatcherArgs {
     );
   }
 }
-

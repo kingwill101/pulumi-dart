@@ -16,4 +16,3 @@ enum LaunchType {
     throw ArgumentError('Unknown LaunchType value: $value');
   }
 }
-

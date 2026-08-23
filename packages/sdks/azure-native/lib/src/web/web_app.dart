@@ -4,17 +4,19 @@ import 'extended_location_response.dart';
 import 'function_app_config_response.dart';
 import 'hosting_environment_profile_response.dart';
 import 'managed_service_identity_response.dart';
+import 'outbound_vnet_routing_response.dart';
 import 'resource_config_response.dart';
 import 'site_config_response.dart';
 import 'site_dns_config_response.dart';
 import 'slot_swap_status_response.dart';
+import 'system_data_response.dart';
 import 'web_app_args.dart';
 
 /// A web app, a mobile app backend, or an API app.
 ///
-/// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+/// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -94,6 +96,37 @@ import 'web_app_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_web_webapp" "webApp" {
+///   cloning_info = {
+///     app_settings_overrides = {
+///       "Setting1" = "NewValue1"
+///       "Setting3" = "NewValue5"
+///     }
+///     clone_custom_host_names  = true
+///     clone_source_control     = true
+///     configure_load_balancing = false
+///     hosting_environment      = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testrg456/providers/Microsoft.Web/hostingenvironments/aseforsites"
+///     overwrite                = false
+///     source_web_app_id        = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testrg456/providers/Microsoft.Web/sites/srcsiteg478"
+///     source_web_app_location  = "West Europe"
+///   }
+///   kind                = "app"
+///   location            = "East US"
+///   name                = "sitef6141"
+///   resource_group_name = "testrg123"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +136,8 @@ import 'web_app_args.dart';
 /// import com.pulumi.azurenative.web.WebApp;
 /// import com.pulumi.azurenative.web.WebAppArgs;
 /// import com.pulumi.azurenative.web.inputs.CloningInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -234,7 +267,7 @@ import 'web_app_args.dart';
 ///             {
 ///                 Storage = new AzureNative.Web.Inputs.FunctionsDeploymentStorageArgs
 ///                 {
-///                     Authentication = new AzureNative.Web.Inputs.FunctionsDeploymentAuthenticationArgs
+///                     Authentication = new AzureNative.Web.Inputs.FunctionsDeploymentStorageAuthenticationArgs
 ///                     {
 ///                         StorageAccountConnectionStringName = "TheAppSettingName",
 ///                         Type = AzureNative.Web.AuthenticationType.StorageAccountConnectionString,
@@ -252,6 +285,10 @@ import 'web_app_args.dart';
 ///             {
 ///                 InstanceMemoryMB = 2048,
 ///                 MaximumInstanceCount = 100,
+///             },
+///             SiteUpdateStrategy = new AzureNative.Web.Inputs.FunctionsSiteUpdateStrategyArgs
+///             {
+///                 Type = AzureNative.Web.SiteUpdateStrategyType.RollingUpdate,
 ///             },
 ///         },
 ///         Kind = "functionapp,linux",
@@ -295,7 +332,7 @@ import 'web_app_args.dart';
 /// 			FunctionAppConfig: &web.FunctionAppConfigArgs{
 /// 				Deployment: &web.FunctionsDeploymentArgs{
 /// 					Storage: &web.FunctionsDeploymentStorageArgs{
-/// 						Authentication: &web.FunctionsDeploymentAuthenticationArgs{
+/// 						Authentication: &web.FunctionsDeploymentStorageAuthenticationArgs{
 /// 							StorageAccountConnectionStringName: pulumi.String("TheAppSettingName"),
 /// 							Type:                               pulumi.String(web.AuthenticationTypeStorageAccountConnectionString),
 /// 						},
@@ -310,6 +347,9 @@ import 'web_app_args.dart';
 /// 				ScaleAndConcurrency: &web.FunctionsScaleAndConcurrencyArgs{
 /// 					InstanceMemoryMB:     pulumi.Int(2048),
 /// 					MaximumInstanceCount: pulumi.Int(100),
+/// 				},
+/// 				SiteUpdateStrategy: &web.FunctionsSiteUpdateStrategyArgs{
+/// 					Type: pulumi.String(web.SiteUpdateStrategyTypeRollingUpdate),
 /// 				},
 /// 			},
 /// 			Kind:              pulumi.String("functionapp,linux"),
@@ -338,6 +378,56 @@ import 'web_app_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_web_webapp" "webApp" {
+///   function_app_config = {
+///     deployment = {
+///       storage = {
+///         authentication = {
+///           storage_account_connection_string_name = "TheAppSettingName"
+///           type                                   = "StorageAccountConnectionString"
+///         }
+///         type  = "blobContainer"
+///         value = "https://storageAccountName.blob.core.windows.net/containername"
+///       }
+///     }
+///     runtime = {
+///       name    = "python"
+///       version = "3.11"
+///     }
+///     scale_and_concurrency = {
+///       instance_memory_mb     = 2048
+///       maximum_instance_count = 100
+///     }
+///     site_update_strategy = {
+///       type = "RollingUpdate"
+///     }
+///   }
+///   kind                = "functionapp,linux"
+///   location            = "East US"
+///   name                = "sitef6141"
+///   resource_group_name = "testrg123"
+///   site_config = {
+///     app_settings = [{
+///       "name"  = "AzureWebJobsStorage"
+///       "value" = "DefaultEndpointsProtocol=https;AccountName=StorageAccountName;AccountKey=Sanitized;EndpointSuffix=core.windows.net"
+///       }, {
+///       "name"  = "APPLICATIONINSIGHTS_CONNECTION_STRING"
+///       "value" = "InstrumentationKey=Sanitized;IngestionEndpoint=Sanitized;LiveEndpoint=Sanitized"
+///     }]
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -349,12 +439,13 @@ import 'web_app_args.dart';
 /// import com.pulumi.azurenative.web.inputs.FunctionAppConfigArgs;
 /// import com.pulumi.azurenative.web.inputs.FunctionsDeploymentArgs;
 /// import com.pulumi.azurenative.web.inputs.FunctionsDeploymentStorageArgs;
-/// import com.pulumi.azurenative.web.inputs.FunctionsDeploymentAuthenticationArgs;
+/// import com.pulumi.azurenative.web.inputs.FunctionsDeploymentStorageAuthenticationArgs;
 /// import com.pulumi.azurenative.web.inputs.FunctionsRuntimeArgs;
 /// import com.pulumi.azurenative.web.inputs.FunctionsScaleAndConcurrencyArgs;
+/// import com.pulumi.azurenative.web.inputs.FunctionsSiteUpdateStrategyArgs;
 /// import com.pulumi.azurenative.web.inputs.SiteConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -370,7 +461,7 @@ import 'web_app_args.dart';
 ///             .functionAppConfig(FunctionAppConfigArgs.builder()
 ///                 .deployment(FunctionsDeploymentArgs.builder()
 ///                     .storage(FunctionsDeploymentStorageArgs.builder()
-///                         .authentication(FunctionsDeploymentAuthenticationArgs.builder()
+///                         .authentication(FunctionsDeploymentStorageAuthenticationArgs.builder()
 ///                             .storageAccountConnectionStringName("TheAppSettingName")
 ///                             .type("StorageAccountConnectionString")
 ///                             .build())
@@ -385,6 +476,9 @@ import 'web_app_args.dart';
 ///                 .scaleAndConcurrency(FunctionsScaleAndConcurrencyArgs.builder()
 ///                     .instanceMemoryMB(2048)
 ///                     .maximumInstanceCount(100)
+///                     .build())
+///                 .siteUpdateStrategy(FunctionsSiteUpdateStrategyArgs.builder()
+///                     .type("RollingUpdate")
 ///                     .build())
 ///                 .build())
 ///             .kind("functionapp,linux")
@@ -433,6 +527,9 @@ import 'web_app_args.dart';
 ///             instanceMemoryMB: 2048,
 ///             maximumInstanceCount: 100,
 ///         },
+///         siteUpdateStrategy: {
+///             type: azure_native.web.SiteUpdateStrategyType.RollingUpdate,
+///         },
 ///     },
 ///     kind: "functionapp,linux",
 ///     location: "East US",
@@ -478,6 +575,9 @@ import 'web_app_args.dart';
 ///             "instance_memory_mb": 2048,
 ///             "maximum_instance_count": 100,
 ///         },
+///         "site_update_strategy": {
+///             "type": azure_native.web.SiteUpdateStrategyType.ROLLING_UPDATE,
+///         },
 ///     },
 ///     kind="functionapp,linux",
 ///     location="East US",
@@ -517,6 +617,8 @@ import 'web_app_args.dart';
 ///         scaleAndConcurrency:
 ///           instanceMemoryMB: 2048
 ///           maximumInstanceCount: 100
+///         siteUpdateStrategy:
+///           type: RollingUpdate
 ///       kind: functionapp,linux
 ///       location: East US
 ///       name: sitef6141
@@ -549,7 +651,7 @@ import 'web_app_args.dart';
 ///             {
 ///                 Storage = new AzureNative.Web.Inputs.FunctionsDeploymentStorageArgs
 ///                 {
-///                     Authentication = new AzureNative.Web.Inputs.FunctionsDeploymentAuthenticationArgs
+///                     Authentication = new AzureNative.Web.Inputs.FunctionsDeploymentStorageAuthenticationArgs
 ///                     {
 ///                         StorageAccountConnectionStringName = "TheAppSettingName",
 ///                         Type = AzureNative.Web.AuthenticationType.StorageAccountConnectionString,
@@ -577,11 +679,15 @@ import 'web_app_args.dart';
 ///                 MaximumInstanceCount = 100,
 ///                 Triggers = new AzureNative.Web.Inputs.FunctionsScaleAndConcurrencyTriggersArgs
 ///                 {
-///                     Http = new AzureNative.Web.Inputs.FunctionsScaleAndConcurrencyHttpArgs
+///                     Http = new AzureNative.Web.Inputs.FunctionsScaleAndConcurrencyTriggersHttpArgs
 ///                     {
 ///                         PerInstanceConcurrency = 16,
 ///                     },
 ///                 },
+///             },
+///             SiteUpdateStrategy = new AzureNative.Web.Inputs.FunctionsSiteUpdateStrategyArgs
+///             {
+///                 Type = AzureNative.Web.SiteUpdateStrategyType.RollingUpdate,
 ///             },
 ///         },
 ///         Kind = "functionapp,linux",
@@ -625,7 +731,7 @@ import 'web_app_args.dart';
 /// 			FunctionAppConfig: &web.FunctionAppConfigArgs{
 /// 				Deployment: &web.FunctionsDeploymentArgs{
 /// 					Storage: &web.FunctionsDeploymentStorageArgs{
-/// 						Authentication: &web.FunctionsDeploymentAuthenticationArgs{
+/// 						Authentication: &web.FunctionsDeploymentStorageAuthenticationArgs{
 /// 							StorageAccountConnectionStringName: pulumi.String("TheAppSettingName"),
 /// 							Type:                               pulumi.String(web.AuthenticationTypeStorageAccountConnectionString),
 /// 						},
@@ -647,10 +753,13 @@ import 'web_app_args.dart';
 /// 					InstanceMemoryMB:     pulumi.Int(2048),
 /// 					MaximumInstanceCount: pulumi.Int(100),
 /// 					Triggers: &web.FunctionsScaleAndConcurrencyTriggersArgs{
-/// 						Http: &web.FunctionsScaleAndConcurrencyHttpArgs{
+/// 						Http: &web.FunctionsScaleAndConcurrencyTriggersHttpArgs{
 /// 							PerInstanceConcurrency: pulumi.Int(16),
 /// 						},
 /// 					},
+/// 				},
+/// 				SiteUpdateStrategy: &web.FunctionsSiteUpdateStrategyArgs{
+/// 					Type: pulumi.String(web.SiteUpdateStrategyTypeRollingUpdate),
 /// 				},
 /// 			},
 /// 			Kind:              pulumi.String("functionapp,linux"),
@@ -679,6 +788,65 @@ import 'web_app_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_web_webapp" "webApp" {
+///   function_app_config = {
+///     deployment = {
+///       storage = {
+///         authentication = {
+///           storage_account_connection_string_name = "TheAppSettingName"
+///           type                                   = "StorageAccountConnectionString"
+///         }
+///         type  = "blobContainer"
+///         value = "https://storageAccountName.blob.core.windows.net/containername"
+///       }
+///     }
+///     runtime = {
+///       name    = "python"
+///       version = "3.11"
+///     }
+///     scale_and_concurrency = {
+///       always_ready = [{
+///         "instanceCount" = 2
+///         "name"          = "http"
+///       }]
+///       instance_memory_mb     = 2048
+///       maximum_instance_count = 100
+///       triggers = {
+///         http = {
+///           per_instance_concurrency = 16
+///         }
+///       }
+///     }
+///     site_update_strategy = {
+///       type = "RollingUpdate"
+///     }
+///   }
+///   kind                = "functionapp,linux"
+///   location            = "East US"
+///   name                = "sitef6141"
+///   resource_group_name = "testrg123"
+///   site_config = {
+///     app_settings = [{
+///       "name"  = "AzureWebJobsStorage"
+///       "value" = "DefaultEndpointsProtocol=https;AccountName=StorageAccountName;AccountKey=Sanitized;EndpointSuffix=core.windows.net"
+///       }, {
+///       "name"  = "APPLICATIONINSIGHTS_CONNECTION_STRING"
+///       "value" = "InstrumentationKey=Sanitized;IngestionEndpoint=Sanitized;LiveEndpoint=Sanitized"
+///     }]
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -690,14 +858,15 @@ import 'web_app_args.dart';
 /// import com.pulumi.azurenative.web.inputs.FunctionAppConfigArgs;
 /// import com.pulumi.azurenative.web.inputs.FunctionsDeploymentArgs;
 /// import com.pulumi.azurenative.web.inputs.FunctionsDeploymentStorageArgs;
-/// import com.pulumi.azurenative.web.inputs.FunctionsDeploymentAuthenticationArgs;
+/// import com.pulumi.azurenative.web.inputs.FunctionsDeploymentStorageAuthenticationArgs;
 /// import com.pulumi.azurenative.web.inputs.FunctionsRuntimeArgs;
 /// import com.pulumi.azurenative.web.inputs.FunctionsScaleAndConcurrencyArgs;
 /// import com.pulumi.azurenative.web.inputs.FunctionsScaleAndConcurrencyTriggersArgs;
-/// import com.pulumi.azurenative.web.inputs.FunctionsScaleAndConcurrencyHttpArgs;
+/// import com.pulumi.azurenative.web.inputs.FunctionsScaleAndConcurrencyTriggersHttpArgs;
+/// import com.pulumi.azurenative.web.inputs.FunctionsSiteUpdateStrategyArgs;
 /// import com.pulumi.azurenative.web.inputs.SiteConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -713,7 +882,7 @@ import 'web_app_args.dart';
 ///             .functionAppConfig(FunctionAppConfigArgs.builder()
 ///                 .deployment(FunctionsDeploymentArgs.builder()
 ///                     .storage(FunctionsDeploymentStorageArgs.builder()
-///                         .authentication(FunctionsDeploymentAuthenticationArgs.builder()
+///                         .authentication(FunctionsDeploymentStorageAuthenticationArgs.builder()
 ///                             .storageAccountConnectionStringName("TheAppSettingName")
 ///                             .type("StorageAccountConnectionString")
 ///                             .build())
@@ -733,10 +902,13 @@ import 'web_app_args.dart';
 ///                     .instanceMemoryMB(2048)
 ///                     .maximumInstanceCount(100)
 ///                     .triggers(FunctionsScaleAndConcurrencyTriggersArgs.builder()
-///                         .http(FunctionsScaleAndConcurrencyHttpArgs.builder()
+///                         .http(FunctionsScaleAndConcurrencyTriggersHttpArgs.builder()
 ///                             .perInstanceConcurrency(16)
 ///                             .build())
 ///                         .build())
+///                     .build())
+///                 .siteUpdateStrategy(FunctionsSiteUpdateStrategyArgs.builder()
+///                     .type("RollingUpdate")
 ///                     .build())
 ///                 .build())
 ///             .kind("functionapp,linux")
@@ -794,6 +966,9 @@ import 'web_app_args.dart';
 ///                 },
 ///             },
 ///         },
+///         siteUpdateStrategy: {
+///             type: azure_native.web.SiteUpdateStrategyType.RollingUpdate,
+///         },
 ///     },
 ///     kind: "functionapp,linux",
 ///     location: "East US",
@@ -848,6 +1023,9 @@ import 'web_app_args.dart';
 ///                 },
 ///             },
 ///         },
+///         "site_update_strategy": {
+///             "type": azure_native.web.SiteUpdateStrategyType.ROLLING_UPDATE,
+///         },
 ///     },
 ///     kind="functionapp,linux",
 ///     location="East US",
@@ -893,6 +1071,8 @@ import 'web_app_args.dart';
 ///           triggers:
 ///             http:
 ///               perInstanceConcurrency: 16
+///         siteUpdateStrategy:
+///           type: RollingUpdate
 ///       kind: functionapp,linux
 ///       location: East US
 ///       name: sitef6141
@@ -957,6 +1137,25 @@ import 'web_app_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_web_webapp" "webApp" {
+///   kind                = "app"
+///   location            = "East US"
+///   name                = "sitef6141"
+///   resource_group_name = "testrg123"
+///   server_farm_id      = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testrg123/providers/Microsoft.Web/serverfarms/DefaultAsp"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -965,8 +1164,8 @@ import 'web_app_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.web.WebApp;
 /// import com.pulumi.azurenative.web.WebAppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1050,6 +1249,10 @@ class WebApp extends pulumi.CustomResource {
   late final pulumi.Output<String> azureApiVersion;
   /// &lt;code&gt;true&lt;/code&gt; to enable client affinity; &lt;code&gt;false&lt;/code&gt; to stop sending session affinity cookies, which route client requests in the same session to the same instance. Default is &lt;code&gt;true&lt;/code&gt;.
   late final pulumi.Output<bool?> clientAffinityEnabled;
+  /// &lt;code&gt;true&lt;/code&gt; to enable client affinity partitioning using CHIPS cookies, this will add the &lt;code&gt;partitioned&lt;/code&gt; property to the affinity cookies; &lt;code&gt;false&lt;/code&gt; to stop sending partitioned affinity cookies. Default is &lt;code&gt;false&lt;/code&gt;.
+  late final pulumi.Output<bool?> clientAffinityPartitioningEnabled;
+  /// &lt;code&gt;true&lt;/code&gt; to override client affinity cookie domain with X-Forwarded-Host request header. &lt;code&gt;false&lt;/code&gt; to use default domain. Default is &lt;code&gt;false&lt;/code&gt;.
+  late final pulumi.Output<bool?> clientAffinityProxyEnabled;
   /// &lt;code&gt;true&lt;/code&gt; to enable client certificate authentication (TLS mutual authentication); otherwise, &lt;code&gt;false&lt;/code&gt;. Default is &lt;code&gt;false&lt;/code&gt;.
   late final pulumi.Output<bool?> clientCertEnabled;
   /// client certificate authentication comma-separated exclusion paths
@@ -1112,17 +1315,19 @@ class WebApp extends pulumi.CustomResource {
   late final pulumi.Output<String?> kind;
   /// Last time the app was modified, in UTC. Read-only.
   late final pulumi.Output<String> lastModifiedTimeUtc;
-  /// Resource Location.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
   late final pulumi.Output<String?> managedEnvironmentId;
   /// Maximum number of workers.
   /// This only applies to Functions container.
   late final pulumi.Output<int> maxNumberOfWorkers;
-  /// Resource Name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// List of IP addresses that the app uses for outbound connections (e.g. database access). Includes VIPs from tenants that site can be hosted with current settings. Read-only.
   late final pulumi.Output<String> outboundIpAddresses;
+  /// Property to configure various outbound traffic routing options over virtual network for a site
+  late final pulumi.Output<OutboundVnetRoutingResponse?> outboundVnetRouting;
   /// List of IP addresses that the app uses for outbound connections (e.g. database access). Includes VIPs from all tenants except dataComponent. Read-only.
   late final pulumi.Output<String> possibleOutboundIpAddresses;
   /// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string.
@@ -1141,39 +1346,35 @@ class WebApp extends pulumi.CustomResource {
   late final pulumi.Output<bool?> scmSiteAlsoStopped;
   /// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   late final pulumi.Output<String?> serverFarmId;
-  /// Configuration of the app.
+  /// Configuration of an App Service app. This property is not returned in response to normal create and read requests since it may contain sensitive information.
   late final pulumi.Output<SiteConfigResponse?> siteConfig;
   /// Current SKU of application based on associated App Service Plan. Some valid SKU values are Free, Shared, Basic, Dynamic, FlexConsumption, Standard, Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2
   late final pulumi.Output<String> sku;
   /// Status of the last deployment slot swap operation.
   late final pulumi.Output<SlotSwapStatusResponse> slotSwapStatus;
+  /// Whether to enable ssh access.
+  late final pulumi.Output<bool?> sshEnabled;
   /// Current state of the app.
   late final pulumi.Output<String> state;
   /// Checks if Customer provided storage account is required
   late final pulumi.Output<bool?> storageAccountRequired;
   /// App suspended till in case memory-time quota is exceeded.
   late final pulumi.Output<String> suspendedTill;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Specifies which deployment slot this app will swap into. Read-only.
   late final pulumi.Output<String> targetSwapSlot;
   /// Azure Traffic Manager hostnames associated with the app. Read-only.
   late final pulumi.Output<List<String>> trafficManagerHostNames;
-  /// Resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// State indicating whether the app has exceeded its quota usage. Read-only.
   late final pulumi.Output<String> usageState;
   /// Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration.
   /// This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
   late final pulumi.Output<String?> virtualNetworkSubnetId;
-  /// To enable Backup and Restore operations over virtual network
-  late final pulumi.Output<bool?> vnetBackupRestoreEnabled;
-  /// To enable accessing content over virtual network
-  late final pulumi.Output<bool?> vnetContentShareEnabled;
-  /// To enable pulling image over Virtual Network
-  late final pulumi.Output<bool?> vnetImagePullEnabled;
-  /// Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
-  late final pulumi.Output<bool?> vnetRouteAllEnabled;
   /// Workload profile name for function app to execute on.
   late final pulumi.Output<String?> workloadProfileName;
 
@@ -1195,6 +1396,8 @@ class WebApp extends pulumi.CustomResource {
     availabilityState = registerOutput<String>('availabilityState');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
+    clientAffinityPartitioningEnabled = registerOutput<bool?>('clientAffinityPartitioningEnabled');
+    clientAffinityProxyEnabled = registerOutput<bool?>('clientAffinityProxyEnabled');
     clientCertEnabled = registerOutput<bool?>('clientCertEnabled');
     clientCertExclusionPaths = registerOutput<String?>('clientCertExclusionPaths');
     clientCertMode = registerOutput<String?>('clientCertMode');
@@ -1228,6 +1431,7 @@ class WebApp extends pulumi.CustomResource {
     maxNumberOfWorkers = registerOutput<int>('maxNumberOfWorkers');
     this.name = registerOutput<String>('name');
     outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
+    outboundVnetRouting = registerOutput<OutboundVnetRoutingResponse?>('outboundVnetRouting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutboundVnetRoutingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     redundancyMode = registerOutput<String?>('redundancyMode');
@@ -1240,19 +1444,17 @@ class WebApp extends pulumi.CustomResource {
     siteConfig = registerOutput<SiteConfigResponse?>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sku = registerOutput<String>('sku');
     slotSwapStatus = registerOutput<SlotSwapStatusResponse>('slotSwapStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlotSwapStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sshEnabled = registerOutput<bool?>('sshEnabled');
     state = registerOutput<String>('state');
     storageAccountRequired = registerOutput<bool?>('storageAccountRequired');
     suspendedTill = registerOutput<String>('suspendedTill');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     targetSwapSlot = registerOutput<String>('targetSwapSlot');
     trafficManagerHostNames = registerOutput<List<String>>('trafficManagerHostNames');
     type = registerOutput<String>('type');
     usageState = registerOutput<String>('usageState');
     virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
-    vnetBackupRestoreEnabled = registerOutput<bool?>('vnetBackupRestoreEnabled');
-    vnetContentShareEnabled = registerOutput<bool?>('vnetContentShareEnabled');
-    vnetImagePullEnabled = registerOutput<bool?>('vnetImagePullEnabled');
-    vnetRouteAllEnabled = registerOutput<bool?>('vnetRouteAllEnabled');
     workloadProfileName = registerOutput<String?>('workloadProfileName');
   }
 }

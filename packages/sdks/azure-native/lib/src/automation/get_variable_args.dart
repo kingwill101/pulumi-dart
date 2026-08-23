@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVariableArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of variable.
   final pulumi.Input<String> variableName;
 
   /// Creates a new [GetVariableArgs].
   /// [automationAccountName] The name of the automation account.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [variableName] The name of variable.
   const GetVariableArgs({
     required this.automationAccountName,
@@ -40,4 +40,3 @@ class GetVariableArgs {
     );
   }
 }
-

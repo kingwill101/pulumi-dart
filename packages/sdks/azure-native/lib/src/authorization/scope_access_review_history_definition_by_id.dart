@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_review_recurrence_range_response.dart';
 import 'scope_access_review_history_definition_by_id_args.dart';
+import 'system_data_response.dart';
 
 /// Access Review History Definition.
 ///
@@ -52,6 +53,22 @@ import 'scope_access_review_history_definition_by_id_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_scopeaccessreviewhistorydefinitionbyid" "scopeAccessReviewHistoryDefinitionById" {
+///   history_definition_id = "44724910-d7a5-4c29-b28f-db73e717165a"
+///   scope                 = "subscriptions/129a304b-4aea-4b86-a9f7-ba7e2b23737a"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -60,8 +77,8 @@ import 'scope_access_review_history_definition_by_id_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.ScopeAccessReviewHistoryDefinitionById;
 /// import com.pulumi.azurenative.authorization.ScopeAccessReviewHistoryDefinitionByIdArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -137,7 +154,7 @@ class ScopeAccessReviewHistoryDefinitionById extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> instances;
   /// The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
   late final pulumi.Output<int?> interval;
-  /// The access review history definition unique id.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The identity id
   late final pulumi.Output<String> principalId;
@@ -155,7 +172,9 @@ class ScopeAccessReviewHistoryDefinitionById extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> scopes;
   /// This read-only field specifies the of the requested review history data. This is either requested, in-progress, done or error.
   late final pulumi.Output<String> status;
-  /// The resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The user principal name(if valid)
   late final pulumi.Output<String> userPrincipalName;
@@ -189,6 +208,7 @@ class ScopeAccessReviewHistoryDefinitionById extends pulumi.CustomResource {
     reviewHistoryPeriodStartDateTime = registerOutput<String>('reviewHistoryPeriodStartDateTime');
     scopes = registerOutput<List<Map<String, dynamic>>?>('scopes');
     status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     userPrincipalName = registerOutput<String>('userPrincipalName');
   }

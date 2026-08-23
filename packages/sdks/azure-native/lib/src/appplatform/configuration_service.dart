@@ -97,6 +97,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_configurationservice" "configurationService" {
+///   configuration_service_name = "default"
+///   properties = {
+///     settings = {
+///       git_property = {
+///         repositories = [{
+///           "label"    = "master"
+///           "name"     = "fake"
+///           "patterns" = ["app/dev"]
+///           "uri"      = "https://github.com/fake-user/fake-repository"
+///         }]
+///       }
+///       refresh_interval_in_seconds = 60
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -108,8 +138,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.inputs.ConfigurationServicePropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ConfigurationServiceSettingsArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ConfigurationServiceGitPropertyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

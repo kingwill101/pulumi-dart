@@ -113,6 +113,46 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datamigration_databasemigrationssqldb" "databaseMigrationsSqlDb" {
+///   properties = {
+///     kind                 = "SqlDb"
+///     migration_service    = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.DataMigration/sqlMigrationServices/testagent"
+///     scope                = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Sql/servers/sqldbinstance"
+///     source_database_name = "aaa"
+///     source_sql_connection = {
+///       authentication           = "WindowsAuthentication"
+///       data_source              = "aaa"
+///       encrypt_connection       = true
+///       password                 = "placeholder"
+///       trust_server_certificate = true
+///       user_name                = "bbb"
+///     }
+///     table_list = ["[Schema1].[TableName1]", "[Schema2].[TableName2]"]
+///     target_sql_connection = {
+///       authentication           = "SqlAuthentication"
+///       data_source              = "sqldbinstance"
+///       encrypt_connection       = true
+///       password                 = "placeholder"
+///       trust_server_certificate = true
+///       user_name                = "bbb"
+///     }
+///   }
+///   resource_group_name  = "testrg"
+///   sql_db_instance_name = "sqldbinstance"
+///   target_db_name       = "db1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +163,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.datamigration.DatabaseMigrationsSqlDbArgs;
 /// import com.pulumi.azurenative.datamigration.inputs.DatabaseMigrationPropertiesSqlDbArgs;
 /// import com.pulumi.azurenative.datamigration.inputs.SqlConnectionInformationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -374,6 +414,45 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datamigration_databasemigrationssqldb" "databaseMigrationsSqlDb" {
+///   properties = {
+///     kind                 = "SqlDb"
+///     migration_service    = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.DataMigration/sqlMigrationServices/testagent"
+///     scope                = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Sql/servers/sqldbinstance"
+///     source_database_name = "aaa"
+///     source_sql_connection = {
+///       authentication           = "WindowsAuthentication"
+///       data_source              = "aaa"
+///       encrypt_connection       = true
+///       password                 = "placeholder"
+///       trust_server_certificate = true
+///       user_name                = "bbb"
+///     }
+///     target_sql_connection = {
+///       authentication           = "SqlAuthentication"
+///       data_source              = "sqldbinstance"
+///       encrypt_connection       = true
+///       password                 = "placeholder"
+///       trust_server_certificate = true
+///       user_name                = "bbb"
+///     }
+///   }
+///   resource_group_name  = "testrg"
+///   sql_db_instance_name = "sqldbinstance"
+///   target_db_name       = "db1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -384,8 +463,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.datamigration.DatabaseMigrationsSqlDbArgs;
 /// import com.pulumi.azurenative.datamigration.inputs.DatabaseMigrationPropertiesSqlDbArgs;
 /// import com.pulumi.azurenative.datamigration.inputs.SqlConnectionInformationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

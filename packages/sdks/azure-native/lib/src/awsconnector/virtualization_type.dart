@@ -15,4 +15,3 @@ enum VirtualizationType {
     throw ArgumentError('Unknown VirtualizationType value: $value');
   }
 }
-

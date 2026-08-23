@@ -7,6 +7,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
 ///
+/// Other available API versions: 2025-12-15-preview, 2026-01-15-preview, 2026-03-15-preview, 2026-04-15-preview, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -81,6 +83,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_netapp_elasticcapacitypool" "elasticCapacityPool" {
+///   account_name = "account1"
+///   location     = "eastus"
+///   pool_name    = "pool1"
+///   properties = {
+///     active_directory_config_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/activeDirectoryConfigs/activeDirectoryConfig1"
+///     service_level                       = "ZoneRedundant"
+///     size                                = 4398046511104
+///     subnet_resource_id                  = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///   }
+///   resource_group_name = "myRG"
+///   zones               = ["1", "2", "3"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +117,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.netapp.ElasticCapacityPool;
 /// import com.pulumi.azurenative.netapp.ElasticCapacityPoolArgs;
 /// import com.pulumi.azurenative.netapp.inputs.ElasticCapacityPoolPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -275,6 +302,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_netapp_elasticcapacitypool" "elasticCapacityPool" {
+///   account_name = "account1"
+///   location     = "eastus"
+///   pool_name    = "pool1"
+///   properties = {
+///     active_directory_config_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/activeDirectoryConfigs/activeDirectoryConfig1"
+///     encryption = {
+///       elastic_pool_encryption_key_source     = "NetApp"
+///       key_vault_private_endpoint_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myKeyVault/privateEndpointConnections/myKeyVaultPec"
+///     }
+///     service_level      = "ZoneRedundant"
+///     size               = 4398046511104
+///     subnet_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///   }
+///   resource_group_name = "myRG"
+///   zones               = ["1", "2", "3"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -285,8 +341,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.netapp.ElasticCapacityPoolArgs;
 /// import com.pulumi.azurenative.netapp.inputs.ElasticCapacityPoolPropertiesArgs;
 /// import com.pulumi.azurenative.netapp.inputs.ElasticEncryptionConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -52,6 +52,22 @@ import 'console_with_location_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_portal_consolewithlocation" "consoleWithLocation" {
+///   console_name = "default"
+///   location     = "eastus"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -60,8 +76,8 @@ import 'console_with_location_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.portal.ConsoleWithLocation;
 /// import com.pulumi.azurenative.portal.ConsoleWithLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

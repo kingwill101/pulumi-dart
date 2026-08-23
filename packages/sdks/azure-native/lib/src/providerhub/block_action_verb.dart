@@ -19,4 +19,3 @@ enum BlockActionVerb {
     throw ArgumentError('Unknown BlockActionVerb value: $value');
   }
 }
-

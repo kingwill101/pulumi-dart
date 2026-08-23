@@ -62,4 +62,3 @@ class GetVirtualHubRouteTableV2Result {
     );
   }
 }
-

@@ -1,10 +1,10 @@
 /// The type used for authentication. Type: string.
 enum AzureStorageAuthenticationType {
-  valueAnonymous("Anonymous"),
-  valueAccountKey("AccountKey"),
-  valueSasUri("SasUri"),
-  valueServicePrincipal("ServicePrincipal"),
-  valueMsi("Msi");
+  anonymous("Anonymous"),
+  accountKey("AccountKey"),
+  sasUri("SasUri"),
+  servicePrincipal("ServicePrincipal"),
+  msi("Msi");
 
   const AzureStorageAuthenticationType(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum AzureStorageAuthenticationType {
     throw ArgumentError('Unknown AzureStorageAuthenticationType value: $value');
   }
 }
-

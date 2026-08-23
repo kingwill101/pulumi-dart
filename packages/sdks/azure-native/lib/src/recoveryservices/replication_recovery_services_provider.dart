@@ -6,7 +6,7 @@ import 'replication_recovery_services_provider_args.dart';
 ///
 /// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 ///
-/// Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2025-01-01, 2025-02-01, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2025-01-01, 2025-02-01, 2025-08-01, 2026-01-01, 2026-02-01, 2026-03-31-preview, 2026-05-01, 2026-05-31-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -95,6 +95,41 @@ import 'replication_recovery_services_provider_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_recoveryservices_replicationrecoveryservicesprovider" "replicationRecoveryServicesProvider" {
+///   fabric_name = "vmwarefabric1"
+///   properties = {
+///     authentication_identity_input = {
+///       aad_authority  = "https://login.microsoftonline.com"
+///       application_id = "f66fce08-c0c6-47a1-beeb-0ede5ea94f90"
+///       audience       = "https://microsoft.onmicrosoft.com/cf19e349-644c-4c6a-bcae-9c8f35357874"
+///       object_id      = "141360b8-5686-4240-a027-5e24e6affeba"
+///       tenant_id      = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+///     }
+///     machine_name = "vmwareprovider1"
+///     resource_access_identity_input = {
+///       aad_authority  = "https://login.microsoftonline.com"
+///       application_id = "f66fce08-c0c6-47a1-beeb-0ede5ea94f90"
+///       audience       = "https://microsoft.onmicrosoft.com/cf19e349-644c-4c6a-bcae-9c8f35357874"
+///       object_id      = "141360b8-5686-4240-a027-5e24e6affeba"
+///       tenant_id      = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+///     }
+///   }
+///   provider_name       = "vmwareprovider1"
+///   resource_group_name = "resourcegroup1"
+///   resource_name       = "migrationvault"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +140,8 @@ import 'replication_recovery_services_provider_args.dart';
 /// import com.pulumi.azurenative.recoveryservices.ReplicationRecoveryServicesProviderArgs;
 /// import com.pulumi.azurenative.recoveryservices.inputs.AddRecoveryServicesProviderInputPropertiesArgs;
 /// import com.pulumi.azurenative.recoveryservices.inputs.IdentityProviderInputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

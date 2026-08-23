@@ -1,6 +1,6 @@
 enum ComplianceSecurityProfileValue {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const ComplianceSecurityProfileValue(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum ComplianceSecurityProfileValue {
     throw ArgumentError('Unknown ComplianceSecurityProfileValue value: $value');
   }
 }
-

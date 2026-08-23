@@ -56,6 +56,23 @@ import 'resource_group_definition_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_publishedblueprint" "publishedBlueprint" {
+///   blueprint_name = "simpleBlueprint"
+///   resource_scope = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup"
+///   version_id     = "v2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +81,8 @@ import 'resource_group_definition_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.PublishedBlueprint;
 /// import com.pulumi.azurenative.blueprint.PublishedBlueprintArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,6 +186,23 @@ import 'resource_group_definition_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_publishedblueprint" "publishedBlueprint" {
+///   blueprint_name = "simpleBlueprint"
+///   resource_scope = "subscriptions/00000000-0000-0000-0000-000000000000"
+///   version_id     = "v2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +211,8 @@ import 'resource_group_definition_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.PublishedBlueprint;
 /// import com.pulumi.azurenative.blueprint.PublishedBlueprintArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -66,6 +66,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperationsmq_mq" "mq" {
+///   extended_location = {
+///     name = "an"
+///     type = "CustomLocation"
+///   }
+///   location            = "qayqiarqxjennoyvglovxrdiccscq"
+///   mq_name             = "-MK0Vqe3K7Ji"
+///   resource_group_name = "rgiotoperationsmq"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +97,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperationsmq.Mq;
 /// import com.pulumi.azurenative.iotoperationsmq.MqArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.ExtendedLocationPropertyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -7,7 +7,7 @@ import 'vault_properties_response.dart';
 ///
 /// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2023-02-01, 2023-07-01, 2024-04-01-preview, 2024-12-01-preview, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native keyvault [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01, 2023-07-01, 2024-04-01-preview, 2024-12-01-preview, 2025-05-01, 2026-02-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native keyvault [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -191,6 +191,43 @@ import 'vault_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_keyvault_vault" "vault" {
+///   location = "westus"
+///   properties = {
+///     access_policies = [{
+///       "objectId" = "00000000-0000-0000-0000-000000000000"
+///       "permissions" = {
+///         "certificates" = ["get", "list", "delete", "create", "import", "update", "managecontacts", "getissuers", "listissuers", "setissuers", "deleteissuers", "manageissuers", "recover", "purge"]
+///         "keys"         = ["encrypt", "decrypt", "wrapKey", "unwrapKey", "sign", "verify", "get", "list", "create", "update", "import", "delete", "backup", "restore", "recover", "purge"]
+///         "secrets"      = ["get", "list", "set", "delete", "backup", "restore", "recover", "purge"]
+///       }
+///       "tenantId" = "00000000-0000-0000-0000-000000000000"
+///     }]
+///     enabled_for_deployment          = true
+///     enabled_for_disk_encryption     = true
+///     enabled_for_template_deployment = true
+///     public_network_access           = "Enabled"
+///     sku = {
+///       family = "A"
+///       name   = "standard"
+///     }
+///     tenant_id = "00000000-0000-0000-0000-000000000000"
+///   }
+///   resource_group_name = "sample-resource-group"
+///   vault_name          = "sample-vault"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -201,8 +238,8 @@ import 'vault_properties_response.dart';
 /// import com.pulumi.azurenative.keyvault.VaultArgs;
 /// import com.pulumi.azurenative.keyvault.inputs.VaultPropertiesArgs;
 /// import com.pulumi.azurenative.keyvault.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -602,6 +639,45 @@ import 'vault_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_keyvault_vault" "vault" {
+///   location = "westus"
+///   properties = {
+///     enabled_for_deployment          = true
+///     enabled_for_disk_encryption     = true
+///     enabled_for_template_deployment = true
+///     network_acls = {
+///       bypass         = "AzureServices"
+///       default_action = "Deny"
+///       ip_rules = [{
+///         "value" = "124.56.78.91"
+///         }, {
+///         "value" = "'10.91.4.0/24'"
+///       }]
+///       virtual_network_rules = [{
+///         "id" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1"
+///       }]
+///     }
+///     sku = {
+///       family = "A"
+///       name   = "standard"
+///     }
+///     tenant_id = "00000000-0000-0000-0000-000000000000"
+///   }
+///   resource_group_name = "sample-resource-group"
+///   vault_name          = "sample-vault"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -613,8 +689,8 @@ import 'vault_properties_response.dart';
 /// import com.pulumi.azurenative.keyvault.inputs.VaultPropertiesArgs;
 /// import com.pulumi.azurenative.keyvault.inputs.NetworkRuleSetArgs;
 /// import com.pulumi.azurenative.keyvault.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

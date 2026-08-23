@@ -1,6 +1,6 @@
 /// Data flow reference type.
 enum DataFlowReferenceType {
-  valueDataFlowReference("DataFlowReference");
+  dataFlowReference("DataFlowReference");
 
   const DataFlowReferenceType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum DataFlowReferenceType {
     throw ArgumentError('Unknown DataFlowReferenceType value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum Source {
     throw ArgumentError('Unknown Source value: $value');
   }
 }
-

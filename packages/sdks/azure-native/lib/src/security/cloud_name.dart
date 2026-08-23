@@ -1,13 +1,13 @@
 /// The multi cloud resource's cloud name.
 enum CloudName {
-  valueAzure("Azure"),
-  valueAWS("AWS"),
-  valueGCP("GCP"),
-  valueGithub("Github"),
-  valueAzureDevOps("AzureDevOps"),
-  valueGitLab("GitLab"),
-  valueDockerHub("DockerHub"),
-  valueJFrog("JFrog");
+  azure("Azure"),
+  aWS("AWS"),
+  gCP("GCP"),
+  github("Github"),
+  azureDevOps("AzureDevOps"),
+  gitLab("GitLab"),
+  dockerHub("DockerHub"),
+  jFrog("JFrog");
 
   const CloudName(this.wireValue);
   final String wireValue;
@@ -21,4 +21,3 @@ enum CloudName {
     throw ArgumentError('Unknown CloudName value: $value');
   }
 }
-

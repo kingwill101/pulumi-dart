@@ -15,4 +15,3 @@ enum SnapshotUsage {
     throw ArgumentError('Unknown SnapshotUsage value: $value');
   }
 }
-

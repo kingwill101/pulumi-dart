@@ -1,7 +1,7 @@
 /// [Required] Seasonality mode.
 enum SeasonalityMode {
-  valueAuto("Auto"),
-  valueCustom("Custom");
+  auto("Auto"),
+  custom("Custom");
 
   const SeasonalityMode(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum SeasonalityMode {
     throw ArgumentError('Unknown SeasonalityMode value: $value');
   }
 }
-

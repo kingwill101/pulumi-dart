@@ -8,7 +8,7 @@ import 'virtual_hard_disk_status_response.dart';
 ///
 /// Uses Azure REST API version 2025-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-15-preview.
 ///
-/// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -71,6 +71,29 @@ import 'virtual_hard_disk_status_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_virtualharddisk" "virtualHardDisk" {
+///   container_id      = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/storageContainers/test-storage-container"
+///   create_from_local = true
+///   extended_location = {
+///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
+///     type = "CustomLocation"
+///   }
+///   location               = "West US2"
+///   resource_group_name    = "test-rg"
+///   virtual_hard_disk_name = "test-vhd"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +103,8 @@ import 'virtual_hard_disk_status_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.VirtualHardDisk;
 /// import com.pulumi.azurenative.azurestackhci.VirtualHardDiskArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -219,6 +242,28 @@ import 'virtual_hard_disk_status_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_virtualharddisk" "virtualHardDisk" {
+///   disk_size_gb = 32
+///   extended_location = {
+///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
+///     type = "CustomLocation"
+///   }
+///   location               = "West US2"
+///   resource_group_name    = "test-rg"
+///   virtual_hard_disk_name = "test-vhd"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +273,8 @@ import 'virtual_hard_disk_status_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.VirtualHardDisk;
 /// import com.pulumi.azurenative.azurestackhci.VirtualHardDiskArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -279,7 +324,7 @@ import 'virtual_hard_disk_status_response.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// virtual_hard_disk = azure_native.azurestackhci.VirtualHardDisk("virtualHardDisk",
-///     disk_size_gb=32,
+///     disk_size_gb=float(32),
 ///     extended_location={
 ///         "name": "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location",
 ///         "type": azure_native.azurestackhci.ExtendedLocationTypes.CUSTOM_LOCATION,

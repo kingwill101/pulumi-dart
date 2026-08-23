@@ -1,8 +1,8 @@
 /// Identity Type
 enum ManagedIdentityType {
-  valueNone("None"),
-  valueSystemAssigned("SystemAssigned"),
-  valueUserAssigned("UserAssigned");
+  none("None"),
+  systemAssigned("SystemAssigned"),
+  systemAssignedUserAssigned("SystemAssigned,UserAssigned");
 
   const ManagedIdentityType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum ManagedIdentityType {
     throw ArgumentError('Unknown ManagedIdentityType value: $value');
   }
 }
-

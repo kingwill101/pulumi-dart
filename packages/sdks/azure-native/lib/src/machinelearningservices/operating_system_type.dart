@@ -1,7 +1,7 @@
-/// The OS type of the environment.
+/// The type of operating system.
 enum OperatingSystemType {
-  valueLinux("Linux"),
-  valueWindows("Windows");
+  linux("Linux"),
+  windows("Windows");
 
   const OperatingSystemType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum OperatingSystemType {
     throw ArgumentError('Unknown OperatingSystemType value: $value');
   }
 }
-

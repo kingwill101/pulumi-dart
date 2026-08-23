@@ -57,6 +57,25 @@ import 'single_server_configuration_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbformysql_singleserverconfiguration" "singleServerConfiguration" {
+///   configuration_name  = "event_scheduler"
+///   resource_group_name = "TestGroup"
+///   server_name         = "testserver"
+///   source              = "user-override"
+///   value               = "off"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +84,8 @@ import 'single_server_configuration_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbformysql.SingleServerConfiguration;
 /// import com.pulumi.azurenative.dbformysql.SingleServerConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

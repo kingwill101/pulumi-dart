@@ -9,7 +9,7 @@ import 'sub_resource_response.dart';
 import 'subnet_response.dart';
 import 'virtual_network_bgp_communities_response.dart';
 import 'virtual_network_encryption_response.dart';
-import 'virtual_network_peering_response.dart';
+import 'virtual_network_peering_virtual_network_response.dart';
 
 /// Result data returned by getVirtualNetwork.
 class GetVirtualNetworkResult {
@@ -58,7 +58,7 @@ class GetVirtualNetworkResult {
   /// Resource type.
   final String type;
   /// A list of peerings in a Virtual Network.
-  final List<VirtualNetworkPeeringResponse>? virtualNetworkPeerings;
+  final List<VirtualNetworkPeeringVirtualNetworkResponse>? virtualNetworkPeerings;
 
   /// Creates a new [GetVirtualNetworkResult].
   /// [addressSpace] The AddressSpace that contains an array of IP address ranges that can be used by subnets.
@@ -134,7 +134,7 @@ class GetVirtualNetworkResult {
       'subnets': ?(() { final guardedValue = subnets; if (guardedValue == null) return null; return pulumi.Input.encodeList<SubnetResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'tags': ?tags,
       'type': type,
-      'virtualNetworkPeerings': ?(() { final guardedValue = virtualNetworkPeerings; if (guardedValue == null) return null; return pulumi.Input.encodeList<VirtualNetworkPeeringResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'virtualNetworkPeerings': ?(() { final guardedValue = virtualNetworkPeerings; if (guardedValue == null) return null; return pulumi.Input.encodeList<VirtualNetworkPeeringVirtualNetworkResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
@@ -162,8 +162,7 @@ class GetVirtualNetworkResult {
       subnets: (() { final guardedValue = map['subnets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetResponse>(guardedValue, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      virtualNetworkPeerings: (() { final guardedValue = map['virtualNetworkPeerings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkPeeringResponse>(guardedValue, (value) => VirtualNetworkPeeringResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      virtualNetworkPeerings: (() { final guardedValue = map['virtualNetworkPeerings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkPeeringVirtualNetworkResponse>(guardedValue, (value) => VirtualNetworkPeeringVirtualNetworkResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

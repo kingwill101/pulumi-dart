@@ -104,4 +104,3 @@ class GetADLSGen2FolderDataSetMappingResult {
     );
   }
 }
-

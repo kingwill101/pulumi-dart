@@ -21,4 +21,3 @@ enum RecurrenceFrequency {
     throw ArgumentError('Unknown RecurrenceFrequency value: $value');
   }
 }
-

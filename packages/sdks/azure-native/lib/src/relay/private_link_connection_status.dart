@@ -17,4 +17,3 @@ enum PrivateLinkConnectionStatus {
     throw ArgumentError('Unknown PrivateLinkConnectionStatus value: $value');
   }
 }
-

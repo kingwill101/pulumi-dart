@@ -144,6 +144,56 @@ import 'account_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datalakeanalytics_account" "account" {
+///   account_name = "contosoadla"
+///   compute_policies {
+///     max_degree_of_parallelism_per_job = 1
+///     min_priority_per_job              = 1
+///     name                              = "test_policy"
+///     object_id                         = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345"
+///     object_type                       = "User"
+///   }
+///   data_lake_store_accounts {
+///     name   = "test_adls"
+///     suffix = "test_suffix"
+///   }
+///   default_data_lake_store_account = "test_adls"
+///   firewall_allow_azure_ips        = "Enabled"
+///   firewall_rules {
+///     end_ip_address   = "2.2.2.2"
+///     name             = "test_rule"
+///     start_ip_address = "1.1.1.1"
+///   }
+///   firewall_state                    = "Enabled"
+///   location                          = "eastus2"
+///   max_degree_of_parallelism         = 30
+///   max_degree_of_parallelism_per_job = 1
+///   max_job_count                     = 3
+///   min_priority_per_job              = 1
+///   new_tier                          = "Consumption"
+///   query_store_retention             = 30
+///   resource_group_name               = "contosorg"
+///   storage_accounts {
+///     access_key = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab346"
+///     name       = "test_storage"
+///     suffix     = "test_suffix"
+///   }
+///   tags = {
+///     "test_key" = "test_value"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -156,8 +206,8 @@ import 'account_args.dart';
 /// import com.pulumi.azurenative.datalakeanalytics.inputs.AddDataLakeStoreWithAccountParametersArgs;
 /// import com.pulumi.azurenative.datalakeanalytics.inputs.CreateFirewallRuleWithAccountParametersArgs;
 /// import com.pulumi.azurenative.datalakeanalytics.inputs.AddStorageAccountWithAccountParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -2,7 +2,6 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// Describes the volume options for the container
 class VolumeOptions {
   /// Indicate whether volume is nocopy
   final pulumi.Input<bool>? nocopy;
@@ -25,4 +24,3 @@ class VolumeOptions {
     );
   }
 }
-

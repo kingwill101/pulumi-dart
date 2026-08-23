@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'custom_location_properties_response_authentication.dart';
+import 'custom_location_properties_authentication_response.dart';
 import 'identity_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getCustomLocation.
 class GetCustomLocationResult {
   /// This is optional input that contains the authentication that should be used to generate the namespace.
-  final CustomLocationPropertiesResponseAuthentication? authentication;
+  final CustomLocationPropertiesAuthenticationResponse? authentication;
   /// The Azure API version of the resource.
   final String azureApiVersion;
   /// Contains the reference to the add-on that contains charts to deploy CRDs and operators.
@@ -30,7 +30,7 @@ class GetCustomLocationResult {
   final String? namespace;
   /// Provisioning State for the Custom Location.
   final String? provisioningState;
-  /// Metadata pertaining to creation and last modification of the resource
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// Resource tags.
   final Map<String, String>? tags;
@@ -50,7 +50,7 @@ class GetCustomLocationResult {
   /// [name] The name of the resource
   /// [namespace] Kubernetes namespace that will be created on the specified cluster.
   /// [provisioningState] Provisioning State for the Custom Location.
-  /// [systemData] Metadata pertaining to creation and last modification of the resource
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetCustomLocationResult({
@@ -93,7 +93,7 @@ class GetCustomLocationResult {
 
   factory GetCustomLocationResult.fromMap(Map<String, dynamic> map) {
     return GetCustomLocationResult(
-      authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return CustomLocationPropertiesResponseAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return CustomLocationPropertiesAuthenticationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       azureApiVersion: map['azureApiVersion'] as String,
       clusterExtensionIds: (() { final guardedValue = map['clusterExtensionIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -111,4 +111,3 @@ class GetCustomLocationResult {
     );
   }
 }
-

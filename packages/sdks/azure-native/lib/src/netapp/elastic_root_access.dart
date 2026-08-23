@@ -15,4 +15,3 @@ enum ElasticRootAccess {
     throw ArgumentError('Unknown ElasticRootAccess value: $value');
   }
 }
-

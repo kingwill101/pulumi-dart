@@ -68,6 +68,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_billing_billingroleassignmentbybillingaccount" "billingRoleAssignmentByBillingAccount" {
+///   billing_account_name         = "7898901"
+///   billing_role_assignment_name = "9dfd08c2-62a3-4d47-85bd-1cdba1408402"
+///   properties = {
+///     principal_id        = "00000000-0000-0000-0000-000000000000"
+///     principal_tenant_id = "076915e7-de10-4323-bb34-a58c904068bb"
+///     role_definition_id  = "/providers/Microsoft.Billing/billingAccounts/7898901/billingRoleDefinitions/9f1983cb-2574-400c-87e9-34cf8e2280db"
+///     user_email_address  = "john@contoso.com"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +99,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.billing.BillingRoleAssignmentByBillingAccount;
 /// import com.pulumi.azurenative.billing.BillingRoleAssignmentByBillingAccountArgs;
 /// import com.pulumi.azurenative.billing.inputs.BillingRoleAssignmentPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -16,4 +16,3 @@ enum DiagnosticDestination {
     throw ArgumentError('Unknown DiagnosticDestination value: $value');
   }
 }
-

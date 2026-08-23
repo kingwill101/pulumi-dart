@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_args.dart';
+import 'system_data_response.dart';
 
 /// Security Application over a given scope
 ///
@@ -20,6 +21,21 @@ import 'application_args.dart';
 ///     var application = new AzureNative.Security.Application("application", new()
 ///     {
 ///         ApplicationId = "ad9a8e26-29d9-4829-bb30-e597a58cdbb8",
+///         ConditionSets = new[]
+///         {
+///             new Dictionary<string, object?>
+///             {
+///                 ["conditions"] = new[]
+///                 {
+///                     new Dictionary<string, object?>
+///                     {
+///                         ["operator"] = "contains",
+///                         ["property"] = "$.Id",
+///                         ["value"] = "-bil-",
+///                     },
+///                 },
+///             },
+///         },
 ///         Description = "An application on critical recommendations",
 ///         DisplayName = "Admin's application",
 ///         SourceResourceType = AzureNative.Security.ApplicationSourceResourceType.Assessments,
@@ -41,7 +57,18 @@ import 'application_args.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := security.NewApplication(ctx, "application", &security.ApplicationArgs{
-/// 			ApplicationId:      pulumi.String("ad9a8e26-29d9-4829-bb30-e597a58cdbb8"),
+/// 			ApplicationId: pulumi.String("ad9a8e26-29d9-4829-bb30-e597a58cdbb8"),
+/// 			ConditionSets: pulumi.Array{
+/// 				pulumi.Any(map[string]interface{}{
+/// 					"conditions": []map[string]interface{}{
+/// 						map[string]interface{}{
+/// 							"operator": "contains",
+/// 							"property": "$.Id",
+/// 							"value":    "-bil-",
+/// 						},
+/// 					},
+/// 				}),
+/// 			},
 /// 			Description:        pulumi.String("An application on critical recommendations"),
 /// 			DisplayName:        pulumi.String("Admin's application"),
 /// 			SourceResourceType: pulumi.String(security.ApplicationSourceResourceTypeAssessments),
@@ -55,6 +82,31 @@ import 'application_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_application" "application" {
+///   application_id = "ad9a8e26-29d9-4829-bb30-e597a58cdbb8"
+///   condition_sets = [{
+///     "conditions" = [{
+///       "operator" = "contains"
+///       "property" = "$.Id"
+///       "value"    = "-bil-"
+///     }]
+///   }]
+///   description          = "An application on critical recommendations"
+///   display_name         = "Admin's application"
+///   source_resource_type = "Assessments"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +115,8 @@ import 'application_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.Application;
 /// import com.pulumi.azurenative.security.ApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -78,6 +130,11 @@ import 'application_args.dart';
 ///     public static void stack(Context ctx) {
 ///         var application = new Application("application", ApplicationArgs.builder()
 ///             .applicationId("ad9a8e26-29d9-4829-bb30-e597a58cdbb8")
+///             .conditionSets(Map.of("conditions", Arrays.asList(Map.ofEntries(
+///                 Map.entry("operator", "contains"),
+///                 Map.entry("property", "$.Id"),
+///                 Map.entry("value", "-bil-")
+///             ))))
 ///             .description("An application on critical recommendations")
 ///             .displayName("Admin's application")
 ///             .sourceResourceType("Assessments")
@@ -94,6 +151,13 @@ import 'application_args.dart';
 ///
 /// const application = new azure_native.security.Application("application", {
 ///     applicationId: "ad9a8e26-29d9-4829-bb30-e597a58cdbb8",
+///     conditionSets: [{
+///         conditions: [{
+///             operator: "contains",
+///             property: "$.Id",
+///             value: "-bil-",
+///         }],
+///     }],
 ///     description: "An application on critical recommendations",
 ///     displayName: "Admin's application",
 ///     sourceResourceType: azure_native.security.ApplicationSourceResourceType.Assessments,
@@ -107,6 +171,13 @@ import 'application_args.dart';
 ///
 /// application = azure_native.security.Application("application",
 ///     application_id="ad9a8e26-29d9-4829-bb30-e597a58cdbb8",
+///     condition_sets=[{
+///         "conditions": [{
+///             "operator": "contains",
+///             "property": "$.Id",
+///             "value": "-bil-",
+///         }],
+///     }],
 ///     description="An application on critical recommendations",
 ///     display_name="Admin's application",
 ///     source_resource_type=azure_native.security.ApplicationSourceResourceType.ASSESSMENTS)
@@ -119,6 +190,11 @@ import 'application_args.dart';
 ///     type: azure-native:security:Application
 ///     properties:
 ///       applicationId: ad9a8e26-29d9-4829-bb30-e597a58cdbb8
+///       conditionSets:
+///         - conditions:
+///             - operator: contains
+///               property: $.Id
+///               value: -bil-
 ///       description: An application on critical recommendations
 ///       displayName: Admin's application
 ///       sourceResourceType: Assessments
@@ -138,15 +214,19 @@ import 'application_args.dart';
 class Application extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+  /// The application conditionSets - see examples
+  late final pulumi.Output<List<Map<String, dynamic>>> conditionSets;
   /// description of the application
   late final pulumi.Output<String?> description;
   /// display name of the application
   late final pulumi.Output<String?> displayName;
-  /// Resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The application source, what it affects, e.g. Assessments
   late final pulumi.Output<String> sourceResourceType;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [Application].
@@ -164,10 +244,12 @@ class Application extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
+    conditionSets = registerOutput<List<Map<String, dynamic>>>('conditionSets');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     sourceResourceType = registerOutput<String>('sourceResourceType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -1,8 +1,8 @@
 /// The kind of repository access credentials
 enum RepositoryAccessKind {
-  valueOAuth("OAuth"),
-  valuePAT("PAT"),
-  valueApp("App");
+  oAuth("OAuth"),
+  pAT("PAT"),
+  app("App");
 
   const RepositoryAccessKind(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum RepositoryAccessKind {
     throw ArgumentError('Unknown RepositoryAccessKind value: $value');
   }
 }
-

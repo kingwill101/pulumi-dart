@@ -15,4 +15,3 @@ enum LocalAdminStatus {
     throw ArgumentError('Unknown LocalAdminStatus value: $value');
   }
 }
-

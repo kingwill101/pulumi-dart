@@ -7,8 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_web_web_app_vnet_connection_slot_args_doc}
 class WebAppVnetConnectionSlotArgs {
-  /// A certificate file (.cer) blob containing the public key of the private key used to authenticate a
-  /// Point-To-Site VPN connection.
+  /// A certificate file (.cer) blob containing the public key of the private key used to authenticate a \nPoint-To-Site VPN connection.
   final pulumi.Input<String>? certBlob;
   /// DNS servers to be used by this Virtual Network. This should be a comma-separated list of IP addresses.
   final pulumi.Input<String>? dnsServers;
@@ -18,24 +17,24 @@ class WebAppVnetConnectionSlotArgs {
   final pulumi.Input<String>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Name of the deployment slot. If a slot is not specified, the API will add or update connections for the production slot.
+  /// Name of the deployment slot. If a slot is not specified, the API will get the named virtual network for the production slot.
   final pulumi.Input<String> slot;
-  /// Name of an existing Virtual Network.
+  /// Name of the virtual network.
   final pulumi.Input<String>? vnetName;
   /// The Virtual Network's resource ID.
   final pulumi.Input<String>? vnetResourceId;
 
   /// Creates a new [WebAppVnetConnectionSlotArgs].
-  /// [certBlob] A certificate file (.cer) blob containing the public key of the private key used to authenticate a
+  /// [certBlob] A certificate file (.cer) blob containing the public key of the private key used to authenticate a \nPoint-To-Site VPN connection.
   /// [dnsServers] DNS servers to be used by this Virtual Network. This should be a comma-separated list of IP addresses.
   /// [isSwift] Flag that is used to denote if this is VNET injection
   /// [kind] Kind of resource.
   /// [name] Name of the app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  /// [slot] Name of the deployment slot. If a slot is not specified, the API will add or update connections for the production slot.
-  /// [vnetName] Name of an existing Virtual Network.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [slot] Name of the deployment slot. If a slot is not specified, the API will get the named virtual network for the production slot.
+  /// [vnetName] Name of the virtual network.
   /// [vnetResourceId] The Virtual Network's resource ID.
   const WebAppVnetConnectionSlotArgs({
     this.certBlob,
@@ -77,4 +76,3 @@ class WebAppVnetConnectionSlotArgs {
     );
   }
 }
-

@@ -231,4 +231,3 @@ class AwsEc2ImageProperties {
     );
   }
 }
-

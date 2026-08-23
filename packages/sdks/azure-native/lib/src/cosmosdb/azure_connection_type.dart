@@ -15,4 +15,3 @@ enum AzureConnectionType {
     throw ArgumentError('Unknown AzureConnectionType value: $value');
   }
 }
-

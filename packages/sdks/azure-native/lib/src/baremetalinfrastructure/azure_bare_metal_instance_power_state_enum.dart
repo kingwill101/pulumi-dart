@@ -19,4 +19,3 @@ enum AzureBareMetalInstancePowerStateEnum {
     throw ArgumentError('Unknown AzureBareMetalInstancePowerStateEnum value: $value');
   }
 }
-

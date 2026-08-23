@@ -31,4 +31,3 @@ class OAuth2AuthenticationSettingsContract {
     );
   }
 }
-

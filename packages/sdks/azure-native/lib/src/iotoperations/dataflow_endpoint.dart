@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -377,6 +377,165 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+///   dataflow_endpoint_name = "resource-name123"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     data_explorer_settings = {
+///       authentication = {
+///         method = "SystemAssignedManagedIdentity"
+///         system_assigned_managed_identity_settings = {
+///           audience = "psxomrfbhoflycm"
+///         }
+///         user_assigned_managed_identity_settings = {
+///           client_id = "fb90f267-8872-431a-a76a-a1cec5d3c4d2"
+///           scope     = "zop"
+///           tenant_id = "ed060aa2-71ff-4d3f-99c4-a9138356fdec"
+///         }
+///       }
+///       batching = {
+///         latency_seconds = 9312
+///         max_messages    = 9028
+///       }
+///       database = "yqcdpjsifm"
+///       host     = "<cluster>.<region>.kusto.windows.net"
+///     }
+///     data_lake_storage_settings = {
+///       authentication = {
+///         access_token_settings = {
+///           secret_ref = "sevriyphcvnlrnfudqzejecwa"
+///         }
+///         method = "SystemAssignedManagedIdentity"
+///         system_assigned_managed_identity_settings = {
+///           audience = "psxomrfbhoflycm"
+///         }
+///         user_assigned_managed_identity_settings = {
+///           client_id = "fb90f267-8872-431a-a76a-a1cec5d3c4d2"
+///           scope     = "zop"
+///           tenant_id = "ed060aa2-71ff-4d3f-99c4-a9138356fdec"
+///         }
+///       }
+///       batching = {
+///         latency_seconds = 9312
+///         max_messages    = 9028
+///       }
+///       host = "<account>.blob.core.windows.net"
+///     }
+///     endpoint_type = "DataExplorer"
+///     fabric_one_lake_settings = {
+///       authentication = {
+///         method = "SystemAssignedManagedIdentity"
+///         system_assigned_managed_identity_settings = {
+///           audience = "psxomrfbhoflycm"
+///         }
+///         user_assigned_managed_identity_settings = {
+///           client_id = "fb90f267-8872-431a-a76a-a1cec5d3c4d2"
+///           scope     = "zop"
+///           tenant_id = "ed060aa2-71ff-4d3f-99c4-a9138356fdec"
+///         }
+///       }
+///       batching = {
+///         latency_seconds = 9312
+///         max_messages    = 9028
+///       }
+///       host = "https://<host>.fabric.microsoft.com"
+///       names = {
+///         lakehouse_name = "wpeathi"
+///         workspace_name = "nwgmitkbljztgms"
+///       }
+///       one_lake_path_type = "Files"
+///     }
+///     kafka_settings = {
+///       authentication = {
+///         method = "SystemAssignedManagedIdentity"
+///         sasl_settings = {
+///           sasl_type  = "Plain"
+///           secret_ref = "visyxoztqnylvbyokhtmpdkwes"
+///         }
+///         system_assigned_managed_identity_settings = {
+///           audience = "psxomrfbhoflycm"
+///         }
+///         user_assigned_managed_identity_settings = {
+///           client_id = "fb90f267-8872-431a-a76a-a1cec5d3c4d2"
+///           scope     = "zop"
+///           tenant_id = "ed060aa2-71ff-4d3f-99c4-a9138356fdec"
+///         }
+///         x509_certificate_settings = {
+///           secret_ref = "afwizrystfslkfqd"
+///         }
+///       }
+///       batching = {
+///         latency_ms   = 3679
+///         max_bytes    = 8887
+///         max_messages = 2174
+///         mode         = "Enabled"
+///       }
+///       cloud_event_attributes = "PassThrough"
+///       compression            = "None"
+///       consumer_group_id      = "ukkzcjiyenhxokat"
+///       copy_mqtt_properties   = "Enabled"
+///       host                   = "pwcqfiqclcgneolpewnyavoulbip"
+///       kafka_acks             = "Zero"
+///       partition_strategy     = "Default"
+///       tls = {
+///         mode                                  = "Enabled"
+///         trusted_ca_certificate_config_map_ref = "tectjjvukvelsreihwadh"
+///       }
+///     }
+///     local_storage_settings = {
+///       persistent_volume_claim_ref = "jjwqwvd"
+///     }
+///     mqtt_settings = {
+///       authentication = {
+///         method = "SystemAssignedManagedIdentity"
+///         service_account_token_settings = {
+///           audience = "ejbklrbxgjaqleoycgpje"
+///         }
+///         system_assigned_managed_identity_settings = {
+///           audience = "psxomrfbhoflycm"
+///         }
+///         user_assigned_managed_identity_settings = {
+///           client_id = "fb90f267-8872-431a-a76a-a1cec5d3c4d2"
+///           scope     = "zop"
+///           tenant_id = "ed060aa2-71ff-4d3f-99c4-a9138356fdec"
+///         }
+///         x509_certificate_settings = {
+///           secret_ref = "afwizrystfslkfqd"
+///         }
+///       }
+///       client_id_prefix       = "kkljsdxdirfhwxtkavldekeqhv"
+///       cloud_event_attributes = "PassThrough"
+///       host                   = "nyhnxqnbspstctl"
+///       keep_alive_seconds     = 0
+///       max_inflight_messages  = 0
+///       protocol               = "Mqtt"
+///       qos                    = 1
+///       retain                 = "Keep"
+///       session_expiry_seconds = 0
+///       tls = {
+///         mode                                  = "Enabled"
+///         trusted_ca_certificate_config_map_ref = "tectjjvukvelsreihwadh"
+///       }
+///     }
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -408,8 +567,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointMqttArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointMqttAuthenticationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointAuthenticationServiceAccountTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1083,6 +1242,39 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+///   dataflow_endpoint_name = "adlsv2-endpoint"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     data_lake_storage_settings = {
+///       authentication = {
+///         access_token_settings = {
+///           secret_ref = "my-secret"
+///         }
+///         method = "AccessToken"
+///       }
+///       host = "example.blob.core.windows.net"
+///     }
+///     endpoint_type = "DataLakeStorage"
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1096,8 +1288,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointDataLakeStorageArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointDataLakeStorageAuthenticationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointAuthenticationAccessTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1303,6 +1495,42 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+///   dataflow_endpoint_name = "adx-endpoint"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     data_explorer_settings = {
+///       authentication = {
+///         method                                    = "SystemAssignedManagedIdentity"
+///         system_assigned_managed_identity_settings = {}
+///       }
+///       batching = {
+///         latency_seconds = 9312
+///         max_messages    = 9028
+///       }
+///       database = "example-database"
+///       host     = "example.westeurope.kusto.windows.net"
+///     }
+///     endpoint_type = "DataExplorer"
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1317,8 +1545,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointDataExplorerAuthenticationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.BatchingConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1540,6 +1768,43 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+///   dataflow_endpoint_name = "aio-builtin-broker-endpoint"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     endpoint_type = "Mqtt"
+///     mqtt_settings = {
+///       authentication = {
+///         method = "Kubernetes"
+///         service_account_token_settings = {
+///           audience = "aio-internal"
+///         }
+///       }
+///       host = "aio-broker:18883"
+///       tls = {
+///         mode                                  = "Enabled"
+///         trusted_ca_certificate_config_map_ref = "aio-ca-trust-bundle-test-only"
+///       }
+///     }
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1554,8 +1819,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointMqttAuthenticationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointAuthenticationServiceAccountTokenArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.TlsPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1772,6 +2037,40 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+///   dataflow_endpoint_name = "event-grid-endpoint"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     endpoint_type = "Mqtt"
+///     mqtt_settings = {
+///       authentication = {
+///         method                                    = "SystemAssignedManagedIdentity"
+///         system_assigned_managed_identity_settings = {}
+///       }
+///       host = "example.westeurope-1.ts.eventgrid.azure.net:8883"
+///       tls = {
+///         mode = "Enabled"
+///       }
+///     }
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1786,8 +2085,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointMqttAuthenticationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.TlsPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1996,6 +2295,41 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+///   dataflow_endpoint_name = "event-hub-endpoint"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     endpoint_type = "Kafka"
+///     kafka_settings = {
+///       authentication = {
+///         method                                    = "SystemAssignedManagedIdentity"
+///         system_assigned_managed_identity_settings = {}
+///       }
+///       consumer_group_id = "aiodataflows"
+///       host              = "example.servicebus.windows.net:9093"
+///       tls = {
+///         mode = "Enabled"
+///       }
+///     }
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2010,8 +2344,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointKafkaAuthenticationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.TlsPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2226,6 +2560,42 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+///   dataflow_endpoint_name = "fabric-endpoint"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     endpoint_type = "FabricOneLake"
+///     fabric_one_lake_settings = {
+///       authentication = {
+///         method                                    = "SystemAssignedManagedIdentity"
+///         system_assigned_managed_identity_settings = {}
+///       }
+///       host = "onelake.dfs.fabric.microsoft.com"
+///       names = {
+///         lakehouse_name = "example-lakehouse"
+///         workspace_name = "example-workspace"
+///       }
+///       one_lake_path_type = "Tables"
+///     }
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2240,8 +2610,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointFabricOneLakeAuthenticationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointFabricOneLakeNamesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2490,6 +2860,56 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+///   dataflow_endpoint_name = "generic-kafka-endpoint"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     endpoint_type = "Kafka"
+///     kafka_settings = {
+///       authentication = {
+///         method = "Sasl"
+///         sasl_settings = {
+///           sasl_type  = "Plain"
+///           secret_ref = "my-secret"
+///         }
+///       }
+///       batching = {
+///         latency_ms   = 5
+///         max_bytes    = 1000000
+///         max_messages = 100000
+///         mode         = "Enabled"
+///       }
+///       cloud_event_attributes = "Propagate"
+///       compression            = "Gzip"
+///       consumer_group_id      = "dataflows"
+///       copy_mqtt_properties   = "Enabled"
+///       host                   = "example.kafka.local:9093"
+///       kafka_acks             = "All"
+///       partition_strategy     = "Default"
+///       tls = {
+///         mode                                  = "Enabled"
+///         trusted_ca_certificate_config_map_ref = "ca-certificates"
+///       }
+///     }
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2505,8 +2925,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointAuthenticationSaslArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointKafkaBatchingArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.TlsPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2758,6 +3178,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+///   dataflow_endpoint_name = "local-storage-endpoint"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     endpoint_type = "LocalStorage"
+///     local_storage_settings = {
+///       persistent_volume_claim_ref = "example-pvc"
+///     }
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2769,8 +3216,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointPropertiesArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointLocalStorageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2969,6 +3416,49 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+///   dataflow_endpoint_name = "generic-mqtt-broker-endpoint"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     endpoint_type = "Mqtt"
+///     mqtt_settings = {
+///       authentication = {
+///         method = "X509Certificate"
+///         x509_certificate_settings = {
+///           secret_ref = "example-secret"
+///         }
+///       }
+///       client_id_prefix       = "factory-gateway"
+///       host                   = "example.broker.local:1883"
+///       keep_alive_seconds     = 60
+///       max_inflight_messages  = 100
+///       protocol               = "WebSockets"
+///       qos                    = 1
+///       retain                 = "Keep"
+///       session_expiry_seconds = 3600
+///       tls = {
+///         mode = "Disabled"
+///       }
+///     }
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2983,8 +3473,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointMqttAuthenticationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowEndpointAuthenticationX509Args;
 /// import com.pulumi.azurenative.iotoperations.inputs.TlsPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

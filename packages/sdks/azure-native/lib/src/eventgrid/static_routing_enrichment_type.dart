@@ -14,4 +14,3 @@ enum StaticRoutingEnrichmentType {
     throw ArgumentError('Unknown StaticRoutingEnrichmentType value: $value');
   }
 }
-

@@ -59,6 +59,24 @@ import 'template_spec_version_info_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resources_templatespec" "templateSpec" {
+///   description         = "A very simple Template Spec"
+///   location            = "eastus"
+///   resource_group_name = "templateSpecRG"
+///   template_spec_name  = "simpleTemplateSpec"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +85,8 @@ import 'template_spec_version_info_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.resources.TemplateSpec;
 /// import com.pulumi.azurenative.resources.TemplateSpecArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

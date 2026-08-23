@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2022-07-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-07-01-preview.
 ///
-/// Other available API versions: 2020-07-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-07-01-preview, 2024-12-01-preview, 2025-12-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -76,6 +76,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_policyexemption" "policyExemption" {
+///   description        = "Exempt demo cluster from limit sku"
+///   display_name       = "Exempt demo cluster"
+///   exemption_category = "Waiver"
+///   metadata = {
+///     "reason" = "Temporary exemption for a expensive VM demo"
+///   }
+///   policy_assignment_id            = "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyAssignments/CostManagement"
+///   policy_definition_reference_ids = ["Limit_Skus"]
+///   policy_exemption_name           = "DemoExpensiveVM"
+///   scope                           = "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/resourceGroups/demoCluster"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +108,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.PolicyExemption;
 /// import com.pulumi.azurenative.authorization.PolicyExemptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -270,6 +294,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_policyexemption" "policyExemption" {
+///   assignment_scope_validation = "Default"
+///   description                 = "Exempt demo cluster from limit sku"
+///   display_name                = "Exempt demo cluster"
+///   exemption_category          = "Waiver"
+///   metadata = {
+///     "reason" = "Temporary exemption for a expensive VM demo"
+///   }
+///   policy_assignment_id            = "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyAssignments/CostManagement"
+///   policy_definition_reference_ids = ["Limit_Skus"]
+///   policy_exemption_name           = "DemoExpensiveVM"
+///   resource_selectors {
+///     name = "SDPRegions"
+///     selectors {
+///       in   = ["eastus2euap", "centraluseuap"]
+///       kind = "resourceLocation"
+///     }
+///   }
+///   scope = "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/resourceGroups/demoCluster"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -279,8 +335,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.authorization.PolicyExemption;
 /// import com.pulumi.azurenative.authorization.PolicyExemptionArgs;
 /// import com.pulumi.azurenative.authorization.inputs.ResourceSelectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

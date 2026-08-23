@@ -68,4 +68,3 @@ class EventHubV2OutputDataSource {
     );
   }
 }
-

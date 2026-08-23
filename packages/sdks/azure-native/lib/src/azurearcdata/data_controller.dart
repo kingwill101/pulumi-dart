@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-15-preview.
 ///
-/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -154,6 +154,66 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurearcdata_datacontroller" "dataController" {
+///   data_controller_name = "testdataController"
+///   extended_location = {
+///     name = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.ExtendedLocation/customLocations/arclocation"
+///     type = "CustomLocation"
+///   }
+///   location = "northeurope"
+///   properties = {
+///     basic_login_information = {
+///       password = "********"
+///       username = "username"
+///     }
+///     cluster_id     = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Kubernetes/connectedClusters/connectedk8s"
+///     extension_id   = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Kubernetes/connectedClusters/connectedk8s/providers/Microsoft.KubernetesConfiguration/extensions/extension"
+///     infrastructure = "onpremises"
+///     log_analytics_workspace_config = {
+///       primary_key  = "********"
+///       workspace_id = "00000000-1111-2222-3333-444444444444"
+///     }
+///     logs_dashboard_credential = {
+///       password = "********"
+///       username = "username"
+///     }
+///     metrics_dashboard_credential = {
+///       password = "********"
+///       username = "username"
+///     }
+///     on_premise_property = {
+///       id                 = "12345678-1234-1234-ab12-1a2b3c4d5e6f"
+///       public_signing_key = "publicOnPremSigningKey"
+///     }
+///     upload_service_principal = {
+///       authority     = "https://login.microsoftonline.com/"
+///       client_id     = "00000000-1111-2222-3333-444444444444"
+///       client_secret = "********"
+///       tenant_id     = "00000000-1111-2222-3333-444444444444"
+///     }
+///     upload_watermark = {
+///       logs    = "2020-01-01T17:18:19.1234567Z"
+///       metrics = "2020-01-01T17:18:19.1234567Z"
+///       usages  = "2020-01-01T17:18:19.1234567Z"
+///     }
+///   }
+///   resource_group_name = "testrg"
+///   tags = {
+///     "mytag" = "myval"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -169,8 +229,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azurearcdata.inputs.OnPremisePropertyArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.UploadServicePrincipalArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.UploadWatermarkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -15,4 +15,3 @@ enum SSLStatus {
     throw ArgumentError('Unknown SSLStatus value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum AgentPathType {
     throw ArgumentError('Unknown AgentPathType value: $value');
   }
 }
-

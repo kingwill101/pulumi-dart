@@ -82,6 +82,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storagesync_serverendpoint" "serverEndpoint" {
+///   cloud_tiering                    = "off"
+///   initial_download_policy          = "NamespaceThenModifiedFiles"
+///   initial_upload_policy            = "ServerAuthoritative"
+///   local_cache_mode                 = "UpdateLocallyCachedFiles"
+///   offline_data_transfer            = "on"
+///   offline_data_transfer_share_name = "myfileshare"
+///   resource_group_name              = "SampleResourceGroup_1"
+///   server_endpoint_name             = "SampleServerEndpoint_1"
+///   server_local_path                = "D:\\SampleServerEndpoint_1"
+///   server_resource_id               = "/subscriptions/52b8da2f-61e0-4a1f-8dde-336911f367fb/resourceGroups/SampleResourceGroup_1/providers/Microsoft.StorageSync/storageSyncServices/SampleStorageSyncService_1/registeredServers/080d4133-bdb5-40a0-96a0-71a6057bfe9a"
+///   storage_sync_service_name        = "SampleStorageSyncService_1"
+///   sync_group_name                  = "SampleSyncGroup_1"
+///   tier_files_older_than_days       = 0
+///   volume_free_space_percent        = 100
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +118,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.storagesync.ServerEndpoint;
 /// import com.pulumi.azurenative.storagesync.ServerEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

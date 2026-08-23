@@ -61,6 +61,25 @@ import 'user_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_labservices_user" "user" {
+///   additional_usage_quota = "PT10H"
+///   email                  = "testuser@contoso.com"
+///   lab_name               = "testlab"
+///   resource_group_name    = "testrg123"
+///   user_name              = "testuser"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +88,8 @@ import 'user_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.labservices.User;
 /// import com.pulumi.azurenative.labservices.UserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

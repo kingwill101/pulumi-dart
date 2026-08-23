@@ -15,4 +15,3 @@ enum ArtifactNamespace {
     throw ArgumentError('Unknown ArtifactNamespace value: $value');
   }
 }
-

@@ -74,6 +74,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_videoindexer_account" "account" {
+///   account_id   = "462af7c5-d1f6-4b91-86e3-8bc5e8a61574"
+///   account_name = "contosto-videoanalyzer"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location            = "NorthEurope"
+///   resource_group_name = "contosto-videoanalyzer-rg"
+///   storage_services = {
+///     resource_id = "/subscriptions/xxx/resourceGroups/contoso-videoanalyzer-rg/providers/Microsoft.Storage/storageAccounts/contoso-videoanalyzer-ms"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +108,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.videoindexer.AccountArgs;
 /// import com.pulumi.azurenative.videoindexer.inputs.ManagedServiceIdentityArgs;
 /// import com.pulumi.azurenative.videoindexer.inputs.StorageServicesForPutRequestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -229,6 +253,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_videoindexer_account" "account" {
+///   account_name = "contosto-videoanalyzer"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location            = "NorthEurope"
+///   resource_group_name = "contosto-videoanalyzer-rg"
+///   storage_services = {
+///     resource_id = "/subscriptions/xxx/resourceGroups/contoso-videoanalyzer-rg/providers/Microsoft.Storage/storageAccounts/contoso-videoanalyzer-ms"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -239,8 +286,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.videoindexer.AccountArgs;
 /// import com.pulumi.azurenative.videoindexer.inputs.ManagedServiceIdentityArgs;
 /// import com.pulumi.azurenative.videoindexer.inputs.StorageServicesForPutRequestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -1,9 +1,9 @@
-/// Primary metric for forecasting task.
+/// Primary metrics for Forecasting task.
 enum ForecastingPrimaryMetrics {
-  valueSpearmanCorrelation("SpearmanCorrelation"),
-  valueNormalizedRootMeanSquaredError("NormalizedRootMeanSquaredError"),
-  valueR2Score("R2Score"),
-  valueNormalizedMeanAbsoluteError("NormalizedMeanAbsoluteError");
+  spearmanCorrelation("SpearmanCorrelation"),
+  normalizedRootMeanSquaredError("NormalizedRootMeanSquaredError"),
+  r2Score("R2Score"),
+  normalizedMeanAbsoluteError("NormalizedMeanAbsoluteError");
 
   const ForecastingPrimaryMetrics(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum ForecastingPrimaryMetrics {
     throw ArgumentError('Unknown ForecastingPrimaryMetrics value: $value');
   }
 }
-

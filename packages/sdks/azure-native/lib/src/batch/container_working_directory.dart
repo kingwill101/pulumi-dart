@@ -15,4 +15,3 @@ enum ContainerWorkingDirectory {
     throw ArgumentError('Unknown ContainerWorkingDirectory value: $value');
   }
 }
-

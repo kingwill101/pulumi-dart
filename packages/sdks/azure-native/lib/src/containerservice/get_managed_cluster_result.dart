@@ -33,7 +33,7 @@ import 'power_state_response.dart';
 import 'private_link_resource_response.dart';
 import 'service_mesh_profile_response.dart';
 import 'system_data_response.dart';
-import 'user_assigned_identity_response.dart';
+import 'user_assigned_identity_managed_cluster_response.dart';
 
 /// Result data returned by getManagedCluster.
 class GetManagedClusterResult {
@@ -84,7 +84,7 @@ class GetManagedClusterResult {
   /// The identity of the managed cluster, if configured.
   final ManagedClusterIdentityResponse? identity;
   /// The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
-  final Map<String, UserAssignedIdentityResponse>? identityProfile;
+  final Map<String, UserAssignedIdentityManagedClusterResponse>? identityProfile;
   /// Ingress profile for the managed cluster.
   final ManagedClusterIngressProfileResponse? ingressProfile;
   /// This is primarily used to expose different UI experiences in the portal for different kinds
@@ -295,7 +295,7 @@ class GetManagedClusterResult {
       'httpProxyConfig': ?httpProxyConfig?.toMap(),
       'id': id,
       'identity': ?identity?.toMap(),
-      'identityProfile': ?(() { final guardedValue = identityProfile; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<UserAssignedIdentityResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'identityProfile': ?(() { final guardedValue = identityProfile; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<UserAssignedIdentityManagedClusterResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'ingressProfile': ?ingressProfile?.toMap(),
       'kind': ?kind,
       'kubernetesVersion': ?kubernetesVersion,
@@ -357,7 +357,7 @@ class GetManagedClusterResult {
       httpProxyConfig: (() { final guardedValue = map['httpProxyConfig']; if (guardedValue == null) return null; return ManagedClusterHTTPProxyConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedClusterIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      identityProfile: (() { final guardedValue = map['identityProfile']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<UserAssignedIdentityResponse>(guardedValue, (value) => UserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      identityProfile: (() { final guardedValue = map['identityProfile']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<UserAssignedIdentityManagedClusterResponse>(guardedValue, (value) => UserAssignedIdentityManagedClusterResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       ingressProfile: (() { final guardedValue = map['ingressProfile']; if (guardedValue == null) return null; return ManagedClusterIngressProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kubernetesVersion: (() { final guardedValue = map['kubernetesVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -394,4 +394,3 @@ class GetManagedClusterResult {
     );
   }
 }
-

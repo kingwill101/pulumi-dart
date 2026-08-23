@@ -179,4 +179,3 @@ enum VirtualMachineSizeTypes {
     throw ArgumentError('Unknown VirtualMachineSizeTypes value: $value');
   }
 }
-

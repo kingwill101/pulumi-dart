@@ -25,4 +25,3 @@ enum MonthOfYear {
     throw ArgumentError('Unknown MonthOfYear value: $value');
   }
 }
-

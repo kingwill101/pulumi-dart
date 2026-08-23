@@ -16,4 +16,3 @@ enum MigrationOption {
     throw ArgumentError('Unknown MigrationOption value: $value');
   }
 }
-

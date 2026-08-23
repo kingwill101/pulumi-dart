@@ -17,4 +17,3 @@ enum NetworkInterfaceAuxiliaryMode {
     throw ArgumentError('Unknown NetworkInterfaceAuxiliaryMode value: $value');
   }
 }
-

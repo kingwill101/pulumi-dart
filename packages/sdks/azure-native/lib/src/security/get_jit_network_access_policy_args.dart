@@ -11,13 +11,13 @@ class GetJitNetworkAccessPolicyArgs {
   final pulumi.Input<String> ascLocation;
   /// Name of a Just-in-Time access configuration policy.
   final pulumi.Input<String> jitNetworkAccessPolicyName;
-  /// The name of the resource group within the user's subscription. The name is case insensitive.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetJitNetworkAccessPolicyArgs].
   /// [ascLocation] The location where ASC stores the data of the subscription. can be retrieved from Get locations
   /// [jitNetworkAccessPolicyName] Name of a Just-in-Time access configuration policy.
-  /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetJitNetworkAccessPolicyArgs({
     required this.ascLocation,
     required this.jitNetworkAccessPolicyName,
@@ -40,4 +40,3 @@ class GetJitNetworkAccessPolicyArgs {
     );
   }
 }
-

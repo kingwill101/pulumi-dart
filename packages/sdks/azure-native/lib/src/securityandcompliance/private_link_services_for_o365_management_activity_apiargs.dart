@@ -67,4 +67,3 @@ class PrivateLinkServicesForO365ManagementActivityAPIArgs {
     );
   }
 }
-

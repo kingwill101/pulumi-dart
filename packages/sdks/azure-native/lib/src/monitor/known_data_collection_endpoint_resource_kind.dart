@@ -15,4 +15,3 @@ enum KnownDataCollectionEndpointResourceKind {
     throw ArgumentError('Unknown KnownDataCollectionEndpointResourceKind value: $value');
   }
 }
-

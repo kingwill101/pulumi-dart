@@ -15,4 +15,3 @@ enum DiscoveryRuleKind {
     throw ArgumentError('Unknown DiscoveryRuleKind value: $value');
   }
 }
-

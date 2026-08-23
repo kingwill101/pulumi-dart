@@ -17,4 +17,3 @@ enum PublicIpAddressDnsSettingsDomainNameLabelScope {
     throw ArgumentError('Unknown PublicIpAddressDnsSettingsDomainNameLabelScope value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum VirtualMachinePriorityTypes {
     throw ArgumentError('Unknown VirtualMachinePriorityTypes value: $value');
   }
 }
-

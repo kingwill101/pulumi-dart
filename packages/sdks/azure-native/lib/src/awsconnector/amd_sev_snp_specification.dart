@@ -15,4 +15,3 @@ enum AmdSevSnpSpecification {
     throw ArgumentError('Unknown AmdSevSnpSpecification value: $value');
   }
 }
-

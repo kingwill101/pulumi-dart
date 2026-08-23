@@ -26,4 +26,3 @@ class O365PolicyProperties {
     );
   }
 }
-

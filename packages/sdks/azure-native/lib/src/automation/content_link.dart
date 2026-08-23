@@ -5,17 +5,17 @@ import 'content_hash.dart';
 
 /// Definition of the content link.
 class ContentLink {
-  /// Sets the hash.
+  /// Gets or sets the hash.
   final pulumi.Input<ContentHash>? contentHash;
-  /// Sets the uri of the content.
+  /// Gets or sets the uri of content.
   final pulumi.Input<String>? uri;
-  /// Sets the version of the content.
+  /// Gets or sets the version of the content.
   final pulumi.Input<String>? version;
 
   /// Creates a new [ContentLink].
-  /// [contentHash] Sets the hash.
-  /// [uri] Sets the uri of the content.
-  /// [version] Sets the version of the content.
+  /// [contentHash] Gets or sets the hash.
+  /// [uri] Gets or sets the uri of content.
+  /// [version] Gets or sets the version of the content.
   const ContentLink({
     this.contentHash,
     this.uri,
@@ -38,4 +38,3 @@ class ContentLink {
     );
   }
 }
-

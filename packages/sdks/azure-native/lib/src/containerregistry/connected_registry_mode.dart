@@ -17,4 +17,3 @@ enum ConnectedRegistryMode {
     throw ArgumentError('Unknown ConnectedRegistryMode value: $value');
   }
 }
-

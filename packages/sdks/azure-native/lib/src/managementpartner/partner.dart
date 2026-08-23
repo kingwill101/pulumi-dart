@@ -49,6 +49,21 @@ import 'partner_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_managementpartner_partner" "partner" {
+///   partner_id = "123456"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -57,8 +72,8 @@ import 'partner_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.managementpartner.Partner;
 /// import com.pulumi.azurenative.managementpartner.PartnerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

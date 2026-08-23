@@ -15,4 +15,3 @@ enum ValidationThresholdGrouping {
     throw ArgumentError('Unknown ValidationThresholdGrouping value: $value');
   }
 }
-

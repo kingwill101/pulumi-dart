@@ -64,6 +64,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_billing_associatedtenant" "associatedTenant" {
+///   associated_tenant_name = "11111111-1111-1111-1111-111111111111"
+///   billing_account_name   = "00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31"
+///   properties = {
+///     billing_management_state      = "Active"
+///     display_name                  = "Contoso Finance"
+///     provisioning_management_state = "Pending"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +94,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.billing.AssociatedTenant;
 /// import com.pulumi.azurenative.billing.AssociatedTenantArgs;
 /// import com.pulumi.azurenative.billing.inputs.AssociatedTenantPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

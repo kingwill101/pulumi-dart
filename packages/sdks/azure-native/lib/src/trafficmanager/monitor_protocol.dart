@@ -16,4 +16,3 @@ enum MonitorProtocol {
     throw ArgumentError('Unknown MonitorProtocol value: $value');
   }
 }
-

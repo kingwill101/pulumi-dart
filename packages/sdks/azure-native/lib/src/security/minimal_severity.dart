@@ -1,8 +1,8 @@
 /// Defines the minimal alert severity which will be sent as email notifications
 enum MinimalSeverity {
-  valueHigh("High"),
-  valueMedium("Medium"),
-  valueLow("Low");
+  high("High"),
+  medium("Medium"),
+  low("Low");
 
   const MinimalSeverity(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum MinimalSeverity {
     throw ArgumentError('Unknown MinimalSeverity value: $value');
   }
 }
-

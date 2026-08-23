@@ -40,4 +40,3 @@ class GetIPv6FirewallRuleArgs {
     );
   }
 }
-

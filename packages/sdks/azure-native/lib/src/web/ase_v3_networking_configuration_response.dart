@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'system_data_response.dart';
 
 /// Full view of networking configuration for an ASE.
 class AseV3NetworkingConfigurationResponse {
@@ -9,7 +10,7 @@ class AseV3NetworkingConfigurationResponse {
   final pulumi.Input<List<String>> externalInboundIpAddresses;
   /// Property to enable and disable FTP on ASEV3
   final pulumi.Input<bool>? ftpEnabled;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
   /// Customer provided Inbound IP Address. Only able to be set on Ase create.
   final pulumi.Input<String>? inboundIpAddressOverride;
@@ -17,11 +18,13 @@ class AseV3NetworkingConfigurationResponse {
   /// Kind of resource.
   final pulumi.Input<String>? kind;
   final pulumi.Input<List<String>> linuxOutboundIpAddresses;
-  /// Resource Name.
+  /// The name of the resource
   final pulumi.Input<String> name;
   /// Property to enable and disable Remote Debug on ASEV3
   final pulumi.Input<bool>? remoteDebugEnabled;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final pulumi.Input<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
   final pulumi.Input<List<String>> windowsOutboundIpAddresses;
 
@@ -29,14 +32,15 @@ class AseV3NetworkingConfigurationResponse {
   /// [allowNewPrivateEndpointConnections] Property to enable and disable new private endpoint connection creation on ASE
   /// [externalInboundIpAddresses] Required.
   /// [ftpEnabled] Property to enable and disable FTP on ASEV3
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [inboundIpAddressOverride] Customer provided Inbound IP Address. Only able to be set on Ase create.
   /// [internalInboundIpAddresses] Required.
   /// [kind] Kind of resource.
   /// [linuxOutboundIpAddresses] Required.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [remoteDebugEnabled] Property to enable and disable Remote Debug on ASEV3
-  /// [type] Resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [windowsOutboundIpAddresses] Required.
   const AseV3NetworkingConfigurationResponse({
     this.allowNewPrivateEndpointConnections,
@@ -49,6 +53,7 @@ class AseV3NetworkingConfigurationResponse {
     required this.linuxOutboundIpAddresses,
     required this.name,
     this.remoteDebugEnabled,
+    required this.systemData,
     required this.type,
     required this.windowsOutboundIpAddresses,
   });
@@ -65,6 +70,7 @@ class AseV3NetworkingConfigurationResponse {
       'linuxOutboundIpAddresses': linuxOutboundIpAddresses,
       'name': name,
       'remoteDebugEnabled': ?remoteDebugEnabled,
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
       'windowsOutboundIpAddresses': windowsOutboundIpAddresses,
     };
@@ -82,9 +88,9 @@ class AseV3NetworkingConfigurationResponse {
       linuxOutboundIpAddresses: pulumi.Input.fromValue((map['linuxOutboundIpAddresses'] as List).cast<String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       remoteDebugEnabled: (() { final guardedValue = map['remoteDebugEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      systemData: pulumi.Input.fromValue(SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>())),
       type: pulumi.Input.fromValue(map['type'] as String),
       windowsOutboundIpAddresses: pulumi.Input.fromValue((map['windowsOutboundIpAddresses'] as List).cast<String>()),
     );
   }
 }
-

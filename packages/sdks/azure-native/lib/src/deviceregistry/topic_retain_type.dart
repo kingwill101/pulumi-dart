@@ -15,4 +15,3 @@ enum TopicRetainType {
     throw ArgumentError('Unknown TopicRetainType value: $value');
   }
 }
-

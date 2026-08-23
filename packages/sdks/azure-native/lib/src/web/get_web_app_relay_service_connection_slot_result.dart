@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'system_data_response.dart';
 
 /// Result data returned by getWebAppRelayServiceConnectionSlot.
 class GetWebAppRelayServiceConnectionSlotResult {
@@ -9,16 +10,18 @@ class GetWebAppRelayServiceConnectionSlotResult {
   final String? entityConnectionString;
   final String? entityName;
   final String? hostname;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Kind of resource.
   final String? kind;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
   final int? port;
   final String? resourceConnectionString;
   final String? resourceType;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetWebAppRelayServiceConnectionSlotResult].
@@ -27,13 +30,14 @@ class GetWebAppRelayServiceConnectionSlotResult {
   /// [entityConnectionString] Optional.
   /// [entityName] Optional.
   /// [hostname] Optional.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] Kind of resource.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [port] Optional.
   /// [resourceConnectionString] Optional.
   /// [resourceType] Optional.
-  /// [type] Resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetWebAppRelayServiceConnectionSlotResult({
     required this.azureApiVersion,
     this.biztalkUri,
@@ -46,6 +50,7 @@ class GetWebAppRelayServiceConnectionSlotResult {
     this.port,
     this.resourceConnectionString,
     this.resourceType,
+    required this.systemData,
     required this.type,
   });
 
@@ -62,6 +67,7 @@ class GetWebAppRelayServiceConnectionSlotResult {
       'port': ?port,
       'resourceConnectionString': ?resourceConnectionString,
       'resourceType': ?resourceType,
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -79,8 +85,8 @@ class GetWebAppRelayServiceConnectionSlotResult {
       port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return guardedValue as int; })(),
       resourceConnectionString: (() { final guardedValue = map['resourceConnectionString']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

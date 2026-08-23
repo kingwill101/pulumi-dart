@@ -8,7 +8,7 @@ import 'upload_limit_schedule_response.dart';
 ///
 /// Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 ///
-/// Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01, 2025-07-01, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01, 2025-07-01, 2025-08-01, 2025-12-01, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -106,6 +106,40 @@ import 'upload_limit_schedule_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storagemover_agent" "agent" {
+///   agent_name          = "examples-agentName"
+///   arc_resource_id     = "/subscriptions/60bcfc77-6589-4da2-b7fd-f9ec9322cf95/resourceGroups/examples-rg/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName"
+///   arc_vm_uuid         = "3bb2c024-eba9-4d18-9e7a-1d772fcc5fe9"
+///   description         = "Example Agent Description"
+///   resource_group_name = "examples-rg"
+///   storage_mover_name  = "examples-storageMoverName"
+///   upload_limit_schedule = {
+///     weekly_recurrences = [{
+///       "days" = ["Monday"]
+///       "endTime" = {
+///         "hour"   = 18
+///         "minute" = 30
+///       }
+///       "limitInMbps" = 2000
+///       "startTime" = {
+///         "hour"   = 9
+///         "minute" = 0
+///       }
+///     }]
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +149,8 @@ import 'upload_limit_schedule_response.dart';
 /// import com.pulumi.azurenative.storagemover.Agent;
 /// import com.pulumi.azurenative.storagemover.AgentArgs;
 /// import com.pulumi.azurenative.storagemover.inputs.UploadLimitScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -201,12 +235,12 @@ import 'upload_limit_schedule_response.dart';
 ///             "days": [azure_native.storagemover.DayOfWeek.MONDAY],
 ///             "end_time": {
 ///                 "hour": 18,
-///                 "minute": 30,
+///                 "minute": float(30),
 ///             },
 ///             "limit_in_mbps": 2000,
 ///             "start_time": {
 ///                 "hour": 9,
-///                 "minute": 0,
+///                 "minute": float(0),
 ///             },
 ///         }],
 ///     })
@@ -289,6 +323,25 @@ import 'upload_limit_schedule_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storagemover_agent" "agent" {
+///   agent_name          = "examples-agentName"
+///   arc_resource_id     = "/subscriptions/60bcfc77-6589-4da2-b7fd-f9ec9322cf95/resourceGroups/examples-rg/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName"
+///   arc_vm_uuid         = "3bb2c024-eba9-4d18-9e7a-1d772fcc5fe9"
+///   resource_group_name = "examples-rg"
+///   storage_mover_name  = "examples-storageMoverName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -297,8 +350,8 @@ import 'upload_limit_schedule_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.storagemover.Agent;
 /// import com.pulumi.azurenative.storagemover.AgentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -512,6 +565,50 @@ import 'upload_limit_schedule_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storagemover_agent" "agent" {
+///   agent_name          = "examples-agentName"
+///   arc_resource_id     = "/subscriptions/60bcfc77-6589-4da2-b7fd-f9ec9322cf95/resourceGroups/examples-rg/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName"
+///   arc_vm_uuid         = "3bb2c024-eba9-4d18-9e7a-1d772fcc5fe9"
+///   resource_group_name = "examples-rg"
+///   storage_mover_name  = "examples-storageMoverName"
+///   upload_limit_schedule = {
+///     weekly_recurrences = [{
+///       "days" = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+///       "endTime" = {
+///         "hour"   = 24
+///         "minute" = 0
+///       }
+///       "limitInMbps" = 2000
+///       "startTime" = {
+///         "hour"   = 18
+///         "minute" = 0
+///       }
+///       }, {
+///       "days" = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+///       "endTime" = {
+///         "hour"   = 9
+///         "minute" = 0
+///       }
+///       "limitInMbps" = 2000
+///       "startTime" = {
+///         "hour"   = 0
+///         "minute" = 0
+///       }
+///     }]
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -521,8 +618,8 @@ import 'upload_limit_schedule_response.dart';
 /// import com.pulumi.azurenative.storagemover.Agent;
 /// import com.pulumi.azurenative.storagemover.AgentArgs;
 /// import com.pulumi.azurenative.storagemover.inputs.UploadLimitScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -670,12 +767,12 @@ import 'upload_limit_schedule_response.dart';
 ///                 ],
 ///                 "end_time": {
 ///                     "hour": 24,
-///                     "minute": 0,
+///                     "minute": float(0),
 ///                 },
 ///                 "limit_in_mbps": 2000,
 ///                 "start_time": {
 ///                     "hour": 18,
-///                     "minute": 0,
+///                     "minute": float(0),
 ///                 },
 ///             },
 ///             {
@@ -690,12 +787,12 @@ import 'upload_limit_schedule_response.dart';
 ///                 ],
 ///                 "end_time": {
 ///                     "hour": 9,
-///                     "minute": 0,
+///                     "minute": float(0),
 ///                 },
 ///                 "limit_in_mbps": 2000,
 ///                 "start_time": {
 ///                     "hour": 0,
-///                     "minute": 0,
+///                     "minute": float(0),
 ///                 },
 ///             },
 ///         ],

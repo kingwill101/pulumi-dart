@@ -99,6 +99,40 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_edgeorder_address" "address" {
+///   address_classification = "Shipping"
+///   address_name           = "TestAddressName2"
+///   contact_details = {
+///     contact_name    = "XXXX XXXX"
+///     email_list      = ["xxxx@xxxx.xxx"]
+///     phone           = "0000000000"
+///     phone_extension = ""
+///   }
+///   location            = "eastus"
+///   resource_group_name = "YourResourceGroupName"
+///   shipping_address = {
+///     address_type      = "None"
+///     city              = "San Francisco"
+///     company_name      = "Microsoft"
+///     country           = "US"
+///     postal_code       = "94107"
+///     state_or_province = "CA"
+///     street_address1   = "16 TOWNSEND ST"
+///     street_address2   = "UNIT 1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +143,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.edgeorder.AddressArgs;
 /// import com.pulumi.azurenative.edgeorder.inputs.ContactDetailsArgs;
 /// import com.pulumi.azurenative.edgeorder.inputs.ShippingAddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

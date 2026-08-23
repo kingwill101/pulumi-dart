@@ -7,6 +7,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-06-01-preview.
 ///
+/// Other available API versions: 2025-09-01-preview, 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native fileshares [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -24,6 +26,7 @@ import 'system_data_response.dart';
 ///         Name = "testfilesharesnapshot",
 ///         Properties = new AzureNative.FileShares.Inputs.FileShareSnapshotPropertiesArgs
 ///         {
+///             InitiatorId = "backup-vault-001",
 ///             Metadata =
 ///             {
 ///                 { "key9372", "jtc" },
@@ -51,6 +54,7 @@ import 'system_data_response.dart';
 /// 		_, err := fileshares.NewFileShareSnapshot(ctx, "fileShareSnapshot", &fileshares.FileShareSnapshotArgs{
 /// 			Name: pulumi.String("testfilesharesnapshot"),
 /// 			Properties: &fileshares.FileShareSnapshotPropertiesArgs{
+/// 				InitiatorId: pulumi.String("backup-vault-001"),
 /// 				Metadata: pulumi.StringMap{
 /// 					"key9372": pulumi.String("jtc"),
 /// 				},
@@ -67,6 +71,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_fileshares_filesharesnapshot" "fileShareSnapshot" {
+///   name = "testfilesharesnapshot"
+///   properties = {
+///     initiator_id = "backup-vault-001"
+///     metadata = {
+///       "key9372" = "jtc"
+///     }
+///   }
+///   resource_group_name = "rgfileshares"
+///   resource_name       = "fileshare"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +103,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.fileshares.FileShareSnapshot;
 /// import com.pulumi.azurenative.fileshares.FileShareSnapshotArgs;
 /// import com.pulumi.azurenative.fileshares.inputs.FileShareSnapshotPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -92,6 +119,7 @@ import 'system_data_response.dart';
 ///         var fileShareSnapshot = new FileShareSnapshot("fileShareSnapshot", FileShareSnapshotArgs.builder()
 ///             .name("testfilesharesnapshot")
 ///             .properties(FileShareSnapshotPropertiesArgs.builder()
+///                 .initiatorId("backup-vault-001")
 ///                 .metadata(Map.of("key9372", "jtc"))
 ///                 .build())
 ///             .resourceGroupName("rgfileshares")
@@ -110,6 +138,7 @@ import 'system_data_response.dart';
 /// const fileShareSnapshot = new azure_native.fileshares.FileShareSnapshot("fileShareSnapshot", {
 ///     name: "testfilesharesnapshot",
 ///     properties: {
+///         initiatorId: "backup-vault-001",
 ///         metadata: {
 ///             key9372: "jtc",
 ///         },
@@ -127,6 +156,7 @@ import 'system_data_response.dart';
 /// file_share_snapshot = azure_native.fileshares.FileShareSnapshot("fileShareSnapshot",
 ///     name="testfilesharesnapshot",
 ///     properties={
+///         "initiator_id": "backup-vault-001",
 ///         "metadata": {
 ///             "key9372": "jtc",
 ///         },
@@ -143,6 +173,7 @@ import 'system_data_response.dart';
 ///     properties:
 ///       name: testfilesharesnapshot
 ///       properties:
+///         initiatorId: backup-vault-001
 ///         metadata:
 ///           key9372: jtc
 ///       resourceGroupName: rgfileshares

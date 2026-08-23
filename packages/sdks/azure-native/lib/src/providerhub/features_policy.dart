@@ -15,4 +15,3 @@ enum FeaturesPolicy {
     throw ArgumentError('Unknown FeaturesPolicy value: $value');
   }
 }
-

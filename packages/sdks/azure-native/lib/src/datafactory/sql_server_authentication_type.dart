@@ -1,8 +1,8 @@
 /// The type used for authentication. Type: string.
 enum SqlServerAuthenticationType {
-  valueSQL("SQL"),
-  valueWindows("Windows"),
-  valueUserAssignedManagedIdentity("UserAssignedManagedIdentity");
+  sQL("SQL"),
+  windows("Windows"),
+  userAssignedManagedIdentity("UserAssignedManagedIdentity");
 
   const SqlServerAuthenticationType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum SqlServerAuthenticationType {
     throw ArgumentError('Unknown SqlServerAuthenticationType value: $value');
   }
 }
-

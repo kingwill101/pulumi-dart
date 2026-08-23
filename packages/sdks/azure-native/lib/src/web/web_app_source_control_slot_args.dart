@@ -26,9 +26,9 @@ class WebAppSourceControlSlotArgs {
   final pulumi.Input<String> name;
   /// Repository or source control URL.
   final pulumi.Input<String>? repoUrl;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Name of the deployment slot. If a slot is not specified, the API will update the source control configuration for the production slot.
+  /// Name of the deployment slot. If a slot is not specified, the API will get the source control configuration for the production slot.
   final pulumi.Input<String> slot;
 
   /// Creates a new [WebAppSourceControlSlotArgs].
@@ -41,8 +41,8 @@ class WebAppSourceControlSlotArgs {
   /// [kind] Kind of resource.
   /// [name] Name of the app.
   /// [repoUrl] Repository or source control URL.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  /// [slot] Name of the deployment slot. If a slot is not specified, the API will update the source control configuration for the production slot.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [slot] Name of the deployment slot. If a slot is not specified, the API will get the source control configuration for the production slot.
   const WebAppSourceControlSlotArgs({
     this.branch,
     this.deploymentRollbackEnabled,
@@ -89,4 +89,3 @@ class WebAppSourceControlSlotArgs {
     );
   }
 }
-

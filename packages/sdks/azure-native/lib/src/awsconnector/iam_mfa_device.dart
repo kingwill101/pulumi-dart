@@ -97,6 +97,42 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_iammfadevice" "iamMfaDevice" {
+///   location = "ytpxpjmmspx"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "hbymjvsaxodse"
+///     aws_account_id = "tdapkqeuuvrrasue"
+///     aws_properties = {
+///       enable_date   = "2024-10-08T03:50:03.364Z"
+///       serial_number = "ifphqcwiounuuootrnmxmm"
+///       user_name     = "jyjbnteckbccmmhbxjdk"
+///     }
+///     aws_region        = "uwyckzldxxj"
+///     aws_source_schema = "ibnflrkwkaswdrsmaqtegtnky"
+///     aws_tags = {
+///       "key581" = "oqgcieddjmzl"
+///     }
+///     public_cloud_connectors_resource_id = "jmcknwcktcj"
+///     public_cloud_resource_name          = "vexrvwqtzdijlzwecmljscwepj"
+///   }
+///   resource_group_name = "rgiamMFADevice"
+///   tags = {
+///     "key9234" = "eygqwhelmjvwcvgkzgfg"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -107,8 +143,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.IamMfaDeviceArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IamMFADevicePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsIamMFADevicePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

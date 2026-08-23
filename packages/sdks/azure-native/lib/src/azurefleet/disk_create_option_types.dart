@@ -22,4 +22,3 @@ enum DiskCreateOptionTypes {
     throw ArgumentError('Unknown DiskCreateOptionTypes value: $value');
   }
 }
-

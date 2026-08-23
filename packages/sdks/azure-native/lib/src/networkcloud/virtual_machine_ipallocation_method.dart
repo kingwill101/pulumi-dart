@@ -18,4 +18,3 @@ enum VirtualMachineIPAllocationMethod {
     throw ArgumentError('Unknown VirtualMachineIPAllocationMethod value: $value');
   }
 }
-

@@ -9,6 +9,8 @@ import 'virtual_network_response.dart';
 ///
 /// Uses Azure REST API version 2025-05-01.
 ///
+/// Other available API versions: 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -80,6 +82,33 @@ import 'virtual_network_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_servicegateway" "serviceGateway" {
+///   location            = "eastus"
+///   resource_group_name = "rg1"
+///   route_target_address = {
+///     private_ip_address           = "10.0.1.4"
+///     private_ip_allocation_method = "Static"
+///     subnet = {
+///       id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet"
+///     }
+///   }
+///   service_gateway_name = "sg"
+///   virtual_network = {
+///     id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +120,8 @@ import 'virtual_network_response.dart';
 /// import com.pulumi.azurenative.network.inputs.RouteTargetAddressPropertiesFormatArgs;
 /// import com.pulumi.azurenative.network.inputs.SubnetArgs;
 /// import com.pulumi.azurenative.network.inputs.VirtualNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

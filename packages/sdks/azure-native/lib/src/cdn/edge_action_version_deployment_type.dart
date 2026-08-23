@@ -16,4 +16,3 @@ enum EdgeActionVersionDeploymentType {
     throw ArgumentError('Unknown EdgeActionVersionDeploymentType value: $value');
   }
 }
-

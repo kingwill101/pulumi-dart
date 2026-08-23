@@ -15,4 +15,3 @@ enum CertificateStoreLocation {
     throw ArgumentError('Unknown CertificateStoreLocation value: $value');
   }
 }
-

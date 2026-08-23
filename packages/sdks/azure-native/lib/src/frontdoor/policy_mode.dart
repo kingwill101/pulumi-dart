@@ -1,7 +1,7 @@
 /// Describes if it is in detection mode or prevention mode at policy level.
 enum PolicyMode {
-  valuePrevention("Prevention"),
-  valueDetection("Detection");
+  prevention("Prevention"),
+  detection("Detection");
 
   const PolicyMode(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum PolicyMode {
     throw ArgumentError('Unknown PolicyMode value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum ConflictResolutionMode {
     throw ArgumentError('Unknown ConflictResolutionMode value: $value');
   }
 }
-

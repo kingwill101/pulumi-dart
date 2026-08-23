@@ -17,4 +17,3 @@ enum ShareAccessTier {
     throw ArgumentError('Unknown ShareAccessTier value: $value');
   }
 }
-

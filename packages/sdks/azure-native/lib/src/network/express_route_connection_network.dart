@@ -1,13 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'express_route_circuit_peering_id_response.dart';
 import 'express_route_connection_args.dart';
-import 'routing_configuration_response.dart';
+import 'routing_configuration_express_route_connection_response.dart';
 
 /// ExpressRouteConnection resource.
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -99,7 +99,7 @@ import 'routing_configuration_response.dart';
 /// 			Id:                      pulumi.String("/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/expressRouteGateways/gateway-2/expressRouteConnections/connectionName"),
 /// 			Name:                    pulumi.String("connectionName"),
 /// 			ResourceGroupName:       pulumi.String("resourceGroupName"),
-/// 			RoutingConfiguration: &network.RoutingConfigurationArgs{
+/// 			RoutingConfiguration: &network.RoutingConfigurationTypeArgs{
 /// 				AssociatedRouteTable: &network.SubResourceArgs{
 /// 					Id: pulumi.String("/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable1"),
 /// 				},
@@ -138,6 +138,51 @@ import 'routing_configuration_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_expressrouteconnection" "expressRouteConnection" {
+///   authorization_key = "authorizationKey"
+///   connection_name   = "connectionName"
+///   express_route_circuit_peering = {
+///     id = "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/expressRouteCircuits/circuitName/peerings/AzurePrivatePeering"
+///   }
+///   express_route_gateway_name = "gateway-2"
+///   id                         = "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/expressRouteGateways/gateway-2/expressRouteConnections/connectionName"
+///   name                       = "connectionName"
+///   resource_group_name        = "resourceGroupName"
+///   routing_configuration = {
+///     associated_route_table = {
+///       id = "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable1"
+///     }
+///     inbound_route_map = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap1"
+///     }
+///     outbound_route_map = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"
+///     }
+///     propagated_route_tables = {
+///       ids = [{
+///         "id" = "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable1"
+///         }, {
+///         "id" = "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable2"
+///         }, {
+///         "id" = "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable3"
+///       }]
+///       labels = ["label1", "label2"]
+///     }
+///   }
+///   routing_weight = 2
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +195,8 @@ import 'routing_configuration_response.dart';
 /// import com.pulumi.azurenative.network.inputs.RoutingConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.network.inputs.PropagatedRouteTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -360,7 +405,7 @@ class ExpressRouteConnectionNetwork extends pulumi.CustomResource {
   /// The provisioning state of the express route connection resource.
   late final pulumi.Output<String> provisioningState;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  late final pulumi.Output<RoutingConfigurationResponse?> routingConfiguration;
+  late final pulumi.Output<RoutingConfigurationExpressRouteConnectionResponse?> routingConfiguration;
   /// The routing weight associated to the connection.
   late final pulumi.Output<int?> routingWeight;
 
@@ -386,7 +431,7 @@ class ExpressRouteConnectionNetwork extends pulumi.CustomResource {
     expressRouteGatewayBypass = registerOutput<bool?>('expressRouteGatewayBypass');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    routingConfiguration = registerOutput<RoutingConfigurationResponse?>('routingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutingConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    routingConfiguration = registerOutput<RoutingConfigurationExpressRouteConnectionResponse?>('routingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutingConfigurationExpressRouteConnectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     routingWeight = registerOutput<int?>('routingWeight');
   }
 }

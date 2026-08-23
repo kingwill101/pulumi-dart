@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeploymentStackAtManagementGroupArgs {
   /// Name of the deployment stack.
   final pulumi.Input<String> deploymentStackName;
-  /// The name of the management group. The name is case insensitive.
+  /// The management group ID.
   final pulumi.Input<String> managementGroupId;
 
   /// Creates a new [GetDeploymentStackAtManagementGroupArgs].
   /// [deploymentStackName] Name of the deployment stack.
-  /// [managementGroupId] The name of the management group. The name is case insensitive.
+  /// [managementGroupId] The management group ID.
   const GetDeploymentStackAtManagementGroupArgs({
     required this.deploymentStackName,
     required this.managementGroupId,
@@ -34,4 +34,3 @@ class GetDeploymentStackAtManagementGroupArgs {
     );
   }
 }
-

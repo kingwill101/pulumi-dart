@@ -16,4 +16,3 @@ enum EnhancedSecurityState {
     throw ArgumentError('Unknown EnhancedSecurityState value: $value');
   }
 }
-

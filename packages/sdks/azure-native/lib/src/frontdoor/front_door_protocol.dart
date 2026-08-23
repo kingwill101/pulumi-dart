@@ -1,7 +1,7 @@
 /// Accepted protocol schemes.
 enum FrontDoorProtocol {
-  valueHttp("Http"),
-  valueHttps("Https");
+  http("Http"),
+  https("Https");
 
   const FrontDoorProtocol(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum FrontDoorProtocol {
     throw ArgumentError('Unknown FrontDoorProtocol value: $value');
   }
 }
-

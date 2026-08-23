@@ -15,4 +15,3 @@ enum HyperVGenerationTypes {
     throw ArgumentError('Unknown HyperVGenerationTypes value: $value');
   }
 }
-

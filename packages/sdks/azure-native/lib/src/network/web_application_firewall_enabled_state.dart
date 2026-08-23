@@ -15,4 +15,3 @@ enum WebApplicationFirewallEnabledState {
     throw ArgumentError('Unknown WebApplicationFirewallEnabledState value: $value');
   }
 }
-

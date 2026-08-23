@@ -15,4 +15,3 @@ enum AutoUserScope {
     throw ArgumentError('Unknown AutoUserScope value: $value');
   }
 }
-

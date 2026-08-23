@@ -15,4 +15,3 @@ enum AutoUpgradeNodeImageSelectionType {
     throw ArgumentError('Unknown AutoUpgradeNodeImageSelectionType value: $value');
   }
 }
-

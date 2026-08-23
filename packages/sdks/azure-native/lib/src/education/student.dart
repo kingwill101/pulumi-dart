@@ -76,6 +76,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_education_student" "student" {
+///   billing_account_name = "{billingAccountName}"
+///   billing_profile_name = "{billingProfileName}"
+///   budget = {
+///     currency = "USD"
+///     value    = 100
+///   }
+///   email                = "test@contoso.com"
+///   expiration_date      = "2021-11-09T22:13:21.795Z"
+///   first_name           = "test"
+///   invoice_section_name = "{invoiceSectionName}"
+///   last_name            = "user"
+///   role                 = "Student"
+///   student_alias        = "{studentAlias}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +112,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.education.Student;
 /// import com.pulumi.azurenative.education.StudentArgs;
 /// import com.pulumi.azurenative.education.inputs.AmountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -150,7 +177,7 @@ import 'system_data_response.dart';
 ///     billing_profile_name="{billingProfileName}",
 ///     budget={
 ///         "currency": "USD",
-///         "value": 100,
+///         "value": float(100),
 ///     },
 ///     email="test@contoso.com",
 ///     expiration_date="2021-11-09T22:13:21.795Z",

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'system_data_response.dart';
 
 /// Result data returned by getDisk.
 class GetDiskResult {
@@ -17,23 +18,25 @@ class GetDiskResult {
   final String? diskUri;
   /// The host caching policy of the disk (i.e. None, ReadOnly, ReadWrite).
   final String? hostCaching;
-  /// The identifier of the resource.
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
   /// The resource ID of the VM to which this disk is leased.
   final String? leasedByLabVmId;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   final String? location;
   /// When backed by managed disk, this is the ID of the compute disk resource.
   final String? managedDiskId;
-  /// The name of the resource.
+  /// The name of the resource
   final String name;
   /// The provisioning status of the resource.
   final String provisioningState;
   /// When backed by a blob, the storage account where the blob is.
   final String? storageAccountId;
-  /// The tags of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// Resource tags.
   final Map<String, String>? tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// The unique immutable identifier of a resource (Guid).
   final String uniqueIdentifier;
@@ -46,15 +49,16 @@ class GetDiskResult {
   /// [diskType] The storage type for the disk (i.e. Standard, Premium).
   /// [diskUri] When backed by a blob, the URI of underlying blob.
   /// [hostCaching] The host caching policy of the disk (i.e. None, ReadOnly, ReadWrite).
-  /// [id] The identifier of the resource.
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [leasedByLabVmId] The resource ID of the VM to which this disk is leased.
-  /// [location] The location of the resource.
+  /// [location] The geo-location where the resource lives
   /// [managedDiskId] When backed by managed disk, this is the ID of the compute disk resource.
-  /// [name] The name of the resource.
+  /// [name] The name of the resource
   /// [provisioningState] The provisioning status of the resource.
   /// [storageAccountId] When backed by a blob, the storage account where the blob is.
-  /// [tags] The tags of the resource.
-  /// [type] The type of the resource.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [tags] Resource tags.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
   const GetDiskResult({
     required this.azureApiVersion,
@@ -71,6 +75,7 @@ class GetDiskResult {
     required this.name,
     required this.provisioningState,
     this.storageAccountId,
+    required this.systemData,
     this.tags,
     required this.type,
     required this.uniqueIdentifier,
@@ -92,6 +97,7 @@ class GetDiskResult {
       'name': name,
       'provisioningState': provisioningState,
       'storageAccountId': ?storageAccountId,
+      'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
       'uniqueIdentifier': uniqueIdentifier,
@@ -114,10 +120,10 @@ class GetDiskResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
     );
   }
 }
-

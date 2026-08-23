@@ -77,6 +77,31 @@ import 'template_spec_version_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resources_templatespecversion" "templateSpecVersion" {
+///   description = "This is version v1.0 of our template content"
+///   location    = "eastus"
+///   main_template = {
+///     "$schema"        = "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#"
+///     "contentVersion" = "1.0.0.0"
+///     "parameters"     = {}
+///     "resources"      = []
+///   }
+///   resource_group_name   = "templateSpecRG"
+///   template_spec_name    = "simpleTemplateSpec"
+///   template_spec_version = "v1.0"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +110,8 @@ import 'template_spec_version_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.resources.TemplateSpecVersion;
 /// import com.pulumi.azurenative.resources.TemplateSpecVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -106,7 +131,7 @@ import 'template_spec_version_args.dart';
 ///                 Map.entry("contentVersion", "1.0.0.0"),
 ///                 Map.entry("parameters", Map.ofEntries(
 ///                 )),
-///                 Map.entry("resources", )
+///                 Map.entry("resources", Arrays.asList())
 ///             ))
 ///             .resourceGroupName("templateSpecRG")
 ///             .templateSpecName("simpleTemplateSpec")

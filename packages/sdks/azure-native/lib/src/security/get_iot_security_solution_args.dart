@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_security_get_iot_security_solution_args_doc}
 class GetIotSecuritySolutionArgs {
-  /// The name of the resource group within the user's subscription. The name is case insensitive.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the IoT Security solution.
   final pulumi.Input<String> solutionName;
 
   /// Creates a new [GetIotSecuritySolutionArgs].
-  /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [solutionName] The name of the IoT Security solution.
   const GetIotSecuritySolutionArgs({
     required this.resourceGroupName,
@@ -34,4 +34,3 @@ class GetIotSecuritySolutionArgs {
     );
   }
 }
-

@@ -193,6 +193,79 @@ import 'topic_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_deviceregistry_discoveredasset" "discoveredAsset" {
+///   asset_endpoint_profile_ref = "myAssetEndpointProfile"
+///   datasets {
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt1"
+///       name                     = "dataPoint1"
+///     }
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":4,\"samplingInterval\":4,\"queueSize\":7}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt2"
+///       name                     = "dataPoint2"
+///     }
+///     dataset_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///     name                  = "dataset1"
+///     topic = {
+///       path   = "/path/dataset1"
+///       retain = "Keep"
+///     }
+///   }
+///   default_datasets_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///   default_events_configuration   = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///   default_topic = {
+///     path   = "/path/defaultTopic"
+///     retain = "Keep"
+///   }
+///   discovered_asset_name = "my-discoveredasset"
+///   discovery_id          = "11111111-1111-1111-1111-111111111111"
+///   documentation_uri     = "https://www.example.com/manual"
+///   events {
+///     event_configuration = "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}"
+///     event_notifier      = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3"
+///     name                = "event1"
+///     topic = {
+///       path   = "/path/event1"
+///       retain = "Keep"
+///     }
+///   }
+///   events {
+///     event_configuration = "{\"publishingInterval\":7,\"samplingInterval\":8,\"queueSize\":4}"
+///     event_notifier      = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4"
+///     name                = "event2"
+///   }
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/location1"
+///     type = "CustomLocation"
+///   }
+///   hardware_revision   = "1.0"
+///   location            = "West Europe"
+///   manufacturer        = "Contoso"
+///   manufacturer_uri    = "https://www.contoso.com/manufacturerUri"
+///   model               = "ContosoModel"
+///   product_code        = "SA34VDG"
+///   resource_group_name = "myResourceGroup"
+///   serial_number       = "64-103816-519918-8"
+///   software_revision   = "2.0"
+///   tags = {
+///     "site" = "building-1"
+///   }
+///   version = 73766
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -205,8 +278,8 @@ import 'topic_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.inputs.TopicArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.DiscoveredEventArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -424,7 +497,7 @@ import 'topic_response.dart';
 ///     tags={
 ///         "site": "building-1",
 ///     },
-///     version=73766)
+///     version=float(73766))
 ///
 /// ```
 ///

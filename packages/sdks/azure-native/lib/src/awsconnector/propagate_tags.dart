@@ -15,4 +15,3 @@ enum PropagateTags {
     throw ArgumentError('Unknown PropagateTags value: $value');
   }
 }
-

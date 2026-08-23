@@ -34,4 +34,3 @@ class GetElasticLoadBalancingV2ListenerArgs {
     );
   }
 }
-

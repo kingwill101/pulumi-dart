@@ -1,8 +1,7 @@
 /// The type of user.
 enum UserType {
-  valueUser("User"),
-  valueGroup("Group"),
-  valueServicePrincipal("ServicePrincipal");
+  user("User"),
+  group("Group");
 
   const UserType(this.wireValue);
   final String wireValue;
@@ -16,4 +15,3 @@ enum UserType {
     throw ArgumentError('Unknown UserType value: $value');
   }
 }
-

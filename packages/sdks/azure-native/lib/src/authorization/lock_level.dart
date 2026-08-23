@@ -16,4 +16,3 @@ enum LockLevel {
     throw ArgumentError('Unknown LockLevel value: $value');
   }
 }
-

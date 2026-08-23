@@ -14,4 +14,3 @@ enum CloudHsmClusterSkuFamily {
     throw ArgumentError('Unknown CloudHsmClusterSkuFamily value: $value');
   }
 }
-

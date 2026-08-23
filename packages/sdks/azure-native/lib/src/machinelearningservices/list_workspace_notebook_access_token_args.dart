@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWorkspaceNotebookAccessTokenArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Name of Azure Machine Learning workspace.
+  /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
   /// Creates a new [ListWorkspaceNotebookAccessTokenArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  /// [workspaceName] Name of Azure Machine Learning workspace.
+  /// [workspaceName] Azure Machine Learning Workspace Name
   const ListWorkspaceNotebookAccessTokenArgs({
     required this.resourceGroupName,
     required this.workspaceName,
@@ -34,4 +34,3 @@ class ListWorkspaceNotebookAccessTokenArgs {
     );
   }
 }
-

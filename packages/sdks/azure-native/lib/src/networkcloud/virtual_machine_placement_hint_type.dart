@@ -15,4 +15,3 @@ enum VirtualMachinePlacementHintType {
     throw ArgumentError('Unknown VirtualMachinePlacementHintType value: $value');
   }
 }
-

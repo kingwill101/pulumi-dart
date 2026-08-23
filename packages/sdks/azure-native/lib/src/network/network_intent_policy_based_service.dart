@@ -16,4 +16,3 @@ enum NetworkIntentPolicyBasedService {
     throw ArgumentError('Unknown NetworkIntentPolicyBasedService value: $value');
   }
 }
-

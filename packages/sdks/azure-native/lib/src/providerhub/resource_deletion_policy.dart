@@ -16,4 +16,3 @@ enum ResourceDeletionPolicy {
     throw ArgumentError('Unknown ResourceDeletionPolicy value: $value');
   }
 }
-

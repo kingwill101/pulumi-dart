@@ -9,7 +9,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-11-01-preview.
 ///
-/// Other available API versions: 2023-11-01-preview, 2024-09-01-preview, 2025-07-01-preview, 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-11-01-preview, 2024-09-01-preview, 2025-07-01-preview, 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -86,6 +86,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_deviceregistry_assetendpointprofile" "assetEndpointProfile" {
+///   asset_endpoint_profile_name = "my-assetendpointprofile"
+///   authentication = {
+///     method = "Anonymous"
+///   }
+///   endpoint_profile_type = "myEndpointProfileType"
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/location1"
+///     type = "CustomLocation"
+///   }
+///   location            = "West Europe"
+///   resource_group_name = "myResourceGroup"
+///   tags = {
+///     "site" = "building-1"
+///   }
+///   target_address = "https://www.example.com/myTargetAddress"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +125,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.AssetEndpointProfileArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.AuthenticationArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -273,6 +302,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_deviceregistry_assetendpointprofile" "assetEndpointProfile" {
+///   asset_endpoint_profile_name = "my-assetendpointprofile"
+///   authentication = {
+///     method = "Anonymous"
+///   }
+///   discovered_asset_endpoint_profile_ref = "discoveredAssetEndpointProfile1"
+///   endpoint_profile_type                 = "myEndpointProfileType"
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/location1"
+///     type = "CustomLocation"
+///   }
+///   location            = "West Europe"
+///   resource_group_name = "myResourceGroup"
+///   tags = {
+///     "site" = "building-1"
+///   }
+///   target_address = "https://www.example.com/myTargetAddress"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -283,8 +342,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.AssetEndpointProfileArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.AuthenticationArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -16,4 +16,3 @@ enum PostgreSqlFlexibleServerHighAvailabilityMode {
     throw ArgumentError('Unknown PostgreSqlFlexibleServerHighAvailabilityMode value: $value');
   }
 }
-

@@ -21,4 +21,3 @@ enum DatastoreTypeArm {
     throw ArgumentError('Unknown DatastoreTypeArm value: $value');
   }
 }
-

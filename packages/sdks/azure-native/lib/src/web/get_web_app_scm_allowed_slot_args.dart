@@ -9,13 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebAppScmAllowedSlotArgs {
   /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   final pulumi.Input<String> slot;
 
   /// Creates a new [GetWebAppScmAllowedSlotArgs].
   /// [name] Name of the app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [slot] Required.
   const GetWebAppScmAllowedSlotArgs({
     required this.name,
@@ -39,4 +39,3 @@ class GetWebAppScmAllowedSlotArgs {
     );
   }
 }
-

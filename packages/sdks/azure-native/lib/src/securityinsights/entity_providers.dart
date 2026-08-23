@@ -15,4 +15,3 @@ enum EntityProviders {
     throw ArgumentError('Unknown EntityProviders value: $value');
   }
 }
-

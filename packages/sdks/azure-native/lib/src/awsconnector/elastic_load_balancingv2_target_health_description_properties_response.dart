@@ -74,4 +74,3 @@ class ElasticLoadBalancingv2TargetHealthDescriptionPropertiesResponse {
     );
   }
 }
-

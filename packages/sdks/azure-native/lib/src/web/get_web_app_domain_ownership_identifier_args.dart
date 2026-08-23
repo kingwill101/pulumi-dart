@@ -11,13 +11,13 @@ class GetWebAppDomainOwnershipIdentifierArgs {
   final pulumi.Input<String> domainOwnershipIdentifierName;
   /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetWebAppDomainOwnershipIdentifierArgs].
   /// [domainOwnershipIdentifierName] Name of domain ownership identifier.
   /// [name] Name of the app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetWebAppDomainOwnershipIdentifierArgs({
     required this.domainOwnershipIdentifierName,
     required this.name,
@@ -40,4 +40,3 @@ class GetWebAppDomainOwnershipIdentifierArgs {
     );
   }
 }
-

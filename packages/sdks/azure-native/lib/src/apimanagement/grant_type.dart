@@ -16,4 +16,3 @@ enum GrantType {
     throw ArgumentError('Unknown GrantType value: $value');
   }
 }
-

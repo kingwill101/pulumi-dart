@@ -62,6 +62,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_defaultuserrule" "defaultUserRule" {
+///   configuration_name   = "myTestSecurityConfig"
+///   flag                 = "AllowVnetInbound"
+///   kind                 = "Default"
+///   network_manager_name = "testNetworkManager"
+///   resource_group_name  = "rg1"
+///   rule_collection_name = "testRuleCollection"
+///   rule_name            = "SampleDefaultUserRule"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +91,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.network.DefaultUserRule;
 /// import com.pulumi.azurenative.network.DefaultUserRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -195,6 +216,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_defaultuserrule" "defaultUserRule" {
+///   configuration_name   = "myTestSecurityConfig"
+///   network_manager_name = "testNetworkManager"
+///   resource_group_name  = "rg1"
+///   rule_collection_name = "testRuleCollection"
+///   rule_name            = "SampleUserRule"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -203,8 +243,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.network.DefaultUserRule;
 /// import com.pulumi.azurenative.network.DefaultUserRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

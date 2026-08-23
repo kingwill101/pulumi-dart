@@ -1,7 +1,7 @@
 /// The action enum for networking rule.
 enum RuleAction {
-  valueAllow("Allow"),
-  valueDeny("Deny");
+  allow("Allow"),
+  deny("Deny");
 
   const RuleAction(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum RuleAction {
     throw ArgumentError('Unknown RuleAction value: $value');
   }
 }
-

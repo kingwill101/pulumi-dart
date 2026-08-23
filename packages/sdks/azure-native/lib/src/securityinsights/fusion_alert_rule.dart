@@ -60,6 +60,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_fusionalertrule" "fusionAlertRule" {
+///   alert_rule_template_name = "f71aba3d-28fb-450b-b192-4e76a83015c8"
+///   enabled                  = true
+///   kind                     = "Fusion"
+///   resource_group_name      = "myRg"
+///   rule_id                  = "myFirstFusionRule"
+///   workspace_name           = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +88,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.securityinsights.FusionAlertRule;
 /// import com.pulumi.azurenative.securityinsights.FusionAlertRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -185,6 +205,23 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_fusionalertrule" "fusionAlertRule" {
+///   resource_group_name = "myRg"
+///   rule_id             = "microsoftSecurityIncidentCreationRuleExample"
+///   workspace_name      = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +230,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.securityinsights.FusionAlertRule;
 /// import com.pulumi.azurenative.securityinsights.FusionAlertRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -298,6 +335,23 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_fusionalertrule" "fusionAlertRule" {
+///   resource_group_name = "myRg"
+///   rule_id             = "73e01a99-5cd7-4139-a149-9f2736ff2ab5"
+///   workspace_name      = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -306,8 +360,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.securityinsights.FusionAlertRule;
 /// import com.pulumi.azurenative.securityinsights.FusionAlertRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -39,4 +39,3 @@ class X12OneWayAgreementResponse {
     );
   }
 }
-

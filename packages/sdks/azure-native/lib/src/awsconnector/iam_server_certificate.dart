@@ -117,6 +117,49 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_iamservercertificate" "iamServerCertificate" {
+///   location = "ddjdvyseqfbfufjoxr"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "fkbemnwycxjjjxwievb"
+///     aws_account_id = "egfew"
+///     aws_properties = {
+///       arn                     = "ahekoegi"
+///       certificate_body        = "fagqepujrwsvkhdrvofvmkderig"
+///       certificate_chain       = "ozzjlnmjijy"
+///       path                    = "qvvxpzaoshpkkvncguxmv"
+///       private_key             = "ynoaydpaju"
+///       server_certificate_name = "yblyjjfteysombtxapaqjkrqo"
+///       tags = [{
+///         "key"   = "ipoetrffzaxcntgqbdcuprhbn"
+///         "value" = "jstuopgodfwmzigjbb"
+///       }]
+///     }
+///     aws_region        = "gflixuzdblwuy"
+///     aws_source_schema = "hlvxmkdmh"
+///     aws_tags = {
+///       "key1989" = "jwathlzongmwbilki"
+///     }
+///     public_cloud_connectors_resource_id = "iqnmafujozzlwfnhamvbhfjcuob"
+///     public_cloud_resource_name          = "g"
+///   }
+///   resource_group_name = "rgiamServerCertificate"
+///   tags = {
+///     "key6646" = "iu"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +170,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.IamServerCertificateArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IamServerCertificatePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsIamServerCertificatePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

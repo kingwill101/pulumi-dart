@@ -57,6 +57,24 @@ import 'console_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_portal_console" "console" {
+///   console_name = "default"
+///   properties = {
+///     os_type = "Linux"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +84,8 @@ import 'console_properties_response.dart';
 /// import com.pulumi.azurenative.portal.Console;
 /// import com.pulumi.azurenative.portal.ConsoleArgs;
 /// import com.pulumi.azurenative.portal.inputs.ConsoleCreatePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

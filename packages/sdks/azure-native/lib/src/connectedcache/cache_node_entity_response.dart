@@ -12,7 +12,7 @@ class CacheNodeEntityResponse {
   final pulumi.Input<String>? autoUpdateRequestedTime;
   /// Customer requested week of month for mcc install of auto update cycle. 0 is default no selection. 1-5 are valid weeks of month, 1 is first week, 2 is second week, etc.
   final pulumi.Input<int>? autoUpdateRequestedWeek;
-  /// Auto Update Ring Type which is slow or fast etc.
+  /// Auto Update Ring Type which is stable or beta as new values. slow or fast are legacy from version 2026-06-01.
   final pulumi.Input<String>? autoUpdateRingType;
   /// Cache node resource total addressable space defined by Bgp and Cidr Csv blocks.
   final pulumi.Input<int> bgpAddressSpace;
@@ -114,7 +114,7 @@ class CacheNodeEntityResponse {
   /// [autoUpdateRequestedDay] Customer requested day of week for mcc install of auto update cycle. 0 is default no selection. 1-7 are days of week, 1 is Sunday, 2 is Monday, etc.
   /// [autoUpdateRequestedTime] Customer requested time of the day for mcc install of auto update cycle, should be hh:mm
   /// [autoUpdateRequestedWeek] Customer requested week of month for mcc install of auto update cycle. 0 is default no selection. 1-5 are valid weeks of month, 1 is first week, 2 is second week, etc.
-  /// [autoUpdateRingType] Auto Update Ring Type which is slow or fast etc.
+  /// [autoUpdateRingType] Auto Update Ring Type which is stable or beta as new values. slow or fast are legacy from version 2026-06-01.
   /// [bgpAddressSpace] Cache node resource total addressable space defined by Bgp and Cidr Csv blocks.
   /// [bgpCidrBlocksCount] Cache node resource Bgp block count.
   /// [bgpCidrCsvLastUpdateTime] Cache node resource last Bgp Cidr Csv update timestamp
@@ -331,4 +331,3 @@ class CacheNodeEntityResponse {
     );
   }
 }
-

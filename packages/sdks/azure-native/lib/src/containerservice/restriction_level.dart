@@ -15,4 +15,3 @@ enum RestrictionLevel {
     throw ArgumentError('Unknown RestrictionLevel value: $value');
   }
 }
-

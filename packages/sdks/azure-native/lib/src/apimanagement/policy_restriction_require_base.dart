@@ -15,4 +15,3 @@ enum PolicyRestrictionRequireBase {
     throw ArgumentError('Unknown PolicyRestrictionRequireBase value: $value');
   }
 }
-

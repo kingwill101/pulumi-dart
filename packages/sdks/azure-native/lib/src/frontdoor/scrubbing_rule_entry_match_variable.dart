@@ -1,12 +1,12 @@
 /// The variable to be scrubbed from the logs.
 enum ScrubbingRuleEntryMatchVariable {
-  valueRequestIPAddress("RequestIPAddress"),
-  valueRequestUri("RequestUri"),
-  valueQueryStringArgNames("QueryStringArgNames"),
-  valueRequestHeaderNames("RequestHeaderNames"),
-  valueRequestCookieNames("RequestCookieNames"),
-  valueRequestBodyPostArgNames("RequestBodyPostArgNames"),
-  valueRequestBodyJsonArgNames("RequestBodyJsonArgNames");
+  requestIPAddress("RequestIPAddress"),
+  requestUri("RequestUri"),
+  queryStringArgNames("QueryStringArgNames"),
+  requestHeaderNames("RequestHeaderNames"),
+  requestCookieNames("RequestCookieNames"),
+  requestBodyPostArgNames("RequestBodyPostArgNames"),
+  requestBodyJsonArgNames("RequestBodyJsonArgNames");
 
   const ScrubbingRuleEntryMatchVariable(this.wireValue);
   final String wireValue;
@@ -20,4 +20,3 @@ enum ScrubbingRuleEntryMatchVariable {
     throw ArgumentError('Unknown ScrubbingRuleEntryMatchVariable value: $value');
   }
 }
-

@@ -6,6 +6,7 @@ import 'api_management_service_identity_response.dart';
 import 'api_management_service_sku_properties_response.dart';
 import 'api_version_constraint_response.dart';
 import 'certificate_configuration_response.dart';
+import 'configuration_api_response.dart';
 import 'hostname_configuration_response.dart';
 import 'remote_private_endpoint_connection_wrapper_response.dart';
 import 'system_data_response.dart';
@@ -21,10 +22,14 @@ class GetApiManagementServiceResult {
   final String azureApiVersion;
   /// List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10.
   final List<CertificateConfigurationResponse>? certificates;
+  /// Configuration API configuration of the API Management service.
+  final ConfigurationApiResponse? configurationApi;
   /// Creation UTC date of the API Management service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   final String createdAtUtc;
   /// Custom properties of the API Management service.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable just TLS 1.1.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable TLS 1.0 on an API Management service.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to disable just TLS 1.1 for communications with backends.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to disable TLS 1.0 for communications with backends.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable HTTP2 protocol on an API Management service.&lt;/br&gt;Not specifying any of these properties on PATCH operation will reset omitted properties' values to their defaults. For all the settings except Http2 the default value is `True` if the service was created on or before April 1, 2018 and `False` otherwise. Http2 setting's default value is `False`.&lt;/br&gt;&lt;/br&gt;You can disable any of the following ciphers by using settings `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA. For example, `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`. The default value is `true` for them.&lt;/br&gt; Note: The following ciphers can't be disabled since they are required by internal platform components: TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
   final Map<String, String>? customProperties;
+  /// Status of developer portal in this API Management service.
+  final String? developerPortalStatus;
   /// DEveloper Portal endpoint URL of the API Management service.
   final String developerPortalUrl;
   /// Property only valid for an Api Management service deployed in multiple locations. This can be used to disable the gateway in master region.
@@ -43,6 +48,8 @@ class GetApiManagementServiceResult {
   final String id;
   /// Managed service identity of the Api Management service.
   final ApiManagementServiceIdentityResponse? identity;
+  /// Status of legacy portal in the API Management service.
+  final String? legacyPortalStatus;
   /// Resource location.
   final String location;
   /// Management API endpoint URL of the API Management service.
@@ -101,8 +108,10 @@ class GetApiManagementServiceResult {
   /// [apiVersionConstraint] Control Plane Apis version constraint for the API Management service.
   /// [azureApiVersion] The Azure API version of the resource.
   /// [certificates] List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10.
+  /// [configurationApi] Configuration API configuration of the API Management service.
   /// [createdAtUtc] Creation UTC date of the API Management service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   /// [customProperties] Custom properties of the API Management service.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable just TLS 1.1.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable TLS 1.0 on an API Management service.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to disable just TLS 1.1 for communications with backends.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to disable TLS 1.0 for communications with backends.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable HTTP2 protocol on an API Management service.&lt;/br&gt;Not specifying any of these properties on PATCH operation will reset omitted properties' values to their defaults. For all the settings except Http2 the default value is `True` if the service was created on or before April 1, 2018 and `False` otherwise. Http2 setting's default value is `False`.&lt;/br&gt;&lt;/br&gt;You can disable any of the following ciphers by using settings `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA. For example, `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`. The default value is `true` for them.&lt;/br&gt; Note: The following ciphers can't be disabled since they are required by internal platform components: TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+  /// [developerPortalStatus] Status of developer portal in this API Management service.
   /// [developerPortalUrl] DEveloper Portal endpoint URL of the API Management service.
   /// [disableGateway] Property only valid for an Api Management service deployed in multiple locations. This can be used to disable the gateway in master region.
   /// [enableClientCertificate] Property only meant to be used for Consumption SKU Service. This enforces a client certificate to be presented on each request to the gateway. This also enables the ability to authenticate the certificate in the policy on the gateway.
@@ -112,6 +121,7 @@ class GetApiManagementServiceResult {
   /// [hostnameConfigurations] Custom hostname configuration of the API Management service.
   /// [id] Resource ID.
   /// [identity] Managed service identity of the Api Management service.
+  /// [legacyPortalStatus] Status of legacy portal in the API Management service.
   /// [location] Resource location.
   /// [managementApiUrl] Management API endpoint URL of the API Management service.
   /// [name] Resource name.
@@ -143,8 +153,10 @@ class GetApiManagementServiceResult {
     this.apiVersionConstraint,
     required this.azureApiVersion,
     this.certificates,
+    this.configurationApi,
     required this.createdAtUtc,
     this.customProperties,
+    this.developerPortalStatus,
     required this.developerPortalUrl,
     this.disableGateway,
     this.enableClientCertificate,
@@ -154,6 +166,7 @@ class GetApiManagementServiceResult {
     this.hostnameConfigurations,
     required this.id,
     this.identity,
+    this.legacyPortalStatus,
     required this.location,
     required this.managementApiUrl,
     required this.name,
@@ -188,8 +201,10 @@ class GetApiManagementServiceResult {
       'apiVersionConstraint': ?apiVersionConstraint?.toMap(),
       'azureApiVersion': azureApiVersion,
       'certificates': ?(() { final guardedValue = certificates; if (guardedValue == null) return null; return pulumi.Input.encodeList<CertificateConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'configurationApi': ?configurationApi?.toMap(),
       'createdAtUtc': createdAtUtc,
       'customProperties': ?customProperties,
+      'developerPortalStatus': ?developerPortalStatus,
       'developerPortalUrl': developerPortalUrl,
       'disableGateway': ?disableGateway,
       'enableClientCertificate': ?enableClientCertificate,
@@ -199,6 +214,7 @@ class GetApiManagementServiceResult {
       'hostnameConfigurations': ?(() { final guardedValue = hostnameConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<HostnameConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'identity': ?identity?.toMap(),
+      'legacyPortalStatus': ?legacyPortalStatus,
       'location': location,
       'managementApiUrl': managementApiUrl,
       'name': name,
@@ -234,8 +250,10 @@ class GetApiManagementServiceResult {
       apiVersionConstraint: (() { final guardedValue = map['apiVersionConstraint']; if (guardedValue == null) return null; return ApiVersionConstraintResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       azureApiVersion: map['azureApiVersion'] as String,
       certificates: (() { final guardedValue = map['certificates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateConfigurationResponse>(guardedValue, (value) => CertificateConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      configurationApi: (() { final guardedValue = map['configurationApi']; if (guardedValue == null) return null; return ConfigurationApiResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       createdAtUtc: map['createdAtUtc'] as String,
       customProperties: (() { final guardedValue = map['customProperties']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      developerPortalStatus: (() { final guardedValue = map['developerPortalStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       developerPortalUrl: map['developerPortalUrl'] as String,
       disableGateway: (() { final guardedValue = map['disableGateway']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       enableClientCertificate: (() { final guardedValue = map['enableClientCertificate']; if (guardedValue == null) return null; return guardedValue as bool; })(),
@@ -245,6 +263,7 @@ class GetApiManagementServiceResult {
       hostnameConfigurations: (() { final guardedValue = map['hostnameConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostnameConfigurationResponse>(guardedValue, (value) => HostnameConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ApiManagementServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      legacyPortalStatus: (() { final guardedValue = map['legacyPortalStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: map['location'] as String,
       managementApiUrl: map['managementApiUrl'] as String,
       name: map['name'] as String,
@@ -274,4 +293,3 @@ class GetApiManagementServiceResult {
     );
   }
 }
-

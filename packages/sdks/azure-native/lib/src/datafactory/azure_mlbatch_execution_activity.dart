@@ -14,7 +14,7 @@ class AzureMLBatchExecutionActivity {
   /// Activity description.
   final pulumi.Input<String>? description;
   /// Key,Value pairs to be passed to the Azure ML Batch Execution Service endpoint. Keys must match the names of web service parameters defined in the published Azure ML web service. Values will be passed in the GlobalParameters property of the Azure ML batch execution request.
-  final pulumi.Input<Map<String, dynamic>>? globalParameters;
+  final pulumi.Input<dynamic>? globalParameters;
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReference>? linkedServiceName;
   /// Activity name.
@@ -84,7 +84,7 @@ class AzureMLBatchExecutionActivity {
     return AzureMLBatchExecutionActivity(
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependency>(guardedValue, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      globalParameters: (() { final guardedValue = map['globalParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      globalParameters: (() { final guardedValue = map['globalParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -97,4 +97,3 @@ class AzureMLBatchExecutionActivity {
     );
   }
 }
-

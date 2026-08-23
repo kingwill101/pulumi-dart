@@ -15,4 +15,3 @@ enum SyslogProtocol {
     throw ArgumentError('Unknown SyslogProtocol value: $value');
   }
 }
-

@@ -21,7 +21,7 @@ class PolicyArgs {
   final pulumi.Input<String>? policyName;
   /// Describes settings for the policy.
   final pulumi.Input<PolicySettings>? policySettings;
-  /// Name of the Resource group within the Azure subscription.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified.
   final pulumi.Input<Sku>? sku;
@@ -34,7 +34,7 @@ class PolicyArgs {
   /// [managedRules] Describes managed rules inside the policy.
   /// [policyName] The name of the Web Application Firewall Policy.
   /// [policySettings] Describes settings for the policy.
-  /// [resourceGroupName] Name of the Resource group within the Azure subscription.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified.
   /// [tags] Resource tags.
   const PolicyArgs({
@@ -74,4 +74,3 @@ class PolicyArgs {
     );
   }
 }
-

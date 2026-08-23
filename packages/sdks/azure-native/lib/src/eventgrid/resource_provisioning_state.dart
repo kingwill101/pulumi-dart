@@ -19,4 +19,3 @@ enum ResourceProvisioningState {
     throw ArgumentError('Unknown ResourceProvisioningState value: $value');
   }
 }
-

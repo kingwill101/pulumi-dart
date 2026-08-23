@@ -15,4 +15,3 @@ enum AkriConnectorTemplateManagedConfigurationType {
     throw ArgumentError('Unknown AkriConnectorTemplateManagedConfigurationType value: $value');
   }
 }
-

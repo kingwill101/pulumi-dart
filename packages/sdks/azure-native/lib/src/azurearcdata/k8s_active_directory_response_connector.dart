@@ -30,4 +30,3 @@ class K8sActiveDirectoryResponseConnector {
     );
   }
 }
-

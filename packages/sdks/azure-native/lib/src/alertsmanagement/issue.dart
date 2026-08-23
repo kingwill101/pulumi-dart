@@ -66,6 +66,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_alertsmanagement_issue" "issue" {
+///   issue_name = "3f29e1b2b05f8371595dc761fed8e8b3"
+///   properties = {
+///     impact_time = "2024-12-13T02:45:33"
+///     severity    = "Sev2"
+///     status      = "New"
+///     title       = "Alert fired on VM CPU"
+///   }
+///   resource_uri = "subscriptions/aceaa046-91f0-492a-96dc-45e10a9183dc/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +97,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.alertsmanagement.Issue;
 /// import com.pulumi.azurenative.alertsmanagement.IssueArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.IssuePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

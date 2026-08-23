@@ -34,4 +34,3 @@ class GetP2sVpnGatewayP2sVpnConnectionHealthArgs {
     );
   }
 }
-

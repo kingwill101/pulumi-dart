@@ -15,4 +15,3 @@ enum KubernetesSupportPlan {
     throw ArgumentError('Unknown KubernetesSupportPlan value: $value');
   }
 }
-

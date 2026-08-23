@@ -454,4 +454,3 @@ class InMageAzureV2ReplicationDetailsResponse {
     );
   }
 }
-

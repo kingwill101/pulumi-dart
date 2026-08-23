@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'system_data_response.dart';
 import 'virtual_network_args.dart';
 
 /// A virtual network.
@@ -78,6 +79,32 @@ import 'virtual_network_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devtestlab_virtualnetwork" "virtualNetwork" {
+///   allowed_subnets {
+///     allow_public_ip = "Allow"
+///     lab_subnet_name = "{virtualNetworkName}Subnet"
+///     resource_id     = "/subscriptions/{subscriptionId}/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{virtualNetworkName}Subnet"
+///   }
+///   lab_name            = "{labName}"
+///   location            = "{location}"
+///   name                = "{virtualNetworkName}"
+///   resource_group_name = "resourceGroupName"
+///   tags = {
+///     "tagName1" = "tagValue1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +114,8 @@ import 'virtual_network_args.dart';
 /// import com.pulumi.azurenative.devtestlab.VirtualNetwork;
 /// import com.pulumi.azurenative.devtestlab.VirtualNetworkArgs;
 /// import com.pulumi.azurenative.devtestlab.inputs.SubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -200,17 +227,19 @@ class VirtualNetwork extends pulumi.CustomResource {
   late final pulumi.Output<String?> externalProviderResourceId;
   /// The external subnet properties.
   late final pulumi.Output<List<Map<String, dynamic>>> externalSubnets;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
-  /// The name of the resource.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
   /// The subnet overrides of the virtual network.
   late final pulumi.Output<List<Map<String, dynamic>>?> subnetOverrides;
-  /// The tags of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
@@ -239,6 +268,7 @@ class VirtualNetwork extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     subnetOverrides = registerOutput<List<Map<String, dynamic>>?>('subnetOverrides');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');

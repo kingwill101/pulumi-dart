@@ -16,4 +16,3 @@ enum AllowedContentLevel {
     throw ArgumentError('Unknown AllowedContentLevel value: $value');
   }
 }
-

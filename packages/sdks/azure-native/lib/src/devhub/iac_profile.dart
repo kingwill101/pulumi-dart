@@ -118,6 +118,45 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devhub_iacprofile" "iacProfile" {
+///   iac_profile_name    = "profile1"
+///   location            = "eastus"
+///   repository_name     = "localtest"
+///   repository_owner    = "qfai"
+///   resource_group_name = "resourceGroup1"
+///   stages {
+///     dependencies    = []
+///     git_environment = "Terraform"
+///     stage_name      = "dev"
+///   }
+///   stages {
+///     dependencies    = ["dev"]
+///     git_environment = "Terraform"
+///     stage_name      = "qa"
+///   }
+///   storage_account_name           = "iacbackend"
+///   storage_account_resource_group = "test"
+///   storage_account_subscription   = "586c20df-c465-4f10-8673-65aa4859e7ca"
+///   storage_container_name         = "tfbackend"
+///   templates {
+///     instance_name             = "quickinstance"
+///     instance_stage            = "dev"
+///     quick_start_template_type = "HCIAKS"
+///     template_name             = "hciaksss"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +167,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.devhub.IacProfileArgs;
 /// import com.pulumi.azurenative.devhub.inputs.StagePropertiesArgs;
 /// import com.pulumi.azurenative.devhub.inputs.IacTemplatePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

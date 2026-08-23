@@ -7,7 +7,7 @@ import 'volume_snapshot_args.dart';
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
 ///
-/// Other available API versions: 2023-01-01, 2024-06-01-preview, 2024-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elasticsan [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-01-01, 2024-06-01-preview, 2024-07-01-preview, 2025-09-01, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elasticsan [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -66,6 +66,27 @@ import 'volume_snapshot_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_elasticsan_volumesnapshot" "volumeSnapshot" {
+///   creation_data = {
+///     source_id = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}"
+///   }
+///   elastic_san_name    = "elasticsanname"
+///   resource_group_name = "resourcegroupname"
+///   snapshot_name       = "snapshotname"
+///   volume_group_name   = "volumegroupname"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +96,8 @@ import 'volume_snapshot_args.dart';
 /// import com.pulumi.azurenative.elasticsan.VolumeSnapshot;
 /// import com.pulumi.azurenative.elasticsan.VolumeSnapshotArgs;
 /// import com.pulumi.azurenative.elasticsan.inputs.SnapshotCreationDataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -204,6 +225,27 @@ import 'volume_snapshot_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_elasticsan_volumesnapshot" "volumeSnapshot" {
+///   creation_data = {
+///     source_id = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}"
+///   }
+///   elastic_san_name    = "elasticsanname"
+///   resource_group_name = "resourcegroupname"
+///   snapshot_name       = "snapshotname"
+///   volume_group_name   = "volumegroupname"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -213,8 +255,8 @@ import 'volume_snapshot_args.dart';
 /// import com.pulumi.azurenative.elasticsan.VolumeSnapshot;
 /// import com.pulumi.azurenative.elasticsan.VolumeSnapshotArgs;
 /// import com.pulumi.azurenative.elasticsan.inputs.SnapshotCreationDataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -17,6 +17,8 @@ import 'get_deployment_args.dart';
 import 'get_deployment_result.dart';
 import 'get_encryption_scope_args.dart';
 import 'get_encryption_scope_result.dart';
+import 'get_managed_network_setting_args.dart';
+import 'get_managed_network_setting_result.dart';
 import 'get_outbound_rule_args.dart';
 import 'get_outbound_rule_result.dart';
 import 'get_private_endpoint_connection_args.dart';
@@ -50,9 +52,9 @@ import 'list_agent_application_agents_result.dart';
 
 /// Returns a Cognitive Services account specified by the parameters.
 ///
-/// Uses Azure REST API version 2024-10-01.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_account_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAccountResult> getAccount(
@@ -70,9 +72,9 @@ Future<GetAccountResult> getAccount(
 
 /// Azure Resource Manager resource envelope.
 ///
-/// Uses Azure REST API version 2025-04-01-preview.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_account_capability_host_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAccountCapabilityHostResult> getAccountCapabilityHost(
@@ -90,9 +92,9 @@ Future<GetAccountCapabilityHostResult> getAccountCapabilityHost(
 
 /// Connection base resource schema.
 ///
-/// Uses Azure REST API version 2025-04-01-preview.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_account_connection_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAccountConnectionResult> getAccountConnection(
@@ -108,9 +110,11 @@ Future<GetAccountConnectionResult> getAccountConnection(
   return GetAccountConnectionResult.fromMap(result);
 }
 
-/// Agent Application resource
+/// Gets an Agent Application by name.
 ///
 /// Uses Azure REST API version 2025-10-01-preview.
+///
+/// Other available API versions: 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_agent_application_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAgentApplicationResult> getAgentApplication(
@@ -126,9 +130,11 @@ Future<GetAgentApplicationResult> getAgentApplication(
   return GetAgentApplicationResult.fromMap(result);
 }
 
-/// Agent Deployment resource
+/// Gets an Agent Deployment by name.
 ///
 /// Uses Azure REST API version 2025-10-01-preview.
+///
+/// Other available API versions: 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_agent_deployment_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAgentDeploymentResult> getAgentDeployment(
@@ -146,9 +152,9 @@ Future<GetAgentDeploymentResult> getAgentDeployment(
 
 /// Gets the specified commitmentPlans associated with the Cognitive Services account.
 ///
-/// Uses Azure REST API version 2024-10-01.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_commitment_plan_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCommitmentPlanResult> getCommitmentPlan(
@@ -166,9 +172,9 @@ Future<GetCommitmentPlanResult> getCommitmentPlan(
 
 /// Gets the association of the Cognitive Services commitment plan.
 ///
-/// Uses Azure REST API version 2024-10-01.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_commitment_plan_association_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCommitmentPlanAssociationResult> getCommitmentPlanAssociation(
@@ -186,9 +192,9 @@ Future<GetCommitmentPlanAssociationResult> getCommitmentPlanAssociation(
 
 /// Gets the specified deployments associated with the Cognitive Services account.
 ///
-/// Uses Azure REST API version 2024-10-01.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_deployment_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDeploymentResult> getDeployment(
@@ -206,9 +212,9 @@ Future<GetDeploymentResult> getDeployment(
 
 /// Gets the specified EncryptionScope associated with the Cognitive Services account.
 ///
-/// Uses Azure REST API version 2024-10-01.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_encryption_scope_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetEncryptionScopeResult> getEncryptionScope(
@@ -224,7 +230,31 @@ Future<GetEncryptionScopeResult> getEncryptionScope(
   return GetEncryptionScopeResult.fromMap(result);
 }
 
+/// Get API for managed network settings of a cognitive services account.
+///
+/// Uses Azure REST API version 2026-01-15-preview.
+///
+/// Other available API versions: 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_managed_network_setting_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetManagedNetworkSettingResult> getManagedNetworkSetting(
+  GetManagedNetworkSettingArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getManagedNetworkSetting',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetManagedNetworkSettingResult.fromMap(result);
+}
+
+/// The GET API for retrieving a single outbound rule of the managed network associated with the cognitive services account.
+///
 /// Uses Azure REST API version 2025-10-01-preview.
+///
+/// Other available API versions: 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_outbound_rule_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetOutboundRuleResult> getOutboundRule(
@@ -242,9 +272,9 @@ Future<GetOutboundRuleResult> getOutboundRule(
 
 /// Gets the specified private endpoint connection associated with the Cognitive Services account.
 ///
-/// Uses Azure REST API version 2024-10-01.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
@@ -262,9 +292,9 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
 
 /// Returns a Cognitive Services project specified by the parameters.
 ///
-/// Uses Azure REST API version 2025-04-01-preview.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_project_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetProjectResult> getProject(
@@ -282,9 +312,9 @@ Future<GetProjectResult> getProject(
 
 /// Azure Resource Manager resource envelope for Project CapabilityHost.
 ///
-/// Uses Azure REST API version 2025-04-01-preview.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_project_capability_host_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetProjectCapabilityHostResult> getProjectCapabilityHost(
@@ -302,9 +332,9 @@ Future<GetProjectCapabilityHostResult> getProjectCapabilityHost(
 
 /// Connection base resource schema.
 ///
-/// Uses Azure REST API version 2025-04-01-preview.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_project_connection_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetProjectConnectionResult> getProjectConnection(
@@ -322,9 +352,9 @@ Future<GetProjectConnectionResult> getProjectConnection(
 
 /// Gets the specified custom blocklist associated with the Azure OpenAI account.
 ///
-/// Uses Azure REST API version 2024-10-01.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_rai_blocklist_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRaiBlocklistResult> getRaiBlocklist(
@@ -342,9 +372,9 @@ Future<GetRaiBlocklistResult> getRaiBlocklist(
 
 /// Gets the specified custom blocklist Item associated with the custom blocklist.
 ///
-/// Uses Azure REST API version 2024-10-01.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_rai_blocklist_item_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRaiBlocklistItemResult> getRaiBlocklistItem(
@@ -363,6 +393,8 @@ Future<GetRaiBlocklistItemResult> getRaiBlocklistItem(
 /// Gets the specified external safety provider associated with the Subscription
 ///
 /// Uses Azure REST API version 2025-10-01-preview.
+///
+/// Other available API versions: 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_rai_external_safety_provider_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRaiExternalSafetyProviderResult> getRaiExternalSafetyProvider(
@@ -380,9 +412,9 @@ Future<GetRaiExternalSafetyProviderResult> getRaiExternalSafetyProvider(
 
 /// Gets the specified Content Filters associated with the Azure OpenAI account.
 ///
-/// Uses Azure REST API version 2024-10-01.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_rai_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRaiPolicyResult> getRaiPolicy(
@@ -401,6 +433,8 @@ Future<GetRaiPolicyResult> getRaiPolicy(
 /// Gets the specified RAI Tool Label associated with the Azure OpenAI account.
 ///
 /// Uses Azure REST API version 2025-10-01-preview.
+///
+/// Other available API versions: 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_rai_tool_label_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRaiToolLabelResult> getRaiToolLabel(
@@ -420,7 +454,7 @@ Future<GetRaiToolLabelResult> getRaiToolLabel(
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
 ///
-/// Other available API versions: 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_rai_topic_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRaiTopicResult> getRaiTopic(
@@ -438,9 +472,9 @@ Future<GetRaiTopicResult> getRaiTopic(
 
 /// Returns a Cognitive Services commitment plan specified by the parameters.
 ///
-/// Uses Azure REST API version 2024-10-01.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_shared_commitment_plan_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSharedCommitmentPlanResult> getSharedCommitmentPlan(
@@ -459,6 +493,8 @@ Future<GetSharedCommitmentPlanResult> getSharedCommitmentPlan(
 /// Gets the specified Content Filters associated with the Subscription.
 ///
 /// Uses Azure REST API version 2025-10-01-preview.
+///
+/// Other available API versions: 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_get_subscription_rai_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSubscriptionRaiPolicyResult> getSubscriptionRaiPolicy(
@@ -476,9 +512,9 @@ Future<GetSubscriptionRaiPolicyResult> getSubscriptionRaiPolicy(
 
 /// Lists the account keys for the specified Cognitive Services account.
 ///
-/// Uses Azure REST API version 2024-10-01.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_list_account_keys_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListAccountKeysResult> listAccountKeys(
@@ -494,9 +530,11 @@ Future<ListAccountKeysResult> listAccountKeys(
   return ListAccountKeysResult.fromMap(result);
 }
 
-/// A paginated list of Agent Reference entities.
+/// Lists agents for an Agent Application.
 ///
 /// Uses Azure REST API version 2025-10-01-preview.
+///
+/// Other available API versions: 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitiveservices_list_agent_application_agents_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListAgentApplicationAgentsResult> listAgentApplicationAgents(

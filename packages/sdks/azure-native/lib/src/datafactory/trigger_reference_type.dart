@@ -1,6 +1,6 @@
 /// Trigger reference type.
 enum TriggerReferenceType {
-  valueTriggerReference("TriggerReference");
+  triggerReference("TriggerReference");
 
   const TriggerReferenceType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum TriggerReferenceType {
     throw ArgumentError('Unknown TriggerReferenceType value: $value');
   }
 }
-

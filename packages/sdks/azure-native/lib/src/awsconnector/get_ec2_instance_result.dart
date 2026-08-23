@@ -56,4 +56,3 @@ class GetEc2InstanceResult {
     );
   }
 }
-

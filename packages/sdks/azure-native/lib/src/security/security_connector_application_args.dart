@@ -9,11 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityConnectorApplicationArgs {
   /// The security Application key - unique key for the standard application
   final pulumi.Input<String>? applicationId;
+  /// The application conditionSets - see examples
+  final pulumi.Input<List<dynamic>> conditionSets;
   /// description of the application
   final pulumi.Input<String>? description;
   /// display name of the application
   final pulumi.Input<String>? displayName;
-  /// The name of the resource group within the user's subscription. The name is case insensitive.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The security connector name.
   final pulumi.Input<String> securityConnectorName;
@@ -22,13 +24,15 @@ class SecurityConnectorApplicationArgs {
 
   /// Creates a new [SecurityConnectorApplicationArgs].
   /// [applicationId] The security Application key - unique key for the standard application
+  /// [conditionSets] The application conditionSets - see examples
   /// [description] description of the application
   /// [displayName] display name of the application
-  /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityConnectorName] The security connector name.
   /// [sourceResourceType] The application source, what it affects, e.g. Assessments
   const SecurityConnectorApplicationArgs({
     this.applicationId,
+    required this.conditionSets,
     this.description,
     this.displayName,
     required this.resourceGroupName,
@@ -39,6 +43,7 @@ class SecurityConnectorApplicationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationId': ?applicationId,
+      'conditionSets': conditionSets,
       'description': ?description,
       'displayName': ?displayName,
       'resourceGroupName': resourceGroupName,
@@ -50,6 +55,7 @@ class SecurityConnectorApplicationArgs {
   factory SecurityConnectorApplicationArgs.fromMap(Map<String, dynamic> map) {
     return SecurityConnectorApplicationArgs(
       applicationId: (() { final guardedValue = map['applicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      conditionSets: pulumi.Input.fromValue((map['conditionSets'] as List).cast<dynamic>()),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
@@ -58,4 +64,3 @@ class SecurityConnectorApplicationArgs {
     );
   }
 }
-

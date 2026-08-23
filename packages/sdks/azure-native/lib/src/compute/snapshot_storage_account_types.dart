@@ -16,4 +16,3 @@ enum SnapshotStorageAccountTypes {
     throw ArgumentError('Unknown SnapshotStorageAccountTypes value: $value');
   }
 }
-

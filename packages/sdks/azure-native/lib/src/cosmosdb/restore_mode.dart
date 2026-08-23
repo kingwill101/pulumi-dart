@@ -14,4 +14,3 @@ enum RestoreMode {
     throw ArgumentError('Unknown RestoreMode value: $value');
   }
 }
-

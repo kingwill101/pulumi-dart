@@ -14,4 +14,3 @@ enum AkriConnectorsMqttAuthenticationMethod {
     throw ArgumentError('Unknown AkriConnectorsMqttAuthenticationMethod value: $value');
   }
 }
-

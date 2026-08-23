@@ -15,4 +15,3 @@ enum FirewallPolicyRuleApplicationProtocolType {
     throw ArgumentError('Unknown FirewallPolicyRuleApplicationProtocolType value: $value');
   }
 }
-

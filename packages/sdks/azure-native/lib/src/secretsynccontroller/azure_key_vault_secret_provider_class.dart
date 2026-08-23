@@ -1,6 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_key_vault_secret_provider_class_args.dart';
-import 'azure_resource_manager_common_types_extended_location_response.dart';
+import 'extended_location_response.dart';
 import 'system_data_response.dart';
 
 /// The AzureKeyVaultSecretProviderClass resource.
@@ -83,6 +83,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_secretsynccontroller_azurekeyvaultsecretproviderclass" "azureKeyVaultSecretProviderClass" {
+///   azure_key_vault_secret_provider_class_name = "akvspc-ssc-example"
+///   client_id                                  = "00000000-0000-0000-0000-000000000000"
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-ssc-example/providers/Microsoft.ExtendedLocation/customLocations/example-custom-location"
+///     type = "CustomLocation"
+///   }
+///   keyvault_name       = "example-ssc-key-vault"
+///   location            = "eastus"
+///   objects             = "array: |\n  - |\n    objectName: my-secret-object\n    objectType: secret\n    objectVersionHistory: 1"
+///   resource_group_name = "rg-ssc-example"
+///   tags = {
+///     "example-tag" = "example-tag-value"
+///   }
+///   tenant_id = "00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +120,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.secretsynccontroller.AzureKeyVaultSecretProviderClass;
 /// import com.pulumi.azurenative.secretsynccontroller.AzureKeyVaultSecretProviderClassArgs;
 /// import com.pulumi.azurenative.secretsynccontroller.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -224,7 +252,7 @@ class AzureKeyVaultSecretProviderClass extends pulumi.CustomResource {
   /// The user assigned managed identity client ID that should be used to access the Azure Key Vault.
   late final pulumi.Output<String> clientId;
   /// The complex type of the extended location.
-  late final pulumi.Output<AzureResourceManagerCommonTypesExtendedLocationResponse?> extendedLocation;
+  late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
   /// The name of the Azure Key Vault to sync secrets from.
   late final pulumi.Output<String> keyvaultName;
   /// The geo-location where the resource lives
@@ -260,7 +288,7 @@ class AzureKeyVaultSecretProviderClass extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clientId = registerOutput<String>('clientId');
-    extendedLocation = registerOutput<AzureResourceManagerCommonTypesExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyvaultName = registerOutput<String>('keyvaultName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

@@ -16,4 +16,3 @@ enum LoadBalancerRuleSessionPersistenceType {
     throw ArgumentError('Unknown LoadBalancerRuleSessionPersistenceType value: $value');
   }
 }
-

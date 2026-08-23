@@ -16,4 +16,3 @@ enum OsLicense {
     throw ArgumentError('Unknown OsLicense value: $value');
   }
 }
-

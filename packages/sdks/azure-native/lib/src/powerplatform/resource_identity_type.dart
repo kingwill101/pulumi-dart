@@ -1,7 +1,7 @@
 /// The type of identity used for the EnterprisePolicy. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
 enum ResourceIdentityType {
-  valueSystemAssigned("SystemAssigned"),
-  valueNone("None");
+  systemAssigned("SystemAssigned"),
+  none("None");
 
   const ResourceIdentityType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ResourceIdentityType {
     throw ArgumentError('Unknown ResourceIdentityType value: $value');
   }
 }
-

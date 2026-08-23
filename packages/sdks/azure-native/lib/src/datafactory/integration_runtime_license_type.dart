@@ -1,7 +1,7 @@
 /// License type for bringing your own license scenario.
 enum IntegrationRuntimeLicenseType {
-  valueBasePrice("BasePrice"),
-  valueLicenseIncluded("LicenseIncluded");
+  basePrice("BasePrice"),
+  licenseIncluded("LicenseIncluded");
 
   const IntegrationRuntimeLicenseType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum IntegrationRuntimeLicenseType {
     throw ArgumentError('Unknown IntegrationRuntimeLicenseType value: $value');
   }
 }
-

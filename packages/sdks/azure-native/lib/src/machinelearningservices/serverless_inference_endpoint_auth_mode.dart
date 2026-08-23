@@ -1,6 +1,8 @@
 /// [Required] Specifies the authentication mode for the Serverless endpoint.
 enum ServerlessInferenceEndpointAuthMode {
-  valueKey("Key");
+  key("Key"),
+  aAD("AAD"),
+  keyAndAAD("KeyAndAAD");
 
   const ServerlessInferenceEndpointAuthMode(this.wireValue);
   final String wireValue;
@@ -14,4 +16,3 @@ enum ServerlessInferenceEndpointAuthMode {
     throw ArgumentError('Unknown ServerlessInferenceEndpointAuthMode value: $value');
   }
 }
-

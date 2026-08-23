@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'system_data_response.dart';
 
 /// Full view of the custom domain suffix configuration for ASEv3.
 class CustomDnsSuffixConfigurationResponse {
@@ -8,29 +9,32 @@ class CustomDnsSuffixConfigurationResponse {
   final pulumi.Input<String>? certificateUrl;
   /// The default custom domain suffix to use for all sites deployed on the ASE.
   final pulumi.Input<String>? dnsSuffix;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
   /// The user-assigned identity to use for resolving the key vault certificate reference. If not specified, the system-assigned ASE identity will be used if available.
   final pulumi.Input<String>? keyVaultReferenceIdentity;
   /// Kind of resource.
   final pulumi.Input<String>? kind;
-  /// Resource Name.
+  /// The name of the resource
   final pulumi.Input<String> name;
   final pulumi.Input<String> provisioningDetails;
   final pulumi.Input<String> provisioningState;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final pulumi.Input<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 
   /// Creates a new [CustomDnsSuffixConfigurationResponse].
   /// [certificateUrl] The URL referencing the Azure Key Vault certificate secret that should be used as the default SSL/TLS certificate for sites with the custom domain suffix.
   /// [dnsSuffix] The default custom domain suffix to use for all sites deployed on the ASE.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [keyVaultReferenceIdentity] The user-assigned identity to use for resolving the key vault certificate reference. If not specified, the system-assigned ASE identity will be used if available.
   /// [kind] Kind of resource.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [provisioningDetails] Required.
   /// [provisioningState] Required.
-  /// [type] Resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const CustomDnsSuffixConfigurationResponse({
     this.certificateUrl,
     this.dnsSuffix,
@@ -40,6 +44,7 @@ class CustomDnsSuffixConfigurationResponse {
     required this.name,
     required this.provisioningDetails,
     required this.provisioningState,
+    required this.systemData,
     required this.type,
   });
 
@@ -53,6 +58,7 @@ class CustomDnsSuffixConfigurationResponse {
       'name': name,
       'provisioningDetails': provisioningDetails,
       'provisioningState': provisioningState,
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
     };
   }
@@ -67,8 +73,8 @@ class CustomDnsSuffixConfigurationResponse {
       name: pulumi.Input.fromValue(map['name'] as String),
       provisioningDetails: pulumi.Input.fromValue(map['provisioningDetails'] as String),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      systemData: pulumi.Input.fromValue(SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>())),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

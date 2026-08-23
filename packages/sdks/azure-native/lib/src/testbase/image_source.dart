@@ -15,4 +15,3 @@ enum ImageSource {
     throw ArgumentError('Unknown ImageSource value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum DeleteOptions {
     throw ArgumentError('Unknown DeleteOptions value: $value');
   }
 }
-

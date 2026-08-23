@@ -89,6 +89,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_policyinsights_attestationatresourcegroup" "attestationAtResourceGroup" {
+///   assessment_date  = "2021-06-10T00:00:00Z"
+///   attestation_name = "790996e6-9871-4b1f-9cd9-ec42cd6ced1e"
+///   comments         = "This subscription has passed a security audit."
+///   compliance_state = "Compliant"
+///   evidence {
+///     description = "The results of the security audit."
+///     source_uri  = "https://gist.github.com/contoso/9573e238762c60166c090ae16b814011"
+///   }
+///   expires_on = "2021-06-15T00:00:00Z"
+///   metadata = {
+///     "departmentId" = "NYC-MARKETING-1"
+///   }
+///   owner                          = "55a32e28-3aa5-4eea-9b5a-4cd85153b966"
+///   policy_assignment_id           = "/subscriptions/35ee058e-5fa0-414c-8145-3ebb8d09b6e2/providers/microsoft.authorization/policyassignments/b101830944f246d8a14088c5"
+///   policy_definition_reference_id = "0b158b46-ff42-4799-8e39-08a5c23b4551"
+///   resource_group_name            = "myRg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +128,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.policyinsights.AttestationAtResourceGroup;
 /// import com.pulumi.azurenative.policyinsights.AttestationAtResourceGroupArgs;
 /// import com.pulumi.azurenative.policyinsights.inputs.AttestationEvidenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

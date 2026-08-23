@@ -1,9 +1,9 @@
 /// The service load metric relative weight, compared to other metrics configured for this service, as a number.
 enum ServiceLoadMetricWeight {
-  zero("Zero"),
-  low("Low"),
-  medium("Medium"),
-  high("High");
+  valueZero("Zero"),
+  valueLow("Low"),
+  valueMedium("Medium"),
+  valueHigh("High");
 
   const ServiceLoadMetricWeight(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum ServiceLoadMetricWeight {
     throw ArgumentError('Unknown ServiceLoadMetricWeight value: $value');
   }
 }
-

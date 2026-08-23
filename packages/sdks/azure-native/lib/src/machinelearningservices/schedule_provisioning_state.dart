@@ -1,8 +1,8 @@
 /// The current deployment state of schedule.
 enum ScheduleProvisioningState {
-  valueCompleted("Completed"),
-  valueProvisioning("Provisioning"),
-  valueFailed("Failed");
+  completed("Completed"),
+  provisioning("Provisioning"),
+  failed("Failed");
 
   const ScheduleProvisioningState(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum ScheduleProvisioningState {
     throw ArgumentError('Unknown ScheduleProvisioningState value: $value');
   }
 }
-

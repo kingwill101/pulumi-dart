@@ -19,4 +19,3 @@ enum HTTPSchemeType {
     throw ArgumentError('Unknown HTTPSchemeType value: $value');
   }
 }
-

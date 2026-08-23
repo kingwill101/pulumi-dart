@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'system_data_response.dart';
 
 /// Result data returned by getPolicy.
 class GetPolicyResult {
@@ -15,21 +16,23 @@ class GetPolicyResult {
   final String? factData;
   /// The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc.
   final String? factName;
-  /// The identifier of the resource.
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
   /// The location of the resource.
   final String? location;
-  /// The name of the resource.
+  /// The name of the resource
   final String name;
   /// The provisioning status of the resource.
   final String provisioningState;
   /// The status of the policy.
   final String? status;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
   /// The tags of the resource.
   final Map<String, String>? tags;
   /// The threshold of the policy (i.e. a number for MaxValuePolicy, and a JSON array of values for AllowedValuesPolicy).
   final String? threshold;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// The unique immutable identifier of a resource (Guid).
   final String uniqueIdentifier;
@@ -41,14 +44,15 @@ class GetPolicyResult {
   /// [evaluatorType] The evaluator type of the policy (i.e. AllowedValuesPolicy, MaxValuePolicy).
   /// [factData] The fact data of the policy.
   /// [factName] The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc.
-  /// [id] The identifier of the resource.
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [location] The location of the resource.
-  /// [name] The name of the resource.
+  /// [name] The name of the resource
   /// [provisioningState] The provisioning status of the resource.
   /// [status] The status of the policy.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] The tags of the resource.
   /// [threshold] The threshold of the policy (i.e. a number for MaxValuePolicy, and a JSON array of values for AllowedValuesPolicy).
-  /// [type] The type of the resource.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
   const GetPolicyResult({
     required this.azureApiVersion,
@@ -62,6 +66,7 @@ class GetPolicyResult {
     required this.name,
     required this.provisioningState,
     this.status,
+    required this.systemData,
     this.tags,
     this.threshold,
     required this.type,
@@ -81,6 +86,7 @@ class GetPolicyResult {
       'name': name,
       'provisioningState': provisioningState,
       'status': ?status,
+      'systemData': systemData.toMap(),
       'tags': ?tags,
       'threshold': ?threshold,
       'type': type,
@@ -101,6 +107,7 @@ class GetPolicyResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
@@ -108,4 +115,3 @@ class GetPolicyResult {
     );
   }
 }
-

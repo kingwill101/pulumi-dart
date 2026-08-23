@@ -6,55 +6,55 @@ import 'workspace_custom_string_parameter.dart';
 import 'workspace_encryption_parameter.dart';
 import 'workspace_no_public_ipboolean_parameter.dart';
 
-/// Custom Parameters used for Cluster Creation.
+/// Custom Parameters used for Workspace Creation. Not allowed in Serverless ComputeMode workspace.
 class WorkspaceCustomParameters {
-  /// The ID of a Azure Machine Learning workspace to link with Databricks workspace
+  /// The ID of a Azure Machine Learning workspace to link with Databricks workspace. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<WorkspaceCustomStringParameter>? amlWorkspaceId;
-  /// The name of the Private Subnet within the Virtual Network
+  /// The name of the Private Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<WorkspaceCustomStringParameter>? customPrivateSubnetName;
-  /// The name of a Public Subnet within the Virtual Network
+  /// The name of a Public Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<WorkspaceCustomStringParameter>? customPublicSubnetName;
-  /// The ID of a Virtual Network where this Databricks Cluster should be created
+  /// The ID of a Virtual Network where this Databricks Cluster should be created. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<WorkspaceCustomStringParameter>? customVirtualNetworkId;
-  /// Boolean indicating whether the public IP should be disabled. Default value is true
+  /// Boolean indicating whether the public IP should be disabled. Default value is true. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<WorkspaceNoPublicIPBooleanParameter>? enableNoPublicIp;
-  /// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.
+  /// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<WorkspaceEncryptionParameter>? encryption;
-  /// Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP).
+  /// Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP). Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<WorkspaceCustomStringParameter>? loadBalancerBackendPoolName;
-  /// Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace.
+  /// Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<WorkspaceCustomStringParameter>? loadBalancerId;
-  /// Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets.
+  /// Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<WorkspaceCustomStringParameter>? natGatewayName;
-  /// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.
+  /// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<WorkspaceCustomBooleanParameter>? prepareEncryption;
-  /// Name of the Public IP for No Public IP workspace with managed vNet.
+  /// Name of the Public IP for No Public IP workspace with managed vNet. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<WorkspaceCustomStringParameter>? publicIpName;
-  /// A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest.
+  /// A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<WorkspaceCustomBooleanParameter>? requireInfrastructureEncryption;
-  /// Default DBFS storage account name.
+  /// Default DBFS storage account name. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<WorkspaceCustomStringParameter>? storageAccountName;
-  /// Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs.
+  /// Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<WorkspaceCustomStringParameter>? storageAccountSkuName;
-  /// Address prefix for Managed virtual network. Default value for this input is 10.139.
+  /// Address prefix for Managed virtual network. Default value for this input is 10.139. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<WorkspaceCustomStringParameter>? vnetAddressPrefix;
 
   /// Creates a new [WorkspaceCustomParameters].
-  /// [amlWorkspaceId] The ID of a Azure Machine Learning workspace to link with Databricks workspace
-  /// [customPrivateSubnetName] The name of the Private Subnet within the Virtual Network
-  /// [customPublicSubnetName] The name of a Public Subnet within the Virtual Network
-  /// [customVirtualNetworkId] The ID of a Virtual Network where this Databricks Cluster should be created
-  /// [enableNoPublicIp] Boolean indicating whether the public IP should be disabled. Default value is true
-  /// [encryption] Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.
-  /// [loadBalancerBackendPoolName] Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP).
-  /// [loadBalancerId] Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace.
-  /// [natGatewayName] Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets.
-  /// [prepareEncryption] Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.
-  /// [publicIpName] Name of the Public IP for No Public IP workspace with managed vNet.
-  /// [requireInfrastructureEncryption] A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest.
-  /// [storageAccountName] Default DBFS storage account name.
-  /// [storageAccountSkuName] Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs.
-  /// [vnetAddressPrefix] Address prefix for Managed virtual network. Default value for this input is 10.139.
+  /// [amlWorkspaceId] The ID of a Azure Machine Learning workspace to link with Databricks workspace. Not allowed in Serverless ComputeMode workspace.
+  /// [customPrivateSubnetName] The name of the Private Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
+  /// [customPublicSubnetName] The name of a Public Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
+  /// [customVirtualNetworkId] The ID of a Virtual Network where this Databricks Cluster should be created. Not allowed in Serverless ComputeMode workspace.
+  /// [enableNoPublicIp] Boolean indicating whether the public IP should be disabled. Default value is true. Not allowed in Serverless ComputeMode workspace.
+  /// [encryption] Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.Not allowed in Serverless ComputeMode workspace.
+  /// [loadBalancerBackendPoolName] Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP). Not allowed in Serverless ComputeMode workspace.
+  /// [loadBalancerId] Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace. Not allowed in Serverless ComputeMode workspace.
+  /// [natGatewayName] Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets. Not allowed in Serverless ComputeMode workspace.
+  /// [prepareEncryption] Prepare the workspace for encryption. Enables the Managed Identity for managed storage account. Not allowed in Serverless ComputeMode workspace.
+  /// [publicIpName] Name of the Public IP for No Public IP workspace with managed vNet. Not allowed in Serverless ComputeMode workspace.
+  /// [requireInfrastructureEncryption] A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest. Not allowed in Serverless ComputeMode workspace.
+  /// [storageAccountName] Default DBFS storage account name. Not allowed in Serverless ComputeMode workspace.
+  /// [storageAccountSkuName] Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs. Not allowed in Serverless ComputeMode workspace.
+  /// [vnetAddressPrefix] Address prefix for Managed virtual network. Default value for this input is 10.139. Not allowed in Serverless ComputeMode workspace.
   const WorkspaceCustomParameters({
     this.amlWorkspaceId,
     this.customPrivateSubnetName,
@@ -113,4 +113,3 @@ class WorkspaceCustomParameters {
     );
   }
 }
-

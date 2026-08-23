@@ -8,6 +8,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
 ///
+/// Other available API versions: 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -67,6 +69,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_apigatewayhostnamebinding" "apiGatewayHostnameBinding" {
+///   gateway_name          = "apimGateway1"
+///   hostname              = "primary.cotoso.com"
+///   hostname_binding_name = "hb-1"
+///   key_vault = {
+///     identity_client_id = "00000000-0000-0000-0000-000000000000"
+///     secret_id          = "https://myvault.keyvault.azure.net/secrets/contosoprimarycert"
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +100,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.apimanagement.ApiGatewayHostnameBinding;
 /// import com.pulumi.azurenative.apimanagement.ApiGatewayHostnameBindingArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.GatewayHostnameBindingKeyVaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

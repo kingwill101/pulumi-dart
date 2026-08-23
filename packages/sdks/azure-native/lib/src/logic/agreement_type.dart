@@ -17,4 +17,3 @@ enum AgreementType {
     throw ArgumentError('Unknown AgreementType value: $value');
   }
 }
-

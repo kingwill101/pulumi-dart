@@ -85,6 +85,37 @@ import 'time_series_database_connection_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_digitaltwins_timeseriesdatabaseconnection" "timeSeriesDatabaseConnection" {
+///   properties = {
+///     adx_database_name               = "myDatabase"
+///     adx_endpoint_uri                = "https://mycluster.kusto.windows.net"
+///     adx_resource_id                 = "/subscriptions/c493073e-2460-45ba-a403-f3e0df1e9feg/resourceGroups/testrg/providers/Microsoft.Kusto/clusters/mycluster"
+///     adx_table_name                  = "myTable"
+///     connection_type                 = "AzureDataExplorer"
+///     event_hub_endpoint_uri          = "sb://myeh.servicebus.windows.net/"
+///     event_hub_entity_path           = "myeh"
+///     event_hub_namespace_resource_id = "/subscriptions/c493073e-2460-45ba-a403-f3e0df1e9feg/resourceGroups/testrg/providers/Microsoft.EventHub/namespaces/myeh"
+///     identity = {
+///       type                   = "UserAssigned"
+///       user_assigned_identity = "/subscriptions/50016170-c839-41ba-a724-51e9df440b9e/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testidentity"
+///     }
+///   }
+///   resource_group_name                  = "resRg"
+///   resource_name                        = "myDigitalTwinsService"
+///   time_series_database_connection_name = "myConnection"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +126,8 @@ import 'time_series_database_connection_args.dart';
 /// import com.pulumi.azurenative.digitaltwins.TimeSeriesDatabaseConnectionArgs;
 /// import com.pulumi.azurenative.digitaltwins.inputs.AzureDataExplorerConnectionPropertiesArgs;
 /// import com.pulumi.azurenative.digitaltwins.inputs.ManagedIdentityReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -281,6 +312,36 @@ import 'time_series_database_connection_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_digitaltwins_timeseriesdatabaseconnection" "timeSeriesDatabaseConnection" {
+///   properties = {
+///     adx_database_name                            = "myDatabase"
+///     adx_endpoint_uri                             = "https://mycluster.kusto.windows.net"
+///     adx_relationship_lifecycle_events_table_name = "myRelationshipLifecycleEventsTable"
+///     adx_resource_id                              = "/subscriptions/c493073e-2460-45ba-a403-f3e0df1e9feg/resourceGroups/testrg/providers/Microsoft.Kusto/clusters/mycluster"
+///     adx_table_name                               = "myPropertyUpdatesTable"
+///     adx_twin_lifecycle_events_table_name         = "myTwinLifecycleEventsTable"
+///     connection_type                              = "AzureDataExplorer"
+///     event_hub_endpoint_uri                       = "sb://myeh.servicebus.windows.net/"
+///     event_hub_entity_path                        = "myeh"
+///     event_hub_namespace_resource_id              = "/subscriptions/c493073e-2460-45ba-a403-f3e0df1e9feg/resourceGroups/testrg/providers/Microsoft.EventHub/namespaces/myeh"
+///     record_property_and_item_removals            = "true"
+///   }
+///   resource_group_name                  = "resRg"
+///   resource_name                        = "myDigitalTwinsService"
+///   time_series_database_connection_name = "myConnection"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -290,8 +351,8 @@ import 'time_series_database_connection_args.dart';
 /// import com.pulumi.azurenative.digitaltwins.TimeSeriesDatabaseConnection;
 /// import com.pulumi.azurenative.digitaltwins.TimeSeriesDatabaseConnectionArgs;
 /// import com.pulumi.azurenative.digitaltwins.inputs.AzureDataExplorerConnectionPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

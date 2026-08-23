@@ -77,6 +77,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devcenter_devboxdefinition" "devBoxDefinition" {
+///   dev_box_definition_name = "WebDevBox"
+///   dev_center_name         = "Contoso"
+///   hibernate_support       = "Enabled"
+///   image_reference = {
+///     id = "/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/Example/providers/Microsoft.DevCenter/devcenters/Contoso/galleries/contosogallery/images/exampleImage/version/1.0.0"
+///   }
+///   location            = "centralus"
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "Preview"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +112,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.devcenter.DevBoxDefinitionArgs;
 /// import com.pulumi.azurenative.devcenter.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.devcenter.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

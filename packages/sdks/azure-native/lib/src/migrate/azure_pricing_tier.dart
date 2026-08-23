@@ -15,4 +15,3 @@ enum AzurePricingTier {
     throw ArgumentError('Unknown AzurePricingTier value: $value');
   }
 }
-

@@ -1,7 +1,7 @@
 /// The transport protocol to use in the Thrift layer (for V2 only). Default value is Binary.
 enum ImpalaThriftTransportProtocol {
-  valueBinary("Binary"),
-  valueHTTP("HTTP");
+  binary("Binary"),
+  hTTP("HTTP");
 
   const ImpalaThriftTransportProtocol(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ImpalaThriftTransportProtocol {
     throw ArgumentError('Unknown ImpalaThriftTransportProtocol value: $value');
   }
 }
-

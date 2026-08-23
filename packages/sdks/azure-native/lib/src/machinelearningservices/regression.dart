@@ -15,12 +15,12 @@ class Regression {
   final pulumi.Input<TableVerticalFeaturizationSettings>? featurizationSettings;
   /// Execution constraints for AutoMLJob.
   final pulumi.Input<TableVerticalLimitSettings>? limitSettings;
-  /// Log verbosity for the job.
+  /// Enum for setting log verbosity.
   final pulumi.Input<String>? logVerbosity;
   /// Number of cross validation folds to be applied on training dataset
   /// when validation dataset is not provided.
   final pulumi.Input<AutoNCrossValidations>? nCrossValidations;
-  /// Primary metric for regression task.
+  /// Primary metrics for Regression task.
   final pulumi.Input<String>? primaryMetric;
   /// Target column name: This is prediction values column.
   /// Also known as label column name in context of classification tasks.
@@ -51,9 +51,9 @@ class Regression {
   /// [cvSplitColumnNames] Columns to use for CVSplit data.
   /// [featurizationSettings] Featurization inputs needed for AutoML job.
   /// [limitSettings] Execution constraints for AutoMLJob.
-  /// [logVerbosity] Log verbosity for the job.
+  /// [logVerbosity] Enum for setting log verbosity.
   /// [nCrossValidations] Number of cross validation folds to be applied on training dataset
-  /// [primaryMetric] Primary metric for regression task.
+  /// [primaryMetric] Primary metrics for Regression task.
   /// [targetColumnName] Target column name: This is prediction values column.
   /// [taskType] AutoMLJob Task type.
   /// [testData] Test data input.
@@ -121,4 +121,3 @@ class Regression {
     );
   }
 }
-

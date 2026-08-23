@@ -15,4 +15,3 @@ enum AnalyticalStorageSchemaType {
     throw ArgumentError('Unknown AnalyticalStorageSchemaType value: $value');
   }
 }
-

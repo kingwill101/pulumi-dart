@@ -14,4 +14,3 @@ enum AlwaysLog {
     throw ArgumentError('Unknown AlwaysLog value: $value');
   }
 }
-

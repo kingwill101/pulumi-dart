@@ -23,4 +23,3 @@ enum RequestHeaderOperator {
     throw ArgumentError('Unknown RequestHeaderOperator value: $value');
   }
 }
-

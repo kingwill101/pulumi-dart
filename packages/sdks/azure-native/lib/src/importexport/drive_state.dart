@@ -20,4 +20,3 @@ enum DriveState {
     throw ArgumentError('Unknown DriveState value: $value');
   }
 }
-

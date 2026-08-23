@@ -9,15 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStaticSiteCustomDomainArgs {
   /// The custom domain name.
   final pulumi.Input<String> domainName;
-  /// Name of the static site resource to search in.
+  /// Name of the static site.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetStaticSiteCustomDomainArgs].
   /// [domainName] The custom domain name.
-  /// [name] Name of the static site resource to search in.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [name] Name of the static site.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetStaticSiteCustomDomainArgs({
     required this.domainName,
     required this.name,
@@ -40,4 +40,3 @@ class GetStaticSiteCustomDomainArgs {
     );
   }
 }
-

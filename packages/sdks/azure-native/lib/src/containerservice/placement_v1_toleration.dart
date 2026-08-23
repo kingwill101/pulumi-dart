@@ -43,4 +43,3 @@ class PlacementV1Toleration {
     );
   }
 }
-

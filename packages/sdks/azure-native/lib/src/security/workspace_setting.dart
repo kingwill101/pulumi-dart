@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'system_data_response.dart';
 import 'workspace_setting_args.dart';
 
 /// Configures where to store the OMS agent data for workspaces under a scope
@@ -53,6 +54,23 @@ import 'workspace_setting_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_workspacesetting" "workspaceSetting" {
+///   scope                  = "/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23"
+///   workspace_id           = "/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
+///   workspace_setting_name = "default"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -61,8 +79,8 @@ import 'workspace_setting_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.WorkspaceSetting;
 /// import com.pulumi.azurenative.security.WorkspaceSettingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -132,11 +150,13 @@ import 'workspace_setting_args.dart';
 class WorkspaceSetting extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// Resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// All the VMs in this scope will send their security data to the mentioned workspace unless overridden by a setting with more specific scope
   late final pulumi.Output<String> scope;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The full Azure ID of the workspace to save the data in
   late final pulumi.Output<String> workspaceId;
@@ -158,6 +178,7 @@ class WorkspaceSetting extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     scope = registerOutput<String>('scope');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     workspaceId = registerOutput<String>('workspaceId');
   }

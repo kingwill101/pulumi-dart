@@ -87,6 +87,37 @@ import 'storage_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbformysql_singleserver" "singleServer" {
+///   location = "brazilsouth"
+///   properties = {
+///     "createMode"         = "PointInTimeRestore"
+///     "restorePointInTime" = "2017-12-14T00:00:37.467Z"
+///     "sourceServerId"     = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver"
+///   }
+///   resource_group_name = "TargetResourceGroup"
+///   server_name         = "targetserver"
+///   sku = {
+///     capacity = 2
+///     family   = "Gen5"
+///     name     = "GP_Gen5_2"
+///     tier     = "GeneralPurpose"
+///   }
+///   tags = {
+///     "ElasticServer" = "1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +127,8 @@ import 'storage_profile_response.dart';
 /// import com.pulumi.azurenative.dbformysql.SingleServer;
 /// import com.pulumi.azurenative.dbformysql.SingleServerArgs;
 /// import com.pulumi.azurenative.dbformysql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -296,6 +327,43 @@ import 'storage_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbformysql_singleserver" "singleServer" {
+///   location = "westus"
+///   properties = {
+///     "administratorLogin"         = "cloudsa"
+///     "administratorLoginPassword" = "<administratorLoginPassword>"
+///     "createMode"                 = "Default"
+///     "sslEnforcement"             = "Enabled"
+///     "storageProfile" = {
+///       "backupRetentionDays" = 7
+///       "geoRedundantBackup"  = "Enabled"
+///       "storageMB"           = 128000
+///     }
+///   }
+///   resource_group_name = "testrg"
+///   server_name         = "mysqltestsvc4"
+///   sku = {
+///     capacity = 2
+///     family   = "Gen5"
+///     name     = "GP_Gen5_2"
+///     tier     = "GeneralPurpose"
+///   }
+///   tags = {
+///     "ElasticServer" = "1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -305,8 +373,8 @@ import 'storage_profile_response.dart';
 /// import com.pulumi.azurenative.dbformysql.SingleServer;
 /// import com.pulumi.azurenative.dbformysql.SingleServerArgs;
 /// import com.pulumi.azurenative.dbformysql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -493,6 +561,27 @@ import 'storage_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbformysql_singleserver" "singleServer" {
+///   location = "westus"
+///   properties = {
+///     "createMode"     = "Replica"
+///     "sourceServerId" = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/MasterResourceGroup/providers/Microsoft.DBforMySQL/servers/masterserver"
+///   }
+///   resource_group_name = "TargetResourceGroup"
+///   server_name         = "targetserver"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -501,8 +590,8 @@ import 'storage_profile_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbformysql.SingleServer;
 /// import com.pulumi.azurenative.dbformysql.SingleServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -650,6 +739,36 @@ import 'storage_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbformysql_singleserver" "singleServer" {
+///   location = "westus"
+///   properties = {
+///     "createMode"     = "GeoRestore"
+///     "sourceServerId" = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver"
+///   }
+///   resource_group_name = "TargetResourceGroup"
+///   server_name         = "targetserver"
+///   sku = {
+///     capacity = 2
+///     family   = "Gen5"
+///     name     = "GP_Gen5_2"
+///     tier     = "GeneralPurpose"
+///   }
+///   tags = {
+///     "ElasticServer" = "1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -659,8 +778,8 @@ import 'storage_profile_response.dart';
 /// import com.pulumi.azurenative.dbformysql.SingleServer;
 /// import com.pulumi.azurenative.dbformysql.SingleServerArgs;
 /// import com.pulumi.azurenative.dbformysql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -2,8 +2,8 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'assigned_component_item.dart';
-import 'assigned_standard_item.dart';
 import 'assignment_properties_additional_data.dart';
+import 'common_assigned_standard_item.dart';
 
 /// {@template pulumi_security_assignment_args_doc}
 /// The set of arguments for Assignment.
@@ -15,7 +15,7 @@ class AssignmentArgs {
   /// Component item with key as applied to this standard assignment over the given scope
   final pulumi.Input<AssignedComponentItem>? assignedComponent;
   /// Standard item with key as applied to this standard assignment over the given scope
-  final pulumi.Input<AssignedStandardItem>? assignedStandard;
+  final pulumi.Input<CommonAssignedStandardItem>? assignedStandard;
   /// The security assignment key - unique key for the standard assignment
   final pulumi.Input<String>? assignmentId;
   /// description of the standardAssignment
@@ -28,15 +28,15 @@ class AssignmentArgs {
   final pulumi.Input<String>? expiresOn;
   /// Kind of the resource
   final pulumi.Input<String>? kind;
-  /// Location where the resource is stored
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// The assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
   final pulumi.Input<dynamic>? metadata;
-  /// The name of the resource group within the user's subscription. The name is case insensitive.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
   final pulumi.Input<String>? scope;
-  /// A list of key value pairs that describe the resource.
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [AssignmentArgs].
@@ -49,11 +49,11 @@ class AssignmentArgs {
   /// [effect] expected effect of this assignment (Disable/Exempt/etc)
   /// [expiresOn] Expiration date of this assignment as a full ISO date
   /// [kind] Kind of the resource
-  /// [location] Location where the resource is stored
+  /// [location] The geo-location where the resource lives
   /// [metadata] The assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
-  /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scope] Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
-  /// [tags] A list of key value pairs that describe the resource.
+  /// [tags] Resource tags.
   const AssignmentArgs({
     this.additionalData,
     this.assignedComponent,
@@ -75,7 +75,7 @@ class AssignmentArgs {
     return <String, dynamic>{
       'additionalData': ?pulumi.Input.mapOptionalInputValue<AssignmentPropertiesAdditionalData, Map<String, dynamic>>(additionalData, (value) => value.toMap()),
       'assignedComponent': ?pulumi.Input.mapOptionalInputValue<AssignedComponentItem, Map<String, dynamic>>(assignedComponent, (value) => value.toMap()),
-      'assignedStandard': ?pulumi.Input.mapOptionalInputValue<AssignedStandardItem, Map<String, dynamic>>(assignedStandard, (value) => value.toMap()),
+      'assignedStandard': ?pulumi.Input.mapOptionalInputValue<CommonAssignedStandardItem, Map<String, dynamic>>(assignedStandard, (value) => value.toMap()),
       'assignmentId': ?assignmentId,
       'description': ?description,
       'displayName': ?displayName,
@@ -94,7 +94,7 @@ class AssignmentArgs {
     return AssignmentArgs(
       additionalData: (() { final guardedValue = map['additionalData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AssignmentPropertiesAdditionalData.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       assignedComponent: (() { final guardedValue = map['assignedComponent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AssignedComponentItem.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      assignedStandard: (() { final guardedValue = map['assignedStandard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AssignedStandardItem.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      assignedStandard: (() { final guardedValue = map['assignedStandard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CommonAssignedStandardItem.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       assignmentId: (() { final guardedValue = map['assignmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -109,4 +109,3 @@ class AssignmentArgs {
     );
   }
 }
-

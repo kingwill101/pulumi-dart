@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebAppSlotConfigurationNamesArgs {
   /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetWebAppSlotConfigurationNamesArgs].
   /// [name] Name of the app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetWebAppSlotConfigurationNamesArgs({
     required this.name,
     required this.resourceGroupName,
@@ -34,4 +34,3 @@ class GetWebAppSlotConfigurationNamesArgs {
     );
   }
 }
-

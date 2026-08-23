@@ -16,4 +16,3 @@ enum CardinalityTypes {
     throw ArgumentError('Unknown CardinalityTypes value: $value');
   }
 }
-

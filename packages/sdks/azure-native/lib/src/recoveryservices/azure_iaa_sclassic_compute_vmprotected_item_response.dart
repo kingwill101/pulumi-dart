@@ -210,4 +210,3 @@ class AzureIaaSClassicComputeVMProtectedItemResponse {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum DynamicMemoryEnabled {
     throw ArgumentError('Unknown DynamicMemoryEnabled value: $value');
   }
 }
-

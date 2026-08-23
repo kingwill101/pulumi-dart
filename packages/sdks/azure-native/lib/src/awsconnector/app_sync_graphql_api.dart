@@ -296,6 +296,128 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_appsyncgraphqlapi" "appSyncGraphqlApi" {
+///   location = "fgdkdvbltlygm"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "yozrofizgppbrqqingfk"
+///     aws_account_id = "cbznxz"
+///     aws_properties = {
+///       additional_authentication_providers = [{
+///         "authenticationType" = {
+///           "value" = "AMAZON_COGNITO_USER_POOLS"
+///         }
+///         "lambdaAuthorizerConfig" = {
+///           "authorizerResultTtlInSeconds" = 30
+///           "authorizerUri"                = "hupypfpuanzvftlniinspu"
+///           "identityValidationExpression" = "hspldtc"
+///         }
+///         "openIDConnectConfig" = {
+///           "authTTL"  = 22
+///           "clientId" = "luiqpcaoupuxlkhifmjmssaujivibq"
+///           "iatTTL"   = 12
+///           "issuer"   = "gxglhkdfnvrrtsalksedpcukpk"
+///         }
+///         "userPoolConfig" = {
+///           "appIdClientRegex" = "qpfpcfsunn"
+///           "awsRegion"        = "nmpxe"
+///           "userPoolId"       = "jelygyotigqdtvomkxwllisaodzpme"
+///         }
+///       }]
+///       api_id = "czvdzpkqmu"
+///       api_type = {
+///         value = "GRAPHQL"
+///       }
+///       arn = "oasogwqjupaovgjaimqwyvcevu"
+///       authentication_type = {
+///         value = "AMAZON_COGNITO_USER_POOLS"
+///       }
+///       dns = {
+///         "key7870" = "hisezyodgicqjjumufmqumigd"
+///       }
+///       enhanced_metrics_config = {
+///         data_source_level_metrics_behavior = {
+///           value = "FULL_REQUEST_DATA_SOURCE_METRICS"
+///         }
+///         operation_level_metrics_config = {
+///           value = "DISABLED"
+///         }
+///         resolver_level_metrics_behavior = {
+///           value = "FULL_REQUEST_RESOLVER_METRICS"
+///         }
+///       }
+///       introspection_config = {
+///         value = "DISABLED"
+///       }
+///       lambda_authorizer_config = {
+///         authorizer_result_ttl_in_seconds = 30
+///         authorizer_uri                   = "hupypfpuanzvftlniinspu"
+///         identity_validation_expression   = "hspldtc"
+///       }
+///       log_config = {
+///         cloud_watch_logs_role_arn = "gsfpxvghd"
+///         exclude_verbose_content   = true
+///         field_log_level = {
+///           value = "ALL"
+///         }
+///       }
+///       merged_api_execution_role_arn = "ehtdxecdhgxhmtqhpneaqzgdtivz"
+///       name                          = "ahvfu"
+///       open_id_connect_config = {
+///         auth_ttl  = 22
+///         client_id = "luiqpcaoupuxlkhifmjmssaujivibq"
+///         iat_ttl   = 12
+///         issuer    = "gxglhkdfnvrrtsalksedpcukpk"
+///       }
+///       owner                = "pdudimkqozuoczxvlgmj"
+///       owner_contact        = "qkvw"
+///       query_depth_limit    = 14
+///       resolver_count_limit = 15
+///       tags = {
+///         "key7170" = "zsxndmftgxkxmbkaxswugk"
+///       }
+///       uris = {
+///         "key6507" = "kuadtmwcpmobgsxpxkfgfkd"
+///       }
+///       user_pool_config = {
+///         app_id_client_regex = "kjfgmmyyzmsywex"
+///         aws_region          = "knaq"
+///         default_action = {
+///           value = "ALLOW"
+///         }
+///         user_pool_id = "tbbntrreowxutvnasgmcdupsaxoooz"
+///       }
+///       visibility = {
+///         value = "GLOBAL"
+///       }
+///       waf_web_acl_arn = "fpy"
+///       xray_enabled    = true
+///     }
+///     aws_region        = "ponyxnfudopabngrux"
+///     aws_source_schema = "hldvwyk"
+///     aws_tags = {
+///       "key8377" = "aajkrvqksnrfkuhdmoh"
+///     }
+///     public_cloud_connectors_resource_id = "ljxfphaevwpkqtymdowsbhw"
+///     public_cloud_resource_name          = "xqnxjggrhseymoklvqpreiucveuev"
+///   }
+///   resource_group_name = "rgappSyncGraphqlApi"
+///   tags = {
+///     "key1836" = "msiwfkilmgweevppndbrh"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -320,8 +442,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.UserPoolConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.DefaultActionEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.GraphQLApiVisibilityEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -577,9 +699,9 @@ import 'system_data_response.dart';
 ///                     "identity_validation_expression": "hspldtc",
 ///                 },
 ///                 "open_id_connect_config": {
-///                     "auth_ttl": 22,
+///                     "auth_ttl": float(22),
 ///                     "client_id": "luiqpcaoupuxlkhifmjmssaujivibq",
-///                     "iat_ttl": 12,
+///                     "iat_ttl": float(12),
 ///                     "issuer": "gxglhkdfnvrrtsalksedpcukpk",
 ///                 },
 ///                 "user_pool_config": {
@@ -628,9 +750,9 @@ import 'system_data_response.dart';
 ///             "merged_api_execution_role_arn": "ehtdxecdhgxhmtqhpneaqzgdtivz",
 ///             "name": "ahvfu",
 ///             "open_id_connect_config": {
-///                 "auth_ttl": 22,
+///                 "auth_ttl": float(22),
 ///                 "client_id": "luiqpcaoupuxlkhifmjmssaujivibq",
-///                 "iat_ttl": 12,
+///                 "iat_ttl": float(12),
 ///                 "issuer": "gxglhkdfnvrrtsalksedpcukpk",
 ///             },
 ///             "owner": "pdudimkqozuoczxvlgmj",

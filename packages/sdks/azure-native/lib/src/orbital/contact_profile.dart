@@ -186,6 +186,74 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_orbital_contactprofile" "contactProfile" {
+///   auto_tracking_configuration = "disabled"
+///   contact_profile_name        = "CONTOSO-CP"
+///   event_hub_uri               = "/subscriptions/c1be1141-a7c9-4aac-9608-3c2e2f1152c3/resourceGroups/contoso-Rgp/providers/Microsoft.EventHub/namespaces/contosoHub/eventhubs/contosoHub"
+///   links {
+///     channels {
+///       bandwidth_m_hz        = 2
+///       center_frequency_m_hz = 2250
+///       end_point = {
+///         end_point_name = "ContosoTest_Uplink"
+///         ip_address     = "10.1.0.4"
+///         port           = "50000"
+///         protocol       = "TCP"
+///       }
+///       name = "contoso-uplink-channel"
+///     }
+///     direction             = "Uplink"
+///     eirpd_bw              = 45
+///     gain_over_temperature = 0
+///     name                  = "contoso-uplink"
+///     polarization          = "LHCP"
+///   }
+///   links {
+///     channels {
+///       bandwidth_m_hz        = 15
+///       center_frequency_m_hz = 8160
+///       end_point = {
+///         end_point_name = "ContosoTest_Downlink"
+///         ip_address     = "10.1.0.5"
+///         port           = "50001"
+///         protocol       = "UDP"
+///       }
+///       name = "contoso-downlink-channel"
+///     }
+///     direction             = "Downlink"
+///     eirpd_bw              = 0
+///     gain_over_temperature = 25
+///     name                  = "contoso-downlink"
+///     polarization          = "RHCP"
+///   }
+///   location                        = "eastus2"
+///   minimum_elevation_degrees       = 5
+///   minimum_viable_contact_duration = "PT1M"
+///   network_configuration = {
+///     subnet_id = "/subscriptions/c1be1141-a7c9-4aac-9608-3c2e2f1152c3/resourceGroups/contoso-Rgp/providers/Microsoft.Network/virtualNetworks/contoso-vnet/subnets/orbital-delegated-subnet"
+///   }
+///   resource_group_name = "contoso-Rgp"
+///   third_party_configurations {
+///     mission_configuration = "Ksat_MissionConfiguration"
+///     provider_name         = "KSAT"
+///   }
+///   third_party_configurations {
+///     mission_configuration = "Viasat_Configuration"
+///     provider_name         = "VIASAT"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -197,8 +265,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.orbital.inputs.ContactProfileLinkArgs;
 /// import com.pulumi.azurenative.orbital.inputs.ContactProfilesPropertiesNetworkConfigurationArgs;
 /// import com.pulumi.azurenative.orbital.inputs.ContactProfileThirdPartyConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -352,8 +420,8 @@ import 'system_data_response.dart';
 ///     links=[
 ///         {
 ///             "channels": [{
-///                 "bandwidth_m_hz": 2,
-///                 "center_frequency_m_hz": 2250,
+///                 "bandwidth_m_hz": float(2),
+///                 "center_frequency_m_hz": float(2250),
 ///                 "end_point": {
 ///                     "end_point_name": "ContosoTest_Uplink",
 ///                     "ip_address": "10.1.0.4",
@@ -363,15 +431,15 @@ import 'system_data_response.dart';
 ///                 "name": "contoso-uplink-channel",
 ///             }],
 ///             "direction": azure_native.orbital.Direction.UPLINK,
-///             "eirpd_bw": 45,
-///             "gain_over_temperature": 0,
+///             "eirpd_bw": float(45),
+///             "gain_over_temperature": float(0),
 ///             "name": "contoso-uplink",
 ///             "polarization": azure_native.orbital.Polarization.LHCP,
 ///         },
 ///         {
 ///             "channels": [{
-///                 "bandwidth_m_hz": 15,
-///                 "center_frequency_m_hz": 8160,
+///                 "bandwidth_m_hz": float(15),
+///                 "center_frequency_m_hz": float(8160),
 ///                 "end_point": {
 ///                     "end_point_name": "ContosoTest_Downlink",
 ///                     "ip_address": "10.1.0.5",
@@ -381,14 +449,14 @@ import 'system_data_response.dart';
 ///                 "name": "contoso-downlink-channel",
 ///             }],
 ///             "direction": azure_native.orbital.Direction.DOWNLINK,
-///             "eirpd_bw": 0,
-///             "gain_over_temperature": 25,
+///             "eirpd_bw": float(0),
+///             "gain_over_temperature": float(25),
 ///             "name": "contoso-downlink",
 ///             "polarization": azure_native.orbital.Polarization.RHCP,
 ///         },
 ///     ],
 ///     location="eastus2",
-///     minimum_elevation_degrees=5,
+///     minimum_elevation_degrees=float(5),
 ///     minimum_viable_contact_duration="PT1M",
 ///     network_configuration={
 ///         "subnet_id": "/subscriptions/c1be1141-a7c9-4aac-9608-3c2e2f1152c3/resourceGroups/contoso-Rgp/providers/Microsoft.Network/virtualNetworks/contoso-vnet/subnets/orbital-delegated-subnet",

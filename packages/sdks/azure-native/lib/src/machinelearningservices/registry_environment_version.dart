@@ -1,13 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'environment_version_response.dart';
+import 'environment_version_properties_registry_environment_version_response.dart';
 import 'registry_environment_version_args.dart';
 import 'system_data_response.dart';
 
 /// Azure Resource Manager resource envelope.
 ///
-/// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+/// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 ///
-/// Other available API versions: 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -24,7 +24,7 @@ import 'system_data_response.dart';
 ///     var registryEnvironmentVersion = new AzureNative.MachineLearningServices.RegistryEnvironmentVersion("registryEnvironmentVersion", new()
 ///     {
 ///         EnvironmentName = "string",
-///         EnvironmentVersionProperties = new AzureNative.MachineLearningServices.Inputs.EnvironmentVersionArgs
+///         Properties = new AzureNative.MachineLearningServices.Inputs.EnvironmentVersionPropertiesArgs
 ///         {
 ///             Build = new AzureNative.MachineLearningServices.Inputs.BuildContextArgs
 ///             {
@@ -84,7 +84,7 @@ import 'system_data_response.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := machinelearningservices.NewRegistryEnvironmentVersion(ctx, "registryEnvironmentVersion", &machinelearningservices.RegistryEnvironmentVersionArgs{
 /// 			EnvironmentName: pulumi.String("string"),
-/// 			EnvironmentVersionProperties: &machinelearningservices.EnvironmentVersionTypeArgs{
+/// 			Properties: &machinelearningservices.EnvironmentVersionPropertiesArgs{
 /// 				Build: &machinelearningservices.BuildContextArgs{
 /// 					ContextUri:     pulumi.String("https://storage-account.blob.core.windows.net/azureml/DockerBuildContext/95ddede6b9b8c4e90472db3acd0a8d28/"),
 /// 					DockerfilePath: pulumi.String("prod/Dockerfile"),
@@ -127,6 +127,54 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_registryenvironmentversion" "registryEnvironmentVersion" {
+///   environment_name = "string"
+///   properties = {
+///     build = {
+///       context_uri     = "https://storage-account.blob.core.windows.net/azureml/DockerBuildContext/95ddede6b9b8c4e90472db3acd0a8d28/"
+///       dockerfile_path = "prod/Dockerfile"
+///     }
+///     conda_file  = "string"
+///     description = "string"
+///     image       = "docker.io/tensorflow/serving:latest"
+///     inference_config = {
+///       liveness_route = {
+///         path = "string"
+///         port = 1
+///       }
+///       readiness_route = {
+///         path = "string"
+///         port = 1
+///       }
+///       scoring_route = {
+///         path = "string"
+///         port = 1
+///       }
+///     }
+///     is_anonymous = false
+///     properties = {
+///       "string" = "string"
+///     }
+///     tags = {
+///       "string" = "string"
+///     }
+///   }
+///   registry_name       = "my-aml-registry"
+///   resource_group_name = "test-rg"
+///   version             = "string"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -135,12 +183,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.RegistryEnvironmentVersion;
 /// import com.pulumi.azurenative.machinelearningservices.RegistryEnvironmentVersionArgs;
-/// import com.pulumi.azurenative.machinelearningservices.inputs.EnvironmentVersionArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.EnvironmentVersionPropertiesArgs;
 /// import com.pulumi.azurenative.machinelearningservices.inputs.BuildContextArgs;
 /// import com.pulumi.azurenative.machinelearningservices.inputs.InferenceContainerPropertiesArgs;
 /// import com.pulumi.azurenative.machinelearningservices.inputs.RouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -154,7 +202,7 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var registryEnvironmentVersion = new RegistryEnvironmentVersion("registryEnvironmentVersion", RegistryEnvironmentVersionArgs.builder()
 ///             .environmentName("string")
-///             .environmentVersionProperties(EnvironmentVersionArgs.builder()
+///             .properties(EnvironmentVersionPropertiesArgs.builder()
 ///                 .build(BuildContextArgs.builder()
 ///                     .contextUri("https://storage-account.blob.core.windows.net/azureml/DockerBuildContext/95ddede6b9b8c4e90472db3acd0a8d28/")
 ///                     .dockerfilePath("prod/Dockerfile")
@@ -196,7 +244,7 @@ import 'system_data_response.dart';
 ///
 /// const registryEnvironmentVersion = new azure_native.machinelearningservices.RegistryEnvironmentVersion("registryEnvironmentVersion", {
 ///     environmentName: "string",
-///     environmentVersionProperties: {
+///     properties: {
 ///         build: {
 ///             contextUri: "https://storage-account.blob.core.windows.net/azureml/DockerBuildContext/95ddede6b9b8c4e90472db3acd0a8d28/",
 ///             dockerfilePath: "prod/Dockerfile",
@@ -239,7 +287,7 @@ import 'system_data_response.dart';
 ///
 /// registry_environment_version = azure_native.machinelearningservices.RegistryEnvironmentVersion("registryEnvironmentVersion",
 ///     environment_name="string",
-///     environment_version_properties={
+///     properties={
 ///         "build": {
 ///             "context_uri": "https://storage-account.blob.core.windows.net/azureml/DockerBuildContext/95ddede6b9b8c4e90472db3acd0a8d28/",
 ///             "dockerfile_path": "prod/Dockerfile",
@@ -281,7 +329,7 @@ import 'system_data_response.dart';
 ///     type: azure-native:machinelearningservices:RegistryEnvironmentVersion
 ///     properties:
 ///       environmentName: string
-///       environmentVersionProperties:
+///       properties:
 ///         build:
 ///           contextUri: https://storage-account.blob.core.windows.net/azureml/DockerBuildContext/95ddede6b9b8c4e90472db3acd0a8d28/
 ///           dockerfilePath: prod/Dockerfile
@@ -322,10 +370,10 @@ import 'system_data_response.dart';
 class RegistryEnvironmentVersion extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// [Required] Additional attributes of the entity.
-  late final pulumi.Output<EnvironmentVersionResponse> environmentVersionProperties;
   /// The name of the resource
   late final pulumi.Output<String> name;
+  /// [Required] Additional attributes of the entity.
+  late final pulumi.Output<EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse> properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -346,8 +394,8 @@ class RegistryEnvironmentVersion extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    environmentVersionProperties = registerOutput<EnvironmentVersionResponse>('environmentVersionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentVersionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    properties = registerOutput<EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'p2_sconnection_configuration_response.dart';
+import 'p2_sconnection_configurationget_p2s_vpn_gateway_p2s_vpn_connection_health_response.dart';
 import 'sub_resource_response.dart';
 import 'vpn_client_connection_health_response.dart';
 
@@ -20,7 +20,7 @@ class GetP2sVpnGatewayP2sVpnConnectionHealthResult {
   /// Resource name.
   final String name;
   /// List of all p2s connection configurations of the gateway.
-  final List<P2SConnectionConfigurationResponse>? p2SConnectionConfigurations;
+  final List<P2SConnectionConfigurationgetP2sVpnGatewayP2sVpnConnectionHealthResponse>? p2SConnectionConfigurations;
   /// The provisioning state of the P2S VPN gateway resource.
   final String provisioningState;
   /// Resource tags.
@@ -76,7 +76,7 @@ class GetP2sVpnGatewayP2sVpnConnectionHealthResult {
       'isRoutingPreferenceInternet': ?isRoutingPreferenceInternet,
       'location': location,
       'name': name,
-      'p2SConnectionConfigurations': ?(() { final guardedValue = p2SConnectionConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<P2SConnectionConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'p2SConnectionConfigurations': ?(() { final guardedValue = p2SConnectionConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<P2SConnectionConfigurationgetP2sVpnGatewayP2sVpnConnectionHealthResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'provisioningState': provisioningState,
       'tags': ?tags,
       'type': type,
@@ -95,7 +95,7 @@ class GetP2sVpnGatewayP2sVpnConnectionHealthResult {
       isRoutingPreferenceInternet: (() { final guardedValue = map['isRoutingPreferenceInternet']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      p2SConnectionConfigurations: (() { final guardedValue = map['p2SConnectionConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<P2SConnectionConfigurationResponse>(guardedValue, (value) => P2SConnectionConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      p2SConnectionConfigurations: (() { final guardedValue = map['p2SConnectionConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<P2SConnectionConfigurationgetP2sVpnGatewayP2sVpnConnectionHealthResponse>(guardedValue, (value) => P2SConnectionConfigurationgetP2sVpnGatewayP2sVpnConnectionHealthResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       provisioningState: map['provisioningState'] as String,
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
@@ -106,4 +106,3 @@ class GetP2sVpnGatewayP2sVpnConnectionHealthResult {
     );
   }
 }
-

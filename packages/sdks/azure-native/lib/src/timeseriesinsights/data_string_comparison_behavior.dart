@@ -15,4 +15,3 @@ enum DataStringComparisonBehavior {
     throw ArgumentError('Unknown DataStringComparisonBehavior value: $value');
   }
 }
-

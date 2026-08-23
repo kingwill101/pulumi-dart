@@ -37,4 +37,3 @@ class K8sNetworkSettings {
     );
   }
 }
-

@@ -70,6 +70,30 @@ import 'private_endpoint_connection_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_privateendpointconnection" "privateEndpointConnection" {
+///   e_tag                            = "\"00009300-0000-0300-0000-602b967b0000\""
+///   private_endpoint_connection_name = "custestpece80project3980pe.7e35576b-3df4-478e-9759-f64351cf4f43"
+///   project_name                     = "abgoyalWEselfhostb72bproject"
+///   properties = {
+///     private_link_service_connection_state = {
+///       actions_required = ""
+///       status           = "Approved"
+///     }
+///   }
+///   resource_group_name = "abgoyal-westEurope"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +104,8 @@ import 'private_endpoint_connection_properties_response.dart';
 /// import com.pulumi.azurenative.migrate.PrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.migrate.inputs.PrivateEndpointConnectionPropertiesArgs;
 /// import com.pulumi.azurenative.migrate.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

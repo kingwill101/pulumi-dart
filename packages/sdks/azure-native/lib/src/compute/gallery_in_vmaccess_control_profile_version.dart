@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2024-03-03.
 ///
-/// Other available API versions: 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-03-03, 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -171,6 +171,58 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_galleryinvmaccesscontrolprofileversion" "galleryInVMAccessControlProfileVersion" {
+///   default_access                            = "Allow"
+///   exclude_from_latest                       = false
+///   gallery_name                              = "myGalleryName"
+///   in_vm_access_control_profile_name         = "myInVMAccessControlProfileName"
+///   in_vm_access_control_profile_version_name = "1.0.0"
+///   location                                  = "West US"
+///   mode                                      = "Audit"
+///   resource_group_name                       = "myResourceGroup"
+///   rules = {
+///     identities = [{
+///       "exePath"     = "C:\\Windows\\System32\\cscript.exe"
+///       "groupName"   = "Administrators"
+///       "name"        = "WinPA"
+///       "processName" = "cscript"
+///       "userName"    = "SYSTEM"
+///     }]
+///     privileges = [{
+///       "name" = "GoalState"
+///       "path" = "/machine"
+///       "queryParameters" = {
+///         "comp" = "goalstate"
+///       }
+///     }]
+///     role_assignments = [{
+///       "identities" = ["WinPA"]
+///       "role"       = "Provisioning"
+///     }]
+///     roles = [{
+///       "name"       = "Provisioning"
+///       "privileges" = ["GoalState"]
+///     }]
+///   }
+///   target_locations {
+///     name = "West US"
+///   }
+///   target_locations {
+///     name = "South Central US"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -181,8 +233,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.GalleryInVMAccessControlProfileVersionArgs;
 /// import com.pulumi.azurenative.compute.inputs.AccessControlRulesArgs;
 /// import com.pulumi.azurenative.compute.inputs.TargetRegionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

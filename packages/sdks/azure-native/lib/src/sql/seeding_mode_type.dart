@@ -15,4 +15,3 @@ enum SeedingModeType {
     throw ArgumentError('Unknown SeedingModeType value: $value');
   }
 }
-

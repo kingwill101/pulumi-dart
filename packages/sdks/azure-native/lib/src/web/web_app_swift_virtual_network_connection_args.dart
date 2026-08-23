@@ -11,7 +11,7 @@ class WebAppSwiftVirtualNetworkConnectionArgs {
   final pulumi.Input<String>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The Virtual Network subnet's resource ID. This is the subnet that this Web App will join. This subnet must have a delegation to Microsoft.Web/serverFarms defined first.
   final pulumi.Input<String>? subnetResourceId;
@@ -21,7 +21,7 @@ class WebAppSwiftVirtualNetworkConnectionArgs {
   /// Creates a new [WebAppSwiftVirtualNetworkConnectionArgs].
   /// [kind] Kind of resource.
   /// [name] Name of the app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [subnetResourceId] The Virtual Network subnet's resource ID. This is the subnet that this Web App will join. This subnet must have a delegation to Microsoft.Web/serverFarms defined first.
   /// [swiftSupported] A flag that specifies if the scale unit this Web App is on supports Swift integration.
   const WebAppSwiftVirtualNetworkConnectionArgs({
@@ -52,4 +52,3 @@ class WebAppSwiftVirtualNetworkConnectionArgs {
     );
   }
 }
-

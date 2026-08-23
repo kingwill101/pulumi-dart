@@ -1,14 +1,14 @@
 /// Status of the credit
 enum CreditStatus {
-  valueUnknown("Unknown"),
-  valuePending("Pending"),
-  valueActive("Active"),
-  valueSucceeded("Succeeded"),
-  valueCanceled("Canceled"),
-  valueFailed("Failed"),
-  valueExpired("Expired"),
-  valueExhausted("Exhausted"),
-  valueNotStarted("NotStarted");
+  unknown("Unknown"),
+  pending("Pending"),
+  active("Active"),
+  succeeded("Succeeded"),
+  canceled("Canceled"),
+  failed("Failed"),
+  expired("Expired"),
+  exhausted("Exhausted"),
+  notStarted("NotStarted");
 
   const CreditStatus(this.wireValue);
   final String wireValue;
@@ -22,4 +22,3 @@ enum CreditStatus {
     throw ArgumentError('Unknown CreditStatus value: $value');
   }
 }
-

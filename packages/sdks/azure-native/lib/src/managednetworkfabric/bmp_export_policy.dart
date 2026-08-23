@@ -16,4 +16,3 @@ enum BmpExportPolicy {
     throw ArgumentError('Unknown BmpExportPolicy value: $value');
   }
 }
-

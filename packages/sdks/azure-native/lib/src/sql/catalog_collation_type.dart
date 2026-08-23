@@ -15,4 +15,3 @@ enum CatalogCollationType {
     throw ArgumentError('Unknown CatalogCollationType value: $value');
   }
 }
-

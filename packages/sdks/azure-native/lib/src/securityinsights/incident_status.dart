@@ -16,4 +16,3 @@ enum IncidentStatus {
     throw ArgumentError('Unknown IncidentStatus value: $value');
   }
 }
-

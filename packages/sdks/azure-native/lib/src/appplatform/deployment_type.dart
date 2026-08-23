@@ -189,6 +189,77 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_deployment" "deployment" {
+///   app_name        = "myapp"
+///   deployment_name = "mydeployment"
+///   properties = {
+///     deployment_settings = {
+///       addon_configs = {
+///         "ApplicationConfigurationService" = {
+///           "patterns" = ["mypattern"]
+///         }
+///       }
+///       apms = [{
+///         "resourceId" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/apms/myappinsights"
+///       }]
+///       environment_variables = {
+///         "env" = "test"
+///       }
+///       liveness_probe = {
+///         disable_probe         = false
+///         failure_threshold     = 3
+///         initial_delay_seconds = 30
+///         period_seconds        = 10
+///         probe_action = {
+///           "path"   = "/health"
+///           "scheme" = "HTTP"
+///           "type"   = "HTTPGetAction"
+///         }
+///       }
+///       readiness_probe = {
+///         disable_probe         = false
+///         failure_threshold     = 3
+///         initial_delay_seconds = 30
+///         period_seconds        = 10
+///         probe_action = {
+///           "path"   = "/health"
+///           "scheme" = "HTTP"
+///           "type"   = "HTTPGetAction"
+///         }
+///       }
+///       resource_requests = {
+///         cpu    = "1000m"
+///         memory = "3Gi"
+///       }
+///       termination_grace_period_seconds = 30
+///     }
+///     source = {
+///       "artifactSelector" = "sub-module-1"
+///       "relativePath"     = "resources/a172cedcae47474b615c54d510a5d84a8dea3032e958587430b413538be3f333-2019082605-e3095339-1723-44b7-8b5e-31b1003978bc"
+///       "type"             = "Source"
+///       "version"          = "1.0"
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+///   sku = {
+///     capacity = 1
+///     name     = "S0"
+///     tier     = "Standard"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -202,8 +273,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.inputs.ProbeArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ResourceRequestsArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -220,7 +291,7 @@ import 'system_data_response.dart';
 ///             .deploymentName("mydeployment")
 ///             .properties(DeploymentResourcePropertiesArgs.builder()
 ///                 .deploymentSettings(DeploymentSettingsArgs.builder()
-///                     .addonConfigs(Map.of("ApplicationConfigurationService", Map.of("patterns", "mypattern")))
+///                     .addonConfigs(Map.of("ApplicationConfigurationService", Map.of("patterns", Arrays.asList("mypattern"))))
 ///                     .apms(ApmReferenceArgs.builder()
 ///                         .resourceId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/apms/myappinsights")
 ///                         .build())
@@ -626,6 +697,72 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_deployment" "deployment" {
+///   app_name        = "myapp"
+///   deployment_name = "mydeployment"
+///   properties = {
+///     deployment_settings = {
+///       environment_variables = {
+///         "env" = "test"
+///       }
+///       liveness_probe = {
+///         disable_probe         = false
+///         failure_threshold     = 3
+///         initial_delay_seconds = 30
+///         period_seconds        = 10
+///         probe_action = {
+///           "path"   = "/health"
+///           "scheme" = "HTTP"
+///           "type"   = "HTTPGetAction"
+///         }
+///       }
+///       readiness_probe = {
+///         disable_probe         = false
+///         failure_threshold     = 3
+///         initial_delay_seconds = 30
+///         period_seconds        = 10
+///         probe_action = {
+///           "path"   = "/health"
+///           "scheme" = "HTTP"
+///           "type"   = "HTTPGetAction"
+///         }
+///       }
+///       resource_requests = {
+///         cpu    = "1000m"
+///         memory = "3Gi"
+///       }
+///       termination_grace_period_seconds = 30
+///     }
+///     source = {
+///       "customContainer" = {
+///         "args"           = ["-c", "while true; do echo hello; sleep 10;done"]
+///         "command"        = ["/bin/sh"]
+///         "containerImage" = "myContainerImage:v1"
+///         "imageRegistryCredential" = {
+///           "password" = "myPassword"
+///           "username" = "myUsername"
+///         }
+///         "languageFramework" = "springboot"
+///         "server"            = "myacr.azurecr.io"
+///       }
+///       "type" = "Container"
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -638,8 +775,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.inputs.DeploymentSettingsArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ProbeArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ResourceRequestsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

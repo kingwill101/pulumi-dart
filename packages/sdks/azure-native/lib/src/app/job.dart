@@ -10,7 +10,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
 ///
-/// Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -188,6 +188,66 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_job" "job" {
+///   configuration = {
+///     manual_trigger_config = {
+///       parallelism              = 4
+///       replica_completion_count = 1
+///     }
+///     replica_retry_limit = 10
+///     replica_timeout     = 10
+///     trigger_type        = "Manual"
+///   }
+///   environment_id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/connectedEnvironments/demokube"
+///   extended_location = {
+///     name = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.ExtendedLocation/customLocations/testcustomlocation"
+///     type = "CustomLocation"
+///   }
+///   job_name            = "testcontainerAppsJob0"
+///   location            = "East US"
+///   resource_group_name = "rg"
+///   template = {
+///     containers = [{
+///       "image" = "repo/testcontainerAppsJob0:v1"
+///       "name"  = "testcontainerAppsJob0"
+///       "probes" = [{
+///         "httpGet" = {
+///           "httpHeaders" = [{
+///             "name"  = "Custom-Header"
+///             "value" = "Awesome"
+///           }]
+///           "path" = "/health"
+///           "port" = 8080
+///         }
+///         "initialDelaySeconds" = 5
+///         "periodSeconds"       = 3
+///         "type"                = "Liveness"
+///       }]
+///     }]
+///     init_containers = [{
+///       "args"    = ["-c", "while true; do echo hello; sleep 10;done"]
+///       "command" = ["/bin/sh"]
+///       "image"   = "repo/testcontainerAppsJob0:v4"
+///       "name"    = "testinitcontainerAppsJob0"
+///       "resources" = {
+///         "cpu"    = 0.2
+///         "memory" = "100Mi"
+///       }
+///     }]
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +260,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.inputs.JobConfigurationManualTriggerConfigArgs;
 /// import com.pulumi.azurenative.app.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.app.inputs.JobTemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -1,8 +1,8 @@
 /// Indicates the flow of the ingestion.
 enum IngestionMode {
-  valueApplicationInsights("ApplicationInsights"),
-  valueApplicationInsightsWithDiagnosticSettings("ApplicationInsightsWithDiagnosticSettings"),
-  valueLogAnalytics("LogAnalytics");
+  applicationInsights("ApplicationInsights"),
+  applicationInsightsWithDiagnosticSettings("ApplicationInsightsWithDiagnosticSettings"),
+  logAnalytics("LogAnalytics");
 
   const IngestionMode(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum IngestionMode {
     throw ArgumentError('Unknown IngestionMode value: $value');
   }
 }
-

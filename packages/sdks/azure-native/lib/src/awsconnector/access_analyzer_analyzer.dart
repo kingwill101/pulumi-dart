@@ -40,7 +40,23 @@ import 'system_data_response.dart';
 ///                     {
 ///                         Filter = new[]
 ///                         {
-///                             null,
+///                             new AzureNative.AwsConnector.Inputs.FilterArgs
+///                             {
+///                                 Contains = new[]
+///                                 {
+///                                     "hpzoliradchznu",
+///                                 },
+///                                 Eq = new[]
+///                                 {
+///                                     "vlrqwrfkkwxvyxmqpbmwkxig",
+///                                 },
+///                                 Exists = true,
+///                                 Neq = new[]
+///                                 {
+///                                     "ro",
+///                                 },
+///                                 Property = "pzndukmteempygtvmsrcrjulphe",
+///                             },
 ///                         },
 ///                         RuleName = "hvfnklcbuefkibrtayx",
 ///                     },
@@ -101,7 +117,19 @@ import 'system_data_response.dart';
 /// 					ArchiveRules: awsconnector.ArchiveRuleArray{
 /// 						&awsconnector.ArchiveRuleArgs{
 /// 							Filter: awsconnector.FilterArray{
-/// 								&awsconnector.FilterArgs{},
+/// 								&awsconnector.FilterArgs{
+/// 									Contains: pulumi.StringArray{
+/// 										pulumi.String("hpzoliradchznu"),
+/// 									},
+/// 									Eq: pulumi.StringArray{
+/// 										pulumi.String("vlrqwrfkkwxvyxmqpbmwkxig"),
+/// 									},
+/// 									Exists: pulumi.Bool(true),
+/// 									Neq: pulumi.StringArray{
+/// 										pulumi.String("ro"),
+/// 									},
+/// 									Property: pulumi.String("pzndukmteempygtvmsrcrjulphe"),
+/// 								},
 /// 							},
 /// 							RuleName: pulumi.String("hvfnklcbuefkibrtayx"),
 /// 						},
@@ -137,6 +165,59 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_accessanalyzeranalyzer" "accessAnalyzerAnalyzer" {
+///   location = "jpcbvhsspnqhnreartkjyr"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "dgzbebaorvepu"
+///     aws_account_id = "pvsawejgihtmvcjqnob"
+///     aws_properties = {
+///       analyzer_configuration = {
+///         unused_access_age = 29
+///       }
+///       analyzer_name = "owom"
+///       archive_rules = [{
+///         "filter" = [{
+///           "contains" = ["hpzoliradchznu"]
+///           "eq"       = ["vlrqwrfkkwxvyxmqpbmwkxig"]
+///           "exists"   = true
+///           "neq"      = ["ro"]
+///           "property" = "pzndukmteempygtvmsrcrjulphe"
+///         }]
+///         "ruleName" = "hvfnklcbuefkibrtayx"
+///       }]
+///       arn = "bmt"
+///       tags = [{
+///         "key"   = "xeapsjw"
+///         "value" = "mtcjrbabaynnrmqttjf"
+///       }]
+///       type = "vswmvhmkyxepqkvvksbglssmrgg"
+///     }
+///     aws_region        = "edosnsqdwcvgl"
+///     aws_source_schema = "ur"
+///     aws_tags = {
+///       "key746" = "ux"
+///     }
+///     public_cloud_connectors_resource_id = "qfefhuzrkvg"
+///     public_cloud_resource_name          = "euuddejz"
+///   }
+///   resource_group_name = "rgaccessAnalyzerAnalyzer"
+///   tags = {
+///     "key5531" = "fkyuwvyhzd"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -148,8 +229,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AccessAnalyzerAnalyzerPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsAccessAnalyzerAnalyzerPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.UnusedAccessConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -174,6 +255,11 @@ import 'system_data_response.dart';
 ///                     .analyzerName("owom")
 ///                     .archiveRules(ArchiveRuleArgs.builder()
 ///                         .filter(FilterArgs.builder()
+///                             .contains("hpzoliradchznu")
+///                             .eq("vlrqwrfkkwxvyxmqpbmwkxig")
+///                             .exists(true)
+///                             .neq("ro")
+///                             .property("pzndukmteempygtvmsrcrjulphe")
 ///                             .build())
 ///                         .ruleName("hvfnklcbuefkibrtayx")
 ///                         .build())
@@ -215,7 +301,13 @@ import 'system_data_response.dart';
 ///             },
 ///             analyzerName: "owom",
 ///             archiveRules: [{
-///                 filter: [{}],
+///                 filter: [{
+///                     contains: ["hpzoliradchznu"],
+///                     eq: ["vlrqwrfkkwxvyxmqpbmwkxig"],
+///                     exists: true,
+///                     neq: ["ro"],
+///                     property: "pzndukmteempygtvmsrcrjulphe",
+///                 }],
 ///                 ruleName: "hvfnklcbuefkibrtayx",
 ///             }],
 ///             arn: "bmt",
@@ -257,7 +349,13 @@ import 'system_data_response.dart';
 ///             },
 ///             "analyzer_name": "owom",
 ///             "archive_rules": [{
-///                 "filter": [{}],
+///                 "filter": [{
+///                     "contains": ["hpzoliradchznu"],
+///                     "eq": ["vlrqwrfkkwxvyxmqpbmwkxig"],
+///                     "exists": True,
+///                     "neq": ["ro"],
+///                     "property": "pzndukmteempygtvmsrcrjulphe",
+///                 }],
 ///                 "rule_name": "hvfnklcbuefkibrtayx",
 ///             }],
 ///             "arn": "bmt",
@@ -298,7 +396,14 @@ import 'system_data_response.dart';
 ///           analyzerName: owom
 ///           archiveRules:
 ///             - filter:
-///                 - {}
+///                 - contains:
+///                     - hpzoliradchznu
+///                   eq:
+///                     - vlrqwrfkkwxvyxmqpbmwkxig
+///                   exists: true
+///                   neq:
+///                     - ro
+///                   property: pzndukmteempygtvmsrcrjulphe
 ///               ruleName: hvfnklcbuefkibrtayx
 ///           arn: bmt
 ///           tags:

@@ -288,6 +288,66 @@ import 'stream_declaration_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_datacollectionrule" "dataCollectionRule" {
+///   data_collection_rule_name = "myCollectionRule"
+///   data_flows {
+///     destinations = ["centralWorkspace"]
+///     streams      = ["Microsoft-Perf", "Microsoft-Syslog", "Microsoft-WindowsEvent"]
+///   }
+///   data_sources = {
+///     performance_counters = [{
+///       "counterSpecifiers"          = ["\\Processor(_Total)\\% Processor Time", "\\Memory\\Committed Bytes", "\\LogicalDisk(_Total)\\Free Megabytes", "\\PhysicalDisk(_Total)\\Avg. Disk Queue Length"]
+///       "name"                       = "cloudTeamCoreCounters"
+///       "samplingFrequencyInSeconds" = 15
+///       "streams"                    = ["Microsoft-Perf"]
+///       }, {
+///       "counterSpecifiers"          = ["\\Process(_Total)\\Thread Count"]
+///       "name"                       = "appTeamExtraCounters"
+///       "samplingFrequencyInSeconds" = 30
+///       "streams"                    = ["Microsoft-Perf"]
+///     }]
+///     syslog = [{
+///       "facilityNames" = ["cron"]
+///       "logLevels"     = ["Debug", "Critical", "Emergency"]
+///       "name"          = "cronSyslog"
+///       "streams"       = ["Microsoft-Syslog"]
+///       }, {
+///       "facilityNames" = ["syslog"]
+///       "logLevels"     = ["Alert", "Critical", "Emergency"]
+///       "name"          = "syslogBase"
+///       "streams"       = ["Microsoft-Syslog"]
+///     }]
+///     windows_event_logs = [{
+///       "name"         = "cloudSecurityTeamEvents"
+///       "streams"      = ["Microsoft-WindowsEvent"]
+///       "xPathQueries" = ["Security!"]
+///       }, {
+///       "name"         = "appTeam1AppEvents"
+///       "streams"      = ["Microsoft-WindowsEvent"]
+///       "xPathQueries" = ["System![System[(Level = 1 or Level = 2 or Level = 3)]]", "Application!*[System[(Level = 1 or Level = 2 or Level = 3)]]"]
+///     }]
+///   }
+///   destinations = {
+///     log_analytics = [{
+///       "name"                = "centralWorkspace"
+///       "workspaceResourceId" = "/subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.OperationalInsights/workspaces/centralTeamWorkspace"
+///     }]
+///   }
+///   location            = "eastus"
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -299,8 +359,8 @@ import 'stream_declaration_response.dart';
 /// import com.pulumi.azurenative.monitor.inputs.DataFlowArgs;
 /// import com.pulumi.azurenative.monitor.inputs.DataCollectionRuleDataSourcesArgs;
 /// import com.pulumi.azurenative.monitor.inputs.DataCollectionRuleDestinationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -2,16 +2,16 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// The user owned AML workspace for Cognitive Services account.
+/// The user owned AML account for Cognitive Services account.
 class UserOwnedAmlWorkspace {
-  /// Identity Client id of a AML workspace resource.
+  /// Identity Client id of a AML account resource.
   final pulumi.Input<String>? identityClientId;
-  /// Full resource id of a AML workspace resource.
+  /// Full resource id of a AML account resource.
   final pulumi.Input<String>? resourceId;
 
   /// Creates a new [UserOwnedAmlWorkspace].
-  /// [identityClientId] Identity Client id of a AML workspace resource.
-  /// [resourceId] Full resource id of a AML workspace resource.
+  /// [identityClientId] Identity Client id of a AML account resource.
+  /// [resourceId] Full resource id of a AML account resource.
   const UserOwnedAmlWorkspace({
     this.identityClientId,
     this.resourceId,
@@ -31,4 +31,3 @@ class UserOwnedAmlWorkspace {
     );
   }
 }
-

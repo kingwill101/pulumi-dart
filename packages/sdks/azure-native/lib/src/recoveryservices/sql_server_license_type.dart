@@ -17,4 +17,3 @@ enum SqlServerLicenseType {
     throw ArgumentError('Unknown SqlServerLicenseType value: $value');
   }
 }
-

@@ -1,7 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'collector_policy_args.dart';
 import 'ingestion_policy_properties_format_response.dart';
-import 'tracked_resource_response_system_data.dart';
+import 'system_data_response.dart';
 
 /// Collector policy resource.
 ///
@@ -102,6 +102,37 @@ import 'tracked_resource_response_system_data.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_networkfunction_collectorpolicy" "collectorPolicy" {
+///   azure_traffic_collector_name = "atc"
+///   collector_policy_name        = "cp1"
+///   emission_policies {
+///     emission_destinations {
+///       destination_type = "AzureMonitor"
+///     }
+///     emission_type = "IPFIX"
+///   }
+///   ingestion_policy = {
+///     ingestion_sources = [{
+///       "resourceId" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/circuitName"
+///       "sourceType" = "Resource"
+///     }]
+///     ingestion_type = "IPFIX"
+///   }
+///   location            = "West US"
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +143,8 @@ import 'tracked_resource_response_system_data.dart';
 /// import com.pulumi.azurenative.networkfunction.CollectorPolicyArgs;
 /// import com.pulumi.azurenative.networkfunction.inputs.EmissionPoliciesPropertiesFormatArgs;
 /// import com.pulumi.azurenative.networkfunction.inputs.IngestionPolicyPropertiesFormatArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -243,15 +274,15 @@ class CollectorPolicy extends pulumi.CustomResource {
   late final pulumi.Output<IngestionPolicyPropertiesFormatResponse?> ingestionPolicy;
   /// Resource location.
   late final pulumi.Output<String> location;
-  /// Resource name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The provisioning state.
   late final pulumi.Output<String> provisioningState;
-  /// Metadata pertaining to creation and last modification of the resource.
-  late final pulumi.Output<TrackedResourceResponseSystemData> systemData;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [CollectorPolicy].
@@ -275,7 +306,7 @@ class CollectorPolicy extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<TrackedResourceResponseSystemData>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrackedResourceResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

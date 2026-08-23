@@ -90,6 +90,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurelargeinstance_azurelargestorageinstance" "azureLargeStorageInstance" {
+///   azure_large_storage_instance_name              = "myAzureLargeStorageInstance"
+///   azure_large_storage_instance_unique_identifier = "23415635-4d7e-41dc-9598-8194f22c24e9"
+///   location                                       = "westus2"
+///   resource_group_name                            = "myResourceGroup"
+///   storage_properties = {
+///     generation    = "Gen4"
+///     hardware_type = "NetApp"
+///     offering_type = "EPIC"
+///     storage_billing_properties = {
+///       billing_mode = "PAYG"
+///       sku          = ""
+///     }
+///     storage_type  = "FC"
+///     workload_type = "ODB"
+///   }
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +132,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azurelargeinstance.AzureLargeStorageInstanceArgs;
 /// import com.pulumi.azurenative.azurelargeinstance.inputs.StoragePropertiesArgs;
 /// import com.pulumi.azurenative.azurelargeinstance.inputs.StorageBillingPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

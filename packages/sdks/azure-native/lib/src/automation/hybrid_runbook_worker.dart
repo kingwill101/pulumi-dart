@@ -4,9 +4,9 @@ import 'system_data_response.dart';
 
 /// Definition of hybrid runbook worker.
 ///
-/// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
+/// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 ///
-/// Other available API versions: 2021-06-22, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-06-22, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -60,6 +60,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_hybridrunbookworker" "hybridRunbookWorker" {
+///   automation_account_name          = "testaccount"
+///   hybrid_runbook_worker_group_name = "TestHybridGroup"
+///   hybrid_runbook_worker_id         = "c010ad12-ef14-4a2a-aa9e-ef22c4745ddd"
+///   resource_group_name              = "rg"
+///   vm_resource_id                   = "/subscriptions/vmsubid/resourceGroups/vmrg/providers/Microsoft.Compute/virtualMachines/vmname"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +87,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.automation.HybridRunbookWorker;
 /// import com.pulumi.azurenative.automation.HybridRunbookWorkerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -151,13 +170,17 @@ class HybridRunbookWorker extends pulumi.CustomResource {
   late final pulumi.Output<String?> ip;
   /// Last Heartbeat from the Worker
   late final pulumi.Output<String?> lastSeenDateTime;
+  /// The geo-location where the resource lives
+  late final pulumi.Output<String> location;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Gets or sets the registration time of the worker machine.
   late final pulumi.Output<String?> registeredDateTime;
-  /// Resource system metadata.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-  /// The type of the resource.
+  /// Resource tags.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// Azure Resource Manager Id for a virtual machine.
   late final pulumi.Output<String?> vmResourceId;
@@ -183,9 +206,11 @@ class HybridRunbookWorker extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     ip = registerOutput<String?>('ip');
     lastSeenDateTime = registerOutput<String?>('lastSeenDateTime');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     registeredDateTime = registerOutput<String?>('registeredDateTime');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     vmResourceId = registerOutput<String?>('vmResourceId');
     workerName = registerOutput<String?>('workerName');

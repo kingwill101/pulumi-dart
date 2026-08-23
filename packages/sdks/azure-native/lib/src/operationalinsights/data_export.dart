@@ -64,6 +64,25 @@ import 'data_export_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_operationalinsights_dataexport" "dataExport" {
+///   data_export_name    = "export1"
+///   resource_group_name = "RgTest1"
+///   resource_id         = "/subscriptions/192b9f85-a39a-4276-b96d-d5cd351703f9/resourceGroups/OIAutoRest1234/providers/Microsoft.EventHub/namespaces/test"
+///   table_names         = ["Heartbeat"]
+///   workspace_name      = "DeWnTest1234"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +91,8 @@ import 'data_export_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.operationalinsights.DataExport;
 /// import com.pulumi.azurenative.operationalinsights.DataExportArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

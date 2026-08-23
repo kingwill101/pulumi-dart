@@ -1,6 +1,6 @@
 /// Type of the Environment Variable. Possible values are: local - For local variable
 enum EnvironmentVariableType {
-  valueLocal("local");
+  local("local");
 
   const EnvironmentVariableType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum EnvironmentVariableType {
     throw ArgumentError('Unknown EnvironmentVariableType value: $value');
   }
 }
-

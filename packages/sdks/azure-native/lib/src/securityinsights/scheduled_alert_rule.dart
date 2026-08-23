@@ -57,6 +57,23 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_scheduledalertrule" "scheduledAlertRule" {
+///   resource_group_name = "myRg"
+///   rule_id             = "myFirstFusionRule"
+///   workspace_name      = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +82,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.securityinsights.ScheduledAlertRule;
 /// import com.pulumi.azurenative.securityinsights.ScheduledAlertRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -170,6 +187,23 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_scheduledalertrule" "scheduledAlertRule" {
+///   resource_group_name = "myRg"
+///   rule_id             = "microsoftSecurityIncidentCreationRuleExample"
+///   workspace_name      = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -178,8 +212,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.securityinsights.ScheduledAlertRule;
 /// import com.pulumi.azurenative.securityinsights.ScheduledAlertRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -463,6 +497,83 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_scheduledalertrule" "scheduledAlertRule" {
+///   alert_details_override = {
+///     alert_description_format  = "Suspicious activity was made by {{ComputerIP}}"
+///     alert_display_name_format = "Alert from {{Computer}}"
+///     alert_dynamic_properties = [{
+///       "alertProperty" = "ProductComponentName"
+///       "value"         = "ProductComponentNameCustomColumn"
+///       }, {
+///       "alertProperty" = "ProductName"
+///       "value"         = "ProductNameCustomColumn"
+///       }, {
+///       "alertProperty" = "AlertLink"
+///       "value"         = "Link"
+///     }]
+///   }
+///   custom_details = {
+///     "OperatingSystemName" = "OSName"
+///     "OperatingSystemType" = "OSType"
+///   }
+///   description  = "An example for a scheduled rule"
+///   display_name = "My scheduled rule"
+///   enabled      = true
+///   entity_mappings {
+///     entity_type = "Host"
+///     field_mappings {
+///       column_name = "Computer"
+///       identifier  = "FullName"
+///     }
+///   }
+///   entity_mappings {
+///     entity_type = "IP"
+///     field_mappings {
+///       column_name = "ComputerIP"
+///       identifier  = "Address"
+///     }
+///   }
+///   event_grouping_settings = {
+///     aggregation_kind = "AlertPerResult"
+///   }
+///   incident_configuration = {
+///     create_incident = true
+///     grouping_configuration = {
+///       enabled                 = true
+///       group_by_alert_details  = ["DisplayName"]
+///       group_by_custom_details = ["OperatingSystemType", "OperatingSystemName"]
+///       group_by_entities       = ["Host"]
+///       lookback_duration       = "PT5H"
+///       matching_method         = "Selected"
+///       reopen_closed_incident  = false
+///     }
+///   }
+///   kind                 = "Scheduled"
+///   query                = "Heartbeat"
+///   query_frequency      = "PT1H"
+///   query_period         = "P2DT1H30M"
+///   resource_group_name  = "myRg"
+///   rule_id              = "73e01a99-5cd7-4139-a149-9f2736ff2ab5"
+///   severity             = "High"
+///   suppression_duration = "PT1H"
+///   suppression_enabled  = false
+///   tactics              = ["Persistence", "LateralMovement"]
+///   trigger_operator     = "GreaterThan"
+///   trigger_threshold    = 0
+///   workspace_name       = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -476,8 +587,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.securityinsights.inputs.EventGroupingSettingsArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.IncidentConfigurationArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.GroupingConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

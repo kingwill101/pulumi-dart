@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSourceControlArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of source control.
   final pulumi.Input<String> sourceControlName;
 
   /// Creates a new [GetSourceControlArgs].
   /// [automationAccountName] The name of the automation account.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceControlName] The name of source control.
   const GetSourceControlArgs({
     required this.automationAccountName,
@@ -40,4 +40,3 @@ class GetSourceControlArgs {
     );
   }
 }
-

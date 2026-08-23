@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'system_data_response.dart';
-import 'virtual_networks_properties_response.dart';
-import 'virtual_networks_response_extended_location.dart';
+import 'virtual_network_properties_response.dart';
+import 'virtual_network_response_extended_location.dart';
 
 /// Result data returned by getVirtualNetworkRetrieve.
 class GetVirtualNetworkRetrieveResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-  final VirtualNetworksResponseExtendedLocation? extendedLocation;
-  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// Extended location pointing to the underlying infrastructure
+  final VirtualNetworkResponseExtendedLocation? extendedLocation;
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// The geo-location where the resource lives
   final String location;
   /// The name of the resource
   final String name;
-  /// HybridAKSNetworkSpec defines the desired state of HybridAKSNetwork
-  final VirtualNetworksPropertiesResponse properties;
-  /// Metadata pertaining to creation and last modification of the resource.
+  /// Properties of the virtual network resource
+  final VirtualNetworkPropertiesResponse properties;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// Resource tags.
   final Map<String, String>? tags;
@@ -26,12 +27,12 @@ class GetVirtualNetworkRetrieveResult {
 
   /// Creates a new [GetVirtualNetworkRetrieveResult].
   /// [azureApiVersion] The Azure API version of the resource.
-  /// [extendedLocation] Optional.
-  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [extendedLocation] Extended location pointing to the underlying infrastructure
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [location] The geo-location where the resource lives
   /// [name] The name of the resource
-  /// [properties] HybridAKSNetworkSpec defines the desired state of HybridAKSNetwork
-  /// [systemData] Metadata pertaining to creation and last modification of the resource.
+  /// [properties] Properties of the virtual network resource
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetVirtualNetworkRetrieveResult({
@@ -63,15 +64,14 @@ class GetVirtualNetworkRetrieveResult {
   factory GetVirtualNetworkRetrieveResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkRetrieveResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return VirtualNetworksResponseExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return VirtualNetworkResponseExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      properties: VirtualNetworksPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      properties: VirtualNetworkPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
-

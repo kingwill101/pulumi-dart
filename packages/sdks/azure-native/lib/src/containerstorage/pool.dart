@@ -113,6 +113,41 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerstorage_pool" "pool" {
+///   assignments {
+///     id = "/subscriptions/bb4d87a2-4273-466c-a6ba-61d818061b3a/resourceGroups/test-rg/providers/Microsoft.ContainerService/managedClusters/containerstoragetest"
+///   }
+///   location  = "eastus"
+///   pool_name = "test-pool"
+///   pool_type = {
+///     ephemeral_disk = {
+///       replicas = 3
+///     }
+///   }
+///   reclaim_policy      = "Delete"
+///   resource_group_name = "test-rg"
+///   resources = {
+///     requests = {
+///       storage = 15578
+///     }
+///   }
+///   tags = {
+///     "key1888" = "value1888"
+///   }
+///   zones = ["1", "2", "3"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +161,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.containerstorage.inputs.EphemeralDiskArgs;
 /// import com.pulumi.azurenative.containerstorage.inputs.ResourcesArgs;
 /// import com.pulumi.azurenative.containerstorage.inputs.RequestsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -215,14 +250,14 @@ import 'system_data_response.dart';
 ///     pool_name="test-pool",
 ///     pool_type={
 ///         "ephemeral_disk": {
-///             "replicas": 3,
+///             "replicas": float(3),
 ///         },
 ///     },
 ///     reclaim_policy=azure_native.containerstorage.ReclaimPolicy.DELETE,
 ///     resource_group_name="test-rg",
 ///     resources={
 ///         "requests": {
-///             "storage": 15578,
+///             "storage": float(15578),
 ///         },
 ///     },
 ///     tags={

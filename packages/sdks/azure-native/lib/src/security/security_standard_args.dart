@@ -18,7 +18,7 @@ class SecurityStandardArgs {
   final pulumi.Input<String>? displayName;
   /// The policy set definition id associated with the standard.
   final pulumi.Input<String>? policySetDefinitionId;
-  /// The scope of the security standard. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+  /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> scope;
   /// The Security Standard key - unique key for the standard type
   final pulumi.Input<String>? standardId;
@@ -29,7 +29,7 @@ class SecurityStandardArgs {
   /// [description] Description of the standard
   /// [displayName] Display name of the standard, equivalent to the standardId
   /// [policySetDefinitionId] The policy set definition id associated with the standard.
-  /// [scope] The scope of the security standard. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+  /// [scope] The fully qualified Azure Resource manager identifier of the resource.
   /// [standardId] The Security Standard key - unique key for the standard type
   const SecurityStandardArgs({
     this.assessments,
@@ -65,4 +65,3 @@ class SecurityStandardArgs {
     );
   }
 }
-

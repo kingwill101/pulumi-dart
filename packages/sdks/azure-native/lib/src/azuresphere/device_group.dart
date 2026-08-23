@@ -62,6 +62,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azuresphere_devicegroup" "deviceGroup" {
+///   catalog_name        = "MyCatalog1"
+///   description         = "Description for MyDeviceGroup1"
+///   device_group_name   = "MyDeviceGroup1"
+///   os_feed_type        = "Retail"
+///   product_name        = "MyProduct1"
+///   resource_group_name = "MyResourceGroup1"
+///   update_policy       = "UpdateAll"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +91,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.azuresphere.DeviceGroup;
 /// import com.pulumi.azurenative.azuresphere.DeviceGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

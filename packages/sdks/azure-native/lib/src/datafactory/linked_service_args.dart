@@ -14,14 +14,14 @@ class LinkedServiceArgs {
   final pulumi.Input<String>? linkedServiceName;
   /// Properties of linked service.
   final pulumi.Input<AmazonMWSLinkedService> properties;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [LinkedServiceArgs].
   /// [factoryName] The factory name.
   /// [linkedServiceName] The linked service name.
   /// [properties] Properties of linked service.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const LinkedServiceArgs({
     required this.factoryName,
     this.linkedServiceName,
@@ -47,4 +47,3 @@ class LinkedServiceArgs {
     );
   }
 }
-

@@ -88,6 +88,36 @@ import 'web_agent_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cdn_webagent" "webAgent" {
+///   description = "Primary web agent for content processing"
+///   location    = "WestUs"
+///   paths {
+///     path = "/chat"
+///     type = "Chat"
+///   }
+///   paths {
+///     path = "/mcp"
+///     type = "McpServer"
+///   }
+///   resource_group_name = "RG"
+///   system_prompt       = "You are a helpful AI assistant for customer support. Please provide accurate and friendly responses."
+///   tags = {
+///     "key1" = "value1"
+///   }
+///   web_agent_name = "myWebAgent1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +127,8 @@ import 'web_agent_args.dart';
 /// import com.pulumi.azurenative.cdn.WebAgent;
 /// import com.pulumi.azurenative.cdn.WebAgentArgs;
 /// import com.pulumi.azurenative.cdn.inputs.AgentPathArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

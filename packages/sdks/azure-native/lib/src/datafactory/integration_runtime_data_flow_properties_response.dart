@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'integration_runtime_data_flow_properties_response_custom_properties.dart';
+import 'integration_runtime_data_flow_properties_custom_properties_item_response.dart';
 
 /// Data flow properties for managed integration runtime.
 class IntegrationRuntimeDataFlowPropertiesResponse {
@@ -12,7 +12,7 @@ class IntegrationRuntimeDataFlowPropertiesResponse {
   /// Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
   final pulumi.Input<int>? coreCount;
   /// Custom properties are used to tune the data flow runtime performance.
-  final pulumi.Input<List<IntegrationRuntimeDataFlowPropertiesResponseCustomProperties>>? customProperties;
+  final pulumi.Input<List<IntegrationRuntimeDataFlowPropertiesCustomPropertiesItemResponse>>? customProperties;
   /// Time to live (in minutes) setting of the cluster which will execute data flow job.
   final pulumi.Input<int>? timeToLive;
 
@@ -35,7 +35,7 @@ class IntegrationRuntimeDataFlowPropertiesResponse {
       'cleanup': ?cleanup,
       'computeType': ?computeType,
       'coreCount': ?coreCount,
-      'customProperties': ?pulumi.Input.mapOptionalInputValue<List<IntegrationRuntimeDataFlowPropertiesResponseCustomProperties>, List<Map<String, dynamic>>>(customProperties, (value) => pulumi.Input.encodeList<IntegrationRuntimeDataFlowPropertiesResponseCustomProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'customProperties': ?pulumi.Input.mapOptionalInputValue<List<IntegrationRuntimeDataFlowPropertiesCustomPropertiesItemResponse>, List<Map<String, dynamic>>>(customProperties, (value) => pulumi.Input.encodeList<IntegrationRuntimeDataFlowPropertiesCustomPropertiesItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timeToLive': ?timeToLive,
     };
   }
@@ -45,9 +45,8 @@ class IntegrationRuntimeDataFlowPropertiesResponse {
       cleanup: (() { final guardedValue = map['cleanup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       computeType: (() { final guardedValue = map['computeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       coreCount: (() { final guardedValue = map['coreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      customProperties: (() { final guardedValue = map['customProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IntegrationRuntimeDataFlowPropertiesResponseCustomProperties>(guardedValue, (value) => IntegrationRuntimeDataFlowPropertiesResponseCustomProperties.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      customProperties: (() { final guardedValue = map['customProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IntegrationRuntimeDataFlowPropertiesCustomPropertiesItemResponse>(guardedValue, (value) => IntegrationRuntimeDataFlowPropertiesCustomPropertiesItemResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       timeToLive: (() { final guardedValue = map['timeToLive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
-

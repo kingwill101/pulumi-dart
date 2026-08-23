@@ -119,6 +119,48 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_customizedaccelerator" "customizedAccelerator" {
+///   application_accelerator_name = "default"
+///   customized_accelerator_name  = "acc-name"
+///   properties = {
+///     accelerator_tags = ["tag-a", "tag-b"]
+///     description      = "acc-desc"
+///     display_name     = "acc-name"
+///     git_repository = {
+///       auth_setting = {
+///         "authType"         = "SSH"
+///         "hostKey"          = "git-auth-hostkey"
+///         "hostKeyAlgorithm" = "git-auth-algorithm"
+///         "privateKey"       = "git-auth-privatekey"
+///       }
+///       branch              = "git-branch"
+///       commit              = "12345"
+///       git_tag             = "git-tag"
+///       interval_in_seconds = 70
+///       url                 = "git-url"
+///     }
+///     icon_url = "acc-icon"
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+///   sku = {
+///     capacity = 2
+///     name     = "E0"
+///     tier     = "Enterprise"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -130,8 +172,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.inputs.CustomizedAcceleratorPropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.AcceleratorGitRepositoryArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

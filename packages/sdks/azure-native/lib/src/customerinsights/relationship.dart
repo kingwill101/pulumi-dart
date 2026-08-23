@@ -75,6 +75,32 @@ import 'relationship_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_customerinsights_relationship" "relationship" {
+///   cardinality = "OneToOne"
+///   description = {
+///     "en-us" = "Relationship Description"
+///   }
+///   display_name = {
+///     "en-us" = "Relationship DisplayName"
+///   }
+///   hub_name             = "sdkTestHub"
+///   profile_type         = "testProfile2326994"
+///   related_profile_type = "testProfile2326994"
+///   relationship_name    = "SomeRelationship"
+///   resource_group_name  = "TestHubRG"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +109,8 @@ import 'relationship_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.customerinsights.Relationship;
 /// import com.pulumi.azurenative.customerinsights.RelationshipArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

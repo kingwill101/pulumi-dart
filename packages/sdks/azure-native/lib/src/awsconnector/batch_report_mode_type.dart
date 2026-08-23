@@ -15,4 +15,3 @@ enum BatchReportModeType {
     throw ArgumentError('Unknown BatchReportModeType value: $value');
   }
 }
-

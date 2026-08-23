@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'agentic_application.dart';
+import 'agentic_application_properties.dart';
 
 /// {@template pulumi_cognitiveservices_agent_application_args_doc}
 /// The set of arguments for AgentApplication.
@@ -15,7 +15,7 @@ class AgentApplicationArgs {
   /// The name of Cognitive Services account's project.
   final pulumi.Input<String> projectName;
   /// [Required] Additional attributes of the entity.
-  final pulumi.Input<AgenticApplication> properties;
+  final pulumi.Input<AgenticApplicationProperties> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,7 +38,7 @@ class AgentApplicationArgs {
       'accountName': accountName,
       'name': ?name,
       'projectName': projectName,
-      'properties': pulumi.Input.mapInputValue<AgenticApplication, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<AgenticApplicationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
@@ -48,9 +48,8 @@ class AgentApplicationArgs {
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      properties: pulumi.Input.fromValue(AgenticApplication.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.fromValue(AgenticApplicationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
-

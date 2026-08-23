@@ -28,7 +28,7 @@ class VirtualNetworkPeeringResponse {
   final pulumi.Input<List<String>>? localSubnetNames;
   /// The current local address space of the local virtual network that is peered.
   final pulumi.Input<AddressSpaceResponse>? localVirtualNetworkAddressSpace;
-  /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  /// Name of the resource.
   final pulumi.Input<String>? name;
   /// Whether complete virtual network address space is peered.
   final pulumi.Input<bool>? peerCompleteVnets;
@@ -53,7 +53,7 @@ class VirtualNetworkPeeringResponse {
   /// The resourceGuid property of the Virtual Network peering resource.
   final pulumi.Input<String> resourceGuid;
   /// Resource type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String> type;
   /// If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
   final pulumi.Input<bool>? useRemoteGateways;
 
@@ -68,7 +68,7 @@ class VirtualNetworkPeeringResponse {
   /// [localAddressSpace] The local address space of the local virtual network that is peered.
   /// [localSubnetNames] List of local subnet names that are subnet peered with remote virtual network.
   /// [localVirtualNetworkAddressSpace] The current local address space of the local virtual network that is peered.
-  /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  /// [name] Name of the resource.
   /// [peerCompleteVnets] Whether complete virtual network address space is peered.
   /// [peeringState] The status of the virtual network peering.
   /// [peeringSyncLevel] The peering sync status of the virtual network peering.
@@ -105,7 +105,7 @@ class VirtualNetworkPeeringResponse {
     this.remoteVirtualNetworkAddressSpace,
     required this.remoteVirtualNetworkEncryption,
     required this.resourceGuid,
-    this.type,
+    required this.type,
     this.useRemoteGateways,
   });
 
@@ -133,7 +133,7 @@ class VirtualNetworkPeeringResponse {
       'remoteVirtualNetworkAddressSpace': ?pulumi.Input.mapOptionalInputValue<AddressSpaceResponse, Map<String, dynamic>>(remoteVirtualNetworkAddressSpace, (value) => value.toMap()),
       'remoteVirtualNetworkEncryption': pulumi.Input.mapInputValue<VirtualNetworkEncryptionResponse, Map<String, dynamic>>(remoteVirtualNetworkEncryption, (value) => value.toMap()),
       'resourceGuid': resourceGuid,
-      'type': ?type,
+      'type': type,
       'useRemoteGateways': ?useRemoteGateways,
     };
   }
@@ -162,9 +162,8 @@ class VirtualNetworkPeeringResponse {
       remoteVirtualNetworkAddressSpace: (() { final guardedValue = map['remoteVirtualNetworkAddressSpace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AddressSpaceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       remoteVirtualNetworkEncryption: pulumi.Input.fromValue(VirtualNetworkEncryptionResponse.fromMap((map['remoteVirtualNetworkEncryption']! as Map).cast<String, dynamic>())),
       resourceGuid: pulumi.Input.fromValue(map['resourceGuid'] as String),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
       useRemoteGateways: (() { final guardedValue = map['useRemoteGateways']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum ContainerGroupPriority {
     throw ArgumentError('Unknown ContainerGroupPriority value: $value');
   }
 }
-

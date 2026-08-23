@@ -1,7 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'system_data_response.dart';
 import 'workbook_args.dart';
-import 'workbook_resource_response_identity.dart';
+import 'workbook_resource_identity_response.dart';
 
 /// A workbook definition.
 ///
@@ -78,6 +78,33 @@ import 'workbook_resource_response_identity.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_applicationinsights_workbook" "workbook" {
+///   category            = "workbook"
+///   description         = "Sample workbook"
+///   display_name        = "Sample workbook"
+///   kind                = "shared"
+///   location            = "westus"
+///   resource_group_name = "my-resource-group"
+///   resource_name       = "deadb33f-5e0d-4064-8ebb-1a4ed0313eb2"
+///   serialized_data     = "{\"version\":\"Notebook/1.0\",\"items\":[{\"type\":1,\"content\":\"{\"json\":\"## New workbook\\r\\n---\\r\\n\\r\\nWelcome to your new workbook.  This area will display text formatted as markdown.\\r\\n\\r\\n\\r\\nWe've included a basic analytics query to get you started. Use the `Edit` button below each section to configure it or add more sections.\"}\",\"halfWidth\":null,\"conditionalVisibility\":null},{\"type\":3,\"content\":\"{\"version\":\"KqlItem/1.0\",\"query\":\"union withsource=TableName *\\n| summarize Count=count() by TableName\\n| render barchart\",\"showQuery\":false,\"size\":1,\"aggregation\":0,\"showAnnotations\":false}\",\"halfWidth\":null,\"conditionalVisibility\":null}],\"isLocked\":false}"
+///   source_id           = "/subscriptions/6b643656-33eb-422f-aee8-3ac145d124af/resourcegroups/my-resource-group"
+///   tags = {
+///     "TagSample01" = "sample01"
+///     "TagSample02" = "sample02"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +113,8 @@ import 'workbook_resource_response_identity.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.applicationinsights.Workbook;
 /// import com.pulumi.azurenative.applicationinsights.WorkbookArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -205,7 +232,7 @@ class Workbook extends pulumi.CustomResource {
   /// Resource etag
   late final pulumi.Output<String?> etag;
   /// Identity used for BYOS
-  late final pulumi.Output<WorkbookResourceResponseIdentity?> identity;
+  late final pulumi.Output<WorkbookResourceIdentityResponse?> identity;
   /// The kind of workbook. Only valid value is shared.
   late final pulumi.Output<String?> kind;
   /// The geo-location where the resource lives
@@ -220,7 +247,7 @@ class Workbook extends pulumi.CustomResource {
   late final pulumi.Output<String?> sourceId;
   /// The resourceId to the storage account when bring your own storage is used
   late final pulumi.Output<String?> storageUri;
-  /// Metadata pertaining to creation and last modification of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -252,7 +279,7 @@ class Workbook extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String?>('etag');
-    identity = registerOutput<WorkbookResourceResponseIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkbookResourceResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<WorkbookResourceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkbookResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

@@ -16,4 +16,3 @@ enum LedgerRoleName {
     throw ArgumentError('Unknown LedgerRoleName value: $value');
   }
 }
-

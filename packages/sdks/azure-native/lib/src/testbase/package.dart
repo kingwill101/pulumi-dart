@@ -238,6 +238,96 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_testbase_package" "package" {
+///   application_name = "contoso-package2"
+///   blob_path        = "storageAccountPath/package.zip"
+///   first_party_apps {
+///     architecture           = "x64"
+///     channel                = "Current Channel"
+///     interop_execution_mode = "firstPartyAppWithTests"
+///     name                   = "Office"
+///     ring                   = "Insider"
+///   }
+///   flighting_ring      = "Insider Beta Channel"
+///   location            = "westus"
+///   package_name        = "contoso-package2"
+///   resource_group_name = "contoso-rg1"
+///   tags                = {}
+///   target_os_list {
+///     os_update_type = "Security updates"
+///     target_o_ss    = ["Windows 10 2004", "Windows 10 1903"]
+///   }
+///   test_base_account_name = "contoso-testBaseAccount1"
+///   tests {
+///     commands {
+///       action                = "Install"
+///       always_run            = true
+///       apply_update_before   = false
+///       content               = "app/scripts/install/job.ps1"
+///       content_type          = "Path"
+///       install1_p_app_before = true
+///       max_run_time          = 1800
+///       name                  = "Install"
+///       restart_after         = true
+///       run_as_interactive    = true
+///       run_elevated          = true
+///     }
+///     commands {
+///       action                = "Launch"
+///       always_run            = false
+///       apply_update_before   = true
+///       content               = "app/scripts/launch/job.ps1"
+///       content_type          = "Path"
+///       install1_p_app_before = false
+///       max_run_time          = 1800
+///       name                  = "Launch"
+///       restart_after         = false
+///       run_as_interactive    = true
+///       run_elevated          = true
+///     }
+///     commands {
+///       action                = "Close"
+///       always_run            = false
+///       apply_update_before   = false
+///       content               = "app/scripts/close/job.ps1"
+///       content_type          = "Path"
+///       install1_p_app_before = false
+///       max_run_time          = 1800
+///       name                  = "Close"
+///       restart_after         = false
+///       run_as_interactive    = true
+///       run_elevated          = true
+///     }
+///     commands {
+///       action                = "Uninstall"
+///       always_run            = true
+///       apply_update_before   = false
+///       content               = "app/scripts/uninstall/job.ps1"
+///       content_type          = "Path"
+///       install1_p_app_before = false
+///       max_run_time          = 1800
+///       name                  = "Uninstall"
+///       restart_after         = false
+///       run_as_interactive    = true
+///       run_elevated          = true
+///     }
+///     is_active = true
+///     test_type = "OutOfBoxTest"
+///   }
+///   version = "1.0.0"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -249,8 +339,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.testbase.inputs.FirstPartyAppDefinitionArgs;
 /// import com.pulumi.azurenative.testbase.inputs.TargetOSInfoArgs;
 /// import com.pulumi.azurenative.testbase.inputs.TestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

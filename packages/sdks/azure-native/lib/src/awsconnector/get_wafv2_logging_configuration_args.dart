@@ -34,4 +34,3 @@ class GetWafv2LoggingConfigurationArgs {
     );
   }
 }
-

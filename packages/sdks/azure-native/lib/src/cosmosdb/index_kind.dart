@@ -16,4 +16,3 @@ enum IndexKind {
     throw ArgumentError('Unknown IndexKind value: $value');
   }
 }
-

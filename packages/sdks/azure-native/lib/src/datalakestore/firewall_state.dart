@@ -15,4 +15,3 @@ enum FirewallState {
     throw ArgumentError('Unknown FirewallState value: $value');
   }
 }
-

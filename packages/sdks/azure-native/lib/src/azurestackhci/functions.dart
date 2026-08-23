@@ -2,9 +2,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_arc_setting_args.dart';
 import 'get_arc_setting_result.dart';
 import 'get_cluster_args.dart';
+import 'get_cluster_job_args.dart';
+import 'get_cluster_job_result.dart';
 import 'get_cluster_result.dart';
 import 'get_deployment_setting_args.dart';
 import 'get_deployment_setting_result.dart';
+import 'get_device_pool_args.dart';
+import 'get_device_pool_result.dart';
 import 'get_edge_machine_args.dart';
 import 'get_edge_machine_job_args.dart';
 import 'get_edge_machine_job_result.dart';
@@ -21,6 +25,8 @@ import 'get_hci_edge_device_job_result.dart';
 import 'get_hci_edge_device_result.dart';
 import 'get_hybrid_identity_metadatum_args.dart';
 import 'get_hybrid_identity_metadatum_result.dart';
+import 'get_inbound_rule_args.dart';
+import 'get_inbound_rule_result.dart';
 import 'get_load_balancer_args.dart';
 import 'get_load_balancer_result.dart';
 import 'get_logical_network_args.dart';
@@ -41,6 +47,8 @@ import 'get_security_rule_args.dart';
 import 'get_security_rule_result.dart';
 import 'get_security_setting_args.dart';
 import 'get_security_setting_result.dart';
+import 'get_snapshot_args.dart';
+import 'get_snapshot_result.dart';
 import 'get_storage_container_args.dart';
 import 'get_storage_container_result.dart';
 import 'get_update_args.dart';
@@ -64,7 +72,7 @@ import 'get_virtual_network_subnet_result.dart';
 ///
 /// Uses Azure REST API version 2024-04-01.
 ///
-/// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview, 2026-04-01-preview, 2026-04-30, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_arc_setting_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetArcSettingResult> getArcSetting(
@@ -84,7 +92,7 @@ Future<GetArcSettingResult> getArcSetting(
 ///
 /// Uses Azure REST API version 2024-04-01.
 ///
-/// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview, 2026-04-01-preview, 2026-04-30, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_cluster_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetClusterResult> getCluster(
@@ -100,11 +108,31 @@ Future<GetClusterResult> getCluster(
   return GetClusterResult.fromMap(result);
 }
 
+/// Get a ClusterJob
+///
+/// Uses Azure REST API version 2026-03-01-preview.
+///
+/// Other available API versions: 2026-02-15-preview, 2026-04-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_cluster_job_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetClusterJobResult> getClusterJob(
+  GetClusterJobArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getClusterJob',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetClusterJobResult.fromMap(result);
+}
+
 /// Get a DeploymentSetting
 ///
 /// Uses Azure REST API version 2024-04-01.
 ///
-/// Other available API versions: 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview, 2026-04-01-preview, 2026-04-30, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_deployment_setting_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDeploymentSettingResult> getDeploymentSetting(
@@ -120,9 +148,31 @@ Future<GetDeploymentSettingResult> getDeploymentSetting(
   return GetDeploymentSettingResult.fromMap(result);
 }
 
+/// Get a DevicePool
+///
+/// Uses Azure REST API version 2026-03-01-preview.
+///
+/// Other available API versions: 2026-04-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_device_pool_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetDevicePoolResult> getDevicePool(
+  GetDevicePoolArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getDevicePool',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetDevicePoolResult.fromMap(result);
+}
+
 /// Get an edge machine.
 ///
 /// Uses Azure REST API version 2025-12-01-preview.
+///
+/// Other available API versions: 2026-02-15-preview, 2026-03-01-preview, 2026-04-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_edge_machine_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetEdgeMachineResult> getEdgeMachine(
@@ -141,6 +191,8 @@ Future<GetEdgeMachineResult> getEdgeMachine(
 /// Get a EdgeMachineJob
 ///
 /// Uses Azure REST API version 2025-12-01-preview.
+///
+/// Other available API versions: 2026-02-15-preview, 2026-03-01-preview, 2026-04-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_edge_machine_job_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetEdgeMachineJobResult> getEdgeMachineJob(
@@ -160,7 +212,7 @@ Future<GetEdgeMachineJobResult> getEdgeMachineJob(
 ///
 /// Uses Azure REST API version 2024-04-01.
 ///
-/// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview, 2026-04-01-preview, 2026-04-30, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_extension_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetExtensionResult> getExtension(
@@ -180,7 +232,7 @@ Future<GetExtensionResult> getExtension(
 ///
 /// Uses Azure REST API version 2025-02-01-preview.
 ///
-/// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_gallery_image_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGalleryImageResult> getGalleryImage(
@@ -200,7 +252,7 @@ Future<GetGalleryImageResult> getGalleryImage(
 ///
 /// Uses Azure REST API version 2025-02-01-preview.
 ///
-/// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_guest_agent_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGuestAgentResult> getGuestAgent(
@@ -270,9 +322,29 @@ Future<GetHybridIdentityMetadatumResult> getHybridIdentityMetadatum(
   return GetHybridIdentityMetadatumResult.fromMap(result);
 }
 
+/// The operation to get an inbound rule.
+///
+/// Uses Azure REST API version 2026-04-01-preview.
+/// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_inbound_rule_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetInboundRuleResult> getInboundRule(
+  GetInboundRuleArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getInboundRule',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetInboundRuleResult.fromMap(result);
+}
+
 /// The operation to get a loadBalancer.
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
+///
+/// Other available API versions: 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_load_balancer_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetLoadBalancerResult> getLoadBalancer(
@@ -292,7 +364,7 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///
 /// Uses Azure REST API version 2025-02-01-preview.
 ///
-/// Other available API versions: 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_logical_network_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetLogicalNetworkResult> getLogicalNetwork(
@@ -330,7 +402,7 @@ Future<GetMachineExtensionResult> getMachineExtension(
 ///
 /// Uses Azure REST API version 2025-02-01-preview.
 ///
-/// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_marketplace_gallery_image_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetMarketplaceGalleryImageResult> getMarketplaceGalleryImage(
@@ -349,6 +421,8 @@ Future<GetMarketplaceGalleryImageResult> getMarketplaceGalleryImage(
 /// The operation to get a natGateway.
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
+///
+/// Other available API versions: 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_nat_gateway_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNatGatewayResult> getNatGateway(
@@ -368,7 +442,7 @@ Future<GetNatGatewayResult> getNatGateway(
 ///
 /// Uses Azure REST API version 2025-02-01-preview.
 ///
-/// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_network_interface_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNetworkInterfaceResult> getNetworkInterface(
@@ -388,7 +462,7 @@ Future<GetNetworkInterfaceResult> getNetworkInterface(
 ///
 /// Uses Azure REST API version 2025-02-01-preview.
 ///
-/// Other available API versions: 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_network_security_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNetworkSecurityGroupResult> getNetworkSecurityGroup(
@@ -407,6 +481,8 @@ Future<GetNetworkSecurityGroupResult> getNetworkSecurityGroup(
 /// The operation to get a virtual network.
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
+///
+/// Other available API versions: 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_public_ipaddress_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPublicIPAddressResult> getPublicIPAddress(
@@ -426,7 +502,7 @@ Future<GetPublicIPAddressResult> getPublicIPAddress(
 ///
 /// Uses Azure REST API version 2025-02-01-preview.
 ///
-/// Other available API versions: 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_security_rule_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSecurityRuleResult> getSecurityRule(
@@ -446,7 +522,7 @@ Future<GetSecurityRuleResult> getSecurityRule(
 ///
 /// Uses Azure REST API version 2024-04-01.
 ///
-/// Other available API versions: 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview, 2026-04-01-preview, 2026-04-30, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_security_setting_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSecuritySettingResult> getSecuritySetting(
@@ -462,11 +538,31 @@ Future<GetSecuritySettingResult> getSecuritySetting(
   return GetSecuritySettingResult.fromMap(result);
 }
 
+/// Gets a snapshot
+///
+/// Uses Azure REST API version 2026-02-01-preview.
+///
+/// Other available API versions: 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_snapshot_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetSnapshotResult> getSnapshot(
+  GetSnapshotArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getSnapshot',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetSnapshotResult.fromMap(result);
+}
+
 /// Gets a storage container
 ///
 /// Uses Azure REST API version 2025-02-01-preview.
 ///
-/// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_storage_container_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetStorageContainerResult> getStorageContainer(
@@ -486,7 +582,7 @@ Future<GetStorageContainerResult> getStorageContainer(
 ///
 /// Uses Azure REST API version 2024-04-01.
 ///
-/// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview, 2026-04-01-preview, 2026-04-30, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_update_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetUpdateResult> getUpdate(
@@ -506,7 +602,7 @@ Future<GetUpdateResult> getUpdate(
 ///
 /// Uses Azure REST API version 2024-04-01.
 ///
-/// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview, 2026-04-01-preview, 2026-04-30, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_update_run_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetUpdateRunResult> getUpdateRun(
@@ -526,7 +622,7 @@ Future<GetUpdateRunResult> getUpdateRun(
 ///
 /// Uses Azure REST API version 2024-04-01.
 ///
-/// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview, 2026-04-01-preview, 2026-04-30, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_update_summary_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetUpdateSummaryResult> getUpdateSummary(
@@ -546,7 +642,7 @@ Future<GetUpdateSummaryResult> getUpdateSummary(
 ///
 /// Uses Azure REST API version 2025-02-01-preview.
 ///
-/// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_virtual_hard_disk_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVirtualHardDiskResult> getVirtualHardDisk(
@@ -584,7 +680,7 @@ Future<GetVirtualMachineResult> getVirtualMachine(
 ///
 /// Uses Azure REST API version 2025-02-01-preview.
 ///
-/// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_virtual_machine_instance_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVirtualMachineInstanceResult> getVirtualMachineInstance(
@@ -604,7 +700,7 @@ Future<GetVirtualMachineInstanceResult> getVirtualMachineInstance(
 ///
 /// Uses Azure REST API version 2023-07-01-preview.
 ///
-/// Other available API versions: 2022-12-15-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-12-15-preview, 2025-09-01-preview, 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_virtual_network_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVirtualNetworkResult> getVirtualNetwork(
@@ -623,6 +719,8 @@ Future<GetVirtualNetworkResult> getVirtualNetwork(
 /// The operation to get a virtual network subnet.
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
+///
+/// Other available API versions: 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurestackhci_get_virtual_network_subnet_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVirtualNetworkSubnetResult> getVirtualNetworkSubnet(

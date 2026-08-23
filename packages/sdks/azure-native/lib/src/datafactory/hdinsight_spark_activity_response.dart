@@ -33,7 +33,7 @@ class HDInsightSparkActivityResponse {
   /// The root path in 'sparkJobLinkedService' for all the job’s files. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> rootPath;
   /// Spark configuration property.
-  final pulumi.Input<Map<String, dynamic>>? sparkConfig;
+  final pulumi.Input<dynamic>? sparkConfig;
   /// The storage linked service for uploading the entry file and dependencies, and for receiving logs.
   final pulumi.Input<LinkedServiceReferenceResponse>? sparkJobLinkedService;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
@@ -118,7 +118,7 @@ class HDInsightSparkActivityResponse {
       policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActivityPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       proxyUser: (() { final guardedValue = map['proxyUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       rootPath: pulumi.Input.fromValue(map['rootPath']),
-      sparkConfig: (() { final guardedValue = map['sparkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      sparkConfig: (() { final guardedValue = map['sparkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sparkJobLinkedService: (() { final guardedValue = map['sparkJobLinkedService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
@@ -126,4 +126,3 @@ class HDInsightSparkActivityResponse {
     );
   }
 }
-

@@ -70,4 +70,3 @@ class L2IsolationDomainArgs {
     );
   }
 }
-

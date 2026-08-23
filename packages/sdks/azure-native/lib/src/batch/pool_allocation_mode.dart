@@ -15,4 +15,3 @@ enum PoolAllocationMode {
     throw ArgumentError('Unknown PoolAllocationMode value: $value');
   }
 }
-

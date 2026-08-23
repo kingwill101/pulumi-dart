@@ -15,4 +15,3 @@ enum CustomDomainIdentityType {
     throw ArgumentError('Unknown CustomDomainIdentityType value: $value');
   }
 }
-

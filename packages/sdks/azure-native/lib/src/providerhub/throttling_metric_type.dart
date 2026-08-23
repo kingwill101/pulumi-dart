@@ -16,4 +16,3 @@ enum ThrottlingMetricType {
     throw ArgumentError('Unknown ThrottlingMetricType value: $value');
   }
 }
-

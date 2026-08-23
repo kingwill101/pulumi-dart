@@ -15,4 +15,3 @@ enum AutoUpgradeOptions {
     throw ArgumentError('Unknown AutoUpgradeOptions value: $value');
   }
 }
-

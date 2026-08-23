@@ -15,4 +15,3 @@ enum SecurityRuleAccess {
     throw ArgumentError('Unknown SecurityRuleAccess value: $value');
   }
 }
-

@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListVirtualMachineApplicableSchedulesArgs {
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The name of the LabVirtualMachine
+  /// The name of the virtual machine.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [ListVirtualMachineApplicableSchedulesArgs].
   /// [labName] The name of the lab.
-  /// [name] The name of the LabVirtualMachine
+  /// [name] The name of the virtual machine.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const ListVirtualMachineApplicableSchedulesArgs({
     required this.labName,
@@ -40,4 +40,3 @@ class ListVirtualMachineApplicableSchedulesArgs {
     );
   }
 }
-

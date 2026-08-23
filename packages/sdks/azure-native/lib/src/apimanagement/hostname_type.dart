@@ -4,7 +4,8 @@ enum HostnameType {
   valuePortal("Portal"),
   valueManagement("Management"),
   valueScm("Scm"),
-  valueDeveloperPortal("DeveloperPortal");
+  valueDeveloperPortal("DeveloperPortal"),
+  valueConfigurationApi("ConfigurationApi");
 
   const HostnameType(this.wireValue);
   final String wireValue;
@@ -18,4 +19,3 @@ enum HostnameType {
     throw ArgumentError('Unknown HostnameType value: $value');
   }
 }
-

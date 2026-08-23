@@ -16,4 +16,3 @@ enum ExceptionEntryMatchVariable {
     throw ArgumentError('Unknown ExceptionEntryMatchVariable value: $value');
   }
 }
-

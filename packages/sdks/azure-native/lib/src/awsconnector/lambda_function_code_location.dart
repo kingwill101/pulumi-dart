@@ -99,6 +99,43 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_lambdafunctioncodelocation" "lambdaFunctionCodeLocation" {
+///   location = "qkuouoekvqfxgj"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "cavnxpszexpsxi"
+///     aws_account_id = "kddvcdwz"
+///     aws_properties = {
+///       image_uri          = "vgxgdgxjcgxywrlgksntztsti"
+///       location           = "wntythncasjf"
+///       repository_type    = "rokpwfiqhiulnmmyjxfwchgk"
+///       resolved_image_uri = "forzmeqdjmd"
+///     }
+///     aws_region        = "gpffqddhhsxbkcblgd"
+///     aws_source_schema = "dqmxkbgxzzurnbdbrodipprola"
+///     aws_tags = {
+///       "key6065" = "ghgubugjmthvonixbfyqrkyg"
+///     }
+///     public_cloud_connectors_resource_id = "hqutrljrwdofyqxdprvsolekoxh"
+///     public_cloud_resource_name          = "zqervnldc"
+///   }
+///   resource_group_name = "rglambdaFunctionCodeLocation"
+///   tags = {
+///     "key5879" = "ddtmzkfuznyfoikgo"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +146,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.LambdaFunctionCodeLocationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LambdaFunctionCodeLocationPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsLambdaFunctionCodeLocationPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

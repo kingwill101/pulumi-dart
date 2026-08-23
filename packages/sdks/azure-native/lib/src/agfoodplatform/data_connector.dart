@@ -78,6 +78,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_agfoodplatform_dataconnector" "dataConnector" {
+///   data_connector_name                        = "WeatherIBM"
+///   data_manager_for_agriculture_resource_name = "examples-dataManagerForAgricultureResourceName"
+///   properties = {
+///     credentials = {
+///       "apiKey" = {
+///         "keyName"     = "abcApiKey"
+///         "keyVaultUri" = "https://testKeyVault.vault.azure.net/"
+///         "keyVersion"  = "239c0475c7d44f20b0fc27d3fe90a41d"
+///       }
+///       "kind" = "ApiKeyAuthCredentials"
+///     }
+///   }
+///   resource_group_name = "examples-rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +114,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.agfoodplatform.DataConnector;
 /// import com.pulumi.azurenative.agfoodplatform.DataConnectorArgs;
 /// import com.pulumi.azurenative.agfoodplatform.inputs.DataConnectorPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

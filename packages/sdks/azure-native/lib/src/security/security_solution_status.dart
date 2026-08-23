@@ -1,7 +1,7 @@
 /// Status of the IoT Security solution.
 enum SecuritySolutionStatus {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const SecuritySolutionStatus(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum SecuritySolutionStatus {
     throw ArgumentError('Unknown SecuritySolutionStatus value: $value');
   }
 }
-

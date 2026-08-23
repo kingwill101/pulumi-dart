@@ -74,6 +74,33 @@ import 'local_timestamp_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_timeseriesinsights_eventhubeventsource" "eventHubEventSource" {
+///   consumer_group_name      = "cgn"
+///   environment_name         = "env1"
+///   event_hub_name           = "ehn"
+///   event_source_name        = "es1"
+///   event_source_resource_id = "somePathInArm"
+///   key_name                 = "managementKey"
+///   kind                     = "Microsoft.EventHub"
+///   location                 = "West US"
+///   resource_group_name      = "rg1"
+///   service_bus_namespace    = "sbn"
+///   shared_access_key        = "someSecretvalue"
+///   timestamp_property_name  = "someTimestampProperty"
+///   type                     = "EarliestAvailable"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +109,8 @@ import 'local_timestamp_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.timeseriesinsights.EventHubEventSource;
 /// import com.pulumi.azurenative.timeseriesinsights.EventHubEventSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -249,6 +276,34 @@ import 'local_timestamp_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_timeseriesinsights_eventhubeventsource" "eventHubEventSource" {
+///   consumer_group_name      = "cgn"
+///   environment_name         = "env1"
+///   event_hub_name           = "ehn"
+///   event_source_name        = "es1"
+///   event_source_resource_id = "somePathInArm"
+///   key_name                 = "managementKey"
+///   kind                     = "Microsoft.EventHub"
+///   location                 = "West US"
+///   resource_group_name      = "rg1"
+///   service_bus_namespace    = "sbn"
+///   shared_access_key        = "someSecretvalue"
+///   time                     = "2017-04-01T19:20:33.2288820Z"
+///   timestamp_property_name  = "someTimestampProperty"
+///   type                     = "CustomEnqueuedTime"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -257,8 +312,8 @@ import 'local_timestamp_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.timeseriesinsights.EventHubEventSource;
 /// import com.pulumi.azurenative.timeseriesinsights.EventHubEventSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

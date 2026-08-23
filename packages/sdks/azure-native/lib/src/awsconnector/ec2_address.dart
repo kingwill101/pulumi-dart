@@ -136,6 +136,58 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ec2address" "ec2Address" {
+///   location = "uwbmdjhaqaqz"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "kgqnwrdoqeqjraczlznfiu"
+///     aws_account_id = "nfzczrgklte"
+///     aws_properties = {
+///       allocation_id            = "lakfpwuipmqvwqzpiojxgxjrh"
+///       association_id           = "wwgugzolrxtpvpaxafaqi"
+///       carrier_ip               = "tpwlxdfmqhkr"
+///       customer_owned_ip        = "qpvlzqkbksm"
+///       customer_owned_ipv4_pool = "sbzgaydiiwsnarhj"
+///       domain = {
+///         value = "standard"
+///       }
+///       instance_id                = "lcw"
+///       network_border_group       = "cvmuzymwrwriouiziwwhybkwv"
+///       network_interface_id       = "pundetxxybkvjkwhenmdlxzoji"
+///       network_interface_owner_id = "mxcypkkbqs"
+///       private_ip_address         = "syfgrbvaucqkmkakjhez"
+///       public_ip                  = "uzkzeonfghtefuulqaev"
+///       public_ipv4_pool           = "dlv"
+///       tags = [{
+///         "key"   = "acaotlyww"
+///         "value" = "tcahesrhkpnaonjnhbfsmiyhypjmw"
+///       }]
+///     }
+///     aws_region        = "qocfydee"
+///     aws_source_schema = "uachsjdkxtczamkh"
+///     aws_tags = {
+///       "key6276" = "nolpfwzekiehxektjfku"
+///     }
+///     public_cloud_connectors_resource_id = "eytnpsrqhczygcelqjky"
+///     public_cloud_resource_name          = "xongligvmdxe"
+///   }
+///   resource_group_name = "rgec2Address"
+///   tags = {
+///     "key991" = "zgudcnhfnizgcnyjetbfss"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -147,8 +199,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2AddressPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2AddressPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.DomainTypeEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

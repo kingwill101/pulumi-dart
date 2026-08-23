@@ -11,13 +11,13 @@ class GetConnectionArgs {
   final pulumi.Input<String> automationAccountName;
   /// The name of connection.
   final pulumi.Input<String> connectionName;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetConnectionArgs].
   /// [automationAccountName] The name of the automation account.
   /// [connectionName] The name of connection.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetConnectionArgs({
     required this.automationAccountName,
     required this.connectionName,
@@ -40,4 +40,3 @@ class GetConnectionArgs {
     );
   }
 }
-

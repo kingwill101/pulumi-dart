@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'backend_base_parameters_response_pool.dart';
 import 'backend_circuit_breaker_response.dart';
 import 'backend_credentials_contract_response.dart';
 import 'backend_properties_response.dart';
@@ -20,10 +21,11 @@ class GetBackendResult {
   final String id;
   /// The name of the resource
   final String name;
+  final BackendBaseParametersResponsePool? pool;
   /// Backend Properties contract
   final BackendPropertiesResponse properties;
-  /// Backend communication protocol.
-  final String protocol;
+  /// Backend communication protocol. Required when backend type is 'Single'.
+  final String? protocol;
   /// Backend gateway Contract Properties
   final BackendProxyContractResponse? proxy;
   /// Management Uri of the Resource in External System. This URL can be the Arm Resource Id of Logic Apps, Function Apps or API Apps.
@@ -34,8 +36,8 @@ class GetBackendResult {
   final BackendTlsPropertiesResponse? tls;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-  /// Runtime Url of the Backend.
-  final String url;
+  /// Runtime Url of the Backend. Required when backend type is 'Single'.
+  final String? url;
 
   /// Creates a new [GetBackendResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -44,14 +46,15 @@ class GetBackendResult {
   /// [description] Backend Description.
   /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [name] The name of the resource
+  /// [pool] Optional.
   /// [properties] Backend Properties contract
-  /// [protocol] Backend communication protocol.
+  /// [protocol] Backend communication protocol. Required when backend type is 'Single'.
   /// [proxy] Backend gateway Contract Properties
   /// [resourceId] Management Uri of the Resource in External System. This URL can be the Arm Resource Id of Logic Apps, Function Apps or API Apps.
   /// [title] Backend Title.
   /// [tls] Backend TLS Properties
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  /// [url] Runtime Url of the Backend.
+  /// [url] Runtime Url of the Backend. Required when backend type is 'Single'.
   const GetBackendResult({
     required this.azureApiVersion,
     this.circuitBreaker,
@@ -59,14 +62,15 @@ class GetBackendResult {
     this.description,
     required this.id,
     required this.name,
+    this.pool,
     required this.properties,
-    required this.protocol,
+    this.protocol,
     this.proxy,
     this.resourceId,
     this.title,
     this.tls,
     required this.type,
-    required this.url,
+    this.url,
   });
 
   Map<String, dynamic> toMap() {
@@ -77,14 +81,15 @@ class GetBackendResult {
       'description': ?description,
       'id': id,
       'name': name,
+      'pool': ?pool?.toMap(),
       'properties': properties.toMap(),
-      'protocol': protocol,
+      'protocol': ?protocol,
       'proxy': ?proxy?.toMap(),
       'resourceId': ?resourceId,
       'title': ?title,
       'tls': ?tls?.toMap(),
       'type': type,
-      'url': url,
+      'url': ?url,
     };
   }
 
@@ -96,15 +101,15 @@ class GetBackendResult {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
+      pool: (() { final guardedValue = map['pool']; if (guardedValue == null) return null; return BackendBaseParametersResponsePool.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       properties: BackendPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
-      protocol: map['protocol'] as String,
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
       proxy: (() { final guardedValue = map['proxy']; if (guardedValue == null) return null; return BackendProxyContractResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tls: (() { final guardedValue = map['tls']; if (guardedValue == null) return null; return BackendTlsPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       type: map['type'] as String,
-      url: map['url'] as String,
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
-

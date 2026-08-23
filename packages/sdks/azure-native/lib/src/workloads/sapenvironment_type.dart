@@ -15,4 +15,3 @@ enum SAPEnvironmentType {
     throw ArgumentError('Unknown SAPEnvironmentType value: $value');
   }
 }
-

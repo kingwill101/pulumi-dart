@@ -15,4 +15,3 @@ enum PreferredIPVersion {
     throw ArgumentError('Unknown PreferredIPVersion value: $value');
   }
 }
-

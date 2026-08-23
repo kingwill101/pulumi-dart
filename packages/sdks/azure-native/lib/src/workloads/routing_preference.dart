@@ -15,4 +15,3 @@ enum RoutingPreference {
     throw ArgumentError('Unknown RoutingPreference value: $value');
   }
 }
-

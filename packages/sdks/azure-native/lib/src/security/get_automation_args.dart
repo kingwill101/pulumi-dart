@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAutomationArgs {
   /// The security automation name.
   final pulumi.Input<String> automationName;
-  /// The name of the resource group within the user's subscription. The name is case insensitive.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetAutomationArgs].
   /// [automationName] The security automation name.
-  /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetAutomationArgs({
     required this.automationName,
     required this.resourceGroupName,
@@ -34,4 +34,3 @@ class GetAutomationArgs {
     );
   }
 }
-

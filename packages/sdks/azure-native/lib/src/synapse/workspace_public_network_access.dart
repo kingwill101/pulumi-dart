@@ -15,4 +15,3 @@ enum WorkspacePublicNetworkAccess {
     throw ArgumentError('Unknown WorkspacePublicNetworkAccess value: $value');
   }
 }
-

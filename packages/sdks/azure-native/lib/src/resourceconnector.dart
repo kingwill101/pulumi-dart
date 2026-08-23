@@ -20,4 +20,5 @@ export 'resourceconnector/list_appliance_keys_result.dart';
 export 'resourceconnector/provider.dart';
 export 'resourceconnector/resource_identity_type.dart';
 export 'resourceconnector/sshkey_response.dart';
+export 'resourceconnector/sshkeylist_appliance_keys_response.dart';
 export 'resourceconnector/system_data_response.dart';

@@ -55,6 +55,24 @@ import 'dedicated_cloud_service_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_vmwarecloudsimple_dedicatedcloudservice" "dedicatedCloudService" {
+///   dedicated_cloud_service_name = "myService"
+///   gateway_subnet               = "10.0.0.0"
+///   location                     = "westus"
+///   resource_group_name          = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +81,8 @@ import 'dedicated_cloud_service_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.vmwarecloudsimple.DedicatedCloudService;
 /// import com.pulumi.azurenative.vmwarecloudsimple.DedicatedCloudServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

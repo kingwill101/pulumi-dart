@@ -7,6 +7,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-03-03.
 ///
+/// Other available API versions: 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -72,6 +74,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_galleryscript" "galleryScript" {
+///   gallery_name        = "myGalleryName"
+///   gallery_script_name = "myGalleryScriptName"
+///   location            = "West US"
+///   properties = {
+///     description           = "This is the gallery script description."
+///     eula                  = "This is the gallery script EULA."
+///     privacy_statement_uri = "{myPrivacyStatementUri}"
+///     release_note_uri      = "{myReleaseNoteUri}"
+///     supported_os_type     = "Windows"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +108,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.GalleryScript;
 /// import com.pulumi.azurenative.compute.GalleryScriptArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryScriptPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

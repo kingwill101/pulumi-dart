@@ -44,7 +44,7 @@ export 'policyinsights/remediation_deployment_summary_response.dart';
 export 'policyinsights/remediation_filters.dart';
 export 'policyinsights/remediation_filters_response.dart';
 export 'policyinsights/remediation_properties_failure_threshold.dart';
-export 'policyinsights/remediation_properties_response_failure_threshold.dart';
+export 'policyinsights/remediation_properties_failure_threshold_response.dart';
 export 'policyinsights/resource_discovery_mode.dart';
 export 'policyinsights/system_data_response.dart';
 export 'policyinsights/typed_error_info_response.dart';

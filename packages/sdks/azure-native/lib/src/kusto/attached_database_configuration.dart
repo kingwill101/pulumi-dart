@@ -6,7 +6,7 @@ import 'table_level_sharing_properties_response.dart';
 ///
 /// Uses Azure REST API version 2024-04-13. In version 2.x of the Azure Native provider, it used API version 2022-12-29.
 ///
-/// Other available API versions: 2019-09-07, 2019-11-09, 2020-02-15, 2020-06-14, 2020-09-18, 2021-01-01, 2021-08-27, 2022-02-01, 2022-07-07, 2022-11-11, 2022-12-29, 2023-05-02, 2023-08-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-09-07, 2019-11-09, 2020-02-15, 2020-06-14, 2020-09-18, 2021-01-01, 2021-08-27, 2022-02-01, 2022-07-07, 2022-11-11, 2022-12-29, 2023-05-02, 2023-08-15, 2025-02-14. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -113,6 +113,36 @@ import 'table_level_sharing_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_kusto_attacheddatabaseconfiguration" "attachedDatabaseConfiguration" {
+///   attached_database_configuration_name = "attachedDatabaseConfigurationsTest"
+///   cluster_name                         = "kustoCluster2"
+///   cluster_resource_id                  = "/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.Kusto/Clusters/kustoCluster2"
+///   database_name                        = "kustodatabase"
+///   database_name_override               = "overridekustodatabase"
+///   default_principals_modification_kind = "Union"
+///   location                             = "westus"
+///   resource_group_name                  = "kustorptest"
+///   table_level_sharing_properties = {
+///     external_tables_to_exclude    = ["ExternalTable2"]
+///     external_tables_to_include    = ["ExternalTable1"]
+///     materialized_views_to_exclude = ["MaterializedViewTable2"]
+///     materialized_views_to_include = ["MaterializedViewTable1"]
+///     tables_to_exclude             = ["Table2"]
+///     tables_to_include             = ["Table1"]
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -122,8 +152,8 @@ import 'table_level_sharing_properties_response.dart';
 /// import com.pulumi.azurenative.kusto.AttachedDatabaseConfiguration;
 /// import com.pulumi.azurenative.kusto.AttachedDatabaseConfigurationArgs;
 /// import com.pulumi.azurenative.kusto.inputs.TableLevelSharingPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

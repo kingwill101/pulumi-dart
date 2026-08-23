@@ -1,12 +1,12 @@
 /// The frequency.
 enum RecurrenceFrequency {
-  valueNotSpecified("NotSpecified"),
-  valueMinute("Minute"),
-  valueHour("Hour"),
-  valueDay("Day"),
-  valueWeek("Week"),
-  valueMonth("Month"),
-  valueYear("Year");
+  notSpecified("NotSpecified"),
+  minute("Minute"),
+  hour("Hour"),
+  day("Day"),
+  week("Week"),
+  month("Month"),
+  year("Year");
 
   const RecurrenceFrequency(this.wireValue);
   final String wireValue;
@@ -20,4 +20,3 @@ enum RecurrenceFrequency {
     throw ArgumentError('Unknown RecurrenceFrequency value: $value');
   }
 }
-

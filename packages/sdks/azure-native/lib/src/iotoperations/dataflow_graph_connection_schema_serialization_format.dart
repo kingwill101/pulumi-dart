@@ -17,4 +17,3 @@ enum DataflowGraphConnectionSchemaSerializationFormat {
     throw ArgumentError('Unknown DataflowGraphConnectionSchemaSerializationFormat value: $value');
   }
 }
-

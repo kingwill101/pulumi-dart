@@ -5,44 +5,46 @@ import 'registry_list_credentials_result_response.dart';
 
 /// Result data returned by listWorkspaceKeys.
 class ListWorkspaceKeysResult {
+  /// The access key of the workspace app insights
   final String appInsightsInstrumentationKey;
-  final RegistryListCredentialsResultResponse containerRegistryCredentials;
-  final ListNotebookKeysResultResponse notebookAccessKeys;
+  final RegistryListCredentialsResultResponse? containerRegistryCredentials;
+  final ListNotebookKeysResultResponse? notebookAccessKeys;
+  /// The arm Id key of the workspace storage
+  final String userStorageArmId;
+  /// The access key of the workspace storage
   final String userStorageKey;
-  final String userStorageResourceId;
 
   /// Creates a new [ListWorkspaceKeysResult].
-  /// [appInsightsInstrumentationKey] Required.
-  /// [containerRegistryCredentials] Required.
-  /// [notebookAccessKeys] Required.
-  /// [userStorageKey] Required.
-  /// [userStorageResourceId] Required.
+  /// [appInsightsInstrumentationKey] The access key of the workspace app insights
+  /// [containerRegistryCredentials] Optional.
+  /// [notebookAccessKeys] Optional.
+  /// [userStorageArmId] The arm Id key of the workspace storage
+  /// [userStorageKey] The access key of the workspace storage
   const ListWorkspaceKeysResult({
     required this.appInsightsInstrumentationKey,
-    required this.containerRegistryCredentials,
-    required this.notebookAccessKeys,
+    this.containerRegistryCredentials,
+    this.notebookAccessKeys,
+    required this.userStorageArmId,
     required this.userStorageKey,
-    required this.userStorageResourceId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appInsightsInstrumentationKey': appInsightsInstrumentationKey,
-      'containerRegistryCredentials': containerRegistryCredentials.toMap(),
-      'notebookAccessKeys': notebookAccessKeys.toMap(),
+      'containerRegistryCredentials': ?containerRegistryCredentials?.toMap(),
+      'notebookAccessKeys': ?notebookAccessKeys?.toMap(),
+      'userStorageArmId': userStorageArmId,
       'userStorageKey': userStorageKey,
-      'userStorageResourceId': userStorageResourceId,
     };
   }
 
   factory ListWorkspaceKeysResult.fromMap(Map<String, dynamic> map) {
     return ListWorkspaceKeysResult(
       appInsightsInstrumentationKey: map['appInsightsInstrumentationKey'] as String,
-      containerRegistryCredentials: RegistryListCredentialsResultResponse.fromMap((map['containerRegistryCredentials']! as Map).cast<String, dynamic>()),
-      notebookAccessKeys: ListNotebookKeysResultResponse.fromMap((map['notebookAccessKeys']! as Map).cast<String, dynamic>()),
+      containerRegistryCredentials: (() { final guardedValue = map['containerRegistryCredentials']; if (guardedValue == null) return null; return RegistryListCredentialsResultResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      notebookAccessKeys: (() { final guardedValue = map['notebookAccessKeys']; if (guardedValue == null) return null; return ListNotebookKeysResultResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      userStorageArmId: map['userStorageArmId'] as String,
       userStorageKey: map['userStorageKey'] as String,
-      userStorageResourceId: map['userStorageResourceId'] as String,
     );
   }
 }
-

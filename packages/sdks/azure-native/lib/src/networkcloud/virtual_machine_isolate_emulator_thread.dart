@@ -15,4 +15,3 @@ enum VirtualMachineIsolateEmulatorThread {
     throw ArgumentError('Unknown VirtualMachineIsolateEmulatorThread value: $value');
   }
 }
-

@@ -17,4 +17,3 @@ enum ScheduleRunType {
     throw ArgumentError('Unknown ScheduleRunType value: $value');
   }
 }
-

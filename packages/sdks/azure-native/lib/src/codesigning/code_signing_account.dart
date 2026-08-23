@@ -3,16 +3,16 @@ import 'account_sku_response.dart';
 import 'code_signing_account_args.dart';
 import 'system_data_response.dart';
 
-/// Trusted signing account resource.
+/// Artifact signing account resource.
 ///
 /// Uses Azure REST API version 2024-09-30-preview. In version 2.x of the Azure Native provider, it used API version 2024-02-05-preview.
 ///
-/// Other available API versions: 2024-02-05-preview, 2025-10-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native codesigning [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-05-preview, 2025-10-13, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native codesigning [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
-/// ### Create a trusted Signing Account.
+/// ### Create an artifact signing account.
 /// ```csharp
 /// using System.Collections.Generic;
 /// using System.Linq;
@@ -64,6 +64,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_codesigning_codesigningaccount" "codeSigningAccount" {
+///   account_name        = "MyAccount"
+///   location            = "westus"
+///   resource_group_name = "MyResourceGroup"
+///   sku = {
+///     name = "Basic"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +93,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.codesigning.CodeSigningAccount;
 /// import com.pulumi.azurenative.codesigning.CodeSigningAccountArgs;
 /// import com.pulumi.azurenative.codesigning.inputs.AccountSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -153,7 +173,7 @@ import 'system_data_response.dart';
 /// $ pulumi import azure-native:codesigning:CodeSigningAccount MyAccount /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}
 /// ```
 class CodeSigningAccount extends pulumi.CustomResource {
-  /// The URI of the trusted signing account which is used during signing files.
+  /// The URI of the artifact signing account which is used during signing files.
   late final pulumi.Output<String> accountUri;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
@@ -161,9 +181,9 @@ class CodeSigningAccount extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// The name of the resource
   late final pulumi.Output<String> name;
-  /// Status of the current operation on trusted signing account.
+  /// Status of the current operation on artifact signing account.
   late final pulumi.Output<String> provisioningState;
-  /// SKU of the trusted signing account.
+  /// SKU of the artifact signing account.
   late final pulumi.Output<AccountSkuResponse?> sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;

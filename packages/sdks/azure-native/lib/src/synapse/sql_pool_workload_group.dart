@@ -69,6 +69,30 @@ import 'sql_pool_workload_group_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_synapse_sqlpoolworkloadgroup" "sqlPoolWorkloadGroup" {
+///   importance                       = "normal"
+///   max_resource_percent             = 100
+///   max_resource_percent_per_request = 3
+///   min_resource_percent             = 0
+///   min_resource_percent_per_request = 3
+///   query_execution_timeout          = 0
+///   resource_group_name              = "sqlcrudtest-6852"
+///   sql_pool_name                    = "sqlcrudtest-9187"
+///   workload_group_name              = "smallrc"
+///   workspace_name                   = "sqlcrudtest-2080"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +101,8 @@ import 'sql_pool_workload_group_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.synapse.SqlPoolWorkloadGroup;
 /// import com.pulumi.azurenative.synapse.SqlPoolWorkloadGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -134,9 +158,9 @@ import 'sql_pool_workload_group_args.dart';
 /// sql_pool_workload_group = azure_native.synapse.SqlPoolWorkloadGroup("sqlPoolWorkloadGroup",
 ///     importance="normal",
 ///     max_resource_percent=100,
-///     max_resource_percent_per_request=3,
+///     max_resource_percent_per_request=float(3),
 ///     min_resource_percent=0,
-///     min_resource_percent_per_request=3,
+///     min_resource_percent_per_request=float(3),
 ///     query_execution_timeout=0,
 ///     resource_group_name="sqlcrudtest-6852",
 ///     sql_pool_name="sqlcrudtest-9187",
@@ -218,6 +242,27 @@ import 'sql_pool_workload_group_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_synapse_sqlpoolworkloadgroup" "sqlPoolWorkloadGroup" {
+///   max_resource_percent             = 100
+///   min_resource_percent             = 0
+///   min_resource_percent_per_request = 3
+///   resource_group_name              = "sqlcrudtest-6852"
+///   sql_pool_name                    = "sqlcrudtest-9187"
+///   workload_group_name              = "smallrc"
+///   workspace_name                   = "sqlcrudtest-2080"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -226,8 +271,8 @@ import 'sql_pool_workload_group_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.synapse.SqlPoolWorkloadGroup;
 /// import com.pulumi.azurenative.synapse.SqlPoolWorkloadGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -277,7 +322,7 @@ import 'sql_pool_workload_group_args.dart';
 /// sql_pool_workload_group = azure_native.synapse.SqlPoolWorkloadGroup("sqlPoolWorkloadGroup",
 ///     max_resource_percent=100,
 ///     min_resource_percent=0,
-///     min_resource_percent_per_request=3,
+///     min_resource_percent_per_request=float(3),
 ///     resource_group_name="sqlcrudtest-6852",
 ///     sql_pool_name="sqlcrudtest-9187",
 ///     workload_group_name="smallrc",

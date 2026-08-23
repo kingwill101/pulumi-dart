@@ -15,4 +15,3 @@ enum ReadOnlyEndpointFailoverPolicy {
     throw ArgumentError('Unknown ReadOnlyEndpointFailoverPolicy value: $value');
   }
 }
-

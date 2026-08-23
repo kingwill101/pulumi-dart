@@ -31,7 +31,6 @@ class GetWorkspaceResult {
   final String? discoveryUrl;
   final bool? enableDataIsolation;
   final bool? enableServiceSideCMKEncryption;
-  /// The encryption settings of Azure ML workspace.
   final EncryptionPropertyResponse? encryption;
   /// Settings for feature store type workspace.
   final FeatureStoreSettingsResponse? featureStoreSettings;
@@ -42,14 +41,13 @@ class GetWorkspaceResult {
   final String? hubResourceId;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-  /// The identity of the resource.
+  /// The managed service identities assigned to this resource.
   final ManagedServiceIdentityResponse? identity;
   /// The compute name for image build
   final String? imageBuildCompute;
   /// ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created
   final String? keyVault;
   final String? kind;
-  /// Specifies the location of the resource.
   final String? location;
   /// Managed Network settings for a machine learning workspace.
   final ManagedNetworkSettingsResponse? managedNetwork;
@@ -71,7 +69,7 @@ class GetWorkspaceResult {
   final String provisioningState;
   /// Whether requests from Public Network are allowed.
   final String? publicNetworkAccess;
-  /// Settings for serverless compute created in the workspace
+  /// Settings for serverless compute in a workspace
   final ServerlessComputeSettingsResponse? serverlessComputeSettings;
   /// The service managed resource settings.
   final ServiceManagedResourcesSettingsResponse? serviceManagedResourcesSettings;
@@ -79,7 +77,7 @@ class GetWorkspaceResult {
   final String serviceProvisionedResourceGroup;
   /// The list of shared private link resources in this workspace.
   final List<SharedPrivateLinkResourceResponse>? sharedPrivateLinkResources;
-  /// The sku of the workspace.
+  /// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
   final SkuResponse? sku;
   /// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
   final String? storageAccount;
@@ -89,7 +87,6 @@ class GetWorkspaceResult {
   final SystemDataResponse systemData;
   /// The auth mode used for accessing the system datastores of the workspace.
   final String? systemDatastoresAuthMode;
-  /// Contains resource tags defined as key/value pairs.
   final Map<String, String>? tags;
   /// The tenant id associated with this workspace.
   final String tenantId;
@@ -112,17 +109,17 @@ class GetWorkspaceResult {
   /// [discoveryUrl] Url for the discovery service to identify regional endpoints for machine learning experimentation services
   /// [enableDataIsolation] Optional.
   /// [enableServiceSideCMKEncryption] Optional.
-  /// [encryption] The encryption settings of Azure ML workspace.
+  /// [encryption] Optional.
   /// [featureStoreSettings] Settings for feature store type workspace.
   /// [friendlyName] The friendly name for this workspace. This name in mutable
   /// [hbiWorkspace] The flag to signal HBI data in the workspace and reduce diagnostic data collected by the service
   /// [hubResourceId] Optional.
   /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  /// [identity] The identity of the resource.
+  /// [identity] The managed service identities assigned to this resource.
   /// [imageBuildCompute] The compute name for image build
   /// [keyVault] ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created
   /// [kind] Optional.
-  /// [location] Specifies the location of the resource.
+  /// [location] Optional.
   /// [managedNetwork] Managed Network settings for a machine learning workspace.
   /// [mlFlowTrackingUri] The URI associated with this workspace that machine learning flow must point at to set up tracking.
   /// [name] The name of the resource
@@ -133,16 +130,16 @@ class GetWorkspaceResult {
   /// [provisionNetworkNow] Set to trigger the provisioning of the managed VNet with the default Options when creating a Workspace with the managed VNet enabled, or else it does nothing.
   /// [provisioningState] The current deployment state of workspace resource. The provisioningState is to indicate states for resource provisioning.
   /// [publicNetworkAccess] Whether requests from Public Network are allowed.
-  /// [serverlessComputeSettings] Settings for serverless compute created in the workspace
+  /// [serverlessComputeSettings] Settings for serverless compute in a workspace
   /// [serviceManagedResourcesSettings] The service managed resource settings.
   /// [serviceProvisionedResourceGroup] The name of the managed resource group created by workspace RP in customer subscription if the workspace is CMK workspace
   /// [sharedPrivateLinkResources] The list of shared private link resources in this workspace.
-  /// [sku] The sku of the workspace.
+  /// [sku] Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
   /// [storageAccount] ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
   /// [storageHnsEnabled] If the storage associated with the workspace has hierarchical namespace(HNS) enabled.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [systemDatastoresAuthMode] The auth mode used for accessing the system datastores of the workspace.
-  /// [tags] Contains resource tags defined as key/value pairs.
+  /// [tags] Optional.
   /// [tenantId] The tenant id associated with this workspace.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [v1LegacyMode] Enabling v1_legacy_mode may prevent you from using features provided by the v2 API.
@@ -296,4 +293,3 @@ class GetWorkspaceResult {
     );
   }
 }
-

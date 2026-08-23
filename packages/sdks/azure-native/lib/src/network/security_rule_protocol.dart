@@ -19,4 +19,3 @@ enum SecurityRuleProtocol {
     throw ArgumentError('Unknown SecurityRuleProtocol value: $value');
   }
 }
-

@@ -75,6 +75,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_containerregistry" "containerRegistry" {
+///   container_registry_name = "my-container-registry"
+///   properties = {
+///     credentials = {
+///       password = "myPassword"
+///       server   = "myServer"
+///       type     = "BasicAuth"
+///       username = "myUsername"
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "my-service"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +110,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.ContainerRegistryArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ContainerRegistryPropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ContainerRegistryBasicCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

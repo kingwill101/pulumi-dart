@@ -14,4 +14,3 @@ enum ApplicationGroupPolicyType {
     throw ArgumentError('Unknown ApplicationGroupPolicyType value: $value');
   }
 }
-

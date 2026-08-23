@@ -6,7 +6,7 @@ import 'file_share_properties_response_file_share_paid_bursting.dart';
 ///
 /// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -58,6 +58,24 @@ import 'file_share_properties_response_file_share_paid_bursting.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_fileshare" "fileShare" {
+///   account_name        = "sto666"
+///   enabled_protocols   = "NFS"
+///   resource_group_name = "res346"
+///   share_name          = "share1235"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +84,8 @@ import 'file_share_properties_response_file_share_paid_bursting.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.storage.FileShare;
 /// import com.pulumi.azurenative.storage.FileShareArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -175,6 +193,23 @@ import 'file_share_properties_response_file_share_paid_bursting.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_fileshare" "fileShare" {
+///   account_name        = "sto328"
+///   resource_group_name = "res3376"
+///   share_name          = "share6185"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +218,8 @@ import 'file_share_properties_response_file_share_paid_bursting.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.storage.FileShare;
 /// import com.pulumi.azurenative.storage.FileShareArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -290,6 +325,24 @@ import 'file_share_properties_response_file_share_paid_bursting.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_fileshare" "fileShare" {
+///   access_tier         = "Hot"
+///   account_name        = "sto666"
+///   resource_group_name = "res346"
+///   share_name          = "share1235"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -298,8 +351,8 @@ import 'file_share_properties_response_file_share_paid_bursting.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.storage.FileShare;
 /// import com.pulumi.azurenative.storage.FileShareArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -418,6 +471,28 @@ import 'file_share_properties_response_file_share_paid_bursting.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_fileshare" "fileShare" {
+///   account_name = "sto666"
+///   file_share_paid_bursting = {
+///     paid_bursting_enabled             = true
+///     paid_bursting_max_bandwidth_mibps = 10340
+///     paid_bursting_max_iops            = 102400
+///   }
+///   resource_group_name = "res346"
+///   share_name          = "share1235"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -427,8 +502,8 @@ import 'file_share_properties_response_file_share_paid_bursting.dart';
 /// import com.pulumi.azurenative.storage.FileShare;
 /// import com.pulumi.azurenative.storage.FileShareArgs;
 /// import com.pulumi.azurenative.storage.inputs.FileSharePropertiesFileSharePaidBurstingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -557,6 +632,26 @@ import 'file_share_properties_response_file_share_paid_bursting.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_fileshare" "fileShare" {
+///   account_name                = "sto666"
+///   provisioned_bandwidth_mibps = 200
+///   provisioned_iops            = 5000
+///   resource_group_name         = "res346"
+///   share_name                  = "share1235"
+///   share_quota                 = 100
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -565,8 +660,8 @@ import 'file_share_properties_response_file_share_paid_bursting.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.storage.FileShare;
 /// import com.pulumi.azurenative.storage.FileShareArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -59,6 +59,26 @@ import 'private_link_association_properties_expanded_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_privatelinkassociation" "privateLinkAssociation" {
+///   group_id = "my-management-group"
+///   pla_id   = "00000000-0000-0000-0000-000000000000"
+///   properties = {
+///     private_link          = "00000000-0000-0000-0000-000000000000"
+///     public_network_access = "Enabled"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +88,8 @@ import 'private_link_association_properties_expanded_response.dart';
 /// import com.pulumi.azurenative.authorization.PrivateLinkAssociation;
 /// import com.pulumi.azurenative.authorization.PrivateLinkAssociationArgs;
 /// import com.pulumi.azurenative.authorization.inputs.PrivateLinkAssociationPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

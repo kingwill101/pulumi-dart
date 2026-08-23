@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'data_flow_response_folder.dart';
+import 'data_flow_folder_response.dart';
 import 'power_query_source_response.dart';
 
 /// Power Query data flow.
@@ -13,7 +13,7 @@ class WranglingDataFlowResponse {
   /// Locale of the Power query mashup document.
   final pulumi.Input<String>? documentLocale;
   /// The folder that this data flow is in. If not specified, Data flow will appear at the root level.
-  final pulumi.Input<DataFlowResponseFolder>? folder;
+  final pulumi.Input<DataFlowFolderResponse>? folder;
   /// Power query mashup script.
   final pulumi.Input<String>? script;
   /// List of sources in Power Query.
@@ -45,7 +45,7 @@ class WranglingDataFlowResponse {
       'annotations': ?annotations,
       'description': ?description,
       'documentLocale': ?documentLocale,
-      'folder': ?pulumi.Input.mapOptionalInputValue<DataFlowResponseFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
+      'folder': ?pulumi.Input.mapOptionalInputValue<DataFlowFolderResponse, Map<String, dynamic>>(folder, (value) => value.toMap()),
       'script': ?script,
       'sources': ?pulumi.Input.mapOptionalInputValue<List<PowerQuerySourceResponse>, List<Map<String, dynamic>>>(sources, (value) => pulumi.Input.encodeList<PowerQuerySourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
@@ -57,11 +57,10 @@ class WranglingDataFlowResponse {
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       documentLocale: (() { final guardedValue = map['documentLocale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataFlowResponseFolder.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataFlowFolderResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       script: (() { final guardedValue = map['script']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sources: (() { final guardedValue = map['sources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PowerQuerySourceResponse>(guardedValue, (value) => PowerQuerySourceResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

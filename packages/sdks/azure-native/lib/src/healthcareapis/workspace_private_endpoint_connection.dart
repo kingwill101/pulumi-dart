@@ -67,6 +67,27 @@ import 'workspace_private_endpoint_connection_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_healthcareapis_workspaceprivateendpointconnection" "workspacePrivateEndpointConnection" {
+///   private_endpoint_connection_name = "myConnection"
+///   private_link_service_connection_state = {
+///     description = "Auto-Approved"
+///     status      = "Approved"
+///   }
+///   resource_group_name = "testRG"
+///   workspace_name      = "workspace1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +97,8 @@ import 'workspace_private_endpoint_connection_args.dart';
 /// import com.pulumi.azurenative.healthcareapis.WorkspacePrivateEndpointConnection;
 /// import com.pulumi.azurenative.healthcareapis.WorkspacePrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

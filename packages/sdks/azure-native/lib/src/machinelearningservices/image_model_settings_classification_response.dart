@@ -48,7 +48,7 @@ class ImageModelSettingsClassificationResponse {
   final pulumi.Input<int>? layersToFreeze;
   /// Initial learning rate. Must be a float in the range [0, 1].
   final pulumi.Input<double>? learningRate;
-  /// Type of learning rate scheduler. Must be 'warmup_cosine' or 'step'.
+  /// Learning rate scheduler enum.
   final pulumi.Input<String>? learningRateScheduler;
   /// Name of the model to use for training.
   /// For more information on the available models please visit the official documentation:
@@ -62,7 +62,7 @@ class ImageModelSettingsClassificationResponse {
   final pulumi.Input<int>? numberOfEpochs;
   /// Number of data loader workers. Must be a non-negative integer.
   final pulumi.Input<int>? numberOfWorkers;
-  /// Type of optimizer.
+  /// Stochastic optimizer for image models.
   final pulumi.Input<String>? optimizer;
   /// Random seed to be used when using deterministic training.
   final pulumi.Input<int>? randomSeed;
@@ -108,13 +108,13 @@ class ImageModelSettingsClassificationResponse {
   /// [gradientAccumulationStep] Gradient accumulation means running a configured number of "GradAccumulationStep" steps without
   /// [layersToFreeze] Number of layers to freeze for the model. Must be a positive integer.
   /// [learningRate] Initial learning rate. Must be a float in the range [0, 1].
-  /// [learningRateScheduler] Type of learning rate scheduler. Must be 'warmup_cosine' or 'step'.
+  /// [learningRateScheduler] Learning rate scheduler enum.
   /// [modelName] Name of the model to use for training.
   /// [momentum] Value of momentum when optimizer is 'sgd'. Must be a float in the range [0, 1].
   /// [nesterov] Enable nesterov when optimizer is 'sgd'.
   /// [numberOfEpochs] Number of training epochs. Must be a positive integer.
   /// [numberOfWorkers] Number of data loader workers. Must be a non-negative integer.
-  /// [optimizer] Type of optimizer.
+  /// [optimizer] Stochastic optimizer for image models.
   /// [randomSeed] Random seed to be used when using deterministic training.
   /// [stepLRGamma] Value of gamma when learning rate scheduler is 'step'. Must be a float in the range [0, 1].
   /// [stepLRStepSize] Value of step size when learning rate scheduler is 'step'. Must be a positive integer.
@@ -248,4 +248,3 @@ class ImageModelSettingsClassificationResponse {
     );
   }
 }
-

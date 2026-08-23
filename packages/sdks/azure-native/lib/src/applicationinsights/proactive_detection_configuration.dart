@@ -94,6 +94,38 @@ import 'proactive_detection_configuration_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_applicationinsights_proactivedetectionconfiguration" "proactiveDetectionConfiguration" {
+///   configuration_id    = "slowpageloadtime"
+///   custom_emails       = ["foo@microsoft.com", "foo2@microsoft.com"]
+///   enabled             = true
+///   location            = "South Central US"
+///   name                = "slowpageloadtime"
+///   resource_group_name = "my-resource-group"
+///   resource_name       = "my-component"
+///   rule_definitions = {
+///     description                  = "Smart Detection rules notify you of performance anomaly issues."
+///     display_name                 = "Slow page load time"
+///     help_url                     = "https://docs.microsoft.com/en-us/azure/application-insights/app-insights-proactive-performance-diagnostics"
+///     is_enabled_by_default        = true
+///     is_hidden                    = false
+///     is_in_preview                = false
+///     name                         = "slowpageloadtime"
+///     supports_email_notifications = true
+///   }
+///   send_emails_to_subscription_owners = true
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +135,8 @@ import 'proactive_detection_configuration_args.dart';
 /// import com.pulumi.azurenative.applicationinsights.ProactiveDetectionConfiguration;
 /// import com.pulumi.azurenative.applicationinsights.ProactiveDetectionConfigurationArgs;
 /// import com.pulumi.azurenative.applicationinsights.inputs.ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

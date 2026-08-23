@@ -1,12 +1,12 @@
 /// Rest API method for target endpoint.
 enum AzureFunctionActivityMethod {
-  valueGET("GET"),
-  valuePOST("POST"),
-  valuePUT("PUT"),
-  valueDELETE("DELETE"),
-  valueOPTIONS("OPTIONS"),
-  valueHEAD("HEAD"),
-  valueTRACE("TRACE");
+  gET("GET"),
+  pOST("POST"),
+  pUT("PUT"),
+  dELETE("DELETE"),
+  oPTIONS("OPTIONS"),
+  hEAD("HEAD"),
+  tRACE("TRACE");
 
   const AzureFunctionActivityMethod(this.wireValue);
   final String wireValue;
@@ -20,4 +20,3 @@ enum AzureFunctionActivityMethod {
     throw ArgumentError('Unknown AzureFunctionActivityMethod value: $value');
   }
 }
-

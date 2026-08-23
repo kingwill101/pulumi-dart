@@ -7,17 +7,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_web_list_web_app_host_keys_slot_args_doc}
 class ListWebAppHostKeysSlotArgs {
-  /// Site name.
+  /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Name of the deployment slot.
+  /// Name of the deployment slot. By default, this API returns the production slot.
   final pulumi.Input<String> slot;
 
   /// Creates a new [ListWebAppHostKeysSlotArgs].
-  /// [name] Site name.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  /// [slot] Name of the deployment slot.
+  /// [name] Name of the app.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [slot] Name of the deployment slot. By default, this API returns the production slot.
   const ListWebAppHostKeysSlotArgs({
     required this.name,
     required this.resourceGroupName,
@@ -40,4 +40,3 @@ class ListWebAppHostKeysSlotArgs {
     );
   }
 }
-

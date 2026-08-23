@@ -65,6 +65,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_notificationhubs_namespaceauthorizationrule" "namespaceAuthorizationRule" {
+///   authorization_rule_name = "sdk-AuthRules-1788"
+///   namespace_name          = "nh-sdk-ns"
+///   resource_group_name     = "5ktrial"
+///   rights                  = ["Listen", "Send"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +91,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.notificationhubs.NamespaceAuthorizationRule;
 /// import com.pulumi.azurenative.notificationhubs.NamespaceAuthorizationRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -18,4 +18,3 @@ enum OwaspCrsExclusionEntrySelectorMatchOperator {
     throw ArgumentError('Unknown OwaspCrsExclusionEntrySelectorMatchOperator value: $value');
   }
 }
-

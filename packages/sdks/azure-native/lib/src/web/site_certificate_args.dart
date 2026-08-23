@@ -21,7 +21,7 @@ class SiteCertificateArgs {
   final pulumi.Input<String>? keyVaultSecretName;
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   final pulumi.Input<String>? kind;
-  /// Resource Location.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// Name of the site.
   final pulumi.Input<String> name;
@@ -44,7 +44,7 @@ class SiteCertificateArgs {
   /// [keyVaultId] Azure Key Vault Csm resource Id.
   /// [keyVaultSecretName] Azure Key Vault secret name.
   /// [kind] Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
-  /// [location] Resource Location.
+  /// [location] The geo-location where the resource lives
   /// [name] Name of the site.
   /// [password] Certificate password.
   /// [pfxBlob] Pfx blob.
@@ -106,4 +106,3 @@ class SiteCertificateArgs {
     );
   }
 }
-

@@ -1,8 +1,8 @@
 /// The write behavior for the operation. Default is Bulk Insert.
 enum AzurePostgreSqlWriteMethodEnum {
-  valueBulkInsert("BulkInsert"),
-  valueCopyCommand("CopyCommand"),
-  valueUpsert("Upsert");
+  bulkInsert("BulkInsert"),
+  copyCommand("CopyCommand"),
+  upsert("Upsert");
 
   const AzurePostgreSqlWriteMethodEnum(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum AzurePostgreSqlWriteMethodEnum {
     throw ArgumentError('Unknown AzurePostgreSqlWriteMethodEnum value: $value');
   }
 }
-

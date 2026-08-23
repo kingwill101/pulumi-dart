@@ -16,4 +16,3 @@ enum ShipmentType {
     throw ArgumentError('Unknown ShipmentType value: $value');
   }
 }
-

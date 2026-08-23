@@ -25,4 +25,3 @@ class DatabaseInstanceProperties {
     );
   }
 }
-

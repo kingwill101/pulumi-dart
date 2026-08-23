@@ -15,4 +15,3 @@ enum AddressClassification {
     throw ArgumentError('Unknown AddressClassification value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum LoggingConfigLogFormat {
     throw ArgumentError('Unknown LoggingConfigLogFormat value: $value');
   }
 }
-

@@ -1,7 +1,7 @@
 /// [Required] Set target lags mode - Auto/Custom
 enum TargetLagsMode {
-  valueAuto("Auto"),
-  valueCustom("Custom");
+  auto("Auto"),
+  custom("Custom");
 
   const TargetLagsMode(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum TargetLagsMode {
     throw ArgumentError('Unknown TargetLagsMode value: $value');
   }
 }
-

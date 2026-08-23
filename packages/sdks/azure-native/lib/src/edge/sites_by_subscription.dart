@@ -3,7 +3,7 @@ import 'site_properties_response.dart';
 import 'sites_by_subscription_args.dart';
 import 'system_data_response.dart';
 
-/// Site as ARM Resource
+/// Site as Extension Resource
 ///
 /// Uses Azure REST API version 2024-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-02-01-preview.
 ///
@@ -64,6 +64,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_edge_sitesbysubscription" "sitesBySubscription" {
+///   properties = {
+///     address_resource_id = "/subscriptions/680d0dad-59aa-4464-3df3-b34b2b42738c/resourceGroups/us-site-rg/providers/Microsoft.EdgeOrder/addresses/12343213"
+///     description         = "string"
+///     display_name        = "string"
+///   }
+///   site_name = "string"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +93,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.edge.SitesBySubscription;
 /// import com.pulumi.azurenative.edge.SitesBySubscriptionArgs;
 /// import com.pulumi.azurenative.edge.inputs.SitePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

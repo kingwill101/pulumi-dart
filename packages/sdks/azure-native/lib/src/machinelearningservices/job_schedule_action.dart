@@ -7,28 +7,27 @@ class JobScheduleAction {
   /// Expected value is 'CreateJob'.
   final pulumi.Input<String> actionType;
   /// [Required] Defines Schedule action definition details.
-  final pulumi.Input<AutoMLJob> jobBaseProperties;
+  final pulumi.Input<AutoMLJob> jobDefinition;
 
   /// Creates a new [JobScheduleAction].
   /// [actionType] Expected value is 'CreateJob'.
-  /// [jobBaseProperties] [Required] Defines Schedule action definition details.
+  /// [jobDefinition] [Required] Defines Schedule action definition details.
   const JobScheduleAction({
     required this.actionType,
-    required this.jobBaseProperties,
+    required this.jobDefinition,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actionType': actionType,
-      'jobBaseProperties': pulumi.Input.mapInputValue<AutoMLJob, Map<String, dynamic>>(jobBaseProperties, (value) => value.toMap()),
+      'jobDefinition': pulumi.Input.mapInputValue<AutoMLJob, Map<String, dynamic>>(jobDefinition, (value) => value.toMap()),
     };
   }
 
   factory JobScheduleAction.fromMap(Map<String, dynamic> map) {
     return JobScheduleAction(
       actionType: pulumi.Input.fromValue(map['actionType'] as String),
-      jobBaseProperties: pulumi.Input.fromValue(AutoMLJob.fromMap((map['jobBaseProperties']! as Map).cast<String, dynamic>())),
+      jobDefinition: pulumi.Input.fromValue(AutoMLJob.fromMap((map['jobDefinition']! as Map).cast<String, dynamic>())),
     );
   }
 }
-

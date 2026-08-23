@@ -74,6 +74,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_discoveryrule" "discoveryRule" {
+///   azure_monitor_workspace_name = "myWorkspace"
+///   discovery_rule_name          = "myDiscoveryRule"
+///   health_model_name            = "myHealthModel"
+///   properties = {
+///     "addRecommendedSignals" = "Enabled"
+///     "authenticationSetting" = "authSetting1"
+///     "discoverRelationships" = "Enabled"
+///     "discoveryRuleKind"     = "ResourceGraphQuery"
+///     "displayName"           = "myDisplayName"
+///     "resourceGraphQuery"    = "resources | where subscriptionId == '7ddfffd7-9b32-40df-1234-828cbd55d6f4' | where resourceGroup == 'my-rg'"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +108,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.monitor.DiscoveryRule;
 /// import com.pulumi.azurenative.monitor.DiscoveryRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

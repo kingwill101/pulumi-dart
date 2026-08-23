@@ -15,4 +15,3 @@ enum VirtualMachineVirtioInterfaceType {
     throw ArgumentError('Unknown VirtualMachineVirtioInterfaceType value: $value');
   }
 }
-

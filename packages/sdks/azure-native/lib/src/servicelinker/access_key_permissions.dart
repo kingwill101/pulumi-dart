@@ -17,4 +17,3 @@ enum AccessKeyPermissions {
     throw ArgumentError('Unknown AccessKeyPermissions value: $value');
   }
 }
-

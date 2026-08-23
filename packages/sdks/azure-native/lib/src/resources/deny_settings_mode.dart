@@ -16,4 +16,3 @@ enum DenySettingsMode {
     throw ArgumentError('Unknown DenySettingsMode value: $value');
   }
 }
-

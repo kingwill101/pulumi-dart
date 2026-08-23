@@ -86,4 +86,3 @@ class Office365Source {
     );
   }
 }
-

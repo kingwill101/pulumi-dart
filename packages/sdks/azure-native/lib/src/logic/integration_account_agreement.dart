@@ -388,6 +388,175 @@ import 'integration_account_agreement_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_logic_integrationaccountagreement" "integrationAccountAgreement" {
+///   agreement_name = "testAgreement"
+///   agreement_type = "AS2"
+///   content = {
+///     a_s2 = {
+///       receive_agreement = {
+///         protocol_settings = {
+///           acknowledgement_connection_settings = {
+///             ignore_certificate_name_mismatch  = true
+///             keep_http_connection_alive        = true
+///             support_http_status_code_continue = true
+///             unfold_http_headers               = true
+///           }
+///           envelope_settings = {
+///             autogenerate_file_name                        = true
+///             file_name_template                            = "Test"
+///             message_content_type                          = "text/plain"
+///             suspend_message_on_file_name_generation_error = true
+///             transmit_file_name_in_mime_header             = true
+///           }
+///           error_settings = {
+///             resend_if_mdn_not_received = true
+///             suspend_duplicate_message  = true
+///           }
+///           mdn_settings = {
+///             disposition_notification_to     = "http://tempuri.org"
+///             mdn_text                        = "Sample"
+///             mic_hashing_algorithm           = "SHA1"
+///             need_mdn                        = true
+///             receipt_delivery_url            = "http://tempuri.org"
+///             send_inbound_mdn_to_message_box = true
+///             send_mdn_asynchronously         = true
+///             sign_mdn                        = true
+///             sign_outbound_mdn_if_optional   = true
+///           }
+///           message_connection_settings = {
+///             ignore_certificate_name_mismatch  = true
+///             keep_http_connection_alive        = true
+///             support_http_status_code_continue = true
+///             unfold_http_headers               = true
+///           }
+///           security_settings = {
+///             enable_nrr_for_inbound_decoded_messages  = true
+///             enable_nrr_for_inbound_encoded_messages  = true
+///             enable_nrr_for_inbound_mdn               = true
+///             enable_nrr_for_outbound_decoded_messages = true
+///             enable_nrr_for_outbound_encoded_messages = true
+///             enable_nrr_for_outbound_mdn              = true
+///             override_group_signing_certificate       = false
+///           }
+///           validation_settings = {
+///             check_certificate_revocation_list_on_receive = true
+///             check_certificate_revocation_list_on_send    = true
+///             check_duplicate_message                      = true
+///             compress_message                             = true
+///             encrypt_message                              = false
+///             encryption_algorithm                         = "AES128"
+///             interchange_duplicates_validity_days         = 100
+///             override_message_properties                  = true
+///             sign_message                                 = false
+///           }
+///         }
+///         receiver_business_identity = {
+///           qualifier = "ZZ"
+///           value     = "ZZ"
+///         }
+///         sender_business_identity = {
+///           qualifier = "AA"
+///           value     = "AA"
+///         }
+///       }
+///       send_agreement = {
+///         protocol_settings = {
+///           acknowledgement_connection_settings = {
+///             ignore_certificate_name_mismatch  = true
+///             keep_http_connection_alive        = true
+///             support_http_status_code_continue = true
+///             unfold_http_headers               = true
+///           }
+///           envelope_settings = {
+///             autogenerate_file_name                        = true
+///             file_name_template                            = "Test"
+///             message_content_type                          = "text/plain"
+///             suspend_message_on_file_name_generation_error = true
+///             transmit_file_name_in_mime_header             = true
+///           }
+///           error_settings = {
+///             resend_if_mdn_not_received = true
+///             suspend_duplicate_message  = true
+///           }
+///           mdn_settings = {
+///             disposition_notification_to     = "http://tempuri.org"
+///             mdn_text                        = "Sample"
+///             mic_hashing_algorithm           = "SHA1"
+///             need_mdn                        = true
+///             receipt_delivery_url            = "http://tempuri.org"
+///             send_inbound_mdn_to_message_box = true
+///             send_mdn_asynchronously         = true
+///             sign_mdn                        = true
+///             sign_outbound_mdn_if_optional   = true
+///           }
+///           message_connection_settings = {
+///             ignore_certificate_name_mismatch  = true
+///             keep_http_connection_alive        = true
+///             support_http_status_code_continue = true
+///             unfold_http_headers               = true
+///           }
+///           security_settings = {
+///             enable_nrr_for_inbound_decoded_messages  = true
+///             enable_nrr_for_inbound_encoded_messages  = true
+///             enable_nrr_for_inbound_mdn               = true
+///             enable_nrr_for_outbound_decoded_messages = true
+///             enable_nrr_for_outbound_encoded_messages = true
+///             enable_nrr_for_outbound_mdn              = true
+///             override_group_signing_certificate       = false
+///           }
+///           validation_settings = {
+///             check_certificate_revocation_list_on_receive = true
+///             check_certificate_revocation_list_on_send    = true
+///             check_duplicate_message                      = true
+///             compress_message                             = true
+///             encrypt_message                              = false
+///             encryption_algorithm                         = "AES128"
+///             interchange_duplicates_validity_days         = 100
+///             override_message_properties                  = true
+///             sign_message                                 = false
+///           }
+///         }
+///         receiver_business_identity = {
+///           qualifier = "AA"
+///           value     = "AA"
+///         }
+///         sender_business_identity = {
+///           qualifier = "ZZ"
+///           value     = "ZZ"
+///         }
+///       }
+///     }
+///   }
+///   guest_identity = {
+///     qualifier = "AA"
+///     value     = "AA"
+///   }
+///   guest_partner = "GuestPartner"
+///   host_identity = {
+///     qualifier = "ZZ"
+///     value     = "ZZ"
+///   }
+///   host_partner             = "HostPartner"
+///   integration_account_name = "testIntegrationAccount"
+///   location                 = "westus"
+///   metadata                 = {}
+///   resource_group_name      = "testResourceGroup"
+///   tags = {
+///     "IntegrationAccountAgreement" = "<IntegrationAccountAgreementName>"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -408,8 +577,8 @@ import 'integration_account_agreement_args.dart';
 /// import com.pulumi.azurenative.logic.inputs.AS2SecuritySettingsArgs;
 /// import com.pulumi.azurenative.logic.inputs.AS2ValidationSettingsArgs;
 /// import com.pulumi.azurenative.logic.inputs.BusinessIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

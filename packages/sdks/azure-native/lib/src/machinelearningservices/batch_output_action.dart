@@ -1,7 +1,7 @@
-/// Indicates how the output will be organized.
+/// Enum to determine how batch inferencing will handle output
 enum BatchOutputAction {
-  valueSummaryOnly("SummaryOnly"),
-  valueAppendRow("AppendRow");
+  summaryOnly("SummaryOnly"),
+  appendRow("AppendRow");
 
   const BatchOutputAction(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum BatchOutputAction {
     throw ArgumentError('Unknown BatchOutputAction value: $value');
   }
 }
-

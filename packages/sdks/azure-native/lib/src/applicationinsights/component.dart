@@ -65,6 +65,28 @@ import 'component_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_applicationinsights_component" "component" {
+///   application_type      = "web"
+///   flow_type             = "Bluefield"
+///   kind                  = "web"
+///   location              = "South Central US"
+///   request_source        = "rest"
+///   resource_group_name   = "my-resource-group"
+///   resource_name         = "my-component"
+///   workspace_resource_id = "/subscriptions/subid/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +95,8 @@ import 'component_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.applicationinsights.Component;
 /// import com.pulumi.azurenative.applicationinsights.ComponentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -209,6 +231,28 @@ import 'component_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_applicationinsights_component" "component" {
+///   kind                = "web"
+///   location            = "South Central US"
+///   resource_group_name = "my-resource-group"
+///   resource_name       = "my-component"
+///   tags = {
+///     "ApplicationGatewayType" = "Internal-Only"
+///     "BillingEntity"          = "Self"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -217,8 +261,8 @@ import 'component_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.applicationinsights.Component;
 /// import com.pulumi.azurenative.applicationinsights.ComponentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

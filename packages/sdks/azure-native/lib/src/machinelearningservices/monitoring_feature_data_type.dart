@@ -1,7 +1,7 @@
 /// [Required] Specifies the data type of the metric threshold.
 enum MonitoringFeatureDataType {
-  valueNumerical("Numerical"),
-  valueCategorical("Categorical");
+  numerical("Numerical"),
+  categorical("Categorical");
 
   const MonitoringFeatureDataType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum MonitoringFeatureDataType {
     throw ArgumentError('Unknown MonitoringFeatureDataType value: $value');
   }
 }
-

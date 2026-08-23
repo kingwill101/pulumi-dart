@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_assignment_properties_response.dart';
 import 'role_management_policy_assignment_args.dart';
+import 'system_data_response.dart';
 
 /// Role management policy
 ///
@@ -58,6 +59,24 @@ import 'role_management_policy_assignment_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_rolemanagementpolicyassignment" "roleManagementPolicyAssignment" {
+///   policy_id                              = "/subscriptions/129ff972-28f8-46b8-a726-e497be039368/providers/Microsoft.Authorization/roleManagementPolicies/b959d571-f0b5-4042-88a7-01be6cb22db9"
+///   role_definition_id                     = "/subscriptions/129ff972-28f8-46b8-a726-e497be039368/providers/Microsoft.Authorization/roleDefinitions/a1705bd2-3a8f-45a5-8683-466fcfd5cc24"
+///   role_management_policy_assignment_name = "b959d571-f0b5-4042-88a7-01be6cb22db9_a1705bd2-3a8f-45a5-8683-466fcfd5cc24"
+///   scope                                  = "providers/Microsoft.Subscription/subscriptions/129ff972-28f8-46b8-a726-e497be039368"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +85,8 @@ import 'role_management_policy_assignment_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.RoleManagementPolicyAssignment;
 /// import com.pulumi.azurenative.authorization.RoleManagementPolicyAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -143,7 +162,7 @@ class RoleManagementPolicyAssignment extends pulumi.CustomResource {
   late final pulumi.Output<String> azureApiVersion;
   /// The readonly computed rule applied to the policy.
   late final pulumi.Output<List<Map<String, dynamic>>> effectiveRules;
-  /// The role management policy name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Additional properties of scope, role definition and policy
   late final pulumi.Output<PolicyAssignmentPropertiesResponse> policyAssignmentProperties;
@@ -153,7 +172,9 @@ class RoleManagementPolicyAssignment extends pulumi.CustomResource {
   late final pulumi.Output<String?> roleDefinitionId;
   /// The role management policy scope.
   late final pulumi.Output<String?> scope;
-  /// The role management policy type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [RoleManagementPolicyAssignment].
@@ -177,6 +198,7 @@ class RoleManagementPolicyAssignment extends pulumi.CustomResource {
     policyId = registerOutput<String?>('policyId');
     roleDefinitionId = registerOutput<String?>('roleDefinitionId');
     scope = registerOutput<String?>('scope');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

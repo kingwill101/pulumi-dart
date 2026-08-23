@@ -17,4 +17,3 @@ enum AzureSqlInstanceType {
     throw ArgumentError('Unknown AzureSqlInstanceType value: $value');
   }
 }
-

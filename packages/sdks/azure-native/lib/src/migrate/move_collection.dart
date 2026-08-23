@@ -76,6 +76,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_movecollection" "moveCollection" {
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location             = "eastus2"
+///   move_collection_name = "movecollection1"
+///   properties = {
+///     move_type     = "RegionToRegion"
+///     source_region = "eastus"
+///     target_region = "westus"
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +111,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.migrate.MoveCollectionArgs;
 /// import com.pulumi.azurenative.migrate.inputs.IdentityArgs;
 /// import com.pulumi.azurenative.migrate.inputs.MoveCollectionPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

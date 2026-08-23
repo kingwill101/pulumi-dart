@@ -6,7 +6,7 @@ import 'subscription_list_response.dart';
 ///
 /// Uses Azure REST API version 2023-10-20. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
 ///
-/// Other available API versions: 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview, 2025-12-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -190,6 +190,73 @@ import 'subscription_list_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datadog_monitoredsubscription" "monitoredSubscription" {
+///   configuration_name = "default"
+///   monitor_name       = "myMonitor"
+///   properties = {
+///     monitored_subscription_list = [{
+///       "status"         = "Active"
+///       "subscriptionId" = "/subscriptions/00000000-0000-0000-0000-000000000000"
+///       "tagRules" = {
+///         "automuting" = true
+///         "logRules" = {
+///           "filteringTags" = [{
+///             "action" = "Include"
+///             "name"   = "Environment"
+///             "value"  = "Prod"
+///             }, {
+///             "action" = "Exclude"
+///             "name"   = "Environment"
+///             "value"  = "Dev"
+///           }]
+///           "sendAadLogs"          = false
+///           "sendResourceLogs"     = true
+///           "sendSubscriptionLogs" = true
+///         }
+///         "metricRules" = {
+///           "filteringTags" = []
+///         }
+///       }
+///       }, {
+///       "status"         = "Failed"
+///       "subscriptionId" = "/subscriptions/00000000-0000-0000-0000-000000000001"
+///       "tagRules" = {
+///         "automuting" = true
+///         "logRules" = {
+///           "filteringTags" = [{
+///             "action" = "Include"
+///             "name"   = "Environment"
+///             "value"  = "Prod"
+///             }, {
+///             "action" = "Exclude"
+///             "name"   = "Environment"
+///             "value"  = "Dev"
+///           }]
+///           "sendAadLogs"          = false
+///           "sendResourceLogs"     = true
+///           "sendSubscriptionLogs" = true
+///         }
+///         "metricRules" = {
+///           "filteringTags" = []
+///         }
+///       }
+///     }]
+///     operation = "AddBegin"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -199,8 +266,8 @@ import 'subscription_list_response.dart';
 /// import com.pulumi.azurenative.datadog.MonitoredSubscription;
 /// import com.pulumi.azurenative.datadog.MonitoredSubscriptionArgs;
 /// import com.pulumi.azurenative.datadog.inputs.SubscriptionListArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

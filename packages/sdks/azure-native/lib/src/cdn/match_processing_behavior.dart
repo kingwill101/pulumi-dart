@@ -15,4 +15,3 @@ enum MatchProcessingBehavior {
     throw ArgumentError('Unknown MatchProcessingBehavior value: $value');
   }
 }
-

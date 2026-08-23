@@ -1,10 +1,10 @@
 /// Specifies the kind of Entra identity described by this object.
 enum IdentityKind {
-  valueAgentBlueprint("AgentBlueprint"),
-  valueAgentInstance("AgentInstance"),
-  valueAgenticUser("AgenticUser"),
-  valueManaged("Managed"),
-  valueNone("None");
+  agentBlueprint("AgentBlueprint"),
+  agentInstance("AgentInstance"),
+  agenticUser("AgenticUser"),
+  managed("Managed"),
+  none("None");
 
   const IdentityKind(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum IdentityKind {
     throw ArgumentError('Unknown IdentityKind value: $value');
   }
 }
-

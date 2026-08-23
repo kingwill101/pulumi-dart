@@ -11,7 +11,7 @@ class GetVirtualNetworkArgs {
   final pulumi.Input<String>? expand;
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The name of the VirtualNetwork
+  /// The name of the virtual network.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
@@ -19,7 +19,7 @@ class GetVirtualNetworkArgs {
   /// Creates a new [GetVirtualNetworkArgs].
   /// [expand] Specify the $expand query. Example: 'properties($expand=externalSubnets)'
   /// [labName] The name of the lab.
-  /// [name] The name of the VirtualNetwork
+  /// [name] The name of the virtual network.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetVirtualNetworkArgs({
     this.expand,
@@ -46,4 +46,3 @@ class GetVirtualNetworkArgs {
     );
   }
 }
-

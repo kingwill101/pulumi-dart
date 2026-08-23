@@ -10,7 +10,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 ///
-/// Other available API versions: 2023-03-01, 2023-08-01-preview, 2023-09-01-preview, 2024-06-01, 2024-06-15-preview, 2025-02-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native appconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-01, 2023-08-01-preview, 2023-09-01-preview, 2024-06-01, 2024-06-15-preview, 2025-02-01-preview, 2025-06-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native appconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -74,6 +74,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appconfiguration_configurationstore" "configurationStore" {
+///   config_store_name   = "contoso"
+///   location            = "westus"
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     name = "Standard"
+///   }
+///   tags = {
+///     "myTag" = "myTagValue"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +106,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appconfiguration.ConfigurationStore;
 /// import com.pulumi.azurenative.appconfiguration.ConfigurationStoreArgs;
 /// import com.pulumi.azurenative.appconfiguration.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -224,6 +247,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appconfiguration_configurationstore" "configurationStore" {
+///   config_store_name = "contoso"
+///   data_plane_proxy = {
+///     authentication_mode     = "Pass-through"
+///     private_link_delegation = "Enabled"
+///   }
+///   location            = "westus"
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     name = "Standard"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -234,8 +281,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appconfiguration.ConfigurationStoreArgs;
 /// import com.pulumi.azurenative.appconfiguration.inputs.DataPlaneProxyPropertiesArgs;
 /// import com.pulumi.azurenative.appconfiguration.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -374,6 +421,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appconfiguration_configurationstore" "configurationStore" {
+///   config_store_name   = "contoso"
+///   disable_local_auth  = true
+///   location            = "westus"
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     name = "Standard"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -383,8 +451,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appconfiguration.ConfigurationStore;
 /// import com.pulumi.azurenative.appconfiguration.ConfigurationStoreArgs;
 /// import com.pulumi.azurenative.appconfiguration.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

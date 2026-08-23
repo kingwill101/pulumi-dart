@@ -15,4 +15,3 @@ enum CloudHsmClusterSkuName {
     throw ArgumentError('Unknown CloudHsmClusterSkuName value: $value');
   }
 }
-

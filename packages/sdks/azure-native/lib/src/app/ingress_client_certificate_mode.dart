@@ -16,4 +16,3 @@ enum IngressClientCertificateMode {
     throw ArgumentError('Unknown IngressClientCertificateMode value: $value');
   }
 }
-

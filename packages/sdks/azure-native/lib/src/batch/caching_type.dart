@@ -16,4 +16,3 @@ enum CachingType {
     throw ArgumentError('Unknown CachingType value: $value');
   }
 }
-

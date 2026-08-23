@@ -17,4 +17,3 @@ enum NetworkFeatures {
     throw ArgumentError('Unknown NetworkFeatures value: $value');
   }
 }
-

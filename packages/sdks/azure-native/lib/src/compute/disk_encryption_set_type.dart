@@ -16,4 +16,3 @@ enum DiskEncryptionSetType {
     throw ArgumentError('Unknown DiskEncryptionSetType value: $value');
   }
 }
-

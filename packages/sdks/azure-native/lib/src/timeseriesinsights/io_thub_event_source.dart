@@ -54,6 +54,23 @@ import 'local_timestamp_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_timeseriesinsights_iothubeventsource" "ioTHubEventSource" {
+///   environment_name    = "env1"
+///   event_source_name   = "es1"
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -62,8 +79,8 @@ import 'local_timestamp_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.timeseriesinsights.IoTHubEventSource;
 /// import com.pulumi.azurenative.timeseriesinsights.IoTHubEventSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -167,6 +184,23 @@ import 'local_timestamp_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_timeseriesinsights_iothubeventsource" "ioTHubEventSource" {
+///   environment_name    = "env1"
+///   event_source_name   = "es1"
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +209,8 @@ import 'local_timestamp_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.timeseriesinsights.IoTHubEventSource;
 /// import com.pulumi.azurenative.timeseriesinsights.IoTHubEventSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

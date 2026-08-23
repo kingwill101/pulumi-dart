@@ -112,6 +112,49 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_signaldefinition" "signalDefinition" {
+///   azure_monitor_workspace_name = "myWorkspace"
+///   health_model_name            = "myHealthModel"
+///   properties = {
+///     "aggregationType" = "Average"
+///     "dataUnit"        = "byte"
+///     "dimension"       = "nodename"
+///     "dimensionFilter" = "node1"
+///     "displayName"     = "cpu usage"
+///     "evaluationRules" = {
+///       "degradedRule" = {
+///         "operator"  = "LessThan"
+///         "threshold" = "65"
+///       }
+///       "unhealthyRule" = {
+///         "operator"  = "LessThan"
+///         "threshold" = "60"
+///       }
+///     }
+///     "metricName"      = "cpuusage"
+///     "metricNamespace" = "microsoft.compute/virtualMachines"
+///     "refreshInterval" = "PT1M"
+///     "signalKind"      = "AzureResourceMetric"
+///     "tags" = {
+///       "key4788" = "ixfvzsfnpvkkbrce"
+///     }
+///     "timeGrain" = "PT1M"
+///   }
+///   resource_group_name    = "rgopenapi"
+///   signal_definition_name = "sig1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -120,8 +163,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.monitor.SignalDefinition;
 /// import com.pulumi.azurenative.monitor.SignalDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

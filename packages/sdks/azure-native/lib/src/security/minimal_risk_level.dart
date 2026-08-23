@@ -1,9 +1,9 @@
 /// Defines the minimal attach path risk level which will be sent as email notifications
 enum MinimalRiskLevel {
-  valueCritical("Critical"),
-  valueHigh("High"),
-  valueMedium("Medium"),
-  valueLow("Low");
+  critical("Critical"),
+  high("High"),
+  medium("Medium"),
+  low("Low");
 
   const MinimalRiskLevel(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum MinimalRiskLevel {
     throw ArgumentError('Unknown MinimalRiskLevel value: $value');
   }
 }
-

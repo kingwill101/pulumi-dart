@@ -15,4 +15,3 @@ enum AllocationMethod {
     throw ArgumentError('Unknown AllocationMethod value: $value');
   }
 }
-

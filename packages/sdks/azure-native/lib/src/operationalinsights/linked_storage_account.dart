@@ -64,6 +64,24 @@ import 'linked_storage_account_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_operationalinsights_linkedstorageaccount" "linkedStorageAccount" {
+///   data_source_type    = "CustomLogs"
+///   resource_group_name = "mms-eus"
+///   storage_account_ids = ["/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/mms-eus/providers/Microsoft.Storage/storageAccounts/testStorageA", "/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/mms-eus/providers/Microsoft.Storage/storageAccounts/testStorageB"]
+///   workspace_name      = "testLinkStorageAccountsWS"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +90,8 @@ import 'linked_storage_account_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.operationalinsights.LinkedStorageAccount;
 /// import com.pulumi.azurenative.operationalinsights.LinkedStorageAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -14,4 +14,3 @@ enum OnFailure {
     throw ArgumentError('Unknown OnFailure value: $value');
   }
 }
-

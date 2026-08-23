@@ -1,8 +1,8 @@
 /// [Required] Specifies the action type of the schedule
 enum ScheduleActionType {
-  valueCreateJob("CreateJob"),
-  valueInvokeBatchEndpoint("InvokeBatchEndpoint"),
-  valueCreateMonitor("CreateMonitor");
+  createJob("CreateJob"),
+  invokeBatchEndpoint("InvokeBatchEndpoint"),
+  createMonitor("CreateMonitor");
 
   const ScheduleActionType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum ScheduleActionType {
     throw ArgumentError('Unknown ScheduleActionType value: $value');
   }
 }
-

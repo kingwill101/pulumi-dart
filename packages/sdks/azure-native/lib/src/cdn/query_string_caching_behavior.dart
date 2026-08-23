@@ -17,4 +17,3 @@ enum QueryStringCachingBehavior {
     throw ArgumentError('Unknown QueryStringCachingBehavior value: $value');
   }
 }
-

@@ -129,6 +129,52 @@ import 'encryption_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datalakestore_account" "account" {
+///   account_name  = "contosoadla"
+///   default_group = "test_default_group"
+///   encryption_config = {
+///     key_vault_meta_info = {
+///       encryption_key_name    = "test_encryption_key_name"
+///       encryption_key_version = "encryption_key_version"
+///       key_vault_resource_id  = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345"
+///     }
+///     type = "UserManaged"
+///   }
+///   encryption_state         = "Enabled"
+///   firewall_allow_azure_ips = "Enabled"
+///   firewall_rules {
+///     end_ip_address   = "2.2.2.2"
+///     name             = "test_rule"
+///     start_ip_address = "1.1.1.1"
+///   }
+///   firewall_state = "Enabled"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location            = "eastus2"
+///   new_tier            = "Consumption"
+///   resource_group_name = "contosorg"
+///   tags = {
+///     "test_key" = "test_value"
+///   }
+///   trusted_id_provider_state = "Enabled"
+///   trusted_id_providers {
+///     id_provider = "https://sts.windows.net/ea9ec534-a3e3-4e45-ad36-3afc5bb291c1"
+///     name        = "test_trusted_id_provider_name"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -142,8 +188,8 @@ import 'encryption_identity_response.dart';
 /// import com.pulumi.azurenative.datalakestore.inputs.CreateFirewallRuleWithAccountParametersArgs;
 /// import com.pulumi.azurenative.datalakestore.inputs.EncryptionIdentityArgs;
 /// import com.pulumi.azurenative.datalakestore.inputs.CreateTrustedIdProviderWithAccountParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

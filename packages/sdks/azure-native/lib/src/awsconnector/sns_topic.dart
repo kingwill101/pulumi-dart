@@ -153,6 +153,61 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_snstopic" "snsTopic" {
+///   location = "vzzjtyjhqbty"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "jjhuxiyhej"
+///     aws_account_id = "wndmunvvkmoyxlrbsnowo"
+///     aws_properties = {
+///       content_based_deduplication = true
+///       delivery_status_logging = [{
+///         "failureFeedbackRoleArn"    = "ygtlmetldtzqhoasmdit"
+///         "protocol"                  = "application"
+///         "successFeedbackRoleArn"    = "ersgnxrmfnrqhmyilsomcxxlza"
+///         "successFeedbackSampleRate" = "iudedzrjawqzroytyyonpydzjzzmlj"
+///       }]
+///       display_name      = "sanmplpvkvcorlhraijepxftlyeqwj"
+///       fifo_topic        = true
+///       kms_master_key_id = "nioyrfbmzmfdvakoenyodtjgzaxuw"
+///       signature_version = "lpfgizlw"
+///       subscription = [{
+///         "endpoint" = "yuvwciasnlpnswnynse"
+///         "protocol" = "zohpkxrrouufioztdmkw"
+///       }]
+///       tags = [{
+///         "key"   = "daicnimeizenloocglfwacmcp"
+///         "value" = "bxdamnevuybindqttmfvzotzqboj"
+///       }]
+///       topic_arn      = "owersxkcdlhhnawxkmqlcjlzqlxtmj"
+///       topic_name     = "lijmdexuvnfby"
+///       tracing_config = "yrpvxmefnaexobhqvtdrj"
+///     }
+///     aws_region        = "qbpwpfnzmmkh"
+///     aws_source_schema = "sxholwzdshjzccfoioytctdmjrmlpo"
+///     aws_tags = {
+///       "key2577" = "tygcrksvujusefiivyigtch"
+///     }
+///     public_cloud_connectors_resource_id = "didnyoylzwmnsjudmfwojgtjqsuypn"
+///     public_cloud_resource_name          = "vwncs"
+///   }
+///   resource_group_name = "rgsnsTopic"
+///   tags = {
+///     "key5456" = "eqraeavtnbspitsdlpmv"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -163,8 +218,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.SnsTopicArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SnsTopicPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsSnsTopicPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

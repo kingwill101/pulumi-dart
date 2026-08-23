@@ -15,4 +15,3 @@ enum CommunityActionTypes {
     throw ArgumentError('Unknown CommunityActionTypes value: $value');
   }
 }
-

@@ -18,4 +18,3 @@ enum TransitHubState {
     throw ArgumentError('Unknown TransitHubState value: $value');
   }
 }
-

@@ -18,9 +18,9 @@ class WebAppPublicCertificateSlotArgs {
   final pulumi.Input<PublicCertificateLocation>? publicCertificateLocation;
   /// Public certificate name.
   final pulumi.Input<String>? publicCertificateName;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Name of the deployment slot. If a slot is not specified, the API will create a binding for the production slot.
+  /// Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
   final pulumi.Input<String> slot;
 
   /// Creates a new [WebAppPublicCertificateSlotArgs].
@@ -29,8 +29,8 @@ class WebAppPublicCertificateSlotArgs {
   /// [name] Name of the app.
   /// [publicCertificateLocation] Public Certificate Location
   /// [publicCertificateName] Public certificate name.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  /// [slot] Name of the deployment slot. If a slot is not specified, the API will create a binding for the production slot.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [slot] Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
   const WebAppPublicCertificateSlotArgs({
     this.blob,
     this.kind,
@@ -65,4 +65,3 @@ class WebAppPublicCertificateSlotArgs {
     );
   }
 }
-

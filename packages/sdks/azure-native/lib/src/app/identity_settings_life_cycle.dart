@@ -17,4 +17,3 @@ enum IdentitySettingsLifeCycle {
     throw ArgumentError('Unknown IdentitySettingsLifeCycle value: $value');
   }
 }
-

@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// SKU of the trusted signing account.
+/// SKU of the artifact signing account.
 class AccountSku {
   /// Name of the SKU.
   final pulumi.Input<String> name;
@@ -25,4 +25,3 @@ class AccountSku {
     );
   }
 }
-

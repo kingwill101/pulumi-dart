@@ -1,13 +1,13 @@
 /// Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
 enum AgentDeploymentState {
-  valueStarting("Starting"),
-  valueRunning("Running"),
-  valueStopping("Stopping"),
-  valueStopped("Stopped"),
-  valueFailed("Failed"),
-  valueDeleting("Deleting"),
-  valueDeleted("Deleted"),
-  valueUpdating("Updating");
+  starting("Starting"),
+  running("Running"),
+  stopping("Stopping"),
+  stopped("Stopped"),
+  failed("Failed"),
+  deleting("Deleting"),
+  deleted("Deleted"),
+  updating("Updating");
 
   const AgentDeploymentState(this.wireValue);
   final String wireValue;
@@ -21,4 +21,3 @@ enum AgentDeploymentState {
     throw ArgumentError('Unknown AgentDeploymentState value: $value');
   }
 }
-

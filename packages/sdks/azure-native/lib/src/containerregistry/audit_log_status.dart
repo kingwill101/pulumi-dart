@@ -15,4 +15,3 @@ enum AuditLogStatus {
     throw ArgumentError('Unknown AuditLogStatus value: $value');
   }
 }
-

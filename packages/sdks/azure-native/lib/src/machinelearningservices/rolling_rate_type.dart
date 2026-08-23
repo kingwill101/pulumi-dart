@@ -3,11 +3,11 @@
 /// If it's day, all data will be collected in blob path /yyyy/MM/dd/.
 /// The other benefit of rolling path is that model monitoring ui is able to select a time range of data very quickly.
 enum RollingRateType {
-  valueYear("Year"),
-  valueMonth("Month"),
-  valueDay("Day"),
-  valueHour("Hour"),
-  valueMinute("Minute");
+  year("Year"),
+  month("Month"),
+  day("Day"),
+  hour("Hour"),
+  minute("Minute");
 
   const RollingRateType(this.wireValue);
   final String wireValue;
@@ -21,4 +21,3 @@ enum RollingRateType {
     throw ArgumentError('Unknown RollingRateType value: $value');
   }
 }
-

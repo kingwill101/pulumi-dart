@@ -2,6 +2,7 @@
 
 import 'lab_announcement_properties_response.dart';
 import 'lab_support_properties_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getLab.
 class GetLabResult {
@@ -21,19 +22,19 @@ class GetLabResult {
   final String? environmentPermission;
   /// Extended properties of the lab used for experimental features
   final Map<String, String>? extendedProperties;
-  /// The identifier of the resource.
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
   /// Type of storage used by the lab. It can be either Premium or Standard. Default is Premium.
   final String? labStorageType;
   /// The load balancer used to for lab VMs that use shared IP address.
   final String loadBalancerId;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   final String? location;
   /// The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user.
   final List<String>? mandatoryArtifactsResourceIdsLinux;
   /// The ordered list of artifact resource IDs that should be applied on all Windows VM creations by default, prior to the artifacts specified by the user.
   final List<String>? mandatoryArtifactsResourceIdsWindows;
-  /// The name of the resource.
+  /// The name of the resource
   final String name;
   /// The Network Security Group attached to the lab VMs Network interfaces to restrict open ports.
   final String networkSecurityGroupId;
@@ -49,9 +50,11 @@ class GetLabResult {
   final String publicIpId;
   /// The properties of any lab support message associated with this lab
   final LabSupportPropertiesResponse? support;
-  /// The tags of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// Resource tags.
   final Map<String, String>? tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// The unique immutable identifier of a resource (Guid).
   final String uniqueIdentifier;
@@ -69,21 +72,22 @@ class GetLabResult {
   /// [defaultStorageAccount] The lab's default storage account.
   /// [environmentPermission] The access rights to be granted to the user when provisioning an environment
   /// [extendedProperties] Extended properties of the lab used for experimental features
-  /// [id] The identifier of the resource.
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [labStorageType] Type of storage used by the lab. It can be either Premium or Standard. Default is Premium.
   /// [loadBalancerId] The load balancer used to for lab VMs that use shared IP address.
-  /// [location] The location of the resource.
+  /// [location] The geo-location where the resource lives
   /// [mandatoryArtifactsResourceIdsLinux] The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user.
   /// [mandatoryArtifactsResourceIdsWindows] The ordered list of artifact resource IDs that should be applied on all Windows VM creations by default, prior to the artifacts specified by the user.
-  /// [name] The name of the resource.
+  /// [name] The name of the resource
   /// [networkSecurityGroupId] The Network Security Group attached to the lab VMs Network interfaces to restrict open ports.
   /// [premiumDataDiskStorageAccount] The lab's premium data disk storage account.
   /// [premiumDataDisks] The setting to enable usage of premium data disks.
   /// [provisioningState] The provisioning status of the resource.
   /// [publicIpId] The public IP address for the lab's load balancer.
   /// [support] The properties of any lab support message associated with this lab
-  /// [tags] The tags of the resource.
-  /// [type] The type of the resource.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [tags] Resource tags.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
   /// [vaultName] The lab's Key vault.
   /// [vmCreationResourceGroup] The resource group in which all new lab virtual machines will be created. To let DevTest Labs manage resource group creation, set this value to null.
@@ -109,6 +113,7 @@ class GetLabResult {
     required this.provisioningState,
     required this.publicIpId,
     this.support,
+    required this.systemData,
     this.tags,
     required this.type,
     required this.uniqueIdentifier,
@@ -139,6 +144,7 @@ class GetLabResult {
       'provisioningState': provisioningState,
       'publicIpId': publicIpId,
       'support': ?support?.toMap(),
+      'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
       'uniqueIdentifier': uniqueIdentifier,
@@ -170,6 +176,7 @@ class GetLabResult {
       provisioningState: map['provisioningState'] as String,
       publicIpId: map['publicIpId'] as String,
       support: (() { final guardedValue = map['support']; if (guardedValue == null) return null; return LabSupportPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
@@ -178,4 +185,3 @@ class GetLabResult {
     );
   }
 }
-

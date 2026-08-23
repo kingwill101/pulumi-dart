@@ -70,6 +70,29 @@ import 'target_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databasewatcher_target" "target" {
+///   properties = {
+///     "connectionServerName"     = "sqlServero1ihe2"
+///     "sqlDbResourceId"          = "/subscriptions/49e0fbd3-75e8-44e7-96fd-5b64d9ad818d/resourceGroups/apiTest-ddat4p/providers/Microsoft.Sql/servers/m1/databases/m2"
+///     "targetAuthenticationType" = "Aad"
+///     "targetType"               = "SqlDb"
+///   }
+///   resource_group_name = "apiTest-ddat4p"
+///   target_name         = "monitoringh22eed"
+///   watcher_name        = "databasemo3ej9ih"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +101,8 @@ import 'target_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.databasewatcher.Target;
 /// import com.pulumi.azurenative.databasewatcher.TargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -15,4 +15,3 @@ enum BackingResourcePublicNetworkAccess {
     throw ArgumentError('Unknown BackingResourcePublicNetworkAccess value: $value');
   }
 }
-

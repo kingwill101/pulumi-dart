@@ -14,4 +14,3 @@ enum NamingPatternType {
     throw ArgumentError('Unknown NamingPatternType value: $value');
   }
 }
-

@@ -104,6 +104,44 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_programmableconnectivity_operatorapiconnection" "operatorApiConnection" {
+///   account_type = "AzureManaged"
+///   app_id       = "czgrhbvgr"
+///   app_secret   = "wtxnpes"
+///   configured_application = {
+///     application_description       = "gjlwegnqvffvsc"
+///     application_type              = "f"
+///     legal_name                    = "ar"
+///     name                          = "idzqqen"
+///     organization_description      = "fcueqzlxxr"
+///     privacy_contact_email_address = "l"
+///     tax_number                    = "ngzv"
+///   }
+///   gateway_id                   = "/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/example-rg/providers/Microsoft.ProgrammableConnectivity/gateways/cdvcixxcdhjqw"
+///   location                     = "dwvzfkjoepbmksygazllqryyinn"
+///   operator_api_connection_name = "nzsdg"
+///   operator_api_plan_id         = "/subscriptions/00000000-0000-0000-0000-00000000000/providers/Microsoft.ProgrammableConnectivity/operatorApiPlans/livmzrh"
+///   resource_group_name          = "rgopenapi"
+///   saas_properties = {
+///     saas_resource_id     = "pekejefyvfviabimdrmno"
+///     saas_subscription_id = "mgyusmqt"
+///   }
+///   tags = {
+///     "key5536" = "bjhvpzsmtalqxmjjbsfdizhg"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +152,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.programmableconnectivity.OperatorApiConnectionArgs;
 /// import com.pulumi.azurenative.programmableconnectivity.inputs.ApplicationPropertiesArgs;
 /// import com.pulumi.azurenative.programmableconnectivity.inputs.SaasPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

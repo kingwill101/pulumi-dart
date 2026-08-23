@@ -4,9 +4,9 @@ import 'watcher_args.dart';
 
 /// Definition of the watcher type.
 ///
-/// Uses Azure REST API version 2023-05-15-preview. In version 2.x of the Azure Native provider, it used API version 2020-01-13-preview.
+/// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2020-01-13-preview.
 ///
-/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -66,6 +66,28 @@ import 'watcher_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_watcher" "watcher" {
+///   automation_account_name        = "MyTestAutomationAccount"
+///   description                    = "This is a test watcher."
+///   execution_frequency_in_seconds = 60
+///   resource_group_name            = "rg"
+///   script_name                    = "MyTestWatcherRunbook"
+///   script_run_on                  = "MyTestHybridWorkerGroup"
+///   tags                           = {}
+///   watcher_name                   = "MyTestWatcher"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +96,8 @@ import 'watcher_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.automation.Watcher;
 /// import com.pulumi.azurenative.automation.WatcherArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -128,7 +150,7 @@ import 'watcher_args.dart';
 /// watcher = azure_native.automation.Watcher("watcher",
 ///     automation_account_name="MyTestAutomationAccount",
 ///     description="This is a test watcher.",
-///     execution_frequency_in_seconds=60,
+///     execution_frequency_in_seconds=float(60),
 ///     resource_group_name="rg",
 ///     script_name="MyTestWatcherRunbook",
 ///     script_run_on="MyTestHybridWorkerGroup",

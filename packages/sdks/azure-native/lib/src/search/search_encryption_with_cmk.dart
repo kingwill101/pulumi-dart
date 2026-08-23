@@ -16,4 +16,3 @@ enum SearchEncryptionWithCmk {
     throw ArgumentError('Unknown SearchEncryptionWithCmk value: $value');
   }
 }
-

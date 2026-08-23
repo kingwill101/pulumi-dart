@@ -40,4 +40,3 @@ class GetPowerShell72ModuleArgs {
     );
   }
 }
-

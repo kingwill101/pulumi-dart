@@ -15,4 +15,3 @@ enum FailureAction {
     throw ArgumentError('Unknown FailureAction value: $value');
   }
 }
-

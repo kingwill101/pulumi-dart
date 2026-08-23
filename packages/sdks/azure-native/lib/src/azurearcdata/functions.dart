@@ -30,7 +30,7 @@ import 'get_sql_server_license_result.dart';
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
 ///
-/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurearcdata_get_active_directory_connector_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetActiveDirectoryConnectorResult> getActiveDirectoryConnector(
@@ -50,7 +50,7 @@ Future<GetActiveDirectoryConnectorResult> getActiveDirectoryConnector(
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
 ///
-/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurearcdata_get_data_controller_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDataControllerResult> getDataController(
@@ -70,7 +70,7 @@ Future<GetDataControllerResult> getDataController(
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
 ///
-/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurearcdata_get_failover_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFailoverGroupResult> getFailoverGroup(
@@ -90,7 +90,7 @@ Future<GetFailoverGroupResult> getFailoverGroup(
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
 ///
-/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurearcdata_get_postgres_instance_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPostgresInstanceResult> getPostgresInstance(
@@ -110,7 +110,7 @@ Future<GetPostgresInstanceResult> getPostgresInstance(
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
 ///
-/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurearcdata_get_sql_managed_instance_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSqlManagedInstanceResult> getSqlManagedInstance(
@@ -130,7 +130,7 @@ Future<GetSqlManagedInstanceResult> getSqlManagedInstance(
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
 ///
-/// Other available API versions: 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-01-01, 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurearcdata_get_sql_server_availability_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSqlServerAvailabilityGroupResult> getSqlServerAvailabilityGroup(
@@ -150,7 +150,7 @@ Future<GetSqlServerAvailabilityGroupResult> getSqlServerAvailabilityGroup(
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
 ///
-/// Other available API versions: 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-01-01, 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurearcdata_get_sql_server_availability_group_detail_view_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSqlServerAvailabilityGroupDetailViewResult> getSqlServerAvailabilityGroupDetailView(
@@ -170,7 +170,7 @@ Future<GetSqlServerAvailabilityGroupDetailViewResult> getSqlServerAvailabilityGr
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
 ///
-/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurearcdata_get_sql_server_database_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSqlServerDatabaseResult> getSqlServerDatabase(
@@ -190,7 +190,7 @@ Future<GetSqlServerDatabaseResult> getSqlServerDatabase(
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
 ///
-/// Other available API versions: 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurearcdata_get_sql_server_esu_license_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSqlServerEsuLicenseResult> getSqlServerEsuLicense(
@@ -210,7 +210,7 @@ Future<GetSqlServerEsuLicenseResult> getSqlServerEsuLicense(
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
 ///
-/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurearcdata_get_sql_server_instance_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSqlServerInstanceResult> getSqlServerInstance(
@@ -230,7 +230,7 @@ Future<GetSqlServerInstanceResult> getSqlServerInstance(
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
 ///
-/// Other available API versions: 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurearcdata_get_sql_server_instance_jobs_status_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSqlServerInstanceJobsStatusResult> getSqlServerInstanceJobsStatus(
@@ -250,7 +250,7 @@ Future<GetSqlServerInstanceJobsStatusResult> getSqlServerInstanceJobsStatus(
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
 ///
-/// Other available API versions: 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-01-01, 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurearcdata_get_sql_server_instance_telemetry_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSqlServerInstanceTelemetryResult> getSqlServerInstanceTelemetry(
@@ -270,7 +270,7 @@ Future<GetSqlServerInstanceTelemetryResult> getSqlServerInstanceTelemetry(
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
 ///
-/// Other available API versions: 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurearcdata_get_sql_server_license_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSqlServerLicenseResult> getSqlServerLicense(

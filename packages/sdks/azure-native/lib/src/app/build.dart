@@ -58,6 +58,23 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_build" "build" {
+///   build_name          = "testBuild"
+///   builder_name        = "testBuilder"
+///   resource_group_name = "rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +83,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.app.Build;
 /// import com.pulumi.azurenative.app.BuildArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -285,6 +302,56 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_build" "build" {
+///   build_name   = "testBuild-123456789az"
+///   builder_name = "testBuilder"
+///   configuration = {
+///     base_os = "DebianBullseye"
+///     environment_variables = [{
+///       "name"  = "foo1"
+///       "value" = "bar1"
+///       }, {
+///       "name"  = "foo2"
+///       "value" = "bar2"
+///     }]
+///     platform         = "dotnetcore"
+///     platform_version = "7.0"
+///     pre_build_steps = [{
+///       "description" = "First pre build step."
+///       "httpGet" = {
+///         "fileName" = "output.txt"
+///         "headers"  = ["foo", "bar"]
+///         "url"      = "https://microsoft.com"
+///       }
+///       "scripts" = ["echo 'hello'", "echo 'world'"]
+///       }, {
+///       "description" = "Second pre build step."
+///       "httpGet" = {
+///         "fileName" = "output.txt"
+///         "headers"  = ["foo"]
+///         "url"      = "https://microsoft.com"
+///       }
+///       "scripts" = ["echo 'hello'", "echo 'again'"]
+///     }]
+///   }
+///   destination_container_registry = {
+///     image  = "test.azurecr.io/repo:tag"
+///     server = "test.azurecr.io"
+///   }
+///   resource_group_name = "rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -295,8 +362,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.BuildArgs;
 /// import com.pulumi.azurenative.app.inputs.BuildConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.ContainerRegistryWithCustomImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

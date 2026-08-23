@@ -7,6 +7,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-03-30-preview.
 ///
+/// Other available API versions: 2025-12-01-preview, 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -75,6 +77,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_migrationentitygroup" "migrationEntityGroup" {
+///   migration_entity_group_name = "myMigrationEntityGroupName"
+///   project_name                = "myProjectName"
+///   properties = {
+///     application_display_name = "ricbxbn"
+///     application_id           = "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/MyResourceGroup/providers/Microsoft.ApplicationMigration/discoveryHubs/MyDiscoveryHub/applications/MyAppe"
+///     associated_assessment_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.Migrate/assessmentprojects/myAssessmentproject/assessments/myAssessment"
+///     associated_wave_ids      = ["/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/MyResourceGroup/providers/Microsoft.Migrate/migrateProjects/MyMigrateProject/waves/myWave"]
+///     migration_path           = "PaaSPreferred"
+///   }
+///   resource_group_name = "rgwaves"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +110,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.migrate.MigrationEntityGroup;
 /// import com.pulumi.azurenative.migrate.MigrationEntityGroupArgs;
 /// import com.pulumi.azurenative.migrate.inputs.MigrationEntityGroupPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

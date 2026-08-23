@@ -2,13 +2,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_service_environment_args.dart';
 import 'ase_v3_networking_configuration_response.dart';
 import 'custom_dns_suffix_configuration_response.dart';
+import 'system_data_response.dart';
 import 'virtual_network_profile_response.dart';
 
 /// App Service Environment ARM resource.
 ///
-/// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+/// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -67,6 +68,27 @@ import 'virtual_network_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_web_appserviceenvironment" "appServiceEnvironment" {
+///   kind                = "Asev3"
+///   location            = "South Central US"
+///   name                = "test-ase"
+///   resource_group_name = "test-rg"
+///   virtual_network = {
+///     id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/delegated"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +98,8 @@ import 'virtual_network_profile_response.dart';
 /// import com.pulumi.azurenative.web.AppServiceEnvironment;
 /// import com.pulumi.azurenative.web.AppServiceEnvironmentArgs;
 /// import com.pulumi.azurenative.web.inputs.VirtualNetworkProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -180,7 +202,7 @@ class AppServiceEnvironment extends pulumi.CustomResource {
   late final pulumi.Output<int?> ipsslAddressCount;
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   late final pulumi.Output<String?> kind;
-  /// Resource Location.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// Maximum number of VMs in the App Service Environment.
   late final pulumi.Output<int> maximumNumberOfMachines;
@@ -188,7 +210,7 @@ class AppServiceEnvironment extends pulumi.CustomResource {
   late final pulumi.Output<int> multiRoleCount;
   /// Front-end VM size, e.g. "Medium", "Large".
   late final pulumi.Output<String?> multiSize;
-  /// Resource Name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Full view of networking configuration for an ASE.
   late final pulumi.Output<AseV3NetworkingConfigurationResponse?> networkingConfiguration;
@@ -199,9 +221,11 @@ class AppServiceEnvironment extends pulumi.CustomResource {
   /// &lt;code&gt;true&lt;/code&gt; if the App Service Environment is suspended; otherwise, &lt;code&gt;false&lt;/code&gt;. The environment can be suspended, e.g. when the management endpoint is no longer available
   /// (most likely because NSG blocked the incoming traffic).
   late final pulumi.Output<bool> suspended;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// Whether an upgrade is available for this App Service Environment.
   late final pulumi.Output<String> upgradeAvailability;
@@ -247,6 +271,7 @@ class AppServiceEnvironment extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String>('status');
     suspended = registerOutput<bool>('suspended');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     upgradeAvailability = registerOutput<String>('upgradeAvailability');

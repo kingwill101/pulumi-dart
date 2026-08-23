@@ -1,6 +1,6 @@
 /// The governance rule source, what the rule affects, e.g. Assessments
 enum GovernanceRuleSourceResourceType {
-  valueAssessments("Assessments");
+  assessments("Assessments");
 
   const GovernanceRuleSourceResourceType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum GovernanceRuleSourceResourceType {
     throw ArgumentError('Unknown GovernanceRuleSourceResourceType value: $value');
   }
 }
-

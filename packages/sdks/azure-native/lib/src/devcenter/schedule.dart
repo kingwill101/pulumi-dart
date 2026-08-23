@@ -68,6 +68,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devcenter_schedule" "schedule" {
+///   frequency           = "Daily"
+///   pool_name           = "DevPool"
+///   project_name        = "DevProject"
+///   resource_group_name = "rg1"
+///   schedule_name       = "autoShutdown"
+///   state               = "Enabled"
+///   time                = "17:30"
+///   time_zone           = "America/Los_Angeles"
+///   type                = "StopDevBox"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +99,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.devcenter.Schedule;
 /// import com.pulumi.azurenative.devcenter.ScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

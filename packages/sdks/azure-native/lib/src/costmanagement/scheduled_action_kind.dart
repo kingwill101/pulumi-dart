@@ -15,4 +15,3 @@ enum ScheduledActionKind {
     throw ArgumentError('Unknown ScheduledActionKind value: $value');
   }
 }
-

@@ -90,6 +90,39 @@ import 'workload_instance_model_response_system_data.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_workloadinstance" "workloadInstance" {
+///   modernize_project_name = "mx8"
+///   properties = {
+///     custom_properties = {
+///       "instanceType"   = "IISWorkload"
+///       "webAppArmId"    = "xseseqsrzdiga"
+///       "webAppSiteName" = "mirgzmy"
+///     }
+///     display_name     = "juoorbubchvk"
+///     master_site_name = "ubks"
+///     migrate_agent_id = "aqgzsxqbk"
+///     name             = "wonkuhgsafzviuwqerzdmme"
+///     source_name      = "weuxcqzwpeyzsjhdgqflhxlwjhbz"
+///     source_platform  = "eh"
+///   }
+///   resource_group_name = "rgmigrateEngine"
+///   tags = {
+///     "key2836" = "biqip"
+///   }
+///   workload_instance_name = "m"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +132,8 @@ import 'workload_instance_model_response_system_data.dart';
 /// import com.pulumi.azurenative.migrate.WorkloadInstance;
 /// import com.pulumi.azurenative.migrate.WorkloadInstanceArgs;
 /// import com.pulumi.azurenative.migrate.inputs.WorkloadInstanceModelPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -263,6 +296,23 @@ import 'workload_instance_model_response_system_data.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_workloadinstance" "workloadInstance" {
+///   modernize_project_name = "tv39"
+///   resource_group_name    = "rgmigrateEngine"
+///   workload_instance_name = "io"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -271,8 +321,8 @@ import 'workload_instance_model_response_system_data.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.migrate.WorkloadInstance;
 /// import com.pulumi.azurenative.migrate.WorkloadInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

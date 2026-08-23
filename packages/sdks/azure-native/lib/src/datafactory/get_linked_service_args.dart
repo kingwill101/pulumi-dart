@@ -11,13 +11,13 @@ class GetLinkedServiceArgs {
   final pulumi.Input<String> factoryName;
   /// The linked service name.
   final pulumi.Input<String> linkedServiceName;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetLinkedServiceArgs].
   /// [factoryName] The factory name.
   /// [linkedServiceName] The linked service name.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetLinkedServiceArgs({
     required this.factoryName,
     required this.linkedServiceName,
@@ -40,4 +40,3 @@ class GetLinkedServiceArgs {
     );
   }
 }
-

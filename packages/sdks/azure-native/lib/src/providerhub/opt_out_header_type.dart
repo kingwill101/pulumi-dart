@@ -15,4 +15,3 @@ enum OptOutHeaderType {
     throw ArgumentError('Unknown OptOutHeaderType value: $value');
   }
 }
-

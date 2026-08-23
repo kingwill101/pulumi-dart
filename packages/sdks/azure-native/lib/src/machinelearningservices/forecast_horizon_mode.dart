@@ -1,7 +1,7 @@
 /// [Required] Set forecast horizon value selection mode.
 enum ForecastHorizonMode {
-  valueAuto("Auto"),
-  valueCustom("Custom");
+  auto("Auto"),
+  custom("Custom");
 
   const ForecastHorizonMode(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ForecastHorizonMode {
     throw ArgumentError('Unknown ForecastHorizonMode value: $value');
   }
 }
-

@@ -21,7 +21,7 @@ class StaticSiteBuildDatabaseConnectionArgs {
   final pulumi.Input<String> name;
   /// The region of the database resource.
   final pulumi.Input<String> region;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The resource id of the database.
   final pulumi.Input<String> resourceId;
@@ -34,7 +34,7 @@ class StaticSiteBuildDatabaseConnectionArgs {
   /// [kind] Kind of resource.
   /// [name] Name of the static site
   /// [region] The region of the database resource.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceId] The resource id of the database.
   const StaticSiteBuildDatabaseConnectionArgs({
     this.connectionIdentity,
@@ -76,4 +76,3 @@ class StaticSiteBuildDatabaseConnectionArgs {
     );
   }
 }
-

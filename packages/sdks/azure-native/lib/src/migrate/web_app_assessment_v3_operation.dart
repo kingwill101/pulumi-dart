@@ -137,6 +137,60 @@ import 'web_app_assessment_v3_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_webappassessmentv3operation" "webAppAssessmentV3Operation" {
+///   assessment_name = "assessmentName"
+///   project_name    = "contosoProject"
+///   properties = {
+///     fallback_machine_assessment_arm_id = "gfjcubgnh"
+///     scope = {
+///       azure_resource_graph_query = "mjonozzzflcglhdb"
+///       scope_type                 = "ServerGroupId"
+///       server_group_id            = "sxwigkygd"
+///     }
+///     settings = {
+///       app_svc_container_settings = {
+///         isolation_required = true
+///       }
+///       app_svc_native_settings = {
+///         isolation_required = true
+///       }
+///       azure_location               = "khzvggbrcnpkzrqdtvvyytc"
+///       azure_security_offering_type = "NO"
+///       billing_settings = {
+///         licensing_program = "Retail"
+///         subscription_id   = "lakvxkjeqpajer"
+///       }
+///       currency            = "Unknown"
+///       discount_percentage = 12
+///       environment_type    = "Production"
+///       performance_data = {
+///         percentile           = "Unknown"
+///         perf_data_end_time   = "2025-02-21T06:18:34.789Z"
+///         perf_data_start_time = "2025-02-21T06:18:34.789Z"
+///         time_range           = "Day"
+///       }
+///       savings_settings = {
+///         azure_offer_code = "Unknown"
+///         savings_options  = "None"
+///       }
+///       scaling_factor   = 6
+///       sizing_criterion = "PerformanceBased"
+///     }
+///   }
+///   resource_group_name = "rgwebAppAssessments"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -153,8 +207,8 @@ import 'web_app_assessment_v3_properties_response.dart';
 /// import com.pulumi.azurenative.migrate.inputs.BillingSettingsArgs;
 /// import com.pulumi.azurenative.migrate.inputs.PerformanceDataArgs;
 /// import com.pulumi.azurenative.migrate.inputs.SavingsSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -291,7 +345,7 @@ import 'web_app_assessment_v3_properties_response.dart';
 ///                 "subscription_id": "lakvxkjeqpajer",
 ///             },
 ///             "currency": azure_native.migrate.AzureCurrency.UNKNOWN,
-///             "discount_percentage": 12,
+///             "discount_percentage": float(12),
 ///             "environment_type": azure_native.migrate.EnvironmentType.PRODUCTION,
 ///             "performance_data": {
 ///                 "percentile": "Unknown",
@@ -303,7 +357,7 @@ import 'web_app_assessment_v3_properties_response.dart';
 ///                 "azure_offer_code": azure_native.migrate.AzureOffer.UNKNOWN,
 ///                 "savings_options": azure_native.migrate.SavingsOptions.NONE,
 ///             },
-///             "scaling_factor": 6,
+///             "scaling_factor": float(6),
 ///             "sizing_criterion": azure_native.migrate.AssessmentSizingCriterion.PERFORMANCE_BASED,
 ///         },
 ///     },

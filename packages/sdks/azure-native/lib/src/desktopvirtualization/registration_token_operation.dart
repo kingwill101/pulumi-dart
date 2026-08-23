@@ -16,4 +16,3 @@ enum RegistrationTokenOperation {
     throw ArgumentError('Unknown RegistrationTokenOperation value: $value');
   }
 }
-

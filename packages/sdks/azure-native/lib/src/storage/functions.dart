@@ -7,6 +7,10 @@ import 'get_blob_inventory_policy_args.dart';
 import 'get_blob_inventory_policy_result.dart';
 import 'get_blob_service_properties_args.dart';
 import 'get_blob_service_properties_result.dart';
+import 'get_connector_args.dart';
+import 'get_connector_result.dart';
+import 'get_data_share_args.dart';
+import 'get_data_share_result.dart';
 import 'get_encryption_scope_args.dart';
 import 'get_encryption_scope_result.dart';
 import 'get_file_service_properties_args.dart';
@@ -46,7 +50,7 @@ import 'list_storage_account_service_sasresult.dart';
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_blob_container_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetBlobContainerResult> getBlobContainer(
@@ -66,7 +70,7 @@ Future<GetBlobContainerResult> getBlobContainer(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_blob_container_immutability_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetBlobContainerImmutabilityPolicyResult> getBlobContainerImmutabilityPolicy(
@@ -86,7 +90,7 @@ Future<GetBlobContainerImmutabilityPolicyResult> getBlobContainerImmutabilityPol
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_blob_inventory_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetBlobInventoryPolicyResult> getBlobInventoryPolicy(
@@ -122,11 +126,51 @@ Future<GetBlobServicePropertiesResult> getBlobServiceProperties(
   return GetBlobServicePropertiesResult.fromMap(result);
 }
 
+/// Get the specified Storage Connector.
+///
+/// Uses Azure REST API version 2025-08-01.
+///
+/// Other available API versions: 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_connector_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetConnectorResult> getConnector(
+  GetConnectorArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:storage:getConnector',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetConnectorResult.fromMap(result);
+}
+
+/// Get the specified Storage DataShare.
+///
+/// Uses Azure REST API version 2025-08-01.
+///
+/// Other available API versions: 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_data_share_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetDataShareResult> getDataShare(
+  GetDataShareArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:storage:getDataShare',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetDataShareResult.fromMap(result);
+}
+
 /// Returns the properties for the specified encryption scope.
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_encryption_scope_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetEncryptionScopeResult> getEncryptionScope(
@@ -166,7 +210,7 @@ Future<GetFileServicePropertiesResult> getFileServiceProperties(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_file_share_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFileShareResult> getFileShare(
@@ -186,7 +230,7 @@ Future<GetFileShareResult> getFileShare(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_local_user_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetLocalUserResult> getLocalUser(
@@ -206,7 +250,7 @@ Future<GetLocalUserResult> getLocalUser(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_management_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetManagementPolicyResult> getManagementPolicy(
@@ -226,7 +270,7 @@ Future<GetManagementPolicyResult> getManagementPolicy(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_object_replication_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetObjectReplicationPolicyResult> getObjectReplicationPolicy(
@@ -246,7 +290,7 @@ Future<GetObjectReplicationPolicyResult> getObjectReplicationPolicy(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
@@ -266,7 +310,7 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_queue_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetQueueResult> getQueue(
@@ -306,7 +350,7 @@ Future<GetQueueServicePropertiesResult> getQueueServiceProperties(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_storage_account_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetStorageAccountResult> getStorageAccount(
@@ -326,7 +370,7 @@ Future<GetStorageAccountResult> getStorageAccount(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_storage_task_assignment_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetStorageTaskAssignmentResult> getStorageTaskAssignment(
@@ -346,7 +390,7 @@ Future<GetStorageTaskAssignmentResult> getStorageTaskAssignment(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_table_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetTableResult> getTable(
@@ -386,7 +430,7 @@ Future<GetTableServicePropertiesResult> getTableServiceProperties(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_list_local_user_keys_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListLocalUserKeysResult> listLocalUserKeys(
@@ -406,7 +450,7 @@ Future<ListLocalUserKeysResult> listLocalUserKeys(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_list_storage_account_keys_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListStorageAccountKeysResult> listStorageAccountKeys(
@@ -426,7 +470,7 @@ Future<ListStorageAccountKeysResult> listStorageAccountKeys(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_list_storage_account_sasargs_doc}
 /// [options] Invoke options controlling this call.
 Future<ListStorageAccountSASResult> listStorageAccountSAS(
@@ -446,7 +490,7 @@ Future<ListStorageAccountSASResult> listStorageAccountSAS(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_list_storage_account_service_sasargs_doc}
 /// [options] Invoke options controlling this call.
 Future<ListStorageAccountServiceSASResult> listStorageAccountServiceSAS(

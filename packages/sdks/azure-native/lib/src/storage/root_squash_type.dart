@@ -16,4 +16,3 @@ enum RootSquashType {
     throw ArgumentError('Unknown RootSquashType value: $value');
   }
 }
-

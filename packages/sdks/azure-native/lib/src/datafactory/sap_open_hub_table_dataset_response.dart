@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'dataset_response_folder.dart';
+import 'dataset_folder_response.dart';
 import 'linked_service_reference_response.dart';
 import 'parameter_specification_response.dart';
 
@@ -16,7 +16,7 @@ class SapOpenHubTableDatasetResponse {
   /// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? excludeLastRequest;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final pulumi.Input<DatasetResponseFolder>? folder;
+  final pulumi.Input<DatasetFolderResponse>? folder;
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReferenceResponse> linkedServiceName;
   /// The name of the Open Hub Destination with destination type as Database Table. Type: string (or Expression with resultType string).
@@ -63,7 +63,7 @@ class SapOpenHubTableDatasetResponse {
       'baseRequestId': ?baseRequestId,
       'description': ?description,
       'excludeLastRequest': ?excludeLastRequest,
-      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetResponseFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
+      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetFolderResponse, Map<String, dynamic>>(folder, (value) => value.toMap()),
       'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
       'openHubDestinationName': openHubDestinationName,
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -79,7 +79,7 @@ class SapOpenHubTableDatasetResponse {
       baseRequestId: (() { final guardedValue = map['baseRequestId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       excludeLastRequest: (() { final guardedValue = map['excludeLastRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetResponseFolder.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetFolderResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       linkedServiceName: pulumi.Input.fromValue(LinkedServiceReferenceResponse.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())),
       openHubDestinationName: pulumi.Input.fromValue(map['openHubDestinationName']),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(guardedValue, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -89,4 +89,3 @@ class SapOpenHubTableDatasetResponse {
     );
   }
 }
-

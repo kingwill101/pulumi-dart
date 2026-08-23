@@ -15,4 +15,3 @@ enum ScaleRuleMetricDimensionOperationType {
     throw ArgumentError('Unknown ScaleRuleMetricDimensionOperationType value: $value');
   }
 }
-

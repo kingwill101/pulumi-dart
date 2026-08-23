@@ -14,4 +14,3 @@ enum XmlReferenceType {
     throw ArgumentError('Unknown XmlReferenceType value: $value');
   }
 }
-

@@ -52,4 +52,3 @@ class AvsAssessmentPropertiesV2Response {
     );
   }
 }
-

@@ -1,10 +1,10 @@
-/// Controls the compute job tier
+/// Enum to determine the job tier.
 enum JobTier {
-  valueNull("Null"),
-  valueSpot("Spot"),
-  valueBasic("Basic"),
-  valueStandard("Standard"),
-  valuePremium("Premium");
+  null_("Null"),
+  spot("Spot"),
+  basic("Basic"),
+  standard("Standard"),
+  premium("Premium");
 
   const JobTier(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum JobTier {
     throw ArgumentError('Unknown JobTier value: $value');
   }
 }
-

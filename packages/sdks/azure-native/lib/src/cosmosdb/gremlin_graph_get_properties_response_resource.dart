@@ -2,8 +2,8 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'conflict_resolution_policy_response.dart';
-import 'container_partition_key_response.dart';
-import 'indexing_policy_response.dart';
+import 'container_partition_key_gremlin_resource_gremlin_graph_response.dart';
+import 'indexing_policy_gremlin_resource_gremlin_graph_response.dart';
 import 'resource_restore_parameters_response.dart';
 import 'unique_key_policy_response.dart';
 
@@ -21,9 +21,9 @@ class GremlinGraphGetPropertiesResponseResource {
   /// Name of the Cosmos DB Gremlin graph
   final pulumi.Input<String> id;
   /// The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph
-  final pulumi.Input<IndexingPolicyResponse>? indexingPolicy;
+  final pulumi.Input<IndexingPolicyGremlinResourceGremlinGraphResponse>? indexingPolicy;
   /// The configuration of the partition key to be used for partitioning data into multiple partitions
-  final pulumi.Input<ContainerPartitionKeyResponse>? partitionKey;
+  final pulumi.Input<ContainerPartitionKeyGremlinResourceGremlinGraphResponse>? partitionKey;
   /// Parameters to indicate the information about the restore
   final pulumi.Input<ResourceRestoreParametersResponse>? restoreParameters;
   /// A system generated property. A unique identifier.
@@ -69,8 +69,8 @@ class GremlinGraphGetPropertiesResponseResource {
       'defaultTtl': ?defaultTtl,
       'etag': etag,
       'id': id,
-      'indexingPolicy': ?pulumi.Input.mapOptionalInputValue<IndexingPolicyResponse, Map<String, dynamic>>(indexingPolicy, (value) => value.toMap()),
-      'partitionKey': ?pulumi.Input.mapOptionalInputValue<ContainerPartitionKeyResponse, Map<String, dynamic>>(partitionKey, (value) => value.toMap()),
+      'indexingPolicy': ?pulumi.Input.mapOptionalInputValue<IndexingPolicyGremlinResourceGremlinGraphResponse, Map<String, dynamic>>(indexingPolicy, (value) => value.toMap()),
+      'partitionKey': ?pulumi.Input.mapOptionalInputValue<ContainerPartitionKeyGremlinResourceGremlinGraphResponse, Map<String, dynamic>>(partitionKey, (value) => value.toMap()),
       'restoreParameters': ?pulumi.Input.mapOptionalInputValue<ResourceRestoreParametersResponse, Map<String, dynamic>>(restoreParameters, (value) => value.toMap()),
       'rid': rid,
       'ts': ts,
@@ -86,8 +86,8 @@ class GremlinGraphGetPropertiesResponseResource {
       defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       etag: pulumi.Input.fromValue(map['etag'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      indexingPolicy: (() { final guardedValue = map['indexingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IndexingPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      partitionKey: (() { final guardedValue = map['partitionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerPartitionKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      indexingPolicy: (() { final guardedValue = map['indexingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IndexingPolicyGremlinResourceGremlinGraphResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      partitionKey: (() { final guardedValue = map['partitionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerPartitionKeyGremlinResourceGremlinGraphResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       restoreParameters: (() { final guardedValue = map['restoreParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceRestoreParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rid: pulumi.Input.fromValue(map['rid'] as String),
       ts: pulumi.Input.fromValue(map['ts'] as double),
@@ -95,4 +95,3 @@ class GremlinGraphGetPropertiesResponseResource {
     );
   }
 }
-

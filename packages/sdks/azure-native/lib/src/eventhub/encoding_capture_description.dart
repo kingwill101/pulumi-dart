@@ -15,4 +15,3 @@ enum EncodingCaptureDescription {
     throw ArgumentError('Unknown EncodingCaptureDescription value: $value');
   }
 }
-

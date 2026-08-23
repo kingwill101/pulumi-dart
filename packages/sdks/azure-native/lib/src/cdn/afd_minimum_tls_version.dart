@@ -16,4 +16,3 @@ enum AfdMinimumTlsVersion {
     throw ArgumentError('Unknown AfdMinimumTlsVersion value: $value');
   }
 }
-

@@ -1,8 +1,8 @@
 /// Type of managed service identity.
 enum IdentityType {
-  valueSystemAssigned("SystemAssigned"),
-  valueUserAssigned("UserAssigned"),
-  valueNone("None");
+  systemAssigned("SystemAssigned"),
+  userAssigned("UserAssigned"),
+  none("None");
 
   const IdentityType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum IdentityType {
     throw ArgumentError('Unknown IdentityType value: $value');
   }
 }
-

@@ -11,7 +11,7 @@ class GetSecretArgs {
   final pulumi.Input<String>? expand;
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The name of the Secret
+  /// The name of the secret.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
@@ -21,7 +21,7 @@ class GetSecretArgs {
   /// Creates a new [GetSecretArgs].
   /// [expand] Specify the $expand query. Example: 'properties($select=value)'
   /// [labName] The name of the lab.
-  /// [name] The name of the Secret
+  /// [name] The name of the secret.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userName] The name of the user profile.
   const GetSecretArgs({
@@ -52,4 +52,3 @@ class GetSecretArgs {
     );
   }
 }
-

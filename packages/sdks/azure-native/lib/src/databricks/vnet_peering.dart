@@ -1,14 +1,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'address_space_response.dart';
-import 'virtual_network_peering_properties_format_response_databricks_virtual_network.dart';
-import 'virtual_network_peering_properties_format_response_remote_virtual_network.dart';
+import 'system_data_response.dart';
+import 'virtual_network_peering_properties_format_databricks_virtual_network_response.dart';
+import 'virtual_network_peering_properties_format_remote_virtual_network_response.dart';
 import 'vnet_peering_args.dart';
 
 /// Peerings in a VirtualNetwork resource
 ///
-/// Uses Azure REST API version 2024-05-01.
+/// Uses Azure REST API version 2026-01-01.
 ///
-/// Other available API versions: 2023-02-01, 2023-09-15-preview, 2024-09-01-preview, 2025-03-01-preview, 2025-08-01-preview, 2025-10-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databricks [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01, 2023-09-15-preview, 2024-05-01, 2024-09-01-preview, 2025-03-01-preview, 2025-08-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databricks [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -73,6 +74,30 @@ import 'vnet_peering_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databricks_vnetpeering" "vNetPeering" {
+///   allow_forwarded_traffic      = false
+///   allow_gateway_transit        = false
+///   allow_virtual_network_access = true
+///   peering_name                 = "vNetPeeringTest"
+///   remote_virtual_network = {
+///     id = "/subscriptions/0140911e-1040-48da-8bc9-b99fb3dd88a6/resourceGroups/subramantest/providers/Microsoft.Network/virtualNetworks/subramanvnet"
+///   }
+///   resource_group_name = "subramantest"
+///   use_remote_gateways = false
+///   workspace_name      = "adbworkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +107,8 @@ import 'vnet_peering_args.dart';
 /// import com.pulumi.azurenative.databricks.VNetPeering;
 /// import com.pulumi.azurenative.databricks.VNetPeeringArgs;
 /// import com.pulumi.azurenative.databricks.inputs.VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -189,8 +214,8 @@ class VNetPeering extends pulumi.CustomResource {
   /// The reference to the databricks virtual network address space.
   late final pulumi.Output<AddressSpaceResponse?> databricksAddressSpace;
   /// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
-  late final pulumi.Output<VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork?> databricksVirtualNetwork;
-  /// Name of the virtual network peering resource
+  late final pulumi.Output<VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponse?> databricksVirtualNetwork;
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The status of the virtual network peering.
   late final pulumi.Output<String> peeringState;
@@ -199,8 +224,10 @@ class VNetPeering extends pulumi.CustomResource {
   /// The reference to the remote virtual network address space.
   late final pulumi.Output<AddressSpaceResponse?> remoteAddressSpace;
   /// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
-  late final pulumi.Output<VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork> remoteVirtualNetwork;
-  /// type of the virtual network peering resource
+  late final pulumi.Output<VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponse> remoteVirtualNetwork;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
   late final pulumi.Output<bool?> useRemoteGateways;
@@ -224,12 +251,13 @@ class VNetPeering extends pulumi.CustomResource {
     allowVirtualNetworkAccess = registerOutput<bool?>('allowVirtualNetworkAccess');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     databricksAddressSpace = registerOutput<AddressSpaceResponse?>('databricksAddressSpace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddressSpaceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    databricksVirtualNetwork = registerOutput<VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork?>('databricksVirtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    databricksVirtualNetwork = registerOutput<VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponse?>('databricksVirtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     peeringState = registerOutput<String>('peeringState');
     provisioningState = registerOutput<String>('provisioningState');
     remoteAddressSpace = registerOutput<AddressSpaceResponse?>('remoteAddressSpace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddressSpaceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    remoteVirtualNetwork = registerOutput<VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork>('remoteVirtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    remoteVirtualNetwork = registerOutput<VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponse>('remoteVirtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     useRemoteGateways = registerOutput<bool?>('useRemoteGateways');
   }

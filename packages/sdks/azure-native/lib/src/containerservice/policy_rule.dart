@@ -16,4 +16,3 @@ enum PolicyRule {
     throw ArgumentError('Unknown PolicyRule value: $value');
   }
 }
-

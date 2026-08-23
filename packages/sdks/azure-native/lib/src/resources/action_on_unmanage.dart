@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
 class ActionOnUnmanage {
-  /// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+  /// Specifies an action for a newly unmanaged resource management group.
   final pulumi.Input<String>? managementGroups;
-  /// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+  /// Specifies an action for a newly unmanaged resource group.
   final pulumi.Input<String>? resourceGroups;
-  /// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+  /// Specifies an action for a newly unmanaged resource.
   final pulumi.Input<String> resources;
   /// Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
   final pulumi.Input<String>? resourcesWithoutDeleteSupport;
 
   /// Creates a new [ActionOnUnmanage].
-  /// [managementGroups] Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-  /// [resourceGroups] Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-  /// [resources] Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+  /// [managementGroups] Specifies an action for a newly unmanaged resource management group.
+  /// [resourceGroups] Specifies an action for a newly unmanaged resource group.
+  /// [resources] Specifies an action for a newly unmanaged resource.
   /// [resourcesWithoutDeleteSupport] Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
   const ActionOnUnmanage({
     this.managementGroups,
@@ -43,4 +43,3 @@ class ActionOnUnmanage {
     );
   }
 }
-

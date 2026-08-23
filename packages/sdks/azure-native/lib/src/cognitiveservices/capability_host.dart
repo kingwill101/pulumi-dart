@@ -11,13 +11,13 @@ class CapabilityHost {
   final pulumi.Input<String>? customerSubnet;
   /// The asset description text.
   final pulumi.Input<String>? description;
-  /// List of Storage connections.
+  /// List of connection names from those available in the account or project to be used as a storage resource.
   final pulumi.Input<List<String>>? storageConnections;
   /// Tag dictionary. Tags can be added, removed, and updated.
   final pulumi.Input<Map<String, String>>? tags;
-  /// List of Thread storage connections.
+  /// List of connection names from those available in the account or project to be used for Thread storage.
   final pulumi.Input<List<String>>? threadStorageConnections;
-  /// List of VectorStore connections.
+  /// List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
   final pulumi.Input<List<String>>? vectorStoreConnections;
 
   /// Creates a new [CapabilityHost].
@@ -25,10 +25,10 @@ class CapabilityHost {
   /// [capabilityHostKind] Kind of this capability host.
   /// [customerSubnet] Customer subnet info to help set up this capability host.
   /// [description] The asset description text.
-  /// [storageConnections] List of Storage connections.
+  /// [storageConnections] List of connection names from those available in the account or project to be used as a storage resource.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  /// [threadStorageConnections] List of Thread storage connections.
-  /// [vectorStoreConnections] List of VectorStore connections.
+  /// [threadStorageConnections] List of connection names from those available in the account or project to be used for Thread storage.
+  /// [vectorStoreConnections] List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
   const CapabilityHost({
     this.aiServicesConnections,
     this.capabilityHostKind,
@@ -66,4 +66,3 @@ class CapabilityHost {
     );
   }
 }
-

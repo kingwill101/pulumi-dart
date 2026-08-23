@@ -103,6 +103,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_providerhub_skusnestedresourcetypefirst" "skusNestedResourceTypeFirst" {
+///   nested_resource_type_first = "nestedResourceTypeFirst"
+///   properties = {
+///     sku_settings = [{
+///       "kind" = "Standard"
+///       "name" = "freeSku"
+///       "tier" = "Tier1"
+///       }, {
+///       "costs" = [{
+///         "meterId" = "xxx"
+///       }]
+///       "kind" = "Premium"
+///       "name" = "premiumSku"
+///       "tier" = "Tier2"
+///     }]
+///   }
+///   provider_namespace = "Microsoft.Contoso"
+///   resource_type      = "testResourceType"
+///   sku                = "testSku"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +144,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.providerhub.SkusNestedResourceTypeFirst;
 /// import com.pulumi.azurenative.providerhub.SkusNestedResourceTypeFirstArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.SkuResourcePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

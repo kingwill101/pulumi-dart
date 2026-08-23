@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_endpoint_response.dart';
 import 'private_link_service_connection_state_response.dart';
 
-/// The properties of a private endpoint connection
+/// The properties of a private endpoint connection.
 class PrivateEndpointConnectionPropertiesResponse {
   /// GroupIds from the private link service resource.
   final pulumi.Input<List<String>>? groupIds;
@@ -45,4 +45,3 @@ class PrivateEndpointConnectionPropertiesResponse {
     );
   }
 }
-

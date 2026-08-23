@@ -61,6 +61,26 @@ import 'skuresponse.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_engagementfabric_account" "account" {
+///   account_name        = "ExampleAccount"
+///   location            = "WestUS"
+///   resource_group_name = "ExampleRg"
+///   sku = {
+///     name = "B1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +90,8 @@ import 'skuresponse.dart';
 /// import com.pulumi.azurenative.engagementfabric.Account;
 /// import com.pulumi.azurenative.engagementfabric.AccountArgs;
 /// import com.pulumi.azurenative.engagementfabric.inputs.SKUArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

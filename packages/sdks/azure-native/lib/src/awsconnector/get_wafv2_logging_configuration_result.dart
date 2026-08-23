@@ -68,4 +68,3 @@ class GetWafv2LoggingConfigurationResult {
     );
   }
 }
-

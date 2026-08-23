@@ -92,4 +92,3 @@ class SalesforceV2Source {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum IpFilterActionType {
     throw ArgumentError('Unknown IpFilterActionType value: $value');
   }
 }
-

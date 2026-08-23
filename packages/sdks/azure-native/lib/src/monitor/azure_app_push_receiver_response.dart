@@ -6,12 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureAppPushReceiverResponse {
   /// The email address registered for the Azure mobile app.
   final pulumi.Input<String> emailAddress;
-  /// The name of the Azure mobile app push receiver. Names must be unique across all receivers within a tenant action group.
+  /// The name of the Azure mobile app push receiver. Names must be unique across all receivers within an action group.
   final pulumi.Input<String> name;
 
   /// Creates a new [AzureAppPushReceiverResponse].
   /// [emailAddress] The email address registered for the Azure mobile app.
-  /// [name] The name of the Azure mobile app push receiver. Names must be unique across all receivers within a tenant action group.
+  /// [name] The name of the Azure mobile app push receiver. Names must be unique across all receivers within an action group.
   const AzureAppPushReceiverResponse({
     required this.emailAddress,
     required this.name,
@@ -31,4 +31,3 @@ class AzureAppPushReceiverResponse {
     );
   }
 }
-

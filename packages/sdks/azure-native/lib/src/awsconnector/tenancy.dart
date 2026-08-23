@@ -16,4 +16,3 @@ enum Tenancy {
     throw ArgumentError('Unknown Tenancy value: $value');
   }
 }
-

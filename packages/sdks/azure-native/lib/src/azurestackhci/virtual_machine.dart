@@ -135,6 +135,52 @@ import 'virtual_machine_status_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_virtualmachine" "virtualMachine" {
+///   extended_location = {
+///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
+///     type = "CustomLocation"
+///   }
+///   hardware_profile = {
+///     vm_size = "Default"
+///   }
+///   location = "West US2"
+///   network_profile = {
+///     network_interfaces = [{
+///       "id" = "test-nic"
+///     }]
+///   }
+///   os_profile = {
+///     admin_password = "password"
+///     admin_username = "localadmin"
+///     computer_name  = "luamaster"
+///   }
+///   resource_group_name = "test-rg"
+///   security_profile = {
+///     enable_tpm = true
+///     uefi_settings = {
+///       secure_boot_enabled = true
+///     }
+///   }
+///   storage_profile = {
+///     image_reference = {
+///       id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/galleryImages/test-gallery-image"
+///     }
+///     vm_config_storage_path_id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/storageContainers/test-container"
+///   }
+///   virtual_machine_name = "test-vm"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -151,8 +197,8 @@ import 'virtual_machine_status_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesUefiSettingsArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesStorageProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesImageReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -435,6 +481,52 @@ import 'virtual_machine_status_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_virtualmachine" "virtualMachine" {
+///   extended_location = {
+///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
+///     type = "CustomLocation"
+///   }
+///   hardware_profile = {
+///     vm_size = "Default"
+///   }
+///   location = "West US2"
+///   network_profile = {
+///     network_interfaces = [{
+///       "id" = "test-nic"
+///     }]
+///   }
+///   os_profile = {
+///     admin_password = "password"
+///     admin_username = "localadmin"
+///     computer_name  = "luamaster"
+///   }
+///   resource_group_name = "test-rg"
+///   security_profile = {
+///     enable_tpm = true
+///     uefi_settings = {
+///       secure_boot_enabled = true
+///     }
+///   }
+///   storage_profile = {
+///     image_reference = {
+///       id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/marketplaceGalleryImages/test-marketplace-gallery-image"
+///     }
+///     vm_config_storage_path_id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/storageContainers/test-container"
+///   }
+///   virtual_machine_name = "test-vm"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -451,8 +543,8 @@ import 'virtual_machine_status_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesUefiSettingsArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesStorageProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesImageReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -724,6 +816,47 @@ import 'virtual_machine_status_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_virtualmachine" "virtualMachine" {
+///   extended_location = {
+///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
+///     type = "CustomLocation"
+///   }
+///   hardware_profile = {
+///     vm_size = "Default"
+///   }
+///   location = "West US2"
+///   network_profile = {
+///     network_interfaces = [{
+///       "id" = "test-nic"
+///     }]
+///   }
+///   resource_group_name = "test-rg"
+///   security_profile = {
+///     enable_tpm = true
+///     uefi_settings = {
+///       secure_boot_enabled = true
+///     }
+///   }
+///   storage_profile = {
+///     os_disk = {
+///       id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/virtualHardDisks/test-vhd"
+///     }
+///     vm_config_storage_path_id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/storageContainers/test-container"
+///   }
+///   virtual_machine_name = "test-vm"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -739,8 +872,8 @@ import 'virtual_machine_status_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesUefiSettingsArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesStorageProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesOsDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

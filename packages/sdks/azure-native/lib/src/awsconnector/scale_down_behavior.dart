@@ -15,4 +15,3 @@ enum ScaleDownBehavior {
     throw ArgumentError('Unknown ScaleDownBehavior value: $value');
   }
 }
-

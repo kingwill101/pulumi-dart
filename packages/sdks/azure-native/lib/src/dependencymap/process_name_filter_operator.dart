@@ -15,4 +15,3 @@ enum ProcessNameFilterOperator {
     throw ArgumentError('Unknown ProcessNameFilterOperator value: $value');
   }
 }
-

@@ -1,8 +1,8 @@
 /// [Required] Specifies the type of identity framework.
 enum IdentityConfigurationType {
-  valueManaged("Managed"),
-  valueAMLToken("AMLToken"),
-  valueUserIdentity("UserIdentity");
+  managed("Managed"),
+  aMLToken("AMLToken"),
+  userIdentity("UserIdentity");
 
   const IdentityConfigurationType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum IdentityConfigurationType {
     throw ArgumentError('Unknown IdentityConfigurationType value: $value');
   }
 }
-

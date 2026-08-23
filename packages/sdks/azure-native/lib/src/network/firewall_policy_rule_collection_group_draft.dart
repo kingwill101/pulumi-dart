@@ -5,7 +5,7 @@ import 'firewall_policy_rule_collection_group_draft_args.dart';
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-11-01.
 ///
-/// Other available API versions: 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -122,6 +122,40 @@ import 'firewall_policy_rule_collection_group_draft_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_firewallpolicyrulecollectiongroupdraft" "firewallPolicyRuleCollectionGroupDraft" {
+///   firewall_policy_name       = "firewallPolicy"
+///   priority                   = 100
+///   resource_group_name        = "rg1"
+///   rule_collection_group_name = "ruleCollectionGroup1"
+///   rule_collections = [{
+///     "action" = {
+///       "type" = "Deny"
+///     }
+///     "name"               = "Example-Filter-Rule-Collection"
+///     "priority"           = 100
+///     "ruleCollectionType" = "FirewallPolicyFilterRuleCollection"
+///     "rules" = [{
+///       "destinationAddresses" = ["*"]
+///       "destinationPorts"     = ["*"]
+///       "ipProtocols"          = ["TCP"]
+///       "name"                 = "network-rule1"
+///       "ruleType"             = "NetworkRule"
+///       "sourceAddresses"      = ["10.1.25.0/24"]
+///     }]
+///   }]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -130,8 +164,8 @@ import 'firewall_policy_rule_collection_group_draft_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.network.FirewallPolicyRuleCollectionGroupDraft;
 /// import com.pulumi.azurenative.network.FirewallPolicyRuleCollectionGroupDraftArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

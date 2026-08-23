@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_monitor_get_private_endpoint_connection_args_doc}
 class GetPrivateEndpointConnectionArgs {
-  /// The name of the private endpoint connection.
+  /// The name of the private endpoint connection associated with the Azure resource.
   final pulumi.Input<String> privateEndpointConnectionName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
@@ -15,7 +15,7 @@ class GetPrivateEndpointConnectionArgs {
   final pulumi.Input<String> scopeName;
 
   /// Creates a new [GetPrivateEndpointConnectionArgs].
-  /// [privateEndpointConnectionName] The name of the private endpoint connection.
+  /// [privateEndpointConnectionName] The name of the private endpoint connection associated with the Azure resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scopeName] The name of the Azure Monitor PrivateLinkScope resource.
   const GetPrivateEndpointConnectionArgs({
@@ -40,4 +40,3 @@ class GetPrivateEndpointConnectionArgs {
     );
   }
 }
-

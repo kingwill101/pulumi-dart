@@ -15,4 +15,3 @@ enum ResolutionPolicy {
     throw ArgumentError('Unknown ResolutionPolicy value: $value');
   }
 }
-

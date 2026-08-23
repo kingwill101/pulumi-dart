@@ -245,6 +245,99 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_integrationspaces_businessprocess" "businessProcess" {
+///   application_name = "Application1"
+///   business_process_mapping = {
+///     "Completed" = {
+///       logic_app_resource_id = "subscriptions/sub1/resourcegroups/group1/providers/Microsoft.Web/sites/logicApp1"
+///       operation_name        = "CompletedPO"
+///       operation_type        = "Action"
+///       workflow_name         = "Fulfillment"
+///     }
+///     "Denied" = {
+///       logic_app_resource_id = "subscriptions/sub1/resourcegroups/group1/providers/Microsoft.Web/sites/logicApp1"
+///       operation_name        = "DeniedPO"
+///       operation_type        = "Action"
+///       workflow_name         = "Fulfillment"
+///     }
+///     "Processing" = {
+///       logic_app_resource_id = "subscriptions/sub1/resourcegroups/group1/providers/Microsoft.Web/sites/logicApp1"
+///       operation_name        = "ApprovedPO"
+///       operation_type        = "Action"
+///       workflow_name         = "PurchaseOrder"
+///     }
+///     "Received" = {
+///       logic_app_resource_id = "subscriptions/sub1/resourcegroups/group1/providers/Microsoft.Web/sites/logicApp1"
+///       operation_name        = "manual"
+///       operation_type        = "Trigger"
+///       workflow_name         = "PurchaseOrder"
+///     }
+///     "Shipped" = {
+///       logic_app_resource_id = "subscriptions/sub1/resourcegroups/group1/providers/Microsoft.Web/sites/logicApp1"
+///       operation_name        = "ShippedPO"
+///       operation_type        = "Action"
+///       workflow_name         = "Fulfillment"
+///     }
+///   }
+///   business_process_name = "BusinessProcess1"
+///   business_process_stages = {
+///     "Completed" = {
+///       description   = "Completed"
+///       stages_before = ["Shipped"]
+///     }
+///     "Denied" = {
+///       description   = "Denied"
+///       stages_before = ["Processing"]
+///     }
+///     "Processing" = {
+///       description = "Processing"
+///       properties = {
+///         "ApprovalState" = "String"
+///         "ApproverName"  = "String"
+///         "POAmount"      = "Integer"
+///       }
+///       stages_before = ["Received"]
+///     }
+///     "Received" = {
+///       description = "received"
+///       properties = {
+///         "City"     = "String"
+///         "Product"  = "String"
+///         "Quantity" = "Integer"
+///         "State"    = "String"
+///       }
+///     }
+///     "Shipped" = {
+///       description = "Shipped"
+///       properties = {
+///         "ShipPriority" = "Integer"
+///         "TrackingID"   = "Integer"
+///       }
+///       stages_before = ["Denied"]
+///     }
+///   }
+///   description = "First Business Process"
+///   identifier = {
+///     property_name = "businessIdentifier-1"
+///     property_type = "String"
+///   }
+///   resource_group_name                = "testrg"
+///   space_name                         = "Space1"
+///   table_name                         = "table1"
+///   tracking_data_store_reference_name = "trackingDataStoreReferenceName1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -254,8 +347,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.integrationspaces.BusinessProcess;
 /// import com.pulumi.azurenative.integrationspaces.BusinessProcessArgs;
 /// import com.pulumi.azurenative.integrationspaces.inputs.BusinessProcessIdentifierArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

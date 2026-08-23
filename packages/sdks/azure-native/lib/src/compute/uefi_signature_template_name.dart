@@ -16,4 +16,3 @@ enum UefiSignatureTemplateName {
     throw ArgumentError('Unknown UefiSignatureTemplateName value: $value');
   }
 }
-

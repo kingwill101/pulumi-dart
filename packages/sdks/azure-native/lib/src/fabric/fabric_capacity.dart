@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2023-11-01.
 ///
-/// Other available API versions: 2025-01-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native fabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-01-15-preview, 2026-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native fabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -81,6 +81,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_fabric_fabriccapacity" "fabricCapacity" {
+///   administration = {
+///     members = ["azsdktest@microsoft.com", "azsdktest2@microsoft.com"]
+///   }
+///   capacity_name       = "azsdktest"
+///   location            = "westcentralus"
+///   resource_group_name = "TestRG"
+///   sku = {
+///     name = "F2"
+///     tier = "Fabric"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +115,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.fabric.FabricCapacityArgs;
 /// import com.pulumi.azurenative.fabric.inputs.CapacityAdministrationArgs;
 /// import com.pulumi.azurenative.fabric.inputs.RpSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

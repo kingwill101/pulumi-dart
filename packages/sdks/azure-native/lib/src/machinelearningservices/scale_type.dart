@@ -1,7 +1,7 @@
 /// [Required] Type of deployment scaling algorithm
 enum ScaleType {
-  valueDefault("Default"),
-  valueTargetUtilization("TargetUtilization");
+  default_("Default"),
+  targetUtilization("TargetUtilization");
 
   const ScaleType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ScaleType {
     throw ArgumentError('Unknown ScaleType value: $value');
   }
 }
-

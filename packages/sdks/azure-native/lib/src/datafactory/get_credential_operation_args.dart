@@ -11,13 +11,13 @@ class GetCredentialOperationArgs {
   final pulumi.Input<String> credentialName;
   /// The factory name.
   final pulumi.Input<String> factoryName;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetCredentialOperationArgs].
   /// [credentialName] Credential name
   /// [factoryName] The factory name.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetCredentialOperationArgs({
     required this.credentialName,
     required this.factoryName,
@@ -40,4 +40,3 @@ class GetCredentialOperationArgs {
     );
   }
 }
-

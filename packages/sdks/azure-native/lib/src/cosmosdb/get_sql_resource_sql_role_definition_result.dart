@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'permission_response.dart';
+import 'permission_sql_resource_sql_role_definition_response.dart';
 
 /// Result data returned by getSqlResourceSqlRoleDefinition.
 class GetSqlResourceSqlRoleDefinitionResult {
@@ -14,7 +14,7 @@ class GetSqlResourceSqlRoleDefinitionResult {
   /// The name of the database account.
   final String name;
   /// The set of operations allowed through this Role Definition.
-  final List<PermissionResponse>? permissions;
+  final List<PermissionSqlResourceSqlRoleDefinitionResponse>? permissions;
   /// A user-friendly name for the Role Definition. Must be unique for the database account.
   final String? roleName;
   /// The type of Azure resource.
@@ -44,7 +44,7 @@ class GetSqlResourceSqlRoleDefinitionResult {
       'azureApiVersion': azureApiVersion,
       'id': id,
       'name': name,
-      'permissions': ?(() { final guardedValue = permissions; if (guardedValue == null) return null; return pulumi.Input.encodeList<PermissionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'permissions': ?(() { final guardedValue = permissions; if (guardedValue == null) return null; return pulumi.Input.encodeList<PermissionSqlResourceSqlRoleDefinitionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'roleName': ?roleName,
       'type': type,
     };
@@ -56,10 +56,9 @@ class GetSqlResourceSqlRoleDefinitionResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PermissionResponse>(guardedValue, (value) => PermissionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PermissionSqlResourceSqlRoleDefinitionResponse>(guardedValue, (value) => PermissionSqlResourceSqlRoleDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       roleName: (() { final guardedValue = map['roleName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
-

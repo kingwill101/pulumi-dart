@@ -6,9 +6,9 @@ import 'system_data_response.dart';
 
 /// Cognitive Services project is an Azure resource representing the provisioned account's project, it's type, location and SKU.
 ///
-/// Uses Azure REST API version 2025-04-01-preview.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -76,6 +76,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cognitiveservices_project" "project" {
+///   account_name = "testCreate1"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location     = "West US"
+///   project_name = "testProject1"
+///   properties = {
+///     description  = "Description of this project"
+///     display_name = "p1"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +111,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cognitiveservices.ProjectArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.IdentityArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.ProjectPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -232,6 +257,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cognitiveservices_project" "project" {
+///   account_name = "testCreate1"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location            = "West US"
+///   project_name        = "testProject1"
+///   properties          = {}
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -242,8 +289,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cognitiveservices.ProjectArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.IdentityArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.ProjectPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

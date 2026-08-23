@@ -74,6 +74,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_subscriptiondiagnosticsetting" "subscriptionDiagnosticSetting" {
+///   event_hub_authorization_rule_id = "/subscriptions/fb9f25f9-5785-4510-a38f-a62f188eb9f8/resourceGroups/montest/providers/microsoft.eventhub/namespaces/mynamespace/authorizationrules/myrule"
+///   event_hub_name                  = "myeventhub"
+///   logs {
+///     category_group = "allLogs"
+///     enabled        = true
+///   }
+///   marketplace_partner_id = "/subscriptions/abcdeabc-1234-1234-ab12-123a1234567a/resourceGroups/test-rg/providers/Microsoft.Datadog/monitors/dd1"
+///   name                   = "ds4"
+///   storage_account_id     = "/subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/apptest/providers/Microsoft.Storage/storageAccounts/appteststorage1"
+///   workspace_id           = ""
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +107,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.SubscriptionDiagnosticSetting;
 /// import com.pulumi.azurenative.monitor.SubscriptionDiagnosticSettingArgs;
 /// import com.pulumi.azurenative.monitor.inputs.SubscriptionLogSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -235,6 +259,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_subscriptiondiagnosticsetting" "subscriptionDiagnosticSetting" {
+///   event_hub_authorization_rule_id = "/subscriptions/fb9f25f9-5785-4510-a38f-a62f188eb9f8/resourceGroups/montest/providers/microsoft.eventhub/namespaces/mynamespace/authorizationrules/myrule"
+///   event_hub_name                  = "myeventhub"
+///   logs {
+///     category = "Security"
+///     enabled  = true
+///   }
+///   marketplace_partner_id = "/subscriptions/abcdeabc-1234-1234-ab12-123a1234567a/resourceGroups/test-rg/providers/Microsoft.Datadog/monitors/dd1"
+///   name                   = "ds4"
+///   storage_account_id     = "/subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/apptest/providers/Microsoft.Storage/storageAccounts/appteststorage1"
+///   workspace_id           = ""
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -244,8 +292,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.SubscriptionDiagnosticSetting;
 /// import com.pulumi.azurenative.monitor.SubscriptionDiagnosticSettingArgs;
 /// import com.pulumi.azurenative.monitor.inputs.SubscriptionLogSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -118,6 +118,46 @@ import 'resource_group_value_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_assignment" "assignment" {
+///   assignment_name = "assignSimpleBlueprint"
+///   blueprint_id    = "/providers/Microsoft.Management/managementGroups/ContosoOnlineGroup/providers/Microsoft.Blueprint/blueprints/simpleBlueprint"
+///   description     = "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription."
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location = "eastus"
+///   parameters = {
+///     "costCenter" = {
+///       value = "Contoso/Online/Shopping/Production"
+///     }
+///     "owners" = {
+///       value = ["johnDoe@contoso.com", "johnsteam@contoso.com"]
+///     }
+///     "storageAccountType" = {
+///       value = "Standard_LRS"
+///     }
+///   }
+///   resource_groups = {
+///     "storageRG" = {
+///       location = "eastus"
+///       name     = "defaultRG"
+///     }
+///   }
+///   resource_scope = "managementGroups/ContosoOnlineGroup"
+///   scope          = "subscriptions/00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +167,8 @@ import 'resource_group_value_response.dart';
 /// import com.pulumi.azurenative.blueprint.Assignment;
 /// import com.pulumi.azurenative.blueprint.AssignmentArgs;
 /// import com.pulumi.azurenative.blueprint.inputs.ManagedServiceIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -383,6 +423,45 @@ import 'resource_group_value_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_assignment" "assignment" {
+///   assignment_name = "assignSimpleBlueprint"
+///   blueprint_id    = "/providers/Microsoft.Management/managementGroups/ContosoOnlineGroup/providers/Microsoft.Blueprint/blueprints/simpleBlueprint"
+///   description     = "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription."
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location = "eastus"
+///   parameters = {
+///     "costCenter" = {
+///       value = "Contoso/Online/Shopping/Production"
+///     }
+///     "owners" = {
+///       value = ["johnDoe@contoso.com", "johnsteam@contoso.com"]
+///     }
+///     "storageAccountType" = {
+///       value = "Standard_LRS"
+///     }
+///   }
+///   resource_groups = {
+///     "storageRG" = {
+///       location = "eastus"
+///       name     = "defaultRG"
+///     }
+///   }
+///   resource_scope = "subscriptions/00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -392,8 +471,8 @@ import 'resource_group_value_response.dart';
 /// import com.pulumi.azurenative.blueprint.Assignment;
 /// import com.pulumi.azurenative.blueprint.AssignmentArgs;
 /// import com.pulumi.azurenative.blueprint.inputs.ManagedServiceIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -653,6 +732,49 @@ import 'resource_group_value_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_assignment" "assignment" {
+///   assignment_name = "assignSimpleBlueprint"
+///   blueprint_id    = "/providers/Microsoft.Management/managementGroups/ContosoOnlineGroup/providers/Microsoft.Blueprint/blueprints/simpleBlueprint"
+///   description     = "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription."
+///   identity = {
+///     type = "UserAssigned"
+///     user_assigned_identities = {
+///       "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/contoso-identity" = {}
+///     }
+///   }
+///   location = "eastus"
+///   parameters = {
+///     "costCenter" = {
+///       value = "Contoso/Online/Shopping/Production"
+///     }
+///     "owners" = {
+///       value = ["johnDoe@contoso.com", "johnsteam@contoso.com"]
+///     }
+///     "storageAccountType" = {
+///       value = "Standard_LRS"
+///     }
+///   }
+///   resource_groups = {
+///     "storageRG" = {
+///       location = "eastus"
+///       name     = "defaultRG"
+///     }
+///   }
+///   resource_scope = "managementGroups/ContosoOnlineGroup"
+///   scope          = "subscriptions/00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -662,8 +784,8 @@ import 'resource_group_value_response.dart';
 /// import com.pulumi.azurenative.blueprint.Assignment;
 /// import com.pulumi.azurenative.blueprint.AssignmentArgs;
 /// import com.pulumi.azurenative.blueprint.inputs.ManagedServiceIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -936,6 +1058,48 @@ import 'resource_group_value_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_assignment" "assignment" {
+///   assignment_name = "assignSimpleBlueprint"
+///   blueprint_id    = "/providers/Microsoft.Management/managementGroups/ContosoOnlineGroup/providers/Microsoft.Blueprint/blueprints/simpleBlueprint"
+///   description     = "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription."
+///   identity = {
+///     type = "UserAssigned"
+///     user_assigned_identities = {
+///       "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/contoso-identity" = {}
+///     }
+///   }
+///   location = "eastus"
+///   parameters = {
+///     "costCenter" = {
+///       value = "Contoso/Online/Shopping/Production"
+///     }
+///     "owners" = {
+///       value = ["johnDoe@contoso.com", "johnsteam@contoso.com"]
+///     }
+///     "storageAccountType" = {
+///       value = "Standard_LRS"
+///     }
+///   }
+///   resource_groups = {
+///     "storageRG" = {
+///       location = "eastus"
+///       name     = "defaultRG"
+///     }
+///   }
+///   resource_scope = "subscriptions/00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -945,8 +1109,8 @@ import 'resource_group_value_response.dart';
 /// import com.pulumi.azurenative.blueprint.Assignment;
 /// import com.pulumi.azurenative.blueprint.AssignmentArgs;
 /// import com.pulumi.azurenative.blueprint.inputs.ManagedServiceIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

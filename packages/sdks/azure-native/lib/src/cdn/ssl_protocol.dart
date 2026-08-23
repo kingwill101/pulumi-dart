@@ -16,4 +16,3 @@ enum SslProtocol {
     throw ArgumentError('Unknown SslProtocol value: $value');
   }
 }
-

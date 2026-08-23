@@ -1,7 +1,7 @@
 /// The destination of logs. Type: string.
 enum ScriptActivityLogDestination {
-  valueActivityOutput("ActivityOutput"),
-  valueExternalStore("ExternalStore");
+  activityOutput("ActivityOutput"),
+  externalStore("ExternalStore");
 
   const ScriptActivityLogDestination(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ScriptActivityLogDestination {
     throw ArgumentError('Unknown ScriptActivityLogDestination value: $value');
   }
 }
-

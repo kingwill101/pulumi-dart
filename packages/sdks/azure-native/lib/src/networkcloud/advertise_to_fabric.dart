@@ -15,4 +15,3 @@ enum AdvertiseToFabric {
     throw ArgumentError('Unknown AdvertiseToFabric value: $value');
   }
 }
-

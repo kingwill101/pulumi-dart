@@ -16,4 +16,3 @@ enum AllocationPolicy {
     throw ArgumentError('Unknown AllocationPolicy value: $value');
   }
 }
-

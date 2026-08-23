@@ -15,4 +15,3 @@ enum AkriConnectorsTagDigestType {
     throw ArgumentError('Unknown AkriConnectorsTagDigestType value: $value');
   }
 }
-

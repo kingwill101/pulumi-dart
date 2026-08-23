@@ -1,14 +1,14 @@
 /// Update classification included in the software update configuration. A comma separated string with required values
 enum WindowsUpdateClasses {
-  valueUnclassified("Unclassified"),
-  valueCritical("Critical"),
-  valueSecurity("Security"),
-  valueUpdateRollup("UpdateRollup"),
-  valueFeaturePack("FeaturePack"),
-  valueServicePack("ServicePack"),
-  valueDefinition("Definition"),
-  valueTools("Tools"),
-  valueUpdates("Updates");
+  unclassified("Unclassified"),
+  critical("Critical"),
+  security("Security"),
+  updateRollup("UpdateRollup"),
+  featurePack("FeaturePack"),
+  servicePack("ServicePack"),
+  definition("Definition"),
+  tools("Tools"),
+  updates("Updates");
 
   const WindowsUpdateClasses(this.wireValue);
   final String wireValue;
@@ -22,4 +22,3 @@ enum WindowsUpdateClasses {
     throw ArgumentError('Unknown WindowsUpdateClasses value: $value');
   }
 }
-

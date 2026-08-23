@@ -11,7 +11,7 @@ class GetWebAppPublicCertificateSlotArgs {
   final pulumi.Input<String> name;
   /// Public certificate name.
   final pulumi.Input<String> publicCertificateName;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
   final pulumi.Input<String> slot;
@@ -19,7 +19,7 @@ class GetWebAppPublicCertificateSlotArgs {
   /// Creates a new [GetWebAppPublicCertificateSlotArgs].
   /// [name] Name of the app.
   /// [publicCertificateName] Public certificate name.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
   const GetWebAppPublicCertificateSlotArgs({
     required this.name,
@@ -46,4 +46,3 @@ class GetWebAppPublicCertificateSlotArgs {
     );
   }
 }
-

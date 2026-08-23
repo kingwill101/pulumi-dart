@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'subnet_response.dart';
+import 'subnet_response_v2.dart';
 import 'virtual_network_appliance_ip_configuration_response.dart';
 
 /// Result data returned by getVirtualNetworkAppliance.
@@ -25,7 +25,7 @@ class GetVirtualNetworkApplianceResult {
   /// The resource GUID property of the virtual network appliance resource.
   final String resourceGuid;
   /// The reference to the subnet resource.
-  final SubnetResponse? subnet;
+  final SubnetResponseV2? subnet;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type.
@@ -87,10 +87,9 @@ class GetVirtualNetworkApplianceResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return SubnetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return SubnetResponseV2.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
-

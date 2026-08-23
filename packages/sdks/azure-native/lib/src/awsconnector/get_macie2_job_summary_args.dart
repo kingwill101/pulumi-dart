@@ -34,4 +34,3 @@ class GetMacie2JobSummaryArgs {
     );
   }
 }
-

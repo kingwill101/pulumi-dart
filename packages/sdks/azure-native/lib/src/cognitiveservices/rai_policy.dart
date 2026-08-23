@@ -5,9 +5,9 @@ import 'system_data_response.dart';
 
 /// Cognitive Services RaiPolicy.
 ///
-/// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
+/// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 ///
-/// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -243,6 +243,96 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cognitiveservices_raipolicy" "raiPolicy" {
+///   account_name = "accountName"
+///   properties = {
+///     base_policy_name = "Microsoft.Default"
+///     content_filters = [{
+///       "blocking"          = false
+///       "enabled"           = false
+///       "name"              = "Hate"
+///       "severityThreshold" = "High"
+///       "source"            = "Prompt"
+///       }, {
+///       "blocking"          = true
+///       "enabled"           = true
+///       "name"              = "Hate"
+///       "severityThreshold" = "Medium"
+///       "source"            = "Completion"
+///       }, {
+///       "blocking"          = true
+///       "enabled"           = true
+///       "name"              = "Sexual"
+///       "severityThreshold" = "High"
+///       "source"            = "Prompt"
+///       }, {
+///       "blocking"          = true
+///       "enabled"           = true
+///       "name"              = "Sexual"
+///       "severityThreshold" = "Medium"
+///       "source"            = "Completion"
+///       }, {
+///       "blocking"          = true
+///       "enabled"           = true
+///       "name"              = "Selfharm"
+///       "severityThreshold" = "High"
+///       "source"            = "Prompt"
+///       }, {
+///       "blocking"          = true
+///       "enabled"           = true
+///       "name"              = "Selfharm"
+///       "severityThreshold" = "Medium"
+///       "source"            = "Completion"
+///       }, {
+///       "blocking"          = true
+///       "enabled"           = true
+///       "name"              = "Violence"
+///       "severityThreshold" = "Medium"
+///       "source"            = "Prompt"
+///       }, {
+///       "blocking"          = true
+///       "enabled"           = true
+///       "name"              = "Violence"
+///       "severityThreshold" = "Medium"
+///       "source"            = "Completion"
+///       }, {
+///       "blocking" = true
+///       "enabled"  = true
+///       "name"     = "Jailbreak"
+///       "source"   = "Prompt"
+///       }, {
+///       "blocking" = true
+///       "enabled"  = true
+///       "name"     = "Protected Material Text"
+///       "source"   = "Completion"
+///       }, {
+///       "blocking" = true
+///       "enabled"  = true
+///       "name"     = "Protected Material Code"
+///       "source"   = "Completion"
+///       }, {
+///       "blocking" = true
+///       "enabled"  = true
+///       "name"     = "Profanity"
+///       "source"   = "Prompt"
+///     }]
+///     mode = "Asynchronous_filter"
+///   }
+///   rai_policy_name     = "raiPolicyName"
+///   resource_group_name = "resourceGroupName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -252,8 +342,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cognitiveservices.RaiPolicy;
 /// import com.pulumi.azurenative.cognitiveservices.RaiPolicyArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.RaiPolicyPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

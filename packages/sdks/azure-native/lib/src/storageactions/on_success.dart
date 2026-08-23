@@ -14,4 +14,3 @@ enum OnSuccess {
     throw ArgumentError('Unknown OnSuccess value: $value');
   }
 }
-

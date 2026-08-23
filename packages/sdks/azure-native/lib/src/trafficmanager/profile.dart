@@ -85,6 +85,36 @@ import 'profile_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_trafficmanager_profile" "profile" {
+///   dns_config = {
+///     relative_name = "azsmnet6386"
+///     ttl           = 35
+///   }
+///   location   = "global"
+///   max_return = 2
+///   monitor_config = {
+///     path     = "/testpath.aspx"
+///     port     = 80
+///     protocol = "HTTP"
+///   }
+///   profile_name                   = "azsmnet6386"
+///   profile_status                 = "Enabled"
+///   resource_group_name            = "azuresdkfornetautoresttrafficmanager1421"
+///   traffic_routing_method         = "MultiValue"
+///   traffic_view_enrollment_status = "Disabled"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +125,8 @@ import 'profile_args.dart';
 /// import com.pulumi.azurenative.trafficmanager.ProfileArgs;
 /// import com.pulumi.azurenative.trafficmanager.inputs.DnsConfigArgs;
 /// import com.pulumi.azurenative.trafficmanager.inputs.MonitorConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -164,13 +194,13 @@ import 'profile_args.dart';
 /// profile = azure_native.trafficmanager.Profile("profile",
 ///     dns_config={
 ///         "relative_name": "azsmnet6386",
-///         "ttl": 35,
+///         "ttl": float(35),
 ///     },
 ///     location="global",
-///     max_return=2,
+///     max_return=float(2),
 ///     monitor_config={
 ///         "path": "/testpath.aspx",
-///         "port": 80,
+///         "port": float(80),
 ///         "protocol": azure_native.trafficmanager.MonitorProtocol.HTTP,
 ///     },
 ///     profile_name="azsmnet6386",
@@ -274,6 +304,34 @@ import 'profile_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_trafficmanager_profile" "profile" {
+///   dns_config = {
+///     relative_name = "azsmnet6386"
+///     ttl           = 35
+///   }
+///   location = "global"
+///   monitor_config = {
+///     path     = "/testpath.aspx"
+///     port     = 80
+///     protocol = "HTTP"
+///   }
+///   profile_name           = "azsmnet6386"
+///   profile_status         = "Enabled"
+///   resource_group_name    = "azuresdkfornetautoresttrafficmanager1421"
+///   traffic_routing_method = "Performance"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -284,8 +342,8 @@ import 'profile_args.dart';
 /// import com.pulumi.azurenative.trafficmanager.ProfileArgs;
 /// import com.pulumi.azurenative.trafficmanager.inputs.DnsConfigArgs;
 /// import com.pulumi.azurenative.trafficmanager.inputs.MonitorConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -349,12 +407,12 @@ import 'profile_args.dart';
 /// profile = azure_native.trafficmanager.Profile("profile",
 ///     dns_config={
 ///         "relative_name": "azsmnet6386",
-///         "ttl": 35,
+///         "ttl": float(35),
 ///     },
 ///     location="global",
 ///     monitor_config={
 ///         "path": "/testpath.aspx",
-///         "port": 80,
+///         "port": float(80),
 ///         "protocol": azure_native.trafficmanager.MonitorProtocol.HTTP,
 ///     },
 ///     profile_name="azsmnet6386",
@@ -488,6 +546,45 @@ import 'profile_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_trafficmanager_profile" "profile" {
+///   allowed_endpoint_record_types = ["DomainName"]
+///   dns_config = {
+///     relative_name = "azuresdkfornetautoresttrafficmanager6192"
+///     ttl           = 35
+///   }
+///   endpoints {
+///     endpoint_location = "North Europe"
+///     endpoint_status   = "Enabled"
+///     name              = "My external endpoint"
+///     target            = "foobar.contoso.com"
+///     type              = "Microsoft.network/TrafficManagerProfiles/ExternalEndpoints"
+///   }
+///   location = "global"
+///   monitor_config = {
+///     interval_in_seconds          = 10
+///     path                         = "/testpath.aspx"
+///     port                         = 80
+///     protocol                     = "HTTP"
+///     timeout_in_seconds           = 5
+///     tolerated_number_of_failures = 2
+///   }
+///   profile_name           = "azuresdkfornetautoresttrafficmanager6192"
+///   profile_status         = "Enabled"
+///   resource_group_name    = "azuresdkfornetautoresttrafficmanager2583"
+///   traffic_routing_method = "Performance"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -499,8 +596,8 @@ import 'profile_args.dart';
 /// import com.pulumi.azurenative.trafficmanager.inputs.DnsConfigArgs;
 /// import com.pulumi.azurenative.trafficmanager.inputs.EndpointArgs;
 /// import com.pulumi.azurenative.trafficmanager.inputs.MonitorConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -587,7 +684,7 @@ import 'profile_args.dart';
 ///     allowed_endpoint_record_types=[azure_native.trafficmanager.AllowedEndpointRecordType.DOMAIN_NAME],
 ///     dns_config={
 ///         "relative_name": "azuresdkfornetautoresttrafficmanager6192",
-///         "ttl": 35,
+///         "ttl": float(35),
 ///     },
 ///     endpoints=[{
 ///         "endpoint_location": "North Europe",
@@ -598,12 +695,12 @@ import 'profile_args.dart';
 ///     }],
 ///     location="global",
 ///     monitor_config={
-///         "interval_in_seconds": 10,
+///         "interval_in_seconds": float(10),
 ///         "path": "/testpath.aspx",
-///         "port": 80,
+///         "port": float(80),
 ///         "protocol": azure_native.trafficmanager.MonitorProtocol.HTTP,
-///         "timeout_in_seconds": 5,
-///         "tolerated_number_of_failures": 2,
+///         "timeout_in_seconds": float(5),
+///         "tolerated_number_of_failures": float(2),
 ///     },
 ///     profile_name="azuresdkfornetautoresttrafficmanager6192",
 ///     profile_status=azure_native.trafficmanager.ProfileStatus.ENABLED,
@@ -802,6 +899,63 @@ import 'profile_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_trafficmanager_profile" "profile" {
+///   dns_config = {
+///     relative_name = "azuresdkfornetautoresttrafficmanager6192"
+///     ttl           = 35
+///   }
+///   endpoints {
+///     custom_headers {
+///       name  = "header-2"
+///       value = "value-2-overridden"
+///     }
+///     endpoint_location = "North Europe"
+///     endpoint_status   = "Enabled"
+///     name              = "My external endpoint"
+///     target            = "foobar.contoso.com"
+///     type              = "Microsoft.network/TrafficManagerProfiles/ExternalEndpoints"
+///   }
+///   location = "global"
+///   monitor_config = {
+///     custom_headers = [{
+///       "name"  = "header-1"
+///       "value" = "value-1"
+///       }, {
+///       "name"  = "header-2"
+///       "value" = "value-2"
+///     }]
+///     expected_status_code_ranges = [{
+///       "max" = 205
+///       "min" = 200
+///       }, {
+///       "max" = 410
+///       "min" = 400
+///     }]
+///     interval_in_seconds          = 10
+///     path                         = "/testpath.aspx"
+///     port                         = 80
+///     protocol                     = "HTTP"
+///     timeout_in_seconds           = 5
+///     tolerated_number_of_failures = 2
+///   }
+///   profile_name                   = "azuresdkfornetautoresttrafficmanager6192"
+///   profile_status                 = "Enabled"
+///   resource_group_name            = "azuresdkfornetautoresttrafficmanager2583"
+///   traffic_routing_method         = "Performance"
+///   traffic_view_enrollment_status = "Disabled"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -813,8 +967,8 @@ import 'profile_args.dart';
 /// import com.pulumi.azurenative.trafficmanager.inputs.DnsConfigArgs;
 /// import com.pulumi.azurenative.trafficmanager.inputs.EndpointArgs;
 /// import com.pulumi.azurenative.trafficmanager.inputs.MonitorConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -946,7 +1100,7 @@ import 'profile_args.dart';
 /// profile = azure_native.trafficmanager.Profile("profile",
 ///     dns_config={
 ///         "relative_name": "azuresdkfornetautoresttrafficmanager6192",
-///         "ttl": 35,
+///         "ttl": float(35),
 ///     },
 ///     endpoints=[{
 ///         "custom_headers": [{
@@ -981,12 +1135,12 @@ import 'profile_args.dart';
 ///                 "min": 400,
 ///             },
 ///         ],
-///         "interval_in_seconds": 10,
+///         "interval_in_seconds": float(10),
 ///         "path": "/testpath.aspx",
-///         "port": 80,
+///         "port": float(80),
 ///         "protocol": azure_native.trafficmanager.MonitorProtocol.HTTP,
-///         "timeout_in_seconds": 5,
-///         "tolerated_number_of_failures": 2,
+///         "timeout_in_seconds": float(5),
+///         "tolerated_number_of_failures": float(2),
 ///     },
 ///     profile_name="azuresdkfornetautoresttrafficmanager6192",
 ///     profile_status=azure_native.trafficmanager.ProfileStatus.ENABLED,
@@ -1136,6 +1290,44 @@ import 'profile_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_trafficmanager_profile" "profile" {
+///   dns_config = {
+///     relative_name = "azuresdkfornetautoresttrafficmanager6192"
+///     ttl           = 35
+///   }
+///   endpoints {
+///     endpoint_location = "North Europe"
+///     endpoint_status   = "Enabled"
+///     name              = "My external endpoint"
+///     target            = "foobar.contoso.com"
+///     type              = "Microsoft.network/TrafficManagerProfiles/ExternalEndpoints"
+///   }
+///   location = "global"
+///   monitor_config = {
+///     interval_in_seconds          = 10
+///     path                         = "/testpath.aspx"
+///     port                         = 80
+///     protocol                     = "HTTP"
+///     timeout_in_seconds           = 5
+///     tolerated_number_of_failures = 2
+///   }
+///   profile_name           = "azuresdkfornetautoresttrafficmanager6192"
+///   profile_status         = "Enabled"
+///   resource_group_name    = "azuresdkfornetautoresttrafficmanager2583"
+///   traffic_routing_method = "Performance"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1147,8 +1339,8 @@ import 'profile_args.dart';
 /// import com.pulumi.azurenative.trafficmanager.inputs.DnsConfigArgs;
 /// import com.pulumi.azurenative.trafficmanager.inputs.EndpointArgs;
 /// import com.pulumi.azurenative.trafficmanager.inputs.MonitorConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1232,7 +1424,7 @@ import 'profile_args.dart';
 /// profile = azure_native.trafficmanager.Profile("profile",
 ///     dns_config={
 ///         "relative_name": "azuresdkfornetautoresttrafficmanager6192",
-///         "ttl": 35,
+///         "ttl": float(35),
 ///     },
 ///     endpoints=[{
 ///         "endpoint_location": "North Europe",
@@ -1243,12 +1435,12 @@ import 'profile_args.dart';
 ///     }],
 ///     location="global",
 ///     monitor_config={
-///         "interval_in_seconds": 10,
+///         "interval_in_seconds": float(10),
 ///         "path": "/testpath.aspx",
-///         "port": 80,
+///         "port": float(80),
 ///         "protocol": azure_native.trafficmanager.MonitorProtocol.HTTP,
-///         "timeout_in_seconds": 5,
-///         "tolerated_number_of_failures": 2,
+///         "timeout_in_seconds": float(5),
+///         "tolerated_number_of_failures": float(2),
 ///     },
 ///     profile_name="azuresdkfornetautoresttrafficmanager6192",
 ///     profile_status=azure_native.trafficmanager.ProfileStatus.ENABLED,
@@ -1414,6 +1606,59 @@ import 'profile_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_trafficmanager_profile" "profile" {
+///   dns_config = {
+///     relative_name = "parentprofile"
+///     ttl           = 35
+///   }
+///   endpoints {
+///     endpoint_status           = "Enabled"
+///     min_child_endpoints       = 2
+///     min_child_endpoints_i_pv4 = 1
+///     min_child_endpoints_i_pv6 = 2
+///     name                      = "MyFirstNestedEndpoint"
+///     priority                  = 1
+///     target                    = "firstnestedprofile.tmpreview.watmtest.azure-test.net"
+///     type                      = "Microsoft.Network/trafficManagerProfiles/nestedEndpoints"
+///     weight                    = 1
+///   }
+///   endpoints {
+///     endpoint_status           = "Enabled"
+///     min_child_endpoints       = 2
+///     min_child_endpoints_i_pv4 = 2
+///     min_child_endpoints_i_pv6 = 1
+///     name                      = "MySecondNestedEndpoint"
+///     priority                  = 2
+///     target                    = "secondnestedprofile.tmpreview.watmtest.azure-test.net"
+///     type                      = "Microsoft.Network/trafficManagerProfiles/nestedEndpoints"
+///     weight                    = 1
+///   }
+///   location = "global"
+///   monitor_config = {
+///     interval_in_seconds          = 10
+///     path                         = "/testpath.aspx"
+///     port                         = 80
+///     protocol                     = "HTTP"
+///     timeout_in_seconds           = 5
+///     tolerated_number_of_failures = 2
+///   }
+///   profile_name           = "parentprofile"
+///   profile_status         = "Enabled"
+///   resource_group_name    = "myresourcegroup"
+///   traffic_routing_method = "Priority"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1425,8 +1670,8 @@ import 'profile_args.dart';
 /// import com.pulumi.azurenative.trafficmanager.inputs.DnsConfigArgs;
 /// import com.pulumi.azurenative.trafficmanager.inputs.EndpointArgs;
 /// import com.pulumi.azurenative.trafficmanager.inputs.MonitorConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1543,40 +1788,40 @@ import 'profile_args.dart';
 /// profile = azure_native.trafficmanager.Profile("profile",
 ///     dns_config={
 ///         "relative_name": "parentprofile",
-///         "ttl": 35,
+///         "ttl": float(35),
 ///     },
 ///     endpoints=[
 ///         {
 ///             "endpoint_status": azure_native.trafficmanager.EndpointStatus.ENABLED,
-///             "min_child_endpoints": 2,
-///             "min_child_endpoints_i_pv4": 1,
-///             "min_child_endpoints_i_pv6": 2,
+///             "min_child_endpoints": float(2),
+///             "min_child_endpoints_i_pv4": float(1),
+///             "min_child_endpoints_i_pv6": float(2),
 ///             "name": "MyFirstNestedEndpoint",
-///             "priority": 1,
+///             "priority": float(1),
 ///             "target": "firstnestedprofile.tmpreview.watmtest.azure-test.net",
 ///             "type": "Microsoft.Network/trafficManagerProfiles/nestedEndpoints",
-///             "weight": 1,
+///             "weight": float(1),
 ///         },
 ///         {
 ///             "endpoint_status": azure_native.trafficmanager.EndpointStatus.ENABLED,
-///             "min_child_endpoints": 2,
-///             "min_child_endpoints_i_pv4": 2,
-///             "min_child_endpoints_i_pv6": 1,
+///             "min_child_endpoints": float(2),
+///             "min_child_endpoints_i_pv4": float(2),
+///             "min_child_endpoints_i_pv6": float(1),
 ///             "name": "MySecondNestedEndpoint",
-///             "priority": 2,
+///             "priority": float(2),
 ///             "target": "secondnestedprofile.tmpreview.watmtest.azure-test.net",
 ///             "type": "Microsoft.Network/trafficManagerProfiles/nestedEndpoints",
-///             "weight": 1,
+///             "weight": float(1),
 ///         },
 ///     ],
 ///     location="global",
 ///     monitor_config={
-///         "interval_in_seconds": 10,
+///         "interval_in_seconds": float(10),
 ///         "path": "/testpath.aspx",
-///         "port": 80,
+///         "port": float(80),
 ///         "protocol": azure_native.trafficmanager.MonitorProtocol.HTTP,
-///         "timeout_in_seconds": 5,
-///         "tolerated_number_of_failures": 2,
+///         "timeout_in_seconds": float(5),
+///         "tolerated_number_of_failures": float(2),
 ///     },
 ///     profile_name="parentprofile",
 ///     profile_status=azure_native.trafficmanager.ProfileStatus.ENABLED,

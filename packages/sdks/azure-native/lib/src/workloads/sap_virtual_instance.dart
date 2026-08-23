@@ -259,6 +259,104 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "Deployment"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 6
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "id" = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Compute/galleries/testgallery/images/rhelimagetest/versions/0.0.1"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "ssh" = {
+///                 "publicKeys" = [{
+///                   "keyData" = "ssh-rsa public key"
+///                 }]
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "id" = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Compute/galleries/testgallery/images/rhelimagetest/versions/0.0.1"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "ssh" = {
+///                 "publicKeys" = [{
+///                   "keyData" = "ssh-rsa public key"
+///                 }]
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType"  = "HANA"
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "id" = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Compute/galleries/testgallery/images/rhelimagetest/versions/0.0.1"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "ssh" = {
+///                 "publicKeys" = [{
+///                   "keyData" = "ssh-rsa public key"
+///                 }]
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///       "highAvailabilityConfig" = {
+///         "highAvailabilityType" = "AvailabilityZone"
+///       }
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -267,8 +365,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -287,7 +385,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(6)
+///                         .instanceCount(6.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -309,7 +407,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -332,7 +430,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .databaseServer(DatabaseConfigurationArgs.builder()
 ///                         .databaseType("HANA")
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -477,7 +575,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 6,
+///                 "instance_count": float(6),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -499,7 +597,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -522,7 +620,7 @@ import 'system_data_response.dart';
 ///             },
 ///             "database_server": {
 ///                 "database_type": azure_native.workloads.SAPDatabaseType.HANA,
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -1085,6 +1183,170 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 6
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "customResourceNames" = {
+///         "applicationServer" = {
+///           "availabilitySetName" = "appAvSet"
+///           "virtualMachines" = [{
+///             "dataDiskNames" = {
+///               "default" = ["app0disk0"]
+///             }
+///             "hostName" = "apphostName0"
+///             "networkInterfaces" = [{
+///               "networkInterfaceName" = "appnic0"
+///             }]
+///             "osDiskName" = "app0osdisk"
+///             "vmName"     = "appvm0"
+///             }, {
+///             "dataDiskNames" = {
+///               "default" = ["app1disk0"]
+///             }
+///             "hostName" = "apphostName1"
+///             "networkInterfaces" = [{
+///               "networkInterfaceName" = "appnic1"
+///             }]
+///             "osDiskName" = "app1osdisk"
+///             "vmName"     = "appvm1"
+///           }]
+///         }
+///         "centralServer" = {
+///           "virtualMachines" = [{
+///             "dataDiskNames" = {
+///               "default" = ["ascsdisk0"]
+///             }
+///             "hostName" = "ascshostName"
+///             "networkInterfaces" = [{
+///               "networkInterfaceName" = "ascsnic"
+///             }]
+///             "osDiskName" = "ascsosdisk"
+///             "vmName"     = "ascsvm"
+///           }]
+///         }
+///         "databaseServer" = {
+///           "virtualMachines" = [{
+///             "dataDiskNames" = {
+///               "hanaData"   = ["hanadata0", "hanadata1"]
+///               "hanaLog"    = ["hanalog0", "hanalog1", "hanalog2"]
+///               "hanaShared" = ["hanashared0", "hanashared1"]
+///               "usrSap"     = ["usrsap0"]
+///             }
+///             "hostName" = "dbhostName"
+///             "networkInterfaces" = [{
+///               "networkInterfaceName" = "dbnic"
+///             }]
+///             "osDiskName" = "dbosdisk"
+///             "vmName"     = "dbvm"
+///           }]
+///         }
+///         "namingPatternType" = "FullResourceName"
+///         "sharedStorage" = {
+///           "sharedStorageAccountName"                = "storageacc"
+///           "sharedStorageAccountPrivateEndPointName" = "peForxNFS"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType"  = "HANA"
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1093,8 +1355,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1113,7 +1375,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(6)
+///                         .instanceCount(6.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -1137,7 +1399,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -1165,7 +1427,7 @@ import 'system_data_response.dart';
 ///                             .availabilitySetName("appAvSet")
 ///                             .virtualMachines(
 ///                                 VirtualMachineResourceNamesArgs.builder()
-///                                     .dataDiskNames(Map.of("default", "app0disk0"))
+///                                     .dataDiskNames(Map.of("default", Arrays.asList("app0disk0")))
 ///                                     .hostName("apphostName0")
 ///                                     .networkInterfaces(NetworkInterfaceResourceNamesArgs.builder()
 ///                                         .networkInterfaceName("appnic0")
@@ -1174,7 +1436,7 @@ import 'system_data_response.dart';
 ///                                     .vmName("appvm0")
 ///                                     .build(),
 ///                                 VirtualMachineResourceNamesArgs.builder()
-///                                     .dataDiskNames(Map.of("default", "app1disk0"))
+///                                     .dataDiskNames(Map.of("default", Arrays.asList("app1disk0")))
 ///                                     .hostName("apphostName1")
 ///                                     .networkInterfaces(NetworkInterfaceResourceNamesArgs.builder()
 ///                                         .networkInterfaceName("appnic1")
@@ -1185,7 +1447,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .centralServer(CentralServerFullResourceNamesArgs.builder()
 ///                             .virtualMachines(VirtualMachineResourceNamesArgs.builder()
-///                                 .dataDiskNames(Map.of("default", "ascsdisk0"))
+///                                 .dataDiskNames(Map.of("default", Arrays.asList("ascsdisk0")))
 ///                                 .hostName("ascshostName")
 ///                                 .networkInterfaces(NetworkInterfaceResourceNamesArgs.builder()
 ///                                     .networkInterfaceName("ascsnic")
@@ -1197,17 +1459,17 @@ import 'system_data_response.dart';
 ///                         .databaseServer(DatabaseServerFullResourceNamesArgs.builder()
 ///                             .virtualMachines(VirtualMachineResourceNamesArgs.builder()
 ///                                 .dataDiskNames(Map.ofEntries(
-///                                     Map.entry("hanaData",
+///                                     Map.entry("hanaData", Arrays.asList(
 ///                                         "hanadata0",
-///                                         "hanadata1"),
-///                                     Map.entry("hanaLog",
+///                                         "hanadata1")),
+///                                     Map.entry("hanaLog", Arrays.asList(
 ///                                         "hanalog0",
 ///                                         "hanalog1",
-///                                         "hanalog2"),
-///                                     Map.entry("hanaShared",
+///                                         "hanalog2")),
+///                                     Map.entry("hanaShared", Arrays.asList(
 ///                                         "hanashared0",
-///                                         "hanashared1"),
-///                                     Map.entry("usrSap", "usrsap0")
+///                                         "hanashared1")),
+///                                     Map.entry("usrSap", Arrays.asList("usrsap0"))
 ///                                 ))
 ///                                 .hostName("dbhostName")
 ///                                 .networkInterfaces(NetworkInterfaceResourceNamesArgs.builder()
@@ -1225,7 +1487,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .databaseServer(DatabaseConfigurationArgs.builder()
 ///                         .databaseType("HANA")
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -1451,7 +1713,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 6,
+///                 "instance_count": float(6),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -1475,7 +1737,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -1573,7 +1835,7 @@ import 'system_data_response.dart';
 ///             },
 ///             "database_server": {
 ///                 "database_type": azure_native.workloads.SAPDatabaseType.HANA,
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -2347,6 +2609,204 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 6
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "customResourceNames" = {
+///         "applicationServer" = {
+///           "availabilitySetName" = "appAvSet"
+///           "virtualMachines" = [{
+///             "dataDiskNames" = {
+///               "default" = ["app0disk0"]
+///             }
+///             "hostName" = "apphostName0"
+///             "networkInterfaces" = [{
+///               "networkInterfaceName" = "appnic0"
+///             }]
+///             "osDiskName" = "app0osdisk"
+///             "vmName"     = "appvm0"
+///             }, {
+///             "dataDiskNames" = {
+///               "default" = ["app1disk0"]
+///             }
+///             "hostName" = "apphostName1"
+///             "networkInterfaces" = [{
+///               "networkInterfaceName" = "appnic1"
+///             }]
+///             "osDiskName" = "app1osdisk"
+///             "vmName"     = "appvm1"
+///           }]
+///         }
+///         "centralServer" = {
+///           "availabilitySetName" = "csAvSet"
+///           "loadBalancer" = {
+///             "backendPoolNames"             = ["ascsBackendPool"]
+///             "frontendIpConfigurationNames" = ["ascsip0", "ersip0"]
+///             "healthProbeNames"             = ["ascsHealthProbe", "ersHealthProbe"]
+///             "loadBalancerName"             = "ascslb"
+///           }
+///           "virtualMachines" = [{
+///             "hostName" = "ascshostName"
+///             "networkInterfaces" = [{
+///               "networkInterfaceName" = "ascsnic"
+///             }]
+///             "osDiskName" = "ascsosdisk"
+///             "vmName"     = "ascsvm"
+///             }, {
+///             "hostName" = "ershostName"
+///             "networkInterfaces" = [{
+///               "networkInterfaceName" = "ersnic"
+///             }]
+///             "osDiskName" = "ersosdisk"
+///             "vmName"     = "ersvm"
+///           }]
+///         }
+///         "databaseServer" = {
+///           "availabilitySetName" = "dbAvSet"
+///           "loadBalancer" = {
+///             "backendPoolNames"             = ["dbBackendPool"]
+///             "frontendIpConfigurationNames" = ["dbip"]
+///             "healthProbeNames"             = ["dbHealthProbe"]
+///             "loadBalancerName"             = "dblb"
+///           }
+///           "virtualMachines" = [{
+///             "dataDiskNames" = {
+///               "hanaData"   = ["hanadatapr0", "hanadatapr1"]
+///               "hanaLog"    = ["hanalogpr0", "hanalogpr1", "hanalogpr2"]
+///               "hanaShared" = ["hanasharedpr0", "hanasharedpr1"]
+///               "usrSap"     = ["usrsappr0"]
+///             }
+///             "hostName" = "dbprhostName"
+///             "networkInterfaces" = [{
+///               "networkInterfaceName" = "dbprnic"
+///             }]
+///             "osDiskName" = "dbprosdisk"
+///             "vmName"     = "dbvmpr"
+///             }, {
+///             "dataDiskNames" = {
+///               "hanaData"   = ["hanadatasr0", "hanadatasr1"]
+///               "hanaLog"    = ["hanalogsr0", "hanalogsr1", "hanalogsr2"]
+///               "hanaShared" = ["hanasharedsr0", "hanasharedsr1"]
+///               "usrSap"     = ["usrsapsr0"]
+///             }
+///             "hostName" = "dbsrhostName"
+///             "networkInterfaces" = [{
+///               "networkInterfaceName" = "dbsrnic"
+///             }]
+///             "osDiskName" = "dbsrosdisk"
+///             "vmName"     = "dbvmsr"
+///           }]
+///         }
+///         "namingPatternType" = "FullResourceName"
+///         "sharedStorage" = {
+///           "sharedStorageAccountName"                = "storageacc"
+///           "sharedStorageAccountPrivateEndPointName" = "peForxNFS"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType"  = "HANA"
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///       "highAvailabilityConfig" = {
+///         "highAvailabilityType" = "AvailabilitySet"
+///       }
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2355,8 +2815,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2375,7 +2835,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(6)
+///                         .instanceCount(6.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -2399,7 +2859,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -2427,7 +2887,7 @@ import 'system_data_response.dart';
 ///                             .availabilitySetName("appAvSet")
 ///                             .virtualMachines(
 ///                                 VirtualMachineResourceNamesArgs.builder()
-///                                     .dataDiskNames(Map.of("default", "app0disk0"))
+///                                     .dataDiskNames(Map.of("default", Arrays.asList("app0disk0")))
 ///                                     .hostName("apphostName0")
 ///                                     .networkInterfaces(NetworkInterfaceResourceNamesArgs.builder()
 ///                                         .networkInterfaceName("appnic0")
@@ -2436,7 +2896,7 @@ import 'system_data_response.dart';
 ///                                     .vmName("appvm0")
 ///                                     .build(),
 ///                                 VirtualMachineResourceNamesArgs.builder()
-///                                     .dataDiskNames(Map.of("default", "app1disk0"))
+///                                     .dataDiskNames(Map.of("default", Arrays.asList("app1disk0")))
 ///                                     .hostName("apphostName1")
 ///                                     .networkInterfaces(NetworkInterfaceResourceNamesArgs.builder()
 ///                                         .networkInterfaceName("appnic1")
@@ -2486,17 +2946,17 @@ import 'system_data_response.dart';
 ///                             .virtualMachines(
 ///                                 VirtualMachineResourceNamesArgs.builder()
 ///                                     .dataDiskNames(Map.ofEntries(
-///                                         Map.entry("hanaData",
+///                                         Map.entry("hanaData", Arrays.asList(
 ///                                             "hanadatapr0",
-///                                             "hanadatapr1"),
-///                                         Map.entry("hanaLog",
+///                                             "hanadatapr1")),
+///                                         Map.entry("hanaLog", Arrays.asList(
 ///                                             "hanalogpr0",
 ///                                             "hanalogpr1",
-///                                             "hanalogpr2"),
-///                                         Map.entry("hanaShared",
+///                                             "hanalogpr2")),
+///                                         Map.entry("hanaShared", Arrays.asList(
 ///                                             "hanasharedpr0",
-///                                             "hanasharedpr1"),
-///                                         Map.entry("usrSap", "usrsappr0")
+///                                             "hanasharedpr1")),
+///                                         Map.entry("usrSap", Arrays.asList("usrsappr0"))
 ///                                     ))
 ///                                     .hostName("dbprhostName")
 ///                                     .networkInterfaces(NetworkInterfaceResourceNamesArgs.builder()
@@ -2507,17 +2967,17 @@ import 'system_data_response.dart';
 ///                                     .build(),
 ///                                 VirtualMachineResourceNamesArgs.builder()
 ///                                     .dataDiskNames(Map.ofEntries(
-///                                         Map.entry("hanaData",
+///                                         Map.entry("hanaData", Arrays.asList(
 ///                                             "hanadatasr0",
-///                                             "hanadatasr1"),
-///                                         Map.entry("hanaLog",
+///                                             "hanadatasr1")),
+///                                         Map.entry("hanaLog", Arrays.asList(
 ///                                             "hanalogsr0",
 ///                                             "hanalogsr1",
-///                                             "hanalogsr2"),
-///                                         Map.entry("hanaShared",
+///                                             "hanalogsr2")),
+///                                         Map.entry("hanaShared", Arrays.asList(
 ///                                             "hanasharedsr0",
-///                                             "hanasharedsr1"),
-///                                         Map.entry("usrSap", "usrsapsr0")
+///                                             "hanasharedsr1")),
+///                                         Map.entry("usrSap", Arrays.asList("usrsapsr0"))
 ///                                     ))
 ///                                     .hostName("dbsrhostName")
 ///                                     .networkInterfaces(NetworkInterfaceResourceNamesArgs.builder()
@@ -2535,7 +2995,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .databaseServer(DatabaseConfigurationArgs.builder()
 ///                         .databaseType("HANA")
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -2820,7 +3280,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 6,
+///                 "instance_count": float(6),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -2844,7 +3304,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -2995,7 +3455,7 @@ import 'system_data_response.dart';
 ///             },
 ///             "database_server": {
 ///                 "database_type": azure_native.workloads.SAPDatabaseType.HANA,
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -3808,6 +4268,201 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 6
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "customResourceNames" = {
+///         "applicationServer" = {
+///           "virtualMachines" = [{
+///             "dataDiskNames" = {
+///               "default" = ["app0disk0"]
+///             }
+///             "hostName" = "apphostName0"
+///             "networkInterfaces" = [{
+///               "networkInterfaceName" = "appnic0"
+///             }]
+///             "osDiskName" = "app0osdisk"
+///             "vmName"     = "appvm0"
+///             }, {
+///             "dataDiskNames" = {
+///               "default" = ["app1disk0"]
+///             }
+///             "hostName" = "apphostName1"
+///             "networkInterfaces" = [{
+///               "networkInterfaceName" = "appnic1"
+///             }]
+///             "osDiskName" = "app1osdisk"
+///             "vmName"     = "appvm1"
+///           }]
+///         }
+///         "centralServer" = {
+///           "loadBalancer" = {
+///             "backendPoolNames"             = ["ascsBackendPool"]
+///             "frontendIpConfigurationNames" = ["ascsip0", "ersip0"]
+///             "healthProbeNames"             = ["ascsHealthProbe", "ersHealthProbe"]
+///             "loadBalancerName"             = "ascslb"
+///           }
+///           "virtualMachines" = [{
+///             "hostName" = "ascshostName"
+///             "networkInterfaces" = [{
+///               "networkInterfaceName" = "ascsnic"
+///             }]
+///             "osDiskName" = "ascsosdisk"
+///             "vmName"     = "ascsvm"
+///             }, {
+///             "hostName" = "ershostName"
+///             "networkInterfaces" = [{
+///               "networkInterfaceName" = "ersnic"
+///             }]
+///             "osDiskName" = "ersosdisk"
+///             "vmName"     = "ersvm"
+///           }]
+///         }
+///         "databaseServer" = {
+///           "loadBalancer" = {
+///             "backendPoolNames"             = ["dbBackendPool"]
+///             "frontendIpConfigurationNames" = ["dbip"]
+///             "healthProbeNames"             = ["dbHealthProbe"]
+///             "loadBalancerName"             = "dblb"
+///           }
+///           "virtualMachines" = [{
+///             "dataDiskNames" = {
+///               "hanaData"   = ["hanadatapr0", "hanadatapr1"]
+///               "hanaLog"    = ["hanalogpr0", "hanalogpr1", "hanalogpr2"]
+///               "hanaShared" = ["hanasharedpr0", "hanasharedpr1"]
+///               "usrSap"     = ["usrsappr0"]
+///             }
+///             "hostName" = "dbprhostName"
+///             "networkInterfaces" = [{
+///               "networkInterfaceName" = "dbprnic"
+///             }]
+///             "osDiskName" = "dbprosdisk"
+///             "vmName"     = "dbvmpr"
+///             }, {
+///             "dataDiskNames" = {
+///               "hanaData"   = ["hanadatasr0", "hanadatasr1"]
+///               "hanaLog"    = ["hanalogsr0", "hanalogsr1", "hanalogsr2"]
+///               "hanaShared" = ["hanasharedsr0", "hanasharedsr1"]
+///               "usrSap"     = ["usrsapsr0"]
+///             }
+///             "hostName" = "dbsrhostName"
+///             "networkInterfaces" = [{
+///               "networkInterfaceName" = "dbsrnic"
+///             }]
+///             "osDiskName" = "dbsrosdisk"
+///             "vmName"     = "dbvmsr"
+///           }]
+///         }
+///         "namingPatternType" = "FullResourceName"
+///         "sharedStorage" = {
+///           "sharedStorageAccountName"                = "storageacc"
+///           "sharedStorageAccountPrivateEndPointName" = "peForxNFS"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType"  = "HANA"
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///       "highAvailabilityConfig" = {
+///         "highAvailabilityType" = "AvailabilityZone"
+///       }
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3816,8 +4471,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3836,7 +4491,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(6)
+///                         .instanceCount(6.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -3860,7 +4515,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -3887,7 +4542,7 @@ import 'system_data_response.dart';
 ///                         .applicationServer(ApplicationServerFullResourceNamesArgs.builder()
 ///                             .virtualMachines(
 ///                                 VirtualMachineResourceNamesArgs.builder()
-///                                     .dataDiskNames(Map.of("default", "app0disk0"))
+///                                     .dataDiskNames(Map.of("default", Arrays.asList("app0disk0")))
 ///                                     .hostName("apphostName0")
 ///                                     .networkInterfaces(NetworkInterfaceResourceNamesArgs.builder()
 ///                                         .networkInterfaceName("appnic0")
@@ -3896,7 +4551,7 @@ import 'system_data_response.dart';
 ///                                     .vmName("appvm0")
 ///                                     .build(),
 ///                                 VirtualMachineResourceNamesArgs.builder()
-///                                     .dataDiskNames(Map.of("default", "app1disk0"))
+///                                     .dataDiskNames(Map.of("default", Arrays.asList("app1disk0")))
 ///                                     .hostName("apphostName1")
 ///                                     .networkInterfaces(NetworkInterfaceResourceNamesArgs.builder()
 ///                                         .networkInterfaceName("appnic1")
@@ -3944,17 +4599,17 @@ import 'system_data_response.dart';
 ///                             .virtualMachines(
 ///                                 VirtualMachineResourceNamesArgs.builder()
 ///                                     .dataDiskNames(Map.ofEntries(
-///                                         Map.entry("hanaData",
+///                                         Map.entry("hanaData", Arrays.asList(
 ///                                             "hanadatapr0",
-///                                             "hanadatapr1"),
-///                                         Map.entry("hanaLog",
+///                                             "hanadatapr1")),
+///                                         Map.entry("hanaLog", Arrays.asList(
 ///                                             "hanalogpr0",
 ///                                             "hanalogpr1",
-///                                             "hanalogpr2"),
-///                                         Map.entry("hanaShared",
+///                                             "hanalogpr2")),
+///                                         Map.entry("hanaShared", Arrays.asList(
 ///                                             "hanasharedpr0",
-///                                             "hanasharedpr1"),
-///                                         Map.entry("usrSap", "usrsappr0")
+///                                             "hanasharedpr1")),
+///                                         Map.entry("usrSap", Arrays.asList("usrsappr0"))
 ///                                     ))
 ///                                     .hostName("dbprhostName")
 ///                                     .networkInterfaces(NetworkInterfaceResourceNamesArgs.builder()
@@ -3965,17 +4620,17 @@ import 'system_data_response.dart';
 ///                                     .build(),
 ///                                 VirtualMachineResourceNamesArgs.builder()
 ///                                     .dataDiskNames(Map.ofEntries(
-///                                         Map.entry("hanaData",
+///                                         Map.entry("hanaData", Arrays.asList(
 ///                                             "hanadatasr0",
-///                                             "hanadatasr1"),
-///                                         Map.entry("hanaLog",
+///                                             "hanadatasr1")),
+///                                         Map.entry("hanaLog", Arrays.asList(
 ///                                             "hanalogsr0",
 ///                                             "hanalogsr1",
-///                                             "hanalogsr2"),
-///                                         Map.entry("hanaShared",
+///                                             "hanalogsr2")),
+///                                         Map.entry("hanaShared", Arrays.asList(
 ///                                             "hanasharedsr0",
-///                                             "hanasharedsr1"),
-///                                         Map.entry("usrSap", "usrsapsr0")
+///                                             "hanasharedsr1")),
+///                                         Map.entry("usrSap", Arrays.asList("usrsapsr0"))
 ///                                     ))
 ///                                     .hostName("dbsrhostName")
 ///                                     .networkInterfaces(NetworkInterfaceResourceNamesArgs.builder()
@@ -3993,7 +4648,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .databaseServer(DatabaseConfigurationArgs.builder()
 ///                         .databaseType("HANA")
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -4275,7 +4930,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 6,
+///                 "instance_count": float(6),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -4299,7 +4954,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -4447,7 +5102,7 @@ import 'system_data_response.dart';
 ///             },
 ///             "database_server": {
 ///                 "database_type": azure_native.workloads.SAPDatabaseType.HANA,
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -4792,6 +5447,62 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "databaseType"     = "HANA"
+///       "deploymentType"   = "SingleServer"
+///       "networkConfiguration" = {
+///         "isSecondaryIpEnabled" = true
+///       }
+///       "subnetId" = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///       "virtualMachineConfiguration" = {
+///         "imageReference" = {
+///           "offer"     = "RHEL-SAP"
+///           "publisher" = "RedHat"
+///           "sku"       = "84sapha-gen2"
+///           "version"   = "latest"
+///         }
+///         "osProfile" = {
+///           "adminUsername" = "{your-username}"
+///           "osConfiguration" = {
+///             "disablePasswordAuthentication" = true
+///             "osType"                        = "Linux"
+///             "sshKeyPair" = {
+///               "privateKey" = "xyz"
+///               "publicKey"  = "abc"
+///             }
+///           }
+///         }
+///         "vmSize" = "Standard_E32ds_v4"
+///       }
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///   }
+///   environment               = "NonProd"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -4800,8 +5511,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5250,6 +5961,111 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 6
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType"  = "HANA"
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///   }
+///   environment                           = "Prod"
+///   location                              = "westcentralus"
+///   managed_resources_network_access_type = "Private"
+///   resource_group_name                   = "test-rg"
+///   sap_product                           = "S4HANA"
+///   sap_virtual_instance_name             = "X00"
+///   tags                                  = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -5258,8 +6074,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5278,7 +6094,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(6)
+///                         .instanceCount(6.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -5302,7 +6118,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -5327,7 +6143,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .databaseServer(DatabaseConfigurationArgs.builder()
 ///                         .databaseType("HANA")
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -5482,7 +6298,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 6,
+///                 "instance_count": float(6),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -5506,7 +6322,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -5531,7 +6347,7 @@ import 'system_data_response.dart';
 ///             },
 ///             "database_server": {
 ///                 "database_type": azure_native.workloads.SAPDatabaseType.HANA,
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -5907,6 +6723,110 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "Deployment"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 6
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "ssh" = {
+///                 "publicKeys" = [{
+///                   "keyData" = "ssh-rsa public key"
+///                 }]
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "ssh" = {
+///                 "publicKeys" = [{
+///                   "keyData" = "ssh-rsa public key"
+///                 }]
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType"  = "HANA"
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "ssh" = {
+///                 "publicKeys" = [{
+///                   "keyData" = "ssh-rsa public key"
+///                 }]
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -5915,8 +6835,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5935,7 +6855,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(6)
+///                         .instanceCount(6.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -5960,7 +6880,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -5986,7 +6906,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .databaseServer(DatabaseConfigurationArgs.builder()
 ///                         .databaseType("HANA")
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -6137,7 +7057,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 6,
+///                 "instance_count": float(6),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -6162,7 +7082,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -6188,7 +7108,7 @@ import 'system_data_response.dart';
 ///             },
 ///             "database_server": {
 ///                 "database_type": azure_native.workloads.SAPDatabaseType.HANA,
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -6565,6 +7485,113 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "Deployment"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 5
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "ssh" = {
+///                 "publicKeys" = [{
+///                   "keyData" = "ssh-rsa public key"
+///                 }]
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "ssh" = {
+///                 "publicKeys" = [{
+///                   "keyData" = "ssh-rsa public key"
+///                 }]
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType"  = "HANA"
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "ssh" = {
+///                 "publicKeys" = [{
+///                   "keyData" = "ssh-rsa public key"
+///                 }]
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///       "highAvailabilityConfig" = {
+///         "highAvailabilityType" = "AvailabilitySet"
+///       }
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -6573,8 +7600,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6593,7 +7620,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(5)
+///                         .instanceCount(5.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -6618,7 +7645,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -6644,7 +7671,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .databaseServer(DatabaseConfigurationArgs.builder()
 ///                         .databaseType("HANA")
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -6801,7 +7828,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 5,
+///                 "instance_count": float(5),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -6826,7 +7853,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -6852,7 +7879,7 @@ import 'system_data_response.dart';
 ///             },
 ///             "database_server": {
 ///                 "database_type": azure_native.workloads.SAPDatabaseType.HANA,
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -7234,6 +8261,113 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "Deployment"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 6
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "ssh" = {
+///                 "publicKeys" = [{
+///                   "keyData" = "ssh-rsa public key"
+///                 }]
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "ssh" = {
+///                 "publicKeys" = [{
+///                   "keyData" = "ssh-rsa public key"
+///                 }]
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType"  = "HANA"
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "ssh" = {
+///                 "publicKeys" = [{
+///                   "keyData" = "ssh-rsa public key"
+///                 }]
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///       "highAvailabilityConfig" = {
+///         "highAvailabilityType" = "AvailabilityZone"
+///       }
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -7242,8 +8376,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7262,7 +8396,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(6)
+///                         .instanceCount(6.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -7287,7 +8421,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -7313,7 +8447,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .databaseServer(DatabaseConfigurationArgs.builder()
 ///                         .databaseType("HANA")
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -7470,7 +8604,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 6,
+///                 "instance_count": float(6),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -7495,7 +8629,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -7521,7 +8655,7 @@ import 'system_data_response.dart';
 ///             },
 ///             "database_server": {
 ///                 "database_type": azure_native.workloads.SAPDatabaseType.HANA,
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -7772,6 +8906,60 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "Deployment"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "databaseType"     = "HANA"
+///       "deploymentType"   = "SingleServer"
+///       "networkConfiguration" = {
+///         "isSecondaryIpEnabled" = true
+///       }
+///       "subnetId" = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///       "virtualMachineConfiguration" = {
+///         "imageReference" = {
+///           "offer"     = "RHEL-SAP"
+///           "publisher" = "RedHat"
+///           "sku"       = "84sapha-gen2"
+///           "version"   = "latest"
+///         }
+///         "osProfile" = {
+///           "adminUsername" = "{your-username}"
+///           "osConfiguration" = {
+///             "disablePasswordAuthentication" = true
+///             "osType"                        = "Linux"
+///             "ssh" = {
+///               "publicKeys" = [{
+///                 "keyData" = "ssh-rsa public key"
+///               }]
+///             }
+///           }
+///         }
+///         "vmSize" = "Standard_E32ds_v4"
+///       }
+///     }
+///   }
+///   environment               = "NonProd"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -7780,8 +8968,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8326,6 +9514,156 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 6
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType" = "HANA"
+///         "diskConfiguration" = {
+///           "diskVolumeConfigurations" = {
+///             "backup" = {
+///               "count"  = 2
+///               "sizeGB" = 256
+///               "sku" = {
+///                 "name" = "StandardSSD_LRS"
+///               }
+///             }
+///             "hana/data" = {
+///               "count"  = 4
+///               "sizeGB" = 128
+///               "sku" = {
+///                 "name" = "Premium_LRS"
+///               }
+///             }
+///             "hana/log" = {
+///               "count"  = 3
+///               "sizeGB" = 128
+///               "sku" = {
+///                 "name" = "Premium_LRS"
+///               }
+///             }
+///             "hana/shared" = {
+///               "count"  = 1
+///               "sizeGB" = 256
+///               "sku" = {
+///                 "name" = "StandardSSD_LRS"
+///               }
+///             }
+///             "os" = {
+///               "count"  = 1
+///               "sizeGB" = 64
+///               "sku" = {
+///                 "name" = "StandardSSD_LRS"
+///               }
+///             }
+///             "usr/sap" = {
+///               "count"  = 1
+///               "sizeGB" = 128
+///               "sku" = {
+///                 "name" = "Premium_LRS"
+///               }
+///             }
+///           }
+///         }
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -8334,8 +9672,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8354,7 +9692,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(6)
+///                         .instanceCount(6.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -8378,7 +9716,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -8406,50 +9744,50 @@ import 'system_data_response.dart';
 ///                         .diskConfiguration(DiskConfigurationArgs.builder()
 ///                             .diskVolumeConfigurations(Map.ofEntries(
 ///                                 Map.entry("backup", DiskVolumeConfigurationArgs.builder()
-///                                     .count(2)
-///                                     .sizeGB(256)
+///                                     .count(2.0)
+///                                     .sizeGB(256.0)
 ///                                     .sku(DiskSkuArgs.builder()
 ///                                         .name("StandardSSD_LRS")
 ///                                         .build())
 ///                                     .build()),
 ///                                 Map.entry("hana/data", DiskVolumeConfigurationArgs.builder()
-///                                     .count(4)
-///                                     .sizeGB(128)
+///                                     .count(4.0)
+///                                     .sizeGB(128.0)
 ///                                     .sku(DiskSkuArgs.builder()
 ///                                         .name("Premium_LRS")
 ///                                         .build())
 ///                                     .build()),
 ///                                 Map.entry("hana/log", DiskVolumeConfigurationArgs.builder()
-///                                     .count(3)
-///                                     .sizeGB(128)
+///                                     .count(3.0)
+///                                     .sizeGB(128.0)
 ///                                     .sku(DiskSkuArgs.builder()
 ///                                         .name("Premium_LRS")
 ///                                         .build())
 ///                                     .build()),
 ///                                 Map.entry("hana/shared", DiskVolumeConfigurationArgs.builder()
-///                                     .count(1)
-///                                     .sizeGB(256)
+///                                     .count(1.0)
+///                                     .sizeGB(256.0)
 ///                                     .sku(DiskSkuArgs.builder()
 ///                                         .name("StandardSSD_LRS")
 ///                                         .build())
 ///                                     .build()),
 ///                                 Map.entry("os", DiskVolumeConfigurationArgs.builder()
-///                                     .count(1)
-///                                     .sizeGB(64)
+///                                     .count(1.0)
+///                                     .sizeGB(64.0)
 ///                                     .sku(DiskSkuArgs.builder()
 ///                                         .name("StandardSSD_LRS")
 ///                                         .build())
 ///                                     .build()),
 ///                                 Map.entry("usr/sap", DiskVolumeConfigurationArgs.builder()
-///                                     .count(1)
-///                                     .sizeGB(128)
+///                                     .count(1.0)
+///                                     .sizeGB(128.0)
 ///                                     .sku(DiskSkuArgs.builder()
 ///                                         .name("Premium_LRS")
 ///                                         .build())
 ///                                     .build())
 ///                             ))
 ///                             .build())
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -8648,7 +9986,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 6,
+///                 "instance_count": float(6),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -8672,7 +10010,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -8700,50 +10038,50 @@ import 'system_data_response.dart';
 ///                 "disk_configuration": {
 ///                     "disk_volume_configurations": {
 ///                         "backup": {
-///                             "count": 2,
-///                             "size_gb": 256,
+///                             "count": float(2),
+///                             "size_gb": float(256),
 ///                             "sku": {
 ///                                 "name": azure_native.workloads.DiskSkuName.STANDARD_SS_D_LRS,
 ///                             },
 ///                         },
 ///                         "hana/data": {
-///                             "count": 4,
-///                             "size_gb": 128,
+///                             "count": float(4),
+///                             "size_gb": float(128),
 ///                             "sku": {
 ///                                 "name": azure_native.workloads.DiskSkuName.PREMIUM_LRS,
 ///                             },
 ///                         },
 ///                         "hana/log": {
-///                             "count": 3,
-///                             "size_gb": 128,
+///                             "count": float(3),
+///                             "size_gb": float(128),
 ///                             "sku": {
 ///                                 "name": azure_native.workloads.DiskSkuName.PREMIUM_LRS,
 ///                             },
 ///                         },
 ///                         "hana/shared": {
-///                             "count": 1,
-///                             "size_gb": 256,
+///                             "count": float(1),
+///                             "size_gb": float(256),
 ///                             "sku": {
 ///                                 "name": azure_native.workloads.DiskSkuName.STANDARD_SS_D_LRS,
 ///                             },
 ///                         },
 ///                         "os": {
-///                             "count": 1,
-///                             "size_gb": 64,
+///                             "count": float(1),
+///                             "size_gb": float(64),
 ///                             "sku": {
 ///                                 "name": azure_native.workloads.DiskSkuName.STANDARD_SS_D_LRS,
 ///                             },
 ///                         },
 ///                         "usr/sap": {
-///                             "count": 1,
-///                             "size_gb": 128,
+///                             "count": float(1),
+///                             "size_gb": float(128),
 ///                             "sku": {
 ///                                 "name": azure_native.workloads.DiskSkuName.PREMIUM_LRS,
 ///                             },
 ///                         },
 ///                     },
 ///                 },
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -9245,6 +10583,159 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 6
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType" = "HANA"
+///         "diskConfiguration" = {
+///           "diskVolumeConfigurations" = {
+///             "backup" = {
+///               "count"  = 2
+///               "sizeGB" = 256
+///               "sku" = {
+///                 "name" = "StandardSSD_LRS"
+///               }
+///             }
+///             "hana/data" = {
+///               "count"  = 4
+///               "sizeGB" = 128
+///               "sku" = {
+///                 "name" = "Premium_LRS"
+///               }
+///             }
+///             "hana/log" = {
+///               "count"  = 3
+///               "sizeGB" = 128
+///               "sku" = {
+///                 "name" = "Premium_LRS"
+///               }
+///             }
+///             "hana/shared" = {
+///               "count"  = 1
+///               "sizeGB" = 256
+///               "sku" = {
+///                 "name" = "StandardSSD_LRS"
+///               }
+///             }
+///             "os" = {
+///               "count"  = 1
+///               "sizeGB" = 64
+///               "sku" = {
+///                 "name" = "StandardSSD_LRS"
+///               }
+///             }
+///             "usr/sap" = {
+///               "count"  = 1
+///               "sizeGB" = 128
+///               "sku" = {
+///                 "name" = "Premium_LRS"
+///               }
+///             }
+///           }
+///         }
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///       "highAvailabilityConfig" = {
+///         "highAvailabilityType" = "AvailabilitySet"
+///       }
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -9253,8 +10744,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9273,7 +10764,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(6)
+///                         .instanceCount(6.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -9297,7 +10788,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -9325,50 +10816,50 @@ import 'system_data_response.dart';
 ///                         .diskConfiguration(DiskConfigurationArgs.builder()
 ///                             .diskVolumeConfigurations(Map.ofEntries(
 ///                                 Map.entry("backup", DiskVolumeConfigurationArgs.builder()
-///                                     .count(2)
-///                                     .sizeGB(256)
+///                                     .count(2.0)
+///                                     .sizeGB(256.0)
 ///                                     .sku(DiskSkuArgs.builder()
 ///                                         .name("StandardSSD_LRS")
 ///                                         .build())
 ///                                     .build()),
 ///                                 Map.entry("hana/data", DiskVolumeConfigurationArgs.builder()
-///                                     .count(4)
-///                                     .sizeGB(128)
+///                                     .count(4.0)
+///                                     .sizeGB(128.0)
 ///                                     .sku(DiskSkuArgs.builder()
 ///                                         .name("Premium_LRS")
 ///                                         .build())
 ///                                     .build()),
 ///                                 Map.entry("hana/log", DiskVolumeConfigurationArgs.builder()
-///                                     .count(3)
-///                                     .sizeGB(128)
+///                                     .count(3.0)
+///                                     .sizeGB(128.0)
 ///                                     .sku(DiskSkuArgs.builder()
 ///                                         .name("Premium_LRS")
 ///                                         .build())
 ///                                     .build()),
 ///                                 Map.entry("hana/shared", DiskVolumeConfigurationArgs.builder()
-///                                     .count(1)
-///                                     .sizeGB(256)
+///                                     .count(1.0)
+///                                     .sizeGB(256.0)
 ///                                     .sku(DiskSkuArgs.builder()
 ///                                         .name("StandardSSD_LRS")
 ///                                         .build())
 ///                                     .build()),
 ///                                 Map.entry("os", DiskVolumeConfigurationArgs.builder()
-///                                     .count(1)
-///                                     .sizeGB(64)
+///                                     .count(1.0)
+///                                     .sizeGB(64.0)
 ///                                     .sku(DiskSkuArgs.builder()
 ///                                         .name("StandardSSD_LRS")
 ///                                         .build())
 ///                                     .build()),
 ///                                 Map.entry("usr/sap", DiskVolumeConfigurationArgs.builder()
-///                                     .count(1)
-///                                     .sizeGB(128)
+///                                     .count(1.0)
+///                                     .sizeGB(128.0)
 ///                                     .sku(DiskSkuArgs.builder()
 ///                                         .name("Premium_LRS")
 ///                                         .build())
 ///                                     .build())
 ///                             ))
 ///                             .build())
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -9573,7 +11064,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 6,
+///                 "instance_count": float(6),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -9597,7 +11088,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -9625,50 +11116,50 @@ import 'system_data_response.dart';
 ///                 "disk_configuration": {
 ///                     "disk_volume_configurations": {
 ///                         "backup": {
-///                             "count": 2,
-///                             "size_gb": 256,
+///                             "count": float(2),
+///                             "size_gb": float(256),
 ///                             "sku": {
 ///                                 "name": azure_native.workloads.DiskSkuName.STANDARD_SS_D_LRS,
 ///                             },
 ///                         },
 ///                         "hana/data": {
-///                             "count": 4,
-///                             "size_gb": 128,
+///                             "count": float(4),
+///                             "size_gb": float(128),
 ///                             "sku": {
 ///                                 "name": azure_native.workloads.DiskSkuName.PREMIUM_LRS,
 ///                             },
 ///                         },
 ///                         "hana/log": {
-///                             "count": 3,
-///                             "size_gb": 128,
+///                             "count": float(3),
+///                             "size_gb": float(128),
 ///                             "sku": {
 ///                                 "name": azure_native.workloads.DiskSkuName.PREMIUM_LRS,
 ///                             },
 ///                         },
 ///                         "hana/shared": {
-///                             "count": 1,
-///                             "size_gb": 256,
+///                             "count": float(1),
+///                             "size_gb": float(256),
 ///                             "sku": {
 ///                                 "name": azure_native.workloads.DiskSkuName.STANDARD_SS_D_LRS,
 ///                             },
 ///                         },
 ///                         "os": {
-///                             "count": 1,
-///                             "size_gb": 64,
+///                             "count": float(1),
+///                             "size_gb": float(64),
 ///                             "sku": {
 ///                                 "name": azure_native.workloads.DiskSkuName.STANDARD_SS_D_LRS,
 ///                             },
 ///                         },
 ///                         "usr/sap": {
-///                             "count": 1,
-///                             "size_gb": 128,
+///                             "count": float(1),
+///                             "size_gb": float(128),
 ///                             "sku": {
 ///                                 "name": azure_native.workloads.DiskSkuName.PREMIUM_LRS,
 ///                             },
 ///                         },
 ///                     },
 ///                 },
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -10175,6 +11666,159 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 6
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType" = "HANA"
+///         "diskConfiguration" = {
+///           "diskVolumeConfigurations" = {
+///             "backup" = {
+///               "count"  = 2
+///               "sizeGB" = 256
+///               "sku" = {
+///                 "name" = "StandardSSD_LRS"
+///               }
+///             }
+///             "hana/data" = {
+///               "count"  = 4
+///               "sizeGB" = 128
+///               "sku" = {
+///                 "name" = "Premium_LRS"
+///               }
+///             }
+///             "hana/log" = {
+///               "count"  = 3
+///               "sizeGB" = 128
+///               "sku" = {
+///                 "name" = "Premium_LRS"
+///               }
+///             }
+///             "hana/shared" = {
+///               "count"  = 1
+///               "sizeGB" = 256
+///               "sku" = {
+///                 "name" = "StandardSSD_LRS"
+///               }
+///             }
+///             "os" = {
+///               "count"  = 1
+///               "sizeGB" = 64
+///               "sku" = {
+///                 "name" = "StandardSSD_LRS"
+///               }
+///             }
+///             "usr/sap" = {
+///               "count"  = 1
+///               "sizeGB" = 128
+///               "sku" = {
+///                 "name" = "Premium_LRS"
+///               }
+///             }
+///           }
+///         }
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///       "highAvailabilityConfig" = {
+///         "highAvailabilityType" = "AvailabilityZone"
+///       }
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -10183,8 +11827,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -10203,7 +11847,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(6)
+///                         .instanceCount(6.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -10227,7 +11871,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -10255,50 +11899,50 @@ import 'system_data_response.dart';
 ///                         .diskConfiguration(DiskConfigurationArgs.builder()
 ///                             .diskVolumeConfigurations(Map.ofEntries(
 ///                                 Map.entry("backup", DiskVolumeConfigurationArgs.builder()
-///                                     .count(2)
-///                                     .sizeGB(256)
+///                                     .count(2.0)
+///                                     .sizeGB(256.0)
 ///                                     .sku(DiskSkuArgs.builder()
 ///                                         .name("StandardSSD_LRS")
 ///                                         .build())
 ///                                     .build()),
 ///                                 Map.entry("hana/data", DiskVolumeConfigurationArgs.builder()
-///                                     .count(4)
-///                                     .sizeGB(128)
+///                                     .count(4.0)
+///                                     .sizeGB(128.0)
 ///                                     .sku(DiskSkuArgs.builder()
 ///                                         .name("Premium_LRS")
 ///                                         .build())
 ///                                     .build()),
 ///                                 Map.entry("hana/log", DiskVolumeConfigurationArgs.builder()
-///                                     .count(3)
-///                                     .sizeGB(128)
+///                                     .count(3.0)
+///                                     .sizeGB(128.0)
 ///                                     .sku(DiskSkuArgs.builder()
 ///                                         .name("Premium_LRS")
 ///                                         .build())
 ///                                     .build()),
 ///                                 Map.entry("hana/shared", DiskVolumeConfigurationArgs.builder()
-///                                     .count(1)
-///                                     .sizeGB(256)
+///                                     .count(1.0)
+///                                     .sizeGB(256.0)
 ///                                     .sku(DiskSkuArgs.builder()
 ///                                         .name("StandardSSD_LRS")
 ///                                         .build())
 ///                                     .build()),
 ///                                 Map.entry("os", DiskVolumeConfigurationArgs.builder()
-///                                     .count(1)
-///                                     .sizeGB(64)
+///                                     .count(1.0)
+///                                     .sizeGB(64.0)
 ///                                     .sku(DiskSkuArgs.builder()
 ///                                         .name("StandardSSD_LRS")
 ///                                         .build())
 ///                                     .build()),
 ///                                 Map.entry("usr/sap", DiskVolumeConfigurationArgs.builder()
-///                                     .count(1)
-///                                     .sizeGB(128)
+///                                     .count(1.0)
+///                                     .sizeGB(128.0)
 ///                                     .sku(DiskSkuArgs.builder()
 ///                                         .name("Premium_LRS")
 ///                                         .build())
 ///                                     .build())
 ///                             ))
 ///                             .build())
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -10503,7 +12147,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 6,
+///                 "instance_count": float(6),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -10527,7 +12171,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -10555,50 +12199,50 @@ import 'system_data_response.dart';
 ///                 "disk_configuration": {
 ///                     "disk_volume_configurations": {
 ///                         "backup": {
-///                             "count": 2,
-///                             "size_gb": 256,
+///                             "count": float(2),
+///                             "size_gb": float(256),
 ///                             "sku": {
 ///                                 "name": azure_native.workloads.DiskSkuName.STANDARD_SS_D_LRS,
 ///                             },
 ///                         },
 ///                         "hana/data": {
-///                             "count": 4,
-///                             "size_gb": 128,
+///                             "count": float(4),
+///                             "size_gb": float(128),
 ///                             "sku": {
 ///                                 "name": azure_native.workloads.DiskSkuName.PREMIUM_LRS,
 ///                             },
 ///                         },
 ///                         "hana/log": {
-///                             "count": 3,
-///                             "size_gb": 128,
+///                             "count": float(3),
+///                             "size_gb": float(128),
 ///                             "sku": {
 ///                                 "name": azure_native.workloads.DiskSkuName.PREMIUM_LRS,
 ///                             },
 ///                         },
 ///                         "hana/shared": {
-///                             "count": 1,
-///                             "size_gb": 256,
+///                             "count": float(1),
+///                             "size_gb": float(256),
 ///                             "sku": {
 ///                                 "name": azure_native.workloads.DiskSkuName.STANDARD_SS_D_LRS,
 ///                             },
 ///                         },
 ///                         "os": {
-///                             "count": 1,
-///                             "size_gb": 64,
+///                             "count": float(1),
+///                             "size_gb": float(64),
 ///                             "sku": {
 ///                                 "name": azure_native.workloads.DiskSkuName.STANDARD_SS_D_LRS,
 ///                             },
 ///                         },
 ///                         "usr/sap": {
-///                             "count": 1,
-///                             "size_gb": 128,
+///                             "count": float(1),
+///                             "size_gb": float(128),
 ///                             "sku": {
 ///                                 "name": azure_native.workloads.DiskSkuName.PREMIUM_LRS,
 ///                             },
 ///                         },
 ///                     },
 ///                 },
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -10990,6 +12634,108 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "databaseType"     = "HANA"
+///       "dbDiskConfiguration" = {
+///         "diskVolumeConfigurations" = {
+///           "backup" = {
+///             "count"  = 2
+///             "sizeGB" = 256
+///             "sku" = {
+///               "name" = "StandardSSD_LRS"
+///             }
+///           }
+///           "hana/data" = {
+///             "count"  = 4
+///             "sizeGB" = 128
+///             "sku" = {
+///               "name" = "Premium_LRS"
+///             }
+///           }
+///           "hana/log" = {
+///             "count"  = 3
+///             "sizeGB" = 128
+///             "sku" = {
+///               "name" = "Premium_LRS"
+///             }
+///           }
+///           "hana/shared" = {
+///             "count"  = 1
+///             "sizeGB" = 256
+///             "sku" = {
+///               "name" = "StandardSSD_LRS"
+///             }
+///           }
+///           "os" = {
+///             "count"  = 1
+///             "sizeGB" = 64
+///             "sku" = {
+///               "name" = "StandardSSD_LRS"
+///             }
+///           }
+///           "usr/sap" = {
+///             "count"  = 1
+///             "sizeGB" = 128
+///             "sku" = {
+///               "name" = "Premium_LRS"
+///             }
+///           }
+///         }
+///       }
+///       "deploymentType" = "SingleServer"
+///       "networkConfiguration" = {
+///         "isSecondaryIpEnabled" = true
+///       }
+///       "subnetId" = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///       "virtualMachineConfiguration" = {
+///         "imageReference" = {
+///           "offer"     = "RHEL-SAP"
+///           "publisher" = "RedHat"
+///           "sku"       = "84sapha-gen2"
+///           "version"   = "latest"
+///         }
+///         "osProfile" = {
+///           "adminUsername" = "{your-username}"
+///           "osConfiguration" = {
+///             "disablePasswordAuthentication" = true
+///             "osType"                        = "Linux"
+///             "sshKeyPair" = {
+///               "privateKey" = "xyz"
+///               "publicKey"  = "abc"
+///             }
+///           }
+///         }
+///         "vmSize" = "Standard_E32ds_v4"
+///       }
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///   }
+///   environment               = "NonProd"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -10998,8 +12744,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -11021,43 +12767,43 @@ import 'system_data_response.dart';
 ///                     .dbDiskConfiguration(DiskConfigurationArgs.builder()
 ///                         .diskVolumeConfigurations(Map.ofEntries(
 ///                             Map.entry("backup", DiskVolumeConfigurationArgs.builder()
-///                                 .count(2)
-///                                 .sizeGB(256)
+///                                 .count(2.0)
+///                                 .sizeGB(256.0)
 ///                                 .sku(DiskSkuArgs.builder()
 ///                                     .name("StandardSSD_LRS")
 ///                                     .build())
 ///                                 .build()),
 ///                             Map.entry("hana/data", DiskVolumeConfigurationArgs.builder()
-///                                 .count(4)
-///                                 .sizeGB(128)
+///                                 .count(4.0)
+///                                 .sizeGB(128.0)
 ///                                 .sku(DiskSkuArgs.builder()
 ///                                     .name("Premium_LRS")
 ///                                     .build())
 ///                                 .build()),
 ///                             Map.entry("hana/log", DiskVolumeConfigurationArgs.builder()
-///                                 .count(3)
-///                                 .sizeGB(128)
+///                                 .count(3.0)
+///                                 .sizeGB(128.0)
 ///                                 .sku(DiskSkuArgs.builder()
 ///                                     .name("Premium_LRS")
 ///                                     .build())
 ///                                 .build()),
 ///                             Map.entry("hana/shared", DiskVolumeConfigurationArgs.builder()
-///                                 .count(1)
-///                                 .sizeGB(256)
+///                                 .count(1.0)
+///                                 .sizeGB(256.0)
 ///                                 .sku(DiskSkuArgs.builder()
 ///                                     .name("StandardSSD_LRS")
 ///                                     .build())
 ///                                 .build()),
 ///                             Map.entry("os", DiskVolumeConfigurationArgs.builder()
-///                                 .count(1)
-///                                 .sizeGB(64)
+///                                 .count(1.0)
+///                                 .sizeGB(64.0)
 ///                                 .sku(DiskSkuArgs.builder()
 ///                                     .name("StandardSSD_LRS")
 ///                                     .build())
 ///                                 .build()),
 ///                             Map.entry("usr/sap", DiskVolumeConfigurationArgs.builder()
-///                                 .count(1)
-///                                 .sizeGB(128)
+///                                 .count(1.0)
+///                                 .sizeGB(128.0)
 ///                                 .sku(DiskSkuArgs.builder()
 ///                                     .name("Premium_LRS")
 ///                                     .build())
@@ -11219,43 +12965,43 @@ import 'system_data_response.dart';
 ///             "db_disk_configuration": {
 ///                 "disk_volume_configurations": {
 ///                     "backup": {
-///                         "count": 2,
-///                         "size_gb": 256,
+///                         "count": float(2),
+///                         "size_gb": float(256),
 ///                         "sku": {
 ///                             "name": azure_native.workloads.DiskSkuName.STANDARD_SS_D_LRS,
 ///                         },
 ///                     },
 ///                     "hana/data": {
-///                         "count": 4,
-///                         "size_gb": 128,
+///                         "count": float(4),
+///                         "size_gb": float(128),
 ///                         "sku": {
 ///                             "name": azure_native.workloads.DiskSkuName.PREMIUM_LRS,
 ///                         },
 ///                     },
 ///                     "hana/log": {
-///                         "count": 3,
-///                         "size_gb": 128,
+///                         "count": float(3),
+///                         "size_gb": float(128),
 ///                         "sku": {
 ///                             "name": azure_native.workloads.DiskSkuName.PREMIUM_LRS,
 ///                         },
 ///                     },
 ///                     "hana/shared": {
-///                         "count": 1,
-///                         "size_gb": 256,
+///                         "count": float(1),
+///                         "size_gb": float(256),
 ///                         "sku": {
 ///                             "name": azure_native.workloads.DiskSkuName.STANDARD_SS_D_LRS,
 ///                         },
 ///                     },
 ///                     "os": {
-///                         "count": 1,
-///                         "size_gb": 64,
+///                         "count": float(1),
+///                         "size_gb": float(64),
 ///                         "sku": {
 ///                             "name": azure_native.workloads.DiskSkuName.STANDARD_SS_D_LRS,
 ///                         },
 ///                     },
 ///                     "usr/sap": {
-///                         "count": 1,
-///                         "size_gb": 128,
+///                         "count": float(1),
+///                         "size_gb": float(128),
 ///                         "sku": {
 ///                             "name": azure_native.workloads.DiskSkuName.PREMIUM_LRS,
 ///                         },
@@ -11616,6 +13362,110 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 6
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType"  = "HANA"
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -11624,8 +13474,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -11644,7 +13494,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(6)
+///                         .instanceCount(6.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -11668,7 +13518,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -11693,7 +13543,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .databaseServer(DatabaseConfigurationArgs.builder()
 ///                         .databaseType("HANA")
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -11846,7 +13696,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 6,
+///                 "instance_count": float(6),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -11870,7 +13720,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -11895,7 +13745,7 @@ import 'system_data_response.dart';
 ///             },
 ///             "database_server": {
 ///                 "database_type": azure_native.workloads.SAPDatabaseType.HANA,
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -12259,6 +14109,113 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 6
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType"  = "HANA"
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///       "highAvailabilityConfig" = {
+///         "highAvailabilityType" = "AvailabilitySet"
+///       }
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -12267,8 +14224,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -12287,7 +14244,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(6)
+///                         .instanceCount(6.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -12311,7 +14268,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -12336,7 +14293,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .databaseServer(DatabaseConfigurationArgs.builder()
 ///                         .databaseType("HANA")
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -12495,7 +14452,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 6,
+///                 "instance_count": float(6),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -12519,7 +14476,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -12544,7 +14501,7 @@ import 'system_data_response.dart';
 ///             },
 ///             "database_server": {
 ///                 "database_type": azure_native.workloads.SAPDatabaseType.HANA,
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -12913,6 +14870,113 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 6
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType"  = "HANA"
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///       "highAvailabilityConfig" = {
+///         "highAvailabilityType" = "AvailabilityZone"
+///       }
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -12921,8 +14985,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -12941,7 +15005,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(6)
+///                         .instanceCount(6.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -12965,7 +15029,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -12990,7 +15054,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .databaseServer(DatabaseConfigurationArgs.builder()
 ///                         .databaseType("HANA")
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -13149,7 +15213,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 6,
+///                 "instance_count": float(6),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -13173,7 +15237,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -13198,7 +15262,7 @@ import 'system_data_response.dart';
 ///             },
 ///             "database_server": {
 ///                 "database_type": azure_native.workloads.SAPDatabaseType.HANA,
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -13452,6 +15516,62 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "databaseType"     = "HANA"
+///       "deploymentType"   = "SingleServer"
+///       "networkConfiguration" = {
+///         "isSecondaryIpEnabled" = true
+///       }
+///       "subnetId" = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///       "virtualMachineConfiguration" = {
+///         "imageReference" = {
+///           "offer"     = "RHEL-SAP"
+///           "publisher" = "RedHat"
+///           "sku"       = "84sapha-gen2"
+///           "version"   = "latest"
+///         }
+///         "osProfile" = {
+///           "adminUsername" = "{your-username}"
+///           "osConfiguration" = {
+///             "disablePasswordAuthentication" = true
+///             "osType"                        = "Linux"
+///             "sshKeyPair" = {
+///               "privateKey" = "xyz"
+///               "publicKey"  = "abc"
+///             }
+///           }
+///         }
+///         "vmSize" = "Standard_E32ds_v4"
+///       }
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///   }
+///   environment               = "NonProd"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -13460,8 +15580,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -13924,6 +16044,117 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 6
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType"  = "HANA"
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///       "storageConfiguration" = {
+///         "transportFileShareConfiguration" = {
+///           "configurationType"  = "CreateAndMount"
+///           "resourceGroup"      = "rgName"
+///           "storageAccountName" = "storageName"
+///         }
+///       }
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -13932,8 +16163,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -13952,7 +16183,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(6)
+///                         .instanceCount(6.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -13976,7 +16207,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -14001,7 +16232,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .databaseServer(DatabaseConfigurationArgs.builder()
 ///                         .databaseType("HANA")
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -14168,7 +16399,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 6,
+///                 "instance_count": float(6),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -14192,7 +16423,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -14217,7 +16448,7 @@ import 'system_data_response.dart';
 ///             },
 ///             "database_server": {
 ///                 "database_type": azure_native.workloads.SAPDatabaseType.HANA,
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -14602,6 +16833,117 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 6
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType"  = "HANA"
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///       "storageConfiguration" = {
+///         "transportFileShareConfiguration" = {
+///           "configurationType" = "Mount"
+///           "id"                = "/subscriptions/49d64d54-e888-4c46-a868-1936802b762c/resourceGroups/testrg/providers/Microsoft.Network/privateEndpoints/endpoint"
+///           "privateEndpointId" = "/subscriptions/49d64d54-e888-4c46-a868-1936802b762c/resourceGroups/testrg/providers/Microsoft.Network/privateEndpoints/endpoint"
+///         }
+///       }
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -14610,8 +16952,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -14630,7 +16972,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(6)
+///                         .instanceCount(6.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -14654,7 +16996,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -14679,7 +17021,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .databaseServer(DatabaseConfigurationArgs.builder()
 ///                         .databaseType("HANA")
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -14846,7 +17188,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 6,
+///                 "instance_count": float(6),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -14870,7 +17212,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -14895,7 +17237,7 @@ import 'system_data_response.dart';
 ///             },
 ///             "database_server": {
 ///                 "database_type": azure_native.workloads.SAPDatabaseType.HANA,
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -15276,6 +17618,115 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 6
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType"  = "HANA"
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///       "storageConfiguration" = {
+///         "transportFileShareConfiguration" = {
+///           "configurationType" = "Skip"
+///         }
+///       }
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -15284,8 +17735,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -15304,7 +17755,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(6)
+///                         .instanceCount(6.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -15328,7 +17779,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -15353,7 +17804,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .databaseServer(DatabaseConfigurationArgs.builder()
 ///                         .databaseType("HANA")
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -15516,7 +17967,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 6,
+///                 "instance_count": float(6),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -15540,7 +17991,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -15565,7 +18016,7 @@ import 'system_data_response.dart';
 ///             },
 ///             "database_server": {
 ///                 "database_type": azure_native.workloads.SAPDatabaseType.HANA,
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -15949,6 +18400,118 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "{{resourcegrp}}"
+///       "applicationServer" = {
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP-HA"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "azureuser"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "{{privateKey}}"
+///                 "publicKey"  = "{{sshkey}}"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E4ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP-HA"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "azureuser"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "{{privateKey}}"
+///                 "publicKey"  = "{{sshkey}}"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E4ds_v4"
+///         }
+///       }
+///       "databaseServer" = {
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP-HA"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "azureuser"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "{{privateKey}}"
+///                 "publicKey"  = "{{sshkey}}"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///       "networkConfiguration" = {
+///         "isSecondaryIpEnabled" = true
+///       }
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "sap.bpaas.com"
+///     }
+///     "softwareConfiguration" = {
+///       "centralServerVmId"        = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/sapq20scsvm0"
+///       "softwareInstallationType" = "External"
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "eastus2"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags = {
+///     "created by" = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -15957,8 +18520,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -15977,7 +18540,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("{{resourcegrp}}")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -16001,7 +18564,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -16025,7 +18588,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .databaseServer(DatabaseConfigurationArgs.builder()
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -16192,7 +18755,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "{{resourcegrp}}",
 ///             "application_server": {
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -16216,7 +18779,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -16240,7 +18803,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "database_server": {
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -16512,6 +19075,66 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "databaseType"     = "HANA"
+///       "deploymentType"   = "SingleServer"
+///       "networkConfiguration" = {
+///         "isSecondaryIpEnabled" = true
+///       }
+///       "subnetId" = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///       "virtualMachineConfiguration" = {
+///         "imageReference" = {
+///           "offer"     = "RHEL-SAP-HA"
+///           "publisher" = "RedHat"
+///           "sku"       = "84sapha-gen2"
+///           "version"   = "latest"
+///         }
+///         "osProfile" = {
+///           "adminUsername" = "{your-username}"
+///           "osConfiguration" = {
+///             "disablePasswordAuthentication" = true
+///             "osType"                        = "Linux"
+///             "sshKeyPair" = {
+///               "privateKey" = "xyz"
+///               "publicKey"  = "abc"
+///             }
+///           }
+///         }
+///         "vmSize" = "Standard_E32ds_v4"
+///       }
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///     "softwareConfiguration" = {
+///       "centralServerVmId"        = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/sapq20scsvm0"
+///       "softwareInstallationType" = "External"
+///     }
+///   }
+///   environment               = "NonProd"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -16520,8 +19143,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -16999,6 +19622,117 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 6
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP-HA"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP-HA"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType"  = "HANA"
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP-HA"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///       "highAvailabilityConfig" = {
+///         "highAvailabilityType" = "AvailabilitySet"
+///       }
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///     "softwareConfiguration" = {
+///       "centralServerVmId"        = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/sapq20scsvm0"
+///       "softwareInstallationType" = "External"
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -17007,8 +19741,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -17027,7 +19761,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(6)
+///                         .instanceCount(6.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -17051,7 +19785,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -17076,7 +19810,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .databaseServer(DatabaseConfigurationArgs.builder()
 ///                         .databaseType("HANA")
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -17243,7 +19977,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 6,
+///                 "instance_count": float(6),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -17267,7 +20001,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -17292,7 +20026,7 @@ import 'system_data_response.dart';
 ///             },
 ///             "database_server": {
 ///                 "database_type": azure_native.workloads.SAPDatabaseType.HANA,
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -17677,6 +20411,117 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "X00-RG"
+///       "applicationServer" = {
+///         "instanceCount" = 6
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP-HA"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E32ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP-HA"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E16ds_v4"
+///         }
+///       }
+///       "databaseServer" = {
+///         "databaseType"  = "HANA"
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP-HA"
+///             "publisher" = "RedHat"
+///             "sku"       = "84sapha-gen2"
+///             "version"   = "latest"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "{your-username}"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "xyz"
+///                 "publicKey"  = "abc"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///       "highAvailabilityConfig" = {
+///         "highAvailabilityType" = "AvailabilityZone"
+///       }
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "xyz.test.com"
+///     }
+///     "softwareConfiguration" = {
+///       "centralServerVmId"        = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/sapq20scsvm0"
+///       "softwareInstallationType" = "External"
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -17685,8 +20530,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -17705,7 +20550,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("X00-RG")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(6)
+///                         .instanceCount(6.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -17729,7 +20574,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -17754,7 +20599,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .databaseServer(DatabaseConfigurationArgs.builder()
 ///                         .databaseType("HANA")
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -17921,7 +20766,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "X00-RG",
 ///             "application_server": {
-///                 "instance_count": 6,
+///                 "instance_count": float(6),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -17945,7 +20790,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -17970,7 +20815,7 @@ import 'system_data_response.dart';
 ///             },
 ///             "database_server": {
 ///                 "database_type": azure_native.workloads.SAPDatabaseType.HANA,
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -18362,6 +21207,120 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "{{resourcegrp}}"
+///       "applicationServer" = {
+///         "instanceCount" = 2
+///         "subnetId"      = "/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP-HA"
+///             "publisher" = "RedHat"
+///             "sku"       = "8.2"
+///             "version"   = "8.2.2021091201"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "azureuser"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "{{privateKey}}"
+///                 "publicKey"  = "{{sshkey}}"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E4ds_v4"
+///         }
+///       }
+///       "centralServer" = {
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP-HA"
+///             "publisher" = "RedHat"
+///             "sku"       = "8.2"
+///             "version"   = "8.2.2021091201"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "azureuser"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "{{privateKey}}"
+///                 "publicKey"  = "{{sshkey}}"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_E4ds_v4"
+///         }
+///       }
+///       "databaseServer" = {
+///         "instanceCount" = 1
+///         "subnetId"      = "/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app"
+///         "virtualMachineConfiguration" = {
+///           "imageReference" = {
+///             "offer"     = "RHEL-SAP-HA"
+///             "publisher" = "RedHat"
+///             "sku"       = "8.2"
+///             "version"   = "8.2.2021091201"
+///           }
+///           "osProfile" = {
+///             "adminUsername" = "azureuser"
+///             "osConfiguration" = {
+///               "disablePasswordAuthentication" = true
+///               "osType"                        = "Linux"
+///               "sshKeyPair" = {
+///                 "privateKey" = "{{privateKey}}"
+///                 "publicKey"  = "{{sshkey}}"
+///               }
+///             }
+///           }
+///           "vmSize" = "Standard_M32ts"
+///         }
+///       }
+///       "deploymentType" = "ThreeTier"
+///       "networkConfiguration" = {
+///         "isSecondaryIpEnabled" = true
+///       }
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "sap.bpaas.com"
+///     }
+///     "softwareConfiguration" = {
+///       "bomUrl"                   = "https://teststorageaccount.blob.core.windows.net/sapbits/sapfiles/boms/S41909SPS03_v0011ms/S41909SPS03_v0011ms.yaml"
+///       "sapBitsStorageAccountId"  = "/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/teststorageaccount"
+///       "softwareInstallationType" = "SAPInstallWithoutOSConfig"
+///       "softwareVersion"          = "SAP S/4HANA 1909 SPS 03"
+///     }
+///   }
+///   environment               = "Prod"
+///   location                  = "eastus2"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags = {
+///     "created by" = "azureuser"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -18370,8 +21329,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -18390,7 +21349,7 @@ import 'system_data_response.dart';
 ///                 .infrastructureConfiguration(ThreeTierConfigurationArgs.builder()
 ///                     .appResourceGroup("{{resourcegrp}}")
 ///                     .applicationServer(ApplicationServerConfigurationArgs.builder()
-///                         .instanceCount(2)
+///                         .instanceCount(2.0)
 ///                         .subnetId("/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -18414,7 +21373,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .centralServer(CentralServerConfigurationArgs.builder()
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -18438,7 +21397,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .build())
 ///                     .databaseServer(DatabaseConfigurationArgs.builder()
-///                         .instanceCount(1)
+///                         .instanceCount(1.0)
 ///                         .subnetId("/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app")
 ///                         .virtualMachineConfiguration(VirtualMachineConfigurationArgs.builder()
 ///                             .imageReference(ImageReferenceArgs.builder()
@@ -18609,7 +21568,7 @@ import 'system_data_response.dart';
 ///         "infrastructure_configuration": {
 ///             "app_resource_group": "{{resourcegrp}}",
 ///             "application_server": {
-///                 "instance_count": 2,
+///                 "instance_count": float(2),
 ///                 "subnet_id": "/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -18633,7 +21592,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "central_server": {
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -18657,7 +21616,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             "database_server": {
-///                 "instance_count": 1,
+///                 "instance_count": float(1),
 ///                 "subnet_id": "/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app",
 ///                 "virtual_machine_configuration": {
 ///                     "image_reference": {
@@ -18928,6 +21887,64 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "appLocation"       = "eastus"
+///     "configurationType" = "DeploymentWithOSConfig"
+///     "infrastructureConfiguration" = {
+///       "appResourceGroup" = "test-rg"
+///       "deploymentType"   = "SingleServer"
+///       "subnetId"         = "/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/testsubnet"
+///       "virtualMachineConfiguration" = {
+///         "imageReference" = {
+///           "offer"     = "SLES-SAP"
+///           "publisher" = "SUSE"
+///           "sku"       = "12-sp4-gen2"
+///           "version"   = "2022.02.01"
+///         }
+///         "osProfile" = {
+///           "adminUsername" = "azureappadmin"
+///           "osConfiguration" = {
+///             "disablePasswordAuthentication" = true
+///             "osType"                        = "Linux"
+///             "sshKeyPair" = {
+///               "privateKey" = "{{privateKey}}"
+///               "publicKey"  = "{{sshkey}}"
+///             }
+///           }
+///         }
+///         "vmSize" = "Standard_E32ds_v4"
+///       }
+///     }
+///     "osSapConfiguration" = {
+///       "sapFqdn" = "sap.bpaas.com"
+///     }
+///     "softwareConfiguration" = {
+///       "bomUrl"                   = "https://teststorageaccount.blob.core.windows.net/sapbits/sapfiles/boms/S41909SPS03_v0011ms/S41909SPS03_v0011ms.yaml"
+///       "sapBitsStorageAccountId"  = "/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/teststorageaccount"
+///       "softwareInstallationType" = "SAPInstallWithoutOSConfig"
+///       "softwareVersion"          = "SAP S/4HANA 1909 SPS 03"
+///     }
+///   }
+///   environment               = "NonProd"
+///   location                  = "eastus2"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -18936,8 +21953,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -19221,6 +22238,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "centralServerVmId"           = "/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/sapq20scsvm0"
+///     "configurationType"           = "Discovery"
+///     "managedRgStorageAccountName" = "q20saacssgrs"
+///   }
+///   environment               = "NonProd"
+///   location                  = "northeurope"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags = {
+///     "createdby" = "abc@microsoft.com"
+///     "test"      = "abc"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -19229,8 +22274,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -19398,6 +22443,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "centralServerVmId" = "/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/sapq20scsvm0"
+///     "configurationType" = "Discovery"
+///   }
+///   environment               = "NonProd"
+///   location                  = "northeurope"
+///   resource_group_name       = "test-rg"
+///   sap_product               = "S4HANA"
+///   sap_virtual_instance_name = "X00"
+///   tags = {
+///     "createdby" = "abc@microsoft.com"
+///     "test"      = "abc"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -19406,8 +22478,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -19573,6 +22645,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapvirtualinstance" "sapVirtualInstance" {
+///   configuration = {
+///     "centralServerVmId" = "/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/sapq20scsvm0"
+///     "configurationType" = "Discovery"
+///   }
+///   environment                           = "NonProd"
+///   location                              = "northeurope"
+///   managed_resources_network_access_type = "Private"
+///   resource_group_name                   = "test-rg"
+///   sap_product                           = "S4HANA"
+///   sap_virtual_instance_name             = "X00"
+///   tags = {
+///     "createdby" = "abc@microsoft.com"
+///     "test"      = "abc"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -19581,8 +22681,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstance;
 /// import com.pulumi.azurenative.workloads.SapVirtualInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

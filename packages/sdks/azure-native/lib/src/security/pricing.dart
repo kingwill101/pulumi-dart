@@ -1,12 +1,211 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pricing_args.dart';
+import 'system_data_response.dart';
 
 /// Microsoft Defender for Cloud is provided in two pricing tiers: free and standard. The standard tier offers advanced security capabilities, while the free tier offers basic security features.
 ///
 /// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2024-01-01.
 ///
+/// Other available API versions: 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
+/// {{% example %}}
+/// ### Update pricing on resource (Container Registry ACR)
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var pricing = new AzureNative.Security.Pricing("pricing", new()
+///     {
+///         Extensions = new[]
+///         {
+///             new AzureNative.Security.Inputs.ExtensionArgs
+///             {
+///                 IsEnabled = AzureNative.Security.IsEnabled.True,
+///                 Name = "ContainerRegistriesVulnerabilityAssessments",
+///             },
+///             new AzureNative.Security.Inputs.ExtensionArgs
+///             {
+///                 IsEnabled = AzureNative.Security.IsEnabled.True,
+///                 Name = "ContainerIntegrityContribution",
+///             },
+///         },
+///         PricingName = "Containers",
+///         PricingTier = AzureNative.Security.PricingTier.Standard,
+///         ScopeId = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry",
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	security "github.com/pulumi/pulumi-azure-native-sdk/security/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := security.NewPricing(ctx, "pricing", &security.PricingArgs{
+/// 			Extensions: security.ExtensionArray{
+/// 				&security.ExtensionArgs{
+/// 					IsEnabled: pulumi.String(security.IsEnabledTrue),
+/// 					Name:      pulumi.String("ContainerRegistriesVulnerabilityAssessments"),
+/// 				},
+/// 				&security.ExtensionArgs{
+/// 					IsEnabled: pulumi.String(security.IsEnabledTrue),
+/// 					Name:      pulumi.String("ContainerIntegrityContribution"),
+/// 				},
+/// 			},
+/// 			PricingName: pulumi.String("Containers"),
+/// 			PricingTier: pulumi.String(security.PricingTierStandard),
+/// 			ScopeId:     pulumi.String("subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_pricing" "pricing" {
+///   extensions {
+///     is_enabled = "True"
+///     name       = "ContainerRegistriesVulnerabilityAssessments"
+///   }
+///   extensions {
+///     is_enabled = "True"
+///     name       = "ContainerIntegrityContribution"
+///   }
+///   pricing_name = "Containers"
+///   pricing_tier = "Standard"
+///   scope_id     = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry"
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.security.Pricing;
+/// import com.pulumi.azurenative.security.PricingArgs;
+/// import com.pulumi.azurenative.security.inputs.ExtensionArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var pricing = new Pricing("pricing", PricingArgs.builder()
+///             .extensions(
+///                 ExtensionArgs.builder()
+///                     .isEnabled("True")
+///                     .name("ContainerRegistriesVulnerabilityAssessments")
+///                     .build(),
+///                 ExtensionArgs.builder()
+///                     .isEnabled("True")
+///                     .name("ContainerIntegrityContribution")
+///                     .build())
+///             .pricingName("Containers")
+///             .pricingTier("Standard")
+///             .scopeId("subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry")
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const pricing = new azure_native.security.Pricing("pricing", {
+///     extensions: [
+///         {
+///             isEnabled: azure_native.security.IsEnabled.True,
+///             name: "ContainerRegistriesVulnerabilityAssessments",
+///         },
+///         {
+///             isEnabled: azure_native.security.IsEnabled.True,
+///             name: "ContainerIntegrityContribution",
+///         },
+///     ],
+///     pricingName: "Containers",
+///     pricingTier: azure_native.security.PricingTier.Standard,
+///     scopeId: "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry",
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// pricing = azure_native.security.Pricing("pricing",
+///     extensions=[
+///         {
+///             "is_enabled": azure_native.security.IsEnabled.TRUE,
+///             "name": "ContainerRegistriesVulnerabilityAssessments",
+///         },
+///         {
+///             "is_enabled": azure_native.security.IsEnabled.TRUE,
+///             "name": "ContainerIntegrityContribution",
+///         },
+///     ],
+///     pricing_name="Containers",
+///     pricing_tier=azure_native.security.PricingTier.STANDARD,
+///     scope_id="subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry")
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   pricing:
+///     type: azure-native:security:Pricing
+///     properties:
+///       extensions:
+///         - isEnabled: True
+///           name: ContainerRegistriesVulnerabilityAssessments
+///         - isEnabled: True
+///           name: ContainerIntegrityContribution
+///       pricingName: Containers
+///       pricingTier: Standard
+///       scopeId: subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry
+///
+/// ```
+///
+/// {{% /example %}}
 /// {{% example %}}
 /// ### Update pricing on resource (example for Containers plan)
 /// ```csharp
@@ -110,6 +309,46 @@ import 'pricing_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_pricing" "pricing" {
+///   extensions {
+///     is_enabled = "True"
+///     name       = "ContainerRegistriesVulnerabilityAssessments"
+///   }
+///   extensions {
+///     is_enabled = "True"
+///     name       = "ContainerSensor"
+///   }
+///   extensions {
+///     is_enabled = "True"
+///     name       = "AgentlessDiscoveryForKubernetes"
+///   }
+///   extensions {
+///     additional_extension_properties = {
+///       "ExclusionTags" = "[]"
+///     }
+///     is_enabled = "True"
+///     name       = "AgentlessVmScanning"
+///   }
+///   extensions {
+///     is_enabled = "True"
+///     name       = "ContainerIntegrityContribution"
+///   }
+///   pricing_name = "Containers"
+///   pricing_tier = "Standard"
+///   scope_id     = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/demo-containers-rg/providers/Microsoft.ContainerService/managedClusters/demo-aks-cluster"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +358,8 @@ import 'pricing_args.dart';
 /// import com.pulumi.azurenative.security.Pricing;
 /// import com.pulumi.azurenative.security.PricingArgs;
 /// import com.pulumi.azurenative.security.inputs.ExtensionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -311,6 +550,24 @@ import 'pricing_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_pricing" "pricing" {
+///   pricing_name = "virtualMachines"
+///   pricing_tier = "Standard"
+///   scope_id     = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/DEMO/providers/Microsoft.Compute/virtualMachines/VM-1"
+///   sub_plan     = "P1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -319,8 +576,8 @@ import 'pricing_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.Pricing;
 /// import com.pulumi.azurenative.security.PricingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -428,6 +685,23 @@ import 'pricing_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_pricing" "pricing" {
+///   pricing_name = "CloudPosture"
+///   pricing_tier = "Standard"
+///   scope_id     = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -436,8 +710,8 @@ import 'pricing_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.Pricing;
 /// import com.pulumi.azurenative.security.PricingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -541,6 +815,23 @@ import 'pricing_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_pricing" "pricing" {
+///   pricing_name = "CloudPosture"
+///   pricing_tier = "Standard"
+///   scope_id     = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -549,8 +840,8 @@ import 'pricing_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.Pricing;
 /// import com.pulumi.azurenative.security.PricingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -658,6 +949,25 @@ import 'pricing_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_pricing" "pricing" {
+///   enforce      = "True"
+///   pricing_name = "VirtualMachines"
+///   pricing_tier = "Standard"
+///   scope_id     = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23"
+///   sub_plan     = "P2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -666,8 +976,8 @@ import 'pricing_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.Pricing;
 /// import com.pulumi.azurenative.security.PricingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -759,7 +1069,7 @@ class Pricing extends pulumi.CustomResource {
   late final pulumi.Output<String> inherited;
   /// The id of the scope inherited from. "Null" if not inherited. This field is only available for resource-level pricing.
   late final pulumi.Output<String> inheritedFrom;
-  /// Resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Indicates whether the Defender plan is enabled on the selected scope. Microsoft Defender for Cloud is provided in two pricing tiers: free and standard. The standard tier offers advanced security capabilities, while the free tier offers basic security features.
   late final pulumi.Output<String> pricingTier;
@@ -769,7 +1079,9 @@ class Pricing extends pulumi.CustomResource {
   late final pulumi.Output<String> resourcesCoverageStatus;
   /// The sub-plan selected for a Standard pricing configuration, when more than one sub-plan is available. Each sub-plan enables a set of security features. When not specified, full plan is applied. For VirtualMachines plan, available sub plans are 'P1' & 'P2', where for resource level only 'P1' sub plan is supported.
   late final pulumi.Output<String?> subPlan;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [Pricing].
@@ -799,6 +1111,7 @@ class Pricing extends pulumi.CustomResource {
     replacedBy = registerOutput<List<String>>('replacedBy');
     resourcesCoverageStatus = registerOutput<String>('resourcesCoverageStatus');
     subPlan = registerOutput<String?>('subPlan');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

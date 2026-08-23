@@ -1,8 +1,8 @@
 /// The authentication type to use.
 enum LakehouseAuthenticationType {
-  valueServicePrincipal("ServicePrincipal"),
-  valueSystemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
-  valueUserAssignedManagedIdentity("UserAssignedManagedIdentity");
+  servicePrincipal("ServicePrincipal"),
+  systemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
+  userAssignedManagedIdentity("UserAssignedManagedIdentity");
 
   const LakehouseAuthenticationType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum LakehouseAuthenticationType {
     throw ArgumentError('Unknown LakehouseAuthenticationType value: $value');
   }
 }
-

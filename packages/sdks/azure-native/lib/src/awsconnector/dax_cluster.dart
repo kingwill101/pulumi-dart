@@ -218,6 +218,88 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_daxcluster" "daxCluster" {
+///   location = "vmw"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "eqibkrig"
+///     aws_account_id = "xgeehpujhnyfhspdaqcugx"
+///     aws_properties = {
+///       active_nodes = 18
+///       cluster_arn  = "drxcjkivmlrtslbwoykkohay"
+///       cluster_discovery_endpoint = {
+///         address = "piabfnkoscysceufovcpffxl"
+///         port    = 13
+///         url     = "bcwzfeebgdzlvoafvyddknwzaih"
+///       }
+///       cluster_endpoint_encryption_type = {
+///         value = "NONE"
+///       }
+///       cluster_name       = "zobzejccpfjaqcvzutazmzjbl"
+///       description        = "q"
+///       iam_role_arn       = "epmvlmhygrgjvx"
+///       node_ids_to_remove = ["uzzbmymlnrssuuqf"]
+///       node_type          = "vwyypkakaevefciygrniikfpyul"
+///       nodes = [{
+///         "availabilityZone" = "j"
+///         "endpoint" = {
+///           "address" = "piabfnkoscysceufovcpffxl"
+///           "port"    = 13
+///           "url"     = "bcwzfeebgdzlvoafvyddknwzaih"
+///         }
+///         "nodeCreateTime"       = "2024-10-08T03:51:45.186Z"
+///         "nodeId"               = "stfvsn"
+///         "nodeStatus"           = "cvxigvbkflormrnhzzjp"
+///         "parameterGroupStatus" = "ywehlocxyzqprjzljpwluyd"
+///       }]
+///       notification_configuration = {
+///         topic_arn    = "phhrllxlsvtkodsyamltvoypqoj"
+///         topic_status = "dfjjkb"
+///       }
+///       parameter_group = {
+///         node_ids_to_reboot     = ["idyqnyv"]
+///         parameter_apply_status = "jrxbdxqellqqtknz"
+///         parameter_group_name   = "ezciyomlrtvgjq"
+///       }
+///       preferred_maintenance_window = "gnqllhurfpmhsujlnznvuhtnacwfe"
+///       security_groups = [{
+///         "securityGroupIdentifier" = "ehbvorabecsniiea"
+///         "status"                  = "ymc"
+///       }]
+///       sse_description = {
+///         status = {
+///           value = "DISABLED"
+///         }
+///       }
+///       status       = "mpwpseuoxrzbpamqwtibhochip"
+///       subnet_group = "tzsrvhfugpjrwm"
+///       total_nodes  = 26
+///     }
+///     aws_region        = "kyjdudcmqspnbb"
+///     aws_source_schema = "ukv"
+///     aws_tags = {
+///       "key1821" = "aewrtrhvlcbtyjtdep"
+///     }
+///     public_cloud_connectors_resource_id = "jzzs"
+///     public_cloud_resource_name          = "rdpgjpjzbwahajy"
+///   }
+///   resource_group_name = "rgdaxCluster"
+///   tags = {
+///     "key1674" = "xjulycgcyyd"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -234,8 +316,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.ParameterGroupStatusArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SSEDescriptionArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SSEStatusEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

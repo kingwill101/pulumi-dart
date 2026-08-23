@@ -71,6 +71,31 @@ import 'markup_rule_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_markuprule" "markupRule" {
+///   billing_account_id = "2af90bea-080c-438c-8977-17cddd5f115a:ef5ce3cf-f5af-4fcb-a5ed-c376e1d6d2b6"
+///   billing_profile_id = "cbf78278-f4b8-43d9-8f13-47112da1c63e"
+///   customer_details = {
+///     billing_account_id = "cff9aa6d-941c-43f2-b6cb-1d2bb34a02b4:780237f3-1aa6-4159-943b-498e0d647dd9"
+///     billing_profile_id = "08eeecee-efb2-40d5-817c-0a254d2e042c"
+///   }
+///   description = "Markup rule for year 2022"
+///   end_date    = "2022-12-31T00:00:00Z"
+///   name        = "markup-2022"
+///   percentage  = 5
+///   start_date  = "2022-01-01T00:00:00Z"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +105,8 @@ import 'markup_rule_args.dart';
 /// import com.pulumi.azurenative.costmanagement.MarkupRule;
 /// import com.pulumi.azurenative.costmanagement.MarkupRuleArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.CustomerMetadataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -146,7 +171,7 @@ import 'markup_rule_args.dart';
 ///     description="Markup rule for year 2022",
 ///     end_date="2022-12-31T00:00:00Z",
 ///     name="markup-2022",
-///     percentage=5,
+///     percentage=float(5),
 ///     start_date="2022-01-01T00:00:00Z")
 ///
 /// ```

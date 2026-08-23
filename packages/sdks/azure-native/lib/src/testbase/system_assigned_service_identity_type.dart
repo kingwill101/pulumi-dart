@@ -15,4 +15,3 @@ enum SystemAssignedServiceIdentityType {
     throw ArgumentError('Unknown SystemAssignedServiceIdentityType value: $value');
   }
 }
-

@@ -87,6 +87,37 @@ import 'vmware_collectors_operation_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_vmwarecollectorsoperation" "vmwareCollectorsOperation" {
+///   agent_properties = {
+///     id                 = "fe243486-3318-41fa-aaba-c48b5df75308"
+///     last_heartbeat_utc = "2022-03-29T12:10:08.9167289Z"
+///     spn_details = {
+///       application_id = "82b3e452-c0e8-4662-8347-58282925ae84"
+///       audience       = "82b3e452-c0e8-4662-8347-58282925ae84"
+///       authority      = "https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47"
+///       object_id      = "3fc89111-1405-4938-9214-37aa4739401d"
+///       tenant_id      = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+///     }
+///     version = "1.0.8.383"
+///   }
+///   discovery_site_id      = "/subscriptions/4bd2aa0f-2bd2-4d67-91a8-5a4533d58600/resourceGroups/ayagrawRG/providers/Microsoft.OffAzure/VMwareSites/Vmware2744site"
+///   project_name           = "app18700project"
+///   provisioning_state     = "Succeeded"
+///   resource_group_name    = "ayagrawRG"
+///   vm_ware_collector_name = "Vmware2258collector"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +128,8 @@ import 'vmware_collectors_operation_args.dart';
 /// import com.pulumi.azurenative.migrate.VmwareCollectorsOperationArgs;
 /// import com.pulumi.azurenative.migrate.inputs.CollectorAgentPropertiesBaseArgs;
 /// import com.pulumi.azurenative.migrate.inputs.CollectorAgentSpnPropertiesBaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

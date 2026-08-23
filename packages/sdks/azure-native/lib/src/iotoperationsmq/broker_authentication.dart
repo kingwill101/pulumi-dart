@@ -253,6 +253,103 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperationsmq_brokerauthentication" "brokerAuthentication" {
+///   authentication_methods {
+///     custom = {
+///       auth = {
+///         x509 = {
+///           key_vault = {
+///             vault = {
+///               credentials = {
+///                 service_principal_local_secret_name = "wuimjwpbhoglbsxxa"
+///               }
+///               directory_id = "eyjniptiykzcgbzok"
+///               name         = "lxmwfan"
+///             }
+///             vault_ca_chain_secret = {
+///               name    = "bmectskddmpjxnsogwooexj"
+///               version = "unjfbf"
+///             }
+///             vault_cert = {
+///               name    = "bmectskddmpjxnsogwooexj"
+///               version = "unjfbf"
+///             }
+///           }
+///           secret_name = "dordbwjewnqkhfd"
+///         }
+///       }
+///       ca_cert_config_map = "diufihyysdcosgy"
+///       endpoint           = "yy"
+///       headers            = {}
+///     }
+///     sat = {
+///       audiences = ["fiyitxutbuuhwtltukyjacads"]
+///     }
+///     svid = {
+///       agent_socket_path      = "gnyowebmeaj"
+///       identity_max_retry     = 4031184731
+///       identity_wait_retry_ms = 2243705844935085568
+///     }
+///     username_password = {
+///       key_vault = {
+///         vault = {
+///           credentials = {
+///             service_principal_local_secret_name = "wuimjwpbhoglbsxxa"
+///           }
+///           directory_id = "eyjniptiykzcgbzok"
+///           name         = "lxmwfan"
+///         }
+///         vault_secret = {
+///           name    = "bmectskddmpjxnsogwooexj"
+///           version = "unjfbf"
+///         }
+///       }
+///       secret_name = "blk"
+///     }
+///     x509 = {
+///       attributes = {
+///         key_vault = {
+///           vault = {
+///             credentials = {
+///               service_principal_local_secret_name = "wuimjwpbhoglbsxxa"
+///             }
+///             directory_id = "eyjniptiykzcgbzok"
+///             name         = "lxmwfan"
+///           }
+///           vault_secret = {
+///             name    = "bmectskddmpjxnsogwooexj"
+///             version = "unjfbf"
+///           }
+///         }
+///         secret_name = "ybcke"
+///       }
+///       trusted_client_ca_cert_config_map = "udidafmnpt"
+///     }
+///   }
+///   authentication_name = "lUo-GQ3-95F-1O-"
+///   broker_name         = "87v1GC9557XuP-JLI4-"
+///   extended_location = {
+///     name = "an"
+///     type = "CustomLocation"
+///   }
+///   listener_ref        = ["dhjpypfjzzmwm"]
+///   location            = "vtxegvaeqwyupplnm"
+///   mq_name             = "2S-A2-D9kC946K"
+///   resource_group_name = "rgiotoperationsmq"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -276,8 +373,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.BrokerAuthenticatorMethodX509Args;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.BrokerAuthenticatorMethodX509AttributesArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.ExtendedLocationPropertyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

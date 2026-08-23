@@ -11,13 +11,13 @@ class GetCertificateArgs {
   final pulumi.Input<String> automationAccountName;
   /// The name of certificate.
   final pulumi.Input<String> certificateName;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetCertificateArgs].
   /// [automationAccountName] The name of the automation account.
   /// [certificateName] The name of certificate.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetCertificateArgs({
     required this.automationAccountName,
     required this.certificateName,
@@ -40,4 +40,3 @@ class GetCertificateArgs {
     );
   }
 }
-

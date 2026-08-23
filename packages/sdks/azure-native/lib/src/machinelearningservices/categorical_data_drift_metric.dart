@@ -1,8 +1,8 @@
 /// [Required] The categorical data drift metric to calculate.
 enum CategoricalDataDriftMetric {
-  valueJensenShannonDistance("JensenShannonDistance"),
-  valuePopulationStabilityIndex("PopulationStabilityIndex"),
-  valuePearsonsChiSquaredTest("PearsonsChiSquaredTest");
+  jensenShannonDistance("JensenShannonDistance"),
+  populationStabilityIndex("PopulationStabilityIndex"),
+  pearsonsChiSquaredTest("PearsonsChiSquaredTest");
 
   const CategoricalDataDriftMetric(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum CategoricalDataDriftMetric {
     throw ArgumentError('Unknown CategoricalDataDriftMetric value: $value');
   }
 }
-

@@ -46,4 +46,3 @@ class GetWebAppAssessmentV2OperationArgs {
     );
   }
 }
-

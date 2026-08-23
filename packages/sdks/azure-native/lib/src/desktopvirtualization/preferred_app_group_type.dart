@@ -16,4 +16,3 @@ enum PreferredAppGroupType {
     throw ArgumentError('Unknown PreferredAppGroupType value: $value');
   }
 }
-

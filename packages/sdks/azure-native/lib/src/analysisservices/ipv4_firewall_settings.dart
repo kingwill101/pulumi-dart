@@ -32,4 +32,3 @@ class IPv4FirewallSettings {
     );
   }
 }
-

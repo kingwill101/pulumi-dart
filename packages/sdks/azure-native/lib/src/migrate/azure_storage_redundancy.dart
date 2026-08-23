@@ -18,4 +18,3 @@ enum AzureStorageRedundancy {
     throw ArgumentError('Unknown AzureStorageRedundancy value: $value');
   }
 }
-

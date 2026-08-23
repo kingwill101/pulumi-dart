@@ -247,4 +247,3 @@ class SqlAssessmentV2OperationArgs {
     );
   }
 }
-

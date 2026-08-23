@@ -139,6 +139,60 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_sqsqueue" "sqsQueue" {
+///   location = "fqdcgrb"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "jalxzvcntv"
+///     aws_account_id = "bzpgnzvrnsakbglgcvaalyaiocj"
+///     aws_properties = {
+///       arn                               = "inbbhuaqgvjzwgepxaejncp"
+///       content_based_deduplication       = true
+///       deduplication_scope               = "chijpjniyonhtrbqaojc"
+///       delay_seconds                     = 22
+///       fifo_queue                        = true
+///       fifo_throughput_limit             = "vzanxuahrdoqizyblwtvse"
+///       kms_data_key_reuse_period_seconds = 1
+///       kms_master_key_id                 = "qcjgqtmyhiqnbwaevgoeagy"
+///       maximum_message_size              = 19
+///       message_retention_period          = 29
+///       queue_name                        = "wfzhdsdzszyxfgptplvduwr"
+///       queue_url                         = "drfgltnvn"
+///       receive_message_wait_time_seconds = 4
+///       redrive_allow_policy              = {}
+///       redrive_policy                    = {}
+///       sqs_managed_sse_enabled           = true
+///       tags = [{
+///         "key"   = "xvchjfddrrmpbyizcjxdplxu"
+///         "value" = "nxjcfolrd"
+///       }]
+///       visibility_timeout = 2
+///     }
+///     aws_region        = "ffdlbwzdurjlolipnjsycrmeqsg"
+///     aws_source_schema = "jnthvapvjtoexig"
+///     aws_tags = {
+///       "key9800" = "dnaxwo"
+///     }
+///     public_cloud_connectors_resource_id = "uvqyizhqjdsnemqktjsgfmjhyw"
+///     public_cloud_resource_name          = "izckbeceljsvepm"
+///   }
+///   resource_group_name = "rgsqsQueue"
+///   tags = {
+///     "key7215" = "qvolsxokcslzpnq"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -149,8 +203,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.SqsQueueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SqsQueuePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsSqsQueuePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

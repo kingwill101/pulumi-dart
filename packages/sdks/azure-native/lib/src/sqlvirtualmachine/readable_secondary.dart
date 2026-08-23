@@ -16,4 +16,3 @@ enum ReadableSecondary {
     throw ArgumentError('Unknown ReadableSecondary value: $value');
   }
 }
-

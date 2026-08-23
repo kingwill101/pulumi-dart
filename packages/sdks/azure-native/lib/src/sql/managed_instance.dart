@@ -9,7 +9,7 @@ import 'sku_response.dart';
 ///
 /// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
 ///
-/// Other available API versions: 2015-05-01-preview, 2018-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-05-01-preview, 2018-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -133,6 +133,58 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_managedinstance" "managedInstance" {
+///   administrator_login          = "dummylogin"
+///   administrator_login_password = "PLACEHOLDER"
+///   administrators = {
+///     azure_ad_only_authentication = true
+///     login                        = "bob@contoso.com"
+///     principal_type               = "User"
+///     sid                          = "00000011-1111-2222-2222-123456789111"
+///     tenant_id                    = "00000011-1111-2222-2222-123456789111"
+///   }
+///   authentication_metadata             = "AzureAD"
+///   collation                           = "SQL_Latin1_General_CP1_CI_AS"
+///   database_format                     = "AlwaysUpToDate"
+///   dns_zone_partner                    = "/subscriptions/20D7082A-0FC7-4468-82BD-542694D5042B/resourceGroups/testrg/providers/Microsoft.Sql/managedInstances/testinstance"
+///   hybrid_secondary_usage              = "Passive"
+///   instance_pool_id                    = "/subscriptions/20D7082A-0FC7-4468-82BD-542694D5042B/resourceGroups/testrg/providers/Microsoft.Sql/instancePools/pool1"
+///   license_type                        = "LicenseIncluded"
+///   location                            = "Japan East"
+///   maintenance_configuration_id        = "/subscriptions/20D7082A-0FC7-4468-82BD-542694D5042B/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_JapanEast_MI_1"
+///   managed_instance_name               = "testinstance"
+///   minimal_tls_version                 = "1.2"
+///   proxy_override                      = "Redirect"
+///   public_data_endpoint_enabled        = false
+///   requested_backup_storage_redundancy = "Geo"
+///   resource_group_name                 = "testrg"
+///   service_principal = {
+///     type = "SystemAssigned"
+///   }
+///   sku = {
+///     name = "GP_Gen5"
+///     tier = "GeneralPurpose"
+///   }
+///   storage_size_in_gb = 1024
+///   subnet_id          = "/subscriptions/20D7082A-0FC7-4468-82BD-542694D5042B/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1"
+///   tags = {
+///     "tagKey1" = "TagValue1"
+///   }
+///   timezone_id = "UTC"
+///   v_cores     = 8
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -144,8 +196,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.sql.inputs.ManagedInstanceExternalAdministratorArgs;
 /// import com.pulumi.azurenative.sql.inputs.ServicePrincipalArgs;
 /// import com.pulumi.azurenative.sql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -404,6 +456,33 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_managedinstance" "managedInstance" {
+///   administrator_login          = "dummylogin"
+///   administrator_login_password = "PLACEHOLDER"
+///   license_type                 = "LicenseIncluded"
+///   location                     = "Japan East"
+///   managed_instance_name        = "testinstance"
+///   resource_group_name          = "testrg"
+///   sku = {
+///     name = "GP_Gen5"
+///     tier = "GeneralPurpose"
+///   }
+///   storage_size_in_gb = 1024
+///   subnet_id          = "/subscriptions/20D7082A-0FC7-4468-82BD-542694D5042B/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1"
+///   v_cores            = 8
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -413,8 +492,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.sql.ManagedInstance;
 /// import com.pulumi.azurenative.sql.ManagedInstanceArgs;
 /// import com.pulumi.azurenative.sql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

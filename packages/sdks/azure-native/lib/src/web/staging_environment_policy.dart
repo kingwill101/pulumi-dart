@@ -15,4 +15,3 @@ enum StagingEnvironmentPolicy {
     throw ArgumentError('Unknown StagingEnvironmentPolicy value: $value');
   }
 }
-

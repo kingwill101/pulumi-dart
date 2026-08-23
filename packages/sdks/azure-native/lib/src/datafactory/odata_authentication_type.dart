@@ -1,10 +1,10 @@
 /// Type of authentication used to connect to the OData service.
 enum ODataAuthenticationType {
-  valueBasic("Basic"),
-  valueAnonymous("Anonymous"),
-  valueWindows("Windows"),
-  valueAadServicePrincipal("AadServicePrincipal"),
-  valueManagedServiceIdentity("ManagedServiceIdentity");
+  basic("Basic"),
+  anonymous("Anonymous"),
+  windows("Windows"),
+  aadServicePrincipal("AadServicePrincipal"),
+  managedServiceIdentity("ManagedServiceIdentity");
 
   const ODataAuthenticationType(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum ODataAuthenticationType {
     throw ArgumentError('Unknown ODataAuthenticationType value: $value');
   }
 }
-

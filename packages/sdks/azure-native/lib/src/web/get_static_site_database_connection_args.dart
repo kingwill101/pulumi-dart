@@ -11,13 +11,13 @@ class GetStaticSiteDatabaseConnectionArgs {
   final pulumi.Input<String> databaseConnectionName;
   /// Name of the static site
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetStaticSiteDatabaseConnectionArgs].
   /// [databaseConnectionName] Name of the database connection.
   /// [name] Name of the static site
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetStaticSiteDatabaseConnectionArgs({
     required this.databaseConnectionName,
     required this.name,
@@ -40,4 +40,3 @@ class GetStaticSiteDatabaseConnectionArgs {
     );
   }
 }
-

@@ -18,4 +18,3 @@ enum WindowsVMGuestPatchAutomaticByPlatformRebootSetting {
     throw ArgumentError('Unknown WindowsVMGuestPatchAutomaticByPlatformRebootSetting value: $value');
   }
 }
-

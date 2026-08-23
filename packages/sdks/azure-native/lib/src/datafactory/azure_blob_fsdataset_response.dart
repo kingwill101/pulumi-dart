@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'avro_format_response.dart';
 import 'dataset_compression_response.dart';
-import 'dataset_response_folder.dart';
+import 'dataset_folder_response.dart';
 import 'linked_service_reference_response.dart';
 import 'parameter_specification_response.dart';
 
@@ -18,7 +18,7 @@ class AzureBlobFSDatasetResponse {
   /// The name of the Azure Data Lake Storage Gen2. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? fileName;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final pulumi.Input<DatasetResponseFolder>? folder;
+  final pulumi.Input<DatasetFolderResponse>? folder;
   /// The path of the Azure Data Lake Storage Gen2 storage. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? folderPath;
   /// The format of the Azure Data Lake Storage Gen2 storage.
@@ -69,7 +69,7 @@ class AzureBlobFSDatasetResponse {
       'compression': ?pulumi.Input.mapOptionalInputValue<DatasetCompressionResponse, Map<String, dynamic>>(compression, (value) => value.toMap()),
       'description': ?description,
       'fileName': ?fileName,
-      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetResponseFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
+      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetFolderResponse, Map<String, dynamic>>(folder, (value) => value.toMap()),
       'folderPath': ?folderPath,
       'format': ?pulumi.Input.mapOptionalInputValue<AvroFormatResponse, Map<String, dynamic>>(format, (value) => value.toMap()),
       'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
@@ -86,7 +86,7 @@ class AzureBlobFSDatasetResponse {
       compression: (() { final guardedValue = map['compression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetCompressionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fileName: (() { final guardedValue = map['fileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetResponseFolder.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetFolderResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       folderPath: (() { final guardedValue = map['folderPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AvroFormatResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       linkedServiceName: pulumi.Input.fromValue(LinkedServiceReferenceResponse.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())),
@@ -97,4 +97,3 @@ class AzureBlobFSDatasetResponse {
     );
   }
 }
-

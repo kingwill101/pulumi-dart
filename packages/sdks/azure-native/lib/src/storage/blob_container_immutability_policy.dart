@@ -5,7 +5,7 @@ import 'blob_container_immutability_policy_args.dart';
 ///
 /// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -61,6 +61,26 @@ import 'blob_container_immutability_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_blobcontainerimmutabilitypolicy" "blobContainerImmutabilityPolicy" {
+///   account_name                               = "sto7069"
+///   allow_protected_append_writes              = true
+///   container_name                             = "container6397"
+///   immutability_period_since_creation_in_days = 3
+///   immutability_policy_name                   = "default"
+///   resource_group_name                        = "res1782"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +89,8 @@ import 'blob_container_immutability_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.storage.BlobContainerImmutabilityPolicy;
 /// import com.pulumi.azurenative.storage.BlobContainerImmutabilityPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -192,6 +212,26 @@ import 'blob_container_immutability_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_blobcontainerimmutabilitypolicy" "blobContainerImmutabilityPolicy" {
+///   account_name                               = "sto7069"
+///   allow_protected_append_writes_all          = true
+///   container_name                             = "container6397"
+///   immutability_period_since_creation_in_days = 3
+///   immutability_policy_name                   = "default"
+///   resource_group_name                        = "res1782"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +240,8 @@ import 'blob_container_immutability_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.storage.BlobContainerImmutabilityPolicy;
 /// import com.pulumi.azurenative.storage.BlobContainerImmutabilityPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

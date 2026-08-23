@@ -9,7 +9,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
 ///
-/// Other available API versions: 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -535,6 +535,198 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_deviceregistry_namespaceasset" "namespaceAsset" {
+///   asset_name      = "my-asset-1"
+///   asset_type_refs = ["myAssetTypeRef1", "myAssetTypeRef2"]
+///   attributes = {
+///     "floor" = "1"
+///   }
+///   datasets {
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3"
+///       name                     = "dataset1DataPoint1"
+///       type_ref                 = "dataset1DataPoint1TypeRef"
+///     }
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4"
+///       name                     = "dataset1DataPoint2"
+///       type_ref                 = "dataset1DataPoint2TypeRef"
+///     }
+///     data_source           = "nsu=http://microsoft.com/Opc/OpcPlc/Oven;i=5"
+///     dataset_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///     destinations = [{
+///       "configuration" = {
+///         "key" = "dataset1"
+///       }
+///       "target" = "BrokerStateStore"
+///     }]
+///     name     = "dataset1"
+///     type_ref = "dataset1TypeRef"
+///   }
+///   default_datasets_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///   default_datasets_destinations = [{
+///     "configuration" = {
+///       "key" = "defaultValue"
+///     }
+///     "target" = "BrokerStateStore"
+///   }]
+///   default_events_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///   default_events_destinations = [{
+///     "configuration" = {
+///       "path" = "/tmp"
+///     }
+///     "target" = "Storage"
+///   }]
+///   default_management_groups_configuration = "{\"retryCount\":10,\"retryBackoffInterval\":15}"
+///   default_streams_configuration           = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///   default_streams_destinations = [{
+///     "configuration" = {
+///       "qos"    = "Qos0"
+///       "retain" = "Never"
+///       "topic"  = "/contoso/test"
+///       "ttl"    = 3600
+///     }
+///     "target" = "Mqtt"
+///   }]
+///   description = "This is a sample Asset"
+///   device_ref = {
+///     device_name   = "device1"
+///     endpoint_name = "opcuaendpointname"
+///   }
+///   discovered_asset_refs = ["discoveredAsset1"]
+///   display_name          = "AssetDisplayName"
+///   documentation_uri     = "https://www.example.com/manual"
+///   enabled               = true
+///   events {
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt6"
+///       name                     = "event1DataPoint1"
+///     }
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt7"
+///       name                     = "event1DataPoint2"
+///     }
+///     destinations = [{
+///       "configuration" = {
+///         "qos"    = "Qos0"
+///         "retain" = "Keep"
+///         "topic"  = "/contoso/testEvent1"
+///         "ttl"    = 7200
+///       }
+///       "target" = "Mqtt"
+///     }]
+///     event_configuration = "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}"
+///     event_notifier      = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5"
+///     name                = "event1"
+///     type_ref            = "event1Ref"
+///   }
+///   events {
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt9"
+///       name                     = "event2DataPoint1"
+///     }
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt10"
+///       name                     = "event2DataPoint2"
+///     }
+///     destinations = [{
+///       "configuration" = {
+///         "path" = "/tmp/event2"
+///       }
+///       "target" = "Storage"
+///     }]
+///     event_configuration = "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}"
+///     event_notifier      = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8"
+///     name                = "event2"
+///     type_ref            = "event2Ref"
+///   }
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/location1"
+///     type = "CustomLocation"
+///   }
+///   external_asset_id = "8ZBA6LRHU0A458969"
+///   hardware_revision = "1.0"
+///   location          = "West Europe"
+///   management_groups {
+///     actions {
+///       action_configuration = "{\"retryCount\":5,\"retryBackoffInterval\":5}"
+///       action_type          = "Call"
+///       name                 = "action1"
+///       target_uri           = "/onvif/device_service?ONVIFProfile=Profile1"
+///       timeout_in_seconds   = 60
+///       topic                = "/contoso/managementGroup1/action1"
+///       type_ref             = "action1TypeRef"
+///     }
+///     actions {
+///       action_configuration = "{\"retryCount\":5,\"retryBackoffInterval\":5}"
+///       action_type          = "Call"
+///       name                 = "action2"
+///       target_uri           = "/onvif/device_service?ONVIFProfile=Profile2"
+///       timeout_in_seconds   = 60
+///       topic                = "/contoso/managementGroup1/action2"
+///       type_ref             = "action2TypeRef"
+///     }
+///     default_timeout_in_seconds     = 100
+///     default_topic                  = "/contoso/managementGroup1"
+///     management_group_configuration = "{\"retryCount\":10,\"retryBackoffInterval\":15}"
+///     name                           = "managementGroup1"
+///     type_ref                       = "managementGroup1TypeRef"
+///   }
+///   manufacturer        = "Contoso"
+///   manufacturer_uri    = "https://www.contoso.com/manufacturerUri"
+///   model               = "ContosoModel"
+///   namespace_name      = "my-namespace-1"
+///   product_code        = "SA34VDG"
+///   resource_group_name = "myResourceGroup"
+///   serial_number       = "64-103816-519918-8"
+///   software_revision   = "2.0"
+///   streams {
+///     destinations = [{
+///       "configuration" = {
+///         "path" = "/tmp/stream1"
+///       }
+///       "target" = "Storage"
+///     }]
+///     name                 = "stream1"
+///     stream_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///     type_ref             = "stream1TypeRef"
+///   }
+///   streams {
+///     destinations = [{
+///       "configuration" = {
+///         "qos"    = "Qos0"
+///         "retain" = "Never"
+///         "topic"  = "/contoso/testStream2"
+///         "ttl"    = 7200
+///       }
+///       "target" = "Mqtt"
+///     }]
+///     name                 = "stream2"
+///     stream_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///     type_ref             = "stream2TypeRef"
+///   }
+///   tags = {
+///     "site" = "building-1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -549,8 +741,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ManagementGroupArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.NamespaceStreamArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -614,7 +806,7 @@ import 'system_data_response.dart';
 ///                     .qos("Qos0")
 ///                     .retain("Never")
 ///                     .topic("/contoso/test")
-///                     .ttl(3600)
+///                     .ttl(3600.0)
 ///                     .build())
 ///                 .target("Mqtt")
 ///                 .build())
@@ -645,7 +837,7 @@ import 'system_data_response.dart';
 ///                             .qos("Qos0")
 ///                             .retain("Keep")
 ///                             .topic("/contoso/testEvent1")
-///                             .ttl(7200)
+///                             .ttl(7200.0)
 ///                             .build())
 ///                         .target("Mqtt")
 ///                         .build())
@@ -736,7 +928,7 @@ import 'system_data_response.dart';
 ///                             .qos("Qos0")
 ///                             .retain("Never")
 ///                             .topic("/contoso/testStream2")
-///                             .ttl(7200)
+///                             .ttl(7200.0)
 ///                             .build())
 ///                         .target("Mqtt")
 ///                         .build())
@@ -1014,7 +1206,7 @@ import 'system_data_response.dart';
 ///             "qos": azure_native.deviceregistry.MqttDestinationQos.QOS0,
 ///             "retain": azure_native.deviceregistry.TopicRetainType.NEVER,
 ///             "topic": "/contoso/test",
-///             "ttl": 3600,
+///             "ttl": float(3600),
 ///         },
 ///         "target": "Mqtt",
 ///     }],
@@ -1046,7 +1238,7 @@ import 'system_data_response.dart';
 ///                     "qos": azure_native.deviceregistry.MqttDestinationQos.QOS0,
 ///                     "retain": azure_native.deviceregistry.TopicRetainType.KEEP,
 ///                     "topic": "/contoso/testEvent1",
-///                     "ttl": 7200,
+///                     "ttl": float(7200),
 ///                 },
 ///                 "target": "Mqtt",
 ///             }],
@@ -1140,7 +1332,7 @@ import 'system_data_response.dart';
 ///                     "qos": azure_native.deviceregistry.MqttDestinationQos.QOS0,
 ///                     "retain": azure_native.deviceregistry.TopicRetainType.NEVER,
 ///                     "topic": "/contoso/testStream2",
-///                     "ttl": 7200,
+///                     "ttl": float(7200),
 ///                 },
 ///                 "target": "Mqtt",
 ///             }],

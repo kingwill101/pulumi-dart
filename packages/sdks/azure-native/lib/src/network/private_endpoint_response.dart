@@ -25,8 +25,6 @@ class PrivateEndpointResponse {
   final pulumi.Input<String>? id;
   /// A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints.
   final pulumi.Input<List<PrivateEndpointIPConfigurationResponse>>? ipConfigurations;
-  /// Specifies the IP version type for the private IPs of the private endpoint. If not defined, this defaults to IPv4.
-  final pulumi.Input<String>? ipVersionType;
   /// Resource location.
   final pulumi.Input<String>? location;
   /// A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
@@ -54,7 +52,6 @@ class PrivateEndpointResponse {
   /// [extendedLocation] The extended location of the load balancer.
   /// [id] Resource ID.
   /// [ipConfigurations] A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints.
-  /// [ipVersionType] Specifies the IP version type for the private IPs of the private endpoint. If not defined, this defaults to IPv4.
   /// [location] Resource location.
   /// [manualPrivateLinkServiceConnections] A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
   /// [name] Resource name.
@@ -72,7 +69,6 @@ class PrivateEndpointResponse {
     this.extendedLocation,
     this.id,
     this.ipConfigurations,
-    this.ipVersionType,
     this.location,
     this.manualPrivateLinkServiceConnections,
     required this.name,
@@ -93,7 +89,6 @@ class PrivateEndpointResponse {
       'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
       'id': ?id,
       'ipConfigurations': ?pulumi.Input.mapOptionalInputValue<List<PrivateEndpointIPConfigurationResponse>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<PrivateEndpointIPConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'ipVersionType': ?ipVersionType,
       'location': ?location,
       'manualPrivateLinkServiceConnections': ?pulumi.Input.mapOptionalInputValue<List<PrivateLinkServiceConnectionResponse>, List<Map<String, dynamic>>>(manualPrivateLinkServiceConnections, (value) => pulumi.Input.encodeList<PrivateLinkServiceConnectionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
@@ -115,7 +110,6 @@ class PrivateEndpointResponse {
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipConfigurations: (() { final guardedValue = map['ipConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateEndpointIPConfigurationResponse>(guardedValue, (value) => PrivateEndpointIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      ipVersionType: (() { final guardedValue = map['ipVersionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       manualPrivateLinkServiceConnections: (() { final guardedValue = map['manualPrivateLinkServiceConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateLinkServiceConnectionResponse>(guardedValue, (value) => PrivateLinkServiceConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -128,4 +122,3 @@ class PrivateEndpointResponse {
     );
   }
 }
-

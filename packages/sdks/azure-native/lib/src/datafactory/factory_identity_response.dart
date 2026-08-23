@@ -11,7 +11,7 @@ class FactoryIdentityResponse {
   /// The identity type.
   final pulumi.Input<String> type;
   /// List of user assigned identities for the factory.
-  final pulumi.Input<Map<String, dynamic>>? userAssignedIdentities;
+  final pulumi.Input<dynamic>? userAssignedIdentities;
 
   /// Creates a new [FactoryIdentityResponse].
   /// [principalId] The principal id of the identity.
@@ -39,8 +39,7 @@ class FactoryIdentityResponse {
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
-      userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
-

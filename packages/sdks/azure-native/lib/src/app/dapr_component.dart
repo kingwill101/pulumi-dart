@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -139,6 +139,53 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_daprcomponent" "daprComponent" {
+///   component_name   = "reddog"
+///   component_type   = "state.azure.cosmosdb"
+///   environment_name = "myenvironment"
+///   ignore_errors    = false
+///   init_timeout     = "50s"
+///   metadata {
+///     name  = "url"
+///     value = "<COSMOS-URL>"
+///   }
+///   metadata {
+///     name  = "database"
+///     value = "itemsDB"
+///   }
+///   metadata {
+///     name  = "collection"
+///     value = "items"
+///   }
+///   metadata {
+///     name       = "masterkey"
+///     secret_ref = "masterkey"
+///   }
+///   resource_group_name    = "examplerg"
+///   scopes                 = ["container-app-1", "container-app-2"]
+///   secret_store_component = "my-secret-store"
+///   service_component_bind {
+///     metadata = {
+///       name  = "daprcomponentBind"
+///       value = "redis-bind"
+///     }
+///     name       = "statestore"
+///     service_id = "/subscriptions/9f7371f1-b593-4c3c-84e2-9167806ad358/resourceGroups/ca-syn2-group/providers/Microsoft.App/containerapps/cappredis"
+///   }
+///   version = "v1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +197,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.inputs.DaprMetadataArgs;
 /// import com.pulumi.azurenative.app.inputs.DaprComponentServiceBindingArgs;
 /// import com.pulumi.azurenative.app.inputs.DaprServiceBindMetadataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -476,6 +523,56 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_daprcomponent" "daprComponent" {
+///   component_name   = "reddog"
+///   component_type   = "state.azure.cosmosdb"
+///   environment_name = "myenvironment"
+///   ignore_errors    = false
+///   init_timeout     = "50s"
+///   metadata {
+///     name  = "url"
+///     value = "<COSMOS-URL>"
+///   }
+///   metadata {
+///     name  = "database"
+///     value = "itemsDB"
+///   }
+///   metadata {
+///     name  = "collection"
+///     value = "items"
+///   }
+///   metadata {
+///     name       = "masterkey"
+///     secret_ref = "masterkey"
+///   }
+///   resource_group_name = "examplerg"
+///   scopes              = ["container-app-1", "container-app-2"]
+///   secrets {
+///     name  = "masterkey"
+///     value = "keyvalue"
+///   }
+///   service_component_bind {
+///     metadata = {
+///       name  = "daprcomponentBind"
+///       value = "redis-bind"
+///     }
+///     name       = "statestore"
+///     service_id = "/subscriptions/9f7371f1-b593-4c3c-84e2-9167806ad358/resourceGroups/ca-syn2-group/providers/Microsoft.App/containerapps/cappredis"
+///   }
+///   version = "v1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -488,8 +585,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.inputs.SecretArgs;
 /// import com.pulumi.azurenative.app.inputs.DaprComponentServiceBindingArgs;
 /// import com.pulumi.azurenative.app.inputs.DaprServiceBindMetadataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -214,6 +214,86 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ec2instancestatus" "ec2InstanceStatus" {
+///   location = "pgcnqdiaetxhtdrimhlcwthap"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "nnkvtshcitbzvtrcwybizpxfznrsyg"
+///     aws_account_id = "pjfvkzfpdqdiweudknutyey"
+///     aws_properties = {
+///       availability_zone = "ytnhdkisucgzas"
+///       events = [{
+///         "code" = {
+///           "value" = "instance-reboot"
+///         }
+///         "description"       = "hgvqagwss"
+///         "instanceEventId"   = "rnbshnkjo"
+///         "notAfter"          = "2024-10-08T03:53:26.681Z"
+///         "notBefore"         = "2024-10-08T03:53:26.681Z"
+///         "notBeforeDeadline" = "2024-10-08T03:53:26.681Z"
+///       }]
+///       instance_id = "aoffpxifvwnouuzzpkqc"
+///       instance_state = {
+///         code = 9
+///         name = {
+///           value = "pending"
+///         }
+///       }
+///       instance_status = {
+///         details = [{
+///           "impairedSince" = "2024-10-08T03:53:26.682Z"
+///           "name" = {
+///             "value" = "reachability"
+///           }
+///           "status" = {
+///             "value" = "failed"
+///           }
+///         }]
+///         status = {
+///           value = "impaired"
+///         }
+///       }
+///       outpost_arn = "pprqpuqeokryiz"
+///       system_status = {
+///         details = [{
+///           "impairedSince" = "2024-10-08T03:53:26.682Z"
+///           "name" = {
+///             "value" = "reachability"
+///           }
+///           "status" = {
+///             "value" = "failed"
+///           }
+///         }]
+///         status = {
+///           value = "impaired"
+///         }
+///       }
+///     }
+///     aws_region        = "uxchexljsahdlvcecpckwevokhvd"
+///     aws_source_schema = "zvcrlmc"
+///     aws_tags = {
+///       "key8745" = "rebvfwuycmmclbkwmnnslwgaispvw"
+///     }
+///     public_cloud_connectors_resource_id = "ouhnawwxmqjpfsmz"
+///     public_cloud_resource_name          = "mqygrsmavjlivhliidvrmopovsba"
+///   }
+///   resource_group_name = "rgec2InstanceStatus"
+///   tags = {
+///     "key1363" = "rvbvinbkmuoftqnsbj"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +308,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.InstanceStateNameEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.InstanceStatusSummaryArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SummaryStatusEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

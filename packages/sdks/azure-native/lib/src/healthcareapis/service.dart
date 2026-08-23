@@ -164,6 +164,56 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_healthcareapis_service" "service" {
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   kind     = "fhir-R4"
+///   location = "westus2"
+///   properties = {
+///     access_policies = [{
+///       "objectId" = "c487e7d1-3210-41a3-8ccc-e9372b78da47"
+///       }, {
+///       "objectId" = "5b307da8-43d4-492b-8b66-b0294ade872f"
+///     }]
+///     authentication_configuration = {
+///       audience            = "https://azurehealthcareapis.com"
+///       authority           = "https://login.microsoftonline.com/abfde7b2-df0f-47e6-aabf-2462b07508dc"
+///       smart_proxy_enabled = true
+///     }
+///     cors_configuration = {
+///       allow_credentials = false
+///       headers           = ["*"]
+///       max_age           = 1440
+///       methods           = ["DELETE", "GET", "OPTIONS", "PATCH", "POST", "PUT"]
+///       origins           = ["*"]
+///     }
+///     cosmos_db_configuration = {
+///       key_vault_key_uri = "https://my-vault.vault.azure.net/keys/my-key"
+///       offer_throughput  = 1000
+///     }
+///     export_configuration = {
+///       storage_account_name = "existingStorageAccount"
+///     }
+///     private_endpoint_connections = []
+///     public_network_access        = "Disabled"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "service1"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -178,8 +228,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServiceCorsConfigurationInfoArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServiceCosmosDbConfigurationInfoArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServiceExportConfigurationInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -552,6 +602,57 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_healthcareapis_service" "service" {
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   kind     = "fhir-R4"
+///   location = "Southeast Asia"
+///   properties = {
+///     access_policies = [{
+///       "objectId" = "c487e7d1-3210-41a3-8ccc-e9372b78da47"
+///       }, {
+///       "objectId" = "5b307da8-43d4-492b-8b66-b0294ade872f"
+///     }]
+///     authentication_configuration = {
+///       audience            = "https://azurehealthcareapis.com"
+///       authority           = "https://login.microsoftonline.com/abfde7b2-df0f-47e6-aabf-2462b07508dc"
+///       smart_proxy_enabled = true
+///     }
+///     cors_configuration = {
+///       allow_credentials = false
+///       headers           = ["*"]
+///       max_age           = 1440
+///       methods           = ["DELETE", "GET", "OPTIONS", "PATCH", "POST", "PUT"]
+///       origins           = ["*"]
+///     }
+///     cosmos_db_configuration = {
+///       cross_tenant_cmk_application_id = "de3fbeef-8c3a-428e-8b9f-4d229c8a85f4"
+///       key_vault_key_uri               = "https://my-vault.vault.azure.net/keys/my-key"
+///       offer_throughput                = 1000
+///     }
+///     export_configuration = {
+///       storage_account_name = "existingStorageAccount"
+///     }
+///     private_endpoint_connections = []
+///     public_network_access        = "Disabled"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "service1"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -566,8 +667,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServiceCorsConfigurationInfoArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServiceCosmosDbConfigurationInfoArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServiceExportConfigurationInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -857,6 +958,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_healthcareapis_service" "service" {
+///   kind     = "fhir-R4"
+///   location = "westus2"
+///   properties = {
+///     access_policies = [{
+///       "objectId" = "c487e7d1-3210-41a3-8ccc-e9372b78da47"
+///     }]
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "service2"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -866,8 +991,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.healthcareapis.Service;
 /// import com.pulumi.azurenative.healthcareapis.ServiceArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServicesPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

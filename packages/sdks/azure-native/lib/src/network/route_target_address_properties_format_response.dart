@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'subnet_response.dart';
+import 'subnet_response_v1.dart';
 
 /// Properties of route target address
 class RouteTargetAddressPropertiesFormatResponse {
@@ -10,7 +10,7 @@ class RouteTargetAddressPropertiesFormatResponse {
   /// The Private IP allocation method.
   final pulumi.Input<String>? privateIPAllocationMethod;
   /// The reference to the subnet resource.
-  final pulumi.Input<SubnetResponse>? subnet;
+  final pulumi.Input<SubnetResponseV1>? subnet;
 
   /// Creates a new [RouteTargetAddressPropertiesFormatResponse].
   /// [privateIPAddress] The private IPv4 or IPv6 address of the service gateway route target address.
@@ -26,7 +26,7 @@ class RouteTargetAddressPropertiesFormatResponse {
     return <String, dynamic>{
       'privateIPAddress': ?privateIPAddress,
       'privateIPAllocationMethod': ?privateIPAllocationMethod,
-      'subnet': ?pulumi.Input.mapOptionalInputValue<SubnetResponse, Map<String, dynamic>>(subnet, (value) => value.toMap()),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<SubnetResponseV1, Map<String, dynamic>>(subnet, (value) => value.toMap()),
     };
   }
 
@@ -34,8 +34,7 @@ class RouteTargetAddressPropertiesFormatResponse {
     return RouteTargetAddressPropertiesFormatResponse(
       privateIPAddress: (() { final guardedValue = map['privateIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateIPAllocationMethod: (() { final guardedValue = map['privateIPAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubnetResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubnetResponseV1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

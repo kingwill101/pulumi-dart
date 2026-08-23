@@ -82,6 +82,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cosmosdb_mongocluster" "mongoCluster" {
+///   administrator_login          = "mongoAdmin"
+///   administrator_login_password = "password"
+///   location                     = "westus2"
+///   mongo_cluster_name           = "myMongoCluster"
+///   node_group_specs {
+///     disk_size_gb = 128
+///     enable_ha    = true
+///     kind         = "Shard"
+///     node_count   = 3
+///     sku          = "M30"
+///   }
+///   resource_group_name = "TestResourceGroup"
+///   server_version      = "5.0"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +118,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cosmosdb.MongoCluster;
 /// import com.pulumi.azurenative.cosmosdb.MongoClusterArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.NodeGroupSpecArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -157,7 +184,7 @@ import 'system_data_response.dart';
 ///     location="westus2",
 ///     mongo_cluster_name="myMongoCluster",
 ///     node_group_specs=[{
-///         "disk_size_gb": 128,
+///         "disk_size_gb": float(128),
 ///         "enable_ha": True,
 ///         "kind": azure_native.cosmosdb.NodeKind.SHARD,
 ///         "node_count": 3,
@@ -246,6 +273,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cosmosdb_mongocluster" "mongoCluster" {
+///   create_mode         = "PointInTimeRestore"
+///   location            = "westus2"
+///   mongo_cluster_name  = "myMongoCluster"
+///   resource_group_name = "TestResourceGroup"
+///   restore_parameters = {
+///     point_in_time_utc  = "2023-01-13T20:07:35Z"
+///     source_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestResourceGroup/providers/Microsoft.DocumentDB/mongoClusters/myOtherMongoCluster"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -255,8 +304,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cosmosdb.MongoCluster;
 /// import com.pulumi.azurenative.cosmosdb.MongoClusterArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.MongoClusterRestoreParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

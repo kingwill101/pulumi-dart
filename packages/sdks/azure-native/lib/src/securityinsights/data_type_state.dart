@@ -15,4 +15,3 @@ enum DataTypeState {
     throw ArgumentError('Unknown DataTypeState value: $value');
   }
 }
-

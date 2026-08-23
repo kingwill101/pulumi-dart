@@ -17,4 +17,3 @@ enum PolicyContentFormat {
     throw ArgumentError('Unknown PolicyContentFormat value: $value');
   }
 }
-

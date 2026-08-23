@@ -8,7 +8,7 @@ import 'get_code_signing_account_result.dart';
 ///
 /// Uses Azure REST API version 2024-09-30-preview.
 ///
-/// Other available API versions: 2024-02-05-preview, 2025-10-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native codesigning [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-05-preview, 2025-10-13, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native codesigning [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_codesigning_get_certificate_profile_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCertificateProfileResult> getCertificateProfile(
@@ -24,11 +24,11 @@ Future<GetCertificateProfileResult> getCertificateProfile(
   return GetCertificateProfileResult.fromMap(result);
 }
 
-/// Get a trusted Signing Account.
+/// Get an artifact Signing Account.
 ///
 /// Uses Azure REST API version 2024-09-30-preview.
 ///
-/// Other available API versions: 2024-02-05-preview, 2025-10-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native codesigning [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-05-preview, 2025-10-13, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native codesigning [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_codesigning_get_code_signing_account_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCodeSigningAccountResult> getCodeSigningAccount(

@@ -17,4 +17,3 @@ enum ResilientVMDeletionStatus {
     throw ArgumentError('Unknown ResilientVMDeletionStatus value: $value');
   }
 }
-

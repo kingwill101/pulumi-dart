@@ -15,4 +15,3 @@ enum LocalDNSForwardDestination {
     throw ArgumentError('Unknown LocalDNSForwardDestination value: $value');
   }
 }
-

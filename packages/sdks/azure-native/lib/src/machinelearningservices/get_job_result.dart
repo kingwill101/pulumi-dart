@@ -9,10 +9,10 @@ class GetJobResult {
   final String azureApiVersion;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-  /// [Required] Additional attributes of the entity.
-  final AutoMLJobResponse jobBaseProperties;
   /// The name of the resource
   final String name;
+  /// [Required] Additional attributes of the entity.
+  final AutoMLJobResponse properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -21,15 +21,15 @@ class GetJobResult {
   /// Creates a new [GetJobResult].
   /// [azureApiVersion] The Azure API version of the resource.
   /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  /// [jobBaseProperties] [Required] Additional attributes of the entity.
   /// [name] The name of the resource
+  /// [properties] [Required] Additional attributes of the entity.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetJobResult({
     required this.azureApiVersion,
     required this.id,
-    required this.jobBaseProperties,
     required this.name,
+    required this.properties,
     required this.systemData,
     required this.type,
   });
@@ -38,8 +38,8 @@ class GetJobResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'id': id,
-      'jobBaseProperties': jobBaseProperties.toMap(),
       'name': name,
+      'properties': properties.toMap(),
       'systemData': systemData.toMap(),
       'type': type,
     };
@@ -49,11 +49,10 @@ class GetJobResult {
     return GetJobResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      jobBaseProperties: AutoMLJobResponse.fromMap((map['jobBaseProperties']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
+      properties: AutoMLJobResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

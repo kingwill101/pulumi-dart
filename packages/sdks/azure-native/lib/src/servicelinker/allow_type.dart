@@ -15,4 +15,3 @@ enum AllowType {
     throw ArgumentError('Unknown AllowType value: $value');
   }
 }
-

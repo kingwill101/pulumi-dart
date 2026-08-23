@@ -67,6 +67,29 @@ import 'project_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_project" "project" {
+///   e_tag        = ""
+///   location     = "West Europe"
+///   project_name = "abGoyalProject2"
+///   properties = {
+///     assessment_solution_id = "/subscriptions/6393a73f-8d55-47ef-b6dd-179b3e0c7910/resourcegroups/abgoyal-westeurope/providers/microsoft.migrate/migrateprojects/abgoyalweselfhost/Solutions/Servers-Assessment-ServerAssessment"
+///     project_status         = "Active"
+///   }
+///   resource_group_name = "abgoyal-westEurope"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +99,8 @@ import 'project_properties_response.dart';
 /// import com.pulumi.azurenative.migrate.Project;
 /// import com.pulumi.azurenative.migrate.ProjectArgs;
 /// import com.pulumi.azurenative.migrate.inputs.ProjectPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

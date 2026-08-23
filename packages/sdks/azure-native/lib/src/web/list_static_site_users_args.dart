@@ -9,15 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListStaticSiteUsersArgs {
   /// The auth provider for the users.
   final pulumi.Input<String> authprovider;
-  /// Name of the static site.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [ListStaticSiteUsersArgs].
   /// [authprovider] The auth provider for the users.
-  /// [name] Name of the static site.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [name] Required.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const ListStaticSiteUsersArgs({
     required this.authprovider,
     required this.name,
@@ -40,4 +39,3 @@ class ListStaticSiteUsersArgs {
     );
   }
 }
-

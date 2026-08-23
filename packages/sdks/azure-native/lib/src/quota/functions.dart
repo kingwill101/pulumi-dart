@@ -8,7 +8,7 @@ import 'get_group_quota_subscription_result.dart';
 ///
 /// Uses Azure REST API version 2025-03-01.
 ///
-/// Other available API versions: 2023-06-01-preview, 2024-10-15-preview, 2024-12-18-preview, 2025-03-15-preview, 2025-07-15, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native quota [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-06-01-preview, 2024-10-15-preview, 2024-12-18-preview, 2025-03-15-preview, 2025-07-15, 2025-09-01, 2026-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native quota [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_quota_get_group_quota_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGroupQuotaResult> getGroupQuota(
@@ -28,7 +28,7 @@ Future<GetGroupQuotaResult> getGroupQuota(
 ///
 /// Uses Azure REST API version 2025-03-01.
 ///
-/// Other available API versions: 2023-06-01-preview, 2024-10-15-preview, 2024-12-18-preview, 2025-03-15-preview, 2025-07-15, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native quota [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-06-01-preview, 2024-10-15-preview, 2024-12-18-preview, 2025-03-15-preview, 2025-07-15, 2025-09-01, 2026-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native quota [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_quota_get_group_quota_subscription_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGroupQuotaSubscriptionResult> getGroupQuotaSubscription(

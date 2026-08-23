@@ -11,13 +11,13 @@ class GetIntegrationRuntimeConnectionInfoArgs {
   final pulumi.Input<String> factoryName;
   /// The integration runtime name.
   final pulumi.Input<String> integrationRuntimeName;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetIntegrationRuntimeConnectionInfoArgs].
   /// [factoryName] The factory name.
   /// [integrationRuntimeName] The integration runtime name.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetIntegrationRuntimeConnectionInfoArgs({
     required this.factoryName,
     required this.integrationRuntimeName,
@@ -40,4 +40,3 @@ class GetIntegrationRuntimeConnectionInfoArgs {
     );
   }
 }
-

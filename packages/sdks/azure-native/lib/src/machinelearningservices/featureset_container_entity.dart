@@ -1,13 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'featureset_container_entity_args.dart';
-import 'featureset_container_response.dart';
+import 'featureset_container_properties_response.dart';
 import 'system_data_response.dart';
 
 /// Azure Resource Manager resource envelope.
 ///
-/// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
+/// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
 ///
-/// Other available API versions: 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -23,7 +23,8 @@ import 'system_data_response.dart';
 /// {
 ///     var featuresetContainerEntity = new AzureNative.MachineLearningServices.FeaturesetContainerEntity("featuresetContainerEntity", new()
 ///     {
-///         FeaturesetContainerProperties = new AzureNative.MachineLearningServices.Inputs.FeaturesetContainerArgs
+///         Name = "string",
+///         Properties = new AzureNative.MachineLearningServices.Inputs.FeaturesetContainerPropertiesArgs
 ///         {
 ///             Description = "string",
 ///             IsArchived = false,
@@ -36,7 +37,6 @@ import 'system_data_response.dart';
 ///                 { "string", "string" },
 ///             },
 ///         },
-///         Name = "string",
 ///         ResourceGroupName = "test-rg",
 ///         WorkspaceName = "my-aml-workspace",
 ///     });
@@ -57,7 +57,8 @@ import 'system_data_response.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := machinelearningservices.NewFeaturesetContainerEntity(ctx, "featuresetContainerEntity", &machinelearningservices.FeaturesetContainerEntityArgs{
-/// 			FeaturesetContainerProperties: &machinelearningservices.FeaturesetContainerArgs{
+/// 			Name: pulumi.String("string"),
+/// 			Properties: &machinelearningservices.FeaturesetContainerPropertiesArgs{
 /// 				Description: pulumi.String("string"),
 /// 				IsArchived:  pulumi.Bool(false),
 /// 				Properties: pulumi.StringMap{
@@ -67,7 +68,6 @@ import 'system_data_response.dart';
 /// 					"string": pulumi.String("string"),
 /// 				},
 /// 			},
-/// 			Name:              pulumi.String("string"),
 /// 			ResourceGroupName: pulumi.String("test-rg"),
 /// 			WorkspaceName:     pulumi.String("my-aml-workspace"),
 /// 		})
@@ -80,6 +80,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_featuresetcontainerentity" "featuresetContainerEntity" {
+///   name = "string"
+///   properties = {
+///     description = "string"
+///     is_archived = false
+///     properties = {
+///       "string" = "string"
+///     }
+///     tags = {
+///       "string" = "string"
+///     }
+///   }
+///   resource_group_name = "test-rg"
+///   workspace_name      = "my-aml-workspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -88,9 +115,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.FeaturesetContainerEntity;
 /// import com.pulumi.azurenative.machinelearningservices.FeaturesetContainerEntityArgs;
-/// import com.pulumi.azurenative.machinelearningservices.inputs.FeaturesetContainerArgs;
-/// import java.util.List;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.FeaturesetContainerPropertiesArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -103,13 +130,13 @@ import 'system_data_response.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var featuresetContainerEntity = new FeaturesetContainerEntity("featuresetContainerEntity", FeaturesetContainerEntityArgs.builder()
-///             .featuresetContainerProperties(FeaturesetContainerArgs.builder()
+///             .name("string")
+///             .properties(FeaturesetContainerPropertiesArgs.builder()
 ///                 .description("string")
 ///                 .isArchived(false)
 ///                 .properties(Map.of("string", "string"))
 ///                 .tags(Map.of("string", "string"))
 ///                 .build())
-///             .name("string")
 ///             .resourceGroupName("test-rg")
 ///             .workspaceName("my-aml-workspace")
 ///             .build());
@@ -124,7 +151,8 @@ import 'system_data_response.dart';
 /// import * as azure_native from "@pulumi/azure-native";
 ///
 /// const featuresetContainerEntity = new azure_native.machinelearningservices.FeaturesetContainerEntity("featuresetContainerEntity", {
-///     featuresetContainerProperties: {
+///     name: "string",
+///     properties: {
 ///         description: "string",
 ///         isArchived: false,
 ///         properties: {
@@ -134,7 +162,6 @@ import 'system_data_response.dart';
 ///             string: "string",
 ///         },
 ///     },
-///     name: "string",
 ///     resourceGroupName: "test-rg",
 ///     workspaceName: "my-aml-workspace",
 /// });
@@ -146,7 +173,8 @@ import 'system_data_response.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// featureset_container_entity = azure_native.machinelearningservices.FeaturesetContainerEntity("featuresetContainerEntity",
-///     featureset_container_properties={
+///     name="string",
+///     properties={
 ///         "description": "string",
 ///         "is_archived": False,
 ///         "properties": {
@@ -156,7 +184,6 @@ import 'system_data_response.dart';
 ///             "string": "string",
 ///         },
 ///     },
-///     name="string",
 ///     resource_group_name="test-rg",
 ///     workspace_name="my-aml-workspace")
 ///
@@ -167,14 +194,14 @@ import 'system_data_response.dart';
 ///   featuresetContainerEntity:
 ///     type: azure-native:machinelearningservices:FeaturesetContainerEntity
 ///     properties:
-///       featuresetContainerProperties:
+///       name: string
+///       properties:
 ///         description: string
 ///         isArchived: false
 ///         properties:
 ///           string: string
 ///         tags:
 ///           string: string
-///       name: string
 ///       resourceGroupName: test-rg
 ///       workspaceName: my-aml-workspace
 ///
@@ -193,10 +220,10 @@ import 'system_data_response.dart';
 class FeaturesetContainerEntity extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// [Required] Additional attributes of the entity.
-  late final pulumi.Output<FeaturesetContainerResponse> featuresetContainerProperties;
   /// The name of the resource
   late final pulumi.Output<String> name;
+  /// [Required] Additional attributes of the entity.
+  late final pulumi.Output<FeaturesetContainerPropertiesResponse> properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -217,8 +244,8 @@ class FeaturesetContainerEntity extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    featuresetContainerProperties = registerOutput<FeaturesetContainerResponse>('featuresetContainerProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeaturesetContainerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    properties = registerOutput<FeaturesetContainerPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeaturesetContainerPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

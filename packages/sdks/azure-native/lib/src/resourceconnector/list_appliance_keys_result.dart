@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'appliance_credential_kubeconfig_response.dart';
 import 'artifact_profile_response.dart';
-import 'sshkey_response.dart';
+import 'sshkeylist_appliance_keys_response.dart';
 
 /// Result data returned by listApplianceKeys.
 class ListApplianceKeysResult {
@@ -12,7 +12,7 @@ class ListApplianceKeysResult {
   /// The list of appliance kubeconfigs.
   final List<ApplianceCredentialKubeconfigResponse> kubeconfigs;
   /// Map of Customer User Public, Private SSH Keys and Certificate when available.
-  final Map<String, SSHKeyResponse> sshKeys;
+  final Map<String, SSHKeylistApplianceKeysResponse> sshKeys;
 
   /// Creates a new [ListApplianceKeysResult].
   /// [artifactProfiles] Map of artifacts that contains a list of ArtifactProfile used to upload artifacts such as logs.
@@ -28,7 +28,7 @@ class ListApplianceKeysResult {
     return <String, dynamic>{
       'artifactProfiles': pulumi.Input.encodeMapValues<ArtifactProfileResponse, Map<String, dynamic>>(artifactProfiles, (value) => value.toMap()),
       'kubeconfigs': pulumi.Input.encodeList<ApplianceCredentialKubeconfigResponse, Map<String, dynamic>>(kubeconfigs, (value) => value.toMap()),
-      'sshKeys': pulumi.Input.encodeMapValues<SSHKeyResponse, Map<String, dynamic>>(sshKeys, (value) => value.toMap()),
+      'sshKeys': pulumi.Input.encodeMapValues<SSHKeylistApplianceKeysResponse, Map<String, dynamic>>(sshKeys, (value) => value.toMap()),
     };
   }
 
@@ -36,8 +36,7 @@ class ListApplianceKeysResult {
     return ListApplianceKeysResult(
       artifactProfiles: pulumi.Input.decodeMapValues<ArtifactProfileResponse>(map['artifactProfiles']!, (value) => ArtifactProfileResponse.fromMap((value as Map).cast<String, dynamic>())),
       kubeconfigs: pulumi.Input.decodeList<ApplianceCredentialKubeconfigResponse>(map['kubeconfigs']!, (value) => ApplianceCredentialKubeconfigResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sshKeys: pulumi.Input.decodeMapValues<SSHKeyResponse>(map['sshKeys']!, (value) => SSHKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      sshKeys: pulumi.Input.decodeMapValues<SSHKeylistApplianceKeysResponse>(map['sshKeys']!, (value) => SSHKeylistApplianceKeysResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
-

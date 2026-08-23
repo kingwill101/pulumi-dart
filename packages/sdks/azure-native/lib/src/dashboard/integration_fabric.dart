@@ -77,6 +77,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dashboard_integrationfabric" "integrationFabric" {
+///   integration_fabric_name = "sampleIntegration"
+///   location                = "West US"
+///   properties = {
+///     data_source_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Monitor/accounts/myAmw"
+///     scenarios               = ["scenario1", "scenario2"]
+///     target_resource_id      = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAks"
+///   }
+///   resource_group_name = "myResourceGroup"
+///   workspace_name      = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +109,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dashboard.IntegrationFabric;
 /// import com.pulumi.azurenative.dashboard.IntegrationFabricArgs;
 /// import com.pulumi.azurenative.dashboard.inputs.IntegrationFabricPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

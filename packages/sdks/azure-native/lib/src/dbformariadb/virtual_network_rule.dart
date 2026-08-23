@@ -57,6 +57,25 @@ import 'virtual_network_rule_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbformariadb_virtualnetworkrule" "virtualNetworkRule" {
+///   ignore_missing_vnet_service_endpoint = false
+///   resource_group_name                  = "TestGroup"
+///   server_name                          = "vnet-test-svr"
+///   virtual_network_rule_name            = "vnet-firewall-rule"
+///   virtual_network_subnet_id            = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/testsubnet"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +84,8 @@ import 'virtual_network_rule_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbformariadb.VirtualNetworkRule;
 /// import com.pulumi.azurenative.dbformariadb.VirtualNetworkRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -1,7 +1,7 @@
 /// Virtual Machine priority
 enum VmPriority {
-  valueDedicated("Dedicated"),
-  valueLowPriority("LowPriority");
+  dedicated("Dedicated"),
+  lowPriority("LowPriority");
 
   const VmPriority(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum VmPriority {
     throw ArgumentError('Unknown VmPriority value: $value');
   }
 }
-

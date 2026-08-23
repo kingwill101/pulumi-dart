@@ -16,4 +16,3 @@ enum Provider {
     throw ArgumentError('Unknown Provider value: $value');
   }
 }
-

@@ -62,6 +62,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dashboard_dashboarddefinition" "dashboardDefinition" {
+///   dashboard_name  = "myDashboard"
+///   definition_name = "default"
+///   properties = {
+///     serialized_data = "<escapedDashboardJsonString>"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +91,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dashboard.DashboardDefinition;
 /// import com.pulumi.azurenative.dashboard.DashboardDefinitionArgs;
 /// import com.pulumi.azurenative.dashboard.inputs.DashboardDefinitionPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

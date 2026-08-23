@@ -66,6 +66,27 @@ import 'waf_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicenetworking_securitypoliciesinterface" "securityPoliciesInterface" {
+///   location                = "NorthCentralUS"
+///   resource_group_name     = "rg1"
+///   security_policy_name    = "sp1"
+///   traffic_controller_name = "tc1"
+///   waf_policy = {
+///     id = "/subscriptions/subid/resourcegroups/rg1/providers/Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/wp-0"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +96,8 @@ import 'waf_policy_response.dart';
 /// import com.pulumi.azurenative.servicenetworking.SecurityPoliciesInterface;
 /// import com.pulumi.azurenative.servicenetworking.SecurityPoliciesInterfaceArgs;
 /// import com.pulumi.azurenative.servicenetworking.inputs.WafPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

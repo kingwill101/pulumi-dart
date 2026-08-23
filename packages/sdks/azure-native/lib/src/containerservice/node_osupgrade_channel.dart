@@ -17,4 +17,3 @@ enum NodeOSUpgradeChannel {
     throw ArgumentError('Unknown NodeOSUpgradeChannel value: $value');
   }
 }
-

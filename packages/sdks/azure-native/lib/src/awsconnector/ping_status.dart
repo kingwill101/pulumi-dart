@@ -16,4 +16,3 @@ enum PingStatus {
     throw ArgumentError('Unknown PingStatus value: $value');
   }
 }
-

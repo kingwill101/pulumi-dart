@@ -10,37 +10,36 @@ import 'sku.dart';
 /// {@endtemplate}
 /// {@macro pulumi_machinelearningservices_private_endpoint_connection_args_doc}
 class PrivateEndpointConnectionArgs {
-  /// The identity of the resource.
+  /// The managed service identities assigned to this resource.
   final pulumi.Input<ManagedServiceIdentity>? identity;
-  /// Specifies the location of the resource.
+  /// *Same as workspace location.
   final pulumi.Input<String>? location;
-  /// The name of the private endpoint connection associated with the workspace
+  /// NRP Private Endpoint Connection Name
   final pulumi.Input<String>? privateEndpointConnectionName;
-  /// A collection of information about the state of the connection between service consumer and provider.
-  final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
+  /// The connection state.
+  final pulumi.Input<PrivateLinkServiceConnectionState>? privateLinkServiceConnectionState;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// The sku of the workspace.
+  /// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
   final pulumi.Input<Sku>? sku;
-  /// Contains resource tags defined as key/value pairs.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Name of Azure Machine Learning workspace.
+  /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
   /// Creates a new [PrivateEndpointConnectionArgs].
-  /// [identity] The identity of the resource.
-  /// [location] Specifies the location of the resource.
-  /// [privateEndpointConnectionName] The name of the private endpoint connection associated with the workspace
-  /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
+  /// [identity] The managed service identities assigned to this resource.
+  /// [location] *Same as workspace location.
+  /// [privateEndpointConnectionName] NRP Private Endpoint Connection Name
+  /// [privateLinkServiceConnectionState] The connection state.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  /// [sku] The sku of the workspace.
-  /// [tags] Contains resource tags defined as key/value pairs.
-  /// [workspaceName] Name of Azure Machine Learning workspace.
+  /// [sku] Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
+  /// [tags] Optional.
+  /// [workspaceName] Azure Machine Learning Workspace Name
   const PrivateEndpointConnectionArgs({
     this.identity,
     this.location,
     this.privateEndpointConnectionName,
-    required this.privateLinkServiceConnectionState,
+    this.privateLinkServiceConnectionState,
     required this.resourceGroupName,
     this.sku,
     this.tags,
@@ -52,7 +51,7 @@ class PrivateEndpointConnectionArgs {
       'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'location': ?location,
       'privateEndpointConnectionName': ?privateEndpointConnectionName,
-      'privateLinkServiceConnectionState': pulumi.Input.mapInputValue<PrivateLinkServiceConnectionState, Map<String, dynamic>>(privateLinkServiceConnectionState, (value) => value.toMap()),
+      'privateLinkServiceConnectionState': ?pulumi.Input.mapOptionalInputValue<PrivateLinkServiceConnectionState, Map<String, dynamic>>(privateLinkServiceConnectionState, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'tags': ?tags,
@@ -65,7 +64,7 @@ class PrivateEndpointConnectionArgs {
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateEndpointConnectionName: (() { final guardedValue = map['privateEndpointConnectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      privateLinkServiceConnectionState: pulumi.Input.fromValue(PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>())),
+      privateLinkServiceConnectionState: (() { final guardedValue = map['privateLinkServiceConnectionState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateLinkServiceConnectionState.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Sku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -73,4 +72,3 @@ class PrivateEndpointConnectionArgs {
     );
   }
 }
-

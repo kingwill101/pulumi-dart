@@ -91,6 +91,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperationsorchestrator_solution" "solution" {
+///   components {
+///     dependencies = ["x"]
+///     name         = "yhnelpxsobdyurwvhkq"
+///     properties   = {}
+///     type         = "wiabwsfqhhxru"
+///   }
+///   extended_location = {
+///     name = "bjjhfqsplgzdlbdlddleetyg"
+///     type = "sosibrbmmrfbbyp"
+///   }
+///   location            = "svzwmojzvarczmvgfhjk"
+///   name                = "49-gj2-mwgt--1m611----35u"
+///   resource_group_name = "rgopenapi"
+///   tags                = {}
+///   version             = "jwxk"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +130,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperationsorchestrator.SolutionArgs;
 /// import com.pulumi.azurenative.iotoperationsorchestrator.inputs.ComponentPropertiesArgs;
 /// import com.pulumi.azurenative.iotoperationsorchestrator.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

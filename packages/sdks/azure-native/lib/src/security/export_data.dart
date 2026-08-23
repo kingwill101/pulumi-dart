@@ -1,5 +1,5 @@
 enum ExportData {
-  valueRawEvents("RawEvents");
+  rawEvents("RawEvents");
 
   const ExportData(this.wireValue);
   final String wireValue;
@@ -13,4 +13,3 @@ enum ExportData {
     throw ArgumentError('Unknown ExportData value: $value');
   }
 }
-

@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'rule_state.dart';
 import 'suppression_alerts_scope.dart';
 
 /// {@template pulumi_security_alerts_suppression_rule_args_doc}
@@ -19,7 +20,7 @@ class AlertsSuppressionRuleArgs {
   /// The reason for dismissing the alert
   final pulumi.Input<String> reason;
   /// Possible states of the rule
-  final pulumi.Input<String> state;
+  final pulumi.Input<RuleState> state;
   /// The suppression conditions
   final pulumi.Input<SuppressionAlertsScope>? suppressionAlertsScope;
 
@@ -48,7 +49,7 @@ class AlertsSuppressionRuleArgs {
       'comment': ?comment,
       'expirationDateUtc': ?expirationDateUtc,
       'reason': reason,
-      'state': state,
+      'state': pulumi.Input.mapInputValue<RuleState, String>(state, (value) => value.wireValue),
       'suppressionAlertsScope': ?pulumi.Input.mapOptionalInputValue<SuppressionAlertsScope, Map<String, dynamic>>(suppressionAlertsScope, (value) => value.toMap()),
     };
   }
@@ -60,9 +61,8 @@ class AlertsSuppressionRuleArgs {
       comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expirationDateUtc: (() { final guardedValue = map['expirationDateUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reason: pulumi.Input.fromValue(map['reason'] as String),
-      state: pulumi.Input.fromValue(map['state'] as String),
+      state: pulumi.Input.fromValue(RuleState.fromValue(map['state']! as String)),
       suppressionAlertsScope: (() { final guardedValue = map['suppressionAlertsScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SuppressionAlertsScope.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

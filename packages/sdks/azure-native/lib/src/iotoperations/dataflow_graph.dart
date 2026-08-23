@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
 ///
-/// Other available API versions: 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -281,6 +281,106 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_dataflowgraph" "dataflowGraph" {
+///   dataflow_graph_name   = "resource-123"
+///   dataflow_profile_name = "resource-123"
+///   extended_location = {
+///     name = "/subscriptions/F8C729F9-DF9C-4743-848F-96EE433D8E53/resourceGroups/rgiotoperations/providers/Microsoft.ExtendedLocation/customLocations/resource-123"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-123"
+///   properties = {
+///     mode = "Enabled"
+///     node_connections = [{
+///       "from" = {
+///         "name" = "temperature"
+///         "schema" = {
+///           "schemaRef"           = "aio-sr://namespace/temperature:1"
+///           "serializationFormat" = "Avro"
+///         }
+///       }
+///       "to" = {
+///         "name" = "my-graph"
+///       }
+///       }, {
+///       "from" = {
+///         "name" = "my-graph.alert-output"
+///         "schema" = {
+///           "schemaRef"           = "aio-sr://namespace/alert:1"
+///           "serializationFormat" = "Avro"
+///         }
+///       }
+///       "to" = {
+///         "name" = "fabric"
+///       }
+///       }, {
+///       "from" = {
+///         "name" = "my-graph.normal-output"
+///         "schema" = {
+///           "schemaRef"           = "aio-sr://namespace/alert:1"
+///           "serializationFormat" = "Avro"
+///         }
+///       }
+///       "to" = {
+///         "name" = "fabric"
+///       }
+///     }]
+///     nodes = [{
+///       "name"     = "temperature"
+///       "nodeType" = "Source"
+///       "sourceSettings" = {
+///         "dataSources" = ["telemetry/temperature"]
+///         "endpointRef" = "default"
+///       }
+///       }, {
+///       "graphSettings" = {
+///         "artifact" = "my-wasm-module:1.4.3"
+///         "configuration" = [{
+///           "key"   = "key1"
+///           "value" = "value1"
+///           }, {
+///           "key"   = "key2"
+///           "value" = "value2"
+///         }]
+///         "registryEndpointRef" = "my-registry-endpoint"
+///       }
+///       "name"     = "my-graph"
+///       "nodeType" = "Graph"
+///       }, {
+///       "destinationSettings" = {
+///         "dataDestination" = "telemetry/temperature/alert"
+///         "endpointRef"     = "default"
+///       }
+///       "name"     = "alert"
+///       "nodeType" = "Destination"
+///       }, {
+///       "destinationSettings" = {
+///         "dataDestination" = "my-table"
+///         "endpointRef"     = "fabric"
+///         "outputSchemaSettings" = {
+///           "schemaRef"           = "aio-sr://namespace/alert-parquet:1"
+///           "serializationFormat" = "Parquet"
+///         }
+///       }
+///       "name"     = "fabric"
+///       "nodeType" = "Destination"
+///     }]
+///     request_disk_persistence = "Enabled"
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -291,8 +391,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.DataflowGraphArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowGraphPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

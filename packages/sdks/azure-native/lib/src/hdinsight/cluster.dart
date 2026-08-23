@@ -293,6 +293,99 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hdinsight_cluster" "cluster" {
+///   cluster_name = "cluster1"
+///   properties = {
+///     cluster_definition = {
+///       component_version = {
+///         "Hadoop" = "2.7"
+///       }
+///       configurations = {
+///         "gateway" = {
+///           "restAuthCredential.isEnabled" = true
+///           "restAuthCredential.password"  = "**********"
+///           "restAuthCredential.username"  = "admin"
+///         }
+///       }
+///       kind = "hadoop"
+///     }
+///     cluster_version = "3.6"
+///     compute_profile = {
+///       roles = [{
+///         "autoscaleConfiguration" = {
+///           "recurrence" = {
+///             "schedule" = [{
+///               "days" = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+///               "timeAndCapacity" = {
+///                 "maxInstanceCount" = 3
+///                 "minInstanceCount" = 3
+///                 "time"             = "09:00"
+///               }
+///               }, {
+///               "days" = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+///               "timeAndCapacity" = {
+///                 "maxInstanceCount" = 6
+///                 "minInstanceCount" = 6
+///                 "time"             = "18:00"
+///               }
+///               }, {
+///               "days" = ["Saturday", "Sunday"]
+///               "timeAndCapacity" = {
+///                 "maxInstanceCount" = 2
+///                 "minInstanceCount" = 2
+///                 "time"             = "09:00"
+///               }
+///               }, {
+///               "days" = ["Saturday", "Sunday"]
+///               "timeAndCapacity" = {
+///                 "maxInstanceCount" = 4
+///                 "minInstanceCount" = 4
+///                 "time"             = "18:00"
+///               }
+///             }]
+///             "timeZone" = "China Standard Time"
+///           }
+///         }
+///         "hardwareProfile" = {
+///           "vmSize" = "Standard_D4_V2"
+///         }
+///         "name" = "workernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "scriptActions"       = []
+///         "targetInstanceCount" = 4
+///       }]
+///     }
+///     os_type = "Linux"
+///     storage_profile = {
+///       storageaccounts = [{
+///         "container"           = "hdinsight-autoscale-tes-2019-06-18t05-49-16-591z"
+///         "enableSecureChannel" = true
+///         "isDefault"           = true
+///         "key"                 = "storagekey"
+///         "name"                = "mystorage.blob.core.windows.net"
+///       }]
+///     }
+///     tier = "Standard"
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -305,8 +398,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hdinsight.inputs.ClusterDefinitionArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.ComputeProfileArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.StorageProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -936,6 +1029,91 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hdinsight_cluster" "cluster" {
+///   cluster_name = "cluster1"
+///   properties = {
+///     cluster_definition = {
+///       configurations = {
+///         "gateway" = {
+///           "restAuthCredential.isEnabled" = "true"
+///           "restAuthCredential.password"  = "**********"
+///           "restAuthCredential.username"  = "admin"
+///         }
+///       }
+///       kind = "Hadoop"
+///     }
+///     cluster_version = "3.6"
+///     compute_profile = {
+///       roles = [{
+///         "hardwareProfile" = {
+///           "vmSize" = "Standard_D3_V2"
+///         }
+///         "minInstanceCount" = 1
+///         "name"             = "headnode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 2
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "Standard_D3_V2"
+///         }
+///         "minInstanceCount" = 1
+///         "name"             = "workernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 4
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "Small"
+///         }
+///         "minInstanceCount" = 1
+///         "name"             = "zookeepernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 3
+///       }]
+///     }
+///     os_type = "Linux"
+///     storage_profile = {
+///       storageaccounts = [{
+///         "enableSecureChannel" = true
+///         "fileSystem"          = "default"
+///         "isDefault"           = true
+///         "key"                 = "storagekey"
+///         "name"                = "mystorage.dfs.core.windows.net"
+///       }]
+///     }
+///     tier = "Standard"
+///   }
+///   resource_group_name = "rg1"
+///   tags = {
+///     "key1" = "val1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -948,8 +1126,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hdinsight.inputs.ClusterDefinitionArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.ComputeProfileArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.StorageProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1482,6 +1660,91 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hdinsight_cluster" "cluster" {
+///   cluster_name = "cluster1"
+///   properties = {
+///     cluster_definition = {
+///       configurations = {
+///         "gateway" = {
+///           "restAuthCredential.isEnabled" = "true"
+///           "restAuthCredential.password"  = "**********"
+///           "restAuthCredential.username"  = "admin"
+///         }
+///       }
+///       kind = "Hadoop"
+///     }
+///     cluster_version = "3.5"
+///     compute_profile = {
+///       roles = [{
+///         "hardwareProfile" = {
+///           "vmSize" = "Standard_D3_V2"
+///         }
+///         "minInstanceCount" = 1
+///         "name"             = "headnode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 2
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "Standard_D3_V2"
+///         }
+///         "minInstanceCount" = 1
+///         "name"             = "workernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 4
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "Small"
+///         }
+///         "minInstanceCount" = 1
+///         "name"             = "zookeepernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 3
+///       }]
+///     }
+///     os_type = "Linux"
+///     storage_profile = {
+///       storageaccounts = [{
+///         "container"           = "containername"
+///         "enableSecureChannel" = true
+///         "isDefault"           = true
+///         "key"                 = "storagekey"
+///         "name"                = "mystorage.blob.core.windows.net"
+///       }]
+///     }
+///     tier = "Standard"
+///   }
+///   resource_group_name = "rg1"
+///   tags = {
+///     "key1" = "val1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1494,8 +1757,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hdinsight.inputs.ClusterDefinitionArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.ComputeProfileArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.StorageProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2043,6 +2306,95 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hdinsight_cluster" "cluster" {
+///   cluster_name = "cluster1"
+///   properties = {
+///     cluster_definition = {
+///       configurations = {
+///         "gateway" = {
+///           "restAuthCredential.isEnabled" = true
+///           "restAuthCredential.password"  = "**********"
+///           "restAuthCredential.username"  = "admin"
+///         }
+///       }
+///       kind = "Hadoop"
+///     }
+///     cluster_version = "3.5"
+///     compute_profile = {
+///       roles = [{
+///         "hardwareProfile" = {
+///           "vmSize" = "Standard_D3_V2"
+///         }
+///         "minInstanceCount" = 1
+///         "name"             = "headnode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "sshProfile" = {
+///               "publicKeys" = [{
+///                 "certificateData" = "**********"
+///               }]
+///             }
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 2
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "Standard_D3_V2"
+///         }
+///         "minInstanceCount" = 1
+///         "name"             = "workernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 4
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "Small"
+///         }
+///         "minInstanceCount" = 1
+///         "name"             = "zookeepernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 3
+///       }]
+///     }
+///     os_type = "Linux"
+///     storage_profile = {
+///       storageaccounts = [{
+///         "container"           = "containername"
+///         "enableSecureChannel" = true
+///         "isDefault"           = true
+///         "key"                 = "storagekey"
+///         "name"                = "mystorage.blob.core.windows.net"
+///       }]
+///     }
+///     tier = "Standard"
+///   }
+///   resource_group_name = "rg1"
+///   tags = {
+///     "key1" = "val1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2055,8 +2407,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hdinsight.inputs.ClusterDefinitionArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.ComputeProfileArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.StorageProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2653,6 +3005,109 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hdinsight_cluster" "cluster" {
+///   cluster_name = "cluster1"
+///   properties = {
+///     cluster_definition = {
+///       component_version = {
+///         "Kafka" = "2.1"
+///       }
+///       configurations = {
+///         "gateway" = {
+///           "restAuthCredential.isEnabled" = true
+///           "restAuthCredential.password"  = "**********"
+///           "restAuthCredential.username"  = "admin"
+///         }
+///       }
+///       kind = "kafka"
+///     }
+///     cluster_version = "4.0"
+///     compute_profile = {
+///       roles = [{
+///         "hardwareProfile" = {
+///           "vmSize" = "Large"
+///         }
+///         "name" = "headnode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 2
+///         }, {
+///         "dataDisksGroups" = [{
+///           "disksPerNode" = 8
+///         }]
+///         "hardwareProfile" = {
+///           "vmSize" = "Large"
+///         }
+///         "name" = "workernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 3
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "Small"
+///         }
+///         "name" = "zookeepernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 3
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "Standard_D4_v2"
+///         }
+///         "name" = "kafkamanagementnode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "kafkauser"
+///           }
+///         }
+///         "targetInstanceCount" = 2
+///       }]
+///     }
+///     kafka_rest_properties = {
+///       client_group_info = {
+///         group_id   = "00000000-0000-0000-0000-111111111111"
+///         group_name = "Kafka security group name"
+///       }
+///     }
+///     os_type = "Linux"
+///     storage_profile = {
+///       storageaccounts = [{
+///         "container"           = "containername"
+///         "enableSecureChannel" = true
+///         "isDefault"           = true
+///         "key"                 = "storagekey"
+///         "name"                = "mystorage.blob.core.windows.net"
+///       }]
+///     }
+///     tier = "Standard"
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2667,8 +3122,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hdinsight.inputs.KafkaRestPropertiesArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.ClientGroupInfoArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.StorageProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3382,6 +3837,130 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hdinsight_cluster" "cluster" {
+///   cluster_name = "cluster1"
+///   properties = {
+///     cluster_definition = {
+///       configurations = {
+///         "gateway" = {
+///           "restAuthCredential.isEnabled" = true
+///           "restAuthCredential.password"  = "**********"
+///           "restAuthCredential.username"  = "admin"
+///         }
+///       }
+///       kind = "Hadoop"
+///     }
+///     cluster_version = "3.5"
+///     compute_profile = {
+///       roles = [{
+///         "hardwareProfile" = {
+///           "vmSize" = "Standard_D3_V2"
+///         }
+///         "minInstanceCount" = 1
+///         "name"             = "headnode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "sshProfile" = {
+///               "publicKeys" = [{
+///                 "certificateData" = "**********"
+///               }]
+///             }
+///             "username" = "sshuser"
+///           }
+///         }
+///         "scriptActions"       = []
+///         "targetInstanceCount" = 2
+///         "virtualNetworkProfile" = {
+///           "id"     = "/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname"
+///           "subnet" = "/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/vnetsubnet"
+///         }
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "Standard_D3_V2"
+///         }
+///         "minInstanceCount" = 1
+///         "name"             = "workernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "sshProfile" = {
+///               "publicKeys" = [{
+///                 "certificateData" = "**********"
+///               }]
+///             }
+///             "username" = "sshuser"
+///           }
+///         }
+///         "scriptActions"       = []
+///         "targetInstanceCount" = 4
+///         "virtualNetworkProfile" = {
+///           "id"     = "/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname"
+///           "subnet" = "/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/vnetsubnet"
+///         }
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "Small"
+///         }
+///         "minInstanceCount" = 1
+///         "name"             = "zookeepernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "sshProfile" = {
+///               "publicKeys" = [{
+///                 "certificateData" = "**********"
+///               }]
+///             }
+///             "username" = "sshuser"
+///           }
+///         }
+///         "scriptActions"       = []
+///         "targetInstanceCount" = 3
+///         "virtualNetworkProfile" = {
+///           "id"     = "/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname"
+///           "subnet" = "/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/vnetsubnet"
+///         }
+///       }]
+///     }
+///     os_type = "Linux"
+///     security_profile = {
+///       cluster_users_group_d_ns = ["hdiusers"]
+///       directory_type           = "ActiveDirectory"
+///       domain                   = "DomainName"
+///       domain_user_password     = "**********"
+///       domain_username          = "DomainUsername"
+///       ldaps_urls               = ["ldaps://10.10.0.4:636"]
+///       organizational_unit_dn   = "OU=Hadoop,DC=hdinsight,DC=test"
+///     }
+///     storage_profile = {
+///       storageaccounts = [{
+///         "container"           = "containername"
+///         "enableSecureChannel" = true
+///         "isDefault"           = true
+///         "key"                 = "storage account key"
+///         "name"                = "mystorage.blob.core.windows.net"
+///       }]
+///     }
+///     tier = "Premium"
+///   }
+///   resource_group_name = "rg1"
+///   tags = {
+///     "key1" = "val1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3395,8 +3974,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hdinsight.inputs.ComputeProfileArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.SecurityProfileArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.StorageProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4052,6 +4631,81 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hdinsight_cluster" "cluster" {
+///   cluster_name = "cluster1"
+///   properties = {
+///     cluster_definition = {
+///       component_version = {
+///         "Spark" = "2.0"
+///       }
+///       configurations = {
+///         "gateway" = {
+///           "restAuthCredential.isEnabled" = true
+///           "restAuthCredential.password"  = "**********"
+///           "restAuthCredential.username"  = "admin"
+///         }
+///       }
+///       kind = "Spark"
+///     }
+///     cluster_version = "3.5"
+///     compute_profile = {
+///       roles = [{
+///         "hardwareProfile" = {
+///           "vmSize" = "Standard_D12_V2"
+///         }
+///         "minInstanceCount" = 1
+///         "name"             = "headnode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 2
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "Standard_D4_V2"
+///         }
+///         "minInstanceCount" = 1
+///         "name"             = "workernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 4
+///       }]
+///     }
+///     os_type = "Linux"
+///     storage_profile = {
+///       storageaccounts = [{
+///         "container"           = "containername"
+///         "enableSecureChannel" = true
+///         "isDefault"           = true
+///         "key"                 = "storageapikey*"
+///         "name"                = "mystorage.blob.core.windows.net"
+///       }]
+///     }
+///     tier = "Standard"
+///   }
+///   resource_group_name = "rg1"
+///   tags = {
+///     "key1" = "val1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -4064,8 +4718,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hdinsight.inputs.ClusterDefinitionArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.ComputeProfileArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.StorageProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4545,6 +5199,86 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hdinsight_cluster" "cluster" {
+///   cluster_name = "cluster1"
+///   properties = {
+///     cluster_definition = {
+///       configurations = {
+///         "gateway" = {
+///           "restAuthCredential.isEnabled" = true
+///           "restAuthCredential.password"  = "**********"
+///           "restAuthCredential.username"  = "admin"
+///         }
+///       }
+///       kind = "Hadoop"
+///     }
+///     cluster_version = "3.6"
+///     compute_profile = {
+///       roles = [{
+///         "hardwareProfile" = {
+///           "vmSize" = "Large"
+///         }
+///         "name" = "headnode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 2
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "Large"
+///         }
+///         "name" = "workernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 3
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "Small"
+///         }
+///         "name" = "zookeepernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 3
+///       }]
+///     }
+///     min_supported_tls_version = "1.2"
+///     os_type                   = "Linux"
+///     storage_profile = {
+///       storageaccounts = [{
+///         "container"           = "default8525"
+///         "enableSecureChannel" = true
+///         "isDefault"           = true
+///         "key"                 = "storagekey"
+///         "name"                = "mystorage.blob.core.windows.net"
+///       }]
+///     }
+///     tier = "Standard"
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -4557,8 +5291,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hdinsight.inputs.ClusterDefinitionArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.ComputeProfileArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.StorageProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5163,6 +5897,126 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hdinsight_cluster" "cluster" {
+///   cluster_name = "cluster1"
+///   properties = {
+///     cluster_definition = {
+///       configurations = {
+///         "ambari-conf" = {
+///           "database-name"          = "{ambari database name}"
+///           "database-server"        = "{sql server name}.database.windows.net"
+///           "database-user-name"     = "**********"
+///           "database-user-password" = "**********"
+///         }
+///         "gateway" = {
+///           "restAuthCredential.isEnabled" = true
+///           "restAuthCredential.password"  = "**********"
+///           "restAuthCredential.username"  = "admin"
+///         }
+///         "hive-env" = {
+///           "hive_database"                       = "Existing MSSQL Server database with SQL authentication"
+///           "hive_database_name"                  = "{hive metastore name}"
+///           "hive_database_type"                  = "mssql"
+///           "hive_existing_mssql_server_database" = "{hive metastore name}"
+///           "hive_existing_mssql_server_host"     = "{sql server name}.database.windows.net"
+///           "hive_hostname"                       = "{sql server name}.database.windows.net"
+///         }
+///         "hive-site" = {
+///           "javax.jdo.option.ConnectionDriverName" = "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+///           "javax.jdo.option.ConnectionPassword"   = "**********!"
+///           "javax.jdo.option.ConnectionURL"        = "jdbc:sqlserver://{sql server name}.database.windows.net;database={hive metastore name};encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300;sendStringParametersAsUnicode=true;prepareSQL=0"
+///           "javax.jdo.option.ConnectionUserName"   = "**********"
+///         }
+///         "oozie-env" = {
+///           "oozie_database"                       = "Existing MSSQL Server database with SQL authentication"
+///           "oozie_database_name"                  = "{oozie metastore name}"
+///           "oozie_database_type"                  = "mssql"
+///           "oozie_existing_mssql_server_database" = "{oozie metastore name}"
+///           "oozie_existing_mssql_server_host"     = "{sql server name}.database.windows.net"
+///           "oozie_hostname"                       = "{sql server name}.database.windows.net"
+///         }
+///         "oozie-site" = {
+///           "oozie.db.schema.name"                   = "oozie"
+///           "oozie.service.JPAService.jdbc.driver"   = "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+///           "oozie.service.JPAService.jdbc.password" = "**********"
+///           "oozie.service.JPAService.jdbc.url"      = "jdbc:sqlserver://{sql server name}.database.windows.net;database={oozie metastore name};encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300;sendStringParametersAsUnicode=true;prepareSQL=0"
+///           "oozie.service.JPAService.jdbc.username" = "**********"
+///         }
+///       }
+///       kind = "hadoop"
+///     }
+///     cluster_version = "3.6"
+///     compute_profile = {
+///       roles = [{
+///         "hardwareProfile" = {
+///           "vmSize" = "standard_d3"
+///         }
+///         "name" = "headnode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "sshProfile" = {
+///               "publicKeys" = [{
+///                 "certificateData" = "**********"
+///               }]
+///             }
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 2
+///         "virtualNetworkProfile" = {
+///           "id"     = "/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname"
+///           "subnet" = "/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/vnetsubnet"
+///         }
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "standard_d3"
+///         }
+///         "name" = "workernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "sshProfile" = {
+///               "publicKeys" = [{
+///                 "certificateData" = "**********"
+///               }]
+///             }
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 2
+///         "virtualNetworkProfile" = {
+///           "id"     = "/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname"
+///           "subnet" = "/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/vnetsubnet"
+///         }
+///       }]
+///     }
+///     os_type = "Linux"
+///     storage_profile = {
+///       storageaccounts = [{
+///         "container"           = "containername"
+///         "enableSecureChannel" = true
+///         "isDefault"           = true
+///         "key"                 = "storage account key"
+///         "name"                = "mystorage"
+///       }]
+///     }
+///   }
+///   resource_group_name = "rg1"
+///   zones               = ["1"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -5175,8 +6029,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hdinsight.inputs.ClusterDefinitionArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.ComputeProfileArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.StorageProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5841,6 +6695,85 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hdinsight_cluster" "cluster" {
+///   cluster_name = "cluster1"
+///   properties = {
+///     cluster_definition = {
+///       configurations = {
+///         "gateway" = {
+///           "restAuthCredential.isEnabled" = true
+///           "restAuthCredential.password"  = "**********"
+///           "restAuthCredential.username"  = "admin"
+///         }
+///       }
+///       kind = "hadoop"
+///     }
+///     cluster_version = "3.6"
+///     compute_isolation_properties = {
+///       enable_compute_isolation = true
+///     }
+///     compute_profile = {
+///       roles = [{
+///         "hardwareProfile" = {
+///           "vmSize" = "standard_d3"
+///         }
+///         "name" = "headnode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "sshProfile" = {
+///               "publicKeys" = [{
+///                 "certificateData" = "**********"
+///               }]
+///             }
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 2
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "standard_d3"
+///         }
+///         "name" = "workernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "sshProfile" = {
+///               "publicKeys" = [{
+///                 "certificateData" = "**********"
+///               }]
+///             }
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 2
+///       }]
+///     }
+///     os_type = "Linux"
+///     storage_profile = {
+///       storageaccounts = [{
+///         "container"           = "containername"
+///         "enableSecureChannel" = true
+///         "isDefault"           = true
+///         "key"                 = "storage account key"
+///         "name"                = "mystorage"
+///       }]
+///     }
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -5854,8 +6787,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hdinsight.inputs.ComputeIsolationPropertiesArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.ComputeProfileArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.StorageProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6357,6 +7290,88 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hdinsight_cluster" "cluster" {
+///   cluster_name = "cluster1"
+///   properties = {
+///     cluster_definition = {
+///       configurations = {
+///         "gateway" = {
+///           "restAuthCredential.isEnabled" = true
+///           "restAuthCredential.password"  = "**********"
+///           "restAuthCredential.username"  = "admin"
+///         }
+///       }
+///       kind = "Hadoop"
+///     }
+///     cluster_version = "3.6"
+///     compute_profile = {
+///       roles = [{
+///         "hardwareProfile" = {
+///           "vmSize" = "Standard_DS14_v2"
+///         }
+///         "name" = "headnode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 2
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "Standard_DS14_v2"
+///         }
+///         "name" = "workernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 3
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "Standard_DS14_v2"
+///         }
+///         "name" = "zookeepernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 3
+///       }]
+///     }
+///     disk_encryption_properties = {
+///       encryption_at_host = true
+///     }
+///     os_type = "Linux"
+///     storage_profile = {
+///       storageaccounts = [{
+///         "container"           = "default8525"
+///         "enableSecureChannel" = true
+///         "isDefault"           = true
+///         "key"                 = "storagekey"
+///         "name"                = "mystorage.blob.core.windows.net"
+///       }]
+///     }
+///     tier = "Standard"
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -6370,8 +7385,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hdinsight.inputs.ComputeProfileArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.DiskEncryptionPropertiesArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.StorageProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6888,6 +7903,88 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hdinsight_cluster" "cluster" {
+///   cluster_name = "cluster1"
+///   properties = {
+///     cluster_definition = {
+///       configurations = {
+///         "gateway" = {
+///           "restAuthCredential.isEnabled" = true
+///           "restAuthCredential.password"  = "**********"
+///           "restAuthCredential.username"  = "admin"
+///         }
+///       }
+///       kind = "Hadoop"
+///     }
+///     cluster_version = "3.6"
+///     compute_profile = {
+///       roles = [{
+///         "hardwareProfile" = {
+///           "vmSize" = "Large"
+///         }
+///         "name" = "headnode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 2
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "Large"
+///         }
+///         "name" = "workernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 3
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "Small"
+///         }
+///         "name" = "zookeepernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 3
+///       }]
+///     }
+///     encryption_in_transit_properties = {
+///       is_encryption_in_transit_enabled = true
+///     }
+///     os_type = "Linux"
+///     storage_profile = {
+///       storageaccounts = [{
+///         "container"           = "default8525"
+///         "enableSecureChannel" = true
+///         "isDefault"           = true
+///         "key"                 = "storagekey"
+///         "name"                = "mystorage.blob.core.windows.net"
+///       }]
+///     }
+///     tier = "Standard"
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -6901,8 +7998,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hdinsight.inputs.ComputeProfileArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.EncryptionInTransitPropertiesArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.StorageProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7450,6 +8547,98 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hdinsight_cluster" "cluster" {
+///   cluster_name = "cluster1"
+///   properties = {
+///     cluster_definition = {
+///       configurations = {
+///         "gateway" = {
+///           "restAuthCredential.isEnabled" = true
+///           "restAuthCredential.password"  = "**********"
+///           "restAuthCredential.username"  = "admin"
+///         }
+///       }
+///       kind = "hadoop"
+///     }
+///     cluster_version = "3.6"
+///     compute_profile = {
+///       roles = [{
+///         "hardwareProfile" = {
+///           "vmSize" = "standard_d3"
+///         }
+///         "name" = "headnode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "sshProfile" = {
+///               "publicKeys" = [{
+///                 "certificateData" = "**********"
+///               }]
+///             }
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 2
+///         "virtualNetworkProfile" = {
+///           "id"     = "/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname"
+///           "subnet" = "/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/vnetsubnet"
+///         }
+///         }, {
+///         "hardwareProfile" = {
+///           "vmSize" = "standard_d3"
+///         }
+///         "name" = "workernode"
+///         "osProfile" = {
+///           "linuxOperatingSystemProfile" = {
+///             "password" = "**********"
+///             "sshProfile" = {
+///               "publicKeys" = [{
+///                 "certificateData" = "**********"
+///               }]
+///             }
+///             "username" = "sshuser"
+///           }
+///         }
+///         "targetInstanceCount" = 2
+///         "virtualNetworkProfile" = {
+///           "id"     = "/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname"
+///           "subnet" = "/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/vnetsubnet"
+///         }
+///       }]
+///     }
+///     network_properties = {
+///       private_link = "Enabled"
+///       public_ip_tag = {
+///         ip_tag_type = "FirstPartyUsage"
+///         tag         = "/<TagName>"
+///       }
+///       resource_provider_connection = "Outbound"
+///     }
+///     os_type = "Linux"
+///     storage_profile = {
+///       storageaccounts = [{
+///         "container"           = "containername"
+///         "enableSecureChannel" = true
+///         "isDefault"           = true
+///         "key"                 = "storage account key"
+///         "name"                = "mystorage"
+///       }]
+///     }
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -7464,8 +8653,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hdinsight.inputs.NetworkPropertiesArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.IpTagArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.StorageProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -109,6 +109,45 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ec2networkacl" "ec2NetworkAcl" {
+///   location = "fshtit"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "mwwchyidvtcm"
+///     aws_account_id = "nwnjrjumgvvtfndyaxyiwbugmdk"
+///     aws_properties = {
+///       id = "qgxcaonshnjzgtrwpbtgtnec"
+///       tags = [{
+///         "key"   = "ybqfvnnjihkyssxqqynvpdtbdt"
+///         "value" = "szjckvzlsvasj"
+///       }]
+///       vpc_id = "wifperjiuulltgxcljqwnaeyscd"
+///     }
+///     aws_region        = "zmntebskjciytwfcjyj"
+///     aws_source_schema = "hqiutsyaxzitfwtekhw"
+///     aws_tags = {
+///       "key8049" = "yfihxfeqfujhxxqpzpttbewzztgdix"
+///     }
+///     public_cloud_connectors_resource_id = "thejbzeletryigazixejsz"
+///     public_cloud_resource_name          = "dniirwtrtuvjlcdcjq"
+///   }
+///   resource_group_name = "rgec2NetworkAcl"
+///   tags = {
+///     "key7602" = "dffxjegkksnmrmfplzhq"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +158,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.Ec2NetworkAclArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2NetworkAclPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2NetworkAclPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

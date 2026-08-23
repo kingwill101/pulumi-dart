@@ -1,12 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_endpoint_connection_args.dart';
 import 'private_endpoint_connection_properties_response.dart';
+import 'system_data_response.dart';
 
-/// The private endpoint connection of a workspace
+/// The private endpoint connection of a workspace.
 ///
-/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
+/// Uses Azure REST API version 2026-01-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2023-02-01, 2023-09-15-preview, 2024-09-01-preview, 2025-03-01-preview, 2025-08-01-preview, 2025-10-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databricks [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01, 2023-09-15-preview, 2024-05-01, 2024-09-01-preview, 2025-03-01-preview, 2025-08-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databricks [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -70,6 +71,29 @@ import 'private_endpoint_connection_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databricks_privateendpointconnection" "privateEndpointConnection" {
+///   private_endpoint_connection_name = "myWorkspace.23456789-1111-1111-1111-111111111111"
+///   properties = {
+///     private_link_service_connection_state = {
+///       description = "Approved by databricksadmin@contoso.com"
+///       status      = "Approved"
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   workspace_name      = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +104,8 @@ import 'private_endpoint_connection_properties_response.dart';
 /// import com.pulumi.azurenative.databricks.PrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.databricks.inputs.PrivateEndpointConnectionPropertiesArgs;
 /// import com.pulumi.azurenative.databricks.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -173,11 +197,13 @@ import 'private_endpoint_connection_properties_response.dart';
 class PrivateEndpointConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// The resource name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The private endpoint connection properties.
   late final pulumi.Output<PrivateEndpointConnectionPropertiesResponse> properties;
-  /// The resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [PrivateEndpointConnection].
@@ -197,6 +223,7 @@ class PrivateEndpointConnection extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     properties = registerOutput<PrivateEndpointConnectionPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateEndpointConnectionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

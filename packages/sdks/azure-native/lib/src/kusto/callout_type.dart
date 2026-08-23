@@ -24,4 +24,3 @@ enum CalloutType {
     throw ArgumentError('Unknown CalloutType value: $value');
   }
 }
-

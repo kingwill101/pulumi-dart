@@ -16,4 +16,3 @@ enum VmIdentityType {
     throw ArgumentError('Unknown VmIdentityType value: $value');
   }
 }
-

@@ -1,6 +1,6 @@
 /// Spark configuration reference type.
 enum SparkConfigurationReferenceType {
-  valueSparkConfigurationReference("SparkConfigurationReference");
+  sparkConfigurationReference("SparkConfigurationReference");
 
   const SparkConfigurationReferenceType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum SparkConfigurationReferenceType {
     throw ArgumentError('Unknown SparkConfigurationReferenceType value: $value');
   }
 }
-

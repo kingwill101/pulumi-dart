@@ -55,6 +55,23 @@ import 'vmware_firewall_license_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_avs_license" "license" {
+///   license_name        = "VmwareFirewall"
+///   private_cloud_name  = "cloud1"
+///   resource_group_name = "group1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +80,8 @@ import 'vmware_firewall_license_properties_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.avs.License;
 /// import com.pulumi.azurenative.avs.LicenseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

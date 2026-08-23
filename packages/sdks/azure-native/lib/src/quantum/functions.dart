@@ -8,7 +8,7 @@ import 'list_workspace_keys_result.dart';
 ///
 /// Uses Azure REST API version 2023-11-13-preview.
 ///
-/// Other available API versions: 2022-01-10-preview, 2025-01-01-preview, 2025-08-11-preview, 2025-11-01-preview, 2025-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native quantum [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-01-10-preview, 2025-01-01-preview, 2025-08-11-preview, 2025-11-01-preview, 2025-12-15-preview, 2026-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native quantum [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_quantum_get_workspace_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceResult> getWorkspace(
@@ -28,7 +28,7 @@ Future<GetWorkspaceResult> getWorkspace(
 ///
 /// Uses Azure REST API version 2023-11-13-preview.
 ///
-/// Other available API versions: 2025-01-01-preview, 2025-08-11-preview, 2025-11-01-preview, 2025-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native quantum [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-01-01-preview, 2025-08-11-preview, 2025-11-01-preview, 2025-12-15-preview, 2026-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native quantum [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_quantum_list_workspace_keys_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListWorkspaceKeysResult> listWorkspaceKeys(

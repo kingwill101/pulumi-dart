@@ -17,4 +17,3 @@ enum ReplicationRole {
     throw ArgumentError('Unknown ReplicationRole value: $value');
   }
 }
-

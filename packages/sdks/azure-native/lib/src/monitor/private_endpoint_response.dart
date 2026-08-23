@@ -2,13 +2,13 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// The Private Endpoint resource.
+/// The private endpoint resource.
 class PrivateEndpointResponse {
-  /// The ARM identifier for Private Endpoint
+  /// The ARM identifier for private endpoint.
   final pulumi.Input<String> id;
 
   /// Creates a new [PrivateEndpointResponse].
-  /// [id] The ARM identifier for Private Endpoint
+  /// [id] The ARM identifier for private endpoint.
   const PrivateEndpointResponse({
     required this.id,
   });
@@ -25,4 +25,3 @@ class PrivateEndpointResponse {
     );
   }
 }
-

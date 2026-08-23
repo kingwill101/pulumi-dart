@@ -127,6 +127,50 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_healthcareapis_iotconnectorfhirdestination" "iotConnectorFhirDestination" {
+///   fhir_destination_name = "dest1"
+///   fhir_mapping = {
+///     content = {
+///       "template" = [{
+///         "template" = {
+///           "codes" = [{
+///             "code"    = "8867-4"
+///             "display" = "Heart rate"
+///             "system"  = "http://loinc.org"
+///           }]
+///           "periodInterval" = 60
+///           "typeName"       = "heartrate"
+///           "value" = {
+///             "defaultPeriod" = 5000
+///             "unit"          = "count/min"
+///             "valueName"     = "hr"
+///             "valueType"     = "SampledData"
+///           }
+///         }
+///         "templateType" = "CodeValueFhir"
+///       }]
+///       "templateType" = "CollectionFhirTemplate"
+///     }
+///   }
+///   fhir_service_resource_id          = "subscriptions/11111111-2222-3333-4444-555566667777/resourceGroups/myrg/providers/Microsoft.HealthcareApis/workspaces/myworkspace/fhirservices/myfhirservice"
+///   iot_connector_name                = "blue"
+///   location                          = "westus"
+///   resource_group_name               = "testRG"
+///   resource_identity_resolution_type = "Create"
+///   workspace_name                    = "workspace1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -136,8 +180,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.healthcareapis.IotConnectorFhirDestination;
 /// import com.pulumi.azurenative.healthcareapis.IotConnectorFhirDestinationArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.IotMappingPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -153,13 +197,13 @@ import 'system_data_response.dart';
 ///             .fhirDestinationName("dest1")
 ///             .fhirMapping(IotMappingPropertiesArgs.builder()
 ///                 .content(Map.ofEntries(
-///                     Map.entry("template", Map.ofEntries(
+///                     Map.entry("template", Arrays.asList(Map.ofEntries(
 ///                         Map.entry("template", Map.ofEntries(
-///                             Map.entry("codes", Map.ofEntries(
+///                             Map.entry("codes", Arrays.asList(Map.ofEntries(
 ///                                 Map.entry("code", "8867-4"),
 ///                                 Map.entry("display", "Heart rate"),
 ///                                 Map.entry("system", "http://loinc.org")
-///                             )),
+///                             ))),
 ///                             Map.entry("periodInterval", 60),
 ///                             Map.entry("typeName", "heartrate"),
 ///                             Map.entry("value", Map.ofEntries(
@@ -170,7 +214,7 @@ import 'system_data_response.dart';
 ///                             ))
 ///                         )),
 ///                         Map.entry("templateType", "CodeValueFhir")
-///                     )),
+///                     ))),
 ///                     Map.entry("templateType", "CollectionFhirTemplate")
 ///                 ))
 ///                 .build())

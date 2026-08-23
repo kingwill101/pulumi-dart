@@ -1,7 +1,7 @@
 /// The identity type of the Access Connector Resource.
 enum IdentityType {
-  valueSystemAssigned("SystemAssigned"),
-  valueUserAssigned("UserAssigned");
+  systemAssigned("SystemAssigned"),
+  userAssigned("UserAssigned");
 
   const IdentityType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum IdentityType {
     throw ArgumentError('Unknown IdentityType value: $value');
   }
 }
-

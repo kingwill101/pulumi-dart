@@ -1,8 +1,8 @@
 /// The authentication type to be used to connect to the FTP server.
 enum SftpAuthenticationType {
-  valueBasic("Basic"),
-  valueSshPublicKey("SshPublicKey"),
-  valueMultiFactor("MultiFactor");
+  basic("Basic"),
+  sshPublicKey("SshPublicKey"),
+  multiFactor("MultiFactor");
 
   const SftpAuthenticationType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum SftpAuthenticationType {
     throw ArgumentError('Unknown SftpAuthenticationType value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum AutomationRuleBooleanConditionSupportedOperator {
     throw ArgumentError('Unknown AutomationRuleBooleanConditionSupportedOperator value: $value');
   }
 }
-

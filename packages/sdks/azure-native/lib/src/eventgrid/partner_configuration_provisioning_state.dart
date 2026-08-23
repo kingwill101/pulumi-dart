@@ -19,4 +19,3 @@ enum PartnerConfigurationProvisioningState {
     throw ArgumentError('Unknown PartnerConfigurationProvisioningState value: $value');
   }
 }
-
