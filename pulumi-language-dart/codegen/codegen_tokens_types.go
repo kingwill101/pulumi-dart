@@ -1,7 +1,6 @@
 package codegen
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -143,94 +142,3 @@ func canonicalProviderName(name string) string {
 	}
 	return strings.ReplaceAll(name, "_", "-")
 }
-
-// Section: schema-bound external token typing
-//
-// The schema loader path can resolve references without preserving raw `$ref`
-// strings. This helper ensures those external tokens still become typed Dart
-// symbols with explicit package imports.
-func externalTokenTypeSpec(
-	token string,
-	currentProvider string,
-	refKind string,
-	wireType string,
-	useReferenceType bool,
-	useReferenceTypes bool,
-) (packageTypeSpec, bool) {
-	token = strings.TrimSpace(token)
-	if token == "" {
-		return packageTypeSpec{}, false
-	}
-
-	providerName := tokenProviderName(token)
-	if providerName == "" || providerName == canonicalProviderName(currentProvider) {
-		return packageTypeSpec{}, false
-	}
-
-	if !useReferenceTypes {
-		switch refKind {
-		case "enum":
-			if wireType != "" {
-				return makePackageTypeSpec("scalar", wireType), true
-			}
-			return makePackageTypeSpec("scalar", "String"), true
-		case "object":
-			return makePackageTypeSpec("object", "Map<String, dynamic>"), true
-		case "resource":
-			return makePackageTypeSpec("dynamic", "dynamic"), true
-		default:
-			return makePackageTypeSpec("dynamic", "dynamic"), true
-		}
-	}
-
-	importPackage := toDartPackageName("", providerName)
-	moduleLibrary := moduleLibraryFilePath(tokenModulePath(token))
-	importPath := fmt.Sprintf("package:%s/%s", importPackage, moduleLibrary)
-	importAlias := sanitizeDartIdentifier(importPackage + "_" + strings.TrimSuffix(moduleLibrary, ".dart"))
-	className := canonicalTypeName(tokenElementName(token))
-	if isProviderResourceToken(token) {
-		className = uniqueQualifiedClassName("Provider", tokenModulePath(token), map[string]int{}, "Provider", "")
-	}
-	qualifiedType := fmt.Sprintf("%s.%s", importAlias, className)
-
-	switch refKind {
-	case "resource":
-		return packageTypeSpec{
-			Kind:           "resource",
-			DartType:       qualifiedType,
-			IsExternalRef:  true,
-			ExternalImport: importPath,
-			ExternalAlias:  importAlias,
-		}, true
-	case "enum":
-		if wireType == "" {
-			wireType = "String"
-		}
-		return packageTypeSpec{
-			Kind:              "enum",
-			DartType:          qualifiedType,
-			ReferenceType:     qualifiedType,
-			ReferenceWireType: wireType,
-			IsExternalRef:     true,
-			ExternalImport:    importPath,
-			ExternalAlias:     importAlias,
-		}, true
-	case "object":
-		if !useReferenceType {
-			return makePackageTypeSpec("object", "Map<String, dynamic>"), true
-		}
-		return packageTypeSpec{
-			Kind:              "object",
-			DartType:          qualifiedType,
-			ReferenceType:     qualifiedType,
-			ReferenceWireType: "Map<String, dynamic>",
-			IsExternalRef:     true,
-			ExternalImport:    importPath,
-			ExternalAlias:     importAlias,
-		}, true
-	default:
-		return makePackageTypeSpec("dynamic", "dynamic"), true
-	}
-}
-
-// rewriteModulePath normalizes provider module paths into Dart module layout.
