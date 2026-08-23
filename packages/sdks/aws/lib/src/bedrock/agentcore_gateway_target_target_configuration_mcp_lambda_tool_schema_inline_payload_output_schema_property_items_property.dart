@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsProperty {
   /// Description of the property.
   final pulumi.Input<String>? description;
-  /// JSON-encoded schema definition for array items. Used for complex nested structures. Cannot be used with `properties_json`.
+  /// JSON-encoded schema definition for array items. Used for complex nested structures. Cannot be used with `propertiesJson`.
   final pulumi.Input<String>? itemsJson;
   /// Name of the property.
   final pulumi.Input<String> name;
-  /// JSON-encoded schema definition for object properties. Used for complex nested structures. Cannot be used with `items_json`.
+  /// JSON-encoded schema definition for object properties. Used for complex nested structures. Cannot be used with `itemsJson`.
   final pulumi.Input<String>? propertiesJson;
   /// Whether this property is required. Defaults to `false`.
   final pulumi.Input<bool>? required;
@@ -18,9 +18,9 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadO
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsProperty].
   /// [description] Description of the property.
-  /// [itemsJson] JSON-encoded schema definition for array items. Used for complex nested structures. Cannot be used with `properties_json`.
+  /// [itemsJson] JSON-encoded schema definition for array items. Used for complex nested structures. Cannot be used with `propertiesJson`.
   /// [name] Name of the property.
-  /// [propertiesJson] JSON-encoded schema definition for object properties. Used for complex nested structures. Cannot be used with `items_json`.
+  /// [propertiesJson] JSON-encoded schema definition for object properties. Used for complex nested structures. Cannot be used with `itemsJson`.
   /// [required] Whether this property is required. Defaults to `false`.
   /// [type] Data type of the property.
   const AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsProperty({
@@ -54,4 +54,3 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadO
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'license_configuration_state.dart';
 
 /// Provides a License Manager license configuration resource.
 ///
-/// &gt; **Note:** Removing the `license_count` attribute is not supported by the License Manager API.
+/// &gt; **Note:** Removing the `licenseCount` attribute is not supported by the License Manager API.
 ///
 /// ## Example Usage
 ///
@@ -97,6 +97,27 @@ import 'license_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_licensemanager_licenseconfiguration" "example" {
+///   name                     = "Example"
+///   description              = "Example"
+///   license_count            = 10
+///   license_count_hard_limit = true
+///   license_counting_type    = "Socket"
+///   license_rules            = ["#minimumSockets=2"]
+///   tags = {
+///     "foo" = "barr"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +126,8 @@ import 'license_configuration_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.licensemanager.LicenseConfiguration;
 /// import com.pulumi.aws.licensemanager.LicenseConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -148,18 +169,6 @@ import 'license_configuration_state.dart';
 /// ```
 ///
 ///
-/// ## Rules
-///
-/// License rules should be in the format of `#RuleType=RuleValue`. Supported rule types:
-///
-/// * `minimumVcpus` - Resource must have minimum vCPU count in order to use the license. Default: 1
-/// * `maximumVcpus` - Resource must have maximum vCPU count in order to use the license. Default: unbounded, limit: 10000
-/// * `minimumCores` - Resource must have minimum core count in order to use the license. Default: 1
-/// * `maximumCores` - Resource must have maximum core count in order to use the license. Default: unbounded, limit: 10000
-/// * `minimumSockets` - Resource must have minimum socket count in order to use the license. Default: 1
-/// * `maximumSockets` - Resource must have maximum socket count in order to use the license. Default: unbounded, limit: 10000
-/// * `allowedTenancy` - Defines where the license can be used. If set, restricts license usage to selected tenancies. Specify a comma delimited list of `EC2-Default`, `EC2-DedicatedHost`, `EC2-DedicatedInstance`
-///
 /// ## Import
 ///
 /// Using `pulumi import`, import license configurations using the `id`. For example:
@@ -186,9 +195,9 @@ class LicenseConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> ownerAccountId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [LicenseConfiguration].

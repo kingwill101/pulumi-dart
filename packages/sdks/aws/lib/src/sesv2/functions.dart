@@ -64,6 +64,19 @@ import 'get_email_identity_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_sesv2_getconfigurationset" "example" {
+///   configuration_set_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +85,8 @@ import 'get_email_identity_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sesv2.Sesv2Functions;
 /// import com.pulumi.aws.sesv2.inputs.GetConfigurationSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -171,6 +184,19 @@ Future<GetConfigurationSetResult> getConfigurationSet(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_sesv2_getdedicatedippool" "example" {
+///   pool_name = "my-pool"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +205,8 @@ Future<GetConfigurationSetResult> getConfigurationSet(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sesv2.Sesv2Functions;
 /// import com.pulumi.aws.sesv2.inputs.GetDedicatedIpPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -278,6 +304,19 @@ Future<GetDedicatedIpPoolResult> getDedicatedIpPool(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_sesv2_getemailidentity" "example" {
+///   email_identity = "example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -286,8 +325,8 @@ Future<GetDedicatedIpPoolResult> getDedicatedIpPool(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sesv2.Sesv2Functions;
 /// import com.pulumi.aws.sesv2.inputs.GetEmailIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -400,6 +439,22 @@ Future<GetEmailIdentityResult> getEmailIdentity(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_sesv2_getemailidentity" "example" {
+///   email_identity = "example.com"
+/// }
+/// data "aws_sesv2_getemailidentitymailfromattributes" "exampleGetEmailIdentityMailFromAttributes" {
+///   email_identity = data.aws_sesv2_getemailidentity.example.email_identity
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -409,8 +464,8 @@ Future<GetEmailIdentityResult> getEmailIdentity(
 /// import com.pulumi.aws.sesv2.Sesv2Functions;
 /// import com.pulumi.aws.sesv2.inputs.GetEmailIdentityArgs;
 /// import com.pulumi.aws.sesv2.inputs.GetEmailIdentityMailFromAttributesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

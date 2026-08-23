@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainIdentityCenterOptions {
   final pulumi.Input<bool>? enabledApiAccess;
   final pulumi.Input<String>? identityCenterInstanceArn;
+  /// Element of the JWT assertion to use for roles. Default is `roles`.
   final pulumi.Input<String>? rolesKey;
+  /// Element of the JWT assertion to use for the user name. Default is `sub`.
   final pulumi.Input<String>? subjectKey;
 
   /// Creates a new [DomainIdentityCenterOptions].
   /// [enabledApiAccess] Optional.
   /// [identityCenterInstanceArn] Optional.
-  /// [rolesKey] Optional.
-  /// [subjectKey] Optional.
+  /// [rolesKey] Element of the JWT assertion to use for roles. Default is `roles`.
+  /// [subjectKey] Element of the JWT assertion to use for the user name. Default is `sub`.
   const DomainIdentityCenterOptions({
     this.enabledApiAccess,
     this.identityCenterInstanceArn,
@@ -38,4 +40,3 @@ class DomainIdentityCenterOptions {
     );
   }
 }
-

@@ -5,22 +5,25 @@ import 'network_peering_connection_timeouts.dart';
 
 /// Input properties used for looking up and filtering NetworkPeeringConnection resources.
 class NetworkPeeringConnectionState {
+  /// ARN of the ODB network peering connection.
   final pulumi.Input<String>? arn;
   /// Created time of the ODB network peering connection.
   final pulumi.Input<String>? createdAt;
   /// Display name of the ODB network peering connection. Changing this will force Terraform to create a new resource.
-  ///
-  /// The following arguments are optional:
   final pulumi.Input<String>? displayName;
-  /// ARN of the ODB network that initiates the peering connection. Changing this will force Terraform to create a new resource. Either odb_network_id or odb_network_arn should be used.
+  /// ARN of the ODB network that initiates the peering connection. Changing this will force Terraform to create a new resource. Either odbNetworkId or odbNetworkArn should be used.
   final pulumi.Input<String>? odbNetworkArn;
-  /// The unique identifier of the ODB network that initiates the peering connection. A sample ID is `odbpcx-abcdefgh12345678`. Changing this will force Terraform to create a new resource.
+  /// Unique identifier of the ODB network that initiates the peering connection. A sample ID is `odbpcx-abcdefgh12345678`. Changing this will force Terraform to create a new resource.
   final pulumi.Input<String>? odbNetworkId;
   /// Type of the ODB peering connection.
   final pulumi.Input<String>? odbPeeringConnectionType;
   /// ARN of the peer network peering connection.
   final pulumi.Input<String>? peerNetworkArn;
-  /// The unique identifier of the ODB peering connection. Changing this will force Terraform to create a new resource. Either odb_network_id or odb_network_arn should be used.
+  /// Set of peer network cidrs. Add remove is only supported during update operation. During create this attribute is compute only.
+  final pulumi.Input<List<String>>? peerNetworkCidrs;
+  /// Unique identifier of the ODB peering connection. Changing this will force Terraform to create a new resource. Either odbNetworkId or odbNetworkArn should be used.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String>? peerNetworkId;
   /// Progress of the ODB network peering connection.
   final pulumi.Input<double>? percentProgress;
@@ -28,29 +31,30 @@ class NetworkPeeringConnectionState {
   final pulumi.Input<String>? region;
   /// Status of the ODB network peering connection.
   final pulumi.Input<String>? status;
-  /// The reason for the current status of the ODB peering connection.
+  /// Reason for the current status of the ODB peering connection.
   final pulumi.Input<String>? statusReason;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including inherited tags.
+  /// Map of tags assigned to the resource, including inherited tags.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<NetworkPeeringConnectionTimeouts>? timeouts;
 
   /// Creates a new [NetworkPeeringConnectionState].
-  /// [arn] Optional.
+  /// [arn] ARN of the ODB network peering connection.
   /// [createdAt] Created time of the ODB network peering connection.
   /// [displayName] Display name of the ODB network peering connection. Changing this will force Terraform to create a new resource.
-  /// [odbNetworkArn] ARN of the ODB network that initiates the peering connection. Changing this will force Terraform to create a new resource. Either odb_network_id or odb_network_arn should be used.
-  /// [odbNetworkId] The unique identifier of the ODB network that initiates the peering connection. A sample ID is `odbpcx-abcdefgh12345678`. Changing this will force Terraform to create a new resource.
+  /// [odbNetworkArn] ARN of the ODB network that initiates the peering connection. Changing this will force Terraform to create a new resource. Either odbNetworkId or odbNetworkArn should be used.
+  /// [odbNetworkId] Unique identifier of the ODB network that initiates the peering connection. A sample ID is `odbpcx-abcdefgh12345678`. Changing this will force Terraform to create a new resource.
   /// [odbPeeringConnectionType] Type of the ODB peering connection.
   /// [peerNetworkArn] ARN of the peer network peering connection.
-  /// [peerNetworkId] The unique identifier of the ODB peering connection. Changing this will force Terraform to create a new resource. Either odb_network_id or odb_network_arn should be used.
+  /// [peerNetworkCidrs] Set of peer network cidrs. Add remove is only supported during update operation. During create this attribute is compute only.
+  /// [peerNetworkId] Unique identifier of the ODB peering connection. Changing this will force Terraform to create a new resource. Either odbNetworkId or odbNetworkArn should be used.
   /// [percentProgress] Progress of the ODB network peering connection.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Status of the ODB network peering connection.
-  /// [statusReason] The reason for the current status of the ODB peering connection.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including inherited tags.
+  /// [statusReason] Reason for the current status of the ODB peering connection.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including inherited tags.
   /// [timeouts] Optional.
   const NetworkPeeringConnectionState({
     this.arn,
@@ -60,6 +64,7 @@ class NetworkPeeringConnectionState {
     this.odbNetworkId,
     this.odbPeeringConnectionType,
     this.peerNetworkArn,
+    this.peerNetworkCidrs,
     this.peerNetworkId,
     this.percentProgress,
     this.region,
@@ -79,6 +84,7 @@ class NetworkPeeringConnectionState {
       'odbNetworkId': ?odbNetworkId,
       'odbPeeringConnectionType': ?odbPeeringConnectionType,
       'peerNetworkArn': ?peerNetworkArn,
+      'peerNetworkCidrs': ?peerNetworkCidrs,
       'peerNetworkId': ?peerNetworkId,
       'percentProgress': ?percentProgress,
       'region': ?region,
@@ -99,6 +105,7 @@ class NetworkPeeringConnectionState {
       odbNetworkId: (() { final guardedValue = map['odbNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       odbPeeringConnectionType: (() { final guardedValue = map['odbPeeringConnectionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       peerNetworkArn: (() { final guardedValue = map['peerNetworkArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peerNetworkCidrs: (() { final guardedValue = map['peerNetworkCidrs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       peerNetworkId: (() { final guardedValue = map['peerNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       percentProgress: (() { final guardedValue = map['percentProgress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -110,4 +117,3 @@ class NetworkPeeringConnectionState {
     );
   }
 }
-

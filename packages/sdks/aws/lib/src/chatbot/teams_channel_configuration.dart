@@ -91,6 +91,26 @@ import 'teams_channel_configuration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_chatbot_teamschannelconfiguration" "test" {
+///   channel_id         = "C07EZ1ABC23"
+///   configuration_name = "mitt-lags-kanal"
+///   iam_role_arn       = testAwsIamRole.arn
+///   team_id            = "74361522-da01-538d-aa2e-ac7918c6bb92"
+///   tenant_id          = "1234"
+///   tags = {
+///     "Name" = "mitt-lags-kanal"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +119,8 @@ import 'teams_channel_configuration_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.chatbot.TeamsChannelConfiguration;
 /// import com.pulumi.aws.chatbot.TeamsChannelConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -141,7 +161,7 @@ import 'teams_channel_configuration_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Chatbot Microsoft Teams Channel Configuration using the `team_id`. For example:
+/// Using `pulumi import`, import Chatbot Microsoft Teams Channel Configuration using the `teamId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:chatbot/teamsChannelConfiguration:TeamsChannelConfiguration example 5f4f15d2-b958-522a-8333-124aa8bf0925
@@ -167,7 +187,7 @@ class TeamsChannelConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> snsTopicArns;
   /// Map of tags assigned to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ID of the Microsoft Team authorized with AWS Chatbot. To get the team ID, you must perform the initial authorization flow with Microsoft Teams in the AWS Chatbot console. Then you can copy and paste the team ID from the console.
   late final pulumi.Output<String> teamId;

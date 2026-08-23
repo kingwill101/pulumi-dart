@@ -8,7 +8,7 @@ import 'contact_flow_state.dart';
 /// This resource embeds or references Contact Flows specified in Amazon Connect Contact Flow Language. For more information see
 /// [Amazon Connect Flow language](https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html)
 ///
-/// !&gt; **WARN:** Contact Flows exported from the Console [Contact Flow import/export](https://docs.aws.amazon.com/connect/latest/adminguide/contact-flow-import-export.html) are not in the Amazon Connect Contact Flow Language and can not be used with this resource. Instead, the recommendation is to use the AWS CLI [`describe-contact-flow`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/connect/describe-contact-flow.html).
+/// &gt; **WARN:** Contact Flows exported from the Console [Contact Flow import/export](https://docs.aws.amazon.com/connect/latest/adminguide/contact-flow-import-export.html) are not in the Amazon Connect Contact Flow Language and can not be used with this resource. Instead, the recommendation is to use the AWS CLI [`describe-contact-flow`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/connect/describe-contact-flow.html).
 /// See example below which uses `jq` to extract the `Content` attribute and saves it to a local file.
 ///
 /// ## Example Usage
@@ -183,7 +183,7 @@ import 'contact_flow_state.dart';
 /// 						"Errors":     []interface{}{},
 /// 						"Conditions": []interface{}{},
 /// 					},
-/// 					"Parameters": map[string]interface{}{
+/// 					"Parameters": map[string]string{
 /// 						"Text": "Thanks for calling the sample flow!",
 /// 					},
 /// 				},
@@ -218,6 +218,48 @@ import 'contact_flow_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_contactflow" "test" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name        = "Test"
+///   description = "Test Contact Flow Description"
+///   type        = "CONTACT_FLOW"
+///   content = jsonencode({
+///     "Version"     = "2019-10-30"
+///     "StartAction" = "12345678-1234-1234-1234-123456789012"
+///     "Actions" = [{
+///       "Identifier" = "12345678-1234-1234-1234-123456789012"
+///       "Type"       = "MessageParticipant"
+///       "Transitions" = {
+///         "NextAction" = "abcdef-abcd-abcd-abcd-abcdefghijkl"
+///         "Errors"     = []
+///         "Conditions" = []
+///       }
+///       "Parameters" = {
+///         "Text" = "Thanks for calling the sample flow!"
+///       }
+///       }, {
+///       "Identifier"  = "abcdef-abcd-abcd-abcd-abcdefghijkl"
+///       "Type"        = "DisconnectParticipant"
+///       "Transitions" = {}
+///       "Parameters"  = {}
+///     }]
+///   })
+///   tags = {
+///     "Name"        = "Test Contact Flow"
+///     "Application" = "Example"
+///     "Method"      = "Create"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -227,8 +269,8 @@ import 'contact_flow_state.dart';
 /// import com.pulumi.aws.connect.ContactFlow;
 /// import com.pulumi.aws.connect.ContactFlowArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -436,6 +478,32 @@ import 'contact_flow_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_contactflow" "test" {
+///   instance_id  = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name         = "Test"
+///   description  = "Test Contact Flow Description"
+///   type         = "CONTACT_FLOW"
+///   filename     = "contact_flow.json"
+///   content_hash = filebase64sha256("contact_flow.json")
+///   tags = {
+///     "Name"        = "Test Contact Flow"
+///     "Application" = "Example"
+///     "Method"      = "Create"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -446,8 +514,8 @@ import 'contact_flow_state.dart';
 /// import com.pulumi.aws.connect.ContactFlowArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64sha256Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -503,7 +571,7 @@ import 'contact_flow_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amazon Connect Contact Flows using the `instance_id` and `contact_flow_id` separated by a colon (`:`). For example:
+/// Using `pulumi import`, import Amazon Connect Contact Flows using the `instanceId` and `contactFlowId` separated by a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:connect/contactFlow:ContactFlow example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
@@ -527,9 +595,9 @@ class ContactFlow extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Tags to apply to the Contact Flow. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the Contact Flow. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Specifies the type of the Contact Flow. Defaults to `CONTACT_FLOW`. Allowed Values are: `CONTACT_FLOW`, `CUSTOMER_QUEUE`, `CUSTOMER_HOLD`, `CUSTOMER_WHISPER`, `AGENT_HOLD`, `AGENT_WHISPER`, `OUTBOUND_WHISPER`, `AGENT_TRANSFER`, `QUEUE_TRANSFER`.
   late final pulumi.Output<String?> type;

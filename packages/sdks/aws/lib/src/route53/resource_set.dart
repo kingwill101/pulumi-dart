@@ -79,6 +79,23 @@ import 'resource_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53recoveryreadiness_resourceset" "example" {
+///   resource_set_name = my-cw-alarm-set
+///   resource_set_type = "AWS::CloudWatch::Alarm"
+///   resources {
+///     resource_arn = exampleAwsCloudwatchMetricAlarm.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +105,8 @@ import 'resource_set_state.dart';
 /// import com.pulumi.aws.route53recoveryreadiness.ResourceSet;
 /// import com.pulumi.aws.route53recoveryreadiness.ResourceSetArgs;
 /// import com.pulumi.aws.route53recoveryreadiness.inputs.ResourceSetResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -143,9 +160,9 @@ class ResourceSet extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<Map<String, dynamic>>> resources;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ResourceSet].

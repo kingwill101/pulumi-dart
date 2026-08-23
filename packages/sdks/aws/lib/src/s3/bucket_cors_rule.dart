@@ -11,7 +11,7 @@ class BucketCorsRule {
   final pulumi.Input<List<String>> allowedOrigins;
   /// One or more headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript `XMLHttpRequest` object).
   final pulumi.Input<List<String>>? exposeHeaders;
-  /// Specifies time in seconds that browser can cache the response for a preflight request.
+  /// Time in seconds that browser can cache the response for a preflight request.
   final pulumi.Input<int>? maxAgeSeconds;
 
   /// Creates a new [BucketCorsRule].
@@ -19,7 +19,7 @@ class BucketCorsRule {
   /// [allowedMethods] One or more HTTP methods that you allow the origin to execute. Can be `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
   /// [allowedOrigins] One or more origins you want customers to be able to access the bucket from.
   /// [exposeHeaders] One or more headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript `XMLHttpRequest` object).
-  /// [maxAgeSeconds] Specifies time in seconds that browser can cache the response for a preflight request.
+  /// [maxAgeSeconds] Time in seconds that browser can cache the response for a preflight request.
   const BucketCorsRule({
     this.allowedHeaders,
     required this.allowedMethods,
@@ -48,4 +48,3 @@ class BucketCorsRule {
     );
   }
 }
-

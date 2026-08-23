@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StreamProcessorOutputS3Destination {
   /// Name of the Amazon S3 bucket you want to associate with the streaming video project.
   final pulumi.Input<String>? bucket;
-  /// The prefix value of the location within the bucket that you want the information to be published to.
+  /// Prefix value of the location within the bucket that you want the information to be published to.
   final pulumi.Input<String>? keyPrefix;
 
   /// Creates a new [StreamProcessorOutputS3Destination].
   /// [bucket] Name of the Amazon S3 bucket you want to associate with the streaming video project.
-  /// [keyPrefix] The prefix value of the location within the bucket that you want the information to be published to.
+  /// [keyPrefix] Prefix value of the location within the bucket that you want the information to be published to.
   const StreamProcessorOutputS3Destination({
     this.bucket,
     this.keyPrefix,
@@ -30,4 +30,3 @@ class StreamProcessorOutputS3Destination {
     );
   }
 }
-

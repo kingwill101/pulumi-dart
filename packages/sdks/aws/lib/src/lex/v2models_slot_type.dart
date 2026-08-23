@@ -132,54 +132,93 @@ import 'v2models_slot_type_value_selection_setting.dart';
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/lex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// example, err := lex.NewV2modelsBot(ctx, "example", &lex.V2modelsBotArgs{
-/// Name: pulumi.String("example"),
-/// IdleSessionTtlInSeconds: pulumi.Int(60),
-/// RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
-/// DataPrivacies: lex.V2modelsBotDataPrivacyArray{
-/// &lex.V2modelsBotDataPrivacyArgs{
-/// ChildDirected: pulumi.Bool(true),
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := lex.NewV2modelsBot(ctx, "example", &lex.V2modelsBotArgs{
+/// 			Name:                    pulumi.String("example"),
+/// 			IdleSessionTtlInSeconds: pulumi.Int(60),
+/// 			RoleArn:                 pulumi.Any(exampleAwsIamRole.Arn),
+/// 			DataPrivacies: lex.V2modelsBotDataPrivacyArray{
+/// 				&lex.V2modelsBotDataPrivacyArgs{
+/// 					ChildDirected: pulumi.Bool(true),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleV2modelsBotLocale, err := lex.NewV2modelsBotLocale(ctx, "example", &lex.V2modelsBotLocaleArgs{
+/// 			LocaleId:                     pulumi.String("en_US"),
+/// 			BotId:                        example.ID().ToIDOutput().ToStringOutput(),
+/// 			BotVersion:                   pulumi.String("DRAFT"),
+/// 			NLuIntentConfidenceThreshold: pulumi.Float64(0.7),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = lex.NewV2modelsBotVersion(ctx, "example", &lex.V2modelsBotVersionArgs{
+/// 			BotId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			LocaleSpecification: exampleV2modelsBotLocale.LocaleId.ApplyT(func(localeId string) (map[string]map[string]string, error) {
+/// 				return map[string]map[string]string{
+/// 					localeId: map[string]string{
+/// 						"sourceBotVersion": "DRAFT",
+/// 					},
+/// 				}, nil
+/// 			}).(pulumi.MapOutput),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = lex.NewV2modelsSlotType(ctx, "example", &lex.V2modelsSlotTypeArgs{
+/// 			BotId:      example.ID().ToIDOutput().ToStringOutput(),
+/// 			BotVersion: exampleV2modelsBotLocale.BotVersion,
+/// 			Name:       pulumi.String("example"),
+/// 			LocaleId:   exampleV2modelsBotLocale.LocaleId,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// exampleV2modelsBotLocale, err := lex.NewV2modelsBotLocale(ctx, "example", &lex.V2modelsBotLocaleArgs{
-/// LocaleId: pulumi.String("en_US"),
-/// BotId: example.ID(),
-/// BotVersion: pulumi.String("DRAFT"),
-/// NLuIntentConfidenceThreshold: pulumi.Float64(0.7),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// _, err = lex.NewV2modelsBotVersion(ctx, "example", &lex.V2modelsBotVersionArgs{
-/// BotId: example.ID(),
-/// LocaleSpecification: exampleV2modelsBotLocale.LocaleId.ApplyT(func(localeId string) (map[string]map[string]interface{}, error) {
-/// return map[string]map[string]interface{}{
-/// localeId: map[string]interface{}{
-/// "sourceBotVersion": "DRAFT",
-/// },
-/// }, nil
-/// }).(pulumi.Map[string]map[string]interface{}Output),
-/// })
-/// if err != nil {
-/// return err
+///
+/// resource "aws_lex_v2modelsbot" "example" {
+///   name                        = "example"
+///   idle_session_ttl_in_seconds = 60
+///   role_arn                    = exampleAwsIamRole.arn
+///   data_privacies {
+///     child_directed = true
+///   }
 /// }
-/// _, err = lex.NewV2modelsSlotType(ctx, "example", &lex.V2modelsSlotTypeArgs{
-/// BotId: example.ID(),
-/// BotVersion: exampleV2modelsBotLocale.BotVersion,
-/// Name: pulumi.String("example"),
-/// LocaleId: exampleV2modelsBotLocale.LocaleId,
-/// })
-/// if err != nil {
-/// return err
+/// resource "aws_lex_v2modelsbotlocale" "example" {
+///   locale_id                        = "en_US"
+///   bot_id                           = aws_lex_v2modelsbot.example.id
+///   bot_version                      = "DRAFT"
+///   n_lu_intent_confidence_threshold = 0.7
 /// }
-/// return nil
-/// })
+/// resource "aws_lex_v2modelsbotversion" "example" {
+///   bot_id = aws_lex_v2modelsbot.example.id
+///   locale_specification = {
+///     aws_lex_v2modelsbotlocale.example.locale_id = {
+///       source_bot_version = "DRAFT"
+///     }
+///   }
+/// }
+/// resource "aws_lex_v2modelsslottype" "example" {
+///   bot_id      = aws_lex_v2modelsbot.example.id
+///   bot_version = aws_lex_v2modelsbotlocale.example.bot_version
+///   name        = "example"
+///   locale_id   = aws_lex_v2modelsbotlocale.example.locale_id
 /// }
 /// ```
 /// ```java
@@ -195,10 +234,11 @@ import 'v2models_slot_type_value_selection_setting.dart';
 /// import com.pulumi.aws.lex.V2modelsBotLocaleArgs;
 /// import com.pulumi.aws.lex.V2modelsBotVersion;
 /// import com.pulumi.aws.lex.V2modelsBotVersionArgs;
+/// import com.pulumi.aws.lex.inputs.V2modelsBotVersionLocaleSpecificationArgs;
 /// import com.pulumi.aws.lex.V2modelsSlotType;
 /// import com.pulumi.aws.lex.V2modelsSlotTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -278,7 +318,7 @@ import 'v2models_slot_type_value_selection_setting.dart';
 /// ```
 ///
 ///
-/// ### value_selection_setting Usage
+/// ### valueSelectionSetting Usage
 ///
 ///
 /// ```typescript
@@ -406,6 +446,33 @@ import 'v2models_slot_type_value_selection_setting.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lex_v2modelsslottype" "example" {
+///   bot_id      = exampleAwsLexv2modelsBot.id
+///   bot_version = exampleAwsLexv2modelsBotLocale.botVersion
+///   name        = "example"
+///   locale_id   = exampleAwsLexv2modelsBotLocale.localeId
+///   value_selection_setting = {
+///     resolution_strategy = "OriginalValue"
+///     advanced_recognition_settings = [{
+///       "audioRecognitionStrategy" = "UseSlotValuesAsCustomVocabulary"
+///     }]
+///   }
+///   slot_type_values {
+///     sample_values {
+///       value = "exampleValue"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -415,9 +482,11 @@ import 'v2models_slot_type_value_selection_setting.dart';
 /// import com.pulumi.aws.lex.V2modelsSlotType;
 /// import com.pulumi.aws.lex.V2modelsSlotTypeArgs;
 /// import com.pulumi.aws.lex.inputs.V2modelsSlotTypeValueSelectionSettingArgs;
+/// import com.pulumi.aws.lex.inputs.V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSettingArgs;
 /// import com.pulumi.aws.lex.inputs.V2modelsSlotTypeSlotTypeValueArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.lex.inputs.V2modelsSlotTypeSlotTypeValueSampleValueArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -471,7 +540,7 @@ import 'v2models_slot_type_value_selection_setting.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Lex V2 Models Slot Type using using a comma-delimited string concatenating `bot_id`, `bot_version`, `locale_id`, and `slot_type_id`. For example:
+/// Using `pulumi import`, import Lex V2 Models Slot Type using using a comma-delimited string concatenating `botId`, `botVersion`, `localeId`, and `slotTypeId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:lex/v2modelsSlotType:V2modelsSlotType example bot-1234,DRAFT,en_US,slot_type-id-12345678
@@ -482,12 +551,12 @@ class V2modelsSlotType extends pulumi.CustomResource {
   /// Version of the bot associated with this slot type.
   late final pulumi.Output<String> botVersion;
   /// Specifications for a composite slot type.
-  /// See `composite_slot_type_setting` argument reference below.
+  /// See `compositeSlotTypeSetting` argument reference below.
   late final pulumi.Output<List<Map<String, dynamic>>?> compositeSlotTypeSettings;
   /// Description of the slot type.
   late final pulumi.Output<String?> description;
   /// Type of external information used to create the slot type.
-  /// See `external_source_setting` argument reference below.
+  /// See `externalSourceSetting` argument reference below.
   late final pulumi.Output<List<Map<String, dynamic>>?> externalSourceSettings;
   /// Identifier of the language and locale where this slot type is used.
   /// All of the bots, slot types, and slots used by the intent must have the same locale.
@@ -506,11 +575,11 @@ class V2modelsSlotType extends pulumi.CustomResource {
   late final pulumi.Output<String> slotTypeId;
   /// List of SlotTypeValue objects that defines the values that the slot type can take.
   /// Each value can have a list of synonyms, additional values that help train the machine learning model about the values that it resolves for a slot.
-  /// See `slot_type_values` argument reference below.
+  /// See `slotTypeValues` argument reference below.
   late final pulumi.Output<List<Map<String, dynamic>>?> slotTypeValues;
   late final pulumi.Output<V2modelsSlotTypeTimeouts?> timeouts;
   /// Determines the strategy that Amazon Lex uses to select a value from the list of possible values.
-  /// See `value_selection_setting` argument reference below.
+  /// See `valueSelectionSetting` argument reference below.
   late final pulumi.Output<V2modelsSlotTypeValueSelectionSetting?> valueSelectionSetting;
 
   /// Creates a new [V2modelsSlotType].

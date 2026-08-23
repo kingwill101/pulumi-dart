@@ -5,14 +5,14 @@ import 'subscriber_source_aws_log_source_resource.dart';
 import 'subscriber_source_custom_log_source_resource.dart';
 
 class SubscriberSource {
-  /// Amazon Security Lake supports log and event collection for natively supported AWS services. See `aws_log_source_resource` Block below.
+  /// Amazon Security Lake supports log and event collection for natively supported AWS services. See `awsLogSourceResource` Block below.
   final pulumi.Input<SubscriberSourceAwsLogSourceResource>? awsLogSourceResource;
-  /// Amazon Security Lake supports custom source types. See `custom_log_source_resource` Block below.
+  /// Amazon Security Lake supports custom source types. See `customLogSourceResource` Block below.
   final pulumi.Input<SubscriberSourceCustomLogSourceResource>? customLogSourceResource;
 
   /// Creates a new [SubscriberSource].
-  /// [awsLogSourceResource] Amazon Security Lake supports log and event collection for natively supported AWS services. See `aws_log_source_resource` Block below.
-  /// [customLogSourceResource] Amazon Security Lake supports custom source types. See `custom_log_source_resource` Block below.
+  /// [awsLogSourceResource] Amazon Security Lake supports log and event collection for natively supported AWS services. See `awsLogSourceResource` Block below.
+  /// [customLogSourceResource] Amazon Security Lake supports custom source types. See `customLogSourceResource` Block below.
   const SubscriberSource({
     this.awsLogSourceResource,
     this.customLogSourceResource,
@@ -32,4 +32,3 @@ class SubscriberSource {
     );
   }
 }
-

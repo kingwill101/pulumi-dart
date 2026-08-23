@@ -7,7 +7,7 @@ import 'vpn_gateway_attachment_state.dart';
 ///
 /// &gt; **Note:** The `aws.ec2.VpnGateway`
 /// resource can also automatically attach the Virtual Private Gateway it creates
-/// to an existing VPC by setting the `vpc_id` attribute accordingly.
+/// to an existing VPC by setting the `vpcId` attribute accordingly.
 ///
 /// ## Example Usage
 ///
@@ -91,14 +91,36 @@ import 'vpn_gateway_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpnGatewayAttachment(ctx, "vpn_attachment", &ec2.VpnGatewayAttachmentArgs{
-/// 			VpcId:        network.ID(),
-/// 			VpnGatewayId: vpn.ID(),
+/// 			VpcId:        network.ID().ToIDOutput().ToStringOutput(),
+/// 			VpnGatewayId: vpn.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "network" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_vpngateway" "vpn" {
+///   tags = {
+///     "Name" = "example-vpn-gateway"
+///   }
+/// }
+/// resource "aws_ec2_vpngatewayattachment" "vpn_attachment" {
+///   vpc_id         = aws_ec2_vpc.network.id
+///   vpn_gateway_id = aws_ec2_vpngateway.vpn.id
 /// }
 /// ```
 /// ```java
@@ -113,8 +135,8 @@ import 'vpn_gateway_attachment_state.dart';
 /// import com.pulumi.aws.ec2.VpnGatewayArgs;
 /// import com.pulumi.aws.ec2.VpnGatewayAttachment;
 /// import com.pulumi.aws.ec2.VpnGatewayAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -98,6 +98,23 @@ import 'license_grant_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_licensemanager_licensegrant" "test" {
+///   name               = "share-license-with-account"
+///   allowed_operations = ["ListPurchasedLicenses", "CheckoutLicense", "CheckInLicense", "ExtendConsumptionLicense", "CreateToken"]
+///   license_arn        = "arn:aws:license-manager::111111111111:license:l-exampleARN"
+///   principal          = "arn:aws:iam::111111111112:root"
+///   home_region        = "us-east-1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +123,8 @@ import 'license_grant_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.licensemanager.LicenseGrant;
 /// import com.pulumi.aws.licensemanager.LicenseGrantArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

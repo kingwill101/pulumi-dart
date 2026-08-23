@@ -121,6 +121,33 @@ import 'membership_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cleanrooms_membership" "test_membership" {
+///   collaboration_id = "1234abcd-12ab-34cd-56ef-1234567890ab"
+///   query_log_status = "DISABLED"
+///   default_result_configuration = {
+///     role_arn = "arn:aws:iam::123456789012:role/role-name"
+///     output_configuration = {
+///       s3 = {
+///         bucket        = "test-bucket"
+///         result_format = "PARQUET"
+///         key_prefix    = "test-prefix"
+///       }
+///     }
+///   }
+///   tags = {
+///     "Project" = "Terraform"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -132,8 +159,8 @@ import 'membership_state.dart';
 /// import com.pulumi.aws.cleanrooms.inputs.MembershipDefaultResultConfigurationArgs;
 /// import com.pulumi.aws.cleanrooms.inputs.MembershipDefaultResultConfigurationOutputConfigurationArgs;
 /// import com.pulumi.aws.cleanrooms.inputs.MembershipDefaultResultConfigurationOutputConfigurationS3Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -185,6 +212,18 @@ import 'membership_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` - (String) ID of the membership.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import `aws.cleanrooms.Membership` using the `id`. For example:
 ///

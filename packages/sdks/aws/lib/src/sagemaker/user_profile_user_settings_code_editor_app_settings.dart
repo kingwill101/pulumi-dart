@@ -6,7 +6,7 @@ import 'user_profile_user_settings_code_editor_app_settings_custom_image.dart';
 import 'user_profile_user_settings_code_editor_app_settings_default_resource_spec.dart';
 
 class UserProfileUserSettingsCodeEditorAppSettings {
-  /// Indicates whether idle shutdown is activated for JupyterLab applications. see `app_lifecycle_management` Block below.
+  /// Indicates whether idle shutdown is activated for JupyterLab applications. see `appLifecycleManagement` Block below.
   final pulumi.Input<UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagement>? appLifecycleManagement;
   /// The lifecycle configuration that runs before the default lifecycle configuration. It can override changes made in the default lifecycle configuration.
   final pulumi.Input<String>? builtInLifecycleConfigArn;
@@ -18,7 +18,7 @@ class UserProfileUserSettingsCodeEditorAppSettings {
   final pulumi.Input<List<String>>? lifecycleConfigArns;
 
   /// Creates a new [UserProfileUserSettingsCodeEditorAppSettings].
-  /// [appLifecycleManagement] Indicates whether idle shutdown is activated for JupyterLab applications. see `app_lifecycle_management` Block below.
+  /// [appLifecycleManagement] Indicates whether idle shutdown is activated for JupyterLab applications. see `appLifecycleManagement` Block below.
   /// [builtInLifecycleConfigArn] The lifecycle configuration that runs before the default lifecycle configuration. It can override changes made in the default lifecycle configuration.
   /// [customImages] A list of custom SageMaker AI images that are configured to run as a CodeEditor app. see Custom Image below.
   /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
@@ -51,4 +51,3 @@ class UserProfileUserSettingsCodeEditorAppSettings {
     );
   }
 }
-

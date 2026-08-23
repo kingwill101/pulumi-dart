@@ -16,7 +16,7 @@ class PipelineStageOnFailureConditionRule {
   final pulumi.Input<String>? region;
   /// The pipeline role ARN associated with the rule.
   final pulumi.Input<String>? roleArn;
-  /// The ID for the rule type, which is made up of the combined values for `category`, `owner`, `provider`, and `version`. Defined as an `rule_type_id` block below.
+  /// The ID for the rule type, which is made up of the combined values for `category`, `owner`, `provider`, and `version`. Defined as an `ruleTypeId` block below.
   final pulumi.Input<PipelineStageOnFailureConditionRuleRuleTypeId> ruleTypeId;
   /// The action timeout for the rule.
   final pulumi.Input<int>? timeoutInMinutes;
@@ -28,7 +28,7 @@ class PipelineStageOnFailureConditionRule {
   /// [name] The name of the rule that is created for the condition, such as `VariableCheck`.
   /// [region] The Region for the condition associated with the rule.
   /// [roleArn] The pipeline role ARN associated with the rule.
-  /// [ruleTypeId] The ID for the rule type, which is made up of the combined values for `category`, `owner`, `provider`, and `version`. Defined as an `rule_type_id` block below.
+  /// [ruleTypeId] The ID for the rule type, which is made up of the combined values for `category`, `owner`, `provider`, and `version`. Defined as an `ruleTypeId` block below.
   /// [timeoutInMinutes] The action timeout for the rule.
   const PipelineStageOnFailureConditionRule({
     this.commands,
@@ -67,4 +67,3 @@ class PipelineStageOnFailureConditionRule {
     );
   }
 }
-

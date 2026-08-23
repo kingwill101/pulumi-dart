@@ -5,7 +5,7 @@ import 'get_instance_type_offerings_broker_instance_option.dart';
 
 /// Result data returned by getInstanceTypeOfferings.
 class GetInstanceTypeOfferingsResult {
-  /// List of broker instance options. See Broker Instance Options below.
+  /// List of broker instance options. See `brokerInstanceOptions` Block below.
   final List<GetInstanceTypeOfferingsBrokerInstanceOption> brokerInstanceOptions;
   /// Broker's engine type.
   final String? engineType;
@@ -18,7 +18,7 @@ class GetInstanceTypeOfferingsResult {
   final String? storageType;
 
   /// Creates a new [GetInstanceTypeOfferingsResult].
-  /// [brokerInstanceOptions] List of broker instance options. See Broker Instance Options below.
+  /// [brokerInstanceOptions] List of broker instance options. See `brokerInstanceOptions` Block below.
   /// [engineType] Broker's engine type.
   /// [hostInstanceType] Broker's instance type.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -55,4 +55,3 @@ class GetInstanceTypeOfferingsResult {
     );
   }
 }
-

@@ -3,14 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig {
-  /// Name of the Amazon S3 bucket.
   final pulumi.Input<String>? bucketName;
-  /// Amazon S3 bucket prefix.
   final pulumi.Input<String>? bucketPrefix;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig].
-  /// [bucketName] Name of the Amazon S3 bucket.
-  /// [bucketPrefix] Amazon S3 bucket prefix.
+  /// [bucketName] Optional.
+  /// [bucketPrefix] Optional.
   const FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig({
     this.bucketName,
     this.bucketPrefix,
@@ -30,4 +28,3 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResp
     );
   }
 }
-

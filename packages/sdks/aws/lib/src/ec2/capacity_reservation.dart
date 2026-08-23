@@ -69,6 +69,22 @@ import 'capacity_reservation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_capacityreservation" "default" {
+///   instance_type     = "t2.micro"
+///   instance_platform = "Linux/UNIX"
+///   availability_zone = "eu-west-1a"
+///   instance_count    = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +93,8 @@ import 'capacity_reservation_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.CapacityReservation;
 /// import com.pulumi.aws.ec2.CapacityReservationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -148,9 +164,9 @@ class CapacityReservation extends pulumi.CustomResource {
   late final pulumi.Output<String?> placementGroupArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Indicates the tenancy of the Capacity Reservation. Specify either `default` or `dedicated`.
   late final pulumi.Output<String?> tenancy;

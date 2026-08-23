@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountSettingDefaultState {
   /// Name of the account setting to set.
   final pulumi.Input<String>? name;
+  /// ARN that identifies the account setting.
   final pulumi.Input<String>? principalArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -14,7 +15,7 @@ class AccountSettingDefaultState {
 
   /// Creates a new [AccountSettingDefaultState].
   /// [name] Name of the account setting to set.
-  /// [principalArn] Optional.
+  /// [principalArn] ARN that identifies the account setting.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [value] State of the setting.
   const AccountSettingDefaultState({
@@ -42,4 +43,3 @@ class AccountSettingDefaultState {
     );
   }
 }
-

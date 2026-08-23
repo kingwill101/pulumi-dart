@@ -28,7 +28,7 @@ class ReplicationConfigArgs {
   final pulumi.Input<String>? supplementalSettings;
   /// An escaped JSON string that contains the table mappings. For information on table mapping see [Using Table Mapping with an AWS Database Migration Service Task to Select and Filter Data](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.html)
   final pulumi.Input<String> tableMappings;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The Amazon Resource Name (ARN) string that uniquely identifies the target endpoint.
   final pulumi.Input<String> targetEndpointArn;
@@ -44,7 +44,7 @@ class ReplicationConfigArgs {
   /// [startReplication] Whether to run or stop the serverless replication, default is false.
   /// [supplementalSettings] JSON settings for specifying supplemental data. For more information see [Specifying supplemental data for task settings](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.TaskData.html)
   /// [tableMappings] An escaped JSON string that contains the table mappings. For information on table mapping see [Using Table Mapping with an AWS Database Migration Service Task to Select and Filter Data](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.html)
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetEndpointArn] The Amazon Resource Name (ARN) string that uniquely identifies the target endpoint.
   const ReplicationConfigArgs({
     required this.computeConfig,
@@ -95,4 +95,3 @@ class ReplicationConfigArgs {
     );
   }
 }
-

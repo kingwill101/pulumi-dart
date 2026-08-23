@@ -70,6 +70,22 @@ import 'provisioned_model_throughput_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_provisionedmodelthroughput" "example" {
+///   provisioned_model_name = "example-model"
+///   model_arn              = "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-v2"
+///   commitment_duration    = "SixMonths"
+///   model_units            = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +94,8 @@ import 'provisioned_model_throughput_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.bedrock.ProvisionedModelThroughput;
 /// import com.pulumi.aws.bedrock.ProvisionedModelThroughputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -119,10 +135,10 @@ import 'provisioned_model_throughput_timeouts.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Bedrock provisioned model throughput.
+/// - `provisionedModelArn` (String) Amazon Resource Name (ARN) of the Bedrock provisioned model throughput.
 ///
 ///
-/// Using `pulumi import`, import Provisioned Throughput using the `provisioned_model_arn`. For example:
+/// Using `pulumi import`, import Provisioned Throughput using the `provisionedModelArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:bedrock/provisionedModelThroughput:ProvisionedModelThroughput example arn:aws:bedrock:us-west-2:123456789012:provisioned-model/1y5n57gh5y2e
@@ -140,9 +156,9 @@ class ProvisionedModelThroughput extends pulumi.CustomResource {
   late final pulumi.Output<String> provisionedModelName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ProvisionedModelThroughputTimeouts?> timeouts;
 

@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExperimentTemplateExperimentOptions {
-  /// Specifies the account targeting setting for experiment options. Supports `single-account` and `multi-account`.
+  /// Account targeting setting for experiment options. Supports `single-account` and `multi-account`.
   final pulumi.Input<String>? accountTargeting;
-  /// Specifies the empty target resolution mode for experiment options. Supports `fail` and `skip`.
+  /// Empty target resolution mode for experiment options. Supports `fail` and `skip`.
   final pulumi.Input<String>? emptyTargetResolutionMode;
 
   /// Creates a new [ExperimentTemplateExperimentOptions].
-  /// [accountTargeting] Specifies the account targeting setting for experiment options. Supports `single-account` and `multi-account`.
-  /// [emptyTargetResolutionMode] Specifies the empty target resolution mode for experiment options. Supports `fail` and `skip`.
+  /// [accountTargeting] Account targeting setting for experiment options. Supports `single-account` and `multi-account`.
+  /// [emptyTargetResolutionMode] Empty target resolution mode for experiment options. Supports `fail` and `skip`.
   const ExperimentTemplateExperimentOptions({
     this.accountTargeting,
     this.emptyTargetResolutionMode,
@@ -30,4 +30,3 @@ class ExperimentTemplateExperimentOptions {
     );
   }
 }
-

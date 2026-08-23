@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro {
+  /// Secret Access Key portion of the credentials.
   final pulumi.Input<String> apiSecretKey;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro].
-  /// [apiSecretKey] Required.
+  /// [apiSecretKey] Secret Access Key portion of the credentials.
   const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro({
     required this.apiSecretKey,
   });
@@ -23,4 +24,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicr
     );
   }
 }
-

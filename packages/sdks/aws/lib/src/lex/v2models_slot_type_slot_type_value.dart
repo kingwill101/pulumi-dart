@@ -6,7 +6,7 @@ import 'v2models_slot_type_slot_type_value_synonym.dart';
 
 class V2modelsSlotTypeSlotTypeValue {
   /// Value of the slot type entry.
-  /// See `sample_value` argument reference below.
+  /// See `sampleValue` argument reference below.
   final pulumi.Input<List<V2modelsSlotTypeSlotTypeValueSampleValue>>? sampleValues;
   /// A list of additional values related to the slot type entry.
   /// See `synonyms` argument reference below.
@@ -34,4 +34,3 @@ class V2modelsSlotTypeSlotTypeValue {
     );
   }
 }
-

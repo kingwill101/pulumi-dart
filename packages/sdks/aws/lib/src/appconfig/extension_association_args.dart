@@ -7,20 +7,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_appconfig_extension_association_extension_association_args_doc}
 class ExtensionAssociationArgs {
-  /// The ARN of the extension defined in the association.
+  /// ARN of the extension defined in the association.
   final pulumi.Input<String> extensionArn;
-  /// The parameter names and values defined for the association.
+  /// Parameter names and values defined for the association.
   final pulumi.Input<Map<String, String>>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The ARN of the application, configuration profile, or environment to associate with the extension.
+  /// ARN of the application, configuration profile, or environment to associate with the extension.
   final pulumi.Input<String> resourceArn;
 
   /// Creates a new [ExtensionAssociationArgs].
-  /// [extensionArn] The ARN of the extension defined in the association.
-  /// [parameters] The parameter names and values defined for the association.
+  /// [extensionArn] ARN of the extension defined in the association.
+  /// [parameters] Parameter names and values defined for the association.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceArn] The ARN of the application, configuration profile, or environment to associate with the extension.
+  /// [resourceArn] ARN of the application, configuration profile, or environment to associate with the extension.
   const ExtensionAssociationArgs({
     required this.extensionArn,
     this.parameters,
@@ -46,4 +46,3 @@ class ExtensionAssociationArgs {
     );
   }
 }
-

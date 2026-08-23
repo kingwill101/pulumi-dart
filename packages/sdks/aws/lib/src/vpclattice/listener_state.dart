@@ -11,6 +11,7 @@ class ListenerState {
   final pulumi.Input<String>? createdAt;
   /// Default action block for the default listener rule. Default action blocks are defined below.
   final pulumi.Input<ListenerDefaultAction>? defaultAction;
+  /// Date and time that the listener was last updated, specified in ISO-8601 format.
   final pulumi.Input<String>? lastUpdatedAt;
   /// Standalone ID of the listener, e.g. `listener-0a1b2c3d4e5f6g`.
   final pulumi.Input<String>? listenerId;
@@ -22,12 +23,12 @@ class ListenerState {
   final pulumi.Input<String>? protocol;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Amazon Resource Name (ARN) of the VPC Lattice service. You must include either the `service_arn` or `service_identifier` arguments.
+  /// Amazon Resource Name (ARN) of the VPC Lattice service. You must include either the `serviceArn` or `serviceIdentifier` arguments.
   final pulumi.Input<String>? serviceArn;
-  /// ID of the VPC Lattice service. You must include either the `service_arn` or `service_identifier` arguments.
-  /// &gt; **NOTE:** You must specify one of the following arguments: `service_arn` or `service_identifier`.
+  /// ID of the VPC Lattice service. You must include either the `serviceArn` or `serviceIdentifier` arguments.
+  /// &gt; **NOTE:** You must specify one of the following arguments: `serviceArn` or `serviceIdentifier`.
   final pulumi.Input<String>? serviceIdentifier;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -35,15 +36,15 @@ class ListenerState {
   /// [arn] ARN of the listener.
   /// [createdAt] Date and time that the listener was created, specified in ISO-8601 format.
   /// [defaultAction] Default action block for the default listener rule. Default action blocks are defined below.
-  /// [lastUpdatedAt] Optional.
+  /// [lastUpdatedAt] Date and time that the listener was last updated, specified in ISO-8601 format.
   /// [listenerId] Standalone ID of the listener, e.g. `listener-0a1b2c3d4e5f6g`.
   /// [name] Name of the listener. A listener name must be unique within a service. Valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.
   /// [port] Listener port. You can specify a value from 1 to 65535. If `port` is not specified and `protocol` is HTTP, the value will default to 80. If `port` is not specified and `protocol` is HTTPS, the value will default to 443.
   /// [protocol] Protocol for the listener. Supported values are `HTTP`, `HTTPS` or `TLS_PASSTHROUGH`
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [serviceArn] Amazon Resource Name (ARN) of the VPC Lattice service. You must include either the `service_arn` or `service_identifier` arguments.
-  /// [serviceIdentifier] ID of the VPC Lattice service. You must include either the `service_arn` or `service_identifier` arguments.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [serviceArn] Amazon Resource Name (ARN) of the VPC Lattice service. You must include either the `serviceArn` or `serviceIdentifier` arguments.
+  /// [serviceIdentifier] ID of the VPC Lattice service. You must include either the `serviceArn` or `serviceIdentifier` arguments.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   const ListenerState({
     this.arn,
@@ -97,4 +98,3 @@ class ListenerState {
     );
   }
 }
-

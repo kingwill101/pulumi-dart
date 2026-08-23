@@ -24,4 +24,3 @@ class IdcApplicationServiceIntegrationS3AccessGrantsReadWriteAccess {
     );
   }
 }
-

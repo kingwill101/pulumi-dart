@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRestApiEndpointConfiguration {
-  /// The IP address types that can invoke an API (RestApi).
+  /// IP address types that can invoke a REST API.
   final pulumi.Input<String> ipAddressType;
   /// List of endpoint types.
   final pulumi.Input<List<String>> types;
@@ -11,7 +11,7 @@ class GetRestApiEndpointConfiguration {
   final pulumi.Input<List<String>> vpcEndpointIds;
 
   /// Creates a new [GetRestApiEndpointConfiguration].
-  /// [ipAddressType] The IP address types that can invoke an API (RestApi).
+  /// [ipAddressType] IP address types that can invoke a REST API.
   /// [types] List of endpoint types.
   /// [vpcEndpointIds] Set of VPC Endpoint identifiers.
   const GetRestApiEndpointConfiguration({
@@ -36,4 +36,3 @@ class GetRestApiEndpointConfiguration {
     );
   }
 }
-

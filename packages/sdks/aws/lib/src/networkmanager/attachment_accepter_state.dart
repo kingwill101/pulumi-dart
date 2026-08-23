@@ -14,9 +14,9 @@ class AttachmentAccepterState {
   final pulumi.Input<String>? coreNetworkArn;
   /// ID of the core network.
   final pulumi.Input<String>? coreNetworkId;
-  /// Region where the edge is located. This is returned for all attachment types except Direct Connect gateway attachments, which instead return `edge_locations`.
+  /// Region where the edge is located. This is returned for all attachment types except Direct Connect gateway attachments, which instead return `edgeLocations`.
   final pulumi.Input<String>? edgeLocation;
-  /// Edge locations that the Direct Connect gateway is associated with. This is returned only for Direct Connect gateway attachments. All other attachment types return `edge_location`.
+  /// Edge locations that the Direct Connect gateway is associated with. This is returned only for Direct Connect gateway attachments. All other attachment types return `edgeLocation`.
   final pulumi.Input<List<String>>? edgeLocations;
   /// ID of the attachment account owner.
   final pulumi.Input<String>? ownerAccountId;
@@ -33,8 +33,8 @@ class AttachmentAccepterState {
   /// [attachmentType] Type of attachment. Valid values: `CONNECT`, `DIRECT_CONNECT_GATEWAY`, `SITE_TO_SITE_VPN`, `TRANSIT_GATEWAY_ROUTE_TABLE`, `VPC`.
   /// [coreNetworkArn] ARN of the core network.
   /// [coreNetworkId] ID of the core network.
-  /// [edgeLocation] Region where the edge is located. This is returned for all attachment types except Direct Connect gateway attachments, which instead return `edge_locations`.
-  /// [edgeLocations] Edge locations that the Direct Connect gateway is associated with. This is returned only for Direct Connect gateway attachments. All other attachment types return `edge_location`.
+  /// [edgeLocation] Region where the edge is located. This is returned for all attachment types except Direct Connect gateway attachments, which instead return `edgeLocations`.
+  /// [edgeLocations] Edge locations that the Direct Connect gateway is associated with. This is returned only for Direct Connect gateway attachments. All other attachment types return `edgeLocation`.
   /// [ownerAccountId] ID of the attachment account owner.
   /// [resourceArn] Attachment resource ARN.
   /// [segmentName] Name of the segment attachment.
@@ -85,4 +85,3 @@ class AttachmentAccepterState {
     );
   }
 }
-

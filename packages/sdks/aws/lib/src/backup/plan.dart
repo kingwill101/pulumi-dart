@@ -127,6 +127,33 @@ import 'plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_backup_plan" "example" {
+///   name = "my_example_backup_plan"
+///   rules {
+///     rule_name         = "my_example_backup_rule"
+///     target_vault_name = test.name
+///     schedule          = "cron(0 12 * * ? *)"
+///     lifecycle = {
+///       delete_after = 14
+///     }
+///   }
+///   advanced_backup_settings {
+///     backup_options = {
+///       "WindowsVSS" = "enabled"
+///     }
+///     resource_type = "EC2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +165,8 @@ import 'plan_state.dart';
 /// import com.pulumi.aws.backup.inputs.PlanRuleArgs;
 /// import com.pulumi.aws.backup.inputs.PlanRuleLifecycleArgs;
 /// import com.pulumi.aws.backup.inputs.PlanAdvancedBackupSettingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -191,10 +218,22 @@ import 'plan_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) Backup Plan ID.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Backup Plan using the `id`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:backup/plan:Plan test <id>
+/// $ pulumi import aws:backup/plan:Plan example abc123
 /// ```
 class Plan extends pulumi.CustomResource {
   /// An object that specifies backup options for each resource type.
@@ -209,9 +248,9 @@ class Plan extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> rules;
   /// Block for scanning configuration for the backup rule and includes the malware scanner, and scan mode of either full or incremental. Detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>?> scanSettings;
-  /// Metadata that you can assign to help organize the plans you create. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Metadata that you can assign to help organize the plans you create. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
   late final pulumi.Output<String> version;

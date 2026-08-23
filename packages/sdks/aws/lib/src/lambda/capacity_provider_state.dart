@@ -15,6 +15,7 @@ class CapacityProviderState {
   final pulumi.Input<List<CapacityProviderCapacityProviderScalingConfig>>? capacityProviderScalingConfigs;
   /// Configuration block for instance requirements settings. See Instance Requirements below.
   final pulumi.Input<List<CapacityProviderInstanceRequirement>>? instanceRequirements;
+  /// ARN of the AWS Key Management Service key used to encrypt the Capacity Provider.
   final pulumi.Input<String>? kmsKeyArn;
   /// The name of the Capacity Provider.
   final pulumi.Input<String>? name;
@@ -24,9 +25,9 @@ class CapacityProviderState {
   final pulumi.Input<CapacityProviderPermissionsConfig>? permissionsConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<CapacityProviderTimeouts>? timeouts;
   /// Configuration block for VPC settings. See VPC Config below.
@@ -36,12 +37,12 @@ class CapacityProviderState {
   /// [arn] ARN of the Capacity Provider.
   /// [capacityProviderScalingConfigs] Configuration block for scaling policy settings. See Capacity Provider Scaling Config below.
   /// [instanceRequirements] Configuration block for instance requirements settings. See Instance Requirements below.
-  /// [kmsKeyArn] Optional.
+  /// [kmsKeyArn] ARN of the AWS Key Management Service key used to encrypt the Capacity Provider.
   /// [name] The name of the Capacity Provider.
   /// [permissionsConfig] Configuration block for permissions settings. See Permissions Config below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   /// [vpcConfig] Configuration block for VPC settings. See VPC Config below.
   const CapacityProviderState({
@@ -90,4 +91,3 @@ class CapacityProviderState {
     );
   }
 }
-

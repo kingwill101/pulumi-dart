@@ -70,13 +70,31 @@ import 'resolver_dns_sec_config_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewResolverDnsSecConfig(ctx, "example", &route53.ResolverDnsSecConfigArgs{
-/// 			ResourceId: example.ID(),
+/// 			ResourceId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block           = "10.0.0.0/16"
+///   enable_dns_support   = true
+///   enable_dns_hostnames = true
+/// }
+/// resource "aws_route53_resolverdnssecconfig" "example" {
+///   resource_id = aws_ec2_vpc.example.id
 /// }
 /// ```
 /// ```java
@@ -89,8 +107,8 @@ import 'resolver_dns_sec_config_state.dart';
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.route53.ResolverDnsSecConfig;
 /// import com.pulumi.aws.route53.ResolverDnsSecConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

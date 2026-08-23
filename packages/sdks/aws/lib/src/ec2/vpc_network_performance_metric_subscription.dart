@@ -61,6 +61,20 @@ import 'vpc_network_performance_metric_subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpcnetworkperformancemetricsubscription" "example" {
+///   source      = "us-east-1"
+///   destination = "us-west-1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'vpc_network_performance_metric_subscription_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.VpcNetworkPerformanceMetricSubscription;
 /// import com.pulumi.aws.ec2.VpcNetworkPerformanceMetricSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -4,13 +4,13 @@ import 'policy_attachment_state.dart';
 
 /// Attaches a Managed IAM Policy to user(s), role(s), and/or group(s)
 ///
-/// !&gt; **WARNING:** The aws.iam.PolicyAttachment resource creates **exclusive** attachments of IAM policies. Across the entire AWS account, all of the users/roles/groups to which a single policy is attached must be declared by a single aws.iam.PolicyAttachment resource. This means that even any users/roles/groups that have the attached policy via any other mechanism (including other resources managed by this provider) will have that attached policy revoked by this resource. Consider `aws.iam.RolePolicyAttachment`, `aws.iam.UserPolicyAttachment`, or `aws.iam.GroupPolicyAttachment` instead. These resources do not enforce exclusive attachment of an IAM policy.
+/// &gt; **WARNING:** The aws.iam.PolicyAttachment resource creates **exclusive** attachments of IAM policies. Across the entire AWS account, all of the users/roles/groups to which a single policy is attached must be declared by a single aws.iam.PolicyAttachment resource. This means that even any users/roles/groups that have the attached policy via any other mechanism (including other resources managed by this provider) will have that attached policy revoked by this resource. Consider `aws.iam.RolePolicyAttachment`, `aws.iam.UserPolicyAttachment`, or `aws.iam.GroupPolicyAttachment` instead. These resources do not enforce exclusive attachment of an IAM policy.
 ///
 /// &gt; **NOTE:** The usage of this resource conflicts with the `aws.iam.GroupPolicyAttachment`, `aws.iam.RolePolicyAttachment`, and `aws.iam.UserPolicyAttachment` resources and will permanently show a difference if both are defined.
 ///
-/// &gt; **NOTE:** For a given role, this resource is incompatible with using the `aws.iam.Role` resource `managed_policy_arns` argument. When using that argument and this resource, both will attempt to manage the role's managed policy attachments and the provider will show a permanent difference.
+/// &gt; **NOTE:** For a given role, this resource is incompatible with using the `aws.iam.Role` resource `managedPolicyArns` argument. When using that argument and this resource, both will attempt to manage the role's managed policy attachments and the provider will show a permanent difference.
 ///
-/// &gt; **NOTE:** To ensure Pulumi correctly manages dependencies during updates, use a reference to the IAM resource when defining the `policy_arn` for `aws.iam.PolicyAttachment`, rather than constructing the ARN directly. For example, use `policy_arn = aws_iam_policy.example.arn` instead of `policy_arn = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/Example"`. Failing to do so may lead to errors like `DeleteConflict: Cannot delete a policy attached to entities` or `NoSuchEntity`.
+/// &gt; **NOTE:** To ensure Pulumi correctly manages dependencies during updates, use a reference to the IAM resource when defining the `policyArn` for `aws.iam.PolicyAttachment`, rather than constructing the ARN directly. For example, use `policyArn = aws_iam_policy.example.arn` instead of `policyArn = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/Example"`. Failing to do so may lead to errors like `DeleteConflict: Cannot delete a policy attached to entities` or `NoSuchEntity`.
 ///
 /// ## Example Usage
 ///
@@ -19,7 +19,7 @@ import 'policy_attachment_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const user = new aws.iam.User("user", {name: "test-user"});
+/// const user = new aws.iam.User("user", {name: "example-user"});
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
 ///         effect: "Allow",
@@ -31,10 +31,10 @@ import 'policy_attachment_state.dart';
 ///     }],
 /// });
 /// const role = new aws.iam.Role("role", {
-///     name: "test-role",
+///     name: "example-role",
 ///     assumeRolePolicy: assumeRole.then(assumeRole => assumeRole.json),
 /// });
-/// const group = new aws.iam.Group("group", {name: "test-group"});
+/// const group = new aws.iam.Group("group", {name: "example-group"});
 /// const policy = aws.iam.getPolicyDocument({
 ///     statements: [{
 ///         effect: "Allow",
@@ -43,12 +43,12 @@ import 'policy_attachment_state.dart';
 ///     }],
 /// });
 /// const policyPolicy = new aws.iam.Policy("policy", {
-///     name: "test-policy",
-///     description: "A test policy",
+///     name: "example-policy",
+///     description: "An example policy",
 ///     policy: policy.then(policy => policy.json),
 /// });
-/// const test_attach = new aws.iam.PolicyAttachment("test-attach", {
-///     name: "test-attachment",
+/// const example_attach = new aws.iam.PolicyAttachment("example-attach", {
+///     name: "example-attachment",
 ///     users: [user.name],
 ///     roles: [role.name],
 ///     groups: [group.name],
@@ -59,7 +59,7 @@ import 'policy_attachment_state.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// user = aws.iam.User("user", name="test-user")
+/// user = aws.iam.User("user", name="example-user")
 /// assume_role = aws.iam.get_policy_document(statements=[{
 ///     "effect": "Allow",
 ///     "principals": [{
@@ -69,20 +69,20 @@ import 'policy_attachment_state.dart';
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// role = aws.iam.Role("role",
-///     name="test-role",
+///     name="example-role",
 ///     assume_role_policy=assume_role.json)
-/// group = aws.iam.Group("group", name="test-group")
+/// group = aws.iam.Group("group", name="example-group")
 /// policy = aws.iam.get_policy_document(statements=[{
 ///     "effect": "Allow",
 ///     "actions": ["ec2:Describe*"],
 ///     "resources": ["*"],
 /// }])
 /// policy_policy = aws.iam.Policy("policy",
-///     name="test-policy",
-///     description="A test policy",
+///     name="example-policy",
+///     description="An example policy",
 ///     policy=policy.json)
-/// test_attach = aws.iam.PolicyAttachment("test-attach",
-///     name="test-attachment",
+/// example_attach = aws.iam.PolicyAttachment("example-attach",
+///     name="example-attachment",
 ///     users=[user.name],
 ///     roles=[role.name],
 ///     groups=[group.name],
@@ -98,7 +98,7 @@ import 'policy_attachment_state.dart';
 /// {
 ///     var user = new Aws.Iam.User("user", new()
 ///     {
-///         Name = "test-user",
+///         Name = "example-user",
 ///     });
 ///
 ///     var assumeRole = Aws.Iam.GetPolicyDocument.Invoke(new()
@@ -129,13 +129,13 @@ import 'policy_attachment_state.dart';
 ///
 ///     var role = new Aws.Iam.Role("role", new()
 ///     {
-///         Name = "test-role",
+///         Name = "example-role",
 ///         AssumeRolePolicy = assumeRole.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
 ///     });
 ///
 ///     var @group = new Aws.Iam.Group("group", new()
 ///     {
-///         Name = "test-group",
+///         Name = "example-group",
 ///     });
 ///
 ///     var policy = Aws.Iam.GetPolicyDocument.Invoke(new()
@@ -159,23 +159,23 @@ import 'policy_attachment_state.dart';
 ///
 ///     var policyPolicy = new Aws.Iam.Policy("policy", new()
 ///     {
-///         Name = "test-policy",
-///         Description = "A test policy",
+///         Name = "example-policy",
+///         Description = "An example policy",
 ///         PolicyDocument = policy.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
 ///     });
 ///
-///     var test_attach = new Aws.Iam.PolicyAttachment("test-attach", new()
+///     var example_attach = new Aws.Iam.PolicyAttachment("example-attach", new()
 ///     {
-///         Name = "test-attachment",
-///         Users = new[]
+///         Name = "example-attachment",
+///         Users =
 ///         {
 ///             user.Name,
 ///         },
-///         Roles = new[]
+///         Roles =
 ///         {
 ///             role.Name,
 ///         },
-///         Groups = new[]
+///         Groups =
 ///         {
 ///             @group.Name,
 ///         },
@@ -195,7 +195,7 @@ import 'policy_attachment_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		user, err := iam.NewUser(ctx, "user", &iam.UserArgs{
-/// 			Name: pulumi.String("test-user"),
+/// 			Name: pulumi.String("example-user"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -222,14 +222,14 @@ import 'policy_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		role, err := iam.NewRole(ctx, "role", &iam.RoleArgs{
-/// 			Name:             pulumi.String("test-role"),
+/// 			Name:             pulumi.String("example-role"),
 /// 			AssumeRolePolicy: pulumi.String(assumeRole.Json),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		group, err := iam.NewGroup(ctx, "group", &iam.GroupArgs{
-/// 			Name: pulumi.String("test-group"),
+/// 			Name: pulumi.String("example-group"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -251,15 +251,15 @@ import 'policy_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		policyPolicy, err := iam.NewPolicy(ctx, "policy", &iam.PolicyArgs{
-/// 			Name:        pulumi.String("test-policy"),
-/// 			Description: pulumi.String("A test policy"),
+/// 			Name:        pulumi.String("example-policy"),
+/// 			Description: pulumi.String("An example policy"),
 /// 			Policy:      pulumi.String(policy.Json),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = iam.NewPolicyAttachment(ctx, "test-attach", &iam.PolicyAttachmentArgs{
-/// 			Name: pulumi.String("test-attachment"),
+/// 		_, err = iam.NewPolicyAttachment(ctx, "example-attach", &iam.PolicyAttachmentArgs{
+/// 			Name: pulumi.String("example-attachment"),
 /// 			Users: pulumi.Array{
 /// 				user.Name,
 /// 			},
@@ -278,6 +278,56 @@ import 'policy_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["ec2.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "policy" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["ec2:Describe*"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_iam_user" "user" {
+///   name = "example-user"
+/// }
+/// resource "aws_iam_role" "role" {
+///   name               = "example-role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_group" "group" {
+///   name = "example-group"
+/// }
+/// resource "aws_iam_policy" "policy" {
+///   name        = "example-policy"
+///   description = "An example policy"
+///   policy      = data.aws_iam_getpolicydocument.policy.json
+/// }
+/// resource "aws_iam_policyattachment" "example-attach" {
+///   name       = "example-attachment"
+///   users      = [aws_iam_user.user.name]
+///   roles      = [aws_iam_role.role.name]
+///   groups     = [aws_iam_group.group.name]
+///   policy_arn = aws_iam_policy.policy.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -288,6 +338,8 @@ import 'policy_attachment_state.dart';
 /// import com.pulumi.aws.iam.UserArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.Group;
@@ -296,8 +348,8 @@ import 'policy_attachment_state.dart';
 /// import com.pulumi.aws.iam.PolicyArgs;
 /// import com.pulumi.aws.iam.PolicyAttachment;
 /// import com.pulumi.aws.iam.PolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -310,7 +362,7 @@ import 'policy_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var user = new User("user", UserArgs.builder()
-///             .name("test-user")
+///             .name("example-user")
 ///             .build());
 ///
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
@@ -325,12 +377,12 @@ import 'policy_attachment_state.dart';
 ///             .build());
 ///
 ///         var role = new Role("role", RoleArgs.builder()
-///             .name("test-role")
+///             .name("example-role")
 ///             .assumeRolePolicy(assumeRole.json())
 ///             .build());
 ///
 ///         var group = new Group("group", GroupArgs.builder()
-///             .name("test-group")
+///             .name("example-group")
 ///             .build());
 ///
 ///         final var policy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
@@ -342,13 +394,13 @@ import 'policy_attachment_state.dart';
 ///             .build());
 ///
 ///         var policyPolicy = new Policy("policyPolicy", PolicyArgs.builder()
-///             .name("test-policy")
-///             .description("A test policy")
+///             .name("example-policy")
+///             .description("An example policy")
 ///             .policy(policy.json())
 ///             .build());
 ///
-///         var test_attach = new PolicyAttachment("test-attach", PolicyAttachmentArgs.builder()
-///             .name("test-attachment")
+///         var example_attach = new PolicyAttachment("example-attach", PolicyAttachmentArgs.builder()
+///             .name("example-attachment")
 ///             .users(user.name())
 ///             .roles(role.name())
 ///             .groups(group.name())
@@ -363,27 +415,27 @@ import 'policy_attachment_state.dart';
 ///   user:
 ///     type: aws:iam:User
 ///     properties:
-///       name: test-user
+///       name: example-user
 ///   role:
 ///     type: aws:iam:Role
 ///     properties:
-///       name: test-role
+///       name: example-role
 ///       assumeRolePolicy: ${assumeRole.json}
 ///   group:
 ///     type: aws:iam:Group
 ///     properties:
-///       name: test-group
+///       name: example-group
 ///   policyPolicy:
 ///     type: aws:iam:Policy
 ///     name: policy
 ///     properties:
-///       name: test-policy
-///       description: A test policy
+///       name: example-policy
+///       description: An example policy
 ///       policy: ${policy.json}
-///   test-attach:
+///   example-attach:
 ///     type: aws:iam:PolicyAttachment
 ///     properties:
-///       name: test-attachment
+///       name: example-attachment
 ///       users:
 ///         - ${user.name}
 ///       roles:

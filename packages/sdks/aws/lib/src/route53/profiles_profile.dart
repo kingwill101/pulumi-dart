@@ -73,6 +73,22 @@ import 'profiles_profile_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_profilesprofile" "example" {
+///   name = "example"
+///   tags = {
+///     "Environment" = "dev"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +97,8 @@ import 'profiles_profile_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.ProfilesProfile;
 /// import com.pulumi.aws.route53.ProfilesProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -134,9 +150,9 @@ class ProfilesProfile extends pulumi.CustomResource {
   late final pulumi.Output<String> status;
   /// Status message of the Profile.
   late final pulumi.Output<String> statusMessage;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ProfilesProfileTimeouts?> timeouts;
 

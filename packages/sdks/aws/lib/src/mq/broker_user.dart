@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BrokerUser {
-  /// Whether to enable access to the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) for the user. Applies to `engine_type` of `ActiveMQ` only.
+  /// Whether to enable access to the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) for the user. Applies to `engineType` of `ActiveMQ` only.
   final pulumi.Input<bool>? consoleAccess;
-  /// List of groups (20 maximum) to which the ActiveMQ user belongs. Applies to `engine_type` of `ActiveMQ` only.
+  /// List of groups (20 maximum) to which the ActiveMQ user belongs. Applies to `engineType` of `ActiveMQ` only.
   final pulumi.Input<List<String>>? groups;
   /// Password of the user. Must be 12 to 250 characters long, contain at least 4 unique characters, and must not contain commas.
   final pulumi.Input<String> password;
@@ -17,8 +17,8 @@ class BrokerUser {
   final pulumi.Input<String> username;
 
   /// Creates a new [BrokerUser].
-  /// [consoleAccess] Whether to enable access to the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) for the user. Applies to `engine_type` of `ActiveMQ` only.
-  /// [groups] List of groups (20 maximum) to which the ActiveMQ user belongs. Applies to `engine_type` of `ActiveMQ` only.
+  /// [consoleAccess] Whether to enable access to the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) for the user. Applies to `engineType` of `ActiveMQ` only.
+  /// [groups] List of groups (20 maximum) to which the ActiveMQ user belongs. Applies to `engineType` of `ActiveMQ` only.
   /// [password] Password of the user. Must be 12 to 250 characters long, contain at least 4 unique characters, and must not contain commas.
   /// [replicationUser] Whether to set replication user. Defaults to `false`.
   /// [username] Username of the user.
@@ -50,4 +50,3 @@ class BrokerUser {
     );
   }
 }
-

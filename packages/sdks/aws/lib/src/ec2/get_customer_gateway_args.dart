@@ -8,9 +8,7 @@ import 'get_customer_gateway_filter.dart';
 /// {@endtemplate}
 /// {@macro pulumi_ec2_get_customer_gateway_get_customer_gateway_args_doc}
 class GetCustomerGatewayArgs {
-  /// One or more [name-value pairs][dcg-filters] to filter by.
-  ///
-  /// [dcg-filters]: https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCustomerGateways.html
+  /// One or more [name-value pairs](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCustomerGateways.html) to filter by.
   final pulumi.Input<List<GetCustomerGatewayFilter>>? filters;
   /// ID of the gateway.
   final pulumi.Input<String>? id;
@@ -20,7 +18,7 @@ class GetCustomerGatewayArgs {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetCustomerGatewayArgs].
-  /// [filters] One or more [name-value pairs][dcg-filters] to filter by.
+  /// [filters] One or more [name-value pairs](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCustomerGateways.html) to filter by.
   /// [id] ID of the gateway.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of key-value pairs assigned to the gateway.
@@ -49,4 +47,3 @@ class GetCustomerGatewayArgs {
     );
   }
 }
-

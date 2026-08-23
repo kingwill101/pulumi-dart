@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'replicator_kafka_cluster.dart';
+import 'replicator_log_delivery.dart';
 import 'replicator_replication_info_list.dart';
 
 /// {@template pulumi_msk_replicator_replicator_args_doc}
@@ -13,6 +14,8 @@ class ReplicatorArgs {
   final pulumi.Input<String>? description;
   /// A list of Kafka clusters which are targets of the replicator.
   final pulumi.Input<List<ReplicatorKafkaCluster>> kafkaClusters;
+  /// Configuration block for delivering replicator logs to customer destinations. Detailed below.
+  final pulumi.Input<ReplicatorLogDelivery>? logDelivery;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// A list of replication configurations, where each configuration targets a given source cluster to target cluster replication flow.
@@ -21,20 +24,22 @@ class ReplicatorArgs {
   final pulumi.Input<String> replicatorName;
   /// The ARN of the IAM role used by the replicator to access resources in the customer's account (e.g source and target clusters).
   final pulumi.Input<String> serviceExecutionRoleArn;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ReplicatorArgs].
   /// [description] A summary description of the replicator.
   /// [kafkaClusters] A list of Kafka clusters which are targets of the replicator.
+  /// [logDelivery] Configuration block for delivering replicator logs to customer destinations. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [replicationInfoList] A list of replication configurations, where each configuration targets a given source cluster to target cluster replication flow.
   /// [replicatorName] The name of the replicator.
   /// [serviceExecutionRoleArn] The ARN of the IAM role used by the replicator to access resources in the customer's account (e.g source and target clusters).
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ReplicatorArgs({
     this.description,
     required this.kafkaClusters,
+    this.logDelivery,
     this.region,
     required this.replicationInfoList,
     required this.replicatorName,
@@ -46,6 +51,7 @@ class ReplicatorArgs {
     return <String, dynamic>{
       'description': ?description,
       'kafkaClusters': pulumi.Input.mapInputValue<List<ReplicatorKafkaCluster>, List<Map<String, dynamic>>>(kafkaClusters, (value) => pulumi.Input.encodeList<ReplicatorKafkaCluster, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'logDelivery': ?pulumi.Input.mapOptionalInputValue<ReplicatorLogDelivery, Map<String, dynamic>>(logDelivery, (value) => value.toMap()),
       'region': ?region,
       'replicationInfoList': pulumi.Input.mapInputValue<ReplicatorReplicationInfoList, Map<String, dynamic>>(replicationInfoList, (value) => value.toMap()),
       'replicatorName': replicatorName,
@@ -58,6 +64,7 @@ class ReplicatorArgs {
     return ReplicatorArgs(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kafkaClusters: pulumi.Input.fromValue(pulumi.Input.decodeList<ReplicatorKafkaCluster>(map['kafkaClusters']!, (value) => ReplicatorKafkaCluster.fromMap((value as Map).cast<String, dynamic>()))),
+      logDelivery: (() { final guardedValue = map['logDelivery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReplicatorLogDelivery.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       replicationInfoList: pulumi.Input.fromValue(ReplicatorReplicationInfoList.fromMap((map['replicationInfoList']! as Map).cast<String, dynamic>())),
       replicatorName: pulumi.Input.fromValue(map['replicatorName'] as String),
@@ -66,4 +73,3 @@ class ReplicatorArgs {
     );
   }
 }
-

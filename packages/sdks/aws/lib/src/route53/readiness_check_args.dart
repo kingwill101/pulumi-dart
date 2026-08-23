@@ -13,13 +13,13 @@ class ReadinessCheckArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> resourceSetName;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ReadinessCheckArgs].
   /// [readinessCheckName] Unique name describing the readiness check.
   /// [resourceSetName] Name describing the resource set that will be monitored for readiness.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   const ReadinessCheckArgs({
     required this.readinessCheckName,
     required this.resourceSetName,
@@ -42,4 +42,3 @@ class ReadinessCheckArgs {
     );
   }
 }
-

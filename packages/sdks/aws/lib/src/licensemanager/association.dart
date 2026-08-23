@@ -4,7 +4,7 @@ import 'association_state.dart';
 
 /// Provides a License Manager association.
 ///
-/// &gt; **Note:** License configurations can also be associated with launch templates by specifying the `license_specifications` block for an `aws.ec2.LaunchTemplate`.
+/// &gt; **Note:** License configurations can also be associated with launch templates by specifying the `licenseSpecifications` block for an `aws.ec2.LaunchTemplate`.
 ///
 /// ## Example Usage
 ///
@@ -155,6 +155,37 @@ import 'association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getami" "example" {
+///   most_recent = true
+///   owners      = ["amazon"]
+///   filters {
+///     name   = "name"
+///     values = ["amzn-ami-vpc-nat*"]
+///   }
+/// }
+///
+/// resource "aws_ec2_instance" "example" {
+///   ami           = data.aws_ec2_getami.example.id
+///   instance_type = "t2.micro"
+/// }
+/// resource "aws_licensemanager_licenseconfiguration" "example" {
+///   name                  = "Example"
+///   license_counting_type = "Instance"
+/// }
+/// resource "aws_licensemanager_association" "example" {
+///   license_configuration_arn = aws_licensemanager_licenseconfiguration.example.arn
+///   resource_arn              = aws_ec2_instance.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -163,14 +194,15 @@ import 'association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetAmiArgs;
+/// import com.pulumi.aws.ec2.inputs.GetAmiFilterArgs;
 /// import com.pulumi.aws.ec2.Instance;
 /// import com.pulumi.aws.ec2.InstanceArgs;
 /// import com.pulumi.aws.licensemanager.LicenseConfiguration;
 /// import com.pulumi.aws.licensemanager.LicenseConfigurationArgs;
 /// import com.pulumi.aws.licensemanager.Association;
 /// import com.pulumi.aws.licensemanager.AssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

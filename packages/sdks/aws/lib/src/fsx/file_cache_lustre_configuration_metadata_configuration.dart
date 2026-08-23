@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FileCacheLustreConfigurationMetadataConfiguration {
-  /// The storage capacity of the Lustre MDT (Metadata Target) storage volume in gibibytes (GiB). The only supported value is `2400` GiB.
+  /// Storage capacity of the Lustre MDT (Metadata Target) storage volume in gibibytes (GiB). The only supported value is `2400` GiB.
   final pulumi.Input<int> storageCapacity;
 
   /// Creates a new [FileCacheLustreConfigurationMetadataConfiguration].
-  /// [storageCapacity] The storage capacity of the Lustre MDT (Metadata Target) storage volume in gibibytes (GiB). The only supported value is `2400` GiB.
+  /// [storageCapacity] Storage capacity of the Lustre MDT (Metadata Target) storage volume in gibibytes (GiB). The only supported value is `2400` GiB.
   const FileCacheLustreConfigurationMetadataConfiguration({
     required this.storageCapacity,
   });
@@ -24,4 +24,3 @@ class FileCacheLustreConfigurationMetadataConfiguration {
     );
   }
 }
-

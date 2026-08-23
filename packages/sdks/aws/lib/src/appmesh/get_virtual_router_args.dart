@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualRouterArgs {
   /// Name of the mesh in which the virtual router exists
   final pulumi.Input<String> meshName;
+  /// AWS account ID of the service mesh's owner.
   final pulumi.Input<String>? meshOwner;
   /// Name of the virtual router.
   final pulumi.Input<String> name;
@@ -19,7 +20,7 @@ class GetVirtualRouterArgs {
 
   /// Creates a new [GetVirtualRouterArgs].
   /// [meshName] Name of the mesh in which the virtual router exists
-  /// [meshOwner] Optional.
+  /// [meshOwner] AWS account ID of the service mesh's owner.
   /// [name] Name of the virtual router.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags.
@@ -51,4 +52,3 @@ class GetVirtualRouterArgs {
     );
   }
 }
-

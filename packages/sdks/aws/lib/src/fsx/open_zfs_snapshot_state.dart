@@ -6,26 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OpenZfsSnapshotState {
   /// Amazon Resource Name of the snapshot.
   final pulumi.Input<String>? arn;
+  /// Time that the snapshot was created.
   final pulumi.Input<String>? creationTime;
-  /// The name of the Snapshot. You can use a maximum of 203 alphanumeric characters plus either _ or -  or : or . for the name.
+  /// Name of the Snapshot. You can use a maximum of 203 alphanumeric characters plus either _ or -  or : or . for the name.
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copy_tags_to_backups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
+  /// Map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copyTagsToBackups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// The ID of the volume to snapshot. This can be the root volume or a child volume.
+  /// ID of the volume to snapshot. This can be the root volume or a child volume.
   final pulumi.Input<String>? volumeId;
 
   /// Creates a new [OpenZfsSnapshotState].
   /// [arn] Amazon Resource Name of the snapshot.
-  /// [creationTime] Optional.
-  /// [name] The name of the Snapshot. You can use a maximum of 203 alphanumeric characters plus either _ or -  or : or . for the name.
+  /// [creationTime] Time that the snapshot was created.
+  /// [name] Name of the Snapshot. You can use a maximum of 203 alphanumeric characters plus either _ or -  or : or . for the name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copy_tags_to_backups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  /// [volumeId] The ID of the volume to snapshot. This can be the root volume or a child volume.
+  /// [tags] Map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copyTagsToBackups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [volumeId] ID of the volume to snapshot. This can be the root volume or a child volume.
   const OpenZfsSnapshotState({
     this.arn,
     this.creationTime,
@@ -60,4 +61,3 @@ class OpenZfsSnapshotState {
     );
   }
 }
-

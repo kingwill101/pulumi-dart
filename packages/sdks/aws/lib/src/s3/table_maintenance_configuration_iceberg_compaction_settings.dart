@@ -3,12 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableMaintenanceConfigurationIcebergCompactionSettings {
-  /// Data objects smaller than this size may be combined with others to improve query performance.
-  /// Must be between `64` and `512`.
+  /// Data objects smaller than this size may be combined with others to improve query performance. Must be between `64` and `512`.
   final pulumi.Input<int> targetFileSizeMb;
 
   /// Creates a new [TableMaintenanceConfigurationIcebergCompactionSettings].
-  /// [targetFileSizeMb] Data objects smaller than this size may be combined with others to improve query performance.
+  /// [targetFileSizeMb] Data objects smaller than this size may be combined with others to improve query performance. Must be between `64` and `512`.
   const TableMaintenanceConfigurationIcebergCompactionSettings({
     required this.targetFileSizeMb,
   });
@@ -25,4 +24,3 @@ class TableMaintenanceConfigurationIcebergCompactionSettings {
     );
   }
 }
-

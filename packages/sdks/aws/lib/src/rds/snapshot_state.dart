@@ -42,9 +42,9 @@ class SnapshotState {
   final pulumi.Input<String>? status;
   /// Specifies the storage type associated with DB snapshot.
   final pulumi.Input<String>? storageType;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Provides the VPC ID associated with the DB snapshot.
   final pulumi.Input<String>? vpcId;
@@ -70,8 +70,8 @@ class SnapshotState {
   /// [sourceRegion] The region that the DB snapshot was created in or copied from.
   /// [status] Specifies the status of this DB snapshot.
   /// [storageType] Specifies the storage type associated with DB snapshot.
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [vpcId] Provides the VPC ID associated with the DB snapshot.
   const SnapshotState({
     this.allocatedStorage,
@@ -155,4 +155,3 @@ class SnapshotState {
     );
   }
 }
-

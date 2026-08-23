@@ -11,12 +11,13 @@ class GetServiceNetworkArgs {
   final pulumi.Input<String>? region;
   /// Identifier of the service network.
   final pulumi.Input<String> serviceNetworkIdentifier;
+  /// Map of tags assigned to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetServiceNetworkArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceNetworkIdentifier] Identifier of the service network.
-  /// [tags] Optional.
+  /// [tags] Map of tags assigned to the resource.
   const GetServiceNetworkArgs({
     this.region,
     required this.serviceNetworkIdentifier,
@@ -39,4 +40,3 @@ class GetServiceNetworkArgs {
     );
   }
 }
-

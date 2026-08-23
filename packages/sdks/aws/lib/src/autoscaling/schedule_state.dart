@@ -28,7 +28,7 @@ class ScheduleState {
   final pulumi.Input<String>? startTime;
   /// Specifies the time zone for a cron expression. Valid values are the canonical names of the IANA time zones (such as `Etc/GMT+9` or `Pacific/Tahiti`).
   ///
-  /// &gt; **NOTE:** When `start_time` and `end_time` are specified with `recurrence` , they form the boundaries of when the recurring action will start and stop.
+  /// &gt; **NOTE:** When `startTime` and `endTime` are specified with `recurrence` , they form the boundaries of when the recurring action will start and stop.
   final pulumi.Input<String>? timeZone;
 
   /// Creates a new [ScheduleState].
@@ -89,4 +89,3 @@ class ScheduleState {
     );
   }
 }
-

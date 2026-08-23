@@ -18,7 +18,7 @@ class PeeringAttachmentArgs {
   final pulumi.Input<String> peerTransitGatewayId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value tags for the EC2 Transit Gateway Peering Attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the EC2 Transit Gateway Peering Attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Identifier of EC2 Transit Gateway.
   final pulumi.Input<String> transitGatewayId;
@@ -29,7 +29,7 @@ class PeeringAttachmentArgs {
   /// [peerRegion] Region of EC2 Transit Gateway to peer with.
   /// [peerTransitGatewayId] Identifier of EC2 Transit Gateway to peer with.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value tags for the EC2 Transit Gateway Peering Attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value tags for the EC2 Transit Gateway Peering Attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transitGatewayId] Identifier of EC2 Transit Gateway.
   const PeeringAttachmentArgs({
     this.options,
@@ -65,4 +65,3 @@ class PeeringAttachmentArgs {
     );
   }
 }
-

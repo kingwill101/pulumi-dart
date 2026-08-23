@@ -4,12 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_metadata_iceberg_schema_field.dart';
 
 class TableMetadataIcebergSchema {
-  /// List of schema fields for the Iceberg table. Each field defines a column in the table schema.
-  /// See `field` below.
+  /// List of schema fields for the Iceberg table. Each field defines a column in the table schema. See `field` below.
   final pulumi.Input<List<TableMetadataIcebergSchemaField>> fields;
 
   /// Creates a new [TableMetadataIcebergSchema].
-  /// [fields] List of schema fields for the Iceberg table. Each field defines a column in the table schema.
+  /// [fields] List of schema fields for the Iceberg table. Each field defines a column in the table schema. See `field` below.
   const TableMetadataIcebergSchema({
     required this.fields,
   });
@@ -26,4 +25,3 @@ class TableMetadataIcebergSchema {
     );
   }
 }
-

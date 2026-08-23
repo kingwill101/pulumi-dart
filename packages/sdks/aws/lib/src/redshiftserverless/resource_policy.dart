@@ -101,7 +101,7 @@ import 'resource_policy_state.dart';
 /// 			"Statement": []map[string]interface{}{
 /// 				map[string]interface{}{
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string][]string{
 /// 						"AWS": []string{
 /// 							"12345678901",
 /// 						},
@@ -128,6 +128,30 @@ import 'resource_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshiftserverless_resourcepolicy" "example" {
+///   resource_arn = exampleAwsRedshiftserverlessSnapshot.arn
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" = ["12345678901"]
+///       }
+///       "Action" = ["redshift-serverless:RestoreFromSnapshot"]
+///       "Sid"    = ""
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -137,8 +161,8 @@ import 'resource_policy_state.dart';
 /// import com.pulumi.aws.redshiftserverless.ResourcePolicy;
 /// import com.pulumi.aws.redshiftserverless.ResourcePolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -191,7 +215,7 @@ import 'resource_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Redshift Serverless Resource Policies using the `resource_arn`. For example:
+/// Using `pulumi import`, import Redshift Serverless Resource Policies using the `resourceArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:redshiftserverless/resourcePolicy:ResourcePolicy example example

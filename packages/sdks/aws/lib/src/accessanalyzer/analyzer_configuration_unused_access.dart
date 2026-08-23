@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'analyzer_configuration_unused_access_analysis_rule.dart';
 
 class AnalyzerConfigurationUnusedAccess {
-  /// Information about analysis rules for the analyzer. Analysis rules determine which entities will generate findings based on the criteria you define when you create the rule. See `analysis_rule` Block for Unused Access Analyzer for details.
+  /// Information about analysis rules for the analyzer. Analysis rules determine which entities will generate findings based on the criteria you define when you create the rule. See `analysisRule` Block for Unused Access Analyzer for details.
   final pulumi.Input<AnalyzerConfigurationUnusedAccessAnalysisRule>? analysisRule;
   /// Specified access age in days for which to generate findings for unused access.
   final pulumi.Input<int>? unusedAccessAge;
 
   /// Creates a new [AnalyzerConfigurationUnusedAccess].
-  /// [analysisRule] Information about analysis rules for the analyzer. Analysis rules determine which entities will generate findings based on the criteria you define when you create the rule. See `analysis_rule` Block for Unused Access Analyzer for details.
+  /// [analysisRule] Information about analysis rules for the analyzer. Analysis rules determine which entities will generate findings based on the criteria you define when you create the rule. See `analysisRule` Block for Unused Access Analyzer for details.
   /// [unusedAccessAge] Specified access age in days for which to generate findings for unused access.
   const AnalyzerConfigurationUnusedAccess({
     this.analysisRule,
@@ -31,4 +31,3 @@ class AnalyzerConfigurationUnusedAccess {
     );
   }
 }
-

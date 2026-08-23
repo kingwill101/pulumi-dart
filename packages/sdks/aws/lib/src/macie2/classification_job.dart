@@ -118,6 +118,29 @@ import 'classification_job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_macie2_account" "test" {
+/// }
+/// resource "aws_macie2_classificationjob" "test" {
+///   depends_on = [aws_macie2_account.test]
+///   job_type   = "ONE_TIME"
+///   name       = "NAME OF THE CLASSIFICATION JOB"
+///   s3_job_definition = {
+///     bucket_definitions = [{
+///       "accountId" = "ACCOUNT ID"
+///       "buckets"   = ["S3 BUCKET NAME"]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,9 +151,10 @@ import 'classification_job_state.dart';
 /// import com.pulumi.aws.macie2.ClassificationJob;
 /// import com.pulumi.aws.macie2.ClassificationJobArgs;
 /// import com.pulumi.aws.macie2.inputs.ClassificationJobS3JobDefinitionArgs;
+/// import com.pulumi.aws.macie2.inputs.ClassificationJobS3JobDefinitionBucketDefinitionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -201,9 +225,9 @@ class ClassificationJob extends pulumi.CustomResource {
   late final pulumi.Output<String> jobId;
   /// The status for the job. Valid values are: `CANCELLED`, `RUNNING` and `USER_PAUSED`
   late final pulumi.Output<String> jobStatus;
-  /// The schedule for running the job. Valid values are: `ONE_TIME` - Run the job only once. If you specify this value, don't specify a value for the `schedule_frequency` property. `SCHEDULED` - Run the job on a daily, weekly, or monthly basis. If you specify this value, use the `schedule_frequency` property to define the recurrence pattern for the job.
+  /// The schedule for running the job. Valid values are: `ONE_TIME` - Run the job only once. If you specify this value, don't specify a value for the `scheduleFrequency` property. `SCHEDULED` - Run the job on a daily, weekly, or monthly basis. If you specify this value, use the `scheduleFrequency` property to define the recurrence pattern for the job.
   late final pulumi.Output<String> jobType;
-  /// A custom name for the job. The name can contain as many as 500 characters. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// A custom name for the job. The name can contain as many as 500 characters. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
@@ -213,11 +237,11 @@ class ClassificationJob extends pulumi.CustomResource {
   late final pulumi.Output<ClassificationJobS3JobDefinition> s3JobDefinition;
   /// The sampling depth, as a percentage, to apply when processing objects. This value determines the percentage of eligible objects that the job analyzes. If this value is less than 100, Amazon Macie selects the objects to analyze at random, up to the specified percentage, and analyzes all the data in those objects.
   late final pulumi.Output<int> samplingPercentage;
-  /// The recurrence pattern for running the job. To run the job only once, don't specify a value for this property and set the value for the `job_type` property to `ONE_TIME`. (documented below)
+  /// The recurrence pattern for running the job. To run the job only once, don't specify a value for this property and set the value for the `jobType` property to `ONE_TIME`. (documented below)
   late final pulumi.Output<ClassificationJobScheduleFrequency> scheduleFrequency;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// If the current status of the job is `USER_PAUSED`, specifies when the job was paused and when the job or job run will expire and be canceled if it isn't resumed. This value is present only if the value for `job-status` is `USER_PAUSED`.
   late final pulumi.Output<List<Map<String, dynamic>>> userPausedDetails;

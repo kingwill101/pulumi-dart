@@ -123,7 +123,7 @@ import 'voice_connector_origination_state.dart';
 /// 		}
 /// 		_, err = chime.NewVoiceConnectorOrigination(ctx, "default", &chime.VoiceConnectorOriginationArgs{
 /// 			Disabled:         pulumi.Bool(false),
-/// 			VoiceConnectorId: _default.ID(),
+/// 			VoiceConnectorId: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Routes: chime.VoiceConnectorOriginationRouteArray{
 /// 				&chime.VoiceConnectorOriginationRouteArgs{
 /// 					Host:     pulumi.String("127.0.0.1"),
@@ -148,6 +148,38 @@ import 'voice_connector_origination_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_chime_voiceconnector" "default" {
+///   name               = "test"
+///   require_encryption = true
+/// }
+/// resource "aws_chime_voiceconnectororigination" "default" {
+///   disabled           = false
+///   voice_connector_id = aws_chime_voiceconnector.default.id
+///   routes {
+///     host     = "127.0.0.1"
+///     port     = 8081
+///     protocol = "TCP"
+///     priority = 1
+///     weight   = 1
+///   }
+///   routes {
+///     host     = "127.0.0.2"
+///     port     = 8082
+///     protocol = "TCP"
+///     priority = 2
+///     weight   = 10
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -159,8 +191,8 @@ import 'voice_connector_origination_state.dart';
 /// import com.pulumi.aws.chime.VoiceConnectorOrigination;
 /// import com.pulumi.aws.chime.VoiceConnectorOriginationArgs;
 /// import com.pulumi.aws.chime.inputs.VoiceConnectorOriginationRouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -229,7 +261,7 @@ import 'voice_connector_origination_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Chime Voice Connector Origination using the `voice_connector_id`. For example:
+/// Using `pulumi import`, import Chime Voice Connector Origination using the `voiceConnectorId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:chime/voiceConnectorOrigination:VoiceConnectorOrigination default abcdef1ghij2klmno3pqr4

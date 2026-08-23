@@ -62,6 +62,19 @@ import 'get_state_machine_versions_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_sfn_getactivity" "sfnActivity" {
+///   name = "my-activity"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +83,8 @@ import 'get_state_machine_versions_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sfn.SfnFunctions;
 /// import com.pulumi.aws.sfn.inputs.GetActivityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -173,6 +186,20 @@ Future<GetActivityResult> getActivity(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_sfn_getalias" "example" {
+///   name             = "my_sfn_alias"
+///   statemachine_arn = sfnTest.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -181,8 +208,8 @@ Future<GetActivityResult> getActivity(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sfn.SfnFunctions;
 /// import com.pulumi.aws.sfn.inputs.GetAliasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -282,6 +309,19 @@ Future<GetAliasResult> getAlias(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_sfn_getstatemachine" "example" {
+///   name = "an_example_sfn_name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -290,8 +330,8 @@ Future<GetAliasResult> getAlias(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sfn.SfnFunctions;
 /// import com.pulumi.aws.sfn.inputs.GetStateMachineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -389,6 +429,19 @@ Future<GetStateMachineResult> getStateMachine(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_sfn_getstatemachineversions" "test" {
+///   statemachine_arn = testAwsSfnStateMachine.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -397,8 +450,8 @@ Future<GetStateMachineResult> getStateMachine(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sfn.SfnFunctions;
 /// import com.pulumi.aws.sfn.inputs.GetStateMachineVersionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

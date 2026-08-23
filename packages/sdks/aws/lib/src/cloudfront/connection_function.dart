@@ -81,6 +81,24 @@ import 'connection_function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_connectionfunction" "example" {
+///   name                     = "example-connection-function"
+///   connection_function_code = "function handler(event) { return event.request; }"
+///   connection_function_config = {
+///     runtime = "cloudfront-js-2.0"
+///     comment = "Example connection function"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +108,8 @@ import 'connection_function_state.dart';
 /// import com.pulumi.aws.cloudfront.ConnectionFunction;
 /// import com.pulumi.aws.cloudfront.ConnectionFunctionArgs;
 /// import com.pulumi.aws.cloudfront.inputs.ConnectionFunctionConnectionFunctionConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -206,6 +224,25 @@ import 'connection_function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_connectionfunction" "example" {
+///   name                     = "example-connection-function"
+///   connection_function_code = "function handler(event) { return event.request; }"
+///   connection_function_config = {
+///     runtime = "cloudfront-js-2.0"
+///     comment = "Example connection function"
+///   }
+///   publish = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -215,8 +252,8 @@ import 'connection_function_state.dart';
 /// import com.pulumi.aws.cloudfront.ConnectionFunction;
 /// import com.pulumi.aws.cloudfront.ConnectionFunctionArgs;
 /// import com.pulumi.aws.cloudfront.inputs.ConnectionFunctionConnectionFunctionConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -362,6 +399,31 @@ import 'connection_function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_keyvaluestore" "example" {
+///   name    = "example-kvs"
+///   comment = "Example key value store"
+/// }
+/// resource "aws_cloudfront_connectionfunction" "example" {
+///   name                     = "example-connection-function"
+///   connection_function_code = "function handler(event) { return event.request; }"
+///   connection_function_config = {
+///     runtime = "cloudfront-js-2.0"
+///     comment = "Example connection function"
+///     key_value_store_association = {
+///       key_value_store_arn = aws_cloudfront_keyvaluestore.example.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -374,8 +436,8 @@ import 'connection_function_state.dart';
 /// import com.pulumi.aws.cloudfront.ConnectionFunctionArgs;
 /// import com.pulumi.aws.cloudfront.inputs.ConnectionFunctionConnectionFunctionConfigArgs;
 /// import com.pulumi.aws.cloudfront.inputs.ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -519,6 +581,28 @@ import 'connection_function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_connectionfunction" "example" {
+///   name                     = "example-connection-function"
+///   connection_function_code = "function handler(event) { return event.request; }"
+///   connection_function_config = {
+///     runtime = "cloudfront-js-2.0"
+///     comment = "Example connection function"
+///   }
+///   tags = {
+///     "Environment" = "production"
+///     "Team"        = "web"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -528,8 +612,8 @@ import 'connection_function_state.dart';
 /// import com.pulumi.aws.cloudfront.ConnectionFunction;
 /// import com.pulumi.aws.cloudfront.ConnectionFunctionArgs;
 /// import com.pulumi.aws.cloudfront.inputs.ConnectionFunctionConnectionFunctionConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -585,7 +669,7 @@ class ConnectionFunction extends pulumi.CustomResource {
   late final pulumi.Output<String> connectionFunctionArn;
   /// Code for the connection function. Maximum length is 40960 characters.
   late final pulumi.Output<String> connectionFunctionCode;
-  /// Configuration information for the connection function. See `connection_function_config` below.
+  /// Configuration information for the connection function. See `connectionFunctionConfig` below.
   late final pulumi.Output<ConnectionFunctionConnectionFunctionConfig> connectionFunctionConfig;
   /// ETag of the connection function.
   late final pulumi.Output<String> etag;
@@ -599,9 +683,9 @@ class ConnectionFunction extends pulumi.CustomResource {
   late final pulumi.Output<bool> publish;
   /// Status of the connection function.
   late final pulumi.Output<String> status;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ConnectionFunction].

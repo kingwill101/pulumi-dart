@@ -6,22 +6,22 @@ import 'capability_configuration_argo_cd_network_access.dart';
 import 'capability_configuration_argo_cd_rbac_role_mapping.dart';
 
 class CapabilityConfigurationArgoCd {
-  /// AWS IAM Identity Center configuration. See `aws_idc` below.
+  /// AWS IAM Identity Center configuration. See `awsIdc` below.
   final pulumi.Input<CapabilityConfigurationArgoCdAwsIdc> awsIdc;
   /// Kubernetes namespace for ArgoCD.
   final pulumi.Input<String>? namespace;
-  /// Network access configuration. See `network_access` below.
+  /// Network access configuration. See `networkAccess` below.
   final pulumi.Input<CapabilityConfigurationArgoCdNetworkAccess>? networkAccess;
-  /// RBAC role mappings. See `rbac_role_mapping` below.
+  /// RBAC role mappings. See `rbacRoleMapping` below.
   final pulumi.Input<List<CapabilityConfigurationArgoCdRbacRoleMapping>>? rbacRoleMappings;
   /// URL of the Argo CD server.
   final pulumi.Input<String>? serverUrl;
 
   /// Creates a new [CapabilityConfigurationArgoCd].
-  /// [awsIdc] AWS IAM Identity Center configuration. See `aws_idc` below.
+  /// [awsIdc] AWS IAM Identity Center configuration. See `awsIdc` below.
   /// [namespace] Kubernetes namespace for ArgoCD.
-  /// [networkAccess] Network access configuration. See `network_access` below.
-  /// [rbacRoleMappings] RBAC role mappings. See `rbac_role_mapping` below.
+  /// [networkAccess] Network access configuration. See `networkAccess` below.
+  /// [rbacRoleMappings] RBAC role mappings. See `rbacRoleMapping` below.
   /// [serverUrl] URL of the Argo CD server.
   const CapabilityConfigurationArgoCd({
     required this.awsIdc,
@@ -51,4 +51,3 @@ class CapabilityConfigurationArgoCd {
     );
   }
 }
-

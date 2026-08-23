@@ -14,7 +14,7 @@ class ClusterState {
   final pulumi.Input<bool>? deletionProtectionEnabled;
   /// Encryption configuration details for the DSQL Cluster.
   final pulumi.Input<List<ClusterEncryptionDetail>>? encryptionDetails;
-  /// Destroys cluster even if `deletion_protection_enabled` is set to `true`.
+  /// Destroys cluster even if `deletionProtectionEnabled` is set to `true`.
   /// Default value is `false`.
   final pulumi.Input<bool>? forceDestroy;
   /// Cluster Identifier.
@@ -27,7 +27,7 @@ class ClusterState {
   final pulumi.Input<String>? region;
   /// Set of tags to be associated with the AWS DSQL Cluster resource.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<ClusterTimeouts>? timeouts;
   /// The DSQL Cluster's VPC endpoint service name.
@@ -37,13 +37,13 @@ class ClusterState {
   /// [arn] ARN of the Cluster.
   /// [deletionProtectionEnabled] Whether deletion protection is enabled in this cluster.
   /// [encryptionDetails] Encryption configuration details for the DSQL Cluster.
-  /// [forceDestroy] Destroys cluster even if `deletion_protection_enabled` is set to `true`.
+  /// [forceDestroy] Destroys cluster even if `deletionProtectionEnabled` is set to `true`.
   /// [identifier] Cluster Identifier.
   /// [kmsEncryptionKey] The ARN of the AWS KMS key that encrypts data in the DSQL Cluster, or `"AWS_OWNED_KMS_KEY"`.
   /// [multiRegionProperties] Multi-region properties of the DSQL Cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Set of tags to be associated with the AWS DSQL Cluster resource.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   /// [vpcEndpointServiceName] The DSQL Cluster's VPC endpoint service name.
   const ClusterState({
@@ -95,4 +95,3 @@ class ClusterState {
     );
   }
 }
-

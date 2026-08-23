@@ -13,41 +13,41 @@ import 'graph_qlapi_user_pool_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_appsync_graph_qlapi_graph_qlapi_args_doc}
 class GraphQLApiArgs {
-  /// One or more additional authentication providers for the GraphQL API. See `additional_authentication_provider` Block for details.
+  /// One or more additional authentication providers for the GraphQL API. See `additionalAuthenticationProvider` Block for details.
   final pulumi.Input<List<GraphQLApiAdditionalAuthenticationProvider>>? additionalAuthenticationProviders;
-  /// API type. Valid values are `GRAPHQL` or `MERGED`. A `MERGED` type requires `merged_api_execution_role_arn` to be set.
+  /// API type. Valid values are `GRAPHQL` or `MERGED`. A `MERGED` type requires `mergedApiExecutionRoleArn` to be set.
   final pulumi.Input<String>? apiType;
   /// Authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`
   final pulumi.Input<String> authenticationType;
-  /// Enables and controls the enhanced metrics feature. See `enhanced_metrics_config` Block for details.
+  /// Enables and controls the enhanced metrics feature. See `enhancedMetricsConfig` Block for details.
   final pulumi.Input<GraphQLApiEnhancedMetricsConfig>? enhancedMetricsConfig;
   /// Sets the value of the GraphQL API to enable (`ENABLED`) or disable (`DISABLED`) introspection. If no value is provided, the introspection configuration will be set to ENABLED by default. This field will produce an error if the operation attempts to use the introspection feature while this field is disabled. For more information about introspection, see [GraphQL introspection](https://graphql.org/learn/introspection/).
   final pulumi.Input<String>? introspectionConfig;
-  /// Nested argument containing Lambda authorizer configuration. See `lambda_authorizer_config` Block for details.
+  /// Nested argument containing Lambda authorizer configuration. See `lambdaAuthorizerConfig` Block for details.
   final pulumi.Input<GraphQLApiLambdaAuthorizerConfig>? lambdaAuthorizerConfig;
-  /// Nested argument containing logging configuration. See `log_config` Block for details.
+  /// Nested argument containing logging configuration. See `logConfig` Block for details.
   final pulumi.Input<GraphQLApiLogConfig>? logConfig;
-  /// ARN of the execution role when `api_type` is set to `MERGED`.
+  /// ARN of the execution role when `apiType` is set to `MERGED`.
   final pulumi.Input<String>? mergedApiExecutionRoleArn;
   /// User-supplied name for the GraphQL API.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
-  /// Nested argument containing OpenID Connect configuration. See `openid_connect_config` Block for details.
+  /// Nested argument containing OpenID Connect configuration. See `openidConnectConfig` Block for details.
   final pulumi.Input<GraphQLApiOpenidConnectConfig>? openidConnectConfig;
-  /// The maximum depth a query can have in a single request. Depth refers to the amount of nested levels allowed in the body of query. The default value is `0` (or unspecified), which indicates there's no depth limit. If you set a limit, it can be between `1` and `75` nested levels. This field will produce a limit error if the operation falls out of bounds.
+  /// Maximum depth a query can have in a single request. Depth refers to the amount of nested levels allowed in the body of query. The default value is `0` (or unspecified), which indicates there's no depth limit. If you set a limit, it can be between `1` and `75` nested levels. This field will produce a limit error if the operation falls out of bounds.
   ///
   /// Note that fields can still be set to nullable or non-nullable. If a non-nullable field produces an error, the error will be thrown upwards to the first nullable field available.
   final pulumi.Input<int>? queryDepthLimit;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The maximum number of resolvers that can be invoked in a single request. The default value is `0` (or unspecified), which will set the limit to `10000`. When specified, the limit value can be between `1` and `10000`. This field will produce a limit error if the operation falls out of bounds.
+  /// Maximum number of resolvers that can be invoked in a single request. The default value is `0` (or unspecified), which will set the limit to `10000`. When specified, the limit value can be between `1` and `10000`. This field will produce a limit error if the operation falls out of bounds.
   final pulumi.Input<int>? resolverCountLimit;
   /// Schema definition, in GraphQL schema language format. This provider cannot perform drift detection of this configuration.
   final pulumi.Input<String>? schema;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Amazon Cognito User Pool configuration. See `user_pool_config` Block for details.
+  /// Amazon Cognito User Pool configuration. See `userPoolConfig` Block for details.
   final pulumi.Input<GraphQLApiUserPoolConfig>? userPoolConfig;
   /// Sets the value of the GraphQL API to public (`GLOBAL`) or private (`PRIVATE`). If no value is provided, the visibility will be set to `GLOBAL` by default. This value cannot be changed once the API has been created.
   final pulumi.Input<String>? visibility;
@@ -55,22 +55,22 @@ class GraphQLApiArgs {
   final pulumi.Input<bool>? xrayEnabled;
 
   /// Creates a new [GraphQLApiArgs].
-  /// [additionalAuthenticationProviders] One or more additional authentication providers for the GraphQL API. See `additional_authentication_provider` Block for details.
-  /// [apiType] API type. Valid values are `GRAPHQL` or `MERGED`. A `MERGED` type requires `merged_api_execution_role_arn` to be set.
+  /// [additionalAuthenticationProviders] One or more additional authentication providers for the GraphQL API. See `additionalAuthenticationProvider` Block for details.
+  /// [apiType] API type. Valid values are `GRAPHQL` or `MERGED`. A `MERGED` type requires `mergedApiExecutionRoleArn` to be set.
   /// [authenticationType] Authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`
-  /// [enhancedMetricsConfig] Enables and controls the enhanced metrics feature. See `enhanced_metrics_config` Block for details.
+  /// [enhancedMetricsConfig] Enables and controls the enhanced metrics feature. See `enhancedMetricsConfig` Block for details.
   /// [introspectionConfig] Sets the value of the GraphQL API to enable (`ENABLED`) or disable (`DISABLED`) introspection. If no value is provided, the introspection configuration will be set to ENABLED by default. This field will produce an error if the operation attempts to use the introspection feature while this field is disabled. For more information about introspection, see [GraphQL introspection](https://graphql.org/learn/introspection/).
-  /// [lambdaAuthorizerConfig] Nested argument containing Lambda authorizer configuration. See `lambda_authorizer_config` Block for details.
-  /// [logConfig] Nested argument containing logging configuration. See `log_config` Block for details.
-  /// [mergedApiExecutionRoleArn] ARN of the execution role when `api_type` is set to `MERGED`.
+  /// [lambdaAuthorizerConfig] Nested argument containing Lambda authorizer configuration. See `lambdaAuthorizerConfig` Block for details.
+  /// [logConfig] Nested argument containing logging configuration. See `logConfig` Block for details.
+  /// [mergedApiExecutionRoleArn] ARN of the execution role when `apiType` is set to `MERGED`.
   /// [name] User-supplied name for the GraphQL API.
-  /// [openidConnectConfig] Nested argument containing OpenID Connect configuration. See `openid_connect_config` Block for details.
-  /// [queryDepthLimit] The maximum depth a query can have in a single request. Depth refers to the amount of nested levels allowed in the body of query. The default value is `0` (or unspecified), which indicates there's no depth limit. If you set a limit, it can be between `1` and `75` nested levels. This field will produce a limit error if the operation falls out of bounds.
+  /// [openidConnectConfig] Nested argument containing OpenID Connect configuration. See `openidConnectConfig` Block for details.
+  /// [queryDepthLimit] Maximum depth a query can have in a single request. Depth refers to the amount of nested levels allowed in the body of query. The default value is `0` (or unspecified), which indicates there's no depth limit. If you set a limit, it can be between `1` and `75` nested levels. This field will produce a limit error if the operation falls out of bounds.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resolverCountLimit] The maximum number of resolvers that can be invoked in a single request. The default value is `0` (or unspecified), which will set the limit to `10000`. When specified, the limit value can be between `1` and `10000`. This field will produce a limit error if the operation falls out of bounds.
+  /// [resolverCountLimit] Maximum number of resolvers that can be invoked in a single request. The default value is `0` (or unspecified), which will set the limit to `10000`. When specified, the limit value can be between `1` and `10000`. This field will produce a limit error if the operation falls out of bounds.
   /// [schema] Schema definition, in GraphQL schema language format. This provider cannot perform drift detection of this configuration.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [userPoolConfig] Amazon Cognito User Pool configuration. See `user_pool_config` Block for details.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [userPoolConfig] Amazon Cognito User Pool configuration. See `userPoolConfig` Block for details.
   /// [visibility] Sets the value of the GraphQL API to public (`GLOBAL`) or private (`PRIVATE`). If no value is provided, the visibility will be set to `GLOBAL` by default. This value cannot be changed once the API has been created.
   /// [xrayEnabled] Whether tracing with X-ray is enabled. Defaults to false.
   const GraphQLApiArgs({
@@ -140,4 +140,3 @@ class GraphQLApiArgs {
     );
   }
 }
-

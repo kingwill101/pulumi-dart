@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoggingConfigurationLoggingConfigurationLogDestinationConfig {
-  /// A map describing the logging destination for the chosen `log_destination_type`.
+  /// A map describing the logging destination for the chosen `logDestinationType`.
   /// * For an Amazon S3 bucket, specify the key `bucketName` with the name of the bucket and optionally specify the key `prefix` with a path (Do not add a leading / in the `prefix` as the configuration will have two // when applied).
   /// * For a CloudWatch log group, specify the key `logGroup` with the name of the CloudWatch log group.
   /// * For a Kinesis Data Firehose delivery stream, specify the key `deliveryStream` with the name of the delivery stream.
@@ -14,7 +14,7 @@ class LoggingConfigurationLoggingConfigurationLogDestinationConfig {
   final pulumi.Input<String> logType;
 
   /// Creates a new [LoggingConfigurationLoggingConfigurationLogDestinationConfig].
-  /// [logDestination] A map describing the logging destination for the chosen `log_destination_type`.
+  /// [logDestination] A map describing the logging destination for the chosen `logDestinationType`.
   /// [logDestinationType] The location to send logs to. Valid values: `S3`, `CloudWatchLogs`, `KinesisDataFirehose`.
   /// [logType] The type of log to send. Valid values: `ALERT` or `FLOW` or `TLS`. Alert logs report traffic that matches a `StatefulRule` with an action setting that sends a log message. Flow logs are standard network traffic flow logs.
   const LoggingConfigurationLoggingConfigurationLogDestinationConfig({
@@ -39,4 +39,3 @@ class LoggingConfigurationLoggingConfigurationLogDestinationConfig {
     );
   }
 }
-

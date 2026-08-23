@@ -8,18 +8,18 @@ class VocabularyState {
   final pulumi.Input<String>? arn;
   /// Generated download URI.
   final pulumi.Input<String>? downloadUri;
-  /// The language code you selected for your vocabulary.
+  /// Language code you selected for your vocabulary.
   final pulumi.Input<String>? languageCode;
-  /// A list of terms to include in the vocabulary. Conflicts with `vocabulary_file_uri`
+  /// List of terms to include in the vocabulary. Conflicts with `vocabularyFileUri`
   final pulumi.Input<List<String>>? phrases;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the Vocabulary. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the Vocabulary. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// The Amazon S3 location (URI) of the text file that contains your custom vocabulary. Conflicts wth `phrases`.
+  /// Amazon S3 location (URI) of the text file that contains your custom vocabulary. Conflicts wth `phrases`.
   final pulumi.Input<String>? vocabularyFileUri;
-  /// The name of the Vocabulary.
+  /// Name of the Vocabulary.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? vocabularyName;
@@ -27,13 +27,13 @@ class VocabularyState {
   /// Creates a new [VocabularyState].
   /// [arn] ARN of the Vocabulary.
   /// [downloadUri] Generated download URI.
-  /// [languageCode] The language code you selected for your vocabulary.
-  /// [phrases] A list of terms to include in the vocabulary. Conflicts with `vocabulary_file_uri`
+  /// [languageCode] Language code you selected for your vocabulary.
+  /// [phrases] List of terms to include in the vocabulary. Conflicts with `vocabularyFileUri`
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the Vocabulary. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the Vocabulary. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
-  /// [vocabularyFileUri] The Amazon S3 location (URI) of the text file that contains your custom vocabulary. Conflicts wth `phrases`.
-  /// [vocabularyName] The name of the Vocabulary.
+  /// [vocabularyFileUri] Amazon S3 location (URI) of the text file that contains your custom vocabulary. Conflicts wth `phrases`.
+  /// [vocabularyName] Name of the Vocabulary.
   const VocabularyState({
     this.arn,
     this.downloadUri,
@@ -74,4 +74,3 @@ class VocabularyState {
     );
   }
 }
-

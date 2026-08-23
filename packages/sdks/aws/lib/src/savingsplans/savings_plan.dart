@@ -81,6 +81,23 @@ import 'savings_plan_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_savingsplans_savingsplan" "example" {
+///   savings_plan_offering_id = "00000000-0000-0000-0000-000000000000"
+///   commitment               = "1.0"
+///   tags = {
+///     "Environment" = "production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +106,8 @@ import 'savings_plan_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.savingsplans.SavingsPlan;
 /// import com.pulumi.aws.savingsplans.SavingsPlanArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -197,6 +214,24 @@ import 'savings_plan_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_savingsplans_savingsplan" "scheduled" {
+///   savings_plan_offering_id = "00000000-0000-0000-0000-000000000000"
+///   commitment               = "5.0"
+///   purchase_time            = "2026-12-01T00:00:00Z"
+///   tags = {
+///     "Environment" = "production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -205,8 +240,8 @@ import 'savings_plan_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.savingsplans.SavingsPlan;
 /// import com.pulumi.aws.savingsplans.SavingsPlanArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -290,9 +325,9 @@ class SavingsPlan extends pulumi.CustomResource {
   late final pulumi.Output<String> start;
   /// The current state of the Savings Plan (e.g., `active`, `queued`, `retired`).
   late final pulumi.Output<String> state;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The duration of the term, in seconds.
   late final pulumi.Output<int> termDurationInSeconds;

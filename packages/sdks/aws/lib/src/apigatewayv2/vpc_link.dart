@@ -86,6 +86,24 @@ import 'vpc_link_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigatewayv2_vpclink" "example" {
+///   name               = "example"
+///   security_group_ids = [exampleAwsSecurityGroup.id]
+///   subnet_ids         = exampleAwsSubnets.ids
+///   tags = {
+///     "Usage" = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +112,8 @@ import 'vpc_link_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigatewayv2.VpcLink;
 /// import com.pulumi.aws.apigatewayv2.VpcLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -149,9 +167,9 @@ class VpcLink extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> securityGroupIds;
   /// Subnet IDs for the VPC Link.
   late final pulumi.Output<List<String>> subnetIds;
-  /// Map of tags to assign to the VPC Link. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the VPC Link. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [VpcLink].

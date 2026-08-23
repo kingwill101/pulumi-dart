@@ -25,4 +25,3 @@ class VpnConnectionTunnel1LogOptions {
     );
   }
 }
-

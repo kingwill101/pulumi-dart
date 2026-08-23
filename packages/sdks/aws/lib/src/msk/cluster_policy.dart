@@ -140,7 +140,7 @@ import 'cluster_policy_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "ExampleMskClusterPolicy",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:%v:iam::%v:root", currentGetPartition.Partition, current.AccountId),
 /// 					},
 /// 					"Action": []string{
@@ -159,13 +159,43 @@ import 'cluster_policy_state.dart';
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = msk.NewClusterPolicy(ctx, "example", &msk.ClusterPolicyArgs{
 /// 			ClusterArn: pulumi.Any(exampleAwsMskCluster.Arn),
-/// 			Policy:     pulumi.String(json0),
+/// 			Policy:     json0,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+///
+/// resource "aws_msk_clusterpolicy" "example" {
+///   cluster_arn = exampleAwsMskCluster.arn
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Sid"    = "ExampleMskClusterPolicy"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:${data.aws_getpartition.currentGetPartition.partition}:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///       }
+///       "Action"   = ["kafka:Describe*", "kafka:Get*", "kafka:CreateVpcConnection", "kafka:GetBootstrapBrokers"]
+///       "Resource" = exampleAwsMskCluster.arn
+///     }]
+///   })
 /// }
 /// ```
 /// ```java
@@ -180,8 +210,8 @@ import 'cluster_policy_state.dart';
 /// import com.pulumi.aws.msk.ClusterPolicy;
 /// import com.pulumi.aws.msk.ClusterPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -258,7 +288,7 @@ import 'cluster_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Managed Streaming for Kafka Cluster Policy using the `cluster_arn`. For example:
+/// Using `pulumi import`, import Managed Streaming for Kafka Cluster Policy using the `clusterArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:msk/clusterPolicy:ClusterPolicy example arn:aws:kafka:us-west-2:123456789012:cluster/example/279c0212-d057-4dba-9aa9-1c4e5a25bfc7-3

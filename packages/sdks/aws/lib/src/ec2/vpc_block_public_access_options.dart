@@ -57,6 +57,19 @@ import 'vpc_block_public_access_options_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpcblockpublicaccessoptions" "example" {
+///   internet_gateway_block_mode = "block-bidirectional"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +78,8 @@ import 'vpc_block_public_access_options_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.VpcBlockPublicAccessOptions;
 /// import com.pulumi.aws.ec2.VpcBlockPublicAccessOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -81,6 +81,23 @@ import 'restore_testing_selection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_backup_restoretestingselection" "example" {
+///   name                      = "ec2_selection"
+///   restore_testing_plan_name = exampleAwsBackupRestoreTestingPlan.name
+///   protected_resource_type   = "EC2"
+///   iam_role_arn              = exampleAwsIamRole.arn
+///   protected_resource_arns   = ["*"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +106,8 @@ import 'restore_testing_selection_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.backup.RestoreTestingSelection;
 /// import com.pulumi.aws.backup.RestoreTestingSelectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -223,6 +240,28 @@ import 'restore_testing_selection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_backup_restoretestingselection" "example" {
+///   name                      = "ec2_selection"
+///   restore_testing_plan_name = exampleAwsBackupRestoreTestingPlan.name
+///   protected_resource_type   = "EC2"
+///   iam_role_arn              = exampleAwsIamRole.arn
+///   protected_resource_conditions = {
+///     string_equals = [{
+///       "key"   = "aws:ResourceTag/backup"
+///       "value" = true
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -232,8 +271,9 @@ import 'restore_testing_selection_state.dart';
 /// import com.pulumi.aws.backup.RestoreTestingSelection;
 /// import com.pulumi.aws.backup.RestoreTestingSelectionArgs;
 /// import com.pulumi.aws.backup.inputs.RestoreTestingSelectionProtectedResourceConditionsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.backup.inputs.RestoreTestingSelectionProtectedResourceConditionsStringEqualArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

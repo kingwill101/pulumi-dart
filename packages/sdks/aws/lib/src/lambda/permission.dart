@@ -32,7 +32,7 @@ import 'permission_state.dart';
 ///     name: "lambda_function_name",
 ///     role: iamForLambda.arn,
 ///     handler: "exports.handler",
-///     runtime: aws.lambda.Runtime.NodeJS20dX,
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
 /// });
 /// const testAlias = new aws.lambda.Alias("test_alias", {
 ///     name: "testalias",
@@ -72,7 +72,7 @@ import 'permission_state.dart';
 ///     name="lambda_function_name",
 ///     role=iam_for_lambda.arn,
 ///     handler="exports.handler",
-///     runtime=aws.lambda_.Runtime.NODE_JS20D_X)
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X)
 /// test_alias = aws.lambda_.Alias("test_alias",
 ///     name="testalias",
 ///     description="a sample description",
@@ -123,7 +123,7 @@ import 'permission_state.dart';
 ///         Name = "lambda_function_name",
 ///         Role = iamForLambda.Arn,
 ///         Handler = "exports.handler",
-///         Runtime = Aws.Lambda.Runtime.NodeJS20dX,
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///     });
 ///
 ///     var testAlias = new Aws.Lambda.Alias("test_alias", new()
@@ -166,7 +166,7 @@ import 'permission_state.dart';
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
 /// 					"Sid":    "",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "lambda.amazonaws.com",
 /// 					},
 /// 				},
@@ -188,7 +188,7 @@ import 'permission_state.dart';
 /// 			Name:    pulumi.String("lambda_function_name"),
 /// 			Role:    iamForLambda.Arn,
 /// 			Handler: pulumi.String("exports.handler"),
-/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS20dX),
+/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -217,6 +217,51 @@ import 'permission_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_permission" "allow_cloudwatch" {
+///   statement_id = "AllowExecutionFromCloudWatch"
+///   action       = "lambda:InvokeFunction"
+///   function     = aws_lambda_function.test_lambda.name
+///   principal    = "events.amazonaws.com"
+///   source_arn   = "arn:aws:events:eu-west-1:111122223333:rule/RunDaily"
+///   qualifier    = aws_lambda_alias.test_alias.name
+/// }
+/// resource "aws_lambda_alias" "test_alias" {
+///   name             = "testalias"
+///   description      = "a sample description"
+///   function_name    = aws_lambda_function.test_lambda.name
+///   function_version = "$LATEST"
+/// }
+/// resource "aws_lambda_function" "test_lambda" {
+///   code    = fileArchive("lambdatest.zip")
+///   name    = "lambda_function_name"
+///   role    = aws_iam_role.iam_for_lambda.arn
+///   handler = "exports.handler"
+///   runtime = "nodejs24.x"
+/// }
+/// resource "aws_iam_role" "iam_for_lambda" {
+///   name = "iam_for_lambda"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Sid"    = ""
+///       "Principal" = {
+///         "Service" = "lambda.amazonaws.com"
+///       }
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -233,8 +278,8 @@ import 'permission_state.dart';
 /// import com.pulumi.aws.lambda.PermissionArgs;
 /// import com.pulumi.asset.FileArchive;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -267,7 +312,7 @@ import 'permission_state.dart';
 ///             .name("lambda_function_name")
 ///             .role(iamForLambda.arn())
 ///             .handler("exports.handler")
-///             .runtime("nodejs20.x")
+///             .runtime("nodejs24.x")
 ///             .build());
 ///
 ///         var testAlias = new Alias("testAlias", AliasArgs.builder()
@@ -314,11 +359,11 @@ import 'permission_state.dart';
 ///     name: test_lambda
 ///     properties:
 ///       code:
-///         fn::FileArchive: lambdatest.zip
+///         fn::fileArchive: lambdatest.zip
 ///       name: lambda_function_name
 ///       role: ${iamForLambda.arn}
 ///       handler: exports.handler
-///       runtime: nodejs20.x
+///       runtime: nodejs24.x
 ///   iamForLambda:
 ///     type: aws:iam:Role
 ///     name: iam_for_lambda
@@ -504,7 +549,7 @@ import 'permission_state.dart';
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
 /// 					"Sid":    "",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "lambda.amazonaws.com",
 /// 					},
 /// 				},
@@ -553,6 +598,52 @@ import 'permission_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_permission" "with_sns" {
+///   statement_id = "AllowExecutionFromSNS"
+///   action       = "lambda:InvokeFunction"
+///   function     = aws_lambda_function.func.name
+///   principal    = "sns.amazonaws.com"
+///   source_arn   = aws_sns_topic.default.arn
+/// }
+/// resource "aws_sns_topic" "default" {
+///   name = "call-lambda-maybe"
+/// }
+/// resource "aws_sns_topicsubscription" "lambda" {
+///   topic    = aws_sns_topic.default.arn
+///   protocol = "lambda"
+///   endpoint = aws_lambda_function.func.arn
+/// }
+/// resource "aws_lambda_function" "func" {
+///   code    = fileArchive("lambdatest.zip")
+///   name    = "lambda_called_from_sns"
+///   role    = aws_iam_role.default.arn
+///   handler = "exports.handler"
+///   runtime = "python3.12"
+/// }
+/// resource "aws_iam_role" "default" {
+///   name = "iam_for_lambda_with_sns"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Sid"    = ""
+///       "Principal" = {
+///         "Service" = "lambda.amazonaws.com"
+///       }
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -571,8 +662,8 @@ import 'permission_state.dart';
 /// import com.pulumi.aws.sns.TopicSubscriptionArgs;
 /// import com.pulumi.asset.FileArchive;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -654,7 +745,7 @@ import 'permission_state.dart';
 ///     type: aws:lambda:Function
 ///     properties:
 ///       code:
-///         fn::FileArchive: lambdatest.zip
+///         fn::fileArchive: lambdatest.zip
 ///       name: lambda_called_from_sns
 ///       role: ${defaultRole.arn}
 ///       handler: exports.handler
@@ -770,6 +861,27 @@ import 'permission_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_restapi" "MyDemoAPI" {
+///   name        = "MyDemoAPI"
+///   description = "This is my API for demonstration purposes"
+/// }
+/// resource "aws_lambda_permission" "lambda_permission" {
+///   statement_id = "AllowMyDemoAPIInvoke"
+///   action       = "lambda:InvokeFunction"
+///   function     = "MyDemoFunction"
+///   principal    = "apigateway.amazonaws.com"
+///   source_arn   ="${aws_apigateway_restapi.MyDemoAPI.execution_arn}/*"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -780,8 +892,8 @@ import 'permission_state.dart';
 /// import com.pulumi.aws.apigateway.RestApiArgs;
 /// import com.pulumi.aws.lambda.Permission;
 /// import com.pulumi.aws.lambda.PermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1069,6 +1181,54 @@ import 'permission_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["lambda.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// resource "aws_lambda_permission" "logging" {
+///   action     = "lambda:InvokeFunction"
+///   function   = aws_lambda_function.logging.name
+///   principal  = "logs.eu-west-1.amazonaws.com"
+///   source_arn ="${aws_cloudwatch_loggroup.default.arn}:*"
+/// }
+/// resource "aws_cloudwatch_loggroup" "default" {
+///   name = "/default"
+/// }
+/// resource "aws_cloudwatch_logsubscriptionfilter" "logging" {
+///   depends_on      = [aws_lambda_permission.logging]
+///   destination_arn = aws_lambda_function.logging.arn
+///   filter_pattern  = ""
+///   log_group       = aws_cloudwatch_loggroup.default.name
+///   name            = "logging_default"
+/// }
+/// resource "aws_lambda_function" "logging" {
+///   code    = fileArchive("lamba_logging.zip")
+///   name    = "lambda_called_from_cloudwatch_logs"
+///   handler = "exports.handler"
+///   role    = aws_iam_role.default.arn
+///   runtime = "python3.12"
+/// }
+/// resource "aws_iam_role" "default" {
+///   name               = "iam_for_lambda_called_from_cloudwatch_logs"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1079,6 +1239,8 @@ import 'permission_state.dart';
 /// import com.pulumi.aws.cloudwatch.LogGroupArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.lambda.Function;
@@ -1089,8 +1251,8 @@ import 'permission_state.dart';
 /// import com.pulumi.aws.cloudwatch.LogSubscriptionFilterArgs;
 /// import com.pulumi.asset.FileArchive;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1178,7 +1340,7 @@ import 'permission_state.dart';
 ///     name: logging
 ///     properties:
 ///       code:
-///         fn::FileArchive: lamba_logging.zip
+///         fn::fileArchive: lamba_logging.zip
 ///       name: lambda_called_from_cloudwatch_logs
 ///       handler: exports.handler
 ///       role: ${defaultRole.arn}
@@ -1294,6 +1456,27 @@ import 'permission_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_functionurl" "url" {
+///   function_name      = example.functionName
+///   authorization_type = "AWS_IAM"
+/// }
+/// resource "aws_lambda_permission" "url" {
+///   action                 = "lambda:InvokeFunctionUrl"
+///   function               = example.functionName
+///   principal              = "arn:aws:iam::444455556666:role/example"
+///   source_account         = "444455556666"
+///   function_url_auth_type = "AWS_IAM"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1304,8 +1487,8 @@ import 'permission_state.dart';
 /// import com.pulumi.aws.lambda.FunctionUrlArgs;
 /// import com.pulumi.aws.lambda.Permission;
 /// import com.pulumi.aws.lambda.PermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1354,7 +1537,7 @@ import 'permission_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `qualifier` (String) Qualifier for the function version or alias.
 /// * `region` (String) Region where this resource is managed.
 ///
@@ -1395,7 +1578,7 @@ class Permission extends pulumi.CustomResource {
   late final pulumi.Output<String?> sourceArn;
   /// Statement identifier. Generated by Pulumi if not provided
   late final pulumi.Output<String> statementId;
-  /// Statement identifier prefix. Conflicts with `statement_id`
+  /// Statement identifier prefix. Conflicts with `statementId`
   late final pulumi.Output<String> statementIdPrefix;
 
   /// Creates a new [Permission].

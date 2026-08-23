@@ -111,6 +111,32 @@ import 'get_target_group_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lb_getlistener" "listener" {
+///   arn = var.listenerArn
+/// }
+/// data "aws_lb_getloadbalancer" "selected" {
+///   name = "default-public"
+/// }
+/// data "aws_lb_getlistener" "selected443" {
+///   load_balancer_arn = data.aws_lb_getloadbalancer.selected.arn
+///   port              = 443
+/// }
+///
+/// # get listener from listener arn
+/// variable "listenerArn" {
+///   type = string
+/// }
+/// # get listener from load_balancer_arn and port
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -120,8 +146,8 @@ import 'get_target_group_result.dart';
 /// import com.pulumi.aws.lb.LbFunctions;
 /// import com.pulumi.aws.lb.inputs.GetListenerArgs;
 /// import com.pulumi.aws.lb.inputs.GetLoadBalancerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -134,7 +160,7 @@ import 'get_target_group_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var listenerArn = config.get("listenerArn");
+///         final var listenerArn = config.require("listenerArn");
 ///         final var listener = LbFunctions.getListener(GetListenerArgs.builder()
 ///             .arn(listenerArn)
 ///             .build());
@@ -278,6 +304,29 @@ Future<GetListenerResult> getListener(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lb_getloadbalancer" "test" {
+///   arn  = var.lbArn
+///   name = var.lbName
+/// }
+///
+/// variable "lbArn" {
+///   type    = string
+///   default = ""
+/// }
+/// variable "lbName" {
+///   type    = string
+///   default = ""
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -286,8 +335,8 @@ Future<GetListenerResult> getListener(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lb.LbFunctions;
 /// import com.pulumi.aws.lb.inputs.GetLoadBalancerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -428,6 +477,29 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lb_gettargetgroup" "test" {
+///   arn  = var.lbTgArn
+///   name = var.lbTgName
+/// }
+///
+/// variable "lbTgArn" {
+///   type    = string
+///   default = ""
+/// }
+/// variable "lbTgName" {
+///   type    = string
+///   default = ""
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -436,8 +508,8 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lb.LbFunctions;
 /// import com.pulumi.aws.lb.inputs.GetTargetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

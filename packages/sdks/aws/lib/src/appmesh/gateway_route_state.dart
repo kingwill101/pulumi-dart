@@ -23,9 +23,9 @@ class GatewayRouteState {
   final pulumi.Input<String>? resourceOwner;
   /// Gateway route specification to apply.
   final pulumi.Input<GatewayRouteSpec>? spec;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Name of the virtual gateway to associate the gateway route with. Must be between 1 and 255 characters in length.
   final pulumi.Input<String>? virtualGatewayName;
@@ -40,8 +40,8 @@ class GatewayRouteState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceOwner] Resource owner's AWS account ID.
   /// [spec] Gateway route specification to apply.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [virtualGatewayName] Name of the virtual gateway to associate the gateway route with. Must be between 1 and 255 characters in length.
   const GatewayRouteState({
     this.arn,
@@ -92,4 +92,3 @@ class GatewayRouteState {
     );
   }
 }
-

@@ -104,6 +104,29 @@ import 'application_access_scope_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+///
+/// resource "aws_ssoadmin_application" "example" {
+///   name                     = "example"
+///   application_provider_arn = "arn:aws:sso::aws:applicationProvider/custom"
+///   instance_arn             = data.aws_ssoadmin_getinstances.example.arns[0]
+/// }
+/// resource "aws_ssoadmin_applicationaccessscope" "example" {
+///   application_arn    = aws_ssoadmin_application.example.arn
+///   authorized_targets = ["arn:aws:sso::123456789012:application/ssoins-123456789012/apl-123456789012"]
+///   scope              = "sso:account:access"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -116,8 +139,8 @@ import 'application_access_scope_state.dart';
 /// import com.pulumi.aws.ssoadmin.ApplicationArgs;
 /// import com.pulumi.aws.ssoadmin.ApplicationAccessScope;
 /// import com.pulumi.aws.ssoadmin.ApplicationAccessScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -5,26 +5,23 @@ import 'policy_target_tracking_scaling_policy_configuration_customized_metric_sp
 import 'policy_target_tracking_scaling_policy_configuration_customized_metric_specification_metric.dart';
 
 class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification {
-  /// Dimensions of the metric.
+  /// Dimensions of the metric. See `target_tracking_scaling_policy_configuration.customized_metric_specification.metrics.metric_stat.metric.dimensions` Block for details.
   final pulumi.Input<List<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension>>? dimensions;
-  /// Name of the metric.
   final pulumi.Input<String>? metricName;
-  /// Metrics to include, as a metric data query.
+  /// Metrics to include, as a metric data query. See `target_tracking_scaling_policy_configuration.customized_metric_specification.metrics` Block for details.
   final pulumi.Input<List<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetric>>? metrics;
-  /// Namespace of the metric.
   final pulumi.Input<String>? namespace;
-  /// Statistic of the metric. Valid values: `Average`, `Minimum`, `Maximum`, `SampleCount`, and `Sum`.
+  /// Statistic of the metric. Valid values are `Average`, `Minimum`, `Maximum`, `SampleCount`, and `Sum`.
   final pulumi.Input<String>? statistic;
-  /// Unit of the metrics to return.
   final pulumi.Input<String>? unit;
 
   /// Creates a new [PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification].
-  /// [dimensions] Dimensions of the metric.
-  /// [metricName] Name of the metric.
-  /// [metrics] Metrics to include, as a metric data query.
-  /// [namespace] Namespace of the metric.
-  /// [statistic] Statistic of the metric. Valid values: `Average`, `Minimum`, `Maximum`, `SampleCount`, and `Sum`.
-  /// [unit] Unit of the metrics to return.
+  /// [dimensions] Dimensions of the metric. See `target_tracking_scaling_policy_configuration.customized_metric_specification.metrics.metric_stat.metric.dimensions` Block for details.
+  /// [metricName] Optional.
+  /// [metrics] Metrics to include, as a metric data query. See `target_tracking_scaling_policy_configuration.customized_metric_specification.metrics` Block for details.
+  /// [namespace] Optional.
+  /// [statistic] Statistic of the metric. Valid values are `Average`, `Minimum`, `Maximum`, `SampleCount`, and `Sum`.
+  /// [unit] Optional.
   const PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification({
     this.dimensions,
     this.metricName,
@@ -56,4 +53,3 @@ class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificatio
     );
   }
 }
-

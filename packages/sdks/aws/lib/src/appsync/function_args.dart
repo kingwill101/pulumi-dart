@@ -11,7 +11,7 @@ import 'function_sync_config.dart';
 class FunctionArgs {
   /// ID of the associated AppSync API.
   final pulumi.Input<String> apiId;
-  /// The function code that contains the request and response functions. When code is used, the runtime is required. The runtime value must be APPSYNC_JS.
+  /// Function code that contains the request and response functions. When code is used, the runtime is required. The runtime value must be APPSYNC_JS.
   final pulumi.Input<String>? code;
   /// Function data source name.
   final pulumi.Input<String> dataSource;
@@ -29,14 +29,14 @@ class FunctionArgs {
   final pulumi.Input<String>? requestMappingTemplate;
   /// Function response mapping template.
   final pulumi.Input<String>? responseMappingTemplate;
-  /// Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See `runtime` Block for details.
+  /// Runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See `runtime` Block for details.
   final pulumi.Input<FunctionRuntime>? runtime;
-  /// Describes a Sync configuration for a resolver. See `sync_config` Block for details.
+  /// Sync configuration for a resolver. See `syncConfig` Block for details.
   final pulumi.Input<FunctionSyncConfig>? syncConfig;
 
   /// Creates a new [FunctionArgs].
   /// [apiId] ID of the associated AppSync API.
-  /// [code] The function code that contains the request and response functions. When code is used, the runtime is required. The runtime value must be APPSYNC_JS.
+  /// [code] Function code that contains the request and response functions. When code is used, the runtime is required. The runtime value must be APPSYNC_JS.
   /// [dataSource] Function data source name.
   /// [description] Function description.
   /// [functionVersion] Version of the request mapping template. Currently the supported value is `2018-05-29`. Does not apply when specifying `code`.
@@ -45,8 +45,8 @@ class FunctionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [requestMappingTemplate] Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
   /// [responseMappingTemplate] Function response mapping template.
-  /// [runtime] Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See `runtime` Block for details.
-  /// [syncConfig] Describes a Sync configuration for a resolver. See `sync_config` Block for details.
+  /// [runtime] Runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See `runtime` Block for details.
+  /// [syncConfig] Sync configuration for a resolver. See `syncConfig` Block for details.
   const FunctionArgs({
     required this.apiId,
     this.code,
@@ -96,4 +96,3 @@ class FunctionArgs {
     );
   }
 }
-

@@ -5,25 +5,25 @@ import 'kx_environment_transit_gateway_configuration_attachment_network_acl_conf
 import 'kx_environment_transit_gateway_configuration_attachment_network_acl_configuration_port_range.dart';
 
 class KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration {
-  /// The IPv4 network range to allow or deny, in CIDR notation. The specified CIDR block is modified to its canonical form. For example, `100.68.0.18/18` will be converted to `100.68.0.0/18`.
+  /// IPv4 network range to allow or deny, in CIDR notation. The specified CIDR block is modified to its canonical form. For example, `100.68.0.18/18` will be converted to `100.68.0.0/18`.
   final pulumi.Input<String> cidrBlock;
-  /// Defines the ICMP protocol that consists of the ICMP type and code. Defined below.
+  /// ICMP protocol that consists of the ICMP type and code. Defined below.
   final pulumi.Input<KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationIcmpTypeCode>? icmpTypeCode;
   /// Range of ports the rule applies to. Defined below.
   final pulumi.Input<KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange>? portRange;
   /// Protocol number. A value of `1` means all the protocols.
   final pulumi.Input<String> protocol;
-  /// Indicates whether to `allow` or `deny` the traffic that matches the rule.
+  /// Whether to `allow` or `deny` the traffic that matches the rule.
   final pulumi.Input<String> ruleAction;
   /// Rule number for the entry. All the network ACL entries are processed in ascending order by rule number.
   final pulumi.Input<int> ruleNumber;
 
   /// Creates a new [KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration].
-  /// [cidrBlock] The IPv4 network range to allow or deny, in CIDR notation. The specified CIDR block is modified to its canonical form. For example, `100.68.0.18/18` will be converted to `100.68.0.0/18`.
-  /// [icmpTypeCode] Defines the ICMP protocol that consists of the ICMP type and code. Defined below.
+  /// [cidrBlock] IPv4 network range to allow or deny, in CIDR notation. The specified CIDR block is modified to its canonical form. For example, `100.68.0.18/18` will be converted to `100.68.0.0/18`.
+  /// [icmpTypeCode] ICMP protocol that consists of the ICMP type and code. Defined below.
   /// [portRange] Range of ports the rule applies to. Defined below.
   /// [protocol] Protocol number. A value of `1` means all the protocols.
-  /// [ruleAction] Indicates whether to `allow` or `deny` the traffic that matches the rule.
+  /// [ruleAction] Whether to `allow` or `deny` the traffic that matches the rule.
   /// [ruleNumber] Rule number for the entry. All the network ACL entries are processed in ascending order by rule number.
   const KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration({
     required this.cidrBlock,
@@ -56,4 +56,3 @@ class KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration 
     );
   }
 }
-

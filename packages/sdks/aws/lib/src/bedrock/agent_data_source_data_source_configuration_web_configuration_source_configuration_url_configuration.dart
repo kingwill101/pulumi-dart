@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_data_source_data_source_configuration_web_configuration_source_configuration_url_configuration_seed_url.dart';
 
 class AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfiguration {
-  /// List of one or more seed URLs to crawl. See `seed_urls` block for details.
+  /// List of one or more seed URLs to crawl. See `seedUrls` block for details.
   final pulumi.Input<List<AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfigurationSeedUrl>>? seedUrls;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfiguration].
-  /// [seedUrls] List of one or more seed URLs to crawl. See `seed_urls` block for details.
+  /// [seedUrls] List of one or more seed URLs to crawl. See `seedUrls` block for details.
   const AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfiguration({
     this.seedUrls,
   });
@@ -25,4 +25,3 @@ class AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationU
     );
   }
 }
-

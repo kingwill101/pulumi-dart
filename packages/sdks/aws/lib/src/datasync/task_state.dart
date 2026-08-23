@@ -29,15 +29,15 @@ class TaskState {
   final pulumi.Input<TaskSchedule>? schedule;
   /// Amazon Resource Name (ARN) of source DataSync Location.
   final pulumi.Input<String>? sourceLocationArn;
-  /// Key-value pairs of resource tags to assign to the DataSync Task. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Task. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// One of the following task modes for your data transfer:
   /// * `BASIC` (default) - Transfer files or objects between Amazon Web Services storage and on-premises, edge, or other cloud storage.
   /// * `ENHANCED` - Transfer virtually unlimited numbers of objects with enhanced metrics, more detailed logs, and higher performance than Basic mode. Currently available for transfers between Amazon S3 locations.
   final pulumi.Input<String>? taskMode;
-  /// Configuration block containing the configuration of a DataSync Task Report. See `task_report_config` below.
+  /// Configuration block containing the configuration of a DataSync Task Report. See `taskReportConfig` below.
   final pulumi.Input<TaskTaskReportConfig>? taskReportConfig;
 
   /// Creates a new [TaskState].
@@ -51,10 +51,10 @@ class TaskState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [schedule] Specifies a schedule used to periodically transfer files from a source to a destination location.
   /// [sourceLocationArn] Amazon Resource Name (ARN) of source DataSync Location.
-  /// [tags] Key-value pairs of resource tags to assign to the DataSync Task. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value pairs of resource tags to assign to the DataSync Task. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [taskMode] One of the following task modes for your data transfer:
-  /// [taskReportConfig] Configuration block containing the configuration of a DataSync Task Report. See `task_report_config` below.
+  /// [taskReportConfig] Configuration block containing the configuration of a DataSync Task Report. See `taskReportConfig` below.
   const TaskState({
     this.arn,
     this.cloudwatchLogGroupArn,
@@ -110,4 +110,3 @@ class TaskState {
     );
   }
 }
-

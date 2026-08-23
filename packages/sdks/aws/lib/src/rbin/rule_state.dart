@@ -11,21 +11,21 @@ class RuleState {
   final pulumi.Input<String>? arn;
   /// Retention rule description.
   final pulumi.Input<String>? description;
-  /// Exclusion tags to use to identify resources that are to be excluded, or ignored, by a Region-level retention rule. See `exclude_resource_tags` below.
+  /// Exclusion tags to use to identify resources that are to be excluded, or ignored, by a Region-level retention rule. See `excludeResourceTags` below.
   final pulumi.Input<List<RuleExcludeResourceTag>>? excludeResourceTags;
-  /// Information about the retention rule lock configuration. See `lock_configuration` below.
+  /// Information about the retention rule lock configuration. See `lockConfiguration` below.
   final pulumi.Input<RuleLockConfiguration>? lockConfiguration;
   /// (Timestamp) Date and time at which the unlock delay is set to expire. Only returned for retention rules that have been unlocked and that are still within the unlock delay period.
   final pulumi.Input<String>? lockEndTime;
-  /// (Optional) Lock state of the retention rules to list. Only retention rules with the specified lock state are returned. Valid values are `locked`, `pending_unlock`, `unlocked`.
+  /// (Optional) Lock state of the retention rules to list. Only retention rules with the specified lock state are returned. Valid values are `locked`, `pendingUnlock`, `unlocked`.
   final pulumi.Input<String>? lockState;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Resource tags to use to identify resources that are to be retained by a tag-level retention rule. See `resource_tags` below.
+  /// Resource tags to use to identify resources that are to be retained by a tag-level retention rule. See `resourceTags` below.
   final pulumi.Input<List<RuleResourceTag>>? resourceTags;
   /// Resource type to be retained by the retention rule. Valid values are `EBS_SNAPSHOT` and `EC2_IMAGE`.
   final pulumi.Input<String>? resourceType;
-  /// Information about the retention period for which the retention rule is to retain resources. See `retention_period` below.
+  /// Information about the retention period for which the retention rule is to retain resources. See `retentionPeriod` below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<RuleRetentionPeriod>? retentionPeriod;
@@ -37,14 +37,14 @@ class RuleState {
   /// Creates a new [RuleState].
   /// [arn] Optional.
   /// [description] Retention rule description.
-  /// [excludeResourceTags] Exclusion tags to use to identify resources that are to be excluded, or ignored, by a Region-level retention rule. See `exclude_resource_tags` below.
-  /// [lockConfiguration] Information about the retention rule lock configuration. See `lock_configuration` below.
+  /// [excludeResourceTags] Exclusion tags to use to identify resources that are to be excluded, or ignored, by a Region-level retention rule. See `excludeResourceTags` below.
+  /// [lockConfiguration] Information about the retention rule lock configuration. See `lockConfiguration` below.
   /// [lockEndTime] (Timestamp) Date and time at which the unlock delay is set to expire. Only returned for retention rules that have been unlocked and that are still within the unlock delay period.
-  /// [lockState] (Optional) Lock state of the retention rules to list. Only retention rules with the specified lock state are returned. Valid values are `locked`, `pending_unlock`, `unlocked`.
+  /// [lockState] (Optional) Lock state of the retention rules to list. Only retention rules with the specified lock state are returned. Valid values are `locked`, `pendingUnlock`, `unlocked`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceTags] Resource tags to use to identify resources that are to be retained by a tag-level retention rule. See `resource_tags` below.
+  /// [resourceTags] Resource tags to use to identify resources that are to be retained by a tag-level retention rule. See `resourceTags` below.
   /// [resourceType] Resource type to be retained by the retention rule. Valid values are `EBS_SNAPSHOT` and `EC2_IMAGE`.
-  /// [retentionPeriod] Information about the retention period for which the retention rule is to retain resources. See `retention_period` below.
+  /// [retentionPeriod] Information about the retention period for which the retention rule is to retain resources. See `retentionPeriod` below.
   /// [status] (String) State of the retention rule. Only retention rules that are in the `available` state retain resources. Valid values include `pending` and `available`.
   /// [tags] Optional.
   /// [tagsAll] Optional.
@@ -100,4 +100,3 @@ class RuleState {
     );
   }
 }
-

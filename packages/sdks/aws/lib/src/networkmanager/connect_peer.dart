@@ -114,7 +114,7 @@ import 'connect_peer_state.dart';
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// var splat0 []interface{}
 /// for _, val0 := range exampleAwsSubnet {
-/// splat0 = append(splat0, val0.Arn)
+/// splat0 = append(splat0, val0.(map[string]interface{})["arn"])
 /// }
 /// example, err := networkmanager.NewVpcAttachment(ctx, "example", &networkmanager.VpcAttachmentArgs{
 /// SubnetArns: toPulumiArray(splat0),
@@ -126,7 +126,7 @@ import 'connect_peer_state.dart';
 /// }
 /// exampleConnectAttachment, err := networkmanager.NewConnectAttachment(ctx, "example", &networkmanager.ConnectAttachmentArgs{
 /// CoreNetworkId: pulumi.Any(exampleAwsccNetworkmanagerCoreNetwork.Id),
-/// TransportAttachmentId: example.ID(),
+/// TransportAttachmentId: example.ID().ToIDOutput().ToStringOutput(),
 /// EdgeLocation: example.EdgeLocation,
 /// Options: &networkmanager.ConnectAttachmentOptionsArgs{
 /// Protocol: pulumi.String("GRE"),
@@ -136,7 +136,7 @@ import 'connect_peer_state.dart';
 /// return err
 /// }
 /// _, err = networkmanager.NewConnectPeer(ctx, "example", &networkmanager.ConnectPeerArgs{
-/// ConnectAttachmentId: exampleConnectAttachment.ID(),
+/// ConnectAttachmentId: exampleConnectAttachment.ID().ToIDOutput().ToStringOutput(),
 /// PeerAddress: pulumi.String("127.0.0.1"),
 /// BgpOptions: &networkmanager.ConnectPeerBgpOptionsArgs{
 /// PeerAsn: pulumi.String("65000"),
@@ -159,6 +159,37 @@ import 'connect_peer_state.dart';
 /// return pulumiArr
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_vpcattachment" "example" {
+///   subnet_arns     = exampleAwsSubnet[*].arn
+///   core_network_id = exampleAwsccNetworkmanagerCoreNetwork.id
+///   vpc_arn         = exampleAwsVpc.arn
+/// }
+/// resource "aws_networkmanager_connectattachment" "example" {
+///   core_network_id         = exampleAwsccNetworkmanagerCoreNetwork.id
+///   transport_attachment_id = aws_networkmanager_vpcattachment.example.id
+///   edge_location           = aws_networkmanager_vpcattachment.example.edge_location
+///   options = {
+///     protocol = "GRE"
+///   }
+/// }
+/// resource "aws_networkmanager_connectpeer" "example" {
+///   connect_attachment_id = aws_networkmanager_connectattachment.example.id
+///   peer_address          = "127.0.0.1"
+///   bgp_options = {
+///     peer_asn = 65000
+///   }
+///   inside_cidr_blocks = ["172.16.0.0/16"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -173,8 +204,8 @@ import 'connect_peer_state.dart';
 /// import com.pulumi.aws.networkmanager.ConnectPeer;
 /// import com.pulumi.aws.networkmanager.ConnectPeerArgs;
 /// import com.pulumi.aws.networkmanager.inputs.ConnectPeerBgpOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -364,7 +395,7 @@ import 'connect_peer_state.dart';
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// var splat0 []interface{}
 /// for _, val0 := range exampleAwsSubnet {
-/// splat0 = append(splat0, val0.Arn)
+/// splat0 = append(splat0, val0.(map[string]interface{})["arn"])
 /// }
 /// example, err := networkmanager.NewVpcAttachment(ctx, "example", &networkmanager.VpcAttachmentArgs{
 /// SubnetArns: toPulumiArray(splat0),
@@ -375,7 +406,7 @@ import 'connect_peer_state.dart';
 /// return err
 /// }
 /// exampleAttachmentAccepter, err := networkmanager.NewAttachmentAccepter(ctx, "example", &networkmanager.AttachmentAccepterArgs{
-/// AttachmentId: example.ID(),
+/// AttachmentId: example.ID().ToIDOutput().ToStringOutput(),
 /// AttachmentType: example.AttachmentType,
 /// })
 /// if err != nil {
@@ -383,7 +414,7 @@ import 'connect_peer_state.dart';
 /// }
 /// exampleConnectAttachment, err := networkmanager.NewConnectAttachment(ctx, "example", &networkmanager.ConnectAttachmentArgs{
 /// CoreNetworkId: pulumi.Any(exampleAwsccNetworkmanagerCoreNetwork.Id),
-/// TransportAttachmentId: example.ID(),
+/// TransportAttachmentId: example.ID().ToIDOutput().ToStringOutput(),
 /// EdgeLocation: example.EdgeLocation,
 /// Options: &networkmanager.ConnectAttachmentOptionsArgs{
 /// Protocol: pulumi.String("GRE"),
@@ -395,14 +426,14 @@ import 'connect_peer_state.dart';
 /// return err
 /// }
 /// example2, err := networkmanager.NewAttachmentAccepter(ctx, "example2", &networkmanager.AttachmentAccepterArgs{
-/// AttachmentId: exampleConnectAttachment.ID(),
+/// AttachmentId: exampleConnectAttachment.ID().ToIDOutput().ToStringOutput(),
 /// AttachmentType: exampleConnectAttachment.AttachmentType,
 /// })
 /// if err != nil {
 /// return err
 /// }
 /// _, err = networkmanager.NewConnectPeer(ctx, "example", &networkmanager.ConnectPeerArgs{
-/// ConnectAttachmentId: exampleConnectAttachment.ID(),
+/// ConnectAttachmentId: exampleConnectAttachment.ID().ToIDOutput().ToStringOutput(),
 /// PeerAddress: pulumi.String("127.0.0.1"),
 /// BgpOptions: &networkmanager.ConnectPeerBgpOptionsArgs{
 /// PeerAsn: pulumi.String("65500"),
@@ -427,6 +458,47 @@ import 'connect_peer_state.dart';
 /// return pulumiArr
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_vpcattachment" "example" {
+///   subnet_arns     = exampleAwsSubnet[*].arn
+///   core_network_id = exampleAwsccNetworkmanagerCoreNetwork.id
+///   vpc_arn         = exampleAwsVpc.arn
+/// }
+/// resource "aws_networkmanager_attachmentaccepter" "example" {
+///   attachment_id   = aws_networkmanager_vpcattachment.example.id
+///   attachment_type = aws_networkmanager_vpcattachment.example.attachment_type
+/// }
+/// resource "aws_networkmanager_connectattachment" "example" {
+///   depends_on              = [aws_networkmanager_attachmentaccepter.example]
+///   core_network_id         = exampleAwsccNetworkmanagerCoreNetwork.id
+///   transport_attachment_id = aws_networkmanager_vpcattachment.example.id
+///   edge_location           = aws_networkmanager_vpcattachment.example.edge_location
+///   options = {
+///     protocol = "GRE"
+///   }
+/// }
+/// resource "aws_networkmanager_attachmentaccepter" "example2" {
+///   attachment_id   = aws_networkmanager_connectattachment.example.id
+///   attachment_type = aws_networkmanager_connectattachment.example.attachment_type
+/// }
+/// resource "aws_networkmanager_connectpeer" "example" {
+///   depends_on            = [aws_networkmanager_attachmentaccepter.example2]
+///   connect_attachment_id = aws_networkmanager_connectattachment.example.id
+///   peer_address          = "127.0.0.1"
+///   bgp_options = {
+///     peer_asn = 65500
+///   }
+///   inside_cidr_blocks = ["172.16.0.0/16"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -444,8 +516,8 @@ import 'connect_peer_state.dart';
 /// import com.pulumi.aws.networkmanager.ConnectPeerArgs;
 /// import com.pulumi.aws.networkmanager.inputs.ConnectPeerBgpOptionsArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -602,7 +674,7 @@ import 'connect_peer_state.dart';
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// var splat0 []interface{}
 /// for _, val0 := range exampleAwsSubnet {
-/// splat0 = append(splat0, val0.Arn)
+/// splat0 = append(splat0, val0.(map[string]interface{})["arn"])
 /// }
 /// example, err := networkmanager.NewVpcAttachment(ctx, "example", &networkmanager.VpcAttachmentArgs{
 /// SubnetArns: toPulumiArray(splat0),
@@ -614,7 +686,7 @@ import 'connect_peer_state.dart';
 /// }
 /// exampleConnectAttachment, err := networkmanager.NewConnectAttachment(ctx, "example", &networkmanager.ConnectAttachmentArgs{
 /// CoreNetworkId: pulumi.Any(exampleAwsccNetworkmanagerCoreNetwork.Id),
-/// TransportAttachmentId: example.ID(),
+/// TransportAttachmentId: example.ID().ToIDOutput().ToStringOutput(),
 /// EdgeLocation: example.EdgeLocation,
 /// Options: &networkmanager.ConnectAttachmentOptionsArgs{
 /// Protocol: pulumi.String("NO_ENCAP"),
@@ -624,7 +696,7 @@ import 'connect_peer_state.dart';
 /// return err
 /// }
 /// _, err = networkmanager.NewConnectPeer(ctx, "example", &networkmanager.ConnectPeerArgs{
-/// ConnectAttachmentId: exampleConnectAttachment.ID(),
+/// ConnectAttachmentId: exampleConnectAttachment.ID().ToIDOutput().ToStringOutput(),
 /// PeerAddress: pulumi.String("127.0.0.1"),
 /// BgpOptions: &networkmanager.ConnectPeerBgpOptionsArgs{
 /// PeerAsn: pulumi.String("65000"),
@@ -645,6 +717,37 @@ import 'connect_peer_state.dart';
 /// return pulumiArr
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_vpcattachment" "example" {
+///   subnet_arns     = exampleAwsSubnet[*].arn
+///   core_network_id = exampleAwsccNetworkmanagerCoreNetwork.id
+///   vpc_arn         = exampleAwsVpc.arn
+/// }
+/// resource "aws_networkmanager_connectattachment" "example" {
+///   core_network_id         = exampleAwsccNetworkmanagerCoreNetwork.id
+///   transport_attachment_id = aws_networkmanager_vpcattachment.example.id
+///   edge_location           = aws_networkmanager_vpcattachment.example.edge_location
+///   options = {
+///     protocol = "NO_ENCAP"
+///   }
+/// }
+/// resource "aws_networkmanager_connectpeer" "example" {
+///   connect_attachment_id = aws_networkmanager_connectattachment.example.id
+///   peer_address          = "127.0.0.1"
+///   bgp_options = {
+///     peer_asn = 65000
+///   }
+///   subnet_arn = example2.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -659,8 +762,8 @@ import 'connect_peer_state.dart';
 /// import com.pulumi.aws.networkmanager.ConnectPeer;
 /// import com.pulumi.aws.networkmanager.ConnectPeerArgs;
 /// import com.pulumi.aws.networkmanager.inputs.ConnectPeerBgpOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -711,7 +814,7 @@ import 'connect_peer_state.dart';
 class ConnectPeer extends pulumi.CustomResource {
   /// ARN of the Connect peer.
   late final pulumi.Output<String> arn;
-  /// Connect peer BGP options. See bgp_options for more information.
+  /// Connect peer BGP options. See bgpOptions for more information.
   late final pulumi.Output<ConnectPeerBgpOptions> bgpOptions;
   /// Configuration of the Connect peer.
   late final pulumi.Output<List<Map<String, dynamic>>> configurations;
@@ -737,9 +840,9 @@ class ConnectPeer extends pulumi.CustomResource {
   late final pulumi.Output<String> state;
   /// Subnet ARN for the Connect peer. Required when the Connect attachment protocol is `NO_ENCAP`. See `aws.networkmanager.ConnectAttachment` for details.
   late final pulumi.Output<String?> subnetArn;
-  /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ConnectPeer].

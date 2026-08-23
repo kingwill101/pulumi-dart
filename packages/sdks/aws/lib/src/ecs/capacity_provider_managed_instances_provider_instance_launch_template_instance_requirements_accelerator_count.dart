@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsAcceleratorCount {
+  /// Maximum number of accelerators.
   final pulumi.Input<int>? max;
+  /// Minimum number of accelerators.
   final pulumi.Input<int>? min;
 
   /// Creates a new [CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsAcceleratorCount].
-  /// [max] Optional.
-  /// [min] Optional.
+  /// [max] Maximum number of accelerators.
+  /// [min] Minimum number of accelerators.
   const CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsAcceleratorCount({
     this.max,
     this.min,
@@ -28,4 +30,3 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
     );
   }
 }
-

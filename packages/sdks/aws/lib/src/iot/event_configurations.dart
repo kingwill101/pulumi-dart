@@ -105,6 +105,31 @@ import 'event_configurations_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iot_eventconfigurations" "example" {
+///   event_configurations = {
+///     "THING"                  = true
+///     "THING_GROUP"            = false
+///     "THING_TYPE"             = false
+///     "THING_GROUP_MEMBERSHIP" = false
+///     "THING_GROUP_HIERARCHY"  = false
+///     "THING_TYPE_ASSOCIATION" = false
+///     "JOB"                    = false
+///     "JOB_EXECUTION"          = false
+///     "POLICY"                 = false
+///     "CERTIFICATE"            = true
+///     "CA_CERTIFICATE"         = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +138,8 @@ import 'event_configurations_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iot.EventConfigurations;
 /// import com.pulumi.aws.iot.EventConfigurationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -166,6 +191,14 @@ import 'event_configurations_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import IoT Event Configurations using the AWS Region. For example:
 ///

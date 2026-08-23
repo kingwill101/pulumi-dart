@@ -4,68 +4,68 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_db_servers_db_server_db_server_patching_detail.dart';
 
 class GetDbServersDbServer {
-  /// A list of unique identifiers for the Autonomous VMs.
+  /// List of unique identifiers for the Autonomous VMs.
   final pulumi.Input<List<String>> autonomousVirtualMachineIds;
-  /// A list of identifiers for the Autonomous VM clusters.
+  /// List of identifiers for the Autonomous VM clusters.
   final pulumi.Input<List<String>> autonomousVmClusterIds;
-  /// The OCI compute model used when you create or clone an instance: **ECPU** or **OCPU**. ECPUs are based on the number of cores elastically allocated from a pool of compute and storage servers, while OCPUs are based on the physical core of a processor with hyper-threading enabled.
+  /// OCI compute model used when you create or clone an instance: **ECPU** or **OCPU**. ECPUs are based on the number of cores elastically allocated from a pool of compute and storage servers, while OCPUs are based on the physical core of a processor with hyper-threading enabled.
   final pulumi.Input<String> computeModel;
-  /// The number of CPU cores enabled on the database server.
+  /// Number of CPU cores enabled on the database server.
   final pulumi.Input<int> cpuCoreCount;
-  /// The date and time when the database server was created.
+  /// Date and time when the database server was created.
   final pulumi.Input<String> createdAt;
-  /// The amount of local node storage, in gigabytes (GB), that's allocated on the database server.
+  /// Amount of local node storage, in gigabytes (GB), that's allocated on the database server.
   final pulumi.Input<int> dbNodeStorageSizeInGbs;
-  /// The scheduling details for the quarterly maintenance window. Patching and system updates take place during the maintenance window.
+  /// Scheduling details for the quarterly maintenance window. Patching and system updates take place during the maintenance window.
   final pulumi.Input<List<GetDbServersDbServerDbServerPatchingDetail>> dbServerPatchingDetails;
-  /// The user-friendly name of the database server. The name doesn't need to be unique.
+  /// User-friendly name of the database server. The name doesn't need to be unique.
   final pulumi.Input<String> displayName;
-  /// The ID of the Exadata infrastructure that hosts the database server.
+  /// ID of the Exadata infrastructure that hosts the database server.
   final pulumi.Input<String> exadataInfrastructureId;
-  /// The unique identifier of the database server.
+  /// Unique identifier of the database server.
   final pulumi.Input<String> id;
-  /// The total number of CPU cores available on the database server.
+  /// Total number of CPU cores available on the database server.
   final pulumi.Input<int> maxCpuCount;
-  /// The total amount of local node storage, in gigabytes (GB), that's available on the database server.
+  /// Total amount of local node storage, in gigabytes (GB), that's available on the database server.
   final pulumi.Input<int> maxDbNodeStorageInGbs;
-  /// The total amount of memory, in gigabytes (GB), that's available on the database server.
+  /// Total amount of memory, in gigabytes (GB), that's available on the database server.
   final pulumi.Input<int> maxMemoryInGbs;
-  /// The amount of memory, in gigabytes (GB), that's allocated on the database server.
+  /// Amount of memory, in gigabytes (GB), that's allocated on the database server.
   final pulumi.Input<int> memorySizeInGbs;
-  /// The name of the OCI resource anchor for the database server.
+  /// Name of the OCI resource anchor for the database server.
   final pulumi.Input<String> ociResourceAnchorName;
-  /// The OCID of the database server.
+  /// OCID of the database server.
   final pulumi.Input<String> ocid;
-  /// The hardware system model of the Exadata infrastructure that the database server is hosted on. The shape determines the amount of CPU, storage, and memory resources available.
+  /// Hardware system model of the Exadata infrastructure that the database server is hosted on. The shape determines the amount of CPU, storage, and memory resources available.
   final pulumi.Input<String> shape;
-  /// The current status of the database server.
+  /// Current status of the database server.
   final pulumi.Input<String> status;
   /// Additional information about the status of the database server.
   final pulumi.Input<String> statusReason;
-  /// The IDs of the VM clusters that are associated with the database server.
+  /// IDs of the VM clusters that are associated with the database server.
   final pulumi.Input<List<String>> vmClusterIds;
 
   /// Creates a new [GetDbServersDbServer].
-  /// [autonomousVirtualMachineIds] A list of unique identifiers for the Autonomous VMs.
-  /// [autonomousVmClusterIds] A list of identifiers for the Autonomous VM clusters.
-  /// [computeModel] The OCI compute model used when you create or clone an instance: **ECPU** or **OCPU**. ECPUs are based on the number of cores elastically allocated from a pool of compute and storage servers, while OCPUs are based on the physical core of a processor with hyper-threading enabled.
-  /// [cpuCoreCount] The number of CPU cores enabled on the database server.
-  /// [createdAt] The date and time when the database server was created.
-  /// [dbNodeStorageSizeInGbs] The amount of local node storage, in gigabytes (GB), that's allocated on the database server.
-  /// [dbServerPatchingDetails] The scheduling details for the quarterly maintenance window. Patching and system updates take place during the maintenance window.
-  /// [displayName] The user-friendly name of the database server. The name doesn't need to be unique.
-  /// [exadataInfrastructureId] The ID of the Exadata infrastructure that hosts the database server.
-  /// [id] The unique identifier of the database server.
-  /// [maxCpuCount] The total number of CPU cores available on the database server.
-  /// [maxDbNodeStorageInGbs] The total amount of local node storage, in gigabytes (GB), that's available on the database server.
-  /// [maxMemoryInGbs] The total amount of memory, in gigabytes (GB), that's available on the database server.
-  /// [memorySizeInGbs] The amount of memory, in gigabytes (GB), that's allocated on the database server.
-  /// [ociResourceAnchorName] The name of the OCI resource anchor for the database server.
-  /// [ocid] The OCID of the database server.
-  /// [shape] The hardware system model of the Exadata infrastructure that the database server is hosted on. The shape determines the amount of CPU, storage, and memory resources available.
-  /// [status] The current status of the database server.
+  /// [autonomousVirtualMachineIds] List of unique identifiers for the Autonomous VMs.
+  /// [autonomousVmClusterIds] List of identifiers for the Autonomous VM clusters.
+  /// [computeModel] OCI compute model used when you create or clone an instance: **ECPU** or **OCPU**. ECPUs are based on the number of cores elastically allocated from a pool of compute and storage servers, while OCPUs are based on the physical core of a processor with hyper-threading enabled.
+  /// [cpuCoreCount] Number of CPU cores enabled on the database server.
+  /// [createdAt] Date and time when the database server was created.
+  /// [dbNodeStorageSizeInGbs] Amount of local node storage, in gigabytes (GB), that's allocated on the database server.
+  /// [dbServerPatchingDetails] Scheduling details for the quarterly maintenance window. Patching and system updates take place during the maintenance window.
+  /// [displayName] User-friendly name of the database server. The name doesn't need to be unique.
+  /// [exadataInfrastructureId] ID of the Exadata infrastructure that hosts the database server.
+  /// [id] Unique identifier of the database server.
+  /// [maxCpuCount] Total number of CPU cores available on the database server.
+  /// [maxDbNodeStorageInGbs] Total amount of local node storage, in gigabytes (GB), that's available on the database server.
+  /// [maxMemoryInGbs] Total amount of memory, in gigabytes (GB), that's available on the database server.
+  /// [memorySizeInGbs] Amount of memory, in gigabytes (GB), that's allocated on the database server.
+  /// [ociResourceAnchorName] Name of the OCI resource anchor for the database server.
+  /// [ocid] OCID of the database server.
+  /// [shape] Hardware system model of the Exadata infrastructure that the database server is hosted on. The shape determines the amount of CPU, storage, and memory resources available.
+  /// [status] Current status of the database server.
   /// [statusReason] Additional information about the status of the database server.
-  /// [vmClusterIds] The IDs of the VM clusters that are associated with the database server.
+  /// [vmClusterIds] IDs of the VM clusters that are associated with the database server.
   const GetDbServersDbServer({
     required this.autonomousVirtualMachineIds,
     required this.autonomousVmClusterIds,
@@ -139,4 +139,3 @@ class GetDbServersDbServer {
     );
   }
 }
-

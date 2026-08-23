@@ -164,6 +164,39 @@ import 'policy_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "pubsub" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["iot:*"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_iot_policy" "pubsub" {
+///   name   = "PubSubToAnyTopic"
+///   policy = data.aws_iam_getpolicydocument.pubsub.json
+/// }
+/// resource "aws_iot_certificate" "cert" {
+///   csr    = file("csr.pem")
+///   active = true
+/// }
+/// resource "aws_iot_policyattachment" "att" {
+///   policy = aws_iot_policy.pubsub.name
+///   target = aws_iot_certificate.cert.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -172,6 +205,7 @@ import 'policy_attachment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
 /// import com.pulumi.aws.iot.Policy;
 /// import com.pulumi.aws.iot.PolicyArgs;
 /// import com.pulumi.aws.iot.Certificate;
@@ -180,8 +214,8 @@ import 'policy_attachment_state.dart';
 /// import com.pulumi.std.inputs.FileArgs;
 /// import com.pulumi.aws.iot.PolicyAttachment;
 /// import com.pulumi.aws.iot.PolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

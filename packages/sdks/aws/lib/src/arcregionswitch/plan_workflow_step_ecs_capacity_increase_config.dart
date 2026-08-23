@@ -7,21 +7,21 @@ import 'plan_workflow_step_ecs_capacity_increase_config_ungraceful.dart';
 class PlanWorkflowStepEcsCapacityIncreaseConfig {
   /// Capacity monitoring approach. Valid values: `sampledMaxInLast24Hours`, `containerInsightsMaxInLast24Hours`.
   final pulumi.Input<String> capacityMonitoringApproach;
-  /// ECS service configuration. See ECS Service below.
+  /// ECS service configuration. See `service` Block for details.
   final pulumi.Input<List<PlanWorkflowStepEcsCapacityIncreaseConfigService>>? services;
   /// Target capacity percentage.
   final pulumi.Input<int>? targetPercent;
   /// Timeout in minutes.
   final pulumi.Input<int>? timeoutMinutes;
-  /// Ungraceful behavior configuration. See Ungraceful Capacity below.
+  /// Ungraceful behavior configuration. See `workflow.step.ecs_capacity_increase_config.ungraceful` Block for details.
   final pulumi.Input<PlanWorkflowStepEcsCapacityIncreaseConfigUngraceful>? ungraceful;
 
   /// Creates a new [PlanWorkflowStepEcsCapacityIncreaseConfig].
   /// [capacityMonitoringApproach] Capacity monitoring approach. Valid values: `sampledMaxInLast24Hours`, `containerInsightsMaxInLast24Hours`.
-  /// [services] ECS service configuration. See ECS Service below.
+  /// [services] ECS service configuration. See `service` Block for details.
   /// [targetPercent] Target capacity percentage.
   /// [timeoutMinutes] Timeout in minutes.
-  /// [ungraceful] Ungraceful behavior configuration. See Ungraceful Capacity below.
+  /// [ungraceful] Ungraceful behavior configuration. See `workflow.step.ecs_capacity_increase_config.ungraceful` Block for details.
   const PlanWorkflowStepEcsCapacityIncreaseConfig({
     required this.capacityMonitoringApproach,
     this.services,
@@ -50,4 +50,3 @@ class PlanWorkflowStepEcsCapacityIncreaseConfig {
     );
   }
 }
-

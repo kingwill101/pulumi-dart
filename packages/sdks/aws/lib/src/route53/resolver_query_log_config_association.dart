@@ -61,6 +61,20 @@ import 'resolver_query_log_config_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_resolverquerylogconfigassociation" "example" {
+///   resolver_query_log_config_id = exampleAwsRoute53ResolverQueryLogConfig.id
+///   resource_id                  = exampleAwsVpc.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'resolver_query_log_config_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.ResolverQueryLogConfigAssociation;
 /// import com.pulumi.aws.route53.ResolverQueryLogConfigAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRequiredTagsRequiredTag {
   /// CloudFormation resource types assigned the required tag keys.
   final pulumi.Input<List<String>> cloudFormationResourceTypes;
-  /// Tag keys marked as required in the `report_required_tag_for` block of the effective tag policy.
+  /// Tag keys marked as required in the `reportRequiredTagFor` block of the effective tag policy.
   final pulumi.Input<List<String>> reportingTagKeys;
   /// Resource type for the required tag keys.
   final pulumi.Input<String> resourceType;
 
   /// Creates a new [GetRequiredTagsRequiredTag].
   /// [cloudFormationResourceTypes] CloudFormation resource types assigned the required tag keys.
-  /// [reportingTagKeys] Tag keys marked as required in the `report_required_tag_for` block of the effective tag policy.
+  /// [reportingTagKeys] Tag keys marked as required in the `reportRequiredTagFor` block of the effective tag policy.
   /// [resourceType] Resource type for the required tag keys.
   const GetRequiredTagsRequiredTag({
     required this.cloudFormationResourceTypes,
@@ -36,4 +36,3 @@ class GetRequiredTagsRequiredTag {
     );
   }
 }
-

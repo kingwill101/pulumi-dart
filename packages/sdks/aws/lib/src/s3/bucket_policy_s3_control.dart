@@ -104,7 +104,7 @@ import 'bucket_policy_s3_control_state.dart';
 /// 				map[string]interface{}{
 /// 					"Action": "s3-outposts:PutBucketLifecycleConfiguration",
 /// 					"Effect": "Deny",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": "*",
 /// 					},
 /// 					"Resource": exampleAwsS3controlBucket.Arn,
@@ -128,6 +128,32 @@ import 'bucket_policy_s3_control_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3control_bucketpolicy" "example" {
+///   bucket = exampleAwsS3controlBucket.arn
+///   policy = jsonencode({
+///     "Id" = "testBucketPolicy"
+///     "Statement" = [{
+///       "Action" = "s3-outposts:PutBucketLifecycleConfiguration"
+///       "Effect" = "Deny"
+///       "Principal" = {
+///         "AWS" = "*"
+///       }
+///       "Resource" = exampleAwsS3controlBucket.arn
+///       "Sid"      = "statement1"
+///     }]
+///     "Version" = "2012-10-17"
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -137,8 +163,8 @@ import 'bucket_policy_s3_control_state.dart';
 /// import com.pulumi.aws.s3control.BucketPolicy;
 /// import com.pulumi.aws.s3control.BucketPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

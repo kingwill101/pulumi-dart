@@ -23,9 +23,9 @@ class VocabularyState {
   /// The current state of the custom vocabulary. Valid values are `CREATION_IN_PROGRESS`, `ACTIVE`, `CREATION_FAILED`, `DELETE_IN_PROGRESS`.
   final pulumi.Input<String>? state;
   /// Tags to apply to the vocabulary. If configured with a provider
-  /// `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The identifier of the custom vocabulary.
   final pulumi.Input<String>? vocabularyId;
@@ -41,7 +41,7 @@ class VocabularyState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] The current state of the custom vocabulary. Valid values are `CREATION_IN_PROGRESS`, `ACTIVE`, `CREATION_FAILED`, `DELETE_IN_PROGRESS`.
   /// [tags] Tags to apply to the vocabulary. If configured with a provider
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [vocabularyId] The identifier of the custom vocabulary.
   const VocabularyState({
     this.arn,
@@ -92,4 +92,3 @@ class VocabularyState {
     );
   }
 }
-

@@ -159,14 +159,14 @@ import 'named_query_state.dart';
 /// 		}
 /// 		hogeDatabase, err := athena.NewDatabase(ctx, "hoge", &athena.DatabaseArgs{
 /// 			Name:   pulumi.String("users"),
-/// 			Bucket: hoge.ID(),
+/// 			Bucket: hoge.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = athena.NewNamedQuery(ctx, "foo", &athena.NamedQueryArgs{
 /// 			Name:      pulumi.String("bar"),
-/// 			Workgroup: testWorkgroup.ID(),
+/// 			Workgroup: testWorkgroup.ID().ToIDOutput().ToStringOutput(),
 /// 			Database:  hogeDatabase.Name,
 /// 			Query: hogeDatabase.Name.ApplyT(func(name string) (string, error) {
 /// 				return fmt.Sprintf("SELECT * FROM %v limit 10;", name), nil
@@ -177,6 +177,44 @@ import 'named_query_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "hoge" {
+///   bucket = "tf-test"
+/// }
+/// resource "aws_kms_key" "test" {
+///   deletion_window_in_days = 7
+///   description             = "Athena KMS Key"
+/// }
+/// resource "aws_athena_workgroup" "test" {
+///   name = "example"
+///   configuration = {
+///     result_configuration = {
+///       encryption_configuration = {
+///         encryption_option = "SSE_KMS"
+///         kms_key_arn       = aws_kms_key.test.arn
+///       }
+///     }
+///   }
+/// }
+/// resource "aws_athena_database" "hoge" {
+///   name   = "users"
+///   bucket = aws_s3_bucket.hoge.id
+/// }
+/// resource "aws_athena_namedquery" "foo" {
+///   name      = "bar"
+///   workgroup = aws_athena_workgroup.test.id
+///   database  = aws_athena_database.hoge.name
+///   query     ="SELECT * FROM ${aws_athena_database.hoge.name} limit 10;"
 /// }
 /// ```
 /// ```java
@@ -198,8 +236,8 @@ import 'named_query_state.dart';
 /// import com.pulumi.aws.athena.DatabaseArgs;
 /// import com.pulumi.aws.athena.NamedQuery;
 /// import com.pulumi.aws.athena.NamedQueryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

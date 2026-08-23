@@ -132,6 +132,35 @@ import 'ingestion_destination_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appfabric_ingestiondestination" "example" {
+///   app_bundle_arn = exampleAwsAppfabricAppBundle.arn
+///   ingestion_arn  = exampleAwsAppfabricIngestion.arn
+///   processing_configuration = {
+///     audit_log = {
+///       format = "json"
+///       schema = "raw"
+///     }
+///   }
+///   destination_configuration = {
+///     audit_log = {
+///       destination = {
+///         s3_bucket = {
+///           bucket_name = exampleAwsS3Bucket.bucket
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -146,8 +175,8 @@ import 'ingestion_destination_timeouts.dart';
 /// import com.pulumi.aws.appfabric.inputs.IngestionDestinationDestinationConfigurationAuditLogArgs;
 /// import com.pulumi.aws.appfabric.inputs.IngestionDestinationDestinationConfigurationAuditLogDestinationArgs;
 /// import com.pulumi.aws.appfabric.inputs.IngestionDestinationDestinationConfigurationAuditLogDestinationS3BucketArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -200,21 +229,23 @@ import 'ingestion_destination_timeouts.dart';
 ///               bucketName: ${exampleAwsS3Bucket.bucket}
 /// ```
 class IngestionDestination extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// Amazon Resource Name (ARN) of the app bundle to use for the request.
   late final pulumi.Output<String> appBundleArn;
   /// ARN of the Ingestion Destination.
   late final pulumi.Output<String> arn;
-  /// Contains information about the destination of ingested data.
+  /// Configuration for the destination of ingested data. See `destinationConfiguration` Block below.
   late final pulumi.Output<IngestionDestinationDestinationConfiguration> destinationConfiguration;
-  /// The Amazon Resource Name (ARN) of the ingestion to use for the request.
+  /// Amazon Resource Name (ARN) of the ingestion to use for the request.
   late final pulumi.Output<String> ingestionArn;
-  /// Contains information about how ingested data is processed.
+  /// Configuration for how ingested data is processed. See `processingConfiguration` Block below.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<IngestionDestinationProcessingConfiguration> processingConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<IngestionDestinationTimeouts?> timeouts;
 

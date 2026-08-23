@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gateway_route_spec_http2_route_action_target_virtual_service.dart';
 
 class GatewayRouteSpecHttp2RouteActionTarget {
-  /// The port number that corresponds to the target for Virtual Service provider port. This is required when the provider (router or node) of the Virtual Service has multiple listeners.
+  /// Port number to match from the request.
   final pulumi.Input<int>? port;
-  /// Virtual service gateway route target.
+  /// Virtual service gateway route target. See `spec.http2_route.action.target.virtual_service` Block for details.
   final pulumi.Input<GatewayRouteSpecHttp2RouteActionTargetVirtualService> virtualService;
 
   /// Creates a new [GatewayRouteSpecHttp2RouteActionTarget].
-  /// [port] The port number that corresponds to the target for Virtual Service provider port. This is required when the provider (router or node) of the Virtual Service has multiple listeners.
-  /// [virtualService] Virtual service gateway route target.
+  /// [port] Port number to match from the request.
+  /// [virtualService] Virtual service gateway route target. See `spec.http2_route.action.target.virtual_service` Block for details.
   const GatewayRouteSpecHttp2RouteActionTarget({
     this.port,
     required this.virtualService,
@@ -31,4 +31,3 @@ class GatewayRouteSpecHttp2RouteActionTarget {
     );
   }
 }
-

@@ -9,7 +9,7 @@ import 'records_exclusive_resource_record_set_resource_record.dart';
 
 class RecordsExclusiveResourceRecordSet {
   /// Alias target block.
-  /// See `alias_target` below.
+  /// See `aliasTarget` below.
   final pulumi.Input<RecordsExclusiveResourceRecordSetAliasTarget>? aliasTarget;
   final pulumi.Input<RecordsExclusiveResourceRecordSetCidrRoutingConfig>? cidrRoutingConfig;
   /// Type of failover resource record.
@@ -20,10 +20,11 @@ class RecordsExclusiveResourceRecordSet {
   /// See `geolocation` below.
   final pulumi.Input<RecordsExclusiveResourceRecordSetGeolocation>? geolocation;
   /// Geoproximity location block.
-  /// See `geoproximity_location` below.
+  /// See `geoproximityLocation` below.
   final pulumi.Input<RecordsExclusiveResourceRecordSetGeoproximityLocation>? geoproximityLocation;
   /// Health check the record should be associated with.
   final pulumi.Input<String>? healthCheckId;
+  /// Set to `true` to indicate this record is a multivalue answer record and traffic should be routed approximately randomly to multiple resources.
   final pulumi.Input<bool>? multiValueAnswer;
   /// Name of the record.
   final pulumi.Input<String> name;
@@ -32,10 +33,10 @@ class RecordsExclusiveResourceRecordSet {
   /// See the [AWS documentation](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency) on latency based routing for additional details.
   final pulumi.Input<String>? region;
   /// Information about the resource records to act upon.
-  /// See `resource_records` below.
+  /// See `resourceRecords` below.
   final pulumi.Input<List<RecordsExclusiveResourceRecordSetResourceRecord>>? resourceRecords;
   /// An identifier that differentiates among multiple resource record sets that have the same combination of name and type.
-  /// Required if using `cidr_routing_config`, `failover`, `geolocation`,`geoproximity_location`, `multivalue_answer`, `region`, or `weight`.
+  /// Required if using `cidrRoutingConfig`, `failover`, `geolocation`,`geoproximityLocation`, `multiValueAnswer`, `region`, or `weight`.
   final pulumi.Input<String>? setIdentifier;
   /// ID of the traffic policy instance that Route 53 created this resource record set for.
   /// To delete the resource record set that is associated with a traffic policy instance, use the `DeleteTrafficPolicyInstance` API.
@@ -49,7 +50,7 @@ class RecordsExclusiveResourceRecordSet {
   ///
   /// The following arguments are optional:
   ///
-  /// &gt; Exactly one of `resource_records` or `alias_target` must be specified.
+  /// &gt; Exactly one of `resourceRecords` or `aliasTarget` must be specified.
   final pulumi.Input<String>? type;
   /// Among resource record sets that have the same combination of DNS name and type, a value that determines the proportion of DNS queries that Amazon Route 53 responds to using the current resource record set.
   final pulumi.Input<int>? weight;
@@ -61,7 +62,7 @@ class RecordsExclusiveResourceRecordSet {
   /// [geolocation] Geolocation block to control how Amazon Route 53 responds to DNS queries based on the geographic origin of the query.
   /// [geoproximityLocation] Geoproximity location block.
   /// [healthCheckId] Health check the record should be associated with.
-  /// [multiValueAnswer] Optional.
+  /// [multiValueAnswer] Set to `true` to indicate this record is a multivalue answer record and traffic should be routed approximately randomly to multiple resources.
   /// [name] Name of the record.
   /// [region] AWS region of the resource this record set refers to.
   /// [resourceRecords] Information about the resource records to act upon.
@@ -128,4 +129,3 @@ class RecordsExclusiveResourceRecordSet {
     );
   }
 }
-

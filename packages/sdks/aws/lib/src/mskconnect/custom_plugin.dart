@@ -104,7 +104,7 @@ import 'custom_plugin_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketObjectv2, err := s3.NewBucketObjectv2(ctx, "example", &s3.BucketObjectv2Args{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Key:    pulumi.String("debezium.zip"),
 /// 			Source: pulumi.NewFileAsset("debezium.zip"),
 /// 		})
@@ -128,6 +128,34 @@ import 'custom_plugin_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// resource "aws_s3_bucketobjectv2" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   key    = "debezium.zip"
+///   source = fileAsset("debezium.zip")
+/// }
+/// resource "aws_mskconnect_customplugin" "example" {
+///   name         = "debezium-example"
+///   content_type = "ZIP"
+///   location = {
+///     s3 = {
+///       bucket_arn = aws_s3_bucket.example.arn
+///       file_key   = aws_s3_bucketobjectv2.example.key
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -143,8 +171,8 @@ import 'custom_plugin_state.dart';
 /// import com.pulumi.aws.mskconnect.inputs.CustomPluginLocationArgs;
 /// import com.pulumi.aws.mskconnect.inputs.CustomPluginLocationS3Args;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -193,7 +221,7 @@ import 'custom_plugin_state.dart';
 ///       bucket: ${example.id}
 ///       key: debezium.zip
 ///       source:
-///         fn::FileAsset: debezium.zip
+///         fn::fileAsset: debezium.zip
 ///   exampleCustomPlugin:
 ///     type: aws:mskconnect:CustomPlugin
 ///     name: example
@@ -231,9 +259,9 @@ class CustomPlugin extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// the state of the custom plugin.
   late final pulumi.Output<String> state;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [CustomPlugin].

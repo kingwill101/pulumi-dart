@@ -57,6 +57,19 @@ import 'mesh_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appmesh_mesh" "simple" {
+///   name = "simpleapp"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +78,8 @@ import 'mesh_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appmesh.Mesh;
 /// import com.pulumi.aws.appmesh.MeshArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,6 +182,24 @@ import 'mesh_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appmesh_mesh" "simple" {
+///   name = "simpleapp"
+///   spec = {
+///     egress_filter = {
+///       type = "ALLOW_ALL"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +210,8 @@ import 'mesh_state.dart';
 /// import com.pulumi.aws.appmesh.MeshArgs;
 /// import com.pulumi.aws.appmesh.inputs.MeshSpecArgs;
 /// import com.pulumi.aws.appmesh.inputs.MeshSpecEgressFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -238,11 +269,11 @@ class Mesh extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Resource owner's AWS account ID.
   late final pulumi.Output<String> resourceOwner;
-  /// Service mesh specification to apply.
+  /// Service mesh specification to apply. See `spec` Block for details.
   late final pulumi.Output<MeshSpec?> spec;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Mesh].

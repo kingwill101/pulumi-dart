@@ -217,6 +217,48 @@ import 'integration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dynamodb_table" "example" {
+///   name           = "dynamodb-table-example"
+///   read_capacity  = 1
+///   write_capacity = 1
+///   hash_key       = "example"
+///   attributes {
+///     name = "example"
+///     type = "S"
+///   }
+///   point_in_time_recovery = {
+///     enabled = true
+///   }
+/// }
+/// resource "aws_redshiftserverless_namespace" "example" {
+///   namespace_name = "redshift-example"
+/// }
+/// resource "aws_redshiftserverless_workgroup" "example" {
+///   namespace_name      = aws_redshiftserverless_namespace.example.namespace_name
+///   workgroup_name      = "example-workgroup"
+///   base_capacity       = 8
+///   publicly_accessible = false
+///   subnet_ids          = [example1.id, example2.id, example3.id]
+///   config_parameters {
+///     parameter_key   = "enable_case_sensitive_identifier"
+///     parameter_value = "true"
+///   }
+/// }
+/// resource "aws_redshift_integration" "example" {
+///   integration_name = "example"
+///   source_arn       = aws_dynamodb_table.example.arn
+///   target_arn       = aws_redshiftserverless_namespace.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -234,8 +276,8 @@ import 'integration_timeouts.dart';
 /// import com.pulumi.aws.redshiftserverless.inputs.WorkgroupConfigParameterArgs;
 /// import com.pulumi.aws.redshift.Integration;
 /// import com.pulumi.aws.redshift.IntegrationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -551,7 +593,7 @@ import 'integration_timeouts.dart';
 /// 			"Statement": []interface{}{
 /// 				map[string]interface{}{
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:aws:iam::%v:root", current.AccountId),
 /// 					},
 /// 					"Action":   "kms:*",
@@ -559,7 +601,7 @@ import 'integration_timeouts.dart';
 /// 				},
 /// 				map[string]interface{}{
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "redshift.amazonaws.com",
 /// 					},
 /// 					"Action": []string{
@@ -571,7 +613,7 @@ import 'integration_timeouts.dart';
 /// 						"StringEquals": map[string]interface{}{
 /// 							"aws:SourceAccount": current.AccountId,
 /// 						},
-/// 						"ArnEquals": map[string]interface{}{
+/// 						"ArnEquals": map[string]string{
 /// 							"aws:SourceArn": fmt.Sprintf("arn:aws:redshift:*:%v:integration:*", current.AccountId),
 /// 						},
 /// 					},
@@ -583,8 +625,8 @@ import 'integration_timeouts.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = kms.NewKeyPolicy(ctx, "example", &kms.KeyPolicyArgs{
-/// 			KeyId:  example.ID(),
-/// 			Policy: pulumi.String(json0),
+/// 			KeyId:  example.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: json0,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -605,6 +647,61 @@ import 'integration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "example"
+///   deletion_window_in_days = 10
+/// }
+/// resource "aws_kms_keypolicy" "example" {
+///   key_id = aws_kms_key.example.id
+///   policy = jsonencode({
+///     "Version" = "2008-10-17"
+///     "Statement" = [{
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///       }
+///       "Action"   = "kms:*"
+///       "Resource" = "*"
+///       }, {
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "redshift.amazonaws.com"
+///       }
+///       "Action"   = ["kms:Decrypt", "kms:CreateGrant"]
+///       "Resource" = "*"
+///       "Condition" = {
+///         "StringEquals" = {
+///           "aws:SourceAccount" = data.aws_getcalleridentity.current.account_id
+///         }
+///         "ArnEquals" = {
+///           "aws:SourceArn" ="arn:aws:redshift:*:${data.aws_getcalleridentity.current.account_id}:integration:*"
+///         }
+///       }
+///     }]
+///   })
+/// }
+/// resource "aws_redshift_integration" "example" {
+///   integration_name = "example"
+///   source_arn       = exampleAwsDynamodbTable.arn
+///   target_arn       = exampleAwsRedshiftserverlessNamespace.arn
+///   kms_key_id       = aws_kms_key.example.arn
+///   additional_encryption_context = {
+///     "example" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -620,8 +717,8 @@ import 'integration_timeouts.dart';
 /// import com.pulumi.aws.redshift.Integration;
 /// import com.pulumi.aws.redshift.IntegrationArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -742,6 +839,13 @@ import 'integration_timeouts.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `arn` (String) Amazon Resource Name (ARN) of the Redshift integration.
+///
+///
 /// Using `pulumi import`, import Redshift Integration using the `arn`. For example:
 ///
 /// ```sh
@@ -750,7 +854,7 @@ import 'integration_timeouts.dart';
 class Integration extends pulumi.CustomResource {
   /// Set of non-secret key–value pairs that contains additional contextual information about the data.
   /// For more information, see the [User Guide](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context).
-  /// You can only include this parameter if you specify the `kms_key_id` parameter.
+  /// You can only include this parameter if you specify the `kmsKeyId` parameter.
   late final pulumi.Output<Map<String, String>?> additionalEncryptionContext;
   /// ARN of the Integration.
   late final pulumi.Output<String> arn;
@@ -760,17 +864,17 @@ class Integration extends pulumi.CustomResource {
   late final pulumi.Output<String> integrationName;
   /// KMS key identifier for the key to use to encrypt the integration.
   /// If you don't specify an encryption key, Redshift uses a default AWS owned key.
-  /// You can only include this parameter if `source_arn` references a DynamoDB table.
+  /// You can only include this parameter if `sourceArn` references a DynamoDB table.
   late final pulumi.Output<String> kmsKeyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// ARN of the database to use as the source for replication. You can specify a DynamoDB table or an S3 bucket.
   late final pulumi.Output<String> sourceArn;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For more detailed documentation about each argument, refer to the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/redshift/create-integration.html).
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ARN of the Redshift data warehouse to use as the target for replication.
   ///

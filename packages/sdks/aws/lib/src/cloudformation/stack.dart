@@ -142,22 +142,22 @@ import 'stack_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 			"Parameters": map[string]interface{}{
-/// 				"VPCCidr": map[string]interface{}{
+/// 			"Parameters": map[string]map[string]string{
+/// 				"VPCCidr": map[string]string{
 /// 					"Type":        "String",
 /// 					"Default":     "10.0.0.0/16",
 /// 					"Description": "Enter the CIDR block for the VPC. Default is 10.0.0.0/16.",
 /// 				},
 /// 			},
-/// 			"Resources": map[string]interface{}{
+/// 			"Resources": map[string]map[string]interface{}{
 /// 				"myVpc": map[string]interface{}{
 /// 					"Type": "AWS::EC2::VPC",
 /// 					"Properties": map[string]interface{}{
-/// 						"CidrBlock": map[string]interface{}{
+/// 						"CidrBlock": map[string]string{
 /// 							"Ref": "VPCCidr",
 /// 						},
-/// 						"Tags": []map[string]interface{}{
-/// 							map[string]interface{}{
+/// 						"Tags": []map[string]string{
+/// 							{
 /// 								"Key":   "Name",
 /// 								"Value": "Primary_CF_VPC",
 /// 							},
@@ -184,6 +184,45 @@ import 'stack_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudformation_stack" "network" {
+///   name = "networking-stack"
+///   parameters = {
+///     "VPCCidr" = "10.0.0.0/16"
+///   }
+///   template_body = jsonencode({
+///     "Parameters" = {
+///       "VPCCidr" = {
+///         "Type"        = "String"
+///         "Default"     = "10.0.0.0/16"
+///         "Description" = "Enter the CIDR block for the VPC. Default is 10.0.0.0/16."
+///       }
+///     }
+///     "Resources" = {
+///       "myVpc" = {
+///         "Type" = "AWS::EC2::VPC"
+///         "Properties" = {
+///           "CidrBlock" = {
+///             "Ref" = "VPCCidr"
+///           }
+///           "Tags" = [{
+///             "Key"   = "Name"
+///             "Value" = "Primary_CF_VPC"
+///           }]
+///         }
+///       }
+///     }
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +232,8 @@ import 'stack_state.dart';
 /// import com.pulumi.aws.cloudformation.Stack;
 /// import com.pulumi.aws.cloudformation.StackArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -277,7 +316,7 @@ class Stack extends pulumi.CustomResource {
   /// Valid values: `CAPABILITY_IAM`, `CAPABILITY_NAMED_IAM`, or `CAPABILITY_AUTO_EXPAND`
   late final pulumi.Output<List<String>?> capabilities;
   /// Set to true to disable rollback of the stack if stack creation failed.
-  /// Conflicts with `on_failure`.
+  /// Conflicts with `onFailure`.
   late final pulumi.Output<bool?> disableRollback;
   /// The ARN of an IAM role that AWS CloudFormation assumes to create the stack. If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your user credentials.
   late final pulumi.Output<String?> iamRoleArn;
@@ -286,23 +325,23 @@ class Stack extends pulumi.CustomResource {
   /// A list of SNS topic ARNs to publish stack related events.
   late final pulumi.Output<List<String>?> notificationArns;
   /// Action to be taken if stack creation fails. This must be
-  /// one of: `DO_NOTHING`, `ROLLBACK`, or `DELETE`. Conflicts with `disable_rollback`.
+  /// one of: `DO_NOTHING`, `ROLLBACK`, or `DELETE`. Conflicts with `disableRollback`.
   late final pulumi.Output<String?> onFailure;
   /// A map of outputs from the stack.
   late final pulumi.Output<Map<String, String>> outputs;
   /// A map of Parameter structures that specify input parameters for the stack.
   late final pulumi.Output<Map<String, String>> parameters;
   /// Structure containing the stack policy body.
-  /// Conflicts w/ `policy_url`.
+  /// Conflicts w/ `policyUrl`.
   late final pulumi.Output<String> policyBody;
   /// Location of a file containing the stack policy.
-  /// Conflicts w/ `policy_body`.
+  /// Conflicts w/ `policyBody`.
   late final pulumi.Output<String?> policyUrl;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of resource tags to associate with this stack. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of resource tags to associate with this stack. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Structure containing the template body (max size: 51,200 bytes).
   late final pulumi.Output<String> templateBody;

@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamProcessorRegionsOfInterestPolygon {
-  /// The value of the X coordinate for a point on a Polygon.
+  /// Value of the X coordinate for a point on a Polygon.
   final pulumi.Input<double>? x;
-  /// The value of the Y coordinate for a point on a Polygon.
+  /// Value of the Y coordinate for a point on a Polygon.
   final pulumi.Input<double>? y;
 
   /// Creates a new [StreamProcessorRegionsOfInterestPolygon].
-  /// [x] The value of the X coordinate for a point on a Polygon.
-  /// [y] The value of the Y coordinate for a point on a Polygon.
+  /// [x] Value of the X coordinate for a point on a Polygon.
+  /// [y] Value of the Y coordinate for a point on a Polygon.
   const StreamProcessorRegionsOfInterestPolygon({
     this.x,
     this.y,
@@ -30,4 +30,3 @@ class StreamProcessorRegionsOfInterestPolygon {
     );
   }
 }
-

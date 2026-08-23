@@ -5,13 +5,13 @@ import 'agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_inl
 import 'agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_s3.dart';
 
 class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema {
-  /// Inline tool definition. See `inline_payload` below.
+  /// Inline tool definition. See `inlinePayload` below.
   final pulumi.Input<List<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload>>? inlinePayloads;
   /// S3-based tool definition. See `s3` below.
   final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3>? s3;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema].
-  /// [inlinePayloads] Inline tool definition. See `inline_payload` below.
+  /// [inlinePayloads] Inline tool definition. See `inlinePayload` below.
   /// [s3] S3-based tool definition. See `s3` below.
   const AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema({
     this.inlinePayloads,
@@ -32,4 +32,3 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema {
     );
   }
 }
-

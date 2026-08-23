@@ -4,41 +4,42 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering Agreement resources.
 class AgreementState {
-  /// The IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
+  /// IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
   final pulumi.Input<String>? accessRole;
-  /// The unique identifier for the AS2 agreement.
+  /// Unique identifier for the AS2 agreement.
   final pulumi.Input<String>? agreementId;
-  /// The ARN of the agreement.
+  /// ARN of the agreement.
   final pulumi.Input<String>? arn;
-  /// The landing directory for the files transferred by using the AS2 protocol.
+  /// Landing directory for the files transferred by using the AS2 protocol.
   final pulumi.Input<String>? baseDirectory;
-  /// The Optional description of the transdfer.
+  /// Optional description of the transdfer.
   final pulumi.Input<String>? description;
-  /// The unique identifier for the AS2 local profile.
+  /// Unique identifier for the AS2 local profile.
   final pulumi.Input<String>? localProfileId;
-  /// The unique identifier for the AS2 partner profile.
+  /// Unique identifier for the AS2 partner profile.
   final pulumi.Input<String>? partnerProfileId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The unique server identifier for the server instance. This is the specific server the agreement uses.
+  /// Unique server identifier for the server instance. This is the specific server the agreement uses.
   final pulumi.Input<String>? serverId;
+  /// Status of the agreement which is either ACTIVE or INACTIVE.
   final pulumi.Input<String>? status;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [AgreementState].
-  /// [accessRole] The IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
-  /// [agreementId] The unique identifier for the AS2 agreement.
-  /// [arn] The ARN of the agreement.
-  /// [baseDirectory] The landing directory for the files transferred by using the AS2 protocol.
-  /// [description] The Optional description of the transdfer.
-  /// [localProfileId] The unique identifier for the AS2 local profile.
-  /// [partnerProfileId] The unique identifier for the AS2 partner profile.
+  /// [accessRole] IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
+  /// [agreementId] Unique identifier for the AS2 agreement.
+  /// [arn] ARN of the agreement.
+  /// [baseDirectory] Landing directory for the files transferred by using the AS2 protocol.
+  /// [description] Optional description of the transdfer.
+  /// [localProfileId] Unique identifier for the AS2 local profile.
+  /// [partnerProfileId] Unique identifier for the AS2 partner profile.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [serverId] The unique server identifier for the server instance. This is the specific server the agreement uses.
-  /// [status] Optional.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [serverId] Unique server identifier for the server instance. This is the specific server the agreement uses.
+  /// [status] Status of the agreement which is either ACTIVE or INACTIVE.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   const AgreementState({
     this.accessRole,
@@ -89,4 +90,3 @@ class AgreementState {
     );
   }
 }
-

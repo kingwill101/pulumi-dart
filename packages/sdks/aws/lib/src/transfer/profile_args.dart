@@ -7,23 +7,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_transfer_profile_profile_args_doc}
 class ProfileArgs {
-  /// The As2Id is the AS2 name as defined in the RFC 4130. For inbound ttransfers this is the AS2 From Header for the AS2 messages sent from the partner. For Outbound messages this is the AS2 To Header for the AS2 messages sent to the partner. his ID cannot include spaces.
+  /// AS2 name as defined in RFC 4130. For inbound transfers this is the AS2 From Header for the AS2 messages sent from the partner. For outbound messages this is the AS2 To Header for the AS2 messages sent to the partner. This ID cannot include spaces.
   final pulumi.Input<String> as2Id;
-  /// The list of certificate Ids from the imported certificate operation.
+  /// List of certificate IDs from the imported certificate operation.
   final pulumi.Input<List<String>>? certificateIds;
-  /// The profile type should be LOCAL or PARTNER.
+  /// Profile type. Valid values are `LOCAL` or `PARTNER`.
   final pulumi.Input<String> profileType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ProfileArgs].
-  /// [as2Id] The As2Id is the AS2 name as defined in the RFC 4130. For inbound ttransfers this is the AS2 From Header for the AS2 messages sent from the partner. For Outbound messages this is the AS2 To Header for the AS2 messages sent to the partner. his ID cannot include spaces.
-  /// [certificateIds] The list of certificate Ids from the imported certificate operation.
-  /// [profileType] The profile type should be LOCAL or PARTNER.
+  /// [as2Id] AS2 name as defined in RFC 4130. For inbound transfers this is the AS2 From Header for the AS2 messages sent from the partner. For outbound messages this is the AS2 To Header for the AS2 messages sent to the partner. This ID cannot include spaces.
+  /// [certificateIds] List of certificate IDs from the imported certificate operation.
+  /// [profileType] Profile type. Valid values are `LOCAL` or `PARTNER`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ProfileArgs({
     required this.as2Id,
     this.certificateIds,
@@ -52,4 +52,3 @@ class ProfileArgs {
     );
   }
 }
-

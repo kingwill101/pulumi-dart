@@ -77,6 +77,23 @@ import 'origin_access_control_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_originaccesscontrol" "example" {
+///   name                              = "example"
+///   description                       = "Example Policy"
+///   origin_access_control_origin_type = "s3"
+///   signing_behavior                  = "always"
+///   signing_protocol                  = "sigv4"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +102,8 @@ import 'origin_access_control_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.OriginAccessControl;
 /// import com.pulumi.aws.cloudfront.OriginAccessControlArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -13,13 +13,13 @@ class RecoveryGroupArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> recoveryGroupName;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [RecoveryGroupArgs].
   /// [cells] List of cell arns to add as nested fault domains within this recovery group
   /// [recoveryGroupName] A unique name describing the recovery group.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   const RecoveryGroupArgs({
     this.cells,
     required this.recoveryGroupName,
@@ -42,4 +42,3 @@ class RecoveryGroupArgs {
     );
   }
 }
-

@@ -18,7 +18,7 @@ class ClusterSnapshotState {
   final pulumi.Input<String>? engine;
   /// Version of the database engine for this DB cluster snapshot.
   final pulumi.Input<String>? engineVersion;
-  /// If storage_encrypted is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.
+  /// If storageEncrypted is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.
   final pulumi.Input<String>? kmsKeyId;
   /// License model information for the restored DB cluster.
   final pulumi.Input<String>? licenseModel;
@@ -34,9 +34,9 @@ class ClusterSnapshotState {
   final pulumi.Input<String>? status;
   /// Whether the DB cluster snapshot is encrypted.
   final pulumi.Input<bool>? storageEncrypted;
-  /// A map of tags to assign to the DB cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the DB cluster. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The VPC ID associated with the DB cluster snapshot.
   final pulumi.Input<String>? vpcId;
@@ -49,7 +49,7 @@ class ClusterSnapshotState {
   /// [dbClusterSnapshotIdentifier] The Identifier for the snapshot.
   /// [engine] Name of the database engine.
   /// [engineVersion] Version of the database engine for this DB cluster snapshot.
-  /// [kmsKeyId] If storage_encrypted is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.
+  /// [kmsKeyId] If storageEncrypted is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.
   /// [licenseModel] License model information for the restored DB cluster.
   /// [port] Port that the DB cluster was listening on at the time of the snapshot.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -58,8 +58,8 @@ class ClusterSnapshotState {
   /// [sourceDbClusterSnapshotArn] Optional.
   /// [status] The status of this DB Cluster Snapshot.
   /// [storageEncrypted] Whether the DB cluster snapshot is encrypted.
-  /// [tags] A map of tags to assign to the DB cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the DB cluster. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [vpcId] The VPC ID associated with the DB cluster snapshot.
   const ClusterSnapshotState({
     this.allocatedStorage,
@@ -131,4 +131,3 @@ class ClusterSnapshotState {
     );
   }
 }
-

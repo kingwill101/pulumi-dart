@@ -61,6 +61,20 @@ import 'delegated_administrator_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_organizations_delegatedadministrator" "example" {
+///   account_id        = "123456789012"
+///   service_principal = "principal"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'delegated_administrator_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.organizations.DelegatedAdministrator;
 /// import com.pulumi.aws.organizations.DelegatedAdministratorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -106,12 +120,12 @@ import 'delegated_administrator_state.dart';
 ///
 /// #### Required
 ///
-/// * `service_principal` (String) Service principal for the AWS service.
-/// * `delegated_account_id` (String) Account ID to be designated as a delegated administrator.
+/// * `servicePrincipal` (String) Service principal for the AWS service.
+/// * `delegatedAccountId` (String) Account ID to be designated as a delegated administrator.
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 ///
 ///
 /// Using `pulumi import`, import `aws.organizations.DelegatedAdministrator` using the account ID and its service principal. For example:

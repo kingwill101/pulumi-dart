@@ -77,6 +77,23 @@ import 'service_action_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_servicecatalog_serviceaction" "example" {
+///   description = "Motor generator unit"
+///   name        = "MGU"
+///   definition = {
+///     name = "AWS-RestartEC2Instance"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +103,8 @@ import 'service_action_state.dart';
 /// import com.pulumi.aws.servicecatalog.ServiceAction;
 /// import com.pulumi.aws.servicecatalog.ServiceActionArgs;
 /// import com.pulumi.aws.servicecatalog.inputs.ServiceActionDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -12,7 +12,7 @@ import 'network_acl_state.dart';
 /// a conflict of rule settings and will overwrite rules.
 ///
 /// &gt; **NOTE on Network ACLs and Network ACL Associations:** the provider provides both a standalone network ACL association
-/// resource and a network ACL resource with a `subnet_ids` attribute. Do not use the same subnet ID in both a network ACL
+/// resource and a network ACL resource with a `subnetIds` attribute. Do not use the same subnet ID in both a network ACL
 /// resource and a network ACL association resource. Doing so will cause a conflict of associations and will overwrite the association.
 ///
 /// ## Example Usage
@@ -157,6 +157,38 @@ import 'network_acl_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_networkacl" "main" {
+///   vpc_id = mainAwsVpc.id
+///   egress {
+///     protocol   = "tcp"
+///     rule_no    = 200
+///     action     = "allow"
+///     cidr_block = "10.3.0.0/18"
+///     from_port  = 443
+///     to_port    = 443
+///   }
+///   ingress {
+///     protocol   = "tcp"
+///     rule_no    = 100
+///     action     = "allow"
+///     cidr_block = "10.3.0.0/18"
+///     from_port  = 80
+///     to_port    = 80
+///   }
+///   tags = {
+///     "Name" = "main"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -167,8 +199,8 @@ import 'network_acl_state.dart';
 /// import com.pulumi.aws.ec2.NetworkAclArgs;
 /// import com.pulumi.aws.ec2.inputs.NetworkAclEgressArgs;
 /// import com.pulumi.aws.ec2.inputs.NetworkAclIngressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -249,9 +281,9 @@ class NetworkAcl extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// A list of Subnet IDs to apply the ACL to
   late final pulumi.Output<List<String>> subnetIds;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The ID of the associated VPC.
   late final pulumi.Output<String> vpcId;

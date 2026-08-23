@@ -11,11 +11,11 @@ class GetServiceResult {
   final String arn;
   /// Description of the service.
   final String description;
-  /// Complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance. See `dns_config` Block for details.
+  /// Complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance. See `dnsConfig` Block for details.
   final List<GetServiceDnsConfig> dnsConfigs;
-  /// Complex type that contains settings for an optional health check. Only for Public DNS namespaces. See `health_check_config` Block for details.
+  /// Complex type that contains settings for an optional health check. Only for Public DNS namespaces. See `healthCheckConfig` Block for details.
   final List<GetServiceHealthCheckConfig> healthCheckConfigs;
-  /// A complex type that contains settings for ECS managed health checks. See `health_check_custom_config` Block for details.
+  /// A complex type that contains settings for ECS managed health checks. See `healthCheckCustomConfig` Block for details.
   final List<GetServiceHealthCheckCustomConfig> healthCheckCustomConfigs;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -23,20 +23,20 @@ class GetServiceResult {
   /// ID of the namespace to use for DNS configuration.
   final String namespaceId;
   final String region;
-  /// Map of tags to assign to the service. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the service. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Map<String, String>? tags;
 
   /// Creates a new [GetServiceResult].
   /// [arn] ARN of the service.
   /// [description] Description of the service.
-  /// [dnsConfigs] Complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance. See `dns_config` Block for details.
-  /// [healthCheckConfigs] Complex type that contains settings for an optional health check. Only for Public DNS namespaces. See `health_check_config` Block for details.
-  /// [healthCheckCustomConfigs] A complex type that contains settings for ECS managed health checks. See `health_check_custom_config` Block for details.
+  /// [dnsConfigs] Complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance. See `dnsConfig` Block for details.
+  /// [healthCheckConfigs] Complex type that contains settings for an optional health check. Only for Public DNS namespaces. See `healthCheckConfig` Block for details.
+  /// [healthCheckCustomConfigs] A complex type that contains settings for ECS managed health checks. See `healthCheckCustomConfig` Block for details.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [namespaceId] ID of the namespace to use for DNS configuration.
   /// [region] Required.
-  /// [tags] Map of tags to assign to the service. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the service. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const GetServiceResult({
     required this.arn,
     required this.description,
@@ -80,4 +80,3 @@ class GetServiceResult {
     );
   }
 }
-

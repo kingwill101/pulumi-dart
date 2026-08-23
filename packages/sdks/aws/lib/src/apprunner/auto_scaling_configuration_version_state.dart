@@ -8,11 +8,13 @@ class AutoScalingConfigurationVersionState {
   final pulumi.Input<String>? arn;
   /// Name of the auto scaling configuration.
   final pulumi.Input<String>? autoScalingConfigurationName;
-  /// The revision of this auto scaling configuration.
+  /// Revision of this auto scaling configuration.
   final pulumi.Input<int>? autoScalingConfigurationRevision;
+  /// Whether there is an App Runner service associated with this auto scaling configuration.
   final pulumi.Input<bool>? hasAssociatedService;
+  /// Whether the auto scaling configuration is the default for the AWS account and Region.
   final pulumi.Input<bool>? isDefault;
-  /// Whether the auto scaling configuration has the highest `auto_scaling_configuration_revision` among all configurations that share the same `auto_scaling_configuration_name`.
+  /// Whether the auto scaling configuration has the highest `autoScalingConfigurationRevision` among all configurations that share the same `autoScalingConfigurationName`.
   final pulumi.Input<bool>? latest;
   /// Maximal number of concurrent requests that you want an instance to process. When the number of concurrent requests goes over this limit, App Runner scales up your service.
   final pulumi.Input<int>? maxConcurrency;
@@ -24,25 +26,25 @@ class AutoScalingConfigurationVersionState {
   final pulumi.Input<String>? region;
   /// Current state of the auto scaling configuration. An INACTIVE configuration revision has been deleted and can't be used. It is permanently removed some time after deletion.
   final pulumi.Input<String>? status;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [AutoScalingConfigurationVersionState].
   /// [arn] ARN of this auto scaling configuration version.
   /// [autoScalingConfigurationName] Name of the auto scaling configuration.
-  /// [autoScalingConfigurationRevision] The revision of this auto scaling configuration.
-  /// [hasAssociatedService] Optional.
-  /// [isDefault] Optional.
-  /// [latest] Whether the auto scaling configuration has the highest `auto_scaling_configuration_revision` among all configurations that share the same `auto_scaling_configuration_name`.
+  /// [autoScalingConfigurationRevision] Revision of this auto scaling configuration.
+  /// [hasAssociatedService] Whether there is an App Runner service associated with this auto scaling configuration.
+  /// [isDefault] Whether the auto scaling configuration is the default for the AWS account and Region.
+  /// [latest] Whether the auto scaling configuration has the highest `autoScalingConfigurationRevision` among all configurations that share the same `autoScalingConfigurationName`.
   /// [maxConcurrency] Maximal number of concurrent requests that you want an instance to process. When the number of concurrent requests goes over this limit, App Runner scales up your service.
   /// [maxSize] Maximal number of instances that App Runner provisions for your service.
   /// [minSize] Minimal number of instances that App Runner provisions for your service.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Current state of the auto scaling configuration. An INACTIVE configuration revision has been deleted and can't be used. It is permanently removed some time after deletion.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const AutoScalingConfigurationVersionState({
     this.arn,
     this.autoScalingConfigurationName,
@@ -95,4 +97,3 @@ class AutoScalingConfigurationVersionState {
     );
   }
 }
-

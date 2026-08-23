@@ -19,7 +19,7 @@ import 'data_catalog_encryption_settings_state.dart';
 ///     },
 ///     encryptionAtRest: {
 ///         catalogEncryptionMode: "SSE-KMS",
-///         catalogEncryptionServiceRole: role.test.arn,
+///         catalogEncryptionServiceRole: testAwsIamRole.arn,
 ///         sseAwsKmsKeyId: test.arn,
 ///     },
 /// }});
@@ -35,7 +35,7 @@ import 'data_catalog_encryption_settings_state.dart';
 ///     },
 ///     "encryption_at_rest": {
 ///         "catalog_encryption_mode": "SSE-KMS",
-///         "catalog_encryption_service_role": role["test"]["arn"],
+///         "catalog_encryption_service_role": test_aws_iam_role["arn"],
 ///         "sse_aws_kms_key_id": test["arn"],
 ///     },
 /// })
@@ -60,7 +60,7 @@ import 'data_catalog_encryption_settings_state.dart';
 ///             EncryptionAtRest = new Aws.Glue.Inputs.DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRestArgs
 ///             {
 ///                 CatalogEncryptionMode = "SSE-KMS",
-///                 CatalogEncryptionServiceRole = role.Test.Arn,
+///                 CatalogEncryptionServiceRole = testAwsIamRole.Arn,
 ///                 SseAwsKmsKeyId = test.Arn,
 ///             },
 ///         },
@@ -86,7 +86,7 @@ import 'data_catalog_encryption_settings_state.dart';
 /// 				},
 /// 				EncryptionAtRest: &glue.DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRestArgs{
 /// 					CatalogEncryptionMode:        pulumi.String("SSE-KMS"),
-/// 					CatalogEncryptionServiceRole: pulumi.Any(role.Test.Arn),
+/// 					CatalogEncryptionServiceRole: pulumi.Any(testAwsIamRole.Arn),
 /// 					SseAwsKmsKeyId:               pulumi.Any(test.Arn),
 /// 				},
 /// 			},
@@ -96,6 +96,29 @@ import 'data_catalog_encryption_settings_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_datacatalogencryptionsettings" "example" {
+///   data_catalog_encryption_settings = {
+///     connection_password_encryption = {
+///       aws_kms_key_id                       = test.arn
+///       return_connection_password_encrypted = true
+///     }
+///     encryption_at_rest = {
+///       catalog_encryption_mode         = "SSE-KMS"
+///       catalog_encryption_service_role = testAwsIamRole.arn
+///       sse_aws_kms_key_id              = test.arn
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -109,8 +132,8 @@ import 'data_catalog_encryption_settings_state.dart';
 /// import com.pulumi.aws.glue.inputs.DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsArgs;
 /// import com.pulumi.aws.glue.inputs.DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryptionArgs;
 /// import com.pulumi.aws.glue.inputs.DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -130,7 +153,7 @@ import 'data_catalog_encryption_settings_state.dart';
 ///                     .build())
 ///                 .encryptionAtRest(DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRestArgs.builder()
 ///                     .catalogEncryptionMode("SSE-KMS")
-///                     .catalogEncryptionServiceRole(role.test().arn())
+///                     .catalogEncryptionServiceRole(testAwsIamRole.arn())
 ///                     .sseAwsKmsKeyId(test.arn())
 ///                     .build())
 ///                 .build())
@@ -150,7 +173,7 @@ import 'data_catalog_encryption_settings_state.dart';
 ///           returnConnectionPasswordEncrypted: true
 ///         encryptionAtRest:
 ///           catalogEncryptionMode: SSE-KMS
-///           catalogEncryptionServiceRole: ${role.test.arn}
+///           catalogEncryptionServiceRole: ${testAwsIamRole.arn}
 ///           sseAwsKmsKeyId: ${test.arn}
 /// ```
 ///

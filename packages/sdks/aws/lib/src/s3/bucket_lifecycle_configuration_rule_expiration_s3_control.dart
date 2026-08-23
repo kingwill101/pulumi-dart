@@ -36,4 +36,3 @@ class BucketLifecycleConfigurationRuleExpirationS3Control {
     );
   }
 }
-

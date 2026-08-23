@@ -9,11 +9,9 @@ import 'stack_user_setting.dart';
 
 /// Input properties used for looking up and filtering Stack resources.
 class StackState {
-  /// Set of configuration blocks defining the interface VPC endpoints. Users of the stack can connect to AppStream 2.0 only through the specified endpoints.
-  /// See `access_endpoints` below.
+  /// Set of configuration blocks defining the interface VPC endpoints. Users of the stack can connect to AppStream 2.0 only through the specified endpoints. See `accessEndpoints` below.
   final pulumi.Input<List<StackAccessEndpoint>>? accessEndpoints;
-  /// Settings for application settings persistence.
-  /// See `application_settings` below.
+  /// Settings for application settings persistence. See `applicationSettings` below.
   final pulumi.Input<StackApplicationSettings>? applicationSettings;
   /// ARN of the appstream stack.
   final pulumi.Input<String>? arn;
@@ -35,22 +33,19 @@ class StackState {
   final pulumi.Input<String>? redirectUrl;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Configuration block for the storage connectors to enable.
-  /// See `storage_connectors` below.
+  /// Configuration block for the storage connectors to enable. See `storageConnectors` below.
   final pulumi.Input<List<StackStorageConnector>>? storageConnectors;
-  /// The streaming protocol you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client.
-  /// See `streaming_experience_settings` below.
+  /// Streaming protocol you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client. See `streamingExperienceSettings` below.
   final pulumi.Input<StackStreamingExperienceSettings>? streamingExperienceSettings;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// Configuration block for the actions that are enabled or disabled for users during their streaming sessions. If not provided, these settings are configured automatically by AWS. If provided, the configuration should include a block for each configurable action.
-  /// See `user_settings` below.
+  /// Configuration block for the actions that are enabled or disabled for users during their streaming sessions. If not provided, these settings are configured automatically by AWS. If provided, the configuration should include a block for each configurable action. See `userSettings` below.
   final pulumi.Input<List<StackUserSetting>>? userSettings;
 
   /// Creates a new [StackState].
-  /// [accessEndpoints] Set of configuration blocks defining the interface VPC endpoints. Users of the stack can connect to AppStream 2.0 only through the specified endpoints.
-  /// [applicationSettings] Settings for application settings persistence.
+  /// [accessEndpoints] Set of configuration blocks defining the interface VPC endpoints. Users of the stack can connect to AppStream 2.0 only through the specified endpoints. See `accessEndpoints` below.
+  /// [applicationSettings] Settings for application settings persistence. See `applicationSettings` below.
   /// [arn] ARN of the appstream stack.
   /// [createdTime] Date and time, in UTC and extended RFC 3339 format, when the stack was created.
   /// [description] Description for the AppStream stack.
@@ -60,11 +55,11 @@ class StackState {
   /// [name] Unique name for the AppStream stack.
   /// [redirectUrl] URL that users are redirected to after their streaming session ends.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [storageConnectors] Configuration block for the storage connectors to enable.
-  /// [streamingExperienceSettings] The streaming protocol you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [storageConnectors] Configuration block for the storage connectors to enable. See `storageConnectors` below.
+  /// [streamingExperienceSettings] Streaming protocol you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client. See `streamingExperienceSettings` below.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
-  /// [userSettings] Configuration block for the actions that are enabled or disabled for users during their streaming sessions. If not provided, these settings are configured automatically by AWS. If provided, the configuration should include a block for each configurable action.
+  /// [userSettings] Configuration block for the actions that are enabled or disabled for users during their streaming sessions. If not provided, these settings are configured automatically by AWS. If provided, the configuration should include a block for each configurable action. See `userSettings` below.
   const StackState({
     this.accessEndpoints,
     this.applicationSettings,
@@ -126,4 +121,3 @@ class StackState {
     );
   }
 }
-

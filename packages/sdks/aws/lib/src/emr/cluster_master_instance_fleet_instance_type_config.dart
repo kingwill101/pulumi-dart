@@ -5,9 +5,9 @@ import 'cluster_master_instance_fleet_instance_type_config_configuration.dart';
 import 'cluster_master_instance_fleet_instance_type_config_ebs_config.dart';
 
 class ClusterMasterInstanceFleetInstanceTypeConfig {
-  /// Bid price for each EC2 Spot instance type as defined by `instance_type`. Expressed in USD. If neither `bid_price` nor `bid_price_as_percentage_of_on_demand_price` is provided, `bid_price_as_percentage_of_on_demand_price` defaults to 100%.
+  /// Bid price for each EC2 Spot instance type as defined by `instanceType`. Expressed in USD. If neither `bidPrice` nor `bidPriceAsPercentageOfOnDemandPrice` is provided, `bidPriceAsPercentageOfOnDemandPrice` defaults to 100%.
   final pulumi.Input<String>? bidPrice;
-  /// Bid price, as a percentage of On-Demand price, for each EC2 Spot instance as defined by `instance_type`. Expressed as a number (for example, 20 specifies 20%). If neither `bid_price` nor `bid_price_as_percentage_of_on_demand_price` is provided, `bid_price_as_percentage_of_on_demand_price` defaults to 100%.
+  /// Bid price, as a percentage of On-Demand price, for each EC2 Spot instance as defined by `instanceType`. Expressed as a number (for example, 20 specifies 20%). If neither `bidPrice` nor `bidPriceAsPercentageOfOnDemandPrice` is provided, `bidPriceAsPercentageOfOnDemandPrice` defaults to 100%.
   final pulumi.Input<double>? bidPriceAsPercentageOfOnDemandPrice;
   /// Configuration classification that applies when provisioning cluster instances, which can include configurations for applications and software that run on the cluster. List of `configuration` blocks.
   final pulumi.Input<List<ClusterMasterInstanceFleetInstanceTypeConfigConfiguration>>? configurations;
@@ -19,8 +19,8 @@ class ClusterMasterInstanceFleetInstanceTypeConfig {
   final pulumi.Input<int>? weightedCapacity;
 
   /// Creates a new [ClusterMasterInstanceFleetInstanceTypeConfig].
-  /// [bidPrice] Bid price for each EC2 Spot instance type as defined by `instance_type`. Expressed in USD. If neither `bid_price` nor `bid_price_as_percentage_of_on_demand_price` is provided, `bid_price_as_percentage_of_on_demand_price` defaults to 100%.
-  /// [bidPriceAsPercentageOfOnDemandPrice] Bid price, as a percentage of On-Demand price, for each EC2 Spot instance as defined by `instance_type`. Expressed as a number (for example, 20 specifies 20%). If neither `bid_price` nor `bid_price_as_percentage_of_on_demand_price` is provided, `bid_price_as_percentage_of_on_demand_price` defaults to 100%.
+  /// [bidPrice] Bid price for each EC2 Spot instance type as defined by `instanceType`. Expressed in USD. If neither `bidPrice` nor `bidPriceAsPercentageOfOnDemandPrice` is provided, `bidPriceAsPercentageOfOnDemandPrice` defaults to 100%.
+  /// [bidPriceAsPercentageOfOnDemandPrice] Bid price, as a percentage of On-Demand price, for each EC2 Spot instance as defined by `instanceType`. Expressed as a number (for example, 20 specifies 20%). If neither `bidPrice` nor `bidPriceAsPercentageOfOnDemandPrice` is provided, `bidPriceAsPercentageOfOnDemandPrice` defaults to 100%.
   /// [configurations] Configuration classification that applies when provisioning cluster instances, which can include configurations for applications and software that run on the cluster. List of `configuration` blocks.
   /// [ebsConfigs] Configuration block(s) for EBS volumes attached to each instance in the instance group. Detailed below.
   /// [instanceType] EC2 instance type, such as m4.xlarge.
@@ -56,4 +56,3 @@ class ClusterMasterInstanceFleetInstanceTypeConfig {
     );
   }
 }
-

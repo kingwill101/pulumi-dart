@@ -60,4 +60,3 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsAc3Settings {
     );
   }
 }
-

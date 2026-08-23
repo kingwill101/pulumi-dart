@@ -63,6 +63,20 @@ import 'resource_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dynamodb_resourcepolicy" "example" {
+///   resource_arn = exampleAwsDynamodbTable.arn
+///   policy       = test.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'resource_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.dynamodb.ResourcePolicy;
 /// import com.pulumi.aws.dynamodb.ResourcePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -108,10 +122,10 @@ import 'resource_policy_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the DynamoDB table.
+/// - `resourceArn` (String) Amazon Resource Name (ARN) of the DynamoDB table.
 ///
 ///
-/// Using `pulumi import`, import DynamoDB Resource Policy using the `resource_arn`. For example:
+/// Using `pulumi import`, import DynamoDB Resource Policy using the `resourceArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:dynamodb/resourcePolicy:ResourcePolicy example arn:aws:dynamodb:us-east-1:1234567890:table/my-table

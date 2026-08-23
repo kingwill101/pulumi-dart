@@ -114,6 +114,32 @@ import 'authorizer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iot_authorizer" "example" {
+///   name                    = "example"
+///   authorizer_function_arn = exampleAwsLambdaFunction.arn
+///   signing_disabled        = false
+///   status                  = "ACTIVE"
+///   token_key_name          = "Token-Header"
+///   token_signing_public_keys = {
+///     "Key1" = file("test-fixtures/iot-authorizer-signing-key.pem")
+///   }
+///   tags = {
+///     "Name" = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -124,8 +150,8 @@ import 'authorizer_state.dart';
 /// import com.pulumi.aws.iot.AuthorizerArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -196,9 +222,9 @@ class Authorizer extends pulumi.CustomResource {
   late final pulumi.Output<bool?> signingDisabled;
   /// The status of Authorizer request at creation. Valid values: `ACTIVE`, `INACTIVE`. Default: `ACTIVE`.
   late final pulumi.Output<String?> status;
-  /// Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The name of the token key used to extract the token from the HTTP headers. This value is required if signing is enabled in your authorizer.
   late final pulumi.Output<String?> tokenKeyName;

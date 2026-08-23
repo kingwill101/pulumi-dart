@@ -158,7 +158,7 @@ import 'identity_pool_provider_principal_tag_state.dart';
 /// 		}
 /// 		exampleUserPoolClient, err := cognito.NewUserPoolClient(ctx, "example", &cognito.UserPoolClientArgs{
 /// 			Name:                       pulumi.String("client"),
-/// 			UserPoolId:                 example.ID(),
+/// 			UserPoolId:                 example.ID().ToIDOutput().ToStringOutput(),
 /// 			SupportedIdentityProviders: pulumi.StringArray(invokeCompact.Result),
 /// 		})
 /// 		if err != nil {
@@ -169,7 +169,7 @@ import 'identity_pool_provider_principal_tag_state.dart';
 /// 			AllowUnauthenticatedIdentities: pulumi.Bool(false),
 /// 			CognitoIdentityProviders: cognito.IdentityPoolCognitoIdentityProviderArray{
 /// 				&cognito.IdentityPoolCognitoIdentityProviderArgs{
-/// 					ClientId:             exampleUserPoolClient.ID(),
+/// 					ClientId:             exampleUserPoolClient.ID().ToIDOutput().ToStringOutput(),
 /// 					ProviderName:         example.Endpoint,
 /// 					ServerSideTokenCheck: pulumi.Bool(false),
 /// 				},
@@ -179,7 +179,7 @@ import 'identity_pool_provider_principal_tag_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewIdentityPoolProviderPrincipalTag(ctx, "example", &cognito.IdentityPoolProviderPrincipalTagArgs{
-/// 			IdentityPoolId:       exampleIdentityPool.ID(),
+/// 			IdentityPoolId:       exampleIdentityPool.ID().ToIDOutput().ToStringOutput(),
 /// 			IdentityProviderName: example.Endpoint,
 /// 			UseDefaults:          pulumi.Bool(false),
 /// 			PrincipalTags: pulumi.StringMap{
@@ -191,6 +191,45 @@ import 'identity_pool_provider_principal_tag_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpool" "example" {
+///   name                     = "user pool"
+///   auto_verified_attributes = ["email"]
+/// }
+/// resource "aws_cognito_userpoolclient" "example" {
+///   name                         = "client"
+///   user_pool_id                 = aws_cognito_userpool.example.id
+///   supported_identity_providers = compact(["COGNITO"])
+/// }
+/// resource "aws_cognito_identitypool" "example" {
+///   identity_pool_name               = "identity pool"
+///   allow_unauthenticated_identities = false
+///   cognito_identity_providers {
+///     client_id               = aws_cognito_userpoolclient.example.id
+///     provider_name           = aws_cognito_userpool.example.endpoint
+///     server_side_token_check = false
+///   }
+/// }
+/// resource "aws_cognito_identitypoolproviderprincipaltag" "example" {
+///   identity_pool_id       = aws_cognito_identitypool.example.id
+///   identity_provider_name = aws_cognito_userpool.example.endpoint
+///   use_defaults           = false
+///   principal_tags = {
+///     "test" = "value"
+///   }
 /// }
 /// ```
 /// ```java
@@ -210,8 +249,8 @@ import 'identity_pool_provider_principal_tag_state.dart';
 /// import com.pulumi.aws.cognito.inputs.IdentityPoolCognitoIdentityProviderArgs;
 /// import com.pulumi.aws.cognito.IdentityPoolProviderPrincipalTag;
 /// import com.pulumi.aws.cognito.IdentityPoolProviderPrincipalTagArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

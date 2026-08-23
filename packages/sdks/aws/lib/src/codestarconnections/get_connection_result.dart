@@ -12,7 +12,7 @@ class GetConnectionResult {
   final String id;
   /// Name of the CodeStar Connection. The name is unique in the calling AWS account.
   final String name;
-  /// Name of the external provider where your third-party code repository is configured. Possible values are `Bitbucket`, `GitHub` and `GitLab`. For connections to GitHub Enterprise Server or GitLab Self-Managed instances, you must create an aws.codestarconnections.Host resource and use `host_arn` instead.
+  /// Name of the external provider where your third-party code repository is configured. Possible values are `Bitbucket`, `GitHub` and `GitLab`. For connections to GitHub Enterprise Server or GitLab Self-Managed instances, you must create an aws.codestarconnections.Host resource and use `hostArn` instead.
   final String providerType;
   final String region;
   /// Map of key-value resource tags to associate with the resource.
@@ -24,7 +24,7 @@ class GetConnectionResult {
   /// [hostArn] ARN of the host associated with the connection.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Name of the CodeStar Connection. The name is unique in the calling AWS account.
-  /// [providerType] Name of the external provider where your third-party code repository is configured. Possible values are `Bitbucket`, `GitHub` and `GitLab`. For connections to GitHub Enterprise Server or GitLab Self-Managed instances, you must create an aws.codestarconnections.Host resource and use `host_arn` instead.
+  /// [providerType] Name of the external provider where your third-party code repository is configured. Possible values are `Bitbucket`, `GitHub` and `GitLab`. For connections to GitHub Enterprise Server or GitLab Self-Managed instances, you must create an aws.codestarconnections.Host resource and use `hostArn` instead.
   /// [region] Required.
   /// [tags] Map of key-value resource tags to associate with the resource.
   const GetConnectionResult({
@@ -64,4 +64,3 @@ class GetConnectionResult {
     );
   }
 }
-

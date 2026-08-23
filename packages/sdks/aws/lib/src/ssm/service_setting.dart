@@ -12,7 +12,7 @@ import 'service_setting_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const testSetting = new aws.ssm.ServiceSetting("test_setting", {
-///     settingId: "arn:aws:ssm:us-east-1:123456789012:servicesetting/ssm/parameter-store/high-throughput-enabled",
+///     settingId: "/ssm/parameter-store/high-throughput-enabled",
 ///     settingValue: "true",
 /// });
 /// ```
@@ -21,7 +21,7 @@ import 'service_setting_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test_setting = aws.ssm.ServiceSetting("test_setting",
-///     setting_id="arn:aws:ssm:us-east-1:123456789012:servicesetting/ssm/parameter-store/high-throughput-enabled",
+///     setting_id="/ssm/parameter-store/high-throughput-enabled",
 ///     setting_value="true")
 /// ```
 /// ```csharp
@@ -34,7 +34,7 @@ import 'service_setting_state.dart';
 /// {
 ///     var testSetting = new Aws.Ssm.ServiceSetting("test_setting", new()
 ///     {
-///         SettingId = "arn:aws:ssm:us-east-1:123456789012:servicesetting/ssm/parameter-store/high-throughput-enabled",
+///         SettingId = "/ssm/parameter-store/high-throughput-enabled",
 ///         SettingValue = "true",
 ///     });
 ///
@@ -51,7 +51,7 @@ import 'service_setting_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ssm.NewServiceSetting(ctx, "test_setting", &ssm.ServiceSettingArgs{
-/// 			SettingId:    pulumi.String("arn:aws:ssm:us-east-1:123456789012:servicesetting/ssm/parameter-store/high-throughput-enabled"),
+/// 			SettingId:    pulumi.String("/ssm/parameter-store/high-throughput-enabled"),
 /// 			SettingValue: pulumi.String("true"),
 /// 		})
 /// 		if err != nil {
@@ -59,6 +59,20 @@ import 'service_setting_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_servicesetting" "test_setting" {
+///   setting_id    = "/ssm/parameter-store/high-throughput-enabled"
+///   setting_value = "true"
 /// }
 /// ```
 /// ```java
@@ -69,8 +83,8 @@ import 'service_setting_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.ServiceSetting;
 /// import com.pulumi.aws.ssm.ServiceSettingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -83,7 +97,7 @@ import 'service_setting_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testSetting = new ServiceSetting("testSetting", ServiceSettingArgs.builder()
-///             .settingId("arn:aws:ssm:us-east-1:123456789012:servicesetting/ssm/parameter-store/high-throughput-enabled")
+///             .settingId("/ssm/parameter-store/high-throughput-enabled")
 ///             .settingValue("true")
 ///             .build());
 ///
@@ -96,14 +110,14 @@ import 'service_setting_state.dart';
 ///     type: aws:ssm:ServiceSetting
 ///     name: test_setting
 ///     properties:
-///       settingId: arn:aws:ssm:us-east-1:123456789012:servicesetting/ssm/parameter-store/high-throughput-enabled
+///       settingId: /ssm/parameter-store/high-throughput-enabled
 ///       settingValue: 'true'
 /// ```
 ///
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import AWS SSM Service Setting using the `setting_id`. For example:
+/// Using `pulumi import`, import AWS SSM Service Setting using the `settingId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ssm/serviceSetting:ServiceSetting example arn:aws:ssm:us-east-1:123456789012:servicesetting/ssm/parameter-store/high-throughput-enabled

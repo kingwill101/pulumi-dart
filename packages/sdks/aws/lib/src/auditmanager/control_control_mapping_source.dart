@@ -8,14 +8,15 @@ class ControlControlMappingSource {
   final pulumi.Input<String>? sourceDescription;
   /// Frequency of evidence collection. Valid values are `DAILY`, `WEEKLY`, or `MONTHLY`.
   final pulumi.Input<String>? sourceFrequency;
+  /// Unique identifier for the source.
   final pulumi.Input<String>? sourceId;
-  /// The keyword to search for in CloudTrail logs, Config rules, Security Hub checks, and Amazon Web Services API names. See `source_keyword` below.
+  /// Keyword to search for in CloudTrail logs, Config rules, Security Hub checks, and Amazon Web Services API names. See `sourceKeyword` below.
   final pulumi.Input<ControlControlMappingSourceSourceKeyword>? sourceKeyword;
   /// Name of the source.
   final pulumi.Input<String> sourceName;
-  /// The setup option for the data source. This option reflects if the evidence collection is automated or manual. Valid values are `System_Controls_Mapping` (automated) and `Procedural_Controls_Mapping` (manual).
+  /// Setup option for the data source. This option reflects if the evidence collection is automated or manual. Valid values are `System_Controls_Mapping` (automated) and `Procedural_Controls_Mapping` (manual).
   final pulumi.Input<String> sourceSetUpOption;
-  /// Type of data source for evidence collection. If `source_set_up_option` is manual, the only valid value is `MANUAL`. If `source_set_up_option` is automated, valid values are `AWS_Cloudtrail`, `AWS_Config`, `AWS_Security_Hub`, or `AWS_API_Call`.
+  /// Type of data source for evidence collection. If `sourceSetUpOption` is manual, the only valid value is `MANUAL`. If `sourceSetUpOption` is automated, valid values are `AWS_Cloudtrail`, `AWS_Config`, `AWS_Security_Hub`, or `AWS_API_Call`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> sourceType;
@@ -25,11 +26,11 @@ class ControlControlMappingSource {
   /// Creates a new [ControlControlMappingSource].
   /// [sourceDescription] Description of the source.
   /// [sourceFrequency] Frequency of evidence collection. Valid values are `DAILY`, `WEEKLY`, or `MONTHLY`.
-  /// [sourceId] Optional.
-  /// [sourceKeyword] The keyword to search for in CloudTrail logs, Config rules, Security Hub checks, and Amazon Web Services API names. See `source_keyword` below.
+  /// [sourceId] Unique identifier for the source.
+  /// [sourceKeyword] Keyword to search for in CloudTrail logs, Config rules, Security Hub checks, and Amazon Web Services API names. See `sourceKeyword` below.
   /// [sourceName] Name of the source.
-  /// [sourceSetUpOption] The setup option for the data source. This option reflects if the evidence collection is automated or manual. Valid values are `System_Controls_Mapping` (automated) and `Procedural_Controls_Mapping` (manual).
-  /// [sourceType] Type of data source for evidence collection. If `source_set_up_option` is manual, the only valid value is `MANUAL`. If `source_set_up_option` is automated, valid values are `AWS_Cloudtrail`, `AWS_Config`, `AWS_Security_Hub`, or `AWS_API_Call`.
+  /// [sourceSetUpOption] Setup option for the data source. This option reflects if the evidence collection is automated or manual. Valid values are `System_Controls_Mapping` (automated) and `Procedural_Controls_Mapping` (manual).
+  /// [sourceType] Type of data source for evidence collection. If `sourceSetUpOption` is manual, the only valid value is `MANUAL`. If `sourceSetUpOption` is automated, valid values are `AWS_Cloudtrail`, `AWS_Config`, `AWS_Security_Hub`, or `AWS_API_Call`.
   /// [troubleshootingText] Instructions for troubleshooting the control.
   const ControlControlMappingSource({
     this.sourceDescription,
@@ -68,4 +69,3 @@ class ControlControlMappingSource {
     );
   }
 }
-

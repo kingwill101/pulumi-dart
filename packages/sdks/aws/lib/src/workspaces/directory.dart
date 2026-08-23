@@ -395,7 +395,7 @@ import 'directory_workspace_creation_properties.dart';
 /// 			return err
 /// 		}
 /// 		exampleA, err := ec2.NewSubnet(ctx, "example_a", &ec2.SubnetArgs{
-/// 			VpcId:            exampleVpc.ID(),
+/// 			VpcId:            exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			AvailabilityZone: pulumi.String("us-east-1a"),
 /// 			CidrBlock:        pulumi.String("10.0.0.0/24"),
 /// 		})
@@ -403,7 +403,7 @@ import 'directory_workspace_creation_properties.dart';
 /// 			return err
 /// 		}
 /// 		exampleB, err := ec2.NewSubnet(ctx, "example_b", &ec2.SubnetArgs{
-/// 			VpcId:            exampleVpc.ID(),
+/// 			VpcId:            exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			AvailabilityZone: pulumi.String("us-east-1b"),
 /// 			CidrBlock:        pulumi.String("10.0.1.0/24"),
 /// 		})
@@ -415,17 +415,17 @@ import 'directory_workspace_creation_properties.dart';
 /// 			Password: pulumi.String("#S1ncerely"),
 /// 			Size:     pulumi.String("Small"),
 /// 			VpcSettings: &directoryservice.DirectoryVpcSettingsArgs{
-/// 				VpcId: exampleVpc.ID(),
+/// 				VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 				SubnetIds: pulumi.StringArray{
-/// 					exampleA.ID(),
-/// 					exampleB.ID(),
+/// 					exampleA.ID().ToIDOutput().ToStringOutput(),
+/// 					exampleB.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		workspaces, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 		workspaces2, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
 /// 					Actions: []string{
@@ -447,7 +447,7 @@ import 'directory_workspace_creation_properties.dart';
 /// 		}
 /// 		workspacesDefault, err := iam.NewRole(ctx, "workspaces_default", &iam.RoleArgs{
 /// 			Name:             pulumi.String("workspaces_DefaultRole"),
-/// 			AssumeRolePolicy: pulumi.String(workspaces.Json),
+/// 			AssumeRolePolicy: pulumi.String(workspaces2.Json),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -467,7 +467,7 @@ import 'directory_workspace_creation_properties.dart';
 /// 			return err
 /// 		}
 /// 		exampleC, err := ec2.NewSubnet(ctx, "example_c", &ec2.SubnetArgs{
-/// 			VpcId:            exampleVpc.ID(),
+/// 			VpcId:            exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			AvailabilityZone: pulumi.String("us-east-1c"),
 /// 			CidrBlock:        pulumi.String("10.0.2.0/24"),
 /// 		})
@@ -475,7 +475,7 @@ import 'directory_workspace_creation_properties.dart';
 /// 			return err
 /// 		}
 /// 		exampleD, err := ec2.NewSubnet(ctx, "example_d", &ec2.SubnetArgs{
-/// 			VpcId:            exampleVpc.ID(),
+/// 			VpcId:            exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			AvailabilityZone: pulumi.String("us-east-1d"),
 /// 			CidrBlock:        pulumi.String("10.0.3.0/24"),
 /// 		})
@@ -483,10 +483,10 @@ import 'directory_workspace_creation_properties.dart';
 /// 			return err
 /// 		}
 /// 		_, err = workspaces.NewDirectory(ctx, "example", &workspaces.DirectoryArgs{
-/// 			DirectoryId: exampleDirectory.ID(),
+/// 			DirectoryId: exampleDirectory.ID().ToIDOutput().ToStringOutput(),
 /// 			SubnetIds: pulumi.StringArray{
-/// 				exampleC.ID(),
-/// 				exampleD.ID(),
+/// 				exampleC.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleD.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"Example": pulumi.String("true"),
@@ -534,6 +534,110 @@ import 'directory_workspace_creation_properties.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "workspaces" {
+///   statements {
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["workspaces.amazonaws.com"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspaces_directory" "example" {
+///   depends_on   = [aws_iam_rolepolicyattachment.workspaces_default_service_access, aws_iam_rolepolicyattachment.workspaces_default_self_service_access]
+///   directory_id = aws_directoryservice_directory.example.id
+///   subnet_ids   = [aws_ec2_subnet.example_c.id, aws_ec2_subnet.example_d.id]
+///   tags = {
+///     "Example" = true
+///   }
+///   certificate_based_auth_properties = {
+///     certificate_authority_arn = "arn:aws:acm-pca:us-east-1:123456789012:certificate-authority/12345678-1234-1234-1234-123456789012"
+///     status                    = "ENABLED"
+///   }
+///   saml_properties = {
+///     user_access_url = "https://sso.example.com/"
+///     status          = "ENABLED"
+///   }
+///   self_service_permissions = {
+///     change_compute_type  = true
+///     increase_volume_size = true
+///     rebuild_workspace    = true
+///     restart_workspace    = true
+///     switch_running_mode  = true
+///   }
+///   workspace_access_properties = {
+///     device_type_android    = "ALLOW"
+///     device_type_chromeos   = "ALLOW"
+///     device_type_ios        = "ALLOW"
+///     device_type_linux      = "DENY"
+///     device_type_osx        = "ALLOW"
+///     device_type_web        = "DENY"
+///     device_type_windows    = "DENY"
+///     device_type_zeroclient = "DENY"
+///   }
+///   workspace_creation_properties = {
+///     custom_security_group_id            = exampleAwsSecurityGroup.id
+///     default_ou                          = "OU=AWS,DC=Workgroup,DC=Example,DC=com"
+///     enable_internet_access              = true
+///     enable_maintenance_mode             = true
+///     user_enabled_as_local_administrator = true
+///   }
+/// }
+/// resource "aws_directoryservice_directory" "example" {
+///   name     = "corp.example.com"
+///   password = "#S1ncerely"
+///   size     = "Small"
+///   vpc_settings = {
+///     vpc_id     = aws_ec2_vpc.example.id
+///     subnet_ids = [aws_ec2_subnet.example_a.id, aws_ec2_subnet.example_b.id]
+///   }
+/// }
+/// resource "aws_iam_role" "workspaces_default" {
+///   name               = "workspaces_DefaultRole"
+///   assume_role_policy = data.aws_iam_getpolicydocument.workspaces.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "workspaces_default_service_access" {
+///   role       = aws_iam_role.workspaces_default.name
+///   policy_arn = "arn:aws:iam::aws:policy/AmazonWorkSpacesServiceAccess"
+/// }
+/// resource "aws_iam_rolepolicyattachment" "workspaces_default_self_service_access" {
+///   role       = aws_iam_role.workspaces_default.name
+///   policy_arn = "arn:aws:iam::aws:policy/AmazonWorkSpacesSelfServiceAccess"
+/// }
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_subnet" "example_a" {
+///   vpc_id            = aws_ec2_vpc.example.id
+///   availability_zone = "us-east-1a"
+///   cidr_block        = "10.0.0.0/24"
+/// }
+/// resource "aws_ec2_subnet" "example_b" {
+///   vpc_id            = aws_ec2_vpc.example.id
+///   availability_zone = "us-east-1b"
+///   cidr_block        = "10.0.1.0/24"
+/// }
+/// resource "aws_ec2_subnet" "example_c" {
+///   vpc_id            = aws_ec2_vpc.example.id
+///   availability_zone = "us-east-1c"
+///   cidr_block        = "10.0.2.0/24"
+/// }
+/// resource "aws_ec2_subnet" "example_d" {
+///   vpc_id            = aws_ec2_vpc.example.id
+///   availability_zone = "us-east-1d"
+///   cidr_block        = "10.0.3.0/24"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -547,6 +651,8 @@ import 'directory_workspace_creation_properties.dart';
 /// import com.pulumi.aws.directoryservice.inputs.DirectoryVpcSettingsArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
@@ -557,8 +663,8 @@ import 'directory_workspace_creation_properties.dart';
 /// import com.pulumi.aws.workspaces.inputs.DirectoryWorkspaceAccessPropertiesArgs;
 /// import com.pulumi.aws.workspaces.inputs.DirectoryWorkspaceCreationPropertiesArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -984,6 +1090,47 @@ import 'directory_workspace_creation_properties.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspaces_directory" "example" {
+///   subnet_ids                      = [exampleC.id, exampleD.id]
+///   workspace_type                  = "POOLS"
+///   workspace_directory_name        = "Pool directory"
+///   workspace_directory_description = "WorkSpaces Pools directory"
+///   user_identity_type              = "CUSTOMER_MANAGED"
+///   active_directory_config = {
+///     domain_name                = "example.internal"
+///     service_account_secret_arn = exampleAwsSecretsmanagerSecret.arn
+///   }
+///   workspace_access_properties = {
+///     device_type_android    = "ALLOW"
+///     device_type_chromeos   = "ALLOW"
+///     device_type_ios        = "ALLOW"
+///     device_type_linux      = "DENY"
+///     device_type_osx        = "ALLOW"
+///     device_type_web        = "DENY"
+///     device_type_windows    = "DENY"
+///     device_type_zeroclient = "DENY"
+///   }
+///   workspace_creation_properties = {
+///     custom_security_group_id = exampleAwsSecurityGroup.id
+///     default_ou               = "OU=AWS,DC=Workgroup,DC=Example,DC=com"
+///     enable_internet_access   = true
+///   }
+///   saml_properties = {
+///     relay_state_parameter_name = "RelayState"
+///     user_access_url            = "https://sso.example.com/"
+///     status                     = "ENABLED"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -996,8 +1143,8 @@ import 'directory_workspace_creation_properties.dart';
 /// import com.pulumi.aws.workspaces.inputs.DirectoryWorkspaceAccessPropertiesArgs;
 /// import com.pulumi.aws.workspaces.inputs.DirectoryWorkspaceCreationPropertiesArgs;
 /// import com.pulumi.aws.workspaces.inputs.DirectorySamlPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1146,7 +1293,7 @@ import 'directory_workspace_creation_properties.dart';
 /// 		_, err = workspaces.NewDirectory(ctx, "example", &workspaces.DirectoryArgs{
 /// 			DirectoryId: pulumi.Any(exampleAwsDirectoryServiceDirectory.Id),
 /// 			IpGroupIds: pulumi.StringArray{
-/// 				exampleIpGroup.ID(),
+/// 				exampleIpGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1154,6 +1301,23 @@ import 'directory_workspace_creation_properties.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspaces_directory" "example" {
+///   directory_id = exampleAwsDirectoryServiceDirectory.id
+///   ip_group_ids = [aws_workspaces_ipgroup.example.id]
+/// }
+/// resource "aws_workspaces_ipgroup" "example" {
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -1166,8 +1330,8 @@ import 'directory_workspace_creation_properties.dart';
 /// import com.pulumi.aws.workspaces.IpGroupArgs;
 /// import com.pulumi.aws.workspaces.Directory;
 /// import com.pulumi.aws.workspaces.DirectoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1215,7 +1379,7 @@ import 'directory_workspace_creation_properties.dart';
 /// $ pulumi import aws:workspaces/directory:Directory main d-4444444444
 /// ```
 class Directory extends pulumi.CustomResource {
-  /// Configuration for Active Directory integration when `workspace_type` is set to `POOLS`. Defined below.
+  /// Configuration for Active Directory integration when `workspaceType` is set to `POOLS`. Defined below.
   late final pulumi.Output<DirectoryActiveDirectoryConfig?> activeDirectoryConfig;
   /// The directory alias.
   late final pulumi.Output<String> alias;
@@ -1241,27 +1405,27 @@ class Directory extends pulumi.CustomResource {
   late final pulumi.Output<String> registrationCode;
   /// Configuration of SAML authentication integration. Defined below.
   late final pulumi.Output<DirectorySamlProperties> samlProperties;
-  /// Permissions to enable or disable self-service capabilities when `workspace_type` is set to `PERSONAL`.. Defined below.
+  /// Permissions to enable or disable self-service capabilities when `workspaceType` is set to `PERSONAL`.. Defined below.
   late final pulumi.Output<DirectorySelfServicePermissions> selfServicePermissions;
   /// The identifiers of the subnets where the directory resides.
   late final pulumi.Output<List<String>> subnetIds;
-  /// A map of tags assigned to the WorkSpaces directory. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags assigned to the WorkSpaces directory. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Tenancy of the WorkSpaces directory. Valid values are `DEDICATED` or `SHARED`.
   late final pulumi.Output<String> tenancy;
   /// Specifies the user identity type for the WorkSpaces directory. Valid values are `CUSTOMER_MANAGED`, `AWS_DIRECTORY_SERVICE`, `AWS_IAM_IDENTITY_CENTER`.
   ///
-  /// &gt; **Note:** When `workspace_type` is set to `POOLS`, the `directory_id` is automatically generated and cannot be manually set.
+  /// &gt; **Note:** When `workspaceType` is set to `POOLS`, the `directoryId` is automatically generated and cannot be manually set.
   late final pulumi.Output<String> userIdentityType;
   /// Specifies which devices and operating systems users can use to access their WorkSpaces. Defined below.
   late final pulumi.Output<DirectoryWorkspaceAccessProperties> workspaceAccessProperties;
   /// Default properties that are used for creating WorkSpaces. Defined below.
   late final pulumi.Output<DirectoryWorkspaceCreationProperties> workspaceCreationProperties;
-  /// The description of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
+  /// The description of the WorkSpaces directory when `workspaceType` is set to `POOLS`.
   late final pulumi.Output<String?> workspaceDirectoryDescription;
-  /// The name of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
+  /// The name of the WorkSpaces directory when `workspaceType` is set to `POOLS`.
   late final pulumi.Output<String?> workspaceDirectoryName;
   /// The identifier of the security group that is assigned to new WorkSpaces.
   late final pulumi.Output<String> workspaceSecurityGroupId;

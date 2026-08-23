@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KxClusterTickerplantLogConfiguration {
+  /// Names of the volumes for tickerplant logs.
   final pulumi.Input<List<String>> tickerplantLogVolumes;
 
   /// Creates a new [KxClusterTickerplantLogConfiguration].
-  /// [tickerplantLogVolumes] Required.
+  /// [tickerplantLogVolumes] Names of the volumes for tickerplant logs.
   const KxClusterTickerplantLogConfiguration({
     required this.tickerplantLogVolumes,
   });
@@ -23,4 +24,3 @@ class KxClusterTickerplantLogConfiguration {
     );
   }
 }
-

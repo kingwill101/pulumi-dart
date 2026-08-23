@@ -61,6 +61,20 @@ import 'endpoint_access_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshiftserverless_endpointaccess" "example" {
+///   endpoint_name  = "example"
+///   workgroup_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'endpoint_access_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshiftserverless.EndpointAccess;
 /// import com.pulumi.aws.redshiftserverless.EndpointAccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -102,7 +116,7 @@ import 'endpoint_access_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Redshift Serverless Endpoint Access using the `endpoint_name`. For example:
+/// Using `pulumi import`, import Redshift Serverless Endpoint Access using the `endpointName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:redshiftserverless/endpointAccess:EndpointAccess example example

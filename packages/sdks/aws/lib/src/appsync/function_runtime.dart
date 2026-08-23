@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionRuntime {
-  /// The name of the runtime to use. Currently, the only allowed value is `APPSYNC_JS`.
+  /// Name of the runtime to use. Currently, the only allowed value is `APPSYNC_JS`.
   final pulumi.Input<String> name;
-  /// The version of the runtime to use. Currently, the only allowed version is `1.0.0`.
+  /// Version of the runtime to use. Currently, the only allowed version is `1.0.0`.
   final pulumi.Input<String> runtimeVersion;
 
   /// Creates a new [FunctionRuntime].
-  /// [name] The name of the runtime to use. Currently, the only allowed value is `APPSYNC_JS`.
-  /// [runtimeVersion] The version of the runtime to use. Currently, the only allowed version is `1.0.0`.
+  /// [name] Name of the runtime to use. Currently, the only allowed value is `APPSYNC_JS`.
+  /// [runtimeVersion] Version of the runtime to use. Currently, the only allowed version is `1.0.0`.
   const FunctionRuntime({
     required this.name,
     required this.runtimeVersion,
@@ -30,4 +30,3 @@ class FunctionRuntime {
     );
   }
 }
-

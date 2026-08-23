@@ -88,6 +88,23 @@ import 'event_sources_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_devopsguru_eventsourcesconfig" "example" {
+///   event_sources {
+///     amazon_code_guru_profilers {
+///       status = "ENABLED"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +114,9 @@ import 'event_sources_config_state.dart';
 /// import com.pulumi.aws.devopsguru.EventSourcesConfig;
 /// import com.pulumi.aws.devopsguru.EventSourcesConfigArgs;
 /// import com.pulumi.aws.devopsguru.inputs.EventSourcesConfigEventSourceArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.devopsguru.inputs.EventSourcesConfigEventSourceAmazonCodeGuruProfilerArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -134,13 +152,21 @@ import 'event_sources_config_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import DevOps Guru Event Sources Config using the region. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:devopsguru/eventSourcesConfig:EventSourcesConfig example us-east-1
 /// ```
 class EventSourcesConfig extends pulumi.CustomResource {
-  /// Configuration information about the integration of DevOps Guru as the Consumer via EventBridge with another AWS Service. See `event_sources` below.
+  /// Configuration information about the integration of DevOps Guru as the Consumer via EventBridge with another AWS Service. See `eventSources` below.
   late final pulumi.Output<List<Map<String, dynamic>>> eventSources;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

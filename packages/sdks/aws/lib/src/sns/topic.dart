@@ -54,6 +54,19 @@ import 'topic_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sns_topic" "user_updates" {
+///   name = "user-updates-topic"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -62,8 +75,8 @@ import 'topic_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sns.Topic;
 /// import com.pulumi.aws.sns.TopicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -92,7 +105,7 @@ import 'topic_state.dart';
 /// ```
 ///
 ///
-/// ## Example with Delivery Policy
+/// ### Example with Delivery Policy
 ///
 ///
 /// ```typescript
@@ -217,6 +230,20 @@ import 'topic_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sns_topic" "user_updates" {
+///   name            = "user-updates-topic"
+///   delivery_policy = "{\n  \\\"http\\\": {\n    \\\"defaultHealthyRetryPolicy\\\": {\n      \\\"minDelayTarget\\\": 20,\n      \\\"maxDelayTarget\\\": 20,\n      \\\"numRetries\\\": 3,\n      \\\"numMaxDelayRetries\\\": 0,\n      \\\"numNoDelayRetries\\\": 0,\n      \\\"numMinDelayRetries\\\": 0,\n      \\\"backoffFunction\\\": \\\"linear\\\"\n    },\n    \\\"disableSubscriptionOverrides\\\": false,\n    \\\"defaultThrottlePolicy\\\": {\n      \\\"maxReceivesPerSecond\\\": 1\n    }\n  }\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -225,8 +252,8 @@ import 'topic_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sns.Topic;
 /// import com.pulumi.aws.sns.TopicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -292,7 +319,7 @@ import 'topic_state.dart';
 /// ```
 ///
 ///
-/// ## Example with Server-side encryption (SSE)
+/// ### Example with Server-side encryption (SSE)
 ///
 ///
 /// ```typescript
@@ -349,6 +376,20 @@ import 'topic_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sns_topic" "user_updates" {
+///   name              = "user-updates-topic"
+///   kms_master_key_id = "alias/aws/sns"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -357,8 +398,8 @@ import 'topic_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sns.Topic;
 /// import com.pulumi.aws.sns.TopicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -389,7 +430,7 @@ import 'topic_state.dart';
 /// ```
 ///
 ///
-/// ## Example with First-In-First-Out (FIFO)
+/// ### Example with First-In-First-Out (FIFO)
 ///
 ///
 /// ```typescript
@@ -450,6 +491,21 @@ import 'topic_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sns_topic" "user_updates" {
+///   name                        = "user-updates-topic.fifo"
+///   fifo_topic                  = true
+///   content_based_deduplication = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -458,8 +514,8 @@ import 'topic_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sns.Topic;
 /// import com.pulumi.aws.sns.TopicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -492,7 +548,7 @@ import 'topic_state.dart';
 /// ```
 ///
 ///
-/// ## Message Delivery Status Arguments
+/// ### Message Delivery Status Arguments
 ///
 /// The `&lt;endpoint&gt;_success_feedback_role_arn` and `&lt;endpoint&gt;_failure_feedback_role_arn` arguments are used to give Amazon SNS write access to use CloudWatch Logs on your behalf. The `&lt;endpoint&gt;_success_feedback_sample_rate` argument is for specifying the sample rate percentage (0-100) of successfully delivered messages. After you configure the  `&lt;endpoint&gt;_failure_feedback_role_arn` argument, then all failed message deliveries generate CloudWatch Logs.
 ///
@@ -553,7 +609,7 @@ class Topic extends pulumi.CustomResource {
   late final pulumi.Output<String?> lambdaSuccessFeedbackRoleArn;
   /// Percentage of success to sample
   late final pulumi.Output<int?> lambdaSuccessFeedbackSampleRate;
-  /// The name of the topic. Topic names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256 characters long. For a FIFO (first-in-first-out) topic, the name must end with the `.fifo` suffix. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`
+  /// The name of the topic. Topic names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256 characters long. For a FIFO (first-in-first-out) topic, the name must end with the `.fifo` suffix. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`
   late final pulumi.Output<String> namePrefix;
@@ -571,9 +627,9 @@ class Topic extends pulumi.CustomResource {
   late final pulumi.Output<String?> sqsSuccessFeedbackRoleArn;
   /// Percentage of success to sample
   late final pulumi.Output<int?> sqsSuccessFeedbackSampleRate;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Tracing mode of an Amazon SNS topic. Valid values: `"PassThrough"`, `"Active"`.
   late final pulumi.Output<String> tracingConfig;

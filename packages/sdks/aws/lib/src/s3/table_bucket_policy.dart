@@ -97,6 +97,28 @@ import 'table_bucket_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///   }
+/// }
+///
+/// resource "aws_s3tables_tablebucketpolicy" "example" {
+///   resource_policy  = data.aws_iam_getpolicydocument.example.json
+///   table_bucket_arn = aws_s3tables_tablebucket.example.arn
+/// }
+/// resource "aws_s3tables_tablebucket" "example" {
+///   name = "example-bucket"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,12 +127,13 @@ import 'table_bucket_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
 /// import com.pulumi.aws.s3tables.TableBucket;
 /// import com.pulumi.aws.s3tables.TableBucketArgs;
 /// import com.pulumi.aws.s3tables.TableBucketPolicy;
 /// import com.pulumi.aws.s3tables.TableBucketPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -164,7 +187,14 @@ import 'table_bucket_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import S3 Tables Table Bucket Policy using the `table_bucket_arn`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `tableBucketArn` (String) ARN of the S3 Tables Table Bucket.
+///
+///
+/// Using `pulumi import`, import S3 Tables Table Bucket Policy using the `tableBucketArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3tables/tableBucketPolicy:TableBucketPolicy example 'arn:aws:s3tables:us-west-2:123456789012:bucket/example-bucket;example-namespace'

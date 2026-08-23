@@ -5,14 +5,14 @@ import 'route_spec_http_route_timeout_idle.dart';
 import 'route_spec_http_route_timeout_per_request.dart';
 
 class RouteSpecHttpRouteTimeout {
-  /// Idle timeout. An idle timeout bounds the amount of time that a connection may be idle.
+  /// Idle timeout. An idle timeout bounds the amount of time that a connection may be idle. See `spec.tcp_route.timeout.idle` Block for details.
   final pulumi.Input<RouteSpecHttpRouteTimeoutIdle>? idle;
-  /// Per request timeout.
+  /// Per request timeout. See `spec.http_route.timeout.per_request` Block for details.
   final pulumi.Input<RouteSpecHttpRouteTimeoutPerRequest>? perRequest;
 
   /// Creates a new [RouteSpecHttpRouteTimeout].
-  /// [idle] Idle timeout. An idle timeout bounds the amount of time that a connection may be idle.
-  /// [perRequest] Per request timeout.
+  /// [idle] Idle timeout. An idle timeout bounds the amount of time that a connection may be idle. See `spec.tcp_route.timeout.idle` Block for details.
+  /// [perRequest] Per request timeout. See `spec.http_route.timeout.per_request` Block for details.
   const RouteSpecHttpRouteTimeout({
     this.idle,
     this.perRequest,
@@ -32,4 +32,3 @@ class RouteSpecHttpRouteTimeout {
     );
   }
 }
-

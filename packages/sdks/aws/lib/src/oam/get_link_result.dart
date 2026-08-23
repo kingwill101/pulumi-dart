@@ -13,7 +13,7 @@ class GetLinkResult {
   final String label;
   /// Human-readable name used to identify this source account when you are viewing data from it in the monitoring account.
   final String labelTemplate;
-  /// Configuration for creating filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account. See `link_configuration` Block for details.
+  /// Configuration for creating filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account. See `linkConfiguration` Block for details.
   final List<GetLinkLinkConfiguration> linkConfigurations;
   /// ID string that AWS generated as part of the link ARN.
   final String linkId;
@@ -30,7 +30,7 @@ class GetLinkResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [label] Label that is assigned to this link.
   /// [labelTemplate] Human-readable name used to identify this source account when you are viewing data from it in the monitoring account.
-  /// [linkConfigurations] Configuration for creating filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account. See `link_configuration` Block for details.
+  /// [linkConfigurations] Configuration for creating filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account. See `linkConfiguration` Block for details.
   /// [linkId] ID string that AWS generated as part of the link ARN.
   /// [linkIdentifier] Required.
   /// [region] Required.
@@ -83,4 +83,3 @@ class GetLinkResult {
     );
   }
 }
-

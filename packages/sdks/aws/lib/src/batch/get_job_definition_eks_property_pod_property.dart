@@ -8,34 +8,35 @@ import 'get_job_definition_eks_property_pod_property_metadata.dart';
 import 'get_job_definition_eks_property_pod_property_volume.dart';
 
 class GetJobDefinitionEksPropertyPodProperty {
-  /// The properties of the container that's used on the Amazon EKS pod. See containers below.
+  /// Properties of the container that's used on the Amazon EKS pod. See `containers` below.
   final pulumi.Input<List<GetJobDefinitionEksPropertyPodPropertyContainer>> containers;
-  /// The DNS policy for the pod. The default value is ClusterFirst. If the hostNetwork parameter is not specified, the default is ClusterFirstWithHostNet. ClusterFirst indicates that any DNS query that does not match the configured cluster domain suffix is forwarded to the upstream nameserver inherited from the node.
+  /// DNS policy for the pod. The default value is ClusterFirst. If the hostNetwork parameter is not specified, the default is ClusterFirstWithHostNet. ClusterFirst indicates that any DNS query that does not match the configured cluster domain suffix is forwarded to the upstream nameserver inherited from the node.
   final pulumi.Input<String> dnsPolicy;
-  /// Indicates if the pod uses the hosts' network IP address. The default value is true. Setting this to false enables the Kubernetes pod networking model. Most AWS Batch workloads are egress-only and don't require the overhead of IP allocation for each pod for incoming connections.
+  /// Whether the pod uses the hosts' network IP address. The default value is true. Setting this to false enables the Kubernetes pod networking model. Most AWS Batch workloads are egress-only and don't require the overhead of IP allocation for each pod for incoming connections.
   final pulumi.Input<bool> hostNetwork;
+  /// List of Kubernetes secret resources. See `imagePullSecrets` below.
   final pulumi.Input<List<GetJobDefinitionEksPropertyPodPropertyImagePullSecret>> imagePullSecrets;
-  /// Containers which run before application containers, always runs to completion, and must complete successfully before the next container starts. These containers are registered with the Amazon EKS Connector agent and persists the registration information in the Kubernetes backend data store. See containers below.
+  /// Containers which run before application containers, always runs to completion, and must complete successfully before the next container starts. These containers are registered with the Amazon EKS Connector agent and persists the registration information in the Kubernetes backend data store. See `initContainers` below.
   final pulumi.Input<List<GetJobDefinitionEksPropertyPodPropertyInitContainer>> initContainers;
-  /// Metadata about the Kubernetes pod.
+  /// Metadata about the Kubernetes pod. See `metadata` below.
   final pulumi.Input<List<GetJobDefinitionEksPropertyPodPropertyMetadata>> metadatas;
-  /// The name of the service account that's used to run the pod.
+  /// Name of the service account that's used to run the pod.
   final pulumi.Input<String> serviceAccountName;
-  /// (Optional) Indicates if the processes in a container are shared, or visible, to other containers in the same pod.
+  /// Whether the processes in a container are shared, or visible, to other containers in the same pod.
   final pulumi.Input<bool> shareProcessNamespace;
-  /// A list of data volumes used in a job.
+  /// List of data volumes used in a job. See `volumes` below.
   final pulumi.Input<List<GetJobDefinitionEksPropertyPodPropertyVolume>> volumes;
 
   /// Creates a new [GetJobDefinitionEksPropertyPodProperty].
-  /// [containers] The properties of the container that's used on the Amazon EKS pod. See containers below.
-  /// [dnsPolicy] The DNS policy for the pod. The default value is ClusterFirst. If the hostNetwork parameter is not specified, the default is ClusterFirstWithHostNet. ClusterFirst indicates that any DNS query that does not match the configured cluster domain suffix is forwarded to the upstream nameserver inherited from the node.
-  /// [hostNetwork] Indicates if the pod uses the hosts' network IP address. The default value is true. Setting this to false enables the Kubernetes pod networking model. Most AWS Batch workloads are egress-only and don't require the overhead of IP allocation for each pod for incoming connections.
-  /// [imagePullSecrets] Required.
-  /// [initContainers] Containers which run before application containers, always runs to completion, and must complete successfully before the next container starts. These containers are registered with the Amazon EKS Connector agent and persists the registration information in the Kubernetes backend data store. See containers below.
-  /// [metadatas] Metadata about the Kubernetes pod.
-  /// [serviceAccountName] The name of the service account that's used to run the pod.
-  /// [shareProcessNamespace] (Optional) Indicates if the processes in a container are shared, or visible, to other containers in the same pod.
-  /// [volumes] A list of data volumes used in a job.
+  /// [containers] Properties of the container that's used on the Amazon EKS pod. See `containers` below.
+  /// [dnsPolicy] DNS policy for the pod. The default value is ClusterFirst. If the hostNetwork parameter is not specified, the default is ClusterFirstWithHostNet. ClusterFirst indicates that any DNS query that does not match the configured cluster domain suffix is forwarded to the upstream nameserver inherited from the node.
+  /// [hostNetwork] Whether the pod uses the hosts' network IP address. The default value is true. Setting this to false enables the Kubernetes pod networking model. Most AWS Batch workloads are egress-only and don't require the overhead of IP allocation for each pod for incoming connections.
+  /// [imagePullSecrets] List of Kubernetes secret resources. See `imagePullSecrets` below.
+  /// [initContainers] Containers which run before application containers, always runs to completion, and must complete successfully before the next container starts. These containers are registered with the Amazon EKS Connector agent and persists the registration information in the Kubernetes backend data store. See `initContainers` below.
+  /// [metadatas] Metadata about the Kubernetes pod. See `metadata` below.
+  /// [serviceAccountName] Name of the service account that's used to run the pod.
+  /// [shareProcessNamespace] Whether the processes in a container are shared, or visible, to other containers in the same pod.
+  /// [volumes] List of data volumes used in a job. See `volumes` below.
   const GetJobDefinitionEksPropertyPodProperty({
     required this.containers,
     required this.dnsPolicy,
@@ -76,4 +77,3 @@ class GetJobDefinitionEksPropertyPodProperty {
     );
   }
 }
-

@@ -175,7 +175,7 @@ import 'domain_service_access_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cloudsearch.NewDomainServiceAccessPolicy(ctx, "example", &cloudsearch.DomainServiceAccessPolicyArgs{
-/// 			DomainName:   exampleDomain.ID(),
+/// 			DomainName:   exampleDomain.ID().ToIDOutput().ToStringOutput(),
 /// 			AccessPolicy: pulumi.String(example.Json),
 /// 		})
 /// 		if err != nil {
@@ -183,6 +183,40 @@ import 'domain_service_access_policy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     sid    = "search_only"
+///     effect = "Allow"
+///     principals {
+///       type        = "*"
+///       identifiers = ["*"]
+///     }
+///     actions = ["cloudsearch:search", "cloudsearch:document"]
+///     conditions {
+///       test     = "IpAddress"
+///       variable = "aws:SourceIp"
+///       values   = ["192.0.2.0/32"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudsearch_domain" "example" {
+///   name = "example-domain"
+/// }
+/// resource "aws_cloudsearch_domainserviceaccesspolicy" "example" {
+///   domain_name   = aws_cloudsearch_domain.example.id
+///   access_policy = data.aws_iam_getpolicydocument.example.json
 /// }
 /// ```
 /// ```java
@@ -195,10 +229,13 @@ import 'domain_service_access_policy_state.dart';
 /// import com.pulumi.aws.cloudsearch.DomainArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.cloudsearch.DomainServiceAccessPolicy;
 /// import com.pulumi.aws.cloudsearch.DomainServiceAccessPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

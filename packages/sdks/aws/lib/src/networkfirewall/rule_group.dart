@@ -135,6 +135,34 @@ import 'rule_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_rulegroup" "example" {
+///   capacity = 100
+///   name     = "example"
+///   type     = "STATEFUL"
+///   rule_group = {
+///     rules_source = {
+///       rules_source_list = {
+///         generated_rules_type = "DENYLIST"
+///         target_types         = ["HTTP_HOST"]
+///         targets              = ["test.example.com"]
+///       }
+///     }
+///   }
+///   tags = {
+///     "Tag1" = "Value1"
+///     "Tag2" = "Value2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -146,8 +174,8 @@ import 'rule_group_state.dart';
 /// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceRulesSourceListArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -272,7 +300,7 @@ import 'rule_group_state.dart';
 ///                     "keyword": "sid",
 ///                     "settings": ["1"],
 ///                 }],
-///             } for entry in [{"key": k, "value": v} for k, v in ips]],
+///             } for entry in [{"key": k, "value": v} for k, v in sorted(ips.items())]],
 ///         },
 ///     },
 ///     tags={
@@ -339,6 +367,47 @@ import 'rule_group_state.dart';
 ///     });
 ///
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_rulegroup" "example" {
+///   capacity    = 50
+///   description = "Permits http traffic from source"
+///   name        = "example"
+///   type        = "STATEFUL"
+///   rule_group = {
+///     rules_source = {
+///       stateful_rules = [for entry in entries(local.ips) : {
+///         "action" = "PASS"
+///         "header" = {
+///           "destination"     = "ANY"
+///           "destinationPort" = "ANY"
+///           "protocol"        = "HTTP"
+///           "direction"       = "ANY"
+///           "sourcePort"      = "ANY"
+///           "source"          = entry.value
+///         }
+///         "ruleOptions" = [{
+///           "keyword"  = "sid"
+///           "settings" = ["1"]
+///         }]
+///       } ]
+///     }
+///   }
+///   tags = {
+///     "Name" = "permit HTTP from source"
+///   }
+/// }
+/// locals {
+///   ips = ["1.1.1.1/32", "1.0.0.1/32"]
+/// }
 /// ```
 ///
 ///
@@ -516,6 +585,44 @@ import 'rule_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_rulegroup" "example" {
+///   capacity = 100
+///   name     = "example"
+///   type     = "STATEFUL"
+///   rule_group = {
+///     rules_source = {
+///       stateful_rules = [{
+///         "action" = "DROP"
+///         "header" = {
+///           "destination"     = "124.1.1.24/32"
+///           "destinationPort" = 53
+///           "direction"       = "ANY"
+///           "protocol"        = "TCP"
+///           "source"          = "1.2.3.4/32"
+///           "sourcePort"      = 53
+///         }
+///         "ruleOptions" = [{
+///           "keyword"  = "sid"
+///           "settings" = ["1"]
+///         }]
+///       }]
+///     }
+///   }
+///   tags = {
+///     "Tag1" = "Value1"
+///     "Tag2" = "Value2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -526,8 +633,11 @@ import 'rule_group_state.dart';
 /// import com.pulumi.aws.networkfirewall.RuleGroupArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceStatefulRuleArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceStatefulRuleHeaderArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceStatefulRuleRuleOptionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -697,6 +807,29 @@ import 'rule_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_rulegroup" "example" {
+///   capacity = 100
+///   name     = "example"
+///   type     = "STATEFUL"
+///   rules    = file("example.rules")
+///   tags = {
+///     "Tag1" = "Value1"
+///     "Tag2" = "Value2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -707,8 +840,8 @@ import 'rule_group_state.dart';
 /// import com.pulumi.aws.networkfirewall.RuleGroupArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1007,6 +1140,52 @@ import 'rule_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_rulegroup" "example" {
+///   capacity = 100
+///   name     = "example"
+///   type     = "STATEFUL"
+///   rule_group = {
+///     rule_variables = {
+///       ip_sets = [{
+///         "key" = "WEBSERVERS_HOSTS"
+///         "ipSet" = {
+///           "definitions" = ["10.0.0.0/16", "10.0.1.0/24", "192.168.0.0/16"]
+///         }
+///         }, {
+///         "key" = "EXTERNAL_HOST"
+///         "ipSet" = {
+///           "definitions" = ["1.2.3.4/32"]
+///         }
+///       }]
+///       port_sets = [{
+///         "key" = "HTTP_PORTS"
+///         "portSet" = {
+///           "definitions" = ["443", "80"]
+///         }
+///       }]
+///     }
+///     rules_source = {
+///       rules_string = file("suricata_rules_file")
+///     }
+///   }
+///   tags = {
+///     "Tag1" = "Value1"
+///     "Tag2" = "Value2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1017,11 +1196,15 @@ import 'rule_group_state.dart';
 /// import com.pulumi.aws.networkfirewall.RuleGroupArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRuleVariablesArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRuleVariablesIpSetArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRuleVariablesIpSetIpSetArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRuleVariablesPortSetArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRuleVariablesPortSetPortSetArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1464,6 +1647,69 @@ import 'rule_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_rulegroup" "example" {
+///   description = "Stateless Rate Limiting Rule"
+///   capacity    = 100
+///   name        = "example"
+///   type        = "STATELESS"
+///   rule_group = {
+///     rules_source = {
+///       stateless_rules_and_custom_actions = {
+///         custom_actions = [{
+///           "actionDefinition" = {
+///             "publishMetricAction" = {
+///               "dimensions" = [{
+///                 "value" = "2"
+///               }]
+///             }
+///           }
+///           "actionName" = "ExampleMetricsAction"
+///         }]
+///         stateless_rules = [{
+///           "priority" = 1
+///           "ruleDefinition" = {
+///             "actions" = ["aws:pass", "ExampleMetricsAction"]
+///             "matchAttributes" = {
+///               "sources" = [{
+///                 "addressDefinition" = "1.2.3.4/32"
+///               }]
+///               "sourcePorts" = [{
+///                 "fromPort" = 443
+///                 "toPort"   = 443
+///               }]
+///               "destinations" = [{
+///                 "addressDefinition" = "124.1.1.5/32"
+///               }]
+///               "destinationPorts" = [{
+///                 "fromPort" = 443
+///                 "toPort"   = 443
+///               }]
+///               "protocols" = [6]
+///               "tcpFlags" = [{
+///                 "flags" = ["SYN"]
+///                 "masks" = ["SYN", "ACK"]
+///               }]
+///             }
+///           }
+///         }]
+///       }
+///     }
+///   }
+///   tags = {
+///     "Tag1" = "Value1"
+///     "Tag2" = "Value2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1475,8 +1721,20 @@ import 'rule_group_state.dart';
 /// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionDimensionArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourceArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePortArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPortArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlagArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1770,6 +2028,42 @@ import 'rule_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_rulegroup" "example" {
+///   capacity = 100
+///   name     = "example"
+///   type     = "STATEFUL"
+///   rule_group = {
+///     rules_source = {
+///       rules_source_list = {
+///         generated_rules_type = "DENYLIST"
+///         target_types         = ["HTTP_HOST"]
+///         targets              = ["test.example.com"]
+///       }
+///     }
+///     reference_sets = {
+///       ip_set_references = [{
+///         "key" = "example"
+///         "ipSetReferences" = [{
+///           "referenceArn" = this.arn
+///         }]
+///       }]
+///     }
+///   }
+///   tags = {
+///     "Tag1" = "Value1"
+///     "Tag2" = "Value2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1782,8 +2076,10 @@ import 'rule_group_state.dart';
 /// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceRulesSourceListArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupReferenceSetsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupReferenceSetsIpSetReferenceArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReferenceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2069,6 +2365,48 @@ import 'rule_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getobject" "suricataRules" {
+///   bucket = suricataRulesAwsS3Bucket.id
+///   key    = "rules/custom.rules"
+/// }
+///
+/// resource "aws_networkfirewall_rulegroup" "s3_rules_example" {
+///   capacity = 1000
+///   name     = "my-terraform-s3-rules"
+///   type     = "STATEFUL"
+///   rule_group = {
+///     rule_variables = {
+///       ip_sets = [{
+///         "key" = "HOME_NET"
+///         "ipSet" = {
+///           "definitions" = ["10.0.0.0/16", "192.168.0.0/16", "172.16.0.0/12"]
+///         }
+///       }]
+///       port_sets = [{
+///         "key" = "HTTP_PORTS"
+///         "portSet" = {
+///           "definitions" = ["443", "80"]
+///         }
+///       }]
+///     }
+///     rules_source = {
+///       rules_string = data.aws_s3_getobject.suricataRules.body
+///     }
+///   }
+///   tags = {
+///     "ManagedBy" = "terraform"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2081,9 +2419,13 @@ import 'rule_group_state.dart';
 /// import com.pulumi.aws.networkfirewall.RuleGroupArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRuleVariablesArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRuleVariablesIpSetArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRuleVariablesIpSetIpSetArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRuleVariablesPortSetArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRuleVariablesPortSetPortSetArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.RuleGroupRuleGroupRulesSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2194,11 +2536,11 @@ class RuleGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// A configuration block that defines the rule group rules. Required unless `rules` is specified. See Rule Group below for details.
   late final pulumi.Output<RuleGroupRuleGroup> ruleGroup;
-  /// The stateful rule group rules specifications in Suricata file format, with one rule per line. Use this to import your existing Suricata compatible rule groups. Required unless `rule_group` is specified.
+  /// The stateful rule group rules specifications in Suricata file format, with one rule per line. Use this to import your existing Suricata compatible rule groups. Required unless `ruleGroup` is specified.
   late final pulumi.Output<String?> rules;
-  /// A map of key:value pairs to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of key:value pairs to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Whether the rule group is stateless (containing stateless rules) or stateful (containing stateful rules). Valid values include: `STATEFUL` or `STATELESS`.
   late final pulumi.Output<String> type;

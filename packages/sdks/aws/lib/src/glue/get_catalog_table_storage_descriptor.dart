@@ -26,13 +26,13 @@ class GetCatalogTableStorageDescriptor {
   final pulumi.Input<String> outputFormat;
   /// Map of initialization parameters for the SerDe, in key-value form.
   final pulumi.Input<Map<String, String>> parameters;
-  /// Object that references a schema stored in the AWS Glue Schema Registry. See `schema_reference` below.
+  /// Object that references a schema stored in the AWS Glue Schema Registry. See `schemaReference` below.
   final pulumi.Input<List<GetCatalogTableStorageDescriptorSchemaReference>> schemaReferences;
-  /// Configuration block for serialization and deserialization ("SerDe") information. See `ser_de_info` below.
+  /// Configuration block for serialization and deserialization ("SerDe") information. See `serDeInfo` below.
   final pulumi.Input<List<GetCatalogTableStorageDescriptorSerDeInfo>> serDeInfos;
-  /// Configuration block with information about values that appear very frequently in a column (skewed values). See `skewed_info` below.
+  /// Configuration block with information about values that appear very frequently in a column (skewed values). See `skewedInfo` below.
   final pulumi.Input<List<GetCatalogTableStorageDescriptorSkewedInfo>> skewedInfos;
-  /// Configuration block for the sort order of each bucket in the table. See `sort_columns` below.
+  /// Configuration block for the sort order of each bucket in the table. See `sortColumns` below.
   final pulumi.Input<List<GetCatalogTableStorageDescriptorSortColumn>> sortColumns;
   /// Whether the table data is stored in subdirectories.
   final pulumi.Input<bool> storedAsSubDirectories;
@@ -47,10 +47,10 @@ class GetCatalogTableStorageDescriptor {
   /// [numberOfBuckets] Is if the table contains any dimension columns.
   /// [outputFormat] Output format: SequenceFileOutputFormat (binary), or IgnoreKeyTextOutputFormat, or a custom format.
   /// [parameters] Map of initialization parameters for the SerDe, in key-value form.
-  /// [schemaReferences] Object that references a schema stored in the AWS Glue Schema Registry. See `schema_reference` below.
-  /// [serDeInfos] Configuration block for serialization and deserialization ("SerDe") information. See `ser_de_info` below.
-  /// [skewedInfos] Configuration block with information about values that appear very frequently in a column (skewed values). See `skewed_info` below.
-  /// [sortColumns] Configuration block for the sort order of each bucket in the table. See `sort_columns` below.
+  /// [schemaReferences] Object that references a schema stored in the AWS Glue Schema Registry. See `schemaReference` below.
+  /// [serDeInfos] Configuration block for serialization and deserialization ("SerDe") information. See `serDeInfo` below.
+  /// [skewedInfos] Configuration block with information about values that appear very frequently in a column (skewed values). See `skewedInfo` below.
+  /// [sortColumns] Configuration block for the sort order of each bucket in the table. See `sortColumns` below.
   /// [storedAsSubDirectories] Whether the table data is stored in subdirectories.
   const GetCatalogTableStorageDescriptor({
     required this.additionalLocations,
@@ -107,4 +107,3 @@ class GetCatalogTableStorageDescriptor {
     );
   }
 }
-

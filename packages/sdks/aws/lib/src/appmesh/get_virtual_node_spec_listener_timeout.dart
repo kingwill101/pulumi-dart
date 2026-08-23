@@ -7,16 +7,20 @@ import 'get_virtual_node_spec_listener_timeout_http2.dart';
 import 'get_virtual_node_spec_listener_timeout_tcp.dart';
 
 class GetVirtualNodeSpecListenerTimeout {
+  /// Timeouts for gRPC listeners. See `spec.listener.timeout.grpc` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecListenerTimeoutGrpc>> grpcs;
+  /// Timeouts for HTTP2 listeners. See `spec.listener.timeout.http2` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecListenerTimeoutHttp2>> http2s;
+  /// Timeouts for HTTP listeners. See `spec.listener.timeout.http` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecListenerTimeoutHttp>> https;
+  /// Timeouts for TCP listeners. See `spec.listener.timeout.tcp` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecListenerTimeoutTcp>> tcps;
 
   /// Creates a new [GetVirtualNodeSpecListenerTimeout].
-  /// [grpcs] Required.
-  /// [http2s] Required.
-  /// [https] Required.
-  /// [tcps] Required.
+  /// [grpcs] Timeouts for gRPC listeners. See `spec.listener.timeout.grpc` Block for details.
+  /// [http2s] Timeouts for HTTP2 listeners. See `spec.listener.timeout.http2` Block for details.
+  /// [https] Timeouts for HTTP listeners. See `spec.listener.timeout.http` Block for details.
+  /// [tcps] Timeouts for TCP listeners. See `spec.listener.timeout.tcp` Block for details.
   const GetVirtualNodeSpecListenerTimeout({
     required this.grpcs,
     required this.http2s,
@@ -42,4 +46,3 @@ class GetVirtualNodeSpecListenerTimeout {
     );
   }
 }
-

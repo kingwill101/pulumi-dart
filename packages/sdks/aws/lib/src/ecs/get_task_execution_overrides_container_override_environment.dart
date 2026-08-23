@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTaskExecutionOverridesContainerOverrideEnvironment {
-  /// The name of the key-value pair. For environment variables, this is the name of the environment variable.
+  /// Name of the key-value pair. For environment variables, this is the name of the environment variable.
   final pulumi.Input<String> key;
-  /// The value of the key-value pair. For environment variables, this is the value of the environment variable.
+  /// Value of the key-value pair. For environment variables, this is the value of the environment variable.
   final pulumi.Input<String> value;
 
   /// Creates a new [GetTaskExecutionOverridesContainerOverrideEnvironment].
-  /// [key] The name of the key-value pair. For environment variables, this is the name of the environment variable.
-  /// [value] The value of the key-value pair. For environment variables, this is the value of the environment variable.
+  /// [key] Name of the key-value pair. For environment variables, this is the name of the environment variable.
+  /// [value] Value of the key-value pair. For environment variables, this is the value of the environment variable.
   const GetTaskExecutionOverridesContainerOverrideEnvironment({
     required this.key,
     required this.value,
@@ -30,4 +30,3 @@ class GetTaskExecutionOverridesContainerOverrideEnvironment {
     );
   }
 }
-

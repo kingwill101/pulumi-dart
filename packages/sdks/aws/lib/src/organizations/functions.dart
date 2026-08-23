@@ -84,6 +84,19 @@ import 'get_resource_tags_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_organizations_getaccount" "example" {
+///   account_id = "AWS ACCOUNT ID"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +105,8 @@ import 'get_resource_tags_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.organizations.OrganizationsFunctions;
 /// import com.pulumi.aws.organizations.inputs.GetAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -189,6 +202,19 @@ Future<GetAccountResult> getAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_organizations_getdelegatedadministrators" "example" {
+///   service_principal = "SERVICE PRINCIPAL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -197,8 +223,8 @@ Future<GetAccountResult> getAccount(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.organizations.OrganizationsFunctions;
 /// import com.pulumi.aws.organizations.inputs.GetDelegatedAdministratorsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -294,6 +320,19 @@ Future<GetDelegatedAdministratorsResult> getDelegatedAdministrators(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_organizations_getdelegatedservices" "example" {
+///   account_id = "AWS ACCOUNT ID"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -302,8 +341,8 @@ Future<GetDelegatedAdministratorsResult> getDelegatedAdministrators(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.organizations.OrganizationsFunctions;
 /// import com.pulumi.aws.organizations.inputs.GetDelegatedServicesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -399,6 +438,19 @@ Future<GetDelegatedServicesResult> getDelegatedServices(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_organizations_getentitypath" "example" {
+///   entity_id = "ou-ghi0-awsccccc"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -407,8 +459,8 @@ Future<GetDelegatedServicesResult> getDelegatedServices(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.organizations.OrganizationsFunctions;
 /// import com.pulumi.aws.organizations.inputs.GetEntityPathArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -506,6 +558,22 @@ Future<GetEntityPathResult> getEntityPath(
 /// })
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_organizations_getorganization" "example" {
+/// }
+///
+/// output "accountIds" {
+///   value = data.aws_organizations_getorganization.example.accounts[*].id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -514,8 +582,8 @@ Future<GetEntityPathResult> getEntityPath(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.organizations.OrganizationsFunctions;
 /// import com.pulumi.aws.organizations.inputs.GetOrganizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -545,7 +613,7 @@ Future<GetEntityPathResult> getEntityPath(
 ///
 /// const example = aws.organizations.getOrganization({});
 /// const snsTopic = new aws.sns.Topic("sns_topic", {name: "my-sns-topic"});
-/// const snsTopicPolicy = pulumi.all([example, snsTopic.arn]).apply(([example, arn]) => aws.iam.getPolicyDocumentOutput({
+/// const snsTopicPolicy = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
 ///         effect: "Allow",
 ///         actions: [
@@ -555,18 +623,18 @@ Future<GetEntityPathResult> getEntityPath(
 ///         conditions: [{
 ///             test: "StringEquals",
 ///             variable: "aws:PrincipalOrgID",
-///             values: [example.id],
+///             values: [example.then(example => example.id)],
 ///         }],
 ///         principals: [{
 ///             type: "AWS",
 ///             identifiers: ["*"],
 ///         }],
-///         resources: [arn],
+///         resources: [snsTopic.arn],
 ///     }],
-/// }));
+/// });
 /// const snsTopicPolicyTopicPolicy = new aws.sns.TopicPolicy("sns_topic_policy", {
 ///     arn: snsTopic.arn,
-///     policy: snsTopicPolicy.apply(snsTopicPolicy => snsTopicPolicy.json),
+///     policy: snsTopicPolicy.json,
 /// });
 /// ```
 /// ```python
@@ -575,7 +643,7 @@ Future<GetEntityPathResult> getEntityPath(
 ///
 /// example = aws.organizations.get_organization()
 /// sns_topic = aws.sns.Topic("sns_topic", name="my-sns-topic")
-/// sns_topic_policy = sns_topic.arn.apply(lambda arn: aws.iam.get_policy_document(statements=[{
+/// sns_topic_policy = aws.iam.get_policy_document_output(statements=[{
 ///     "effect": "Allow",
 ///     "actions": [
 ///         "SNS:Subscribe",
@@ -590,8 +658,8 @@ Future<GetEntityPathResult> getEntityPath(
 ///         "type": "AWS",
 ///         "identifiers": ["*"],
 ///     }],
-///     "resources": [arn],
-/// }]))
+///     "resources": [sns_topic.arn],
+/// }])
 /// sns_topic_policy_topic_policy = aws.sns.TopicPolicy("sns_topic_policy",
 ///     arn=sns_topic.arn,
 ///     policy=sns_topic_policy.json)
@@ -615,7 +683,7 @@ Future<GetEntityPathResult> getEntityPath(
 ///     {
 ///         Statements = new[]
 ///         {
-///             new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
 ///                 Effect = "Allow",
 ///                 Actions = new[]
@@ -625,7 +693,7 @@ Future<GetEntityPathResult> getEntityPath(
 ///                 },
 ///                 Conditions = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionArgs
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
 ///                     {
 ///                         Test = "StringEquals",
 ///                         Variable = "aws:PrincipalOrgID",
@@ -637,7 +705,7 @@ Future<GetEntityPathResult> getEntityPath(
 ///                 },
 ///                 Principals = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
 ///                     {
 ///                         Type = "AWS",
 ///                         Identifiers = new[]
@@ -671,63 +739,95 @@ Future<GetEntityPathResult> getEntityPath(
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/sns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// example, err := organizations.LookupOrganization(ctx, &organizations.LookupOrganizationArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := organizations.LookupOrganization(ctx, &organizations.LookupOrganizationArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		snsTopic, err := sns.NewTopic(ctx, "sns_topic", &sns.TopicArgs{
+/// 			Name: pulumi.String("my-sns-topic"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		snsTopicPolicy := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
+/// 			Statements: iam.GetPolicyDocumentStatementArray{
+/// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("SNS:Subscribe"),
+/// 						pulumi.String("SNS:Publish"),
+/// 					},
+/// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
+/// 						&iam.GetPolicyDocumentStatementConditionArgs{
+/// 							Test:     pulumi.String("StringEquals"),
+/// 							Variable: pulumi.String("aws:PrincipalOrgID"),
+/// 							Values: pulumi.StringArray{
+/// 								pulumi.String(example.Id),
+/// 							},
+/// 						},
+/// 					},
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("AWS"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("*"),
+/// 							},
+/// 						},
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						snsTopic.Arn,
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		_, err = sns.NewTopicPolicy(ctx, "sns_topic_policy", &sns.TopicPolicyArgs{
+/// 			Arn:    snsTopic.Arn,
+/// 			Policy: snsTopicPolicy.Json(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// snsTopic, err := sns.NewTopic(ctx, "sns_topic", &sns.TopicArgs{
-/// Name: pulumi.String("my-sns-topic"),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// snsTopicPolicy := snsTopic.Arn.ApplyT(func(arn string) (iam.GetPolicyDocumentResult, error) {
-/// return iam.GetPolicyDocumentResult(interface{}(iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement([]iam.GetPolicyDocumentStatement{
-/// {
-/// Effect: pulumi.StringRef(pulumi.String(pulumi.StringRef("Allow"))),
-/// Actions: []string{
-/// "SNS:Subscribe",
-/// "SNS:Publish",
-/// },
-/// Conditions: []iam.GetPolicyDocumentStatementCondition{
-/// {
-/// Test: "StringEquals",
-/// Variable: "aws:PrincipalOrgID",
-/// Values: interface{}{
-/// example.Id,
-/// },
-/// },
-/// },
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "AWS",
-/// Identifiers: []string{
-/// "*",
-/// },
-/// },
-/// },
-/// Resources: []string{
-/// arn,
-/// },
-/// },
-/// }),
-/// }, nil))), nil
-/// }).(iam.GetPolicyDocumentResultOutput)
-/// _, err = sns.NewTopicPolicy(ctx, "sns_topic_policy", &sns.TopicPolicyArgs{
-/// Arn: snsTopic.Arn,
-/// Policy: pulumi.String(snsTopicPolicy.ApplyT(func(snsTopicPolicy iam.GetPolicyDocumentResult) (*string, error) {
-/// return &snsTopicPolicy.Json, nil
-/// }).(pulumi.StringPtrOutput)),
-/// })
-/// if err != nil {
-/// return err
+///
+/// data "aws_organizations_getorganization" "example" {
 /// }
-/// return nil
-/// })
+/// data "aws_iam_getpolicydocument" "snsTopicPolicy" {
+///   statements {
+///     effect  = "Allow"
+///     actions = ["SNS:Subscribe", "SNS:Publish"]
+///     conditions {
+///       test     = "StringEquals"
+///       variable = "aws:PrincipalOrgID"
+///       values   = [data.aws_organizations_getorganization.example.id]
+///     }
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["*"]
+///     }
+///     resources = [aws_sns_topic.sns_topic.arn]
+///   }
+/// }
+///
+/// resource "aws_sns_topic" "sns_topic" {
+///   name = "my-sns-topic"
+/// }
+/// resource "aws_sns_topicpolicy" "sns_topic_policy" {
+///   arn    = aws_sns_topic.sns_topic.arn
+///   policy = data.aws_iam_getpolicydocument.snsTopicPolicy.json
 /// }
 /// ```
 /// ```java
@@ -742,10 +842,13 @@ Future<GetEntityPathResult> getEntityPath(
 /// import com.pulumi.aws.sns.TopicArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.sns.TopicPolicy;
 /// import com.pulumi.aws.sns.TopicPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -764,7 +867,7 @@ Future<GetEntityPathResult> getEntityPath(
 ///             .name("my-sns-topic")
 ///             .build());
 ///
-///         final var snsTopicPolicy = snsTopic.arn().applyValue(_arn -> IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+///         final var snsTopicPolicy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
 ///                 .effect("Allow")
 ///                 .actions(
@@ -779,13 +882,13 @@ Future<GetEntityPathResult> getEntityPath(
 ///                     .type("AWS")
 ///                     .identifiers("*")
 ///                     .build())
-///                 .resources(_arn)
+///                 .resources(snsTopic.arn())
 ///                 .build())
-///             .build()));
+///             .build());
 ///
 ///         var snsTopicPolicyTopicPolicy = new TopicPolicy("snsTopicPolicyTopicPolicy", TopicPolicyArgs.builder()
 ///             .arn(snsTopic.arn())
-///             .policy(snsTopicPolicy.json())
+///             .policy(snsTopicPolicy.applyValue(_snsTopicPolicy -> _snsTopicPolicy.json()))
 ///             .build());
 ///
 ///     }
@@ -913,6 +1016,22 @@ Future<GetOrganizationResult> getOrganization(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_organizations_getorganization" "org" {
+/// }
+/// data "aws_organizations_getorganizationalunit" "ou" {
+///   parent_id = data.aws_organizations_getorganization.org.roots[0].id
+///   name      = "dev"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -922,8 +1041,8 @@ Future<GetOrganizationResult> getOrganization(
 /// import com.pulumi.aws.organizations.OrganizationsFunctions;
 /// import com.pulumi.aws.organizations.inputs.GetOrganizationArgs;
 /// import com.pulumi.aws.organizations.inputs.GetOrganizationalUnitArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1036,6 +1155,21 @@ Future<GetOrganizationalUnitResult> getOrganizationalUnit(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_organizations_getorganization" "org" {
+/// }
+/// data "aws_organizations_getorganizationalunitchildaccounts" "accounts" {
+///   parent_id = data.aws_organizations_getorganization.org.roots[0].id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1045,8 +1179,8 @@ Future<GetOrganizationalUnitResult> getOrganizationalUnit(
 /// import com.pulumi.aws.organizations.OrganizationsFunctions;
 /// import com.pulumi.aws.organizations.inputs.GetOrganizationArgs;
 /// import com.pulumi.aws.organizations.inputs.GetOrganizationalUnitChildAccountsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1157,6 +1291,21 @@ Future<GetOrganizationalUnitChildAccountsResult> getOrganizationalUnitChildAccou
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_organizations_getorganization" "org" {
+/// }
+/// data "aws_organizations_getorganizationalunitdescendantaccounts" "accounts" {
+///   parent_id = data.aws_organizations_getorganization.org.roots[0].id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1166,8 +1315,8 @@ Future<GetOrganizationalUnitChildAccountsResult> getOrganizationalUnitChildAccou
 /// import com.pulumi.aws.organizations.OrganizationsFunctions;
 /// import com.pulumi.aws.organizations.inputs.GetOrganizationArgs;
 /// import com.pulumi.aws.organizations.inputs.GetOrganizationalUnitDescendantAccountsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1278,6 +1427,21 @@ Future<GetOrganizationalUnitDescendantAccountsResult> getOrganizationalUnitDesce
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_organizations_getorganization" "org" {
+/// }
+/// data "aws_organizations_getorganizationalunitdescendantorganizationalunits" "ous" {
+///   parent_id = data.aws_organizations_getorganization.org.roots[0].id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1287,8 +1451,8 @@ Future<GetOrganizationalUnitDescendantAccountsResult> getOrganizationalUnitDesce
 /// import com.pulumi.aws.organizations.OrganizationsFunctions;
 /// import com.pulumi.aws.organizations.inputs.GetOrganizationArgs;
 /// import com.pulumi.aws.organizations.inputs.GetOrganizationalUnitDescendantOrganizationalUnitsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1399,6 +1563,21 @@ Future<GetOrganizationalUnitDescendantOrganizationalUnitsResult> getOrganization
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_organizations_getorganization" "org" {
+/// }
+/// data "aws_organizations_getorganizationalunits" "ou" {
+///   parent_id = data.aws_organizations_getorganization.org.roots[0].id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1408,8 +1587,8 @@ Future<GetOrganizationalUnitDescendantOrganizationalUnitsResult> getOrganization
 /// import com.pulumi.aws.organizations.OrganizationsFunctions;
 /// import com.pulumi.aws.organizations.inputs.GetOrganizationArgs;
 /// import com.pulumi.aws.organizations.inputs.GetOrganizationalUnitsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1475,9 +1654,9 @@ Future<GetOrganizationalUnitsResult> getOrganizationalUnits(
 /// });
 /// const exampleGetPolicy = example.then(example => std.toset({
 ///     input: example.ids,
-/// })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: aws.organizations.getPolicy({
+/// })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: aws.organizations.getPolicy({
 ///     policyId: __value,
-/// }) })));
+/// }) }), {}));
 /// ```
 /// ```python
 /// import pulumi
@@ -1485,7 +1664,7 @@ Future<GetOrganizationalUnitsResult> getOrganizationalUnits(
 /// import pulumi_std as std
 ///
 /// example = aws.organizations.get_policies(filter="SERVICE_CONTROL_POLICY")
-/// example_get_policy = {__key: aws.organizations.get_policy(policy_id=__value) for __key, __value in std.toset(input=example.ids).result}
+/// example_get_policy = {str(__key): aws.organizations.get_policy(policy_id=__value) for __key, __value in enumerate(std.toset(input=example.ids).result)}
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1507,6 +1686,30 @@ Future<GetOrganizationalUnitsResult> getOrganizationalUnits(
 ///     }).Apply(invoke => );
 ///
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "aws_organizations_getpolicies" "example" {
+///   filter = "SERVICE_CONTROL_POLICY"
+/// }
+/// data "aws_organizations_getpolicy" "invoke_1" {
+///   for_each  = toset(data.aws_organizations_getpolicies.example.ids)
+///   policy_id = each.value
+/// }
+///
+/// locals {
+///   exampleGetPolicy = {for __key, __value in toset(data.aws_organizations_getpolicies.example.ids) : __key => data.aws_organizations_getpolicy.invoke_1[__key]}
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_organizations_get_policies_get_policies_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1542,9 +1745,9 @@ Future<GetPoliciesResult> getPolicies(
 /// }));
 /// const exampleGetPolicy = exampleGetPoliciesForTarget.then(exampleGetPoliciesForTarget => std.toset({
 ///     input: exampleGetPoliciesForTarget.ids,
-/// })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: aws.organizations.getPolicy({
+/// })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: aws.organizations.getPolicy({
 ///     policyId: __value,
-/// }) })));
+/// }) }), {}));
 /// ```
 /// ```python
 /// import pulumi
@@ -1554,7 +1757,7 @@ Future<GetPoliciesResult> getPolicies(
 /// example = aws.organizations.get_organization()
 /// example_get_policies_for_target = aws.organizations.get_policies_for_target(target_id=example.roots[0].id,
 ///     filter="SERVICE_CONTROL_POLICY")
-/// example_get_policy = {__key: aws.organizations.get_policy(policy_id=__value) for __key, __value in std.toset(input=example_get_policies_for_target.ids).result}
+/// example_get_policy = {str(__key): aws.organizations.get_policy(policy_id=__value) for __key, __value in enumerate(std.toset(input=example_get_policies_for_target.ids).result)}
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1579,6 +1782,33 @@ Future<GetPoliciesResult> getPolicies(
 ///     }).Apply(invoke => );
 ///
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "aws_organizations_getorganization" "example" {
+/// }
+/// data "aws_organizations_getpoliciesfortarget" "exampleGetPoliciesForTarget" {
+///   target_id = data.aws_organizations_getorganization.example.roots[0].id
+///   filter    = "SERVICE_CONTROL_POLICY"
+/// }
+/// data "aws_organizations_getpolicy" "invoke_2" {
+///   for_each  = toset(data.aws_organizations_getpoliciesfortarget.exampleGetPoliciesForTarget.ids)
+///   policy_id = each.value
+/// }
+///
+/// locals {
+///   exampleGetPolicy = {for __key, __value in toset(data.aws_organizations_getpoliciesfortarget.exampleGetPoliciesForTarget.ids) : __key => data.aws_organizations_getpolicy.invoke_2[__key]}
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_organizations_get_policies_for_target_get_policies_for_target_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1665,6 +1895,19 @@ Future<GetPolicyResult> getPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_organizations_getresourcetags" "account" {
+///   resource_id = "123456123846"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1673,8 +1916,8 @@ Future<GetPolicyResult> getPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.organizations.OrganizationsFunctions;
 /// import com.pulumi.aws.organizations.inputs.GetResourceTagsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -14,14 +14,14 @@ class AnycastIpListArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
-  /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<AnycastIpListTimeouts>? timeouts;
 
   /// Creates a new [AnycastIpListArgs].
   /// [ipCount] The number of static IP addresses that are allocated to the Anycast IP list. Valid values: `3`, `21`.
   /// [name] Name of the Anycast IP list.
-  /// [tags] Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   const AnycastIpListArgs({
     required this.ipCount,
@@ -48,4 +48,3 @@ class AnycastIpListArgs {
     );
   }
 }
-

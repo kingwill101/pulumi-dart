@@ -110,6 +110,29 @@ import 'ip_access_settings_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspacesweb_portal" "example" {
+///   display_name = "example"
+/// }
+/// resource "aws_workspacesweb_ipaccesssettings" "example" {
+///   display_name = "example"
+///   ip_rules {
+///     ip_range = "10.0.0.0/16"
+///   }
+/// }
+/// resource "aws_workspacesweb_ipaccesssettingsassociation" "example" {
+///   ip_access_settings_arn = aws_workspacesweb_ipaccesssettings.example.ip_access_settings_arn
+///   portal_arn             = aws_workspacesweb_portal.example.portal_arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +146,8 @@ import 'ip_access_settings_association_state.dart';
 /// import com.pulumi.aws.workspacesweb.inputs.IpAccessSettingsIpRuleArgs;
 /// import com.pulumi.aws.workspacesweb.IpAccessSettingsAssociation;
 /// import com.pulumi.aws.workspacesweb.IpAccessSettingsAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

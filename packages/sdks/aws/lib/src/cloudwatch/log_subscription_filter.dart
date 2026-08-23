@@ -77,6 +77,24 @@ import 'log_subscription_filter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_logsubscriptionfilter" "test_lambdafunction_logfilter" {
+///   name            = "test_lambdafunction_logfilter"
+///   role_arn        = iamForLambda.arn
+///   log_group       = "/aws/lambda/example_lambda_name"
+///   filter_pattern  = "logtype test"
+///   destination_arn = testLogstream.arn
+///   distribution    = "Random"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +103,8 @@ import 'log_subscription_filter_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudwatch.LogSubscriptionFilter;
 /// import com.pulumi.aws.cloudwatch.LogSubscriptionFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -127,10 +145,23 @@ import 'log_subscription_filter_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CloudWatch Logs subscription filter using the log group name and subscription filter name separated by `|`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `logGroupName` (String) Name of the log group.
+/// * `name` (String) Name of the subscription filter.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Subscription Filters using `logGroupName` and `name` separated by a vertical bar (`|`). For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cloudwatch/logSubscriptionFilter:LogSubscriptionFilter test_lambdafunction_logfilter "/aws/lambda/example_lambda_name|test_lambdafunction_logfilter"
+/// $ pulumi import aws:cloudwatch/logSubscriptionFilter:LogSubscriptionFilter example example-group|example-filter
 /// ```
 class LogSubscriptionFilter extends pulumi.CustomResource {
   /// Boolean to indicate whether to apply the subscription filter on the transformed version of the log events instead of the original ingested log events. Defaults to `false`. Valid only for log groups that have an active log transformer.
@@ -139,7 +170,7 @@ class LogSubscriptionFilter extends pulumi.CustomResource {
   late final pulumi.Output<String> destinationArn;
   /// Method used to distribute log data to the destination. By default log data is grouped by log stream, but the grouping can be set to random for a more even distribution. This property is only applicable when the destination is an Amazon Kinesis stream. Valid values are "Random" and "ByLogStream".
   late final pulumi.Output<String?> distribution;
-  /// List of system fields to include in the log events sent to the subscription destination. These fields provide source information for centralized log data in the forwarded payload. Valid values: `"@aws.account"`, `"@aws.region"`. To remove this argument after it has been set, specify an empty list `[]` explicitly to avoid perpetual differences.
+  /// List of system fields to include in the log events sent to the subscription destination. These fields provide source information for centralized log data in the forwarded payload. Valid values: `"@aws.account"`, `"@aws.region"`, `"@source.log"`. To remove this argument after it has been set, specify an empty list `[]` explicitly to avoid perpetual differences.
   late final pulumi.Output<List<String>?> emitSystemFields;
   /// Valid CloudWatch Logs filter pattern for subscribing to a filtered stream of log events. Use empty string `""` to match everything. For more information, see the [Amazon CloudWatch Logs User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
   late final pulumi.Output<String> filterPattern;

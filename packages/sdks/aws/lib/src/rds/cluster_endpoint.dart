@@ -230,7 +230,7 @@ import 'cluster_endpoint_state.dart';
 /// 		}
 /// 		test1, err := rds.NewClusterInstance(ctx, "test1", &rds.ClusterInstanceArgs{
 /// 			ApplyImmediately:  pulumi.Bool(true),
-/// 			ClusterIdentifier: _default.ID(),
+/// 			ClusterIdentifier: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Identifier:        pulumi.String("test1"),
 /// 			InstanceClass:     pulumi.String(rds.InstanceType_T2_Small),
 /// 			Engine:            _default.Engine.ApplyT(func(x *string) rds.EngineType { return rds.EngineType(*x) }).(rds.EngineTypeOutput),
@@ -241,7 +241,7 @@ import 'cluster_endpoint_state.dart';
 /// 		}
 /// 		test2, err := rds.NewClusterInstance(ctx, "test2", &rds.ClusterInstanceArgs{
 /// 			ApplyImmediately:  pulumi.Bool(true),
-/// 			ClusterIdentifier: _default.ID(),
+/// 			ClusterIdentifier: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Identifier:        pulumi.String("test2"),
 /// 			InstanceClass:     pulumi.String(rds.InstanceType_T2_Small),
 /// 			Engine:            _default.Engine.ApplyT(func(x *string) rds.EngineType { return rds.EngineType(*x) }).(rds.EngineTypeOutput),
@@ -252,7 +252,7 @@ import 'cluster_endpoint_state.dart';
 /// 		}
 /// 		test3, err := rds.NewClusterInstance(ctx, "test3", &rds.ClusterInstanceArgs{
 /// 			ApplyImmediately:  pulumi.Bool(true),
-/// 			ClusterIdentifier: _default.ID(),
+/// 			ClusterIdentifier: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Identifier:        pulumi.String("test3"),
 /// 			InstanceClass:     pulumi.String(rds.InstanceType_T2_Small),
 /// 			Engine:            _default.Engine.ApplyT(func(x *string) rds.EngineType { return rds.EngineType(*x) }).(rds.EngineTypeOutput),
@@ -262,24 +262,24 @@ import 'cluster_endpoint_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = rds.NewClusterEndpoint(ctx, "eligible", &rds.ClusterEndpointArgs{
-/// 			ClusterIdentifier:         _default.ID(),
+/// 			ClusterIdentifier:         _default.ID().ToIDOutput().ToStringOutput(),
 /// 			ClusterEndpointIdentifier: pulumi.String("reader"),
 /// 			CustomEndpointType:        pulumi.String("READER"),
 /// 			ExcludedMembers: pulumi.StringArray{
-/// 				test1.ID(),
-/// 				test2.ID(),
+/// 				test1.ID().ToIDOutput().ToStringOutput(),
+/// 				test2.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = rds.NewClusterEndpoint(ctx, "static", &rds.ClusterEndpointArgs{
-/// 			ClusterIdentifier:         _default.ID(),
+/// 			ClusterIdentifier:         _default.ID().ToIDOutput().ToStringOutput(),
 /// 			ClusterEndpointIdentifier: pulumi.String("static"),
 /// 			CustomEndpointType:        pulumi.String("READER"),
 /// 			StaticMembers: pulumi.StringArray{
-/// 				test1.ID(),
-/// 				test3.ID(),
+/// 				test1.ID().ToIDOutput().ToStringOutput(),
+/// 				test3.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -287,6 +287,61 @@ import 'cluster_endpoint_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_cluster" "default" {
+///   cluster_identifier      = "aurora-cluster-demo"
+///   availability_zones      = ["us-west-2a", "us-west-2b", "us-west-2c"]
+///   database_name           = "mydb"
+///   master_username         = "foo"
+///   master_password         = "bar"
+///   backup_retention_period = 5
+///   preferred_backup_window = "07:00-09:00"
+/// }
+/// resource "aws_rds_clusterinstance" "test1" {
+///   apply_immediately  = true
+///   cluster_identifier = aws_rds_cluster.default.id
+///   identifier         = "test1"
+///   instance_class     = "db.t2.small"
+///   engine             = aws_rds_cluster.default.engine
+///   engine_version     = aws_rds_cluster.default.engine_version
+/// }
+/// resource "aws_rds_clusterinstance" "test2" {
+///   apply_immediately  = true
+///   cluster_identifier = aws_rds_cluster.default.id
+///   identifier         = "test2"
+///   instance_class     = "db.t2.small"
+///   engine             = aws_rds_cluster.default.engine
+///   engine_version     = aws_rds_cluster.default.engine_version
+/// }
+/// resource "aws_rds_clusterinstance" "test3" {
+///   apply_immediately  = true
+///   cluster_identifier = aws_rds_cluster.default.id
+///   identifier         = "test3"
+///   instance_class     = "db.t2.small"
+///   engine             = aws_rds_cluster.default.engine
+///   engine_version     = aws_rds_cluster.default.engine_version
+/// }
+/// resource "aws_rds_clusterendpoint" "eligible" {
+///   cluster_identifier          = aws_rds_cluster.default.id
+///   cluster_endpoint_identifier = "reader"
+///   custom_endpoint_type        = "READER"
+///   excluded_members            = [aws_rds_clusterinstance.test1.id, aws_rds_clusterinstance.test2.id]
+/// }
+/// resource "aws_rds_clusterendpoint" "static" {
+///   cluster_identifier          = aws_rds_cluster.default.id
+///   cluster_endpoint_identifier = "static"
+///   custom_endpoint_type        = "READER"
+///   static_members              = [aws_rds_clusterinstance.test1.id, aws_rds_clusterinstance.test3.id]
 /// }
 /// ```
 /// ```java
@@ -301,8 +356,8 @@ import 'cluster_endpoint_state.dart';
 /// import com.pulumi.aws.rds.ClusterInstanceArgs;
 /// import com.pulumi.aws.rds.ClusterEndpoint;
 /// import com.pulumi.aws.rds.ClusterEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -440,13 +495,11 @@ import 'cluster_endpoint_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import RDS Clusters Endpoint using the `cluster_endpoint_identifier`. For example:
+/// Using `pulumi import`, import RDS Clusters Endpoint using the `clusterEndpointIdentifier`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:rds/clusterEndpoint:ClusterEndpoint custom_reader aurora-prod-cluster-custom-reader
 /// ```
-///
-/// [1]: https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Cluster
 class ClusterEndpoint extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of cluster
   late final pulumi.Output<String> arn;
@@ -458,18 +511,18 @@ class ClusterEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> customEndpointType;
   /// A custom endpoint for the Aurora cluster
   late final pulumi.Output<String> endpoint;
-  /// List of DB instance identifiers that aren't part of the custom endpoint group. All other eligible instances are reachable through the custom endpoint. Only relevant if the list of static members is empty. Conflicts with `static_members`.
+  /// List of DB instance identifiers that aren't part of the custom endpoint group. All other eligible instances are reachable through the custom endpoint. Only relevant if the list of static members is empty. Conflicts with `staticMembers`.
   late final pulumi.Output<List<String>?> excludedMembers;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// List of DB instance identifiers that are part of the custom endpoint group. Conflicts with `excluded_members`.
+  /// List of DB instance identifiers that are part of the custom endpoint group. Conflicts with `excludedMembers`.
   late final pulumi.Output<List<String>?> staticMembers;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For more detailed documentation about each argument, refer to
   /// the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-db-cluster-endpoint.html).
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ClusterEndpoint].

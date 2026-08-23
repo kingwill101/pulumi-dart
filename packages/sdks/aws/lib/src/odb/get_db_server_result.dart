@@ -5,71 +5,71 @@ import 'get_db_server_db_server_patching_detail.dart';
 
 /// Result data returned by getDbServer.
 class GetDbServerResult {
-  /// The list of unique identifiers for the Autonomous VMs associated with this database server.
+  /// List of unique identifiers for the Autonomous VMs associated with this database server.
   final List<String> autonomousVirtualMachineIds;
-  /// The OCID of the autonomous VM clusters that are associated with the database server.
+  /// OCID of the autonomous VM clusters that are associated with the database server.
   final List<String> autonomousVmClusterIds;
   final String cloudExadataInfrastructureId;
-  /// The compute model of the database server.
+  /// Compute model of the database server.
   final String computeModel;
-  /// The number of CPU cores enabled on the database server.
+  /// Number of CPU cores enabled on the database server.
   final int cpuCoreCount;
-  /// The date and time when the database server was created.
+  /// Date and time when the database server was created.
   final String createdAt;
-  /// The allocated local node storage in GBs on the database server.
+  /// Allocated local node storage in GBs on the database server.
   final int dbNodeStorageSizeInGbs;
-  /// The scheduling details for the quarterly maintenance window. Patching and system updates take place during the maintenance window.
+  /// Scheduling details for the quarterly maintenance window. Patching and system updates take place during the maintenance window.
   final List<GetDbServerDbServerPatchingDetail> dbServerPatchingDetails;
-  /// The display name of the database server.
+  /// Display name of the database server.
   final String displayName;
-  /// The exadata infrastructure ID of the database server.
+  /// Exadata infrastructure ID of the database server.
   final String exadataInfrastructureId;
   final String id;
-  /// The total number of CPU cores available.
+  /// Total number of CPU cores available.
   final int maxCpuCount;
-  /// The total local node storage available in GBs.
+  /// Total local node storage available in GBs.
   final int maxDbNodeStorageInGbs;
-  /// The total memory available in GBs.
+  /// Total memory available in GBs.
   final int maxMemoryInGbs;
-  /// The allocated memory in GBs on the database server.
+  /// Allocated memory in GBs on the database server.
   final int memorySizeInGbs;
-  /// The name of the OCI resource anchor.
+  /// Name of the OCI resource anchor.
   final String ociResourceAnchorName;
-  /// The OCID of the database server to retrieve information about.
+  /// OCID of the database server to retrieve information about.
   final String ocid;
   final String region;
-  /// The shape of the database server. The shape determines the amount of CPU, storage, and memory resources available.
+  /// Shape of the database server. The shape determines the amount of CPU, storage, and memory resources available.
   final String shape;
-  /// The status of the database server.
+  /// Status of the database server.
   final String status;
   /// Additional information about the current status of the database server.
   final String statusReason;
-  /// The OCID of the VM clusters that are associated with the database server.
+  /// OCID of the VM clusters that are associated with the database server.
   final List<String> vmClusterIds;
 
   /// Creates a new [GetDbServerResult].
-  /// [autonomousVirtualMachineIds] The list of unique identifiers for the Autonomous VMs associated with this database server.
-  /// [autonomousVmClusterIds] The OCID of the autonomous VM clusters that are associated with the database server.
+  /// [autonomousVirtualMachineIds] List of unique identifiers for the Autonomous VMs associated with this database server.
+  /// [autonomousVmClusterIds] OCID of the autonomous VM clusters that are associated with the database server.
   /// [cloudExadataInfrastructureId] Required.
-  /// [computeModel] The compute model of the database server.
-  /// [cpuCoreCount] The number of CPU cores enabled on the database server.
-  /// [createdAt] The date and time when the database server was created.
-  /// [dbNodeStorageSizeInGbs] The allocated local node storage in GBs on the database server.
-  /// [dbServerPatchingDetails] The scheduling details for the quarterly maintenance window. Patching and system updates take place during the maintenance window.
-  /// [displayName] The display name of the database server.
-  /// [exadataInfrastructureId] The exadata infrastructure ID of the database server.
+  /// [computeModel] Compute model of the database server.
+  /// [cpuCoreCount] Number of CPU cores enabled on the database server.
+  /// [createdAt] Date and time when the database server was created.
+  /// [dbNodeStorageSizeInGbs] Allocated local node storage in GBs on the database server.
+  /// [dbServerPatchingDetails] Scheduling details for the quarterly maintenance window. Patching and system updates take place during the maintenance window.
+  /// [displayName] Display name of the database server.
+  /// [exadataInfrastructureId] Exadata infrastructure ID of the database server.
   /// [id] Required.
-  /// [maxCpuCount] The total number of CPU cores available.
-  /// [maxDbNodeStorageInGbs] The total local node storage available in GBs.
-  /// [maxMemoryInGbs] The total memory available in GBs.
-  /// [memorySizeInGbs] The allocated memory in GBs on the database server.
-  /// [ociResourceAnchorName] The name of the OCI resource anchor.
-  /// [ocid] The OCID of the database server to retrieve information about.
+  /// [maxCpuCount] Total number of CPU cores available.
+  /// [maxDbNodeStorageInGbs] Total local node storage available in GBs.
+  /// [maxMemoryInGbs] Total memory available in GBs.
+  /// [memorySizeInGbs] Allocated memory in GBs on the database server.
+  /// [ociResourceAnchorName] Name of the OCI resource anchor.
+  /// [ocid] OCID of the database server to retrieve information about.
   /// [region] Required.
-  /// [shape] The shape of the database server. The shape determines the amount of CPU, storage, and memory resources available.
-  /// [status] The status of the database server.
+  /// [shape] Shape of the database server. The shape determines the amount of CPU, storage, and memory resources available.
+  /// [status] Status of the database server.
   /// [statusReason] Additional information about the current status of the database server.
-  /// [vmClusterIds] The OCID of the VM clusters that are associated with the database server.
+  /// [vmClusterIds] OCID of the VM clusters that are associated with the database server.
   const GetDbServerResult({
     required this.autonomousVirtualMachineIds,
     required this.autonomousVmClusterIds,
@@ -149,4 +149,3 @@ class GetDbServerResult {
     );
   }
 }
-

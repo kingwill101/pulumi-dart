@@ -6,7 +6,7 @@ import 'get_tags_filter_and_dimension.dart';
 import 'get_tags_filter_and_tags.dart';
 
 class GetTagsFilterAnd {
-  /// Configuration block for the filter that's based on `CostCategory` values. See `cost_category` block below for details.
+  /// Configuration block for the filter that's based on `CostCategory` values. See `costCategory` block below for details.
   final pulumi.Input<GetTagsFilterAndCostCategory>? costCategory;
   /// Configuration block for the specific `Dimension` to use for `Expression`. See `dimension` block below for details.
   final pulumi.Input<GetTagsFilterAndDimension>? dimension;
@@ -14,7 +14,7 @@ class GetTagsFilterAnd {
   final pulumi.Input<GetTagsFilterAndTags>? tags;
 
   /// Creates a new [GetTagsFilterAnd].
-  /// [costCategory] Configuration block for the filter that's based on `CostCategory` values. See `cost_category` block below for details.
+  /// [costCategory] Configuration block for the filter that's based on `CostCategory` values. See `costCategory` block below for details.
   /// [dimension] Configuration block for the specific `Dimension` to use for `Expression`. See `dimension` block below for details.
   /// [tags] Tags that match your request.
   const GetTagsFilterAnd({
@@ -39,4 +39,3 @@ class GetTagsFilterAnd {
     );
   }
 }
-

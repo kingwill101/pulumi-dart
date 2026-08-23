@@ -3,19 +3,19 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus {
-  /// The Access Key portion of the credentials.
+  /// Access Key portion of the credentials.
   final pulumi.Input<String> accessKeyId;
   /// Encryption keys used to encrypt data.
   final pulumi.Input<String> datakey;
-  /// The secret key used to sign requests.
+  /// Secret key used to sign requests.
   final pulumi.Input<String> secretAccessKey;
   /// Identifier for the user.
   final pulumi.Input<String> userId;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus].
-  /// [accessKeyId] The Access Key portion of the credentials.
+  /// [accessKeyId] Access Key portion of the credentials.
   /// [datakey] Encryption keys used to encrypt data.
-  /// [secretAccessKey] The secret key used to sign requests.
+  /// [secretAccessKey] Secret key used to sign requests.
   /// [userId] Identifier for the user.
   const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus({
     required this.accessKeyId,
@@ -42,4 +42,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexu
     );
   }
 }
-

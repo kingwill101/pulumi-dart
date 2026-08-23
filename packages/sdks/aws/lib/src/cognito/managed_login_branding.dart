@@ -67,6 +67,21 @@ import 'managed_login_branding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_managedloginbranding" "client" {
+///   client_id                   = example.id
+///   user_pool_id                = exampleAwsCognitoUserPool.id
+///   use_cognito_provided_values = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'managed_login_branding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cognito.ManagedLoginBranding;
 /// import com.pulumi.aws.cognito.ManagedLoginBrandingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -225,6 +240,30 @@ import 'managed_login_branding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_managedloginbranding" "client" {
+///   client_id    = example.id
+///   user_pool_id = exampleAwsCognitoUserPool.id
+///   assets {
+///     bytes      = filebase64("login_branding_asset.svg")
+///     category   = "PAGE_HEADER_BACKGROUND"
+///     color_mode = "DARK"
+///     extension  = "SVG"
+///   }
+///   settings = jsonencode({})
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -237,8 +276,8 @@ import 'managed_login_branding_state.dart';
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -294,7 +333,7 @@ import 'managed_login_branding_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Cognito branding settings using `user_pool_id` and `managed_login_branding_id` separated by `,`. For example:
+/// Using `pulumi import`, import Cognito branding settings using `userPoolId` and `managedLoginBrandingId` separated by `,`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cognito/managedLoginBranding:ManagedLoginBranding example us-west-2_rSss9Zltr,06c6ae7b-1e66-46d2-87a9-1203ea3307bd

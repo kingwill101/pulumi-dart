@@ -57,6 +57,19 @@ import 'notification_hub_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_notifications_notificationhub" "example" {
+///   notification_hub_region = "us-west-2"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +78,8 @@ import 'notification_hub_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.notifications.NotificationHub;
 /// import com.pulumi.aws.notifications.NotificationHubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -96,7 +109,7 @@ import 'notification_hub_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import User Notifications Notification Hub using the `notification_hub_region `. For example:
+/// Using `pulumi import`, import User Notifications Notification Hub using the `notificationHubRegion `. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:notifications/notificationHub:NotificationHub example us-west-2

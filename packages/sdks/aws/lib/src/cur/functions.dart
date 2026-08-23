@@ -60,6 +60,19 @@ import 'get_report_definition_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cur_getreportdefinition" "reportDefinition" {
+///   report_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +81,8 @@ import 'get_report_definition_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cur.CurFunctions;
 /// import com.pulumi.aws.cur.inputs.GetReportDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

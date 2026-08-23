@@ -4,9 +4,9 @@ import 'tag_state.dart';
 
 /// Manages an individual DynamoDB resource tag. This resource should only be used in cases where DynamoDB resources are created outside the provider (e.g., Table replicas in other regions).
 ///
-/// &gt; **NOTE:** This tagging resource should not be combined with the resource for managing the parent resource. For example, using `aws.dynamodb.Table` and `aws.dynamodb.Tag` to manage tags of the same DynamoDB Table in the same region will cause a perpetual difference where the `aws_dynamodb_cluster` resource will try to remove the tag being added by the `aws.dynamodb.Tag` resource.
+/// &gt; **NOTE:** This tagging resource should not be combined with the resource for managing the parent resource. For example, using `aws.dynamodb.Table` and `aws.dynamodb.Tag` to manage tags of the same DynamoDB Table in the same region will cause a perpetual difference where the `aws.dynamodb.Table` resource will try to remove the tag being added by the `aws.dynamodb.Tag` resource.
 ///
-/// &gt; **NOTE:** This tagging resource does not use the provider `ignore_tags` configuration.
+/// &gt; **NOTE:** This tagging resource does not use the provider `ignoreTags` configuration.
 ///
 /// ## Example Usage
 ///
@@ -19,14 +19,14 @@ import 'tag_state.dart';
 /// const replica = aws.getRegion({});
 /// const current = aws.getRegion({});
 /// const example = new aws.dynamodb.Table("example", {replicas: [{
-///     regionName: replica.then(replica => replica.name),
+///     regionName: replica.then(replica => replica.region),
 /// }]});
 /// const test = new aws.dynamodb.Tag("test", {
-///     resourceArn: pulumi.all([example.arn, current, replica]).apply(([arn, current, replica]) => std.replaceOutput({
-///         text: arn,
-///         search: current.region,
-///         replace: replica.name,
-///     })).apply(invoke => invoke.result),
+///     resourceArn: std.replaceOutput({
+///         text: example.arn,
+///         search: current.then(current => current.region),
+///         replace: replica.then(replica => replica.region),
+///     }).result,
 ///     key: "testkey",
 ///     value: "testvalue",
 /// });
@@ -39,12 +39,12 @@ import 'tag_state.dart';
 /// replica = aws.get_region()
 /// current = aws.get_region()
 /// example = aws.dynamodb.Table("example", replicas=[{
-///     "region_name": replica.name,
+///     "region_name": replica.region,
 /// }])
 /// test = aws.dynamodb.Tag("test",
-///     resource_arn=example.arn.apply(lambda arn: std.replace(text=arn,
+///     resource_arn=std.replace_output(text=example.arn,
 ///         search=current.region,
-///         replace=replica.name)).apply(lambda invoke: invoke.result),
+///         replace=replica.region).result,
 ///     key="testkey",
 ///     value="testvalue")
 /// ```
@@ -67,24 +67,18 @@ import 'tag_state.dart';
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableReplicaArgs
 ///             {
-///                 RegionName = replica.Apply(getRegionResult => getRegionResult.Name),
+///                 RegionName = replica.Apply(getRegionResult => getRegionResult.Region),
 ///             },
 ///         },
 ///     });
 ///
 ///     var test = new Aws.DynamoDB.Tag("test", new()
 ///     {
-///         ResourceArn = Output.Tuple(example.Arn, current, replica).Apply(values =>
+///         ResourceArn = Std.Replace.Invoke(new()
 ///         {
-///             var arn = values.Item1;
-///             var current = values.Item2;
-///             var replica = values.Item3;
-///             return Std.Replace.Invoke(new()
-///             {
-///                 Text = arn,
-///                 Search = current.Apply(getRegionResult => getRegionResult.Region),
-///                 Replace = replica.Apply(getRegionResult => getRegionResult.Name),
-///             });
+///             Text = example.Arn,
+///             Search = current.Apply(getRegionResult => getRegionResult.Region),
+///             Replace = replica.Apply(getRegionResult => getRegionResult.Region),
 ///         }).Apply(invoke => invoke.Result),
 ///         Key = "testkey",
 ///         Value = "testvalue",
@@ -101,49 +95,69 @@ import 'tag_state.dart';
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// replica, err := aws.GetRegion(ctx, &aws.GetRegionArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		replica, err := aws.GetRegion(ctx, &aws.GetRegionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		current, err := aws.GetRegion(ctx, &aws.GetRegionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example, err := dynamodb.NewTable(ctx, "example", &dynamodb.TableArgs{
+/// 			Replicas: dynamodb.TableReplicaTypeArray{
+/// 				&dynamodb.TableReplicaTypeArgs{
+/// 					RegionName: pulumi.String(replica.Region),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = dynamodb.NewTag(ctx, "test", &dynamodb.TagArgs{
+/// 			ResourceArn: std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
+/// 				Text:    example.Arn,
+/// 				Search:  pulumi.String(current.Region),
+/// 				Replace: pulumi.String(replica.Region),
+/// 			}, nil).Result(),
+/// 			Key:   pulumi.String("testkey"),
+/// 			Value: pulumi.String("testvalue"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// current, err := aws.GetRegion(ctx, &aws.GetRegionArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
 /// }
-/// example, err := dynamodb.NewTable(ctx, "example", &dynamodb.TableArgs{
-/// Replicas: dynamodb.TableReplicaTypeArray{
-/// &dynamodb.TableReplicaTypeArgs{
-/// RegionName: pulumi.String(replica.Name),
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
+///
+/// data "aws_getregion" "replica" {
 /// }
-/// invokeReplace, err := std.Replace(ctx, &std.ReplaceArgs{
-/// Text: arn,
-/// Search: current.Region,
-/// Replace: replica.Name,
-/// }, nil)
-/// if err != nil {
-/// return err
+/// data "aws_getregion" "current" {
 /// }
-/// _, err = dynamodb.NewTag(ctx, "test", &dynamodb.TagArgs{
-/// ResourceArn: pulumi.String(example.Arn.ApplyT(func(arn string) (std.ReplaceResult, error) {
-/// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.ReplaceResultOutput).ApplyT(func(invoke std.ReplaceResult) (*string, error) {
-/// return invoke.Result, nil
-/// }).(pulumi.StringPtrOutput)),
-/// Key: pulumi.String("testkey"),
-/// Value: pulumi.String("testvalue"),
-/// })
-/// if err != nil {
-/// return err
+///
+/// resource "aws_dynamodb_table" "example" {
+///   replicas {
+///     region_name = data.aws_getregion.replica.region
+///   }
 /// }
-/// return nil
-/// })
+/// resource "aws_dynamodb_tag" "test" {
+///   resource_arn = replace(aws_dynamodb_table.example.arn, data.aws_getregion.current.region, data.aws_getregion.replica.region)
+///   key          = "testkey"
+///   value        = "testvalue"
 /// }
 /// ```
 /// ```java
@@ -161,8 +175,8 @@ import 'tag_state.dart';
 /// import com.pulumi.aws.dynamodb.TagArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.ReplaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -182,16 +196,16 @@ import 'tag_state.dart';
 ///
 ///         var example = new Table("example", TableArgs.builder()
 ///             .replicas(TableReplicaArgs.builder()
-///                 .regionName(replica.name())
+///                 .regionName(replica.region())
 ///                 .build())
 ///             .build());
 ///
 ///         var test = new Tag("test", TagArgs.builder()
-///             .resourceArn(example.arn().applyValue(_arn -> StdFunctions.replace(ReplaceArgs.builder()
-///                 .text(_arn)
+///             .resourceArn(StdFunctions.replace(ReplaceArgs.builder()
+///                 .text(example.arn())
 ///                 .search(current.region())
-///                 .replace(replica.name())
-///                 .build())).applyValue(_invoke -> _invoke.result()))
+///                 .replace(replica.region())
+///                 .build()).applyValue(_invoke -> _invoke.result()))
 ///             .key("testkey")
 ///             .value("testvalue")
 ///             .build());
@@ -205,7 +219,7 @@ import 'tag_state.dart';
 ///     type: aws:dynamodb:Table
 ///     properties:
 ///       replicas:
-///         - regionName: ${replica.name}
+///         - regionName: ${replica.region}
 ///   test:
 ///     type: aws:dynamodb:Tag
 ///     properties:
@@ -215,7 +229,7 @@ import 'tag_state.dart';
 ///           arguments:
 ///             text: ${example.arn}
 ///             search: ${current.region}
-///             replace: ${replica.name}
+///             replace: ${replica.region}
 ///           return: result
 ///       key: testkey
 ///       value: testvalue

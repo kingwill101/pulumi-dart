@@ -7,13 +7,15 @@ class UsagePlanQuotaSettings {
   final pulumi.Input<int> limit;
   /// Number of requests subtracted from the given limit in the initial time period.
   final pulumi.Input<int>? offset;
-  /// Time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
+  /// Time period in which the limit applies. Valid values are `DAY`, `WEEK`, or `MONTH`.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String> period;
 
   /// Creates a new [UsagePlanQuotaSettings].
   /// [limit] Maximum number of requests that can be made in a given time period.
   /// [offset] Number of requests subtracted from the given limit in the initial time period.
-  /// [period] Time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
+  /// [period] Time period in which the limit applies. Valid values are `DAY`, `WEEK`, or `MONTH`.
   const UsagePlanQuotaSettings({
     required this.limit,
     this.offset,
@@ -36,4 +38,3 @@ class UsagePlanQuotaSettings {
     );
   }
 }
-

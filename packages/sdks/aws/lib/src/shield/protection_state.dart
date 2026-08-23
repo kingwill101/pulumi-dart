@@ -10,17 +10,17 @@ class ProtectionState {
   final pulumi.Input<String>? name;
   /// The ARN (Amazon Resource Name) of the resource to be protected.
   final pulumi.Input<String>? resourceArn;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [ProtectionState].
   /// [arn] The ARN of the Protection.
   /// [name] A friendly name for the Protection you are creating.
   /// [resourceArn] The ARN (Amazon Resource Name) of the resource to be protected.
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const ProtectionState({
     this.arn,
     this.name,
@@ -49,4 +49,3 @@ class ProtectionState {
     );
   }
 }
-

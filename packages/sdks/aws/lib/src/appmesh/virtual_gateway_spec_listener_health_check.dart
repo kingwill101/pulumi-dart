@@ -9,7 +9,7 @@ class VirtualGatewaySpecListenerHealthCheck {
   final pulumi.Input<int> intervalMillis;
   /// Destination path for the health check request. This is only required if the specified protocol is `http` or `http2`.
   final pulumi.Input<String>? path;
-  /// Destination port for the health check request. This port must match the port defined in the `port_mapping` for the listener.
+  /// Destination port for the health check request. This port must match the port defined in the `portMapping` for the listener.
   final pulumi.Input<int>? port;
   /// Protocol for the health check request. Valid values are `http`, `http2`, and `grpc`.
   final pulumi.Input<String> protocol;
@@ -22,7 +22,7 @@ class VirtualGatewaySpecListenerHealthCheck {
   /// [healthyThreshold] Number of consecutive successful health checks that must occur before declaring listener healthy.
   /// [intervalMillis] Time period in milliseconds between each health check execution.
   /// [path] Destination path for the health check request. This is only required if the specified protocol is `http` or `http2`.
-  /// [port] Destination port for the health check request. This port must match the port defined in the `port_mapping` for the listener.
+  /// [port] Destination port for the health check request. This port must match the port defined in the `portMapping` for the listener.
   /// [protocol] Protocol for the health check request. Valid values are `http`, `http2`, and `grpc`.
   /// [timeoutMillis] Amount of time to wait when receiving a response from the health check, in milliseconds.
   /// [unhealthyThreshold] Number of consecutive failed health checks that must occur before declaring a virtual gateway unhealthy.
@@ -60,4 +60,3 @@ class VirtualGatewaySpecListenerHealthCheck {
     );
   }
 }
-

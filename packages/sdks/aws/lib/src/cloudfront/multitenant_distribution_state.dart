@@ -44,7 +44,7 @@ class MultitenantDistributionState {
   final pulumi.Input<int>? inProgressInvalidationBatches;
   /// Date and time the distribution was last modified.
   final pulumi.Input<String>? lastModifiedTime;
-  /// One or more origin_group for this distribution (multiples allowed). See Origin Group below.
+  /// One or more originGroup for this distribution (multiples allowed). See Origin Group below.
   final pulumi.Input<List<MultitenantDistributionOriginGroup>>? originGroups;
   /// One or more origins for this distribution (multiples allowed). See Origin below.
   final pulumi.Input<List<MultitenantDistributionOrigin>>? origins;
@@ -52,9 +52,9 @@ class MultitenantDistributionState {
   final pulumi.Input<MultitenantDistributionRestrictions>? restrictions;
   /// Current status of the distribution. `Deployed` if the distribution's information is fully propagated throughout the Amazon CloudFront system.
   final pulumi.Input<String>? status;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Tenant configuration that contains parameter definitions for multi-tenant distributions. See Tenant Config below.
   final pulumi.Input<MultitenantDistributionTenantConfig>? tenantConfig;
@@ -80,12 +80,12 @@ class MultitenantDistributionState {
   /// [httpVersion] Maximum HTTP version to support on the distribution. Allowed values are `http1.1`, `http2`, `http2and3`, and `http3`. Default: `http2`.
   /// [inProgressInvalidationBatches] Number of invalidation batches currently in progress.
   /// [lastModifiedTime] Date and time the distribution was last modified.
-  /// [originGroups] One or more origin_group for this distribution (multiples allowed). See Origin Group below.
+  /// [originGroups] One or more originGroup for this distribution (multiples allowed). See Origin Group below.
   /// [origins] One or more origins for this distribution (multiples allowed). See Origin below.
   /// [restrictions] Restriction configuration for this distribution. See Restrictions below.
   /// [status] Current status of the distribution. `Deployed` if the distribution's information is fully propagated throughout the Amazon CloudFront system.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [tenantConfig] Tenant configuration that contains parameter definitions for multi-tenant distributions. See Tenant Config below.
   /// [timeouts] Optional.
   /// [viewerCertificate] SSL configuration for this distribution. See Viewer Certificate below.
@@ -178,4 +178,3 @@ class MultitenantDistributionState {
     );
   }
 }
-

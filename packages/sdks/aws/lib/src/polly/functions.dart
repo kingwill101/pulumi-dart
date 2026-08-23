@@ -51,6 +51,18 @@ import 'get_voices_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_polly_getvoices" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -59,8 +71,8 @@ import 'get_voices_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.polly.PollyFunctions;
 /// import com.pulumi.aws.polly.inputs.GetVoicesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -139,6 +151,19 @@ import 'get_voices_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_polly_getvoices" "example" {
+///   language_code = "en-GB"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -147,8 +172,8 @@ import 'get_voices_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.polly.PollyFunctions;
 /// import com.pulumi.aws.polly.inputs.GetVoicesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGroupWarmPoolInstanceReusePolicy {
-  /// Indicates whether instances in the Auto Scaling group can be returned to the warm pool on scale in.
+  /// Whether instances in the Auto Scaling group can be returned to the warm pool on scale in.
   final pulumi.Input<bool> reuseOnScaleIn;
 
   /// Creates a new [GetGroupWarmPoolInstanceReusePolicy].
-  /// [reuseOnScaleIn] Indicates whether instances in the Auto Scaling group can be returned to the warm pool on scale in.
+  /// [reuseOnScaleIn] Whether instances in the Auto Scaling group can be returned to the warm pool on scale in.
   const GetGroupWarmPoolInstanceReusePolicy({
     required this.reuseOnScaleIn,
   });
@@ -24,4 +24,3 @@ class GetGroupWarmPoolInstanceReusePolicy {
     );
   }
 }
-

@@ -4,20 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kx_cluster_database_cache_configuration.dart';
 
 class KxClusterDatabase {
-  /// Configuration details for the disk cache to increase performance reading from a KX database mounted to the cluster. See cache_configurations.
+  /// Configuration details for the disk cache to increase performance reading from a KX database mounted to the cluster. See `cacheConfigurations` Block.
   final pulumi.Input<List<KxClusterDatabaseCacheConfiguration>>? cacheConfigurations;
-  /// A unique identifier of the changeset that is associated with the cluster.
+  /// Unique identifier of the changeset that is associated with the cluster.
   final pulumi.Input<String>? changesetId;
   /// Name of the KX database.
   final pulumi.Input<String> databaseName;
-  /// The name of the dataview to be used for caching historical data on disk. You cannot update to a different dataview name once a cluster is created. Use `lifecycle` `ignore_changes` for database to prevent any undesirable behaviors.
+  /// Name of the dataview to be used for caching historical data on disk. You cannot update to a different dataview name once a cluster is created. Use `lifecycle` `ignoreChanges` for database to prevent any undesirable behaviors.
   final pulumi.Input<String>? dataviewName;
 
   /// Creates a new [KxClusterDatabase].
-  /// [cacheConfigurations] Configuration details for the disk cache to increase performance reading from a KX database mounted to the cluster. See cache_configurations.
-  /// [changesetId] A unique identifier of the changeset that is associated with the cluster.
+  /// [cacheConfigurations] Configuration details for the disk cache to increase performance reading from a KX database mounted to the cluster. See `cacheConfigurations` Block.
+  /// [changesetId] Unique identifier of the changeset that is associated with the cluster.
   /// [databaseName] Name of the KX database.
-  /// [dataviewName] The name of the dataview to be used for caching historical data on disk. You cannot update to a different dataview name once a cluster is created. Use `lifecycle` `ignore_changes` for database to prevent any undesirable behaviors.
+  /// [dataviewName] Name of the dataview to be used for caching historical data on disk. You cannot update to a different dataview name once a cluster is created. Use `lifecycle` `ignoreChanges` for database to prevent any undesirable behaviors.
   const KxClusterDatabase({
     this.cacheConfigurations,
     this.changesetId,
@@ -43,4 +43,3 @@ class KxClusterDatabase {
     );
   }
 }
-

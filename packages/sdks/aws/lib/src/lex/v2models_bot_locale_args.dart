@@ -26,7 +26,7 @@ class V2modelsBotLocaleArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<V2modelsBotLocaleTimeouts>? timeouts;
-  /// Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. See `voice_settings`.
+  /// Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. See `voiceSettings`.
   final pulumi.Input<V2modelsBotLocaleVoiceSettings>? voiceSettings;
 
   /// Creates a new [V2modelsBotLocaleArgs].
@@ -38,7 +38,7 @@ class V2modelsBotLocaleArgs {
   /// [name] Specified locale name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
-  /// [voiceSettings] Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. See `voice_settings`.
+  /// [voiceSettings] Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. See `voiceSettings`.
   const V2modelsBotLocaleArgs({
     required this.botId,
     required this.botVersion,
@@ -79,4 +79,3 @@ class V2modelsBotLocaleArgs {
     );
   }
 }
-

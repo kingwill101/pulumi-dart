@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduledActionScalableTargetAction {
-  /// Maximum capacity. At least one of `max_capacity` or `min_capacity` must be set.
+  /// Maximum capacity. At least one of `maxCapacity` or `minCapacity` must be set.
   final pulumi.Input<int>? maxCapacity;
-  /// Minimum capacity. At least one of `min_capacity` or `max_capacity` must be set.
+  /// Minimum capacity. At least one of `minCapacity` or `maxCapacity` must be set.
   final pulumi.Input<int>? minCapacity;
 
   /// Creates a new [ScheduledActionScalableTargetAction].
-  /// [maxCapacity] Maximum capacity. At least one of `max_capacity` or `min_capacity` must be set.
-  /// [minCapacity] Minimum capacity. At least one of `min_capacity` or `max_capacity` must be set.
+  /// [maxCapacity] Maximum capacity. At least one of `maxCapacity` or `minCapacity` must be set.
+  /// [minCapacity] Minimum capacity. At least one of `minCapacity` or `maxCapacity` must be set.
   const ScheduledActionScalableTargetAction({
     this.maxCapacity,
     this.minCapacity,
@@ -30,4 +30,3 @@ class ScheduledActionScalableTargetAction {
     );
   }
 }
-

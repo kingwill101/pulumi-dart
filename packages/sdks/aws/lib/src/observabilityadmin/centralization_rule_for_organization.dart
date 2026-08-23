@@ -165,6 +165,42 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_organizations_getorganization" "currentGetOrganization" {
+/// }
+///
+/// resource "aws_observabilityadmin_centralizationrulefororganization" "example" {
+///   rule_name = "example-centralization-rule"
+///   rule = {
+///     destination = {
+///       region  = "eu-west-1"
+///       account = data.aws_getcalleridentity.current.account_id
+///     }
+///     source = {
+///       regions = ["ap-southeast-1"]
+///       scope   ="OrganizationId = '${data.aws_organizations_getorganization.currentGetOrganization.id}'"
+///       source_logs_configuration = {
+///         encrypted_log_group_strategy = "SKIP"
+///         log_group_selection_criteria = "*"
+///       }
+///     }
+///   }
+///   tags = {
+///     "Name"        = "example-centralization-rule"
+///     "Environment" = "production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -181,8 +217,8 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// import com.pulumi.aws.observabilityadmin.inputs.CentralizationRuleForOrganizationRuleDestinationArgs;
 /// import com.pulumi.aws.observabilityadmin.inputs.CentralizationRuleForOrganizationRuleSourceArgs;
 /// import com.pulumi.aws.observabilityadmin.inputs.CentralizationRuleForOrganizationRuleSourceSourceLogsConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -257,7 +293,7 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// ```
 ///
 ///
-/// ### Advanced Configuration with Encryption and Backup
+/// ### Advanced Configuration with Encryption, Backup and Log Group Name Configuration
 ///
 ///
 /// ```typescript
@@ -278,6 +314,9 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///                 },
 ///                 backupConfiguration: {
 ///                     region: "us-west-1",
+///                 },
+///                 logGroupNameConfiguration: {
+///                     logGroupNamePattern: "/centralized-logs/${source.accountId}/${source.region}/${source.logGroup}",
 ///                 },
 ///             },
 ///         },
@@ -318,6 +357,9 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///                 },
 ///                 "backup_configuration": {
 ///                     "region": "us-west-1",
+///                 },
+///                 "log_group_name_configuration": {
+///                     "log_group_name_pattern": "/centralized-logs/${source.accountId}/${source.region}/${source.logGroup}",
 ///                 },
 ///             },
 ///         },
@@ -369,6 +411,10 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///                     BackupConfiguration = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfigurationArgs
 ///                     {
 ///                         Region = "us-west-1",
+///                     },
+///                     LogGroupNameConfiguration = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogGroupNameConfigurationArgs
+///                     {
+///                         LogGroupNamePattern = "/centralized-logs/${source.accountId}/${source.region}/${source.logGroup}",
 ///                     },
 ///                 },
 ///             },
@@ -430,6 +476,9 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// 						BackupConfiguration: &observabilityadmin.CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfigurationArgs{
 /// 							Region: pulumi.String("us-west-1"),
 /// 						},
+/// 						LogGroupNameConfiguration: &observabilityadmin.CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogGroupNameConfigurationArgs{
+/// 							LogGroupNamePattern: pulumi.String("/centralized-logs/${source.accountId}/${source.region}/${source.logGroup}"),
+/// 						},
 /// 					},
 /// 				},
 /// 				Source: &observabilityadmin.CentralizationRuleForOrganizationRuleSourceArgs{
@@ -457,6 +506,54 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_organizations_getorganization" "currentGetOrganization" {
+/// }
+///
+/// resource "aws_observabilityadmin_centralizationrulefororganization" "advanced" {
+///   rule_name = "advanced-centralization-rule"
+///   rule = {
+///     destination = {
+///       region  = "eu-west-1"
+///       account = data.aws_getcalleridentity.current.account_id
+///       destination_logs_configuration = {
+///         logs_encryption_configuration = {
+///           encryption_strategy = "AWS_OWNED"
+///         }
+///         backup_configuration = {
+///           region = "us-west-1"
+///         }
+///         log_group_name_configuration = {
+///           log_group_name_pattern = "/centralized-logs/$${source.accountId}/$${source.region}/$${source.logGroup}"
+///         }
+///       }
+///     }
+///     source = {
+///       regions = ["ap-southeast-1", "us-east-1"]
+///       scope   ="OrganizationId = '${data.aws_organizations_getorganization.currentGetOrganization.id}'"
+///       source_logs_configuration = {
+///         encrypted_log_group_strategy = "ALLOW"
+///         log_group_selection_criteria = "*"
+///       }
+///     }
+///   }
+///   tags = {
+///     "Name"        = "advanced-centralization-rule"
+///     "Environment" = "production"
+///     "Team"        = "observability"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -474,10 +571,11 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// import com.pulumi.aws.observabilityadmin.inputs.CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationArgs;
 /// import com.pulumi.aws.observabilityadmin.inputs.CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfigurationArgs;
 /// import com.pulumi.aws.observabilityadmin.inputs.CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfigurationArgs;
+/// import com.pulumi.aws.observabilityadmin.inputs.CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogGroupNameConfigurationArgs;
 /// import com.pulumi.aws.observabilityadmin.inputs.CentralizationRuleForOrganizationRuleSourceArgs;
 /// import com.pulumi.aws.observabilityadmin.inputs.CentralizationRuleForOrganizationRuleSourceSourceLogsConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -507,6 +605,9 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///                             .build())
 ///                         .backupConfiguration(CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfigurationArgs.builder()
 ///                             .region("us-west-1")
+///                             .build())
+///                         .logGroupNameConfiguration(CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogGroupNameConfigurationArgs.builder()
+///                             .logGroupNamePattern("/centralized-logs/${source.accountId}/${source.region}/${source.logGroup}")
 ///                             .build())
 ///                         .build())
 ///                     .build())
@@ -546,6 +647,8 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///               encryptionStrategy: AWS_OWNED
 ///             backupConfiguration:
 ///               region: us-west-1
+///             logGroupNameConfiguration:
+///               logGroupNamePattern: /centralized-logs/$${source.accountId}/$${source.region}/$${source.logGroup}
 ///         source:
 ///           regions:
 ///             - ap-southeast-1
@@ -731,6 +834,42 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_organizations_getorganization" "currentGetOrganization" {
+/// }
+///
+/// resource "aws_observabilityadmin_centralizationrulefororganization" "filtered" {
+///   rule_name = "filtered-centralization-rule"
+///   rule = {
+///     destination = {
+///       region  = "eu-west-1"
+///       account = data.aws_getcalleridentity.current.account_id
+///     }
+///     source = {
+///       regions = ["ap-southeast-1", "us-east-1"]
+///       scope   ="OrganizationId = '${data.aws_organizations_getorganization.currentGetOrganization.id}'"
+///       source_logs_configuration = {
+///         encrypted_log_group_strategy = "ALLOW"
+///         log_group_selection_criteria = "LogGroupName LIKE '/aws/lambda%'"
+///       }
+///     }
+///   }
+///   tags = {
+///     "Name"   = "filtered-centralization-rule"
+///     "Filter" = "lambda-logs"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -747,8 +886,8 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// import com.pulumi.aws.observabilityadmin.inputs.CentralizationRuleForOrganizationRuleDestinationArgs;
 /// import com.pulumi.aws.observabilityadmin.inputs.CentralizationRuleForOrganizationRuleSourceArgs;
 /// import com.pulumi.aws.observabilityadmin.inputs.CentralizationRuleForOrganizationRuleSourceSourceLogsConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -826,9 +965,303 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// ```
 ///
 ///
+/// ### Metrics Centralization with Backup
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const current = aws.getCallerIdentity({});
+/// const currentGetOrganization = aws.organizations.getOrganization({});
+/// const metrics = new aws.observabilityadmin.CentralizationRuleForOrganization("metrics", {
+///     ruleName: "metrics-centralization-rule",
+///     rule: {
+///         destination: {
+///             region: "eu-west-1",
+///             account: current.then(current => current.accountId),
+///             destinationMetricsConfiguration: {
+///                 backupConfiguration: {
+///                     region: "us-west-1",
+///                 },
+///             },
+///         },
+///         source: {
+///             regions: [
+///                 "ap-southeast-1",
+///                 "us-east-1",
+///             ],
+///             scope: currentGetOrganization.then(currentGetOrganization => `OrganizationId = '${currentGetOrganization.id}'`),
+///             sourceMetricsConfiguration: {
+///                 metricsSelectionCriteria: "*",
+///             },
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// current = aws.get_caller_identity()
+/// current_get_organization = aws.organizations.get_organization()
+/// metrics = aws.observabilityadmin.CentralizationRuleForOrganization("metrics",
+///     rule_name="metrics-centralization-rule",
+///     rule={
+///         "destination": {
+///             "region": "eu-west-1",
+///             "account": current.account_id,
+///             "destination_metrics_configuration": {
+///                 "backup_configuration": {
+///                     "region": "us-west-1",
+///                 },
+///             },
+///         },
+///         "source": {
+///             "regions": [
+///                 "ap-southeast-1",
+///                 "us-east-1",
+///             ],
+///             "scope": f"OrganizationId = '{current_get_organization.id}'",
+///             "source_metrics_configuration": {
+///                 "metrics_selection_criteria": "*",
+///             },
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var current = Aws.GetCallerIdentity.Invoke();
+///
+///     var currentGetOrganization = Aws.Organizations.GetOrganization.Invoke();
+///
+///     var metrics = new Aws.Observabilityadmin.CentralizationRuleForOrganization("metrics", new()
+///     {
+///         RuleName = "metrics-centralization-rule",
+///         Rule = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleArgs
+///         {
+///             Destination = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleDestinationArgs
+///             {
+///                 Region = "eu-west-1",
+///                 Account = current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
+///                 DestinationMetricsConfiguration = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfigurationArgs
+///                 {
+///                     BackupConfiguration = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfigurationBackupConfigurationArgs
+///                     {
+///                         Region = "us-west-1",
+///                     },
+///                 },
+///             },
+///             Source = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleSourceArgs
+///             {
+///                 Regions = new[]
+///                 {
+///                     "ap-southeast-1",
+///                     "us-east-1",
+///                 },
+///                 Scope = $"OrganizationId = '{currentGetOrganization.Apply(getOrganizationResult => getOrganizationResult.Id)}'",
+///                 SourceMetricsConfiguration = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleSourceSourceMetricsConfigurationArgs
+///                 {
+///                     MetricsSelectionCriteria = "*",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/observabilityadmin"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/organizations"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		current, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		currentGetOrganization, err := organizations.LookupOrganization(ctx, &organizations.LookupOrganizationArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = observabilityadmin.NewCentralizationRuleForOrganization(ctx, "metrics", &observabilityadmin.CentralizationRuleForOrganizationArgs{
+/// 			RuleName: pulumi.String("metrics-centralization-rule"),
+/// 			Rule: &observabilityadmin.CentralizationRuleForOrganizationRuleArgs{
+/// 				Destination: &observabilityadmin.CentralizationRuleForOrganizationRuleDestinationArgs{
+/// 					Region:  pulumi.String("eu-west-1"),
+/// 					Account: pulumi.String(current.AccountId),
+/// 					DestinationMetricsConfiguration: &observabilityadmin.CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfigurationArgs{
+/// 						BackupConfiguration: &observabilityadmin.CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfigurationBackupConfigurationArgs{
+/// 							Region: pulumi.String("us-west-1"),
+/// 						},
+/// 					},
+/// 				},
+/// 				Source: &observabilityadmin.CentralizationRuleForOrganizationRuleSourceArgs{
+/// 					Regions: pulumi.StringArray{
+/// 						pulumi.String("ap-southeast-1"),
+/// 						pulumi.String("us-east-1"),
+/// 					},
+/// 					Scope: pulumi.Sprintf("OrganizationId = '%v'", currentGetOrganization.Id),
+/// 					SourceMetricsConfiguration: &observabilityadmin.CentralizationRuleForOrganizationRuleSourceSourceMetricsConfigurationArgs{
+/// 						MetricsSelectionCriteria: pulumi.String("*"),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_organizations_getorganization" "currentGetOrganization" {
+/// }
+///
+/// resource "aws_observabilityadmin_centralizationrulefororganization" "metrics" {
+///   rule_name = "metrics-centralization-rule"
+///   rule = {
+///     destination = {
+///       region  = "eu-west-1"
+///       account = data.aws_getcalleridentity.current.account_id
+///       destination_metrics_configuration = {
+///         backup_configuration = {
+///           region = "us-west-1"
+///         }
+///       }
+///     }
+///     source = {
+///       regions = ["ap-southeast-1", "us-east-1"]
+///       scope   ="OrganizationId = '${data.aws_organizations_getorganization.currentGetOrganization.id}'"
+///       source_metrics_configuration = {
+///         metrics_selection_criteria = "*"
+///       }
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
+/// import com.pulumi.aws.organizations.OrganizationsFunctions;
+/// import com.pulumi.aws.organizations.inputs.GetOrganizationArgs;
+/// import com.pulumi.aws.observabilityadmin.CentralizationRuleForOrganization;
+/// import com.pulumi.aws.observabilityadmin.CentralizationRuleForOrganizationArgs;
+/// import com.pulumi.aws.observabilityadmin.inputs.CentralizationRuleForOrganizationRuleArgs;
+/// import com.pulumi.aws.observabilityadmin.inputs.CentralizationRuleForOrganizationRuleDestinationArgs;
+/// import com.pulumi.aws.observabilityadmin.inputs.CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfigurationArgs;
+/// import com.pulumi.aws.observabilityadmin.inputs.CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfigurationBackupConfigurationArgs;
+/// import com.pulumi.aws.observabilityadmin.inputs.CentralizationRuleForOrganizationRuleSourceArgs;
+/// import com.pulumi.aws.observabilityadmin.inputs.CentralizationRuleForOrganizationRuleSourceSourceMetricsConfigurationArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var current = AwsFunctions.getCallerIdentity(GetCallerIdentityArgs.builder()
+///             .build());
+///
+///         final var currentGetOrganization = OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
+///             .build());
+///
+///         var metrics = new CentralizationRuleForOrganization("metrics", CentralizationRuleForOrganizationArgs.builder()
+///             .ruleName("metrics-centralization-rule")
+///             .rule(CentralizationRuleForOrganizationRuleArgs.builder()
+///                 .destination(CentralizationRuleForOrganizationRuleDestinationArgs.builder()
+///                     .region("eu-west-1")
+///                     .account(current.accountId())
+///                     .destinationMetricsConfiguration(CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfigurationArgs.builder()
+///                         .backupConfiguration(CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfigurationBackupConfigurationArgs.builder()
+///                             .region("us-west-1")
+///                             .build())
+///                         .build())
+///                     .build())
+///                 .source(CentralizationRuleForOrganizationRuleSourceArgs.builder()
+///                     .regions(
+///                         "ap-southeast-1",
+///                         "us-east-1")
+///                     .scope(String.format("OrganizationId = '%s'", currentGetOrganization.id()))
+///                     .sourceMetricsConfiguration(CentralizationRuleForOrganizationRuleSourceSourceMetricsConfigurationArgs.builder()
+///                         .metricsSelectionCriteria("*")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   metrics:
+///     type: aws:observabilityadmin:CentralizationRuleForOrganization
+///     properties:
+///       ruleName: metrics-centralization-rule
+///       rule:
+///         destination:
+///           region: eu-west-1
+///           account: ${current.accountId}
+///           destinationMetricsConfiguration:
+///             backupConfiguration:
+///               region: us-west-1
+///         source:
+///           regions:
+///             - ap-southeast-1
+///             - us-east-1
+///           scope: OrganizationId = '${currentGetOrganization.id}'
+///           sourceMetricsConfiguration:
+///             metricsSelectionCriteria: '*'
+/// variables:
+///   current:
+///     fn::invoke:
+///       function: aws:getCallerIdentity
+///       arguments: {}
+///   currentGetOrganization:
+///     fn::invoke:
+///       function: aws:organizations:getOrganization
+///       arguments: {}
+/// ```
+///
+///
 /// ## Import
 ///
-/// Using `pulumi import`, import CloudWatch Observability Admin Centralization Rule For Organization using the `rule_name`. For example:
+/// Using `pulumi import`, import CloudWatch Observability Admin Centralization Rule For Organization using the `ruleName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:observabilityadmin/centralizationRuleForOrganization:CentralizationRuleForOrganization example example-centralization-rule
@@ -844,9 +1277,9 @@ class CentralizationRuleForOrganization extends pulumi.CustomResource {
   late final pulumi.Output<String> ruleArn;
   /// Name of the centralization rule. Must be unique within the organization.
   late final pulumi.Output<String> ruleName;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<CentralizationRuleForOrganizationTimeouts?> timeouts;
 

@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSubscribedRuleGroupArgs {
   /// Name of the WAF rule group.
   ///
-  /// At least one of `name` or `metric_name` must be configured.
+  /// At least one of `name` or `metricName` must be configured.
   final pulumi.Input<String>? metricName;
   /// Name of the WAF rule group.
   final pulumi.Input<String>? name;
@@ -36,4 +36,3 @@ class GetSubscribedRuleGroupArgs {
     );
   }
 }
-

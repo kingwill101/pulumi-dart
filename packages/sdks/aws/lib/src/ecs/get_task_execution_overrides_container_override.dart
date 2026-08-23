@@ -5,29 +5,29 @@ import 'get_task_execution_overrides_container_override_environment.dart';
 import 'get_task_execution_overrides_container_override_resource_requirement.dart';
 
 class GetTaskExecutionOverridesContainerOverride {
-  /// The command to send to the container that overrides the default command from the Docker image or the task definition.
+  /// Command to send to the container that overrides the default command from the Docker image or the task definition.
   final pulumi.Input<List<String>>? commands;
-  /// The number of cpu units reserved for the container, instead of the default value from the task definition.
+  /// Number of cpu units reserved for the container, instead of the default value from the task definition.
   final pulumi.Input<int>? cpu;
-  /// The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the task definition. See below.
+  /// Environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the task definition. See below.
   final pulumi.Input<List<GetTaskExecutionOverridesContainerOverrideEnvironment>>? environments;
-  /// The hard limit (in MiB) of memory to present to the container, instead of the default value from the task definition. If your container attempts to exceed the memory specified here, the container is killed.
+  /// Hard limit (in MiB) of memory to present to the container, instead of the default value from the task definition. If your container attempts to exceed the memory specified here, the container is killed.
   final pulumi.Input<int>? memory;
-  /// The soft limit (in MiB) of memory to reserve for the container, instead of the default value from the task definition.
+  /// Soft limit (in MiB) of memory to reserve for the container, instead of the default value from the task definition.
   final pulumi.Input<int>? memoryReservation;
-  /// The name of the container that receives the override. This parameter is required if any override is specified.
+  /// Name of the container that receives the override. This parameter is required if any override is specified.
   final pulumi.Input<String> name;
-  /// The type and amount of a resource to assign to a container, instead of the default value from the task definition. The only supported resource is a GPU. See below.
+  /// Type and amount of a resource to assign to a container, instead of the default value from the task definition. The only supported resource is a GPU. See below.
   final pulumi.Input<List<GetTaskExecutionOverridesContainerOverrideResourceRequirement>>? resourceRequirements;
 
   /// Creates a new [GetTaskExecutionOverridesContainerOverride].
-  /// [commands] The command to send to the container that overrides the default command from the Docker image or the task definition.
-  /// [cpu] The number of cpu units reserved for the container, instead of the default value from the task definition.
-  /// [environments] The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the task definition. See below.
-  /// [memory] The hard limit (in MiB) of memory to present to the container, instead of the default value from the task definition. If your container attempts to exceed the memory specified here, the container is killed.
-  /// [memoryReservation] The soft limit (in MiB) of memory to reserve for the container, instead of the default value from the task definition.
-  /// [name] The name of the container that receives the override. This parameter is required if any override is specified.
-  /// [resourceRequirements] The type and amount of a resource to assign to a container, instead of the default value from the task definition. The only supported resource is a GPU. See below.
+  /// [commands] Command to send to the container that overrides the default command from the Docker image or the task definition.
+  /// [cpu] Number of cpu units reserved for the container, instead of the default value from the task definition.
+  /// [environments] Environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the task definition. See below.
+  /// [memory] Hard limit (in MiB) of memory to present to the container, instead of the default value from the task definition. If your container attempts to exceed the memory specified here, the container is killed.
+  /// [memoryReservation] Soft limit (in MiB) of memory to reserve for the container, instead of the default value from the task definition.
+  /// [name] Name of the container that receives the override. This parameter is required if any override is specified.
+  /// [resourceRequirements] Type and amount of a resource to assign to a container, instead of the default value from the task definition. The only supported resource is a GPU. See below.
   const GetTaskExecutionOverridesContainerOverride({
     this.commands,
     this.cpu,
@@ -62,4 +62,3 @@ class GetTaskExecutionOverridesContainerOverride {
     );
   }
 }
-

@@ -5,25 +5,25 @@
 class GetObjectResult {
   /// ARN of the object.
   final String arn;
-  /// Object data (see **limitations above** to understand cases in which this field is actually available). If `download_body` is set to `false`, `body` is not available.
+  /// Object data (see **limitations above** to understand cases in which this field is actually available). If `downloadBody` is set to `false`, `body` is not available.
   final String body;
-  /// Object data as base64 encoded string. **This is only available if `download_body` is set to `true`.**
+  /// Object data as base64 encoded string. **This is only available if `downloadBody` is set to `true`.**
   final String bodyBase64;
   final String bucket;
-  /// (Optional) Whether or not to use [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) for SSE-KMS.
+  /// Whether or not to use [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) for SSE-KMS.
   final bool bucketKeyEnabled;
   /// Caching behavior along the request/reply chain.
   final String cacheControl;
-  /// The base64-encoded, 32-bit CRC32 checksum of the object.
+  /// Base64-encoded, 32-bit CRC32 checksum of the object.
   final String checksumCrc32;
-  /// The base64-encoded, 32-bit CRC32C checksum of the object.
+  /// Base64-encoded, 32-bit CRC32C checksum of the object.
   final String checksumCrc32c;
-  /// The base64-encoded, 64-bit CRC64NVME checksum of the object.
+  /// Base64-encoded, 64-bit CRC64NVME checksum of the object.
   final String checksumCrc64nvme;
   final String? checksumMode;
-  /// The base64-encoded, 160-bit SHA-1 digest of the object.
+  /// Base64-encoded, 160-bit SHA-1 digest of the object.
   final String checksumSha1;
-  /// The base64-encoded, 256-bit SHA-256 digest of the object.
+  /// Base64-encoded, 256-bit SHA-256 digest of the object.
   final String checksumSha256;
   /// Presentational information for the object.
   final String contentDisposition;
@@ -49,11 +49,11 @@ class GetObjectResult {
   final String lastModified;
   /// Map of metadata stored with the object in S3. Keys are always returned in lowercase.
   final Map<String, String> metadata;
-  /// Indicates whether this object has an active [legal hold](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-legal-holds). This field is only returned if you have permission to view an object's legal hold status.
+  /// Whether this object has an active [legal hold](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-legal-holds). This field is only returned if you have permission to view an object's legal hold status.
   final String objectLockLegalHoldStatus;
   /// Object lock [retention mode](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-retention-modes) currently in place for this object.
   final String objectLockMode;
-  /// The date and time when this object's object lock will expire.
+  /// Date and time when this object's object lock will expire.
   final String objectLockRetainUntilDate;
   final String? range;
   final String region;
@@ -72,17 +72,17 @@ class GetObjectResult {
 
   /// Creates a new [GetObjectResult].
   /// [arn] ARN of the object.
-  /// [body] Object data (see **limitations above** to understand cases in which this field is actually available). If `download_body` is set to `false`, `body` is not available.
-  /// [bodyBase64] Object data as base64 encoded string. **This is only available if `download_body` is set to `true`.**
+  /// [body] Object data (see **limitations above** to understand cases in which this field is actually available). If `downloadBody` is set to `false`, `body` is not available.
+  /// [bodyBase64] Object data as base64 encoded string. **This is only available if `downloadBody` is set to `true`.**
   /// [bucket] Required.
-  /// [bucketKeyEnabled] (Optional) Whether or not to use [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) for SSE-KMS.
+  /// [bucketKeyEnabled] Whether or not to use [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) for SSE-KMS.
   /// [cacheControl] Caching behavior along the request/reply chain.
-  /// [checksumCrc32] The base64-encoded, 32-bit CRC32 checksum of the object.
-  /// [checksumCrc32c] The base64-encoded, 32-bit CRC32C checksum of the object.
-  /// [checksumCrc64nvme] The base64-encoded, 64-bit CRC64NVME checksum of the object.
+  /// [checksumCrc32] Base64-encoded, 32-bit CRC32 checksum of the object.
+  /// [checksumCrc32c] Base64-encoded, 32-bit CRC32C checksum of the object.
+  /// [checksumCrc64nvme] Base64-encoded, 64-bit CRC64NVME checksum of the object.
   /// [checksumMode] Optional.
-  /// [checksumSha1] The base64-encoded, 160-bit SHA-1 digest of the object.
-  /// [checksumSha256] The base64-encoded, 256-bit SHA-256 digest of the object.
+  /// [checksumSha1] Base64-encoded, 160-bit SHA-1 digest of the object.
+  /// [checksumSha256] Base64-encoded, 256-bit SHA-256 digest of the object.
   /// [contentDisposition] Presentational information for the object.
   /// [contentEncoding] What content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
   /// [contentLanguage] Language the content is in.
@@ -96,9 +96,9 @@ class GetObjectResult {
   /// [key] Required.
   /// [lastModified] Last modified date of the object in RFC1123 format (e.g., `Mon, 02 Jan 2006 15:04:05 MST`)
   /// [metadata] Map of metadata stored with the object in S3. Keys are always returned in lowercase.
-  /// [objectLockLegalHoldStatus] Indicates whether this object has an active [legal hold](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-legal-holds). This field is only returned if you have permission to view an object's legal hold status.
+  /// [objectLockLegalHoldStatus] Whether this object has an active [legal hold](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-legal-holds). This field is only returned if you have permission to view an object's legal hold status.
   /// [objectLockMode] Object lock [retention mode](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-retention-modes) currently in place for this object.
-  /// [objectLockRetainUntilDate] The date and time when this object's object lock will expire.
+  /// [objectLockRetainUntilDate] Date and time when this object's object lock will expire.
   /// [range] Optional.
   /// [region] Required.
   /// [serverSideEncryption] If the object is stored using server-side encryption (KMS or Amazon S3-managed encryption key), this field includes the chosen encryption and algorithm used.
@@ -228,4 +228,3 @@ class GetObjectResult {
     );
   }
 }
-

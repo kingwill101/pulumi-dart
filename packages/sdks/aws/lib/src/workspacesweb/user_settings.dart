@@ -77,6 +77,23 @@ import 'user_settings_toolbar_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspacesweb_usersettings" "example" {
+///   copy_allowed     = "Enabled"
+///   download_allowed = "Enabled"
+///   paste_allowed    = "Enabled"
+///   print_allowed    = "Enabled"
+///   upload_allowed   = "Enabled"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +102,8 @@ import 'user_settings_toolbar_configuration.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.workspacesweb.UserSettings;
 /// import com.pulumi.aws.workspacesweb.UserSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -225,6 +242,28 @@ import 'user_settings_toolbar_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspacesweb_usersettings" "example" {
+///   copy_allowed     = "Enabled"
+///   download_allowed = "Enabled"
+///   paste_allowed    = "Enabled"
+///   print_allowed    = "Enabled"
+///   upload_allowed   = "Enabled"
+///   toolbar_configuration = {
+///     toolbar_type         = "Docked"
+///     visual_mode          = "Dark"
+///     hidden_toolbar_items = ["Webcam", "Microphone"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -234,8 +273,8 @@ import 'user_settings_toolbar_configuration.dart';
 /// import com.pulumi.aws.workspacesweb.UserSettings;
 /// import com.pulumi.aws.workspacesweb.UserSettingsArgs;
 /// import com.pulumi.aws.workspacesweb.inputs.UserSettingsToolbarConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -503,6 +542,52 @@ import 'user_settings_toolbar_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "KMS key for WorkSpaces Web User Settings"
+///   deletion_window_in_days = 7
+/// }
+/// resource "aws_workspacesweb_usersettings" "example" {
+///   copy_allowed                       = "Enabled"
+///   download_allowed                   = "Enabled"
+///   paste_allowed                      = "Enabled"
+///   print_allowed                      = "Enabled"
+///   upload_allowed                     = "Enabled"
+///   deep_link_allowed                  = "Enabled"
+///   disconnect_timeout_in_minutes      = 30
+///   idle_disconnect_timeout_in_minutes = 15
+///   customer_managed_key               = aws_kms_key.example.arn
+///   additional_encryption_context = {
+///     "Environment" = "Production"
+///   }
+///   toolbar_configuration = {
+///     toolbar_type           = "Docked"
+///     visual_mode            = "Dark"
+///     hidden_toolbar_items   = ["Webcam", "Microphone"]
+///     max_display_resolution = "size1920X1080"
+///   }
+///   cookie_synchronization_configuration = {
+///     allowlists = [{
+///       "domain" = "example.com"
+///       "path"   = "/path"
+///     }]
+///     blocklists = [{
+///       "domain" = "blocked.com"
+///     }]
+///   }
+///   tags = {
+///     "Name" = "example-user-settings"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -515,8 +600,10 @@ import 'user_settings_toolbar_configuration.dart';
 /// import com.pulumi.aws.workspacesweb.UserSettingsArgs;
 /// import com.pulumi.aws.workspacesweb.inputs.UserSettingsToolbarConfigurationArgs;
 /// import com.pulumi.aws.workspacesweb.inputs.UserSettingsCookieSynchronizationConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.workspacesweb.inputs.UserSettingsCookieSynchronizationConfigurationAllowlistArgs;
+/// import com.pulumi.aws.workspacesweb.inputs.UserSettingsCookieSynchronizationConfigurationBlocklistArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -609,7 +696,7 @@ import 'user_settings_toolbar_configuration.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import WorkSpaces Web User Settings using the `user_settings_arn`. For example:
+/// Using `pulumi import`, import WorkSpaces Web User Settings using the `userSettingsArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:workspacesweb/userSettings:UserSettings example arn:aws:workspacesweb:us-west-2:123456789012:usersettings/abcdef12345
@@ -639,9 +726,9 @@ class UserSettings extends pulumi.CustomResource {
   late final pulumi.Output<String> printAllowed;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration of the toolbar. Detailed below.
   late final pulumi.Output<UserSettingsToolbarConfiguration?> toolbarConfiguration;

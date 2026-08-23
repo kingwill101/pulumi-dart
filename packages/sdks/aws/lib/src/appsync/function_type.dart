@@ -219,7 +219,7 @@ import 'function_sync_config.dart';
 /// 			return err
 /// 		}
 /// 		exampleDataSource, err := appsync.NewDataSource(ctx, "example", &appsync.DataSourceArgs{
-/// 			ApiId: example.ID(),
+/// 			ApiId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:  pulumi.String("example"),
 /// 			Type:  pulumi.String("HTTP"),
 /// 			HttpConfig: &appsync.DataSourceHttpConfigArgs{
@@ -230,7 +230,7 @@ import 'function_sync_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appsync.NewFunction(ctx, "example", &appsync.FunctionArgs{
-/// 			ApiId:      example.ID(),
+/// 			ApiId:      example.ID().ToIDOutput().ToStringOutput(),
 /// 			DataSource: exampleDataSource.Name,
 /// 			Name:       pulumi.String("example"),
 /// 			RequestMappingTemplate: pulumi.String(`{
@@ -256,6 +256,36 @@ import 'function_sync_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appsync_graphqlapi" "example" {
+///   authentication_type = "API_KEY"
+///   name                = "example"
+///   schema              = "type Mutation {\n  putPost(id: ID!, title: String!): Post\n}\n\ntype Post {\n  id: ID!\n  title: String!\n}\n\ntype Query {\n  singlePost(id: ID!): Post\n}\n\nschema {\n  query: Query\n  mutation: Mutation\n}\n"
+/// }
+/// resource "aws_appsync_datasource" "example" {
+///   api_id = aws_appsync_graphqlapi.example.id
+///   name   = "example"
+///   type   = "HTTP"
+///   http_config = {
+///     endpoint = "http://example.com"
+///   }
+/// }
+/// resource "aws_appsync_function" "example" {
+///   api_id                    = aws_appsync_graphqlapi.example.id
+///   data_source               = aws_appsync_datasource.example.name
+///   name                      = "example"
+///   request_mapping_template  = "{\n    \\\"version\\\": \\\"2018-05-29\\\",\n    \\\"method\\\": \\\"GET\\\",\n    \\\"resourcePath\\\": \\\"/\\\",\n    \\\"params\\\":{\n        \\\"headers\\\": $utils.http.copyheaders($ctx.request.headers)\n    }\n}\n"
+///   response_mapping_template = "#if($ctx.result.statusCode == 200)\n    $ctx.result.body\n#else\n    $utils.appendError($ctx.result.body, $ctx.result.statusCode)\n#end\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -269,8 +299,8 @@ import 'function_sync_config.dart';
 /// import com.pulumi.aws.appsync.inputs.DataSourceHttpConfigArgs;
 /// import com.pulumi.aws.appsync.Function;
 /// import com.pulumi.aws.appsync.FunctionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -400,8 +430,7 @@ import 'function_sync_config.dart';
 /// ```
 ///
 ///
-///
-/// ### With Code
+/// ### Example Usage With Code
 ///
 ///
 /// ```typescript
@@ -498,6 +527,29 @@ import 'function_sync_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appsync_function" "example" {
+///   api_id      = exampleAwsAppsyncGraphqlApi.id
+///   data_source = exampleAwsAppsyncDatasource.name
+///   name        = "example"
+///   code        = file("some-code-dir")
+///   runtime = {
+///     name            = "APPSYNC_JS"
+///     runtime_version = "1.0.0"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -509,8 +561,8 @@ import 'function_sync_config.dart';
 /// import com.pulumi.aws.appsync.inputs.FunctionRuntimeArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -570,7 +622,7 @@ class FunctionType extends pulumi.CustomResource {
   late final pulumi.Output<String> apiId;
   /// ARN of the Function object.
   late final pulumi.Output<String> arn;
-  /// The function code that contains the request and response functions. When code is used, the runtime is required. The runtime value must be APPSYNC_JS.
+  /// Function code that contains the request and response functions. When code is used, the runtime is required. The runtime value must be APPSYNC_JS.
   late final pulumi.Output<String?> code;
   /// Function data source name.
   late final pulumi.Output<String> dataSource;
@@ -590,9 +642,9 @@ class FunctionType extends pulumi.CustomResource {
   late final pulumi.Output<String?> requestMappingTemplate;
   /// Function response mapping template.
   late final pulumi.Output<String?> responseMappingTemplate;
-  /// Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See `runtime` Block for details.
+  /// Runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See `runtime` Block for details.
   late final pulumi.Output<FunctionRuntime?> runtime;
-  /// Describes a Sync configuration for a resolver. See `sync_config` Block for details.
+  /// Sync configuration for a resolver. See `syncConfig` Block for details.
   late final pulumi.Output<FunctionSyncConfig?> syncConfig;
 
   /// Creates a new [FunctionType].

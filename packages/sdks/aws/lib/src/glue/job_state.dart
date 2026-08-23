@@ -30,7 +30,7 @@ class JobState {
   final pulumi.Input<bool>? jobRunQueuingEnabled;
   /// Specifies the day of the week and hour for the maintenance window for streaming jobs.
   final pulumi.Input<String>? maintenanceWindow;
-  /// The maximum number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. `Required` when `pythonshell` is set, accept either `0.0625` or `1.0`. Use `number_of_workers` and `worker_type` arguments instead with `glue_version` `2.0` and above.
+  /// The maximum number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. `Required` when `pythonshell` is set, accept either `0.0625` or `1.0`. Use `numberOfWorkers` and `workerType` arguments instead with `glueVersion` `2.0` and above.
   final pulumi.Input<double>? maxCapacity;
   /// The maximum number of times to retry this job if it fails.
   final pulumi.Input<int>? maxRetries;
@@ -50,9 +50,9 @@ class JobState {
   final pulumi.Input<String>? securityConfiguration;
   /// The details for a source control configuration for a job, allowing synchronization of job artifacts to or from a remote repository. Defined below.
   final pulumi.Input<JobSourceControlDetails>? sourceControlDetails;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The job timeout in minutes. The default is 2880 minutes (48 hours) for `glueetl` and `pythonshell` jobs, and 0 (unlimited) for `gluestreaming` jobs. Leave this attribute argumnet unconfigured for `glueray` jobs.
   final pulumi.Input<int>? timeout;
@@ -71,7 +71,7 @@ class JobState {
   /// [jobMode] Describes how a job was created. Valid values are `SCRIPT`, `NOTEBOOK` and `VISUAL`.
   /// [jobRunQueuingEnabled] Specifies whether job run queuing is enabled for the job runs for this job. A value of true means job run queuing is enabled for the job runs. If false or not populated, the job runs will not be considered for queueing.
   /// [maintenanceWindow] Specifies the day of the week and hour for the maintenance window for streaming jobs.
-  /// [maxCapacity] The maximum number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. `Required` when `pythonshell` is set, accept either `0.0625` or `1.0`. Use `number_of_workers` and `worker_type` arguments instead with `glue_version` `2.0` and above.
+  /// [maxCapacity] The maximum number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. `Required` when `pythonshell` is set, accept either `0.0625` or `1.0`. Use `numberOfWorkers` and `workerType` arguments instead with `glueVersion` `2.0` and above.
   /// [maxRetries] The maximum number of times to retry this job if it fails.
   /// [name] The name you assign to this job. It must be unique in your account.
   /// [nonOverridableArguments] Non-overridable arguments for this job, specified as name-value pairs.
@@ -81,8 +81,8 @@ class JobState {
   /// [roleArn] The ARN of the IAM role associated with this job.
   /// [securityConfiguration] The name of the Security Configuration to be associated with the job.
   /// [sourceControlDetails] The details for a source control configuration for a job, allowing synchronization of job artifacts to or from a remote repository. Defined below.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeout] The job timeout in minutes. The default is 2880 minutes (48 hours) for `glueetl` and `pythonshell` jobs, and 0 (unlimited) for `gluestreaming` jobs. Leave this attribute argumnet unconfigured for `glueray` jobs.
   /// [workerType] The type of predefined worker that is allocated when a job runs. Valid values: `Standard`, `G.1X`, `G.2X`, `G.025X`, `G.4X`, `G.8X`, `G.12X`, `G.16X`, `R.1X`, `R.2X`, `R.4X`, `R.8X`, `Z.2X` (Ray jobs). See the [AWS documentation](https://docs.aws.amazon.com/glue/latest/dg/worker-types.html) for details.
   const JobState({
@@ -173,4 +173,3 @@ class JobState {
     );
   }
 }
-

@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReservedInstanceArgs {
   /// Number of instances to reserve. Default value is `1`.
   final pulumi.Input<int>? instanceCount;
-  /// ID of the Reserved DB instance offering to purchase. To determine an `offering_id`, see the `aws.rds.getReservedInstanceOffering` data source.
+  /// ID of the Reserved DB instance offering to purchase. To determine an `offeringId`, see the `aws.rds.getReservedInstanceOffering` data source.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> offeringId;
@@ -17,15 +17,15 @@ class ReservedInstanceArgs {
   final pulumi.Input<String>? region;
   /// Customer-specified identifier to track this reservation.
   final pulumi.Input<String>? reservationId;
-  /// Map of tags to assign to the DB reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the DB reservation. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ReservedInstanceArgs].
   /// [instanceCount] Number of instances to reserve. Default value is `1`.
-  /// [offeringId] ID of the Reserved DB instance offering to purchase. To determine an `offering_id`, see the `aws.rds.getReservedInstanceOffering` data source.
+  /// [offeringId] ID of the Reserved DB instance offering to purchase. To determine an `offeringId`, see the `aws.rds.getReservedInstanceOffering` data source.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [reservationId] Customer-specified identifier to track this reservation.
-  /// [tags] Map of tags to assign to the DB reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the DB reservation. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ReservedInstanceArgs({
     this.instanceCount,
     required this.offeringId,
@@ -54,4 +54,3 @@ class ReservedInstanceArgs {
     );
   }
 }
-

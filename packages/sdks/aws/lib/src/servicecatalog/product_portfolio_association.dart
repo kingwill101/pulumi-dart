@@ -63,6 +63,20 @@ import 'product_portfolio_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_servicecatalog_productportfolioassociation" "example" {
+///   portfolio_id = "port-68656c6c6f"
+///   product_id   = "prod-dnigbtea24ste"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'product_portfolio_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicecatalog.ProductPortfolioAssociation;
 /// import com.pulumi.aws.servicecatalog.ProductPortfolioAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

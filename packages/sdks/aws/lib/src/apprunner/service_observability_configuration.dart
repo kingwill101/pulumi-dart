@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceObservabilityConfiguration {
-  /// ARN of the observability configuration that is associated with the service. Specified only when `observability_enabled` is `true`.
+  /// ARN of the observability configuration that is associated with the service. Specified only when `observabilityEnabled` is `true`.
   final pulumi.Input<String>? observabilityConfigurationArn;
   /// When `true`, an observability configuration resource is associated with the service.
   final pulumi.Input<bool> observabilityEnabled;
 
   /// Creates a new [ServiceObservabilityConfiguration].
-  /// [observabilityConfigurationArn] ARN of the observability configuration that is associated with the service. Specified only when `observability_enabled` is `true`.
+  /// [observabilityConfigurationArn] ARN of the observability configuration that is associated with the service. Specified only when `observabilityEnabled` is `true`.
   /// [observabilityEnabled] When `true`, an observability configuration resource is associated with the service.
   const ServiceObservabilityConfiguration({
     this.observabilityConfigurationArn,
@@ -30,4 +30,3 @@ class ServiceObservabilityConfiguration {
     );
   }
 }
-

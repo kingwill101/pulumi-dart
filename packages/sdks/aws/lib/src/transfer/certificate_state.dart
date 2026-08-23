@@ -4,43 +4,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering Certificate resources.
 class CertificateState {
-  /// An date when the certificate becomes active
+  /// Date when the certificate becomes active
   final pulumi.Input<String>? activeDate;
-  /// The ARN of the certificate
+  /// ARN of the certificate
   final pulumi.Input<String>? arn;
-  /// The valid certificate file required for the transfer.
+  /// Valid certificate file required for the transfer.
   final pulumi.Input<String>? certificate;
-  /// The optional list of certificate that make up the chain for the certificate that is being imported.
+  /// Optional list of certificate that make up the chain for the certificate that is being imported.
   final pulumi.Input<String>? certificateChain;
-  /// The unique identifier for the AS2 certificate
+  /// Unique identifier for the AS2 certificate
   final pulumi.Input<String>? certificateId;
-  /// A short description that helps identify the certificate.
+  /// Short description that helps identify the certificate.
   final pulumi.Input<String>? description;
-  /// An date when the certificate becomes inactive
+  /// Date when the certificate becomes inactive
   final pulumi.Input<String>? inactiveDate;
-  /// The private key associated with the certificate being imported.
+  /// Private key associated with the certificate being imported.
   final pulumi.Input<String>? privateKey;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// Specifies if a certificate is being used for signing or encryption. The valid values are SIGNING and ENCRYPTION.
+  /// Whether a certificate is being used for signing or encryption. The valid values are SIGNING and ENCRYPTION.
   final pulumi.Input<String>? usage;
 
   /// Creates a new [CertificateState].
-  /// [activeDate] An date when the certificate becomes active
-  /// [arn] The ARN of the certificate
-  /// [certificate] The valid certificate file required for the transfer.
-  /// [certificateChain] The optional list of certificate that make up the chain for the certificate that is being imported.
-  /// [certificateId] The unique identifier for the AS2 certificate
-  /// [description] A short description that helps identify the certificate.
-  /// [inactiveDate] An date when the certificate becomes inactive
-  /// [privateKey] The private key associated with the certificate being imported.
+  /// [activeDate] Date when the certificate becomes active
+  /// [arn] ARN of the certificate
+  /// [certificate] Valid certificate file required for the transfer.
+  /// [certificateChain] Optional list of certificate that make up the chain for the certificate that is being imported.
+  /// [certificateId] Unique identifier for the AS2 certificate
+  /// [description] Short description that helps identify the certificate.
+  /// [inactiveDate] Date when the certificate becomes inactive
+  /// [privateKey] Private key associated with the certificate being imported.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
-  /// [usage] Specifies if a certificate is being used for signing or encryption. The valid values are SIGNING and ENCRYPTION.
+  /// [usage] Whether a certificate is being used for signing or encryption. The valid values are SIGNING and ENCRYPTION.
   const CertificateState({
     this.activeDate,
     this.arn,
@@ -90,4 +90,3 @@ class CertificateState {
     );
   }
 }
-

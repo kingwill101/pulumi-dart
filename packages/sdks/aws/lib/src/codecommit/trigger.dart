@@ -103,6 +103,27 @@ import 'trigger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codecommit_repository" "test" {
+///   repository_name = "test"
+/// }
+/// resource "aws_codecommit_trigger" "test" {
+///   repository_name = aws_codecommit_repository.test.repository_name
+///   triggers {
+///     name            = "all"
+///     events          = ["all"]
+///     destination_arn = testAwsSnsTopic.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +135,8 @@ import 'trigger_state.dart';
 /// import com.pulumi.aws.codecommit.Trigger;
 /// import com.pulumi.aws.codecommit.TriggerArgs;
 /// import com.pulumi.aws.codecommit.inputs.TriggerTriggerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -86,6 +86,25 @@ import 'human_task_uiui_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_humantaskui" "example" {
+///   human_task_ui_name = "example"
+///   ui_template = {
+///     content = file("sagemaker-human-task-ui-template.html")
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +116,8 @@ import 'human_task_uiui_template.dart';
 /// import com.pulumi.aws.sagemaker.inputs.HumanTaskUIUiTemplateArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -140,7 +159,7 @@ import 'human_task_uiui_template.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SageMaker AI Human Task UIs using the `human_task_ui_name`. For example:
+/// Using `pulumi import`, import SageMaker AI Human Task UIs using the `humanTaskUiName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sagemaker/humanTaskUI:HumanTaskUI example example
@@ -152,9 +171,9 @@ class HumanTaskUI extends pulumi.CustomResource {
   late final pulumi.Output<String> humanTaskUiName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The Liquid template for the worker user interface. See UI Template below.
   late final pulumi.Output<HumanTaskUIUiTemplate> uiTemplate;

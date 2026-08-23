@@ -89,7 +89,7 @@ import 'listener_state.dart';
 /// 		_, err = vpclattice.NewListener(ctx, "example", &vpclattice.ListenerArgs{
 /// 			Name:              pulumi.String("example"),
 /// 			Protocol:          pulumi.String("HTTPS"),
-/// 			ServiceIdentifier: example.ID(),
+/// 			ServiceIdentifier: example.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultAction: &vpclattice.ListenerDefaultActionArgs{
 /// 				FixedResponse: &vpclattice.ListenerDefaultActionFixedResponseArgs{
 /// 					StatusCode: pulumi.Int(404),
@@ -101,6 +101,29 @@ import 'listener_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_service" "example" {
+///   name = "example"
+/// }
+/// resource "aws_vpclattice_listener" "example" {
+///   name               = "example"
+///   protocol           = "HTTPS"
+///   service_identifier = aws_vpclattice_service.example.id
+///   default_action = {
+///     fixed_response = {
+///       status_code = 404
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -115,8 +138,8 @@ import 'listener_state.dart';
 /// import com.pulumi.aws.vpclattice.ListenerArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ListenerDefaultActionArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ListenerDefaultActionFixedResponseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -301,13 +324,13 @@ import 'listener_state.dart';
 /// 		_, err = vpclattice.NewListener(ctx, "example", &vpclattice.ListenerArgs{
 /// 			Name:              pulumi.String("example"),
 /// 			Protocol:          pulumi.String("HTTP"),
-/// 			ServiceIdentifier: example.ID(),
+/// 			ServiceIdentifier: example.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultAction: &vpclattice.ListenerDefaultActionArgs{
 /// 				Forwards: vpclattice.ListenerDefaultActionForwardArray{
 /// 					&vpclattice.ListenerDefaultActionForwardArgs{
 /// 						TargetGroups: vpclattice.ListenerDefaultActionForwardTargetGroupArray{
 /// 							&vpclattice.ListenerDefaultActionForwardTargetGroupArgs{
-/// 								TargetGroupIdentifier: exampleTargetGroup.ID(),
+/// 								TargetGroupIdentifier: exampleTargetGroup.ID().ToIDOutput().ToStringOutput(),
 /// 							},
 /// 						},
 /// 					},
@@ -319,6 +342,40 @@ import 'listener_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_service" "example" {
+///   name = "example"
+/// }
+/// resource "aws_vpclattice_targetgroup" "example" {
+///   name = "example-target-group-1"
+///   type = "INSTANCE"
+///   config = {
+///     port           = 80
+///     protocol       = "HTTP"
+///     vpc_identifier = exampleAwsVpc.id
+///   }
+/// }
+/// resource "aws_vpclattice_listener" "example" {
+///   name               = "example"
+///   protocol           = "HTTP"
+///   service_identifier = aws_vpclattice_service.example.id
+///   default_action = {
+///     forwards = [{
+///       "targetGroups" = [{
+///         "targetGroupIdentifier" = aws_vpclattice_targetgroup.example.id
+///       }]
+///     }]
+///   }
 /// }
 /// ```
 /// ```java
@@ -335,8 +392,10 @@ import 'listener_state.dart';
 /// import com.pulumi.aws.vpclattice.Listener;
 /// import com.pulumi.aws.vpclattice.ListenerArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ListenerDefaultActionArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.vpclattice.inputs.ListenerDefaultActionForwardArgs;
+/// import com.pulumi.aws.vpclattice.inputs.ListenerDefaultActionForwardTargetGroupArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -605,17 +664,17 @@ import 'listener_state.dart';
 /// 		_, err = vpclattice.NewListener(ctx, "example", &vpclattice.ListenerArgs{
 /// 			Name:              pulumi.String("example"),
 /// 			Protocol:          pulumi.String("HTTP"),
-/// 			ServiceIdentifier: example.ID(),
+/// 			ServiceIdentifier: example.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultAction: &vpclattice.ListenerDefaultActionArgs{
 /// 				Forwards: vpclattice.ListenerDefaultActionForwardArray{
 /// 					&vpclattice.ListenerDefaultActionForwardArgs{
 /// 						TargetGroups: vpclattice.ListenerDefaultActionForwardTargetGroupArray{
 /// 							&vpclattice.ListenerDefaultActionForwardTargetGroupArgs{
-/// 								TargetGroupIdentifier: example1.ID(),
+/// 								TargetGroupIdentifier: example1.ID().ToIDOutput().ToStringOutput(),
 /// 								Weight:                pulumi.Int(80),
 /// 							},
 /// 							&vpclattice.ListenerDefaultActionForwardTargetGroupArgs{
-/// 								TargetGroupIdentifier: example2.ID(),
+/// 								TargetGroupIdentifier: example2.ID().ToIDOutput().ToStringOutput(),
 /// 								Weight:                pulumi.Int(20),
 /// 							},
 /// 						},
@@ -628,6 +687,53 @@ import 'listener_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_service" "example" {
+///   name = "example"
+/// }
+/// resource "aws_vpclattice_targetgroup" "example1" {
+///   name = "example-target-group-1"
+///   type = "INSTANCE"
+///   config = {
+///     port           = 80
+///     protocol       = "HTTP"
+///     vpc_identifier = exampleAwsVpc.id
+///   }
+/// }
+/// resource "aws_vpclattice_targetgroup" "example2" {
+///   name = "example-target-group-2"
+///   type = "INSTANCE"
+///   config = {
+///     port           = 8080
+///     protocol       = "HTTP"
+///     vpc_identifier = exampleAwsVpc.id
+///   }
+/// }
+/// resource "aws_vpclattice_listener" "example" {
+///   name               = "example"
+///   protocol           = "HTTP"
+///   service_identifier = aws_vpclattice_service.example.id
+///   default_action = {
+///     forwards = [{
+///       "targetGroups" = [{
+///         "targetGroupIdentifier" = aws_vpclattice_targetgroup.example1.id
+///         "weight"                = 80
+///         }, {
+///         "targetGroupIdentifier" = aws_vpclattice_targetgroup.example2.id
+///         "weight"                = 20
+///       }]
+///     }]
+///   }
 /// }
 /// ```
 /// ```java
@@ -644,8 +750,10 @@ import 'listener_state.dart';
 /// import com.pulumi.aws.vpclattice.Listener;
 /// import com.pulumi.aws.vpclattice.ListenerArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ListenerDefaultActionArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.vpclattice.inputs.ListenerDefaultActionForwardArgs;
+/// import com.pulumi.aws.vpclattice.inputs.ListenerDefaultActionForwardTargetGroupArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -746,7 +854,7 @@ import 'listener_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import VPC Lattice Listener using the `listener_id` of the listener and the `id` of the VPC Lattice service combined with a `/` character. For example:
+/// Using `pulumi import`, import VPC Lattice Listener using the `listenerId` of the listener and the `id` of the VPC Lattice service combined with a `/` character. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:vpclattice/listener:Listener example svc-1a2b3c4d/listener-987654321
@@ -758,6 +866,7 @@ class Listener extends pulumi.CustomResource {
   late final pulumi.Output<String> createdAt;
   /// Default action block for the default listener rule. Default action blocks are defined below.
   late final pulumi.Output<ListenerDefaultAction> defaultAction;
+  /// Date and time that the listener was last updated, specified in ISO-8601 format.
   late final pulumi.Output<String> lastUpdatedAt;
   /// Standalone ID of the listener, e.g. `listener-0a1b2c3d4e5f6g`.
   late final pulumi.Output<String> listenerId;
@@ -769,12 +878,12 @@ class Listener extends pulumi.CustomResource {
   late final pulumi.Output<String> protocol;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) of the VPC Lattice service. You must include either the `service_arn` or `service_identifier` arguments.
+  /// Amazon Resource Name (ARN) of the VPC Lattice service. You must include either the `serviceArn` or `serviceIdentifier` arguments.
   late final pulumi.Output<String> serviceArn;
-  /// ID of the VPC Lattice service. You must include either the `service_arn` or `service_identifier` arguments.
-  /// &gt; **NOTE:** You must specify one of the following arguments: `service_arn` or `service_identifier`.
+  /// ID of the VPC Lattice service. You must include either the `serviceArn` or `serviceIdentifier` arguments.
+  /// &gt; **NOTE:** You must specify one of the following arguments: `serviceArn` or `serviceIdentifier`.
   late final pulumi.Output<String> serviceIdentifier;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
 

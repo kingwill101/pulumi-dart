@@ -14,14 +14,15 @@ class GetGroupResult {
   final String arn;
   /// One or more Availability Zones for the group.
   final List<String> availabilityZones;
+  /// Amount of time, in seconds, after a scaling activity completes before another scaling activity can start.
   final int defaultCooldown;
   /// Desired size of the group.
   final int desiredCapacity;
-  /// The unit of measurement for the value returned for `desired_capacity`.
+  /// Unit of measurement for the value returned for `desiredCapacity`.
   final String desiredCapacityType;
   /// List of metrics enabled for collection.
   final List<String> enabledMetrics;
-  /// The amount of time, in seconds, that Amazon EC2 Auto Scaling waits before checking the health status of an EC2 instance that has come into service.
+  /// Amount of time, in seconds, that Amazon EC2 Auto Scaling waits before checking the health status of an EC2 instance that has come into service.
   final int healthCheckGracePeriod;
   /// Service to use for the health checks. The valid values are EC2 and ELB.
   final String healthCheckType;
@@ -29,7 +30,7 @@ class GetGroupResult {
   final String id;
   /// Instance maintenance policy for the group.
   final List<GetGroupInstanceMaintenancePolicy> instanceMaintenancePolicies;
-  /// The name of the associated launch configuration.
+  /// Name of the associated launch configuration.
   final String launchConfiguration;
   /// List of launch templates along with the overrides.
   final List<GetGroupLaunchTemplate> launchTemplates;
@@ -45,6 +46,7 @@ class GetGroupResult {
   final List<GetGroupMixedInstancesPolicy> mixedInstancesPolicies;
   /// Name of the Auto Scaling Group.
   final String name;
+  /// Whether newly launched instances are protected from termination by Amazon EC2 Auto Scaling when scaling in.
   final bool newInstancesProtectedFromScaleIn;
   /// Name of the placement group into which to launch your instances, if any. For more information, see Placement Groups (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the Amazon Elastic Compute Cloud User Guide.
   final String placementGroup;
@@ -61,7 +63,7 @@ class GetGroupResult {
   final List<GetGroupTag> tags;
   /// ARNs of the target groups for your load balancer.
   final List<String> targetGroupArns;
-  /// The termination policies for the group.
+  /// Termination policies for the group.
   final List<String> terminationPolicies;
   /// Traffic sources.
   final List<GetGroupTrafficSource> trafficSources;
@@ -75,15 +77,15 @@ class GetGroupResult {
   /// Creates a new [GetGroupResult].
   /// [arn] ARN of the Auto Scaling group.
   /// [availabilityZones] One or more Availability Zones for the group.
-  /// [defaultCooldown] Required.
+  /// [defaultCooldown] Amount of time, in seconds, after a scaling activity completes before another scaling activity can start.
   /// [desiredCapacity] Desired size of the group.
-  /// [desiredCapacityType] The unit of measurement for the value returned for `desired_capacity`.
+  /// [desiredCapacityType] Unit of measurement for the value returned for `desiredCapacity`.
   /// [enabledMetrics] List of metrics enabled for collection.
-  /// [healthCheckGracePeriod] The amount of time, in seconds, that Amazon EC2 Auto Scaling waits before checking the health status of an EC2 instance that has come into service.
+  /// [healthCheckGracePeriod] Amount of time, in seconds, that Amazon EC2 Auto Scaling waits before checking the health status of an EC2 instance that has come into service.
   /// [healthCheckType] Service to use for the health checks. The valid values are EC2 and ELB.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [instanceMaintenancePolicies] Instance maintenance policy for the group.
-  /// [launchConfiguration] The name of the associated launch configuration.
+  /// [launchConfiguration] Name of the associated launch configuration.
   /// [launchTemplates] List of launch templates along with the overrides.
   /// [loadBalancers] One or more load balancers associated with the group.
   /// [maxInstanceLifetime] Maximum amount of time, in seconds, that an instance can be in service.
@@ -91,7 +93,7 @@ class GetGroupResult {
   /// [minSize] Minimum number of instances to maintain in the warm pool.
   /// [mixedInstancesPolicies] List of mixed instances policy objects for the group.
   /// [name] Name of the Auto Scaling Group.
-  /// [newInstancesProtectedFromScaleIn] Required.
+  /// [newInstancesProtectedFromScaleIn] Whether newly launched instances are protected from termination by Amazon EC2 Auto Scaling when scaling in.
   /// [placementGroup] Name of the placement group into which to launch your instances, if any. For more information, see Placement Groups (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the Amazon Elastic Compute Cloud User Guide.
   /// [predictedCapacity] Predicted capacity of the group.
   /// [region] Required.
@@ -100,7 +102,7 @@ class GetGroupResult {
   /// [suspendedProcesses] List of processes suspended processes for the Auto Scaling Group.
   /// [tags] List of tags for the group.
   /// [targetGroupArns] ARNs of the target groups for your load balancer.
-  /// [terminationPolicies] The termination policies for the group.
+  /// [terminationPolicies] Termination policies for the group.
   /// [trafficSources] Traffic sources.
   /// [vpcZoneIdentifier] VPC ID for the group.
   /// [warmPoolSize] Current size of the warm pool.
@@ -214,4 +216,3 @@ class GetGroupResult {
     );
   }
 }
-

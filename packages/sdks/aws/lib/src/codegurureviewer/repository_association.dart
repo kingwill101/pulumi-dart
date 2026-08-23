@@ -117,6 +117,32 @@ import 'repository_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+/// }
+/// resource "aws_codecommit_repository" "example" {
+///   repository_name = "example-repo"
+/// }
+/// resource "aws_codegurureviewer_repositoryassociation" "example" {
+///   repository = {
+///     codecommit = {
+///       name = aws_codecommit_repository.example.repository_name
+///     }
+///   }
+///   kms_key_details = {
+///     encryption_option = "CUSTOMER_MANAGED_CMK"
+///     kms_key_id        = aws_kms_key.example.key_id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -131,8 +157,8 @@ import 'repository_association_state.dart';
 /// import com.pulumi.aws.codegurureviewer.inputs.RepositoryAssociationRepositoryArgs;
 /// import com.pulumi.aws.codegurureviewer.inputs.RepositoryAssociationRepositoryCodecommitArgs;
 /// import com.pulumi.aws.codegurureviewer.inputs.RepositoryAssociationKmsKeyDetailsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -202,7 +228,7 @@ class RepositoryAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> providerType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// An object describing the repository to associate. Valid values: `bitbucket`, `codecommit`, `github_enterprise_server`, or `s3_bucket`. Block is documented below. Note: for repositories that leverage CodeStar connections (ex. `bitbucket`, `github_enterprise_server`) the connection must be in `Available` status prior to creating this resource.
+  /// An object describing the repository to associate. Valid values: `bitbucket`, `codecommit`, `githubEnterpriseServer`, or `s3Bucket`. Block is documented below. Note: for repositories that leverage CodeStar connections (ex. `bitbucket`, `githubEnterpriseServer`) the connection must be in `Available` status prior to creating this resource.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<RepositoryAssociationRepository> repository;

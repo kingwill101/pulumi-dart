@@ -63,6 +63,20 @@ import 'policy_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedpermissions_policytemplate" "example" {
+///   policy_store_id = exampleAwsVerifiedpermissionsPolicyStore.id
+///   statement       = "permit (principal in ?principal, action in PhotoFlash::Action::\"FullPhotoAccess\", resource == ?resource) unless { resource.IsPrivate };"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'policy_template_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.verifiedpermissions.PolicyTemplate;
 /// import com.pulumi.aws.verifiedpermissions.PolicyTemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

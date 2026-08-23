@@ -71,7 +71,7 @@ import 'api_key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appsync.NewApiKey(ctx, "example", &appsync.ApiKeyArgs{
-/// 			ApiId:   example.ID(),
+/// 			ApiId:   example.ID().ToIDOutput().ToStringOutput(),
 /// 			Expires: pulumi.String("2018-05-03T04:00:00Z"),
 /// 		})
 /// 		if err != nil {
@@ -79,6 +79,24 @@ import 'api_key_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appsync_graphqlapi" "example" {
+///   authentication_type = "API_KEY"
+///   name                = "example"
+/// }
+/// resource "aws_appsync_apikey" "example" {
+///   api_id  = aws_appsync_graphqlapi.example.id
+///   expires = "2018-05-03T04:00:00Z"
 /// }
 /// ```
 /// ```java
@@ -91,8 +109,8 @@ import 'api_key_state.dart';
 /// import com.pulumi.aws.appsync.GraphQLApiArgs;
 /// import com.pulumi.aws.appsync.ApiKey;
 /// import com.pulumi.aws.appsync.ApiKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -143,6 +161,7 @@ import 'api_key_state.dart';
 class ApiKey extends pulumi.CustomResource {
   /// ID of the associated AppSync API
   late final pulumi.Output<String> apiId;
+  /// ID of the API key.
   late final pulumi.Output<String> apiKeyId;
   /// API key description. Defaults to "Managed by Pulumi".
   late final pulumi.Output<String> description;

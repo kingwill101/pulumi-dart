@@ -6,17 +6,17 @@ import 'virtual_gateway_spec_listener_connection_pool_http.dart';
 import 'virtual_gateway_spec_listener_connection_pool_http2.dart';
 
 class VirtualGatewaySpecListenerConnectionPool {
-  /// Connection pool information for gRPC listeners.
+  /// Connection pool information for gRPC listeners. See `grpc` Block for details.
   final pulumi.Input<VirtualGatewaySpecListenerConnectionPoolGrpc>? grpc;
-  /// Connection pool information for HTTP listeners.
+  /// Connection pool information for HTTP listeners. See `http` Block for details.
   final pulumi.Input<VirtualGatewaySpecListenerConnectionPoolHttp>? http;
-  /// Connection pool information for HTTP2 listeners.
+  /// Connection pool information for HTTP2 listeners. See `http2` Block for details.
   final pulumi.Input<VirtualGatewaySpecListenerConnectionPoolHttp2>? http2;
 
   /// Creates a new [VirtualGatewaySpecListenerConnectionPool].
-  /// [grpc] Connection pool information for gRPC listeners.
-  /// [http] Connection pool information for HTTP listeners.
-  /// [http2] Connection pool information for HTTP2 listeners.
+  /// [grpc] Connection pool information for gRPC listeners. See `grpc` Block for details.
+  /// [http] Connection pool information for HTTP listeners. See `http` Block for details.
+  /// [http2] Connection pool information for HTTP2 listeners. See `http2` Block for details.
   const VirtualGatewaySpecListenerConnectionPool({
     this.grpc,
     this.http,
@@ -39,4 +39,3 @@ class VirtualGatewaySpecListenerConnectionPool {
     );
   }
 }
-

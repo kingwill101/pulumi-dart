@@ -208,6 +208,43 @@ import 'vault_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "myArchive" {
+///   statements {
+///     sid    = "add-read-only-perm"
+///     effect = "Allow"
+///     principals {
+///       type        = "*"
+///       identifiers = ["*"]
+///     }
+///     actions   = ["glacier:InitiateJob", "glacier:GetJobOutput"]
+///     resources = ["arn:aws:glacier:eu-west-1:432981146916:vaults/MyArchive"]
+///   }
+/// }
+///
+/// resource "aws_sns_topic" "aws_sns_topic" {
+///   name = "glacier-sns-topic"
+/// }
+/// resource "aws_glacier_vault" "my_archive" {
+///   name = "MyArchive"
+///   notification = {
+///     sns_topic = aws_sns_topic.aws_sns_topic.arn
+///     events    = ["ArchiveRetrievalCompleted", "InventoryRetrievalCompleted"]
+///   }
+///   access_policy = data.aws_iam_getpolicydocument.myArchive.json
+///   tags = {
+///     "Test" = "MyArchive"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -218,11 +255,13 @@ import 'vault_state.dart';
 /// import com.pulumi.aws.sns.TopicArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.glacier.Vault;
 /// import com.pulumi.aws.glacier.VaultArgs;
 /// import com.pulumi.aws.glacier.inputs.VaultNotificationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -329,9 +368,9 @@ class Vault extends pulumi.CustomResource {
   late final pulumi.Output<VaultNotification?> notification;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Vault].

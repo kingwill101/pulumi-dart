@@ -4,16 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flow_destination_flow_config_destination_connector_properties_zendesk_error_handling_config.dart';
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk {
+  /// Settings that determine how Amazon AppFlow handles an error when placing data in the destination. See the `destination_flow_config.destination_connector_properties.zendesk.error_handling_config` Block for details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesZendeskErrorHandlingConfig>? errorHandlingConfig;
+  /// Name of the field that Amazon AppFlow uses as an ID when performing a write operation such as update or delete.
   final pulumi.Input<List<String>>? idFieldNames;
   final pulumi.Input<String> object_;
+  /// Type of write operation to be performed in Zendesk. When the value is `UPSERT`, `idFieldNames` is required. Valid values are `INSERT`, `UPSERT`, `UPDATE`, and `DELETE`.
   final pulumi.Input<String>? writeOperationType;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk].
-  /// [errorHandlingConfig] Optional.
-  /// [idFieldNames] Optional.
+  /// [errorHandlingConfig] Settings that determine how Amazon AppFlow handles an error when placing data in the destination. See the `destination_flow_config.destination_connector_properties.zendesk.error_handling_config` Block for details.
+  /// [idFieldNames] Name of the field that Amazon AppFlow uses as an ID when performing a write operation such as update or delete.
   /// [object_] Required.
-  /// [writeOperationType] Optional.
+  /// [writeOperationType] Type of write operation to be performed in Zendesk. When the value is `UPSERT`, `idFieldNames` is required. Valid values are `INSERT`, `UPSERT`, `UPDATE`, and `DELETE`.
   const FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk({
     this.errorHandlingConfig,
     this.idFieldNames,
@@ -39,4 +42,3 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk {
     );
   }
 }
-

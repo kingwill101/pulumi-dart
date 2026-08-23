@@ -77,6 +77,22 @@ import 'finding_aggregator_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_account" "example" {
+/// }
+/// resource "aws_securityhub_findingaggregator" "example" {
+///   depends_on   = [aws_securityhub_account.example]
+///   linking_mode = "ALL_REGIONS"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +103,8 @@ import 'finding_aggregator_state.dart';
 /// import com.pulumi.aws.securityhub.FindingAggregator;
 /// import com.pulumi.aws.securityhub.FindingAggregatorArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -128,7 +144,7 @@ import 'finding_aggregator_state.dart';
 ///
 /// ### All Regions Except Specified Regions Usage
 ///
-/// The following example will enable the aggregator for every region except those specified in `specified_regions`.
+/// The following example will enable the aggregator for every region except those specified in `specifiedRegions`.
 ///
 ///
 /// ```typescript
@@ -217,6 +233,23 @@ import 'finding_aggregator_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_account" "example" {
+/// }
+/// resource "aws_securityhub_findingaggregator" "example" {
+///   depends_on        = [aws_securityhub_account.example]
+///   linking_mode      = "ALL_REGIONS_EXCEPT_SPECIFIED"
+///   specified_regions = ["eu-west-1", "eu-west-2"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -227,8 +260,8 @@ import 'finding_aggregator_state.dart';
 /// import com.pulumi.aws.securityhub.FindingAggregator;
 /// import com.pulumi.aws.securityhub.FindingAggregatorArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -274,7 +307,7 @@ import 'finding_aggregator_state.dart';
 ///
 /// ### Specified Regions Usage
 ///
-/// The following example will enable the aggregator for every region specified in `specified_regions`.
+/// The following example will enable the aggregator for every region specified in `specifiedRegions`.
 ///
 ///
 /// ```typescript
@@ -363,6 +396,23 @@ import 'finding_aggregator_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_account" "example" {
+/// }
+/// resource "aws_securityhub_findingaggregator" "example" {
+///   depends_on        = [aws_securityhub_account.example]
+///   linking_mode      = "SPECIFIED_REGIONS"
+///   specified_regions = ["eu-west-1", "eu-west-2"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -373,8 +423,8 @@ import 'finding_aggregator_state.dart';
 /// import com.pulumi.aws.securityhub.FindingAggregator;
 /// import com.pulumi.aws.securityhub.FindingAggregatorArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -489,6 +539,22 @@ import 'finding_aggregator_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_account" "example" {
+/// }
+/// resource "aws_securityhub_findingaggregator" "example" {
+///   depends_on   = [aws_securityhub_account.example]
+///   linking_mode = "NO_REGIONS"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -499,8 +565,8 @@ import 'finding_aggregator_state.dart';
 /// import com.pulumi.aws.securityhub.FindingAggregator;
 /// import com.pulumi.aws.securityhub.FindingAggregatorArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -540,17 +606,26 @@ import 'finding_aggregator_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import an existing Security Hub finding aggregator using the `arn`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `arn` (String) Security Hub finding aggregator ARN.
+///
+///
+/// Using `pulumi import`, import Security Hub finding aggregators using `arn`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:securityhub/findingAggregator:FindingAggregator example arn:aws:securityhub:eu-west-1:123456789098:finding-aggregator/abcd1234-abcd-1234-1234-abcdef123456
+/// $ pulumi import aws:securityhub/findingAggregator:FindingAggregator example arn:aws:securityhub:eu-west-1:123456789012:finding-aggregator/abcd1234-abcd-1234-1234-abcdef123456
 /// ```
 class FindingAggregator extends pulumi.CustomResource {
+  /// Amazon Resource Name (ARN) of the Security Hub finding aggregator.
+  late final pulumi.Output<String> arn;
   /// Indicates whether to aggregate findings from all of the available Regions or from a specified list. The options are `ALL_REGIONS`, `ALL_REGIONS_EXCEPT_SPECIFIED`, `SPECIFIED_REGIONS` or `NO_REGIONS`. When `ALL_REGIONS` or `ALL_REGIONS_EXCEPT_SPECIFIED` are used, Security Hub will automatically aggregate findings from new Regions as Security Hub supports them and you opt into them.
   late final pulumi.Output<String> linkingMode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// List of regions to include or exclude (required if `linking_mode` is set to `ALL_REGIONS_EXCEPT_SPECIFIED` or `SPECIFIED_REGIONS`)
+  /// List of regions to include or exclude (required if `linkingMode` is set to `ALL_REGIONS_EXCEPT_SPECIFIED` or `SPECIFIED_REGIONS`)
   late final pulumi.Output<List<String>?> specifiedRegions;
 
   /// Creates a new [FindingAggregator].
@@ -567,6 +642,7 @@ class FindingAggregator extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
     linkingMode = registerOutput<String>('linkingMode');
     region = registerOutput<String>('region');
     specifiedRegions = registerOutput<List<String>?>('specifiedRegions');
@@ -595,6 +671,7 @@ class FindingAggregator extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
     linkingMode = registerOutput<String>('linkingMode');
     region = registerOutput<String>('region');
     specifiedRegions = registerOutput<List<String>?>('specifiedRegions');

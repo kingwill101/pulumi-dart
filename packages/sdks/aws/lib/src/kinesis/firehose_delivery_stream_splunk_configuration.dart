@@ -11,7 +11,7 @@ class FirehoseDeliveryStreamSplunkConfiguration {
   final pulumi.Input<int>? bufferingInterval;
   /// Buffer incoming data to the specified size, in MBs between 1 to 5, before delivering it to the destination.  The default value is 5MB.
   final pulumi.Input<int>? bufferingSize;
-  /// The CloudWatch Logging Options for the delivery stream. See `cloudwatch_logging_options` block below for details.
+  /// The CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptions>? cloudwatchLoggingOptions;
   /// The amount of time, in seconds between 180 and 600, that Kinesis Firehose waits to receive an acknowledgment from Splunk after it sends it data.
   final pulumi.Input<int>? hecAcknowledgmentTimeout;
@@ -19,31 +19,31 @@ class FirehoseDeliveryStreamSplunkConfiguration {
   final pulumi.Input<String> hecEndpoint;
   /// The HEC endpoint type. Valid values are `Raw` or `Event`. The default value is `Raw`.
   final pulumi.Input<String>? hecEndpointType;
-  /// The GUID that you obtain from your Splunk cluster when you create a new HEC endpoint. This value is required if `secrets_manager_configuration` is not provided.
+  /// The GUID that you obtain from your Splunk cluster when you create a new HEC endpoint. This value is required if `secretsManagerConfiguration` is not provided.
   final pulumi.Input<String>? hecToken;
-  /// The data processing configuration.  See `processing_configuration` block below for details.
+  /// The data processing configuration.  See `processingConfiguration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration>? processingConfiguration;
   /// After an initial failure to deliver to Splunk, the total amount of time, in seconds between 0 to 7200, during which Firehose re-attempts delivery (including the first attempt).  After this time has elapsed, the failed documents are written to Amazon S3.  The default value is 300s.  There will be no retry if the value is 0.
   final pulumi.Input<int>? retryDuration;
   /// Defines how documents should be delivered to Amazon S3.  Valid values are `FailedEventsOnly` and `AllEvents`.  Default value is `FailedEventsOnly`.
-  /// `secrets_manager_configuration` - (Optional) The Secrets Manager configuration. See `secrets_manager_configuration` block below for details. This value is required if `hec_token` is not provided.
+  /// `secretsManagerConfiguration` - (Optional) The Secrets Manager configuration. See `secretsManagerConfiguration` block below for details. This value is required if `hecToken` is not provided.
   final pulumi.Input<String>? s3BackupMode;
-  /// The S3 Configuration. See `s3_configuration` block below for details.
+  /// The S3 Configuration. See `s3Configuration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamSplunkConfigurationS3Configuration> s3Configuration;
   final pulumi.Input<FirehoseDeliveryStreamSplunkConfigurationSecretsManagerConfiguration>? secretsManagerConfiguration;
 
   /// Creates a new [FirehoseDeliveryStreamSplunkConfiguration].
   /// [bufferingInterval] Buffer incoming data for the specified period of time, in seconds between 0 to 60, before delivering it to the destination.  The default value is 60s.
   /// [bufferingSize] Buffer incoming data to the specified size, in MBs between 1 to 5, before delivering it to the destination.  The default value is 5MB.
-  /// [cloudwatchLoggingOptions] The CloudWatch Logging Options for the delivery stream. See `cloudwatch_logging_options` block below for details.
+  /// [cloudwatchLoggingOptions] The CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
   /// [hecAcknowledgmentTimeout] The amount of time, in seconds between 180 and 600, that Kinesis Firehose waits to receive an acknowledgment from Splunk after it sends it data.
   /// [hecEndpoint] The HTTP Event Collector (HEC) endpoint to which Kinesis Firehose sends your data.
   /// [hecEndpointType] The HEC endpoint type. Valid values are `Raw` or `Event`. The default value is `Raw`.
-  /// [hecToken] The GUID that you obtain from your Splunk cluster when you create a new HEC endpoint. This value is required if `secrets_manager_configuration` is not provided.
-  /// [processingConfiguration] The data processing configuration.  See `processing_configuration` block below for details.
+  /// [hecToken] The GUID that you obtain from your Splunk cluster when you create a new HEC endpoint. This value is required if `secretsManagerConfiguration` is not provided.
+  /// [processingConfiguration] The data processing configuration.  See `processingConfiguration` block below for details.
   /// [retryDuration] After an initial failure to deliver to Splunk, the total amount of time, in seconds between 0 to 7200, during which Firehose re-attempts delivery (including the first attempt).  After this time has elapsed, the failed documents are written to Amazon S3.  The default value is 300s.  There will be no retry if the value is 0.
   /// [s3BackupMode] Defines how documents should be delivered to Amazon S3.  Valid values are `FailedEventsOnly` and `AllEvents`.  Default value is `FailedEventsOnly`.
-  /// [s3Configuration] The S3 Configuration. See `s3_configuration` block below for details.
+  /// [s3Configuration] The S3 Configuration. See `s3Configuration` block below for details.
   /// [secretsManagerConfiguration] Optional.
   const FirehoseDeliveryStreamSplunkConfiguration({
     this.bufferingInterval,
@@ -94,4 +94,3 @@ class FirehoseDeliveryStreamSplunkConfiguration {
     );
   }
 }
-

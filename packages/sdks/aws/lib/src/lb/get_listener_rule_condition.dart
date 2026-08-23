@@ -23,7 +23,8 @@ class GetListenerRuleCondition {
   /// Query string parameters to match.
   /// Detailed below.
   final pulumi.Input<List<GetListenerRuleConditionQueryString>>? queryStrings;
-  /// Contains a single attribute `values`, which contains a set of source IPs in CIDR notation.
+  /// Source IP address to match.
+  /// Detailed below.
   final pulumi.Input<List<GetListenerRuleConditionSourceIp>>? sourceIps;
 
   /// Creates a new [GetListenerRuleCondition].
@@ -32,7 +33,7 @@ class GetListenerRuleCondition {
   /// [httpRequestMethods] Contains a single attribute `values`, which contains a set of HTTP request methods.
   /// [pathPatterns] Path patterns to compare against the request URL.
   /// [queryStrings] Query string parameters to match.
-  /// [sourceIps] Contains a single attribute `values`, which contains a set of source IPs in CIDR notation.
+  /// [sourceIps] Source IP address to match.
   const GetListenerRuleCondition({
     this.hostHeaders,
     this.httpHeaders,
@@ -64,4 +65,3 @@ class GetListenerRuleCondition {
     );
   }
 }
-

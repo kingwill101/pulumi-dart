@@ -96,6 +96,26 @@ import 'account_settings_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_accountsubscription" "subscription" {
+///   account_name          = "quicksight-terraform"
+///   authentication_method = "IAM_AND_QUICKSIGHT"
+///   edition               = "ENTERPRISE"
+///   notification_email    = "notification@email.com"
+/// }
+/// resource "aws_quicksight_accountsettings" "example" {
+///   depends_on                     = [aws_quicksight_accountsubscription.subscription]
+///   termination_protection_enabled = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -107,8 +127,8 @@ import 'account_settings_timeouts.dart';
 /// import com.pulumi.aws.quicksight.AccountSettings;
 /// import com.pulumi.aws.quicksight.AccountSettingsArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

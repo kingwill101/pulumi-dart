@@ -367,6 +367,78 @@ import 'channel_vpc.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_medialive_channel" "example" {
+///   name          = "example-channel"
+///   channel_class = "STANDARD"
+///   role_arn      = exampleAwsIamRole.arn
+///   input_specification = {
+///     codec            = "AVC"
+///     input_resolution = "HD"
+///     maximum_bitrate  = "MAX_20_MBPS"
+///   }
+///   input_attachments {
+///     input_attachment_name = "example-input"
+///     input_id              = exampleAwsMedialiveInput.id
+///   }
+///   destinations {
+///     id = "destination"
+///     settings {
+///       url ="s3://${main.id}/test1"
+///     }
+///     settings {
+///       url ="s3://${main2.id}/test2"
+///     }
+///   }
+///   encoder_settings = {
+///     timecode_config = {
+///       source = "EMBEDDED"
+///     }
+///     audio_descriptions = [{
+///       "audioSelectorName" = "example audio selector"
+///       "name"              = "audio-selector"
+///     }]
+///     video_descriptions = [{
+///       "name" = "example-video"
+///     }]
+///     output_groups = [{
+///       "outputGroupSettings" = {
+///         "archiveGroupSettings" = [{
+///           "destination" = {
+///             "destinationRefId" = "destination"
+///           }
+///         }]
+///       }
+///       "outputs" = [{
+///         "outputName"            = "example-name"
+///         "videoDescriptionName"  = "example-video"
+///         "audioDescriptionNames" = ["audio-selector"]
+///         "outputSettings" = {
+///           "archiveOutputSettings" = {
+///             "nameModifier" = "_1"
+///             "extension"    = "m2ts"
+///             "containerSettings" = {
+///               "m2tsSettings" = {
+///                 "audioBufferModel" = "ATSC"
+///                 "bufferModel"      = "MULTIPLEX"
+///                 "rateMode"         = "CBR"
+///               }
+///             }
+///           }
+///         }
+///       }]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -378,10 +450,22 @@ import 'channel_vpc.dart';
 /// import com.pulumi.aws.medialive.inputs.ChannelInputSpecificationArgs;
 /// import com.pulumi.aws.medialive.inputs.ChannelInputAttachmentArgs;
 /// import com.pulumi.aws.medialive.inputs.ChannelDestinationArgs;
+/// import com.pulumi.aws.medialive.inputs.ChannelDestinationSettingArgs;
 /// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsArgs;
 /// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsTimecodeConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsAudioDescriptionArgs;
+/// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsVideoDescriptionArgs;
+/// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsOutputGroupArgs;
+/// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsOutputGroupOutputGroupSettingsArgs;
+/// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArgs;
+/// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestinationArgs;
+/// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsOutputGroupOutputArgs;
+/// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsOutputGroupOutputOutputSettingsArgs;
+/// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsArgs;
+/// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsArgs;
+/// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -512,7 +596,19 @@ import 'channel_vpc.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import MediaLive Channel using the `channel_id`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `channelId` (String) ID of the MediaLive Channel.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import MediaLive Channel using the `channelId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:medialive/channel:Channel example 1234567
@@ -548,7 +644,7 @@ class Channel extends pulumi.CustomResource {
   late final pulumi.Output<String?> roleArn;
   /// Whether to start/stop channel. Default: `false`
   late final pulumi.Output<bool?> startChannel;
-  /// A map of tags to assign to the channel. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the channel. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Settings for the VPC outputs. See VPC for more details.

@@ -4,17 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_predictive_scaling_policy_configuration_metric_specification_customized_load_metric_specification_metric_data_query_metric_stat_metric_dimension.dart';
 
 class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetric {
-  /// Dimensions of the metric. See supported fields below.
+  /// Dimensions of the metric. See `predictive_scaling_policy_configuration.metric_specification.customized_scaling_metric_specification.metric_data_query.metric_stat.metric.dimension` Block for details.
   final pulumi.Input<List<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetricDimension>>? dimensions;
-  /// Name of the metric.
   final pulumi.Input<String>? metricName;
-  /// Namespace of the metric.
   final pulumi.Input<String>? namespace;
 
   /// Creates a new [PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetric].
-  /// [dimensions] Dimensions of the metric. See supported fields below.
-  /// [metricName] Name of the metric.
-  /// [namespace] Namespace of the metric.
+  /// [dimensions] Dimensions of the metric. See `predictive_scaling_policy_configuration.metric_specification.customized_scaling_metric_specification.metric_data_query.metric_stat.metric.dimension` Block for details.
+  /// [metricName] Optional.
+  /// [namespace] Optional.
   const PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetric({
     this.dimensions,
     this.metricName,
@@ -37,4 +35,3 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoa
     );
   }
 }
-

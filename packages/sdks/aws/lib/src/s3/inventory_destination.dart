@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'inventory_destination_bucket.dart';
 
 class InventoryDestination {
-  /// S3 bucket configuration where inventory results are published (documented below).
+  /// S3 bucket configuration where inventory results are published. See `bucket` Block below.
   final pulumi.Input<InventoryDestinationBucket> bucket;
 
   /// Creates a new [InventoryDestination].
-  /// [bucket] S3 bucket configuration where inventory results are published (documented below).
+  /// [bucket] S3 bucket configuration where inventory results are published. See `bucket` Block below.
   const InventoryDestination({
     required this.bucket,
   });
@@ -25,4 +25,3 @@ class InventoryDestination {
     );
   }
 }
-

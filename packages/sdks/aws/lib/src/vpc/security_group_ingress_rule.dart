@@ -8,7 +8,7 @@ import 'security_group_ingress_rule_state.dart';
 ///
 /// &gt; **NOTE:** Using `aws.vpc.SecurityGroupEgressRule` and `aws.vpc.SecurityGroupIngressRule` resources is the current best practice. Avoid using the `aws.ec2.SecurityGroupRule` resource and the `ingress` and `egress` arguments of the `aws.ec2.SecurityGroup` resource for configuring in-line rules, as they struggle with managing multiple CIDR blocks, and tags and descriptions due to the historical lack of unique IDs.
 ///
-/// !&gt; **WARNING:** You should not use the `aws.vpc.SecurityGroupEgressRule` and `aws.vpc.SecurityGroupIngressRule` resources in conjunction with the `aws.ec2.SecurityGroup` resource with _in-line rules_ (using the `ingress` and `egress` arguments of `aws.ec2.SecurityGroup`) or the `aws.ec2.SecurityGroupRule` resource. Doing so may cause rule conflicts, perpetual differences, and result in rules being overwritten.
+/// &gt; **WARNING:** You should not use the `aws.vpc.SecurityGroupEgressRule` and `aws.vpc.SecurityGroupIngressRule` resources in conjunction with the `aws.ec2.SecurityGroup` resource with _in-line rules_ (using the `ingress` and `egress` arguments of `aws.ec2.SecurityGroup`) or the `aws.ec2.SecurityGroupRule` resource. Doing so may cause rule conflicts, perpetual differences, and result in rules being overwritten.
 ///
 /// ## Example Usage
 ///
@@ -104,7 +104,7 @@ import 'security_group_ingress_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vpc.NewSecurityGroupIngressRule(ctx, "example", &vpc.SecurityGroupIngressRuleArgs{
-/// 			SecurityGroupId: example.ID(),
+/// 			SecurityGroupId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			CidrIpv4:        pulumi.String("10.0.0.0/8"),
 /// 			FromPort:        pulumi.Int(80),
 /// 			IpProtocol:      pulumi.String("tcp"),
@@ -117,6 +117,31 @@ import 'security_group_ingress_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_securitygroup" "example" {
+///   name        = "example"
+///   description = "example"
+///   vpc_id      = main.id
+///   tags = {
+///     "Name" = "example"
+///   }
+/// }
+/// resource "aws_vpc_securitygroupingressrule" "example" {
+///   security_group_id = aws_ec2_securitygroup.example.id
+///   cidr_ipv4         = "10.0.0.0/8"
+///   from_port         = 80
+///   ip_protocol       = "tcp"
+///   to_port           = 80
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +152,8 @@ import 'security_group_ingress_rule_state.dart';
 /// import com.pulumi.aws.ec2.SecurityGroupArgs;
 /// import com.pulumi.aws.vpc.SecurityGroupIngressRule;
 /// import com.pulumi.aws.vpc.SecurityGroupIngressRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -190,11 +215,11 @@ import 'security_group_ingress_rule_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import security group ingress rules using the `security_group_rule_id`. For example:
+/// Using `pulumi import`, import security group ingress rules using the `securityGroupRuleId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:vpc/securityGroupIngressRule:SecurityGroupIngressRule example sgr-02108b27edd666983
@@ -210,7 +235,7 @@ class SecurityGroupIngressRule extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type.
   late final pulumi.Output<int?> fromPort;
-  /// The IP protocol name or number. Use `-1` to specify all protocols. Note that if `ip_protocol` is set to `-1`, it translates to all protocols, all port ranges, and `from_port` and `to_port` values should not be defined.
+  /// The IP protocol name or number. Use `-1` to specify all protocols. Note that if `ipProtocol` is set to `-1`, it translates to all protocols, all port ranges, and `fromPort` and `toPort` values should not be defined.
   late final pulumi.Output<String> ipProtocol;
   /// The ID of the source prefix list.
   late final pulumi.Output<String?> prefixListId;
@@ -222,13 +247,13 @@ class SecurityGroupIngressRule extends pulumi.CustomResource {
   late final pulumi.Output<String> securityGroupId;
   /// The ID of the security group rule.
   late final pulumi.Output<String> securityGroupRuleId;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code.
   ///
-  /// &gt; **Note** Although `cidr_ipv4`, `cidr_ipv6`, `prefix_list_id`, and `referenced_security_group_id` are all marked as optional, you *must* provide one of them in order to configure the destination of the traffic. The `from_port` and `to_port` arguments are required unless `ip_protocol` is set to `-1` or `icmpv6`.
+  /// &gt; **Note** Although `cidrIpv4`, `cidrIpv6`, `prefixListId`, and `referencedSecurityGroupId` are all marked as optional, you *must* provide one of them in order to configure the destination of the traffic. The `fromPort` and `toPort` arguments are required unless `ipProtocol` is set to `-1` or `icmpv6`.
   late final pulumi.Output<int?> toPort;
 
   /// Creates a new [SecurityGroupIngressRule].

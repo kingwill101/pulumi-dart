@@ -173,6 +173,40 @@ import 'experiment_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_fis_experimenttemplate" "example" {
+///   description = "example"
+///   role_arn    = exampleAwsIamRole.arn
+///   stop_conditions {
+///     source = "none"
+///   }
+///   actions {
+///     name      = "example-action"
+///     action_id = "aws:ec2:terminate-instances"
+///     target = {
+///       key   = "Instances"
+///       value = "example-target"
+///     }
+///   }
+///   targets {
+///     name           = "example-target"
+///     resource_type  = "aws:ec2:instance"
+///     selection_mode = "COUNT(1)"
+///     resource_tags {
+///       key   = "env"
+///       value = "example"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -185,8 +219,9 @@ import 'experiment_template_state.dart';
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateActionArgs;
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateActionTargetArgs;
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateTargetArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.fis.inputs.ExperimentTemplateTargetResourceTagArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -251,8 +286,7 @@ import 'experiment_template_state.dart';
 /// ```
 ///
 ///
-///
-/// ### With Report Configuration
+/// ### Example Usage with Report Configuration
 ///
 ///
 /// ```typescript
@@ -656,7 +690,7 @@ import 'experiment_template_state.dart';
 /// 				map[string]interface{}{
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string][]string{
 /// 						"Service": []string{
 /// 							fmt.Sprintf("fis.%v", current.DnsSuffix),
 /// 						},
@@ -671,7 +705,7 @@ import 'experiment_template_state.dart';
 /// 		json0 := string(tmpJSON0)
 /// 		example, err := iam.NewRole(ctx, "example", &iam.RoleArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			AssumeRolePolicy: pulumi.String(json0),
+/// 			AssumeRolePolicy: json0,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -798,6 +832,109 @@ import 'experiment_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getpartition" "current" {
+/// }
+/// data "aws_iam_getpolicydocument" "reportAccess" {
+///   version = "2012-10-17"
+///   statements {
+///     sid       = "logsDelivery"
+///     effect    = "Allow"
+///     actions   = ["logs:CreateLogDelivery"]
+///     resources = ["*"]
+///   }
+///   statements {
+///     sid       = "ReportsBucket"
+///     effect    = "Allow"
+///     actions   = ["s3:PutObject", "s3:GetObject"]
+///     resources = ["*"]
+///   }
+///   statements {
+///     sid       = "GetDashboard"
+///     effect    = "Allow"
+///     actions   = ["cloudwatch:GetDashboard"]
+///     resources = ["*"]
+///   }
+///   statements {
+///     sid       = "GetDashboardData"
+///     effect    = "Allow"
+///     actions   = ["cloudwatch:getMetricWidgetImage"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_iam_role" "example" {
+///   name = "example"
+///   assume_role_policy = jsonencode({
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = ["fis.${data.aws_getpartition.current.dns_suffix}"]
+///       }
+///     }]
+///     "Version" = "2012-10-17"
+///   })
+/// }
+/// resource "aws_iam_policy" "report_access" {
+///   name   = "report_access"
+///   policy = data.aws_iam_getpolicydocument.reportAccess.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "report_access" {
+///   role       = test.name
+///   policy_arn = aws_iam_policy.report_access.arn
+/// }
+/// resource "aws_fis_experimenttemplate" "example" {
+///   description = "example"
+///   role_arn    = aws_iam_role.example.arn
+///   stop_conditions {
+///     source = "none"
+///   }
+///   actions {
+///     name      = "example-action"
+///     action_id = "aws:ec2:terminate-instances"
+///     target = {
+///       key   = "Instances"
+///       value = "example-target"
+///     }
+///   }
+///   targets {
+///     name           = "example-target"
+///     resource_type  = "aws:ec2:instance"
+///     selection_mode = "COUNT(1)"
+///     resource_tags {
+///       key   = "env"
+///       value = "example"
+///     }
+///   }
+///   experiment_report_configuration = {
+///     data_sources = {
+///       cloudwatch_dashboards = [{
+///         "dashboardArn" = exampleAwsCloudwatchDashboard.dashboardArn
+///       }]
+///     }
+///     outputs = {
+///       s3_configuration = {
+///         bucket_name = exampleAwsS3Bucket.bucket
+///         prefix      = "fis-example-reports"
+///       }
+///     }
+///     post_experiment_duration = "PT10M"
+///     pre_experiment_duration  = "PT10M"
+///   }
+///   tags = {
+///     "Name" = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -810,6 +947,7 @@ import 'experiment_template_state.dart';
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
 /// import com.pulumi.aws.iam.Policy;
 /// import com.pulumi.aws.iam.PolicyArgs;
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
@@ -820,13 +958,15 @@ import 'experiment_template_state.dart';
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateActionArgs;
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateActionTargetArgs;
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateTargetArgs;
+/// import com.pulumi.aws.fis.inputs.ExperimentTemplateTargetResourceTagArgs;
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateExperimentReportConfigurationArgs;
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateExperimentReportConfigurationDataSourcesArgs;
+/// import com.pulumi.aws.fis.inputs.ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboardArgs;
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateExperimentReportConfigurationOutputsArgs;
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateExperimentReportConfigurationOutputsS3ConfigurationArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1052,11 +1192,11 @@ class ExperimentTemplate extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> actions;
   /// Description for the experiment template.
   late final pulumi.Output<String> description;
-  /// The experiment options for the experiment template. See experiment_options below for more details!
+  /// Experiment options for the experiment template. See experimentOptions below for more details!
   late final pulumi.Output<ExperimentTemplateExperimentOptions> experimentOptions;
-  /// The configuration for [experiment reporting](https://docs.aws.amazon.com/fis/latest/userguide/experiment-report-configuration.html). See below.
+  /// Configuration for [experiment reporting](https://docs.aws.amazon.com/fis/latest/userguide/experiment-report-configuration.html). See below.
   late final pulumi.Output<ExperimentTemplateExperimentReportConfiguration?> experimentReportConfiguration;
-  /// The configuration for experiment logging. See below.
+  /// Configuration for experiment logging. See below.
   late final pulumi.Output<ExperimentTemplateLogConfiguration?> logConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -1066,7 +1206,7 @@ class ExperimentTemplate extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<Map<String, dynamic>>> stopConditions;
-  /// Key-value mapping of tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Target of an action. See below.

@@ -131,6 +131,33 @@ import 'scheduling_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_batch_schedulingpolicy" "example" {
+///   name = "example"
+///   fair_share_policy = {
+///     compute_reservation = 1
+///     share_decay_seconds = 3600
+///     share_distributions = [{
+///       "shareIdentifier" = "A1*"
+///       "weightFactor"    = 0.1
+///       }, {
+///       "shareIdentifier" = "A2"
+///       "weightFactor"    = 0.2
+///     }]
+///   }
+///   tags = {
+///     "Name" = "Example Batch Scheduling Policy"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +167,9 @@ import 'scheduling_policy_state.dart';
 /// import com.pulumi.aws.batch.SchedulingPolicy;
 /// import com.pulumi.aws.batch.SchedulingPolicyArgs;
 /// import com.pulumi.aws.batch.inputs.SchedulingPolicyFairSharePolicyArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.batch.inputs.SchedulingPolicyFairSharePolicyShareDistributionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -208,9 +236,9 @@ class SchedulingPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [SchedulingPolicy].

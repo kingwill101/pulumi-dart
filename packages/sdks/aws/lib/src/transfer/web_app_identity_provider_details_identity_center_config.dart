@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAppIdentityProviderDetailsIdentityCenterConfig {
+  /// ARN of the IAM Identity Center application created for the web app.
   final pulumi.Input<String>? applicationArn;
   /// ARN of the IAM Identity Center used for the web app.
   final pulumi.Input<String>? instanceArn;
@@ -10,7 +11,7 @@ class WebAppIdentityProviderDetailsIdentityCenterConfig {
   final pulumi.Input<String>? role;
 
   /// Creates a new [WebAppIdentityProviderDetailsIdentityCenterConfig].
-  /// [applicationArn] Optional.
+  /// [applicationArn] ARN of the IAM Identity Center application created for the web app.
   /// [instanceArn] ARN of the IAM Identity Center used for the web app.
   /// [role] ARN of an identity bearer role for your web app.
   const WebAppIdentityProviderDetailsIdentityCenterConfig({
@@ -35,4 +36,3 @@ class WebAppIdentityProviderDetailsIdentityCenterConfig {
     );
   }
 }
-

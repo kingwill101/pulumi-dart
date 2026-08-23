@@ -76,6 +76,23 @@ import 'vectors_index_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_vectorsindex" "example" {
+///   index_name         = "example-index"
+///   vector_bucket_name = exampleAwsS3vectorsVectorBucket.vectorBucketName
+///   data_type          = "float32"
+///   dimension          = 2
+///   distance_metric    = "euclidean"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +101,8 @@ import 'vectors_index_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3.VectorsIndex;
 /// import com.pulumi.aws.s3.VectorsIndexArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -123,7 +140,14 @@ import 'vectors_index_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import S3 Vectors Index using the `index_arn`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `indexArn` (String) ARN of the S3 Vectors Index.
+///
+///
+/// Using `pulumi import`, import S3 Vectors Index using the `indexArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3/vectorsIndex:VectorsIndex example arn:aws:s3vectors:us-west-2:123456789012:bucket/example-bucket/index/example-index
@@ -137,19 +161,19 @@ class VectorsIndex extends pulumi.CustomResource {
   late final pulumi.Output<int> dimension;
   /// Distance metric to be used for similarity search. Valid values: `cosine`, `euclidean`.
   late final pulumi.Output<String> distanceMetric;
-  /// Block for encryption configuration for the vector index. See `encyption_configuration` block below.
+  /// Block for encryption configuration for the vector index. See `encryptionConfiguration` Block below.
   late final pulumi.Output<List<Map<String, dynamic>>> encryptionConfigurations;
   /// ARN of the vector index.
   late final pulumi.Output<String> indexArn;
   /// Name of the vector index.
   late final pulumi.Output<String> indexName;
-  /// Block for metadata configuration for the vector index. See `metadata_configuration` block below.
+  /// Block for metadata configuration for the vector index. See `metadataConfiguration` Block below.
   late final pulumi.Output<VectorsIndexMetadataConfiguration?> metadataConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Name of the vector bucket for the vector index.
   ///

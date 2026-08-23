@@ -97,6 +97,26 @@ import 'open_zfs_snapshot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_fsx_openzfssnapshot" "example" {
+///   name      = "example"
+///   volume_id = aws_fsx_openzfsfilesystem.example.root_volume_id
+/// }
+/// resource "aws_fsx_openzfsfilesystem" "example" {
+///   storage_capacity    = 64
+///   subnet_ids          = [exampleAwsSubnet.id]
+///   deployment_type     = "SINGLE_AZ_1"
+///   throughput_capacity = 64
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -107,8 +127,8 @@ import 'open_zfs_snapshot_state.dart';
 /// import com.pulumi.aws.fsx.OpenZfsFileSystemArgs;
 /// import com.pulumi.aws.fsx.OpenZfsSnapshot;
 /// import com.pulumi.aws.fsx.OpenZfsSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -255,13 +275,37 @@ import 'open_zfs_snapshot_state.dart';
 /// 		}
 /// 		_, err = fsx.NewOpenZfsSnapshot(ctx, "example", &fsx.OpenZfsSnapshotArgs{
 /// 			Name:     pulumi.String("example"),
-/// 			VolumeId: exampleOpenZfsVolume.ID(),
+/// 			VolumeId: exampleOpenZfsVolume.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_fsx_openzfssnapshot" "example" {
+///   name      = "example"
+///   volume_id = aws_fsx_openzfsvolume.example.id
+/// }
+/// resource "aws_fsx_openzfsvolume" "example" {
+///   name             = "example"
+///   parent_volume_id = aws_fsx_openzfsfilesystem.example.root_volume_id
+/// }
+/// resource "aws_fsx_openzfsfilesystem" "example" {
+///   storage_capacity    = 64
+///   subnet_ids          = [exampleAwsSubnet.id]
+///   deployment_type     = "SINGLE_AZ_1"
+///   throughput_capacity = 64
 /// }
 /// ```
 /// ```java
@@ -276,8 +320,8 @@ import 'open_zfs_snapshot_state.dart';
 /// import com.pulumi.aws.fsx.OpenZfsVolumeArgs;
 /// import com.pulumi.aws.fsx.OpenZfsSnapshot;
 /// import com.pulumi.aws.fsx.OpenZfsSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -344,16 +388,17 @@ import 'open_zfs_snapshot_state.dart';
 class OpenZfsSnapshot extends pulumi.CustomResource {
   /// Amazon Resource Name of the snapshot.
   late final pulumi.Output<String> arn;
+  /// Time that the snapshot was created.
   late final pulumi.Output<String> creationTime;
-  /// The name of the Snapshot. You can use a maximum of 203 alphanumeric characters plus either _ or -  or : or . for the name.
+  /// Name of the Snapshot. You can use a maximum of 203 alphanumeric characters plus either _ or -  or : or . for the name.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copy_tags_to_backups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
+  /// Map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copyTagsToBackups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The ID of the volume to snapshot. This can be the root volume or a child volume.
+  /// ID of the volume to snapshot. This can be the root volume or a child volume.
   late final pulumi.Output<String> volumeId;
 
   /// Creates a new [OpenZfsSnapshot].

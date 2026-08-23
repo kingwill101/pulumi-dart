@@ -112,6 +112,31 @@ import 'user_defined_function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_catalogdatabase" "example" {
+///   name = "my_database"
+/// }
+/// resource "aws_glue_userdefinedfunction" "example" {
+///   name          = "my_func"
+///   catalog_id    = aws_glue_catalogdatabase.example.catalog_id
+///   database_name = aws_glue_catalogdatabase.example.name
+///   class_name    = "class"
+///   owner_name    = "owner"
+///   owner_type    = "GROUP"
+///   resource_uris {
+///     resource_type = "ARCHIVE"
+///     uri           = "uri"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +148,8 @@ import 'user_defined_function_state.dart';
 /// import com.pulumi.aws.glue.UserDefinedFunction;
 /// import com.pulumi.aws.glue.UserDefinedFunctionArgs;
 /// import com.pulumi.aws.glue.inputs.UserDefinedFunctionResourceUriArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

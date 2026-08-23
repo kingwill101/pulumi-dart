@@ -8,13 +8,13 @@ import 'v2models_bot_timeouts.dart';
 /// Input properties used for looking up and filtering V2modelsBot resources.
 class V2modelsBotState {
   final pulumi.Input<String>? arn;
-  /// Provides information on additional privacy protections Amazon Lex should use with the bot's data. See `data_privacy`
+  /// Provides information on additional privacy protections Amazon Lex should use with the bot's data. See `dataPrivacy`
   final pulumi.Input<List<V2modelsBotDataPrivacy>>? dataPrivacies;
   /// Description of the bot. It appears in lists to help you identify a particular bot.
   final pulumi.Input<String>? description;
   /// Time, in seconds, that Amazon Lex should keep information about a user's conversation with the bot. You can specify between 60 (1 minute) and 86,400 (24 hours) seconds.
   final pulumi.Input<int>? idleSessionTtlInSeconds;
-  /// List of bot members in a network to be created. See `bot_members`.
+  /// List of bot members in a network to be created. See `botMembers`.
   final pulumi.Input<List<V2modelsBotMember>>? members;
   /// Name of the bot. The bot name must be unique in the account that creates the bot. Type String. Length Constraints: Minimum length of 1. Maximum length of 100.
   final pulumi.Input<String>? name;
@@ -35,10 +35,10 @@ class V2modelsBotState {
 
   /// Creates a new [V2modelsBotState].
   /// [arn] Optional.
-  /// [dataPrivacies] Provides information on additional privacy protections Amazon Lex should use with the bot's data. See `data_privacy`
+  /// [dataPrivacies] Provides information on additional privacy protections Amazon Lex should use with the bot's data. See `dataPrivacy`
   /// [description] Description of the bot. It appears in lists to help you identify a particular bot.
   /// [idleSessionTtlInSeconds] Time, in seconds, that Amazon Lex should keep information about a user's conversation with the bot. You can specify between 60 (1 minute) and 86,400 (24 hours) seconds.
-  /// [members] List of bot members in a network to be created. See `bot_members`.
+  /// [members] List of bot members in a network to be created. See `botMembers`.
   /// [name] Name of the bot. The bot name must be unique in the account that creates the bot. Type String. Length Constraints: Minimum length of 1. Maximum length of 100.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] ARN of an IAM role that has permission to access the bot.
@@ -99,4 +99,3 @@ class V2modelsBotState {
     );
   }
 }
-

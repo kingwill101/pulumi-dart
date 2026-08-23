@@ -87,6 +87,23 @@ import 'association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_association" "example" {
+///   name = exampleAwsSsmDocument.name
+///   targets {
+///     key    = "InstanceIds"
+///     values = [exampleAwsInstance.id]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +113,8 @@ import 'association_state.dart';
 /// import com.pulumi.aws.ssm.Association;
 /// import com.pulumi.aws.ssm.AssociationArgs;
 /// import com.pulumi.aws.ssm.inputs.AssociationTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -215,6 +232,23 @@ import 'association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_association" "example" {
+///   name = "AmazonCloudWatch-ManageAgent"
+///   targets {
+///     key    = "InstanceIds"
+///     values = ["*"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -224,8 +258,8 @@ import 'association_state.dart';
 /// import com.pulumi.aws.ssm.Association;
 /// import com.pulumi.aws.ssm.AssociationArgs;
 /// import com.pulumi.aws.ssm.inputs.AssociationTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -343,6 +377,23 @@ import 'association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_association" "example" {
+///   name = "AmazonCloudWatch-ManageAgent"
+///   targets {
+///     key    = "tag:Environment"
+///     values = ["Development"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -352,8 +403,8 @@ import 'association_state.dart';
 /// import com.pulumi.aws.ssm.Association;
 /// import com.pulumi.aws.ssm.AssociationArgs;
 /// import com.pulumi.aws.ssm.inputs.AssociationTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -475,6 +526,24 @@ import 'association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_association" "example" {
+///   name                = exampleAwsSsmDocument.name
+///   schedule_expression = "cron(0 2 ? * SUN *)"
+///   targets {
+///     key    = "InstanceIds"
+///     values = [exampleAwsInstance.id]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -484,8 +553,8 @@ import 'association_state.dart';
 /// import com.pulumi.aws.ssm.Association;
 /// import com.pulumi.aws.ssm.AssociationArgs;
 /// import com.pulumi.aws.ssm.inputs.AssociationTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -838,8 +907,8 @@ import 'association_state.dart';
 /// 				&ssm.AssociationTargetArgs{
 /// 					Key: pulumi.String("InstanceIds"),
 /// 					Values: pulumi.StringArray{
-/// 						webServer1.ID(),
-/// 						webServer2.ID(),
+/// 						webServer1.ID().ToIDOutput().ToStringOutput(),
+/// 						webServer2.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
@@ -866,6 +935,60 @@ import 'association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// # Removed EC2 provisioning dependencies for brevity
+/// resource "aws_ssm_association" "system_update" {
+///   name = "AWS-RunShellScript"
+///   targets {
+///     key    = "InstanceIds"
+///     values = [aws_ec2_instance.web_server_1.id, aws_ec2_instance.web_server_2.id]
+///   }
+///   schedule_expression = "cron(0 2 ? * SUN *)"
+///   parameters = {
+///     "commands"         = join("\n", ["#!/bin/bash", "echo 'Starting system update on $(hostname)'", "echo 'Instance ID: $(curl -s http://169.254.169.254/latest/meta-data/instance-id)'", "yum update -y", "echo 'System update completed successfully'", "systemctl status httpd", "df -h", "free -m"])
+///     "workingDirectory" = "/tmp"
+///     "executionTimeout" = "3600"
+///   }
+///   association_name    = "weekly-system-update"
+///   compliance_severity = "MEDIUM"
+///   max_concurrency     = "1"
+///   max_errors          = "0"
+///   tags = {
+///     "Name"        = "Weekly System Update"
+///     "Environment" = "demo"
+///     "Purpose"     = "maintenance"
+///   }
+/// }
+/// # First EC2 instance
+/// resource "aws_ec2_instance" "web_server_1" {
+///   ami                    = amazonLinux.id
+///   instance_type          = "t3.micro"
+///   subnet_id              = public.id
+///   vpc_security_group_ids = [ec2Sg.id]
+///   iam_instance_profile   = ec2SsmProfile.name
+///   user_data              = "#!/bin/bash\nyum update -y\nyum install -y amazon-ssm-agent\nsystemctl enable amazon-ssm-agent\nsystemctl start amazon-ssm-agent\n"
+/// }
+/// # Second EC2 instance
+/// resource "aws_ec2_instance" "web_server_2" {
+///   ami                    = amazonLinux.id
+///   instance_type          = "t3.micro"
+///   subnet_id              = public.id
+///   vpc_security_group_ids = [ec2Sg.id]
+///   iam_instance_profile   = ec2SsmProfile.name
+///   user_data              = "#!/bin/bash\nyum update -y\nyum install -y amazon-ssm-agent\nsystemctl enable amazon-ssm-agent\nsystemctl start amazon-ssm-agent\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -879,8 +1002,8 @@ import 'association_state.dart';
 /// import com.pulumi.aws.ssm.inputs.AssociationTargetArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JoinArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1410,6 +1533,73 @@ import 'association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// # SSM Association for Webbased Servers
+/// resource "aws_ssm_association" "database_association" {
+///   name = systemUpdate.name
+///   targets {
+///     key    = "tag:Role"
+///     values = ["WebServer", "Database"]
+///   }
+///   parameters = {
+///     "restartServices" = "true"
+///   }
+///   schedule_expression = "cron(0 3 ? * SUN *)"
+/// }
+/// # EC2 Instance 1 - Web Server with "ServerType" tag
+/// resource "aws_ec2_instance" "web_server" {
+///   ami                    = amazonLinux.id
+///   instance_type          = "t3.micro"
+///   subnet_id              = default.id
+///   vpc_security_group_ids = [ec2Sg.id]
+///   iam_instance_profile   = ec2SsmProfile.name
+///   user_data              = base64encode("#!/bin/bash
+/// yum update -y
+/// yum install -y amazon-ssm-agent
+/// systemctl enable amazon-ssm-agent
+/// systemctl start amazon-ssm-agent
+///
+/// # Install Apache web server
+/// yum install -y httpd
+/// systemctl enable httpd
+/// systemctl start httpd
+/// echo \"<h1>Web Server - ${prefix}</h1>\" > /var/www/html/index.html
+/// ")
+///   tags = {
+///     "Name"        ="${prefix}-web-server"
+///     "ServerType"  = "WebServer"
+///     "Role"        = "WebServer"
+///     "Environment" = environment
+///     "Owner"       = owner
+///   }
+/// }
+/// # EC2 Instance 2 - Database Server with "Role" tag
+/// resource "aws_ec2_instance" "database_server" {
+///   ami                    = amazonLinux.id
+///   instance_type          = "t3.micro"
+///   subnet_id              = default.id
+///   vpc_security_group_ids = [ec2Sg.id]
+///   iam_instance_profile   = ec2SsmProfile.name
+///   user_data              = base64encode("#!/bin/bash\nyum update -y\nyum install -y amazon-ssm-agent\nsystemctl enable amazon-ssm-agent\nsystemctl start amazon-ssm-agent\n    \n# Install MySQL\nyum install -y mysql-server\nsystemctl enable mysqld\nsystemctl start mysqld\n")
+///   tags = {
+///     "Name"        ="${prefix}-database-server"
+///     "Role"        = "Database"
+///     "Environment" = environment
+///     "Owner"       = owner
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1423,8 +1613,8 @@ import 'association_state.dart';
 /// import com.pulumi.aws.ec2.InstanceArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64encodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1582,15 +1772,15 @@ import 'association_state.dart';
 ///
 /// #### Required
 ///
-/// * `association_id` - (String) ID of the SSM association.
+/// * `associationId` - (String) ID of the SSM association.
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import SSM associations using the `association_id`. For example:
+/// Using `pulumi import`, import SSM associations using the `associationId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ssm/association:Association example 10abcdef-0abc-1234-5678-90abcdef123456
@@ -1628,15 +1818,15 @@ class Association extends pulumi.CustomResource {
   late final pulumi.Output<String?> scheduleExpression;
   /// The mode for generating association compliance. You can specify `AUTO` or `MANUAL`.
   late final pulumi.Output<String?> syncCompliance;
-  /// A map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the object. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
   late final pulumi.Output<List<Map<String, dynamic>>> targets;
   /// The number of seconds to wait for the association status to be `Success`. If `Success` status is not reached within the given time, create opration will fail.
   ///
-  /// Output Location (`output_location`) is an S3 bucket where you want to store the results of this association:
+  /// Output Location (`outputLocation`) is an S3 bucket where you want to store the results of this association:
   late final pulumi.Output<int?> waitForSuccessTimeoutSeconds;
 
   /// Creates a new [Association].

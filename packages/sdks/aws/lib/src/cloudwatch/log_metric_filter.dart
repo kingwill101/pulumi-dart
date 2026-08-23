@@ -100,6 +100,29 @@ import 'log_metric_filter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_logmetricfilter" "yada" {
+///   name           = "MyAppAccessCount"
+///   pattern        = ""
+///   log_group_name = aws_cloudwatch_loggroup.dada.name
+///   metric_transformation = {
+///     name      = "EventCount"
+///     namespace = "YourNamespace"
+///     value     = "1"
+///   }
+/// }
+/// resource "aws_cloudwatch_loggroup" "dada" {
+///   name = "MyApp/access.log"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +134,8 @@ import 'log_metric_filter_state.dart';
 /// import com.pulumi.aws.cloudwatch.LogMetricFilter;
 /// import com.pulumi.aws.cloudwatch.LogMetricFilterArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.LogMetricFilterMetricTransformationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -163,10 +186,23 @@ import 'log_metric_filter_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CloudWatch Log Metric Filter using the `log_group_name:name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `logGroupName` (String) Name of the log group.
+/// * `name` (String) Name of the metric filter.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Metric Filters using `logGroupName` and `name` separated by a colon (`:`). For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cloudwatch/logMetricFilter:LogMetricFilter test /aws/lambda/function:test
+/// $ pulumi import aws:cloudwatch/logMetricFilter:LogMetricFilter example example-group:example-filter
 /// ```
 class LogMetricFilter extends pulumi.CustomResource {
   /// Whether the metric filter will be applied on the transformed version of the log events instead of the original ingested log events. Defaults to `false`. Valid only for log groups that have an active log transformer.

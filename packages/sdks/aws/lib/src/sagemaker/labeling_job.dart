@@ -182,6 +182,47 @@ import 'labeling_job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # https://docs.aws.amazon.com/sagemaker/latest/dg/sms-named-entity-recg.html#sms-creating-ner-api.
+/// resource "aws_sagemaker_labelingjob" "test" {
+///   label_attribute_name         = "label1"
+///   labeling_job_name            = "my-labeling-job"
+///   role_arn                     = exampleAwsIamRole.arn
+///   label_category_config_s3_uri ="s3://${exampleAwsS3Bucket.bucket}/${exampleAwsS3Object.key}"
+///   human_task_config = {
+///     number_of_human_workers_per_data_object = 1
+///     task_description                        = "Apply the labels provided to specific words or phrases within the larger text block."
+///     task_title                              = "Named entity Recognition task"
+///     task_time_limit_in_seconds              = 28800
+///     workteam_arn                            = example.arn
+///     ui_config = {
+///       human_task_ui_arn = "arn:aws:sagemaker:us-west-2:394669845002:human-task-ui/NamedEntityRecognition"
+///     }
+///     pre_human_task_lambda_arn = "arn:aws:lambda:us-west-2:081040173940:function:PRE-NamedEntityRecognition"
+///     annotation_consolidation_config = {
+///       annotation_consolidation_lambda_arn = "arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition"
+///     }
+///   }
+///   input_config = {
+///     data_source = {
+///       sns_data_source = {
+///         sns_topic_arn = exampleAwsSnsTopic.arn
+///       }
+///     }
+///   }
+///   output_config = {
+///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -197,8 +238,8 @@ import 'labeling_job_state.dart';
 /// import com.pulumi.aws.sagemaker.inputs.LabelingJobInputConfigDataSourceArgs;
 /// import com.pulumi.aws.sagemaker.inputs.LabelingJobInputConfigDataSourceSnsDataSourceArgs;
 /// import com.pulumi.aws.sagemaker.inputs.LabelingJobOutputConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -277,7 +318,7 @@ import 'labeling_job_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import labeling jobs using the `labeling_job_name`. For example:
+/// Using `pulumi import`, import labeling jobs using the `labelingJobName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sagemaker/labelingJob:LabelingJob example my-labeling-job
@@ -313,9 +354,9 @@ class LabelingJob extends pulumi.CustomResource {
   late final pulumi.Output<String> roleArn;
   /// Conditions for stopping a labeling job. If any of the conditions are met, the job is automatically stopped. Fields are documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> stoppingConditions;
-  /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [LabelingJob].

@@ -5,14 +5,14 @@ import 'get_application_providers_application_provider.dart';
 
 /// Result data returned by getApplicationProviders.
 class GetApplicationProvidersResult {
-  /// A list of application providers available in the current region. See `application_providers` below.
+  /// A list of application providers available in the current region. See `applicationProviders` below.
   final List<GetApplicationProvidersApplicationProvider> applicationProviders;
   /// AWS region.
   final String id;
   final String region;
 
   /// Creates a new [GetApplicationProvidersResult].
-  /// [applicationProviders] A list of application providers available in the current region. See `application_providers` below.
+  /// [applicationProviders] A list of application providers available in the current region. See `applicationProviders` below.
   /// [id] AWS region.
   /// [region] Required.
   const GetApplicationProvidersResult({
@@ -37,4 +37,3 @@ class GetApplicationProvidersResult {
     );
   }
 }
-

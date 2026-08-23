@@ -4,7 +4,7 @@ import 'cluster_instance_state.dart';
 
 /// Provides an DocumentDB Cluster Resource Instance. A Cluster Instance Resource defines attributes that are specific to a single instance in a DocumentDB Cluster.
 ///
-/// You do not designate a primary and subsequent replicas. Instead, you simply add DocumentDB Instances and DocumentDB manages the replication. You can use the count meta-parameter to make multiple instances and join them all to the same DocumentDB Cluster, or you may specify different Cluster Instance resources with various `instance_class` sizes.
+/// You do not designate a primary and subsequent replicas. Instead, you simply add DocumentDB Instances and DocumentDB manages the replication. You can use the count meta-parameter to make multiple instances and join them all to the same DocumentDB Cluster, or you may specify different Cluster Instance resources with various `instanceClass` sizes.
 ///
 /// ## Example Usage
 ///
@@ -24,9 +24,9 @@ import 'cluster_instance_state.dart';
 ///     masterPassword: "barbut8chars",
 /// });
 /// const clusterInstances: aws.docdb.ClusterInstance[] = [];
-/// for (const range = {value: 0}; range.value < 2; range.value++) {
-///     clusterInstances.push(new aws.docdb.ClusterInstance(`cluster_instances-${range.value}`, {
-///         identifier: `docdb-cluster-demo-${range.value}`,
+/// for (let range = 0; range < 2; range++) {
+///     clusterInstances.push(new aws.docdb.ClusterInstance(`cluster_instances-${range}`, {
+///         identifier: `docdb-cluster-demo-${range}`,
 ///         clusterIdentifier: _default.id,
 ///         instanceClass: "db.r5.large",
 ///     }));
@@ -34,6 +34,7 @@ import 'cluster_instance_state.dart';
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 ///
 /// default = aws.docdb.Cluster("default",
@@ -45,10 +46,10 @@ import 'cluster_instance_state.dart';
 ///     ],
 ///     master_username="foo",
 ///     master_password="barbut8chars")
-/// cluster_instances = []
-/// for range in [{"value": i} for i in range(0, 2)]:
-///     cluster_instances.append(aws.docdb.ClusterInstance(f"cluster_instances-{range['value']}",
-///         identifier=f"docdb-cluster-demo-{range['value']}",
+/// cluster_instances: list[aws.docdb.ClusterInstance] = []
+/// for cluster_instances_range in [{"value": i} for i in range(0, 2)]:
+///     cluster_instances.append(aws.docdb.ClusterInstance(f"cluster_instances-{cluster_instances_range['value']}",
+///         identifier=f"docdb-cluster-demo-{cluster_instances_range['value']}",
 ///         cluster_identifier=default.id,
 ///         instance_class="db.r5.large"))
 /// ```
@@ -117,7 +118,7 @@ import 'cluster_instance_state.dart';
 /// 			val0 := index
 /// 			__res, err := docdb.NewClusterInstance(ctx, fmt.Sprintf("cluster_instances-%v", key0), &docdb.ClusterInstanceArgs{
 /// 				Identifier:        pulumi.Sprintf("docdb-cluster-demo-%v", val0),
-/// 				ClusterIdentifier: _default.ID(),
+/// 				ClusterIdentifier: _default.ID().ToIDOutput().ToStringOutput(),
 /// 				InstanceClass:     pulumi.String("db.r5.large"),
 /// 			})
 /// 			if err != nil {
@@ -127,6 +128,28 @@ import 'cluster_instance_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_docdb_clusterinstance" "cluster_instances" {
+///   count              = 2
+///   identifier         ="docdb-cluster-demo-${count.index}"
+///   cluster_identifier = aws_docdb_cluster.default.id
+///   instance_class     = "db.r5.large"
+/// }
+/// resource "aws_docdb_cluster" "default" {
+///   cluster_identifier = "docdb-cluster-demo"
+///   availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]
+///   master_username    = "foo"
+///   master_password    = "barbut8chars"
 /// }
 /// ```
 /// ```java
@@ -140,8 +163,8 @@ import 'cluster_instance_state.dart';
 /// import com.pulumi.aws.docdb.ClusterInstance;
 /// import com.pulumi.aws.docdb.ClusterInstanceArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -257,9 +280,9 @@ class ClusterInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Whether the DB cluster is encrypted.
   late final pulumi.Output<bool> storageEncrypted;
-  /// Map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Whether this instance is writable. `False` indicates this instance is a read replica.
   late final pulumi.Output<bool> writer;

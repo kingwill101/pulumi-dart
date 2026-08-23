@@ -58,6 +58,19 @@ import 'application_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_application" "example" {
+///   name = "my-opensearch-app"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +79,8 @@ import 'application_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.opensearch.Application;
 /// import com.pulumi.aws.opensearch.ApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -208,6 +221,31 @@ import 'application_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_application" "example" {
+///   name = "my-opensearch-app"
+///   app_configs {
+///     key   = "opensearchDashboards.dashboardAdmin.users"
+///     value = "admin-user"
+///   }
+///   app_configs {
+///     key   = "opensearchDashboards.dashboardAdmin.groups"
+///     value = "admin-group"
+///   }
+///   tags = {
+///     "Environment" = "production"
+///     "Team"        = "data-platform"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -217,8 +255,8 @@ import 'application_timeouts.dart';
 /// import com.pulumi.aws.opensearch.Application;
 /// import com.pulumi.aws.opensearch.ApplicationArgs;
 /// import com.pulumi.aws.opensearch.inputs.ApplicationAppConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -405,6 +443,37 @@ import 'application_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_domain" "example" {
+///   domain_name    = "example-domain"
+///   engine_version = "OpenSearch_2.3"
+///   cluster_config = {
+///     instance_type = "t3.small.search"
+///   }
+///   ebs_options = {
+///     ebs_enabled = true
+///     volume_size = 20
+///   }
+/// }
+/// resource "aws_opensearch_application" "example" {
+///   name = "my-opensearch-app"
+///   data_sources {
+///     data_source_arn         = aws_opensearch_domain.example.arn
+///     data_source_description = "Primary OpenSearch domain for analytics"
+///   }
+///   tags = {
+///     "Environment" = "production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -418,8 +487,8 @@ import 'application_timeouts.dart';
 /// import com.pulumi.aws.opensearch.Application;
 /// import com.pulumi.aws.opensearch.ApplicationArgs;
 /// import com.pulumi.aws.opensearch.inputs.ApplicationDataSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -837,8 +906,8 @@ import 'application_timeouts.dart';
 /// 						"identitystore:DescribeGroup",
 /// 					},
 /// 					"Resource": "*",
-/// 					"Condition": map[string]interface{}{
-/// 						"ForAnyValue:StringEquals": map[string]interface{}{
+/// 					"Condition": map[string]map[string]string{
+/// 						"ForAnyValue:StringEquals": map[string]string{
 /// 							"aws:CalledViaLast": "es.amazonaws.com",
 /// 						},
 /// 					},
@@ -879,19 +948,19 @@ import 'application_timeouts.dart';
 /// 			"Statement": []map[string]interface{}{
 /// 				map[string]interface{}{
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "application.opensearchservice.amazonaws.com",
 /// 					},
 /// 					"Action": "sts:AssumeRole",
 /// 				},
 /// 				map[string]interface{}{
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "application.opensearchservice.amazonaws.com",
 /// 					},
 /// 					"Action": "sts:SetContext",
-/// 					"Condition": map[string]interface{}{
-/// 						"ForAllValues:ArnEquals": map[string]interface{}{
+/// 					"Condition": map[string]map[string]string{
+/// 						"ForAllValues:ArnEquals": map[string]string{
 /// 							"sts:RequestContextProviders": fmt.Sprintf("arn:aws:iam::%v:oidc-provider/portal.sso.%v.amazonaws.com/apl/*", current.AccountId, currentGetRegion.Id),
 /// 						},
 /// 					},
@@ -905,7 +974,7 @@ import 'application_timeouts.dart';
 /// 		// IAM Role for OpenSearch Application
 /// 		opensearchApplication, err := iam.NewRole(ctx, "opensearch_application", &iam.RoleArgs{
 /// 			Name:             pulumi.String("opensearch-application-role"),
-/// 			AssumeRolePolicy: pulumi.String(json1),
+/// 			AssumeRolePolicy: json1,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -936,6 +1005,94 @@ import 'application_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getregion" "currentGetRegion" {
+/// }
+///
+/// # IAM Policy for OpenSearch Application Identity Center Integration
+/// resource "aws_iam_policy" "opensearch_identity_center" {
+///   name        = "opensearch-identity-center-policy"
+///   description = "Policy for OpenSearch Application Identity Center integration"
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Sid"      = "IdentityStoreOpenSearchDomainConnectivity"
+///       "Effect"   = "Allow"
+///       "Action"   = ["identitystore:DescribeUser", "identitystore:ListGroupMembershipsForMember", "identitystore:DescribeGroup"]
+///       "Resource" = "*"
+///       "Condition" = {
+///         "ForAnyValue:StringEquals" = {
+///           "aws:CalledViaLast" = "es.amazonaws.com"
+///         }
+///       }
+///       }, {
+///       "Sid"      = "OpenSearchDomain"
+///       "Effect"   = "Allow"
+///       "Action"   = ["es:ESHttp*"]
+///       "Resource" = "*"
+///       }, {
+///       "Sid"      = "OpenSearchServerless"
+///       "Effect"   = "Allow"
+///       "Action"   = ["aoss:APIAccessAll"]
+///       "Resource" = "*"
+///     }]
+///   })
+/// }
+/// # IAM Role for OpenSearch Application
+/// resource "aws_iam_role" "opensearch_application" {
+///   name = "opensearch-application-role"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "application.opensearchservice.amazonaws.com"
+///       }
+///       "Action" = "sts:AssumeRole"
+///       }, {
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "application.opensearchservice.amazonaws.com"
+///       }
+///       "Action" = "sts:SetContext"
+///       "Condition" = {
+///         "ForAllValues:ArnEquals" = {
+///           "sts:RequestContextProviders" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:oidc-provider/portal.sso.${data.aws_getregion.currentGetRegion.id}.amazonaws.com/apl/*"
+///         }
+///       }
+///     }]
+///   })
+/// }
+/// # Attach policy to role
+/// resource "aws_iam_rolepolicyattachment" "opensearch_identity_center" {
+///   role       = aws_iam_role.opensearch_application.name
+///   policy_arn = aws_iam_policy.opensearch_identity_center.arn
+/// }
+/// resource "aws_opensearch_application" "example" {
+///   name = "my-opensearch-app"
+///   iam_identity_center_options = {
+///     enabled                                      = true
+///     iam_identity_center_instance_arn             = data.aws_ssoadmin_getinstances.example.arns[0]
+///     iam_role_for_identity_center_application_arn = aws_iam_role.opensearch_application.arn
+///   }
+///   tags = {
+///     "Environment" = "production"
+///   }
+/// }
+/// # Data sources for account and region information
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -957,8 +1114,8 @@ import 'application_timeouts.dart';
 /// import com.pulumi.aws.opensearch.ApplicationArgs;
 /// import com.pulumi.aws.opensearch.inputs.ApplicationIamIdentityCenterOptionsArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1157,12 +1314,6 @@ import 'application_timeouts.dart';
 /// ```
 ///
 ///
-/// ## Additional Information
-///
-/// For more information about OpenSearch Applications, see the [AWS OpenSearch Service Developer Guide](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/application.html).
-///
-/// For information about configuring IAM Identity Center with OpenSearch Applications, see [Using AWS IAM Identity Center authentication](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/application-getting-started.html#create-application).
-///
 /// ## Import
 ///
 /// Using `pulumi import`, import OpenSearch applications using the `id`. For example:
@@ -1187,9 +1338,9 @@ class Application extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ApplicationTimeouts?> timeouts;
 

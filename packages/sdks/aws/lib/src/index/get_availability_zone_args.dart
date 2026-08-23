@@ -19,10 +19,6 @@ class GetAvailabilityZoneArgs {
   /// Specific availability zone state to require. May be any of `"available"`, `"information"` or `"impaired"`.
   final pulumi.Input<String>? state;
   /// Zone ID of the availability zone to select.
-  ///
-  /// The arguments of this data source act as filters for querying the available
-  /// availability zones. The given filters must match exactly one availability
-  /// zone whose data will be exported as attributes.
   final pulumi.Input<String>? zoneId;
 
   /// Creates a new [GetAvailabilityZoneArgs].
@@ -63,4 +59,3 @@ class GetAvailabilityZoneArgs {
     );
   }
 }
-

@@ -10,8 +10,6 @@ class ObjectCopyGrant {
   /// List of permissions to grant to grantee. Valid values are `READ`, `READ_ACP`, `WRITE_ACP`, `FULL_CONTROL`.
   final pulumi.Input<List<String>> permissions;
   /// Type of grantee. Valid values are `CanonicalUser`, `Group`, and `AmazonCustomerByEmail`.
-  ///
-  /// This configuration block has the following optional arguments (one of the three is required):
   final pulumi.Input<String> type;
   /// URI of the grantee group. Used only when `type` is `Group`.
   final pulumi.Input<String>? uri;
@@ -50,4 +48,3 @@ class ObjectCopyGrant {
     );
   }
 }
-

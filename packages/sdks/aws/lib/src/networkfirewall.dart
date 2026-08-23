@@ -1,3 +1,9 @@
+export 'networkfirewall/container_association.dart';
+export 'networkfirewall/container_association_args.dart';
+export 'networkfirewall/container_association_container_monitoring_configuration.dart';
+export 'networkfirewall/container_association_container_monitoring_configuration_attribute_filter.dart';
+export 'networkfirewall/container_association_state.dart';
+export 'networkfirewall/container_association_timeouts.dart';
 export 'networkfirewall/firewall.dart';
 export 'networkfirewall/firewall_args.dart';
 export 'networkfirewall/firewall_availability_zone_mapping.dart';

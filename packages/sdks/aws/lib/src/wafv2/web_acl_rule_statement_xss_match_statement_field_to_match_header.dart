@@ -4,26 +4,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_statement_xss_match_statement_field_to_match_header_match_pattern.dart';
 
 class WebAclRuleStatementXssMatchStatementFieldToMatchHeader {
-  /// The filter to use to identify the subset of headers to inspect in a web request. The `match_pattern` block supports only one of the following arguments:
-  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchHeaderMatchPattern> matchPattern;
-  /// The parts of the headers to inspect with the rule inspection criteria. If you specify `All`, AWS WAF inspects both keys and values. Valid values include the following: `ALL`, `Key`, `Value`.
+  /// Headers to inspect. See Headers Match Pattern below.
+  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchHeaderMatchPattern>? matchPattern;
+  /// Parts of the headers to inspect. Valid values: `ALL`, `KEY`, `VALUE`.
   final pulumi.Input<String> matchScope;
-  /// Oversize handling tells AWS WAF what to do with a web request when the request component that the rule inspects is over the limits. Valid values include the following: `CONTINUE`, `MATCH`, `NO_MATCH`. See the AWS [documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-oversize-handling.html) for more information.
+  /// How to handle requests with headers larger than the inspection limit. Valid values: `CONTINUE`, `MATCH`, `NO_MATCH`.
   final pulumi.Input<String> oversizeHandling;
 
   /// Creates a new [WebAclRuleStatementXssMatchStatementFieldToMatchHeader].
-  /// [matchPattern] The filter to use to identify the subset of headers to inspect in a web request. The `match_pattern` block supports only one of the following arguments:
-  /// [matchScope] The parts of the headers to inspect with the rule inspection criteria. If you specify `All`, AWS WAF inspects both keys and values. Valid values include the following: `ALL`, `Key`, `Value`.
-  /// [oversizeHandling] Oversize handling tells AWS WAF what to do with a web request when the request component that the rule inspects is over the limits. Valid values include the following: `CONTINUE`, `MATCH`, `NO_MATCH`. See the AWS [documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-oversize-handling.html) for more information.
+  /// [matchPattern] Headers to inspect. See Headers Match Pattern below.
+  /// [matchScope] Parts of the headers to inspect. Valid values: `ALL`, `KEY`, `VALUE`.
+  /// [oversizeHandling] How to handle requests with headers larger than the inspection limit. Valid values: `CONTINUE`, `MATCH`, `NO_MATCH`.
   const WebAclRuleStatementXssMatchStatementFieldToMatchHeader({
-    required this.matchPattern,
+    this.matchPattern,
     required this.matchScope,
     required this.oversizeHandling,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'matchPattern': pulumi.Input.mapInputValue<WebAclRuleStatementXssMatchStatementFieldToMatchHeaderMatchPattern, Map<String, dynamic>>(matchPattern, (value) => value.toMap()),
+      'matchPattern': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementXssMatchStatementFieldToMatchHeaderMatchPattern, Map<String, dynamic>>(matchPattern, (value) => value.toMap()),
       'matchScope': matchScope,
       'oversizeHandling': oversizeHandling,
     };
@@ -31,10 +31,9 @@ class WebAclRuleStatementXssMatchStatementFieldToMatchHeader {
 
   factory WebAclRuleStatementXssMatchStatementFieldToMatchHeader.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementXssMatchStatementFieldToMatchHeader(
-      matchPattern: pulumi.Input.fromValue(WebAclRuleStatementXssMatchStatementFieldToMatchHeaderMatchPattern.fromMap((map['matchPattern']! as Map).cast<String, dynamic>())),
+      matchPattern: (() { final guardedValue = map['matchPattern']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleStatementXssMatchStatementFieldToMatchHeaderMatchPattern.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       matchScope: pulumi.Input.fromValue(map['matchScope'] as String),
       oversizeHandling: pulumi.Input.fromValue(map['oversizeHandling'] as String),
     );
   }
 }
-

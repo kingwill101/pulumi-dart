@@ -6,20 +6,20 @@ import 'get_job_definition_eks_property_pod_property_volume_host_path.dart';
 import 'get_job_definition_eks_property_pod_property_volume_secret.dart';
 
 class GetJobDefinitionEksPropertyPodPropertyVolume {
-  /// Specifies the configuration of a Kubernetes emptyDir volume.
+  /// Configuration of a Kubernetes emptyDir volume. See `emptyDir` below.
   final pulumi.Input<List<GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir>> emptyDirs;
-  /// The path for the device on the host container instance.
+  /// Path for the device on the host container instance.
   final pulumi.Input<List<GetJobDefinitionEksPropertyPodPropertyVolumeHostPath>> hostPaths;
-  /// The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
+  /// Name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
   final pulumi.Input<String> name;
-  /// Specifies the configuration of a Kubernetes secret volume.
+  /// Configuration of a Kubernetes secret volume. See `secret` below.
   final pulumi.Input<List<GetJobDefinitionEksPropertyPodPropertyVolumeSecret>> secrets;
 
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyVolume].
-  /// [emptyDirs] Specifies the configuration of a Kubernetes emptyDir volume.
-  /// [hostPaths] The path for the device on the host container instance.
-  /// [name] The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
-  /// [secrets] Specifies the configuration of a Kubernetes secret volume.
+  /// [emptyDirs] Configuration of a Kubernetes emptyDir volume. See `emptyDir` below.
+  /// [hostPaths] Path for the device on the host container instance.
+  /// [name] Name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
+  /// [secrets] Configuration of a Kubernetes secret volume. See `secret` below.
   const GetJobDefinitionEksPropertyPodPropertyVolume({
     required this.emptyDirs,
     required this.hostPaths,
@@ -45,4 +45,3 @@ class GetJobDefinitionEksPropertyPodPropertyVolume {
     );
   }
 }
-

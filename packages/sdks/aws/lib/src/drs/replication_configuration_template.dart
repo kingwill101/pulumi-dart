@@ -5,7 +5,7 @@ import 'replication_configuration_template_timeouts.dart';
 
 /// Provides an Elastic Disaster Recovery replication configuration template resource. Before using DRS, your account must be [initialized](https://docs.aws.amazon.com/drs/latest/userguide/getting-started-initializing.html).
 ///
-/// &gt; **NOTE:** Your configuration must use the PIT policy shown in the basic configuration due to AWS rules. The only value that you can change is the `retention_duration` of `rule_id` 3.
+/// &gt; **NOTE:** Your configuration must use the PIT policy shown in the basic configuration due to AWS rules. The only value that you can change is the `retentionDuration` of `ruleId` 3.
 ///
 /// ## Example Usage
 ///
@@ -156,7 +156,7 @@ import 'replication_configuration_template_timeouts.dart';
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// var splat0 []interface{}
 /// for _, val0 := range exampleAwsSecurityGroup {
-/// splat0 = append(splat0, val0.Id)
+/// splat0 = append(splat0, val0.(map[string]interface{})["id"])
 /// }
 /// _, err := drs.NewReplicationConfigurationTemplate(ctx, "example", &drs.ReplicationConfigurationTemplateArgs{
 /// AssociateDefaultSecurityGroup: pulumi.Bool(false),
@@ -208,6 +208,50 @@ import 'replication_configuration_template_timeouts.dart';
 /// return pulumiArr
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_drs_replicationconfigurationtemplate" "example" {
+///   associate_default_security_group        = false
+///   bandwidth_throttling                    = 12
+///   create_public_ip                        = false
+///   data_plane_routing                      = "PRIVATE_IP"
+///   default_large_staging_disk_type         = "GP2"
+///   ebs_encryption                          = "DEFAULT"
+///   ebs_encryption_key_arn                  = "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+///   replication_server_instance_type        = "t3.small"
+///   replication_servers_security_groups_ids = exampleAwsSecurityGroup[*].id
+///   staging_area_subnet_id                  = exampleAwsSubnet.id
+///   use_dedicated_replication_server        = false
+///   pit_policies {
+///     enabled            = true
+///     interval           = 10
+///     retention_duration = 60
+///     units              = "MINUTE"
+///     rule_id            = 1
+///   }
+///   pit_policies {
+///     enabled            = true
+///     interval           = 1
+///     retention_duration = 24
+///     units              = "HOUR"
+///     rule_id            = 2
+///   }
+///   pit_policies {
+///     enabled            = true
+///     interval           = 1
+///     retention_duration = 3
+///     units              = "DAY"
+///     rule_id            = 3
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -217,8 +261,8 @@ import 'replication_configuration_template_timeouts.dart';
 /// import com.pulumi.aws.drs.ReplicationConfigurationTemplate;
 /// import com.pulumi.aws.drs.ReplicationConfigurationTemplateArgs;
 /// import com.pulumi.aws.drs.inputs.ReplicationConfigurationTemplatePitPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -311,7 +355,7 @@ class ReplicationConfigurationTemplate extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> stagingAreaTags;
   /// Set of tags to be associated with the Replication Configuration Template resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ReplicationConfigurationTemplateTimeouts?> timeouts;
   /// Whether to use a dedicated Replication Server in the replication staging area.

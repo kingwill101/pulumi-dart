@@ -70,6 +70,23 @@ import 'get_views_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_billing_getviews" "example" {
+///   billing_view_types = ["PRIMARY"]
+/// }
+///
+/// output "primaryViewArnByTypes" {
+///   value = data.aws_billing_getviews.example.billing_views[0].arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +95,8 @@ import 'get_views_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.billing.BillingFunctions;
 /// import com.pulumi.aws.billing.inputs.GetViewsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -151,6 +168,25 @@ import 'get_views_result.dart';
 ///         }).ToList()[0],
 ///     };
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_billing_getviews" "example" {
+/// }
+///
+/// output "viewArns" {
+///   value = [for view in data.aws_billing_getviews.example.billing_views : view.arn]
+/// }
+/// output "primaryViewArnByName" {
+///   value = [for view in data.aws_billing_getviews.example.billing_views : view.arn if view.name == "Primary View"][0]
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_billing_get_views_get_views_args_doc}
 /// [options] Invoke options controlling this call.

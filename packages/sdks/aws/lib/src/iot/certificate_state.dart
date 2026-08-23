@@ -12,9 +12,9 @@ class CertificateState {
   final pulumi.Input<String>? caCertificateId;
   /// The CA certificate for the certificate to be registered. If this is set, the CA needs to be registered with AWS IoT beforehand.
   final pulumi.Input<String>? caPem;
-  /// The certificate to be registered. If `ca_pem` is unspecified, review
+  /// The certificate to be registered. If `caPem` is unspecified, review
   /// [RegisterCertificateWithoutCA](https://docs.aws.amazon.com/iot/latest/apireference/API_RegisterCertificateWithoutCA.html).
-  /// If `ca_pem` is specified, review
+  /// If `caPem` is specified, review
   /// [RegisterCertificate](https://docs.aws.amazon.com/iot/latest/apireference/API_RegisterCertificate.html)
   /// for more information on registering a certificate.
   final pulumi.Input<String>? certificatePem;
@@ -36,7 +36,7 @@ class CertificateState {
   /// [arn] The ARN of the created certificate.
   /// [caCertificateId] The certificate ID of the CA certificate used to sign the certificate.
   /// [caPem] The CA certificate for the certificate to be registered. If this is set, the CA needs to be registered with AWS IoT beforehand.
-  /// [certificatePem] The certificate to be registered. If `ca_pem` is unspecified, review
+  /// [certificatePem] The certificate to be registered. If `caPem` is unspecified, review
   /// [csr] The certificate signing request. Review
   /// [privateKey] When neither CSR nor certificate is provided, the private key.
   /// [publicKey] When neither CSR nor certificate is provided, the public key.
@@ -81,4 +81,3 @@ class CertificateState {
     );
   }
 }
-

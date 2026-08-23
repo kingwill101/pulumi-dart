@@ -9,6 +9,7 @@ class GetEndpointMongodbSetting {
   final pulumi.Input<String> docsToInvestigate;
   final pulumi.Input<String> extractDocId;
   final pulumi.Input<String> nestingLevel;
+  final pulumi.Input<bool> useUpdateLookup;
 
   /// Creates a new [GetEndpointMongodbSetting].
   /// [authMechanism] Required.
@@ -17,6 +18,7 @@ class GetEndpointMongodbSetting {
   /// [docsToInvestigate] Required.
   /// [extractDocId] Required.
   /// [nestingLevel] Required.
+  /// [useUpdateLookup] Required.
   const GetEndpointMongodbSetting({
     required this.authMechanism,
     required this.authSource,
@@ -24,6 +26,7 @@ class GetEndpointMongodbSetting {
     required this.docsToInvestigate,
     required this.extractDocId,
     required this.nestingLevel,
+    required this.useUpdateLookup,
   });
 
   Map<String, dynamic> toMap() {
@@ -34,6 +37,7 @@ class GetEndpointMongodbSetting {
       'docsToInvestigate': docsToInvestigate,
       'extractDocId': extractDocId,
       'nestingLevel': nestingLevel,
+      'useUpdateLookup': useUpdateLookup,
     };
   }
 
@@ -45,7 +49,7 @@ class GetEndpointMongodbSetting {
       docsToInvestigate: pulumi.Input.fromValue(map['docsToInvestigate'] as String),
       extractDocId: pulumi.Input.fromValue(map['extractDocId'] as String),
       nestingLevel: pulumi.Input.fromValue(map['nestingLevel'] as String),
+      useUpdateLookup: pulumi.Input.fromValue(map['useUpdateLookup'] as bool),
     );
   }
 }
-

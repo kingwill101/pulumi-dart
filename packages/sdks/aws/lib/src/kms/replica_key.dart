@@ -91,6 +91,26 @@ import 'replica_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "primary" {
+///   description             = "Multi-Region primary key"
+///   deletion_window_in_days = 30
+///   multi_region            = true
+/// }
+/// resource "aws_kms_replicakey" "replica" {
+///   description             = "Multi-Region replica key"
+///   deletion_window_in_days = 7
+///   primary_key_arn         = aws_kms_key.primary.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +121,8 @@ import 'replica_key_state.dart';
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import com.pulumi.aws.kms.ReplicaKey;
 /// import com.pulumi.aws.kms.ReplicaKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -235,6 +255,27 @@ import 'replica_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "primary" {
+///   region                  = "us-east-1"
+///   description             = "Multi-Region primary key"
+///   deletion_window_in_days = 30
+///   multi_region            = true
+/// }
+/// resource "aws_kms_replicakey" "replica" {
+///   description             = "Multi-Region replica key"
+///   deletion_window_in_days = 7
+///   primary_key_arn         = aws_kms_key.primary.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -245,8 +286,8 @@ import 'replica_key_state.dart';
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import com.pulumi.aws.kms.ReplicaKey;
 /// import com.pulumi.aws.kms.ReplicaKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -328,9 +369,9 @@ class ReplicaKey extends pulumi.CustomResource {
   late final pulumi.Output<String> primaryKeyArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the replica key. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the replica key. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ReplicaKey].

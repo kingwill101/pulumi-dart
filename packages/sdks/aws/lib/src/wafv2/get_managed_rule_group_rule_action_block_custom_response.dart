@@ -4,14 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_managed_rule_group_rule_action_block_custom_response_response_header.dart';
 
 class GetManagedRuleGroupRuleActionBlockCustomResponse {
+  /// Key of the custom response body to use.
   final pulumi.Input<String> customResponseBodyKey;
+  /// HTTP response code returned.
   final pulumi.Input<int> responseCode;
+  /// Headers included in the response. See `responseHeader` Block for details.
   final pulumi.Input<List<GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader>> responseHeaders;
 
   /// Creates a new [GetManagedRuleGroupRuleActionBlockCustomResponse].
-  /// [customResponseBodyKey] Required.
-  /// [responseCode] Required.
-  /// [responseHeaders] Required.
+  /// [customResponseBodyKey] Key of the custom response body to use.
+  /// [responseCode] HTTP response code returned.
+  /// [responseHeaders] Headers included in the response. See `responseHeader` Block for details.
   const GetManagedRuleGroupRuleActionBlockCustomResponse({
     required this.customResponseBodyKey,
     required this.responseCode,
@@ -34,4 +37,3 @@ class GetManagedRuleGroupRuleActionBlockCustomResponse {
     );
   }
 }
-

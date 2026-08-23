@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LustreFileSystemDataReadCacheConfiguration {
-  /// Size of the file system's SSD read cache, in gibibytes (GiB). Required when the `sizing_mode` is `USER_PROVISIONED`.
+  /// Size of the file system's SSD read cache, in gibibytes (GiB). Required when the `sizingMode` is `USER_PROVISIONED`.
   final pulumi.Input<int>? size;
   /// Sizing mode for the cache. Valud values are `NO_CACHE`, `USER_PROVISIONED`, and `PROPORTIONAL_TO_THROUGHPUT_CAPACITY`.
   final pulumi.Input<String> sizingMode;
 
   /// Creates a new [LustreFileSystemDataReadCacheConfiguration].
-  /// [size] Size of the file system's SSD read cache, in gibibytes (GiB). Required when the `sizing_mode` is `USER_PROVISIONED`.
+  /// [size] Size of the file system's SSD read cache, in gibibytes (GiB). Required when the `sizingMode` is `USER_PROVISIONED`.
   /// [sizingMode] Sizing mode for the cache. Valud values are `NO_CACHE`, `USER_PROVISIONED`, and `PROPORTIONAL_TO_THROUGHPUT_CAPACITY`.
   const LustreFileSystemDataReadCacheConfiguration({
     this.size,
@@ -30,4 +30,3 @@ class LustreFileSystemDataReadCacheConfiguration {
     );
   }
 }
-

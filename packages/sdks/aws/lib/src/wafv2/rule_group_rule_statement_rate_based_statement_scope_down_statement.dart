@@ -18,7 +18,7 @@ import 'rule_group_rule_statement_rate_based_statement_scope_down_statement_xss_
 class RuleGroupRuleStatementRateBasedStatementScopeDownStatement {
   /// A logical rule statement used to combine other rule statements with AND logic. See AND Statement below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementAndStatement>? andStatement;
-  /// Rule statement that inspects web traffic based on the Autonomous System Number (ASN) associated with the request's IP address. See `asn_match_statement` below for details.
+  /// Rule statement that inspects web traffic based on the Autonomous System Number (ASN) associated with the request's IP address. See `asnMatchStatement` below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementAsnMatchStatement>? asnMatchStatement;
   /// A rule statement that defines a string match search for AWS WAF to apply to web requests. See Byte Match Statement below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatement>? byteMatchStatement;
@@ -45,7 +45,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatement {
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatement].
   /// [andStatement] A logical rule statement used to combine other rule statements with AND logic. See AND Statement below for details.
-  /// [asnMatchStatement] Rule statement that inspects web traffic based on the Autonomous System Number (ASN) associated with the request's IP address. See `asn_match_statement` below for details.
+  /// [asnMatchStatement] Rule statement that inspects web traffic based on the Autonomous System Number (ASN) associated with the request's IP address. See `asnMatchStatement` below for details.
   /// [byteMatchStatement] A rule statement that defines a string match search for AWS WAF to apply to web requests. See Byte Match Statement below for details.
   /// [geoMatchStatement] A rule statement used to identify web requests based on country of origin. See GEO Match Statement below for details.
   /// [ipSetReferenceStatement] A rule statement used to detect web requests coming from particular IP addresses or address ranges. See IP Set Reference Statement below for details.
@@ -109,4 +109,3 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatement {
     );
   }
 }
-

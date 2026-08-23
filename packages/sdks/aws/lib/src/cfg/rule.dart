@@ -6,7 +6,7 @@ import 'rule_state.dart';
 
 /// Provides an AWS Config Rule.
 ///
-/// &gt; **Note:** Config Rule requires an existing Configuration Recorder to be present. Use of `depends_on` is recommended (as shown below) to avoid race conditions.
+/// &gt; **Note:** Config Rule requires an existing Configuration Recorder to be present. Use of `dependsOn` is recommended (as shown below) to avoid race conditions.
 ///
 /// ## Example Usage
 ///
@@ -260,7 +260,7 @@ import 'rule_state.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "p", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("my-awsconfig-policy"),
-/// 			Role:   rRole.ID(),
+/// 			Role:   rRole.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy: pulumi.String(p.Json),
 /// 		})
 /// 		if err != nil {
@@ -268,6 +268,55 @@ import 'rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["config.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "p" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["config:Put*"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_cfg_rule" "r" {
+///   depends_on = [aws_cfg_recorder.foo]
+///   name       = "example"
+///   source = {
+///     owner             = "AWS"
+///     source_identifier = "S3_BUCKET_VERSIONING_ENABLED"
+///   }
+/// }
+/// resource "aws_cfg_recorder" "foo" {
+///   name     = "example"
+///   role_arn = aws_iam_role.r.arn
+/// }
+/// resource "aws_iam_role" "r" {
+///   name               = "my-awsconfig-role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicy" "p" {
+///   name   = "my-awsconfig-policy"
+///   role   = aws_iam_role.r.id
+///   policy = data.aws_iam_getpolicydocument.p.json
 /// }
 /// ```
 /// ```java
@@ -278,6 +327,8 @@ import 'rule_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.cfg.Recorder;
@@ -288,8 +339,8 @@ import 'rule_state.dart';
 /// import com.pulumi.aws.iam.RolePolicy;
 /// import com.pulumi.aws.iam.RolePolicyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -534,6 +585,33 @@ import 'rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cfg_recorder" "example" {
+/// }
+/// resource "aws_lambda_function" "example" {
+/// }
+/// resource "aws_lambda_permission" "example" {
+///   action       = "lambda:InvokeFunction"
+///   function     = aws_lambda_function.example.arn
+///   principal    = "config.amazonaws.com"
+///   statement_id = "AllowExecutionFromConfig"
+/// }
+/// resource "aws_cfg_rule" "example" {
+///   depends_on = [aws_cfg_recorder.example, aws_lambda_permission.example]
+///   source = {
+///     owner             = "CUSTOM_LAMBDA"
+///     source_identifier = aws_lambda_function.example.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -548,8 +626,8 @@ import 'rule_state.dart';
 /// import com.pulumi.aws.cfg.RuleArgs;
 /// import com.pulumi.aws.cfg.inputs.RuleSourceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -756,6 +834,29 @@ import 'rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cfg_rule" "example" {
+///   name = "example"
+///   source = {
+///     owner = "CUSTOM_POLICY"
+///     source_details = [{
+///       "messageType" = "ConfigurationItemChangeNotification"
+///     }]
+///     custom_policy_details = {
+///       policy_runtime = "guard-2.x.x"
+///       policy_text    = "\\t  rule tableisactive when\n\\t\\t  resourceType == \\\"AWS::DynamoDB::Table\\\" {\n\\t\\t  configuration.tableStatus == ['ACTIVE']\n\\t  }\n\\t  \n\\t  rule checkcompliance when\n\\t\\t  resourceType == \\\"AWS::DynamoDB::Table\\\"\n\\t\\t  tableisactive {\n\\t\\t\\t  supplementaryConfiguration.ContinuousBackupsDescription.pointInTimeRecoveryDescription.pointInTimeRecoveryStatus == \\\"ENABLED\\\"\n\\t  }\n"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -765,9 +866,10 @@ import 'rule_state.dart';
 /// import com.pulumi.aws.cfg.Rule;
 /// import com.pulumi.aws.cfg.RuleArgs;
 /// import com.pulumi.aws.cfg.inputs.RuleSourceArgs;
+/// import com.pulumi.aws.cfg.inputs.RuleSourceSourceDetailArgs;
 /// import com.pulumi.aws.cfg.inputs.RuleSourceCustomPolicyDetailsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -825,10 +927,22 @@ import 'rule_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Config Rule using the name. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the rule.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Config Rules using the `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cfg/rule:Rule foo example
+/// $ pulumi import aws:cfg/rule:Rule example example
 /// ```
 class Rule extends pulumi.CustomResource {
   /// The ARN of the config rule
@@ -851,9 +965,9 @@ class Rule extends pulumi.CustomResource {
   late final pulumi.Output<RuleScope?> scope;
   /// Source specifies the rule owner, the rule identifier, and the notifications that cause the function to evaluate your AWS resources. See Source Below.
   late final pulumi.Output<RuleSource> source;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Rule].

@@ -103,6 +103,27 @@ import 'ip_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_wafv2_ipset" "example" {
+///   name               = "example"
+///   description        = "Example IP set"
+///   scope              = "REGIONAL"
+///   ip_address_version = "IPV4"
+///   addresses          = ["1.2.3.4/32", "5.6.7.8/32"]
+///   tags = {
+///     "Tag1" = "Value1"
+///     "Tag2" = "Value2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +132,8 @@ import 'ip_set_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.wafv2.IpSet;
 /// import com.pulumi.aws.wafv2.IpSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -176,7 +197,7 @@ class IpSet extends pulumi.CustomResource {
   /// Specify IPV4 or IPV6. Valid values are `IPV4` or `IPV6`.
   late final pulumi.Output<String> ipAddressVersion;
   late final pulumi.Output<String> lockToken;
-  /// A friendly name of the IP set. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// A friendly name of the IP set. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
@@ -184,9 +205,9 @@ class IpSet extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the Region US East (N. Virginia).
   late final pulumi.Output<String> scope;
-  /// An array of key:value pairs to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// An array of key:value pairs to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [IpSet].

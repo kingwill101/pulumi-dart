@@ -7,11 +7,11 @@ import 'compute_environment_update_policy.dart';
 
 /// Creates a AWS Batch compute environment. Compute environments contain the Amazon ECS container instances that are used to run containerized batch jobs.
 ///
-/// For information about AWS Batch, see [What is AWS Batch?](http://docs.aws.amazon.com/batch/latest/userguide/what-is-batch.html) .
-/// For information about compute environment, see [Compute Environments](http://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html) .
+/// For information about AWS Batch, see [What is AWS Batch?](http://docs.aws.amazon.com/batch/latest/userguide/what-is-batch.html).
+/// For information about compute environment, see [Compute Environments](http://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html).
 ///
-/// &gt; **Note:** To prevent a race condition during environment deletion, make sure to set `depends_on` to the related `aws.iam.RolePolicyAttachment`;
-/// otherwise, the policy may be destroyed too soon and the compute environment will then get stuck in the `DELETING` state, see [Troubleshooting AWS Batch](http://docs.aws.amazon.com/batch/latest/userguide/troubleshooting.html) .
+/// &gt; **Note:** To prevent a race condition during environment deletion, make sure to set `dependsOn` to the related `aws.iam.RolePolicyAttachment`;
+/// otherwise, the policy may be destroyed too soon and the compute environment will then get stuck in the `DELETING` state, see [Troubleshooting AWS Batch](http://docs.aws.amazon.com/batch/latest/userguide/troubleshooting.html).
 ///
 /// ## Example Usage
 ///
@@ -436,7 +436,7 @@ import 'compute_environment_update_policy.dart';
 /// 			return err
 /// 		}
 /// 		sampleSubnet, err := ec2.NewSubnet(ctx, "sample", &ec2.SubnetArgs{
-/// 			VpcId:     sampleVpc.ID(),
+/// 			VpcId:     sampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			CidrBlock: pulumi.String("10.1.1.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -460,10 +460,10 @@ import 'compute_environment_update_policy.dart';
 /// 				MinVcpus:       pulumi.Int(0),
 /// 				PlacementGroup: samplePlacementGroup.Name,
 /// 				SecurityGroupIds: pulumi.StringArray{
-/// 					sample.ID(),
+/// 					sample.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				Subnets: pulumi.StringArray{
-/// 					sampleSubnet.ID(),
+/// 					sampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				Type: pulumi.String("EC2"),
 /// 			},
@@ -479,6 +479,93 @@ import 'compute_environment_update_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "ec2AssumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["ec2.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "batchAssumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["batch.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// resource "aws_iam_role" "ecs_instance_role" {
+///   name               = "ecs_instance_role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.ec2AssumeRole.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "ecs_instance_role" {
+///   role       = aws_iam_role.ecs_instance_role.name
+///   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
+/// }
+/// resource "aws_iam_instanceprofile" "ecs_instance_role" {
+///   name = "ecs_instance_role"
+///   role = aws_iam_role.ecs_instance_role.name
+/// }
+/// resource "aws_iam_role" "aws_batch_service_role" {
+///   name               = "aws_batch_service_role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.batchAssumeRole.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "aws_batch_service_role" {
+///   role       = aws_iam_role.aws_batch_service_role.name
+///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole"
+/// }
+/// resource "aws_ec2_securitygroup" "sample" {
+///   name = "aws_batch_compute_environment_security_group"
+///   egress {
+///     from_port   = 0
+///     to_port     = 0
+///     protocol    = "-1"
+///     cidr_blocks = ["0.0.0.0/0"]
+///   }
+/// }
+/// resource "aws_ec2_vpc" "sample" {
+///   cidr_block = "10.1.0.0/16"
+/// }
+/// resource "aws_ec2_subnet" "sample" {
+///   vpc_id     = aws_ec2_vpc.sample.id
+///   cidr_block = "10.1.1.0/24"
+/// }
+/// resource "aws_ec2_placementgroup" "sample" {
+///   name     = "sample"
+///   strategy = "cluster"
+/// }
+/// resource "aws_batch_computeenvironment" "sample" {
+///   depends_on = [aws_iam_rolepolicyattachment.aws_batch_service_role]
+///   name       = "sample"
+///   compute_resources = {
+///     instance_role      = aws_iam_instanceprofile.ecs_instance_role.arn
+///     instance_types     = ["c4.large"]
+///     max_vcpus          = 16
+///     min_vcpus          = 0
+///     placement_group    = aws_ec2_placementgroup.sample.name
+///     security_group_ids = [aws_ec2_securitygroup.sample.id]
+///     subnets            = [aws_ec2_subnet.sample.id]
+///     type               = "EC2"
+///   }
+///   service_role = aws_iam_role.aws_batch_service_role.arn
+///   type         = "MANAGED"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -487,6 +574,8 @@ import 'compute_environment_update_policy.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
@@ -506,8 +595,8 @@ import 'compute_environment_update_policy.dart';
 /// import com.pulumi.aws.batch.ComputeEnvironmentArgs;
 /// import com.pulumi.aws.batch.inputs.ComputeEnvironmentComputeResourcesArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -827,6 +916,28 @@ import 'compute_environment_update_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_batch_computeenvironment" "sample" {
+///   depends_on = [awsBatchServiceRole]
+///   name       = "sample"
+///   compute_resources = {
+///     max_vcpus          = 16
+///     security_group_ids = [sampleAwsSecurityGroup.id]
+///     subnets            = [sampleAwsSubnet.id]
+///     type               = "FARGATE"
+///   }
+///   service_role = awsBatchServiceRoleAwsIamRole.arn
+///   type         = "MANAGED"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -837,8 +948,8 @@ import 'compute_environment_update_policy.dart';
 /// import com.pulumi.aws.batch.ComputeEnvironmentArgs;
 /// import com.pulumi.aws.batch.inputs.ComputeEnvironmentComputeResourcesArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1018,6 +1129,34 @@ import 'compute_environment_update_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_batch_computeenvironment" "sample" {
+///   name = "sample"
+///   compute_resources = {
+///     allocation_strategy = "BEST_FIT_PROGRESSIVE"
+///     instance_role       = ecsInstance.arn
+///     instance_types      = ["optimal"]
+///     max_vcpus           = 4
+///     min_vcpus           = 0
+///     security_group_ids  = [sampleAwsSecurityGroup.id]
+///     subnets             = [sampleAwsSubnet.id]
+///     type                = "EC2"
+///   }
+///   update_policy = {
+///     job_execution_timeout_minutes = 30
+///     terminate_jobs_on_update      = false
+///   }
+///   type = "MANAGED"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1028,8 +1167,8 @@ import 'compute_environment_update_policy.dart';
 /// import com.pulumi.aws.batch.ComputeEnvironmentArgs;
 /// import com.pulumi.aws.batch.inputs.ComputeEnvironmentComputeResourcesArgs;
 /// import com.pulumi.aws.batch.inputs.ComputeEnvironmentUpdatePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1102,10 +1241,6 @@ import 'compute_environment_update_policy.dart';
 /// ```sh
 /// $ pulumi import aws:batch/computeEnvironment:ComputeEnvironment sample sample
 /// ```
-///
-/// [1]: http://docs.aws.amazon.com/batch/latest/userguide/what-is-batch.html
-/// [2]: http://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html
-/// [3]: http://docs.aws.amazon.com/batch/latest/userguide/troubleshooting.html
 class ComputeEnvironment extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the compute environment.
   late final pulumi.Output<String> arn;
@@ -1129,9 +1264,9 @@ class ComputeEnvironment extends pulumi.CustomResource {
   late final pulumi.Output<String> status;
   /// A short, human-readable string to provide additional details about the current status of the compute environment.
   late final pulumi.Output<String> statusReason;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
   late final pulumi.Output<String> type;

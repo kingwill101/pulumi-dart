@@ -1,3 +1,7 @@
+export 'kinesis/account_settings.dart';
+export 'kinesis/account_settings_args.dart';
+export 'kinesis/account_settings_minimum_throughput_billing_commitment.dart';
+export 'kinesis/account_settings_state.dart';
 export 'kinesis/analytics_application.dart';
 export 'kinesis/analytics_application_args.dart';
 export 'kinesis/analytics_application_cloudwatch_logging_options.dart';
@@ -132,6 +136,7 @@ export 'kinesis/get_stream_consumer_args.dart';
 export 'kinesis/get_stream_consumer_result.dart';
 export 'kinesis/get_stream_result.dart';
 export 'kinesis/get_stream_stream_mode_detail.dart';
+export 'kinesis/get_stream_warm_throughput.dart';
 export 'kinesis/resource_policy.dart';
 export 'kinesis/resource_policy_args.dart';
 export 'kinesis/resource_policy_state.dart';

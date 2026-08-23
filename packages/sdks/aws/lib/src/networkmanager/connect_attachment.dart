@@ -85,7 +85,7 @@ import 'connect_attachment_state.dart';
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// var splat0 []interface{}
 /// for _, val0 := range exampleAwsSubnet {
-/// splat0 = append(splat0, val0.Arn)
+/// splat0 = append(splat0, val0.(map[string]interface{})["arn"])
 /// }
 /// example, err := networkmanager.NewVpcAttachment(ctx, "example", &networkmanager.VpcAttachmentArgs{
 /// SubnetArns: toPulumiArray(splat0),
@@ -97,7 +97,7 @@ import 'connect_attachment_state.dart';
 /// }
 /// _, err = networkmanager.NewConnectAttachment(ctx, "example", &networkmanager.ConnectAttachmentArgs{
 /// CoreNetworkId: pulumi.Any(exampleAwsccNetworkmanagerCoreNetwork.Id),
-/// TransportAttachmentId: example.ID(),
+/// TransportAttachmentId: example.ID().ToIDOutput().ToStringOutput(),
 /// EdgeLocation: example.EdgeLocation,
 /// Options: &networkmanager.ConnectAttachmentOptionsArgs{
 /// Protocol: pulumi.String("GRE"),
@@ -117,6 +117,29 @@ import 'connect_attachment_state.dart';
 /// return pulumiArr
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_vpcattachment" "example" {
+///   subnet_arns     = exampleAwsSubnet[*].arn
+///   core_network_id = exampleAwsccNetworkmanagerCoreNetwork.id
+///   vpc_arn         = exampleAwsVpc.arn
+/// }
+/// resource "aws_networkmanager_connectattachment" "example" {
+///   core_network_id         = exampleAwsccNetworkmanagerCoreNetwork.id
+///   transport_attachment_id = aws_networkmanager_vpcattachment.example.id
+///   edge_location           = aws_networkmanager_vpcattachment.example.edge_location
+///   options = {
+///     protocol = "GRE"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +151,8 @@ import 'connect_attachment_state.dart';
 /// import com.pulumi.aws.networkmanager.ConnectAttachment;
 /// import com.pulumi.aws.networkmanager.ConnectAttachmentArgs;
 /// import com.pulumi.aws.networkmanager.inputs.ConnectAttachmentOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -272,7 +295,7 @@ import 'connect_attachment_state.dart';
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// var splat0 []interface{}
 /// for _, val0 := range exampleAwsSubnet {
-/// splat0 = append(splat0, val0.Arn)
+/// splat0 = append(splat0, val0.(map[string]interface{})["arn"])
 /// }
 /// example, err := networkmanager.NewVpcAttachment(ctx, "example", &networkmanager.VpcAttachmentArgs{
 /// SubnetArns: toPulumiArray(splat0),
@@ -283,7 +306,7 @@ import 'connect_attachment_state.dart';
 /// return err
 /// }
 /// exampleAttachmentAccepter, err := networkmanager.NewAttachmentAccepter(ctx, "example", &networkmanager.AttachmentAccepterArgs{
-/// AttachmentId: example.ID(),
+/// AttachmentId: example.ID().ToIDOutput().ToStringOutput(),
 /// AttachmentType: example.AttachmentType,
 /// })
 /// if err != nil {
@@ -291,7 +314,7 @@ import 'connect_attachment_state.dart';
 /// }
 /// exampleConnectAttachment, err := networkmanager.NewConnectAttachment(ctx, "example", &networkmanager.ConnectAttachmentArgs{
 /// CoreNetworkId: pulumi.Any(exampleAwsccNetworkmanagerCoreNetwork.Id),
-/// TransportAttachmentId: example.ID(),
+/// TransportAttachmentId: example.ID().ToIDOutput().ToStringOutput(),
 /// EdgeLocation: example.EdgeLocation,
 /// Options: &networkmanager.ConnectAttachmentOptionsArgs{
 /// Protocol: pulumi.String("GRE"),
@@ -303,7 +326,7 @@ import 'connect_attachment_state.dart';
 /// return err
 /// }
 /// _, err = networkmanager.NewAttachmentAccepter(ctx, "example2", &networkmanager.AttachmentAccepterArgs{
-/// AttachmentId: exampleConnectAttachment.ID(),
+/// AttachmentId: exampleConnectAttachment.ID().ToIDOutput().ToStringOutput(),
 /// AttachmentType: exampleConnectAttachment.AttachmentType,
 /// })
 /// if err != nil {
@@ -320,6 +343,38 @@ import 'connect_attachment_state.dart';
 /// return pulumiArr
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_vpcattachment" "example" {
+///   subnet_arns     = exampleAwsSubnet[*].arn
+///   core_network_id = exampleAwsccNetworkmanagerCoreNetwork.id
+///   vpc_arn         = exampleAwsVpc.arn
+/// }
+/// resource "aws_networkmanager_attachmentaccepter" "example" {
+///   attachment_id   = aws_networkmanager_vpcattachment.example.id
+///   attachment_type = aws_networkmanager_vpcattachment.example.attachment_type
+/// }
+/// resource "aws_networkmanager_connectattachment" "example" {
+///   depends_on              = [aws_networkmanager_attachmentaccepter.example]
+///   core_network_id         = exampleAwsccNetworkmanagerCoreNetwork.id
+///   transport_attachment_id = aws_networkmanager_vpcattachment.example.id
+///   edge_location           = aws_networkmanager_vpcattachment.example.edge_location
+///   options = {
+///     protocol = "GRE"
+///   }
+/// }
+/// resource "aws_networkmanager_attachmentaccepter" "example2" {
+///   attachment_id   = aws_networkmanager_connectattachment.example.id
+///   attachment_type = aws_networkmanager_connectattachment.example.attachment_type
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -334,8 +389,8 @@ import 'connect_attachment_state.dart';
 /// import com.pulumi.aws.networkmanager.ConnectAttachmentArgs;
 /// import com.pulumi.aws.networkmanager.inputs.ConnectAttachmentOptionsArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -413,9 +468,9 @@ class ConnectAttachment extends pulumi.CustomResource {
   late final pulumi.Output<String> segmentName;
   /// State of the attachment.
   late final pulumi.Output<String> state;
-  /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ID of the attachment between the two connections.
   ///

@@ -5,7 +5,7 @@ import 'main_route_table_association_state.dart';
 /// Provides a resource for managing the main routing table of a VPC.
 ///
 /// &gt; **NOTE:** **Do not** use both `aws.ec2.DefaultRouteTable` to manage a default route table **and** `aws.ec2.MainRouteTableAssociation` with the same VPC due to possible route conflicts. See aws.ec2.DefaultRouteTable documentation for more details.
-/// For more information, see the Amazon VPC User Guide on [Route Tables][aws-route-tables]. For information about managing normal route tables in Pulumi, see [`aws.ec2.RouteTable`][tf-route-tables].
+/// For more information, see the Amazon VPC User Guide on [Route Tables](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html#Route_Replacing_Main_Table). For information about managing normal route tables in Pulumi, see `aws.ec2.RouteTable`.
 ///
 /// ## Example Usage
 ///
@@ -64,6 +64,20 @@ import 'main_route_table_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_mainroutetableassociation" "a" {
+///   vpc_id         = foo.id
+///   route_table_id = bar.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +86,8 @@ import 'main_route_table_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.MainRouteTableAssociation;
 /// import com.pulumi.aws.ec2.MainRouteTableAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -101,16 +115,6 @@ import 'main_route_table_association_state.dart';
 ///       vpcId: ${foo.id}
 ///       routeTableId: ${bar.id}
 /// ```
-///
-///
-/// ## Notes
-///
-/// On VPC creation, the AWS API always creates an initial Main Route Table. This
-/// resource records the ID of that Route Table under `original_route_table_id`.
-/// The "Delete" action for a `main_route_table_association` consists of resetting
-/// this original table as the Main Route Table for the VPC. You'll see this
-/// additional Route Table in the AWS console; it must remain intact in order for
-/// the `main_route_table_association` delete to work properly.
 class MainRouteTableAssociation extends pulumi.CustomResource {
   /// Used internally, see **Notes** below
   late final pulumi.Output<String> originalRouteTableId;

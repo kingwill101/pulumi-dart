@@ -65,6 +65,20 @@ import 'app_authorization_connection_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appfabric_appauthorizationconnection" "example" {
+///   app_authorization_arn = test.arn
+///   app_bundle_arn        = arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +87,8 @@ import 'app_authorization_connection_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appfabric.AppAuthorizationConnection;
 /// import com.pulumi.aws.appfabric.AppAuthorizationConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -103,17 +117,19 @@ import 'app_authorization_connection_timeouts.dart';
 ///       appBundleArn: ${arn}
 /// ```
 class AppAuthorizationConnection extends pulumi.CustomResource {
-  /// The name of the application.
+  /// Name of the application.
   late final pulumi.Output<String> app;
-  /// The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the app authorization to use for the request.
+  /// Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the app authorization to use for the request.
   late final pulumi.Output<String> appAuthorizationArn;
-  /// The Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// Amazon Resource Name (ARN) of the app bundle to use for the request.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> appBundleArn;
-  /// Contains OAuth2 authorization information.This is required if the app authorization for the request is configured with an OAuth2 (oauth2) authorization type.
+  /// OAuth2 authorization information. Required if the app authorization for the request is configured with an OAuth2 (`oauth2`) authorization type. See `authRequest` Block for details.
   late final pulumi.Output<AppAuthorizationConnectionAuthRequest?> authRequest;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Contains information about an application tenant, such as the application display name and identifier.
+  /// Information about an application tenant. See `tenant` Block below.
   late final pulumi.Output<List<Map<String, dynamic>>> tenants;
   late final pulumi.Output<AppAuthorizationConnectionTimeouts?> timeouts;
 

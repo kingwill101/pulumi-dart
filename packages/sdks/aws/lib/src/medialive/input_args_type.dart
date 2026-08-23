@@ -25,7 +25,7 @@ class InputArgsType {
   final pulumi.Input<String>? roleArn;
   /// The source URLs for a PULL-type input. See Sources for more details.
   final pulumi.Input<List<InputSource>>? sources;
-  /// A map of tags to assign to the Input. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the Input. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The different types of inputs that AWS Elemental MediaLive supports.
   ///
@@ -43,7 +43,7 @@ class InputArgsType {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] The ARN of the role this input assumes during and after creation.
   /// [sources] The source URLs for a PULL-type input. See Sources for more details.
-  /// [tags] A map of tags to assign to the Input. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the Input. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] The different types of inputs that AWS Elemental MediaLive supports.
   /// [vpc] Settings for a private VPC Input. See VPC for more details.
   const InputArgsType({
@@ -92,4 +92,3 @@ class InputArgsType {
     );
   }
 }
-

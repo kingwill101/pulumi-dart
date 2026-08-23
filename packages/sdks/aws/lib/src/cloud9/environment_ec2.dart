@@ -67,6 +67,21 @@ import 'environment_ec2_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloud9_environmentec2" "example" {
+///   instance_type = "t2.micro"
+///   name          = "example-env"
+///   image_id      = "amazonlinux-2023-x86_64"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'environment_ec2_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloud9.EnvironmentEC2;
 /// import com.pulumi.aws.cloud9.EnvironmentEC2Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -193,16 +208,39 @@ import 'environment_ec2_state.dart';
 /// 				&ec2.GetInstanceFilterArgs{
 /// 					Name: pulumi.String("tag:aws:cloud9:environment"),
 /// 					Values: pulumi.StringArray{
-/// 						example.ID(),
+/// 						example.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
 /// 		}, nil)
-/// 		ctx.Export("cloud9Url", example.ID().ApplyT(func(id string) (string, error) {
+/// 		ctx.Export("cloud9Url", example.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 			return fmt.Sprintf("https://%v.console.aws.amazon.com/cloud9/ide/%v", region, id), nil
 /// 		}).(pulumi.StringOutput))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getinstance" "cloud9Instance" {
+///   filters {
+///     name   = "tag:aws:cloud9:environment"
+///     values = [aws_cloud9_environmentec2.example.id]
+///   }
+/// }
+///
+/// resource "aws_cloud9_environmentec2" "example" {
+///   instance_type = "t2.micro"
+/// }
+/// output "cloud9Url" {
+///   value ="https://${region}.console.aws.amazon.com/cloud9/ide/${aws_cloud9_environmentec2.example.id}"
 /// }
 /// ```
 /// ```java
@@ -215,8 +253,9 @@ import 'environment_ec2_state.dart';
 /// import com.pulumi.aws.cloud9.EnvironmentEC2Args;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetInstanceArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetInstanceFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -278,7 +317,7 @@ import 'environment_ec2_state.dart';
 ///     }],
 /// });
 /// const cloud9Eip = new aws.ec2.Eip("cloud9_eip", {
-///     instance: cloud9Instance.apply(cloud9Instance => cloud9Instance.id),
+///     instance: cloud9Instance.id,
 ///     domain: "vpc",
 /// });
 /// export const cloud9PublicIp = cloud9Eip.publicIp;
@@ -359,16 +398,14 @@ import 'environment_ec2_state.dart';
 /// 				&ec2.GetInstanceFilterArgs{
 /// 					Name: pulumi.String("tag:aws:cloud9:environment"),
 /// 					Values: pulumi.StringArray{
-/// 						example.ID(),
+/// 						example.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
 /// 		}, nil)
 /// 		cloud9Eip, err := ec2.NewEip(ctx, "cloud9_eip", &ec2.EipArgs{
-/// 			Instance: pulumi.String(cloud9Instance.ApplyT(func(cloud9Instance ec2.GetInstanceResult) (*string, error) {
-/// 				return &cloud9Instance.Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			Domain: pulumi.String("vpc"),
+/// 			Instance: cloud9Instance.Id(),
+/// 			Domain:   pulumi.String("vpc"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -376,6 +413,33 @@ import 'environment_ec2_state.dart';
 /// 		ctx.Export("cloud9PublicIp", cloud9Eip.PublicIp)
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getinstance" "cloud9Instance" {
+///   filters {
+///     name   = "tag:aws:cloud9:environment"
+///     values = [aws_cloud9_environmentec2.example.id]
+///   }
+/// }
+///
+/// resource "aws_cloud9_environmentec2" "example" {
+///   instance_type = "t2.micro"
+/// }
+/// resource "aws_ec2_eip" "cloud9_eip" {
+///   instance = data.aws_ec2_getinstance.cloud9Instance.id
+///   domain   = "vpc"
+/// }
+/// output "cloud9PublicIp" {
+///   value = aws_ec2_eip.cloud9_eip.public_ip
 /// }
 /// ```
 /// ```java
@@ -388,10 +452,11 @@ import 'environment_ec2_state.dart';
 /// import com.pulumi.aws.cloud9.EnvironmentEC2Args;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetInstanceArgs;
+/// import com.pulumi.aws.ec2.inputs.GetInstanceFilterArgs;
 /// import com.pulumi.aws.ec2.Eip;
 /// import com.pulumi.aws.ec2.EipArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -476,9 +541,9 @@ class EnvironmentEC2 extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The ID of the subnet in Amazon VPC that AWS Cloud9 will use to communicate with the Amazon EC2 instance.
   late final pulumi.Output<String?> subnetId;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The type of the environment (e.g., `ssh` or `ec2`).
   late final pulumi.Output<String> type;

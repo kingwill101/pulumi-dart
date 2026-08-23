@@ -6,7 +6,7 @@ import 'vpc_endpoint_subnet_association_state.dart';
 ///
 /// &gt; **NOTE on VPC Endpoints and VPC Endpoint Subnet Associations:** This provider provides
 /// both a standalone VPC Endpoint Subnet Association (an association between a VPC endpoint
-/// and a single `subnet_id`) and a VPC Endpoint resource with a `subnet_ids`
+/// and a single `subnetId`) and a VPC Endpoint resource with a `subnetIds`
 /// attribute. Do not use the same subnet ID in both a VPC Endpoint resource and a VPC Endpoint Subnet
 /// Association resource. Doing so will cause a conflict of associations and will overwrite the association.
 ///
@@ -69,6 +69,20 @@ import 'vpc_endpoint_subnet_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpcendpointsubnetassociation" "sn_ec2" {
+///   vpc_endpoint_id = ec2.id
+///   subnet_id       = sn.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +91,8 @@ import 'vpc_endpoint_subnet_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.VpcEndpointSubnetAssociation;
 /// import com.pulumi.aws.ec2.VpcEndpointSubnetAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -111,7 +125,7 @@ import 'vpc_endpoint_subnet_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import VPC Endpoint Subnet Associations using `vpc_endpoint_id` together with `subnet_id`. For example:
+/// Using `pulumi import`, import VPC Endpoint Subnet Associations using `vpcEndpointId` together with `subnetId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ec2/vpcEndpointSubnetAssociation:VpcEndpointSubnetAssociation example vpce-aaaaaaaa/subnet-bbbbbbbbbbbbbbbbb

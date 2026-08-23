@@ -30,4 +30,3 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3 {
     );
   }
 }
-

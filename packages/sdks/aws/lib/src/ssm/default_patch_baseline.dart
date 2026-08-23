@@ -78,7 +78,7 @@ import 'default_patch_baseline_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ssm.NewDefaultPatchBaseline(ctx, "example", &ssm.DefaultPatchBaselineArgs{
-/// 			BaselineId:      examplePatchBaseline.ID(),
+/// 			BaselineId:      examplePatchBaseline.ID().ToIDOutput().ToStringOutput(),
 /// 			OperatingSystem: examplePatchBaseline.OperatingSystem,
 /// 		})
 /// 		if err != nil {
@@ -86,6 +86,24 @@ import 'default_patch_baseline_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_defaultpatchbaseline" "example" {
+///   baseline_id      = aws_ssm_patchbaseline.example.id
+///   operating_system = aws_ssm_patchbaseline.example.operating_system
+/// }
+/// resource "aws_ssm_patchbaseline" "example" {
+///   name             = "example"
+///   approved_patches = ["KB123456"]
 /// }
 /// ```
 /// ```java
@@ -98,8 +116,8 @@ import 'default_patch_baseline_state.dart';
 /// import com.pulumi.aws.ssm.PatchBaselineArgs;
 /// import com.pulumi.aws.ssm.DefaultPatchBaseline;
 /// import com.pulumi.aws.ssm.DefaultPatchBaselineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

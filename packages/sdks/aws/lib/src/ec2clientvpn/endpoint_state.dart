@@ -6,26 +6,27 @@ import 'endpoint_client_connect_options.dart';
 import 'endpoint_client_login_banner_options.dart';
 import 'endpoint_client_route_enforcement_options.dart';
 import 'endpoint_connection_log_options.dart';
+import 'endpoint_transit_gateway_configuration.dart';
 
 /// Input properties used for looking up and filtering Endpoint resources.
 class EndpointState {
   /// The ARN of the Client VPN endpoint.
   final pulumi.Input<String>? arn;
-  /// Information about the authentication method to be used to authenticate clients.
+  /// Information about the authentication method to be used to authenticate clients. See `authenticationOptions` Block Reference below for details.
   final pulumi.Input<List<EndpointAuthenticationOption>>? authenticationOptions;
-  /// The IPv4 address range, in CIDR notation, from which to assign client IP addresses. The address range cannot overlap with the local CIDR of the VPC in which the associated subnet is located, or the routes that you add manually. The address range cannot be changed after the Client VPN endpoint has been created. The CIDR block should be /22 or greater. When `traffic_ip_address_type` is set to `ipv6`, it must not be specified. Otherwise, it is required.
+  /// The IPv4 address range, in CIDR notation, from which to assign client IP addresses. The address range cannot overlap with the local CIDR of the VPC in which the associated subnet is located, or the routes that you add manually. The address range cannot be changed after the Client VPN endpoint has been created. The CIDR block should be /22 or greater. When `trafficIpAddressType` is set to `ipv6`, it must not be specified. Otherwise, it is required.
   final pulumi.Input<String>? clientCidrBlock;
-  /// The options for managing connection authorization for new client connections.
+  /// The options for managing connection authorization for new client connections. See `clientConnectOptions` Block Reference below for details.
   final pulumi.Input<EndpointClientConnectOptions>? clientConnectOptions;
-  /// Options for enabling a customizable text banner that will be displayed on AWS provided clients when a VPN session is established.
+  /// Options for enabling a customizable text banner that will be displayed on AWS provided clients when a VPN session is established. See `clientLoginBannerOptions` Block Reference below for details.
   final pulumi.Input<EndpointClientLoginBannerOptions>? clientLoginBannerOptions;
-  /// Options for enforce administrator defined routes on devices connected through the VPN.
+  /// Options for enforce administrator defined routes on devices connected through the VPN. See `clientRouteEnforcementOptions` Block Reference below for details.
   final pulumi.Input<EndpointClientRouteEnforcementOptions>? clientRouteEnforcementOptions;
-  /// Information about the client connection logging options.
+  /// Information about the client connection logging options. See `connectionLogOptions` Block Reference below for details.
   final pulumi.Input<EndpointConnectionLogOptions>? connectionLogOptions;
   /// A brief description of the Client VPN endpoint.
   final pulumi.Input<String>? description;
-  /// Indicates whether the client VPN session is disconnected after the maximum `session_timeout_hours` is reached. If `true`, users are prompted to reconnect client VPN. If `false`, client VPN attempts to reconnect automatically. The default value is `false`.
+  /// Indicates whether the client VPN session is disconnected after the maximum `sessionTimeoutHours` is reached. If `true`, users are prompted to reconnect client VPN. If `false`, client VPN attempts to reconnect automatically. The default value is `false`.
   final pulumi.Input<bool>? disconnectOnSessionTimeout;
   /// The DNS name to be used by clients when establishing their VPN session.
   final pulumi.Input<String>? dnsName;
@@ -35,7 +36,7 @@ class EndpointState {
   final pulumi.Input<String>? endpointIpAddressType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The IDs of one or more security groups to apply to the target network. You must also specify the ID of the VPC that contains the security groups.
+  /// The IDs of one or more security groups to apply to the target network. You must also specify the ID of the VPC that contains the security groups. Conflicts with `transitGatewayConfiguration`.
   final pulumi.Input<List<String>>? securityGroupIds;
   /// Specify whether to enable the self-service portal for the Client VPN endpoint. Values can be `enabled` or `disabled`. Default value is `disabled`.
   final pulumi.Input<String>? selfServicePortal;
@@ -47,44 +48,47 @@ class EndpointState {
   final pulumi.Input<int>? sessionTimeoutHours;
   /// Indicates whether split-tunnel is enabled on VPN endpoint. Default value is `false`.
   final pulumi.Input<bool>? splitTunnel;
-  /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// IP address type for traffic within the Client VPN tunnel. Valid values are `ipv4`, `ipv6`, or `dual-stack`. Defaults to `ipv4`. When it is set to `ipv6`, `client_cidr_block` must not be specified.
+  /// IP address type for traffic within the Client VPN tunnel. Valid values are `ipv4`, `ipv6`, or `dual-stack`. Defaults to `ipv4`. When it is set to `ipv6`, `clientCidrBlock` must not be specified.
   final pulumi.Input<String>? trafficIpAddressType;
+  /// Configuration block for associating the Client VPN endpoint with a Transit Gateway. Conflicts with `vpcId` and `securityGroupIds`. See `transitGatewayConfiguration` Block Reference below for details.
+  final pulumi.Input<EndpointTransitGatewayConfiguration>? transitGatewayConfiguration;
   /// The transport protocol to be used by the VPN session. Default value is `udp`.
   final pulumi.Input<String>? transportProtocol;
-  /// The ID of the VPC to associate with the Client VPN endpoint. If no security group IDs are specified in the request, the default security group for the VPC is applied.
+  /// The ID of the VPC to associate with the Client VPN endpoint. If no security group IDs are specified in the request, the default security group for the VPC is applied. Conflicts with `transitGatewayConfiguration`.
   final pulumi.Input<String>? vpcId;
   /// The port number for the Client VPN endpoint. Valid values are `443` and `1194`. Default value is `443`.
   final pulumi.Input<int>? vpnPort;
 
   /// Creates a new [EndpointState].
   /// [arn] The ARN of the Client VPN endpoint.
-  /// [authenticationOptions] Information about the authentication method to be used to authenticate clients.
-  /// [clientCidrBlock] The IPv4 address range, in CIDR notation, from which to assign client IP addresses. The address range cannot overlap with the local CIDR of the VPC in which the associated subnet is located, or the routes that you add manually. The address range cannot be changed after the Client VPN endpoint has been created. The CIDR block should be /22 or greater. When `traffic_ip_address_type` is set to `ipv6`, it must not be specified. Otherwise, it is required.
-  /// [clientConnectOptions] The options for managing connection authorization for new client connections.
-  /// [clientLoginBannerOptions] Options for enabling a customizable text banner that will be displayed on AWS provided clients when a VPN session is established.
-  /// [clientRouteEnforcementOptions] Options for enforce administrator defined routes on devices connected through the VPN.
-  /// [connectionLogOptions] Information about the client connection logging options.
+  /// [authenticationOptions] Information about the authentication method to be used to authenticate clients. See `authenticationOptions` Block Reference below for details.
+  /// [clientCidrBlock] The IPv4 address range, in CIDR notation, from which to assign client IP addresses. The address range cannot overlap with the local CIDR of the VPC in which the associated subnet is located, or the routes that you add manually. The address range cannot be changed after the Client VPN endpoint has been created. The CIDR block should be /22 or greater. When `trafficIpAddressType` is set to `ipv6`, it must not be specified. Otherwise, it is required.
+  /// [clientConnectOptions] The options for managing connection authorization for new client connections. See `clientConnectOptions` Block Reference below for details.
+  /// [clientLoginBannerOptions] Options for enabling a customizable text banner that will be displayed on AWS provided clients when a VPN session is established. See `clientLoginBannerOptions` Block Reference below for details.
+  /// [clientRouteEnforcementOptions] Options for enforce administrator defined routes on devices connected through the VPN. See `clientRouteEnforcementOptions` Block Reference below for details.
+  /// [connectionLogOptions] Information about the client connection logging options. See `connectionLogOptions` Block Reference below for details.
   /// [description] A brief description of the Client VPN endpoint.
-  /// [disconnectOnSessionTimeout] Indicates whether the client VPN session is disconnected after the maximum `session_timeout_hours` is reached. If `true`, users are prompted to reconnect client VPN. If `false`, client VPN attempts to reconnect automatically. The default value is `false`.
+  /// [disconnectOnSessionTimeout] Indicates whether the client VPN session is disconnected after the maximum `sessionTimeoutHours` is reached. If `true`, users are prompted to reconnect client VPN. If `false`, client VPN attempts to reconnect automatically. The default value is `false`.
   /// [dnsName] The DNS name to be used by clients when establishing their VPN session.
   /// [dnsServers] Information about the DNS servers to be used for DNS resolution. A Client VPN endpoint can have up to two DNS servers. If no DNS server is specified, the DNS address of the connecting device is used.
   /// [endpointIpAddressType] IP address type for the Client VPN endpoint. Valid values are `ipv4`, `ipv6`, or `dual-stack`. Defaults to `ipv4`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [securityGroupIds] The IDs of one or more security groups to apply to the target network. You must also specify the ID of the VPC that contains the security groups.
+  /// [securityGroupIds] The IDs of one or more security groups to apply to the target network. You must also specify the ID of the VPC that contains the security groups. Conflicts with `transitGatewayConfiguration`.
   /// [selfServicePortal] Specify whether to enable the self-service portal for the Client VPN endpoint. Values can be `enabled` or `disabled`. Default value is `disabled`.
   /// [selfServicePortalUrl] The URL of the self-service portal.
   /// [serverCertificateArn] The ARN of the ACM server certificate.
   /// [sessionTimeoutHours] The maximum session duration is a trigger by which end-users are required to re-authenticate prior to establishing a VPN session. Default value is `24` - Valid values: `8 | 10 | 12 | 24`
   /// [splitTunnel] Indicates whether split-tunnel is enabled on VPN endpoint. Default value is `false`.
-  /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  /// [trafficIpAddressType] IP address type for traffic within the Client VPN tunnel. Valid values are `ipv4`, `ipv6`, or `dual-stack`. Defaults to `ipv4`. When it is set to `ipv6`, `client_cidr_block` must not be specified.
+  /// [tags] A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [trafficIpAddressType] IP address type for traffic within the Client VPN tunnel. Valid values are `ipv4`, `ipv6`, or `dual-stack`. Defaults to `ipv4`. When it is set to `ipv6`, `clientCidrBlock` must not be specified.
+  /// [transitGatewayConfiguration] Configuration block for associating the Client VPN endpoint with a Transit Gateway. Conflicts with `vpcId` and `securityGroupIds`. See `transitGatewayConfiguration` Block Reference below for details.
   /// [transportProtocol] The transport protocol to be used by the VPN session. Default value is `udp`.
-  /// [vpcId] The ID of the VPC to associate with the Client VPN endpoint. If no security group IDs are specified in the request, the default security group for the VPC is applied.
+  /// [vpcId] The ID of the VPC to associate with the Client VPN endpoint. If no security group IDs are specified in the request, the default security group for the VPC is applied. Conflicts with `transitGatewayConfiguration`.
   /// [vpnPort] The port number for the Client VPN endpoint. Valid values are `443` and `1194`. Default value is `443`.
   const EndpointState({
     this.arn,
@@ -109,6 +113,7 @@ class EndpointState {
     this.tags,
     this.tagsAll,
     this.trafficIpAddressType,
+    this.transitGatewayConfiguration,
     this.transportProtocol,
     this.vpcId,
     this.vpnPort,
@@ -138,6 +143,7 @@ class EndpointState {
       'tags': ?tags,
       'tagsAll': ?tagsAll,
       'trafficIpAddressType': ?trafficIpAddressType,
+      'transitGatewayConfiguration': ?pulumi.Input.mapOptionalInputValue<EndpointTransitGatewayConfiguration, Map<String, dynamic>>(transitGatewayConfiguration, (value) => value.toMap()),
       'transportProtocol': ?transportProtocol,
       'vpcId': ?vpcId,
       'vpnPort': ?vpnPort,
@@ -168,10 +174,10 @@ class EndpointState {
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       trafficIpAddressType: (() { final guardedValue = map['trafficIpAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitGatewayConfiguration: (() { final guardedValue = map['transitGatewayConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointTransitGatewayConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       transportProtocol: (() { final guardedValue = map['transportProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpnPort: (() { final guardedValue = map['vpnPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
-

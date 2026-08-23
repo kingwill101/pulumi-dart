@@ -5,14 +5,14 @@ import 'configuration_set_vdm_options_dashboard_options.dart';
 import 'configuration_set_vdm_options_guardian_options.dart';
 
 class ConfigurationSetVdmOptions {
-  /// Specifies additional settings for your VDM configuration as applicable to the Dashboard. See `dashboard_options` Block for details.
+  /// Specifies additional settings for your VDM configuration as applicable to the Dashboard. See `dashboardOptions` Block for details.
   final pulumi.Input<ConfigurationSetVdmOptionsDashboardOptions>? dashboardOptions;
-  /// Specifies additional settings for your VDM configuration as applicable to the Guardian. See `guardian_options` Block for details.
+  /// Specifies additional settings for your VDM configuration as applicable to the Guardian. See `guardianOptions` Block for details.
   final pulumi.Input<ConfigurationSetVdmOptionsGuardianOptions>? guardianOptions;
 
   /// Creates a new [ConfigurationSetVdmOptions].
-  /// [dashboardOptions] Specifies additional settings for your VDM configuration as applicable to the Dashboard. See `dashboard_options` Block for details.
-  /// [guardianOptions] Specifies additional settings for your VDM configuration as applicable to the Guardian. See `guardian_options` Block for details.
+  /// [dashboardOptions] Specifies additional settings for your VDM configuration as applicable to the Dashboard. See `dashboardOptions` Block for details.
+  /// [guardianOptions] Specifies additional settings for your VDM configuration as applicable to the Guardian. See `guardianOptions` Block for details.
   const ConfigurationSetVdmOptions({
     this.dashboardOptions,
     this.guardianOptions,
@@ -32,4 +32,3 @@ class ConfigurationSetVdmOptions {
     );
   }
 }
-

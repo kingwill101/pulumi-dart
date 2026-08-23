@@ -64,6 +64,20 @@ import 'channel_namespace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appsync_channelnamespace" "example" {
+///   name   = "example-channel-namespace"
+///   api_id = exampleAwsAppsyncApi.apiId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +86,8 @@ import 'channel_namespace_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appsync.ChannelNamespace;
 /// import com.pulumi.aws.appsync.ChannelNamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -105,7 +119,7 @@ import 'channel_namespace_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import AppSync Channel Namespace using the `api_id` and `name` separated by a comma (`,`). For example:
+/// Using `pulumi import`, import AppSync Channel Namespace using the `apiId` and `name` separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appsync/channelNamespace:ChannelNamespace example example-api-id,example-channel-namespace
@@ -117,21 +131,21 @@ class ChannelNamespace extends pulumi.CustomResource {
   late final pulumi.Output<String> channelNamespaceArn;
   /// Event handler functions that run custom business logic to process published events and subscribe requests.
   late final pulumi.Output<String?> codeHandlers;
-  /// Configuration for the `on_publish` and `on_subscribe` handlers. See Handler Configs below.
+  /// Configuration for the `onPublish` and `onSubscribe` handlers. See `handlerConfigs` below.
   late final pulumi.Output<ChannelNamespaceHandlerConfigs?> handlerConfigs;
   /// Name of the channel namespace.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-  /// Authorization modes to use for publishing messages on the channel namespace. This configuration overrides the default API authorization configuration. See Auth Modes below.
+  /// Authorization modes to use for publishing messages on the channel namespace. This configuration overrides the default API authorization configuration. See `publishAuthMode` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> publishAuthModes;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Authorization modes to use for subscribing to messages on the channel namespace. This configuration overrides the default API authorization configuration. See Auth Modes below.
+  /// Authorization modes to use for subscribing to messages on the channel namespace. This configuration overrides the default API authorization configuration. See `subscribeAuthMode` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> subscribeAuthModes;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ChannelNamespace].

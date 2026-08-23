@@ -141,13 +141,43 @@ import 'table_export_state.dart';
 /// 		}
 /// 		_, err = dynamodb.NewTableExport(ctx, "example", &dynamodb.TableExportArgs{
 /// 			TableArn: exampleTable.Arn,
-/// 			S3Bucket: example.ID(),
+/// 			S3Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket_prefix = "example"
+///   force_destroy = true
+/// }
+/// resource "aws_dynamodb_table" "example" {
+///   name         = "example-table-1"
+///   billing_mode = "PAY_PER_REQUEST"
+///   hash_key     = "user_id"
+///   attributes {
+///     name = "user_id"
+///     type = "S"
+///   }
+///   point_in_time_recovery = {
+///     enabled = true
+///   }
+/// }
+/// resource "aws_dynamodb_tableexport" "example" {
+///   table_arn = aws_dynamodb_table.example.arn
+///   s3_bucket = aws_s3_bucket.example.id
 /// }
 /// ```
 /// ```java
@@ -164,8 +194,8 @@ import 'table_export_state.dart';
 /// import com.pulumi.aws.dynamodb.inputs.TablePointInTimeRecoveryArgs;
 /// import com.pulumi.aws.dynamodb.TableExport;
 /// import com.pulumi.aws.dynamodb.TableExportArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -292,6 +322,21 @@ import 'table_export_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dynamodb_tableexport" "example" {
+///   export_time = "2023-04-02T11:30:13+01:00"
+///   s3_bucket   = exampleAwsS3Bucket.id
+///   table_arn   = exampleAwsDynamodbTable.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -300,8 +345,8 @@ import 'table_export_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.dynamodb.TableExport;
 /// import com.pulumi.aws.dynamodb.TableExportArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -411,6 +456,25 @@ import 'table_export_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dynamodb_tableexport" "example" {
+///   export_type = "INCREMENTAL_EXPORT"
+///   s3_bucket   = exampleAwsS3Bucket.id
+///   table_arn   = exampleAwsDynamodbTable.arn
+///   incremental_export_specification = {
+///     export_from_time = "2025-02-09T12:00:00+01:00"
+///     export_to_time   = "2025-02-09T13:00:00+01:00"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -420,8 +484,8 @@ import 'table_export_state.dart';
 /// import com.pulumi.aws.dynamodb.TableExport;
 /// import com.pulumi.aws.dynamodb.TableExportArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableExportIncrementalExportSpecificationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -487,8 +551,8 @@ class TableExport extends pulumi.CustomResource {
   late final pulumi.Output<String> exportStatus;
   /// Time in RFC3339 format from which to export table data. The table export will be a snapshot of the table's state at this point in time. Omitting this value will result in a snapshot from the current time.
   late final pulumi.Output<String> exportTime;
-  /// Whether to execute as a full export or incremental export. Valid values are: `FULL_EXPORT`, `INCREMENTAL_EXPORT`. Defaults to `FULL_EXPORT`. If `INCREMENTAL_EXPORT` is provided, the `incremental_export_specification` argument must also be provided.
-  /// `incremental_export_specification` - (Optional, Forces new resource) Parameters specific to an incremental export. See `incremental_export_specification` Block for details.
+  /// Whether to execute as a full export or incremental export. Valid values are: `FULL_EXPORT`, `INCREMENTAL_EXPORT`. Defaults to `FULL_EXPORT`. If `INCREMENTAL_EXPORT` is provided, the `incrementalExportSpecification` argument must also be provided.
+  /// `incrementalExportSpecification` - (Optional, Forces new resource) Parameters specific to an incremental export. See `incrementalExportSpecification` Block for details.
   late final pulumi.Output<String> exportType;
   late final pulumi.Output<TableExportIncrementalExportSpecification?> incrementalExportSpecification;
   /// Number of items exported.

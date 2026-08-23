@@ -66,6 +66,20 @@ import 'table_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_timestreamwrite_table" "example" {
+///   database_name = exampleAwsTimestreamwriteDatabase.databaseName
+///   table_name    = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +88,8 @@ import 'table_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.timestreamwrite.Table;
 /// import com.pulumi.aws.timestreamwrite.TableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -192,6 +206,27 @@ import 'table_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_timestreamwrite_table" "example" {
+///   database_name = exampleAwsTimestreamwriteDatabase.databaseName
+///   table_name    = "example"
+///   retention_properties = {
+///     magnetic_store_retention_period_in_days = 30
+///     memory_store_retention_period_in_hours  = 8
+///   }
+///   tags = {
+///     "Name" = "example-timestream-table"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -201,8 +236,8 @@ import 'table_state.dart';
 /// import com.pulumi.aws.timestreamwrite.Table;
 /// import com.pulumi.aws.timestreamwrite.TableArgs;
 /// import com.pulumi.aws.timestreamwrite.inputs.TableRetentionPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -329,6 +364,27 @@ import 'table_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_timestreamwrite_table" "example" {
+///   database_name = exampleAwsTimestreamwriteDatabase.databaseName
+///   table_name    = "example"
+///   schema = {
+///     composite_partition_key = {
+///       enforcement_in_record = "REQUIRED"
+///       name                  = "attr1"
+///       type                  = "DIMENSION"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -339,8 +395,8 @@ import 'table_state.dart';
 /// import com.pulumi.aws.timestreamwrite.TableArgs;
 /// import com.pulumi.aws.timestreamwrite.inputs.TableSchemaArgs;
 /// import com.pulumi.aws.timestreamwrite.inputs.TableSchemaCompositePartitionKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -384,7 +440,7 @@ import 'table_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Timestream tables using the `table_name` and `database_name` separate by a colon (`:`). For example:
+/// Using `pulumi import`, import Timestream tables using the `tableName` and `databaseName` separate by a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:timestreamwrite/table:Table example ExampleTable:ExampleDatabase
@@ -398,15 +454,15 @@ class Table extends pulumi.CustomResource {
   late final pulumi.Output<TableMagneticStoreWriteProperties> magneticStoreWriteProperties;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The retention duration for the memory store and magnetic store. See Retention Properties below for more details. If not provided, `magnetic_store_retention_period_in_days` default to 73000 and `memory_store_retention_period_in_hours` defaults to 6.
+  /// The retention duration for the memory store and magnetic store. See Retention Properties below for more details. If not provided, `magneticStoreRetentionPeriodInDays` default to 73000 and `memoryStoreRetentionPeriodInHours` defaults to 6.
   late final pulumi.Output<TableRetentionProperties> retentionProperties;
   /// The schema of the table. See Schema below for more details.
   late final pulumi.Output<TableSchema> schema;
   /// The name of the Timestream table.
   late final pulumi.Output<String> tableName;
-  /// Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Table].

@@ -128,7 +128,7 @@ import 'threat_intel_set_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "bucket_acl", &s3.BucketAclArgs{
-/// 			Bucket: bucket.ID(),
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -137,7 +137,7 @@ import 'threat_intel_set_state.dart';
 /// 		myThreatIntelSet, err := s3.NewBucketObjectv2(ctx, "MyThreatIntelSet", &s3.BucketObjectv2Args{
 /// 			Acl:     pulumi.String("public-read"),
 /// 			Content: pulumi.String("10.0.0.0/8\n"),
-/// 			Bucket:  bucket.ID(),
+/// 			Bucket:  bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Key:     pulumi.String("MyThreatIntelSet"),
 /// 		})
 /// 		if err != nil {
@@ -145,7 +145,7 @@ import 'threat_intel_set_state.dart';
 /// 		}
 /// 		_, err = guardduty.NewThreatIntelSet(ctx, "MyThreatIntelSet", &guardduty.ThreatIntelSetArgs{
 /// 			Activate:   pulumi.Bool(true),
-/// 			DetectorId: primary.ID(),
+/// 			DetectorId: primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Format:     pulumi.String("TXT"),
 /// 			Location: pulumi.All(myThreatIntelSet.Bucket, myThreatIntelSet.Key).ApplyT(func(_args []interface{}) (string, error) {
 /// 				bucket := _args[0].(string)
@@ -159,6 +159,38 @@ import 'threat_intel_set_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_guardduty_detector" "primary" {
+///   enable = true
+/// }
+/// resource "aws_s3_bucket" "bucket" {
+/// }
+/// resource "aws_s3_bucketacl" "bucket_acl" {
+///   bucket = aws_s3_bucket.bucket.id
+///   acl    = "private"
+/// }
+/// resource "aws_s3_bucketobjectv2" "MyThreatIntelSet" {
+///   acl     = "public-read"
+///   content = "10.0.0.0/8\n"
+///   bucket  = aws_s3_bucket.bucket.id
+///   key     = "MyThreatIntelSet"
+/// }
+/// resource "aws_guardduty_threatintelset" "MyThreatIntelSet" {
+///   activate    = true
+///   detector_id = aws_guardduty_detector.primary.id
+///   format      = "TXT"
+///   location    ="https://s3.amazonaws.com/${aws_s3_bucketobjectv2.MyThreatIntelSet.bucket}/${aws_s3_bucketobjectv2.MyThreatIntelSet.key}"
+///   name        = "MyThreatIntelSet"
 /// }
 /// ```
 /// ```java
@@ -176,8 +208,8 @@ import 'threat_intel_set_state.dart';
 /// import com.pulumi.aws.s3.BucketObjectv2Args;
 /// import com.pulumi.aws.guardduty.ThreatIntelSet;
 /// import com.pulumi.aws.guardduty.ThreatIntelSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -281,10 +313,12 @@ class ThreatIntelSet extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+  /// ID of the GuardDuty ThreatIntelSet.
+  late final pulumi.Output<String> threatIntelSetId;
 
   /// Creates a new [ThreatIntelSet].
   /// [name] The Pulumi resource name.
@@ -309,6 +343,7 @@ class ThreatIntelSet extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    threatIntelSetId = registerOutput<String>('threatIntelSetId');
   }
 
   /// Gets an existing [ThreatIntelSet] resource's state with the given [name] and [id].
@@ -343,5 +378,6 @@ class ThreatIntelSet extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    threatIntelSetId = registerOutput<String>('threatIntelSetId');
   }
 }

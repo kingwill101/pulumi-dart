@@ -24,7 +24,7 @@ class FileSystemState {
   final pulumi.Input<bool>? encrypted;
   /// The ARN for the KMS encryption key. When specifying kms_key_id, encrypted needs to be set to true.
   final pulumi.Input<String>? kmsKeyId;
-  /// A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object. See `lifecycle_policy` block below for details.
+  /// A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object. See `lifecyclePolicy` block below for details.
   final pulumi.Input<List<FileSystemLifecyclePolicy>>? lifecyclePolicies;
   /// The value of the file system's `Name` tag.
   final pulumi.Input<String>? name;
@@ -36,17 +36,17 @@ class FileSystemState {
   final pulumi.Input<String>? performanceMode;
   /// A file system [protection](https://docs.aws.amazon.com/efs/latest/ug/API_FileSystemProtectionDescription.html) object. See `protection` block below for details.
   final pulumi.Input<FileSystemProtection>? protection;
-  /// The throughput, measured in MiB/s, that you want to provision for the file system. Only applicable with `throughput_mode` set to `provisioned`.
+  /// The throughput, measured in MiB/s, that you want to provision for the file system. Only applicable with `throughputMode` set to `provisioned`.
   final pulumi.Input<double>? provisionedThroughputInMibps;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// The latest known metered size (in bytes) of data stored in the file system, the value is not the exact size that the file system was at any point in time. See Size In Bytes.
   final pulumi.Input<List<FileSystemSizeInByte>>? sizeInBytes;
-  /// A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// Throughput mode for the file system. Defaults to `bursting`. Valid values: `bursting`, `provisioned`, or `elastic`. When using `provisioned`, also set `provisioned_throughput_in_mibps`.
+  /// Throughput mode for the file system. Defaults to `bursting`, matching the [`CreateFileSystem`](https://docs.aws.amazon.com/efs/latest/ug/API_CreateFileSystem.html) API default. Note that AWS [recommends `elastic` for most use cases](https://docs.aws.amazon.com/efs/latest/ug/managing-throughput.html), and `elastic` is the default in the Amazon EFS console. Valid values: `bursting`, `provisioned`, or `elastic`. When using `provisioned`, also set `provisionedThroughputInMibps`.
   final pulumi.Input<String>? throughputMode;
 
   /// Creates a new [FileSystemState].
@@ -57,18 +57,18 @@ class FileSystemState {
   /// [dnsName] The DNS name for the filesystem per [documented convention](http://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-cmd-dns-name.html).
   /// [encrypted] If true, the disk will be encrypted.
   /// [kmsKeyId] The ARN for the KMS encryption key. When specifying kms_key_id, encrypted needs to be set to true.
-  /// [lifecyclePolicies] A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object. See `lifecycle_policy` block below for details.
+  /// [lifecyclePolicies] A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object. See `lifecyclePolicy` block below for details.
   /// [name] The value of the file system's `Name` tag.
   /// [numberOfMountTargets] The current number of mount targets that the file system has.
   /// [ownerId] The AWS account that created the file system. If the file system was createdby an IAM user, the parent account to which the user belongs is the owner.
   /// [performanceMode] The file system performance mode. Can be either `"generalPurpose"` or `"maxIO"` (Default: `"generalPurpose"`).
   /// [protection] A file system [protection](https://docs.aws.amazon.com/efs/latest/ug/API_FileSystemProtectionDescription.html) object. See `protection` block below for details.
-  /// [provisionedThroughputInMibps] The throughput, measured in MiB/s, that you want to provision for the file system. Only applicable with `throughput_mode` set to `provisioned`.
+  /// [provisionedThroughputInMibps] The throughput, measured in MiB/s, that you want to provision for the file system. Only applicable with `throughputMode` set to `provisioned`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sizeInBytes] The latest known metered size (in bytes) of data stored in the file system, the value is not the exact size that the file system was at any point in time. See Size In Bytes.
-  /// [tags] A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  /// [throughputMode] Throughput mode for the file system. Defaults to `bursting`. Valid values: `bursting`, `provisioned`, or `elastic`. When using `provisioned`, also set `provisioned_throughput_in_mibps`.
+  /// [tags] A map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [throughputMode] Throughput mode for the file system. Defaults to `bursting`, matching the [`CreateFileSystem`](https://docs.aws.amazon.com/efs/latest/ug/API_CreateFileSystem.html) API default. Note that AWS [recommends `elastic` for most use cases](https://docs.aws.amazon.com/efs/latest/ug/managing-throughput.html), and `elastic` is the default in the Amazon EFS console. Valid values: `bursting`, `provisioned`, or `elastic`. When using `provisioned`, also set `provisionedThroughputInMibps`.
   const FileSystemState({
     this.arn,
     this.availabilityZoneId,
@@ -139,4 +139,3 @@ class FileSystemState {
     );
   }
 }
-

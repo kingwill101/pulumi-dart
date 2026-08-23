@@ -4,7 +4,7 @@ import 'recorder_status_state.dart';
 
 /// Manages status (recording / stopped) of an AWS Config Configuration Recorder.
 ///
-/// &gt; **Note:** Starting Configuration Recorder requires a Delivery Channel to be present. Use of `depends_on` (as shown below) is recommended to avoid race conditions.
+/// &gt; **Note:** Starting Configuration Recorder requires a Delivery Channel to be present. Use of `dependsOn` (as shown below) is recommended to avoid race conditions.
 ///
 /// ## Example Usage
 ///
@@ -59,7 +59,7 @@ import 'recorder_status_state.dart';
 /// const pRolePolicy = new aws.iam.RolePolicy("p", {
 ///     name: "awsconfig-example",
 ///     role: r.id,
-///     policy: p.apply(p => p.json),
+///     policy: p.json,
 /// });
 /// ```
 /// ```python
@@ -303,17 +303,72 @@ import 'recorder_status_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "p", &iam.RolePolicyArgs{
-/// 			Name: pulumi.String("awsconfig-example"),
-/// 			Role: r.ID(),
-/// 			Policy: pulumi.String(p.ApplyT(func(p iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &p.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:   pulumi.String("awsconfig-example"),
+/// 			Role:   r.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: p.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["config.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "p" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["s3:*"]
+///     resources = [aws_s3_bucket.b.arn, "${aws_s3_bucket.b.arn}/*"]
+///   }
+/// }
+///
+/// resource "aws_cfg_recorderstatus" "foo" {
+///   depends_on = [aws_cfg_deliverychannel.foo]
+///   name       = aws_cfg_recorder.foo.name
+///   is_enabled = true
+/// }
+/// resource "aws_iam_rolepolicyattachment" "a" {
+///   role       = aws_iam_role.r.name
+///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWS_ConfigRole"
+/// }
+/// resource "aws_s3_bucket" "b" {
+///   bucket = "awsconfig-example"
+/// }
+/// resource "aws_cfg_deliverychannel" "foo" {
+///   name           = "example"
+///   s3_bucket_name = aws_s3_bucket.b.bucket
+/// }
+/// resource "aws_cfg_recorder" "foo" {
+///   name     = "example"
+///   role_arn = aws_iam_role.r.arn
+/// }
+/// resource "aws_iam_role" "r" {
+///   name               = "example-awsconfig"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicy" "p" {
+///   name   = "awsconfig-example"
+///   role   = aws_iam_role.r.id
+///   policy = data.aws_iam_getpolicydocument.p.json
 /// }
 /// ```
 /// ```java
@@ -328,6 +383,8 @@ import 'recorder_status_state.dart';
 /// import com.pulumi.aws.cfg.DeliveryChannelArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.cfg.Recorder;
@@ -339,8 +396,8 @@ import 'recorder_status_state.dart';
 /// import com.pulumi.aws.iam.RolePolicy;
 /// import com.pulumi.aws.iam.RolePolicyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -485,15 +542,27 @@ import 'recorder_status_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Configuration Recorder Status using the name of the Configuration Recorder. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the configuration recorder.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Configuration Recorder Statuses using the `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cfg/recorderStatus:RecorderStatus foo example
+/// $ pulumi import aws:cfg/recorderStatus:RecorderStatus example example
 /// ```
 class RecorderStatus extends pulumi.CustomResource {
   /// Whether the configuration recorder should be enabled or disabled.
   late final pulumi.Output<bool> isEnabled;
-  /// The name of the recorder
+  /// The name of the configuration recorder.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

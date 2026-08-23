@@ -41,4 +41,3 @@ class GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Confi
     );
   }
 }
-

@@ -5,7 +5,7 @@ import 'v2models_intent_confirmation_setting_code_hook_post_code_hook_specificat
 import 'v2models_intent_confirmation_setting_code_hook_post_code_hook_specification_success_next_step_intent.dart';
 
 class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessNextStep {
-  /// Configuration block for action that the bot executes at runtime when the conversation reaches this step. See `dialog_action`.
+  /// Configuration block for action that the bot executes at runtime when the conversation reaches this step. See `dialogAction`.
   final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessNextStepDialogAction>? dialogAction;
   /// Configuration block for override settings to configure the intent state. See `intent`.
   final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessNextStepIntent>? intent;
@@ -13,7 +13,7 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessN
   final pulumi.Input<Map<String, String>>? sessionAttributes;
 
   /// Creates a new [V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessNextStep].
-  /// [dialogAction] Configuration block for action that the bot executes at runtime when the conversation reaches this step. See `dialog_action`.
+  /// [dialogAction] Configuration block for action that the bot executes at runtime when the conversation reaches this step. See `dialogAction`.
   /// [intent] Configuration block for override settings to configure the intent state. See `intent`.
   /// [sessionAttributes] Map of key/value pairs representing session-specific context information. It contains application information passed between Amazon Lex and a client application.
   const V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessNextStep({
@@ -38,4 +38,3 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessN
     );
   }
 }
-

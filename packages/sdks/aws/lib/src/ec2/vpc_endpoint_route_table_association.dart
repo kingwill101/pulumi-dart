@@ -61,6 +61,20 @@ import 'vpc_endpoint_route_table_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpcendpointroutetableassociation" "example" {
+///   route_table_id  = exampleAwsRouteTable.id
+///   vpc_endpoint_id = exampleAwsVpcEndpoint.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'vpc_endpoint_route_table_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.VpcEndpointRouteTableAssociation;
 /// import com.pulumi.aws.ec2.VpcEndpointRouteTableAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -102,7 +116,20 @@ import 'vpc_endpoint_route_table_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import VPC Endpoint Route Table Associations using `vpc_endpoint_id` together with `route_table_id`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `routeTableId` (String) Route Table ID.
+/// * `vpcEndpointId` (String) VPC Endpoint ID.
+///
+/// #### Optional
+///
+/// * `accountId` (String) Account ID where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import VPC Endpoint Route Table Associations using `vpcEndpointId` together with `routeTableId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ec2/vpcEndpointRouteTableAssociation:VpcEndpointRouteTableAssociation example vpce-aaaaaaaa/rtb-bbbbbbbb

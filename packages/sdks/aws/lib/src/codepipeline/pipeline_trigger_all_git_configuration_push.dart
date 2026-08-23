@@ -8,14 +8,14 @@ import 'pipeline_trigger_all_git_configuration_push_tag.dart';
 class PipelineTriggerAllGitConfigurationPush {
   /// The field that specifies to filter on branches for the push trigger configuration. A `branches` block is documented below.
   final pulumi.Input<List<PipelineTriggerAllGitConfigurationPushBranch>>? branches;
-  /// The field that specifies to filter on file paths for the push trigger configuration. A `file_paths` block is documented below.
+  /// The field that specifies to filter on file paths for the push trigger configuration. A `filePaths` block is documented below.
   final pulumi.Input<List<PipelineTriggerAllGitConfigurationPushFilePath>>? filePaths;
   /// The field that contains the details for the Git tags trigger configuration. A `tags` block is documented below.
   final pulumi.Input<List<PipelineTriggerAllGitConfigurationPushTag>>? tags;
 
   /// Creates a new [PipelineTriggerAllGitConfigurationPush].
   /// [branches] The field that specifies to filter on branches for the push trigger configuration. A `branches` block is documented below.
-  /// [filePaths] The field that specifies to filter on file paths for the push trigger configuration. A `file_paths` block is documented below.
+  /// [filePaths] The field that specifies to filter on file paths for the push trigger configuration. A `filePaths` block is documented below.
   /// [tags] The field that contains the details for the Git tags trigger configuration. A `tags` block is documented below.
   const PipelineTriggerAllGitConfigurationPush({
     this.branches,
@@ -39,4 +39,3 @@ class PipelineTriggerAllGitConfigurationPush {
     );
   }
 }
-

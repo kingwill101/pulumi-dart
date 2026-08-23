@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainNameArgs {
   /// ARN of the certificate. This can be an Certificate Manager (ACM) certificate or an Identity and Access Management (IAM) server certificate. The certifiacte must reside in us-east-1.
   final pulumi.Input<String> certificateArn;
-  /// A description of the Domain Name.
+  /// Description of the Domain Name.
   final pulumi.Input<String>? description;
   /// Domain name.
   final pulumi.Input<String> domainName;
@@ -18,7 +18,7 @@ class DomainNameArgs {
 
   /// Creates a new [DomainNameArgs].
   /// [certificateArn] ARN of the certificate. This can be an Certificate Manager (ACM) certificate or an Identity and Access Management (IAM) server certificate. The certifiacte must reside in us-east-1.
-  /// [description] A description of the Domain Name.
+  /// [description] Description of the Domain Name.
   /// [domainName] Domain name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const DomainNameArgs({
@@ -46,4 +46,3 @@ class DomainNameArgs {
     );
   }
 }
-

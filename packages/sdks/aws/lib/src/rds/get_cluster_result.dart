@@ -18,6 +18,7 @@ class GetClusterResult {
   final String dbClusterParameterGroupName;
   final String dbSubnetGroupName;
   final String dbSystemId;
+  final bool deletionProtection;
   final List<String> enabledCloudwatchLogsExports;
   final String endpoint;
   final String engine;
@@ -61,6 +62,7 @@ class GetClusterResult {
   /// [dbClusterParameterGroupName] Required.
   /// [dbSubnetGroupName] Required.
   /// [dbSystemId] Required.
+  /// [deletionProtection] Required.
   /// [enabledCloudwatchLogsExports] Required.
   /// [endpoint] Required.
   /// [engine] Required.
@@ -101,6 +103,7 @@ class GetClusterResult {
     required this.dbClusterParameterGroupName,
     required this.dbSubnetGroupName,
     required this.dbSystemId,
+    required this.deletionProtection,
     required this.enabledCloudwatchLogsExports,
     required this.endpoint,
     required this.engine,
@@ -144,6 +147,7 @@ class GetClusterResult {
       'dbClusterParameterGroupName': dbClusterParameterGroupName,
       'dbSubnetGroupName': dbSubnetGroupName,
       'dbSystemId': dbSystemId,
+      'deletionProtection': deletionProtection,
       'enabledCloudwatchLogsExports': enabledCloudwatchLogsExports,
       'endpoint': endpoint,
       'engine': engine,
@@ -188,6 +192,7 @@ class GetClusterResult {
       dbClusterParameterGroupName: map['dbClusterParameterGroupName'] as String,
       dbSubnetGroupName: map['dbSubnetGroupName'] as String,
       dbSystemId: map['dbSystemId'] as String,
+      deletionProtection: map['deletionProtection'] as bool,
       enabledCloudwatchLogsExports: (map['enabledCloudwatchLogsExports'] as List).cast<String>(),
       endpoint: map['endpoint'] as String,
       engine: map['engine'] as String,
@@ -217,4 +222,3 @@ class GetClusterResult {
     );
   }
 }
-

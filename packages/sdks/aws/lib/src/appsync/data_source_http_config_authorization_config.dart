@@ -6,12 +6,12 @@ import 'data_source_http_config_authorization_config_aws_iam_config.dart';
 class DataSourceHttpConfigAuthorizationConfig {
   /// Authorization type that the HTTP endpoint requires. Default values is `AWS_IAM`.
   final pulumi.Input<String>? authorizationType;
-  /// Identity and Access Management (IAM) settings. See `aws_iam_config` Block for details.
+  /// Identity and Access Management (IAM) settings. See `awsIamConfig` Block for details.
   final pulumi.Input<DataSourceHttpConfigAuthorizationConfigAwsIamConfig>? awsIamConfig;
 
   /// Creates a new [DataSourceHttpConfigAuthorizationConfig].
   /// [authorizationType] Authorization type that the HTTP endpoint requires. Default values is `AWS_IAM`.
-  /// [awsIamConfig] Identity and Access Management (IAM) settings. See `aws_iam_config` Block for details.
+  /// [awsIamConfig] Identity and Access Management (IAM) settings. See `awsIamConfig` Block for details.
   const DataSourceHttpConfigAuthorizationConfig({
     this.authorizationType,
     this.awsIamConfig,
@@ -31,4 +31,3 @@ class DataSourceHttpConfigAuthorizationConfig {
     );
   }
 }
-

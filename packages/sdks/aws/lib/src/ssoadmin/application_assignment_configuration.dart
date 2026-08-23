@@ -7,7 +7,7 @@ import 'application_assignment_configuration_state.dart';
 /// By default, applications will require users to have an explicit assignment in order to access an application.
 /// This resource can be used to adjust this default behavior if necessary.
 ///
-/// &gt; Deleting this resource will return the assignment configuration for the application to the default AWS behavior (ie. `assignment_required = true`).
+/// &gt; Deleting this resource will return the assignment configuration for the application to the default AWS behavior (ie. `assignmentRequired = true`).
 ///
 /// ## Example Usage
 ///
@@ -68,6 +68,20 @@ import 'application_assignment_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssoadmin_applicationassignmentconfiguration" "example" {
+///   application_arn     = exampleAwsSsoadminApplication.arn
+///   assignment_required = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +90,8 @@ import 'application_assignment_configuration_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssoadmin.ApplicationAssignmentConfiguration;
 /// import com.pulumi.aws.ssoadmin.ApplicationAssignmentConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -113,7 +127,11 @@ import 'application_assignment_configuration_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the SSO application.
+/// - `applicationArn` (String) Amazon Resource Name (ARN) of the SSO application.
+///
+/// #### Optional
+///
+/// - `region` (String) Region where this resource is managed.
 ///
 ///
 /// Using `pulumi import`, import SSO Admin Application Assignment Configuration using the `id`. For example:

@@ -38,4 +38,3 @@ class ClassificationExportConfigurationS3Destination {
     );
   }
 }
-

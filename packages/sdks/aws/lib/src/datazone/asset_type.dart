@@ -72,6 +72,22 @@ import 'asset_type_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datazone_assettype" "test" {
+///   description               = "example"
+///   domain_identifier         = testAwsDatazoneDomain.id
+///   name                      = "example"
+///   owning_project_identifier = testAwsDatazoneProject.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +96,8 @@ import 'asset_type_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.datazone.AssetType;
 /// import com.pulumi.aws.datazone.AssetTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -116,6 +132,19 @@ import 'asset_type_timeouts.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `domainIdentifier` - (String) Identifier of the DataZone domain.
+/// * `name` - (String) Name of the asset type.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import DataZone Asset Type using the `domain_identifier,name`. For example:
 ///

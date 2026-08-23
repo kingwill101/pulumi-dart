@@ -63,6 +63,20 @@ import 'cache_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_storagegateway_cache" "example" {
+///   disk_id     = exampleAwsStoragegatewayLocalDisk.id
+///   gateway_arn = exampleAwsStoragegatewayGateway.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'cache_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.storagegateway.Cache;
 /// import com.pulumi.aws.storagegateway.CacheArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

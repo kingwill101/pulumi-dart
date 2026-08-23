@@ -103,7 +103,7 @@ import 'pipeline_state.dart';
 /// 				map[string]interface{}{
 /// 					"Name": "Test",
 /// 					"Type": "Fail",
-/// 					"Arguments": map[string]interface{}{
+/// 					"Arguments": map[string]string{
 /// 						"ErrorMessage": "test",
 /// 					},
 /// 				},
@@ -126,6 +126,31 @@ import 'pipeline_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_pipeline" "example" {
+///   pipeline_name         = "example"
+///   pipeline_display_name = "example"
+///   role_arn              = exampleAwsIamRole.arn
+///   pipeline_definition = jsonencode({
+///     "Version" = "2020-12-01"
+///     "Steps" = [{
+///       "Name" = "Test"
+///       "Type" = "Fail"
+///       "Arguments" = {
+///         "ErrorMessage" = "test"
+///       }
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -135,8 +160,8 @@ import 'pipeline_state.dart';
 /// import com.pulumi.aws.sagemaker.Pipeline;
 /// import com.pulumi.aws.sagemaker.PipelineArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -189,7 +214,7 @@ import 'pipeline_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import pipelines using the `pipeline_name`. For example:
+/// Using `pulumi import`, import pipelines using the `pipelineName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sagemaker/pipeline:Pipeline test_pipeline pipeline
@@ -213,9 +238,9 @@ class Pipeline extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The ARN of the IAM role the pipeline will execute as.
   late final pulumi.Output<String?> roleArn;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Pipeline].

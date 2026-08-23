@@ -38,15 +38,15 @@ class EncryptionControlState {
   final pulumi.Input<String>? region;
   /// State of exclusions from encryption enforcement.
   /// Will be `nil` if `mode` is `monitor`.
-  /// See `resource_exclusions` below
+  /// See `resourceExclusions` below
   final pulumi.Input<EncryptionControlResourceExclusions>? resourceExclusions;
   /// The current state of the VPC Encryption Control.
   final pulumi.Input<String>? state;
   /// A message providing additional information about the state of the VPC Encryption Control.
   final pulumi.Input<String>? stateMessage;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<EncryptionControlTimeouts>? timeouts;
   /// Whether to exclude Virtual Private Gateways from encryption enforcement.
@@ -80,8 +80,8 @@ class EncryptionControlState {
   /// [resourceExclusions] State of exclusions from encryption enforcement.
   /// [state] The current state of the VPC Encryption Control.
   /// [stateMessage] A message providing additional information about the state of the VPC Encryption Control.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   /// [virtualPrivateGatewayExclusion] Whether to exclude Virtual Private Gateways from encryption enforcement.
   /// [vpcId] The ID of the VPC the VPC Encryption Control is linked to.
@@ -151,4 +151,3 @@ class EncryptionControlState {
     );
   }
 }
-

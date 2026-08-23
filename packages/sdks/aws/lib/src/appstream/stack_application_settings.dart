@@ -5,14 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StackApplicationSettings {
   /// Whether application settings should be persisted.
   final pulumi.Input<bool> enabled;
-  /// Name of the settings group.
-  /// Required when `enabled` is `true`.
-  /// Can be up to 100 characters.
+  /// Name of the settings group. Required when `enabled` is `true`. Can be up to 100 characters.
   final pulumi.Input<String>? settingsGroup;
 
   /// Creates a new [StackApplicationSettings].
   /// [enabled] Whether application settings should be persisted.
-  /// [settingsGroup] Name of the settings group.
+  /// [settingsGroup] Name of the settings group. Required when `enabled` is `true`. Can be up to 100 characters.
   const StackApplicationSettings({
     required this.enabled,
     this.settingsGroup,
@@ -32,4 +30,3 @@ class StackApplicationSettings {
     );
   }
 }
-

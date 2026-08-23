@@ -23,7 +23,7 @@ class ConfigurationTemplateArgs {
   /// below in Option Settings
   final pulumi.Input<List<ConfigurationTemplateSetting>>? settings;
   /// A solution stack to base your Template
-  /// off of. Example stacks can be found in the [Amazon API documentation][1]
+  /// off of. Example stacks can be found in the [Amazon API documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html)
   final pulumi.Input<String>? solutionStackName;
 
   /// Creates a new [ConfigurationTemplateArgs].
@@ -68,4 +68,3 @@ class ConfigurationTemplateArgs {
     );
   }
 }
-

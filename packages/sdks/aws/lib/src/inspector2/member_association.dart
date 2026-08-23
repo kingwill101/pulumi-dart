@@ -56,6 +56,19 @@ import 'member_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_inspector2_memberassociation" "example" {
+///   account_id = "123456789012"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'member_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.inspector2.MemberAssociation;
 /// import com.pulumi.aws.inspector2.MemberAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -95,7 +108,7 @@ import 'member_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amazon Inspector Member Association using the `account_id`. For example:
+/// Using `pulumi import`, import Amazon Inspector Member Association using the `accountId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:inspector2/memberAssociation:MemberAssociation example 123456789012

@@ -6,162 +6,18 @@ import 'endpoint_configuration_state.dart';
 
 /// Provides a SageMaker AI endpoint configuration resource.
 ///
-/// ## Example Usage
+/// &gt; **Note:** `aws.sagemaker.Endpoint` resources cannot recognize changes to an `aws.sagemaker.EndpointConfiguration` resource unless the Endpoint Configuration's `name` attribute, changes. Endpoint Configuration names should be randomized by either specifying `namePrefix` or specifying no name. This will automatically change the name when the Endpoint Configuration is modified. The Endpoint Configuration's lifecycle meta-argument `lifecycle.create_before_destroy` should also be set to `true` to prevent conflicts.
 ///
-/// Basic usage:
+/// #### Optional
 ///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
-///
-/// const ec = new aws.sagemaker.EndpointConfiguration("ec", {
-///     name: "my-endpoint-config",
-///     productionVariants: [{
-///         variantName: "variant-1",
-///         modelName: m.name,
-///         initialInstanceCount: 1,
-///         instanceType: "ml.t2.medium",
-///     }],
-///     tags: {
-///         Name: "foo",
-///     },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// ec = aws.sagemaker.EndpointConfiguration("ec",
-///     name="my-endpoint-config",
-///     production_variants=[{
-///         "variant_name": "variant-1",
-///         "model_name": m["name"],
-///         "initial_instance_count": 1,
-///         "instance_type": "ml.t2.medium",
-///     }],
-///     tags={
-///         "Name": "foo",
-///     })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var ec = new Aws.Sagemaker.EndpointConfiguration("ec", new()
-///     {
-///         Name = "my-endpoint-config",
-///         ProductionVariants = new[]
-///         {
-///             new Aws.Sagemaker.Inputs.EndpointConfigurationProductionVariantArgs
-///             {
-///                 VariantName = "variant-1",
-///                 ModelName = m.Name,
-///                 InitialInstanceCount = 1,
-///                 InstanceType = "ml.t2.medium",
-///             },
-///         },
-///         Tags =
-///         {
-///             { "Name", "foo" },
-///         },
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/sagemaker"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := sagemaker.NewEndpointConfiguration(ctx, "ec", &sagemaker.EndpointConfigurationArgs{
-/// 			Name: pulumi.String("my-endpoint-config"),
-/// 			ProductionVariants: sagemaker.EndpointConfigurationProductionVariantArray{
-/// 				&sagemaker.EndpointConfigurationProductionVariantArgs{
-/// 					VariantName:          pulumi.String("variant-1"),
-/// 					ModelName:            pulumi.Any(m.Name),
-/// 					InitialInstanceCount: pulumi.Int(1),
-/// 					InstanceType:         pulumi.String("ml.t2.medium"),
-/// 				},
-/// 			},
-/// 			Tags: pulumi.StringMap{
-/// 				"Name": pulumi.String("foo"),
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.sagemaker.EndpointConfiguration;
-/// import com.pulumi.aws.sagemaker.EndpointConfigurationArgs;
-/// import com.pulumi.aws.sagemaker.inputs.EndpointConfigurationProductionVariantArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var ec = new EndpointConfiguration("ec", EndpointConfigurationArgs.builder()
-///             .name("my-endpoint-config")
-///             .productionVariants(EndpointConfigurationProductionVariantArgs.builder()
-///                 .variantName("variant-1")
-///                 .modelName(m.name())
-///                 .initialInstanceCount(1)
-///                 .instanceType("ml.t2.medium")
-///                 .build())
-///             .tags(Map.of("Name", "foo"))
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   ec:
-///     type: aws:sagemaker:EndpointConfiguration
-///     properties:
-///       name: my-endpoint-config
-///       productionVariants:
-///         - variantName: variant-1
-///           modelName: ${m.name}
-///           initialInstanceCount: 1
-///           instanceType: ml.t2.medium
-///       tags:
-///         Name: foo
-/// ```
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// ## Import
-///
-/// Using `pulumi import`, import endpoint configurations using the `name`. For example:
+/// Using `pulumi import`, import Endpoint Configurations using `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:sagemaker/endpointConfiguration:EndpointConfiguration test_endpoint_config endpoint-config-foo
+/// $ pulumi import aws:sagemaker/endpointConfiguration:EndpointConfiguration example example-endpoint-config
 /// ```
 class EndpointConfiguration extends pulumi.CustomResource {
   /// ARN assigned by AWS to this endpoint configuration.
@@ -170,11 +26,11 @@ class EndpointConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<EndpointConfigurationAsyncInferenceConfig?> asyncInferenceConfig;
   /// Parameters to capture input/output of SageMaker AI models endpoints. Fields are documented below.
   late final pulumi.Output<EndpointConfigurationDataCaptureConfig?> dataCaptureConfig;
-  /// ARN of an IAM role that SageMaker AI can assume to perform actions on your behalf. Required when `model_name` is not specified in `production_variants` to support Inference Components.
+  /// ARN of an IAM role that SageMaker AI can assume to perform actions on your behalf. Required when `modelName` is not specified in `productionVariants` to support Inference Components.
   late final pulumi.Output<String?> executionRoleArn;
   /// ARN of a AWS KMS key that SageMaker AI uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint.
   late final pulumi.Output<String?> kmsKeyArn;
-  /// Name of the endpoint configuration. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the endpoint configuration. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`. If `namePrefix` is specified, `name` is populated with the full name.
   late final pulumi.Output<String> name;
   /// Unique endpoint configuration name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
@@ -182,11 +38,11 @@ class EndpointConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> productionVariants;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Models that you want to host at this endpoint in shadow mode with production traffic replicated from the model specified on `production_variants`. If you use this field, you can only specify one variant for `production_variants` and one variant for `shadow_production_variants`. See below (same arguments as `production_variants`).
+  /// Models that you want to host at this endpoint in shadow mode with production traffic replicated from the model specified on `productionVariants`. If you use this field, you can only specify one variant for `productionVariants` and one variant for `shadowProductionVariants`. See below (same arguments as `productionVariants`).
   late final pulumi.Output<List<Map<String, dynamic>>?> shadowProductionVariants;
-  /// Mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [EndpointConfiguration].

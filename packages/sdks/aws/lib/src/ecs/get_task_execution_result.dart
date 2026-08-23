@@ -29,7 +29,7 @@ class GetTaskExecutionResult {
   final String region;
   final String? startedBy;
   final Map<String, String>? tags;
-  /// A list of the provisioned task ARNs.
+  /// List of the provisioned task ARNs.
   final List<String> taskArns;
   final String taskDefinition;
 
@@ -53,7 +53,7 @@ class GetTaskExecutionResult {
   /// [region] Required.
   /// [startedBy] Optional.
   /// [tags] Optional.
-  /// [taskArns] A list of the provisioned task ARNs.
+  /// [taskArns] List of the provisioned task ARNs.
   /// [taskDefinition] Required.
   const GetTaskExecutionResult({
     this.capacityProviderStrategies,
@@ -131,4 +131,3 @@ class GetTaskExecutionResult {
     );
   }
 }
-

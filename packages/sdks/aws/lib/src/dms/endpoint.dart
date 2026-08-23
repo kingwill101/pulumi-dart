@@ -123,6 +123,33 @@ import 'endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dms_endpoint" "test" {
+///   certificate_arn             = "arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012"
+///   database_name               = "test"
+///   endpoint_id                 = "test-dms-endpoint-tf"
+///   endpoint_type               = "source"
+///   engine_name                 = "aurora"
+///   extra_connection_attributes = ""
+///   kms_key_arn                 = "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012"
+///   password                    = "test"
+///   port                        = 3306
+///   server_name                 = "test"
+///   ssl_mode                    = "none"
+///   tags = {
+///     "Name" = "test"
+///   }
+///   username = "test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -131,8 +158,8 @@ import 'endpoint_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.dms.Endpoint;
 /// import com.pulumi.aws.dms.EndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -187,7 +214,7 @@ import 'endpoint_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import endpoints using the `endpoint_id`. For example:
+/// Using `pulumi import`, import endpoints using the `endpointId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:dms/endpoint:Endpoint test test-dms-endpoint-tf
@@ -213,7 +240,7 @@ class Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<EndpointKafkaSettings?> kafkaSettings;
   /// Configuration block for Kinesis settings. See below.
   late final pulumi.Output<EndpointKinesisSettings?> kinesisSettings;
-  /// ARN for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kms_key_arn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region. When `engine_name` is `redshift`, `kms_key_arn` is the KMS Key for the Redshift target and the parameter `redshift_settings.server_side_encryption_kms_key_id` encrypts the S3 intermediate storage.
+  /// ARN for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kmsKeyArn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region. When `engineName` is `redshift`, `kmsKeyArn` is the KMS Key for the Redshift target and the parameter `redshift_settings.server_side_encryption_kms_key_id` encrypts the S3 intermediate storage.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> kmsKeyArn;
@@ -236,11 +263,11 @@ class Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<EndpointRedshiftSettings> redshiftSettings;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// ARN of the IAM role that specifies AWS DMS as the trusted entity and has the required permissions to access the value in the Secrets Manager secret referred to by `secrets_manager_arn`. The role must allow the `iam:PassRole` action.
+  /// ARN of the IAM role that specifies AWS DMS as the trusted entity and has the required permissions to access the value in the Secrets Manager secret referred to by `secretsManagerArn`. The role must allow the `iam:PassRole` action.
   ///
-  /// &gt; **Note:** You can specify one of two sets of values for these permissions. You can specify the values for this setting and `secrets_manager_arn`. Or you can specify clear-text values for `username`, `password` , `server_name`, and `port`. You can't specify both.
+  /// &gt; **Note:** You can specify one of two sets of values for these permissions. You can specify the values for this setting and `secretsManagerArn`. Or you can specify clear-text values for `username`, `password` , `serverName`, and `port`. You can't specify both.
   late final pulumi.Output<String?> secretsManagerAccessRoleArn;
-  /// Full ARN, partial ARN, or friendly name of the Secrets Manager secret that contains the endpoint connection details. Supported only when `engine_name` is `aurora`, `aurora-postgresql`, `mariadb`, `mongodb`, `mysql`, `oracle`, `postgres`, `redshift`, or `sqlserver`.
+  /// Full ARN, partial ARN, or friendly name of the Secrets Manager secret that contains the endpoint connection details. Supported only when `engineName` is `aurora`, `aurora-postgresql`, `mariadb`, `mongodb`, `mysql`, `oracle`, `postgres`, `redshift`, or `sqlserver`.
   late final pulumi.Output<String?> secretsManagerArn;
   /// Host name of the server.
   late final pulumi.Output<String?> serverName;
@@ -248,9 +275,9 @@ class Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<String?> serviceAccessRole;
   /// SSL mode to use for the connection. Valid values are `none`, `require`, `verify-ca`, `verify-full`
   late final pulumi.Output<String> sslMode;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// User name to be used to login to the endpoint database.
   late final pulumi.Output<String?> username;

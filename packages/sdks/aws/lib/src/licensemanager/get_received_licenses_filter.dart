@@ -80,6 +80,22 @@ class GetReceivedLicensesFilter {
   /// 	})
   /// }
   /// ```
+  /// ```hcl
+  /// pulumi {
+  ///   required_providers {
+  ///     aws = {
+  ///       source = "pulumi/aws"
+  ///     }
+  ///   }
+  /// }
+  ///
+  /// data "aws_licensemanager_getreceivedlicenses" "selected" {
+  ///   filters {
+  ///     name   = "ProductSKU"
+  ///     values = [""]
+  ///   }
+  /// }
+  /// ```
   /// ```java
   /// package generated_program;
   ///
@@ -88,8 +104,9 @@ class GetReceivedLicensesFilter {
   /// import com.pulumi.core.Output;
   /// import com.pulumi.aws.licensemanager.LicensemanagerFunctions;
   /// import com.pulumi.aws.licensemanager.inputs.GetReceivedLicensesArgs;
-  /// import java.util.List;
+  /// import com.pulumi.aws.licensemanager.inputs.GetReceivedLicensesFilterArgs;
   /// import java.util.ArrayList;
+  /// import java.util.Arrays;
   /// import java.util.Map;
   /// import java.io.File;
   /// import java.nio.file.Files;
@@ -148,4 +165,3 @@ class GetReceivedLicensesFilter {
     );
   }
 }
-

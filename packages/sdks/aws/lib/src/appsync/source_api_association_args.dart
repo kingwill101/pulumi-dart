@@ -11,27 +11,28 @@ import 'source_api_association_timeouts.dart';
 class SourceApiAssociationArgs {
   /// Description of the source API being merged.
   final pulumi.Input<String>? description;
-  /// ARN of the merged API. One of `merged_api_arn` or `merged_api_id` must be specified.
+  /// ARN of the merged API. One of `mergedApiArn` or `mergedApiId` must be specified.
   final pulumi.Input<String>? mergedApiArn;
-  /// ID of the merged API. One of `merged_api_arn` or `merged_api_id` must be specified.
+  /// ID of the merged API. One of `mergedApiArn` or `mergedApiId` must be specified.
   final pulumi.Input<String>? mergedApiId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// ARN of the source API. One of `source_api_arn` or `source_api_id` must be specified.
+  /// ARN of the source API. One of `sourceApiArn` or `sourceApiId` must be specified.
   final pulumi.Input<String>? sourceApiArn;
+  /// Source API Association configuration. See `sourceApiAssociationConfig` Block for details.
   final pulumi.Input<List<SourceApiAssociationSourceApiAssociationConfig>>? sourceApiAssociationConfigs;
-  /// ID of the source API. One of `source_api_arn` or `source_api_id` must be specified.
+  /// ID of the source API. One of `sourceApiArn` or `sourceApiId` must be specified.
   final pulumi.Input<String>? sourceApiId;
   final pulumi.Input<SourceApiAssociationTimeouts>? timeouts;
 
   /// Creates a new [SourceApiAssociationArgs].
   /// [description] Description of the source API being merged.
-  /// [mergedApiArn] ARN of the merged API. One of `merged_api_arn` or `merged_api_id` must be specified.
-  /// [mergedApiId] ID of the merged API. One of `merged_api_arn` or `merged_api_id` must be specified.
+  /// [mergedApiArn] ARN of the merged API. One of `mergedApiArn` or `mergedApiId` must be specified.
+  /// [mergedApiId] ID of the merged API. One of `mergedApiArn` or `mergedApiId` must be specified.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [sourceApiArn] ARN of the source API. One of `source_api_arn` or `source_api_id` must be specified.
-  /// [sourceApiAssociationConfigs] Optional.
-  /// [sourceApiId] ID of the source API. One of `source_api_arn` or `source_api_id` must be specified.
+  /// [sourceApiArn] ARN of the source API. One of `sourceApiArn` or `sourceApiId` must be specified.
+  /// [sourceApiAssociationConfigs] Source API Association configuration. See `sourceApiAssociationConfig` Block for details.
+  /// [sourceApiId] ID of the source API. One of `sourceApiArn` or `sourceApiId` must be specified.
   /// [timeouts] Optional.
   const SourceApiAssociationArgs({
     this.description,
@@ -70,4 +71,3 @@ class SourceApiAssociationArgs {
     );
   }
 }
-

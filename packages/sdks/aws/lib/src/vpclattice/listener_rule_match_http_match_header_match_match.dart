@@ -3,18 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerRuleMatchHttpMatchHeaderMatchMatch {
-  /// Specifies a contains type match.
+  /// Value that the header must contain to match.
   final pulumi.Input<String>? contains;
-  /// Specifies an exact type match.
+  /// Exact type match.
   final pulumi.Input<String>? exact;
-  /// Specifies a prefix type match.
-  /// Matches the value with the prefix.
+  /// Prefix type match. Matches the value with the prefix.
   final pulumi.Input<String>? prefix;
 
   /// Creates a new [ListenerRuleMatchHttpMatchHeaderMatchMatch].
-  /// [contains] Specifies a contains type match.
-  /// [exact] Specifies an exact type match.
-  /// [prefix] Specifies a prefix type match.
+  /// [contains] Value that the header must contain to match.
+  /// [exact] Exact type match.
+  /// [prefix] Prefix type match. Matches the value with the prefix.
   const ListenerRuleMatchHttpMatchHeaderMatchMatch({
     this.contains,
     this.exact,
@@ -37,4 +36,3 @@ class ListenerRuleMatchHttpMatchHeaderMatchMatch {
     );
   }
 }
-

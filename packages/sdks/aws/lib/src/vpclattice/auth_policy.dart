@@ -134,8 +134,8 @@ import 'auth_policy_state.dart';
 /// 					"Effect":    "Allow",
 /// 					"Principal": "*",
 /// 					"Resource":  "*",
-/// 					"Condition": map[string]interface{}{
-/// 						"StringNotEqualsIgnoreCase": map[string]interface{}{
+/// 					"Condition": map[string]map[string]string{
+/// 						"StringNotEqualsIgnoreCase": map[string]string{
 /// 							"aws:PrincipalType": "anonymous",
 /// 						},
 /// 					},
@@ -157,6 +157,38 @@ import 'auth_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_service" "example" {
+///   name               = "example-vpclattice-service"
+///   auth_type          = "AWS_IAM"
+///   custom_domain_name = "example.com"
+/// }
+/// resource "aws_vpclattice_authpolicy" "example" {
+///   resource_identifier = aws_vpclattice_service.example.arn
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action"    = "*"
+///       "Effect"    = "Allow"
+///       "Principal" = "*"
+///       "Resource"  = "*"
+///       "Condition" = {
+///         "StringNotEqualsIgnoreCase" = {
+///           "aws:PrincipalType" = "anonymous"
+///         }
+///       }
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -168,8 +200,8 @@ import 'auth_policy_state.dart';
 /// import com.pulumi.aws.vpclattice.AuthPolicy;
 /// import com.pulumi.aws.vpclattice.AuthPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -244,13 +276,13 @@ import 'auth_policy_state.dart';
 /// $ pulumi import aws:vpclattice/authPolicy:AuthPolicy example abcd-12345678
 /// ```
 class AuthPolicy extends pulumi.CustomResource {
-  /// The auth policy. The policy string in JSON must not contain newlines or blank lines.
+  /// Auth policy. The policy string in JSON must not contain newlines or blank lines.
   late final pulumi.Output<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The ID or Amazon Resource Name (ARN) of the service network or service for which the policy is created.
+  /// ID or Amazon Resource Name (ARN) of the service network or service for which the policy is created.
   late final pulumi.Output<String> resourceIdentifier;
-  /// The state of the auth policy. The auth policy is only active when the auth type is set to `AWS_IAM`. If you provide a policy, then authentication and authorization decisions are made based on this policy and the client's IAM policy. If the Auth type is `NONE`, then, any auth policy you provide will remain inactive.
+  /// State of the auth policy. The auth policy is only active when the auth type is set to `AWS_IAM`. If you provide a policy, then authentication and authorization decisions are made based on this policy and the client's IAM policy. If the Auth type is `NONE`, then, any auth policy you provide will remain inactive.
   late final pulumi.Output<String?> state;
 
   /// Creates a new [AuthPolicy].

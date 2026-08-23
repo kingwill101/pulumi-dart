@@ -24,13 +24,13 @@ class RegisteredDomainArgs {
   final pulumi.Input<bool>? billingPrivacy;
   /// The name of the registered domain.
   final pulumi.Input<String> domainName;
-  /// The list of nameservers for the domain. See `name_server` Blocks for more details.
+  /// The list of nameservers for the domain. See `nameServer` Blocks for more details.
   final pulumi.Input<List<RegisteredDomainNameServer>>? nameServers;
   /// Details about the domain registrant. See Contact Blocks for more details.
   final pulumi.Input<RegisteredDomainRegistrantContact>? registrantContact;
   /// Whether domain registrant contact information is concealed from WHOIS queries. Default: `true`.
   final pulumi.Input<bool>? registrantPrivacy;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Details about the domain technical contact. See Contact Blocks for more details.
   final pulumi.Input<RegisteredDomainTechContact>? techContact;
@@ -38,7 +38,7 @@ class RegisteredDomainArgs {
   final pulumi.Input<bool>? techPrivacy;
   /// Whether the domain is locked for transfer. Default: `true`.
   ///
-  /// &gt; **NOTE:** You must specify the same privacy setting for `admin_privacy`, `registrant_privacy` and `tech_privacy`.
+  /// &gt; **NOTE:** You must specify the same privacy setting for `adminPrivacy`, `registrantPrivacy` and `techPrivacy`.
   final pulumi.Input<bool>? transferLock;
 
   /// Creates a new [RegisteredDomainArgs].
@@ -48,10 +48,10 @@ class RegisteredDomainArgs {
   /// [billingContact] Details about the domain billing contact. See Contact Blocks for more details.
   /// [billingPrivacy] Whether domain billing contact information is concealed from WHOIS queries. Default: `true`.
   /// [domainName] The name of the registered domain.
-  /// [nameServers] The list of nameservers for the domain. See `name_server` Blocks for more details.
+  /// [nameServers] The list of nameservers for the domain. See `nameServer` Blocks for more details.
   /// [registrantContact] Details about the domain registrant. See Contact Blocks for more details.
   /// [registrantPrivacy] Whether domain registrant contact information is concealed from WHOIS queries. Default: `true`.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [techContact] Details about the domain technical contact. See Contact Blocks for more details.
   /// [techPrivacy] Whether domain technical contact information is concealed from WHOIS queries. Default: `true`.
   /// [transferLock] Whether the domain is locked for transfer. Default: `true`.
@@ -107,4 +107,3 @@ class RegisteredDomainArgs {
     );
   }
 }
-

@@ -10,7 +10,7 @@ class ClusterMasterInstanceGroup {
   final pulumi.Input<List<ClusterMasterInstanceGroupEbsConfig>>? ebsConfigs;
   /// Master node type Instance Group ID, if using Instance Group for this node type.
   final pulumi.Input<String>? id;
-  /// Target number of instances for the instance group. Must be 1 or 3. Defaults to 1. Launching with multiple master nodes is only supported in EMR version 5.23.0+, and requires this resource's `core_instance_group` to be configured. Public (Internet accessible) instances must be created in VPC subnets that have map public IP on launch enabled. Termination protection is automatically enabled when launched with multiple master nodes and this provider must have the `termination_protection = false` configuration applied before destroying this resource.
+  /// Target number of instances for the instance group. Must be 1 or 3. Defaults to 1. Launching with multiple master nodes is only supported in EMR version 5.23.0+, and requires this resource's `coreInstanceGroup` to be configured. Public (Internet accessible) instances must be created in VPC subnets that have map public IP on launch enabled. Termination protection is automatically enabled when launched with multiple master nodes and this provider must have the `terminationProtection = false` configuration applied before destroying this resource.
   final pulumi.Input<int>? instanceCount;
   /// EC2 instance type for all instances in the instance group.
   final pulumi.Input<String> instanceType;
@@ -21,7 +21,7 @@ class ClusterMasterInstanceGroup {
   /// [bidPrice] Bid price for each EC2 instance in the instance group, expressed in USD. By setting this attribute, the instance group is being declared as a Spot Instance, and will implicitly create a Spot request. Leave this blank to use On-Demand Instances.
   /// [ebsConfigs] Configuration block(s) for EBS volumes attached to each instance in the instance group. Detailed below.
   /// [id] Master node type Instance Group ID, if using Instance Group for this node type.
-  /// [instanceCount] Target number of instances for the instance group. Must be 1 or 3. Defaults to 1. Launching with multiple master nodes is only supported in EMR version 5.23.0+, and requires this resource's `core_instance_group` to be configured. Public (Internet accessible) instances must be created in VPC subnets that have map public IP on launch enabled. Termination protection is automatically enabled when launched with multiple master nodes and this provider must have the `termination_protection = false` configuration applied before destroying this resource.
+  /// [instanceCount] Target number of instances for the instance group. Must be 1 or 3. Defaults to 1. Launching with multiple master nodes is only supported in EMR version 5.23.0+, and requires this resource's `coreInstanceGroup` to be configured. Public (Internet accessible) instances must be created in VPC subnets that have map public IP on launch enabled. Termination protection is automatically enabled when launched with multiple master nodes and this provider must have the `terminationProtection = false` configuration applied before destroying this resource.
   /// [instanceType] EC2 instance type for all instances in the instance group.
   /// [name] Friendly name given to the instance group.
   const ClusterMasterInstanceGroup({
@@ -55,4 +55,3 @@ class ClusterMasterInstanceGroup {
     );
   }
 }
-

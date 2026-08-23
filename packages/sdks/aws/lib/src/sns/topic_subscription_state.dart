@@ -18,7 +18,7 @@ class TopicSubscriptionState {
   final pulumi.Input<bool>? endpointAutoConfirms;
   /// JSON String with the filter policy that will be used in the subscription to filter messages seen by the target resource. Refer to the [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/message-filtering.html) for more details.
   final pulumi.Input<String>? filterPolicy;
-  /// Whether the `filter_policy` applies to `MessageAttributes` (default) or `MessageBody`.
+  /// Whether the `filterPolicy` applies to `MessageAttributes` (default) or `MessageBody`.
   final pulumi.Input<String>? filterPolicyScope;
   /// AWS account ID of the subscription's owner.
   final pulumi.Input<String>? ownerId;
@@ -49,7 +49,7 @@ class TopicSubscriptionState {
   /// [endpoint] Endpoint to send data to. The contents vary with the protocol. See details below.
   /// [endpointAutoConfirms] Whether the endpoint is capable of [auto confirming subscription](http://docs.aws.amazon.com/sns/latest/dg/SendMessageToHttp.html#SendMessageToHttp.prepare) (e.g., PagerDuty). Default is `false`.
   /// [filterPolicy] JSON String with the filter policy that will be used in the subscription to filter messages seen by the target resource. Refer to the [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/message-filtering.html) for more details.
-  /// [filterPolicyScope] Whether the `filter_policy` applies to `MessageAttributes` (default) or `MessageBody`.
+  /// [filterPolicyScope] Whether the `filterPolicy` applies to `MessageAttributes` (default) or `MessageBody`.
   /// [ownerId] AWS account ID of the subscription's owner.
   /// [pendingConfirmation] Whether the subscription has not been confirmed.
   /// [protocol] Protocol to use. Valid values are: `sqs`, `sms`, `lambda`, `firehose`, and `application`. Protocols `email`, `email-json`, `http` and `https` are also valid but partially supported. See details below.
@@ -123,4 +123,3 @@ class TopicSubscriptionState {
     );
   }
 }
-

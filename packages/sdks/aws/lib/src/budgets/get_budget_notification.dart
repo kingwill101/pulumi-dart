@@ -7,9 +7,9 @@ class GetBudgetNotification {
   final pulumi.Input<String> comparisonOperator;
   /// (Required) What kind of budget value to notify on. Can be `ACTUAL` or `FORECASTED`.
   final pulumi.Input<String> notificationType;
-  /// (Optional) E-Mail addresses to notify. Either this or `subscriber_sns_topic_arns` is required.
+  /// (Optional) E-Mail addresses to notify. Either this or `subscriberSnsTopicArns` is required.
   final pulumi.Input<List<String>> subscriberEmailAddresses;
-  /// (Optional) SNS topics to notify. Either this or `subscriber_email_addresses` is required.
+  /// (Optional) SNS topics to notify. Either this or `subscriberEmailAddresses` is required.
   final pulumi.Input<List<String>> subscriberSnsTopicArns;
   /// (Required) Threshold when the notification should be sent.
   final pulumi.Input<double> threshold;
@@ -19,8 +19,8 @@ class GetBudgetNotification {
   /// Creates a new [GetBudgetNotification].
   /// [comparisonOperator] (Required) Comparison operator to use to evaluate the condition. Can be `LESS_THAN`, `EQUAL_TO` or `GREATER_THAN`.
   /// [notificationType] (Required) What kind of budget value to notify on. Can be `ACTUAL` or `FORECASTED`.
-  /// [subscriberEmailAddresses] (Optional) E-Mail addresses to notify. Either this or `subscriber_sns_topic_arns` is required.
-  /// [subscriberSnsTopicArns] (Optional) SNS topics to notify. Either this or `subscriber_email_addresses` is required.
+  /// [subscriberEmailAddresses] (Optional) E-Mail addresses to notify. Either this or `subscriberSnsTopicArns` is required.
+  /// [subscriberSnsTopicArns] (Optional) SNS topics to notify. Either this or `subscriberEmailAddresses` is required.
   /// [threshold] (Required) Threshold when the notification should be sent.
   /// [thresholdType] (Required) What kind of threshold is defined. Can be `PERCENTAGE` OR `ABSOLUTE_VALUE`.
   const GetBudgetNotification({
@@ -54,4 +54,3 @@ class GetBudgetNotification {
     );
   }
 }
-

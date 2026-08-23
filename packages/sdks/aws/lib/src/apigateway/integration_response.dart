@@ -5,7 +5,7 @@ import 'integration_response_state.dart';
 /// Provides an HTTP Method Integration Response for an API Gateway Resource.
 ///
 /// &gt; **Note:** Depends on having `aws.apigateway.Integration` inside your rest api. To ensure this
-/// you might need to add an explicit `depends_on` for clean runs.
+/// you might need to add an explicit `dependsOn` for clean runs.
 ///
 /// ## Example Usage
 ///
@@ -178,7 +178,7 @@ import 'integration_response_state.dart';
 /// 			return err
 /// 		}
 /// 		myDemoResource, err := apigateway.NewResource(ctx, "MyDemoResource", &apigateway.ResourceArgs{
-/// 			RestApi:  myDemoAPI.ID(),
+/// 			RestApi:  myDemoAPI.ID().ToIDOutput().ToStringOutput(),
 /// 			ParentId: myDemoAPI.RootResourceId,
 /// 			PathPart: pulumi.String("mydemoresource"),
 /// 		})
@@ -186,8 +186,8 @@ import 'integration_response_state.dart';
 /// 			return err
 /// 		}
 /// 		myDemoMethod, err := apigateway.NewMethod(ctx, "MyDemoMethod", &apigateway.MethodArgs{
-/// 			RestApi:       myDemoAPI.ID(),
-/// 			ResourceId:    myDemoResource.ID(),
+/// 			RestApi:       myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId:    myDemoResource.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpMethod:    pulumi.String("GET"),
 /// 			Authorization: pulumi.String("NONE"),
 /// 		})
@@ -195,8 +195,8 @@ import 'integration_response_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewIntegration(ctx, "MyDemoIntegration", &apigateway.IntegrationArgs{
-/// 			RestApi:    myDemoAPI.ID(),
-/// 			ResourceId: myDemoResource.ID(),
+/// 			RestApi:    myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId: myDemoResource.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpMethod: myDemoMethod.HttpMethod,
 /// 			Type:       pulumi.String("MOCK"),
 /// 		})
@@ -204,8 +204,8 @@ import 'integration_response_state.dart';
 /// 			return err
 /// 		}
 /// 		response200, err := apigateway.NewMethodResponse(ctx, "response_200", &apigateway.MethodResponseArgs{
-/// 			RestApi:    myDemoAPI.ID(),
-/// 			ResourceId: myDemoResource.ID(),
+/// 			RestApi:    myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId: myDemoResource.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpMethod: myDemoMethod.HttpMethod,
 /// 			StatusCode: pulumi.String("200"),
 /// 		})
@@ -213,8 +213,8 @@ import 'integration_response_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewIntegrationResponse(ctx, "MyDemoIntegrationResponse", &apigateway.IntegrationResponseArgs{
-/// 			RestApi:    myDemoAPI.ID(),
-/// 			ResourceId: myDemoResource.ID(),
+/// 			RestApi:    myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId: myDemoResource.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpMethod: myDemoMethod.HttpMethod,
 /// 			StatusCode: response200.StatusCode,
 /// 			ResponseTemplates: pulumi.StringMap{
@@ -231,6 +231,52 @@ import 'integration_response_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_restapi" "MyDemoAPI" {
+///   name        = "MyDemoAPI"
+///   description = "This is my API for demonstration purposes"
+/// }
+/// resource "aws_apigateway_resource" "MyDemoResource" {
+///   rest_api  = aws_apigateway_restapi.MyDemoAPI.id
+///   parent_id = aws_apigateway_restapi.MyDemoAPI.root_resource_id
+///   path_part = "mydemoresource"
+/// }
+/// resource "aws_apigateway_method" "MyDemoMethod" {
+///   rest_api      = aws_apigateway_restapi.MyDemoAPI.id
+///   resource_id   = aws_apigateway_resource.MyDemoResource.id
+///   http_method   = "GET"
+///   authorization = "NONE"
+/// }
+/// resource "aws_apigateway_integration" "MyDemoIntegration" {
+///   rest_api    = aws_apigateway_restapi.MyDemoAPI.id
+///   resource_id = aws_apigateway_resource.MyDemoResource.id
+///   http_method = aws_apigateway_method.MyDemoMethod.http_method
+///   type        = "MOCK"
+/// }
+/// resource "aws_apigateway_methodresponse" "response_200" {
+///   rest_api    = aws_apigateway_restapi.MyDemoAPI.id
+///   resource_id = aws_apigateway_resource.MyDemoResource.id
+///   http_method = aws_apigateway_method.MyDemoMethod.http_method
+///   status_code = "200"
+/// }
+/// resource "aws_apigateway_integrationresponse" "MyDemoIntegrationResponse" {
+///   rest_api    = aws_apigateway_restapi.MyDemoAPI.id
+///   resource_id = aws_apigateway_resource.MyDemoResource.id
+///   http_method = aws_apigateway_method.MyDemoMethod.http_method
+///   status_code = aws_apigateway_methodresponse.response_200.status_code
+///   response_templates = {
+///     "application/xml" = "#set($inputRoot = $input.path('$'))\n<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\n<message>\n    $inputRoot.body\n</message>\n"
+///   }
 /// }
 /// ```
 /// ```java
@@ -251,8 +297,8 @@ import 'integration_response_state.dart';
 /// import com.pulumi.aws.apigateway.MethodResponseArgs;
 /// import com.pulumi.aws.apigateway.IntegrationResponse;
 /// import com.pulumi.aws.apigateway.IntegrationResponseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -372,6 +418,21 @@ import 'integration_response_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `restApiId` (String) ID of the associated REST API.
+/// * `resourceId` (String) API resource ID.
+/// * `httpMethod` (String) HTTP Method.
+/// * `statusCode` (String) HTTP status code.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import `aws.apigateway.IntegrationResponse` using `REST-API-ID/RESOURCE-ID/HTTP-METHOD/STATUS-CODE`. For example:
 ///
 /// ```sh
@@ -386,7 +447,7 @@ class IntegrationResponse extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// API resource ID.
   late final pulumi.Output<String> resourceId;
-  /// Map of response parameters that can be read from the backend response. For example: `response_parameters = { "method.response.header.X-Some-Header" = "integration.response.header.X-Some-Other-Header" }`.
+  /// Map of response parameters that can be read from the backend response. For example: `responseParameters = { "method.response.header.X-Some-Header" = "integration.response.header.X-Some-Other-Header" }`.
   late final pulumi.Output<Map<String, String>?> responseParameters;
   /// Map of templates used to transform the integration response body.
   late final pulumi.Output<Map<String, String>?> responseTemplates;

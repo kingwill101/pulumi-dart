@@ -68,7 +68,7 @@ import 'spot_datafeed_subscription_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewSpotDatafeedSubscription(ctx, "default", &ec2.SpotDatafeedSubscriptionArgs{
-/// 			Bucket: _default.ID(),
+/// 			Bucket: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Prefix: pulumi.String("my_subdirectory"),
 /// 		})
 /// 		if err != nil {
@@ -76,6 +76,23 @@ import 'spot_datafeed_subscription_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "default" {
+///   bucket = "tf-spot-datafeed"
+/// }
+/// resource "aws_ec2_spotdatafeedsubscription" "default" {
+///   bucket = aws_s3_bucket.default.id
+///   prefix = "my_subdirectory"
 /// }
 /// ```
 /// ```java
@@ -88,8 +105,8 @@ import 'spot_datafeed_subscription_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.ec2.SpotDatafeedSubscription;
 /// import com.pulumi.aws.ec2.SpotDatafeedSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

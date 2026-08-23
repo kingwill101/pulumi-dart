@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionsFilter {
-  /// Name of the filter field. Valid values can be found in the [describe-regions AWS CLI Reference][1].
+  /// Name of the filter field. Valid values can be found in the [describe-regions AWS CLI Reference](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-regions.html).
   final pulumi.Input<String> name;
   /// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetRegionsFilter].
-  /// [name] Name of the filter field. Valid values can be found in the [describe-regions AWS CLI Reference][1].
+  /// [name] Name of the filter field. Valid values can be found in the [describe-regions AWS CLI Reference](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-regions.html).
   /// [values] Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
   const GetRegionsFilter({
     required this.name,
@@ -30,4 +30,3 @@ class GetRegionsFilter {
     );
   }
 }
-

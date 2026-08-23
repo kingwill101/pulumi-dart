@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImageStateChangeReason {
+  /// State change reason code.
   final pulumi.Input<String> code;
+  /// State change reason message.
   final pulumi.Input<String> message;
 
   /// Creates a new [GetImageStateChangeReason].
-  /// [code] Required.
-  /// [message] Required.
+  /// [code] State change reason code.
+  /// [message] State change reason message.
   const GetImageStateChangeReason({
     required this.code,
     required this.message,
@@ -28,4 +30,3 @@ class GetImageStateChangeReason {
     );
   }
 }
-

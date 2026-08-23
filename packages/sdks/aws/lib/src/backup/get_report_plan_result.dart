@@ -18,9 +18,9 @@ class GetReportPlanResult {
   final String id;
   final String name;
   final String region;
-  /// An object that contains information about where and how to deliver your reports, specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your reports. Detailed below.
+  /// Object that contains information about where and how to deliver your reports, specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your reports. Detailed below.
   final List<GetReportPlanReportDeliveryChannel> reportDeliveryChannels;
-  /// An object that identifies the report template for the report. Reports are built using a report template. Detailed below.
+  /// Object that identifies the report template for the report. Reports are built using a report template. Detailed below.
   final List<GetReportPlanReportSetting> reportSettings;
   /// Metadata that you can assign to help organize the report plans you create.
   final Map<String, String> tags;
@@ -33,8 +33,8 @@ class GetReportPlanResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [region] Required.
-  /// [reportDeliveryChannels] An object that contains information about where and how to deliver your reports, specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your reports. Detailed below.
-  /// [reportSettings] An object that identifies the report template for the report. Reports are built using a report template. Detailed below.
+  /// [reportDeliveryChannels] Object that contains information about where and how to deliver your reports, specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your reports. Detailed below.
+  /// [reportSettings] Object that identifies the report template for the report. Reports are built using a report template. Detailed below.
   /// [tags] Metadata that you can assign to help organize the report plans you create.
   const GetReportPlanResult({
     required this.arn,
@@ -79,4 +79,3 @@ class GetReportPlanResult {
     );
   }
 }
-

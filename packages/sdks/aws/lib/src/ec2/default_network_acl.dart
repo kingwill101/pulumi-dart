@@ -10,7 +10,7 @@ import 'default_network_acl_state.dart';
 ///
 /// This resource treats its inline rules as absolute; only the rules defined inline are created, and any additions/removals external to this resource will result in diffs being shown. For these reasons, this resource is incompatible with the `aws.ec2.NetworkAclRule` resource.
 ///
-/// For more information about Network ACLs, see the AWS Documentation on [Network ACLs][aws-network-acls].
+/// For more information about Network ACLs, see the AWS Documentation on [Network ACLs](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html).
 ///
 /// ## Example Usage
 ///
@@ -158,6 +158,38 @@ import 'default_network_acl_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "mainvpc" {
+///   cidr_block = "10.1.0.0/16"
+/// }
+/// resource "aws_ec2_defaultnetworkacl" "default" {
+///   default_network_acl_id = aws_ec2_vpc.mainvpc.default_network_acl_id
+///   ingress {
+///     protocol   = -1
+///     rule_no    = 100
+///     action     = "allow"
+///     cidr_block = "0.0.0.0/0"
+///     from_port  = 0
+///     to_port    = 0
+///   }
+///   egress {
+///     protocol   = -1
+///     rule_no    = 100
+///     action     = "allow"
+///     cidr_block = "0.0.0.0/0"
+///     from_port  = 0
+///     to_port    = 0
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -170,8 +202,8 @@ import 'default_network_acl_state.dart';
 /// import com.pulumi.aws.ec2.DefaultNetworkAclArgs;
 /// import com.pulumi.aws.ec2.inputs.DefaultNetworkAclIngressArgs;
 /// import com.pulumi.aws.ec2.inputs.DefaultNetworkAclEgressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -343,6 +375,30 @@ import 'default_network_acl_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "mainvpc" {
+///   cidr_block = "10.1.0.0/16"
+/// }
+/// resource "aws_ec2_defaultnetworkacl" "default" {
+///   default_network_acl_id = aws_ec2_vpc.mainvpc.default_network_acl_id
+///   ingress {
+///     protocol   = -1
+///     rule_no    = 100
+///     action     = "allow"
+///     cidr_block = mainvpcAwsDefaultVpc.cidrBlock
+///     from_port  = 0
+///     to_port    = 0
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -354,8 +410,8 @@ import 'default_network_acl_state.dart';
 /// import com.pulumi.aws.ec2.DefaultNetworkAcl;
 /// import com.pulumi.aws.ec2.DefaultNetworkAclArgs;
 /// import com.pulumi.aws.ec2.inputs.DefaultNetworkAclIngressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -471,6 +527,22 @@ import 'default_network_acl_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "mainvpc" {
+///   cidr_block = "10.1.0.0/16"
+/// }
+/// resource "aws_ec2_defaultnetworkacl" "default" {
+///   default_network_acl_id = aws_ec2_vpc.mainvpc.default_network_acl_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -481,8 +553,8 @@ import 'default_network_acl_state.dart';
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.ec2.DefaultNetworkAcl;
 /// import com.pulumi.aws.ec2.DefaultNetworkAclArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -522,9 +594,9 @@ import 'default_network_acl_state.dart';
 ///
 /// Within a VPC, all Subnets must be associated with a Network ACL. In order to "delete" the association between a Subnet and a non-default Network ACL, the association is destroyed by replacing it with an association between the Subnet and the Default ACL instead.
 ///
-/// When managing the Default Network ACL, you cannot "remove" Subnets. Instead, they must be reassigned to another Network ACL, or the Subnet itself must be destroyed. Because of these requirements, removing the `subnet_ids` attribute from the configuration of a `aws.ec2.DefaultNetworkAcl` resource may result in a reoccurring plan, until the Subnets are reassigned to another Network ACL or are destroyed.
+/// When managing the Default Network ACL, you cannot "remove" Subnets. Instead, they must be reassigned to another Network ACL, or the Subnet itself must be destroyed. Because of these requirements, removing the `subnetIds` attribute from the configuration of a `aws.ec2.DefaultNetworkAcl` resource may result in a reoccurring plan, until the Subnets are reassigned to another Network ACL or are destroyed.
 ///
-/// Because Subnets are by default associated with the Default Network ACL, any non-explicit association will show up as a plan to remove the Subnet. For example: if you have a custom `aws.ec2.NetworkAcl` with two subnets attached, and you remove the `aws.ec2.NetworkAcl` resource, after successfully destroying this resource future plans will show a diff on the managed `aws.ec2.DefaultNetworkAcl`, as those two Subnets have been orphaned by the now destroyed network acl and thus adopted by the Default Network ACL. In order to avoid a reoccurring plan, they will need to be reassigned, destroyed, or added to the `subnet_ids` attribute of the `aws.ec2.DefaultNetworkAcl` entry.
+/// Because Subnets are by default associated with the Default Network ACL, any non-explicit association will show up as a plan to remove the Subnet. For example: if you have a custom `aws.ec2.NetworkAcl` with two subnets attached, and you remove the `aws.ec2.NetworkAcl` resource, after successfully destroying this resource future plans will show a diff on the managed `aws.ec2.DefaultNetworkAcl`, as those two Subnets have been orphaned by the now destroyed network acl and thus adopted by the Default Network ACL. In order to avoid a reoccurring plan, they will need to be reassigned, destroyed, or added to the `subnetIds` attribute of the `aws.ec2.DefaultNetworkAcl` entry.
 ///
 /// As an alternative to the above, you can also specify the following lifecycle configuration in your `aws.ec2.DefaultNetworkAcl` resource:
 ///
@@ -571,6 +643,18 @@ import 'default_network_acl_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_defaultnetworkacl" "default" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -578,8 +662,8 @@ import 'default_network_acl_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.DefaultNetworkAcl;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -631,9 +715,9 @@ class DefaultNetworkAcl extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// List of Subnet IDs to apply the ACL to. See the notes above on Managing Subnets in the Default Network ACL
   late final pulumi.Output<List<String>?> subnetIds;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ID of the associated VPC
   late final pulumi.Output<String> vpcId;

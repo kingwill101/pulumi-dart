@@ -67,13 +67,30 @@ import 'user_pool_domain_state.dart';
 /// 		}
 /// 		_, err = cognito.NewUserPoolDomain(ctx, "main", &cognito.UserPoolDomainArgs{
 /// 			Domain:     pulumi.String("example-domain"),
-/// 			UserPoolId: example.ID(),
+/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpooldomain" "main" {
+///   domain       = "example-domain"
+///   user_pool_id = aws_cognito_userpool.example.id
+/// }
+/// resource "aws_cognito_userpool" "example" {
+///   name = "example-pool"
 /// }
 /// ```
 /// ```java
@@ -86,8 +103,8 @@ import 'user_pool_domain_state.dart';
 /// import com.pulumi.aws.cognito.UserPoolArgs;
 /// import com.pulumi.aws.cognito.UserPoolDomain;
 /// import com.pulumi.aws.cognito.UserPoolDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -235,7 +252,7 @@ import 'user_pool_domain_state.dart';
 /// 		main, err := cognito.NewUserPoolDomain(ctx, "main", &cognito.UserPoolDomainArgs{
 /// 			Domain:         pulumi.String("auth.example.com"),
 /// 			CertificateArn: pulumi.Any(cert.Arn),
-/// 			UserPoolId:     exampleUserPool.ID(),
+/// 			UserPoolId:     exampleUserPool.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -265,6 +282,38 @@ import 'user_pool_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getzone" "example" {
+///   name = "example.com"
+/// }
+///
+/// resource "aws_cognito_userpooldomain" "main" {
+///   domain          = "auth.example.com"
+///   certificate_arn = cert.arn
+///   user_pool_id    = aws_cognito_userpool.example.id
+/// }
+/// resource "aws_cognito_userpool" "example" {
+///   name = "example-pool"
+/// }
+/// resource "aws_route53_record" "auth-cognito-A" {
+///   name    = aws_cognito_userpooldomain.main.domain
+///   type    = "A"
+///   zone_id = data.aws_route53_getzone.example.zone_id
+///   aliases {
+///     evaluate_target_health = false
+///     name                   = aws_cognito_userpooldomain.main.cloudfront_distribution
+///     zone_id                = aws_cognito_userpooldomain.main.cloudfront_distribution_zone_id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -280,8 +329,8 @@ import 'user_pool_domain_state.dart';
 /// import com.pulumi.aws.route53.Record;
 /// import com.pulumi.aws.route53.RecordArgs;
 /// import com.pulumi.aws.route53.inputs.RecordAliasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_security_service_policy_data_policy_option_network_acl_common_policy_network_acl_entry_set.dart';
 
 class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy {
-  /// Defines NACL entries for Network ACL policy. See the `network_acl_entry_set` block.
+  /// Network ACL entries for the Network ACL policy. See the `networkAclEntrySet` block.
   final pulumi.Input<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySet>? networkAclEntrySet;
 
   /// Creates a new [PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy].
-  /// [networkAclEntrySet] Defines NACL entries for Network ACL policy. See the `network_acl_entry_set` block.
+  /// [networkAclEntrySet] Network ACL entries for the Network ACL policy. See the `networkAclEntrySet` block.
   const PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy({
     this.networkAclEntrySet,
   });
@@ -25,4 +25,3 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy {
     );
   }
 }
-

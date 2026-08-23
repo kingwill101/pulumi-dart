@@ -11,7 +11,7 @@ class BasePathMappingArgs {
   final pulumi.Input<String>? basePath;
   /// Already-registered domain name to connect the API to.
   final pulumi.Input<String> domainName;
-  /// The identifier for the domain name resource. Supported only for private custom domain names.
+  /// Identifier for the domain name resource. Supported only for private custom domain names.
   final pulumi.Input<String>? domainNameId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -23,7 +23,7 @@ class BasePathMappingArgs {
   /// Creates a new [BasePathMappingArgs].
   /// [basePath] Path segment that must be prepended to the path when accessing the API via this mapping. If omitted, the API is exposed at the root of the given domain.
   /// [domainName] Already-registered domain name to connect the API to.
-  /// [domainNameId] The identifier for the domain name resource. Supported only for private custom domain names.
+  /// [domainNameId] Identifier for the domain name resource. Supported only for private custom domain names.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApi] ID of the API to connect.
   /// [stageName] Name of a specific deployment stage to expose at the given path. If omitted, callers may select any stage by including its name as a path element after the base path.
@@ -58,4 +58,3 @@ class BasePathMappingArgs {
     );
   }
 }
-

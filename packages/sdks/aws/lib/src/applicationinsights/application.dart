@@ -134,6 +134,31 @@ import 'application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_applicationinsights_application" "example" {
+///   resource_group_name = aws_resourcegroups_group.example.name
+/// }
+/// resource "aws_resourcegroups_group" "example" {
+///   name = "example"
+///   resource_query = {
+///     query = jsonencode({
+///       "ResourceTypeFilters" = ["AWS::EC2::Instance"]
+///       "TagFilters" = [{
+///         "Key"    = "Stage"
+///         "Values" = ["Test"]
+///       }]
+///     })
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -146,8 +171,8 @@ import 'application_state.dart';
 /// import com.pulumi.aws.applicationinsights.Application;
 /// import com.pulumi.aws.applicationinsights.ApplicationArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -205,7 +230,7 @@ import 'application_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import ApplicationInsights Applications using the `resource_group_name`. For example:
+/// Using `pulumi import`, import ApplicationInsights Applications using the `resourceGroupName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:applicationinsights/application:Application some some-application
@@ -213,11 +238,11 @@ import 'application_state.dart';
 class Application extends pulumi.CustomResource {
   /// ARN of the Application.
   late final pulumi.Output<String> arn;
-  /// Indicates whether Application Insights automatically configures unmonitored resources in the resource group.
+  /// Whether to automatically configure unmonitored resources in the resource group.
   late final pulumi.Output<bool?> autoConfigEnabled;
   /// Configures all of the resources in the resource group by applying the recommended configurations.
   late final pulumi.Output<bool?> autoCreate;
-  /// Indicates whether Application Insights can listen to CloudWatch events for the application resources, such as instance terminated, failed deployment, and others.
+  /// Whether to enable Application Insights to listen to CloudWatch events for the application resources, such as instance terminated, failed deployment, and others.
   late final pulumi.Output<bool?> cweMonitorEnabled;
   /// Application Insights can create applications based on a resource group or on an account. To create an account-based application using all of the resources in the account, set this parameter to `ACCOUNT_BASED`.
   late final pulumi.Output<String?> groupingType;
@@ -231,9 +256,9 @@ class Application extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> resourceGroupName;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Application].

@@ -67,6 +67,19 @@ import 'get_task_execution_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ecs_getcluster" "ecs-mongo" {
+///   cluster_name = "ecs-mongo-production"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +88,8 @@ import 'get_task_execution_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecs.EcsFunctions;
 /// import com.pulumi.aws.ecs.inputs.GetClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -167,6 +180,18 @@ Future<GetClusterResult> getCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ecs_getclusters" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +200,8 @@ Future<GetClusterResult> getCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecs.EcsFunctions;
 /// import com.pulumi.aws.ecs.inputs.GetClustersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -275,6 +300,20 @@ Future<GetClustersResult> getClusters(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ecs_getcontainerdefinition" "ecs-mongo" {
+///   task_definition = mongo.id
+///   container_name  = "mongodb"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -283,8 +322,8 @@ Future<GetClustersResult> getClusters(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecs.EcsFunctions;
 /// import com.pulumi.aws.ecs.inputs.GetContainerDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -387,6 +426,20 @@ Future<GetContainerDefinitionResult> getContainerDefinition(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ecs_getservice" "example" {
+///   service_name = "example"
+///   cluster_arn  = exampleAwsEcsCluster.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -395,8 +448,8 @@ Future<GetContainerDefinitionResult> getContainerDefinition(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecs.EcsFunctions;
 /// import com.pulumi.aws.ecs.inputs.GetServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -477,7 +530,7 @@ Future<GetServiceResult> getService(
 ///     name: "mongo",
 ///     cluster: foo.id,
 ///     desiredCount: 2,
-///     taskDefinition: mongo.apply(mongo => mongo.arn),
+///     taskDefinition: mongo.arn,
 /// });
 /// ```
 /// ```python
@@ -601,12 +654,10 @@ Future<GetServiceResult> getService(
 /// 			return err
 /// 		}
 /// 		_, err = ecs.NewService(ctx, "mongo", &ecs.ServiceArgs{
-/// 			Name:         pulumi.String("mongo"),
-/// 			Cluster:      foo.ID(),
-/// 			DesiredCount: pulumi.Int(2),
-/// 			TaskDefinition: pulumi.String(mongo.ApplyT(func(mongo ecs.GetTaskDefinitionResult) (*string, error) {
-/// 				return &mongo.Arn, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:           pulumi.String("mongo"),
+/// 			Cluster:        foo.ID().ToIDOutput().ToStringOutput(),
+/// 			DesiredCount:   pulumi.Int(2),
+/// 			TaskDefinition: mongo.Arn(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -614,6 +665,35 @@ Future<GetServiceResult> getService(
 /// 		return nil
 /// 	})
 /// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ecs_gettaskdefinition" "mongo" {
+///   task_definition = aws_ecs_taskdefinition.mongo.family
+/// }
+///
+/// resource "aws_ecs_cluster" "foo" {
+///   name = "foo"
+/// }
+/// resource "aws_ecs_taskdefinition" "mongo" {
+///   family                = "mongodb"
+///   container_definitions = "[\n  {\n    \\\"cpu\\\": 128,\n    \\\"environment\\\": [{\n      \\\"name\\\": \\\"SECRET\\\",\n      \\\"value\\\": \\\"KEY\\\"\n    }],\n    \\\"essential\\\": true,\n    \\\"image\\\": \\\"mongo:latest\\\",\n    \\\"memory\\\": 128,\n    \\\"memoryReservation\\\": 64,\n    \\\"name\\\": \\\"mongodb\\\"\n  }\n]\n"
+/// }
+/// resource "aws_ecs_service" "mongo" {
+///   name          = "mongo"
+///   cluster       = aws_ecs_cluster.foo.id
+///   desired_count = 2
+///   # Track the latest ACTIVE revision
+///   task_definition = data.aws_ecs_gettaskdefinition.mongo.arn
+/// }
+/// # Simply specify the family to find the latest ACTIVE revision in that family.
 /// ```
 /// ```java
 /// package generated_program;
@@ -629,8 +709,8 @@ Future<GetServiceResult> getService(
 /// import com.pulumi.aws.ecs.ClusterArgs;
 /// import com.pulumi.aws.ecs.Service;
 /// import com.pulumi.aws.ecs.ServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -819,8 +899,8 @@ Future<GetTaskDefinitionResult> getTaskDefinition(
 /// DesiredCount: pulumi.IntRef(1),
 /// LaunchType: pulumi.StringRef("FARGATE"),
 /// NetworkConfiguration: ecs.GetTaskExecutionNetworkConfiguration{
-/// Subnets: []string(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:6,22-44)),
-/// SecurityGroups: interface{}{
+/// Subnets: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:6,22-44)),
+/// SecurityGroups: pulumi.StringArray{
 /// exampleAwsSecurityGroup.Id,
 /// },
 /// AssignPublicIp: pulumi.BoolRef(false),
@@ -833,6 +913,27 @@ Future<GetTaskDefinitionResult> getTaskDefinition(
 /// })
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ecs_gettaskexecution" "example" {
+///   cluster         = exampleAwsEcsCluster.id
+///   task_definition = exampleAwsEcsTaskDefinition.arn
+///   desired_count   = 1
+///   launch_type     = "FARGATE"
+///   network_configuration = {
+///     subnets          = exampleAwsSubnet[*].id
+///     security_groups  = [exampleAwsSecurityGroup.id]
+///     assign_public_ip = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -842,8 +943,8 @@ Future<GetTaskDefinitionResult> getTaskDefinition(
 /// import com.pulumi.aws.ecs.EcsFunctions;
 /// import com.pulumi.aws.ecs.inputs.GetTaskExecutionArgs;
 /// import com.pulumi.aws.ecs.inputs.GetTaskExecutionNetworkConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

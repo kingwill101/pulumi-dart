@@ -6,12 +6,12 @@ import 'v2models_intent_closing_setting_conditional_conditional_branch_response_
 class V2modelsIntentClosingSettingConditionalConditionalBranchResponse {
   /// Whether the user can interrupt a speech response from Amazon Lex.
   final pulumi.Input<bool>? allowInterrupt;
-  /// Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `message_group`.
+  /// Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `messageGroup`.
   final pulumi.Input<List<V2modelsIntentClosingSettingConditionalConditionalBranchResponseMessageGroup>>? messageGroups;
 
   /// Creates a new [V2modelsIntentClosingSettingConditionalConditionalBranchResponse].
   /// [allowInterrupt] Whether the user can interrupt a speech response from Amazon Lex.
-  /// [messageGroups] Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `message_group`.
+  /// [messageGroups] Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `messageGroup`.
   const V2modelsIntentClosingSettingConditionalConditionalBranchResponse({
     this.allowInterrupt,
     this.messageGroups,
@@ -31,4 +31,3 @@ class V2modelsIntentClosingSettingConditionalConditionalBranchResponse {
     );
   }
 }
-

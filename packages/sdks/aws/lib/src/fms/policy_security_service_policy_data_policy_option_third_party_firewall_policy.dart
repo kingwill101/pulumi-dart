@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy {
-  /// Defines the deployment model to use for the third-party firewall policy. Valid values are `CENTRALIZED` and `DISTRIBUTED`.
+  /// Deployment model for the third-party firewall policy. Valid values are `CENTRALIZED` and `DISTRIBUTED`.
   final pulumi.Input<String>? firewallDeploymentModel;
 
   /// Creates a new [PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy].
-  /// [firewallDeploymentModel] Defines the deployment model to use for the third-party firewall policy. Valid values are `CENTRALIZED` and `DISTRIBUTED`.
+  /// [firewallDeploymentModel] Deployment model for the third-party firewall policy. Valid values are `CENTRALIZED` and `DISTRIBUTED`.
   const PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy({
     this.firewallDeploymentModel,
   });
@@ -24,4 +24,3 @@ class PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy {
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'replication_task_state.dart';
 
 /// Provides a DMS (Data Migration Service) replication task resource. DMS replication tasks can be created, updated, deleted, and imported.
 ///
-/// &gt; **NOTE:** Changing most arguments will stop the task if it is running. You can set `start_replication_task` to resume the task afterwards.
+/// &gt; **NOTE:** Changing most arguments will stop the task if it is running. You can set `startReplicationTask` to resume the task afterwards.
 ///
 /// ## Example Usage
 ///
@@ -104,6 +104,30 @@ import 'replication_task_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Create a new replication task
+/// resource "aws_dms_replicationtask" "test" {
+///   cdc_start_time            = "1993-05-21T05:50:00Z"
+///   migration_type            = "full-load"
+///   replication_instance_arn  = test-dms-replication-instance-tf.replicationInstanceArn
+///   replication_task_id       = "test-dms-replication-task-tf"
+///   replication_task_settings = "..."
+///   source_endpoint_arn       = test-dms-source-endpoint-tf.endpointArn
+///   table_mappings            = "{\"rules\":[{\"rule-type\":\"selection\",\"rule-id\":\"1\",\"rule-name\":\"1\",\"object-locator\":{\"schema-name\":\"%\",\"table-name\":\"%\"},\"rule-action\":\"include\"}]}"
+///   tags = {
+///     "Name" = "test"
+///   }
+///   target_endpoint_arn = test-dms-target-endpoint-tf.endpointArn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +136,8 @@ import 'replication_task_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.dms.ReplicationTask;
 /// import com.pulumi.aws.dms.ReplicationTaskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -162,7 +186,7 @@ import 'replication_task_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import replication tasks using the `replication_task_id`. For example:
+/// Using `pulumi import`, import replication tasks using the `replicationTaskId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:dms/replicationTask:ReplicationTask test test-dms-replication-task-tf
@@ -194,9 +218,9 @@ class ReplicationTask extends pulumi.CustomResource {
   late final pulumi.Output<String> status;
   /// Escaped JSON string that contains the table mappings. For information on table mapping see [Using Table Mapping with an AWS Database Migration Service Task to Select and Filter Data](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.html)
   late final pulumi.Output<String> tableMappings;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ARN that uniquely identifies the target endpoint.
   late final pulumi.Output<String> targetEndpointArn;

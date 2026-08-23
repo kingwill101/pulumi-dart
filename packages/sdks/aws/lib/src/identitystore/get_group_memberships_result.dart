@@ -7,24 +7,20 @@ import 'get_group_memberships_group_membership.dart';
 class GetGroupMembershipsResult {
   /// Group identifier.
   final String groupId;
-  /// A list of group membership objects. See `group_memberships` below.
+  /// A list of group membership objects. See `groupMemberships` below.
   final List<GetGroupMembershipsGroupMembership> groupMemberships;
-  /// The provider-assigned unique ID for this managed resource.
-  final String id;
   /// Identity store identifier.
   final String identityStoreId;
   final String region;
 
   /// Creates a new [GetGroupMembershipsResult].
   /// [groupId] Group identifier.
-  /// [groupMemberships] A list of group membership objects. See `group_memberships` below.
-  /// [id] The provider-assigned unique ID for this managed resource.
+  /// [groupMemberships] A list of group membership objects. See `groupMemberships` below.
   /// [identityStoreId] Identity store identifier.
   /// [region] Required.
   const GetGroupMembershipsResult({
     required this.groupId,
     required this.groupMemberships,
-    required this.id,
     required this.identityStoreId,
     required this.region,
   });
@@ -33,7 +29,6 @@ class GetGroupMembershipsResult {
     return <String, dynamic>{
       'groupId': groupId,
       'groupMemberships': pulumi.Input.encodeList<GetGroupMembershipsGroupMembership, Map<String, dynamic>>(groupMemberships, (value) => value.toMap()),
-      'id': id,
       'identityStoreId': identityStoreId,
       'region': region,
     };
@@ -43,10 +38,8 @@ class GetGroupMembershipsResult {
     return GetGroupMembershipsResult(
       groupId: map['groupId'] as String,
       groupMemberships: pulumi.Input.decodeList<GetGroupMembershipsGroupMembership>(map['groupMemberships']!, (value) => GetGroupMembershipsGroupMembership.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
       identityStoreId: map['identityStoreId'] as String,
       region: map['region'] as String,
     );
   }
 }
-

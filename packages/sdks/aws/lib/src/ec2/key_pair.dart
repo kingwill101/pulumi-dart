@@ -69,6 +69,20 @@ import 'key_pair_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_keypair" "deployer" {
+///   key_name   = "deployer-key"
+///   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD3F6tyPEFEzV0LX3X8BsXdMsQz1x2cEikKDEY0aIj41qgxMCP/iteneqXSIFZBp5vizPvaoIR3Um9xK7PGoW8giupGn+EPuxIA4cDM4vzOqOkiMPhz5XK0whEjkVzTo4+S0puvDZuwIsdiW9mxhJc7tgBNL0cYlWSYVkz4G/fslNfRPW5mYAM49f4fhtxPb5ok4Q2Lg9dPKVHO/Bgeu5woMc7RY0p1ej6D4CKFE6lymSDJpW0YHX/wqE9+cfEauh7xZcG0q9t2ta6F6fmX0agvpFyZo8aFbXeUBr7osSCJNgvavWbM/06niWrOvYX2xwWdhXmXSrbX8ZbabVohBK41 email@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +91,8 @@ import 'key_pair_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.KeyPair;
 /// import com.pulumi.aws.ec2.KeyPairArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -110,21 +124,19 @@ import 'key_pair_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Key Pairs using the `key_name`. For example:
+/// Using `pulumi import`, import Key Pairs using the `keyName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ec2/keyPair:KeyPair deployer deployer-key
 /// ```
-///
-/// &gt; **NOTE:** The AWS API does not include the public key in the response, so `pulumi up` will attempt to replace the key pair. There is currently no supported workaround for this limitation.
 class KeyPair extends pulumi.CustomResource {
   /// The key pair ARN.
   late final pulumi.Output<String> arn;
   /// The MD5 public key fingerprint as specified in section 4 of RFC 4716.
   late final pulumi.Output<String> fingerprint;
-  /// The name for the key pair. If neither `key_name` nor `key_name_prefix` is provided, the provider will create a unique key name.
+  /// The name for the key pair. If neither `keyName` nor `keyNamePrefix` is provided, the provider will create a unique key name.
   late final pulumi.Output<String> keyName;
-  /// Creates a unique name beginning with the specified prefix. Conflicts with `key_name`. If neither `key_name` nor `key_name_prefix` is provided, the provider will create a unique key name.
+  /// Creates a unique name beginning with the specified prefix. Conflicts with `keyName`. If neither `keyName` nor `keyNamePrefix` is provided, the provider will create a unique key name.
   late final pulumi.Output<String> keyNamePrefix;
   /// The key pair ID.
   late final pulumi.Output<String> keyPairId;
@@ -134,9 +146,9 @@ class KeyPair extends pulumi.CustomResource {
   late final pulumi.Output<String> publicKey;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [KeyPair].

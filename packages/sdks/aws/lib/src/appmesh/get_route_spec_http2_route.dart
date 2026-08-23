@@ -42,4 +42,3 @@ class GetRouteSpecHttp2Route {
     );
   }
 }
-

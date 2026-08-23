@@ -224,6 +224,55 @@ import 'trust_anchor_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getpartition" "current" {
+/// }
+///
+/// resource "aws_acmpca_certificateauthority" "example" {
+///   permanent_deletion_time_in_days = 7
+///   type                            = "ROOT"
+///   certificate_authority_configuration = {
+///     key_algorithm     = "RSA_4096"
+///     signing_algorithm = "SHA512WITHRSA"
+///     subject = {
+///       common_name = "example.com"
+///     }
+///   }
+/// }
+/// resource "aws_acmpca_certificate" "test" {
+///   certificate_authority_arn   = aws_acmpca_certificateauthority.example.arn
+///   certificate_signing_request = aws_acmpca_certificateauthority.example.certificate_signing_request
+///   signing_algorithm           = "SHA512WITHRSA"
+///   template_arn                ="arn:${data.aws_getpartition.current.partition}:acm-pca:::template/RootCACertificate/V1"
+///   validity = {
+///     type  = "YEARS"
+///     value = 1
+///   }
+/// }
+/// resource "aws_acmpca_certificateauthoritycertificate" "example" {
+///   certificate_authority_arn = aws_acmpca_certificateauthority.example.arn
+///   certificate               = exampleAwsAcmpcaCertificate.certificate
+///   certificate_chain         = exampleAwsAcmpcaCertificate.certificateChain
+/// }
+/// resource "aws_rolesanywhere_trustanchor" "test" {
+///   depends_on = [aws_acmpca_certificateauthoritycertificate.example]
+///   name       = "example"
+///   source = {
+///     source_data = {
+///       acm_pca_arn = aws_acmpca_certificateauthority.example.arn
+///     }
+///     source_type = "AWS_ACM_PCA"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -246,8 +295,8 @@ import 'trust_anchor_state.dart';
 /// import com.pulumi.aws.rolesanywhere.inputs.TrustAnchorSourceArgs;
 /// import com.pulumi.aws.rolesanywhere.inputs.TrustAnchorSourceSourceDataArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -372,9 +421,9 @@ class TrustAnchor extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> notificationSettings;
   /// The source of trust, documented below
   late final pulumi.Output<TrustAnchorSource> source;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [TrustAnchor].

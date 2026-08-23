@@ -54,6 +54,19 @@ import 'smsvoicev2_opt_out_list_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_pinpoint_smsvoicev2optoutlist" "example" {
+///   name = "example-opt-out-list"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -62,8 +75,8 @@ import 'smsvoicev2_opt_out_list_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.pinpoint.Smsvoicev2OptOutList;
 /// import com.pulumi.aws.pinpoint.Smsvoicev2OptOutListArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -101,13 +114,13 @@ import 'smsvoicev2_opt_out_list_state.dart';
 class Smsvoicev2OptOutList extends pulumi.CustomResource {
   /// ARN of the opt-out list.
   late final pulumi.Output<String> arn;
-  /// The name of the opt-out list.
+  /// Name of the opt-out list.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Smsvoicev2OptOutList].

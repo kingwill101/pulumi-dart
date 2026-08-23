@@ -133,7 +133,7 @@ import 'service_state.dart';
 /// 		examplePrivateDnsNamespace, err := servicediscovery.NewPrivateDnsNamespace(ctx, "example", &servicediscovery.PrivateDnsNamespaceArgs{
 /// 			Name:        pulumi.String("example.mydomain.local"),
 /// 			Description: pulumi.String("example"),
-/// 			Vpc:         example.ID(),
+/// 			Vpc:         example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -141,7 +141,7 @@ import 'service_state.dart';
 /// 		_, err = servicediscovery.NewService(ctx, "example", &servicediscovery.ServiceArgs{
 /// 			Name: pulumi.String("example"),
 /// 			DnsConfig: &servicediscovery.ServiceDnsConfigArgs{
-/// 				NamespaceId: examplePrivateDnsNamespace.ID(),
+/// 				NamespaceId: examplePrivateDnsNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 				DnsRecords: servicediscovery.ServiceDnsConfigDnsRecordArray{
 /// 					&servicediscovery.ServiceDnsConfigDnsRecordArgs{
 /// 						Ttl:  pulumi.Int(10),
@@ -161,6 +161,40 @@ import 'service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block           = "10.0.0.0/16"
+///   enable_dns_support   = true
+///   enable_dns_hostnames = true
+/// }
+/// resource "aws_servicediscovery_privatednsnamespace" "example" {
+///   name        = "example.mydomain.local"
+///   description = "example"
+///   vpc         = aws_ec2_vpc.example.id
+/// }
+/// resource "aws_servicediscovery_service" "example" {
+///   name = "example"
+///   dns_config = {
+///     namespace_id = aws_servicediscovery_privatednsnamespace.example.id
+///     dns_records = [{
+///       "ttl"  = 10
+///       "type" = "A"
+///     }]
+///     routing_policy = "MULTIVALUE"
+///   }
+///   health_check_config = {
+///     failure_threshold = 1
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -174,9 +208,10 @@ import 'service_state.dart';
 /// import com.pulumi.aws.servicediscovery.Service;
 /// import com.pulumi.aws.servicediscovery.ServiceArgs;
 /// import com.pulumi.aws.servicediscovery.inputs.ServiceDnsConfigArgs;
+/// import com.pulumi.aws.servicediscovery.inputs.ServiceDnsConfigDnsRecordArgs;
 /// import com.pulumi.aws.servicediscovery.inputs.ServiceHealthCheckConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -355,7 +390,7 @@ import 'service_state.dart';
 /// 		_, err = servicediscovery.NewService(ctx, "example", &servicediscovery.ServiceArgs{
 /// 			Name: pulumi.String("example"),
 /// 			DnsConfig: &servicediscovery.ServiceDnsConfigArgs{
-/// 				NamespaceId: example.ID(),
+/// 				NamespaceId: example.ID().ToIDOutput().ToStringOutput(),
 /// 				DnsRecords: servicediscovery.ServiceDnsConfigDnsRecordArray{
 /// 					&servicediscovery.ServiceDnsConfigDnsRecordArgs{
 /// 						Ttl:  pulumi.Int(10),
@@ -376,6 +411,35 @@ import 'service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_servicediscovery_publicdnsnamespace" "example" {
+///   name        = "example.mydomain.com"
+///   description = "example"
+/// }
+/// resource "aws_servicediscovery_service" "example" {
+///   name = "example"
+///   dns_config = {
+///     namespace_id = aws_servicediscovery_publicdnsnamespace.example.id
+///     dns_records = [{
+///       "ttl"  = 10
+///       "type" = "A"
+///     }]
+///   }
+///   health_check_config = {
+///     failure_threshold = 10
+///     resource_path     = "path"
+///     type              = "HTTP"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -387,9 +451,10 @@ import 'service_state.dart';
 /// import com.pulumi.aws.servicediscovery.Service;
 /// import com.pulumi.aws.servicediscovery.ServiceArgs;
 /// import com.pulumi.aws.servicediscovery.inputs.ServiceDnsConfigArgs;
+/// import com.pulumi.aws.servicediscovery.inputs.ServiceDnsConfigDnsRecordArgs;
 /// import com.pulumi.aws.servicediscovery.inputs.ServiceHealthCheckConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -461,13 +526,13 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The description of the service.
   late final pulumi.Output<String?> description;
-  /// A complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance. See `dns_config` Block for details.
+  /// A complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance. See `dnsConfig` Block for details.
   late final pulumi.Output<ServiceDnsConfig?> dnsConfig;
   /// A boolean that indicates all instances should be deleted from the service so that the service can be destroyed without error. These instances are not recoverable. Defaults to `false`.
   late final pulumi.Output<bool?> forceDestroy;
-  /// A complex type that contains settings for an optional health check. Only for Public DNS namespaces. See `health_check_config` Block for details.
+  /// A complex type that contains settings for an optional health check. Only for Public DNS namespaces. See `healthCheckConfig` Block for details.
   late final pulumi.Output<ServiceHealthCheckConfig?> healthCheckConfig;
-  /// Please use `health_check_config` instead. See `health_check_custom_config` Block for details.
+  /// Please use `healthCheckConfig` instead. See `healthCheckCustomConfig` Block for details.
   late final pulumi.Output<ServiceHealthCheckCustomConfig?> healthCheckCustomConfig;
   /// The name of the service.
   late final pulumi.Output<String> name;
@@ -475,7 +540,7 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> namespaceId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the service. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the service. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// If present, specifies that the service instances are only discoverable using the `DiscoverInstances` API operation. No DNS records is registered for the service instances. The only valid value is `HTTP`.

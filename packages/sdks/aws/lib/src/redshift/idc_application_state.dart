@@ -8,7 +8,7 @@ import 'idc_application_service_integration.dart';
 class IdcApplicationState {
   /// Type of application being created. Valid values are `None` or `Lakehouse`.
   final pulumi.Input<String>? applicationType;
-  /// Token issuer list for the Amazon Redshift IAM Identity Center application instance. Refer to the authorized_token_issuer documentation for more details.
+  /// Token issuer list for the Amazon Redshift IAM Identity Center application instance. Refer to the authorizedTokenIssuer documentation for more details.
   final pulumi.Input<IdcApplicationAuthorizedTokenIssuer>? authorizedTokenIssuer;
   /// IAM role ARN for the Amazon Redshift IAM Identity Center application instance.
   final pulumi.Input<String>? iamRoleArn;
@@ -26,14 +26,14 @@ class IdcApplicationState {
   final pulumi.Input<String>? redshiftIdcApplicationName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Collection of service integrations for the Redshift IAM Identity Center application. Refer to the service_integration documentation for more details.
+  /// Collection of service integrations for the Redshift IAM Identity Center application. Refer to the serviceIntegration documentation for more details.
   final pulumi.Input<IdcApplicationServiceIntegration>? serviceIntegration;
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [IdcApplicationState].
   /// [applicationType] Type of application being created. Valid values are `None` or `Lakehouse`.
-  /// [authorizedTokenIssuer] Token issuer list for the Amazon Redshift IAM Identity Center application instance. Refer to the authorized_token_issuer documentation for more details.
+  /// [authorizedTokenIssuer] Token issuer list for the Amazon Redshift IAM Identity Center application instance. Refer to the authorizedTokenIssuer documentation for more details.
   /// [iamRoleArn] IAM role ARN for the Amazon Redshift IAM Identity Center application instance.
   /// [idcDisplayName] Display name for the Amazon Redshift IAM Identity Center application instance.
   /// [idcInstanceArn] ARN of the IAM Identity Center instance where Amazon Redshift creates a new managed application.
@@ -42,7 +42,7 @@ class IdcApplicationState {
   /// [redshiftIdcApplicationArn] ARN of the Redshift application in IAM Identity Center.
   /// [redshiftIdcApplicationName] Name of the Redshift application in IAM Identity Center.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [serviceIntegration] Collection of service integrations for the Redshift IAM Identity Center application. Refer to the service_integration documentation for more details.
+  /// [serviceIntegration] Collection of service integrations for the Redshift IAM Identity Center application. Refer to the serviceIntegration documentation for more details.
   /// [tags] Optional.
   /// [tagsAll] Optional.
   const IdcApplicationState({
@@ -97,4 +97,3 @@ class IdcApplicationState {
     );
   }
 }
-

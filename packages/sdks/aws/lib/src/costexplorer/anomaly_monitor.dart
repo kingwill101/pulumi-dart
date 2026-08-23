@@ -69,6 +69,21 @@ import 'anomaly_monitor_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_costexplorer_anomalymonitor" "service_monitor" {
+///   name              = "AWSServiceMonitor"
+///   monitor_type      = "DIMENSIONAL"
+///   monitor_dimension = "SERVICE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +92,8 @@ import 'anomaly_monitor_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.costexplorer.AnomalyMonitor;
 /// import com.pulumi.aws.costexplorer.AnomalyMonitorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -232,6 +247,32 @@ import 'anomaly_monitor_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_costexplorer_anomalymonitor" "test" {
+///   name         = "AWSCustomAnomalyMonitor"
+///   monitor_type = "CUSTOM"
+///   monitor_specification = jsonencode({
+///     "And"            = null
+///     "CostCategories" = null
+///     "Dimensions"     = null
+///     "Not"            = null
+///     "Or"             = null
+///     "Tags" = {
+///       "Key"          = "CostCenter"
+///       "MatchOptions" = null
+///       "Values"       = ["10000"]
+///     }
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -241,8 +282,8 @@ import 'anomaly_monitor_state.dart';
 /// import com.pulumi.aws.costexplorer.AnomalyMonitor;
 /// import com.pulumi.aws.costexplorer.AnomalyMonitorArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -314,7 +355,7 @@ import 'anomaly_monitor_state.dart';
 class AnomalyMonitor extends pulumi.CustomResource {
   /// ARN of the anomaly monitor.
   late final pulumi.Output<String> arn;
-  /// The dimensions to evaluate. Valid values: `SERVICE`.
+  /// The dimensions to evaluate. Valid values: `COST_CATEGORY`, `LINKED_ACCOUNT`, `SERVICE`, `TAG`.
   late final pulumi.Output<String?> monitorDimension;
   /// A valid JSON representation for the [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html) object.
   late final pulumi.Output<String?> monitorSpecification;
@@ -322,9 +363,9 @@ class AnomalyMonitor extends pulumi.CustomResource {
   late final pulumi.Output<String> monitorType;
   /// The name of the monitor.
   late final pulumi.Output<String> name;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [AnomalyMonitor].

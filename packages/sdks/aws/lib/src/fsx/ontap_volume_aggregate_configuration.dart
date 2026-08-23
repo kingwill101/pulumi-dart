@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OntapVolumeAggregateConfiguration {
-  /// Used to specify the names of the aggregates on which the volume will be created. Each aggregate needs to be in the format aggrX where X is the number of the aggregate.
+  /// Names of the aggregates on which the volume will be created. Each aggregate needs to be in the format aggrX where X is the number of the aggregate.
   final pulumi.Input<List<String>>? aggregates;
-  /// Used to explicitly set the number of constituents within the FlexGroup per storage aggregate. the default value is `8`.
+  /// Number of constituents within the FlexGroup per storage aggregate. the default value is `8`.
   final pulumi.Input<int>? constituentsPerAggregate;
-  /// The total amount of constituents for a `FLEXGROUP` volume. This would equal constituents_per_aggregate x aggregates.
+  /// Total amount of constituents for a `FLEXGROUP` volume. This would equal constituentsPerAggregate x aggregates.
   final pulumi.Input<int>? totalConstituents;
 
   /// Creates a new [OntapVolumeAggregateConfiguration].
-  /// [aggregates] Used to specify the names of the aggregates on which the volume will be created. Each aggregate needs to be in the format aggrX where X is the number of the aggregate.
-  /// [constituentsPerAggregate] Used to explicitly set the number of constituents within the FlexGroup per storage aggregate. the default value is `8`.
-  /// [totalConstituents] The total amount of constituents for a `FLEXGROUP` volume. This would equal constituents_per_aggregate x aggregates.
+  /// [aggregates] Names of the aggregates on which the volume will be created. Each aggregate needs to be in the format aggrX where X is the number of the aggregate.
+  /// [constituentsPerAggregate] Number of constituents within the FlexGroup per storage aggregate. the default value is `8`.
+  /// [totalConstituents] Total amount of constituents for a `FLEXGROUP` volume. This would equal constituentsPerAggregate x aggregates.
   const OntapVolumeAggregateConfiguration({
     this.aggregates,
     this.constituentsPerAggregate,
@@ -36,4 +36,3 @@ class OntapVolumeAggregateConfiguration {
     );
   }
 }
-

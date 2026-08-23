@@ -60,6 +60,19 @@ import 'get_resource_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lakeformation_getdatalakesettings" "example" {
+///   catalog_id = "14916253649"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +81,8 @@ import 'get_resource_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lakeformation.LakeformationFunctions;
 /// import com.pulumi.aws.lakeformation.inputs.GetDataLakeSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -182,6 +195,22 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lakeformation_getpermissions" "test" {
+///   principal = workflowRole.arn
+///   data_location = {
+///     arn = testAwsLakeformationResource.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -191,8 +220,8 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// import com.pulumi.aws.lakeformation.LakeformationFunctions;
 /// import com.pulumi.aws.lakeformation.inputs.GetPermissionsArgs;
 /// import com.pulumi.aws.lakeformation.inputs.GetPermissionsDataLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -295,6 +324,23 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lakeformation_getpermissions" "test" {
+///   principal = workflowRole.arn
+///   database = {
+///     name       = testAwsGlueCatalogDatabase.name
+///     catalog_id = "110376042874"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -304,8 +350,8 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// import com.pulumi.aws.lakeformation.LakeformationFunctions;
 /// import com.pulumi.aws.lakeformation.inputs.GetPermissionsArgs;
 /// import com.pulumi.aws.lakeformation.inputs.GetPermissionsDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -467,6 +513,29 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lakeformation_getpermissions" "test" {
+///   principal = workflowRole.arn
+///   lf_tag_policy = {
+///     resource_type = "DATABASE"
+///     expressions = [{
+///       "key"    = "Team"
+///       "values" = ["Sales"]
+///       }, {
+///       "key"    = "Environment"
+///       "values" = ["Dev", "Production"]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -476,8 +545,9 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// import com.pulumi.aws.lakeformation.LakeformationFunctions;
 /// import com.pulumi.aws.lakeformation.inputs.GetPermissionsArgs;
 /// import com.pulumi.aws.lakeformation.inputs.GetPermissionsLfTagPolicyArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.lakeformation.inputs.GetPermissionsLfTagPolicyExpressionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -597,6 +667,19 @@ Future<GetPermissionsResult> getPermissions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lakeformation_getresource" "example" {
+///   arn = "arn:aws:s3:::tf-acc-test-9151654063908211878"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -605,8 +688,8 @@ Future<GetPermissionsResult> getPermissions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lakeformation.LakeformationFunctions;
 /// import com.pulumi.aws.lakeformation.inputs.GetResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

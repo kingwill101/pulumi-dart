@@ -24,4 +24,3 @@ class ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfi
     );
   }
 }
-

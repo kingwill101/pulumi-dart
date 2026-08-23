@@ -8,8 +8,6 @@ class LanguageModelInputDataConfig {
   /// S3 URI where training data is located.
   final pulumi.Input<String> s3Uri;
   /// S3 URI where tuning data is located.
-  ///
-  /// The following arguments are optional:
   final pulumi.Input<String>? tuningDataS3Uri;
 
   /// Creates a new [LanguageModelInputDataConfig].
@@ -38,4 +36,3 @@ class LanguageModelInputDataConfig {
     );
   }
 }
-

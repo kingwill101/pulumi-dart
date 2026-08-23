@@ -34,7 +34,7 @@ class GetPatchBaselineResult {
   final String region;
   /// List of rejected patches.
   final List<String> rejectedPatches;
-  /// Action specified to take on patches included in the `rejected_patches` list.
+  /// Action specified to take on patches included in the `rejectedPatches` list.
   final String rejectedPatchesAction;
   /// Information about the patches to use to update the managed nodes, including target operating systems and source repositories.
   final List<GetPatchBaselineSource> sources;
@@ -56,7 +56,7 @@ class GetPatchBaselineResult {
   /// [owner] Required.
   /// [region] Required.
   /// [rejectedPatches] List of rejected patches.
-  /// [rejectedPatchesAction] Action specified to take on patches included in the `rejected_patches` list.
+  /// [rejectedPatchesAction] Action specified to take on patches included in the `rejectedPatches` list.
   /// [sources] Information about the patches to use to update the managed nodes, including target operating systems and source repositories.
   const GetPatchBaselineResult({
     required this.approvalRules,
@@ -125,4 +125,3 @@ class GetPatchBaselineResult {
     );
   }
 }
-

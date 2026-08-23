@@ -8,7 +8,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndC
   final pulumi.Input<bool>? allowInterrupt;
   /// Configuration blocks for responses that Amazon Lex can send to the user.
   /// Amazon Lex chooses the actual response to send at runtime.
-  /// See `message_group`.
+  /// See `messageGroup`.
   final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroup>>? messageGroups;
 
   /// Creates a new [V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationWaitingResponse].
@@ -33,4 +33,3 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndC
     );
   }
 }
-

@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_managed_rule_group_rule_action_block_custom_response.dart';
 
 class GetManagedRuleGroupRuleActionBlock {
+  /// Custom response for the blocked request. See `customResponse` Block for details.
   final pulumi.Input<List<GetManagedRuleGroupRuleActionBlockCustomResponse>> customResponses;
 
   /// Creates a new [GetManagedRuleGroupRuleActionBlock].
-  /// [customResponses] Required.
+  /// [customResponses] Custom response for the blocked request. See `customResponse` Block for details.
   const GetManagedRuleGroupRuleActionBlock({
     required this.customResponses,
   });
@@ -24,4 +25,3 @@ class GetManagedRuleGroupRuleActionBlock {
     );
   }
 }
-

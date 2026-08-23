@@ -102,6 +102,29 @@ import 'replica_external_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_externalkey" "primary" {
+///   description             = "Multi-Region primary key"
+///   deletion_window_in_days = 30
+///   multi_region            = true
+///   enabled                 = true
+///   key_material_base64     = "..."
+/// }
+/// resource "aws_kms_replicaexternalkey" "replica" {
+///   description             = "Multi-Region replica key"
+///   deletion_window_in_days = 7
+///   primary_key_arn         = aws_kms_externalkey.primary.arn
+///   key_material_base64     = "..."
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +135,8 @@ import 'replica_external_key_state.dart';
 /// import com.pulumi.aws.kms.ExternalKeyArgs;
 /// import com.pulumi.aws.kms.ReplicaExternalKey;
 /// import com.pulumi.aws.kms.ReplicaExternalKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -201,9 +224,9 @@ class ReplicaExternalKey extends pulumi.CustomResource {
   late final pulumi.Output<String> primaryKeyArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the replica key. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the replica key. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the key becomes unusable. If not specified, key material does not expire. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
   late final pulumi.Output<String?> validTo;

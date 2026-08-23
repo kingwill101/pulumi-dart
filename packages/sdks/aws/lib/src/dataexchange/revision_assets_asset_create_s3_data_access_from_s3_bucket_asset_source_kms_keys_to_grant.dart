@@ -24,4 +24,3 @@ class RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceKmsKeysToGrant
     );
   }
 }
-

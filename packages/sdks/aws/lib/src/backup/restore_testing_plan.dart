@@ -95,6 +95,25 @@ import 'restore_testing_plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_backup_restoretestingplan" "example" {
+///   name = "example_restore_testing_plan"
+///   recovery_point_selection = {
+///     algorithm            = "LATEST_WITHIN_WINDOW"
+///     include_vaults       = ["*"]
+///     recovery_point_types = ["CONTINUOUS"]
+///   }
+///   schedule_expression = "cron(0 12 ? * * *)"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +123,8 @@ import 'restore_testing_plan_state.dart';
 /// import com.pulumi.aws.backup.RestoreTestingPlan;
 /// import com.pulumi.aws.backup.RestoreTestingPlanArgs;
 /// import com.pulumi.aws.backup.inputs.RestoreTestingPlanRecoveryPointSelectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,7 +188,7 @@ class RestoreTestingPlan extends pulumi.CustomResource {
   /// The number of hours in the start window for the restore testing plan. Must be between 1 and 168.
   late final pulumi.Output<int> startWindowHours;
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [RestoreTestingPlan].

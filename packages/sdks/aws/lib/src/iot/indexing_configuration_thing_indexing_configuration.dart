@@ -10,7 +10,7 @@ class IndexingConfigurationThingIndexingConfiguration {
   final pulumi.Input<List<IndexingConfigurationThingIndexingConfigurationCustomField>>? customFields;
   /// Device Defender indexing mode. Valid values: `VIOLATIONS`, `OFF`. Default: `OFF`.
   final pulumi.Input<String>? deviceDefenderIndexingMode;
-  /// Required if `named_shadow_indexing_mode` is `ON`. Enables to add named shadows filtered by `filter` to fleet indexing configuration.
+  /// Required if `namedShadowIndexingMode` is `ON`. Enables to add named shadows filtered by `filter` to fleet indexing configuration.
   final pulumi.Input<IndexingConfigurationThingIndexingConfigurationFilter>? filter;
   /// Contains fields that are indexed and whose types are already known by the Fleet Indexing service. See below.
   final pulumi.Input<List<IndexingConfigurationThingIndexingConfigurationManagedField>>? managedFields;
@@ -24,7 +24,7 @@ class IndexingConfigurationThingIndexingConfiguration {
   /// Creates a new [IndexingConfigurationThingIndexingConfiguration].
   /// [customFields] Contains custom field names and their data type. See below.
   /// [deviceDefenderIndexingMode] Device Defender indexing mode. Valid values: `VIOLATIONS`, `OFF`. Default: `OFF`.
-  /// [filter] Required if `named_shadow_indexing_mode` is `ON`. Enables to add named shadows filtered by `filter` to fleet indexing configuration.
+  /// [filter] Required if `namedShadowIndexingMode` is `ON`. Enables to add named shadows filtered by `filter` to fleet indexing configuration.
   /// [managedFields] Contains fields that are indexed and whose types are already known by the Fleet Indexing service. See below.
   /// [namedShadowIndexingMode] [Named shadow](https://docs.aws.amazon.com/iot/latest/developerguide/iot-device-shadows.html) indexing mode. Valid values: `ON`, `OFF`. Default: `OFF`.
   /// [thingConnectivityIndexingMode] Thing connectivity indexing mode. Valid values: `STATUS`, `OFF`. Default: `OFF`.
@@ -63,4 +63,3 @@ class IndexingConfigurationThingIndexingConfiguration {
     );
   }
 }
-

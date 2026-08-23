@@ -69,6 +69,21 @@ import 'protection_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_shield_protectiongroup" "example" {
+///   protection_group_id = "example"
+///   aggregation         = "MAX"
+///   pattern             = "ALL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +92,8 @@ import 'protection_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.shield.ProtectionGroup;
 /// import com.pulumi.aws.shield.ProtectionGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -234,7 +249,7 @@ import 'protection_group_state.dart';
 /// 		}
 /// 		exampleProtection, err := shield.NewProtection(ctx, "example", &shield.ProtectionArgs{
 /// 			Name: pulumi.String("example"),
-/// 			ResourceArn: example.ID().ApplyT(func(id string) (string, error) {
+/// 			ResourceArn: example.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("arn:aws:ec2:%v:%v:eip-allocation/%v", current.Region, currentGetCallerIdentity.AccountId, id), nil
 /// 			}).(pulumi.StringOutput),
 /// 		})
@@ -246,7 +261,7 @@ import 'protection_group_state.dart';
 /// 			Aggregation:       pulumi.String("MEAN"),
 /// 			Pattern:           pulumi.String("ARBITRARY"),
 /// 			Members: pulumi.StringArray{
-/// 				example.ID().ApplyT(func(id string) (string, error) {
+/// 				example.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 					return fmt.Sprintf("arn:aws:ec2:%v:%v:eip-allocation/%v", current.Region, currentGetCallerIdentity.AccountId, id), nil
 /// 				}).(pulumi.StringOutput),
 /// 			},
@@ -258,6 +273,35 @@ import 'protection_group_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// }
+///
+/// resource "aws_ec2_eip" "example" {
+///   domain = "vpc"
+/// }
+/// resource "aws_shield_protection" "example" {
+///   name         = "example"
+///   resource_arn ="arn:aws:ec2:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:eip-allocation/${aws_ec2_eip.example.id}"
+/// }
+/// resource "aws_shield_protectiongroup" "example" {
+///   depends_on          = [aws_shield_protection.example]
+///   protection_group_id = "example"
+///   aggregation         = "MEAN"
+///   pattern             = "ARBITRARY"
+///   members             = ["arn:aws:ec2:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:eip-allocation/${aws_ec2_eip.example.id}"]
 /// }
 /// ```
 /// ```java
@@ -276,8 +320,8 @@ import 'protection_group_state.dart';
 /// import com.pulumi.aws.shield.ProtectionGroup;
 /// import com.pulumi.aws.shield.ProtectionGroupArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -417,6 +461,22 @@ import 'protection_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_shield_protectiongroup" "example" {
+///   protection_group_id = "example"
+///   aggregation         = "SUM"
+///   pattern             = "BY_RESOURCE_TYPE"
+///   resource_type       = "ELASTIC_IP_ALLOCATION"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -425,8 +485,8 @@ import 'protection_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.shield.ProtectionGroup;
 /// import com.pulumi.aws.shield.ProtectionGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -480,9 +540,9 @@ class ProtectionGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> protectionGroupId;
   /// The resource type to include in the protection group. You must set this when you set `pattern` to BY_RESOURCE_TYPE and you must not set it for any other `pattern` setting.
   late final pulumi.Output<String?> resourceType;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ProtectionGroup].

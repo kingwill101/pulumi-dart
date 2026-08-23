@@ -57,6 +57,19 @@ import 'connection_alias_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspaces_connectionalias" "example" {
+///   connection_string = "testdomain.test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +78,8 @@ import 'connection_alias_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.workspaces.ConnectionAlias;
 /// import com.pulumi.aws.workspaces.ConnectionAliasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -110,9 +123,9 @@ class ConnectionAlias extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The current state of the connection alias.
   late final pulumi.Output<String> state;
-  /// A map of tags assigned to the WorkSpaces Connection Alias. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags assigned to the WorkSpaces Connection Alias. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ConnectionAliasTimeouts?> timeouts;
 

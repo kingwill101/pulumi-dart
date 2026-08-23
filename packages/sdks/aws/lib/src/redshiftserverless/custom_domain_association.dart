@@ -112,6 +112,31 @@ import 'custom_domain_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_acm_certificate" "example" {
+///   domain_name = "example.com"
+/// }
+/// resource "aws_redshiftserverless_namespace" "example" {
+///   namespace_name = "example-namespace"
+/// }
+/// resource "aws_redshiftserverless_workgroup" "example" {
+///   workgroup_name = "example-workgroup"
+///   namespace_name = aws_redshiftserverless_namespace.example.namespace_name
+/// }
+/// resource "aws_redshiftserverless_customdomainassociation" "example" {
+///   workgroup_name                = aws_redshiftserverless_workgroup.example.workgroup_name
+///   custom_domain_name            = "example.com"
+///   custom_domain_certificate_arn = aws_acm_certificate.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +151,8 @@ import 'custom_domain_association_state.dart';
 /// import com.pulumi.aws.redshiftserverless.WorkgroupArgs;
 /// import com.pulumi.aws.redshiftserverless.CustomDomainAssociation;
 /// import com.pulumi.aws.redshiftserverless.CustomDomainAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -190,7 +215,7 @@ import 'custom_domain_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Redshift Serverless Custom Domain Association using the `workgroup_name` and `custom_domain_name`, separated by the coma. For example:
+/// Using `pulumi import`, import Redshift Serverless Custom Domain Association using the `workgroupName` and `customDomainName`, separated by the coma. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:redshiftserverless/customDomainAssociation:CustomDomainAssociation example example-workgroup,example.com

@@ -13,7 +13,7 @@ class GetImageResult {
   final String? imageTag;
   /// List of tags associated with this image.
   final List<String> imageTags;
-  /// The URI for the specific image version specified by `image_tag` or `image_digest`.
+  /// The URI for the specific image version specified by `imageTag` or `imageDigest`.
   final String imageUri;
   final bool? mostRecent;
   final String region;
@@ -27,7 +27,7 @@ class GetImageResult {
   /// [imageSizeInBytes] Size, in bytes, of the image in the repository.
   /// [imageTag] Optional.
   /// [imageTags] List of tags associated with this image.
-  /// [imageUri] The URI for the specific image version specified by `image_tag` or `image_digest`.
+  /// [imageUri] The URI for the specific image version specified by `imageTag` or `imageDigest`.
   /// [mostRecent] Optional.
   /// [region] Required.
   /// [registryId] Required.
@@ -78,4 +78,3 @@ class GetImageResult {
     );
   }
 }
-

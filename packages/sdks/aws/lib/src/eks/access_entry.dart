@@ -82,6 +82,22 @@ import 'access_entry_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_eks_accessentry" "example" {
+///   cluster_name      = exampleAwsEksCluster.name
+///   principal_arn     = exampleAwsIamRole.arn
+///   kubernetes_groups = ["group-1", "group-2"]
+///   type              = "STANDARD"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +106,8 @@ import 'access_entry_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.eks.AccessEntry;
 /// import com.pulumi.aws.eks.AccessEntryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -131,10 +147,23 @@ import 'access_entry_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EKS access entry using the `cluster_name` and `principal_arn` separated by a colon (`:`). For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `clusterName` (String) Name of the EKS Cluster.
+/// * `principalArn` (String) IAM principal ARN.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Access Entries using `clusterName` and `principalArn` separated by a colon (`:`). For example:
 ///
 /// ```sh
-/// $ pulumi import aws:eks/accessEntry:AccessEntry my_eks_access_entry my_cluster_name:my_principal_arn
+/// $ pulumi import aws:eks/accessEntry:AccessEntry example example-cluster:arn:aws:iam::123456789012:role/example
 /// ```
 class AccessEntry extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the Access Entry.
@@ -153,9 +182,9 @@ class AccessEntry extends pulumi.CustomResource {
   late final pulumi.Output<String> principalArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// (Optional) Key-value map of resource tags, including those inherited from the provider `default_tags` configuration block.
+  /// (Optional) Key-value map of resource tags, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Defaults to STANDARD which provides the standard workflow. EC2_LINUX, EC2_WINDOWS, FARGATE_LINUX types disallow users to input a username or groups, and prevent associations.
   late final pulumi.Output<String?> type;

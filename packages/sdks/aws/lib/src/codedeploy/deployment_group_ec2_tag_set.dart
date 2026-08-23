@@ -25,4 +25,3 @@ class DeploymentGroupEc2TagSet {
     );
   }
 }
-

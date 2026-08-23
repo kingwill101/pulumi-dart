@@ -33,11 +33,11 @@ class EventTargetState {
   final pulumi.Input<bool>? forceDestroy;
   /// Parameters used when you are using the rule to invoke an API Gateway REST endpoint. Documented below. A maximum of 1 is allowed.
   final pulumi.Input<EventTargetHttpTarget>? httpTarget;
-  /// Valid JSON text passed to the target. Conflicts with `input_path` and `input_transformer`.
+  /// Valid JSON text passed to the target. Conflicts with `inputPath` and `inputTransformer`.
   final pulumi.Input<String>? input;
-  /// The value of the [JSONPath](http://goessner.net/articles/JsonPath/) that is used for extracting part of the matched event when passing it to the target. Conflicts with `input` and `input_transformer`.
+  /// The value of the [JSONPath](http://goessner.net/articles/JsonPath/) that is used for extracting part of the matched event when passing it to the target. Conflicts with `input` and `inputTransformer`.
   final pulumi.Input<String>? inputPath;
-  /// Parameters used when you are providing a custom input to a target based on certain event data. Conflicts with `input` and `input_path`.
+  /// Parameters used when you are providing a custom input to a target based on certain event data. Conflicts with `input` and `inputPath`.
   final pulumi.Input<EventTargetInputTransformer>? inputTransformer;
   /// Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
   final pulumi.Input<EventTargetKinesisTarget>? kinesisTarget;
@@ -47,7 +47,7 @@ class EventTargetState {
   final pulumi.Input<String>? region;
   /// Parameters used when you are providing retry policies. Documented below. A maximum of 1 are allowed.
   final pulumi.Input<EventTargetRetryPolicy>? retryPolicy;
-  /// The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecs_target` is used or target in `arn` is EC2 instance, Kinesis data stream, Step Functions state machine, or Event Bus in different account or region.
+  /// The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecsTarget` is used or target in `arn` is EC2 instance, Kinesis data stream, Step Functions state machine, or Event Bus in different account or region.
   final pulumi.Input<String>? roleArn;
   /// The name of the rule you want to add targets to.
   ///
@@ -71,14 +71,14 @@ class EventTargetState {
   /// [eventBusName] The name or ARN of the event bus to associate with the rule.
   /// [forceDestroy] Used to delete managed rules created by AWS. Defaults to `false`.
   /// [httpTarget] Parameters used when you are using the rule to invoke an API Gateway REST endpoint. Documented below. A maximum of 1 is allowed.
-  /// [input] Valid JSON text passed to the target. Conflicts with `input_path` and `input_transformer`.
-  /// [inputPath] The value of the [JSONPath](http://goessner.net/articles/JsonPath/) that is used for extracting part of the matched event when passing it to the target. Conflicts with `input` and `input_transformer`.
-  /// [inputTransformer] Parameters used when you are providing a custom input to a target based on certain event data. Conflicts with `input` and `input_path`.
+  /// [input] Valid JSON text passed to the target. Conflicts with `inputPath` and `inputTransformer`.
+  /// [inputPath] The value of the [JSONPath](http://goessner.net/articles/JsonPath/) that is used for extracting part of the matched event when passing it to the target. Conflicts with `input` and `inputTransformer`.
+  /// [inputTransformer] Parameters used when you are providing a custom input to a target based on certain event data. Conflicts with `input` and `inputPath`.
   /// [kinesisTarget] Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
   /// [redshiftTarget] Parameters used when you are using the rule to invoke an Amazon Redshift Statement. Documented below. A maximum of 1 are allowed.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [retryPolicy] Parameters used when you are providing retry policies. Documented below. A maximum of 1 are allowed.
-  /// [roleArn] The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecs_target` is used or target in `arn` is EC2 instance, Kinesis data stream, Step Functions state machine, or Event Bus in different account or region.
+  /// [roleArn] The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecsTarget` is used or target in `arn` is EC2 instance, Kinesis data stream, Step Functions state machine, or Event Bus in different account or region.
   /// [rule] The name of the rule you want to add targets to.
   /// [runCommandTargets] Parameters used when you are using the rule to invoke Amazon EC2 Run Command. Documented below. A maximum of 5 are allowed.
   /// [sagemakerPipelineTarget] Parameters used when you are using the rule to invoke an Amazon SageMaker AI Pipeline. Documented below. A maximum of 1 are allowed.
@@ -160,4 +160,3 @@ class EventTargetState {
     );
   }
 }
-

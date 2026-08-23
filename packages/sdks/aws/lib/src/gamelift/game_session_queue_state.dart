@@ -19,9 +19,9 @@ class GameSessionQueueState {
   final pulumi.Input<List<GameSessionQueuePlayerLatencyPolicy>>? playerLatencyPolicies;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Maximum time a game session request can remain in the queue.
   final pulumi.Input<int>? timeoutInSeconds;
@@ -34,8 +34,8 @@ class GameSessionQueueState {
   /// [notificationTarget] An SNS topic ARN that is set up to receive game session placement notifications.
   /// [playerLatencyPolicies] One or more policies used to choose fleet based on player latency. See below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeoutInSeconds] Maximum time a game session request can remain in the queue.
   const GameSessionQueueState({
     this.arn,
@@ -80,4 +80,3 @@ class GameSessionQueueState {
     );
   }
 }
-

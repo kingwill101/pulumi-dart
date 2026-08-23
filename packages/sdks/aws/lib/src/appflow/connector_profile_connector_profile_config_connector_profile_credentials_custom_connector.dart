@@ -7,22 +7,23 @@ import 'connector_profile_connector_profile_config_connector_profile_credentials
 import 'connector_profile_connector_profile_config_connector_profile_credentials_custom_connector_oauth2.dart';
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnector {
+  /// Unique alphanumeric identifier used to authenticate a user, developer, or calling program to your API.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorApiKey>? apiKey;
-  /// The authentication type that the custom connector uses for authenticating while creating a connector profile. One of: `APIKEY`, `BASIC`, `CUSTOM`, `OAUTH2`.
+  /// Authentication type that the custom connector uses for authenticating while creating a connector profile. One of: `APIKEY`, `BASIC`, `CUSTOM`, `OAUTH2`.
   final pulumi.Input<String> authenticationType;
-  /// Basic credentials that are required for the authentication of the user.
+  /// Basic credentials that are required for the authentication of the user. See `connector_profile_config.connector_profile_credentials.custom_connector.basic` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorBasic>? basic;
-  /// If the connector uses the custom authentication mechanism, this holds the required credentials.
+  /// Credentials required when the connector uses the custom authentication mechanism. See `connector_profile_config.connector_profile_credentials.custom_connector.custom` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorCustom>? custom;
-  /// OAuth 2.0 credentials required for the authentication of the user.
+  /// OAuth 2.0 credentials required for the authentication of the user. See `connector_profile_config.connector_profile_credentials.custom_connector.oauth2` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2>? oauth2;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnector].
-  /// [apiKey] Optional.
-  /// [authenticationType] The authentication type that the custom connector uses for authenticating while creating a connector profile. One of: `APIKEY`, `BASIC`, `CUSTOM`, `OAUTH2`.
-  /// [basic] Basic credentials that are required for the authentication of the user.
-  /// [custom] If the connector uses the custom authentication mechanism, this holds the required credentials.
-  /// [oauth2] OAuth 2.0 credentials required for the authentication of the user.
+  /// [apiKey] Unique alphanumeric identifier used to authenticate a user, developer, or calling program to your API.
+  /// [authenticationType] Authentication type that the custom connector uses for authenticating while creating a connector profile. One of: `APIKEY`, `BASIC`, `CUSTOM`, `OAUTH2`.
+  /// [basic] Basic credentials that are required for the authentication of the user. See `connector_profile_config.connector_profile_credentials.custom_connector.basic` Block for details.
+  /// [custom] Credentials required when the connector uses the custom authentication mechanism. See `connector_profile_config.connector_profile_credentials.custom_connector.custom` Block for details.
+  /// [oauth2] OAuth 2.0 credentials required for the authentication of the user. See `connector_profile_config.connector_profile_credentials.custom_connector.oauth2` Block for details.
   const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnector({
     this.apiKey,
     required this.authenticationType,
@@ -51,4 +52,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
     );
   }
 }
-

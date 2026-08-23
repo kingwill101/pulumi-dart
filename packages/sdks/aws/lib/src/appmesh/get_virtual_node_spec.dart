@@ -8,18 +8,23 @@ import 'get_virtual_node_spec_logging.dart';
 import 'get_virtual_node_spec_service_discovery.dart';
 
 class GetVirtualNodeSpec {
+  /// Defaults for backends. See `spec.backend_defaults` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecBackendDefault>> backendDefaults;
+  /// Backends to which the virtual node sends outbound traffic. See `spec.backend` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecBackend>> backends;
+  /// Listeners from which the virtual node receives inbound traffic. See `spec.listener` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecListener>> listeners;
+  /// Inbound and outbound access logging information for the virtual node. See `spec.logging` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecLogging>> loggings;
+  /// Service discovery information for the virtual node. See `spec.service_discovery` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecServiceDiscovery>> serviceDiscoveries;
 
   /// Creates a new [GetVirtualNodeSpec].
-  /// [backendDefaults] Required.
-  /// [backends] Required.
-  /// [listeners] Required.
-  /// [loggings] Required.
-  /// [serviceDiscoveries] Required.
+  /// [backendDefaults] Defaults for backends. See `spec.backend_defaults` Block for details.
+  /// [backends] Backends to which the virtual node sends outbound traffic. See `spec.backend` Block for details.
+  /// [listeners] Listeners from which the virtual node receives inbound traffic. See `spec.listener` Block for details.
+  /// [loggings] Inbound and outbound access logging information for the virtual node. See `spec.logging` Block for details.
+  /// [serviceDiscoveries] Service discovery information for the virtual node. See `spec.service_discovery` Block for details.
   const GetVirtualNodeSpec({
     required this.backendDefaults,
     required this.backends,
@@ -48,4 +53,3 @@ class GetVirtualNodeSpec {
     );
   }
 }
-

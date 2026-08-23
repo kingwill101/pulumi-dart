@@ -15,11 +15,11 @@ class ContactsEmailContactState {
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
   /// Map of tags to assign to the resource. If configured with a provider
-  /// `default_tags` configuration block
+  /// `defaultTags` configuration block
   /// present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider
-  /// `default_tags` configuration block.
+  /// `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [ContactsEmailContactState].
@@ -56,4 +56,3 @@ class ContactsEmailContactState {
     );
   }
 }
-

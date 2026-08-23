@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_spec_grpc_route_match_metadata_match_range.dart';
 
 class RouteSpecGrpcRouteMatchMetadataMatch {
-  /// Value sent by the client must match the specified value exactly. Must be between 1 and 255 characters in length.
+  /// Exact query parameter to match on.
   final pulumi.Input<String>? exact;
-  /// Value sent by the client must begin with the specified characters. Must be between 1 and 255 characters in length.
+  /// Header value sent by the client must begin with the specified characters.
   final pulumi.Input<String>? prefix;
-  /// Object that specifies the range of numbers that the value sent by the client must be included in.
+  /// Object that specifies the range of numbers that the header value sent by the client must be included in. See `spec.http_route.match.header.match.range` Block for details.
   final pulumi.Input<RouteSpecGrpcRouteMatchMetadataMatchRange>? range;
-  /// Value sent by the client must include the specified characters. Must be between 1 and 255 characters in length.
+  /// Regex used to match the path.
   final pulumi.Input<String>? regex;
-  /// Value sent by the client must end with the specified characters. Must be between 1 and 255 characters in length.
+  /// Header value sent by the client must end with the specified characters.
   final pulumi.Input<String>? suffix;
 
   /// Creates a new [RouteSpecGrpcRouteMatchMetadataMatch].
-  /// [exact] Value sent by the client must match the specified value exactly. Must be between 1 and 255 characters in length.
-  /// [prefix] Value sent by the client must begin with the specified characters. Must be between 1 and 255 characters in length.
-  /// [range] Object that specifies the range of numbers that the value sent by the client must be included in.
-  /// [regex] Value sent by the client must include the specified characters. Must be between 1 and 255 characters in length.
-  /// [suffix] Value sent by the client must end with the specified characters. Must be between 1 and 255 characters in length.
+  /// [exact] Exact query parameter to match on.
+  /// [prefix] Header value sent by the client must begin with the specified characters.
+  /// [range] Object that specifies the range of numbers that the header value sent by the client must be included in. See `spec.http_route.match.header.match.range` Block for details.
+  /// [regex] Regex used to match the path.
+  /// [suffix] Header value sent by the client must end with the specified characters.
   const RouteSpecGrpcRouteMatchMetadataMatch({
     this.exact,
     this.prefix,
@@ -49,4 +49,3 @@ class RouteSpecGrpcRouteMatchMetadataMatch {
     );
   }
 }
-

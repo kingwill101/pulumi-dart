@@ -178,8 +178,8 @@ import 'task_definition_state.dart';
 /// 				"cpu":       10,
 /// 				"memory":    512,
 /// 				"essential": true,
-/// 				"portMappings": []map[string]interface{}{
-/// 					map[string]interface{}{
+/// 				"portMappings": []map[string]int{
+/// 					{
 /// 						"containerPort": 80,
 /// 						"hostPort":      80,
 /// 					},
@@ -191,8 +191,8 @@ import 'task_definition_state.dart';
 /// 				"cpu":       10,
 /// 				"memory":    256,
 /// 				"essential": true,
-/// 				"portMappings": []map[string]interface{}{
-/// 					map[string]interface{}{
+/// 				"portMappings": []map[string]int{
+/// 					{
 /// 						"containerPort": 443,
 /// 						"hostPort":      443,
 /// 					},
@@ -226,6 +226,48 @@ import 'task_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_taskdefinition" "service" {
+///   family = "service"
+///   container_definitions = jsonencode([{
+///     "name"      = "first"
+///     "image"     = "service-first"
+///     "cpu"       = 10
+///     "memory"    = 512
+///     "essential" = true
+///     "portMappings" = [{
+///       "containerPort" = 80
+///       "hostPort"      = 80
+///     }]
+///     }, {
+///     "name"      = "second"
+///     "image"     = "service-second"
+///     "cpu"       = 10
+///     "memory"    = 256
+///     "essential" = true
+///     "portMappings" = [{
+///       "containerPort" = 443
+///       "hostPort"      = 443
+///     }]
+///   }])
+///   volumes {
+///     name      = "service-storage"
+///     host_path = "/ecs/service-storage"
+///   }
+///   placement_constraints {
+///     type       = "memberOf"
+///     expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -237,8 +279,8 @@ import 'task_definition_state.dart';
 /// import com.pulumi.aws.ecs.inputs.TaskDefinitionVolumeArgs;
 /// import com.pulumi.aws.ecs.inputs.TaskDefinitionPlacementConstraintArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -441,6 +483,34 @@ import 'task_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_taskdefinition" "service" {
+///   family                = "service"
+///   container_definitions = file("task-definitions/service.json")
+///   proxy_configuration = {
+///     type           = "APPMESH"
+///     container_name = "applicationContainerName"
+///     properties = {
+///       "AppPorts"         = "8080"
+///       "EgressIgnoredIPs" = "169.254.170.2,169.254.169.254"
+///       "IgnoredUID"       = "1337"
+///       "ProxyEgressPort"  = 15001
+///       "ProxyIngressPort" = 15000
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -452,8 +522,8 @@ import 'task_definition_state.dart';
 /// import com.pulumi.aws.ecs.inputs.TaskDefinitionProxyConfigurationArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -510,7 +580,7 @@ import 'task_definition_state.dart';
 /// ```
 ///
 ///
-/// ### Example Using `docker_volume_configuration`
+/// ### Example Using `dockerVolumeConfiguration`
 ///
 ///
 /// ```typescript
@@ -642,6 +712,36 @@ import 'task_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_taskdefinition" "service" {
+///   family                = "service"
+///   container_definitions = file("task-definitions/service.json")
+///   volumes {
+///     name = "service-storage"
+///     docker_volume_configuration = {
+///       scope         = "shared"
+///       autoprovision = true
+///       driver        = "local"
+///       driver_opts = {
+///         "type"   = "nfs"
+///         "device" ="${fs.dnsName}:/"
+///         "o"      ="addr=${fs.dnsName},rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -654,8 +754,8 @@ import 'task_definition_state.dart';
 /// import com.pulumi.aws.ecs.inputs.TaskDefinitionVolumeDockerVolumeConfigurationArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -715,7 +815,7 @@ import 'task_definition_state.dart';
 /// ```
 ///
 ///
-/// ### Example Using `efs_volume_configuration`
+/// ### Example Using `efsVolumeConfiguration`
 ///
 ///
 /// ```typescript
@@ -847,6 +947,36 @@ import 'task_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_taskdefinition" "service" {
+///   family                = "service"
+///   container_definitions = file("task-definitions/service.json")
+///   volumes {
+///     name = "service-storage"
+///     efs_volume_configuration = {
+///       file_system_id          = fs.id
+///       root_directory          = "/opt/data"
+///       transit_encryption      = "ENABLED"
+///       transit_encryption_port = 2999
+///       authorization_config = {
+///         access_point_id = test.id
+///         iam             = "ENABLED"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -860,8 +990,8 @@ import 'task_definition_state.dart';
 /// import com.pulumi.aws.ecs.inputs.TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -921,7 +1051,7 @@ import 'task_definition_state.dart';
 /// ```
 ///
 ///
-/// ### Example Using `fsx_windows_file_server_volume_configuration`
+/// ### Example Using `fsxWindowsFileServerVolumeConfiguration`
 ///
 ///
 /// ```typescript
@@ -1088,6 +1218,41 @@ import 'task_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_taskdefinition" "service" {
+///   family                = "service"
+///   container_definitions = file("task-definitions/service.json")
+///   volumes {
+///     name = "service-storage"
+///     fsx_windows_file_server_volume_configuration = {
+///       file_system_id = testAwsFsxWindowsFileSystem.id
+///       root_directory = "\\data"
+///       authorization_config = {
+///         credentials_parameter = aws_secretsmanager_secretversion.test.arn
+///         domain                = testAwsDirectoryServiceDirectory.name
+///       }
+///     }
+///   }
+/// }
+/// resource "aws_secretsmanager_secretversion" "test" {
+///   secret_id = testAwsSecretsmanagerSecret.id
+///   secret_string = jsonencode({
+///     "username" = "admin"
+///     "password" = testAwsDirectoryServiceDirectory.password
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1104,8 +1269,8 @@ import 'task_definition_state.dart';
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1178,7 +1343,7 @@ import 'task_definition_state.dart';
 /// ```
 ///
 ///
-/// ### Example Using `container_definitions`
+/// ### Example Using `containerDefinitions`
 ///
 ///
 /// ```typescript
@@ -1315,6 +1480,20 @@ import 'task_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_taskdefinition" "test" {
+///   family                = "test"
+///   container_definitions = "[\n  {\n    \"cpu\": 10,\n    \"command\": [\"sleep\", \"10\"],\n    \"entryPoint\": [\"/\"],\n    \"environment\": [\n      {\"name\": \"VARNAME\", \"value\": \"VARVAL\"}\n    ],\n    \"essential\": true,\n    \"image\": \"jenkins\",\n    \"memory\": 128,\n    \"name\": \"jenkins\",\n    \"portMappings\": [\n      {\n        \"containerPort\": 80,\n        \"hostPort\": 8080\n      }\n    ]\n  }\n]\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1323,8 +1502,8 @@ import 'task_definition_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecs.TaskDefinition;
 /// import com.pulumi.aws.ecs.TaskDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1395,7 +1574,7 @@ import 'task_definition_state.dart';
 /// ```
 ///
 ///
-/// ### Example Using `runtime_platform` and `fargate`
+/// ### Example Using `runtimePlatform` and `fargate`
 ///
 ///
 /// ```typescript
@@ -1526,6 +1705,28 @@ import 'task_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_taskdefinition" "test" {
+///   family                   = "test"
+///   requires_compatibilities = ["FARGATE"]
+///   network_mode             = "awsvpc"
+///   cpu                      = 1024
+///   memory                   = 2048
+///   container_definitions    = "[\n  {\n    \"name\": \"iis\",\n    \"image\": \"mcr.microsoft.com/windows/servercore/iis\",\n    \"cpu\": 1024,\n    \"memory\": 2048,\n    \"essential\": true\n  }\n]\n"
+///   runtime_platform = {
+///     operating_system_family = "WINDOWS_SERVER_2019_CORE"
+///     cpu_architecture        = "X86_64"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1535,8 +1736,8 @@ import 'task_definition_state.dart';
 /// import com.pulumi.aws.ecs.TaskDefinition;
 /// import com.pulumi.aws.ecs.TaskDefinitionArgs;
 /// import com.pulumi.aws.ecs.inputs.TaskDefinitionRuntimePlatformArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1612,7 +1813,7 @@ import 'task_definition_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -1626,29 +1827,29 @@ class TaskDefinition extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// ARN of the Task Definition with the trailing `revision` removed. This may be useful for situations where the latest task definition is always desired. If a revision isn't specified, the latest ACTIVE revision is used. See the [AWS documentation](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_StartTask.html#ECS-StartTask-request-taskDefinition) for details.
   late final pulumi.Output<String> arnWithoutRevision;
-  /// A list of valid [container definitions](http://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html) provided as a single valid JSON document. Please note that you should only provide values that are part of the container definition document. For a detailed description of what parameters are available, see the [Task Definition Parameters](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html) section from the official [Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide).
+  /// List of valid [container definitions](http://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html) provided as a single valid JSON document. Please note that you should only provide values that are part of the container definition document. For a detailed description of what parameters are available, see the [Task Definition Parameters](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html) section from the official [Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide).
   late final pulumi.Output<String> containerDefinitions;
-  /// Number of cpu units used by the task. If the `requires_compatibilities` is `FARGATE` this field is required.
+  /// Number of cpu units used by the task. If the `requiresCompatibilities` is `FARGATE` this field is required.
   late final pulumi.Output<String?> cpu;
   /// Enables fault injection and allows for fault injection requests to be accepted from the task's containers. Default is `false`.
   late final pulumi.Output<bool> enableFaultInjection;
-  /// The amount of ephemeral storage to allocate for the task. This parameter is used to expand the total amount of ephemeral storage available, beyond the default amount, for tasks hosted on AWS Fargate. See Ephemeral Storage.
+  /// Amount of ephemeral storage to allocate for the task. This parameter is used to expand the total amount of ephemeral storage available, beyond the default amount, for tasks hosted on AWS Fargate. See Ephemeral Storage.
   late final pulumi.Output<TaskDefinitionEphemeralStorage?> ephemeralStorage;
   /// ARN of the task execution role that the Amazon ECS container agent and the Docker daemon can assume.
   late final pulumi.Output<String?> executionRoleArn;
-  /// A unique name for your task definition.
+  /// Unique name for your task definition.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> family;
   /// IPC resource namespace to be used for the containers in the task. Valid values: `host`, `task`, `none`.
   late final pulumi.Output<String?> ipcMode;
-  /// Amount (in MiB) of memory used by the task. If the `requires_compatibilities` is `FARGATE` this field is required.
+  /// Amount (in MiB) of memory used by the task. If the `requiresCompatibilities` is `FARGATE` this field is required.
   late final pulumi.Output<String?> memory;
   /// Docker networking mode to use for the containers in the task. Valid values: `awsvpc`, `bridge`, `host`, and `none`.
   late final pulumi.Output<String> networkMode;
   /// Process namespace to use for the containers in the task. Valid values: host`, `task`.
   late final pulumi.Output<String?> pidMode;
-  /// Configuration block for rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`. Detailed below.
+  /// Configuration block for rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`. Detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>?> placementConstraints;
   /// Configuration block for the App Mesh proxy. Detailed below.
   late final pulumi.Output<TaskDefinitionProxyConfiguration?> proxyConfiguration;
@@ -1658,13 +1859,13 @@ class TaskDefinition extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> requiresCompatibilities;
   /// Revision of the task in a particular family.
   late final pulumi.Output<int> revision;
-  /// Configuration block for runtime_platform that containers in your task may use.
+  /// Configuration block for runtimePlatform that containers in your task may use.
   late final pulumi.Output<TaskDefinitionRuntimePlatform?> runtimePlatform;
   /// Whether to retain the old revision when the resource is destroyed or replacement is necessary. Default is `false`.
   late final pulumi.Output<bool?> skipDestroy;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services.
   late final pulumi.Output<String?> taskRoleArn;

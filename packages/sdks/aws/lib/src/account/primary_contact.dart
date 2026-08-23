@@ -21,7 +21,7 @@ import 'primary_contact_state.dart';
 ///     phoneNumber: "+64211111111",
 ///     postalCode: "98101",
 ///     stateOrRegion: "WA",
-///     websiteUrl: "https://www.examplecorp.com",
+///     websiteUrl: "https://www.example.com",
 /// });
 /// ```
 /// ```python
@@ -38,7 +38,7 @@ import 'primary_contact_state.dart';
 ///     phone_number="+64211111111",
 ///     postal_code="98101",
 ///     state_or_region="WA",
-///     website_url="https://www.examplecorp.com")
+///     website_url="https://www.example.com")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -59,7 +59,7 @@ import 'primary_contact_state.dart';
 ///         PhoneNumber = "+64211111111",
 ///         PostalCode = "98101",
 ///         StateOrRegion = "WA",
-///         WebsiteUrl = "https://www.examplecorp.com",
+///         WebsiteUrl = "https://www.example.com",
 ///     });
 ///
 /// });
@@ -84,13 +84,35 @@ import 'primary_contact_state.dart';
 /// 			PhoneNumber:      pulumi.String("+64211111111"),
 /// 			PostalCode:       pulumi.String("98101"),
 /// 			StateOrRegion:    pulumi.String("WA"),
-/// 			WebsiteUrl:       pulumi.String("https://www.examplecorp.com"),
+/// 			WebsiteUrl:       pulumi.String("https://www.example.com"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_account_primarycontact" "test" {
+///   address_line1      = "123 Any Street"
+///   city               = "Seattle"
+///   company_name       = "Example Corp, Inc."
+///   country_code       = "US"
+///   district_or_county = "King"
+///   full_name          = "My Name"
+///   phone_number       = "+64211111111"
+///   postal_code        = "98101"
+///   state_or_region    = "WA"
+///   website_url        = "https://www.example.com"
 /// }
 /// ```
 /// ```java
@@ -101,8 +123,8 @@ import 'primary_contact_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.account.PrimaryContact;
 /// import com.pulumi.aws.account.PrimaryContactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -124,7 +146,7 @@ import 'primary_contact_state.dart';
 ///             .phoneNumber("+64211111111")
 ///             .postalCode("98101")
 ///             .stateOrRegion("WA")
-///             .websiteUrl("https://www.examplecorp.com")
+///             .websiteUrl("https://www.example.com")
 ///             .build());
 ///
 ///     }
@@ -144,13 +166,13 @@ import 'primary_contact_state.dart';
 ///       phoneNumber: '+64211111111'
 ///       postalCode: '98101'
 ///       stateOrRegion: WA
-///       websiteUrl: https://www.examplecorp.com
+///       websiteUrl: https://www.example.com
 /// ```
 ///
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import the Primary Contact using the `account_id`. For example:
+/// Using `pulumi import`, import the Primary Contact using the `accountId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:account/primaryContact:PrimaryContact test 1234567890

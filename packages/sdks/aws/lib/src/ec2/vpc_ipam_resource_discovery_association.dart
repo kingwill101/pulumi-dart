@@ -78,6 +78,23 @@ import 'vpc_ipam_resource_discovery_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpcipamresourcediscoveryassociation" "test" {
+///   ipam_id                    = testAwsVpcIpam.id
+///   ipam_resource_discovery_id = testAwsVpcIpamResourceDiscovery.id
+///   tags = {
+///     "Name" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +103,8 @@ import 'vpc_ipam_resource_discovery_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.VpcIpamResourceDiscoveryAssociation;
 /// import com.pulumi.aws.ec2.VpcIpamResourceDiscoveryAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -148,7 +165,7 @@ class VpcIpamResourceDiscoveryAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> state;
   /// A map of tags to add to the IPAM resource discovery association resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [VpcIpamResourceDiscoveryAssociation].

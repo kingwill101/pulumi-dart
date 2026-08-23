@@ -25,7 +25,7 @@ class DeviceArgs {
   final pulumi.Input<String>? serialNumber;
   /// ID of the site.
   final pulumi.Input<String>? siteId;
-  /// Key-value tags for the device. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the device. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Type of device.
   final pulumi.Input<String>? type;
@@ -40,7 +40,7 @@ class DeviceArgs {
   /// [model] Model of device.
   /// [serialNumber] Serial number of the device.
   /// [siteId] ID of the site.
-  /// [tags] Key-value tags for the device. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value tags for the device. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] Type of device.
   /// [vendor] Vendor of the device.
   const DeviceArgs({
@@ -86,4 +86,3 @@ class DeviceArgs {
     );
   }
 }
-

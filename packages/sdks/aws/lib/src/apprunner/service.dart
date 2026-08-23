@@ -194,6 +194,49 @@ import 'service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apprunner_service" "example" {
+///   service_name = "example"
+///   source_configuration = {
+///     authentication_configuration = {
+///       connection_arn = exampleAwsApprunnerConnection.arn
+///     }
+///     code_repository = {
+///       code_configuration = {
+///         code_configuration_values = {
+///           build_command = "python setup.py develop"
+///           port          = "8000"
+///           runtime       = "PYTHON_3"
+///           start_command = "python runapp.py"
+///         }
+///         configuration_source = "API"
+///       }
+///       repository_url = "https://github.com/example/my-example-python-app"
+///       source_code_version = {
+///         type  = "BRANCH"
+///         value = "main"
+///       }
+///     }
+///   }
+///   network_configuration = {
+///     egress_configuration = {
+///       egress_type       = "VPC"
+///       vpc_connector_arn = connector.arn
+///     }
+///   }
+///   tags = {
+///     "Name" = "example-apprunner-service"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -210,8 +253,8 @@ import 'service_state.dart';
 /// import com.pulumi.aws.apprunner.inputs.ServiceSourceConfigurationCodeRepositorySourceCodeVersionArgs;
 /// import com.pulumi.aws.apprunner.inputs.ServiceNetworkConfigurationArgs;
 /// import com.pulumi.aws.apprunner.inputs.ServiceNetworkConfigurationEgressConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -397,6 +440,32 @@ import 'service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apprunner_service" "example" {
+///   service_name = "example"
+///   source_configuration = {
+///     image_repository = {
+///       image_configuration = {
+///         port = "8000"
+///       }
+///       image_identifier      = "public.ecr.aws/aws-containers/hello-app-runner:latest"
+///       image_repository_type = "ECR_PUBLIC"
+///     }
+///     auto_deployments_enabled = false
+///   }
+///   tags = {
+///     "Name" = "example-apprunner-service"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -408,8 +477,8 @@ import 'service_state.dart';
 /// import com.pulumi.aws.apprunner.inputs.ServiceSourceConfigurationArgs;
 /// import com.pulumi.aws.apprunner.inputs.ServiceSourceConfigurationImageRepositoryArgs;
 /// import com.pulumi.aws.apprunner.inputs.ServiceSourceConfigurationImageRepositoryImageConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -612,6 +681,42 @@ import 'service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apprunner_service" "example" {
+///   service_name = "example"
+///   observability_configuration = {
+///     observability_configuration_arn = aws_apprunner_observabilityconfiguration.example.arn
+///     observability_enabled           = true
+///   }
+///   source_configuration = {
+///     image_repository = {
+///       image_configuration = {
+///         port = "8000"
+///       }
+///       image_identifier      = "public.ecr.aws/aws-containers/hello-app-runner:latest"
+///       image_repository_type = "ECR_PUBLIC"
+///     }
+///     auto_deployments_enabled = false
+///   }
+///   tags = {
+///     "Name" = "example-apprunner-service"
+///   }
+/// }
+/// resource "aws_apprunner_observabilityconfiguration" "example" {
+///   observability_configuration_name = "example"
+///   trace_configuration = {
+///     vendor = "AWSXRAY"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -627,8 +732,8 @@ import 'service_state.dart';
 /// import com.pulumi.aws.apprunner.inputs.ServiceSourceConfigurationArgs;
 /// import com.pulumi.aws.apprunner.inputs.ServiceSourceConfigurationImageRepositoryArgs;
 /// import com.pulumi.aws.apprunner.inputs.ServiceSourceConfigurationImageRepositoryImageConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -716,33 +821,31 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// ARN of an App Runner automatic scaling configuration resource that you want to associate with your service. If not provided, App Runner associates the latest revision of a default auto scaling configuration.
   late final pulumi.Output<String> autoScalingConfigurationArn;
-  /// An optional custom encryption key that App Runner uses to encrypt the copy of your source repository that it maintains and your service logs. By default, App Runner uses an AWS managed CMK. See Encryption Configuration below for more details.
+  /// Custom encryption key that App Runner uses to encrypt the copy of your source repository that it maintains and your service logs. By default, App Runner uses an AWS managed CMK. See `encryptionConfiguration` below.
   late final pulumi.Output<ServiceEncryptionConfiguration?> encryptionConfiguration;
-  /// Settings of the health check that AWS App Runner performs to monitor the health of your service. See Health Check Configuration below for more details.
+  /// Settings of the health check that AWS App Runner performs to monitor the health of your service. See `healthCheckConfiguration` below.
   late final pulumi.Output<ServiceHealthCheckConfiguration> healthCheckConfiguration;
-  /// The runtime configuration of instances (scaling units) of the App Runner service. See Instance Configuration below for more details.
+  /// Runtime configuration of instances (scaling units) of the App Runner service. See `instanceConfiguration` below.
   late final pulumi.Output<ServiceInstanceConfiguration> instanceConfiguration;
-  /// Configuration settings related to network traffic of the web application that the App Runner service runs. See Network Configuration below for more details.
+  /// Configuration settings related to network traffic of the web application that the App Runner service runs. See `networkConfiguration` below.
   late final pulumi.Output<ServiceNetworkConfiguration> networkConfiguration;
-  /// The observability configuration of your service. See Observability Configuration below for more details.
+  /// Observability configuration of your service. See `observabilityConfiguration` below.
   late final pulumi.Output<ServiceObservabilityConfiguration?> observabilityConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// An alphanumeric ID that App Runner generated for this service. Unique within the AWS Region.
+  /// Alphanumeric ID that App Runner generated for this service. Unique within the AWS Region.
   late final pulumi.Output<String> serviceId;
   /// Name of the service.
   late final pulumi.Output<String> serviceName;
   /// Subdomain URL that App Runner generated for this service. You can use this URL to access your service web application.
   late final pulumi.Output<String> serviceUrl;
-  /// The source to deploy to the App Runner service. Can be a code or an image repository. See Source Configuration below for more details.
-  ///
-  /// The following arguments are optional:
+  /// Source to deploy to the App Runner service. Can be a code or an image repository. See `sourceConfiguration` below.
   late final pulumi.Output<ServiceSourceConfiguration> sourceConfiguration;
   /// Current state of the App Runner service.
   late final pulumi.Output<String> status;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Service].

@@ -154,7 +154,7 @@ import 'resource_policy_state.dart';
 /// 						map[string]interface{}{
 /// 							"Sid":    "test-pol-principals-6",
 /// 							"Effect": "Allow",
-/// 							"Principal": map[string]interface{}{
+/// 							"Principal": map[string]string{
 /// 								"AWS": fmt.Sprintf("arn:%v:iam::%v:root", currentGetPartition.Partition, current.AccountId),
 /// 							},
 /// 							"Action": []string{
@@ -180,6 +180,39 @@ import 'resource_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+///
+/// resource "aws_vpclattice_servicenetwork" "example" {
+///   name = "example-vpclattice-service-network"
+/// }
+/// resource "aws_vpclattice_resourcepolicy" "example" {
+///   resource_arn = aws_vpclattice_servicenetwork.example.arn
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Sid"    = "test-pol-principals-6"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:${data.aws_getpartition.currentGetPartition.partition}:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///       }
+///       "Action"   = ["vpc-lattice:CreateServiceNetworkVpcAssociation", "vpc-lattice:CreateServiceNetworkServiceAssociation", "vpc-lattice:GetServiceNetwork"]
+///       "Resource" = aws_vpclattice_servicenetwork.example.arn
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -194,8 +227,8 @@ import 'resource_policy_state.dart';
 /// import com.pulumi.aws.vpclattice.ResourcePolicy;
 /// import com.pulumi.aws.vpclattice.ResourcePolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -279,17 +312,17 @@ import 'resource_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import VPC Lattice Resource Policy using the `resource_arn`. For example:
+/// Using `pulumi import`, import VPC Lattice Resource Policy using the `resourceArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:vpclattice/resourcePolicy:ResourcePolicy example rft-8012925589
 /// ```
 class ResourcePolicy extends pulumi.CustomResource {
-  /// An IAM policy. The policy string in JSON must not contain newlines or blank lines.
+  /// IAM policy. The policy string in JSON must not contain newlines or blank lines.
   late final pulumi.Output<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The ID or Amazon Resource Name (ARN) of the service network or service for which the policy is created.
+  /// ID or Amazon Resource Name (ARN) of the service network or service for which the policy is created.
   late final pulumi.Output<String> resourceArn;
 
   /// Creates a new [ResourcePolicy].

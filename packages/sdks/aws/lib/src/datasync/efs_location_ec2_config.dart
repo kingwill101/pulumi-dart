@@ -30,4 +30,3 @@ class EfsLocationEc2Config {
     );
   }
 }
-

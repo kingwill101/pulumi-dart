@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_default_user_settings_code_editor_app_settings_app_lifecycle_management_idle_settings.dart';
 
 class DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement {
-  /// Settings related to idle shutdown of Studio applications. see `idle_settings` Block below.
+  /// Settings related to idle shutdown of Studio applications. see `idleSettings` Block below.
   final pulumi.Input<DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings>? idleSettings;
 
   /// Creates a new [DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement].
-  /// [idleSettings] Settings related to idle shutdown of Studio applications. see `idle_settings` Block below.
+  /// [idleSettings] Settings related to idle shutdown of Studio applications. see `idleSettings` Block below.
   const DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement({
     this.idleSettings,
   });
@@ -25,4 +25,3 @@ class DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement {
     );
   }
 }
-

@@ -53,6 +53,18 @@ import 'get_email_identity_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ses_getactivereceiptruleset" "main" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -61,8 +73,8 @@ import 'get_email_identity_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ses.SesFunctions;
 /// import com.pulumi.aws.ses.inputs.GetActiveReceiptRuleSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -156,6 +168,19 @@ Future<GetActiveReceiptRuleSetResult> getActiveReceiptRuleSet(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ses_getdomainidentity" "example" {
+///   domain = "example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -164,8 +189,8 @@ Future<GetActiveReceiptRuleSetResult> getActiveReceiptRuleSet(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ses.SesFunctions;
 /// import com.pulumi.aws.ses.inputs.GetDomainIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -261,6 +286,19 @@ Future<GetDomainIdentityResult> getDomainIdentity(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ses_getemailidentity" "example" {
+///   email = "awesome@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -269,8 +307,8 @@ Future<GetDomainIdentityResult> getDomainIdentity(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ses.SesFunctions;
 /// import com.pulumi.aws.ses.inputs.GetEmailIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

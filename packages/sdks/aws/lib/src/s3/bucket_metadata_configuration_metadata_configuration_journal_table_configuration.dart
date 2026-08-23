@@ -5,9 +5,9 @@ import 'bucket_metadata_configuration_metadata_configuration_journal_table_confi
 import 'bucket_metadata_configuration_metadata_configuration_journal_table_configuration_record_expiration.dart';
 
 class BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration {
-  /// Encryption configuration for the journal table. See `encryption_configuration` Block for details.
+  /// Encryption configuration for the journal table. See `encryptionConfiguration` Block for details.
   final pulumi.Input<BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration>? encryptionConfiguration;
-  /// Journal table record expiration settings. See `record_expiration` Block for details.
+  /// Journal table record expiration settings. See `recordExpiration` Block for details.
   final pulumi.Input<BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration> recordExpiration;
   /// Journal table ARN.
   final pulumi.Input<String>? tableArn;
@@ -15,8 +15,8 @@ class BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration 
   final pulumi.Input<String>? tableName;
 
   /// Creates a new [BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration].
-  /// [encryptionConfiguration] Encryption configuration for the journal table. See `encryption_configuration` Block for details.
-  /// [recordExpiration] Journal table record expiration settings. See `record_expiration` Block for details.
+  /// [encryptionConfiguration] Encryption configuration for the journal table. See `encryptionConfiguration` Block for details.
+  /// [recordExpiration] Journal table record expiration settings. See `recordExpiration` Block for details.
   /// [tableArn] Journal table ARN.
   /// [tableName] Journal table name.
   const BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration({
@@ -44,4 +44,3 @@ class BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration 
     );
   }
 }
-

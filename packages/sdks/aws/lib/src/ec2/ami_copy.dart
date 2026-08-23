@@ -88,6 +88,24 @@ import 'ami_copy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_amicopy" "example" {
+///   name              = "example"
+///   source_ami_id     = "ami-xxxxxxxx"
+///   source_ami_region = "us-west-1"
+///   tags = {
+///     "Name" = "HelloWorld"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +114,8 @@ import 'ami_copy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.AmiCopy;
 /// import com.pulumi.aws.ec2.AmiCopyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -131,7 +149,7 @@ import 'ami_copy_state.dart';
 ///         Name: HelloWorld
 /// ```
 class AmiCopy extends pulumi.CustomResource {
-  /// Machine architecture for created instances. Defaults to `x86_64`.
+  /// Machine architecture for created instances. Defaults to `x8664`.
   late final pulumi.Output<String> architecture;
   /// ARN of the AMI.
   late final pulumi.Output<String> arn;
@@ -185,7 +203,7 @@ class AmiCopy extends pulumi.CustomResource {
   late final pulumi.Output<String> rootDeviceName;
   late final pulumi.Output<String> rootSnapshotId;
   /// Id of the AMI to copy. This id must be valid in the region
-  /// given by `source_ami_region`.
+  /// given by `sourceAmiRegion`.
   late final pulumi.Output<String> sourceAmiId;
   /// Region from which the AMI will be copied. This may be the
   /// same as the AWS provider region in order to create a copy within the same region.
@@ -193,7 +211,7 @@ class AmiCopy extends pulumi.CustomResource {
   /// When set to "simple" (the default), enables enhanced networking
   /// for created instances. No other value is supported at this time.
   late final pulumi.Output<String> sriovNetSupport;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the Amazon Elastic Compute Cloud User Guide.

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_chat_message_content.dart';
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessage {
-  /// Contains the content for the message you pass to, or receive from a model. See [Message Content] for more information.
+  /// Contains the content for the message you pass to, or receive from a model. See Message Content for more information.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessageContent>? content;
   /// The role that the message belongs to.
   final pulumi.Input<String> role;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessage].
-  /// [content] Contains the content for the message you pass to, or receive from a model. See [Message Content] for more information.
+  /// [content] Contains the content for the message you pass to, or receive from a model. See Message Content for more information.
   /// [role] The role that the message belongs to.
   const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessage({
     this.content,
@@ -31,4 +31,3 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
     );
   }
 }
-

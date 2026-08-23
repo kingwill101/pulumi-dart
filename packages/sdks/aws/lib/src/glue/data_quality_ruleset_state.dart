@@ -21,11 +21,11 @@ class DataQualityRulesetState {
   final pulumi.Input<String>? region;
   /// A Data Quality Definition Language (DQDL) ruleset. For more information, see the AWS Glue developer guide.
   final pulumi.Input<String>? ruleset;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// A Configuration block specifying a target table associated with the data quality ruleset. See `target_table` below.
+  /// A Configuration block specifying a target table associated with the data quality ruleset. See `targetTable` below.
   final pulumi.Input<DataQualityRulesetTargetTable>? targetTable;
 
   /// Creates a new [DataQualityRulesetState].
@@ -37,9 +37,9 @@ class DataQualityRulesetState {
   /// [recommendationRunId] When a ruleset was created from a recommendation run, this run ID is generated to link the two together.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [ruleset] A Data Quality Definition Language (DQDL) ruleset. For more information, see the AWS Glue developer guide.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  /// [targetTable] A Configuration block specifying a target table associated with the data quality ruleset. See `target_table` below.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [targetTable] A Configuration block specifying a target table associated with the data quality ruleset. See `targetTable` below.
   const DataQualityRulesetState({
     this.arn,
     this.createdOn,
@@ -86,4 +86,3 @@ class DataQualityRulesetState {
     );
   }
 }
-

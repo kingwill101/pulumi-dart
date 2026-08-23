@@ -90,6 +90,26 @@ import 'template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_template" "example" {
+///   template_id         = "example-id"
+///   name                = "example-name"
+///   version_description = "version"
+///   source_entity = {
+///     source_template = {
+///       arn = source.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +120,8 @@ import 'template_state.dart';
 /// import com.pulumi.aws.quicksight.TemplateArgs;
 /// import com.pulumi.aws.quicksight.inputs.TemplateSourceEntityArgs;
 /// import com.pulumi.aws.quicksight.inputs.TemplateSourceEntitySourceTemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -387,16 +407,16 @@ import 'template_state.dart';
 /// 			TemplateId:         pulumi.String("example-id"),
 /// 			Name:               pulumi.String("example-name"),
 /// 			VersionDescription: pulumi.String("version"),
-/// 			Definition: map[string]interface{}{
+/// 			Definition: map[string][]map[string]interface{}{
 /// 				"dataSetConfigurations": []map[string]interface{}{
 /// 					map[string]interface{}{
-/// 						"dataSetSchema": map[string]interface{}{
-/// 							"columnSchemaLists": []map[string]interface{}{
-/// 								map[string]interface{}{
+/// 						"dataSetSchema": map[string][]map[string]string{
+/// 							"columnSchemaLists": []map[string]string{
+/// 								{
 /// 									"name":     "Column1",
 /// 									"dataType": "STRING",
 /// 								},
-/// 								map[string]interface{}{
+/// 								{
 /// 									"name":     "Column2",
 /// 									"dataType": "INTEGER",
 /// 								},
@@ -409,33 +429,33 @@ import 'template_state.dart';
 /// 					map[string]interface{}{
 /// 						"title":   "Test",
 /// 						"sheetId": "Test1",
-/// 						"visuals": []map[string]interface{}{
-/// 							map[string]interface{}{
+/// 						"visuals": []map[string]map[string]interface{}{
+/// 							map[string]map[string]interface{}{
 /// 								"barChartVisual": map[string]interface{}{
 /// 									"visualId": "BarChart",
-/// 									"chartConfiguration": map[string]interface{}{
-/// 										"fieldWells": map[string]interface{}{
-/// 											"barChartAggregatedFieldWells": map[string]interface{}{
-/// 												"categories": []map[string]interface{}{
-/// 													map[string]interface{}{
+/// 									"chartConfiguration": map[string]map[string]map[string][]map[string]map[string]interface{}{
+/// 										"fieldWells": map[string]map[string][]map[string]map[string]interface{}{
+/// 											"barChartAggregatedFieldWells": map[string][]map[string]map[string]interface{}{
+/// 												"categories": []map[string]map[string]interface{}{
+/// 													map[string]map[string]interface{}{
 /// 														"categoricalDimensionField": map[string]interface{}{
 /// 															"fieldId": "1",
-/// 															"column": map[string]interface{}{
+/// 															"column": map[string]string{
 /// 																"columnName":        "Column1",
 /// 																"dataSetIdentifier": "1",
 /// 															},
 /// 														},
 /// 													},
 /// 												},
-/// 												"values": []map[string]interface{}{
-/// 													map[string]interface{}{
+/// 												"values": []map[string]map[string]interface{}{
+/// 													map[string]map[string]interface{}{
 /// 														"numericalMeasureField": map[string]interface{}{
 /// 															"fieldId": "2",
-/// 															"column": map[string]interface{}{
+/// 															"column": map[string]string{
 /// 																"columnName":        "Column2",
 /// 																"dataSetIdentifier": "1",
 /// 															},
-/// 															"aggregationFunction": map[string]interface{}{
+/// 															"aggregationFunction": map[string]string{
 /// 																"simpleNumericalAggregation": "SUM",
 /// 															},
 /// 														},
@@ -458,6 +478,71 @@ import 'template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_template" "example" {
+///   template_id         = "example-id"
+///   name                = "example-name"
+///   version_description = "version"
+///   definition = {
+///     "dataSetConfigurations" = [{
+///       "dataSetSchema" = {
+///         "columnSchemaLists" = [{
+///           "name"     = "Column1"
+///           "dataType" = "STRING"
+///           }, {
+///           "name"     = "Column2"
+///           "dataType" = "INTEGER"
+///         }]
+///       }
+///       "placeholder" = "1"
+///     }]
+///     "sheets" = [{
+///       "title"   = "Test"
+///       "sheetId" = "Test1"
+///       "visuals" = [{
+///         "barChartVisual" = {
+///           "visualId" = "BarChart"
+///           "chartConfiguration" = {
+///             "fieldWells" = {
+///               "barChartAggregatedFieldWells" = {
+///                 "categories" = [{
+///                   "categoricalDimensionField" = {
+///                     "fieldId" = "1"
+///                     "column" = {
+///                       "columnName"        = "Column1"
+///                       "dataSetIdentifier" = "1"
+///                     }
+///                   }
+///                 }]
+///                 "values" = [{
+///                   "numericalMeasureField" = {
+///                     "fieldId" = "2"
+///                     "column" = {
+///                       "columnName"        = "Column2"
+///                       "dataSetIdentifier" = "1"
+///                     }
+///                     "aggregationFunction" = {
+///                       "simpleNumericalAggregation" = "SUM"
+///                     }
+///                   }
+///                 }]
+///               }
+///             }
+///           }
+///         }
+///       }]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -466,8 +551,8 @@ import 'template_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.quicksight.Template;
 /// import com.pulumi.aws.quicksight.TemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -484,8 +569,8 @@ import 'template_state.dart';
 ///             .name("example-name")
 ///             .versionDescription("version")
 ///             .definition(Map.ofEntries(
-///                 Map.entry("dataSetConfigurations", List.of(Map.ofEntries(
-///                     Map.entry("dataSetSchema", Map.of("columnSchemaLists", List.of(
+///                 Map.entry("dataSetConfigurations", Arrays.asList(Map.ofEntries(
+///                     Map.entry("dataSetSchema", Map.of("columnSchemaLists", Arrays.asList(
 ///                         Map.ofEntries(
 ///                             Map.entry("name", "Column1"),
 ///                             Map.entry("dataType", "STRING")
@@ -496,20 +581,20 @@ import 'template_state.dart';
 ///                         )))),
 ///                     Map.entry("placeholder", "1")
 ///                 ))),
-///                 Map.entry("sheets", List.of(Map.ofEntries(
+///                 Map.entry("sheets", Arrays.asList(Map.ofEntries(
 ///                     Map.entry("title", "Test"),
 ///                     Map.entry("sheetId", "Test1"),
-///                     Map.entry("visuals", List.of(Map.of("barChartVisual", Map.ofEntries(
+///                     Map.entry("visuals", Arrays.asList(Map.of("barChartVisual", Map.ofEntries(
 ///                         Map.entry("visualId", "BarChart"),
 ///                         Map.entry("chartConfiguration", Map.of("fieldWells", Map.of("barChartAggregatedFieldWells", Map.ofEntries(
-///                             Map.entry("categories", List.of(Map.of("categoricalDimensionField", Map.ofEntries(
+///                             Map.entry("categories", Arrays.asList(Map.of("categoricalDimensionField", Map.ofEntries(
 ///                                 Map.entry("fieldId", "1"),
 ///                                 Map.entry("column", Map.ofEntries(
 ///                                     Map.entry("columnName", "Column1"),
 ///                                     Map.entry("dataSetIdentifier", "1")
 ///                                 ))
 ///                             )))),
-///                             Map.entry("values", List.of(Map.of("numericalMeasureField", Map.ofEntries(
+///                             Map.entry("values", Arrays.asList(Map.of("numericalMeasureField", Map.ofEntries(
 ///                                 Map.entry("fieldId", "2"),
 ///                                 Map.entry("column", Map.ofEntries(
 ///                                     Map.entry("columnName", "Column2"),
@@ -591,15 +676,15 @@ class Template extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The entity that you are using as a source when you create the template (analysis or template). Only one of `definition` or `source_entity` should be configured. See source_entity.
+  /// The entity that you are using as a source when you create the template (analysis or template). Only one of `definition` or `sourceEntity` should be configured. See source_entity.
   late final pulumi.Output<TemplateSourceEntity?> sourceEntity;
   /// Amazon Resource Name (ARN) of an analysis or template that was used to create this template.
   late final pulumi.Output<String> sourceEntityArn;
   /// The template creation status.
   late final pulumi.Output<String> status;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Identifier for the template.
   late final pulumi.Output<String> templateId;

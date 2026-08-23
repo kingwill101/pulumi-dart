@@ -65,6 +65,21 @@ import 'domain_name_access_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_domainnameaccessassociation" "example" {
+///   access_association_source      = exampleAwsVpcEndpoint.id
+///   access_association_source_type = "VPCE"
+///   domain_name_arn                = exampleAwsApiGatewayDomainName.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'domain_name_access_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigateway.DomainNameAccessAssociation;
 /// import com.pulumi.aws.apigateway.DomainNameAccessAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -121,19 +136,19 @@ import 'domain_name_access_association_state.dart';
 /// $ pulumi import aws:apigateway/domainNameAccessAssociation:DomainNameAccessAssociation example arn:aws:apigateway:us-west-2:123456789012:/domainnameaccessassociations/domainname/12qmzgp2.9m7ilski.test+hykg7a12e7/vpcesource/vpce-05de3f8f82740a748
 /// ```
 class DomainNameAccessAssociation extends pulumi.CustomResource {
-  /// The identifier of the domain name access association source. For a `VPCE`, the value is the VPC endpoint ID.
+  /// Identifier of the domain name access association source. For a `VPCE`, the value is the VPC endpoint ID.
   late final pulumi.Output<String> accessAssociationSource;
-  /// The type of the domain name access association source. Valid values are `VPCE`.
+  /// Type of the domain name access association source. Valid values are `VPCE`.
   late final pulumi.Output<String> accessAssociationSourceType;
   /// ARN of the domain name access association.
   late final pulumi.Output<String> arn;
-  /// The ARN of the domain name.
+  /// ARN of the domain name.
   late final pulumi.Output<String> domainNameArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [DomainNameAccessAssociation].

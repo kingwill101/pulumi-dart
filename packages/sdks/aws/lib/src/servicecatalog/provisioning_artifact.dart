@@ -8,7 +8,7 @@ import 'provisioning_artifact_state.dart';
 ///
 /// &gt; **NOTE:** You cannot create a provisioning artifact for a product that was shared with you.
 ///
-/// &gt; **NOTE:** The user or role that use this resource must have the `cloudformation:GetTemplate` IAM policy permission. This policy permission is required when using the `template_physical_id` argument.
+/// &gt; **NOTE:** The user or role that use this resource must have the `cloudformation:GetTemplate` IAM policy permission. This policy permission is required when using the `templatePhysicalId` argument.
 ///
 /// ## Example Usage
 ///
@@ -77,6 +77,22 @@ import 'provisioning_artifact_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_servicecatalog_provisioningartifact" "example" {
+///   name         = "example"
+///   product_id   = exampleAwsServicecatalogProduct.id
+///   type         = "CLOUD_FORMATION_TEMPLATE"
+///   template_url ="https://${exampleAwsS3Bucket.bucketRegionalDomainName}/${exampleAwsS3Object.key}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +101,8 @@ import 'provisioning_artifact_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicecatalog.ProvisioningArtifact;
 /// import com.pulumi.aws.servicecatalog.ProvisioningArtifactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

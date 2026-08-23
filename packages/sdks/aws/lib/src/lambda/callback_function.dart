@@ -273,15 +273,15 @@ import 'function_vpc_config.dart';
 /// {{% /example %}}
 /// {{% /examples %}}
 class CallbackFunction extends pulumi.CustomResource {
-  /// Instruction set architecture for your Lambda function. Valid values are `["x86_64"]` and `["arm64"]`. Default is `["x86_64"]`. Removing this attribute, function's architecture stays the same.
+  /// Instruction set architecture for your Lambda function. Valid values are `["x8664"]` and `["arm64"]`. Default is `["x8664"]`. Removing this attribute, function's architecture stays the same.
   late final pulumi.Output<List<String>?> architectures;
   /// ARN identifying your Lambda Function.
   late final pulumi.Output<String?> arn;
   /// Configuration block for Lambda Capacity Provider. See below.
   late final pulumi.Output<FunctionCapacityProviderConfig?> capacityProviderConfig;
-  /// Path to the function's deployment package within the local filesystem. Conflicts with `image_uri` and `s3_bucket`. One of `filename`, `image_uri`, or `s3_bucket` must be specified.
+  /// Path to the function's deployment package within the local filesystem. Conflicts with `imageUri` and `s3Bucket`. One of `filename`, `imageUri`, or `s3Bucket` must be specified.
   late final pulumi.Output<dynamic> code;
-  /// Base64-encoded representation the source code package file. Use this argument to trigger updates when the function source code changes. For OCI, this value is relayed directly from the image digest. For zip files, this value is the Base64 encoded SHA-256 hash of the `.zip` file. Layers are not included in the calculation. To trigger updates using a non-standard hashing algorithm, use the `source_code_hash` argument instead.
+  /// Base64-encoded representation the source code package file. Use this argument to trigger updates when the function source code changes. For OCI, this value is relayed directly from the image digest. For zip files, this value is the Base64 encoded SHA-256 hash of the `.zip` file. Layers are not included in the calculation. To trigger updates using a non-standard hashing algorithm, use the `sourceCodeHash` argument instead.
   late final pulumi.Output<String?> codeSha256;
   /// ARN of a code-signing configuration to enable code signing for this function.
   late final pulumi.Output<String?> codeSigningConfigArn;
@@ -289,19 +289,19 @@ class CallbackFunction extends pulumi.CustomResource {
   late final pulumi.Output<FunctionDeadLetterConfig?> deadLetterConfig;
   /// Description of what your Lambda Function does.
   late final pulumi.Output<String?> description;
-  /// Configuration block for durable function settings. See below. `durable_config` may only be available in [limited regions](https://builder.aws.com/build/capabilities), including `us-east-2`.
+  /// Configuration block for durable function settings. See below. `durableConfig` may only be available in [limited regions](https://builder.aws.com/build/capabilities), including `us-east-2`.
   late final pulumi.Output<FunctionDurableConfig?> durableConfig;
   /// Configuration block for environment variables. See below.
   late final pulumi.Output<FunctionEnvironment?> environment;
   /// Amount of ephemeral storage (`/tmp`) to allocate for the Lambda Function. See below.
   late final pulumi.Output<FunctionEphemeralStorage?> ephemeralStorage;
-  /// Configuration block for EFS file system. See below.
+  /// Configuration block for EFS or S3 Files file system. See below.
   late final pulumi.Output<FunctionFileSystemConfig?> fileSystemConfig;
-  /// Function entry point in your code. Required if `package_type` is `Zip`.
+  /// Function entry point in your code. Required if `packageType` is `Zip`.
   late final pulumi.Output<String?> handler;
   /// Container image configuration values. See below.
   late final pulumi.Output<FunctionImageConfig?> imageConfig;
-  /// ECR image URI containing the function's deployment package. Conflicts with `filename` and `s3_bucket`. One of `filename`, `image_uri`, or `s3_bucket` must be specified.
+  /// ECR image URI containing the function's deployment package. Conflicts with `filename` and `s3Bucket`. One of `filename`, `imageUri`, or `s3Bucket` must be specified.
   late final pulumi.Output<String?> imageUri;
   /// ARN to be used for invoking Lambda Function from API Gateway - to be used in `aws.apigateway.Integration`'s `uri`.
   late final pulumi.Output<String?> invokeArn;
@@ -331,7 +331,7 @@ class CallbackFunction extends pulumi.CustomResource {
   late final pulumi.Output<String?> region;
   /// Whether to replace the security groups on the function's VPC configuration prior to destruction. Default is `false`.
   late final pulumi.Output<bool?> replaceSecurityGroupsOnDestroy;
-  /// List of security group IDs to assign to the function's VPC configuration prior to destruction. Required if `replace_security_groups_on_destroy` is `true`.
+  /// List of security group IDs to assign to the function's VPC configuration prior to destruction. Required if `replaceSecurityGroupsOnDestroy` is `true`.
   late final pulumi.Output<List<String>?> replacementSecurityGroupIds;
   /// Amount of reserved concurrent executions for this lambda function. A value of `0` disables lambda from being triggered and `-1` removes any concurrency limitations. Defaults to Unreserved Concurrency Limits `-1`.
   late final pulumi.Output<int?> reservedConcurrentExecutions;
@@ -343,13 +343,13 @@ class CallbackFunction extends pulumi.CustomResource {
   late final pulumi.Output<String?> role;
   /// The IAM role assigned to this Lambda function. Will be undefined if an ARN was provided for the role input property.
   late final pulumi.Output<String?> roleInstance;
-  /// Identifier of the function's runtime. Required if `package_type` is `Zip`. See [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-Runtime) for valid values.
+  /// Identifier of the function's runtime. Required if `packageType` is `Zip`. See [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-Runtime) for valid values.
   late final pulumi.Output<String?> runtime;
-  /// S3 bucket location containing the function's deployment package. Conflicts with `filename` and `image_uri`. One of `filename`, `image_uri`, or `s3_bucket` must be specified.
+  /// S3 bucket location containing the function's deployment package. Conflicts with `filename` and `imageUri`. One of `filename`, `imageUri`, or `s3Bucket` must be specified.
   late final pulumi.Output<String?> s3Bucket;
-  /// S3 key of an object containing the function's deployment package. Required if `s3_bucket` is set.
+  /// S3 key of an object containing the function's deployment package. Required if `s3Bucket` is set.
   late final pulumi.Output<String?> s3Key;
-  /// Object version containing the function's deployment package. Conflicts with `filename` and `image_uri`.
+  /// Object version containing the function's deployment package. Conflicts with `filename` and `imageUri`.
   late final pulumi.Output<String?> s3ObjectVersion;
   /// ARN of the signing job.
   late final pulumi.Output<String?> signingJobArn;
@@ -359,15 +359,15 @@ class CallbackFunction extends pulumi.CustomResource {
   late final pulumi.Output<bool?> skipDestroy;
   /// Configuration block for snap start settings. See below.
   late final pulumi.Output<FunctionSnapStart?> snapStart;
-  /// User-defined hash of the source code package file. Use this argument to trigger updates when the local function source code changes. This is a synthetic argument tracked only by the AWS provider and does not need to match the hashing algorithm used by Lambda to compute the `CodeSha256` response value. Out-of-band changes to the source code _will not_ be captured by this argument. To include out-of-band source code changes as an update trigger, use the `code_sha256` argument instead.
+  /// User-defined hash of the source code package file. Use this argument to trigger updates when the local function source code changes. This is a synthetic argument tracked only by the AWS provider and does not need to match the hashing algorithm used by Lambda to compute the `CodeSha256` response value. Out-of-band changes to the source code _will not_ be captured by this argument. To include out-of-band source code changes as an update trigger, use the `codeSha256` argument instead.
   late final pulumi.Output<String?> sourceCodeHash;
   /// Size in bytes of the function .zip file.
   late final pulumi.Output<int?> sourceCodeSize;
-  /// ARN of the AWS Key Management Service key used to encrypt the function's `.zip` deployment package. Conflicts with `image_uri`.
+  /// ARN of the AWS Key Management Service key used to encrypt the function's `.zip` deployment package. Conflicts with `imageUri`.
   late final pulumi.Output<String?> sourceKmsKeyArn;
-  /// Key-value map of tags for the Lambda function. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of tags for the Lambda function. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>?> tagsAll;
   /// Configuration block for Tenancy. See below.
   late final pulumi.Output<FunctionTenancyConfig?> tenancyConfig;
@@ -375,6 +375,8 @@ class CallbackFunction extends pulumi.CustomResource {
   late final pulumi.Output<int?> timeout;
   /// Configuration block for X-Ray tracing. See below.
   late final pulumi.Output<FunctionTracingConfig?> tracingConfig;
+  /// Whether to apply resource level timeout values while retrying eventually consistent API operations. By default the provider uses a 5 minute timeout to allow for propagation in the Lambda service. When set to `true`, this default value is replaced with the configurable resource timeouts. Increased timeout values may be useful in highly active accounts, or regions where propagation delays are inconsistent.
+  late final pulumi.Output<bool?> useResourceTimeoutForPropagation;
   /// Latest published version of your Lambda Function.
   late final pulumi.Output<String?> version;
   /// Configuration block for VPC. See below.
@@ -444,6 +446,7 @@ class CallbackFunction extends pulumi.CustomResource {
     tenancyConfig = registerOutput<FunctionTenancyConfig?>('tenancyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionTenancyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeout = registerOutput<int?>('timeout');
     tracingConfig = registerOutput<FunctionTracingConfig?>('tracingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionTracingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    useResourceTimeoutForPropagation = registerOutput<bool?>('useResourceTimeoutForPropagation');
     version = registerOutput<String?>('version');
     vpcConfig = registerOutput<FunctionVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

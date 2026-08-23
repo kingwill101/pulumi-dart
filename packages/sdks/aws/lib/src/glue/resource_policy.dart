@@ -152,6 +152,36 @@ import 'resource_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+/// data "aws_getregion" "currentGetRegion" {
+/// }
+/// data "aws_iam_getpolicydocument" "glue-example-policy" {
+///   statements {
+///     actions   = ["glue:CreateTable"]
+///     resources = ["arn:${data.aws_getpartition.currentGetPartition.partition}:glue:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:*"]
+///     principals {
+///       identifiers = ["*"]
+///       type        = "AWS"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_resourcepolicy" "example" {
+///   policy = data.aws_iam_getpolicydocument.glue-example-policy.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -164,10 +194,12 @@ import 'resource_policy_state.dart';
 /// import com.pulumi.aws.inputs.GetRegionArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.glue.ResourcePolicy;
 /// import com.pulumi.aws.glue.ResourcePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -242,6 +274,14 @@ import 'resource_policy_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import Glue Resource Policy using the region where the resource resides. For example:
 ///

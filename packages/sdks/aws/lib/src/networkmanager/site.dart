@@ -54,13 +54,28 @@ import 'site_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = networkmanager.NewSite(ctx, "example", &networkmanager.SiteArgs{
-/// 			GlobalNetworkId: example.ID(),
+/// 			GlobalNetworkId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_globalnetwork" "example" {
+/// }
+/// resource "aws_networkmanager_site" "example" {
+///   global_network_id = aws_networkmanager_globalnetwork.example.id
 /// }
 /// ```
 /// ```java
@@ -72,8 +87,8 @@ import 'site_state.dart';
 /// import com.pulumi.aws.networkmanager.GlobalNetwork;
 /// import com.pulumi.aws.networkmanager.Site;
 /// import com.pulumi.aws.networkmanager.SiteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -124,9 +139,9 @@ class Site extends pulumi.CustomResource {
   late final pulumi.Output<String> globalNetworkId;
   /// Site location. See below.
   late final pulumi.Output<SiteLocation?> location;
-  /// Key-value tags for the Site. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the Site. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Site].

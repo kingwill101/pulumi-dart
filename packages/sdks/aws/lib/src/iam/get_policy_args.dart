@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iam_get_policy_get_policy_args_doc}
 class GetPolicyArgs {
   /// ARN of the IAM policy.
-  /// Conflicts with `name` and `path_prefix`.
+  /// Conflicts with `name` and `pathPrefix`.
   final pulumi.Input<String>? arn;
   /// Name of the IAM policy.
   /// Conflicts with `arn`.
@@ -50,4 +50,3 @@ class GetPolicyArgs {
     );
   }
 }
-

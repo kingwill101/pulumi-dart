@@ -72,6 +72,19 @@ import 'get_log_groups_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudwatch_getcontributormanagedinsightrules" "example" {
+///   resource_arn = "arn:aws:ec2:us-west-2:123456789012:resource-name/resourceid"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +93,8 @@ import 'get_log_groups_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudwatch.CloudwatchFunctions;
 /// import com.pulumi.aws.cloudwatch.inputs.GetContributorManagedInsightRulesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -179,6 +192,19 @@ Future<GetContributorManagedInsightRulesResult> getContributorManagedInsightRule
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudwatch_geteventbus" "example" {
+///   name = "example-bus-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -187,8 +213,8 @@ Future<GetContributorManagedInsightRulesResult> getContributorManagedInsightRule
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudwatch.CloudwatchFunctions;
 /// import com.pulumi.aws.cloudwatch.inputs.GetEventBusArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -286,6 +312,19 @@ Future<GetEventBusResult> getEventBus(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudwatch_geteventbuses" "example" {
+///   name_prefix = "test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -294,8 +333,8 @@ Future<GetEventBusResult> getEventBus(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudwatch.CloudwatchFunctions;
 /// import com.pulumi.aws.cloudwatch.inputs.GetEventBusesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -393,6 +432,19 @@ Future<GetEventBusesResult> getEventBuses(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudwatch_geteventconnection" "test" {
+///   name = "test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -401,8 +453,8 @@ Future<GetEventBusesResult> getEventBuses(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudwatch.CloudwatchFunctions;
 /// import com.pulumi.aws.cloudwatch.inputs.GetEventConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -456,14 +508,14 @@ Future<GetEventConnectionResult> getEventConnection(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const examplepartner = aws.cloudwatch.getEventSource({
-///     namePrefix: "aws.partner/examplepartner.com",
+///     namePrefix: "aws.partner/example.com",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// examplepartner = aws.cloudwatch.get_event_source(name_prefix="aws.partner/examplepartner.com")
+/// examplepartner = aws.cloudwatch.get_event_source(name_prefix="aws.partner/example.com")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -475,7 +527,7 @@ Future<GetEventConnectionResult> getEventConnection(
 /// {
 ///     var examplepartner = Aws.CloudWatch.GetEventSource.Invoke(new()
 ///     {
-///         NamePrefix = "aws.partner/examplepartner.com",
+///         NamePrefix = "aws.partner/example.com",
 ///     });
 ///
 /// });
@@ -491,13 +543,26 @@ Future<GetEventConnectionResult> getEventConnection(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudwatch.GetEventSource(ctx, &cloudwatch.GetEventSourceArgs{
-/// 			NamePrefix: pulumi.StringRef("aws.partner/examplepartner.com"),
+/// 			NamePrefix: pulumi.StringRef("aws.partner/example.com"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudwatch_geteventsource" "examplepartner" {
+///   name_prefix = "aws.partner/example.com"
 /// }
 /// ```
 /// ```java
@@ -508,8 +573,8 @@ Future<GetEventConnectionResult> getEventConnection(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudwatch.CloudwatchFunctions;
 /// import com.pulumi.aws.cloudwatch.inputs.GetEventSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -522,7 +587,7 @@ Future<GetEventConnectionResult> getEventConnection(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var examplepartner = CloudwatchFunctions.getEventSource(GetEventSourceArgs.builder()
-///             .namePrefix("aws.partner/examplepartner.com")
+///             .namePrefix("aws.partner/example.com")
 ///             .build());
 ///
 ///     }
@@ -534,7 +599,7 @@ Future<GetEventConnectionResult> getEventConnection(
 ///     fn::invoke:
 ///       function: aws:cloudwatch:getEventSource
 ///       arguments:
-///         namePrefix: aws.partner/examplepartner.com
+///         namePrefix: aws.partner/example.com
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudwatch_get_event_source_get_event_source_args_doc}
 /// [options] Invoke options controlling this call.
@@ -784,6 +849,52 @@ Future<GetEventSourceResult> getEventSource(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudwatch_getlogdataprotectionpolicydocument" "example" {
+///   name = "Example"
+///   statements {
+///     sid              = "Audit"
+///     data_identifiers = ["arn:aws:dataprotection::aws:data-identifier/EmailAddress", "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US"]
+///     operation = {
+///       audit = {
+///         findings_destination = {
+///           cloudwatch_logs = {
+///             log_group = audit.name
+///           }
+///           firehose = {
+///             delivery_stream = auditAwsKinesisFirehoseDeliveryStream.name
+///           }
+///           s3 = {
+///             bucket = auditAwsS3Bucket.bucket
+///           }
+///         }
+///       }
+///     }
+///   }
+///   statements {
+///     sid              = "Deidentify"
+///     data_identifiers = ["arn:aws:dataprotection::aws:data-identifier/EmailAddress", "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US"]
+///     operation = {
+///       deidentify = {
+///         mask_config = {}
+///       }
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_logdataprotectionpolicy" "example" {
+///   log_group_name  = exampleAwsCloudwatchLogGroup.name
+///   policy_document = data.aws_cloudwatch_getlogdataprotectionpolicydocument.example.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -792,10 +903,19 @@ Future<GetEventSourceResult> getEventSource(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudwatch.CloudwatchFunctions;
 /// import com.pulumi.aws.cloudwatch.inputs.GetLogDataProtectionPolicyDocumentArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.GetLogDataProtectionPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.GetLogDataProtectionPolicyDocumentStatementOperationArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.GetLogDataProtectionPolicyDocumentStatementOperationAuditArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationCloudwatchLogsArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationFirehoseArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationS3Args;
+/// import com.pulumi.aws.cloudwatch.inputs.GetLogDataProtectionPolicyDocumentStatementOperationDeidentifyArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.GetLogDataProtectionPolicyDocumentStatementOperationDeidentifyMaskConfigArgs;
 /// import com.pulumi.aws.cloudwatch.LogDataProtectionPolicy;
 /// import com.pulumi.aws.cloudwatch.LogDataProtectionPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -958,6 +1078,19 @@ Future<GetLogDataProtectionPolicyDocumentResult> getLogDataProtectionPolicyDocum
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudwatch_getloggroup" "example" {
+///   name = "MyImportantLogs"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -966,8 +1099,8 @@ Future<GetLogDataProtectionPolicyDocumentResult> getLogDataProtectionPolicyDocum
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudwatch.CloudwatchFunctions;
 /// import com.pulumi.aws.cloudwatch.inputs.GetLogGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1063,6 +1196,19 @@ Future<GetLogGroupResult> getLogGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudwatch_getloggroups" "example" {
+///   log_group_name_prefix = "/MyImportantLogs"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1071,8 +1217,8 @@ Future<GetLogGroupResult> getLogGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudwatch.CloudwatchFunctions;
 /// import com.pulumi.aws.cloudwatch.inputs.GetLogGroupsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

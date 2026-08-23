@@ -9,30 +9,32 @@ import 'app_monitor_custom_events.dart';
 /// {@endtemplate}
 /// {@macro pulumi_rum_app_monitor_app_monitor_args_doc}
 class AppMonitorArgs {
-  /// configuration data for the app monitor. See app_monitor_configuration below.
+  /// configuration data for the app monitor. See appMonitorConfiguration below.
   final pulumi.Input<AppMonitorAppMonitorConfiguration>? appMonitorConfiguration;
-  /// Specifies whether this app monitor allows the web client to define and send custom events. If you omit this parameter, custom events are `DISABLED`. See custom_events below.
+  /// Specifies whether this app monitor allows the web client to define and send custom events. If you omit this parameter, custom events are `DISABLED`. See customEvents below.
   final pulumi.Input<AppMonitorCustomEvents>? customEvents;
   /// Data collected by RUM is kept by RUM for 30 days and then deleted. This parameter specifies whether RUM sends a copy of this telemetry data to Amazon CloudWatch Logs in your account. This enables you to keep the telemetry data for more than 30 days, but it does incur Amazon CloudWatch Logs charges. Default value is `false`.
   final pulumi.Input<bool>? cwLogEnabled;
+  /// The top-level internet domain name for which your application has administrative authority. Exactly one of `domain` or `domainList` must be specified.
   final pulumi.Input<String>? domain;
+  /// A list of internet domain names for which your application has administrative authority. Exactly one of `domain` or `domainList` must be specified.
   final pulumi.Input<List<String>>? domainLists;
   /// The name of the log stream.
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [AppMonitorArgs].
-  /// [appMonitorConfiguration] configuration data for the app monitor. See app_monitor_configuration below.
-  /// [customEvents] Specifies whether this app monitor allows the web client to define and send custom events. If you omit this parameter, custom events are `DISABLED`. See custom_events below.
+  /// [appMonitorConfiguration] configuration data for the app monitor. See appMonitorConfiguration below.
+  /// [customEvents] Specifies whether this app monitor allows the web client to define and send custom events. If you omit this parameter, custom events are `DISABLED`. See customEvents below.
   /// [cwLogEnabled] Data collected by RUM is kept by RUM for 30 days and then deleted. This parameter specifies whether RUM sends a copy of this telemetry data to Amazon CloudWatch Logs in your account. This enables you to keep the telemetry data for more than 30 days, but it does incur Amazon CloudWatch Logs charges. Default value is `false`.
-  /// [domain] Optional.
-  /// [domainLists] Optional.
+  /// [domain] The top-level internet domain name for which your application has administrative authority. Exactly one of `domain` or `domainList` must be specified.
+  /// [domainLists] A list of internet domain names for which your application has administrative authority. Exactly one of `domain` or `domainList` must be specified.
   /// [name] The name of the log stream.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const AppMonitorArgs({
     this.appMonitorConfiguration,
     this.customEvents,
@@ -70,4 +72,3 @@ class AppMonitorArgs {
     );
   }
 }
-

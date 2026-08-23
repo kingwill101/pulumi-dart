@@ -135,6 +135,32 @@ import 'insight_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_account" "example" {
+/// }
+/// resource "aws_securityhub_insight" "example" {
+///   depends_on = [aws_securityhub_account.example]
+///   filters = {
+///     aws_account_ids = [{
+///       "comparison" = "EQUALS"
+///       "value"      = "1234567890"
+///       }, {
+///       "comparison" = "EQUALS"
+///       "value"      = "09876543210"
+///     }]
+///   }
+///   group_by_attribute = "AwsAccountId"
+///   name               = "example-insight"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -145,9 +171,10 @@ import 'insight_state.dart';
 /// import com.pulumi.aws.securityhub.Insight;
 /// import com.pulumi.aws.securityhub.InsightArgs;
 /// import com.pulumi.aws.securityhub.inputs.InsightFiltersArgs;
+/// import com.pulumi.aws.securityhub.inputs.InsightFiltersAwsAccountIdArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -320,6 +347,31 @@ import 'insight_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_account" "example" {
+/// }
+/// resource "aws_securityhub_insight" "example" {
+///   depends_on = [aws_securityhub_account.example]
+///   filters = {
+///     created_ats = [{
+///       "dateRange" = {
+///         "unit"  = "DAYS"
+///         "value" = 5
+///       }
+///     }]
+///   }
+///   group_by_attribute = "CreatedAt"
+///   name               = "example-insight"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -330,9 +382,11 @@ import 'insight_state.dart';
 /// import com.pulumi.aws.securityhub.Insight;
 /// import com.pulumi.aws.securityhub.InsightArgs;
 /// import com.pulumi.aws.securityhub.inputs.InsightFiltersArgs;
+/// import com.pulumi.aws.securityhub.inputs.InsightFiltersCreatedAtArgs;
+/// import com.pulumi.aws.securityhub.inputs.InsightFiltersCreatedAtDateRangeArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -488,6 +542,28 @@ import 'insight_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_account" "example" {
+/// }
+/// resource "aws_securityhub_insight" "example" {
+///   depends_on = [aws_securityhub_account.example]
+///   filters = {
+///     network_destination_ipv4s = [{
+///       "cidr" = "10.0.0.0/16"
+///     }]
+///   }
+///   group_by_attribute = "NetworkDestinationIpV4"
+///   name               = "example-insight"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -498,9 +574,10 @@ import 'insight_state.dart';
 /// import com.pulumi.aws.securityhub.Insight;
 /// import com.pulumi.aws.securityhub.InsightArgs;
 /// import com.pulumi.aws.securityhub.inputs.InsightFiltersArgs;
+/// import com.pulumi.aws.securityhub.inputs.InsightFiltersNetworkDestinationIpv4Args;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -651,6 +728,28 @@ import 'insight_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_account" "example" {
+/// }
+/// resource "aws_securityhub_insight" "example" {
+///   depends_on = [aws_securityhub_account.example]
+///   filters = {
+///     confidences = [{
+///       "gte" = "80"
+///     }]
+///   }
+///   group_by_attribute = "Confidence"
+///   name               = "example-insight"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -661,9 +760,10 @@ import 'insight_state.dart';
 /// import com.pulumi.aws.securityhub.Insight;
 /// import com.pulumi.aws.securityhub.InsightArgs;
 /// import com.pulumi.aws.securityhub.inputs.InsightFiltersArgs;
+/// import com.pulumi.aws.securityhub.inputs.InsightFiltersConfidenceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -822,6 +922,30 @@ import 'insight_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_account" "example" {
+/// }
+/// resource "aws_securityhub_insight" "example" {
+///   depends_on = [aws_securityhub_account.example]
+///   filters = {
+///     resource_tags = [{
+///       "comparison" = "EQUALS"
+///       "key"        = "Environment"
+///       "value"      = "Production"
+///     }]
+///   }
+///   group_by_attribute = "ResourceTags"
+///   name               = "example-insight"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -832,9 +956,10 @@ import 'insight_state.dart';
 /// import com.pulumi.aws.securityhub.Insight;
 /// import com.pulumi.aws.securityhub.InsightArgs;
 /// import com.pulumi.aws.securityhub.inputs.InsightFiltersArgs;
+/// import com.pulumi.aws.securityhub.inputs.InsightFiltersResourceTagArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -888,7 +1013,14 @@ import 'insight_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Security Hub insights using the ARN. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `arn` (String) Security Hub custom insight ARN.
+///
+///
+/// Using `pulumi import`, import Security Hub custom insights using `arn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:securityhub/insight:Insight example arn:aws:securityhub:us-west-2:1234567890:insight/1234567890/custom/91299ed7-abd0-4e44-a858-d0b15e37141a

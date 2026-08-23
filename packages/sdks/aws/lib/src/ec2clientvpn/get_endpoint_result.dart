@@ -7,6 +7,7 @@ import 'get_endpoint_client_login_banner_option.dart';
 import 'get_endpoint_client_route_enforcement_option.dart';
 import 'get_endpoint_connection_log_option.dart';
 import 'get_endpoint_filter.dart';
+import 'get_endpoint_transit_gateway_configuration.dart';
 
 /// Result data returned by getEndpoint.
 class GetEndpointResult {
@@ -52,6 +53,8 @@ class GetEndpointResult {
   final Map<String, String> tags;
   /// IP address type for traffic within the Client VPN tunnel.
   final String trafficIpAddressType;
+  /// ID of the Transit Gateway to which the Client VPN endpoint is associated.
+  final List<GetEndpointTransitGatewayConfiguration> transitGatewayConfigurations;
   /// Transport protocol used by the Client VPN endpoint.
   final String transportProtocol;
   /// ID of the VPC associated with the Client VPN endpoint.
@@ -83,6 +86,7 @@ class GetEndpointResult {
   /// [splitTunnel] Whether split-tunnel is enabled in the AWS Client VPN endpoint.
   /// [tags] Required.
   /// [trafficIpAddressType] IP address type for traffic within the Client VPN tunnel.
+  /// [transitGatewayConfigurations] ID of the Transit Gateway to which the Client VPN endpoint is associated.
   /// [transportProtocol] Transport protocol used by the Client VPN endpoint.
   /// [vpcId] ID of the VPC associated with the Client VPN endpoint.
   /// [vpnPort] Port number for the Client VPN endpoint.
@@ -110,6 +114,7 @@ class GetEndpointResult {
     required this.splitTunnel,
     required this.tags,
     required this.trafficIpAddressType,
+    required this.transitGatewayConfigurations,
     required this.transportProtocol,
     required this.vpcId,
     required this.vpnPort,
@@ -140,6 +145,7 @@ class GetEndpointResult {
       'splitTunnel': splitTunnel,
       'tags': tags,
       'trafficIpAddressType': trafficIpAddressType,
+      'transitGatewayConfigurations': pulumi.Input.encodeList<GetEndpointTransitGatewayConfiguration, Map<String, dynamic>>(transitGatewayConfigurations, (value) => value.toMap()),
       'transportProtocol': transportProtocol,
       'vpcId': vpcId,
       'vpnPort': vpnPort,
@@ -171,10 +177,10 @@ class GetEndpointResult {
       splitTunnel: map['splitTunnel'] as bool,
       tags: (map['tags'] as Map).cast<String, String>(),
       trafficIpAddressType: map['trafficIpAddressType'] as String,
+      transitGatewayConfigurations: pulumi.Input.decodeList<GetEndpointTransitGatewayConfiguration>(map['transitGatewayConfigurations']!, (value) => GetEndpointTransitGatewayConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       transportProtocol: map['transportProtocol'] as String,
       vpcId: map['vpcId'] as String,
       vpnPort: map['vpnPort'] as int,
     );
   }
 }
-

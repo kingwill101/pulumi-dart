@@ -30,4 +30,3 @@ class BucketAclV2AccessControlPolicyOwner {
     );
   }
 }
-

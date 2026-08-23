@@ -104,6 +104,30 @@ import 'data_integration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appintegrations_dataintegration" "example" {
+///   name        = "example"
+///   description = "example"
+///   kms_key     = test.arn
+///   source_uri  = "Salesforce://AppFlow/example"
+///   schedule_config = {
+///     first_execution_from = "1439788442681"
+///     object               = "Account"
+///     schedule_expression  = "rate(1 hour)"
+///   }
+///   tags = {
+///     "Key1" = "Value1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +137,8 @@ import 'data_integration_state.dart';
 /// import com.pulumi.aws.appintegrations.DataIntegration;
 /// import com.pulumi.aws.appintegrations.DataIntegrationArgs;
 /// import com.pulumi.aws.appintegrations.inputs.DataIntegrationScheduleConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -168,23 +192,23 @@ import 'data_integration_state.dart';
 /// $ pulumi import aws:appintegrations/dataIntegration:DataIntegration example 12345678-1234-1234-1234-123456789123
 /// ```
 class DataIntegration extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the Data Integration.
+  /// Amazon Resource Name (ARN) of the Data Integration.
   late final pulumi.Output<String> arn;
-  /// Specifies the description of the Data Integration.
+  /// Description of the Data Integration.
   late final pulumi.Output<String?> description;
-  /// Specifies the KMS key Amazon Resource Name (ARN) for the Data Integration.
+  /// KMS key Amazon Resource Name (ARN) for the Data Integration.
   late final pulumi.Output<String> kmsKey;
-  /// Specifies the name of the Data Integration.
+  /// Name of the Data Integration.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A block that defines the name of the data and how often it should be pulled from the source. The Schedule Config block is documented below.
+  /// Configuration block that defines the name of the data and how often it should be pulled from the source. See `scheduleConfig` Block for details.
   late final pulumi.Output<DataIntegrationScheduleConfig> scheduleConfig;
-  /// Specifies the URI of the data source. Create an AppFlow Connector Profile and reference the name of the profile in the URL. An example of this value for Salesforce is `Salesforce://AppFlow/example` where `example` is the name of the AppFlow Connector Profile.
+  /// URI of the data source. Create an AppFlow Connector Profile and reference the name of the profile in the URL. An example of this value for Salesforce is `Salesforce://AppFlow/example` where `example` is the name of the AppFlow Connector Profile.
   late final pulumi.Output<String> sourceUri;
-  /// Tags to apply to the Data Integration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the Data Integration. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [DataIntegration].

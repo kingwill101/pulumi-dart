@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader {
-  /// List of item names (`cookies`, `headers`, or `query_strings`).
+  /// List of item names (`cookies`, `headers`, or `queryStrings`).
   final pulumi.Input<List<String>> items;
 
   /// Creates a new [GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader].
-  /// [items] List of item names (`cookies`, `headers`, or `query_strings`).
+  /// [items] List of item names (`cookies`, `headers`, or `queryStrings`).
   const GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader({
     required this.items,
   });
@@ -24,4 +24,3 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader 
     );
   }
 }
-

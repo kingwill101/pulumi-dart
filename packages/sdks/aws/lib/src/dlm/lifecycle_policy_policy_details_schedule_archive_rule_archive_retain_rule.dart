@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lifecycle_policy_policy_details_schedule_archive_rule_archive_retain_rule_retention_archive_tier.dart';
 
 class LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule {
-  /// Information about retention period in the Amazon EBS Snapshots Archive. See the `retention_archive_tier` block.
+  /// Information about retention period in the Amazon EBS Snapshots Archive. See the `retentionArchiveTier` block.
   final pulumi.Input<LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionArchiveTier> retentionArchiveTier;
 
   /// Creates a new [LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule].
-  /// [retentionArchiveTier] Information about retention period in the Amazon EBS Snapshots Archive. See the `retention_archive_tier` block.
+  /// [retentionArchiveTier] Information about retention period in the Amazon EBS Snapshots Archive. See the `retentionArchiveTier` block.
   const LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule({
     required this.retentionArchiveTier,
   });
@@ -25,4 +25,3 @@ class LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule {
     );
   }
 }
-

@@ -32,7 +32,7 @@ class LabelingJobArgs {
   final pulumi.Input<String> roleArn;
   /// Conditions for stopping a labeling job. If any of the conditions are met, the job is automatically stopped. Fields are documented below.
   final pulumi.Input<List<LabelingJobStoppingCondition>>? stoppingConditions;
-  /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [LabelingJobArgs].
@@ -46,7 +46,7 @@ class LabelingJobArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] ARN of IAM role that Amazon SageMaker assumes to perform tasks during data labeling.
   /// [stoppingConditions] Conditions for stopping a labeling job. If any of the conditions are met, the job is automatically stopped. Fields are documented below.
-  /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const LabelingJobArgs({
     required this.humanTaskConfig,
     required this.inputConfig,
@@ -93,4 +93,3 @@ class LabelingJobArgs {
     );
   }
 }
-

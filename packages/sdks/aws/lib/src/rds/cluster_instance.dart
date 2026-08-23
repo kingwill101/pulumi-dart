@@ -9,10 +9,10 @@ import 'engine_type.dart';
 ///
 /// Unlike other RDS resources that support replication, with Amazon Aurora you do
 /// not designate a primary and subsequent replicas. Instead, you simply add RDS
-/// Instances and Aurora manages the replication. You can use the [count][5]
+/// Instances and Aurora manages the replication. You can use the count
 /// meta-parameter to make multiple instances and join them all to the same RDS
 /// Cluster, or you may specify different Cluster Instance resources with various
-/// `instance_class` sizes.
+/// `instanceClass` sizes.
 ///
 /// For more information on Amazon Aurora, see [Aurora on Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html) in the Amazon RDS User Guide.
 ///
@@ -39,9 +39,9 @@ import 'engine_type.dart';
 ///     masterPassword: "barbut8chars",
 /// });
 /// const clusterInstances: aws.rds.ClusterInstance[] = [];
-/// for (const range = {value: 0}; range.value < 2; range.value++) {
-///     clusterInstances.push(new aws.rds.ClusterInstance(`cluster_instances-${range.value}`, {
-///         identifier: `aurora-cluster-demo-${range.value}`,
+/// for (let range = 0; range < 2; range++) {
+///     clusterInstances.push(new aws.rds.ClusterInstance(`cluster_instances-${range}`, {
+///         identifier: `aurora-cluster-demo-${range}`,
 ///         clusterIdentifier: _default.id,
 ///         instanceClass: aws.rds.InstanceType.R4_Large,
 ///         engine: _default.engine.apply((x) => aws.rds.EngineType[x]),
@@ -51,6 +51,7 @@ import 'engine_type.dart';
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 ///
 /// default = aws.rds.Cluster("default",
@@ -63,10 +64,10 @@ import 'engine_type.dart';
 ///     database_name="mydb",
 ///     master_username="foo",
 ///     master_password="barbut8chars")
-/// cluster_instances = []
-/// for range in [{"value": i} for i in range(0, 2)]:
-///     cluster_instances.append(aws.rds.ClusterInstance(f"cluster_instances-{range['value']}",
-///         identifier=f"aurora-cluster-demo-{range['value']}",
+/// cluster_instances: list[aws.rds.ClusterInstance] = []
+/// for cluster_instances_range in [{"value": i} for i in range(0, 2)]:
+///     cluster_instances.append(aws.rds.ClusterInstance(f"cluster_instances-{cluster_instances_range['value']}",
+///         identifier=f"aurora-cluster-demo-{cluster_instances_range['value']}",
 ///         cluster_identifier=default.id,
 ///         instance_class=aws.rds.InstanceType.R4_LARGE,
 ///         engine=default.engine.apply(lambda x: aws.rds.EngineType(x)),
@@ -141,7 +142,7 @@ import 'engine_type.dart';
 /// 			val0 := index
 /// 			__res, err := rds.NewClusterInstance(ctx, fmt.Sprintf("cluster_instances-%v", key0), &rds.ClusterInstanceArgs{
 /// 				Identifier:        pulumi.Sprintf("aurora-cluster-demo-%v", val0),
-/// 				ClusterIdentifier: _default.ID(),
+/// 				ClusterIdentifier: _default.ID().ToIDOutput().ToStringOutput(),
 /// 				InstanceClass:     pulumi.String(rds.InstanceType_R4_Large),
 /// 				Engine:            _default.Engine.ApplyT(func(x *string) rds.EngineType { return rds.EngineType(*x) }).(rds.EngineTypeOutput),
 /// 				EngineVersion:     _default.EngineVersion,
@@ -155,6 +156,31 @@ import 'engine_type.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_clusterinstance" "cluster_instances" {
+///   count              = 2
+///   identifier         ="aurora-cluster-demo-${count.index}"
+///   cluster_identifier = aws_rds_cluster.default.id
+///   instance_class     = "db.r4.large"
+///   engine             = aws_rds_cluster.default.engine
+///   engine_version     = aws_rds_cluster.default.engine_version
+/// }
+/// resource "aws_rds_cluster" "default" {
+///   cluster_identifier = "aurora-cluster-demo"
+///   availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]
+///   database_name      = "mydb"
+///   master_username    = "foo"
+///   master_password    = "barbut8chars"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -166,8 +192,8 @@ import 'engine_type.dart';
 /// import com.pulumi.aws.rds.ClusterInstance;
 /// import com.pulumi.aws.rds.ClusterInstanceArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -256,7 +282,7 @@ class ClusterInstance extends pulumi.CustomResource {
   late final pulumi.Output<String?> customIamInstanceProfile;
   /// Name of the DB parameter group to associate with this instance.
   late final pulumi.Output<String> dbParameterGroupName;
-  /// Specifies the DB subnet group to associate with this DB instance. The default behavior varies depending on whether `db_subnet_group_name` is specified. Please refer to official [AWS documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-db-instance.html) to understand how `db_subnet_group_name` and `publicly_accessible` parameters affect DB instance behaviour. **NOTE:** This must match the `db_subnet_group_name` of the attached `aws.rds.Cluster`.
+  /// Specifies the DB subnet group to associate with this DB instance. The default behavior varies depending on whether `dbSubnetGroupName` is specified. Please refer to official [AWS documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-db-instance.html) to understand how `dbSubnetGroupName` and `publiclyAccessible` parameters affect DB instance behaviour. **NOTE:** This must match the `dbSubnetGroupName` of the attached `aws.rds.Cluster`.
   late final pulumi.Output<String> dbSubnetGroupName;
   /// Region-unique, immutable identifier for the DB instance.
   late final pulumi.Output<String> dbiResourceId;
@@ -265,7 +291,7 @@ class ClusterInstance extends pulumi.CustomResource {
   /// Name of the database engine to be used for the RDS cluster instance.
   /// Valid Values: `aurora-mysql`, `aurora-postgresql`, `mysql`, `postgres`.(Note that `mysql` and `postgres` are Multi-AZ RDS clusters).
   late final pulumi.Output<EngineType> engine;
-  /// Database engine version. Please note that to upgrade the `engine_version` of the instance, it must be done on the `aws.rds.Cluster` `engine_version`. Trying to upgrade in `aws_cluster_instance` will not update the `engine_version`.
+  /// Database engine version. Please note that to upgrade the `engineVersion` of the instance, it must be done on the `aws.rds.Cluster` `engineVersion`. Trying to upgrade in `aws.rds.ClusterInstance` will not update the `engineVersion`.
   late final pulumi.Output<String> engineVersion;
   /// Database engine version
   late final pulumi.Output<String> engineVersionActual;
@@ -287,13 +313,13 @@ class ClusterInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> networkType;
   /// Specifies whether Performance Insights is enabled or not. **NOTE:** When Performance Insights is configured at the cluster level through `aws.rds.Cluster`, this argument cannot be set to a value that conflicts with the cluster's configuration.
   late final pulumi.Output<bool> performanceInsightsEnabled;
-  /// ARN for the KMS key to encrypt Performance Insights data. When specifying `performance_insights_kms_key_id`, `performance_insights_enabled` needs to be set to true.
+  /// ARN for the KMS key to encrypt Performance Insights data. When specifying `performanceInsightsKmsKeyId`, `performanceInsightsEnabled` needs to be set to true.
   late final pulumi.Output<String> performanceInsightsKmsKeyId;
-  /// Amount of time in days to retain Performance Insights data. Valid values are `7`, `731` (2 years) or a multiple of `31`. When specifying `performance_insights_retention_period`, `performance_insights_enabled` needs to be set to true. Defaults to '7'.
+  /// Amount of time in days to retain Performance Insights data. Valid values are `7`, `731` (2 years) or a multiple of `31`. When specifying `performanceInsightsRetentionPeriod`, `performanceInsightsEnabled` needs to be set to true. Defaults to '7'.
   late final pulumi.Output<int> performanceInsightsRetentionPeriod;
   /// Database port
   late final pulumi.Output<int> port;
-  /// Daily time range during which automated backups are created if automated backups are enabled. Eg: "04:00-09:00". **NOTE:** If `preferred_backup_window` is set at the cluster level, this argument **must** be omitted.
+  /// Daily time range during which automated backups are created if automated backups are enabled. Eg: "04:00-09:00". **NOTE:** If `preferredBackupWindow` is set at the cluster level, this argument **must** be omitted.
   late final pulumi.Output<String> preferredBackupWindow;
   /// Window to perform maintenance in. Syntax: "ddd:hh24:mi-ddd:hh24:mi". Eg: "Mon:00:00-Mon:03:00".
   late final pulumi.Output<String> preferredMaintenanceWindow;
@@ -305,12 +331,12 @@ class ClusterInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Specifies whether the DB cluster is encrypted.
   late final pulumi.Output<bool> storageEncrypted;
-  /// Map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For more detailed documentation about each argument, refer to
   /// the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-db-instance.html).
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Boolean indicating if this instance is writable. `False` indicates this instance is a read replica.
   late final pulumi.Output<bool> writer;

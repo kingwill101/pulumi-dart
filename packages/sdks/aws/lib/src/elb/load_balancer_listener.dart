@@ -14,7 +14,7 @@ class LoadBalancerListener {
   /// `HTTPS`, `TCP`, or `SSL`
   final pulumi.Input<String> lbProtocol;
   /// The ARN of an SSL certificate you have
-  /// uploaded to AWS IAM. **Note ECDSA-specific restrictions below.  Only valid when `lb_protocol` is either HTTPS or SSL**
+  /// uploaded to AWS IAM. **Note ECDSA-specific restrictions below.  Only valid when `lbProtocol` is either HTTPS or SSL**
   final pulumi.Input<String>? sslCertificateId;
 
   /// Creates a new [LoadBalancerListener].
@@ -51,4 +51,3 @@ class LoadBalancerListener {
     );
   }
 }
-

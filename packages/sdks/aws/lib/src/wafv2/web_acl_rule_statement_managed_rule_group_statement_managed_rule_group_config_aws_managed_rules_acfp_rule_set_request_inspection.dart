@@ -10,21 +10,18 @@ import 'web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_c
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspection {
   final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionAddressFields>? addressFields;
   final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionEmailField>? emailField;
-  /// Details about your login page password field. See `password_field` for more details.
   final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPasswordField>? passwordField;
-  /// The payload type for your login endpoint, either JSON or form encoded.
   final pulumi.Input<String> payloadType;
   final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPhoneNumberFields>? phoneNumberFields;
-  /// Details about your login page username field. See `username_field` for more details.
   final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionUsernameField>? usernameField;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspection].
   /// [addressFields] Optional.
   /// [emailField] Optional.
-  /// [passwordField] Details about your login page password field. See `password_field` for more details.
-  /// [payloadType] The payload type for your login endpoint, either JSON or form encoded.
+  /// [passwordField] Optional.
+  /// [payloadType] Required.
   /// [phoneNumberFields] Optional.
-  /// [usernameField] Details about your login page username field. See `username_field` for more details.
+  /// [usernameField] Optional.
   const WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspection({
     this.addressFields,
     this.emailField,
@@ -56,4 +53,3 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
     );
   }
 }
-

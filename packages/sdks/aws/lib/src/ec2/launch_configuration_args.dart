@@ -33,7 +33,7 @@ class LaunchConfigurationArgs {
   final pulumi.Input<String>? keyName;
   /// The metadata options for the instance.
   final pulumi.Input<LaunchConfigurationMetadataOptions>? metadataOptions;
-  /// The name of the launch configuration. If you leave this blank, this provider will auto-generate a unique name. Conflicts with `name_prefix`.
+  /// The name of the launch configuration. If you leave this blank, this provider will auto-generate a unique name. Conflicts with `namePrefix`.
   final pulumi.Input<String>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
@@ -47,9 +47,9 @@ class LaunchConfigurationArgs {
   final pulumi.Input<List<String>>? securityGroups;
   /// The maximum price to use for reserving spot instances.
   final pulumi.Input<String>? spotPrice;
-  /// The user data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see `user_data_base64` instead.
+  /// The user data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see `userDataBase64` instead.
   final pulumi.Input<String>? userData;
-  /// Can be used instead of `user_data` to pass base64-encoded binary data directly. Use this instead of `user_data` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption.
+  /// Can be used instead of `userData` to pass base64-encoded binary data directly. Use this instead of `userData` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption.
   final pulumi.Input<String>? userDataBase64;
 
   /// Creates a new [LaunchConfigurationArgs].
@@ -63,15 +63,15 @@ class LaunchConfigurationArgs {
   /// [instanceType] The size of instance to launch.
   /// [keyName] The key name that should be used for the instance.
   /// [metadataOptions] The metadata options for the instance.
-  /// [name] The name of the launch configuration. If you leave this blank, this provider will auto-generate a unique name. Conflicts with `name_prefix`.
+  /// [name] The name of the launch configuration. If you leave this blank, this provider will auto-generate a unique name. Conflicts with `namePrefix`.
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   /// [placementTenancy] The tenancy of the instance. Valid values are `default` or `dedicated`, see [AWS's Create Launch Configuration](http://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_CreateLaunchConfiguration.html) for more details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rootBlockDevice] Customize details about the root block device of the instance. See Block Devices below for details.
   /// [securityGroups] A list of associated security group IDS.
   /// [spotPrice] The maximum price to use for reserving spot instances.
-  /// [userData] The user data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see `user_data_base64` instead.
-  /// [userDataBase64] Can be used instead of `user_data` to pass base64-encoded binary data directly. Use this instead of `user_data` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption.
+  /// [userData] The user data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see `userDataBase64` instead.
+  /// [userDataBase64] Can be used instead of `userData` to pass base64-encoded binary data directly. Use this instead of `userData` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption.
   const LaunchConfigurationArgs({
     this.associatePublicIpAddress,
     this.ebsBlockDevices,
@@ -142,4 +142,3 @@ class LaunchConfigurationArgs {
     );
   }
 }
-

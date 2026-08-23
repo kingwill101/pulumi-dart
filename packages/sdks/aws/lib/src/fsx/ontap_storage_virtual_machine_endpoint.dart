@@ -7,20 +7,20 @@ import 'ontap_storage_virtual_machine_endpoint_nf.dart';
 import 'ontap_storage_virtual_machine_endpoint_smb.dart';
 
 class OntapStorageVirtualMachineEndpoint {
-  /// An endpoint for accessing data on your storage virtual machine via iSCSI protocol. See Endpoint.
+  /// Endpoint for accessing data on your storage virtual machine via iSCSI protocol. See Endpoint.
   final pulumi.Input<List<OntapStorageVirtualMachineEndpointIscsi>>? iscsis;
-  /// An endpoint for managing your file system using the NetApp ONTAP CLI and NetApp ONTAP API. See Endpoint.
+  /// Endpoint for managing your file system using the NetApp ONTAP CLI and NetApp ONTAP API. See Endpoint.
   final pulumi.Input<List<OntapStorageVirtualMachineEndpointManagement>>? managements;
-  /// An endpoint for accessing data on your storage virtual machine via NFS protocol. See Endpoint.
+  /// Endpoint for accessing data on your storage virtual machine via NFS protocol. See Endpoint.
   final pulumi.Input<List<OntapStorageVirtualMachineEndpointNf>>? nfs;
-  /// An endpoint for accessing data on your storage virtual machine via SMB protocol. This is only set if an active_directory_configuration has been set. See Endpoint.
+  /// Endpoint for accessing data on your storage virtual machine via SMB protocol. This is only set if an activeDirectoryConfiguration has been set. See Endpoint.
   final pulumi.Input<List<OntapStorageVirtualMachineEndpointSmb>>? smbs;
 
   /// Creates a new [OntapStorageVirtualMachineEndpoint].
-  /// [iscsis] An endpoint for accessing data on your storage virtual machine via iSCSI protocol. See Endpoint.
-  /// [managements] An endpoint for managing your file system using the NetApp ONTAP CLI and NetApp ONTAP API. See Endpoint.
-  /// [nfs] An endpoint for accessing data on your storage virtual machine via NFS protocol. See Endpoint.
-  /// [smbs] An endpoint for accessing data on your storage virtual machine via SMB protocol. This is only set if an active_directory_configuration has been set. See Endpoint.
+  /// [iscsis] Endpoint for accessing data on your storage virtual machine via iSCSI protocol. See Endpoint.
+  /// [managements] Endpoint for managing your file system using the NetApp ONTAP CLI and NetApp ONTAP API. See Endpoint.
+  /// [nfs] Endpoint for accessing data on your storage virtual machine via NFS protocol. See Endpoint.
+  /// [smbs] Endpoint for accessing data on your storage virtual machine via SMB protocol. This is only set if an activeDirectoryConfiguration has been set. See Endpoint.
   const OntapStorageVirtualMachineEndpoint({
     this.iscsis,
     this.managements,
@@ -46,4 +46,3 @@ class OntapStorageVirtualMachineEndpoint {
     );
   }
 }
-

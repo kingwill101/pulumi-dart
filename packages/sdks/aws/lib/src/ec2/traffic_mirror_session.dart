@@ -104,14 +104,38 @@ import 'traffic_mirror_session_state.dart';
 /// 			Description:           pulumi.String("traffic mirror session - example"),
 /// 			NetworkInterfaceId:    pulumi.Any(test.PrimaryNetworkInterfaceId),
 /// 			SessionNumber:         pulumi.Int(1),
-/// 			TrafficMirrorFilterId: filter.ID(),
-/// 			TrafficMirrorTargetId: target.ID(),
+/// 			TrafficMirrorFilterId: filter.ID().ToIDOutput().ToStringOutput(),
+/// 			TrafficMirrorTargetId: target.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_trafficmirrorfilter" "filter" {
+///   description      = "traffic mirror filter - example"
+///   network_services = ["amazon-dns"]
+/// }
+/// resource "aws_ec2_trafficmirrortarget" "target" {
+///   network_load_balancer_arn = lb.arn
+/// }
+/// resource "aws_ec2_trafficmirrorsession" "session" {
+///   description              = "traffic mirror session - example"
+///   network_interface_id     = test.primaryNetworkInterfaceId
+///   session_number           = 1
+///   traffic_mirror_filter_id = aws_ec2_trafficmirrorfilter.filter.id
+///   traffic_mirror_target_id = aws_ec2_trafficmirrortarget.target.id
 /// }
 /// ```
 /// ```java
@@ -126,8 +150,8 @@ import 'traffic_mirror_session_state.dart';
 /// import com.pulumi.aws.ec2.TrafficMirrorTargetArgs;
 /// import com.pulumi.aws.ec2.TrafficMirrorSession;
 /// import com.pulumi.aws.ec2.TrafficMirrorSessionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -204,9 +228,9 @@ class TrafficMirrorSession extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The session number determines the order in which sessions are evaluated when an interface is used by multiple sessions. The first session with a matching filter is the one that mirrors the packets.
   late final pulumi.Output<int> sessionNumber;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ID of the traffic mirror filter to be used
   late final pulumi.Output<String> trafficMirrorFilterId;

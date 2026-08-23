@@ -50,6 +50,18 @@ import 'outbound_web_identity_federation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_outboundwebidentityfederation" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -57,8 +69,8 @@ import 'outbound_web_identity_federation_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.OutboundWebIdentityFederation;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -83,6 +95,13 @@ import 'outbound_web_identity_federation_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import IAM Outbound Web Identity Federation resources using the AWS account ID. For example:
 ///

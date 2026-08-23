@@ -15,48 +15,48 @@ import 'web_acl_rule_statement_size_constraint_statement_field_to_match_uri_frag
 class WebAclRuleStatementSizeConstraintStatementFieldToMatch {
   /// Inspect all query arguments.
   final pulumi.Input<Map<String, dynamic>>? allQueryArguments;
-  /// Inspect the request body, which immediately follows the request headers. See `body` below for details.
+  /// Inspect the request body as plain text. See Body below.
   final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchBody>? body;
-  /// Inspect the cookies in the web request. See `cookies` below for details.
+  /// Inspect the request cookies. See Cookies below.
   final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchCookies>? cookies;
-  /// Inspect a string containing the list of the request's header names, ordered as they appear in the web request that AWS WAF receives for inspection. See `header_order` below for details.
+  /// Inspect a string containing the list of the request's header names, ordered as they appear in the web request. See Header Order below.
   final pulumi.Input<List<WebAclRuleStatementSizeConstraintStatementFieldToMatchHeaderOrder>>? headerOrders;
-  /// Inspect the request headers. See `headers` below for details.
+  /// Inspect the request headers. See Headers below.
   final pulumi.Input<List<WebAclRuleStatementSizeConstraintStatementFieldToMatchHeader>>? headers;
-  /// Inspect the JA3 fingerprint. See `ja3_fingerprint` below for details.
+  /// Match against the request's JA3 fingerprint (CloudFront and ALB only). See JA3 Fingerprint below.
   final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchJa3Fingerprint>? ja3Fingerprint;
-  /// Inspect the JA3 fingerprint. See `ja4_fingerprint` below for details.
+  /// Match against the request's JA4 fingerprint (CloudFront and ALB only). See JA4 Fingerprint below.
   final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchJa4Fingerprint>? ja4Fingerprint;
-  /// Inspect the request body as JSON. See `json_body` for details.
+  /// Inspect the request body as JSON. See JSON Body below.
   final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBody>? jsonBody;
-  /// Inspect the HTTP method. The method indicates the type of operation that the request is asking the origin to perform.
+  /// Inspect the HTTP method.
   final pulumi.Input<Map<String, dynamic>>? method;
-  /// Inspect the query string. This is the part of a URL that appears after a `?` character, if any.
+  /// Inspect the query string.
   final pulumi.Input<Map<String, dynamic>>? queryString;
-  /// Inspect a single header. See `single_header` below for details.
+  /// Inspect a single header. See Single Header below.
   final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchSingleHeader>? singleHeader;
-  /// Inspect a single query argument. See `single_query_argument` below for details.
+  /// Inspect a single query argument. See Single Query Argument below.
   final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchSingleQueryArgument>? singleQueryArgument;
-  /// Inspect the part of a URL that follows the "#" symbol, providing additional information about the resource. See `uri_fragment` below for details.
+  /// Inspect fragments of the request URI. See URI Fragment below.
   final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchUriFragment>? uriFragment;
-  /// Inspect the request URI path. This is the part of a web request that identifies a resource, for example, `/images/daily-ad.jpg`.
+  /// Inspect the request URI path.
   final pulumi.Input<Map<String, dynamic>>? uriPath;
 
   /// Creates a new [WebAclRuleStatementSizeConstraintStatementFieldToMatch].
   /// [allQueryArguments] Inspect all query arguments.
-  /// [body] Inspect the request body, which immediately follows the request headers. See `body` below for details.
-  /// [cookies] Inspect the cookies in the web request. See `cookies` below for details.
-  /// [headerOrders] Inspect a string containing the list of the request's header names, ordered as they appear in the web request that AWS WAF receives for inspection. See `header_order` below for details.
-  /// [headers] Inspect the request headers. See `headers` below for details.
-  /// [ja3Fingerprint] Inspect the JA3 fingerprint. See `ja3_fingerprint` below for details.
-  /// [ja4Fingerprint] Inspect the JA3 fingerprint. See `ja4_fingerprint` below for details.
-  /// [jsonBody] Inspect the request body as JSON. See `json_body` for details.
-  /// [method] Inspect the HTTP method. The method indicates the type of operation that the request is asking the origin to perform.
-  /// [queryString] Inspect the query string. This is the part of a URL that appears after a `?` character, if any.
-  /// [singleHeader] Inspect a single header. See `single_header` below for details.
-  /// [singleQueryArgument] Inspect a single query argument. See `single_query_argument` below for details.
-  /// [uriFragment] Inspect the part of a URL that follows the "#" symbol, providing additional information about the resource. See `uri_fragment` below for details.
-  /// [uriPath] Inspect the request URI path. This is the part of a web request that identifies a resource, for example, `/images/daily-ad.jpg`.
+  /// [body] Inspect the request body as plain text. See Body below.
+  /// [cookies] Inspect the request cookies. See Cookies below.
+  /// [headerOrders] Inspect a string containing the list of the request's header names, ordered as they appear in the web request. See Header Order below.
+  /// [headers] Inspect the request headers. See Headers below.
+  /// [ja3Fingerprint] Match against the request's JA3 fingerprint (CloudFront and ALB only). See JA3 Fingerprint below.
+  /// [ja4Fingerprint] Match against the request's JA4 fingerprint (CloudFront and ALB only). See JA4 Fingerprint below.
+  /// [jsonBody] Inspect the request body as JSON. See JSON Body below.
+  /// [method] Inspect the HTTP method.
+  /// [queryString] Inspect the query string.
+  /// [singleHeader] Inspect a single header. See Single Header below.
+  /// [singleQueryArgument] Inspect a single query argument. See Single Query Argument below.
+  /// [uriFragment] Inspect fragments of the request URI. See URI Fragment below.
+  /// [uriPath] Inspect the request URI path.
   const WebAclRuleStatementSizeConstraintStatementFieldToMatch({
     this.allQueryArguments,
     this.body,
@@ -112,4 +112,3 @@ class WebAclRuleStatementSizeConstraintStatementFieldToMatch {
     );
   }
 }
-

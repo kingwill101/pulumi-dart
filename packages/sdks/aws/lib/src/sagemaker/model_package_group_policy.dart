@@ -16,25 +16,25 @@ import 'model_package_group_policy_state.dart';
 ///
 /// const current = aws.getCallerIdentity({});
 /// const exampleModelPackageGroup = new aws.sagemaker.ModelPackageGroup("example", {modelPackageGroupName: "example"});
-/// const example = pulumi.all([exampleModelPackageGroup.arn, current]).apply(([arn, current]) => aws.iam.getPolicyDocumentOutput({
+/// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
 ///         sid: "AddPermModelPackageGroup",
 ///         actions: [
 ///             "sagemaker:DescribeModelPackage",
 ///             "sagemaker:ListModelPackages",
 ///         ],
-///         resources: [arn],
+///         resources: [exampleModelPackageGroup.arn],
 ///         principals: [{
-///             identifiers: [current.accountId],
+///             identifiers: [current.then(current => current.accountId)],
 ///             type: "AWS",
 ///         }],
 ///     }],
-/// }));
+/// });
 /// const exampleModelPackageGroupPolicy = new aws.sagemaker.ModelPackageGroupPolicy("example", {
 ///     modelPackageGroupName: exampleModelPackageGroup.modelPackageGroupName,
-///     resourcePolicy: pulumi.jsonStringify(example.apply(example => std.jsondecodeOutput({
+///     resourcePolicy: pulumi.jsonStringify(std.jsondecodeOutput({
 ///         input: example.json,
-///     })).apply(invoke => invoke.result)),
+///     }).result),
 /// });
 /// ```
 /// ```python
@@ -45,21 +45,21 @@ import 'model_package_group_policy_state.dart';
 ///
 /// current = aws.get_caller_identity()
 /// example_model_package_group = aws.sagemaker.ModelPackageGroup("example", model_package_group_name="example")
-/// example = example_model_package_group.arn.apply(lambda arn: aws.iam.get_policy_document(statements=[{
+/// example = aws.iam.get_policy_document_output(statements=[{
 ///     "sid": "AddPermModelPackageGroup",
 ///     "actions": [
 ///         "sagemaker:DescribeModelPackage",
 ///         "sagemaker:ListModelPackages",
 ///     ],
-///     "resources": [arn],
+///     "resources": [example_model_package_group.arn],
 ///     "principals": [{
 ///         "identifiers": [current.account_id],
 ///         "type": "AWS",
 ///     }],
-/// }]))
+/// }])
 /// example_model_package_group_policy = aws.sagemaker.ModelPackageGroupPolicy("example",
 ///     model_package_group_name=example_model_package_group.model_package_group_name,
-///     resource_policy=pulumi.Output.json_dumps(std.jsondecode_output(input=example.json).apply(lambda invoke: invoke.result)))
+///     resource_policy=pulumi.Output.json_dumps(std.jsondecode_output(input=example.json).result))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -82,7 +82,7 @@ import 'model_package_group_policy_state.dart';
 ///     {
 ///         Statements = new[]
 ///         {
-///             new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
 ///                 Sid = "AddPermModelPackageGroup",
 ///                 Actions = new[]
@@ -96,7 +96,7 @@ import 'model_package_group_policy_state.dart';
 ///                 },
 ///                 Principals = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
 ///                     {
 ///                         Identifiers = new[]
 ///                         {
@@ -132,67 +132,94 @@ import 'model_package_group_policy_state.dart';
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// current, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		current, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleModelPackageGroup, err := sagemaker.NewModelPackageGroup(ctx, "example", &sagemaker.ModelPackageGroupArgs{
+/// 			ModelPackageGroupName: pulumi.String("example"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
+/// 			Statements: iam.GetPolicyDocumentStatementArray{
+/// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Sid: pulumi.String("AddPermModelPackageGroup"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("sagemaker:DescribeModelPackage"),
+/// 						pulumi.String("sagemaker:ListModelPackages"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						exampleModelPackageGroup.Arn,
+/// 					},
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String(current.AccountId),
+/// 							},
+/// 							Type: pulumi.String("AWS"),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		_, err = sagemaker.NewModelPackageGroupPolicy(ctx, "example", &sagemaker.ModelPackageGroupPolicyArgs{
+/// 			ModelPackageGroupName: exampleModelPackageGroup.ModelPackageGroupName,
+/// 			ResourcePolicy: std.JsondecodeOutput(ctx, std.JsondecodeOutputArgs{
+/// 				Input: example.Json(),
+/// 			}, nil).ApplyT(func(invoke std.JsondecodeResult) (pulumi.String, error) {
+/// 				var _zero pulumi.String
+/// 				tmpJSON0, err := json.Marshal(invoke.Result)
+/// 				if err != nil {
+/// 					return _zero, err
+/// 				}
+/// 				json0 := string(tmpJSON0)
+/// 				return pulumi.String(json0), nil
+/// 			}).(pulumi.StringOutput),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// exampleModelPackageGroup, err := sagemaker.NewModelPackageGroup(ctx, "example", &sagemaker.ModelPackageGroupArgs{
-/// ModelPackageGroupName: pulumi.String("example"),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
 /// }
-/// example := exampleModelPackageGroup.Arn.ApplyT(func(arn string) (iam.GetPolicyDocumentResult, error) {
-/// return iam.GetPolicyDocumentResult(interface{}(iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement([]iam.GetPolicyDocumentStatement{
-/// {
-/// Sid: pulumi.StringRef(pulumi.String(pulumi.StringRef("AddPermModelPackageGroup"))),
-/// Actions: []string{
-/// "sagemaker:DescribeModelPackage",
-/// "sagemaker:ListModelPackages",
-/// },
-/// Resources: []string{
-/// arn,
-/// },
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Identifiers: interface{}{
-/// current.AccountId,
-/// },
-/// Type: "AWS",
-/// },
-/// },
-/// },
-/// }),
-/// }, nil))), nil
-/// }).(iam.GetPolicyDocumentResultOutput)
-/// invokeJsondecode, err := std.Jsondecode(ctx, &std.JsondecodeArgs{
-/// Input: example.Json,
-/// }, nil)
-/// if err != nil {
-/// return err
+///
+/// data "aws_getcalleridentity" "current" {
 /// }
-/// _, err = sagemaker.NewModelPackageGroupPolicy(ctx, "example", &sagemaker.ModelPackageGroupPolicyArgs{
-/// ModelPackageGroupName: exampleModelPackageGroup.ModelPackageGroupName,
-/// ResourcePolicy: example.ApplyT(func(example iam.GetPolicyDocumentResult) (std.JsondecodeResult, error) {
-/// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.JsondecodeResultOutput).ApplyT(func(invoke std.JsondecodeResult) (pulumi.String, error) {
-/// var _zero pulumi.String
-/// tmpJSON0, err := json.Marshal(invoke.Result)
-/// if err != nil {
-/// return _zero, err
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     sid       = "AddPermModelPackageGroup"
+///     actions   = ["sagemaker:DescribeModelPackage", "sagemaker:ListModelPackages"]
+///     resources = [aws_sagemaker_modelpackagegroup.example.arn]
+///     principals {
+///       identifiers = [data.aws_getcalleridentity.current.account_id]
+///       type        = "AWS"
+///     }
+///   }
 /// }
-/// json0 := string(tmpJSON0)
-/// return pulumi.String(json0), nil
-/// }).(pulumi.StringOutput),
-/// })
-/// if err != nil {
-/// return err
+///
+/// resource "aws_sagemaker_modelpackagegroup" "example" {
+///   model_package_group_name = "example"
 /// }
-/// return nil
-/// })
+/// resource "aws_sagemaker_modelpackagegrouppolicy" "example" {
+///   model_package_group_name = aws_sagemaker_modelpackagegroup.example.model_package_group_name
+///   resource_policy          = jsonencode(jsondecode(data.aws_iam_getpolicydocument.example.json))
 /// }
 /// ```
 /// ```java
@@ -207,13 +234,15 @@ import 'model_package_group_policy_state.dart';
 /// import com.pulumi.aws.sagemaker.ModelPackageGroupArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.sagemaker.ModelPackageGroupPolicy;
 /// import com.pulumi.aws.sagemaker.ModelPackageGroupPolicyArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JsondecodeArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -232,24 +261,24 @@ import 'model_package_group_policy_state.dart';
 ///             .modelPackageGroupName("example")
 ///             .build());
 ///
-///         final var example = exampleModelPackageGroup.arn().applyValue(_arn -> IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
 ///                 .sid("AddPermModelPackageGroup")
 ///                 .actions(
 ///                     "sagemaker:DescribeModelPackage",
 ///                     "sagemaker:ListModelPackages")
-///                 .resources(_arn)
+///                 .resources(exampleModelPackageGroup.arn())
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .identifiers(current.accountId())
 ///                     .type("AWS")
 ///                     .build())
 ///                 .build())
-///             .build()));
+///             .build());
 ///
 ///         var exampleModelPackageGroupPolicy = new ModelPackageGroupPolicy("exampleModelPackageGroupPolicy", ModelPackageGroupPolicyArgs.builder()
 ///             .modelPackageGroupName(exampleModelPackageGroup.modelPackageGroupName())
 ///             .resourcePolicy(StdFunctions.jsondecode(JsondecodeArgs.builder()
-///                 .input(example.json())
+///                 .input(example.applyValue(_example -> _example.json()))
 ///                 .build()).applyValue(_invoke -> serializeJson(
 ///                 _invoke.result())))
 ///             .build());

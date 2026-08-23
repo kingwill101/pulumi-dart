@@ -114,6 +114,31 @@ import 'fleet_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codebuild_fleet" "test" {
+///   base_capacity     = 2
+///   compute_type      = "BUILD_GENERAL1_SMALL"
+///   environment_type  = "LINUX_CONTAINER"
+///   name              = "full-example-codebuild-fleet"
+///   overflow_behavior = "QUEUE"
+///   scaling_configuration = {
+///     max_capacity = 5
+///     scaling_type = "TARGET_TRACKING_SCALING"
+///     target_tracking_scaling_configs = [{
+///       "metricType"  = "FLEET_UTILIZATION_RATE"
+///       "targetValue" = 97.5
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +148,9 @@ import 'fleet_state.dart';
 /// import com.pulumi.aws.codebuild.Fleet;
 /// import com.pulumi.aws.codebuild.FleetArgs;
 /// import com.pulumi.aws.codebuild.inputs.FleetScalingConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.codebuild.inputs.FleetScalingConfigurationTargetTrackingScalingConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -224,6 +250,19 @@ import 'fleet_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codebuild_fleet" "example" {
+///   name = "example-codebuild-fleet"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -232,8 +271,8 @@ import 'fleet_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.codebuild.Fleet;
 /// import com.pulumi.aws.codebuild.FleetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,7 +319,7 @@ class Fleet extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Number of machines allocated to the ﬂeet.
   late final pulumi.Output<int> baseCapacity;
-  /// The compute configuration of the compute fleet. This is only required if `compute_type` is set to `ATTRIBUTE_BASED_COMPUTE` or `CUSTOM_INSTANCE_TYPE`. See `compute_configuration` below.
+  /// The compute configuration of the compute fleet. This is only required if `computeType` is set to `ATTRIBUTE_BASED_COMPUTE` or `CUSTOM_INSTANCE_TYPE`. See `computeConfiguration` below.
   late final pulumi.Output<FleetComputeConfiguration?> computeConfiguration;
   /// Compute resources the compute fleet uses. See [compute types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types) for more information and valid values.
   late final pulumi.Output<String> computeType;
@@ -302,14 +341,14 @@ class Fleet extends pulumi.CustomResource {
   late final pulumi.Output<String> overflowBehavior;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Configuration block. This option is only valid when your overflow behavior is `QUEUE`. See `scaling_configuration` below.
+  /// Configuration block. This option is only valid when your overflow behavior is `QUEUE`. See `scalingConfiguration` below.
   late final pulumi.Output<FleetScalingConfiguration?> scalingConfiguration;
   /// Nested attribute containing information about the current status of the fleet.
   late final pulumi.Output<List<Map<String, dynamic>>> statuses;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Configuration block. See `vpc_config` below.
+  /// Configuration block. See `vpcConfig` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> vpcConfigs;
 
   /// Creates a new [Fleet].

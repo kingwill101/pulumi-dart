@@ -8,16 +8,16 @@ import 'multi_region_access_point_policy_details.dart';
 /// {@endtemplate}
 /// {@macro pulumi_s3_control_multi_region_access_point_policy_multi_region_access_point_policy_args_doc}
 class MultiRegionAccessPointPolicyArgs {
-  /// The AWS account ID for the owner of the Multi-Region Access Point. Defaults to automatically determined account ID of the AWS provider.
+  /// AWS account ID for the owner of the Multi-Region Access Point. Defaults to automatically determined account ID of the AWS provider.
   final pulumi.Input<String>? accountId;
-  /// A configuration block containing details about the policy for the Multi-Region Access Point. See Details Configuration Block below for more details
+  /// Configuration block containing details about the policy for the Multi-Region Access Point. See `details` Block below for more details
   final pulumi.Input<MultiRegionAccessPointPolicyDetails> details;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [MultiRegionAccessPointPolicyArgs].
-  /// [accountId] The AWS account ID for the owner of the Multi-Region Access Point. Defaults to automatically determined account ID of the AWS provider.
-  /// [details] A configuration block containing details about the policy for the Multi-Region Access Point. See Details Configuration Block below for more details
+  /// [accountId] AWS account ID for the owner of the Multi-Region Access Point. Defaults to automatically determined account ID of the AWS provider.
+  /// [details] Configuration block containing details about the policy for the Multi-Region Access Point. See `details` Block below for more details
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const MultiRegionAccessPointPolicyArgs({
     this.accountId,
@@ -41,4 +41,3 @@ class MultiRegionAccessPointPolicyArgs {
     );
   }
 }
-

@@ -177,6 +177,39 @@ import 'configuration_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_findingaggregator" "example" {
+///   linking_mode = "ALL_REGIONS"
+/// }
+/// resource "aws_securityhub_organizationconfiguration" "example" {
+///   depends_on            = [aws_securityhub_findingaggregator.example]
+///   auto_enable           = false
+///   auto_enable_standards = "NONE"
+///   organization_configuration = {
+///     configuration_type = "CENTRAL"
+///   }
+/// }
+/// resource "aws_securityhub_configurationpolicy" "example" {
+///   depends_on  = [aws_securityhub_organizationconfiguration.example]
+///   name        = "Example"
+///   description = "This is an example configuration policy"
+///   configuration_policy = {
+///     service_enabled       = true
+///     enabled_standard_arns = ["arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0", "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"]
+///     security_controls_configuration = {
+///       disabled_control_identifiers = []
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +226,8 @@ import 'configuration_policy_state.dart';
 /// import com.pulumi.aws.securityhub.inputs.ConfigurationPolicyConfigurationPolicyArgs;
 /// import com.pulumi.aws.securityhub.inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -356,6 +389,24 @@ import 'configuration_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_configurationpolicy" "disabled" {
+///   depends_on  = [example]
+///   name        = "Disabled"
+///   description = "This is an example of disabled configuration policy"
+///   configuration_policy = {
+///     service_enabled = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -366,8 +417,8 @@ import 'configuration_policy_state.dart';
 /// import com.pulumi.aws.securityhub.ConfigurationPolicyArgs;
 /// import com.pulumi.aws.securityhub.inputs.ConfigurationPolicyConfigurationPolicyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -670,6 +721,53 @@ import 'configuration_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_configurationpolicy" "disabled" {
+///   depends_on  = [example]
+///   name        = "Custom Controls"
+///   description = "This is an example of configuration policy with custom control settings"
+///   configuration_policy = {
+///     service_enabled       = true
+///     enabled_standard_arns = ["arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0", "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"]
+///     security_controls_configuration = {
+///       enabled_control_identifiers = ["APIGateway.1", "IAM.7"]
+///       security_control_custom_parameters = [{
+///         "securityControlId" = "APIGateway.1"
+///         "parameters" = [{
+///           "name"      = "loggingLevel"
+///           "valueType" = "CUSTOM"
+///           "enum" = {
+///             "value" = "INFO"
+///           }
+///         }]
+///         }, {
+///         "securityControlId" = "IAM.7"
+///         "parameters" = [{
+///           "name"      = "RequireLowercaseCharacters"
+///           "valueType" = "CUSTOM"
+///           "bool" = {
+///             "value" = false
+///           }
+///           }, {
+///           "name"      = "MaxPasswordAge"
+///           "valueType" = "CUSTOM"
+///           "int" = {
+///             "value" = 60
+///           }
+///         }]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -680,9 +778,14 @@ import 'configuration_policy_state.dart';
 /// import com.pulumi.aws.securityhub.ConfigurationPolicyArgs;
 /// import com.pulumi.aws.securityhub.inputs.ConfigurationPolicyConfigurationPolicyArgs;
 /// import com.pulumi.aws.securityhub.inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs;
+/// import com.pulumi.aws.securityhub.inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterArgs;
+/// import com.pulumi.aws.securityhub.inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs;
+/// import com.pulumi.aws.securityhub.inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumArgs;
+/// import com.pulumi.aws.securityhub.inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBoolArgs;
+/// import com.pulumi.aws.securityhub.inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -785,10 +888,22 @@ import 'configuration_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import an existing Security Hub enabled account using the universally unique identifier (UUID) of the policy. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `id` (String) UUID of the configuration policy.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Security Hub configuration policies using `id`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:securityhub/configurationPolicy:ConfigurationPolicy example "00000000-1111-2222-3333-444444444444"
+/// $ pulumi import aws:securityhub/configurationPolicy:ConfigurationPolicy example 00000000-1111-2222-3333-444444444444
 /// ```
 class ConfigurationPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;

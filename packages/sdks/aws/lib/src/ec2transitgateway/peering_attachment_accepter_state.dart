@@ -11,9 +11,9 @@ class PeeringAttachmentAccepterState {
   final pulumi.Input<String>? peerTransitGatewayId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value tags for the EC2 Transit Gateway Peering Attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the EC2 Transit Gateway Peering Attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The ID of the EC2 Transit Gateway Peering Attachment to manage.
   final pulumi.Input<String>? transitGatewayAttachmentId;
@@ -25,8 +25,8 @@ class PeeringAttachmentAccepterState {
   /// [peerRegion] Optional.
   /// [peerTransitGatewayId] Identifier of EC2 Transit Gateway to peer with.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value tags for the EC2 Transit Gateway Peering Attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value tags for the EC2 Transit Gateway Peering Attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [transitGatewayAttachmentId] The ID of the EC2 Transit Gateway Peering Attachment to manage.
   /// [transitGatewayId] Identifier of EC2 Transit Gateway.
   const PeeringAttachmentAccepterState({
@@ -66,4 +66,3 @@ class PeeringAttachmentAccepterState {
     );
   }
 }
-

@@ -77,6 +77,20 @@ import 'ami_from_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_amifrominstance" "example" {
+///   name               = "example"
+///   source_instance_id = "i-xxxxxxxx"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +99,8 @@ import 'ami_from_instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.AmiFromInstance;
 /// import com.pulumi.aws.ec2.AmiFromInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -115,7 +129,7 @@ import 'ami_from_instance_state.dart';
 ///       sourceInstanceId: i-xxxxxxxx
 /// ```
 class AmiFromInstance extends pulumi.CustomResource {
-  /// Machine architecture for created instances. Defaults to `x86_64`.
+  /// Machine architecture for created instances. Defaults to `x8664`.
   late final pulumi.Output<String> architecture;
   /// ARN of the AMI.
   late final pulumi.Output<String> arn;
@@ -171,7 +185,7 @@ class AmiFromInstance extends pulumi.CustomResource {
   /// When set to "simple" (the default), enables enhanced networking
   /// for created instances. No other value is supported at this time.
   late final pulumi.Output<String> sriovNetSupport;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the Amazon Elastic Compute Cloud User Guide.

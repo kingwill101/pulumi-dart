@@ -64,6 +64,20 @@ import 'key_value_store_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_keyvaluestore" "example" {
+///   name    = "ExampleKeyValueStore"
+///   comment = "This is an example key value store"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +86,8 @@ import 'key_value_store_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.KeyValueStore;
 /// import com.pulumi.aws.cloudfront.KeyValueStoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -113,7 +127,7 @@ import 'key_value_store_timeouts.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 ///
 ///
 /// Using `pulumi import`, import CloudFront Key Value Store using the `name`. For example:
@@ -133,6 +147,8 @@ class KeyValueStore extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<KeyValueStoreTimeouts?> timeouts;
 
   /// Creates a new [KeyValueStore].
@@ -154,6 +170,8 @@ class KeyValueStore extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<KeyValueStoreTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyValueStoreTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -185,6 +203,8 @@ class KeyValueStore extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<KeyValueStoreTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyValueStoreTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

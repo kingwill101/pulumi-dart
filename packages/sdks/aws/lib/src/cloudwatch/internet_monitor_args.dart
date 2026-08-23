@@ -25,7 +25,7 @@ class InternetMonitorArgs {
   final pulumi.Input<List<String>>? resources;
   /// The status for a monitor. The accepted values for Status with the UpdateMonitor API call are the following: `ACTIVE` and `INACTIVE`.
   final pulumi.Input<String>? status;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The percentage of the internet-facing traffic for your application that you want to monitor with this monitor.
   final pulumi.Input<int>? trafficPercentageToMonitor;
@@ -38,7 +38,7 @@ class InternetMonitorArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resources] The resources to include in a monitor, which you provide as a set of Amazon Resource Names (ARNs).
   /// [status] The status for a monitor. The accepted values for Status with the UpdateMonitor API call are the following: `ACTIVE` and `INACTIVE`.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [trafficPercentageToMonitor] The percentage of the internet-facing traffic for your application that you want to monitor with this monitor.
   const InternetMonitorArgs({
     this.healthEventsConfig,
@@ -80,4 +80,3 @@ class InternetMonitorArgs {
     );
   }
 }
-

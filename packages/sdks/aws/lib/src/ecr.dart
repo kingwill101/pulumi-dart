@@ -4,6 +4,8 @@ export 'ecr/account_setting_state.dart';
 export 'ecr/functions.dart';
 export 'ecr/get_authorization_token_args.dart';
 export 'ecr/get_authorization_token_result.dart';
+export 'ecr/get_credentials_args.dart';
+export 'ecr/get_credentials_result.dart';
 export 'ecr/get_image_args.dart';
 export 'ecr/get_image_result.dart';
 export 'ecr/get_images_args.dart';

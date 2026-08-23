@@ -11,15 +11,15 @@ import 'continuous_deployment_policy_traffic_config.dart';
 class ContinuousDeploymentPolicyArgs {
   /// Whether this continuous deployment policy is enabled.
   final pulumi.Input<bool> enabled;
-  /// CloudFront domain name of the staging distribution. See `staging_distribution_dns_names`.
+  /// CloudFront domain name of the staging distribution. See `stagingDistributionDnsNames`.
   final pulumi.Input<ContinuousDeploymentPolicyStagingDistributionDnsNames> stagingDistributionDnsNames;
-  /// Parameters for routing production traffic from primary to staging distributions. See `traffic_config`.
+  /// Parameters for routing production traffic from primary to staging distributions. See `trafficConfig`.
   final pulumi.Input<ContinuousDeploymentPolicyTrafficConfig>? trafficConfig;
 
   /// Creates a new [ContinuousDeploymentPolicyArgs].
   /// [enabled] Whether this continuous deployment policy is enabled.
-  /// [stagingDistributionDnsNames] CloudFront domain name of the staging distribution. See `staging_distribution_dns_names`.
-  /// [trafficConfig] Parameters for routing production traffic from primary to staging distributions. See `traffic_config`.
+  /// [stagingDistributionDnsNames] CloudFront domain name of the staging distribution. See `stagingDistributionDnsNames`.
+  /// [trafficConfig] Parameters for routing production traffic from primary to staging distributions. See `trafficConfig`.
   const ContinuousDeploymentPolicyArgs({
     required this.enabled,
     required this.stagingDistributionDnsNames,
@@ -42,4 +42,3 @@ class ContinuousDeploymentPolicyArgs {
     );
   }
 }
-

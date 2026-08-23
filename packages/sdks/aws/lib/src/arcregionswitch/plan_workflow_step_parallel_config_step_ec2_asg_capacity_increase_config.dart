@@ -5,7 +5,7 @@ import 'plan_workflow_step_parallel_config_step_ec2_asg_capacity_increase_config
 import 'plan_workflow_step_parallel_config_step_ec2_asg_capacity_increase_config_ungraceful.dart';
 
 class PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfig {
-  /// Auto Scaling group configuration. See ASG below.
+  /// Auto Scaling group configuration. See `asg` Block for details.
   final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsg>>? asgs;
   /// Capacity monitoring approach. Valid values: `sampledMaxInLast24Hours`, `autoscalingMaxInLast24Hours`.
   final pulumi.Input<String> capacityMonitoringApproach;
@@ -13,15 +13,15 @@ class PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfig {
   final pulumi.Input<int>? targetPercent;
   /// Timeout in minutes.
   final pulumi.Input<int>? timeoutMinutes;
-  /// Ungraceful behavior configuration. See Ungraceful below.
+  /// Ungraceful behavior configuration. See `workflow.step.ec2_asg_capacity_increase_config.ungraceful` Block for details.
   final pulumi.Input<PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigUngraceful>? ungraceful;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfig].
-  /// [asgs] Auto Scaling group configuration. See ASG below.
+  /// [asgs] Auto Scaling group configuration. See `asg` Block for details.
   /// [capacityMonitoringApproach] Capacity monitoring approach. Valid values: `sampledMaxInLast24Hours`, `autoscalingMaxInLast24Hours`.
   /// [targetPercent] Target capacity percentage.
   /// [timeoutMinutes] Timeout in minutes.
-  /// [ungraceful] Ungraceful behavior configuration. See Ungraceful below.
+  /// [ungraceful] Ungraceful behavior configuration. See `workflow.step.ec2_asg_capacity_increase_config.ungraceful` Block for details.
   const PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfig({
     this.asgs,
     required this.capacityMonitoringApproach,
@@ -50,4 +50,3 @@ class PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfig {
     );
   }
 }
-

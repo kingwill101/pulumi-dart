@@ -7,11 +7,11 @@ class GetClusterCredentialsResult {
   final String clusterIdentifier;
   final List<String>? dbGroups;
   final String? dbName;
-  /// Temporary password that authorizes the user name returned by `db_user` to log on to the database `db_name`.
+  /// Temporary password that authorizes the user name returned by `dbUser` to log on to the database `dbName`.
   final String dbPassword;
   final String dbUser;
   final int? durationSeconds;
-  /// Date and time the password in `db_password` expires.
+  /// Date and time the password in `dbPassword` expires.
   final String expiration;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -22,10 +22,10 @@ class GetClusterCredentialsResult {
   /// [clusterIdentifier] Required.
   /// [dbGroups] Optional.
   /// [dbName] Optional.
-  /// [dbPassword] Temporary password that authorizes the user name returned by `db_user` to log on to the database `db_name`.
+  /// [dbPassword] Temporary password that authorizes the user name returned by `dbUser` to log on to the database `dbName`.
   /// [dbUser] Required.
   /// [durationSeconds] Optional.
-  /// [expiration] Date and time the password in `db_password` expires.
+  /// [expiration] Date and time the password in `dbPassword` expires.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   const GetClusterCredentialsResult({
@@ -71,4 +71,3 @@ class GetClusterCredentialsResult {
     );
   }
 }
-

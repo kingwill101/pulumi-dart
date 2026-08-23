@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_shard_node.dart';
 
 class ClusterShard {
-  /// Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   final pulumi.Input<String>? name;
   /// Set of nodes in this shard.
   final pulumi.Input<List<ClusterShardNode>>? nodes;
@@ -14,7 +14,7 @@ class ClusterShard {
   final pulumi.Input<String>? slots;
 
   /// Creates a new [ClusterShard].
-  /// [name] Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// [name] Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   /// [nodes] Set of nodes in this shard.
   /// [numNodes] Number of individual nodes in this shard.
   /// [slots] Keyspace for this shard. Example: `0-16383`.
@@ -43,4 +43,3 @@ class ClusterShard {
     );
   }
 }
-

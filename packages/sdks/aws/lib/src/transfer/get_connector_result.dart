@@ -25,7 +25,7 @@ class GetConnectorResult {
   final List<String> serviceManagedEgressIpAddresses;
   /// Object containing the following attributes:
   final List<GetConnectorSftpConfig> sftpConfigs;
-  /// Object containing the following attributes:
+  /// Map of tags assigned to the resource.
   final Map<String, String> tags;
   /// URL of the partner's AS2 or SFTP endpoint.
   final String url;
@@ -41,7 +41,7 @@ class GetConnectorResult {
   /// [securityPolicyName] Name of security policy.
   /// [serviceManagedEgressIpAddresses] List of egress Ip addresses.
   /// [sftpConfigs] Object containing the following attributes:
-  /// [tags] Object containing the following attributes:
+  /// [tags] Map of tags assigned to the resource.
   /// [url] URL of the partner's AS2 or SFTP endpoint.
   const GetConnectorResult({
     required this.accessRole,
@@ -92,4 +92,3 @@ class GetConnectorResult {
     );
   }
 }
-

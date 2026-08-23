@@ -63,6 +63,20 @@ import 'access_log_subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_accesslogsubscription" "example" {
+///   resource_identifier = exampleAwsVpclatticeServiceNetwork.id
+///   destination_arn     = bucket.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'access_log_subscription_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpclattice.AccessLogSubscription;
 /// import com.pulumi.aws.vpclattice.AccessLogSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -118,12 +132,13 @@ class AccessLogSubscription extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Amazon Resource Name (ARN) of the service network or service.
   late final pulumi.Output<String> resourceArn;
-  /// The ID or Amazon Resource Identifier (ARN) of the service network or service. You must use the ARN if the resources specified in the operation are in different accounts.
+  /// ID or Amazon Resource Identifier (ARN) of the service network or service. You must use the ARN if the resources specified in the operation are in different accounts.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> resourceIdentifier;
   /// Type of log that monitors your Amazon VPC Lattice service networks. Valid values are: `SERVICE`, `RESOURCE`. Defaults to `SERVICE`.
   late final pulumi.Output<String> serviceNetworkLogType;
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
 

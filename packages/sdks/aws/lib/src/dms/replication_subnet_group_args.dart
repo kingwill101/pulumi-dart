@@ -15,7 +15,7 @@ class ReplicationSubnetGroupArgs {
   final pulumi.Input<String> replicationSubnetGroupId;
   /// List of at least 2 EC2 subnet IDs for the subnet group. The subnets must cover at least 2 availability zones.
   final pulumi.Input<List<String>> subnetIds;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ReplicationSubnetGroupArgs].
@@ -23,7 +23,7 @@ class ReplicationSubnetGroupArgs {
   /// [replicationSubnetGroupDescription] Description for the subnet group.
   /// [replicationSubnetGroupId] Name for the replication subnet group. This value is stored as a lowercase string. It must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens and cannot be `default`.
   /// [subnetIds] List of at least 2 EC2 subnet IDs for the subnet group. The subnets must cover at least 2 availability zones.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ReplicationSubnetGroupArgs({
     this.region,
     required this.replicationSubnetGroupDescription,
@@ -52,4 +52,3 @@ class ReplicationSubnetGroupArgs {
     );
   }
 }
-

@@ -73,6 +73,21 @@ import 'vpc_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_vpcattachment" "example" {
+///   subnet_arns     = [exampleAwsSubnet.arn]
+///   core_network_id = exampleAwsccNetworkmanagerCoreNetwork.id
+///   vpc_arn         = exampleAwsVpc.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +96,8 @@ import 'vpc_attachment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.VpcAttachment;
 /// import com.pulumi.aws.networkmanager.VpcAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -206,6 +221,27 @@ import 'vpc_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_vpcattachment" "example" {
+///   subnet_arns     = [exampleAwsSubnet.arn]
+///   core_network_id = exampleAwsccNetworkmanagerCoreNetwork.id
+///   vpc_arn         = exampleAwsVpc.arn
+///   options = {
+///     appliance_mode_support             = false
+///     dns_support                        = true
+///     ipv6_support                       = false
+///     security_group_referencing_support = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -215,8 +251,8 @@ import 'vpc_attachment_state.dart';
 /// import com.pulumi.aws.networkmanager.VpcAttachment;
 /// import com.pulumi.aws.networkmanager.VpcAttachmentArgs;
 /// import com.pulumi.aws.networkmanager.inputs.VpcAttachmentOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -294,9 +330,9 @@ class VpcAttachment extends pulumi.CustomResource {
   late final pulumi.Output<String> state;
   /// Subnet ARNs of the VPC attachment.
   late final pulumi.Output<List<String>> subnetArns;
-  /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ARN of the VPC.
   ///

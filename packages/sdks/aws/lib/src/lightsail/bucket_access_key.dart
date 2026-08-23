@@ -65,13 +65,30 @@ import 'bucket_access_key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lightsail.NewBucketAccessKey(ctx, "example", &lightsail.BucketAccessKeyArgs{
-/// 			BucketName: example.ID(),
+/// 			BucketName: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_bucket" "example" {
+///   name      = "example-bucket"
+///   bundle_id = "small_1_0"
+/// }
+/// resource "aws_lightsail_bucketaccesskey" "example" {
+///   bucket_name = aws_lightsail_bucket.example.id
 /// }
 /// ```
 /// ```java
@@ -84,8 +101,8 @@ import 'bucket_access_key_state.dart';
 /// import com.pulumi.aws.lightsail.BucketArgs;
 /// import com.pulumi.aws.lightsail.BucketAccessKey;
 /// import com.pulumi.aws.lightsail.BucketAccessKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

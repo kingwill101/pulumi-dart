@@ -77,6 +77,19 @@ import 'get_orderable_db_instance_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_neptune_getengineversion" "test" {
+///   preferred_versions = ["1.4.5.0", "1.4.4.0", "1.4.3.0"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +98,8 @@ import 'get_orderable_db_instance_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.neptune.NeptuneFunctions;
 /// import com.pulumi.aws.neptune.inputs.GetEngineVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -209,6 +222,20 @@ Future<GetEngineVersionResult> getEngineVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_neptune_getorderabledbinstance" "test" {
+///   engine_version             = "1.0.3.0"
+///   preferred_instance_classes = ["db.r5.large", "db.r4.large", "db.t3.medium"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -217,8 +244,8 @@ Future<GetEngineVersionResult> getEngineVersion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.neptune.NeptuneFunctions;
 /// import com.pulumi.aws.neptune.inputs.GetOrderableDbInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

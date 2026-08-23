@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodeSpecListenerTlCertificateAcm {
+  /// ARN for the certificate.
   final pulumi.Input<String> certificateArn;
 
   /// Creates a new [GetVirtualNodeSpecListenerTlCertificateAcm].
-  /// [certificateArn] Required.
+  /// [certificateArn] ARN for the certificate.
   const GetVirtualNodeSpecListenerTlCertificateAcm({
     required this.certificateArn,
   });
@@ -23,4 +24,3 @@ class GetVirtualNodeSpecListenerTlCertificateAcm {
     );
   }
 }
-

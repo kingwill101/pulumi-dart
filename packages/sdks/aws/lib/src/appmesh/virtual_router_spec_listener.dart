@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_router_spec_listener_port_mapping.dart';
 
 class VirtualRouterSpecListener {
-  /// Port mapping information for the listener.
+  /// Port mapping information for the listener. See `portMapping` Block for details.
   final pulumi.Input<VirtualRouterSpecListenerPortMapping> portMapping;
 
   /// Creates a new [VirtualRouterSpecListener].
-  /// [portMapping] Port mapping information for the listener.
+  /// [portMapping] Port mapping information for the listener. See `portMapping` Block for details.
   const VirtualRouterSpecListener({
     required this.portMapping,
   });
@@ -25,4 +25,3 @@ class VirtualRouterSpecListener {
     );
   }
 }
-

@@ -30,7 +30,7 @@ class AmiFromInstanceArgs {
   final pulumi.Input<bool>? snapshotWithoutReboot;
   /// ID of the instance to use as the basis of the AMI.
   final pulumi.Input<String> sourceInstanceId;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [AmiFromInstanceArgs].
@@ -42,7 +42,7 @@ class AmiFromInstanceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [snapshotWithoutReboot] Boolean that overrides the behavior of stopping
   /// [sourceInstanceId] ID of the instance to use as the basis of the AMI.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const AmiFromInstanceArgs({
     this.deprecationTime,
     this.description,
@@ -83,4 +83,3 @@ class AmiFromInstanceArgs {
     );
   }
 }
-

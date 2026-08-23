@@ -151,6 +151,37 @@ import 'route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appmesh_route" "serviceb" {
+///   name                = "serviceB-route"
+///   mesh_name           = simple.id
+///   virtual_router_name = servicebAwsAppmeshVirtualRouter.name
+///   spec = {
+///     http_route = {
+///       match = {
+///         prefix = "/"
+///       }
+///       action = {
+///         weighted_targets = [{
+///           "virtualNode" = serviceb1.name
+///           "weight"      = 90
+///           }, {
+///           "virtualNode" = serviceb2.name
+///           "weight"      = 10
+///         }]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -163,8 +194,9 @@ import 'route_state.dart';
 /// import com.pulumi.aws.appmesh.inputs.RouteSpecHttpRouteArgs;
 /// import com.pulumi.aws.appmesh.inputs.RouteSpecHttpRouteMatchArgs;
 /// import com.pulumi.aws.appmesh.inputs.RouteSpecHttpRouteActionArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.appmesh.inputs.RouteSpecHttpRouteActionWeightedTargetArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -386,6 +418,42 @@ import 'route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appmesh_route" "serviceb" {
+///   name                = "serviceB-route"
+///   mesh_name           = simple.id
+///   virtual_router_name = servicebAwsAppmeshVirtualRouter.name
+///   spec = {
+///     http_route = {
+///       match = {
+///         method = "POST"
+///         prefix = "/"
+///         scheme = "https"
+///         headers = [{
+///           "name" = "clientRequestId"
+///           "match" = {
+///             "prefix" = "123"
+///           }
+///         }]
+///       }
+///       action = {
+///         weighted_targets = [{
+///           "virtualNode" = servicebAwsAppmeshVirtualNode.name
+///           "weight"      = 100
+///         }]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -397,9 +465,12 @@ import 'route_state.dart';
 /// import com.pulumi.aws.appmesh.inputs.RouteSpecArgs;
 /// import com.pulumi.aws.appmesh.inputs.RouteSpecHttpRouteArgs;
 /// import com.pulumi.aws.appmesh.inputs.RouteSpecHttpRouteMatchArgs;
+/// import com.pulumi.aws.appmesh.inputs.RouteSpecHttpRouteMatchHeaderArgs;
+/// import com.pulumi.aws.appmesh.inputs.RouteSpecHttpRouteMatchHeaderMatchArgs;
 /// import com.pulumi.aws.appmesh.inputs.RouteSpecHttpRouteActionArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.appmesh.inputs.RouteSpecHttpRouteActionWeightedTargetArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -628,6 +699,42 @@ import 'route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appmesh_route" "serviceb" {
+///   name                = "serviceB-route"
+///   mesh_name           = simple.id
+///   virtual_router_name = servicebAwsAppmeshVirtualRouter.name
+///   spec = {
+///     http_route = {
+///       match = {
+///         prefix = "/"
+///       }
+///       retry_policy = {
+///         http_retry_events = ["server-error"]
+///         max_retries       = 1
+///         per_retry_timeout = {
+///           unit  = "s"
+///           value = 15
+///         }
+///       }
+///       action = {
+///         weighted_targets = [{
+///           "virtualNode" = servicebAwsAppmeshVirtualNode.name
+///           "weight"      = 100
+///         }]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -642,8 +749,9 @@ import 'route_state.dart';
 /// import com.pulumi.aws.appmesh.inputs.RouteSpecHttpRouteRetryPolicyArgs;
 /// import com.pulumi.aws.appmesh.inputs.RouteSpecHttpRouteRetryPolicyPerRetryTimeoutArgs;
 /// import com.pulumi.aws.appmesh.inputs.RouteSpecHttpRouteActionArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.appmesh.inputs.RouteSpecHttpRouteActionWeightedTargetArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -821,6 +929,31 @@ import 'route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appmesh_route" "serviceb" {
+///   name                = "serviceB-route"
+///   mesh_name           = simple.id
+///   virtual_router_name = servicebAwsAppmeshVirtualRouter.name
+///   spec = {
+///     tcp_route = {
+///       action = {
+///         weighted_targets = [{
+///           "virtualNode" = serviceb1.name
+///           "weight"      = 100
+///         }]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -832,8 +965,9 @@ import 'route_state.dart';
 /// import com.pulumi.aws.appmesh.inputs.RouteSpecArgs;
 /// import com.pulumi.aws.appmesh.inputs.RouteSpecTcpRouteArgs;
 /// import com.pulumi.aws.appmesh.inputs.RouteSpecTcpRouteActionArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.appmesh.inputs.RouteSpecTcpRouteActionWeightedTargetArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -883,7 +1017,7 @@ import 'route_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import App Mesh virtual routes using `mesh_name` and `virtual_router_name` together with the route's `name`. For example:
+/// Using `pulumi import`, import App Mesh virtual routes using `meshName` and `virtualRouterName` together with the route's `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appmesh/route:Route serviceb simpleapp/serviceB/serviceB-route
@@ -905,11 +1039,11 @@ class Route extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Resource owner's AWS account ID.
   late final pulumi.Output<String> resourceOwner;
-  /// Route specification to apply.
+  /// Route specification to apply. See `spec` Block for details.
   late final pulumi.Output<RouteSpec> spec;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Name of the virtual router in which to create the route. Must be between 1 and 255 characters in length.
   late final pulumi.Output<String> virtualRouterName;

@@ -95,14 +95,14 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketVersioning(ctx, "versioning_example", &s3.BucketVersioningArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
@@ -112,6 +112,29 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example-bucket"
+/// }
+/// resource "aws_s3_bucketacl" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   acl    = "private"
+/// }
+/// resource "aws_s3_bucketversioning" "versioning_example" {
+///   bucket = aws_s3_bucket.example.id
+///   versioning_configuration = {
+///     status = "Enabled"
+///   }
 /// }
 /// ```
 /// ```java
@@ -127,8 +150,8 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 /// import com.pulumi.aws.s3.BucketVersioning;
 /// import com.pulumi.aws.s3.BucketVersioningArgs;
 /// import com.pulumi.aws.s3.inputs.BucketVersioningVersioningConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -261,14 +284,14 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketVersioning(ctx, "versioning_example", &s3.BucketVersioningArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Disabled"),
 /// 			},
@@ -278,6 +301,29 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example-bucket"
+/// }
+/// resource "aws_s3_bucketacl" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   acl    = "private"
+/// }
+/// resource "aws_s3_bucketversioning" "versioning_example" {
+///   bucket = aws_s3_bucket.example.id
+///   versioning_configuration = {
+///     status = "Disabled"
+///   }
 /// }
 /// ```
 /// ```java
@@ -293,8 +339,8 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 /// import com.pulumi.aws.s3.BucketVersioning;
 /// import com.pulumi.aws.s3.BucketVersioningArgs;
 /// import com.pulumi.aws.s3.inputs.BucketVersioningVersioningConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -349,7 +395,7 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///
 /// ### Object Dependency On Versioning
 ///
-/// When you create an object whose `version_id` you need and an `aws.s3.BucketVersioning` resource in the same configuration, you are more likely to have success by ensuring the `s3_object` depends either implicitly (see below) or explicitly (i.e., using `depends_on = [aws_s3_bucket_versioning.example]`) on the `aws.s3.BucketVersioning` resource.
+/// When you create an object whose `versionId` you need and an `aws.s3.BucketVersioning` resource in the same configuration, you are more likely to have success by ensuring the `s3Object` depends either implicitly (see below) or explicitly (i.e., using `dependsOn = [aws_s3_bucket_versioning.example]`) on the `aws.s3.BucketVersioning` resource.
 ///
 /// &gt; **NOTE:** For critical and/or production S3 objects, do not create a bucket, enable versioning, and create an object in the bucket within the same configuration. Doing so will not allow the AWS-recommended 15 minutes between enabling versioning and writing to the bucket.
 ///
@@ -436,7 +482,7 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketVersioning, err := s3.NewBucketVersioning(ctx, "example", &s3.BucketVersioningArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
@@ -445,7 +491,7 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketObjectv2(ctx, "example", &s3.BucketObjectv2Args{
-/// 			Bucket: exampleBucketVersioning.ID(),
+/// 			Bucket: exampleBucketVersioning.ID().ToIDOutput().ToStringOutput(),
 /// 			Key:    pulumi.String("droeloe"),
 /// 			Source: pulumi.NewFileAsset("example.txt"),
 /// 		})
@@ -454,6 +500,30 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "yotto"
+/// }
+/// resource "aws_s3_bucketversioning" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   versioning_configuration = {
+///     status = "Enabled"
+///   }
+/// }
+/// resource "aws_s3_bucketobjectv2" "example" {
+///   bucket = aws_s3_bucketversioning.example.id
+///   key    = "droeloe"
+///   source = fileAsset("example.txt")
 /// }
 /// ```
 /// ```java
@@ -470,8 +540,8 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 /// import com.pulumi.aws.s3.BucketObjectv2;
 /// import com.pulumi.aws.s3.BucketObjectv2Args;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -523,7 +593,7 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///       bucket: ${exampleBucketVersioning.id}
 ///       key: droeloe
 ///       source:
-///         fn::FileAsset: example.txt
+///         fn::fileAsset: example.txt
 /// ```
 ///
 ///
@@ -537,14 +607,14 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expected_bucket_owner` separated by a comma (`,`):
+/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expectedBucketOwner` separated by a comma (`,`):
 ///
 ///
-/// **Using `pulumi import` to import** S3 bucket versioning using the `bucket` or using the `bucket` and `expected_bucket_owner` separated by a comma (`,`). For example:
+/// **Using `pulumi import` to import** S3 bucket versioning using the `bucket` or using the `bucket` and `expectedBucketOwner` separated by a comma (`,`). For example:
 ///
 /// If the owner (account ID) of the source bucket is the same account used to configure the AWS Provider, import using the `bucket`:
 ///
@@ -552,7 +622,7 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 /// $ pulumi import aws:s3/bucketVersioningV2:BucketVersioningV2 example bucket-name
 /// ```
 ///
-/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expected_bucket_owner` separated by a comma (`,`):
+/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expectedBucketOwner` separated by a comma (`,`):
 ///
 /// ```sh
 /// $ pulumi import aws:s3/bucketVersioningV2:BucketVersioningV2 example bucket-name,123456789012

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_statement_managed_rule_group_statement_rule_action_override_action_to_use_count_custom_request_handling.dart';
 
 class WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCount {
-  /// Defines custom handling for the web request. See `custom_request_handling` below for details.
+  /// Custom request handling configuration. See Custom Request Handling below.
   final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCountCustomRequestHandling>? customRequestHandling;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCount].
-  /// [customRequestHandling] Defines custom handling for the web request. See `custom_request_handling` below for details.
+  /// [customRequestHandling] Custom request handling configuration. See Custom Request Handling below.
   const WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCount({
     this.customRequestHandling,
   });
@@ -25,4 +25,3 @@ class WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseC
     );
   }
 }
-

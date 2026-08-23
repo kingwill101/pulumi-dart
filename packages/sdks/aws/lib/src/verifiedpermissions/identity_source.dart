@@ -130,7 +130,7 @@ import 'identity_source_state.dart';
 /// 		}
 /// 		exampleUserPoolClient, err := cognito.NewUserPoolClient(ctx, "example", &cognito.UserPoolClientArgs{
 /// 			Name:       pulumi.String("example"),
-/// 			UserPoolId: exampleUserPool.ID(),
+/// 			UserPoolId: exampleUserPool.ID().ToIDOutput().ToStringOutput(),
 /// 			ExplicitAuthFlows: pulumi.StringArray{
 /// 				pulumi.String("ADMIN_NO_SRP_AUTH"),
 /// 			},
@@ -139,12 +139,12 @@ import 'identity_source_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = verifiedpermissions.NewIdentitySource(ctx, "example", &verifiedpermissions.IdentitySourceArgs{
-/// 			PolicyStoreId: example.ID(),
+/// 			PolicyStoreId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Configuration: &verifiedpermissions.IdentitySourceConfigurationArgs{
 /// 				CognitoUserPoolConfiguration: &verifiedpermissions.IdentitySourceConfigurationCognitoUserPoolConfigurationArgs{
 /// 					UserPoolArn: exampleUserPool.Arn,
 /// 					ClientIds: pulumi.StringArray{
-/// 						exampleUserPoolClient.ID(),
+/// 						exampleUserPoolClient.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
@@ -154,6 +154,38 @@ import 'identity_source_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedpermissions_policystore" "example" {
+///   validation_settings = {
+///     mode = "STRICT"
+///   }
+/// }
+/// resource "aws_cognito_userpool" "example" {
+///   name = "example"
+/// }
+/// resource "aws_cognito_userpoolclient" "example" {
+///   name                = "example"
+///   user_pool_id        = aws_cognito_userpool.example.id
+///   explicit_auth_flows = ["ADMIN_NO_SRP_AUTH"]
+/// }
+/// resource "aws_verifiedpermissions_identitysource" "example" {
+///   policy_store_id = aws_verifiedpermissions_policystore.example.id
+///   configuration = {
+///     cognito_user_pool_configuration = {
+///       user_pool_arn = aws_cognito_userpool.example.arn
+///       client_ids    = [aws_cognito_userpoolclient.example.id]
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -173,8 +205,8 @@ import 'identity_source_state.dart';
 /// import com.pulumi.aws.verifiedpermissions.IdentitySourceArgs;
 /// import com.pulumi.aws.verifiedpermissions.inputs.IdentitySourceConfigurationArgs;
 /// import com.pulumi.aws.verifiedpermissions.inputs.IdentitySourceConfigurationCognitoUserPoolConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -373,7 +405,7 @@ import 'identity_source_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = verifiedpermissions.NewIdentitySource(ctx, "example", &verifiedpermissions.IdentitySourceArgs{
-/// 			PolicyStoreId: example.ID(),
+/// 			PolicyStoreId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Configuration: &verifiedpermissions.IdentitySourceConfigurationArgs{
 /// 				OpenIdConnectConfiguration: &verifiedpermissions.IdentitySourceConfigurationOpenIdConnectConfigurationArgs{
 /// 					Issuer: pulumi.String("https://auth.example.com"),
@@ -401,6 +433,41 @@ import 'identity_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedpermissions_policystore" "example" {
+///   validation_settings = {
+///     mode = "STRICT"
+///   }
+/// }
+/// resource "aws_verifiedpermissions_identitysource" "example" {
+///   policy_store_id = aws_verifiedpermissions_policystore.example.id
+///   configuration = {
+///     open_id_connect_configuration = {
+///       issuer = "https://auth.example.com"
+///       token_selection = {
+///         access_token_only = {
+///           audiences          = ["https://myapp.example.com"]
+///           principal_id_claim = "sub"
+///         }
+///       }
+///       entity_id_prefix = "MyOIDCProvider"
+///       group_configuration = {
+///         group_claim       = "groups"
+///         group_entity_type = "MyCorp::UserGroup"
+///       }
+///     }
+///   }
+///   principal_entity_type = "MyCorp::User"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -417,8 +484,8 @@ import 'identity_source_state.dart';
 /// import com.pulumi.aws.verifiedpermissions.inputs.IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionArgs;
 /// import com.pulumi.aws.verifiedpermissions.inputs.IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnlyArgs;
 /// import com.pulumi.aws.verifiedpermissions.inputs.IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

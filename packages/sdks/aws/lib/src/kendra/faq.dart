@@ -98,6 +98,28 @@ import 'faq_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_faq" "example" {
+///   index_id = exampleAwsKendraIndex.id
+///   name     = "Example"
+///   role_arn = exampleAwsIamRole.arn
+///   s3_path = {
+///     bucket = exampleAwsS3Bucket.id
+///     key    = exampleAwsS3Object.key
+///   }
+///   tags = {
+///     "Name" = "Example Kendra Faq"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -107,8 +129,8 @@ import 'faq_state.dart';
 /// import com.pulumi.aws.kendra.Faq;
 /// import com.pulumi.aws.kendra.FaqArgs;
 /// import com.pulumi.aws.kendra.inputs.FaqS3PathArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -232,6 +254,26 @@ import 'faq_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_faq" "example" {
+///   index_id    = exampleAwsKendraIndex.id
+///   name        = "Example"
+///   file_format = "CSV"
+///   role_arn    = exampleAwsIamRole.arn
+///   s3_path = {
+///     bucket = exampleAwsS3Bucket.id
+///     key    = exampleAwsS3Object.key
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -241,8 +283,8 @@ import 'faq_state.dart';
 /// import com.pulumi.aws.kendra.Faq;
 /// import com.pulumi.aws.kendra.FaqArgs;
 /// import com.pulumi.aws.kendra.inputs.FaqS3PathArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -365,6 +407,26 @@ import 'faq_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_faq" "example" {
+///   index_id      = exampleAwsKendraIndex.id
+///   name          = "Example"
+///   language_code = "en"
+///   role_arn      = exampleAwsIamRole.arn
+///   s3_path = {
+///     bucket = exampleAwsS3Bucket.id
+///     key    = exampleAwsS3Object.key
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -374,8 +436,8 @@ import 'faq_state.dart';
 /// import com.pulumi.aws.kendra.Faq;
 /// import com.pulumi.aws.kendra.FaqArgs;
 /// import com.pulumi.aws.kendra.inputs.FaqS3PathArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -448,7 +510,7 @@ class Faq extends pulumi.CustomResource {
   /// The status of the FAQ. It is ready to use when the status is ACTIVE.
   late final pulumi.Output<String> status;
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The date and time that the FAQ was last updated.
   late final pulumi.Output<String> updatedAt;

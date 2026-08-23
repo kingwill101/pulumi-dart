@@ -118,6 +118,28 @@ import 'serverless_security_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_serverlesssecuritypolicy" "example" {
+///   name        = "example"
+///   type        = "encryption"
+///   description = "encryption security policy for example-collection"
+///   policy = jsonencode({
+///     "Rules" = [{
+///       "Resource"     = ["collection/example-collection"]
+///       "ResourceType" = "collection"
+///     }]
+///     "AWSOwnedKey" = true
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +149,8 @@ import 'serverless_security_policy_state.dart';
 /// import com.pulumi.aws.opensearch.ServerlessSecurityPolicy;
 /// import com.pulumi.aws.opensearch.ServerlessSecurityPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -285,6 +307,28 @@ import 'serverless_security_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_serverlesssecuritypolicy" "example" {
+///   name        = "example"
+///   type        = "encryption"
+///   description = "encryption security policy for collections that begin with \"example\""
+///   policy = jsonencode({
+///     "Rules" = [{
+///       "Resource"     = ["collection/example*"]
+///       "ResourceType" = "collection"
+///     }]
+///     "AWSOwnedKey" = true
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -294,8 +338,8 @@ import 'serverless_security_policy_state.dart';
 /// import com.pulumi.aws.opensearch.ServerlessSecurityPolicy;
 /// import com.pulumi.aws.opensearch.ServerlessSecurityPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -456,6 +500,29 @@ import 'serverless_security_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_serverlesssecuritypolicy" "example" {
+///   name        = "example"
+///   type        = "encryption"
+///   description = "encryption security policy using customer KMS key"
+///   policy = jsonencode({
+///     "Rules" = [{
+///       "Resource"     = ["collection/customer-managed-key-collection"]
+///       "ResourceType" = "collection"
+///     }]
+///     "AWSOwnedKey" = false
+///     "KmsARN"      = "arn:aws:kms:us-east-1:123456789012:key/93fd6da4-a317-4c17-bfe9-382b5d988b36"
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -465,8 +532,8 @@ import 'serverless_security_policy_state.dart';
 /// import com.pulumi.aws.opensearch.ServerlessSecurityPolicy;
 /// import com.pulumi.aws.opensearch.ServerlessSecurityPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -662,6 +729,32 @@ import 'serverless_security_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_serverlesssecuritypolicy" "example" {
+///   name        = "example"
+///   type        = "network"
+///   description = "Public access"
+///   policy = jsonencode([{
+///     "Description" = "Public access to collection and Dashboards endpoint for example collection"
+///     "Rules" = [{
+///       "ResourceType" = "collection"
+///       "Resource"     = ["collection/example-collection"]
+///       }, {
+///       "ResourceType" = "dashboard"
+///       "Resource"     = ["collection/example-collection"]
+///     }]
+///     "AllowFromPublic" = true
+///   }])
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -671,8 +764,8 @@ import 'serverless_security_policy_state.dart';
 /// import com.pulumi.aws.opensearch.ServerlessSecurityPolicy;
 /// import com.pulumi.aws.opensearch.ServerlessSecurityPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -884,6 +977,33 @@ import 'serverless_security_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_serverlesssecuritypolicy" "example" {
+///   name        = "example"
+///   type        = "network"
+///   description = "VPC access"
+///   policy = jsonencode([{
+///     "Description" = "VPC access to collection and Dashboards endpoint for example collection"
+///     "Rules" = [{
+///       "ResourceType" = "collection"
+///       "Resource"     = ["collection/example-collection"]
+///       }, {
+///       "ResourceType" = "dashboard"
+///       "Resource"     = ["collection/example-collection"]
+///     }]
+///     "AllowFromPublic" = false
+///     "SourceVPCEs"     = ["vpce-050f79086ee71ac05"]
+///   }])
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -893,8 +1013,8 @@ import 'serverless_security_policy_state.dart';
 /// import com.pulumi.aws.opensearch.ServerlessSecurityPolicy;
 /// import com.pulumi.aws.opensearch.ServerlessSecurityPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1157,6 +1277,40 @@ import 'serverless_security_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_serverlesssecuritypolicy" "example" {
+///   name        = "example"
+///   type        = "network"
+///   description = "Mixed access for marketing and sales"
+///   policy = jsonencode([{
+///     "Description" = "Marketing access"
+///     "Rules" = [{
+///       "ResourceType" = "collection"
+///       "Resource"     = ["collection/marketing*"]
+///       }, {
+///       "ResourceType" = "dashboard"
+///       "Resource"     = ["collection/marketing*"]
+///     }]
+///     "AllowFromPublic" = false
+///     "SourceVPCEs"     = ["vpce-050f79086ee71ac05"]
+///     }, {
+///     "Description" = "Sales access"
+///     "Rules" = [{
+///       "ResourceType" = "collection"
+///       "Resource"     = ["collection/finance"]
+///     }]
+///     "AllowFromPublic" = true
+///   }])
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1166,8 +1320,8 @@ import 'serverless_security_policy_state.dart';
 /// import com.pulumi.aws.opensearch.ServerlessSecurityPolicy;
 /// import com.pulumi.aws.opensearch.ServerlessSecurityPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1245,6 +1399,19 @@ import 'serverless_security_policy_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the policy.
+/// * `type` (String) Type of security policy.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import OpenSearchServerless Security Policy using the `name` and `type` arguments separated by a slash (`/`). For example:
 ///

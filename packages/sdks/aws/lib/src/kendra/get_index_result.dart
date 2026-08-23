@@ -35,7 +35,7 @@ class GetIndexResult {
   final String roleArn;
   /// A block that specifies the identifier of the AWS KMS customer managed key (CMK) that's used to encrypt data indexed by Amazon Kendra. Amazon Kendra doesn't support asymmetric CMKs. Documented below.
   final List<GetIndexServerSideEncryptionConfiguration> serverSideEncryptionConfigurations;
-  /// Current status of the index. When the value is `ACTIVE`, the index is ready for use. If the Status field value is `FAILED`, the `error_message` field contains a message that explains why.
+  /// Current status of the index. When the value is `ACTIVE`, the index is ready for use. If the Status field value is `FAILED`, the `errorMessage` field contains a message that explains why.
   final String status;
   /// Metadata that helps organize the Indices you create.
   final Map<String, String> tags;
@@ -62,7 +62,7 @@ class GetIndexResult {
   /// [region] Required.
   /// [roleArn] An AWS Identity and Access Management (IAM) role that gives Amazon Kendra permissions to access your Amazon CloudWatch logs and metrics. This is also the role you use when you call the `BatchPutDocument` API to index documents from an Amazon S3 bucket.
   /// [serverSideEncryptionConfigurations] A block that specifies the identifier of the AWS KMS customer managed key (CMK) that's used to encrypt data indexed by Amazon Kendra. Amazon Kendra doesn't support asymmetric CMKs. Documented below.
-  /// [status] Current status of the index. When the value is `ACTIVE`, the index is ready for use. If the Status field value is `FAILED`, the `error_message` field contains a message that explains why.
+  /// [status] Current status of the index. When the value is `ACTIVE`, the index is ready for use. If the Status field value is `FAILED`, the `errorMessage` field contains a message that explains why.
   /// [tags] Metadata that helps organize the Indices you create.
   /// [updatedAt] Unix datetime that the index was last updated.
   /// [userContextPolicy] User context policy. Valid values are `ATTRIBUTE_FILTER` or `USER_TOKEN`. For more information, refer to [UserContextPolicy](https://docs.aws.amazon.com/kendra/latest/APIReference/API_CreateIndex.html#kendra-CreateIndex-request-UserContextPolicy).
@@ -138,4 +138,3 @@ class GetIndexResult {
     );
   }
 }
-

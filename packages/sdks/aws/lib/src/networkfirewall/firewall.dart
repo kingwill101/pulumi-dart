@@ -118,6 +118,29 @@ import 'firewall_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_firewall" "example" {
+///   name                   = "example"
+///   firewall_policy_arn    = exampleAwsNetworkfirewallFirewallPolicy.arn
+///   vpc_id                 = exampleAwsVpc.id
+///   enabled_analysis_types = ["TLS_SNI", "HTTP_HOST"]
+///   subnet_mappings {
+///     subnet_id = exampleAwsSubnet.id
+///   }
+///   tags = {
+///     "Tag1" = "Value1"
+///     "Tag2" = "Value2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +150,8 @@ import 'firewall_state.dart';
 /// import com.pulumi.aws.networkfirewall.Firewall;
 /// import com.pulumi.aws.networkfirewall.FirewallArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.FirewallSubnetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -290,6 +313,31 @@ import 'firewall_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "example" {
+///   state = "available"
+/// }
+///
+/// resource "aws_networkfirewall_firewall" "example" {
+///   name                = "example"
+///   firewall_policy_arn = exampleAwsNetworkfirewallFirewallPolicy.arn
+///   transit_gateway_id  = exampleAwsEc2TransitGateway.id
+///   availability_zone_mappings {
+///     availability_zone_id = data.aws_getavailabilityzones.example.zone_ids[0]
+///   }
+///   availability_zone_mappings {
+///     availability_zone_id = data.aws_getavailabilityzones.example.zone_ids[1]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -301,8 +349,8 @@ import 'firewall_state.dart';
 /// import com.pulumi.aws.networkfirewall.Firewall;
 /// import com.pulumi.aws.networkfirewall.FirewallArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.FirewallAvailabilityZoneMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -357,7 +405,7 @@ import 'firewall_state.dart';
 ///
 /// ### Transit Gateway Attached Firewall (Cross Account)
 ///
-/// A full example of how to create a Transit Gateway in one AWS account, share it with a second AWS account, and create Network Firewall in the second account to the Transit Gateway via the `aws.networkfirewall.Firewall` and `aws_networkfirewall_network_firewall_transit_gateway_attachment_accepter` resources can be found in the `./examples/network-firewall-cross-account-transit-gateway` directory within the Github Repository
+/// A full example of how to create a Transit Gateway in one AWS account, share it with a second AWS account, and create Network Firewall in the second account to the Transit Gateway via the `aws.networkfirewall.Firewall` and `aws.networkfirewall.FirewallTransitGatewayAttachmentAccepter` resources can be found in the `./examples/network-firewall-cross-account-transit-gateway` directory within the Github Repository
 ///
 /// ## Import
 ///
@@ -395,9 +443,9 @@ class Firewall extends pulumi.CustomResource {
   late final pulumi.Output<bool?> subnetChangeProtection;
   /// Required when creating a VPC attached firewall. Set of configuration blocks describing the public subnets. Each subnet must belong to a different Availability Zone in the VPC. AWS Network Firewall creates a firewall endpoint in each subnet. See Subnet Mapping below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> subnetMappings;
-  /// Map of resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of resource tags to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// . Required when creating a transit gateway-attached firewall. The unique identifier of the transit gateway to attach to this firewall. You can provide either a transit gateway from your account or one that has been shared with you through AWS Resource Access Manager
   late final pulumi.Output<String?> transitGatewayId;

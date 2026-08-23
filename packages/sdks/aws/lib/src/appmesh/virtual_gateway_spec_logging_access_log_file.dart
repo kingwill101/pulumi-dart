@@ -4,14 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_gateway_spec_logging_access_log_file_format.dart';
 
 class VirtualGatewaySpecLoggingAccessLogFile {
-  /// The specified format for the logs.
+  /// Specified format for the logs. See `format` Block for details.
   final pulumi.Input<VirtualGatewaySpecLoggingAccessLogFileFormat>? format;
-  /// File path to write access logs to. You can use `/dev/stdout` to send access logs to standard out. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> path;
 
   /// Creates a new [VirtualGatewaySpecLoggingAccessLogFile].
-  /// [format] The specified format for the logs.
-  /// [path] File path to write access logs to. You can use `/dev/stdout` to send access logs to standard out. Must be between 1 and 255 characters in length.
+  /// [format] Specified format for the logs. See `format` Block for details.
+  /// [path] Required.
   const VirtualGatewaySpecLoggingAccessLogFile({
     this.format,
     required this.path,
@@ -31,4 +30,3 @@ class VirtualGatewaySpecLoggingAccessLogFile {
     );
   }
 }
-

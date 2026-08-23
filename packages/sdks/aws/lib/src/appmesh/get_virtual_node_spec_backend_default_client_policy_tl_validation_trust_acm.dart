@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustAcm {
+  /// One or more ACM ARNs.
   final pulumi.Input<List<String>> certificateAuthorityArns;
 
   /// Creates a new [GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustAcm].
-  /// [certificateAuthorityArns] Required.
+  /// [certificateAuthorityArns] One or more ACM ARNs.
   const GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustAcm({
     required this.certificateAuthorityArns,
   });
@@ -23,4 +24,3 @@ class GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustAcm {
     );
   }
 }
-

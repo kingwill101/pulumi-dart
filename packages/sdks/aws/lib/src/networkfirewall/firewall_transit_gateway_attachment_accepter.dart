@@ -8,7 +8,7 @@ import 'firewall_transit_gateway_attachment_accepter_timeouts.dart';
 /// When a cross-account (requester's AWS account differs from the accepter's AWS account) requester creates a Network Firewall with Transit Gateway ID using `aws.networkfirewall.Firewall`. Then an EC2 Transit Gateway VPC Attachment resource is automatically created in the accepter's account.
 /// The accepter can use the `aws.networkfirewall.FirewallTransitGatewayAttachmentAccepter` resource to "adopt" its side of the connection into management.
 ///
-/// &gt; **NOTE:** If the `transit_gateway_id` argument in the `aws.networkfirewall.Firewall` resource is used to attach a firewall to a transit gateway in a cross-account setup (where **Auto accept shared attachments** is disabled), the resource will be considered created when the transit gateway attachment is in the *Pending Acceptance* state and the firewall is in the *Provisioning* status. At this point, you can use the `aws.networkfirewall.FirewallTransitGatewayAttachmentAccepter` resource to finalize the network firewall deployment. Once the transit gateway attachment reaches the *Available* state, the firewall status *Ready*.
+/// &gt; **NOTE:** If the `transitGatewayId` argument in the `aws.networkfirewall.Firewall` resource is used to attach a firewall to a transit gateway in a cross-account setup (where **Auto accept shared attachments** is disabled), the resource will be considered created when the transit gateway attachment is in the *Pending Acceptance* state and the firewall is in the *Provisioning* status. At this point, you can use the `aws.networkfirewall.FirewallTransitGatewayAttachmentAccepter` resource to finalize the network firewall deployment. Once the transit gateway attachment reaches the *Available* state, the firewall status *Ready*.
 ///
 /// ## Example Usage
 ///
@@ -62,6 +62,19 @@ import 'firewall_transit_gateway_attachment_accepter_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_firewalltransitgatewayattachmentaccepter" "example" {
+///   transit_gateway_attachment_id = exampleAwsNetworkfirewallFirewall.firewallStatus[0].transitGatewayAttachmentSyncState[0].attachmentId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +83,8 @@ import 'firewall_transit_gateway_attachment_accepter_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkfirewall.FirewallTransitGatewayAttachmentAccepter;
 /// import com.pulumi.aws.networkfirewall.FirewallTransitGatewayAttachmentAccepterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -103,7 +116,7 @@ import 'firewall_transit_gateway_attachment_accepter_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Network Firewall Firewall Transit Gateway Attachment Accepter using the `transit_gateway_attachment_id`. For example:
+/// Using `pulumi import`, import Network Firewall Firewall Transit Gateway Attachment Accepter using the `transitGatewayAttachmentId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:networkfirewall/firewallTransitGatewayAttachmentAccepter:FirewallTransitGatewayAttachmentAccepter example tgw-attach-0c3b7e9570eee089c

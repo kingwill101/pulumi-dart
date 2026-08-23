@@ -146,6 +146,33 @@ import 'event_bus_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "test" {
+///   statements {
+///     sid       = "DevAccountAccess"
+///     effect    = "Allow"
+///     actions   = ["events:PutEvents"]
+///     resources = ["arn:aws:events:eu-west-1:123456789012:event-bus/default"]
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["123456789012"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventbuspolicy" "test" {
+///   policy         = data.aws_iam_getpolicydocument.test.json
+///   event_bus_name = testAwsCloudwatchEventBus.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -154,10 +181,12 @@ import 'event_bus_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.cloudwatch.EventBusPolicy;
 /// import com.pulumi.aws.cloudwatch.EventBusPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -356,55 +385,88 @@ import 'event_bus_policy_state.dart';
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// test, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Sid: pulumi.StringRef("OrganizationAccess"),
-/// Effect: pulumi.StringRef("Allow"),
-/// Actions: []string{
-/// "events:DescribeRule",
-/// "events:ListRules",
-/// "events:ListTargetsByRule",
-/// "events:ListTagsForResource",
-/// },
-/// Resources: []string{
-/// "arn:aws:events:eu-west-1:123456789012:rule/*",
-/// "arn:aws:events:eu-west-1:123456789012:event-bus/default",
-/// },
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "AWS",
-/// Identifiers: []string{
-/// "*",
-/// },
-/// },
-/// },
-/// Conditions: []iam.GetPolicyDocumentStatementCondition{
-/// {
-/// Test: "StringEquals",
-/// Variable: "aws:PrincipalOrgID",
-/// Values: interface{}{
-/// example.Id,
-/// },
-/// },
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		test, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Sid:    pulumi.StringRef("OrganizationAccess"),
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"events:DescribeRule",
+/// 						"events:ListRules",
+/// 						"events:ListTargetsByRule",
+/// 						"events:ListTagsForResource",
+/// 					},
+/// 					Resources: []string{
+/// 						"arn:aws:events:eu-west-1:123456789012:rule/*",
+/// 						"arn:aws:events:eu-west-1:123456789012:event-bus/default",
+/// 					},
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "AWS",
+/// 							Identifiers: []string{
+/// 								"*",
+/// 							},
+/// 						},
+/// 					},
+/// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
+/// 						{
+/// 							Test:     "StringEquals",
+/// 							Variable: "aws:PrincipalOrgID",
+/// 							Values: pulumi.StringArray{
+/// 								example.Id,
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = cloudwatch.NewEventBusPolicy(ctx, "test", &cloudwatch.EventBusPolicyArgs{
+/// 			Policy:       pulumi.String(test.Json),
+/// 			EventBusName: pulumi.Any(testAwsCloudwatchEventBus.Name),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// _, err = cloudwatch.NewEventBusPolicy(ctx, "test", &cloudwatch.EventBusPolicyArgs{
-/// Policy: pulumi.String(test.Json),
-/// EventBusName: pulumi.Any(testAwsCloudwatchEventBus.Name),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// return nil
-/// })
+///
+/// data "aws_iam_getpolicydocument" "test" {
+///   statements {
+///     sid       = "OrganizationAccess"
+///     effect    = "Allow"
+///     actions   = ["events:DescribeRule", "events:ListRules", "events:ListTargetsByRule", "events:ListTagsForResource"]
+///     resources = ["arn:aws:events:eu-west-1:123456789012:rule/*", "arn:aws:events:eu-west-1:123456789012:event-bus/default"]
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["*"]
+///     }
+///     conditions {
+///       test     = "StringEquals"
+///       variable = "aws:PrincipalOrgID"
+///       values   = [example.id]
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventbuspolicy" "test" {
+///   policy         = data.aws_iam_getpolicydocument.test.json
+///   event_bus_name = testAwsCloudwatchEventBus.name
 /// }
 /// ```
 /// ```java
@@ -415,10 +477,13 @@ import 'event_bus_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.cloudwatch.EventBusPolicy;
 /// import com.pulumi.aws.cloudwatch.EventBusPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -685,73 +750,116 @@ import 'event_bus_policy_state.dart';
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// test, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Sid: pulumi.StringRef("DevAccountAccess"),
-/// Effect: pulumi.StringRef("Allow"),
-/// Actions: []string{
-/// "events:PutEvents",
-/// },
-/// Resources: []string{
-/// "arn:aws:events:eu-west-1:123456789012:event-bus/default",
-/// },
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "AWS",
-/// Identifiers: []string{
-/// "123456789012",
-/// },
-/// },
-/// },
-/// },
-/// {
-/// Sid: pulumi.StringRef("OrganizationAccess"),
-/// Effect: pulumi.StringRef("Allow"),
-/// Actions: []string{
-/// "events:DescribeRule",
-/// "events:ListRules",
-/// "events:ListTargetsByRule",
-/// "events:ListTagsForResource",
-/// },
-/// Resources: []string{
-/// "arn:aws:events:eu-west-1:123456789012:rule/*",
-/// "arn:aws:events:eu-west-1:123456789012:event-bus/default",
-/// },
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "AWS",
-/// Identifiers: []string{
-/// "*",
-/// },
-/// },
-/// },
-/// Conditions: []iam.GetPolicyDocumentStatementCondition{
-/// {
-/// Test: "StringEquals",
-/// Variable: "aws:PrincipalOrgID",
-/// Values: interface{}{
-/// example.Id,
-/// },
-/// },
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		test, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Sid:    pulumi.StringRef("DevAccountAccess"),
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"events:PutEvents",
+/// 					},
+/// 					Resources: []string{
+/// 						"arn:aws:events:eu-west-1:123456789012:event-bus/default",
+/// 					},
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "AWS",
+/// 							Identifiers: []string{
+/// 								"123456789012",
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 				{
+/// 					Sid:    pulumi.StringRef("OrganizationAccess"),
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"events:DescribeRule",
+/// 						"events:ListRules",
+/// 						"events:ListTargetsByRule",
+/// 						"events:ListTagsForResource",
+/// 					},
+/// 					Resources: []string{
+/// 						"arn:aws:events:eu-west-1:123456789012:rule/*",
+/// 						"arn:aws:events:eu-west-1:123456789012:event-bus/default",
+/// 					},
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "AWS",
+/// 							Identifiers: []string{
+/// 								"*",
+/// 							},
+/// 						},
+/// 					},
+/// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
+/// 						{
+/// 							Test:     "StringEquals",
+/// 							Variable: "aws:PrincipalOrgID",
+/// 							Values: pulumi.StringArray{
+/// 								example.Id,
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = cloudwatch.NewEventBusPolicy(ctx, "test", &cloudwatch.EventBusPolicyArgs{
+/// 			Policy:       pulumi.String(test.Json),
+/// 			EventBusName: pulumi.Any(testAwsCloudwatchEventBus.Name),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// _, err = cloudwatch.NewEventBusPolicy(ctx, "test", &cloudwatch.EventBusPolicyArgs{
-/// Policy: pulumi.String(test.Json),
-/// EventBusName: pulumi.Any(testAwsCloudwatchEventBus.Name),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// return nil
-/// })
+///
+/// data "aws_iam_getpolicydocument" "test" {
+///   statements {
+///     sid       = "DevAccountAccess"
+///     effect    = "Allow"
+///     actions   = ["events:PutEvents"]
+///     resources = ["arn:aws:events:eu-west-1:123456789012:event-bus/default"]
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["123456789012"]
+///     }
+///   }
+///   statements {
+///     sid       = "OrganizationAccess"
+///     effect    = "Allow"
+///     actions   = ["events:DescribeRule", "events:ListRules", "events:ListTargetsByRule", "events:ListTagsForResource"]
+///     resources = ["arn:aws:events:eu-west-1:123456789012:rule/*", "arn:aws:events:eu-west-1:123456789012:event-bus/default"]
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["*"]
+///     }
+///     conditions {
+///       test     = "StringEquals"
+///       variable = "aws:PrincipalOrgID"
+///       values   = [example.id]
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventbuspolicy" "test" {
+///   policy         = data.aws_iam_getpolicydocument.test.json
+///   event_bus_name = testAwsCloudwatchEventBus.name
 /// }
 /// ```
 /// ```java
@@ -762,10 +870,13 @@ import 'event_bus_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.cloudwatch.EventBusPolicy;
 /// import com.pulumi.aws.cloudwatch.EventBusPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -868,10 +979,22 @@ import 'event_bus_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import an EventBridge policy using the `event_bus_name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `eventBusName` (String) Name of the event bus.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Bus Policies using `eventBusName`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cloudwatch/eventBusPolicy:EventBusPolicy DevAccountAccess example-event-bus
+/// $ pulumi import aws:cloudwatch/eventBusPolicy:EventBusPolicy example example-event-bus
 /// ```
 class EventBusPolicy extends pulumi.CustomResource {
   /// The name of the event bus to set the permissions on.

@@ -107,7 +107,7 @@ import 'lb_certificate_attachment_state.dart';
 /// 		}
 /// 		exampleLbCertificate, err := lightsail.NewLbCertificate(ctx, "example", &lightsail.LbCertificateArgs{
 /// 			Name:       pulumi.String("example-load-balancer-certificate"),
-/// 			LbName:     example.ID(),
+/// 			LbName:     example.ID().ToIDOutput().ToStringOutput(),
 /// 			DomainName: pulumi.String("example.com"),
 /// 		})
 /// 		if err != nil {
@@ -124,6 +124,33 @@ import 'lb_certificate_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_lb" "example" {
+///   name              = "example-load-balancer"
+///   health_check_path = "/"
+///   instance_port     = "80"
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "aws_lightsail_lbcertificate" "example" {
+///   name        = "example-load-balancer-certificate"
+///   lb_name     = aws_lightsail_lb.example.id
+///   domain_name = "example.com"
+/// }
+/// resource "aws_lightsail_lbcertificateattachment" "example" {
+///   lb_name          = aws_lightsail_lb.example.name
+///   certificate_name = aws_lightsail_lbcertificate.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -136,8 +163,8 @@ import 'lb_certificate_attachment_state.dart';
 /// import com.pulumi.aws.lightsail.LbCertificateArgs;
 /// import com.pulumi.aws.lightsail.LbCertificateAttachment;
 /// import com.pulumi.aws.lightsail.LbCertificateAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

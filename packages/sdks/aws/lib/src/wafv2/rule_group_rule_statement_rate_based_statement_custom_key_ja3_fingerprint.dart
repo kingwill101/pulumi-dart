@@ -24,4 +24,3 @@ class RuleGroupRuleStatementRateBasedStatementCustomKeyJa3Fingerprint {
     );
   }
 }
-

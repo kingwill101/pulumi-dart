@@ -164,6 +164,38 @@ import 'routing_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigatewayv2_routingrule" "example" {
+///   domain_name = "test.example.com"
+///   conditions {
+///     match_headers = {
+///       any_of = {
+///         header     = "X-Example-Header"
+///         value_glob = "example-value-*"
+///       }
+///     }
+///     match_base_paths = {
+///       any_ofs = ["example-path", "another-path"]
+///     }
+///   }
+///   actions {
+///     invoke_api = {
+///       api_id          = "example-api-id"
+///       stage           = "example-stage"
+///       strip_base_path = true
+///     }
+///   }
+///   priority = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -178,8 +210,8 @@ import 'routing_rule_state.dart';
 /// import com.pulumi.aws.apigatewayv2.inputs.RoutingRuleConditionMatchBasePathsArgs;
 /// import com.pulumi.aws.apigatewayv2.inputs.RoutingRuleActionArgs;
 /// import com.pulumi.aws.apigatewayv2.inputs.RoutingRuleActionInvokeApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -245,7 +277,7 @@ import 'routing_rule_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import API Gateway V2 Routing Rule using the `routing_rule_arn`. For example:
+/// Using `pulumi import`, import API Gateway V2 Routing Rule using the `routingRuleArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:apigatewayv2/routingRule:RoutingRule example arn:aws:apigateway:us-east-1:123456789012:/domainnames/example.com/routingrules/rule1
@@ -259,7 +291,7 @@ class RoutingRule extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> domainName;
-  /// The order of rule evaluation. Priority is evaluated from the lowest value to the highest value. Rules can't have the same priority. Value must be between 1 and 1,000,000.
+  /// Order of rule evaluation. Priority is evaluated from the lowest value to the highest value. Rules can't have the same priority. Value must be between 1 and 1,000,000.
   late final pulumi.Output<int> priority;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

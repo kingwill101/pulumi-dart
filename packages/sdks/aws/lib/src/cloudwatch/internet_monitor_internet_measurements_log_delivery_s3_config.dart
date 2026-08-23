@@ -33,4 +33,3 @@ class InternetMonitorInternetMeasurementsLogDeliveryS3Config {
     );
   }
 }
-

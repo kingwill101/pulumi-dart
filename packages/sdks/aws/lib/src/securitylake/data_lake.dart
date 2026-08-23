@@ -6,7 +6,7 @@ import 'data_lake_timeouts.dart';
 
 /// Resource for managing an AWS Security Lake Data Lake.
 ///
-/// &gt; **NOTE:** The underlying `aws.securitylake.DataLake` must be configured before creating other Security Lake resources. Use a `depends_on` statement.
+/// &gt; **NOTE:** The underlying `aws.securitylake.DataLake` must be configured before creating other Security Lake resources. Use a `dependsOn` statement.
 ///
 /// ## Example Usage
 ///
@@ -157,6 +157,37 @@ import 'data_lake_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securitylake_datalake" "example" {
+///   meta_store_manager_role_arn = metaStoreManager.arn
+///   configuration = {
+///     region = "eu-west-1"
+///     encryption_configurations = [{
+///       "kmsKeyId" = "S3_MANAGED_KEY"
+///     }]
+///     lifecycle_configuration = {
+///       transitions = [{
+///         "days"         = 31
+///         "storageClass" = "STANDARD_IA"
+///         }, {
+///         "days"         = 80
+///         "storageClass" = "ONEZONE_IA"
+///       }]
+///       expiration = {
+///         days = 300
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -166,10 +197,12 @@ import 'data_lake_timeouts.dart';
 /// import com.pulumi.aws.securitylake.DataLake;
 /// import com.pulumi.aws.securitylake.DataLakeArgs;
 /// import com.pulumi.aws.securitylake.inputs.DataLakeConfigurationArgs;
+/// import com.pulumi.aws.securitylake.inputs.DataLakeConfigurationEncryptionConfigurationArgs;
 /// import com.pulumi.aws.securitylake.inputs.DataLakeConfigurationLifecycleConfigurationArgs;
+/// import com.pulumi.aws.securitylake.inputs.DataLakeConfigurationLifecycleConfigurationTransitionArgs;
 /// import com.pulumi.aws.securitylake.inputs.DataLakeConfigurationLifecycleConfigurationExpirationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -313,6 +346,25 @@ import 'data_lake_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securitylake_datalake" "example" {
+///   meta_store_manager_role_arn = metaStoreManager.arn
+///   configuration = {
+///     region = "eu-west-1"
+///     encryption_configurations = [{
+///       "kmsKeyId" = "S3_MANAGED_KEY"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -322,8 +374,9 @@ import 'data_lake_timeouts.dart';
 /// import com.pulumi.aws.securitylake.DataLake;
 /// import com.pulumi.aws.securitylake.DataLakeArgs;
 /// import com.pulumi.aws.securitylake.inputs.DataLakeConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.securitylake.inputs.DataLakeConfigurationEncryptionConfigurationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -386,9 +439,9 @@ class DataLake extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The ARN for the Amazon Security Lake Amazon S3 bucket.
   late final pulumi.Output<String> s3BucketArn;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<DataLakeTimeouts?> timeouts;
 

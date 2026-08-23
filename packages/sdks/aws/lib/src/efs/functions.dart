@@ -62,6 +62,19 @@ import 'get_mount_target_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_efs_getaccesspoint" "test" {
+///   access_point_id = "fsap-12345678"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +83,8 @@ import 'get_mount_target_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.efs.EfsFunctions;
 /// import com.pulumi.aws.efs.inputs.GetAccessPointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -167,6 +180,19 @@ Future<GetAccessPointResult> getAccessPoint(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_efs_getaccesspoints" "test" {
+///   file_system_id = "fs-12345678"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +201,8 @@ Future<GetAccessPointResult> getAccessPoint(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.efs.EfsFunctions;
 /// import com.pulumi.aws.efs.inputs.GetAccessPointsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -299,7 +325,7 @@ Future<GetAccessPointsResult> getAccessPoints(
 /// 			return err
 /// 		}
 /// 		_, err = efs.LookupFileSystem(ctx, &efs.LookupFileSystemArgs{
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"Environment": "dev",
 /// 			},
 /// 		}, nil)
@@ -310,6 +336,29 @@ Future<GetAccessPointsResult> getAccessPoints(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_efs_getfilesystem" "byId" {
+///   file_system_id = var.fileSystemId
+/// }
+/// data "aws_efs_getfilesystem" "byTag" {
+///   tags = {
+///     "Environment" = "dev"
+///   }
+/// }
+///
+/// variable "fileSystemId" {
+///   type    = string
+///   default = ""
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -318,8 +367,8 @@ Future<GetAccessPointsResult> getAccessPoints(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.efs.EfsFunctions;
 /// import com.pulumi.aws.efs.inputs.GetFileSystemArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -445,6 +494,24 @@ Future<GetFileSystemResult> getFileSystem(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_efs_getmounttarget" "byId" {
+///   mount_target_id = var.mountTargetId
+/// }
+///
+/// variable "mountTargetId" {
+///   type    = string
+///   default = ""
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -453,8 +520,8 @@ Future<GetFileSystemResult> getFileSystem(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.efs.EfsFunctions;
 /// import com.pulumi.aws.efs.inputs.GetMountTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

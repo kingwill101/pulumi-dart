@@ -139,7 +139,7 @@ import 'vpc_endpoint_policy_state.dart';
 /// 		}
 /// 		exampleVpcEndpoint, err := ec2.NewVpcEndpoint(ctx, "example", &ec2.VpcEndpointArgs{
 /// 			ServiceName: pulumi.String(example.ServiceName),
-/// 			VpcId:       exampleVpc.ID(),
+/// 			VpcId:       exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -150,7 +150,7 @@ import 'vpc_endpoint_policy_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "AllowAll",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": "*",
 /// 					},
 /// 					"Action": []string{
@@ -165,7 +165,7 @@ import 'vpc_endpoint_policy_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = ec2.NewVpcEndpointPolicy(ctx, "example", &ec2.VpcEndpointPolicyArgs{
-/// 			VpcEndpointId: exampleVpcEndpoint.ID(),
+/// 			VpcEndpointId: exampleVpcEndpoint.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy:        pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -173,6 +173,42 @@ import 'vpc_endpoint_policy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcendpointservice" "example" {
+///   service = "dynamodb"
+/// }
+///
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_vpcendpoint" "example" {
+///   service_name = data.aws_ec2_getvpcendpointservice.example.service_name
+///   vpc_id       = aws_ec2_vpc.example.id
+/// }
+/// resource "aws_ec2_vpcendpointpolicy" "example" {
+///   vpc_endpoint_id = aws_ec2_vpcendpoint.example.id
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Sid"    = "AllowAll"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" = "*"
+///       }
+///       "Action"   = ["dynamodb:*"]
+///       "Resource" = "*"
+///     }]
+///   })
 /// }
 /// ```
 /// ```java
@@ -190,8 +226,8 @@ import 'vpc_endpoint_policy_state.dart';
 /// import com.pulumi.aws.ec2.VpcEndpointPolicy;
 /// import com.pulumi.aws.ec2.VpcEndpointPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

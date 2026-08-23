@@ -11,7 +11,7 @@ class ReplicationGroupNodeGroupConfiguration {
   final pulumi.Input<String>? primaryOutpostArn;
   /// List of availability zones for the replica nodes.
   final pulumi.Input<List<String>>? replicaAvailabilityZones;
-  /// Number of replica nodes in this node group.
+  /// Number of replica nodes in this node group. Default AWS limit is 5. Higher values may be available with a quota increase.
   final pulumi.Input<int>? replicaCount;
   /// List of ARNs of the Outposts for the replica nodes.
   final pulumi.Input<List<String>>? replicaOutpostArns;
@@ -23,7 +23,7 @@ class ReplicationGroupNodeGroupConfiguration {
   /// [primaryAvailabilityZone] Availability zone for the primary node.
   /// [primaryOutpostArn] ARN of the Outpost for the primary node.
   /// [replicaAvailabilityZones] List of availability zones for the replica nodes.
-  /// [replicaCount] Number of replica nodes in this node group.
+  /// [replicaCount] Number of replica nodes in this node group. Default AWS limit is 5. Higher values may be available with a quota increase.
   /// [replicaOutpostArns] List of ARNs of the Outposts for the replica nodes.
   /// [slots] Keyspace for this node group. Format is `start-end` (e.g., `0-5460`). For Redis (cluster mode disabled) replication groups, this value is ignored.
   const ReplicationGroupNodeGroupConfiguration({
@@ -60,4 +60,3 @@ class ReplicationGroupNodeGroupConfiguration {
     );
   }
 }
-

@@ -16,7 +16,7 @@ class SavingsPlanArgs {
   final pulumi.Input<String>? purchaseTime;
   /// The unique ID of a Savings Plan offering. You can find available offerings using the `aws savingsplans describe-savings-plans-offerings` CLI command.
   final pulumi.Input<String> savingsPlanOfferingId;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<SavingsPlanTimeouts>? timeouts;
   /// The up-front payment amount.
@@ -26,7 +26,7 @@ class SavingsPlanArgs {
   /// [commitment] The hourly commitment, in USD. This is the amount you commit to pay per hour, regardless of actual usage.
   /// [purchaseTime] The time at which to purchase the Savings Plan, in UTC format (YYYY-MM-DDTHH:MM:SSZ). If not specified, the plan is purchased immediately. Plans with a future purchase time are placed in `queued` state and can be deleted before they become active.
   /// [savingsPlanOfferingId] The unique ID of a Savings Plan offering. You can find available offerings using the `aws savingsplans describe-savings-plans-offerings` CLI command.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [upfrontPaymentAmount] The up-front payment amount.
   const SavingsPlanArgs({
@@ -60,4 +60,3 @@ class SavingsPlanArgs {
     );
   }
 }
-

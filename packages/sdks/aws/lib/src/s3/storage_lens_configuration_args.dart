@@ -8,23 +8,23 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 /// {@endtemplate}
 /// {@macro pulumi_s3_control_storage_lens_configuration_storage_lens_configuration_args_doc}
 class StorageLensConfigurationArgs {
-  /// The AWS account ID for the S3 Storage Lens configuration. Defaults to automatically determined account ID of the AWS provider.
+  /// AWS account ID for the S3 Storage Lens configuration. Defaults to automatically determined account ID of the AWS provider.
   final pulumi.Input<String>? accountId;
-  /// The ID of the S3 Storage Lens configuration.
+  /// ID of the S3 Storage Lens configuration.
   final pulumi.Input<String> configId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The S3 Storage Lens configuration. See Storage Lens Configuration below for more details.
+  /// S3 Storage Lens configuration. See `storageLensConfiguration` below for more details.
   final pulumi.Input<StorageLensConfigurationStorageLensConfiguration> storageLensConfiguration;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [StorageLensConfigurationArgs].
-  /// [accountId] The AWS account ID for the S3 Storage Lens configuration. Defaults to automatically determined account ID of the AWS provider.
-  /// [configId] The ID of the S3 Storage Lens configuration.
+  /// [accountId] AWS account ID for the S3 Storage Lens configuration. Defaults to automatically determined account ID of the AWS provider.
+  /// [configId] ID of the S3 Storage Lens configuration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [storageLensConfiguration] The S3 Storage Lens configuration. See Storage Lens Configuration below for more details.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [storageLensConfiguration] S3 Storage Lens configuration. See `storageLensConfiguration` below for more details.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const StorageLensConfigurationArgs({
     this.accountId,
     required this.configId,
@@ -53,4 +53,3 @@ class StorageLensConfigurationArgs {
     );
   }
 }
-

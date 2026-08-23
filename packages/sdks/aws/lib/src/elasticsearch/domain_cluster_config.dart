@@ -17,15 +17,15 @@ class DomainClusterConfig {
   final pulumi.Input<int>? instanceCount;
   /// Instance type of data nodes in the cluster.
   final pulumi.Input<String>? instanceType;
-  /// Number of warm nodes in the cluster. Valid values are between `2` and `150`. `warm_count` can be only and must be set when `warm_enabled` is set to `true`.
+  /// Number of warm nodes in the cluster. Valid values are between `2` and `150`. `warmCount` can be only and must be set when `warmEnabled` is set to `true`.
   final pulumi.Input<int>? warmCount;
   /// Whether to enable warm storage.
   final pulumi.Input<bool>? warmEnabled;
-  /// Instance type for the Elasticsearch cluster's warm nodes. Valid values are `ultrawarm1.medium.elasticsearch`, `ultrawarm1.large.elasticsearch` and `ultrawarm1.xlarge.elasticsearch`. `warm_type` can be only and must be set when `warm_enabled` is set to `true`.
+  /// Instance type for the Elasticsearch cluster's warm nodes. Valid values are `ultrawarm1.medium.elasticsearch`, `ultrawarm1.large.elasticsearch` and `ultrawarm1.xlarge.elasticsearch`. `warmType` can be only and must be set when `warmEnabled` is set to `true`.
   final pulumi.Input<String>? warmType;
   /// Configuration block containing zone awareness settings. Detailed below.
   final pulumi.Input<DomainClusterConfigZoneAwarenessConfig>? zoneAwarenessConfig;
-  /// Whether zone awareness is enabled, set to `true` for multi-az deployment. To enable awareness with three Availability Zones, the `availability_zone_count` within the `zone_awareness_config` must be set to `3`.
+  /// Whether zone awareness is enabled, set to `true` for multi-az deployment. To enable awareness with three Availability Zones, the `availabilityZoneCount` within the `zoneAwarenessConfig` must be set to `3`.
   final pulumi.Input<bool>? zoneAwarenessEnabled;
 
   /// Creates a new [DomainClusterConfig].
@@ -35,11 +35,11 @@ class DomainClusterConfig {
   /// [dedicatedMasterType] Instance type of the dedicated main nodes in the cluster.
   /// [instanceCount] Number of instances in the cluster.
   /// [instanceType] Instance type of data nodes in the cluster.
-  /// [warmCount] Number of warm nodes in the cluster. Valid values are between `2` and `150`. `warm_count` can be only and must be set when `warm_enabled` is set to `true`.
+  /// [warmCount] Number of warm nodes in the cluster. Valid values are between `2` and `150`. `warmCount` can be only and must be set when `warmEnabled` is set to `true`.
   /// [warmEnabled] Whether to enable warm storage.
-  /// [warmType] Instance type for the Elasticsearch cluster's warm nodes. Valid values are `ultrawarm1.medium.elasticsearch`, `ultrawarm1.large.elasticsearch` and `ultrawarm1.xlarge.elasticsearch`. `warm_type` can be only and must be set when `warm_enabled` is set to `true`.
+  /// [warmType] Instance type for the Elasticsearch cluster's warm nodes. Valid values are `ultrawarm1.medium.elasticsearch`, `ultrawarm1.large.elasticsearch` and `ultrawarm1.xlarge.elasticsearch`. `warmType` can be only and must be set when `warmEnabled` is set to `true`.
   /// [zoneAwarenessConfig] Configuration block containing zone awareness settings. Detailed below.
-  /// [zoneAwarenessEnabled] Whether zone awareness is enabled, set to `true` for multi-az deployment. To enable awareness with three Availability Zones, the `availability_zone_count` within the `zone_awareness_config` must be set to `3`.
+  /// [zoneAwarenessEnabled] Whether zone awareness is enabled, set to `true` for multi-az deployment. To enable awareness with three Availability Zones, the `availabilityZoneCount` within the `zoneAwarenessConfig` must be set to `3`.
   const DomainClusterConfig({
     this.coldStorageOptions,
     this.dedicatedMasterCount,
@@ -86,4 +86,3 @@ class DomainClusterConfig {
     );
   }
 }
-

@@ -100,6 +100,29 @@ import 'inference_profile_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+///
+/// resource "aws_bedrock_inferenceprofile" "example" {
+///   name        = "Claude Sonnet for Project 123"
+///   description = "Profile with tag for cost allocation tracking"
+///   model_source = {
+///     copy_from = "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-3-5-sonnet-20241022-v2:0"
+///   }
+///   tags = {
+///     "ProjectID" = "123"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +134,8 @@ import 'inference_profile_timeouts.dart';
 /// import com.pulumi.aws.bedrock.InferenceProfile;
 /// import com.pulumi.aws.bedrock.InferenceProfileArgs;
 /// import com.pulumi.aws.bedrock.inputs.InferenceProfileModelSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -172,7 +195,7 @@ class InferenceProfile extends pulumi.CustomResource {
   late final pulumi.Output<String> createdAt;
   /// The description of the inference profile.
   late final pulumi.Output<String?> description;
-  /// The source of the model this inference profile will track metrics and cost for. See `model_source`.
+  /// The source of the model this inference profile will track metrics and cost for. See `modelSource`.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<InferenceProfileModelSource?> modelSource;

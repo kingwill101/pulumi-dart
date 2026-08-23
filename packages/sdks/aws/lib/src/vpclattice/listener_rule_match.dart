@@ -4,12 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'listener_rule_match_http_match.dart';
 
 class ListenerRuleMatch {
-  /// The HTTP criteria that a rule must match.
-  /// See `http_match` Block for details.
+  /// HTTP criteria that a rule must match. See `httpMatch` Block for details.
   final pulumi.Input<ListenerRuleMatchHttpMatch> httpMatch;
 
   /// Creates a new [ListenerRuleMatch].
-  /// [httpMatch] The HTTP criteria that a rule must match.
+  /// [httpMatch] HTTP criteria that a rule must match. See `httpMatch` Block for details.
   const ListenerRuleMatch({
     required this.httpMatch,
   });
@@ -26,4 +25,3 @@ class ListenerRuleMatch {
     );
   }
 }
-

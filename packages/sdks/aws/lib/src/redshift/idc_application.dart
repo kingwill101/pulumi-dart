@@ -75,6 +75,23 @@ import 'idc_application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshift_idcapplication" "example" {
+///   iam_role_arn                  = exampleAwsIamRole.arn
+///   idc_display_name              = "example"
+///   idc_instance_arn              = exampleAwsSsoadminInstances.arns[0]
+///   identity_namespace            = "example"
+///   redshift_idc_application_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +100,8 @@ import 'idc_application_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshift.IdcApplication;
 /// import com.pulumi.aws.redshift.IdcApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -122,7 +139,7 @@ import 'idc_application_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Redshift endpoint access using the `redshift_idc_application_arn`. For example:
+/// Using `pulumi import`, import Redshift endpoint access using the `redshiftIdcApplicationArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:redshift/idcApplication:IdcApplication example example
@@ -130,7 +147,7 @@ import 'idc_application_state.dart';
 class IdcApplication extends pulumi.CustomResource {
   /// Type of application being created. Valid values are `None` or `Lakehouse`.
   late final pulumi.Output<String> applicationType;
-  /// Token issuer list for the Amazon Redshift IAM Identity Center application instance. Refer to the authorized_token_issuer documentation for more details.
+  /// Token issuer list for the Amazon Redshift IAM Identity Center application instance. Refer to the authorizedTokenIssuer documentation for more details.
   late final pulumi.Output<IdcApplicationAuthorizedTokenIssuer?> authorizedTokenIssuer;
   /// IAM role ARN for the Amazon Redshift IAM Identity Center application instance.
   late final pulumi.Output<String> iamRoleArn;
@@ -148,7 +165,7 @@ class IdcApplication extends pulumi.CustomResource {
   late final pulumi.Output<String> redshiftIdcApplicationName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Collection of service integrations for the Redshift IAM Identity Center application. Refer to the service_integration documentation for more details.
+  /// Collection of service integrations for the Redshift IAM Identity Center application. Refer to the serviceIntegration documentation for more details.
   late final pulumi.Output<IdcApplicationServiceIntegration?> serviceIntegration;
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;

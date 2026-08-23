@@ -16,15 +16,15 @@ class SmbFileShareArgs {
   final pulumi.Input<String>? auditDestinationArn;
   /// The authentication method that users use to access the file share. Defaults to `ActiveDirectory`. Valid values: `ActiveDirectory`, `GuestAccess`.
   final pulumi.Input<String>? authentication;
-  /// The region of the S3 buck used by the file share. Required when specifying a `vpc_endpoint_dns_name`.
+  /// The region of the S3 buck used by the file share. Required when specifying a `vpcEndpointDnsName`.
   final pulumi.Input<String>? bucketRegion;
-  /// Refresh cache information. see `cache_attributes` Block for more details.
+  /// Refresh cache information. see `cacheAttributes` Block for more details.
   final pulumi.Input<SmbFileShareCacheAttributes>? cacheAttributes;
   /// The case of an object name in an Amazon S3 bucket. For `ClientSpecified`, the client determines the case sensitivity. For `CaseSensitive`, the gateway determines the case sensitivity. The default value is `ClientSpecified`.
   final pulumi.Input<String>? caseSensitivity;
   /// The default [storage class](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateNFSFileShare.html#StorageGateway-CreateNFSFileShare-request-DefaultStorageClass) for objects put into an Amazon S3 bucket by the file gateway. Defaults to `S3_STANDARD`.
   final pulumi.Input<String>? defaultStorageClass;
-  /// The name of the file share. Must be set if an S3 prefix name is set in `location_arn`.
+  /// The name of the file share. Must be set if an S3 prefix name is set in `locationArn`.
   final pulumi.Input<String>? fileShareName;
   /// Amazon Resource Name (ARN) of the file gateway.
   final pulumi.Input<String> gatewayArn;
@@ -34,7 +34,7 @@ class SmbFileShareArgs {
   final pulumi.Input<List<String>>? invalidUserLists;
   /// Boolean value if `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3. Defaults to `false`.
   final pulumi.Input<bool>? kmsEncrypted;
-  /// Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kms_encrypted` is true.
+  /// Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kmsEncrypted` is true.
   final pulumi.Input<String>? kmsKeyArn;
   /// The ARN of the backed storage used for storing file data.
   final pulumi.Input<String> locationArn;
@@ -54,9 +54,9 @@ class SmbFileShareArgs {
   final pulumi.Input<String> roleArn;
   /// Set this value to `true` to enable ACL (access control list) on the SMB fileshare. Set it to `false` to map file and directory permissions to the POSIX permissions. This setting applies only to `ActiveDirectory` authentication type.
   final pulumi.Input<bool>? smbAclEnabled;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// **Note:** If you have previously included a `cache_attributes` block in your configuration, removing it will not reset the refresh cache value and the previous value will remain. You must explicitly set a new value to change it.
+  /// **Note:** If you have previously included a `cacheAttributes` block in your configuration, removing it will not reset the refresh cache value and the previous value will remain. You must explicitly set a new value to change it.
   final pulumi.Input<Map<String, String>>? tags;
   /// A list of users in the Active Directory that are allowed to access the file share. If you need to specify an Active directory group, add '@' before the name of the group. It will be set on Allowed group in AWS console. Only valid if `authentication` is set to `ActiveDirectory`.
   final pulumi.Input<List<String>>? validUserLists;
@@ -68,16 +68,16 @@ class SmbFileShareArgs {
   /// [adminUserLists] A list of users in the Active Directory that have admin access to the file share. Only valid if `authentication` is set to `ActiveDirectory`.
   /// [auditDestinationArn] The Amazon Resource Name (ARN) of the CloudWatch Log Group used for the audit logs.
   /// [authentication] The authentication method that users use to access the file share. Defaults to `ActiveDirectory`. Valid values: `ActiveDirectory`, `GuestAccess`.
-  /// [bucketRegion] The region of the S3 buck used by the file share. Required when specifying a `vpc_endpoint_dns_name`.
-  /// [cacheAttributes] Refresh cache information. see `cache_attributes` Block for more details.
+  /// [bucketRegion] The region of the S3 buck used by the file share. Required when specifying a `vpcEndpointDnsName`.
+  /// [cacheAttributes] Refresh cache information. see `cacheAttributes` Block for more details.
   /// [caseSensitivity] The case of an object name in an Amazon S3 bucket. For `ClientSpecified`, the client determines the case sensitivity. For `CaseSensitive`, the gateway determines the case sensitivity. The default value is `ClientSpecified`.
   /// [defaultStorageClass] The default [storage class](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateNFSFileShare.html#StorageGateway-CreateNFSFileShare-request-DefaultStorageClass) for objects put into an Amazon S3 bucket by the file gateway. Defaults to `S3_STANDARD`.
-  /// [fileShareName] The name of the file share. Must be set if an S3 prefix name is set in `location_arn`.
+  /// [fileShareName] The name of the file share. Must be set if an S3 prefix name is set in `locationArn`.
   /// [gatewayArn] Amazon Resource Name (ARN) of the file gateway.
   /// [guessMimeTypeEnabled] Boolean value that enables guessing of the MIME type for uploaded objects based on file extensions. Defaults to `true`.
   /// [invalidUserLists] A list of users in the Active Directory that are not allowed to access the file share. Only valid if `authentication` is set to `ActiveDirectory`.
   /// [kmsEncrypted] Boolean value if `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3. Defaults to `false`.
-  /// [kmsKeyArn] Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kms_encrypted` is true.
+  /// [kmsKeyArn] Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kmsEncrypted` is true.
   /// [locationArn] The ARN of the backed storage used for storing file data.
   /// [notificationPolicy] The notification policy of the file share. For more information see the [AWS Documentation](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateNFSFileShare.html#StorageGateway-CreateNFSFileShare-request-NotificationPolicy). Default value is `{}`.
   /// [objectAcl] Access Control List permission for S3 objects. Defaults to `private`.
@@ -87,7 +87,7 @@ class SmbFileShareArgs {
   /// [requesterPays] Boolean who pays the cost of the request and the data download from the Amazon S3 bucket. Set this value to `true` if you want the requester to pay instead of the bucket owner. Defaults to `false`.
   /// [roleArn] The ARN of the AWS Identity and Access Management (IAM) role that a file gateway assumes when it accesses the underlying storage.
   /// [smbAclEnabled] Set this value to `true` to enable ACL (access control list) on the SMB fileshare. Set it to `false` to map file and directory permissions to the POSIX permissions. This setting applies only to `ActiveDirectory` authentication type.
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [validUserLists] A list of users in the Active Directory that are allowed to access the file share. If you need to specify an Active directory group, add '@' before the name of the group. It will be set on Allowed group in AWS console. Only valid if `authentication` is set to `ActiveDirectory`.
   /// [vpcEndpointDnsName] The DNS name of the VPC endpoint for S3 private link.
   const SmbFileShareArgs({
@@ -181,4 +181,3 @@ class SmbFileShareArgs {
     );
   }
 }
-

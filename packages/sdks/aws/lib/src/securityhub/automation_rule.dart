@@ -55,7 +55,7 @@ import 'automation_rule_state.dart';
 ///         "finding_fields_update": {
 ///             "severity": {
 ///                 "label": "CRITICAL",
-///                 "product": 0,
+///                 "product": float(0),
 ///             },
 ///             "note": {
 ///                 "text": "This is a critical resource. Please review ASAP.",
@@ -182,6 +182,44 @@ import 'automation_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_automationrule" "example" {
+///   description = "Elevate finding severity to CRITICAL when specific resources such as an S3 bucket is at risk"
+///   rule_name   = "Elevate severity of findings that relate to important resources"
+///   rule_order  = 1
+///   actions {
+///     finding_fields_update = {
+///       severity = {
+///         label   = "CRITICAL"
+///         product = "0.0"
+///       }
+///       note = {
+///         text       = "This is a critical resource. Please review ASAP."
+///         updated_by = "sechub-automation"
+///       }
+///       types = ["Software and Configuration Checks/Industry and Regulatory Standards"]
+///       user_defined_fields = {
+///         "key" = "value"
+///       }
+///     }
+///     type = "FINDING_FIELDS_UPDATE"
+///   }
+///   criteria = {
+///     resource_ids = [{
+///       "comparison" = "EQUALS"
+///       "value"      = "arn:aws:s3:::examplebucket/*"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +233,9 @@ import 'automation_rule_state.dart';
 /// import com.pulumi.aws.securityhub.inputs.AutomationRuleActionFindingFieldsUpdateSeverityArgs;
 /// import com.pulumi.aws.securityhub.inputs.AutomationRuleActionFindingFieldsUpdateNoteArgs;
 /// import com.pulumi.aws.securityhub.inputs.AutomationRuleCriteriaArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.securityhub.inputs.AutomationRuleCriteriaResourceIdArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -275,7 +314,7 @@ import 'automation_rule_state.dart';
 /// - `arn` (String) Amazon Resource Name (ARN) of the Security Hub automation rule.
 ///
 ///
-/// Using `pulumi import`, import Security Hub automation rule using their ARN. For example:
+/// Using `pulumi import`, import Security Hub automation rules using `arn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:securityhub/automationRule:AutomationRule example arn:aws:securityhub:us-west-2:123456789012:automation-rule/473eddde-f5c4-4ae5-85c7-e922f271fffc

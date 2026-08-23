@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceDynamodbConfigDeltaSyncConfig {
-  /// The number of minutes that an Item is stored in the data source.
+  /// Number of minutes that an Item is stored in the data source.
   final pulumi.Input<int>? baseTableTtl;
-  /// The table name.
+  /// Table name.
   final pulumi.Input<String> deltaSyncTableName;
-  /// The number of minutes that a Delta Sync log entry is stored in the Delta Sync table.
+  /// Number of minutes that a Delta Sync log entry is stored in the Delta Sync table.
   final pulumi.Input<int>? deltaSyncTableTtl;
 
   /// Creates a new [DataSourceDynamodbConfigDeltaSyncConfig].
-  /// [baseTableTtl] The number of minutes that an Item is stored in the data source.
-  /// [deltaSyncTableName] The table name.
-  /// [deltaSyncTableTtl] The number of minutes that a Delta Sync log entry is stored in the Delta Sync table.
+  /// [baseTableTtl] Number of minutes that an Item is stored in the data source.
+  /// [deltaSyncTableName] Table name.
+  /// [deltaSyncTableTtl] Number of minutes that a Delta Sync log entry is stored in the Delta Sync table.
   const DataSourceDynamodbConfigDeltaSyncConfig({
     this.baseTableTtl,
     required this.deltaSyncTableName,
@@ -36,4 +36,3 @@ class DataSourceDynamodbConfigDeltaSyncConfig {
     );
   }
 }
-

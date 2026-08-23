@@ -92,6 +92,26 @@ import 'member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_macie2_account" "example" {
+/// }
+/// resource "aws_macie2_member" "example" {
+///   depends_on                            = [aws_macie2_account.example]
+///   account_id                            = "AWS ACCOUNT ID"
+///   email                                 = "EMAIL"
+///   invite                                = true
+///   invitation_message                    = "Message of the invitation"
+///   invitation_disable_email_notification = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +122,8 @@ import 'member_state.dart';
 /// import com.pulumi.aws.macie2.Member;
 /// import com.pulumi.aws.macie2.MemberArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -180,9 +200,9 @@ class Member extends pulumi.CustomResource {
   late final pulumi.Output<String> relationshipStatus;
   /// Specifies the status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
   late final pulumi.Output<String> status;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The date and time, in UTC and extended RFC 3339 format, of the most recent change to the status of the relationship between the account and the administrator account.
   late final pulumi.Output<String> updatedAt;

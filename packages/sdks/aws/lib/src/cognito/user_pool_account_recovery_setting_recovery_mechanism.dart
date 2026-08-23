@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolAccountRecoverySettingRecoveryMechanism {
-  /// Recovery method for a user. Can be of the following: `verified_email`, `verified_phone_number`, and `admin_only`.
+  /// Recovery method for a user. Can be of the following: `verifiedEmail`, `verifiedPhoneNumber`, and `adminOnly`.
   final pulumi.Input<String> name;
   /// Positive integer specifying priority of a method with 1 being the highest priority.
   final pulumi.Input<int> priority;
 
   /// Creates a new [UserPoolAccountRecoverySettingRecoveryMechanism].
-  /// [name] Recovery method for a user. Can be of the following: `verified_email`, `verified_phone_number`, and `admin_only`.
+  /// [name] Recovery method for a user. Can be of the following: `verifiedEmail`, `verifiedPhoneNumber`, and `adminOnly`.
   /// [priority] Positive integer specifying priority of a method with 1 being the highest priority.
   const UserPoolAccountRecoverySettingRecoveryMechanism({
     required this.name,
@@ -30,4 +30,3 @@ class UserPoolAccountRecoverySettingRecoveryMechanism {
     );
   }
 }
-

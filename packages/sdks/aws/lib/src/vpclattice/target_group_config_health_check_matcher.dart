@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TargetGroupConfigHealthCheckMatcher {
-  /// The HTTP codes to use when checking for a successful response from a target.
+  /// HTTP codes to use when checking for a successful response from a target.
   final pulumi.Input<String>? value;
 
   /// Creates a new [TargetGroupConfigHealthCheckMatcher].
-  /// [value] The HTTP codes to use when checking for a successful response from a target.
+  /// [value] HTTP codes to use when checking for a successful response from a target.
   const TargetGroupConfigHealthCheckMatcher({
     this.value,
   });
@@ -24,4 +24,3 @@ class TargetGroupConfigHealthCheckMatcher {
     );
   }
 }
-

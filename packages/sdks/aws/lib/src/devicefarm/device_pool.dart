@@ -87,6 +87,25 @@ import 'device_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_devicefarm_devicepool" "example" {
+///   name        = "example"
+///   project_arn = exampleAwsDevicefarmProject.arn
+///   rules {
+///     attribute = "OS_VERSION"
+///     operator  = "EQUALS"
+///     value     = "\"AVAILABLE\""
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +115,8 @@ import 'device_pool_state.dart';
 /// import com.pulumi.aws.devicefarm.DevicePool;
 /// import com.pulumi.aws.devicefarm.DevicePoolArgs;
 /// import com.pulumi.aws.devicefarm.inputs.DevicePoolRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,9 +184,9 @@ class DevicePool extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The device pool's rules. See Rule.
   late final pulumi.Output<List<Map<String, dynamic>>> rules;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<String> type;
 

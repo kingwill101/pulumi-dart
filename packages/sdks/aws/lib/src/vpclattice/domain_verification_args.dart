@@ -7,19 +7,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_vpclattice_domain_verification_domain_verification_args_doc}
 class DomainVerificationArgs {
-  /// The domain name to verify ownership for.
+  /// Domain name to verify ownership for.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> domainName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [DomainVerificationArgs].
-  /// [domainName] The domain name to verify ownership for.
+  /// [domainName] Domain name to verify ownership for.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const DomainVerificationArgs({
     required this.domainName,
     this.region,
@@ -42,4 +42,3 @@ class DomainVerificationArgs {
     );
   }
 }
-

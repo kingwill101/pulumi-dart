@@ -51,6 +51,18 @@ import 'preferences_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_costoptimizationhub_preferences" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -58,8 +70,8 @@ import 'preferences_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.costoptimizationhub.Preferences;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -140,6 +152,20 @@ import 'preferences_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_costoptimizationhub_preferences" "example" {
+///   member_account_discount_visibility = "None"
+///   savings_estimation_mode            = "AfterDiscounts"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -148,8 +174,8 @@ import 'preferences_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.costoptimizationhub.Preferences;
 /// import com.pulumi.aws.costoptimizationhub.PreferencesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

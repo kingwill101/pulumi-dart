@@ -353,6 +353,67 @@ import 'scheduled_query_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_timestreamquery_scheduledquery" "example" {
+///   execution_role_arn = exampleAwsIamRole.arn
+///   name               = exampleAwsTimestreamwriteTable.tableName
+///   query_string       = "SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,\n\\tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization\nFROM exampledatabase.exampletable\nWHERE measure_name = 'metrics' AND time > ago(2h)\nGROUP BY region, hostname, az, BIN(time, 15s)\nORDER BY binned_timestamp ASC\nLIMIT 5\n"
+///   error_report_configuration = {
+///     s3_configuration = {
+///       bucket_name = exampleAwsS3Bucket.bucket
+///     }
+///   }
+///   notification_configuration = {
+///     sns_configuration = {
+///       topic_arn = exampleAwsSnsTopic.arn
+///     }
+///   }
+///   schedule_configuration = {
+///     schedule_expression = "rate(1 hour)"
+///   }
+///   target_configuration = {
+///     timestream_configuration = {
+///       database_name = results.databaseName
+///       table_name    = resultsAwsTimestreamwriteTable.tableName
+///       time_column   = "binned_timestamp"
+///       dimension_mappings = [{
+///         "dimensionValueType" = "VARCHAR"
+///         "name"               = "az"
+///         }, {
+///         "dimensionValueType" = "VARCHAR"
+///         "name"               = "region"
+///         }, {
+///         "dimensionValueType" = "VARCHAR"
+///         "name"               = "hostname"
+///       }]
+///       multi_measure_mappings = {
+///         target_multi_measure_name = "multi-metrics"
+///         multi_measure_attribute_mappings = [{
+///           "measureValueType" = "DOUBLE"
+///           "sourceColumn"     = "avg_cpu_utilization"
+///           }, {
+///           "measureValueType" = "DOUBLE"
+///           "sourceColumn"     = "p90_cpu_utilization"
+///           }, {
+///           "measureValueType" = "DOUBLE"
+///           "sourceColumn"     = "p95_cpu_utilization"
+///           }, {
+///           "measureValueType" = "DOUBLE"
+///           "sourceColumn"     = "p99_cpu_utilization"
+///         }]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -368,9 +429,11 @@ import 'scheduled_query_timeouts.dart';
 /// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryScheduleConfigurationArgs;
 /// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationArgs;
 /// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationArgs;
+/// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs;
 /// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMappingArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -912,7 +975,7 @@ import 'scheduled_query_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sqs.NewQueuePolicy(ctx, "test", &sqs.QueuePolicyArgs{
-/// 			QueueUrl: testQueue.ID(),
+/// 			QueueUrl: testQueue.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy: pulumi.All(testQueue.Arn, testTopic.Arn).ApplyT(func(_args []interface{}) (string, error) {
 /// 				testQueueArn := _args[0].(string)
 /// 				testTopicArn := _args[1].(string)
@@ -922,15 +985,15 @@ import 'scheduled_query_timeouts.dart';
 /// 					"Statement": []map[string]interface{}{
 /// 						map[string]interface{}{
 /// 							"Effect": "Allow",
-/// 							"Principal": map[string]interface{}{
+/// 							"Principal": map[string]string{
 /// 								"AWS": "*",
 /// 							},
 /// 							"Action": []string{
 /// 								"sqs:SendMessage",
 /// 							},
 /// 							"Resource": testQueueArn,
-/// 							"Condition": map[string]interface{}{
-/// 								"ArnEquals": map[string]interface{}{
+/// 							"Condition": map[string]map[string]string{
+/// 								"ArnEquals": map[string]string{
 /// 									"aws:SourceArn": testTopicArn,
 /// 								},
 /// 							},
@@ -952,7 +1015,7 @@ import 'scheduled_query_timeouts.dart';
 /// 			"Statement": []map[string]interface{}{
 /// 				map[string]interface{}{
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "timestream.amazonaws.com",
 /// 					},
 /// 					"Action": "sts:AssumeRole",
@@ -997,7 +1060,7 @@ import 'scheduled_query_timeouts.dart';
 /// 		json2 := string(tmpJSON2)
 /// 		_, err = iam.NewRolePolicy(ctx, "test", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("example"),
-/// 			Role:   testRole.ID(),
+/// 			Role:   testRole.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy: pulumi.String(json2),
 /// 		})
 /// 		if err != nil {
@@ -1047,6 +1110,107 @@ import 'scheduled_query_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "test" {
+///   bucket        = "example"
+///   force_destroy = true
+/// }
+/// resource "aws_sns_topic" "test" {
+///   name = "example"
+/// }
+/// resource "aws_sqs_queue" "test" {
+///   name                    = "example"
+///   sqs_managed_sse_enabled = true
+/// }
+/// resource "aws_sns_topicsubscription" "test" {
+///   topic    = aws_sns_topic.test.arn
+///   protocol = "sqs"
+///   endpoint = aws_sqs_queue.test.arn
+/// }
+/// resource "aws_sqs_queuepolicy" "test" {
+///   queue_url = aws_sqs_queue.test.id
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" = "*"
+///       }
+///       "Action"   = ["sqs:SendMessage"]
+///       "Resource" = aws_sqs_queue.test.arn
+///       "Condition" = {
+///         "ArnEquals" = {
+///           "aws:SourceArn" = aws_sns_topic.test.arn
+///         }
+///       }
+///     }]
+///   })
+/// }
+/// resource "aws_iam_role" "test" {
+///   name = "example"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "timestream.amazonaws.com"
+///       }
+///       "Action" = "sts:AssumeRole"
+///     }]
+///   })
+///   tags = {
+///     "Name" = "example"
+///   }
+/// }
+/// resource "aws_iam_rolepolicy" "test" {
+///   name = "example"
+///   role = aws_iam_role.test.id
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action"   = ["kms:Decrypt", "sns:Publish", "timestream:describeEndpoints", "timestream:Select", "timestream:SelectValues", "timestream:WriteRecords", "s3:PutObject"]
+///       "Resource" = "*"
+///       "Effect"   = "Allow"
+///     }]
+///   })
+/// }
+/// resource "aws_timestreamwrite_database" "test" {
+///   database_name = "exampledatabase"
+/// }
+/// resource "aws_timestreamwrite_table" "test" {
+///   database_name = aws_timestreamwrite_database.test.database_name
+///   table_name    = "exampletable"
+///   magnetic_store_write_properties = {
+///     enable_magnetic_store_writes = true
+///   }
+///   retention_properties = {
+///     magnetic_store_retention_period_in_days = 1
+///     memory_store_retention_period_in_hours  = 1
+///   }
+/// }
+/// resource "aws_timestreamwrite_database" "results" {
+///   database_name = "exampledatabase-results"
+/// }
+/// resource "aws_timestreamwrite_table" "results" {
+///   database_name = aws_timestreamwrite_database.results.database_name
+///   table_name    = "exampletable-results"
+///   magnetic_store_write_properties = {
+///     enable_magnetic_store_writes = true
+///   }
+///   retention_properties = {
+///     magnetic_store_retention_period_in_days = 1
+///     memory_store_retention_period_in_hours  = 1
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1074,8 +1238,8 @@ import 'scheduled_query_timeouts.dart';
 /// import com.pulumi.aws.timestreamwrite.inputs.TableMagneticStoreWritePropertiesArgs;
 /// import com.pulumi.aws.timestreamwrite.inputs.TableRetentionPropertiesArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1659,6 +1823,67 @@ import 'scheduled_query_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_timestreamquery_scheduledquery" "example" {
+///   execution_role_arn = exampleAwsIamRole.arn
+///   name               = exampleAwsTimestreamwriteTable.tableName
+///   query_string       = "SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,\n\\tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization\nFROM exampledatabase.exampletable\nWHERE measure_name = 'metrics' AND time > ago(2h)\nGROUP BY region, hostname, az, BIN(time, 15s)\nORDER BY binned_timestamp ASC\nLIMIT 5\n"
+///   error_report_configuration = {
+///     s3_configuration = {
+///       bucket_name = exampleAwsS3Bucket.bucket
+///     }
+///   }
+///   notification_configuration = {
+///     sns_configuration = {
+///       topic_arn = exampleAwsSnsTopic.arn
+///     }
+///   }
+///   schedule_configuration = {
+///     schedule_expression = "rate(1 hour)"
+///   }
+///   target_configuration = {
+///     timestream_configuration = {
+///       database_name = results.databaseName
+///       table_name    = resultsAwsTimestreamwriteTable.tableName
+///       time_column   = "binned_timestamp"
+///       dimension_mappings = [{
+///         "dimensionValueType" = "VARCHAR"
+///         "name"               = "az"
+///         }, {
+///         "dimensionValueType" = "VARCHAR"
+///         "name"               = "region"
+///         }, {
+///         "dimensionValueType" = "VARCHAR"
+///         "name"               = "hostname"
+///       }]
+///       multi_measure_mappings = {
+///         target_multi_measure_name = "multi-metrics"
+///         multi_measure_attribute_mappings = [{
+///           "measureValueType" = "DOUBLE"
+///           "sourceColumn"     = "avg_cpu_utilization"
+///           }, {
+///           "measureValueType" = "DOUBLE"
+///           "sourceColumn"     = "p90_cpu_utilization"
+///           }, {
+///           "measureValueType" = "DOUBLE"
+///           "sourceColumn"     = "p95_cpu_utilization"
+///           }, {
+///           "measureValueType" = "DOUBLE"
+///           "sourceColumn"     = "p99_cpu_utilization"
+///         }]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1674,9 +1899,11 @@ import 'scheduled_query_timeouts.dart';
 /// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryScheduleConfigurationArgs;
 /// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationArgs;
 /// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationArgs;
+/// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs;
 /// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMappingArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1829,7 +2056,7 @@ class ScheduledQuery extends pulumi.CustomResource {
   late final pulumi.Output<ScheduledQueryErrorReportConfiguration> errorReportConfiguration;
   /// ARN for the IAM role that Timestream will assume when running the scheduled query.
   late final pulumi.Output<String> executionRoleArn;
-  /// Amazon KMS key used to encrypt the scheduled query resource, at-rest. If not specified, the scheduled query resource will be encrypted with a Timestream owned Amazon KMS key. To specify a KMS key, use the key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix the name with "alias/". If `error_report_configuration` uses `SSE_KMS` as the encryption type, the same `kms_key_id` is used to encrypt the error report at rest.
+  /// Amazon KMS key used to encrypt the scheduled query resource, at-rest. If not specified, the scheduled query resource will be encrypted with a Timestream owned Amazon KMS key. To specify a KMS key, use the key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix the name with "alias/". If `errorReportConfiguration` uses `SSE_KMS` as the encryption type, the same `kmsKeyId` is used to encrypt the error report at rest.
   late final pulumi.Output<String?> kmsKeyId;
   /// Runtime summary for the last scheduled query run.
   late final pulumi.Output<List<Map<String, dynamic>>?> lastRunSummaries;
@@ -1841,7 +2068,7 @@ class ScheduledQuery extends pulumi.CustomResource {
   late final pulumi.Output<ScheduledQueryNotificationConfiguration> notificationConfiguration;
   /// Last time the scheduled query was run.
   late final pulumi.Output<String> previousInvocationTime;
-  /// Query string to run. Parameter names can be specified in the query string using the `@` character followed by an identifier. The named parameter `@scheduled_runtime` is reserved and can be used in the query to get the time at which the query is scheduled to run. The timestamp calculated according to the `schedule_configuration` parameter, will be the value of `@scheduled_runtime` paramater for each query run. For example, consider an instance of a scheduled query executing on 2021-12-01 00:00:00. For this instance, the `@scheduled_runtime` parameter is initialized to the timestamp 2021-12-01 00:00:00 when invoking the query.
+  /// Query string to run. Parameter names can be specified in the query string using the `@` character followed by an identifier. The named parameter `@scheduled_runtime` is reserved and can be used in the query to get the time at which the query is scheduled to run. The timestamp calculated according to the `scheduleConfiguration` parameter, will be the value of `@scheduled_runtime` paramater for each query run. For example, consider an instance of a scheduled query executing on 2021-12-01 00:00:00. For this instance, the `@scheduled_runtime` parameter is initialized to the timestamp 2021-12-01 00:00:00 when invoking the query.
   late final pulumi.Output<String> queryString;
   /// Runtime summary for the last five failed scheduled query runs.
   late final pulumi.Output<List<Map<String, dynamic>>?> recentlyFailedRuns;
@@ -1851,9 +2078,9 @@ class ScheduledQuery extends pulumi.CustomResource {
   late final pulumi.Output<ScheduledQueryScheduleConfiguration> scheduleConfiguration;
   /// State of the scheduled query, either `ENABLED` or `DISABLED`.
   late final pulumi.Output<String> state;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration block for writing the result of a query. See below.
   ///

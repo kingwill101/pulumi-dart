@@ -9,10 +9,10 @@ import 'analytics_application_output_schema.dart';
 class AnalyticsApplicationOutput {
   /// The ARN of the Kinesis Analytics Application.
   final pulumi.Input<String>? id;
-  /// The Kinesis Firehose configuration for the destination stream. Conflicts with `kinesis_stream`.
+  /// The Kinesis Firehose configuration for the destination stream. Conflicts with `kinesisStream`.
   /// See Kinesis Firehose below for more details.
   final pulumi.Input<AnalyticsApplicationOutputKinesisFirehose>? kinesisFirehose;
-  /// The Kinesis Stream configuration for the destination stream. Conflicts with `kinesis_firehose`.
+  /// The Kinesis Stream configuration for the destination stream. Conflicts with `kinesisFirehose`.
   /// See Kinesis Stream below for more details.
   final pulumi.Input<AnalyticsApplicationOutputKinesisStream>? kinesisStream;
   /// The Lambda function destination. See Lambda below for more details.
@@ -24,8 +24,8 @@ class AnalyticsApplicationOutput {
 
   /// Creates a new [AnalyticsApplicationOutput].
   /// [id] The ARN of the Kinesis Analytics Application.
-  /// [kinesisFirehose] The Kinesis Firehose configuration for the destination stream. Conflicts with `kinesis_stream`.
-  /// [kinesisStream] The Kinesis Stream configuration for the destination stream. Conflicts with `kinesis_firehose`.
+  /// [kinesisFirehose] The Kinesis Firehose configuration for the destination stream. Conflicts with `kinesisStream`.
+  /// [kinesisStream] The Kinesis Stream configuration for the destination stream. Conflicts with `kinesisFirehose`.
   /// [lambda] The Lambda function destination. See Lambda below for more details.
   /// [name] The Name of the in-application stream.
   /// [schema] The Schema format of the data written to the destination. See Destination Schema below for more details.
@@ -60,4 +60,3 @@ class AnalyticsApplicationOutput {
     );
   }
 }
-

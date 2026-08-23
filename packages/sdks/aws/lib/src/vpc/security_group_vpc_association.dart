@@ -62,6 +62,20 @@ import 'security_group_vpc_association_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpc_securitygroupvpcassociation" "example" {
+///   security_group_id = "sg-05f1f54ab49bb39a3"
+///   vpc_id            = "vpc-01df9d105095412ba"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +84,8 @@ import 'security_group_vpc_association_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpc.SecurityGroupVpcAssociation;
 /// import com.pulumi.aws.vpc.SecurityGroupVpcAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -107,16 +121,16 @@ import 'security_group_vpc_association_timeouts.dart';
 ///
 /// #### Required
 ///
-/// * `vpc_id` (String) VPC ID.
-/// * `security_group_id` (String) Security Group ID.
+/// * `vpcId` (String) VPC ID.
+/// * `securityGroupId` (String) Security Group ID.
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import a Security Group VPC Association using the `security_group_id` and `vpc_id` arguments, separated by a comma (`,`). For example:
+/// Using `pulumi import`, import a Security Group VPC Association using the `securityGroupId` and `vpcId` arguments, separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:vpc/securityGroupVpcAssociation:SecurityGroupVpcAssociation example sg-12345,vpc-67890

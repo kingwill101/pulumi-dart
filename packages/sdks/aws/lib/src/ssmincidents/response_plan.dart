@@ -7,7 +7,7 @@ import 'response_plan_state.dart';
 
 /// Provides a resource to manage response plans in AWS Systems Manager Incident Manager.
 ///
-/// &gt; NOTE: A response plan implicitly depends on a replication set. If you configured your replication set in Pulumi, we recommend you add it to the `depends_on` argument for the ResponsePlan Resource.
+/// &gt; NOTE: A response plan implicitly depends on a replication set. If you configured your replication set in Pulumi, we recommend you add it to the `dependsOn` argument for the ResponsePlan Resource.
 ///
 /// ## Example Usage
 ///
@@ -105,6 +105,27 @@ import 'response_plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssmincidents_responseplan" "example" {
+///   depends_on = [exampleAwsSsmincidentsReplicationSet]
+///   name       = "name"
+///   incident_template = {
+///     title  = "title"
+///     impact = "3"
+///   }
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +136,8 @@ import 'response_plan_state.dart';
 /// import com.pulumi.aws.ssmincidents.ResponsePlanArgs;
 /// import com.pulumi.aws.ssmincidents.inputs.ResponsePlanIncidentTemplateArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -483,6 +504,66 @@ import 'response_plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssmincidents_responseplan" "example" {
+///   depends_on = [exampleAwsSsmincidentsReplicationSet]
+///   name       = "name"
+///   incident_template = {
+///     title         = "title"
+///     impact        = "3"
+///     dedupe_string = "dedupe"
+///     incident_tags = {
+///       "key" = "value"
+///     }
+///     notification_targets = [{
+///       "snsTopicArn" = example1.arn
+///       }, {
+///       "snsTopicArn" = example2.arn
+///     }]
+///     summary = "summary"
+///   }
+///   display_name  = "display name"
+///   chat_channels = [topic.arn]
+///   engagements   = ["arn:aws:ssm-contacts:us-east-2:111122223333:contact/test1"]
+///   action = {
+///     ssm_automations = [{
+///       "documentName"    = document1.name
+///       "roleArn"         = role1.arn
+///       "documentVersion" = "version1"
+///       "targetAccount"   = "RESPONSE_PLAN_OWNER_ACCOUNT"
+///       "parameters" = [{
+///         "name"   = "key"
+///         "values" = ["value1", "value2"]
+///         }, {
+///         "name"   = "foo"
+///         "values" = ["bar"]
+///       }]
+///       "dynamicParameters" = {
+///         "someKey"    = "INVOLVED_RESOURCES"
+///         "anotherKey" = "INCIDENT_RECORD_ARN"
+///       }
+///     }]
+///   }
+///   integration = {
+///     pagerduties = [{
+///       "name"      = "pagerdutyIntergration"
+///       "serviceId" = "example"
+///       "secretId"  = "example"
+///     }]
+///   }
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -492,11 +573,15 @@ import 'response_plan_state.dart';
 /// import com.pulumi.aws.ssmincidents.ResponsePlan;
 /// import com.pulumi.aws.ssmincidents.ResponsePlanArgs;
 /// import com.pulumi.aws.ssmincidents.inputs.ResponsePlanIncidentTemplateArgs;
+/// import com.pulumi.aws.ssmincidents.inputs.ResponsePlanIncidentTemplateNotificationTargetArgs;
 /// import com.pulumi.aws.ssmincidents.inputs.ResponsePlanActionArgs;
+/// import com.pulumi.aws.ssmincidents.inputs.ResponsePlanActionSsmAutomationArgs;
+/// import com.pulumi.aws.ssmincidents.inputs.ResponsePlanActionSsmAutomationParameterArgs;
 /// import com.pulumi.aws.ssmincidents.inputs.ResponsePlanIntegrationArgs;
+/// import com.pulumi.aws.ssmincidents.inputs.ResponsePlanIntegrationPagerdutyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -634,7 +719,7 @@ class ResponsePlan extends pulumi.CustomResource {
   late final pulumi.Output<String?> displayName;
   /// The Amazon Resource Name (ARN) for the contacts and escalation plans that the response plan engages during an incident.
   late final pulumi.Output<List<String>?> engagements;
-  /// The `incident_template` configuration block is required and supports the following arguments:
+  /// The `incidentTemplate` configuration block is required and supports the following arguments:
   late final pulumi.Output<ResponsePlanIncidentTemplate> incidentTemplate;
   /// Information about third-party services integrated into the response plan. The following values are supported:
   late final pulumi.Output<ResponsePlanIntegration?> integration;
@@ -644,7 +729,7 @@ class ResponsePlan extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The tags applied to the response plan.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ResponsePlan].

@@ -67,6 +67,21 @@ import 'contributor_managed_insight_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_contributormanagedinsightrule" "example" {
+///   resource_arn  = test.arn
+///   template_name = "VpcEndpointService-BytesByEndpointId-v1"
+///   rule_state    = "DISABLED"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'contributor_managed_insight_rule_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudwatch.ContributorManagedInsightRule;
 /// import com.pulumi.aws.cloudwatch.ContributorManagedInsightRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -110,10 +125,23 @@ import 'contributor_managed_insight_rule_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CloudWatch Contributor Managed Insight Rule using the `resource_arn`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `resourceArn` (String) ARN of the resource.
+/// * `templateName` (String) Name of the template.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Contributor Managed Insight Rules using `resourceArn` and `templateName` separated by a comma (`,`). For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cloudwatch/contributorManagedInsightRule:ContributorManagedInsightRule example contributor_managed_insight_rule-id-12345678
+/// $ pulumi import aws:cloudwatch/contributorManagedInsightRule:ContributorManagedInsightRule example arn:aws:ec2:us-east-1:123456789012:vpc-endpoint-service/vpce-svc-0123456789abcdef0,VpcEndpointService-BytesByEndpointId-v1
 /// ```
 class ContributorManagedInsightRule extends pulumi.CustomResource {
   /// ARN of the Contributor Managed Insight Rule.
@@ -122,6 +150,7 @@ class ContributorManagedInsightRule extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// ARN of an Amazon Web Services resource that has managed Contributor Insights rules.
   late final pulumi.Output<String> resourceArn;
+  /// Name of the Contributor Insights rule that contains data for the specified AWS resource.
   late final pulumi.Output<String> ruleName;
   late final pulumi.Output<String> state;
   late final pulumi.Output<Map<String, String>?> tags;

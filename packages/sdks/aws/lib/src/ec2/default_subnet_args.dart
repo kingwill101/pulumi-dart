@@ -9,8 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefaultSubnetArgs {
   final pulumi.Input<bool>? assignIpv6AddressOnCreation;
   /// is required
-  /// * The `availability_zone_id`, `cidr_block` and `vpc_id` arguments become computed attributes
-  /// * The default value for `map_public_ip_on_launch` is `true`
+  /// * The `availabilityZoneId`, `cidrBlock` and `vpcId` arguments become computed attributes
+  /// * The default value for `mapPublicIpOnLaunch` is `true`
   ///
   /// This resource supports the following additional arguments:
   final pulumi.Input<String> availabilityZone;
@@ -99,4 +99,3 @@ class DefaultSubnetArgs {
     );
   }
 }
-

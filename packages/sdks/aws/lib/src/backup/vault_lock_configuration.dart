@@ -69,6 +69,22 @@ import 'vault_lock_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_backup_vaultlockconfiguration" "test" {
+///   backup_vault_name   = "example_backup_vault"
+///   changeable_for_days = 3
+///   max_retention_days  = 1200
+///   min_retention_days  = 7
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +93,8 @@ import 'vault_lock_configuration_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.backup.VaultLockConfiguration;
 /// import com.pulumi.aws.backup.VaultLockConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

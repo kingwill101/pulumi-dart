@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_delegation_set_args.dart';
 import 'get_delegation_set_result.dart';
+import 'get_profiles_profile_args.dart';
+import 'get_profiles_profile_result.dart';
 import 'get_profiles_profiles_args.dart';
 import 'get_profiles_profiles_result.dart';
 import 'get_query_log_config_args.dart';
@@ -87,6 +89,19 @@ import 'get_zones_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getdelegationset" "dset" {
+///   id = "MQWGHCBFAKEID"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +110,8 @@ import 'get_zones_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetDelegationSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -136,6 +151,229 @@ Future<GetDelegationSetResult> getDelegationSet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDelegationSetResult.fromMap(result);
+}
+
+/// Provides details about an AWS Route 53 Profile.
+///
+/// ## Example Usage
+///
+/// ### By Name
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.route53.getProfilesProfile({
+///     name: "example",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.route53.get_profiles_profile(name="example")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Route53.GetProfilesProfile.Invoke(new()
+///     {
+///         Name = "example",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/route53"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := route53.LookupProfilesProfile(ctx, &route53.LookupProfilesProfileArgs{
+/// 			Name: pulumi.StringRef("example"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getprofilesprofile" "example" {
+///   name = "example"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.route53.Route53Functions;
+/// import com.pulumi.aws.route53.inputs.GetProfilesProfileArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = Route53Functions.getProfilesProfile(GetProfilesProfileArgs.builder()
+///             .name("example")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:route53:getProfilesProfile
+///       arguments:
+///         name: example
+/// ```
+///
+///
+/// ### By ID
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.route53.getProfilesProfile({
+///     id: "rp-12345678",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.route53.get_profiles_profile(id="rp-12345678")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Route53.GetProfilesProfile.Invoke(new()
+///     {
+///         Id = "rp-12345678",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/route53"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := route53.LookupProfilesProfile(ctx, &route53.LookupProfilesProfileArgs{
+/// 			Id: pulumi.StringRef("rp-12345678"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getprofilesprofile" "example" {
+///   id = "rp-12345678"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.route53.Route53Functions;
+/// import com.pulumi.aws.route53.inputs.GetProfilesProfileArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = Route53Functions.getProfilesProfile(GetProfilesProfileArgs.builder()
+///             .id("rp-12345678")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:route53:getProfilesProfile
+///       arguments:
+///         id: rp-12345678
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_route53_get_profiles_profile_get_profiles_profile_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetProfilesProfileResult> getProfilesProfile(
+  GetProfilesProfileArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:route53/getProfilesProfile:getProfilesProfile',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetProfilesProfileResult.fromMap(result);
 }
 
 /// Data source for managing an AWS Route 53 Profiles.
@@ -187,6 +425,18 @@ Future<GetDelegationSetResult> getDelegationSet(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getprofilesprofiles" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +445,8 @@ Future<GetDelegationSetResult> getDelegationSet(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetProfilesProfilesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -290,6 +540,19 @@ Future<GetProfilesProfilesResult> getProfilesProfiles(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getquerylogconfig" "example" {
+///   resolver_query_log_config_id = "rqlc-1abc2345ef678g91h"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -298,8 +561,8 @@ Future<GetProfilesProfilesResult> getProfilesProfiles(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetQueryLogConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -427,6 +690,26 @@ Future<GetProfilesProfilesResult> getProfilesProfiles(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getquerylogconfig" "example" {
+///   filters {
+///     name   = "Name"
+///     values = ["shared-query-log-config"]
+///   }
+///   filters {
+///     name   = "ShareStatus"
+///     values = ["SHARED_WITH_ME"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -435,8 +718,9 @@ Future<GetProfilesProfilesResult> getProfilesProfiles(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetQueryLogConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.route53.inputs.GetQueryLogConfigFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -569,6 +853,23 @@ Future<GetQueryLogConfigResult> getQueryLogConfig(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getzone" "selected" {
+///   name         = "test.com."
+///   private_zone = true
+/// }
+/// data "aws_route53_getrecords" "example" {
+///   zone_id = data.aws_route53_getzone.selected.zone_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -578,8 +879,8 @@ Future<GetQueryLogConfigResult> getQueryLogConfig(
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetZoneArgs;
 /// import com.pulumi.aws.route53.inputs.GetRecordsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -696,6 +997,24 @@ Future<GetQueryLogConfigResult> getQueryLogConfig(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getzone" "selected" {
+///   name         = "test.com."
+///   private_zone = true
+/// }
+/// data "aws_route53_getrecords" "example" {
+///   zone_id    = data.aws_route53_getzone.selected.zone_id
+///   name_regex = "^www"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -705,8 +1024,8 @@ Future<GetQueryLogConfigResult> getQueryLogConfig(
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetZoneArgs;
 /// import com.pulumi.aws.route53.inputs.GetRecordsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -817,6 +1136,19 @@ Future<GetRecordsResult> getRecords(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getresolverendpoint" "example" {
+///   resolver_endpoint_id = "rslvr-in-1abc2345ef678g91h"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -825,8 +1157,8 @@ Future<GetRecordsResult> getRecords(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetResolverEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -928,6 +1260,22 @@ Future<GetRecordsResult> getRecords(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getresolverendpoint" "example" {
+///   filters {
+///     name   = "NAME"
+///     values = ["MyResolverExampleName"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -936,8 +1284,9 @@ Future<GetRecordsResult> getRecords(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetResolverEndpointArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.route53.inputs.GetResolverEndpointFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1043,6 +1392,19 @@ Future<GetResolverEndpointResult> getResolverEndpoint(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getresolverfirewallconfig" "example" {
+///   resource_id = "vpc-exampleid"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1051,8 +1413,8 @@ Future<GetResolverEndpointResult> getResolverEndpoint(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetResolverFirewallConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1152,6 +1514,19 @@ Future<GetResolverFirewallConfigResult> getResolverFirewallConfig(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getresolverfirewalldomainlist" "example" {
+///   firewall_domain_list_id = "rslvr-fdl-example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1160,8 +1535,8 @@ Future<GetResolverFirewallConfigResult> getResolverFirewallConfig(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetResolverFirewallDomainListArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1261,6 +1636,19 @@ Future<GetResolverFirewallDomainListResult> getResolverFirewallDomainList(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getresolverfirewallrulegroup" "example" {
+///   firewall_rule_group_id = "rslvr-frg-example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1269,8 +1657,8 @@ Future<GetResolverFirewallDomainListResult> getResolverFirewallDomainList(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetResolverFirewallRuleGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1370,6 +1758,19 @@ Future<GetResolverFirewallRuleGroupResult> getResolverFirewallRuleGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getresolverfirewallrulegroupassociation" "example" {
+///   firewall_rule_group_association_id = "rslvr-frgassoc-example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1378,8 +1779,8 @@ Future<GetResolverFirewallRuleGroupResult> getResolverFirewallRuleGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetResolverFirewallRuleGroupAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1477,6 +1878,19 @@ Future<GetResolverFirewallRuleGroupAssociationResult> getResolverFirewallRuleGro
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getresolverfirewallrules" "example" {
+///   firewall_rule_group_id = exampleAwsRoute53ResolverFirewallRuleGroup.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1485,8 +1899,8 @@ Future<GetResolverFirewallRuleGroupAssociationResult> getResolverFirewallRuleGro
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetResolverFirewallRulesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1588,6 +2002,20 @@ Future<GetResolverFirewallRulesResult> getResolverFirewallRules(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getresolverrule" "example" {
+///   domain_name = "subdomain.example.com"
+///   rule_type   = "SYSTEM"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1596,8 +2024,8 @@ Future<GetResolverFirewallRulesResult> getResolverFirewallRules(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetResolverRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1705,6 +2133,21 @@ Future<GetResolverRuleResult> getResolverRule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getresolverrules" "example" {
+///   owner_id     = "Route 53 Resolver"
+///   rule_type    = "RECURSIVE"
+///   share_status = "NOT_SHARED"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1713,8 +2156,8 @@ Future<GetResolverRuleResult> getResolverRule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetResolverRulesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1803,6 +2246,20 @@ Future<GetResolverRuleResult> getResolverRule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getresolverrules" "example" {
+///   rule_type    = "FORWARD"
+///   share_status = "SHARED_WITH_ME"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1811,8 +2268,8 @@ Future<GetResolverRuleResult> getResolverRule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetResolverRulesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1897,6 +2354,19 @@ Future<GetResolverRuleResult> getResolverRule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getresolverrules" "example" {
+///   name_regex = ".*abc.*"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1905,8 +2375,8 @@ Future<GetResolverRuleResult> getResolverRule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetResolverRulesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1960,7 +2430,7 @@ Future<GetResolverRulesResult> getResolverRules(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const current = aws.getRegion({});
-/// const example = Promise.all([current, current]).then(([current, current1]) => aws.route53.getTrafficPolicyDocument({
+/// const example = current.then(current => aws.route53.getTrafficPolicyDocument({
 ///     recordType: "A",
 ///     startRule: "site_switch",
 ///     endpoints: [
@@ -1972,7 +2442,7 @@ Future<GetResolverRulesResult> getResolverRules(
 ///         {
 ///             id: "site_down_banner",
 ///             type: "s3-website",
-///             region: current1.region,
+///             region: current.region,
 ///             value: "www.example.com",
 ///         },
 ///     ],
@@ -2146,6 +2616,49 @@ Future<GetResolverRulesResult> getResolverRules(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+/// data "aws_route53_gettrafficpolicydocument" "example" {
+///   record_type = "A"
+///   start_rule  = "site_switch"
+///   endpoints {
+///     id    = "my_elb"
+///     type  = "elastic-load-balancer"
+///     value ="elb-111111.${data.aws_getregion.current.region}.elb.amazonaws.com"
+///   }
+///   endpoints {
+///     id     = "site_down_banner"
+///     type   = "s3-website"
+///     region = data.aws_getregion.current.region
+///     value  = "www.example.com"
+///   }
+///   rules {
+///     id   = "site_switch"
+///     type = "failover"
+///     primary = {
+///       endpoint_reference = "my_elb"
+///     }
+///     secondary = {
+///       endpoint_reference = "site_down_banner"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_trafficpolicy" "example" {
+///   name     = "example"
+///   comment  = "example comment"
+///   document = data.aws_route53_gettrafficpolicydocument.example.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2156,10 +2669,14 @@ Future<GetResolverRulesResult> getResolverRules(
 /// import com.pulumi.aws.inputs.GetRegionArgs;
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetTrafficPolicyDocumentArgs;
+/// import com.pulumi.aws.route53.inputs.GetTrafficPolicyDocumentEndpointArgs;
+/// import com.pulumi.aws.route53.inputs.GetTrafficPolicyDocumentRuleArgs;
+/// import com.pulumi.aws.route53.inputs.GetTrafficPolicyDocumentRulePrimaryArgs;
+/// import com.pulumi.aws.route53.inputs.GetTrafficPolicyDocumentRuleSecondaryArgs;
 /// import com.pulumi.aws.route53.TrafficPolicy;
 /// import com.pulumi.aws.route53.TrafficPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2576,6 +3093,78 @@ Future<GetResolverRulesResult> getResolverRules(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_gettrafficpolicydocument" "example" {
+///   record_type = "A"
+///   start_rule  = "geoproximity_rule"
+///   endpoints {
+///     id    = "na_endpoint_a"
+///     type  = "elastic-load-balancer"
+///     value = "elb-111111.us-west-1.elb.amazonaws.com"
+///   }
+///   endpoints {
+///     id    = "na_endpoint_b"
+///     type  = "elastic-load-balancer"
+///     value = "elb-222222.us-west-1.elb.amazonaws.com"
+///   }
+///   endpoints {
+///     id    = "eu_endpoint"
+///     type  = "elastic-load-balancer"
+///     value = "elb-333333.eu-west-1.elb.amazonaws.com"
+///   }
+///   endpoints {
+///     id    = "ap_endpoint"
+///     type  = "elastic-load-balancer"
+///     value = "elb-444444.ap-northeast-2.elb.amazonaws.com"
+///   }
+///   rules {
+///     id   = "na_rule"
+///     type = "failover"
+///     primary = {
+///       endpoint_reference = "na_endpoint_a"
+///     }
+///     secondary = {
+///       endpoint_reference = "na_endpoint_b"
+///     }
+///   }
+///   rules {
+///     id   = "geoproximity_rule"
+///     type = "geoproximity"
+///     geo_proximity_locations {
+///       region                 = "aws:route53:us-west-1"
+///       bias                   = 10
+///       evaluate_target_health = true
+///       rule_reference         = "na_rule"
+///     }
+///     geo_proximity_locations {
+///       region                 = "aws:route53:eu-west-1"
+///       bias                   = 10
+///       evaluate_target_health = true
+///       endpoint_reference     = "eu_endpoint"
+///     }
+///     geo_proximity_locations {
+///       region                 = "aws:route53:ap-northeast-2"
+///       bias                   = 0
+///       evaluate_target_health = true
+///       endpoint_reference     = "ap_endpoint"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_trafficpolicy" "example" {
+///   name     = "example"
+///   comment  = "example comment"
+///   document = data.aws_route53_gettrafficpolicydocument.example.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2584,10 +3173,15 @@ Future<GetResolverRulesResult> getResolverRules(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetTrafficPolicyDocumentArgs;
+/// import com.pulumi.aws.route53.inputs.GetTrafficPolicyDocumentEndpointArgs;
+/// import com.pulumi.aws.route53.inputs.GetTrafficPolicyDocumentRuleArgs;
+/// import com.pulumi.aws.route53.inputs.GetTrafficPolicyDocumentRulePrimaryArgs;
+/// import com.pulumi.aws.route53.inputs.GetTrafficPolicyDocumentRuleSecondaryArgs;
+/// import com.pulumi.aws.route53.inputs.GetTrafficPolicyDocumentRuleGeoProximityLocationArgs;
 /// import com.pulumi.aws.route53.TrafficPolicy;
 /// import com.pulumi.aws.route53.TrafficPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2834,6 +3428,28 @@ Future<GetTrafficPolicyDocumentResult> getTrafficPolicyDocument(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getzone" "selected" {
+///   name         = "test.com."
+///   private_zone = true
+/// }
+///
+/// resource "aws_route53_record" "www" {
+///   zone_id = data.aws_route53_getzone.selected.zone_id
+///   name    ="www.${data.aws_route53_getzone.selected.name}"
+///   type    = "A"
+///   ttl     = "300"
+///   records = ["10.0.0.1"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2844,8 +3460,8 @@ Future<GetTrafficPolicyDocumentResult> getTrafficPolicyDocument(
 /// import com.pulumi.aws.route53.inputs.GetZoneArgs;
 /// import com.pulumi.aws.route53.Record;
 /// import com.pulumi.aws.route53.RecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2953,7 +3569,7 @@ Future<GetTrafficPolicyDocumentResult> getTrafficPolicyDocument(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		selected, err := route53.LookupZone(ctx, &route53.LookupZoneArgs{
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"scope":    "local",
 /// 				"category": "api",
 /// 			},
@@ -2966,6 +3582,26 @@ Future<GetTrafficPolicyDocumentResult> getTrafficPolicyDocument(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getzone" "selected" {
+///   tags = {
+///     "scope"    = "local"
+///     "category" = "api"
+///   }
+/// }
+///
+/// output "localApiZone" {
+///   value = data.aws_route53_getzone.selected.zone_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2974,8 +3610,8 @@ Future<GetTrafficPolicyDocumentResult> getTrafficPolicyDocument(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Route53Functions;
 /// import com.pulumi.aws.route53.inputs.GetZoneArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3081,6 +3717,22 @@ Future<GetZoneResult> getZone(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_route53_getzones" "all" {
+/// }
+///
+/// output "example" {
+///   value = data.aws_route53_getzones.all.ids
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3088,8 +3740,8 @@ Future<GetZoneResult> getZone(
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Route53Functions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

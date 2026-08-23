@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_action_block_custom_response.dart';
 
 class WebAclRuleActionBlock {
-  /// Defines a custom response for the web request. See `custom_response` below for details.
+  /// Custom response configuration. See Custom Response below.
   final pulumi.Input<WebAclRuleActionBlockCustomResponse>? customResponse;
 
   /// Creates a new [WebAclRuleActionBlock].
-  /// [customResponse] Defines a custom response for the web request. See `custom_response` below for details.
+  /// [customResponse] Custom response configuration. See Custom Response below.
   const WebAclRuleActionBlock({
     this.customResponse,
   });
@@ -25,4 +25,3 @@ class WebAclRuleActionBlock {
     );
   }
 }
-

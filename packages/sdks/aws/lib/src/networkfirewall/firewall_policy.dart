@@ -160,6 +160,39 @@ import 'firewall_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// }
+///
+/// resource "aws_networkfirewall_firewallpolicy" "example" {
+///   name = "example"
+///   firewall_policy = {
+///     stateless_default_actions          = ["aws:pass"]
+///     stateless_fragment_default_actions = ["aws:drop"]
+///     stateless_rule_group_references = [{
+///       "priority"    = 1
+///       "resourceArn" = exampleAwsNetworkfirewallRuleGroup.arn
+///     }]
+///     tls_inspection_configuration_arn ="arn:${data.aws_getpartition.currentGetPartition.partition}:network-firewall:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:tls-configuration/example"
+///   }
+///   tags = {
+///     "Tag1" = "Value1"
+///     "Tag2" = "Value2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -173,8 +206,9 @@ import 'firewall_policy_state.dart';
 /// import com.pulumi.aws.networkfirewall.FirewallPolicy;
 /// import com.pulumi.aws.networkfirewall.FirewallPolicyArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyStatelessRuleGroupReferenceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -249,7 +283,7 @@ import 'firewall_policy_state.dart';
 /// ```
 ///
 ///
-/// ## Policy with a HOME_NET Override
+/// ### Policy with a HOME_NET Override
 ///
 ///
 /// ```typescript
@@ -421,6 +455,39 @@ import 'firewall_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_firewallpolicy" "example" {
+///   name = "example"
+///   firewall_policy = {
+///     policy_variables = {
+///       rule_variables = [{
+///         "key" = "HOME_NET"
+///         "ipSet" = {
+///           "definitions" = ["10.0.0.0/16", "10.1.0.0/24"]
+///         }
+///       }]
+///     }
+///     stateless_default_actions          = ["aws:pass"]
+///     stateless_fragment_default_actions = ["aws:drop"]
+///     stateless_rule_group_references = [{
+///       "priority"    = 1
+///       "resourceArn" = exampleAwsNetworkfirewallRuleGroup.arn
+///     }]
+///   }
+///   tags = {
+///     "Tag1" = "Value1"
+///     "Tag2" = "Value2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -431,8 +498,11 @@ import 'firewall_policy_state.dart';
 /// import com.pulumi.aws.networkfirewall.FirewallPolicyArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyPolicyVariablesArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSetArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyStatelessRuleGroupReferenceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -500,7 +570,7 @@ import 'firewall_policy_state.dart';
 /// ```
 ///
 ///
-/// ## Policy with a Custom Action for Stateless Inspection
+/// ### Policy with a Custom Action for Stateless Inspection
 ///
 ///
 /// ```typescript
@@ -642,6 +712,33 @@ import 'firewall_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_firewallpolicy" "example" {
+///   name = "example"
+///   firewall_policy = {
+///     stateless_default_actions          = ["aws:pass", "ExampleCustomAction"]
+///     stateless_fragment_default_actions = ["aws:drop"]
+///     stateless_custom_actions = [{
+///       "actionDefinition" = {
+///         "publishMetricAction" = {
+///           "dimensions" = [{
+///             "value" = "1"
+///           }]
+///         }
+///       }
+///       "actionName" = "ExampleCustomAction"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -651,8 +748,12 @@ import 'firewall_policy_state.dart';
 /// import com.pulumi.aws.networkfirewall.FirewallPolicy;
 /// import com.pulumi.aws.networkfirewall.FirewallPolicyArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyStatelessCustomActionArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimensionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -708,7 +809,7 @@ import 'firewall_policy_state.dart';
 /// ```
 ///
 ///
-/// ## Policy with Active Threat Defense in Action Order
+/// ### Policy with Active Threat Defense in Action Order
 ///
 ///
 /// ```typescript
@@ -832,6 +933,32 @@ import 'firewall_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+///
+/// resource "aws_networkfirewall_firewallpolicy" "example" {
+///   name = "example"
+///   firewall_policy = {
+///     stateless_fragment_default_actions = ["aws:drop"]
+///     stateless_default_actions          = ["aws:pass"]
+///     stateful_rule_group_references = [{
+///       "deepThreatInspection" = true
+///       "resourceArn"          ="arn:${data.aws_getpartition.currentGetPartition.partition}:network-firewall:${data.aws_getregion.current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureActionOrder"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -844,8 +971,9 @@ import 'firewall_policy_state.dart';
 /// import com.pulumi.aws.networkfirewall.FirewallPolicy;
 /// import com.pulumi.aws.networkfirewall.FirewallPolicyArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -904,7 +1032,7 @@ import 'firewall_policy_state.dart';
 /// ```
 ///
 ///
-/// ## Policy with Active Threat Defense in Strict Order
+/// ### Policy with Active Threat Defense in Strict Order
 ///
 ///
 /// ```typescript
@@ -1045,6 +1173,36 @@ import 'firewall_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+///
+/// resource "aws_networkfirewall_firewallpolicy" "example" {
+///   name = "example"
+///   firewall_policy = {
+///     stateless_fragment_default_actions = ["aws:drop"]
+///     stateless_default_actions          = ["aws:pass"]
+///     stateful_engine_options = {
+///       rule_order = "STRICT_ORDER"
+///     }
+///     stateful_rule_group_references = [{
+///       "deepThreatInspection" = false
+///       "priority"             = 1
+///       "resourceArn"          ="arn:${data.aws_getpartition.currentGetPartition.partition}:network-firewall:${data.aws_getregion.current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureStrictOrder"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1058,8 +1216,9 @@ import 'firewall_policy_state.dart';
 /// import com.pulumi.aws.networkfirewall.FirewallPolicyArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyStatefulEngineOptionsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1145,9 +1304,9 @@ class FirewallPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of resource tags to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// A string token used when updating a firewall policy.
   late final pulumi.Output<String> updateToken;

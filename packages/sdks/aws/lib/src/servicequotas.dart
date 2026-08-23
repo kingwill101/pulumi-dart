@@ -1,3 +1,6 @@
+export 'servicequotas/auto_management.dart';
+export 'servicequotas/auto_management_args.dart';
+export 'servicequotas/auto_management_state.dart';
 export 'servicequotas/functions.dart';
 export 'servicequotas/get_service_args.dart';
 export 'servicequotas/get_service_quota_args.dart';

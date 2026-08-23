@@ -3,23 +3,23 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolClientAnalyticsConfiguration {
-  /// Application ARN for an Amazon Pinpoint application. Conflicts with `external_id` and `role_arn`.
+  /// Application ARN for an AWS End User Messaging application. Conflicts with `externalId` and `roleArn`.
   final pulumi.Input<String>? applicationArn;
-  /// Application ID for an Amazon Pinpoint application.
+  /// Application ID for an AWS End User Messaging application.
   final pulumi.Input<String>? applicationId;
-  /// ID for the Analytics Configuration. Conflicts with `application_arn`.
+  /// ID for the Analytics Configuration. Conflicts with `applicationArn`.
   final pulumi.Input<String>? externalId;
-  /// ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics. Conflicts with `application_arn`.
+  /// ARN of an IAM role that authorizes Amazon Cognito to publish events to AWS End User Messaging analytics. Conflicts with `applicationArn`.
   final pulumi.Input<String>? roleArn;
-  /// If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+  /// If set to `true`, Amazon Cognito will include user data in the events it publishes to AWS End User Messaging analytics.
   final pulumi.Input<bool>? userDataShared;
 
   /// Creates a new [UserPoolClientAnalyticsConfiguration].
-  /// [applicationArn] Application ARN for an Amazon Pinpoint application. Conflicts with `external_id` and `role_arn`.
-  /// [applicationId] Application ID for an Amazon Pinpoint application.
-  /// [externalId] ID for the Analytics Configuration. Conflicts with `application_arn`.
-  /// [roleArn] ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics. Conflicts with `application_arn`.
-  /// [userDataShared] If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+  /// [applicationArn] Application ARN for an AWS End User Messaging application. Conflicts with `externalId` and `roleArn`.
+  /// [applicationId] Application ID for an AWS End User Messaging application.
+  /// [externalId] ID for the Analytics Configuration. Conflicts with `applicationArn`.
+  /// [roleArn] ARN of an IAM role that authorizes Amazon Cognito to publish events to AWS End User Messaging analytics. Conflicts with `applicationArn`.
+  /// [userDataShared] If set to `true`, Amazon Cognito will include user data in the events it publishes to AWS End User Messaging analytics.
   const UserPoolClientAnalyticsConfiguration({
     this.applicationArn,
     this.applicationId,
@@ -48,4 +48,3 @@ class UserPoolClientAnalyticsConfiguration {
     );
   }
 }
-

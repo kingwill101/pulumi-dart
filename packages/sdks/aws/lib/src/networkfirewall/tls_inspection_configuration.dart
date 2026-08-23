@@ -228,6 +228,48 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_tlsinspectionconfiguration" "example" {
+///   name        = "example"
+///   description = "example"
+///   encryption_configurations {
+///     key_id = "AWS_OWNED_KMS_KEY"
+///     type   = "AWS_OWNED_KMS_KEY"
+///   }
+///   tls_inspection_configuration = {
+///     server_certificate_configuration = {
+///       server_certificates = [{
+///         "resourceArn" = example1.arn
+///       }]
+///       scopes = [{
+///         "protocols" = [6]
+///         "destinationPorts" = [{
+///           "fromPort" = 443
+///           "toPort"   = 443
+///         }]
+///         "destinations" = [{
+///           "addressDefinition" = "0.0.0.0/0"
+///         }]
+///         "sourcePorts" = [{
+///           "fromPort" = 0
+///           "toPort"   = 65535
+///         }]
+///         "sources" = [{
+///           "addressDefinition" = "0.0.0.0/0"
+///         }]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -239,8 +281,14 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationEncryptionConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePortArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -539,6 +587,50 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_tlsinspectionconfiguration" "example" {
+///   name        = "example"
+///   description = "example"
+///   encryption_configurations {
+///     key_id = "AWS_OWNED_KMS_KEY"
+///     type   = "AWS_OWNED_KMS_KEY"
+///   }
+///   tls_inspection_configuration = {
+///     server_certificate_configuration = {
+///       certificate_authority_arn = example1.arn
+///       check_certificate_revocation_status = {
+///         revoked_status_action = "REJECT"
+///         unknown_status_action = "PASS"
+///       }
+///       scopes = [{
+///         "protocols" = [6]
+///         "destinationPorts" = [{
+///           "fromPort" = 443
+///           "toPort"   = 443
+///         }]
+///         "destinations" = [{
+///           "addressDefinition" = "0.0.0.0/0"
+///         }]
+///         "sourcePorts" = [{
+///           "fromPort" = 0
+///           "toPort"   = 65535
+///         }]
+///         "sources" = [{
+///           "addressDefinition" = "0.0.0.0/0"
+///         }]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -551,8 +643,13 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatusArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePortArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -873,6 +970,52 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "example"
+///   deletion_window_in_days = 7
+/// }
+/// resource "aws_networkfirewall_tlsinspectionconfiguration" "example" {
+///   name        = "example"
+///   description = "example"
+///   encryption_configurations {
+///     key_id = aws_kms_key.example.arn
+///     type   = "CUSTOMER_KMS"
+///   }
+///   tls_inspection_configuration = {
+///     server_certificate_configuration = {
+///       server_certificates = [{
+///         "resourceArn" = example1.arn
+///       }]
+///       scopes = [{
+///         "protocols" = [6]
+///         "destinationPorts" = [{
+///           "fromPort" = 443
+///           "toPort"   = 443
+///         }]
+///         "destinations" = [{
+///           "addressDefinition" = "0.0.0.0/0"
+///         }]
+///         "sourcePorts" = [{
+///           "fromPort" = 0
+///           "toPort"   = 65535
+///         }]
+///         "sources" = [{
+///           "addressDefinition" = "0.0.0.0/0"
+///         }]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -886,8 +1029,14 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationEncryptionConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePortArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1182,36 +1331,36 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// 				ServerCertificateConfigurations: []map[string]interface{}{
 /// 					map[string]interface{}{
 /// 						"certificateAuthorityArn": example1.Arn,
-/// 						"checkCertificateRevocationStatus": []map[string]interface{}{
-/// 							map[string]interface{}{
+/// 						"checkCertificateRevocationStatus": []map[string]string{
+/// 							{
 /// 								"revokedStatusAction": "REJECT",
 /// 								"unknownStatusAction": "PASS",
 /// 							},
 /// 						},
 /// 						"scope": []map[string]interface{}{
 /// 							map[string]interface{}{
-/// 								"protocols": []float64{
+/// 								"protocols": []int{
 /// 									6,
 /// 								},
-/// 								"destinationPorts": []map[string]interface{}{
-/// 									map[string]interface{}{
+/// 								"destinationPorts": []map[string]int{
+/// 									{
 /// 										"fromPort": 443,
 /// 										"toPort":   443,
 /// 									},
 /// 								},
-/// 								"destination": []map[string]interface{}{
-/// 									map[string]interface{}{
+/// 								"destination": []map[string]string{
+/// 									{
 /// 										"addressDefinition": "0.0.0.0/0",
 /// 									},
 /// 								},
-/// 								"sourcePorts": []map[string]interface{}{
-/// 									map[string]interface{}{
+/// 								"sourcePorts": []map[string]int{
+/// 									{
 /// 										"fromPort": 0,
 /// 										"toPort":   65535,
 /// 									},
 /// 								},
-/// 								"source": []map[string]interface{}{
-/// 									map[string]interface{}{
+/// 								"source": []map[string]string{
+/// 									{
 /// 										"addressDefinition": "0.0.0.0/0",
 /// 									},
 /// 								},
@@ -1228,6 +1377,54 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "example"
+///   deletion_window_in_days = 7
+/// }
+/// resource "aws_networkfirewall_tlsinspectionconfiguration" "example" {
+///   name        = "example"
+///   description = "example"
+///   encryption_configurations {
+///     key_id = aws_kms_key.example.arn
+///     type   = "CUSTOMER_KMS"
+///   }
+///   tls_inspection_configuration = {
+///     server_certificate_configurations = [{
+///       "certificateAuthorityArn" = example1.arn
+///       "checkCertificateRevocationStatus" = [{
+///         "revokedStatusAction" = "REJECT"
+///         "unknownStatusAction" = "PASS"
+///       }]
+///       "scope" = [{
+///         "protocols" = [6]
+///         "destinationPorts" = [{
+///           "fromPort" = 443
+///           "toPort"   = 443
+///         }]
+///         "destination" = [{
+///           "addressDefinition" = "0.0.0.0/0"
+///         }]
+///         "sourcePorts" = [{
+///           "fromPort" = 0
+///           "toPort"   = 65535
+///         }]
+///         "source" = [{
+///           "addressDefinition" = "0.0.0.0/0"
+///         }]
+///       }]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1240,8 +1437,8 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// import com.pulumi.aws.networkfirewall.TlsInspectionConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationEncryptionConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1266,24 +1463,24 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                 .type("CUSTOMER_KMS")
 ///                 .build())
 ///             .tlsInspectionConfiguration(TlsInspectionConfigurationTlsInspectionConfigurationArgs.builder()
-///                 .serverCertificateConfigurations(List.of(Map.ofEntries(
+///                 .serverCertificateConfigurations(Arrays.asList(Map.ofEntries(
 ///                     Map.entry("certificateAuthorityArn", example1.arn()),
-///                     Map.entry("checkCertificateRevocationStatus", List.of(Map.ofEntries(
+///                     Map.entry("checkCertificateRevocationStatus", Arrays.asList(Map.ofEntries(
 ///                         Map.entry("revokedStatusAction", "REJECT"),
 ///                         Map.entry("unknownStatusAction", "PASS")
 ///                     ))),
-///                     Map.entry("scope", List.of(Map.ofEntries(
-///                         Map.entry("protocols", List.of(6)),
-///                         Map.entry("destinationPorts", List.of(Map.ofEntries(
+///                     Map.entry("scope", Arrays.asList(Map.ofEntries(
+///                         Map.entry("protocols", Arrays.asList(6)),
+///                         Map.entry("destinationPorts", Arrays.asList(Map.ofEntries(
 ///                             Map.entry("fromPort", 443),
 ///                             Map.entry("toPort", 443)
 ///                         ))),
-///                         Map.entry("destination", List.of(Map.of("addressDefinition", "0.0.0.0/0"))),
-///                         Map.entry("sourcePorts", List.of(Map.ofEntries(
+///                         Map.entry("destination", Arrays.asList(Map.of("addressDefinition", "0.0.0.0/0"))),
+///                         Map.entry("sourcePorts", Arrays.asList(Map.ofEntries(
 ///                             Map.entry("fromPort", 0),
 ///                             Map.entry("toPort", 65535)
 ///                         ))),
-///                         Map.entry("source", List.of(Map.of("addressDefinition", "0.0.0.0/0")))
+///                         Map.entry("source", Arrays.asList(Map.of("addressDefinition", "0.0.0.0/0")))
 ///                     )))
 ///                 )))
 ///                 .build())
@@ -1569,6 +1766,53 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_tlsinspectionconfiguration" "example" {
+///   name        = "example"
+///   description = "example"
+///   encryption_configurations {
+///     key_id = "AWS_OWNED_KMS_KEY"
+///     type   = "AWS_OWNED_KMS_KEY"
+///   }
+///   tls_inspection_configuration = {
+///     server_certificate_configuration = {
+///       certificate_authority_arn = example1.arn
+///       check_certificate_revocation_status = {
+///         revoked_status_action = "REJECT"
+///         unknown_status_action = "PASS"
+///       }
+///       server_certificates = [{
+///         "resourceArn" = example2.arn
+///       }]
+///       scopes = [{
+///         "protocols" = [6]
+///         "destinationPorts" = [{
+///           "fromPort" = 443
+///           "toPort"   = 443
+///         }]
+///         "destinations" = [{
+///           "addressDefinition" = "0.0.0.0/0"
+///         }]
+///         "sourcePorts" = [{
+///           "fromPort" = 0
+///           "toPort"   = 65535
+///         }]
+///         "sources" = [{
+///           "addressDefinition" = "0.0.0.0/0"
+///         }]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1581,8 +1825,14 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatusArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePortArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

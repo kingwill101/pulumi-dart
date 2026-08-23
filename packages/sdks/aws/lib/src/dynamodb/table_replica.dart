@@ -4,6 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableReplica {
   /// ARN of the table
+  /// * `replica.*.arn` - ARN of the replica
+  /// * `replica.*.stream_arn` - ARN of the replica Table Stream. Only available when `streamEnabled = true`.
+  /// * `replica.*.stream_label` - Timestamp, in ISO 8601 format, for the replica stream. Note that this timestamp is not a unique identifier for the stream on its own. However, the combination of AWS customer ID, table name and this field is guaranteed to be unique. It can be used for creating CloudWatch Alarms. Only available when `streamEnabled = true`.
   final pulumi.Input<String>? arn;
   /// Whether this global table will be using `STRONG` consistency mode or `EVENTUAL` consistency mode. Default value is `EVENTUAL`.
   final pulumi.Input<String>? consistencyMode;
@@ -25,9 +28,9 @@ class TableReplica {
   final pulumi.Input<bool>? propagateTags;
   /// Region name of the replica.
   final pulumi.Input<String> regionName;
-  /// ARN of the Table Stream. Only available when `stream_enabled = true`
+  /// ARN of the Table Stream. Only available when `streamEnabled = true`
   final pulumi.Input<String>? streamArn;
-  /// Timestamp, in ISO 8601 format, for this stream. Note that this timestamp is not a unique identifier for the stream on its own. However, the combination of AWS customer ID, table name and this field is guaranteed to be unique. It can be used for creating CloudWatch Alarms. Only available when `stream_enabled = true`.
+  /// Timestamp, in ISO 8601 format, for this stream. Note that this timestamp is not a unique identifier for the stream on its own. However, the combination of AWS customer ID, table name and this field is guaranteed to be unique. It can be used for creating CloudWatch Alarms. Only available when `streamEnabled = true`.
   final pulumi.Input<String>? streamLabel;
 
   /// Creates a new [TableReplica].
@@ -38,8 +41,8 @@ class TableReplica {
   /// [pointInTimeRecovery] Whether to enable Point In Time Recovery for the replica. Default is `false`.
   /// [propagateTags] Whether to propagate the global table's tags to a replica.
   /// [regionName] Region name of the replica.
-  /// [streamArn] ARN of the Table Stream. Only available when `stream_enabled = true`
-  /// [streamLabel] Timestamp, in ISO 8601 format, for this stream. Note that this timestamp is not a unique identifier for the stream on its own. However, the combination of AWS customer ID, table name and this field is guaranteed to be unique. It can be used for creating CloudWatch Alarms. Only available when `stream_enabled = true`.
+  /// [streamArn] ARN of the Table Stream. Only available when `streamEnabled = true`
+  /// [streamLabel] Timestamp, in ISO 8601 format, for this stream. Note that this timestamp is not a unique identifier for the stream on its own. However, the combination of AWS customer ID, table name and this field is guaranteed to be unique. It can be used for creating CloudWatch Alarms. Only available when `streamEnabled = true`.
   const TableReplica({
     this.arn,
     this.consistencyMode,
@@ -80,4 +83,3 @@ class TableReplica {
     );
   }
 }
-

@@ -52,7 +52,7 @@ class GetInstanceResult {
   final String kmsKeyId;
   /// License model information for this DB instance.
   final String licenseModel;
-  /// Provides the master user secret. Only available when `manage_master_user_password` is set to true. Documented below.
+  /// Provides the master user secret. Only available when `manageMasterUserPassword` is set to true. Documented below.
   final List<GetInstanceMasterUserSecret> masterUserSecrets;
   /// Contains the master username for the DB instance.
   final String masterUsername;
@@ -68,7 +68,7 @@ class GetInstanceResult {
   final String networkType;
   /// Provides the list of option group memberships for this DB instance.
   final List<String> optionGroupMemberships;
-  /// Database endpoint port, primarily used by an Aurora DB cluster. For a conventional RDS DB instance, the `db_instance_port` is typically the preferred choice.
+  /// Database endpoint port, primarily used by an Aurora DB cluster. For a conventional RDS DB instance, the `dbInstancePort` is typically the preferred choice.
   final int port;
   /// Specifies the daily time range during which automated backups are created.
   final String preferredBackupWindow;
@@ -120,7 +120,7 @@ class GetInstanceResult {
   /// [iops] Provisioned IOPS (I/O operations per second) value.
   /// [kmsKeyId] The Amazon Web Services KMS key identifier that is used to encrypt the secret.
   /// [licenseModel] License model information for this DB instance.
-  /// [masterUserSecrets] Provides the master user secret. Only available when `manage_master_user_password` is set to true. Documented below.
+  /// [masterUserSecrets] Provides the master user secret. Only available when `manageMasterUserPassword` is set to true. Documented below.
   /// [masterUsername] Contains the master username for the DB instance.
   /// [maxAllocatedStorage] The upper limit to which Amazon RDS can automatically scale the storage of the DB instance.
   /// [monitoringInterval] Interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance.
@@ -128,7 +128,7 @@ class GetInstanceResult {
   /// [multiAz] If the DB instance is a Multi-AZ deployment.
   /// [networkType] Network type of the DB instance.
   /// [optionGroupMemberships] Provides the list of option group memberships for this DB instance.
-  /// [port] Database endpoint port, primarily used by an Aurora DB cluster. For a conventional RDS DB instance, the `db_instance_port` is typically the preferred choice.
+  /// [port] Database endpoint port, primarily used by an Aurora DB cluster. For a conventional RDS DB instance, the `dbInstancePort` is typically the preferred choice.
   /// [preferredBackupWindow] Specifies the daily time range during which automated backups are created.
   /// [preferredMaintenanceWindow] Specifies the weekly time range during which system maintenance can occur in UTC.
   /// [publiclyAccessible] Accessibility options for the DB instance.
@@ -293,4 +293,3 @@ class GetInstanceResult {
     );
   }
 }
-

@@ -22,12 +22,12 @@ import 'gateway_state.dart';
 ///     volumeId: testAwsEbsVolume.id,
 ///     instanceId: testAwsInstance.id,
 /// });
-/// const test = aws.storagegateway.getLocalDisk({
-///     diskNode: testAwsVolumeAttachment.deviceName,
+/// const test = aws.storagegateway.getLocalDiskOutput({
+///     diskNode: testVolumeAttachment.deviceName,
 ///     gatewayArn: testAwsStoragegatewayGateway.arn,
 /// });
 /// const testCache = new aws.storagegateway.Cache("test", {
-///     diskId: test.then(test => test.diskId),
+///     diskId: test.diskId,
 ///     gatewayArn: testAwsStoragegatewayGateway.arn,
 /// });
 /// ```
@@ -39,7 +39,7 @@ import 'gateway_state.dart';
 ///     device_name="/dev/xvdb",
 ///     volume_id=test_aws_ebs_volume["id"],
 ///     instance_id=test_aws_instance["id"])
-/// test = aws.storagegateway.get_local_disk(disk_node=test_aws_volume_attachment["deviceName"],
+/// test = aws.storagegateway.get_local_disk_output(disk_node=test_volume_attachment.device_name,
 ///     gateway_arn=test_aws_storagegateway_gateway["arn"])
 /// test_cache = aws.storagegateway.Cache("test",
 ///     disk_id=test.disk_id,
@@ -62,7 +62,7 @@ import 'gateway_state.dart';
 ///
 ///     var test = Aws.StorageGateway.GetLocalDisk.Invoke(new()
 ///     {
-///         DiskNode = testAwsVolumeAttachment.DeviceName,
+///         DiskNode = testVolumeAttachment.DeviceName,
 ///         GatewayArn = testAwsStoragegatewayGateway.Arn,
 ///     });
 ///
@@ -85,7 +85,7 @@ import 'gateway_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := ec2.NewVolumeAttachment(ctx, "test", &ec2.VolumeAttachmentArgs{
+/// 		testVolumeAttachment, err := ec2.NewVolumeAttachment(ctx, "test", &ec2.VolumeAttachmentArgs{
 /// 			DeviceName: pulumi.String("/dev/xvdb"),
 /// 			VolumeId:   pulumi.Any(testAwsEbsVolume.Id),
 /// 			InstanceId: pulumi.Any(testAwsInstance.Id),
@@ -93,15 +93,12 @@ import 'gateway_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		test, err := storagegateway.GetLocalDisk(ctx, &storagegateway.GetLocalDiskArgs{
-/// 			DiskNode:   pulumi.StringRef(testAwsVolumeAttachment.DeviceName),
-/// 			GatewayArn: testAwsStoragegatewayGateway.Arn,
+/// 		test := storagegateway.GetLocalDiskOutput(ctx, storagegateway.GetLocalDiskOutputArgs{
+/// 			DiskNode:   testVolumeAttachment.DeviceName,
+/// 			GatewayArn: pulumi.Any(testAwsStoragegatewayGateway.Arn),
 /// 		}, nil)
-/// 		if err != nil {
-/// 			return err
-/// 		}
 /// 		_, err = storagegateway.NewCache(ctx, "test", &storagegateway.CacheArgs{
-/// 			DiskId:     pulumi.String(test.DiskId),
+/// 			DiskId:     test.DiskId(),
 /// 			GatewayArn: pulumi.Any(testAwsStoragegatewayGateway.Arn),
 /// 		})
 /// 		if err != nil {
@@ -109,6 +106,30 @@ import 'gateway_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_storagegateway_getlocaldisk" "test" {
+///   disk_node   = aws_ec2_volumeattachment.test.device_name
+///   gateway_arn = testAwsStoragegatewayGateway.arn
+/// }
+///
+/// resource "aws_ec2_volumeattachment" "test" {
+///   device_name = "/dev/xvdb"
+///   volume_id   = testAwsEbsVolume.id
+///   instance_id = testAwsInstance.id
+/// }
+/// resource "aws_storagegateway_cache" "test" {
+///   disk_id     = data.aws_storagegateway_getlocaldisk.test.disk_id
+///   gateway_arn = testAwsStoragegatewayGateway.arn
 /// }
 /// ```
 /// ```java
@@ -123,8 +144,8 @@ import 'gateway_state.dart';
 /// import com.pulumi.aws.storagegateway.inputs.GetLocalDiskArgs;
 /// import com.pulumi.aws.storagegateway.Cache;
 /// import com.pulumi.aws.storagegateway.CacheArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -143,12 +164,12 @@ import 'gateway_state.dart';
 ///             .build());
 ///
 ///         final var test = StoragegatewayFunctions.getLocalDisk(GetLocalDiskArgs.builder()
-///             .diskNode(testAwsVolumeAttachment.deviceName())
+///             .diskNode(testVolumeAttachment.deviceName())
 ///             .gatewayArn(testAwsStoragegatewayGateway.arn())
 ///             .build());
 ///
 ///         var testCache = new Cache("testCache", CacheArgs.builder()
-///             .diskId(test.diskId())
+///             .diskId(test.applyValue(_test -> _test.diskId()))
 ///             .gatewayArn(testAwsStoragegatewayGateway.arn())
 ///             .build());
 ///
@@ -175,7 +196,7 @@ import 'gateway_state.dart';
 ///     fn::invoke:
 ///       function: aws:storagegateway:getLocalDisk
 ///       arguments:
-///         diskNode: ${testAwsVolumeAttachment.deviceName}
+///         diskNode: ${testVolumeAttachment.deviceName}
 ///         gatewayArn: ${testAwsStoragegatewayGateway.arn}
 /// ```
 ///
@@ -266,6 +287,27 @@ import 'gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_storagegateway_gateway" "example" {
+///   gateway_ip_address = "1.2.3.4"
+///   gateway_name       = "example"
+///   gateway_timezone   = "GMT"
+///   gateway_type       = "FILE_FSX_SMB"
+///   smb_active_directory_settings = {
+///     domain_name = "corp.example.com"
+///     password    = "avoid-plaintext-passwords"
+///     username    = "Admin"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -275,8 +317,8 @@ import 'gateway_state.dart';
 /// import com.pulumi.aws.storagegateway.Gateway;
 /// import com.pulumi.aws.storagegateway.GatewayArgs;
 /// import com.pulumi.aws.storagegateway.inputs.GatewaySmbActiveDirectorySettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -384,6 +426,22 @@ import 'gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_storagegateway_gateway" "example" {
+///   gateway_ip_address = "1.2.3.4"
+///   gateway_name       = "example"
+///   gateway_timezone   = "GMT"
+///   gateway_type       = "FILE_S3"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -392,8 +450,8 @@ import 'gateway_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.storagegateway.Gateway;
 /// import com.pulumi.aws.storagegateway.GatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -500,6 +558,24 @@ import 'gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_storagegateway_gateway" "example" {
+///   gateway_ip_address  = "1.2.3.4"
+///   gateway_name        = "example"
+///   gateway_timezone    = "GMT"
+///   gateway_type        = "VTL"
+///   medium_changer_type = "AWS-Gateway-VTL"
+///   tape_drive_type     = "IBM-ULT3580-TD5"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -508,8 +584,8 @@ import 'gateway_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.storagegateway.Gateway;
 /// import com.pulumi.aws.storagegateway.GatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -612,6 +688,22 @@ import 'gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_storagegateway_gateway" "example" {
+///   gateway_ip_address = "1.2.3.4"
+///   gateway_name       = "example"
+///   gateway_timezone   = "GMT"
+///   gateway_type       = "CACHED"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -620,8 +712,8 @@ import 'gateway_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.storagegateway.Gateway;
 /// import com.pulumi.aws.storagegateway.GatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -720,6 +812,22 @@ import 'gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_storagegateway_gateway" "example" {
+///   gateway_ip_address = "1.2.3.4"
+///   gateway_name       = "example"
+///   gateway_timezone   = "GMT"
+///   gateway_type       = "STORED"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -728,8 +836,8 @@ import 'gateway_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.storagegateway.Gateway;
 /// import com.pulumi.aws.storagegateway.GatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -771,7 +879,7 @@ import 'gateway_state.dart';
 /// $ pulumi import aws:storagegateway/gateway:Gateway example arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678
 /// ```
 ///
-/// Certain resource arguments, like `gateway_ip_address` do not have a Storage Gateway API method for reading the information after creation, either omit the argument from the Pulumi program or use `ignore_changes` to hide the difference. For example:
+/// Certain resource arguments, like `gatewayIpAddress` do not have a Storage Gateway API method for reading the information after creation, either omit the argument from the Pulumi program or use `ignoreChanges` to hide the difference. For example:
 ///
 ///
 /// ```typescript
@@ -821,6 +929,19 @@ import 'gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_storagegateway_gateway" "example" {
+///   gateway_ip_address = sgw.privateIp
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -829,8 +950,8 @@ import 'gateway_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.storagegateway.Gateway;
 /// import com.pulumi.aws.storagegateway.GatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -857,7 +978,7 @@ import 'gateway_state.dart';
 ///       gatewayIpAddress: ${sgw.privateIp}
 /// ```
 class Gateway extends pulumi.CustomResource {
-  /// Gateway activation key during resource creation. Conflicts with `gateway_ip_address`. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
+  /// Gateway activation key during resource creation. Conflicts with `gatewayIpAddress`. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
   late final pulumi.Output<String> activationKey;
   /// Amazon Resource Name (ARN) of the gateway.
   late final pulumi.Output<String> arn;
@@ -873,7 +994,7 @@ class Gateway extends pulumi.CustomResource {
   late final pulumi.Output<String> endpointType;
   /// Identifier of the gateway.
   late final pulumi.Output<String> gatewayId;
-  /// Gateway IP address to retrieve activation key during resource creation. Conflicts with `activation_key`. Gateway must be accessible on port 80 from where this provider is running. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
+  /// Gateway IP address to retrieve activation key during resource creation. Conflicts with `activationKey`. Gateway must be accessible on port 80 from where this provider is running. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
   late final pulumi.Output<String> gatewayIpAddress;
   /// Name of the gateway.
   late final pulumi.Output<String> gatewayName;
@@ -901,11 +1022,11 @@ class Gateway extends pulumi.CustomResource {
   late final pulumi.Output<String?> smbGuestPassword;
   /// Specifies the type of security strategy. Valid values are: `ClientSpecified`, `MandatorySigning`, and `MandatoryEncryption`. See [Setting a Security Level for Your Gateway](https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-gateway-file.html#security-strategy) for more information.
   late final pulumi.Output<String> smbSecurityStrategy;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// &gt; **NOTE:** One of `activation_key` or `gateway_ip_address` must be provided for resource creation (gateway activation). Neither is required for resource import. If using `gateway_ip_address`, this provider must be able to make an HTTP (port 80) GET request to the specified IP address from where it is running.
+  /// &gt; **NOTE:** One of `activationKey` or `gatewayIpAddress` must be provided for resource creation (gateway activation). Neither is required for resource import. If using `gatewayIpAddress`, this provider must be able to make an HTTP (port 80) GET request to the specified IP address from where it is running.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Type of tape drive to use for tape gateway. This provider cannot detect drift of this argument. Valid values: `IBM-ULT3580-TD5`.
   late final pulumi.Output<String?> tapeDriveType;

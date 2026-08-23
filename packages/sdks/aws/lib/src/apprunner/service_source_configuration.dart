@@ -6,20 +6,20 @@ import 'service_source_configuration_code_repository.dart';
 import 'service_source_configuration_image_repository.dart';
 
 class ServiceSourceConfiguration {
-  /// Describes resources needed to authenticate access to some source repositories. See Authentication Configuration below for more details.
+  /// Configuration for resources needed to authenticate access to some source repositories. See `authenticationConfiguration` below.
   final pulumi.Input<ServiceSourceConfigurationAuthenticationConfiguration>? authenticationConfiguration;
   /// Whether continuous integration from the source repository is enabled for the App Runner service. If set to `true`, each repository change (source code commit or new image version) starts a deployment. Defaults to `true`.
   final pulumi.Input<bool>? autoDeploymentsEnabled;
-  /// Description of a source code repository. See Code Repository below for more details.
+  /// Description of a source code repository. See `codeRepository` below.
   final pulumi.Input<ServiceSourceConfigurationCodeRepository>? codeRepository;
-  /// Description of a source image repository. See Image Repository below for more details.
+  /// Description of a source image repository. See `imageRepository` below.
   final pulumi.Input<ServiceSourceConfigurationImageRepository>? imageRepository;
 
   /// Creates a new [ServiceSourceConfiguration].
-  /// [authenticationConfiguration] Describes resources needed to authenticate access to some source repositories. See Authentication Configuration below for more details.
+  /// [authenticationConfiguration] Configuration for resources needed to authenticate access to some source repositories. See `authenticationConfiguration` below.
   /// [autoDeploymentsEnabled] Whether continuous integration from the source repository is enabled for the App Runner service. If set to `true`, each repository change (source code commit or new image version) starts a deployment. Defaults to `true`.
-  /// [codeRepository] Description of a source code repository. See Code Repository below for more details.
-  /// [imageRepository] Description of a source image repository. See Image Repository below for more details.
+  /// [codeRepository] Description of a source code repository. See `codeRepository` below.
+  /// [imageRepository] Description of a source image repository. See `imageRepository` below.
   const ServiceSourceConfiguration({
     this.authenticationConfiguration,
     this.autoDeploymentsEnabled,
@@ -45,4 +45,3 @@ class ServiceSourceConfiguration {
     );
   }
 }
-

@@ -40,12 +40,14 @@ class GuardrailState {
   final pulumi.Input<GuardrailSensitiveInformationPolicyConfig>? sensitiveInformationPolicyConfig;
   /// Status of the Bedrock Guardrail. One of `READY`, `FAILED`.
   final pulumi.Input<String>? status;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<GuardrailTimeouts>? timeouts;
   /// Topic policy config for a guardrail. See Topic Policy Config for more information.
   final pulumi.Input<GuardrailTopicPolicyConfig>? topicPolicyConfig;
+  /// Date and time that the Guardrail list was last updated.
+  final pulumi.Input<String>? updatedAt;
   /// Version of the Guardrail.
   final pulumi.Input<String>? version;
   /// Word policy config for a guardrail. See Word Policy Config for more information.
@@ -66,10 +68,11 @@ class GuardrailState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sensitiveInformationPolicyConfig] Sensitive information policy config for a guardrail. See Sensitive Information Policy Config for more information.
   /// [status] Status of the Bedrock Guardrail. One of `READY`, `FAILED`.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [timeouts] Optional.
   /// [topicPolicyConfig] Topic policy config for a guardrail. See Topic Policy Config for more information.
+  /// [updatedAt] Date and time that the Guardrail list was last updated.
   /// [version] Version of the Guardrail.
   /// [wordPolicyConfig] Word policy config for a guardrail. See Word Policy Config for more information.
   const GuardrailState({
@@ -91,6 +94,7 @@ class GuardrailState {
     this.tagsAll,
     this.timeouts,
     this.topicPolicyConfig,
+    this.updatedAt,
     this.version,
     this.wordPolicyConfig,
   });
@@ -115,6 +119,7 @@ class GuardrailState {
       'tagsAll': ?tagsAll,
       'timeouts': ?pulumi.Input.mapOptionalInputValue<GuardrailTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
       'topicPolicyConfig': ?pulumi.Input.mapOptionalInputValue<GuardrailTopicPolicyConfig, Map<String, dynamic>>(topicPolicyConfig, (value) => value.toMap()),
+      'updatedAt': ?updatedAt,
       'version': ?version,
       'wordPolicyConfig': ?pulumi.Input.mapOptionalInputValue<GuardrailWordPolicyConfig, Map<String, dynamic>>(wordPolicyConfig, (value) => value.toMap()),
     };
@@ -140,9 +145,9 @@ class GuardrailState {
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GuardrailTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       topicPolicyConfig: (() { final guardedValue = map['topicPolicyConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GuardrailTopicPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       wordPolicyConfig: (() { final guardedValue = map['wordPolicyConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GuardrailWordPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

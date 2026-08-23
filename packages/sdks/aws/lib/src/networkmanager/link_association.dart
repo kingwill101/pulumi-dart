@@ -65,6 +65,21 @@ import 'link_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_linkassociation" "example" {
+///   global_network_id = exampleAwsNetworkmanagerGlobalNetwork.id
+///   link_id           = exampleAwsNetworkmanagerLink.id
+///   device_id         = exampleAwsNetworkmanagerDevice.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'link_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.LinkAssociation;
 /// import com.pulumi.aws.networkmanager.LinkAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

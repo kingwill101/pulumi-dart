@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImageImagePermission {
-  /// Boolean indicating if the image can be used for a fleet.
+  /// Whether the image can be used for a fleet.
   final pulumi.Input<bool> allowFleet;
-  /// indicated whether the image can be used for an image builder.
+  /// Whether the image can be used for an image builder.
   final pulumi.Input<bool> allowImageBuilder;
 
   /// Creates a new [GetImageImagePermission].
-  /// [allowFleet] Boolean indicating if the image can be used for a fleet.
-  /// [allowImageBuilder] indicated whether the image can be used for an image builder.
+  /// [allowFleet] Whether the image can be used for a fleet.
+  /// [allowImageBuilder] Whether the image can be used for an image builder.
   const GetImageImagePermission({
     required this.allowFleet,
     required this.allowImageBuilder,
@@ -30,4 +30,3 @@ class GetImageImagePermission {
     );
   }
 }
-

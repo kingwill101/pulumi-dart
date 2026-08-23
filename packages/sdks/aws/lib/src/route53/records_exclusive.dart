@@ -5,7 +5,7 @@ import 'records_exclusive_timeouts.dart';
 
 /// Resource for maintaining exclusive management of resource record sets defined in an AWS Route53 hosted zone.
 ///
-/// !&gt; This resource takes exclusive ownership over resource record sets defined in a hosted zone. This includes removal of record sets which are not explicitly configured. To prevent persistent drift, ensure any `aws.route53.Record` resources managed alongside this resource have an equivalent `resource_record_set` argument.
+/// &gt; This resource takes exclusive ownership over resource record sets defined in a hosted zone. This includes removal of record sets which are not explicitly configured. To prevent persistent drift, ensure any `aws.route53.Record` resources managed alongside this resource have an equivalent `resourceRecordSet` argument.
 ///
 /// &gt; Destruction of this resource means Terraform will no longer manage reconciliation of the configured resource record sets. It __will not__ delete the configured record sets from the hosted zone.
 ///
@@ -147,6 +147,34 @@ import 'records_exclusive_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_zone" "example" {
+///   name          = "example.com"
+///   force_destroy = true
+/// }
+/// resource "aws_route53_recordsexclusive" "test" {
+///   zone_id = testAwsRoute53Zone.zoneId
+///   resource_record_sets {
+///     name = "subdomain.example.com"
+///     type = "A"
+///     ttl  = "30"
+///     resource_records {
+///       value = "127.0.0.1"
+///     }
+///     resource_records {
+///       value = "127.0.0.27"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -158,8 +186,9 @@ import 'records_exclusive_timeouts.dart';
 /// import com.pulumi.aws.route53.RecordsExclusive;
 /// import com.pulumi.aws.route53.RecordsExclusiveArgs;
 /// import com.pulumi.aws.route53.inputs.RecordsExclusiveResourceRecordSetArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.route53.inputs.RecordsExclusiveResourceRecordSetResourceRecordArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -218,7 +247,7 @@ import 'records_exclusive_timeouts.dart';
 ///
 /// ### Disallow Record Sets
 ///
-/// To automatically remove any configured record sets, omit a `resource_record_set` block.
+/// To automatically remove any configured record sets, omit a `resourceRecordSet` block.
 ///
 /// &gt; This will not __prevent__ record sets from being defined in a hosted zone via Terraform (or any other interface). This resource enables bringing record set definitions into a configured state, however, this reconciliation happens only when `apply` is proactively run.
 ///
@@ -270,6 +299,19 @@ import 'records_exclusive_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_recordsexclusive" "test" {
+///   zone_id = testAwsRoute53Zone.zoneId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -278,8 +320,8 @@ import 'records_exclusive_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.RecordsExclusive;
 /// import com.pulumi.aws.route53.RecordsExclusiveArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -309,14 +351,14 @@ import 'records_exclusive_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Route 53 Records Exclusive using the `zone_id`. For example:
+/// Using `pulumi import`, import Route 53 Records Exclusive using the `zoneId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:route53/recordsExclusive:RecordsExclusive example ABCD1234
 /// ```
 class RecordsExclusive extends pulumi.CustomResource {
   /// A list of all resource record sets associated with the hosted zone.
-  /// See `resource_record_set` below.
+  /// See `resourceRecordSet` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> resourceRecordSets;
   late final pulumi.Output<RecordsExclusiveTimeouts?> timeouts;
   /// ID of the hosted zone containing the resource record sets.

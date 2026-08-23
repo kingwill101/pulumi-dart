@@ -123,6 +123,34 @@ import 'capability_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_eks_capability" "example" {
+///   cluster_name              = exampleAwsEksCluster.name
+///   capability_name           = "argocd"
+///   type                      = "ARGOCD"
+///   role_arn                  = exampleAwsIamRole.arn
+///   delete_propagation_policy = "RETAIN"
+///   configuration = {
+///     argo_cd = {
+///       aws_idc = {
+///         idc_instance_arn = "arn:aws:sso:::instance/ssoins-1234567890abcdef0"
+///       }
+///       namespace = "argocd"
+///     }
+///   }
+///   tags = {
+///     "Name" = "example-capability"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -134,8 +162,8 @@ import 'capability_timeouts.dart';
 /// import com.pulumi.aws.eks.inputs.CapabilityConfigurationArgs;
 /// import com.pulumi.aws.eks.inputs.CapabilityConfigurationArgoCdArgs;
 /// import com.pulumi.aws.eks.inputs.CapabilityConfigurationArgoCdAwsIdcArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -189,10 +217,23 @@ import 'capability_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EKS Capability using the `cluster_name` and `capability_name` separated by a comma (`,`). For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `clusterName` (String) Name of the EKS Cluster.
+/// * `capabilityName` (String) Name of the capability.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Capabilities using `clusterName` and `capabilityName` separated by a comma (`,`). For example:
 ///
 /// ```sh
-/// $ pulumi import aws:eks/capability:Capability example my-cluster,my-capability
+/// $ pulumi import aws:eks/capability:Capability example example-cluster,example-capability
 /// ```
 class Capability extends pulumi.CustomResource {
   /// ARN of the capability.
@@ -211,7 +252,7 @@ class Capability extends pulumi.CustomResource {
   late final pulumi.Output<String> roleArn;
   /// Key-value map of resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<CapabilityTimeouts?> timeouts;
   /// Type of the capability. Valid values: `ACK`, `KRO`, `ARGOCD`.

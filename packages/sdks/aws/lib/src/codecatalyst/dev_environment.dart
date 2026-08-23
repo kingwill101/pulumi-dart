@@ -127,6 +127,34 @@ import 'dev_environment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codecatalyst_devenvironment" "test" {
+///   alias         = "devenv"
+///   space_name    = "myspace"
+///   project_name  = "myproject"
+///   instance_type = "dev.standard1.small"
+///   persistent_storage = {
+///     size = 16
+///   }
+///   ides = {
+///     name    = "PyCharm"
+///     runtime = "public.ecr.aws/jetbrains/py"
+///   }
+///   inactivity_timeout_minutes = 40
+///   repositories {
+///     repository_name = "pulumi-provider-aws"
+///     branch_name     = "main"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +166,8 @@ import 'dev_environment_state.dart';
 /// import com.pulumi.aws.codecatalyst.inputs.DevEnvironmentPersistentStorageArgs;
 /// import com.pulumi.aws.codecatalyst.inputs.DevEnvironmentIdesArgs;
 /// import com.pulumi.aws.codecatalyst.inputs.DevEnvironmentRepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

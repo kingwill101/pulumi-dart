@@ -3,16 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSalesforce {
+  /// Location of the Zendesk resource.
   final pulumi.Input<String>? instanceUrl;
-  /// Indicates whether the connector profile applies to a sandbox or production environment.
+  /// Whether the connector profile applies to a sandbox or production environment.
   final pulumi.Input<bool>? isSandboxEnvironment;
-  /// Indicates whether Amazon AppFlow uses the private network to send metadata and authorization calls to Salesforce. Amazon AppFlow sends private calls through AWS PrivateLink. These calls travel through AWS infrastructure without being exposed to the public internet.
+  /// Whether Amazon AppFlow uses the private network to send metadata and authorization calls to Salesforce. Amazon AppFlow sends private calls through AWS PrivateLink. These calls travel through AWS infrastructure without being exposed to the public internet.
   final pulumi.Input<bool>? usePrivatelinkForMetadataAndAuthorization;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSalesforce].
-  /// [instanceUrl] Optional.
-  /// [isSandboxEnvironment] Indicates whether the connector profile applies to a sandbox or production environment.
-  /// [usePrivatelinkForMetadataAndAuthorization] Indicates whether Amazon AppFlow uses the private network to send metadata and authorization calls to Salesforce. Amazon AppFlow sends private calls through AWS PrivateLink. These calls travel through AWS infrastructure without being exposed to the public internet.
+  /// [instanceUrl] Location of the Zendesk resource.
+  /// [isSandboxEnvironment] Whether the connector profile applies to a sandbox or production environment.
+  /// [usePrivatelinkForMetadataAndAuthorization] Whether Amazon AppFlow uses the private network to send metadata and authorization calls to Salesforce. Amazon AppFlow sends private calls through AWS PrivateLink. These calls travel through AWS infrastructure without being exposed to the public internet.
   const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSalesforce({
     this.instanceUrl,
     this.isSandboxEnvironment,
@@ -35,4 +36,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSalesforce
     );
   }
 }
-

@@ -141,6 +141,33 @@ import 'api_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appsync_api" "example" {
+///   name = "example-event-api"
+///   event_config = {
+///     auth_providers = [{
+///       "authType" = "API_KEY"
+///     }]
+///     connection_auth_modes = [{
+///       "authType" = "API_KEY"
+///     }]
+///     default_publish_auth_modes = [{
+///       "authType" = "API_KEY"
+///     }]
+///     default_subscribe_auth_modes = [{
+///       "authType" = "API_KEY"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +177,12 @@ import 'api_state.dart';
 /// import com.pulumi.aws.appsync.Api;
 /// import com.pulumi.aws.appsync.ApiArgs;
 /// import com.pulumi.aws.appsync.inputs.ApiEventConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.appsync.inputs.ApiEventConfigAuthProviderArgs;
+/// import com.pulumi.aws.appsync.inputs.ApiEventConfigConnectionAuthModeArgs;
+/// import com.pulumi.aws.appsync.inputs.ApiEventConfigDefaultPublishAuthModeArgs;
+/// import com.pulumi.aws.appsync.inputs.ApiEventConfigDefaultSubscribeAuthModeArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -218,7 +249,7 @@ import 'api_state.dart';
 ///             authType: "AMAZON_COGNITO_USER_POOLS",
 ///             cognitoConfig: {
 ///                 userPoolId: example.id,
-///                 awsRegion: current.then(current => current.name),
+///                 awsRegion: current.then(current => current.region),
 ///             },
 ///         }],
 ///         connectionAuthModes: [{
@@ -246,7 +277,7 @@ import 'api_state.dart';
 ///             "auth_type": "AMAZON_COGNITO_USER_POOLS",
 ///             "cognito_config": {
 ///                 "user_pool_id": example.id,
-///                 "aws_region": current.name,
+///                 "aws_region": current.region,
 ///             },
 ///         }],
 ///         "connection_auth_modes": [{
@@ -288,7 +319,7 @@ import 'api_state.dart';
 ///                     CognitoConfig = new Aws.AppSync.Inputs.ApiEventConfigAuthProviderCognitoConfigArgs
 ///                     {
 ///                         UserPoolId = example.Id,
-///                         AwsRegion = current.Apply(getRegionResult => getRegionResult.Name),
+///                         AwsRegion = current.Apply(getRegionResult => getRegionResult.Region),
 ///                     },
 ///                 },
 ///             },
@@ -347,8 +378,8 @@ import 'api_state.dart';
 /// 					&appsync.ApiEventConfigAuthProviderArgs{
 /// 						AuthType: pulumi.String("AMAZON_COGNITO_USER_POOLS"),
 /// 						CognitoConfig: &appsync.ApiEventConfigAuthProviderCognitoConfigArgs{
-/// 							UserPoolId: example.ID(),
-/// 							AwsRegion:  pulumi.String(current.Name),
+/// 							UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
+/// 							AwsRegion:  pulumi.String(current.Region),
 /// 						},
 /// 					},
 /// 				},
@@ -376,6 +407,43 @@ import 'api_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+///
+/// resource "aws_cognito_userpool" "example" {
+///   name = "example-user-pool"
+/// }
+/// resource "aws_appsync_api" "example" {
+///   name = "example-event-api"
+///   event_config = {
+///     auth_providers = [{
+///       "authType" = "AMAZON_COGNITO_USER_POOLS"
+///       "cognitoConfig" = {
+///         "userPoolId" = aws_cognito_userpool.example.id
+///         "awsRegion"  = data.aws_getregion.current.region
+///       }
+///     }]
+///     connection_auth_modes = [{
+///       "authType" = "AMAZON_COGNITO_USER_POOLS"
+///     }]
+///     default_publish_auth_modes = [{
+///       "authType" = "AMAZON_COGNITO_USER_POOLS"
+///     }]
+///     default_subscribe_auth_modes = [{
+///       "authType" = "AMAZON_COGNITO_USER_POOLS"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -389,8 +457,13 @@ import 'api_state.dart';
 /// import com.pulumi.aws.appsync.Api;
 /// import com.pulumi.aws.appsync.ApiArgs;
 /// import com.pulumi.aws.appsync.inputs.ApiEventConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.appsync.inputs.ApiEventConfigAuthProviderArgs;
+/// import com.pulumi.aws.appsync.inputs.ApiEventConfigAuthProviderCognitoConfigArgs;
+/// import com.pulumi.aws.appsync.inputs.ApiEventConfigConnectionAuthModeArgs;
+/// import com.pulumi.aws.appsync.inputs.ApiEventConfigDefaultPublishAuthModeArgs;
+/// import com.pulumi.aws.appsync.inputs.ApiEventConfigDefaultSubscribeAuthModeArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -416,7 +489,7 @@ import 'api_state.dart';
 ///                     .authType("AMAZON_COGNITO_USER_POOLS")
 ///                     .cognitoConfig(ApiEventConfigAuthProviderCognitoConfigArgs.builder()
 ///                         .userPoolId(example.id())
-///                         .awsRegion(current.name())
+///                         .awsRegion(current.region())
 ///                         .build())
 ///                     .build())
 ///                 .connectionAuthModes(ApiEventConfigConnectionAuthModeArgs.builder()
@@ -450,7 +523,7 @@ import 'api_state.dart';
 ///           - authType: AMAZON_COGNITO_USER_POOLS
 ///             cognitoConfig:
 ///               userPoolId: ${example.id}
-///               awsRegion: ${current.name}
+///               awsRegion: ${current.region}
 ///         connectionAuthModes:
 ///           - authType: AMAZON_COGNITO_USER_POOLS
 ///         defaultPublishAuthModes:
@@ -616,6 +689,37 @@ import 'api_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appsync_api" "example" {
+///   name = "example-event-api"
+///   event_config = {
+///     auth_providers = [{
+///       "authType" = "AWS_LAMBDA"
+///       "lambdaAuthorizerConfig" = {
+///         "authorizerUri"                = exampleAwsLambdaFunction.arn
+///         "authorizerResultTtlInSeconds" = 300
+///       }
+///     }]
+///     connection_auth_modes = [{
+///       "authType" = "AWS_LAMBDA"
+///     }]
+///     default_publish_auth_modes = [{
+///       "authType" = "AWS_LAMBDA"
+///     }]
+///     default_subscribe_auth_modes = [{
+///       "authType" = "AWS_LAMBDA"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -625,8 +729,13 @@ import 'api_state.dart';
 /// import com.pulumi.aws.appsync.Api;
 /// import com.pulumi.aws.appsync.ApiArgs;
 /// import com.pulumi.aws.appsync.inputs.ApiEventConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.appsync.inputs.ApiEventConfigAuthProviderArgs;
+/// import com.pulumi.aws.appsync.inputs.ApiEventConfigAuthProviderLambdaAuthorizerConfigArgs;
+/// import com.pulumi.aws.appsync.inputs.ApiEventConfigConnectionAuthModeArgs;
+/// import com.pulumi.aws.appsync.inputs.ApiEventConfigDefaultPublishAuthModeArgs;
+/// import com.pulumi.aws.appsync.inputs.ApiEventConfigDefaultSubscribeAuthModeArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -686,7 +795,7 @@ import 'api_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import AppSync Event API using the `api_id`. For example:
+/// Using `pulumi import`, import AppSync Event API using the `apiId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appsync/api:Api example example-api-id
@@ -698,7 +807,7 @@ class Api extends pulumi.CustomResource {
   late final pulumi.Output<String> apiId;
   /// DNS configuration for the Event API.
   late final pulumi.Output<Map<String, String>> dns;
-  /// Configuration for the Event API. See Event Config below.
+  /// Configuration for the Event API. See `eventConfig` Block below.
   late final pulumi.Output<ApiEventConfig> eventConfig;
   /// Name of the Event API.
   ///
@@ -708,12 +817,13 @@ class Api extends pulumi.CustomResource {
   late final pulumi.Output<String?> ownerContact;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ARN of the associated WAF web ACL.
   late final pulumi.Output<String> wafWebAclArn;
+  /// Whether X-Ray tracing is enabled for the Event API.
   late final pulumi.Output<bool> xrayEnabled;
 
   /// Creates a new [Api].

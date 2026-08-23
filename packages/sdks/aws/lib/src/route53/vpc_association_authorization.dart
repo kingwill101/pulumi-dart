@@ -131,7 +131,7 @@ import 'vpc_association_authorization_state.dart';
 /// 			Name: pulumi.String("example.com"),
 /// 			Vpcs: route53.ZoneVpcArray{
 /// 				&route53.ZoneVpcArgs{
-/// 					VpcId: example.ID(),
+/// 					VpcId: example.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -147,8 +147,8 @@ import 'vpc_association_authorization_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleVpcAssociationAuthorization, err := route53.NewVpcAssociationAuthorization(ctx, "example", &route53.VpcAssociationAuthorizationArgs{
-/// 			VpcId:  alternate.ID(),
-/// 			ZoneId: exampleZone.ID(),
+/// 			VpcId:  alternate.ID().ToIDOutput().ToStringOutput(),
+/// 			ZoneId: exampleZone.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -162,6 +162,40 @@ import 'vpc_association_authorization_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block           = "10.6.0.0/16"
+///   enable_dns_hostnames = true
+///   enable_dns_support   = true
+/// }
+/// resource "aws_route53_zone" "example" {
+///   name = "example.com"
+///   vpcs {
+///     vpc_id = aws_ec2_vpc.example.id
+///   }
+/// }
+/// resource "aws_ec2_vpc" "alternate" {
+///   cidr_block           = "10.7.0.0/16"
+///   enable_dns_hostnames = true
+///   enable_dns_support   = true
+/// }
+/// resource "aws_route53_vpcassociationauthorization" "example" {
+///   vpc_id  = aws_ec2_vpc.alternate.id
+///   zone_id = aws_route53_zone.example.id
+/// }
+/// resource "aws_route53_zoneassociation" "example" {
+///   vpc_id  = aws_route53_vpcassociationauthorization.example.vpc_id
+///   zone_id = aws_route53_vpcassociationauthorization.example.zone_id
 /// }
 /// ```
 /// ```java
@@ -179,8 +213,8 @@ import 'vpc_association_authorization_state.dart';
 /// import com.pulumi.aws.route53.VpcAssociationAuthorizationArgs;
 /// import com.pulumi.aws.route53.ZoneAssociation;
 /// import com.pulumi.aws.route53.ZoneAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -261,6 +295,18 @@ import 'vpc_association_authorization_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `zoneId` (String) The ID of the private hosted zone that you want to authorize associating a VPC with.
+/// * `vpcId` (String) The VPC to authorize for association with the private hosted zone.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import Route 53 VPC Association Authorizations using the Hosted Zone ID and VPC ID, separated by a colon (`:`). For example:
 ///

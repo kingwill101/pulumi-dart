@@ -26,7 +26,7 @@ class SpotFleetRequestLaunchSpecification {
   final pulumi.Input<String>? spotPrice;
   /// The subnet in which to launch the requested instance.
   final pulumi.Input<String>? subnetId;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<String>? userData;
   final pulumi.Input<List<String>>? vpcSecurityGroupIds;
@@ -50,7 +50,7 @@ class SpotFleetRequestLaunchSpecification {
   /// [rootBlockDevices] Optional.
   /// [spotPrice] The maximum bid price per unit hour.
   /// [subnetId] The subnet in which to launch the requested instance.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [userData] Optional.
   /// [vpcSecurityGroupIds] Optional.
   /// [weightedCapacity] The capacity added to the fleet by a fulfilled request.
@@ -127,4 +127,3 @@ class SpotFleetRequestLaunchSpecification {
     );
   }
 }
-

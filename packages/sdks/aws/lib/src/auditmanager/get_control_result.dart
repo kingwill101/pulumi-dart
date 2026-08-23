@@ -5,29 +5,37 @@ import 'get_control_control_mapping_source.dart';
 
 /// Result data returned by getControl.
 class GetControlResult {
+  /// Recommended actions to carry out if the control isn't fulfilled.
   final String actionPlanInstructions;
+  /// Title of the action plan for remediating the control.
   final String actionPlanTitle;
+  /// ARN of the control.
   final String arn;
+  /// Data mapping sources for the control.
   final List<GetControlControlMappingSource> controlMappingSources;
+  /// Description of the control.
   final String description;
+  /// Unique identifier for the control.
   final String id;
   final String name;
   final String region;
+  /// Map of tags assigned to the control.
   final Map<String, String> tags;
+  /// Steps to follow to determine if the control is satisfied.
   final String testingInformation;
   final String type;
 
   /// Creates a new [GetControlResult].
-  /// [actionPlanInstructions] Required.
-  /// [actionPlanTitle] Required.
-  /// [arn] Required.
-  /// [controlMappingSources] Required.
-  /// [description] Required.
-  /// [id] Required.
+  /// [actionPlanInstructions] Recommended actions to carry out if the control isn't fulfilled.
+  /// [actionPlanTitle] Title of the action plan for remediating the control.
+  /// [arn] ARN of the control.
+  /// [controlMappingSources] Data mapping sources for the control.
+  /// [description] Description of the control.
+  /// [id] Unique identifier for the control.
   /// [name] Required.
   /// [region] Required.
-  /// [tags] Required.
-  /// [testingInformation] Required.
+  /// [tags] Map of tags assigned to the control.
+  /// [testingInformation] Steps to follow to determine if the control is satisfied.
   /// [type] Required.
   const GetControlResult({
     required this.actionPlanInstructions,
@@ -75,4 +83,3 @@ class GetControlResult {
     );
   }
 }
-

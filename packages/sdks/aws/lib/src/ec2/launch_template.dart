@@ -18,7 +18,11 @@ import 'launch_template_state.dart';
 
 /// Provides an EC2 launch template resource. Can be used to create instances or auto scaling groups.
 ///
-/// ## Import
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import Launch Templates using the `id`. For example:
 ///
@@ -40,7 +44,7 @@ class LaunchTemplate extends pulumi.CustomResource {
   late final pulumi.Output<LaunchTemplateCreditSpecification?> creditSpecification;
   /// Default Version of the launch template.
   late final pulumi.Output<int> defaultVersion;
-  /// Description of the launch template.
+  /// Description of the launch template version (`VersionDescription` in the [EC2 API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateLaunchTemplateVersion.html)). Launch templates in AWS do not have a template-level description; whenever a change to this resource creates a new version, the new version is created with this description. To give each version a distinct description, update this argument in the same apply as the other changes.
   late final pulumi.Output<String?> description;
   /// If true, enables [EC2 Instance Stop Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-stop-protection.html).
   late final pulumi.Output<bool?> disableApiStop;
@@ -64,9 +68,9 @@ class LaunchTemplate extends pulumi.CustomResource {
   /// The market (purchasing) option for the instance. See Market Options
   /// below for details.
   late final pulumi.Output<LaunchTemplateInstanceMarketOptions?> instanceMarketOptions;
-  /// The attribute requirements for the type of instance. If present then `instance_type` cannot be present.
+  /// The attribute requirements for the type of instance. If present then `instanceType` cannot be present.
   late final pulumi.Output<LaunchTemplateInstanceRequirements?> instanceRequirements;
-  /// The type of the instance. If present then `instance_requirements` cannot be present.
+  /// The type of the instance. If present then `instanceRequirements` cannot be present.
   late final pulumi.Output<String?> instanceType;
   /// The kernel ID.
   late final pulumi.Output<String?> kernelId;
@@ -102,15 +106,15 @@ class LaunchTemplate extends pulumi.CustomResource {
   /// Interfaces below for more details.
   late final pulumi.Output<List<Map<String, dynamic>>?> secondaryInterfaces;
   /// A list of security group names to associate with. If you are creating Instances in a VPC, use
-  /// `vpc_security_group_ids` instead.
+  /// `vpcSecurityGroupIds` instead.
   late final pulumi.Output<List<String>?> securityGroupNames;
   /// The tags to apply to the resources during launch. See Tag Specifications below for more details. Default tags are currently not propagated to ASG created resources so you may wish to inject your default tags into this variable against the relevant child resource types created.
   late final pulumi.Output<List<Map<String, dynamic>>?> tagSpecifications;
-  /// A map of tags to assign to the launch template. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the launch template. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Whether to update Default Version each update. Conflicts with `default_version`.
+  /// Whether to update Default Version each update. Conflicts with `defaultVersion`.
   late final pulumi.Output<bool?> updateDefaultVersion;
   /// The base64-encoded user data to provide when launching the instance.
   late final pulumi.Output<String?> userData;

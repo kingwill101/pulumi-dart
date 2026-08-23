@@ -140,14 +140,14 @@ import 'domain_association_state.dart';
 /// 			return err
 /// 		}
 /// 		master, err := amplify.NewBranch(ctx, "master", &amplify.BranchArgs{
-/// 			AppId:      example.ID(),
+/// 			AppId:      example.ID().ToIDOutput().ToStringOutput(),
 /// 			BranchName: pulumi.String("master"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = amplify.NewDomainAssociation(ctx, "example", &amplify.DomainAssociationArgs{
-/// 			AppId:      example.ID(),
+/// 			AppId:      example.ID().ToIDOutput().ToStringOutput(),
 /// 			DomainName: pulumi.String("example.com"),
 /// 			SubDomains: amplify.DomainAssociationSubDomainArray{
 /// 				&amplify.DomainAssociationSubDomainArgs{
@@ -167,6 +167,40 @@ import 'domain_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amplify_app" "example" {
+///   name = "app"
+///   custom_rules {
+///     source = "https://example.com"
+///     status = "302"
+///     target = "https://www.example.com"
+///   }
+/// }
+/// resource "aws_amplify_branch" "master" {
+///   app_id      = aws_amplify_app.example.id
+///   branch_name = "master"
+/// }
+/// resource "aws_amplify_domainassociation" "example" {
+///   app_id      = aws_amplify_app.example.id
+///   domain_name = "example.com"
+///   sub_domains {
+///     branch_name = aws_amplify_branch.master.branch_name
+///     prefix      = ""
+///   }
+///   sub_domains {
+///     branch_name = aws_amplify_branch.master.branch_name
+///     prefix      = "www"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -181,8 +215,8 @@ import 'domain_association_state.dart';
 /// import com.pulumi.aws.amplify.DomainAssociation;
 /// import com.pulumi.aws.amplify.DomainAssociationArgs;
 /// import com.pulumi.aws.amplify.inputs.DomainAssociationSubDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -256,7 +290,7 @@ import 'domain_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amplify domain association using `app_id` and `domain_name`. For example:
+/// Using `pulumi import`, import Amplify domain association using `appId` and `domainName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:amplify/domainAssociation:DomainAssociation app d2ypk4k47z8u6/example.com

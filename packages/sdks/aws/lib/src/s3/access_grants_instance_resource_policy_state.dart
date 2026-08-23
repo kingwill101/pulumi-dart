@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering AccessGrantsInstanceResourcePolicy resources.
 class AccessGrantsInstanceResourcePolicyState {
-  /// The AWS account ID for the S3 Access Grants instance. Defaults to automatically determined account ID of the Terraform AWS provider.
+  /// AWS account ID for the S3 Access Grants instance. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? accountId;
-  /// The policy document.
+  /// Policy document.
   final pulumi.Input<String>? policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [AccessGrantsInstanceResourcePolicyState].
-  /// [accountId] The AWS account ID for the S3 Access Grants instance. Defaults to automatically determined account ID of the Terraform AWS provider.
-  /// [policy] The policy document.
+  /// [accountId] AWS account ID for the S3 Access Grants instance. Defaults to automatically determined account ID of the Terraform AWS provider.
+  /// [policy] Policy document.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const AccessGrantsInstanceResourcePolicyState({
     this.accountId,
@@ -37,4 +37,3 @@ class AccessGrantsInstanceResourcePolicyState {
     );
   }
 }
-

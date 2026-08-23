@@ -8,47 +8,48 @@ import 'get_ontap_storage_virtual_machine_lifecycle_transition_reason.dart';
 
 /// Result data returned by getOntapStorageVirtualMachine.
 class GetOntapStorageVirtualMachineResult {
-  /// The Microsoft Active Directory configuration to which the SVM is joined, if applicable. See Active Directory Configuration below.
+  /// Microsoft Active Directory configuration to which the SVM is joined, if applicable. See Active Directory Configuration below.
   final List<GetOntapStorageVirtualMachineActiveDirectoryConfiguration> activeDirectoryConfigurations;
   /// Amazon Resource Name of the SVM.
   final String arn;
-  /// The time that the SVM was created.
+  /// Time that the SVM was created.
   final String creationTime;
-  /// The endpoints that are used to access data or to manage the SVM using the NetApp ONTAP CLI, REST API, or NetApp CloudManager. They are the Iscsi, Management, Nfs, and Smb endpoints. See SVM Endpoints below.
+  /// Endpoints that are used to access data or to manage the SVM using the NetApp ONTAP CLI, REST API, or NetApp CloudManager. They are the Iscsi, Management, Nfs, and Smb endpoints. See SVM Endpoints below.
   final List<GetOntapStorageVirtualMachineEndpoint> endpoints;
   /// Identifier of the file system (e.g. `fs-12345678`).
   final String fileSystemId;
   final List<GetOntapStorageVirtualMachineFilter>? filters;
-  /// The SVM's system generated unique ID.
+  /// SVM's system generated unique ID.
   final String id;
-  /// The SVM's lifecycle status.
+  /// SVM's lifecycle status.
   final String lifecycleStatus;
-  /// Describes why the SVM lifecycle state changed. See Lifecycle Transition Reason below.
+  /// Reason why the SVM lifecycle state changed. See Lifecycle Transition Reason below.
   final List<GetOntapStorageVirtualMachineLifecycleTransitionReason> lifecycleTransitionReasons;
-  /// The name of the SVM, if provisioned.
+  /// Name of the SVM, if provisioned.
   final String name;
   final String region;
-  /// The SVM's subtype.
+  /// SVM's subtype.
   final String subtype;
+  /// Map of tags assigned to the resource.
   final Map<String, String> tags;
-  /// The SVM's UUID.
+  /// SVM's UUID.
   final String uuid;
 
   /// Creates a new [GetOntapStorageVirtualMachineResult].
-  /// [activeDirectoryConfigurations] The Microsoft Active Directory configuration to which the SVM is joined, if applicable. See Active Directory Configuration below.
+  /// [activeDirectoryConfigurations] Microsoft Active Directory configuration to which the SVM is joined, if applicable. See Active Directory Configuration below.
   /// [arn] Amazon Resource Name of the SVM.
-  /// [creationTime] The time that the SVM was created.
-  /// [endpoints] The endpoints that are used to access data or to manage the SVM using the NetApp ONTAP CLI, REST API, or NetApp CloudManager. They are the Iscsi, Management, Nfs, and Smb endpoints. See SVM Endpoints below.
+  /// [creationTime] Time that the SVM was created.
+  /// [endpoints] Endpoints that are used to access data or to manage the SVM using the NetApp ONTAP CLI, REST API, or NetApp CloudManager. They are the Iscsi, Management, Nfs, and Smb endpoints. See SVM Endpoints below.
   /// [fileSystemId] Identifier of the file system (e.g. `fs-12345678`).
   /// [filters] Optional.
-  /// [id] The SVM's system generated unique ID.
-  /// [lifecycleStatus] The SVM's lifecycle status.
-  /// [lifecycleTransitionReasons] Describes why the SVM lifecycle state changed. See Lifecycle Transition Reason below.
-  /// [name] The name of the SVM, if provisioned.
+  /// [id] SVM's system generated unique ID.
+  /// [lifecycleStatus] SVM's lifecycle status.
+  /// [lifecycleTransitionReasons] Reason why the SVM lifecycle state changed. See Lifecycle Transition Reason below.
+  /// [name] Name of the SVM, if provisioned.
   /// [region] Required.
-  /// [subtype] The SVM's subtype.
-  /// [tags] Required.
-  /// [uuid] The SVM's UUID.
+  /// [subtype] SVM's subtype.
+  /// [tags] Map of tags assigned to the resource.
+  /// [uuid] SVM's UUID.
   const GetOntapStorageVirtualMachineResult({
     required this.activeDirectoryConfigurations,
     required this.arn,
@@ -104,4 +105,3 @@ class GetOntapStorageVirtualMachineResult {
     );
   }
 }
-

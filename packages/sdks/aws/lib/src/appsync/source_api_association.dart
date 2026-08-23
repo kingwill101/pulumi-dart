@@ -68,6 +68,21 @@ import 'source_api_association_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appsync_sourceapiassociation" "test" {
+///   description   = "My source API Merged"
+///   merged_api_id = "gzos6bteufdunffzzifiowisoe"
+///   source_api_id = "fzzifiowisoegzos6bteufdunf"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +91,8 @@ import 'source_api_association_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appsync.SourceApiAssociation;
 /// import com.pulumi.aws.appsync.SourceApiAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -111,7 +126,7 @@ import 'source_api_association_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import AppSync Source API Association using the `association_id` and `merged_api_id` separated by `,`. For example:
+/// Using `pulumi import`, import AppSync Source API Association using the `associationId` and `mergedApiId` separated by `,`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appsync/sourceApiAssociation:SourceApiAssociation example gzos6bteufdunffzzifiowisoe,243685a0-9347-4a1a-89c1-9b57dea01e31
@@ -123,16 +138,17 @@ class SourceApiAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> associationId;
   /// Description of the source API being merged.
   late final pulumi.Output<String?> description;
-  /// ARN of the merged API. One of `merged_api_arn` or `merged_api_id` must be specified.
+  /// ARN of the merged API. One of `mergedApiArn` or `mergedApiId` must be specified.
   late final pulumi.Output<String> mergedApiArn;
-  /// ID of the merged API. One of `merged_api_arn` or `merged_api_id` must be specified.
+  /// ID of the merged API. One of `mergedApiArn` or `mergedApiId` must be specified.
   late final pulumi.Output<String> mergedApiId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// ARN of the source API. One of `source_api_arn` or `source_api_id` must be specified.
+  /// ARN of the source API. One of `sourceApiArn` or `sourceApiId` must be specified.
   late final pulumi.Output<String> sourceApiArn;
+  /// Source API Association configuration. See `sourceApiAssociationConfig` Block for details.
   late final pulumi.Output<List<Map<String, dynamic>>> sourceApiAssociationConfigs;
-  /// ID of the source API. One of `source_api_arn` or `source_api_id` must be specified.
+  /// ID of the source API. One of `sourceApiArn` or `sourceApiId` must be specified.
   late final pulumi.Output<String> sourceApiId;
   late final pulumi.Output<SourceApiAssociationTimeouts?> timeouts;
 

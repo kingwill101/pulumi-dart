@@ -23,7 +23,7 @@ class LoadBalancerState {
   final pulumi.Input<String>? desyncMitigationMode;
   /// The DNS name of the ELB
   final pulumi.Input<String>? dnsName;
-  /// A health_check block. Health Check documented below.
+  /// A healthCheck block. Health Check documented below.
   final pulumi.Input<LoadBalancerHealthCheck>? healthCheck;
   /// The time in seconds that the connection is allowed to be idle. Default: `60`
   final pulumi.Input<int>? idleTimeout;
@@ -53,12 +53,12 @@ class LoadBalancerState {
   final pulumi.Input<String>? sourceSecurityGroupId;
   /// A list of subnet IDs to attach to the ELB. When an update to subnets will remove all current subnets, this will force a new resource.
   final pulumi.Input<List<String>>? subnets;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// Exactly one of `availability_zones` or `subnets` must be specified: this
+  /// Exactly one of `availabilityZones` or `subnets` must be specified: this
   /// determines if the ELB exists in a VPC or in EC2-classic.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The canonical hosted zone ID of the ELB (to be used in a Route 53 Alias record)
   final pulumi.Input<String>? zoneId;
@@ -72,7 +72,7 @@ class LoadBalancerState {
   /// [crossZoneLoadBalancing] Enable cross-zone load balancing. Default: `true`
   /// [desyncMitigationMode] Determines how the load balancer handles requests that might pose a security risk to an application due to HTTP desync. Valid values are `monitor`, `defensive` (default), `strictest`.
   /// [dnsName] The DNS name of the ELB
-  /// [healthCheck] A health_check block. Health Check documented below.
+  /// [healthCheck] A healthCheck block. Health Check documented below.
   /// [idleTimeout] The time in seconds that the connection is allowed to be idle. Default: `60`
   /// [instances] A list of instance ids to place in the ELB pool.
   /// [internal] If true, ELB will be an internal ELB.
@@ -84,8 +84,8 @@ class LoadBalancerState {
   /// [sourceSecurityGroup] The name of the security group that you can use as
   /// [sourceSecurityGroupId] The ID of the security group that you can use as
   /// [subnets] A list of subnet IDs to attach to the ELB. When an update to subnets will remove all current subnets, this will force a new resource.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [zoneId] The canonical hosted zone ID of the ELB (to be used in a Route 53 Alias record)
   const LoadBalancerState({
     this.accessLogs,
@@ -169,4 +169,3 @@ class LoadBalancerState {
     );
   }
 }
-

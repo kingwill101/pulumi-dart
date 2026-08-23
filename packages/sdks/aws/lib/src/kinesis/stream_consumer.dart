@@ -85,6 +85,24 @@ import 'stream_consumer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kinesis_stream" "example" {
+///   name        = "example-stream"
+///   shard_count = 1
+/// }
+/// resource "aws_kinesis_streamconsumer" "example" {
+///   name       = "example-consumer"
+///   stream_arn = aws_kinesis_stream.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +113,8 @@ import 'stream_consumer_state.dart';
 /// import com.pulumi.aws.kinesis.StreamArgs;
 /// import com.pulumi.aws.kinesis.StreamConsumer;
 /// import com.pulumi.aws.kinesis.StreamConsumerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -139,13 +157,18 @@ import 'stream_consumer_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Kinesis Stream Consumers using the Amazon Resource Name (ARN). For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `arn` (String) ARN of the stream consumer.
+///
+///
+/// Using `pulumi import`, import Kinesis Stream Consumers using `arn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:kinesis/streamConsumer:StreamConsumer example arn:aws:kinesis:us-west-2:123456789012:stream/example/consumer/example:1616044553
 /// ```
-///
-/// [1]: https://docs.aws.amazon.com/streams/latest/dev/enhanced-consumers.html
 class StreamConsumer extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the stream consumer.
   late final pulumi.Output<String> arn;

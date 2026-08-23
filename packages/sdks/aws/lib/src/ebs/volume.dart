@@ -74,6 +74,23 @@ import 'volume_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ebs_volume" "example" {
+///   availability_zone = "us-west-2a"
+///   size              = 40
+///   tags = {
+///     "Name" = "HelloWorld"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +99,8 @@ import 'volume_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ebs.Volume;
 /// import com.pulumi.aws.ebs.VolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -123,6 +140,17 @@ import 'volume_state.dart';
 /// ```sh
 /// $ pulumi import aws:ebs/volume:Volume id vol-049df61146c4d7901
 /// ```
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) Volume ID.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
 class Volume extends pulumi.CustomResource {
   /// Volume ARN (e.g., arn:aws:ec2:us-east-1:123456789012:volume/vol-59fcb34e).
   late final pulumi.Output<String> arn;
@@ -136,7 +164,7 @@ class Volume extends pulumi.CustomResource {
   late final pulumi.Output<bool?> finalSnapshot;
   /// Amount of IOPS to provision for the disk. Only valid for `type` of `io1`, `io2` or `gp3`.
   late final pulumi.Output<int> iops;
-  /// ARN for the KMS encryption key. When specifying `kms_key_id`, `encrypted` needs to be set to true. Note: The provider must be running with credentials which have the `GenerateDataKeyWithoutPlaintext` permission on the specified KMS key as required by the [EBS KMS CMK volume provisioning process](https://docs.aws.amazon.com/kms/latest/developerguide/services-ebs.html#ebs-cmk) to prevent a volume from being created and almost immediately deleted.
+  /// ARN for the KMS encryption key. When specifying `kmsKeyId`, `encrypted` needs to be set to true. Note: The provider must be running with credentials which have the `GenerateDataKeyWithoutPlaintext` permission on the specified KMS key as required by the [EBS KMS CMK volume provisioning process](https://docs.aws.amazon.com/kms/latest/developerguide/services-ebs.html#ebs-cmk) to prevent a volume from being created and almost immediately deleted.
   late final pulumi.Output<String> kmsKeyId;
   /// Specifies whether to enable Amazon EBS Multi-Attach. Multi-Attach is supported on `io1` and `io2` volumes.
   late final pulumi.Output<bool?> multiAttachEnabled;
@@ -148,17 +176,17 @@ class Volume extends pulumi.CustomResource {
   late final pulumi.Output<int> size;
   /// A snapshot to base the EBS volume off of.
   late final pulumi.Output<String> snapshotId;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Throughput that the volume supports, in MiB/s. Only valid for `type` of `gp3`.
   late final pulumi.Output<int> throughput;
   /// Type of EBS volume. Can be `standard`, `gp2`, `gp3`, `io1`, `io2`, `sc1` or `st1` (Default: `gp2`).
   late final pulumi.Output<String> type;
-  /// EBS provisioned rate for volume initialization, in MiB/s, at which to download the snapshot blocks from Amazon S3 to the volume. This argument can only be set if `snapshot_id` is specified.
+  /// EBS provisioned rate for volume initialization, in MiB/s, at which to download the snapshot blocks from Amazon S3 to the volume. This argument can only be set if `snapshotId` is specified.
   ///
-  /// &gt; **NOTE:** At least one of `size` or `snapshot_id` is required.
+  /// &gt; **NOTE:** At least one of `size` or `snapshotId` is required.
   ///
   /// &gt; **NOTE:** When changing the `size`, `iops` or `type` of an instance, there are [considerations](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/considerations.html) to be aware of.
   late final pulumi.Output<int?> volumeInitializationRate;

@@ -17,7 +17,7 @@ class DevEndpointArgs {
   final pulumi.Input<String>? glueVersion;
   /// The name of this endpoint. It must be unique in your account.
   final pulumi.Input<String>? name;
-  /// The number of AWS Glue Data Processing Units (DPUs) to allocate to this endpoint. Conflicts with `worker_type`.
+  /// The number of AWS Glue Data Processing Units (DPUs) to allocate to this endpoint. Conflicts with `workerType`.
   final pulumi.Input<int>? numberOfNodes;
   /// The number of workers of a defined worker type that are allocated to this endpoint. This field is available only when you choose worker type G.1X or G.2X.
   final pulumi.Input<int>? numberOfWorkers;
@@ -35,7 +35,7 @@ class DevEndpointArgs {
   final pulumi.Input<List<String>>? securityGroupIds;
   /// The subnet ID for the new endpoint to use.
   final pulumi.Input<String>? subnetId;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The type of predefined worker that is allocated to this endpoint. Accepts a value of Standard, G.1X, or G.2X.
   final pulumi.Input<String>? workerType;
@@ -46,7 +46,7 @@ class DevEndpointArgs {
   /// [extraPythonLibsS3Path] Path(s) to one or more Python libraries in an S3 bucket that should be loaded in this endpoint. Multiple values must be complete paths separated by a comma.
   /// [glueVersion] Specifies the versions of Python and Apache Spark to use. Defaults to AWS Glue version 0.9.
   /// [name] The name of this endpoint. It must be unique in your account.
-  /// [numberOfNodes] The number of AWS Glue Data Processing Units (DPUs) to allocate to this endpoint. Conflicts with `worker_type`.
+  /// [numberOfNodes] The number of AWS Glue Data Processing Units (DPUs) to allocate to this endpoint. Conflicts with `workerType`.
   /// [numberOfWorkers] The number of workers of a defined worker type that are allocated to this endpoint. This field is available only when you choose worker type G.1X or G.2X.
   /// [publicKey] The public key to be used by this endpoint for authentication.
   /// [publicKeys] A list of public keys to be used by this endpoint for authentication.
@@ -55,7 +55,7 @@ class DevEndpointArgs {
   /// [securityConfiguration] The name of the Security Configuration structure to be used with this endpoint.
   /// [securityGroupIds] Security group IDs for the security groups to be used by this endpoint.
   /// [subnetId] The subnet ID for the new endpoint to use.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [workerType] The type of predefined worker that is allocated to this endpoint. Accepts a value of Standard, G.1X, or G.2X.
   const DevEndpointArgs({
     this.arguments,
@@ -118,4 +118,3 @@ class DevEndpointArgs {
     );
   }
 }
-

@@ -5,14 +5,14 @@ import 'get_link_link_configuration_log_group_configuration.dart';
 import 'get_link_link_configuration_metric_configuration.dart';
 
 class GetLinkLinkConfiguration {
-  /// Configuration for filtering which log groups are to send log events from the source account to the monitoring account. See `log_group_configuration` Block for details.
+  /// Configuration for filtering which log groups are to send log events from the source account to the monitoring account. See `logGroupConfiguration` Block for details.
   final pulumi.Input<List<GetLinkLinkConfigurationLogGroupConfiguration>> logGroupConfigurations;
-  /// Configuration for filtering which metric namespaces are to be shared from the source account to the monitoring account. See `metric_configuration` Block for details.
+  /// Configuration for filtering which metric namespaces are to be shared from the source account to the monitoring account. See `metricConfiguration` Block for details.
   final pulumi.Input<List<GetLinkLinkConfigurationMetricConfiguration>> metricConfigurations;
 
   /// Creates a new [GetLinkLinkConfiguration].
-  /// [logGroupConfigurations] Configuration for filtering which log groups are to send log events from the source account to the monitoring account. See `log_group_configuration` Block for details.
-  /// [metricConfigurations] Configuration for filtering which metric namespaces are to be shared from the source account to the monitoring account. See `metric_configuration` Block for details.
+  /// [logGroupConfigurations] Configuration for filtering which log groups are to send log events from the source account to the monitoring account. See `logGroupConfiguration` Block for details.
+  /// [metricConfigurations] Configuration for filtering which metric namespaces are to be shared from the source account to the monitoring account. See `metricConfiguration` Block for details.
   const GetLinkLinkConfiguration({
     required this.logGroupConfigurations,
     required this.metricConfigurations,
@@ -32,4 +32,3 @@ class GetLinkLinkConfiguration {
     );
   }
 }
-

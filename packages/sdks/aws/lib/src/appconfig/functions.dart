@@ -66,6 +66,19 @@ import 'get_environments_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_appconfig_getapplication" "example" {
+///   name = "my-appconfig-application"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +87,8 @@ import 'get_environments_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appconfig.AppconfigFunctions;
 /// import com.pulumi.aws.appconfig.inputs.GetApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -177,6 +190,20 @@ Future<GetApplicationResult> getApplication(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_appconfig_getconfigurationprofile" "example" {
+///   application_id           = "b5d5gpj"
+///   configuration_profile_id = "qrbb1c1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -185,8 +212,8 @@ Future<GetApplicationResult> getApplication(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appconfig.AppconfigFunctions;
 /// import com.pulumi.aws.appconfig.inputs.GetConfigurationProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -245,18 +272,18 @@ Future<GetConfigurationProfileResult> getConfigurationProfile(
 /// const example = aws.appconfig.getConfigurationProfiles({
 ///     applicationId: "a1d3rpe",
 /// });
-/// const exampleGetConfigurationProfile = example.then(example => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: aws.appconfig.getConfigurationProfile({
+/// const exampleGetConfigurationProfile = example.then(example => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: aws.appconfig.getConfigurationProfile({
 ///     configurationProfileId: __value,
 ///     applicationId: exampleAwsAppconfigApplication.id,
-/// }) })));
+/// }) }), {}));
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
 /// example = aws.appconfig.get_configuration_profiles(application_id="a1d3rpe")
-/// example_get_configuration_profile = {__key: aws.appconfig.get_configuration_profile(configuration_profile_id=__value,
-///     application_id=example_aws_appconfig_application["id"]) for __key, __value in example.configuration_profile_ids}
+/// example_get_configuration_profile = {str(__key): aws.appconfig.get_configuration_profile(configuration_profile_id=__value,
+///     application_id=example_aws_appconfig_application["id"]) for __key, __value in enumerate(example.configuration_profile_ids)}
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -274,6 +301,28 @@ Future<GetConfigurationProfileResult> getConfigurationProfile(
 ///     var exampleGetConfigurationProfile = ;
 ///
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_appconfig_getconfigurationprofiles" "example" {
+///   application_id = "a1d3rpe"
+/// }
+/// data "aws_appconfig_getconfigurationprofile" "invoke_1" {
+///   for_each                 = data.aws_appconfig_getconfigurationprofiles.example.configuration_profile_ids
+///   configuration_profile_id = each.value
+///   application_id           = exampleAwsAppconfigApplication.id
+/// }
+///
+/// locals {
+///   exampleGetConfigurationProfile = {for __key, __value in data.aws_appconfig_getconfigurationprofiles.example.configuration_profile_ids : __key => data.aws_appconfig_getconfigurationprofile.invoke_1[__key]}
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_appconfig_get_configuration_profiles_get_configuration_profiles_args_doc}
 /// [options] Invoke options controlling this call.
@@ -350,6 +399,20 @@ Future<GetConfigurationProfilesResult> getConfigurationProfiles(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_appconfig_getenvironment" "example" {
+///   application_id = "b5d5gpj"
+///   environment_id = "qrbb1c1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -358,8 +421,8 @@ Future<GetConfigurationProfilesResult> getConfigurationProfiles(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appconfig.AppconfigFunctions;
 /// import com.pulumi.aws.appconfig.inputs.GetEnvironmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -460,6 +523,19 @@ Future<GetEnvironmentResult> getEnvironment(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_appconfig_getenvironments" "example" {
+///   application_id = "a1d3rpe"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -468,8 +544,8 @@ Future<GetEnvironmentResult> getEnvironment(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appconfig.AppconfigFunctions;
 /// import com.pulumi.aws.appconfig.inputs.GetEnvironmentsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

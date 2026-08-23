@@ -42,4 +42,3 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderC
     );
   }
 }
-

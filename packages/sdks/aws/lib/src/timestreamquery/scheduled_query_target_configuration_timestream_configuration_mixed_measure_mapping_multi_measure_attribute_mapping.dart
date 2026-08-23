@@ -7,13 +7,13 @@ class ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappin
   final pulumi.Input<String> measureValueType;
   /// Source column from where the attribute value is to be read.
   final pulumi.Input<String> sourceColumn;
-  /// Custom name to be used for attribute name in derived table. If not provided, `source_column` is used.
+  /// Custom name to be used for attribute name in derived table. If not provided, `sourceColumn` is used.
   final pulumi.Input<String>? targetMultiMeasureAttributeName;
 
   /// Creates a new [ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappingMultiMeasureAttributeMapping].
   /// [measureValueType] Type of the attribute to be read from the source column. Valid values are `BIGINT`, `BOOLEAN`, `DOUBLE`, `VARCHAR`, `TIMESTAMP`.
   /// [sourceColumn] Source column from where the attribute value is to be read.
-  /// [targetMultiMeasureAttributeName] Custom name to be used for attribute name in derived table. If not provided, `source_column` is used.
+  /// [targetMultiMeasureAttributeName] Custom name to be used for attribute name in derived table. If not provided, `sourceColumn` is used.
   const ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappingMultiMeasureAttributeMapping({
     required this.measureValueType,
     required this.sourceColumn,
@@ -36,4 +36,3 @@ class ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappin
     );
   }
 }
-

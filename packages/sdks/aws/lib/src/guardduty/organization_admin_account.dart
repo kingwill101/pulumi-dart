@@ -99,6 +99,26 @@ import 'organization_admin_account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_organizations_organization" "example" {
+///   aws_service_access_principals = ["guardduty.amazonaws.com"]
+///   feature_set                   = "ALL"
+/// }
+/// resource "aws_guardduty_detector" "example" {
+/// }
+/// resource "aws_guardduty_organizationadminaccount" "example" {
+///   depends_on       = [aws_organizations_organization.example]
+///   admin_account_id = "123456789012"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +131,8 @@ import 'organization_admin_account_state.dart';
 /// import com.pulumi.aws.guardduty.OrganizationAdminAccount;
 /// import com.pulumi.aws.guardduty.OrganizationAdminAccountArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

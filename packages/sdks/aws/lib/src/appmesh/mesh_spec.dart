@@ -5,14 +5,14 @@ import 'mesh_spec_egress_filter.dart';
 import 'mesh_spec_service_discovery.dart';
 
 class MeshSpec {
-  /// Egress filter rules for the service mesh.
+  /// Egress filter rules for the service mesh. See `egressFilter` Block for details.
   final pulumi.Input<MeshSpecEgressFilter>? egressFilter;
-  /// The service discovery information for the service mesh.
+  /// Service discovery information for the service mesh. See `serviceDiscovery` Block for details.
   final pulumi.Input<MeshSpecServiceDiscovery>? serviceDiscovery;
 
   /// Creates a new [MeshSpec].
-  /// [egressFilter] Egress filter rules for the service mesh.
-  /// [serviceDiscovery] The service discovery information for the service mesh.
+  /// [egressFilter] Egress filter rules for the service mesh. See `egressFilter` Block for details.
+  /// [serviceDiscovery] Service discovery information for the service mesh. See `serviceDiscovery` Block for details.
   const MeshSpec({
     this.egressFilter,
     this.serviceDiscovery,
@@ -32,4 +32,3 @@ class MeshSpec {
     );
   }
 }
-

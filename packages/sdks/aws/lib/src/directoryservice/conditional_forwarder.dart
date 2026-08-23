@@ -78,6 +78,21 @@ import 'conditional_forwarder_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directoryservice_conditionalforwarder" "example" {
+///   directory_id       = ad.id
+///   remote_domain_name = "example.com"
+///   dns_ips            = ["8.8.8.8", "8.8.4.4"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +101,8 @@ import 'conditional_forwarder_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.directoryservice.ConditionalForwarder;
 /// import com.pulumi.aws.directoryservice.ConditionalForwarderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

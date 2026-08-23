@@ -8,9 +8,13 @@ class ProviderEndpoint {
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? account;
   /// Use this to override the default service endpoint URL
+  final pulumi.Input<String>? accountaccess;
+  /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? acm;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? acmpca;
+  /// Use this to override the default service endpoint URL
+  final pulumi.Input<String>? agentregistry;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? amg;
   /// Use this to override the default service endpoint URL
@@ -200,11 +204,15 @@ class ProviderEndpoint {
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? devicefarm;
   /// Use this to override the default service endpoint URL
+  final pulumi.Input<String>? devopsagent;
+  /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? devopsguru;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? directconnect;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? directoryservice;
+  /// Use this to override the default service endpoint URL
+  final pulumi.Input<String>? directoryservicedata;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? dlm;
   /// Use this to override the default service endpoint URL
@@ -310,6 +318,8 @@ class ProviderEndpoint {
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? inspectorv2;
   /// Use this to override the default service endpoint URL
+  final pulumi.Input<String>? interconnect;
+  /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? internetmonitor;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? invoicing;
@@ -342,6 +352,10 @@ class ProviderEndpoint {
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? lambda;
   /// Use this to override the default service endpoint URL
+  final pulumi.Input<String>? lambdacore;
+  /// Use this to override the default service endpoint URL
+  final pulumi.Input<String>? lambdamicrovms;
+  /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? launchwizard;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? lex;
@@ -369,6 +383,8 @@ class ProviderEndpoint {
   final pulumi.Input<String>? m2;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? macie2;
+  /// Use this to override the default service endpoint URL
+  final pulumi.Input<String>? mailmanager;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? managedgrafana;
   /// Use this to override the default service endpoint URL
@@ -486,6 +502,8 @@ class ProviderEndpoint {
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? resiliencehub;
   /// Use this to override the default service endpoint URL
+  final pulumi.Input<String>? resiliencehubv2;
+  /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? resourceexplorer2;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? resourcegroups;
@@ -515,6 +533,8 @@ class ProviderEndpoint {
   final pulumi.Input<String>? s3api;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? s3control;
+  /// Use this to override the default service endpoint URL
+  final pulumi.Input<String>? s3files;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? s3outposts;
   /// Use this to override the default service endpoint URL
@@ -602,6 +622,8 @@ class ProviderEndpoint {
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? transfer;
   /// Use this to override the default service endpoint URL
+  final pulumi.Input<String>? uxc;
+  /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? verifiedpermissions;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String>? vpclattice;
@@ -625,8 +647,10 @@ class ProviderEndpoint {
   /// Creates a new [ProviderEndpoint].
   /// [accessanalyzer] Use this to override the default service endpoint URL
   /// [account] Use this to override the default service endpoint URL
+  /// [accountaccess] Use this to override the default service endpoint URL
   /// [acm] Use this to override the default service endpoint URL
   /// [acmpca] Use this to override the default service endpoint URL
+  /// [agentregistry] Use this to override the default service endpoint URL
   /// [amg] Use this to override the default service endpoint URL
   /// [amp] Use this to override the default service endpoint URL
   /// [amplify] Use this to override the default service endpoint URL
@@ -721,9 +745,11 @@ class ProviderEndpoint {
   /// [deploy] Use this to override the default service endpoint URL
   /// [detective] Use this to override the default service endpoint URL
   /// [devicefarm] Use this to override the default service endpoint URL
+  /// [devopsagent] Use this to override the default service endpoint URL
   /// [devopsguru] Use this to override the default service endpoint URL
   /// [directconnect] Use this to override the default service endpoint URL
   /// [directoryservice] Use this to override the default service endpoint URL
+  /// [directoryservicedata] Use this to override the default service endpoint URL
   /// [dlm] Use this to override the default service endpoint URL
   /// [dms] Use this to override the default service endpoint URL
   /// [docdb] Use this to override the default service endpoint URL
@@ -776,6 +802,7 @@ class ProviderEndpoint {
   /// [inspector] Use this to override the default service endpoint URL
   /// [inspector2] Use this to override the default service endpoint URL
   /// [inspectorv2] Use this to override the default service endpoint URL
+  /// [interconnect] Use this to override the default service endpoint URL
   /// [internetmonitor] Use this to override the default service endpoint URL
   /// [invoicing] Use this to override the default service endpoint URL
   /// [iot] Use this to override the default service endpoint URL
@@ -792,6 +819,8 @@ class ProviderEndpoint {
   /// [kms] Use this to override the default service endpoint URL
   /// [lakeformation] Use this to override the default service endpoint URL
   /// [lambda] Use this to override the default service endpoint URL
+  /// [lambdacore] Use this to override the default service endpoint URL
+  /// [lambdamicrovms] Use this to override the default service endpoint URL
   /// [launchwizard] Use this to override the default service endpoint URL
   /// [lex] Use this to override the default service endpoint URL
   /// [lexmodelbuilding] Use this to override the default service endpoint URL
@@ -806,6 +835,7 @@ class ProviderEndpoint {
   /// [logs] Use this to override the default service endpoint URL
   /// [m2] Use this to override the default service endpoint URL
   /// [macie2] Use this to override the default service endpoint URL
+  /// [mailmanager] Use this to override the default service endpoint URL
   /// [managedgrafana] Use this to override the default service endpoint URL
   /// [mediaconnect] Use this to override the default service endpoint URL
   /// [mediaconvert] Use this to override the default service endpoint URL
@@ -864,6 +894,7 @@ class ProviderEndpoint {
   /// [redshiftserverless] Use this to override the default service endpoint URL
   /// [rekognition] Use this to override the default service endpoint URL
   /// [resiliencehub] Use this to override the default service endpoint URL
+  /// [resiliencehubv2] Use this to override the default service endpoint URL
   /// [resourceexplorer2] Use this to override the default service endpoint URL
   /// [resourcegroups] Use this to override the default service endpoint URL
   /// [resourcegroupstagging] Use this to override the default service endpoint URL
@@ -879,6 +910,7 @@ class ProviderEndpoint {
   /// [s3] Use this to override the default service endpoint URL
   /// [s3api] Use this to override the default service endpoint URL
   /// [s3control] Use this to override the default service endpoint URL
+  /// [s3files] Use this to override the default service endpoint URL
   /// [s3outposts] Use this to override the default service endpoint URL
   /// [s3tables] Use this to override the default service endpoint URL
   /// [s3vectors] Use this to override the default service endpoint URL
@@ -922,6 +954,7 @@ class ProviderEndpoint {
   /// [transcribe] Use this to override the default service endpoint URL
   /// [transcribeservice] Use this to override the default service endpoint URL
   /// [transfer] Use this to override the default service endpoint URL
+  /// [uxc] Use this to override the default service endpoint URL
   /// [verifiedpermissions] Use this to override the default service endpoint URL
   /// [vpclattice] Use this to override the default service endpoint URL
   /// [waf] Use this to override the default service endpoint URL
@@ -935,8 +968,10 @@ class ProviderEndpoint {
   const ProviderEndpoint({
     this.accessanalyzer,
     this.account,
+    this.accountaccess,
     this.acm,
     this.acmpca,
+    this.agentregistry,
     this.amg,
     this.amp,
     this.amplify,
@@ -1031,9 +1066,11 @@ class ProviderEndpoint {
     this.deploy,
     this.detective,
     this.devicefarm,
+    this.devopsagent,
     this.devopsguru,
     this.directconnect,
     this.directoryservice,
+    this.directoryservicedata,
     this.dlm,
     this.dms,
     this.docdb,
@@ -1086,6 +1123,7 @@ class ProviderEndpoint {
     this.inspector,
     this.inspector2,
     this.inspectorv2,
+    this.interconnect,
     this.internetmonitor,
     this.invoicing,
     this.iot,
@@ -1102,6 +1140,8 @@ class ProviderEndpoint {
     this.kms,
     this.lakeformation,
     this.lambda,
+    this.lambdacore,
+    this.lambdamicrovms,
     this.launchwizard,
     this.lex,
     this.lexmodelbuilding,
@@ -1116,6 +1156,7 @@ class ProviderEndpoint {
     this.logs,
     this.m2,
     this.macie2,
+    this.mailmanager,
     this.managedgrafana,
     this.mediaconnect,
     this.mediaconvert,
@@ -1174,6 +1215,7 @@ class ProviderEndpoint {
     this.redshiftserverless,
     this.rekognition,
     this.resiliencehub,
+    this.resiliencehubv2,
     this.resourceexplorer2,
     this.resourcegroups,
     this.resourcegroupstagging,
@@ -1189,6 +1231,7 @@ class ProviderEndpoint {
     this.s3,
     this.s3api,
     this.s3control,
+    this.s3files,
     this.s3outposts,
     this.s3tables,
     this.s3vectors,
@@ -1232,6 +1275,7 @@ class ProviderEndpoint {
     this.transcribe,
     this.transcribeservice,
     this.transfer,
+    this.uxc,
     this.verifiedpermissions,
     this.vpclattice,
     this.waf,
@@ -1248,8 +1292,10 @@ class ProviderEndpoint {
     return <String, dynamic>{
       'accessanalyzer': ?accessanalyzer,
       'account': ?account,
+      'accountaccess': ?accountaccess,
       'acm': ?acm,
       'acmpca': ?acmpca,
+      'agentregistry': ?agentregistry,
       'amg': ?amg,
       'amp': ?amp,
       'amplify': ?amplify,
@@ -1344,9 +1390,11 @@ class ProviderEndpoint {
       'deploy': ?deploy,
       'detective': ?detective,
       'devicefarm': ?devicefarm,
+      'devopsagent': ?devopsagent,
       'devopsguru': ?devopsguru,
       'directconnect': ?directconnect,
       'directoryservice': ?directoryservice,
+      'directoryservicedata': ?directoryservicedata,
       'dlm': ?dlm,
       'dms': ?dms,
       'docdb': ?docdb,
@@ -1399,6 +1447,7 @@ class ProviderEndpoint {
       'inspector': ?inspector,
       'inspector2': ?inspector2,
       'inspectorv2': ?inspectorv2,
+      'interconnect': ?interconnect,
       'internetmonitor': ?internetmonitor,
       'invoicing': ?invoicing,
       'iot': ?iot,
@@ -1415,6 +1464,8 @@ class ProviderEndpoint {
       'kms': ?kms,
       'lakeformation': ?lakeformation,
       'lambda': ?lambda,
+      'lambdacore': ?lambdacore,
+      'lambdamicrovms': ?lambdamicrovms,
       'launchwizard': ?launchwizard,
       'lex': ?lex,
       'lexmodelbuilding': ?lexmodelbuilding,
@@ -1429,6 +1480,7 @@ class ProviderEndpoint {
       'logs': ?logs,
       'm2': ?m2,
       'macie2': ?macie2,
+      'mailmanager': ?mailmanager,
       'managedgrafana': ?managedgrafana,
       'mediaconnect': ?mediaconnect,
       'mediaconvert': ?mediaconvert,
@@ -1487,6 +1539,7 @@ class ProviderEndpoint {
       'redshiftserverless': ?redshiftserverless,
       'rekognition': ?rekognition,
       'resiliencehub': ?resiliencehub,
+      'resiliencehubv2': ?resiliencehubv2,
       'resourceexplorer2': ?resourceexplorer2,
       'resourcegroups': ?resourcegroups,
       'resourcegroupstagging': ?resourcegroupstagging,
@@ -1502,6 +1555,7 @@ class ProviderEndpoint {
       's3': ?s3,
       's3api': ?s3api,
       's3control': ?s3control,
+      's3files': ?s3files,
       's3outposts': ?s3outposts,
       's3tables': ?s3tables,
       's3vectors': ?s3vectors,
@@ -1545,6 +1599,7 @@ class ProviderEndpoint {
       'transcribe': ?transcribe,
       'transcribeservice': ?transcribeservice,
       'transfer': ?transfer,
+      'uxc': ?uxc,
       'verifiedpermissions': ?verifiedpermissions,
       'vpclattice': ?vpclattice,
       'waf': ?waf,
@@ -1562,8 +1617,10 @@ class ProviderEndpoint {
     return ProviderEndpoint(
       accessanalyzer: (() { final guardedValue = map['accessanalyzer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       account: (() { final guardedValue = map['account']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      accountaccess: (() { final guardedValue = map['accountaccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       acm: (() { final guardedValue = map['acm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       acmpca: (() { final guardedValue = map['acmpca']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      agentregistry: (() { final guardedValue = map['agentregistry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       amg: (() { final guardedValue = map['amg']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       amp: (() { final guardedValue = map['amp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       amplify: (() { final guardedValue = map['amplify']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -1658,9 +1715,11 @@ class ProviderEndpoint {
       deploy: (() { final guardedValue = map['deploy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       detective: (() { final guardedValue = map['detective']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       devicefarm: (() { final guardedValue = map['devicefarm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      devopsagent: (() { final guardedValue = map['devopsagent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       devopsguru: (() { final guardedValue = map['devopsguru']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       directconnect: (() { final guardedValue = map['directconnect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       directoryservice: (() { final guardedValue = map['directoryservice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      directoryservicedata: (() { final guardedValue = map['directoryservicedata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dlm: (() { final guardedValue = map['dlm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dms: (() { final guardedValue = map['dms']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       docdb: (() { final guardedValue = map['docdb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -1713,6 +1772,7 @@ class ProviderEndpoint {
       inspector: (() { final guardedValue = map['inspector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       inspector2: (() { final guardedValue = map['inspector2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       inspectorv2: (() { final guardedValue = map['inspectorv2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      interconnect: (() { final guardedValue = map['interconnect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       internetmonitor: (() { final guardedValue = map['internetmonitor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       invoicing: (() { final guardedValue = map['invoicing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       iot: (() { final guardedValue = map['iot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -1729,6 +1789,8 @@ class ProviderEndpoint {
       kms: (() { final guardedValue = map['kms']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lakeformation: (() { final guardedValue = map['lakeformation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lambda: (() { final guardedValue = map['lambda']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lambdacore: (() { final guardedValue = map['lambdacore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lambdamicrovms: (() { final guardedValue = map['lambdamicrovms']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       launchwizard: (() { final guardedValue = map['launchwizard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lex: (() { final guardedValue = map['lex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lexmodelbuilding: (() { final guardedValue = map['lexmodelbuilding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -1743,6 +1805,7 @@ class ProviderEndpoint {
       logs: (() { final guardedValue = map['logs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       m2: (() { final guardedValue = map['m2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       macie2: (() { final guardedValue = map['macie2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mailmanager: (() { final guardedValue = map['mailmanager']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedgrafana: (() { final guardedValue = map['managedgrafana']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mediaconnect: (() { final guardedValue = map['mediaconnect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mediaconvert: (() { final guardedValue = map['mediaconvert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -1801,6 +1864,7 @@ class ProviderEndpoint {
       redshiftserverless: (() { final guardedValue = map['redshiftserverless']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rekognition: (() { final guardedValue = map['rekognition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resiliencehub: (() { final guardedValue = map['resiliencehub']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resiliencehubv2: (() { final guardedValue = map['resiliencehubv2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceexplorer2: (() { final guardedValue = map['resourceexplorer2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourcegroups: (() { final guardedValue = map['resourcegroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourcegroupstagging: (() { final guardedValue = map['resourcegroupstagging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -1816,6 +1880,7 @@ class ProviderEndpoint {
       s3: (() { final guardedValue = map['s3']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3api: (() { final guardedValue = map['s3api']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3control: (() { final guardedValue = map['s3control']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      s3files: (() { final guardedValue = map['s3files']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3outposts: (() { final guardedValue = map['s3outposts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3tables: (() { final guardedValue = map['s3tables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3vectors: (() { final guardedValue = map['s3vectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -1859,6 +1924,7 @@ class ProviderEndpoint {
       transcribe: (() { final guardedValue = map['transcribe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       transcribeservice: (() { final guardedValue = map['transcribeservice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       transfer: (() { final guardedValue = map['transfer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uxc: (() { final guardedValue = map['uxc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       verifiedpermissions: (() { final guardedValue = map['verifiedpermissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpclattice: (() { final guardedValue = map['vpclattice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       waf: (() { final guardedValue = map['waf']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -1872,4 +1938,3 @@ class ProviderEndpoint {
     );
   }
 }
-

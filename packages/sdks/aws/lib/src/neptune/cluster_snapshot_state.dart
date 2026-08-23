@@ -18,7 +18,7 @@ class ClusterSnapshotState {
   final pulumi.Input<String>? engine;
   /// Version of the database engine for this DB cluster snapshot.
   final pulumi.Input<String>? engineVersion;
-  /// If storage_encrypted is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.
+  /// If storageEncrypted is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.
   final pulumi.Input<String>? kmsKeyId;
   /// License model information for the restored DB cluster.
   final pulumi.Input<String>? licenseModel;
@@ -43,7 +43,7 @@ class ClusterSnapshotState {
   /// [dbClusterSnapshotIdentifier] The Identifier for the snapshot.
   /// [engine] Specifies the name of the database engine.
   /// [engineVersion] Version of the database engine for this DB cluster snapshot.
-  /// [kmsKeyId] If storage_encrypted is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.
+  /// [kmsKeyId] If storageEncrypted is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.
   /// [licenseModel] License model information for the restored DB cluster.
   /// [port] Port that the DB cluster was listening on at the time of the snapshot.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -113,4 +113,3 @@ class ClusterSnapshotState {
     );
   }
 }
-

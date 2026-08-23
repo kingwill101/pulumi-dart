@@ -30,7 +30,7 @@ class HostedConnectionState {
   final pulumi.Input<String>? partnerName;
   /// The name of the service provider associated with the connection.
   final pulumi.Input<String>? providerName;
-  /// (**Deprecated**) The AWS Region where the connection is located. Use `connection_region` instead.
+  /// (**Deprecated**) The AWS Region where the connection is located. Use `connectionRegion` instead.
   final pulumi.Input<String>? region;
   /// The state of the connection. Possible values include: ordering, requested, pending, available, down, deleting, deleted, rejected, unknown. See [AllocateHostedConnection](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_AllocateHostedConnection.html) for a description of each connection state.
   final pulumi.Input<String>? state;
@@ -51,7 +51,7 @@ class HostedConnectionState {
   /// [ownerAccountId] The ID of the AWS account of the customer for the connection.
   /// [partnerName] The name of the AWS Direct Connect service provider associated with the connection.
   /// [providerName] The name of the service provider associated with the connection.
-  /// [region] (**Deprecated**) The AWS Region where the connection is located. Use `connection_region` instead.
+  /// [region] (**Deprecated**) The AWS Region where the connection is located. Use `connectionRegion` instead.
   /// [state] The state of the connection. Possible values include: ordering, requested, pending, available, down, deleting, deleted, rejected, unknown. See [AllocateHostedConnection](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_AllocateHostedConnection.html) for a description of each connection state.
   /// [vlan] The dedicated VLAN provisioned to the hosted connection.
   const HostedConnectionState({
@@ -115,4 +115,3 @@ class HostedConnectionState {
     );
   }
 }
-

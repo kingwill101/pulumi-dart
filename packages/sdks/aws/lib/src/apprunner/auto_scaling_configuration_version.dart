@@ -82,6 +82,25 @@ import 'auto_scaling_configuration_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apprunner_autoscalingconfigurationversion" "example" {
+///   auto_scaling_configuration_name = "example"
+///   max_concurrency                 = 50
+///   max_size                        = 10
+///   min_size                        = 2
+///   tags = {
+///     "Name" = "example-apprunner-autoscaling"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +109,8 @@ import 'auto_scaling_configuration_version_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apprunner.AutoScalingConfigurationVersion;
 /// import com.pulumi.aws.apprunner.AutoScalingConfigurationVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -147,11 +166,13 @@ class AutoScalingConfigurationVersion extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Name of the auto scaling configuration.
   late final pulumi.Output<String> autoScalingConfigurationName;
-  /// The revision of this auto scaling configuration.
+  /// Revision of this auto scaling configuration.
   late final pulumi.Output<int> autoScalingConfigurationRevision;
+  /// Whether there is an App Runner service associated with this auto scaling configuration.
   late final pulumi.Output<bool> hasAssociatedService;
+  /// Whether the auto scaling configuration is the default for the AWS account and Region.
   late final pulumi.Output<bool> isDefault;
-  /// Whether the auto scaling configuration has the highest `auto_scaling_configuration_revision` among all configurations that share the same `auto_scaling_configuration_name`.
+  /// Whether the auto scaling configuration has the highest `autoScalingConfigurationRevision` among all configurations that share the same `autoScalingConfigurationName`.
   late final pulumi.Output<bool> latest;
   /// Maximal number of concurrent requests that you want an instance to process. When the number of concurrent requests goes over this limit, App Runner scales up your service.
   late final pulumi.Output<int?> maxConcurrency;
@@ -163,9 +184,9 @@ class AutoScalingConfigurationVersion extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Current state of the auto scaling configuration. An INACTIVE configuration revision has been deleted and can't be used. It is permanently removed some time after deletion.
   late final pulumi.Output<String> status;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [AutoScalingConfigurationVersion].

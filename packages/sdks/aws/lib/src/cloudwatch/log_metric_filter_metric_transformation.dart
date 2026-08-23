@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogMetricFilterMetricTransformation {
   /// The value to emit when a filter pattern does not match a log event. Conflicts with `dimensions`.
   final pulumi.Input<String>? defaultValue;
-  /// Map of fields to use as dimensions for the metric. Up to 3 dimensions are allowed. Conflicts with `default_value`.
+  /// Map of fields to use as dimensions for the metric. Up to 3 dimensions are allowed. Conflicts with `defaultValue`.
   final pulumi.Input<Map<String, String>>? dimensions;
   /// The name of the CloudWatch metric to which the monitored log information should be published (e.g., `ErrorCount`)
   final pulumi.Input<String> name;
@@ -18,7 +18,7 @@ class LogMetricFilterMetricTransformation {
 
   /// Creates a new [LogMetricFilterMetricTransformation].
   /// [defaultValue] The value to emit when a filter pattern does not match a log event. Conflicts with `dimensions`.
-  /// [dimensions] Map of fields to use as dimensions for the metric. Up to 3 dimensions are allowed. Conflicts with `default_value`.
+  /// [dimensions] Map of fields to use as dimensions for the metric. Up to 3 dimensions are allowed. Conflicts with `defaultValue`.
   /// [name] The name of the CloudWatch metric to which the monitored log information should be published (e.g., `ErrorCount`)
   /// [namespace] The destination namespace of the CloudWatch metric.
   /// [unit] The unit to assign to the metric. If you omit this, the unit is set as `None`.
@@ -54,4 +54,3 @@ class LogMetricFilterMetricTransformation {
     );
   }
 }
-

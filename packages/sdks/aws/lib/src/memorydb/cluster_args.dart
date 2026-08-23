@@ -21,16 +21,20 @@ class ClusterArgs {
   final pulumi.Input<String>? engineVersion;
   /// Name of the final cluster snapshot to be created when this resource is deleted. If omitted, no final snapshot will be made.
   final pulumi.Input<String>? finalSnapshotName;
+  /// Mechanism that the cluster uses to discover IP addresses. Valid values are `ipv4` and `ipv6`. Defaults to `ipv4`. To specify `ipv6`, `networkType` must be `ipv6` or `dualStack`.
+  final pulumi.Input<String>? ipDiscovery;
   /// ARN of the KMS key used to encrypt the cluster at rest.
   final pulumi.Input<String>? kmsKeyArn;
   /// Specifies the weekly time range during which maintenance on the cluster is performed. Specify as a range in the format `ddd:hh24:mi-ddd:hh24:mi` (24H Clock UTC). The minimum maintenance window is a 60 minute period. Example: `sun:23:00-mon:01:30`.
   final pulumi.Input<String>? maintenanceWindow;
   /// The multi region cluster identifier specified on `aws.memorydb.MultiRegionCluster`.
   final pulumi.Input<String>? multiRegionClusterName;
-  /// Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   final pulumi.Input<String>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
+  /// IP address type for the cluster. Valid values are `ipv4`, `ipv6` and `dualStack`. Defaults to `ipv4`.
+  final pulumi.Input<String>? networkType;
   /// The compute and memory capacity of the nodes in the cluster. See AWS documentation on [supported node types](https://docs.aws.amazon.com/memorydb/latest/devguide/nodes.supportedtypes.html) as well as [vertical scaling](https://docs.aws.amazon.com/memorydb/latest/devguide/cluster-vertical-scaling.html).
   ///
   /// The following arguments are optional:
@@ -59,9 +63,9 @@ class ClusterArgs {
   final pulumi.Input<String>? snsTopicArn;
   /// The name of the subnet group to be used for the cluster. Defaults to a subnet group consisting of default VPC subnets.
   final pulumi.Input<String>? subnetGroupName;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A flag to enable in-transit encryption on the cluster. When set to `false`, the `acl_name` must be `open-access`. Defaults to `true`.
+  /// A flag to enable in-transit encryption on the cluster. When set to `false`, the `aclName` must be `open-access`. Defaults to `true`.
   final pulumi.Input<bool>? tlsEnabled;
 
   /// Creates a new [ClusterArgs].
@@ -72,11 +76,13 @@ class ClusterArgs {
   /// [engine] The engine that will run on your nodes. Supported values are `redis` and `valkey`.
   /// [engineVersion] Version number of the engine to be used for the cluster. Downgrades are not supported.
   /// [finalSnapshotName] Name of the final cluster snapshot to be created when this resource is deleted. If omitted, no final snapshot will be made.
+  /// [ipDiscovery] Mechanism that the cluster uses to discover IP addresses. Valid values are `ipv4` and `ipv6`. Defaults to `ipv4`. To specify `ipv6`, `networkType` must be `ipv6` or `dualStack`.
   /// [kmsKeyArn] ARN of the KMS key used to encrypt the cluster at rest.
   /// [maintenanceWindow] Specifies the weekly time range during which maintenance on the cluster is performed. Specify as a range in the format `ddd:hh24:mi-ddd:hh24:mi` (24H Clock UTC). The minimum maintenance window is a 60 minute period. Example: `sun:23:00-mon:01:30`.
   /// [multiRegionClusterName] The multi region cluster identifier specified on `aws.memorydb.MultiRegionCluster`.
-  /// [name] Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// [name] Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
+  /// [networkType] IP address type for the cluster. Valid values are `ipv4`, `ipv6` and `dualStack`. Defaults to `ipv4`.
   /// [nodeType] The compute and memory capacity of the nodes in the cluster. See AWS documentation on [supported node types](https://docs.aws.amazon.com/memorydb/latest/devguide/nodes.supportedtypes.html) as well as [vertical scaling](https://docs.aws.amazon.com/memorydb/latest/devguide/cluster-vertical-scaling.html).
   /// [numReplicasPerShard] The number of replicas to apply to each shard, up to a maximum of 5. Defaults to `1` (i.e. 2 nodes per shard).
   /// [numShards] The number of shards in the cluster. Defaults to `1`.
@@ -90,8 +96,8 @@ class ClusterArgs {
   /// [snapshotWindow] The daily time range (in UTC) during which MemoryDB begins taking a daily snapshot of your shard. Example: `05:00-09:00`.
   /// [snsTopicArn] ARN of the SNS topic to which cluster notifications are sent.
   /// [subnetGroupName] The name of the subnet group to be used for the cluster. Defaults to a subnet group consisting of default VPC subnets.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tlsEnabled] A flag to enable in-transit encryption on the cluster. When set to `false`, the `acl_name` must be `open-access`. Defaults to `true`.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tlsEnabled] A flag to enable in-transit encryption on the cluster. When set to `false`, the `aclName` must be `open-access`. Defaults to `true`.
   const ClusterArgs({
     required this.aclName,
     this.autoMinorVersionUpgrade,
@@ -100,11 +106,13 @@ class ClusterArgs {
     this.engine,
     this.engineVersion,
     this.finalSnapshotName,
+    this.ipDiscovery,
     this.kmsKeyArn,
     this.maintenanceWindow,
     this.multiRegionClusterName,
     this.name,
     this.namePrefix,
+    this.networkType,
     required this.nodeType,
     this.numReplicasPerShard,
     this.numShards,
@@ -131,11 +139,13 @@ class ClusterArgs {
       'engine': ?engine,
       'engineVersion': ?engineVersion,
       'finalSnapshotName': ?finalSnapshotName,
+      'ipDiscovery': ?ipDiscovery,
       'kmsKeyArn': ?kmsKeyArn,
       'maintenanceWindow': ?maintenanceWindow,
       'multiRegionClusterName': ?multiRegionClusterName,
       'name': ?name,
       'namePrefix': ?namePrefix,
+      'networkType': ?networkType,
       'nodeType': nodeType,
       'numReplicasPerShard': ?numReplicasPerShard,
       'numShards': ?numShards,
@@ -163,11 +173,13 @@ class ClusterArgs {
       engine: (() { final guardedValue = map['engine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       engineVersion: (() { final guardedValue = map['engineVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       finalSnapshotName: (() { final guardedValue = map['finalSnapshotName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipDiscovery: (() { final guardedValue = map['ipDiscovery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kmsKeyArn: (() { final guardedValue = map['kmsKeyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       multiRegionClusterName: (() { final guardedValue = map['multiRegionClusterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkType: (() { final guardedValue = map['networkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeType: pulumi.Input.fromValue(map['nodeType'] as String),
       numReplicasPerShard: (() { final guardedValue = map['numReplicasPerShard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       numShards: (() { final guardedValue = map['numShards']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
@@ -186,4 +198,3 @@ class ClusterArgs {
     );
   }
 }
-

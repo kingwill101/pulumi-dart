@@ -96,14 +96,38 @@ import 'instance_trust_provider_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = verifiedaccess.NewInstanceTrustProviderAttachment(ctx, "example", &verifiedaccess.InstanceTrustProviderAttachmentArgs{
-/// 			VerifiedaccessInstanceId:      example.ID(),
-/// 			VerifiedaccessTrustProviderId: exampleTrustProvider.ID(),
+/// 			VerifiedaccessInstanceId:      example.ID().ToIDOutput().ToStringOutput(),
+/// 			VerifiedaccessTrustProviderId: exampleTrustProvider.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedaccess_instance" "example" {
+/// }
+/// resource "aws_verifiedaccess_trustprovider" "example" {
+///   device_trust_provider_type = "jamf"
+///   policy_reference_name      = "example"
+///   trust_provider_type        = "device"
+///   device_options = {
+///     tenant_id = "example"
+///   }
+/// }
+/// resource "aws_verifiedaccess_instancetrustproviderattachment" "example" {
+///   verifiedaccess_instance_id       = aws_verifiedaccess_instance.example.id
+///   verifiedaccess_trust_provider_id = aws_verifiedaccess_trustprovider.example.id
 /// }
 /// ```
 /// ```java
@@ -118,8 +142,8 @@ import 'instance_trust_provider_attachment_state.dart';
 /// import com.pulumi.aws.verifiedaccess.inputs.TrustProviderDeviceOptionsArgs;
 /// import com.pulumi.aws.verifiedaccess.InstanceTrustProviderAttachment;
 /// import com.pulumi.aws.verifiedaccess.InstanceTrustProviderAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -174,7 +198,7 @@ import 'instance_trust_provider_attachment_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Verified Access Instance Trust Provider Attachments using the `verifiedaccess_instance_id` and `verifiedaccess_trust_provider_id` separated by a forward slash (`/`). For example:
+/// Using `pulumi import`, import Verified Access Instance Trust Provider Attachments using the `verifiedaccessInstanceId` and `verifiedaccessTrustProviderId` separated by a forward slash (`/`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:verifiedaccess/instanceTrustProviderAttachment:InstanceTrustProviderAttachment example vai-1234567890abcdef0/vatp-8012925589

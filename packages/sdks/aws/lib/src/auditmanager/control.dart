@@ -85,6 +85,24 @@ import 'control_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_auditmanager_control" "example" {
+///   name = "example"
+///   control_mapping_sources {
+///     source_name          = "example"
+///     source_set_up_option = "Procedural_Controls_Mapping"
+///     source_type          = "MANUAL"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +112,8 @@ import 'control_state.dart';
 /// import com.pulumi.aws.auditmanager.Control;
 /// import com.pulumi.aws.auditmanager.ControlArgs;
 /// import com.pulumi.aws.auditmanager.inputs.ControlControlMappingSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -134,6 +152,18 @@ import 'control_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) Unique identifier for the control.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import an Audit Manager Control using the `id`. For example:
 ///
 /// ```sh
@@ -145,19 +175,18 @@ class Control extends pulumi.CustomResource {
   /// Title of the action plan for remediating the control.
   late final pulumi.Output<String?> actionPlanTitle;
   /// Amazon Resource Name (ARN) of the control.
-  /// * `control_mapping_sources.*.source_id` - Unique identifier for the source.
   late final pulumi.Output<String> arn;
-  /// Data mapping sources. See `control_mapping_sources` below.
-  ///
-  /// The following arguments are optional:
+  /// Data mapping sources. See `controlMappingSources` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> controlMappingSources;
   /// Description of the control.
   late final pulumi.Output<String?> description;
   /// Name of the control.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the control. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the control. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Steps to follow to determine if the control is satisfied.

@@ -4,7 +4,11 @@ import 'cost_allocation_tag_state.dart';
 
 /// Provides a CE Cost Allocation Tag.
 ///
+/// &gt; **NOTE:** After the user-defined tags are created and applied to resources, it can take up to 24 hours for the tag keys to appear on Cost Allocation tag page for activation.
+///
 /// ## Example Usage
+///
+/// ### Basic Usage
 ///
 ///
 /// ```typescript
@@ -61,6 +65,20 @@ import 'cost_allocation_tag_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_costexplorer_costallocationtag" "example" {
+///   tag_key = "example"
+///   status  = "Active"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +87,8 @@ import 'cost_allocation_tag_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.costexplorer.CostAllocationTag;
 /// import com.pulumi.aws.costexplorer.CostAllocationTagArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -96,6 +114,118 @@ import 'cost_allocation_tag_state.dart';
 ///     type: aws:costexplorer:CostAllocationTag
 ///     properties:
 ///       tagKey: example
+///       status: Active
+/// ```
+///
+///
+/// ### Account Tags as Cost Allocation Tags
+///
+/// Cost Allocation tags support account tags to utilize existing AWS Organizations account tags directly in cost management tools. To activate account tags as Cost Allocation Tags the `tagKey` value needs to be prefixed with `accountTag/`.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.costexplorer.CostAllocationTag("example", {
+///     tagKey: "accountTag/example",
+///     status: "Active",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.costexplorer.CostAllocationTag("example",
+///     tag_key="accountTag/example",
+///     status="Active")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.CostExplorer.CostAllocationTag("example", new()
+///     {
+///         TagKey = "accountTag/example",
+///         Status = "Active",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/costexplorer"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := costexplorer.NewCostAllocationTag(ctx, "example", &costexplorer.CostAllocationTagArgs{
+/// 			TagKey: pulumi.String("accountTag/example"),
+/// 			Status: pulumi.String("Active"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_costexplorer_costallocationtag" "example" {
+///   tag_key = "accountTag/example"
+///   status  = "Active"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.costexplorer.CostAllocationTag;
+/// import com.pulumi.aws.costexplorer.CostAllocationTagArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new CostAllocationTag("example", CostAllocationTagArgs.builder()
+///             .tagKey("accountTag/example")
+///             .status("Active")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:costexplorer:CostAllocationTag
+///     properties:
+///       tagKey: accountTag/example
 ///       status: Active
 /// ```
 ///

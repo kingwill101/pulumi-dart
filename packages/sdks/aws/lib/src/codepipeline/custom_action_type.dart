@@ -102,6 +102,29 @@ import 'custom_action_type_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codepipeline_customactiontype" "example" {
+///   category = "Build"
+///   input_artifact_details = {
+///     maximum_count = 1
+///     minimum_count = 0
+///   }
+///   output_artifact_details = {
+///     maximum_count = 1
+///     minimum_count = 0
+///   }
+///   provider_name = "example"
+///   version       = "1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +135,8 @@ import 'custom_action_type_state.dart';
 /// import com.pulumi.aws.codepipeline.CustomActionTypeArgs;
 /// import com.pulumi.aws.codepipeline.inputs.CustomActionTypeInputArtifactDetailsArgs;
 /// import com.pulumi.aws.codepipeline.inputs.CustomActionTypeOutputArtifactDetailsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -182,7 +205,7 @@ class CustomActionType extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   late final pulumi.Output<CustomActionTypeSettings?> settings;
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<String> version;
 

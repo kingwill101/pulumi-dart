@@ -16,7 +16,7 @@ class WorkspaceArgs {
   final pulumi.Input<String>? region;
   /// Indicates whether the data stored on the root volume is encrypted.
   final pulumi.Input<bool>? rootVolumeEncryptionEnabled;
-  /// The tags for the WorkSpace. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// The tags for the WorkSpace. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The user name of the user for the WorkSpace. This user name must exist in the directory for the WorkSpace.
   final pulumi.Input<String> userName;
@@ -32,7 +32,7 @@ class WorkspaceArgs {
   /// [directoryId] The ID of the directory for the WorkSpace.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rootVolumeEncryptionEnabled] Indicates whether the data stored on the root volume is encrypted.
-  /// [tags] The tags for the WorkSpace. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] The tags for the WorkSpace. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [userName] The user name of the user for the WorkSpace. This user name must exist in the directory for the WorkSpace.
   /// [userVolumeEncryptionEnabled] Indicates whether the data stored on the user volume is encrypted.
   /// [volumeEncryptionKey] The ARN of a symmetric AWS KMS customer master key (CMK) used to encrypt data stored on your WorkSpace. Amazon WorkSpaces does not support asymmetric CMKs.
@@ -77,4 +77,3 @@ class WorkspaceArgs {
     );
   }
 }
-

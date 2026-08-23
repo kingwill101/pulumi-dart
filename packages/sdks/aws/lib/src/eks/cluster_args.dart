@@ -5,6 +5,9 @@ import 'cluster_access_config.dart';
 import 'cluster_compute_config.dart';
 import 'cluster_control_plane_scaling_config.dart';
 import 'cluster_encryption_config.dart';
+import 'cluster_kube_api_server_config.dart';
+import 'cluster_kube_controller_manager_config.dart';
+import 'cluster_kube_scheduler_config.dart';
 import 'cluster_kubernetes_network_config.dart';
 import 'cluster_outpost_config.dart';
 import 'cluster_remote_network_config.dart';
@@ -35,6 +38,12 @@ class ClusterArgs {
   final pulumi.Input<ClusterEncryptionConfig>? encryptionConfig;
   /// Force version update by overriding upgrade-blocking readiness checks when updating a cluster.
   final pulumi.Input<bool>? forceUpdateVersion;
+  /// Configuration block for customizing the Kubernetes API server. Detailed below.
+  final pulumi.Input<ClusterKubeApiServerConfig>? kubeApiServerConfig;
+  /// Configuration block for customizing the Kubernetes controller manager. Detailed below.
+  final pulumi.Input<ClusterKubeControllerManagerConfig>? kubeControllerManagerConfig;
+  /// Configuration block for customizing the Kubernetes scheduler. Detailed below.
+  final pulumi.Input<ClusterKubeSchedulerConfig>? kubeSchedulerConfig;
   /// Configuration block with kubernetes network configuration for the cluster. Detailed below. If removed, the provider will only perform drift detection if a configuration value is provided.
   final pulumi.Input<ClusterKubernetesNetworkConfig>? kubernetesNetworkConfig;
   /// Name of the cluster. Must be between 1-100 characters in length. Must begin with an alphanumeric character, and must only contain alphanumeric characters, dashes and underscores (`^[0-9A-Za-z][A-Za-z0-9\-_]*$`).
@@ -45,13 +54,13 @@ class ClusterArgs {
   final pulumi.Input<String>? region;
   /// Configuration block with remote network configuration for EKS Hybrid Nodes. Detailed below.
   final pulumi.Input<ClusterRemoteNetworkConfig>? remoteNetworkConfig;
-  /// ARN of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf. Ensure the resource configuration includes explicit dependencies on the IAM Role permissions by adding `depends_on` if using the `aws.iam.RolePolicy` resource or `aws.iam.RolePolicyAttachment` resource, otherwise EKS cannot delete EKS managed EC2 infrastructure such as Security Groups on EKS Cluster deletion.
+  /// ARN of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf. Ensure the resource configuration includes explicit dependencies on the IAM Role permissions by adding `dependsOn` if using the `aws.iam.RolePolicy` resource or `aws.iam.RolePolicyAttachment` resource, otherwise EKS cannot delete EKS managed EC2 infrastructure such as Security Groups on EKS Cluster deletion.
   final pulumi.Input<String> roleArn;
   /// Configuration block with storage configuration for EKS Auto Mode. Detailed below.
   final pulumi.Input<ClusterStorageConfig>? storageConfig;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Configuration block for the support policy to use for the cluster.  See upgrade_policy for details.
+  /// Configuration block for the support policy to use for the cluster.  See upgradePolicy for details.
   final pulumi.Input<ClusterUpgradePolicy>? upgradePolicy;
   /// Desired Kubernetes master version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except those automatically triggered by EKS. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by EKS.
   final pulumi.Input<String>? version;
@@ -72,15 +81,18 @@ class ClusterArgs {
   /// [enabledClusterLogTypes] List of the desired control plane logging to enable. For more information, see [Amazon EKS Control Plane Logging](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html).
   /// [encryptionConfig] Configuration block with encryption configuration for the cluster. Detailed below.
   /// [forceUpdateVersion] Force version update by overriding upgrade-blocking readiness checks when updating a cluster.
+  /// [kubeApiServerConfig] Configuration block for customizing the Kubernetes API server. Detailed below.
+  /// [kubeControllerManagerConfig] Configuration block for customizing the Kubernetes controller manager. Detailed below.
+  /// [kubeSchedulerConfig] Configuration block for customizing the Kubernetes scheduler. Detailed below.
   /// [kubernetesNetworkConfig] Configuration block with kubernetes network configuration for the cluster. Detailed below. If removed, the provider will only perform drift detection if a configuration value is provided.
   /// [name] Name of the cluster. Must be between 1-100 characters in length. Must begin with an alphanumeric character, and must only contain alphanumeric characters, dashes and underscores (`^[0-9A-Za-z][A-Za-z0-9\-_]*$`).
   /// [outpostConfig] Configuration block representing the configuration of your local Amazon EKS cluster on an AWS Outpost. This block isn't available for creating Amazon EKS clusters on the AWS cloud.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [remoteNetworkConfig] Configuration block with remote network configuration for EKS Hybrid Nodes. Detailed below.
-  /// [roleArn] ARN of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf. Ensure the resource configuration includes explicit dependencies on the IAM Role permissions by adding `depends_on` if using the `aws.iam.RolePolicy` resource or `aws.iam.RolePolicyAttachment` resource, otherwise EKS cannot delete EKS managed EC2 infrastructure such as Security Groups on EKS Cluster deletion.
+  /// [roleArn] ARN of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf. Ensure the resource configuration includes explicit dependencies on the IAM Role permissions by adding `dependsOn` if using the `aws.iam.RolePolicy` resource or `aws.iam.RolePolicyAttachment` resource, otherwise EKS cannot delete EKS managed EC2 infrastructure such as Security Groups on EKS Cluster deletion.
   /// [storageConfig] Configuration block with storage configuration for EKS Auto Mode. Detailed below.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [upgradePolicy] Configuration block for the support policy to use for the cluster.  See upgrade_policy for details.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [upgradePolicy] Configuration block for the support policy to use for the cluster.  See upgradePolicy for details.
   /// [version] Desired Kubernetes master version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except those automatically triggered by EKS. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by EKS.
   /// [vpcConfig] Configuration block for the VPC associated with your cluster. Amazon EKS VPC resources have specific requirements to work properly with Kubernetes. For more information, see [Cluster VPC Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html) and [Cluster Security Group Considerations](https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html) in the Amazon EKS User Guide. Detailed below. Also contains attributes detailed in the Attributes section.
   /// [zonalShiftConfig] Configuration block with zonal shift configuration for the cluster. Detailed below.
@@ -94,6 +106,9 @@ class ClusterArgs {
     this.enabledClusterLogTypes,
     this.encryptionConfig,
     this.forceUpdateVersion,
+    this.kubeApiServerConfig,
+    this.kubeControllerManagerConfig,
+    this.kubeSchedulerConfig,
     this.kubernetesNetworkConfig,
     this.name,
     this.outpostConfig,
@@ -119,6 +134,9 @@ class ClusterArgs {
       'enabledClusterLogTypes': ?enabledClusterLogTypes,
       'encryptionConfig': ?pulumi.Input.mapOptionalInputValue<ClusterEncryptionConfig, Map<String, dynamic>>(encryptionConfig, (value) => value.toMap()),
       'forceUpdateVersion': ?forceUpdateVersion,
+      'kubeApiServerConfig': ?pulumi.Input.mapOptionalInputValue<ClusterKubeApiServerConfig, Map<String, dynamic>>(kubeApiServerConfig, (value) => value.toMap()),
+      'kubeControllerManagerConfig': ?pulumi.Input.mapOptionalInputValue<ClusterKubeControllerManagerConfig, Map<String, dynamic>>(kubeControllerManagerConfig, (value) => value.toMap()),
+      'kubeSchedulerConfig': ?pulumi.Input.mapOptionalInputValue<ClusterKubeSchedulerConfig, Map<String, dynamic>>(kubeSchedulerConfig, (value) => value.toMap()),
       'kubernetesNetworkConfig': ?pulumi.Input.mapOptionalInputValue<ClusterKubernetesNetworkConfig, Map<String, dynamic>>(kubernetesNetworkConfig, (value) => value.toMap()),
       'name': ?name,
       'outpostConfig': ?pulumi.Input.mapOptionalInputValue<ClusterOutpostConfig, Map<String, dynamic>>(outpostConfig, (value) => value.toMap()),
@@ -145,6 +163,9 @@ class ClusterArgs {
       enabledClusterLogTypes: (() { final guardedValue = map['enabledClusterLogTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       encryptionConfig: (() { final guardedValue = map['encryptionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       forceUpdateVersion: (() { final guardedValue = map['forceUpdateVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      kubeApiServerConfig: (() { final guardedValue = map['kubeApiServerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterKubeApiServerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      kubeControllerManagerConfig: (() { final guardedValue = map['kubeControllerManagerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterKubeControllerManagerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      kubeSchedulerConfig: (() { final guardedValue = map['kubeSchedulerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterKubeSchedulerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       kubernetesNetworkConfig: (() { final guardedValue = map['kubernetesNetworkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterKubernetesNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       outpostConfig: (() { final guardedValue = map['outpostConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterOutpostConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -160,4 +181,3 @@ class ClusterArgs {
     );
   }
 }
-

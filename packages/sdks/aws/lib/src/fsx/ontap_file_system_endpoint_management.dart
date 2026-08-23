@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OntapFileSystemEndpointManagement {
-  /// The Domain Name Service (DNS) name for the file system. You can mount your file system using its DNS name.
+  /// Domain Name Service (DNS) name for the file system. You can mount your file system using its DNS name.
   final pulumi.Input<String>? dnsName;
   /// IP addresses of the file system endpoint.
   final pulumi.Input<List<String>>? ipAddresses;
 
   /// Creates a new [OntapFileSystemEndpointManagement].
-  /// [dnsName] The Domain Name Service (DNS) name for the file system. You can mount your file system using its DNS name.
+  /// [dnsName] Domain Name Service (DNS) name for the file system. You can mount your file system using its DNS name.
   /// [ipAddresses] IP addresses of the file system endpoint.
   const OntapFileSystemEndpointManagement({
     this.dnsName,
@@ -30,4 +30,3 @@ class OntapFileSystemEndpointManagement {
     );
   }
 }
-

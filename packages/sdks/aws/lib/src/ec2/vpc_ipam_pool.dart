@@ -106,6 +106,29 @@ import 'vpc_ipam_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+///
+/// resource "aws_ec2_vpcipam" "example" {
+///   operating_regions {
+///     region_name = data.aws_getregion.current.region
+///   }
+/// }
+/// resource "aws_ec2_vpcipampool" "example" {
+///   address_family = "ipv4"
+///   ipam_scope_id  = aws_ec2_vpcipam.example.private_default_scope_id
+///   locale         = data.aws_getregion.current.region
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +142,8 @@ import 'vpc_ipam_pool_state.dart';
 /// import com.pulumi.aws.ec2.inputs.VpcIpamOperatingRegionArgs;
 /// import com.pulumi.aws.ec2.VpcIpamPool;
 /// import com.pulumi.aws.ec2.VpcIpamPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -307,7 +330,7 @@ import 'vpc_ipam_pool_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcIpamPoolCidr(ctx, "parent_test", &ec2.VpcIpamPoolCidrArgs{
-/// 			IpamPoolId: parent.ID(),
+/// 			IpamPoolId: parent.ID().ToIDOutput().ToStringOutput(),
 /// 			Cidr:       pulumi.String("172.20.0.0/16"),
 /// 		})
 /// 		if err != nil {
@@ -317,13 +340,13 @@ import 'vpc_ipam_pool_state.dart';
 /// 			AddressFamily:    pulumi.String("ipv4"),
 /// 			IpamScopeId:      example.PrivateDefaultScopeId,
 /// 			Locale:           pulumi.String(current.Region),
-/// 			SourceIpamPoolId: parent.ID(),
+/// 			SourceIpamPoolId: parent.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcIpamPoolCidr(ctx, "child_test", &ec2.VpcIpamPoolCidrArgs{
-/// 			IpamPoolId: child.ID(),
+/// 			IpamPoolId: child.ID().ToIDOutput().ToStringOutput(),
 /// 			Cidr:       pulumi.String("172.20.0.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -331,6 +354,42 @@ import 'vpc_ipam_pool_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+///
+/// resource "aws_ec2_vpcipam" "example" {
+///   operating_regions {
+///     region_name = data.aws_getregion.current.region
+///   }
+/// }
+/// resource "aws_ec2_vpcipampool" "parent" {
+///   address_family = "ipv4"
+///   ipam_scope_id  = aws_ec2_vpcipam.example.private_default_scope_id
+/// }
+/// resource "aws_ec2_vpcipampoolcidr" "parent_test" {
+///   ipam_pool_id = aws_ec2_vpcipampool.parent.id
+///   cidr         = "172.20.0.0/16"
+/// }
+/// resource "aws_ec2_vpcipampool" "child" {
+///   address_family      = "ipv4"
+///   ipam_scope_id       = aws_ec2_vpcipam.example.private_default_scope_id
+///   locale              = data.aws_getregion.current.region
+///   source_ipam_pool_id = aws_ec2_vpcipampool.parent.id
+/// }
+/// resource "aws_ec2_vpcipampoolcidr" "child_test" {
+///   ipam_pool_id = aws_ec2_vpcipampool.child.id
+///   cidr         = "172.20.0.0/24"
 /// }
 /// ```
 /// ```java
@@ -348,8 +407,8 @@ import 'vpc_ipam_pool_state.dart';
 /// import com.pulumi.aws.ec2.VpcIpamPoolArgs;
 /// import com.pulumi.aws.ec2.VpcIpamPoolCidr;
 /// import com.pulumi.aws.ec2.VpcIpamPoolCidrArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -462,12 +521,12 @@ import 'vpc_ipam_pool_state.dart';
 /// const vpc = new aws.ec2.VpcIpamPool("vpc", {
 ///     addressFamily: "ipv4",
 ///     ipamScopeId: testAwsVpcIpam.privateDefaultScopeId,
-///     locale: current.then(current => current.name),
+///     locale: current.then(current => current.region),
 ///     sourceIpamPoolId: test.id,
 ///     sourceResource: {
 ///         resourceId: testVpc.id,
 ///         resourceOwner: currentAwsCallerIdentity.accountId,
-///         resourceRegion: current.then(current => current.name),
+///         resourceRegion: current.then(current => current.region),
 ///         resourceType: "vpc",
 ///     },
 /// });
@@ -493,12 +552,12 @@ import 'vpc_ipam_pool_state.dart';
 /// vpc = aws.ec2.VpcIpamPool("vpc",
 ///     address_family="ipv4",
 ///     ipam_scope_id=test_aws_vpc_ipam["privateDefaultScopeId"],
-///     locale=current.name,
+///     locale=current.region,
 ///     source_ipam_pool_id=test.id,
 ///     source_resource={
 ///         "resource_id": test_vpc.id,
 ///         "resource_owner": current_aws_caller_identity["accountId"],
-///         "resource_region": current.name,
+///         "resource_region": current.region,
 ///         "resource_type": "vpc",
 ///     })
 /// ```
@@ -551,13 +610,13 @@ import 'vpc_ipam_pool_state.dart';
 ///     {
 ///         AddressFamily = "ipv4",
 ///         IpamScopeId = testAwsVpcIpam.PrivateDefaultScopeId,
-///         Locale = current.Apply(getRegionResult => getRegionResult.Name),
+///         Locale = current.Apply(getRegionResult => getRegionResult.Region),
 ///         SourceIpamPoolId = test.Id,
 ///         SourceResource = new Aws.Ec2.Inputs.VpcIpamPoolSourceResourceArgs
 ///         {
 ///             ResourceId = testVpc.Id,
 ///             ResourceOwner = currentAwsCallerIdentity.AccountId,
-///             ResourceRegion = current.Apply(getRegionResult => getRegionResult.Name),
+///             ResourceRegion = current.Apply(getRegionResult => getRegionResult.Region),
 ///             ResourceType = "vpc",
 ///         },
 ///     });
@@ -604,7 +663,7 @@ import 'vpc_ipam_pool_state.dart';
 /// 			return err
 /// 		}
 /// 		testVpc, err := ec2.NewVpc(ctx, "test", &ec2.VpcArgs{
-/// 			Ipv4IpamPoolId:    test.ID(),
+/// 			Ipv4IpamPoolId:    test.ID().ToIDOutput().ToStringOutput(),
 /// 			Ipv4NetmaskLength: pulumi.Int(24),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			testVpcIpamPoolCidr,
@@ -615,12 +674,12 @@ import 'vpc_ipam_pool_state.dart';
 /// 		_, err = ec2.NewVpcIpamPool(ctx, "vpc", &ec2.VpcIpamPoolArgs{
 /// 			AddressFamily:    pulumi.String("ipv4"),
 /// 			IpamScopeId:      pulumi.Any(testAwsVpcIpam.PrivateDefaultScopeId),
-/// 			Locale:           pulumi.String(current.Name),
-/// 			SourceIpamPoolId: test.ID(),
+/// 			Locale:           pulumi.String(current.Region),
+/// 			SourceIpamPoolId: test.ID().ToIDOutput().ToStringOutput(),
 /// 			SourceResource: &ec2.VpcIpamPoolSourceResourceArgs{
-/// 				ResourceId:     testVpc.ID(),
+/// 				ResourceId:     testVpc.ID().ToIDOutput().ToStringOutput(),
 /// 				ResourceOwner:  pulumi.Any(currentAwsCallerIdentity.AccountId),
-/// 				ResourceRegion: pulumi.String(current.Name),
+/// 				ResourceRegion: pulumi.String(current.Region),
 /// 				ResourceType:   pulumi.String("vpc"),
 /// 			},
 /// 		})
@@ -629,6 +688,49 @@ import 'vpc_ipam_pool_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+///
+/// resource "aws_ec2_vpcipam" "example" {
+///   operating_regions {
+///     region_name = data.aws_getregion.current.region
+///   }
+/// }
+/// resource "aws_ec2_vpcipampool" "test" {
+///   address_family = "ipv4"
+///   ipam_scope_id  = aws_ec2_vpcipam.example.private_default_scope_id
+/// }
+/// resource "aws_ec2_vpcipampoolcidr" "test" {
+///   ipam_pool_id = parent.id
+///   cidr         = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_vpc" "test" {
+///   depends_on          = [aws_ec2_vpcipampoolcidr.test]
+///   ipv4_ipam_pool_id   = aws_ec2_vpcipampool.test.id
+///   ipv4_netmask_length = 24
+/// }
+/// resource "aws_ec2_vpcipampool" "vpc" {
+///   address_family      = "ipv4"
+///   ipam_scope_id       = testAwsVpcIpam.privateDefaultScopeId
+///   locale              = data.aws_getregion.current.region
+///   source_ipam_pool_id = aws_ec2_vpcipampool.test.id
+///   source_resource = {
+///     resource_id     = aws_ec2_vpc.test.id
+///     resource_owner  = currentAwsCallerIdentity.accountId
+///     resource_region = data.aws_getregion.current.region
+///     resource_type   = "vpc"
+///   }
 /// }
 /// ```
 /// ```java
@@ -650,8 +752,8 @@ import 'vpc_ipam_pool_state.dart';
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.ec2.inputs.VpcIpamPoolSourceResourceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -692,12 +794,12 @@ import 'vpc_ipam_pool_state.dart';
 ///         var vpc = new VpcIpamPool("vpc", VpcIpamPoolArgs.builder()
 ///             .addressFamily("ipv4")
 ///             .ipamScopeId(testAwsVpcIpam.privateDefaultScopeId())
-///             .locale(current.name())
+///             .locale(current.region())
 ///             .sourceIpamPoolId(test.id())
 ///             .sourceResource(VpcIpamPoolSourceResourceArgs.builder()
 ///                 .resourceId(testVpc.id())
 ///                 .resourceOwner(currentAwsCallerIdentity.accountId())
-///                 .resourceRegion(current.name())
+///                 .resourceRegion(current.region())
 ///                 .resourceType("vpc")
 ///                 .build())
 ///             .build());
@@ -737,12 +839,12 @@ import 'vpc_ipam_pool_state.dart';
 ///     properties:
 ///       addressFamily: ipv4
 ///       ipamScopeId: ${testAwsVpcIpam.privateDefaultScopeId}
-///       locale: ${current.name}
+///       locale: ${current.region}
 ///       sourceIpamPoolId: ${test.id}
 ///       sourceResource:
 ///         resourceId: ${testVpc.id}
 ///         resourceOwner: ${currentAwsCallerIdentity.accountId}
-///         resourceRegion: ${current.name}
+///         resourceRegion: ${current.region}
 ///         resourceType: vpc
 /// variables:
 ///   current:
@@ -789,7 +891,7 @@ class VpcIpamPool extends pulumi.CustomResource {
   late final pulumi.Output<int> poolDepth;
   /// The IP address source for pools in the public scope. Only used for provisioning IP address CIDRs to pools in the public scope. Valid values are `byoip` or `amazon`. Default is `byoip`.
   late final pulumi.Output<String?> publicIpSource;
-  /// Defines whether or not IPv6 pool space is publicly advertisable over the internet. This argument is required if `address_family = "ipv6"` and `public_ip_source = "byoip"`, default is `false`. This option is not available for IPv4 pool space or if `public_ip_source = "amazon"`. Setting this argument to `true` when it is not available may result in erroneous differences being reported.
+  /// Defines whether or not IPv6 pool space is publicly advertisable over the internet. This argument is required if `addressFamily = "ipv6"` and `publicIpSource = "byoip"`, default is `false`. This option is not available for IPv4 pool space or if `publicIpSource = "amazon"`. Setting this argument to `true` when it is not available may result in erroneous differences being reported.
   late final pulumi.Output<bool?> publiclyAdvertisable;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -799,9 +901,9 @@ class VpcIpamPool extends pulumi.CustomResource {
   late final pulumi.Output<VpcIpamPoolSourceResource?> sourceResource;
   /// The ID of the IPAM
   late final pulumi.Output<String> state;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [VpcIpamPool].

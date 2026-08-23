@@ -67,6 +67,21 @@ import 'log_delivery_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_logdeliverysource" "example" {
+///   name         = "example"
+///   log_type     = "APPLICATION_LOGS"
+///   resource_arn = exampleAwsBedrockagentKnowledgeBase.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'log_delivery_source_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudwatch.LogDeliverySource;
 /// import com.pulumi.aws.cloudwatch.LogDeliverySourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -110,7 +125,19 @@ import 'log_delivery_source_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CloudWatch Logs Delivery Source using the `name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the delivery source.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Delivery Sources using `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudwatch/logDeliverySource:LogDeliverySource example example
@@ -118,7 +145,7 @@ import 'log_delivery_source_state.dart';
 class LogDeliverySource extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the delivery source.
   late final pulumi.Output<String> arn;
-  /// The type of log that the source is sending. For Amazon Bedrock, the valid value is `APPLICATION_LOGS`. For Amazon CodeWhisperer, the valid value is `EVENT_LOGS`. For IAM Identity Center, the valid value is `ERROR_LOGS`. For Amazon WorkMail, the valid values are `ACCESS_CONTROL_LOGS`, `AUTHENTICATION_LOGS`, `WORKMAIL_AVAILABILITY_PROVIDER_LOGS`, and `WORKMAIL_MAILBOX_ACCESS_LOGS`.
+  /// The type of log that the source is sending. For Amazon Bedrock, the valid value is `APPLICATION_LOGS`. For Amazon Bedrock AgentCore, the valid values are `APPLICATION_LOGS`, `TRACES`, and `USAGE_LOGS`. For Amazon CloudFront, the valid value is `ACCESS_LOGS`. For Amazon CodeWhisperer, the valid value is `EVENT_LOGS`. For IAM Identity Center, the valid value is `ERROR_LOGS`. For Amazon WorkMail, the valid values are `ACCESS_CONTROL_LOGS`, `AUTHENTICATION_LOGS`, `WORKMAIL_AVAILABILITY_PROVIDER_LOGS`, and `WORKMAIL_MAILBOX_ACCESS_LOGS`. See [Enable logging from AWS services](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html) for the log types supported by each service.
   late final pulumi.Output<String> logType;
   /// The name for this delivery source.
   late final pulumi.Output<String> name;
@@ -128,9 +155,9 @@ class LogDeliverySource extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceArn;
   /// The AWS service that is sending logs.
   late final pulumi.Output<String> service;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [LogDeliverySource].

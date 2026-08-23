@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventSourceMappingMetricsConfig {
-  /// List containing the metrics to be produced by the event source mapping. Valid values: `EventCount`.
+  /// List containing the metrics to be produced by the event source mapping. Valid values: `EventCount`, `ErrorCount`, `KafkaMetrics`.
   final pulumi.Input<List<String>> metrics;
 
   /// Creates a new [EventSourceMappingMetricsConfig].
-  /// [metrics] List containing the metrics to be produced by the event source mapping. Valid values: `EventCount`.
+  /// [metrics] List containing the metrics to be produced by the event source mapping. Valid values: `EventCount`, `ErrorCount`, `KafkaMetrics`.
   const EventSourceMappingMetricsConfig({
     required this.metrics,
   });
@@ -24,4 +24,3 @@ class EventSourceMappingMetricsConfig {
     );
   }
 }
-

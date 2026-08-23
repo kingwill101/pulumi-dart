@@ -274,7 +274,7 @@ import 'language_model_state.dart';
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = iam.NewRolePolicy(ctx, "test_policy", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("example"),
-/// 			Role:   exampleRole.ID(),
+/// 			Role:   exampleRole.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -288,7 +288,7 @@ import 'language_model_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketObjectv2(ctx, "object", &s3.BucketObjectv2Args{
-/// 			Bucket: exampleBucket.ID(),
+/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Key:    pulumi.String("transcribe/test1.txt"),
 /// 			Source: pulumi.NewFileAsset("test1.txt"),
 /// 		})
@@ -300,7 +300,7 @@ import 'language_model_state.dart';
 /// 			BaseModelName: pulumi.String("NarrowBand"),
 /// 			InputDataConfig: &transcribe.LanguageModelInputDataConfigArgs{
 /// 				DataAccessRoleArn: exampleRole.Arn,
-/// 				S3Uri: exampleBucket.ID().ApplyT(func(id string) (string, error) {
+/// 				S3Uri: exampleBucket.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 					return fmt.Sprintf("s3://%v/transcribe/", id), nil
 /// 				}).(pulumi.StringOutput),
 /// 			},
@@ -316,6 +316,63 @@ import 'language_model_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["transcribe.amazonaws.com"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_role" "example" {
+///   name               = "example"
+///   assume_role_policy = data.aws_iam_getpolicydocument.example.json
+/// }
+/// resource "aws_iam_rolepolicy" "test_policy" {
+///   name = "example"
+///   role = aws_iam_role.example.id
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action"   = ["s3:GetObject", "s3:ListBucket"]
+///       "Effect"   = "Allow"
+///       "Resource" = ["*"]
+///     }]
+///   })
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket        = "example-transcribe"
+///   force_destroy = true
+/// }
+/// resource "aws_s3_bucketobjectv2" "object" {
+///   bucket = aws_s3_bucket.example.id
+///   key    = "transcribe/test1.txt"
+///   source = fileAsset("test1.txt")
+/// }
+/// resource "aws_transcribe_languagemodel" "example" {
+///   model_name      = "example"
+///   base_model_name = "NarrowBand"
+///   input_data_config = {
+///     data_access_role_arn = aws_iam_role.example.arn
+///     s3_uri               ="s3://${aws_s3_bucket.example.id}/transcribe/"
+///   }
+///   language_code = "en-US"
+///   tags = {
+///     "ENVIRONMENT" = "development"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -324,6 +381,8 @@ import 'language_model_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
@@ -337,8 +396,8 @@ import 'language_model_state.dart';
 /// import com.pulumi.aws.transcribe.inputs.LanguageModelInputDataConfigArgs;
 /// import com.pulumi.asset.FileAsset;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -443,7 +502,7 @@ import 'language_model_state.dart';
 ///       bucket: ${exampleBucket.id}
 ///       key: transcribe/test1.txt
 ///       source:
-///         fn::FileAsset: test1.txt
+///         fn::fileAsset: test1.txt
 ///   exampleLanguageModel:
 ///     type: aws:transcribe:LanguageModel
 ///     name: example
@@ -473,7 +532,7 @@ import 'language_model_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Transcribe LanguageModel using the `model_name`. For example:
+/// Using `pulumi import`, import Transcribe LanguageModel using the `modelName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:transcribe/languageModel:LanguageModel example example-name
@@ -483,14 +542,17 @@ class LanguageModel extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Name of reference base model.
   late final pulumi.Output<String> baseModelName;
-  /// The input data config for the LanguageModel. See Input Data Config for more details.
+  /// Input data configuration for the LanguageModel. See `inputDataConfig` Block for details.
   late final pulumi.Output<LanguageModelInputDataConfig> inputDataConfig;
-  /// The language code you selected for your language model. Refer to the [supported languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html) page for accepted codes.
+  /// Language code you selected for your language model. Refer to the [supported languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html) page for accepted codes.
   late final pulumi.Output<String> languageCode;
-  /// The model name.
+  /// Model name.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> modelName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+  /// Map of tags to assign to the LanguageModel. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
 

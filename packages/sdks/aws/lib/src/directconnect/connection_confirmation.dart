@@ -54,6 +54,19 @@ import 'connection_confirmation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directconnect_connectionconfirmation" "confirmation" {
+///   connection_id = "dxcon-ffabc123"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -62,8 +75,8 @@ import 'connection_confirmation_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.directconnect.ConnectionConfirmation;
 /// import com.pulumi.aws.directconnect.ConnectionConfirmationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

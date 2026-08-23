@@ -160,6 +160,40 @@ import 'disk_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "available" {
+///   state = "available"
+///   filters {
+///     name   = "opt-in-status"
+///     values = ["opt-in-not-required"]
+///   }
+/// }
+///
+/// resource "aws_lightsail_disk" "example" {
+///   name              = "example-disk"
+///   size_in_gb        = 8
+///   availability_zone = data.aws_getavailabilityzones.available.names[0]
+/// }
+/// resource "aws_lightsail_instance" "example" {
+///   name              = "example-instance"
+///   availability_zone = data.aws_getavailabilityzones.available.names[0]
+///   blueprint_id      = "amazon_linux_2"
+///   bundle_id         = "nano_3_0"
+/// }
+/// resource "aws_lightsail_disk_attachment" "example" {
+///   disk_name     = aws_lightsail_disk.example.name
+///   instance_name = aws_lightsail_instance.example.name
+///   disk_path     = "/dev/xvdf"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -168,14 +202,15 @@ import 'disk_attachment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetAvailabilityZonesArgs;
+/// import com.pulumi.aws.inputs.GetAvailabilityZonesFilterArgs;
 /// import com.pulumi.aws.lightsail.Disk;
 /// import com.pulumi.aws.lightsail.DiskArgs;
 /// import com.pulumi.aws.lightsail.Instance;
 /// import com.pulumi.aws.lightsail.InstanceArgs;
 /// import com.pulumi.aws.lightsail.Disk_attachment;
 /// import com.pulumi.aws.lightsail.Disk_attachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

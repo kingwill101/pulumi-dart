@@ -86,6 +86,25 @@ import 'organization_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_inspector2_organizationconfiguration" "example" {
+///   auto_enable = {
+///     ec2             = true
+///     ecr             = false
+///     code_repository = false
+///     lambda          = true
+///     lambda_code     = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +114,8 @@ import 'organization_configuration_state.dart';
 /// import com.pulumi.aws.inspector2.OrganizationConfiguration;
 /// import com.pulumi.aws.inspector2.OrganizationConfigurationArgs;
 /// import com.pulumi.aws.inspector2.inputs.OrganizationConfigurationAutoEnableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

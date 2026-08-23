@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold {
+  /// Time in minutes.
   final pulumi.Input<int> minutes;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold].
-  /// [minutes] Required.
+  /// [minutes] Time in minutes.
   const GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold({
     required this.minutes,
   });
@@ -23,4 +24,3 @@ class GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold {
     );
   }
 }
-

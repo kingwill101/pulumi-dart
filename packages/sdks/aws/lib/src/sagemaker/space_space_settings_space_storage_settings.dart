@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'space_space_settings_space_storage_settings_ebs_storage_settings.dart';
 
 class SpaceSpaceSettingsSpaceStorageSettings {
-  /// A collection of EBS storage settings for a space. See `ebs_storage_settings` Block below.
+  /// A collection of EBS storage settings for a space. See `ebsStorageSettings` Block below.
   final pulumi.Input<SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings> ebsStorageSettings;
 
   /// Creates a new [SpaceSpaceSettingsSpaceStorageSettings].
-  /// [ebsStorageSettings] A collection of EBS storage settings for a space. See `ebs_storage_settings` Block below.
+  /// [ebsStorageSettings] A collection of EBS storage settings for a space. See `ebsStorageSettings` Block below.
   const SpaceSpaceSettingsSpaceStorageSettings({
     required this.ebsStorageSettings,
   });
@@ -25,4 +25,3 @@ class SpaceSpaceSettingsSpaceStorageSettings {
     );
   }
 }
-

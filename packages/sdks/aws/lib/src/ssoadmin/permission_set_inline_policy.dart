@@ -7,7 +7,7 @@ import 'permission_set_inline_policy_state.dart';
 /// &gt; **NOTE:** AWS Single Sign-On (SSO) only supports one IAM inline policy per `aws.ssoadmin.PermissionSet` resource.
 /// Creating or updating this resource will automatically [Provision the Permission Set](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ProvisionPermissionSet.html) to apply the corresponding updates to all assigned accounts.
 ///
-/// &gt; **NOTE:** We suggest using `jsonencode()` or `aws.iam.getPolicyDocument` when assigning a value to `inline_policy`. They seamlessly translate Terraform language into JSON, enabling you to maintain consistency within your configuration without the need for context switches. Also, you can sidestep potential complications arising from formatting discrepancies, whitespace inconsistencies, and other nuances inherent to JSON.
+/// &gt; **NOTE:** We suggest using `jsonencode()` or `aws.iam.getPolicyDocument` when assigning a value to `inlinePolicy`. They seamlessly translate Terraform language into JSON, enabling you to maintain consistency within your configuration without the need for context switches. Also, you can sidestep potential complications arising from formatting discrepancies, whitespace inconsistencies, and other nuances inherent to JSON.
 ///
 /// ## Example Usage
 ///
@@ -154,6 +154,35 @@ import 'permission_set_inline_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+/// data "aws_iam_getpolicydocument" "exampleGetPolicyDocument" {
+///   statements {
+///     sid       = "1"
+///     actions   = ["s3:ListAllMyBuckets", "s3:GetBucketLocation"]
+///     resources = ["arn:aws:s3:::*"]
+///   }
+/// }
+///
+/// resource "aws_ssoadmin_permissionset" "example" {
+///   name         = "Example"
+///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+/// }
+/// resource "aws_ssoadmin_permissionsetinlinepolicy" "example" {
+///   inline_policy      = data.aws_iam_getpolicydocument.exampleGetPolicyDocument.json
+///   instance_arn       = data.aws_ssoadmin_getinstances.example.arns[0]
+///   permission_set_arn = aws_ssoadmin_permissionset.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -166,10 +195,11 @@ import 'permission_set_inline_policy_state.dart';
 /// import com.pulumi.aws.ssoadmin.PermissionSetArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
 /// import com.pulumi.aws.ssoadmin.PermissionSetInlinePolicy;
 /// import com.pulumi.aws.ssoadmin.PermissionSetInlinePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -244,7 +274,7 @@ import 'permission_set_inline_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SSO Permission Set Inline Policies using the `permission_set_arn` and `instance_arn` separated by a comma (`,`). For example:
+/// Using `pulumi import`, import SSO Permission Set Inline Policies using the `permissionSetArn` and `instanceArn` separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ssoadmin/permissionSetInlinePolicy:PermissionSetInlinePolicy example arn:aws:sso:::permissionSet/ssoins-2938j0x8920sbj72/ps-80383020jr9302rk,arn:aws:sso:::instance/ssoins-2938j0x8920sbj72

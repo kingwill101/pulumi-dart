@@ -49,4 +49,3 @@ class ReportGroupExportConfigS3Destination {
     );
   }
 }
-

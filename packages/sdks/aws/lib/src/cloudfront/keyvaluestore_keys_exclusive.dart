@@ -4,7 +4,7 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 
 /// Resource for maintaining exclusive management of resource key value pairs defined in an AWS CloudFront KeyValueStore.
 ///
-/// !&gt; This resource takes exclusive ownership over key value pairs defined in a KeyValueStore. This includes removal of key value pairs which are not explicitly configured. To prevent persistent drift, ensure any `aws.cloudfront.KeyvaluestoreKey` resources managed alongside this resource have an equivalent `resource_key_value_pair` argument.
+/// &gt; This resource takes exclusive ownership over key value pairs defined in a KeyValueStore. This includes removal of key value pairs which are not explicitly configured. To prevent persistent drift, ensure any `aws.cloudfront.KeyvaluestoreKey` resources managed alongside this resource have an equivalent `resourceKeyValuePair` argument.
 ///
 /// &gt; Destruction of this resource means Terraform will no longer manage reconciliation of the configured key value pairs. It __will not__ delete the configured key value pairs from the KeyValueStore.
 ///
@@ -105,6 +105,27 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_keyvaluestore" "example" {
+///   name    = "ExampleKeyValueStore"
+///   comment = "This is an example key value store"
+/// }
+/// resource "aws_cloudfront_keyvaluestorekeysexclusive" "example" {
+///   key_value_store_arn = aws_cloudfront_keyvaluestore.example.arn
+///   resource_key_value_pairs {
+///     key   = "Test Key"
+///     value = "Test Value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -116,8 +137,8 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 /// import com.pulumi.aws.cloudfront.KeyvaluestoreKeysExclusive;
 /// import com.pulumi.aws.cloudfront.KeyvaluestoreKeysExclusiveArgs;
 /// import com.pulumi.aws.cloudfront.inputs.KeyvaluestoreKeysExclusiveResourceKeyValuePairArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,7 +186,7 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 ///
 /// ### Disallow Key Value Pairs
 ///
-/// To automatically remove any configured key value pairs, omit a `resource_key_value_pair` block.
+/// To automatically remove any configured key value pairs, omit a `resourceKeyValuePair` block.
 ///
 /// &gt; This will not __prevent__ key value pairs from being defined in a KeyValueStore via Terraform (or any other interface). This resource enables bringing key value pairs into a configured state, however, this reconciliation happens only when `apply` is proactively run.
 ///
@@ -217,6 +238,19 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_keyvaluestorekeysexclusive" "example" {
+///   key_value_store_arn = exampleAwsCloudfrontKeyValueStore.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -225,8 +259,8 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.KeyvaluestoreKeysExclusive;
 /// import com.pulumi.aws.cloudfront.KeyvaluestoreKeysExclusiveArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -256,7 +290,7 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import AWS CloudFront KeyValueStore Key Value Pairs using the `key_value_store_arn`. For example:
+/// Using `pulumi import`, import AWS CloudFront KeyValueStore Key Value Pairs using the `keyValueStoreArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudfront/keyvaluestoreKeysExclusive:KeyvaluestoreKeysExclusive example arn:aws:cloudfront::111111111111:key-value-store/8562g61f-caba-2845-9d99-b97diwae5d3c
@@ -269,7 +303,7 @@ class KeyvaluestoreKeysExclusive extends pulumi.CustomResource {
   /// Maximum resource key values pairs that will update in a single API request. AWS has a default quota of 50 keys or a 3 MB payload, whichever is reached first. Defaults to `50`.
   late final pulumi.Output<int> maxBatchSize;
   /// A list of all resource key value pairs associated with the KeyValueStore.
-  /// See `resource_key_value_pair` below.
+  /// See `resourceKeyValuePair` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> resourceKeyValuePairs;
   /// Total size of the Key Value Store in bytes.
   late final pulumi.Output<int> totalSizeInBytes;

@@ -72,6 +72,22 @@ import 'agent_agent_knowledge_base_association_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentagentknowledgebaseassociation" "example" {
+///   agent_id             = "GGRRAED6JP"
+///   description          = "Example Knowledge base"
+///   knowledge_base_id    = "EMDPPAYPZI"
+///   knowledge_base_state = "ENABLED"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +96,8 @@ import 'agent_agent_knowledge_base_association_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.bedrock.AgentAgentKnowledgeBaseAssociation;
 /// import com.pulumi.aws.bedrock.AgentAgentKnowledgeBaseAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

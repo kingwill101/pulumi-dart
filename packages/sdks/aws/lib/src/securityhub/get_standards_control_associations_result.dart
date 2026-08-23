@@ -10,7 +10,7 @@ class GetStandardsControlAssociationsResult {
   /// ID of the security control.
   final String securityControlId;
   /// A list that provides the status and other details for each security control that applies to each enabled standard.
-  /// See `standards_control_associations` below.
+  /// See `standardsControlAssociations` below.
   final List<GetStandardsControlAssociationsStandardsControlAssociation> standardsControlAssociations;
 
   /// Creates a new [GetStandardsControlAssociationsResult].
@@ -43,4 +43,3 @@ class GetStandardsControlAssociationsResult {
     );
   }
 }
-

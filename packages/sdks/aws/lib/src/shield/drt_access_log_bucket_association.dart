@@ -69,13 +69,30 @@ import 'drt_access_log_bucket_association_timeouts.dart';
 /// 		}
 /// 		_, err = shield.NewDrtAccessLogBucketAssociation(ctx, "test", &shield.DrtAccessLogBucketAssociationArgs{
 /// 			LogBucket:            pulumi.Any(shieldDrtAccessLogBucket),
-/// 			RoleArnAssociationId: test.ID(),
+/// 			RoleArnAssociationId: test.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_shield_drtaccessrolearnassociation" "test" {
+///   role_arn ="arn:aws:iam:${current.region}:${currentAwsCallerIdentity.accountId}:${shieldDrtAccessRoleName}"
+/// }
+/// resource "aws_shield_drtaccesslogbucketassociation" "test" {
+///   log_bucket              = shieldDrtAccessLogBucket
+///   role_arn_association_id = aws_shield_drtaccessrolearnassociation.test.id
 /// }
 /// ```
 /// ```java
@@ -88,8 +105,8 @@ import 'drt_access_log_bucket_association_timeouts.dart';
 /// import com.pulumi.aws.shield.DrtAccessRoleArnAssociationArgs;
 /// import com.pulumi.aws.shield.DrtAccessLogBucketAssociation;
 /// import com.pulumi.aws.shield.DrtAccessLogBucketAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -130,7 +147,7 @@ import 'drt_access_log_bucket_association_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Shield DRT access log bucket associations using the `log_bucket`. For example:
+/// Using `pulumi import`, import Shield DRT access log bucket associations using the `logBucket`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:shield/drtAccessLogBucketAssociation:DrtAccessLogBucketAssociation example example-bucket

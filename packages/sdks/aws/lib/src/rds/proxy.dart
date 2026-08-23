@@ -4,7 +4,7 @@ import 'proxy_state.dart';
 
 /// Provides an RDS DB proxy resource. For additional information, see the [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html).
 ///
-/// &gt; **Note:** Not all Availability Zones (AZs) support DB proxies. Specifying `vpc_subnet_ids` for AZs that do not support proxies will not trigger an error as long as at least one `vpc_subnet_id` is valid. However, this will cause Terraform to continuously detect differences between the configuration and the actual infrastructure. Refer to the Unsupported Availability Zones section below for potential workarounds.
+/// &gt; **Note:** Not all Availability Zones (AZs) support DB proxies. Specifying `vpcSubnetIds` for AZs that do not support proxies will not trigger an error as long as at least one `vpcSubnetId` is valid. However, this will cause Terraform to continuously detect differences between the configuration and the actual infrastructure. Refer to the Unsupported Availability Zones section below for potential workarounds.
 ///
 /// ## Example Usage
 ///
@@ -146,6 +146,36 @@ import 'proxy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_proxy" "example" {
+///   name                   = "example"
+///   debug_logging          = false
+///   engine_family          = "MYSQL"
+///   idle_client_timeout    = 1800
+///   require_tls            = true
+///   role_arn               = exampleAwsIamRole.arn
+///   vpc_security_group_ids = [exampleAwsSecurityGroup.id]
+///   vpc_subnet_ids         = [exampleAwsSubnet.id]
+///   auths {
+///     auth_scheme = "SECRETS"
+///     description = "example"
+///     iam_auth    = "DISABLED"
+///     secret_arn  = exampleAwsSecretsmanagerSecret.arn
+///   }
+///   tags = {
+///     "Name" = "example"
+///     "Key"  = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -155,8 +185,8 @@ import 'proxy_state.dart';
 /// import com.pulumi.aws.rds.Proxy;
 /// import com.pulumi.aws.rds.ProxyArgs;
 /// import com.pulumi.aws.rds.inputs.ProxyAuthArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -220,7 +250,7 @@ import 'proxy_state.dart';
 ///
 /// ### Unsupported Availability Zones
 ///
-/// Terraform may report constant differences if you use `vpc_subnet_ids` that correspond to Availability Zones (AZs) that do not support a DB proxy. While this typically does not result in an error, AWS only returns `vpc_subnet_ids` for AZs that support DB proxies. As a result, Terraform detects a mismatch between your configuration and the actual infrastructure, leading it to report that changes are required. Below are some ways to avoid this issue.
+/// Terraform may report constant differences if you use `vpcSubnetIds` that correspond to Availability Zones (AZs) that do not support a DB proxy. While this typically does not result in an error, AWS only returns `vpcSubnetIds` for AZs that support DB proxies. As a result, Terraform detects a mismatch between your configuration and the actual infrastructure, leading it to report that changes are required. Below are some ways to avoid this issue.
 ///
 /// One solution is to exclude AZs that do not support DB proxies by using the `aws.getAvailabilityZones` data source. The example below demonstrates how to configure this for the `us-east-1` region, excluding the `use1-az3` AZ. (Keep in mind that AZ names can vary between accounts, while AZ IDs remain consistent.) If the `us-east-1` region has six AZs in total and you aim to configure the maximum number of subnets, you would exclude one AZ and configure five subnets:
 ///
@@ -240,14 +270,14 @@ import 'proxy_state.dart';
 /// });
 /// const example = new aws.ec2.Vpc("example", {cidrBlock: "10.0.0.0/16"});
 /// const exampleSubnet: aws.ec2.Subnet[] = [];
-/// for (const range = {value: 0}; range.value < 5; range.value++) {
-///     exampleSubnet.push(new aws.ec2.Subnet(`example-${range.value}`, {
-///         cidrBlock: example.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
-///             input: cidrBlock,
+/// for (let range = 0; range < 5; range++) {
+///     exampleSubnet.push(new aws.ec2.Subnet(`example-${range}`, {
+///         cidrBlock: std.cidrsubnetOutput({
+///             input: example.cidrBlock,
 ///             newbits: 8,
-///             netnum: range.value,
-///         })).apply(invoke => invoke.result),
-///         availabilityZone: available.then(available => available.names[range.value]),
+///             netnum: range,
+///         }).result,
+///         availabilityZone: available.then(available => available.names[range]),
 ///         vpcId: example.id,
 ///     }));
 /// }
@@ -258,6 +288,7 @@ import 'proxy_state.dart';
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 /// import pulumi_std as std
 ///
@@ -268,13 +299,13 @@ import 'proxy_state.dart';
 ///         "values": ["opt-in-not-required"],
 ///     }])
 /// example = aws.ec2.Vpc("example", cidr_block="10.0.0.0/16")
-/// example_subnet = []
-/// for range in [{"value": i} for i in range(0, 5)]:
-///     example_subnet.append(aws.ec2.Subnet(f"example-{range['value']}",
-///         cidr_block=example.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+/// example_subnet: list[aws.ec2.Subnet] = []
+/// for example_subnet_range in [{"value": i} for i in range(0, 5)]:
+///     example_subnet.append(aws.ec2.Subnet(f"example-{example_subnet_range['value']}",
+///         cidr_block=std.cidrsubnet_output(input=example.cidr_block,
 ///             newbits=8,
-///             netnum=range["value"])).apply(lambda invoke: invoke.result),
-///         availability_zone=available.names[range["value"]],
+///             netnum=example_subnet_range["value"]).result,
+///         availability_zone=available.names[example_subnet_range["value"]],
 ///         vpc_id=example.id))
 /// example_proxy = aws.rds.Proxy("example",
 ///     name="example",
@@ -320,12 +351,12 @@ import 'proxy_state.dart';
 ///         var range = new { Value = rangeIndex };
 ///         exampleSubnet.Add(new Aws.Ec2.Subnet($"example-{range.Value}", new()
 ///         {
-///             CidrBlock = example.CidrBlock.Apply(cidrBlock => Std.Cidrsubnet.Invoke(new()
+///             CidrBlock = Std.Cidrsubnet.Invoke(new()
 ///             {
-///                 Input = cidrBlock,
+///                 Input = example.CidrBlock,
 ///                 Newbits = 8,
 ///                 Netnum = range.Value,
-///             })).Apply(invoke => invoke.Result),
+///             }).Apply(invoke => invoke.Result),
 ///             AvailabilityZone = available.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.Names)[range.Value],
 ///             VpcId = example.Id,
 ///         }));
@@ -353,67 +384,96 @@ import 'proxy_state.dart';
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// available, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
-/// ExcludeZoneIds: []string{
-/// "use1-az3",
-/// },
-/// State: pulumi.StringRef("available"),
-/// Filters: []aws.GetAvailabilityZonesFilter{
-/// {
-/// Name: "opt-in-status",
-/// Values: []string{
-/// "opt-in-not-required",
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		available, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
+/// 			ExcludeZoneIds: []string{
+/// 				"use1-az3",
+/// 			},
+/// 			State: pulumi.StringRef("available"),
+/// 			Filters: []aws.GetAvailabilityZonesFilter{
+/// 				{
+/// 					Name: "opt-in-status",
+/// 					Values: []string{
+/// 						"opt-in-not-required",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example, err := ec2.NewVpc(ctx, "example", &ec2.VpcArgs{
+/// 			CidrBlock: pulumi.String("10.0.0.0/16"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		var exampleSubnet []*ec2.Subnet
+/// 		for index := 0; index < 5; index++ {
+/// 			key0 := index
+/// 			val0 := index
+/// 			__res, err := ec2.NewSubnet(ctx, fmt.Sprintf("example-%v", key0), &ec2.SubnetArgs{
+/// 				CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
+/// 					Input:   example.CidrBlock,
+/// 					Newbits: pulumi.Int(8),
+/// 					Netnum:  pulumi.Int(val0),
+/// 				}, nil).Result(),
+/// 				AvailabilityZone: pulumi.String(available.Names[val0]),
+/// 				VpcId:            example.ID().ToIDOutput().ToStringOutput(),
+/// 			})
+/// 			if err != nil {
+/// 				return err
+/// 			}
+/// 			exampleSubnet = append(exampleSubnet, __res)
+/// 		}
+/// 		_, err = rds.NewProxy(ctx, "example", &rds.ProxyArgs{
+/// 			Name: pulumi.String("example"),
+/// 			VpcSubnetIds: pulumi.StringArray{
+/// 				exampleSubnet.ID(),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// example, err := ec2.NewVpc(ctx, "example", &ec2.VpcArgs{
-/// CidrBlock: pulumi.String("10.0.0.0/16"),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
 /// }
-/// invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
-/// Input: cidrBlock,
-/// Newbits: 8,
-/// Netnum: val0,
-/// }, nil)
-/// if err != nil {
-/// return err
+///
+/// data "aws_getavailabilityzones" "available" {
+///   exclude_zone_ids = ["use1-az3"]
+///   state            = "available"
+///   filters {
+///     name   = "opt-in-status"
+///     values = ["opt-in-not-required"]
+///   }
 /// }
-/// var exampleSubnet []*ec2.Subnet
-/// for index := 0; index < 5; index++ {
-///     key0 := index
-///     val0 := index
-/// __res, err := ec2.NewSubnet(ctx, fmt.Sprintf("example-%v", key0), &ec2.SubnetArgs{
-/// CidrBlock: pulumi.String(example.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
-/// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
-/// return invoke.Result, nil
-/// }).(pulumi.StringPtrOutput)),
-/// AvailabilityZone: pulumi.String(available.Names[val0]),
-/// VpcId: example.ID(),
-/// })
-/// if err != nil {
-/// return err
+///
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.0.0.0/16"
 /// }
-/// exampleSubnet = append(exampleSubnet, __res)
+/// resource "aws_ec2_subnet" "example" {
+///   count             = 5
+///   cidr_block        = cidrsubnet(aws_ec2_vpc.example.cidr_block, 8, count.index)
+///   availability_zone = data.aws_getavailabilityzones.available.names[count.index]
+///   vpc_id            = aws_ec2_vpc.example.id
 /// }
-/// _, err = rds.NewProxy(ctx, "example", &rds.ProxyArgs{
-/// Name: pulumi.String("example"),
-/// VpcSubnetIds: pulumi.StringArray{
-/// exampleSubnet.ID(),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
+/// resource "aws_rds_proxy" "example" {
+///   name           = "example"
+///   vpc_subnet_ids = [aws_ec2_subnet.example.id]
 /// }
 /// ```
 /// ```java
@@ -424,6 +484,7 @@ import 'proxy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetAvailabilityZonesArgs;
+/// import com.pulumi.aws.inputs.GetAvailabilityZonesFilterArgs;
 /// import com.pulumi.aws.ec2.Vpc;
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.ec2.Subnet;
@@ -433,8 +494,8 @@ import 'proxy_state.dart';
 /// import com.pulumi.aws.rds.Proxy;
 /// import com.pulumi.aws.rds.ProxyArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -461,11 +522,11 @@ import 'proxy_state.dart';
 ///
 ///         for (var i = 0; i < 5; i++) {
 ///             new Subnet("exampleSubnet-" + i, SubnetArgs.builder()
-///                 .cidrBlock(example.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-///                     .input(_cidrBlock)
+///                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+///                     .input(example.cidrBlock())
 ///                     .newbits(8)
 ///                     .netnum(range.value())
-///                     .build())).applyValue(_invoke -> _invoke.result()))
+///                     .build()).applyValue(_invoke -> _invoke.result()))
 ///                 .availabilityZone(available.names()[range.value()])
 ///                 .vpcId(example.id())
 ///                 .build());
@@ -482,7 +543,7 @@ import 'proxy_state.dart';
 /// ```
 ///
 ///
-/// Another approach is to use the `lifecycle` `ignore_changes` meta-argument. With this method, Terraform will stop detecting differences for the `vpc_subnet_ids` argument. However, note that this approach disables Terraform's ability to track and manage updates to `vpc_subnet_ids`, so use it carefully to avoid unintended drift between your configuration and the actual infrastructure.
+/// Another approach is to use the `lifecycle` `ignoreChanges` meta-argument. With this method, Terraform will stop detecting differences for the `vpcSubnetIds` argument. However, note that this approach disables Terraform's ability to track and manage updates to `vpcSubnetIds`, so use it carefully to avoid unintended drift between your configuration and the actual infrastructure.
 ///
 ///
 /// ```typescript
@@ -544,6 +605,20 @@ import 'proxy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_proxy" "example" {
+///   name           = "example"
+///   vpc_subnet_ids = [exampleAwsSubnet.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -552,8 +627,8 @@ import 'proxy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.Proxy;
 /// import com.pulumi.aws.rds.ProxyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -592,33 +667,33 @@ import 'proxy_state.dart';
 /// $ pulumi import aws:rds/proxy:Proxy example example
 /// ```
 class Proxy extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) for the proxy.
+  /// Amazon Resource Name (ARN) for the proxy.
   late final pulumi.Output<String> arn;
-  /// Configuration block(s) with authorization mechanisms to connect to the associated instances or clusters. Required when `default_auth_scheme` is `NONE` or unspecified. Described below.
+  /// Configuration block(s) with authorization mechanisms to connect to the associated instances or clusters. Required when `defaultAuthScheme` is `NONE` or unspecified. See the `auth` block below.
   late final pulumi.Output<List<Map<String, dynamic>>?> auths;
   /// Whether the proxy includes detailed information about SQL statements in its logs. This information helps you to debug issues involving SQL behavior or the performance and scalability of the proxy connections. The debug information includes the text of SQL statements that you submit through the proxy. Thus, only enable this setting when needed for debugging, and only when you have security measures in place to safeguard any sensitive information that appears in the logs.
   late final pulumi.Output<bool?> debugLogging;
   /// Default authentication scheme that the proxy uses for client connections to the proxy and connections from the proxy to the underlying database. Valid values are `NONE` and `IAM_AUTH`. Defaults to `NONE`.
   late final pulumi.Output<String> defaultAuthScheme;
-  /// The endpoint that you can use to connect to the proxy. You include the endpoint value in the connection string for a database client application.
+  /// Endpoint that you can use to connect to the proxy. You include the endpoint value in the connection string for a database client application.
   late final pulumi.Output<String> endpoint;
-  /// Network type of the DB proxy endpoint. Valid values are `IPV4`, `IPV6` and `DUAL`. Defaults to `IPV4`. If `IPV6` is specified, the subnets associated with the proxy must be IPv6-only, and `target_connection_network_type` must be `IPV6`.
+  /// Network type of the DB proxy endpoint. Valid values are `IPV4`, `IPV6` and `DUAL`. Defaults to `IPV4`. If `IPV6` is specified, the subnets associated with the proxy must be IPv6-only, and `targetConnectionNetworkType` must be `IPV6`.
   late final pulumi.Output<String> endpointNetworkType;
-  /// The kinds of databases that the proxy can connect to. This value determines which database network protocol the proxy recognizes when it interprets network traffic to and from the database. For Aurora MySQL, RDS for MariaDB, and RDS for MySQL databases, specify `MYSQL`. For Aurora PostgreSQL and RDS for PostgreSQL databases, specify `POSTGRESQL`. For RDS for Microsoft SQL Server, specify `SQLSERVER`. Valid values are `MYSQL`, `POSTGRESQL`, and `SQLSERVER`.
+  /// Kinds of databases that the proxy can connect to. This value determines which database network protocol the proxy recognizes when it interprets network traffic to and from the database. For Aurora MySQL, RDS for MariaDB, and RDS for MySQL databases, specify `MYSQL`. For Aurora PostgreSQL and RDS for PostgreSQL databases, specify `POSTGRESQL`. For RDS for Microsoft SQL Server, specify `SQLSERVER`. Valid values are `MYSQL`, `POSTGRESQL`, and `SQLSERVER`.
   late final pulumi.Output<String> engineFamily;
-  /// The number of seconds that a connection to the proxy can be inactive before the proxy disconnects it. You can set this value higher or lower than the connection timeout limit for the associated database.
+  /// Number of seconds that a connection to the proxy can be inactive before the proxy disconnects it. You can set this value higher or lower than the connection timeout limit for the associated database.
   late final pulumi.Output<int> idleClientTimeout;
-  /// The identifier for the proxy. This name must be unique for all proxies owned by your AWS account in the specified AWS Region. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive hyphens.
+  /// Identifier for the proxy. This name must be unique for all proxies owned by your AWS account in the specified AWS Region. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive hyphens.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A Boolean parameter that specifies whether Transport Layer Security (TLS) encryption is required for connections to the proxy. By enabling this setting, you can enforce encrypted TLS connections to the proxy.
+  /// Whether Transport Layer Security (TLS) encryption is required for connections to the proxy. Enabling this setting enforces encrypted TLS connections to the proxy.
   late final pulumi.Output<bool?> requireTls;
-  /// The Amazon Resource Name (ARN) of the IAM role that the proxy uses to access secrets in AWS Secrets Manager.
+  /// Amazon Resource Name (ARN) of the IAM role that the proxy uses to access secrets in AWS Secrets Manager.
   late final pulumi.Output<String> roleArn;
-  /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Network type that the proxy uses to connect to the target database. Valid values are `IPV4` and `IPV6`. Defaults to `IPV4`.
   late final pulumi.Output<String> targetConnectionNetworkType;

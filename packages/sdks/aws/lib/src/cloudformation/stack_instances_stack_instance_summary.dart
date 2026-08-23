@@ -9,7 +9,7 @@ class StackInstancesStackInstanceSummary {
   final pulumi.Input<String>? detailedStatus;
   /// Status of the stack instance's actual configuration compared to the expected template and parameter configuration of the stack set to which it belongs. Values include `DRIFTED`, `IN_SYNC`, `UNKNOWN`, `NOT_CHECKED`.
   final pulumi.Input<String>? driftStatus;
-  /// Organization root ID or organizational unit (OU) IDs that you specified for `deployment_targets`.
+  /// Organization root ID or organizational unit (OU) IDs that you specified for `deploymentTargets`.
   final pulumi.Input<String>? organizationalUnitId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -26,7 +26,7 @@ class StackInstancesStackInstanceSummary {
   /// [accountId] Account ID in which the instance is deployed.
   /// [detailedStatus] Detailed status of the stack instance. Values include `PENDING`, `RUNNING`, `SUCCEEDED`, `FAILED`, `CANCELLED`, `INOPERABLE`, `SKIPPED_SUSPENDED_ACCOUNT`, `FAILED_IMPORT`.
   /// [driftStatus] Status of the stack instance's actual configuration compared to the expected template and parameter configuration of the stack set to which it belongs. Values include `DRIFTED`, `IN_SYNC`, `UNKNOWN`, `NOT_CHECKED`.
-  /// [organizationalUnitId] Organization root ID or organizational unit (OU) IDs that you specified for `deployment_targets`.
+  /// [organizationalUnitId] Organization root ID or organizational unit (OU) IDs that you specified for `deploymentTargets`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [stackId] ID of the stack instance.
   /// [stackSetId] Name or unique ID of the stack set that the stack instance is associated with.
@@ -72,4 +72,3 @@ class StackInstancesStackInstanceSummary {
     );
   }
 }
-

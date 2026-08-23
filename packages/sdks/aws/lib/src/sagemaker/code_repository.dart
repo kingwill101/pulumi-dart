@@ -73,6 +73,22 @@ import 'code_repository_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_coderepository" "example" {
+///   code_repository_name = "example"
+///   git_config = {
+///     repository_url = "https://github.com/github/docs.git"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +98,8 @@ import 'code_repository_state.dart';
 /// import com.pulumi.aws.sagemaker.CodeRepository;
 /// import com.pulumi.aws.sagemaker.CodeRepositoryArgs;
 /// import com.pulumi.aws.sagemaker.inputs.CodeRepositoryGitConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -222,7 +238,7 @@ import 'code_repository_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"username": "example",
 /// 			"password": "example",
 /// 		})
@@ -231,7 +247,7 @@ import 'code_repository_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		exampleSecretVersion, err := secretsmanager.NewSecretVersion(ctx, "example", &secretsmanager.SecretVersionArgs{
-/// 			SecretId:     example.ID(),
+/// 			SecretId:     example.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretString: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -253,6 +269,34 @@ import 'code_repository_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_secretsmanager_secret" "example" {
+///   name = "example"
+/// }
+/// resource "aws_secretsmanager_secretversion" "example" {
+///   secret_id = aws_secretsmanager_secret.example.id
+///   secret_string = jsonencode({
+///     "username" = "example"
+///     "password" = "example"
+///   })
+/// }
+/// resource "aws_sagemaker_coderepository" "example" {
+///   depends_on           = [aws_secretsmanager_secretversion.example]
+///   code_repository_name = "example"
+///   git_config = {
+///     repository_url = "https://github.com/github/docs.git"
+///     secret_arn     = aws_secretsmanager_secret.example.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -268,8 +312,8 @@ import 'code_repository_state.dart';
 /// import com.pulumi.aws.sagemaker.inputs.CodeRepositoryGitConfigArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -352,9 +396,9 @@ class CodeRepository extends pulumi.CustomResource {
   late final pulumi.Output<CodeRepositoryGitConfig> gitConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [CodeRepository].

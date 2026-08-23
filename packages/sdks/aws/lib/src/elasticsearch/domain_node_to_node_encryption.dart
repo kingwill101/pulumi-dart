@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainNodeToNodeEncryption {
-  /// Whether to enable node-to-node encryption. If the `node_to_node_encryption` block is not provided then this defaults to `false`. Enabling node-to-node encryption of a new domain requires an `elasticsearch_version` of `6.0` or greater.
+  /// Whether to enable node-to-node encryption. If the `nodeToNodeEncryption` block is not provided then this defaults to `false`. Enabling node-to-node encryption of a new domain requires an `elasticsearchVersion` of `6.0` or greater.
   final pulumi.Input<bool> enabled;
 
   /// Creates a new [DomainNodeToNodeEncryption].
-  /// [enabled] Whether to enable node-to-node encryption. If the `node_to_node_encryption` block is not provided then this defaults to `false`. Enabling node-to-node encryption of a new domain requires an `elasticsearch_version` of `6.0` or greater.
+  /// [enabled] Whether to enable node-to-node encryption. If the `nodeToNodeEncryption` block is not provided then this defaults to `false`. Enabling node-to-node encryption of a new domain requires an `elasticsearchVersion` of `6.0` or greater.
   const DomainNodeToNodeEncryption({
     required this.enabled,
   });
@@ -24,4 +24,3 @@ class DomainNodeToNodeEncryption {
     );
   }
 }
-

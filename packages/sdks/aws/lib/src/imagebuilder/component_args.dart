@@ -25,11 +25,11 @@ class ComponentArgs {
   final pulumi.Input<bool>? skipDestroy;
   /// Set of Operating Systems (OS) supported by the component.
   final pulumi.Input<List<String>>? supportedOsVersions;
-  /// Key-value map of resource tags for the component. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the component. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// S3 URI with data of the component. Exactly one of `data` and `uri` can be specified.
   ///
-  /// &gt; **NOTE:** Updating `data` or `uri` requires specifying a new `version`. This causes replacement of the resource. The `skip_destroy` argument can be used to retain the old version.
+  /// &gt; **NOTE:** Updating `data` or `uri` requires specifying a new `version`. This causes replacement of the resource. The `skipDestroy` argument can be used to retain the old version.
   final pulumi.Input<String>? uri;
   /// Version of the component.
   ///
@@ -46,7 +46,7 @@ class ComponentArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [skipDestroy] Whether to retain the old version when the resource is destroyed or replacement is necessary. Defaults to `false`.
   /// [supportedOsVersions] Set of Operating Systems (OS) supported by the component.
-  /// [tags] Key-value map of resource tags for the component. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags for the component. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [uri] S3 URI with data of the component. Exactly one of `data` and `uri` can be specified.
   /// [version] Version of the component.
   const ComponentArgs({
@@ -98,4 +98,3 @@ class ComponentArgs {
     );
   }
 }
-

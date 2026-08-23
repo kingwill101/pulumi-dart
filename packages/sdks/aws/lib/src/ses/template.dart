@@ -63,13 +63,29 @@ import 'template_state.dart';
 /// 			Name:    pulumi.String("MyTemplate"),
 /// 			Subject: pulumi.String("Greetings, {{name}}!"),
 /// 			Html:    pulumi.String("<h1>Hello {{name}},</h1><p>Your favorite animal is {{favoriteanimal}}.</p>"),
-/// 			Text:    pulumi.String("Hello {{name}},\nYour favorite animal is {{favoriteanimal}}."),
+/// 			Text:    pulumi.String("Hello {{name}},\r\nYour favorite animal is {{favoriteanimal}}."),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ses_template" "MyTemplate" {
+///   name    = "MyTemplate"
+///   subject = "Greetings, {{name}}!"
+///   html    = "<h1>Hello {{name}},</h1><p>Your favorite animal is {{favoriteanimal}}.</p>"
+///   text    = "Hello {{name}},\r\nYour favorite animal is {{favoriteanimal}}."
 /// }
 /// ```
 /// ```java
@@ -80,8 +96,8 @@ import 'template_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ses.Template;
 /// import com.pulumi.aws.ses.TemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'space_space_settings_code_editor_app_settings_app_lifecycle_management_idle_settings.dart';
 
 class SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement {
-  /// Settings related to idle shutdown of Studio applications. See `idle_settings` Block below.
+  /// Settings related to idle shutdown of Studio applications. See `idleSettings` Block below.
   final pulumi.Input<SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings>? idleSettings;
 
   /// Creates a new [SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement].
-  /// [idleSettings] Settings related to idle shutdown of Studio applications. See `idle_settings` Block below.
+  /// [idleSettings] Settings related to idle shutdown of Studio applications. See `idleSettings` Block below.
   const SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement({
     this.idleSettings,
   });
@@ -25,4 +25,3 @@ class SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement {
     );
   }
 }
-

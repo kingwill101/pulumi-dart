@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserProfileUserSettingsSharingSettings {
   /// Whether to include the notebook cell output when sharing the notebook. The default is `Disabled`. Valid values are `Allowed` and `Disabled`.
   final pulumi.Input<String>? notebookOutputOption;
-  /// When `notebook_output_option` is Allowed, the AWS Key Management Service (KMS) encryption key ID used to encrypt the notebook cell output in the Amazon S3 bucket.
+  /// When `notebookOutputOption` is Allowed, the AWS Key Management Service (KMS) encryption key ID used to encrypt the notebook cell output in the Amazon S3 bucket.
   final pulumi.Input<String>? s3KmsKeyId;
-  /// When `notebook_output_option` is Allowed, the Amazon S3 bucket used to save the notebook cell output.
+  /// When `notebookOutputOption` is Allowed, the Amazon S3 bucket used to save the notebook cell output.
   final pulumi.Input<String>? s3OutputPath;
 
   /// Creates a new [UserProfileUserSettingsSharingSettings].
   /// [notebookOutputOption] Whether to include the notebook cell output when sharing the notebook. The default is `Disabled`. Valid values are `Allowed` and `Disabled`.
-  /// [s3KmsKeyId] When `notebook_output_option` is Allowed, the AWS Key Management Service (KMS) encryption key ID used to encrypt the notebook cell output in the Amazon S3 bucket.
-  /// [s3OutputPath] When `notebook_output_option` is Allowed, the Amazon S3 bucket used to save the notebook cell output.
+  /// [s3KmsKeyId] When `notebookOutputOption` is Allowed, the AWS Key Management Service (KMS) encryption key ID used to encrypt the notebook cell output in the Amazon S3 bucket.
+  /// [s3OutputPath] When `notebookOutputOption` is Allowed, the Amazon S3 bucket used to save the notebook cell output.
   const UserProfileUserSettingsSharingSettings({
     this.notebookOutputOption,
     this.s3KmsKeyId,
@@ -36,4 +36,3 @@ class UserProfileUserSettingsSharingSettings {
     );
   }
 }
-

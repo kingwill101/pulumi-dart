@@ -7,6 +7,10 @@ import 'get_reserved_cache_node_offering_args.dart';
 import 'get_reserved_cache_node_offering_result.dart';
 import 'get_serverless_cache_args.dart';
 import 'get_serverless_cache_result.dart';
+import 'get_service_update_actions_args.dart';
+import 'get_service_update_actions_result.dart';
+import 'get_service_updates_args.dart';
+import 'get_service_updates_result.dart';
 import 'get_subnet_group_args.dart';
 import 'get_subnet_group_result.dart';
 import 'get_user_args.dart';
@@ -66,6 +70,19 @@ import 'get_user_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_elasticache_getcluster" "myCluster" {
+///   cluster_id = "my-cluster-id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +91,8 @@ import 'get_user_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elasticache.ElasticacheFunctions;
 /// import com.pulumi.aws.elasticache.inputs.GetClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -171,6 +188,19 @@ Future<GetClusterResult> getCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_elasticache_getreplicationgroup" "bar" {
+///   replication_group_id = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +209,8 @@ Future<GetClusterResult> getCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elasticache.ElasticacheFunctions;
 /// import com.pulumi.aws.elasticache.inputs.GetReplicationGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -288,6 +318,22 @@ Future<GetReplicationGroupResult> getReplicationGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_elasticache_getreservedcachenodeoffering" "example" {
+///   cache_node_type     = "cache.t4g.small"
+///   duration            = "P1Y"
+///   offering_type       = "No Upfront"
+///   product_description = "redis"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -296,8 +342,8 @@ Future<GetReplicationGroupResult> getReplicationGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elasticache.ElasticacheFunctions;
 /// import com.pulumi.aws.elasticache.inputs.GetReservedCacheNodeOfferingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -399,6 +445,19 @@ Future<GetReservedCacheNodeOfferingResult> getReservedCacheNodeOffering(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_elasticache_getserverlesscache" "example" {
+///   name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -407,8 +466,8 @@ Future<GetReservedCacheNodeOfferingResult> getReservedCacheNodeOffering(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elasticache.ElasticacheFunctions;
 /// import com.pulumi.aws.elasticache.inputs.GetServerlessCacheArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -448,6 +507,269 @@ Future<GetServerlessCacheResult> getServerlessCache(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerlessCacheResult.fromMap(result);
+}
+
+/// Provides details about an AWS ElastiCache Service Update Actions for a given Cache Cluster or Replication Group.
+///
+/// When creating a new Cache Cluster or Replication Group, it takes approximately 10 minutes for Update Actions to be listed.
+///
+/// ## Example Usage
+///
+/// ### Basic Usage
+///
+/// The following example will list all Update Actions for the Cache Cluster with a service update status of `available`.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.elasticache.getServiceUpdateActions({
+///     cacheClusterId: exampleAwsElasticacheCluster.clusterId,
+///     serviceUpdateStatuses: ["available"],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.elasticache.get_service_update_actions(cache_cluster_id=example_aws_elasticache_cluster["clusterId"],
+///     service_update_statuses=["available"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.ElastiCache.GetServiceUpdateActions.Invoke(new()
+///     {
+///         CacheClusterId = exampleAwsElasticacheCluster.ClusterId,
+///         ServiceUpdateStatuses = new[]
+///         {
+///             "available",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/elasticache"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := elasticache.GetServiceUpdateActions(ctx, &elasticache.GetServiceUpdateActionsArgs{
+/// 			CacheClusterId: pulumi.StringRef(exampleAwsElasticacheCluster.ClusterId),
+/// 			ServiceUpdateStatuses: []string{
+/// 				"available",
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_elasticache_getserviceupdateactions" "example" {
+///   cache_cluster_id        = exampleAwsElasticacheCluster.clusterId
+///   service_update_statuses = ["available"]
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.elasticache.ElasticacheFunctions;
+/// import com.pulumi.aws.elasticache.inputs.GetServiceUpdateActionsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = ElasticacheFunctions.getServiceUpdateActions(GetServiceUpdateActionsArgs.builder()
+///             .cacheClusterId(exampleAwsElasticacheCluster.clusterId())
+///             .serviceUpdateStatuses("available")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:elasticache:getServiceUpdateActions
+///       arguments:
+///         cacheClusterId: ${exampleAwsElasticacheCluster.clusterId}
+///         serviceUpdateStatuses:
+///           - available
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_elasticache_get_service_update_actions_get_service_update_actions_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetServiceUpdateActionsResult> getServiceUpdateActions(
+  GetServiceUpdateActionsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:elasticache/getServiceUpdateActions:getServiceUpdateActions',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetServiceUpdateActionsResult.fromMap(result);
+}
+
+/// Provides details about AWS ElastiCache Service Updates.
+///
+/// ## Example Usage
+///
+/// ### Basic Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.elasticache.getServiceUpdates({
+///     statuses: ["available"],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.elasticache.get_service_updates(statuses=["available"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.ElastiCache.GetServiceUpdates.Invoke(new()
+///     {
+///         Statuses = new[]
+///         {
+///             "available",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/elasticache"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := elasticache.GetServiceUpdates(ctx, &elasticache.GetServiceUpdatesArgs{
+/// 			Statuses: []string{
+/// 				"available",
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_elasticache_getserviceupdates" "example" {
+///   statuses = ["available"]
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.elasticache.ElasticacheFunctions;
+/// import com.pulumi.aws.elasticache.inputs.GetServiceUpdatesArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = ElasticacheFunctions.getServiceUpdates(GetServiceUpdatesArgs.builder()
+///             .statuses("available")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:elasticache:getServiceUpdates
+///       arguments:
+///         statuses:
+///           - available
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_elasticache_get_service_updates_get_service_updates_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetServiceUpdatesResult> getServiceUpdates(
+  GetServiceUpdatesArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:elasticache/getServiceUpdates:getServiceUpdates',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetServiceUpdatesResult.fromMap(result);
 }
 
 /// Provides information about a ElastiCache Subnet Group.
@@ -504,6 +826,19 @@ Future<GetServerlessCacheResult> getServerlessCache(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_elasticache_getsubnetgroup" "example" {
+///   name = "my-subnet-group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -512,8 +847,8 @@ Future<GetServerlessCacheResult> getServerlessCache(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elasticache.ElasticacheFunctions;
 /// import com.pulumi.aws.elasticache.inputs.GetSubnetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -609,6 +944,19 @@ Future<GetSubnetGroupResult> getSubnetGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_elasticache_getuser" "bar" {
+///   user_id = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -617,8 +965,8 @@ Future<GetSubnetGroupResult> getSubnetGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elasticache.ElasticacheFunctions;
 /// import com.pulumi.aws.elasticache.inputs.GetUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

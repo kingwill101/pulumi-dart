@@ -15,7 +15,7 @@ class BucketLifecycleConfigurationState {
   /// List of configuration blocks describing the rules managing the replication. See below.
   final pulumi.Input<List<BucketLifecycleConfigurationRule>>? rules;
   final pulumi.Input<BucketLifecycleConfigurationTimeouts>? timeouts;
-  /// The default minimum object size behavior applied to the lifecycle configuration. Valid values: `all_storage_classes_128K` (default), `varies_by_storage_class`. To customize the minimum object size for any transition you can add a `filter` that specifies a custom `object_size_greater_than` or `object_size_less_than` value. Custom filters always take precedence over the default transition behavior.
+  /// Default minimum object size behavior applied to the lifecycle configuration. Valid values: `all_storage_classes_128K` (default), `variesByStorageClass`. To customize the minimum object size for any transition you can add a `filter` that specifies a custom `objectSizeGreaterThan` or `objectSizeLessThan` value. Custom filters always take precedence over the default transition behavior.
   final pulumi.Input<String>? transitionDefaultMinimumObjectSize;
 
   /// Creates a new [BucketLifecycleConfigurationState].
@@ -24,7 +24,7 @@ class BucketLifecycleConfigurationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rules] List of configuration blocks describing the rules managing the replication. See below.
   /// [timeouts] Optional.
-  /// [transitionDefaultMinimumObjectSize] The default minimum object size behavior applied to the lifecycle configuration. Valid values: `all_storage_classes_128K` (default), `varies_by_storage_class`. To customize the minimum object size for any transition you can add a `filter` that specifies a custom `object_size_greater_than` or `object_size_less_than` value. Custom filters always take precedence over the default transition behavior.
+  /// [transitionDefaultMinimumObjectSize] Default minimum object size behavior applied to the lifecycle configuration. Valid values: `all_storage_classes_128K` (default), `variesByStorageClass`. To customize the minimum object size for any transition you can add a `filter` that specifies a custom `objectSizeGreaterThan` or `objectSizeLessThan` value. Custom filters always take precedence over the default transition behavior.
   const BucketLifecycleConfigurationState({
     this.bucket,
     this.expectedBucketOwner,
@@ -56,4 +56,3 @@ class BucketLifecycleConfigurationState {
     );
   }
 }
-

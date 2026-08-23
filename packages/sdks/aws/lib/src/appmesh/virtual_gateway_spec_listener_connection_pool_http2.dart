@@ -24,4 +24,3 @@ class VirtualGatewaySpecListenerConnectionPoolHttp2 {
     );
   }
 }
-

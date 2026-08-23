@@ -61,6 +61,20 @@ import 'route_table_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2transitgateway_routetableassociation" "example" {
+///   transit_gateway_attachment_id  = exampleAwsEc2TransitGatewayVpcAttachment.id
+///   transit_gateway_route_table_id = exampleAwsEc2TransitGatewayRouteTable.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'route_table_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.RouteTableAssociation;
 /// import com.pulumi.aws.ec2transitgateway.RouteTableAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -102,7 +116,7 @@ import 'route_table_association_state.dart';
 ///
 /// ### Direct Connect Gateway Association
 ///
-/// When associating a Direct Connect Gateway attachment, reference the `transit_gateway_attachment_id` attribute directly from the `aws.directconnect.GatewayAssociation` resource (available in v6.5.0+):
+/// When associating a Direct Connect Gateway attachment, reference the `transitGatewayAttachmentId` attribute directly from the `aws.directconnect.GatewayAssociation` resource (available in v6.5.0+):
 ///
 ///
 /// ```typescript
@@ -212,8 +226,8 @@ import 'route_table_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleGatewayAssociation, err := directconnect.NewGatewayAssociation(ctx, "example", &directconnect.GatewayAssociationArgs{
-/// 			DxGatewayId:         example.ID(),
-/// 			AssociatedGatewayId: exampleTransitGateway.ID(),
+/// 			DxGatewayId:         example.ID().ToIDOutput().ToStringOutput(),
+/// 			AssociatedGatewayId: exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
 /// 			AllowedPrefixes: pulumi.StringArray{
 /// 				pulumi.String("10.0.0.0/16"),
 /// 			},
@@ -222,7 +236,7 @@ import 'route_table_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleRouteTable, err := ec2transitgateway.NewRouteTable(ctx, "example", &ec2transitgateway.RouteTableArgs{
-/// 			TransitGatewayId: exampleTransitGateway.ID(),
+/// 			TransitGatewayId: exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -230,13 +244,43 @@ import 'route_table_association_state.dart';
 /// 		// Correct: Reference the attachment ID directly from the association resource
 /// 		_, err = ec2transitgateway.NewRouteTableAssociation(ctx, "example", &ec2transitgateway.RouteTableAssociationArgs{
 /// 			TransitGatewayAttachmentId: exampleGatewayAssociation.TransitGatewayAttachmentId,
-/// 			TransitGatewayRouteTableId: exampleRouteTable.ID(),
+/// 			TransitGatewayRouteTableId: exampleRouteTable.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directconnect_gateway" "example" {
+///   name            = "example"
+///   amazon_side_asn = 64512
+/// }
+/// resource "aws_ec2transitgateway_transitgateway" "example" {
+///   description = "example"
+/// }
+/// resource "aws_directconnect_gatewayassociation" "example" {
+///   dx_gateway_id         = aws_directconnect_gateway.example.id
+///   associated_gateway_id = aws_ec2transitgateway_transitgateway.example.id
+///   allowed_prefixes      = ["10.0.0.0/16"]
+/// }
+/// resource "aws_ec2transitgateway_routetable" "example" {
+///   transit_gateway_id = aws_ec2transitgateway_transitgateway.example.id
+/// }
+/// # Correct: Reference the attachment ID directly from the association resource
+/// resource "aws_ec2transitgateway_routetableassociation" "example" {
+///   transit_gateway_attachment_id  = aws_directconnect_gatewayassociation.example.transit_gateway_attachment_id
+///   transit_gateway_route_table_id = aws_ec2transitgateway_routetable.example.id
 /// }
 /// ```
 /// ```java
@@ -255,8 +299,8 @@ import 'route_table_association_state.dart';
 /// import com.pulumi.aws.ec2transitgateway.RouteTableArgs;
 /// import com.pulumi.aws.ec2transitgateway.RouteTableAssociation;
 /// import com.pulumi.aws.ec2transitgateway.RouteTableAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -331,7 +375,7 @@ import 'route_table_association_state.dart';
 /// ```
 ///
 ///
-/// &gt; **NOTE:** Avoid using the `aws.ec2transitgateway.getDirectConnectGatewayAttachment` data source to retrieve the attachment ID, as this can cause unnecessary resource recreation when unrelated attributes of the Direct Connect Gateway association change (such as `allowed_prefixes`). Always reference the `transit_gateway_attachment_id` attribute directly from the `aws.directconnect.GatewayAssociation` resource when available.
+/// &gt; **NOTE:** Avoid using the `aws.ec2transitgateway.getDirectConnectGatewayAttachment` data source to retrieve the attachment ID, as this can cause unnecessary resource recreation when unrelated attributes of the Direct Connect Gateway association change (such as `allowedPrefixes`). Always reference the `transitGatewayAttachmentId` attribute directly from the `aws.directconnect.GatewayAssociation` resource when available.
 ///
 /// ### VPC Attachment Association
 ///
@@ -445,7 +489,7 @@ import 'route_table_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnet, err := ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
-/// 			VpcId:     example.ID(),
+/// 			VpcId:     example.ID().ToIDOutput().ToStringOutput(),
 /// 			CidrBlock: pulumi.String("10.0.1.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -459,30 +503,63 @@ import 'route_table_association_state.dart';
 /// 		}
 /// 		exampleVpcAttachment, err := ec2transitgateway.NewVpcAttachment(ctx, "example", &ec2transitgateway.VpcAttachmentArgs{
 /// 			SubnetIds: pulumi.StringArray{
-/// 				exampleSubnet.ID(),
+/// 				exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			},
-/// 			TransitGatewayId: exampleTransitGateway.ID(),
-/// 			VpcId:            example.ID(),
+/// 			TransitGatewayId: exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleRouteTable, err := ec2transitgateway.NewRouteTable(ctx, "example", &ec2transitgateway.RouteTableArgs{
-/// 			TransitGatewayId: exampleTransitGateway.ID(),
+/// 			TransitGatewayId: exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// Correct: Reference the VPC attachment ID directly
 /// 		_, err = ec2transitgateway.NewRouteTableAssociation(ctx, "example", &ec2transitgateway.RouteTableAssociationArgs{
-/// 			TransitGatewayAttachmentId: exampleVpcAttachment.ID(),
-/// 			TransitGatewayRouteTableId: exampleRouteTable.ID(),
+/// 			TransitGatewayAttachmentId: exampleVpcAttachment.ID().ToIDOutput().ToStringOutput(),
+/// 			TransitGatewayRouteTableId: exampleRouteTable.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_subnet" "example" {
+///   vpc_id     = aws_ec2_vpc.example.id
+///   cidr_block = "10.0.1.0/24"
+/// }
+/// resource "aws_ec2transitgateway_transitgateway" "example" {
+///   description = "example"
+/// }
+/// resource "aws_ec2transitgateway_vpcattachment" "example" {
+///   subnet_ids         = [aws_ec2_subnet.example.id]
+///   transit_gateway_id = aws_ec2transitgateway_transitgateway.example.id
+///   vpc_id             = aws_ec2_vpc.example.id
+/// }
+/// resource "aws_ec2transitgateway_routetable" "example" {
+///   transit_gateway_id = aws_ec2transitgateway_transitgateway.example.id
+/// }
+/// # Correct: Reference the VPC attachment ID directly
+/// resource "aws_ec2transitgateway_routetableassociation" "example" {
+///   transit_gateway_attachment_id  = aws_ec2transitgateway_vpcattachment.example.id
+///   transit_gateway_route_table_id = aws_ec2transitgateway_routetable.example.id
 /// }
 /// ```
 /// ```java
@@ -503,8 +580,8 @@ import 'route_table_association_state.dart';
 /// import com.pulumi.aws.ec2transitgateway.RouteTableArgs;
 /// import com.pulumi.aws.ec2transitgateway.RouteTableAssociation;
 /// import com.pulumi.aws.ec2transitgateway.RouteTableAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -588,7 +665,7 @@ import 'route_table_association_state.dart';
 /// ```
 ///
 ///
-/// &gt; **NOTE:** When the `transit_gateway_attachment_id` changes (for example, when a VPC attachment is replaced), this resource will be recreated. This is the correct behavior to maintain consistency between the attachment and its route table association.
+/// &gt; **NOTE:** When the `transitGatewayAttachmentId` changes (for example, when a VPC attachment is replaced), this resource will be recreated. This is the correct behavior to maintain consistency between the attachment and its route table association.
 ///
 /// ## Import
 ///
@@ -600,7 +677,7 @@ import 'route_table_association_state.dart';
 class RouteTableAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Boolean whether the Gateway Attachment should remove any current Route Table association before associating with the specified Route Table. Default value: `false`. This argument is intended for use with EC2 Transit Gateways shared into the current account, otherwise the `transit_gateway_default_route_table_association` argument of the `aws.ec2transitgateway.VpcAttachment` resource should be used.
+  /// Boolean whether the Gateway Attachment should remove any current Route Table association before associating with the specified Route Table. Default value: `false`. This argument is intended for use with EC2 Transit Gateways shared into the current account, otherwise the `transitGatewayDefaultRouteTableAssociation` argument of the `aws.ec2transitgateway.VpcAttachment` resource should be used.
   late final pulumi.Output<bool?> replaceExistingAssociation;
   /// Identifier of the resource
   late final pulumi.Output<String> resourceId;

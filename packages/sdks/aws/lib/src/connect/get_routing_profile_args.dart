@@ -15,7 +15,7 @@ class GetRoutingProfileArgs {
   final pulumi.Input<String>? region;
   /// Returns information on a specific Routing Profile by Routing Profile id
   ///
-  /// &gt; **NOTE:** `instance_id` and one of either `name` or `routing_profile_id` is required.
+  /// &gt; **NOTE:** `instanceId` and one of either `name` or `routingProfileId` is required.
   final pulumi.Input<String>? routingProfileId;
   /// Map of tags to assign to the Routing Profile.
   final pulumi.Input<Map<String, String>>? tags;
@@ -54,4 +54,3 @@ class GetRoutingProfileArgs {
     );
   }
 }
-

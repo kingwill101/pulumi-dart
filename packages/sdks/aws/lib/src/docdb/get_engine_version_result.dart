@@ -13,7 +13,7 @@ class GetEngineVersionResult {
   final String parameterGroupFamily;
   final List<String>? preferredVersions;
   final String region;
-  /// Indicates whether the engine version supports exporting the log types specified by `exportable_log_types` to CloudWatch Logs.
+  /// Indicates whether the engine version supports exporting the log types specified by `exportableLogTypes` to CloudWatch Logs.
   final bool supportsLogExportsToCloudwatch;
   /// A set of engine versions that this database engine version can be upgraded to.
   final List<String> validUpgradeTargets;
@@ -29,7 +29,7 @@ class GetEngineVersionResult {
   /// [parameterGroupFamily] Required.
   /// [preferredVersions] Optional.
   /// [region] Required.
-  /// [supportsLogExportsToCloudwatch] Indicates whether the engine version supports exporting the log types specified by `exportable_log_types` to CloudWatch Logs.
+  /// [supportsLogExportsToCloudwatch] Indicates whether the engine version supports exporting the log types specified by `exportableLogTypes` to CloudWatch Logs.
   /// [validUpgradeTargets] A set of engine versions that this database engine version can be upgraded to.
   /// [version] Required.
   /// [versionDescription] Description of the database engine version.
@@ -79,4 +79,3 @@ class GetEngineVersionResult {
     );
   }
 }
-

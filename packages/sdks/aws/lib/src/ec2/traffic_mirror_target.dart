@@ -104,6 +104,28 @@ import 'traffic_mirror_target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_trafficmirrortarget" "nlb" {
+///   description               = "NLB target"
+///   network_load_balancer_arn = lb.arn
+/// }
+/// resource "aws_ec2_trafficmirrortarget" "eni" {
+///   description          = "ENI target"
+///   network_interface_id = test.primaryNetworkInterfaceId
+/// }
+/// resource "aws_ec2_trafficmirrortarget" "gwlb" {
+///   description                       = "GWLB target"
+///   gateway_load_balancer_endpoint_id = example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +134,8 @@ import 'traffic_mirror_target_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.TrafficMirrorTarget;
 /// import com.pulumi.aws.ec2.TrafficMirrorTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -185,11 +207,11 @@ class TrafficMirrorTarget extends pulumi.CustomResource {
   late final pulumi.Output<String> ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// **NOTE:** Either `network_interface_id` or `network_load_balancer_arn` should be specified and both should not be specified together
+  /// **NOTE:** Either `networkInterfaceId` or `networkLoadBalancerArn` should be specified and both should not be specified together
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [TrafficMirrorTarget].

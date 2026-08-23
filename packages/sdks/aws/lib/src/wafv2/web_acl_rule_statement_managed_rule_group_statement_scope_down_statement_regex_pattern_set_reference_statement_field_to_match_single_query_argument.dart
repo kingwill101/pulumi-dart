@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument {
-  /// Name of the query header to inspect. This setting must be provided as lower case characters.
+  /// Name of the query argument to inspect.
   final pulumi.Input<String> name;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument].
-  /// [name] Name of the query header to inspect. This setting must be provided as lower case characters.
+  /// [name] Name of the query argument to inspect.
   const WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument({
     required this.name,
   });
@@ -24,4 +24,3 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPattern
     );
   }
 }
-

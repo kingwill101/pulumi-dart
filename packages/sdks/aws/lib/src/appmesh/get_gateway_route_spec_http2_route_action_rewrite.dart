@@ -36,4 +36,3 @@ class GetGatewayRouteSpecHttp2RouteActionRewrite {
     );
   }
 }
-

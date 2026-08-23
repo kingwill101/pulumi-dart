@@ -71,13 +71,31 @@ import 'resource_server_state.dart';
 /// 		_, err = cognito.NewResourceServer(ctx, "resource", &cognito.ResourceServerArgs{
 /// 			Identifier: pulumi.String("https://example.com"),
 /// 			Name:       pulumi.String("example"),
-/// 			UserPoolId: pool.ID(),
+/// 			UserPoolId: pool.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpool" "pool" {
+///   name = "pool"
+/// }
+/// resource "aws_cognito_resourceserver" "resource" {
+///   identifier   = "https://example.com"
+///   name         = "example"
+///   user_pool_id = aws_cognito_userpool.pool.id
 /// }
 /// ```
 /// ```java
@@ -90,8 +108,8 @@ import 'resource_server_state.dart';
 /// import com.pulumi.aws.cognito.UserPoolArgs;
 /// import com.pulumi.aws.cognito.ResourceServer;
 /// import com.pulumi.aws.cognito.ResourceServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -218,13 +236,35 @@ import 'resource_server_state.dart';
 /// 					ScopeDescription: pulumi.String("a Sample Scope Description"),
 /// 				},
 /// 			},
-/// 			UserPoolId: pool.ID(),
+/// 			UserPoolId: pool.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpool" "pool" {
+///   name = "pool"
+/// }
+/// resource "aws_cognito_resourceserver" "resource" {
+///   identifier = "https://example.com"
+///   name       = "example"
+///   scopes {
+///     scope_name        = "sample-scope"
+///     scope_description = "a Sample Scope Description"
+///   }
+///   user_pool_id = aws_cognito_userpool.pool.id
 /// }
 /// ```
 /// ```java
@@ -238,8 +278,8 @@ import 'resource_server_state.dart';
 /// import com.pulumi.aws.cognito.ResourceServer;
 /// import com.pulumi.aws.cognito.ResourceServerArgs;
 /// import com.pulumi.aws.cognito.inputs.ResourceServerScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

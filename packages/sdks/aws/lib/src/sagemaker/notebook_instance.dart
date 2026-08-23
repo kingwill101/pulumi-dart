@@ -81,6 +81,24 @@ import 'notebook_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_notebookinstance" "ni" {
+///   name          = "my-notebook-instance"
+///   role_arn      = role.arn
+///   instance_type = "ml.t2.medium"
+///   tags = {
+///     "Name" = "foo"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +107,8 @@ import 'notebook_instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sagemaker.NotebookInstance;
 /// import com.pulumi.aws.sagemaker.NotebookInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -232,6 +250,31 @@ import 'notebook_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_coderepository" "example" {
+///   code_repository_name = "my-notebook-instance-code-repo"
+///   git_config = {
+///     repository_url = "https://github.com/github/docs.git"
+///   }
+/// }
+/// resource "aws_sagemaker_notebookinstance" "ni" {
+///   name                    = "my-notebook-instance"
+///   role_arn                = role.arn
+///   instance_type           = "ml.t2.medium"
+///   default_code_repository = aws_sagemaker_coderepository.example.code_repository_name
+///   tags = {
+///     "Name" = "foo"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -243,8 +286,8 @@ import 'notebook_instance_state.dart';
 /// import com.pulumi.aws.sagemaker.inputs.CodeRepositoryGitConfigArgs;
 /// import com.pulumi.aws.sagemaker.NotebookInstance;
 /// import com.pulumi.aws.sagemaker.NotebookInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -309,9 +352,9 @@ class NotebookInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The Git repository associated with the notebook instance as its default code repository. This can be either the name of a Git repository stored as a resource in your account, or the URL of a Git repository in [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html) or in any other Git repository.
   late final pulumi.Output<String?> defaultCodeRepository;
-  /// Set to `Disabled` to disable internet access to notebook. Requires `security_groups` and `subnet_id` to be set. Supported values: `Enabled` (Default) or `Disabled`. If set to `Disabled`, the notebook instance will be able to access resources only in your VPC, and will not be able to connect to Amazon SageMaker AI training and endpoint services unless your configure a NAT Gateway in your VPC.
+  /// Set to `Disabled` to disable internet access to notebook. Requires `securityGroups` and `subnetId` to be set. Supported values: `Enabled` (Default) or `Disabled`. If set to `Disabled`, the notebook instance will be able to access resources only in your VPC, and will not be able to connect to Amazon SageMaker AI training and endpoint services unless your configure a NAT Gateway in your VPC.
   late final pulumi.Output<String?> directInternetAccess;
-  /// Information on the IMDS configuration of the notebook instance. Conflicts with `instance_metadata_service_configuration`. see details below.
+  /// Information on the IMDS configuration of the notebook instance. Conflicts with `instanceMetadataServiceConfiguration`. see details below.
   late final pulumi.Output<NotebookInstanceInstanceMetadataServiceConfiguration?> instanceMetadataServiceConfiguration;
   /// The name of ML compute instance type.
   late final pulumi.Output<String> instanceType;
@@ -321,7 +364,7 @@ class NotebookInstance extends pulumi.CustomResource {
   late final pulumi.Output<String?> lifecycleConfigName;
   /// The name of the notebook instance (must be unique).
   late final pulumi.Output<String> name;
-  /// The network interface ID that Amazon SageMaker AI created at the time of creating the instance. Only available when setting `subnet_id`.
+  /// The network interface ID that Amazon SageMaker AI created at the time of creating the instance. Only available when setting `subnetId`.
   late final pulumi.Output<String> networkInterfaceId;
   /// The platform identifier of the notebook instance runtime environment. This value can be either `notebook-al1-v1`(deprecated), `notebook-al2-v1`(deprecated), `notebook-al2-v2`(deprecated), `notebook-al2-v3`, or `notebook-al2023-v1`, depending on which version of Amazon Linux you require. Defaults to `notebook-al2-v3`.
   late final pulumi.Output<String> platformIdentifier;
@@ -335,9 +378,9 @@ class NotebookInstance extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> securityGroups;
   /// The VPC subnet ID.
   late final pulumi.Output<String?> subnetId;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The URL that you use to connect to the Jupyter notebook that is running in your notebook instance.
   late final pulumi.Output<String> url;

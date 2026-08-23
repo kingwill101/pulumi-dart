@@ -7,11 +7,11 @@ class EndpointOracleSettings {
   final pulumi.Input<bool>? accessAlternateDirectly;
   /// Set this attribute to set up table-level supplemental logging for the Oracle database. This attribute enables PRIMARY KEY supplemental logging on all tables selected for a migration task.
   final pulumi.Input<bool>? addSupplementalLogging;
-  /// Set this attribute with `archived_log_dest_id` in a primary/standby setup. This attribute is useful in the case of a switchover.
+  /// Set this attribute with `archivedLogDestId` in a primary/standby setup. This attribute is useful in the case of a switchover.
   final pulumi.Input<int>? additionalArchivedLogDestId;
   /// Set this attribute to `true` to enable replication of Oracle tables containing columns that are nested tables or defined types.
   final pulumi.Input<bool>? allowSelectedNestedTables;
-  /// Specifies the ID of the destination for the archived redo logs. This value should be the same as a number in the dest_id column of the v$archived_log view.
+  /// Specifies the ID of the destination for the archived redo logs. This value should be the same as a number in the destId column of the v$archived_log view.
   final pulumi.Input<int>? archivedLogDestId;
   /// When this field is set to `true`, AWS DMS only accesses the archived redo logs.
   final pulumi.Input<bool>? archivedLogsOnly;
@@ -29,11 +29,11 @@ class EndpointOracleSettings {
   final pulumi.Input<bool>? convertTimestampWithZoneToUtc;
   /// When set to `true`, this attribute helps to increase the commit rate on the Oracle target database by writing directly to tables and not writing a trail to database logs.
   final pulumi.Input<bool>? directPathNoLog;
-  /// When set to `true`, this attribute specifies a parallel load when use_direct_path_full_load is set to true.
+  /// When set to `true`, this attribute specifies a parallel load when useDirectPathFullLoad is set to true.
   final pulumi.Input<bool>? directPathParallelLoad;
   /// Set this attribute to enable homogenous tablespace replication and create existing tables or indexes under the same tablespace on the target.
   final pulumi.Input<bool>? enableHomogenousTablespace;
-  /// Specifies the IDs of one more destinations for one or more archived redo logs. These IDs are the values of the dest_id column in the v$archived_log view.
+  /// Specifies the IDs of one more destinations for one or more archived redo logs. These IDs are the values of the destId column in the v$archived_log view.
   final pulumi.Input<List<int>>? extraArchivedLogDestIds;
   /// When set to `true`, this attribute causes a task to fail if the actual size of an LOB column is greater than the specified lob_max_size.
   final pulumi.Input<bool>? failTaskOnLobTruncation;
@@ -49,11 +49,11 @@ class EndpointOracleSettings {
   final pulumi.Input<int>? readAheadBlocks;
   /// When set to `true`, this attribute supports tablespace replication.
   final pulumi.Input<bool>? readTableSpaceName;
-  /// Set this attribute to `true` in order to use the Binary Reader to capture change data for an Amazon RDS for Oracle as the source. This setting tells DMS instance to replace the default Oracle root with the specified `use_path_prefix` setting to access the redo logs.
+  /// Set this attribute to `true` in order to use the Binary Reader to capture change data for an Amazon RDS for Oracle as the source. This setting tells DMS instance to replace the default Oracle root with the specified `usePathPrefix` setting to access the redo logs.
   final pulumi.Input<bool>? replacePathPrefix;
   /// Specifies the number of seconds that the system waits before resending a query.
   final pulumi.Input<int>? retryInterval;
-  /// Required only if your Oracle endpoint uses Automatic Storage Management (ASM). The full ARN of the IAM role that specifies AWS DMS as the trusted entity and grants the required permissions to access the `secrets_manager_oracle_asm_secret_id`.
+  /// Required only if your Oracle endpoint uses Automatic Storage Management (ASM). The full ARN of the IAM role that specifies AWS DMS as the trusted entity and grants the required permissions to access the `secretsManagerOracleAsmSecretId`.
   final pulumi.Input<String>? secretsManagerOracleAsmAccessRoleArn;
   /// Required only if your Oracle endpoint uses Automatic Storage Management (ASM). The full ARN, partial ARN, or friendly name of the secret that contains the Oracle ASM connection details for the Oracle endpoint.
   final pulumi.Input<String>? secretsManagerOracleAsmSecretId;
@@ -69,7 +69,7 @@ class EndpointOracleSettings {
   final pulumi.Input<bool>? trimSpaceInChar;
   /// Set this attribute to `true` in order to use the Binary Reader to capture change data for an Amazon RDS for Oracle as the source. This tells the DMS instance to use any specified prefix replacement to access all online redo logs.
   final pulumi.Input<bool>? useAlternateFolderForOnline;
-  /// Set this attribute to `true` to capture change data using the Binary Reader utility. Set `use_logminer_reader` to `false` to set this attribute to `true`.
+  /// Set this attribute to `true` to capture change data using the Binary Reader utility. Set `useLogminerReader` to `false` to set this attribute to `true`.
   final pulumi.Input<bool>? useBfile;
   /// Set this attribute to `true` to have AWS DMS use a direct path full load. Specify this value to use the direct path protocol in the Oracle Call Interface (OCI).
   final pulumi.Input<bool>? useDirectPathFullLoad;
@@ -81,9 +81,9 @@ class EndpointOracleSettings {
   /// Creates a new [EndpointOracleSettings].
   /// [accessAlternateDirectly] Set this attribute to `false` in order to use the Binary Reader to capture change data for an Amazon RDS for Oracle as the source.
   /// [addSupplementalLogging] Set this attribute to set up table-level supplemental logging for the Oracle database. This attribute enables PRIMARY KEY supplemental logging on all tables selected for a migration task.
-  /// [additionalArchivedLogDestId] Set this attribute with `archived_log_dest_id` in a primary/standby setup. This attribute is useful in the case of a switchover.
+  /// [additionalArchivedLogDestId] Set this attribute with `archivedLogDestId` in a primary/standby setup. This attribute is useful in the case of a switchover.
   /// [allowSelectedNestedTables] Set this attribute to `true` to enable replication of Oracle tables containing columns that are nested tables or defined types.
-  /// [archivedLogDestId] Specifies the ID of the destination for the archived redo logs. This value should be the same as a number in the dest_id column of the v$archived_log view.
+  /// [archivedLogDestId] Specifies the ID of the destination for the archived redo logs. This value should be the same as a number in the destId column of the v$archived_log view.
   /// [archivedLogsOnly] When this field is set to `true`, AWS DMS only accesses the archived redo logs.
   /// [asmPassword] For an Oracle source endpoint, your Oracle Automatic Storage Management (ASM) password.
   /// [asmServer] For an Oracle source endpoint, your ASM server address.
@@ -92,9 +92,9 @@ class EndpointOracleSettings {
   /// [charLengthSemantics] Specifies whether the length of a character column is in bytes or in characters. Valid values are `default`, `char`, and `byte`.
   /// [convertTimestampWithZoneToUtc] When `true`, converts timestamps with the timezone datatype to their UTC value.
   /// [directPathNoLog] When set to `true`, this attribute helps to increase the commit rate on the Oracle target database by writing directly to tables and not writing a trail to database logs.
-  /// [directPathParallelLoad] When set to `true`, this attribute specifies a parallel load when use_direct_path_full_load is set to true.
+  /// [directPathParallelLoad] When set to `true`, this attribute specifies a parallel load when useDirectPathFullLoad is set to true.
   /// [enableHomogenousTablespace] Set this attribute to enable homogenous tablespace replication and create existing tables or indexes under the same tablespace on the target.
-  /// [extraArchivedLogDestIds] Specifies the IDs of one more destinations for one or more archived redo logs. These IDs are the values of the dest_id column in the v$archived_log view.
+  /// [extraArchivedLogDestIds] Specifies the IDs of one more destinations for one or more archived redo logs. These IDs are the values of the destId column in the v$archived_log view.
   /// [failTaskOnLobTruncation] When set to `true`, this attribute causes a task to fail if the actual size of an LOB column is greater than the specified lob_max_size.
   /// [numberDatatypeScale] Specifies the number scale.
   /// [openTransactionWindow] The timeframe in minutes to check for open transactions for a CDC-only task. You can specify an integer value between 0 (the default) and 240 (the maximum).
@@ -102,9 +102,9 @@ class EndpointOracleSettings {
   /// [parallelAsmReadThreads] Set this attribute to change the number of threads that DMS configures to perform a change data capture (CDC) load using Oracle Automatic Storage Management (ASM). You can specify an integer value between 2 (the default) and 8 (the maximum).
   /// [readAheadBlocks] Set this attribute to change the number of read-ahead blocks that DMS configures to perform a change data capture (CDC) load using Oracle Automatic Storage Management (ASM). You can specify an integer value between 1000 (the default) and 200,000 (the maximum).
   /// [readTableSpaceName] When set to `true`, this attribute supports tablespace replication.
-  /// [replacePathPrefix] Set this attribute to `true` in order to use the Binary Reader to capture change data for an Amazon RDS for Oracle as the source. This setting tells DMS instance to replace the default Oracle root with the specified `use_path_prefix` setting to access the redo logs.
+  /// [replacePathPrefix] Set this attribute to `true` in order to use the Binary Reader to capture change data for an Amazon RDS for Oracle as the source. This setting tells DMS instance to replace the default Oracle root with the specified `usePathPrefix` setting to access the redo logs.
   /// [retryInterval] Specifies the number of seconds that the system waits before resending a query.
-  /// [secretsManagerOracleAsmAccessRoleArn] Required only if your Oracle endpoint uses Automatic Storage Management (ASM). The full ARN of the IAM role that specifies AWS DMS as the trusted entity and grants the required permissions to access the `secrets_manager_oracle_asm_secret_id`.
+  /// [secretsManagerOracleAsmAccessRoleArn] Required only if your Oracle endpoint uses Automatic Storage Management (ASM). The full ARN of the IAM role that specifies AWS DMS as the trusted entity and grants the required permissions to access the `secretsManagerOracleAsmSecretId`.
   /// [secretsManagerOracleAsmSecretId] Required only if your Oracle endpoint uses Automatic Storage Management (ASM). The full ARN, partial ARN, or friendly name of the secret that contains the Oracle ASM connection details for the Oracle endpoint.
   /// [securityDbEncryption] For an Oracle source endpoint, the transparent data encryption (TDE) password required by AWM DMS to access Oracle redo logs encrypted by TDE using Binary Reader.
   /// [securityDbEncryptionName] For an Oracle source endpoint, the name of a key used for the transparent data encryption (TDE) of the columns and tablespaces in an Oracle source database that is encrypted using TDE.
@@ -112,7 +112,7 @@ class EndpointOracleSettings {
   /// [standbyDelayTime] Use this attribute to specify a time in minutes for the delay in standby sync. If the source is an Oracle Active Data Guard standby database, use this attribute to specify the time lag between primary and standby databases.
   /// [trimSpaceInChar] Use this attribute to trim data on CHAR and NCHAR data types during migration. The default value is `true`.
   /// [useAlternateFolderForOnline] Set this attribute to `true` in order to use the Binary Reader to capture change data for an Amazon RDS for Oracle as the source. This tells the DMS instance to use any specified prefix replacement to access all online redo logs.
-  /// [useBfile] Set this attribute to `true` to capture change data using the Binary Reader utility. Set `use_logminer_reader` to `false` to set this attribute to `true`.
+  /// [useBfile] Set this attribute to `true` to capture change data using the Binary Reader utility. Set `useLogminerReader` to `false` to set this attribute to `true`.
   /// [useDirectPathFullLoad] Set this attribute to `true` to have AWS DMS use a direct path full load. Specify this value to use the direct path protocol in the Oracle Call Interface (OCI).
   /// [useLogminerReader] Set this attribute to `true` to capture change data using the Oracle LogMiner utility (the default). Set this attribute to `false` if you want to access the redo logs as a binary file.
   /// [usePathPrefix] Set this string attribute to the required value in order to use the Binary Reader to capture change data for an Amazon RDS for Oracle as the source. This value specifies the path prefix used to replace the default Oracle root to access the redo logs.
@@ -240,4 +240,3 @@ class EndpointOracleSettings {
     );
   }
 }
-

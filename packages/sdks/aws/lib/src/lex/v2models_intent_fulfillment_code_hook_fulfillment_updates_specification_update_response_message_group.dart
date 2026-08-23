@@ -32,4 +32,3 @@ class V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationUpdateResp
     );
   }
 }
-

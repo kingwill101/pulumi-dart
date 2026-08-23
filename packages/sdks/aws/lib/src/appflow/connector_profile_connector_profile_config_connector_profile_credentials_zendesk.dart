@@ -4,16 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connector_profile_connector_profile_config_connector_profile_credentials_zendesk_oauth_request.dart';
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk {
+  /// Credentials used to access protected Zendesk resources.
   final pulumi.Input<String>? accessToken;
+  /// Identifier for the desired client.
   final pulumi.Input<String> clientId;
+  /// Client secret used by the OAuth client to authenticate to the authorization server.
   final pulumi.Input<String> clientSecret;
+  /// OAuth requirement needed to request security tokens from the connector endpoint. See `connector_profile_config.connector_profile_credentials.zendesk.oauth_request` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendeskOauthRequest>? oauthRequest;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk].
-  /// [accessToken] Optional.
-  /// [clientId] Required.
-  /// [clientSecret] Required.
-  /// [oauthRequest] Optional.
+  /// [accessToken] Credentials used to access protected Zendesk resources.
+  /// [clientId] Identifier for the desired client.
+  /// [clientSecret] Client secret used by the OAuth client to authenticate to the authorization server.
+  /// [oauthRequest] OAuth requirement needed to request security tokens from the connector endpoint. See `connector_profile_config.connector_profile_credentials.zendesk.oauth_request` Block for details.
   const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk({
     this.accessToken,
     required this.clientId,
@@ -39,4 +43,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk {
     );
   }
 }
-

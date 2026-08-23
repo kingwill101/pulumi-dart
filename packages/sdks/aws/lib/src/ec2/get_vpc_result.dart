@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_vpc_cidr_block_association.dart';
 import 'get_vpc_filter.dart';
+import 'get_vpc_ipv6_cidr_block_association.dart';
 
 /// Result data returned by getVpc.
 class GetVpcResult {
@@ -24,10 +25,11 @@ class GetVpcResult {
   /// Allowed tenancy of instances launched into the
   /// selected VPC. May be any of `"default"`, `"dedicated"`, or `"host"`.
   final String instanceTenancy;
-  /// Association ID for the IPv6 CIDR block.
+  /// (**Deprecated** use `ipv6CidrBlockAssociations` instead) Association ID for the IPv6 CIDR block.
   final String ipv6AssociationId;
-  /// IPv6 CIDR block.
+  /// IPv6 CIDR block for the association.
   final String ipv6CidrBlock;
+  final List<GetVpcIpv6CidrBlockAssociation> ipv6CidrBlockAssociations;
   /// ID of the main route table associated with this VPC.
   final String mainRouteTableId;
   /// ID of the AWS account that owns the VPC.
@@ -49,8 +51,9 @@ class GetVpcResult {
   /// [filters] Optional.
   /// [id] Required.
   /// [instanceTenancy] Allowed tenancy of instances launched into the
-  /// [ipv6AssociationId] Association ID for the IPv6 CIDR block.
-  /// [ipv6CidrBlock] IPv6 CIDR block.
+  /// [ipv6AssociationId] (**Deprecated** use `ipv6CidrBlockAssociations` instead) Association ID for the IPv6 CIDR block.
+  /// [ipv6CidrBlock] IPv6 CIDR block for the association.
+  /// [ipv6CidrBlockAssociations] Required.
   /// [mainRouteTableId] ID of the main route table associated with this VPC.
   /// [ownerId] ID of the AWS account that owns the VPC.
   /// [region] Required.
@@ -70,6 +73,7 @@ class GetVpcResult {
     required this.instanceTenancy,
     required this.ipv6AssociationId,
     required this.ipv6CidrBlock,
+    required this.ipv6CidrBlockAssociations,
     required this.mainRouteTableId,
     required this.ownerId,
     required this.region,
@@ -92,6 +96,7 @@ class GetVpcResult {
       'instanceTenancy': instanceTenancy,
       'ipv6AssociationId': ipv6AssociationId,
       'ipv6CidrBlock': ipv6CidrBlock,
+      'ipv6CidrBlockAssociations': pulumi.Input.encodeList<GetVpcIpv6CidrBlockAssociation, Map<String, dynamic>>(ipv6CidrBlockAssociations, (value) => value.toMap()),
       'mainRouteTableId': mainRouteTableId,
       'ownerId': ownerId,
       'region': region,
@@ -115,6 +120,7 @@ class GetVpcResult {
       instanceTenancy: map['instanceTenancy'] as String,
       ipv6AssociationId: map['ipv6AssociationId'] as String,
       ipv6CidrBlock: map['ipv6CidrBlock'] as String,
+      ipv6CidrBlockAssociations: pulumi.Input.decodeList<GetVpcIpv6CidrBlockAssociation>(map['ipv6CidrBlockAssociations']!, (value) => GetVpcIpv6CidrBlockAssociation.fromMap((value as Map).cast<String, dynamic>())),
       mainRouteTableId: map['mainRouteTableId'] as String,
       ownerId: map['ownerId'] as String,
       region: map['region'] as String,
@@ -123,4 +129,3 @@ class GetVpcResult {
     );
   }
 }
-

@@ -96,6 +96,24 @@ import 'ciphertext_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "oauth_config" {
+///   description = "oauth config"
+///   is_enabled  = true
+/// }
+/// resource "aws_kms_ciphertext" "oauth" {
+///   key_id    = aws_kms_key.oauth_config.key_id
+///   plaintext = "{\n  \\\"client_id\\\": \\\"e587dbae22222f55da22\\\",\n  \\\"client_secret\\\": \\\"8289575d00000ace55e1815ec13673955721b8a5\\\"\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +124,8 @@ import 'ciphertext_state.dart';
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import com.pulumi.aws.kms.Ciphertext;
 /// import com.pulumi.aws.kms.CiphertextArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -167,7 +185,7 @@ class Ciphertext extends pulumi.CustomResource {
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Data to be encrypted. Note that this may show up in logs. It will not be stored in the state file.
   late final pulumi.Output<String?> plaintextWo;
-  /// Used together with `plaintext_wo` to trigger a replacement. Modify this value when a replacement is required.
+  /// Used together with `plaintextWo` to trigger a replacement. Modify this value when a replacement is required.
   late final pulumi.Output<String?> plaintextWoVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

@@ -7,22 +7,24 @@ import 'email_template_email_template.dart';
 class EmailTemplateState {
   /// Amazon Resource Name (ARN) of the message template.
   final pulumi.Input<String>? arn;
-  /// Specifies the content and settings for a message template that can be used in messages that are sent through the email channel. See Email Template
+  /// Content and settings for a message template that can be used in messages that are sent through the email channel. See below.
   final pulumi.Input<List<EmailTemplateEmailTemplate>>? emailTemplates;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+  /// Name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
   final pulumi.Input<String>? templateName;
 
   /// Creates a new [EmailTemplateState].
   /// [arn] Amazon Resource Name (ARN) of the message template.
-  /// [emailTemplates] Specifies the content and settings for a message template that can be used in messages that are sent through the email channel. See Email Template
+  /// [emailTemplates] Content and settings for a message template that can be used in messages that are sent through the email channel. See below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Optional.
-  /// [tagsAll] Optional.
-  /// [templateName] name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [templateName] Name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
   const EmailTemplateState({
     this.arn,
     this.emailTemplates,
@@ -54,4 +56,3 @@ class EmailTemplateState {
     );
   }
 }
-

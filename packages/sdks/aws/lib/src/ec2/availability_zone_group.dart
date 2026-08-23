@@ -63,6 +63,20 @@ import 'availability_zone_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_availabilityzonegroup" "example" {
+///   group_name    = "us-west-2-lax-1"
+///   opt_in_status = "opted-in"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'availability_zone_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.AvailabilityZoneGroup;
 /// import com.pulumi.aws.ec2.AvailabilityZoneGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

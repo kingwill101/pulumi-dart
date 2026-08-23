@@ -6,7 +6,7 @@ import 'role_policies_exclusive_state.dart';
 ///
 /// Resource for maintaining exclusive management of inline policies assigned to an AWS IAM (Identity & Access Management) role.
 ///
-/// !&gt; This resource takes exclusive ownership over inline policies assigned to a role. This includes removal of inline policies which are not explicitly configured. To prevent persistent drift, ensure any `aws.iam.RolePolicy` resources managed alongside this resource are included in the `policy_names` argument.
+/// &gt; This resource takes exclusive ownership over inline policies assigned to a role. This includes removal of inline policies which are not explicitly configured. To prevent persistent drift, ensure any `aws.iam.RolePolicy` resources managed alongside this resource are included in the `policyNames` argument.
 ///
 /// &gt; Destruction of this resource means Pulumi will no longer manage reconciliation of the configured inline policy assignments. It __will not__ delete the configured policies from the role.
 ///
@@ -74,6 +74,20 @@ import 'role_policies_exclusive_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_rolepoliciesexclusive" "example" {
+///   role_name    = exampleAwsIamRole.name
+///   policy_names = [exampleAwsIamRolePolicy.name]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +96,8 @@ import 'role_policies_exclusive_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.RolePoliciesExclusive;
 /// import com.pulumi.aws.iam.RolePoliciesExclusiveArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -116,7 +130,7 @@ import 'role_policies_exclusive_state.dart';
 ///
 /// ### Disallow Inline Policies
 ///
-/// To automatically remove any configured inline policies, set the `policy_names` argument to an empty list.
+/// To automatically remove any configured inline policies, set the `policyNames` argument to an empty list.
 ///
 /// &gt; This will not __prevent__ inline policies from being assigned to a role via Pulumi (or any other interface). This resource enables bringing inline policy assignments into a configured state, however, this reconciliation happens only when `apply` is proactively run.
 ///
@@ -175,6 +189,20 @@ import 'role_policies_exclusive_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_rolepoliciesexclusive" "example" {
+///   role_name    = exampleAwsIamRole.name
+///   policy_names = []
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +211,8 @@ import 'role_policies_exclusive_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.RolePoliciesExclusive;
 /// import com.pulumi.aws.iam.RolePoliciesExclusiveArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -216,7 +244,7 @@ import 'role_policies_exclusive_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import exclusive management of inline policy assignments using the `role_name`. For example:
+/// Using `pulumi import`, import exclusive management of inline policy assignments using the `roleName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:iam/rolePoliciesExclusive:RolePoliciesExclusive example MyRole

@@ -5,7 +5,7 @@ import 'get_producer_data_shares_data_share.dart';
 
 /// Result data returned by getProducerDataShares.
 class GetProducerDataSharesResult {
-  /// An array of all data shares in the producer. See `data_shares` below.
+  /// An array of all data shares in the producer. See `dataShares` below.
   final List<GetProducerDataSharesDataShare> dataShares;
   /// Producer ARN.
   final String id;
@@ -15,7 +15,7 @@ class GetProducerDataSharesResult {
   final String? status;
 
   /// Creates a new [GetProducerDataSharesResult].
-  /// [dataShares] An array of all data shares in the producer. See `data_shares` below.
+  /// [dataShares] An array of all data shares in the producer. See `dataShares` below.
   /// [id] Producer ARN.
   /// [producerArn] ARN (Amazon Resource Name) of the producer.
   /// [region] Required.
@@ -48,4 +48,3 @@ class GetProducerDataSharesResult {
     );
   }
 }
-

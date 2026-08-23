@@ -87,6 +87,25 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_customkeystore" "test" {
+///   cloud_hsm_cluster_id     = cloudHsmClusterId
+///   custom_key_store_name    = "kms-custom-key-store-test"
+///   key_store_password       = "noplaintextpasswords1"
+///   trust_anchor_certificate = file("anchor-certificate.crt")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +116,8 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// import com.pulumi.aws.kms.CustomKeyStoreArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -229,6 +248,28 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_customkeystore" "example" {
+///   custom_key_store_name = "example-vpc-xks"
+///   custom_key_store_type = "EXTERNAL_KEY_STORE"
+///   xks_proxy_authentication_credential = {
+///     access_key_id         = ephemeralAccessKeyId
+///     raw_secret_access_key = ephemeralSecretAccessKey
+///   }
+///   xks_proxy_connectivity              = "VPC_ENDPOINT_SERVICE"
+///   xks_proxy_uri_endpoint              = "https://myproxy-private.xks.example.com"
+///   xks_proxy_uri_path                  = "/kms/xks/v1"
+///   xks_proxy_vpc_endpoint_service_name = "com.amazonaws.vpce.us-east-1.vpce-svc-example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -238,8 +279,8 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// import com.pulumi.aws.kms.CustomKeyStore;
 /// import com.pulumi.aws.kms.CustomKeyStoreArgs;
 /// import com.pulumi.aws.kms.inputs.CustomKeyStoreXksProxyAuthenticationCredentialArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -370,6 +411,27 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_customkeystore" "example" {
+///   custom_key_store_name = "example-public-xks"
+///   custom_key_store_type = "EXTERNAL_KEY_STORE"
+///   xks_proxy_authentication_credential = {
+///     access_key_id         = ephemeralAccessKeyId
+///     raw_secret_access_key = ephemeralSecretAccessKey
+///   }
+///   xks_proxy_connectivity = "PUBLIC_ENDPOINT"
+///   xks_proxy_uri_endpoint = "https://myproxy.xks.example.com"
+///   xks_proxy_uri_path     = "/kms/xks/v1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -379,8 +441,8 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// import com.pulumi.aws.kms.CustomKeyStore;
 /// import com.pulumi.aws.kms.CustomKeyStoreArgs;
 /// import com.pulumi.aws.kms.inputs.CustomKeyStoreXksProxyAuthenticationCredentialArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

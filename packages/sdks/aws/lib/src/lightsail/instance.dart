@@ -91,6 +91,26 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_instance" "example" {
+///   name              = "example"
+///   availability_zone = "us-east-1b"
+///   blueprint_id      = "amazon_linux_2"
+///   bundle_id         = "nano_3_0"
+///   key_pair_name     = "some_key_name"
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +119,8 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lightsail.Instance;
 /// import com.pulumi.aws.lightsail.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -210,6 +230,23 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_instance" "example" {
+///   name              = "example"
+///   availability_zone = "us-east-1b"
+///   blueprint_id      = "amazon_linux_2"
+///   bundle_id         = "nano_3_0"
+///   user_data         = "sudo yum install -y httpd && sudo systemctl start httpd && sudo systemctl enable httpd && echo '<h1>Deployed via Pulumi</h1>' | sudo tee /var/www/html/index.html"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -218,8 +255,8 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lightsail.Instance;
 /// import com.pulumi.aws.lightsail.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -354,6 +391,30 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_instance" "example" {
+///   name              = "example"
+///   availability_zone = "us-east-1b"
+///   blueprint_id      = "amazon_linux_2"
+///   bundle_id         = "nano_3_0"
+///   add_on = {
+///     type          = "AutoSnapshot"
+///     snapshot_time = "06:00"
+///     status        = "Enabled"
+///   }
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -363,8 +424,8 @@ import 'instance_state.dart';
 /// import com.pulumi.aws.lightsail.Instance;
 /// import com.pulumi.aws.lightsail.InstanceArgs;
 /// import com.pulumi.aws.lightsail.inputs.InstanceAddOnArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -452,9 +513,9 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<double> ramSize;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Single lined launch script as a string to configure server with additional user data.
   late final pulumi.Output<String?> userData;

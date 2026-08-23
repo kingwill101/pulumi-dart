@@ -9,32 +9,24 @@ import 'web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_c
 import 'web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_username_field.dart';
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig {
-  /// Additional configuration for using the Account Creation Fraud Prevention managed rule group. Use this to specify information such as the registration page of your application and the type of content to accept or reject from the client.
   final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSet>? awsManagedRulesAcfpRuleSet;
-  /// Configuration for using the anti-DDoS managed rule group. See `aws_managed_rules_anti_ddos_rule_set` for more details.
   final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSet>? awsManagedRulesAntiDdosRuleSet;
-  /// Additional configuration for using the Account Takeover Protection managed rule group. Use this to specify information such as the sign-in page of your application and the type of content to accept or reject from the client.
   final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSet>? awsManagedRulesAtpRuleSet;
-  /// Additional configuration for using the Bot Control managed rule group. Use this to specify the inspection level that you want to use. See `aws_managed_rules_bot_control_rule_set` for more details
   final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet>? awsManagedRulesBotControlRuleSet;
-  /// The path of the login endpoint for your application.
   final pulumi.Input<String>? loginPath;
-  /// Details about your login page password field. See `password_field` for more details.
   final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigPasswordField>? passwordField;
-  /// The payload type for your login endpoint, either JSON or form encoded.
   final pulumi.Input<String>? payloadType;
-  /// Details about your login page username field. See `username_field` for more details.
   final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsernameField>? usernameField;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig].
-  /// [awsManagedRulesAcfpRuleSet] Additional configuration for using the Account Creation Fraud Prevention managed rule group. Use this to specify information such as the registration page of your application and the type of content to accept or reject from the client.
-  /// [awsManagedRulesAntiDdosRuleSet] Configuration for using the anti-DDoS managed rule group. See `aws_managed_rules_anti_ddos_rule_set` for more details.
-  /// [awsManagedRulesAtpRuleSet] Additional configuration for using the Account Takeover Protection managed rule group. Use this to specify information such as the sign-in page of your application and the type of content to accept or reject from the client.
-  /// [awsManagedRulesBotControlRuleSet] Additional configuration for using the Bot Control managed rule group. Use this to specify the inspection level that you want to use. See `aws_managed_rules_bot_control_rule_set` for more details
-  /// [loginPath] The path of the login endpoint for your application.
-  /// [passwordField] Details about your login page password field. See `password_field` for more details.
-  /// [payloadType] The payload type for your login endpoint, either JSON or form encoded.
-  /// [usernameField] Details about your login page username field. See `username_field` for more details.
+  /// [awsManagedRulesAcfpRuleSet] Optional.
+  /// [awsManagedRulesAntiDdosRuleSet] Optional.
+  /// [awsManagedRulesAtpRuleSet] Optional.
+  /// [awsManagedRulesBotControlRuleSet] Optional.
+  /// [loginPath] Optional.
+  /// [passwordField] Optional.
+  /// [payloadType] Optional.
+  /// [usernameField] Optional.
   const WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig({
     this.awsManagedRulesAcfpRuleSet,
     this.awsManagedRulesAntiDdosRuleSet,
@@ -72,4 +64,3 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig {
     );
   }
 }
-

@@ -11,7 +11,7 @@ class GetQueueArgs {
   final pulumi.Input<String> instanceId;
   /// Returns information on a specific Queue by name
   ///
-  /// &gt; **NOTE:** `instance_id` and one of either `name` or `queue_id` is required.
+  /// &gt; **NOTE:** `instanceId` and one of either `name` or `queueId` is required.
   final pulumi.Input<String>? name;
   /// Returns information on a specific Queue by Queue id
   final pulumi.Input<String>? queueId;
@@ -54,4 +54,3 @@ class GetQueueArgs {
     );
   }
 }
-

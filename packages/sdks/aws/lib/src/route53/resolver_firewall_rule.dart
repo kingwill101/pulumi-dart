@@ -129,8 +129,8 @@ import 'resolver_firewall_rule_state.dart';
 /// 			BlockOverrideDomain:  pulumi.String("example.com"),
 /// 			BlockOverrideTtl:     pulumi.Int(1),
 /// 			BlockResponse:        pulumi.String("OVERRIDE"),
-/// 			FirewallDomainListId: example.ID(),
-/// 			FirewallRuleGroupId:  exampleResolverFirewallRuleGroup.ID(),
+/// 			FirewallDomainListId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			FirewallRuleGroupId:  exampleResolverFirewallRuleGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			Priority:             pulumi.Int(100),
 /// 		})
 /// 		if err != nil {
@@ -138,6 +138,36 @@ import 'resolver_firewall_rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_resolverfirewalldomainlist" "example" {
+///   name    = "example"
+///   domains = ["example.com"]
+///   tags    = {}
+/// }
+/// resource "aws_route53_resolverfirewallrulegroup" "example" {
+///   name = "example"
+///   tags = {}
+/// }
+/// resource "aws_route53_resolverfirewallrule" "example" {
+///   name                    = "example"
+///   action                  = "BLOCK"
+///   block_override_dns_type = "CNAME"
+///   block_override_domain   = "example.com"
+///   block_override_ttl      = 1
+///   block_response          = "OVERRIDE"
+///   firewall_domain_list_id = aws_route53_resolverfirewalldomainlist.example.id
+///   firewall_rule_group_id  = aws_route53_resolverfirewallrulegroup.example.id
+///   priority                = 100
 /// }
 /// ```
 /// ```java
@@ -152,8 +182,8 @@ import 'resolver_firewall_rule_state.dart';
 /// import com.pulumi.aws.route53.ResolverFirewallRuleGroupArgs;
 /// import com.pulumi.aws.route53.ResolverFirewallRule;
 /// import com.pulumi.aws.route53.ResolverFirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -309,7 +339,7 @@ import 'resolver_firewall_rule_state.dart';
 /// 			Name:                pulumi.String("block-dga"),
 /// 			Action:              pulumi.String("BLOCK"),
 /// 			BlockResponse:       pulumi.String("NODATA"),
-/// 			FirewallRuleGroupId: example.ID(),
+/// 			FirewallRuleGroupId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			DnsThreatProtection: pulumi.String("DGA"),
 /// 			ConfidenceThreshold: pulumi.String("HIGH"),
 /// 			Priority:            pulumi.Int(100),
@@ -319,6 +349,29 @@ import 'resolver_firewall_rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_resolverfirewallrulegroup" "example" {
+///   name = "example"
+///   tags = {}
+/// }
+/// resource "aws_route53_resolverfirewallrule" "example" {
+///   name                   = "block-dga"
+///   action                 = "BLOCK"
+///   block_response         = "NODATA"
+///   firewall_rule_group_id = aws_route53_resolverfirewallrulegroup.example.id
+///   dns_threat_protection  = "DGA"
+///   confidence_threshold   = "HIGH"
+///   priority               = 100
 /// }
 /// ```
 /// ```java
@@ -331,8 +384,8 @@ import 'resolver_firewall_rule_state.dart';
 /// import com.pulumi.aws.route53.ResolverFirewallRuleGroupArgs;
 /// import com.pulumi.aws.route53.ResolverFirewallRule;
 /// import com.pulumi.aws.route53.ResolverFirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -405,11 +458,11 @@ class ResolverFirewallRule extends pulumi.CustomResource {
   late final pulumi.Output<int?> blockOverrideTtl;
   /// The way that you want DNS Firewall to block the request. Valid values: `NODATA`, `NXDOMAIN`, `OVERRIDE`.
   late final pulumi.Output<String?> blockResponse;
-  /// The confidence threshold for DNS Firewall Advanced rules. You must provide this value when creating a DNS Firewall Advanced rule. Valid values: `LOW`, `MEDIUM`, `HIGH`. Conflicts with `firewall_domain_list_id`.
+  /// The confidence threshold for DNS Firewall Advanced rules. You must provide this value when creating a DNS Firewall Advanced rule. Valid values: `LOW`, `MEDIUM`, `HIGH`. Conflicts with `firewallDomainListId`.
   late final pulumi.Output<String?> confidenceThreshold;
-  /// The type of DNS Firewall Advanced rule. You must provide this value when creating a DNS Firewall Advanced rule. Valid values: `DGA`, `DNS_TUNNELING`. Conflicts with `firewall_domain_list_id`.
+  /// The type of DNS Firewall Advanced rule. You must provide this value when creating a DNS Firewall Advanced rule. Valid values: `DGA`, `DICTIONARY_DGA`, `DNS_TUNNELING`. Conflicts with `firewallDomainListId`.
   late final pulumi.Output<String?> dnsThreatProtection;
-  /// The ID of the domain list that you want to use in the rule. Required for standard rules. Conflicts with `dns_threat_protection` and `confidence_threshold`.
+  /// The ID of the domain list that you want to use in the rule. Required for standard rules. Conflicts with `dnsThreatProtection` and `confidenceThreshold`.
   late final pulumi.Output<String?> firewallDomainListId;
   /// Evaluate DNS redirection in the DNS redirection chain, such as CNAME, DNAME, ot ALIAS. Valid values are `INSPECT_REDIRECTION_DOMAIN` and `TRUST_REDIRECTION_DOMAIN`. Default value is `INSPECT_REDIRECTION_DOMAIN`.
   late final pulumi.Output<String?> firewallDomainRedirectionAction;

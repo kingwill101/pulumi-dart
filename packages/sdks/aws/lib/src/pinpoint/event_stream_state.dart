@@ -4,20 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering EventStream resources.
 class EventStreamState {
-  /// The application ID.
+  /// Application ID.
   final pulumi.Input<String>? applicationId;
-  /// The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.
+  /// Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.
   final pulumi.Input<String>? destinationStreamArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The IAM role that authorizes Amazon Pinpoint to publish events to the stream in your account.
+  /// IAM role that authorizes AWS End User Messaging to publish events to the stream in your account.
   final pulumi.Input<String>? roleArn;
 
   /// Creates a new [EventStreamState].
-  /// [applicationId] The application ID.
-  /// [destinationStreamArn] The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.
+  /// [applicationId] Application ID.
+  /// [destinationStreamArn] Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [roleArn] The IAM role that authorizes Amazon Pinpoint to publish events to the stream in your account.
+  /// [roleArn] IAM role that authorizes AWS End User Messaging to publish events to the stream in your account.
   const EventStreamState({
     this.applicationId,
     this.destinationStreamArn,
@@ -43,4 +43,3 @@ class EventStreamState {
     );
   }
 }
-

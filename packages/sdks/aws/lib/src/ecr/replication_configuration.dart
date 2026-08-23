@@ -113,6 +113,31 @@ import 'replication_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getregions" "example" {
+/// }
+///
+/// resource "aws_ecr_replicationconfiguration" "example" {
+///   replication_configuration = {
+///     rules = [{
+///       "destinations" = [{
+///         "region"     = data.aws_getregions.example.names[0]
+///         "registryId" = data.aws_getcalleridentity.current.account_id
+///       }]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -125,8 +150,10 @@ import 'replication_configuration_state.dart';
 /// import com.pulumi.aws.ecr.ReplicationConfiguration;
 /// import com.pulumi.aws.ecr.ReplicationConfigurationArgs;
 /// import com.pulumi.aws.ecr.inputs.ReplicationConfigurationReplicationConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ecr.inputs.ReplicationConfigurationReplicationConfigurationRuleArgs;
+/// import com.pulumi.aws.ecr.inputs.ReplicationConfigurationReplicationConfigurationRuleDestinationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -181,7 +208,7 @@ import 'replication_configuration_state.dart';
 /// ```
 ///
 ///
-/// ## Multiple Region Usage
+/// ### Multiple Region Usage
 ///
 ///
 /// ```typescript
@@ -310,6 +337,34 @@ import 'replication_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getregions" "example" {
+/// }
+///
+/// resource "aws_ecr_replicationconfiguration" "example" {
+///   replication_configuration = {
+///     rules = [{
+///       "destinations" = [{
+///         "region"     = data.aws_getregions.example.names[0]
+///         "registryId" = data.aws_getcalleridentity.current.account_id
+///         }, {
+///         "region"     = data.aws_getregions.example.names[1]
+///         "registryId" = data.aws_getcalleridentity.current.account_id
+///       }]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -322,8 +377,10 @@ import 'replication_configuration_state.dart';
 /// import com.pulumi.aws.ecr.ReplicationConfiguration;
 /// import com.pulumi.aws.ecr.ReplicationConfigurationArgs;
 /// import com.pulumi.aws.ecr.inputs.ReplicationConfigurationReplicationConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ecr.inputs.ReplicationConfigurationReplicationConfigurationRuleArgs;
+/// import com.pulumi.aws.ecr.inputs.ReplicationConfigurationReplicationConfigurationRuleDestinationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -385,7 +442,7 @@ import 'replication_configuration_state.dart';
 /// ```
 ///
 ///
-/// ## Repository Filter Usage
+/// ### Repository Filter Usage
 ///
 ///
 /// ```typescript
@@ -515,6 +572,35 @@ import 'replication_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getregions" "example" {
+/// }
+///
+/// resource "aws_ecr_replicationconfiguration" "example" {
+///   replication_configuration = {
+///     rules = [{
+///       "destinations" = [{
+///         "region"     = data.aws_getregions.example.names[0]
+///         "registryId" = data.aws_getcalleridentity.current.account_id
+///       }]
+///       "repositoryFilters" = [{
+///         "filter"     = "prod-microservice"
+///         "filterType" = "PREFIX_MATCH"
+///       }]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -527,8 +613,11 @@ import 'replication_configuration_state.dart';
 /// import com.pulumi.aws.ecr.ReplicationConfiguration;
 /// import com.pulumi.aws.ecr.ReplicationConfigurationArgs;
 /// import com.pulumi.aws.ecr.inputs.ReplicationConfigurationReplicationConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ecr.inputs.ReplicationConfigurationReplicationConfigurationRuleArgs;
+/// import com.pulumi.aws.ecr.inputs.ReplicationConfigurationReplicationConfigurationRuleDestinationArgs;
+/// import com.pulumi.aws.ecr.inputs.ReplicationConfigurationReplicationConfigurationRuleRepositoryFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -592,7 +681,7 @@ import 'replication_configuration_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import ECR Replication Configuration using the `registry_id`. For example:
+/// Using `pulumi import`, import ECR Replication Configuration using the `registryId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ecr/replicationConfiguration:ReplicationConfiguration service 012345678912

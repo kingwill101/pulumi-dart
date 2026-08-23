@@ -73,6 +73,22 @@ import 'organization_admin_account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_macie2_account" "example" {
+/// }
+/// resource "aws_macie2_organizationadminaccount" "example" {
+///   depends_on       = [aws_macie2_account.example]
+///   admin_account_id = "ID OF THE ADMIN ACCOUNT"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +99,8 @@ import 'organization_admin_account_state.dart';
 /// import com.pulumi.aws.macie2.OrganizationAdminAccount;
 /// import com.pulumi.aws.macie2.OrganizationAdminAccountArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

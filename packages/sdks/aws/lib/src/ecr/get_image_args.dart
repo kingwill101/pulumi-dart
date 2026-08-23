@@ -7,11 +7,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_ecr_get_image_get_image_args_doc}
 class GetImageArgs {
-  /// Sha256 digest of the image manifest. At least one of `image_digest`, `image_tag`, or `most_recent` must be specified.
+  /// Sha256 digest of the image manifest. At least one of `imageDigest`, `imageTag`, or `mostRecent` must be specified.
   final pulumi.Input<String>? imageDigest;
-  /// Tag associated with this image. At least one of `image_digest`, `image_tag`, or `most_recent` must be specified.
+  /// Tag associated with this image. At least one of `imageDigest`, `imageTag`, or `mostRecent` must be specified.
   final pulumi.Input<String>? imageTag;
-  /// Return the most recently pushed image. At least one of `image_digest`, `image_tag`, or `most_recent` must be specified.
+  /// Return the most recently pushed image. At least one of `imageDigest`, `imageTag`, or `mostRecent` must be specified.
   final pulumi.Input<bool>? mostRecent;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -21,9 +21,9 @@ class GetImageArgs {
   final pulumi.Input<String> repositoryName;
 
   /// Creates a new [GetImageArgs].
-  /// [imageDigest] Sha256 digest of the image manifest. At least one of `image_digest`, `image_tag`, or `most_recent` must be specified.
-  /// [imageTag] Tag associated with this image. At least one of `image_digest`, `image_tag`, or `most_recent` must be specified.
-  /// [mostRecent] Return the most recently pushed image. At least one of `image_digest`, `image_tag`, or `most_recent` must be specified.
+  /// [imageDigest] Sha256 digest of the image manifest. At least one of `imageDigest`, `imageTag`, or `mostRecent` must be specified.
+  /// [imageTag] Tag associated with this image. At least one of `imageDigest`, `imageTag`, or `mostRecent` must be specified.
+  /// [mostRecent] Return the most recently pushed image. At least one of `imageDigest`, `imageTag`, or `mostRecent` must be specified.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [registryId] ID of the Registry where the repository resides.
   /// [repositoryName] Name of the ECR Repository.
@@ -58,4 +58,3 @@ class GetImageArgs {
     );
   }
 }
-

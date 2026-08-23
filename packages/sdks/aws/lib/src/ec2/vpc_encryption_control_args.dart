@@ -38,7 +38,7 @@ class VpcEncryptionControlArgs {
   final pulumi.Input<String>? natGatewayExclusion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<VpcEncryptionControlTimeouts>? timeouts;
   /// Whether to exclude Virtual Private Gateways from encryption enforcement.
@@ -69,7 +69,7 @@ class VpcEncryptionControlArgs {
   /// [mode] Mode to enable for VPC Encryption Control.
   /// [natGatewayExclusion] Whether to exclude NAT Gateways from encryption enforcement.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [virtualPrivateGatewayExclusion] Whether to exclude Virtual Private Gateways from encryption enforcement.
   /// [vpcId] The ID of the VPC the VPC Encryption Control is linked to.
@@ -127,4 +127,3 @@ class VpcEncryptionControlArgs {
     );
   }
 }
-

@@ -56,6 +56,19 @@ import 'get_cluster_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudhsmv2_getcluster" "cluster" {
+///   cluster_id = "cluster-testclusterid"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'get_cluster_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudhsmv2.Cloudhsmv2Functions;
 /// import com.pulumi.aws.cloudhsmv2.inputs.GetClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

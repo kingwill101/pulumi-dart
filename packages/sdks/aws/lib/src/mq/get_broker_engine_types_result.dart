@@ -5,7 +5,7 @@ import 'get_broker_engine_types_broker_engine_type.dart';
 
 /// Result data returned by getBrokerEngineTypes.
 class GetBrokerEngineTypesResult {
-  /// List of available engine types and versions. See Engine Types.
+  /// List of available engine types and versions. See `brokerEngineTypes` Block.
   final List<GetBrokerEngineTypesBrokerEngineType> brokerEngineTypes;
   /// Broker's engine type.
   final String? engineType;
@@ -14,7 +14,7 @@ class GetBrokerEngineTypesResult {
   final String region;
 
   /// Creates a new [GetBrokerEngineTypesResult].
-  /// [brokerEngineTypes] List of available engine types and versions. See Engine Types.
+  /// [brokerEngineTypes] List of available engine types and versions. See `brokerEngineTypes` Block.
   /// [engineType] Broker's engine type.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
@@ -43,4 +43,3 @@ class GetBrokerEngineTypesResult {
     );
   }
 }
-

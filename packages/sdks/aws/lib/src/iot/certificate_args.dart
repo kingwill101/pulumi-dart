@@ -11,9 +11,9 @@ class CertificateArgs {
   final pulumi.Input<bool> active;
   /// The CA certificate for the certificate to be registered. If this is set, the CA needs to be registered with AWS IoT beforehand.
   final pulumi.Input<String>? caPem;
-  /// The certificate to be registered. If `ca_pem` is unspecified, review
+  /// The certificate to be registered. If `caPem` is unspecified, review
   /// [RegisterCertificateWithoutCA](https://docs.aws.amazon.com/iot/latest/apireference/API_RegisterCertificateWithoutCA.html).
-  /// If `ca_pem` is specified, review
+  /// If `caPem` is specified, review
   /// [RegisterCertificate](https://docs.aws.amazon.com/iot/latest/apireference/API_RegisterCertificate.html)
   /// for more information on registering a certificate.
   final pulumi.Input<String>? certificatePem;
@@ -29,7 +29,7 @@ class CertificateArgs {
   /// Creates a new [CertificateArgs].
   /// [active] Boolean flag to indicate if the certificate should be active
   /// [caPem] The CA certificate for the certificate to be registered. If this is set, the CA needs to be registered with AWS IoT beforehand.
-  /// [certificatePem] The certificate to be registered. If `ca_pem` is unspecified, review
+  /// [certificatePem] The certificate to be registered. If `caPem` is unspecified, review
   /// [csr] The certificate signing request. Review
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const CertificateArgs({
@@ -60,4 +60,3 @@ class CertificateArgs {
     );
   }
 }
-

@@ -14,16 +14,16 @@ class GetListenerRuleArgs {
   /// Detailed below.
   final pulumi.Input<List<GetListenerRuleAction>>? actions;
   /// ARN of the Listener Rule.
-  /// Either `arn` or `listener_arn` must be set.
+  /// Either `arn` or `listenerArn` must be set.
   final pulumi.Input<String>? arn;
   /// Set of conditions associated with the rule.
   /// Detailed below.
   final pulumi.Input<List<GetListenerRuleCondition>>? conditions;
   /// ARN of the associated Listener.
-  /// Either `arn` or `listener_arn` must be set.
+  /// Either `arn` or `listenerArn` must be set.
   final pulumi.Input<String>? listenerArn;
   /// Priority of the Listener Rule within the Listener.
-  /// Must be set if `listener_arn` is set, otherwise must not be set.
+  /// Must be set if `listenerArn` is set, otherwise must not be set.
   final pulumi.Input<int>? priority;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -72,4 +72,3 @@ class GetListenerRuleArgs {
     );
   }
 }
-

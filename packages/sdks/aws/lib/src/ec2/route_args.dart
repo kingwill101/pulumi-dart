@@ -29,6 +29,8 @@ class RouteArgs {
   final pulumi.Input<String>? natGatewayId;
   /// Identifier of an EC2 network interface.
   final pulumi.Input<String>? networkInterfaceId;
+  /// The Amazon Resource Name (ARN) of an ODB network.
+  final pulumi.Input<String>? odbNetworkArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// The ID of the routing table.
@@ -55,6 +57,7 @@ class RouteArgs {
   /// [localGatewayId] Identifier of a Outpost local gateway.
   /// [natGatewayId] Identifier of a VPC NAT gateway.
   /// [networkInterfaceId] Identifier of an EC2 network interface.
+  /// [odbNetworkArn] The Amazon Resource Name (ARN) of an ODB network.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routeTableId] The ID of the routing table.
   /// [transitGatewayId] Identifier of an EC2 Transit Gateway.
@@ -71,6 +74,7 @@ class RouteArgs {
     this.localGatewayId,
     this.natGatewayId,
     this.networkInterfaceId,
+    this.odbNetworkArn,
     this.region,
     required this.routeTableId,
     this.transitGatewayId,
@@ -90,6 +94,7 @@ class RouteArgs {
       'localGatewayId': ?localGatewayId,
       'natGatewayId': ?natGatewayId,
       'networkInterfaceId': ?networkInterfaceId,
+      'odbNetworkArn': ?odbNetworkArn,
       'region': ?region,
       'routeTableId': routeTableId,
       'transitGatewayId': ?transitGatewayId,
@@ -110,6 +115,7 @@ class RouteArgs {
       localGatewayId: (() { final guardedValue = map['localGatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       natGatewayId: (() { final guardedValue = map['natGatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkInterfaceId: (() { final guardedValue = map['networkInterfaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      odbNetworkArn: (() { final guardedValue = map['odbNetworkArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       routeTableId: pulumi.Input.fromValue(map['routeTableId'] as String),
       transitGatewayId: (() { final guardedValue = map['transitGatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -118,4 +124,3 @@ class RouteArgs {
     );
   }
 }
-

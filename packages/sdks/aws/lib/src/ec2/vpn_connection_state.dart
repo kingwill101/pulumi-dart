@@ -26,7 +26,7 @@ class VpnConnectionState {
   final pulumi.Input<String>? localIpv6NetworkCidr;
   /// Indicates if a Public S2S VPN or Private S2S VPN over AWS Direct Connect. Valid values are `PublicIpv4 | PrivateIpv4`
   final pulumi.Input<String>? outsideIpAddressType;
-  /// ARN of the Secrets Manager secret storing the pre-shared key(s) for the VPN connection. Note that even if it returns a valid Secrets Manager ARN, the pre-shared key(s) will not be stored in Secrets Manager unless the `preshared_key_storage` argument is set to `SecretsManager`.
+  /// ARN of the Secrets Manager secret storing the pre-shared key(s) for the VPN connection. Note that even if it returns a valid Secrets Manager ARN, the pre-shared key(s) will not be stored in Secrets Manager unless the `presharedKeyStorage` argument is set to `SecretsManager`.
   final pulumi.Input<String>? presharedKeyArn;
   /// Storage mode for the pre-shared key (PSK). Valid values are `Standard` (stored in the Site-to-Site VPN service) or `SecretsManager` (stored in AWS Secrets Manager).
   final pulumi.Input<String>? presharedKeyStorage;
@@ -40,11 +40,11 @@ class VpnConnectionState {
   final pulumi.Input<List<VpnConnectionRoute>>? routes;
   /// Whether the VPN connection uses static routes exclusively. Static routes must be used for devices that don't support BGP.
   final pulumi.Input<bool>? staticRoutesOnly;
-  /// Tags to apply to the connection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the connection. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// When associated with an EC2 Transit Gateway (`transit_gateway_id` argument), the attachment ID. See also the `aws.ec2.Tag` resource for tagging the EC2 Transit Gateway VPN Attachment.
+  /// When associated with an EC2 Transit Gateway (`transitGatewayId` argument), the attachment ID. See also the `aws.ec2.Tag` resource for tagging the EC2 Transit Gateway VPN Attachment.
   final pulumi.Input<String>? transitGatewayAttachmentId;
   /// The ID of the EC2 Transit Gateway.
   final pulumi.Input<String>? transitGatewayId;
@@ -90,9 +90,9 @@ class VpnConnectionState {
   final pulumi.Input<int>? tunnel1Phase2LifetimeSeconds;
   /// The preshared key of the first VPN tunnel. The preshared key must be between 8 and 64 characters in length and cannot start with zero(0). Allowed characters are alphanumeric characters, periods(.) and underscores(_).
   final pulumi.Input<String>? tunnel1PresharedKey;
-  /// The percentage of the rekey window for the first VPN tunnel (determined by `tunnel1_rekey_margin_time_seconds`) during which the rekey time is randomly selected. Valid value is between `0` and `100`.
+  /// The percentage of the rekey window for the first VPN tunnel (determined by `tunnel1RekeyMarginTimeSeconds`) during which the rekey time is randomly selected. Valid value is between `0` and `100`.
   final pulumi.Input<int>? tunnel1RekeyFuzzPercentage;
-  /// The margin time, in seconds, before the phase 2 lifetime expires, during which the AWS side of the first VPN connection performs an IKE rekey. The exact time of the rekey is randomly selected based on the value for `tunnel1_rekey_fuzz_percentage`. Valid value is between `60` and half of `tunnel1_phase2_lifetime_seconds`.
+  /// The margin time, in seconds, before the phase 2 lifetime expires, during which the AWS side of the first VPN connection performs an IKE rekey. The exact time of the rekey is randomly selected based on the value for `tunnel1RekeyFuzzPercentage`. Valid value is between `60` and half of `tunnel1Phase2LifetimeSeconds`.
   final pulumi.Input<int>? tunnel1RekeyMarginTimeSeconds;
   /// The number of packets in an IKE replay window for the first VPN tunnel. Valid value is between `64` and `2048`.
   final pulumi.Input<int>? tunnel1ReplayWindowSize;
@@ -140,9 +140,9 @@ class VpnConnectionState {
   final pulumi.Input<int>? tunnel2Phase2LifetimeSeconds;
   /// The preshared key of the second VPN tunnel. The preshared key must be between 8 and 64 characters in length and cannot start with zero(0). Allowed characters are alphanumeric characters, periods(.) and underscores(_).
   final pulumi.Input<String>? tunnel2PresharedKey;
-  /// The percentage of the rekey window for the second VPN tunnel (determined by `tunnel2_rekey_margin_time_seconds`) during which the rekey time is randomly selected. Valid value is between `0` and `100`.
+  /// The percentage of the rekey window for the second VPN tunnel (determined by `tunnel2RekeyMarginTimeSeconds`) during which the rekey time is randomly selected. Valid value is between `0` and `100`.
   final pulumi.Input<int>? tunnel2RekeyFuzzPercentage;
-  /// The margin time, in seconds, before the phase 2 lifetime expires, during which the AWS side of the second VPN connection performs an IKE rekey. The exact time of the rekey is randomly selected based on the value for `tunnel2_rekey_fuzz_percentage`. Valid value is between `60` and half of `tunnel2_phase2_lifetime_seconds`.
+  /// The margin time, in seconds, before the phase 2 lifetime expires, during which the AWS side of the second VPN connection performs an IKE rekey. The exact time of the rekey is randomly selected based on the value for `tunnel2RekeyFuzzPercentage`. Valid value is between `60` and half of `tunnel2Phase2LifetimeSeconds`.
   final pulumi.Input<int>? tunnel2RekeyMarginTimeSeconds;
   /// The number of packets in an IKE replay window for the second VPN tunnel. Valid value is between `64` and `2048`.
   final pulumi.Input<int>? tunnel2ReplayWindowSize;
@@ -150,7 +150,7 @@ class VpnConnectionState {
   final pulumi.Input<String>? tunnel2StartupAction;
   /// The RFC 6890 link-local address of the second VPN tunnel (VPN Gateway Side).
   final pulumi.Input<String>? tunnel2VgwInsideAddress;
-  /// Desired bandwidth specification for the VPN tunnel. Valid values are `standard | large`. `standard` supports up to 1.25 Gbps per tunnel, while `large` supports up to 5 Gbps per tunnel. Not supported when `vpn_gateway_id` is specified, or `enable_acceleration` is `true`.
+  /// Desired bandwidth specification for the VPN tunnel. Valid values are `standard | large`. `standard` supports up to 1.25 Gbps per tunnel, while `large` supports up to 5 Gbps per tunnel. Not supported when `vpnGatewayId` is specified, or `enableAcceleration` is `true`.
   final pulumi.Input<String>? tunnelBandwidth;
   /// Indicate whether the VPN tunnels process IPv4 or IPv6 traffic. Valid values are `ipv4 | ipv6`. `ipv6` Supports only EC2 Transit Gateway.
   final pulumi.Input<String>? tunnelInsideIpVersion;
@@ -173,16 +173,16 @@ class VpnConnectionState {
   /// [localIpv4NetworkCidr] The IPv4 CIDR on the customer gateway (on-premises) side of the VPN connection.
   /// [localIpv6NetworkCidr] The IPv6 CIDR on the customer gateway (on-premises) side of the VPN connection.
   /// [outsideIpAddressType] Indicates if a Public S2S VPN or Private S2S VPN over AWS Direct Connect. Valid values are `PublicIpv4 | PrivateIpv4`
-  /// [presharedKeyArn] ARN of the Secrets Manager secret storing the pre-shared key(s) for the VPN connection. Note that even if it returns a valid Secrets Manager ARN, the pre-shared key(s) will not be stored in Secrets Manager unless the `preshared_key_storage` argument is set to `SecretsManager`.
+  /// [presharedKeyArn] ARN of the Secrets Manager secret storing the pre-shared key(s) for the VPN connection. Note that even if it returns a valid Secrets Manager ARN, the pre-shared key(s) will not be stored in Secrets Manager unless the `presharedKeyStorage` argument is set to `SecretsManager`.
   /// [presharedKeyStorage] Storage mode for the pre-shared key (PSK). Valid values are `Standard` (stored in the Site-to-Site VPN service) or `SecretsManager` (stored in AWS Secrets Manager).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [remoteIpv4NetworkCidr] The IPv4 CIDR on the AWS side of the VPN connection.
   /// [remoteIpv6NetworkCidr] The IPv6 CIDR on the AWS side of the VPN connection.
   /// [routes] The static routes associated with the VPN connection. Detailed below.
   /// [staticRoutesOnly] Whether the VPN connection uses static routes exclusively. Static routes must be used for devices that don't support BGP.
-  /// [tags] Tags to apply to the connection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  /// [transitGatewayAttachmentId] When associated with an EC2 Transit Gateway (`transit_gateway_id` argument), the attachment ID. See also the `aws.ec2.Tag` resource for tagging the EC2 Transit Gateway VPN Attachment.
+  /// [tags] Tags to apply to the connection. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [transitGatewayAttachmentId] When associated with an EC2 Transit Gateway (`transitGatewayId` argument), the attachment ID. See also the `aws.ec2.Tag` resource for tagging the EC2 Transit Gateway VPN Attachment.
   /// [transitGatewayId] The ID of the EC2 Transit Gateway.
   /// [transportTransitGatewayAttachmentId] . The attachment ID of the Transit Gateway attachment to Direct Connect Gateway. The ID is obtained through a data source only.
   /// [tunnel1Address] The public IP address of the first VPN tunnel.
@@ -205,8 +205,8 @@ class VpnConnectionState {
   /// [tunnel1Phase2IntegrityAlgorithms] List of one or more integrity algorithms that are permitted for the first VPN tunnel for phase 2 IKE negotiations. Valid values are `SHA1 | SHA2-256 | SHA2-384 | SHA2-512`.
   /// [tunnel1Phase2LifetimeSeconds] The lifetime for phase 2 of the IKE negotiation for the first VPN tunnel, in seconds. Valid value is between `900` and `3600`.
   /// [tunnel1PresharedKey] The preshared key of the first VPN tunnel. The preshared key must be between 8 and 64 characters in length and cannot start with zero(0). Allowed characters are alphanumeric characters, periods(.) and underscores(_).
-  /// [tunnel1RekeyFuzzPercentage] The percentage of the rekey window for the first VPN tunnel (determined by `tunnel1_rekey_margin_time_seconds`) during which the rekey time is randomly selected. Valid value is between `0` and `100`.
-  /// [tunnel1RekeyMarginTimeSeconds] The margin time, in seconds, before the phase 2 lifetime expires, during which the AWS side of the first VPN connection performs an IKE rekey. The exact time of the rekey is randomly selected based on the value for `tunnel1_rekey_fuzz_percentage`. Valid value is between `60` and half of `tunnel1_phase2_lifetime_seconds`.
+  /// [tunnel1RekeyFuzzPercentage] The percentage of the rekey window for the first VPN tunnel (determined by `tunnel1RekeyMarginTimeSeconds`) during which the rekey time is randomly selected. Valid value is between `0` and `100`.
+  /// [tunnel1RekeyMarginTimeSeconds] The margin time, in seconds, before the phase 2 lifetime expires, during which the AWS side of the first VPN connection performs an IKE rekey. The exact time of the rekey is randomly selected based on the value for `tunnel1RekeyFuzzPercentage`. Valid value is between `60` and half of `tunnel1Phase2LifetimeSeconds`.
   /// [tunnel1ReplayWindowSize] The number of packets in an IKE replay window for the first VPN tunnel. Valid value is between `64` and `2048`.
   /// [tunnel1StartupAction] The action to take when the establishing the tunnel for the first VPN connection. By default, your customer gateway device must initiate the IKE negotiation and bring up the tunnel. Specify start for AWS to initiate the IKE negotiation. Valid values are `add | start`.
   /// [tunnel1VgwInsideAddress] The RFC 6890 link-local address of the first VPN tunnel (VPN Gateway Side).
@@ -230,12 +230,12 @@ class VpnConnectionState {
   /// [tunnel2Phase2IntegrityAlgorithms] List of one or more integrity algorithms that are permitted for the second VPN tunnel for phase 2 IKE negotiations. Valid values are `SHA1 | SHA2-256 | SHA2-384 | SHA2-512`.
   /// [tunnel2Phase2LifetimeSeconds] The lifetime for phase 2 of the IKE negotiation for the second VPN tunnel, in seconds. Valid value is between `900` and `3600`.
   /// [tunnel2PresharedKey] The preshared key of the second VPN tunnel. The preshared key must be between 8 and 64 characters in length and cannot start with zero(0). Allowed characters are alphanumeric characters, periods(.) and underscores(_).
-  /// [tunnel2RekeyFuzzPercentage] The percentage of the rekey window for the second VPN tunnel (determined by `tunnel2_rekey_margin_time_seconds`) during which the rekey time is randomly selected. Valid value is between `0` and `100`.
-  /// [tunnel2RekeyMarginTimeSeconds] The margin time, in seconds, before the phase 2 lifetime expires, during which the AWS side of the second VPN connection performs an IKE rekey. The exact time of the rekey is randomly selected based on the value for `tunnel2_rekey_fuzz_percentage`. Valid value is between `60` and half of `tunnel2_phase2_lifetime_seconds`.
+  /// [tunnel2RekeyFuzzPercentage] The percentage of the rekey window for the second VPN tunnel (determined by `tunnel2RekeyMarginTimeSeconds`) during which the rekey time is randomly selected. Valid value is between `0` and `100`.
+  /// [tunnel2RekeyMarginTimeSeconds] The margin time, in seconds, before the phase 2 lifetime expires, during which the AWS side of the second VPN connection performs an IKE rekey. The exact time of the rekey is randomly selected based on the value for `tunnel2RekeyFuzzPercentage`. Valid value is between `60` and half of `tunnel2Phase2LifetimeSeconds`.
   /// [tunnel2ReplayWindowSize] The number of packets in an IKE replay window for the second VPN tunnel. Valid value is between `64` and `2048`.
   /// [tunnel2StartupAction] The action to take when the establishing the tunnel for the second VPN connection. By default, your customer gateway device must initiate the IKE negotiation and bring up the tunnel. Specify start for AWS to initiate the IKE negotiation. Valid values are `add | start`.
   /// [tunnel2VgwInsideAddress] The RFC 6890 link-local address of the second VPN tunnel (VPN Gateway Side).
-  /// [tunnelBandwidth] Desired bandwidth specification for the VPN tunnel. Valid values are `standard | large`. `standard` supports up to 1.25 Gbps per tunnel, while `large` supports up to 5 Gbps per tunnel. Not supported when `vpn_gateway_id` is specified, or `enable_acceleration` is `true`.
+  /// [tunnelBandwidth] Desired bandwidth specification for the VPN tunnel. Valid values are `standard | large`. `standard` supports up to 1.25 Gbps per tunnel, while `large` supports up to 5 Gbps per tunnel. Not supported when `vpnGatewayId` is specified, or `enableAcceleration` is `true`.
   /// [tunnelInsideIpVersion] Indicate whether the VPN tunnels process IPv4 or IPv6 traffic. Valid values are `ipv4 | ipv6`. `ipv6` Supports only EC2 Transit Gateway.
   /// [type] The type of VPN connection. The only type AWS supports at this time is "ipsec.1".
   /// [vgwTelemetries] Telemetry for the VPN tunnels. Detailed below.
@@ -485,4 +485,3 @@ class VpnConnectionState {
     );
   }
 }
-

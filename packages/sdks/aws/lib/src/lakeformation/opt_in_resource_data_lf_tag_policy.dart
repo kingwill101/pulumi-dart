@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OptInResourceDataLfTagPolicy {
-  /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
+  /// Identifier for the Data Catalog. By default, it is the account ID of the caller. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment.
   final pulumi.Input<String>? catalogId;
-  /// If provided, permissions are granted to the Data Catalog resources whose assigned LF-Tags match the expression body of the saved expression under the provided ExpressionName .
+  /// Name of the saved expression to match. If provided, permissions are granted to the Data Catalog resources whose assigned LF-Tags match the expression body of the saved expression under the provided expression name.
   final pulumi.Input<String>? expressionName;
   /// List of LF-tag conditions or a saved expression that apply to the resource's LF-Tag policy.
   final pulumi.Input<List<String>>? expressions;
@@ -13,8 +13,8 @@ class OptInResourceDataLfTagPolicy {
   final pulumi.Input<String> resourceType;
 
   /// Creates a new [OptInResourceDataLfTagPolicy].
-  /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.
-  /// [expressionName] If provided, permissions are granted to the Data Catalog resources whose assigned LF-Tags match the expression body of the saved expression under the provided ExpressionName .
+  /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment.
+  /// [expressionName] Name of the saved expression to match. If provided, permissions are granted to the Data Catalog resources whose assigned LF-Tags match the expression body of the saved expression under the provided expression name.
   /// [expressions] List of LF-tag conditions or a saved expression that apply to the resource's LF-Tag policy.
   /// [resourceType] Resource type for which the LF-tag policy applies.
   const OptInResourceDataLfTagPolicy({
@@ -42,4 +42,3 @@ class OptInResourceDataLfTagPolicy {
     );
   }
 }
-

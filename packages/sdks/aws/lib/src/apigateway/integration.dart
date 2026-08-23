@@ -154,7 +154,7 @@ import 'integration_tls_config.dart';
 /// 			return err
 /// 		}
 /// 		myDemoResource, err := apigateway.NewResource(ctx, "MyDemoResource", &apigateway.ResourceArgs{
-/// 			RestApi:  myDemoAPI.ID(),
+/// 			RestApi:  myDemoAPI.ID().ToIDOutput().ToStringOutput(),
 /// 			ParentId: myDemoAPI.RootResourceId,
 /// 			PathPart: pulumi.String("mydemoresource"),
 /// 		})
@@ -162,8 +162,8 @@ import 'integration_tls_config.dart';
 /// 			return err
 /// 		}
 /// 		myDemoMethod, err := apigateway.NewMethod(ctx, "MyDemoMethod", &apigateway.MethodArgs{
-/// 			RestApi:       myDemoAPI.ID(),
-/// 			ResourceId:    myDemoResource.ID(),
+/// 			RestApi:       myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId:    myDemoResource.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpMethod:    pulumi.String("GET"),
 /// 			Authorization: pulumi.String("NONE"),
 /// 		})
@@ -171,8 +171,8 @@ import 'integration_tls_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewIntegration(ctx, "MyDemoIntegration", &apigateway.IntegrationArgs{
-/// 			RestApi:    myDemoAPI.ID(),
-/// 			ResourceId: myDemoResource.ID(),
+/// 			RestApi:    myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId: myDemoResource.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpMethod: myDemoMethod.HttpMethod,
 /// 			Type:       pulumi.String("MOCK"),
 /// 			CacheKeyParameters: pulumi.StringArray{
@@ -194,6 +194,46 @@ import 'integration_tls_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_restapi" "MyDemoAPI" {
+///   name        = "MyDemoAPI"
+///   description = "This is my API for demonstration purposes"
+/// }
+/// resource "aws_apigateway_resource" "MyDemoResource" {
+///   rest_api  = aws_apigateway_restapi.MyDemoAPI.id
+///   parent_id = aws_apigateway_restapi.MyDemoAPI.root_resource_id
+///   path_part = "mydemoresource"
+/// }
+/// resource "aws_apigateway_method" "MyDemoMethod" {
+///   rest_api      = aws_apigateway_restapi.MyDemoAPI.id
+///   resource_id   = aws_apigateway_resource.MyDemoResource.id
+///   http_method   = "GET"
+///   authorization = "NONE"
+/// }
+/// resource "aws_apigateway_integration" "MyDemoIntegration" {
+///   rest_api             = aws_apigateway_restapi.MyDemoAPI.id
+///   resource_id          = aws_apigateway_resource.MyDemoResource.id
+///   http_method          = aws_apigateway_method.MyDemoMethod.http_method
+///   type                 = "MOCK"
+///   cache_key_parameters = ["method.request.path.param"]
+///   cache_namespace      = "foobar"
+///   timeout_milliseconds = 29000
+///   request_parameters = {
+///     "integration.request.header.X-Authorization" = "'static'"
+///   }
+///   request_templates = {
+///     "application/xml" = "{\n   \\\"body\\\" : $input.json('$')\n}\n"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -208,8 +248,8 @@ import 'integration_tls_config.dart';
 /// import com.pulumi.aws.apigateway.MethodArgs;
 /// import com.pulumi.aws.apigateway.Integration;
 /// import com.pulumi.aws.apigateway.IntegrationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -303,7 +343,7 @@ import 'integration_tls_config.dart';
 /// ```
 ///
 ///
-/// ## Lambda integration
+/// ### Lambda integration
 ///
 ///
 /// ```typescript
@@ -578,14 +618,14 @@ import 'integration_tls_config.dart';
 /// 		resource, err := apigateway.NewResource(ctx, "resource", &apigateway.ResourceArgs{
 /// 			PathPart: pulumi.String("resource"),
 /// 			ParentId: api.RootResourceId,
-/// 			RestApi:  api.ID(),
+/// 			RestApi:  api.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		method, err := apigateway.NewMethod(ctx, "method", &apigateway.MethodArgs{
-/// 			RestApi:       api.ID(),
-/// 			ResourceId:    resource.ID(),
+/// 			RestApi:       api.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId:    resource.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpMethod:    pulumi.String("GET"),
 /// 			Authorization: pulumi.String("NONE"),
 /// 		})
@@ -627,7 +667,7 @@ import 'integration_tls_config.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		lambda, err := lambda.NewFunction(ctx, "lambda", &lambda.FunctionArgs{
+/// 		lambda2, err := lambda.NewFunction(ctx, "lambda", &lambda.FunctionArgs{
 /// 			Code:           pulumi.NewFileArchive("lambda.zip"),
 /// 			Name:           pulumi.String("mylambda"),
 /// 			Role:           role.Arn,
@@ -639,12 +679,12 @@ import 'integration_tls_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewIntegration(ctx, "integration", &apigateway.IntegrationArgs{
-/// 			RestApi:               api.ID(),
-/// 			ResourceId:            resource.ID(),
+/// 			RestApi:               api.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId:            resource.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpMethod:            method.HttpMethod,
 /// 			IntegrationHttpMethod: pulumi.String("POST"),
 /// 			Type:                  pulumi.String("AWS_PROXY"),
-/// 			Uri:                   lambda.InvokeArn,
+/// 			Uri:                   lambda2.InvokeArn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -653,10 +693,10 @@ import 'integration_tls_config.dart';
 /// 		_, err = lambda.NewPermission(ctx, "apigw_lambda", &lambda.PermissionArgs{
 /// 			StatementId: pulumi.String("AllowExecutionFromAPIGateway"),
 /// 			Action:      pulumi.String("lambda:InvokeFunction"),
-/// 			Function:    lambda.Name,
+/// 			Function:    lambda2.Name,
 /// 			Principal:   pulumi.String("apigateway.amazonaws.com"),
 /// 			SourceArn: pulumi.All(api.ID(), method.HttpMethod, resource.Path).ApplyT(func(_args []interface{}) (string, error) {
-/// 				id := _args[0].(string)
+/// 				id := _args[0].(pulumi.ID)
 /// 				httpMethod := _args[1].(string)
 /// 				path := _args[2].(string)
 /// 				return fmt.Sprintf("arn:%v:execute-api:%v:%v:%v/*/%v%v", currentGetPartition.Partition, currentGetRegion.Region, current.AccountId, id, httpMethod, path), nil
@@ -668,6 +708,80 @@ import 'integration_tls_config.dart';
 /// 		return nil
 /// 	})
 /// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getregion" "currentGetRegion" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["lambda.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// # API Gateway
+/// resource "aws_apigateway_restapi" "api" {
+///   name = "myapi"
+/// }
+/// resource "aws_apigateway_resource" "resource" {
+///   path_part = "resource"
+///   parent_id = aws_apigateway_restapi.api.root_resource_id
+///   rest_api  = aws_apigateway_restapi.api.id
+/// }
+/// resource "aws_apigateway_method" "method" {
+///   rest_api      = aws_apigateway_restapi.api.id
+///   resource_id   = aws_apigateway_resource.resource.id
+///   http_method   = "GET"
+///   authorization = "NONE"
+/// }
+/// resource "aws_apigateway_integration" "integration" {
+///   rest_api                = aws_apigateway_restapi.api.id
+///   resource_id             = aws_apigateway_resource.resource.id
+///   http_method             = aws_apigateway_method.method.http_method
+///   integration_http_method = "POST"
+///   type                    = "AWS_PROXY"
+///   uri                     = aws_lambda_function.lambda.invoke_arn
+/// }
+/// # Lambda
+/// resource "aws_lambda_permission" "apigw_lambda" {
+///   statement_id = "AllowExecutionFromAPIGateway"
+///   action       = "lambda:InvokeFunction"
+///   function     = aws_lambda_function.lambda.name
+///   principal    = "apigateway.amazonaws.com"
+///   source_arn   ="arn:${data.aws_getpartition.currentGetPartition.partition}:execute-api:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:${aws_apigateway_restapi.api.id}/*/${aws_apigateway_method.method.http_method}${aws_apigateway_resource.resource.path}"
+/// }
+/// resource "aws_lambda_function" "lambda" {
+///   code             = fileArchive("lambda.zip")
+///   name             = "mylambda"
+///   role             = aws_iam_role.role.arn
+///   handler          = "lambda.lambda_handler"
+///   runtime          = "python3.12"
+///   source_code_hash = filebase64sha256("lambda.zip")
+/// }
+/// resource "aws_iam_role" "role" {
+///   name               = "myrole"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// # IAM
 /// ```
 /// ```java
 /// package generated_program;
@@ -687,6 +801,8 @@ import 'integration_tls_config.dart';
 /// import com.pulumi.aws.apigateway.MethodArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.lambda.Function;
@@ -698,8 +814,8 @@ import 'integration_tls_config.dart';
 /// import com.pulumi.aws.lambda.Permission;
 /// import com.pulumi.aws.lambda.PermissionArgs;
 /// import com.pulumi.asset.FileArchive;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -835,7 +951,7 @@ import 'integration_tls_config.dart';
 ///     type: aws:lambda:Function
 ///     properties:
 ///       code:
-///         fn::FileArchive: lambda.zip
+///         fn::fileArchive: lambda.zip
 ///       name: mylambda
 ///       role: ${role.arn}
 ///       handler: lambda.lambda_handler
@@ -880,7 +996,7 @@ import 'integration_tls_config.dart';
 /// ```
 ///
 ///
-/// ## Lambda integration with response streaming
+/// ### Lambda integration with response streaming
 ///
 /// All other resources and data sources are the same as in the previous example; only the integration configuration differs.
 /// Note that the `timeout` of the `aws.lambda.Function` may need to be adjusted.
@@ -964,6 +1080,26 @@ import 'integration_tls_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_integration" "integration" {
+///   rest_api                = api.id
+///   resource_id             = resource.id
+///   http_method             = method.httpMethod
+///   integration_http_method = "POST"
+///   type                    = "AWS_PROXY"
+///   uri                     = lambda.responseStreamingInvokeArn
+///   response_transfer_mode  = "STREAM"
+///   timeout_milliseconds    = 900000
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -972,8 +1108,8 @@ import 'integration_tls_config.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigateway.Integration;
 /// import com.pulumi.aws.apigateway.IntegrationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1015,7 +1151,7 @@ import 'integration_tls_config.dart';
 /// ```
 ///
 ///
-/// ## VPC Link
+/// ### VPC Link
 ///
 ///
 /// ```typescript
@@ -1213,8 +1349,10 @@ import 'integration_tls_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		cfg := config.New(ctx, "")
-/// 		name := cfg.RequireObject("name")
-/// 		subnetId := cfg.RequireObject("subnetId")
+/// 		var name interface{}
+/// 		cfg.RequireObject("name", &name)
+/// 		var subnetId interface{}
+/// 		cfg.RequireObject("subnetId", &subnetId)
 /// 		test, err := lb.NewLoadBalancer(ctx, "test", &lb.LoadBalancerArgs{
 /// 			Name:             pulumi.Any(name),
 /// 			Internal:         pulumi.Bool(true),
@@ -1240,7 +1378,7 @@ import 'integration_tls_config.dart';
 /// 			return err
 /// 		}
 /// 		testResource, err := apigateway.NewResource(ctx, "test", &apigateway.ResourceArgs{
-/// 			RestApi:  testRestApi.ID(),
+/// 			RestApi:  testRestApi.ID().ToIDOutput().ToStringOutput(),
 /// 			ParentId: testRestApi.RootResourceId,
 /// 			PathPart: pulumi.String("test"),
 /// 		})
@@ -1248,8 +1386,8 @@ import 'integration_tls_config.dart';
 /// 			return err
 /// 		}
 /// 		testMethod, err := apigateway.NewMethod(ctx, "test", &apigateway.MethodArgs{
-/// 			RestApi:       testRestApi.ID(),
-/// 			ResourceId:    testResource.ID(),
+/// 			RestApi:       testRestApi.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId:    testResource.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpMethod:    pulumi.String("GET"),
 /// 			Authorization: pulumi.String("NONE"),
 /// 			RequestModels: pulumi.StringMap{
@@ -1260,8 +1398,8 @@ import 'integration_tls_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewIntegration(ctx, "test", &apigateway.IntegrationArgs{
-/// 			RestApi:    testRestApi.ID(),
-/// 			ResourceId: testResource.ID(),
+/// 			RestApi:    testRestApi.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId: testResource.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpMethod: testMethod.HttpMethod,
 /// 			RequestTemplates: pulumi.StringMap{
 /// 				"application/json": pulumi.String(""),
@@ -1277,13 +1415,74 @@ import 'integration_tls_config.dart';
 /// 			PassthroughBehavior:   pulumi.String("WHEN_NO_MATCH"),
 /// 			ContentHandling:       pulumi.String("CONVERT_TO_TEXT"),
 /// 			ConnectionType:        pulumi.String("VPC_LINK"),
-/// 			ConnectionId:          testVpcLink.ID(),
+/// 			ConnectionId:          testVpcLink.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_loadbalancer" "test" {
+///   name               = var.name
+///   internal           = true
+///   load_balancer_type = "network"
+///   subnets            = [var.subnetId]
+/// }
+/// resource "aws_apigateway_vpclink" "test" {
+///   name       = var.name
+///   target_arn = aws_lb_loadbalancer.test.arn
+/// }
+/// resource "aws_apigateway_restapi" "test" {
+///   name = var.name
+/// }
+/// resource "aws_apigateway_resource" "test" {
+///   rest_api  = aws_apigateway_restapi.test.id
+///   parent_id = aws_apigateway_restapi.test.root_resource_id
+///   path_part = "test"
+/// }
+/// resource "aws_apigateway_method" "test" {
+///   rest_api      = aws_apigateway_restapi.test.id
+///   resource_id   = aws_apigateway_resource.test.id
+///   http_method   = "GET"
+///   authorization = "NONE"
+///   request_models = {
+///     "application/json" = "Error"
+///   }
+/// }
+/// resource "aws_apigateway_integration" "test" {
+///   rest_api    = aws_apigateway_restapi.test.id
+///   resource_id = aws_apigateway_resource.test.id
+///   http_method = aws_apigateway_method.test.http_method
+///   request_templates = {
+///     "application/json" = ""
+///     "application/xml"  = "#set($inputRoot = $input.path('$'))\n{ }"
+///   }
+///   request_parameters = {
+///     "integration.request.header.X-Authorization" = "'static'"
+///     "integration.request.header.X-Foo"           = "'Bar'"
+///   }
+///   type                    = "HTTP"
+///   uri                     = "https://www.google.de"
+///   integration_http_method = "GET"
+///   passthrough_behavior    = "WHEN_NO_MATCH"
+///   content_handling        = "CONVERT_TO_TEXT"
+///   connection_type         = "VPC_LINK"
+///   connection_id           = aws_apigateway_vpclink.test.id
+/// }
+/// variable "name" {
+/// }
+/// variable "subnetId" {
 /// }
 /// ```
 /// ```java
@@ -1304,8 +1503,8 @@ import 'integration_tls_config.dart';
 /// import com.pulumi.aws.apigateway.MethodArgs;
 /// import com.pulumi.aws.apigateway.Integration;
 /// import com.pulumi.aws.apigateway.IntegrationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1318,8 +1517,8 @@ import 'integration_tls_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var name = config.get("name");
-///         final var subnetId = config.get("subnetId");
+///         final var name = config.require("name");
+///         final var subnetId = config.require("subnetId");
 ///         var test = new LoadBalancer("test", LoadBalancerArgs.builder()
 ///             .name(name)
 ///             .internal(true)
@@ -1379,9 +1578,9 @@ import 'integration_tls_config.dart';
 /// ```yaml
 /// configuration:
 ///   name:
-///     type: dynamic
+///     type: object
 ///   subnetId:
-///     type: dynamic
+///     type: object
 /// resources:
 ///   test:
 ///     type: aws:lb:LoadBalancer
@@ -1444,7 +1643,7 @@ import 'integration_tls_config.dart';
 /// ```
 ///
 ///
-/// ## VPC Link V2 with Application Load Balancer
+/// ### VPC Link V2 with Application Load Balancer
 ///
 ///
 /// ```typescript
@@ -1645,7 +1844,7 @@ import 'integration_tls_config.dart';
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// var splat0 []interface{}
 /// for _, val0 := range exampleAwsSubnet {
-/// splat0 = append(splat0, val0.Id)
+/// splat0 = append(splat0, val0.(map[string]interface{})["id"])
 /// }
 /// example, err := apigatewayv2.NewVpcLink(ctx, "example", &apigatewayv2.VpcLinkArgs{
 /// Name: pulumi.String("example"),
@@ -1659,7 +1858,7 @@ import 'integration_tls_config.dart';
 /// }
 /// var splat1 []interface{}
 /// for _, val0 := range exampleAwsSubnet {
-/// splat1 = append(splat1, val0.Id)
+/// splat1 = append(splat1, val0.(map[string]interface{})["id"])
 /// }
 /// exampleLoadBalancer, err := lb.NewLoadBalancer(ctx, "example", &lb.LoadBalancerArgs{
 /// Name: pulumi.String("example-alb"),
@@ -1698,7 +1897,7 @@ import 'integration_tls_config.dart';
 /// return err
 /// }
 /// exampleResource, err := apigateway.NewResource(ctx, "example", &apigateway.ResourceArgs{
-/// RestApi: exampleRestApi.ID(),
+/// RestApi: exampleRestApi.ID().ToIDOutput().ToStringOutput(),
 /// ParentId: exampleRestApi.RootResourceId,
 /// PathPart: pulumi.String("example"),
 /// })
@@ -1706,8 +1905,8 @@ import 'integration_tls_config.dart';
 /// return err
 /// }
 /// exampleMethod, err := apigateway.NewMethod(ctx, "example", &apigateway.MethodArgs{
-/// RestApi: exampleRestApi.ID(),
-/// ResourceId: exampleResource.ID(),
+/// RestApi: exampleRestApi.ID().ToIDOutput().ToStringOutput(),
+/// ResourceId: exampleResource.ID().ToIDOutput().ToStringOutput(),
 /// HttpMethod: pulumi.String("GET"),
 /// Authorization: pulumi.String("NONE"),
 /// })
@@ -1715,13 +1914,13 @@ import 'integration_tls_config.dart';
 /// return err
 /// }
 /// _, err = apigateway.NewIntegration(ctx, "example", &apigateway.IntegrationArgs{
-/// RestApi: exampleRestApi.ID(),
-/// ResourceId: exampleResource.ID(),
+/// RestApi: exampleRestApi.ID().ToIDOutput().ToStringOutput(),
+/// ResourceId: exampleResource.ID().ToIDOutput().ToStringOutput(),
 /// HttpMethod: exampleMethod.HttpMethod,
 /// IntegrationHttpMethod: pulumi.String("GET"),
 /// Type: pulumi.String("HTTP_PROXY"),
 /// ConnectionType: pulumi.String("VPC_LINK"),
-/// ConnectionId: example.ID(),
+/// ConnectionId: example.ID().ToIDOutput().ToStringOutput(),
 /// IntegrationTarget: exampleLoadBalancer.Arn,
 /// Uri: pulumi.String("http://example.com"),
 /// })
@@ -1737,6 +1936,66 @@ import 'integration_tls_config.dart';
 /// pulumiArr = append(pulumiArr, pulumi.(v))
 /// }
 /// return pulumiArr
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigatewayv2_vpclink" "example" {
+///   name               = "example"
+///   security_group_ids = [exampleAwsSecurityGroup.id]
+///   subnet_ids         = exampleAwsSubnet[*].id
+/// }
+/// resource "aws_lb_loadbalancer" "example" {
+///   name               = "example-alb"
+///   internal           = true
+///   load_balancer_type = "application"
+///   security_groups    = [exampleAwsSecurityGroup.id]
+///   subnets            = exampleAwsSubnet[*].id
+/// }
+/// resource "aws_lb_listener" "example" {
+///   load_balancer_arn = aws_lb_loadbalancer.example.arn
+///   port              = "80"
+///   protocol          = "HTTP"
+///   default_actions {
+///     type = "fixed-response"
+///     fixed_response = {
+///       content_type = "text/plain"
+///       message_body = "OK"
+///       status_code  = "200"
+///     }
+///   }
+/// }
+/// resource "aws_apigateway_restapi" "example" {
+///   name = "example"
+/// }
+/// resource "aws_apigateway_resource" "example" {
+///   rest_api  = aws_apigateway_restapi.example.id
+///   parent_id = aws_apigateway_restapi.example.root_resource_id
+///   path_part = "example"
+/// }
+/// resource "aws_apigateway_method" "example" {
+///   rest_api      = aws_apigateway_restapi.example.id
+///   resource_id   = aws_apigateway_resource.example.id
+///   http_method   = "GET"
+///   authorization = "NONE"
+/// }
+/// resource "aws_apigateway_integration" "example" {
+///   rest_api                = aws_apigateway_restapi.example.id
+///   resource_id             = aws_apigateway_resource.example.id
+///   http_method             = aws_apigateway_method.example.http_method
+///   integration_http_method = "GET"
+///   type                    = "HTTP_PROXY"
+///   connection_type         = "VPC_LINK"
+///   connection_id           = aws_apigatewayv2_vpclink.example.id
+///   integration_target      = aws_lb_loadbalancer.example.arn
+///   uri                     = "http://example.com"
 /// }
 /// ```
 /// ```java
@@ -1761,8 +2020,8 @@ import 'integration_tls_config.dart';
 /// import com.pulumi.aws.apigateway.MethodArgs;
 /// import com.pulumi.aws.apigateway.Integration;
 /// import com.pulumi.aws.apigateway.IntegrationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1838,6 +2097,20 @@ import 'integration_tls_config.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `restApiId` (String) - ID of the associated REST API.
+/// * `resourceId` (String) - API resource ID.
+/// * `httpMethod` (String) - HTTP Method.
+///
+/// #### Optional
+///
+/// * `accountId` (String) - AWS Account where this resource is managed.
+/// * `region` (String) - Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import `aws.apigateway.Integration` using `REST-API-ID/RESOURCE-ID/HTTP-METHOD`. For example:
 ///
 /// ```sh
@@ -1848,7 +2121,7 @@ class Integration extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> cacheKeyParameters;
   /// Integration's cache namespace.
   late final pulumi.Output<String> cacheNamespace;
-  /// ID of the VpcLink used for the integration. **Required** if `connection_type` is `VPC_LINK`
+  /// ID of the VpcLink used for the integration. **Required** if `connectionType` is `VPC_LINK`
   late final pulumi.Output<String?> connectionId;
   /// Integration input's [connectionType](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#connectionType). Valid values are `INTERNET` (default for connections through the public routable internet), and `VPC_LINK` (for private connections between API Gateway and a network load balancer in a VPC).
   late final pulumi.Output<String?> connectionType;
@@ -1856,42 +2129,33 @@ class Integration extends pulumi.CustomResource {
   late final pulumi.Output<String?> contentHandling;
   /// Credentials required for the integration. For `AWS` integrations, 2 options are available. To specify an IAM Role for Amazon API Gateway to assume, use the role's ARN. To require that the caller's identity be passed through from the request, specify the string `arn:aws:iam::\*:user/\*`.
   late final pulumi.Output<String?> credentials;
-  /// HTTP method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTION`, `ANY`)
-  /// when calling the associated resource.
+  /// HTTP method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTION`, `ANY`) when calling the associated resource.
   late final pulumi.Output<String> httpMethod;
-  /// Integration HTTP method
-  /// (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONs`, `ANY`, `PATCH`) specifying how API Gateway will interact with the back end.
-  /// **Required** if `type` is `AWS`, `AWS_PROXY`, `HTTP` or `HTTP_PROXY`.
-  /// Not all methods are compatible with all `AWS` integrations.
-  /// e.g., Lambda function [can only be invoked](https://github.com/awslabs/aws-apigateway-importer/issues/9#issuecomment-129651005) via `POST`.
+  /// Integration HTTP method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONs`, `ANY`, `PATCH`) specifying how API Gateway will interact with the back end. **Required** if `type` is `AWS`, `AWS_PROXY`, `HTTP` or `HTTP_PROXY`. Not all methods are compatible with all `AWS` integrations. e.g., Lambda function [can only be invoked](https://github.com/awslabs/aws-apigateway-importer/issues/9#issuecomment-129651005) via `POST`.
   late final pulumi.Output<String?> integrationHttpMethod;
-  /// The ALB or NLB ARN to send the request to. Used for private integrations with VPC Link V2. When using VPC Link V2, this parameter specifies the load balancer ARN, while `uri` is used to set the Host header.
+  /// ALB or NLB ARN to send the request to. Used for private integrations with VPC Link V2. When using VPC Link V2, this parameter specifies the load balancer ARN, while `uri` is used to set the Host header.
   late final pulumi.Output<String?> integrationTarget;
-  /// Integration passthrough behavior (`WHEN_NO_MATCH`, `WHEN_NO_TEMPLATES`, `NEVER`).  **Required** if `request_templates` is used.
+  /// Integration passthrough behavior (`WHEN_NO_MATCH`, `WHEN_NO_TEMPLATES`, `NEVER`).  **Required** if `requestTemplates` is used.
   late final pulumi.Output<String> passthroughBehavior;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of request query string parameters and headers that should be passed to the backend responder.
-  /// For example: `request_parameters = { "integration.request.header.X-Some-Other-Header" = "method.request.header.X-Some-Header" }`
+  /// Map of request query string parameters and headers that should be passed to the backend responder. For example: `requestParameters = { "integration.request.header.X-Some-Other-Header" = "method.request.header.X-Some-Header" }`
   late final pulumi.Output<Map<String, String>?> requestParameters;
   /// Map of the integration's request templates.
   late final pulumi.Output<Map<String, String>?> requestTemplates;
   /// API resource ID.
   late final pulumi.Output<String> resourceId;
-  /// Specifies the response transfer mode of the integration. Valid values are `BUFFERED` and `STREAM`. Default to `BUFFERED`.
-  /// Once set, setting the value to `BUFFERED` requires explicitly specifying `BUFFERED`, rather than removing this argument.
+  /// Response transfer mode of the integration. Valid values are `BUFFERED` and `STREAM`. Default to `BUFFERED`. Once set, setting the value to `BUFFERED` requires explicitly specifying `BUFFERED`, rather than removing this argument.
   late final pulumi.Output<String> responseTransferMode;
   /// ID of the associated REST API.
   late final pulumi.Output<String> restApi;
-  /// Custom timeout in milliseconds. The minimum value is 50. The maximum value is 300,000 when `response_transfer_mode` is `BUFFERED`, and 900,000 when `response_transfer_mode` is `STREAM`. The default value is 29,000 milliseconds. You need to raise a [Service Quota Ticket](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html) to increase time beyond 29,000 milliseconds for `BUFFERED` mode.
+  /// Custom timeout in milliseconds. The minimum value is 50. The maximum value is 300,000 when `responseTransferMode` is `BUFFERED`, and 900,000 when `responseTransferMode` is `STREAM`. The default value is 29,000 milliseconds. You need to raise a [Service Quota Ticket](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html) to increase time beyond 29,000 milliseconds for `BUFFERED` mode.
   late final pulumi.Output<int?> timeoutMilliseconds;
   /// TLS configuration. See below.
   late final pulumi.Output<IntegrationTlsConfig?> tlsConfig;
-  /// Integration input's [type](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/). Valid values are `HTTP` (for HTTP backends), `MOCK` (not calling any real backend), `AWS` (for AWS services), `AWS_PROXY` (for Lambda proxy integration) and `HTTP_PROXY` (for HTTP proxy integration). An `HTTP` or `HTTP_PROXY` integration with a `connection_type` of `VPC_LINK` is referred to as a private integration and uses a VpcLink to connect API Gateway to a network load balancer of a VPC.
+  /// Integration input's [type](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/). Valid values are `HTTP` (for HTTP backends), `MOCK` (not calling any real backend), `AWS` (for AWS services), `AWS_PROXY` (for Lambda proxy integration) and `HTTP_PROXY` (for HTTP proxy integration). An `HTTP` or `HTTP_PROXY` integration with a `connectionType` of `VPC_LINK` is referred to as a private integration and uses a VpcLink to connect API Gateway to a network load balancer of a VPC.
   late final pulumi.Output<String> type;
-  /// Input's URI. **Required** if `type` is `AWS`, `AWS_PROXY`, `HTTP` or `HTTP_PROXY`.
-  /// For HTTP integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the RFC-3986 specification . For AWS integrations, the URI should be of the form `arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}`. `region`, `subdomain` and `service` are used to determine the right endpoint.
-  /// e.g., `arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:123456789012:function:my-func/invocations`. For private integrations, the URI parameter is not used for routing requests to your endpoint, but is used for setting the Host header and for certificate validation.
+  /// Input's URI. **Required** if `type` is `AWS`, `AWS_PROXY`, `HTTP` or `HTTP_PROXY`. For HTTP integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the RFC-3986 specification . For AWS integrations, the URI should be of the form `arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}`. `region`, `subdomain` and `service` are used to determine the right endpoint. e.g., `arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:123456789012:function:my-func/invocations`. For private integrations, the URI parameter is not used for routing requests to your endpoint, but is used for setting the Host header and for certificate validation.
   late final pulumi.Output<String?> uri;
 
   /// Creates a new [Integration].

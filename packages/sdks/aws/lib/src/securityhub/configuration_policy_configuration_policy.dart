@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_policy_configuration_policy_security_controls_configuration.dart';
 
 class ConfigurationPolicyConfigurationPolicy {
-  /// A list that defines which security standards are enabled in the configuration policy. It must be defined if `service_enabled` is set to true.
+  /// A list that defines which security standards are enabled in the configuration policy. It must be defined if `serviceEnabled` is set to true.
   final pulumi.Input<List<String>>? enabledStandardArns;
   /// Defines which security controls are enabled in the configuration policy and any customizations to parameters affecting them. See below.
   final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration>? securityControlsConfiguration;
@@ -12,7 +12,7 @@ class ConfigurationPolicyConfigurationPolicy {
   final pulumi.Input<bool> serviceEnabled;
 
   /// Creates a new [ConfigurationPolicyConfigurationPolicy].
-  /// [enabledStandardArns] A list that defines which security standards are enabled in the configuration policy. It must be defined if `service_enabled` is set to true.
+  /// [enabledStandardArns] A list that defines which security standards are enabled in the configuration policy. It must be defined if `serviceEnabled` is set to true.
   /// [securityControlsConfiguration] Defines which security controls are enabled in the configuration policy and any customizations to parameters affecting them. See below.
   /// [serviceEnabled] Indicates whether Security Hub is enabled in the policy.
   const ConfigurationPolicyConfigurationPolicy({
@@ -37,4 +37,3 @@ class ConfigurationPolicyConfigurationPolicy {
     );
   }
 }
-

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lifecycle_policy_policy_details_schedule_archive_rule_archive_retain_rule.dart';
 
 class LifecyclePolicyPolicyDetailsScheduleArchiveRule {
-  /// Information about the retention period for the snapshot archiving rule. See the `archive_retain_rule` block.
+  /// Information about the retention period for the snapshot archiving rule. See the `archiveRetainRule` block.
   final pulumi.Input<LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule> archiveRetainRule;
 
   /// Creates a new [LifecyclePolicyPolicyDetailsScheduleArchiveRule].
-  /// [archiveRetainRule] Information about the retention period for the snapshot archiving rule. See the `archive_retain_rule` block.
+  /// [archiveRetainRule] Information about the retention period for the snapshot archiving rule. See the `archiveRetainRule` block.
   const LifecyclePolicyPolicyDetailsScheduleArchiveRule({
     required this.archiveRetainRule,
   });
@@ -25,4 +25,3 @@ class LifecyclePolicyPolicyDetailsScheduleArchiveRule {
     );
   }
 }
-

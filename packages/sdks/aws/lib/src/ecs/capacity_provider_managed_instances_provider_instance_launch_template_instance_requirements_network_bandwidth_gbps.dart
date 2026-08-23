@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsNetworkBandwidthGbps {
+  /// Maximum network bandwidth, in Gbps.
   final pulumi.Input<double>? max;
+  /// Minimum network bandwidth, in Gbps.
   final pulumi.Input<double>? min;
 
   /// Creates a new [CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsNetworkBandwidthGbps].
-  /// [max] Optional.
-  /// [min] Optional.
+  /// [max] Maximum network bandwidth, in Gbps.
+  /// [min] Minimum network bandwidth, in Gbps.
   const CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsNetworkBandwidthGbps({
     this.max,
     this.min,
@@ -28,4 +30,3 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
     );
   }
 }
-

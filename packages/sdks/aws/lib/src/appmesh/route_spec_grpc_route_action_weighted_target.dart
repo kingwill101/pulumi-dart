@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouteSpecGrpcRouteActionWeightedTarget {
-  /// The targeted port of the weighted object.
+  /// Port number to match from the request.
   final pulumi.Input<int>? port;
   /// Virtual node to associate with the weighted target. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> virtualNode;
@@ -11,7 +11,7 @@ class RouteSpecGrpcRouteActionWeightedTarget {
   final pulumi.Input<int> weight;
 
   /// Creates a new [RouteSpecGrpcRouteActionWeightedTarget].
-  /// [port] The targeted port of the weighted object.
+  /// [port] Port number to match from the request.
   /// [virtualNode] Virtual node to associate with the weighted target. Must be between 1 and 255 characters in length.
   /// [weight] Relative weight of the weighted target. An integer between 0 and 100.
   const RouteSpecGrpcRouteActionWeightedTarget({
@@ -36,4 +36,3 @@ class RouteSpecGrpcRouteActionWeightedTarget {
     );
   }
 }
-

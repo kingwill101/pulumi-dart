@@ -130,6 +130,33 @@ import 'get_certificate_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_acm_getcertificate" "issued" {
+///   domain   = "tf.example.com"
+///   statuses = ["ISSUED"]
+/// }
+/// data "aws_acm_getcertificate" "amazonIssued" {
+///   domain      = "tf.example.com"
+///   types       = ["AMAZON_ISSUED"]
+///   most_recent = true
+/// }
+/// data "aws_acm_getcertificate" "rsa4096" {
+///   domain    = "tf.example.com"
+///   key_types = ["RSA_4096"]
+/// }
+///
+/// # Find a certificate that is issued
+/// # Find a certificate issued by (not imported into) ACM
+/// # Find a RSA 4096 bit certificate
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +165,8 @@ import 'get_certificate_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.acm.AcmFunctions;
 /// import com.pulumi.aws.acm.inputs.GetCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

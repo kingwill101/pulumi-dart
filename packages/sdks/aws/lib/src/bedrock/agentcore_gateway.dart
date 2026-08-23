@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_gateway_args.dart';
 import 'agentcore_gateway_authorizer_configuration.dart';
+import 'agentcore_gateway_policy_engine_configuration.dart';
 import 'agentcore_gateway_protocol_configuration.dart';
 import 'agentcore_gateway_state.dart';
 import 'agentcore_gateway_timeouts.dart';
@@ -199,6 +200,43 @@ import 'agentcore_gateway_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect  = "Allow"
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["bedrock-agentcore.amazonaws.com"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_role" "example" {
+///   name               = "bedrock-agentcore-gateway-role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_bedrock_agentcoregateway" "example" {
+///   name            = "example-gateway"
+///   role_arn        = aws_iam_role.example.arn
+///   authorizer_type = "CUSTOM_JWT"
+///   authorizer_configuration = {
+///     custom_jwt_authorizer = {
+///       discovery_url     = "https://accounts.google.com/.well-known/openid-configuration"
+///       allowed_audiences = ["test1", "test2"]
+///     }
+///   }
+///   protocol_type = "MCP"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -207,14 +245,16 @@ import 'agentcore_gateway_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.bedrock.AgentcoreGateway;
 /// import com.pulumi.aws.bedrock.AgentcoreGatewayArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreGatewayAuthorizerConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -320,6 +360,10 @@ import 'agentcore_gateway_timeouts.dart';
 ///                 "client-123",
 ///                 "client-456",
 ///             ],
+///             allowedScopes: [
+///                 "openid",
+///                 "email",
+///             ],
 ///         },
 ///     },
 ///     protocolType: "MCP",
@@ -354,6 +398,10 @@ import 'agentcore_gateway_timeouts.dart';
 ///             "allowed_clients": [
 ///                 "client-123",
 ///                 "client-456",
+///             ],
+///             "allowed_scopes": [
+///                 "openid",
+///                 "email",
 ///             ],
 ///         },
 ///     },
@@ -397,6 +445,11 @@ import 'agentcore_gateway_timeouts.dart';
 ///                 {
 ///                     "client-123",
 ///                     "client-456",
+///                 },
+///                 AllowedScopes = new[]
+///                 {
+///                     "openid",
+///                     "email",
 ///                 },
 ///             },
 ///         },
@@ -444,6 +497,10 @@ import 'agentcore_gateway_timeouts.dart';
 /// 						pulumi.String("client-123"),
 /// 						pulumi.String("client-456"),
 /// 					},
+/// 					AllowedScopes: pulumi.StringArray{
+/// 						pulumi.String("openid"),
+/// 						pulumi.String("email"),
+/// 					},
 /// 				},
 /// 			},
 /// 			ProtocolType: pulumi.String("MCP"),
@@ -465,6 +522,38 @@ import 'agentcore_gateway_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcoregateway" "example" {
+///   name            = "mcp-gateway"
+///   description     = "Gateway for MCP communication"
+///   role_arn        = exampleAwsIamRole.arn
+///   authorizer_type = "CUSTOM_JWT"
+///   authorizer_configuration = {
+///     custom_jwt_authorizer = {
+///       discovery_url     = "https://auth.example.com/.well-known/openid-configuration"
+///       allowed_audiences = ["app-client", "web-client"]
+///       allowed_clients   = ["client-123", "client-456"]
+///       allowed_scopes    = ["openid", "email"]
+///     }
+///   }
+///   protocol_type = "MCP"
+///   protocol_configuration = {
+///     mcp = {
+///       instructions       = "Gateway for handling MCP requests"
+///       search_type        = "HYBRID"
+///       supported_versions = ["2025-03-26", "2025-06-18"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -477,8 +566,8 @@ import 'agentcore_gateway_timeouts.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizerArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreGatewayProtocolConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreGatewayProtocolConfigurationMcpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -504,6 +593,9 @@ import 'agentcore_gateway_timeouts.dart';
 ///                     .allowedClients(
 ///                         "client-123",
 ///                         "client-456")
+///                     .allowedScopes(
+///                         "openid",
+///                         "email")
 ///                     .build())
 ///                 .build())
 ///             .protocolType("MCP")
@@ -539,6 +631,9 @@ import 'agentcore_gateway_timeouts.dart';
 ///           allowedClients:
 ///             - client-123
 ///             - client-456
+///           allowedScopes:
+///             - openid
+///             - email
 ///       protocolType: MCP
 ///       protocolConfiguration:
 ///         mcp:
@@ -714,6 +809,40 @@ import 'agentcore_gateway_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_function" "interceptor" {
+///   code    = fileArchive("interceptor.zip")
+///   name    = "gateway-interceptor"
+///   role    = lambda.arn
+///   handler = "index.handler"
+///   runtime = "python3.12"
+/// }
+/// resource "aws_bedrock_agentcoregateway" "example" {
+///   name            = "gateway-with-interceptor"
+///   role_arn        = exampleAwsIamRole.arn
+///   authorizer_type = "AWS_IAM"
+///   protocol_type   = "MCP"
+///   interceptor_configurations {
+///     interception_points = ["REQUEST", "RESPONSE"]
+///     interceptor = {
+///       lambda = {
+///         arn = aws_lambda_function.interceptor.arn
+///       }
+///     }
+///     input_configuration = {
+///       pass_request_headers = true
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -729,8 +858,8 @@ import 'agentcore_gateway_timeouts.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreGatewayInterceptorConfigurationInterceptorLambdaArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreGatewayInterceptorConfigurationInputConfigurationArgs;
 /// import com.pulumi.asset.FileArchive;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -779,7 +908,7 @@ import 'agentcore_gateway_timeouts.dart';
 ///     type: aws:lambda:Function
 ///     properties:
 ///       code:
-///         fn::FileArchive: interceptor.zip
+///         fn::fileArchive: interceptor.zip
 ///       name: gateway-interceptor
 ///       role: ${lambda.arn}
 ///       handler: index.handler
@@ -811,13 +940,13 @@ import 'agentcore_gateway_timeouts.dart';
 /// $ pulumi import aws:bedrock/agentcoreGateway:AgentcoreGateway example GATEWAY1234567890
 /// ```
 class AgentcoreGateway extends pulumi.CustomResource {
-  /// Configuration for request authorization. Required when `authorizer_type` is set to `CUSTOM_JWT`. See `authorizer_configuration` below.
+  /// Configuration for request authorization. Required when `authorizerType` is set to `CUSTOM_JWT`. See `authorizerConfiguration` below.
   late final pulumi.Output<AgentcoreGatewayAuthorizerConfiguration?> authorizerConfiguration;
-  /// Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`. When set to `CUSTOM_JWT`, `authorizer_configuration` block is required.
+  /// Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`. When set to `CUSTOM_JWT`, `authorizerConfiguration` block is required.
   late final pulumi.Output<String> authorizerType;
   /// Description of the gateway.
   late final pulumi.Output<String?> description;
-  /// Exception level for the gateway. Valid values: `INFO`, `WARN`, `ERROR`.
+  /// Exception level for the gateway. Valid values: `DEBUG`.
   late final pulumi.Output<String?> exceptionLevel;
   /// ARN of the Gateway.
   late final pulumi.Output<String> gatewayArn;
@@ -825,15 +954,17 @@ class AgentcoreGateway extends pulumi.CustomResource {
   late final pulumi.Output<String> gatewayId;
   /// URL endpoint for the gateway.
   late final pulumi.Output<String> gatewayUrl;
-  /// List of interceptor configurations for the gateway. Minimum of 1, maximum of 2. See `interceptor_configuration` below.
+  /// List of interceptor configurations for the gateway. Minimum of 1, maximum of 2. See `interceptorConfiguration` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> interceptorConfigurations;
   /// ARN of the KMS key used to encrypt the gateway data.
   late final pulumi.Output<String?> kmsKeyArn;
   /// Name of the gateway.
   late final pulumi.Output<String> name;
-  /// Protocol-specific configuration for the gateway. See `protocol_configuration` below.
+  /// Configuration for a policy engine associated with the gateway. A policy engine is a collection of policies that evaluates and authorizes agent tool calls. When associated with a gateway, the policy engine intercepts all agent requests and determines whether to allow or deny each action based on the defined policies. See `policyEngineConfiguration` below.
+  late final pulumi.Output<AgentcoreGatewayPolicyEngineConfiguration?> policyEngineConfiguration;
+  /// Protocol-specific configuration for the gateway. See `protocolConfiguration` below.
   late final pulumi.Output<AgentcoreGatewayProtocolConfiguration?> protocolConfiguration;
-  /// Protocol type for the gateway. Valid values: `MCP`.
+  /// Protocol type for the gateway. Valid values: `MCP`. Omit this argument to create a gateway that routes traffic directly to HTTP targets such as AgentCore Runtime agents (see `aws.bedrock.AgentcoreGatewayTarget` `target_configuration.http`).
   late final pulumi.Output<String> protocolType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -841,12 +972,12 @@ class AgentcoreGateway extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> roleArn;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreGatewayTimeouts?> timeouts;
-  /// Workload identity details for the gateway. See `workload_identity_details` below.
+  /// Workload identity details for the gateway. See `workloadIdentityDetails` below.
   late final pulumi.Output<List<Map<String, dynamic>>> workloadIdentityDetails;
 
   /// Creates a new [AgentcoreGateway].
@@ -873,6 +1004,7 @@ class AgentcoreGateway extends pulumi.CustomResource {
     interceptorConfigurations = registerOutput<List<Map<String, dynamic>>?>('interceptorConfigurations');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
+    policyEngineConfiguration = registerOutput<AgentcoreGatewayPolicyEngineConfiguration?>('policyEngineConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayPolicyEngineConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     protocolConfiguration = registerOutput<AgentcoreGatewayProtocolConfiguration?>('protocolConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayProtocolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     protocolType = registerOutput<String>('protocolType');
     region = registerOutput<String>('region');
@@ -916,6 +1048,7 @@ class AgentcoreGateway extends pulumi.CustomResource {
     interceptorConfigurations = registerOutput<List<Map<String, dynamic>>?>('interceptorConfigurations');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
+    policyEngineConfiguration = registerOutput<AgentcoreGatewayPolicyEngineConfiguration?>('policyEngineConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayPolicyEngineConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     protocolConfiguration = registerOutput<AgentcoreGatewayProtocolConfiguration?>('protocolConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayProtocolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     protocolType = registerOutput<String>('protocolType');
     region = registerOutput<String>('region');

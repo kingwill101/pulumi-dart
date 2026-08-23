@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeTargetParametersBatchJobParametersContainerOverridesEnvironment {
-  /// Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   final pulumi.Input<String>? name;
   /// Value of parameter to start execution of a SageMaker AI Model Building Pipeline. Maximum length of 1024.
   final pulumi.Input<String>? value;
 
   /// Creates a new [PipeTargetParametersBatchJobParametersContainerOverridesEnvironment].
-  /// [name] Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// [name] Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   /// [value] Value of parameter to start execution of a SageMaker AI Model Building Pipeline. Maximum length of 1024.
   const PipeTargetParametersBatchJobParametersContainerOverridesEnvironment({
     this.name,
@@ -30,4 +30,3 @@ class PipeTargetParametersBatchJobParametersContainerOverridesEnvironment {
     );
   }
 }
-

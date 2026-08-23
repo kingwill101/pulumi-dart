@@ -85,6 +85,25 @@ import 'database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_database" "example" {
+///   relational_database_name = "example-database"
+///   availability_zone        = "us-east-1a"
+///   master_database_name     = "exampledb"
+///   master_password          = "examplepassword123"
+///   master_username          = "exampleuser"
+///   blueprint_id             = "mysql_8_0"
+///   bundle_id                = "micro_1_0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +112,8 @@ import 'database_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lightsail.Database;
 /// import com.pulumi.aws.lightsail.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -211,6 +230,25 @@ import 'database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_database" "example" {
+///   relational_database_name = "example-database"
+///   availability_zone        = "us-east-1a"
+///   master_database_name     = "exampledb"
+///   master_password          = "examplepassword123"
+///   master_username          = "exampleuser"
+///   blueprint_id             = "postgres_12"
+///   bundle_id                = "micro_1_0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -219,8 +257,8 @@ import 'database_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lightsail.Database;
 /// import com.pulumi.aws.lightsail.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -347,6 +385,27 @@ import 'database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_database" "example" {
+///   relational_database_name     = "example-database"
+///   availability_zone            = "us-east-1a"
+///   master_database_name         = "exampledb"
+///   master_password              = "examplepassword123"
+///   master_username              = "exampleuser"
+///   blueprint_id                 = "postgres_12"
+///   bundle_id                    = "micro_1_0"
+///   preferred_backup_window      = "16:00-16:30"
+///   preferred_maintenance_window = "Tue:17:00-Tue:17:30"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -355,8 +414,8 @@ import 'database_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lightsail.Database;
 /// import com.pulumi.aws.lightsail.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -402,7 +461,7 @@ import 'database_state.dart';
 ///
 /// ### Final Snapshots
 ///
-/// To enable creating a final snapshot of your database on deletion, use the `final_snapshot_name` argument to provide a name to be used for the snapshot.
+/// To enable creating a final snapshot of your database on deletion, use the `finalSnapshotName` argument to provide a name to be used for the snapshot.
 ///
 ///
 /// ```typescript
@@ -491,6 +550,28 @@ import 'database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_database" "example" {
+///   relational_database_name     = "example-database"
+///   availability_zone            = "us-east-1a"
+///   master_database_name         = "exampledb"
+///   master_password              = "examplepassword123"
+///   master_username              = "exampleuser"
+///   blueprint_id                 = "postgres_12"
+///   bundle_id                    = "micro_1_0"
+///   preferred_backup_window      = "16:00-16:30"
+///   preferred_maintenance_window = "Tue:17:00-Tue:17:30"
+///   final_snapshot_name          = "example-final-snapshot"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -499,8 +580,8 @@ import 'database_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lightsail.Database;
 /// import com.pulumi.aws.lightsail.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -548,7 +629,7 @@ import 'database_state.dart';
 ///
 /// ### Apply Immediately
 ///
-/// To enable applying changes immediately instead of waiting for a maintenance window, use the `apply_immediately` argument.
+/// To enable applying changes immediately instead of waiting for a maintenance window, use the `applyImmediately` argument.
 ///
 ///
 /// ```typescript
@@ -629,6 +710,26 @@ import 'database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_database" "example" {
+///   relational_database_name = "example-database"
+///   availability_zone        = "us-east-1a"
+///   master_database_name     = "exampledb"
+///   master_password          = "examplepassword123"
+///   master_username          = "exampleuser"
+///   blueprint_id             = "postgres_12"
+///   bundle_id                = "micro_1_0"
+///   apply_immediately        = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -637,8 +738,8 @@ import 'database_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lightsail.Database;
 /// import com.pulumi.aws.lightsail.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -679,53 +780,6 @@ import 'database_state.dart';
 ///       applyImmediately: true
 /// ```
 ///
-///
-/// ## Blueprint IDs
-///
-/// A list of all available Lightsail Blueprints for Relational Databases the [aws lightsail get-relational-database-blueprints](https://docs.aws.amazon.com/cli/latest/reference/lightsail/get-relational-database-blueprints.html) aws cli command.
-///
-/// ### Examples
-///
-/// - `mysql_8_0`
-/// - `postgres_12`
-///
-/// ### Prefix
-///
-/// A Blueprint ID starts with a prefix of the engine type.
-///
-/// ### Suffix
-///
-/// A Blueprint ID has a suffix of the engine version.
-///
-/// ## Bundles
-///
-/// A list of all available Lightsail Bundles for Relational Databases the [aws lightsail get-relational-database-bundles](https://docs.aws.amazon.com/cli/latest/reference/lightsail/get-relational-database-bundles.html) aws cli command.
-///
-/// ### Examples
-///
-/// - `small_1_0`
-/// - `small_ha_1_0`
-/// - `large_1_0`
-/// - `large_ha_1_0`
-///
-/// ### Prefix
-///
-/// A Bundle ID starts with one of the below size prefixes:
-///
-/// - `micro_`
-/// - `small_`
-/// - `medium_`
-/// - `large_`
-///
-/// ### Infixes (Optional for HA Database)
-///
-/// A Bundle ID can have the following infix added in order to use the HA option of the selected bundle.
-///
-/// - `ha_`
-///
-/// ### Suffix
-///
-/// A Bundle ID ends with one of the following suffix: `1_0`
 ///
 /// ## Import
 ///
@@ -791,9 +845,9 @@ class Database extends pulumi.CustomResource {
   late final pulumi.Output<bool?> skipFinalSnapshot;
   /// Support code for the database. Include this code in your email to support when you have questions about a database in Lightsail. This code enables our support team to look up your Lightsail information more easily.
   late final pulumi.Output<String> supportCode;
-  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Database].

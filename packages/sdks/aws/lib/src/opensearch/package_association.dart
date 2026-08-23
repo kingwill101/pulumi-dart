@@ -123,7 +123,7 @@ import 'package_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = opensearch.NewPackageAssociation(ctx, "example", &opensearch.PackageAssociationArgs{
-/// 			PackageId:  example.ID(),
+/// 			PackageId:  example.ID().ToIDOutput().ToStringOutput(),
 /// 			DomainName: myDomain.DomainName,
 /// 		})
 /// 		if err != nil {
@@ -131,6 +131,35 @@ import 'package_association_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_domain" "my_domain" {
+///   domain_name    = "my-opensearch-domain"
+///   engine_version = "Elasticsearch_7.10"
+///   cluster_config = {
+///     instance_type = "r4.large.search"
+///   }
+/// }
+/// resource "aws_opensearch_package" "example" {
+///   package_name = "example-txt"
+///   package_source = {
+///     s3_bucket_name = myOpensearchPackages.bucket
+///     s3_key         = exampleAwsS3Object.key
+///   }
+///   package_type = "TXT-DICTIONARY"
+/// }
+/// resource "aws_opensearch_packageassociation" "example" {
+///   package_id  = aws_opensearch_package.example.id
+///   domain_name = aws_opensearch_domain.my_domain.domain_name
 /// }
 /// ```
 /// ```java
@@ -147,8 +176,8 @@ import 'package_association_state.dart';
 /// import com.pulumi.aws.opensearch.inputs.PackagePackageSourceArgs;
 /// import com.pulumi.aws.opensearch.PackageAssociation;
 /// import com.pulumi.aws.opensearch.PackageAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -209,6 +238,15 @@ import 'package_association_state.dart';
 ///     properties:
 ///       packageId: ${example.id}
 ///       domainName: ${myDomain.domainName}
+/// ```
+///
+///
+/// ## Import
+///
+/// Using `pulumi import`, import `aws.opensearch.PackageAssociation` using `DOMAIN_NAME,PACKAGE_ID`. For example:
+///
+/// ```sh
+/// $ pulumi import aws:opensearch/packageAssociation:PackageAssociation example example-domain,F123456789
 /// ```
 class PackageAssociation extends pulumi.CustomResource {
   /// Name of the domain to associate the package with.

@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_s3_get_bucket_replication_configuration_get_bucket_replication_configuration_args_doc}
 class GetBucketReplicationConfigurationArgs {
-  /// The name of the bucket to get the replication configuration for.
+  /// Name of the bucket to get the replication configuration for.
   final pulumi.Input<String> bucket;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetBucketReplicationConfigurationArgs].
-  /// [bucket] The name of the bucket to get the replication configuration for.
+  /// [bucket] Name of the bucket to get the replication configuration for.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetBucketReplicationConfigurationArgs({
     required this.bucket,
@@ -34,4 +34,3 @@ class GetBucketReplicationConfigurationArgs {
     );
   }
 }
-

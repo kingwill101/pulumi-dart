@@ -5,7 +5,7 @@ import 'backup_policy_backup_policy.dart';
 
 /// Input properties used for looking up and filtering BackupPolicy resources.
 class BackupPolicyState {
-  /// A backup_policy object (documented below).
+  /// A backupPolicy object (documented below).
   final pulumi.Input<BackupPolicyBackupPolicy>? backupPolicy;
   /// The ID of the EFS file system.
   final pulumi.Input<String>? fileSystemId;
@@ -13,7 +13,7 @@ class BackupPolicyState {
   final pulumi.Input<String>? region;
 
   /// Creates a new [BackupPolicyState].
-  /// [backupPolicy] A backup_policy object (documented below).
+  /// [backupPolicy] A backupPolicy object (documented below).
   /// [fileSystemId] The ID of the EFS file system.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const BackupPolicyState({
@@ -38,4 +38,3 @@ class BackupPolicyState {
     );
   }
 }
-

@@ -74,6 +74,21 @@ import 'view_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_billing_view" "example" {
+///   name         = "example"
+///   description  = "example description"
+///   source_views = ["arn:aws:billing::123456789012:billingview/example"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +97,8 @@ import 'view_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.billing.View;
 /// import com.pulumi.aws.billing.ViewArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

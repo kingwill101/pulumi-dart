@@ -64,6 +64,19 @@ import 'get_router_configuration_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_directconnect_getconnection" "example" {
+///   name = "tf-dx-connection"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +85,8 @@ import 'get_router_configuration_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.directconnect.DirectconnectFunctions;
 /// import com.pulumi.aws.directconnect.inputs.GetConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,6 +182,19 @@ Future<GetConnectionResult> getConnection(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_directconnect_getgateway" "example" {
+///   name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +203,8 @@ Future<GetConnectionResult> getConnection(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.directconnect.DirectconnectFunctions;
 /// import com.pulumi.aws.directconnect.inputs.GetGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -277,6 +303,19 @@ Future<GetGatewayResult> getGateway(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_directconnect_getlocation" "example" {
+///   location_code = "CS32A-24FL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -285,8 +324,8 @@ Future<GetGatewayResult> getGateway(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.directconnect.DirectconnectFunctions;
 /// import com.pulumi.aws.directconnect.inputs.GetLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -378,6 +417,18 @@ Future<GetLocationResult> getLocation(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_directconnect_getlocations" "available" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -386,8 +437,8 @@ Future<GetLocationResult> getLocation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.directconnect.DirectconnectFunctions;
 /// import com.pulumi.aws.directconnect.inputs.GetLocationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -487,6 +538,20 @@ Future<GetLocationsResult> getLocations(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_directconnect_getrouterconfiguration" "example" {
+///   virtual_interface_id   = "dxvif-abcde123"
+///   router_type_identifier = "CiscoSystemsInc-2900SeriesRouters-IOS124"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -495,8 +560,8 @@ Future<GetLocationsResult> getLocations(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.directconnect.DirectconnectFunctions;
 /// import com.pulumi.aws.directconnect.inputs.GetRouterConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

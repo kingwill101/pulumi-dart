@@ -8,11 +8,11 @@ import 'get_ami_product_code.dart';
 /// Result data returned by getAmi.
 class GetAmiResult {
   final bool? allowUnsafeFilter;
-  /// OS architecture of the AMI (ie: `i386` or `x86_64`).
+  /// OS architecture of the AMI (ie: `i386` or `x8664`).
   final String architecture;
   /// ARN of the AMI.
   final String arn;
-  /// Set of objects with block device mappings of the AMI.
+  /// Set of objects with block device mappings of the AMI. See `blockDeviceMappings` below.
   final List<GetAmiBlockDeviceMapping> blockDeviceMappings;
   /// Boot mode of the image.
   final String bootMode;
@@ -20,8 +20,7 @@ class GetAmiResult {
   final String creationDate;
   /// Date and time when the image will be deprecated.
   final String deprecationTime;
-  /// Description of the AMI that was provided during image
-  /// creation.
+  /// Description of the AMI that was provided during image creation.
   final String description;
   /// Whether enhanced networking with ENA is enabled.
   final bool enaSupport;
@@ -35,21 +34,19 @@ class GetAmiResult {
   final String imageId;
   /// Location of the AMI.
   final String imageLocation;
-  /// AWS account alias (for example, `amazon`, `self`) or
-  /// the AWS account ID of the AMI owner.
+  /// AWS account alias (for example, `amazon`, `self`) or the AWS account ID of the AMI owner.
   final String imageOwnerAlias;
   /// Type of image.
   final String imageType;
   /// Instance Metadata Service (IMDS) support mode for the image. Set to `v2.0` if instances ran from this image enforce IMDSv2.
   final String imdsSupport;
   final bool? includeDeprecated;
-  /// Kernel associated with the image, if any. Only applicable
-  /// for machine images.
+  /// Kernel associated with the image, if any. Only applicable for machine images.
   final String kernelId;
-  /// Date and time, in ISO 8601 date-time format , when the AMI was last used to launch an EC2 instance. When the AMI is used to launch an instance, there is a 24-hour delay before that usage is reported. For more information, see the following [AWS document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-last-launched-time.html).
+  /// Date and time, in ISO 8601 date-time format, when the AMI was last used to launch an EC2 instance. When the AMI is used to launch an instance, there is a 24-hour delay before that usage is reported. For more information, see the following [AWS document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-last-launched-time.html).
   final String lastLaunchedTime;
   final bool? mostRecent;
-  /// Name of the AMI that was provided during image creation.
+  /// Name of the filter. For a full reference, check out [describe-images in the AWS CLI reference](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html).
   final String name;
   final String? nameRegex;
   /// AWS account ID of the image owner.
@@ -59,53 +56,44 @@ class GetAmiResult {
   final String platform;
   /// Platform details associated with the billing code of the AMI.
   final String platformDetails;
-  /// Any product codes associated with the AMI.
-  /// * `product_codes.#.product_code_id` - The product code.
-  /// * `product_codes.#.product_code_type` - The type of product code.
+  /// Any product codes associated with the AMI. See `productCodes` below.
   final List<GetAmiProductCode> productCodes;
   /// `true` if the image has public launch permissions.
   final bool public;
-  /// RAM disk associated with the image, if any. Only applicable
-  /// for machine images.
+  /// RAM disk associated with the image, if any. Only applicable for machine images.
   final String ramdiskId;
   final String region;
   /// Device name of the root device.
   final String rootDeviceName;
   /// Type of root device (ie: `ebs` or `instance-store`).
   final String rootDeviceType;
-  /// Snapshot id associated with the root device, if any
-  /// (only applies to `ebs` root devices).
+  /// Snapshot id associated with the root device, if any (only applies to `ebs` root devices).
   final String rootSnapshotId;
   /// Whether enhanced networking is enabled.
   final String sriovNetSupport;
-  /// Current state of the AMI. If the state is `available`, the image
-  /// is successfully registered and can be used to launch an instance.
+  /// Current state of the AMI. If the state is `available`, the image is successfully registered and can be used to launch an instance.
   final String state;
-  /// Describes a state change. Fields are `UNSET` if not available.
+  /// Describes a state change. Fields are `UNSET` if not available. See `stateReason` below.
   final Map<String, String> stateReason;
   /// Any tags assigned to the image.
-  /// * `tags.#.key` - Key name of the tag.
-  /// * `tags.#.value` - Value of the tag.
   final Map<String, String> tags;
   /// If the image is configured for NitroTPM support, the value is `v2.0`.
   final String tpmSupport;
-  /// (Optional) Base64 representation of the non-volatile UEFI variable store.
   final String? uefiData;
   /// Operation of the Amazon EC2 instance and the billing code that is associated with the AMI.
   final String usageOperation;
-  /// Type of virtualization of the AMI (ie: `hvm` or
-  /// `paravirtual`).
+  /// Type of virtualization of the AMI (ie: `hvm` or `paravirtual`).
   final String virtualizationType;
 
   /// Creates a new [GetAmiResult].
   /// [allowUnsafeFilter] Optional.
-  /// [architecture] OS architecture of the AMI (ie: `i386` or `x86_64`).
+  /// [architecture] OS architecture of the AMI (ie: `i386` or `x8664`).
   /// [arn] ARN of the AMI.
-  /// [blockDeviceMappings] Set of objects with block device mappings of the AMI.
+  /// [blockDeviceMappings] Set of objects with block device mappings of the AMI. See `blockDeviceMappings` below.
   /// [bootMode] Boot mode of the image.
   /// [creationDate] Date and time the image was created.
   /// [deprecationTime] Date and time when the image will be deprecated.
-  /// [description] Description of the AMI that was provided during image
+  /// [description] Description of the AMI that was provided during image creation.
   /// [enaSupport] Whether enhanced networking with ENA is enabled.
   /// [executableUsers] Optional.
   /// [filters] Optional.
@@ -113,34 +101,34 @@ class GetAmiResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [imageId] ID of the AMI. Should be the same as the resource `id`.
   /// [imageLocation] Location of the AMI.
-  /// [imageOwnerAlias] AWS account alias (for example, `amazon`, `self`) or
+  /// [imageOwnerAlias] AWS account alias (for example, `amazon`, `self`) or the AWS account ID of the AMI owner.
   /// [imageType] Type of image.
   /// [imdsSupport] Instance Metadata Service (IMDS) support mode for the image. Set to `v2.0` if instances ran from this image enforce IMDSv2.
   /// [includeDeprecated] Optional.
-  /// [kernelId] Kernel associated with the image, if any. Only applicable
-  /// [lastLaunchedTime] Date and time, in ISO 8601 date-time format , when the AMI was last used to launch an EC2 instance. When the AMI is used to launch an instance, there is a 24-hour delay before that usage is reported. For more information, see the following [AWS document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-last-launched-time.html).
+  /// [kernelId] Kernel associated with the image, if any. Only applicable for machine images.
+  /// [lastLaunchedTime] Date and time, in ISO 8601 date-time format, when the AMI was last used to launch an EC2 instance. When the AMI is used to launch an instance, there is a 24-hour delay before that usage is reported. For more information, see the following [AWS document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-last-launched-time.html).
   /// [mostRecent] Optional.
-  /// [name] Name of the AMI that was provided during image creation.
+  /// [name] Name of the filter. For a full reference, check out [describe-images in the AWS CLI reference](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html).
   /// [nameRegex] Optional.
   /// [ownerId] AWS account ID of the image owner.
   /// [owners] Optional.
   /// [platform] Value is Windows for `Windows` AMIs; otherwise blank.
   /// [platformDetails] Platform details associated with the billing code of the AMI.
-  /// [productCodes] Any product codes associated with the AMI.
+  /// [productCodes] Any product codes associated with the AMI. See `productCodes` below.
   /// [public] `true` if the image has public launch permissions.
-  /// [ramdiskId] RAM disk associated with the image, if any. Only applicable
+  /// [ramdiskId] RAM disk associated with the image, if any. Only applicable for machine images.
   /// [region] Required.
   /// [rootDeviceName] Device name of the root device.
   /// [rootDeviceType] Type of root device (ie: `ebs` or `instance-store`).
-  /// [rootSnapshotId] Snapshot id associated with the root device, if any
+  /// [rootSnapshotId] Snapshot id associated with the root device, if any (only applies to `ebs` root devices).
   /// [sriovNetSupport] Whether enhanced networking is enabled.
-  /// [state] Current state of the AMI. If the state is `available`, the image
-  /// [stateReason] Describes a state change. Fields are `UNSET` if not available.
+  /// [state] Current state of the AMI. If the state is `available`, the image is successfully registered and can be used to launch an instance.
+  /// [stateReason] Describes a state change. Fields are `UNSET` if not available. See `stateReason` below.
   /// [tags] Any tags assigned to the image.
   /// [tpmSupport] If the image is configured for NitroTPM support, the value is `v2.0`.
-  /// [uefiData] (Optional) Base64 representation of the non-volatile UEFI variable store.
+  /// [uefiData] Optional.
   /// [usageOperation] Operation of the Amazon EC2 instance and the billing code that is associated with the AMI.
-  /// [virtualizationType] Type of virtualization of the AMI (ie: `hvm` or
+  /// [virtualizationType] Type of virtualization of the AMI (ie: `hvm` or `paravirtual`).
   const GetAmiResult({
     this.allowUnsafeFilter,
     required this.architecture,
@@ -283,4 +271,3 @@ class GetAmiResult {
     );
   }
 }
-

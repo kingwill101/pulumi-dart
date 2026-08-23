@@ -42,4 +42,3 @@ class TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Config
     );
   }
 }
-

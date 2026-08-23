@@ -5,13 +5,12 @@ import 'virtual_gateway_spec_listener_tls_validation_trust_file.dart';
 import 'virtual_gateway_spec_listener_tls_validation_trust_sds.dart';
 
 class VirtualGatewaySpecListenerTlsValidationTrust {
-  /// TLS validation context trust for a local file certificate.
   final pulumi.Input<VirtualGatewaySpecListenerTlsValidationTrustFile>? file;
   /// TLS validation context trust for a [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
   final pulumi.Input<VirtualGatewaySpecListenerTlsValidationTrustSds>? sds;
 
   /// Creates a new [VirtualGatewaySpecListenerTlsValidationTrust].
-  /// [file] TLS validation context trust for a local file certificate.
+  /// [file] Optional.
   /// [sds] TLS validation context trust for a [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
   const VirtualGatewaySpecListenerTlsValidationTrust({
     this.file,
@@ -32,4 +31,3 @@ class VirtualGatewaySpecListenerTlsValidationTrust {
     );
   }
 }
-

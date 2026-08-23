@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest {
-  /// The code provided by the connector when it has been authenticated via the connected app.
+  /// Code provided by the connector when it has been authenticated via the connected app.
   final pulumi.Input<String>? authCode;
-  /// The URL to which the authentication server redirects the browser after authorization has been granted.
+  /// URL to which the authentication server redirects the browser after authorization has been granted.
   final pulumi.Input<String>? redirectUri;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest].
-  /// [authCode] The code provided by the connector when it has been authenticated via the connected app.
-  /// [redirectUri] The URL to which the authentication server redirects the browser after authorization has been granted.
+  /// [authCode] Code provided by the connector when it has been authenticated via the connected app.
+  /// [redirectUri] URL to which the authentication server redirects the browser after authorization has been granted.
   const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest({
     this.authCode,
     this.redirectUri,
@@ -30,4 +30,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
     );
   }
 }
-

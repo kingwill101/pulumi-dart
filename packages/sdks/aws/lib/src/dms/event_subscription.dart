@@ -108,6 +108,27 @@ import 'event_subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dms_eventsubscription" "example" {
+///   enabled          = true
+///   event_categories = ["creation", "failure"]
+///   name             = "my-favorite-event-subscription"
+///   sns_topic_arn    = exampleAwsSnsTopic.arn
+///   source_ids       = [exampleAwsDmsReplicationTask.replicationTaskId]
+///   source_type      = "replication-task"
+///   tags = {
+///     "Name" = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -116,8 +137,8 @@ import 'event_subscription_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.dms.EventSubscription;
 /// import com.pulumi.aws.dms.EventSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -187,9 +208,9 @@ class EventSubscription extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> sourceIds;
   /// Type of source for events. Valid values: `replication-instance` or `replication-task`
   late final pulumi.Output<String> sourceType;
-  /// Map of resource tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of resource tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [EventSubscription].

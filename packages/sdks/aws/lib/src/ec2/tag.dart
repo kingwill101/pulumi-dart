@@ -106,8 +106,8 @@ import 'tag_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleVpnConnection, err := ec2.NewVpnConnection(ctx, "example", &ec2.VpnConnectionArgs{
-/// 			CustomerGatewayId: exampleCustomerGateway.ID(),
-/// 			TransitGatewayId:  example.ID(),
+/// 			CustomerGatewayId: exampleCustomerGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			TransitGatewayId:  example.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:              exampleCustomerGateway.Type,
 /// 		})
 /// 		if err != nil {
@@ -125,6 +125,33 @@ import 'tag_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2transitgateway_transitgateway" "example" {
+/// }
+/// resource "aws_ec2_customergateway" "example" {
+///   bgp_asn    = 65000
+///   ip_address = "172.0.0.1"
+///   type       = "ipsec.1"
+/// }
+/// resource "aws_ec2_vpnconnection" "example" {
+///   customer_gateway_id = aws_ec2_customergateway.example.id
+///   transit_gateway_id  = aws_ec2transitgateway_transitgateway.example.id
+///   type                = aws_ec2_customergateway.example.type
+/// }
+/// resource "aws_ec2_tag" "example" {
+///   resource_id = aws_ec2_vpnconnection.example.transit_gateway_attachment_id
+///   key         = "Name"
+///   value       = "Hello World"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +165,8 @@ import 'tag_state.dart';
 /// import com.pulumi.aws.ec2.VpnConnectionArgs;
 /// import com.pulumi.aws.ec2.Tag;
 /// import com.pulumi.aws.ec2.TagArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

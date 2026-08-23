@@ -66,6 +66,20 @@ import 'instance_desired_state_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_instancedesiredstate" "test" {
+///   identifier = testAwsDbInstance.identifier
+///   state      = "available"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +88,8 @@ import 'instance_desired_state_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.InstanceDesiredState;
 /// import com.pulumi.aws.rds.InstanceDesiredStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

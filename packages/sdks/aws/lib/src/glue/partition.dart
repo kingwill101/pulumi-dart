@@ -71,6 +71,21 @@ import 'partition_storage_descriptor.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_partition" "example" {
+///   database_name    = "some-database"
+///   table_name       = "some-table"
+///   partition_values = ["some-value"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +94,8 @@ import 'partition_storage_descriptor.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.glue.Partition;
 /// import com.pulumi.aws.glue.PartitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

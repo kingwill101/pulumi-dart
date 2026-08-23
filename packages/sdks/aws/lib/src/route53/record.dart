@@ -82,6 +82,23 @@ import 'record_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_record" "www" {
+///   zone_id = primary.zoneId
+///   name    = "www.example.com"
+///   type    = "A"
+///   ttl     = 300
+///   records = [lb.publicIp]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +107,8 @@ import 'record_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Record;
 /// import com.pulumi.aws.route53.RecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -285,6 +302,38 @@ import 'record_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_record" "www-dev" {
+///   zone_id = primary.zoneId
+///   name    = "www"
+///   type    = "CNAME"
+///   ttl     = 5
+///   weighted_routing_policies {
+///     weight = 10
+///   }
+///   set_identifier = "dev"
+///   records        = ["dev.example.com"]
+/// }
+/// resource "aws_route53_record" "www-live" {
+///   zone_id = primary.zoneId
+///   name    = "www"
+///   type    = "CNAME"
+///   ttl     = 5
+///   weighted_routing_policies {
+///     weight = 90
+///   }
+///   set_identifier = "live"
+///   records        = ["live.example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -294,8 +343,8 @@ import 'record_state.dart';
 /// import com.pulumi.aws.route53.Record;
 /// import com.pulumi.aws.route53.RecordArgs;
 /// import com.pulumi.aws.route53.inputs.RecordWeightedRoutingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -472,6 +521,30 @@ import 'record_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_record" "www" {
+///   zone_id = primary.zoneId
+///   name    = "www.example.com"
+///   type    = "CNAME"
+///   ttl     = 300
+///   geoproximity_routing_policy = {
+///     coordinates = [{
+///       "latitude"  = "49.22"
+///       "longitude" = "-74.01"
+///     }]
+///   }
+///   set_identifier = "dev"
+///   records        = ["dev.example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -481,8 +554,9 @@ import 'record_state.dart';
 /// import com.pulumi.aws.route53.Record;
 /// import com.pulumi.aws.route53.RecordArgs;
 /// import com.pulumi.aws.route53.inputs.RecordGeoproximityRoutingPolicyArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.route53.inputs.RecordGeoproximityRoutingPolicyCoordinateArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -680,6 +754,36 @@ import 'record_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elb_loadbalancer" "main" {
+///   name               = "foobar-elb"
+///   availability_zones = ["us-east-1c"]
+///   listeners {
+///     instance_port     = 80
+///     instance_protocol = "http"
+///     lb_port           = 80
+///     lb_protocol       = "http"
+///   }
+/// }
+/// resource "aws_route53_record" "www" {
+///   zone_id = primary.zoneId
+///   name    = "example.com"
+///   type    = "A"
+///   aliases {
+///     name                   = aws_elb_loadbalancer.main.dns_name
+///     zone_id                = aws_elb_loadbalancer.main.zone_id
+///     evaluate_target_health = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -692,8 +796,8 @@ import 'record_state.dart';
 /// import com.pulumi.aws.route53.Record;
 /// import com.pulumi.aws.route53.RecordArgs;
 /// import com.pulumi.aws.route53.inputs.RecordAliasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -868,6 +972,31 @@ import 'record_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_globalaccelerator_accelerator" "main" {
+///   name            = "foobar-pulumi-accelerator"
+///   enabled         = true
+///   ip_address_type = "IPV4"
+/// }
+/// resource "aws_route53_record" "www" {
+///   zone_id = primary.zoneId
+///   name    = "example.com"
+///   type    = "A"
+///   aliases {
+///     name                   = aws_globalaccelerator_accelerator.main.dns_name
+///     zone_id                = aws_globalaccelerator_accelerator.main.hosted_zone_id
+///     evaluate_target_health = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -879,8 +1008,8 @@ import 'record_state.dart';
 /// import com.pulumi.aws.route53.Record;
 /// import com.pulumi.aws.route53.RecordArgs;
 /// import com.pulumi.aws.route53.inputs.RecordAliasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -935,7 +1064,7 @@ import 'record_state.dart';
 ///
 /// ### NS and SOA Record Management
 ///
-/// When creating Route 53 zones, the `NS` and `SOA` records for the zone are automatically created. Enabling the `allow_overwrite` argument will allow managing these records in a single deployment without the requirement for `import`.
+/// When creating Route 53 zones, the `NS` and `SOA` records for the zone are automatically created. Enabling the `allowOverwrite` argument will allow managing these records in a single deployment without the requirement for `import`.
 ///
 ///
 /// ```typescript
@@ -1050,6 +1179,27 @@ import 'record_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_zone" "example" {
+///   name = "test.example.com"
+/// }
+/// resource "aws_route53_record" "example" {
+///   allow_overwrite = true
+///   name            = "test.example.com"
+///   ttl             = 172800
+///   type            = "NS"
+///   zone_id         = aws_route53_zone.example.zone_id
+///   records         = [aws_route53_zone.example.name_servers[0], aws_route53_zone.example.name_servers[1], aws_route53_zone.example.name_servers[2], aws_route53_zone.example.name_servers[3]]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1060,8 +1210,8 @@ import 'record_state.dart';
 /// import com.pulumi.aws.route53.ZoneArgs;
 /// import com.pulumi.aws.route53.Record;
 /// import com.pulumi.aws.route53.RecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1122,14 +1272,14 @@ import 'record_state.dart';
 ///
 /// #### Required
 ///
-/// * `zone_id` (String) Hosted zone ID for the record.
+/// * `zoneId` (String) Hosted zone ID for the record.
 /// * `name` (String) Name of the record.
 /// * `type` (String) Record type.
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
-/// * `set_identifier` (String) Set identifier for the record.
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `setIdentifier` (String) Set identifier for the record.
 ///
 ///
 /// If the record also contains a set identifier, append it:
@@ -1163,7 +1313,7 @@ class Record extends pulumi.CustomResource {
   late final pulumi.Output<RecordCidrRoutingPolicy?> cidrRoutingPolicy;
   /// A block indicating the routing behavior when associated health check fails. Conflicts with any other routing policy. Documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> failoverRoutingPolicies;
-  /// [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) built using the zone domain and `name`.
+  /// [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) built using the zone domain and `name`. Does not include trailing `.`.
   late final pulumi.Output<String> fqdn;
   /// A block indicating a routing policy based on the geolocation of the requestor. Conflicts with any other routing policy. Documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> geolocationRoutingPolicies;
@@ -1179,7 +1329,7 @@ class Record extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// A string list of records. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the provider configuration string (e.g., `"first255characters\"\"morecharacters"`).
   late final pulumi.Output<List<String>?> records;
-  /// Unique identifier to differentiate records with routing policies from one another. Required if using `cidr_routing_policy`, `failover_routing_policy`, `geolocation_routing_policy`,`geoproximity_routing_policy`, `latency_routing_policy`, `multivalue_answer_routing_policy`, or `weighted_routing_policy`.
+  /// Unique identifier to differentiate records with routing policies from one another. Required if using `cidrRoutingPolicy`, `failoverRoutingPolicy`, `geolocationRoutingPolicy`,`geoproximityRoutingPolicy`, `latencyRoutingPolicy`, `multivalueAnswerRoutingPolicy`, or `weightedRoutingPolicy`.
   late final pulumi.Output<String?> setIdentifier;
   /// The TTL of the record.
   late final pulumi.Output<int?> ttl;

@@ -4,7 +4,7 @@ import 'container_policy_state.dart';
 
 /// Provides a MediaStore Container Policy.
 ///
-/// !&gt; **WARNING:** _This resource is deprecated and will be removed in a future version._ AWS has [announced](https://aws.amazon.com/blogs/media/support-for-aws-elemental-mediastore-ending-soon/) the discontinuation of AWS Elemental MediaStore, effective **November 13, 2025**. Users should begin transitioning to alternative solutions as soon as possible. For **simple live streaming workflows**, AWS recommends migrating to **Amazon S3**. For **advanced use cases** that require features such as packaging, DRM, or cross-region redundancy, consider using **AWS Elemental MediaPackage**.
+/// &gt; **WARNING:** _This resource is deprecated and will be removed in a future version._ AWS has [announced](https://aws.amazon.com/blogs/media/support-for-aws-elemental-mediastore-ending-soon/) the discontinuation of AWS Elemental MediaStore, effective **November 13, 2025**. Users should begin transitioning to alternative solutions as soon as possible. For **simple live streaming workflows**, AWS recommends migrating to **Amazon S3**. For **advanced use cases** that require features such as packaging, DRM, or cross-region redundancy, consider using **AWS Elemental MediaPackage**.
 ///
 /// &gt; **NOTE:** We suggest using `jsonencode()` or `aws.iam.getPolicyDocument` when assigning a value to `policy`. They seamlessly translate Terraform language into JSON, enabling you to maintain consistency within your configuration without the need for context switches. Also, you can sidestep potential complications arising from formatting discrepancies, whitespace inconsistencies, and other nuances inherent to JSON.
 ///
@@ -37,7 +37,7 @@ import 'container_policy_state.dart';
 /// });
 /// const exampleContainerPolicy = new aws.mediastore.ContainerPolicy("example", {
 ///     containerName: exampleContainer.name,
-///     policy: example.apply(example => example.json),
+///     policy: example.json,
 /// });
 /// ```
 /// ```python
@@ -197,15 +197,52 @@ import 'container_policy_state.dart';
 /// 		}, nil)
 /// 		_, err = mediastore.NewContainerPolicy(ctx, "example", &mediastore.ContainerPolicyArgs{
 /// 			ContainerName: exampleContainer.Name,
-/// 			Policy: pulumi.String(example.ApplyT(func(example iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &example.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Policy:        example.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// }
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     sid    = "MediaStoreFullAccess"
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["arn:aws:iam::${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:root"]
+///     }
+///     actions   = ["mediastore:*"]
+///     resources = ["arn:aws:mediastore:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:container/${aws_mediastore_container.example.name}/*"]
+///     conditions {
+///       test     = "Bool"
+///       variable = "aws:SecureTransport"
+///       values   = ["true"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_mediastore_container" "example" {
+///   name = "example"
+/// }
+/// resource "aws_mediastore_containerpolicy" "example" {
+///   container_name = aws_mediastore_container.example.name
+///   policy         = data.aws_iam_getpolicydocument.example.json
 /// }
 /// ```
 /// ```java
@@ -221,10 +258,13 @@ import 'container_policy_state.dart';
 /// import com.pulumi.aws.mediastore.ContainerArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.mediastore.ContainerPolicy;
 /// import com.pulumi.aws.mediastore.ContainerPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

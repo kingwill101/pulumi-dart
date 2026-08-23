@@ -18,7 +18,7 @@ class PipeTargetParametersEcsTaskParametersOverridesContainerOverride {
   final pulumi.Input<int>? memory;
   /// The soft limit (in MiB) of memory to reserve for the container, instead of the default value from the task definition. You must also specify a container name.
   final pulumi.Input<int>? memoryReservation;
-  /// Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   final pulumi.Input<String>? name;
   /// The type and amount of a resource to assign to a container, instead of the default value from the task definition. The only supported resource is a GPU. Detailed below.
   final pulumi.Input<List<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideResourceRequirement>>? resourceRequirements;
@@ -30,7 +30,7 @@ class PipeTargetParametersEcsTaskParametersOverridesContainerOverride {
   /// [environments] The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the task definition. You must also specify a container name. Detailed below.
   /// [memory] The hard limit (in MiB) of memory to present to the container, instead of the default value from the task definition. If your container attempts to exceed the memory specified here, the container is killed. You must also specify a container name.
   /// [memoryReservation] The soft limit (in MiB) of memory to reserve for the container, instead of the default value from the task definition. You must also specify a container name.
-  /// [name] Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// [name] Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   /// [resourceRequirements] The type and amount of a resource to assign to a container, instead of the default value from the task definition. The only supported resource is a GPU. Detailed below.
   const PipeTargetParametersEcsTaskParametersOverridesContainerOverride({
     this.commands,
@@ -69,4 +69,3 @@ class PipeTargetParametersEcsTaskParametersOverridesContainerOverride {
     );
   }
 }
-

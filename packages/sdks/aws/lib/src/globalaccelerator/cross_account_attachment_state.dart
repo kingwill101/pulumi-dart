@@ -19,9 +19,9 @@ class CrossAccountAttachmentState {
   final pulumi.Input<List<String>>? principals;
   /// List of resources to be associated with the accelerator.
   final pulumi.Input<List<CrossAccountAttachmentResource>>? resources;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [CrossAccountAttachmentState].
@@ -31,8 +31,8 @@ class CrossAccountAttachmentState {
   /// [name] Name of the Cross Account Attachment.
   /// [principals] List of AWS account IDs that are allowed to associate resources with the accelerator.
   /// [resources] List of resources to be associated with the accelerator.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const CrossAccountAttachmentState({
     this.arn,
     this.createdTime,
@@ -70,4 +70,3 @@ class CrossAccountAttachmentState {
     );
   }
 }
-

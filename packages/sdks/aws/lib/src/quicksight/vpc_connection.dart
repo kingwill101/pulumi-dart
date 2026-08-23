@@ -193,7 +193,7 @@ import 'vpc_connection_timeouts.dart';
 /// 				map[string]interface{}{
 /// 					"Effect": "Allow",
 /// 					"Action": "sts:AssumeRole",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "quicksight.amazonaws.com",
 /// 					},
 /// 				},
@@ -256,6 +256,46 @@ import 'vpc_connection_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_role" "vpc_connection_role" {
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Effect" = "Allow"
+///       "Action" = "sts:AssumeRole"
+///       "Principal" = {
+///         "Service" = "quicksight.amazonaws.com"
+///       }
+///     }]
+///   })
+///   inline_policies {
+///     name = "QuickSightVPCConnectionRolePolicy"
+///     policy = jsonencode({
+///       "Version" = "2012-10-17"
+///       "Statement" = [{
+///         "Effect"   = "Allow"
+///         "Action"   = ["ec2:CreateNetworkInterface", "ec2:ModifyNetworkInterfaceAttribute", "ec2:DeleteNetworkInterface", "ec2:DescribeSubnets", "ec2:DescribeSecurityGroups"]
+///         "Resource" = ["*"]
+///       }]
+///     })
+///   }
+/// }
+/// resource "aws_quicksight_vpcconnection" "example" {
+///   vpc_connection_id  = "example-connection-id"
+///   name               = "Example Connection"
+///   role_arn           = aws_iam_role.vpc_connection_role.arn
+///   security_group_ids = ["sg-00000000000000000"]
+///   subnet_ids         = ["subnet-00000000000000000", "subnet-00000000000000001"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -268,8 +308,8 @@ import 'vpc_connection_timeouts.dart';
 /// import com.pulumi.aws.quicksight.VpcConnection;
 /// import com.pulumi.aws.quicksight.VpcConnectionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -397,9 +437,9 @@ class VpcConnection extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<String>> subnetIds;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<VpcConnectionTimeouts?> timeouts;
   /// The ID of the VPC connection.

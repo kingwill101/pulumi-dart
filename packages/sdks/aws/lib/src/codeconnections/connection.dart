@@ -66,6 +66,20 @@ import 'connection_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codeconnections_connection" "example" {
+///   name          = "example-connection"
+///   provider_type = "Bitbucket"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +88,8 @@ import 'connection_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.codeconnections.Connection;
 /// import com.pulumi.aws.codeconnections.ConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -124,18 +138,18 @@ class Connection extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The codeconnections connection status. Possible values are `PENDING`, `AVAILABLE` and `ERROR`.
   late final pulumi.Output<String> connectionStatus;
-  /// The Amazon Resource Name (ARN) of the host associated with the connection. Conflicts with `provider_type`
+  /// The Amazon Resource Name (ARN) of the host associated with the connection. Conflicts with `providerType`
   late final pulumi.Output<String?> hostArn;
   /// The name of the connection to be created. The name must be unique in the calling AWS account. Changing `name` will create a new resource.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> ownerAccountId;
-  /// The name of the external provider where your third-party code repository is configured. Changing `provider_type` will create a new resource. Conflicts with `host_arn`.
+  /// The name of the external provider where your third-party code repository is configured. Changing `providerType` will create a new resource. Conflicts with `hostArn`.
   late final pulumi.Output<String> providerType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of key-value resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of key-value resource tags to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ConnectionTimeouts?> timeouts;
 

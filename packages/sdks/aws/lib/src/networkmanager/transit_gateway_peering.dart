@@ -80,6 +80,21 @@ import 'transit_gateway_peering_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_transitgatewaypeering" "example" {
+///   depends_on          = [exampleAwsEc2TransitGatewayPolicyTable, exampleAwsNetworkmanagerCoreNetworkPolicyAttachment]
+///   core_network_id     = exampleAwsccNetworkmanagerCoreNetwork.id
+///   transit_gateway_arn = exampleAwsEc2TransitGateway.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +104,8 @@ import 'transit_gateway_peering_state.dart';
 /// import com.pulumi.aws.networkmanager.TransitGatewayPeering;
 /// import com.pulumi.aws.networkmanager.TransitGatewayPeeringArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -150,9 +165,9 @@ class TransitGatewayPeering extends pulumi.CustomResource {
   late final pulumi.Output<String> peeringType;
   /// Resource ARN of the peer.
   late final pulumi.Output<String> resourceArn;
-  /// Key-value tags for the peering. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the peering. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ARN of the transit gateway for the peering request.
   ///

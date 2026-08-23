@@ -67,7 +67,7 @@ import 'vpc_block_public_access_exclusion_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcBlockPublicAccessExclusion(ctx, "test", &ec2.VpcBlockPublicAccessExclusionArgs{
-/// 			VpcId:                        test.ID(),
+/// 			VpcId:                        test.ID().ToIDOutput().ToStringOutput(),
 /// 			InternetGatewayExclusionMode: pulumi.String("allow-bidirectional"),
 /// 		})
 /// 		if err != nil {
@@ -75,6 +75,23 @@ import 'vpc_block_public_access_exclusion_timeouts.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "test" {
+///   cidr_block = "10.1.0.0/16"
+/// }
+/// resource "aws_ec2_vpcblockpublicaccessexclusion" "test" {
+///   vpc_id                          = aws_ec2_vpc.test.id
+///   internet_gateway_exclusion_mode = "allow-bidirectional"
 /// }
 /// ```
 /// ```java
@@ -87,8 +104,8 @@ import 'vpc_block_public_access_exclusion_timeouts.dart';
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.ec2.VpcBlockPublicAccessExclusion;
 /// import com.pulumi.aws.ec2.VpcBlockPublicAccessExclusionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -201,13 +218,13 @@ import 'vpc_block_public_access_exclusion_timeouts.dart';
 /// 		}
 /// 		testSubnet, err := ec2.NewSubnet(ctx, "test", &ec2.SubnetArgs{
 /// 			CidrBlock: pulumi.String("10.1.1.0/24"),
-/// 			VpcId:     test.ID(),
+/// 			VpcId:     test.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcBlockPublicAccessExclusion(ctx, "test", &ec2.VpcBlockPublicAccessExclusionArgs{
-/// 			SubnetId:                     testSubnet.ID(),
+/// 			SubnetId:                     testSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			InternetGatewayExclusionMode: pulumi.String("allow-egress"),
 /// 		})
 /// 		if err != nil {
@@ -215,6 +232,27 @@ import 'vpc_block_public_access_exclusion_timeouts.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "test" {
+///   cidr_block = "10.1.0.0/16"
+/// }
+/// resource "aws_ec2_subnet" "test" {
+///   cidr_block = "10.1.1.0/24"
+///   vpc_id     = aws_ec2_vpc.test.id
+/// }
+/// resource "aws_ec2_vpcblockpublicaccessexclusion" "test" {
+///   subnet_id                       = aws_ec2_subnet.test.id
+///   internet_gateway_exclusion_mode = "allow-egress"
 /// }
 /// ```
 /// ```java
@@ -229,8 +267,8 @@ import 'vpc_block_public_access_exclusion_timeouts.dart';
 /// import com.pulumi.aws.ec2.SubnetArgs;
 /// import com.pulumi.aws.ec2.VpcBlockPublicAccessExclusion;
 /// import com.pulumi.aws.ec2.VpcBlockPublicAccessExclusionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -296,14 +334,14 @@ class VpcBlockPublicAccessExclusion extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The Amazon Resource Name (ARN) the excluded resource.
   late final pulumi.Output<String> resourceArn;
-  /// Id of the subnet to which this exclusion applies. Either this or the vpc_id needs to be provided.
+  /// Id of the subnet to which this exclusion applies. Either this or the vpcId needs to be provided.
   late final pulumi.Output<String?> subnetId;
-  /// A map of tags to assign to the exclusion. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the exclusion. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<VpcBlockPublicAccessExclusionTimeouts?> timeouts;
-  /// Id of the VPC to which this exclusion applies. Either this or the subnet_id needs to be provided.
+  /// Id of the VPC to which this exclusion applies. Either this or the subnetId needs to be provided.
   late final pulumi.Output<String?> vpcId;
 
   /// Creates a new [VpcBlockPublicAccessExclusion].

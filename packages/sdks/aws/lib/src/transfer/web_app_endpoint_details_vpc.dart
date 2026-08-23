@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAppEndpointDetailsVpc {
   /// List of security group IDs that control access to the web app endpoint. If not specified, the VPC's default security group is used.
   final pulumi.Input<List<String>>? securityGroupIds;
-  /// List of subnet IDs within the VPC where the web app endpoint will be deployed. These subnets must be in the same VPC specified in the `vpc_id` parameter.
+  /// List of subnet IDs within the VPC where the web app endpoint will be deployed. These subnets must be in the same VPC specified in the `vpcId` parameter.
   final pulumi.Input<List<String>> subnetIds;
   /// ID of the VPC endpoint created for the web app.
   final pulumi.Input<String>? vpcEndpointId;
@@ -14,7 +14,7 @@ class WebAppEndpointDetailsVpc {
 
   /// Creates a new [WebAppEndpointDetailsVpc].
   /// [securityGroupIds] List of security group IDs that control access to the web app endpoint. If not specified, the VPC's default security group is used.
-  /// [subnetIds] List of subnet IDs within the VPC where the web app endpoint will be deployed. These subnets must be in the same VPC specified in the `vpc_id` parameter.
+  /// [subnetIds] List of subnet IDs within the VPC where the web app endpoint will be deployed. These subnets must be in the same VPC specified in the `vpcId` parameter.
   /// [vpcEndpointId] ID of the VPC endpoint created for the web app.
   /// [vpcId] ID of the VPC where the web app endpoint will be hosted. The VPC must be dual-stack, meaning it supports both IPv4 and IPv6 addressing.
   const WebAppEndpointDetailsVpc({
@@ -42,4 +42,3 @@ class WebAppEndpointDetailsVpc {
     );
   }
 }
-

@@ -57,6 +57,19 @@ import 'group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedaccess_group" "example" {
+///   verifiedaccess_instance_id = exampleAwsVerifiedaccessInstance.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +78,8 @@ import 'group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.verifiedaccess.Group;
 /// import com.pulumi.aws.verifiedaccess.GroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -174,6 +187,25 @@ import 'group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "test_key" {
+///   description = "KMS key for Verified Access Group test"
+/// }
+/// resource "aws_verifiedaccess_group" "test" {
+///   verifiedaccess_instance_id = testAwsVerifiedaccessInstanceTrustProviderAttachment.verifiedaccessInstanceId
+///   sse_configuration = {
+///     kms_key_arn = aws_kms_key.test_key.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -185,8 +217,8 @@ import 'group_state.dart';
 /// import com.pulumi.aws.verifiedaccess.Group;
 /// import com.pulumi.aws.verifiedaccess.GroupArgs;
 /// import com.pulumi.aws.verifiedaccess.inputs.GroupSseConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -243,7 +275,7 @@ class Group extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Configuration block to use KMS keys for server-side encryption.
   late final pulumi.Output<GroupSseConfiguration> sseConfiguration;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ARN of this verified acess group.

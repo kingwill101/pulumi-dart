@@ -78,6 +78,24 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Create a new certificate
+/// resource "aws_dms_certificate" "test" {
+///   certificate_id  = "test-dms-certificate-tf"
+///   certificate_pem = "..."
+///   tags = {
+///     "Name" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +104,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.dms.Certificate;
 /// import com.pulumi.aws.dms.CertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -124,7 +142,7 @@ import 'certificate_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import certificates using the `certificate_id`. For example:
+/// Using `pulumi import`, import certificates using the `certificateId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:dms/certificate:Certificate test test-dms-certificate-tf
@@ -134,15 +152,15 @@ class Certificate extends pulumi.CustomResource {
   late final pulumi.Output<String> certificateArn;
   /// The certificate identifier.
   late final pulumi.Output<String> certificateId;
-  /// The contents of the .pem X.509 certificate file for the certificate. Either `certificate_pem` or `certificate_wallet` must be set.
+  /// The contents of the .pem X.509 certificate file for the certificate. Either `certificatePem` or `certificateWallet` must be set.
   late final pulumi.Output<String?> certificatePem;
-  /// The contents of the Oracle Wallet certificate for use with SSL, provided as a base64-encoded String. Either `certificate_pem` or `certificate_wallet` must be set.
+  /// The contents of the Oracle Wallet certificate for use with SSL, provided as a base64-encoded String. Either `certificatePem` or `certificateWallet` must be set.
   late final pulumi.Output<String?> certificateWallet;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Certificate].

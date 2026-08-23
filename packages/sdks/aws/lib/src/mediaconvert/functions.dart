@@ -56,6 +56,19 @@ import 'get_queue_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_mediaconvert_getqueue" "example" {
+///   id = "tf-example-queue"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'get_queue_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.mediaconvert.MediaconvertFunctions;
 /// import com.pulumi.aws.mediaconvert.inputs.GetQueueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

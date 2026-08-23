@@ -6,30 +6,29 @@ import 'bucket_replication_configuration_rule_destination_metrics.dart';
 import 'bucket_replication_configuration_rule_destination_replication_time.dart';
 
 class BucketReplicationConfigurationRuleDestination {
-  /// Specifies the overrides to use for object owners on replication (documented below). Must be used in conjunction with `account_id` owner override configuration.
+  /// Overrides to use for object owners on replication. See `accessControlTranslation` Block below for details. Must be used in conjunction with `accountId` owner override configuration.
   final pulumi.Input<BucketReplicationConfigurationRuleDestinationAccessControlTranslation>? accessControlTranslation;
-  /// Account ID to use for overriding the object owner on replication. Must be used in conjunction with `access_control_translation` override configuration.
+  /// Account ID to use for overriding the object owner on replication. Must be used in conjunction with `accessControlTranslation` override configuration.
   final pulumi.Input<String>? accountId;
   /// ARN of the S3 bucket where you want Amazon S3 to store replicas of the object identified by the rule.
   final pulumi.Input<String> bucket;
-  /// Enables replication metrics (required for S3 RTC) (documented below).
+  /// Enables replication metrics (required for S3 RTC). See `metrics` Block below for details.
   final pulumi.Input<BucketReplicationConfigurationRuleDestinationMetrics>? metrics;
-  /// Destination KMS encryption key ARN for SSE-KMS replication. Must be used in conjunction with
-  /// `sse_kms_encrypted_objects` source selection criteria.
+  /// Destination KMS encryption key ARN for SSE-KMS replication. Must be used in conjunction with `sseKmsEncryptedObjects` source selection criteria.
   final pulumi.Input<String>? replicaKmsKeyId;
-  /// Enables S3 Replication Time Control (S3 RTC) (documented below).
+  /// Enables S3 Replication Time Control (S3 RTC). See `replicationTime` Block below for details.
   final pulumi.Input<BucketReplicationConfigurationRuleDestinationReplicationTime>? replicationTime;
-  /// The [storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Destination.html#AmazonS3-Type-Destination-StorageClass) used to store the object. By default, Amazon S3 uses the storage class of the source object to create the object replica.
+  /// [Storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Destination.html#AmazonS3-Type-Destination-StorageClass) used to store the object. By default, Amazon S3 uses the storage class of the source object to create the object replica.
   final pulumi.Input<String>? storageClass;
 
   /// Creates a new [BucketReplicationConfigurationRuleDestination].
-  /// [accessControlTranslation] Specifies the overrides to use for object owners on replication (documented below). Must be used in conjunction with `account_id` owner override configuration.
-  /// [accountId] Account ID to use for overriding the object owner on replication. Must be used in conjunction with `access_control_translation` override configuration.
+  /// [accessControlTranslation] Overrides to use for object owners on replication. See `accessControlTranslation` Block below for details. Must be used in conjunction with `accountId` owner override configuration.
+  /// [accountId] Account ID to use for overriding the object owner on replication. Must be used in conjunction with `accessControlTranslation` override configuration.
   /// [bucket] ARN of the S3 bucket where you want Amazon S3 to store replicas of the object identified by the rule.
-  /// [metrics] Enables replication metrics (required for S3 RTC) (documented below).
-  /// [replicaKmsKeyId] Destination KMS encryption key ARN for SSE-KMS replication. Must be used in conjunction with
-  /// [replicationTime] Enables S3 Replication Time Control (S3 RTC) (documented below).
-  /// [storageClass] The [storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Destination.html#AmazonS3-Type-Destination-StorageClass) used to store the object. By default, Amazon S3 uses the storage class of the source object to create the object replica.
+  /// [metrics] Enables replication metrics (required for S3 RTC). See `metrics` Block below for details.
+  /// [replicaKmsKeyId] Destination KMS encryption key ARN for SSE-KMS replication. Must be used in conjunction with `sseKmsEncryptedObjects` source selection criteria.
+  /// [replicationTime] Enables S3 Replication Time Control (S3 RTC). See `replicationTime` Block below for details.
+  /// [storageClass] [Storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Destination.html#AmazonS3-Type-Destination-StorageClass) used to store the object. By default, Amazon S3 uses the storage class of the source object to create the object replica.
   const BucketReplicationConfigurationRuleDestination({
     this.accessControlTranslation,
     this.accountId,
@@ -64,4 +63,3 @@ class BucketReplicationConfigurationRuleDestination {
     );
   }
 }
-

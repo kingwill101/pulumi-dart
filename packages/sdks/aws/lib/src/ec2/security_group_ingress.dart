@@ -13,11 +13,11 @@ class SecurityGroupIngress {
   final pulumi.Input<List<String>>? ipv6CidrBlocks;
   /// List of Prefix List IDs.
   final pulumi.Input<List<String>>? prefixListIds;
-  /// Protocol. If you select a protocol of `-1` (semantically equivalent to `all`, which is not a valid value here), you must specify a `from_port` and `to_port` equal to 0. The supported values are defined in the `IpProtocol` argument on the [IpPermission](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpPermission.html) API reference.
+  /// Protocol. If you select a protocol of `-1` (semantically equivalent to `all`, which is not a valid value here), you must specify a `fromPort` and `toPort` equal to 0. The supported values are defined in the `IpProtocol` argument on the [IpPermission](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpPermission.html) API reference.
   ///
   /// The following arguments are optional:
   ///
-  /// &gt; **Note** Although `cidr_blocks`, `ipv6_cidr_blocks`, `prefix_list_ids`, and `security_groups` are all marked as optional, you _must_ provide one of them in order to configure the source of the traffic.
+  /// &gt; **Note** Although `cidrBlocks`, `ipv6CidrBlocks`, `prefixListIds`, and `securityGroups` are all marked as optional, you _must_ provide one of them in order to configure the source of the traffic.
   final pulumi.Input<String> protocol;
   /// List of security groups. A group name can be used relative to the default VPC. Otherwise, group ID.
   final pulumi.Input<List<String>>? securityGroups;
@@ -32,7 +32,7 @@ class SecurityGroupIngress {
   /// [fromPort] Start port (or ICMP type number if protocol is `icmp` or `icmpv6`).
   /// [ipv6CidrBlocks] List of IPv6 CIDR blocks.
   /// [prefixListIds] List of Prefix List IDs.
-  /// [protocol] Protocol. If you select a protocol of `-1` (semantically equivalent to `all`, which is not a valid value here), you must specify a `from_port` and `to_port` equal to 0. The supported values are defined in the `IpProtocol` argument on the [IpPermission](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpPermission.html) API reference.
+  /// [protocol] Protocol. If you select a protocol of `-1` (semantically equivalent to `all`, which is not a valid value here), you must specify a `fromPort` and `toPort` equal to 0. The supported values are defined in the `IpProtocol` argument on the [IpPermission](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpPermission.html) API reference.
   /// [securityGroups] List of security groups. A group name can be used relative to the default VPC. Otherwise, group ID.
   /// [self] Whether the security group itself will be added as a source to this ingress rule.
   /// [toPort] End range port (or ICMP code if protocol is `icmp`).
@@ -76,4 +76,3 @@ class SecurityGroupIngress {
     );
   }
 }
-

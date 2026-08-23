@@ -10,7 +10,7 @@ import 'managed_prefix_list_state.dart';
 /// cannot use a Managed Prefix List with in-line rules in conjunction with any Managed
 /// Prefix List Entry resources. Doing so will cause a conflict of entries and will overwrite entries.
 ///
-/// &gt; **NOTE on `max_entries`:** When you reference a Prefix List in a resource,
+/// &gt; **NOTE on `maxEntries`:** When you reference a Prefix List in a resource,
 /// the maximum number of entries for the prefix lists counts as the same number of rules
 /// or entries for the resource. For example, if you create a prefix list with a maximum
 /// of 20 entries and you reference that prefix list in a security group rule, this counts
@@ -135,6 +135,32 @@ import 'managed_prefix_list_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_managedprefixlist" "example" {
+///   name           = "All VPC CIDR-s"
+///   address_family = "IPv4"
+///   max_entries    = 5
+///   entries {
+///     cidr        = exampleAwsVpc.cidrBlock
+///     description = "Primary"
+///   }
+///   entries {
+///     cidr        = exampleAwsVpcIpv4CidrBlockAssociation.cidrBlock
+///     description = "Secondary"
+///   }
+///   tags = {
+///     "Env" = "live"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -144,8 +170,8 @@ import 'managed_prefix_list_state.dart';
 /// import com.pulumi.aws.ec2.ManagedPrefixList;
 /// import com.pulumi.aws.ec2.ManagedPrefixListArgs;
 /// import com.pulumi.aws.ec2.inputs.ManagedPrefixListEntryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -216,9 +242,9 @@ class ManagedPrefixList extends pulumi.CustomResource {
   late final pulumi.Output<String> ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Latest version of this prefix list.
   late final pulumi.Output<int> version;

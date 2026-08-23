@@ -58,6 +58,19 @@ import 'get_orderable_db_instance_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_docdb_getengineversion" "test" {
+///   version = "3.6.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +79,8 @@ import 'get_orderable_db_instance_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.docdb.DocdbFunctions;
 /// import com.pulumi.aws.docdb.inputs.GetEngineVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -192,6 +205,22 @@ Future<GetEngineVersionResult> getEngineVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_docdb_getorderabledbinstance" "test" {
+///   engine                     = "docdb"
+///   engine_version             = "3.6.0"
+///   license_model              = "na"
+///   preferred_instance_classes = ["db.r5.large", "db.r4.large", "db.t3.medium"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +229,8 @@ Future<GetEngineVersionResult> getEngineVersion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.docdb.DocdbFunctions;
 /// import com.pulumi.aws.docdb.inputs.GetOrderableDbInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -73,6 +73,22 @@ import 'subscriber_notification_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securitylake_subscribernotification" "example" {
+///   subscriber_id = exampleAwsSecuritylakeSubscriber.id
+///   configuration = {
+///     sqs_notification_configuration = {}
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +99,8 @@ import 'subscriber_notification_state.dart';
 /// import com.pulumi.aws.securitylake.SubscriberNotificationArgs;
 /// import com.pulumi.aws.securitylake.inputs.SubscriberNotificationConfigurationArgs;
 /// import com.pulumi.aws.securitylake.inputs.SubscriberNotificationConfigurationSqsNotificationConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -197,6 +213,25 @@ import 'subscriber_notification_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securitylake_subscribernotification" "example" {
+///   subscriber_id = exampleAwsSecuritylakeSubscriber.id
+///   configuration = {
+///     https_notification_configuration = {
+///       endpoint        = test.apiEndpoint
+///       target_role_arn = eventBridge.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -207,8 +242,8 @@ import 'subscriber_notification_state.dart';
 /// import com.pulumi.aws.securitylake.SubscriberNotificationArgs;
 /// import com.pulumi.aws.securitylake.inputs.SubscriberNotificationConfigurationArgs;
 /// import com.pulumi.aws.securitylake.inputs.SubscriberNotificationConfigurationHttpsNotificationConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

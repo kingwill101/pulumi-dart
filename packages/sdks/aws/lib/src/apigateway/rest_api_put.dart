@@ -161,26 +161,26 @@ import 'rest_api_put_timeouts.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
 /// 			"swagger": "2.0",
-/// 			"info": map[string]interface{}{
+/// 			"info": map[string]string{
 /// 				"title":   "Example API",
 /// 				"version": "v1",
 /// 			},
 /// 			"schemes": []string{
 /// 				"https",
 /// 			},
-/// 			"paths": map[string]interface{}{
-/// 				"/example": map[string]interface{}{
+/// 			"paths": map[string]map[string]map[string]interface{}{
+/// 				"/example": map[string]map[string]interface{}{
 /// 					"get": map[string]interface{}{
-/// 						"responses": map[string]interface{}{
-/// 							"200": map[string]interface{}{
+/// 						"responses": map[string]map[string]string{
+/// 							"200": map[string]string{
 /// 								"description": "OK",
 /// 							},
 /// 						},
 /// 						"x-amazon-apigateway-integration": map[string]interface{}{
 /// 							"httpMethod": "GET",
 /// 							"type":       "HTTP",
-/// 							"responses": map[string]interface{}{
-/// 								"default": map[string]interface{}{
+/// 							"responses": map[string]map[string]int{
+/// 								"default": map[string]int{
 /// 									"statusCode": 200,
 /// 								},
 /// 							},
@@ -206,6 +206,49 @@ import 'rest_api_put_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_restapiput" "example" {
+///   body = jsonencode({
+///     "swagger" = "2.0"
+///     "info" = {
+///       "title"   = "Example API"
+///       "version" = "v1"
+///     }
+///     "schemes" = ["https"]
+///     "paths" = {
+///       "/example" = {
+///         "get" = {
+///           "responses" = {
+///             "200" = {
+///               "description" = "OK"
+///             }
+///           }
+///           "x-amazon-apigateway-integration" = {
+///             "httpMethod" = "GET"
+///             "type"       = "HTTP"
+///             "responses" = {
+///               "default" = {
+///                 "statusCode" = 200
+///               }
+///             }
+///             "uri" = "https://api.example.com/"
+///           }
+///         }
+///       }
+///     }
+///   })
+///   fail_on_warnings = true
+///   rest_api_id      = exampleAwsApiGatewayRestApi.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -215,8 +258,8 @@ import 'rest_api_put_timeouts.dart';
 /// import com.pulumi.aws.apigateway.RestApiPut;
 /// import com.pulumi.aws.apigateway.RestApiPutArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -299,7 +342,7 @@ import 'rest_api_put_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import API Gateway REST API Put using the `rest_api_id`. For example:
+/// Using `pulumi import`, import API Gateway REST API Put using the `restApiId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:apigateway/restApiPut:RestApiPut example import-id-12345678

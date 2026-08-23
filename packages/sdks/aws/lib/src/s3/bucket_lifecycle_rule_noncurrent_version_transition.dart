@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketLifecycleRuleNoncurrentVersionTransition {
-  /// Specifies the number of days noncurrent object versions transition.
+  /// Number of days noncurrent object versions transition.
   final pulumi.Input<int>? days;
-  /// Specifies the Amazon S3 [storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Transition.html#AmazonS3-Type-Transition-StorageClass) to which you want the object to transition.
+  /// Amazon S3 [storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Transition.html#AmazonS3-Type-Transition-StorageClass) to which you want the object to transition.
   final pulumi.Input<String> storageClass;
 
   /// Creates a new [BucketLifecycleRuleNoncurrentVersionTransition].
-  /// [days] Specifies the number of days noncurrent object versions transition.
-  /// [storageClass] Specifies the Amazon S3 [storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Transition.html#AmazonS3-Type-Transition-StorageClass) to which you want the object to transition.
+  /// [days] Number of days noncurrent object versions transition.
+  /// [storageClass] Amazon S3 [storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Transition.html#AmazonS3-Type-Transition-StorageClass) to which you want the object to transition.
   const BucketLifecycleRuleNoncurrentVersionTransition({
     this.days,
     required this.storageClass,
@@ -30,4 +30,3 @@ class BucketLifecycleRuleNoncurrentVersionTransition {
     );
   }
 }
-

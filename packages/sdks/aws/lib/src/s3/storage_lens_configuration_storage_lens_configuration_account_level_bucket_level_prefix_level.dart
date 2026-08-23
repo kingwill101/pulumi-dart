@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'storage_lens_configuration_storage_lens_configuration_account_level_bucket_level_prefix_level_storage_metrics.dart';
 
 class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel {
-  /// Prefix-level storage metrics for S3 Storage Lens. See Prefix Level Storage Metrics below for more details.
+  /// Prefix-level storage metrics for S3 Storage Lens. See `storageMetrics` below for more details.
   final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics> storageMetrics;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel].
-  /// [storageMetrics] Prefix-level storage metrics for S3 Storage Lens. See Prefix Level Storage Metrics below for more details.
+  /// [storageMetrics] Prefix-level storage metrics for S3 Storage Lens. See `storageMetrics` below for more details.
   const StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel({
     required this.storageMetrics,
   });
@@ -25,4 +25,3 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPre
     );
   }
 }
-

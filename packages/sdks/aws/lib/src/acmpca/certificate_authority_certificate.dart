@@ -167,6 +167,44 @@ import 'certificate_authority_certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getpartition" "current" {
+/// }
+///
+/// resource "aws_acmpca_certificateauthoritycertificate" "example" {
+///   certificate_authority_arn = aws_acmpca_certificateauthority.example.arn
+///   certificate               = aws_acmpca_certificate.example.certificate
+///   certificate_chain         = aws_acmpca_certificate.example.certificate_chain
+/// }
+/// resource "aws_acmpca_certificate" "example" {
+///   certificate_authority_arn   = aws_acmpca_certificateauthority.example.arn
+///   certificate_signing_request = aws_acmpca_certificateauthority.example.certificate_signing_request
+///   signing_algorithm           = "SHA512WITHRSA"
+///   template_arn                ="arn:${data.aws_getpartition.current.partition}:acm-pca:::template/RootCACertificate/V1"
+///   validity = {
+///     type  = "YEARS"
+///     value = 1
+///   }
+/// }
+/// resource "aws_acmpca_certificateauthority" "example" {
+///   type = "ROOT"
+///   certificate_authority_configuration = {
+///     key_algorithm     = "RSA_4096"
+///     signing_algorithm = "SHA512WITHRSA"
+///     subject = {
+///       common_name = "example.com"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -184,8 +222,8 @@ import 'certificate_authority_certificate_state.dart';
 /// import com.pulumi.aws.acmpca.inputs.CertificateValidityArgs;
 /// import com.pulumi.aws.acmpca.CertificateAuthorityCertificate;
 /// import com.pulumi.aws.acmpca.CertificateAuthorityCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -455,6 +493,50 @@ import 'certificate_authority_certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getpartition" "current" {
+/// }
+///
+/// resource "aws_acmpca_certificateauthoritycertificate" "subordinate" {
+///   certificate_authority_arn = aws_acmpca_certificateauthority.subordinate.arn
+///   certificate               = aws_acmpca_certificate.subordinate.certificate
+///   certificate_chain         = aws_acmpca_certificate.subordinate.certificate_chain
+/// }
+/// resource "aws_acmpca_certificate" "subordinate" {
+///   certificate_authority_arn   = aws_acmpca_certificateauthority.root.arn
+///   certificate_signing_request = aws_acmpca_certificateauthority.subordinate.certificate_signing_request
+///   signing_algorithm           = "SHA512WITHRSA"
+///   template_arn                ="arn:${data.aws_getpartition.current.partition}:acm-pca:::template/SubordinateCACertificate_PathLen0/V1"
+///   validity = {
+///     type  = "YEARS"
+///     value = 1
+///   }
+/// }
+/// resource "aws_acmpca_certificateauthority" "subordinate" {
+///   type = "SUBORDINATE"
+///   certificate_authority_configuration = {
+///     key_algorithm     = "RSA_2048"
+///     signing_algorithm = "SHA512WITHRSA"
+///     subject = {
+///       common_name = "sub.example.com"
+///     }
+///   }
+/// }
+/// resource "aws_acmpca_certificateauthority" "root" {
+/// }
+/// resource "aws_acmpca_certificateauthoritycertificate" "root" {
+/// }
+/// resource "aws_acmpca_certificate" "root" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -472,8 +554,8 @@ import 'certificate_authority_certificate_state.dart';
 /// import com.pulumi.aws.acmpca.inputs.CertificateValidityArgs;
 /// import com.pulumi.aws.acmpca.CertificateAuthorityCertificate;
 /// import com.pulumi.aws.acmpca.CertificateAuthorityCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

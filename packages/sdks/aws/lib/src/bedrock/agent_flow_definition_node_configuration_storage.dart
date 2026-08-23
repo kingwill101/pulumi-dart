@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_flow_definition_node_configuration_storage_service_configuration.dart';
 
 class AgentFlowDefinitionNodeConfigurationStorage {
+  /// Contains configurations for a Storage node in your flow. Stores an input in an Amazon S3 location. See Storage Service Configuration for more information.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration>? serviceConfiguration;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationStorage].
-  /// [serviceConfiguration] Optional.
+  /// [serviceConfiguration] Contains configurations for a Storage node in your flow. Stores an input in an Amazon S3 location. See Storage Service Configuration for more information.
   const AgentFlowDefinitionNodeConfigurationStorage({
     this.serviceConfiguration,
   });
@@ -24,4 +25,3 @@ class AgentFlowDefinitionNodeConfigurationStorage {
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'eip_association_state.dart';
 
 /// Provides an AWS EIP Association as a top level resource, to associate and disassociate Elastic IPs from AWS Instances and Network Interfaces.
 ///
-/// &gt; **NOTE:** Do not use this resource to associate an EIP to `aws.lb.LoadBalancer` or `aws.ec2.NatGateway` resources. Instead use the `allocation_id` available in those resources to allow AWS to manage the association, otherwise you will see `AuthFailure` errors.
+/// &gt; **NOTE:** Do not use this resource to associate an EIP to `aws.lb.LoadBalancer` or `aws.ec2.NatGateway` resources. Instead use the `allocationId` available in those resources to allow AWS to manage the association, otherwise you will see `AuthFailure` errors.
 ///
 /// &gt; **NOTE:** `aws.ec2.EipAssociation` is useful in scenarios where EIPs are either pre-existing or distributed to customers or users and therefore cannot be changed.
 ///
@@ -105,14 +105,39 @@ import 'eip_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewEipAssociation(ctx, "eip_assoc", &ec2.EipAssociationArgs{
-/// 			InstanceId:   web.ID(),
-/// 			AllocationId: example.ID(),
+/// 			InstanceId:   web.ID().ToIDOutput().ToStringOutput(),
+/// 			AllocationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_eipassociation" "eip_assoc" {
+///   instance_id   = aws_ec2_instance.web.id
+///   allocation_id = aws_ec2_eip.example.id
+/// }
+/// resource "aws_ec2_instance" "web" {
+///   ami               = "ami-21f78e11"
+///   availability_zone = "us-west-2a"
+///   instance_type     = "t2.micro"
+///   tags = {
+///     "Name" = "HelloWorld"
+///   }
+/// }
+/// resource "aws_ec2_eip" "example" {
+///   domain = "vpc"
 /// }
 /// ```
 /// ```java
@@ -127,8 +152,8 @@ import 'eip_association_state.dart';
 /// import com.pulumi.aws.ec2.EipArgs;
 /// import com.pulumi.aws.ec2.EipAssociation;
 /// import com.pulumi.aws.ec2.EipAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

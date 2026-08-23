@@ -13,7 +13,7 @@ class GetAppregistryApplicationResult {
   /// Name of the application.
   final String name;
   final String region;
-  /// A map of tags assigned to the Application. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags assigned to the Application. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Map<String, String> tags;
 
   /// Creates a new [GetAppregistryApplicationResult].
@@ -23,7 +23,7 @@ class GetAppregistryApplicationResult {
   /// [id] Required.
   /// [name] Name of the application.
   /// [region] Required.
-  /// [tags] A map of tags assigned to the Application. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags assigned to the Application. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const GetAppregistryApplicationResult({
     required this.applicationTag,
     required this.arn,
@@ -58,4 +58,3 @@ class GetAppregistryApplicationResult {
     );
   }
 }
-

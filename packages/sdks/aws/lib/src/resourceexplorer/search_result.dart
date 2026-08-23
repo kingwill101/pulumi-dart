@@ -11,7 +11,7 @@ class SearchResult {
   final String queryString;
   /// Amazon Web Services Region in which the resource was created and exists.
   final String region;
-  /// Number of resources that match the query. See `resource_count` below.
+  /// Number of resources that match the query. See `resourceCount` below.
   final List<SearchResourceCount> resourceCounts;
   /// List of structures that describe the resources that match the query. See `resources` below.
   final List<SearchResource> resources;
@@ -21,7 +21,7 @@ class SearchResult {
   /// [id] Query String.
   /// [queryString] Required.
   /// [region] Amazon Web Services Region in which the resource was created and exists.
-  /// [resourceCounts] Number of resources that match the query. See `resource_count` below.
+  /// [resourceCounts] Number of resources that match the query. See `resourceCount` below.
   /// [resources] List of structures that describe the resources that match the query. See `resources` below.
   /// [viewArn] Required.
   const SearchResult({
@@ -55,4 +55,3 @@ class SearchResult {
     );
   }
 }
-

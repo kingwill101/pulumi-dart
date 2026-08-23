@@ -11,11 +11,11 @@ class CatalogDatabaseState {
   final pulumi.Input<String>? arn;
   /// ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID.
   final pulumi.Input<String>? catalogId;
-  /// Creates a set of default permissions on the table for principals. See `create_table_default_permission` below.
+  /// Creates a set of default permissions on the table for principals. See `createTableDefaultPermission` below.
   final pulumi.Input<List<CatalogDatabaseCreateTableDefaultPermission>>? createTableDefaultPermissions;
   /// Description of the database.
   final pulumi.Input<String>? description;
-  /// Configuration block that references an entity outside the AWS Glue Data Catalog. See `federated_database` below.
+  /// Configuration block that references an entity outside the AWS Glue Data Catalog. See `federatedDatabase` below.
   final pulumi.Input<CatalogDatabaseFederatedDatabase>? federatedDatabase;
   /// Location of the database (for example, an HDFS path).
   final pulumi.Input<String>? locationUri;
@@ -25,26 +25,26 @@ class CatalogDatabaseState {
   final pulumi.Input<Map<String, String>>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// Configuration block for a target database for resource linking. See `target_database` below.
+  /// Configuration block for a target database for resource linking. See `targetDatabase` below.
   final pulumi.Input<CatalogDatabaseTargetDatabase>? targetDatabase;
 
   /// Creates a new [CatalogDatabaseState].
   /// [arn] ARN of the Glue Catalog Database.
   /// [catalogId] ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID.
-  /// [createTableDefaultPermissions] Creates a set of default permissions on the table for principals. See `create_table_default_permission` below.
+  /// [createTableDefaultPermissions] Creates a set of default permissions on the table for principals. See `createTableDefaultPermission` below.
   /// [description] Description of the database.
-  /// [federatedDatabase] Configuration block that references an entity outside the AWS Glue Data Catalog. See `federated_database` below.
+  /// [federatedDatabase] Configuration block that references an entity outside the AWS Glue Data Catalog. See `federatedDatabase` below.
   /// [locationUri] Location of the database (for example, an HDFS path).
   /// [name] Name of the database. The acceptable characters are lowercase letters, numbers, and the underscore character.
   /// [parameters] List of key-value pairs that define parameters and properties of the database.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  /// [targetDatabase] Configuration block for a target database for resource linking. See `target_database` below.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [targetDatabase] Configuration block for a target database for resource linking. See `targetDatabase` below.
   const CatalogDatabaseState({
     this.arn,
     this.catalogId,
@@ -94,4 +94,3 @@ class CatalogDatabaseState {
     );
   }
 }
-

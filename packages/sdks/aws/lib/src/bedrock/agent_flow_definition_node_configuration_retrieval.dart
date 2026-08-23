@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_flow_definition_node_configuration_retrieval_service_configuration.dart';
 
 class AgentFlowDefinitionNodeConfigurationRetrieval {
+  /// Contains configurations for the service to use for retrieving data to return as the output from the node. See Retrieval Service Configuration for more information.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationRetrievalServiceConfiguration>? serviceConfiguration;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationRetrieval].
-  /// [serviceConfiguration] Optional.
+  /// [serviceConfiguration] Contains configurations for the service to use for retrieving data to return as the output from the node. See Retrieval Service Configuration for more information.
   const AgentFlowDefinitionNodeConfigurationRetrieval({
     this.serviceConfiguration,
   });
@@ -24,4 +25,3 @@ class AgentFlowDefinitionNodeConfigurationRetrieval {
     );
   }
 }
-

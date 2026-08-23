@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleOverrideAction {
-  /// Override the rule action setting to count (i.e., only count matches). Configured as an empty block `{}`.
+  /// Override the rule action with count.
   final pulumi.Input<Map<String, dynamic>>? count;
-  /// Don't override the rule action setting. Configured as an empty block `{}`.
+  /// Don't override the rule action.
   final pulumi.Input<Map<String, dynamic>>? none;
 
   /// Creates a new [WebAclRuleOverrideAction].
-  /// [count] Override the rule action setting to count (i.e., only count matches). Configured as an empty block `{}`.
-  /// [none] Don't override the rule action setting. Configured as an empty block `{}`.
+  /// [count] Override the rule action with count.
+  /// [none] Don't override the rule action.
   const WebAclRuleOverrideAction({
     this.count,
     this.none,
@@ -30,4 +30,3 @@ class WebAclRuleOverrideAction {
     );
   }
 }
-

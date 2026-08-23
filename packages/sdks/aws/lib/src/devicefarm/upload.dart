@@ -80,6 +80,24 @@ import 'upload_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_devicefarm_project" "example" {
+///   name = "example"
+/// }
+/// resource "aws_devicefarm_upload" "example" {
+///   name        = "example"
+///   project_arn = aws_devicefarm_project.example.arn
+///   type        = "APPIUM_JAVA_TESTNG_TEST_SPEC"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +108,8 @@ import 'upload_state.dart';
 /// import com.pulumi.aws.devicefarm.ProjectArgs;
 /// import com.pulumi.aws.devicefarm.Upload;
 /// import com.pulumi.aws.devicefarm.UploadArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

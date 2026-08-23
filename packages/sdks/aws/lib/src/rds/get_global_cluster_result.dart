@@ -19,8 +19,6 @@ class GetGlobalClusterResult {
   final String engineLifecycleSupport;
   /// Version of the database engine for this Global Cluster.
   final String engineVersion;
-  /// The provider-assigned unique ID for this managed resource.
-  final String id;
   final String identifier;
   /// Set of objects containing Global Cluster members.
   final List<GetGlobalClusterMember> members;
@@ -40,7 +38,6 @@ class GetGlobalClusterResult {
   /// [engine] Name of the database engine.
   /// [engineLifecycleSupport] The current lifecycle support status of the database engine for this Global Cluster.
   /// [engineVersion] Version of the database engine for this Global Cluster.
-  /// [id] The provider-assigned unique ID for this managed resource.
   /// [identifier] Required.
   /// [members] Set of objects containing Global Cluster members.
   /// [region] Required.
@@ -55,7 +52,6 @@ class GetGlobalClusterResult {
     required this.engine,
     required this.engineLifecycleSupport,
     required this.engineVersion,
-    required this.id,
     required this.identifier,
     required this.members,
     required this.region,
@@ -73,7 +69,6 @@ class GetGlobalClusterResult {
       'engine': engine,
       'engineLifecycleSupport': engineLifecycleSupport,
       'engineVersion': engineVersion,
-      'id': id,
       'identifier': identifier,
       'members': pulumi.Input.encodeList<GetGlobalClusterMember, Map<String, dynamic>>(members, (value) => value.toMap()),
       'region': region,
@@ -92,7 +87,6 @@ class GetGlobalClusterResult {
       engine: map['engine'] as String,
       engineLifecycleSupport: map['engineLifecycleSupport'] as String,
       engineVersion: map['engineVersion'] as String,
-      id: map['id'] as String,
       identifier: map['identifier'] as String,
       members: pulumi.Input.decodeList<GetGlobalClusterMember>(map['members']!, (value) => GetGlobalClusterMember.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
@@ -102,4 +96,3 @@ class GetGlobalClusterResult {
     );
   }
 }
-

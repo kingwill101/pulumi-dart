@@ -85,6 +85,25 @@ import 'usage_limit_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshiftserverless_workgroup" "example" {
+///   namespace_name = exampleAwsRedshiftserverlessNamespace.namespaceName
+///   workgroup_name = "example"
+/// }
+/// resource "aws_redshiftserverless_usagelimit" "example" {
+///   resource_arn = aws_redshiftserverless_workgroup.example.arn
+///   usage_type   = "serverless-compute"
+///   amount       = 60
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +114,8 @@ import 'usage_limit_state.dart';
 /// import com.pulumi.aws.redshiftserverless.WorkgroupArgs;
 /// import com.pulumi.aws.redshiftserverless.UsageLimit;
 /// import com.pulumi.aws.redshiftserverless.UsageLimitArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

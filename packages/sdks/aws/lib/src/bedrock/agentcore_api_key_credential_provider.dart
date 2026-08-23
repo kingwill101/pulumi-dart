@@ -4,7 +4,7 @@ import 'agentcore_api_key_credential_provider_state.dart';
 
 /// Manages an AWS Bedrock AgentCore API Key Credential Provider. API Key credential providers enable secure authentication with external services that use API key-based authentication for agent runtimes.
 ///
-/// &gt; **Note:** Write-Only argument `api_key_wo` is available to use in place of `api_key`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. Learn more.
+/// &gt; **Note:** Write-Only argument `apiKeyWo` is available to use in place of `apiKey`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. Learn more.
 ///
 /// ## Example Usage
 ///
@@ -65,6 +65,20 @@ import 'agentcore_api_key_credential_provider_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcoreapikeycredentialprovider" "example" {
+///   name    = "example-api-key-provider"
+///   api_key = "your-api-key-here"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +87,8 @@ import 'agentcore_api_key_credential_provider_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.bedrock.AgentcoreApiKeyCredentialProvider;
 /// import com.pulumi.aws.bedrock.AgentcoreApiKeyCredentialProviderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,6 +179,21 @@ import 'agentcore_api_key_credential_provider_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcoreapikeycredentialprovider" "example" {
+///   name               = "example-api-key-provider"
+///   api_key_wo         = "your-api-key-here"
+///   api_key_wo_version = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -173,8 +202,8 @@ import 'agentcore_api_key_credential_provider_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.bedrock.AgentcoreApiKeyCredentialProvider;
 /// import com.pulumi.aws.bedrock.AgentcoreApiKeyCredentialProviderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,16 +243,16 @@ import 'agentcore_api_key_credential_provider_state.dart';
 /// $ pulumi import aws:bedrock/agentcoreApiKeyCredentialProvider:AgentcoreApiKeyCredentialProvider example example-api-key-provider
 /// ```
 class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
-  /// API key value. Cannot be used with `api_key_wo`. This value will be visible in pulumi preview outputs and logs.
+  /// API key value. Cannot be used with `apiKeyWo`. This value will be visible in pulumi preview outputs and logs.
   ///
   /// **Write-Only API Key (choose one approach):**
   late final pulumi.Output<String?> apiKey;
   /// ARN of the AWS Secrets Manager secret containing the API key.
   late final pulumi.Output<List<Map<String, dynamic>>> apiKeySecretArns;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Write-only API key value. Cannot be used with `api_key`. Must be used together with `api_key_wo_version`.
+  /// Write-only API key value. Cannot be used with `apiKey`. Must be used together with `apiKeyWoVersion`.
   late final pulumi.Output<String?> apiKeyWo;
-  /// Used together with `api_key_wo` to trigger an update. Increment this value when an update to `api_key_wo` is required.
+  /// Used together with `apiKeyWo` to trigger an update. Increment this value when an update to `apiKeyWo` is required.
   late final pulumi.Output<int?> apiKeyWoVersion;
   /// ARN of the API Key credential provider.
   late final pulumi.Output<String> credentialProviderArn;
@@ -232,9 +261,13 @@ class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final pulumi.Output<String> region;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// **Standard API Key (choose one approach):**
-  late final pulumi.Output<String> region;
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [AgentcoreApiKeyCredentialProvider].
   /// [name] The Pulumi resource name.
@@ -257,6 +290,8 @@ class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
     credentialProviderArn = registerOutput<String>('credentialProviderArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [AgentcoreApiKeyCredentialProvider] resource's state with the given [name] and [id].
@@ -289,5 +324,7 @@ class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
     credentialProviderArn = registerOutput<String>('credentialProviderArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -8,14 +8,14 @@ class GetSupportedInstanceTypesResult {
   final String id;
   final String region;
   final String releaseLabel;
-  /// List of supported instance types. See `supported_instance_types` below.
+  /// List of supported instance types. See `supportedInstanceTypes` below.
   final List<GetSupportedInstanceTypesSupportedInstanceType> supportedInstanceTypes;
 
   /// Creates a new [GetSupportedInstanceTypesResult].
   /// [id] Required.
   /// [region] Required.
   /// [releaseLabel] Required.
-  /// [supportedInstanceTypes] List of supported instance types. See `supported_instance_types` below.
+  /// [supportedInstanceTypes] List of supported instance types. See `supportedInstanceTypes` below.
   const GetSupportedInstanceTypesResult({
     required this.id,
     required this.region,
@@ -41,4 +41,3 @@ class GetSupportedInstanceTypesResult {
     );
   }
 }
-

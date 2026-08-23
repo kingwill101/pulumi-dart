@@ -155,6 +155,36 @@ import 'secret_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     sid    = "EnableAnotherAWSAccountToReadTheSecret"
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["arn:aws:iam::123456789012:root"]
+///     }
+///     actions   = ["secretsmanager:GetSecretValue"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_secretsmanager_secret" "example" {
+///   name = "example"
+/// }
+/// resource "aws_secretsmanager_secretpolicy" "example" {
+///   secret_arn = aws_secretsmanager_secret.example.arn
+///   policy     = data.aws_iam_getpolicydocument.example.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -165,10 +195,12 @@ import 'secret_policy_state.dart';
 /// import com.pulumi.aws.secretsmanager.SecretArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.secretsmanager.SecretPolicy;
 /// import com.pulumi.aws.secretsmanager.SecretPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -243,7 +275,7 @@ import 'secret_policy_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Secrets Manager secret.
+/// - `secretArn` (String) Amazon Resource Name (ARN) of the Secrets Manager secret.
 ///
 ///
 /// Using `pulumi import`, import `aws.secretsmanager.SecretPolicy` using the secret Amazon Resource Name (ARN). For example:

@@ -141,6 +141,38 @@ import 'domain_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticsearch_domain" "example" {
+///   domain_name           = "tf-test"
+///   elasticsearch_version = "2.3"
+/// }
+/// resource "aws_elasticsearch_domainpolicy" "main" {
+///   domain_name     = aws_elasticsearch_domain.example.domain_name
+///   access_policies ="{
+///     \"Version\": \"2012-10-17\",
+///     \"Statement\": [
+///         {
+///             \"Action\": \"es:*\",
+///             \"Principal\": \"*\",
+///             \"Effect\": \"Allow\",
+///             \"Condition\": {
+///                 \"IpAddress\": {\"aws:SourceIp\": \"127.0.0.1/32\"}
+///             },
+///             \"Resource\": \"${aws_elasticsearch_domain.example.arn}/*\"
+///         }
+///     ]
+/// }
+/// "
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -151,8 +183,8 @@ import 'domain_policy_state.dart';
 /// import com.pulumi.aws.elasticsearch.DomainArgs;
 /// import com.pulumi.aws.elasticsearch.DomainPolicy;
 /// import com.pulumi.aws.elasticsearch.DomainPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

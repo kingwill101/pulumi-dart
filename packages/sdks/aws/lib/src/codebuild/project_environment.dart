@@ -20,6 +20,13 @@ class ProjectEnvironment {
   final pulumi.Input<List<ProjectEnvironmentEnvironmentVariable>>? environmentVariables;
   /// Configuration block. Detailed below.
   final pulumi.Input<ProjectEnvironmentFleet>? fleet;
+  /// Host operating system kernel used for on-demand builds in the build project. This setting
+  /// controls the kernel of the underlying build host. It does not change the build environment operating system, which is
+  /// determined by the image you specify. Valid values: `LINUX_KERNEL_4` (runs on an Amazon Linux 2 host, kernel 4.x),
+  /// `LINUX_KERNEL_6` (runs on an Amazon Linux 2023 host, kernel 6.x), `LINUX_KERNEL_LATEST` (runs on the latest supported
+  /// host kernel). Applies to the `LINUX_CONTAINER`, `ARM_CONTAINER`, `LINUX_EC2`, and `ARM_EC2` environment types; not
+  /// applicable to Windows, Lambda, or Mac environment types. If not specified, CodeBuild selects a default.
+  final pulumi.Input<String>? hostKernel;
   /// Docker image to use for this build project. Valid values
   /// include [Docker images provided by CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html) (
   /// e.g `aws/codebuild/amazonlinux2-x86_64-standard:4.0`), [Docker Hub images](https://hub.docker.com/) (e.g.,
@@ -47,6 +54,7 @@ class ProjectEnvironment {
   /// [dockerServer] Configuration block. Detailed below.
   /// [environmentVariables] Configuration block. Detailed below.
   /// [fleet] Configuration block. Detailed below.
+  /// [hostKernel] Host operating system kernel used for on-demand builds in the build project. This setting
   /// [image] Docker image to use for this build project. Valid values
   /// [imagePullCredentialsType] Type of credentials AWS CodeBuild uses to pull images in your build. Valid
   /// [privilegedMode] Whether to enable running the Docker daemon inside a Docker container. Defaults to
@@ -58,6 +66,7 @@ class ProjectEnvironment {
     this.dockerServer,
     this.environmentVariables,
     this.fleet,
+    this.hostKernel,
     required this.image,
     this.imagePullCredentialsType,
     this.privilegedMode,
@@ -72,6 +81,7 @@ class ProjectEnvironment {
       'dockerServer': ?pulumi.Input.mapOptionalInputValue<ProjectEnvironmentDockerServer, Map<String, dynamic>>(dockerServer, (value) => value.toMap()),
       'environmentVariables': ?pulumi.Input.mapOptionalInputValue<List<ProjectEnvironmentEnvironmentVariable>, List<Map<String, dynamic>>>(environmentVariables, (value) => pulumi.Input.encodeList<ProjectEnvironmentEnvironmentVariable, Map<String, dynamic>>(value, (value) => value.toMap())),
       'fleet': ?pulumi.Input.mapOptionalInputValue<ProjectEnvironmentFleet, Map<String, dynamic>>(fleet, (value) => value.toMap()),
+      'hostKernel': ?hostKernel,
       'image': image,
       'imagePullCredentialsType': ?imagePullCredentialsType,
       'privilegedMode': ?privilegedMode,
@@ -87,6 +97,7 @@ class ProjectEnvironment {
       dockerServer: (() { final guardedValue = map['dockerServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProjectEnvironmentDockerServer.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       environmentVariables: (() { final guardedValue = map['environmentVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ProjectEnvironmentEnvironmentVariable>(guardedValue, (value) => ProjectEnvironmentEnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))); })(),
       fleet: (() { final guardedValue = map['fleet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProjectEnvironmentFleet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      hostKernel: (() { final guardedValue = map['hostKernel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       image: pulumi.Input.fromValue(map['image'] as String),
       imagePullCredentialsType: (() { final guardedValue = map['imagePullCredentialsType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privilegedMode: (() { final guardedValue = map['privilegedMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -95,4 +106,3 @@ class ProjectEnvironment {
     );
   }
 }
-

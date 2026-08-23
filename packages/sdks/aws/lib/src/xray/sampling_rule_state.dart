@@ -28,9 +28,9 @@ class SamplingRuleState {
   final pulumi.Input<String>? serviceName;
   /// Matches the `origin` that the service uses to identify its type in segments.
   final pulumi.Input<String>? serviceType;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Matches the path from a request URL.
   final pulumi.Input<String>? urlPath;
@@ -50,8 +50,8 @@ class SamplingRuleState {
   /// [ruleName] The name of the sampling rule.
   /// [serviceName] Matches the `name` that the service uses to identify itself in segments.
   /// [serviceType] Matches the `origin` that the service uses to identify its type in segments.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [urlPath] Matches the path from a request URL.
   /// [version] The version of the sampling rule format (`1` )
   const SamplingRuleState({
@@ -115,4 +115,3 @@ class SamplingRuleState {
     );
   }
 }
-

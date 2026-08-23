@@ -18,7 +18,7 @@ class ProviderArgs {
   final pulumi.Input<List<String>>? allowedAccountIds;
   final pulumi.Input<ProviderAssumeRoleWithWebIdentity>? assumeRoleWithWebIdentity;
   final pulumi.Input<List<ProviderAssumeRole>>? assumeRoles;
-  /// File containing custom root and intermediate certificates. Can also be configured using the `AWS_CA_BUNDLE` environment variable. (Setting `ca_bundle` in the shared config file is not supported.)
+  /// File containing custom root and intermediate certificates. Can also be configured using the `AWS_CA_BUNDLE` environment variable. (Setting `caBundle` in the shared config file is not supported.)
   final pulumi.Input<String>? customCaBundle;
   /// Configuration block with settings to default resource tags across all resources.
   final pulumi.Input<ProviderDefaultTags>? defaultTags;
@@ -28,9 +28,9 @@ class ProviderArgs {
   final pulumi.Input<String>? ec2MetadataServiceEndpointMode;
   final pulumi.Input<List<ProviderEndpoint>>? endpoints;
   final pulumi.Input<List<String>>? forbiddenAccountIds;
-  /// URL of a proxy to use for HTTP requests when accessing the AWS API. Can also be set using the `HTTP_PROXY` or `http_proxy` environment variables.
+  /// URL of a proxy to use for HTTP requests when accessing the AWS API. Can also be set using the `HTTP_PROXY` or `httpProxy` environment variables.
   final pulumi.Input<String>? httpProxy;
-  /// URL of a proxy to use for HTTPS requests when accessing the AWS API. Can also be set using the `HTTPS_PROXY` or `https_proxy` environment variables.
+  /// URL of a proxy to use for HTTPS requests when accessing the AWS API. Can also be set using the `HTTPS_PROXY` or `httpsProxy` environment variables.
   final pulumi.Input<String>? httpsProxy;
   /// Configuration block with settings to ignore resource tags across all resources.
   final pulumi.Input<ProviderIgnoreTags>? ignoreTags;
@@ -40,7 +40,7 @@ class ProviderArgs {
   /// being executed. If the API request still fails, an error is
   /// thrown.
   final pulumi.Input<int>? maxRetries;
-  /// Comma-separated list of hosts that should not use HTTP or HTTPS proxies. Can also be set using the `NO_PROXY` or `no_proxy` environment variables.
+  /// Comma-separated list of hosts that should not use HTTP or HTTPS proxies. Can also be set using the `NO_PROXY` or `noProxy` environment variables.
   final pulumi.Input<String>? noProxy;
   /// The profile for API operations. If not set, the default profile
   /// created with `aws configure` will be used.
@@ -50,7 +50,7 @@ class ProviderArgs {
   final pulumi.Input<String>? region;
   /// Specifies how retries are attempted. Valid values are `standard` and `adaptive`. Can also be configured using the `AWS_RETRY_MODE` environment variable.
   final pulumi.Input<String>? retryMode;
-  /// Specifies whether S3 API calls in the `us-east-1` region use the legacy global endpoint or a regional endpoint. Valid values are `legacy` or `regional`. Can also be configured using the `AWS_S3_US_EAST_1_REGIONAL_ENDPOINT` environment variable or the `s3_us_east_1_regional_endpoint` shared config file parameter
+  /// Specifies whether S3 API calls in the `us-east-1` region use the legacy global endpoint or a regional endpoint. Valid values are `legacy` or `regional`. Can also be configured using the `AWS_S3_US_EAST_1_REGIONAL_ENDPOINT` environment variable or the `s3UsEast1RegionalEndpoint` shared config file parameter
   final pulumi.Input<String>? s3UsEast1RegionalEndpoint;
   /// Set this to true to enable the request to use path-style addressing,
   /// i.e., https://s3.amazonaws.com/BUCKET/KEY. By default, the S3 client will
@@ -94,22 +94,22 @@ class ProviderArgs {
   /// [allowedAccountIds] Optional.
   /// [assumeRoleWithWebIdentity] Optional.
   /// [assumeRoles] Optional.
-  /// [customCaBundle] File containing custom root and intermediate certificates. Can also be configured using the `AWS_CA_BUNDLE` environment variable. (Setting `ca_bundle` in the shared config file is not supported.)
+  /// [customCaBundle] File containing custom root and intermediate certificates. Can also be configured using the `AWS_CA_BUNDLE` environment variable. (Setting `caBundle` in the shared config file is not supported.)
   /// [defaultTags] Configuration block with settings to default resource tags across all resources.
   /// [ec2MetadataServiceEndpoint] Address of the EC2 metadata service endpoint to use. Can also be configured using the `AWS_EC2_METADATA_SERVICE_ENDPOINT` environment variable.
   /// [ec2MetadataServiceEndpointMode] Protocol to use with EC2 metadata service endpoint.Valid values are `IPv4` and `IPv6`. Can also be configured using the `AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE` environment variable.
   /// [endpoints] Optional.
   /// [forbiddenAccountIds] Optional.
-  /// [httpProxy] URL of a proxy to use for HTTP requests when accessing the AWS API. Can also be set using the `HTTP_PROXY` or `http_proxy` environment variables.
-  /// [httpsProxy] URL of a proxy to use for HTTPS requests when accessing the AWS API. Can also be set using the `HTTPS_PROXY` or `https_proxy` environment variables.
+  /// [httpProxy] URL of a proxy to use for HTTP requests when accessing the AWS API. Can also be set using the `HTTP_PROXY` or `httpProxy` environment variables.
+  /// [httpsProxy] URL of a proxy to use for HTTPS requests when accessing the AWS API. Can also be set using the `HTTPS_PROXY` or `httpsProxy` environment variables.
   /// [ignoreTags] Configuration block with settings to ignore resource tags across all resources.
   /// [insecure] Explicitly allow the provider to perform "insecure" SSL requests. If omitted, default value is `false`
   /// [maxRetries] The maximum number of times an AWS API request is
-  /// [noProxy] Comma-separated list of hosts that should not use HTTP or HTTPS proxies. Can also be set using the `NO_PROXY` or `no_proxy` environment variables.
+  /// [noProxy] Comma-separated list of hosts that should not use HTTP or HTTPS proxies. Can also be set using the `NO_PROXY` or `noProxy` environment variables.
   /// [profile] The profile for API operations. If not set, the default profile
   /// [region] The region where AWS operations will take place. Examples
   /// [retryMode] Specifies how retries are attempted. Valid values are `standard` and `adaptive`. Can also be configured using the `AWS_RETRY_MODE` environment variable.
-  /// [s3UsEast1RegionalEndpoint] Specifies whether S3 API calls in the `us-east-1` region use the legacy global endpoint or a regional endpoint. Valid values are `legacy` or `regional`. Can also be configured using the `AWS_S3_US_EAST_1_REGIONAL_ENDPOINT` environment variable or the `s3_us_east_1_regional_endpoint` shared config file parameter
+  /// [s3UsEast1RegionalEndpoint] Specifies whether S3 API calls in the `us-east-1` region use the legacy global endpoint or a regional endpoint. Valid values are `legacy` or `regional`. Can also be configured using the `AWS_S3_US_EAST_1_REGIONAL_ENDPOINT` environment variable or the `s3UsEast1RegionalEndpoint` shared config file parameter
   /// [s3UsePathStyle] Set this to true to enable the request to use path-style addressing,
   /// [secretKey] The secret key for API operations. You can retrieve this
   /// [sharedConfigFiles] List of paths to shared config files. If not set, defaults to [~/.aws/config].
@@ -243,4 +243,3 @@ class ProviderArgs {
     );
   }
 }
-

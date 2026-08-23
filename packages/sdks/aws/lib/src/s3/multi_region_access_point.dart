@@ -7,6 +7,8 @@ import 'multi_region_access_point_state.dart';
 ///
 /// &gt; This resource cannot be used with S3 directory buckets.
 ///
+/// For more information, see the documentation on [Multi-Region Access Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPoints.html).
+///
 /// ## Example Usage
 ///
 /// ### Multiple AWS Buckets in Different Regions
@@ -115,10 +117,10 @@ import 'multi_region_access_point_state.dart';
 /// 				Name: pulumi.String("example"),
 /// 				Regions: s3control.MultiRegionAccessPointDetailsRegionArray{
 /// 					&s3control.MultiRegionAccessPointDetailsRegionArgs{
-/// 						Bucket: fooBucket.ID(),
+/// 						Bucket: fooBucket.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 					&s3control.MultiRegionAccessPointDetailsRegionArgs{
-/// 						Bucket: barBucket.ID(),
+/// 						Bucket: barBucket.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
@@ -128,6 +130,32 @@ import 'multi_region_access_point_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "foo_bucket" {
+///   bucket = "example-bucket-foo"
+/// }
+/// resource "aws_s3_bucket" "bar_bucket" {
+///   bucket = "example-bucket-bar"
+/// }
+/// resource "aws_s3control_multiregionaccesspoint" "example" {
+///   details = {
+///     name = "example"
+///     regions = [{
+///       "bucket" = aws_s3_bucket.foo_bucket.id
+///       }, {
+///       "bucket" = aws_s3_bucket.bar_bucket.id
+///     }]
+///   }
 /// }
 /// ```
 /// ```java
@@ -141,8 +169,9 @@ import 'multi_region_access_point_state.dart';
 /// import com.pulumi.aws.s3control.MultiRegionAccessPoint;
 /// import com.pulumi.aws.s3control.MultiRegionAccessPointArgs;
 /// import com.pulumi.aws.s3control.inputs.MultiRegionAccessPointDetailsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.s3control.inputs.MultiRegionAccessPointDetailsRegionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -203,25 +232,39 @@ import 'multi_region_access_point_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Multi-Region Access Points using the `account_id` and `name` of the Multi-Region Access Point separated by a colon (`:`). For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the Multi-Region Access Point.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Multi-Region Access Points using the `accountId` and `name` of the Multi-Region Access Point separated by a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3control/multiRegionAccessPoint:MultiRegionAccessPoint example 123456789012:example
 /// ```
 class MultiRegionAccessPoint extends pulumi.CustomResource {
-  /// The AWS account ID for the owner of the buckets for which you want to create a Multi-Region Access Point. Defaults to automatically determined account ID of the AWS provider.
+  /// AWS account ID for the owner of the buckets for which you want to create a Multi-Region Access Point. Defaults to automatically determined account ID of the AWS provider.
   late final pulumi.Output<String> accountId;
-  /// The alias for the Multi-Region Access Point.
+  /// Alias for the Multi-Region Access Point.
   late final pulumi.Output<String> alias;
   /// Amazon Resource Name (ARN) of the Multi-Region Access Point.
   late final pulumi.Output<String> arn;
-  /// A configuration block containing details about the Multi-Region Access Point. See Details Configuration Block below for more details
+  /// Configuration block containing details about the Multi-Region Access Point. See `details` Block below.
   late final pulumi.Output<MultiRegionAccessPointDetails> details;
-  /// The DNS domain name of the S3 Multi-Region Access Point in the format _`alias`_.accesspoint.s3-global.amazonaws.com. For more information, see the documentation on [Multi-Region Access Point Requests](https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPointRequests.html).
+  /// DNS domain name of the S3 Multi-Region Access Point in the format _`alias`_.accesspoint.s3-global.amazonaws.com. For more information, see the documentation on [Multi-Region Access Point Requests](https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPointRequests.html).
   late final pulumi.Output<String> domainName;
+  /// Name of the Multi-Region Access Point.
+  late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The current status of the Multi-Region Access Point. One of: `READY`, `INCONSISTENT_ACROSS_REGIONS`, `CREATING`, `PARTIALLY_CREATED`, `PARTIALLY_DELETED`, `DELETING`.
+  /// Status of the Multi-Region Access Point. One of: `READY`, `INCONSISTENT_ACROSS_REGIONS`, `CREATING`, `PARTIALLY_CREATED`, `PARTIALLY_DELETED`, `DELETING`.
   late final pulumi.Output<String> status;
 
   /// Creates a new [MultiRegionAccessPoint].
@@ -243,6 +286,7 @@ class MultiRegionAccessPoint extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     details = registerOutput<MultiRegionAccessPointDetails>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiRegionAccessPointDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     domainName = registerOutput<String>('domainName');
+    this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
   }
@@ -275,6 +319,7 @@ class MultiRegionAccessPoint extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     details = registerOutput<MultiRegionAccessPointDetails>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiRegionAccessPointDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     domainName = registerOutput<String>('domainName');
+    this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
   }

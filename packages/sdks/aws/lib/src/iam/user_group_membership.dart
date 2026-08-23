@@ -156,6 +156,36 @@ import 'user_group_membership_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_usergroupmembership" "example1" {
+///   user   = aws_iam_user.user1.name
+///   groups = [aws_iam_group.group1.name, aws_iam_group.group2.name]
+/// }
+/// resource "aws_iam_usergroupmembership" "example2" {
+///   user   = aws_iam_user.user1.name
+///   groups = [aws_iam_group.group3.name]
+/// }
+/// resource "aws_iam_user" "user1" {
+///   name = "user1"
+/// }
+/// resource "aws_iam_group" "group1" {
+///   name = "group1"
+/// }
+/// resource "aws_iam_group" "group2" {
+///   name = "group2"
+/// }
+/// resource "aws_iam_group" "group3" {
+///   name = "group3"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -168,8 +198,8 @@ import 'user_group_membership_state.dart';
 /// import com.pulumi.aws.iam.GroupArgs;
 /// import com.pulumi.aws.iam.UserGroupMembership;
 /// import com.pulumi.aws.iam.UserGroupMembershipArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

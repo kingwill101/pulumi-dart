@@ -10,7 +10,7 @@ class GetResponsePlanIncidentTemplate {
   final pulumi.Input<int> impact;
   /// The tags assigned to an incident template. When an incident starts, Incident Manager assigns the tags specified in the template to the incident.
   final pulumi.Input<Map<String, String>> incidentTags;
-  /// The Amazon Simple Notification Service (Amazon SNS) targets that this incident notifies when it is updated. The `notification_target` configuration block supports the following argument:
+  /// The Amazon Simple Notification Service (Amazon SNS) targets that this incident notifies when it is updated. The `notificationTarget` configuration block supports the following argument:
   final pulumi.Input<List<GetResponsePlanIncidentTemplateNotificationTarget>> notificationTargets;
   /// The summary of an incident.
   final pulumi.Input<String> summary;
@@ -21,7 +21,7 @@ class GetResponsePlanIncidentTemplate {
   /// [dedupeString] A string used to stop Incident Manager from creating multiple incident records for the same incident.
   /// [impact] The impact value of a generated incident. The following values are supported:
   /// [incidentTags] The tags assigned to an incident template. When an incident starts, Incident Manager assigns the tags specified in the template to the incident.
-  /// [notificationTargets] The Amazon Simple Notification Service (Amazon SNS) targets that this incident notifies when it is updated. The `notification_target` configuration block supports the following argument:
+  /// [notificationTargets] The Amazon Simple Notification Service (Amazon SNS) targets that this incident notifies when it is updated. The `notificationTarget` configuration block supports the following argument:
   /// [summary] The summary of an incident.
   /// [title] The title of a generated incident.
   const GetResponsePlanIncidentTemplate({
@@ -55,4 +55,3 @@ class GetResponsePlanIncidentTemplate {
     );
   }
 }
-

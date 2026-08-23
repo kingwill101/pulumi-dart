@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodeSpecLoggingAccessLogFileFormatJson {
+  /// Key for the JSON.
   final pulumi.Input<String> key;
+  /// Value for the JSON.
   final pulumi.Input<String> value;
 
   /// Creates a new [GetVirtualNodeSpecLoggingAccessLogFileFormatJson].
-  /// [key] Required.
-  /// [value] Required.
+  /// [key] Key for the JSON.
+  /// [value] Value for the JSON.
   const GetVirtualNodeSpecLoggingAccessLogFileFormatJson({
     required this.key,
     required this.value,
@@ -28,4 +30,3 @@ class GetVirtualNodeSpecLoggingAccessLogFileFormatJson {
     );
   }
 }
-

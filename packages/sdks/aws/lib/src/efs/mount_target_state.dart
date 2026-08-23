@@ -19,7 +19,7 @@ class MountTargetState {
   final pulumi.Input<String>? ipAddress;
   /// IP address type for the mount target. Valid values are `IPV4_ONLY` (only IPv4 addresses), `IPV6_ONLY` (only IPv6 addresses), and `DUAL_STACK` (dual-stack, both IPv4 and IPv6 addresses). Defaults to `IPV4_ONLY`.
   final pulumi.Input<String>? ipAddressType;
-  /// IPv6 address to use. Valid only when `ip_address_type` is set to `IPV6_ONLY` or `DUAL_STACK`.
+  /// IPv6 address to use. Valid only when `ipAddressType` is set to `IPV6_ONLY` or `DUAL_STACK`.
   final pulumi.Input<String>? ipv6Address;
   /// The DNS name for the given subnet/AZ per [documented convention](http://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-cmd-dns-name.html).
   final pulumi.Input<String>? mountTargetDnsName;
@@ -43,7 +43,7 @@ class MountTargetState {
   /// [fileSystemId] The ID of the file system for which the mount target is intended.
   /// [ipAddress] The address (within the address range of the specified subnet) at
   /// [ipAddressType] IP address type for the mount target. Valid values are `IPV4_ONLY` (only IPv4 addresses), `IPV6_ONLY` (only IPv6 addresses), and `DUAL_STACK` (dual-stack, both IPv4 and IPv6 addresses). Defaults to `IPV4_ONLY`.
-  /// [ipv6Address] IPv6 address to use. Valid only when `ip_address_type` is set to `IPV6_ONLY` or `DUAL_STACK`.
+  /// [ipv6Address] IPv6 address to use. Valid only when `ipAddressType` is set to `IPV6_ONLY` or `DUAL_STACK`.
   /// [mountTargetDnsName] The DNS name for the given subnet/AZ per [documented convention](http://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-cmd-dns-name.html).
   /// [networkInterfaceId] The ID of the network interface that Amazon EFS created when it created the mount target.
   /// [ownerId] AWS account ID that owns the resource.
@@ -105,4 +105,3 @@ class MountTargetState {
     );
   }
 }
-

@@ -24,4 +24,3 @@ class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinat
     );
   }
 }
-

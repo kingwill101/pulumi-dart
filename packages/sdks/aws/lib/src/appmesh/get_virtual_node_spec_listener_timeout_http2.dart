@@ -5,12 +5,14 @@ import 'get_virtual_node_spec_listener_timeout_http2_idle.dart';
 import 'get_virtual_node_spec_listener_timeout_http2_per_request.dart';
 
 class GetVirtualNodeSpecListenerTimeoutHttp2 {
+  /// Idle timeout. See `spec.listener.timeout.tcp.idle` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecListenerTimeoutHttp2Idle>> idles;
+  /// Per request timeout. See `spec.listener.timeout.http2.per_request` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecListenerTimeoutHttp2PerRequest>> perRequests;
 
   /// Creates a new [GetVirtualNodeSpecListenerTimeoutHttp2].
-  /// [idles] Required.
-  /// [perRequests] Required.
+  /// [idles] Idle timeout. See `spec.listener.timeout.tcp.idle` Block for details.
+  /// [perRequests] Per request timeout. See `spec.listener.timeout.http2.per_request` Block for details.
   const GetVirtualNodeSpecListenerTimeoutHttp2({
     required this.idles,
     required this.perRequests,
@@ -30,4 +32,3 @@ class GetVirtualNodeSpecListenerTimeoutHttp2 {
     );
   }
 }
-

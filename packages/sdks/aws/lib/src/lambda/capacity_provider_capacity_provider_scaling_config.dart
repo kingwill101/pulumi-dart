@@ -8,13 +8,13 @@ class CapacityProviderCapacityProviderScalingConfig {
   final pulumi.Input<int> maxVcpuCount;
   /// The scaling mode for the Capacity Provider. Valid values are `"Auto"` and `"Manual"`. Defaults to `"Auto"`.
   final pulumi.Input<String> scalingMode;
-  /// List of scaling policies. Only required if `scaling_mode` is set to `"Manual"`. See Scaling Policies below.
+  /// List of scaling policies. Only required if `scalingMode` is set to `"Manual"`. See Scaling Policies below.
   final pulumi.Input<List<CapacityProviderCapacityProviderScalingConfigScalingPolicy>> scalingPolicies;
 
   /// Creates a new [CapacityProviderCapacityProviderScalingConfig].
   /// [maxVcpuCount] The maximum number of VCPUs for the Capacity Provider.
   /// [scalingMode] The scaling mode for the Capacity Provider. Valid values are `"Auto"` and `"Manual"`. Defaults to `"Auto"`.
-  /// [scalingPolicies] List of scaling policies. Only required if `scaling_mode` is set to `"Manual"`. See Scaling Policies below.
+  /// [scalingPolicies] List of scaling policies. Only required if `scalingMode` is set to `"Manual"`. See Scaling Policies below.
   const CapacityProviderCapacityProviderScalingConfig({
     required this.maxVcpuCount,
     required this.scalingMode,
@@ -37,4 +37,3 @@ class CapacityProviderCapacityProviderScalingConfig {
     );
   }
 }
-

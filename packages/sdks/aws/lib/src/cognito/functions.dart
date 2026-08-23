@@ -72,6 +72,19 @@ import 'get_user_pools_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cognito_getidentitypool" "example" {
+///   identity_pool_name = "test pool"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +93,8 @@ import 'get_user_pools_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cognito.CognitoFunctions;
 /// import com.pulumi.aws.cognito.inputs.GetIdentityPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -183,6 +196,20 @@ Future<GetIdentityPoolResult> getIdentityPool(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cognito_getusergroup" "example" {
+///   user_pool_id = "us-west-2_aaaaaaaaa"
+///   name         = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -191,8 +218,8 @@ Future<GetIdentityPoolResult> getIdentityPool(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cognito.CognitoFunctions;
 /// import com.pulumi.aws.cognito.inputs.GetUserGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -292,6 +319,19 @@ Future<GetUserGroupResult> getUserGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cognito_getusergroups" "example" {
+///   user_pool_id = "us-west-2_aaaaaaaaa"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -300,8 +340,8 @@ Future<GetUserGroupResult> getUserGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cognito.CognitoFunctions;
 /// import com.pulumi.aws.cognito.inputs.GetUserGroupsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -399,6 +439,19 @@ Future<GetUserGroupsResult> getUserGroups(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cognito_getuserpool" "example" {
+///   user_pool_id = "us-west-2_aaaaaaaaa"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -407,8 +460,8 @@ Future<GetUserGroupsResult> getUserGroups(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cognito.CognitoFunctions;
 /// import com.pulumi.aws.cognito.inputs.GetUserPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -508,6 +561,20 @@ Future<GetUserPoolResult> getUserPool(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cognito_getuserpoolclient" "client" {
+///   client_id    = "38fjsnc484p94kpqsnet7mpld0"
+///   user_pool_id = "us-west-2_aaaaaaaaa"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -516,8 +583,8 @@ Future<GetUserPoolResult> getUserPool(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cognito.CognitoFunctions;
 /// import com.pulumi.aws.cognito.inputs.GetUserPoolClientArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -615,6 +682,19 @@ Future<GetUserPoolClientResult> getUserPoolClient(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cognito_getuserpoolclients" "main" {
+///   user_pool_id = mainAwsCognitoUserPool.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -623,8 +703,8 @@ Future<GetUserPoolClientResult> getUserPoolClient(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cognito.CognitoFunctions;
 /// import com.pulumi.aws.cognito.inputs.GetUserPoolClientsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -720,6 +800,19 @@ Future<GetUserPoolClientsResult> getUserPoolClients(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cognito_getuserpoolsigningcertificate" "sc" {
+///   user_pool_id = myPool.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -728,8 +821,8 @@ Future<GetUserPoolClientsResult> getUserPoolClients(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cognito.CognitoFunctions;
 /// import com.pulumi.aws.cognito.inputs.GetUserPoolSigningCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -860,13 +953,43 @@ Future<GetUserPoolSigningCertificateResult> getUserPoolSigningCertificate(
 /// 			Name:         pulumi.String("cognito"),
 /// 			Type:         pulumi.String("COGNITO_USER_POOLS"),
 /// 			RestApi:      pulumi.String(selected.Id),
-/// 			ProviderArns: interface{}(selectedGetUserPools.Arns),
+/// 			ProviderArns: toPulumiStringArray(selectedGetUserPools.Arns),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// func toPulumiStringArray(arr []string) pulumi.StringArray {
+/// 	var pulumiArr pulumi.StringArray
+/// 	for _, v := range arr {
+/// 		pulumiArr = append(pulumiArr, pulumi.String(v))
+/// 	}
+/// 	return pulumiArr
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_apigateway_getrestapi" "selected" {
+///   name = apiGatewayName
+/// }
+/// data "aws_cognito_getuserpools" "selectedGetUserPools" {
+///   name = cognitoUserPoolName
+/// }
+///
+/// resource "aws_apigateway_authorizer" "cognito" {
+///   name          = "cognito"
+///   type          = "COGNITO_USER_POOLS"
+///   rest_api      = data.aws_apigateway_getrestapi.selected.id
+///   provider_arns = data.aws_cognito_getuserpools.selectedGetUserPools.arns
 /// }
 /// ```
 /// ```java
@@ -881,8 +1004,8 @@ Future<GetUserPoolSigningCertificateResult> getUserPoolSigningCertificate(
 /// import com.pulumi.aws.cognito.inputs.GetUserPoolsArgs;
 /// import com.pulumi.aws.apigateway.Authorizer;
 /// import com.pulumi.aws.apigateway.AuthorizerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

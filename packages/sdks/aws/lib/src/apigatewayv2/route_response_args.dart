@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteResponseArgs {
   /// API identifier.
   final pulumi.Input<String> apiId;
-  /// The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
+  /// [Model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
   final pulumi.Input<String>? modelSelectionExpression;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -22,7 +22,7 @@ class RouteResponseArgs {
 
   /// Creates a new [RouteResponseArgs].
   /// [apiId] API identifier.
-  /// [modelSelectionExpression] The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
+  /// [modelSelectionExpression] [Model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [responseModels] Response models for the route response.
   /// [routeId] Identifier of the `aws.apigatewayv2.Route`.
@@ -58,4 +58,3 @@ class RouteResponseArgs {
     );
   }
 }
-

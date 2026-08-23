@@ -91,6 +91,25 @@ import 'table_bucket_replication_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3tables_tablebucketreplication" "example" {
+///   table_bucket_arn = source.arn
+///   role             = exampleAwsIamRole.arn
+///   rule = {
+///     destinations = [{
+///       "destinationTableBucketArn" = target.arn
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +119,9 @@ import 'table_bucket_replication_state.dart';
 /// import com.pulumi.aws.s3tables.TableBucketReplication;
 /// import com.pulumi.aws.s3tables.TableBucketReplicationArgs;
 /// import com.pulumi.aws.s3tables.inputs.TableBucketReplicationRuleArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.s3tables.inputs.TableBucketReplicationRuleDestinationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -141,7 +161,14 @@ import 'table_bucket_replication_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import S3 Tables Table Bucket Replication using the `table_bucket_arn`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `tableBucketArn` (String) ARN of the S3 Tables Table Bucket.
+///
+///
+/// Using `pulumi import`, import S3 Tables Table Bucket Replication using the `tableBucketArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3tables/tableBucketReplication:TableBucketReplication example 'arn:aws:s3tables:us-west-2:123456789012:bucket/example-bucket'
@@ -155,6 +182,7 @@ class TableBucketReplication extends pulumi.CustomResource {
   late final pulumi.Output<TableBucketReplicationRule?> rule;
   /// ARN referencing the Table Bucket that owns this replication configuration.
   late final pulumi.Output<String> tableBucketArn;
+  /// Version token of the replication configuration.
   late final pulumi.Output<String> versionToken;
 
   /// Creates a new [TableBucketReplication].

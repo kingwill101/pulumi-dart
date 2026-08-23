@@ -16,7 +16,7 @@ class PublicKeyState {
   final pulumi.Input<String>? name;
   /// The name for the public key. Conflicts with `name`.
   ///
-  /// **NOTE:** When setting `encoded_key` value, there needs a newline at the end of string. Otherwise, multiple runs of pulumi will want to recreate the `aws.cloudfront.PublicKey` resource.
+  /// **NOTE:** When setting `encodedKey` value, there needs a newline at the end of string. Otherwise, multiple runs of pulumi will want to recreate the `aws.cloudfront.PublicKey` resource.
   final pulumi.Input<String>? namePrefix;
 
   /// Creates a new [PublicKeyState].
@@ -57,4 +57,3 @@ class PublicKeyState {
     );
   }
 }
-

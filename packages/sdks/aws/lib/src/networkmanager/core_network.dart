@@ -58,6 +58,19 @@ import 'core_network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_corenetwork" "example" {
+///   global_network_id = exampleAwsNetworkmanagerGlobalNetwork.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +79,8 @@ import 'core_network_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.CoreNetwork;
 /// import com.pulumi.aws.networkmanager.CoreNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -152,6 +165,20 @@ import 'core_network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_corenetwork" "example" {
+///   global_network_id = exampleAwsNetworkmanagerGlobalNetwork.id
+///   description       = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -160,8 +187,8 @@ import 'core_network_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.CoreNetwork;
 /// import com.pulumi.aws.networkmanager.CoreNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -257,6 +284,22 @@ import 'core_network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_corenetwork" "example" {
+///   global_network_id = exampleAwsNetworkmanagerGlobalNetwork.id
+///   tags = {
+///     "hello" = "world"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -265,8 +308,8 @@ import 'core_network_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.CoreNetwork;
 /// import com.pulumi.aws.networkmanager.CoreNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -299,14 +342,14 @@ import 'core_network_state.dart';
 ///
 /// ### With VPC Attachment (Single Region)
 ///
-/// The example below illustrates the scenario where your policy document has static routes pointing to VPC attachments and you want to attach your VPCs to the core network before applying the desired policy document. Set the `create_base_policy` argument to `true` if your core network does not currently have any `LIVE` policies (e.g. this is the first `pulumi up` with the core network resource), since a `LIVE` policy is required before VPCs can be attached to the core network. Otherwise, if your core network already has a `LIVE` policy, you may exclude the `create_base_policy` argument. There are 2 options to implement this:
+/// The example below illustrates the scenario where your policy document has static routes pointing to VPC attachments and you want to attach your VPCs to the core network before applying the desired policy document. Set the `createBasePolicy` argument to `true` if your core network does not currently have any `LIVE` policies (e.g. this is the first `pulumi up` with the core network resource), since a `LIVE` policy is required before VPCs can be attached to the core network. Otherwise, if your core network already has a `LIVE` policy, you may exclude the `createBasePolicy` argument. There are 2 options to implement this:
 ///
-/// - Option 1: Use the `base_policy_document` argument that allows the most customizations to a base policy. Use this to customize the `edge_locations` `asn`. In the example below, `us-west-2` and ASN `65500` are used in the base policy.
-/// - Option 2: Use the `create_base_policy` argument only. This creates a base policy in the region specified in the `provider` block.
+/// - Option 1: Use the `basePolicyDocument` argument that allows the most customizations to a base policy. Use this to customize the `edgeLocations` `asn`. In the example below, `us-west-2` and ASN `65500` are used in the base policy.
+/// - Option 2: Use the `createBasePolicy` argument only. This creates a base policy in the region specified in the `provider` block.
 ///
-/// ### Option 1 - using base_policy_document
+/// ### Option 1 - using basePolicyDocument
 ///
-/// If you require a custom ASN for the edge location, please use the `base_policy_document` argument to pass a specific ASN. For example:
+/// If you require a custom ASN for the edge location, please use the `basePolicyDocument` argument to pass a specific ASN. For example:
 ///
 ///
 /// ```typescript
@@ -356,7 +399,7 @@ import 'core_network_state.dart';
 /// });
 /// const exampleCoreNetworkPolicyAttachment = new aws.networkmanager.CoreNetworkPolicyAttachment("example", {
 ///     coreNetworkId: exampleCoreNetwork.id,
-///     policyDocument: example.apply(example => example.json),
+///     policyDocument: example.json,
 /// });
 /// ```
 /// ```python
@@ -545,7 +588,7 @@ import 'core_network_state.dart';
 /// return err
 /// }
 /// exampleCoreNetwork, err := networkmanager.NewCoreNetwork(ctx, "example", &networkmanager.CoreNetworkArgs{
-/// GlobalNetworkId: exampleGlobalNetwork.ID(),
+/// GlobalNetworkId: exampleGlobalNetwork.ID().ToIDOutput().ToStringOutput(),
 /// BasePolicyDocument: pulumi.String(base.Json),
 /// CreateBasePolicy: pulumi.Bool(true),
 /// })
@@ -554,10 +597,10 @@ import 'core_network_state.dart';
 /// }
 /// var splat0 []interface{}
 /// for _, val0 := range exampleAwsSubnet {
-/// splat0 = append(splat0, val0.Arn)
+/// splat0 = append(splat0, val0.(map[string]interface{})["arn"])
 /// }
 /// exampleVpcAttachment, err := networkmanager.NewVpcAttachment(ctx, "example", &networkmanager.VpcAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID(),
+/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
 /// SubnetArns: toPulumiArray(splat0),
 /// VpcArn: pulumi.Any(exampleAwsVpc.Arn),
 /// })
@@ -591,16 +634,14 @@ import 'core_network_state.dart';
 /// pulumi.String("0.0.0.0/0"),
 /// },
 /// Destinations: pulumi.StringArray{
-/// exampleVpcAttachment.ID(),
+/// exampleVpcAttachment.ID().ToIDOutput().ToStringOutput(),
 /// },
 /// },
 /// },
 /// }, nil);
 /// _, err = networkmanager.NewCoreNetworkPolicyAttachment(ctx, "example", &networkmanager.CoreNetworkPolicyAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID(),
-/// PolicyDocument: pulumi.String(example.ApplyT(func(example networkmanager.GetCoreNetworkPolicyDocumentResult) (*string, error) {
-/// return &example.Json, nil
-/// }).(pulumi.StringPtrOutput)),
+/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
+/// PolicyDocument: example.Json(),
 /// })
 /// if err != nil {
 /// return err
@@ -616,6 +657,63 @@ import 'core_network_state.dart';
 /// return pulumiArr
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkmanager_getcorenetworkpolicydocument" "base" {
+///   core_network_configurations {
+///     asn_ranges = ["65022-65534"]
+///     edge_locations {
+///       location = "us-west-2"
+///       asn      = "65500"
+///     }
+///   }
+///   segments {
+///     name = "segment"
+///   }
+/// }
+/// data "aws_networkmanager_getcorenetworkpolicydocument" "example" {
+///   core_network_configurations {
+///     asn_ranges = ["65022-65534"]
+///     edge_locations {
+///       location = "us-west-2"
+///       asn      = "65500"
+///     }
+///   }
+///   segments {
+///     name = "segment"
+///   }
+///   segment_actions {
+///     action                  = "create-route"
+///     segment                 = "segment"
+///     destination_cidr_blocks = ["0.0.0.0/0"]
+///     destinations            = [aws_networkmanager_vpcattachment.example.id]
+///   }
+/// }
+///
+/// resource "aws_networkmanager_globalnetwork" "example" {
+/// }
+/// resource "aws_networkmanager_corenetwork" "example" {
+///   global_network_id    = aws_networkmanager_globalnetwork.example.id
+///   base_policy_document = data.aws_networkmanager_getcorenetworkpolicydocument.base.json
+///   create_base_policy   = true
+/// }
+/// resource "aws_networkmanager_corenetworkpolicyattachment" "example" {
+///   core_network_id = aws_networkmanager_corenetwork.example.id
+///   policy_document = data.aws_networkmanager_getcorenetworkpolicydocument.example.json
+/// }
+/// resource "aws_networkmanager_vpcattachment" "example" {
+///   core_network_id = aws_networkmanager_corenetwork.example.id
+///   subnet_arns     = exampleAwsSubnet[*].arn
+///   vpc_arn         = exampleAwsVpc.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -625,14 +723,18 @@ import 'core_network_state.dart';
 /// import com.pulumi.aws.networkmanager.GlobalNetwork;
 /// import com.pulumi.aws.networkmanager.NetworkmanagerFunctions;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentArgs;
 /// import com.pulumi.aws.networkmanager.CoreNetwork;
 /// import com.pulumi.aws.networkmanager.CoreNetworkArgs;
 /// import com.pulumi.aws.networkmanager.VpcAttachment;
 /// import com.pulumi.aws.networkmanager.VpcAttachmentArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentActionArgs;
 /// import com.pulumi.aws.networkmanager.CoreNetworkPolicyAttachment;
 /// import com.pulumi.aws.networkmanager.CoreNetworkPolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -700,7 +802,7 @@ import 'core_network_state.dart';
 /// ```
 ///
 ///
-/// ### Option 2 - create_base_policy only
+/// ### Option 2 - createBasePolicy only
 ///
 ///
 /// ```typescript
@@ -736,7 +838,7 @@ import 'core_network_state.dart';
 /// });
 /// const exampleCoreNetworkPolicyAttachment = new aws.networkmanager.CoreNetworkPolicyAttachment("example", {
 ///     coreNetworkId: exampleCoreNetwork.id,
-///     policyDocument: example.apply(example => example.json),
+///     policyDocument: example.json,
 /// });
 /// ```
 /// ```python
@@ -859,7 +961,7 @@ import 'core_network_state.dart';
 /// return err
 /// }
 /// exampleCoreNetwork, err := networkmanager.NewCoreNetwork(ctx, "example", &networkmanager.CoreNetworkArgs{
-/// GlobalNetworkId: exampleGlobalNetwork.ID(),
+/// GlobalNetworkId: exampleGlobalNetwork.ID().ToIDOutput().ToStringOutput(),
 /// CreateBasePolicy: pulumi.Bool(true),
 /// })
 /// if err != nil {
@@ -867,10 +969,10 @@ import 'core_network_state.dart';
 /// }
 /// var splat0 []interface{}
 /// for _, val0 := range exampleAwsSubnet {
-/// splat0 = append(splat0, val0.Arn)
+/// splat0 = append(splat0, val0.(map[string]interface{})["arn"])
 /// }
 /// exampleVpcAttachment, err := networkmanager.NewVpcAttachment(ctx, "example", &networkmanager.VpcAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID(),
+/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
 /// SubnetArns: toPulumiArray(splat0),
 /// VpcArn: pulumi.Any(exampleAwsVpc.Arn),
 /// })
@@ -903,16 +1005,14 @@ import 'core_network_state.dart';
 /// pulumi.String("0.0.0.0/0"),
 /// },
 /// Destinations: pulumi.StringArray{
-/// exampleVpcAttachment.ID(),
+/// exampleVpcAttachment.ID().ToIDOutput().ToStringOutput(),
 /// },
 /// },
 /// },
 /// }, nil);
 /// _, err = networkmanager.NewCoreNetworkPolicyAttachment(ctx, "example", &networkmanager.CoreNetworkPolicyAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID(),
-/// PolicyDocument: pulumi.String(example.ApplyT(func(example networkmanager.GetCoreNetworkPolicyDocumentResult) (*string, error) {
-/// return &example.Json, nil
-/// }).(pulumi.StringPtrOutput)),
+/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
+/// PolicyDocument: example.Json(),
 /// })
 /// if err != nil {
 /// return err
@@ -928,6 +1028,49 @@ import 'core_network_state.dart';
 /// return pulumiArr
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkmanager_getcorenetworkpolicydocument" "example" {
+///   core_network_configurations {
+///     asn_ranges = ["65022-65534"]
+///     edge_locations {
+///       location = "us-west-2"
+///     }
+///   }
+///   segments {
+///     name = "segment"
+///   }
+///   segment_actions {
+///     action                  = "create-route"
+///     segment                 = "segment"
+///     destination_cidr_blocks = ["0.0.0.0/0"]
+///     destinations            = [aws_networkmanager_vpcattachment.example.id]
+///   }
+/// }
+///
+/// resource "aws_networkmanager_globalnetwork" "example" {
+/// }
+/// resource "aws_networkmanager_corenetwork" "example" {
+///   global_network_id  = aws_networkmanager_globalnetwork.example.id
+///   create_base_policy = true
+/// }
+/// resource "aws_networkmanager_corenetworkpolicyattachment" "example" {
+///   core_network_id = aws_networkmanager_corenetwork.example.id
+///   policy_document = data.aws_networkmanager_getcorenetworkpolicydocument.example.json
+/// }
+/// resource "aws_networkmanager_vpcattachment" "example" {
+///   core_network_id = aws_networkmanager_corenetwork.example.id
+///   subnet_arns     = exampleAwsSubnet[*].arn
+///   vpc_arn         = exampleAwsVpc.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -941,10 +1084,14 @@ import 'core_network_state.dart';
 /// import com.pulumi.aws.networkmanager.VpcAttachmentArgs;
 /// import com.pulumi.aws.networkmanager.NetworkmanagerFunctions;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentActionArgs;
 /// import com.pulumi.aws.networkmanager.CoreNetworkPolicyAttachment;
 /// import com.pulumi.aws.networkmanager.CoreNetworkPolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -999,12 +1146,12 @@ import 'core_network_state.dart';
 ///
 /// ### With VPC Attachment (Multi-Region)
 ///
-/// The example below illustrates the scenario where your policy document has static routes pointing to VPC attachments and you want to attach your VPCs to the core network before applying the desired policy document. Set the `create_base_policy` argument of the `aws.networkmanager.CoreNetwork` resource to `true` if your core network does not currently have any `LIVE` policies (e.g. this is the first `pulumi up` with the core network resource), since a `LIVE` policy is required before VPCs can be attached to the core network. Otherwise, if your core network already has a `LIVE` policy, you may exclude the `create_base_policy` argument. For multi-region in a core network that does not yet have a `LIVE` policy, there are 2 options:
+/// The example below illustrates the scenario where your policy document has static routes pointing to VPC attachments and you want to attach your VPCs to the core network before applying the desired policy document. Set the `createBasePolicy` argument of the `aws.networkmanager.CoreNetwork` resource to `true` if your core network does not currently have any `LIVE` policies (e.g. this is the first `pulumi up` with the core network resource), since a `LIVE` policy is required before VPCs can be attached to the core network. Otherwise, if your core network already has a `LIVE` policy, you may exclude the `createBasePolicy` argument. For multi-region in a core network that does not yet have a `LIVE` policy, there are 2 options:
 ///
-/// - Option 1: Use the `base_policy_document` argument that allows the most customizations to a base policy. Use this to customize the `edge_locations` `asn`. In the example below, `us-west-2`, `us-east-1` and specific ASNs are used in the base policy.
-/// - Option 2: Pass a list of regions to the `aws.networkmanager.CoreNetwork` `base_policy_regions` argument. In the example below, `us-west-2` and `us-east-1` are specified in the base policy.
+/// - Option 1: Use the `basePolicyDocument` argument that allows the most customizations to a base policy. Use this to customize the `edgeLocations` `asn`. In the example below, `us-west-2`, `us-east-1` and specific ASNs are used in the base policy.
+/// - Option 2: Pass a list of regions to the `aws.networkmanager.CoreNetwork` `basePolicyRegions` argument. In the example below, `us-west-2` and `us-east-1` are specified in the base policy.
 ///
-/// ### Option 1 - using base_policy_document
+/// ### Option 1 - using basePolicyDocument
 ///
 ///
 /// ```typescript
@@ -1084,7 +1231,7 @@ import 'core_network_state.dart';
 /// });
 /// const exampleCoreNetworkPolicyAttachment = new aws.networkmanager.CoreNetworkPolicyAttachment("example", {
 ///     coreNetworkId: exampleCoreNetwork.id,
-///     policyDocument: example.apply(example => example.json),
+///     policyDocument: example.json,
 /// });
 /// ```
 /// ```python
@@ -1340,7 +1487,7 @@ import 'core_network_state.dart';
 /// return err
 /// }
 /// exampleCoreNetwork, err := networkmanager.NewCoreNetwork(ctx, "example", &networkmanager.CoreNetworkArgs{
-/// GlobalNetworkId: exampleGlobalNetwork.ID(),
+/// GlobalNetworkId: exampleGlobalNetwork.ID().ToIDOutput().ToStringOutput(),
 /// BasePolicyDocument: pulumi.String(base.Json),
 /// CreateBasePolicy: pulumi.Bool(true),
 /// })
@@ -1349,10 +1496,10 @@ import 'core_network_state.dart';
 /// }
 /// var splat0 []interface{}
 /// for _, val0 := range exampleUsWest2AwsSubnet {
-/// splat0 = append(splat0, val0.Arn)
+/// splat0 = append(splat0, val0.(map[string]interface{})["arn"])
 /// }
 /// exampleUsWest2, err := networkmanager.NewVpcAttachment(ctx, "example_us_west_2", &networkmanager.VpcAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID(),
+/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
 /// SubnetArns: toPulumiArray(splat0),
 /// VpcArn: pulumi.Any(exampleUsWest2AwsVpc.Arn),
 /// })
@@ -1361,10 +1508,10 @@ import 'core_network_state.dart';
 /// }
 /// var splat1 []interface{}
 /// for _, val0 := range exampleUsEast1AwsSubnet {
-/// splat1 = append(splat1, val0.Arn)
+/// splat1 = append(splat1, val0.(map[string]interface{})["arn"])
 /// }
 /// exampleUsEast1, err := networkmanager.NewVpcAttachment(ctx, "example_us_east_1", &networkmanager.VpcAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID(),
+/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
 /// SubnetArns: toPulumiArray(splat1),
 /// VpcArn: pulumi.Any(exampleUsEast1AwsVpc.Arn),
 /// })
@@ -1405,7 +1552,7 @@ import 'core_network_state.dart';
 /// pulumi.String("10.0.0.0/16"),
 /// },
 /// Destinations: pulumi.StringArray{
-/// exampleUsWest2.ID(),
+/// exampleUsWest2.ID().ToIDOutput().ToStringOutput(),
 /// },
 /// },
 /// &networkmanager.GetCoreNetworkPolicyDocumentSegmentActionArgs{
@@ -1415,16 +1562,14 @@ import 'core_network_state.dart';
 /// pulumi.String("10.1.0.0/16"),
 /// },
 /// Destinations: pulumi.StringArray{
-/// exampleUsEast1.ID(),
+/// exampleUsEast1.ID().ToIDOutput().ToStringOutput(),
 /// },
 /// },
 /// },
 /// }, nil);
 /// _, err = networkmanager.NewCoreNetworkPolicyAttachment(ctx, "example", &networkmanager.CoreNetworkPolicyAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID(),
-/// PolicyDocument: pulumi.String(example.ApplyT(func(example networkmanager.GetCoreNetworkPolicyDocumentResult) (*string, error) {
-/// return &example.Json, nil
-/// }).(pulumi.StringPtrOutput)),
+/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
+/// PolicyDocument: example.Json(),
 /// })
 /// if err != nil {
 /// return err
@@ -1440,6 +1585,85 @@ import 'core_network_state.dart';
 /// return pulumiArr
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkmanager_getcorenetworkpolicydocument" "base" {
+///   core_network_configurations {
+///     asn_ranges = ["65022-65534"]
+///     edge_locations {
+///       location = "us-west-2"
+///       asn      = "65500"
+///     }
+///     edge_locations {
+///       location = "us-east-1"
+///       asn      = "65501"
+///     }
+///   }
+///   segments {
+///     name = "segment"
+///   }
+/// }
+/// data "aws_networkmanager_getcorenetworkpolicydocument" "example" {
+///   core_network_configurations {
+///     asn_ranges = ["65022-65534"]
+///     edge_locations {
+///       location = "us-west-2"
+///       asn      = "65500"
+///     }
+///     edge_locations {
+///       location = "us-east-1"
+///       asn      = "65501"
+///     }
+///   }
+///   segments {
+///     name = "segment"
+///   }
+///   segments {
+///     name = "segment2"
+///   }
+///   segment_actions {
+///     action                  = "create-route"
+///     segment                 = "segment"
+///     destination_cidr_blocks = ["10.0.0.0/16"]
+///     destinations            = [aws_networkmanager_vpcattachment.example_us_west_2.id]
+///   }
+///   segment_actions {
+///     action                  = "create-route"
+///     segment                 = "segment"
+///     destination_cidr_blocks = ["10.1.0.0/16"]
+///     destinations            = [aws_networkmanager_vpcattachment.example_us_east_1.id]
+///   }
+/// }
+///
+/// resource "aws_networkmanager_globalnetwork" "example" {
+/// }
+/// resource "aws_networkmanager_corenetwork" "example" {
+///   global_network_id    = aws_networkmanager_globalnetwork.example.id
+///   base_policy_document = data.aws_networkmanager_getcorenetworkpolicydocument.base.json
+///   create_base_policy   = true
+/// }
+/// resource "aws_networkmanager_corenetworkpolicyattachment" "example" {
+///   core_network_id = aws_networkmanager_corenetwork.example.id
+///   policy_document = data.aws_networkmanager_getcorenetworkpolicydocument.example.json
+/// }
+/// resource "aws_networkmanager_vpcattachment" "example_us_west_2" {
+///   core_network_id = aws_networkmanager_corenetwork.example.id
+///   subnet_arns     = exampleUsWest2AwsSubnet[*].arn
+///   vpc_arn         = exampleUsWest2AwsVpc.arn
+/// }
+/// resource "aws_networkmanager_vpcattachment" "example_us_east_1" {
+///   core_network_id = aws_networkmanager_corenetwork.example.id
+///   subnet_arns     = exampleUsEast1AwsSubnet[*].arn
+///   vpc_arn         = exampleUsEast1AwsVpc.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1449,14 +1673,18 @@ import 'core_network_state.dart';
 /// import com.pulumi.aws.networkmanager.GlobalNetwork;
 /// import com.pulumi.aws.networkmanager.NetworkmanagerFunctions;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentArgs;
 /// import com.pulumi.aws.networkmanager.CoreNetwork;
 /// import com.pulumi.aws.networkmanager.CoreNetworkArgs;
 /// import com.pulumi.aws.networkmanager.VpcAttachment;
 /// import com.pulumi.aws.networkmanager.VpcAttachmentArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentActionArgs;
 /// import com.pulumi.aws.networkmanager.CoreNetworkPolicyAttachment;
 /// import com.pulumi.aws.networkmanager.CoreNetworkPolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1551,7 +1779,7 @@ import 'core_network_state.dart';
 /// ```
 ///
 ///
-/// ### Option 2 - using base_policy_regions
+/// ### Option 2 - using basePolicyRegions
 ///
 ///
 /// ```typescript
@@ -1614,7 +1842,7 @@ import 'core_network_state.dart';
 /// });
 /// const exampleCoreNetworkPolicyAttachment = new aws.networkmanager.CoreNetworkPolicyAttachment("example", {
 ///     coreNetworkId: exampleCoreNetwork.id,
-///     policyDocument: example.apply(example => example.json),
+///     policyDocument: example.json,
 /// });
 /// ```
 /// ```python
@@ -1796,7 +2024,7 @@ import 'core_network_state.dart';
 /// return err
 /// }
 /// exampleCoreNetwork, err := networkmanager.NewCoreNetwork(ctx, "example", &networkmanager.CoreNetworkArgs{
-/// GlobalNetworkId: exampleGlobalNetwork.ID(),
+/// GlobalNetworkId: exampleGlobalNetwork.ID().ToIDOutput().ToStringOutput(),
 /// BasePolicyRegions: pulumi.StringArray{
 /// pulumi.String("us-west-2"),
 /// pulumi.String("us-east-1"),
@@ -1808,10 +2036,10 @@ import 'core_network_state.dart';
 /// }
 /// var splat0 []interface{}
 /// for _, val0 := range exampleUsWest2AwsSubnet {
-/// splat0 = append(splat0, val0.Arn)
+/// splat0 = append(splat0, val0.(map[string]interface{})["arn"])
 /// }
 /// exampleUsWest2, err := networkmanager.NewVpcAttachment(ctx, "example_us_west_2", &networkmanager.VpcAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID(),
+/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
 /// SubnetArns: toPulumiArray(splat0),
 /// VpcArn: pulumi.Any(exampleUsWest2AwsVpc.Arn),
 /// })
@@ -1820,10 +2048,10 @@ import 'core_network_state.dart';
 /// }
 /// var splat1 []interface{}
 /// for _, val0 := range exampleUsEast1AwsSubnet {
-/// splat1 = append(splat1, val0.Arn)
+/// splat1 = append(splat1, val0.(map[string]interface{})["arn"])
 /// }
 /// exampleUsEast1, err := networkmanager.NewVpcAttachment(ctx, "example_us_east_1", &networkmanager.VpcAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID(),
+/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
 /// SubnetArns: toPulumiArray(splat1),
 /// VpcArn: pulumi.Any(exampleUsEast1AwsVpc.Arn),
 /// })
@@ -1862,7 +2090,7 @@ import 'core_network_state.dart';
 /// pulumi.String("10.0.0.0/16"),
 /// },
 /// Destinations: pulumi.StringArray{
-/// exampleUsWest2.ID(),
+/// exampleUsWest2.ID().ToIDOutput().ToStringOutput(),
 /// },
 /// },
 /// &networkmanager.GetCoreNetworkPolicyDocumentSegmentActionArgs{
@@ -1872,16 +2100,14 @@ import 'core_network_state.dart';
 /// pulumi.String("10.1.0.0/16"),
 /// },
 /// Destinations: pulumi.StringArray{
-/// exampleUsEast1.ID(),
+/// exampleUsEast1.ID().ToIDOutput().ToStringOutput(),
 /// },
 /// },
 /// },
 /// }, nil);
 /// _, err = networkmanager.NewCoreNetworkPolicyAttachment(ctx, "example", &networkmanager.CoreNetworkPolicyAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID(),
-/// PolicyDocument: pulumi.String(example.ApplyT(func(example networkmanager.GetCoreNetworkPolicyDocumentResult) (*string, error) {
-/// return &example.Json, nil
-/// }).(pulumi.StringPtrOutput)),
+/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
+/// PolicyDocument: example.Json(),
 /// })
 /// if err != nil {
 /// return err
@@ -1897,6 +2123,67 @@ import 'core_network_state.dart';
 /// return pulumiArr
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkmanager_getcorenetworkpolicydocument" "example" {
+///   core_network_configurations {
+///     asn_ranges = ["65022-65534"]
+///     edge_locations {
+///       location = "us-west-2"
+///     }
+///     edge_locations {
+///       location = "us-east-1"
+///     }
+///   }
+///   segments {
+///     name = "segment"
+///   }
+///   segments {
+///     name = "segment2"
+///   }
+///   segment_actions {
+///     action                  = "create-route"
+///     segment                 = "segment"
+///     destination_cidr_blocks = ["10.0.0.0/16"]
+///     destinations            = [aws_networkmanager_vpcattachment.example_us_west_2.id]
+///   }
+///   segment_actions {
+///     action                  = "create-route"
+///     segment                 = "segment"
+///     destination_cidr_blocks = ["10.1.0.0/16"]
+///     destinations            = [aws_networkmanager_vpcattachment.example_us_east_1.id]
+///   }
+/// }
+///
+/// resource "aws_networkmanager_globalnetwork" "example" {
+/// }
+/// resource "aws_networkmanager_corenetwork" "example" {
+///   global_network_id   = aws_networkmanager_globalnetwork.example.id
+///   base_policy_regions = ["us-west-2", "us-east-1"]
+///   create_base_policy  = true
+/// }
+/// resource "aws_networkmanager_corenetworkpolicyattachment" "example" {
+///   core_network_id = aws_networkmanager_corenetwork.example.id
+///   policy_document = data.aws_networkmanager_getcorenetworkpolicydocument.example.json
+/// }
+/// resource "aws_networkmanager_vpcattachment" "example_us_west_2" {
+///   core_network_id = aws_networkmanager_corenetwork.example.id
+///   subnet_arns     = exampleUsWest2AwsSubnet[*].arn
+///   vpc_arn         = exampleUsWest2AwsVpc.arn
+/// }
+/// resource "aws_networkmanager_vpcattachment" "example_us_east_1" {
+///   core_network_id = aws_networkmanager_corenetwork.example.id
+///   subnet_arns     = exampleUsEast1AwsSubnet[*].arn
+///   vpc_arn         = exampleUsEast1AwsVpc.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1910,10 +2197,14 @@ import 'core_network_state.dart';
 /// import com.pulumi.aws.networkmanager.VpcAttachmentArgs;
 /// import com.pulumi.aws.networkmanager.NetworkmanagerFunctions;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentActionArgs;
 /// import com.pulumi.aws.networkmanager.CoreNetworkPolicyAttachment;
 /// import com.pulumi.aws.networkmanager.CoreNetworkPolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1990,6 +2281,35 @@ import 'core_network_state.dart';
 /// ```
 ///
 ///
+/// ### Base Policy Example
+///
+/// The base policy created by `createBasePolicy` looks like the following. This base policy is overridden by the policy you specify in the `aws.networkmanager.CoreNetworkPolicyAttachment` resource.
+///
+/// ```json
+/// {
+///   "version": "2021.12",
+///   "core-network-configuration": {
+///     "asn-ranges": [
+///       "64512-65534"
+///     ],
+///     "vpn-ecmp-support": false,
+///     "edge-locations": [
+///       {
+///         "location": "us-east-1"
+///       }
+///     ]
+///   },
+///   "segments": [
+///     {
+///       "name": "segment",
+///       "description": "base-policy",
+///       "isolate-attachments": false,
+///       "require-attachment-acceptance": false
+///     }
+///   ]
+/// }
+/// ```
+///
 /// ## Import
 ///
 /// Using `pulumi import`, import `aws.networkmanager.CoreNetwork` using the core network ID. For example:
@@ -2002,34 +2322,9 @@ class CoreNetwork extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Sets the base policy document for the core network. Refer to the [Core network policies documentation](https://docs.aws.amazon.com/network-manager/latest/cloudwan/cloudwan-policy-change-sets.html) for more information.
   late final pulumi.Output<String?> basePolicyDocument;
-  /// List of regions to add to the base policy. The base policy created by setting the `create_base_policy` argument to `true` requires one or more regions to be set in the `edge-locations`, `location` key. If `base_policy_regions` is not specified, the region used in the base policy defaults to the region specified in the `provider` block.
+  /// List of regions to add to the base policy. The base policy created by setting the `createBasePolicy` argument to `true` requires one or more regions to be set in the `edge-locations`, `location` key. If `basePolicyRegions` is not specified, the region used in the base policy defaults to the region specified in the `provider` block.
   late final pulumi.Output<List<String>?> basePolicyRegions;
-  /// Whether to create a base policy when a core network is created or updated. A base policy is created and set to `LIVE` to allow attachments to the core network (e.g. VPC Attachments) before applying a policy document provided using the `aws.networkmanager.CoreNetworkPolicyAttachment` resource. This base policy is needed if your core network does not have any `LIVE` policies and your policy document has static routes pointing to VPC attachments and you want to attach your VPCs to the core network before applying the desired policy document. Valid values are `true` or `false`. An example of this Pulumi snippet can be found above for VPC Attachment in a single region and for VPC Attachment multi-region. An example base policy is shown below. This base policy is overridden with the policy that you specify in the `aws.networkmanager.CoreNetworkPolicyAttachment` resource.
-  ///
-  /// ```json
-  /// {
-  /// "version": "2021.12",
-  /// "core-network-configuration": {
-  /// "asn-ranges": [
-  /// "64512-65534"
-  /// ],
-  /// "vpn-ecmp-support": false,
-  /// "edge-locations": [
-  /// {
-  /// "location": "us-east-1"
-  /// }
-  /// ]
-  /// },
-  /// "segments": [
-  /// {
-  /// "name": "segment",
-  /// "description": "base-policy",
-  /// "isolate-attachments": false,
-  /// "require-attachment-acceptance": false
-  /// }
-  /// ]
-  /// }
-  /// ```
+  /// Whether to create a base policy when a core network is created or updated. A base policy is created and set to `LIVE` to allow attachments to the core network (e.g. VPC Attachments) before applying a policy document provided using the `aws.networkmanager.CoreNetworkPolicyAttachment` resource. This base policy is needed if your core network does not have any `LIVE` policies and your policy document has static routes pointing to VPC attachments and you want to attach your VPCs to the core network before applying the desired policy document. Valid values are `true` or `false`. An example of this Pulumi snippet can be found above for VPC Attachment in a single region and for VPC Attachment multi-region. An example base policy is shown in the Base Policy Example section. This base policy is overridden with the policy that you specify in the `aws.networkmanager.CoreNetworkPolicyAttachment` resource.
   late final pulumi.Output<bool?> createBasePolicy;
   /// Timestamp when a core network was created.
   late final pulumi.Output<String> createdAt;
@@ -2045,9 +2340,9 @@ class CoreNetwork extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> segments;
   /// Current state of a core network.
   late final pulumi.Output<String> state;
-  /// Key-value tags for the Core Network. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the Core Network. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [CoreNetwork].

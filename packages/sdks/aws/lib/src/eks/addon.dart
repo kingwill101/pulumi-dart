@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'addon_args.dart';
+import 'addon_namespace_config.dart';
 import 'addon_state.dart';
 
 /// Manages an EKS add-on.
@@ -61,6 +62,20 @@ import 'addon_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_eks_addon" "example" {
+///   cluster_name = exampleAwsEksCluster.name
+///   addon_name   = "vpc-cni"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +84,8 @@ import 'addon_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.eks.Addon;
 /// import com.pulumi.aws.eks.AddonArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -100,9 +115,9 @@ import 'addon_state.dart';
 /// ```
 ///
 ///
-/// ## Example Update add-on usage with resolve_conflicts_on_update and PRESERVE
+/// ### Example Update add-on usage with resolveConflictsOnUpdate and PRESERVE
 ///
-/// `resolve_conflicts_on_update` with `PRESERVE` can be used to retain the config changes applied to the add-on with kubectl while upgrading to a newer version of the add-on.
+/// `resolveConflictsOnUpdate` with `PRESERVE` can be used to retain the config changes applied to the add-on with kubectl while upgrading to a newer version of the add-on.
 ///
 ///
 /// ```typescript
@@ -167,6 +182,22 @@ import 'addon_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_eks_addon" "example" {
+///   cluster_name                = exampleAwsEksCluster.name
+///   addon_name                  = "coredns"
+///   addon_version               = "v1.10.1-eksbuild.1"
+///   resolve_conflicts_on_update = "PRESERVE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +206,8 @@ import 'addon_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.eks.Addon;
 /// import com.pulumi.aws.eks.AddonArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -210,14 +241,14 @@ import 'addon_state.dart';
 /// ```
 ///
 ///
-/// ## Example add-on usage with custom configuration_values
+/// ### Example add-on usage with custom configurationValues
 ///
-/// Custom add-on configuration can be passed using `configuration_values` as a single JSON string while creating or updating the add-on.
+/// Custom add-on configuration can be passed using `configurationValues` as a single JSON string while creating or updating the add-on.
 ///
-/// &gt; **Note:** `configuration_values` is a single JSON string should match the valid JSON schema for each add-on with specific version.
+/// &gt; **Note:** `configurationValues` is a single JSON string should match the valid JSON schema for each add-on with specific version.
 ///
 /// You can use [describe-addon-configuration](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-configuration.html) to extract each add-on's JSON schema.
-/// Here's an example command to extract the `configuration_values` schema for `coredns`.
+/// Here's an example command to extract the `configurationValues` schema for `coredns`.
 ///
 /// ```bash
 /// aws eks describe-addon-configuration \
@@ -226,7 +257,7 @@ import 'addon_state.dart';
 ///   | jq -r .configurationSchema | jq .
 /// ```
 ///
-/// Example to create a `coredns` managed addon with custom `configuration_values`.
+/// Example to create a `coredns` managed addon with custom `configurationValues`.
 ///
 ///
 /// ```typescript
@@ -327,12 +358,12 @@ import 'addon_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
 /// 			"replicaCount": 4,
-/// 			"resources": map[string]interface{}{
-/// 				"limits": map[string]interface{}{
+/// 			"resources": map[string]map[string]string{
+/// 				"limits": map[string]string{
 /// 					"cpu":    "100m",
 /// 					"memory": "150Mi",
 /// 				},
-/// 				"requests": map[string]interface{}{
+/// 				"requests": map[string]string{
 /// 					"cpu":    "100m",
 /// 					"memory": "150Mi",
 /// 				},
@@ -356,6 +387,35 @@ import 'addon_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_eks_addon" "example" {
+///   cluster_name                = "mycluster"
+///   addon_name                  = "coredns"
+///   addon_version               = "v1.10.1-eksbuild.1"
+///   resolve_conflicts_on_create = "OVERWRITE"
+///   configuration_values = jsonencode({
+///     "replicaCount" = 4
+///     "resources" = {
+///       "limits" = {
+///         "cpu"    = "100m"
+///         "memory" = "150Mi"
+///       }
+///       "requests" = {
+///         "cpu"    = "100m"
+///         "memory" = "150Mi"
+///       }
+///     }
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -365,8 +425,8 @@ import 'addon_state.dart';
 /// import com.pulumi.aws.eks.Addon;
 /// import com.pulumi.aws.eks.AddonArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -424,12 +484,16 @@ import 'addon_state.dart';
 /// ```
 ///
 ///
-/// ## Import
+/// #### Optional
 ///
-/// Using `pulumi import`, import EKS add-on using the `cluster_name` and `addon_name` separated by a colon (`:`). For example:
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Add-Ons using `clusterName` and `addonName` separated by a colon (`:`). For example:
 ///
 /// ```sh
-/// $ pulumi import aws:eks/addon:Addon my_eks_addon my_cluster_name:my_addon_name
+/// $ pulumi import aws:eks/addon:Addon example example-cluster:example-addon
 /// ```
 class Addon extends pulumi.CustomResource {
   /// Name of the EKS add-on. The name must match one of
@@ -444,13 +508,15 @@ class Addon extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> clusterName;
-  /// custom configuration values for addons with single JSON string. This JSON string value must match the JSON schema derived from [describe-addon-configuration](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-configuration.html).
+  /// Custom configuration values for addons with single JSON string. This JSON string value must match the JSON schema derived from [describe-addon-configuration](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-configuration.html).
   late final pulumi.Output<String> configurationValues;
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the EKS add-on was created.
   late final pulumi.Output<String> createdAt;
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the EKS add-on was updated.
   late final pulumi.Output<String> modifiedAt;
-  /// Configuration block with EKS Pod Identity association settings. See `pod_identity_association` below for details.
+  /// Namespace configuration for the add-on. See `namespaceConfig` below for details.
+  late final pulumi.Output<AddonNamespaceConfig> namespaceConfig;
+  /// Configuration block with EKS Pod Identity association settings. See `podIdentityAssociation` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> podIdentityAssociations;
   /// Indicates if you want to preserve the created resources when deleting the EKS add-on.
   late final pulumi.Output<bool?> preserve;
@@ -472,9 +538,9 @@ class Addon extends pulumi.CustomResource {
   /// for service accounts on your cluster](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
   /// in the Amazon EKS User Guide.
   late final pulumi.Output<String?> serviceAccountRoleArn;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// (Optional) Key-value map of resource tags, including those inherited from the provider `default_tags` configuration block.
+  /// (Optional) Key-value map of resource tags, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Addon].
@@ -498,6 +564,7 @@ class Addon extends pulumi.CustomResource {
     configurationValues = registerOutput<String>('configurationValues');
     createdAt = registerOutput<String>('createdAt');
     modifiedAt = registerOutput<String>('modifiedAt');
+    namespaceConfig = registerOutput<AddonNamespaceConfig>('namespaceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddonNamespaceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     podIdentityAssociations = registerOutput<List<Map<String, dynamic>>?>('podIdentityAssociations');
     preserve = registerOutput<bool?>('preserve');
     region = registerOutput<String>('region');
@@ -538,6 +605,7 @@ class Addon extends pulumi.CustomResource {
     configurationValues = registerOutput<String>('configurationValues');
     createdAt = registerOutput<String>('createdAt');
     modifiedAt = registerOutput<String>('modifiedAt');
+    namespaceConfig = registerOutput<AddonNamespaceConfig>('namespaceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddonNamespaceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     podIdentityAssociations = registerOutput<List<Map<String, dynamic>>?>('podIdentityAssociations');
     preserve = registerOutput<bool?>('preserve');
     region = registerOutput<String>('region');

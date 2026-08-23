@@ -50,7 +50,7 @@ import 'organizational_unit_association_state.dart';
 ///     name="example-ou",
 ///     parent_id=example.roots[0].id)
 /// # Allow time for organizational unit creation to propagate
-/// wait = time.index.Sleep("wait", create_duration=5s,
+/// wait = time.Sleep("wait", create_duration=5s,
 /// opts = pulumi.ResourceOptions(depends_on=[
 ///         example_organizational_unit,
 ///         example_notification_configuration,
@@ -84,7 +84,7 @@ import 'organizational_unit_association_state.dart';
 ///     });
 ///
 ///     // Allow time for organizational unit creation to propagate
-///     var wait = new Time.Index.Sleep("wait", new()
+///     var wait = new Time.Sleep("wait", new()
 ///     {
 ///         CreateDuration = "5s",
 ///     }, new CustomResourceOptions
@@ -151,7 +151,7 @@ import 'organizational_unit_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = notifications.NewOrganizationalUnitAssociation(ctx, "example", &notifications.OrganizationalUnitAssociationArgs{
-/// 			OrganizationalUnitId:         exampleOrganizationalUnit.ID(),
+/// 			OrganizationalUnitId:         exampleOrganizationalUnit.ID().ToIDOutput().ToStringOutput(),
 /// 			NotificationConfigurationArn: exampleNotificationConfiguration.Arn,
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			wait,
@@ -161,6 +161,37 @@ import 'organizational_unit_association_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_organizations_getorganization" "example" {
+/// }
+///
+/// resource "aws_notifications_notificationconfiguration" "example" {
+///   name        = "example-notification-config"
+///   description = "Example notification configuration"
+/// }
+/// resource "aws_organizations_organizationalunit" "example" {
+///   name      = "example-ou"
+///   parent_id = data.aws_organizations_getorganization.example.roots[0].id
+/// }
+/// # Allow time for organizational unit creation to propagate
+/// resource "time_sleep" "wait" {
+///   depends_on      = [aws_organizations_organizationalunit.example, aws_notifications_notificationconfiguration.example]
+///   create_duration = "5s"
+/// }
+/// resource "aws_notifications_organizationalunitassociation" "example" {
+///   depends_on                     = [time_sleep.wait]
+///   organizational_unit_id         = aws_organizations_organizationalunit.example.id
+///   notification_configuration_arn = aws_notifications_notificationconfiguration.example.arn
 /// }
 /// ```
 /// ```java
@@ -180,8 +211,8 @@ import 'organizational_unit_association_state.dart';
 /// import com.pulumi.aws.notifications.OrganizationalUnitAssociation;
 /// import com.pulumi.aws.notifications.OrganizationalUnitAssociationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -210,7 +241,7 @@ import 'organizational_unit_association_state.dart';
 ///         var wait = new Sleep("wait", SleepArgs.builder()
 ///             .createDuration("5s")
 ///             .build(), CustomResourceOptions.builder()
-///                 .dependsOn(List.of(
+///                 .dependsOn(Arrays.asList(
 ///                     exampleOrganizationalUnit,
 ///                     exampleNotificationConfiguration))
 ///                 .build());
@@ -351,6 +382,27 @@ import 'organizational_unit_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_organizations_getorganization" "example" {
+/// }
+///
+/// resource "aws_notifications_notificationconfiguration" "example" {
+///   name        = "example-notification-config"
+///   description = "Example notification configuration"
+/// }
+/// resource "aws_notifications_organizationalunitassociation" "example" {
+///   organizational_unit_id         = data.aws_organizations_getorganization.example.roots[0].id
+///   notification_configuration_arn = aws_notifications_notificationconfiguration.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -363,8 +415,8 @@ import 'organizational_unit_association_state.dart';
 /// import com.pulumi.aws.notifications.NotificationConfigurationArgs;
 /// import com.pulumi.aws.notifications.OrganizationalUnitAssociation;
 /// import com.pulumi.aws.notifications.OrganizationalUnitAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

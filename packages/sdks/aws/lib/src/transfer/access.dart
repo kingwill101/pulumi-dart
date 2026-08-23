@@ -74,6 +74,22 @@ import 'access_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transfer_access" "example" {
+///   external_id    = "S-1-1-12-1234567890-123456789-1234567890-1234"
+///   server_id      = exampleAwsTransferServer.id
+///   role           = exampleAwsIamRole.arn
+///   home_directory ="/${exampleAwsS3Bucket.id}/"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +98,8 @@ import 'access_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.transfer.Access;
 /// import com.pulumi.aws.transfer.AccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -199,6 +215,26 @@ import 'access_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transfer_access" "test" {
+///   external_id    = "S-1-1-12-1234567890-123456789-1234567890-1234"
+///   server_id      = testAwsTransferServer.id
+///   role           = testAwsIamRole.arn
+///   home_directory ="/${testAwsEfsFileSystem.id}/"
+///   posix_profile = {
+///     gid = 1000
+///     uid = 1000
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -208,8 +244,8 @@ import 'access_state.dart';
 /// import com.pulumi.aws.transfer.Access;
 /// import com.pulumi.aws.transfer.AccessArgs;
 /// import com.pulumi.aws.transfer.inputs.AccessPosixProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -252,29 +288,29 @@ import 'access_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Transfer Accesses using the `server_id` and `external_id`. For example:
+/// Using `pulumi import`, import Transfer Accesses using the `serverId` and `externalId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:transfer/access:Access example s-12345678/S-1-1-12-1234567890-123456789-1234567890-1234
 /// ```
 class Access extends pulumi.CustomResource {
-  /// The SID of a group in the directory connected to the Transfer Server (e.g., `S-1-1-12-1234567890-123456789-1234567890-1234`)
+  /// SID of a group in the directory connected to the Transfer Server (e.g., `S-1-1-12-1234567890-123456789-1234567890-1234`)
   late final pulumi.Output<String> externalId;
-  /// The landing directory (folder) for a user when they log in to the server using their SFTP client.  It should begin with a `/`.  The first item in the path is the name of the home bucket (accessible as `${Transfer:HomeBucket}` in the policy) and the rest is the home directory (accessible as `${Transfer:HomeDirectory}` in the policy). For example, `/example-bucket-1234/username` would set the home bucket to `example-bucket-1234` and the home directory to `username`.
+  /// Landing directory (folder) for a user when they log in to the server using their SFTP client.  It should begin with a `/`.  The first item in the path is the name of the home bucket (accessible as `${Transfer:HomeBucket}` in the policy) and the rest is the home directory (accessible as `${Transfer:HomeDirectory}` in the policy). For example, `/example-bucket-1234/username` would set the home bucket to `example-bucket-1234` and the home directory to `username`.
   late final pulumi.Output<String?> homeDirectory;
-  /// Logical directory mappings that specify what S3 paths and keys should be visible to your user and how you want to make them visible. See Home Directory Mappings below.
+  /// Logical directory mappings that specify what S3 paths and keys should be visible to your user and how you want to make them visible. See `homeDirectoryMappings` Block below.
   late final pulumi.Output<List<Map<String, dynamic>>?> homeDirectoryMappings;
-  /// The type of landing directory (folder) you mapped for your users' home directory. Valid values are `PATH` and `LOGICAL`.
+  /// Type of landing directory (folder) you mapped for your users' home directory. Valid values are `PATH` and `LOGICAL`.
   late final pulumi.Output<String?> homeDirectoryType;
-  /// An IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket. IAM variables you can use inside this policy include `${Transfer:UserName}`, `${Transfer:HomeDirectory}`, and `${Transfer:HomeBucket}`. These are evaluated on-the-fly when navigating the bucket.
+  /// IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket. IAM variables you can use inside this policy include `${Transfer:UserName}`, `${Transfer:HomeDirectory}`, and `${Transfer:HomeBucket}`. These are evaluated on-the-fly when navigating the bucket.
   late final pulumi.Output<String?> policy;
-  /// Specifies the full POSIX identity, including user ID (Uid), group ID (Gid), and any secondary groups IDs (SecondaryGids), that controls your users' access to your Amazon EFS file systems. See Posix Profile below.
+  /// Full POSIX identity, including user ID (Uid), group ID (Gid), and any secondary groups IDs (SecondaryGids), that controls your users' access to your Amazon EFS file systems. See `posixProfile` Block below.
   late final pulumi.Output<AccessPosixProfile?> posixProfile;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Amazon Resource Name (ARN) of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
   late final pulumi.Output<String?> role;
-  /// The Server ID of the Transfer Server (e.g., `s-12345678`)
+  /// Server ID of the Transfer Server (e.g., `s-12345678`)
   late final pulumi.Output<String> serverId;
 
   /// Creates a new [Access].

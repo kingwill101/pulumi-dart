@@ -29,7 +29,7 @@ import 'session_logger_state.dart';
 /// });
 /// const exampleBucketPolicy = new aws.s3.BucketPolicy("example", {
 ///     bucket: exampleBucket.id,
-///     policy: example.apply(example => example.json),
+///     policy: example.json,
 /// });
 /// const exampleSessionLogger = new aws.workspacesweb.SessionLogger("example", {
 ///     displayName: "example-session-logger",
@@ -197,10 +197,8 @@ import 'session_logger_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		exampleBucketPolicy, err := s3.NewBucketPolicy(ctx, "example", &s3.BucketPolicyArgs{
-/// 			Bucket: exampleBucket.ID(),
-/// 			Policy: pulumi.String(example.ApplyT(func(example iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &example.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: example.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -212,7 +210,7 @@ import 'session_logger_state.dart';
 /// 			},
 /// 			LogConfiguration: &workspacesweb.SessionLoggerLogConfigurationArgs{
 /// 				S3: &workspacesweb.SessionLoggerLogConfigurationS3Args{
-/// 					Bucket:          exampleBucket.ID(),
+/// 					Bucket:          exampleBucket.ID().ToIDOutput().ToStringOutput(),
 /// 					FolderStructure: pulumi.String("Flat"),
 /// 					LogFileFormat:   pulumi.String("Json"),
 /// 				},
@@ -227,6 +225,49 @@ import 'session_logger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["workspaces-web.amazonaws.com"]
+///     }
+///     actions   = ["s3:PutObject"]
+///     resources = ["${aws_s3_bucket.example.arn}/*"]
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example-session-logs"
+/// }
+/// resource "aws_s3_bucketpolicy" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   policy = data.aws_iam_getpolicydocument.example.json
+/// }
+/// resource "aws_workspacesweb_sessionlogger" "example" {
+///   depends_on   = [aws_s3_bucketpolicy.example]
+///   display_name = "example-session-logger"
+///   event_filter = {
+///     all = {}
+///   }
+///   log_configuration = {
+///     s3 = {
+///       bucket           = aws_s3_bucket.example.id
+///       folder_structure = "Flat"
+///       log_file_format  = "Json"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -237,6 +278,8 @@ import 'session_logger_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.s3.BucketPolicy;
 /// import com.pulumi.aws.s3.BucketPolicyArgs;
 /// import com.pulumi.aws.workspacesweb.SessionLogger;
@@ -246,8 +289,8 @@ import 'session_logger_state.dart';
 /// import com.pulumi.aws.workspacesweb.inputs.SessionLoggerLogConfigurationArgs;
 /// import com.pulumi.aws.workspacesweb.inputs.SessionLoggerLogConfigurationS3Args;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -373,7 +416,7 @@ import 'session_logger_state.dart';
 /// });
 /// const exampleBucketPolicy = new aws.s3.BucketPolicy("example", {
 ///     bucket: exampleBucket.id,
-///     policy: example.apply(example => example.json),
+///     policy: example.json,
 /// });
 /// const current = aws.getPartition({});
 /// const currentGetCallerIdentity = aws.getCallerIdentity({});
@@ -727,10 +770,8 @@ import 'session_logger_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		exampleBucketPolicy, err := s3.NewBucketPolicy(ctx, "example", &s3.BucketPolicyArgs{
-/// 			Bucket: exampleBucket.ID(),
-/// 			Policy: pulumi.String(example.ApplyT(func(example iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &example.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: example.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -807,7 +848,7 @@ import 'session_logger_state.dart';
 /// 			},
 /// 			LogConfiguration: &workspacesweb.SessionLoggerLogConfigurationArgs{
 /// 				S3: &workspacesweb.SessionLoggerLogConfigurationS3Args{
-/// 					Bucket:          exampleBucket.ID(),
+/// 					Bucket:          exampleBucket.ID().ToIDOutput().ToStringOutput(),
 /// 					BucketOwner:     pulumi.String(currentGetCallerIdentity.AccountId),
 /// 					FolderStructure: pulumi.String("NestedByDate"),
 /// 					KeyPrefix:       pulumi.String("workspaces-web-logs/"),
@@ -829,6 +870,87 @@ import 'session_logger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["workspaces-web.amazonaws.com"]
+///     }
+///     actions   = ["s3:PutObject"]
+///     resources = [aws_s3_bucket.example.arn, "${aws_s3_bucket.example.arn}/*"]
+///   }
+/// }
+/// data "aws_getpartition" "current" {
+/// }
+/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// }
+/// data "aws_iam_getpolicydocument" "kmsKeyPolicy" {
+///   statements {
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["arn:${data.aws_getpartition.current.partition}:iam::${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:root"]
+///     }
+///     actions   = ["kms:*"]
+///     resources = ["*"]
+///   }
+///   statements {
+///     principals {
+///       type        = "Service"
+///       identifiers = ["workspaces-web.amazonaws.com"]
+///     }
+///     actions   = ["kms:Encrypt", "kms:GenerateDataKey*", "kms:ReEncrypt*", "kms:Decrypt"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket        = "example-session-logs"
+///   force_destroy = true
+/// }
+/// resource "aws_s3_bucketpolicy" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   policy = data.aws_iam_getpolicydocument.example.json
+/// }
+/// resource "aws_kms_key" "example" {
+///   description = "KMS key for WorkSpaces Web Session Logger"
+///   policy      = data.aws_iam_getpolicydocument.kmsKeyPolicy.json
+/// }
+/// resource "aws_workspacesweb_sessionlogger" "example" {
+///   depends_on           = [aws_s3_bucketpolicy.example, aws_kms_key.example]
+///   display_name         = "example-session-logger"
+///   customer_managed_key = aws_kms_key.example.arn
+///   additional_encryption_context = {
+///     "Environment" = "Production"
+///     "Application" = "WorkSpacesWeb"
+///   }
+///   event_filter = {
+///     includes = ["SessionStart", "SessionEnd"]
+///   }
+///   log_configuration = {
+///     s3 = {
+///       bucket           = aws_s3_bucket.example.id
+///       bucket_owner     = data.aws_getcalleridentity.currentGetCallerIdentity.account_id
+///       folder_structure = "NestedByDate"
+///       key_prefix       = "workspaces-web-logs/"
+///       log_file_format  = "JsonLines"
+///     }
+///   }
+///   tags = {
+///     "Name"        = "example-session-logger"
+///     "Environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -839,6 +961,8 @@ import 'session_logger_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.s3.BucketPolicy;
 /// import com.pulumi.aws.s3.BucketPolicyArgs;
 /// import com.pulumi.aws.AwsFunctions;
@@ -852,8 +976,8 @@ import 'session_logger_state.dart';
 /// import com.pulumi.aws.workspacesweb.inputs.SessionLoggerLogConfigurationArgs;
 /// import com.pulumi.aws.workspacesweb.inputs.SessionLoggerLogConfigurationS3Args;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1058,7 +1182,7 @@ import 'session_logger_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import WorkSpaces Web Session Logger using the `session_logger_arn`. For example:
+/// Using `pulumi import`, import WorkSpaces Web Session Logger using the `sessionLoggerArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:workspacesweb/sessionLogger:SessionLogger example arn:aws:workspaces-web:us-west-2:123456789012:sessionLogger/session_logger-id-12345678
@@ -1082,9 +1206,9 @@ class SessionLogger extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// ARN of the session logger.
   late final pulumi.Output<String> sessionLoggerArn;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [SessionLogger].

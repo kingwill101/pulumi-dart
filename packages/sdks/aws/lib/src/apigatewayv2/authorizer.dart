@@ -82,6 +82,23 @@ import 'authorizer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigatewayv2_authorizer" "example" {
+///   api_id           = exampleAwsApigatewayv2Api.id
+///   authorizer_type  = "REQUEST"
+///   authorizer_uri   = exampleAwsLambdaFunction.invokeArn
+///   identity_sources = ["route.request.header.Auth"]
+///   name             = "example-authorizer"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +107,8 @@ import 'authorizer_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigatewayv2.Authorizer;
 /// import com.pulumi.aws.apigatewayv2.AuthorizerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -206,6 +223,24 @@ import 'authorizer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigatewayv2_authorizer" "example" {
+///   api_id                            = exampleAwsApigatewayv2Api.id
+///   authorizer_type                   = "REQUEST"
+///   authorizer_uri                    = exampleAwsLambdaFunction.invokeArn
+///   identity_sources                  = ["$request.header.Authorization"]
+///   name                              = "example-authorizer"
+///   authorizer_payload_format_version = "2.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -214,8 +249,8 @@ import 'authorizer_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigatewayv2.Authorizer;
 /// import com.pulumi.aws.apigatewayv2.AuthorizerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -264,33 +299,21 @@ import 'authorizer_state.dart';
 class Authorizer extends pulumi.CustomResource {
   /// API identifier.
   late final pulumi.Output<String> apiId;
-  /// Required credentials as an IAM role for API Gateway to invoke the authorizer.
-  /// Supported only for `REQUEST` authorizers.
+  /// Required credentials as an IAM role for API Gateway to invoke the authorizer. Supported only for `REQUEST` authorizers.
   late final pulumi.Output<String?> authorizerCredentialsArn;
-  /// Format of the payload sent to an HTTP API Lambda authorizer. Required for HTTP API Lambda authorizers.
-  /// Valid values: `1.0`, `2.0`.
+  /// Format of the payload sent to an HTTP API Lambda authorizer. Required for HTTP API Lambda authorizers. Valid values: `1.0`, `2.0`.
   late final pulumi.Output<String?> authorizerPayloadFormatVersion;
-  /// Time to live (TTL) for cached authorizer results, in seconds. If it equals 0, authorization caching is disabled.
-  /// If it is greater than 0, API Gateway caches authorizer responses. The maximum value is 3600, or 1 hour. Defaults to `300`.
-  /// Supported only for HTTP API Lambda authorizers.
+  /// Time to live (TTL) for cached authorizer results, in seconds. If it equals 0, authorization caching is disabled. If it is greater than 0, API Gateway caches authorizer responses. The maximum value is 3600, or 1 hour. Defaults to `300`. Supported only for HTTP API Lambda authorizers.
   late final pulumi.Output<int> authorizerResultTtlInSeconds;
-  /// Authorizer type. Valid values: `JWT`, `REQUEST`.
-  /// Specify `REQUEST` for a Lambda function using incoming request parameters.
-  /// For HTTP APIs, specify `JWT` to use JSON Web Tokens.
+  /// Authorizer type. Valid values: `JWT`, `REQUEST`. Specify `REQUEST` for a Lambda function using incoming request parameters. For HTTP APIs, specify `JWT` to use JSON Web Tokens.
   late final pulumi.Output<String> authorizerType;
-  /// Authorizer's Uniform Resource Identifier (URI).
-  /// For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invoke_arn` attribute of the `aws.lambda.Function` resource.
-  /// Supported only for `REQUEST` authorizers. Must be between 1 and 2048 characters in length.
+  /// Authorizer's Uniform Resource Identifier (URI). For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invokeArn` attribute of the `aws.lambda.Function` resource. Supported only for `REQUEST` authorizers. Must be between 1 and 2048 characters in length.
   late final pulumi.Output<String?> authorizerUri;
-  /// Whether a Lambda authorizer returns a response in a simple format. If enabled, the Lambda authorizer can return a boolean value instead of an IAM policy.
-  /// Supported only for HTTP APIs.
+  /// Whether a Lambda authorizer returns a response in a simple format. If enabled, the Lambda authorizer can return a boolean value instead of an IAM policy. Supported only for HTTP APIs.
   late final pulumi.Output<bool?> enableSimpleResponses;
-  /// Identity sources for which authorization is requested.
-  /// For `REQUEST` authorizers the value is a list of one or more mapping expressions of the specified request parameters.
-  /// For `JWT` authorizers the single entry specifies where to extract the JSON Web Token (JWT) from inbound requests.
+  /// Identity sources for which authorization is requested. For `REQUEST` authorizers the value is a list of one or more mapping expressions of the specified request parameters. For `JWT` authorizers the single entry specifies where to extract the JSON Web Token (JWT) from inbound requests.
   late final pulumi.Output<List<String>?> identitySources;
-  /// Configuration of a JWT authorizer. Required for the `JWT` authorizer type.
-  /// Supported only for HTTP APIs.
+  /// Configuration of a JWT authorizer. Required for the `JWT` authorizer type. Supported only for HTTP APIs. See `jwtConfiguration` Block below.
   late final pulumi.Output<AuthorizerJwtConfiguration?> jwtConfiguration;
   /// Name of the authorizer. Must be between 1 and 128 characters in length.
   late final pulumi.Output<String> name;

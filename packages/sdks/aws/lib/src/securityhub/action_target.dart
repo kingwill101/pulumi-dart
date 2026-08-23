@@ -84,6 +84,24 @@ import 'action_target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_account" "example" {
+/// }
+/// resource "aws_securityhub_actiontarget" "example" {
+///   depends_on  = [aws_securityhub_account.example]
+///   name        = "Send notification to chat"
+///   identifier  = "SendToChat"
+///   description = "This is custom action sends selected findings to chat"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +112,8 @@ import 'action_target_state.dart';
 /// import com.pulumi.aws.securityhub.ActionTarget;
 /// import com.pulumi.aws.securityhub.ActionTargetArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -139,10 +157,17 @@ import 'action_target_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Security Hub custom action using the action target ARN. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `arn` (String) Security Hub custom action ARN.
+///
+///
+/// Using `pulumi import`, import Security Hub custom actions using `arn`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:securityhub/actionTarget:ActionTarget example arn:aws:securityhub:eu-west-1:312940875350:action/custom/a
+/// $ pulumi import aws:securityhub/actionTarget:ActionTarget example arn:aws:securityhub:eu-west-1:123456789012:action/custom/a
 /// ```
 class ActionTarget extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the Security Hub custom action target.

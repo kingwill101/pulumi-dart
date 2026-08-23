@@ -140,6 +140,34 @@ import 'alias_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sfn_alias" "sfn_alias" {
+///   name = "my_sfn_alias"
+///   routing_configurations {
+///     state_machine_version_arn = sfnTest.stateMachineVersionArn
+///     weight                    = 100
+///   }
+/// }
+/// resource "aws_sfn_alias" "my_sfn_alias" {
+///   name = "my_sfn_alias"
+///   routing_configurations {
+///     state_machine_version_arn = "arn:aws:states:us-east-1:12345:stateMachine:demo:3"
+///     weight                    = 50
+///   }
+///   routing_configurations {
+///     state_machine_version_arn = "arn:aws:states:us-east-1:12345:stateMachine:demo:2"
+///     weight                    = 50
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -149,8 +177,8 @@ import 'alias_state.dart';
 /// import com.pulumi.aws.sfn.Alias;
 /// import com.pulumi.aws.sfn.AliasArgs;
 /// import com.pulumi.aws.sfn.inputs.AliasRoutingConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -210,6 +238,13 @@ import 'alias_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `arn` (String) ARN of the alias.
+///
 ///
 /// Using `pulumi import`, import SFN (Step Functions) Alias using the `arn`. For example:
 ///

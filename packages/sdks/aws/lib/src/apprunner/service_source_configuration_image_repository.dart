@@ -4,18 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_source_configuration_image_repository_image_configuration.dart';
 
 class ServiceSourceConfigurationImageRepository {
-  /// Configuration for running the identified image. See Image Configuration below for more details.
+  /// Configuration for running the identified image. See `imageConfiguration` below.
   final pulumi.Input<ServiceSourceConfigurationImageRepositoryImageConfiguration>? imageConfiguration;
-  /// Identifier of an image. For an image in Amazon Elastic Container Registry (Amazon ECR), this is an image name. For the
-  /// image name format, see Pulling an image in the Amazon ECR User Guide.
+  /// Identifier of an image. For an image in Amazon Elastic Container Registry (Amazon ECR), this is an image name. For the image name format, see Pulling an image in the Amazon ECR User Guide.
   final pulumi.Input<String> imageIdentifier;
-  /// Type of the image repository. This reflects the repository provider and whether the repository is private or public. Valid values: `ECR` , `ECR_PUBLIC`.
+  /// Type of the image repository. This reflects the repository provider and whether the repository is private or public. Valid values: `ECR`, `ECR_PUBLIC`.
   final pulumi.Input<String> imageRepositoryType;
 
   /// Creates a new [ServiceSourceConfigurationImageRepository].
-  /// [imageConfiguration] Configuration for running the identified image. See Image Configuration below for more details.
-  /// [imageIdentifier] Identifier of an image. For an image in Amazon Elastic Container Registry (Amazon ECR), this is an image name. For the
-  /// [imageRepositoryType] Type of the image repository. This reflects the repository provider and whether the repository is private or public. Valid values: `ECR` , `ECR_PUBLIC`.
+  /// [imageConfiguration] Configuration for running the identified image. See `imageConfiguration` below.
+  /// [imageIdentifier] Identifier of an image. For an image in Amazon Elastic Container Registry (Amazon ECR), this is an image name. For the image name format, see Pulling an image in the Amazon ECR User Guide.
+  /// [imageRepositoryType] Type of the image repository. This reflects the repository provider and whether the repository is private or public. Valid values: `ECR`, `ECR_PUBLIC`.
   const ServiceSourceConfigurationImageRepository({
     this.imageConfiguration,
     required this.imageIdentifier,
@@ -38,4 +37,3 @@ class ServiceSourceConfigurationImageRepository {
     );
   }
 }
-

@@ -10,17 +10,17 @@ class ProviderProvider extends pulumi.ProviderResource {
   /// The access key for API operations. You can retrieve this
   /// from the 'Security & Credentials' section of the AWS console.
   late final pulumi.Output<String?> accessKey;
-  /// File containing custom root and intermediate certificates. Can also be configured using the `AWS_CA_BUNDLE` environment variable. (Setting `ca_bundle` in the shared config file is not supported.)
+  /// File containing custom root and intermediate certificates. Can also be configured using the `AWS_CA_BUNDLE` environment variable. (Setting `caBundle` in the shared config file is not supported.)
   late final pulumi.Output<String?> customCaBundle;
   /// Address of the EC2 metadata service endpoint to use. Can also be configured using the `AWS_EC2_METADATA_SERVICE_ENDPOINT` environment variable.
   late final pulumi.Output<String?> ec2MetadataServiceEndpoint;
   /// Protocol to use with EC2 metadata service endpoint.Valid values are `IPv4` and `IPv6`. Can also be configured using the `AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE` environment variable.
   late final pulumi.Output<String?> ec2MetadataServiceEndpointMode;
-  /// URL of a proxy to use for HTTP requests when accessing the AWS API. Can also be set using the `HTTP_PROXY` or `http_proxy` environment variables.
+  /// URL of a proxy to use for HTTP requests when accessing the AWS API. Can also be set using the `HTTP_PROXY` or `httpProxy` environment variables.
   late final pulumi.Output<String?> httpProxy;
-  /// URL of a proxy to use for HTTPS requests when accessing the AWS API. Can also be set using the `HTTPS_PROXY` or `https_proxy` environment variables.
+  /// URL of a proxy to use for HTTPS requests when accessing the AWS API. Can also be set using the `HTTPS_PROXY` or `httpsProxy` environment variables.
   late final pulumi.Output<String?> httpsProxy;
-  /// Comma-separated list of hosts that should not use HTTP or HTTPS proxies. Can also be set using the `NO_PROXY` or `no_proxy` environment variables.
+  /// Comma-separated list of hosts that should not use HTTP or HTTPS proxies. Can also be set using the `NO_PROXY` or `noProxy` environment variables.
   late final pulumi.Output<String?> noProxy;
   /// The profile for API operations. If not set, the default profile
   /// created with `aws configure` will be used.
@@ -30,7 +30,7 @@ class ProviderProvider extends pulumi.ProviderResource {
   late final pulumi.Output<String?> region;
   /// Specifies how retries are attempted. Valid values are `standard` and `adaptive`. Can also be configured using the `AWS_RETRY_MODE` environment variable.
   late final pulumi.Output<String?> retryMode;
-  /// Specifies whether S3 API calls in the `us-east-1` region use the legacy global endpoint or a regional endpoint. Valid values are `legacy` or `regional`. Can also be configured using the `AWS_S3_US_EAST_1_REGIONAL_ENDPOINT` environment variable or the `s3_us_east_1_regional_endpoint` shared config file parameter
+  /// Specifies whether S3 API calls in the `us-east-1` region use the legacy global endpoint or a regional endpoint. Valid values are `legacy` or `regional`. Can also be configured using the `AWS_S3_US_EAST_1_REGIONAL_ENDPOINT` environment variable or the `s3UsEast1RegionalEndpoint` shared config file parameter
   late final pulumi.Output<String?> s3UsEast1RegionalEndpoint;
   /// The secret key for API operations. You can retrieve this
   /// from the 'Security & Credentials' section of the AWS console.

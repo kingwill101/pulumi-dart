@@ -64,6 +64,20 @@ import 'get_runtime_versions_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_synthetics_getruntimeversion" "example" {
+///   prefix = "syn-nodejs-puppeteer"
+///   latest = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +86,8 @@ import 'get_runtime_versions_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.synthetics.SyntheticsFunctions;
 /// import com.pulumi.aws.synthetics.inputs.GetRuntimeVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -160,6 +174,20 @@ import 'get_runtime_versions_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_synthetics_getruntimeversion" "example" {
+///   prefix  = "syn-nodejs-puppeteer"
+///   version = "9.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -168,8 +196,8 @@ import 'get_runtime_versions_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.synthetics.SyntheticsFunctions;
 /// import com.pulumi.aws.synthetics.inputs.GetRuntimeVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -262,6 +290,18 @@ Future<GetRuntimeVersionResult> getRuntimeVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_synthetics_getruntimeversions" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -270,8 +310,8 @@ Future<GetRuntimeVersionResult> getRuntimeVersion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.synthetics.SyntheticsFunctions;
 /// import com.pulumi.aws.synthetics.inputs.GetRuntimeVersionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

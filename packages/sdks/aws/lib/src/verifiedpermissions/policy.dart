@@ -82,6 +82,24 @@ import 'policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedpermissions_policy" "test" {
+///   policy_store_id = testAwsVerifiedpermissionsPolicyStore.id
+///   definition = {
+///     static = {
+///       statement = "permit (principal, action == Action::\"view\", resource in Album:: \"test_album\");"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +110,8 @@ import 'policy_state.dart';
 /// import com.pulumi.aws.verifiedpermissions.PolicyArgs;
 /// import com.pulumi.aws.verifiedpermissions.inputs.PolicyDefinitionArgs;
 /// import com.pulumi.aws.verifiedpermissions.inputs.PolicyDefinitionStaticArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -6,11 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataShareConsumerAssociationState {
   /// Whether to allow write operations for a datashare.
   final pulumi.Input<bool>? allowWrites;
-  /// Whether the datashare is associated with the entire account. Conflicts with `consumer_arn` and `consumer_region`.
+  /// Whether the datashare is associated with the entire account. Conflicts with `consumerArn` and `consumerRegion`.
   final pulumi.Input<bool>? associateEntireAccount;
-  /// Amazon Resource Name (ARN) of the consumer that is associated with the datashare. Conflicts with `associate_entire_account` and `consumer_region`.
+  /// Amazon Resource Name (ARN) of the consumer that is associated with the datashare. Conflicts with `associateEntireAccount` and `consumerRegion`.
   final pulumi.Input<String>? consumerArn;
-  /// From a datashare consumer account, associates a datashare with all existing and future namespaces in the specified AWS Region. Conflicts with `associate_entire_account` and `consumer_arn`.
+  /// From a datashare consumer account, associates a datashare with all existing and future namespaces in the specified AWS Region. Conflicts with `associateEntireAccount` and `consumerArn`.
   final pulumi.Input<String>? consumerRegion;
   /// Amazon Resource Name (ARN) of the datashare that the consumer is to use with the account or the namespace.
   ///
@@ -25,9 +25,9 @@ class DataShareConsumerAssociationState {
 
   /// Creates a new [DataShareConsumerAssociationState].
   /// [allowWrites] Whether to allow write operations for a datashare.
-  /// [associateEntireAccount] Whether the datashare is associated with the entire account. Conflicts with `consumer_arn` and `consumer_region`.
-  /// [consumerArn] Amazon Resource Name (ARN) of the consumer that is associated with the datashare. Conflicts with `associate_entire_account` and `consumer_region`.
-  /// [consumerRegion] From a datashare consumer account, associates a datashare with all existing and future namespaces in the specified AWS Region. Conflicts with `associate_entire_account` and `consumer_arn`.
+  /// [associateEntireAccount] Whether the datashare is associated with the entire account. Conflicts with `consumerArn` and `consumerRegion`.
+  /// [consumerArn] Amazon Resource Name (ARN) of the consumer that is associated with the datashare. Conflicts with `associateEntireAccount` and `consumerRegion`.
+  /// [consumerRegion] From a datashare consumer account, associates a datashare with all existing and future namespaces in the specified AWS Region. Conflicts with `associateEntireAccount` and `consumerArn`.
   /// [dataShareArn] Amazon Resource Name (ARN) of the datashare that the consumer is to use with the account or the namespace.
   /// [managedBy] Identifier of a datashare to show its managing entity.
   /// [producerArn] Amazon Resource Name (ARN) of the producer.
@@ -69,4 +69,3 @@ class DataShareConsumerAssociationState {
     );
   }
 }
-

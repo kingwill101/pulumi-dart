@@ -6,17 +6,17 @@ import 'ontap_volume_snaplock_configuration_retention_period_maximum_retention.d
 import 'ontap_volume_snaplock_configuration_retention_period_minimum_retention.dart';
 
 class OntapVolumeSnaplockConfigurationRetentionPeriod {
-  /// The retention period assigned to a write once, read many (WORM) file by default if an explicit retention period is not set for an FSx for ONTAP SnapLock volume. The default retention period must be greater than or equal to the minimum retention period and less than or equal to the maximum retention period. See `default_retention` Block for details.
+  /// Retention period assigned to a write once, read many (WORM) file by default if an explicit retention period is not set for an FSx for ONTAP SnapLock volume. The default retention period must be greater than or equal to the minimum retention period and less than or equal to the maximum retention period. See `defaultRetention` Block for details.
   final pulumi.Input<OntapVolumeSnaplockConfigurationRetentionPeriodDefaultRetention>? defaultRetention;
-  /// The longest retention period that can be assigned to a WORM file on an FSx for ONTAP SnapLock volume. See `maximum_retention` Block for details.
+  /// Longest retention period that can be assigned to a WORM file on an FSx for ONTAP SnapLock volume. See `maximumRetention` Block for details.
   final pulumi.Input<OntapVolumeSnaplockConfigurationRetentionPeriodMaximumRetention>? maximumRetention;
-  /// The shortest retention period that can be assigned to a WORM file on an FSx for ONTAP SnapLock volume. See `minimum_retention` Block for details.
+  /// Shortest retention period that can be assigned to a WORM file on an FSx for ONTAP SnapLock volume. See `minimumRetention` Block for details.
   final pulumi.Input<OntapVolumeSnaplockConfigurationRetentionPeriodMinimumRetention>? minimumRetention;
 
   /// Creates a new [OntapVolumeSnaplockConfigurationRetentionPeriod].
-  /// [defaultRetention] The retention period assigned to a write once, read many (WORM) file by default if an explicit retention period is not set for an FSx for ONTAP SnapLock volume. The default retention period must be greater than or equal to the minimum retention period and less than or equal to the maximum retention period. See `default_retention` Block for details.
-  /// [maximumRetention] The longest retention period that can be assigned to a WORM file on an FSx for ONTAP SnapLock volume. See `maximum_retention` Block for details.
-  /// [minimumRetention] The shortest retention period that can be assigned to a WORM file on an FSx for ONTAP SnapLock volume. See `minimum_retention` Block for details.
+  /// [defaultRetention] Retention period assigned to a write once, read many (WORM) file by default if an explicit retention period is not set for an FSx for ONTAP SnapLock volume. The default retention period must be greater than or equal to the minimum retention period and less than or equal to the maximum retention period. See `defaultRetention` Block for details.
+  /// [maximumRetention] Longest retention period that can be assigned to a WORM file on an FSx for ONTAP SnapLock volume. See `maximumRetention` Block for details.
+  /// [minimumRetention] Shortest retention period that can be assigned to a WORM file on an FSx for ONTAP SnapLock volume. See `minimumRetention` Block for details.
   const OntapVolumeSnaplockConfigurationRetentionPeriod({
     this.defaultRetention,
     this.maximumRetention,
@@ -39,4 +39,3 @@ class OntapVolumeSnaplockConfigurationRetentionPeriod {
     );
   }
 }
-

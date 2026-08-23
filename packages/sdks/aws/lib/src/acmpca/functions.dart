@@ -62,6 +62,20 @@ import 'get_certificate_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_acmpca_getcertificate" "example" {
+///   arn                       = "arn:aws:acm-pca:us-east-1:123456789012:certificate-authority/12345678-1234-1234-1234-123456789012/certificate/1234b4a0d73e2056789bdbe77d5b1a23"
+///   certificate_authority_arn = "arn:aws:acm-pca:us-east-1:123456789012:certificate-authority/12345678-1234-1234-1234-123456789012"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +84,8 @@ import 'get_certificate_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.acmpca.AcmpcaFunctions;
 /// import com.pulumi.aws.acmpca.inputs.GetCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,6 +183,19 @@ Future<GetCertificateResult> getCertificate(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_acmpca_getcertificateauthority" "example" {
+///   arn = "arn:aws:acm-pca:us-east-1:123456789012:certificate-authority/12345678-1234-1234-1234-123456789012"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +204,8 @@ Future<GetCertificateResult> getCertificate(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.acmpca.AcmpcaFunctions;
 /// import com.pulumi.aws.acmpca.inputs.GetCertificateAuthorityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

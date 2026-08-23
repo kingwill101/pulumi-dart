@@ -50,4 +50,3 @@ class ClusterS3Import {
     );
   }
 }
-

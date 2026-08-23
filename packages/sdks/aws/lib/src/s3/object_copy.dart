@@ -97,6 +97,26 @@ import 'object_copy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_objectcopy" "test" {
+///   bucket = "destination_bucket"
+///   key    = "destination_key"
+///   source = "source_bucket/source_key"
+///   grants {
+///     uri         = "http://acs.amazonaws.com/groups/global/AllUsers"
+///     type        = "Group"
+///     permissions = ["READ"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +126,8 @@ import 'object_copy_state.dart';
 /// import com.pulumi.aws.s3.ObjectCopy;
 /// import com.pulumi.aws.s3.ObjectCopyArgs;
 /// import com.pulumi.aws.s3.inputs.ObjectCopyGrantArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -149,10 +169,10 @@ import 'object_copy_state.dart';
 /// ```
 ///
 ///
-/// ### Ignoring Provider `default_tags`
+/// ### Ignoring Provider `defaultTags`
 ///
 /// S3 objects support a [maximum of 10 tags](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html).
-/// If the resource's own `tags` and the provider-level `default_tags` would together lead to more than 10 tags on an S3 object copy, use the `override_provider` configuration block to suppress any provider-level `default_tags`.
+/// If the resource's own `tags` and the provider-level `defaultTags` would together lead to more than 10 tags on an S3 object copy, use the `overrideProvider` configuration block to suppress any provider-level `defaultTags`.
 ///
 ///
 /// ```typescript
@@ -235,6 +255,26 @@ import 'object_copy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_objectcopy" "test" {
+///   bucket = "destination_bucket"
+///   key    = "destination_key"
+///   source = "source_bucket/source_key"
+///   override_provider = {
+///     default_tags = {
+///       tags = {}
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -245,8 +285,8 @@ import 'object_copy_state.dart';
 /// import com.pulumi.aws.s3.ObjectCopyArgs;
 /// import com.pulumi.aws.s3.inputs.ObjectCopyOverrideProviderArgs;
 /// import com.pulumi.aws.s3.inputs.ObjectCopyOverrideProviderDefaultTagsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -292,24 +332,25 @@ class ObjectCopy extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Name of the bucket to put the file in.
   late final pulumi.Output<String> bucket;
+  /// Whether to use an S3 Bucket Key for object encryption with server-side encryption using KMS (SSE-KMS).
   late final pulumi.Output<bool> bucketKeyEnabled;
-  /// Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+  /// Caching behavior along the request/reply chain. Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
   late final pulumi.Output<String> cacheControl;
-  /// Indicates the algorithm used to create the checksum for the object. If a value is specified and the object is encrypted with KMS, you must have permission to use the `kms:Decrypt` action. Valid values: `CRC32`, `CRC32C`, `CRC64NVME` `SHA1`, `SHA256`.
+  /// Algorithm used to create the checksum for the object. If a value is specified and the object is encrypted with KMS, you must have permission to use the `kms:Decrypt` action. Valid values: `CRC32`, `CRC32C`, `CRC64NVME` `SHA1`, `SHA256`.
   late final pulumi.Output<String?> checksumAlgorithm;
-  /// The base64-encoded, 32-bit CRC32 checksum of the object.
+  /// Base64-encoded, 32-bit CRC32 checksum of the object.
   late final pulumi.Output<String> checksumCrc32;
-  /// The base64-encoded, 32-bit CRC32C checksum of the object.
+  /// Base64-encoded, 32-bit CRC32C checksum of the object.
   late final pulumi.Output<String> checksumCrc32c;
-  /// The base64-encoded, 64-bit CRC64NVME checksum of the object.
+  /// Base64-encoded, 64-bit CRC64NVME checksum of the object.
   late final pulumi.Output<String> checksumCrc64nvme;
-  /// The base64-encoded, 160-bit SHA-1 digest of the object.
+  /// Base64-encoded, 160-bit SHA-1 digest of the object.
   late final pulumi.Output<String> checksumSha1;
-  /// The base64-encoded, 256-bit SHA-256 digest of the object.
+  /// Base64-encoded, 256-bit SHA-256 digest of the object.
   late final pulumi.Output<String> checksumSha256;
-  /// Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+  /// Presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
   late final pulumi.Output<String> contentDisposition;
-  /// Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
+  /// Content encodings that have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
   late final pulumi.Output<String> contentEncoding;
   /// Language the content is in e.g., en-US or en-GB.
   late final pulumi.Output<String> contentLanguage;
@@ -323,11 +364,11 @@ class ObjectCopy extends pulumi.CustomResource {
   late final pulumi.Output<String?> copyIfNoneMatch;
   /// Copies the object if it hasn't been modified since the specified time, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   late final pulumi.Output<String?> copyIfUnmodifiedSince;
-  /// Specifies the algorithm to use to when encrypting the object (for example, AES256).
+  /// Algorithm to use when encrypting the object (for example, AES256).
   late final pulumi.Output<String> customerAlgorithm;
-  /// Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon S3 does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side-encryption-customer-algorithm header.
+  /// Customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon S3 does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side-encryption-customer-algorithm header.
   late final pulumi.Output<String?> customerKey;
-  /// Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure that the encryption key was transmitted without error.
+  /// 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure that the encryption key was transmitted without error.
   late final pulumi.Output<String> customerKeyMd5;
   /// ETag generated for the object (an MD5 sum of the object content). For plaintext objects or objects encrypted with an AWS-managed key, the hash is an MD5 digest of the object data. For objects encrypted with a KMS key or objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5 digest, regardless of the method of encryption. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).
   late final pulumi.Output<String> etag;
@@ -345,17 +386,17 @@ class ObjectCopy extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> grants;
   /// Name of the object once it is in the bucket.
   late final pulumi.Output<String> key;
-  /// Specifies the AWS KMS Encryption Context to use for object encryption. The value is a base64-encoded UTF-8 string holding JSON with the encryption context key-value pairs.
+  /// AWS KMS Encryption Context to use for object encryption. The value is a base64-encoded UTF-8 string holding JSON with the encryption context key-value pairs.
   late final pulumi.Output<String> kmsEncryptionContext;
-  /// Specifies the AWS KMS Key ARN to use for object encryption. This value is a fully qualified **ARN** of the KMS Key. If using `aws.kms.Key`, use the exported `arn` attribute: `kms_key_id = aws_kms_key.foo.arn`
+  /// AWS KMS Key ARN to use for object encryption. This value is a fully qualified **ARN** of the KMS Key. If using `aws.kms.Key`, use the exported `arn` attribute: `kmsKeyId = aws_kms_key.foo.arn`
   late final pulumi.Output<String> kmsKeyId;
   /// Returns the date that the object was last modified, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   late final pulumi.Output<String> lastModified;
   /// Map of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
   late final pulumi.Output<Map<String, String>> metadata;
-  /// Specifies whether the metadata is copied from the source object or replaced with metadata provided in the request. Valid values are `COPY` and `REPLACE`.
+  /// Whether the metadata is copied from the source object or replaced with metadata provided in the request. Valid values are `COPY` and `REPLACE`.
   late final pulumi.Output<String?> metadataDirective;
-  /// The [legal hold](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-legal-holds) status that you want to apply to the specified object. Valid values are `ON` and `OFF`.
+  /// [Legal hold](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-legal-holds) status to apply to the specified object. Valid values are `ON` and `OFF`.
   late final pulumi.Output<String> objectLockLegalHoldStatus;
   /// Object lock [retention mode](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-retention-modes) that you want to apply to this object. Valid values are `GOVERNANCE` and `COMPLIANCE`.
   late final pulumi.Output<String> objectLockMode;
@@ -368,31 +409,31 @@ class ObjectCopy extends pulumi.CustomResource {
   late final pulumi.Output<bool> requestCharged;
   /// Confirms that the requester knows that they will be charged for the request. Bucket owners need not specify this parameter in their requests. For information about downloading objects from requester pays buckets, see Downloading Objects in Requestor Pays Buckets (https://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectsinRequesterPaysBuckets.html) in the Amazon S3 Developer Guide. If included, the only valid value is `requester`.
   late final pulumi.Output<String?> requestPayer;
-  /// Specifies server-side encryption of the object in S3. Valid values are `AES256` and `aws:kms`.
+  /// Server-side encryption of the object in S3. Valid values are `AES256` and `aws:kms`.
   late final pulumi.Output<String> serverSideEncryption;
-  /// Specifies the source object for the copy operation. You specify the value in one of two formats. For objects not accessed through an access point, specify the name of the source bucket and the key of the source object, separated by a slash (`/`). For example, `testbucket/test1.json`. For objects accessed through access points, specify the ARN of the object as accessed through the access point, in the format `arn:aws:s3:&lt;Region&gt;:&lt;account-id&gt;:accesspoint/&lt;access-point-name&gt;/object/&lt;key&gt;`. For example, `arn:aws:s3:us-west-2:9999912999:accesspoint/my-access-point/object/testbucket/test1.json`.
+  /// Source object for the copy operation. You specify the value in one of two formats. For objects not accessed through an access point, specify the name of the source bucket and the key of the source object, separated by a slash (`/`). For example, `testbucket/test1.json`. For objects accessed through access points, specify the ARN of the object as accessed through the access point, in the format `arn:aws:s3:&lt;Region&gt;:&lt;account-id&gt;:accesspoint/&lt;access-point-name&gt;/object/&lt;key&gt;`. For example, `arn:aws:s3:us-west-2:9999912999:accesspoint/my-access-point/object/testbucket/test1.json`.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> source;
-  /// Specifies the algorithm to use when decrypting the source object (for example, AES256).
+  /// Algorithm to use when decrypting the source object (for example, AES256).
   late final pulumi.Output<String?> sourceCustomerAlgorithm;
-  /// Specifies the customer-provided encryption key for Amazon S3 to use to decrypt the source object. The encryption key provided in this header must be one that was used when the source object was created.
+  /// Customer-provided encryption key for Amazon S3 to use to decrypt the source object. The encryption key provided in this header must be one that was used when the source object was created.
   late final pulumi.Output<String?> sourceCustomerKey;
-  /// Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure that the encryption key was transmitted without error.
+  /// 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure that the encryption key was transmitted without error.
   late final pulumi.Output<String?> sourceCustomerKeyMd5;
   /// Version of the copied object in the source bucket.
   late final pulumi.Output<String> sourceVersionId;
-  /// Specifies the desired [storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html#AmazonS3-CopyObject-request-header-StorageClass) for the object. Defaults to `STANDARD`.
+  /// Desired [storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html#AmazonS3-CopyObject-request-header-StorageClass) for the object. Defaults to `STANDARD`.
   late final pulumi.Output<String> storageClass;
-  /// Specifies whether the object tag-set are copied from the source object or replaced with tag-set provided in the request. Valid values are `COPY` and `REPLACE`.
+  /// Whether the object tag-set is copied from the source object or replaced with tag-set provided in the request. Valid values are `COPY` and `REPLACE`.
   late final pulumi.Output<String?> taggingDirective;
-  /// Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the object. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Version ID of the newly created copy.
   late final pulumi.Output<String> versionId;
-  /// Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
+  /// Target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
   late final pulumi.Output<String> websiteRedirect;
 
   /// Creates a new [ObjectCopy].

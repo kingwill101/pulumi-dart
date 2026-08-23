@@ -36,4 +36,3 @@ class S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser {
     );
   }
 }
-

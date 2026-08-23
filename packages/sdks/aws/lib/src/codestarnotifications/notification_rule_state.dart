@@ -20,9 +20,9 @@ class NotificationRuleState {
   final pulumi.Input<String>? resource;
   /// The status of the notification rule. Possible values are `ENABLED` and `DISABLED`, default is `ENABLED`.
   final pulumi.Input<String>? status;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Configuration blocks containing notification target information. Can be specified multiple times. At least one target must be specified on creation.
   final pulumi.Input<List<NotificationRuleTarget>>? targets;
@@ -35,8 +35,8 @@ class NotificationRuleState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resource] The ARN of the resource to associate with the notification rule.
   /// [status] The status of the notification rule. Possible values are `ENABLED` and `DISABLED`, default is `ENABLED`.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [targets] Configuration blocks containing notification target information. Can be specified multiple times. At least one target must be specified on creation.
   const NotificationRuleState({
     this.arn,
@@ -81,4 +81,3 @@ class NotificationRuleState {
     );
   }
 }
-

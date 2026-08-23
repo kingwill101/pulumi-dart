@@ -7,9 +7,9 @@ import 'stack_set_state.dart';
 
 /// Manages a CloudFormation StackSet. StackSets allow CloudFormation templates to be easily deployed across multiple accounts and regions via StackSet Instances (`aws.cloudformation.StackSetInstance` resource). Additional information about StackSets can be found in the [AWS CloudFormation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html).
 ///
-/// &gt; **NOTE:** All template parameters, including those with a `Default`, must be configured or ignored with the `lifecycle` configuration block `ignore_changes` argument.
+/// &gt; **NOTE:** All template parameters, including those with a `Default`, must be configured or ignored with the `lifecycle` configuration block `ignoreChanges` argument.
 ///
-/// &gt; **NOTE:** All `NoEcho` template parameters must be ignored with the `lifecycle` configuration block `ignore_changes` argument.
+/// &gt; **NOTE:** All `NoEcho` template parameters must be ignored with the `lifecycle` configuration block `ignoreChanges` argument.
 ///
 /// &gt; **NOTE:** When using a delegated administrator account, ensure that your IAM User or Role has the `organizations:ListDelegatedAdministrators` permission. Otherwise, you may get an error like `ValidationError: Account used is not a delegated administrator`.
 ///
@@ -73,7 +73,7 @@ import 'stack_set_state.dart';
 /// });
 /// const aWSCloudFormationStackSetAdministrationRoleExecutionPolicyRolePolicy = new aws.iam.RolePolicy("AWSCloudFormationStackSetAdministrationRole_ExecutionPolicy", {
 ///     name: "ExecutionPolicy",
-///     policy: aWSCloudFormationStackSetAdministrationRoleExecutionPolicy.apply(aWSCloudFormationStackSetAdministrationRoleExecutionPolicy => aWSCloudFormationStackSetAdministrationRoleExecutionPolicy.json),
+///     policy: aWSCloudFormationStackSetAdministrationRoleExecutionPolicy.json,
 ///     role: aWSCloudFormationStackSetAdministrationRole.name,
 /// });
 /// ```
@@ -288,22 +288,22 @@ import 'stack_set_state.dart';
 /// 			return err
 /// 		}
 /// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 			"Parameters": map[string]interface{}{
-/// 				"VPCCidr": map[string]interface{}{
+/// 			"Parameters": map[string]map[string]string{
+/// 				"VPCCidr": map[string]string{
 /// 					"Type":        "String",
 /// 					"Default":     "10.0.0.0/16",
 /// 					"Description": "Enter the CIDR block for the VPC. Default is 10.0.0.0/16.",
 /// 				},
 /// 			},
-/// 			"Resources": map[string]interface{}{
+/// 			"Resources": map[string]map[string]interface{}{
 /// 				"myVpc": map[string]interface{}{
 /// 					"Type": "AWS::EC2::VPC",
 /// 					"Properties": map[string]interface{}{
-/// 						"CidrBlock": map[string]interface{}{
+/// 						"CidrBlock": map[string]string{
 /// 							"Ref": "VPCCidr",
 /// 						},
-/// 						"Tags": []map[string]interface{}{
-/// 							map[string]interface{}{
+/// 						"Tags": []map[string]string{
+/// 							{
 /// 								"Key":   "Name",
 /// 								"Value": "Primary_CF_VPC",
 /// 							},
@@ -343,17 +343,82 @@ import 'stack_set_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "AWSCloudFormationStackSetAdministrationRole_ExecutionPolicy", &iam.RolePolicyArgs{
-/// 			Name: pulumi.String("ExecutionPolicy"),
-/// 			Policy: pulumi.String(aWSCloudFormationStackSetAdministrationRoleExecutionPolicy.ApplyT(func(aWSCloudFormationStackSetAdministrationRoleExecutionPolicy iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &aWSCloudFormationStackSetAdministrationRoleExecutionPolicy.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			Role: aWSCloudFormationStackSetAdministrationRole.Name,
+/// 			Name:   pulumi.String("ExecutionPolicy"),
+/// 			Policy: aWSCloudFormationStackSetAdministrationRoleExecutionPolicy.Json(),
+/// 			Role:   aWSCloudFormationStackSetAdministrationRole.Name,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "aWSCloudFormationStackSetAdministrationRoleAssumeRolePolicy" {
+///   statements {
+///     actions = ["sts:AssumeRole"]
+///     effect  = "Allow"
+///     principals {
+///       identifiers = ["cloudformation.amazonaws.com"]
+///       type        = "Service"
+///     }
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "aWSCloudFormationStackSetAdministrationRoleExecutionPolicy" {
+///   statements {
+///     actions   = ["sts:AssumeRole"]
+///     effect    = "Allow"
+///     resources = ["arn:aws:iam::*:role/${aws_cloudformation_stackset.example.execution_role_name}"]
+///   }
+/// }
+///
+/// resource "aws_iam_role" "AWSCloudFormationStackSetAdministrationRole" {
+///   assume_role_policy = data.aws_iam_getpolicydocument.aWSCloudFormationStackSetAdministrationRoleAssumeRolePolicy.json
+///   name               = "AWSCloudFormationStackSetAdministrationRole"
+/// }
+/// resource "aws_cloudformation_stackset" "example" {
+///   administration_role_arn = aws_iam_role.AWSCloudFormationStackSetAdministrationRole.arn
+///   name                    = "example"
+///   parameters = {
+///     "VPCCidr" = "10.0.0.0/16"
+///   }
+///   template_body = jsonencode({
+///     "Parameters" = {
+///       "VPCCidr" = {
+///         "Type"        = "String"
+///         "Default"     = "10.0.0.0/16"
+///         "Description" = "Enter the CIDR block for the VPC. Default is 10.0.0.0/16."
+///       }
+///     }
+///     "Resources" = {
+///       "myVpc" = {
+///         "Type" = "AWS::EC2::VPC"
+///         "Properties" = {
+///           "CidrBlock" = {
+///             "Ref" = "VPCCidr"
+///           }
+///           "Tags" = [{
+///             "Key"   = "Name"
+///             "Value" = "Primary_CF_VPC"
+///           }]
+///         }
+///       }
+///     }
+///   })
+/// }
+/// resource "aws_iam_rolepolicy" "AWSCloudFormationStackSetAdministrationRole_ExecutionPolicy" {
+///   name   = "ExecutionPolicy"
+///   policy = data.aws_iam_getpolicydocument.aWSCloudFormationStackSetAdministrationRoleExecutionPolicy.json
+///   role   = aws_iam_role.AWSCloudFormationStackSetAdministrationRole.name
 /// }
 /// ```
 /// ```java
@@ -364,6 +429,8 @@ import 'stack_set_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.cloudformation.StackSet;
@@ -371,8 +438,8 @@ import 'stack_set_state.dart';
 /// import com.pulumi.aws.iam.RolePolicy;
 /// import com.pulumi.aws.iam.RolePolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -513,7 +580,7 @@ import 'stack_set_state.dart';
 ///
 /// ## Import
 ///
-/// Import CloudFormation StackSets when acting a delegated administrator in a member account using the `name` and `call_as` values separated by a comma (`,`). For example:
+/// Import CloudFormation StackSets when acting a delegated administrator in a member account using the `name` and `callAs` values separated by a comma (`,`). For example:
 ///
 ///
 /// Using `pulumi import`, import CloudFormation StackSets using the `name`. For example:
@@ -522,7 +589,7 @@ import 'stack_set_state.dart';
 /// $ pulumi import aws:cloudformation/stackSet:StackSet example example
 /// ```
 ///
-/// Using `pulumi import`, import CloudFormation StackSets when acting a delegated administrator in a member account using the `name` and `call_as` values separated by a comma (`,`). For example:
+/// Using `pulumi import`, import CloudFormation StackSets when acting a delegated administrator in a member account using the `name` and `callAs` values separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudformation/stackSet:StackSet example example,DELEGATED_ADMIN
@@ -548,7 +615,7 @@ class StackSet extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Preferences for how AWS CloudFormation performs a stack set update.
   late final pulumi.Output<StackSetOperationPreferences?> operationPreferences;
-  /// Key-value map of input parameters for the StackSet template. All template parameters, including those with a `Default`, must be configured or ignored with `lifecycle` configuration block `ignore_changes` argument. All `NoEcho` template parameters must be ignored with the `lifecycle` configuration block `ignore_changes` argument.
+  /// Key-value map of input parameters for the StackSet template. All template parameters, including those with a `Default`, must be configured or ignored with `lifecycle` configuration block `ignoreChanges` argument. All `NoEcho` template parameters must be ignored with the `lifecycle` configuration block `ignoreChanges` argument.
   late final pulumi.Output<Map<String, String>?> parameters;
   /// Describes how the IAM roles required for your StackSet are created. Valid values: `SELF_MANAGED` (default), `SERVICE_MANAGED`.
   late final pulumi.Output<String?> permissionModel;
@@ -556,13 +623,13 @@ class StackSet extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Unique identifier of the StackSet.
   late final pulumi.Output<String> stackSetId;
-  /// Key-value map of tags to associate with this StackSet and the Stacks created from it. AWS CloudFormation also propagates these tags to supported resources that are created in the Stacks. A maximum number of 50 tags can be specified. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of tags to associate with this StackSet and the Stacks created from it. AWS CloudFormation also propagates these tags to supported resources that are created in the Stacks. A maximum number of 50 tags can be specified. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// String containing the CloudFormation template body. Maximum size: 51,200 bytes. Conflicts with `template_url`.
+  /// String containing the CloudFormation template body. Maximum size: 51,200 bytes. Conflicts with `templateUrl`.
   late final pulumi.Output<String> templateBody;
-  /// String containing the location of a file containing the CloudFormation template body. The URL must point to a template that is located in an Amazon S3 bucket. Maximum location file size: 460,800 bytes. Conflicts with `template_body`.
+  /// String containing the location of a file containing the CloudFormation template body. The URL must point to a template that is located in an Amazon S3 bucket. Maximum location file size: 460,800 bytes. Conflicts with `templateBody`.
   late final pulumi.Output<String?> templateUrl;
 
   /// Creates a new [StackSet].

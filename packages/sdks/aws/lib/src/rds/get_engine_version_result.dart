@@ -45,7 +45,7 @@ class GetEngineVersionResult {
   final bool supportsLimitlessDatabase;
   /// Whether the engine version supports local write forwarding or not.
   final bool supportsLocalWriteForwarding;
-  /// Whether the engine version supports exporting the log types specified by `exportable_log_types` to CloudWatch Logs.
+  /// Whether the engine version supports exporting the log types specified by `exportableLogTypes` to CloudWatch Logs.
   final bool supportsLogExportsToCloudwatch;
   /// Whether you can use Aurora parallel query with the engine version.
   final bool supportsParallelQuery;
@@ -90,7 +90,7 @@ class GetEngineVersionResult {
   /// [supportsIntegrations] Whether the engine version supports integrations with other AWS services.
   /// [supportsLimitlessDatabase] Whether the engine version supports Aurora Limitless Database.
   /// [supportsLocalWriteForwarding] Whether the engine version supports local write forwarding or not.
-  /// [supportsLogExportsToCloudwatch] Whether the engine version supports exporting the log types specified by `exportable_log_types` to CloudWatch Logs.
+  /// [supportsLogExportsToCloudwatch] Whether the engine version supports exporting the log types specified by `exportableLogTypes` to CloudWatch Logs.
   /// [supportsParallelQuery] Whether you can use Aurora parallel query with the engine version.
   /// [supportsReadReplica] Whether the engine version supports read replicas.
   /// [validMajorTargets] Set of versions that are valid major version upgrades for the engine version.
@@ -217,4 +217,3 @@ class GetEngineVersionResult {
     );
   }
 }
-

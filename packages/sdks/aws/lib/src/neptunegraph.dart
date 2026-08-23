@@ -3,3 +3,7 @@ export 'neptunegraph/graph_args.dart';
 export 'neptunegraph/graph_state.dart';
 export 'neptunegraph/graph_timeouts.dart';
 export 'neptunegraph/graph_vector_search_configuration.dart';
+export 'neptunegraph/private_graph_endpoint.dart';
+export 'neptunegraph/private_graph_endpoint_args.dart';
+export 'neptunegraph/private_graph_endpoint_state.dart';
+export 'neptunegraph/private_graph_endpoint_timeouts.dart';

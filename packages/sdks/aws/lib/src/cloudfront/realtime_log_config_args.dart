@@ -10,7 +10,7 @@ import 'realtime_log_config_endpoint.dart';
 class RealtimeLogConfigArgs {
   /// The Amazon Kinesis data streams where real-time log data is sent.
   final pulumi.Input<RealtimeLogConfigEndpoint> endpoint;
-  /// The fields that are included in each real-time log record. See the [AWS documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/real-time-logs.html#understand-real-time-log-config-fields) for supported values.
+  /// The fields that are included in each real-time log record. See the [AWS documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/real-time-logs.html#understand-real-time-log-config-fields) for supported values. This includes `viewer-request-log-data` and `viewer-response-log-data`, which carry the custom data that a CloudFront Function logs with `cf.logCustomData()`.
   final pulumi.Input<List<String>> fields;
   /// The unique name to identify this real-time log configuration.
   final pulumi.Input<String>? name;
@@ -19,7 +19,7 @@ class RealtimeLogConfigArgs {
 
   /// Creates a new [RealtimeLogConfigArgs].
   /// [endpoint] The Amazon Kinesis data streams where real-time log data is sent.
-  /// [fields] The fields that are included in each real-time log record. See the [AWS documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/real-time-logs.html#understand-real-time-log-config-fields) for supported values.
+  /// [fields] The fields that are included in each real-time log record. See the [AWS documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/real-time-logs.html#understand-real-time-log-config-fields) for supported values. This includes `viewer-request-log-data` and `viewer-response-log-data`, which carry the custom data that a CloudFront Function logs with `cf.logCustomData()`.
   /// [name] The unique name to identify this real-time log configuration.
   /// [samplingRate] The sampling rate for this real-time log configuration. The sampling rate determines the percentage of viewer requests that are represented in the real-time log data. An integer between `1` and `100`, inclusive.
   const RealtimeLogConfigArgs({
@@ -47,4 +47,3 @@ class RealtimeLogConfigArgs {
     );
   }
 }
-

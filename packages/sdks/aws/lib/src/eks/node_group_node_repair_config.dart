@@ -6,24 +6,24 @@ import 'node_group_node_repair_config_node_repair_config_override.dart';
 class NodeGroupNodeRepairConfig {
   /// Specifies whether to enable node auto repair for the node group. Node auto repair is disabled by default. Defaults to `false`.
   final pulumi.Input<bool>? enabled;
-  /// Maximum number of nodes that can be repaired concurrently or in parallel, expressed as a count of unhealthy nodes. Conflicts with `max_parallel_nodes_repaired_percentage`.
+  /// Maximum number of nodes that can be repaired concurrently or in parallel, expressed as a count of unhealthy nodes. Conflicts with `maxParallelNodesRepairedPercentage`.
   final pulumi.Input<int>? maxParallelNodesRepairedCount;
-  /// Maximum number of nodes that can be repaired concurrently or in parallel, expressed as a percentage of unhealthy nodes. Conflicts with `max_parallel_nodes_repaired_count`.
+  /// Maximum number of nodes that can be repaired concurrently or in parallel, expressed as a percentage of unhealthy nodes. Conflicts with `maxParallelNodesRepairedCount`.
   final pulumi.Input<int>? maxParallelNodesRepairedPercentage;
-  /// Count threshold of unhealthy nodes, above which node auto repair actions will stop. Conflicts with `max_unhealthy_node_threshold_percentage`.
+  /// Count threshold of unhealthy nodes, above which node auto repair actions will stop. Conflicts with `maxUnhealthyNodeThresholdPercentage`.
   final pulumi.Input<int>? maxUnhealthyNodeThresholdCount;
-  /// Percentage threshold of unhealthy nodes, above which node auto repair actions will stop. Conflicts with `max_unhealthy_node_threshold_count`.
+  /// Percentage threshold of unhealthy nodes, above which node auto repair actions will stop. Conflicts with `maxUnhealthyNodeThresholdCount`.
   final pulumi.Input<int>? maxUnhealthyNodeThresholdPercentage;
-  /// Granular overrides for specific repair actions. See `node_repair_config_overrides` below for details.
+  /// Granular overrides for specific repair actions. See `nodeRepairConfigOverrides` below for details.
   final pulumi.Input<List<NodeGroupNodeRepairConfigNodeRepairConfigOverride>>? nodeRepairConfigOverrides;
 
   /// Creates a new [NodeGroupNodeRepairConfig].
   /// [enabled] Specifies whether to enable node auto repair for the node group. Node auto repair is disabled by default. Defaults to `false`.
-  /// [maxParallelNodesRepairedCount] Maximum number of nodes that can be repaired concurrently or in parallel, expressed as a count of unhealthy nodes. Conflicts with `max_parallel_nodes_repaired_percentage`.
-  /// [maxParallelNodesRepairedPercentage] Maximum number of nodes that can be repaired concurrently or in parallel, expressed as a percentage of unhealthy nodes. Conflicts with `max_parallel_nodes_repaired_count`.
-  /// [maxUnhealthyNodeThresholdCount] Count threshold of unhealthy nodes, above which node auto repair actions will stop. Conflicts with `max_unhealthy_node_threshold_percentage`.
-  /// [maxUnhealthyNodeThresholdPercentage] Percentage threshold of unhealthy nodes, above which node auto repair actions will stop. Conflicts with `max_unhealthy_node_threshold_count`.
-  /// [nodeRepairConfigOverrides] Granular overrides for specific repair actions. See `node_repair_config_overrides` below for details.
+  /// [maxParallelNodesRepairedCount] Maximum number of nodes that can be repaired concurrently or in parallel, expressed as a count of unhealthy nodes. Conflicts with `maxParallelNodesRepairedPercentage`.
+  /// [maxParallelNodesRepairedPercentage] Maximum number of nodes that can be repaired concurrently or in parallel, expressed as a percentage of unhealthy nodes. Conflicts with `maxParallelNodesRepairedCount`.
+  /// [maxUnhealthyNodeThresholdCount] Count threshold of unhealthy nodes, above which node auto repair actions will stop. Conflicts with `maxUnhealthyNodeThresholdPercentage`.
+  /// [maxUnhealthyNodeThresholdPercentage] Percentage threshold of unhealthy nodes, above which node auto repair actions will stop. Conflicts with `maxUnhealthyNodeThresholdCount`.
+  /// [nodeRepairConfigOverrides] Granular overrides for specific repair actions. See `nodeRepairConfigOverrides` below for details.
   const NodeGroupNodeRepairConfig({
     this.enabled,
     this.maxParallelNodesRepairedCount,
@@ -55,4 +55,3 @@ class NodeGroupNodeRepairConfig {
     );
   }
 }
-

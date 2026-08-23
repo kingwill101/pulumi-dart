@@ -161,14 +161,14 @@ import 'customer_gateway_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSite, err := networkmanager.NewSite(ctx, "example", &networkmanager.SiteArgs{
-/// 			GlobalNetworkId: example.ID(),
+/// 			GlobalNetworkId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleDevice, err := networkmanager.NewDevice(ctx, "example", &networkmanager.DeviceArgs{
-/// 			GlobalNetworkId: example.ID(),
-/// 			SiteId:          exampleSite.ID(),
+/// 			GlobalNetworkId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			SiteId:          exampleSite.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -186,8 +186,8 @@ import 'customer_gateway_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleVpnConnection, err := ec2.NewVpnConnection(ctx, "example", &ec2.VpnConnectionArgs{
-/// 			CustomerGatewayId: exampleCustomerGateway.ID(),
-/// 			TransitGatewayId:  exampleTransitGateway.ID(),
+/// 			CustomerGatewayId: exampleCustomerGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			TransitGatewayId:  exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:              exampleCustomerGateway.Type,
 /// 			StaticRoutesOnly:  pulumi.Bool(true),
 /// 		})
@@ -195,7 +195,7 @@ import 'customer_gateway_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleTransitGatewayRegistration, err := networkmanager.NewTransitGatewayRegistration(ctx, "example", &networkmanager.TransitGatewayRegistrationArgs{
-/// 			GlobalNetworkId:   example.ID(),
+/// 			GlobalNetworkId:   example.ID().ToIDOutput().ToStringOutput(),
 /// 			TransitGatewayArn: exampleTransitGateway.Arn,
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleVpnConnection,
@@ -204,9 +204,9 @@ import 'customer_gateway_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = networkmanager.NewCustomerGatewayAssociation(ctx, "example", &networkmanager.CustomerGatewayAssociationArgs{
-/// 			GlobalNetworkId:    example.ID(),
+/// 			GlobalNetworkId:    example.ID().ToIDOutput().ToStringOutput(),
 /// 			CustomerGatewayArn: exampleCustomerGateway.Arn,
-/// 			DeviceId:           exampleDevice.ID(),
+/// 			DeviceId:           exampleDevice.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleTransitGatewayRegistration,
 /// 		}))
@@ -215,6 +215,50 @@ import 'customer_gateway_association_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_globalnetwork" "example" {
+///   description = "example"
+/// }
+/// resource "aws_networkmanager_site" "example" {
+///   global_network_id = aws_networkmanager_globalnetwork.example.id
+/// }
+/// resource "aws_networkmanager_device" "example" {
+///   global_network_id = aws_networkmanager_globalnetwork.example.id
+///   site_id           = aws_networkmanager_site.example.id
+/// }
+/// resource "aws_ec2_customergateway" "example" {
+///   bgp_asn    = 65000
+///   ip_address = "172.83.124.10"
+///   type       = "ipsec.1"
+/// }
+/// resource "aws_ec2transitgateway_transitgateway" "example" {
+/// }
+/// resource "aws_ec2_vpnconnection" "example" {
+///   customer_gateway_id = aws_ec2_customergateway.example.id
+///   transit_gateway_id  = aws_ec2transitgateway_transitgateway.example.id
+///   type                = aws_ec2_customergateway.example.type
+///   static_routes_only  = true
+/// }
+/// resource "aws_networkmanager_transitgatewayregistration" "example" {
+///   depends_on          = [aws_ec2_vpnconnection.example]
+///   global_network_id   = aws_networkmanager_globalnetwork.example.id
+///   transit_gateway_arn = aws_ec2transitgateway_transitgateway.example.arn
+/// }
+/// resource "aws_networkmanager_customergatewayassociation" "example" {
+///   depends_on           = [aws_networkmanager_transitgatewayregistration.example]
+///   global_network_id    = aws_networkmanager_globalnetwork.example.id
+///   customer_gateway_arn = aws_ec2_customergateway.example.arn
+///   device_id            = aws_networkmanager_device.example.id
 /// }
 /// ```
 /// ```java
@@ -239,8 +283,8 @@ import 'customer_gateway_association_state.dart';
 /// import com.pulumi.aws.networkmanager.CustomerGatewayAssociation;
 /// import com.pulumi.aws.networkmanager.CustomerGatewayAssociationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

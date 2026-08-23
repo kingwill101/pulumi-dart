@@ -14,6 +14,7 @@ class GetVirtualGatewayResult {
   /// Last update date of the virtual gateway.
   final String lastUpdatedDate;
   final String meshName;
+  /// AWS account ID of the service mesh's owner.
   final String meshOwner;
   final String name;
   final String region;
@@ -30,7 +31,7 @@ class GetVirtualGatewayResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [lastUpdatedDate] Last update date of the virtual gateway.
   /// [meshName] Required.
-  /// [meshOwner] Required.
+  /// [meshOwner] AWS account ID of the service mesh's owner.
   /// [name] Required.
   /// [region] Required.
   /// [resourceOwner] Resource owner's AWS account ID.
@@ -82,4 +83,3 @@ class GetVirtualGatewayResult {
     );
   }
 }
-

@@ -5,7 +5,7 @@ import 'instance_state.dart';
 /// Provides an Amazon Connect instance resource. For more information see
 /// [Amazon Connect: Getting Started](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-get-started.html)
 ///
-/// !&gt; **WARN:** Amazon Connect enforces a limit of [100 combined instance creation and deletions every 30 days](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#feature-limits). For example, if you create 80 instances and delete 20 of them, you must wait 30 days to create or delete another instance. Use care when creating or deleting instances.
+/// &gt; **WARN:** Amazon Connect enforces a limit of [100 combined instance creation and deletions every 30 days](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#feature-limits). For example, if you create 80 instances and delete 20 of them, you must wait 30 days to create or delete another instance. Use care when creating or deleting instances.
 ///
 /// ## Example Usage
 ///
@@ -85,6 +85,25 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_instance" "test" {
+///   identity_management_type = "CONNECT_MANAGED"
+///   inbound_calls_enabled    = true
+///   instance_alias           = "friendly-name-connect"
+///   outbound_calls_enabled   = true
+///   tags = {
+///     "hello" = "world"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +112,8 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.Instance;
 /// import com.pulumi.aws.connect.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -131,8 +150,7 @@ import 'instance_state.dart';
 /// ```
 ///
 ///
-///
-/// ### With Existing Active Directory
+/// ### Example Usage with Existing Active Directory
 ///
 ///
 /// ```typescript
@@ -201,6 +219,23 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_instance" "test" {
+///   directory_id             = testAwsDirectoryServiceDirectory.id
+///   identity_management_type = "EXISTING_DIRECTORY"
+///   inbound_calls_enabled    = true
+///   instance_alias           = "friendly-name-connect"
+///   outbound_calls_enabled   = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -209,8 +244,8 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.Instance;
 /// import com.pulumi.aws.connect.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -246,8 +281,7 @@ import 'instance_state.dart';
 /// ```
 ///
 ///
-///
-/// ### With SAML
+/// ### Example Usage with SAML
 ///
 ///
 /// ```typescript
@@ -312,6 +346,22 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_instance" "test" {
+///   identity_management_type = "SAML"
+///   inbound_calls_enabled    = true
+///   instance_alias           = "friendly-name-connect"
+///   outbound_calls_enabled   = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -320,8 +370,8 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.Instance;
 /// import com.pulumi.aws.connect.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -365,7 +415,7 @@ import 'instance_state.dart';
 ///
 /// #### Optional
 ///
-/// - `account_id` (String) AWS Account where this resource is managed.
+/// - `accountId` (String) AWS Account where this resource is managed.
 /// - `region` (String) Region where this resource is managed.
 ///
 ///
@@ -385,7 +435,7 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<bool?> contactLensEnabled;
   /// When the instance was created.
   late final pulumi.Output<String> createdTime;
-  /// The identifier for the directory if identity_management_type is `EXISTING_DIRECTORY`.
+  /// The identifier for the directory if identityManagementType is `EXISTING_DIRECTORY`.
   late final pulumi.Output<String?> directoryId;
   /// Specifies whether early media for outbound calls is enabled . Defaults to `true` if outbound calls is enabled.
   late final pulumi.Output<bool?> earlyMediaEnabled;
@@ -393,7 +443,7 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> identityManagementType;
   /// Specifies whether inbound calls are enabled.
   late final pulumi.Output<bool> inboundCallsEnabled;
-  /// Specifies the name of the instance. Required if `directory_id` not specified.
+  /// Specifies the name of the instance. Required if `directoryId` not specified.
   late final pulumi.Output<String?> instanceAlias;
   /// Specifies whether multi-party calls/conference is enabled. Defaults to `false`.
   late final pulumi.Output<bool?> multiPartyConferenceEnabled;
@@ -405,10 +455,10 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> serviceRole;
   /// The state of the instance.
   late final pulumi.Output<String> status;
-  /// Tags to apply to the Instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// &lt;!-- * `use_custom_tts_voices` - (Optional) Whether use custom tts voices is enabled. Defaults to `false` --&gt;
+  /// Tags to apply to the Instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// &lt;!-- * `useCustomTtsVoices` - (Optional) Whether use custom tts voices is enabled. Defaults to `false` --&gt;
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Instance].

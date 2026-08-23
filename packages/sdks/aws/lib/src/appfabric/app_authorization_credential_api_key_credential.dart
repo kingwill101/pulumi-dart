@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppAuthorizationCredentialApiKeyCredential {
-  /// Contains API key credential information.
+  /// API key.
   final pulumi.Input<String> apiKey;
 
   /// Creates a new [AppAuthorizationCredentialApiKeyCredential].
-  /// [apiKey] Contains API key credential information.
+  /// [apiKey] API key.
   const AppAuthorizationCredentialApiKeyCredential({
     required this.apiKey,
   });
@@ -24,4 +24,3 @@ class AppAuthorizationCredentialApiKeyCredential {
     );
   }
 }
-

@@ -3,14 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KxVolumeAttachedCluster {
+  /// Name of the KX cluster.
   final pulumi.Input<String> clusterName;
+  /// Status of the KX cluster.
   final pulumi.Input<String> clusterStatus;
+  /// Type of the KX cluster.
   final pulumi.Input<String> clusterType;
 
   /// Creates a new [KxVolumeAttachedCluster].
-  /// [clusterName] Required.
-  /// [clusterStatus] Required.
-  /// [clusterType] Required.
+  /// [clusterName] Name of the KX cluster.
+  /// [clusterStatus] Status of the KX cluster.
+  /// [clusterType] Type of the KX cluster.
   const KxVolumeAttachedCluster({
     required this.clusterName,
     required this.clusterStatus,
@@ -33,4 +36,3 @@ class KxVolumeAttachedCluster {
     );
   }
 }
-

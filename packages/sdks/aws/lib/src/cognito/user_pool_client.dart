@@ -73,13 +73,30 @@ import 'user_pool_client_token_validity_units.dart';
 /// 		}
 /// 		_, err = cognito.NewUserPoolClient(ctx, "client", &cognito.UserPoolClientArgs{
 /// 			Name:       pulumi.String("client"),
-/// 			UserPoolId: pool.ID(),
+/// 			UserPoolId: pool.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpoolclient" "client" {
+///   name         = "client"
+///   user_pool_id = aws_cognito_userpool.pool.id
+/// }
+/// resource "aws_cognito_userpool" "pool" {
+///   name = "pool"
 /// }
 /// ```
 /// ```java
@@ -92,8 +109,8 @@ import 'user_pool_client_token_validity_units.dart';
 /// import com.pulumi.aws.cognito.UserPoolArgs;
 /// import com.pulumi.aws.cognito.UserPoolClient;
 /// import com.pulumi.aws.cognito.UserPoolClientArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -201,7 +218,7 @@ import 'user_pool_client_token_validity_units.dart';
 /// 		}
 /// 		_, err = cognito.NewUserPoolClient(ctx, "client", &cognito.UserPoolClientArgs{
 /// 			Name:           pulumi.String("client"),
-/// 			UserPoolId:     pool.ID(),
+/// 			UserPoolId:     pool.ID().ToIDOutput().ToStringOutput(),
 /// 			GenerateSecret: pulumi.Bool(true),
 /// 			ExplicitAuthFlows: pulumi.StringArray{
 /// 				pulumi.String("ADMIN_NO_SRP_AUTH"),
@@ -214,6 +231,25 @@ import 'user_pool_client_token_validity_units.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpoolclient" "client" {
+///   name                = "client"
+///   user_pool_id        = aws_cognito_userpool.pool.id
+///   generate_secret     = true
+///   explicit_auth_flows = ["ADMIN_NO_SRP_AUTH"]
+/// }
+/// resource "aws_cognito_userpool" "pool" {
+///   name = "pool"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -224,8 +260,8 @@ import 'user_pool_client_token_validity_units.dart';
 /// import com.pulumi.aws.cognito.UserPoolArgs;
 /// import com.pulumi.aws.cognito.UserPoolClient;
 /// import com.pulumi.aws.cognito.UserPoolClientArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -315,7 +351,7 @@ import 'user_pool_client_token_validity_units.dart';
 /// const testRolePolicy = new aws.iam.RolePolicy("test", {
 ///     name: "role_policy",
 ///     role: testRole.id,
-///     policy: test.apply(test => test.json),
+///     policy: test.json,
 /// });
 /// ```
 /// ```python
@@ -509,7 +545,7 @@ import 'user_pool_client_token_validity_units.dart';
 /// 		}
 /// 		_, err = cognito.NewUserPoolClient(ctx, "test", &cognito.UserPoolClientArgs{
 /// 			Name:       pulumi.String("pool_client"),
-/// 			UserPoolId: testUserPool.ID(),
+/// 			UserPoolId: testUserPool.ID().ToIDOutput().ToStringOutput(),
 /// 			AnalyticsConfiguration: &cognito.UserPoolClientAnalyticsConfigurationArgs{
 /// 				ApplicationId:  testApp.ApplicationId,
 /// 				ExternalId:     pulumi.String("some_id"),
@@ -541,17 +577,70 @@ import 'user_pool_client_token_validity_units.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "test", &iam.RolePolicyArgs{
-/// 			Name: pulumi.String("role_policy"),
-/// 			Role: testRole.ID(),
-/// 			Policy: pulumi.String(test.ApplyT(func(test iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &test.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:   pulumi.String("role_policy"),
+/// 			Role:   testRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: test.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["cognito-idp.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "test" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["mobiletargeting:UpdateEndpoint", "mobiletargeting:PutEvents"]
+///     resources = ["arn:aws:mobiletargeting:*:${data.aws_getcalleridentity.current.account_id}:apps/${aws_pinpoint_app.test.application_id}*"]
+///   }
+/// }
+///
+/// resource "aws_cognito_userpoolclient" "test" {
+///   name         = "pool_client"
+///   user_pool_id = aws_cognito_userpool.test.id
+///   analytics_configuration = {
+///     application_id   = aws_pinpoint_app.test.application_id
+///     external_id      = "some_id"
+///     role_arn         = aws_iam_role.test.arn
+///     user_data_shared = true
+///   }
+/// }
+/// resource "aws_cognito_userpool" "test" {
+///   name = "pool"
+/// }
+/// resource "aws_pinpoint_app" "test" {
+///   name = "pinpoint"
+/// }
+/// resource "aws_iam_role" "test" {
+///   name               = "role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicy" "test" {
+///   name   = "role_policy"
+///   role   = aws_iam_role.test.id
+///   policy = data.aws_iam_getpolicydocument.test.json
 /// }
 /// ```
 /// ```java
@@ -566,6 +655,8 @@ import 'user_pool_client_token_validity_units.dart';
 /// import com.pulumi.aws.pinpoint.AppArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.cognito.UserPoolClient;
@@ -575,8 +666,8 @@ import 'user_pool_client_token_validity_units.dart';
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
 /// import com.pulumi.aws.iam.RolePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -814,7 +905,7 @@ import 'user_pool_client_token_validity_units.dart';
 /// 		}
 /// 		_, err = cognito.NewUserPoolClient(ctx, "userpool_client", &cognito.UserPoolClientArgs{
 /// 			Name:       pulumi.String("client"),
-/// 			UserPoolId: pool.ID(),
+/// 			UserPoolId: pool.ID().ToIDOutput().ToStringOutput(),
 /// 			CallbackUrls: pulumi.StringArray{
 /// 				pulumi.String("https://example.com"),
 /// 			},
@@ -838,6 +929,28 @@ import 'user_pool_client_token_validity_units.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpoolclient" "userpool_client" {
+///   name                                 = "client"
+///   user_pool_id                         = aws_cognito_userpool.pool.id
+///   callback_urls                        = ["https://example.com"]
+///   allowed_oauth_flows_user_pool_client = true
+///   allowed_oauth_flows                  = ["code", "implicit"]
+///   allowed_oauth_scopes                 = ["email", "openid"]
+///   supported_identity_providers         = ["COGNITO"]
+/// }
+/// resource "aws_cognito_userpool" "pool" {
+///   name = "pool"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -848,8 +961,8 @@ import 'user_pool_client_token_validity_units.dart';
 /// import com.pulumi.aws.cognito.UserPoolArgs;
 /// import com.pulumi.aws.cognito.UserPoolClient;
 /// import com.pulumi.aws.cognito.UserPoolClientArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -988,7 +1101,7 @@ import 'user_pool_client_token_validity_units.dart';
 /// 		}
 /// 		_, err = cognito.NewUserPoolClient(ctx, "userpool_client", &cognito.UserPoolClientArgs{
 /// 			Name:       pulumi.String("client"),
-/// 			UserPoolId: pool.ID(),
+/// 			UserPoolId: pool.ID().ToIDOutput().ToStringOutput(),
 /// 			ExplicitAuthFlows: pulumi.StringArray{
 /// 				pulumi.String("ADMIN_NO_SRP_AUTH"),
 /// 			},
@@ -1004,6 +1117,28 @@ import 'user_pool_client_token_validity_units.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpoolclient" "userpool_client" {
+///   name                = "client"
+///   user_pool_id        = aws_cognito_userpool.pool.id
+///   explicit_auth_flows = ["ADMIN_NO_SRP_AUTH"]
+///   refresh_token_rotation = {
+///     feature                    = "ENABLED"
+///     retry_grace_period_seconds = 10
+///   }
+/// }
+/// resource "aws_cognito_userpool" "pool" {
+///   name = "pool"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1015,8 +1150,8 @@ import 'user_pool_client_token_validity_units.dart';
 /// import com.pulumi.aws.cognito.UserPoolClient;
 /// import com.pulumi.aws.cognito.UserPoolClientArgs;
 /// import com.pulumi.aws.cognito.inputs.UserPoolClientRefreshTokenRotationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1075,17 +1210,17 @@ import 'user_pool_client_token_validity_units.dart';
 class UserPoolClient extends pulumi.CustomResource {
   /// Time limit, between 5 minutes and 1 day, after which the access token is no longer valid and cannot be used. By default, the unit is hours. The unit can be overridden by a value in `token_validity_units.access_token`.
   late final pulumi.Output<int> accessTokenValidity;
-  /// List of allowed OAuth flows, including `code`, `implicit`, and `client_credentials`. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure this option.
+  /// List of allowed OAuth flows, including `code`, `implicit`, and `clientCredentials`. `allowedOauthFlowsUserPoolClient` must be set to `true` before you can configure this option.
   late final pulumi.Output<List<String>> allowedOauthFlows;
-  /// Whether the client is allowed to use OAuth 2.0 features. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure the following arguments: `callback_urls`, `logout_urls`, `allowed_oauth_scopes` and `allowed_oauth_flows`.
+  /// Whether the client is allowed to use OAuth 2.0 features. `allowedOauthFlowsUserPoolClient` must be set to `true` before you can configure the following arguments: `callbackUrls`, `logoutUrls`, `allowedOauthScopes` and `allowedOauthFlows`.
   late final pulumi.Output<bool> allowedOauthFlowsUserPoolClient;
-  /// List of allowed OAuth scopes, including `phone`, `email`, `openid`, `profile`, and `aws.cognito.signin.user.admin`. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure this option.
+  /// List of allowed OAuth scopes, including `phone`, `email`, `openid`, `profile`, and `aws.cognito.signin.user.admin`. `allowedOauthFlowsUserPoolClient` must be set to `true` before you can configure this option.
   late final pulumi.Output<List<String>> allowedOauthScopes;
-  /// Configuration block for Amazon Pinpoint analytics that collects metrics for this user pool. See details below.
+  /// Configuration block for AWS End User Messaging analytics that collects metrics for this user pool. See details below.
   late final pulumi.Output<UserPoolClientAnalyticsConfiguration?> analyticsConfiguration;
-  /// Duration, in minutes, of the session token created by Amazon Cognito for each API request in an authentication flow. The session token must be responded to by the native user of the user pool before it expires. Valid values for `auth_session_validity` are between `3` and `15`, with a default value of `3`.
+  /// Duration, in minutes, of the session token created by Amazon Cognito for each API request in an authentication flow. The session token must be responded to by the native user of the user pool before it expires. Valid values for `authSessionValidity` are between `3` and `15`, with a default value of `3`.
   late final pulumi.Output<int> authSessionValidity;
-  /// List of allowed callback URLs for the identity providers. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure this option.
+  /// List of allowed callback URLs for the identity providers. `allowedOauthFlowsUserPoolClient` must be set to `true` before you can configure this option.
   late final pulumi.Output<List<String>> callbackUrls;
   /// Client secret of the user pool client.
   late final pulumi.Output<String> clientSecret;
@@ -1101,7 +1236,7 @@ class UserPoolClient extends pulumi.CustomResource {
   late final pulumi.Output<bool?> generateSecret;
   /// Time limit, between 5 minutes and 1 day, after which the ID token is no longer valid and cannot be used. By default, the unit is hours. The unit can be overridden by a value in `token_validity_units.id_token`.
   late final pulumi.Output<int> idTokenValidity;
-  /// List of allowed logout URLs for the identity providers. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure this option.
+  /// List of allowed logout URLs for the identity providers. `allowedOauthFlowsUserPoolClient` must be set to `true` before you can configure this option.
   late final pulumi.Output<List<String>> logoutUrls;
   /// Name of the application client.
   late final pulumi.Output<String> name;
@@ -1115,7 +1250,7 @@ class UserPoolClient extends pulumi.CustomResource {
   late final pulumi.Output<int> refreshTokenValidity;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// List of provider names for the identity providers that are supported on this client. It uses the `provider_name` attribute of the `aws.cognito.IdentityProvider` resource(s), or the equivalent string(s).
+  /// List of provider names for the identity providers that are supported on this client. It uses the `providerName` attribute of the `aws.cognito.IdentityProvider` resource(s), or the equivalent string(s).
   late final pulumi.Output<List<String>> supportedIdentityProviders;
   /// Configuration block for representing the validity times in units. See details below. Detailed below.
   late final pulumi.Output<UserPoolClientTokenValidityUnits?> tokenValidityUnits;

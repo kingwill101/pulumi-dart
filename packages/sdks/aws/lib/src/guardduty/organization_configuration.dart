@@ -126,7 +126,7 @@ import 'organization_configuration_state.dart';
 /// 		}
 /// 		_, err = guardduty.NewOrganizationConfiguration(ctx, "example", &guardduty.OrganizationConfigurationArgs{
 /// 			AutoEnableOrganizationMembers: pulumi.String("ALL"),
-/// 			DetectorId:                    example.ID(),
+/// 			DetectorId:                    example.ID().ToIDOutput().ToStringOutput(),
 /// 			Datasources: &guardduty.OrganizationConfigurationDatasourcesArgs{
 /// 				S3Logs: &guardduty.OrganizationConfigurationDatasourcesS3LogsArgs{
 /// 					AutoEnable: pulumi.Bool(true),
@@ -152,6 +152,40 @@ import 'organization_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_guardduty_detector" "example" {
+///   enable = true
+/// }
+/// resource "aws_guardduty_organizationconfiguration" "example" {
+///   auto_enable_organization_members = "ALL"
+///   detector_id                      = aws_guardduty_detector.example.id
+///   datasources = {
+///     s3_logs = {
+///       auto_enable = true
+///     }
+///     kubernetes = {
+///       audit_logs = {
+///         enable = true
+///       }
+///     }
+///     malware_protection = {
+///       scan_ec2_instance_with_findings = {
+///         ebs_volumes = {
+///           auto_enable = true
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -169,8 +203,8 @@ import 'organization_configuration_state.dart';
 /// import com.pulumi.aws.guardduty.inputs.OrganizationConfigurationDatasourcesMalwareProtectionArgs;
 /// import com.pulumi.aws.guardduty.inputs.OrganizationConfigurationDatasourcesMalwareProtectionScanEc2InstanceWithFindingsArgs;
 /// import com.pulumi.aws.guardduty.inputs.OrganizationConfigurationDatasourcesMalwareProtectionScanEc2InstanceWithFindingsEbsVolumesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -249,7 +283,7 @@ class OrganizationConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> autoEnableOrganizationMembers;
   /// Configuration for the collected datasources. [Deprecated](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-feature-object-api-changes-march2023.html) in favor of `aws.guardduty.OrganizationConfigurationFeature` resources.
   ///
-  /// &gt; **NOTE:** One of `auto_enable` or `auto_enable_organization_members` must be specified.
+  /// &gt; **NOTE:** One of `autoEnable` or `autoEnableOrganizationMembers` must be specified.
   late final pulumi.Output<OrganizationConfigurationDatasources> datasources;
   /// The detector ID of the GuardDuty account.
   late final pulumi.Output<String> detectorId;

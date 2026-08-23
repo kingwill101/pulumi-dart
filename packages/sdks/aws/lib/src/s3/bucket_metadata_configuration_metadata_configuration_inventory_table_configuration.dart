@@ -6,18 +6,18 @@ import 'bucket_metadata_configuration_metadata_configuration_inventory_table_con
 class BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration {
   /// Configuration state of the inventory table, indicating whether the inventory table is enabled or disabled. Valid values: `ENABLED`, `DISABLED`.
   final pulumi.Input<String> configurationState;
-  /// Encryption configuration for the inventory table. See `encryption_configuration` Block for details.
+  /// Encryption configuration for the inventory table. See `encryptionConfiguration` Block for details.
   final pulumi.Input<BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration>? encryptionConfiguration;
-  /// Inventory table ARN.
+  /// Journal table ARN.
   final pulumi.Input<String>? tableArn;
-  /// Inventory table name.
+  /// Journal table name.
   final pulumi.Input<String>? tableName;
 
   /// Creates a new [BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration].
   /// [configurationState] Configuration state of the inventory table, indicating whether the inventory table is enabled or disabled. Valid values: `ENABLED`, `DISABLED`.
-  /// [encryptionConfiguration] Encryption configuration for the inventory table. See `encryption_configuration` Block for details.
-  /// [tableArn] Inventory table ARN.
-  /// [tableName] Inventory table name.
+  /// [encryptionConfiguration] Encryption configuration for the inventory table. See `encryptionConfiguration` Block for details.
+  /// [tableArn] Journal table ARN.
+  /// [tableName] Journal table name.
   const BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration({
     required this.configurationState,
     this.encryptionConfiguration,
@@ -43,4 +43,3 @@ class BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguratio
     );
   }
 }
-

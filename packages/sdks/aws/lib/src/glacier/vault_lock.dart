@@ -4,11 +4,11 @@ import 'vault_lock_state.dart';
 
 /// Manages a Glacier Vault Lock. You can refer to the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html) for a full explanation of the Glacier Vault Lock functionality.
 ///
-/// &gt; **NOTE:** This resource allows you to test Glacier Vault Lock policies by setting the `complete_lock` argument to `false`. When testing policies in this manner, the Glacier Vault Lock automatically expires after 24 hours and this provider will show this resource as needing recreation after that time. To permanently apply the policy, set the `complete_lock` argument to `true`. When changing `complete_lock` to `true`, it is expected the resource will show as recreating.
+/// &gt; **NOTE:** This resource allows you to test Glacier Vault Lock policies by setting the `completeLock` argument to `false`. When testing policies in this manner, the Glacier Vault Lock automatically expires after 24 hours and this provider will show this resource as needing recreation after that time. To permanently apply the policy, set the `completeLock` argument to `true`. When changing `completeLock` to `true`, it is expected the resource will show as recreating.
 ///
 /// &gt; **NOTE:** We suggest using `jsonencode()` or `aws.iam.getPolicyDocument` when assigning a value to `policy`. They seamlessly translate Terraform language into JSON, enabling you to maintain consistency within your configuration without the need for context switches. Also, you can sidestep potential complications arising from formatting discrepancies, whitespace inconsistencies, and other nuances inherent to JSON.
 ///
-/// !&gt; **WARNING:** Once a Glacier Vault Lock is completed, it is immutable. The deletion of the Glacier Vault Lock is not be possible and attempting to remove it from this provider will return an error. Set the `ignore_deletion_error` argument to `true` and apply this configuration before attempting to delete this resource via this provider or remove this resource from this provider's management.
+/// &gt; **WARNING:** Once a Glacier Vault Lock is completed, it is immutable. The deletion of the Glacier Vault Lock is not be possible and attempting to remove it from this provider will return an error. Set the `ignoreDeletionError` argument to `true` and apply this configuration before attempting to delete this resource via this provider or remove this resource from this provider's management.
 ///
 /// ## Example Usage
 ///
@@ -34,7 +34,7 @@ import 'vault_lock_state.dart';
 /// });
 /// const exampleVaultLock = new aws.glacier.VaultLock("example", {
 ///     completeLock: false,
-///     policy: example.apply(example => example.json),
+///     policy: example.json,
 ///     vaultName: exampleVault.name,
 /// });
 /// ```
@@ -152,16 +152,45 @@ import 'vault_lock_state.dart';
 /// 		}, nil)
 /// 		_, err = glacier.NewVaultLock(ctx, "example", &glacier.VaultLockArgs{
 /// 			CompleteLock: pulumi.Bool(false),
-/// 			Policy: pulumi.String(example.ApplyT(func(example iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &example.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			VaultName: exampleVault.Name,
+/// 			Policy:       example.Json(),
+/// 			VaultName:    exampleVault.Name,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     actions   = ["glacier:DeleteArchive"]
+///     effect    = "Deny"
+///     resources = [aws_glacier_vault.example.arn]
+///     conditions {
+///       test     = "NumericLessThanEquals"
+///       variable = "glacier:ArchiveAgeinDays"
+///       values   = ["365"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_glacier_vault" "example" {
+///   name = "example"
+/// }
+/// resource "aws_glacier_vaultlock" "example" {
+///   complete_lock = false
+///   policy        = data.aws_iam_getpolicydocument.example.json
+///   vault_name    = aws_glacier_vault.example.name
 /// }
 /// ```
 /// ```java
@@ -174,10 +203,12 @@ import 'vault_lock_state.dart';
 /// import com.pulumi.aws.glacier.VaultArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.glacier.VaultLock;
 /// import com.pulumi.aws.glacier.VaultLockArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -309,6 +340,21 @@ import 'vault_lock_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glacier_vaultlock" "example" {
+///   complete_lock = true
+///   policy        = exampleAwsIamPolicyDocument.json
+///   vault_name    = exampleAwsGlacierVault.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -317,8 +363,8 @@ import 'vault_lock_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.glacier.VaultLock;
 /// import com.pulumi.aws.glacier.VaultLockArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -360,7 +406,7 @@ import 'vault_lock_state.dart';
 class VaultLock extends pulumi.CustomResource {
   /// Boolean whether to permanently apply this Glacier Lock Policy. Once completed, this cannot be undone. If set to `false`, the Glacier Lock Policy remains in a testing mode for 24 hours. After that time, the Glacier Lock Policy is automatically removed by Glacier and the this provider resource will show as needing recreation. Changing this from `false` to `true` will show as resource recreation, which is expected. Changing this from `true` to `false` is not possible unless the Glacier Vault is recreated at the same time.
   late final pulumi.Output<bool> completeLock;
-  /// Allow this provider to ignore the error returned when attempting to delete the Glacier Lock Policy. This can be used to delete or recreate the Glacier Vault via this provider, for example, if the Glacier Vault Lock policy permits that action. This should only be used in conjunction with `complete_lock` being set to `true`.
+  /// Allow this provider to ignore the error returned when attempting to delete the Glacier Lock Policy. This can be used to delete or recreate the Glacier Vault via this provider, for example, if the Glacier Vault Lock policy permits that action. This should only be used in conjunction with `completeLock` being set to `true`.
   late final pulumi.Output<bool?> ignoreDeletionError;
   /// JSON string containing the IAM policy to apply as the Glacier Vault Lock policy.
   late final pulumi.Output<String> policy;

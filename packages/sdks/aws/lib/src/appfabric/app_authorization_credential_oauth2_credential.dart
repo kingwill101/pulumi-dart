@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppAuthorizationCredentialOauth2Credential {
-  /// The client ID of the client application.
+  /// Client ID of the client application.
   final pulumi.Input<String> clientId;
-  /// The client secret of the client application.
+  /// Client secret of the client application.
   final pulumi.Input<String> clientSecret;
 
   /// Creates a new [AppAuthorizationCredentialOauth2Credential].
-  /// [clientId] The client ID of the client application.
-  /// [clientSecret] The client secret of the client application.
+  /// [clientId] Client ID of the client application.
+  /// [clientSecret] Client secret of the client application.
   const AppAuthorizationCredentialOauth2Credential({
     required this.clientId,
     required this.clientSecret,
@@ -30,4 +30,3 @@ class AppAuthorizationCredentialOauth2Credential {
     );
   }
 }
-

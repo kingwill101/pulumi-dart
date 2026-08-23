@@ -174,6 +174,19 @@ import 'resource_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_organizations_resourcepolicy" "example" {
+///   content = "{\n  \\\"Version\\\": \\\"2012-10-17\\\",\n  \\\"Statement\\\": [\n    {\n      \\\"Sid\\\": \\\"DelegatingNecessaryDescribeListActions\\\",\n      \\\"Effect\\\": \\\"Allow\\\",\n      \\\"Principal\\\": {\n        \\\"AWS\\\": \\\"arn:aws:iam::123456789012:root\\\"\n      },\n      \\\"Action\\\": [\n        \\\"organizations:DescribeOrganization\\\",\n        \\\"organizations:DescribeOrganizationalUnit\\\",\n        \\\"organizations:DescribeAccount\\\",\n        \\\"organizations:DescribePolicy\\\",\n        \\\"organizations:DescribeEffectivePolicy\\\",\n        \\\"organizations:ListRoots\\\",\n        \\\"organizations:ListOrganizationalUnitsForParent\\\",\n        \\\"organizations:ListParents\\\",\n        \\\"organizations:ListChildren\\\",\n        \\\"organizations:ListAccounts\\\",\n        \\\"organizations:ListAccountsForParent\\\",\n        \\\"organizations:ListPolicies\\\",\n        \\\"organizations:ListPoliciesForTarget\\\",\n        \\\"organizations:ListTargetsForPolicy\\\",\n        \\\"organizations:ListTagsForResource\\\"\n      ],\n      \\\"Resource\\\": \\\"*\\\"\n    }\n  ]\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -182,8 +195,8 @@ import 'resource_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.organizations.ResourcePolicy;
 /// import com.pulumi.aws.organizations.ResourcePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -274,6 +287,17 @@ import 'resource_policy_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) Unique identifier (ID) of the resource policy.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+///
+///
 /// Using `pulumi import`, import `aws.organizations.ResourcePolicy` using the resource policy ID. For example:
 ///
 /// ```sh
@@ -284,9 +308,9 @@ class ResourcePolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Content for the resource policy. The text must be correctly formatted JSON that complies with the syntax for the resource policy's type. See the [_AWS Organizations User Guide_](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_delegate_examples.html) for examples.
   late final pulumi.Output<String> content;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ResourcePolicy].

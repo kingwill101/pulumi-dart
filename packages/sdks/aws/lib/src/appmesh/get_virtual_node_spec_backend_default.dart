@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_virtual_node_spec_backend_default_client_policy.dart';
 
 class GetVirtualNodeSpecBackendDefault {
+  /// Default client policy for virtual service backends. See `spec.backend_defaults.client_policy` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecBackendDefaultClientPolicy>> clientPolicies;
 
   /// Creates a new [GetVirtualNodeSpecBackendDefault].
-  /// [clientPolicies] Required.
+  /// [clientPolicies] Default client policy for virtual service backends. See `spec.backend_defaults.client_policy` Block for details.
   const GetVirtualNodeSpecBackendDefault({
     required this.clientPolicies,
   });
@@ -24,4 +25,3 @@ class GetVirtualNodeSpecBackendDefault {
     );
   }
 }
-

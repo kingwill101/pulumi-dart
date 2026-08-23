@@ -7,11 +7,11 @@ class VirtualNodeSpecListenerHealthCheck {
   final pulumi.Input<int> healthyThreshold;
   /// Time period in milliseconds between each health check execution.
   final pulumi.Input<int> intervalMillis;
-  /// Destination path for the health check request. This is only required if the specified protocol is `http` or `http2`.
+  /// File path to write access logs to. You can use `/dev/stdout` to send access logs to standard out. Must be between 1 and 255 characters in length.
   final pulumi.Input<String>? path;
-  /// Destination port for the health check request. This port must match the port defined in the `port_mapping` for the listener.
+  /// Port used for the port mapping.
   final pulumi.Input<int>? port;
-  /// Protocol for the health check request. Valid values are `http`, `http2`, `tcp` and `grpc`.
+  /// Protocol used for the port mapping. Valid values are `http`, `http2`, `tcp` and `grpc`.
   final pulumi.Input<String> protocol;
   /// Amount of time to wait when receiving a response from the health check, in milliseconds.
   final pulumi.Input<int> timeoutMillis;
@@ -21,9 +21,9 @@ class VirtualNodeSpecListenerHealthCheck {
   /// Creates a new [VirtualNodeSpecListenerHealthCheck].
   /// [healthyThreshold] Number of consecutive successful health checks that must occur before declaring listener healthy.
   /// [intervalMillis] Time period in milliseconds between each health check execution.
-  /// [path] Destination path for the health check request. This is only required if the specified protocol is `http` or `http2`.
-  /// [port] Destination port for the health check request. This port must match the port defined in the `port_mapping` for the listener.
-  /// [protocol] Protocol for the health check request. Valid values are `http`, `http2`, `tcp` and `grpc`.
+  /// [path] File path to write access logs to. You can use `/dev/stdout` to send access logs to standard out. Must be between 1 and 255 characters in length.
+  /// [port] Port used for the port mapping.
+  /// [protocol] Protocol used for the port mapping. Valid values are `http`, `http2`, `tcp` and `grpc`.
   /// [timeoutMillis] Amount of time to wait when receiving a response from the health check, in milliseconds.
   /// [unhealthyThreshold] Number of consecutive failed health checks that must occur before declaring a virtual node unhealthy.
   const VirtualNodeSpecListenerHealthCheck({
@@ -60,4 +60,3 @@ class VirtualNodeSpecListenerHealthCheck {
     );
   }
 }
-

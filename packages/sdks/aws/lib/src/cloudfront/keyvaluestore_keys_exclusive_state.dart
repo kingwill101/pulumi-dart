@@ -12,7 +12,7 @@ class KeyvaluestoreKeysExclusiveState {
   /// Maximum resource key values pairs that will update in a single API request. AWS has a default quota of 50 keys or a 3 MB payload, whichever is reached first. Defaults to `50`.
   final pulumi.Input<int>? maxBatchSize;
   /// A list of all resource key value pairs associated with the KeyValueStore.
-  /// See `resource_key_value_pair` below.
+  /// See `resourceKeyValuePair` below.
   final pulumi.Input<List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>>? resourceKeyValuePairs;
   /// Total size of the Key Value Store in bytes.
   final pulumi.Input<int>? totalSizeInBytes;
@@ -47,4 +47,3 @@ class KeyvaluestoreKeysExclusiveState {
     );
   }
 }
-

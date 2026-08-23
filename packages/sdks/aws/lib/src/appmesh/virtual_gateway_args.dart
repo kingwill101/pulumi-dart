@@ -18,7 +18,7 @@ class VirtualGatewayArgs {
   final pulumi.Input<String>? region;
   /// Virtual gateway specification to apply.
   final pulumi.Input<VirtualGatewaySpec> spec;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [VirtualGatewayArgs].
@@ -27,7 +27,7 @@ class VirtualGatewayArgs {
   /// [name] Name to use for the virtual gateway. Must be between 1 and 255 characters in length.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [spec] Virtual gateway specification to apply.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const VirtualGatewayArgs({
     required this.meshName,
     this.meshOwner,
@@ -59,4 +59,3 @@ class VirtualGatewayArgs {
     );
   }
 }
-

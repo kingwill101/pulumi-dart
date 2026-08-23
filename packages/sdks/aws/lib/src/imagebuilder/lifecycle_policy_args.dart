@@ -27,7 +27,7 @@ class LifecyclePolicyArgs {
   final pulumi.Input<String> resourceType;
   /// The status of the lifecycle policy.
   final pulumi.Input<String>? status;
-  /// Key-value map of resource tags for the Image Builder Lifecycle Policy. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the Image Builder Lifecycle Policy. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [LifecyclePolicyArgs].
@@ -39,7 +39,7 @@ class LifecyclePolicyArgs {
   /// [resourceSelection] Selection criteria for the resources that the lifecycle policy applies to. Detailed below.
   /// [resourceType] The type of Image Builder resource that the lifecycle policy applies to. Valid values: `AMI_IMAGE` or `CONTAINER_IMAGE`.
   /// [status] The status of the lifecycle policy.
-  /// [tags] Key-value map of resource tags for the Image Builder Lifecycle Policy. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags for the Image Builder Lifecycle Policy. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const LifecyclePolicyArgs({
     this.description,
     required this.executionRole,
@@ -80,4 +80,3 @@ class LifecyclePolicyArgs {
     );
   }
 }
-

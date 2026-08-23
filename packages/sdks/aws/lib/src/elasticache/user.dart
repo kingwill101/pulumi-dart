@@ -5,7 +5,7 @@ import 'user_state.dart';
 
 /// Provides an ElastiCache user resource.
 ///
-/// &gt; **Note:** All arguments including the username and passwords will be stored in the raw state as plain-text.
+/// &gt; **Note:** All arguments including the username and passwords will be stored in the raw state as plain-text unless you use the write-only `passwordsWo` argument.
 /// ## Example Usage
 ///
 ///
@@ -80,6 +80,23 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_user" "test" {
+///   user_id       = "testUserId"
+///   user_name     = "testUserName"
+///   access_string = "on ~app::* -@all +@read +@hash +@bitmap +@geo -setbit -bitfield -hset -hsetnx -hmset -hincrby -hincrbyfloat -hdel -bitop -geoadd -georadius -georadiusbymember"
+///   engine        = "redis"
+///   passwords     = ["password123456789"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +105,8 @@ import 'user_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elasticache.User;
 /// import com.pulumi.aws.elasticache.UserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -202,6 +219,25 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_user" "test" {
+///   user_id       = "testUserId"
+///   user_name     = "testUserName"
+///   access_string = "on ~* +@all"
+///   engine        = "redis"
+///   authentication_mode = {
+///     type = "iam"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -211,8 +247,8 @@ import 'user_state.dart';
 /// import com.pulumi.aws.elasticache.User;
 /// import com.pulumi.aws.elasticache.UserArgs;
 /// import com.pulumi.aws.elasticache.inputs.UserAuthenticationModeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -344,6 +380,26 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_user" "test" {
+///   user_id       = "testUserId"
+///   user_name     = "testUserName"
+///   access_string = "on ~* +@all"
+///   engine        = "redis"
+///   authentication_mode = {
+///     type      = "password"
+///     passwords = ["password1", "password2"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -353,8 +409,8 @@ import 'user_state.dart';
 /// import com.pulumi.aws.elasticache.User;
 /// import com.pulumi.aws.elasticache.UserArgs;
 /// import com.pulumi.aws.elasticache.inputs.UserAuthenticationModeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -399,9 +455,147 @@ import 'user_state.dart';
 /// ```
 ///
 ///
+/// ### Using Write-Only Password (Terraform 1.11+)
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const test = new aws.elasticache.User("test", {
+///     userId: "testUserId",
+///     userName: "testUserName",
+///     accessString: "on ~* +@all",
+///     engine: "redis",
+///     passwordsWo: elasticachePassword,
+///     passwordsWoVersion: 1,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// test = aws.elasticache.User("test",
+///     user_id="testUserId",
+///     user_name="testUserName",
+///     access_string="on ~* +@all",
+///     engine="redis",
+///     passwords_wo=elasticache_password,
+///     passwords_wo_version=1)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var test = new Aws.ElastiCache.User("test", new()
+///     {
+///         UserId = "testUserId",
+///         UserName = "testUserName",
+///         AccessString = "on ~* +@all",
+///         Engine = "redis",
+///         PasswordsWo = elasticachePassword,
+///         PasswordsWoVersion = 1,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/elasticache"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := elasticache.NewUser(ctx, "test", &elasticache.UserArgs{
+/// 			UserId:             pulumi.String("testUserId"),
+/// 			UserName:           pulumi.String("testUserName"),
+/// 			AccessString:       pulumi.String("on ~* +@all"),
+/// 			Engine:             pulumi.String("redis"),
+/// 			PasswordsWo:        pulumi.Any(elasticachePassword),
+/// 			PasswordsWoVersion: pulumi.Int(1),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_user" "test" {
+///   user_id              = "testUserId"
+///   user_name            = "testUserName"
+///   access_string        = "on ~* +@all"
+///   engine               = "redis"
+///   passwords_wo         = elasticachePassword
+///   passwords_wo_version = 1 # Increment to trigger password update
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.elasticache.User;
+/// import com.pulumi.aws.elasticache.UserArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var test = new User("test", UserArgs.builder()
+///             .userId("testUserId")
+///             .userName("testUserName")
+///             .accessString("on ~* +@all")
+///             .engine("redis")
+///             .passwordsWo(elasticachePassword)
+///             .passwordsWoVersion(1)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   test:
+///     type: aws:elasticache:User
+///     properties:
+///       userId: testUserId
+///       userName: testUserName
+///       accessString: on ~* +@all
+///       engine: redis
+///       passwordsWo: ${elasticachePassword}
+///       passwordsWoVersion: 1 # Increment to trigger password update
+/// ```
+///
+///
 /// ## Import
 ///
-/// Using `pulumi import`, import ElastiCache users using the `user_id`. For example:
+/// Using `pulumi import`, import ElastiCache users using the `userId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:elasticache/user:User my_user userId1
@@ -419,6 +613,11 @@ class User extends pulumi.CustomResource {
   late final pulumi.Output<bool?> noPasswordRequired;
   /// Passwords used for this user. You can create up to two passwords for each user.
   late final pulumi.Output<List<String>?> passwords;
+  /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+  /// Write-only password for this user. This argument is not stored in state. Conflicts with `passwords` and `authenticationMode`. See Write-Only Arguments for more information. Requires Terraform 1.11+.
+  late final pulumi.Output<String?> passwordsWo;
+  /// Version number for `passwordsWo`. Increment this value to trigger a password update. Required when using `passwordsWo`.
+  late final pulumi.Output<int?> passwordsWoVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// A list of tags to be added to this resource. A tag is a key-value pair.
@@ -451,6 +650,8 @@ class User extends pulumi.CustomResource {
     engine = registerOutput<String>('engine');
     noPasswordRequired = registerOutput<bool?>('noPasswordRequired');
     passwords = registerOutput<List<String>?>('passwords');
+    passwordsWo = registerOutput<String?>('passwordsWo');
+    passwordsWoVersion = registerOutput<int?>('passwordsWoVersion');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -487,6 +688,8 @@ class User extends pulumi.CustomResource {
     engine = registerOutput<String>('engine');
     noPasswordRequired = registerOutput<bool?>('noPasswordRequired');
     passwords = registerOutput<List<String>?>('passwords');
+    passwordsWo = registerOutput<String?>('passwordsWo');
+    passwordsWoVersion = registerOutput<int?>('passwordsWoVersion');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

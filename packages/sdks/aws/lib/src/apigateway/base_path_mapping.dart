@@ -8,27 +8,27 @@ import 'base_path_mapping_state.dart';
 ///
 /// ## Import
 ///
-/// For a non-root `base_path`:
+/// For a non-root `basePath`:
 ///
 ///
-/// For a non-root `base_path` and a private custom domain name:
+/// For a non-root `basePath` and a private custom domain name:
 ///
 ///
 /// Using `pulumi import`, import `aws.apigateway.BasePathMapping` using the domain name and base path or domain name, base path and domain name ID (for private custom domain names). For example:
 ///
-/// For an empty `base_path` or, in other words, a root path (`/`):
+/// For an empty `basePath` or, in other words, a root path (`/`):
 ///
 /// ```sh
 /// $ pulumi import aws:apigateway/basePathMapping:BasePathMapping example example.com/
 /// ```
 ///
-/// For a non-root `base_path`:
+/// For a non-root `basePath`:
 ///
 /// ```sh
 /// $ pulumi import aws:apigateway/basePathMapping:BasePathMapping example example.com/base-path
 /// ```
 ///
-/// For a non-root `base_path` and a private custom domain name:
+/// For a non-root `basePath` and a private custom domain name:
 ///
 /// ```sh
 /// $ pulumi import aws:apigateway/basePathMapping:BasePathMapping example api.internal.example.com/base-path/abcde12345
@@ -38,7 +38,7 @@ class BasePathMapping extends pulumi.CustomResource {
   late final pulumi.Output<String?> basePath;
   /// Already-registered domain name to connect the API to.
   late final pulumi.Output<String> domainName;
-  /// The identifier for the domain name resource. Supported only for private custom domain names.
+  /// Identifier for the domain name resource. Supported only for private custom domain names.
   late final pulumi.Output<String?> domainNameId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

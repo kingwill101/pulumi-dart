@@ -57,6 +57,19 @@ import 'domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_customerprofiles_domain" "example" {
+///   domain_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +78,8 @@ import 'domain_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.customerprofiles.Domain;
 /// import com.pulumi.aws.customerprofiles.DomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -320,7 +333,7 @@ import 'domain_state.dart';
 /// 						"sqs:SendMessage",
 /// 					},
 /// 					"Resource": "*",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "profile.amazonaws.com",
 /// 					},
 /// 				},
@@ -352,11 +365,9 @@ import 'domain_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketPolicy(ctx, "example", &s3.BucketPolicyArgs{
-/// 			Bucket: exampleBucket.ID(),
-/// 			Policy: pulumi.All(exampleBucket.Arn, exampleBucket.Arn).ApplyT(func(_args []interface{}) (string, error) {
-/// 				exampleBucketArn := _args[0].(string)
-/// 				exampleBucketArn1 := _args[1].(string)
-/// 				var _zero string
+/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: exampleBucket.Arn.ApplyT(func(arn string) (pulumi.String, error) {
+/// 				var _zero pulumi.String
 /// 				tmpJSON1, err := json.Marshal(map[string]interface{}{
 /// 					"Version": "2012-10-17",
 /// 					"Statement": []map[string]interface{}{
@@ -369,10 +380,10 @@ import 'domain_state.dart';
 /// 								"s3:ListBucket",
 /// 							},
 /// 							"Resource": []string{
-/// 								exampleBucketArn,
-/// 								fmt.Sprintf("%v/*", exampleBucketArn1),
+/// 								arn,
+/// 								fmt.Sprintf("%v/*", arn),
 /// 							},
-/// 							"Principal": map[string]interface{}{
+/// 							"Principal": map[string]string{
 /// 								"Service": "profile.amazonaws.com",
 /// 							},
 /// 						},
@@ -382,7 +393,7 @@ import 'domain_state.dart';
 /// 					return _zero, err
 /// 				}
 /// 				json1 := string(tmpJSON1)
-/// 				return json1, nil
+/// 				return pulumi.String(json1), nil
 /// 			}).(pulumi.StringOutput),
 /// 		})
 /// 		if err != nil {
@@ -390,7 +401,7 @@ import 'domain_state.dart';
 /// 		}
 /// 		_, err = customerprofiles.NewDomain(ctx, "test", &customerprofiles.DomainArgs{
 /// 			DomainName:            example,
-/// 			DeadLetterQueueUrl:    example.ID(),
+/// 			DeadLetterQueueUrl:    example.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultEncryptionKey:  exampleKey.Arn,
 /// 			DefaultExpirationDays: pulumi.Int(365),
 /// 		})
@@ -399,6 +410,60 @@ import 'domain_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sqs_queue" "example" {
+///   name = "example"
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Sid"      = "Customer Profiles SQS policy"
+///       "Effect"   = "Allow"
+///       "Action"   = ["sqs:SendMessage"]
+///       "Resource" = "*"
+///       "Principal" = {
+///         "Service" = "profile.amazonaws.com"
+///       }
+///     }]
+///   })
+/// }
+/// resource "aws_kms_key" "example" {
+///   description             = "example"
+///   deletion_window_in_days = 10
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket        = "example"
+///   force_destroy = true
+/// }
+/// resource "aws_s3_bucketpolicy" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Sid"      = "Customer Profiles S3 policy"
+///       "Effect"   = "Allow"
+///       "Action"   = ["s3:GetObject", "s3:PutObject", "s3:ListBucket"]
+///       "Resource" = [aws_s3_bucket.example.arn, "${aws_s3_bucket.example.arn}/*"]
+///       "Principal" = {
+///         "Service" = "profile.amazonaws.com"
+///       }
+///     }]
+///   })
+/// }
+/// resource "aws_customerprofiles_domain" "test" {
+///   domain_name             = aws_sqs_queue.example
+///   dead_letter_queue_url   = aws_sqs_queue.example.id
+///   default_encryption_key  = aws_kms_key.example.arn
+///   default_expiration_days = 365
 /// }
 /// ```
 /// ```java
@@ -418,8 +483,8 @@ import 'domain_state.dart';
 /// import com.pulumi.aws.customerprofiles.Domain;
 /// import com.pulumi.aws.customerprofiles.DomainArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -460,30 +525,26 @@ import 'domain_state.dart';
 ///
 ///         var exampleBucketPolicy = new BucketPolicy("exampleBucketPolicy", BucketPolicyArgs.builder()
 ///             .bucket(exampleBucket.id())
-///             .policy(Output.tuple(exampleBucket.arn(), exampleBucket.arn()).applyValue(values -> {
-///                 var exampleBucketArn = values.t1;
-///                 var exampleBucketArn1 = values.t2;
-///                 return serializeJson(
-///                     jsonObject(
-///                         jsonProperty("Version", "2012-10-17"),
-///                         jsonProperty("Statement", jsonArray(jsonObject(
-///                             jsonProperty("Sid", "Customer Profiles S3 policy"),
-///                             jsonProperty("Effect", "Allow"),
-///                             jsonProperty("Action", jsonArray(
-///                                 "s3:GetObject",
-///                                 "s3:PutObject",
-///                                 "s3:ListBucket"
-///                             )),
-///                             jsonProperty("Resource", jsonArray(
-///                                 exampleBucketArn,
-///                                 String.format("%s/*", exampleBucketArn1)
-///                             )),
-///                             jsonProperty("Principal", jsonObject(
-///                                 jsonProperty("Service", "profile.amazonaws.com")
-///                             ))
-///                         )))
-///                     ));
-///             }))
+///             .policy(exampleBucket.arn().applyValue(_arn -> serializeJson(
+///                 jsonObject(
+///                     jsonProperty("Version", "2012-10-17"),
+///                     jsonProperty("Statement", jsonArray(jsonObject(
+///                         jsonProperty("Sid", "Customer Profiles S3 policy"),
+///                         jsonProperty("Effect", "Allow"),
+///                         jsonProperty("Action", jsonArray(
+///                             "s3:GetObject",
+///                             "s3:PutObject",
+///                             "s3:ListBucket"
+///                         )),
+///                         jsonProperty("Resource", jsonArray(
+///                             _arn,
+///                             String.format("%s/*", _arn)
+///                         )),
+///                         jsonProperty("Principal", jsonObject(
+///                             jsonProperty("Service", "profile.amazonaws.com")
+///                         ))
+///                     )))
+///                 ))))
 ///             .build());
 ///
 ///         var test = new Domain("test", DomainArgs.builder()
@@ -581,9 +642,9 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// A block that specifies the process of matching duplicate profiles using the Rule-Based matching. Documented below.
   late final pulumi.Output<DomainRuleBasedMatching?> ruleBasedMatching;
-  /// Tags to apply to the domain. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the domain. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Domain].

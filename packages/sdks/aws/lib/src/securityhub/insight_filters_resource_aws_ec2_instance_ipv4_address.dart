@@ -24,4 +24,3 @@ class InsightFiltersResourceAwsEc2InstanceIpv4Address {
     );
   }
 }
-

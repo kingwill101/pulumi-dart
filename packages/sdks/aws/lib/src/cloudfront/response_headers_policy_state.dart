@@ -13,7 +13,7 @@ class ResponseHeadersPolicyState {
   final pulumi.Input<String>? arn;
   /// A comment to describe the response headers policy. The comment cannot be longer than 128 characters.
   final pulumi.Input<String>? comment;
-  /// A configuration for a set of HTTP response headers that are used for Cross-Origin Resource Sharing (CORS). See Cors Config for more information.
+  /// A configuration for a set of HTTP response headers that are used for Cross-Origin Resource Sharing (CORS). See CORS Config for more information.
   final pulumi.Input<ResponseHeadersPolicyCorsConfig>? corsConfig;
   /// Object that contains an attribute `items` that contains a list of custom headers. See Custom Header for more information.
   final pulumi.Input<ResponseHeadersPolicyCustomHeadersConfig>? customHeadersConfig;
@@ -31,7 +31,7 @@ class ResponseHeadersPolicyState {
   /// Creates a new [ResponseHeadersPolicyState].
   /// [arn] The response headers policy ARN.
   /// [comment] A comment to describe the response headers policy. The comment cannot be longer than 128 characters.
-  /// [corsConfig] A configuration for a set of HTTP response headers that are used for Cross-Origin Resource Sharing (CORS). See Cors Config for more information.
+  /// [corsConfig] A configuration for a set of HTTP response headers that are used for Cross-Origin Resource Sharing (CORS). See CORS Config for more information.
   /// [customHeadersConfig] Object that contains an attribute `items` that contains a list of custom headers. See Custom Header for more information.
   /// [etag] The current version of the response headers policy.
   /// [name] A unique name to identify the response headers policy.
@@ -78,4 +78,3 @@ class ResponseHeadersPolicyState {
     );
   }
 }
-

@@ -3,14 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MultiRegionAccessPointDetailsRegion {
+  /// Name of the associated bucket for the Region.
   final pulumi.Input<String> bucket;
+  /// AWS account ID that owns the Amazon S3 bucket that's associated with this Multi-Region Access Point.
   final pulumi.Input<String>? bucketAccountId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [MultiRegionAccessPointDetailsRegion].
-  /// [bucket] Required.
-  /// [bucketAccountId] Optional.
+  /// [bucket] Name of the associated bucket for the Region.
+  /// [bucketAccountId] AWS account ID that owns the Amazon S3 bucket that's associated with this Multi-Region Access Point.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const MultiRegionAccessPointDetailsRegion({
     required this.bucket,
@@ -34,4 +36,3 @@ class MultiRegionAccessPointDetailsRegion {
     );
   }
 }
-

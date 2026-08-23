@@ -148,6 +148,23 @@ import 'lifecycle_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecr_repository" "example" {
+///   name = "example-repo"
+/// }
+/// resource "aws_ecr_lifecyclepolicy" "example" {
+///   repository = aws_ecr_repository.example.name
+///   policy     = "{\n  \\\"rules\\\": [\n    {\n      \\\"rulePriority\\\": 1,\n      \\\"description\\\": \\\"Expire images older than 14 days\\\",\n      \\\"selection\\\": {\n        \\\"tagStatus\\\": \\\"untagged\\\",\n        \\\"countType\\\": \\\"sinceImagePushed\\\",\n        \\\"countUnit\\\": \\\"days\\\",\n        \\\"countNumber\\\": 14\n      },\n      \\\"action\\\": {\n        \\\"type\\\": \\\"expire\\\"\n      }\n    }\n  ]\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -158,8 +175,8 @@ import 'lifecycle_policy_state.dart';
 /// import com.pulumi.aws.ecr.RepositoryArgs;
 /// import com.pulumi.aws.ecr.LifecyclePolicy;
 /// import com.pulumi.aws.ecr.LifecyclePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -371,6 +388,23 @@ import 'lifecycle_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecr_repository" "example" {
+///   name = "example-repo"
+/// }
+/// resource "aws_ecr_lifecyclepolicy" "example" {
+///   repository = aws_ecr_repository.example.name
+///   policy     = "{\n  \\\"rules\\\": [\n    {\n      \\\"rulePriority\\\": 1,\n      \\\"description\\\": \\\"Keep last 30 images\\\",\n      \\\"selection\\\": {\n        \\\"tagStatus\\\": \\\"tagged\\\",\n        \\\"tagPrefixList\\\": [\\\"v\\\"],\n        \\\"countType\\\": \\\"imageCountMoreThan\\\",\n        \\\"countNumber\\\": 30\n      },\n      \\\"action\\\": {\n        \\\"type\\\": \\\"expire\\\"\n      }\n    }\n  ]\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -381,8 +415,8 @@ import 'lifecycle_policy_state.dart';
 /// import com.pulumi.aws.ecr.RepositoryArgs;
 /// import com.pulumi.aws.ecr.LifecyclePolicy;
 /// import com.pulumi.aws.ecr.LifecyclePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -654,6 +688,23 @@ import 'lifecycle_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecr_repository" "example" {
+///   name = "example-repo"
+/// }
+/// resource "aws_ecr_lifecyclepolicy" "example" {
+///   repository = aws_ecr_repository.example.name
+///   policy     = "{\n  \\\"rules\\\": [\n    {\n      \\\"rulePriority\\\": 1,\n      \\\"description\\\": \\\"Archive images not pulled in 90 days\\\",\n      \\\"selection\\\": {\n        \\\"tagStatus\\\": \\\"any\\\",\n        \\\"countType\\\": \\\"sinceImagePulled\\\",\n        \\\"countUnit\\\": \\\"days\\\",\n        \\\"countNumber\\\": 90\n      },\n      \\\"action\\\": {\n        \\\"type\\\": \\\"transition\\\",\n        \\\"targetStorageClass\\\": \\\"archive\\\"\n      }\n    },\n    {\n      \\\"rulePriority\\\": 2,\n      \\\"description\\\": \\\"Delete images archived for more than 365 days\\\",\n      \\\"selection\\\": {\n        \\\"tagStatus\\\": \\\"any\\\",\n        \\\"storageClass\\\": \\\"archive\\\",\n        \\\"countType\\\": \\\"sinceImageTransitioned\\\",\n        \\\"countUnit\\\": \\\"days\\\",\n        \\\"countNumber\\\": 365\n      },\n      \\\"action\\\": {\n        \\\"type\\\": \\\"expire\\\"\n      }\n    }\n  ]\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -664,8 +715,8 @@ import 'lifecycle_policy_state.dart';
 /// import com.pulumi.aws.ecr.RepositoryArgs;
 /// import com.pulumi.aws.ecr.LifecyclePolicy;
 /// import com.pulumi.aws.ecr.LifecyclePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -779,7 +830,7 @@ import 'lifecycle_policy_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -789,7 +840,7 @@ import 'lifecycle_policy_state.dart';
 /// $ pulumi import aws:ecr/lifecyclePolicy:LifecyclePolicy example tf-example
 /// ```
 class LifecyclePolicy extends pulumi.CustomResource {
-  /// The policy document. This is a JSON formatted string. See more details about [Policy Parameters](http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html#lifecycle_policy_parameters) in the official AWS docs. Consider using the `aws.ecr.getLifecyclePolicyDocument` data_source to generate/manage the JSON document used for the `policy` argument.
+  /// The policy document. This is a JSON formatted string. See more details about [Policy Parameters](http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html#lifecycle_policy_parameters) in the official AWS docs. Consider using the `aws.ecr.getLifecyclePolicyDocument` dataSource to generate/manage the JSON document used for the `policy` argument.
   late final pulumi.Output<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

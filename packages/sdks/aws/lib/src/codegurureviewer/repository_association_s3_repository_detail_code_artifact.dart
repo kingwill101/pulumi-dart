@@ -28,4 +28,3 @@ class RepositoryAssociationS3RepositoryDetailCodeArtifact {
     );
   }
 }
-

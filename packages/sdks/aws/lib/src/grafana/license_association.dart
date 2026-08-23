@@ -135,7 +135,7 @@ import 'license_association_state.dart';
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
 /// 					"Sid":    "",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "grafana.amazonaws.com",
 /// 					},
 /// 				},
@@ -165,13 +165,47 @@ import 'license_association_state.dart';
 /// 		}
 /// 		_, err = grafana.NewLicenseAssociation(ctx, "example", &grafana.LicenseAssociationArgs{
 /// 			LicenseType: pulumi.String("ENTERPRISE_FREE_TRIAL"),
-/// 			WorkspaceId: exampleWorkspace.ID(),
+/// 			WorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_grafana_licenseassociation" "example" {
+///   license_type = "ENTERPRISE_FREE_TRIAL"
+///   workspace_id = aws_grafana_workspace.example.id
+/// }
+/// resource "aws_grafana_workspace" "example" {
+///   account_access_type      = "CURRENT_ACCOUNT"
+///   authentication_providers = ["SAML"]
+///   permission_type          = "SERVICE_MANAGED"
+///   role_arn                 = aws_iam_role.assume.arn
+/// }
+/// resource "aws_iam_role" "assume" {
+///   name = "grafana-assume"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Sid"    = ""
+///       "Principal" = {
+///         "Service" = "grafana.amazonaws.com"
+///       }
+///     }]
+///   })
 /// }
 /// ```
 /// ```java
@@ -187,8 +221,8 @@ import 'license_association_state.dart';
 /// import com.pulumi.aws.grafana.LicenseAssociation;
 /// import com.pulumi.aws.grafana.LicenseAssociationArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -271,11 +305,11 @@ import 'license_association_state.dart';
 /// $ pulumi import aws:grafana/licenseAssociation:LicenseAssociation example g-2054c75a02
 /// ```
 class LicenseAssociation extends pulumi.CustomResource {
-  /// If `license_type` is set to `ENTERPRISE_FREE_TRIAL`, this is the expiration date of the free trial.
+  /// If `licenseType` is set to `ENTERPRISE_FREE_TRIAL`, this is the expiration date of the free trial.
   late final pulumi.Output<String> freeTrialExpiration;
   /// A token from Grafana Labs that ties your AWS account with a Grafana Labs account.
   late final pulumi.Output<String?> grafanaToken;
-  /// If `license_type` is set to `ENTERPRISE`, this is the expiration date of the enterprise license.
+  /// If `licenseType` is set to `ENTERPRISE`, this is the expiration date of the enterprise license.
   late final pulumi.Output<String> licenseExpiration;
   /// The type of license for the workspace license association. Valid values are `ENTERPRISE` and `ENTERPRISE_FREE_TRIAL`.
   late final pulumi.Output<String> licenseType;

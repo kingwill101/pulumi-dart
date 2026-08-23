@@ -15,7 +15,7 @@ import 'cloud_formation_type_state.dart';
 /// $ pulumi import aws:cloudformation/cloudFormationType:CloudFormationType example arn:aws:cloudformation:us-east-1:123456789012:type/resource/ExampleCompany-ExampleService-ExampleType/1
 /// ```
 class CloudFormationType extends pulumi.CustomResource {
-  /// (Optional) Amazon Resource Name (ARN) of the CloudFormation Type version. See also `type_arn`.
+  /// (Optional) Amazon Resource Name (ARN) of the CloudFormation Type version. See also `typeArn`.
   late final pulumi.Output<String> arn;
   /// Identifier of the CloudFormation Type default version.
   late final pulumi.Output<String> defaultVersionId;

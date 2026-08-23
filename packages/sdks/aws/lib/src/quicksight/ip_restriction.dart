@@ -85,6 +85,25 @@ import 'ip_restriction_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_iprestriction" "example" {
+///   enabled = true
+///   ip_restriction_rule_map = {
+///     "108.56.166.202/32" = "Allow self"
+///   }
+///   vpc_id_restriction_rule_map = {
+///     exampleAwsVpc.id = "Main VPC"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +112,8 @@ import 'ip_restriction_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.quicksight.IpRestriction;
 /// import com.pulumi.aws.quicksight.IpRestrictionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

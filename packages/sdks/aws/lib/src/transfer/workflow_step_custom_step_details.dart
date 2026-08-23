@@ -3,19 +3,19 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowStepCustomStepDetails {
-  /// The name of the step, used as an identifier.
+  /// Name of the step, used as an identifier.
   final pulumi.Input<String>? name;
-  /// Specifies which file to use as input to the workflow step: either the output from the previous step, or the originally uploaded file for the workflow. Enter ${previous.file} to use the previous file as the input. In this case, this workflow step uses the output file from the previous workflow step as input. This is the default value. Enter ${original.file} to use the originally-uploaded file location as input for this step.
+  /// File to use as input to the workflow step: either the output from the previous step, or the originally uploaded file for the workflow. Enter `${previous.file}` to use the previous file as the input. In this case, this workflow step uses the output file from the previous workflow step as input. This is the default value. Enter `${original.file}` to use the originally-uploaded file location as input for this step.
   final pulumi.Input<String>? sourceFileLocation;
-  /// The ARN for the lambda function that is being called.
+  /// ARN for the lambda function that is being called.
   final pulumi.Input<String>? target;
   /// Timeout, in seconds, for the step.
   final pulumi.Input<int>? timeoutSeconds;
 
   /// Creates a new [WorkflowStepCustomStepDetails].
-  /// [name] The name of the step, used as an identifier.
-  /// [sourceFileLocation] Specifies which file to use as input to the workflow step: either the output from the previous step, or the originally uploaded file for the workflow. Enter ${previous.file} to use the previous file as the input. In this case, this workflow step uses the output file from the previous workflow step as input. This is the default value. Enter ${original.file} to use the originally-uploaded file location as input for this step.
-  /// [target] The ARN for the lambda function that is being called.
+  /// [name] Name of the step, used as an identifier.
+  /// [sourceFileLocation] File to use as input to the workflow step: either the output from the previous step, or the originally uploaded file for the workflow. Enter `${previous.file}` to use the previous file as the input. In this case, this workflow step uses the output file from the previous workflow step as input. This is the default value. Enter `${original.file}` to use the originally-uploaded file location as input for this step.
+  /// [target] ARN for the lambda function that is being called.
   /// [timeoutSeconds] Timeout, in seconds, for the step.
   const WorkflowStepCustomStepDetails({
     this.name,
@@ -42,4 +42,3 @@ class WorkflowStepCustomStepDetails {
     );
   }
 }
-

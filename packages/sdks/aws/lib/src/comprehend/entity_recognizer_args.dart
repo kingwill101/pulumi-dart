@@ -12,7 +12,7 @@ class EntityRecognizerArgs {
   /// The ARN for an IAM Role which allows Comprehend to read the training and testing data.
   final pulumi.Input<String> dataAccessRoleArn;
   /// Configuration for the training and testing data.
-  /// See the `input_data_config` Configuration Block section below.
+  /// See the `inputDataConfig` Configuration Block section below.
   final pulumi.Input<EntityRecognizerInputDataConfig> inputDataConfig;
   /// Two-letter language code for the language.
   /// One of `en`, `es`, `fr`, `it`, `de`, or `pt`.
@@ -27,7 +27,7 @@ class EntityRecognizerArgs {
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` Configuration Block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` Configuration Block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Name for the version of the Entity Recognizer.
   /// Each version must have a unique name within the Entity Recognizer.
@@ -35,17 +35,17 @@ class EntityRecognizerArgs {
   /// If explicitly set to `""`, no version name will be set.
   /// Has a maximum length of 63 characters.
   /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
-  /// Conflicts with `version_name_prefix`.
+  /// Conflicts with `versionNamePrefix`.
   final pulumi.Input<String>? versionName;
   /// Creates a unique version name beginning with the specified prefix.
   /// Has a maximum length of 37 characters.
   /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
-  /// Conflicts with `version_name`.
+  /// Conflicts with `versionName`.
   final pulumi.Input<String>? versionNamePrefix;
   /// ID or ARN of a KMS Key used to encrypt storage volumes during job processing.
   final pulumi.Input<String>? volumeKmsKeyId;
   /// Configuration parameters for VPC to contain Entity Recognizer resources.
-  /// See the `vpc_config` Configuration Block section below.
+  /// See the `vpcConfig` Configuration Block section below.
   final pulumi.Input<EntityRecognizerVpcConfig>? vpcConfig;
 
   /// Creates a new [EntityRecognizerArgs].
@@ -55,7 +55,7 @@ class EntityRecognizerArgs {
   /// [modelKmsKeyId] The ID or ARN of a KMS Key used to encrypt trained Entity Recognizers.
   /// [name] Name for the Entity Recognizer.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` Configuration Block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` Configuration Block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [versionName] Name for the version of the Entity Recognizer.
   /// [versionNamePrefix] Creates a unique version name beginning with the specified prefix.
   /// [volumeKmsKeyId] ID or ARN of a KMS Key used to encrypt storage volumes during job processing.
@@ -106,4 +106,3 @@ class EntityRecognizerArgs {
     );
   }
 }
-

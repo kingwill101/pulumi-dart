@@ -4,35 +4,35 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering ResourceShareAccepter resources.
 class ResourceShareAccepterState {
-  /// The ARN of the resource share invitation.
+  /// ARN of the resource share invitation.
   final pulumi.Input<String>? invitationArn;
-  /// The account ID of the receiver account which accepts the invitation.
+  /// Account ID of the receiver account which accepts the invitation.
   final pulumi.Input<String>? receiverAccountId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A list of the resource ARNs shared via the resource share.
+  /// List of the resource ARNs shared via the resource share.
   final pulumi.Input<List<String>>? resources;
-  /// The account ID of the sender account which submits the invitation.
+  /// Account ID of the sender account which submits the invitation.
   final pulumi.Input<String>? senderAccountId;
-  /// The ARN of the resource share.
+  /// ARN of the resource share.
   final pulumi.Input<String>? shareArn;
-  /// The ID of the resource share as displayed in the console.
+  /// ID of the resource share as displayed in the console.
   final pulumi.Input<String>? shareId;
-  /// The name of the resource share.
+  /// Name of the resource share.
   final pulumi.Input<String>? shareName;
-  /// The status of the resource share (ACTIVE, PENDING, FAILED, DELETING, DELETED).
+  /// Status of the resource share (ACTIVE, PENDING, FAILED, DELETING, DELETED).
   final pulumi.Input<String>? status;
 
   /// Creates a new [ResourceShareAccepterState].
-  /// [invitationArn] The ARN of the resource share invitation.
-  /// [receiverAccountId] The account ID of the receiver account which accepts the invitation.
+  /// [invitationArn] ARN of the resource share invitation.
+  /// [receiverAccountId] Account ID of the receiver account which accepts the invitation.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resources] A list of the resource ARNs shared via the resource share.
-  /// [senderAccountId] The account ID of the sender account which submits the invitation.
-  /// [shareArn] The ARN of the resource share.
-  /// [shareId] The ID of the resource share as displayed in the console.
-  /// [shareName] The name of the resource share.
-  /// [status] The status of the resource share (ACTIVE, PENDING, FAILED, DELETING, DELETED).
+  /// [resources] List of the resource ARNs shared via the resource share.
+  /// [senderAccountId] Account ID of the sender account which submits the invitation.
+  /// [shareArn] ARN of the resource share.
+  /// [shareId] ID of the resource share as displayed in the console.
+  /// [shareName] Name of the resource share.
+  /// [status] Status of the resource share (ACTIVE, PENDING, FAILED, DELETING, DELETED).
   const ResourceShareAccepterState({
     this.invitationArn,
     this.receiverAccountId,
@@ -73,4 +73,3 @@ class ResourceShareAccepterState {
     );
   }
 }
-

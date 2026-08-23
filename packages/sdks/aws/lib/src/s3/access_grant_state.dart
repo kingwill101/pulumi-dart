@@ -10,40 +10,40 @@ class AccessGrantState {
   final pulumi.Input<String>? accessGrantArn;
   /// Unique ID of the S3 Access Grant.
   final pulumi.Input<String>? accessGrantId;
-  /// See Location Configuration below for more details.
+  /// See `accessGrantsLocationConfiguration` Block below for more details.
   final pulumi.Input<AccessGrantAccessGrantsLocationConfiguration>? accessGrantsLocationConfiguration;
-  /// The ID of the S3 Access Grants location to with the access grant is giving access.
+  /// ID of the S3 Access Grants location to with the access grant is giving access.
   final pulumi.Input<String>? accessGrantsLocationId;
-  /// The AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
+  /// AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? accountId;
-  /// The access grant's scope.
+  /// Access grant's scope.
   final pulumi.Input<String>? grantScope;
-  /// See Grantee below for more details.
+  /// See `grantee` Block below for more details.
   final pulumi.Input<AccessGrantGrantee>? grantee;
-  /// The access grant's level of access. Valid values: `READ`, `WRITE`, `READWRITE`.
+  /// Access grant's level of access. Valid values: `READ`, `WRITE`, `READWRITE`.
   final pulumi.Input<String>? permission;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// If you are creating an access grant that grants access to only one object, set this to `Object`. Valid values: `Object`.
   final pulumi.Input<String>? s3PrefixType;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [AccessGrantState].
   /// [accessGrantArn] Amazon Resource Name (ARN) of the S3 Access Grant.
   /// [accessGrantId] Unique ID of the S3 Access Grant.
-  /// [accessGrantsLocationConfiguration] See Location Configuration below for more details.
-  /// [accessGrantsLocationId] The ID of the S3 Access Grants location to with the access grant is giving access.
-  /// [accountId] The AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
-  /// [grantScope] The access grant's scope.
-  /// [grantee] See Grantee below for more details.
-  /// [permission] The access grant's level of access. Valid values: `READ`, `WRITE`, `READWRITE`.
+  /// [accessGrantsLocationConfiguration] See `accessGrantsLocationConfiguration` Block below for more details.
+  /// [accessGrantsLocationId] ID of the S3 Access Grants location to with the access grant is giving access.
+  /// [accountId] AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
+  /// [grantScope] Access grant's scope.
+  /// [grantee] See `grantee` Block below for more details.
+  /// [permission] Access grant's level of access. Valid values: `READ`, `WRITE`, `READWRITE`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [s3PrefixType] If you are creating an access grant that grants access to only one object, set this to `Object`. Valid values: `Object`.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const AccessGrantState({
     this.accessGrantArn,
     this.accessGrantId,
@@ -93,4 +93,3 @@ class AccessGrantState {
     );
   }
 }
-

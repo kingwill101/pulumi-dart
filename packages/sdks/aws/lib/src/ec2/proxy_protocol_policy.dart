@@ -159,6 +159,36 @@ import 'proxy_protocol_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elb_loadbalancer" "lb" {
+///   name               = "test-lb"
+///   availability_zones = ["us-east-1a"]
+///   listeners {
+///     instance_port     = 25
+///     instance_protocol = "tcp"
+///     lb_port           = 25
+///     lb_protocol       = "tcp"
+///   }
+///   listeners {
+///     instance_port     = 587
+///     instance_protocol = "tcp"
+///     lb_port           = 587
+///     lb_protocol       = "tcp"
+///   }
+/// }
+/// resource "aws_ec2_proxyprotocolpolicy" "smtp" {
+///   load_balancer  = aws_elb_loadbalancer.lb.name
+///   instance_ports = ["25", "587"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -170,8 +200,8 @@ import 'proxy_protocol_policy_state.dart';
 /// import com.pulumi.aws.elb.inputs.LoadBalancerListenerArgs;
 /// import com.pulumi.aws.ec2.ProxyProtocolPolicy;
 /// import com.pulumi.aws.ec2.ProxyProtocolPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -81,6 +81,22 @@ import 'get_endpoint_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2clientvpn_getendpoint" "example" {
+///   filters {
+///     name   = "tag:Name"
+///     values = ["ExampleVpn"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +105,9 @@ import 'get_endpoint_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2clientvpn.Ec2clientvpnFunctions;
 /// import com.pulumi.aws.ec2clientvpn.inputs.GetEndpointArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2clientvpn.inputs.GetEndpointFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -177,6 +194,19 @@ import 'get_endpoint_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2clientvpn_getendpoint" "example" {
+///   client_vpn_endpoint_id = "cvpn-endpoint-083cf50d6eb314f21"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -185,8 +215,8 @@ import 'get_endpoint_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2clientvpn.Ec2clientvpnFunctions;
 /// import com.pulumi.aws.ec2clientvpn.inputs.GetEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

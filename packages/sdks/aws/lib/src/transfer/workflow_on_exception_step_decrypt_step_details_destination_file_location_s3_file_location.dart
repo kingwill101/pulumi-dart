@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLocation {
-  /// Specifies the S3 bucket for the customer input file.
+  /// S3 bucket for the customer input file.
   final pulumi.Input<String>? bucket;
-  /// The name assigned to the file when it was created in S3. You use the object key to retrieve the object.
+  /// Name assigned to the file when it was created in S3. You use the object key to retrieve the object.
   final pulumi.Input<String>? key;
 
   /// Creates a new [WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLocation].
-  /// [bucket] Specifies the S3 bucket for the customer input file.
-  /// [key] The name assigned to the file when it was created in S3. You use the object key to retrieve the object.
+  /// [bucket] S3 bucket for the customer input file.
+  /// [key] Name assigned to the file when it was created in S3. You use the object key to retrieve the object.
   const WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLocation({
     this.bucket,
     this.key,
@@ -30,4 +30,3 @@ class WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLoca
     );
   }
 }
-

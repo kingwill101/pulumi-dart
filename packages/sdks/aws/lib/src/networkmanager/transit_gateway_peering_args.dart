@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitGatewayPeeringArgs {
   /// ID of a core network.
   final pulumi.Input<String> coreNetworkId;
-  /// Key-value tags for the peering. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the peering. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// ARN of the transit gateway for the peering request.
   ///
@@ -18,7 +18,7 @@ class TransitGatewayPeeringArgs {
 
   /// Creates a new [TransitGatewayPeeringArgs].
   /// [coreNetworkId] ID of a core network.
-  /// [tags] Key-value tags for the peering. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value tags for the peering. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transitGatewayArn] ARN of the transit gateway for the peering request.
   const TransitGatewayPeeringArgs({
     required this.coreNetworkId,
@@ -42,4 +42,3 @@ class TransitGatewayPeeringArgs {
     );
   }
 }
-

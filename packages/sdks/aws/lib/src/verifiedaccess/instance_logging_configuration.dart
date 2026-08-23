@@ -5,6 +5,8 @@ import 'instance_logging_configuration_state.dart';
 
 /// Resource for managing a Verified Access Logging Configuration.
 ///
+/// &gt; Deletion of this resource resets the Verified Access Instance Logging Configuration to its default values.
+///
 /// ## Example Usage
 ///
 /// ### With CloudWatch Logging
@@ -86,6 +88,25 @@ import 'instance_logging_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedaccess_instanceloggingconfiguration" "example" {
+///   access_logs = {
+///     cloudwatch_logs = {
+///       enabled   = true
+///       log_group = exampleAwsCloudwatchLogGroup.id
+///     }
+///   }
+///   verifiedaccess_instance_id = exampleAwsVerifiedaccessInstance.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +117,8 @@ import 'instance_logging_configuration_state.dart';
 /// import com.pulumi.aws.verifiedaccess.InstanceLoggingConfigurationArgs;
 /// import com.pulumi.aws.verifiedaccess.inputs.InstanceLoggingConfigurationAccessLogsArgs;
 /// import com.pulumi.aws.verifiedaccess.inputs.InstanceLoggingConfigurationAccessLogsCloudwatchLogsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,6 +235,25 @@ import 'instance_logging_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedaccess_instanceloggingconfiguration" "example" {
+///   access_logs = {
+///     kinesis_data_firehose = {
+///       delivery_stream = exampleAwsKinesisFirehoseDeliveryStream.name
+///       enabled         = true
+///     }
+///   }
+///   verifiedaccess_instance_id = exampleAwsVerifiedaccessInstance.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -224,8 +264,8 @@ import 'instance_logging_configuration_state.dart';
 /// import com.pulumi.aws.verifiedaccess.InstanceLoggingConfigurationArgs;
 /// import com.pulumi.aws.verifiedaccess.inputs.InstanceLoggingConfigurationAccessLogsArgs;
 /// import com.pulumi.aws.verifiedaccess.inputs.InstanceLoggingConfigurationAccessLogsKinesisDataFirehoseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -346,6 +386,26 @@ import 'instance_logging_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedaccess_instanceloggingconfiguration" "example" {
+///   access_logs = {
+///     s3 = {
+///       bucket_name = exampleAwsS3Bucket.id
+///       enabled     = true
+///       prefix      = "example"
+///     }
+///   }
+///   verifiedaccess_instance_id = exampleAwsVerifiedaccessInstance.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -356,8 +416,8 @@ import 'instance_logging_configuration_state.dart';
 /// import com.pulumi.aws.verifiedaccess.InstanceLoggingConfigurationArgs;
 /// import com.pulumi.aws.verifiedaccess.inputs.InstanceLoggingConfigurationAccessLogsArgs;
 /// import com.pulumi.aws.verifiedaccess.inputs.InstanceLoggingConfigurationAccessLogsS3Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -510,6 +570,33 @@ import 'instance_logging_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedaccess_instanceloggingconfiguration" "example" {
+///   access_logs = {
+///     cloudwatch_logs = {
+///       enabled   = true
+///       log_group = exampleAwsCloudwatchLogGroup.id
+///     }
+///     kinesis_data_firehose = {
+///       delivery_stream = exampleAwsKinesisFirehoseDeliveryStream.name
+///       enabled         = true
+///     }
+///     s3 = {
+///       bucket_name = exampleAwsS3Bucket.id
+///       enabled     = true
+///     }
+///   }
+///   verifiedaccess_instance_id = exampleAwsVerifiedaccessInstance.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -522,8 +609,8 @@ import 'instance_logging_configuration_state.dart';
 /// import com.pulumi.aws.verifiedaccess.inputs.InstanceLoggingConfigurationAccessLogsCloudwatchLogsArgs;
 /// import com.pulumi.aws.verifiedaccess.inputs.InstanceLoggingConfigurationAccessLogsKinesisDataFirehoseArgs;
 /// import com.pulumi.aws.verifiedaccess.inputs.InstanceLoggingConfigurationAccessLogsS3Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -575,7 +662,7 @@ import 'instance_logging_configuration_state.dart';
 /// ```
 ///
 ///
-/// ### With `include_trust_context`
+/// ### With `includeTrustContext`
 ///
 ///
 /// ```typescript
@@ -641,6 +728,22 @@ import 'instance_logging_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedaccess_instanceloggingconfiguration" "example" {
+///   access_logs = {
+///     include_trust_context = true
+///   }
+///   verifiedaccess_instance_id = exampleAwsVerifiedaccessInstance.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -650,8 +753,8 @@ import 'instance_logging_configuration_state.dart';
 /// import com.pulumi.aws.verifiedaccess.InstanceLoggingConfiguration;
 /// import com.pulumi.aws.verifiedaccess.InstanceLoggingConfigurationArgs;
 /// import com.pulumi.aws.verifiedaccess.inputs.InstanceLoggingConfigurationAccessLogsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -684,7 +787,7 @@ import 'instance_logging_configuration_state.dart';
 /// ```
 ///
 ///
-/// ### With `log_version`
+/// ### With `logVersion`
 ///
 ///
 /// ```typescript
@@ -750,6 +853,22 @@ import 'instance_logging_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedaccess_instanceloggingconfiguration" "example" {
+///   access_logs = {
+///     log_version = "ocsf-1.0.0-rc.2"
+///   }
+///   verifiedaccess_instance_id = exampleAwsVerifiedaccessInstance.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -759,8 +878,8 @@ import 'instance_logging_configuration_state.dart';
 /// import com.pulumi.aws.verifiedaccess.InstanceLoggingConfiguration;
 /// import com.pulumi.aws.verifiedaccess.InstanceLoggingConfigurationArgs;
 /// import com.pulumi.aws.verifiedaccess.inputs.InstanceLoggingConfigurationAccessLogsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

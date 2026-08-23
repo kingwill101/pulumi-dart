@@ -5,16 +5,17 @@ import 'get_bucket_replication_configuration_rule_filter_and.dart';
 import 'get_bucket_replication_configuration_rule_filter_tag.dart';
 
 class GetBucketReplicationConfigurationRuleFilter {
+  /// Configuration block for specifying rule filters. See `and` Block below.
   final pulumi.Input<List<GetBucketReplicationConfigurationRuleFilterAnd>> ands;
-  /// The object key name prefix that identifies the subset of objects to which the rule applies.
+  /// Object key name prefix that identifies the subset of objects to which the rule applies.
   final pulumi.Input<String> prefix;
-  /// An unordered list of tags that identify a subset of objects to which the rule applies.
+  /// List of tags that identify a subset of objects to which the rule applies. See `tag` Block below.
   final pulumi.Input<List<GetBucketReplicationConfigurationRuleFilterTag>> tags;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleFilter].
-  /// [ands] Required.
-  /// [prefix] The object key name prefix that identifies the subset of objects to which the rule applies.
-  /// [tags] An unordered list of tags that identify a subset of objects to which the rule applies.
+  /// [ands] Configuration block for specifying rule filters. See `and` Block below.
+  /// [prefix] Object key name prefix that identifies the subset of objects to which the rule applies.
+  /// [tags] List of tags that identify a subset of objects to which the rule applies. See `tag` Block below.
   const GetBucketReplicationConfigurationRuleFilter({
     required this.ands,
     required this.prefix,
@@ -37,4 +38,3 @@ class GetBucketReplicationConfigurationRuleFilter {
     );
   }
 }
-

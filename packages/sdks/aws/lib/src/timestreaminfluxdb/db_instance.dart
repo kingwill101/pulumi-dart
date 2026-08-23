@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'db_instance_args.dart';
 import 'db_instance_log_delivery_configuration.dart';
+import 'db_instance_maintenance_schedule.dart';
 import 'db_instance_state.dart';
 import 'db_instance_timeouts.dart';
 
@@ -107,6 +108,28 @@ import 'db_instance_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_timestreaminfluxdb_dbinstance" "example" {
+///   allocated_storage      = 20
+///   bucket                 = "example-bucket-name"
+///   db_instance_type       = "db.influx.medium"
+///   username               = "admin"
+///   password               = "example-password"
+///   port                   = 8086
+///   organization           = "organization"
+///   vpc_subnet_ids         = [exampleid]
+///   vpc_security_group_ids = [exampleAwsSecurityGroup.id]
+///   name                   = "example-db-instance"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +138,8 @@ import 'db_instance_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.timestreaminfluxdb.DbInstance;
 /// import com.pulumi.aws.timestreaminfluxdb.DbInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,7 +303,7 @@ import 'db_instance_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnet, err := ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
-/// 			VpcId:     example.ID(),
+/// 			VpcId:     example.ID().ToIDOutput().ToStringOutput(),
 /// 			CidrBlock: pulumi.String("10.0.1.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -288,7 +311,7 @@ import 'db_instance_timeouts.dart';
 /// 		}
 /// 		exampleSecurityGroup, err := ec2.NewSecurityGroup(ctx, "example", &ec2.SecurityGroupArgs{
 /// 			Name:  pulumi.String("example"),
-/// 			VpcId: example.ID(),
+/// 			VpcId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -301,10 +324,10 @@ import 'db_instance_timeouts.dart';
 /// 			Password:         pulumi.String("example-password"),
 /// 			Organization:     pulumi.String("organization"),
 /// 			VpcSubnetIds: pulumi.StringArray{
-/// 				exampleSubnet.ID(),
+/// 				exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			VpcSecurityGroupIds: pulumi.StringArray{
-/// 				exampleSecurityGroup.ID(),
+/// 				exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Name: pulumi.String("example-db-instance"),
 /// 		})
@@ -313,6 +336,38 @@ import 'db_instance_timeouts.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_subnet" "example" {
+///   vpc_id     = aws_ec2_vpc.example.id
+///   cidr_block = "10.0.1.0/24"
+/// }
+/// resource "aws_ec2_securitygroup" "example" {
+///   name   = "example"
+///   vpc_id = aws_ec2_vpc.example.id
+/// }
+/// resource "aws_timestreaminfluxdb_dbinstance" "example" {
+///   allocated_storage      = 20
+///   bucket                 = "example-bucket-name"
+///   db_instance_type       = "db.influx.medium"
+///   username               = "admin"
+///   password               = "example-password"
+///   organization           = "organization"
+///   vpc_subnet_ids         = [aws_ec2_subnet.example.id]
+///   vpc_security_group_ids = [aws_ec2_securitygroup.example.id]
+///   name                   = "example-db-instance"
 /// }
 /// ```
 /// ```java
@@ -329,8 +384,8 @@ import 'db_instance_timeouts.dart';
 /// import com.pulumi.aws.ec2.SecurityGroupArgs;
 /// import com.pulumi.aws.timestreaminfluxdb.DbInstance;
 /// import com.pulumi.aws.timestreaminfluxdb.DbInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -432,7 +487,7 @@ import 'db_instance_timeouts.dart';
 /// });
 /// const exampleBucketPolicy = new aws.s3.BucketPolicy("example", {
 ///     bucket: exampleBucket.id,
-///     policy: example.apply(example => example.json),
+///     policy: example.json,
 /// });
 /// const exampleDbInstance = new aws.timestreaminfluxdb.DbInstance("example", {
 ///     allocatedStorage: 20,
@@ -609,10 +664,8 @@ import 'db_instance_timeouts.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = s3.NewBucketPolicy(ctx, "example", &s3.BucketPolicyArgs{
-/// 			Bucket: exampleBucket.ID(),
-/// 			Policy: pulumi.String(example.ApplyT(func(example iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &example.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: example.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -645,6 +698,52 @@ import 'db_instance_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     actions = ["s3:PutObject"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["timestream-influxdb.amazonaws.com"]
+///     }
+///     resources = ["${aws_s3_bucket.example.arn}/*"]
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket        = "example-s3-bucket"
+///   force_destroy = true
+/// }
+/// resource "aws_s3_bucketpolicy" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   policy = data.aws_iam_getpolicydocument.example.json
+/// }
+/// resource "aws_timestreaminfluxdb_dbinstance" "example" {
+///   allocated_storage      = 20
+///   bucket                 = "example-bucket-name"
+///   db_instance_type       = "db.influx.medium"
+///   username               = "admin"
+///   password               = "example-password"
+///   organization           = "organization"
+///   vpc_subnet_ids         = [exampleAwsSubnet.id]
+///   vpc_security_group_ids = [exampleAwsSecurityGroup.id]
+///   name                   = "example-db-instance"
+///   log_delivery_configuration = {
+///     s3_configuration = {
+///       bucket_name = aws_s3_bucket.example.bucket
+///       enabled     = true
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -655,14 +754,16 @@ import 'db_instance_timeouts.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.s3.BucketPolicy;
 /// import com.pulumi.aws.s3.BucketPolicyArgs;
 /// import com.pulumi.aws.timestreaminfluxdb.DbInstance;
 /// import com.pulumi.aws.timestreaminfluxdb.DbInstanceArgs;
 /// import com.pulumi.aws.timestreaminfluxdb.inputs.DbInstanceLogDeliveryConfigurationArgs;
 /// import com.pulumi.aws.timestreaminfluxdb.inputs.DbInstanceLogDeliveryConfigurationS3ConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -909,8 +1010,8 @@ import 'db_instance_timeouts.dart';
 /// 			Password:         pulumi.String("example-password"),
 /// 			Organization:     pulumi.String("organization"),
 /// 			VpcSubnetIds: pulumi.StringArray{
-/// 				example1.ID(),
-/// 				example2.ID(),
+/// 				example1.ID().ToIDOutput().ToStringOutput(),
+/// 				example2.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			VpcSecurityGroupIds: pulumi.StringArray{
 /// 				exampleAwsSecurityGroup.Id,
@@ -924,6 +1025,38 @@ import 'db_instance_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_subnet" "example_1" {
+///   vpc_id            = exampleAwsVpc.id
+///   cidr_block        = "10.0.1.0/24"
+///   availability_zone = "us-west-2a"
+/// }
+/// resource "aws_ec2_subnet" "example_2" {
+///   vpc_id            = exampleAwsVpc.id
+///   cidr_block        = "10.0.2.0/24"
+///   availability_zone = "us-west-2b"
+/// }
+/// resource "aws_timestreaminfluxdb_dbinstance" "example" {
+///   allocated_storage      = 20
+///   bucket                 = "example-bucket-name"
+///   db_instance_type       = "db.influx.medium"
+///   deployment_type        = "WITH_MULTIAZ_STANDBY"
+///   username               = "admin"
+///   password               = "example-password"
+///   organization           = "organization"
+///   vpc_subnet_ids         = [aws_ec2_subnet.example_1.id, aws_ec2_subnet.example_2.id]
+///   vpc_security_group_ids = [exampleAwsSecurityGroup.id]
+///   name                   = "example-db-instance"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -934,8 +1067,8 @@ import 'db_instance_timeouts.dart';
 /// import com.pulumi.aws.ec2.SubnetArgs;
 /// import com.pulumi.aws.timestreaminfluxdb.DbInstance;
 /// import com.pulumi.aws.timestreaminfluxdb.DbInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1014,25 +1147,37 @@ import 'db_instance_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Timestream for InfluxDB Db Instance using its identifier. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) ID of the Timestream for InfluxDB cluster.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Timestream for InfluxDB instances using `id`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:timestreaminfluxdb/dbInstance:DbInstance example 12345abcde
+/// $ pulumi import aws:timestreaminfluxdb/dbInstance:DbInstance example 0oo7rzble5
 /// ```
 class DbInstance extends pulumi.CustomResource {
-  /// Amount of storage in GiB (gibibytes). The minimum value is `20`, the maximum value is `16384`. This argument is updatable. The argument `db_storage_type` places restrictions on this argument's minimum value. The following is a list of `db_storage_type` values and the corresponding minimum value for `allocated_storage`: `"InfluxIOIncludedT1": `20`, `"InfluxIOIncludedT2" and `"InfluxIOIncludedT3": `400`.
+  /// Amount of storage in GiB (gibibytes). The minimum value is `20`, the maximum value is `16384`. This argument is updatable. The argument `dbStorageType` places restrictions on this argument's minimum value. The following is a list of `dbStorageType` values and the corresponding minimum value for `allocatedStorage`: `"InfluxIOIncludedT1": `20`, `"InfluxIOIncludedT2" and `"InfluxIOIncludedT3": `400`.
   late final pulumi.Output<int> allocatedStorage;
   /// ARN of the Timestream for InfluxDB Instance.
   late final pulumi.Output<String> arn;
   /// Availability Zone in which the DB instance resides.
   late final pulumi.Output<String> availabilityZone;
-  /// Name of the initial InfluxDB bucket. All InfluxDB data is stored in a bucket. A bucket combines the concept of a database and a retention period (the duration of time that each data point persists). A bucket belongs to an organization. Along with `organization`, `username`, and `password`, this argument will be stored in the secret referred to by the `influx_auth_parameters_secret_arn` attribute.
+  /// Name of the initial InfluxDB bucket. All InfluxDB data is stored in a bucket. A bucket combines the concept of a database and a retention period (the duration of time that each data point persists). A bucket belongs to an organization. Along with `organization`, `username`, and `password`, this argument will be stored in the secret referred to by the `influxAuthParametersSecretArn` attribute.
   late final pulumi.Output<String> bucket;
   /// Timestream for InfluxDB DB instance type to run InfluxDB on. Valid options are: `"db.influx.medium"`, `"db.influx.large"`, `"db.influx.xlarge"`, `"db.influx.2xlarge"`, `"db.influx.4xlarge"`, `"db.influx.8xlarge"`, `"db.influx.12xlarge"`, and `"db.influx.16xlarge"`. This argument is updatable.
   late final pulumi.Output<String> dbInstanceType;
-  /// ID of the DB parameter group assigned to your DB instance. This argument is updatable. If added to an existing Timestream for InfluxDB instance or given a new value, will cause an in-place update to the instance. However, if an instance already has a value for `db_parameter_group_identifier`, removing `db_parameter_group_identifier` will cause the instance to be destroyed and recreated.
+  /// ID of the DB parameter group assigned to your DB instance. This argument is updatable. If added to an existing Timestream for InfluxDB instance or given a new value, will cause an in-place update to the instance. However, if an instance already has a value for `dbParameterGroupIdentifier`, removing `dbParameterGroupIdentifier` will cause the instance to be destroyed and recreated.
   late final pulumi.Output<String?> dbParameterGroupIdentifier;
-  /// Timestream for InfluxDB DB storage type to read and write InfluxDB data. You can choose between 3 different types of provisioned Influx IOPS included storage according to your workloads requirements: Influx IO Included 3000 IOPS, Influx IO Included 12000 IOPS, Influx IO Included 16000 IOPS. Valid options are: `"InfluxIOIncludedT1"`, `"InfluxIOIncludedT2"`, and `"InfluxIOIncludedT3"`. If you use `"InfluxIOIncludedT2" or "InfluxIOIncludedT3", the minimum value for `allocated_storage` is 400. This argument is updatable. For a single instance, after this argument has been updated once, it can only be updated again after 6 hours have passed.
+  /// Timestream for InfluxDB DB storage type to read and write InfluxDB data. You can choose between 3 different types of provisioned Influx IOPS included storage according to your workloads requirements: Influx IO Included 3000 IOPS, Influx IO Included 12000 IOPS, Influx IO Included 16000 IOPS. Valid options are: `"InfluxIOIncludedT1"`, `"InfluxIOIncludedT2"`, and `"InfluxIOIncludedT3"`. If you use `"InfluxIOIncludedT2" or "InfluxIOIncludedT3", the minimum value for `allocatedStorage` is 400. This argument is updatable. For a single instance, after this argument has been updated once, it can only be updated again after 6 hours have passed.
   late final pulumi.Output<String> dbStorageType;
   /// Specifies whether the DB instance will be deployed as a standalone instance or with a Multi-AZ standby for high availability. Valid options are: `"SINGLE_AZ"`, `"WITH_MULTIAZ_STANDBY"`. This argument is updatable.
   late final pulumi.Output<String> deploymentType;
@@ -1042,13 +1187,15 @@ class DbInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> influxAuthParametersSecretArn;
   /// Configuration for sending InfluxDB engine logs to a specified S3 bucket. This argument is updatable.
   late final pulumi.Output<DbInstanceLogDeliveryConfiguration?> logDeliveryConfiguration;
+  /// Maintenance schedule for the DB instance, including the preferred maintenance window and timezone. This argument is updatable.
+  late final pulumi.Output<DbInstanceMaintenanceSchedule?> maintenanceSchedule;
   /// Name that uniquely identifies the DB instance when interacting with the Amazon Timestream for InfluxDB API and CLI commands. This name will also be a prefix included in the endpoint. DB instance names must be unique per customer and per region. The argument must start with a letter, cannot contain consecutive hyphens (`-`) and cannot end with a hyphen.
   late final pulumi.Output<String> name;
   /// Specifies whether the networkType of the Timestream for InfluxDB instance is IPV4, which can communicate over IPv4 protocol only, or DUAL, which can communicate over both IPv4 and IPv6 protocols.
   late final pulumi.Output<String> networkType;
-  /// Name of the initial organization for the initial admin user in InfluxDB. An InfluxDB organization is a workspace for a group of users. Along with `bucket`, `username`, and `password`, this argument will be stored in the secret referred to by the `influx_auth_parameters_secret_arn` attribute.
+  /// Name of the initial organization for the initial admin user in InfluxDB. An InfluxDB organization is a workspace for a group of users. Along with `bucket`, `username`, and `password`, this argument will be stored in the secret referred to by the `influxAuthParametersSecretArn` attribute.
   late final pulumi.Output<String> organization;
-  /// Password of the initial admin user created in InfluxDB. This password will allow you to access the InfluxDB UI to perform various administrative tasks and also use the InfluxDB CLI to create an operator token. Along with `bucket`, `username`, and `organization`, this argument will be stored in the secret referred to by the `influx_auth_parameters_secret_arn` attribute.
+  /// Password of the initial admin user created in InfluxDB. This password will allow you to access the InfluxDB UI to perform various administrative tasks and also use the InfluxDB CLI to create an operator token. Along with `bucket`, `username`, and `organization`, this argument will be stored in the secret referred to by the `influxAuthParametersSecretArn` attribute.
   late final pulumi.Output<String> password;
   /// The port on which the instance accepts connections. Valid values: `1024`-`65535`. Cannot be `2375`-`2376`, `7788`-`7799`, `8090`, or `51678`-`51680`. This argument is updatable.
   late final pulumi.Output<int> port;
@@ -1058,12 +1205,12 @@ class DbInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Availability Zone in which the standby instance is located when deploying with a MultiAZ standby instance.
   late final pulumi.Output<String> secondaryAvailabilityZone;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<DbInstanceTimeouts?> timeouts;
-  /// Username of the initial admin user created in InfluxDB. Must start with a letter and can't end with a hyphen or contain two consecutive hyphens. This username will allow you to access the InfluxDB UI to perform various administrative tasks and also use the InfluxDB CLI to create an operator token. Along with `bucket`, `organization`, and `password`, this argument will be stored in the secret referred to by the `influx_auth_parameters_secret_arn` attribute.
+  /// Username of the initial admin user created in InfluxDB. Must start with a letter and can't end with a hyphen or contain two consecutive hyphens. This username will allow you to access the InfluxDB UI to perform various administrative tasks and also use the InfluxDB CLI to create an operator token. Along with `bucket`, `organization`, and `password`, this argument will be stored in the secret referred to by the `influxAuthParametersSecretArn` attribute.
   late final pulumi.Output<String> username;
   /// List of VPC security group IDs to associate with the DB instance.
   late final pulumi.Output<List<String>> vpcSecurityGroupIds;
@@ -1097,6 +1244,7 @@ class DbInstance extends pulumi.CustomResource {
     endpoint = registerOutput<String>('endpoint');
     influxAuthParametersSecretArn = registerOutput<String>('influxAuthParametersSecretArn');
     logDeliveryConfiguration = registerOutput<DbInstanceLogDeliveryConfiguration?>('logDeliveryConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DbInstanceLogDeliveryConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceSchedule = registerOutput<DbInstanceMaintenanceSchedule?>('maintenanceSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DbInstanceMaintenanceSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     networkType = registerOutput<String>('networkType');
     organization = registerOutput<String>('organization');
@@ -1147,6 +1295,7 @@ class DbInstance extends pulumi.CustomResource {
     endpoint = registerOutput<String>('endpoint');
     influxAuthParametersSecretArn = registerOutput<String>('influxAuthParametersSecretArn');
     logDeliveryConfiguration = registerOutput<DbInstanceLogDeliveryConfiguration?>('logDeliveryConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DbInstanceLogDeliveryConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceSchedule = registerOutput<DbInstanceMaintenanceSchedule?>('maintenanceSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DbInstanceMaintenanceSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     networkType = registerOutput<String>('networkType');
     organization = registerOutput<String>('organization');

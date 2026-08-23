@@ -31,7 +31,7 @@ class CustomDbEngineVersionArgs {
   final pulumi.Input<String>? sourceImageId;
   /// The status of the CEV. Valid values are `available`, `inactive`, `inactive-except-restore`.
   final pulumi.Input<String>? status;
-  /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [CustomDbEngineVersionArgs].
@@ -47,7 +47,7 @@ class CustomDbEngineVersionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sourceImageId] The ID of the AMI to create the CEV from. Required for RDS Custom for SQL Server. For RDS Custom for Oracle, you can specify an AMI ID that was used in a different Oracle CEV.
   /// [status] The status of the CEV. Valid values are `available`, `inactive`, `inactive-except-restore`.
-  /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const CustomDbEngineVersionArgs({
     this.databaseInstallationFilesS3BucketName,
     this.databaseInstallationFilesS3Prefix,
@@ -100,4 +100,3 @@ class CustomDbEngineVersionArgs {
     );
   }
 }
-

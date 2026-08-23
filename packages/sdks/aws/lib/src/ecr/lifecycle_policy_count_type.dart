@@ -1,7 +1,9 @@
 /// The type of count to perform.
 enum LifecyclePolicyCountType {
   imageCountMoreThan("imageCountMoreThan"),
-  sinceImagePushed("sinceImagePushed");
+  sinceImagePushed("sinceImagePushed"),
+  sinceImagePulled("sinceImagePulled"),
+  sinceImageTransitioned("sinceImageTransitioned");
 
   const LifecyclePolicyCountType(this.wireValue);
   final String wireValue;
@@ -15,4 +17,3 @@ enum LifecyclePolicyCountType {
     throw ArgumentError('Unknown LifecyclePolicyCountType value: $value');
   }
 }
-

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementSizeConstraintStatementFieldToMatchHeaderOrder {
-  /// Oversize handling tells AWS WAF what to do with a web request when the request component that the rule inspects is over the limits. Valid values include the following: `CONTINUE`, `MATCH`, `NO_MATCH`. See the AWS [documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-oversize-handling.html) for more information.
+  /// How to handle requests with headers larger than the inspection limit. Valid values: `CONTINUE`, `MATCH`, `NO_MATCH`.
   final pulumi.Input<String> oversizeHandling;
 
   /// Creates a new [WebAclRuleStatementSizeConstraintStatementFieldToMatchHeaderOrder].
-  /// [oversizeHandling] Oversize handling tells AWS WAF what to do with a web request when the request component that the rule inspects is over the limits. Valid values include the following: `CONTINUE`, `MATCH`, `NO_MATCH`. See the AWS [documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-oversize-handling.html) for more information.
+  /// [oversizeHandling] How to handle requests with headers larger than the inspection limit. Valid values: `CONTINUE`, `MATCH`, `NO_MATCH`.
   const WebAclRuleStatementSizeConstraintStatementFieldToMatchHeaderOrder({
     required this.oversizeHandling,
   });
@@ -24,4 +24,3 @@ class WebAclRuleStatementSizeConstraintStatementFieldToMatchHeaderOrder {
     );
   }
 }
-

@@ -3,11 +3,12 @@
 
 /// Result data returned by getBucketObject.
 class GetBucketObjectResult {
+  /// ARN of the object.
   final String arn;
   /// Object data (see **limitations above** to understand cases in which this field is actually available)
   final String body;
   final String bucket;
-  /// (Optional) Whether or not to use [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) for SSE-KMS.
+  /// Whether or not to use [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) for SSE-KMS.
   final bool bucketKeyEnabled;
   /// Caching behavior along the request/reply chain.
   final String cacheControl;
@@ -34,11 +35,11 @@ class GetBucketObjectResult {
   final String lastModified;
   /// Map of metadata stored with the object in S3. Keys are always returned in lowercase.
   final Map<String, String> metadata;
-  /// Indicates whether this object has an active [legal hold](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-legal-holds). This field is only returned if you have permission to view an object's legal hold status.
+  /// Whether this object has an active [legal hold](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-legal-holds). This field is only returned if you have permission to view an object's legal hold status.
   final String objectLockLegalHoldStatus;
   /// Object lock [retention mode](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-retention-modes) currently in place for this object.
   final String objectLockMode;
-  /// The date and time when this object's object lock will expire.
+  /// Date and time when this object's object lock will expire.
   final String objectLockRetainUntilDate;
   final String? range;
   final String region;
@@ -56,10 +57,10 @@ class GetBucketObjectResult {
   final String websiteRedirectLocation;
 
   /// Creates a new [GetBucketObjectResult].
-  /// [arn] Required.
+  /// [arn] ARN of the object.
   /// [body] Object data (see **limitations above** to understand cases in which this field is actually available)
   /// [bucket] Required.
-  /// [bucketKeyEnabled] (Optional) Whether or not to use [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) for SSE-KMS.
+  /// [bucketKeyEnabled] Whether or not to use [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) for SSE-KMS.
   /// [cacheControl] Caching behavior along the request/reply chain.
   /// [contentDisposition] Presentational information for the object.
   /// [contentEncoding] What content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
@@ -73,9 +74,9 @@ class GetBucketObjectResult {
   /// [key] Required.
   /// [lastModified] Last modified date of the object in RFC1123 format (e.g., `Mon, 02 Jan 2006 15:04:05 MST`)
   /// [metadata] Map of metadata stored with the object in S3. Keys are always returned in lowercase.
-  /// [objectLockLegalHoldStatus] Indicates whether this object has an active [legal hold](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-legal-holds). This field is only returned if you have permission to view an object's legal hold status.
+  /// [objectLockLegalHoldStatus] Whether this object has an active [legal hold](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-legal-holds). This field is only returned if you have permission to view an object's legal hold status.
   /// [objectLockMode] Object lock [retention mode](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-retention-modes) currently in place for this object.
-  /// [objectLockRetainUntilDate] The date and time when this object's object lock will expire.
+  /// [objectLockRetainUntilDate] Date and time when this object's object lock will expire.
   /// [range] Optional.
   /// [region] Required.
   /// [serverSideEncryption] If the object is stored using server-side encryption (KMS or Amazon S3-managed encryption key), this field includes the chosen encryption and algorithm used.
@@ -181,4 +182,3 @@ class GetBucketObjectResult {
     );
   }
 }
-

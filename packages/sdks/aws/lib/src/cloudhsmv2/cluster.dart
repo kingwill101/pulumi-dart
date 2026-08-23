@@ -6,7 +6,7 @@ import 'cluster_state.dart';
 ///
 /// For information about CloudHSM v2, see the
 /// [AWS CloudHSM User Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/introduction.html) and the [Amazon
-/// CloudHSM API Reference][2].
+/// CloudHSM API Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/Welcome.html).
 ///
 /// &gt; **NOTE:** A CloudHSM Cluster can take several minutes to set up.
 /// Practically no single attribute can be updated, except for `tags`.
@@ -30,12 +30,12 @@ import 'cluster_state.dart';
 ///     },
 /// });
 /// const cloudhsmV2Subnets: aws.ec2.Subnet[] = [];
-/// for (const range = {value: 0}; range.value < 2; range.value++) {
-///     cloudhsmV2Subnets.push(new aws.ec2.Subnet(`cloudhsm_v2_subnets-${range.value}`, {
+/// for (let range = 0; range < 2; range++) {
+///     cloudhsmV2Subnets.push(new aws.ec2.Subnet(`cloudhsm_v2_subnets-${range}`, {
 ///         vpcId: cloudhsmV2Vpc.id,
-///         cidrBlock: subnets[range.value],
+///         cidrBlock: subnets[range],
 ///         mapPublicIpOnLaunch: false,
-///         availabilityZone: available.then(available => available.names[range.value]),
+///         availabilityZone: available.then(available => available.names)[range],
 ///         tags: {
 ///             Name: "example-aws_cloudhsm_v2_cluster",
 ///         },
@@ -51,6 +51,7 @@ import 'cluster_state.dart';
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 ///
 /// available = aws.get_availability_zones()
@@ -59,13 +60,13 @@ import 'cluster_state.dart';
 ///     tags={
 ///         "Name": "example-aws_cloudhsm_v2_cluster",
 ///     })
-/// cloudhsm_v2_subnets = []
-/// for range in [{"value": i} for i in range(0, 2)]:
-///     cloudhsm_v2_subnets.append(aws.ec2.Subnet(f"cloudhsm_v2_subnets-{range['value']}",
+/// cloudhsm_v2_subnets: list[aws.ec2.Subnet] = []
+/// for cloudhsm_v2_subnets_range in [{"value": i} for i in range(0, 2)]:
+///     cloudhsm_v2_subnets.append(aws.ec2.Subnet(f"cloudhsm_v2_subnets-{cloudhsm_v2_subnets_range['value']}",
 ///         vpc_id=cloudhsm_v2_vpc.id,
-///         cidr_block=subnets[range["value"]],
+///         cidr_block=subnets[cloudhsm_v2_subnets_range["value"]],
 ///         map_public_ip_on_launch=False,
-///         availability_zone=available.names[range["value"]],
+///         availability_zone=available.names[cloudhsm_v2_subnets_range["value"]],
 ///         tags={
 ///             "Name": "example-aws_cloudhsm_v2_cluster",
 ///         }))
@@ -123,6 +124,112 @@ import 'cluster_state.dart';
 ///
 /// });
 /// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/cloudhsmv2"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		available, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		cloudhsmV2Vpc, err := ec2.NewVpc(ctx, "cloudhsm_v2_vpc", &ec2.VpcArgs{
+/// 			CidrBlock: pulumi.String("10.0.0.0/16"),
+/// 			Tags: pulumi.StringMap{
+/// 				"Name": pulumi.String("example-aws_cloudhsm_v2_cluster"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		var cloudhsmV2Subnets []*ec2.Subnet
+/// 		for index := 0; index < 2; index++ {
+/// 			key0 := index
+/// 			val0 := index
+/// 			__res, err := ec2.NewSubnet(ctx, fmt.Sprintf("cloudhsm_v2_subnets-%v", key0), &ec2.SubnetArgs{
+/// 				VpcId:               cloudhsmV2Vpc.ID().ToIDOutput().ToStringOutput(),
+/// 				CidrBlock:           subnets[val0],
+/// 				MapPublicIpOnLaunch: pulumi.Bool(false),
+/// 				AvailabilityZone:    available.Names[val0],
+/// 				Tags: pulumi.StringMap{
+/// 					"Name": pulumi.String("example-aws_cloudhsm_v2_cluster"),
+/// 				},
+/// 			})
+/// 			if err != nil {
+/// 				return err
+/// 			}
+/// 			cloudhsmV2Subnets = append(cloudhsmV2Subnets, __res)
+/// 		}
+/// 		var splat0 pulumi.IDArray
+/// 		for _, val0 := range cloudhsmV2Subnets {
+/// 			splat0 = append(splat0, val0.ID())
+/// 		}
+/// 		_, err = cloudhsmv2.NewCluster(ctx, "cloudhsm_v2_cluster", &cloudhsmv2.ClusterArgs{
+/// 			HsmType:   pulumi.String("hsm1.medium"),
+/// 			SubnetIds: toPulumiIDArray(splat0),
+/// 			Tags: pulumi.StringMap{
+/// 				"Name": pulumi.String("example-aws_cloudhsm_v2_cluster"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// func toPulumiIDArray(arr []pulumi.ID) pulumi.IDArray {
+/// 	var pulumiArr pulumi.IDArray
+/// 	for _, v := range arr {
+/// 		pulumiArr = append(pulumiArr, pulumi.ID(v))
+/// 	}
+/// 	return pulumiArr
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "available" {
+/// }
+///
+/// resource "aws_ec2_vpc" "cloudhsm_v2_vpc" {
+///   cidr_block = "10.0.0.0/16"
+///   tags = {
+///     "Name" = "example-aws_cloudhsm_v2_cluster"
+///   }
+/// }
+/// resource "aws_ec2_subnet" "cloudhsm_v2_subnets" {
+///   count                   = 2
+///   vpc_id                  = aws_ec2_vpc.cloudhsm_v2_vpc.id
+///   cidr_block              = element(subnets, count.index)
+///   map_public_ip_on_launch = false
+///   availability_zone       = element(data.aws_getavailabilityzones.available.names, count.index)
+///   tags = {
+///     "Name" = "example-aws_cloudhsm_v2_cluster"
+///   }
+/// }
+/// resource "aws_cloudhsmv2_cluster" "cloudhsm_v2_cluster" {
+///   hsm_type   = "hsm1.medium"
+///   subnet_ids = aws_ec2_subnet.cloudhsm_v2_subnets[*].id
+///   tags = {
+///     "Name" = "example-aws_cloudhsm_v2_cluster"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +245,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.aws.cloudhsmv2.Cluster;
 /// import com.pulumi.aws.cloudhsmv2.ClusterArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -197,7 +304,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> clusterState;
   /// The type of HSM module in the cluster. Currently, `hsm1.medium` and `hsm2m.medium` are supported.
   late final pulumi.Output<String> hsmType;
-  /// The mode to use in the cluster. The allowed values are `FIPS` and `NON_FIPS`. This field is required if `hsm_type` is `hsm2m.medium`.
+  /// The mode to use in the cluster. The allowed values are `FIPS` and `NON_FIPS`. This field is required if `hsmType` is `hsm2m.medium`.
   late final pulumi.Output<String> mode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -207,9 +314,9 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String?> sourceBackupIdentifier;
   /// The IDs of subnets in which cluster will operate.
   late final pulumi.Output<List<String>> subnetIds;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The id of the VPC that the CloudHSM cluster resides in.
   late final pulumi.Output<String> vpcId;

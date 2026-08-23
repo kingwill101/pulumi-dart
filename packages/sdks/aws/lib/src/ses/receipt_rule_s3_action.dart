@@ -54,4 +54,3 @@ class ReceiptRuleS3Action {
     );
   }
 }
-

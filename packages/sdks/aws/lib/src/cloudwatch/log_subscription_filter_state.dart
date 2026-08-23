@@ -10,7 +10,7 @@ class LogSubscriptionFilterState {
   final pulumi.Input<String>? destinationArn;
   /// Method used to distribute log data to the destination. By default log data is grouped by log stream, but the grouping can be set to random for a more even distribution. This property is only applicable when the destination is an Amazon Kinesis stream. Valid values are "Random" and "ByLogStream".
   final pulumi.Input<String>? distribution;
-  /// List of system fields to include in the log events sent to the subscription destination. These fields provide source information for centralized log data in the forwarded payload. Valid values: `"@aws.account"`, `"@aws.region"`. To remove this argument after it has been set, specify an empty list `[]` explicitly to avoid perpetual differences.
+  /// List of system fields to include in the log events sent to the subscription destination. These fields provide source information for centralized log data in the forwarded payload. Valid values: `"@aws.account"`, `"@aws.region"`, `"@source.log"`. To remove this argument after it has been set, specify an empty list `[]` explicitly to avoid perpetual differences.
   final pulumi.Input<List<String>>? emitSystemFields;
   /// Valid CloudWatch Logs filter pattern for subscribing to a filtered stream of log events. Use empty string `""` to match everything. For more information, see the [Amazon CloudWatch Logs User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
   final pulumi.Input<String>? filterPattern;
@@ -27,7 +27,7 @@ class LogSubscriptionFilterState {
   /// [applyOnTransformedLogs] Boolean to indicate whether to apply the subscription filter on the transformed version of the log events instead of the original ingested log events. Defaults to `false`. Valid only for log groups that have an active log transformer.
   /// [destinationArn] ARN of the destination to deliver matching log events to. Kinesis stream or Lambda function ARN.
   /// [distribution] Method used to distribute log data to the destination. By default log data is grouped by log stream, but the grouping can be set to random for a more even distribution. This property is only applicable when the destination is an Amazon Kinesis stream. Valid values are "Random" and "ByLogStream".
-  /// [emitSystemFields] List of system fields to include in the log events sent to the subscription destination. These fields provide source information for centralized log data in the forwarded payload. Valid values: `"@aws.account"`, `"@aws.region"`. To remove this argument after it has been set, specify an empty list `[]` explicitly to avoid perpetual differences.
+  /// [emitSystemFields] List of system fields to include in the log events sent to the subscription destination. These fields provide source information for centralized log data in the forwarded payload. Valid values: `"@aws.account"`, `"@aws.region"`, `"@source.log"`. To remove this argument after it has been set, specify an empty list `[]` explicitly to avoid perpetual differences.
   /// [filterPattern] Valid CloudWatch Logs filter pattern for subscribing to a filtered stream of log events. Use empty string `""` to match everything. For more information, see the [Amazon CloudWatch Logs User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
   /// [logGroup] Name of the log group to associate the subscription filter with.
   /// [name] Name for the subscription filter.
@@ -73,4 +73,3 @@ class LogSubscriptionFilterState {
     );
   }
 }
-

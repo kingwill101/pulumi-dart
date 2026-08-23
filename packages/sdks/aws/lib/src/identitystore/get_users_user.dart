@@ -38,6 +38,8 @@ class GetUsersUser {
   final pulumi.Input<String> userId;
   /// User's user name value.
   final pulumi.Input<String> userName;
+  /// Current status of the user account.
+  final pulumi.Input<String> userStatus;
   /// User type.
   final pulumi.Input<String> userType;
 
@@ -57,6 +59,7 @@ class GetUsersUser {
   /// [title] User's title.
   /// [userId] Identifier of the user in the Identity Store.
   /// [userName] User's user name value.
+  /// [userStatus] Current status of the user account.
   /// [userType] User type.
   const GetUsersUser({
     required this.addresses,
@@ -74,6 +77,7 @@ class GetUsersUser {
     required this.title,
     required this.userId,
     required this.userName,
+    required this.userStatus,
     required this.userType,
   });
 
@@ -94,6 +98,7 @@ class GetUsersUser {
       'title': title,
       'userId': userId,
       'userName': userName,
+      'userStatus': userStatus,
       'userType': userType,
     };
   }
@@ -115,8 +120,8 @@ class GetUsersUser {
       title: pulumi.Input.fromValue(map['title'] as String),
       userId: pulumi.Input.fromValue(map['userId'] as String),
       userName: pulumi.Input.fromValue(map['userName'] as String),
+      userStatus: pulumi.Input.fromValue(map['userStatus'] as String),
       userType: pulumi.Input.fromValue(map['userType'] as String),
     );
   }
 }
-

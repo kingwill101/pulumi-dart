@@ -90,6 +90,25 @@ import 'resource_lf_tag_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lakeformation_resourcelftag" "example" {
+///   database = {
+///     name = exampleAwsGlueCatalogDatabase.name
+///   }
+///   lf_tag = {
+///     key   = exampleAwsLakeformationLfTag.key
+///     value = "stowe"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +119,8 @@ import 'resource_lf_tag_timeouts.dart';
 /// import com.pulumi.aws.lakeformation.ResourceLfTagArgs;
 /// import com.pulumi.aws.lakeformation.inputs.ResourceLfTagDatabaseArgs;
 /// import com.pulumi.aws.lakeformation.inputs.ResourceLfTagLfTagArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

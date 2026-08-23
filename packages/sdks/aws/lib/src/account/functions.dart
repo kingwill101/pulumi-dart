@@ -51,6 +51,18 @@ import 'get_regions_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_account_getprimarycontact" "test" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -59,8 +71,8 @@ import 'get_regions_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.account.AccountFunctions;
 /// import com.pulumi.aws.account.inputs.GetPrimaryContactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -151,6 +163,18 @@ Future<GetPrimaryContactResult> getPrimaryContact(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_account_getregions" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -159,8 +183,8 @@ Future<GetPrimaryContactResult> getPrimaryContact(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.account.AccountFunctions;
 /// import com.pulumi.aws.account.inputs.GetRegionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

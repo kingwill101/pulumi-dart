@@ -148,6 +148,37 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3control_bucketlifecycleconfiguration" "example" {
+///   bucket = exampleAwsS3controlBucket.arn
+///   rules {
+///     expiration = {
+///       days = 365
+///     }
+///     filter = {
+///       prefix = "logs/"
+///     }
+///     id = "logs"
+///   }
+///   rules {
+///     expiration = {
+///       days = 7
+///     }
+///     filter = {
+///       prefix = "temp/"
+///     }
+///     id = "temp"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -159,8 +190,8 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 /// import com.pulumi.aws.s3control.inputs.BucketLifecycleConfigurationRuleArgs;
 /// import com.pulumi.aws.s3control.inputs.BucketLifecycleConfigurationRuleExpirationArgs;
 /// import com.pulumi.aws.s3control.inputs.BucketLifecycleConfigurationRuleFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -230,7 +261,7 @@ class BucketLifecycleConfigurationS3Control extends pulumi.CustomResource {
   late final pulumi.Output<String> bucket;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Configuration block(s) containing lifecycle rules for the bucket.
+  /// Configuration block(s) containing lifecycle rules for the bucket. See `rule` below.
   late final pulumi.Output<List<Map<String, dynamic>>> rules;
 
   /// Creates a new [BucketLifecycleConfigurationS3Control].

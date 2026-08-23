@@ -32,7 +32,7 @@ class PipeTargetParametersEcsTaskParameters {
   final pulumi.Input<String>? propagateTags;
   /// The reference ID to use for the task. Maximum length of 1,024.
   final pulumi.Input<String>? referenceId;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The number of tasks to create based on TaskDefinition. The default is 1.
   final pulumi.Input<int>? taskCount;
@@ -52,7 +52,7 @@ class PipeTargetParametersEcsTaskParameters {
   /// [platformVersion] Specifies the platform version for the task. Specify only the numeric portion of the platform version, such as 1.1.0. This structure is used only if LaunchType is FARGATE.
   /// [propagateTags] Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags are not propagated. Tags can only be propagated to the task during task creation. To add tags to a task after task creation, use the TagResource API action. Valid Values: TASK_DEFINITION
   /// [referenceId] The reference ID to use for the task. Maximum length of 1,024.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [taskCount] The number of tasks to create based on TaskDefinition. The default is 1.
   /// [taskDefinitionArn] The ARN of the task definition to use if the event target is an Amazon ECS task.
   const PipeTargetParametersEcsTaskParameters({
@@ -113,4 +113,3 @@ class PipeTargetParametersEcsTaskParameters {
     );
   }
 }
-

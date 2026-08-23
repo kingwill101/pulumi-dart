@@ -71,6 +71,26 @@ import 'get_solution_stack_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_elasticbeanstalk_getapplication" "example" {
+///   name = "example"
+/// }
+///
+/// output "arn" {
+///   value = data.aws_elasticbeanstalk_getapplication.example.arn
+/// }
+/// output "description" {
+///   value = data.aws_elasticbeanstalk_getapplication.example.description
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +99,8 @@ import 'get_solution_stack_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elasticbeanstalk.ElasticbeanstalkFunctions;
 /// import com.pulumi.aws.elasticbeanstalk.inputs.GetApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -174,6 +194,18 @@ Future<GetApplicationResult> getApplication(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_elasticbeanstalk_gethostedzone" "current" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -182,8 +214,8 @@ Future<GetApplicationResult> getApplication(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elasticbeanstalk.ElasticbeanstalkFunctions;
 /// import com.pulumi.aws.elasticbeanstalk.inputs.GetHostedZoneArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -281,6 +313,20 @@ Future<GetHostedZoneResult> getHostedZone(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_elasticbeanstalk_getsolutionstack" "multiDocker" {
+///   most_recent = true
+///   name_regex  = "^64bit Amazon Linux (.*) Multi-container Docker (.*)$"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -289,8 +335,8 @@ Future<GetHostedZoneResult> getHostedZone(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elasticbeanstalk.ElasticbeanstalkFunctions;
 /// import com.pulumi.aws.elasticbeanstalk.inputs.GetSolutionStackArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

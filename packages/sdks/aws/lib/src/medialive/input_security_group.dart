@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'input_security_group_args.dart';
 import 'input_security_group_state.dart';
 
-/// Resource for managing an AWS MediaLive InputSecurityGroup.
+/// Manages an AWS MediaLive Input Security Group.
 ///
 /// ## Example Usage
 ///
@@ -86,6 +86,24 @@ import 'input_security_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_medialive_inputsecuritygroup" "example" {
+///   whitelist_rules {
+///     cidr = "10.0.0.8/32"
+///   }
+///   tags = {
+///     "ENVIRONMENT" = "prod"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +113,8 @@ import 'input_security_group_state.dart';
 /// import com.pulumi.aws.medialive.InputSecurityGroup;
 /// import com.pulumi.aws.medialive.InputSecurityGroupArgs;
 /// import com.pulumi.aws.medialive.inputs.InputSecurityGroupWhitelistRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -132,7 +150,19 @@ import 'input_security_group_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import MediaLive InputSecurityGroup using the `id`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` - (String) ID of the Input Security Group.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import MediaLive Input Security Group using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:medialive/inputSecurityGroup:InputSecurityGroup example 123456
@@ -144,7 +174,7 @@ class InputSecurityGroup extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> inputs;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the InputSecurityGroup. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Whitelist rules. See Whitelist Rules for more details.

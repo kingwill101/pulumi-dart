@@ -7,38 +7,38 @@ import 'permission_timeouts.dart';
 class PermissionState {
   /// ARN of the permission.
   final pulumi.Input<String>? arn;
-  /// Specifies whether the version of the managed permission used by this resource share is the default version for this managed permission.
+  /// Whether this is the default version of the managed permission.
   final pulumi.Input<bool>? defaultVersion;
-  /// Specifies the name of the customer managed permission. The name must be unique within the AWS Region.
+  /// Name of the customer managed permission. The name must be unique within the AWS Region.
   final pulumi.Input<String>? name;
-  /// A string in JSON format string that contains the following elements of a resource-based policy: Effect, Action and Condition.
+  /// String in JSON format string that contains the following elements of a resource-based policy: Effect, Action and Condition.
   final pulumi.Input<String>? policyTemplate;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Specifies the name of the resource type that this customer managed permission applies to. The format is `&lt;service-code&gt;:&lt;resource-type&gt;` and is not case sensitive.
+  /// Name of the resource type that this customer managed permission applies to. The format is `&lt;service-code&gt;:&lt;resource-type&gt;` and is not case sensitive.
   final pulumi.Input<String>? resourceType;
-  /// The current status of the permission.
+  /// Current status of the permission.
   final pulumi.Input<String>? status;
-  /// A map of tags to assign to the resource share. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource share. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<PermissionTimeouts>? timeouts;
-  /// The version of the permission associated with this resource share.
+  /// Version of the permission associated with this resource share.
   final pulumi.Input<String>? version;
 
   /// Creates a new [PermissionState].
   /// [arn] ARN of the permission.
-  /// [defaultVersion] Specifies whether the version of the managed permission used by this resource share is the default version for this managed permission.
-  /// [name] Specifies the name of the customer managed permission. The name must be unique within the AWS Region.
-  /// [policyTemplate] A string in JSON format string that contains the following elements of a resource-based policy: Effect, Action and Condition.
+  /// [defaultVersion] Whether this is the default version of the managed permission.
+  /// [name] Name of the customer managed permission. The name must be unique within the AWS Region.
+  /// [policyTemplate] String in JSON format string that contains the following elements of a resource-based policy: Effect, Action and Condition.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceType] Specifies the name of the resource type that this customer managed permission applies to. The format is `&lt;service-code&gt;:&lt;resource-type&gt;` and is not case sensitive.
-  /// [status] The current status of the permission.
-  /// [tags] A map of tags to assign to the resource share. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [resourceType] Name of the resource type that this customer managed permission applies to. The format is `&lt;service-code&gt;:&lt;resource-type&gt;` and is not case sensitive.
+  /// [status] Current status of the permission.
+  /// [tags] Map of tags to assign to the resource share. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
-  /// [version] The version of the permission associated with this resource share.
+  /// [version] Version of the permission associated with this resource share.
   const PermissionState({
     this.arn,
     this.defaultVersion,
@@ -85,4 +85,3 @@ class PermissionState {
     );
   }
 }
-

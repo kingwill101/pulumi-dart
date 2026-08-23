@@ -7,13 +7,13 @@ class BucketMetricFilter {
   final pulumi.Input<String>? accessPoint;
   /// Object prefix for filtering (singular).
   final pulumi.Input<String>? prefix;
-  /// Object tags for filtering (up to 10).
+  /// Object tags for filtering (up to 10). Unsupported for S3 directory buckets.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [BucketMetricFilter].
   /// [accessPoint] S3 Access Point ARN for filtering (singular).
   /// [prefix] Object prefix for filtering (singular).
-  /// [tags] Object tags for filtering (up to 10).
+  /// [tags] Object tags for filtering (up to 10). Unsupported for S3 directory buckets.
   const BucketMetricFilter({
     this.accessPoint,
     this.prefix,
@@ -36,4 +36,3 @@ class BucketMetricFilter {
     );
   }
 }
-

@@ -7,7 +7,7 @@ class DbClusterLogDeliveryConfigurationS3Configuration {
   final pulumi.Input<String> bucketName;
   /// Indicates whether log delivery to the S3 bucket is enabled.
   ///
-  /// **Note**: The following arguments do updates in-place: `db_parameter_group_identifier`, `log_delivery_configuration`, `port`, `db_instance_type`, `failover_mode`, and `tags`. Changes to any other argument after a cluster has been deployed will cause destruction and re-creation of the cluster. Additionally, when `db_parameter_group_identifier` is added to a cluster or modified, the cluster will be updated in-place but if `db_parameter_group_identifier` is removed from a cluster, the cluster will be destroyed and re-created.
+  /// **Note**: The following arguments do updates in-place: `dbParameterGroupIdentifier`, `logDeliveryConfiguration`, `maintenanceSchedule`, `port`, `dbInstanceType`, `failoverMode`, and `tags`. Changes to any other argument after a cluster has been deployed will cause destruction and re-creation of the cluster. Additionally, when `dbParameterGroupIdentifier` is added to a cluster or modified, the cluster will be updated in-place but if `dbParameterGroupIdentifier` is removed from a cluster, the cluster will be destroyed and re-created.
   final pulumi.Input<bool> enabled;
 
   /// Creates a new [DbClusterLogDeliveryConfigurationS3Configuration].
@@ -32,4 +32,3 @@ class DbClusterLogDeliveryConfigurationS3Configuration {
     );
   }
 }
-

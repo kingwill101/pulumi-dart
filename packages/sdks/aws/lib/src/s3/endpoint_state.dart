@@ -13,7 +13,7 @@ class EndpointState {
   final pulumi.Input<String>? cidrBlock;
   /// UTC creation time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   final pulumi.Input<String>? creationTime;
-  /// The ID of a Customer Owned IP Pool. For more on customer owned IP addresses see the [User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/local-rack.html#local-gateway-subnet).
+  /// ID of a Customer Owned IP Pool. For more on customer owned IP addresses see the [User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/local-rack.html#local-gateway-subnet).
   final pulumi.Input<String>? customerOwnedIpv4Pool;
   /// Set of nested attributes for associated Elastic Network Interfaces (ENIs).
   final pulumi.Input<List<EndpointNetworkInterface>>? networkInterfaces;
@@ -31,7 +31,7 @@ class EndpointState {
   /// [arn] Amazon Resource Name (ARN) of the endpoint.
   /// [cidrBlock] VPC CIDR block of the endpoint.
   /// [creationTime] UTC creation time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
-  /// [customerOwnedIpv4Pool] The ID of a Customer Owned IP Pool. For more on customer owned IP addresses see the [User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/local-rack.html#local-gateway-subnet).
+  /// [customerOwnedIpv4Pool] ID of a Customer Owned IP Pool. For more on customer owned IP addresses see the [User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/local-rack.html#local-gateway-subnet).
   /// [networkInterfaces] Set of nested attributes for associated Elastic Network Interfaces (ENIs).
   /// [outpostId] Identifier of the Outpost to contain this endpoint.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -80,4 +80,3 @@ class EndpointState {
     );
   }
 }
-

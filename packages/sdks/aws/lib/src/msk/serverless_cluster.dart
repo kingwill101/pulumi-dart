@@ -96,7 +96,7 @@ import 'serverless_cluster_state.dart';
 /// ClusterName: pulumi.String("Example"),
 /// VpcConfigs: msk.ServerlessClusterVpcConfigArray{
 /// &msk.ServerlessClusterVpcConfigArgs{
-/// SubnetIds: []pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,24-46)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,24-46)),
 /// SecurityGroupIds: pulumi.StringArray{
 /// exampleAwsSecurityGroup.Id,
 /// },
@@ -117,6 +117,30 @@ import 'serverless_cluster_state.dart';
 /// })
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_msk_serverlesscluster" "example" {
+///   cluster_name = "Example"
+///   vpc_configs {
+///     subnet_ids         = exampleAwsSubnet[*].id
+///     security_group_ids = [exampleAwsSecurityGroup.id]
+///   }
+///   client_authentication = {
+///     sasl = {
+///       iam = {
+///         enabled = true
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -129,8 +153,8 @@ import 'serverless_cluster_state.dart';
 /// import com.pulumi.aws.msk.inputs.ServerlessClusterClientAuthenticationArgs;
 /// import com.pulumi.aws.msk.inputs.ServerlessClusterClientAuthenticationSaslArgs;
 /// import com.pulumi.aws.msk.inputs.ServerlessClusterClientAuthenticationSaslIamArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -164,7 +188,14 @@ import 'serverless_cluster_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import MSK serverless clusters using the cluster `arn`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `arn` (String) Amazon Resource Name (ARN) of the MSK serverless cluster.
+///
+///
+/// Using `pulumi import`, import MSK serverless cluster using the cluster ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:msk/serverlessCluster:ServerlessCluster example arn:aws:kafka:us-west-2:123456789012:cluster/example/279c0212-d057-4dba-9aa9-1c4e5a25bfc7-3
@@ -182,9 +213,9 @@ class ServerlessCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> clusterUuid;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// VPC configuration information. See below.
   late final pulumi.Output<List<Map<String, dynamic>>> vpcConfigs;

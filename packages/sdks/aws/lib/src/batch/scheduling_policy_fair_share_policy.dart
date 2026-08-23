@@ -7,13 +7,13 @@ class SchedulingPolicyFairSharePolicy {
   /// A value used to reserve some of the available maximum vCPU for fair share identifiers that have not yet been used. For more information, see [FairsharePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairsharePolicy.html).
   final pulumi.Input<int>? computeReservation;
   final pulumi.Input<int>? shareDecaySeconds;
-  /// One or more share distribution blocks which define the weights for the fair share identifiers for the fair share policy. For more information, see [FairsharePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairsharePolicy.html). The `share_distribution` block is documented below.
+  /// One or more share distribution blocks which define the weights for the fair share identifiers for the fair share policy. For more information, see [FairsharePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairsharePolicy.html). The `shareDistribution` block is documented below.
   final pulumi.Input<List<SchedulingPolicyFairSharePolicyShareDistribution>>? shareDistributions;
 
   /// Creates a new [SchedulingPolicyFairSharePolicy].
   /// [computeReservation] A value used to reserve some of the available maximum vCPU for fair share identifiers that have not yet been used. For more information, see [FairsharePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairsharePolicy.html).
   /// [shareDecaySeconds] Optional.
-  /// [shareDistributions] One or more share distribution blocks which define the weights for the fair share identifiers for the fair share policy. For more information, see [FairsharePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairsharePolicy.html). The `share_distribution` block is documented below.
+  /// [shareDistributions] One or more share distribution blocks which define the weights for the fair share identifiers for the fair share policy. For more information, see [FairsharePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairsharePolicy.html). The `shareDistribution` block is documented below.
   const SchedulingPolicyFairSharePolicy({
     this.computeReservation,
     this.shareDecaySeconds,
@@ -36,4 +36,3 @@ class SchedulingPolicyFairSharePolicy {
     );
   }
 }
-

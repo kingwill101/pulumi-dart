@@ -117,6 +117,31 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_user" "example" {
+///   instance_id          = exampleAwsConnectInstance.id
+///   name                 = "example"
+///   password             = "Password123"
+///   routing_profile_id   = exampleAwsConnectRoutingProfile.routingProfileId
+///   security_profile_ids = [exampleAwsConnectSecurityProfile.securityProfileId]
+///   identity_info = {
+///     first_name = "example"
+///     last_name  = "example2"
+///   }
+///   phone_config = {
+///     after_contact_work_time_limit = 0
+///     phone_type                    = "SOFT_PHONE"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +152,8 @@ import 'user_state.dart';
 /// import com.pulumi.aws.connect.UserArgs;
 /// import com.pulumi.aws.connect.inputs.UserIdentityInfoArgs;
 /// import com.pulumi.aws.connect.inputs.UserPhoneConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -179,7 +204,7 @@ import 'user_state.dart';
 /// ```
 ///
 ///
-/// ### With hierarchy_group_id
+/// ### With hierarchyGroupId
 ///
 ///
 /// ```typescript
@@ -291,6 +316,32 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_user" "example" {
+///   instance_id          = exampleAwsConnectInstance.id
+///   name                 = "example"
+///   password             = "Password123"
+///   routing_profile_id   = exampleAwsConnectRoutingProfile.routingProfileId
+///   hierarchy_group_id   = exampleAwsConnectUserHierarchyGroup.hierarchyGroupId
+///   security_profile_ids = [exampleAwsConnectSecurityProfile.securityProfileId]
+///   identity_info = {
+///     first_name = "example"
+///     last_name  = "example2"
+///   }
+///   phone_config = {
+///     after_contact_work_time_limit = 0
+///     phone_type                    = "SOFT_PHONE"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -301,8 +352,8 @@ import 'user_state.dart';
 /// import com.pulumi.aws.connect.UserArgs;
 /// import com.pulumi.aws.connect.inputs.UserIdentityInfoArgs;
 /// import com.pulumi.aws.connect.inputs.UserPhoneConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -355,7 +406,7 @@ import 'user_state.dart';
 /// ```
 ///
 ///
-/// ### With identity_info filled
+/// ### With identityInfo filled
 ///
 ///
 /// ```typescript
@@ -471,6 +522,33 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_user" "example" {
+///   instance_id          = exampleAwsConnectInstance.id
+///   name                 = "example"
+///   password             = "Password123"
+///   routing_profile_id   = exampleAwsConnectRoutingProfile.routingProfileId
+///   security_profile_ids = [exampleAwsConnectSecurityProfile.securityProfileId]
+///   identity_info = {
+///     email           = "example@example.com"
+///     first_name      = "example"
+///     last_name       = "example2"
+///     secondary_email = "secondary@example.com"
+///   }
+///   phone_config = {
+///     after_contact_work_time_limit = 0
+///     phone_type                    = "SOFT_PHONE"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -481,8 +559,8 @@ import 'user_state.dart';
 /// import com.pulumi.aws.connect.UserArgs;
 /// import com.pulumi.aws.connect.inputs.UserIdentityInfoArgs;
 /// import com.pulumi.aws.connect.inputs.UserPhoneConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -537,7 +615,7 @@ import 'user_state.dart';
 /// ```
 ///
 ///
-/// ### With phone_config phone type as desk phone
+/// ### With phoneConfig phone type as desk phone
 ///
 ///
 /// ```typescript
@@ -628,6 +706,27 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_user" "example" {
+///   instance_id          = exampleAwsConnectInstance.id
+///   name                 = "example"
+///   password             = "Password123"
+///   routing_profile_id   = exampleAwsConnectRoutingProfile.routingProfileId
+///   security_profile_ids = [exampleAwsConnectSecurityProfile.securityProfileId]
+///   phone_config = {
+///     after_contact_work_time_limit = 0
+///     phone_type                    = "SOFT_PHONE"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -637,8 +736,8 @@ import 'user_state.dart';
 /// import com.pulumi.aws.connect.User;
 /// import com.pulumi.aws.connect.UserArgs;
 /// import com.pulumi.aws.connect.inputs.UserPhoneConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -682,7 +781,7 @@ import 'user_state.dart';
 /// ```
 ///
 ///
-/// ### With multiple Security profile ids specified in security_profile_ids
+/// ### With multiple Security profile ids specified in securityProfileIds
 ///
 ///
 /// ```typescript
@@ -789,6 +888,29 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_user" "example" {
+///   instance_id          = exampleAwsConnectInstance.id
+///   name                 = "example"
+///   password             = "Password123"
+///   routing_profile_id   = exampleAwsConnectRoutingProfile.routingProfileId
+///   security_profile_ids = [exampleAwsConnectSecurityProfile.securityProfileId, example2.securityProfileId]
+///   phone_config = {
+///     after_contact_work_time_limit = 0
+///     auto_accept                   = false
+///     desk_phone_number             = "+112345678912"
+///     phone_type                    = "DESK_PHONE"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -798,8 +920,8 @@ import 'user_state.dart';
 /// import com.pulumi.aws.connect.User;
 /// import com.pulumi.aws.connect.UserArgs;
 /// import com.pulumi.aws.connect.inputs.UserPhoneConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -852,7 +974,7 @@ import 'user_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amazon Connect Users using the `instance_id` and `user_id` separated by a colon (`:`). For example:
+/// Using `pulumi import`, import Amazon Connect Users using the `instanceId` and `userId` separated by a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:connect/user:User example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
@@ -881,9 +1003,9 @@ class User extends pulumi.CustomResource {
   /// A list of identifiers for the security profiles for the user. Specify a minimum of 1 and maximum of 10 security profile ids. For more information, see [Best Practices for Security Profiles](https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-best-practices.html) in the Amazon Connect Administrator Guide.
   late final pulumi.Output<List<String>> securityProfileIds;
   /// Tags to apply to the user. If configured with a provider
-  /// `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The identifier for the user.
   late final pulumi.Output<String> userId;

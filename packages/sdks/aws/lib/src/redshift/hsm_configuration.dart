@@ -77,6 +77,24 @@ import 'hsm_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshift_hsmconfiguration" "example" {
+///   description                   = "example"
+///   hsm_configuration_identifier  = "example"
+///   hsm_ip_address                = "10.0.0.1"
+///   hsm_partition_name            = "aws"
+///   hsm_partition_password        = "example"
+///   hsm_server_public_certificate = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +103,8 @@ import 'hsm_configuration_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshift.HsmConfiguration;
 /// import com.pulumi.aws.redshift.HsmConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -126,7 +144,7 @@ import 'hsm_configuration_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Redshift HSM Client Certificates using `hsm_configuration_identifier`. For example:
+/// Using `pulumi import`, import Redshift HSM Client Certificates using `hsmConfigurationIdentifier`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:redshift/hsmConfiguration:HsmConfiguration example example
@@ -148,9 +166,9 @@ class HsmConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> hsmServerPublicCertificate;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [HsmConfiguration].

@@ -270,7 +270,7 @@ import 'glossary_state.dart';
 /// 						"sts:TagSession",
 /// 					},
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "datazone.amazonaws.com",
 /// 					},
 /// 				},
@@ -280,7 +280,7 @@ import 'glossary_state.dart';
 /// 						"sts:TagSession",
 /// 					},
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "cloudformation.amazonaws.com",
 /// 					},
 /// 				},
@@ -336,7 +336,7 @@ import 'glossary_state.dart';
 /// 			return err
 /// 		}
 /// 		testProject, err := datazone.NewProject(ctx, "test", &datazone.ProjectArgs{
-/// 			DomainIdentifier: test.ID(),
+/// 			DomainIdentifier: test.ID().ToIDOutput().ToStringOutput(),
 /// 			GlossaryTerms: pulumi.StringArray{
 /// 				pulumi.String("2N8w6XJCwZf"),
 /// 			},
@@ -350,7 +350,7 @@ import 'glossary_state.dart';
 /// 		_, err = datazone.NewGlossary(ctx, "test", &datazone.GlossaryArgs{
 /// 			Description:             pulumi.String("description"),
 /// 			Name:                    pulumi.String("example_name"),
-/// 			OwningProjectIdentifier: testProject.ID(),
+/// 			OwningProjectIdentifier: testProject.ID().ToIDOutput().ToStringOutput(),
 /// 			Status:                  pulumi.String("DISABLED"),
 /// 			DomainIdentifier:        testProject.DomainIdentifier,
 /// 		})
@@ -359,6 +359,67 @@ import 'glossary_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_role" "domain_execution_role" {
+///   name = "example_name"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = ["sts:AssumeRole", "sts:TagSession"]
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "datazone.amazonaws.com"
+///       }
+///       }, {
+///       "Action" = ["sts:AssumeRole", "sts:TagSession"]
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "cloudformation.amazonaws.com"
+///       }
+///     }]
+///   })
+///   inline_policies {
+///     name = "example_name"
+///     policy = jsonencode({
+///       "Version" = "2012-10-17"
+///       "Statement" = [{
+///         "Action"   = ["datazone:*", "ram:*", "sso:*", "kms:*"]
+///         "Effect"   = "Allow"
+///         "Resource" = "*"
+///       }]
+///     })
+///   }
+/// }
+/// resource "aws_datazone_domain" "test" {
+///   name                  = "example_name"
+///   domain_execution_role = aws_iam_role.domain_execution_role.arn
+/// }
+/// resource "aws_ec2_securitygroup" "test" {
+///   name = "example_name"
+/// }
+/// resource "aws_datazone_project" "test" {
+///   domain_identifier   = aws_datazone_domain.test.id
+///   glossary_terms      = ["2N8w6XJCwZf"]
+///   name                = "example_name"
+///   description         = "desc"
+///   skip_deletion_check = true
+/// }
+/// resource "aws_datazone_glossary" "test" {
+///   description               = "description"
+///   name                      = "example_name"
+///   owning_project_identifier = aws_datazone_project.test.id
+///   status                    = "DISABLED"
+///   domain_identifier         = aws_datazone_project.test.domain_identifier
 /// }
 /// ```
 /// ```java
@@ -379,8 +440,8 @@ import 'glossary_state.dart';
 /// import com.pulumi.aws.datazone.Glossary;
 /// import com.pulumi.aws.datazone.GlossaryArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -604,6 +665,23 @@ import 'glossary_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datazone_glossary" "test" {
+///   description               = "description"
+///   name                      = "example_name"
+///   owning_project_identifier = testAwsDatazoneProject.id
+///   status                    = "DISABLED"
+///   domain_identifier         = testAwsDatazoneProject.domainIdentifier
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -612,8 +690,8 @@ import 'glossary_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.datazone.Glossary;
 /// import com.pulumi.aws.datazone.GlossaryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -650,6 +728,19 @@ import 'glossary_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `domainIdentifier` - (String) Identifier of the DataZone domain.
+/// * `id` - (String) ID of the glossary.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import DataZone Glossary using the import Datazone Glossary using a comma-delimited string combining the domain id, glossary id, and the id of the project it's under. For example:
 ///

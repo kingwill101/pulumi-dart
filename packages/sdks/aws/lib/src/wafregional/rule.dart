@@ -113,7 +113,7 @@ import 'rule_state.dart';
 /// 			Predicates: wafregional.RulePredicateArray{
 /// 				&wafregional.RulePredicateArgs{
 /// 					Type:    pulumi.String("IPMatch"),
-/// 					DataId:  ipset.ID(),
+/// 					DataId:  ipset.ID().ToIDOutput().ToStringOutput(),
 /// 					Negated: pulumi.Bool(false),
 /// 				},
 /// 			},
@@ -123,6 +123,32 @@ import 'rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_wafregional_ipset" "ipset" {
+///   name = "tfIPSet"
+///   ip_set_descriptors {
+///     type  = "IPV4"
+///     value = "192.0.7.0/24"
+///   }
+/// }
+/// resource "aws_wafregional_rule" "wafrule" {
+///   name        = "tfWAFRule"
+///   metric_name = "tfWAFRule"
+///   predicates {
+///     type    = "IPMatch"
+///     data_id = aws_wafregional_ipset.ipset.id
+///     negated = false
+///   }
 /// }
 /// ```
 /// ```java
@@ -137,8 +163,8 @@ import 'rule_state.dart';
 /// import com.pulumi.aws.wafregional.Rule;
 /// import com.pulumi.aws.wafregional.RuleArgs;
 /// import com.pulumi.aws.wafregional.inputs.RulePredicateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -192,18 +218,6 @@ import 'rule_state.dart';
 /// ```
 ///
 ///
-/// ## Nested Fields
-///
-/// ### `predicate`
-///
-/// See the [WAF Documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_Predicate.html) for more information.
-///
-/// #### Arguments
-///
-/// * `type` - (Required) The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`
-/// * `data_id` - (Required) The unique identifier of a predicate, such as the ID of a `ByteMatchSet` or `IPSet`.
-/// * `negated` - (Required) Whether to use the settings or the negated settings that you specified in the objects.
-///
 /// ## Import
 ///
 /// Using `pulumi import`, import WAF Regional Rule using the id. For example:
@@ -222,9 +236,9 @@ class Rule extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> predicates;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Rule].

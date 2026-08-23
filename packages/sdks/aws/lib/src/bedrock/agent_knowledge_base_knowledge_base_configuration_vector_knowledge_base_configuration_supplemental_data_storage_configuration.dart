@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_knowledge_base_knowledge_base_configuration_vector_knowledge_base_configuration_supplemental_data_storage_configuration_storage_location.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfiguration {
-  /// A storage location specification for images extracted from multimodal documents in your data source.  See `storage_location` block for details.
+  /// A storage location specification for images extracted from multimodal documents in your data source.  See `storageLocation` block for details.
   final pulumi.Input<List<AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation>> storageLocations;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfiguration].
-  /// [storageLocations] A storage location specification for images extracted from multimodal documents in your data source.  See `storage_location` block for details.
+  /// [storageLocations] A storage location specification for images extracted from multimodal documents in your data source.  See `storageLocation` block for details.
   const AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfiguration({
     required this.storageLocations,
   });
@@ -25,4 +25,3 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurati
     );
   }
 }
-

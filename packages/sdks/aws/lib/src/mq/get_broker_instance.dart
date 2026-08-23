@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBrokerInstance {
-  /// URL of the ActiveMQ Web Console or the RabbitMQ Management UI depending on `engine_type`.
+  /// URL of the ActiveMQ Web Console or the RabbitMQ Management UI depending on `engineType`.
   final pulumi.Input<String> consoleUrl;
   /// Broker's wire-level protocol endpoints.
   final pulumi.Input<List<String>> endpoints;
@@ -11,7 +11,7 @@ class GetBrokerInstance {
   final pulumi.Input<String> ipAddress;
 
   /// Creates a new [GetBrokerInstance].
-  /// [consoleUrl] URL of the ActiveMQ Web Console or the RabbitMQ Management UI depending on `engine_type`.
+  /// [consoleUrl] URL of the ActiveMQ Web Console or the RabbitMQ Management UI depending on `engineType`.
   /// [endpoints] Broker's wire-level protocol endpoints.
   /// [ipAddress] IP Address of the broker.
   const GetBrokerInstance({
@@ -36,4 +36,3 @@ class GetBrokerInstance {
     );
   }
 }
-

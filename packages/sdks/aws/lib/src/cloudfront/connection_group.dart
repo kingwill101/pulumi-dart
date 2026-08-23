@@ -68,6 +68,21 @@ import 'connection_group_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_connectiongroup" "example" {
+///   name         = "example"
+///   enabled      = true
+///   ipv6_enabled = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +91,8 @@ import 'connection_group_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.ConnectionGroup;
 /// import com.pulumi.aws.cloudfront.ConnectionGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -116,10 +131,8 @@ import 'connection_group_timeouts.dart';
 /// ```sh
 /// $ pulumi import aws:cloudfront/connectionGroup:ConnectionGroup example CGROUP123EXAMPLE
 /// ```
-///
-/// [1]: https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-cloudfront-connectiongroup.html
 class ConnectionGroup extends pulumi.CustomResource {
-  /// ID of the associated Anycast IP List. `ipv6_enabled` must not be set to `true` in order to set this argument
+  /// ID of the associated Anycast IP List. `ipv6Enabled` must not be set to `true` in order to set this argument
   late final pulumi.Output<String?> anycastIpListId;
   /// ARN of the connection group.
   late final pulumi.Output<String> arn;
@@ -139,9 +152,9 @@ class ConnectionGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> routingEndpoint;
   /// Current status of the connection group.
   late final pulumi.Output<String> status;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ConnectionGroupTimeouts?> timeouts;
   late final pulumi.Output<bool> waitForDeployment;

@@ -137,7 +137,7 @@ import 'pipeline_state.dart';
 /// const codepipelinePolicyRolePolicy = new aws.iam.RolePolicy("codepipeline_policy", {
 ///     name: "codepipeline_policy",
 ///     role: codepipelineRole.id,
-///     policy: codepipelinePolicy.apply(codepipelinePolicy => codepipelinePolicy.json),
+///     policy: codepipelinePolicy.json,
 /// });
 /// ```
 /// ```python
@@ -632,7 +632,7 @@ import 'pipeline_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketPublicAccessBlock(ctx, "codepipeline_bucket_pab", &s3.BucketPublicAccessBlockArgs{
-/// 			Bucket:                codepipelineBucket.ID(),
+/// 			Bucket:                codepipelineBucket.ID().ToIDOutput().ToStringOutput(),
 /// 			BlockPublicAcls:       pulumi.Bool(true),
 /// 			BlockPublicPolicy:     pulumi.Bool(true),
 /// 			IgnorePublicAcls:      pulumi.Bool(true),
@@ -681,17 +681,140 @@ import 'pipeline_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "codepipeline_policy", &iam.RolePolicyArgs{
-/// 			Name: pulumi.String("codepipeline_policy"),
-/// 			Role: codepipelineRole.ID(),
-/// 			Policy: pulumi.String(codepipelinePolicy.ApplyT(func(codepipelinePolicy iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &codepipelinePolicy.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:   pulumi.String("codepipeline_policy"),
+/// 			Role:   codepipelineRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: codepipelinePolicy.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["codepipeline.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "codepipelinePolicy" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["s3:GetObject", "s3:GetObjectVersion", "s3:GetBucketVersioning", "s3:PutObjectAcl", "s3:PutObject"]
+///     resources = [aws_s3_bucket.codepipeline_bucket.arn, "${aws_s3_bucket.codepipeline_bucket.arn}/*"]
+///   }
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["codestar-connections:UseConnection"]
+///     resources = [aws_codestarconnections_connection.example.arn]
+///   }
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["codebuild:BatchGetBuilds", "codebuild:StartBuild"]
+///     resources = ["*"]
+///   }
+/// }
+/// data "aws_kms_getalias" "s3kmskey" {
+///   name = "alias/myKmsKey"
+/// }
+///
+/// resource "aws_codepipeline_pipeline" "codepipeline" {
+///   name     = "tf-test-pipeline"
+///   role_arn = aws_iam_role.codepipeline_role.arn
+///   artifact_stores {
+///     location = aws_s3_bucket.codepipeline_bucket.bucket
+///     type     = "S3"
+///     encryption_key = {
+///       id   = data.aws_kms_getalias.s3kmskey.arn
+///       type = "KMS"
+///     }
+///   }
+///   stages {
+///     name = "Source"
+///     actions {
+///       name             = "Source"
+///       category         = "Source"
+///       owner            = "AWS"
+///       provider         = "CodeStarSourceConnection"
+///       version          = "1"
+///       output_artifacts = ["source_output"]
+///       configuration = {
+///         "ConnectionArn"    = aws_codestarconnections_connection.example.arn
+///         "FullRepositoryId" = "my-organization/example"
+///         "BranchName"       = "main"
+///       }
+///     }
+///   }
+///   stages {
+///     name = "Build"
+///     actions {
+///       name             = "Build"
+///       category         = "Build"
+///       owner            = "AWS"
+///       provider         = "CodeBuild"
+///       input_artifacts  = ["source_output"]
+///       output_artifacts = ["build_output"]
+///       version          = "1"
+///       configuration = {
+///         "ProjectName" = "test"
+///       }
+///     }
+///   }
+///   stages {
+///     name = "Deploy"
+///     actions {
+///       name            = "Deploy"
+///       category        = "Deploy"
+///       owner           = "AWS"
+///       provider        = "CloudFormation"
+///       input_artifacts = ["build_output"]
+///       version         = "1"
+///       configuration = {
+///         "ActionMode"     = "REPLACE_ON_FAILURE"
+///         "Capabilities"   = "CAPABILITY_AUTO_EXPAND,CAPABILITY_IAM"
+///         "OutputFileName" = "CreateStackOutput.json"
+///         "StackName"      = "MyStack"
+///         "TemplatePath"   = "build_output::sam-templated.yaml"
+///       }
+///     }
+///   }
+/// }
+/// resource "aws_codestarconnections_connection" "example" {
+///   name          = "example-connection"
+///   provider_type = "GitHub"
+/// }
+/// resource "aws_s3_bucket" "codepipeline_bucket" {
+///   bucket = "test-bucket"
+/// }
+/// resource "aws_s3_bucketpublicaccessblock" "codepipeline_bucket_pab" {
+///   bucket                  = aws_s3_bucket.codepipeline_bucket.id
+///   block_public_acls       = true
+///   block_public_policy     = true
+///   ignore_public_acls      = true
+///   restrict_public_buckets = true
+/// }
+/// resource "aws_iam_role" "codepipeline_role" {
+///   name               = "test-role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicy" "codepipeline_policy" {
+///   name   = "codepipeline_policy"
+///   role   = aws_iam_role.codepipeline_role.id
+///   policy = data.aws_iam_getpolicydocument.codepipelinePolicy.json
 /// }
 /// ```
 /// ```java
@@ -706,6 +829,8 @@ import 'pipeline_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.kms.KmsFunctions;
@@ -715,12 +840,13 @@ import 'pipeline_state.dart';
 /// import com.pulumi.aws.codepipeline.inputs.PipelineArtifactStoreArgs;
 /// import com.pulumi.aws.codepipeline.inputs.PipelineArtifactStoreEncryptionKeyArgs;
 /// import com.pulumi.aws.codepipeline.inputs.PipelineStageArgs;
+/// import com.pulumi.aws.codepipeline.inputs.PipelineStageActionArgs;
 /// import com.pulumi.aws.s3.BucketPublicAccessBlock;
 /// import com.pulumi.aws.s3.BucketPublicAccessBlockArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
 /// import com.pulumi.aws.iam.RolePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1003,6 +1129,18 @@ import 'pipeline_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` - (String) Name of the pipeline.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import CodePipelines using the `name`. For example:
 ///
 /// ```sh
@@ -1011,7 +1149,7 @@ import 'pipeline_state.dart';
 class Pipeline extends pulumi.CustomResource {
   /// Codepipeline ARN.
   late final pulumi.Output<String> arn;
-  /// One or more artifact_store blocks. Artifact stores are documented below.
+  /// One or more artifactStore blocks. Artifact stores are documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> artifactStores;
   /// The method that the pipeline will use to handle multiple executions. The default mode is `SUPERSEDED`. For value values, refer to the [AWS documentation](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PipelineDeclaration.html#CodePipeline-Type-PipelineDeclaration-executionMode).
   late final pulumi.Output<String?> executionMode;
@@ -1025,15 +1163,15 @@ class Pipeline extends pulumi.CustomResource {
   late final pulumi.Output<String> roleArn;
   /// A stage block. Stages are documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> stages;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// A list of all triggers present on the pipeline, including default triggers added by AWS for `V2` pipelines which omit an explicit `trigger` definition.
   late final pulumi.Output<List<Map<String, dynamic>>> triggerAlls;
-  /// A trigger block. Valid only when `pipeline_type` is `V2`. Triggers are documented below.
+  /// A trigger block. Valid only when `pipelineType` is `V2`. Triggers are documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> triggers;
-  /// A pipeline-level variable block. Valid only when `pipeline_type` is `V2`. Variable are documented below.
+  /// A pipeline-level variable block. Valid only when `pipelineType` is `V2`. Variable are documented below.
   ///
   /// **Note:** `QUEUED` or `PARALLEL` mode can only be used with V2 pipelines.
   late final pulumi.Output<List<Map<String, dynamic>>?> variables;

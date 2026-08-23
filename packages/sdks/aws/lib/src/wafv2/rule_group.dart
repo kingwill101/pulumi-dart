@@ -92,7 +92,7 @@ import 'rule_group_visibility_config.dart';
 ///         Name = "example-rule",
 ///         Scope = "REGIONAL",
 ///         Capacity = 2,
-///         Rules = new[]
+///         Rules =
 ///         {
 ///             new Aws.WafV2.Inputs.RuleGroupRuleArgs
 ///             {
@@ -180,6 +180,43 @@ import 'rule_group_visibility_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_wafv2_rulegroup" "example" {
+///   name     = "example-rule"
+///   scope    = "REGIONAL"
+///   capacity = 2
+///   rules {
+///     name     = "rule-1"
+///     priority = 1
+///     action = {
+///       allow = {}
+///     }
+///     statement = {
+///       geo_match_statement = {
+///         country_codes = ["US", "NL"]
+///       }
+///     }
+///     visibility_config = {
+///       cloudwatch_metrics_enabled = false
+///       metric_name                = "friendly-rule-metric-name"
+///       sampled_requests_enabled   = false
+///     }
+///   }
+///   visibility_config = {
+///     cloudwatch_metrics_enabled = false
+///     metric_name                = "friendly-metric-name"
+///     sampled_requests_enabled   = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +232,8 @@ import 'rule_group_visibility_config.dart';
 /// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementGeoMatchStatementArgs;
 /// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleVisibilityConfigArgs;
 /// import com.pulumi.aws.wafv2.inputs.RuleGroupVisibilityConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -754,7 +791,7 @@ import 'rule_group_visibility_config.dart';
 ///         Description = "An rule group containing all statements",
 ///         Scope = "REGIONAL",
 ///         Capacity = 500,
-///         Rules = new[]
+///         Rules =
 ///         {
 ///             new Aws.WafV2.Inputs.RuleGroupRuleArgs
 ///             {
@@ -768,13 +805,13 @@ import 'rule_group_visibility_config.dart';
 ///                 {
 ///                     NotStatement = new Aws.WafV2.Inputs.RuleGroupRuleStatementNotStatementArgs
 ///                     {
-///                         Statements = new[]
+///                         Statements =
 ///                         {
 ///                             new Aws.WafV2.Inputs.RuleGroupRuleStatementArgs
 ///                             {
 ///                                 AndStatement = new Aws.WafV2.Inputs.RuleGroupRuleStatementAndStatementArgs
 ///                                 {
-///                                     Statements = new[]
+///                                     Statements =
 ///                                     {
 ///                                         new Aws.WafV2.Inputs.RuleGroupRuleStatementArgs
 ///                                         {
@@ -836,7 +873,7 @@ import 'rule_group_visibility_config.dart';
 ///                 {
 ///                     OrStatement = new Aws.WafV2.Inputs.RuleGroupRuleStatementOrStatementArgs
 ///                     {
-///                         Statements = new[]
+///                         Statements =
 ///                         {
 ///                             new Aws.WafV2.Inputs.RuleGroupRuleStatementArgs
 ///                             {
@@ -973,7 +1010,7 @@ import 'rule_group_visibility_config.dart';
 ///                 {
 ///                     OrStatement = new Aws.WafV2.Inputs.RuleGroupRuleStatementOrStatementArgs
 ///                     {
-///                         Statements = new[]
+///                         Statements =
 ///                         {
 ///                             new Aws.WafV2.Inputs.RuleGroupRuleStatementArgs
 ///                             {
@@ -1280,10 +1317,10 @@ import 'rule_group_visibility_config.dart';
 /// 				MetricName:               pulumi.String("friendly-metric-name"),
 /// 				SampledRequestsEnabled:   pulumi.Bool(false),
 /// 			},
-/// 			CaptchaConfig: []map[string]interface{}{
-/// 				map[string]interface{}{
-/// 					"immunityTimeProperty": []map[string]interface{}{
-/// 						map[string]interface{}{
+/// 			CaptchaConfig: []map[string][]map[string]int{
+/// 				{
+/// 					"immunityTimeProperty": []map[string]int{
+/// 						{
 /// 							"immunityTime": 120,
 /// 						},
 /// 					},
@@ -1299,6 +1336,211 @@ import 'rule_group_visibility_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_wafv2_ipset" "test" {
+///   name               = "test"
+///   scope              = "REGIONAL"
+///   ip_address_version = "IPV4"
+///   addresses          = ["1.1.1.1/32", "2.2.2.2/32"]
+/// }
+/// resource "aws_wafv2_regexpatternset" "test" {
+///   name  = "test"
+///   scope = "REGIONAL"
+///   regular_expressions {
+///     regex_string = "one"
+///   }
+/// }
+/// resource "aws_wafv2_rulegroup" "example" {
+///   name        = "complex-example"
+///   description = "An rule group containing all statements"
+///   scope       = "REGIONAL"
+///   capacity    = 500
+///   rules {
+///     name     = "rule-1"
+///     priority = 1
+///     action = {
+///       block = {}
+///     }
+///     statement = {
+///       not_statement = {
+///         statements = [{
+///           "andStatement" = {
+///             "statements" = [{
+///               "geoMatchStatement" = {
+///                 "countryCodes" = ["US"]
+///               }
+///               }, {
+///               "byteMatchStatement" = {
+///                 "positionalConstraint" = "CONTAINS"
+///                 "searchString"         = "word"
+///                 "fieldToMatch" = {
+///                   "allQueryArguments" = {}
+///                 }
+///                 "textTransformations" = [{
+///                   "priority" = 5
+///                   "type"     = "CMD_LINE"
+///                   }, {
+///                   "priority" = 2
+///                   "type"     = "LOWERCASE"
+///                 }]
+///               }
+///             }]
+///           }
+///         }]
+///       }
+///     }
+///     visibility_config = {
+///       cloudwatch_metrics_enabled = false
+///       metric_name                = "rule-1"
+///       sampled_requests_enabled   = false
+///     }
+///   }
+///   rules {
+///     name     = "rule-2"
+///     priority = 2
+///     action = {
+///       count = {}
+///     }
+///     statement = {
+///       or_statement = {
+///         statements = [{
+///           "regexMatchStatement" = {
+///             "regexString" = "a-z?"
+///             "fieldToMatch" = {
+///               "singleHeader" = {
+///                 "name" = "user-agent"
+///               }
+///             }
+///             "textTransformations" = [{
+///               "priority" = 6
+///               "type"     = "NONE"
+///             }]
+///           }
+///           }, {
+///           "sqliMatchStatement" = {
+///             "fieldToMatch" = {
+///               "body" = {}
+///             }
+///             "textTransformations" = [{
+///               "priority" = 5
+///               "type"     = "URL_DECODE"
+///               }, {
+///               "priority" = 4
+///               "type"     = "HTML_ENTITY_DECODE"
+///               }, {
+///               "priority" = 3
+///               "type"     = "COMPRESS_WHITE_SPACE"
+///             }]
+///           }
+///           }, {
+///           "xssMatchStatement" = {
+///             "fieldToMatch" = {
+///               "method" = {}
+///             }
+///             "textTransformations" = [{
+///               "priority" = 2
+///               "type"     = "NONE"
+///             }]
+///           }
+///         }]
+///       }
+///     }
+///     visibility_config = {
+///       cloudwatch_metrics_enabled = false
+///       metric_name                = "rule-2"
+///       sampled_requests_enabled   = false
+///     }
+///     captcha_config = {
+///       immunity_time_property = {
+///         immunity_time = 240
+///       }
+///     }
+///   }
+///   rules {
+///     name     = "rule-3"
+///     priority = 3
+///     action = {
+///       block = {}
+///     }
+///     statement = {
+///       size_constraint_statement = {
+///         comparison_operator = "GT"
+///         size                = 100
+///         field_to_match = {
+///           single_query_argument = {
+///             name = "username"
+///           }
+///         }
+///         text_transformations = [{
+///           "priority" = 5
+///           "type"     = "NONE"
+///         }]
+///       }
+///     }
+///     visibility_config = {
+///       cloudwatch_metrics_enabled = false
+///       metric_name                = "rule-3"
+///       sampled_requests_enabled   = false
+///     }
+///   }
+///   rules {
+///     name     = "rule-4"
+///     priority = 4
+///     action = {
+///       block = {}
+///     }
+///     statement = {
+///       or_statement = {
+///         statements = [{
+///           "ipSetReferenceStatement" = {
+///             "arn" = aws_wafv2_ipset.test.arn
+///           }
+///           }, {
+///           "regexPatternSetReferenceStatement" = {
+///             "arn" = aws_wafv2_regexpatternset.test.arn
+///             "fieldToMatch" = {
+///               "singleHeader" = {
+///                 "name" = "referer"
+///               }
+///             }
+///             "textTransformations" = [{
+///               "priority" = 2
+///               "type"     = "NONE"
+///             }]
+///           }
+///         }]
+///       }
+///     }
+///     visibility_config = {
+///       cloudwatch_metrics_enabled = false
+///       metric_name                = "rule-4"
+///       sampled_requests_enabled   = false
+///     }
+///   }
+///   visibility_config = {
+///     cloudwatch_metrics_enabled = false
+///     metric_name                = "friendly-metric-name"
+///     sampled_requests_enabled   = false
+///   }
+///   captcha_config = [{
+///     "immunityTimeProperty" = [{
+///       "immunityTime" = 120
+///     }]
+///   }]
+///   tags = {
+///     "Name" = "example-and-statement"
+///     "Code" = "123456"
+///   }
 /// }
 /// ```
 /// ```java
@@ -1319,17 +1561,41 @@ import 'rule_group_visibility_config.dart';
 /// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleActionBlockArgs;
 /// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementArgs;
 /// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementNotStatementArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementAndStatementArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementGeoMatchStatementArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementByteMatchStatementArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementByteMatchStatementFieldToMatchArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementByteMatchStatementFieldToMatchAllQueryArgumentsArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementByteMatchStatementTextTransformationArgs;
 /// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleVisibilityConfigArgs;
 /// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleActionCountArgs;
 /// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementOrStatementArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementRegexMatchStatementArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementRegexMatchStatementFieldToMatchArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementRegexMatchStatementFieldToMatchSingleHeaderArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementRegexMatchStatementTextTransformationArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementSqliMatchStatementArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementSqliMatchStatementFieldToMatchArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementSqliMatchStatementFieldToMatchBodyArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementSqliMatchStatementTextTransformationArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementXssMatchStatementArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementXssMatchStatementFieldToMatchArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementXssMatchStatementFieldToMatchMethodArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementXssMatchStatementTextTransformationArgs;
 /// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleCaptchaConfigArgs;
 /// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleCaptchaConfigImmunityTimePropertyArgs;
 /// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementSizeConstraintStatementArgs;
 /// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementSizeConstraintStatementFieldToMatchArgs;
 /// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementSizeConstraintStatementFieldToMatchSingleQueryArgumentArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementSizeConstraintStatementTextTransformationArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementIpSetReferenceStatementArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementRegexPatternSetReferenceStatementArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeaderArgs;
+/// import com.pulumi.aws.wafv2.inputs.RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformationArgs;
 /// import com.pulumi.aws.wafv2.inputs.RuleGroupVisibilityConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1371,31 +1637,37 @@ import 'rule_group_visibility_config.dart';
 ///                         .block(RuleGroupRuleActionBlockArgs.builder()
 ///                             .build())
 ///                         .build())
-///                     .statement(Map.of("notStatement", Map.of("statements", Map.of("andStatement", Map.of("statements",
-///                         RuleGroupRuleStatementArgs.builder()
-///                             .geoMatchStatement(RuleGroupRuleStatementGeoMatchStatementArgs.builder()
-///                                 .countryCodes("US")
-///                                 .build())
-///                             .build(),
-///                         RuleGroupRuleStatementArgs.builder()
-///                             .byteMatchStatement(RuleGroupRuleStatementByteMatchStatementArgs.builder()
-///                                 .positionalConstraint("CONTAINS")
-///                                 .searchString("word")
-///                                 .fieldToMatch(RuleGroupRuleStatementByteMatchStatementFieldToMatchArgs.builder()
-///                                     .allQueryArguments(RuleGroupRuleStatementByteMatchStatementFieldToMatchAllQueryArgumentsArgs.builder()
-///                                         .build())
-///                                     .build())
-///                                 .textTransformations(
-///                                     RuleGroupRuleStatementByteMatchStatementTextTransformationArgs.builder()
-///                                         .priority(5)
-///                                         .type("CMD_LINE")
+///                     .statement(RuleGroupRuleStatementArgs.builder()
+///                         .notStatement(Map.of("statements", Arrays.asList(RuleGroupRuleStatementArgs.builder()
+///                             .andStatement(RuleGroupRuleStatementAndStatementArgs.builder()
+///                                 .statements(
+///                                     RuleGroupRuleStatementArgs.builder()
+///                                         .geoMatchStatement(RuleGroupRuleStatementGeoMatchStatementArgs.builder()
+///                                             .countryCodes("US")
+///                                             .build())
 ///                                         .build(),
-///                                     RuleGroupRuleStatementByteMatchStatementTextTransformationArgs.builder()
-///                                         .priority(2)
-///                                         .type("LOWERCASE")
+///                                     RuleGroupRuleStatementArgs.builder()
+///                                         .byteMatchStatement(RuleGroupRuleStatementByteMatchStatementArgs.builder()
+///                                             .positionalConstraint("CONTAINS")
+///                                             .searchString("word")
+///                                             .fieldToMatch(RuleGroupRuleStatementByteMatchStatementFieldToMatchArgs.builder()
+///                                                 .allQueryArguments(RuleGroupRuleStatementByteMatchStatementFieldToMatchAllQueryArgumentsArgs.builder()
+///                                                     .build())
+///                                                 .build())
+///                                             .textTransformations(
+///                                                 RuleGroupRuleStatementByteMatchStatementTextTransformationArgs.builder()
+///                                                     .priority(5)
+///                                                     .type("CMD_LINE")
+///                                                     .build(),
+///                                                 RuleGroupRuleStatementByteMatchStatementTextTransformationArgs.builder()
+///                                                     .priority(2)
+///                                                     .type("LOWERCASE")
+///                                                     .build())
+///                                             .build())
 ///                                         .build())
 ///                                 .build())
-///                             .build())))))
+///                             .build())))
+///                         .build())
 ///                     .visibilityConfig(RuleGroupRuleVisibilityConfigArgs.builder()
 ///                         .cloudwatchMetricsEnabled(false)
 ///                         .metricName("rule-1")
@@ -1409,56 +1681,54 @@ import 'rule_group_visibility_config.dart';
 ///                         .count(RuleGroupRuleActionCountArgs.builder()
 ///                             .build())
 ///                         .build())
-///                     .statement(Map.of("orStatement", RuleGroupRuleStatementOrStatementArgs.builder()
-///                         .statements(
-///                             RuleGroupRuleStatementArgs.builder()
-///                                 .regexMatchStatement(RuleGroupRuleStatementRegexMatchStatementArgs.builder()
-///                                     .regexString("a-z?")
-///                                     .fieldToMatch(RuleGroupRuleStatementRegexMatchStatementFieldToMatchArgs.builder()
-///                                         .singleHeader(RuleGroupRuleStatementRegexMatchStatementFieldToMatchSingleHeaderArgs.builder()
-///                                             .name("user-agent")
-///                                             .build())
-///                                         .build())
-///                                     .textTransformations(RuleGroupRuleStatementRegexMatchStatementTextTransformationArgs.builder()
-///                                         .priority(6)
-///                                         .type("NONE")
+///                     .statement(Map.of("orStatement", Map.of("statements", Arrays.asList(
+///                         RuleGroupRuleStatementArgs.builder()
+///                             .regexMatchStatement(RuleGroupRuleStatementRegexMatchStatementArgs.builder()
+///                                 .regexString("a-z?")
+///                                 .fieldToMatch(RuleGroupRuleStatementRegexMatchStatementFieldToMatchArgs.builder()
+///                                     .singleHeader(RuleGroupRuleStatementRegexMatchStatementFieldToMatchSingleHeaderArgs.builder()
+///                                         .name("user-agent")
 ///                                         .build())
 ///                                     .build())
-///                                 .build(),
-///                             RuleGroupRuleStatementArgs.builder()
-///                                 .sqliMatchStatement(RuleGroupRuleStatementSqliMatchStatementArgs.builder()
-///                                     .fieldToMatch(RuleGroupRuleStatementSqliMatchStatementFieldToMatchArgs.builder()
-///                                         .body(RuleGroupRuleStatementSqliMatchStatementFieldToMatchBodyArgs.builder()
-///                                             .build())
-///                                         .build())
-///                                     .textTransformations(
-///                                         RuleGroupRuleStatementSqliMatchStatementTextTransformationArgs.builder()
-///                                             .priority(5)
-///                                             .type("URL_DECODE")
-///                                             .build(),
-///                                         RuleGroupRuleStatementSqliMatchStatementTextTransformationArgs.builder()
-///                                             .priority(4)
-///                                             .type("HTML_ENTITY_DECODE")
-///                                             .build(),
-///                                         RuleGroupRuleStatementSqliMatchStatementTextTransformationArgs.builder()
-///                                             .priority(3)
-///                                             .type("COMPRESS_WHITE_SPACE")
-///                                             .build())
-///                                     .build())
-///                                 .build(),
-///                             RuleGroupRuleStatementArgs.builder()
-///                                 .xssMatchStatement(RuleGroupRuleStatementXssMatchStatementArgs.builder()
-///                                     .fieldToMatch(RuleGroupRuleStatementXssMatchStatementFieldToMatchArgs.builder()
-///                                         .method(RuleGroupRuleStatementXssMatchStatementFieldToMatchMethodArgs.builder()
-///                                             .build())
-///                                         .build())
-///                                     .textTransformations(RuleGroupRuleStatementXssMatchStatementTextTransformationArgs.builder()
-///                                         .priority(2)
-///                                         .type("NONE")
-///                                         .build())
+///                                 .textTransformations(RuleGroupRuleStatementRegexMatchStatementTextTransformationArgs.builder()
+///                                     .priority(6)
+///                                     .type("NONE")
 ///                                     .build())
 ///                                 .build())
-///                         .build()))
+///                             .build(),
+///                         RuleGroupRuleStatementArgs.builder()
+///                             .sqliMatchStatement(RuleGroupRuleStatementSqliMatchStatementArgs.builder()
+///                                 .fieldToMatch(RuleGroupRuleStatementSqliMatchStatementFieldToMatchArgs.builder()
+///                                     .body(RuleGroupRuleStatementSqliMatchStatementFieldToMatchBodyArgs.builder()
+///                                         .build())
+///                                     .build())
+///                                 .textTransformations(
+///                                     RuleGroupRuleStatementSqliMatchStatementTextTransformationArgs.builder()
+///                                         .priority(5)
+///                                         .type("URL_DECODE")
+///                                         .build(),
+///                                     RuleGroupRuleStatementSqliMatchStatementTextTransformationArgs.builder()
+///                                         .priority(4)
+///                                         .type("HTML_ENTITY_DECODE")
+///                                         .build(),
+///                                     RuleGroupRuleStatementSqliMatchStatementTextTransformationArgs.builder()
+///                                         .priority(3)
+///                                         .type("COMPRESS_WHITE_SPACE")
+///                                         .build())
+///                                 .build())
+///                             .build(),
+///                         RuleGroupRuleStatementArgs.builder()
+///                             .xssMatchStatement(RuleGroupRuleStatementXssMatchStatementArgs.builder()
+///                                 .fieldToMatch(RuleGroupRuleStatementXssMatchStatementFieldToMatchArgs.builder()
+///                                     .method(RuleGroupRuleStatementXssMatchStatementFieldToMatchMethodArgs.builder()
+///                                         .build())
+///                                     .build())
+///                                 .textTransformations(RuleGroupRuleStatementXssMatchStatementTextTransformationArgs.builder()
+///                                     .priority(2)
+///                                     .type("NONE")
+///                                     .build())
+///                                 .build())
+///                             .build()))))
 ///                     .visibilityConfig(RuleGroupRuleVisibilityConfigArgs.builder()
 ///                         .cloudwatchMetricsEnabled(false)
 ///                         .metricName("rule-2")
@@ -1505,8 +1775,8 @@ import 'rule_group_visibility_config.dart';
 ///                         .block(RuleGroupRuleActionBlockArgs.builder()
 ///                             .build())
 ///                         .build())
-///                     .statement(Map.of("orStatement", RuleGroupRuleStatementOrStatementArgs.builder()
-///                         .statements(
+///                     .statement(RuleGroupRuleStatementArgs.builder()
+///                         .orStatement(Map.of("statements", Arrays.asList(
 ///                             RuleGroupRuleStatementArgs.builder()
 ///                                 .ipSetReferenceStatement(RuleGroupRuleStatementIpSetReferenceStatementArgs.builder()
 ///                                     .arn(test.arn())
@@ -1525,8 +1795,8 @@ import 'rule_group_visibility_config.dart';
 ///                                         .type("NONE")
 ///                                         .build())
 ///                                     .build())
-///                                 .build())
-///                         .build()))
+///                                 .build())))
+///                         .build())
 ///                     .visibilityConfig(RuleGroupRuleVisibilityConfigArgs.builder()
 ///                         .cloudwatchMetricsEnabled(false)
 ///                         .metricName("rule-4")
@@ -1538,7 +1808,7 @@ import 'rule_group_visibility_config.dart';
 ///                 .metricName("friendly-metric-name")
 ///                 .sampledRequestsEnabled(false)
 ///                 .build())
-///             .captchaConfig(List.of(Map.of("immunityTimeProperty", List.of(Map.of("immunityTime", 120)))))
+///             .captchaConfig(Arrays.asList(Map.of("immunityTimeProperty", Arrays.asList(Map.of("immunityTime", 120)))))
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Name", "example-and-statement"),
 ///                 Map.entry("Code", "123456")
@@ -1691,7 +1961,7 @@ import 'rule_group_visibility_config.dart';
 /// ```
 ///
 ///
-/// ### Using rules_json
+/// ### Using rulesJson
 ///
 ///
 /// ```typescript
@@ -1856,13 +2126,13 @@ import 'rule_group_visibility_config.dart';
 /// 			map[string]interface{}{
 /// 				"Name":     "rule-1",
 /// 				"Priority": 1,
-/// 				"Action": map[string]interface{}{
+/// 				"Action": map[string]map[string]interface{}{
 /// 					"Count": map[string]interface{}{},
 /// 				},
-/// 				"Statement": map[string]interface{}{
+/// 				"Statement": map[string]map[string]interface{}{
 /// 					"ByteMatchStatement": map[string]interface{}{
 /// 						"SearchString": "badbot",
-/// 						"FieldToMatch": map[string]interface{}{
+/// 						"FieldToMatch": map[string]map[string]interface{}{
 /// 							"UriPath": map[string]interface{}{},
 /// 						},
 /// 						"TextTransformations": []map[string]interface{}{
@@ -1903,6 +2173,51 @@ import 'rule_group_visibility_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_wafv2_rulegroup" "example" {
+///   name     = "example-rule-group"
+///   scope    = "REGIONAL"
+///   capacity = 100
+///   rules_json = jsonencode([{
+///     "Name"     = "rule-1"
+///     "Priority" = 1
+///     "Action" = {
+///       "Count" = {}
+///     }
+///     "Statement" = {
+///       "ByteMatchStatement" = {
+///         "SearchString" = "badbot"
+///         "FieldToMatch" = {
+///           "UriPath" = {}
+///         }
+///         "TextTransformations" = [{
+///           "Priority" = 1
+///           "Type"     = "NONE"
+///         }]
+///         "PositionalConstraint" = "CONTAINS"
+///       }
+///     }
+///     "VisibilityConfig" = {
+///       "CloudwatchMetricsEnabled" = false
+///       "MetricName"               = "friendly-rule-metric-name"
+///       "SampledRequestsEnabled"   = false
+///     }
+///   }])
+///   visibility_config = {
+///     cloudwatch_metrics_enabled = false
+///     metric_name                = "friendly-metric-name"
+///     sampled_requests_enabled   = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1913,8 +2228,8 @@ import 'rule_group_visibility_config.dart';
 /// import com.pulumi.aws.wafv2.RuleGroupArgs;
 /// import com.pulumi.aws.wafv2.inputs.RuleGroupVisibilityConfigArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2016,7 +2331,7 @@ class RuleGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The web ACL capacity units (WCUs) required for this rule group. See [here](https://docs.aws.amazon.com/waf/latest/APIReference/API_CreateRuleGroup.html#API_CreateRuleGroup_RequestSyntax) for general information and [here](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statements-list.html) for capacity specific information.
   late final pulumi.Output<int> capacity;
-  /// Defines custom response bodies that can be referenced by `custom_response` actions. See Custom Response Body below for details.
+  /// Defines custom response bodies that can be referenced by `customResponse` actions. See Custom Response Body below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> customResponseBodies;
   /// A friendly description of the rule group.
   late final pulumi.Output<String?> description;
@@ -2029,13 +2344,13 @@ class RuleGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The rule blocks used to identify the web requests that you want to `allow`, `block`, or `count`. See Rules below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
-  /// Raw JSON string to allow more than three nested statements. Conflicts with `rule` attribute. This is for advanced use cases where more than 3 levels of nested statements are required. **There is no drift detection at this time**. If you use this attribute instead of `rule`, you will be foregoing drift detection. Additionally, importing an existing rule group into a configuration with `rules_json` set will result in a one time in-place update as the remote rule configuration is initially written to the `rule` attribute. See the AWS [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_CreateRuleGroup.html) for the JSON structure.
+  /// Raw JSON string to allow more than three nested statements. Conflicts with `rule` attribute. This is for advanced use cases where more than 3 levels of nested statements are required. **There is no drift detection at this time**. If you use this attribute instead of `rule`, you will be foregoing drift detection. Additionally, importing an existing rule group into a configuration with `rulesJson` set will result in a one time in-place update as the remote rule configuration is initially written to the `rule` attribute. See the AWS [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_CreateRuleGroup.html) for the JSON structure.
   late final pulumi.Output<String?> rulesJson;
   /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
   late final pulumi.Output<String> scope;
-  /// An array of key:value pairs to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// An array of key:value pairs to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
   late final pulumi.Output<RuleGroupVisibilityConfig> visibilityConfig;

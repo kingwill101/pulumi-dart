@@ -7,7 +7,7 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 /// Creates an Amazon CloudFront VPC origin.
 ///
 /// For information about CloudFront VPC origins, see
-/// [Amazon CloudFront Developer Guide - Restrict access with VPC origins][1].
+/// [Amazon CloudFront Developer Guide - Restrict access with VPC origins](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-vpc-origins.html).
 ///
 /// ## Example Usage
 ///
@@ -110,6 +110,29 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_vpcorigin" "alb" {
+///   vpc_origin_endpoint_config = {
+///     name                   = "example-vpc-origin"
+///     arn                    = this.arn
+///     http_port              = 8080
+///     https_port             = 8443
+///     origin_protocol_policy = "https-only"
+///     origin_ssl_protocols = {
+///       items    = ["TLSv1.2"]
+///       quantity = 1
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -120,8 +143,8 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 /// import com.pulumi.aws.cloudfront.VpcOriginArgs;
 /// import com.pulumi.aws.cloudfront.inputs.VpcOriginVpcOriginEndpointConfigArgs;
 /// import com.pulumi.aws.cloudfront.inputs.VpcOriginVpcOriginEndpointConfigOriginSslProtocolsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -180,9 +203,9 @@ class VpcOrigin extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The current version of the origin.
   late final pulumi.Output<String> etag;
-  /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<VpcOriginTimeouts?> timeouts;
   /// The VPC origin endpoint configuration.

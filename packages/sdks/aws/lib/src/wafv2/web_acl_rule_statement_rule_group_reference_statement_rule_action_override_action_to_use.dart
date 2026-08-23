@@ -8,18 +8,21 @@ import 'web_acl_rule_statement_rule_group_reference_statement_rule_action_overri
 import 'web_acl_rule_statement_rule_group_reference_statement_rule_action_override_action_to_use_count.dart';
 
 class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUse {
+  /// Allow the request. See Allow below.
   final pulumi.Input<WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseAllow>? allow;
+  /// Block the request. See Block below.
   final pulumi.Input<WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseBlock>? block;
-  /// Instructs AWS WAF to run a Captcha check against the web request. See `captcha` below for details.
+  /// Present a CAPTCHA challenge. See Captcha below.
   final pulumi.Input<WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptcha>? captcha;
+  /// Present a silent challenge. See Challenge below.
   final pulumi.Input<WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseChallenge>? challenge;
   final pulumi.Input<WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount>? count;
 
   /// Creates a new [WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUse].
-  /// [allow] Optional.
-  /// [block] Optional.
-  /// [captcha] Instructs AWS WAF to run a Captcha check against the web request. See `captcha` below for details.
-  /// [challenge] Optional.
+  /// [allow] Allow the request. See Allow below.
+  /// [block] Block the request. See Block below.
+  /// [captcha] Present a CAPTCHA challenge. See Captcha below.
+  /// [challenge] Present a silent challenge. See Challenge below.
   /// [count] Optional.
   const WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUse({
     this.allow,
@@ -49,4 +52,3 @@ class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUs
     );
   }
 }
-

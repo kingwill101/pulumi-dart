@@ -58,6 +58,19 @@ import 'configuration_set_tracking_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ses_configurationset" "test" {
+///   name = "some-configuration-set-test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +79,8 @@ import 'configuration_set_tracking_options.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ses.ConfigurationSet;
 /// import com.pulumi.aws.ses.ConfigurationSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -161,6 +174,22 @@ import 'configuration_set_tracking_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ses_configurationset" "test" {
+///   name = "some-configuration-set-test"
+///   delivery_options = {
+///     tls_policy = "Require"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -170,8 +199,8 @@ import 'configuration_set_tracking_options.dart';
 /// import com.pulumi.aws.ses.ConfigurationSet;
 /// import com.pulumi.aws.ses.ConfigurationSetArgs;
 /// import com.pulumi.aws.ses.inputs.ConfigurationSetDeliveryOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -270,6 +299,22 @@ import 'configuration_set_tracking_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ses_configurationset" "test" {
+///   name = "some-configuration-set-test"
+///   tracking_options = {
+///     custom_redirect_domain = "sub.example.com"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -279,8 +324,8 @@ import 'configuration_set_tracking_options.dart';
 /// import com.pulumi.aws.ses.ConfigurationSet;
 /// import com.pulumi.aws.ses.ConfigurationSetArgs;
 /// import com.pulumi.aws.ses.inputs.ConfigurationSetTrackingOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -17,7 +17,7 @@ class ClusterArgs {
   final pulumi.Input<String>? aquaConfigurationStatus;
   /// The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with create-cluster-snapshot. Default is 1.
   final pulumi.Input<int>? automatedSnapshotRetentionPeriod;
-  /// The EC2 Availability Zone (AZ) in which you want Amazon Redshift to provision the cluster. For example, if you have several EC2 instances running in a specific Availability Zone, then you might want the cluster to be provisioned in the same zone in order to decrease network latency. Can only be changed if `availability_zone_relocation_enabled` is `true`.
+  /// The EC2 Availability Zone (AZ) in which you want Amazon Redshift to provision the cluster. For example, if you have several EC2 instances running in a specific Availability Zone, then you might want the cluster to be provisioned in the same zone in order to decrease network latency. Can only be changed if `availabilityZoneRelocationEnabled` is `true`.
   final pulumi.Input<String>? availabilityZone;
   /// If true, the cluster can be relocated to another availabity zone, either automatically by AWS or when requested. Default is `false`. Available for use on clusters from the RA3 instance family.
   final pulumi.Input<bool>? availabilityZoneRelocationEnabled;
@@ -44,23 +44,23 @@ class ClusterArgs {
   final pulumi.Input<String>? encrypted;
   /// If true , enhanced VPC routing is enabled.
   final pulumi.Input<bool>? enhancedVpcRouting;
-  /// The identifier of the final snapshot that is to be created immediately before deleting the cluster. If this parameter is provided, `skip_final_snapshot` must be false.
+  /// The identifier of the final snapshot that is to be created immediately before deleting the cluster. If this parameter is provided, `skipFinalSnapshot` must be false.
   final pulumi.Input<String>? finalSnapshotIdentifier;
   /// A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
   final pulumi.Input<List<String>>? iamRoles;
-  /// The ARN for the KMS encryption key. When specifying `kms_key_id`, `encrypted` needs to be set to true.
+  /// The ARN for the KMS encryption key. When specifying `kmsKeyId`, `encrypted` needs to be set to true.
   final pulumi.Input<String>? kmsKeyId;
   /// The name of the maintenance track for the restored cluster. When you take a snapshot, the snapshot inherits the MaintenanceTrack value from the cluster. The snapshot might be on a different track than the cluster that was the source for the snapshot. For example, suppose that you take a snapshot of  a cluster that is on the current track and then change the cluster to be on the trailing track. In this case, the snapshot and the source cluster are on different tracks. Default value is `current`.
   final pulumi.Input<String>? maintenanceTrackName;
   /// Whether to use AWS SecretsManager to manage the cluster admin credentials.
-  /// Conflicts with `master_password` and `master_password_wo`.
-  /// One of `master_password` or `manage_master_password` is required unless `snapshot_identifier` is provided.
+  /// Conflicts with `masterPassword` and `masterPasswordWo`.
+  /// One of `masterPassword` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided.
   final pulumi.Input<bool>? manageMasterPassword;
   /// The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained indefinitely. This setting doesn't change the retention period of existing snapshots. Valid values are between `-1` and `3653`. Default value is `-1`.
   final pulumi.Input<int>? manualSnapshotRetentionPeriod;
   /// Password for the master DB user.
-  /// Conflicts with `manage_master_password` and `master_password_wo`.
-  /// One of `master_password`, `master_password_wo` or `manage_master_password` is required unless `snapshot_identifier` is provided.
+  /// Conflicts with `manageMasterPassword` and `masterPasswordWo`.
+  /// One of `masterPassword`, `masterPasswordWo` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided.
   /// Note that this may show up in logs, and it will be stored in the state file.
   /// Password must contain at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number.
   final pulumi.Input<String>? masterPassword;
@@ -68,12 +68,12 @@ class ClusterArgs {
   final pulumi.Input<String>? masterPasswordSecretKmsKeyId;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Password for the master DB user.
-  /// Conflicts with `manage_master_password` and `master_password`.
-  /// One of `master_password_wo`, `master_password` or `manage_master_password` is required unless `snapshot_identifier` is provided.
+  /// Conflicts with `manageMasterPassword` and `masterPassword`.
+  /// One of `masterPasswordWo`, `masterPassword` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided.
   /// Note that this may show up in logs.
   /// Password must contain at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number.
   final pulumi.Input<String>? masterPasswordWo;
-  /// Used together with `master_password_wo` to trigger an update. Increment this value when an update to the `master_password_wo` is required.
+  /// Used together with `masterPasswordWo` to trigger an update. Increment this value when an update to the `masterPasswordWo` is required.
   final pulumi.Input<int>? masterPasswordWoVersion;
   /// Username for the master DB user.
   final pulumi.Input<String>? masterUsername;
@@ -99,13 +99,13 @@ class ClusterArgs {
   final pulumi.Input<String>? region;
   /// Determines whether a final snapshot of the cluster is created before Amazon Redshift deletes the cluster. If true , a final cluster snapshot is not created. If false , a final cluster snapshot is created before the cluster is deleted. Default is false.
   final pulumi.Input<bool>? skipFinalSnapshot;
-  /// The ARN of the snapshot from which to create the new cluster. Conflicts with `snapshot_identifier`.
+  /// The ARN of the snapshot from which to create the new cluster. Conflicts with `snapshotIdentifier`.
   final pulumi.Input<String>? snapshotArn;
   /// The name of the cluster the source snapshot was created from.
   final pulumi.Input<String>? snapshotClusterIdentifier;
-  /// The name of the snapshot from which to create the new cluster.  Conflicts with `snapshot_arn`.
+  /// The name of the snapshot from which to create the new cluster.  Conflicts with `snapshotArn`.
   final pulumi.Input<String>? snapshotIdentifier;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For more detailed documentation about each argument, refer to
   /// the [AWS official documentation](http://docs.aws.amazon.com/cli/latest/reference/redshift/index.html#cli-aws-redshift).
@@ -118,7 +118,7 @@ class ClusterArgs {
   /// [applyImmediately] Specifies whether any cluster modifications are applied immediately, or during the next maintenance window. Default is `false`.
   /// [aquaConfigurationStatus] The value represents how the cluster is configured to use AQUA (Advanced Query Accelerator) after the cluster is restored.
   /// [automatedSnapshotRetentionPeriod] The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with create-cluster-snapshot. Default is 1.
-  /// [availabilityZone] The EC2 Availability Zone (AZ) in which you want Amazon Redshift to provision the cluster. For example, if you have several EC2 instances running in a specific Availability Zone, then you might want the cluster to be provisioned in the same zone in order to decrease network latency. Can only be changed if `availability_zone_relocation_enabled` is `true`.
+  /// [availabilityZone] The EC2 Availability Zone (AZ) in which you want Amazon Redshift to provision the cluster. For example, if you have several EC2 instances running in a specific Availability Zone, then you might want the cluster to be provisioned in the same zone in order to decrease network latency. Can only be changed if `availabilityZoneRelocationEnabled` is `true`.
   /// [availabilityZoneRelocationEnabled] If true, the cluster can be relocated to another availabity zone, either automatically by AWS or when requested. Default is `false`. Available for use on clusters from the RA3 instance family.
   /// [clusterIdentifier] The Cluster Identifier. Must be a lower case string.
   /// [clusterParameterGroupName] The name of the parameter group to be associated with this cluster.
@@ -130,16 +130,16 @@ class ClusterArgs {
   /// [elasticIp] The Elastic IP (EIP) address for the cluster.
   /// [encrypted] If true , the data in the cluster is encrypted at rest.
   /// [enhancedVpcRouting] If true , enhanced VPC routing is enabled.
-  /// [finalSnapshotIdentifier] The identifier of the final snapshot that is to be created immediately before deleting the cluster. If this parameter is provided, `skip_final_snapshot` must be false.
+  /// [finalSnapshotIdentifier] The identifier of the final snapshot that is to be created immediately before deleting the cluster. If this parameter is provided, `skipFinalSnapshot` must be false.
   /// [iamRoles] A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
-  /// [kmsKeyId] The ARN for the KMS encryption key. When specifying `kms_key_id`, `encrypted` needs to be set to true.
+  /// [kmsKeyId] The ARN for the KMS encryption key. When specifying `kmsKeyId`, `encrypted` needs to be set to true.
   /// [maintenanceTrackName] The name of the maintenance track for the restored cluster. When you take a snapshot, the snapshot inherits the MaintenanceTrack value from the cluster. The snapshot might be on a different track than the cluster that was the source for the snapshot. For example, suppose that you take a snapshot of  a cluster that is on the current track and then change the cluster to be on the trailing track. In this case, the snapshot and the source cluster are on different tracks. Default value is `current`.
   /// [manageMasterPassword] Whether to use AWS SecretsManager to manage the cluster admin credentials.
   /// [manualSnapshotRetentionPeriod] The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained indefinitely. This setting doesn't change the retention period of existing snapshots. Valid values are between `-1` and `3653`. Default value is `-1`.
   /// [masterPassword] Password for the master DB user.
   /// [masterPasswordSecretKmsKeyId] ID of the KMS key used to encrypt the cluster admin credentials secret.
   /// [masterPasswordWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [masterPasswordWoVersion] Used together with `master_password_wo` to trigger an update. Increment this value when an update to the `master_password_wo` is required.
+  /// [masterPasswordWoVersion] Used together with `masterPasswordWo` to trigger an update. Increment this value when an update to the `masterPasswordWo` is required.
   /// [masterUsername] Username for the master DB user.
   /// [multiAz] Specifies if the Redshift cluster is multi-AZ.
   /// [nodeType] The node type to be provisioned for the cluster.
@@ -150,10 +150,10 @@ class ClusterArgs {
   /// [publiclyAccessible] If true, the cluster can be accessed from a public network. Default is `false`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [skipFinalSnapshot] Determines whether a final snapshot of the cluster is created before Amazon Redshift deletes the cluster. If true , a final cluster snapshot is not created. If false , a final cluster snapshot is created before the cluster is deleted. Default is false.
-  /// [snapshotArn] The ARN of the snapshot from which to create the new cluster. Conflicts with `snapshot_identifier`.
+  /// [snapshotArn] The ARN of the snapshot from which to create the new cluster. Conflicts with `snapshotIdentifier`.
   /// [snapshotClusterIdentifier] The name of the cluster the source snapshot was created from.
-  /// [snapshotIdentifier] The name of the snapshot from which to create the new cluster.  Conflicts with `snapshot_arn`.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [snapshotIdentifier] The name of the snapshot from which to create the new cluster.  Conflicts with `snapshotArn`.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcSecurityGroupIds] A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
   const ClusterArgs({
     this.allowVersionUpgrade,
@@ -291,4 +291,3 @@ class ClusterArgs {
     );
   }
 }
-

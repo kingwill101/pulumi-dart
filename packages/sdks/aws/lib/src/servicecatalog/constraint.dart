@@ -74,7 +74,7 @@ import 'constraint_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"RoleArn": "arn:aws:iam::123456789012:role/LaunchRole",
 /// 		})
 /// 		if err != nil {
@@ -95,6 +95,25 @@ import 'constraint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_servicecatalog_constraint" "example" {
+///   description  = "Back off, man. I'm a scientist."
+///   portfolio_id = exampleAwsServicecatalogPortfolio.id
+///   product_id   = exampleAwsServicecatalogProduct.id
+///   type         = "LAUNCH"
+///   parameters = jsonencode({
+///     "RoleArn" = "arn:aws:iam::123456789012:role/LaunchRole"
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +123,8 @@ import 'constraint_state.dart';
 /// import com.pulumi.aws.servicecatalog.Constraint;
 /// import com.pulumi.aws.servicecatalog.ConstraintArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

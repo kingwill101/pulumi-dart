@@ -6,6 +6,8 @@ import 'cluster_capacity_providers_state.dart';
 ///
 /// More information about capacity providers can be found in the [ECS User Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-capacity-providers.html).
 ///
+/// &gt; **NOTE:** When an associated `aws.ecs.CapacityProvider` must be replaced, add a `replaceTriggeredBy` lifecycle rule referencing the capacity provider. This recreates the association so the old capacity provider is detached from the cluster before it is deleted, which AWS otherwise disallows.
+///
 /// ## Example Usage
 ///
 ///
@@ -107,6 +109,28 @@ import 'cluster_capacity_providers_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_cluster" "example" {
+///   name = "my-cluster"
+/// }
+/// resource "aws_ecs_clustercapacityproviders" "example" {
+///   cluster_name       = aws_ecs_cluster.example.name
+///   capacity_providers = ["FARGATE"]
+///   default_capacity_provider_strategies {
+///     base              = 1
+///     weight            = 100
+///     capacity_provider = "FARGATE"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -118,8 +142,8 @@ import 'cluster_capacity_providers_state.dart';
 /// import com.pulumi.aws.ecs.ClusterCapacityProviders;
 /// import com.pulumi.aws.ecs.ClusterCapacityProvidersArgs;
 /// import com.pulumi.aws.ecs.inputs.ClusterCapacityProvidersDefaultCapacityProviderStrategyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -170,7 +194,7 @@ import 'cluster_capacity_providers_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import ECS cluster capacity providers using the `cluster_name` attribute. For example:
+/// Using `pulumi import`, import ECS cluster capacity providers using the `clusterName` attribute. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ecs/clusterCapacityProviders:ClusterCapacityProviders example my-cluster

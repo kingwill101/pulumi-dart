@@ -31,9 +31,9 @@ class ImageRecipeState {
   final pulumi.Input<String>? region;
   /// Configuration block for the Systems Manager Agent installed by default by Image Builder. Detailed below.
   final pulumi.Input<ImageRecipeSystemsManagerAgent>? systemsManagerAgent;
-  /// Key-value map of resource tags for the image recipe. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the image recipe. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Base64 encoded user data. Use this to provide commands or a command script to run when you launch your build instance.
   final pulumi.Input<String>? userDataBase64;
@@ -57,8 +57,8 @@ class ImageRecipeState {
   /// [platform] Platform of the image recipe.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [systemsManagerAgent] Configuration block for the Systems Manager Agent installed by default by Image Builder. Detailed below.
-  /// [tags] Key-value map of resource tags for the image recipe. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags for the image recipe. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [userDataBase64] Base64 encoded user data. Use this to provide commands or a command script to run when you launch your build instance.
   /// [version] The semantic version of the image recipe, which specifies the version in the following format, with numeric values in each position to indicate a specific version: major.minor.patch. For example: 1.0.0.
   /// [workingDirectory] The working directory to be used during build and test workflows.
@@ -126,4 +126,3 @@ class ImageRecipeState {
     );
   }
 }
-

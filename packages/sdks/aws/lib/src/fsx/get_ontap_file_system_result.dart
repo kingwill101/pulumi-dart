@@ -8,77 +8,80 @@ import 'get_ontap_file_system_endpoint.dart';
 class GetOntapFileSystemResult {
   /// Amazon Resource Name of the file system.
   final String arn;
-  /// The number of days to retain automatic backups.
+  /// Number of days to retain automatic backups.
   final int automaticBackupRetentionDays;
-  /// The preferred time (in `HH:MM` format) to take daily automatic backups, in the UTC time zone.
+  /// Preferred time (in `HH:MM` format) to take daily automatic backups, in the UTC time zone.
   final String dailyAutomaticBackupStartTime;
-  /// The file system deployment type.
+  /// File system deployment type.
   final String deploymentType;
-  /// The SSD IOPS configuration for the Amazon FSx for NetApp ONTAP file system, specifying the number of provisioned IOPS and the provision mode. See Disk IOPS Below.
+  /// SSD IOPS configuration for the Amazon FSx for NetApp ONTAP file system, specifying the number of provisioned IOPS and the provision mode. See Disk IOPS Below.
   final List<GetOntapFileSystemDiskIopsConfiguration> diskIopsConfigurations;
   /// DNS name for the file system.
   final String dnsName;
-  /// (Multi-AZ only) Specifies the IP address range in which the endpoints to access your file system exist.
+  /// (Multi-AZ only) IP address range in which the endpoints to access your file system exist.
   final String endpointIpAddressRange;
-  /// The Management and Intercluster FileSystemEndpoints that are used to access data or to manage the file system using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. See FileSystemEndpoints below.
+  /// Management and Intercluster FileSystemEndpoints that are used to access data or to manage the file system using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. See FileSystemEndpoints below.
   final List<GetOntapFileSystemEndpoint> endpoints;
-  /// The number of HA pairs for the file system.
+  /// Number of HA pairs for the file system.
   final int haPairs;
   /// Identifier of the file system (e.g. `fs-12345678`).
   final String id;
   /// ARN for the KMS Key to encrypt the file system at rest.
   final String kmsKeyId;
-  /// The IDs of the elastic network interfaces from which a specific file system is accessible.
+  /// IDs of the elastic network interfaces from which a specific file system is accessible.
   final List<String> networkInterfaceIds;
+  /// Network type (`IPV4` or `DUAL`).
+  final String networkType;
   /// AWS account identifier that created the file system.
   final String ownerId;
-  /// Specifies the subnet in which you want the preferred file server to be located.
+  /// Subnet in which you want the preferred file server to be located.
   final String preferredSubnetId;
   final String region;
-  /// (Multi-AZ only) The VPC route tables in which your file system's endpoints exist.
+  /// (Multi-AZ only) VPC route tables in which your file system's endpoints exist.
   final List<String> routeTableIds;
-  /// The storage capacity of the file system in gibibytes (GiB).
+  /// Storage capacity of the file system in gibibytes (GiB).
   final int storageCapacity;
-  /// The type of storage the file system is using. If set to `SSD`, the file system uses solid state drive storage. If set to `HDD`, the file system uses hard disk drive storage.
+  /// Type of storage the file system is using. If set to `SSD`, the file system uses solid state drive storage. If set to `HDD`, the file system uses hard disk drive storage.
   final String storageType;
-  /// Specifies the IDs of the subnets that the file system is accessible from. For the MULTI_AZ_1 file system deployment type, there are two subnet IDs, one for the preferred file server and one for the standby file server. The preferred file server subnet identified in the `preferred_subnet_id` property.
+  /// IDs of the subnets that the file system is accessible from. For the MULTI_AZ_1 file system deployment type, there are two subnet IDs, one for the preferred file server and one for the standby file server. The preferred file server subnet identified in the `preferredSubnetId` property.
   final List<String> subnetIds;
-  /// The tags associated with the file system.
+  /// Tags associated with the file system.
   final Map<String, String> tags;
-  /// The sustained throughput of an Amazon FSx file system in Megabytes per second (MBps). If the file system uses multiple HA pairs this will equal throuthput_capacity_per_ha_pair x ha_pairs
+  /// Sustained throughput of an Amazon FSx file system in Megabytes per second (MBps). If the file system uses multiple HA pairs this will equal throuthputCapacityPerHaPair x ha_pairs
   final int throughputCapacity;
-  /// The sustained throughput of each HA pair for an Amazon FSx file system in Megabytes per second (MBps).
+  /// Sustained throughput of each HA pair for an Amazon FSx file system in Megabytes per second (MBps).
   final int throughputCapacityPerHaPair;
-  /// The ID of the primary virtual private cloud (VPC) for the file system.
+  /// ID of the primary virtual private cloud (VPC) for the file system.
   final String vpcId;
-  /// The preferred start time (in `D:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
+  /// Preferred start time (in `D:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
   final String weeklyMaintenanceStartTime;
 
   /// Creates a new [GetOntapFileSystemResult].
   /// [arn] Amazon Resource Name of the file system.
-  /// [automaticBackupRetentionDays] The number of days to retain automatic backups.
-  /// [dailyAutomaticBackupStartTime] The preferred time (in `HH:MM` format) to take daily automatic backups, in the UTC time zone.
-  /// [deploymentType] The file system deployment type.
-  /// [diskIopsConfigurations] The SSD IOPS configuration for the Amazon FSx for NetApp ONTAP file system, specifying the number of provisioned IOPS and the provision mode. See Disk IOPS Below.
+  /// [automaticBackupRetentionDays] Number of days to retain automatic backups.
+  /// [dailyAutomaticBackupStartTime] Preferred time (in `HH:MM` format) to take daily automatic backups, in the UTC time zone.
+  /// [deploymentType] File system deployment type.
+  /// [diskIopsConfigurations] SSD IOPS configuration for the Amazon FSx for NetApp ONTAP file system, specifying the number of provisioned IOPS and the provision mode. See Disk IOPS Below.
   /// [dnsName] DNS name for the file system.
-  /// [endpointIpAddressRange] (Multi-AZ only) Specifies the IP address range in which the endpoints to access your file system exist.
-  /// [endpoints] The Management and Intercluster FileSystemEndpoints that are used to access data or to manage the file system using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. See FileSystemEndpoints below.
-  /// [haPairs] The number of HA pairs for the file system.
+  /// [endpointIpAddressRange] (Multi-AZ only) IP address range in which the endpoints to access your file system exist.
+  /// [endpoints] Management and Intercluster FileSystemEndpoints that are used to access data or to manage the file system using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. See FileSystemEndpoints below.
+  /// [haPairs] Number of HA pairs for the file system.
   /// [id] Identifier of the file system (e.g. `fs-12345678`).
   /// [kmsKeyId] ARN for the KMS Key to encrypt the file system at rest.
-  /// [networkInterfaceIds] The IDs of the elastic network interfaces from which a specific file system is accessible.
+  /// [networkInterfaceIds] IDs of the elastic network interfaces from which a specific file system is accessible.
+  /// [networkType] Network type (`IPV4` or `DUAL`).
   /// [ownerId] AWS account identifier that created the file system.
-  /// [preferredSubnetId] Specifies the subnet in which you want the preferred file server to be located.
+  /// [preferredSubnetId] Subnet in which you want the preferred file server to be located.
   /// [region] Required.
-  /// [routeTableIds] (Multi-AZ only) The VPC route tables in which your file system's endpoints exist.
-  /// [storageCapacity] The storage capacity of the file system in gibibytes (GiB).
-  /// [storageType] The type of storage the file system is using. If set to `SSD`, the file system uses solid state drive storage. If set to `HDD`, the file system uses hard disk drive storage.
-  /// [subnetIds] Specifies the IDs of the subnets that the file system is accessible from. For the MULTI_AZ_1 file system deployment type, there are two subnet IDs, one for the preferred file server and one for the standby file server. The preferred file server subnet identified in the `preferred_subnet_id` property.
-  /// [tags] The tags associated with the file system.
-  /// [throughputCapacity] The sustained throughput of an Amazon FSx file system in Megabytes per second (MBps). If the file system uses multiple HA pairs this will equal throuthput_capacity_per_ha_pair x ha_pairs
-  /// [throughputCapacityPerHaPair] The sustained throughput of each HA pair for an Amazon FSx file system in Megabytes per second (MBps).
-  /// [vpcId] The ID of the primary virtual private cloud (VPC) for the file system.
-  /// [weeklyMaintenanceStartTime] The preferred start time (in `D:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
+  /// [routeTableIds] (Multi-AZ only) VPC route tables in which your file system's endpoints exist.
+  /// [storageCapacity] Storage capacity of the file system in gibibytes (GiB).
+  /// [storageType] Type of storage the file system is using. If set to `SSD`, the file system uses solid state drive storage. If set to `HDD`, the file system uses hard disk drive storage.
+  /// [subnetIds] IDs of the subnets that the file system is accessible from. For the MULTI_AZ_1 file system deployment type, there are two subnet IDs, one for the preferred file server and one for the standby file server. The preferred file server subnet identified in the `preferredSubnetId` property.
+  /// [tags] Tags associated with the file system.
+  /// [throughputCapacity] Sustained throughput of an Amazon FSx file system in Megabytes per second (MBps). If the file system uses multiple HA pairs this will equal throuthputCapacityPerHaPair x ha_pairs
+  /// [throughputCapacityPerHaPair] Sustained throughput of each HA pair for an Amazon FSx file system in Megabytes per second (MBps).
+  /// [vpcId] ID of the primary virtual private cloud (VPC) for the file system.
+  /// [weeklyMaintenanceStartTime] Preferred start time (in `D:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
   const GetOntapFileSystemResult({
     required this.arn,
     required this.automaticBackupRetentionDays,
@@ -92,6 +95,7 @@ class GetOntapFileSystemResult {
     required this.id,
     required this.kmsKeyId,
     required this.networkInterfaceIds,
+    required this.networkType,
     required this.ownerId,
     required this.preferredSubnetId,
     required this.region,
@@ -120,6 +124,7 @@ class GetOntapFileSystemResult {
       'id': id,
       'kmsKeyId': kmsKeyId,
       'networkInterfaceIds': networkInterfaceIds,
+      'networkType': networkType,
       'ownerId': ownerId,
       'preferredSubnetId': preferredSubnetId,
       'region': region,
@@ -149,6 +154,7 @@ class GetOntapFileSystemResult {
       id: map['id'] as String,
       kmsKeyId: map['kmsKeyId'] as String,
       networkInterfaceIds: (map['networkInterfaceIds'] as List).cast<String>(),
+      networkType: map['networkType'] as String,
       ownerId: map['ownerId'] as String,
       preferredSubnetId: map['preferredSubnetId'] as String,
       region: map['region'] as String,
@@ -164,4 +170,3 @@ class GetOntapFileSystemResult {
     );
   }
 }
-

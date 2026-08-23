@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_instance_type_offerings_broker_instance_option_availability_zone.dart';
 
 class GetInstanceTypeOfferingsBrokerInstanceOption {
-  /// List of available Availability Zones. See Availability Zones below.
+  /// List of available Availability Zones. See `availabilityZones` Block below.
   final pulumi.Input<List<GetInstanceTypeOfferingsBrokerInstanceOptionAvailabilityZone>> availabilityZones;
   /// Filter response by engine type.
   final pulumi.Input<String> engineType;
@@ -18,7 +18,7 @@ class GetInstanceTypeOfferingsBrokerInstanceOption {
   final pulumi.Input<List<String>> supportedEngineVersions;
 
   /// Creates a new [GetInstanceTypeOfferingsBrokerInstanceOption].
-  /// [availabilityZones] List of available Availability Zones. See Availability Zones below.
+  /// [availabilityZones] List of available Availability Zones. See `availabilityZones` Block below.
   /// [engineType] Filter response by engine type.
   /// [hostInstanceType] Filter response by host instance type.
   /// [storageType] Filter response by storage type.
@@ -55,4 +55,3 @@ class GetInstanceTypeOfferingsBrokerInstanceOption {
     );
   }
 }
-

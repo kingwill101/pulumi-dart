@@ -58,6 +58,19 @@ import 'get_tags_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_costexplorer_getcostcategory" "example" {
+///   cost_category_arn = "costCategoryARN"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +79,8 @@ import 'get_tags_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.costexplorer.CostexplorerFunctions;
 /// import com.pulumi.aws.costexplorer.inputs.GetCostCategoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -176,6 +189,22 @@ Future<GetCostCategoryResult> getCostCategory(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_costexplorer_gettags" "test" {
+///   time_period = {
+///     start = "2021-01-01"
+///     end   = "2022-12-01"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -185,8 +214,8 @@ Future<GetCostCategoryResult> getCostCategory(
 /// import com.pulumi.aws.costexplorer.CostexplorerFunctions;
 /// import com.pulumi.aws.costexplorer.inputs.GetTagsArgs;
 /// import com.pulumi.aws.costexplorer.inputs.GetTagsTimePeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

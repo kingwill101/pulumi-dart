@@ -56,6 +56,19 @@ import 'database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_timestreamwrite_database" "example" {
+///   database_name = "database-example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'database_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.timestreamwrite.Database;
 /// import com.pulumi.aws.timestreamwrite.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -163,6 +176,23 @@ import 'database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_timestreamwrite_database" "example" {
+///   database_name = "database-example"
+///   kms_key_id    = exampleAwsKmsKey.arn
+///   tags = {
+///     "Name" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -171,8 +201,8 @@ import 'database_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.timestreamwrite.Database;
 /// import com.pulumi.aws.timestreamwrite.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -207,7 +237,7 @@ import 'database_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Timestream databases using the `database_name`. For example:
+/// Using `pulumi import`, import Timestream databases using the `databaseName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:timestreamwrite/database:Database example example
@@ -223,9 +253,9 @@ class Database extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The total number of tables found within the Timestream database.
   late final pulumi.Output<int> tableCount;
-  /// Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Database].

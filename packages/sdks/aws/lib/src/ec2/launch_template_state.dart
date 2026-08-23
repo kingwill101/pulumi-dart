@@ -37,7 +37,7 @@ class LaunchTemplateState {
   final pulumi.Input<LaunchTemplateCreditSpecification>? creditSpecification;
   /// Default Version of the launch template.
   final pulumi.Input<int>? defaultVersion;
-  /// Description of the launch template.
+  /// Description of the launch template version (`VersionDescription` in the [EC2 API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateLaunchTemplateVersion.html)). Launch templates in AWS do not have a template-level description; whenever a change to this resource creates a new version, the new version is created with this description. To give each version a distinct description, update this argument in the same apply as the other changes.
   final pulumi.Input<String>? description;
   /// If true, enables [EC2 Instance Stop Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-stop-protection.html).
   final pulumi.Input<bool>? disableApiStop;
@@ -61,9 +61,9 @@ class LaunchTemplateState {
   /// The market (purchasing) option for the instance. See Market Options
   /// below for details.
   final pulumi.Input<LaunchTemplateInstanceMarketOptions>? instanceMarketOptions;
-  /// The attribute requirements for the type of instance. If present then `instance_type` cannot be present.
+  /// The attribute requirements for the type of instance. If present then `instanceType` cannot be present.
   final pulumi.Input<LaunchTemplateInstanceRequirements>? instanceRequirements;
-  /// The type of the instance. If present then `instance_requirements` cannot be present.
+  /// The type of the instance. If present then `instanceRequirements` cannot be present.
   final pulumi.Input<String>? instanceType;
   /// The kernel ID.
   final pulumi.Input<String>? kernelId;
@@ -99,15 +99,15 @@ class LaunchTemplateState {
   /// Interfaces below for more details.
   final pulumi.Input<List<LaunchTemplateSecondaryInterface>>? secondaryInterfaces;
   /// A list of security group names to associate with. If you are creating Instances in a VPC, use
-  /// `vpc_security_group_ids` instead.
+  /// `vpcSecurityGroupIds` instead.
   final pulumi.Input<List<String>>? securityGroupNames;
   /// The tags to apply to the resources during launch. See Tag Specifications below for more details. Default tags are currently not propagated to ASG created resources so you may wish to inject your default tags into this variable against the relevant child resource types created.
   final pulumi.Input<List<LaunchTemplateTagSpecification>>? tagSpecifications;
-  /// A map of tags to assign to the launch template. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the launch template. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// Whether to update Default Version each update. Conflicts with `default_version`.
+  /// Whether to update Default Version each update. Conflicts with `defaultVersion`.
   final pulumi.Input<bool>? updateDefaultVersion;
   /// The base64-encoded user data to provide when launching the instance.
   final pulumi.Input<String>? userData;
@@ -121,7 +121,7 @@ class LaunchTemplateState {
   /// [cpuOptions] The CPU options for the instance. See CPU Options below for more details.
   /// [creditSpecification] Customize the credit specification of the instance. See Credit
   /// [defaultVersion] Default Version of the launch template.
-  /// [description] Description of the launch template.
+  /// [description] Description of the launch template version (`VersionDescription` in the [EC2 API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateLaunchTemplateVersion.html)). Launch templates in AWS do not have a template-level description; whenever a change to this resource creates a new version, the new version is created with this description. To give each version a distinct description, update this argument in the same apply as the other changes.
   /// [disableApiStop] If true, enables [EC2 Instance Stop Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-stop-protection.html).
   /// [disableApiTermination] If `true`, enables [EC2 Instance
   /// [ebsOptimized] If `true`, the launched EC2 instance will be EBS-optimized.
@@ -131,8 +131,8 @@ class LaunchTemplateState {
   /// [imageId] The AMI from which to launch the instance or use a Systems Manager parameter convention e.g. `resolve:ssm:parameter-name`. See [docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-launch-template.html#use-an-ssm-parameter-instead-of-an-ami-id) for more details.
   /// [instanceInitiatedShutdownBehavior] Shutdown behavior for the instance. Can be `stop` or `terminate`.
   /// [instanceMarketOptions] The market (purchasing) option for the instance. See Market Options
-  /// [instanceRequirements] The attribute requirements for the type of instance. If present then `instance_type` cannot be present.
-  /// [instanceType] The type of the instance. If present then `instance_requirements` cannot be present.
+  /// [instanceRequirements] The attribute requirements for the type of instance. If present then `instanceType` cannot be present.
+  /// [instanceType] The type of the instance. If present then `instanceRequirements` cannot be present.
   /// [kernelId] The kernel ID.
   /// [keyName] The key name to use for the instance.
   /// [latestVersion] The latest version of the launch template.
@@ -151,9 +151,9 @@ class LaunchTemplateState {
   /// [secondaryInterfaces] Secondary interfaces to associate with instances launched from the template. See Secondary
   /// [securityGroupNames] A list of security group names to associate with. If you are creating Instances in a VPC, use
   /// [tagSpecifications] The tags to apply to the resources during launch. See Tag Specifications below for more details. Default tags are currently not propagated to ASG created resources so you may wish to inject your default tags into this variable against the relevant child resource types created.
-  /// [tags] A map of tags to assign to the launch template. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  /// [updateDefaultVersion] Whether to update Default Version each update. Conflicts with `default_version`.
+  /// [tags] A map of tags to assign to the launch template. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [updateDefaultVersion] Whether to update Default Version each update. Conflicts with `defaultVersion`.
   /// [userData] The base64-encoded user data to provide when launching the instance.
   /// [vpcSecurityGroupIds] A list of security group IDs to associate with. Conflicts with `network_interfaces.security_groups`
   const LaunchTemplateState({
@@ -292,4 +292,3 @@ class LaunchTemplateState {
     );
   }
 }
-

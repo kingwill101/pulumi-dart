@@ -16,9 +16,9 @@ class ResourceSetState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<ResourceSetResource>>? resources;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [ResourceSetState].
@@ -26,8 +26,8 @@ class ResourceSetState {
   /// [resourceSetName] Unique name describing the resource set.
   /// [resourceSetType] Type of the resources in the resource set.
   /// [resources] List of resources to add to this resource set. See below.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const ResourceSetState({
     this.arn,
     this.resourceSetName,
@@ -59,4 +59,3 @@ class ResourceSetState {
     );
   }
 }
-

@@ -5,7 +5,7 @@ import 'composite_alarm_state.dart';
 
 /// Provides a CloudWatch Composite Alarm resource.
 ///
-/// &gt; **NOTE:** An alarm (composite or metric) cannot be destroyed when there are other composite alarms depending on it. This can lead to a cyclical dependency on update, as the provider will unsuccessfully attempt to destroy alarms before updating the rule. Consider using `depends_on`, references to alarm names, and two-stage updates.
+/// &gt; **NOTE:** An alarm (composite or metric) cannot be destroyed when there are other composite alarms depending on it. This can lead to a cyclical dependency on update, as the provider will unsuccessfully attempt to destroy alarms before updating the rule. Consider using `dependsOn`, references to alarm names, and two-stage updates.
 ///
 /// ## Example Usage
 ///
@@ -103,6 +103,30 @@ import 'composite_alarm_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_compositealarm" "example" {
+///   alarm_description = "This is a composite alarm!"
+///   alarm_name        = "example-composite-alarm"
+///   alarm_actions     = exampleAwsSnsTopic.arn
+///   ok_actions        = exampleAwsSnsTopic.arn
+///   alarm_rule        ="ALARM(${alpha.alarmName}) OR
+/// ALARM(${bravo.alarmName})
+/// "
+///   actions_suppressor = {
+///     alarm            = "suppressor-alarm"
+///     extension_period = 10
+///     wait_period      = 20
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +136,8 @@ import 'composite_alarm_state.dart';
 /// import com.pulumi.aws.cloudwatch.CompositeAlarm;
 /// import com.pulumi.aws.cloudwatch.CompositeAlarmArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.CompositeAlarmActionsSuppressorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,10 +189,22 @@ import 'composite_alarm_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import a CloudWatch Composite Alarm using the `alarm_name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `alarmName` (String) Name of the composite alarm.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Composite Alarms using `alarmName`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cloudwatch/compositeAlarm:CompositeAlarm test my-alarm
+/// $ pulumi import aws:cloudwatch/compositeAlarm:CompositeAlarm example example-alarm
 /// ```
 class CompositeAlarm extends pulumi.CustomResource {
   /// Indicates whether actions should be executed during any changes to the alarm state of the composite alarm. Defaults to `true`.
@@ -191,9 +227,9 @@ class CompositeAlarm extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> okActions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to associate with the alarm. Up to 50 tags are allowed. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to associate with the alarm. Up to 50 tags are allowed. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [CompositeAlarm].

@@ -122,6 +122,30 @@ import 'permission_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_acmpca_permission" "example" {
+///   certificate_authority_arn = aws_acmpca_certificateauthority.example.arn
+///   actions                   = ["IssueCertificate", "GetCertificate", "ListPermissions"]
+///   principal                 = "acm.amazonaws.com"
+/// }
+/// resource "aws_acmpca_certificateauthority" "example" {
+///   certificate_authority_configuration = {
+///     key_algorithm     = "RSA_4096"
+///     signing_algorithm = "SHA512WITHRSA"
+///     subject = {
+///       common_name = "example.com"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -134,8 +158,8 @@ import 'permission_state.dart';
 /// import com.pulumi.aws.acmpca.inputs.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs;
 /// import com.pulumi.aws.acmpca.Permission;
 /// import com.pulumi.aws.acmpca.PermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

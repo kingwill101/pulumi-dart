@@ -92,7 +92,7 @@ import 'vpn_concentrator_state.dart';
 /// 		}
 /// 		_, err = ec2.NewVpnConcentrator(ctx, "example", &ec2.VpnConcentratorArgs{
 /// 			Type:             pulumi.String("ipsec.1"),
-/// 			TransitGatewayId: example.ID(),
+/// 			TransitGatewayId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example"),
 /// 			},
@@ -102,6 +102,29 @@ import 'vpn_concentrator_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2transitgateway_transitgateway" "example" {
+///   description = "example"
+///   tags = {
+///     "Name" = "example"
+///   }
+/// }
+/// resource "aws_ec2_vpnconcentrator" "example" {
+///   type               = "ipsec.1"
+///   transit_gateway_id = aws_ec2transitgateway_transitgateway.example.id
+///   tags = {
+///     "Name" = "example"
+///   }
 /// }
 /// ```
 /// ```java
@@ -114,8 +137,8 @@ import 'vpn_concentrator_state.dart';
 /// import com.pulumi.aws.ec2transitgateway.TransitGatewayArgs;
 /// import com.pulumi.aws.ec2.VpnConcentrator;
 /// import com.pulumi.aws.ec2.VpnConcentratorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -170,9 +193,9 @@ import 'vpn_concentrator_state.dart';
 class VpnConcentrator extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ID of the transit gateway attachment created for the VPN concentrator.
   late final pulumi.Output<String> transitGatewayAttachmentId;

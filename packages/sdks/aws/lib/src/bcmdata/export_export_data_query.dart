@@ -3,14 +3,18 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExportExportDataQuery {
-  /// Query statement. The SQL table name for CUR 2.0 is `COST_AND_USAGE_REPORT`. See the [AWS documentation](https://docs.aws.amazon.com/cur/latest/userguide/table-dictionary-cur2.html) for a list of available columns.
+  /// Query statement.
+  /// See the [AWS documentation](https://docs.aws.amazon.com/cur/latest/userguide/dataexports-table-dictionary.html) for a list of available tables.
   final pulumi.Input<String> queryStatement;
-  /// Table configuration. See the [AWS documentation](https://docs.aws.amazon.com/cur/latest/userguide/table-dictionary-cur2.html#cur2-table-configurations) for the available configurations. In addition to those listed in the documentation, `BILLING_VIEW_ARN` must also be included, as shown in the example above.
+  /// Table configuration.
+  /// See the [AWS documentation](https://docs.aws.amazon.com/cur/latest/userguide/dataexports-table-dictionary.html) for a list of available tables.
+  /// If a value is set for `tableConfigurations`, all configuration values must be set.
+  /// For the Cost and Usage Report, `BILLING_VIEW_ARN` must also be set, in addition to the documented settings.
   final pulumi.Input<Map<String, Map<String, String>>>? tableConfigurations;
 
   /// Creates a new [ExportExportDataQuery].
-  /// [queryStatement] Query statement. The SQL table name for CUR 2.0 is `COST_AND_USAGE_REPORT`. See the [AWS documentation](https://docs.aws.amazon.com/cur/latest/userguide/table-dictionary-cur2.html) for a list of available columns.
-  /// [tableConfigurations] Table configuration. See the [AWS documentation](https://docs.aws.amazon.com/cur/latest/userguide/table-dictionary-cur2.html#cur2-table-configurations) for the available configurations. In addition to those listed in the documentation, `BILLING_VIEW_ARN` must also be included, as shown in the example above.
+  /// [queryStatement] Query statement.
+  /// [tableConfigurations] Table configuration.
   const ExportExportDataQuery({
     required this.queryStatement,
     this.tableConfigurations,
@@ -30,4 +34,3 @@ class ExportExportDataQuery {
     );
   }
 }
-

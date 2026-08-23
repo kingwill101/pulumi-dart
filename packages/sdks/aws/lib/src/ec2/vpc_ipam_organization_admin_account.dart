@@ -65,6 +65,22 @@ import 'vpc_ipam_organization_admin_account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "delegated" {
+/// }
+///
+/// resource "aws_ec2_vpcipamorganizationadminaccount" "example" {
+///   delegated_admin_account_id = data.aws_getcalleridentity.delegated.account_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +91,8 @@ import 'vpc_ipam_organization_admin_account_state.dart';
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
 /// import com.pulumi.aws.ec2.VpcIpamOrganizationAdminAccount;
 /// import com.pulumi.aws.ec2.VpcIpamOrganizationAdminAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

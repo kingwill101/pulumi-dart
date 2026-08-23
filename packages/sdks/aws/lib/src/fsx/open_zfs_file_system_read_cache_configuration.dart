@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OpenZfsFileSystemReadCacheConfiguration {
-  /// Size of the file system's SSD read cache, in gibibytes (GiB). Required when `sizing_mode` is set to `USER_PROVISIONED`. Must not be set when any other `sizing_mode` is used.
+  /// Size of the file system's SSD read cache, in gibibytes (GiB). Required when `sizingMode` is set to `USER_PROVISIONED`. Must not be set when any other `sizingMode` is used.
   final pulumi.Input<int>? size;
-  /// Specifies how the provisioned SSD read cache is sized. Valid values are `NO_CACHE`, `USER_PROVISIONED`, and `PROPORTIONAL_TO_THROUGHPUT_CAPACITY`. See the [AWS API documentation](https://docs.aws.amazon.com/fsx/latest/APIReference/API_OpenZFSReadCacheConfiguration.html) for more information.
+  /// How the provisioned SSD read cache is sized. Valid values are `NO_CACHE`, `USER_PROVISIONED`, and `PROPORTIONAL_TO_THROUGHPUT_CAPACITY`. See the [AWS API documentation](https://docs.aws.amazon.com/fsx/latest/APIReference/API_OpenZFSReadCacheConfiguration.html) for more information.
   final pulumi.Input<String>? sizingMode;
 
   /// Creates a new [OpenZfsFileSystemReadCacheConfiguration].
-  /// [size] Size of the file system's SSD read cache, in gibibytes (GiB). Required when `sizing_mode` is set to `USER_PROVISIONED`. Must not be set when any other `sizing_mode` is used.
-  /// [sizingMode] Specifies how the provisioned SSD read cache is sized. Valid values are `NO_CACHE`, `USER_PROVISIONED`, and `PROPORTIONAL_TO_THROUGHPUT_CAPACITY`. See the [AWS API documentation](https://docs.aws.amazon.com/fsx/latest/APIReference/API_OpenZFSReadCacheConfiguration.html) for more information.
+  /// [size] Size of the file system's SSD read cache, in gibibytes (GiB). Required when `sizingMode` is set to `USER_PROVISIONED`. Must not be set when any other `sizingMode` is used.
+  /// [sizingMode] How the provisioned SSD read cache is sized. Valid values are `NO_CACHE`, `USER_PROVISIONED`, and `PROPORTIONAL_TO_THROUGHPUT_CAPACITY`. See the [AWS API documentation](https://docs.aws.amazon.com/fsx/latest/APIReference/API_OpenZFSReadCacheConfiguration.html) for more information.
   const OpenZfsFileSystemReadCacheConfiguration({
     this.size,
     this.sizingMode,
@@ -30,4 +30,3 @@ class OpenZfsFileSystemReadCacheConfiguration {
     );
   }
 }
-

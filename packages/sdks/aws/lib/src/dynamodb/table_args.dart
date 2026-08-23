@@ -18,7 +18,7 @@ import 'table_warm_throughput.dart';
 /// {@endtemplate}
 /// {@macro pulumi_dynamodb_table_table_args_doc}
 class TableArgs {
-  /// Set of nested attribute definitions. Only required for `hash_key` and `range_key` attributes. See below.
+  /// Set of nested attribute definitions. Only required for `hashKey` and `rangeKey` attributes. See below.
   final pulumi.Input<List<TableAttribute>>? attributes;
   /// Controls how you are charged for read and write throughput and how you manage capacity. The valid values are `PROVISIONED` and `PAY_PER_REQUEST`. Defaults to `PROVISIONED`.
   final pulumi.Input<String>? billingMode;
@@ -26,7 +26,7 @@ class TableArgs {
   final pulumi.Input<bool>? deletionProtectionEnabled;
   /// Describe a GSI for the table; subject to the normal limits on the number of GSIs, projected attributes, etc. See below.
   final pulumi.Input<List<TableGlobalSecondaryIndex>>? globalSecondaryIndexes;
-  /// Witness Region in a Multi-Region Strong Consistency deployment. **Note** This must be used alongside a single `replica` with `consistency_mode` set to `STRONG`. Other combinations will fail to provision. See below.
+  /// Witness Region in a Multi-Region Strong Consistency deployment. **Note** This must be used alongside a single `replica` with `consistencyMode` set to `STRONG`. Other combinations will fail to provision. See below.
   final pulumi.Input<TableGlobalTableWitness>? globalTableWitness;
   /// Attribute to use as the hash (partition) key. Must also be defined as an `attribute`. See below.
   final pulumi.Input<String>? hashKey;
@@ -44,12 +44,14 @@ class TableArgs {
   final pulumi.Input<TablePointInTimeRecovery>? pointInTimeRecovery;
   /// Attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
   final pulumi.Input<String>? rangeKey;
-  /// Number of read units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
+  /// Number of read units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
   final pulumi.Input<int>? readCapacity;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// Configuration block(s) with [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) replication configurations. See below.
   final pulumi.Input<List<TableReplica>>? replicas;
+  /// ARN of backup to restore.
+  final pulumi.Input<String>? restoreBackupArn;
   /// Time of the point-in-time recovery point to restore.
   final pulumi.Input<String>? restoreDateTime;
   /// Name of the table to restore. Must match the name of an existing table.
@@ -64,27 +66,27 @@ class TableArgs {
   final pulumi.Input<bool>? streamEnabled;
   /// When an item in the table is modified, StreamViewType determines what information is written to the table's stream.
   /// Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
-  /// Only valid when `stream_enabled` is true.
+  /// Only valid when `streamEnabled` is true.
   final pulumi.Input<String>? streamViewType;
   /// Storage class of the table.
   /// Valid values are `STANDARD` and `STANDARD_INFREQUENT_ACCESS`.
   /// Default value is `STANDARD`.
   final pulumi.Input<String>? tableClass;
-  /// A map of tags to populate on the created table. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to populate on the created table. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Configuration block for TTL. See below.
   final pulumi.Input<TableTtl>? ttl;
   /// Sets the number of warm read and write units for the specified table. See below.
   final pulumi.Input<TableWarmThroughput>? warmThroughput;
-  /// Number of write units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
+  /// Number of write units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
   final pulumi.Input<int>? writeCapacity;
 
   /// Creates a new [TableArgs].
-  /// [attributes] Set of nested attribute definitions. Only required for `hash_key` and `range_key` attributes. See below.
+  /// [attributes] Set of nested attribute definitions. Only required for `hashKey` and `rangeKey` attributes. See below.
   /// [billingMode] Controls how you are charged for read and write throughput and how you manage capacity. The valid values are `PROVISIONED` and `PAY_PER_REQUEST`. Defaults to `PROVISIONED`.
   /// [deletionProtectionEnabled] Enables deletion protection for table. Defaults to `false`.
   /// [globalSecondaryIndexes] Describe a GSI for the table; subject to the normal limits on the number of GSIs, projected attributes, etc. See below.
-  /// [globalTableWitness] Witness Region in a Multi-Region Strong Consistency deployment. **Note** This must be used alongside a single `replica` with `consistency_mode` set to `STRONG`. Other combinations will fail to provision. See below.
+  /// [globalTableWitness] Witness Region in a Multi-Region Strong Consistency deployment. **Note** This must be used alongside a single `replica` with `consistencyMode` set to `STRONG`. Other combinations will fail to provision. See below.
   /// [hashKey] Attribute to use as the hash (partition) key. Must also be defined as an `attribute`. See below.
   /// [importTable] Import Amazon S3 data into a new table. See below.
   /// [localSecondaryIndexes] Describe an LSI on the table; these can only be allocated _at creation_ so you cannot change this definition after you have created the resource. See below.
@@ -92,9 +94,10 @@ class TableArgs {
   /// [onDemandThroughput] Sets the maximum number of read and write units for the specified on-demand table. See below.
   /// [pointInTimeRecovery] Enable point-in-time recovery options. See below.
   /// [rangeKey] Attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
-  /// [readCapacity] Number of read units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
+  /// [readCapacity] Number of read units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [replicas] Configuration block(s) with [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) replication configurations. See below.
+  /// [restoreBackupArn] ARN of backup to restore.
   /// [restoreDateTime] Time of the point-in-time recovery point to restore.
   /// [restoreSourceName] Name of the table to restore. Must match the name of an existing table.
   /// [restoreSourceTableArn] ARN of the source table to restore. Must be supplied for cross-region restores.
@@ -103,10 +106,10 @@ class TableArgs {
   /// [streamEnabled] Whether Streams are enabled.
   /// [streamViewType] When an item in the table is modified, StreamViewType determines what information is written to the table's stream.
   /// [tableClass] Storage class of the table.
-  /// [tags] A map of tags to populate on the created table. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to populate on the created table. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [ttl] Configuration block for TTL. See below.
   /// [warmThroughput] Sets the number of warm read and write units for the specified table. See below.
-  /// [writeCapacity] Number of write units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
+  /// [writeCapacity] Number of write units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
   const TableArgs({
     this.attributes,
     this.billingMode,
@@ -123,6 +126,7 @@ class TableArgs {
     this.readCapacity,
     this.region,
     this.replicas,
+    this.restoreBackupArn,
     this.restoreDateTime,
     this.restoreSourceName,
     this.restoreSourceTableArn,
@@ -154,6 +158,7 @@ class TableArgs {
       'readCapacity': ?readCapacity,
       'region': ?region,
       'replicas': ?pulumi.Input.mapOptionalInputValue<List<TableReplica>, List<Map<String, dynamic>>>(replicas, (value) => pulumi.Input.encodeList<TableReplica, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'restoreBackupArn': ?restoreBackupArn,
       'restoreDateTime': ?restoreDateTime,
       'restoreSourceName': ?restoreSourceName,
       'restoreSourceTableArn': ?restoreSourceTableArn,
@@ -186,6 +191,7 @@ class TableArgs {
       readCapacity: (() { final guardedValue = map['readCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TableReplica>(guardedValue, (value) => TableReplica.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      restoreBackupArn: (() { final guardedValue = map['restoreBackupArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       restoreDateTime: (() { final guardedValue = map['restoreDateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       restoreSourceName: (() { final guardedValue = map['restoreSourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       restoreSourceTableArn: (() { final guardedValue = map['restoreSourceTableArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -201,4 +207,3 @@ class TableArgs {
     );
   }
 }
-

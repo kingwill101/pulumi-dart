@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsMemoryGibPerVcpu {
+  /// Maximum amount of memory per vCPU, in GiB.
   final pulumi.Input<double>? max;
+  /// Minimum amount of memory per vCPU, in GiB.
   final pulumi.Input<double>? min;
 
   /// Creates a new [CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsMemoryGibPerVcpu].
-  /// [max] Optional.
-  /// [min] Optional.
+  /// [max] Maximum amount of memory per vCPU, in GiB.
+  /// [min] Minimum amount of memory per vCPU, in GiB.
   const CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsMemoryGibPerVcpu({
     this.max,
     this.min,
@@ -28,4 +30,3 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
     );
   }
 }
-

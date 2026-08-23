@@ -14,15 +14,15 @@ class ServiceVolumeConfigurationManagedEbsVolume {
   final pulumi.Input<String>? kmsKeyId;
   /// Amazon ECS infrastructure IAM role that is used to manage your Amazon Web Services infrastructure. Recommended using the Amazon ECS-managed `AmazonECSInfrastructureRolePolicyForVolumes` IAM policy with this role.
   final pulumi.Input<String> roleArn;
-  /// Size of the volume in GiB. You must specify either a `size_in_gb` or a `snapshot_id`. You can optionally specify a volume size greater than or equal to the snapshot size.
+  /// Size of the volume in GiB. You must specify either a `sizeInGb` or a `snapshotId`. You can optionally specify a volume size greater than or equal to the snapshot size.
   final pulumi.Input<int>? sizeInGb;
-  /// Snapshot that Amazon ECS uses to create the volume. You must specify either a `size_in_gb` or a `snapshot_id`.
+  /// Snapshot that Amazon ECS uses to create the volume. You must specify either a `sizeInGb` or a `snapshotId`.
   final pulumi.Input<String>? snapshotId;
-  /// The tags to apply to the volume. See below.
+  /// Tags to apply to the volume. See below.
   final pulumi.Input<List<ServiceVolumeConfigurationManagedEbsVolumeTagSpecification>>? tagSpecifications;
   /// Throughput to provision for a volume, in MiB/s, with a maximum of 1,000 MiB/s.
   final pulumi.Input<int>? throughput;
-  /// Volume Initialization Rate in MiB/s. You must also specify a `snapshot_id`.
+  /// Volume Initialization Rate in MiB/s. You must also specify a `snapshotId`.
   final pulumi.Input<int>? volumeInitializationRate;
   /// Volume type.
   final pulumi.Input<String>? volumeType;
@@ -33,11 +33,11 @@ class ServiceVolumeConfigurationManagedEbsVolume {
   /// [iops] Number of I/O operations per second (IOPS).
   /// [kmsKeyId] Amazon Resource Name (ARN) identifier of the Amazon Web Services Key Management Service key to use for Amazon EBS encryption.
   /// [roleArn] Amazon ECS infrastructure IAM role that is used to manage your Amazon Web Services infrastructure. Recommended using the Amazon ECS-managed `AmazonECSInfrastructureRolePolicyForVolumes` IAM policy with this role.
-  /// [sizeInGb] Size of the volume in GiB. You must specify either a `size_in_gb` or a `snapshot_id`. You can optionally specify a volume size greater than or equal to the snapshot size.
-  /// [snapshotId] Snapshot that Amazon ECS uses to create the volume. You must specify either a `size_in_gb` or a `snapshot_id`.
-  /// [tagSpecifications] The tags to apply to the volume. See below.
+  /// [sizeInGb] Size of the volume in GiB. You must specify either a `sizeInGb` or a `snapshotId`. You can optionally specify a volume size greater than or equal to the snapshot size.
+  /// [snapshotId] Snapshot that Amazon ECS uses to create the volume. You must specify either a `sizeInGb` or a `snapshotId`.
+  /// [tagSpecifications] Tags to apply to the volume. See below.
   /// [throughput] Throughput to provision for a volume, in MiB/s, with a maximum of 1,000 MiB/s.
-  /// [volumeInitializationRate] Volume Initialization Rate in MiB/s. You must also specify a `snapshot_id`.
+  /// [volumeInitializationRate] Volume Initialization Rate in MiB/s. You must also specify a `snapshotId`.
   /// [volumeType] Volume type.
   const ServiceVolumeConfigurationManagedEbsVolume({
     this.encrypted,
@@ -85,4 +85,3 @@ class ServiceVolumeConfigurationManagedEbsVolume {
     );
   }
 }
-

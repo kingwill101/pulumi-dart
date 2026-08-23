@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_data_source_data_source_configuration_share_point_configuration_crawler_configuration_filter_configuration_pattern_object_filter.dart';
 
 class AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfiguration {
-  /// The configuration of filtering certain objects or content types of the data source. See `pattern_object_filter` block for details.
+  /// The configuration of filtering certain objects or content types of the data source. See `patternObjectFilter` block for details.
   final pulumi.Input<List<AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilter>>? patternObjectFilters;
   /// The type of filtering that you want to apply to certain objects or content of the data source. For example, the PATTERN type is regular expression patterns you can apply to filter your content.
   final pulumi.Input<String> type;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfiguration].
-  /// [patternObjectFilters] The configuration of filtering certain objects or content types of the data source. See `pattern_object_filter` block for details.
+  /// [patternObjectFilters] The configuration of filtering certain objects or content types of the data source. See `patternObjectFilter` block for details.
   /// [type] The type of filtering that you want to apply to certain objects or content of the data source. For example, the PATTERN type is regular expression patterns you can apply to filter your content.
   const AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfiguration({
     this.patternObjectFilters,
@@ -31,4 +31,3 @@ class AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfig
     );
   }
 }
-

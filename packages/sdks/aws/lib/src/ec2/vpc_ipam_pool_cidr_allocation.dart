@@ -135,14 +135,14 @@ import 'vpc_ipam_pool_cidr_allocation_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleVpcIpamPoolCidr, err := ec2.NewVpcIpamPoolCidr(ctx, "example", &ec2.VpcIpamPoolCidrArgs{
-/// 			IpamPoolId: exampleVpcIpamPool.ID(),
+/// 			IpamPoolId: exampleVpcIpamPool.ID().ToIDOutput().ToStringOutput(),
 /// 			Cidr:       pulumi.String("172.20.0.0/16"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcIpamPoolCidrAllocation(ctx, "example", &ec2.VpcIpamPoolCidrAllocationArgs{
-/// 			IpamPoolId: exampleVpcIpamPool.ID(),
+/// 			IpamPoolId: exampleVpcIpamPool.ID().ToIDOutput().ToStringOutput(),
 /// 			Cidr:       pulumi.String("172.20.0.0/24"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleVpcIpamPoolCidr,
@@ -152,6 +152,38 @@ import 'vpc_ipam_pool_cidr_allocation_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+///
+/// resource "aws_ec2_vpcipampoolcidrallocation" "example" {
+///   depends_on   = [aws_ec2_vpcipampoolcidr.example]
+///   ipam_pool_id = aws_ec2_vpcipampool.example.id
+///   cidr         = "172.20.0.0/24"
+/// }
+/// resource "aws_ec2_vpcipampoolcidr" "example" {
+///   ipam_pool_id = aws_ec2_vpcipampool.example.id
+///   cidr         = "172.20.0.0/16"
+/// }
+/// resource "aws_ec2_vpcipampool" "example" {
+///   address_family = "ipv4"
+///   ipam_scope_id  = aws_ec2_vpcipam.example.private_default_scope_id
+///   locale         = data.aws_getregion.current.region
+/// }
+/// resource "aws_ec2_vpcipam" "example" {
+///   operating_regions {
+///     region_name = data.aws_getregion.current.region
+///   }
 /// }
 /// ```
 /// ```java
@@ -172,8 +204,8 @@ import 'vpc_ipam_pool_cidr_allocation_state.dart';
 /// import com.pulumi.aws.ec2.VpcIpamPoolCidrAllocation;
 /// import com.pulumi.aws.ec2.VpcIpamPoolCidrAllocationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -252,7 +284,7 @@ import 'vpc_ipam_pool_cidr_allocation_state.dart';
 /// ```
 ///
 ///
-/// With the `disallowed_cidrs` attribute:
+/// With the `disallowedCidrs` attribute:
 ///
 ///
 /// ```typescript
@@ -387,14 +419,14 @@ import 'vpc_ipam_pool_cidr_allocation_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleVpcIpamPoolCidr, err := ec2.NewVpcIpamPoolCidr(ctx, "example", &ec2.VpcIpamPoolCidrArgs{
-/// 			IpamPoolId: exampleVpcIpamPool.ID(),
+/// 			IpamPoolId: exampleVpcIpamPool.ID().ToIDOutput().ToStringOutput(),
 /// 			Cidr:       pulumi.String("172.20.0.0/16"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcIpamPoolCidrAllocation(ctx, "example", &ec2.VpcIpamPoolCidrAllocationArgs{
-/// 			IpamPoolId:    exampleVpcIpamPool.ID(),
+/// 			IpamPoolId:    exampleVpcIpamPool.ID().ToIDOutput().ToStringOutput(),
 /// 			NetmaskLength: pulumi.Int(28),
 /// 			DisallowedCidrs: pulumi.StringArray{
 /// 				pulumi.String("172.20.0.0/28"),
@@ -407,6 +439,39 @@ import 'vpc_ipam_pool_cidr_allocation_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+///
+/// resource "aws_ec2_vpcipampoolcidrallocation" "example" {
+///   depends_on       = [aws_ec2_vpcipampoolcidr.example]
+///   ipam_pool_id     = aws_ec2_vpcipampool.example.id
+///   netmask_length   = 28
+///   disallowed_cidrs = ["172.20.0.0/28"]
+/// }
+/// resource "aws_ec2_vpcipampoolcidr" "example" {
+///   ipam_pool_id = aws_ec2_vpcipampool.example.id
+///   cidr         = "172.20.0.0/16"
+/// }
+/// resource "aws_ec2_vpcipampool" "example" {
+///   address_family = "ipv4"
+///   ipam_scope_id  = aws_ec2_vpcipam.example.private_default_scope_id
+///   locale         = data.aws_getregion.current.region
+/// }
+/// resource "aws_ec2_vpcipam" "example" {
+///   operating_regions {
+///     region_name = data.aws_getregion.current.region
+///   }
 /// }
 /// ```
 /// ```java
@@ -427,8 +492,8 @@ import 'vpc_ipam_pool_cidr_allocation_state.dart';
 /// import com.pulumi.aws.ec2.VpcIpamPoolCidrAllocation;
 /// import com.pulumi.aws.ec2.VpcIpamPoolCidrAllocationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -537,6 +602,10 @@ class VpcIpamPoolCidrAllocation extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceOwner;
   /// The type of the resource.
   late final pulumi.Output<String> resourceType;
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [VpcIpamPoolCidrAllocation].
   /// [name] The Pulumi resource name.
@@ -562,6 +631,8 @@ class VpcIpamPoolCidrAllocation extends pulumi.CustomResource {
     resourceId = registerOutput<String>('resourceId');
     resourceOwner = registerOutput<String>('resourceOwner');
     resourceType = registerOutput<String>('resourceType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [VpcIpamPoolCidrAllocation] resource's state with the given [name] and [id].
@@ -597,5 +668,7 @@ class VpcIpamPoolCidrAllocation extends pulumi.CustomResource {
     resourceId = registerOutput<String>('resourceId');
     resourceOwner = registerOutput<String>('resourceOwner');
     resourceType = registerOutput<String>('resourceType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

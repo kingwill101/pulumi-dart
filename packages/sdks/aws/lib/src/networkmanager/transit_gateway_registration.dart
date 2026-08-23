@@ -73,7 +73,7 @@ import 'transit_gateway_registration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = networkmanager.NewTransitGatewayRegistration(ctx, "example", &networkmanager.TransitGatewayRegistrationArgs{
-/// 			GlobalNetworkId:   example.ID(),
+/// 			GlobalNetworkId:   example.ID().ToIDOutput().ToStringOutput(),
 /// 			TransitGatewayArn: exampleTransitGateway.Arn,
 /// 		})
 /// 		if err != nil {
@@ -81,6 +81,25 @@ import 'transit_gateway_registration_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_globalnetwork" "example" {
+///   description = "example"
+/// }
+/// resource "aws_ec2transitgateway_transitgateway" "example" {
+/// }
+/// resource "aws_networkmanager_transitgatewayregistration" "example" {
+///   global_network_id   = aws_networkmanager_globalnetwork.example.id
+///   transit_gateway_arn = aws_ec2transitgateway_transitgateway.example.arn
 /// }
 /// ```
 /// ```java
@@ -94,8 +113,8 @@ import 'transit_gateway_registration_state.dart';
 /// import com.pulumi.aws.ec2transitgateway.TransitGateway;
 /// import com.pulumi.aws.networkmanager.TransitGatewayRegistration;
 /// import com.pulumi.aws.networkmanager.TransitGatewayRegistrationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

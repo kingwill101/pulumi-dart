@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAppWebAppUnit {
+  /// Number of units of concurrent connections.
   final pulumi.Input<int> provisioned;
 
   /// Creates a new [WebAppWebAppUnit].
-  /// [provisioned] Required.
+  /// [provisioned] Number of units of concurrent connections.
   const WebAppWebAppUnit({
     required this.provisioned,
   });
@@ -23,4 +24,3 @@ class WebAppWebAppUnit {
     );
   }
 }
-

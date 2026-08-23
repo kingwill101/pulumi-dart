@@ -5,13 +5,13 @@ import 'v2models_intent_fulfillment_code_hook_post_fulfillment_status_specificat
 import 'v2models_intent_fulfillment_code_hook_post_fulfillment_status_specification_failure_conditional_default_branch_response.dart';
 
 class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalDefaultBranch {
-  /// Configuration block for the next step in the conversation. See `next_step`.
+  /// Configuration block for the next step in the conversation. See `nextStep`.
   final pulumi.Input<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalDefaultBranchNextStep>? nextStep;
   /// Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
   final pulumi.Input<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalDefaultBranchResponse>? response;
 
   /// Creates a new [V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalDefaultBranch].
-  /// [nextStep] Configuration block for the next step in the conversation. See `next_step`.
+  /// [nextStep] Configuration block for the next step in the conversation. See `nextStep`.
   /// [response] Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
   const V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalDefaultBranch({
     this.nextStep,
@@ -32,4 +32,3 @@ class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailure
     );
   }
 }
-

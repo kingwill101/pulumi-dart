@@ -5,165 +5,165 @@ import 'get_cloud_autonomous_vm_cluster_maintenance_window.dart';
 
 /// Result data returned by getCloudAutonomousVmCluster.
 class GetCloudAutonomousVmClusterResult {
-  /// The Amazon Resource Name (ARN) for the Exadata infrastructure.
+  /// Amazon Resource Name (ARN) for the Exadata infrastructure.
   final String arn;
-  /// The percentage of data storage currently in use for Autonomous Databases in the Autonomous VM cluster.
+  /// Percentage of data storage currently in use for Autonomous Databases in the Autonomous VM cluster.
   final double autonomousDataStoragePercentage;
-  /// The data storage size allocated for Autonomous Databases in the Autonomous VM cluster, in TB.
+  /// Data storage size allocated for Autonomous Databases in the Autonomous VM cluster, in TB.
   final double autonomousDataStorageSizeInTbs;
-  /// The available data storage space for Autonomous Databases in the Autonomous VM cluster, in TB.
+  /// Available data storage space for Autonomous Databases in the Autonomous VM cluster, in TB.
   final double availableAutonomousDataStorageSizeInTbs;
-  /// The number of Autonomous CDBs that you can create with the currently available storage.
+  /// Number of Autonomous CDBs that you can create with the currently available storage.
   final int availableContainerDatabases;
-  /// The number of CPU cores available for allocation to Autonomous Databases.
+  /// Number of CPU cores available for allocation to Autonomous Databases.
   final double availableCpus;
   /// Cloud exadata infrastructure ARN associated with this cloud autonomous VM cluster.
   final String cloudExadataInfrastructureArn;
   /// Cloud exadata infrastructure id associated with this cloud autonomous VM cluster.
   final String cloudExadataInfrastructureId;
-  /// The compute model of the Autonomous VM cluster: ECPU or OCPU.
+  /// Compute model of the Autonomous VM cluster: ECPU or OCPU.
   final String computeModel;
-  /// The total number of CPU cores in the Autonomous VM cluster.
+  /// Total number of CPU cores in the Autonomous VM cluster.
   final int cpuCoreCount;
-  /// The number of CPU cores enabled per node in the Autonomous VM cluster.
+  /// Number of CPU cores enabled per node in the Autonomous VM cluster.
   final int cpuCoreCountPerNode;
-  /// he percentage of total CPU cores currently in use in the Autonomous VM cluster.
+  /// Percentage of total CPU cores currently in use in the Autonomous VM cluster.
   final double cpuPercentage;
-  /// The date and time when the Autonomous VM cluster was created.
+  /// Date and time when the Autonomous VM cluster was created.
   final String createdAt;
-  /// The total data storage allocated to the Autonomous VM cluster, in GB.
+  /// Total data storage allocated to the Autonomous VM cluster, in GB.
   final double dataStorageSizeInGbs;
-  /// The total data storage allocated to the Autonomous VM cluster, in TB.
+  /// Total data storage allocated to the Autonomous VM cluster, in TB.
   final double dataStorageSizeInTbs;
-  /// The list of database servers associated with the Autonomous VM cluster.
+  /// List of database servers associated with the Autonomous VM cluster.
   final List<String> dbServers;
-  /// The user-provided description of the Autonomous VM cluster.
+  /// User-provided description of the Autonomous VM cluster.
   final String description;
-  /// The display name of the Autonomous VM cluster.
+  /// Display name of the Autonomous VM cluster.
   final String displayName;
-  /// The domain name of the Autonomous VM cluster.
+  /// Domain name of the Autonomous VM cluster.
   final String domain;
-  /// The minimum value to which you can scale down the Exadata storage, in TB.
+  /// Minimum value to which you can scale down the Exadata storage, in TB.
   final double exadataStorageInTbsLowestScaledValue;
-  /// The hostname of the Autonomous VM cluster.
+  /// Hostname of the Autonomous VM cluster.
   final String hostname;
   final String id;
-  /// Indicates whether mutual TLS (mTLS) authentication is enabled for the Autonomous VM cluster.
+  /// Whether mutual TLS (mTLS) authentication is enabled for the Autonomous VM cluster.
   final bool isMtlsEnabledVmCluster;
-  /// The Oracle license model that applies to the Autonomous VM cluster. Valid values are LICENSE_INCLUDED or BRING_YOUR_OWN_LICENSE.
+  /// Oracle license model that applies to the Autonomous VM cluster. Valid values are LICENSE_INCLUDED or BRING_YOUR_OWN_LICENSE.
   final String licenseModel;
-  /// The maintenance window for the Autonomous VM cluster.
+  /// Maintenance window for the Autonomous VM cluster.
   final List<GetCloudAutonomousVmClusterMaintenanceWindow> maintenanceWindows;
-  /// The minimum value to which you can scale down the maximum number of Autonomous CDBs.
+  /// Minimum value to which you can scale down the maximum number of Autonomous CDBs.
   final int maxAcdsLowestScaledValue;
-  /// The amount of memory allocated per Oracle Compute Unit, in GB.
+  /// Amount of memory allocated per Oracle Compute Unit, in GB.
   final int memoryPerOracleComputeUnitInGbs;
-  /// The total amount of memory allocated to the Autonomous VM cluster, in gigabytes (GB).
+  /// Total amount of memory allocated to the Autonomous VM cluster, in gigabytes (GB).
   final int memorySizeInGbs;
-  /// The number of database server nodes in the Autonomous VM cluster.
+  /// Number of database server nodes in the Autonomous VM cluster.
   final int nodeCount;
-  /// The number of Autonomous CDBs that can't be provisioned because of resource  constraints.
+  /// Number of Autonomous CDBs that can't be provisioned because of resource constraints.
   final int nonProvisionableAutonomousContainerDatabases;
-  /// The name of the OCI resource anchor associated with this Autonomous VM cluster.
+  /// Name of the OCI resource anchor associated with this Autonomous VM cluster.
   final String ociResourceAnchorName;
-  /// The URL for accessing the OCI console page for this Autonomous VM cluster.
+  /// URL for accessing the OCI console page for this Autonomous VM cluster.
   final String ociUrl;
-  /// The Oracle Cloud Identifier (OCID) of the Autonomous VM cluster.
+  /// Oracle Cloud Identifier (OCID) of the Autonomous VM cluster.
   final String ocid;
-  /// The arn of the ODB network associated with this Autonomous VM cluster.
+  /// ARN of the ODB network associated with this Autonomous VM cluster.
   final String odbNetworkArn;
-  /// The unique identifier of the ODB network associated with this Autonomous VM cluster.
+  /// Unique identifier of the ODB network associated with this Autonomous VM cluster.
   final String odbNetworkId;
-  /// The local node storage allocated to the Autonomous VM cluster, in gigabytes (GB).
+  /// Local node storage allocated to the Autonomous VM cluster, in gigabytes (GB).
   final int odbNodeStorageSizeInGbs;
-  /// The progress of the current operation on the Autonomous VM cluster, as a percentage.
+  /// Progress of the current operation on the Autonomous VM cluster, as a percentage.
   final double percentProgress;
-  /// The number of Autonomous CDBs that can be provisioned in the Autonomous VM cluster.
+  /// Number of Autonomous CDBs that can be provisioned in the Autonomous VM cluster.
   final int provisionableAutonomousContainerDatabases;
-  /// The number of Autonomous CDBs currently provisioned in the Autonomous VM cluster.
+  /// Number of Autonomous CDBs currently provisioned in the Autonomous VM cluster.
   final int provisionedAutonomousContainerDatabases;
-  /// The number of CPU cores currently provisioned in the Autonomous VM cluster.
+  /// Number of CPU cores currently provisioned in the Autonomous VM cluster.
   final double provisionedCpus;
-  /// The number of CPU cores that can be reclaimed from terminated or scaled-down Autonomous Databases.
+  /// Number of CPU cores that can be reclaimed from terminated or scaled-down Autonomous Databases.
   final double reclaimableCpus;
   final String region;
-  /// The number of CPU cores reserved for system operations and redundancy.
+  /// Number of CPU cores reserved for system operations and redundancy.
   final double reservedCpus;
-  /// The SCAN listener port for non-TLS (TCP) protocol. The default is 1521.
+  /// SCAN listener port for non-TLS (TCP) protocol. The default is 1521.
   final int scanListenerPortNonTls;
-  /// The SCAN listener port for TLS (TCP) protocol. The default is 2484.
+  /// SCAN listener port for TLS (TCP) protocol. The default is 2484.
   final int scanListenerPortTls;
-  /// The shape of the Exadata infrastructure for the Autonomous VM cluster.
+  /// Shape of the Exadata infrastructure for the Autonomous VM cluster.
   final String shape;
-  /// The status of the Autonomous VM cluster.
+  /// Status of the Autonomous VM cluster.
   final String status;
   /// Additional information about the current status of the Autonomous VM cluster.
   final String statusReason;
-  /// A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the exadata infrastructure. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Map<String, String> tags;
-  /// The expiration date and time of the database SSL certificate.
+  /// Expiration date and time of the database SSL certificate.
   final String timeDatabaseSslCertificateExpires;
-  /// The expiration date and time of the Oracle REST Data Services (ORDS)certificate.
+  /// Expiration date and time of the Oracle REST Data Services (ORDS) certificate.
   final String timeOrdsCertificateExpires;
-  /// The time zone of the Autonomous VM cluster.
+  /// Time zone of the Autonomous VM cluster.
   final String timeZone;
-  /// The total number of Autonomous Container Databases that can be created with the allocated local storage.
+  /// Total number of Autonomous Container Databases that can be created with the allocated local storage.
   final int totalContainerDatabases;
 
   /// Creates a new [GetCloudAutonomousVmClusterResult].
-  /// [arn] The Amazon Resource Name (ARN) for the Exadata infrastructure.
-  /// [autonomousDataStoragePercentage] The percentage of data storage currently in use for Autonomous Databases in the Autonomous VM cluster.
-  /// [autonomousDataStorageSizeInTbs] The data storage size allocated for Autonomous Databases in the Autonomous VM cluster, in TB.
-  /// [availableAutonomousDataStorageSizeInTbs] The available data storage space for Autonomous Databases in the Autonomous VM cluster, in TB.
-  /// [availableContainerDatabases] The number of Autonomous CDBs that you can create with the currently available storage.
-  /// [availableCpus] The number of CPU cores available for allocation to Autonomous Databases.
+  /// [arn] Amazon Resource Name (ARN) for the Exadata infrastructure.
+  /// [autonomousDataStoragePercentage] Percentage of data storage currently in use for Autonomous Databases in the Autonomous VM cluster.
+  /// [autonomousDataStorageSizeInTbs] Data storage size allocated for Autonomous Databases in the Autonomous VM cluster, in TB.
+  /// [availableAutonomousDataStorageSizeInTbs] Available data storage space for Autonomous Databases in the Autonomous VM cluster, in TB.
+  /// [availableContainerDatabases] Number of Autonomous CDBs that you can create with the currently available storage.
+  /// [availableCpus] Number of CPU cores available for allocation to Autonomous Databases.
   /// [cloudExadataInfrastructureArn] Cloud exadata infrastructure ARN associated with this cloud autonomous VM cluster.
   /// [cloudExadataInfrastructureId] Cloud exadata infrastructure id associated with this cloud autonomous VM cluster.
-  /// [computeModel] The compute model of the Autonomous VM cluster: ECPU or OCPU.
-  /// [cpuCoreCount] The total number of CPU cores in the Autonomous VM cluster.
-  /// [cpuCoreCountPerNode] The number of CPU cores enabled per node in the Autonomous VM cluster.
-  /// [cpuPercentage] he percentage of total CPU cores currently in use in the Autonomous VM cluster.
-  /// [createdAt] The date and time when the Autonomous VM cluster was created.
-  /// [dataStorageSizeInGbs] The total data storage allocated to the Autonomous VM cluster, in GB.
-  /// [dataStorageSizeInTbs] The total data storage allocated to the Autonomous VM cluster, in TB.
-  /// [dbServers] The list of database servers associated with the Autonomous VM cluster.
-  /// [description] The user-provided description of the Autonomous VM cluster.
-  /// [displayName] The display name of the Autonomous VM cluster.
-  /// [domain] The domain name of the Autonomous VM cluster.
-  /// [exadataStorageInTbsLowestScaledValue] The minimum value to which you can scale down the Exadata storage, in TB.
-  /// [hostname] The hostname of the Autonomous VM cluster.
+  /// [computeModel] Compute model of the Autonomous VM cluster: ECPU or OCPU.
+  /// [cpuCoreCount] Total number of CPU cores in the Autonomous VM cluster.
+  /// [cpuCoreCountPerNode] Number of CPU cores enabled per node in the Autonomous VM cluster.
+  /// [cpuPercentage] Percentage of total CPU cores currently in use in the Autonomous VM cluster.
+  /// [createdAt] Date and time when the Autonomous VM cluster was created.
+  /// [dataStorageSizeInGbs] Total data storage allocated to the Autonomous VM cluster, in GB.
+  /// [dataStorageSizeInTbs] Total data storage allocated to the Autonomous VM cluster, in TB.
+  /// [dbServers] List of database servers associated with the Autonomous VM cluster.
+  /// [description] User-provided description of the Autonomous VM cluster.
+  /// [displayName] Display name of the Autonomous VM cluster.
+  /// [domain] Domain name of the Autonomous VM cluster.
+  /// [exadataStorageInTbsLowestScaledValue] Minimum value to which you can scale down the Exadata storage, in TB.
+  /// [hostname] Hostname of the Autonomous VM cluster.
   /// [id] Required.
-  /// [isMtlsEnabledVmCluster] Indicates whether mutual TLS (mTLS) authentication is enabled for the Autonomous VM cluster.
-  /// [licenseModel] The Oracle license model that applies to the Autonomous VM cluster. Valid values are LICENSE_INCLUDED or BRING_YOUR_OWN_LICENSE.
-  /// [maintenanceWindows] The maintenance window for the Autonomous VM cluster.
-  /// [maxAcdsLowestScaledValue] The minimum value to which you can scale down the maximum number of Autonomous CDBs.
-  /// [memoryPerOracleComputeUnitInGbs] The amount of memory allocated per Oracle Compute Unit, in GB.
-  /// [memorySizeInGbs] The total amount of memory allocated to the Autonomous VM cluster, in gigabytes (GB).
-  /// [nodeCount] The number of database server nodes in the Autonomous VM cluster.
-  /// [nonProvisionableAutonomousContainerDatabases] The number of Autonomous CDBs that can't be provisioned because of resource  constraints.
-  /// [ociResourceAnchorName] The name of the OCI resource anchor associated with this Autonomous VM cluster.
-  /// [ociUrl] The URL for accessing the OCI console page for this Autonomous VM cluster.
-  /// [ocid] The Oracle Cloud Identifier (OCID) of the Autonomous VM cluster.
-  /// [odbNetworkArn] The arn of the ODB network associated with this Autonomous VM cluster.
-  /// [odbNetworkId] The unique identifier of the ODB network associated with this Autonomous VM cluster.
-  /// [odbNodeStorageSizeInGbs] The local node storage allocated to the Autonomous VM cluster, in gigabytes (GB).
-  /// [percentProgress] The progress of the current operation on the Autonomous VM cluster, as a percentage.
-  /// [provisionableAutonomousContainerDatabases] The number of Autonomous CDBs that can be provisioned in the Autonomous VM cluster.
-  /// [provisionedAutonomousContainerDatabases] The number of Autonomous CDBs currently provisioned in the Autonomous VM cluster.
-  /// [provisionedCpus] The number of CPU cores currently provisioned in the Autonomous VM cluster.
-  /// [reclaimableCpus] The number of CPU cores that can be reclaimed from terminated or scaled-down Autonomous Databases.
+  /// [isMtlsEnabledVmCluster] Whether mutual TLS (mTLS) authentication is enabled for the Autonomous VM cluster.
+  /// [licenseModel] Oracle license model that applies to the Autonomous VM cluster. Valid values are LICENSE_INCLUDED or BRING_YOUR_OWN_LICENSE.
+  /// [maintenanceWindows] Maintenance window for the Autonomous VM cluster.
+  /// [maxAcdsLowestScaledValue] Minimum value to which you can scale down the maximum number of Autonomous CDBs.
+  /// [memoryPerOracleComputeUnitInGbs] Amount of memory allocated per Oracle Compute Unit, in GB.
+  /// [memorySizeInGbs] Total amount of memory allocated to the Autonomous VM cluster, in gigabytes (GB).
+  /// [nodeCount] Number of database server nodes in the Autonomous VM cluster.
+  /// [nonProvisionableAutonomousContainerDatabases] Number of Autonomous CDBs that can't be provisioned because of resource constraints.
+  /// [ociResourceAnchorName] Name of the OCI resource anchor associated with this Autonomous VM cluster.
+  /// [ociUrl] URL for accessing the OCI console page for this Autonomous VM cluster.
+  /// [ocid] Oracle Cloud Identifier (OCID) of the Autonomous VM cluster.
+  /// [odbNetworkArn] ARN of the ODB network associated with this Autonomous VM cluster.
+  /// [odbNetworkId] Unique identifier of the ODB network associated with this Autonomous VM cluster.
+  /// [odbNodeStorageSizeInGbs] Local node storage allocated to the Autonomous VM cluster, in gigabytes (GB).
+  /// [percentProgress] Progress of the current operation on the Autonomous VM cluster, as a percentage.
+  /// [provisionableAutonomousContainerDatabases] Number of Autonomous CDBs that can be provisioned in the Autonomous VM cluster.
+  /// [provisionedAutonomousContainerDatabases] Number of Autonomous CDBs currently provisioned in the Autonomous VM cluster.
+  /// [provisionedCpus] Number of CPU cores currently provisioned in the Autonomous VM cluster.
+  /// [reclaimableCpus] Number of CPU cores that can be reclaimed from terminated or scaled-down Autonomous Databases.
   /// [region] Required.
-  /// [reservedCpus] The number of CPU cores reserved for system operations and redundancy.
-  /// [scanListenerPortNonTls] The SCAN listener port for non-TLS (TCP) protocol. The default is 1521.
-  /// [scanListenerPortTls] The SCAN listener port for TLS (TCP) protocol. The default is 2484.
-  /// [shape] The shape of the Exadata infrastructure for the Autonomous VM cluster.
-  /// [status] The status of the Autonomous VM cluster.
+  /// [reservedCpus] Number of CPU cores reserved for system operations and redundancy.
+  /// [scanListenerPortNonTls] SCAN listener port for non-TLS (TCP) protocol. The default is 1521.
+  /// [scanListenerPortTls] SCAN listener port for TLS (TCP) protocol. The default is 2484.
+  /// [shape] Shape of the Exadata infrastructure for the Autonomous VM cluster.
+  /// [status] Status of the Autonomous VM cluster.
   /// [statusReason] Additional information about the current status of the Autonomous VM cluster.
-  /// [tags] A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [timeDatabaseSslCertificateExpires] The expiration date and time of the database SSL certificate.
-  /// [timeOrdsCertificateExpires] The expiration date and time of the Oracle REST Data Services (ORDS)certificate.
-  /// [timeZone] The time zone of the Autonomous VM cluster.
-  /// [totalContainerDatabases] The total number of Autonomous Container Databases that can be created with the allocated local storage.
+  /// [tags] Map of tags to assign to the exadata infrastructure. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [timeDatabaseSslCertificateExpires] Expiration date and time of the database SSL certificate.
+  /// [timeOrdsCertificateExpires] Expiration date and time of the Oracle REST Data Services (ORDS) certificate.
+  /// [timeZone] Time zone of the Autonomous VM cluster.
+  /// [totalContainerDatabases] Total number of Autonomous Container Databases that can be created with the allocated local storage.
   const GetCloudAutonomousVmClusterResult({
     required this.arn,
     required this.autonomousDataStoragePercentage,
@@ -336,4 +336,3 @@ class GetCloudAutonomousVmClusterResult {
     );
   }
 }
-

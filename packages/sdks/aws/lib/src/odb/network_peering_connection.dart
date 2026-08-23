@@ -83,6 +83,24 @@ import 'network_peering_connection_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_odb_networkpeeringconnection" "example" {
+///   display_name    = "example"
+///   odb_network_id  = "my-odb-network-id"
+///   peer_network_id = "my-vpc-id"
+///   tags = {
+///     "env" = "dev"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +109,8 @@ import 'network_peering_connection_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.odb.NetworkPeeringConnection;
 /// import com.pulumi.aws.odb.NetworkPeeringConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -135,22 +153,25 @@ import 'network_peering_connection_timeouts.dart';
 /// $ pulumi import aws:odb/networkPeeringConnection:NetworkPeeringConnection example example
 /// ```
 class NetworkPeeringConnection extends pulumi.CustomResource {
+  /// ARN of the ODB network peering connection.
   late final pulumi.Output<String> arn;
   /// Created time of the ODB network peering connection.
   late final pulumi.Output<String> createdAt;
   /// Display name of the ODB network peering connection. Changing this will force Terraform to create a new resource.
-  ///
-  /// The following arguments are optional:
   late final pulumi.Output<String> displayName;
-  /// ARN of the ODB network that initiates the peering connection. Changing this will force Terraform to create a new resource. Either odb_network_id or odb_network_arn should be used.
+  /// ARN of the ODB network that initiates the peering connection. Changing this will force Terraform to create a new resource. Either odbNetworkId or odbNetworkArn should be used.
   late final pulumi.Output<String> odbNetworkArn;
-  /// The unique identifier of the ODB network that initiates the peering connection. A sample ID is `odbpcx-abcdefgh12345678`. Changing this will force Terraform to create a new resource.
+  /// Unique identifier of the ODB network that initiates the peering connection. A sample ID is `odbpcx-abcdefgh12345678`. Changing this will force Terraform to create a new resource.
   late final pulumi.Output<String> odbNetworkId;
   /// Type of the ODB peering connection.
   late final pulumi.Output<String> odbPeeringConnectionType;
   /// ARN of the peer network peering connection.
   late final pulumi.Output<String> peerNetworkArn;
-  /// The unique identifier of the ODB peering connection. Changing this will force Terraform to create a new resource. Either odb_network_id or odb_network_arn should be used.
+  /// Set of peer network cidrs. Add remove is only supported during update operation. During create this attribute is compute only.
+  late final pulumi.Output<List<String>> peerNetworkCidrs;
+  /// Unique identifier of the ODB peering connection. Changing this will force Terraform to create a new resource. Either odbNetworkId or odbNetworkArn should be used.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> peerNetworkId;
   /// Progress of the ODB network peering connection.
   late final pulumi.Output<double> percentProgress;
@@ -158,11 +179,11 @@ class NetworkPeeringConnection extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Status of the ODB network peering connection.
   late final pulumi.Output<String> status;
-  /// The reason for the current status of the ODB peering connection.
+  /// Reason for the current status of the ODB peering connection.
   late final pulumi.Output<String> statusReason;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including inherited tags.
+  /// Map of tags assigned to the resource, including inherited tags.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<NetworkPeeringConnectionTimeouts?> timeouts;
 
@@ -187,6 +208,7 @@ class NetworkPeeringConnection extends pulumi.CustomResource {
     odbNetworkId = registerOutput<String>('odbNetworkId');
     odbPeeringConnectionType = registerOutput<String>('odbPeeringConnectionType');
     peerNetworkArn = registerOutput<String>('peerNetworkArn');
+    peerNetworkCidrs = registerOutput<List<String>>('peerNetworkCidrs');
     peerNetworkId = registerOutput<String>('peerNetworkId');
     percentProgress = registerOutput<double>('percentProgress');
     region = registerOutput<String>('region');
@@ -227,6 +249,7 @@ class NetworkPeeringConnection extends pulumi.CustomResource {
     odbNetworkId = registerOutput<String>('odbNetworkId');
     odbPeeringConnectionType = registerOutput<String>('odbPeeringConnectionType');
     peerNetworkArn = registerOutput<String>('peerNetworkArn');
+    peerNetworkCidrs = registerOutput<List<String>>('peerNetworkCidrs');
     peerNetworkId = registerOutput<String>('peerNetworkId');
     percentProgress = registerOutput<double>('percentProgress');
     region = registerOutput<String>('region');

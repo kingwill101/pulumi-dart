@@ -36,4 +36,3 @@ class ClusterServerlessv2ScalingConfiguration {
     );
   }
 }
-

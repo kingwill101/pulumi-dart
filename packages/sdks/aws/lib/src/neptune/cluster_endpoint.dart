@@ -65,6 +65,21 @@ import 'cluster_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_neptune_clusterendpoint" "example" {
+///   cluster_identifier          = test.clusterIdentifier
+///   cluster_endpoint_identifier = "example"
+///   endpoint_type               = "READER"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'cluster_endpoint_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.neptune.ClusterEndpoint;
 /// import com.pulumi.aws.neptune.ClusterEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -130,9 +145,9 @@ class ClusterEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// List of DB instance identifiers that are part of the custom endpoint group.
   late final pulumi.Output<List<String>?> staticMembers;
-  /// A map of tags to assign to the Neptune cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the Neptune cluster. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ClusterEndpoint].

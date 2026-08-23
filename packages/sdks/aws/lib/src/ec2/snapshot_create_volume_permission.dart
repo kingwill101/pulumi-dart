@@ -79,13 +79,13 @@ import 'snapshot_create_volume_permission_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSnapshot, err := ebs.NewSnapshot(ctx, "example_snapshot", &ebs.SnapshotArgs{
-/// 			VolumeId: example.ID(),
+/// 			VolumeId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewSnapshotCreateVolumePermission(ctx, "example_perm", &ec2.SnapshotCreateVolumePermissionArgs{
-/// 			SnapshotId: exampleSnapshot.ID(),
+/// 			SnapshotId: exampleSnapshot.ID().ToIDOutput().ToStringOutput(),
 /// 			AccountId:  pulumi.String("12345678"),
 /// 		})
 /// 		if err != nil {
@@ -93,6 +93,27 @@ import 'snapshot_create_volume_permission_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_snapshotcreatevolumepermission" "example_perm" {
+///   snapshot_id = aws_ebs_snapshot.example_snapshot.id
+///   account_id  = "12345678"
+/// }
+/// resource "aws_ebs_volume" "example" {
+///   availability_zone = "us-west-2a"
+///   size              = 40
+/// }
+/// resource "aws_ebs_snapshot" "example_snapshot" {
+///   volume_id = aws_ebs_volume.example.id
 /// }
 /// ```
 /// ```java
@@ -107,8 +128,8 @@ import 'snapshot_create_volume_permission_state.dart';
 /// import com.pulumi.aws.ebs.SnapshotArgs;
 /// import com.pulumi.aws.ec2.SnapshotCreateVolumePermission;
 /// import com.pulumi.aws.ec2.SnapshotCreateVolumePermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -64,6 +64,20 @@ import 'open_zfs_volume_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_fsx_openzfsvolume" "test" {
+///   name             = "testvolume"
+///   parent_volume_id = testAwsFsxOpenzfsFileSystem.rootVolumeId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +86,8 @@ import 'open_zfs_volume_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.fsx.OpenZfsVolume;
 /// import com.pulumi.aws.fsx.OpenZfsVolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -113,36 +127,37 @@ import 'open_zfs_volume_state.dart';
 class OpenZfsVolume extends pulumi.CustomResource {
   /// Amazon Resource Name of the file system.
   late final pulumi.Output<String> arn;
-  /// A boolean flag indicating whether tags for the file system should be copied to snapshots. The default value is false.
+  /// Whether tags for the file system should be copied to snapshots. Default is false.
   late final pulumi.Output<bool?> copyTagsToSnapshots;
   /// Method used to compress the data on the volume. Valid values are `NONE` or `ZSTD`. Child volumes that don't specify compression option will inherit from parent volume. This option on file system applies to the root volume.
   late final pulumi.Output<String?> dataCompressionType;
   /// Whether to delete all child volumes and snapshots. Valid values: `DELETE_CHILD_VOLUMES_AND_SNAPSHOTS`. This configuration must be applied separately before attempting to delete the resource to have the desired behavior..
   late final pulumi.Output<String?> deleteVolumeOptions;
-  /// The name of the Volume. You can use a maximum of 203 alphanumeric characters, plus the underscore (_) special character.
+  /// Name of the volume. You can use a maximum of 203 alphanumeric characters, plus the underscore (_) special character.
   late final pulumi.Output<String> name;
-  /// NFS export configuration for the root volume. Exactly 1 item. See `nfs_exports` Block Below for details.
+  /// NFS export configuration for the root volume. Exactly 1 item. See `nfsExports` Block Below for details.
   late final pulumi.Output<OpenZfsVolumeNfsExports?> nfsExports;
-  /// Specifies the configuration to use when creating the OpenZFS volume. See `origin_snapshot` Block below for details.
+  /// Configuration to use when creating the OpenZFS volume. See `originSnapshot` Block below for details.
   late final pulumi.Output<OpenZfsVolumeOriginSnapshot?> originSnapshot;
-  /// The volume id of volume that will be the parent volume for the volume being created, this could be the root volume created from the `aws.fsx.OpenZfsFileSystem` resource with the `root_volume_id` or the `id` property of another `aws.fsx.OpenZfsVolume`.
+  /// Volume ID of the volume that will be the parent volume for the volume being created, this could be the root volume created from the `aws.fsx.OpenZfsFileSystem` resource with the `rootVolumeId` or the `id` property of another `aws.fsx.OpenZfsVolume`.
   late final pulumi.Output<String> parentVolumeId;
-  /// specifies whether the volume is read-only. Default is false.
+  /// Whether the volume is read-only. Default is false.
   late final pulumi.Output<bool> readOnly;
-  /// The record size of an OpenZFS volume, in kibibytes (KiB). Valid values are `4`, `8`, `16`, `32`, `64`, `128`, `256`, `512`, or `1024` KiB. The default is `128` KiB.
+  /// Record size of an OpenZFS volume, in kibibytes (KiB). Valid values are `4`, `8`, `16`, `32`, `64`, `128`, `256`, `512`, or `1024` KiB. Default is `128` KiB.
   late final pulumi.Output<int?> recordSizeKib;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The maximum amount of storage in gibibytes (GiB) that the volume can use from its parent.
+  /// Maximum amount of storage in gibibytes (GiB) that the volume can use from its parent.
   late final pulumi.Output<int> storageCapacityQuotaGib;
-  /// The amount of storage in gibibytes (GiB) to reserve from the parent volume.
+  /// Amount of storage in gibibytes (GiB) to reserve from the parent volume.
   late final pulumi.Output<int> storageCapacityReservationGib;
-  /// A map of tags to assign to the file system. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Specify how much storage users or groups can use on the volume. Maximum number of items defined by [FSx for OpenZFS Resource quota](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/limits.html#limits-openzfs-resources-file-system). See `user_and_group_quotas` Block Below.
+  /// Specify how much storage users or groups can use on the volume. Maximum number of items defined by [FSx for OpenZFS Resource quota](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/limits.html#limits-openzfs-resources-file-system). See `userAndGroupQuotas` Block Below.
   late final pulumi.Output<List<Map<String, dynamic>>> userAndGroupQuotas;
+  /// Volume type. Default is `OPENZFS`.
   late final pulumi.Output<String?> volumeType;
 
   /// Creates a new [OpenZfsVolume].

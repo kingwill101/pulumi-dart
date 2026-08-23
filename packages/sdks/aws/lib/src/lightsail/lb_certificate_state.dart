@@ -11,7 +11,7 @@ class LbCertificateState {
   final pulumi.Input<String>? createdAt;
   /// Domain name (e.g., example.com) for your SSL/TLS certificate.
   final pulumi.Input<String>? domainName;
-  /// Set of domain validation objects which can be used to complete certificate validation. Can have more than one element, e.g., if SANs are defined.
+  /// Set of domain validation objects which can be used to complete certificate validation. Can have more than one element, e.g., if SANs are defined. Each element contains the following attributes:
   final pulumi.Input<List<LbCertificateDomainValidationRecord>>? domainValidationRecords;
   /// Load balancer name where you want to create the SSL/TLS certificate.
   final pulumi.Input<String>? lbName;
@@ -21,7 +21,7 @@ class LbCertificateState {
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Set of domains that should be SANs in the issued certificate. `domain_name` attribute is automatically added as a Subject Alternative Name.
+  /// Set of domains that should be SANs in the issued certificate. `domainName` attribute is automatically added as a Subject Alternative Name.
   final pulumi.Input<List<String>>? subjectAlternativeNames;
   /// Support code for the certificate.
   final pulumi.Input<String>? supportCode;
@@ -30,11 +30,11 @@ class LbCertificateState {
   /// [arn] ARN of the lightsail certificate.
   /// [createdAt] Timestamp when the instance was created.
   /// [domainName] Domain name (e.g., example.com) for your SSL/TLS certificate.
-  /// [domainValidationRecords] Set of domain validation objects which can be used to complete certificate validation. Can have more than one element, e.g., if SANs are defined.
+  /// [domainValidationRecords] Set of domain validation objects which can be used to complete certificate validation. Can have more than one element, e.g., if SANs are defined. Each element contains the following attributes:
   /// [lbName] Load balancer name where you want to create the SSL/TLS certificate.
   /// [name] SSL/TLS certificate name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [subjectAlternativeNames] Set of domains that should be SANs in the issued certificate. `domain_name` attribute is automatically added as a Subject Alternative Name.
+  /// [subjectAlternativeNames] Set of domains that should be SANs in the issued certificate. `domainName` attribute is automatically added as a Subject Alternative Name.
   /// [supportCode] Support code for the certificate.
   const LbCertificateState({
     this.arn,
@@ -76,4 +76,3 @@ class LbCertificateState {
     );
   }
 }
-

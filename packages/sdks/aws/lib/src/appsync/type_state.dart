@@ -6,26 +6,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TypeState {
   /// GraphQL API ID.
   final pulumi.Input<String>? apiId;
-  /// The ARN of the type.
+  /// ARN of the type.
   final pulumi.Input<String>? arn;
-  /// The type definition.
+  /// Type definition.
   final pulumi.Input<String>? definition;
-  /// The type description.
+  /// Type description.
   final pulumi.Input<String>? description;
-  /// The type format: `SDL` or `JSON`.
+  /// Type format: `SDL` or `JSON`.
   final pulumi.Input<String>? format;
-  /// The type name.
+  /// Type name.
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [TypeState].
   /// [apiId] GraphQL API ID.
-  /// [arn] The ARN of the type.
-  /// [definition] The type definition.
-  /// [description] The type description.
-  /// [format] The type format: `SDL` or `JSON`.
-  /// [name] The type name.
+  /// [arn] ARN of the type.
+  /// [definition] Type definition.
+  /// [description] Type description.
+  /// [format] Type format: `SDL` or `JSON`.
+  /// [name] Type name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const TypeState({
     this.apiId,
@@ -61,4 +61,3 @@ class TypeState {
     );
   }
 }
-

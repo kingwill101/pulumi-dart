@@ -4,17 +4,17 @@ import 'route_table_state.dart';
 
 /// Provides a resource to create a VPC routing table.
 ///
-/// &gt; **NOTE on `gateway_id` and `nat_gateway_id`:** The AWS API is very forgiving with these two
+/// &gt; **NOTE on `gatewayId` and `natGatewayId`:** The AWS API is very forgiving with these two
 /// attributes and the `aws.ec2.RouteTable` resource can be created with a NAT ID specified as a Gateway ID attribute.
 /// This _will_ lead to a permanent diff between your configuration and statefile, as the API returns the correct
 /// parameters in the returned route table. If you're experiencing constant diffs in your `aws.ec2.RouteTable` resources,
 /// the first thing to check is whether or not you're specifying a NAT ID instead of a Gateway ID, or vice-versa.
 ///
-/// &gt; **NOTE on `propagating_vgws` and the `aws.ec2.VpnGatewayRoutePropagation` resource:**
-/// If the `propagating_vgws` argument is present, it's not supported to _also_
+/// &gt; **NOTE on `propagatingVgws` and the `aws.ec2.VpnGatewayRoutePropagation` resource:**
+/// If the `propagatingVgws` argument is present, it's not supported to _also_
 /// define route propagations using `aws.ec2.VpnGatewayRoutePropagation`, since
 /// this resource will delete any propagating gateways not explicitly listed in
-/// `propagating_vgws`. Omit this argument when defining route propagation using
+/// `propagatingVgws`. Omit this argument when defining route propagation using
 /// the separate resource.
 ///
 /// ## Example Usage
@@ -128,6 +128,30 @@ import 'route_table_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_routetable" "example" {
+///   vpc_id = exampleAwsVpc.id
+///   routes {
+///     cidr_block = "10.0.1.0/24"
+///     gateway_id = exampleAwsInternetGateway.id
+///   }
+///   routes {
+///     ipv6_cidr_block        = "::/0"
+///     egress_only_gateway_id = exampleAwsEgressOnlyInternetGateway.id
+///   }
+///   tags = {
+///     "Name" = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -137,8 +161,8 @@ import 'route_table_state.dart';
 /// import com.pulumi.aws.ec2.RouteTable;
 /// import com.pulumi.aws.ec2.RouteTableArgs;
 /// import com.pulumi.aws.ec2.inputs.RouteTableRouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -253,6 +277,22 @@ import 'route_table_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_routetable" "example" {
+///   vpc_id = exampleAwsVpc.id
+///   tags = {
+///     "Name" = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -261,8 +301,8 @@ import 'route_table_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.RouteTable;
 /// import com.pulumi.aws.ec2.RouteTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -372,7 +412,7 @@ import 'route_table_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewRouteTable(ctx, "test", &ec2.RouteTableArgs{
-/// 			VpcId: test.ID(),
+/// 			VpcId: test.ID().ToIDOutput().ToStringOutput(),
 /// 			Routes: ec2.RouteTableRouteArray{
 /// 				&ec2.RouteTableRouteArgs{
 /// 					CidrBlock: pulumi.String("10.1.0.0/16"),
@@ -387,6 +427,26 @@ import 'route_table_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "test" {
+///   cidr_block = "10.1.0.0/16"
+/// }
+/// resource "aws_ec2_routetable" "test" {
+///   vpc_id = aws_ec2_vpc.test.id
+///   routes {
+///     cidr_block = "10.1.0.0/16"
+///     gateway_id = "local"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -398,8 +458,8 @@ import 'route_table_state.dart';
 /// import com.pulumi.aws.ec2.RouteTable;
 /// import com.pulumi.aws.ec2.RouteTableArgs;
 /// import com.pulumi.aws.ec2.inputs.RouteTableRouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -537,23 +597,23 @@ import 'route_table_state.dart';
 /// 		}
 /// 		testSubnet, err := ec2.NewSubnet(ctx, "test", &ec2.SubnetArgs{
 /// 			CidrBlock: pulumi.String("10.1.1.0/24"),
-/// 			VpcId:     test.ID(),
+/// 			VpcId:     test.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		testNetworkInterface, err := ec2.NewNetworkInterface(ctx, "test", &ec2.NetworkInterfaceArgs{
-/// 			SubnetId: testSubnet.ID(),
+/// 			SubnetId: testSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewRouteTable(ctx, "test", &ec2.RouteTableArgs{
-/// 			VpcId: test.ID(),
+/// 			VpcId: test.ID().ToIDOutput().ToStringOutput(),
 /// 			Routes: ec2.RouteTableRouteArray{
 /// 				&ec2.RouteTableRouteArgs{
 /// 					CidrBlock:          test.CidrBlock,
-/// 					NetworkInterfaceId: testNetworkInterface.ID(),
+/// 					NetworkInterfaceId: testNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -562,6 +622,33 @@ import 'route_table_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "test" {
+///   cidr_block = "10.1.0.0/16"
+/// }
+/// resource "aws_ec2_routetable" "test" {
+///   vpc_id = aws_ec2_vpc.test.id
+///   routes {
+///     cidr_block           = aws_ec2_vpc.test.cidr_block
+///     network_interface_id = aws_ec2_networkinterface.test.id
+///   }
+/// }
+/// resource "aws_ec2_subnet" "test" {
+///   cidr_block = "10.1.1.0/24"
+///   vpc_id     = aws_ec2_vpc.test.id
+/// }
+/// resource "aws_ec2_networkinterface" "test" {
+///   subnet_id = aws_ec2_subnet.test.id
 /// }
 /// ```
 /// ```java
@@ -579,8 +666,8 @@ import 'route_table_state.dart';
 /// import com.pulumi.aws.ec2.RouteTable;
 /// import com.pulumi.aws.ec2.RouteTableArgs;
 /// import com.pulumi.aws.ec2.inputs.RouteTableRouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -656,7 +743,7 @@ import 'route_table_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -679,9 +766,9 @@ class RouteTable extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE on Route Tables and Routes:** This provider currently provides both a standalone Route resource (`aws.ec2.Route`) and a Route Table resource with routes defined in-line (`aws.ec2.RouteTable`). At this time you cannot use a `aws.ec2.RouteTable` inline `route` blocks in conjunction with any `aws.ec2.Route` resources. Doing so will cause a conflict of rule settings and will overwrite rules.
   late final pulumi.Output<List<Map<String, dynamic>>> routes;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The VPC ID.
   late final pulumi.Output<String> vpcId;

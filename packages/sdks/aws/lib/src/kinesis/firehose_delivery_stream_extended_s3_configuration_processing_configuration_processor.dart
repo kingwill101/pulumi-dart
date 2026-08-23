@@ -31,4 +31,3 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProces
     );
   }
 }
-

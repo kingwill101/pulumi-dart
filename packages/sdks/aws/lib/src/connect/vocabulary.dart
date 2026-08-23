@@ -79,7 +79,7 @@ import 'vocabulary_state.dart';
 /// 		_, err := connect.NewVocabulary(ctx, "example", &connect.VocabularyArgs{
 /// 			InstanceId:   pulumi.String("aaaaaaaa-bbbb-cccc-dddd-111111111111"),
 /// 			Name:         pulumi.String("example"),
-/// 			Content:      pulumi.String("Phrase	IPA	SoundsLike	DisplayAs\nLos-Angeles			Los Angeles\nF.B.I.	ɛ f b i aɪ		FBI\nEtienne		eh-tee-en	"),
+/// 			Content:      pulumi.String("Phrase\tIPA\tSoundsLike\tDisplayAs\nLos-Angeles\t\t\tLos Angeles\nF.B.I.\tɛ f b i aɪ\t\tFBI\nEtienne\t\teh-tee-en\t"),
 /// 			LanguageCode: pulumi.String("en-US"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Key1": pulumi.String("Value1"),
@@ -92,6 +92,25 @@ import 'vocabulary_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_vocabulary" "example" {
+///   instance_id   = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name          = "example"
+///   content       = "Phrase\tIPA\tSoundsLike\tDisplayAs\nLos-Angeles\t\t\tLos Angeles\nF.B.I.\tɛ f b i aɪ\t\tFBI\nEtienne\t\teh-tee-en\t"
+///   language_code = "en-US"
+///   tags = {
+///     "Key1" = "Value1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +119,8 @@ import 'vocabulary_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.Vocabulary;
 /// import com.pulumi.aws.connect.VocabularyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -148,7 +167,7 @@ import 'vocabulary_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amazon Connect Vocabularies using the `instance_id` and `vocabulary_id` separated by a colon (`:`). For example:
+/// Using `pulumi import`, import Amazon Connect Vocabularies using the `instanceId` and `vocabularyId` separated by a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:connect/vocabulary:Vocabulary example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
@@ -173,9 +192,9 @@ class Vocabulary extends pulumi.CustomResource {
   /// The current state of the custom vocabulary. Valid values are `CREATION_IN_PROGRESS`, `ACTIVE`, `CREATION_FAILED`, `DELETE_IN_PROGRESS`.
   late final pulumi.Output<String> state;
   /// Tags to apply to the vocabulary. If configured with a provider
-  /// `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The identifier of the custom vocabulary.
   late final pulumi.Output<String> vocabularyId;

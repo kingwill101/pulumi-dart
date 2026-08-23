@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkManagedServiceStsAccess {
   final pulumi.Input<String> domainName;
   final pulumi.Input<List<String>> ipv4Addresses;
-  /// The status of the network resource.
+  /// Status of the network resource.
   final pulumi.Input<String> status;
   final pulumi.Input<String> stsPolicyDocument;
 
   /// Creates a new [GetNetworkManagedServiceStsAccess].
   /// [domainName] Required.
   /// [ipv4Addresses] Required.
-  /// [status] The status of the network resource.
+  /// [status] Status of the network resource.
   /// [stsPolicyDocument] Required.
   const GetNetworkManagedServiceStsAccess({
     required this.domainName,
@@ -39,4 +39,3 @@ class GetNetworkManagedServiceStsAccess {
     );
   }
 }
-

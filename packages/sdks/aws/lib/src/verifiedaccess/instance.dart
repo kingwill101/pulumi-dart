@@ -72,6 +72,22 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedaccess_instance" "example" {
+///   description = "example"
+///   tags = {
+///     "Name" = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +96,8 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.verifiedaccess.Instance;
 /// import com.pulumi.aws.verifiedaccess.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -112,7 +128,7 @@ import 'instance_state.dart';
 /// ```
 ///
 ///
-/// ### With `fips_enabled`
+/// ### With `fipsEnabled`
 ///
 ///
 /// ```typescript
@@ -162,6 +178,19 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedaccess_instance" "example" {
+///   fips_enabled = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -170,8 +199,8 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.verifiedaccess.Instance;
 /// import com.pulumi.aws.verifiedaccess.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -199,7 +228,7 @@ import 'instance_state.dart';
 /// ```
 ///
 ///
-/// ### With `cidr_endpoints_custom_subdomain`
+/// ### With `cidrEndpointsCustomSubdomain`
 ///
 ///
 /// ```typescript
@@ -249,6 +278,19 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedaccess_instance" "example" {
+///   cidr_endpoints_custom_subdomain = "test.example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -257,8 +299,8 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.verifiedaccess.Instance;
 /// import com.pulumi.aws.verifiedaccess.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -307,10 +349,10 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> nameServers;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// One or more blocks of providing information about the AWS Verified Access Trust Providers. See verified_access_trust_providers below for details.One or more blocks
+  /// One or more blocks of providing information about the AWS Verified Access Trust Providers. See verifiedAccessTrustProviders below for details.One or more blocks
   late final pulumi.Output<List<Map<String, dynamic>>> verifiedAccessTrustProviders;
 
   /// Creates a new [Instance].

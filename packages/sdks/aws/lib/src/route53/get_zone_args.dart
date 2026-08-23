@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZoneArgs {
   /// Boolean to indicate whether to enable accelerated recovery for the hosted zone.
   final pulumi.Input<bool>? enableAcceleratedRecovery;
-  /// Hosted Zone name of the desired Hosted Zone. If blank, then accept any name, filtering on only `private_zone`, `vpc_id` and `tags`.
+  /// Hosted Zone name of the desired Hosted Zone. If blank, then accept any name, filtering on only `privateZone`, `vpcId` and `tags`.
   final pulumi.Input<String>? name;
   /// Filter to only private Hosted Zones.
   final pulumi.Input<bool>? privateZone;
@@ -19,18 +19,18 @@ class GetZoneArgs {
   ///
   /// - The given filter must match exactly one Hosted Zone.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Filter to private Hosted Zones associated with the specified `vpc_id`.
+  /// Filter to private Hosted Zones associated with the specified `vpcId`.
   final pulumi.Input<String>? vpcId;
   /// and `name` are mutually exclusive.
-  /// - If you use the `name` argument for a private Hosted Zone, you need to set the `private_zone` argument to `true`.
+  /// - If you use the `name` argument for a private Hosted Zone, you need to set the `privateZone` argument to `true`.
   final pulumi.Input<String>? zoneId;
 
   /// Creates a new [GetZoneArgs].
   /// [enableAcceleratedRecovery] Boolean to indicate whether to enable accelerated recovery for the hosted zone.
-  /// [name] Hosted Zone name of the desired Hosted Zone. If blank, then accept any name, filtering on only `private_zone`, `vpc_id` and `tags`.
+  /// [name] Hosted Zone name of the desired Hosted Zone. If blank, then accept any name, filtering on only `privateZone`, `vpcId` and `tags`.
   /// [privateZone] Filter to only private Hosted Zones.
   /// [tags] A map of tags, each pair of which must exactly match a pair on the desired Hosted Zone.
-  /// [vpcId] Filter to private Hosted Zones associated with the specified `vpc_id`.
+  /// [vpcId] Filter to private Hosted Zones associated with the specified `vpcId`.
   /// [zoneId] and `name` are mutually exclusive.
   const GetZoneArgs({
     this.enableAcceleratedRecovery,
@@ -63,4 +63,3 @@ class GetZoneArgs {
     );
   }
 }
-

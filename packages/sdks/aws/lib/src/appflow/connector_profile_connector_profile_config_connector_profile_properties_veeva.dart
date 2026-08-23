@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva {
+  /// Location of the Zendesk resource.
   final pulumi.Input<String> instanceUrl;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva].
-  /// [instanceUrl] Required.
+  /// [instanceUrl] Location of the Zendesk resource.
   const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva({
     required this.instanceUrl,
   });
@@ -23,4 +24,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva {
     );
   }
 }
-

@@ -26,7 +26,7 @@ import 'service_quota_state.dart';
 /// example = aws.servicequotas.ServiceQuota("example",
 ///     quota_code="L-F678F1CE",
 ///     service_code="vpc",
-///     value=75)
+///     value=float(75))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -67,6 +67,21 @@ import 'service_quota_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_servicequotas_servicequota" "example" {
+///   quota_code   = "L-F678F1CE"
+///   service_code = "vpc"
+///   value        = 75
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'service_quota_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicequotas.ServiceQuota;
 /// import com.pulumi.aws.servicequotas.ServiceQuotaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -20,8 +20,6 @@ class GetPrimaryContactResult {
   final String districtOrCounty;
   /// The full name of the primary contact address.
   final String fullName;
-  /// The provider-assigned unique ID for this managed resource.
-  final String id;
   /// The phone number of the primary contact information.
   final String phoneNumber;
   /// The postal code of the primary contact address.
@@ -41,7 +39,6 @@ class GetPrimaryContactResult {
   /// [countryCode] The ISO-3166 two-letter country code for the primary contact address.
   /// [districtOrCounty] The district or county of the primary contact address.
   /// [fullName] The full name of the primary contact address.
-  /// [id] The provider-assigned unique ID for this managed resource.
   /// [phoneNumber] The phone number of the primary contact information.
   /// [postalCode] The postal code of the primary contact address.
   /// [stateOrRegion] The state or region of the primary contact address.
@@ -56,7 +53,6 @@ class GetPrimaryContactResult {
     required this.countryCode,
     required this.districtOrCounty,
     required this.fullName,
-    required this.id,
     required this.phoneNumber,
     required this.postalCode,
     required this.stateOrRegion,
@@ -74,7 +70,6 @@ class GetPrimaryContactResult {
       'countryCode': countryCode,
       'districtOrCounty': districtOrCounty,
       'fullName': fullName,
-      'id': id,
       'phoneNumber': phoneNumber,
       'postalCode': postalCode,
       'stateOrRegion': stateOrRegion,
@@ -93,7 +88,6 @@ class GetPrimaryContactResult {
       countryCode: map['countryCode'] as String,
       districtOrCounty: map['districtOrCounty'] as String,
       fullName: map['fullName'] as String,
-      id: map['id'] as String,
       phoneNumber: map['phoneNumber'] as String,
       postalCode: map['postalCode'] as String,
       stateOrRegion: map['stateOrRegion'] as String,
@@ -101,4 +95,3 @@ class GetPrimaryContactResult {
     );
   }
 }
-

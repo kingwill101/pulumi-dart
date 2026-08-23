@@ -5,6 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterVpcConfig {
   /// The cluster security group that was created by Amazon EKS for the cluster.
   final pulumi.Input<String> clusterSecurityGroupId;
+  /// The egress mode for the EKS control plane. Possible values are `AWS_MANAGED` and `CUSTOMER_ROUTED`.
+  final pulumi.Input<String> controlPlaneEgressMode;
   /// Indicates whether or not the Amazon EKS private API server endpoint is enabled.
   final pulumi.Input<bool> endpointPrivateAccess;
   /// Indicates whether or not the Amazon EKS public API server endpoint is enabled.
@@ -20,6 +22,7 @@ class GetClusterVpcConfig {
 
   /// Creates a new [GetClusterVpcConfig].
   /// [clusterSecurityGroupId] The cluster security group that was created by Amazon EKS for the cluster.
+  /// [controlPlaneEgressMode] The egress mode for the EKS control plane. Possible values are `AWS_MANAGED` and `CUSTOMER_ROUTED`.
   /// [endpointPrivateAccess] Indicates whether or not the Amazon EKS private API server endpoint is enabled.
   /// [endpointPublicAccess] Indicates whether or not the Amazon EKS public API server endpoint is enabled.
   /// [publicAccessCidrs] List of CIDR blocks. Indicates which CIDR blocks can access the Amazon EKS public API server endpoint.
@@ -28,6 +31,7 @@ class GetClusterVpcConfig {
   /// [vpcId] The VPC associated with your cluster.
   const GetClusterVpcConfig({
     required this.clusterSecurityGroupId,
+    required this.controlPlaneEgressMode,
     required this.endpointPrivateAccess,
     required this.endpointPublicAccess,
     required this.publicAccessCidrs,
@@ -39,6 +43,7 @@ class GetClusterVpcConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clusterSecurityGroupId': clusterSecurityGroupId,
+      'controlPlaneEgressMode': controlPlaneEgressMode,
       'endpointPrivateAccess': endpointPrivateAccess,
       'endpointPublicAccess': endpointPublicAccess,
       'publicAccessCidrs': publicAccessCidrs,
@@ -51,6 +56,7 @@ class GetClusterVpcConfig {
   factory GetClusterVpcConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterVpcConfig(
       clusterSecurityGroupId: pulumi.Input.fromValue(map['clusterSecurityGroupId'] as String),
+      controlPlaneEgressMode: pulumi.Input.fromValue(map['controlPlaneEgressMode'] as String),
       endpointPrivateAccess: pulumi.Input.fromValue(map['endpointPrivateAccess'] as bool),
       endpointPublicAccess: pulumi.Input.fromValue(map['endpointPublicAccess'] as bool),
       publicAccessCidrs: pulumi.Input.fromValue((map['publicAccessCidrs'] as List).cast<String>()),
@@ -60,4 +66,3 @@ class GetClusterVpcConfig {
     );
   }
 }
-

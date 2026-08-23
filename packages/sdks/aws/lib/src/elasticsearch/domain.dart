@@ -99,6 +99,26 @@ import 'domain_vpc_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticsearch_domain" "example" {
+///   domain_name           = "example"
+///   elasticsearch_version = "7.10"
+///   cluster_config = {
+///     instance_type = "r4.large.elasticsearch"
+///   }
+///   tags = {
+///     "Domain" = "TestDomain"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -108,8 +128,8 @@ import 'domain_vpc_options.dart';
 /// import com.pulumi.aws.elasticsearch.Domain;
 /// import com.pulumi.aws.elasticsearch.DomainArgs;
 /// import com.pulumi.aws.elasticsearch.inputs.DomainClusterConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -300,6 +320,43 @@ import 'domain_vpc_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// }
+///
+/// resource "aws_elasticsearch_domain" "example" {
+///   domain_name     = var.domain
+///   access_policies ="{
+///   \"Version\": \"2012-10-17\",
+///   \"Statement\": [
+///     {
+///       \"Action\": \"es:*\",
+///       \"Principal\": \"*\",
+///       \"Effect\": \"Allow\",
+///       \"Resource\": \"arn:aws:es:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:domain/${var.domain}/*\",
+///       \"Condition\": {
+///         \"IpAddress\": {\"aws:SourceIp\": [\"66.193.100.22/32\"]}
+///       }
+///     }
+///   ]
+/// }
+/// "
+/// }
+/// variable "domain" {
+///   type    = string
+///   default = "tf-test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -311,8 +368,8 @@ import 'domain_vpc_options.dart';
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
 /// import com.pulumi.aws.elasticsearch.Domain;
 /// import com.pulumi.aws.elasticsearch.DomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -581,6 +638,41 @@ import 'domain_vpc_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["es.amazonaws.com"]
+///     }
+///     actions   = ["logs:PutLogEvents", "logs:PutLogEventsBatch", "logs:CreateLogStream"]
+///     resources = ["arn:aws:logs:*"]
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name = "example"
+/// }
+/// resource "aws_cloudwatch_logresourcepolicy" "example" {
+///   policy_name     = "example"
+///   policy_document = data.aws_iam_getpolicydocument.example.json
+/// }
+/// resource "aws_elasticsearch_domain" "example" {
+///   log_publishing_options {
+///     cloudwatch_log_group_arn = aws_cloudwatch_loggroup.example.arn
+///     log_type                 = "INDEX_SLOW_LOGS"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -591,13 +683,15 @@ import 'domain_vpc_options.dart';
 /// import com.pulumi.aws.cloudwatch.LogGroupArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.cloudwatch.LogResourcePolicy;
 /// import com.pulumi.aws.cloudwatch.LogResourcePolicyArgs;
 /// import com.pulumi.aws.elasticsearch.Domain;
 /// import com.pulumi.aws.elasticsearch.DomainArgs;
 /// import com.pulumi.aws.elasticsearch.inputs.DomainLogPublishingOptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -959,92 +1053,92 @@ import 'domain_vpc_options.dart';
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// cfg := config.New(ctx, "")
-/// vpc := cfg.RequireObject("vpc")
-/// domain := "tf-test";
-/// if param := cfg.Get("domain"); param != ""{
-/// domain = param
-/// }
-/// selected, err := ec2.LookupVpc(ctx, &ec2.LookupVpcArgs{
-/// Tags: pulumi.StringMap{
-/// "Name": vpc,
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
-/// }
-/// selectedGetSubnets, err := ec2.GetSubnets(ctx, &ec2.GetSubnetsArgs{
-/// Filters: []ec2.GetSubnetsFilter{
-/// {
-/// Name: "vpc-id",
-/// Values: interface{}{
-/// selected.Id,
-/// },
-/// },
-/// },
-/// Tags: map[string]interface{}{
-/// "Tier": "private",
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
-/// }
-/// current, err := aws.GetRegion(ctx, &aws.GetRegionArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
-/// }
-/// currentGetCallerIdentity, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
-/// }
-/// es, err := ec2.NewSecurityGroup(ctx, "es", &ec2.SecurityGroupArgs{
-/// Name: pulumi.Sprintf("%v-elasticsearch-%v", vpc, domain),
-/// Description: pulumi.String("Managed by Pulumi"),
-/// VpcId: pulumi.String(selected.Id),
-/// Ingress: ec2.SecurityGroupIngressArray{
-/// &ec2.SecurityGroupIngressArgs{
-/// FromPort: pulumi.Int(443),
-/// ToPort: pulumi.Int(443),
-/// Protocol: pulumi.String("tcp"),
-/// CidrBlocks: pulumi.StringArray{
-/// pulumi.String(selected.CidrBlock),
-/// },
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// esServiceLinkedRole, err := iam.NewServiceLinkedRole(ctx, "es", &iam.ServiceLinkedRoleArgs{
-/// AwsServiceName: pulumi.String("opensearchservice.amazonaws.com"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = elasticsearch.NewDomain(ctx, "es", &elasticsearch.DomainArgs{
-/// DomainName: pulumi.String(domain),
-/// ElasticsearchVersion: pulumi.String("6.3"),
-/// ClusterConfig: &elasticsearch.DomainClusterConfigArgs{
-/// InstanceType: pulumi.String("m4.large.elasticsearch"),
-/// ZoneAwarenessEnabled: pulumi.Bool(true),
-/// },
-/// VpcOptions: &elasticsearch.DomainVpcOptionsArgs{
-/// SubnetIds: pulumi.StringArray{
-/// pulumi.String(selectedGetSubnets.Ids[0]),
-/// pulumi.String(selectedGetSubnets.Ids[1]),
-/// },
-/// SecurityGroupIds: pulumi.StringArray{
-/// es.ID(),
-/// },
-/// },
-/// AdvancedOptions: pulumi.StringMap{
-/// "rest.action.multi.allow_explicit_index": pulumi.String("true"),
-/// },
-/// AccessPolicies: pulumi.Any(fmt.Sprintf(`{
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		cfg := config.New(ctx, "")
+/// 		var vpc interface{}
+/// 		cfg.RequireObject("vpc", &vpc)
+/// 		domain := "tf-test"
+/// 		if param := cfg.Get("domain"); param != "" {
+/// 			domain = param
+/// 		}
+/// 		selected, err := ec2.LookupVpc(ctx, &ec2.LookupVpcArgs{
+/// 			Tags: map[string]pulumi.String{
+/// 				"Name": vpc,
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		selectedGetSubnets, err := ec2.GetSubnets(ctx, &ec2.GetSubnetsArgs{
+/// 			Filters: []ec2.GetSubnetsFilter{
+/// 				{
+/// 					Name: "vpc-id",
+/// 					Values: pulumi.StringArray{
+/// 						selected.Id,
+/// 					},
+/// 				},
+/// 			},
+/// 			Tags: map[string]string{
+/// 				"Tier": "private",
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		current, err := aws.GetRegion(ctx, &aws.GetRegionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		currentGetCallerIdentity, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		es, err := ec2.NewSecurityGroup(ctx, "es", &ec2.SecurityGroupArgs{
+/// 			Name:        pulumi.Sprintf("%v-elasticsearch-%v", vpc, domain),
+/// 			Description: pulumi.String("Managed by Pulumi"),
+/// 			VpcId:       pulumi.String(selected.Id),
+/// 			Ingress: ec2.SecurityGroupIngressArray{
+/// 				&ec2.SecurityGroupIngressArgs{
+/// 					FromPort: pulumi.Int(443),
+/// 					ToPort:   pulumi.Int(443),
+/// 					Protocol: pulumi.String("tcp"),
+/// 					CidrBlocks: pulumi.StringArray{
+/// 						pulumi.String(selected.CidrBlock),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		esServiceLinkedRole, err := iam.NewServiceLinkedRole(ctx, "es", &iam.ServiceLinkedRoleArgs{
+/// 			AwsServiceName: pulumi.String("opensearchservice.amazonaws.com"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = elasticsearch.NewDomain(ctx, "es", &elasticsearch.DomainArgs{
+/// 			DomainName:           pulumi.String(domain),
+/// 			ElasticsearchVersion: pulumi.String("6.3"),
+/// 			ClusterConfig: &elasticsearch.DomainClusterConfigArgs{
+/// 				InstanceType:         pulumi.String("m4.large.elasticsearch"),
+/// 				ZoneAwarenessEnabled: pulumi.Bool(true),
+/// 			},
+/// 			VpcOptions: &elasticsearch.DomainVpcOptionsArgs{
+/// 				SubnetIds: pulumi.StringArray{
+/// 					pulumi.String(selectedGetSubnets.Ids[0]),
+/// 					pulumi.String(selectedGetSubnets.Ids[1]),
+/// 				},
+/// 				SecurityGroupIds: pulumi.StringArray{
+/// 					es.ID().ToIDOutput().ToStringOutput(),
+/// 				},
+/// 			},
+/// 			AdvancedOptions: pulumi.StringMap{
+/// 				"rest.action.multi.allow_explicit_index": pulumi.String("true"),
+/// 			},
+/// 			AccessPolicies: pulumi.Any(fmt.Sprintf(`{
 /// \t\"Version\": \"2012-10-17\",
 /// \t\"Statement\": [
 /// \t\t{
@@ -1056,17 +1150,97 @@ import 'domain_vpc_options.dart';
 /// \t]
 /// }
 /// `, current.Region, currentGetCallerIdentity.AccountId, domain)),
-/// Tags: pulumi.StringMap{
-/// "Domain": pulumi.String("TestDomain"),
-/// },
-/// }, pulumi.DependsOn([]pulumi.Resource{
-/// esServiceLinkedRole,
-/// }))
-/// if err != nil {
-/// return err
+/// 			Tags: pulumi.StringMap{
+/// 				"Domain": pulumi.String("TestDomain"),
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			esServiceLinkedRole,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// return nil
-/// })
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpc" "selected" {
+///   tags = {
+///     "Name" = var.vpc
+///   }
+/// }
+/// data "aws_ec2_getsubnets" "selectedGetSubnets" {
+///   filters {
+///     name   = "vpc-id"
+///     values = [data.aws_ec2_getvpc.selected.id]
+///   }
+///   tags = {
+///     "Tier" = "private"
+///   }
+/// }
+/// data "aws_getregion" "current" {
+/// }
+/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// }
+///
+/// resource "aws_ec2_securitygroup" "es" {
+///   name        ="${var.vpc}-elasticsearch-${var.domain}"
+///   description = "Managed by Pulumi"
+///   vpc_id      = data.aws_ec2_getvpc.selected.id
+///   ingress {
+///     from_port   = 443
+///     to_port     = 443
+///     protocol    = "tcp"
+///     cidr_blocks = [data.aws_ec2_getvpc.selected.cidr_block]
+///   }
+/// }
+/// resource "aws_iam_servicelinkedrole" "es" {
+///   aws_service_name = "opensearchservice.amazonaws.com"
+/// }
+/// resource "aws_elasticsearch_domain" "es" {
+///   depends_on            = [aws_iam_servicelinkedrole.es]
+///   domain_name           = var.domain
+///   elasticsearch_version = "6.3"
+///   cluster_config = {
+///     instance_type          = "m4.large.elasticsearch"
+///     zone_awareness_enabled = true
+///   }
+///   vpc_options = {
+///     subnet_ids         = [data.aws_ec2_getsubnets.selectedGetSubnets.ids[0], data.aws_ec2_getsubnets.selectedGetSubnets.ids[1]]
+///     security_group_ids = [aws_ec2_securitygroup.es.id]
+///   }
+///   advanced_options = {
+///     "rest.action.multi.allow_explicit_index" = "true"
+///   }
+///   access_policies ="{
+/// \t\"Version\": \"2012-10-17\",
+/// \t\"Statement\": [
+/// \t\t{
+/// \t\t\t\"Action\": \"es:*\",
+/// \t\t\t\"Principal\": \"*\",
+/// \t\t\t\"Effect\": \"Allow\",
+/// \t\t\t\"Resource\": \"arn:aws:es:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:domain/${var.domain}/*\"
+/// \t\t}
+/// \t]
+/// }
+/// "
+///   tags = {
+///     "Domain" = "TestDomain"
+///   }
+/// }
+/// variable "vpc" {
+/// }
+/// variable "domain" {
+///   type    = string
+///   default = "tf-test"
 /// }
 /// ```
 /// ```java
@@ -1078,6 +1252,7 @@ import 'domain_vpc_options.dart';
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpcArgs;
 /// import com.pulumi.aws.ec2.inputs.GetSubnetsArgs;
+/// import com.pulumi.aws.ec2.inputs.GetSubnetsFilterArgs;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetRegionArgs;
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
@@ -1091,8 +1266,8 @@ import 'domain_vpc_options.dart';
 /// import com.pulumi.aws.elasticsearch.inputs.DomainClusterConfigArgs;
 /// import com.pulumi.aws.elasticsearch.inputs.DomainVpcOptionsArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1105,7 +1280,7 @@ import 'domain_vpc_options.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var vpc = config.get("vpc");
+///         final var vpc = config.require("vpc");
 ///         final var domain = config.get("domain").orElse("tf-test");
 ///         final var selected = Ec2Functions.getVpc(GetVpcArgs.builder()
 ///             .tags(Map.of("Name", vpc))
@@ -1179,7 +1354,7 @@ import 'domain_vpc_options.dart';
 /// ```yaml
 /// configuration:
 ///   vpc:
-///     type: dynamic
+///     type: object
 ///   domain:
 ///     type: string
 ///     default: tf-test
@@ -1265,7 +1440,7 @@ import 'domain_vpc_options.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Elasticsearch domains using the `domain_name`. For example:
+/// Using `pulumi import`, import Elasticsearch domains using the `domainName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:elasticsearch/domain:Domain example domain_name
@@ -1311,9 +1486,9 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Configuration block for snapshot related options. Detailed below. DEPRECATED. For domains running Elasticsearch 5.3 and later, Amazon ES takes hourly automated snapshots, making this setting irrelevant. For domains running earlier versions of Elasticsearch, Amazon ES takes daily automated snapshots.
   late final pulumi.Output<DomainSnapshotOptions?> snapshotOptions;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration block for VPC related options. Adding or removing this configuration forces a new resource ([documentation](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-vpc-limitations)). Detailed below.
   late final pulumi.Output<DomainVpcOptions?> vpcOptions;

@@ -63,6 +63,19 @@ import 'get_scheduling_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_batch_getcomputeenvironment" "batch-mongo" {
+///   name = "batch-mongo-production"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +84,8 @@ import 'get_scheduling_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.batch.BatchFunctions;
 /// import com.pulumi.aws.batch.inputs.GetComputeEnvironmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -118,7 +131,7 @@ Future<GetComputeEnvironmentResult> getComputeEnvironment(
 ///
 /// ## Example Usage
 ///
-/// ### Lookup via Arn
+/// ### Lookup via ARN
 ///
 ///
 /// ```typescript
@@ -170,6 +183,19 @@ Future<GetComputeEnvironmentResult> getComputeEnvironment(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_batch_getjobdefinition" "arn" {
+///   arn = "arn:aws:batch:us-east-1:012345678910:job-definition/example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -178,8 +204,8 @@ Future<GetComputeEnvironmentResult> getComputeEnvironment(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.batch.BatchFunctions;
 /// import com.pulumi.aws.batch.inputs.GetJobDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -264,6 +290,20 @@ Future<GetComputeEnvironmentResult> getComputeEnvironment(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_batch_getjobdefinition" "name" {
+///   name     = "example"
+///   revision = 2
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -272,8 +312,8 @@ Future<GetComputeEnvironmentResult> getComputeEnvironment(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.batch.BatchFunctions;
 /// import com.pulumi.aws.batch.inputs.GetJobDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -372,6 +412,19 @@ Future<GetJobDefinitionResult> getJobDefinition(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_batch_getjobqueue" "test-queue" {
+///   name = "tf-test-batch-job-queue"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -380,8 +433,8 @@ Future<GetJobDefinitionResult> getJobDefinition(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.batch.BatchFunctions;
 /// import com.pulumi.aws.batch.inputs.GetJobQueueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -477,6 +530,19 @@ Future<GetJobQueueResult> getJobQueue(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_batch_getschedulingpolicy" "test" {
+///   arn = "arn:aws:batch:us-east-1:012345678910:scheduling-policy/example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -485,8 +551,8 @@ Future<GetJobQueueResult> getJobQueue(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.batch.BatchFunctions;
 /// import com.pulumi.aws.batch.inputs.GetSchedulingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

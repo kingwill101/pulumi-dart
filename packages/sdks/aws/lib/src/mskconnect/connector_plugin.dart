@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connector_plugin_custom_plugin.dart';
 
 class ConnectorPlugin {
-  /// Details about a custom plugin. See `custom_plugin` Block for details.
+  /// Details about a custom plugin. See `customPlugin` Block for details.
   final pulumi.Input<ConnectorPluginCustomPlugin> customPlugin;
 
   /// Creates a new [ConnectorPlugin].
-  /// [customPlugin] Details about a custom plugin. See `custom_plugin` Block for details.
+  /// [customPlugin] Details about a custom plugin. See `customPlugin` Block for details.
   const ConnectorPlugin({
     required this.customPlugin,
   });
@@ -25,4 +25,3 @@ class ConnectorPlugin {
     );
   }
 }
-

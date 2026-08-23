@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'invocation_logging_configuration_logging_config_cloudwatch_config_large_data_delivery_s3_config.dart';
 
 class InvocationLoggingConfigurationLoggingConfigCloudwatchConfig {
-  /// S3 configuration for delivering a large amount of data. See `large_data_delivery_s3_config` Block for details.
+  /// S3 configuration for delivering a large amount of data. See `largeDataDeliveryS3Config` Block for details.
   final pulumi.Input<InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config>? largeDataDeliveryS3Config;
   /// Log group name.
   final pulumi.Input<String> logGroupName;
@@ -12,7 +12,7 @@ class InvocationLoggingConfigurationLoggingConfigCloudwatchConfig {
   final pulumi.Input<String> roleArn;
 
   /// Creates a new [InvocationLoggingConfigurationLoggingConfigCloudwatchConfig].
-  /// [largeDataDeliveryS3Config] S3 configuration for delivering a large amount of data. See `large_data_delivery_s3_config` Block for details.
+  /// [largeDataDeliveryS3Config] S3 configuration for delivering a large amount of data. See `largeDataDeliveryS3Config` Block for details.
   /// [logGroupName] Log group name.
   /// [roleArn] The role ARN.
   const InvocationLoggingConfigurationLoggingConfigCloudwatchConfig({
@@ -37,4 +37,3 @@ class InvocationLoggingConfigurationLoggingConfigCloudwatchConfig {
     );
   }
 }
-

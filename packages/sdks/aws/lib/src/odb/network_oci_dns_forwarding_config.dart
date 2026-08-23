@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkOciDnsForwardingConfig {
+  /// Domain name for which the DNS queries are forwarded.
   final pulumi.Input<String> domainName;
+  /// IP address of the OCI DNS listener.
   final pulumi.Input<String> ociDnsListenerIp;
 
   /// Creates a new [NetworkOciDnsForwardingConfig].
-  /// [domainName] Required.
-  /// [ociDnsListenerIp] Required.
+  /// [domainName] Domain name for which the DNS queries are forwarded.
+  /// [ociDnsListenerIp] IP address of the OCI DNS listener.
   const NetworkOciDnsForwardingConfig({
     required this.domainName,
     required this.ociDnsListenerIp,
@@ -28,4 +30,3 @@ class NetworkOciDnsForwardingConfig {
     );
   }
 }
-

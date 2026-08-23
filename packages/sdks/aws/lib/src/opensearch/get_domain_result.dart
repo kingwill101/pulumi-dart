@@ -5,6 +5,7 @@ import 'get_domain_advanced_security_option.dart';
 import 'get_domain_auto_tune_option.dart';
 import 'get_domain_cluster_config.dart';
 import 'get_domain_cognito_option.dart';
+import 'get_domain_deployment_strategy_option.dart';
 import 'get_domain_ebs_option.dart';
 import 'get_domain_encryption_at_rest.dart';
 import 'get_domain_identity_center_option.dart';
@@ -39,6 +40,8 @@ class GetDomainResult {
   final String dashboardEndpointV2;
   /// Status of the deletion of the domain.
   final bool deleted;
+  /// Deployment strategy options for the domain.
+  final List<GetDomainDeploymentStrategyOption> deploymentStrategyOptions;
   /// Dual stack hosted zone ID for the domain.
   final String domainEndpointV2HostedZoneId;
   /// Unique identifier for the domain.
@@ -90,6 +93,7 @@ class GetDomainResult {
   /// [dashboardEndpoint] Domain-specific endpoint used to access the [Dashboard application](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/dashboards.html).
   /// [dashboardEndpointV2] V2 domain-specific endpoint used to access the [Dashboard application](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/dashboards.html)
   /// [deleted] Status of the deletion of the domain.
+  /// [deploymentStrategyOptions] Deployment strategy options for the domain.
   /// [domainEndpointV2HostedZoneId] Dual stack hosted zone ID for the domain.
   /// [domainId] Unique identifier for the domain.
   /// [domainName] Required.
@@ -122,6 +126,7 @@ class GetDomainResult {
     required this.dashboardEndpoint,
     required this.dashboardEndpointV2,
     required this.deleted,
+    required this.deploymentStrategyOptions,
     required this.domainEndpointV2HostedZoneId,
     required this.domainId,
     required this.domainName,
@@ -157,6 +162,7 @@ class GetDomainResult {
       'dashboardEndpoint': dashboardEndpoint,
       'dashboardEndpointV2': dashboardEndpointV2,
       'deleted': deleted,
+      'deploymentStrategyOptions': pulumi.Input.encodeList<GetDomainDeploymentStrategyOption, Map<String, dynamic>>(deploymentStrategyOptions, (value) => value.toMap()),
       'domainEndpointV2HostedZoneId': domainEndpointV2HostedZoneId,
       'domainId': domainId,
       'domainName': domainName,
@@ -193,6 +199,7 @@ class GetDomainResult {
       dashboardEndpoint: map['dashboardEndpoint'] as String,
       dashboardEndpointV2: map['dashboardEndpointV2'] as String,
       deleted: map['deleted'] as bool,
+      deploymentStrategyOptions: pulumi.Input.decodeList<GetDomainDeploymentStrategyOption>(map['deploymentStrategyOptions']!, (value) => GetDomainDeploymentStrategyOption.fromMap((value as Map).cast<String, dynamic>())),
       domainEndpointV2HostedZoneId: map['domainEndpointV2HostedZoneId'] as String,
       domainId: map['domainId'] as String,
       domainName: map['domainName'] as String,
@@ -216,4 +223,3 @@ class GetDomainResult {
     );
   }
 }
-

@@ -8,13 +8,13 @@ import 'vectors_vector_bucket_encryption_configuration.dart';
 /// {@endtemplate}
 /// {@macro pulumi_s3_vectors_vector_bucket_vectors_vector_bucket_args_doc}
 class VectorsVectorBucketArgs {
-  /// Encryption configuration for the vector bucket. See Encryption Configuration below for more details.
+  /// Encryption configuration for the vector bucket. See `encryptionConfiguration` below for more details.
   final pulumi.Input<List<VectorsVectorBucketEncryptionConfiguration>>? encryptionConfigurations;
   /// Boolean that indicates all indexes and vectors should be deleted from the vector bucket *when the vector bucket is destroyed* so that the vector bucket can be destroyed without error. Once this parameter is set to `true`, there must be a successful `pulumi up` run before a destroy is required to update this value in the resource state. Without a successful `pulumi up` after this parameter is set, this flag will have no effect. If setting this field in the same operation that would require replacing the vector bucket or destroying the vector bucket, this flag will not work.
   final pulumi.Input<bool>? forceDestroy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Name of the vector bucket.
   ///
@@ -22,10 +22,10 @@ class VectorsVectorBucketArgs {
   final pulumi.Input<String> vectorBucketName;
 
   /// Creates a new [VectorsVectorBucketArgs].
-  /// [encryptionConfigurations] Encryption configuration for the vector bucket. See Encryption Configuration below for more details.
+  /// [encryptionConfigurations] Encryption configuration for the vector bucket. See `encryptionConfiguration` below for more details.
   /// [forceDestroy] Boolean that indicates all indexes and vectors should be deleted from the vector bucket *when the vector bucket is destroyed* so that the vector bucket can be destroyed without error. Once this parameter is set to `true`, there must be a successful `pulumi up` run before a destroy is required to update this value in the resource state. Without a successful `pulumi up` after this parameter is set, this flag will have no effect. If setting this field in the same operation that would require replacing the vector bucket or destroying the vector bucket, this flag will not work.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vectorBucketName] Name of the vector bucket.
   const VectorsVectorBucketArgs({
     this.encryptionConfigurations,
@@ -55,4 +55,3 @@ class VectorsVectorBucketArgs {
     );
   }
 }
-

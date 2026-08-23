@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_appintegrations_get_event_integration_get_event_integration_args_doc}
 class GetEventIntegrationArgs {
-  /// The AppIntegrations Event Integration name.
+  /// AppIntegrations Event Integration name.
   final pulumi.Input<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -15,7 +15,7 @@ class GetEventIntegrationArgs {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetEventIntegrationArgs].
-  /// [name] The AppIntegrations Event Integration name.
+  /// [name] AppIntegrations Event Integration name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Metadata that you can assign to help organize the report plans you create.
   const GetEventIntegrationArgs({
@@ -40,4 +40,3 @@ class GetEventIntegrationArgs {
     );
   }
 }
-

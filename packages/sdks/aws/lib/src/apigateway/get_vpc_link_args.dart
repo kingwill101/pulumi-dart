@@ -7,8 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_apigateway_get_vpc_link_get_vpc_link_args_doc}
 class GetVpcLinkArgs {
-  /// Name of the API Gateway VPC Link to look up. If no API Gateway VPC Link is found with this name, an error will be returned.
-  /// If multiple API Gateway VPC Links are found with this name, an error will be returned.
+  /// Name of the API Gateway VPC Link to look up. If no API Gateway VPC Link is found with this name, an error will be returned. If multiple API Gateway VPC Links are found with this name, an error will be returned.
   final pulumi.Input<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -16,7 +15,7 @@ class GetVpcLinkArgs {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetVpcLinkArgs].
-  /// [name] Name of the API Gateway VPC Link to look up. If no API Gateway VPC Link is found with this name, an error will be returned.
+  /// [name] Name of the API Gateway VPC Link to look up. If no API Gateway VPC Link is found with this name, an error will be returned. If multiple API Gateway VPC Links are found with this name, an error will be returned.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags
   const GetVpcLinkArgs({
@@ -41,4 +40,3 @@ class GetVpcLinkArgs {
     );
   }
 }
-

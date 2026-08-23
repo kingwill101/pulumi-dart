@@ -67,6 +67,20 @@ import 'account_setting_default_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_accountsettingdefault" "test" {
+///   name  = "taskLongArnFormat"
+///   value = "enabled"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +89,8 @@ import 'account_setting_default_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecs.AccountSettingDefault;
 /// import com.pulumi.aws.ecs.AccountSettingDefaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -163,6 +177,20 @@ import 'account_setting_default_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_accountsettingdefault" "test" {
+///   name  = "defaultLogDriverMode"
+///   value = "non-blocking"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -171,8 +199,8 @@ import 'account_setting_default_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecs.AccountSettingDefault;
 /// import com.pulumi.aws.ecs.AccountSettingDefaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -212,6 +240,7 @@ import 'account_setting_default_state.dart';
 class AccountSettingDefault extends pulumi.CustomResource {
   /// Name of the account setting to set.
   late final pulumi.Output<String> name;
+  /// ARN that identifies the account setting.
   late final pulumi.Output<String> principalArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

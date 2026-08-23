@@ -56,6 +56,19 @@ import 'catalog_database_target_database.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_catalogdatabase" "example" {
+///   name = "MyCatalogDatabase"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'catalog_database_target_database.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.glue.CatalogDatabase;
 /// import com.pulumi.aws.glue.CatalogDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -182,6 +195,25 @@ import 'catalog_database_target_database.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_catalogdatabase" "example" {
+///   name = "MyCatalogDatabase"
+///   create_table_default_permissions {
+///     permissions = ["SELECT"]
+///     principal = {
+///       data_lake_principal_identifier = "IAM_ALLOWED_PRINCIPALS"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -192,8 +224,8 @@ import 'catalog_database_target_database.dart';
 /// import com.pulumi.aws.glue.CatalogDatabaseArgs;
 /// import com.pulumi.aws.glue.inputs.CatalogDatabaseCreateTableDefaultPermissionArgs;
 /// import com.pulumi.aws.glue.inputs.CatalogDatabaseCreateTableDefaultPermissionPrincipalArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -244,11 +276,11 @@ class CatalogDatabase extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID.
   late final pulumi.Output<String> catalogId;
-  /// Creates a set of default permissions on the table for principals. See `create_table_default_permission` below.
+  /// Creates a set of default permissions on the table for principals. See `createTableDefaultPermission` below.
   late final pulumi.Output<List<Map<String, dynamic>>> createTableDefaultPermissions;
   /// Description of the database.
   late final pulumi.Output<String?> description;
-  /// Configuration block that references an entity outside the AWS Glue Data Catalog. See `federated_database` below.
+  /// Configuration block that references an entity outside the AWS Glue Data Catalog. See `federatedDatabase` below.
   late final pulumi.Output<CatalogDatabaseFederatedDatabase?> federatedDatabase;
   /// Location of the database (for example, an HDFS path).
   late final pulumi.Output<String> locationUri;
@@ -258,11 +290,11 @@ class CatalogDatabase extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Configuration block for a target database for resource linking. See `target_database` below.
+  /// Configuration block for a target database for resource linking. See `targetDatabase` below.
   late final pulumi.Output<CatalogDatabaseTargetDatabase?> targetDatabase;
 
   /// Creates a new [CatalogDatabase].

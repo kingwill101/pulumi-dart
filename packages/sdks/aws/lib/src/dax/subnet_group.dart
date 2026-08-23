@@ -74,6 +74,20 @@ import 'subnet_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dax_subnetgroup" "example" {
+///   name       = "example"
+///   subnet_ids = [example1.id, example2.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +96,8 @@ import 'subnet_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.dax.SubnetGroup;
 /// import com.pulumi.aws.dax.SubnetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

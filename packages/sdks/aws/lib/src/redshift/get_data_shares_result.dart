@@ -5,14 +5,14 @@ import 'get_data_shares_data_share.dart';
 
 /// Result data returned by getDataShares.
 class GetDataSharesResult {
-  /// An array of all data shares in the current region. See `data_shares` below.
+  /// An array of all data shares in the current region. See `dataShares` below.
   final List<GetDataSharesDataShare> dataShares;
   /// AWS region.
   final String id;
   final String region;
 
   /// Creates a new [GetDataSharesResult].
-  /// [dataShares] An array of all data shares in the current region. See `data_shares` below.
+  /// [dataShares] An array of all data shares in the current region. See `dataShares` below.
   /// [id] AWS region.
   /// [region] Required.
   const GetDataSharesResult({
@@ -37,4 +37,3 @@ class GetDataSharesResult {
     );
   }
 }
-

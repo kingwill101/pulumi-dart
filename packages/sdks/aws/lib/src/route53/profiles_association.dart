@@ -95,8 +95,8 @@ import 'profiles_association_timeouts.dart';
 /// 		}
 /// 		_, err = route53.NewProfilesAssociation(ctx, "example", &route53.ProfilesAssociationArgs{
 /// 			Name:       pulumi.String("example"),
-/// 			ProfileId:  example.ID(),
-/// 			ResourceId: exampleVpc.ID(),
+/// 			ProfileId:  example.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("dev"),
 /// 			},
@@ -106,6 +106,30 @@ import 'profiles_association_timeouts.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_profilesprofile" "example" {
+///   name = "example"
+/// }
+/// resource "aws_ec2_vpc" "example" {
+///   cidr = "10.0.0.0/16"
+/// }
+/// resource "aws_route53_profilesassociation" "example" {
+///   name        = "example"
+///   profile_id  = aws_route53_profilesprofile.example.id
+///   resource_id = aws_ec2_vpc.example.id
+///   tags = {
+///     "Environment" = "dev"
+///   }
 /// }
 /// ```
 /// ```java
@@ -120,8 +144,8 @@ import 'profiles_association_timeouts.dart';
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.route53.ProfilesAssociation;
 /// import com.pulumi.aws.route53.ProfilesAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -196,9 +220,9 @@ class ProfilesAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> status;
   /// Status message of the Profile Association.
   late final pulumi.Output<String> statusMessage;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ProfilesAssociationTimeouts?> timeouts;
 

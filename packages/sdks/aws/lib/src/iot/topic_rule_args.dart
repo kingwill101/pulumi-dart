@@ -37,7 +37,7 @@ class TopicRuleArgs {
   final pulumi.Input<List<TopicRuleElasticsearch>>? elasticsearch;
   /// Specifies whether the rule is enabled.
   final pulumi.Input<bool> enabled;
-  /// Configuration block with error action to be associated with the rule. See the documentation for `cloudwatch_alarm`, `cloudwatch_logs`, `cloudwatch_metric`, `dynamodb`, `dynamodbv2`, `elasticsearch`, `firehose`, `http`, `iot_analytics`, `iot_events`, `kafka`, `kinesis`, `lambda`, `republish`, `s3`, `sns`, `sqs`, `step_functions`, `timestream` configuration blocks for further configuration details.
+  /// Configuration block with error action to be associated with the rule. See the documentation for `cloudwatchAlarm`, `cloudwatchLogs`, `cloudwatchMetric`, `dynamodb`, `dynamodbv2`, `elasticsearch`, `firehose`, `http`, `iotAnalytics`, `iotEvents`, `kafka`, `kinesis`, `lambda`, `republish`, `s3`, `sns`, `sqs`, `stepFunctions`, `timestream` configuration blocks for further configuration details.
   final pulumi.Input<TopicRuleErrorAction>? errorAction;
   final pulumi.Input<List<TopicRuleFirehose>>? firehoses;
   final pulumi.Input<List<TopicRuleHttp>>? https;
@@ -59,7 +59,7 @@ class TopicRuleArgs {
   final pulumi.Input<String> sqlVersion;
   final pulumi.Input<List<TopicRuleSqs>>? sqs;
   final pulumi.Input<List<TopicRuleStepFunction>>? stepFunctions;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<List<TopicRuleTimestream>>? timestreams;
 
@@ -72,7 +72,7 @@ class TopicRuleArgs {
   /// [dynamodbv2s] Optional.
   /// [elasticsearch] Optional.
   /// [enabled] Specifies whether the rule is enabled.
-  /// [errorAction] Configuration block with error action to be associated with the rule. See the documentation for `cloudwatch_alarm`, `cloudwatch_logs`, `cloudwatch_metric`, `dynamodb`, `dynamodbv2`, `elasticsearch`, `firehose`, `http`, `iot_analytics`, `iot_events`, `kafka`, `kinesis`, `lambda`, `republish`, `s3`, `sns`, `sqs`, `step_functions`, `timestream` configuration blocks for further configuration details.
+  /// [errorAction] Configuration block with error action to be associated with the rule. See the documentation for `cloudwatchAlarm`, `cloudwatchLogs`, `cloudwatchMetric`, `dynamodb`, `dynamodbv2`, `elasticsearch`, `firehose`, `http`, `iotAnalytics`, `iotEvents`, `kafka`, `kinesis`, `lambda`, `republish`, `s3`, `sns`, `sqs`, `stepFunctions`, `timestream` configuration blocks for further configuration details.
   /// [firehoses] Optional.
   /// [https] Optional.
   /// [iotAnalytics] Optional.
@@ -89,7 +89,7 @@ class TopicRuleArgs {
   /// [sqlVersion] The version of the SQL rules engine to use when evaluating the rule.
   /// [sqs] Optional.
   /// [stepFunctions] Optional.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timestreams] Optional.
   const TopicRuleArgs({
     this.cloudwatchAlarms,
@@ -185,4 +185,3 @@ class TopicRuleArgs {
     );
   }
 }
-

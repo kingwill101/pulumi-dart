@@ -87,6 +87,26 @@ import 'assessment_target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_inspector_resourcegroup" "bar" {
+///   tags = {
+///     "Name" = "foo"
+///     "Env"  = "bar"
+///   }
+/// }
+/// resource "aws_inspector_assessmenttarget" "foo" {
+///   name               = "assessment target"
+///   resource_group_arn = aws_inspector_resourcegroup.bar.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +117,8 @@ import 'assessment_target_state.dart';
 /// import com.pulumi.aws.inspector.ResourceGroupArgs;
 /// import com.pulumi.aws.inspector.AssessmentTarget;
 /// import com.pulumi.aws.inspector.AssessmentTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

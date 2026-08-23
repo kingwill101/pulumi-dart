@@ -25,4 +25,3 @@ class IdcApplicationServiceIntegrationS3AccessGrants {
     );
   }
 }
-

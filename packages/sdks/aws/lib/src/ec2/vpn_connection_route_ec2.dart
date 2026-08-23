@@ -106,7 +106,7 @@ import 'vpn_connection_route_state.dart';
 /// 			return err
 /// 		}
 /// 		vpnGateway, err := ec2.NewVpnGateway(ctx, "vpn_gateway", &ec2.VpnGatewayArgs{
-/// 			VpcId: vpc.ID(),
+/// 			VpcId: vpc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -120,8 +120,8 @@ import 'vpn_connection_route_state.dart';
 /// 			return err
 /// 		}
 /// 		main, err := ec2.NewVpnConnection(ctx, "main", &ec2.VpnConnectionArgs{
-/// 			VpnGatewayId:      vpnGateway.ID(),
-/// 			CustomerGatewayId: customerGateway.ID(),
+/// 			VpnGatewayId:      vpnGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			CustomerGatewayId: customerGateway.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:              pulumi.String("ipsec.1"),
 /// 			StaticRoutesOnly:  pulumi.Bool(true),
 /// 		})
@@ -130,13 +130,44 @@ import 'vpn_connection_route_state.dart';
 /// 		}
 /// 		_, err = ec2.NewVpnConnectionRoute(ctx, "office", &ec2.VpnConnectionRouteArgs{
 /// 			DestinationCidrBlock: pulumi.String("192.168.10.0/24"),
-/// 			VpnConnectionId:      main.ID(),
+/// 			VpnConnectionId:      main.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "vpc" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_vpngateway" "vpn_gateway" {
+///   vpc_id = aws_ec2_vpc.vpc.id
+/// }
+/// resource "aws_ec2_customergateway" "customer_gateway" {
+///   bgp_asn    = 65000
+///   ip_address = "172.0.0.1"
+///   type       = "ipsec.1"
+/// }
+/// resource "aws_ec2_vpnconnection" "main" {
+///   vpn_gateway_id      = aws_ec2_vpngateway.vpn_gateway.id
+///   customer_gateway_id = aws_ec2_customergateway.customer_gateway.id
+///   type                = "ipsec.1"
+///   static_routes_only  = true
+/// }
+/// resource "aws_ec2_vpnconnectionroute" "office" {
+///   destination_cidr_block = "192.168.10.0/24"
+///   vpn_connection_id      = aws_ec2_vpnconnection.main.id
 /// }
 /// ```
 /// ```java
@@ -155,8 +186,8 @@ import 'vpn_connection_route_state.dart';
 /// import com.pulumi.aws.ec2.VpnConnectionArgs;
 /// import com.pulumi.aws.ec2.VpnConnectionRoute;
 /// import com.pulumi.aws.ec2.VpnConnectionRouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

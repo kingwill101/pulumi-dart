@@ -157,7 +157,7 @@ import 'kx_user_state.dart';
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
 /// 					"Sid":    "",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "ec2.amazonaws.com",
 /// 					},
 /// 				},
@@ -176,7 +176,7 @@ import 'kx_user_state.dart';
 /// 		}
 /// 		_, err = finspace.NewKxUser(ctx, "example", &finspace.KxUserArgs{
 /// 			Name:          pulumi.String("my-tf-kx-user"),
-/// 			EnvironmentId: exampleKxEnvironment.ID(),
+/// 			EnvironmentId: exampleKxEnvironment.ID().ToIDOutput().ToStringOutput(),
 /// 			IamRole:       exampleRole.Arn,
 /// 		})
 /// 		if err != nil {
@@ -184,6 +184,43 @@ import 'kx_user_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "Example KMS Key"
+///   deletion_window_in_days = 7
+/// }
+/// resource "aws_finspace_kxenvironment" "example" {
+///   name       = "my-tf-kx-environment"
+///   kms_key_id = aws_kms_key.example.arn
+/// }
+/// resource "aws_iam_role" "example" {
+///   name = "example-role"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Sid"    = ""
+///       "Principal" = {
+///         "Service" = "ec2.amazonaws.com"
+///       }
+///     }]
+///   })
+/// }
+/// resource "aws_finspace_kxuser" "example" {
+///   name           = "my-tf-kx-user"
+///   environment_id = aws_finspace_kxenvironment.example.id
+///   iam_role       = aws_iam_role.example.arn
 /// }
 /// ```
 /// ```java
@@ -201,8 +238,8 @@ import 'kx_user_state.dart';
 /// import com.pulumi.aws.finspace.KxUser;
 /// import com.pulumi.aws.finspace.KxUserArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -299,16 +336,16 @@ class KxUser extends pulumi.CustomResource {
   /// Unique identifier for the KX environment.
   late final pulumi.Output<String> environmentId;
   /// IAM role ARN to be associated with the user.
+  late final pulumi.Output<String> iamRole;
+  /// Unique identifier for the user.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<String> iamRole;
-  /// A unique identifier for the user.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [KxUser].

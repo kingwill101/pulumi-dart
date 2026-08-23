@@ -91,6 +91,26 @@ import 'classification_export_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_macie2_account" "example" {
+/// }
+/// resource "aws_macie2_classificationexportconfiguration" "example" {
+///   depends_on = [aws_macie2_account.example]
+///   s3_destination = {
+///     bucket_name = exampleAwsS3Bucket.bucket
+///     key_prefix  = "exampleprefix/"
+///     kms_key_arn = exampleAwsKmsKey.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +122,8 @@ import 'classification_export_configuration_state.dart';
 /// import com.pulumi.aws.macie2.ClassificationExportConfigurationArgs;
 /// import com.pulumi.aws.macie2.inputs.ClassificationExportConfigurationS3DestinationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -149,6 +169,14 @@ import 'classification_export_configuration_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import `aws.macie2.ClassificationExportConfiguration` using the region. For example:
 ///

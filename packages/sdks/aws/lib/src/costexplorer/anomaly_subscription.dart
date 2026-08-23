@@ -159,6 +159,37 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_costexplorer_anomalymonitor" "test" {
+///   name              = "AWSServiceMonitor"
+///   monitor_type      = "DIMENSIONAL"
+///   monitor_dimension = "SERVICE"
+/// }
+/// resource "aws_costexplorer_anomalysubscription" "test" {
+///   name              = "DAILYSUBSCRIPTION"
+///   frequency         = "DAILY"
+///   monitor_arn_lists = [aws_costexplorer_anomalymonitor.test.arn]
+///   subscribers {
+///     type    = "EMAIL"
+///     address = "abc@example.com"
+///   }
+///   threshold_expression = {
+///     dimension = {
+///       key           = "ANOMALY_TOTAL_IMPACT_ABSOLUTE"
+///       match_options = ["GREATER_THAN_OR_EQUAL"]
+///       values        = ["100"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -172,8 +203,8 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionSubscriberArgs;
 /// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionThresholdExpressionArgs;
 /// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionThresholdExpressionDimensionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -370,6 +401,32 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_costexplorer_anomalysubscription" "test" {
+///   name              = "AWSServiceMonitor"
+///   frequency         = "DAILY"
+///   monitor_arn_lists = [testAwsCeAnomalyMonitor.arn]
+///   subscribers {
+///     type    = "EMAIL"
+///     address = "abc@example.com"
+///   }
+///   threshold_expression = {
+///     dimension = {
+///       key           = "ANOMALY_TOTAL_IMPACT_PERCENTAGE"
+///       match_options = ["GREATER_THAN_OR_EQUAL"]
+///       values        = ["100"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -381,8 +438,8 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionSubscriberArgs;
 /// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionThresholdExpressionArgs;
 /// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionThresholdExpressionDimensionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -622,6 +679,40 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_costexplorer_anomalysubscription" "test" {
+///   name              = "AWSServiceMonitor"
+///   frequency         = "DAILY"
+///   monitor_arn_lists = [testAwsCeAnomalyMonitor.arn]
+///   subscribers {
+///     type    = "EMAIL"
+///     address = "abc@example.com"
+///   }
+///   threshold_expression = {
+///     ands = [{
+///       "dimension" = {
+///         "key"          = "ANOMALY_TOTAL_IMPACT_ABSOLUTE"
+///         "matchOptions" = ["GREATER_THAN_OR_EQUAL"]
+///         "values"       = ["100"]
+///       }
+///       }, {
+///       "dimension" = {
+///         "key"          = "ANOMALY_TOTAL_IMPACT_PERCENTAGE"
+///         "matchOptions" = ["GREATER_THAN_OR_EQUAL"]
+///         "values"       = ["50"]
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -632,8 +723,10 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// import com.pulumi.aws.costexplorer.AnomalySubscriptionArgs;
 /// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionSubscriberArgs;
 /// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionThresholdExpressionArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionThresholdExpressionAndArgs;
+/// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionThresholdExpressionAndDimensionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -712,7 +805,7 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const costAnomalyUpdates = new aws.sns.Topic("cost_anomaly_updates", {name: "CostAnomalyUpdates"});
-/// const snsTopicPolicy = pulumi.all([costAnomalyUpdates.arn, costAnomalyUpdates.arn]).apply(([costAnomalyUpdatesArn, costAnomalyUpdatesArn1]) => aws.iam.getPolicyDocumentOutput({
+/// const snsTopicPolicy = aws.iam.getPolicyDocumentOutput({
 ///     policyId: "__default_policy_ID",
 ///     statements: [
 ///         {
@@ -723,7 +816,7 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                 type: "Service",
 ///                 identifiers: ["costalerts.amazonaws.com"],
 ///             }],
-///             resources: [costAnomalyUpdatesArn],
+///             resources: [costAnomalyUpdates.arn],
 ///         },
 ///         {
 ///             sid: "__default_statement_ID",
@@ -748,13 +841,13 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                 type: "AWS",
 ///                 identifiers: ["*"],
 ///             }],
-///             resources: [costAnomalyUpdatesArn1],
+///             resources: [costAnomalyUpdates.arn],
 ///         },
 ///     ],
-/// }));
+/// });
 /// const _default = new aws.sns.TopicPolicy("default", {
 ///     arn: costAnomalyUpdates.arn,
-///     policy: snsTopicPolicy.apply(snsTopicPolicy => snsTopicPolicy.json),
+///     policy: snsTopicPolicy.json,
 /// });
 /// const anomalyMonitor = new aws.costexplorer.AnomalyMonitor("anomaly_monitor", {
 ///     name: "AWSServiceMonitor",
@@ -778,10 +871,7 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// import pulumi_aws as aws
 ///
 /// cost_anomaly_updates = aws.sns.Topic("cost_anomaly_updates", name="CostAnomalyUpdates")
-/// sns_topic_policy = pulumi.Output.all(
-///     costAnomalyUpdatesArn=cost_anomaly_updates.arn,
-///     costAnomalyUpdatesArn1=cost_anomaly_updates.arn
-/// ).apply(lambda resolved_outputs: aws.iam.get_policy_document_output(policy_id="__default_policy_ID",
+/// sns_topic_policy = aws.iam.get_policy_document_output(policy_id="__default_policy_ID",
 ///     statements=[
 ///         {
 ///             "sid": "AWSAnomalyDetectionSNSPublishingPermissions",
@@ -791,7 +881,7 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                 "type": "Service",
 ///                 "identifiers": ["costalerts.amazonaws.com"],
 ///             }],
-///             "resources": [resolved_outputs['costAnomalyUpdatesArn']],
+///             "resources": [cost_anomaly_updates.arn],
 ///         },
 ///         {
 ///             "sid": "__default_statement_ID",
@@ -816,10 +906,9 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                 "type": "AWS",
 ///                 "identifiers": ["*"],
 ///             }],
-///             "resources": [resolved_outputs['costAnomalyUpdatesArn1']],
+///             "resources": [cost_anomaly_updates.arn],
 ///         },
-///     ]))
-///
+///     ])
 /// default = aws.sns.TopicPolicy("default",
 ///     arn=cost_anomaly_updates.arn,
 ///     policy=sns_topic_policy.json)
@@ -855,7 +944,7 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///         PolicyId = "__default_policy_ID",
 ///         Statements = new[]
 ///         {
-///             new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
 ///                 Sid = "AWSAnomalyDetectionSNSPublishingPermissions",
 ///                 Actions = new[]
@@ -865,7 +954,7 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
 ///                     {
 ///                         Type = "Service",
 ///                         Identifiers = new[]
@@ -879,7 +968,7 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                     costAnomalyUpdates.Arn,
 ///                 },
 ///             },
-///             new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
 ///                 Sid = "__default_statement_ID",
 ///                 Actions = new[]
@@ -896,7 +985,7 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                 },
 ///                 Conditions = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionArgs
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
 ///                     {
 ///                         Test = "StringEquals",
 ///                         Variable = "AWS:SourceOwner",
@@ -909,7 +998,7 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
 ///                     {
 ///                         Type = "AWS",
 ///                         Identifiers = new[]
@@ -974,113 +1063,169 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/sns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// costAnomalyUpdates, err := sns.NewTopic(ctx, "cost_anomaly_updates", &sns.TopicArgs{
-/// Name: pulumi.String("CostAnomalyUpdates"),
-/// })
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		costAnomalyUpdates, err := sns.NewTopic(ctx, "cost_anomaly_updates", &sns.TopicArgs{
+/// 			Name: pulumi.String("CostAnomalyUpdates"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		snsTopicPolicy := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
+/// 			PolicyId: pulumi.String("__default_policy_ID"),
+/// 			Statements: iam.GetPolicyDocumentStatementArray{
+/// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Sid: pulumi.String("AWSAnomalyDetectionSNSPublishingPermissions"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("SNS:Publish"),
+/// 					},
+/// 					Effect: pulumi.String("Allow"),
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("Service"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("costalerts.amazonaws.com"),
+/// 							},
+/// 						},
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						costAnomalyUpdates.Arn,
+/// 					},
+/// 				},
+/// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Sid: pulumi.String("__default_statement_ID"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("SNS:Subscribe"),
+/// 						pulumi.String("SNS:SetTopicAttributes"),
+/// 						pulumi.String("SNS:RemovePermission"),
+/// 						pulumi.String("SNS:Receive"),
+/// 						pulumi.String("SNS:Publish"),
+/// 						pulumi.String("SNS:ListSubscriptionsByTopic"),
+/// 						pulumi.String("SNS:GetTopicAttributes"),
+/// 						pulumi.String("SNS:DeleteTopic"),
+/// 						pulumi.String("SNS:AddPermission"),
+/// 					},
+/// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
+/// 						&iam.GetPolicyDocumentStatementConditionArgs{
+/// 							Test:     pulumi.String("StringEquals"),
+/// 							Variable: pulumi.String("AWS:SourceOwner"),
+/// 							Values: pulumi.StringArray{
+/// 								accountId,
+/// 							},
+/// 						},
+/// 					},
+/// 					Effect: pulumi.String("Allow"),
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("AWS"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("*"),
+/// 							},
+/// 						},
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						costAnomalyUpdates.Arn,
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		_default, err := sns.NewTopicPolicy(ctx, "default", &sns.TopicPolicyArgs{
+/// 			Arn:    costAnomalyUpdates.Arn,
+/// 			Policy: snsTopicPolicy.Json(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		anomalyMonitor, err := costexplorer.NewAnomalyMonitor(ctx, "anomaly_monitor", &costexplorer.AnomalyMonitorArgs{
+/// 			Name:             pulumi.String("AWSServiceMonitor"),
+/// 			MonitorType:      pulumi.String("DIMENSIONAL"),
+/// 			MonitorDimension: pulumi.String("SERVICE"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = costexplorer.NewAnomalySubscription(ctx, "realtime_subscription", &costexplorer.AnomalySubscriptionArgs{
+/// 			Name:      pulumi.String("RealtimeAnomalySubscription"),
+/// 			Frequency: pulumi.String("IMMEDIATE"),
+/// 			MonitorArnLists: pulumi.StringArray{
+/// 				anomalyMonitor.Arn,
+/// 			},
+/// 			Subscribers: costexplorer.AnomalySubscriptionSubscriberArray{
+/// 				&costexplorer.AnomalySubscriptionSubscriberArgs{
+/// 					Type:    pulumi.String("SNS"),
+/// 					Address: costAnomalyUpdates.Arn,
+/// 				},
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			_default,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// snsTopicPolicy := pulumi.All(costAnomalyUpdates.Arn,costAnomalyUpdates.Arn).ApplyT(func(_args []interface{}) (iam.GetPolicyDocumentResult, error) {
-/// costAnomalyUpdatesArn := _args[0].(string)
-/// costAnomalyUpdatesArn1 := _args[1].(string)
-/// return iam.GetPolicyDocumentResult(interface{}(iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// PolicyId: pulumi.StringRef(pulumi.StringRef("__default_policy_ID")),
-/// Statements: []iam.GetPolicyDocumentStatement([]iam.GetPolicyDocumentStatement{
-/// {
-/// Sid: pulumi.StringRef(pulumi.String(pulumi.StringRef("AWSAnomalyDetectionSNSPublishingPermissions"))),
-/// Actions: []string{
-/// "SNS:Publish",
-/// },
-/// Effect: pulumi.StringRef(pulumi.String(pulumi.StringRef("Allow"))),
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "Service",
-/// Identifiers: []string{
-/// "costalerts.amazonaws.com",
-/// },
-/// },
-/// },
-/// Resources: []string{
-/// costAnomalyUpdatesArn,
-/// },
-/// },
-/// {
-/// Sid: pulumi.StringRef(pulumi.String(pulumi.StringRef("__default_statement_ID"))),
-/// Actions: []string{
-/// "SNS:Subscribe",
-/// "SNS:SetTopicAttributes",
-/// "SNS:RemovePermission",
-/// "SNS:Receive",
-/// "SNS:Publish",
-/// "SNS:ListSubscriptionsByTopic",
-/// "SNS:GetTopicAttributes",
-/// "SNS:DeleteTopic",
-/// "SNS:AddPermission",
-/// },
-/// Conditions: []iam.GetPolicyDocumentStatementCondition{
-/// {
-/// Test: "StringEquals",
-/// Variable: "AWS:SourceOwner",
-/// Values: interface{}{
-/// accountId,
-/// },
-/// },
-/// },
-/// Effect: pulumi.StringRef(pulumi.String(pulumi.StringRef("Allow"))),
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "AWS",
-/// Identifiers: []string{
-/// "*",
-/// },
-/// },
-/// },
-/// Resources: []string{
-/// costAnomalyUpdatesArn1,
-/// },
-/// },
-/// }),
-/// }, nil))), nil
-/// }).(iam.GetPolicyDocumentResultOutput)
-/// _default, err := sns.NewTopicPolicy(ctx, "default", &sns.TopicPolicyArgs{
-/// Arn: costAnomalyUpdates.Arn,
-/// Policy: pulumi.String(snsTopicPolicy.ApplyT(func(snsTopicPolicy iam.GetPolicyDocumentResult) (*string, error) {
-/// return &snsTopicPolicy.Json, nil
-/// }).(pulumi.StringPtrOutput)),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// anomalyMonitor, err := costexplorer.NewAnomalyMonitor(ctx, "anomaly_monitor", &costexplorer.AnomalyMonitorArgs{
-/// Name: pulumi.String("AWSServiceMonitor"),
-/// MonitorType: pulumi.String("DIMENSIONAL"),
-/// MonitorDimension: pulumi.String("SERVICE"),
-/// })
-/// if err != nil {
-/// return err
+///
+/// data "aws_iam_getpolicydocument" "snsTopicPolicy" {
+///   policy_id = "__default_policy_ID"
+///   statements {
+///     sid     = "AWSAnomalyDetectionSNSPublishingPermissions"
+///     actions = ["SNS:Publish"]
+///     effect  = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["costalerts.amazonaws.com"]
+///     }
+///     resources = [aws_sns_topic.cost_anomaly_updates.arn]
+///   }
+///   statements {
+///     sid     = "__default_statement_ID"
+///     actions = ["SNS:Subscribe", "SNS:SetTopicAttributes", "SNS:RemovePermission", "SNS:Receive", "SNS:Publish", "SNS:ListSubscriptionsByTopic", "SNS:GetTopicAttributes", "SNS:DeleteTopic", "SNS:AddPermission"]
+///     conditions {
+///       test     = "StringEquals"
+///       variable = "AWS:SourceOwner"
+///       values   = [accountId]
+///     }
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["*"]
+///     }
+///     resources = [aws_sns_topic.cost_anomaly_updates.arn]
+///   }
 /// }
-/// _, err = costexplorer.NewAnomalySubscription(ctx, "realtime_subscription", &costexplorer.AnomalySubscriptionArgs{
-/// Name: pulumi.String("RealtimeAnomalySubscription"),
-/// Frequency: pulumi.String("IMMEDIATE"),
-/// MonitorArnLists: pulumi.StringArray{
-/// anomalyMonitor.Arn,
-/// },
-/// Subscribers: costexplorer.AnomalySubscriptionSubscriberArray{
-/// &costexplorer.AnomalySubscriptionSubscriberArgs{
-/// Type: pulumi.String("SNS"),
-/// Address: costAnomalyUpdates.Arn,
-/// },
-/// },
-/// }, pulumi.DependsOn([]pulumi.Resource{
-/// _default,
-/// }))
-/// if err != nil {
-/// return err
+///
+/// resource "aws_sns_topic" "cost_anomaly_updates" {
+///   name = "CostAnomalyUpdates"
 /// }
-/// return nil
-/// })
+/// resource "aws_sns_topicpolicy" "default" {
+///   arn    = aws_sns_topic.cost_anomaly_updates.arn
+///   policy = data.aws_iam_getpolicydocument.snsTopicPolicy.json
+/// }
+/// resource "aws_costexplorer_anomalymonitor" "anomaly_monitor" {
+///   name              = "AWSServiceMonitor"
+///   monitor_type      = "DIMENSIONAL"
+///   monitor_dimension = "SERVICE"
+/// }
+/// resource "aws_costexplorer_anomalysubscription" "realtime_subscription" {
+///   depends_on        = [aws_sns_topicpolicy.default]
+///   name              = "RealtimeAnomalySubscription"
+///   frequency         = "IMMEDIATE"
+///   monitor_arn_lists = [aws_costexplorer_anomalymonitor.anomaly_monitor.arn]
+///   subscribers {
+///     type    = "SNS"
+///     address = aws_sns_topic.cost_anomaly_updates.arn
+///   }
 /// }
 /// ```
 /// ```java
@@ -1093,6 +1238,9 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// import com.pulumi.aws.sns.TopicArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.sns.TopicPolicy;
 /// import com.pulumi.aws.sns.TopicPolicyArgs;
 /// import com.pulumi.aws.costexplorer.AnomalyMonitor;
@@ -1101,8 +1249,8 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// import com.pulumi.aws.costexplorer.AnomalySubscriptionArgs;
 /// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionSubscriberArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1118,48 +1266,44 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///             .name("CostAnomalyUpdates")
 ///             .build());
 ///
-///         final var snsTopicPolicy = Output.tuple(costAnomalyUpdates.arn(), costAnomalyUpdates.arn()).applyValue(values -> {
-///             var costAnomalyUpdatesArn = values.t1;
-///             var costAnomalyUpdatesArn1 = values.t2;
-///             return IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-///                 .policyId("__default_policy_ID")
-///                 .statements(
-///                     GetPolicyDocumentStatementArgs.builder()
-///                         .sid("AWSAnomalyDetectionSNSPublishingPermissions")
-///                         .actions("SNS:Publish")
-///                         .effect("Allow")
-///                         .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                             .type("Service")
-///                             .identifiers("costalerts.amazonaws.com")
-///                             .build())
-///                         .resources(costAnomalyUpdatesArn)
-///                         .build(),
-///                     GetPolicyDocumentStatementArgs.builder()
-///                         .sid("__default_statement_ID")
-///                         .actions(
-///                             "SNS:Subscribe",
-///                             "SNS:SetTopicAttributes",
-///                             "SNS:RemovePermission",
-///                             "SNS:Receive",
-///                             "SNS:Publish",
-///                             "SNS:ListSubscriptionsByTopic",
-///                             "SNS:GetTopicAttributes",
-///                             "SNS:DeleteTopic",
-///                             "SNS:AddPermission")
-///                         .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-///                             .test("StringEquals")
-///                             .variable("AWS:SourceOwner")
-///                             .values(accountId)
-///                             .build())
-///                         .effect("Allow")
-///                         .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                             .type("AWS")
-///                             .identifiers("*")
-///                             .build())
-///                         .resources(costAnomalyUpdatesArn1)
+///         final var snsTopicPolicy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+///             .policyId("__default_policy_ID")
+///             .statements(
+///                 GetPolicyDocumentStatementArgs.builder()
+///                     .sid("AWSAnomalyDetectionSNSPublishingPermissions")
+///                     .actions("SNS:Publish")
+///                     .effect("Allow")
+///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                         .type("Service")
+///                         .identifiers("costalerts.amazonaws.com")
 ///                         .build())
-///                 .build());
-///         });
+///                     .resources(costAnomalyUpdates.arn())
+///                     .build(),
+///                 GetPolicyDocumentStatementArgs.builder()
+///                     .sid("__default_statement_ID")
+///                     .actions(
+///                         "SNS:Subscribe",
+///                         "SNS:SetTopicAttributes",
+///                         "SNS:RemovePermission",
+///                         "SNS:Receive",
+///                         "SNS:Publish",
+///                         "SNS:ListSubscriptionsByTopic",
+///                         "SNS:GetTopicAttributes",
+///                         "SNS:DeleteTopic",
+///                         "SNS:AddPermission")
+///                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+///                         .test("StringEquals")
+///                         .variable("AWS:SourceOwner")
+///                         .values(accountId)
+///                         .build())
+///                     .effect("Allow")
+///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                         .type("AWS")
+///                         .identifiers("*")
+///                         .build())
+///                     .resources(costAnomalyUpdates.arn())
+///                     .build())
+///             .build());
 ///
 ///         var default_ = new TopicPolicy("default", TopicPolicyArgs.builder()
 ///             .arn(costAnomalyUpdates.arn())
@@ -1290,9 +1434,9 @@ class AnomalySubscription extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// A subscriber configuration. Multiple subscribers can be defined.
   late final pulumi.Output<List<Map<String, dynamic>>> subscribers;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// An Expression object used to specify the anomalies that you want to generate alerts for. See Threshold Expression.
   late final pulumi.Output<AnomalySubscriptionThresholdExpression> thresholdExpression;

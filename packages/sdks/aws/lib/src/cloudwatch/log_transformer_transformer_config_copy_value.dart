@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_transformer_transformer_config_copy_value_entry.dart';
 
 class LogTransformerTransformerConfigCopyValue {
-  /// Objects containing the information about the values to copy to the log event. You must include at least one entry, and five at most. See `copy_value` `entry` below for details.
+  /// Objects containing the information about the values to copy to the log event. You must include at least one entry, and five at most. See `copyValue` `entry` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfigCopyValueEntry>> entries;
 
   /// Creates a new [LogTransformerTransformerConfigCopyValue].
-  /// [entries] Objects containing the information about the values to copy to the log event. You must include at least one entry, and five at most. See `copy_value` `entry` below for details.
+  /// [entries] Objects containing the information about the values to copy to the log event. You must include at least one entry, and five at most. See `copyValue` `entry` below for details.
   const LogTransformerTransformerConfigCopyValue({
     required this.entries,
   });
@@ -25,4 +25,3 @@ class LogTransformerTransformerConfigCopyValue {
     );
   }
 }
-

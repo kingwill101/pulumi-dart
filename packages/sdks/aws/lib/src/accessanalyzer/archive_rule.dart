@@ -133,6 +133,32 @@ import 'archive_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_accessanalyzer_archiverule" "example" {
+///   analyzer_name = "example-analyzer"
+///   rule_name     = "example-rule"
+///   filters {
+///     criteria = "condition.aws:UserId"
+///     eqs      = ["userid"]
+///   }
+///   filters {
+///     criteria = "error"
+///     exists   = true
+///   }
+///   filters {
+///     criteria = "isPublic"
+///     eqs      = ["false"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -142,8 +168,8 @@ import 'archive_rule_state.dart';
 /// import com.pulumi.aws.accessanalyzer.ArchiveRule;
 /// import com.pulumi.aws.accessanalyzer.ArchiveRuleArgs;
 /// import com.pulumi.aws.accessanalyzer.inputs.ArchiveRuleFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

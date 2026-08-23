@@ -10,7 +10,7 @@ class V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranch 
   final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchCondition>? condition;
   /// Name of the branch.
   final pulumi.Input<String> name;
-  /// Configuration block for the next step in the conversation. See `next_step`.
+  /// Configuration block for the next step in the conversation. See `nextStep`.
   final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchNextStep>? nextStep;
   /// Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
   final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchResponse>? response;
@@ -18,7 +18,7 @@ class V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranch 
   /// Creates a new [V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranch].
   /// [condition] Configuration block for the expression to evaluate. If the condition is true, the branch's actions are taken. See `condition`.
   /// [name] Name of the branch.
-  /// [nextStep] Configuration block for the next step in the conversation. See `next_step`.
+  /// [nextStep] Configuration block for the next step in the conversation. See `nextStep`.
   /// [response] Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
   const V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranch({
     this.condition,
@@ -45,4 +45,3 @@ class V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranch 
     );
   }
 }
-

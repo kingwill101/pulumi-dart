@@ -149,6 +149,36 @@ import 'assessment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_auditmanager_assessment" "test" {
+///   name = "example"
+///   assessment_reports_destination = {
+///     destination      ="s3://${testAwsS3Bucket.id}"
+///     destination_type = "S3"
+///   }
+///   framework_id = testAwsAuditmanagerFramework.id
+///   roles {
+///     role_arn  = testAwsIamRole.arn
+///     role_type = "PROCESS_OWNER"
+///   }
+///   scope = {
+///     aws_accounts = [{
+///       "id" = current.accountId
+///     }]
+///     aws_services = [{
+///       "serviceName" = "S3"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -160,8 +190,10 @@ import 'assessment_state.dart';
 /// import com.pulumi.aws.auditmanager.inputs.AssessmentAssessmentReportsDestinationArgs;
 /// import com.pulumi.aws.auditmanager.inputs.AssessmentRoleArgs;
 /// import com.pulumi.aws.auditmanager.inputs.AssessmentScopeArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.auditmanager.inputs.AssessmentScopeAwsAccountArgs;
+/// import com.pulumi.aws.auditmanager.inputs.AssessmentScopeAwsServiceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -220,6 +252,18 @@ import 'assessment_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) Unique identifier for the assessment.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Audit Manager Assessments using the assessment `id`. For example:
 ///
 /// ```sh
@@ -228,7 +272,7 @@ import 'assessment_state.dart';
 class Assessment extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the assessment.
   late final pulumi.Output<String> arn;
-  /// Assessment report storage destination configuration. See `assessment_reports_destination` below.
+  /// Assessment report storage destination configuration. See `assessmentReportsDestination` below.
   late final pulumi.Output<AssessmentAssessmentReportsDestination?> assessmentReportsDestination;
   /// Description of the assessment.
   late final pulumi.Output<String?> description;
@@ -248,7 +292,7 @@ class Assessment extends pulumi.CustomResource {
   late final pulumi.Output<AssessmentScope?> scope;
   /// Status of the assessment. Valid values are `ACTIVE` and `INACTIVE`.
   late final pulumi.Output<String> status;
-  /// A map of tags to assign to the assessment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the assessment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
 

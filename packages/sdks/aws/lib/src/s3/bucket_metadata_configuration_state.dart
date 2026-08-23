@@ -10,7 +10,7 @@ class BucketMetadataConfigurationState {
   final pulumi.Input<String>? bucket;
   /// Account ID of the expected bucket owner.
   final pulumi.Input<String>? expectedBucketOwner;
-  /// Metadata configuration. See `metadata_configuration` Block for details.
+  /// Metadata configuration. See `metadataConfiguration` Block for details.
   ///
   /// The following arguments are optional:
   final pulumi.Input<BucketMetadataConfigurationMetadataConfiguration>? metadataConfiguration;
@@ -21,7 +21,7 @@ class BucketMetadataConfigurationState {
   /// Creates a new [BucketMetadataConfigurationState].
   /// [bucket] General purpose bucket that you want to create the metadata configuration for.
   /// [expectedBucketOwner] Account ID of the expected bucket owner.
-  /// [metadataConfiguration] Metadata configuration. See `metadata_configuration` Block for details.
+  /// [metadataConfiguration] Metadata configuration. See `metadataConfiguration` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   const BucketMetadataConfigurationState({
@@ -52,4 +52,3 @@ class BucketMetadataConfigurationState {
     );
   }
 }
-

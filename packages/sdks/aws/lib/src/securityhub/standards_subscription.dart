@@ -106,6 +106,29 @@ import 'standards_subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+///
+/// resource "aws_securityhub_account" "example" {
+/// }
+/// resource "aws_securityhub_standardssubscription" "cis" {
+///   depends_on    = [aws_securityhub_account.example]
+///   standards_arn = "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"
+/// }
+/// resource "aws_securityhub_standardssubscription" "pci_321" {
+///   depends_on    = [aws_securityhub_account.example]
+///   standards_arn ="arn:aws:securityhub:${data.aws_getregion.current.region}::standards/pci-dss/v/3.2.1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -118,8 +141,8 @@ import 'standards_subscription_state.dart';
 /// import com.pulumi.aws.securityhub.StandardsSubscription;
 /// import com.pulumi.aws.securityhub.StandardsSubscriptionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -180,20 +203,21 @@ import 'standards_subscription_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Security Hub standards subscriptions using the standards subscription ARN. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `arn` (String) Security Hub finding aggregator ARN.
+///
+///
+/// Using `pulumi import`, import Security Hub standards subscriptions using `arn`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:securityhub/standardsSubscription:StandardsSubscription cis arn:aws:securityhub:eu-west-1:123456789012:subscription/cis-aws-foundations-benchmark/v/1.2.0
-/// ```
-///
-/// ```sh
-/// $ pulumi import aws:securityhub/standardsSubscription:StandardsSubscription pci_321 arn:aws:securityhub:eu-west-1:123456789012:subscription/pci-dss/v/3.2.1
-/// ```
-///
-/// ```sh
-/// $ pulumi import aws:securityhub/standardsSubscription:StandardsSubscription nist_800_53_rev_5 arn:aws:securityhub:eu-west-1:123456789012:subscription/nist-800-53/v/5.0.0
+/// $ pulumi import aws:securityhub/standardsSubscription:StandardsSubscription example arn:aws:securityhub:eu-west-1:123456789012:subscription/cis-aws-foundations-benchmark/v/1.2.0
 /// ```
 class StandardsSubscription extends pulumi.CustomResource {
+  /// The ARN of a resource that represents your subscription to a supported standard.
+  late final pulumi.Output<String> arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The ARN of a standard - see below.
@@ -227,6 +251,7 @@ class StandardsSubscription extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
     standardsArn = registerOutput<String>('standardsArn');
   }
@@ -254,6 +279,7 @@ class StandardsSubscription extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
     standardsArn = registerOutput<String>('standardsArn');
   }

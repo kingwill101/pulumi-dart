@@ -136,6 +136,32 @@ import 'group_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_grouppolicy" "my_developer_policy" {
+///   name  = "my_developer_policy"
+///   group = aws_iam_group.my_developers.name
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action"   = ["ec2:Describe*"]
+///       "Effect"   = "Allow"
+///       "Resource" = "*"
+///     }]
+///   })
+/// }
+/// resource "aws_iam_group" "my_developers" {
+///   name = "developers"
+///   path = "/users/"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -147,8 +173,8 @@ import 'group_policy_state.dart';
 /// import com.pulumi.aws.iam.GroupPolicy;
 /// import com.pulumi.aws.iam.GroupPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

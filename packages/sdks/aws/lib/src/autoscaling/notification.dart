@@ -144,6 +144,30 @@ import 'notification_type.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_autoscaling_notification" "example_notifications" {
+///   group_names   = [aws_autoscaling_group.bar.name, aws_autoscaling_group.foo.name]
+///   notifications = ["autoscaling:EC2_INSTANCE_LAUNCH", "autoscaling:EC2_INSTANCE_TERMINATE", "autoscaling:EC2_INSTANCE_LAUNCH_ERROR", "autoscaling:EC2_INSTANCE_TERMINATE_ERROR"]
+///   topic_arn     = aws_sns_topic.example.arn
+/// }
+/// resource "aws_sns_topic" "example" {
+///   name = "example-topic"
+/// }
+/// resource "aws_autoscaling_group" "bar" {
+///   name = "foobar1-test"
+/// }
+/// resource "aws_autoscaling_group" "foo" {
+///   name = "barfoo-test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -156,8 +180,8 @@ import 'notification_type.dart';
 /// import com.pulumi.aws.autoscaling.GroupArgs;
 /// import com.pulumi.aws.autoscaling.Notification;
 /// import com.pulumi.aws.autoscaling.NotificationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

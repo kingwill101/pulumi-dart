@@ -118,6 +118,32 @@ import 'cluster_snapshot_copy_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_cluster" "example" {
+///   cluster_identifier  = "aurora-cluster-demo"
+///   database_name       = "test"
+///   engine              = "aurora-mysql"
+///   master_username     = "tfacctest"
+///   master_password     = "avoid-plaintext-passwords"
+///   skip_final_snapshot = true
+/// }
+/// resource "aws_rds_clustersnapshot" "example" {
+///   db_cluster_identifier          = aws_rds_cluster.example.cluster_identifier
+///   db_cluster_snapshot_identifier = "example"
+/// }
+/// resource "aws_rds_clustersnapshotcopy" "example" {
+///   source_db_cluster_snapshot_identifier = aws_rds_clustersnapshot.example.db_cluster_snapshot_arn
+///   target_db_cluster_snapshot_identifier = "example-copy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -130,8 +156,8 @@ import 'cluster_snapshot_copy_timeouts.dart';
 /// import com.pulumi.aws.rds.ClusterSnapshotArgs;
 /// import com.pulumi.aws.rds.ClusterSnapshotCopy;
 /// import com.pulumi.aws.rds.ClusterSnapshotCopyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -228,9 +254,9 @@ class ClusterSnapshotCopy extends pulumi.CustomResource {
   late final pulumi.Output<bool> storageEncrypted;
   /// Specifies the storage type associated with DB cluster snapshot.
   late final pulumi.Output<String> storageType;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Identifier for the snapshot.
   ///

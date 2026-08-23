@@ -99,6 +99,28 @@ import 'probe_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmonitor_monitor" "example" {
+///   aggregation_period = 30
+///   monitor_name       = "example"
+/// }
+/// resource "aws_networkmonitor_probe" "example" {
+///   monitor_name     = aws_networkmonitor_monitor.example.monitor_name
+///   destination      = "127.0.0.1"
+///   destination_port = 80
+///   protocol         = "TCP"
+///   source_arn       = exampleAwsSubnet.arn
+///   packet_size      = 200
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +131,8 @@ import 'probe_state.dart';
 /// import com.pulumi.aws.networkmonitor.MonitorArgs;
 /// import com.pulumi.aws.networkmonitor.Probe;
 /// import com.pulumi.aws.networkmonitor.ProbeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -185,9 +207,9 @@ class Probe extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The ARN of the subnet.
   late final pulumi.Output<String> sourceArn;
-  /// Key-value tags for the monitor. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the monitor. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<String> vpcId;
 

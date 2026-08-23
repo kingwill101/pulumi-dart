@@ -14,8 +14,8 @@ import 'log_anomaly_detector_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test: aws.cloudwatch.LogGroup[] = [];
-/// for (const range = {value: 0}; range.value < 2; range.value++) {
-///     test.push(new aws.cloudwatch.LogGroup(`test-${range.value}`, {name: `testing-${range.value}`}));
+/// for (let range = 0; range < 2; range++) {
+///     test.push(new aws.cloudwatch.LogGroup(`test-${range}`, {name: `testing-${range}`}));
 /// }
 /// const testLogAnomalyDetector = new aws.cloudwatch.LogAnomalyDetector("test", {
 ///     detectorName: "testing",
@@ -27,11 +27,12 @@ import 'log_anomaly_detector_state.dart';
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 ///
-/// test = []
-/// for range in [{"value": i} for i in range(0, 2)]:
-///     test.append(aws.cloudwatch.LogGroup(f"test-{range['value']}", name=f"testing-{range['value']}"))
+/// test: list[aws.cloudwatch.LogGroup] = []
+/// for test_range in [{"value": i} for i in range(0, 2)]:
+///     test.append(aws.cloudwatch.LogGroup(f"test-{test_range['value']}", name=f"testing-{test_range['value']}"))
 /// test_log_anomaly_detector = aws.cloudwatch.LogAnomalyDetector("test",
 ///     detector_name="testing",
 ///     log_group_arn_lists=[test[0].arn],
@@ -110,6 +111,27 @@ import 'log_anomaly_detector_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_loggroup" "test" {
+///   count = 2
+///   name  ="testing-${count.index}"
+/// }
+/// resource "aws_cloudwatch_loganomalydetector" "test" {
+///   detector_name           = "testing"
+///   log_group_arn_lists     = [aws_cloudwatch_loggroup.test[0].arn]
+///   anomaly_visibility_time = 7
+///   evaluation_frequency    = "TEN_MIN"
+///   enabled                 = "false"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +143,8 @@ import 'log_anomaly_detector_state.dart';
 /// import com.pulumi.aws.cloudwatch.LogAnomalyDetector;
 /// import com.pulumi.aws.cloudwatch.LogAnomalyDetectorArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -174,20 +196,27 @@ import 'log_anomaly_detector_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CloudWatch Log Anomaly Detector using the `arn`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `arn` (String) ARN of the anomaly detector.
+///
+///
+/// Using `pulumi import`, import Anomaly Detectors using `arn`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cloudwatch/logAnomalyDetector:LogAnomalyDetector example log_anomaly_detector-arn-12345678
+/// $ pulumi import aws:cloudwatch/logAnomalyDetector:LogAnomalyDetector example arn:aws:logs:us-east-1:123456789012:anomaly-detector:1a2b3c4d-5e6f-7890-abcd-ef1234567890
 /// ```
 class LogAnomalyDetector extends pulumi.CustomResource {
-  /// Number of days to have visibility on an anomaly. After this time period has elapsed for an anomaly, it will be automatically baselined and the anomaly detector will treat new occurrences of a similar anomaly as normal. Therefore, if you do not correct the cause of an anomaly during the time period specified in `anomaly_visibility_time`, it will be considered normal going forward and will not be detected as an anomaly. Valid Range: Minimum value of 7. Maximum value of 90.
+  /// Number of days to have visibility on an anomaly. After this time period has elapsed for an anomaly, it will be automatically baselined and the anomaly detector will treat new occurrences of a similar anomaly as normal. Therefore, if you do not correct the cause of an anomaly during the time period specified in `anomalyVisibilityTime`, it will be considered normal going forward and will not be detected as an anomaly. Valid Range: Minimum value of 7. Maximum value of 90.
   late final pulumi.Output<int> anomalyVisibilityTime;
   /// ARN of the log anomaly detector that you just created.
   late final pulumi.Output<String> arn;
   /// Name for this anomaly detector.
   late final pulumi.Output<String?> detectorName;
   late final pulumi.Output<bool> enabled;
-  /// Specifies how often the anomaly detector is to run and look for anomalies. Set this value according to the frequency that the log group receives new logs. For example, if the log group receives new log events every 10 minutes, then 15 minutes might be a good setting for `evaluation_frequency`. Valid Values: `ONE_MIN | FIVE_MIN | TEN_MIN | FIFTEEN_MIN | THIRTY_MIN | ONE_HOUR`.
+  /// Specifies how often the anomaly detector is to run and look for anomalies. Set this value according to the frequency that the log group receives new logs. For example, if the log group receives new log events every 10 minutes, then 15 minutes might be a good setting for `evaluationFrequency`. Valid Values: `ONE_MIN | FIVE_MIN | TEN_MIN | FIFTEEN_MIN | THIRTY_MIN | ONE_HOUR`.
   late final pulumi.Output<String?> evaluationFrequency;
   /// You can use this parameter to limit the anomaly detection model to examine only log events that match the pattern you specify here. For more information, see [Filter and Pattern Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
   late final pulumi.Output<String?> filterPattern;

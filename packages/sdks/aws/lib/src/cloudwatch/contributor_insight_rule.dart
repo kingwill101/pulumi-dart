@@ -67,6 +67,21 @@ import 'contributor_insight_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_contributorinsightrule" "test" {
+///   rule_name       = "testing"
+///   rule_state      = "ENABLED"
+///   rule_definition = "{\"Schema\":{\"Name\":\"CloudWatchLogRule\",\"Version\":1},\"AggregateOn\":\"Count\",\"Contribution\":{\"Filters\":[{\"In\":[\"some-keyword\"],\"Match\":\"$.message\"}],\"Keys\":[\"$.country\"]},\"LogFormat\":\"JSON\",\"LogGroupNames\":[\"/aws/lambda/api-prod\"]}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'contributor_insight_rule_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudwatch.ContributorInsightRule;
 /// import com.pulumi.aws.cloudwatch.ContributorInsightRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -110,10 +125,22 @@ import 'contributor_insight_rule_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CloudWatch Contributor Insight Rule using the `rule_name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `ruleName` (String) Name of the rule.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Contributor Insight Rules using `ruleName`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cloudwatch/contributorInsightRule:ContributorInsightRule example contributor_insight_rule-name
+/// $ pulumi import aws:cloudwatch/contributorInsightRule:ContributorInsightRule example example-rule
 /// ```
 class ContributorInsightRule extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -127,7 +154,7 @@ class ContributorInsightRule extends pulumi.CustomResource {
   /// The following arguments are optional:
   late final pulumi.Output<String> ruleName;
   /// State of the rule. Valid values are `ENABLED` and `DISABLED`.
-  late final pulumi.Output<String?> ruleState;
+  late final pulumi.Output<String> ruleState;
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -149,7 +176,7 @@ class ContributorInsightRule extends pulumi.CustomResource {
     resourceArn = registerOutput<String>('resourceArn');
     ruleDefinition = registerOutput<String>('ruleDefinition');
     ruleName = registerOutput<String>('ruleName');
-    ruleState = registerOutput<String?>('ruleState');
+    ruleState = registerOutput<String>('ruleState');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -181,7 +208,7 @@ class ContributorInsightRule extends pulumi.CustomResource {
     resourceArn = registerOutput<String>('resourceArn');
     ruleDefinition = registerOutput<String>('ruleDefinition');
     ruleName = registerOutput<String>('ruleName');
-    ruleState = registerOutput<String?>('ruleState');
+    ruleState = registerOutput<String>('ruleState');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

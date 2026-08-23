@@ -129,7 +129,7 @@ import 'rate_based_rule_state.dart';
 /// 			RateLimit:  pulumi.Int(100),
 /// 			Predicates: waf.RateBasedRulePredicateArray{
 /// 				&waf.RateBasedRulePredicateArgs{
-/// 					DataId:  ipset.ID(),
+/// 					DataId:  ipset.ID().ToIDOutput().ToStringOutput(),
 /// 					Negated: pulumi.Bool(false),
 /// 					Type:    pulumi.String("IPMatch"),
 /// 				},
@@ -142,6 +142,35 @@ import 'rate_based_rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_waf_ipset" "ipset" {
+///   name = "tfIPSet"
+///   ip_set_descriptors {
+///     type  = "IPV4"
+///     value = "192.0.7.0/24"
+///   }
+/// }
+/// resource "aws_waf_ratebasedrule" "wafrule" {
+///   depends_on  = [aws_waf_ipset.ipset]
+///   name        = "tfWAFRule"
+///   metric_name = "tfWAFRule"
+///   rate_key    = "IP"
+///   rate_limit  = 100
+///   predicates {
+///     data_id = aws_waf_ipset.ipset.id
+///     negated = false
+///     type    = "IPMatch"
+///   }
 /// }
 /// ```
 /// ```java
@@ -157,8 +186,8 @@ import 'rate_based_rule_state.dart';
 /// import com.pulumi.aws.waf.RateBasedRuleArgs;
 /// import com.pulumi.aws.waf.inputs.RateBasedRulePredicateArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -241,9 +270,9 @@ class RateBasedRule extends pulumi.CustomResource {
   late final pulumi.Output<String> rateKey;
   /// The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
   late final pulumi.Output<int> rateLimit;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [RateBasedRule].

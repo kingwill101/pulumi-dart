@@ -4,7 +4,7 @@ import 'contact_state.dart';
 
 /// Resource for managing an AWS SSM Contact.
 ///
-/// &gt; **NOTE:** A contact implicitly depends on a replication set. If you configured your replication set in Pulumi, we recommend you add it to the `depends_on` argument for the Contact Resource.
+/// &gt; **NOTE:** A contact implicitly depends on a replication set. If you configured your replication set in Pulumi, we recommend you add it to the `dependsOn` argument for the Contact Resource.
 ///
 /// ## Example Usage
 ///
@@ -76,6 +76,21 @@ import 'contact_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssmcontacts_contact" "example" {
+///   depends_on = [exampleAwsSsmincidentsReplicationSet]
+///   alias      = "alias"
+///   type       = "PERSONAL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +100,8 @@ import 'contact_state.dart';
 /// import com.pulumi.aws.ssmcontacts.Contact;
 /// import com.pulumi.aws.ssmcontacts.ContactArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -206,6 +221,25 @@ import 'contact_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssmcontacts_contact" "example" {
+///   depends_on   = [exampleAwsSsmincidentsReplicationSet]
+///   alias        = "alias"
+///   display_name = "displayName"
+///   type         = "ESCALATION"
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -215,8 +249,8 @@ import 'contact_state.dart';
 /// import com.pulumi.aws.ssmcontacts.Contact;
 /// import com.pulumi.aws.ssmcontacts.ContactArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -279,9 +313,9 @@ class Contact extends pulumi.CustomResource {
   late final pulumi.Output<String?> displayName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value tags for the monitor. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the monitor. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The type of contact engaged. A single contact is type PERSONAL and an escalation
   /// plan is type ESCALATION.

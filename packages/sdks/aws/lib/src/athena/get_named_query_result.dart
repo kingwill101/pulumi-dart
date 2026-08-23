@@ -10,6 +10,7 @@ class GetNamedQueryResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
+  /// Text of the query itself.
   final String querystring;
   final String region;
   final String? workgroup;
@@ -19,7 +20,7 @@ class GetNamedQueryResult {
   /// [description] Brief explanation of the query.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
-  /// [querystring] Required.
+  /// [querystring] Text of the query itself.
   /// [region] Required.
   /// [workgroup] Optional.
   const GetNamedQueryResult({
@@ -56,4 +57,3 @@ class GetNamedQueryResult {
     );
   }
 }
-

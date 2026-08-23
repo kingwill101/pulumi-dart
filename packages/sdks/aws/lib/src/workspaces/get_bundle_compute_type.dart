@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBundleComputeType {
-  /// Name of the bundle. You cannot combine this parameter with `bundle_id`.
+  /// Name of the bundle. You cannot combine this parameter with `bundleId`.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetBundleComputeType].
-  /// [name] Name of the bundle. You cannot combine this parameter with `bundle_id`.
+  /// [name] Name of the bundle. You cannot combine this parameter with `bundleId`.
   const GetBundleComputeType({
     required this.name,
   });
@@ -24,4 +24,3 @@ class GetBundleComputeType {
     );
   }
 }
-

@@ -398,6 +398,85 @@ import 'framework_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_backup_framework" "Example" {
+///   name        = "exampleFramework"
+///   description = "this is an example framework"
+///   controls {
+///     name = "BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK"
+///     input_parameters {
+///       name  = "requiredRetentionDays"
+///       value = "35"
+///     }
+///   }
+///   controls {
+///     name = "BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK"
+///     input_parameters {
+///       name  = "requiredFrequencyUnit"
+///       value = "hours"
+///     }
+///     input_parameters {
+///       name  = "requiredRetentionDays"
+///       value = "35"
+///     }
+///     input_parameters {
+///       name  = "requiredFrequencyValue"
+///       value = "1"
+///     }
+///   }
+///   controls {
+///     name = "BACKUP_RECOVERY_POINT_ENCRYPTED"
+///   }
+///   controls {
+///     name = "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN"
+///     scope = {
+///       compliance_resource_types = ["EBS"]
+///     }
+///   }
+///   controls {
+///     name = "BACKUP_RECOVERY_POINT_MANUAL_DELETION_DISABLED"
+///   }
+///   controls {
+///     name = "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK"
+///     input_parameters {
+///       name  = "maxRetentionDays"
+///       value = "100"
+///     }
+///     input_parameters {
+///       name  = "minRetentionDays"
+///       value = "1"
+///     }
+///     scope = {
+///       compliance_resource_types = ["EBS"]
+///     }
+///   }
+///   controls {
+///     name = "BACKUP_LAST_RECOVERY_POINT_CREATED"
+///     input_parameters {
+///       name  = "recoveryPointAgeUnit"
+///       value = "days"
+///     }
+///     input_parameters {
+///       name  = "recoveryPointAgeValue"
+///       value = "1"
+///     }
+///     scope = {
+///       compliance_resource_types = ["EBS"]
+///     }
+///   }
+///   tags = {
+///     "Name" = "Example Framework"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -407,9 +486,10 @@ import 'framework_state.dart';
 /// import com.pulumi.aws.backup.Framework;
 /// import com.pulumi.aws.backup.FrameworkArgs;
 /// import com.pulumi.aws.backup.inputs.FrameworkControlArgs;
+/// import com.pulumi.aws.backup.inputs.FrameworkControlInputParameterArgs;
 /// import com.pulumi.aws.backup.inputs.FrameworkControlScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -570,9 +650,9 @@ class Framework extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// A framework consists of one or more controls. Each control governs a resource, such as backup plans, backup selections, backup vaults, or recovery points. You can also turn AWS Config recording on or off for each resource. For more information refer to the [AWS documentation for Framework Status](https://docs.aws.amazon.com/aws-backup/latest/devguide/API_DescribeFramework.html#Backup-DescribeFramework-response-FrameworkStatus)
   late final pulumi.Output<String> status;
-  /// Metadata that you can assign to help organize the frameworks you create. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Metadata that you can assign to help organize the frameworks you create. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Framework].

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomRoutingAcceleratorAttributes {
   /// Indicates whether flow logs are enabled. Defaults to `false`. Valid values: `true`, `false`.
   final pulumi.Input<bool>? flowLogsEnabled;
-  /// The name of the Amazon S3 bucket for the flow logs. Required if `flow_logs_enabled` is `true`.
+  /// The name of the Amazon S3 bucket for the flow logs. Required if `flowLogsEnabled` is `true`.
   final pulumi.Input<String>? flowLogsS3Bucket;
-  /// The prefix for the location in the Amazon S3 bucket for the flow logs. Required if `flow_logs_enabled` is `true`.
+  /// The prefix for the location in the Amazon S3 bucket for the flow logs. Required if `flowLogsEnabled` is `true`.
   final pulumi.Input<String>? flowLogsS3Prefix;
 
   /// Creates a new [CustomRoutingAcceleratorAttributes].
   /// [flowLogsEnabled] Indicates whether flow logs are enabled. Defaults to `false`. Valid values: `true`, `false`.
-  /// [flowLogsS3Bucket] The name of the Amazon S3 bucket for the flow logs. Required if `flow_logs_enabled` is `true`.
-  /// [flowLogsS3Prefix] The prefix for the location in the Amazon S3 bucket for the flow logs. Required if `flow_logs_enabled` is `true`.
+  /// [flowLogsS3Bucket] The name of the Amazon S3 bucket for the flow logs. Required if `flowLogsEnabled` is `true`.
+  /// [flowLogsS3Prefix] The prefix for the location in the Amazon S3 bucket for the flow logs. Required if `flowLogsEnabled` is `true`.
   const CustomRoutingAcceleratorAttributes({
     this.flowLogsEnabled,
     this.flowLogsS3Bucket,
@@ -36,4 +36,3 @@ class CustomRoutingAcceleratorAttributes {
     );
   }
 }
-

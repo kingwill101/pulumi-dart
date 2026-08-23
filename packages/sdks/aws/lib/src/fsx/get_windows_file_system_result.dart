@@ -6,24 +6,25 @@ import 'get_windows_file_system_disk_iops_configuration.dart';
 
 /// Result data returned by getWindowsFileSystem.
 class GetWindowsFileSystemResult {
-  /// The ID for Microsoft Active Directory instance that the file system is join to.
+  /// ID for Microsoft Active Directory instance that the file system is joined to.
   final String activeDirectoryId;
-  /// An array DNS alias names associated with the Amazon FSx file system.
+  /// Set of DNS alias names associated with the Amazon FSx file system.
   final List<String> aliases;
   /// Amazon Resource Name of the file system.
   final String arn;
-  /// The configuration that Amazon FSx for Windows File Server uses to audit and log user accesses of files, folders, and file shares on the Amazon FSx for Windows File Server file system.
+  /// Configuration that Amazon FSx for Windows File Server uses to audit and log user accesses of files, folders, and file shares on the Amazon FSx for Windows File Server file system.
   final List<GetWindowsFileSystemAuditLogConfiguration> auditLogConfigurations;
-  /// The number of days to retain automatic backups.
+  /// Number of days to retain automatic backups.
   final int automaticBackupRetentionDays;
+  /// Identifier of the source backup used to create the file system.
   final String backupId;
-  /// A boolean flag indicating whether tags on the file system should be copied to backups.
+  /// Whether tags on the file system are copied to backups.
   final bool copyTagsToBackups;
-  /// The preferred time (in `HH:MM` format) to take daily automatic backups, in the UTC time zone.
+  /// Preferred time (in `HH:MM` format) to take daily automatic backups, in the UTC time zone.
   final String dailyAutomaticBackupStartTime;
-  /// The file system deployment type.
+  /// File system deployment type.
   final String deploymentType;
-  /// The SSD IOPS configuration for the file system.
+  /// SSD IOPS configuration for the file system.
   final List<GetWindowsFileSystemDiskIopsConfiguration> diskIopsConfigurations;
   /// DNS name for the file system (e.g. `fs-12345678.corp.example.com`).
   final String dnsName;
@@ -31,59 +32,65 @@ class GetWindowsFileSystemResult {
   final String id;
   /// ARN for the KMS Key to encrypt the file system at rest.
   final String kmsKeyId;
+  /// Set of network interface identifiers for the file system.
   final List<String> networkInterfaceIds;
+  /// Network type (`IPV4` or `DUAL`).
+  final String networkType;
   /// AWS account identifier that created the file system.
   final String ownerId;
-  /// The IP address of the primary, or preferred, file server.
+  /// IP address of the primary, or preferred, file server.
   final String preferredFileServerIp;
-  /// Specifies the subnet in which you want the preferred file server to be located.
+  /// Subnet in which the preferred file server is located.
   final String preferredSubnetId;
   final String region;
+  /// Set of security group identifiers associated with the file system.
   final List<String> securityGroupIds;
+  /// Whether a final backup is skipped when the file system is deleted.
   final bool skipFinalBackup;
-  /// The storage capacity of the file system in gibibytes (GiB).
+  /// Storage capacity of the file system in gibibytes (GiB).
   final int storageCapacity;
-  /// The type of storage the file system is using. If set to `SSD`, the file system uses solid state drive storage. If set to `HDD`, the file system uses hard disk drive storage.
+  /// Type of storage the file system is using. If set to `SSD`, the file system uses solid state drive storage. If set to `HDD`, the file system uses hard disk drive storage.
   final String storageType;
-  /// Specifies the IDs of the subnets that the file system is accessible from.
+  /// IDs of the subnets that the file system is accessible from.
   final List<String> subnetIds;
-  /// The tags to associate with the file system.
+  /// Tags to associate with the file system.
   final Map<String, String> tags;
   /// Throughput (megabytes per second) of the file system in power of 2 increments. Minimum of `8` and maximum of `2048`.
   final int throughputCapacity;
-  /// The ID of the primary virtual private cloud (VPC) for the file system.
+  /// ID of the primary virtual private cloud (VPC) for the file system.
   final String vpcId;
-  /// The preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
+  /// Preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
   final String weeklyMaintenanceStartTime;
 
   /// Creates a new [GetWindowsFileSystemResult].
-  /// [activeDirectoryId] The ID for Microsoft Active Directory instance that the file system is join to.
-  /// [aliases] An array DNS alias names associated with the Amazon FSx file system.
+  /// [activeDirectoryId] ID for Microsoft Active Directory instance that the file system is joined to.
+  /// [aliases] Set of DNS alias names associated with the Amazon FSx file system.
   /// [arn] Amazon Resource Name of the file system.
-  /// [auditLogConfigurations] The configuration that Amazon FSx for Windows File Server uses to audit and log user accesses of files, folders, and file shares on the Amazon FSx for Windows File Server file system.
-  /// [automaticBackupRetentionDays] The number of days to retain automatic backups.
-  /// [backupId] Required.
-  /// [copyTagsToBackups] A boolean flag indicating whether tags on the file system should be copied to backups.
-  /// [dailyAutomaticBackupStartTime] The preferred time (in `HH:MM` format) to take daily automatic backups, in the UTC time zone.
-  /// [deploymentType] The file system deployment type.
-  /// [diskIopsConfigurations] The SSD IOPS configuration for the file system.
+  /// [auditLogConfigurations] Configuration that Amazon FSx for Windows File Server uses to audit and log user accesses of files, folders, and file shares on the Amazon FSx for Windows File Server file system.
+  /// [automaticBackupRetentionDays] Number of days to retain automatic backups.
+  /// [backupId] Identifier of the source backup used to create the file system.
+  /// [copyTagsToBackups] Whether tags on the file system are copied to backups.
+  /// [dailyAutomaticBackupStartTime] Preferred time (in `HH:MM` format) to take daily automatic backups, in the UTC time zone.
+  /// [deploymentType] File system deployment type.
+  /// [diskIopsConfigurations] SSD IOPS configuration for the file system.
   /// [dnsName] DNS name for the file system (e.g. `fs-12345678.corp.example.com`).
   /// [id] Identifier of the file system (e.g. `fs-12345678`).
   /// [kmsKeyId] ARN for the KMS Key to encrypt the file system at rest.
-  /// [networkInterfaceIds] Required.
+  /// [networkInterfaceIds] Set of network interface identifiers for the file system.
+  /// [networkType] Network type (`IPV4` or `DUAL`).
   /// [ownerId] AWS account identifier that created the file system.
-  /// [preferredFileServerIp] The IP address of the primary, or preferred, file server.
-  /// [preferredSubnetId] Specifies the subnet in which you want the preferred file server to be located.
+  /// [preferredFileServerIp] IP address of the primary, or preferred, file server.
+  /// [preferredSubnetId] Subnet in which the preferred file server is located.
   /// [region] Required.
-  /// [securityGroupIds] Required.
-  /// [skipFinalBackup] Required.
-  /// [storageCapacity] The storage capacity of the file system in gibibytes (GiB).
-  /// [storageType] The type of storage the file system is using. If set to `SSD`, the file system uses solid state drive storage. If set to `HDD`, the file system uses hard disk drive storage.
-  /// [subnetIds] Specifies the IDs of the subnets that the file system is accessible from.
-  /// [tags] The tags to associate with the file system.
+  /// [securityGroupIds] Set of security group identifiers associated with the file system.
+  /// [skipFinalBackup] Whether a final backup is skipped when the file system is deleted.
+  /// [storageCapacity] Storage capacity of the file system in gibibytes (GiB).
+  /// [storageType] Type of storage the file system is using. If set to `SSD`, the file system uses solid state drive storage. If set to `HDD`, the file system uses hard disk drive storage.
+  /// [subnetIds] IDs of the subnets that the file system is accessible from.
+  /// [tags] Tags to associate with the file system.
   /// [throughputCapacity] Throughput (megabytes per second) of the file system in power of 2 increments. Minimum of `8` and maximum of `2048`.
-  /// [vpcId] The ID of the primary virtual private cloud (VPC) for the file system.
-  /// [weeklyMaintenanceStartTime] The preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
+  /// [vpcId] ID of the primary virtual private cloud (VPC) for the file system.
+  /// [weeklyMaintenanceStartTime] Preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
   const GetWindowsFileSystemResult({
     required this.activeDirectoryId,
     required this.aliases,
@@ -99,6 +106,7 @@ class GetWindowsFileSystemResult {
     required this.id,
     required this.kmsKeyId,
     required this.networkInterfaceIds,
+    required this.networkType,
     required this.ownerId,
     required this.preferredFileServerIp,
     required this.preferredSubnetId,
@@ -130,6 +138,7 @@ class GetWindowsFileSystemResult {
       'id': id,
       'kmsKeyId': kmsKeyId,
       'networkInterfaceIds': networkInterfaceIds,
+      'networkType': networkType,
       'ownerId': ownerId,
       'preferredFileServerIp': preferredFileServerIp,
       'preferredSubnetId': preferredSubnetId,
@@ -162,6 +171,7 @@ class GetWindowsFileSystemResult {
       id: map['id'] as String,
       kmsKeyId: map['kmsKeyId'] as String,
       networkInterfaceIds: (map['networkInterfaceIds'] as List).cast<String>(),
+      networkType: map['networkType'] as String,
       ownerId: map['ownerId'] as String,
       preferredFileServerIp: map['preferredFileServerIp'] as String,
       preferredSubnetId: map['preferredSubnetId'] as String,
@@ -178,4 +188,3 @@ class GetWindowsFileSystemResult {
     );
   }
 }
-

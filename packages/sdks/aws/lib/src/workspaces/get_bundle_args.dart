@@ -9,17 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBundleArgs {
   /// ID of the bundle.
   final pulumi.Input<String>? bundleId;
-  /// Name of the bundle. You cannot combine this parameter with `bundle_id`.
+  /// Name of the bundle. You cannot combine this parameter with `bundleId`.
   final pulumi.Input<String>? name;
-  /// Owner of the bundles. You have to leave it blank for own bundles. You cannot combine this parameter with `bundle_id`.
+  /// Owner of the bundles. You have to leave it blank for own bundles. You cannot combine this parameter with `bundleId`.
   final pulumi.Input<String>? owner;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetBundleArgs].
   /// [bundleId] ID of the bundle.
-  /// [name] Name of the bundle. You cannot combine this parameter with `bundle_id`.
-  /// [owner] Owner of the bundles. You have to leave it blank for own bundles. You cannot combine this parameter with `bundle_id`.
+  /// [name] Name of the bundle. You cannot combine this parameter with `bundleId`.
+  /// [owner] Owner of the bundles. You have to leave it blank for own bundles. You cannot combine this parameter with `bundleId`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetBundleArgs({
     this.bundleId,
@@ -46,4 +46,3 @@ class GetBundleArgs {
     );
   }
 }
-

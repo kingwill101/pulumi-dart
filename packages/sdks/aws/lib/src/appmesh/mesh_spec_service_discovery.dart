@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MeshSpecServiceDiscovery {
-  /// The IP version to use to control traffic within the mesh. Valid values are `IPv6_PREFERRED`, `IPv4_PREFERRED`, `IPv4_ONLY`, and `IPv6_ONLY`.
+  /// IP version to use to control traffic within the mesh. Valid values are `IPv6_PREFERRED`, `IPv4_PREFERRED`, `IPv4_ONLY`, and `IPv6_ONLY`.
   final pulumi.Input<String>? ipPreference;
 
   /// Creates a new [MeshSpecServiceDiscovery].
-  /// [ipPreference] The IP version to use to control traffic within the mesh. Valid values are `IPv6_PREFERRED`, `IPv4_PREFERRED`, `IPv4_ONLY`, and `IPv6_ONLY`.
+  /// [ipPreference] IP version to use to control traffic within the mesh. Valid values are `IPv6_PREFERRED`, `IPv4_PREFERRED`, `IPv4_ONLY`, and `IPv6_ONLY`.
   const MeshSpecServiceDiscovery({
     this.ipPreference,
   });
@@ -24,4 +24,3 @@ class MeshSpecServiceDiscovery {
     );
   }
 }
-

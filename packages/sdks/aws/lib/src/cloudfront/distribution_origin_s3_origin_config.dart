@@ -24,4 +24,3 @@ class DistributionOriginS3OriginConfig {
     );
   }
 }
-

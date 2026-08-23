@@ -11,7 +11,7 @@ import 'model_vpc_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_sagemaker_model_model_args_doc}
 class ModelArgs {
-  /// Specifies containers in the inference pipeline. If not specified, the `primary_container` argument is required. Fields are documented below.
+  /// Specifies containers in the inference pipeline. If not specified, the `primaryContainer` argument is required. Fields are documented below.
   final pulumi.Input<List<ModelContainer>>? containers;
   /// Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
   final pulumi.Input<bool>? enableNetworkIsolation;
@@ -25,20 +25,20 @@ class ModelArgs {
   final pulumi.Input<ModelPrimaryContainer>? primaryContainer;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Specifies the VPC that you want your model to connect to. This configuration is used in hosting services and in batch transform. See VPC Config.
   final pulumi.Input<ModelVpcConfig>? vpcConfig;
 
   /// Creates a new [ModelArgs].
-  /// [containers] Specifies containers in the inference pipeline. If not specified, the `primary_container` argument is required. Fields are documented below.
+  /// [containers] Specifies containers in the inference pipeline. If not specified, the `primaryContainer` argument is required. Fields are documented below.
   /// [enableNetworkIsolation] Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
   /// [executionRoleArn] A role that SageMaker AI can assume to access model artifacts and docker images for deployment.
   /// [inferenceExecutionConfig] Specifies details of how containers in a multi-container endpoint are called. See Inference Execution Config.
   /// [name] Name of the model (must be unique). If omitted, the provider will assign a random, unique name.
   /// [primaryContainer] Primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the `container` argument is required. Fields are documented below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcConfig] Specifies the VPC that you want your model to connect to. This configuration is used in hosting services and in batch transform. See VPC Config.
   const ModelArgs({
     this.containers,
@@ -80,4 +80,3 @@ class ModelArgs {
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'global_settings_state.dart';
 
 /// Provides an AWS Backup Global Settings resource.
 ///
-/// &gt; **Note:** This resource will show perpetual differences for any supported settings not explicitly configured in the `global_settings` configuration block. To avoid this, specify all supported options with their default values (typically `"false"`, but check the plan diff for the actual value). See [UpdateGlobalSettings](https://docs.aws.amazon.com/aws-backup/latest/devguide/API_UpdateGlobalSettings.html) in the AWS Backup Developer Guide for available settings.
+/// &gt; **Note:** This resource will show perpetual differences for any supported settings not explicitly configured in the `globalSettings` configuration block. To avoid this, specify all supported options with their default values (typically `"false"`, but check the plan diff for the actual value). See [UpdateGlobalSettings](https://docs.aws.amazon.com/aws-backup/latest/devguide/API_UpdateGlobalSettings.html) in the AWS Backup Developer Guide for available settings.
 ///
 /// ## Example Usage
 ///
@@ -73,6 +73,23 @@ import 'global_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_backup_globalsettings" "test" {
+///   global_settings = {
+///     "isCrossAccountBackupEnabled"     = "true"
+///     "isMpaEnabled"                    = "false"
+///     "isDelegatedAdministratorEnabled" = "false"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +98,8 @@ import 'global_settings_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.backup.GlobalSettings;
 /// import com.pulumi.aws.backup.GlobalSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -156,7 +156,7 @@ import 'instance_state.dart';
 /// 		examplePrivateDnsNamespace, err := servicediscovery.NewPrivateDnsNamespace(ctx, "example", &servicediscovery.PrivateDnsNamespaceArgs{
 /// 			Name:        pulumi.String("example.domain.local"),
 /// 			Description: pulumi.String("example"),
-/// 			Vpc:         example.ID(),
+/// 			Vpc:         example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -164,7 +164,7 @@ import 'instance_state.dart';
 /// 		exampleService, err := servicediscovery.NewService(ctx, "example", &servicediscovery.ServiceArgs{
 /// 			Name: pulumi.String("example"),
 /// 			DnsConfig: &servicediscovery.ServiceDnsConfigArgs{
-/// 				NamespaceId: examplePrivateDnsNamespace.ID(),
+/// 				NamespaceId: examplePrivateDnsNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 				DnsRecords: servicediscovery.ServiceDnsConfigDnsRecordArray{
 /// 					&servicediscovery.ServiceDnsConfigDnsRecordArgs{
 /// 						Ttl:  pulumi.Int(10),
@@ -182,7 +182,7 @@ import 'instance_state.dart';
 /// 		}
 /// 		_, err = servicediscovery.NewInstance(ctx, "example", &servicediscovery.InstanceArgs{
 /// 			InstanceId: pulumi.String("example-instance-id"),
-/// 			ServiceId:  exampleService.ID(),
+/// 			ServiceId:  exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			Attributes: pulumi.StringMap{
 /// 				"AWS_INSTANCE_IPV4": pulumi.String("172.18.0.1"),
 /// 				"custom_attribute":  pulumi.String("custom"),
@@ -193,6 +193,48 @@ import 'instance_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block           = "10.0.0.0/16"
+///   enable_dns_support   = true
+///   enable_dns_hostnames = true
+/// }
+/// resource "aws_servicediscovery_privatednsnamespace" "example" {
+///   name        = "example.domain.local"
+///   description = "example"
+///   vpc         = aws_ec2_vpc.example.id
+/// }
+/// resource "aws_servicediscovery_service" "example" {
+///   name = "example"
+///   dns_config = {
+///     namespace_id = aws_servicediscovery_privatednsnamespace.example.id
+///     dns_records = [{
+///       "ttl"  = 10
+///       "type" = "A"
+///     }]
+///     routing_policy = "MULTIVALUE"
+///   }
+///   health_check_custom_config = {
+///     failure_threshold = 1
+///   }
+/// }
+/// resource "aws_servicediscovery_instance" "example" {
+///   instance_id = "example-instance-id"
+///   service_id  = aws_servicediscovery_service.example.id
+///   attributes = {
+///     "AWS_INSTANCE_IPV4" = "172.18.0.1"
+///     "custom_attribute"  = "custom"
+///   }
 /// }
 /// ```
 /// ```java
@@ -208,11 +250,12 @@ import 'instance_state.dart';
 /// import com.pulumi.aws.servicediscovery.Service;
 /// import com.pulumi.aws.servicediscovery.ServiceArgs;
 /// import com.pulumi.aws.servicediscovery.inputs.ServiceDnsConfigArgs;
+/// import com.pulumi.aws.servicediscovery.inputs.ServiceDnsConfigDnsRecordArgs;
 /// import com.pulumi.aws.servicediscovery.inputs.ServiceHealthCheckCustomConfigArgs;
 /// import com.pulumi.aws.servicediscovery.Instance;
 /// import com.pulumi.aws.servicediscovery.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -392,14 +435,14 @@ import 'instance_state.dart';
 /// 		}
 /// 		exampleService, err := servicediscovery.NewService(ctx, "example", &servicediscovery.ServiceArgs{
 /// 			Name:        pulumi.String("example"),
-/// 			NamespaceId: example.ID(),
+/// 			NamespaceId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = servicediscovery.NewInstance(ctx, "example", &servicediscovery.InstanceArgs{
 /// 			InstanceId: pulumi.String("example-instance-id"),
-/// 			ServiceId:  exampleService.ID(),
+/// 			ServiceId:  exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			Attributes: pulumi.StringMap{
 /// 				"AWS_EC2_INSTANCE_ID": pulumi.String("i-0abdg374kd892cj6dl"),
 /// 			},
@@ -409,6 +452,31 @@ import 'instance_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_servicediscovery_httpnamespace" "example" {
+///   name        = "example.domain.test"
+///   description = "example"
+/// }
+/// resource "aws_servicediscovery_service" "example" {
+///   name         = "example"
+///   namespace_id = aws_servicediscovery_httpnamespace.example.id
+/// }
+/// resource "aws_servicediscovery_instance" "example" {
+///   instance_id = "example-instance-id"
+///   service_id  = aws_servicediscovery_service.example.id
+///   attributes = {
+///     "AWS_EC2_INSTANCE_ID" = "i-0abdg374kd892cj6dl"
+///   }
 /// }
 /// ```
 /// ```java
@@ -423,8 +491,8 @@ import 'instance_state.dart';
 /// import com.pulumi.aws.servicediscovery.ServiceArgs;
 /// import com.pulumi.aws.servicediscovery.Instance;
 /// import com.pulumi.aws.servicediscovery.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -130,7 +130,7 @@ import 'trust_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directoryservice.NewTrust(ctx, "one", &directoryservice.TrustArgs{
-/// 			DirectoryId:                 oneDirectory.ID(),
+/// 			DirectoryId:                 oneDirectory.ID().ToIDOutput().ToStringOutput(),
 /// 			RemoteDomainName:            twoDirectory.Name,
 /// 			TrustDirection:              pulumi.String("Two-Way"),
 /// 			TrustPassword:               pulumi.String("Some0therPassword"),
@@ -140,7 +140,7 @@ import 'trust_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directoryservice.NewTrust(ctx, "two", &directoryservice.TrustArgs{
-/// 			DirectoryId:                 twoDirectory.ID(),
+/// 			DirectoryId:                 twoDirectory.ID().ToIDOutput().ToStringOutput(),
 /// 			RemoteDomainName:            oneDirectory.Name,
 /// 			TrustDirection:              pulumi.String("Two-Way"),
 /// 			TrustPassword:               pulumi.String("Some0therPassword"),
@@ -153,6 +153,38 @@ import 'trust_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directoryservice_trust" "one" {
+///   directory_id                   = aws_directoryservice_directory.one.id
+///   remote_domain_name             = aws_directoryservice_directory.two.name
+///   trust_direction                = "Two-Way"
+///   trust_password                 = "Some0therPassword"
+///   conditional_forwarder_ip_addrs = aws_directoryservice_directory.two.dns_ip_addresses
+/// }
+/// resource "aws_directoryservice_trust" "two" {
+///   directory_id                   = aws_directoryservice_directory.two.id
+///   remote_domain_name             = aws_directoryservice_directory.one.name
+///   trust_direction                = "Two-Way"
+///   trust_password                 = "Some0therPassword"
+///   conditional_forwarder_ip_addrs = aws_directoryservice_directory.one.dns_ip_addresses
+/// }
+/// resource "aws_directoryservice_directory" "one" {
+///   name = "one.example.com"
+///   type = "MicrosoftAD"
+/// }
+/// resource "aws_directoryservice_directory" "two" {
+///   name = "two.example.com"
+///   type = "MicrosoftAD"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -163,8 +195,8 @@ import 'trust_state.dart';
 /// import com.pulumi.aws.directoryservice.DirectoryArgs;
 /// import com.pulumi.aws.directoryservice.Trust;
 /// import com.pulumi.aws.directoryservice.TrustArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -356,7 +388,7 @@ import 'trust_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directoryservice.NewTrust(ctx, "one", &directoryservice.TrustArgs{
-/// 			DirectoryId:                 oneDirectory.ID(),
+/// 			DirectoryId:                 oneDirectory.ID().ToIDOutput().ToStringOutput(),
 /// 			RemoteDomainName:            twoDirectory.Name,
 /// 			TrustDirection:              pulumi.String("One-Way: Incoming"),
 /// 			TrustPassword:               pulumi.String("Some0therPassword"),
@@ -366,7 +398,7 @@ import 'trust_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directoryservice.NewTrust(ctx, "two", &directoryservice.TrustArgs{
-/// 			DirectoryId:                 twoDirectory.ID(),
+/// 			DirectoryId:                 twoDirectory.ID().ToIDOutput().ToStringOutput(),
 /// 			RemoteDomainName:            oneDirectory.Name,
 /// 			TrustDirection:              pulumi.String("One-Way: Outgoing"),
 /// 			TrustPassword:               pulumi.String("Some0therPassword"),
@@ -379,6 +411,38 @@ import 'trust_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directoryservice_trust" "one" {
+///   directory_id                   = aws_directoryservice_directory.one.id
+///   remote_domain_name             = aws_directoryservice_directory.two.name
+///   trust_direction                = "One-Way: Incoming"
+///   trust_password                 = "Some0therPassword"
+///   conditional_forwarder_ip_addrs = aws_directoryservice_directory.two.dns_ip_addresses
+/// }
+/// resource "aws_directoryservice_trust" "two" {
+///   directory_id                   = aws_directoryservice_directory.two.id
+///   remote_domain_name             = aws_directoryservice_directory.one.name
+///   trust_direction                = "One-Way: Outgoing"
+///   trust_password                 = "Some0therPassword"
+///   conditional_forwarder_ip_addrs = aws_directoryservice_directory.one.dns_ip_addresses
+/// }
+/// resource "aws_directoryservice_directory" "one" {
+///   name = "one.example.com"
+///   type = "MicrosoftAD"
+/// }
+/// resource "aws_directoryservice_directory" "two" {
+///   name = "two.example.com"
+///   type = "MicrosoftAD"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -389,8 +453,8 @@ import 'trust_state.dart';
 /// import com.pulumi.aws.directoryservice.DirectoryArgs;
 /// import com.pulumi.aws.directoryservice.Trust;
 /// import com.pulumi.aws.directoryservice.TrustArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -491,7 +555,7 @@ class Trust extends pulumi.CustomResource {
   /// Valid values are `Enabled` and `Disabled`.
   /// Default value is `Disabled`.
   late final pulumi.Output<String> selectiveAuth;
-  /// Date and time when the Trust state in `trust_state` was last updated.
+  /// Date and time when the Trust state in `trustState` was last updated.
   late final pulumi.Output<String> stateLastUpdatedDateTime;
   /// The direction of the Trust relationship.
   /// Valid values are `One-Way: Outgoing`, `One-Way: Incoming`, and `Two-Way`.
@@ -504,7 +568,7 @@ class Trust extends pulumi.CustomResource {
   /// State of the Trust relationship.
   /// One of `Created`, `VerifyFailed`,`Verified`, `UpdateFailed`,`Updated`,`Deleted`, or `Failed`.
   late final pulumi.Output<String> trustState;
-  /// Reason for the Trust state set in `trust_state`.
+  /// Reason for the Trust state set in `trustState`.
   late final pulumi.Output<String> trustStateReason;
   /// Type of the Trust relationship.
   /// Valid values are `Forest` and `External`.

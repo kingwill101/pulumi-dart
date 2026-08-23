@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsVcpuCount {
+  /// Maximum number of vCPUs.
   final pulumi.Input<int>? max;
+  /// Minimum number of vCPUs.
   final pulumi.Input<int> min;
 
   /// Creates a new [CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsVcpuCount].
-  /// [max] Optional.
-  /// [min] Required.
+  /// [max] Maximum number of vCPUs.
+  /// [min] Minimum number of vCPUs.
   const CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsVcpuCount({
     this.max,
     required this.min,
@@ -28,4 +30,3 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
     );
   }
 }
-

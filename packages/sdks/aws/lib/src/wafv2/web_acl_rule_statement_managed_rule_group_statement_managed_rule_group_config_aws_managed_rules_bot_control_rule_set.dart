@@ -3,14 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet {
-  /// Applies only to the targeted inspection level. Determines whether to use machine learning (ML) to analyze your web traffic for bot-related activity. Defaults to `true`.
   final pulumi.Input<bool>? enableMachineLearning;
-  /// The inspection level to use for the Bot Control rule group.
   final pulumi.Input<String> inspectionLevel;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet].
-  /// [enableMachineLearning] Applies only to the targeted inspection level. Determines whether to use machine learning (ML) to analyze your web traffic for bot-related activity. Defaults to `true`.
-  /// [inspectionLevel] The inspection level to use for the Bot Control rule group.
+  /// [enableMachineLearning] Optional.
+  /// [inspectionLevel] Required.
   const WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet({
     this.enableMachineLearning,
     required this.inspectionLevel,
@@ -30,4 +28,3 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
     );
   }
 }
-

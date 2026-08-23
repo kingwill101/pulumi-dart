@@ -9,6 +9,7 @@ import 'get_inference_profile_args.dart';
 import 'get_inference_profile_result.dart';
 import 'get_inference_profiles_args.dart';
 import 'get_inference_profiles_result.dart';
+import 'get_use_case_for_model_access_result.dart';
 
 /// Data source for managing an AWS Amazon BedrockAgent Agent Versions.
 ///
@@ -66,6 +67,19 @@ import 'get_inference_profiles_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_bedrock_getagentagentversions" "test" {
+///   agent_id = testAwsBedrockagentAgent.agentId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +88,8 @@ import 'get_inference_profiles_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.bedrock.BedrockFunctions;
 /// import com.pulumi.aws.bedrock.inputs.GetAgentAgentVersionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -171,6 +185,19 @@ Future<GetAgentAgentVersionsResult> getAgentAgentVersions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_bedrock_getcustommodel" "test" {
+///   model_id = "arn:aws:bedrock:us-west-2:123456789012:custom-model/amazon.titan-text-express-v1:0:8k/ly16hhi765j4 "
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +206,8 @@ Future<GetAgentAgentVersionsResult> getAgentAgentVersions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.bedrock.BedrockFunctions;
 /// import com.pulumi.aws.bedrock.inputs.GetCustomModelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -269,6 +296,18 @@ Future<GetCustomModelResult> getCustomModel(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_bedrock_getcustommodels" "test" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -277,8 +316,8 @@ Future<GetCustomModelResult> getCustomModel(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.bedrock.BedrockFunctions;
 /// import com.pulumi.aws.bedrock.inputs.GetCustomModelsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -382,6 +421,21 @@ Future<GetCustomModelsResult> getCustomModels(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_bedrock_getinferenceprofiles" "test" {
+/// }
+/// data "aws_bedrock_getinferenceprofile" "testGetInferenceProfile" {
+///   inference_profile_id = data.aws_bedrock_getinferenceprofiles.test.inference_profile_summaries[0].inference_profile_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -391,8 +445,8 @@ Future<GetCustomModelsResult> getCustomModels(
 /// import com.pulumi.aws.bedrock.BedrockFunctions;
 /// import com.pulumi.aws.bedrock.inputs.GetInferenceProfilesArgs;
 /// import com.pulumi.aws.bedrock.inputs.GetInferenceProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -490,6 +544,18 @@ Future<GetInferenceProfileResult> getInferenceProfile(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_bedrock_getinferenceprofiles" "test" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -498,8 +564,8 @@ Future<GetInferenceProfileResult> getInferenceProfile(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.bedrock.BedrockFunctions;
 /// import com.pulumi.aws.bedrock.inputs.GetInferenceProfilesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -578,6 +644,19 @@ Future<GetInferenceProfileResult> getInferenceProfile(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_bedrock_getinferenceprofiles" "test" {
+///   type = "APPLICATION"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -586,8 +665,8 @@ Future<GetInferenceProfileResult> getInferenceProfile(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.bedrock.BedrockFunctions;
 /// import com.pulumi.aws.bedrock.inputs.GetInferenceProfilesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -627,4 +706,111 @@ Future<GetInferenceProfilesResult> getInferenceProfiles(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInferenceProfilesResult.fromMap(result);
+}
+
+/// Provides details about an AWS Bedrock Use Case For Model Access.
+///
+/// ## Example Usage
+///
+/// ### Basic Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.bedrock.getUseCaseForModelAccess({});
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.bedrock.get_use_case_for_model_access()
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Bedrock.GetUseCaseForModelAccess.Invoke();
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/bedrock"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := bedrock.LookupUseCaseForModelAccess(ctx, map[string]interface{}{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_bedrock_getusecaseformodelaccess" "example" {
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.bedrock.BedrockFunctions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = BedrockFunctions.getUseCaseForModelAccess(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:bedrock:getUseCaseForModelAccess
+///       arguments: {}
+/// ```
+/// [options] Invoke options controlling this call.
+Future<GetUseCaseForModelAccessResult> getUseCaseForModelAccess(
+  {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:bedrock/getUseCaseForModelAccess:getUseCaseForModelAccess',
+    const <String, dynamic>{},
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetUseCaseForModelAccessResult.fromMap(result);
 }

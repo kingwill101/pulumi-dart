@@ -146,8 +146,8 @@ import 'vpc_peering_connection_accepter_state.dart';
 /// 		}
 /// 		// Requester's side of the connection.
 /// 		peerVpcPeeringConnection, err := ec2.NewVpcPeeringConnection(ctx, "peer", &ec2.VpcPeeringConnectionArgs{
-/// 			VpcId:       main.ID(),
-/// 			PeerVpcId:   peerVpc.ID(),
+/// 			VpcId:       main.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerVpcId:   peerVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			PeerOwnerId: pulumi.String(peer.AccountId),
 /// 			PeerRegion:  pulumi.String("us-west-2"),
 /// 			AutoAccept:  pulumi.Bool(false),
@@ -160,7 +160,7 @@ import 'vpc_peering_connection_accepter_state.dart';
 /// 		}
 /// 		// Accepter's side of the connection.
 /// 		_, err = ec2.NewVpcPeeringConnectionAccepter(ctx, "peer", &ec2.VpcPeeringConnectionAccepterArgs{
-/// 			VpcPeeringConnectionId: peerVpcPeeringConnection.ID(),
+/// 			VpcPeeringConnectionId: peerVpcPeeringConnection.ID().ToIDOutput().ToStringOutput(),
 /// 			AutoAccept:             pulumi.Bool(true),
 /// 			Tags: pulumi.StringMap{
 /// 				"Side": pulumi.String("Accepter"),
@@ -171,6 +171,44 @@ import 'vpc_peering_connection_accepter_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "peer" {
+/// }
+///
+/// resource "aws_ec2_vpc" "main" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_vpc" "peer" {
+///   cidr_block = "10.1.0.0/16"
+/// }
+/// # Requester's side of the connection.
+/// resource "aws_ec2_vpcpeeringconnection" "peer" {
+///   vpc_id        = aws_ec2_vpc.main.id
+///   peer_vpc_id   = aws_ec2_vpc.peer.id
+///   peer_owner_id = data.aws_getcalleridentity.peer.account_id
+///   peer_region   = "us-west-2"
+///   auto_accept   = false
+///   tags = {
+///     "Side" = "Requester"
+///   }
+/// }
+/// # Accepter's side of the connection.
+/// resource "aws_ec2_vpcpeeringconnectionaccepter" "peer" {
+///   vpc_peering_connection_id = aws_ec2_vpcpeeringconnection.peer.id
+///   auto_accept               = true
+///   tags = {
+///     "Side" = "Accepter"
+///   }
 /// }
 /// ```
 /// ```java
@@ -187,8 +225,8 @@ import 'vpc_peering_connection_accepter_state.dart';
 /// import com.pulumi.aws.ec2.VpcPeeringConnectionArgs;
 /// import com.pulumi.aws.ec2.VpcPeeringConnectionAccepter;
 /// import com.pulumi.aws.ec2.VpcPeeringConnectionAccepterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -400,8 +438,8 @@ import 'vpc_peering_connection_accepter_state.dart';
 /// 		}
 /// 		// Requester's side of the connection.
 /// 		peerVpcPeeringConnection, err := ec2.NewVpcPeeringConnection(ctx, "peer", &ec2.VpcPeeringConnectionArgs{
-/// 			VpcId:      main.ID(),
-/// 			PeerVpcId:  peer.ID(),
+/// 			VpcId:      main.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerVpcId:  peer.ID().ToIDOutput().ToStringOutput(),
 /// 			PeerRegion: pulumi.String("us-west-2"),
 /// 			AutoAccept: pulumi.Bool(false),
 /// 			Tags: pulumi.StringMap{
@@ -414,7 +452,7 @@ import 'vpc_peering_connection_accepter_state.dart';
 /// 		// Accepter's side of the connection.
 /// 		_, err = ec2.NewVpcPeeringConnectionAccepter(ctx, "peer", &ec2.VpcPeeringConnectionAccepterArgs{
 /// 			Region:                 pulumi.String("us-west-2"),
-/// 			VpcPeeringConnectionId: peerVpcPeeringConnection.ID(),
+/// 			VpcPeeringConnectionId: peerVpcPeeringConnection.ID().ToIDOutput().ToStringOutput(),
 /// 			AutoAccept:             pulumi.Bool(true),
 /// 			Tags: pulumi.StringMap{
 /// 				"Side": pulumi.String("Accepter"),
@@ -425,6 +463,42 @@ import 'vpc_peering_connection_accepter_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "main" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_vpc" "peer" {
+///   region     = "us-west-2"
+///   cidr_block = "10.1.0.0/16"
+/// }
+/// # Requester's side of the connection.
+/// resource "aws_ec2_vpcpeeringconnection" "peer" {
+///   vpc_id      = aws_ec2_vpc.main.id
+///   peer_vpc_id = aws_ec2_vpc.peer.id
+///   peer_region = "us-west-2"
+///   auto_accept = false
+///   tags = {
+///     "Side" = "Requester"
+///   }
+/// }
+/// # Accepter's side of the connection.
+/// resource "aws_ec2_vpcpeeringconnectionaccepter" "peer" {
+///   region                    = "us-west-2"
+///   vpc_peering_connection_id = aws_ec2_vpcpeeringconnection.peer.id
+///   auto_accept               = true
+///   tags = {
+///     "Side" = "Accepter"
+///   }
 /// }
 /// ```
 /// ```java
@@ -439,8 +513,8 @@ import 'vpc_peering_connection_accepter_state.dart';
 /// import com.pulumi.aws.ec2.VpcPeeringConnectionArgs;
 /// import com.pulumi.aws.ec2.VpcPeeringConnectionAccepter;
 /// import com.pulumi.aws.ec2.VpcPeeringConnectionAccepterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -524,7 +598,7 @@ import 'vpc_peering_connection_accepter_state.dart';
 /// $ pulumi import aws:ec2/vpcPeeringConnectionAccepter:VpcPeeringConnectionAccepter example pcx-12345678
 /// ```
 ///
-/// Certain resource arguments, like `auto_accept`, do not have an EC2 API method for reading the information after peering connection creation. If the argument is set in the Pulumi program on an imported resource, Pulumi will always show a difference. To workaround this behavior, either omit the argument from the Pulumi program or use `ignore_changes` to hide the difference. For example:
+/// Certain resource arguments, like `autoAccept`, do not have an EC2 API method for reading the information after peering connection creation. If the argument is set in the Pulumi program on an imported resource, Pulumi will always show a difference. To workaround this behavior, either omit the argument from the Pulumi program or use `ignoreChanges` to hide the difference. For example:
 ///
 ///
 /// ```typescript
@@ -569,6 +643,18 @@ import 'vpc_peering_connection_accepter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpcpeeringconnectionaccepter" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -576,8 +662,8 @@ import 'vpc_peering_connection_accepter_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.VpcPeeringConnectionAccepter;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -618,9 +704,9 @@ class VpcPeeringConnectionAccepterEc2 extends pulumi.CustomResource {
   /// A configuration block that describes [VPC Peering Connection]
   /// (https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the requester VPC.
   late final pulumi.Output<VpcPeeringConnectionAccepterRequester> requester;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The ID of the accepter VPC.
   late final pulumi.Output<String> vpcId;

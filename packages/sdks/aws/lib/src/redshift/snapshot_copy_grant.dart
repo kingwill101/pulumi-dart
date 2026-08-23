@@ -87,6 +87,25 @@ import 'snapshot_copy_grant_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshift_snapshotcopygrant" "test" {
+///   snapshot_copy_grant_name = "my-grant"
+/// }
+/// resource "aws_redshift_cluster" "test" {
+///   snapshot_copy = [{
+///     "destinationRegion" = "us-east-2"
+///     "grantName"         = aws_redshift_snapshotcopygrant.test.snapshot_copy_grant_name
+///   }]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +116,8 @@ import 'snapshot_copy_grant_state.dart';
 /// import com.pulumi.aws.redshift.SnapshotCopyGrantArgs;
 /// import com.pulumi.aws.redshift.Cluster;
 /// import com.pulumi.aws.redshift.ClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -115,7 +134,7 @@ import 'snapshot_copy_grant_state.dart';
 ///             .build());
 ///
 ///         var testCluster = new Cluster("testCluster", ClusterArgs.builder()
-///             .snapshotCopy(List.of(Map.ofEntries(
+///             .snapshotCopy(Arrays.asList(Map.ofEntries(
 ///                 Map.entry("destinationRegion", "us-east-2"),
 ///                 Map.entry("grantName", test.snapshotCopyGrantName())
 ///             )))
@@ -156,9 +175,9 @@ class SnapshotCopyGrant extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// A friendly name for identifying the grant.
   late final pulumi.Output<String> snapshotCopyGrantName;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [SnapshotCopyGrant].

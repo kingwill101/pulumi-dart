@@ -5,11 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedRuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader {
   /// Managed rule group name.
   final pulumi.Input<String> name;
+  /// Value of the header.
   final pulumi.Input<String> value;
 
   /// Creates a new [GetManagedRuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader].
   /// [name] Managed rule group name.
-  /// [value] Required.
+  /// [value] Value of the header.
   const GetManagedRuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader({
     required this.name,
     required this.value,
@@ -29,4 +30,3 @@ class GetManagedRuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader {
     );
   }
 }
-

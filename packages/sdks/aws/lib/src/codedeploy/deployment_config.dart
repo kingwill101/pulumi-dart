@@ -171,7 +171,7 @@ import 'deployment_config_zonal_config.dart';
 /// 			AppName:              pulumi.Any(fooApp.Name),
 /// 			DeploymentGroupName:  pulumi.String("bar"),
 /// 			ServiceRoleArn:       pulumi.Any(fooRole.Arn),
-/// 			DeploymentConfigName: foo.ID(),
+/// 			DeploymentConfigName: foo.ID().ToIDOutput().ToStringOutput(),
 /// 			Ec2TagFilters: codedeploy.DeploymentGroupEc2TagFilterArray{
 /// 				&codedeploy.DeploymentGroupEc2TagFilterArgs{
 /// 					Key:   pulumi.String("filterkey"),
@@ -208,6 +208,47 @@ import 'deployment_config_zonal_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codedeploy_deploymentconfig" "foo" {
+///   deployment_config_name = "test-deployment-config"
+///   minimum_healthy_hosts = {
+///     type  = "HOST_COUNT"
+///     value = 2
+///   }
+/// }
+/// resource "aws_codedeploy_deploymentgroup" "foo" {
+///   app_name               = fooApp.name
+///   deployment_group_name  = "bar"
+///   service_role_arn       = fooRole.arn
+///   deployment_config_name = aws_codedeploy_deploymentconfig.foo.id
+///   ec2_tag_filters {
+///     key   = "filterkey"
+///     type  = "KEY_AND_VALUE"
+///     value = "filtervalue"
+///   }
+///   trigger_configurations {
+///     trigger_events     = ["DeploymentFailure"]
+///     trigger_name       = "foo-trigger"
+///     trigger_target_arn = "foo-topic-arn"
+///   }
+///   auto_rollback_configuration = {
+///     enabled = true
+///     events  = ["DEPLOYMENT_FAILURE"]
+///   }
+///   alarm_configuration = {
+///     alarms  = ["my-alarm-name"]
+///     enabled = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -223,8 +264,8 @@ import 'deployment_config_zonal_config.dart';
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupTriggerConfigurationArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupAutoRollbackConfigurationArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupAlarmConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -447,7 +488,7 @@ import 'deployment_config_zonal_config.dart';
 /// 			AppName:              pulumi.Any(fooApp.Name),
 /// 			DeploymentGroupName:  pulumi.String("bar"),
 /// 			ServiceRoleArn:       pulumi.Any(fooRole.Arn),
-/// 			DeploymentConfigName: foo.ID(),
+/// 			DeploymentConfigName: foo.ID().ToIDOutput().ToStringOutput(),
 /// 			AutoRollbackConfiguration: &codedeploy.DeploymentGroupAutoRollbackConfigurationArgs{
 /// 				Enabled: pulumi.Bool(true),
 /// 				Events: pulumi.StringArray{
@@ -468,6 +509,41 @@ import 'deployment_config_zonal_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codedeploy_deploymentconfig" "foo" {
+///   deployment_config_name = "test-deployment-config"
+///   compute_platform       = "Lambda"
+///   traffic_routing_config = {
+///     type = "TimeBasedLinear"
+///     time_based_linear = {
+///       interval   = 10
+///       percentage = 10
+///     }
+///   }
+/// }
+/// resource "aws_codedeploy_deploymentgroup" "foo" {
+///   app_name               = fooApp.name
+///   deployment_group_name  = "bar"
+///   service_role_arn       = fooRole.arn
+///   deployment_config_name = aws_codedeploy_deploymentconfig.foo.id
+///   auto_rollback_configuration = {
+///     enabled = true
+///     events  = ["DEPLOYMENT_STOP_ON_ALARM"]
+///   }
+///   alarm_configuration = {
+///     alarms  = ["my-alarm-name"]
+///     enabled = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -482,8 +558,8 @@ import 'deployment_config_zonal_config.dart';
 /// import com.pulumi.aws.codedeploy.DeploymentGroupArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupAutoRollbackConfigurationArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupAlarmConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -558,7 +634,7 @@ import 'deployment_config_zonal_config.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CodeDeploy Deployment Configurations using the `deployment_config_name`. For example:
+/// Using `pulumi import`, import CodeDeploy Deployment Configurations using the `deploymentConfigName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:codedeploy/deploymentConfig:DeploymentConfig example my-deployment-config
@@ -572,13 +648,13 @@ class DeploymentConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> deploymentConfigId;
   /// The name of the deployment config.
   late final pulumi.Output<String> deploymentConfigName;
-  /// A minimum_healthy_hosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
+  /// A minimumHealthyHosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
   late final pulumi.Output<DeploymentConfigMinimumHealthyHosts?> minimumHealthyHosts;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A traffic_routing_config block. Traffic Routing Config is documented below.
+  /// A trafficRoutingConfig block. Traffic Routing Config is documented below.
   late final pulumi.Output<DeploymentConfigTrafficRoutingConfig?> trafficRoutingConfig;
-  /// A zonal_config block. Zonal Config is documented below.
+  /// A zonalConfig block. Zonal Config is documented below.
   late final pulumi.Output<DeploymentConfigZonalConfig?> zonalConfig;
 
   /// Creates a new [DeploymentConfig].

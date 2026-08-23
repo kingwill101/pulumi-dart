@@ -24,7 +24,7 @@ class LocationAzureBlobArgs {
   final pulumi.Input<LocationAzureBlobSasConfiguration>? sasConfiguration;
   /// Path segments if you want to limit your transfer to a virtual directory in the container.
   final pulumi.Input<String>? subdirectory;
-  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [LocationAzureBlobArgs].
@@ -36,7 +36,7 @@ class LocationAzureBlobArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sasConfiguration] The SAS configuration that allows DataSync to access your Azure Blob Storage. See configuration below.
   /// [subdirectory] Path segments if you want to limit your transfer to a virtual directory in the container.
-  /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const LocationAzureBlobArgs({
     this.accessTier,
     required this.agentArns,
@@ -77,4 +77,3 @@ class LocationAzureBlobArgs {
     );
   }
 }
-

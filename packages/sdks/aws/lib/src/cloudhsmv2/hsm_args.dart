@@ -7,25 +7,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_cloudhsmv2_hsm_hsm_args_doc}
 class HsmArgs {
-  /// The IDs of AZ in which HSM module will be located. Conflicts with `subnet_id`.
+  /// The IDs of AZ in which HSM module will be located. Conflicts with `subnetId`.
   final pulumi.Input<String>? availabilityZone;
   /// The ID of Cloud HSM v2 cluster to which HSM will be added.
   final pulumi.Input<String> clusterId;
   /// The IP address of HSM module. Must be within the CIDR of selected subnet.
   ///
-  /// &gt; **NOTE:** Either `subnet_id` or `availability_zone` must be specified.
+  /// &gt; **NOTE:** Either `subnetId` or `availabilityZone` must be specified.
   final pulumi.Input<String>? ipAddress;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The ID of subnet in which HSM module will be located. Conflicts with `availability_zone`.
+  /// The ID of subnet in which HSM module will be located. Conflicts with `availabilityZone`.
   final pulumi.Input<String>? subnetId;
 
   /// Creates a new [HsmArgs].
-  /// [availabilityZone] The IDs of AZ in which HSM module will be located. Conflicts with `subnet_id`.
+  /// [availabilityZone] The IDs of AZ in which HSM module will be located. Conflicts with `subnetId`.
   /// [clusterId] The ID of Cloud HSM v2 cluster to which HSM will be added.
   /// [ipAddress] The IP address of HSM module. Must be within the CIDR of selected subnet.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [subnetId] The ID of subnet in which HSM module will be located. Conflicts with `availability_zone`.
+  /// [subnetId] The ID of subnet in which HSM module will be located. Conflicts with `availabilityZone`.
   const HsmArgs({
     this.availabilityZone,
     required this.clusterId,
@@ -54,4 +54,3 @@ class HsmArgs {
     );
   }
 }
-

@@ -7,28 +7,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_route53_get_resolver_rule_get_resolver_rule_args_doc}
 class GetResolverRuleArgs {
-  /// Domain name the desired resolver rule forwards DNS queries for. Conflicts with `resolver_rule_id`.
+  /// Domain name the desired resolver rule forwards DNS queries for. Conflicts with `resolverRuleId`.
   final pulumi.Input<String>? domainName;
-  /// Friendly name of the desired resolver rule. Conflicts with `resolver_rule_id`.
+  /// Friendly name of the desired resolver rule. Conflicts with `resolverRuleId`.
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// ID of the outbound resolver endpoint of the desired resolver rule. Conflicts with `resolver_rule_id`.
+  /// ID of the outbound resolver endpoint of the desired resolver rule. Conflicts with `resolverRuleId`.
   final pulumi.Input<String>? resolverEndpointId;
-  /// ID of the desired resolver rule. Conflicts with `domain_name`, `name`, `resolver_endpoint_id` and `rule_type`.
+  /// ID of the desired resolver rule. Conflicts with `domainName`, `name`, `resolverEndpointId` and `ruleType`.
   final pulumi.Input<String>? resolverRuleId;
-  /// Rule type of the desired resolver rule. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`. Conflicts with `resolver_rule_id`.
+  /// Rule type of the desired resolver rule. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`. Conflicts with `resolverRuleId`.
   final pulumi.Input<String>? ruleType;
   /// Map of tags assigned to the resolver rule.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetResolverRuleArgs].
-  /// [domainName] Domain name the desired resolver rule forwards DNS queries for. Conflicts with `resolver_rule_id`.
-  /// [name] Friendly name of the desired resolver rule. Conflicts with `resolver_rule_id`.
+  /// [domainName] Domain name the desired resolver rule forwards DNS queries for. Conflicts with `resolverRuleId`.
+  /// [name] Friendly name of the desired resolver rule. Conflicts with `resolverRuleId`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resolverEndpointId] ID of the outbound resolver endpoint of the desired resolver rule. Conflicts with `resolver_rule_id`.
-  /// [resolverRuleId] ID of the desired resolver rule. Conflicts with `domain_name`, `name`, `resolver_endpoint_id` and `rule_type`.
-  /// [ruleType] Rule type of the desired resolver rule. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`. Conflicts with `resolver_rule_id`.
+  /// [resolverEndpointId] ID of the outbound resolver endpoint of the desired resolver rule. Conflicts with `resolverRuleId`.
+  /// [resolverRuleId] ID of the desired resolver rule. Conflicts with `domainName`, `name`, `resolverEndpointId` and `ruleType`.
+  /// [ruleType] Rule type of the desired resolver rule. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`. Conflicts with `resolverRuleId`.
   /// [tags] Map of tags assigned to the resolver rule.
   const GetResolverRuleArgs({
     this.domainName,
@@ -64,4 +64,3 @@ class GetResolverRuleArgs {
     );
   }
 }
-

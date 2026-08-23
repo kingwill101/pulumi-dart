@@ -82,6 +82,24 @@ import 'recommendation_preferences_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_computeoptimizer_recommendationpreferences" "example" {
+///   resource_type = "Ec2Instance"
+///   scope = {
+///     name  = "AccountId"
+///     value = "123456789012"
+///   }
+///   look_back_period = "DAYS_32"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +109,8 @@ import 'recommendation_preferences_state.dart';
 /// import com.pulumi.aws.computeoptimizer.RecommendationPreferences;
 /// import com.pulumi.aws.computeoptimizer.RecommendationPreferencesArgs;
 /// import com.pulumi.aws.computeoptimizer.inputs.RecommendationPreferencesScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -251,6 +269,31 @@ import 'recommendation_preferences_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_computeoptimizer_recommendationpreferences" "example" {
+///   resource_type = "Ec2Instance"
+///   scope = {
+///     name  = "AccountId"
+///     value = "123456789012"
+///   }
+///   enhanced_infrastructure_metrics = "Active"
+///   external_metrics_preference = {
+///     source = "Datadog"
+///   }
+///   preferred_resources {
+///     include_lists = ["m5.xlarge", "r5"]
+///     name          = "Ec2InstanceTypes"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -262,8 +305,8 @@ import 'recommendation_preferences_state.dart';
 /// import com.pulumi.aws.computeoptimizer.inputs.RecommendationPreferencesScopeArgs;
 /// import com.pulumi.aws.computeoptimizer.inputs.RecommendationPreferencesExternalMetricsPreferenceArgs;
 /// import com.pulumi.aws.computeoptimizer.inputs.RecommendationPreferencesPreferredResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

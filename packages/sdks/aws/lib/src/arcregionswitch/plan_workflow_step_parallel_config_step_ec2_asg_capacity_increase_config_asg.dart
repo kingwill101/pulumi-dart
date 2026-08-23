@@ -36,4 +36,3 @@ class PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsg {
     );
   }
 }
-

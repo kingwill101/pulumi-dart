@@ -78,6 +78,23 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcorecodeinterpreter" "example" {
+///   name        = "example-code-interpreter"
+///   description = "Code interpreter for data analysis"
+///   network_configuration = {
+///     network_mode = "PUBLIC"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +104,8 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// import com.pulumi.aws.bedrock.AgentcoreCodeInterpreter;
 /// import com.pulumi.aws.bedrock.AgentcoreCodeInterpreterArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreCodeInterpreterNetworkConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -283,6 +300,39 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect  = "Allow"
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["bedrock-agentcore.amazonaws.com"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_role" "example" {
+///   name               = "bedrock-agentcore-code-interpreter-role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_bedrock_agentcorecodeinterpreter" "example" {
+///   name               = "example-code-interpreter"
+///   description        = "Code interpreter with custom execution role"
+///   execution_role_arn = aws_iam_role.example.arn
+///   network_configuration = {
+///     network_mode = "SANDBOX"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -291,13 +341,15 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.bedrock.AgentcoreCodeInterpreter;
 /// import com.pulumi.aws.bedrock.AgentcoreCodeInterpreterArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreCodeInterpreterNetworkConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -377,6 +429,8 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// $ pulumi import aws:bedrock/agentcoreCodeInterpreter:AgentcoreCodeInterpreter example CODEINTERPRETER1234567890
 /// ```
 class AgentcoreCodeInterpreter extends pulumi.CustomResource {
+  /// Certificates to install in the code interpreter. Between 1 and 200 blocks are supported. See `certificate` below.
+  late final pulumi.Output<List<Map<String, dynamic>>?> certificates;
   /// ARN of the Code Interpreter.
   late final pulumi.Output<String> codeInterpreterArn;
   /// Unique identifier of the Code Interpreter.
@@ -387,15 +441,15 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
   late final pulumi.Output<String?> executionRoleArn;
   /// Name of the code interpreter.
   late final pulumi.Output<String> name;
-  /// Network configuration for the code interpreter. See `network_configuration` below.
+  /// Network configuration for the code interpreter. See `networkConfiguration` below.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<AgentcoreCodeInterpreterNetworkConfiguration> networkConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreCodeInterpreterTimeouts?> timeouts;
 
@@ -413,6 +467,7 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
     codeInterpreterArn = registerOutput<String>('codeInterpreterArn');
     codeInterpreterId = registerOutput<String>('codeInterpreterId');
     description = registerOutput<String?>('description');
@@ -448,6 +503,7 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
     codeInterpreterArn = registerOutput<String>('codeInterpreterArn');
     codeInterpreterId = registerOutput<String>('codeInterpreterId');
     description = registerOutput<String?>('description');

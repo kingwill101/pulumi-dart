@@ -31,6 +31,7 @@ export 'cloudfront/continuous_deployment_policy_traffic_config_single_weight_con
 export 'cloudfront/continuous_deployment_policy_traffic_config_single_weight_config_session_stickiness_config.dart';
 export 'cloudfront/distribution.dart';
 export 'cloudfront/distribution_args.dart';
+export 'cloudfront/distribution_cache_tag_config.dart';
 export 'cloudfront/distribution_connection_function_association.dart';
 export 'cloudfront/distribution_custom_error_response.dart';
 export 'cloudfront/distribution_default_cache_behavior.dart';
@@ -49,6 +50,7 @@ export 'cloudfront/distribution_ordered_cache_behavior_lambda_function_associati
 export 'cloudfront/distribution_origin.dart';
 export 'cloudfront/distribution_origin_custom_header.dart';
 export 'cloudfront/distribution_origin_custom_origin_config.dart';
+export 'cloudfront/distribution_origin_custom_origin_config_origin_mtls_config.dart';
 export 'cloudfront/distribution_origin_group.dart';
 export 'cloudfront/distribution_origin_group_failover_criteria.dart';
 export 'cloudfront/distribution_origin_group_member.dart';
@@ -195,6 +197,7 @@ export 'cloudfront/multitenant_distribution_default_cache_behavior_trusted_key_g
 export 'cloudfront/multitenant_distribution_origin.dart';
 export 'cloudfront/multitenant_distribution_origin_custom_header.dart';
 export 'cloudfront/multitenant_distribution_origin_custom_origin_config.dart';
+export 'cloudfront/multitenant_distribution_origin_custom_origin_config_origin_mtls_config.dart';
 export 'cloudfront/multitenant_distribution_origin_group.dart';
 export 'cloudfront/multitenant_distribution_origin_group_failover_criteria.dart';
 export 'cloudfront/multitenant_distribution_origin_group_member.dart';

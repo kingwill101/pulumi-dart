@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskSetCapacityProviderStrategy {
-  /// The number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined.
+  /// Number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined.
   final pulumi.Input<int>? base;
-  /// The short name or full Amazon Resource Name (ARN) of the capacity provider.
+  /// Short name or full Amazon Resource Name (ARN) of the capacity provider.
   final pulumi.Input<String> capacityProvider;
-  /// The relative percentage of the total number of launched tasks that should use the specified capacity provider.
+  /// Relative percentage of the total number of launched tasks that should use the specified capacity provider.
   final pulumi.Input<int> weight;
 
   /// Creates a new [TaskSetCapacityProviderStrategy].
-  /// [base] The number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined.
-  /// [capacityProvider] The short name or full Amazon Resource Name (ARN) of the capacity provider.
-  /// [weight] The relative percentage of the total number of launched tasks that should use the specified capacity provider.
+  /// [base] Number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined.
+  /// [capacityProvider] Short name or full Amazon Resource Name (ARN) of the capacity provider.
+  /// [weight] Relative percentage of the total number of launched tasks that should use the specified capacity provider.
   const TaskSetCapacityProviderStrategy({
     this.base,
     required this.capacityProvider,
@@ -36,4 +36,3 @@ class TaskSetCapacityProviderStrategy {
     );
   }
 }
-

@@ -4,22 +4,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_spec_http2_route_match_header_match_range.dart';
 
 class RouteSpecHttp2RouteMatchHeaderMatch {
-  /// Header value sent by the client must match the specified value exactly.
+  /// Exact query parameter to match on.
   final pulumi.Input<String>? exact;
   /// Header value sent by the client must begin with the specified characters.
   final pulumi.Input<String>? prefix;
-  /// Object that specifies the range of numbers that the header value sent by the client must be included in.
+  /// Object that specifies the range of numbers that the header value sent by the client must be included in. See `spec.http_route.match.header.match.range` Block for details.
   final pulumi.Input<RouteSpecHttp2RouteMatchHeaderMatchRange>? range;
-  /// Header value sent by the client must include the specified characters.
+  /// Regex used to match the path.
   final pulumi.Input<String>? regex;
   /// Header value sent by the client must end with the specified characters.
   final pulumi.Input<String>? suffix;
 
   /// Creates a new [RouteSpecHttp2RouteMatchHeaderMatch].
-  /// [exact] Header value sent by the client must match the specified value exactly.
+  /// [exact] Exact query parameter to match on.
   /// [prefix] Header value sent by the client must begin with the specified characters.
-  /// [range] Object that specifies the range of numbers that the header value sent by the client must be included in.
-  /// [regex] Header value sent by the client must include the specified characters.
+  /// [range] Object that specifies the range of numbers that the header value sent by the client must be included in. See `spec.http_route.match.header.match.range` Block for details.
+  /// [regex] Regex used to match the path.
   /// [suffix] Header value sent by the client must end with the specified characters.
   const RouteSpecHttp2RouteMatchHeaderMatch({
     this.exact,
@@ -49,4 +49,3 @@ class RouteSpecHttp2RouteMatchHeaderMatch {
     );
   }
 }
-

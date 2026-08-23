@@ -122,6 +122,32 @@ import 'trust_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_truststore" "test" {
+///   name                             = "tf-example-lb-ts"
+///   ca_certificates_bundle_s3_bucket = "..."
+///   ca_certificates_bundle_s3_key    = "..."
+/// }
+/// resource "aws_lb_listener" "example" {
+///   load_balancer_arn = exampleAwsLb.id
+///   default_actions {
+///     target_group_arn = exampleAwsLbTargetGroup.id
+///     type             = "forward"
+///   }
+///   mutual_authentication = {
+///     mode            = "verify"
+///     trust_store_arn = aws_lb_truststore.test.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -134,8 +160,8 @@ import 'trust_store_state.dart';
 /// import com.pulumi.aws.lb.ListenerArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerDefaultActionArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerMutualAuthenticationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -220,9 +246,9 @@ class TrustStore extends pulumi.CustomResource {
   late final pulumi.Output<String> namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [TrustStore].

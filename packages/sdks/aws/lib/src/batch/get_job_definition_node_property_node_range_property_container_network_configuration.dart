@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration {
-  /// Indicates whether the job has a public IP address.
+  /// Whether the job has a public IP address.
   final pulumi.Input<bool> assignPublicIp;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration].
-  /// [assignPublicIp] Indicates whether the job has a public IP address.
+  /// [assignPublicIp] Whether the job has a public IP address.
   const GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration({
     required this.assignPublicIp,
   });
@@ -24,4 +24,3 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration
     );
   }
 }
-

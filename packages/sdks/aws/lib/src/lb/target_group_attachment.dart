@@ -76,7 +76,7 @@ import 'target_group_attachment_state.dart';
 /// 		}
 /// 		_, err = lb.NewTargetGroupAttachment(ctx, "test", &lb.TargetGroupAttachmentArgs{
 /// 			TargetGroupArn: testTargetGroup.Arn,
-/// 			TargetId:       testInstance.ID(),
+/// 			TargetId:       testInstance.ID().ToIDOutput().ToStringOutput(),
 /// 			Port:           pulumi.Int(80),
 /// 		})
 /// 		if err != nil {
@@ -84,6 +84,25 @@ import 'target_group_attachment_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_targetgroupattachment" "test" {
+///   target_group_arn = aws_lb_targetgroup.test.arn
+///   target_id        = aws_ec2_instance.test.id
+///   port             = 80
+/// }
+/// resource "aws_lb_targetgroup" "test" {
+/// }
+/// resource "aws_ec2_instance" "test" {
 /// }
 /// ```
 /// ```java
@@ -96,8 +115,8 @@ import 'target_group_attachment_state.dart';
 /// import com.pulumi.aws.ec2.Instance;
 /// import com.pulumi.aws.lb.TargetGroupAttachment;
 /// import com.pulumi.aws.lb.TargetGroupAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -268,6 +287,34 @@ import 'target_group_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_permission" "with_lb" {
+///   statement_id = "AllowExecutionFromlb"
+///   action       = "lambda:InvokeFunction"
+///   function     = aws_lambda_function.test.name
+///   principal    = "elasticloadbalancing.amazonaws.com"
+///   source_arn   = aws_lb_targetgroup.test.arn
+/// }
+/// resource "aws_lb_targetgroup" "test" {
+///   name        = "test"
+///   target_type = "lambda"
+/// }
+/// resource "aws_lambda_function" "test" {
+/// }
+/// resource "aws_lb_targetgroupattachment" "test" {
+///   depends_on       = [aws_lambda_permission.with_lb]
+///   target_group_arn = aws_lb_targetgroup.test.arn
+///   target_id        = aws_lambda_function.test.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -282,8 +329,8 @@ import 'target_group_attachment_state.dart';
 /// import com.pulumi.aws.lb.TargetGroupAttachment;
 /// import com.pulumi.aws.lb.TargetGroupAttachmentArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -438,7 +485,7 @@ import 'target_group_attachment_state.dart';
 /// 		}
 /// 		_, err = lb.NewTargetGroupAttachment(ctx, "test", &lb.TargetGroupAttachmentArgs{
 /// 			TargetGroupArn: test.Arn,
-/// 			TargetId:       testInstance.ID(),
+/// 			TargetId:       testInstance.ID().ToIDOutput().ToStringOutput(),
 /// 			Port:           pulumi.Int(443),
 /// 			QuicServerId:   pulumi.String("0x1a2b3c4d5e6f7a8b"),
 /// 		})
@@ -447,6 +494,29 @@ import 'target_group_attachment_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_targetgroup" "test" {
+///   name     = "test"
+///   port     = 443
+///   protocol = "QUIC"
+/// }
+/// resource "aws_lb_targetgroupattachment" "test" {
+///   target_group_arn = aws_lb_targetgroup.test.arn
+///   target_id        = aws_ec2_instance.test.id
+///   port             = 443
+///   quic_server_id   = "0x1a2b3c4d5e6f7a8b"
+/// }
+/// resource "aws_ec2_instance" "test" {
 /// }
 /// ```
 /// ```java
@@ -460,8 +530,8 @@ import 'target_group_attachment_state.dart';
 /// import com.pulumi.aws.ec2.Instance;
 /// import com.pulumi.aws.lb.TargetGroupAttachment;
 /// import com.pulumi.aws.lb.TargetGroupAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -515,7 +585,27 @@ import 'target_group_attachment_state.dart';
 ///
 /// ## Import
 ///
-/// You cannot import Target Group Attachments.
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `targetGroupArn` - (String) ARN of the target group.
+/// * `targetId` - (String) ID of the target (instance ID, IP address, Lambda ARN, or ALB ARN).
+///
+/// #### Optional
+///
+/// * `port` - (Number) Port on which targets receive traffic.
+/// * `availabilityZone` - (String) Availability zone where the target is registered.
+/// * `quicServerId` - (String) QUIC server ID for the target.
+/// * `accountId` - (String) AWS Account where this resource is managed.
+/// * `region` - (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Target Group Attachments using the same format. For example:
+///
+/// ```sh
+/// $ pulumi import aws:lb/targetGroupAttachment:TargetGroupAttachment example arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-tg/abc123,i-0123456789abcdef0,8080
+/// ```
 class TargetGroupAttachment extends pulumi.CustomResource {
   /// The Availability Zone where the IP address of the target is to be registered. If the private IP address is outside of the VPC scope, this value must be set to `all`.
   late final pulumi.Output<String?> availabilityZone;

@@ -81,6 +81,22 @@ import 'resource_collection_tags.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_devopsguru_resourcecollection" "example" {
+///   type = "AWS_SERVICE"
+///   cloudformation = {
+///     stack_names = ["*"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +106,8 @@ import 'resource_collection_tags.dart';
 /// import com.pulumi.aws.devopsguru.ResourceCollection;
 /// import com.pulumi.aws.devopsguru.ResourceCollectionArgs;
 /// import com.pulumi.aws.devopsguru.inputs.ResourceCollectionCloudformationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -196,6 +212,22 @@ import 'resource_collection_tags.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_devopsguru_resourcecollection" "example" {
+///   type = "AWS_CLOUD_FORMATION"
+///   cloudformation = {
+///     stack_names = ["ExampleStack"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -205,8 +237,8 @@ import 'resource_collection_tags.dart';
 /// import com.pulumi.aws.devopsguru.ResourceCollection;
 /// import com.pulumi.aws.devopsguru.ResourceCollectionArgs;
 /// import com.pulumi.aws.devopsguru.inputs.ResourceCollectionCloudformationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -315,6 +347,23 @@ import 'resource_collection_tags.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_devopsguru_resourcecollection" "example" {
+///   type = "AWS_TAGS"
+///   tags = {
+///     app_boundary_key = "DevOps-Guru-Example"
+///     tag_values       = ["Example-Value"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -324,8 +373,8 @@ import 'resource_collection_tags.dart';
 /// import com.pulumi.aws.devopsguru.ResourceCollection;
 /// import com.pulumi.aws.devopsguru.ResourceCollectionArgs;
 /// import com.pulumi.aws.devopsguru.inputs.ResourceCollectionTagsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -363,7 +412,7 @@ import 'resource_collection_tags.dart';
 ///
 /// ### Tags All Resources
 ///
-/// To analyze all resources with the `app_boundary_key` regardless of the corresponding tag value, set `tag_values` to `["*"]`.
+/// To analyze all resources with the `appBoundaryKey` regardless of the corresponding tag value, set `tagValues` to `["*"]`.
 ///
 ///
 /// ```typescript
@@ -438,6 +487,23 @@ import 'resource_collection_tags.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_devopsguru_resourcecollection" "example" {
+///   type = "AWS_TAGS"
+///   tags = {
+///     app_boundary_key = "DevOps-Guru-Example"
+///     tag_values       = ["*"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -447,8 +513,8 @@ import 'resource_collection_tags.dart';
 /// import com.pulumi.aws.devopsguru.ResourceCollection;
 /// import com.pulumi.aws.devopsguru.ResourceCollectionArgs;
 /// import com.pulumi.aws.devopsguru.inputs.ResourceCollectionTagsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

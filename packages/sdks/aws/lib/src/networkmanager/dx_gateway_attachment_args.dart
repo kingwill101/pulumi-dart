@@ -18,7 +18,7 @@ class DxGatewayAttachmentArgs {
   final pulumi.Input<List<String>> edgeLocations;
   /// The routing policy label to apply to the Direct Connect Gateway attachment for traffic routing decisions. Maximum length of 256 characters. Changing this value will force recreation of the resource.
   final pulumi.Input<String>? routingPolicyLabel;
-  /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<DxGatewayAttachmentTimeouts>? timeouts;
 
@@ -27,7 +27,7 @@ class DxGatewayAttachmentArgs {
   /// [directConnectGatewayArn] ARN of the Direct Connect gateway attachment.
   /// [edgeLocations] One or more core network edge locations to associate with the Direct Connect gateway attachment.
   /// [routingPolicyLabel] The routing policy label to apply to the Direct Connect Gateway attachment for traffic routing decisions. Maximum length of 256 characters. Changing this value will force recreation of the resource.
-  /// [tags] Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   const DxGatewayAttachmentArgs({
     required this.coreNetworkId,
@@ -60,4 +60,3 @@ class DxGatewayAttachmentArgs {
     );
   }
 }
-

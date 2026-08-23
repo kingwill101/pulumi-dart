@@ -18,9 +18,9 @@ class SafetyRuleArgs {
   final pulumi.Input<String>? name;
   /// Configuration block for safety rule criteria. See below.
   final pulumi.Input<SafetyRuleRuleConfig> ruleConfig;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Routing controls that can only be set or unset if the specified `rule_config` evaluates to true for the specified `gating_controls`.
+  /// Routing controls that can only be set or unset if the specified `ruleConfig` evaluates to true for the specified `gatingControls`.
   final pulumi.Input<List<String>>? targetControls;
   /// Evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail.
   ///
@@ -33,8 +33,8 @@ class SafetyRuleArgs {
   /// [gatingControls] Gating controls for the new gating rule. That is, routing controls that are evaluated by the rule configuration that you specify.
   /// [name] Name describing the safety rule.
   /// [ruleConfig] Configuration block for safety rule criteria. See below.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [targetControls] Routing controls that can only be set or unset if the specified `rule_config` evaluates to true for the specified `gating_controls`.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [targetControls] Routing controls that can only be set or unset if the specified `ruleConfig` evaluates to true for the specified `gatingControls`.
   /// [waitPeriodMs] Evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail.
   const SafetyRuleArgs({
     this.assertedControls,
@@ -73,4 +73,3 @@ class SafetyRuleArgs {
     );
   }
 }
-

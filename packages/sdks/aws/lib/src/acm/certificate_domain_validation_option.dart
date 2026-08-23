@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateDomainValidationOption {
-  /// Fully qualified domain name (FQDN) in the certificate.
+  /// Domain to be validated
   final pulumi.Input<String>? domainName;
   /// The name of the DNS record to create to validate the certificate
   final pulumi.Input<String>? resourceRecordName;
@@ -13,7 +13,7 @@ class CertificateDomainValidationOption {
   final pulumi.Input<String>? resourceRecordValue;
 
   /// Creates a new [CertificateDomainValidationOption].
-  /// [domainName] Fully qualified domain name (FQDN) in the certificate.
+  /// [domainName] Domain to be validated
   /// [resourceRecordName] The name of the DNS record to create to validate the certificate
   /// [resourceRecordType] The type of DNS record to create
   /// [resourceRecordValue] The value the DNS record needs to have
@@ -42,4 +42,3 @@ class CertificateDomainValidationOption {
     );
   }
 }
-

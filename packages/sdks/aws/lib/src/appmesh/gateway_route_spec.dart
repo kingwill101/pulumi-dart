@@ -6,19 +6,19 @@ import 'gateway_route_spec_http2_route.dart';
 import 'gateway_route_spec_http_route.dart';
 
 class GatewayRouteSpec {
-  /// Specification of a gRPC gateway route.
+  /// Specification of a gRPC gateway route. See `grpcRoute` Block for details.
   final pulumi.Input<GatewayRouteSpecGrpcRoute>? grpcRoute;
-  /// Specification of an HTTP/2 gateway route.
+  /// Specification of an HTTP/2 gateway route. See `http2Route` Block for details.
   final pulumi.Input<GatewayRouteSpecHttp2Route>? http2Route;
-  /// Specification of an HTTP gateway route.
+  /// Specification of an HTTP gateway route. See `httpRoute` Block for details.
   final pulumi.Input<GatewayRouteSpecHttpRoute>? httpRoute;
   /// Priority for the gateway route, between `0` and `1000`.
   final pulumi.Input<int>? priority;
 
   /// Creates a new [GatewayRouteSpec].
-  /// [grpcRoute] Specification of a gRPC gateway route.
-  /// [http2Route] Specification of an HTTP/2 gateway route.
-  /// [httpRoute] Specification of an HTTP gateway route.
+  /// [grpcRoute] Specification of a gRPC gateway route. See `grpcRoute` Block for details.
+  /// [http2Route] Specification of an HTTP/2 gateway route. See `http2Route` Block for details.
+  /// [httpRoute] Specification of an HTTP gateway route. See `httpRoute` Block for details.
   /// [priority] Priority for the gateway route, between `0` and `1000`.
   const GatewayRouteSpec({
     this.grpcRoute,
@@ -45,4 +45,3 @@ class GatewayRouteSpec {
     );
   }
 }
-

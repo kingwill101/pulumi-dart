@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouteSpecHttpRouteMatchQueryParameterMatch {
-  /// The exact query parameter to match on.
+  /// Exact query parameter to match on.
   final pulumi.Input<String>? exact;
 
   /// Creates a new [RouteSpecHttpRouteMatchQueryParameterMatch].
-  /// [exact] The exact query parameter to match on.
+  /// [exact] Exact query parameter to match on.
   const RouteSpecHttpRouteMatchQueryParameterMatch({
     this.exact,
   });
@@ -24,4 +24,3 @@ class RouteSpecHttpRouteMatchQueryParameterMatch {
     );
   }
 }
-

@@ -9,26 +9,26 @@ import 'extension_parameter.dart';
 /// {@endtemplate}
 /// {@macro pulumi_appconfig_extension_extension_args_doc}
 class ExtensionArgs {
-  /// The action points defined in the extension. Detailed below.
+  /// Action points defined in the extension. Detailed below.
   final pulumi.Input<List<ExtensionActionPoint>> actionPoints;
   /// Information about the extension.
   final pulumi.Input<String>? description;
-  /// A name for the extension. Each extension name in your account must be unique. Extension versions use the same name.
+  /// Name for the extension. Each extension name in your account must be unique. Extension versions use the same name.
   final pulumi.Input<String>? name;
-  /// The parameters accepted by the extension. You specify parameter values when you associate the extension to an AppConfig resource by using the CreateExtensionAssociation API action. For Lambda extension actions, these parameters are included in the Lambda request object. Detailed below.
+  /// Parameters accepted by the extension. You specify parameter values when you associate the extension to an AppConfig resource by using the CreateExtensionAssociation API action. For Lambda extension actions, these parameters are included in the Lambda request object. Detailed below.
   final pulumi.Input<List<ExtensionParameter>>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ExtensionArgs].
-  /// [actionPoints] The action points defined in the extension. Detailed below.
+  /// [actionPoints] Action points defined in the extension. Detailed below.
   /// [description] Information about the extension.
-  /// [name] A name for the extension. Each extension name in your account must be unique. Extension versions use the same name.
-  /// [parameters] The parameters accepted by the extension. You specify parameter values when you associate the extension to an AppConfig resource by using the CreateExtensionAssociation API action. For Lambda extension actions, these parameters are included in the Lambda request object. Detailed below.
+  /// [name] Name for the extension. Each extension name in your account must be unique. Extension versions use the same name.
+  /// [parameters] Parameters accepted by the extension. You specify parameter values when you associate the extension to an AppConfig resource by using the CreateExtensionAssociation API action. For Lambda extension actions, these parameters are included in the Lambda request object. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ExtensionArgs({
     required this.actionPoints,
     this.description,
@@ -60,4 +60,3 @@ class ExtensionArgs {
     );
   }
 }
-

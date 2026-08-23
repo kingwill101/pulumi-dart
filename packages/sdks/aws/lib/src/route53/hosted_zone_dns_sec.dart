@@ -4,7 +4,7 @@ import 'hosted_zone_dns_sec_state.dart';
 
 /// Manages Route 53 Hosted Zone Domain Name System Security Extensions (DNSSEC). For more information about managing DNSSEC in Route 53, see the [Route 53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec.html).
 ///
-/// !&gt; **WARNING:** If you disable DNSSEC signing for your hosted zone before the DNS changes have propagated, your domain could become unavailable on the internet. When you remove the DS records, you must wait until the longest TTL for the DS records that you remove has expired before you complete the step to disable DNSSEC signing. Please refer to the [Route 53 Developer Guide - Disable DNSSEC](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec-disable.html) for a detailed breakdown on the steps required to disable DNSSEC safely for a hosted zone.
+/// &gt; **WARNING:** If you disable DNSSEC signing for your hosted zone before the DNS changes have propagated, your domain could become unavailable on the internet. When you remove the DS records, you must wait until the longest TTL for the DS records that you remove has expired before you complete the step to disable DNSSEC signing. Please refer to the [Route 53 Developer Guide - Disable DNSSEC](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec-disable.html) for a detailed breakdown on the steps required to disable DNSSEC safely for a hosted zone.
 ///
 /// &gt; **Note:** Route53 hosted zones are global resources, and as such any `aws.kms.Key` that you use as part of a signing key needs to be located in the `us-east-1` region. In the example below, the main AWS provider declaration is for `us-east-1`, however if you are provisioning your AWS resources in a different region, you will need to specify a provider alias and use that attached to the `aws.kms.Key` resource as described in the provider alias documentation.
 ///
@@ -212,7 +212,7 @@ import 'hosted_zone_dns_sec_state.dart';
 /// 						"kms:Verify",
 /// 					},
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "dnssec-route53.amazonaws.com",
 /// 					},
 /// 					"Resource": "*",
@@ -221,7 +221,7 @@ import 'hosted_zone_dns_sec_state.dart';
 /// 				map[string]interface{}{
 /// 					"Action": "kms:*",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:aws:iam::%v:root", current.AccountId),
 /// 					},
 /// 					"Resource": "*",
@@ -238,7 +238,7 @@ import 'hosted_zone_dns_sec_state.dart';
 /// 			CustomerMasterKeySpec: pulumi.String("ECC_NIST_P256"),
 /// 			DeletionWindowInDays:  pulumi.Int(7),
 /// 			KeyUsage:              pulumi.String("SIGN_VERIFY"),
-/// 			Policy:                pulumi.String(json0),
+/// 			Policy:                json0,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -250,7 +250,7 @@ import 'hosted_zone_dns_sec_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeySigningKey, err := route53.NewKeySigningKey(ctx, "example", &route53.KeySigningKeyArgs{
-/// 			HostedZoneId:            exampleZone.ID(),
+/// 			HostedZoneId:            exampleZone.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyManagementServiceArn: example.Arn,
 /// 			Name:                    pulumi.String("example"),
 /// 		})
@@ -267,6 +267,56 @@ import 'hosted_zone_dns_sec_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   customer_master_key_spec = "ECC_NIST_P256"
+///   deletion_window_in_days  = 7
+///   key_usage                = "SIGN_VERIFY"
+///   policy = jsonencode({
+///     "Statement" = [{
+///       "Action" = ["kms:DescribeKey", "kms:GetPublicKey", "kms:Sign", "kms:Verify"]
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "dnssec-route53.amazonaws.com"
+///       }
+///       "Resource" = "*"
+///       "Sid"      = "Allow Route 53 DNSSEC Service"
+///       }, {
+///       "Action" = "kms:*"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///       }
+///       "Resource" = "*"
+///       "Sid"      = "Enable IAM User Permissions"
+///     }]
+///     "Version" = "2012-10-17"
+///   })
+/// }
+/// resource "aws_route53_zone" "example" {
+///   name = "example.com"
+/// }
+/// resource "aws_route53_keysigningkey" "example" {
+///   hosted_zone_id             = aws_route53_zone.example.id
+///   key_management_service_arn = aws_kms_key.example.arn
+///   name                       = "example"
+/// }
+/// resource "aws_route53_hostedzonednssec" "example" {
+///   depends_on     = [aws_route53_keysigningkey.example]
+///   hosted_zone_id = aws_route53_keysigningkey.example.hosted_zone_id
 /// }
 /// ```
 /// ```java
@@ -287,8 +337,8 @@ import 'hosted_zone_dns_sec_state.dart';
 /// import com.pulumi.aws.route53.HostedZoneDnsSecArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

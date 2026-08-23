@@ -23,7 +23,7 @@ class TrustState {
   /// Valid values are `Enabled` and `Disabled`.
   /// Default value is `Disabled`.
   final pulumi.Input<String>? selectiveAuth;
-  /// Date and time when the Trust state in `trust_state` was last updated.
+  /// Date and time when the Trust state in `trustState` was last updated.
   final pulumi.Input<String>? stateLastUpdatedDateTime;
   /// The direction of the Trust relationship.
   /// Valid values are `One-Way: Outgoing`, `One-Way: Incoming`, and `Two-Way`.
@@ -36,7 +36,7 @@ class TrustState {
   /// State of the Trust relationship.
   /// One of `Created`, `VerifyFailed`,`Verified`, `UpdateFailed`,`Updated`,`Deleted`, or `Failed`.
   final pulumi.Input<String>? trustState;
-  /// Reason for the Trust state set in `trust_state`.
+  /// Reason for the Trust state set in `trustState`.
   final pulumi.Input<String>? trustStateReason;
   /// Type of the Trust relationship.
   /// Valid values are `Forest` and `External`.
@@ -52,11 +52,11 @@ class TrustState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [remoteDomainName] Fully qualified domain name of the remote Directory.
   /// [selectiveAuth] Whether to enable selective authentication.
-  /// [stateLastUpdatedDateTime] Date and time when the Trust state in `trust_state` was last updated.
+  /// [stateLastUpdatedDateTime] Date and time when the Trust state in `trustState` was last updated.
   /// [trustDirection] The direction of the Trust relationship.
   /// [trustPassword] Password for the Trust.
   /// [trustState] State of the Trust relationship.
-  /// [trustStateReason] Reason for the Trust state set in `trust_state`.
+  /// [trustStateReason] Reason for the Trust state set in `trustState`.
   /// [trustType] Type of the Trust relationship.
   const TrustState({
     this.conditionalForwarderIpAddrs,
@@ -113,4 +113,3 @@ class TrustState {
     );
   }
 }
-

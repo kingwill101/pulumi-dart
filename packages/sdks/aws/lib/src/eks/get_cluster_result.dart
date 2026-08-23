@@ -6,6 +6,9 @@ import 'get_cluster_certificate_authority.dart';
 import 'get_cluster_compute_config.dart';
 import 'get_cluster_control_plane_scaling_config.dart';
 import 'get_cluster_identity.dart';
+import 'get_cluster_kube_api_server_config.dart';
+import 'get_cluster_kube_controller_manager_config.dart';
+import 'get_cluster_kube_scheduler_config.dart';
 import 'get_cluster_kubernetes_network_config.dart';
 import 'get_cluster_outpost_config.dart';
 import 'get_cluster_remote_network_config.dart';
@@ -40,8 +43,15 @@ class GetClusterResult {
   final String id;
   /// Nested attribute containing identity provider information for your cluster. Only available on Kubernetes version 1.13 and 1.14 clusters created or upgraded on or after September 3, 2019. For an example using this information to enable IAM Roles for Service Accounts, see the `aws.eks.Cluster` resource documentation.
   final List<GetClusterIdentity> identities;
+  /// Configuration for the Kubernetes API server.
+  final List<GetClusterKubeApiServerConfig> kubeApiServerConfigs;
+  /// Configuration for the Kubernetes controller manager.
+  final List<GetClusterKubeControllerManagerConfig> kubeControllerManagerConfigs;
+  /// Configuration for the Kubernetes scheduler.
+  final List<GetClusterKubeSchedulerConfig> kubeSchedulerConfigs;
   /// Nested list containing Kubernetes Network Configuration.
   final List<GetClusterKubernetesNetworkConfig> kubernetesNetworkConfigs;
+  /// The name of the resource (e.g., `cpu`, `memory`).
   final String name;
   /// Contains Outpost Configuration.
   final List<GetClusterOutpostConfig> outpostConfigs;
@@ -80,8 +90,11 @@ class GetClusterResult {
   /// [endpoint] Endpoint for your Kubernetes API server.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] Nested attribute containing identity provider information for your cluster. Only available on Kubernetes version 1.13 and 1.14 clusters created or upgraded on or after September 3, 2019. For an example using this information to enable IAM Roles for Service Accounts, see the `aws.eks.Cluster` resource documentation.
+  /// [kubeApiServerConfigs] Configuration for the Kubernetes API server.
+  /// [kubeControllerManagerConfigs] Configuration for the Kubernetes controller manager.
+  /// [kubeSchedulerConfigs] Configuration for the Kubernetes scheduler.
   /// [kubernetesNetworkConfigs] Nested list containing Kubernetes Network Configuration.
-  /// [name] Required.
+  /// [name] The name of the resource (e.g., `cpu`, `memory`).
   /// [outpostConfigs] Contains Outpost Configuration.
   /// [platformVersion] Platform version for the cluster.
   /// [region] Required.
@@ -107,6 +120,9 @@ class GetClusterResult {
     required this.endpoint,
     required this.id,
     required this.identities,
+    required this.kubeApiServerConfigs,
+    required this.kubeControllerManagerConfigs,
+    required this.kubeSchedulerConfigs,
     required this.kubernetesNetworkConfigs,
     required this.name,
     required this.outpostConfigs,
@@ -137,6 +153,9 @@ class GetClusterResult {
       'endpoint': endpoint,
       'id': id,
       'identities': pulumi.Input.encodeList<GetClusterIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
+      'kubeApiServerConfigs': pulumi.Input.encodeList<GetClusterKubeApiServerConfig, Map<String, dynamic>>(kubeApiServerConfigs, (value) => value.toMap()),
+      'kubeControllerManagerConfigs': pulumi.Input.encodeList<GetClusterKubeControllerManagerConfig, Map<String, dynamic>>(kubeControllerManagerConfigs, (value) => value.toMap()),
+      'kubeSchedulerConfigs': pulumi.Input.encodeList<GetClusterKubeSchedulerConfig, Map<String, dynamic>>(kubeSchedulerConfigs, (value) => value.toMap()),
       'kubernetesNetworkConfigs': pulumi.Input.encodeList<GetClusterKubernetesNetworkConfig, Map<String, dynamic>>(kubernetesNetworkConfigs, (value) => value.toMap()),
       'name': name,
       'outpostConfigs': pulumi.Input.encodeList<GetClusterOutpostConfig, Map<String, dynamic>>(outpostConfigs, (value) => value.toMap()),
@@ -168,6 +187,9 @@ class GetClusterResult {
       endpoint: map['endpoint'] as String,
       id: map['id'] as String,
       identities: pulumi.Input.decodeList<GetClusterIdentity>(map['identities']!, (value) => GetClusterIdentity.fromMap((value as Map).cast<String, dynamic>())),
+      kubeApiServerConfigs: pulumi.Input.decodeList<GetClusterKubeApiServerConfig>(map['kubeApiServerConfigs']!, (value) => GetClusterKubeApiServerConfig.fromMap((value as Map).cast<String, dynamic>())),
+      kubeControllerManagerConfigs: pulumi.Input.decodeList<GetClusterKubeControllerManagerConfig>(map['kubeControllerManagerConfigs']!, (value) => GetClusterKubeControllerManagerConfig.fromMap((value as Map).cast<String, dynamic>())),
+      kubeSchedulerConfigs: pulumi.Input.decodeList<GetClusterKubeSchedulerConfig>(map['kubeSchedulerConfigs']!, (value) => GetClusterKubeSchedulerConfig.fromMap((value as Map).cast<String, dynamic>())),
       kubernetesNetworkConfigs: pulumi.Input.decodeList<GetClusterKubernetesNetworkConfig>(map['kubernetesNetworkConfigs']!, (value) => GetClusterKubernetesNetworkConfig.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       outpostConfigs: pulumi.Input.decodeList<GetClusterOutpostConfig>(map['outpostConfigs']!, (value) => GetClusterOutpostConfig.fromMap((value as Map).cast<String, dynamic>())),
@@ -185,4 +207,3 @@ class GetClusterResult {
     );
   }
 }
-

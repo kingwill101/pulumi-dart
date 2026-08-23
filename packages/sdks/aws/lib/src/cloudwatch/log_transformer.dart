@@ -95,6 +95,26 @@ import 'log_transformer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_logtransformer" "example" {
+///   transformer_configs {
+///     parse_jsons {
+///     }
+///   }
+///   log_group_arn = aws_cloudwatch_loggroup.example.arn
+/// }
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +126,9 @@ import 'log_transformer_state.dart';
 /// import com.pulumi.aws.cloudwatch.LogTransformer;
 /// import com.pulumi.aws.cloudwatch.LogTransformerArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.LogTransformerTransformerConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.cloudwatch.inputs.LogTransformerTransformerConfigParseJsonArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -153,7 +174,14 @@ import 'log_transformer_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CloudWatch Logs Transformer using the `log_group_arn`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `logGroupArn` (String) Amazon Resource Name (ARN) of the CloudWatch Logs log group.
+///
+///
+/// Using `pulumi import`, import CloudWatch Logs Transformer using the `logGroupArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudwatch/logTransformer:LogTransformer example arn:aws:logs:us-west-2:123456789012:log-group:example
@@ -163,7 +191,7 @@ class LogTransformer extends pulumi.CustomResource {
   late final pulumi.Output<String> logGroupArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Specifies the configuration of the transformer. You must include at least one configuration, and 20 at most. See `transformer_config` below for details.
+  /// Specifies the configuration of the transformer. You must include at least one configuration, and 20 at most. See `transformerConfig` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>> transformerConfigs;
 
   /// Creates a new [LogTransformer].

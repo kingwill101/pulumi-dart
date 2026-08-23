@@ -60,4 +60,3 @@ class V2modelsBotVersionArgs {
     );
   }
 }
-

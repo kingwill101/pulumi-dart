@@ -9,26 +9,26 @@ import 'virtual_node_spec_listener_timeout.dart';
 import 'virtual_node_spec_listener_tls.dart';
 
 class VirtualNodeSpecListener {
-  /// Connection pool information for the listener.
+  /// Connection pool information for the listener. See `spec.listener.connection_pool` Block for details.
   final pulumi.Input<VirtualNodeSpecListenerConnectionPool>? connectionPool;
-  /// Health check information for the listener.
+  /// Health check information for the listener. See `spec.listener.health_check` Block for details.
   final pulumi.Input<VirtualNodeSpecListenerHealthCheck>? healthCheck;
-  /// Outlier detection information for the listener.
+  /// Outlier detection information for the listener. See `spec.listener.outlier_detection` Block for details.
   final pulumi.Input<VirtualNodeSpecListenerOutlierDetection>? outlierDetection;
-  /// Port mapping information for the listener.
+  /// Port mapping information for the listener. See `spec.listener.port_mapping` Block for details.
   final pulumi.Input<VirtualNodeSpecListenerPortMapping> portMapping;
-  /// Timeouts for different protocols.
+  /// Timeouts for different protocols. See `spec.listener.timeout` Block for details.
   final pulumi.Input<VirtualNodeSpecListenerTimeout>? timeout;
-  /// Transport Layer Security (TLS) properties for the listener
+  /// Transport Layer Security (TLS) properties for the listener. See `spec.listener.tls` Block for details.
   final pulumi.Input<VirtualNodeSpecListenerTls>? tls;
 
   /// Creates a new [VirtualNodeSpecListener].
-  /// [connectionPool] Connection pool information for the listener.
-  /// [healthCheck] Health check information for the listener.
-  /// [outlierDetection] Outlier detection information for the listener.
-  /// [portMapping] Port mapping information for the listener.
-  /// [timeout] Timeouts for different protocols.
-  /// [tls] Transport Layer Security (TLS) properties for the listener
+  /// [connectionPool] Connection pool information for the listener. See `spec.listener.connection_pool` Block for details.
+  /// [healthCheck] Health check information for the listener. See `spec.listener.health_check` Block for details.
+  /// [outlierDetection] Outlier detection information for the listener. See `spec.listener.outlier_detection` Block for details.
+  /// [portMapping] Port mapping information for the listener. See `spec.listener.port_mapping` Block for details.
+  /// [timeout] Timeouts for different protocols. See `spec.listener.timeout` Block for details.
+  /// [tls] Transport Layer Security (TLS) properties for the listener. See `spec.listener.tls` Block for details.
   const VirtualNodeSpecListener({
     this.connectionPool,
     this.healthCheck,
@@ -60,4 +60,3 @@ class VirtualNodeSpecListener {
     );
   }
 }
-

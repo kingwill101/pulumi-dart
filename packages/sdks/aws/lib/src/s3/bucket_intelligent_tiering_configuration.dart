@@ -102,7 +102,7 @@ import 'bucket_intelligent_tiering_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketIntelligentTieringConfiguration(ctx, "example-entire-bucket", &s3.BucketIntelligentTieringConfigurationArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:   pulumi.String("EntireBucket"),
 /// 			Tierings: s3.BucketIntelligentTieringConfigurationTieringArray{
 /// 				&s3.BucketIntelligentTieringConfigurationTieringArgs{
@@ -122,6 +122,31 @@ import 'bucket_intelligent_tiering_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketintelligenttieringconfiguration" "example-entire-bucket" {
+///   bucket = aws_s3_bucket.example.id
+///   name   = "EntireBucket"
+///   tierings {
+///     access_tier = "DEEP_ARCHIVE_ACCESS"
+///     days        = 180
+///   }
+///   tierings {
+///     access_tier = "ARCHIVE_ACCESS"
+///     days        = 125
+///   }
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -133,8 +158,8 @@ import 'bucket_intelligent_tiering_configuration_state.dart';
 /// import com.pulumi.aws.s3.BucketIntelligentTieringConfiguration;
 /// import com.pulumi.aws.s3.BucketIntelligentTieringConfigurationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketIntelligentTieringConfigurationTieringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -288,7 +313,7 @@ import 'bucket_intelligent_tiering_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketIntelligentTieringConfiguration(ctx, "example-filtered", &s3.BucketIntelligentTieringConfigurationArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:   pulumi.String("ImportantBlueDocuments"),
 /// 			Status: pulumi.String("Disabled"),
 /// 			Filter: &s3.BucketIntelligentTieringConfigurationFilterArgs{
@@ -312,6 +337,35 @@ import 'bucket_intelligent_tiering_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketintelligenttieringconfiguration" "example-filtered" {
+///   bucket = aws_s3_bucket.example.id
+///   name   = "ImportantBlueDocuments"
+///   status = "Disabled"
+///   filter = {
+///     prefix = "documents/"
+///     tags = {
+///       "priority" = "high"
+///       "class"    = "blue"
+///     }
+///   }
+///   tierings {
+///     access_tier = "ARCHIVE_ACCESS"
+///     days        = 125
+///   }
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -324,8 +378,8 @@ import 'bucket_intelligent_tiering_configuration_state.dart';
 /// import com.pulumi.aws.s3.BucketIntelligentTieringConfigurationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketIntelligentTieringConfigurationFilterArgs;
 /// import com.pulumi.aws.s3.inputs.BucketIntelligentTieringConfigurationTieringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -394,15 +448,15 @@ import 'bucket_intelligent_tiering_configuration_state.dart';
 class BucketIntelligentTieringConfiguration extends pulumi.CustomResource {
   /// Name of the bucket this intelligent tiering configuration is associated with.
   late final pulumi.Output<String> bucket;
-  /// Bucket filter. The configuration only includes objects that meet the filter's criteria (documented below).
+  /// Bucket filter. The configuration only includes objects that meet the filter's criteria. See `filter` Block below.
   late final pulumi.Output<BucketIntelligentTieringConfigurationFilter?> filter;
   /// Unique name used to identify the S3 Intelligent-Tiering configuration for the bucket.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Specifies the status of the configuration. Valid values: `Enabled`, `Disabled`.
+  /// Status of the configuration. Valid values: `Enabled`, `Disabled`.
   late final pulumi.Output<String?> status;
-  /// S3 Intelligent-Tiering storage class tiers of the configuration (documented below).
+  /// S3 Intelligent-Tiering storage class tiers of the configuration. See `tiering` Block below.
   late final pulumi.Output<List<Map<String, dynamic>>> tierings;
 
   /// Creates a new [BucketIntelligentTieringConfiguration].

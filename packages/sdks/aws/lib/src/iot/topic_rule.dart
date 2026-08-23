@@ -57,7 +57,7 @@ import 'topic_rule_state.dart';
 /// const mypolicyRolePolicy = new aws.iam.RolePolicy("mypolicy", {
 ///     name: "mypolicy",
 ///     role: myrole.id,
-///     policy: mypolicy.apply(mypolicy => mypolicy.json),
+///     policy: mypolicy.json,
 /// });
 /// ```
 /// ```python
@@ -300,17 +300,77 @@ import 'topic_rule_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "mypolicy", &iam.RolePolicyArgs{
-/// 			Name: pulumi.String("mypolicy"),
-/// 			Role: myrole.ID(),
-/// 			Policy: pulumi.String(mypolicy.ApplyT(func(mypolicy iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &mypolicy.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:   pulumi.String("mypolicy"),
+/// 			Role:   myrole.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: mypolicy.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["iot.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "mypolicy" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["sns:Publish"]
+///     resources = [aws_sns_topic.mytopic.arn]
+///   }
+/// }
+///
+/// resource "aws_iot_topicrule" "rule" {
+///   name        = "MyRule"
+///   description = "Example rule"
+///   enabled     = true
+///   sql         = "SELECT * FROM 'topic/test'"
+///   sql_version = "2016-03-23"
+///   sns {
+///     message_format = "RAW"
+///     role_arn       = role.arn
+///     target_arn     = aws_sns_topic.mytopic.arn
+///   }
+///   error_action = {
+///     sns = {
+///       message_format = "RAW"
+///       role_arn       = role.arn
+///       target_arn     = aws_sns_topic.myerrortopic.arn
+///     }
+///   }
+/// }
+/// resource "aws_sns_topic" "mytopic" {
+///   name = "mytopic"
+/// }
+/// resource "aws_sns_topic" "myerrortopic" {
+///   name = "myerrortopic"
+/// }
+/// resource "aws_iam_role" "myrole" {
+///   name               = "myrole"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicy" "mypolicy" {
+///   name   = "mypolicy"
+///   role   = aws_iam_role.myrole.id
+///   policy = data.aws_iam_getpolicydocument.mypolicy.json
 /// }
 /// ```
 /// ```java
@@ -328,12 +388,14 @@ import 'topic_rule_state.dart';
 /// import com.pulumi.aws.iot.inputs.TopicRuleErrorActionSnsArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
 /// import com.pulumi.aws.iam.RolePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -491,7 +553,7 @@ class TopicRule extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> elasticsearch;
   /// Specifies whether the rule is enabled.
   late final pulumi.Output<bool> enabled;
-  /// Configuration block with error action to be associated with the rule. See the documentation for `cloudwatch_alarm`, `cloudwatch_logs`, `cloudwatch_metric`, `dynamodb`, `dynamodbv2`, `elasticsearch`, `firehose`, `http`, `iot_analytics`, `iot_events`, `kafka`, `kinesis`, `lambda`, `republish`, `s3`, `sns`, `sqs`, `step_functions`, `timestream` configuration blocks for further configuration details.
+  /// Configuration block with error action to be associated with the rule. See the documentation for `cloudwatchAlarm`, `cloudwatchLogs`, `cloudwatchMetric`, `dynamodb`, `dynamodbv2`, `elasticsearch`, `firehose`, `http`, `iotAnalytics`, `iotEvents`, `kafka`, `kinesis`, `lambda`, `republish`, `s3`, `sns`, `sqs`, `stepFunctions`, `timestream` configuration blocks for further configuration details.
   late final pulumi.Output<TopicRuleErrorAction?> errorAction;
   late final pulumi.Output<List<Map<String, dynamic>>?> firehoses;
   late final pulumi.Output<List<Map<String, dynamic>>?> https;
@@ -513,9 +575,9 @@ class TopicRule extends pulumi.CustomResource {
   late final pulumi.Output<String> sqlVersion;
   late final pulumi.Output<List<Map<String, dynamic>>?> sqs;
   late final pulumi.Output<List<Map<String, dynamic>>?> stepFunctions;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<List<Map<String, dynamic>>?> timestreams;
 

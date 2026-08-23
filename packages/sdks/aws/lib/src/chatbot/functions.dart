@@ -58,6 +58,19 @@ import 'get_slack_workspace_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_chatbot_getslackworkspace" "example" {
+///   slack_team_name = "abc"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +79,8 @@ import 'get_slack_workspace_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.chatbot.ChatbotFunctions;
 /// import com.pulumi.aws.chatbot.inputs.GetSlackWorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

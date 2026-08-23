@@ -13,9 +13,9 @@ class OrganizationalUnitState {
   final pulumi.Input<String>? name;
   /// ID of the parent organizational unit, which may be the root
   final pulumi.Input<String>? parentId;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [OrganizationalUnitState].
@@ -23,8 +23,8 @@ class OrganizationalUnitState {
   /// [arn] ARN of the organizational unit
   /// [name] The name for the organizational unit
   /// [parentId] ID of the parent organizational unit, which may be the root
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const OrganizationalUnitState({
     this.accounts,
     this.arn,
@@ -56,4 +56,3 @@ class OrganizationalUnitState {
     );
   }
 }
-

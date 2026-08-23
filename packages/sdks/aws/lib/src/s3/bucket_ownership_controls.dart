@@ -74,7 +74,7 @@ import 'bucket_ownership_controls_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketOwnershipControls(ctx, "example", &s3.BucketOwnershipControlsArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Rule: &s3.BucketOwnershipControlsRuleArgs{
 /// 				ObjectOwnership: pulumi.String("BucketOwnerPreferred"),
 /// 			},
@@ -84,6 +84,25 @@ import 'bucket_ownership_controls_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// resource "aws_s3_bucketownershipcontrols" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   rule = {
+///     object_ownership = "BucketOwnerPreferred"
+///   }
 /// }
 /// ```
 /// ```java
@@ -97,8 +116,8 @@ import 'bucket_ownership_controls_state.dart';
 /// import com.pulumi.aws.s3.BucketOwnershipControls;
 /// import com.pulumi.aws.s3.BucketOwnershipControlsArgs;
 /// import com.pulumi.aws.s3.inputs.BucketOwnershipControlsRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -141,6 +160,18 @@ import 'bucket_ownership_controls_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `bucket` (String) Name of the bucket.
+///
+/// #### Optional
+///
+/// * `accountId` (String) Account ID where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import S3 Bucket Ownership Controls using S3 Bucket name. For example:
 ///

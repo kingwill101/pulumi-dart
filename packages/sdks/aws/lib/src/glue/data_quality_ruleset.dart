@@ -64,6 +64,20 @@ import 'data_quality_ruleset_target_table.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_dataqualityruleset" "example" {
+///   name    = "example"
+///   ruleset = "Rules = [Completeness \"colA\" between 0.4 and 0.8]"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +86,8 @@ import 'data_quality_ruleset_target_table.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.glue.DataQualityRuleset;
 /// import com.pulumi.aws.glue.DataQualityRulesetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -164,6 +178,21 @@ import 'data_quality_ruleset_target_table.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_dataqualityruleset" "example" {
+///   name        = "example"
+///   description = "example"
+///   ruleset     = "Rules = [Completeness \"colA\" between 0.4 and 0.8]"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -172,8 +201,8 @@ import 'data_quality_ruleset_target_table.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.glue.DataQualityRuleset;
 /// import com.pulumi.aws.glue.DataQualityRulesetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -275,6 +304,23 @@ import 'data_quality_ruleset_target_table.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_dataqualityruleset" "example" {
+///   name    = "example"
+///   ruleset = "Rules = [Completeness \"colA\" between 0.4 and 0.8]"
+///   tags = {
+///     "hello" = "world"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -283,8 +329,8 @@ import 'data_quality_ruleset_target_table.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.glue.DataQualityRuleset;
 /// import com.pulumi.aws.glue.DataQualityRulesetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -317,7 +363,7 @@ import 'data_quality_ruleset_target_table.dart';
 /// ```
 ///
 ///
-/// ### With target_table
+/// ### With targetTable
 ///
 ///
 /// ```typescript
@@ -391,6 +437,24 @@ import 'data_quality_ruleset_target_table.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_dataqualityruleset" "example" {
+///   name    = "example"
+///   ruleset = "Rules = [Completeness \"colA\" between 0.4 and 0.8]"
+///   target_table = {
+///     database_name = exampleAwsGlueCatalogDatabase.name
+///     table_name    = exampleAwsGlueCatalogTable.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -400,8 +464,8 @@ import 'data_quality_ruleset_target_table.dart';
 /// import com.pulumi.aws.glue.DataQualityRuleset;
 /// import com.pulumi.aws.glue.DataQualityRulesetArgs;
 /// import com.pulumi.aws.glue.inputs.DataQualityRulesetTargetTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -462,11 +526,11 @@ class DataQualityRuleset extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// A Data Quality Definition Language (DQDL) ruleset. For more information, see the AWS Glue developer guide.
   late final pulumi.Output<String> ruleset;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// A Configuration block specifying a target table associated with the data quality ruleset. See `target_table` below.
+  /// A Configuration block specifying a target table associated with the data quality ruleset. See `targetTable` below.
   late final pulumi.Output<DataQualityRulesetTargetTable?> targetTable;
 
   /// Creates a new [DataQualityRuleset].

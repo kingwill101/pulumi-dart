@@ -113,7 +113,7 @@ import 'application_version_state.dart';
 /// 			return err
 /// 		}
 /// 		defaultBucketObjectv2, err := s3.NewBucketObjectv2(ctx, "default", &s3.BucketObjectv2Args{
-/// 			Bucket: _default.ID(),
+/// 			Bucket: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Key:    pulumi.String("beanstalk/go-v1.zip"),
 /// 			Source: pulumi.NewFileAsset("go-v1.zip"),
 /// 		})
@@ -131,7 +131,7 @@ import 'application_version_state.dart';
 /// 			Name:        pulumi.String("tf-test-version-label"),
 /// 			Application: pulumi.Any("tf-test-name"),
 /// 			Description: pulumi.String("application version"),
-/// 			Bucket:      _default.ID(),
+/// 			Bucket:      _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Key:         defaultBucketObjectv2.Key,
 /// 		})
 /// 		if err != nil {
@@ -139,6 +139,35 @@ import 'application_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "default" {
+///   bucket = "tftest.applicationversion.bucket"
+/// }
+/// resource "aws_s3_bucketobjectv2" "default" {
+///   bucket = aws_s3_bucket.default.id
+///   key    = "beanstalk/go-v1.zip"
+///   source = fileAsset("go-v1.zip")
+/// }
+/// resource "aws_elasticbeanstalk_application" "default" {
+///   name        = "tf-test-name"
+///   description = "tf-test-desc"
+/// }
+/// resource "aws_elasticbeanstalk_applicationversion" "default" {
+///   name        = "tf-test-version-label"
+///   application = "tf-test-name"
+///   description = "application version"
+///   bucket      = aws_s3_bucket.default.id
+///   key         = aws_s3_bucketobjectv2.default.key
 /// }
 /// ```
 /// ```java
@@ -156,8 +185,8 @@ import 'application_version_state.dart';
 /// import com.pulumi.aws.elasticbeanstalk.ApplicationVersion;
 /// import com.pulumi.aws.elasticbeanstalk.ApplicationVersionArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -208,7 +237,7 @@ import 'application_version_state.dart';
 ///       bucket: ${default.id}
 ///       key: beanstalk/go-v1.zip
 ///       source:
-///         fn::FileAsset: go-v1.zip
+///         fn::fileAsset: go-v1.zip
 ///   defaultApplication:
 ///     type: aws:elasticbeanstalk:Application
 ///     name: default
@@ -246,9 +275,9 @@ class ApplicationVersion extends pulumi.CustomResource {
   late final pulumi.Output<bool?> process;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of tags for the Elastic Beanstalk Application Version. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of tags for the Elastic Beanstalk Application Version. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ApplicationVersion].

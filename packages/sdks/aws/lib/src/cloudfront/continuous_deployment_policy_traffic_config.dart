@@ -5,16 +5,16 @@ import 'continuous_deployment_policy_traffic_config_single_header_config.dart';
 import 'continuous_deployment_policy_traffic_config_single_weight_config.dart';
 
 class ContinuousDeploymentPolicyTrafficConfig {
-  /// Determines which HTTP requests are sent to the staging distribution. See `single_header_config`.
+  /// Determines which HTTP requests are sent to the staging distribution. See `singleHeaderConfig`.
   final pulumi.Input<ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfig>? singleHeaderConfig;
-  /// Contains the percentage of traffic to send to the staging distribution. See `single_weight_config`.
+  /// Contains the percentage of traffic to send to the staging distribution. See `singleWeightConfig`.
   final pulumi.Input<ContinuousDeploymentPolicyTrafficConfigSingleWeightConfig>? singleWeightConfig;
   /// Type of traffic configuration. Valid values are `SingleWeight` and `SingleHeader`.
   final pulumi.Input<String> type;
 
   /// Creates a new [ContinuousDeploymentPolicyTrafficConfig].
-  /// [singleHeaderConfig] Determines which HTTP requests are sent to the staging distribution. See `single_header_config`.
-  /// [singleWeightConfig] Contains the percentage of traffic to send to the staging distribution. See `single_weight_config`.
+  /// [singleHeaderConfig] Determines which HTTP requests are sent to the staging distribution. See `singleHeaderConfig`.
+  /// [singleWeightConfig] Contains the percentage of traffic to send to the staging distribution. See `singleWeightConfig`.
   /// [type] Type of traffic configuration. Valid values are `SingleWeight` and `SingleHeader`.
   const ContinuousDeploymentPolicyTrafficConfig({
     this.singleHeaderConfig,
@@ -38,4 +38,3 @@ class ContinuousDeploymentPolicyTrafficConfig {
     );
   }
 }
-

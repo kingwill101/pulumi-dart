@@ -14,20 +14,20 @@ class RoutingProfileState {
   final pulumi.Input<String>? description;
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   final pulumi.Input<String>? instanceId;
-  /// One or more `media_concurrencies` blocks that specify the channels that agents can handle in the Contact Control Panel (CCP) for this Routing Profile. The `media_concurrencies` block is documented below.
+  /// One or more `mediaConcurrencies` blocks that specify the channels that agents can handle in the Contact Control Panel (CCP) for this Routing Profile. The `mediaConcurrencies` block is documented below.
   final pulumi.Input<List<RoutingProfileMediaConcurrency>>? mediaConcurrencies;
   /// Specifies the name of the Routing Profile.
   final pulumi.Input<String>? name;
-  /// One or more `queue_configs` blocks that specify the inbound queues associated with the routing profile. If no queue is added, the agent only can make outbound calls. The `queue_configs` block is documented below.
+  /// One or more `queueConfigs` blocks that specify the inbound queues associated with the routing profile. If no queue is added, the agent only can make outbound calls. The `queueConfigs` block is documented below.
   final pulumi.Input<List<RoutingProfileQueueConfig>>? queueConfigs;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// Identifier for the Routing Profile.
   final pulumi.Input<String>? routingProfileId;
   /// Tags to apply to the Routing Profile. If configured with a provider
-  /// `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [RoutingProfileState].
@@ -35,13 +35,13 @@ class RoutingProfileState {
   /// [defaultOutboundQueueId] Specifies the default outbound queue for the Routing Profile.
   /// [description] Specifies the description of the Routing Profile.
   /// [instanceId] Specifies the identifier of the hosting Amazon Connect Instance.
-  /// [mediaConcurrencies] One or more `media_concurrencies` blocks that specify the channels that agents can handle in the Contact Control Panel (CCP) for this Routing Profile. The `media_concurrencies` block is documented below.
+  /// [mediaConcurrencies] One or more `mediaConcurrencies` blocks that specify the channels that agents can handle in the Contact Control Panel (CCP) for this Routing Profile. The `mediaConcurrencies` block is documented below.
   /// [name] Specifies the name of the Routing Profile.
-  /// [queueConfigs] One or more `queue_configs` blocks that specify the inbound queues associated with the routing profile. If no queue is added, the agent only can make outbound calls. The `queue_configs` block is documented below.
+  /// [queueConfigs] One or more `queueConfigs` blocks that specify the inbound queues associated with the routing profile. If no queue is added, the agent only can make outbound calls. The `queueConfigs` block is documented below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routingProfileId] Identifier for the Routing Profile.
   /// [tags] Tags to apply to the Routing Profile. If configured with a provider
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const RoutingProfileState({
     this.arn,
     this.defaultOutboundQueueId,
@@ -88,4 +88,3 @@ class RoutingProfileState {
     );
   }
 }
-

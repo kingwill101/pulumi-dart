@@ -24,7 +24,7 @@ class GetVpcEndpointServiceResult {
   final String privateDnsName;
   /// Private DNS names assigned to the VPC endpoint service.
   final List<String> privateDnsNames;
-  /// (**Deprecated**) Region of the endpoint service. Use `service_region` instead.
+  /// (**Deprecated**) Region of the endpoint service. Use `serviceRegion` instead.
   final String region;
   final String? service;
   /// ID of the endpoint service.
@@ -52,7 +52,7 @@ class GetVpcEndpointServiceResult {
   /// [owner] AWS account ID of the service owner or `amazon`.
   /// [privateDnsName] Private DNS name for the service.
   /// [privateDnsNames] Private DNS names assigned to the VPC endpoint service.
-  /// [region] (**Deprecated**) Region of the endpoint service. Use `service_region` instead.
+  /// [region] (**Deprecated**) Region of the endpoint service. Use `serviceRegion` instead.
   /// [service] Optional.
   /// [serviceId] ID of the endpoint service.
   /// [serviceName] Required.
@@ -135,4 +135,3 @@ class GetVpcEndpointServiceResult {
     );
   }
 }
-

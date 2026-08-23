@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiKeyState {
   /// ID of the associated AppSync API
   final pulumi.Input<String>? apiId;
+  /// ID of the API key.
   final pulumi.Input<String>? apiKeyId;
   /// API key description. Defaults to "Managed by Pulumi".
   final pulumi.Input<String>? description;
@@ -18,7 +19,7 @@ class ApiKeyState {
 
   /// Creates a new [ApiKeyState].
   /// [apiId] ID of the associated AppSync API
-  /// [apiKeyId] Optional.
+  /// [apiKeyId] ID of the API key.
   /// [description] API key description. Defaults to "Managed by Pulumi".
   /// [expires] RFC3339 string representation of the expiry date. Rounded down to nearest hour. By default, it is 7 days from the date of creation.
   /// [key] API key
@@ -54,4 +55,3 @@ class ApiKeyState {
     );
   }
 }
-

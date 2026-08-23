@@ -44,4 +44,3 @@ class GetPublicIpv4PoolsArgs {
     );
   }
 }
-

@@ -2,26 +2,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gcm_channel_args.dart';
 import 'gcm_channel_state.dart';
 
-/// Provides a Pinpoint GCM Channel resource.
+/// Provides an End User Messaging GCM Channel resource.
 ///
 /// &gt; **Note:** Credentials (Service Account JSON and API Key) will be stored in the raw state as plain-text.
 /// ## Import
 ///
-/// Using `pulumi import`, import Pinpoint GCM Channel using the `application-id`. For example:
+/// Using `pulumi import`, import End User Messaging GCM Channel using the `application-id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:pinpoint/gcmChannel:GcmChannel gcm application-id
 /// ```
 class GcmChannel extends pulumi.CustomResource {
-  /// Platform credential API key from Google.
+  /// Platform credential API key from Google. Conflicts with `serviceJson`.
   late final pulumi.Output<String?> apiKey;
-  /// The application ID.
+  /// Application ID.
   late final pulumi.Output<String> applicationId;
+  /// Default authentication method used for GCM. Valid values: `KEY`, `TOKEN`. Defaults to `KEY`.
   late final pulumi.Output<String?> defaultAuthenticationMethod;
   /// Whether the channel is enabled or disabled. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+  /// Service Account JSON from Google to use with the GCM API. Conflicts with `apiKey`.
   late final pulumi.Output<String?> serviceJson;
 
   /// Creates a new [GcmChannel].

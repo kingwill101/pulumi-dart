@@ -16,11 +16,11 @@ class MulticastDomainState {
   final pulumi.Input<String>? region;
   /// Whether to enable support for statically configuring multicast group sources for the EC2 Transit Gateway Multicast Domain. Valid values: `disable`, `enable`. Default value: `disable`.
   final pulumi.Input<String>? staticSourcesSupport;
-  /// Key-value tags for the EC2 Transit Gateway Multicast Domain. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the EC2 Transit Gateway Multicast Domain. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// EC2 Transit Gateway identifier. The EC2 Transit Gateway must have `multicast_support` enabled.
+  /// EC2 Transit Gateway identifier. The EC2 Transit Gateway must have `multicastSupport` enabled.
   final pulumi.Input<String>? transitGatewayId;
 
   /// Creates a new [MulticastDomainState].
@@ -30,9 +30,9 @@ class MulticastDomainState {
   /// [ownerId] Identifier of the AWS account that owns the EC2 Transit Gateway Multicast Domain.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [staticSourcesSupport] Whether to enable support for statically configuring multicast group sources for the EC2 Transit Gateway Multicast Domain. Valid values: `disable`, `enable`. Default value: `disable`.
-  /// [tags] Key-value tags for the EC2 Transit Gateway Multicast Domain. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  /// [transitGatewayId] EC2 Transit Gateway identifier. The EC2 Transit Gateway must have `multicast_support` enabled.
+  /// [tags] Key-value tags for the EC2 Transit Gateway Multicast Domain. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [transitGatewayId] EC2 Transit Gateway identifier. The EC2 Transit Gateway must have `multicastSupport` enabled.
   const MulticastDomainState({
     this.arn,
     this.autoAcceptSharedAssociations,
@@ -73,4 +73,3 @@ class MulticastDomainState {
     );
   }
 }
-

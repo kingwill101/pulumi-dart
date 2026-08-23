@@ -10,7 +10,7 @@ import 'service_service_registries.dart';
 import 'service_state.dart';
 import 'service_volume_configuration.dart';
 
-/// &gt; **Note:** To prevent a race condition during service deletion, make sure to set `depends_on` to the related `aws.iam.RolePolicy`; otherwise, the policy may be destroyed too soon and the ECS service will then get stuck in the `DRAINING` state.
+/// &gt; **Note:** To prevent a race condition during service deletion, make sure to set `dependsOn` to the related `aws.iam.RolePolicy`; otherwise, the policy may be destroyed too soon and the ECS service will then get stuck in the `DRAINING` state.
 ///
 /// Provides an ECS service - effectively a task that is expected to run until an error occurs or a user terminates it (typically a webserver or a database).
 ///
@@ -166,6 +166,37 @@ import 'service_volume_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_service" "mongo" {
+///   depends_on      = [foo]
+///   name            = "mongodb"
+///   cluster         = fooAwsEcsCluster.id
+///   task_definition = mongoAwsEcsTaskDefinition.arn
+///   desired_count   = 3
+///   iam_role        = fooAwsIamRole.arn
+///   ordered_placement_strategies {
+///     type  = "binpack"
+///     field = "cpu"
+///   }
+///   load_balancers {
+///     target_group_arn = fooAwsLbTargetGroup.arn
+///     container_name   = "mongo"
+///     container_port   = 8080
+///   }
+///   placement_constraints {
+///     type       = "memberOf"
+///     expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -178,8 +209,8 @@ import 'service_volume_configuration.dart';
 /// import com.pulumi.aws.ecs.inputs.ServiceLoadBalancerArgs;
 /// import com.pulumi.aws.ecs.inputs.ServicePlacementConstraintArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -295,6 +326,19 @@ import 'service_volume_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_service" "example" {
+///   desired_count = 2
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -303,8 +347,8 @@ import 'service_volume_configuration.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecs.Service;
 /// import com.pulumi.aws.ecs.ServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -397,6 +441,22 @@ import 'service_volume_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_service" "bar" {
+///   name                = "bar"
+///   cluster             = foo.id
+///   task_definition     = barAwsEcsTaskDefinition.arn
+///   scheduling_strategy = "DAEMON"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -405,8 +465,8 @@ import 'service_volume_configuration.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecs.Service;
 /// import com.pulumi.aws.ecs.ServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -523,6 +583,25 @@ import 'service_volume_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_service" "example" {
+///   name    = "example"
+///   cluster = exampleAwsEcsCluster.id
+///   alarms = {
+///     enable      = true
+///     rollback    = true
+///     alarm_names = [exampleAwsCloudwatchMetricAlarm.alarmName]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -532,8 +611,8 @@ import 'service_volume_configuration.dart';
 /// import com.pulumi.aws.ecs.Service;
 /// import com.pulumi.aws.ecs.ServiceArgs;
 /// import com.pulumi.aws.ecs.inputs.ServiceAlarmsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -643,6 +722,23 @@ import 'service_volume_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_service" "example" {
+///   name    = "example"
+///   cluster = exampleAwsEcsCluster.id
+///   deployment_controller = {
+///     type = "EXTERNAL"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -652,8 +748,8 @@ import 'service_volume_configuration.dart';
 /// import com.pulumi.aws.ecs.Service;
 /// import com.pulumi.aws.ecs.ServiceArgs;
 /// import com.pulumi.aws.ecs.inputs.ServiceDeploymentControllerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -766,6 +862,25 @@ import 'service_volume_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_service" "example" {
+///   name    = "example"
+///   cluster = exampleAwsEcsCluster.id
+///   deployment_configuration = {
+///     strategy = "BLUE_GREEN"
+///   }
+///   sigint_rollback       = true
+///   wait_for_steady_state = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -775,8 +890,8 @@ import 'service_volume_configuration.dart';
 /// import com.pulumi.aws.ecs.Service;
 /// import com.pulumi.aws.ecs.ServiceArgs;
 /// import com.pulumi.aws.ecs.inputs.ServiceDeploymentConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -846,7 +961,7 @@ import 'service_volume_configuration.dart';
 ///         "strategy": "LINEAR",
 ///         "bake_time_in_minutes": "10",
 ///         "linear_configuration": {
-///             "step_percent": 25,
+///             "step_percent": float(25),
 ///             "step_bake_time_in_minutes": "5",
 ///         },
 ///     })
@@ -906,6 +1021,28 @@ import 'service_volume_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_service" "example" {
+///   name    = "example"
+///   cluster = exampleAwsEcsCluster.id
+///   deployment_configuration = {
+///     strategy             = "LINEAR"
+///     bake_time_in_minutes = 10
+///     linear_configuration = {
+///       step_percent              = 25
+///       step_bake_time_in_minutes = 5
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -916,8 +1053,8 @@ import 'service_volume_configuration.dart';
 /// import com.pulumi.aws.ecs.ServiceArgs;
 /// import com.pulumi.aws.ecs.inputs.ServiceDeploymentConfigurationArgs;
 /// import com.pulumi.aws.ecs.inputs.ServiceDeploymentConfigurationLinearConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -992,7 +1129,7 @@ import 'service_volume_configuration.dart';
 ///         "strategy": "CANARY",
 ///         "bake_time_in_minutes": "15",
 ///         "canary_configuration": {
-///             "canary_percent": 10,
+///             "canary_percent": float(10),
 ///             "canary_bake_time_in_minutes": "5",
 ///         },
 ///     })
@@ -1052,6 +1189,28 @@ import 'service_volume_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_service" "example" {
+///   name    = "example"
+///   cluster = exampleAwsEcsCluster.id
+///   deployment_configuration = {
+///     strategy             = "CANARY"
+///     bake_time_in_minutes = 15
+///     canary_configuration = {
+///       canary_percent              = 10
+///       canary_bake_time_in_minutes = 5
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1062,8 +1221,8 @@ import 'service_volume_configuration.dart';
 /// import com.pulumi.aws.ecs.ServiceArgs;
 /// import com.pulumi.aws.ecs.inputs.ServiceDeploymentConfigurationArgs;
 /// import com.pulumi.aws.ecs.inputs.ServiceDeploymentConfigurationCanaryConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1175,6 +1334,22 @@ import 'service_volume_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_service" "example" {
+///   force_new_deployment = true
+///   triggers = {
+///     "redeployment" = "plantimestamp()"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1183,8 +1358,8 @@ import 'service_volume_configuration.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecs.Service;
 /// import com.pulumi.aws.ecs.ServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1215,7 +1390,371 @@ import 'service_volume_configuration.dart';
 /// ```
 ///
 ///
+/// ### Service Connect with Access Logs
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const exampleLogGroup = new aws.cloudwatch.LogGroup("example", {name: "/ecs/example/service-connect"});
+/// const current = aws.getRegion({});
+/// const example = new aws.ecs.Service("example", {
+///     name: "example",
+///     cluster: exampleAwsEcsCluster.id,
+///     taskDefinition: exampleAwsEcsTaskDefinition.arn,
+///     desiredCount: 1,
+///     serviceConnectConfiguration: {
+///         enabled: true,
+///         namespace: exampleAwsServiceDiscoveryHttpNamespace.arn,
+///         logConfiguration: {
+///             logDriver: "awslogs",
+///             options: {
+///                 "awslogs-group": exampleLogGroup.name,
+///                 "awslogs-region": current.then(current => current.region),
+///                 "awslogs-stream-prefix": "service-connect",
+///             },
+///         },
+///         accessLogConfiguration: {
+///             format: "TEXT",
+///             includeQueryParameters: "ENABLED",
+///         },
+///         services: [{
+///             portName: "http",
+///             discoveryName: "example",
+///             clientAlias: {
+///                 dnsName: "example",
+///                 port: 8080,
+///             },
+///         }],
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example_log_group = aws.cloudwatch.LogGroup("example", name="/ecs/example/service-connect")
+/// current = aws.get_region()
+/// example = aws.ecs.Service("example",
+///     name="example",
+///     cluster=example_aws_ecs_cluster["id"],
+///     task_definition=example_aws_ecs_task_definition["arn"],
+///     desired_count=1,
+///     service_connect_configuration={
+///         "enabled": True,
+///         "namespace": example_aws_service_discovery_http_namespace["arn"],
+///         "log_configuration": {
+///             "log_driver": "awslogs",
+///             "options": {
+///                 "awslogs-group": example_log_group.name,
+///                 "awslogs-region": current.region,
+///                 "awslogs-stream-prefix": "service-connect",
+///             },
+///         },
+///         "access_log_configuration": {
+///             "format": "TEXT",
+///             "include_query_parameters": "ENABLED",
+///         },
+///         "services": [{
+///             "port_name": "http",
+///             "discovery_name": "example",
+///             "client_alias": {
+///                 "dnsName": "example",
+///                 "port": 8080,
+///             },
+///         }],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleLogGroup = new Aws.CloudWatch.LogGroup("example", new()
+///     {
+///         Name = "/ecs/example/service-connect",
+///     });
+///
+///     var current = Aws.GetRegion.Invoke();
+///
+///     var example = new Aws.Ecs.Service("example", new()
+///     {
+///         Name = "example",
+///         Cluster = exampleAwsEcsCluster.Id,
+///         TaskDefinition = exampleAwsEcsTaskDefinition.Arn,
+///         DesiredCount = 1,
+///         ServiceConnectConfiguration = new Aws.Ecs.Inputs.ServiceServiceConnectConfigurationArgs
+///         {
+///             Enabled = true,
+///             Namespace = exampleAwsServiceDiscoveryHttpNamespace.Arn,
+///             LogConfiguration = new Aws.Ecs.Inputs.ServiceServiceConnectConfigurationLogConfigurationArgs
+///             {
+///                 LogDriver = "awslogs",
+///                 Options =
+///                 {
+///                     { "awslogs-group", exampleLogGroup.Name },
+///                     { "awslogs-region", current.Apply(getRegionResult => getRegionResult.Region) },
+///                     { "awslogs-stream-prefix", "service-connect" },
+///                 },
+///             },
+///             AccessLogConfiguration = new Aws.Ecs.Inputs.ServiceServiceConnectConfigurationAccessLogConfigurationArgs
+///             {
+///                 Format = "TEXT",
+///                 IncludeQueryParameters = "ENABLED",
+///             },
+///             Services = new[]
+///             {
+///                 new Aws.Ecs.Inputs.ServiceServiceConnectConfigurationServiceArgs
+///                 {
+///                     PortName = "http",
+///                     DiscoveryName = "example",
+///                     ClientAlias =
+///                     {
+///                         { "dnsName", "example" },
+///                         { "port", 8080 },
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/cloudwatch"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ecs"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		exampleLogGroup, err := cloudwatch.NewLogGroup(ctx, "example", &cloudwatch.LogGroupArgs{
+/// 			Name: pulumi.String("/ecs/example/service-connect"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		current, err := aws.GetRegion(ctx, &aws.GetRegionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = ecs.NewService(ctx, "example", &ecs.ServiceArgs{
+/// 			Name:           pulumi.String("example"),
+/// 			Cluster:        pulumi.Any(exampleAwsEcsCluster.Id),
+/// 			TaskDefinition: pulumi.Any(exampleAwsEcsTaskDefinition.Arn),
+/// 			DesiredCount:   pulumi.Int(1),
+/// 			ServiceConnectConfiguration: &ecs.ServiceServiceConnectConfigurationArgs{
+/// 				Enabled:   pulumi.Bool(true),
+/// 				Namespace: pulumi.Any(exampleAwsServiceDiscoveryHttpNamespace.Arn),
+/// 				LogConfiguration: &ecs.ServiceServiceConnectConfigurationLogConfigurationArgs{
+/// 					LogDriver: pulumi.String("awslogs"),
+/// 					Options: pulumi.StringMap{
+/// 						"awslogs-group":         exampleLogGroup.Name,
+/// 						"awslogs-region":        pulumi.String(current.Region),
+/// 						"awslogs-stream-prefix": pulumi.String("service-connect"),
+/// 					},
+/// 				},
+/// 				AccessLogConfiguration: &ecs.ServiceServiceConnectConfigurationAccessLogConfigurationArgs{
+/// 					Format:                 pulumi.String("TEXT"),
+/// 					IncludeQueryParameters: pulumi.String("ENABLED"),
+/// 				},
+/// 				Services: ecs.ServiceServiceConnectConfigurationServiceArray{
+/// 					&ecs.ServiceServiceConnectConfigurationServiceArgs{
+/// 						PortName:      pulumi.String("http"),
+/// 						DiscoveryName: pulumi.String("example"),
+/// 						ClientAlias: ecs.ServiceServiceConnectConfigurationServiceClientAliasArray{
+/// 							DnsName: "example",
+/// 							Port:    8080,
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+///
+/// resource "aws_ecs_service" "example" {
+///   name            = "example"
+///   cluster         = exampleAwsEcsCluster.id
+///   task_definition = exampleAwsEcsTaskDefinition.arn
+///   desired_count   = 1
+///   service_connect_configuration = {
+///     enabled   = true
+///     namespace = exampleAwsServiceDiscoveryHttpNamespace.arn
+///     log_configuration = {
+///       log_driver = "awslogs"
+///       options = {
+///         "awslogs-group"         = aws_cloudwatch_loggroup.example.name
+///         "awslogs-region"        = data.aws_getregion.current.region
+///         "awslogs-stream-prefix" = "service-connect"
+///       }
+///     }
+///     access_log_configuration = {
+///       format                   = "TEXT"
+///       include_query_parameters = "ENABLED"
+///     }
+///     services = [{
+///       "portName"      = "http"
+///       "discoveryName" = "example"
+///       "clientAlias" = {
+///         "dnsName" = "example"
+///         "port"    = 8080
+///       }
+///     }]
+///   }
+/// }
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name = "/ecs/example/service-connect"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.cloudwatch.LogGroup;
+/// import com.pulumi.aws.cloudwatch.LogGroupArgs;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetRegionArgs;
+/// import com.pulumi.aws.ecs.Service;
+/// import com.pulumi.aws.ecs.ServiceArgs;
+/// import com.pulumi.aws.ecs.inputs.ServiceServiceConnectConfigurationArgs;
+/// import com.pulumi.aws.ecs.inputs.ServiceServiceConnectConfigurationLogConfigurationArgs;
+/// import com.pulumi.aws.ecs.inputs.ServiceServiceConnectConfigurationAccessLogConfigurationArgs;
+/// import com.pulumi.aws.ecs.inputs.ServiceServiceConnectConfigurationServiceArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var exampleLogGroup = new LogGroup("exampleLogGroup", LogGroupArgs.builder()
+///             .name("/ecs/example/service-connect")
+///             .build());
+///
+///         final var current = AwsFunctions.getRegion(GetRegionArgs.builder()
+///             .build());
+///
+///         var example = new Service("example", ServiceArgs.builder()
+///             .name("example")
+///             .cluster(exampleAwsEcsCluster.id())
+///             .taskDefinition(exampleAwsEcsTaskDefinition.arn())
+///             .desiredCount(1)
+///             .serviceConnectConfiguration(ServiceServiceConnectConfigurationArgs.builder()
+///                 .enabled(true)
+///                 .namespace(exampleAwsServiceDiscoveryHttpNamespace.arn())
+///                 .logConfiguration(ServiceServiceConnectConfigurationLogConfigurationArgs.builder()
+///                     .logDriver("awslogs")
+///                     .options(Map.ofEntries(
+///                         Map.entry("awslogs-group", exampleLogGroup.name()),
+///                         Map.entry("awslogs-region", current.region()),
+///                         Map.entry("awslogs-stream-prefix", "service-connect")
+///                     ))
+///                     .build())
+///                 .accessLogConfiguration(ServiceServiceConnectConfigurationAccessLogConfigurationArgs.builder()
+///                     .format("TEXT")
+///                     .includeQueryParameters("ENABLED")
+///                     .build())
+///                 .services(ServiceServiceConnectConfigurationServiceArgs.builder()
+///                     .portName("http")
+///                     .discoveryName("example")
+///                     .clientAlias(com.pulumi.aws.ecs.inputs.ServiceServiceConnectConfigurationServiceClientAliasArgs.builder()
+///                         .dnsName("example")
+///                         .port(8080)
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:ecs:Service
+///     properties:
+///       name: example
+///       cluster: ${exampleAwsEcsCluster.id}
+///       taskDefinition: ${exampleAwsEcsTaskDefinition.arn}
+///       desiredCount: 1
+///       serviceConnectConfiguration:
+///         enabled: true
+///         namespace: ${exampleAwsServiceDiscoveryHttpNamespace.arn}
+///         logConfiguration:
+///           logDriver: awslogs
+///           options:
+///             awslogs-group: ${exampleLogGroup.name}
+///             awslogs-region: ${current.region}
+///             awslogs-stream-prefix: service-connect
+///         accessLogConfiguration:
+///           format: TEXT
+///           includeQueryParameters: ENABLED
+///         services:
+///           - portName: http
+///             discoveryName: example
+///             clientAlias:
+///               dnsName: example
+///               port: 8080
+///   exampleLogGroup:
+///     type: aws:cloudwatch:LogGroup
+///     name: example
+///     properties:
+///       name: /ecs/example/service-connect
+/// variables:
+///   current:
+///     fn::invoke:
+///       function: aws:getRegion
+///       arguments: {}
+/// ```
+///
+///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `cluster` (String) The name of the cluster.
+/// * `name` (String) The name of the service.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import ECS services using the `name` together with ecs cluster `name`. For example:
 ///
@@ -1229,7 +1768,7 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// ECS automatically redistributes tasks within a service across Availability Zones (AZs) to mitigate the risk of impaired application availability due to underlying infrastructure failures and task lifecycle activities. The valid values are `ENABLED` and `DISABLED`. When creating a new service, if no value is specified, it defaults to `ENABLED` if the service is compatible with AvailabilityZoneRebalancing. When updating an existing service, if no value is specified it defaults to the existing service's AvailabilityZoneRebalancing value. If the service never had an AvailabilityZoneRebalancing value set, Amazon ECS treats this as `DISABLED`.
   late final pulumi.Output<String> availabilityZoneRebalancing;
-  /// Capacity provider strategies to use for the service. Can be one or more. Updating this argument requires `force_new_deployment = true`. See below. Conflicts with `launch_type`.
+  /// Capacity provider strategies to use for the service. Can be one or more. Updating this argument requires `forceNewDeployment = true`. See below. Conflicts with `launchType`.
   late final pulumi.Output<List<Map<String, dynamic>>?> capacityProviderStrategies;
   /// ARN of an ECS cluster.
   late final pulumi.Output<String> cluster;
@@ -1251,14 +1790,14 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<bool?> enableExecuteCommand;
   /// Enable to delete a service even if it wasn't scaled down to zero tasks. It's only necessary to use this if the service uses the `REPLICA` scheduling strategy.
   late final pulumi.Output<bool?> forceDelete;
-  /// Enable to force a new task deployment of the service. This can be used to update tasks to use a newer Docker image with same image/tag combination (e.g., `myimage:latest`), roll Fargate tasks onto a newer platform version, or immediately deploy `ordered_placement_strategy` and `placement_constraints` updates.
+  /// Enable to force a new task deployment of the service. This can be used to update tasks to use a newer Docker image with same image/tag combination (e.g., `myimage:latest`), roll Fargate tasks onto a newer platform version, or immediately deploy `orderedPlacementStrategy` and `placementConstraints` updates.
   /// When using the forceNewDeployment property you also need to configure the triggers property.
   late final pulumi.Output<bool?> forceNewDeployment;
   /// Seconds to ignore failing load balancer health checks on newly instantiated tasks to prevent premature shutdown, up to 2147483647. Only valid for services configured to use load balancers.
   late final pulumi.Output<int?> healthCheckGracePeriodSeconds;
   /// ARN of the IAM role that allows Amazon ECS to make calls to your load balancer on your behalf. This parameter is required if you are using a load balancer with your service, but only if your task definition does not use the `awsvpc` network mode. If using `awsvpc` network mode, do not specify this role. If your account has already created the Amazon ECS service-linked role, that role is used by default for your service unless you specify a role here.
   late final pulumi.Output<String> iamRole;
-  /// Launch type on which to run your service. The valid values are `EC2`, `FARGATE`, and `EXTERNAL`. Defaults to `EC2`. Conflicts with `capacity_provider_strategy`.
+  /// Launch type on which to run your service. The valid values are `EC2`, `FARGATE`, and `EXTERNAL`. Defaults to `EC2`. Conflicts with `capacityProviderStrategy`.
   late final pulumi.Output<String> launchType;
   /// Configuration block for load balancers. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> loadBalancers;
@@ -1268,11 +1807,11 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Network configuration for the service. This parameter is required for task definitions that use the `awsvpc` network mode to receive their own Elastic Network Interface, and it is not supported for other network modes. See below.
   late final pulumi.Output<ServiceNetworkConfiguration?> networkConfiguration;
-  /// Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order of precedence. Updates to this configuration will take effect next task deployment unless `force_new_deployment` is enabled. The maximum number of `ordered_placement_strategy` blocks is `5`. See below.
+  /// Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order of precedence. Updates to this configuration will take effect next task deployment unless `forceNewDeployment` is enabled. The maximum number of `orderedPlacementStrategy` blocks is `5`. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> orderedPlacementStrategies;
-  /// Rules that are taken into consideration during task placement. Updates to this configuration will take effect next task deployment unless `force_new_deployment` is enabled. Maximum number of `placement_constraints` is `10`. See below.
+  /// Rules that are taken into consideration during task placement. Updates to this configuration will take effect next task deployment unless `forceNewDeployment` is enabled. Maximum number of `placementConstraints` is `10`. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> placementConstraints;
-  /// Platform version on which to run your service. Only applicable for `launch_type` set to `FARGATE`. Defaults to `LATEST`. More information about Fargate platform versions can be found in the [AWS ECS User Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
+  /// Platform version on which to run your service. Only applicable for `launchType` set to `FARGATE`. Defaults to `LATEST`. More information about Fargate platform versions can be found in the [AWS ECS User Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
   late final pulumi.Output<String> platformVersion;
   /// Whether to propagate the tags from the task definition or the service to the tasks. The valid values are `SERVICE` and `TASK_DEFINITION`.
   late final pulumi.Output<String?> propagateTags;
@@ -1282,13 +1821,13 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String?> schedulingStrategy;
   /// ECS Service Connect configuration for this service to discover and connect to services, and be discovered by, and connected from, other services within a namespace. See below.
   late final pulumi.Output<ServiceServiceConnectConfiguration?> serviceConnectConfiguration;
-  /// Service discovery registries for the service. The maximum number of `service_registries` blocks is `1`. See below.
+  /// Service discovery registries for the service. The maximum number of `serviceRegistries` blocks is `1`. See below.
   late final pulumi.Output<ServiceServiceRegistries?> serviceRegistries;
-  /// Whether to enable graceful termination of deployments using SIGINT signals. When enabled, allows customers to safely cancel an in-progress deployment and automatically trigger a rollback to the previous stable state. Defaults to `false`. Only applicable when using `ECS` deployment controller and requires `wait_for_steady_state = true`.
+  /// Whether to enable graceful termination of deployments using SIGINT signals. When enabled, allows customers to safely cancel an in-progress deployment and automatically trigger a rollback to the previous stable state. Defaults to `false`. Only applicable when using `ECS` deployment controller and requires `waitForSteadyState = true`.
   late final pulumi.Output<bool?> sigintRollback;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Family and revision (`family:revision`) or full ARN of the task definition that you want to run in your service. Required unless using the `EXTERNAL` deployment controller. If a revision is not specified, the latest `ACTIVE` revision is used.
   late final pulumi.Output<String?> taskDefinition;
@@ -1296,7 +1835,7 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> triggers;
   /// Configuration for a volume specified in the task definition as a volume that is configured at launch time. Currently, the only supported volume type is an Amazon EBS volume. See below.
   late final pulumi.Output<ServiceVolumeConfiguration?> volumeConfiguration;
-  /// The VPC Lattice configuration for your service that allows Lattice to connect, secure, and monitor your service across multiple accounts and VPCs. See below.
+  /// VPC Lattice configuration for your service that allows Lattice to connect, secure, and monitor your service across multiple accounts and VPCs. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> vpcLatticeConfigurations;
   /// If `true`, this provider will wait for the service to reach a steady state (like [`aws ecs wait services-stable`](https://docs.aws.amazon.com/cli/latest/reference/ecs/wait/services-stable.html)) before continuing. Default `false`.
   late final pulumi.Output<bool?> waitForSteadyState;

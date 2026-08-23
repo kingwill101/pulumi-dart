@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_challenge_config_immunity_time_property.dart';
 
 class WebAclChallengeConfig {
-  /// Defines custom immunity time. See `immunity_time_property` below for details.
+  /// Defines custom immunity time. See `immunityTimeProperty` below for details.
   final pulumi.Input<WebAclChallengeConfigImmunityTimeProperty>? immunityTimeProperty;
 
   /// Creates a new [WebAclChallengeConfig].
-  /// [immunityTimeProperty] Defines custom immunity time. See `immunity_time_property` below for details.
+  /// [immunityTimeProperty] Defines custom immunity time. See `immunityTimeProperty` below for details.
   const WebAclChallengeConfig({
     this.immunityTimeProperty,
   });
@@ -25,4 +25,3 @@ class WebAclChallengeConfig {
     );
   }
 }
-

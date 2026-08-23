@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_query_engine_configuration_serverless_configuration_auth_configuration.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationServerlessConfiguration {
-  /// Configurations for authentication to a Redshift Serverless. See `auth_configuration` block for details.
+  /// Configurations for authentication to a Redshift Serverless. See `authConfiguration` block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationServerlessConfigurationAuthConfiguration> authConfiguration;
   /// ARN of the Amazon Redshift workgroup.
   final pulumi.Input<String> workgroupArn;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationServerlessConfiguration].
-  /// [authConfiguration] Configurations for authentication to a Redshift Serverless. See `auth_configuration` block for details.
+  /// [authConfiguration] Configurations for authentication to a Redshift Serverless. See `authConfiguration` block for details.
   /// [workgroupArn] ARN of the Amazon Redshift workgroup.
   const AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationServerlessConfiguration({
     required this.authConfiguration,
@@ -31,4 +31,3 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
     );
   }
 }
-

@@ -137,6 +137,34 @@ import 'distribution_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_imagebuilder_distributionconfiguration" "example" {
+///   name = "example"
+///   distributions {
+///     ami_distribution_configuration = {
+///       ami_tags = {
+///         "CostCenter" = "IT"
+///       }
+///       name = "example-{{ imagebuilder:buildDate }}"
+///       launch_permission = {
+///         user_ids = ["123456789012"]
+///       }
+///     }
+///     launch_template_configurations {
+///       launch_template_id = "lt-0aaa1bcde2ff3456"
+///     }
+///     region = "us-east-1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -148,8 +176,9 @@ import 'distribution_configuration_state.dart';
 /// import com.pulumi.aws.imagebuilder.inputs.DistributionConfigurationDistributionArgs;
 /// import com.pulumi.aws.imagebuilder.inputs.DistributionConfigurationDistributionAmiDistributionConfigurationArgs;
 /// import com.pulumi.aws.imagebuilder.inputs.DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.imagebuilder.inputs.DistributionConfigurationDistributionLaunchTemplateConfigurationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -232,9 +261,9 @@ class DistributionConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags for the distribution configuration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the distribution configuration. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [DistributionConfiguration].

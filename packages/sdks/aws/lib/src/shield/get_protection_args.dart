@@ -11,7 +11,7 @@ class GetProtectionArgs {
   final pulumi.Input<String>? protectionId;
   /// ARN (Amazon Resource Name) of the resource being protected.
   ///
-  /// &gt; Exactly one of `protection_id` or `resource_arn` is required.
+  /// &gt; Exactly one of `protectionId` or `resourceArn` is required.
   final pulumi.Input<String>? resourceArn;
 
   /// Creates a new [GetProtectionArgs].
@@ -36,4 +36,3 @@ class GetProtectionArgs {
     );
   }
 }
-

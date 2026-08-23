@@ -9,7 +9,7 @@ import 'smb_file_share_state.dart';
 ///
 /// ### Active Directory Authentication
 ///
-/// &gt; **NOTE:** The gateway must have already joined the Active Directory domain prior to SMB file share creationE.g., via "SMB Settings" in the AWS Storage Gateway console or `smb_active_directory_settings` in the `aws.storagegateway.Gateway` resource.
+/// &gt; **NOTE:** The gateway must have already joined the Active Directory domain prior to SMB file share creationE.g., via "SMB Settings" in the AWS Storage Gateway console or `smbActiveDirectorySettings` in the `aws.storagegateway.Gateway` resource.
 ///
 ///
 /// ```typescript
@@ -74,6 +74,22 @@ import 'smb_file_share_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_storagegateway_smbfileshare" "example" {
+///   authentication = "ActiveDirectory"
+///   gateway_arn    = exampleAwsStoragegatewayGateway.arn
+///   location_arn   = exampleAwsS3Bucket.arn
+///   role_arn       = exampleAwsIamRole.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +98,8 @@ import 'smb_file_share_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.storagegateway.SmbFileShare;
 /// import com.pulumi.aws.storagegateway.SmbFileShareArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -119,7 +135,7 @@ import 'smb_file_share_state.dart';
 ///
 /// ### Guest Authentication
 ///
-/// &gt; **NOTE:** The gateway must have already had the SMB guest password set prior to SMB file share creationE.g., via "SMB Settings" in the AWS Storage Gateway console or `smb_guest_password` in the `aws.storagegateway.Gateway` resource.
+/// &gt; **NOTE:** The gateway must have already had the SMB guest password set prior to SMB file share creationE.g., via "SMB Settings" in the AWS Storage Gateway console or `smbGuestPassword` in the `aws.storagegateway.Gateway` resource.
 ///
 ///
 /// ```typescript
@@ -184,6 +200,22 @@ import 'smb_file_share_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_storagegateway_smbfileshare" "example" {
+///   authentication = "GuestAccess"
+///   gateway_arn    = exampleAwsStoragegatewayGateway.arn
+///   location_arn   = exampleAwsS3Bucket.arn
+///   role_arn       = exampleAwsIamRole.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -192,8 +224,8 @@ import 'smb_file_share_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.storagegateway.SmbFileShare;
 /// import com.pulumi.aws.storagegateway.SmbFileShareArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -245,15 +277,15 @@ class SmbFileShare extends pulumi.CustomResource {
   late final pulumi.Output<String?> auditDestinationArn;
   /// The authentication method that users use to access the file share. Defaults to `ActiveDirectory`. Valid values: `ActiveDirectory`, `GuestAccess`.
   late final pulumi.Output<String?> authentication;
-  /// The region of the S3 buck used by the file share. Required when specifying a `vpc_endpoint_dns_name`.
+  /// The region of the S3 buck used by the file share. Required when specifying a `vpcEndpointDnsName`.
   late final pulumi.Output<String?> bucketRegion;
-  /// Refresh cache information. see `cache_attributes` Block for more details.
+  /// Refresh cache information. see `cacheAttributes` Block for more details.
   late final pulumi.Output<SmbFileShareCacheAttributes?> cacheAttributes;
   /// The case of an object name in an Amazon S3 bucket. For `ClientSpecified`, the client determines the case sensitivity. For `CaseSensitive`, the gateway determines the case sensitivity. The default value is `ClientSpecified`.
   late final pulumi.Output<String?> caseSensitivity;
   /// The default [storage class](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateNFSFileShare.html#StorageGateway-CreateNFSFileShare-request-DefaultStorageClass) for objects put into an Amazon S3 bucket by the file gateway. Defaults to `S3_STANDARD`.
   late final pulumi.Output<String?> defaultStorageClass;
-  /// The name of the file share. Must be set if an S3 prefix name is set in `location_arn`.
+  /// The name of the file share. Must be set if an S3 prefix name is set in `locationArn`.
   late final pulumi.Output<String> fileShareName;
   /// ID of the SMB File Share.
   late final pulumi.Output<String> fileshareId;
@@ -265,7 +297,7 @@ class SmbFileShare extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> invalidUserLists;
   /// Boolean value if `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3. Defaults to `false`.
   late final pulumi.Output<bool?> kmsEncrypted;
-  /// Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kms_encrypted` is true.
+  /// Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kmsEncrypted` is true.
   late final pulumi.Output<String?> kmsKeyArn;
   /// The ARN of the backed storage used for storing file data.
   late final pulumi.Output<String> locationArn;
@@ -287,11 +319,11 @@ class SmbFileShare extends pulumi.CustomResource {
   late final pulumi.Output<String> roleArn;
   /// Set this value to `true` to enable ACL (access control list) on the SMB fileshare. Set it to `false` to map file and directory permissions to the POSIX permissions. This setting applies only to `ActiveDirectory` authentication type.
   late final pulumi.Output<bool?> smbAclEnabled;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// **Note:** If you have previously included a `cache_attributes` block in your configuration, removing it will not reset the refresh cache value and the previous value will remain. You must explicitly set a new value to change it.
+  /// **Note:** If you have previously included a `cacheAttributes` block in your configuration, removing it will not reset the refresh cache value and the previous value will remain. You must explicitly set a new value to change it.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// A list of users in the Active Directory that are allowed to access the file share. If you need to specify an Active directory group, add '@' before the name of the group. It will be set on Allowed group in AWS console. Only valid if `authentication` is set to `ActiveDirectory`.
   late final pulumi.Output<List<String>?> validUserLists;

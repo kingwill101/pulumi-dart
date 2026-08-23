@@ -62,6 +62,19 @@ import 'get_resource_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkfirewall_getfirewall" "example" {
+///   arn = arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +83,8 @@ import 'get_resource_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkfirewall.NetworkfirewallFunctions;
 /// import com.pulumi.aws.networkfirewall.inputs.GetFirewallArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -152,6 +165,19 @@ import 'get_resource_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkfirewall_getfirewall" "example" {
+///   name = "Test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -160,8 +186,8 @@ import 'get_resource_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkfirewall.NetworkfirewallFunctions;
 /// import com.pulumi.aws.networkfirewall.inputs.GetFirewallArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -246,6 +272,20 @@ import 'get_resource_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkfirewall_getfirewall" "example" {
+///   arn  = arn
+///   name = "Test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -254,8 +294,8 @@ import 'get_resource_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkfirewall.NetworkfirewallFunctions;
 /// import com.pulumi.aws.networkfirewall.inputs.GetFirewallArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -355,6 +395,19 @@ Future<GetFirewallResult> getFirewall(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkfirewall_getfirewallpolicy" "example" {
+///   name = firewallPolicyName
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -363,8 +416,8 @@ Future<GetFirewallResult> getFirewall(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkfirewall.NetworkfirewallFunctions;
 /// import com.pulumi.aws.networkfirewall.inputs.GetFirewallPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -445,6 +498,19 @@ Future<GetFirewallResult> getFirewall(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkfirewall_getfirewallpolicy" "example" {
+///   arn = firewallPolicyArn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -453,8 +519,8 @@ Future<GetFirewallResult> getFirewall(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkfirewall.NetworkfirewallFunctions;
 /// import com.pulumi.aws.networkfirewall.inputs.GetFirewallPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -539,6 +605,20 @@ Future<GetFirewallResult> getFirewall(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkfirewall_getfirewallpolicy" "example" {
+///   arn  = firewallPolicyArn
+///   name = firewallPolicyName
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -547,8 +627,8 @@ Future<GetFirewallResult> getFirewall(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkfirewall.NetworkfirewallFunctions;
 /// import com.pulumi.aws.networkfirewall.inputs.GetFirewallPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -579,7 +659,7 @@ Future<GetFirewallResult> getFirewall(
 /// ```
 ///
 ///
-/// AWS Network Firewall does not allow multiple firewall policies with the same name to be created in an account. It is possible, however, to have multiple firewall policies available in a single account with identical `name` values but distinct `arn` values, e.g. firewall policies shared via a [Resource Access Manager (RAM) share][1]. In that case specifying `arn`, or `name` and `arn`, is recommended.
+/// AWS Network Firewall does not allow multiple firewall policies with the same name to be created in an account. It is possible, however, to have multiple firewall policies available in a single account with identical `name` values but distinct `arn` values, e.g. firewall policies shared via a Resource Access Manager (RAM) share. In that case specifying `arn`, or `name` and `arn`, is recommended.
 ///
 /// &gt; **Note:** If there are multiple firewall policies in an account with the same `name`, and `arn` is not specified, the default behavior will return the firewall policy with `name` that was created in the account.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkfirewall_get_firewall_policy_get_firewall_policy_args_doc}
@@ -651,6 +731,19 @@ Future<GetFirewallPolicyResult> getFirewallPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkfirewall_getresourcepolicy" "example" {
+///   resource_arn = resourcePolicyArn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -659,8 +752,8 @@ Future<GetFirewallPolicyResult> getFirewallPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkfirewall.NetworkfirewallFunctions;
 /// import com.pulumi.aws.networkfirewall.inputs.GetResourcePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

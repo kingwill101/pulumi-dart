@@ -71,6 +71,19 @@ import 'user_pool_web_authn_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpool" "pool" {
+///   name = "mypool"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +92,8 @@ import 'user_pool_web_authn_configuration.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cognito.UserPool;
 /// import com.pulumi.aws.cognito.UserPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -199,6 +212,28 @@ import 'user_pool_web_authn_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpool" "example" {
+///   mfa_configuration          = "ON"
+///   sms_authentication_message = "Your code is {####}"
+///   sms_configuration = {
+///     external_id    = "example"
+///     sns_caller_arn = exampleAwsIamRole.arn
+///     sns_region     = "us-east-1"
+///   }
+///   software_token_mfa_configuration = {
+///     enabled = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -209,8 +244,8 @@ import 'user_pool_web_authn_configuration.dart';
 /// import com.pulumi.aws.cognito.UserPoolArgs;
 /// import com.pulumi.aws.cognito.inputs.UserPoolSmsConfigurationArgs;
 /// import com.pulumi.aws.cognito.inputs.UserPoolSoftwareTokenMfaConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -359,6 +394,28 @@ import 'user_pool_web_authn_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpool" "test" {
+///   name = "mypool"
+///   account_recovery_setting = {
+///     recovery_mechanisms = [{
+///       "name"     = "verified_email"
+///       "priority" = 1
+///       }, {
+///       "name"     = "verified_phone_number"
+///       "priority" = 2
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -368,8 +425,9 @@ import 'user_pool_web_authn_configuration.dart';
 /// import com.pulumi.aws.cognito.UserPool;
 /// import com.pulumi.aws.cognito.UserPoolArgs;
 /// import com.pulumi.aws.cognito.inputs.UserPoolAccountRecoverySettingArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.cognito.inputs.UserPoolAccountRecoverySettingRecoveryMechanismArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -426,11 +484,11 @@ class UserPool extends pulumi.CustomResource {
   late final pulumi.Output<UserPoolAccountRecoverySetting?> accountRecoverySetting;
   /// Configuration block for creating a new user profile. Detailed below.
   late final pulumi.Output<UserPoolAdminCreateUserConfig> adminCreateUserConfig;
-  /// Attributes supported as an alias for this user pool. Valid values: `phone_number`, `email`, or `preferred_username`. Conflicts with `username_attributes`.
+  /// Attributes supported as an alias for this user pool. Valid values: `phoneNumber`, `email`, or `preferredUsername`. Conflicts with `usernameAttributes`.
   late final pulumi.Output<List<String>?> aliasAttributes;
   /// ARN of the user pool.
   late final pulumi.Output<String> arn;
-  /// Attributes to be auto-verified. Valid values: `email`, `phone_number`.
+  /// Attributes to be auto-verified. Valid values: `email`, `phoneNumber`.
   late final pulumi.Output<List<String>?> autoVerifiedAttributes;
   /// Date the user pool was created.
   late final pulumi.Output<String> creationDate;
@@ -444,11 +502,11 @@ class UserPool extends pulumi.CustomResource {
   late final pulumi.Output<String> domain;
   /// Configuration block for configuring email. Detailed below.
   late final pulumi.Output<UserPoolEmailConfiguration?> emailConfiguration;
-  /// Configuration block for configuring email Multi-Factor Authentication (MFA); requires at least 2 `account_recovery_setting` entries; requires an `email_configuration` configuration block. Effective only when `mfa_configuration` is `ON` or `OPTIONAL`. Detailed below.
+  /// Configuration block for configuring email Multi-Factor Authentication (MFA); requires at least 2 `accountRecoverySetting` entries; requires an `emailConfiguration` configuration block. Effective only when `mfaConfiguration` is `ON` or `OPTIONAL`. Detailed below.
   late final pulumi.Output<UserPoolEmailMfaConfiguration?> emailMfaConfiguration;
-  /// String representing the email verification message. Conflicts with `verification_message_template` configuration block `email_message` argument.
+  /// String representing the email verification message. Conflicts with `verificationMessageTemplate` configuration block `emailMessage` argument.
   late final pulumi.Output<String> emailVerificationMessage;
-  /// String representing the email verification subject. Conflicts with `verification_message_template` configuration block `email_subject` argument.
+  /// String representing the email verification subject. Conflicts with `verificationMessageTemplate` configuration block `emailSubject` argument.
   late final pulumi.Output<String> emailVerificationSubject;
   /// Endpoint name of the user pool. Example format: `cognito-idp.REGION.amazonaws.com/xxxx_yyyyy`
   late final pulumi.Output<String> endpoint;
@@ -458,7 +516,7 @@ class UserPool extends pulumi.CustomResource {
   late final pulumi.Output<UserPoolLambdaConfig?> lambdaConfig;
   /// Date the user pool was last modified.
   late final pulumi.Output<String> lastModifiedDate;
-  /// Multi-Factor Authentication (MFA) configuration for the User Pool. Defaults of `OFF`. Valid values are `OFF` (MFA Tokens are not required), `ON` (MFA is required for all users to sign in; requires at least one of `email_mfa_configuration`, `sms_configuration` or `software_token_mfa_configuration` to be configured), or `OPTIONAL` (MFA Will be required only for individual users who have MFA Enabled; requires at least one of `email_mfa_configuration`, `sms_configuration` or `software_token_mfa_configuration` to be configured).
+  /// Multi-Factor Authentication (MFA) configuration for the User Pool. Defaults of `OFF`. Valid values are `OFF` (MFA Tokens are not required), `ON` (MFA is required for all users to sign in; requires at least one of `emailMfaConfiguration`, `smsConfiguration` or `softwareTokenMfaConfiguration` to be configured), or `OPTIONAL` (MFA Will be required only for individual users who have MFA Enabled; requires at least one of `emailMfaConfiguration`, `smsConfiguration` or `softwareTokenMfaConfiguration` to be configured).
   late final pulumi.Output<String?> mfaConfiguration;
   /// Name of the user pool.
   late final pulumi.Output<String> name;
@@ -472,15 +530,15 @@ class UserPool extends pulumi.CustomResource {
   late final pulumi.Output<UserPoolSignInPolicy> signInPolicy;
   /// String representing the SMS authentication message. The Message must contain the `{####}` placeholder, which will be replaced with the code.
   late final pulumi.Output<String?> smsAuthenticationMessage;
-  /// Configuration block for Short Message Service (SMS) settings. Detailed below. These settings apply to SMS user verification and SMS Multi-Factor Authentication (MFA). SMS MFA is activated only when `mfa_configuration` is set to `ON` or `OPTIONAL` along with this block. Due to Cognito API restrictions, the SMS configuration cannot be removed without recreating the Cognito User Pool. For user data safety, this resource will ignore the removal of this configuration by disabling drift detection. To force resource recreation after this configuration has been applied, see the `taint` command.
+  /// Configuration block for Short Message Service (SMS) settings. Detailed below. These settings apply to SMS user verification and SMS Multi-Factor Authentication (MFA). SMS MFA is activated only when `mfaConfiguration` is set to `ON` or `OPTIONAL` along with this block. Due to Cognito API restrictions, the SMS configuration cannot be removed without recreating the Cognito User Pool. For user data safety, this resource will ignore the removal of this configuration by disabling drift detection. To force resource recreation after this configuration has been applied, see the `taint` command.
   late final pulumi.Output<UserPoolSmsConfiguration> smsConfiguration;
-  /// String representing the SMS verification message. Conflicts with `verification_message_template` configuration block `sms_message` argument.
+  /// String representing the SMS verification message. Conflicts with `verificationMessageTemplate` configuration block `smsMessage` argument.
   late final pulumi.Output<String> smsVerificationMessage;
-  /// Configuration block for software token Mult-Factor Authentication (MFA) settings. Effective only when `mfa_configuration` is `ON` or `OPTIONAL`. Detailed below.
+  /// Configuration block for software token Mult-Factor Authentication (MFA) settings. Effective only when `mfaConfiguration` is `ON` or `OPTIONAL`. Detailed below.
   late final pulumi.Output<UserPoolSoftwareTokenMfaConfiguration?> softwareTokenMfaConfiguration;
-  /// Map of tags to assign to the User Pool. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the User Pool. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration block for user attribute update settings. Detailed below.
   late final pulumi.Output<UserPoolUserAttributeUpdateSettings?> userAttributeUpdateSettings;
@@ -488,7 +546,7 @@ class UserPool extends pulumi.CustomResource {
   late final pulumi.Output<UserPoolUserPoolAddOns?> userPoolAddOns;
   /// The user pool [feature plan](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-sign-in-feature-plans.html), or tier. Valid values: `LITE`, `ESSENTIALS`, `PLUS`.
   late final pulumi.Output<String> userPoolTier;
-  /// Whether email addresses or phone numbers can be specified as usernames when a user signs up. Conflicts with `alias_attributes`.
+  /// Whether email addresses or phone numbers can be specified as usernames when a user signs up. Conflicts with `aliasAttributes`.
   late final pulumi.Output<List<String>?> usernameAttributes;
   /// Configuration block for username configuration. Detailed below.
   late final pulumi.Output<UserPoolUsernameConfiguration> usernameConfiguration;

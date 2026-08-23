@@ -137,7 +137,7 @@ import 'get_group_result.dart';
 /// 			return err
 /// 		}
 /// 		_, err = autoscaling.NewNotification(ctx, "slack_notifications", &autoscaling.NotificationArgs{
-/// 			GroupNames: interface{}(groups.Names),
+/// 			GroupNames: toPulumiStringArray(groups.Names),
 /// 			Notifications: autoscaling.NotificationTypeArray{
 /// 				autoscaling.NotificationTypeInstanceLaunch,
 /// 				autoscaling.NotificationTypeInstanceTerminate,
@@ -152,6 +152,39 @@ import 'get_group_result.dart';
 /// 		return nil
 /// 	})
 /// }
+/// func toPulumiStringArray(arr []string) pulumi.StringArray {
+/// 	var pulumiArr pulumi.StringArray
+/// 	for _, v := range arr {
+/// 		pulumiArr = append(pulumiArr, pulumi.String(v))
+/// 	}
+/// 	return pulumiArr
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_autoscaling_getamiids" "groups" {
+///   filters {
+///     name   = "tag:Team"
+///     values = ["Pets"]
+///   }
+///   filters {
+///     name   = "tag-key"
+///     values = ["Environment"]
+///   }
+/// }
+///
+/// resource "aws_autoscaling_notification" "slack_notifications" {
+///   group_names   = data.aws_autoscaling_getamiids.groups.names
+///   notifications = ["autoscaling:EC2_INSTANCE_LAUNCH", "autoscaling:EC2_INSTANCE_TERMINATE", "autoscaling:EC2_INSTANCE_LAUNCH_ERROR", "autoscaling:EC2_INSTANCE_TERMINATE_ERROR"]
+///   topic_arn     = "TOPIC ARN"
+/// }
 /// ```
 /// ```java
 /// package generated_program;
@@ -161,10 +194,11 @@ import 'get_group_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.autoscaling.AutoscalingFunctions;
 /// import com.pulumi.aws.autoscaling.inputs.GetAmiIdsArgs;
+/// import com.pulumi.aws.autoscaling.inputs.GetAmiIdsFilterArgs;
 /// import com.pulumi.aws.autoscaling.Notification;
 /// import com.pulumi.aws.autoscaling.NotificationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -296,6 +330,19 @@ Future<GetAmiIdsResult> getAmiIds(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_autoscaling_getgroup" "foo" {
+///   name = "foo"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -304,8 +351,8 @@ Future<GetAmiIdsResult> getAmiIds(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.autoscaling.AutoscalingFunctions;
 /// import com.pulumi.aws.autoscaling.inputs.GetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

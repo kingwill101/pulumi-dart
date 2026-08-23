@@ -10,6 +10,7 @@ class ContributorManagedInsightRuleState {
   final pulumi.Input<String>? region;
   /// ARN of an Amazon Web Services resource that has managed Contributor Insights rules.
   final pulumi.Input<String>? resourceArn;
+  /// Name of the Contributor Insights rule that contains data for the specified AWS resource.
   final pulumi.Input<String>? ruleName;
   final pulumi.Input<String>? state;
   final pulumi.Input<Map<String, String>>? tags;
@@ -23,7 +24,7 @@ class ContributorManagedInsightRuleState {
   /// [arn] ARN of the Contributor Managed Insight Rule.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] ARN of an Amazon Web Services resource that has managed Contributor Insights rules.
-  /// [ruleName] Optional.
+  /// [ruleName] Name of the Contributor Insights rule that contains data for the specified AWS resource.
   /// [state] Optional.
   /// [tags] Optional.
   /// [tagsAll] Optional.
@@ -65,4 +66,3 @@ class ContributorManagedInsightRuleState {
     );
   }
 }
-

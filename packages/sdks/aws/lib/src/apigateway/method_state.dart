@@ -18,12 +18,9 @@ class MethodState {
   final pulumi.Input<String>? operationName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Map of the API models used for the request's content type
-  /// where key is the content type (e.g., `application/json`)
-  /// and value is either `Error`, `Empty` (built-in models) or `aws.apigateway.Model`'s `name`.
+  /// Map of the API models used for the request's content type where key is the content type (e.g., `application/json`) and value is either `Error`, `Empty` (built-in models) or `aws.apigateway.Model`'s `name`.
   final pulumi.Input<Map<String, String>>? requestModels;
-  /// Map of request parameters (from the path, query string and headers) that should be passed to the integration. The boolean value indicates whether the parameter is required (`true`) or optional (`false`).
-  /// For example: `request_parameters = {"method.request.header.X-Some-Header" = true "method.request.querystring.some-query-param" = true}` would define that the header `X-Some-Header` and the query string `some-query-param` must be provided in the request.
+  /// Map of request parameters (from the path, query string and headers) that should be passed to the integration. The boolean value indicates whether the parameter is required (`true`) or optional (`false`). For example: `requestParameters = {"method.request.header.X-Some-Header" = true "method.request.querystring.some-query-param" = true}` would define that the header `X-Some-Header` and the query string `some-query-param` must be provided in the request.
   final pulumi.Input<Map<String, bool>>? requestParameters;
   /// ID of a `aws.apigateway.RequestValidator`
   final pulumi.Input<String>? requestValidatorId;
@@ -40,8 +37,8 @@ class MethodState {
   /// [httpMethod] HTTP Method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`)
   /// [operationName] Function name that will be given to the method when generating an SDK through API Gateway. If omitted, API Gateway will generate a function name based on the resource path and HTTP verb.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [requestModels] Map of the API models used for the request's content type
-  /// [requestParameters] Map of request parameters (from the path, query string and headers) that should be passed to the integration. The boolean value indicates whether the parameter is required (`true`) or optional (`false`).
+  /// [requestModels] Map of the API models used for the request's content type where key is the content type (e.g., `application/json`) and value is either `Error`, `Empty` (built-in models) or `aws.apigateway.Model`'s `name`.
+  /// [requestParameters] Map of request parameters (from the path, query string and headers) that should be passed to the integration. The boolean value indicates whether the parameter is required (`true`) or optional (`false`). For example: `requestParameters = {"method.request.header.X-Some-Header" = true "method.request.querystring.some-query-param" = true}` would define that the header `X-Some-Header` and the query string `some-query-param` must be provided in the request.
   /// [requestValidatorId] ID of a `aws.apigateway.RequestValidator`
   /// [resourceId] API resource ID
   /// [restApi] ID of the associated REST API
@@ -94,4 +91,3 @@ class MethodState {
     );
   }
 }
-

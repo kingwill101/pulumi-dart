@@ -9,6 +9,8 @@ import 'get_configuration_args.dart';
 import 'get_configuration_result.dart';
 import 'get_kafka_version_args.dart';
 import 'get_kafka_version_result.dart';
+import 'get_topic_args.dart';
+import 'get_topic_result.dart';
 import 'get_vpc_connection_args.dart';
 import 'get_vpc_connection_result.dart';
 
@@ -66,6 +68,19 @@ import 'get_vpc_connection_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_msk_getbootstrapbrokers" "example" {
+///   cluster_arn = exampleAwsMskCluster.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +89,8 @@ import 'get_vpc_connection_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.msk.MskFunctions;
 /// import com.pulumi.aws.msk.inputs.GetBootstrapBrokersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -171,6 +186,19 @@ Future<GetBootstrapBrokersResult> getBootstrapBrokers(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_msk_getbrokernodes" "example" {
+///   cluster_arn = exampleAwsMskCluster.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +207,8 @@ Future<GetBootstrapBrokersResult> getBootstrapBrokers(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.msk.MskFunctions;
 /// import com.pulumi.aws.msk.inputs.GetBrokerNodesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -278,6 +306,19 @@ Future<GetBrokerNodesResult> getBrokerNodes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_msk_getcluster" "example" {
+///   cluster_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -286,8 +327,8 @@ Future<GetBrokerNodesResult> getBrokerNodes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.msk.MskFunctions;
 /// import com.pulumi.aws.msk.inputs.GetClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -383,6 +424,19 @@ Future<GetClusterResult> getCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_msk_getconfiguration" "example" {
+///   name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -391,8 +445,8 @@ Future<GetClusterResult> getCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.msk.MskFunctions;
 /// import com.pulumi.aws.msk.inputs.GetConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -520,6 +574,22 @@ Future<GetConfigurationResult> getConfiguration(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_msk_getkafkaversion" "preferred" {
+///   preferred_versions = ["2.4.1.1", "2.4.1", "2.2.1"]
+/// }
+/// data "aws_msk_getkafkaversion" "example" {
+///   version = "2.8.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -528,8 +598,8 @@ Future<GetConfigurationResult> getConfiguration(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.msk.MskFunctions;
 /// import com.pulumi.aws.msk.inputs.GetKafkaVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -586,6 +656,131 @@ Future<GetKafkaVersionResult> getKafkaVersion(
   return GetKafkaVersionResult.fromMap(result);
 }
 
+/// Get information on an Amazon MSK Topic.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.msk.getTopic({
+///     clusterArn: exampleAwsMskCluster.arn,
+///     name: "example",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.msk.get_topic(cluster_arn=example_aws_msk_cluster["arn"],
+///     name="example")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Msk.GetTopic.Invoke(new()
+///     {
+///         ClusterArn = exampleAwsMskCluster.Arn,
+///         Name = "example",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/msk"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := msk.LookupTopic(ctx, &msk.LookupTopicArgs{
+/// 			ClusterArn: exampleAwsMskCluster.Arn,
+/// 			Name:       "example",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_msk_gettopic" "example" {
+///   cluster_arn = exampleAwsMskCluster.arn
+///   name        = "example"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.msk.MskFunctions;
+/// import com.pulumi.aws.msk.inputs.GetTopicArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = MskFunctions.getTopic(GetTopicArgs.builder()
+///             .clusterArn(exampleAwsMskCluster.arn())
+///             .name("example")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:msk:getTopic
+///       arguments:
+///         clusterArn: ${exampleAwsMskCluster.arn}
+///         name: example
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_msk_get_topic_get_topic_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetTopicResult> getTopic(
+  GetTopicArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:msk/getTopic:getTopic',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetTopicResult.fromMap(result);
+}
+
 /// Get information on an Amazon MSK VPC Connection.
 ///
 /// ## Example Usage
@@ -640,6 +835,19 @@ Future<GetKafkaVersionResult> getKafkaVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_msk_getvpcconnection" "example" {
+///   arn = exampleAwsMskVpcConnection.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -648,8 +856,8 @@ Future<GetKafkaVersionResult> getKafkaVersion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.msk.MskFunctions;
 /// import com.pulumi.aws.msk.inputs.GetVpcConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -17,7 +17,7 @@ class ProtectionGroupArgs {
   final pulumi.Input<String> protectionGroupId;
   /// The resource type to include in the protection group. You must set this when you set `pattern` to BY_RESOURCE_TYPE and you must not set it for any other `pattern` setting.
   final pulumi.Input<String>? resourceType;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ProtectionGroupArgs].
@@ -26,7 +26,7 @@ class ProtectionGroupArgs {
   /// [pattern] The criteria to use to choose the protected resources for inclusion in the group.
   /// [protectionGroupId] The name of the protection group.
   /// [resourceType] The resource type to include in the protection group. You must set this when you set `pattern` to BY_RESOURCE_TYPE and you must not set it for any other `pattern` setting.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ProtectionGroupArgs({
     required this.aggregation,
     this.members,
@@ -58,4 +58,3 @@ class ProtectionGroupArgs {
     );
   }
 }
-

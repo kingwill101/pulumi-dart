@@ -123,6 +123,32 @@ import 'prepared_statement_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "test" {
+///   bucket        = "tf-test"
+///   force_destroy = true
+/// }
+/// resource "aws_athena_workgroup" "test" {
+///   name = "tf-test"
+/// }
+/// resource "aws_athena_database" "test" {
+///   name   = "example"
+///   bucket = aws_s3_bucket.test.bucket
+/// }
+/// resource "aws_athena_preparedstatement" "test" {
+///   name            = "tf_test"
+///   query_statement ="SELECT * FROM ${aws_athena_database.test.name} WHERE x = ?"
+///   workgroup       = aws_athena_workgroup.test.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -137,8 +163,8 @@ import 'prepared_statement_state.dart';
 /// import com.pulumi.aws.athena.DatabaseArgs;
 /// import com.pulumi.aws.athena.PreparedStatement;
 /// import com.pulumi.aws.athena.PreparedStatementArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

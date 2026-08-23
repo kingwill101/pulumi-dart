@@ -10,7 +10,7 @@ import 'assessment_scope.dart';
 class AssessmentState {
   /// Amazon Resource Name (ARN) of the assessment.
   final pulumi.Input<String>? arn;
-  /// Assessment report storage destination configuration. See `assessment_reports_destination` below.
+  /// Assessment report storage destination configuration. See `assessmentReportsDestination` below.
   final pulumi.Input<AssessmentAssessmentReportsDestination>? assessmentReportsDestination;
   /// Description of the assessment.
   final pulumi.Input<String>? description;
@@ -30,13 +30,13 @@ class AssessmentState {
   final pulumi.Input<AssessmentScope>? scope;
   /// Status of the assessment. Valid values are `ACTIVE` and `INACTIVE`.
   final pulumi.Input<String>? status;
-  /// A map of tags to assign to the assessment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the assessment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [AssessmentState].
   /// [arn] Amazon Resource Name (ARN) of the assessment.
-  /// [assessmentReportsDestination] Assessment report storage destination configuration. See `assessment_reports_destination` below.
+  /// [assessmentReportsDestination] Assessment report storage destination configuration. See `assessmentReportsDestination` below.
   /// [description] Description of the assessment.
   /// [frameworkId] Unique identifier of the framework the assessment will be created from.
   /// [name] Name of the assessment.
@@ -45,7 +45,7 @@ class AssessmentState {
   /// [rolesAlls] Complete list of all roles with access to the assessment. This includes both roles explicitly configured via the `roles` block, and any roles which have access to all Audit Manager assessments by default.
   /// [scope] Amazon Web Services accounts and services that are in scope for the assessment. See `scope` below.
   /// [status] Status of the assessment. Valid values are `ACTIVE` and `INACTIVE`.
-  /// [tags] A map of tags to assign to the assessment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the assessment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   const AssessmentState({
     this.arn,
@@ -96,4 +96,3 @@ class AssessmentState {
     );
   }
 }
-

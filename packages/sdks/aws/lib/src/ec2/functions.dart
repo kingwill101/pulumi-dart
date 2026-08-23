@@ -5,6 +5,8 @@ import 'get_ami_ids_result.dart';
 import 'get_ami_result.dart';
 import 'get_capacity_block_offering_args.dart';
 import 'get_capacity_block_offering_result.dart';
+import 'get_capacity_block_reservation_args.dart';
+import 'get_capacity_block_reservation_result.dart';
 import 'get_coip_pool_args.dart';
 import 'get_coip_pool_result.dart';
 import 'get_coip_pools_args.dart';
@@ -17,6 +19,8 @@ import 'get_eips_args.dart';
 import 'get_eips_result.dart';
 import 'get_elastic_ip_args.dart';
 import 'get_elastic_ip_result.dart';
+import 'get_hosts_args.dart';
+import 'get_hosts_result.dart';
 import 'get_instance_args.dart';
 import 'get_instance_result.dart';
 import 'get_instance_type_args.dart';
@@ -89,6 +93,10 @@ import 'get_security_groups_args.dart';
 import 'get_security_groups_result.dart';
 import 'get_serial_console_access_args.dart';
 import 'get_serial_console_access_result.dart';
+import 'get_service_link_virtual_interface_args.dart';
+import 'get_service_link_virtual_interface_result.dart';
+import 'get_service_link_virtual_interfaces_args.dart';
+import 'get_service_link_virtual_interfaces_result.dart';
 import 'get_spot_datafeed_subscription_args.dart';
 import 'get_spot_datafeed_subscription_result.dart';
 import 'get_spot_price_args.dart';
@@ -280,6 +288,34 @@ import 'get_vpn_gateway_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getami" "example" {
+///   executable_users = ["self"]
+///   most_recent      = true
+///   name_regex       = "^myami-[0-9]{3}"
+///   owners           = ["self"]
+///   filters {
+///     name   = "name"
+///     values = ["myami-*"]
+///   }
+///   filters {
+///     name   = "root-device-type"
+///     values = ["ebs"]
+///   }
+///   filters {
+///     name   = "virtualization-type"
+///     values = ["hvm"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -288,8 +324,9 @@ import 'get_vpn_gateway_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetAmiArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetAmiFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -448,6 +485,23 @@ Future<GetAmiResult> getAmi(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getamiids" "ubuntu" {
+///   owners = ["099720109477"]
+///   filters {
+///     name   = "name"
+///     values = ["ubuntu/images/ubuntu-*-*-amd64-server-*"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -456,8 +510,9 @@ Future<GetAmiResult> getAmi(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetAmiIdsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetAmiIdsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -578,6 +633,23 @@ Future<GetAmiIdsResult> getAmiIds(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getcapacityblockoffering" "example" {
+///   capacity_duration_hours = 24
+///   end_date_range          = "2024-05-30T15:04:05Z"
+///   instance_count          = 1
+///   instance_type           = "p4d.24xlarge"
+///   start_date_range        = "2024-04-28T15:04:05Z"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -586,8 +658,8 @@ Future<GetAmiIdsResult> getAmiIds(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetCapacityBlockOfferingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -637,6 +709,440 @@ Future<GetCapacityBlockOfferingResult> getCapacityBlockOffering(
   return GetCapacityBlockOfferingResult.fromMap(result);
 }
 
+/// Information about an existing EC2 Capacity Block reservation.
+///
+/// This data source returns only Capacity Reservations whose `reservationType` is `capacity-block`. Use the `aws.ec2.CapacityReservation` data source to look up On-Demand Capacity Reservations (ODCR).
+///
+/// At least one of `id` or `filter` must be specified. Filter combinations that match multiple Capacity Block reservations will return an error.
+///
+/// ## Example Usage
+///
+/// ### Lookup by ID
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.ec2.getCapacityBlockReservation({
+///     id: "cr-0123456789abcdef0",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.ec2.get_capacity_block_reservation(id="cr-0123456789abcdef0")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Ec2.GetCapacityBlockReservation.Invoke(new()
+///     {
+///         Id = "cr-0123456789abcdef0",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := ec2.LookupCapacityBlockReservation(ctx, &ec2.LookupCapacityBlockReservationArgs{
+/// 			Id: pulumi.StringRef("cr-0123456789abcdef0"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getcapacityblockreservation" "example" {
+///   id = "cr-0123456789abcdef0"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.ec2.Ec2Functions;
+/// import com.pulumi.aws.ec2.inputs.GetCapacityBlockReservationArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = Ec2Functions.getCapacityBlockReservation(GetCapacityBlockReservationArgs.builder()
+///             .id("cr-0123456789abcdef0")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:ec2:getCapacityBlockReservation
+///       arguments:
+///         id: cr-0123456789abcdef0
+/// ```
+///
+///
+/// ### Lookup by filter
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.ec2.getCapacityBlockReservation({
+///     filters: [
+///         {
+///             name: "instance-type",
+///             values: ["p4d.24xlarge"],
+///         },
+///         {
+///             name: "state",
+///             values: ["active"],
+///         },
+///     ],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.ec2.get_capacity_block_reservation(filters=[
+///     {
+///         "name": "instance-type",
+///         "values": ["p4d.24xlarge"],
+///     },
+///     {
+///         "name": "state",
+///         "values": ["active"],
+///     },
+/// ])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Ec2.GetCapacityBlockReservation.Invoke(new()
+///     {
+///         Filters = new[]
+///         {
+///             new Aws.Ec2.Inputs.GetCapacityBlockReservationFilterInputArgs
+///             {
+///                 Name = "instance-type",
+///                 Values = new[]
+///                 {
+///                     "p4d.24xlarge",
+///                 },
+///             },
+///             new Aws.Ec2.Inputs.GetCapacityBlockReservationFilterInputArgs
+///             {
+///                 Name = "state",
+///                 Values = new[]
+///                 {
+///                     "active",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := ec2.LookupCapacityBlockReservation(ctx, &ec2.LookupCapacityBlockReservationArgs{
+/// 			Filters: []ec2.GetCapacityBlockReservationFilter{
+/// 				{
+/// 					Name: "instance-type",
+/// 					Values: []string{
+/// 						"p4d.24xlarge",
+/// 					},
+/// 				},
+/// 				{
+/// 					Name: "state",
+/// 					Values: []string{
+/// 						"active",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getcapacityblockreservation" "example" {
+///   filters {
+///     name   = "instance-type"
+///     values = ["p4d.24xlarge"]
+///   }
+///   filters {
+///     name   = "state"
+///     values = ["active"]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.ec2.Ec2Functions;
+/// import com.pulumi.aws.ec2.inputs.GetCapacityBlockReservationArgs;
+/// import com.pulumi.aws.ec2.inputs.GetCapacityBlockReservationFilterArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = Ec2Functions.getCapacityBlockReservation(GetCapacityBlockReservationArgs.builder()
+///             .filters(
+///                 GetCapacityBlockReservationFilterArgs.builder()
+///                     .name("instance-type")
+///                     .values("p4d.24xlarge")
+///                     .build(),
+///                 GetCapacityBlockReservationFilterArgs.builder()
+///                     .name("state")
+///                     .values("active")
+///                     .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:ec2:getCapacityBlockReservation
+///       arguments:
+///         filters:
+///           - name: instance-type
+///             values:
+///               - p4d.24xlarge
+///           - name: state
+///             values:
+///               - active
+/// ```
+///
+///
+/// ### Lookup by tag
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.ec2.getCapacityBlockReservation({
+///     filters: [{
+///         name: "tag:Project",
+///         values: ["ml-training"],
+///     }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.ec2.get_capacity_block_reservation(filters=[{
+///     "name": "tag:Project",
+///     "values": ["ml-training"],
+/// }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Ec2.GetCapacityBlockReservation.Invoke(new()
+///     {
+///         Filters = new[]
+///         {
+///             new Aws.Ec2.Inputs.GetCapacityBlockReservationFilterInputArgs
+///             {
+///                 Name = "tag:Project",
+///                 Values = new[]
+///                 {
+///                     "ml-training",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := ec2.LookupCapacityBlockReservation(ctx, &ec2.LookupCapacityBlockReservationArgs{
+/// 			Filters: []ec2.GetCapacityBlockReservationFilter{
+/// 				{
+/// 					Name: "tag:Project",
+/// 					Values: []string{
+/// 						"ml-training",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getcapacityblockreservation" "example" {
+///   filters {
+///     name   = "tag:Project"
+///     values = ["ml-training"]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.ec2.Ec2Functions;
+/// import com.pulumi.aws.ec2.inputs.GetCapacityBlockReservationArgs;
+/// import com.pulumi.aws.ec2.inputs.GetCapacityBlockReservationFilterArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = Ec2Functions.getCapacityBlockReservation(GetCapacityBlockReservationArgs.builder()
+///             .filters(GetCapacityBlockReservationFilterArgs.builder()
+///                 .name("tag:Project")
+///                 .values("ml-training")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:ec2:getCapacityBlockReservation
+///       arguments:
+///         filters:
+///           - name: tag:Project
+///             values:
+///               - ml-training
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_capacity_block_reservation_get_capacity_block_reservation_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetCapacityBlockReservationResult> getCapacityBlockReservation(
+  GetCapacityBlockReservationArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:ec2/getCapacityBlockReservation:getCapacityBlockReservation',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetCapacityBlockReservationResult.fromMap(result);
+}
+
 /// Provides details about a specific EC2 Customer-Owned IP Pool.
 ///
 /// This data source can prove useful when a module accepts a coip pool id as
@@ -648,10 +1154,26 @@ Future<GetCapacityBlockOfferingResult> getCapacityBlockOffering(
 /// The following example returns a specific coip pool ID
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getcoippool" "selected" {
+///   id = var.coipPoolId
+/// }
+///
+/// variable "coipPoolId" {
+/// }
+/// ```
 /// ```yaml
 /// configuration:
 ///   coipPoolId:
-///     type: dynamic
+///     type: object
 /// variables:
 ///   selected:
 ///     fn::invoke:
@@ -729,9 +1251,25 @@ Future<GetCoipPoolResult> getCoipPool(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("foo", foo.Ids)
+/// 		ctx.Export("foo", pulumi.Any(foo.Ids))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getcoippools" "foo" {
+/// }
+///
+/// output "foo" {
+///   value = data.aws_ec2_getcoippools.foo.ids
 /// }
 /// ```
 /// ```java
@@ -742,8 +1280,8 @@ Future<GetCoipPoolResult> getCoipPool(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetCoipPoolsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -899,7 +1437,7 @@ Future<GetCoipPoolsResult> getCoipPools(
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpnConnection(ctx, "transit", &ec2.VpnConnectionArgs{
-/// 			VpnGatewayId:      main.ID(),
+/// 			VpnGatewayId:      main.ID().ToIDOutput().ToStringOutput(),
 /// 			CustomerGatewayId: pulumi.String(foo.Id),
 /// 			Type:              pulumi.String(foo.Type),
 /// 			StaticRoutesOnly:  pulumi.Bool(false),
@@ -911,6 +1449,33 @@ Future<GetCoipPoolsResult> getCoipPools(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getcustomergateway" "foo" {
+///   filters {
+///     name   = "tag:Name"
+///     values = ["foo-prod"]
+///   }
+/// }
+///
+/// resource "aws_ec2_vpngateway" "main" {
+///   vpc_id          = mainAwsVpc.id
+///   amazon_side_asn = 7224
+/// }
+/// resource "aws_ec2_vpnconnection" "transit" {
+///   vpn_gateway_id      = aws_ec2_vpngateway.main.id
+///   customer_gateway_id = data.aws_ec2_getcustomergateway.foo.id
+///   type                = data.aws_ec2_getcustomergateway.foo.type
+///   static_routes_only  = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -919,12 +1484,13 @@ Future<GetCoipPoolsResult> getCoipPools(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetCustomerGatewayArgs;
+/// import com.pulumi.aws.ec2.inputs.GetCustomerGatewayFilterArgs;
 /// import com.pulumi.aws.ec2.VpnGateway;
 /// import com.pulumi.aws.ec2.VpnGatewayArgs;
 /// import com.pulumi.aws.ec2.VpnConnection;
 /// import com.pulumi.aws.ec2.VpnConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1062,10 +1628,28 @@ Future<GetCustomerGatewayResult> getCustomerGateway(
 /// 			return err
 /// 		}
 /// 		_ = ec2.LookupDedicatedHostOutput(ctx, ec2.GetDedicatedHostOutputArgs{
-/// 			HostId: testDedicatedHost.ID(),
+/// 			HostId: testDedicatedHost.ID().ToIDOutput().ToStringOutput(),
 /// 		}, nil)
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getdedicatedhost" "test" {
+///   host_id = aws_ec2_dedicatedhost.test.id
+/// }
+///
+/// resource "aws_ec2_dedicatedhost" "test" {
+///   instance_type     = "c5.18xlarge"
+///   availability_zone = "us-west-2a"
 /// }
 /// ```
 /// ```java
@@ -1078,8 +1662,8 @@ Future<GetCustomerGatewayResult> getCustomerGateway(
 /// import com.pulumi.aws.ec2.DedicatedHostArgs;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetDedicatedHostArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1195,6 +1779,22 @@ Future<GetCustomerGatewayResult> getCustomerGateway(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getdedicatedhost" "test" {
+///   filters {
+///     name   = "instance-type"
+///     values = ["c5.18xlarge"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1203,8 +1803,9 @@ Future<GetCustomerGatewayResult> getCustomerGateway(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetDedicatedHostArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetDedicatedHostFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1315,7 +1916,7 @@ Future<GetDedicatedHostResult> getDedicatedHost(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := ec2.GetEips(ctx, &ec2.GetEipsArgs{
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"Env": "dev",
 /// 			},
 /// 		}, nil)
@@ -1328,6 +1929,30 @@ Future<GetDedicatedHostResult> getDedicatedHost(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_geteips" "example" {
+///   tags = {
+///     "Env" = "dev"
+///   }
+/// }
+///
+/// # VPC EIPs.
+/// output "allocationIds" {
+///   value = data.aws_ec2_geteips.example.allocation_ids
+/// }
+/// # EC2-Classic EIPs.
+/// output "publicIps" {
+///   value = data.aws_ec2_geteips.example.public_ips
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1336,8 +1961,8 @@ Future<GetDedicatedHostResult> getDedicatedHost(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetEipsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1443,6 +2068,19 @@ Future<GetEipsResult> getEips(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getelasticip" "byAllocationId" {
+///   id = "eipalloc-12345678"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1451,8 +2089,8 @@ Future<GetEipsResult> getEips(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetElasticIpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1556,6 +2194,22 @@ Future<GetEipsResult> getEips(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getelasticip" "byFilter" {
+///   filters {
+///     name   = "tag:Name"
+///     values = ["exampleNameTagValue"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1564,8 +2218,9 @@ Future<GetEipsResult> getEips(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetElasticIpArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetElasticIpFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1652,6 +2307,19 @@ Future<GetEipsResult> getEips(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getelasticip" "byPublicIp" {
+///   public_ip = "1.2.3.4"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1660,8 +2328,8 @@ Future<GetEipsResult> getEips(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetElasticIpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1740,7 +2408,7 @@ Future<GetEipsResult> getEips(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ec2.GetElasticIp(ctx, &ec2.GetElasticIpArgs{
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"Name": "exampleNameTagValue",
 /// 			},
 /// 		}, nil)
@@ -1751,6 +2419,21 @@ Future<GetEipsResult> getEips(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getelasticip" "byTags" {
+///   tags = {
+///     "Name" = "exampleNameTagValue"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1759,8 +2442,8 @@ Future<GetEipsResult> getEips(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetElasticIpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1801,6 +2484,342 @@ Future<GetElasticIpResult> getElasticIp(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetElasticIpResult.fromMap(result);
+}
+
+/// Provides a list of EC2 Dedicated Host IDs matching the provided filters. More information about Dedicated Hosts can be found in the [EC2 User Guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html).
+///
+/// ## Example Usage
+///
+/// ### Filter by instance type
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.ec2.getHosts({
+///     filters: [
+///         {
+///             name: "instance-type",
+///             values: ["c5.large"],
+///         },
+///         {
+///             name: "state",
+///             values: ["available"],
+///         },
+///     ],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.ec2.get_hosts(filters=[
+///     {
+///         "name": "instance-type",
+///         "values": ["c5.large"],
+///     },
+///     {
+///         "name": "state",
+///         "values": ["available"],
+///     },
+/// ])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Ec2.GetHosts.Invoke(new()
+///     {
+///         Filters = new[]
+///         {
+///             new Aws.Ec2.Inputs.GetHostsFilterInputArgs
+///             {
+///                 Name = "instance-type",
+///                 Values = new[]
+///                 {
+///                     "c5.large",
+///                 },
+///             },
+///             new Aws.Ec2.Inputs.GetHostsFilterInputArgs
+///             {
+///                 Name = "state",
+///                 Values = new[]
+///                 {
+///                     "available",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := ec2.GetHosts(ctx, &ec2.GetHostsArgs{
+/// 			Filters: []ec2.GetHostsFilter{
+/// 				{
+/// 					Name: "instance-type",
+/// 					Values: []string{
+/// 						"c5.large",
+/// 					},
+/// 				},
+/// 				{
+/// 					Name: "state",
+/// 					Values: []string{
+/// 						"available",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_gethosts" "example" {
+///   filters {
+///     name   = "instance-type"
+///     values = ["c5.large"]
+///   }
+///   filters {
+///     name   = "state"
+///     values = ["available"]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.ec2.Ec2Functions;
+/// import com.pulumi.aws.ec2.inputs.GetHostsArgs;
+/// import com.pulumi.aws.ec2.inputs.GetHostsFilterArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = Ec2Functions.getHosts(GetHostsArgs.builder()
+///             .filters(
+///                 GetHostsFilterArgs.builder()
+///                     .name("instance-type")
+///                     .values("c5.large")
+///                     .build(),
+///                 GetHostsFilterArgs.builder()
+///                     .name("state")
+///                     .values("available")
+///                     .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:ec2:getHosts
+///       arguments:
+///         filters:
+///           - name: instance-type
+///             values:
+///               - c5.large
+///           - name: state
+///             values:
+///               - available
+/// ```
+///
+///
+/// ### Filter by Outpost ARN
+///
+/// The `outpostArn` argument applies a client-side filter because the `DescribeHosts` API does not support `outpost-arn` as a server-side filter.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const outpost = aws.ec2.getHosts({
+///     outpostArn: example.arn,
+///     filters: [{
+///         name: "state",
+///         values: ["available"],
+///     }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// outpost = aws.ec2.get_hosts(outpost_arn=example["arn"],
+///     filters=[{
+///         "name": "state",
+///         "values": ["available"],
+///     }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var outpost = Aws.Ec2.GetHosts.Invoke(new()
+///     {
+///         OutpostArn = example.Arn,
+///         Filters = new[]
+///         {
+///             new Aws.Ec2.Inputs.GetHostsFilterInputArgs
+///             {
+///                 Name = "state",
+///                 Values = new[]
+///                 {
+///                     "available",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := ec2.GetHosts(ctx, &ec2.GetHostsArgs{
+/// 			OutpostArn: pulumi.StringRef(example.Arn),
+/// 			Filters: []ec2.GetHostsFilter{
+/// 				{
+/// 					Name: "state",
+/// 					Values: []string{
+/// 						"available",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_gethosts" "outpost" {
+///   outpost_arn = example.arn
+///   filters {
+///     name   = "state"
+///     values = ["available"]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.ec2.Ec2Functions;
+/// import com.pulumi.aws.ec2.inputs.GetHostsArgs;
+/// import com.pulumi.aws.ec2.inputs.GetHostsFilterArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var outpost = Ec2Functions.getHosts(GetHostsArgs.builder()
+///             .outpostArn(example.arn())
+///             .filters(GetHostsFilterArgs.builder()
+///                 .name("state")
+///                 .values("available")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   outpost:
+///     fn::invoke:
+///       function: aws:ec2:getHosts
+///       arguments:
+///         outpostArn: ${example.arn}
+///         filters:
+///           - name: state
+///             values:
+///               - available
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_hosts_get_hosts_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetHostsResult> getHosts(
+  GetHostsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:ec2/getHosts:getHosts',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetHostsResult.fromMap(result);
 }
 
 /// Use this data source to get the ID of an Amazon EC2 Instance for use in other resources.
@@ -1910,6 +2929,27 @@ Future<GetElasticIpResult> getElasticIp(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getinstance" "foo" {
+///   instance_id = "i-instanceid"
+///   filters {
+///     name   = "image-id"
+///     values = ["ami-xxxxxxxx"]
+///   }
+///   filters {
+///     name   = "tag:Name"
+///     values = ["instance-name-tag"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1918,8 +2958,9 @@ Future<GetElasticIpResult> getElasticIp(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetInstanceArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetInstanceFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2031,6 +3072,19 @@ Future<GetInstanceResult> getInstance(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getinstancetype" "example" {
+///   instance_type = "t2.micro"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2039,8 +3093,8 @@ Future<GetInstanceResult> getInstance(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetInstanceTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2184,6 +3238,23 @@ Future<GetInstanceTypeResult> getInstanceType(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getinstancetypeoffering" "example" {
+///   filters {
+///     name   = "instance-type"
+///     values = ["t2.micro", "t3.micro"]
+///   }
+///   preferred_instance_types = ["t3.micro", "t2.micro"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2192,8 +3263,9 @@ Future<GetInstanceTypeResult> getInstanceType(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetInstanceTypeOfferingArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetInstanceTypeOfferingFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2365,6 +3437,27 @@ Future<GetInstanceTypeOfferingResult> getInstanceTypeOffering(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getinstancetypeofferings" "example" {
+///   filters {
+///     name   = "instance-type"
+///     values = ["t2.micro", "t3.micro"]
+///   }
+///   filters {
+///     name   = "location"
+///     values = ["usw2-az4"]
+///   }
+///   location_type = "availability-zone-id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2373,8 +3466,9 @@ Future<GetInstanceTypeOfferingResult> getInstanceTypeOffering(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetInstanceTypeOfferingsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetInstanceTypeOfferingsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2590,6 +3684,34 @@ Future<GetInstanceTypeOfferingsResult> getInstanceTypeOfferings(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getinstancetypes" "test" {
+///   filters {
+///     name   = "auto-recovery-supported"
+///     values = ["true"]
+///   }
+///   filters {
+///     name   = "network-info.encryption-in-transit-supported"
+///     values = ["true"]
+///   }
+///   filters {
+///     name   = "instance-storage-supported"
+///     values = ["true"]
+///   }
+///   filters {
+///     name   = "instance-type"
+///     values = ["g5.2xlarge", "g5.4xlarge"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2598,8 +3720,9 @@ Future<GetInstanceTypeOfferingsResult> getInstanceTypeOfferings(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetInstanceTypesArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetInstanceTypesFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2706,13 +3829,14 @@ Future<GetInstanceTypesResult> getInstanceTypes(
 /// });
 /// const testEip: aws.ec2.Eip[] = [];
 /// test.then(test => test.ids).length.apply(rangeBody => {
-///     for (const range = {value: 0}; range.value < rangeBody; range.value++) {
-///         testEip.push(new aws.ec2.Eip(`test-${range.value}`, {instance: test.then(test => test.ids[range.value])}));
+///     for (let range = 0; range < rangeBody; range++) {
+///         testEip.push(new aws.ec2.Eip(`test-${range}`, {instance: test.then(test => test.ids[range])}));
 ///     }
 /// });
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 ///
 /// test = aws.ec2.get_instances(instance_tags={
@@ -2726,10 +3850,10 @@ Future<GetInstanceTypesResult> getInstanceTypes(
 ///         "running",
 ///         "stopped",
 ///     ])
-/// test_eip = []
+/// test_eip: list[aws.ec2.Eip] = []
 /// def create_test(range_body):
-///     for range in [{"value": i} for i in range(0, range_body)]:
-///         test_eip.append(aws.ec2.Eip(f"test-{range['value']}", instance=test.ids[range["value"]]))
+///     for test_eip_range in [{"value": i} for i in range(0, range_body)]:
+///         test_eip.append(aws.ec2.Eip(f"test-{test_eip_range['value']}", instance=test.ids[test_eip_range["value"]]))
 ///
 /// (len(test.ids)).apply(create_test)
 /// ```
@@ -2766,14 +3890,18 @@ Future<GetInstanceTypesResult> getInstanceTypes(
 ///     });
 ///
 ///     var testEip = new List<Aws.Ec2.Eip>();
-///     for (var rangeIndex = 0; rangeIndex < test.Apply(getInstancesResult => getInstancesResult.Ids).Length; rangeIndex++)
+///     test.Apply(getInstancesResult => getInstancesResult.Ids).Length().Apply(rangeBody =>
 ///     {
-///         var range = new { Value = rangeIndex };
-///         testEip.Add(new Aws.Ec2.Eip($"test-{range.Value}", new()
+///         for (var rangeIndex = 0; rangeIndex < rangeBody; rangeIndex++)
 ///         {
-///             Instance = test.Apply(getInstancesResult => getInstancesResult.Ids)[range.Value],
-///         }));
-///     }
+///             var range = new { Value = rangeIndex };
+///             testEip.Add(new Aws.Ec2.Eip($"test-{range.Value}", new()
+///             {
+///                 Instance = test.Apply(getInstancesResult => getInstancesResult.Ids)[range.Value],
+///             }));
+///         }
+///         return 0;
+///     });
 /// });
 /// ```
 /// ```go
@@ -2789,7 +3917,7 @@ Future<GetInstanceTypesResult> getInstanceTypes(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		test, err := ec2.GetInstances(ctx, &ec2.GetInstancesArgs{
-/// 			InstanceTags: map[string]interface{}{
+/// 			InstanceTags: map[string]string{
 /// 				"Role": "HardWorker",
 /// 			},
 /// 			Filters: []ec2.GetInstancesFilter{
@@ -2824,6 +3952,31 @@ Future<GetInstanceTypesResult> getInstanceTypes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getinstances" "test" {
+///   instance_tags = {
+///     "Role" = "HardWorker"
+///   }
+///   filters {
+///     name   = "instance.group-id"
+///     values = ["sg-12345678"]
+///   }
+///   instance_state_names = ["running", "stopped"]
+/// }
+///
+/// resource "aws_ec2_eip" "test" {
+///   count    = length(data.aws_ec2_getinstances.test.ids)
+///   instance = data.aws_ec2_getinstances.test.ids[count.index]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2832,11 +3985,12 @@ Future<GetInstanceTypesResult> getInstanceTypes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetInstancesArgs;
+/// import com.pulumi.aws.ec2.inputs.GetInstancesFilterArgs;
 /// import com.pulumi.aws.ec2.Eip;
 /// import com.pulumi.aws.ec2.EipArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2859,7 +4013,7 @@ Future<GetInstanceTypesResult> getInstanceTypes(
 ///                 "stopped")
 ///             .build());
 ///
-///         for (var i = 0; i < test.ids().length(); i++) {
+///         for (var i = 0; i < test.ids().size(); i++) {
 ///             new Eip("testEip-" + i, EipArgs.builder()
 ///                 .instance(test.ids()[range.value()])
 ///                 .build());
@@ -2948,25 +4102,46 @@ Future<GetInstancesResult> getInstances(
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// cfg := config.New(ctx, "")
-/// vpcId := cfg.RequireObject("vpcId")
-/// _, err := ec2.LookupInternetGateway(ctx, &ec2.LookupInternetGatewayArgs{
-/// Filters: []ec2.GetInternetGatewayFilter{
-/// {
-/// Name: "attachment.vpc-id",
-/// Values: interface{}{
-/// vpcId,
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		cfg := config.New(ctx, "")
+/// 		var vpcId interface{}
+/// 		cfg.RequireObject("vpcId", &vpcId)
+/// 		_, err := ec2.LookupInternetGateway(ctx, &ec2.LookupInternetGatewayArgs{
+/// 			Filters: []ec2.GetInternetGatewayFilter{
+/// 				{
+/// 					Name: "attachment.vpc-id",
+/// 					Values: pulumi.StringArray{
+/// 						vpcId,
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// return nil
-/// })
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getinternetgateway" "default" {
+///   filters {
+///     name   = "attachment.vpc-id"
+///     values = [var.vpcId]
+///   }
+/// }
+///
+/// variable "vpcId" {
 /// }
 /// ```
 /// ```java
@@ -2977,8 +4152,9 @@ Future<GetInstancesResult> getInstances(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetInternetGatewayArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetInternetGatewayFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2991,7 +4167,7 @@ Future<GetInstancesResult> getInstances(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var vpcId = config.get("vpcId");
+///         final var vpcId = config.require("vpcId");
 ///         final var default = Ec2Functions.getInternetGateway(GetInternetGatewayArgs.builder()
 ///             .filters(GetInternetGatewayFilterArgs.builder()
 ///                 .name("attachment.vpc-id")
@@ -3005,7 +4181,7 @@ Future<GetInstancesResult> getInstances(
 /// ```yaml
 /// configuration:
 ///   vpcId:
-///     type: dynamic
+///     type: object
 /// variables:
 ///   default:
 ///     fn::invoke:
@@ -3033,7 +4209,7 @@ Future<GetInternetGatewayResult> getInternetGateway(
 
 /// Previews a CIDR from an IPAM address pool. Only works for private IPv4.
 ///
-/// &gt; **NOTE:** This functionality is also encapsulated in a resource sharing the same name. The data source can be used when you need to use the cidr in a calculation of the same Root module, `count` for example. However, once a cidr range has been allocated that was previewed, the next refresh will find a **new** cidr and may force new resources downstream. Make sure to use `ignore_changes` if this is undesirable.
+/// &gt; **NOTE:** This functionality is also encapsulated in a resource sharing the same name. The data source can be used when you need to use the cidr in a calculation of the same Root module, `count` for example. However, once a cidr range has been allocated that was previewed, the next refresh will find a **new** cidr and may force new resources downstream. Make sure to use `ignoreChanges` if this is undesirable.
 ///
 /// ## Example Usage
 ///
@@ -3113,6 +4289,25 @@ Future<GetInternetGatewayResult> getInternetGateway(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getipampreviewnextcidr" "test" {
+///   ipam_pool_id   = testAwsVpcIpamPool.id
+///   netmask_length = 28
+/// }
+///
+/// resource "aws_ec2_vpcipampoolcidrallocation" "test" {
+///   ipam_pool_id = testAwsVpcIpamPool.id
+///   cidr         = data.aws_ec2_getipampreviewnextcidr.test.cidr
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3123,8 +4318,8 @@ Future<GetInternetGatewayResult> getInternetGateway(
 /// import com.pulumi.aws.ec2.inputs.GetIpamPreviewNextCidrArgs;
 /// import com.pulumi.aws.ec2.VpcIpamPoolCidrAllocation;
 /// import com.pulumi.aws.ec2.VpcIpamPoolCidrAllocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3282,6 +4477,34 @@ Future<GetIpamPreviewNextCidrResult> getIpamPreviewNextCidr(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getkeypair" "example" {
+///   key_name           = "test"
+///   include_public_key = true
+///   filters {
+///     name   = "tag:Component"
+///     values = ["web"]
+///   }
+/// }
+///
+/// output "fingerprint" {
+///   value = data.aws_ec2_getkeypair.example.fingerprint
+/// }
+/// output "name" {
+///   value = data.aws_ec2_getkeypair.example.key_name
+/// }
+/// output "id" {
+///   value = data.aws_ec2_getkeypair.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3290,8 +4513,9 @@ Future<GetIpamPreviewNextCidrResult> getIpamPreviewNextCidr(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetKeyPairArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetKeyPairFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3404,6 +4628,19 @@ Future<GetKeyPairResult> getKeyPair(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getlaunchconfiguration" "ubuntu" {
+///   name = "test-launch-config"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3412,8 +4649,8 @@ Future<GetKeyPairResult> getKeyPair(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetLaunchConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3509,6 +4746,19 @@ Future<GetLaunchConfigurationResult> getLaunchConfiguration(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getlaunchtemplate" "default" {
+///   name = "my-launch-template"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3517,8 +4767,8 @@ Future<GetLaunchConfigurationResult> getLaunchConfiguration(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetLaunchTemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3622,6 +4872,22 @@ Future<GetLaunchConfigurationResult> getLaunchConfiguration(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getlaunchtemplate" "test" {
+///   filters {
+///     name   = "launch-template-name"
+///     values = ["some-template"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3630,8 +4896,9 @@ Future<GetLaunchConfigurationResult> getLaunchConfiguration(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetLaunchTemplateArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetLaunchTemplateFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3733,7 +5000,8 @@ Future<GetLaunchTemplateResult> getLaunchTemplate(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		cfg := config.New(ctx, "")
-/// 		localGatewayId := cfg.RequireObject("localGatewayId")
+/// 		var localGatewayId interface{}
+/// 		cfg.RequireObject("localGatewayId", &localGatewayId)
 /// 		_, err := ec2.GetLocalGateway(ctx, &ec2.GetLocalGatewayArgs{
 /// 			Id: pulumi.StringRef(localGatewayId),
 /// 		}, nil)
@@ -3744,6 +5012,22 @@ Future<GetLaunchTemplateResult> getLaunchTemplate(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getlocalgateway" "selected" {
+///   id = var.localGatewayId
+/// }
+///
+/// variable "localGatewayId" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3752,8 +5036,8 @@ Future<GetLaunchTemplateResult> getLaunchTemplate(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetLocalGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3766,7 +5050,7 @@ Future<GetLaunchTemplateResult> getLaunchTemplate(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var localGatewayId = config.get("localGatewayId");
+///         final var localGatewayId = config.require("localGatewayId");
 ///         final var selected = Ec2Functions.getLocalGateway(GetLocalGatewayArgs.builder()
 ///             .id(localGatewayId)
 ///             .build());
@@ -3777,7 +5061,7 @@ Future<GetLaunchTemplateResult> getLaunchTemplate(
 /// ```yaml
 /// configuration:
 ///   localGatewayId:
-///     type: dynamic
+///     type: object
 /// variables:
 ///   selected:
 ///     fn::invoke:
@@ -3857,8 +5141,9 @@ Future<GetLocalGatewayResult> getLocalGateway(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		cfg := config.New(ctx, "")
-/// 		awsEc2LocalGatewayRouteTable := cfg.RequireObject("awsEc2LocalGatewayRouteTable")
-/// 		_, err := ec2.GetLocalGatewayRouteTable(ctx, &ec2.GetLocalGatewayRouteTableArgs{
+/// 		var awsEc2LocalGatewayRouteTable interface{}
+/// 		cfg.RequireObject("awsEc2LocalGatewayRouteTable", &awsEc2LocalGatewayRouteTable)
+/// 		_, err := ec2.LookupLocalGatewayRouteTable(ctx, &ec2.LookupLocalGatewayRouteTableArgs{
 /// 			LocalGatewayRouteTableId: pulumi.StringRef(awsEc2LocalGatewayRouteTable),
 /// 		}, nil)
 /// 		if err != nil {
@@ -3866,6 +5151,22 @@ Future<GetLocalGatewayResult> getLocalGateway(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getlocalgatewayroutetable" "selected" {
+///   local_gateway_route_table_id = var.awsEc2LocalGatewayRouteTable
+/// }
+///
+/// variable "awsEc2LocalGatewayRouteTable" {
 /// }
 /// ```
 /// ```java
@@ -3876,8 +5177,8 @@ Future<GetLocalGatewayResult> getLocalGateway(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetLocalGatewayRouteTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3890,7 +5191,7 @@ Future<GetLocalGatewayResult> getLocalGateway(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var awsEc2LocalGatewayRouteTable = config.get("awsEc2LocalGatewayRouteTable");
+///         final var awsEc2LocalGatewayRouteTable = config.require("awsEc2LocalGatewayRouteTable");
 ///         final var selected = Ec2Functions.getLocalGatewayRouteTable(GetLocalGatewayRouteTableArgs.builder()
 ///             .localGatewayRouteTableId(awsEc2LocalGatewayRouteTable)
 ///             .build());
@@ -3901,7 +5202,7 @@ Future<GetLocalGatewayResult> getLocalGateway(
 /// ```yaml
 /// configuration:
 ///   awsEc2LocalGatewayRouteTable:
-///     type: dynamic
+///     type: object
 /// variables:
 ///   selected:
 ///     fn::invoke:
@@ -3984,6 +5285,22 @@ Future<GetLocalGatewayRouteTableResult> getLocalGatewayRouteTable(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getlocalgatewayroutetables" "foo" {
+/// }
+///
+/// output "foo" {
+///   value = data.aws_ec2_getlocalgatewayroutetables.foo.ids
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3992,8 +5309,8 @@ Future<GetLocalGatewayRouteTableResult> getLocalGatewayRouteTable(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetLocalGatewayRouteTablesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4045,15 +5362,15 @@ Future<GetLocalGatewayRouteTablesResult> getLocalGatewayRouteTables(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: aws.ec2.getLocalGatewayVirtualInterface({
+/// const example = .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: aws.ec2.getLocalGatewayVirtualInterface({
 ///     id: __value,
-/// }) }));
+/// }) }), {});
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = {__key: aws.ec2.get_local_gateway_virtual_interface(id=__value) for __key, __value in example_aws_ec2_local_gateway_virtual_interface_group["localGatewayVirtualInterfaceIds"]}
+/// example = {str(__key): aws.ec2.get_local_gateway_virtual_interface(id=__value) for __key, __value in enumerate(example_aws_ec2_local_gateway_virtual_interface_group["localGatewayVirtualInterfaceIds"])}
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -4075,6 +5392,24 @@ Future<GetLocalGatewayRouteTablesResult> getLocalGatewayRouteTables(
 ///     });
 ///
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getlocalgatewayvirtualinterface" "invoke_0" {
+///   for_each = exampleAwsEc2LocalGatewayVirtualInterfaceGroup.localGatewayVirtualInterfaceIds
+///   id       = each.value
+/// }
+///
+/// locals {
+///   example = {for __key, __value in exampleAwsEc2LocalGatewayVirtualInterfaceGroup.localGatewayVirtualInterfaceIds : __key => data.aws_ec2_getlocalgatewayvirtualinterface.invoke_0[__key]}
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_local_gateway_virtual_interface_get_local_gateway_virtual_interface_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4145,6 +5480,19 @@ Future<GetLocalGatewayVirtualInterfaceResult> getLocalGatewayVirtualInterface(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getlocalgatewayvirtualinterfacegroup" "example" {
+///   local_gateway_id = exampleAwsEc2LocalGateway.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4153,8 +5501,8 @@ Future<GetLocalGatewayVirtualInterfaceResult> getLocalGatewayVirtualInterface(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetLocalGatewayVirtualInterfaceGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4243,6 +5591,18 @@ Future<GetLocalGatewayVirtualInterfaceGroupResult> getLocalGatewayVirtualInterfa
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getlocalgatewayvirtualinterfacegroups" "all" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4251,8 +5611,8 @@ Future<GetLocalGatewayVirtualInterfaceGroupResult> getLocalGatewayVirtualInterfa
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetLocalGatewayVirtualInterfaceGroupsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4356,7 +5716,7 @@ Future<GetLocalGatewayVirtualInterfaceGroupsResult> getLocalGatewayVirtualInterf
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		foo, err := ec2.GetLocalGateways(ctx, &ec2.GetLocalGatewaysArgs{
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"service": "production",
 /// 			},
 /// 		}, nil)
@@ -4368,6 +5728,25 @@ Future<GetLocalGatewayVirtualInterfaceGroupsResult> getLocalGatewayVirtualInterf
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getlocalgateways" "foo" {
+///   tags = {
+///     "service" = "production"
+///   }
+/// }
+///
+/// output "foo" {
+///   value = data.aws_ec2_getlocalgateways.foo.ids
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4376,8 +5755,8 @@ Future<GetLocalGatewayVirtualInterfaceGroupsResult> getLocalGatewayVirtualInterf
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetLocalGatewaysArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4491,6 +5870,21 @@ Future<GetLocalGatewaysResult> getLocalGateways(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+/// data "aws_ec2_getmanagedprefixlist" "example" {
+///   name ="com.amazonaws.${data.aws_getregion.current.region}.dynamodb"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4501,8 +5895,8 @@ Future<GetLocalGatewaysResult> getLocalGateways(
 /// import com.pulumi.aws.inputs.GetRegionArgs;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetManagedPrefixListArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4613,6 +6007,22 @@ Future<GetLocalGatewaysResult> getLocalGateways(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getmanagedprefixlist" "example" {
+///   filters {
+///     name   = "prefix-list-name"
+///     values = ["my-prefix-list"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4621,8 +6031,9 @@ Future<GetLocalGatewaysResult> getLocalGateways(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetManagedPrefixListArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetManagedPrefixListFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4719,6 +6130,29 @@ Future<GetManagedPrefixListResult> getManagedPrefixList(
 ///
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getmanagedprefixlists" "testEnv" {
+///   tags = {
+///     "Env" = "test"
+///   }
+/// }
+/// data "aws_ec2_getmanagedprefixlist" "invoke_1" {
+///   for_each = toset(range(length(data.aws_ec2_getmanagedprefixlists.testEnv.ids)))
+///   id       = data.aws_ec2_getmanagedprefixlists.testEnv.ids[each.value]
+/// }
+///
+/// locals {
+///   testEnvGetManagedPrefixList = [for __index in range(length(data.aws_ec2_getmanagedprefixlists.testEnv.ids)) : data.aws_ec2_getmanagedprefixlist.invoke_1[__index]]
+/// }
+/// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_managed_prefix_lists_get_managed_prefix_lists_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetManagedPrefixListsResult> getManagedPrefixLists(
@@ -4788,6 +6222,19 @@ Future<GetManagedPrefixListsResult> getManagedPrefixLists(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getnatgateway" "default" {
+///   subnet_id = public.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4796,8 +6243,8 @@ Future<GetManagedPrefixListsResult> getManagedPrefixLists(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetNatGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4880,7 +6327,7 @@ Future<GetManagedPrefixListsResult> getManagedPrefixLists(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ec2.LookupNatGateway(ctx, &ec2.LookupNatGatewayArgs{
 /// 			SubnetId: pulumi.StringRef(public.Id),
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"Name": "gw NAT",
 /// 			},
 /// 		}, nil)
@@ -4891,6 +6338,22 @@ Future<GetManagedPrefixListsResult> getManagedPrefixLists(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getnatgateway" "default" {
+///   subnet_id = public.id
+///   tags = {
+///     "Name" = "gw NAT"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4899,8 +6362,8 @@ Future<GetManagedPrefixListsResult> getManagedPrefixLists(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetNatGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5006,6 +6469,31 @@ Future<GetNatGatewayResult> getNatGateway(
 ///
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getnatgateways" "ngws" {
+///   vpc_id = vpcId
+///   filters {
+///     name   = "state"
+///     values = ["available"]
+///   }
+/// }
+/// data "aws_ec2_getnatgateway" "invoke_1" {
+///   for_each = toset(range(length(data.aws_ec2_getnatgateways.ngws.ids)))
+///   id       = data.aws_ec2_getnatgateways.ngws.ids[each.value]
+/// }
+///
+/// locals {
+///   ngw = [for __index in range(length(data.aws_ec2_getnatgateways.ngws.ids)) : data.aws_ec2_getnatgateway.invoke_1[__index]]
+/// }
+/// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_nat_gateways_get_nat_gateways_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNatGatewaysResult> getNatGateways(
@@ -5086,6 +6574,23 @@ Future<GetNatGatewaysResult> getNatGateways(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getnetworkacls" "example" {
+///   vpc_id = vpcId
+/// }
+///
+/// output "example" {
+///   value = data.aws_ec2_getnetworkacls.example.ids
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5094,8 +6599,8 @@ Future<GetNatGatewaysResult> getNatGateways(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetNetworkAclsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5182,7 +6687,7 @@ Future<GetNatGatewaysResult> getNatGateways(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ec2.GetNetworkAcls(ctx, &ec2.GetNetworkAclsArgs{
 /// 			VpcId: pulumi.StringRef(vpcId),
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"Tier": "Private",
 /// 			},
 /// 		}, nil)
@@ -5193,6 +6698,22 @@ Future<GetNatGatewaysResult> getNatGateways(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getnetworkacls" "example" {
+///   vpc_id = vpcId
+///   tags = {
+///     "Tier" = "Private"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5201,8 +6722,8 @@ Future<GetNatGatewaysResult> getNatGateways(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetNetworkAclsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5293,24 +6814,42 @@ Future<GetNatGatewaysResult> getNatGateways(
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := ec2.GetNetworkAcls(ctx, &ec2.GetNetworkAclsArgs{
-/// VpcId: pulumi.StringRef(vpcId),
-/// Filters: []ec2.GetNetworkAclsFilter{
-/// {
-/// Name: "association.subnet-id",
-/// Values: interface{}{
-/// test.Id,
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := ec2.GetNetworkAcls(ctx, &ec2.GetNetworkAclsArgs{
+/// 			VpcId: pulumi.StringRef(vpcId),
+/// 			Filters: []ec2.GetNetworkAclsFilter{
+/// 				{
+/// 					Name: "association.subnet-id",
+/// 					Values: pulumi.StringArray{
+/// 						test.Id,
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// return nil
-/// })
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getnetworkacls" "example" {
+///   vpc_id = vpcId
+///   filters {
+///     name   = "association.subnet-id"
+///     values = [test.id]
+///   }
 /// }
 /// ```
 /// ```java
@@ -5321,8 +6860,9 @@ Future<GetNatGatewaysResult> getNatGateways(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetNetworkAclsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetNetworkAclsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5426,6 +6966,19 @@ Future<GetNetworkAclsResult> getNetworkAcls(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getnetworkinsightsanalysis" "example" {
+///   network_insights_analysis_id = exampleAwsEc2NetworkInsightsAnalysis.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5434,8 +6987,8 @@ Future<GetNetworkAclsResult> getNetworkAcls(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetNetworkInsightsAnalysisArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5531,6 +7084,19 @@ Future<GetNetworkInsightsAnalysisResult> getNetworkInsightsAnalysis(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getnetworkinsightspath" "example" {
+///   network_insights_path_id = exampleAwsEc2NetworkInsightsPath.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5539,8 +7105,8 @@ Future<GetNetworkInsightsAnalysisResult> getNetworkInsightsAnalysis(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetNetworkInsightsPathArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5636,6 +7202,19 @@ Future<GetNetworkInsightsPathResult> getNetworkInsightsPath(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getnetworkinterface" "bar" {
+///   id = "eni-01234567"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5644,8 +7223,8 @@ Future<GetNetworkInsightsPathResult> getNetworkInsightsPath(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetNetworkInterfaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5745,6 +7324,22 @@ Future<GetNetworkInterfaceResult> getNetworkInterface(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getnetworkinterfaces" "example" {
+/// }
+///
+/// output "example" {
+///   value = data.aws_ec2_getnetworkinterfaces.example.ids
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5753,8 +7348,8 @@ Future<GetNetworkInterfaceResult> getNetworkInterface(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetNetworkInterfacesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5840,7 +7435,7 @@ Future<GetNetworkInterfaceResult> getNetworkInterface(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := ec2.GetNetworkInterfaces(ctx, &ec2.GetNetworkInterfacesArgs{
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"Name": "test",
 /// 			},
 /// 		}, nil)
@@ -5852,6 +7447,25 @@ Future<GetNetworkInterfaceResult> getNetworkInterface(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getnetworkinterfaces" "example" {
+///   tags = {
+///     "Name" = "test"
+///   }
+/// }
+///
+/// output "example1" {
+///   value = data.aws_ec2_getnetworkinterfaces.example.ids
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5860,8 +7474,8 @@ Future<GetNetworkInterfaceResult> getNetworkInterface(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetNetworkInterfacesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5960,24 +7574,45 @@ Future<GetNetworkInterfaceResult> getNetworkInterface(
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// example, err := ec2.GetNetworkInterfaces(ctx, &ec2.GetNetworkInterfacesArgs{
-/// Filters: []ec2.GetNetworkInterfacesFilter{
-/// {
-/// Name: "subnet-id",
-/// Values: interface{}{
-/// test.Id,
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := ec2.GetNetworkInterfaces(ctx, &ec2.GetNetworkInterfacesArgs{
+/// 			Filters: []ec2.GetNetworkInterfacesFilter{
+/// 				{
+/// 					Name: "subnet-id",
+/// 					Values: pulumi.StringArray{
+/// 						test.Id,
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ctx.Export("example", example.Ids)
+/// 		return nil
+/// 	})
 /// }
-/// ctx.Export("example", example.Ids)
-/// return nil
-/// })
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getnetworkinterfaces" "example" {
+///   filters {
+///     name   = "subnet-id"
+///     values = [test.id]
+///   }
+/// }
+///
+/// output "example" {
+///   value = data.aws_ec2_getnetworkinterfaces.example.ids
 /// }
 /// ```
 /// ```java
@@ -5988,8 +7623,9 @@ Future<GetNetworkInterfaceResult> getNetworkInterface(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetNetworkInterfacesArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetNetworkInterfacesFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6160,14 +7796,14 @@ Future<GetNetworkInterfacesResult> getNetworkInterfaces(
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewNetworkAclRule(ctx, "private_s3", &ec2.NetworkAclRuleArgs{
-/// 			NetworkAclId: bar.ID(),
+/// 			NetworkAclId: bar.ID().ToIDOutput().ToStringOutput(),
 /// 			RuleNumber:   pulumi.Int(200),
 /// 			Egress:       pulumi.Bool(false),
 /// 			Protocol:     pulumi.String("tcp"),
 /// 			RuleAction:   pulumi.String("allow"),
-/// 			CidrBlock: pulumi.String(privateS3.ApplyT(func(privateS3 ec2.GetPrefixListResult) (*string, error) {
+/// 			CidrBlock: privateS3.ApplyT(func(privateS3 ec2.GetPrefixListResult) (*string, error) {
 /// 				return &privateS3.CidrBlocks[0], nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}).(pulumi.StringPtrOutput),
 /// 			FromPort: pulumi.Int(443),
 /// 			ToPort:   pulumi.Int(443),
 /// 		})
@@ -6176,6 +7812,37 @@ Future<GetNetworkInterfacesResult> getNetworkInterfaces(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getprefixlist" "privateS3" {
+///   prefix_list_id = aws_ec2_vpcendpoint.private_s3.prefix_list_id
+/// }
+///
+/// resource "aws_ec2_vpcendpoint" "private_s3" {
+///   vpc_id       = foo.id
+///   service_name = "com.amazonaws.us-west-2.s3"
+/// }
+/// resource "aws_ec2_networkacl" "bar" {
+///   vpc_id = foo.id
+/// }
+/// resource "aws_ec2_networkaclrule" "private_s3" {
+///   network_acl_id = aws_ec2_networkacl.bar.id
+///   rule_number    = 200
+///   egress         = false
+///   protocol       = "tcp"
+///   rule_action    = "allow"
+///   cidr_block     = data.aws_ec2_getprefixlist.privateS3.cidr_blocks[0]
+///   from_port      = 443
+///   to_port        = 443
 /// }
 /// ```
 /// ```java
@@ -6192,8 +7859,8 @@ Future<GetNetworkInterfacesResult> getNetworkInterfaces(
 /// import com.pulumi.aws.ec2.NetworkAclArgs;
 /// import com.pulumi.aws.ec2.NetworkAclRule;
 /// import com.pulumi.aws.ec2.NetworkAclRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6340,6 +8007,22 @@ Future<GetNetworkInterfacesResult> getNetworkInterfaces(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getprefixlist" "test" {
+///   filters {
+///     name   = "prefix-list-id"
+///     values = ["pl-68a54001"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6348,8 +8031,9 @@ Future<GetNetworkInterfacesResult> getNetworkInterfaces(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetPrefixListArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetPrefixListFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6453,6 +8137,19 @@ Future<GetPrefixListResult> getPrefixList(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getpublicipv4pool" "example" {
+///   pool_id = "ipv4pool-ec2-000df99cff0c1ec10"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6461,8 +8158,8 @@ Future<GetPrefixListResult> getPrefixList(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetPublicIpv4PoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6557,6 +8254,20 @@ Future<GetPublicIpv4PoolResult> getPublicIpv4Pool(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getpublicipv4pools" "example" {
+/// }
+///
+/// # Returns all public IPv4 pools.
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6565,8 +8276,8 @@ Future<GetPublicIpv4PoolResult> getPublicIpv4Pool(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetPublicIpv4PoolsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6670,6 +8381,22 @@ Future<GetPublicIpv4PoolResult> getPublicIpv4Pool(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getpublicipv4pools" "example" {
+///   filters {
+///     name   = "tag-key"
+///     values = ["ExampleTagKey"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6678,8 +8405,9 @@ Future<GetPublicIpv4PoolResult> getPublicIpv4Pool(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetPublicIpv4PoolsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetPublicIpv4PoolsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6804,7 +8532,8 @@ Future<GetPublicIpv4PoolsResult> getPublicIpv4Pools(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		cfg := config.New(ctx, "")
-/// 		subnetId := cfg.RequireObject("subnetId")
+/// 		var subnetId interface{}
+/// 		cfg.RequireObject("subnetId", &subnetId)
 /// 		_, err := ec2.LookupRouteTable(ctx, &ec2.LookupRouteTableArgs{
 /// 			SubnetId: pulumi.StringRef(subnetId),
 /// 		}, nil)
@@ -6828,6 +8557,29 @@ Future<GetPublicIpv4PoolsResult> getPublicIpv4Pools(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getroutetable" "selected" {
+///   subnet_id = var.subnetId
+/// }
+/// data "aws_ec2_getroute" "route" {
+///   route_table_id         = selectedAwsRouteTable.id
+///   destination_cidr_block = "10.0.1.0/24"
+/// }
+/// data "aws_ec2_getnetworkinterface" "interface" {
+///   id = data.aws_ec2_getroute.route.network_interface_id
+/// }
+///
+/// variable "subnetId" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6838,8 +8590,8 @@ Future<GetPublicIpv4PoolsResult> getPublicIpv4Pools(
 /// import com.pulumi.aws.ec2.inputs.GetRouteTableArgs;
 /// import com.pulumi.aws.ec2.inputs.GetRouteArgs;
 /// import com.pulumi.aws.ec2.inputs.GetNetworkInterfaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6852,7 +8604,7 @@ Future<GetPublicIpv4PoolsResult> getPublicIpv4Pools(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var subnetId = config.get("subnetId");
+///         final var subnetId = config.require("subnetId");
 ///         final var selected = Ec2Functions.getRouteTable(GetRouteTableArgs.builder()
 ///             .subnetId(subnetId)
 ///             .build());
@@ -6872,7 +8624,7 @@ Future<GetPublicIpv4PoolsResult> getPublicIpv4Pools(
 /// ```yaml
 /// configuration:
 ///   subnetId:
-///     type: dynamic
+///     type: object
 /// variables:
 ///   selected:
 ///     fn::invoke:
@@ -6978,7 +8730,8 @@ Future<GetRouteResult> getRoute(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		cfg := config.New(ctx, "")
-/// 		subnetId := cfg.RequireObject("subnetId")
+/// 		var subnetId interface{}
+/// 		cfg.RequireObject("subnetId", &subnetId)
 /// 		selected, err := ec2.LookupRouteTable(ctx, &ec2.LookupRouteTableArgs{
 /// 			SubnetId: pulumi.StringRef(subnetId),
 /// 		}, nil)
@@ -6997,6 +8750,27 @@ Future<GetRouteResult> getRoute(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getroutetable" "selected" {
+///   subnet_id = var.subnetId
+/// }
+///
+/// resource "aws_ec2_route" "route" {
+///   route_table_id            = data.aws_ec2_getroutetable.selected.id
+///   destination_cidr_block    = "10.0.1.0/22"
+///   vpc_peering_connection_id = "pcx-45ff3dc1"
+/// }
+/// variable "subnetId" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7007,8 +8781,8 @@ Future<GetRouteResult> getRoute(
 /// import com.pulumi.aws.ec2.inputs.GetRouteTableArgs;
 /// import com.pulumi.aws.ec2.Route;
 /// import com.pulumi.aws.ec2.RouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7021,7 +8795,7 @@ Future<GetRouteResult> getRoute(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var subnetId = config.get("subnetId");
+///         final var subnetId = config.require("subnetId");
 ///         final var selected = Ec2Functions.getRouteTable(GetRouteTableArgs.builder()
 ///             .subnetId(subnetId)
 ///             .build());
@@ -7038,7 +8812,7 @@ Future<GetRouteResult> getRoute(
 /// ```yaml
 /// configuration:
 ///   subnetId:
-///     type: dynamic
+///     type: object
 /// resources:
 ///   route:
 ///     type: aws:ec2:Route
@@ -7090,9 +8864,9 @@ Future<GetRouteTableResult> getRouteTable(
 /// });
 /// const r: aws.ec2.Route[] = [];
 /// rts.then(rts => rts.ids).length.apply(rangeBody => {
-///     for (const range = {value: 0}; range.value < rangeBody; range.value++) {
-///         r.push(new aws.ec2.Route(`r-${range.value}`, {
-///             routeTableId: rts.then(rts => rts.ids[range.value]),
+///     for (let range = 0; range < rangeBody; range++) {
+///         r.push(new aws.ec2.Route(`r-${range}`, {
+///             routeTableId: rts.then(rts => rts.ids[range]),
 ///             destinationCidrBlock: "10.0.0.0/22",
 ///             vpcPeeringConnectionId: "pcx-0e9a7a9ecd137dc54",
 ///         }));
@@ -7101,6 +8875,7 @@ Future<GetRouteTableResult> getRouteTable(
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 ///
 /// rts = aws.ec2.get_route_tables(vpc_id=vpc_id,
@@ -7108,11 +8883,11 @@ Future<GetRouteTableResult> getRouteTable(
 ///         "name": "tag:kubernetes.io/kops/role",
 ///         "values": ["private*"],
 ///     }])
-/// r = []
+/// r: list[aws.ec2.Route] = []
 /// def create_r(range_body):
-///     for range in [{"value": i} for i in range(0, range_body)]:
-///         r.append(aws.ec2.Route(f"r-{range['value']}",
-///             route_table_id=rts.ids[range["value"]],
+///     for r_range in [{"value": i} for i in range(0, range_body)]:
+///         r.append(aws.ec2.Route(f"r-{r_range['value']}",
+///             route_table_id=rts.ids[r_range["value"]],
 ///             destination_cidr_block="10.0.0.0/22",
 ///             vpc_peering_connection_id="pcx-0e9a7a9ecd137dc54"))
 ///
@@ -7143,16 +8918,20 @@ Future<GetRouteTableResult> getRouteTable(
 ///     });
 ///
 ///     var r = new List<Aws.Ec2.Route>();
-///     for (var rangeIndex = 0; rangeIndex < rts.Apply(getRouteTablesResult => getRouteTablesResult.Ids).Length; rangeIndex++)
+///     rts.Apply(getRouteTablesResult => getRouteTablesResult.Ids).Length().Apply(rangeBody =>
 ///     {
-///         var range = new { Value = rangeIndex };
-///         r.Add(new Aws.Ec2.Route($"r-{range.Value}", new()
+///         for (var rangeIndex = 0; rangeIndex < rangeBody; rangeIndex++)
 ///         {
-///             RouteTableId = rts.Apply(getRouteTablesResult => getRouteTablesResult.Ids)[range.Value],
-///             DestinationCidrBlock = "10.0.0.0/22",
-///             VpcPeeringConnectionId = "pcx-0e9a7a9ecd137dc54",
-///         }));
-///     }
+///             var range = new { Value = rangeIndex };
+///             r.Add(new Aws.Ec2.Route($"r-{range.Value}", new()
+///             {
+///                 RouteTableId = rts.Apply(getRouteTablesResult => getRouteTablesResult.Ids)[range.Value],
+///                 DestinationCidrBlock = "10.0.0.0/22",
+///                 VpcPeeringConnectionId = "pcx-0e9a7a9ecd137dc54",
+///             }));
+///         }
+///         return 0;
+///     });
 /// });
 /// ```
 /// ```go
@@ -7199,6 +8978,30 @@ Future<GetRouteTableResult> getRouteTable(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getroutetables" "rts" {
+///   vpc_id = vpcId
+///   filters {
+///     name   = "tag:kubernetes.io/kops/role"
+///     values = ["private*"]
+///   }
+/// }
+///
+/// resource "aws_ec2_route" "r" {
+///   count                     = length(data.aws_ec2_getroutetables.rts.ids)
+///   route_table_id            = data.aws_ec2_getroutetables.rts.ids[count.index]
+///   destination_cidr_block    = "10.0.0.0/22"
+///   vpc_peering_connection_id = "pcx-0e9a7a9ecd137dc54"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7207,11 +9010,12 @@ Future<GetRouteTableResult> getRouteTable(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetRouteTablesArgs;
+/// import com.pulumi.aws.ec2.inputs.GetRouteTablesFilterArgs;
 /// import com.pulumi.aws.ec2.Route;
 /// import com.pulumi.aws.ec2.RouteArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7231,7 +9035,7 @@ Future<GetRouteTableResult> getRouteTable(
 ///                 .build())
 ///             .build());
 ///
-///         for (var i = 0; i < rts.ids().length(); i++) {
+///         for (var i = 0; i < rts.ids().size(); i++) {
 ///             new Route("r-" + i, RouteArgs.builder()
 ///                 .routeTableId(rts.ids()[range.value()])
 ///                 .destinationCidrBlock("10.0.0.0/22")
@@ -7330,7 +9134,8 @@ Future<GetRouteTablesResult> getRouteTables(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		cfg := config.New(ctx, "")
-/// 		securityGroupId := cfg.RequireObject("securityGroupId")
+/// 		var securityGroupId interface{}
+/// 		cfg.RequireObject("securityGroupId", &securityGroupId)
 /// 		selected, err := ec2.LookupSecurityGroup(ctx, &ec2.LookupSecurityGroupArgs{
 /// 			Id: pulumi.StringRef(securityGroupId),
 /// 		}, nil)
@@ -7348,6 +9153,26 @@ Future<GetRouteTablesResult> getRouteTables(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getsecuritygroup" "selected" {
+///   id = var.securityGroupId
+/// }
+///
+/// resource "aws_ec2_subnet" "subnet" {
+///   vpc_id     = data.aws_ec2_getsecuritygroup.selected.vpc_id
+///   cidr_block = "10.0.1.0/24"
+/// }
+/// variable "securityGroupId" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7358,8 +9183,8 @@ Future<GetRouteTablesResult> getRouteTables(
 /// import com.pulumi.aws.ec2.inputs.GetSecurityGroupArgs;
 /// import com.pulumi.aws.ec2.Subnet;
 /// import com.pulumi.aws.ec2.SubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7372,7 +9197,7 @@ Future<GetRouteTablesResult> getRouteTables(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var securityGroupId = config.get("securityGroupId");
+///         final var securityGroupId = config.require("securityGroupId");
 ///         final var selected = Ec2Functions.getSecurityGroup(GetSecurityGroupArgs.builder()
 ///             .id(securityGroupId)
 ///             .build());
@@ -7388,7 +9213,7 @@ Future<GetRouteTablesResult> getRouteTables(
 /// ```yaml
 /// configuration:
 ///   securityGroupId:
-///     type: dynamic
+///     type: object
 /// resources:
 ///   subnet:
 ///     type: aws:ec2:Subnet
@@ -7472,7 +9297,7 @@ Future<GetSecurityGroupResult> getSecurityGroup(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ec2.GetSecurityGroups(ctx, &ec2.GetSecurityGroupsArgs{
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"Application": "k8s",
 /// 				"Environment": "dev",
 /// 			},
@@ -7484,6 +9309,22 @@ Future<GetSecurityGroupResult> getSecurityGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getsecuritygroups" "test" {
+///   tags = {
+///     "Application" = "k8s"
+///     "Environment" = "dev"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7492,8 +9333,8 @@ Future<GetSecurityGroupResult> getSecurityGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetSecurityGroupsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7600,29 +9441,50 @@ Future<GetSecurityGroupResult> getSecurityGroup(
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := ec2.GetSecurityGroups(ctx, &ec2.GetSecurityGroupsArgs{
-/// Filters: []ec2.GetSecurityGroupsFilter{
-/// {
-/// Name: "group-name",
-/// Values: []string{
-/// "*nodes*",
-/// },
-/// },
-/// {
-/// Name: "vpc-id",
-/// Values: interface{}{
-/// vpcId,
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := ec2.GetSecurityGroups(ctx, &ec2.GetSecurityGroupsArgs{
+/// 			Filters: []ec2.GetSecurityGroupsFilter{
+/// 				{
+/// 					Name: "group-name",
+/// 					Values: []string{
+/// 						"*nodes*",
+/// 					},
+/// 				},
+/// 				{
+/// 					Name: "vpc-id",
+/// 					Values: pulumi.StringArray{
+/// 						vpcId,
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// return nil
-/// })
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getsecuritygroups" "test" {
+///   filters {
+///     name   = "group-name"
+///     values = ["*nodes*"]
+///   }
+///   filters {
+///     name   = "vpc-id"
+///     values = [vpcId]
+///   }
 /// }
 /// ```
 /// ```java
@@ -7633,8 +9495,9 @@ Future<GetSecurityGroupResult> getSecurityGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetSecurityGroupsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetSecurityGroupsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7737,6 +9600,18 @@ Future<GetSecurityGroupsResult> getSecurityGroups(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getserialconsoleaccess" "current" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7745,8 +9620,8 @@ Future<GetSecurityGroupsResult> getSecurityGroups(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetSerialConsoleAccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7784,6 +9659,275 @@ Future<GetSerialConsoleAccessResult> getSerialConsoleAccess(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSerialConsoleAccessResult.fromMap(result);
+}
+
+/// Provides details about an EC2 Service Link Virtual Interface. More information can be found in the [Outposts User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/how-outposts-works.html#how-service-link).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.ec2.getServiceLinkVirtualInterface({
+///     id: "slvif-1234567890abcdef0",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.ec2.get_service_link_virtual_interface(id="slvif-1234567890abcdef0")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Ec2.GetServiceLinkVirtualInterface.Invoke(new()
+///     {
+///         Id = "slvif-1234567890abcdef0",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := ec2.GetServiceLinkVirtualInterface(ctx, &ec2.GetServiceLinkVirtualInterfaceArgs{
+/// 			Id: pulumi.StringRef("slvif-1234567890abcdef0"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getservicelinkvirtualinterface" "example" {
+///   id = "slvif-1234567890abcdef0"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.ec2.Ec2Functions;
+/// import com.pulumi.aws.ec2.inputs.GetServiceLinkVirtualInterfaceArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = Ec2Functions.getServiceLinkVirtualInterface(GetServiceLinkVirtualInterfaceArgs.builder()
+///             .id("slvif-1234567890abcdef0")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:ec2:getServiceLinkVirtualInterface
+///       arguments:
+///         id: slvif-1234567890abcdef0
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_service_link_virtual_interface_get_service_link_virtual_interface_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetServiceLinkVirtualInterfaceResult> getServiceLinkVirtualInterface(
+  GetServiceLinkVirtualInterfaceArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:ec2/getServiceLinkVirtualInterface:getServiceLinkVirtualInterface',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetServiceLinkVirtualInterfaceResult.fromMap(result);
+}
+
+/// Provides a list of EC2 Service Link Virtual Interface IDs matching the provided filters. More information can be found in the [Outposts User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/how-outposts-works.html#how-service-link).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.ec2.getServiceLinkVirtualInterfaces({
+///     filters: [{
+///         name: "outpost-arn",
+///         values: [exampleAwsOutpostsOutpost.arn],
+///     }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.ec2.get_service_link_virtual_interfaces(filters=[{
+///     "name": "outpost-arn",
+///     "values": [example_aws_outposts_outpost["arn"]],
+/// }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Ec2.GetServiceLinkVirtualInterfaces.Invoke(new()
+///     {
+///         Filters = new[]
+///         {
+///             new Aws.Ec2.Inputs.GetServiceLinkVirtualInterfacesFilterInputArgs
+///             {
+///                 Name = "outpost-arn",
+///                 Values = new[]
+///                 {
+///                     exampleAwsOutpostsOutpost.Arn,
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := ec2.GetServiceLinkVirtualInterfaces(ctx, &ec2.GetServiceLinkVirtualInterfacesArgs{
+/// 			Filters: []ec2.GetServiceLinkVirtualInterfacesFilter{
+/// 				{
+/// 					Name: "outpost-arn",
+/// 					Values: pulumi.StringArray{
+/// 						exampleAwsOutpostsOutpost.Arn,
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getservicelinkvirtualinterfaces" "example" {
+///   filters {
+///     name   = "outpost-arn"
+///     values = [exampleAwsOutpostsOutpost.arn]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.ec2.Ec2Functions;
+/// import com.pulumi.aws.ec2.inputs.GetServiceLinkVirtualInterfacesArgs;
+/// import com.pulumi.aws.ec2.inputs.GetServiceLinkVirtualInterfacesFilterArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = Ec2Functions.getServiceLinkVirtualInterfaces(GetServiceLinkVirtualInterfacesArgs.builder()
+///             .filters(GetServiceLinkVirtualInterfacesFilterArgs.builder()
+///                 .name("outpost-arn")
+///                 .values(exampleAwsOutpostsOutpost.arn())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:ec2:getServiceLinkVirtualInterfaces
+///       arguments:
+///         filters:
+///           - name: outpost-arn
+///             values:
+///               - ${exampleAwsOutpostsOutpost.arn}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_service_link_virtual_interfaces_get_service_link_virtual_interfaces_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetServiceLinkVirtualInterfacesResult> getServiceLinkVirtualInterfaces(
+  GetServiceLinkVirtualInterfacesArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:ec2/getServiceLinkVirtualInterfaces:getServiceLinkVirtualInterfaces',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetServiceLinkVirtualInterfacesResult.fromMap(result);
 }
 
 /// &gt; There is only a single spot data feed subscription per account.
@@ -7835,6 +9979,18 @@ Future<GetSerialConsoleAccessResult> getSerialConsoleAccess(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getspotdatafeedsubscription" "default" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7843,8 +9999,8 @@ Future<GetSerialConsoleAccessResult> getSerialConsoleAccess(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetSpotDatafeedSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7969,6 +10125,24 @@ Future<GetSpotDatafeedSubscriptionResult> getSpotDatafeedSubscription(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getspotprice" "example" {
+///   instance_type     = "t3.medium"
+///   availability_zone = "us-west-2a"
+///   filters {
+///     name   = "product-description"
+///     values = ["Linux/UNIX"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7977,8 +10151,9 @@ Future<GetSpotDatafeedSubscriptionResult> getSpotDatafeedSubscription(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetSpotPriceArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetSpotPriceFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8121,7 +10296,8 @@ Future<GetSpotPriceResult> getSpotPrice(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		cfg := config.New(ctx, "")
-/// 		subnetId := cfg.RequireObject("subnetId")
+/// 		var subnetId interface{}
+/// 		cfg.RequireObject("subnetId", &subnetId)
 /// 		selected, err := ec2.LookupSubnet(ctx, &ec2.LookupSubnetArgs{
 /// 			Id: pulumi.StringRef(subnetId),
 /// 		}, nil)
@@ -8148,6 +10324,31 @@ Future<GetSpotPriceResult> getSpotPrice(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getsubnet" "selected" {
+///   id = var.subnetId
+/// }
+///
+/// resource "aws_ec2_securitygroup" "subnet_security_group" {
+///   vpc_id = data.aws_ec2_getsubnet.selected.vpc_id
+///   ingress {
+///     cidr_blocks = [data.aws_ec2_getsubnet.selected.cidr_block]
+///     from_port   = 80
+///     to_port     = 80
+///     protocol    = "tcp"
+///   }
+/// }
+/// variable "subnetId" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8159,8 +10360,8 @@ Future<GetSpotPriceResult> getSpotPrice(
 /// import com.pulumi.aws.ec2.SecurityGroup;
 /// import com.pulumi.aws.ec2.SecurityGroupArgs;
 /// import com.pulumi.aws.ec2.inputs.SecurityGroupIngressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8173,7 +10374,7 @@ Future<GetSpotPriceResult> getSpotPrice(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var subnetId = config.get("subnetId");
+///         final var subnetId = config.require("subnetId");
 ///         final var selected = Ec2Functions.getSubnet(GetSubnetArgs.builder()
 ///             .id(subnetId)
 ///             .build());
@@ -8194,7 +10395,7 @@ Future<GetSpotPriceResult> getSpotPrice(
 /// ```yaml
 /// configuration:
 ///   subnetId:
-///     type: dynamic
+///     type: object
 /// resources:
 ///   subnetSecurityGroup:
 ///     type: aws:ec2:SecurityGroup
@@ -8293,6 +10494,22 @@ Future<GetSpotPriceResult> getSpotPrice(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getsubnet" "selected" {
+///   filters {
+///     name   = "tag:Name"
+///     values = ["yakdriver"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8301,8 +10518,9 @@ Future<GetSpotPriceResult> getSpotPrice(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetSubnetArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetSubnetFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8370,9 +10588,9 @@ Future<GetSubnetResult> getSubnet(
 /// });
 /// const exampleGetSubnet = example.then(example => std.toset({
 ///     input: example.ids,
-/// })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: aws.ec2.getSubnet({
+/// })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: aws.ec2.getSubnet({
 ///     id: __value,
-/// }) })));
+/// }) }), {}));
 /// export const subnetCidrBlocks = exampleGetSubnet.apply(exampleGetSubnet => Object.values(exampleGetSubnet).map(s => (s.cidrBlock)));
 /// ```
 /// ```python
@@ -8384,8 +10602,8 @@ Future<GetSubnetResult> getSubnet(
 ///     "name": "vpc-id",
 ///     "values": [vpc_id],
 /// }])
-/// example_get_subnet = {__key: aws.ec2.get_subnet(id=__value) for __key, __value in std.toset(input=example.ids).result}
-/// pulumi.export("subnetCidrBlocks", [s.cidr_block for s in example_get_subnet])
+/// example_get_subnet = {str(__key): aws.ec2.get_subnet(id=__value) for __key, __value in enumerate(std.toset(input=example.ids).result)}
+/// pulumi.export("subnetCidrBlocks", [s.cidr_block for s in example_get_subnet.values()])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -8425,6 +10643,36 @@ Future<GetSubnetResult> getSubnet(
 ///     };
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getsubnets" "example" {
+///   filters {
+///     name   = "vpc-id"
+///     values = [vpcId]
+///   }
+/// }
+/// data "aws_ec2_getsubnet" "invoke_1" {
+///   for_each = toset(data.aws_ec2_getsubnets.example.ids)
+///   id       = each.value
+/// }
+///
+/// locals {
+///   exampleGetSubnet = {for __key, __value in toset(data.aws_ec2_getsubnets.example.ids) : __key => data.aws_ec2_getsubnet.invoke_1[__key]}
+/// }
+/// output "subnetCidrBlocks" {
+///   value = [for s in local.exampleGetSubnet : s.cidrBlock]
+/// }
+/// ```
 ///
 ///
 /// The following example retrieves a set of all subnets in a VPC with a custom
@@ -8461,6 +10709,7 @@ Future<GetSubnetResult> getSubnet(
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 /// import pulumi_std as std
 ///
@@ -8471,12 +10720,12 @@ Future<GetSubnetResult> getSubnet(
 ///     tags={
 ///         "Tier": "Private",
 ///     })
-/// app = []
-/// for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=private.ids).result)]:
-///     app.append(aws.ec2.Instance(f"app-{range['key']}",
+/// app: list[aws.ec2.Instance] = []
+/// for app_range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=private.ids).result)]:
+///     app.append(aws.ec2.Instance(f"app-{app_range['key']}",
 ///         ami=ami,
 ///         instance_type=aws.ec2.InstanceType.T2_MICRO,
-///         subnet_id=range["value"]))
+///         subnet_id=app_range["value"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -8529,40 +10778,70 @@ Future<GetSubnetResult> getSubnet(
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// private, err := ec2.GetSubnets(ctx, &ec2.GetSubnetsArgs{
-/// Filters: []ec2.GetSubnetsFilter{
-/// {
-/// Name: "vpc-id",
-/// Values: interface{}{
-/// vpcId,
-/// },
-/// },
-/// },
-/// Tags: map[string]interface{}{
-/// "Tier": "Private",
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		private, err := ec2.GetSubnets(ctx, &ec2.GetSubnetsArgs{
+/// 			Filters: []ec2.GetSubnetsFilter{
+/// 				{
+/// 					Name: "vpc-id",
+/// 					Values: pulumi.StringArray{
+/// 						vpcId,
+/// 					},
+/// 				},
+/// 			},
+/// 			Tags: map[string]string{
+/// 				"Tier": "Private",
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		var app []*ec2.Instance
+/// 		for key0, val0 := range []interface{}(std.Toset(ctx, &std.TosetArgs{
+/// 			Input: private.Ids,
+/// 		}, nil).Result) {
+/// 			__res, err := ec2.NewInstance(ctx, fmt.Sprintf("app-%v", key0), &ec2.InstanceArgs{
+/// 				Ami:          pulumi.Any(ami),
+/// 				InstanceType: pulumi.String(ec2.InstanceType_T2_Micro),
+/// 				SubnetId:     pulumi.Any(val0),
+/// 			})
+/// 			if err != nil {
+/// 				return err
+/// 			}
+/// 			app = append(app, __res)
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// var app []*ec2.Instance
-/// for key0, val0 := range interface{}(std.Toset(ctx, &std.TosetArgs{
-/// Input: private.Ids,
-/// }, nil).Result) {
-/// __res, err := ec2.NewInstance(ctx, fmt.Sprintf("app-%v", key0), &ec2.InstanceArgs{
-/// Ami: pulumi.Any(ami),
-/// InstanceType: pulumi.String(ec2.InstanceType_T2_Micro),
-/// SubnetId: pulumi.Any(val0),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
 /// }
-/// app = append(app, __res)
+///
+/// data "aws_ec2_getsubnets" "private" {
+///   filters {
+///     name   = "vpc-id"
+///     values = [vpcId]
+///   }
+///   tags = {
+///     "Tier" = "Private"
+///   }
 /// }
-/// return nil
-/// })
+///
+/// resource "aws_ec2_instance" "app" {
+///   for_each      = toset(data.aws_ec2_getsubnets.private.ids)
+///   ami           = ami
+///   instance_type = "t2.micro"
+///   subnet_id     = each.value
 /// }
 /// ```
 /// ```java
@@ -8573,11 +10852,12 @@ Future<GetSubnetResult> getSubnet(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetSubnetsArgs;
+/// import com.pulumi.aws.ec2.inputs.GetSubnetsFilterArgs;
 /// import com.pulumi.aws.ec2.Instance;
 /// import com.pulumi.aws.ec2.InstanceArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8597,7 +10877,7 @@ Future<GetSubnetResult> getSubnet(
 ///             .tags(Map.of("Tier", "Private"))
 ///             .build());
 ///
-///         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+///         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
 ///             .input(private_.ids())
 ///             .build()).result())) {
 ///             new Instance("app-" + range.key(), InstanceArgs.builder()
@@ -8706,6 +10986,22 @@ Future<GetSubnetsResult> getSubnets(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_gettransitgatewayroutetables" "example" {
+/// }
+///
+/// output "example" {
+///   value = data.aws_ec2_gettransitgatewayroutetables.example.ids
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8714,8 +11010,8 @@ Future<GetSubnetsResult> getSubnets(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetTransitGatewayRouteTablesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8849,7 +11145,8 @@ Future<GetTransitGatewayRouteTablesResult> getTransitGatewayRouteTables(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		cfg := config.New(ctx, "")
-/// 		vpcId := cfg.RequireObject("vpcId")
+/// 		var vpcId interface{}
+/// 		cfg.RequireObject("vpcId", &vpcId)
 /// 		selected, err := ec2.LookupVpc(ctx, &ec2.LookupVpcArgs{
 /// 			Id: pulumi.StringRef(vpcId),
 /// 		}, nil)
@@ -8876,6 +11173,30 @@ Future<GetTransitGatewayRouteTablesResult> getTransitGatewayRouteTables(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpc" "selected" {
+///   id = var.vpcId
+/// }
+///
+/// resource "aws_ec2_subnet" "example" {
+///   vpc_id            = data.aws_ec2_getvpc.selected.id
+///   availability_zone = "us-west-2a"
+///   cidr_block        = cidrsubnet(data.aws_ec2_getvpc.selected.cidr_block, 4, 1)
+/// }
+/// variable "vpcId" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8888,8 +11209,8 @@ Future<GetTransitGatewayRouteTablesResult> getTransitGatewayRouteTables(
 /// import com.pulumi.aws.ec2.SubnetArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.CidrsubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8902,7 +11223,7 @@ Future<GetTransitGatewayRouteTablesResult> getTransitGatewayRouteTables(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var vpcId = config.get("vpcId");
+///         final var vpcId = config.require("vpcId");
 ///         final var selected = Ec2Functions.getVpc(GetVpcArgs.builder()
 ///             .id(vpcId)
 ///             .build());
@@ -8923,7 +11244,7 @@ Future<GetTransitGatewayRouteTablesResult> getTransitGatewayRouteTables(
 /// ```yaml
 /// configuration:
 ///   vpcId:
-///     type: dynamic
+///     type: object
 /// resources:
 ///   example:
 ///     type: aws:ec2:Subnet
@@ -9016,6 +11337,19 @@ Future<GetVpcResult> getVpc(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcdhcpoptions" "example" {
+///   dhcp_options_id = "dopts-12345678"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -9024,8 +11358,8 @@ Future<GetVpcResult> getVpc(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpcDhcpOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9155,6 +11489,26 @@ Future<GetVpcResult> getVpc(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcdhcpoptions" "example" {
+///   filters {
+///     name   = "key"
+///     values = ["domain-name"]
+///   }
+///   filters {
+///     name   = "value"
+///     values = ["example.com"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -9163,8 +11517,9 @@ Future<GetVpcResult> getVpc(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpcDhcpOptionsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetVpcDhcpOptionsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9303,6 +11658,26 @@ Future<GetVpcDhcpOptionsResult> getVpcDhcpOptions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcendpoint" "s3" {
+///   vpc_id       = foo.id
+///   service_name = "com.amazonaws.us-west-2.s3"
+/// }
+///
+/// resource "aws_ec2_vpcendpointroutetableassociation" "private_s3" {
+///   vpc_endpoint_id = data.aws_ec2_getvpcendpoint.s3.id
+///   route_table_id  = private.id
+/// }
+/// # Declare the data source
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -9313,8 +11688,8 @@ Future<GetVpcDhcpOptionsResult> getVpcDhcpOptions(
 /// import com.pulumi.aws.ec2.inputs.GetVpcEndpointArgs;
 /// import com.pulumi.aws.ec2.VpcEndpointRouteTableAssociation;
 /// import com.pulumi.aws.ec2.VpcEndpointRouteTableAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9468,7 +11843,7 @@ Future<GetVpcEndpointResult> getVpcEndpoint(
 /// 		}
 /// 		// Create a VPC endpoint
 /// 		_, err = ec2.NewVpcEndpoint(ctx, "ep", &ec2.VpcEndpointArgs{
-/// 			VpcId:       foo.ID(),
+/// 			VpcId:       foo.ID().ToIDOutput().ToStringOutput(),
 /// 			ServiceName: pulumi.String(s3.ServiceName),
 /// 		})
 /// 		if err != nil {
@@ -9477,6 +11852,31 @@ Future<GetVpcEndpointResult> getVpcEndpoint(
 /// 		return nil
 /// 	})
 /// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcendpointservice" "s3" {
+///   service      = "s3"
+///   service_type = "Gateway"
+/// }
+///
+/// # Create a VPC
+/// resource "aws_ec2_vpc" "foo" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// # Create a VPC endpoint
+/// resource "aws_ec2_vpcendpoint" "ep" {
+///   vpc_id       = aws_ec2_vpc.foo.id
+///   service_name = data.aws_ec2_getvpcendpointservice.s3.service_name
+/// }
+/// # Declare the data source
 /// ```
 /// ```java
 /// package generated_program;
@@ -9490,8 +11890,8 @@ Future<GetVpcEndpointResult> getVpcEndpoint(
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.ec2.VpcEndpoint;
 /// import com.pulumi.aws.ec2.VpcEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9599,6 +11999,19 @@ Future<GetVpcEndpointResult> getVpcEndpoint(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcendpointservice" "custome" {
+///   service_name = "com.amazonaws.vpce.us-west-2.vpce-svc-0e87519c997c63cd8"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -9607,8 +12020,8 @@ Future<GetVpcEndpointResult> getVpcEndpoint(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpcEndpointServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9712,6 +12125,22 @@ Future<GetVpcEndpointResult> getVpcEndpoint(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcendpointservice" "test" {
+///   filters {
+///     name   = "service-name"
+///     values = ["some-service"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -9720,8 +12149,9 @@ Future<GetVpcEndpointResult> getVpcEndpoint(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpcEndpointServiceArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetVpcEndpointServiceFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9825,6 +12255,19 @@ Future<GetVpcEndpointServiceResult> getVpcEndpointService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcipam" "example" {
+///   id = "ipam-abcd1234"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -9833,8 +12276,8 @@ Future<GetVpcEndpointServiceResult> getVpcEndpointService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpcIpamArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -10007,6 +12450,31 @@ Future<GetVpcIpamResult> getVpcIpam(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcipampool" "test" {
+///   filters {
+///     name   = "description"
+///     values = ["*test*"]
+///   }
+///   filters {
+///     name   = "address-family"
+///     values = ["ipv4"]
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "test" {
+///   ipv4_ipam_pool_id   = data.aws_ec2_getvpcipampool.test.id
+///   ipv4_netmask_length = 28
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -10015,10 +12483,11 @@ Future<GetVpcIpamResult> getVpcIpam(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpcIpamPoolArgs;
+/// import com.pulumi.aws.ec2.inputs.GetVpcIpamPoolFilterArgs;
 /// import com.pulumi.aws.ec2.Vpc;
 /// import com.pulumi.aws.ec2.VpcArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -10208,6 +12677,29 @@ Future<GetVpcIpamPoolResult> getVpcIpamPool(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcipampoolcidrs" "c" {
+///   ipam_pool_id = data.aws_ec2_getvpcipampool.p.id
+/// }
+/// data "aws_ec2_getvpcipampool" "p" {
+///   filters {
+///     name   = "description"
+///     values = ["*mypool*"]
+///   }
+///   filters {
+///     name   = "address-family"
+///     values = ["ipv4"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -10216,9 +12708,10 @@ Future<GetVpcIpamPoolResult> getVpcIpamPool(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpcIpamPoolArgs;
+/// import com.pulumi.aws.ec2.inputs.GetVpcIpamPoolFilterArgs;
 /// import com.pulumi.aws.ec2.inputs.GetVpcIpamPoolCidrsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -10306,10 +12799,10 @@ Future<GetVpcIpamPoolResult> getVpcIpamPool(
 ///     }])
 /// mycidrs = [cidr.cidr for cidr in c.ipam_pool_cidrs if cidr.state == "provisioned"]
 /// pls = aws.ec2.ManagedPrefixList("pls",
-///     entries=[{"key": k, "value": v} for k, v in mycidrs].apply(lambda entries: [{
-///         "cidr": entry["value"],
-///         "description": entry["value"],
-///     } for entry in entries]),
+///     entries=[{"key": k, "value": v} for k, v in sorted(mycidrs.items())].apply(lambda entries: [aws.ec2.ManagedPrefixListEntryArgs(
+///         cidr=entry["value"],
+///         description=entry["value"],
+///     ) for entry in entries]),
 ///     name=f"IPAM Pool ({test['id']}) Cidrs",
 ///     address_family="IPv4",
 ///     max_entries=len(mycidrs))
@@ -10359,6 +12852,39 @@ Future<GetVpcIpamPoolResult> getVpcIpamPool(
 ///     });
 ///
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcipampoolcidrs" "c" {
+///   ipam_pool_id = "ipam-pool-123"
+///   filters {
+///     name   = "cidr"
+///     values = ["10.*"]
+///   }
+/// }
+///
+/// resource "aws_ec2_managedprefixlist" "pls" {
+///   dynamic "entries" {
+///     for_each = entries(local.mycidrs)
+///     content {
+///       cidr        = entries.value.value
+///       description = entries.value.value
+///     }
+///   }
+///   name           ="IPAM Pool (${test.id}) Cidrs"
+///   address_family = "IPv4"
+///   max_entries    = length(local.mycidrs)
+/// }
+/// locals {
+///   mycidrs = [for cidr in data.aws_ec2_getvpcipampoolcidrs.c.ipam_pool_cidrs : cidr.cidr if cidr.state == "provisioned"]
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_vpc_ipam_pool_cidrs_get_vpc_ipam_pool_cidrs_args_doc}
 /// [options] Invoke options controlling this call.
@@ -10482,6 +13008,26 @@ Future<GetVpcIpamPoolCidrsResult> getVpcIpamPoolCidrs(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcipampools" "test" {
+///   filters {
+///     name   = "description"
+///     values = ["*test*"]
+///   }
+///   filters {
+///     name   = "address-family"
+///     values = ["ipv4"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -10490,8 +13036,9 @@ Future<GetVpcIpamPoolCidrsResult> getVpcIpamPoolCidrs(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpcIpamPoolsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetVpcIpamPoolsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -10608,6 +13155,19 @@ Future<GetVpcIpamPoolsResult> getVpcIpamPools(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcipams" "example" {
+///   ipam_ids = ["ipam-abcd1234"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -10616,8 +13176,8 @@ Future<GetVpcIpamPoolsResult> getVpcIpamPools(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpcIpamsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -10722,6 +13282,22 @@ Future<GetVpcIpamPoolsResult> getVpcIpamPools(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcipams" "example" {
+///   filters {
+///     name   = "tags.Some"
+///     values = ["Value"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -10730,8 +13306,9 @@ Future<GetVpcIpamPoolsResult> getVpcIpamPools(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpcIpamsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetVpcIpamsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -10841,6 +13418,22 @@ Future<GetVpcIpamPoolsResult> getVpcIpamPools(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcipams" "example" {
+///   filters {
+///     name   = "tier"
+///     values = ["free"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -10849,8 +13442,9 @@ Future<GetVpcIpamPoolsResult> getVpcIpamPools(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpcIpamsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetVpcIpamsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -10995,7 +13589,7 @@ Future<GetVpcIpamsResult> getVpcIpams(
 /// 		}
 /// 		// Create a route
 /// 		_, err = ec2.NewRoute(ctx, "r", &ec2.RouteArgs{
-/// 			RouteTableId:           rt.ID(),
+/// 			RouteTableId:           rt.ID().ToIDOutput().ToStringOutput(),
 /// 			DestinationCidrBlock:   pulumi.String(pc.PeerCidrBlock),
 /// 			VpcPeeringConnectionId: pulumi.String(pc.Id),
 /// 		})
@@ -11005,6 +13599,32 @@ Future<GetVpcIpamsResult> getVpcIpams(
 /// 		return nil
 /// 	})
 /// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcpeeringconnection" "pc" {
+///   vpc_id          = foo.id
+///   peer_cidr_block = "10.0.1.0/22"
+/// }
+///
+/// # Create a route table
+/// resource "aws_ec2_routetable" "rt" {
+///   vpc_id = foo.id
+/// }
+/// # Create a route
+/// resource "aws_ec2_route" "r" {
+///   route_table_id            = aws_ec2_routetable.rt.id
+///   destination_cidr_block    = data.aws_ec2_getvpcpeeringconnection.pc.peer_cidr_block
+///   vpc_peering_connection_id = data.aws_ec2_getvpcpeeringconnection.pc.id
+/// }
+/// # Declare the data source
 /// ```
 /// ```java
 /// package generated_program;
@@ -11018,8 +13638,8 @@ Future<GetVpcIpamsResult> getVpcIpams(
 /// import com.pulumi.aws.ec2.RouteTableArgs;
 /// import com.pulumi.aws.ec2.Route;
 /// import com.pulumi.aws.ec2.RouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -11156,6 +13776,32 @@ Future<GetVpcPeeringConnectionResult> getVpcPeeringConnection(
 ///
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcpeeringconnections" "pcs" {
+///   filters {
+///     name   = "requester-vpc-info.vpc-id"
+///     values = [foo.id]
+///   }
+/// }
+/// data "aws_ec2_getvpcpeeringconnection" "invoke_1" {
+///   for_each = toset(range(length(data.aws_ec2_getvpcpeeringconnections.pcs.ids)))
+///   id       = data.aws_ec2_getvpcpeeringconnections.pcs.ids[each.value]
+/// }
+///
+/// # Declare the data source
+/// # get the details of each resource
+/// locals {
+///   pc = [for __index in range(length(data.aws_ec2_getvpcpeeringconnections.pcs.ids)) : data.aws_ec2_getvpcpeeringconnection.invoke_1[__index]]
+/// }
+/// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_vpc_peering_connections_get_vpc_peering_connections_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVpcPeeringConnectionsResult> getVpcPeeringConnections(
@@ -11237,7 +13883,7 @@ Future<GetVpcPeeringConnectionsResult> getVpcPeeringConnections(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		foo, err := ec2.GetVpcs(ctx, &ec2.GetVpcsArgs{
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"service": "production",
 /// 			},
 /// 		}, nil)
@@ -11249,6 +13895,25 @@ Future<GetVpcPeeringConnectionsResult> getVpcPeeringConnections(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcs" "foo" {
+///   tags = {
+///     "service" = "production"
+///   }
+/// }
+///
+/// output "foo" {
+///   value = data.aws_ec2_getvpcs.foo.ids
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -11257,8 +13922,8 @@ Future<GetVpcPeeringConnectionsResult> getVpcPeeringConnections(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpcsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -11305,8 +13970,8 @@ Future<GetVpcPeeringConnectionsResult> getVpcPeeringConnections(
 ///     })));
 ///     const testFlowLog: aws.ec2.FlowLog[] = [];
 /// foo.ids.length.apply(rangeBody => {
-///         for (const range = {value: 0}; range.value < rangeBody; range.value++) {
-///             testFlowLog.push(new aws.ec2.FlowLog(`test_flow_log-${range.value}`, {vpcId: fooGetVpc.apply(fooGetVpc => fooGetVpc[range.value].id)}));
+///         for (let range = 0; range < rangeBody; range++) {
+///             testFlowLog.push(new aws.ec2.FlowLog(`test_flow_log-${range}`, {vpcId: fooGetVpc.apply(fooGetVpc => fooGetVpc[range].id)}));
 ///         }
 ///     });
 ///     return {
@@ -11316,14 +13981,15 @@ Future<GetVpcPeeringConnectionsResult> getVpcPeeringConnections(
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 ///
 /// foo = aws.ec2.get_vpcs()
 /// foo_get_vpc = [aws.ec2.get_vpc(id=foo.ids[__index]) for __index in len(foo.ids).apply(lambda length: range(length))]
-/// test_flow_log = []
+/// test_flow_log: list[aws.ec2.FlowLog] = []
 /// def create_test_flow_log(range_body):
-///     for range in [{"value": i} for i in range(0, range_body)]:
-///         test_flow_log.append(aws.ec2.FlowLog(f"test_flow_log-{range['value']}", vpc_id=foo_get_vpc.apply(lambda foo_get_vpc: foo_get_vpc[range["value"]].id)))
+///     for test_flow_log_range in [{"value": i} for i in range(0, range_body)]:
+///         test_flow_log.append(aws.ec2.FlowLog(f"test_flow_log-{test_flow_log_range['value']}", vpc_id=foo_get_vpc.apply(lambda foo_get_vpc: foo_get_vpc[test_flow_log_range["value"]].id)))
 ///
 /// (len(foo.ids)).apply(create_test_flow_log)
 /// pulumi.export("foo", foo.ids)
@@ -11341,19 +14007,50 @@ Future<GetVpcPeeringConnectionsResult> getVpcPeeringConnections(
 ///     var fooGetVpc = ;
 ///
 ///     var testFlowLog = new List<Aws.Ec2.FlowLog>();
-///     for (var rangeIndex = 0; rangeIndex < foo.Apply(getVpcsResult => getVpcsResult.Ids).Length; rangeIndex++)
+///     foo.Apply(getVpcsResult => getVpcsResult.Ids).Length().Apply(rangeBody =>
 ///     {
-///         var range = new { Value = rangeIndex };
-///         testFlowLog.Add(new Aws.Ec2.FlowLog($"test_flow_log-{range.Value}", new()
+///         for (var rangeIndex = 0; rangeIndex < rangeBody; rangeIndex++)
 ///         {
-///             VpcId = fooGetVpc.Apply(fooGetVpc => fooGetVpc[range.Value].Id),
-///         }));
-///     }
+///             var range = new { Value = rangeIndex };
+///             testFlowLog.Add(new Aws.Ec2.FlowLog($"test_flow_log-{range.Value}", new()
+///             {
+///                 VpcId = fooGetVpc.Apply(fooGetVpc => fooGetVpc[range.Value].Id),
+///             }));
+///         }
+///         return 0;
+///     });
 ///     return new Dictionary<string, object?>
 ///     {
 ///         ["foo"] = foo.Apply(getVpcsResult => getVpcsResult.Ids),
 ///     };
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpcs" "foo" {
+/// }
+/// data "aws_ec2_getvpc" "invoke_1" {
+///   for_each = toset(range(length(data.aws_ec2_getvpcs.foo.ids)))
+///   id       = data.aws_ec2_getvpcs.foo.ids[each.value]
+/// }
+///
+/// resource "aws_ec2_flowlog" "test_flow_log" {
+///   count  = length(data.aws_ec2_getvpcs.foo.ids)
+///   vpc_id = local.fooGetVpc[count.index].id
+/// }
+/// locals {
+///   fooGetVpc = [for __index in range(length(data.aws_ec2_getvpcs.foo.ids)) : data.aws_ec2_getvpc.invoke_1[__index]]
+/// }
+/// output "foo" {
+///   value = data.aws_ec2_getvpcs.foo.ids
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_vpcs_get_vpcs_args_doc}
 /// [options] Invoke options controlling this call.
@@ -11456,6 +14153,26 @@ Future<GetVpcsResult> getVpcs(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpnconnection" "example" {
+///   filters {
+///     name   = "customer-gateway-id"
+///     values = ["cgw-1234567890"]
+///   }
+/// }
+///
+/// output "vpnConnectionId" {
+///   value = data.aws_ec2_getvpnconnection.example.vpn_connection_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -11464,8 +14181,9 @@ Future<GetVpcsResult> getVpcs(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpnConnectionArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetVpnConnectionFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -11562,6 +14280,23 @@ Future<GetVpcsResult> getVpcs(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpnconnection" "example" {
+///   vpn_connection_id = "vpn-abcd1234567890"
+/// }
+///
+/// output "gatewayAssociationState" {
+///   value = data.aws_ec2_getvpnconnection.example.gateway_association_state
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -11570,8 +14305,8 @@ Future<GetVpcsResult> getVpcs(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpnConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -11701,6 +14436,26 @@ Future<GetVpnConnectionResult> getVpnConnection(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpngateway" "selected" {
+///   filters {
+///     name   = "tag:Name"
+///     values = ["vpn-gw"]
+///   }
+/// }
+///
+/// output "vpnGatewayId" {
+///   value = data.aws_ec2_getvpngateway.selected.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -11709,8 +14464,9 @@ Future<GetVpnConnectionResult> getVpnConnection(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpnGatewayArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetVpnGatewayFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

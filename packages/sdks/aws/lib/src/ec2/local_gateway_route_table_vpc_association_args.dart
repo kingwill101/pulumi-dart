@@ -11,7 +11,7 @@ class LocalGatewayRouteTableVpcAssociationArgs {
   final pulumi.Input<String> localGatewayRouteTableId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Identifier of EC2 VPC.
   ///
@@ -21,7 +21,7 @@ class LocalGatewayRouteTableVpcAssociationArgs {
   /// Creates a new [LocalGatewayRouteTableVpcAssociationArgs].
   /// [localGatewayRouteTableId] Identifier of EC2 Local Gateway Route Table.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcId] Identifier of EC2 VPC.
   const LocalGatewayRouteTableVpcAssociationArgs({
     required this.localGatewayRouteTableId,
@@ -48,4 +48,3 @@ class LocalGatewayRouteTableVpcAssociationArgs {
     );
   }
 }
-

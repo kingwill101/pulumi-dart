@@ -38,4 +38,3 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
     );
   }
 }
-

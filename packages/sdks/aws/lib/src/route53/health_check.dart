@@ -92,6 +92,27 @@ import 'health_check_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_healthcheck" "example" {
+///   fqdn              = "example.com"
+///   port              = 80
+///   type              = "HTTP"
+///   resource_path     = "/"
+///   failure_threshold = "5"
+///   request_interval  = "30"
+///   tags = {
+///     "Name" = "tf-test-health-check"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +121,8 @@ import 'health_check_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.HealthCheck;
 /// import com.pulumi.aws.route53.HealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -219,6 +240,25 @@ import 'health_check_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_healthcheck" "example" {
+///   failure_threshold = "5"
+///   fqdn              = "example.com"
+///   port              = 443
+///   request_interval  = "30"
+///   resource_path     = "/"
+///   search_string     = "example"
+///   type              = "HTTPS_STR_MATCH"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -227,8 +267,8 @@ import 'health_check_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.HealthCheck;
 /// import com.pulumi.aws.route53.HealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -347,6 +387,24 @@ import 'health_check_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_healthcheck" "parent" {
+///   type                   = "CALCULATED"
+///   child_health_threshold = 1
+///   child_healthchecks     = [child.id]
+///   tags = {
+///     "Name" = "tf-test-calculated-health-check"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -355,8 +413,8 @@ import 'health_check_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.HealthCheck;
 /// import com.pulumi.aws.route53.HealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -429,7 +487,7 @@ import 'health_check_state.dart';
 ///     namespace="AWS/EC2",
 ///     period=120,
 ///     statistic="Average",
-///     threshold=80,
+///     threshold=float(80),
 ///     alarm_description="This metric monitors ec2 cpu utilization")
 /// foo = aws.route53.HealthCheck("foo",
 ///     type="CLOUDWATCH_METRIC",
@@ -506,6 +564,33 @@ import 'health_check_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_metricalarm" "foobar" {
+///   name                = "test-foobar5"
+///   comparison_operator = "GreaterThanOrEqualToThreshold"
+///   evaluation_periods  = "2"
+///   metric_name         = "CPUUtilization"
+///   namespace           = "AWS/EC2"
+///   period              = "120"
+///   statistic           = "Average"
+///   threshold           = "80"
+///   alarm_description   = "This metric monitors ec2 cpu utilization"
+/// }
+/// resource "aws_route53_healthcheck" "foo" {
+///   type                            = "CLOUDWATCH_METRIC"
+///   cloudwatch_alarm_name           = aws_cloudwatch_metricalarm.foobar.name
+///   cloudwatch_alarm_region         = "us-west-2"
+///   insufficient_data_health_status = "Healthy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -516,8 +601,8 @@ import 'health_check_state.dart';
 /// import com.pulumi.aws.cloudwatch.MetricAlarmArgs;
 /// import com.pulumi.aws.route53.HealthCheck;
 /// import com.pulumi.aws.route53.HealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -602,7 +687,7 @@ import 'health_check_state.dart';
 ///     cloudwatchAlarmRegion: "us-west-2",
 ///     insufficientDataHealthStatus: "Healthy",
 ///     triggers: {
-///         threshold: example.threshold,
+///         threshold: example.threshold.apply(x =>String(x)),
 ///     },
 /// });
 /// ```
@@ -618,7 +703,7 @@ import 'health_check_state.dart';
 ///     namespace="AWS/EC2",
 ///     period=120,
 ///     statistic="Average",
-///     threshold=80,
+///     threshold=float(80),
 ///     alarm_description="This metric monitors ec2 cpu utilization")
 /// example_health_check = aws.route53.HealthCheck("example",
 ///     type="CLOUDWATCH_METRIC",
@@ -626,7 +711,7 @@ import 'health_check_state.dart';
 ///     cloudwatch_alarm_region="us-west-2",
 ///     insufficient_data_health_status="Healthy",
 ///     triggers={
-///         "threshold": example.threshold,
+///         "threshold": example.threshold.apply(lambda x: str(x)),
 ///     })
 /// ```
 /// ```csharp
@@ -705,6 +790,36 @@ import 'health_check_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_metricalarm" "example" {
+///   name                = "example"
+///   comparison_operator = "GreaterThanOrEqualToThreshold"
+///   evaluation_periods  = "2"
+///   metric_name         = "CPUUtilization"
+///   namespace           = "AWS/EC2"
+///   period              = "120"
+///   statistic           = "Average"
+///   threshold           = "80"
+///   alarm_description   = "This metric monitors ec2 cpu utilization"
+/// }
+/// resource "aws_route53_healthcheck" "example" {
+///   type                            = "CLOUDWATCH_METRIC"
+///   cloudwatch_alarm_name           = aws_cloudwatch_metricalarm.example.name
+///   cloudwatch_alarm_region         = "us-west-2"
+///   insufficient_data_health_status = "Healthy"
+///   triggers = {
+///     "threshold" = aws_cloudwatch_metricalarm.example.threshold
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -715,8 +830,8 @@ import 'health_check_state.dart';
 /// import com.pulumi.aws.cloudwatch.MetricAlarmArgs;
 /// import com.pulumi.aws.route53.HealthCheck;
 /// import com.pulumi.aws.route53.HealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -801,13 +916,13 @@ class HealthCheck extends pulumi.CustomResource {
   /// * For calculated health checks, Route 53 stops aggregating the status of the referenced health checks.
   /// * For health checks that monitor CloudWatch alarms, Route 53 stops monitoring the corresponding CloudWatch metrics.
   ///
-  /// &gt; **Note:** After you disable a health check, Route 53 considers the status of the health check to always be healthy. If you configured DNS failover, Route 53 continues to route traffic to the corresponding resources. If you want to stop routing traffic to a resource, change the value of `invert_healthcheck`.
+  /// &gt; **Note:** After you disable a health check, Route 53 considers the status of the health check to always be healthy. If you configured DNS failover, Route 53 continues to route traffic to the corresponding resources. If you want to stop routing traffic to a resource, change the value of `invertHealthcheck`.
   late final pulumi.Output<bool?> disabled;
-  /// A boolean value that indicates whether Route53 should send the `fqdn` to the endpoint when performing the health check. This defaults to AWS' defaults: when the `type` is "HTTPS" `enable_sni` defaults to `true`, when `type` is anything else `enable_sni` defaults to `false`.
+  /// A boolean value that indicates whether Route53 should send the `fqdn` to the endpoint when performing the health check. This defaults to AWS' defaults: when the `type` is "HTTPS" `enableSni` defaults to `true`, when `type` is anything else `enableSni` defaults to `false`.
   late final pulumi.Output<bool> enableSni;
   /// The number of consecutive health checks that an endpoint must pass or fail.
   late final pulumi.Output<int> failureThreshold;
-  /// The fully qualified domain name of the endpoint to be checked. If a value is set for `ip_address`, the value set for `fqdn` will be passed in the `Host` header.
+  /// The fully qualified domain name of the endpoint to be checked. If a value is set for `ipAddress`, the value set for `fqdn` will be passed in the `Host` header.
   late final pulumi.Output<String?> fqdn;
   /// The status of the health check when CloudWatch has insufficient data about the state of associated alarm. Valid values are `Healthy` , `Unhealthy` and `LastKnownStatus`.
   late final pulumi.Output<String?> insufficientDataHealthStatus;
@@ -820,7 +935,7 @@ class HealthCheck extends pulumi.CustomResource {
   /// The port of the endpoint to be checked.
   late final pulumi.Output<int?> port;
   /// This is a reference name used in Caller Reference
-  /// (helpful for identifying single health_check set amongst others)
+  /// (helpful for identifying single healthCheck set amongst others)
   late final pulumi.Output<String?> referenceName;
   /// List of AWS Regions from which Amazon Route 53 health checkers check the specified endpoint. Valid values are `us-east-1`, `us-west-1`, `us-west-2`, `eu-west-1`, `ap-southeast-1`, `ap-southeast-2`, `ap-northeast-1`, and `sa-east-1`. If not specified, all of the regions listed under **Valid values** are used by default. Once this argument is set, removing it has no effect.
   late final pulumi.Output<List<String>> regions;
@@ -832,9 +947,9 @@ class HealthCheck extends pulumi.CustomResource {
   late final pulumi.Output<String?> routingControlArn;
   /// String searched in the first 5120 bytes of the response body for check to be considered healthy. Only valid with `HTTP_STR_MATCH` and `HTTPS_STR_MATCH`.
   late final pulumi.Output<String?> searchString;
-  /// A map of tags to assign to the health check. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the health check. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Map of arbitrary keys and values that, when changed, will trigger an in-place update of the CloudWatch alarm arguments. Use this argument to synchronize the health check when an alarm is changed. See example above.
   late final pulumi.Output<Map<String, String>> triggers;

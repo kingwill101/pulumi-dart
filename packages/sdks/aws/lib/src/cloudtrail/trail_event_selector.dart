@@ -6,7 +6,7 @@ import 'trail_event_selector_data_resource.dart';
 class TrailEventSelector {
   /// Configuration block for data events. See details below.
   final pulumi.Input<List<TrailEventSelectorDataResource>>? dataResources;
-  /// A set of event sources to exclude. Valid values include: `kms.amazonaws.com` and `rdsdata.amazonaws.com`. `include_management_events` must be set to`true` to allow this.
+  /// A set of event sources to exclude. Valid values include: `kms.amazonaws.com` and `rdsdata.amazonaws.com`. `includeManagementEvents` must be set to`true` to allow this.
   final pulumi.Input<List<String>>? excludeManagementEventSources;
   /// Whether to include management events for your trail. Defaults to `true`.
   final pulumi.Input<bool>? includeManagementEvents;
@@ -15,7 +15,7 @@ class TrailEventSelector {
 
   /// Creates a new [TrailEventSelector].
   /// [dataResources] Configuration block for data events. See details below.
-  /// [excludeManagementEventSources] A set of event sources to exclude. Valid values include: `kms.amazonaws.com` and `rdsdata.amazonaws.com`. `include_management_events` must be set to`true` to allow this.
+  /// [excludeManagementEventSources] A set of event sources to exclude. Valid values include: `kms.amazonaws.com` and `rdsdata.amazonaws.com`. `includeManagementEvents` must be set to`true` to allow this.
   /// [includeManagementEvents] Whether to include management events for your trail. Defaults to `true`.
   /// [readWriteType] Type of events to log. Valid values are `ReadOnly`, `WriteOnly`, `All`. Default value is `All`.
   const TrailEventSelector({
@@ -43,4 +43,3 @@ class TrailEventSelector {
     );
   }
 }
-

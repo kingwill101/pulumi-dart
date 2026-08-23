@@ -26,7 +26,7 @@ class LaunchArgs {
   final pulumi.Input<String>? region;
   /// A block that defines the traffic allocation percentages among the feature variations during each step of the launch. Detailed below.
   final pulumi.Input<LaunchScheduledSplitsConfig>? scheduledSplitsConfig;
-  /// Tags to apply to the launch. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the launch. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [LaunchArgs].
@@ -38,7 +38,7 @@ class LaunchArgs {
   /// [randomizationSalt] When Evidently assigns a particular user session to a launch, it must use a randomization ID to determine which variation the user session is served. This randomization ID is a combination of the entity ID and randomizationSalt. If you omit randomizationSalt, Evidently uses the launch name as the randomizationSalt.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scheduledSplitsConfig] A block that defines the traffic allocation percentages among the feature variations during each step of the launch. Detailed below.
-  /// [tags] Tags to apply to the launch. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Tags to apply to the launch. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const LaunchArgs({
     this.description,
     required this.groups,
@@ -79,4 +79,3 @@ class LaunchArgs {
     );
   }
 }
-

@@ -254,7 +254,7 @@ import 'flow_log_state.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("example"),
-/// 			Role:   exampleRole.ID(),
+/// 			Role:   exampleRole.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy: pulumi.String(example.Json),
 /// 		})
 /// 		if err != nil {
@@ -262,6 +262,52 @@ import 'flow_log_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["vpc-flow-logs.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["logs:CreateLogGroup", "logs:CreateLogStream", "logs:PutLogEvents", "logs:DescribeLogGroups", "logs:DescribeLogStreams"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_ec2_flowlog" "example" {
+///   iam_role_arn    = aws_iam_role.example.arn
+///   log_destination = aws_cloudwatch_loggroup.example.arn
+///   traffic_type    = "ALL"
+///   vpc_id          = exampleAwsVpc.id
+/// }
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name = "example"
+/// }
+/// resource "aws_iam_role" "example" {
+///   name               = "example"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicy" "example" {
+///   name   = "example"
+///   role   = aws_iam_role.example.id
+///   policy = data.aws_iam_getpolicydocument.example.json
 /// }
 /// ```
 /// ```java
@@ -274,14 +320,16 @@ import 'flow_log_state.dart';
 /// import com.pulumi.aws.cloudwatch.LogGroupArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.ec2.FlowLog;
 /// import com.pulumi.aws.ec2.FlowLogArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
 /// import com.pulumi.aws.iam.RolePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -403,6 +451,65 @@ import 'flow_log_state.dart';
 /// ### Amazon Data Firehose logging
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["firehose.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "example" {
+///   effect    = "Allow"
+///   actions   = ["logs:CreateLogDelivery", "logs:DeleteLogDelivery", "logs:ListLogDeliveries", "logs:GetLogDelivery", "firehose:TagDeliveryStream"]
+///   resources = ["*"]
+/// }
+///
+/// resource "aws_ec2_flowlog" "example" {
+///   log_destination      = aws_kinesis_firehosedeliverystream.example.arn
+///   log_destination_type = "kinesis-data-firehose"
+///   traffic_type         = "ALL"
+///   vpc_id               = exampleAwsVpc.id
+/// }
+/// resource "aws_kinesis_firehosedeliverystream" "example" {
+///   name        = "kinesis_firehose_test"
+///   destination = "extended_s3"
+///   extended_s3_configuration = {
+///     role_arn   = aws_iam_role.example.arn
+///     bucket_arn = aws_s3_bucket.example.arn
+///   }
+///   tags = {
+///     "LogDeliveryEnabled" = "true"
+///   }
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// resource "aws_s3_bucketacl" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   acl    = "private"
+/// }
+/// resource "aws_iam_role" "example" {
+///   name               = "firehose_test_role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicy" "example" {
+///   name   = "test"
+///   role   = aws_iam_role.example.id
+///   policy = data.aws_iam_getpolicydocument.example.json
+/// }
+/// ```
 /// ```yaml
 /// resources:
 ///   exampleFlowLog:
@@ -556,6 +663,25 @@ import 'flow_log_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_flowlog" "example" {
+///   log_destination      = aws_s3_bucket.example.arn
+///   log_destination_type = "s3"
+///   traffic_type         = "ALL"
+///   vpc_id               = exampleAwsVpc.id
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -566,8 +692,8 @@ import 'flow_log_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.ec2.FlowLog;
 /// import com.pulumi.aws.ec2.FlowLogArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -706,6 +832,29 @@ import 'flow_log_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_flowlog" "example" {
+///   log_destination      = aws_s3_bucket.example.arn
+///   log_destination_type = "s3"
+///   traffic_type         = "ALL"
+///   vpc_id               = exampleAwsVpc.id
+///   destination_options = {
+///     file_format        = "parquet"
+///     per_hour_partition = true
+///   }
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -717,8 +866,8 @@ import 'flow_log_state.dart';
 /// import com.pulumi.aws.ec2.FlowLog;
 /// import com.pulumi.aws.ec2.FlowLogArgs;
 /// import com.pulumi.aws.ec2.inputs.FlowLogDestinationOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -807,7 +956,7 @@ import 'flow_log_state.dart';
 /// });
 /// const dst = new aws.iam.Role("dst", {
 ///     name: "AWSLogDeliveryFirehoseCrossAccountRole",
-///     assumeRolePolicy: dstAssumeRolePolicy.apply(dstAssumeRolePolicy => dstAssumeRolePolicy.json),
+///     assumeRolePolicy: dstAssumeRolePolicy.json,
 /// });
 /// const srcRolePolicy = aws.iam.getPolicyDocumentOutput({
 ///     statements: [
@@ -848,7 +997,7 @@ import 'flow_log_state.dart';
 /// const srcPolicy = new aws.iam.RolePolicy("src_policy", {
 ///     name: "tf-example-mySourceRolePolicy",
 ///     role: srcRole.name,
-///     policy: srcRolePolicy.apply(srcRolePolicy => srcRolePolicy.json),
+///     policy: srcRolePolicy.json,
 /// });
 /// const dstFirehoseDeliveryStream = new aws.kinesis.FirehoseDeliveryStream("dst", {tags: {
 ///     LogDeliveryEnabled: "true",
@@ -1229,10 +1378,8 @@ import 'flow_log_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		dst, err := iam.NewRole(ctx, "dst", &iam.RoleArgs{
-/// 			Name: pulumi.String("AWSLogDeliveryFirehoseCrossAccountRole"),
-/// 			AssumeRolePolicy: pulumi.String(dstAssumeRolePolicy.ApplyT(func(dstAssumeRolePolicy iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &dstAssumeRolePolicy.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:             pulumi.String("AWSLogDeliveryFirehoseCrossAccountRole"),
+/// 			AssumeRolePolicy: dstAssumeRolePolicy.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1288,11 +1435,9 @@ import 'flow_log_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "src_policy", &iam.RolePolicyArgs{
-/// 			Name: pulumi.String("tf-example-mySourceRolePolicy"),
-/// 			Role: srcRole.Name,
-/// 			Policy: pulumi.String(srcRolePolicy.ApplyT(func(srcRolePolicy iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &srcRolePolicy.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:   pulumi.String("tf-example-mySourceRolePolicy"),
+/// 			Role:   srcRole.Name,
+/// 			Policy: srcRolePolicy.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1309,7 +1454,7 @@ import 'flow_log_state.dart';
 /// 			LogDestinationType:      pulumi.String("kinesis-data-firehose"),
 /// 			LogDestination:          dstFirehoseDeliveryStream.Arn,
 /// 			TrafficType:             pulumi.String("ALL"),
-/// 			VpcId:                   src.ID(),
+/// 			VpcId:                   src.ID().ToIDOutput().ToStringOutput(),
 /// 			IamRoleArn:              srcRole.Arn,
 /// 			DeliverCrossAccountRole: dst.Arn,
 /// 		})
@@ -1345,6 +1490,106 @@ import 'flow_log_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "srcAssumeRolePolicy" {
+///   statements {
+///     actions = ["sts:AssumeRole"]
+///     effect  = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["delivery.logs.amazonaws.com"]
+///     }
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "srcRolePolicy" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["iam:PassRole"]
+///     resources = [aws_iam_role.src.arn]
+///     conditions {
+///       test     = "StringEquals"
+///       variable = "iam:PassedToService"
+///       values   = ["delivery.logs.amazonaws.com"]
+///     }
+///     conditions {
+///       test     = "StringLike"
+///       variable = "iam:AssociatedResourceARN"
+///       values   = [aws_ec2_vpc.src.arn]
+///     }
+///   }
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["logs:CreateLogDelivery", "logs:DeleteLogDelivery", "logs:ListLogDeliveries", "logs:GetLogDelivery"]
+///     resources = ["*"]
+///   }
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["sts:AssumeRole"]
+///     resources = [aws_iam_role.dst.arn]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "dstAssumeRolePolicy" {
+///   statements {
+///     actions = ["sts:AssumeRole"]
+///     effect  = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = [aws_iam_role.src.arn]
+///     }
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "dstRolePolicy" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["iam:CreateServiceLinkedRole", "firehose:TagDeliveryStream"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// # For source account
+/// resource "aws_ec2_vpc" "src" {
+/// }
+/// resource "aws_iam_role" "src" {
+///   name               = "tf-example-mySourceRole"
+///   assume_role_policy = data.aws_iam_getpolicydocument.srcAssumeRolePolicy.json
+/// }
+/// resource "aws_iam_rolepolicy" "src_policy" {
+///   name   = "tf-example-mySourceRolePolicy"
+///   role   = aws_iam_role.src.name
+///   policy = data.aws_iam_getpolicydocument.srcRolePolicy.json
+/// }
+/// resource "aws_ec2_flowlog" "src" {
+///   log_destination_type       = "kinesis-data-firehose"
+///   log_destination            = aws_kinesis_firehosedeliverystream.dst.arn
+///   traffic_type               = "ALL"
+///   vpc_id                     = aws_ec2_vpc.src.id
+///   iam_role_arn               = aws_iam_role.src.arn
+///   deliver_cross_account_role = aws_iam_role.dst.arn
+/// }
+/// resource "aws_iam_role" "dst" {
+///   name               = "AWSLogDeliveryFirehoseCrossAccountRole"
+///   assume_role_policy = data.aws_iam_getpolicydocument.dstAssumeRolePolicy.json
+/// }
+/// resource "aws_iam_rolepolicy" "dst" {
+///   name   = "AWSLogDeliveryFirehoseCrossAccountRolePolicy"
+///   role   = aws_iam_role.dst.name
+///   policy = data.aws_iam_getpolicydocument.dstRolePolicy.json
+/// }
+/// resource "aws_kinesis_firehosedeliverystream" "dst" {
+///   tags = {
+///     "LogDeliveryEnabled" = "true"
+///   }
+/// }
+/// # For destination account
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1354,16 +1599,19 @@ import 'flow_log_state.dart';
 /// import com.pulumi.aws.ec2.Vpc;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
 /// import com.pulumi.aws.iam.RolePolicyArgs;
 /// import com.pulumi.aws.kinesis.FirehoseDeliveryStream;
 /// import com.pulumi.aws.kinesis.FirehoseDeliveryStreamArgs;
 /// import com.pulumi.aws.ec2.FlowLog;
 /// import com.pulumi.aws.ec2.FlowLogArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1603,6 +1851,18 @@ import 'flow_log_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) Flow Log ID.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Flow Logs using the `id`. For example:
 ///
 /// ```sh
@@ -1613,7 +1873,7 @@ class FlowLog extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// ARN of the IAM role in the destination account used for cross-account delivery of flow logs.
   late final pulumi.Output<String?> deliverCrossAccountRole;
-  /// Describes the destination options for a flow log. More details below.
+  /// Destination options for a flow log. More details below.
   late final pulumi.Output<FlowLogDestinationOptions?> destinationOptions;
   /// Elastic Network Interface ID to attach to.
   late final pulumi.Output<String?> eniId;
@@ -1623,11 +1883,9 @@ class FlowLog extends pulumi.CustomResource {
   late final pulumi.Output<String> logDestination;
   /// Logging destination type. Valid values: `cloud-watch-logs`, `s3`, `kinesis-data-firehose`. Default: `cloud-watch-logs`.
   late final pulumi.Output<String?> logDestinationType;
-  /// The fields to include in the flow log record. Accepted format example: `"$${interface-id} $${srcaddr} $${dstaddr} $${srcport} $${dstport}"`.
+  /// Fields to include in the flow log record. Accepted format example: `"$${interface-id} $${srcaddr} $${dstaddr} $${srcport} $${dstport}"`.
   late final pulumi.Output<String> logFormat;
-  /// The maximum interval of time during which a flow of packets is captured and aggregated into a flow log record.
-  /// Valid Values: `60` seconds (1 minute) or `600` seconds (10 minutes). Default: `600`.
-  /// When `transit_gateway_id` or `transit_gateway_attachment_id` is specified, `max_aggregation_interval` *must* be 60 seconds (1 minute).
+  /// Maximum interval of time during which a flow of packets is captured and aggregated into a flow log record. Valid Values: `60` seconds (1 minute) or `600` seconds (10 minutes). Default: `600`. When `transitGatewayId` or `transitGatewayAttachmentId` is specified, `maxAggregationInterval` *must* be 60 seconds (1 minute).
   late final pulumi.Output<int?> maxAggregationInterval;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -1635,11 +1893,13 @@ class FlowLog extends pulumi.CustomResource {
   late final pulumi.Output<String?> regionalNatGatewayId;
   /// Subnet ID to attach to.
   late final pulumi.Output<String?> subnetId;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tag configuration for the Flow Logs Amazon EC2 Tags feature fields (e.g., `$${instance-tag}`) used in `logFormat`. More details below.
+  late final pulumi.Output<List<Map<String, dynamic>>?> tagFieldSpecifications;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The type of traffic to capture. Valid values: `ACCEPT`,`REJECT`, `ALL`. Required if `eni_id`, `regional_nat_gateway_id`, `subnet_id`, or `vpc_id` is specified.
+  /// Type of traffic to capture. Valid values: `ACCEPT`,`REJECT`, `ALL`. Required if `eniId`, `regionalNatGatewayId`, `subnetId`, or `vpcId` is specified.
   late final pulumi.Output<String?> trafficType;
   /// Transit Gateway Attachment ID to attach to.
   late final pulumi.Output<String?> transitGatewayAttachmentId;
@@ -1647,7 +1907,7 @@ class FlowLog extends pulumi.CustomResource {
   late final pulumi.Output<String?> transitGatewayId;
   /// VPC ID to attach to.
   ///
-  /// &gt; **NOTE:** One of `eni_id`, `regional_nat_gateway_id`, `subnet_id`, `transit_gateway_id`, `transit_gateway_attachment_id`, or `vpc_id` must be specified.
+  /// &gt; **NOTE:** One of `eniId`, `regionalNatGatewayId`, `subnetId`, `transitGatewayId`, `transitGatewayAttachmentId`, or `vpcId` must be specified.
   late final pulumi.Output<String?> vpcId;
 
   /// Creates a new [FlowLog].
@@ -1676,6 +1936,7 @@ class FlowLog extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     regionalNatGatewayId = registerOutput<String?>('regionalNatGatewayId');
     subnetId = registerOutput<String?>('subnetId');
+    tagFieldSpecifications = registerOutput<List<Map<String, dynamic>>?>('tagFieldSpecifications');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     trafficType = registerOutput<String?>('trafficType');
@@ -1719,6 +1980,7 @@ class FlowLog extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     regionalNatGatewayId = registerOutput<String?>('regionalNatGatewayId');
     subnetId = registerOutput<String?>('subnetId');
+    tagFieldSpecifications = registerOutput<List<Map<String, dynamic>>?>('tagFieldSpecifications');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     trafficType = registerOutput<String?>('trafficType');

@@ -156,6 +156,38 @@ import 'collaboration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cleanrooms_collaboration" "test_collaboration" {
+///   name                     = "pulumi-example-collaboration"
+///   creator_member_abilities = ["CAN_QUERY", "CAN_RECEIVE_RESULTS"]
+///   creator_display_name     = "Creator "
+///   description              = "I made this collaboration with Pulumi!"
+///   query_log_status         = "DISABLED"
+///   analytics_engine         = "SPARK"
+///   data_encryption_metadata = {
+///     allow_clear_text                            = true
+///     allow_duplicates                            = true
+///     allow_joins_on_columns_with_different_names = true
+///     preserve_nulls                              = false
+///   }
+///   members {
+///     account_id       = 123456789012
+///     display_name     = "Other member"
+///     member_abilities = []
+///   }
+///   tags = {
+///     "Project" = "Pulumi"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -166,8 +198,8 @@ import 'collaboration_state.dart';
 /// import com.pulumi.aws.cleanrooms.CollaborationArgs;
 /// import com.pulumi.aws.cleanrooms.inputs.CollaborationDataEncryptionMetadataArgs;
 /// import com.pulumi.aws.cleanrooms.inputs.CollaborationMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -243,7 +275,7 @@ import 'collaboration_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///

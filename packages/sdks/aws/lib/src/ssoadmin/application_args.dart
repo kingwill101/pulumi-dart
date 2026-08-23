@@ -20,13 +20,13 @@ class ApplicationArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
-  /// Options for the portal associated with an application. See `portal_options` below.
+  /// Options for the portal associated with an application. See `portalOptions` below.
   final pulumi.Input<ApplicationPortalOptions>? portalOptions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// Status of the application. Valid values are `ENABLED` and `DISABLED`.
   final pulumi.Input<String>? status;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ApplicationArgs].
@@ -35,10 +35,10 @@ class ApplicationArgs {
   /// [description] Description of the application.
   /// [instanceArn] ARN of the instance of IAM Identity Center.
   /// [name] Name of the application.
-  /// [portalOptions] Options for the portal associated with an application. See `portal_options` below.
+  /// [portalOptions] Options for the portal associated with an application. See `portalOptions` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Status of the application. Valid values are `ENABLED` and `DISABLED`.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ApplicationArgs({
     required this.applicationProviderArn,
     this.clientToken,
@@ -79,4 +79,3 @@ class ApplicationArgs {
     );
   }
 }
-

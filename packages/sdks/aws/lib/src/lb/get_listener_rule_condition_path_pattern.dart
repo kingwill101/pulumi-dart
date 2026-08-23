@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetListenerRuleConditionPathPattern {
   /// Set of regular expressions to compare against the request URL.
   final pulumi.Input<List<String>> regexValues;
-  /// Set of `key`-`value` pairs indicating the query string parameters to match.
+  /// Set of source IP addresses in CIDR format for Application Load Balancers
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetListenerRuleConditionPathPattern].
   /// [regexValues] Set of regular expressions to compare against the request URL.
-  /// [values] Set of `key`-`value` pairs indicating the query string parameters to match.
+  /// [values] Set of source IP addresses in CIDR format for Application Load Balancers
   const GetListenerRuleConditionPathPattern({
     required this.regexValues,
     required this.values,
@@ -30,4 +30,3 @@ class GetListenerRuleConditionPathPattern {
     );
   }
 }
-

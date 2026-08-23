@@ -111,6 +111,30 @@ import 'quick_connect_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_quickconnect" "test" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name        = "Example Name"
+///   description = "quick connect phone number"
+///   quick_connect_config = {
+///     quick_connect_type = "PHONE_NUMBER"
+///     phone_configs = [{
+///       "phoneNumber" = "+12345678912"
+///     }]
+///   }
+///   tags = {
+///     "Name" = "Example Quick Connect"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -120,8 +144,9 @@ import 'quick_connect_state.dart';
 /// import com.pulumi.aws.connect.QuickConnect;
 /// import com.pulumi.aws.connect.QuickConnectArgs;
 /// import com.pulumi.aws.connect.inputs.QuickConnectQuickConnectConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.connect.inputs.QuickConnectQuickConnectConfigPhoneConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -168,7 +193,7 @@ import 'quick_connect_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amazon Connect Quick Connects using the `instance_id` and `quick_connect_id` separated by a colon (`:`). For example:
+/// Using `pulumi import`, import Amazon Connect Quick Connects using the `instanceId` and `quickConnectId` separated by a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:connect/quickConnect:QuickConnect example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
@@ -182,15 +207,15 @@ class QuickConnect extends pulumi.CustomResource {
   late final pulumi.Output<String> instanceId;
   /// Specifies the name of the Quick Connect.
   late final pulumi.Output<String> name;
-  /// A block that defines the configuration information for the Quick Connect: `quick_connect_type` and one of `phone_config`, `queue_config`, `user_config` . The Quick Connect Config block is documented below.
+  /// A block that defines the configuration information for the Quick Connect: `quickConnectType` and one of `phoneConfig`, `queueConfig`, `userConfig` . The Quick Connect Config block is documented below.
   late final pulumi.Output<QuickConnectQuickConnectConfig> quickConnectConfig;
   /// The identifier for the Quick Connect.
   late final pulumi.Output<String> quickConnectId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Tags to apply to the Quick Connect. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the Quick Connect. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [QuickConnect].

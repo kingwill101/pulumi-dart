@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_listener_default_action_forward_target_group.dart';
 
 class GetListenerDefaultActionForward {
+  /// Target groups that the listener forwards traffic to. See `targetGroups` Block below.
   final pulumi.Input<List<GetListenerDefaultActionForwardTargetGroup>> targetGroups;
 
   /// Creates a new [GetListenerDefaultActionForward].
-  /// [targetGroups] Required.
+  /// [targetGroups] Target groups that the listener forwards traffic to. See `targetGroups` Block below.
   const GetListenerDefaultActionForward({
     required this.targetGroups,
   });
@@ -24,4 +25,3 @@ class GetListenerDefaultActionForward {
     );
   }
 }
-

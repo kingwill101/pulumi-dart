@@ -41,7 +41,7 @@ class ChannelState {
   final pulumi.Input<String>? roleArn;
   /// Whether to start/stop channel. Default: `false`
   final pulumi.Input<bool>? startChannel;
-  /// A map of tags to assign to the channel. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the channel. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Settings for the VPC outputs. See VPC for more details.
@@ -62,7 +62,7 @@ class ChannelState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] Concise argument description.
   /// [startChannel] Whether to start/stop channel. Default: `false`
-  /// [tags] A map of tags to assign to the channel. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the channel. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [vpc] Settings for the VPC outputs. See VPC for more details.
   const ChannelState({
@@ -129,4 +129,3 @@ class ChannelState {
     );
   }
 }
-

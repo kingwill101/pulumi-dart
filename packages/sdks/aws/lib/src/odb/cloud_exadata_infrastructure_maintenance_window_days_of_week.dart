@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CloudExadataInfrastructureMaintenanceWindowDaysOfWeek {
+  /// Name of the day of the week. Valid values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
   final pulumi.Input<String> name;
 
   /// Creates a new [CloudExadataInfrastructureMaintenanceWindowDaysOfWeek].
-  /// [name] Required.
+  /// [name] Name of the day of the week. Valid values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
   const CloudExadataInfrastructureMaintenanceWindowDaysOfWeek({
     required this.name,
   });
@@ -23,4 +24,3 @@ class CloudExadataInfrastructureMaintenanceWindowDaysOfWeek {
     );
   }
 }
-

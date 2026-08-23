@@ -81,7 +81,7 @@ import 'egress_only_internet_gateway_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewEgressOnlyInternetGateway(ctx, "example", &ec2.EgressOnlyInternetGatewayArgs{
-/// 			VpcId: example.ID(),
+/// 			VpcId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("main"),
 /// 			},
@@ -91,6 +91,26 @@ import 'egress_only_internet_gateway_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block                       = "10.1.0.0/16"
+///   assign_generated_ipv6_cidr_block = true
+/// }
+/// resource "aws_ec2_egressonlyinternetgateway" "example" {
+///   vpc_id = aws_ec2_vpc.example.id
+///   tags = {
+///     "Name" = "main"
+///   }
 /// }
 /// ```
 /// ```java
@@ -103,8 +123,8 @@ import 'egress_only_internet_gateway_state.dart';
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.ec2.EgressOnlyInternetGateway;
 /// import com.pulumi.aws.ec2.EgressOnlyInternetGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -156,9 +176,9 @@ import 'egress_only_internet_gateway_state.dart';
 class EgressOnlyInternetGateway extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The VPC ID to create in.
   late final pulumi.Output<String> vpcId;

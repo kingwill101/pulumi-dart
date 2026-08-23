@@ -21,10 +21,8 @@ class GetAccessPointResult {
   final String dataSourceType;
   /// VPC endpoint for the access point.
   final Map<String, String> endpoints;
-  /// The provider-assigned unique ID for this managed resource.
-  final String id;
   final String name;
-  /// Indicates whether the access point allows access from the public Internet.
+  /// Whether the access point allows access from the public Internet.
   final String networkOrigin;
   /// `PublicAccessBlock` configuration for the access point.
   final List<GetAccessPointPublicAccessBlockConfiguration> publicAccessBlockConfigurations;
@@ -43,9 +41,8 @@ class GetAccessPointResult {
   /// [dataSourceId] Unique identifier for the data source of the access point.
   /// [dataSourceType] Type of the data source that the access point is attached to.
   /// [endpoints] VPC endpoint for the access point.
-  /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
-  /// [networkOrigin] Indicates whether the access point allows access from the public Internet.
+  /// [networkOrigin] Whether the access point allows access from the public Internet.
   /// [publicAccessBlockConfigurations] `PublicAccessBlock` configuration for the access point.
   /// [region] Required.
   /// [tags] Tags assigned to the access point.
@@ -59,7 +56,6 @@ class GetAccessPointResult {
     required this.dataSourceId,
     required this.dataSourceType,
     required this.endpoints,
-    required this.id,
     required this.name,
     required this.networkOrigin,
     required this.publicAccessBlockConfigurations,
@@ -78,7 +74,6 @@ class GetAccessPointResult {
       'dataSourceId': dataSourceId,
       'dataSourceType': dataSourceType,
       'endpoints': endpoints,
-      'id': id,
       'name': name,
       'networkOrigin': networkOrigin,
       'publicAccessBlockConfigurations': pulumi.Input.encodeList<GetAccessPointPublicAccessBlockConfiguration, Map<String, dynamic>>(publicAccessBlockConfigurations, (value) => value.toMap()),
@@ -98,7 +93,6 @@ class GetAccessPointResult {
       dataSourceId: map['dataSourceId'] as String,
       dataSourceType: map['dataSourceType'] as String,
       endpoints: (map['endpoints'] as Map).cast<String, String>(),
-      id: map['id'] as String,
       name: map['name'] as String,
       networkOrigin: map['networkOrigin'] as String,
       publicAccessBlockConfigurations: pulumi.Input.decodeList<GetAccessPointPublicAccessBlockConfiguration>(map['publicAccessBlockConfigurations']!, (value) => GetAccessPointPublicAccessBlockConfiguration.fromMap((value as Map).cast<String, dynamic>())),
@@ -108,4 +102,3 @@ class GetAccessPointResult {
     );
   }
 }
-

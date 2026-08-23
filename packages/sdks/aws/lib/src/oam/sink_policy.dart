@@ -162,14 +162,14 @@ import 'sink_policy_state.dart';
 /// 					},
 /// 					"Effect":   "Allow",
 /// 					"Resource": "*",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string][]string{
 /// 						"AWS": []string{
 /// 							"1111111111111",
 /// 							"222222222222",
 /// 						},
 /// 					},
-/// 					"Condition": map[string]interface{}{
-/// 						"ForAllValues:StringEquals": map[string]interface{}{
+/// 					"Condition": map[string]map[string][]string{
+/// 						"ForAllValues:StringEquals": map[string][]string{
 /// 							"oam:ResourceTypes": []string{
 /// 								"AWS::CloudWatch::Metric",
 /// 								"AWS::Logs::LogGroup",
@@ -194,6 +194,38 @@ import 'sink_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_oam_sink" "example" {
+///   name = "ExampleSink"
+/// }
+/// resource "aws_oam_sinkpolicy" "example" {
+///   sink_identifier = aws_oam_sink.example.arn
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action"   = ["oam:CreateLink", "oam:UpdateLink"]
+///       "Effect"   = "Allow"
+///       "Resource" = "*"
+///       "Principal" = {
+///         "AWS" = ["1111111111111", "222222222222"]
+///       }
+///       "Condition" = {
+///         "ForAllValues:StringEquals" = {
+///           "oam:ResourceTypes" = ["AWS::CloudWatch::Metric", "AWS::Logs::LogGroup"]
+///         }
+///       }
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -205,8 +237,8 @@ import 'sink_policy_state.dart';
 /// import com.pulumi.aws.oam.SinkPolicy;
 /// import com.pulumi.aws.oam.SinkPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -289,7 +321,7 @@ import 'sink_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CloudWatch Observability Access Manager Sink Policy using the `sink_identifier`. For example:
+/// Using `pulumi import`, import CloudWatch Observability Access Manager Sink Policy using the `sinkIdentifier`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:oam/sinkPolicy:SinkPolicy example arn:aws:oam:us-west-2:123456789012:sink/sink-id

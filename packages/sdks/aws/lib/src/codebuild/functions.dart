@@ -124,6 +124,35 @@ import 'get_fleet_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_codebuild_getfleet" "test" {
+///   name = aws_codebuild_fleet.test.name
+/// }
+///
+/// resource "aws_codebuild_fleet" "test" {
+///   base_capacity     = 2
+///   compute_type      = "BUILD_GENERAL1_SMALL"
+///   environment_type  = "LINUX_CONTAINER"
+///   name              = "full-example-codebuild-fleet"
+///   overflow_behavior = "QUEUE"
+///   scaling_configuration = {
+///     max_capacity = 5
+///     scaling_type = "TARGET_TRACKING_SCALING"
+///     target_tracking_scaling_configs = [{
+///       "metricType"  = "FLEET_UTILIZATION_RATE"
+///       "targetValue" = 97.5
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -133,10 +162,11 @@ import 'get_fleet_result.dart';
 /// import com.pulumi.aws.codebuild.Fleet;
 /// import com.pulumi.aws.codebuild.FleetArgs;
 /// import com.pulumi.aws.codebuild.inputs.FleetScalingConfigurationArgs;
+/// import com.pulumi.aws.codebuild.inputs.FleetScalingConfigurationTargetTrackingScalingConfigArgs;
 /// import com.pulumi.aws.codebuild.CodebuildFunctions;
 /// import com.pulumi.aws.codebuild.inputs.GetFleetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -249,6 +279,19 @@ import 'get_fleet_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_codebuild_getfleet" "example" {
+///   name = "my-codebuild-fleet-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -257,8 +300,8 @@ import 'get_fleet_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.codebuild.CodebuildFunctions;
 /// import com.pulumi.aws.codebuild.inputs.GetFleetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

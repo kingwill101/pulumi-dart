@@ -3,17 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesZendeskErrorHandlingConfig {
-  /// Name of the Amazon S3 bucket.
   final pulumi.Input<String>? bucketName;
-  /// Amazon S3 bucket prefix.
   final pulumi.Input<String>? bucketPrefix;
-  /// If the flow should fail after the first instance of a failure when attempting to place data in the destination.
+  /// Whether to fail the flow after the first instance of a failure when attempting to place data in the destination.
   final pulumi.Input<bool>? failOnFirstDestinationError;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesZendeskErrorHandlingConfig].
-  /// [bucketName] Name of the Amazon S3 bucket.
-  /// [bucketPrefix] Amazon S3 bucket prefix.
-  /// [failOnFirstDestinationError] If the flow should fail after the first instance of a failure when attempting to place data in the destination.
+  /// [bucketName] Optional.
+  /// [bucketPrefix] Optional.
+  /// [failOnFirstDestinationError] Whether to fail the flow after the first instance of a failure when attempting to place data in the destination.
   const FlowDestinationFlowConfigDestinationConnectorPropertiesZendeskErrorHandlingConfig({
     this.bucketName,
     this.bucketPrefix,
@@ -36,4 +34,3 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesZendeskErrorHandlin
     );
   }
 }
-

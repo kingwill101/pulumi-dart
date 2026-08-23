@@ -94,6 +94,28 @@ import 'deployment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appconfig_deployment" "example" {
+///   application_id           = exampleAwsAppconfigApplication.id
+///   configuration_profile_id = exampleAwsAppconfigConfigurationProfile.configurationProfileId
+///   configuration_version    = exampleAwsAppconfigHostedConfigurationVersion.versionNumber
+///   deployment_strategy_id   = exampleAwsAppconfigDeploymentStrategy.id
+///   description              = "My example deployment"
+///   environment_id           = exampleAwsAppconfigEnvironment.environmentId
+///   kms_key_identifier       = exampleAwsKmsKey.arn
+///   tags = {
+///     "Type" = "AppConfig Deployment"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +124,8 @@ import 'deployment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appconfig.Deployment;
 /// import com.pulumi.aws.appconfig.DeploymentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -172,15 +194,15 @@ class DeploymentType extends pulumi.CustomResource {
   late final pulumi.Output<String> environmentId;
   /// ARN of the KMS key used to encrypt configuration data.
   late final pulumi.Output<String> kmsKeyArn;
-  /// The KMS key identifier (key ID, key alias, or key ARN). AppConfig uses this to encrypt the configuration data using a customer managed key.
+  /// KMS key identifier (key ID, key alias, or key ARN). AppConfig uses this to encrypt the configuration data using a customer managed key.
   late final pulumi.Output<String?> kmsKeyIdentifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// State of the deployment.
   late final pulumi.Output<String> state;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [DeploymentType].

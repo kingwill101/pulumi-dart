@@ -103,6 +103,23 @@ import 'vpc_endpoint_vpc_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_vpcendpoint" "foo" {
+///   domain_arn = domain1.arn
+///   vpc_options = {
+///     security_group_ids = [test.id, test2.id]
+///     subnet_ids         = [testAwsSubnet.id, test2AwsSubnet.id]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +129,8 @@ import 'vpc_endpoint_vpc_options.dart';
 /// import com.pulumi.aws.opensearch.VpcEndpoint;
 /// import com.pulumi.aws.opensearch.VpcEndpointArgs;
 /// import com.pulumi.aws.opensearch.inputs.VpcEndpointVpcOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -158,7 +175,7 @@ import 'vpc_endpoint_vpc_options.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import OpenSearch VPC endpoint connections using the `id`. For example:
+/// Using `pulumi import`, import OpenSearch VPC endpoints using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:opensearch/vpcEndpoint:VpcEndpoint example endpoint-id

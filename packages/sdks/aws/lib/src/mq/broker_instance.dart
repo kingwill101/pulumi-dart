@@ -3,24 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BrokerInstance {
-  /// URL of the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) or the [RabbitMQ Management UI](https://www.rabbitmq.com/management.html#external-monitoring) depending on `engine_type`.
+  /// URL of the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) or the [RabbitMQ Management UI](https://www.rabbitmq.com/management.html#external-monitoring) depending on `engineType`.
   final pulumi.Input<String>? consoleUrl;
-  /// Broker's wire-level protocol endpoints in the following order & format referenceable e.g., as `instances.0.endpoints.0` (SSL):
-  /// * For `ActiveMQ`:
-  /// * `ssl://broker-id.mq.us-west-2.amazonaws.com:61617`
-  /// * `amqp+ssl://broker-id.mq.us-west-2.amazonaws.com:5671`
-  /// * `stomp+ssl://broker-id.mq.us-west-2.amazonaws.com:61614`
-  /// * `mqtt+ssl://broker-id.mq.us-west-2.amazonaws.com:8883`
-  /// * `wss://broker-id.mq.us-west-2.amazonaws.com:61619`
-  /// * For `RabbitMQ`:
-  /// * `amqps://broker-id.mq.us-west-2.amazonaws.com:5671`
+  /// `amqps://broker-id.mq.us-west-2.amazonaws.com:5671`
   final pulumi.Input<List<String>>? endpoints;
   /// IP Address of the broker.
   final pulumi.Input<String>? ipAddress;
 
   /// Creates a new [BrokerInstance].
-  /// [consoleUrl] URL of the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) or the [RabbitMQ Management UI](https://www.rabbitmq.com/management.html#external-monitoring) depending on `engine_type`.
-  /// [endpoints] Broker's wire-level protocol endpoints in the following order & format referenceable e.g., as `instances.0.endpoints.0` (SSL):
+  /// [consoleUrl] URL of the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) or the [RabbitMQ Management UI](https://www.rabbitmq.com/management.html#external-monitoring) depending on `engineType`.
+  /// [endpoints] `amqps://broker-id.mq.us-west-2.amazonaws.com:5671`
   /// [ipAddress] IP Address of the broker.
   const BrokerInstance({
     this.consoleUrl,
@@ -44,4 +36,3 @@ class BrokerInstance {
     );
   }
 }
-

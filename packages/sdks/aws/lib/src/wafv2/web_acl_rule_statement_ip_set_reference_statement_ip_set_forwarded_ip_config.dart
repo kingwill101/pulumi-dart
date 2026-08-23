@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementIpSetReferenceStatementIpSetForwardedIpConfig {
-  /// Match status to assign to the web request if the request doesn't have a valid IP address in the specified position. Valid values include: `MATCH` or `NO_MATCH`.
+  /// Action to take when the IP address in the header is invalid. Valid values: `MATCH`, `NO_MATCH`.
   final pulumi.Input<String> fallbackBehavior;
-  /// Name of the HTTP header to use for the IP address.
+  /// Name of the header containing the forwarded IP address.
   final pulumi.Input<String> headerName;
-  /// Position in the header to search for the IP address. Valid values include: `FIRST`, `LAST`, or `ANY`. If `ANY` is specified and the header contains more than 10 IP addresses, AWS WAFv2 inspects the last 10.
+  /// Position in the header to use. Valid values: `FIRST`, `LAST`, `ANY`.
   final pulumi.Input<String> position;
 
   /// Creates a new [WebAclRuleStatementIpSetReferenceStatementIpSetForwardedIpConfig].
-  /// [fallbackBehavior] Match status to assign to the web request if the request doesn't have a valid IP address in the specified position. Valid values include: `MATCH` or `NO_MATCH`.
-  /// [headerName] Name of the HTTP header to use for the IP address.
-  /// [position] Position in the header to search for the IP address. Valid values include: `FIRST`, `LAST`, or `ANY`. If `ANY` is specified and the header contains more than 10 IP addresses, AWS WAFv2 inspects the last 10.
+  /// [fallbackBehavior] Action to take when the IP address in the header is invalid. Valid values: `MATCH`, `NO_MATCH`.
+  /// [headerName] Name of the header containing the forwarded IP address.
+  /// [position] Position in the header to use. Valid values: `FIRST`, `LAST`, `ANY`.
   const WebAclRuleStatementIpSetReferenceStatementIpSetForwardedIpConfig({
     required this.fallbackBehavior,
     required this.headerName,
@@ -36,4 +36,3 @@ class WebAclRuleStatementIpSetReferenceStatementIpSetForwardedIpConfig {
     );
   }
 }
-

@@ -6,12 +6,12 @@ import 'scheduled_query_target_configuration_timestream_configuration_multi_meas
 class ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings {
   /// Attribute mappings to be used for mapping query results to ingest data for multi-measure attributes. See above.
   final pulumi.Input<List<ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping>> multiMeasureAttributeMappings;
-  /// Name of the target multi-measure name in the derived table. This input is required when `measure_name_column` is not provided. If `measure_name_column` is provided, then the value from that column will be used as the multi-measure name.
+  /// Name of the target multi-measure name in the derived table. This input is required when `measureNameColumn` is not provided. If `measureNameColumn` is provided, then the value from that column will be used as the multi-measure name.
   final pulumi.Input<String>? targetMultiMeasureName;
 
   /// Creates a new [ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings].
   /// [multiMeasureAttributeMappings] Attribute mappings to be used for mapping query results to ingest data for multi-measure attributes. See above.
-  /// [targetMultiMeasureName] Name of the target multi-measure name in the derived table. This input is required when `measure_name_column` is not provided. If `measure_name_column` is provided, then the value from that column will be used as the multi-measure name.
+  /// [targetMultiMeasureName] Name of the target multi-measure name in the derived table. This input is required when `measureNameColumn` is not provided. If `measureNameColumn` is provided, then the value from that column will be used as the multi-measure name.
   const ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings({
     required this.multiMeasureAttributeMappings,
     this.targetMultiMeasureName,
@@ -31,4 +31,3 @@ class ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappin
     );
   }
 }
-

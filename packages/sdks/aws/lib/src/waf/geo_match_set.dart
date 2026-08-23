@@ -100,6 +100,27 @@ import 'geo_match_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_waf_geomatchset" "geo_match_set" {
+///   name = "geo_match_set"
+///   geo_match_constraints {
+///     type  = "Country"
+///     value = "US"
+///   }
+///   geo_match_constraints {
+///     type  = "Country"
+///     value = "CA"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +130,8 @@ import 'geo_match_set_state.dart';
 /// import com.pulumi.aws.waf.GeoMatchSet;
 /// import com.pulumi.aws.waf.GeoMatchSetArgs;
 /// import com.pulumi.aws.waf.inputs.GeoMatchSetGeoMatchConstraintArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

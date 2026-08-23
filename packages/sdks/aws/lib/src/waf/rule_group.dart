@@ -105,7 +105,7 @@ import 'rule_group_state.dart';
 /// 						Type: pulumi.String("COUNT"),
 /// 					},
 /// 					Priority: pulumi.Int(50),
-/// 					RuleId:   example.ID(),
+/// 					RuleId:   example.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -114,6 +114,31 @@ import 'rule_group_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_waf_rule" "example" {
+///   name        = "example"
+///   metric_name = "example"
+/// }
+/// resource "aws_waf_rulegroup" "example" {
+///   name        = "example"
+///   metric_name = "example"
+///   activated_rules {
+///     action = {
+///       type = "COUNT"
+///     }
+///     priority = 50
+///     rule_id  = aws_waf_rule.example.id
+///   }
 /// }
 /// ```
 /// ```java
@@ -128,8 +153,8 @@ import 'rule_group_state.dart';
 /// import com.pulumi.aws.waf.RuleGroupArgs;
 /// import com.pulumi.aws.waf.inputs.RuleGroupActivatedRuleArgs;
 /// import com.pulumi.aws.waf.inputs.RuleGroupActivatedRuleActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -196,11 +221,11 @@ class RuleGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// A friendly name for the metrics from the rule group
   late final pulumi.Output<String> metricName;
-  /// Name of the rule group. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the rule group. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [RuleGroup].

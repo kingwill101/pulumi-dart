@@ -76,6 +76,19 @@ Future<GetBrokerResult> getBroker(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_mq_getbrokerenginetypes" "example" {
+///   engine_type = "ACTIVEMQ"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +97,8 @@ Future<GetBrokerResult> getBroker(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.mq.MqFunctions;
 /// import com.pulumi.aws.mq.inputs.GetBrokerEngineTypesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -262,6 +275,38 @@ Future<GetBrokerEngineTypesResult> getBrokerEngineTypes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_mq_getinstancetypeofferings" "all" {
+/// }
+/// data "aws_mq_getinstancetypeofferings" "activemq" {
+///   engine_type = "ACTIVEMQ"
+/// }
+/// data "aws_mq_getinstancetypeofferings" "ebs" {
+///   storage_type = "EBS"
+/// }
+/// data "aws_mq_getinstancetypeofferings" "m5" {
+///   host_instance_type = "mq.m5.large"
+/// }
+/// data "aws_mq_getinstancetypeofferings" "filtered" {
+///   engine_type        = "ACTIVEMQ"
+///   storage_type       = "EBS"
+///   host_instance_type = "mq.m5.large"
+/// }
+///
+/// # Get all instance type offerings
+/// # Filter by engine type
+/// # Filter by storage type
+/// # Filter by instance type
+/// # Filter by multiple criteria
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -270,8 +315,8 @@ Future<GetBrokerEngineTypesResult> getBrokerEngineTypes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.mq.MqFunctions;
 /// import com.pulumi.aws.mq.inputs.GetInstanceTypeOfferingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

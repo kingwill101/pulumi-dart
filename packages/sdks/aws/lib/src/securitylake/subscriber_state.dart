@@ -9,7 +9,7 @@ import 'subscriber_timeouts.dart';
 class SubscriberState {
   /// The Amazon S3 or Lake Formation access type.
   final pulumi.Input<String>? accessType;
-  /// ARN of the Data Lake.
+  /// The ARN of the subscriber.
   final pulumi.Input<String>? arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -27,21 +27,21 @@ class SubscriberState {
   final pulumi.Input<String>? subscriberDescription;
   /// The subscriber endpoint to which exception messages are posted.
   final pulumi.Input<String>? subscriberEndpoint;
-  /// The AWS identity used to access your data. See `subscriber_identity` Block below.
+  /// The AWS identity used to access your data. See `subscriberIdentity` Block below.
   final pulumi.Input<SubscriberSubscriberIdentity>? subscriberIdentity;
   /// The name of your Security Lake subscriber account.
   final pulumi.Input<String>? subscriberName;
   /// The subscriber status of the Amazon Security Lake subscriber account.
   final pulumi.Input<String>? subscriberStatus;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<SubscriberTimeouts>? timeouts;
 
   /// Creates a new [SubscriberState].
   /// [accessType] The Amazon S3 or Lake Formation access type.
-  /// [arn] ARN of the Data Lake.
+  /// [arn] The ARN of the subscriber.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceShareArn] The Amazon Resource Name (ARN) which uniquely defines the AWS RAM resource share. Before accepting the RAM resource share invitation, you can view details related to the RAM resource share.
   /// [resourceShareName] The name of the resource share.
@@ -50,11 +50,11 @@ class SubscriberState {
   /// [sources] The supported AWS services from which logs and events are collected. Security Lake supports log and event collection for natively supported AWS services. See `source` Blocks below.
   /// [subscriberDescription] The description for your subscriber account in Security Lake.
   /// [subscriberEndpoint] The subscriber endpoint to which exception messages are posted.
-  /// [subscriberIdentity] The AWS identity used to access your data. See `subscriber_identity` Block below.
+  /// [subscriberIdentity] The AWS identity used to access your data. See `subscriberIdentity` Block below.
   /// [subscriberName] The name of your Security Lake subscriber account.
   /// [subscriberStatus] The subscriber status of the Amazon Security Lake subscriber account.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   const SubscriberState({
     this.accessType,
@@ -117,4 +117,3 @@ class SubscriberState {
     );
   }
 }
-

@@ -97,6 +97,25 @@ import 'vocabulary_filter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transcribe_vocabularyfilter" "example" {
+///   vocabulary_filter_name = "example"
+///   language_code          = "en-US"
+///   words                  = ["cars", "bucket"]
+///   tags = {
+///     "tag1" = "value1"
+///     "tag2" = "value3"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +124,8 @@ import 'vocabulary_filter_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.transcribe.VocabularyFilter;
 /// import com.pulumi.aws.transcribe.VocabularyFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -151,7 +170,7 @@ import 'vocabulary_filter_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Transcribe VocabularyFilter using the `vocabulary_filter_name`. For example:
+/// Using `pulumi import`, import Transcribe VocabularyFilter using the `vocabularyFilterName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:transcribe/vocabularyFilter:VocabularyFilter example example-name
@@ -161,20 +180,20 @@ class VocabularyFilter extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Generated download URI.
   late final pulumi.Output<String> downloadUri;
-  /// The language code you selected for your vocabulary filter. Refer to the [supported languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html) page for accepted codes.
+  /// Language code you selected for your vocabulary filter. Refer to the [supported languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html) page for accepted codes.
   late final pulumi.Output<String> languageCode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the VocabularyFilter. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the VocabularyFilter. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The Amazon S3 location (URI) of the text file that contains your custom VocabularyFilter. Conflicts with `words` argument.
+  /// Amazon S3 location (URI) of the text file that contains your custom VocabularyFilter. Conflicts with `words` argument.
   late final pulumi.Output<String?> vocabularyFilterFileUri;
-  /// The name of the VocabularyFilter.
+  /// Name of the VocabularyFilter.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> vocabularyFilterName;
-  /// A list of terms to include in the vocabulary. Conflicts with `vocabulary_filter_file_uri` argument.
+  /// List of terms to include in the vocabulary. Conflicts with `vocabularyFilterFileUri` argument.
   late final pulumi.Output<List<String>?> words;
 
   /// Creates a new [VocabularyFilter].

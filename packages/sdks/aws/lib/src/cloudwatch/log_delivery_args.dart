@@ -14,23 +14,23 @@ class LogDeliveryArgs {
   final pulumi.Input<String> deliverySourceName;
   /// The field delimiter to use between record fields when the final output format of a delivery is in `plain`, `w3c`, or `raw` format.
   final pulumi.Input<String>? fieldDelimiter;
-  /// The list of record fields to be delivered to the destination, in order.
+  /// The list of record fields to be delivered to the destination, in order. The valid field names vary by the `logType` of the delivery source. For a CloudFront `ACCESS_LOGS` source, see [Configure standard logging (v2)](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/standard-logging.html#standard-logging-real-time-log-selection) for the supported values.
   final pulumi.Input<List<String>>? recordFields;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// Parameters that are valid only when the delivery's delivery destination is an S3 bucket.
   final pulumi.Input<List<LogDeliveryS3DeliveryConfiguration>>? s3DeliveryConfigurations;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [LogDeliveryArgs].
   /// [deliveryDestinationArn] The ARN of the delivery destination to use for this delivery.
   /// [deliverySourceName] The name of the delivery source to use for this delivery.
   /// [fieldDelimiter] The field delimiter to use between record fields when the final output format of a delivery is in `plain`, `w3c`, or `raw` format.
-  /// [recordFields] The list of record fields to be delivered to the destination, in order.
+  /// [recordFields] The list of record fields to be delivered to the destination, in order. The valid field names vary by the `logType` of the delivery source. For a CloudFront `ACCESS_LOGS` source, see [Configure standard logging (v2)](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/standard-logging.html#standard-logging-real-time-log-selection) for the supported values.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [s3DeliveryConfigurations] Parameters that are valid only when the delivery's delivery destination is an S3 bucket.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const LogDeliveryArgs({
     required this.deliveryDestinationArn,
     required this.deliverySourceName,
@@ -65,4 +65,3 @@ class LogDeliveryArgs {
     );
   }
 }
-

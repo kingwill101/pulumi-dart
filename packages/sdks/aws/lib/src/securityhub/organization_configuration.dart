@@ -7,7 +7,7 @@ import 'organization_configuration_state.dart';
 ///
 /// &gt; **NOTE:** This resource requires an `aws.securityhub.OrganizationAdminAccount` to be configured (not necessarily with Pulumi). More information about managing Security Hub in an organization can be found in the [Managing administrator and member accounts](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts.html) documentation.
 ///
-/// &gt; **NOTE:** In order to set the `configuration_type` to `CENTRAL`, the delegated admin must be a member account of the organization and not the management account. Central configuration also requires an `aws.securityhub.FindingAggregator` to be configured.
+/// &gt; **NOTE:** In order to set the `configurationType` to `CENTRAL`, the delegated admin must be a member account of the organization and not the management account. Central configuration also requires an `aws.securityhub.FindingAggregator` to be configured.
 ///
 /// &gt; **NOTE:** This is an advanced AWS resource. Pulumi will automatically assume management of the Security Hub Organization Configuration without import and perform no actions on removal from the Pulumi program.
 ///
@@ -115,6 +115,27 @@ import 'organization_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_organizations_organization" "example" {
+///   aws_service_access_principals = ["securityhub.amazonaws.com"]
+///   feature_set                   = "ALL"
+/// }
+/// resource "aws_securityhub_organizationadminaccount" "example" {
+///   depends_on       = [aws_organizations_organization.example]
+///   admin_account_id = "123456789012"
+/// }
+/// resource "aws_securityhub_organizationconfiguration" "example" {
+///   auto_enable = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +149,8 @@ import 'organization_configuration_state.dart';
 /// import com.pulumi.aws.securityhub.OrganizationConfiguration;
 /// import com.pulumi.aws.securityhub.OrganizationConfigurationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -312,6 +333,32 @@ import 'organization_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_organizationadminaccount" "example" {
+///   depends_on       = [exampleAwsOrganizationsOrganization]
+///   admin_account_id = "123456789012"
+/// }
+/// resource "aws_securityhub_findingaggregator" "example" {
+///   depends_on   = [aws_securityhub_organizationadminaccount.example]
+///   linking_mode = "ALL_REGIONS"
+/// }
+/// resource "aws_securityhub_organizationconfiguration" "example" {
+///   depends_on            = [aws_securityhub_findingaggregator.example]
+///   auto_enable           = false
+///   auto_enable_standards = "NONE"
+///   organization_configuration = {
+///     configuration_type = "CENTRAL"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -326,8 +373,8 @@ import 'organization_configuration_state.dart';
 /// import com.pulumi.aws.securityhub.OrganizationConfigurationArgs;
 /// import com.pulumi.aws.securityhub.inputs.OrganizationConfigurationOrganizationConfigurationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

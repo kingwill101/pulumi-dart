@@ -47,4 +47,3 @@ class BucketLoggingV2TargetGrantGrantee {
     );
   }
 }
-

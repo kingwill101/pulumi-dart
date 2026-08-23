@@ -76,6 +76,23 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apprunner_connection" "example" {
+///   connection_name = "example"
+///   provider_type   = "GITHUB"
+///   tags = {
+///     "Name" = "example-apprunner-connection"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +101,8 @@ import 'connection_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apprunner.Connection;
 /// import com.pulumi.aws.apprunner.ConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -120,7 +137,7 @@ import 'connection_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import App Runner Connections using the `connection_name`. For example:
+/// Using `pulumi import`, import App Runner Connections using the `connectionName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:apprunner/connection:Connection example example
@@ -136,9 +153,9 @@ class Connection extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Current state of the App Runner connection. When the state is `AVAILABLE`, you can use the connection to create an `aws.apprunner.Service` resource.
   late final pulumi.Output<String> status;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Connection].

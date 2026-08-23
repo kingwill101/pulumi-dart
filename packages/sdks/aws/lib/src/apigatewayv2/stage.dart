@@ -66,6 +66,20 @@ import 'stage_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigatewayv2_stage" "example" {
+///   api_id = exampleAwsApigatewayv2Api.id
+///   name   = "example-stage"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +88,8 @@ import 'stage_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigatewayv2.Stage;
 /// import com.pulumi.aws.apigatewayv2.StageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -115,8 +129,7 @@ import 'stage_state.dart';
 ///
 /// &gt; **Note:** The API Gateway managed stage created as part of [_quick_create_](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-basic-concept.html#apigateway-definition-quick-create) cannot be imported.
 class Stage extends pulumi.CustomResource {
-  /// Settings for logging access in this stage.
-  /// Use the `aws.apigateway.Account` resource to configure [permissions for CloudWatch Logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#set-up-access-logging-permissions).
+  /// Settings for logging access in this stage. Use the `aws.apigateway.Account` resource to configure [permissions for CloudWatch Logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#set-up-access-logging-permissions).
   late final pulumi.Output<StageAccessLogSettings?> accessLogSettings;
   /// API identifier.
   late final pulumi.Output<String> apiId;
@@ -124,8 +137,7 @@ class Stage extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Whether updates to an API automatically trigger a new deployment. Defaults to `false`. Applicable for HTTP APIs.
   late final pulumi.Output<bool?> autoDeploy;
-  /// Identifier of a client certificate for the stage. Use the `aws.apigateway.ClientCertificate` resource to configure a client certificate.
-  /// Supported only for WebSocket APIs.
+  /// Identifier of a client certificate for the stage. Use the `aws.apigateway.ClientCertificate` resource to configure a client certificate. Supported only for WebSocket APIs.
   late final pulumi.Output<String?> clientCertificateId;
   /// Default route settings for the stage.
   late final pulumi.Output<StageDefaultRouteSettings?> defaultRouteSettings;
@@ -133,12 +145,9 @@ class Stage extends pulumi.CustomResource {
   late final pulumi.Output<String> deploymentId;
   /// Description for the stage. Must be less than or equal to 1024 characters in length.
   late final pulumi.Output<String?> description;
-  /// ARN prefix to be used in an `aws.lambda.Permission`'s `source_arn` attribute.
-  /// For WebSocket APIs this attribute can additionally be used in an `aws.iam.Policy` to authorize access to the [`@connections` API](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-how-to-call-websocket-api-connections.html).
-  /// See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-control-access-iam.html) for details.
+  /// ARN prefix to be used in an `aws.lambda.Permission`'s `sourceArn` attribute. For WebSocket APIs this attribute can additionally be used in an `aws.iam.Policy` to authorize access to the [`@connections` API](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-how-to-call-websocket-api-connections.html). See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-control-access-iam.html) for details.
   late final pulumi.Output<String> executionArn;
-  /// URL to invoke the API pointing to the stage,
-  /// e.g., `wss://z4675bid1j.execute-api.eu-west-2.amazonaws.com/example-stage`, or `https://z4675bid1j.execute-api.eu-west-2.amazonaws.com/`
+  /// URL to invoke the API pointing to the stage, e.g., `wss://z4675bid1j.execute-api.eu-west-2.amazonaws.com/example-stage`, or `https://z4675bid1j.execute-api.eu-west-2.amazonaws.com/`
   late final pulumi.Output<String> invokeUrl;
   /// Name of the stage. Must be between 1 and 128 characters in length.
   ///
@@ -150,9 +159,9 @@ class Stage extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> routeSettings;
   /// Map that defines the stage variables for the stage.
   late final pulumi.Output<Map<String, String>?> stageVariables;
-  /// Map of tags to assign to the stage. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the stage. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Stage].

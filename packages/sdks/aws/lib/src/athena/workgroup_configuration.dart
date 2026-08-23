@@ -6,6 +6,7 @@ import 'workgroup_configuration_engine_version.dart';
 import 'workgroup_configuration_identity_center_configuration.dart';
 import 'workgroup_configuration_managed_query_results_configuration.dart';
 import 'workgroup_configuration_monitoring_configuration.dart';
+import 'workgroup_configuration_query_results_s3_access_grants_configuration.dart';
 import 'workgroup_configuration_result_configuration.dart';
 
 class WorkgroupConfiguration {
@@ -29,6 +30,8 @@ class WorkgroupConfiguration {
   final pulumi.Input<WorkgroupConfigurationMonitoringConfiguration>? monitoringConfiguration;
   /// Boolean whether Amazon CloudWatch metrics are enabled for the workgroup. Defaults to `true`.
   final pulumi.Input<bool>? publishCloudwatchMetricsEnabled;
+  /// Configuration block for S3 access grants. See Query Results S3 Access Grants Configuration below.
+  final pulumi.Input<WorkgroupConfigurationQueryResultsS3AccessGrantsConfiguration>? queryResultsS3AccessGrantsConfiguration;
   /// If set to true , allows members assigned to a workgroup to reference Amazon S3 Requester Pays buckets in queries. If set to false , workgroup members cannot query data from Requester Pays buckets, and queries that retrieve data from Requester Pays buckets cause an error. The default is false . For more information about Requester Pays buckets, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html) in the Amazon Simple Storage Service Developer Guide.
   final pulumi.Input<bool>? requesterPaysEnabled;
   /// Configuration block with result settings. See Result Configuration below.
@@ -45,6 +48,7 @@ class WorkgroupConfiguration {
   /// [managedQueryResultsConfiguration] Configuration block for storing results in Athena owned storage. See Managed Query Results Configuration below.
   /// [monitoringConfiguration] Configuration block for managed log persistence, delivering logs to Amazon S3 buckets, Amazon CloudWatch log groups etc. Only applicable to Apache Spark engine. See Monitoring Configuration below.
   /// [publishCloudwatchMetricsEnabled] Boolean whether Amazon CloudWatch metrics are enabled for the workgroup. Defaults to `true`.
+  /// [queryResultsS3AccessGrantsConfiguration] Configuration block for S3 access grants. See Query Results S3 Access Grants Configuration below.
   /// [requesterPaysEnabled] If set to true , allows members assigned to a workgroup to reference Amazon S3 Requester Pays buckets in queries. If set to false , workgroup members cannot query data from Requester Pays buckets, and queries that retrieve data from Requester Pays buckets cause an error. The default is false . For more information about Requester Pays buckets, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html) in the Amazon Simple Storage Service Developer Guide.
   /// [resultConfiguration] Configuration block with result settings. See Result Configuration below.
   const WorkgroupConfiguration({
@@ -58,6 +62,7 @@ class WorkgroupConfiguration {
     this.managedQueryResultsConfiguration,
     this.monitoringConfiguration,
     this.publishCloudwatchMetricsEnabled,
+    this.queryResultsS3AccessGrantsConfiguration,
     this.requesterPaysEnabled,
     this.resultConfiguration,
   });
@@ -74,6 +79,7 @@ class WorkgroupConfiguration {
       'managedQueryResultsConfiguration': ?pulumi.Input.mapOptionalInputValue<WorkgroupConfigurationManagedQueryResultsConfiguration, Map<String, dynamic>>(managedQueryResultsConfiguration, (value) => value.toMap()),
       'monitoringConfiguration': ?pulumi.Input.mapOptionalInputValue<WorkgroupConfigurationMonitoringConfiguration, Map<String, dynamic>>(monitoringConfiguration, (value) => value.toMap()),
       'publishCloudwatchMetricsEnabled': ?publishCloudwatchMetricsEnabled,
+      'queryResultsS3AccessGrantsConfiguration': ?pulumi.Input.mapOptionalInputValue<WorkgroupConfigurationQueryResultsS3AccessGrantsConfiguration, Map<String, dynamic>>(queryResultsS3AccessGrantsConfiguration, (value) => value.toMap()),
       'requesterPaysEnabled': ?requesterPaysEnabled,
       'resultConfiguration': ?pulumi.Input.mapOptionalInputValue<WorkgroupConfigurationResultConfiguration, Map<String, dynamic>>(resultConfiguration, (value) => value.toMap()),
     };
@@ -91,9 +97,9 @@ class WorkgroupConfiguration {
       managedQueryResultsConfiguration: (() { final guardedValue = map['managedQueryResultsConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkgroupConfigurationManagedQueryResultsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       monitoringConfiguration: (() { final guardedValue = map['monitoringConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkgroupConfigurationMonitoringConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       publishCloudwatchMetricsEnabled: (() { final guardedValue = map['publishCloudwatchMetricsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      queryResultsS3AccessGrantsConfiguration: (() { final guardedValue = map['queryResultsS3AccessGrantsConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkgroupConfigurationQueryResultsS3AccessGrantsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       requesterPaysEnabled: (() { final guardedValue = map['requesterPaysEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       resultConfiguration: (() { final guardedValue = map['resultConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkgroupConfigurationResultConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

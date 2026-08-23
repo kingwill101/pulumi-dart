@@ -9,17 +9,17 @@ class DirectoryWorkspaceCreationProperties {
   final pulumi.Input<String>? defaultOu;
   /// Indicates whether internet access is enabled for your WorkSpaces.
   final pulumi.Input<bool>? enableInternetAccess;
-  /// Indicates whether maintenance mode is enabled for your WorkSpaces. Valid only if `workspace_type` is set to `PERSONAL`.
+  /// Indicates whether maintenance mode is enabled for your WorkSpaces. Valid only if `workspaceType` is set to `PERSONAL`.
   final pulumi.Input<bool>? enableMaintenanceMode;
-  /// Indicates whether users are local administrators of their WorkSpaces. Valid only if `workspace_type` is set to `PERSONAL`.
+  /// Indicates whether users are local administrators of their WorkSpaces. Valid only if `workspaceType` is set to `PERSONAL`.
   final pulumi.Input<bool>? userEnabledAsLocalAdministrator;
 
   /// Creates a new [DirectoryWorkspaceCreationProperties].
   /// [customSecurityGroupId] The identifier of your custom security group. Should relate to the same VPC, where workspaces reside in.
   /// [defaultOu] The default organizational unit (OU) for your WorkSpace directories. Should conform `"OU=&lt;value&gt;,DC=&lt;value&gt;,...,DC=&lt;value&gt;"` pattern.
   /// [enableInternetAccess] Indicates whether internet access is enabled for your WorkSpaces.
-  /// [enableMaintenanceMode] Indicates whether maintenance mode is enabled for your WorkSpaces. Valid only if `workspace_type` is set to `PERSONAL`.
-  /// [userEnabledAsLocalAdministrator] Indicates whether users are local administrators of their WorkSpaces. Valid only if `workspace_type` is set to `PERSONAL`.
+  /// [enableMaintenanceMode] Indicates whether maintenance mode is enabled for your WorkSpaces. Valid only if `workspaceType` is set to `PERSONAL`.
+  /// [userEnabledAsLocalAdministrator] Indicates whether users are local administrators of their WorkSpaces. Valid only if `workspaceType` is set to `PERSONAL`.
   const DirectoryWorkspaceCreationProperties({
     this.customSecurityGroupId,
     this.defaultOu,
@@ -48,4 +48,3 @@ class DirectoryWorkspaceCreationProperties {
     );
   }
 }
-

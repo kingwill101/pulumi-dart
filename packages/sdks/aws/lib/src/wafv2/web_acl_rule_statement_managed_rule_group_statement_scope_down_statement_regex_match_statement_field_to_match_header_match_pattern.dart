@@ -3,17 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexMatchStatementFieldToMatchHeaderMatchPattern {
-  /// An empty configuration block that is used for inspecting all headers.
   final pulumi.Input<Map<String, dynamic>>? all;
-  /// An array of strings that will be used for inspecting headers that do not have a key that matches one of the provided values.
+  /// List of header names to exclude from inspection.
   final pulumi.Input<List<String>>? excludedHeaders;
-  /// An array of strings that will be used for inspecting headers that have a key that matches one of the provided values.
+  /// List of header names to inspect.
   final pulumi.Input<List<String>>? includedHeaders;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexMatchStatementFieldToMatchHeaderMatchPattern].
-  /// [all] An empty configuration block that is used for inspecting all headers.
-  /// [excludedHeaders] An array of strings that will be used for inspecting headers that do not have a key that matches one of the provided values.
-  /// [includedHeaders] An array of strings that will be used for inspecting headers that have a key that matches one of the provided values.
+  /// [all] Optional.
+  /// [excludedHeaders] List of header names to exclude from inspection.
+  /// [includedHeaders] List of header names to inspect.
   const WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexMatchStatementFieldToMatchHeaderMatchPattern({
     this.all,
     this.excludedHeaders,
@@ -36,4 +35,3 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexMatchSt
     );
   }
 }
-

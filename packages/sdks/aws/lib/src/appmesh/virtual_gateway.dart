@@ -117,6 +117,31 @@ import 'virtual_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appmesh_virtualgateway" "example" {
+///   name      = "example-virtual-gateway"
+///   mesh_name = "example-service-mesh"
+///   spec = {
+///     listeners = [{
+///       "portMapping" = {
+///         "port"     = 8080
+///         "protocol" = "http"
+///       }
+///     }]
+///   }
+///   tags = {
+///     "Environment" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +151,10 @@ import 'virtual_gateway_state.dart';
 /// import com.pulumi.aws.appmesh.VirtualGateway;
 /// import com.pulumi.aws.appmesh.VirtualGatewayArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecListenerArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecListenerPortMappingArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -336,6 +363,43 @@ import 'virtual_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appmesh_virtualgateway" "example" {
+///   name      = "example-virtual-gateway"
+///   mesh_name = "example-service-mesh"
+///   spec = {
+///     listeners = [{
+///       "portMapping" = {
+///         "port"     = 8080
+///         "protocol" = "http"
+///       }
+///       "tls" = {
+///         "certificate" = {
+///           "acm" = {
+///             "certificateArn" = exampleAwsAcmCertificate.arn
+///           }
+///         }
+///         "mode" = "STRICT"
+///       }
+///     }]
+///     logging = {
+///       access_log = {
+///         file = {
+///           path = "/var/log/access.log"
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -345,11 +409,16 @@ import 'virtual_gateway_state.dart';
 /// import com.pulumi.aws.appmesh.VirtualGateway;
 /// import com.pulumi.aws.appmesh.VirtualGatewayArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecListenerArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecListenerPortMappingArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecListenerTlsArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecListenerTlsCertificateArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecListenerTlsCertificateAcmArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecLoggingArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecLoggingAccessLogArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecLoggingAccessLogFileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -418,7 +487,7 @@ import 'virtual_gateway_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import App Mesh virtual gateway using `mesh_name` together with the virtual gateway's `name`. For example:
+/// Using `pulumi import`, import App Mesh virtual gateway using `meshName` together with the virtual gateway's `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appmesh/virtualGateway:VirtualGateway example mesh/gw1
@@ -442,9 +511,9 @@ class VirtualGateway extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceOwner;
   /// Virtual gateway specification to apply.
   late final pulumi.Output<VirtualGatewaySpec> spec;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [VirtualGateway].

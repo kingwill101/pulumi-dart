@@ -7,15 +7,15 @@ import 'hours_of_operation_config_start_time.dart';
 class HoursOfOperationConfig {
   /// Specifies the day that the hours of operation applies to.
   final pulumi.Input<String> day;
-  /// A end time block specifies the time that your contact center closes. The `end_time` is documented below.
+  /// A end time block specifies the time that your contact center closes. The `endTime` is documented below.
   final pulumi.Input<HoursOfOperationConfigEndTime> endTime;
-  /// A start time block specifies the time that your contact center opens. The `start_time` is documented below.
+  /// A start time block specifies the time that your contact center opens. The `startTime` is documented below.
   final pulumi.Input<HoursOfOperationConfigStartTime> startTime;
 
   /// Creates a new [HoursOfOperationConfig].
   /// [day] Specifies the day that the hours of operation applies to.
-  /// [endTime] A end time block specifies the time that your contact center closes. The `end_time` is documented below.
-  /// [startTime] A start time block specifies the time that your contact center opens. The `start_time` is documented below.
+  /// [endTime] A end time block specifies the time that your contact center closes. The `endTime` is documented below.
+  /// [startTime] A start time block specifies the time that your contact center opens. The `startTime` is documented below.
   const HoursOfOperationConfig({
     required this.day,
     required this.endTime,
@@ -38,4 +38,3 @@ class HoursOfOperationConfig {
     );
   }
 }
-

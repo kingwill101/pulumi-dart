@@ -14,7 +14,7 @@ class GetBucketObjectsResult {
   /// List of strings representing object keys
   final List<String> keys;
   final int? maxKeys;
-  /// List of strings representing object owner IDs (see `fetch_owner` above)
+  /// List of strings representing object owner IDs (see `fetchOwner` above)
   final List<String> owners;
   final String? prefix;
   final String region;
@@ -29,7 +29,7 @@ class GetBucketObjectsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [keys] List of strings representing object keys
   /// [maxKeys] Optional.
-  /// [owners] List of strings representing object owner IDs (see `fetch_owner` above)
+  /// [owners] List of strings representing object owner IDs (see `fetchOwner` above)
   /// [prefix] Optional.
   /// [region] Required.
   /// [startAfter] Optional.
@@ -82,4 +82,3 @@ class GetBucketObjectsResult {
     );
   }
 }
-

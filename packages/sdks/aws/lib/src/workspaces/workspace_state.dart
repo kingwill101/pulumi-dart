@@ -19,9 +19,9 @@ class WorkspaceState {
   final pulumi.Input<bool>? rootVolumeEncryptionEnabled;
   /// The operational state of the WorkSpace.
   final pulumi.Input<String>? state;
-  /// The tags for the WorkSpace. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// The tags for the WorkSpace. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The user name of the user for the WorkSpace. This user name must exist in the directory for the WorkSpace.
   final pulumi.Input<String>? userName;
@@ -40,8 +40,8 @@ class WorkspaceState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rootVolumeEncryptionEnabled] Indicates whether the data stored on the root volume is encrypted.
   /// [state] The operational state of the WorkSpace.
-  /// [tags] The tags for the WorkSpace. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] The tags for the WorkSpace. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [userName] The user name of the user for the WorkSpace. This user name must exist in the directory for the WorkSpace.
   /// [userVolumeEncryptionEnabled] Indicates whether the data stored on the user volume is encrypted.
   /// [volumeEncryptionKey] The ARN of a symmetric AWS KMS customer master key (CMK) used to encrypt data stored on your WorkSpace. Amazon WorkSpaces does not support asymmetric CMKs.
@@ -98,4 +98,3 @@ class WorkspaceState {
     );
   }
 }
-

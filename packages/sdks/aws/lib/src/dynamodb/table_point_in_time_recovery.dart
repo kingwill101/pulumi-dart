@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TablePointInTimeRecovery {
-  /// Whether to enable point-in-time recovery. It can take 10 minutes to enable for new tables. If the `point_in_time_recovery` block is not provided, this defaults to `false`.
+  /// Whether to enable point-in-time recovery. It can take 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided, this defaults to `false`.
   final pulumi.Input<bool> enabled;
   /// Number of preceding days for which continuous backups are taken and maintained. Default is 35.
   final pulumi.Input<int>? recoveryPeriodInDays;
 
   /// Creates a new [TablePointInTimeRecovery].
-  /// [enabled] Whether to enable point-in-time recovery. It can take 10 minutes to enable for new tables. If the `point_in_time_recovery` block is not provided, this defaults to `false`.
+  /// [enabled] Whether to enable point-in-time recovery. It can take 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided, this defaults to `false`.
   /// [recoveryPeriodInDays] Number of preceding days for which continuous backups are taken and maintained. Default is 35.
   const TablePointInTimeRecovery({
     required this.enabled,
@@ -30,4 +30,3 @@ class TablePointInTimeRecovery {
     );
   }
 }
-

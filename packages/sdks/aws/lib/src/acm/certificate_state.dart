@@ -13,7 +13,7 @@ class CertificateState {
   final pulumi.Input<String>? certificateAuthorityArn;
   final pulumi.Input<String>? certificateBody;
   final pulumi.Input<String>? certificateChain;
-  /// Fully qualified domain name (FQDN) in the certificate.
+  /// Domain to be validated
   final pulumi.Input<String>? domainName;
   /// Set of domain validation objects which can be used to complete certificate validation.
   /// Can have more than one element, e.g., if SANs are defined.
@@ -26,9 +26,12 @@ class CertificateState {
   /// Start of the validity period of the certificate.
   final pulumi.Input<String>? notBefore;
   final pulumi.Input<CertificateOptions>? options;
-  /// `true` if a Private certificate eligible for managed renewal is within the `early_renewal_duration` period.
+  /// `true` if a Private certificate eligible for managed renewal is within the `earlyRenewalDuration` period.
   final pulumi.Input<bool>? pendingRenewal;
   final pulumi.Input<String>? privateKey;
+  /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+  final pulumi.Input<String>? privateKeyWo;
+  final pulumi.Input<int>? privateKeyWoVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// * Creating an Amazon issued certificate
   final pulumi.Input<String>? region;
@@ -39,9 +42,9 @@ class CertificateState {
   /// Status of the certificate.
   final pulumi.Input<String>? status;
   final pulumi.Input<List<String>>? subjectAlternativeNames;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Source of the certificate.
   final pulumi.Input<String>? type;
@@ -55,22 +58,24 @@ class CertificateState {
   /// [certificateAuthorityArn] Optional.
   /// [certificateBody] Optional.
   /// [certificateChain] Optional.
-  /// [domainName] Fully qualified domain name (FQDN) in the certificate.
+  /// [domainName] Domain to be validated
   /// [domainValidationOptions] Set of domain validation objects which can be used to complete certificate validation.
   /// [earlyRenewalDuration] Optional.
   /// [keyAlgorithm] Optional.
   /// [notAfter] Expiration date and time of the certificate.
   /// [notBefore] Start of the validity period of the certificate.
   /// [options] Optional.
-  /// [pendingRenewal] `true` if a Private certificate eligible for managed renewal is within the `early_renewal_duration` period.
+  /// [pendingRenewal] `true` if a Private certificate eligible for managed renewal is within the `earlyRenewalDuration` period.
   /// [privateKey] Optional.
+  /// [privateKeyWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+  /// [privateKeyWoVersion] Optional.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [renewalEligibility] Whether the certificate is eligible for managed renewal.
   /// [renewalSummaries] Contains information about the status of ACM's [managed renewal](https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for the certificate.
   /// [status] Status of the certificate.
   /// [subjectAlternativeNames] Optional.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [type] Source of the certificate.
   /// [validationEmails] List of addresses that received a validation email. Only set if `EMAIL` validation was used.
   /// [validationMethod] Optional.
@@ -89,6 +94,8 @@ class CertificateState {
     this.options,
     this.pendingRenewal,
     this.privateKey,
+    this.privateKeyWo,
+    this.privateKeyWoVersion,
     this.region,
     this.renewalEligibility,
     this.renewalSummaries,
@@ -117,6 +124,8 @@ class CertificateState {
       'options': ?pulumi.Input.mapOptionalInputValue<CertificateOptions, Map<String, dynamic>>(options, (value) => value.toMap()),
       'pendingRenewal': ?pendingRenewal,
       'privateKey': ?privateKey,
+      'privateKeyWo': ?privateKeyWo,
+      'privateKeyWoVersion': ?privateKeyWoVersion,
       'region': ?region,
       'renewalEligibility': ?renewalEligibility,
       'renewalSummaries': ?pulumi.Input.mapOptionalInputValue<List<CertificateRenewalSummary>, List<Map<String, dynamic>>>(renewalSummaries, (value) => pulumi.Input.encodeList<CertificateRenewalSummary, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -146,6 +155,8 @@ class CertificateState {
       options: (() { final guardedValue = map['options']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CertificateOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       pendingRenewal: (() { final guardedValue = map['pendingRenewal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateKeyWo: (() { final guardedValue = map['privateKeyWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateKeyWoVersion: (() { final guardedValue = map['privateKeyWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       renewalEligibility: (() { final guardedValue = map['renewalEligibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       renewalSummaries: (() { final guardedValue = map['renewalSummaries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CertificateRenewalSummary>(guardedValue, (value) => CertificateRenewalSummary.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -160,4 +171,3 @@ class CertificateState {
     );
   }
 }
-

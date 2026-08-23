@@ -3,26 +3,28 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift {
+  /// Name of the Amazon S3 bucket associated with Snowflake.
   final pulumi.Input<String> bucketName;
+  /// Bucket path that refers to the Amazon S3 bucket associated with Snowflake.
   final pulumi.Input<String>? bucketPrefix;
-  /// The unique ID that's assigned to an Amazon Redshift cluster.
+  /// Unique ID that's assigned to an Amazon Redshift cluster.
   final pulumi.Input<String>? clusterIdentifier;
   /// ARN of the IAM role that permits AppFlow to access the database through Data API.
   final pulumi.Input<String>? dataApiRoleArn;
-  /// The name of an Amazon Redshift database.
+  /// Name of an Amazon Redshift database.
   final pulumi.Input<String>? databaseName;
-  /// The JDBC URL of the Amazon Redshift cluster.
+  /// JDBC URL of the Amazon Redshift cluster.
   final pulumi.Input<String>? databaseUrl;
   /// ARN of the IAM role.
   final pulumi.Input<String> roleArn;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift].
-  /// [bucketName] Required.
-  /// [bucketPrefix] Optional.
-  /// [clusterIdentifier] The unique ID that's assigned to an Amazon Redshift cluster.
+  /// [bucketName] Name of the Amazon S3 bucket associated with Snowflake.
+  /// [bucketPrefix] Bucket path that refers to the Amazon S3 bucket associated with Snowflake.
+  /// [clusterIdentifier] Unique ID that's assigned to an Amazon Redshift cluster.
   /// [dataApiRoleArn] ARN of the IAM role that permits AppFlow to access the database through Data API.
-  /// [databaseName] The name of an Amazon Redshift database.
-  /// [databaseUrl] The JDBC URL of the Amazon Redshift cluster.
+  /// [databaseName] Name of an Amazon Redshift database.
+  /// [databaseUrl] JDBC URL of the Amazon Redshift cluster.
   /// [roleArn] ARN of the IAM role.
   const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift({
     required this.bucketName,
@@ -58,4 +60,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift {
     );
   }
 }
-

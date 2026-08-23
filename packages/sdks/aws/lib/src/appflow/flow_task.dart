@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flow_task_connector_operator.dart';
 
 class FlowTask {
-  /// Operation to be performed on the provided source fields. See Connector Operator for details.
+  /// Operation to be performed on the provided source fields. See the `task.connector_operator` Block for details.
   final pulumi.Input<List<FlowTaskConnectorOperator>>? connectorOperators;
   /// Field in a destination connector, or a field value against which Amazon AppFlow validates a source field.
   final pulumi.Input<String>? destinationField;
@@ -16,7 +16,7 @@ class FlowTask {
   final pulumi.Input<String> taskType;
 
   /// Creates a new [FlowTask].
-  /// [connectorOperators] Operation to be performed on the provided source fields. See Connector Operator for details.
+  /// [connectorOperators] Operation to be performed on the provided source fields. See the `task.connector_operator` Block for details.
   /// [destinationField] Field in a destination connector, or a field value against which Amazon AppFlow validates a source field.
   /// [sourceFields] Source fields to which a particular task is applied.
   /// [taskProperties] Map used to store task-related information. The execution service looks for particular information based on the `TaskType`. Valid keys are `VALUE`, `VALUES`, `DATA_TYPE`, `UPPER_BOUND`, `LOWER_BOUND`, `SOURCE_DATA_TYPE`, `DESTINATION_DATA_TYPE`, `VALIDATION_ACTION`, `MASK_VALUE`, `MASK_LENGTH`, `TRUNCATE_LENGTH`, `MATH_OPERATION_FIELDS_ORDER`, `CONCAT_FORMAT`, `SUBFIELD_CATEGORY_MAP`, and `EXCLUDE_SOURCE_FIELDS_LIST`.
@@ -49,4 +49,3 @@ class FlowTask {
     );
   }
 }
-

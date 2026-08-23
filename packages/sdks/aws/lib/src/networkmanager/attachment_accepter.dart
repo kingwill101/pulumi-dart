@@ -65,6 +65,20 @@ import 'attachment_accepter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_attachmentaccepter" "example" {
+///   attachment_id   = exampleAwsNetworkmanagerVpcAttachment.id
+///   attachment_type = exampleAwsNetworkmanagerVpcAttachment.attachmentType
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +87,8 @@ import 'attachment_accepter_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.AttachmentAccepter;
 /// import com.pulumi.aws.networkmanager.AttachmentAccepterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -161,6 +175,20 @@ import 'attachment_accepter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_attachmentaccepter" "example" {
+///   attachment_id   = exampleAwsNetworkmanagerSiteToSiteVpnAttachment.id
+///   attachment_type = exampleAwsNetworkmanagerSiteToSiteVpnAttachment.attachmentType
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -169,8 +197,8 @@ import 'attachment_accepter_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.AttachmentAccepter;
 /// import com.pulumi.aws.networkmanager.AttachmentAccepterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -257,6 +285,20 @@ import 'attachment_accepter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_attachmentaccepter" "example" {
+///   attachment_id   = exampleAwsNetworkmanagerConnectAttachment.id
+///   attachment_type = exampleAwsNetworkmanagerConnectAttachment.attachmentType
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -265,8 +307,8 @@ import 'attachment_accepter_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.AttachmentAccepter;
 /// import com.pulumi.aws.networkmanager.AttachmentAccepterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -353,6 +395,20 @@ import 'attachment_accepter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_attachmentaccepter" "example" {
+///   attachment_id   = exampleAwsNetworkmanagerTransitGatewayRouteTableAttachment.id
+///   attachment_type = exampleAwsNetworkmanagerTransitGatewayRouteTableAttachment.attachmentType
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -361,8 +417,8 @@ import 'attachment_accepter_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.AttachmentAccepter;
 /// import com.pulumi.aws.networkmanager.AttachmentAccepterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -449,6 +505,20 @@ import 'attachment_accepter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_attachmentaccepter" "example" {
+///   attachment_id   = exampleAwsNetworkmanagerDxGatewayAttachment.id
+///   attachment_type = exampleAwsNetworkmanagerDxGatewayAttachment.attachmentType
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -457,8 +527,8 @@ import 'attachment_accepter_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.AttachmentAccepter;
 /// import com.pulumi.aws.networkmanager.AttachmentAccepterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -497,9 +567,9 @@ class AttachmentAccepter extends pulumi.CustomResource {
   late final pulumi.Output<String> coreNetworkArn;
   /// ID of the core network.
   late final pulumi.Output<String> coreNetworkId;
-  /// Region where the edge is located. This is returned for all attachment types except Direct Connect gateway attachments, which instead return `edge_locations`.
+  /// Region where the edge is located. This is returned for all attachment types except Direct Connect gateway attachments, which instead return `edgeLocations`.
   late final pulumi.Output<String> edgeLocation;
-  /// Edge locations that the Direct Connect gateway is associated with. This is returned only for Direct Connect gateway attachments. All other attachment types return `edge_location`.
+  /// Edge locations that the Direct Connect gateway is associated with. This is returned only for Direct Connect gateway attachments. All other attachment types return `edgeLocation`.
   late final pulumi.Output<List<String>> edgeLocations;
   /// ID of the attachment account owner.
   late final pulumi.Output<String> ownerAccountId;

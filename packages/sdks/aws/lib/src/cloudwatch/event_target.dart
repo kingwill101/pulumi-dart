@@ -176,7 +176,7 @@ import 'event_target_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string][]string{
 /// 			"source": []string{
 /// 				"aws.autoscaling",
 /// 			},
@@ -232,6 +232,41 @@ import 'event_target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventtarget" "yada" {
+///   target_id = "Yada"
+///   rule      = aws_cloudwatch_eventrule.console.name
+///   arn       = aws_kinesis_stream.test_stream.arn
+///   run_command_targets {
+///     key    = "tag:Name"
+///     values = ["FooBar"]
+///   }
+///   run_command_targets {
+///     key    = "InstanceIds"
+///     values = ["i-162058cd308bffec2"]
+///   }
+/// }
+/// resource "aws_cloudwatch_eventrule" "console" {
+///   name        = "capture-ec2-scaling-events"
+///   description = "Capture all EC2 scaling events"
+///   event_pattern = jsonencode({
+///     "source"      = ["aws.autoscaling"]
+///     "detail-type" = ["EC2 Instance Launch Successful", "EC2 Instance Terminate Successful", "EC2 Instance Launch Unsuccessful", "EC2 Instance Terminate Unsuccessful"]
+///   })
+/// }
+/// resource "aws_kinesis_stream" "test_stream" {
+///   name        = "kinesis-test"
+///   shard_count = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -246,8 +281,8 @@ import 'event_target_state.dart';
 /// import com.pulumi.aws.cloudwatch.EventTargetArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventTargetRunCommandTargetArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -393,7 +428,7 @@ import 'event_target_state.dart';
 /// });
 /// const ssmLifecyclePolicy = new aws.iam.Policy("ssm_lifecycle", {
 ///     name: "SSMLifecycle",
-///     policy: ssmLifecycle.apply(ssmLifecycle => ssmLifecycle.json),
+///     policy: ssmLifecycle.json,
 /// });
 /// const ssmLifecycleRolePolicyAttachment = new aws.iam.RolePolicyAttachment("ssm_lifecycle", {
 ///     policyArn: ssmLifecyclePolicy.arn,
@@ -675,8 +710,8 @@ import 'event_target_state.dart';
 /// 			"schemaVersion": "1.2",
 /// 			"description":   "Stop an instance",
 /// 			"parameters":    map[string]interface{}{},
-/// 			"runtimeConfig": map[string]interface{}{
-/// 				"aws:runShellScript": map[string]interface{}{
+/// 			"runtimeConfig": map[string]map[string][]map[string]interface{}{
+/// 				"aws:runShellScript": map[string][]map[string]interface{}{
 /// 					"properties": []map[string]interface{}{
 /// 						map[string]interface{}{
 /// 							"id": "0.aws:runShellScript",
@@ -739,10 +774,8 @@ import 'event_target_state.dart';
 /// 			return err
 /// 		}
 /// 		ssmLifecyclePolicy, err := iam.NewPolicy(ctx, "ssm_lifecycle", &iam.PolicyArgs{
-/// 			Name: pulumi.String("SSMLifecycle"),
-/// 			Policy: pulumi.String(ssmLifecycle.ApplyT(func(ssmLifecycle iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &ssmLifecycle.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:   pulumi.String("SSMLifecycle"),
+/// 			Policy: ssmLifecycle.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -783,6 +816,87 @@ import 'event_target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "ssmLifecycleTrust" {
+///   statements {
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["events.amazonaws.com"]
+///     }
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "ssmLifecycle" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["ssm:SendCommand"]
+///     resources = ["arn:aws:ec2:eu-west-1:1234567890:instance/*"]
+///     conditions {
+///       test     = "StringEquals"
+///       variable = "ec2:ResourceTag/Terminate"
+///       values   = ["*"]
+///     }
+///   }
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["ssm:SendCommand"]
+///     resources = [aws_ssm_document.stop_instance.arn]
+///   }
+/// }
+///
+/// resource "aws_iam_role" "ssm_lifecycle" {
+///   name               = "SSMLifecycle"
+///   assume_role_policy = data.aws_iam_getpolicydocument.ssmLifecycleTrust.json
+/// }
+/// resource "aws_iam_policy" "ssm_lifecycle" {
+///   name   = "SSMLifecycle"
+///   policy = data.aws_iam_getpolicydocument.ssmLifecycle.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "ssm_lifecycle" {
+///   policy_arn = aws_iam_policy.ssm_lifecycle.arn
+///   role       = aws_iam_role.ssm_lifecycle.name
+/// }
+/// resource "aws_ssm_document" "stop_instance" {
+///   name          = "stop_instance"
+///   document_type = "Command"
+///   content = jsonencode({
+///     "schemaVersion" = "1.2"
+///     "description"   = "Stop an instance"
+///     "parameters"    = {}
+///     "runtimeConfig" = {
+///       "aws:runShellScript" = {
+///         "properties" = [{
+///           "id"         = "0.aws:runShellScript"
+///           "runCommand" = ["halt"]
+///         }]
+///       }
+///     }
+///   })
+/// }
+/// resource "aws_cloudwatch_eventrule" "stop_instances" {
+///   name                = "StopInstance"
+///   description         = "Stop instances nightly"
+///   schedule_expression = "cron(0 0 * * ? *)"
+/// }
+/// resource "aws_cloudwatch_eventtarget" "stop_instances" {
+///   target_id = "StopInstance"
+///   arn       = aws_ssm_document.stop_instance.arn
+///   rule      = aws_cloudwatch_eventrule.stop_instances.name
+///   role_arn  = aws_iam_role.ssm_lifecycle.arn
+///   run_command_targets {
+///     key    = "tag:Terminate"
+///     values = ["midnight"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -791,8 +905,11 @@ import 'event_target_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.ssm.Document;
 /// import com.pulumi.aws.ssm.DocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.Policy;
@@ -805,8 +922,8 @@ import 'event_target_state.dart';
 /// import com.pulumi.aws.cloudwatch.EventTargetArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventTargetRunCommandTargetArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1114,6 +1231,32 @@ import 'event_target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventrule" "stop_instances" {
+///   name                = "StopInstance"
+///   description         = "Stop instances nightly"
+///   schedule_expression = "cron(0 0 * * ? *)"
+/// }
+/// resource "aws_cloudwatch_eventtarget" "stop_instances" {
+///   target_id = "StopInstance"
+///   arn       ="arn:aws:ssm:${awsRegion}::document/AWS-RunShellScript"
+///   input     = "{\"commands\":[\"halt\"]}"
+///   rule      = aws_cloudwatch_eventrule.stop_instances.name
+///   role_arn  = ssmLifecycle.arn
+///   run_command_targets {
+///     key    = "tag:Terminate"
+///     values = ["midnight"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1125,8 +1268,8 @@ import 'event_target_state.dart';
 /// import com.pulumi.aws.cloudwatch.EventTarget;
 /// import com.pulumi.aws.cloudwatch.EventTargetArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventTargetRunCommandTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1429,104 +1572,170 @@ import 'event_target_state.dart';
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Effect: pulumi.StringRef("Allow"),
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "Service",
-/// Identifiers: []string{
-/// "events.amazonaws.com",
-/// },
-/// },
-/// },
-/// Actions: []string{
-/// "sts:AssumeRole",
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "Service",
+/// 							Identifiers: []string{
+/// 								"events.amazonaws.com",
+/// 							},
+/// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ecsEvents, err := iam.NewRole(ctx, "ecs_events", &iam.RoleArgs{
+/// 			Name:             pulumi.String("ecs_events"),
+/// 			AssumeRolePolicy: pulumi.String(assumeRole.Json),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeReplace, err := std.Replace(ctx, &std.ReplaceArgs{
+/// 			Text:    taskName.Arn,
+/// 			Search:  "/:\\d+$/",
+/// 			Replace: ":*",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ecsEventsRunTaskWithAnyRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"iam:PassRole",
+/// 					},
+/// 					Resources: []string{
+/// 						"*",
+/// 					},
+/// 				},
+/// 				{
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"ecs:RunTask",
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						invokeReplace.Result,
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iam.NewRolePolicy(ctx, "ecs_events_run_task_with_any_role", &iam.RolePolicyArgs{
+/// 			Name:   pulumi.String("ecs_events_run_task_with_any_role"),
+/// 			Role:   ecsEvents.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: pulumi.String(ecsEventsRunTaskWithAnyRole.Json),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		tmpJSON0, err := json.Marshal(map[string][]map[string]interface{}{
+/// 			"containerOverrides": []map[string]interface{}{
+/// 				map[string]interface{}{
+/// 					"name": "name-of-container-to-override",
+/// 					"command": []string{
+/// 						"bin/console",
+/// 						"scheduled-task",
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		_, err = cloudwatch.NewEventTarget(ctx, "ecs_scheduled_task", &cloudwatch.EventTargetArgs{
+/// 			TargetId: pulumi.String("run-scheduled-task-every-hour"),
+/// 			Arn:      pulumi.Any(clusterName.Arn),
+/// 			Rule:     pulumi.Any(everyHour.Name),
+/// 			RoleArn:  ecsEvents.Arn,
+/// 			EcsTarget: &cloudwatch.EventTargetEcsTargetArgs{
+/// 				TaskCount:         pulumi.Int(1),
+/// 				TaskDefinitionArn: pulumi.Any(taskName.Arn),
+/// 			},
+/// 			Input: pulumi.String(json0),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// ecsEvents, err := iam.NewRole(ctx, "ecs_events", &iam.RoleArgs{
-/// Name: pulumi.String("ecs_events"),
-/// AssumeRolePolicy: pulumi.String(assumeRole.Json),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
 /// }
-/// ecsEventsRunTaskWithAnyRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Effect: pulumi.StringRef("Allow"),
-/// Actions: []string{
-/// "iam:PassRole",
-/// },
-/// Resources: []string{
-/// "*",
-/// },
-/// },
-/// {
-/// Effect: pulumi.StringRef("Allow"),
-/// Actions: []string{
-/// "ecs:RunTask",
-/// },
-/// Resources: interface{}{
-/// std.Replace(ctx, {
-/// Text: taskName.Arn,
-/// Search: "/:\\d+$/",
-/// Replace: ":*",
-/// }, nil).Result,
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["events.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
 /// }
-/// _, err = iam.NewRolePolicy(ctx, "ecs_events_run_task_with_any_role", &iam.RolePolicyArgs{
-/// Name: pulumi.String("ecs_events_run_task_with_any_role"),
-/// Role: ecsEvents.ID(),
-/// Policy: pulumi.String(ecsEventsRunTaskWithAnyRole.Json),
-/// })
-/// if err != nil {
-/// return err
+/// data "aws_iam_getpolicydocument" "ecsEventsRunTaskWithAnyRole" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["iam:PassRole"]
+///     resources = ["*"]
+///   }
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["ecs:RunTask"]
+///     resources = [replace(taskName.arn, "/:\\d+$/", ":*")]
+///   }
 /// }
-/// tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// "containerOverrides": []map[string]interface{}{
-/// map[string]interface{}{
-/// "name": "name-of-container-to-override",
-/// "command": []string{
-/// "bin/console",
-/// "scheduled-task",
-/// },
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
+///
+/// resource "aws_iam_role" "ecs_events" {
+///   name               = "ecs_events"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
 /// }
-/// json0 := string(tmpJSON0)
-/// _, err = cloudwatch.NewEventTarget(ctx, "ecs_scheduled_task", &cloudwatch.EventTargetArgs{
-/// TargetId: pulumi.String("run-scheduled-task-every-hour"),
-/// Arn: pulumi.Any(clusterName.Arn),
-/// Rule: pulumi.Any(everyHour.Name),
-/// RoleArn: ecsEvents.Arn,
-/// EcsTarget: &cloudwatch.EventTargetEcsTargetArgs{
-/// TaskCount: pulumi.Int(1),
-/// TaskDefinitionArn: pulumi.Any(taskName.Arn),
-/// },
-/// Input: pulumi.String(json0),
-/// })
-/// if err != nil {
-/// return err
+/// resource "aws_iam_rolepolicy" "ecs_events_run_task_with_any_role" {
+///   name   = "ecs_events_run_task_with_any_role"
+///   role   = aws_iam_role.ecs_events.id
+///   policy = data.aws_iam_getpolicydocument.ecsEventsRunTaskWithAnyRole.json
 /// }
-/// return nil
-/// })
+/// resource "aws_cloudwatch_eventtarget" "ecs_scheduled_task" {
+///   target_id = "run-scheduled-task-every-hour"
+///   arn       = clusterName.arn
+///   rule      = everyHour.name
+///   role_arn  = aws_iam_role.ecs_events.arn
+///   ecs_target = {
+///     task_count          = 1
+///     task_definition_arn = taskName.arn
+///   }
+///   input = jsonencode({
+///     "containerOverrides" = [{
+///       "name"    = "name-of-container-to-override"
+///       "command" = ["bin/console", "scheduled-task"]
+///     }]
+///   })
 /// }
 /// ```
 /// ```java
@@ -1537,6 +1746,8 @@ import 'event_target_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.std.StdFunctions;
@@ -1547,8 +1758,8 @@ import 'event_target_state.dart';
 /// import com.pulumi.aws.cloudwatch.EventTargetArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventTargetEcsTargetArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1806,7 +2017,7 @@ import 'event_target_state.dart';
 /// 		}
 /// 		exampleStage, err := apigateway.NewStage(ctx, "example", &apigateway.StageArgs{
 /// 			RestApi:    pulumi.Any(exampleAwsApiGatewayRestApi.Id),
-/// 			Deployment: exampleDeployment.ID(),
+/// 			Deployment: exampleDeployment.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1815,7 +2026,7 @@ import 'event_target_state.dart';
 /// 			Arn: exampleStage.ExecutionArn.ApplyT(func(executionArn string) (string, error) {
 /// 				return fmt.Sprintf("%v/GET", executionArn), nil
 /// 			}).(pulumi.StringOutput),
-/// 			Rule: exampleEventRule.ID(),
+/// 			Rule: exampleEventRule.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpTarget: &cloudwatch.EventTargetHttpTargetArgs{
 /// 				QueryStringParameters: pulumi.StringMap{
 /// 					"Body": pulumi.String("$.detail.body"),
@@ -1832,6 +2043,37 @@ import 'event_target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventtarget" "example" {
+///   arn  ="${aws_apigateway_stage.example.execution_arn}/GET"
+///   rule = aws_cloudwatch_eventrule.example.id
+///   http_target = {
+///     query_string_parameters = {
+///       "Body" = "$.detail.body"
+///     }
+///     header_parameters = {
+///       "Env" = "Test"
+///     }
+///   }
+/// }
+/// resource "aws_cloudwatch_eventrule" "example" {
+/// }
+/// resource "aws_apigateway_deployment" "example" {
+///   rest_api = exampleAwsApiGatewayRestApi.id
+/// }
+/// resource "aws_apigateway_stage" "example" {
+///   rest_api   = exampleAwsApiGatewayRestApi.id
+///   deployment = aws_apigateway_deployment.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1846,8 +2088,8 @@ import 'event_target_state.dart';
 /// import com.pulumi.aws.cloudwatch.EventTarget;
 /// import com.pulumi.aws.cloudwatch.EventTargetArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventTargetHttpTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2173,6 +2415,57 @@ import 'event_target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["events.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "eventBusInvokeRemoteEventBus" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["events:PutEvents"]
+///     resources = ["arn:aws:events:eu-west-1:1234567890:event-bus/My-Event-Bus"]
+///   }
+/// }
+///
+/// resource "aws_iam_role" "event_bus_invoke_remote_event_bus" {
+///   name               = "event-bus-invoke-remote-event-bus"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_policy" "event_bus_invoke_remote_event_bus" {
+///   name   = "event_bus_invoke_remote_event_bus"
+///   policy = data.aws_iam_getpolicydocument.eventBusInvokeRemoteEventBus.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "event_bus_invoke_remote_event_bus" {
+///   role       = aws_iam_role.event_bus_invoke_remote_event_bus.name
+///   policy_arn = aws_iam_policy.event_bus_invoke_remote_event_bus.arn
+/// }
+/// resource "aws_cloudwatch_eventrule" "stop_instances" {
+///   name                = "StopInstance"
+///   description         = "Stop instances nightly"
+///   schedule_expression = "cron(0 0 * * ? *)"
+/// }
+/// resource "aws_cloudwatch_eventtarget" "stop_instances" {
+///   target_id = "StopInstance"
+///   arn       = "arn:aws:events:eu-west-1:1234567890:event-bus/My-Event-Bus"
+///   rule      = aws_cloudwatch_eventrule.stop_instances.name
+///   role_arn  = aws_iam_role.event_bus_invoke_remote_event_bus.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2181,6 +2474,8 @@ import 'event_target_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.Policy;
@@ -2191,8 +2486,8 @@ import 'event_target_state.dart';
 /// import com.pulumi.aws.cloudwatch.EventRuleArgs;
 /// import com.pulumi.aws.cloudwatch.EventTarget;
 /// import com.pulumi.aws.cloudwatch.EventTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2406,7 +2701,7 @@ import 'event_target_state.dart';
 /// 		}
 /// 		_, err = cloudwatch.NewEventTarget(ctx, "example", &cloudwatch.EventTargetArgs{
 /// 			Arn:  pulumi.Any(exampleAwsLambdaFunction.Arn),
-/// 			Rule: exampleEventRule.ID(),
+/// 			Rule: exampleEventRule.ID().ToIDOutput().ToStringOutput(),
 /// 			InputTransformer: &cloudwatch.EventTargetInputTransformerArgs{
 /// 				InputPaths: pulumi.StringMap{
 /// 					"instance": pulumi.String("$.detail.instance"),
@@ -2422,6 +2717,29 @@ import 'event_target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventtarget" "example" {
+///   arn  = exampleAwsLambdaFunction.arn
+///   rule = aws_cloudwatch_eventrule.example.id
+///   input_transformer = {
+///     input_paths = {
+///       "instance" = "$.detail.instance"
+///       "status"   = "$.detail.status"
+///     }
+///     input_template = "{\n  \\\"instance_id\\\": <instance>,\n  \\\"instance_status\\\": <status>\n}\n"
+///   }
+/// }
+/// resource "aws_cloudwatch_eventrule" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2432,8 +2750,8 @@ import 'event_target_state.dart';
 /// import com.pulumi.aws.cloudwatch.EventTarget;
 /// import com.pulumi.aws.cloudwatch.EventTargetArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventTargetInputTransformerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2568,7 +2886,7 @@ import 'event_target_state.dart';
 /// 		}
 /// 		_, err = cloudwatch.NewEventTarget(ctx, "example", &cloudwatch.EventTargetArgs{
 /// 			Arn:  pulumi.Any(exampleAwsLambdaFunction.Arn),
-/// 			Rule: exampleEventRule.ID(),
+/// 			Rule: exampleEventRule.ID().ToIDOutput().ToStringOutput(),
 /// 			InputTransformer: &cloudwatch.EventTargetInputTransformerArgs{
 /// 				InputPaths: pulumi.StringMap{
 /// 					"instance": pulumi.String("$.detail.instance"),
@@ -2584,6 +2902,29 @@ import 'event_target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventtarget" "example" {
+///   arn  = exampleAwsLambdaFunction.arn
+///   rule = aws_cloudwatch_eventrule.example.id
+///   input_transformer = {
+///     input_paths = {
+///       "instance" = "$.detail.instance"
+///       "status"   = "$.detail.status"
+///     }
+///     input_template = "\"<instance> is in state <status>\""
+///   }
+/// }
+/// resource "aws_cloudwatch_eventrule" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2594,8 +2935,8 @@ import 'event_target_state.dart';
 /// import com.pulumi.aws.cloudwatch.EventTarget;
 /// import com.pulumi.aws.cloudwatch.EventTargetArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventTargetInputTransformerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2697,7 +3038,7 @@ import 'event_target_state.dart';
 ///     ],
 /// });
 /// const exampleLogResourcePolicy = new aws.cloudwatch.LogResourcePolicy("example", {
-///     policyDocument: exampleLogPolicy.apply(exampleLogPolicy => exampleLogPolicy.json),
+///     policyDocument: exampleLogPolicy.json,
 ///     policyName: "guardduty-log-publishing-policy",
 /// });
 /// const exampleEventTarget = new aws.cloudwatch.EventTarget("example", {
@@ -2894,7 +3235,7 @@ import 'event_target_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string][]string{
 /// 			"source": []string{
 /// 				"aws.guardduty",
 /// 			},
@@ -2968,10 +3309,8 @@ import 'event_target_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = cloudwatch.NewLogResourcePolicy(ctx, "example", &cloudwatch.LogResourcePolicyArgs{
-/// 			PolicyDocument: pulumi.String(exampleLogPolicy.ApplyT(func(exampleLogPolicy iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &exampleLogPolicy.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			PolicyName: pulumi.String("guardduty-log-publishing-policy"),
+/// 			PolicyDocument: exampleLogPolicy.Json(),
+/// 			PolicyName:     pulumi.String("guardduty-log-publishing-policy"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2987,6 +3326,64 @@ import 'event_target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "exampleLogPolicy" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["logs:CreateLogStream"]
+///     resources = ["${aws_cloudwatch_loggroup.example.arn}:*"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["events.amazonaws.com", "delivery.logs.amazonaws.com"]
+///     }
+///   }
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["logs:PutLogEvents"]
+///     resources = ["${aws_cloudwatch_loggroup.example.arn}:*:*"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["events.amazonaws.com", "delivery.logs.amazonaws.com"]
+///     }
+///     conditions {
+///       test     = "ArnEquals"
+///       values   = [aws_cloudwatch_eventrule.example.arn]
+///       variable = "aws:SourceArn"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name              = "/aws/events/guardduty/logs"
+///   retention_in_days = 1
+/// }
+/// resource "aws_cloudwatch_logresourcepolicy" "example" {
+///   policy_document = data.aws_iam_getpolicydocument.exampleLogPolicy.json
+///   policy_name     = "guardduty-log-publishing-policy"
+/// }
+/// resource "aws_cloudwatch_eventrule" "example" {
+///   name        = "guard-duty_event_rule"
+///   description = "GuardDuty Findings"
+///   event_pattern = jsonencode({
+///     "source" = ["aws.guardduty"]
+///   })
+///   tags = {
+///     "Environment" = "example"
+///   }
+/// }
+/// resource "aws_cloudwatch_eventtarget" "example" {
+///   rule = aws_cloudwatch_eventrule.example.name
+///   arn  = aws_cloudwatch_loggroup.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2999,13 +3396,16 @@ import 'event_target_state.dart';
 /// import com.pulumi.aws.cloudwatch.EventRuleArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.cloudwatch.LogResourcePolicy;
 /// import com.pulumi.aws.cloudwatch.LogResourcePolicyArgs;
 /// import com.pulumi.aws.cloudwatch.EventTarget;
 /// import com.pulumi.aws.cloudwatch.EventTargetArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3197,7 +3597,7 @@ import 'event_target_state.dart';
 ///         text: graphql_api.arn,
 ///         search: "apis",
 ///         replace: "endpoints/graphql-api",
-///     }).apply(invoke => invoke.result),
+///     }).result,
 ///     rule: invokeAppsyncMutation.id,
 ///     roleArn: appsyncMutationRole.arn,
 ///     inputTransformer: {
@@ -3222,7 +3622,7 @@ import 'event_target_state.dart';
 /// });
 /// const appsyncMutationRolePolicy = new aws.iam.Policy("appsync_mutation_role_policy", {
 ///     name: "appsync-mutation-role-policy",
-///     policy: appsyncMutationRolePolicyDocument.apply(appsyncMutationRolePolicyDocument => appsyncMutationRolePolicyDocument.json),
+///     policy: appsyncMutationRolePolicyDocument.json,
 /// });
 /// const appsyncMutationRoleAttachment = new aws.iam.RolePolicyAttachment("appsync_mutation_role_attachment", {
 ///     policyArn: appsyncMutationRolePolicy.arn,
@@ -3275,7 +3675,7 @@ import 'event_target_state.dart';
 /// invoke_appsync_mutation_event_target = aws.cloudwatch.EventTarget("invoke_appsync_mutation",
 ///     arn=std.replace_output(text=graphql_api.arn,
 ///         search="apis",
-///         replace="endpoints/graphql-api").apply(lambda invoke: invoke.result),
+///         replace="endpoints/graphql-api").result,
 ///     rule=invoke_appsync_mutation.id,
 ///     role_arn=appsync_mutation_role.arn,
 ///     input_transformer={
@@ -3513,14 +3913,12 @@ import 'event_target_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cloudwatch.NewEventTarget(ctx, "invoke_appsync_mutation", &cloudwatch.EventTargetArgs{
-/// 			Arn: pulumi.String(std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
+/// 			Arn: std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
 /// 				Text:    graphql_api.Arn,
 /// 				Search:  pulumi.String("apis"),
 /// 				Replace: pulumi.String("endpoints/graphql-api"),
-/// 			}, nil).ApplyT(func(invoke std.ReplaceResult) (*string, error) {
-/// 				return invoke.Result, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			Rule:    invokeAppsyncMutation.ID(),
+/// 			}, nil).Result(),
+/// 			Rule:    invokeAppsyncMutation.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleArn: appsyncMutationRole.Arn,
 /// 			InputTransformer: &cloudwatch.EventTargetInputTransformerArgs{
 /// 				InputPaths: pulumi.StringMap{
@@ -3549,10 +3947,8 @@ import 'event_target_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		appsyncMutationRolePolicy, err := iam.NewPolicy(ctx, "appsync_mutation_role_policy", &iam.PolicyArgs{
-/// 			Name: pulumi.String("appsync-mutation-role-policy"),
-/// 			Policy: pulumi.String(appsyncMutationRolePolicyDocument.ApplyT(func(appsyncMutationRolePolicyDocument iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &appsyncMutationRolePolicyDocument.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:   pulumi.String("appsync-mutation-role-policy"),
+/// 			Policy: appsyncMutationRolePolicyDocument.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -3568,6 +3964,72 @@ import 'event_target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "appsyncMutationRoleTrust" {
+///   statements {
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["events.amazonaws.com"]
+///     }
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "appsyncMutationRolePolicyDocument" {
+///   statements {
+///     actions   = ["appsync:GraphQL"]
+///     effect    = "Allow"
+///     resources = [aws_appsync_graphqlapi.graphql-api.arn]
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventrule" "invoke_appsync_mutation" {
+///   name                = "invoke-appsync-mutation"
+///   description         = "schedule_batch_test"
+///   schedule_expression = "rate(5 minutes)"
+/// }
+/// resource "aws_cloudwatch_eventtarget" "invoke_appsync_mutation" {
+///   arn      = replace(aws_appsync_graphqlapi.graphql-api.arn, "apis", "endpoints/graphql-api")
+///   rule     = aws_cloudwatch_eventrule.invoke_appsync_mutation.id
+///   role_arn = aws_iam_role.appsync_mutation_role.arn
+///   input_transformer = {
+///     input_paths = {
+///       "input" = "$.detail.input"
+///     }
+///     input_template = "      {\n        \\\"input\\\": <input>\n      }\n"
+///   }
+///   appsync_target = {
+///     graphql_operation = "mutation TestMutation($input:MutationInput!){testMutation(input: $input) {test}}"
+///   }
+/// }
+/// resource "aws_iam_role" "appsync_mutation_role" {
+///   name               = "appsync-mutation-role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.appsyncMutationRoleTrust.json
+/// }
+/// resource "aws_iam_policy" "appsync_mutation_role_policy" {
+///   name   = "appsync-mutation-role-policy"
+///   policy = data.aws_iam_getpolicydocument.appsyncMutationRolePolicyDocument.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "appsync_mutation_role_attachment" {
+///   policy_arn = aws_iam_policy.appsync_mutation_role_policy.arn
+///   role       = aws_iam_role.appsync_mutation_role.name
+/// }
+/// resource "aws_appsync_graphqlapi" "graphql-api" {
+///   name                = "api"
+///   authentication_type = "AWS_IAM"
+///   schema              = "    schema {\n      mutation: Mutation\n      query: Query\n    }\n\n    type Query {\n      testQuery: String\n    }\n\n    type Mutation {\n      testMutation(input: MutationInput!): TestMutationResult\n    }\n\n    type TestMutationResult {\n      test: String\n    }\n\n    input MutationInput {\n      testInput: String\n    }\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3578,6 +4040,8 @@ import 'event_target_state.dart';
 /// import com.pulumi.aws.cloudwatch.EventRuleArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.appsync.GraphQLApi;
@@ -3592,8 +4056,8 @@ import 'event_target_state.dart';
 /// import com.pulumi.aws.iam.PolicyArgs;
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
 /// import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3802,17 +4266,17 @@ import 'event_target_state.dart';
 ///
 /// #### Required
 ///
-/// * `event_bus_name` (String) Event bus name for the target.
+/// * `eventBusName` (String) Event bus name for the target.
 /// * `rule` (String) Rule name for the target.
-/// * `target_id` (String) Target ID.
+/// * `targetId` (String) Target ID.
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import EventBridge Targets using `event_bus_name/rule-name/target-id` (if you omit `event_bus_name`, the `default` event bus will be used). For example:
+/// Using `pulumi import`, import EventBridge Targets using `event_bus_name/rule-name/target-id` (if you omit `eventBusName`, the `default` event bus will be used). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudwatch/eventTarget:EventTarget example rule-name/target-id
@@ -3835,11 +4299,11 @@ class EventTarget extends pulumi.CustomResource {
   late final pulumi.Output<bool?> forceDestroy;
   /// Parameters used when you are using the rule to invoke an API Gateway REST endpoint. Documented below. A maximum of 1 is allowed.
   late final pulumi.Output<EventTargetHttpTarget?> httpTarget;
-  /// Valid JSON text passed to the target. Conflicts with `input_path` and `input_transformer`.
+  /// Valid JSON text passed to the target. Conflicts with `inputPath` and `inputTransformer`.
   late final pulumi.Output<String?> input;
-  /// The value of the [JSONPath](http://goessner.net/articles/JsonPath/) that is used for extracting part of the matched event when passing it to the target. Conflicts with `input` and `input_transformer`.
+  /// The value of the [JSONPath](http://goessner.net/articles/JsonPath/) that is used for extracting part of the matched event when passing it to the target. Conflicts with `input` and `inputTransformer`.
   late final pulumi.Output<String?> inputPath;
-  /// Parameters used when you are providing a custom input to a target based on certain event data. Conflicts with `input` and `input_path`.
+  /// Parameters used when you are providing a custom input to a target based on certain event data. Conflicts with `input` and `inputPath`.
   late final pulumi.Output<EventTargetInputTransformer?> inputTransformer;
   /// Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
   late final pulumi.Output<EventTargetKinesisTarget?> kinesisTarget;
@@ -3849,7 +4313,7 @@ class EventTarget extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Parameters used when you are providing retry policies. Documented below. A maximum of 1 are allowed.
   late final pulumi.Output<EventTargetRetryPolicy?> retryPolicy;
-  /// The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecs_target` is used or target in `arn` is EC2 instance, Kinesis data stream, Step Functions state machine, or Event Bus in different account or region.
+  /// The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecsTarget` is used or target in `arn` is EC2 instance, Kinesis data stream, Step Functions state machine, or Event Bus in different account or region.
   late final pulumi.Output<String?> roleArn;
   /// The name of the rule you want to add targets to.
   ///

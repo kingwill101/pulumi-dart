@@ -13,7 +13,7 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 class AgentDataSourceArgs {
   /// Data deletion policy for a data source. Valid values: `RETAIN`, `DELETE`.
   final pulumi.Input<String>? dataDeletionPolicy;
-  /// Details about how the data source is stored. See `data_source_configuration` block for details.
+  /// Details about how the data source is stored. See `dataSourceConfiguration` block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfiguration> dataSourceConfiguration;
   /// Description of the data source.
   final pulumi.Input<String>? description;
@@ -25,22 +25,22 @@ class AgentDataSourceArgs {
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Details about the configuration of the server-side encryption. See `server_side_encryption_configuration` block for details.
+  /// Details about the configuration of the server-side encryption. See `serverSideEncryptionConfiguration` block for details.
   final pulumi.Input<AgentDataSourceServerSideEncryptionConfiguration>? serverSideEncryptionConfiguration;
   final pulumi.Input<AgentDataSourceTimeouts>? timeouts;
-  /// Details about the configuration of the server-side encryption. See `vector_ingestion_configuration` block for details.
+  /// Details about the configuration of the server-side encryption. See `vectorIngestionConfiguration` block for details.
   final pulumi.Input<AgentDataSourceVectorIngestionConfiguration>? vectorIngestionConfiguration;
 
   /// Creates a new [AgentDataSourceArgs].
   /// [dataDeletionPolicy] Data deletion policy for a data source. Valid values: `RETAIN`, `DELETE`.
-  /// [dataSourceConfiguration] Details about how the data source is stored. See `data_source_configuration` block for details.
+  /// [dataSourceConfiguration] Details about how the data source is stored. See `dataSourceConfiguration` block for details.
   /// [description] Description of the data source.
   /// [knowledgeBaseId] Unique identifier of the knowledge base to which the data source belongs.
   /// [name] Name of the data source.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [serverSideEncryptionConfiguration] Details about the configuration of the server-side encryption. See `server_side_encryption_configuration` block for details.
+  /// [serverSideEncryptionConfiguration] Details about the configuration of the server-side encryption. See `serverSideEncryptionConfiguration` block for details.
   /// [timeouts] Optional.
-  /// [vectorIngestionConfiguration] Details about the configuration of the server-side encryption. See `vector_ingestion_configuration` block for details.
+  /// [vectorIngestionConfiguration] Details about the configuration of the server-side encryption. See `vectorIngestionConfiguration` block for details.
   const AgentDataSourceArgs({
     this.dataDeletionPolicy,
     required this.dataSourceConfiguration,
@@ -81,4 +81,3 @@ class AgentDataSourceArgs {
     );
   }
 }
-

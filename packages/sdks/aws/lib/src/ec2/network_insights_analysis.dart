@@ -69,13 +69,31 @@ import 'network_insights_analysis_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewNetworkInsightsAnalysis(ctx, "analysis", &ec2.NetworkInsightsAnalysisArgs{
-/// 			NetworkInsightsPathId: path.ID(),
+/// 			NetworkInsightsPathId: path.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_networkinsightspath" "path" {
+///   source      = source.id
+///   destination = destination.id
+///   protocol    = "tcp"
+/// }
+/// resource "aws_ec2_networkinsightsanalysis" "analysis" {
+///   network_insights_path_id = aws_ec2_networkinsightspath.path.id
 /// }
 /// ```
 /// ```java
@@ -88,8 +106,8 @@ import 'network_insights_analysis_state.dart';
 /// import com.pulumi.aws.ec2.NetworkInsightsPathArgs;
 /// import com.pulumi.aws.ec2.NetworkInsightsAnalysis;
 /// import com.pulumi.aws.ec2.NetworkInsightsAnalysisArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -159,13 +177,13 @@ class NetworkInsightsAnalysis extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> returnPathComponents;
   /// The date/time the analysis was started.
   late final pulumi.Output<String> startDate;
-  /// The status of the analysis. `succeeded` means the analysis was completed, not that a path was found, for that see `path_found`.
+  /// The status of the analysis. `succeeded` means the analysis was completed, not that a path was found, for that see `pathFound`.
   late final pulumi.Output<String> status;
   /// A message to provide more context when the `status` is `failed`.
   late final pulumi.Output<String> statusMessage;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// If enabled, the resource will wait for the Network Insights Analysis status to change to `succeeded` or `failed`. Setting this to `false` will skip the process. Default: `true`.
   late final pulumi.Output<bool?> waitForCompletion;

@@ -12,33 +12,33 @@ import 'task_set_service_registries.dart';
 /// {@endtemplate}
 /// {@macro pulumi_ecs_task_set_task_set_args_doc}
 class TaskSetArgs {
-  /// The capacity provider strategy to use for the service. Can be one or more.  Defined below.
+  /// Capacity provider strategy to use for the service. Can be one or more. Defined below.
   final pulumi.Input<List<TaskSetCapacityProviderStrategy>>? capacityProviderStrategies;
-  /// The short name or ARN of the cluster that hosts the service to create the task set in.
+  /// Short name or ARN of the cluster that hosts the service to create the task set in.
   final pulumi.Input<String> cluster;
-  /// The external ID associated with the task set.
+  /// External ID associated with the task set.
   final pulumi.Input<String>? externalId;
   /// Whether to allow deleting the task set without waiting for scaling down to 0. You can force a task set to delete even if it's in the process of scaling a resource. Normally, the provider drains all the tasks before deleting the task set. This bypasses that behavior and potentially leaves resources dangling.
   final pulumi.Input<bool>? forceDelete;
-  /// The launch type on which to run your service. The valid values are `EC2`, `FARGATE`, and `EXTERNAL`. Defaults to `EC2`.
+  /// Launch type on which to run your service. Valid values are `EC2`, `FARGATE`, and `EXTERNAL`. Defaults to `EC2`.
   final pulumi.Input<String>? launchType;
   /// Details on load balancers that are used with a task set. Detailed below.
   final pulumi.Input<List<TaskSetLoadBalancer>>? loadBalancers;
-  /// The network configuration for the service. This parameter is required for task definitions that use the `awsvpc` network mode to receive their own Elastic Network Interface, and it is not supported for other network modes. Detailed below.
+  /// Network configuration for the service. Required for task definitions that use the `awsvpc` network mode to receive their own Elastic Network Interface, and not supported for other network modes. Detailed below.
   final pulumi.Input<TaskSetNetworkConfiguration>? networkConfiguration;
-  /// The platform version on which to run your service. Only applicable for `launch_type` set to `FARGATE`. Defaults to `LATEST`. More information about Fargate platform versions can be found in the [AWS ECS User Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
+  /// Platform version on which to run your service. Only applicable for `launchType` set to `FARGATE`. Defaults to `LATEST`. More information about Fargate platform versions can be found in the [AWS ECS User Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
   final pulumi.Input<String>? platformVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A floating-point percentage of the desired number of tasks to place and keep running in the task set. Detailed below.
+  /// Floating-point percentage of the desired number of tasks to place and keep running in the task set. Detailed below.
   final pulumi.Input<TaskSetScale>? scale;
-  /// The short name or ARN of the ECS service.
+  /// Short name or ARN of the ECS service.
   final pulumi.Input<String> service;
-  /// The service discovery registries for the service. The maximum number of `service_registries` blocks is `1`. Detailed below.
+  /// Service discovery registries for the service. The maximum number of `serviceRegistries` blocks is `1`. Detailed below.
   final pulumi.Input<TaskSetServiceRegistries>? serviceRegistries;
-  /// A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copy_tags_to_backups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
+  /// Map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copyTagsToBackups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
   final pulumi.Input<Map<String, String>>? tags;
-  /// The family and revision (`family:revision`) or full ARN of the task definition that you want to run in your service.
+  /// Family and revision (`family:revision`) or full ARN of the task definition to run in your service.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> taskDefinition;
@@ -48,20 +48,20 @@ class TaskSetArgs {
   final pulumi.Input<String>? waitUntilStableTimeout;
 
   /// Creates a new [TaskSetArgs].
-  /// [capacityProviderStrategies] The capacity provider strategy to use for the service. Can be one or more.  Defined below.
-  /// [cluster] The short name or ARN of the cluster that hosts the service to create the task set in.
-  /// [externalId] The external ID associated with the task set.
+  /// [capacityProviderStrategies] Capacity provider strategy to use for the service. Can be one or more. Defined below.
+  /// [cluster] Short name or ARN of the cluster that hosts the service to create the task set in.
+  /// [externalId] External ID associated with the task set.
   /// [forceDelete] Whether to allow deleting the task set without waiting for scaling down to 0. You can force a task set to delete even if it's in the process of scaling a resource. Normally, the provider drains all the tasks before deleting the task set. This bypasses that behavior and potentially leaves resources dangling.
-  /// [launchType] The launch type on which to run your service. The valid values are `EC2`, `FARGATE`, and `EXTERNAL`. Defaults to `EC2`.
+  /// [launchType] Launch type on which to run your service. Valid values are `EC2`, `FARGATE`, and `EXTERNAL`. Defaults to `EC2`.
   /// [loadBalancers] Details on load balancers that are used with a task set. Detailed below.
-  /// [networkConfiguration] The network configuration for the service. This parameter is required for task definitions that use the `awsvpc` network mode to receive their own Elastic Network Interface, and it is not supported for other network modes. Detailed below.
-  /// [platformVersion] The platform version on which to run your service. Only applicable for `launch_type` set to `FARGATE`. Defaults to `LATEST`. More information about Fargate platform versions can be found in the [AWS ECS User Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
+  /// [networkConfiguration] Network configuration for the service. Required for task definitions that use the `awsvpc` network mode to receive their own Elastic Network Interface, and not supported for other network modes. Detailed below.
+  /// [platformVersion] Platform version on which to run your service. Only applicable for `launchType` set to `FARGATE`. Defaults to `LATEST`. More information about Fargate platform versions can be found in the [AWS ECS User Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [scale] A floating-point percentage of the desired number of tasks to place and keep running in the task set. Detailed below.
-  /// [service] The short name or ARN of the ECS service.
-  /// [serviceRegistries] The service discovery registries for the service. The maximum number of `service_registries` blocks is `1`. Detailed below.
-  /// [tags] A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copy_tags_to_backups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
-  /// [taskDefinition] The family and revision (`family:revision`) or full ARN of the task definition that you want to run in your service.
+  /// [scale] Floating-point percentage of the desired number of tasks to place and keep running in the task set. Detailed below.
+  /// [service] Short name or ARN of the ECS service.
+  /// [serviceRegistries] Service discovery registries for the service. The maximum number of `serviceRegistries` blocks is `1`. Detailed below.
+  /// [tags] Map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copyTagsToBackups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
+  /// [taskDefinition] Family and revision (`family:revision`) or full ARN of the task definition to run in your service.
   /// [waitUntilStable] Whether the provider should wait until the task set has reached `STEADY_STATE`.
   /// [waitUntilStableTimeout] Wait timeout for task set to reach `STEADY_STATE`. Valid time units include `ns`, `us` (or `µs`), `ms`, `s`, `m`, and `h`. Default `10m`.
   const TaskSetArgs({
@@ -125,4 +125,3 @@ class TaskSetArgs {
     );
   }
 }
-

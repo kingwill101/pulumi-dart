@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionEksPropertyPodPropertyImagePullSecret {
-  /// The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
+  /// Name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
   final pulumi.Input<String> name;
 
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyImagePullSecret].
-  /// [name] The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
+  /// [name] Name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
   const GetJobDefinitionEksPropertyPodPropertyImagePullSecret({
     required this.name,
   });
@@ -24,4 +24,3 @@ class GetJobDefinitionEksPropertyPodPropertyImagePullSecret {
     );
   }
 }
-

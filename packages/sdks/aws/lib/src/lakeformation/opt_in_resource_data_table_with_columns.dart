@@ -8,9 +8,9 @@ class OptInResourceDataTableWithColumns {
   final pulumi.Input<String>? catalogId;
   /// List of column names for the table. At least one of ColumnNames or ColumnWildcard is required.
   final pulumi.Input<List<String>>? columnNames;
-  /// Wildcard specified by a ColumnWildcard object. At least one of ColumnNames or ColumnWildcard is required.
+  /// Wildcard specified by a ColumnWildcard object. At least one of ColumnNames or ColumnWildcard is required. See `columnWildcard` Block for more details.
   final pulumi.Input<OptInResourceDataTableWithColumnsColumnWildcard>? columnWildcard;
-  /// The name of the database for the table. Unique to a Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
+  /// Name of the database for the table. Unique to a Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
   final pulumi.Input<String> databaseName;
   /// Name of the table.
   final pulumi.Input<String> name;
@@ -18,8 +18,8 @@ class OptInResourceDataTableWithColumns {
   /// Creates a new [OptInResourceDataTableWithColumns].
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.
   /// [columnNames] List of column names for the table. At least one of ColumnNames or ColumnWildcard is required.
-  /// [columnWildcard] Wildcard specified by a ColumnWildcard object. At least one of ColumnNames or ColumnWildcard is required.
-  /// [databaseName] The name of the database for the table. Unique to a Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
+  /// [columnWildcard] Wildcard specified by a ColumnWildcard object. At least one of ColumnNames or ColumnWildcard is required. See `columnWildcard` Block for more details.
+  /// [databaseName] Name of the database for the table. Unique to a Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
   /// [name] Name of the table.
   const OptInResourceDataTableWithColumns({
     this.catalogId,
@@ -49,4 +49,3 @@ class OptInResourceDataTableWithColumns {
     );
   }
 }
-

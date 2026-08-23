@@ -77,7 +77,7 @@ import 'api_cache_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appsync.NewApiCache(ctx, "example", &appsync.ApiCacheArgs{
-/// 			ApiId:              example.ID(),
+/// 			ApiId:              example.ID().ToIDOutput().ToStringOutput(),
 /// 			ApiCachingBehavior: pulumi.String("FULL_REQUEST_CACHING"),
 /// 			Type:               pulumi.String("LARGE"),
 /// 			Ttl:                pulumi.Int(900),
@@ -87,6 +87,26 @@ import 'api_cache_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appsync_graphqlapi" "example" {
+///   authentication_type = "API_KEY"
+///   name                = "example"
+/// }
+/// resource "aws_appsync_apicache" "example" {
+///   api_id               = aws_appsync_graphqlapi.example.id
+///   api_caching_behavior = "FULL_REQUEST_CACHING"
+///   type                 = "LARGE"
+///   ttl                  = 900
 /// }
 /// ```
 /// ```java
@@ -99,8 +119,8 @@ import 'api_cache_state.dart';
 /// import com.pulumi.aws.appsync.GraphQLApiArgs;
 /// import com.pulumi.aws.appsync.ApiCache;
 /// import com.pulumi.aws.appsync.ApiCacheArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

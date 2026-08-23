@@ -36,9 +36,9 @@ class LaunchState {
   final pulumi.Input<String>? status;
   /// If the launch was stopped, this is the string that was entered by the person who stopped the launch, to explain why it was stopped.
   final pulumi.Input<String>? statusReason;
-  /// Tags to apply to the launch. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the launch. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The type of launch.
   final pulumi.Input<String>? type;
@@ -58,8 +58,8 @@ class LaunchState {
   /// [scheduledSplitsConfig] A block that defines the traffic allocation percentages among the feature variations during each step of the launch. Detailed below.
   /// [status] The current state of the launch. Valid values are `CREATED`, `UPDATING`, `RUNNING`, `COMPLETED`, and `CANCELLED`.
   /// [statusReason] If the launch was stopped, this is the string that was entered by the person who stopped the launch, to explain why it was stopped.
-  /// [tags] Tags to apply to the launch. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Tags to apply to the launch. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [type] The type of launch.
   const LaunchState({
     this.arn,
@@ -125,4 +125,3 @@ class LaunchState {
     );
   }
 }
-

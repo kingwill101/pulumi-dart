@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_data_source_data_source_configuration_web_configuration_crawler_configuration_crawler_limits.dart';
 
 class AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration {
-  /// Configuration of crawl limits for the web URLs. See `crawler_limits` block for details.
+  /// Configuration of crawl limits for the web URLs. See `crawlerLimits` block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfigurationCrawlerLimits>? crawlerLimits;
   /// List of one or more exclusion regular expression patterns to exclude certain object types that adhere to the pattern.
   final pulumi.Input<List<String>>? exclusionFilters;
@@ -16,7 +16,7 @@ class AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration
   final pulumi.Input<String>? userAgent;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration].
-  /// [crawlerLimits] Configuration of crawl limits for the web URLs. See `crawler_limits` block for details.
+  /// [crawlerLimits] Configuration of crawl limits for the web URLs. See `crawlerLimits` block for details.
   /// [exclusionFilters] List of one or more exclusion regular expression patterns to exclude certain object types that adhere to the pattern.
   /// [inclusionFilters] List of one or more inclusion regular expression patterns to include certain object types that adhere to the pattern.
   /// [scope] Scope of what is crawled for your URLs.
@@ -49,4 +49,3 @@ class AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration
     );
   }
 }
-

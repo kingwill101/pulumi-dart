@@ -3,15 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount {
+  /// Path on the container where the volume is mounted.
   final pulumi.Input<String> mountPath;
-  /// Name of the job definition.
+  /// Name the volume mount. This must match the name of one of the volumes in the pod.
   final pulumi.Input<String> name;
+  /// Whether the container has read-only access to the volume. The default value is `false`.
   final pulumi.Input<bool>? readOnly;
 
   /// Creates a new [JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount].
-  /// [mountPath] Required.
-  /// [name] Name of the job definition.
-  /// [readOnly] Optional.
+  /// [mountPath] Path on the container where the volume is mounted.
+  /// [name] Name the volume mount. This must match the name of one of the volumes in the pod.
+  /// [readOnly] Whether the container has read-only access to the volume. The default value is `false`.
   const JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount({
     required this.mountPath,
     required this.name,
@@ -34,4 +36,3 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount {
     );
   }
 }
-

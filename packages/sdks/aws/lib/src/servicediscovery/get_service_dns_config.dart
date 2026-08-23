@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_service_dns_config_dns_record.dart';
 
 class GetServiceDnsConfig {
-  /// An array that contains one DnsRecord object for each resource record set. See `dns_records` Block for details.
+  /// An array that contains one DnsRecord object for each resource record set. See `dnsRecords` Block for details.
   final pulumi.Input<List<GetServiceDnsConfigDnsRecord>> dnsRecords;
   /// ID of the namespace that the service belongs to.
   final pulumi.Input<String> namespaceId;
@@ -12,7 +12,7 @@ class GetServiceDnsConfig {
   final pulumi.Input<String> routingPolicy;
 
   /// Creates a new [GetServiceDnsConfig].
-  /// [dnsRecords] An array that contains one DnsRecord object for each resource record set. See `dns_records` Block for details.
+  /// [dnsRecords] An array that contains one DnsRecord object for each resource record set. See `dnsRecords` Block for details.
   /// [namespaceId] ID of the namespace that the service belongs to.
   /// [routingPolicy] Routing policy that you want to apply to all records that Route 53 creates when you register an instance and specify the service. Valid Values: MULTIVALUE, WEIGHTED
   const GetServiceDnsConfig({
@@ -37,4 +37,3 @@ class GetServiceDnsConfig {
     );
   }
 }
-

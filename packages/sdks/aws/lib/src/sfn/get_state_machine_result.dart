@@ -16,7 +16,7 @@ class GetStateMachineResult {
   final String region;
   /// The revision identifier for the state machine.
   final String revisionId;
-  /// Set to the role_arn used by the state function.
+  /// Set to the roleArn used by the state function.
   final String roleArn;
   /// Set to the current status of the state machine.
   final String status;
@@ -30,7 +30,7 @@ class GetStateMachineResult {
   /// [name] Required.
   /// [region] Required.
   /// [revisionId] The revision identifier for the state machine.
-  /// [roleArn] Set to the role_arn used by the state function.
+  /// [roleArn] Set to the roleArn used by the state function.
   /// [status] Set to the current status of the state machine.
   const GetStateMachineResult({
     required this.arn,
@@ -75,4 +75,3 @@ class GetStateMachineResult {
     );
   }
 }
-

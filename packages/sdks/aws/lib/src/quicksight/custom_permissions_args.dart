@@ -18,7 +18,7 @@ class CustomPermissionsArgs {
   final pulumi.Input<String> customPermissionsName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [CustomPermissionsArgs].
@@ -26,7 +26,7 @@ class CustomPermissionsArgs {
   /// [capabilities] Actions to include in the custom permissions profile. See capabilities.
   /// [customPermissionsName] Custom permissions profile name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const CustomPermissionsArgs({
     this.awsAccountId,
     required this.capabilities,
@@ -55,4 +55,3 @@ class CustomPermissionsArgs {
     );
   }
 }
-

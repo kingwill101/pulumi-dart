@@ -9,7 +9,7 @@ class DocumentClassifierOutputDataConfig {
   /// Full path for the output documents.
   final pulumi.Input<String>? outputS3Uri;
   /// Destination path for the output documents.
-  /// The full path to the output file will be returned in `output_s3_uri`.
+  /// The full path to the output file will be returned in `outputS3Uri`.
   final pulumi.Input<String> s3Uri;
 
   /// Creates a new [DocumentClassifierOutputDataConfig].
@@ -38,4 +38,3 @@ class DocumentClassifierOutputDataConfig {
     );
   }
 }
-

@@ -79,7 +79,7 @@ import 'log_index_policy_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string][]string{
 /// 			"Fields": []string{
 /// 				"eventName",
 /// 			},
@@ -99,6 +99,25 @@ import 'log_index_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name = "example"
+/// }
+/// resource "aws_cloudwatch_logindexpolicy" "example" {
+///   log_group_name = aws_cloudwatch_loggroup.example.name
+///   policy_document = jsonencode({
+///     "Fields" = ["eventName"]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +129,8 @@ import 'log_index_policy_state.dart';
 /// import com.pulumi.aws.cloudwatch.LogIndexPolicy;
 /// import com.pulumi.aws.cloudwatch.LogIndexPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -158,7 +177,19 @@ import 'log_index_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CloudWatch Logs Index Policy using the `log_group_name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `logGroupName` (String) Name of the log group.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Index Policies using `logGroupName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudwatch/logIndexPolicy:LogIndexPolicy example /aws/log/group/name

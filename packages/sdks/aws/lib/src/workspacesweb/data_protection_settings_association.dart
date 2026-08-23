@@ -89,6 +89,26 @@ import 'data_protection_settings_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspacesweb_portal" "example" {
+///   display_name = "example"
+/// }
+/// resource "aws_workspacesweb_dataprotectionsettings" "example" {
+///   display_name = "example"
+/// }
+/// resource "aws_workspacesweb_dataprotectionsettingsassociation" "example" {
+///   data_protection_settings_arn = aws_workspacesweb_dataprotectionsettings.example.data_protection_settings_arn
+///   portal_arn                   = aws_workspacesweb_portal.example.portal_arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +121,8 @@ import 'data_protection_settings_association_state.dart';
 /// import com.pulumi.aws.workspacesweb.DataProtectionSettingsArgs;
 /// import com.pulumi.aws.workspacesweb.DataProtectionSettingsAssociation;
 /// import com.pulumi.aws.workspacesweb.DataProtectionSettingsAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

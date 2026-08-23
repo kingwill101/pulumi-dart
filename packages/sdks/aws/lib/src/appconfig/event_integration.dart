@@ -17,7 +17,7 @@ import 'event_integration_state.dart';
 ///     description: "Example Description",
 ///     eventbridgeBus: "default",
 ///     eventFilter: {
-///         source: "aws.partner/examplepartner.com",
+///         source: "aws.partner/example.com",
 ///     },
 ///     tags: {
 ///         Name: "Example Event Integration",
@@ -33,7 +33,7 @@ import 'event_integration_state.dart';
 ///     description="Example Description",
 ///     eventbridge_bus="default",
 ///     event_filter={
-///         "source": "aws.partner/examplepartner.com",
+///         "source": "aws.partner/example.com",
 ///     },
 ///     tags={
 ///         "Name": "Example Event Integration",
@@ -54,7 +54,7 @@ import 'event_integration_state.dart';
 ///         EventbridgeBus = "default",
 ///         EventFilter = new Aws.AppConfig.Inputs.EventIntegrationEventFilterArgs
 ///         {
-///             Source = "aws.partner/examplepartner.com",
+///             Source = "aws.partner/example.com",
 ///         },
 ///         Tags =
 ///         {
@@ -79,7 +79,7 @@ import 'event_integration_state.dart';
 /// 			Description:    pulumi.String("Example Description"),
 /// 			EventbridgeBus: pulumi.String("default"),
 /// 			EventFilter: &appconfig.EventIntegrationEventFilterArgs{
-/// 				Source: pulumi.String("aws.partner/examplepartner.com"),
+/// 				Source: pulumi.String("aws.partner/example.com"),
 /// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("Example Event Integration"),
@@ -92,6 +92,27 @@ import 'event_integration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appconfig_eventintegration" "example" {
+///   name            = "example-name"
+///   description     = "Example Description"
+///   eventbridge_bus = "default"
+///   event_filter = {
+///     source = "aws.partner/example.com"
+///   }
+///   tags = {
+///     "Name" = "Example Event Integration"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +122,8 @@ import 'event_integration_state.dart';
 /// import com.pulumi.aws.appconfig.EventIntegration;
 /// import com.pulumi.aws.appconfig.EventIntegrationArgs;
 /// import com.pulumi.aws.appconfig.inputs.EventIntegrationEventFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -119,7 +140,7 @@ import 'event_integration_state.dart';
 ///             .description("Example Description")
 ///             .eventbridgeBus("default")
 ///             .eventFilter(EventIntegrationEventFilterArgs.builder()
-///                 .source("aws.partner/examplepartner.com")
+///                 .source("aws.partner/example.com")
 ///                 .build())
 ///             .tags(Map.of("Name", "Example Event Integration"))
 ///             .build());
@@ -136,7 +157,7 @@ import 'event_integration_state.dart';
 ///       description: Example Description
 ///       eventbridgeBus: default
 ///       eventFilter:
-///         source: aws.partner/examplepartner.com
+///         source: aws.partner/example.com
 ///       tags:
 ///         Name: Example Event Integration
 /// ```
@@ -162,9 +183,9 @@ class EventIntegration extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Tags to apply to the Event Integration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the Event Integration. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [EventIntegration].

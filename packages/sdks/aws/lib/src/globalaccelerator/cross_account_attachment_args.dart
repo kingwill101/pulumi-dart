@@ -16,14 +16,14 @@ class CrossAccountAttachmentArgs {
   final pulumi.Input<List<String>>? principals;
   /// List of resources to be associated with the accelerator.
   final pulumi.Input<List<CrossAccountAttachmentResource>>? resources;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [CrossAccountAttachmentArgs].
   /// [name] Name of the Cross Account Attachment.
   /// [principals] List of AWS account IDs that are allowed to associate resources with the accelerator.
   /// [resources] List of resources to be associated with the accelerator.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const CrossAccountAttachmentArgs({
     this.name,
     this.principals,
@@ -49,4 +49,3 @@ class CrossAccountAttachmentArgs {
     );
   }
 }
-

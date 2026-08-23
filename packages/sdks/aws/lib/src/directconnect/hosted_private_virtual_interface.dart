@@ -74,6 +74,23 @@ import 'hosted_private_virtual_interface_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directconnect_hostedprivatevirtualinterface" "foo" {
+///   connection_id  = "dxcon-zzzzzzzz"
+///   name           = "vif-foo"
+///   vlan           = 4094
+///   address_family = "ipv4"
+///   bgp_asn        = 65352
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +99,8 @@ import 'hosted_private_virtual_interface_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.directconnect.HostedPrivateVirtualInterface;
 /// import com.pulumi.aws.directconnect.HostedPrivateVirtualInterfaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

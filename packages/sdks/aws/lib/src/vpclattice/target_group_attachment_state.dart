@@ -7,15 +7,15 @@ import 'target_group_attachment_target.dart';
 class TargetGroupAttachmentState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The target.
+  /// Target to register with the target group. See `target` Block for details.
   final pulumi.Input<TargetGroupAttachmentTarget>? target;
-  /// The ID or Amazon Resource Name (ARN) of the target group.
+  /// ID or Amazon Resource Name (ARN) of the target group.
   final pulumi.Input<String>? targetGroupIdentifier;
 
   /// Creates a new [TargetGroupAttachmentState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [target] The target.
-  /// [targetGroupIdentifier] The ID or Amazon Resource Name (ARN) of the target group.
+  /// [target] Target to register with the target group. See `target` Block for details.
+  /// [targetGroupIdentifier] ID or Amazon Resource Name (ARN) of the target group.
   const TargetGroupAttachmentState({
     this.region,
     this.target,
@@ -38,4 +38,3 @@ class TargetGroupAttachmentState {
     );
   }
 }
-

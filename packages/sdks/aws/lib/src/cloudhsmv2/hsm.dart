@@ -78,6 +78,24 @@ import 'hsm_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudhsmv2_getcluster" "cluster" {
+///   cluster_id = cloudhsmClusterId
+/// }
+///
+/// resource "aws_cloudhsmv2_hsm" "cloudhsm_v2_hsm" {
+///   subnet_id  = data.aws_cloudhsmv2_getcluster.cluster.subnet_ids[0]
+///   cluster_id = data.aws_cloudhsmv2_getcluster.cluster.cluster_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +106,8 @@ import 'hsm_state.dart';
 /// import com.pulumi.aws.cloudhsmv2.inputs.GetClusterArgs;
 /// import com.pulumi.aws.cloudhsmv2.Hsm;
 /// import com.pulumi.aws.cloudhsmv2.HsmArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -138,7 +156,7 @@ import 'hsm_state.dart';
 /// $ pulumi import aws:cloudhsmv2/hsm:Hsm bar hsm-quo8dahtaca
 /// ```
 class Hsm extends pulumi.CustomResource {
-  /// The IDs of AZ in which HSM module will be located. Conflicts with `subnet_id`.
+  /// The IDs of AZ in which HSM module will be located. Conflicts with `subnetId`.
   late final pulumi.Output<String> availabilityZone;
   /// The ID of Cloud HSM v2 cluster to which HSM will be added.
   late final pulumi.Output<String> clusterId;
@@ -150,11 +168,11 @@ class Hsm extends pulumi.CustomResource {
   late final pulumi.Output<String> hsmState;
   /// The IP address of HSM module. Must be within the CIDR of selected subnet.
   ///
-  /// &gt; **NOTE:** Either `subnet_id` or `availability_zone` must be specified.
+  /// &gt; **NOTE:** Either `subnetId` or `availabilityZone` must be specified.
   late final pulumi.Output<String> ipAddress;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The ID of subnet in which HSM module will be located. Conflicts with `availability_zone`.
+  /// The ID of subnet in which HSM module will be located. Conflicts with `availabilityZone`.
   late final pulumi.Output<String> subnetId;
 
   /// Creates a new [Hsm].

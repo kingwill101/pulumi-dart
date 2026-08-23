@@ -23,14 +23,14 @@ class ProjectState {
   /// The default is 0.
   final pulumi.Input<int>? autoRetryLimit;
   /// Generates a publicly-accessible URL for the projects build badge. Available as
-  /// `badge_url` attribute when enabled.
+  /// `badgeUrl` attribute when enabled.
   final pulumi.Input<bool>? badgeEnabled;
-  /// URL of the build badge when `badge_enabled` is enabled.
+  /// URL of the build badge when `badgeEnabled` is enabled.
   final pulumi.Input<String>? badgeUrl;
   /// Defines the batch build options for the project.
   final pulumi.Input<ProjectBuildBatchConfig>? buildBatchConfig;
   /// Number of minutes, from 5 to 2160 (36 hours), for AWS CodeBuild to wait until timing out
-  /// any related build that does not get marked as completed. The default is 60 minutes. The `build_timeout` property is
+  /// any related build that does not get marked as completed. The default is 60 minutes. The `buildTimeout` property is
   /// not available on the `Lambda` compute type.
   final pulumi.Input<int>? buildTimeout;
   /// Configuration block. Detailed below.
@@ -58,13 +58,13 @@ class ProjectState {
   /// The project identifier used with the public build APIs.
   final pulumi.Input<String>? publicProjectAlias;
   /// Number of minutes, from 5 to 480 (8 hours), a build is allowed to be queued before it
-  /// times out. The default is 8 hours. The `queued_timeout` property is not available on the `Lambda` compute type.
+  /// times out. The default is 8 hours. The `queuedTimeout` property is not available on the `Lambda` compute type.
   final pulumi.Input<int>? queuedTimeout;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// The ARN of the IAM role that enables CodeBuild to access the CloudWatch Logs and
   /// Amazon S3 artifacts for the project's builds in order to display them publicly. Only applicable if
-  /// `project_visibility` is `PUBLIC_READ`.
+  /// `projectVisibility` is `PUBLIC_READ`.
   final pulumi.Input<String>? resourceAccessRole;
   /// Configuration block. Detailed below.
   final pulumi.Input<List<ProjectSecondaryArtifact>>? secondaryArtifacts;
@@ -83,11 +83,11 @@ class ProjectState {
   /// version is used.
   final pulumi.Input<String>? sourceVersion;
   /// Map of tags to assign to the resource. If configured with a provider
-  /// `default_tags` configuration block
+  /// `defaultTags` configuration block
   /// present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider
-  /// `default_tags` configuration block.
+  /// `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Configuration block. Detailed below.
   final pulumi.Input<ProjectVpcConfig>? vpcConfig;
@@ -97,7 +97,7 @@ class ProjectState {
   /// [artifacts] Configuration block. Detailed below.
   /// [autoRetryLimit] Specify a maximum number of additional automatic retries after a failed build.
   /// [badgeEnabled] Generates a publicly-accessible URL for the projects build badge. Available as
-  /// [badgeUrl] URL of the build badge when `badge_enabled` is enabled.
+  /// [badgeUrl] URL of the build badge when `badgeEnabled` is enabled.
   /// [buildBatchConfig] Defines the batch build options for the project.
   /// [buildTimeout] Number of minutes, from 5 to 2160 (36 hours), for AWS CodeBuild to wait until timing out
   /// [cache] Configuration block. Detailed below.
@@ -222,4 +222,3 @@ class ProjectState {
     );
   }
 }
-

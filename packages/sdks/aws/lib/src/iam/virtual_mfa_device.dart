@@ -6,7 +6,7 @@ import 'virtual_mfa_device_state.dart';
 ///
 /// &gt; **Note:** All attributes will be stored in the raw state as plain-text.
 /// &gt; **Note:** A virtual MFA device cannot be directly associated with an IAM User from the provider.
-/// To associate the virtual MFA device with a user and enable it, use the code returned in either `base_32_string_seed` or `qr_code_png` to generate TOTP authentication codes.
+/// To associate the virtual MFA device with a user and enable it, use the code returned in either `base32StringSeed` or `qrCodePng` to generate TOTP authentication codes.
 /// The authentication codes can then be used with the AWS CLI command [`aws iam enable-mfa-device`](https://docs.aws.amazon.com/cli/latest/reference/iam/enable-mfa-device.html) or the AWS API call [`EnableMFADevice`](https://docs.aws.amazon.com/IAM/latest/APIReference/API_EnableMFADevice.html).
 ///
 /// ## Example Usage
@@ -61,6 +61,19 @@ import 'virtual_mfa_device_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_virtualmfadevice" "example" {
+///   virtual_mfa_device_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +82,8 @@ import 'virtual_mfa_device_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.VirtualMfaDevice;
 /// import com.pulumi.aws.iam.VirtualMfaDeviceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -108,7 +121,7 @@ import 'virtual_mfa_device_state.dart';
 class VirtualMfaDevice extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN), which is also the serial number, of the virtual MFA device.
   late final pulumi.Output<String> arn;
-  /// Base32 seed defined as specified in [RFC3548](https://tools.ietf.org/html/rfc3548.txt). The `base_32_string_seed` is base64-encoded.
+  /// Base32 seed defined as specified in [RFC3548](https://tools.ietf.org/html/rfc3548.txt). The `base32StringSeed` is base64-encoded.
   late final pulumi.Output<String> base32StringSeed;
   /// Date and time when the virtual MFA device was enabled.
   late final pulumi.Output<String> enableDate;
@@ -118,9 +131,9 @@ class VirtualMfaDevice extends pulumi.CustomResource {
   late final pulumi.Output<String> qrCodePng;
   /// Serial number associated with the virtual MFA device.
   late final pulumi.Output<String> serialNumber;
-  /// Map of resource tags for the virtual mfa device. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of resource tags for the virtual mfa device. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Name of the IAM user associated with this virtual MFA device.
   late final pulumi.Output<String> userName;

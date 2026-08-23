@@ -3,15 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchCookiesMatchPattern {
-  /// An empty configuration block that is used for inspecting all headers.
   final pulumi.Input<Map<String, dynamic>>? all;
+  /// List of cookie names to exclude from inspection.
   final pulumi.Input<List<String>>? excludedCookies;
+  /// List of cookie names to inspect.
   final pulumi.Input<List<String>>? includedCookies;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchCookiesMatchPattern].
-  /// [all] An empty configuration block that is used for inspecting all headers.
-  /// [excludedCookies] Optional.
-  /// [includedCookies] Optional.
+  /// [all] Optional.
+  /// [excludedCookies] List of cookie names to exclude from inspection.
+  /// [includedCookies] List of cookie names to inspect.
   const WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchCookiesMatchPattern({
     this.all,
     this.excludedCookies,
@@ -34,4 +35,3 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFi
     );
   }
 }
-

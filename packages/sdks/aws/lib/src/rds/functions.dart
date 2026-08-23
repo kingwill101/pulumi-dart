@@ -29,6 +29,8 @@ import 'get_reserved_instance_offering_args.dart';
 import 'get_reserved_instance_offering_result.dart';
 import 'get_snapshot_args.dart';
 import 'get_snapshot_result.dart';
+import 'get_snapshots_args.dart';
+import 'get_snapshots_result.dart';
 import 'get_subnet_group_args.dart';
 import 'get_subnet_group_result.dart';
 
@@ -86,6 +88,19 @@ import 'get_subnet_group_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getcertificate" "example" {
+///   latest_valid_till = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +109,8 @@ import 'get_subnet_group_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -191,6 +206,19 @@ Future<GetCertificateResult> getCertificate(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getcluster" "clusterName" {
+///   cluster_identifier = "clusterName"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -199,8 +227,8 @@ Future<GetCertificateResult> getCertificate(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -296,6 +324,19 @@ Future<GetClusterResult> getCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getclusterparametergroup" "test" {
+///   name = "default.postgres15"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -304,8 +345,8 @@ Future<GetClusterResult> getCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetClusterParameterGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -453,7 +494,7 @@ Future<GetClusterParameterGroupResult> getClusterParameterGroup(
 /// 			return err
 /// 		}
 /// 		_, err = rds.NewClusterInstance(ctx, "aurora", &rds.ClusterInstanceArgs{
-/// 			ClusterIdentifier: aurora.ID(),
+/// 			ClusterIdentifier: aurora.ID().ToIDOutput().ToStringOutput(),
 /// 			InstanceClass:     pulumi.String(rds.InstanceType_T2_Small),
 /// 			DbSubnetGroupName: pulumi.String("my_db_subnet_group"),
 /// 		})
@@ -462,6 +503,33 @@ Future<GetClusterParameterGroupResult> getClusterParameterGroup(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getclustersnapshot" "developmentFinalSnapshot" {
+///   db_cluster_identifier = "development_cluster"
+///   most_recent           = true
+/// }
+///
+/// # Use the last snapshot of the dev database before it was destroyed to create
+/// # a new dev database.
+/// resource "aws_rds_cluster" "aurora" {
+///   cluster_identifier   = "development_cluster"
+///   snapshot_identifier  = data.aws_rds_getclustersnapshot.developmentFinalSnapshot.id
+///   db_subnet_group_name = "my_db_subnet_group"
+/// }
+/// resource "aws_rds_clusterinstance" "aurora" {
+///   cluster_identifier   = aws_rds_cluster.aurora.id
+///   instance_class       = "db.t2.small"
+///   db_subnet_group_name = "my_db_subnet_group"
 /// }
 /// ```
 /// ```java
@@ -476,8 +544,8 @@ Future<GetClusterParameterGroupResult> getClusterParameterGroup(
 /// import com.pulumi.aws.rds.ClusterArgs;
 /// import com.pulumi.aws.rds.ClusterInstance;
 /// import com.pulumi.aws.rds.ClusterInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -630,6 +698,22 @@ Future<GetClusterSnapshotResult> getClusterSnapshot(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getclusters" "example" {
+///   filters {
+///     name   = "engine"
+///     values = ["aurora-postgresql"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -638,8 +722,9 @@ Future<GetClusterSnapshotResult> getClusterSnapshot(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetClustersArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.rds.inputs.GetClustersFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -760,6 +845,20 @@ Future<GetClustersResult> getClusters(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getengineversion" "test" {
+///   engine             = "mysql"
+///   preferred_versions = ["8.0.27", "8.0.26"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -768,8 +867,8 @@ Future<GetClustersResult> getClusters(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetEngineVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -891,6 +990,25 @@ Future<GetClustersResult> getClusters(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getengineversion" "test" {
+///   engine      = "aurora-postgresql"
+///   version     = "10.14"
+///   include_all = true
+///   filters {
+///     name   = "engine-mode"
+///     values = ["serverless"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -899,8 +1017,9 @@ Future<GetClustersResult> getClusters(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetEngineVersionArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.rds.inputs.GetEngineVersionFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1012,6 +1131,22 @@ Future<GetEngineVersionResult> getEngineVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_geteventcategories" "example" {
+/// }
+///
+/// output "example" {
+///   value = data.aws_rds_geteventcategories.example.event_categories
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1020,8 +1155,8 @@ Future<GetEngineVersionResult> getEngineVersion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetEventCategoriesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1114,6 +1249,23 @@ Future<GetEngineVersionResult> getEngineVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_geteventcategories" "example" {
+///   source_type = "db-snapshot"
+/// }
+///
+/// output "example" {
+///   value = data.aws_rds_geteventcategories.example.event_categories
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1122,8 +1274,8 @@ Future<GetEngineVersionResult> getEngineVersion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetEventCategoriesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1224,6 +1376,19 @@ Future<GetEventCategoriesResult> getEventCategories(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getglobalcluster" "example" {
+///   identifier = test.globalClusterIdentifier
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1232,8 +1397,8 @@ Future<GetEventCategoriesResult> getEventCategories(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetGlobalClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1329,6 +1494,19 @@ Future<GetGlobalClusterResult> getGlobalCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getinstance" "database" {
+///   db_instance_identifier = "my-test-database"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1337,8 +1515,8 @@ Future<GetGlobalClusterResult> getGlobalCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1459,6 +1637,22 @@ Future<GetInstanceResult> getInstance(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getinstances" "example" {
+///   filters {
+///     name   = "db-instance-id"
+///     values = ["my-database-id"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1467,8 +1661,9 @@ Future<GetInstanceResult> getInstance(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetInstancesArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.rds.inputs.GetInstancesFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1553,7 +1748,7 @@ Future<GetInstanceResult> getInstance(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := rds.GetInstances(ctx, &rds.GetInstancesArgs{
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"Env": "test",
 /// 			},
 /// 		}, nil)
@@ -1564,6 +1759,21 @@ Future<GetInstanceResult> getInstance(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getinstances" "example" {
+///   tags = {
+///     "Env" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1572,8 +1782,8 @@ Future<GetInstanceResult> getInstance(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetInstancesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1703,6 +1913,23 @@ Future<GetInstancesResult> getInstances(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getorderabledbinstance" "test" {
+///   engine                     = "mysql"
+///   engine_version             = "5.7.22"
+///   license_model              = "general-public-license"
+///   storage_type               = "standard"
+///   preferred_instance_classes = ["db.r6.xlarge", "db.m4.large", "db.t3.small"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1711,8 +1938,8 @@ Future<GetInstancesResult> getInstances(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetOrderableDbInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1755,7 +1982,7 @@ Future<GetInstancesResult> getInstances(
 /// ```
 ///
 ///
-/// Valid parameter combinations can also be found with `preferred_engine_versions` and/or `preferred_instance_classes`.
+/// Valid parameter combinations can also be found with `preferredEngineVersions` and/or `preferredInstanceClasses`.
 ///
 ///
 /// ```typescript
@@ -1853,6 +2080,22 @@ Future<GetInstancesResult> getInstances(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getorderabledbinstance" "test" {
+///   engine                     = "mysql"
+///   license_model              = "general-public-license"
+///   preferred_engine_versions  = ["5.6.35", "5.6.41", "5.6.44"]
+///   preferred_instance_classes = ["db.t2.small", "db.t3.medium", "db.t3.large"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1861,8 +2104,8 @@ Future<GetInstancesResult> getInstances(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetOrderableDbInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1976,6 +2219,19 @@ Future<GetOrderableDbInstanceResult> getOrderableDbInstance(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getparametergroup" "test" {
+///   name = "default.postgres15"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1984,8 +2240,8 @@ Future<GetOrderableDbInstanceResult> getOrderableDbInstance(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetParameterGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2081,6 +2337,19 @@ Future<GetParameterGroupResult> getParameterGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getproxy" "proxy" {
+///   name = "my-test-db-proxy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2089,8 +2358,8 @@ Future<GetParameterGroupResult> getParameterGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetProxyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2202,6 +2471,23 @@ Future<GetProxyResult> getProxy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getreservedinstanceoffering" "test" {
+///   db_instance_class   = "db.t2.micro"
+///   duration            = 31536000
+///   multi_az            = false
+///   offering_type       = "All Upfront"
+///   product_description = "mysql"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2210,8 +2496,8 @@ Future<GetProxyResult> getProxy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetReservedInstanceOfferingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2292,7 +2578,7 @@ Future<GetReservedInstanceOfferingResult> getReservedInstanceOffering(
 /// const dev = new aws.rds.Instance("dev", {
 ///     instanceClass: aws.rds.InstanceType.T2_Micro,
 ///     dbName: "mydbdev",
-///     snapshotIdentifier: latestProdSnapshot.apply(latestProdSnapshot => latestProdSnapshot.id),
+///     snapshotIdentifier: latestProdSnapshot.id,
 /// });
 /// ```
 /// ```python
@@ -2384,17 +2670,47 @@ Future<GetReservedInstanceOfferingResult> getReservedInstanceOffering(
 /// 		}, nil)
 /// 		// Use the latest production snapshot to create a dev instance.
 /// 		_, err = rds.NewInstance(ctx, "dev", &rds.InstanceArgs{
-/// 			InstanceClass: pulumi.String(rds.InstanceType_T2_Micro),
-/// 			DbName:        pulumi.String("mydbdev"),
-/// 			SnapshotIdentifier: pulumi.String(latestProdSnapshot.ApplyT(func(latestProdSnapshot rds.GetSnapshotResult) (*string, error) {
-/// 				return &latestProdSnapshot.Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			InstanceClass:      pulumi.String(rds.InstanceType_T2_Micro),
+/// 			DbName:             pulumi.String("mydbdev"),
+/// 			SnapshotIdentifier: latestProdSnapshot.Id(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getsnapshot" "latestProdSnapshot" {
+///   db_instance_identifier = aws_rds_instance.prod.identifier
+///   most_recent            = true
+/// }
+///
+/// resource "aws_rds_instance" "prod" {
+///   allocated_storage    = 10
+///   engine               = "mysql"
+///   engine_version       = "5.6.17"
+///   instance_class       = "db.t2.micro"
+///   db_name              = "mydb"
+///   username             = "foo"
+///   password             = "bar"
+///   db_subnet_group_name = "my_database_subnet_group"
+///   parameter_group_name = "default.mysql5.6"
+/// }
+/// # Use the latest production snapshot to create a dev instance.
+/// resource "aws_rds_instance" "dev" {
+///   instance_class      = "db.t2.micro"
+///   db_name             = "mydbdev"
+///   snapshot_identifier = data.aws_rds_getsnapshot.latestProdSnapshot.id
 /// }
 /// ```
 /// ```java
@@ -2407,8 +2723,8 @@ Future<GetReservedInstanceOfferingResult> getReservedInstanceOffering(
 /// import com.pulumi.aws.rds.InstanceArgs;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2491,6 +2807,262 @@ Future<GetSnapshotResult> getSnapshot(
   return GetSnapshotResult.fromMap(result);
 }
 
+/// Provides details about an AWS RDS (Relational Database) Snapshots.
+///
+/// ## Example Usage
+///
+/// ### Basic Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.rds.getSnapshots({
+///     dbInstanceIdentifier: "my-db-instance",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.rds.get_snapshots(db_instance_identifier="my-db-instance")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Rds.GetSnapshots.Invoke(new()
+///     {
+///         DbInstanceIdentifier = "my-db-instance",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/rds"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := rds.GetSnapshots(ctx, &rds.GetSnapshotsArgs{
+/// 			DbInstanceIdentifier: pulumi.StringRef("my-db-instance"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getsnapshots" "example" {
+///   db_instance_identifier = "my-db-instance"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.rds.RdsFunctions;
+/// import com.pulumi.aws.rds.inputs.GetSnapshotsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = RdsFunctions.getSnapshots(GetSnapshotsArgs.builder()
+///             .dbInstanceIdentifier("my-db-instance")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:rds:getSnapshots
+///       arguments:
+///         dbInstanceIdentifier: my-db-instance
+/// ```
+///
+///
+/// ### Filter by Snapshot ID
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.rds.getSnapshots({
+///     filters: [{
+///         name: "db-snapshot-id",
+///         values: ["my-snapshot-id"],
+///     }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.rds.get_snapshots(filters=[{
+///     "name": "db-snapshot-id",
+///     "values": ["my-snapshot-id"],
+/// }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Rds.GetSnapshots.Invoke(new()
+///     {
+///         Filters = new[]
+///         {
+///             new Aws.Rds.Inputs.GetSnapshotsFilterInputArgs
+///             {
+///                 Name = "db-snapshot-id",
+///                 Values = new[]
+///                 {
+///                     "my-snapshot-id",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/rds"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := rds.GetSnapshots(ctx, &rds.GetSnapshotsArgs{
+/// 			Filters: []rds.GetSnapshotsFilter{
+/// 				{
+/// 					Name: "db-snapshot-id",
+/// 					Values: []string{
+/// 						"my-snapshot-id",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getsnapshots" "example" {
+///   filters {
+///     name   = "db-snapshot-id"
+///     values = ["my-snapshot-id"]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.rds.RdsFunctions;
+/// import com.pulumi.aws.rds.inputs.GetSnapshotsArgs;
+/// import com.pulumi.aws.rds.inputs.GetSnapshotsFilterArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = RdsFunctions.getSnapshots(GetSnapshotsArgs.builder()
+///             .filters(GetSnapshotsFilterArgs.builder()
+///                 .name("db-snapshot-id")
+///                 .values("my-snapshot-id")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:rds:getSnapshots
+///       arguments:
+///         filters:
+///           - name: db-snapshot-id
+///             values:
+///               - my-snapshot-id
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_rds_get_snapshots_get_snapshots_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetSnapshotsResult> getSnapshots(
+  GetSnapshotsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:rds/getSnapshots:getSnapshots',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetSnapshotsResult.fromMap(result);
+}
+
 /// Use this data source to get information about an RDS subnet group.
 ///
 /// ## Example Usage
@@ -2545,6 +3117,19 @@ Future<GetSnapshotResult> getSnapshot(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getsubnetgroup" "database" {
+///   name = "my-test-database-subnet-group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2553,8 +3138,8 @@ Future<GetSnapshotResult> getSnapshot(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetSubnetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -96,6 +96,25 @@ import 'security_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_securityprofile" "example" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name        = "example"
+///   description = "example description"
+///   permissions = ["BasicAgentAccess", "OutboundCallAccess"]
+///   tags = {
+///     "Name" = "Example Security Profile"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +123,8 @@ import 'security_profile_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.SecurityProfile;
 /// import com.pulumi.aws.connect.SecurityProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -148,7 +167,7 @@ import 'security_profile_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amazon Connect Security Profiles using the `instance_id` and `security_profile_id` separated by a colon (`:`). For example:
+/// Using `pulumi import`, import Amazon Connect Security Profiles using the `instanceId` and `securityProfileId` separated by a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:connect/securityProfile:SecurityProfile example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
@@ -171,9 +190,9 @@ class SecurityProfile extends pulumi.CustomResource {
   /// The identifier for the Security Profile.
   late final pulumi.Output<String> securityProfileId;
   /// Tags to apply to the Security Profile. If configured with a provider
-  /// `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [SecurityProfile].

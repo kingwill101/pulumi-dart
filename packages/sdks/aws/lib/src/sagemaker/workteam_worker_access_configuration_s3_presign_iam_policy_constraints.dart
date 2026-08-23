@@ -30,4 +30,3 @@ class WorkteamWorkerAccessConfigurationS3PresignIamPolicyConstraints {
     );
   }
 }
-

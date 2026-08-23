@@ -218,7 +218,7 @@ import 'report_group_state.dart';
 /// 			ExportConfig: &codebuild.ReportGroupExportConfigArgs{
 /// 				Type: pulumi.String("S3"),
 /// 				S3Destination: &codebuild.ReportGroupExportConfigS3DestinationArgs{
-/// 					Bucket:             exampleBucket.ID(),
+/// 					Bucket:             exampleBucket.ID().ToIDOutput().ToStringOutput(),
 /// 					EncryptionDisabled: pulumi.Bool(false),
 /// 					EncryptionKey:      exampleKey.Arn,
 /// 					Packaging:          pulumi.String("NONE"),
@@ -233,6 +233,53 @@ import 'report_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     sid    = "Enable IAM User Permissions"
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"]
+///     }
+///     actions   = ["kms:*"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "my test kms key"
+///   deletion_window_in_days = 7
+///   policy                  = data.aws_iam_getpolicydocument.example.json
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "my-test"
+/// }
+/// resource "aws_codebuild_reportgroup" "example" {
+///   name = "my test report group"
+///   type = "TEST"
+///   export_config = {
+///     type = "S3"
+///     s3_destination = {
+///       bucket              = aws_s3_bucket.example.id
+///       encryption_disabled = false
+///       encryption_key      = aws_kms_key.example.arn
+///       packaging           = "NONE"
+///       path                = "/some"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -243,6 +290,8 @@ import 'report_group_state.dart';
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.kms.Key;
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import com.pulumi.aws.s3.Bucket;
@@ -251,8 +300,8 @@ import 'report_group_state.dart';
 /// import com.pulumi.aws.codebuild.ReportGroupArgs;
 /// import com.pulumi.aws.codebuild.inputs.ReportGroupExportConfigArgs;
 /// import com.pulumi.aws.codebuild.inputs.ReportGroupExportConfigS3DestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -386,9 +435,9 @@ class ReportGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value mapping of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The type of the Report Group. Valid value are `TEST` and `CODE_COVERAGE`.
   late final pulumi.Output<String> type;

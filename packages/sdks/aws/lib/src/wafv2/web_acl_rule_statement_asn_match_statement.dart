@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_statement_asn_match_statement_forwarded_ip_config.dart';
 
 class WebAclRuleStatementAsnMatchStatement {
-  /// List of Autonomous System Numbers (ASNs).
+  /// List of Autonomous System Numbers (ASNs) to match against. ASNs are unique identifiers assigned to large internet networks managed by organizations such as internet service providers, enterprises, universities, or government agencies.
   final pulumi.Input<List<int>> asnLists;
-  /// Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See `forwarded_ip_config` below for more details.
+  /// Configuration for inspecting IP addresses in an HTTP header instead of using the web request origin. See Forwarded IP Config below.
   final pulumi.Input<WebAclRuleStatementAsnMatchStatementForwardedIpConfig>? forwardedIpConfig;
 
   /// Creates a new [WebAclRuleStatementAsnMatchStatement].
-  /// [asnLists] List of Autonomous System Numbers (ASNs).
-  /// [forwardedIpConfig] Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See `forwarded_ip_config` below for more details.
+  /// [asnLists] List of Autonomous System Numbers (ASNs) to match against. ASNs are unique identifiers assigned to large internet networks managed by organizations such as internet service providers, enterprises, universities, or government agencies.
+  /// [forwardedIpConfig] Configuration for inspecting IP addresses in an HTTP header instead of using the web request origin. See Forwarded IP Config below.
   const WebAclRuleStatementAsnMatchStatement({
     required this.asnLists,
     this.forwardedIpConfig,
@@ -31,4 +31,3 @@ class WebAclRuleStatementAsnMatchStatement {
     );
   }
 }
-

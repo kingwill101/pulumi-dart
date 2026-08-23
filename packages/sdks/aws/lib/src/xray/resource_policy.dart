@@ -67,6 +67,21 @@ import 'resource_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_xray_resourcepolicy" "test" {
+///   policy_name                 = "test"
+///   policy_document             = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"AllowXRayAccess\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"*\"},\"Action\":[\"xray:*\",\"xray:PutResourcePolicy\"],\"Resource\":\"*\"}]}"
+///   bypass_policy_lockout_check = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'resource_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.xray.ResourcePolicy;
 /// import com.pulumi.aws.xray.ResourcePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -110,10 +125,22 @@ import 'resource_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import X-Ray Resource Policy using the `policy_name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `policyName` (String) Resource policy name.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import X-Ray Resource Policies using `policyName`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:xray/resourcePolicy:ResourcePolicy example resource_policy-name
+/// $ pulumi import aws:xray/resourcePolicy:ResourcePolicy example example-policy
 /// ```
 class ResourcePolicy extends pulumi.CustomResource {
   /// Flag to indicate whether to bypass the resource policy lockout safety check. Setting this value to true increases the risk that the policy becomes unmanageable. Do not set this value to true indiscriminately. Use this parameter only when you include a policy in the request and you intend to prevent the principal that is making the request from making a subsequent PutResourcePolicy request. The default value is `false`.
@@ -124,7 +151,7 @@ class ResourcePolicy extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> policyDocument;
-  /// name of the resource policy. Must be unique within a specific Amazon Web Services account.
+  /// Name of the resource policy. Must be unique within a specific Amazon Web Services account.
   late final pulumi.Output<String> policyName;
   /// Specifies a specific policy revision, to ensure an atomic create operation. By default the resource policy is created if it does not exist, or updated with an incremented revision id. The revision id is unique to each policy in the account. If the policy revision id does not match the latest revision id, the operation will fail with an InvalidPolicyRevisionIdException exception. You can also provide a PolicyRevisionId of 0. In this case, the operation will fail with an InvalidPolicyRevisionIdException exception if a resource policy with the same name already exists.
   late final pulumi.Output<String> policyRevisionId;

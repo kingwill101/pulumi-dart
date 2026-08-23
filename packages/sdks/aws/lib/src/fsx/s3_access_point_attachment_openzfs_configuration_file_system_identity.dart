@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 's3_access_point_attachment_openzfs_configuration_file_system_identity_posix_user.dart';
 
 class S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity {
-  /// UID and GIDs of the file system POSIX user. See `posix_user` Block for details.
+  /// UID and GIDs of the file system POSIX user. See `posixUser` Block for details.
   final pulumi.Input<S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser>? posixUser;
   /// FSx for OpenZFS user identity type. Valid values: `POSIX`.
   final pulumi.Input<String> type;
 
   /// Creates a new [S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity].
-  /// [posixUser] UID and GIDs of the file system POSIX user. See `posix_user` Block for details.
+  /// [posixUser] UID and GIDs of the file system POSIX user. See `posixUser` Block for details.
   /// [type] FSx for OpenZFS user identity type. Valid values: `POSIX`.
   const S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity({
     this.posixUser,
@@ -31,4 +31,3 @@ class S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity {
     );
   }
 }
-

@@ -3,23 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserHomeDirectoryMapping {
-  /// Represents an entry and a target.
+  /// Logical directory entry that appears to your user.
   final pulumi.Input<String> entry;
-  /// Represents the map target.
-  ///
-  /// The `Restricted` option is achieved using the following mapping:
-  ///
-  /// ```
-  /// home_directory_mappings {
-  /// entry  = "/"
-  /// target = "/${aws_s3_bucket.foo.id}/$${Transfer:UserName}"
-  /// }
-  /// ```
+  /// Map target that maps the entry to an actual S3 path.
   final pulumi.Input<String> target;
 
   /// Creates a new [UserHomeDirectoryMapping].
-  /// [entry] Represents an entry and a target.
-  /// [target] Represents the map target.
+  /// [entry] Logical directory entry that appears to your user.
+  /// [target] Map target that maps the entry to an actual S3 path.
   const UserHomeDirectoryMapping({
     required this.entry,
     required this.target,
@@ -39,4 +30,3 @@ class UserHomeDirectoryMapping {
     );
   }
 }
-

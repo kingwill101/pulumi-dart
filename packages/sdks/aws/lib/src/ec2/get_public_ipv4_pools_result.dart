@@ -47,4 +47,3 @@ class GetPublicIpv4PoolsResult {
     );
   }
 }
-

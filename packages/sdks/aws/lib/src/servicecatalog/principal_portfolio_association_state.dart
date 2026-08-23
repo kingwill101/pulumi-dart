@@ -12,7 +12,7 @@ class PrincipalPortfolioAssociationState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? principalArn;
-  /// Principal type. Setting this argument empty (e.g., `principal_type = ""`) will result in an error. Valid values are `IAM` and `IAM_PATTERN`. Default is `IAM`.
+  /// Principal type. Setting this argument empty (e.g., `principalType = ""`) will result in an error. Valid values are `IAM` and `IAM_PATTERN`. Default is `IAM`.
   final pulumi.Input<String>? principalType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -21,7 +21,7 @@ class PrincipalPortfolioAssociationState {
   /// [acceptLanguage] Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
   /// [portfolioId] Portfolio identifier.
   /// [principalArn] Principal ARN.
-  /// [principalType] Principal type. Setting this argument empty (e.g., `principal_type = ""`) will result in an error. Valid values are `IAM` and `IAM_PATTERN`. Default is `IAM`.
+  /// [principalType] Principal type. Setting this argument empty (e.g., `principalType = ""`) will result in an error. Valid values are `IAM` and `IAM_PATTERN`. Default is `IAM`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const PrincipalPortfolioAssociationState({
     this.acceptLanguage,
@@ -51,4 +51,3 @@ class PrincipalPortfolioAssociationState {
     );
   }
 }
-

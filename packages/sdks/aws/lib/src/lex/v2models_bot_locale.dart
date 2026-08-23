@@ -73,6 +73,22 @@ import 'v2models_bot_locale_voice_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lex_v2modelsbotlocale" "example" {
+///   bot_id                           = exampleAwsLexv2modelsBot.id
+///   bot_version                      = "DRAFT"
+///   locale_id                        = "en_US"
+///   n_lu_intent_confidence_threshold = 0.7
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +97,8 @@ import 'v2models_bot_locale_voice_settings.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lex.V2modelsBotLocale;
 /// import com.pulumi.aws.lex.V2modelsBotLocaleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -198,6 +214,26 @@ import 'v2models_bot_locale_voice_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lex_v2modelsbotlocale" "example" {
+///   bot_id                           = exampleAwsLexv2modelsBot.id
+///   bot_version                      = "DRAFT"
+///   locale_id                        = "en_US"
+///   n_lu_intent_confidence_threshold = 0.7
+///   voice_settings = {
+///     voice_id = "Kendra"
+///     engine   = "standard"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -207,8 +243,8 @@ import 'v2models_bot_locale_voice_settings.dart';
 /// import com.pulumi.aws.lex.V2modelsBotLocale;
 /// import com.pulumi.aws.lex.V2modelsBotLocaleArgs;
 /// import com.pulumi.aws.lex.inputs.V2modelsBotLocaleVoiceSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -274,7 +310,7 @@ class V2modelsBotLocale extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<V2modelsBotLocaleTimeouts?> timeouts;
-  /// Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. See `voice_settings`.
+  /// Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. See `voiceSettings`.
   late final pulumi.Output<V2modelsBotLocaleVoiceSettings?> voiceSettings;
 
   /// Creates a new [V2modelsBotLocale].

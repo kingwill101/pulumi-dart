@@ -140,7 +140,7 @@ import 'access_point_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleAccessPoint, err := s3.NewAccessPoint(ctx, "example", &s3.AccessPointArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:   pulumi.String("example"),
 /// 			PublicAccessBlockConfiguration: &s3.AccessPointPublicAccessBlockConfigurationArgs{
 /// 				BlockPublicAcls:       pulumi.Bool(true),
@@ -162,7 +162,7 @@ import 'access_point_policy_state.dart';
 /// 						map[string]interface{}{
 /// 							"Effect": "Allow",
 /// 							"Action": "s3:GetObjectTagging",
-/// 							"Principal": map[string]interface{}{
+/// 							"Principal": map[string]string{
 /// 								"AWS": "*",
 /// 							},
 /// 							"Resource": fmt.Sprintf("%v/object/*", arn),
@@ -183,6 +183,43 @@ import 'access_point_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// resource "aws_s3_accesspoint" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   name   = "example"
+///   public_access_block_configuration = {
+///     block_public_acls       = true
+///     block_public_policy     = false
+///     ignore_public_acls      = true
+///     restrict_public_buckets = false
+///   }
+/// }
+/// resource "aws_s3control_accesspointpolicy" "example" {
+///   access_point_arn = aws_s3_accesspoint.example.arn
+///   policy = jsonencode({
+///     "Version" = "2008-10-17"
+///     "Statement" = [{
+///       "Effect" = "Allow"
+///       "Action" = "s3:GetObjectTagging"
+///       "Principal" = {
+///         "AWS" = "*"
+///       }
+///       "Resource" ="${aws_s3_accesspoint.example.arn}/object/*"
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -197,8 +234,8 @@ import 'access_point_policy_state.dart';
 /// import com.pulumi.aws.s3control.AccessPointPolicy;
 /// import com.pulumi.aws.s3control.AccessPointPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,17 +317,17 @@ import 'access_point_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Access Point policies using the `access_point_arn`. For example:
+/// Using `pulumi import`, import Access Point policies using the `accessPointArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3control/accessPointPolicy:AccessPointPolicy example arn:aws:s3:us-west-2:123456789012:accesspoint/example
 /// ```
 class AccessPointPolicy extends pulumi.CustomResource {
-  /// The ARN of the access point that you want to associate with the specified policy.
+  /// ARN of the access point that you want to associate with the specified policy.
   late final pulumi.Output<String> accessPointArn;
-  /// Indicates whether this access point currently has a policy that allows public access.
+  /// Whether this access point currently has a policy that allows public access.
   late final pulumi.Output<bool> hasPublicAccessPolicy;
-  /// The policy that you want to apply to the specified access point.
+  /// Policy that you want to apply to the specified access point.
   late final pulumi.Output<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

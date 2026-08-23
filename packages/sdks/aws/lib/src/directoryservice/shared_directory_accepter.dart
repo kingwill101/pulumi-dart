@@ -89,6 +89,26 @@ import 'shared_directory_accepter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directoryservice_shareddirectory" "example" {
+///   directory_id = exampleAwsDirectoryServiceDirectory.id
+///   notes        = "example"
+///   target = {
+///     id = receiver.accountId
+///   }
+/// }
+/// resource "aws_directoryservice_shareddirectoryaccepter" "example" {
+///   shared_directory_id = aws_directoryservice_shareddirectory.example.shared_directory_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +120,8 @@ import 'shared_directory_accepter_state.dart';
 /// import com.pulumi.aws.directoryservice.inputs.SharedDirectoryTargetArgs;
 /// import com.pulumi.aws.directoryservice.SharedDirectoryAccepter;
 /// import com.pulumi.aws.directoryservice.SharedDirectoryAccepterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

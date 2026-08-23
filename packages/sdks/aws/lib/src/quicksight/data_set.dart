@@ -137,6 +137,34 @@ import 'data_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_dataset" "example" {
+///   data_set_id = "example-id"
+///   name        = "example-name"
+///   import_mode = "SPICE"
+///   physical_table_maps {
+///     physical_table_map_id = "example-id"
+///     s3_source = {
+///       data_source_arn = exampleAwsQuicksightDataSource.arn
+///       input_columns = [{
+///         "name" = "Column1"
+///         "type" = "STRING"
+///       }]
+///       upload_settings = {
+///         format = "JSON"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -147,9 +175,10 @@ import 'data_set_state.dart';
 /// import com.pulumi.aws.quicksight.DataSetArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapS3SourceArgs;
+/// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapS3SourceInputColumnArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapS3SourceUploadSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -203,7 +232,7 @@ import 'data_set_state.dart';
 /// ```
 ///
 ///
-/// ### With use_as
+/// ### With useAs
 ///
 ///
 /// ```typescript
@@ -334,6 +363,35 @@ import 'data_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_dataset" "example" {
+///   data_set_id = "example-id"
+///   name        = "example-name"
+///   import_mode = "SPICE"
+///   use_as      = "RLS_RULES"
+///   physical_table_maps {
+///     physical_table_map_id = "example-id"
+///     s3_source = {
+///       data_source_arn = exampleAwsQuicksightDataSource.arn
+///       input_columns = [{
+///         "name" = "UserName"
+///         "type" = "STRING"
+///       }]
+///       upload_settings = {
+///         format = "JSON"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -344,9 +402,10 @@ import 'data_set_state.dart';
 /// import com.pulumi.aws.quicksight.DataSetArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapS3SourceArgs;
+/// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapS3SourceInputColumnArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapS3SourceUploadSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -561,6 +620,38 @@ import 'data_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_dataset" "example" {
+///   data_set_id = "example-id"
+///   name        = "example-name"
+///   import_mode = "SPICE"
+///   physical_table_maps {
+///     physical_table_map_id = "example-id"
+///     s3_source = {
+///       data_source_arn = exampleAwsQuicksightDataSource.arn
+///       input_columns = [{
+///         "name" = "Column1"
+///         "type" = "STRING"
+///       }]
+///       upload_settings = {
+///         format = "JSON"
+///       }
+///     }
+///   }
+///   column_level_permission_rules {
+///     column_names = ["Column1"]
+///     principals   = [exampleAwsQuicksightUser.arn]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -571,10 +662,11 @@ import 'data_set_state.dart';
 /// import com.pulumi.aws.quicksight.DataSetArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapS3SourceArgs;
+/// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapS3SourceInputColumnArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapS3SourceUploadSettingsArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetColumnLevelPermissionRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -795,6 +887,39 @@ import 'data_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_dataset" "example" {
+///   data_set_id = "example-id"
+///   name        = "example-name"
+///   import_mode = "SPICE"
+///   physical_table_maps {
+///     physical_table_map_id = "example-id"
+///     s3_source = {
+///       data_source_arn = exampleAwsQuicksightDataSource.arn
+///       input_columns = [{
+///         "name" = "Column1"
+///         "type" = "STRING"
+///       }]
+///       upload_settings = {
+///         format = "JSON"
+///       }
+///     }
+///   }
+///   field_folders {
+///     field_folders_id = "example-id"
+///     columns          = ["Column1"]
+///     description      = "example description"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -805,10 +930,11 @@ import 'data_set_state.dart';
 /// import com.pulumi.aws.quicksight.DataSetArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapS3SourceArgs;
+/// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapS3SourceInputColumnArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapS3SourceUploadSettingsArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetFieldFolderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1046,6 +1172,38 @@ import 'data_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_dataset" "example" {
+///   data_set_id = "example-id"
+///   name        = "example-name"
+///   import_mode = "SPICE"
+///   physical_table_maps {
+///     physical_table_map_id = "example-id"
+///     s3_source = {
+///       data_source_arn = exampleAwsQuicksightDataSource.arn
+///       input_columns = [{
+///         "name" = "Column1"
+///         "type" = "STRING"
+///       }]
+///       upload_settings = {
+///         format = "JSON"
+///       }
+///     }
+///   }
+///   permissions {
+///     actions   = ["quicksight:DescribeDataSet", "quicksight:DescribeDataSetPermissions", "quicksight:PassDataSet", "quicksight:DescribeIngestion", "quicksight:ListIngestions"]
+///     principal = exampleAwsQuicksightUser.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1056,10 +1214,11 @@ import 'data_set_state.dart';
 /// import com.pulumi.aws.quicksight.DataSetArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapS3SourceArgs;
+/// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapS3SourceInputColumnArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapS3SourceUploadSettingsArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1300,6 +1459,43 @@ import 'data_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_dataset" "example" {
+///   data_set_id = "example-id"
+///   name        = "example-name"
+///   import_mode = "SPICE"
+///   physical_table_maps {
+///     physical_table_map_id = "example-id"
+///     s3_source = {
+///       data_source_arn = exampleAwsQuicksightDataSource.arn
+///       input_columns = [{
+///         "name" = "Column1"
+///         "type" = "STRING"
+///       }]
+///       upload_settings = {
+///         format = "JSON"
+///       }
+///     }
+///   }
+///   row_level_permission_tag_configuration = {
+///     status = "ENABLED"
+///     tag_rules = [{
+///       "columnName"             = "Column1"
+///       "tagKey"                 = "tagkey"
+///       "matchAllValue"          = "*"
+///       "tagMultiValueDelimiter" = ","
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1310,10 +1506,12 @@ import 'data_set_state.dart';
 /// import com.pulumi.aws.quicksight.DataSetArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapS3SourceArgs;
+/// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapS3SourceInputColumnArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetPhysicalTableMapS3SourceUploadSettingsArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSetRowLevelPermissionTagConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.quicksight.inputs.DataSetRowLevelPermissionTagConfigurationTagRuleArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1413,13 +1611,13 @@ class DataSet extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-  /// The final set of columns available for use in analyses and dashboards after all data preparation and transformation steps have been applied within the data set.  See `output_columns` Block below.
+  /// The final set of columns available for use in analyses and dashboards after all data preparation and transformation steps have been applied within the data set.  See `outputColumns` Block below.
   late final pulumi.Output<List<Map<String, dynamic>>> outputColumns;
   /// A set of resource permissions on the data source. Maximum of 64 items. See permissions.
   late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
   /// Declares the physical tables that are available in the underlying data sources. See physical_table_map.
   late final pulumi.Output<List<Map<String, dynamic>>?> physicalTableMaps;
-  /// The refresh properties for the data set. **NOTE**: Only valid when `import_mode` is set to `SPICE`. See refresh_properties.
+  /// The refresh properties for the data set. **NOTE**: Only valid when `importMode` is set to `SPICE`. See refresh_properties.
   late final pulumi.Output<DataSetRefreshProperties?> refreshProperties;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -1427,9 +1625,9 @@ class DataSet extends pulumi.CustomResource {
   late final pulumi.Output<DataSetRowLevelPermissionDataSet?> rowLevelPermissionDataSet;
   /// The configuration of tags on a dataset to set row-level security. Row-level security tags are currently supported for anonymous embedding only. See row_level_permission_tag_configuration.
   late final pulumi.Output<DataSetRowLevelPermissionTagConfiguration?> rowLevelPermissionTagConfiguration;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Specifies the purpose of the data set. The only valid value is `RLS_RULES`, which designates this data set as a Row Level Security (RLS) rules dataset. An RLS rules dataset is used to control access to data at the row level in QuickSight analyses and dashboards. See the [AWS documentation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateDataSet.html#API_CreateDataSet_RequestSyntax) for details.
   late final pulumi.Output<String?> useAs;

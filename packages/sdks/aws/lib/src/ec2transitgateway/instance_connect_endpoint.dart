@@ -55,6 +55,19 @@ import 'instance_connect_endpoint_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2transitgateway_instanceconnectendpoint" "example" {
+///   subnet_id = exampleAwsSubnet.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +76,8 @@ import 'instance_connect_endpoint_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.InstanceConnectEndpoint;
 /// import com.pulumi.aws.ec2transitgateway.InstanceConnectEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -122,9 +135,9 @@ class InstanceConnectEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> securityGroupIds;
   /// The ID of the subnet in which to create the EC2 Instance Connect Endpoint.
   late final pulumi.Output<String> subnetId;
-  /// Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<InstanceConnectEndpointTimeouts?> timeouts;
   /// The ID of the VPC in which the EC2 Instance Connect Endpoint was created.

@@ -151,6 +151,36 @@ import 'configuration_set_vdm_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sesv2_configurationset" "example" {
+///   configuration_set_name = "example"
+///   delivery_options = {
+///     max_delivery_seconds = 300
+///     tls_policy           = "REQUIRE"
+///   }
+///   reputation_options = {
+///     reputation_metrics_enabled = false
+///   }
+///   sending_options = {
+///     sending_enabled = true
+///   }
+///   suppression_options = {
+///     suppressed_reasons = ["BOUNCE", "COMPLAINT"]
+///   }
+///   tracking_options = {
+///     custom_redirect_domain = "example.com"
+///     https_policy           = "REQUIRE"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -164,8 +194,8 @@ import 'configuration_set_vdm_options.dart';
 /// import com.pulumi.aws.sesv2.inputs.ConfigurationSetSendingOptionsArgs;
 /// import com.pulumi.aws.sesv2.inputs.ConfigurationSetSuppressionOptionsArgs;
 /// import com.pulumi.aws.sesv2.inputs.ConfigurationSetTrackingOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -228,7 +258,7 @@ import 'configuration_set_vdm_options.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SESv2 (Simple Email V2) Configuration Set using the `configuration_set_name`. For example:
+/// Using `pulumi import`, import SESv2 (Simple Email V2) Configuration Set using the `configurationSetName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sesv2/configurationSet:ConfigurationSet example example
@@ -238,22 +268,22 @@ class ConfigurationSet extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The name of the configuration set.
   late final pulumi.Output<String> configurationSetName;
-  /// An object that defines the dedicated IP pool that is used to send emails that you send using the configuration set. See `delivery_options` Block for details.
+  /// An object that defines the dedicated IP pool that is used to send emails that you send using the configuration set. See `deliveryOptions` Block for details.
   late final pulumi.Output<ConfigurationSetDeliveryOptions?> deliveryOptions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// An object that defines whether or not Amazon SES collects reputation metrics for the emails that you send that use the configuration set. See `reputation_options` Block for details.
+  /// An object that defines whether or not Amazon SES collects reputation metrics for the emails that you send that use the configuration set. See `reputationOptions` Block for details.
   late final pulumi.Output<ConfigurationSetReputationOptions> reputationOptions;
-  /// An object that defines whether or not Amazon SES can send email that you send using the configuration set. See `sending_options` Block for details.
+  /// An object that defines whether or not Amazon SES can send email that you send using the configuration set. See `sendingOptions` Block for details.
   late final pulumi.Output<ConfigurationSetSendingOptions> sendingOptions;
-  /// An object that contains information about the suppression list preferences for your account. See `suppression_options` Block for details.
+  /// An object that contains information about the suppression list preferences for your account. See `suppressionOptions` Block for details.
   late final pulumi.Output<ConfigurationSetSuppressionOptions?> suppressionOptions;
-  /// A map of tags to assign to the service. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the service. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// An object that defines the open and click tracking options for emails that you send using the configuration set. See `tracking_options` Block for details.
+  /// An object that defines the open and click tracking options for emails that you send using the configuration set. See `trackingOptions` Block for details.
   late final pulumi.Output<ConfigurationSetTrackingOptions?> trackingOptions;
-  /// An object that defines the VDM settings that apply to emails that you send using the configuration set. See `vdm_options` Block for details.
+  /// An object that defines the VDM settings that apply to emails that you send using the configuration set. See `vdmOptions` Block for details.
   late final pulumi.Output<ConfigurationSetVdmOptions?> vdmOptions;
 
   /// Creates a new [ConfigurationSet].

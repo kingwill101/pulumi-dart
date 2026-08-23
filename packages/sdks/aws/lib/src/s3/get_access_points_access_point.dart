@@ -18,9 +18,9 @@ class GetAccessPointsAccessPoint {
   final pulumi.Input<String> dataSourceType;
   /// Name of the access point.
   final pulumi.Input<String> name;
-  /// Indicates whether the access point allows access from the public Internet.
+  /// Whether the access point allows access from the public Internet.
   final pulumi.Input<String> networkOrigin;
-  /// VPC configuration for the access point. See `vpc_configuration` below.
+  /// VPC configuration for the access point. See `vpcConfiguration` below.
   final pulumi.Input<List<GetAccessPointsAccessPointVpcConfiguration>> vpcConfigurations;
 
   /// Creates a new [GetAccessPointsAccessPoint].
@@ -31,8 +31,8 @@ class GetAccessPointsAccessPoint {
   /// [dataSourceId] Unique identifier for the access points data source.
   /// [dataSourceType] Type of the data source that the access points are attached to. To return all access points set this argument to `ALL`.
   /// [name] Name of the access point.
-  /// [networkOrigin] Indicates whether the access point allows access from the public Internet.
-  /// [vpcConfigurations] VPC configuration for the access point. See `vpc_configuration` below.
+  /// [networkOrigin] Whether the access point allows access from the public Internet.
+  /// [vpcConfigurations] VPC configuration for the access point. See `vpcConfiguration` below.
   const GetAccessPointsAccessPoint({
     required this.accessPointArn,
     required this.alias,
@@ -73,4 +73,3 @@ class GetAccessPointsAccessPoint {
     );
   }
 }
-

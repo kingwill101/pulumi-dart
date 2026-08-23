@@ -110,6 +110,30 @@ import 'user_access_logging_settings_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspacesweb_portal" "example" {
+///   display_name = "example"
+/// }
+/// resource "aws_kinesis_stream" "example" {
+///   name        = "amazon-workspaces-web-example"
+///   shard_count = 1
+/// }
+/// resource "aws_workspacesweb_useraccessloggingsettings" "example" {
+///   kinesis_stream_arn = aws_kinesis_stream.example.arn
+/// }
+/// resource "aws_workspacesweb_useraccessloggingsettingsassociation" "example" {
+///   user_access_logging_settings_arn = aws_workspacesweb_useraccessloggingsettings.example.user_access_logging_settings_arn
+///   portal_arn                       = aws_workspacesweb_portal.example.portal_arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -124,8 +148,8 @@ import 'user_access_logging_settings_association_state.dart';
 /// import com.pulumi.aws.workspacesweb.UserAccessLoggingSettingsArgs;
 /// import com.pulumi.aws.workspacesweb.UserAccessLoggingSettingsAssociation;
 /// import com.pulumi.aws.workspacesweb.UserAccessLoggingSettingsAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

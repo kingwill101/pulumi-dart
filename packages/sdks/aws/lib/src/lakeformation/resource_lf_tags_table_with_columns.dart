@@ -9,11 +9,11 @@ class ResourceLfTagsTableWithColumns {
   final pulumi.Input<List<String>>? columnNames;
   /// Name of the database for the table with columns resource. Unique to the Data Catalog.
   final pulumi.Input<String> databaseName;
-  /// Set of column names for the table to exclude. If `excluded_column_names` is included, `wildcard` must be set to `true` to avoid the provider reporting a difference.
+  /// Set of column names for the table to exclude. If `excludedColumnNames` is included, `wildcard` must be set to `true` to avoid the provider reporting a difference.
   final pulumi.Input<List<String>>? excludedColumnNames;
   /// Name of the table resource.
   final pulumi.Input<String> name;
-  /// Whether to use a column wildcard. If `excluded_column_names` is included, `wildcard` must be set to `true` to avoid the provider reporting a difference.
+  /// Whether to use a column wildcard. If `excludedColumnNames` is included, `wildcard` must be set to `true` to avoid the provider reporting a difference.
   ///
   /// The following arguments are optional:
   final pulumi.Input<bool>? wildcard;
@@ -22,9 +22,9 @@ class ResourceLfTagsTableWithColumns {
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.
   /// [columnNames] Set of column names for the table.
   /// [databaseName] Name of the database for the table with columns resource. Unique to the Data Catalog.
-  /// [excludedColumnNames] Set of column names for the table to exclude. If `excluded_column_names` is included, `wildcard` must be set to `true` to avoid the provider reporting a difference.
+  /// [excludedColumnNames] Set of column names for the table to exclude. If `excludedColumnNames` is included, `wildcard` must be set to `true` to avoid the provider reporting a difference.
   /// [name] Name of the table resource.
-  /// [wildcard] Whether to use a column wildcard. If `excluded_column_names` is included, `wildcard` must be set to `true` to avoid the provider reporting a difference.
+  /// [wildcard] Whether to use a column wildcard. If `excludedColumnNames` is included, `wildcard` must be set to `true` to avoid the provider reporting a difference.
   const ResourceLfTagsTableWithColumns({
     this.catalogId,
     this.columnNames,
@@ -56,4 +56,3 @@ class ResourceLfTagsTableWithColumns {
     );
   }
 }
-

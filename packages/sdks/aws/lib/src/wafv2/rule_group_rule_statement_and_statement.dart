@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_rule_statement.dart';
 
 class RuleGroupRuleStatementAndStatement {
-  /// The statements to combine.
+  /// The statements to combine with `AND` logic. You can use any statements that can be nested. See Statement above for details.
   final pulumi.Input<List<RuleGroupRuleStatement>> statements;
 
   /// Creates a new [RuleGroupRuleStatementAndStatement].
-  /// [statements] The statements to combine.
+  /// [statements] The statements to combine with `AND` logic. You can use any statements that can be nested. See Statement above for details.
   const RuleGroupRuleStatementAndStatement({
     required this.statements,
   });
@@ -25,4 +25,3 @@ class RuleGroupRuleStatementAndStatement {
     );
   }
 }
-

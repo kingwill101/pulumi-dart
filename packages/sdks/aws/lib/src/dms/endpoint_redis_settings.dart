@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointRedisSettings {
   /// The password provided with the auth-role and auth-token options of the AuthType setting for a Redis target endpoint.
   final pulumi.Input<String>? authPassword;
-  /// The type of authentication to perform when connecting to a Redis target. Options include `none`, `auth-token`, and `auth-role`. The `auth-token` option requires an `auth_password` value to be provided. The `auth-role` option requires `auth_user_name` and `auth_password` values to be provided.
+  /// The type of authentication to perform when connecting to a Redis target. Options include `none`, `auth-token`, and `auth-role`. The `auth-token` option requires an `authPassword` value to be provided. The `auth-role` option requires `authUserName` and `authPassword` values to be provided.
   final pulumi.Input<String> authType;
   /// The username provided with the `auth-role` option of the AuthType setting for a Redis target endpoint.
   final pulumi.Input<String>? authUserName;
@@ -20,7 +20,7 @@ class EndpointRedisSettings {
 
   /// Creates a new [EndpointRedisSettings].
   /// [authPassword] The password provided with the auth-role and auth-token options of the AuthType setting for a Redis target endpoint.
-  /// [authType] The type of authentication to perform when connecting to a Redis target. Options include `none`, `auth-token`, and `auth-role`. The `auth-token` option requires an `auth_password` value to be provided. The `auth-role` option requires `auth_user_name` and `auth_password` values to be provided.
+  /// [authType] The type of authentication to perform when connecting to a Redis target. Options include `none`, `auth-token`, and `auth-role`. The `auth-token` option requires an `authPassword` value to be provided. The `auth-role` option requires `authUserName` and `authPassword` values to be provided.
   /// [authUserName] The username provided with the `auth-role` option of the AuthType setting for a Redis target endpoint.
   /// [port] Transmission Control Protocol (TCP) port for the endpoint.
   /// [serverName] Fully qualified domain name of the endpoint.
@@ -60,4 +60,3 @@ class EndpointRedisSettings {
     );
   }
 }
-

@@ -1174,4 +1174,3 @@ enum ManagedPolicy {
     throw ArgumentError('Unknown ManagedPolicy value: $value');
   }
 }
-

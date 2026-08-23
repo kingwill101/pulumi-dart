@@ -63,6 +63,20 @@ import 'tenant_resource_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sesv2_tenantresourceassociation" "example" {
+///   tenant_name  = "example-tenant"
+///   resource_arn = "arn:aws:ses:us-east-1:123456789012:configuration-set/example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'tenant_resource_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sesv2.TenantResourceAssociation;
 /// import com.pulumi.aws.sesv2.TenantResourceAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -104,7 +118,7 @@ import 'tenant_resource_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SESv2 (Simple Email V2) Tenant Resource Association using the `tenant_name` and `resource_arn` separated by `|`. For example:
+/// Using `pulumi import`, import SESv2 (Simple Email V2) Tenant Resource Association using the `tenantName` and `resourceArn` separated by `|`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sesv2/tenantResourceAssociation:TenantResourceAssociation example "example-tenant|arn:aws:ses:us-east-1:123456789012:configuration-set/example"

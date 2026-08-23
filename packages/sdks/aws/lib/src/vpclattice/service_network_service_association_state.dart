@@ -5,38 +5,38 @@ import 'service_network_service_association_dns_entry.dart';
 
 /// Input properties used for looking up and filtering ServiceNetworkServiceAssociation resources.
 class ServiceNetworkServiceAssociationState {
-  /// The ARN of the Association.
+  /// ARN of the Association.
   final pulumi.Input<String>? arn;
-  /// The account that created the association.
+  /// Account that created the association.
   final pulumi.Input<String>? createdBy;
-  /// The custom domain name of the service.
+  /// Custom domain name of the service.
   final pulumi.Input<String>? customDomainName;
-  /// The DNS name of the service.
+  /// DNS name of the service.
   final pulumi.Input<List<ServiceNetworkServiceAssociationDnsEntry>>? dnsEntries;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The ID or Amazon Resource Identifier (ARN) of the service.
+  /// ID or Amazon Resource Identifier (ARN) of the service.
   final pulumi.Input<String>? serviceIdentifier;
-  /// The ID or Amazon Resource Identifier (ARN) of the service network. You must use the ARN if the resources specified in the operation are in different accounts.
+  /// ID or Amazon Resource Identifier (ARN) of the service network. You must use the ARN if the resources specified in the operation are in different accounts.
   final pulumi.Input<String>? serviceNetworkIdentifier;
-  /// The operations status. Valid Values are CREATE_IN_PROGRESS | ACTIVE | DELETE_IN_PROGRESS | CREATE_FAILED | DELETE_FAILED
+  /// Operations status. Valid Values are CREATE_IN_PROGRESS | ACTIVE | DELETE_IN_PROGRESS | CREATE_FAILED | DELETE_FAILED
   final pulumi.Input<String>? status;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [ServiceNetworkServiceAssociationState].
-  /// [arn] The ARN of the Association.
-  /// [createdBy] The account that created the association.
-  /// [customDomainName] The custom domain name of the service.
-  /// [dnsEntries] The DNS name of the service.
+  /// [arn] ARN of the Association.
+  /// [createdBy] Account that created the association.
+  /// [customDomainName] Custom domain name of the service.
+  /// [dnsEntries] DNS name of the service.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [serviceIdentifier] The ID or Amazon Resource Identifier (ARN) of the service.
-  /// [serviceNetworkIdentifier] The ID or Amazon Resource Identifier (ARN) of the service network. You must use the ARN if the resources specified in the operation are in different accounts.
-  /// [status] The operations status. Valid Values are CREATE_IN_PROGRESS | ACTIVE | DELETE_IN_PROGRESS | CREATE_FAILED | DELETE_FAILED
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [serviceIdentifier] ID or Amazon Resource Identifier (ARN) of the service.
+  /// [serviceNetworkIdentifier] ID or Amazon Resource Identifier (ARN) of the service network. You must use the ARN if the resources specified in the operation are in different accounts.
+  /// [status] Operations status. Valid Values are CREATE_IN_PROGRESS | ACTIVE | DELETE_IN_PROGRESS | CREATE_FAILED | DELETE_FAILED
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const ServiceNetworkServiceAssociationState({
     this.arn,
     this.createdBy,
@@ -80,4 +80,3 @@ class ServiceNetworkServiceAssociationState {
     );
   }
 }
-

@@ -102,6 +102,27 @@ import 'kx_volume_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_finspace_kxvolume" "example" {
+///   name               = "my-tf-kx-volume"
+///   environment_id     = exampleAwsFinspaceKxEnvironment.id
+///   availability_zones = ["use1-az2"]
+///   az_mode            = "SINGLE"
+///   type               = "NAS_1"
+///   nas1_configurations {
+///     size = 1200
+///     type = "SSD_250"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +132,8 @@ import 'kx_volume_state.dart';
 /// import com.pulumi.aws.finspace.KxVolume;
 /// import com.pulumi.aws.finspace.KxVolumeArgs;
 /// import com.pulumi.aws.finspace.inputs.KxVolumeNas1ConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -166,45 +187,36 @@ import 'kx_volume_state.dart';
 class KxVolume extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) identifier of the KX volume.
   late final pulumi.Output<String> arn;
+  /// Clusters attached to the volume. See `attachedClusters` Block below.
   late final pulumi.Output<List<Map<String, dynamic>>> attachedClusters;
-  /// The identifier of the AWS Availability Zone IDs.
-  ///
-  /// The following arguments are optional:
+  /// Identifier of the AWS Availability Zone IDs.
   late final pulumi.Output<List<String>> availabilityZones;
-  /// The number of availability zones you want to assign per volume. Currently, Finspace only support SINGLE for volumes.
-  /// * `SINGLE` - Assigns one availability zone per volume.
+  /// Number of availability zones you want to assign per volume. Currently, FinSpace only supports `SINGLE` for volumes, which assigns one availability zone per volume.
   late final pulumi.Output<String> azMode;
-  /// The timestamp at which the volume was created in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.
+  /// Timestamp at which the volume was created in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.
   late final pulumi.Output<String> createdTimestamp;
   /// Description of the volume.
   late final pulumi.Output<String?> description;
-  /// A unique identifier for the kdb environment, whose clusters can attach to the volume.
+  /// Unique identifier for the kdb environment, whose clusters can attach to the volume.
   late final pulumi.Output<String> environmentId;
   /// Last timestamp at which the volume was updated in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
   late final pulumi.Output<String> lastModifiedTimestamp;
-  /// Unique name for the volumr that you want to create.
+  /// Unique name for the volume that you want to create.
   late final pulumi.Output<String> name;
-  /// Specifies the configuration for the Network attached storage (`NAS_1`) file system volume. This parameter is required when `volume_type` is `NAS_1`. See `nas1_configuration` Argument Reference below.
+  /// Configuration for the Network attached storage (`NAS_1`) file system volume. This parameter is required when `volumeType` is `NAS_1`. See `nas1Configuration` Block below.
   late final pulumi.Output<List<Map<String, dynamic>>?> nas1Configurations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The status of volume creation.
-  /// * `CREATING` - The volume creation is in progress.
-  /// * `CREATE_FAILED` - The volume creation has failed.
-  /// * `ACTIVE` - The volume is active.
-  /// * `UPDATING` - The volume is in the process of being updated.
-  /// * `UPDATE_FAILED` - The update action failed.
-  /// * `UPDATED` - The volume is successfully updated.
-  /// * `DELETING` - The volume is in the process of being deleted.
-  /// * `DELETE_FAILED` - The system failed to delete the volume.
-  /// * `DELETED` - The volume is successfully deleted.
+  /// Status of volume creation. Values are `CREATING` (volume creation is in progress), `CREATE_FAILED` (volume creation has failed), `ACTIVE` (volume is active), `UPDATING` (volume is in the process of being updated), `UPDATE_FAILED` (update action failed), `UPDATED` (volume is successfully updated), `DELETING` (volume is in the process of being deleted), `DELETE_FAILED` (system failed to delete the volume), and `DELETED` (volume is successfully deleted).
   late final pulumi.Output<String> status;
-  /// The error message when a failed state occurs.
+  /// Error message when a failed state occurs.
   late final pulumi.Output<String> statusReason;
-  /// A list of key-value pairs to label the volume. You can add up to 50 tags to a volume
+  /// Key-value pairs to label the volume. You can add up to 50 tags to a volume.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The type of file system volume. Currently, FinSpace only supports the `NAS_1` volume type. When you select the `NAS_1` volume type, you must also provide `nas1_configuration`.
+  /// Type of file system volume. Currently, FinSpace only supports the `NAS_1` volume type. When you select the `NAS_1` volume type, you must also provide `nas1Configuration`.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> type;
 
   /// Creates a new [KxVolume].

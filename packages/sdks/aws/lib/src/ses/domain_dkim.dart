@@ -4,7 +4,7 @@ import 'domain_dkim_state.dart';
 
 /// Provides an SES domain DKIM generation resource.
 ///
-/// Domain ownership needs to be confirmed first using ses_domain_identity Resource
+/// Domain ownership needs to be confirmed first using sesDomainIdentity Resource
 ///
 /// ## Example Usage
 ///
@@ -16,30 +16,31 @@ import 'domain_dkim_state.dart';
 /// const example = new aws.ses.DomainIdentity("example", {domain: "example.com"});
 /// const exampleDomainDkim = new aws.ses.DomainDkim("example", {domain: example.domain});
 /// const exampleAmazonsesDkimRecord: aws.route53.Record[] = [];
-/// for (const range = {value: 0}; range.value < 3; range.value++) {
-///     exampleAmazonsesDkimRecord.push(new aws.route53.Record(`example_amazonses_dkim_record-${range.value}`, {
+/// for (let range = 0; range < 3; range++) {
+///     exampleAmazonsesDkimRecord.push(new aws.route53.Record(`example_amazonses_dkim_record-${range}`, {
 ///         zoneId: "ABCDEFGHIJ123",
-///         name: exampleDomainDkim.dkimTokens.apply(dkimTokens => `${dkimTokens[range.value]}._domainkey`),
+///         name: exampleDomainDkim.dkimTokens.apply(dkimTokens => `${dkimTokens[range]}._domainkey`),
 ///         type: aws.route53.RecordType.CNAME,
 ///         ttl: 600,
-///         records: [exampleDomainDkim.dkimTokens.apply(dkimTokens => `${dkimTokens[range.value]}.dkim.amazonses.com`)],
+///         records: [exampleDomainDkim.dkimTokens.apply(dkimTokens => `${dkimTokens[range]}.dkim.amazonses.com`)],
 ///     }));
 /// }
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 ///
 /// example = aws.ses.DomainIdentity("example", domain="example.com")
 /// example_domain_dkim = aws.ses.DomainDkim("example", domain=example.domain)
-/// example_amazonses_dkim_record = []
-/// for range in [{"value": i} for i in range(0, 3)]:
-///     example_amazonses_dkim_record.append(aws.route53.Record(f"example_amazonses_dkim_record-{range['value']}",
+/// example_amazonses_dkim_record: list[aws.route53.Record] = []
+/// for example_amazonses_dkim_record_range in [{"value": i} for i in range(0, 3)]:
+///     example_amazonses_dkim_record.append(aws.route53.Record(f"example_amazonses_dkim_record-{example_amazonses_dkim_record_range['value']}",
 ///         zone_id="ABCDEFGHIJ123",
-///         name=example_domain_dkim.dkim_tokens.apply(lambda dkim_tokens: f"{dkim_tokens[range['value']]}._domainkey"),
+///         name=example_domain_dkim.dkim_tokens.apply(lambda dkim_tokens: f"{dkim_tokens[example_amazonses_dkim_record_range['value']]}._domainkey"),
 ///         type=aws.route53.RecordType.CNAME,
 ///         ttl=600,
-///         records=[example_domain_dkim.dkim_tokens.apply(lambda dkim_tokens: f"{dkim_tokens[range['value']]}.dkim.amazonses.com")]))
+///         records=[example_domain_dkim.dkim_tokens.apply(lambda dkim_tokens: f"{dkim_tokens[example_amazonses_dkim_record_range['value']]}.dkim.amazonses.com")]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -128,6 +129,30 @@ import 'domain_dkim_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ses_domainidentity" "example" {
+///   domain = "example.com"
+/// }
+/// resource "aws_ses_domaindkim" "example" {
+///   domain = aws_ses_domainidentity.example.domain
+/// }
+/// resource "aws_route53_record" "example_amazonses_dkim_record" {
+///   count   = 3
+///   zone_id = "ABCDEFGHIJ123"
+///   name    ="${aws_ses_domaindkim.example.dkim_tokens[count.index]}._domainkey"
+///   type    = "CNAME"
+///   ttl     = "600"
+///   records = ["${aws_ses_domaindkim.example.dkim_tokens[count.index]}.dkim.amazonses.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +166,8 @@ import 'domain_dkim_state.dart';
 /// import com.pulumi.aws.route53.Record;
 /// import com.pulumi.aws.route53.RecordArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -1,3 +1,6 @@
+export 'index/arn_build_args.dart';
+export 'index/arn_parse_args.dart';
+export 'index/arn_parse_result.dart';
 export 'index/functions.dart';
 export 'index/get_arn_args.dart';
 export 'index/get_arn_result.dart';
@@ -32,3 +35,5 @@ export 'index/provider_default_tags.dart';
 export 'index/provider_endpoint.dart';
 export 'index/provider_ignore_tags.dart';
 export 'index/region.dart';
+export 'index/trim_iam_role_path_args.dart';
+export 'index/user_agent_args.dart';

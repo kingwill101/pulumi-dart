@@ -66,6 +66,20 @@ import 'secret_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_secretsmanager_secretversion" "example" {
+///   secret_id     = exampleAwsSecretsmanagerSecret.id
+///   secret_string = "example-string-to-protect"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +88,8 @@ import 'secret_version_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.secretsmanager.SecretVersion;
 /// import com.pulumi.aws.secretsmanager.SecretVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -177,7 +191,7 @@ import 'secret_version_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		cfg := config.New(ctx, "")
-/// 		example := map[string]interface{}{
+/// 		example := map[string]string{
 /// 			"key1": "value1",
 /// 			"key2": "value2",
 /// 		}
@@ -200,6 +214,29 @@ import 'secret_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_secretsmanager_secretversion" "example" {
+///   secret_id     = exampleAwsSecretsmanagerSecret.id
+///   secret_string = jsonencode(var.example)
+/// }
+/// # The map here can come from other supported configurations
+/// # like locals, resource attribute, map() built-in, etc.
+/// variable "example" {
+///   type = map(string)
+///   default = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -209,8 +246,8 @@ import 'secret_version_state.dart';
 /// import com.pulumi.aws.secretsmanager.SecretVersion;
 /// import com.pulumi.aws.secretsmanager.SecretVersionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -241,7 +278,7 @@ import 'secret_version_state.dart';
 ///   # The map here can come from other supported configurations
 ///   # like locals, resource attribute, map() built-in, etc.
 ///   example:
-///     type: map(string)
+///     type: object
 ///     default:
 ///       key1: value1
 ///       key2: value2
@@ -308,6 +345,19 @@ import 'secret_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// output "example" {
+///   value = jsondecode(exampleAwsSecretsmanagerSecretVersion.secretString)["key1"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -316,8 +366,8 @@ import 'secret_version_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JsondecodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -352,12 +402,12 @@ import 'secret_version_state.dart';
 ///
 /// #### Required
 ///
-/// * `secret_id` - (String) ID of the secret.
-/// * `version_id` - (String) ID of the secret version.
+/// * `secretId` - (String) ID of the secret.
+/// * `versionId` - (String) ID of the secret version.
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -367,27 +417,30 @@ import 'secret_version_state.dart';
 /// $ pulumi import aws:secretsmanager/secretVersion:SecretVersion example 'arn:aws:secretsmanager:us-east-1:123456789012:secret:example-123456|xxxxx-xxxxxxx-xxxxxxx-xxxxx'
 /// ```
 class SecretVersion extends pulumi.CustomResource {
-  /// The ARN of the secret.
+  /// (**Deprecated**) ARN of the secret. Use `secretArn` instead.
   late final pulumi.Output<String> arn;
+  /// Whether a write-only secret string value is set.
   late final pulumi.Output<bool> hasSecretStringWo;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Specifies binary data that you want to encrypt and store in this version of the secret. This is required if `secret_string` or `secret_string_wo` is not set. Needs to be encoded to base64.
+  /// ARN of the secret.
+  late final pulumi.Output<String> secretArn;
+  /// Binary data that you want to encrypt and store in this version of the secret. This is required if `secretString` or `secretStringWo` is not set. Needs to be encoded to base64.
   late final pulumi.Output<String?> secretBinary;
-  /// Specifies the secret to which you want to add a new version. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret. The secret must already exist.
+  /// Secret to which you want to add a new version. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret. The secret must already exist.
   late final pulumi.Output<String> secretId;
-  /// Specifies text data that you want to encrypt and store in this version of the secret. This is required if `secret_binary` or `secret_string_wo` is not set.
+  /// Text data that you want to encrypt and store in this version of the secret. This is required if `secretBinary` or `secretStringWo` is not set.
   late final pulumi.Output<String?> secretString;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Specifies text data that you want to encrypt and store in this version of the secret. This is required if `secret_binary` or `secret_string` is not set.
+  /// Text data that you want to encrypt and store in this version of the secret. This is required if `secretBinary` or `secretString` is not set.
   late final pulumi.Output<String?> secretStringWo;
-  /// Used together with `secret_string_wo` to trigger an update. Increment this value when an update to `secret_string_wo` is required.
+  /// Version identifier that works together with `secretStringWo` to trigger an update. Increment this value when an update to `secretStringWo` is required.
   late final pulumi.Output<int?> secretStringWoVersion;
-  /// The unique identifier of the version of the secret.
+  /// Unique identifier of the version of the secret.
   late final pulumi.Output<String> versionId;
-  /// Specifies a list of staging labels that are attached to this version of the secret. A staging label must be unique to a single version of the secret. If you specify a staging label that's already associated with a different version of the same secret then that staging label is automatically removed from the other version and attached to this version. If you do not specify a value, then AWS Secrets Manager automatically moves the staging label `AWSCURRENT` to this new version on creation.
+  /// List of staging labels that are attached to this version of the secret. A staging label must be unique to a single version of the secret. If you specify a staging label that's already associated with a different version of the same secret then that staging label is automatically removed from the other version and attached to this version. If you do not specify a value, then AWS Secrets Manager automatically moves the staging label `AWSCURRENT` to this new version on creation.
   ///
-  /// &gt; **NOTE:** If `version_stages` is configured, you must include the `AWSCURRENT` staging label if this secret version is the only version or if the label is currently present on this secret version, otherwise this provider will show a perpetual difference.
+  /// &gt; **NOTE:** If `versionStages` is configured, you must include the `AWSCURRENT` staging label if this secret version is the only version or if the label is currently present on this secret version, otherwise this provider will show a perpetual difference.
   late final pulumi.Output<List<String>> versionStages;
 
   /// Creates a new [SecretVersion].
@@ -407,6 +460,7 @@ class SecretVersion extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     hasSecretStringWo = registerOutput<bool>('hasSecretStringWo');
     region = registerOutput<String>('region');
+    secretArn = registerOutput<String>('secretArn');
     secretBinary = registerOutput<String?>('secretBinary');
     secretId = registerOutput<String>('secretId');
     secretString = registerOutput<String?>('secretString');
@@ -442,6 +496,7 @@ class SecretVersion extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     hasSecretStringWo = registerOutput<bool>('hasSecretStringWo');
     region = registerOutput<String>('region');
+    secretArn = registerOutput<String>('secretArn');
     secretBinary = registerOutput<String?>('secretBinary');
     secretId = registerOutput<String>('secretId');
     secretString = registerOutput<String?>('secretString');

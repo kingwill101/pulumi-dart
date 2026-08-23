@@ -5,14 +5,16 @@ import 'flow_destination_flow_config_destination_connector_properties_snowflake_
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake {
   final pulumi.Input<String>? bucketPrefix;
+  /// Settings that determine how Amazon AppFlow handles an error when placing data in the destination. See the `destination_flow_config.destination_connector_properties.zendesk.error_handling_config` Block for details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflakeErrorHandlingConfig>? errorHandlingConfig;
+  /// Intermediate bucket that Amazon AppFlow uses when moving data into Amazon Snowflake.
   final pulumi.Input<String> intermediateBucketName;
   final pulumi.Input<String> object_;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake].
   /// [bucketPrefix] Optional.
-  /// [errorHandlingConfig] Optional.
-  /// [intermediateBucketName] Required.
+  /// [errorHandlingConfig] Settings that determine how Amazon AppFlow handles an error when placing data in the destination. See the `destination_flow_config.destination_connector_properties.zendesk.error_handling_config` Block for details.
+  /// [intermediateBucketName] Intermediate bucket that Amazon AppFlow uses when moving data into Amazon Snowflake.
   /// [object_] Required.
   const FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake({
     this.bucketPrefix,
@@ -39,4 +41,3 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake {
     );
   }
 }
-

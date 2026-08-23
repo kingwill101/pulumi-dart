@@ -102,6 +102,29 @@ import 'snapshot_import_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ebs_snapshotimport" "example" {
+///   disk_container = {
+///     format = "VHD"
+///     user_bucket = {
+///       s3_bucket = "disk-images"
+///       s3_key    = "source.vhd"
+///     }
+///   }
+///   role_name = "disk-image-import"
+///   tags = {
+///     "Name" = "HelloWorld"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +135,8 @@ import 'snapshot_import_state.dart';
 /// import com.pulumi.aws.ebs.SnapshotImportArgs;
 /// import com.pulumi.aws.ebs.inputs.SnapshotImportDiskContainerArgs;
 /// import com.pulumi.aws.ebs.inputs.SnapshotImportDiskContainerUserBucketArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -184,7 +207,7 @@ class SnapshotImport extends pulumi.CustomResource {
   late final pulumi.Output<String> storageTier;
   /// A map of tags to assign to the snapshot.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Specifies the number of days for which to temporarily restore an archived snapshot. Required for temporary restores only. The snapshot will be automatically re-archived after this period.
   late final pulumi.Output<int?> temporaryRestoreDays;

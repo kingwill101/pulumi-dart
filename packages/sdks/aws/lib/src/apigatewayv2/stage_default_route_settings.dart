@@ -3,13 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StageDefaultRouteSettings {
-  /// Whether data trace logging is enabled for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
-  /// Defaults to `false`. Supported only for WebSocket APIs.
+  /// Whether data trace logging is enabled for the default route. Affects the log entries pushed to Amazon CloudWatch Logs. Defaults to `false`. Supported only for WebSocket APIs.
   final pulumi.Input<bool>? dataTraceEnabled;
   /// Whether detailed metrics are enabled for the default route. Defaults to `false`.
   final pulumi.Input<bool>? detailedMetricsEnabled;
-  /// Logging level for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
-  /// Valid values: `ERROR`, `INFO`, `OFF`. Defaults to `OFF`. Supported only for WebSocket APIs. This provider will only perform drift detection of its value when present in a configuration.
+  /// Logging level for the default route. Affects the log entries pushed to Amazon CloudWatch Logs. Valid values: `ERROR`, `INFO`, `OFF`. Defaults to `OFF`. Supported only for WebSocket APIs. This provider will only perform drift detection of its value when present in a configuration.
   final pulumi.Input<String>? loggingLevel;
   /// Throttling burst limit for the default route.
   final pulumi.Input<int>? throttlingBurstLimit;
@@ -17,9 +15,9 @@ class StageDefaultRouteSettings {
   final pulumi.Input<double>? throttlingRateLimit;
 
   /// Creates a new [StageDefaultRouteSettings].
-  /// [dataTraceEnabled] Whether data trace logging is enabled for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
+  /// [dataTraceEnabled] Whether data trace logging is enabled for the default route. Affects the log entries pushed to Amazon CloudWatch Logs. Defaults to `false`. Supported only for WebSocket APIs.
   /// [detailedMetricsEnabled] Whether detailed metrics are enabled for the default route. Defaults to `false`.
-  /// [loggingLevel] Logging level for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
+  /// [loggingLevel] Logging level for the default route. Affects the log entries pushed to Amazon CloudWatch Logs. Valid values: `ERROR`, `INFO`, `OFF`. Defaults to `OFF`. Supported only for WebSocket APIs. This provider will only perform drift detection of its value when present in a configuration.
   /// [throttlingBurstLimit] Throttling burst limit for the default route.
   /// [throttlingRateLimit] Throttling rate limit for the default route.
   const StageDefaultRouteSettings({
@@ -50,4 +48,3 @@ class StageDefaultRouteSettings {
     );
   }
 }
-

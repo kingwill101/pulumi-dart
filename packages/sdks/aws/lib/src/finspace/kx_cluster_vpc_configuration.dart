@@ -6,17 +6,17 @@ class KxClusterVpcConfiguration {
   /// IP address type for cluster network configuration parameters. The following type is available: IP_V4 - IP address version 4.
   final pulumi.Input<String> ipAddressType;
   /// Unique identifier of the VPC security group applied to the VPC endpoint ENI for the cluster.
-  /// * `subnet_ids `- (Required) Identifier of the subnet that the Privatelink VPC endpoint uses to connect to the cluster.
   final pulumi.Input<List<String>> securityGroupIds;
+  /// Identifier of the subnet that the Privatelink VPC endpoint uses to connect to the cluster.
   final pulumi.Input<List<String>> subnetIds;
-  /// Identifier of the VPC endpoint
+  /// Identifier of the VPC endpoint.
   final pulumi.Input<String> vpcId;
 
   /// Creates a new [KxClusterVpcConfiguration].
   /// [ipAddressType] IP address type for cluster network configuration parameters. The following type is available: IP_V4 - IP address version 4.
   /// [securityGroupIds] Unique identifier of the VPC security group applied to the VPC endpoint ENI for the cluster.
-  /// [subnetIds] Required.
-  /// [vpcId] Identifier of the VPC endpoint
+  /// [subnetIds] Identifier of the subnet that the Privatelink VPC endpoint uses to connect to the cluster.
+  /// [vpcId] Identifier of the VPC endpoint.
   const KxClusterVpcConfiguration({
     required this.ipAddressType,
     required this.securityGroupIds,
@@ -42,4 +42,3 @@ class KxClusterVpcConfiguration {
     );
   }
 }
-

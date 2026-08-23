@@ -6,17 +6,17 @@ import 'v2models_intent_qna_intent_configuration_data_source_configuration_kendr
 import 'v2models_intent_qna_intent_configuration_data_source_configuration_opensearch_configuration.dart';
 
 class V2modelsIntentQnaIntentConfigurationDataSourceConfiguration {
-  /// Configuration block for Amazon Bedrock Knowledge Base as a data source. See `bedrock_knowledge_store_configuration`.
+  /// Configuration block for Amazon Bedrock Knowledge Base as a data source. See `bedrockKnowledgeStoreConfiguration`.
   final pulumi.Input<V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfiguration>? bedrockKnowledgeStoreConfiguration;
-  /// Configuration block for Amazon Kendra as a data source. See `kendra_configuration`.
+  /// Configuration block for Amazon Kendra as a data source. See `kendraConfiguration`.
   final pulumi.Input<V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration>? kendraConfiguration;
-  /// Configuration block for OpenSearch as a data source. See `opensearch_configuration`.
+  /// Configuration block for OpenSearch as a data source. See `opensearchConfiguration`.
   final pulumi.Input<V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfiguration>? opensearchConfiguration;
 
   /// Creates a new [V2modelsIntentQnaIntentConfigurationDataSourceConfiguration].
-  /// [bedrockKnowledgeStoreConfiguration] Configuration block for Amazon Bedrock Knowledge Base as a data source. See `bedrock_knowledge_store_configuration`.
-  /// [kendraConfiguration] Configuration block for Amazon Kendra as a data source. See `kendra_configuration`.
-  /// [opensearchConfiguration] Configuration block for OpenSearch as a data source. See `opensearch_configuration`.
+  /// [bedrockKnowledgeStoreConfiguration] Configuration block for Amazon Bedrock Knowledge Base as a data source. See `bedrockKnowledgeStoreConfiguration`.
+  /// [kendraConfiguration] Configuration block for Amazon Kendra as a data source. See `kendraConfiguration`.
+  /// [opensearchConfiguration] Configuration block for OpenSearch as a data source. See `opensearchConfiguration`.
   const V2modelsIntentQnaIntentConfigurationDataSourceConfiguration({
     this.bedrockKnowledgeStoreConfiguration,
     this.kendraConfiguration,
@@ -39,4 +39,3 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfiguration {
     );
   }
 }
-

@@ -66,6 +66,20 @@ import 'space_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_space" "example" {
+///   domain_id  = test.id
+///   space_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +88,8 @@ import 'space_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sagemaker.Space;
 /// import com.pulumi.aws.sagemaker.SpaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -119,7 +133,7 @@ class Space extends pulumi.CustomResource {
   late final pulumi.Output<String> domainId;
   /// The ID of the space's profile in the Amazon Elastic File System volume.
   late final pulumi.Output<String> homeEfsFileSystemUid;
-  /// A collection of ownership settings. Required if `space_sharing_settings` is set. See `ownership_settings` Block below.
+  /// A collection of ownership settings. Required if `spaceSharingSettings` is set. See `ownershipSettings` Block below.
   late final pulumi.Output<SpaceOwnershipSettings?> ownershipSettings;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -127,13 +141,13 @@ class Space extends pulumi.CustomResource {
   late final pulumi.Output<String?> spaceDisplayName;
   /// The name of the space.
   late final pulumi.Output<String> spaceName;
-  /// A collection of space settings. See `space_settings` Block below.
+  /// A collection of space settings. See `spaceSettings` Block below.
   late final pulumi.Output<SpaceSpaceSettings?> spaceSettings;
-  /// A collection of space sharing settings. Required if `ownership_settings` is set. See `space_sharing_settings` Block below.
+  /// A collection of space sharing settings. Required if `ownershipSettings` is set. See `spaceSharingSettings` Block below.
   late final pulumi.Output<SpaceSpaceSharingSettings?> spaceSharingSettings;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Returns the URL of the space. If the space is created with Amazon Web Services IAM Identity Center (Successor to Amazon Web Services Single Sign-On) authentication, users can navigate to the URL after appending the respective redirect parameter for the application type to be federated through Amazon Web Services IAM Identity Center.
   late final pulumi.Output<String> url;

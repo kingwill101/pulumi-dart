@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketObjectv2OverrideProviderDefaultTags {
-  /// Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to override the provider-level `defaultTags`. Must be an empty map to suppress all provider-level `defaultTags`.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [BucketObjectv2OverrideProviderDefaultTags].
-  /// [tags] Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to override the provider-level `defaultTags`. Must be an empty map to suppress all provider-level `defaultTags`.
   const BucketObjectv2OverrideProviderDefaultTags({
     this.tags,
   });
@@ -24,4 +24,3 @@ class BucketObjectv2OverrideProviderDefaultTags {
     );
   }
 }
-

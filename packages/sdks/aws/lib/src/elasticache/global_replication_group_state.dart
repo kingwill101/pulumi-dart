@@ -25,7 +25,7 @@ class GlobalReplicationGroupState {
   /// When creating, by default the Global Replication Group inherits the engine of the primary replication group.
   /// If an engine is specified, the Global Replication Group and all member replication groups will be upgraded to this engine.
   /// Valid values are `redis` or `valkey`.
-  /// Default is `redis` if `engine_version` is specified.
+  /// Default is `redis` if `engineVersion` is specified.
   final pulumi.Input<String>? engine;
   /// Engine version to use for the Global Replication Group.
   /// When creating, by default the Global Replication Group inherits the version of the primary replication group.
@@ -34,7 +34,7 @@ class GlobalReplicationGroupState {
   /// When the version is 7 or higher, the major and minor version should be set, e.g., `7.2`.
   /// When the version is 6, the major and minor version can be set, e.g., `6.2`,
   /// or the minor version can be unspecified which will use the latest version at creation time, e.g., `6.x`.
-  /// The actual engine version used is returned in the attribute `engine_version_actual`, see Attribute Reference below.
+  /// The actual engine version used is returned in the attribute `engineVersionActual`, see Attribute Reference below.
   final pulumi.Input<String>? engineVersion;
   /// The full version number of the cache engine running on the members of this global replication group.
   final pulumi.Input<String>? engineVersionActual;
@@ -45,7 +45,7 @@ class GlobalReplicationGroupState {
   final pulumi.Input<String>? globalReplicationGroupDescription;
   /// The full ID of the global replication group.
   final pulumi.Input<String>? globalReplicationGroupId;
-  /// The suffix name of a Global Datastore. If `global_replication_group_id_suffix` is changed, creates a new resource.
+  /// The suffix name of a Global Datastore. If `globalReplicationGroupIdSuffix` is changed, creates a new resource.
   final pulumi.Input<String>? globalReplicationGroupIdSuffix;
   /// The number of node groups (shards) on the global replication group.
   final pulumi.Input<int>? numNodeGroups;
@@ -54,7 +54,7 @@ class GlobalReplicationGroupState {
   /// Specifying without a major version upgrade will fail.
   /// Note that ElastiCache creates a copy of this parameter group for each member replication group.
   final pulumi.Input<String>? parameterGroupName;
-  /// The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. If `primary_replication_group_id` is changed, creates a new resource.
+  /// The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. If `primaryReplicationGroupId` is changed, creates a new resource.
   final pulumi.Input<String>? primaryReplicationGroupId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -74,10 +74,10 @@ class GlobalReplicationGroupState {
   /// [globalNodeGroups] Set of node groups (shards) on the global replication group.
   /// [globalReplicationGroupDescription] A user-created description for the global replication group.
   /// [globalReplicationGroupId] The full ID of the global replication group.
-  /// [globalReplicationGroupIdSuffix] The suffix name of a Global Datastore. If `global_replication_group_id_suffix` is changed, creates a new resource.
+  /// [globalReplicationGroupIdSuffix] The suffix name of a Global Datastore. If `globalReplicationGroupIdSuffix` is changed, creates a new resource.
   /// [numNodeGroups] The number of node groups (shards) on the global replication group.
   /// [parameterGroupName] An ElastiCache Parameter Group to use for the Global Replication Group.
-  /// [primaryReplicationGroupId] The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. If `primary_replication_group_id` is changed, creates a new resource.
+  /// [primaryReplicationGroupId] The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. If `primaryReplicationGroupId` is changed, creates a new resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [transitEncryptionEnabled] A flag that indicates whether the encryption in transit is enabled.
   const GlobalReplicationGroupState({
@@ -147,4 +147,3 @@ class GlobalReplicationGroupState {
     );
   }
 }
-

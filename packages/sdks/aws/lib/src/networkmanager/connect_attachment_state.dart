@@ -31,9 +31,9 @@ class ConnectAttachmentState {
   final pulumi.Input<String>? segmentName;
   /// State of the attachment.
   final pulumi.Input<String>? state;
-  /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// ID of the attachment between the two connections.
   ///
@@ -54,8 +54,8 @@ class ConnectAttachmentState {
   /// [routingPolicyLabel] The routing policy label to apply to the Connect attachment for traffic routing decisions. Maximum length of 256 characters. Changing this value will force recreation of the resource.
   /// [segmentName] Name of the segment attachment.
   /// [state] State of the attachment.
-  /// [tags] Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [transportAttachmentId] ID of the attachment between the two connections.
   const ConnectAttachmentState({
     this.arn,
@@ -118,4 +118,3 @@ class ConnectAttachmentState {
     );
   }
 }
-

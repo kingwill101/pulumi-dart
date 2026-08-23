@@ -221,7 +221,7 @@ import 'user_group_state.dart';
 /// 		}
 /// 		_, err = cognito.NewUserGroup(ctx, "main", &cognito.UserGroupArgs{
 /// 			Name:        pulumi.String("user-group"),
-/// 			UserPoolId:  main.ID(),
+/// 			UserPoolId:  main.ID().ToIDOutput().ToStringOutput(),
 /// 			Description: pulumi.String("Managed by Pulumi"),
 /// 			Precedence:  pulumi.Int(42),
 /// 			RoleArn:     groupRoleRole.Arn,
@@ -231,6 +231,51 @@ import 'user_group_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "groupRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Federated"
+///       identifiers = ["cognito-identity.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRoleWithWebIdentity"]
+///     conditions {
+///       test     = "StringEquals"
+///       variable = "cognito-identity.amazonaws.com:aud"
+///       values   = ["us-east-1:12345678-dead-beef-cafe-123456790ab"]
+///     }
+///     conditions {
+///       test     = "ForAnyValue:StringLike"
+///       variable = "cognito-identity.amazonaws.com:amr"
+///       values   = ["authenticated"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpool" "main" {
+///   name = "identity pool"
+/// }
+/// resource "aws_iam_role" "group_role" {
+///   name               = "user-group-role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.groupRole.json
+/// }
+/// resource "aws_cognito_usergroup" "main" {
+///   name         = "user-group"
+///   user_pool_id = aws_cognito_userpool.main.id
+///   description  = "Managed by Pulumi"
+///   precedence   = 42
+///   role_arn     = aws_iam_role.group_role.arn
 /// }
 /// ```
 /// ```java
@@ -243,12 +288,15 @@ import 'user_group_state.dart';
 /// import com.pulumi.aws.cognito.UserPoolArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.cognito.UserGroup;
 /// import com.pulumi.aws.cognito.UserGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -350,7 +398,7 @@ import 'user_group_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Cognito User Groups using the `user_pool_id`/`name` attributes concatenated. For example:
+/// Using `pulumi import`, import Cognito User Groups using the `userPoolId`/`name` attributes concatenated. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cognito/userGroup:UserGroup group us-east-1_vG78M4goG/user-group

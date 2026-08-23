@@ -5,20 +5,20 @@ import 'virtual_node_spec_backend_defaults_client_policy_tls_certificate.dart';
 import 'virtual_node_spec_backend_defaults_client_policy_tls_validation.dart';
 
 class VirtualNodeSpecBackendDefaultsClientPolicyTls {
-  /// Listener's TLS certificate.
+  /// Listener's TLS certificate. See `spec.listener.tls.certificate` Block for details.
   final pulumi.Input<VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificate>? certificate;
   /// Whether the policy is enforced. Default is `true`.
   final pulumi.Input<bool>? enforce;
   /// One or more ports that the policy is enforced for.
   final pulumi.Input<List<int>>? ports;
-  /// Listener's Transport Layer Security (TLS) validation context.
+  /// Listener's Transport Layer Security (TLS) validation context. See `spec.listener.tls.validation` Block for details.
   final pulumi.Input<VirtualNodeSpecBackendDefaultsClientPolicyTlsValidation> validation;
 
   /// Creates a new [VirtualNodeSpecBackendDefaultsClientPolicyTls].
-  /// [certificate] Listener's TLS certificate.
+  /// [certificate] Listener's TLS certificate. See `spec.listener.tls.certificate` Block for details.
   /// [enforce] Whether the policy is enforced. Default is `true`.
   /// [ports] One or more ports that the policy is enforced for.
-  /// [validation] Listener's Transport Layer Security (TLS) validation context.
+  /// [validation] Listener's Transport Layer Security (TLS) validation context. See `spec.listener.tls.validation` Block for details.
   const VirtualNodeSpecBackendDefaultsClientPolicyTls({
     this.certificate,
     this.enforce,
@@ -44,4 +44,3 @@ class VirtualNodeSpecBackendDefaultsClientPolicyTls {
     );
   }
 }
-

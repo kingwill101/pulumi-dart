@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_catalog_table_storage_descriptor_schema_reference_schema_id.dart';
 
 class GetCatalogTableStorageDescriptorSchemaReference {
-  /// Configuration block that contains schema identity fields. See `schema_id` below.
+  /// Configuration block that contains schema identity fields. See `schemaId` below.
   final pulumi.Input<List<GetCatalogTableStorageDescriptorSchemaReferenceSchemaId>> schemaIds;
   /// Unique ID assigned to a version of the schema.
   final pulumi.Input<String> schemaVersionId;
@@ -12,7 +12,7 @@ class GetCatalogTableStorageDescriptorSchemaReference {
   final pulumi.Input<int> schemaVersionNumber;
 
   /// Creates a new [GetCatalogTableStorageDescriptorSchemaReference].
-  /// [schemaIds] Configuration block that contains schema identity fields. See `schema_id` below.
+  /// [schemaIds] Configuration block that contains schema identity fields. See `schemaId` below.
   /// [schemaVersionId] Unique ID assigned to a version of the schema.
   /// [schemaVersionNumber] Version number of the schema.
   const GetCatalogTableStorageDescriptorSchemaReference({
@@ -37,4 +37,3 @@ class GetCatalogTableStorageDescriptorSchemaReference {
     );
   }
 }
-

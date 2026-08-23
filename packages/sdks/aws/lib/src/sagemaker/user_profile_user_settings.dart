@@ -48,7 +48,7 @@ class UserProfileUserSettings {
   final pulumi.Input<UserProfileUserSettingsSpaceStorageSettings>? spaceStorageSettings;
   /// Whether the user can access Studio. If this value is set to `DISABLED`, the user cannot access Studio, even if that is the default experience for the domain. Valid values are `ENABLED` and `DISABLED`.
   final pulumi.Input<String>? studioWebPortal;
-  /// The Studio Web Portal settings. See `studio_web_portal_settings` Block below.
+  /// The Studio Web Portal settings. See `studioWebPortalSettings` Block below.
   final pulumi.Input<UserProfileUserSettingsStudioWebPortalSettings>? studioWebPortalSettings;
   /// The TensorBoard app settings. See TensorBoard App Settings below.
   final pulumi.Input<UserProfileUserSettingsTensorBoardAppSettings>? tensorBoardAppSettings;
@@ -70,7 +70,7 @@ class UserProfileUserSettings {
   /// [sharingSettings] The sharing settings. See Sharing Settings below.
   /// [spaceStorageSettings] The storage settings for a private space. See Space Storage Settings below.
   /// [studioWebPortal] Whether the user can access Studio. If this value is set to `DISABLED`, the user cannot access Studio, even if that is the default experience for the domain. Valid values are `ENABLED` and `DISABLED`.
-  /// [studioWebPortalSettings] The Studio Web Portal settings. See `studio_web_portal_settings` Block below.
+  /// [studioWebPortalSettings] The Studio Web Portal settings. See `studioWebPortalSettings` Block below.
   /// [tensorBoardAppSettings] The TensorBoard app settings. See TensorBoard App Settings below.
   const UserProfileUserSettings({
     this.autoMountHomeEfs,
@@ -139,4 +139,3 @@ class UserProfileUserSettings {
     );
   }
 }
-

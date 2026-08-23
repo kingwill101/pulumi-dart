@@ -4,18 +4,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering FindingAggregator resources.
 class FindingAggregatorState {
+  /// Amazon Resource Name (ARN) of the Security Hub finding aggregator.
+  final pulumi.Input<String>? arn;
   /// Indicates whether to aggregate findings from all of the available Regions or from a specified list. The options are `ALL_REGIONS`, `ALL_REGIONS_EXCEPT_SPECIFIED`, `SPECIFIED_REGIONS` or `NO_REGIONS`. When `ALL_REGIONS` or `ALL_REGIONS_EXCEPT_SPECIFIED` are used, Security Hub will automatically aggregate findings from new Regions as Security Hub supports them and you opt into them.
   final pulumi.Input<String>? linkingMode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// List of regions to include or exclude (required if `linking_mode` is set to `ALL_REGIONS_EXCEPT_SPECIFIED` or `SPECIFIED_REGIONS`)
+  /// List of regions to include or exclude (required if `linkingMode` is set to `ALL_REGIONS_EXCEPT_SPECIFIED` or `SPECIFIED_REGIONS`)
   final pulumi.Input<List<String>>? specifiedRegions;
 
   /// Creates a new [FindingAggregatorState].
+  /// [arn] Amazon Resource Name (ARN) of the Security Hub finding aggregator.
   /// [linkingMode] Indicates whether to aggregate findings from all of the available Regions or from a specified list. The options are `ALL_REGIONS`, `ALL_REGIONS_EXCEPT_SPECIFIED`, `SPECIFIED_REGIONS` or `NO_REGIONS`. When `ALL_REGIONS` or `ALL_REGIONS_EXCEPT_SPECIFIED` are used, Security Hub will automatically aggregate findings from new Regions as Security Hub supports them and you opt into them.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [specifiedRegions] List of regions to include or exclude (required if `linking_mode` is set to `ALL_REGIONS_EXCEPT_SPECIFIED` or `SPECIFIED_REGIONS`)
+  /// [specifiedRegions] List of regions to include or exclude (required if `linkingMode` is set to `ALL_REGIONS_EXCEPT_SPECIFIED` or `SPECIFIED_REGIONS`)
   const FindingAggregatorState({
+    this.arn,
     this.linkingMode,
     this.region,
     this.specifiedRegions,
@@ -23,6 +27,7 @@ class FindingAggregatorState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'arn': ?arn,
       'linkingMode': ?linkingMode,
       'region': ?region,
       'specifiedRegions': ?specifiedRegions,
@@ -31,10 +36,10 @@ class FindingAggregatorState {
 
   factory FindingAggregatorState.fromMap(Map<String, dynamic> map) {
     return FindingAggregatorState(
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       linkingMode: (() { final guardedValue = map['linkingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       specifiedRegions: (() { final guardedValue = map['specifiedRegions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
-

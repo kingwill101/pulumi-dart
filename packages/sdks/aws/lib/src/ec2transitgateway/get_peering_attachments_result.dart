@@ -8,14 +8,14 @@ class GetPeeringAttachmentsResult {
   final List<GetPeeringAttachmentsFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// A list of all attachments ids matching the filter. You can retrieve more information about the attachment using the [aws.ec2transitgateway.PeeringAttachment][2] data source, searching by identifier.
+  /// A list of all attachments ids matching the filter. You can retrieve more information about the attachment using the aws.ec2transitgateway.PeeringAttachment data source, searching by identifier.
   final List<String> ids;
   final String region;
 
   /// Creates a new [GetPeeringAttachmentsResult].
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ids] A list of all attachments ids matching the filter. You can retrieve more information about the attachment using the [aws.ec2transitgateway.PeeringAttachment][2] data source, searching by identifier.
+  /// [ids] A list of all attachments ids matching the filter. You can retrieve more information about the attachment using the aws.ec2transitgateway.PeeringAttachment data source, searching by identifier.
   /// [region] Required.
   const GetPeeringAttachmentsResult({
     this.filters,
@@ -42,4 +42,3 @@ class GetPeeringAttachmentsResult {
     );
   }
 }
-

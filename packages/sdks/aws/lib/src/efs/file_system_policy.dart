@@ -34,7 +34,7 @@ import 'file_system_policy_state.dart';
 /// });
 /// const policyFileSystemPolicy = new aws.efs.FileSystemPolicy("policy", {
 ///     fileSystemId: fs.id,
-///     policy: policy.apply(policy => policy.json),
+///     policy: policy.json,
 /// });
 /// ```
 /// ```python
@@ -179,16 +179,49 @@ import 'file_system_policy_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = efs.NewFileSystemPolicy(ctx, "policy", &efs.FileSystemPolicyArgs{
-/// 			FileSystemId: fs.ID(),
-/// 			Policy: pulumi.String(policy.ApplyT(func(policy iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &policy.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			FileSystemId: fs.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy:       policy.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "policy" {
+///   statements {
+///     sid    = "ExampleStatement01"
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["*"]
+///     }
+///     actions   = ["elasticfilesystem:ClientMount", "elasticfilesystem:ClientWrite"]
+///     resources = [aws_efs_filesystem.fs.arn]
+///     conditions {
+///       test     = "Bool"
+///       variable = "aws:SecureTransport"
+///       values   = ["true"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_efs_filesystem" "fs" {
+///   creation_token = "my-product"
+/// }
+/// resource "aws_efs_filesystempolicy" "policy" {
+///   file_system_id = aws_efs_filesystem.fs.id
+///   policy         = data.aws_iam_getpolicydocument.policy.json
 /// }
 /// ```
 /// ```java
@@ -201,10 +234,13 @@ import 'file_system_policy_state.dart';
 /// import com.pulumi.aws.efs.FileSystemArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.efs.FileSystemPolicy;
 /// import com.pulumi.aws.efs.FileSystemPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -293,7 +329,7 @@ import 'file_system_policy_state.dart';
 /// $ pulumi import aws:efs/fileSystemPolicy:FileSystemPolicy foo fs-6fa144c6
 /// ```
 class FileSystemPolicy extends pulumi.CustomResource {
-  /// A flag to indicate whether to bypass the `aws.efs.FileSystemPolicy` lockout safety check. The policy lockout safety check determines whether the policy in the request will prevent the principal making the request will be locked out from making future `PutFileSystemPolicy` requests on the file system. Set `bypass_policy_lockout_safety_check` to `true` only when you intend to prevent the principal that is making the request from making a subsequent `PutFileSystemPolicy` request on the file system. The default value is `false`.
+  /// A flag to indicate whether to bypass the `aws.efs.FileSystemPolicy` lockout safety check. The policy lockout safety check determines whether the policy in the request will prevent the principal making the request will be locked out from making future `PutFileSystemPolicy` requests on the file system. Set `bypassPolicyLockoutSafetyCheck` to `true` only when you intend to prevent the principal that is making the request from making a subsequent `PutFileSystemPolicy` request on the file system. The default value is `false`.
   late final pulumi.Output<bool?> bypassPolicyLockoutSafetyCheck;
   /// The ID of the EFS file system.
   late final pulumi.Output<String> fileSystemId;

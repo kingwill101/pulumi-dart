@@ -7,7 +7,7 @@ class SubscriberNotificationConfiguration {
   /// The configurations for HTTPS subscriber notification.
   final pulumi.Input<SubscriberNotificationConfigurationHttpsNotificationConfiguration>? httpsNotificationConfiguration;
   /// The configurations for SQS subscriber notification.
-  /// There are no parameters within `sqs_notification_configuration`.
+  /// There are no parameters within `sqsNotificationConfiguration`.
   final pulumi.Input<Map<String, dynamic>>? sqsNotificationConfiguration;
 
   /// Creates a new [SubscriberNotificationConfiguration].
@@ -32,4 +32,3 @@ class SubscriberNotificationConfiguration {
     );
   }
 }
-

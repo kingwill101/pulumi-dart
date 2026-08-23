@@ -17,25 +17,27 @@ class LaunchTemplateNetworkInterface {
   final pulumi.Input<String>? description;
   /// The integer index of the network interface attachment.
   final pulumi.Input<int>? deviceIndex;
+  /// The number of ENA queues to be created with the instance. Requires an instance type and operating system that support [ENA queue configuration](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ena-queues.html).
+  final pulumi.Input<int>? enaQueueCount;
   /// Configuration for Elastic Network Adapter (ENA) Express settings. Applies to network interfaces that use the [ena Express](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking-ena-express.html) feature. See details below.
   final pulumi.Input<LaunchTemplateNetworkInterfaceEnaSrdSpecification>? enaSrdSpecification;
   /// The type of network interface. To create an Elastic Fabric Adapter (EFA), specify `efa`.
   final pulumi.Input<String>? interfaceType;
-  /// The number of secondary private IPv4 addresses to assign to a network interface. Conflicts with `ipv4_addresses`
+  /// The number of secondary private IPv4 addresses to assign to a network interface. Conflicts with `ipv4Addresses`
   final pulumi.Input<int>? ipv4AddressCount;
-  /// One or more private IPv4 addresses to associate. Conflicts with `ipv4_address_count`
+  /// One or more private IPv4 addresses to associate. Conflicts with `ipv4AddressCount`
   final pulumi.Input<List<String>>? ipv4Addresses;
-  /// The number of IPv4 prefixes to be automatically assigned to the network interface. Conflicts with `ipv4_prefixes`
+  /// The number of IPv4 prefixes to be automatically assigned to the network interface. Conflicts with `ipv4Prefixes`
   final pulumi.Input<int>? ipv4PrefixCount;
-  /// One or more IPv4 prefixes to be assigned to the network interface. Conflicts with `ipv4_prefix_count`
+  /// One or more IPv4 prefixes to be assigned to the network interface. Conflicts with `ipv4PrefixCount`
   final pulumi.Input<List<String>>? ipv4Prefixes;
-  /// The number of IPv6 addresses to assign to a network interface. Conflicts with `ipv6_addresses`
+  /// The number of IPv6 addresses to assign to a network interface. Conflicts with `ipv6Addresses`
   final pulumi.Input<int>? ipv6AddressCount;
-  /// One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. Conflicts with `ipv6_address_count`
+  /// One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. Conflicts with `ipv6AddressCount`
   final pulumi.Input<List<String>>? ipv6Addresses;
-  /// The number of IPv6 prefixes to be automatically assigned to the network interface. Conflicts with `ipv6_prefixes`
+  /// The number of IPv6 prefixes to be automatically assigned to the network interface. Conflicts with `ipv6Prefixes`
   final pulumi.Input<int>? ipv6PrefixCount;
-  /// One or more IPv6 prefixes to be assigned to the network interface. Conflicts with `ipv6_prefix_count`
+  /// One or more IPv6 prefixes to be assigned to the network interface. Conflicts with `ipv6PrefixCount`
   final pulumi.Input<List<String>>? ipv6Prefixes;
   /// The index of the network card. Some instance types support multiple network cards. The primary network interface must be assigned to network card index 0. The default is network card index 0.
   final pulumi.Input<int>? networkCardIndex;
@@ -57,16 +59,17 @@ class LaunchTemplateNetworkInterface {
   /// [deleteOnTermination] Whether the network interface should be destroyed on instance termination.
   /// [description] Description of the network interface.
   /// [deviceIndex] The integer index of the network interface attachment.
+  /// [enaQueueCount] The number of ENA queues to be created with the instance. Requires an instance type and operating system that support [ENA queue configuration](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ena-queues.html).
   /// [enaSrdSpecification] Configuration for Elastic Network Adapter (ENA) Express settings. Applies to network interfaces that use the [ena Express](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking-ena-express.html) feature. See details below.
   /// [interfaceType] The type of network interface. To create an Elastic Fabric Adapter (EFA), specify `efa`.
-  /// [ipv4AddressCount] The number of secondary private IPv4 addresses to assign to a network interface. Conflicts with `ipv4_addresses`
-  /// [ipv4Addresses] One or more private IPv4 addresses to associate. Conflicts with `ipv4_address_count`
-  /// [ipv4PrefixCount] The number of IPv4 prefixes to be automatically assigned to the network interface. Conflicts with `ipv4_prefixes`
-  /// [ipv4Prefixes] One or more IPv4 prefixes to be assigned to the network interface. Conflicts with `ipv4_prefix_count`
-  /// [ipv6AddressCount] The number of IPv6 addresses to assign to a network interface. Conflicts with `ipv6_addresses`
-  /// [ipv6Addresses] One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. Conflicts with `ipv6_address_count`
-  /// [ipv6PrefixCount] The number of IPv6 prefixes to be automatically assigned to the network interface. Conflicts with `ipv6_prefixes`
-  /// [ipv6Prefixes] One or more IPv6 prefixes to be assigned to the network interface. Conflicts with `ipv6_prefix_count`
+  /// [ipv4AddressCount] The number of secondary private IPv4 addresses to assign to a network interface. Conflicts with `ipv4Addresses`
+  /// [ipv4Addresses] One or more private IPv4 addresses to associate. Conflicts with `ipv4AddressCount`
+  /// [ipv4PrefixCount] The number of IPv4 prefixes to be automatically assigned to the network interface. Conflicts with `ipv4Prefixes`
+  /// [ipv4Prefixes] One or more IPv4 prefixes to be assigned to the network interface. Conflicts with `ipv4PrefixCount`
+  /// [ipv6AddressCount] The number of IPv6 addresses to assign to a network interface. Conflicts with `ipv6Addresses`
+  /// [ipv6Addresses] One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. Conflicts with `ipv6AddressCount`
+  /// [ipv6PrefixCount] The number of IPv6 prefixes to be automatically assigned to the network interface. Conflicts with `ipv6Prefixes`
+  /// [ipv6Prefixes] One or more IPv6 prefixes to be assigned to the network interface. Conflicts with `ipv6PrefixCount`
   /// [networkCardIndex] The index of the network card. Some instance types support multiple network cards. The primary network interface must be assigned to network card index 0. The default is network card index 0.
   /// [networkInterfaceId] The ID of the network interface to attach.
   /// [primaryIpv6] Whether the first IPv6 GUA will be made the primary IPv6 address.
@@ -80,6 +83,7 @@ class LaunchTemplateNetworkInterface {
     this.deleteOnTermination,
     this.description,
     this.deviceIndex,
+    this.enaQueueCount,
     this.enaSrdSpecification,
     this.interfaceType,
     this.ipv4AddressCount,
@@ -106,6 +110,7 @@ class LaunchTemplateNetworkInterface {
       'deleteOnTermination': ?deleteOnTermination,
       'description': ?description,
       'deviceIndex': ?deviceIndex,
+      'enaQueueCount': ?enaQueueCount,
       'enaSrdSpecification': ?pulumi.Input.mapOptionalInputValue<LaunchTemplateNetworkInterfaceEnaSrdSpecification, Map<String, dynamic>>(enaSrdSpecification, (value) => value.toMap()),
       'interfaceType': ?interfaceType,
       'ipv4AddressCount': ?ipv4AddressCount,
@@ -133,6 +138,7 @@ class LaunchTemplateNetworkInterface {
       deleteOnTermination: (() { final guardedValue = map['deleteOnTermination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deviceIndex: (() { final guardedValue = map['deviceIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      enaQueueCount: (() { final guardedValue = map['enaQueueCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       enaSrdSpecification: (() { final guardedValue = map['enaSrdSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LaunchTemplateNetworkInterfaceEnaSrdSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       interfaceType: (() { final guardedValue = map['interfaceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipv4AddressCount: (() { final guardedValue = map['ipv4AddressCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
@@ -152,4 +158,3 @@ class LaunchTemplateNetworkInterface {
     );
   }
 }
-

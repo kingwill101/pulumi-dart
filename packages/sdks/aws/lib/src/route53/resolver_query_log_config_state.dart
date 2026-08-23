@@ -19,9 +19,9 @@ class ResolverQueryLogConfigState {
   /// Sharing is configured through AWS Resource Access Manager (AWS RAM).
   /// Values are `NOT_SHARED`, `SHARED_BY_ME` or `SHARED_WITH_ME`
   final pulumi.Input<String>? shareStatus;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [ResolverQueryLogConfigState].
@@ -31,8 +31,8 @@ class ResolverQueryLogConfigState {
   /// [ownerId] The AWS account ID of the account that created the query logging configuration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [shareStatus] An indication of whether the query logging configuration is shared with other AWS accounts, or was shared with the current account by another AWS account.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const ResolverQueryLogConfigState({
     this.arn,
     this.destinationArn,
@@ -70,4 +70,3 @@ class ResolverQueryLogConfigState {
     );
   }
 }
-

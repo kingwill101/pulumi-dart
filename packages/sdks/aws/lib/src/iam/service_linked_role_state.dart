@@ -18,9 +18,9 @@ class ServiceLinkedRoleState {
   final pulumi.Input<String>? name;
   /// The path of the role.
   final pulumi.Input<String>? path;
-  /// Key-value mapping of tags for the IAM role. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of tags for the IAM role. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The stable and unique string identifying the role.
   final pulumi.Input<String>? uniqueId;
@@ -33,8 +33,8 @@ class ServiceLinkedRoleState {
   /// [description] The description of the role.
   /// [name] The name of the role.
   /// [path] The path of the role.
-  /// [tags] Key-value mapping of tags for the IAM role. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value mapping of tags for the IAM role. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [uniqueId] The stable and unique string identifying the role.
   const ServiceLinkedRoleState({
     this.arn,
@@ -79,4 +79,3 @@ class ServiceLinkedRoleState {
     );
   }
 }
-

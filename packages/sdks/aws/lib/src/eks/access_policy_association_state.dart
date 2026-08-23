@@ -5,7 +5,7 @@ import 'access_policy_association_access_scope.dart';
 
 /// Input properties used for looking up and filtering AccessPolicyAssociation resources.
 class AccessPolicyAssociationState {
-  /// The configuration block to determine the scope of the access. See `access_scope` Block below.
+  /// The configuration block to determine the scope of the access. See `accessScope` Block below.
   final pulumi.Input<AccessPolicyAssociationAccessScope>? accessScope;
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the policy was associated.
   final pulumi.Input<String>? associatedAt;
@@ -21,7 +21,7 @@ class AccessPolicyAssociationState {
   final pulumi.Input<String>? region;
 
   /// Creates a new [AccessPolicyAssociationState].
-  /// [accessScope] The configuration block to determine the scope of the access. See `access_scope` Block below.
+  /// [accessScope] The configuration block to determine the scope of the access. See `accessScope` Block below.
   /// [associatedAt] Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the policy was associated.
   /// [clusterName] Name of the EKS Cluster.
   /// [modifiedAt] Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the policy was updated.
@@ -62,4 +62,3 @@ class AccessPolicyAssociationState {
     );
   }
 }
-

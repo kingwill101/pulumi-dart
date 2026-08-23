@@ -72,6 +72,22 @@ import 'profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_customerprofiles_domain" "example" {
+///   domain_name = "example"
+/// }
+/// resource "aws_customerprofiles_profile" "example" {
+///   domain_name = aws_customerprofiles_domain.example.domain_name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +98,8 @@ import 'profile_state.dart';
 /// import com.pulumi.aws.customerprofiles.DomainArgs;
 /// import com.pulumi.aws.customerprofiles.Profile;
 /// import com.pulumi.aws.customerprofiles.ProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

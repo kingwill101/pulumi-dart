@@ -118,6 +118,33 @@ import 'state_machine_tracing_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # ...
+/// resource "aws_sfn_statemachine" "sfn_state_machine" {
+///   name       = "my-state-machine"
+///   role_arn   = iamForSfn.arn
+///   definition ="{
+///   \"Comment\": \"A Hello World example of the Amazon States Language using an AWS Lambda Function\",
+///   \"StartAt\": \"HelloWorld\",
+///   \"States\": {
+///     \"HelloWorld\": {
+///       \"Type\": \"Task\",
+///       \"Resource\": \"${lambda.arn}\",
+///       \"End\": true
+///     }
+///   }
+/// }
+/// "
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +153,8 @@ import 'state_machine_tracing_configuration.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sfn.StateMachine;
 /// import com.pulumi.aws.sfn.StateMachineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -298,6 +325,34 @@ import 'state_machine_tracing_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # ...
+/// resource "aws_sfn_statemachine" "sfn_state_machine" {
+///   name       = "my-state-machine"
+///   role_arn   = iamForSfn.arn
+///   type       = "EXPRESS"
+///   definition ="{
+///   \"Comment\": \"A Hello World example of the Amazon States Language using an AWS Lambda Function\",
+///   \"StartAt\": \"HelloWorld\",
+///   \"States\": {
+///     \"HelloWorld\": {
+///       \"Type\": \"Task\",
+///       \"Resource\": \"${lambda.arn}\",
+///       \"End\": true
+///     }
+///   }
+/// }
+/// "
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -306,8 +361,8 @@ import 'state_machine_tracing_configuration.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sfn.StateMachine;
 /// import com.pulumi.aws.sfn.StateMachineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -484,6 +539,35 @@ import 'state_machine_tracing_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # ...
+/// resource "aws_sfn_statemachine" "sfn_state_machine" {
+///   name       = "my-state-machine"
+///   role_arn   = iamForSfn.arn
+///   publish    = true
+///   type       = "EXPRESS"
+///   definition ="{
+///   \"Comment\": \"A Hello World example of the Amazon States Language using an AWS Lambda Function\",
+///   \"StartAt\": \"HelloWorld\",
+///   \"States\": {
+///     \"HelloWorld\": {
+///       \"Type\": \"Task\",
+///       \"Resource\": \"${lambda.arn}\",
+///       \"End\": true
+///     }
+///   }
+/// }
+/// "
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -492,8 +576,8 @@ import 'state_machine_tracing_configuration.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sfn.StateMachine;
 /// import com.pulumi.aws.sfn.StateMachineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -687,6 +771,38 @@ import 'state_machine_tracing_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # ...
+/// resource "aws_sfn_statemachine" "sfn_state_machine" {
+///   name       = "my-state-machine"
+///   role_arn   = iamForSfn.arn
+///   definition ="{
+///   \"Comment\": \"A Hello World example of the Amazon States Language using an AWS Lambda Function\",
+///   \"StartAt\": \"HelloWorld\",
+///   \"States\": {
+///     \"HelloWorld\": {
+///       \"Type\": \"Task\",
+///       \"Resource\": \"${lambda.arn}\",
+///       \"End\": true
+///     }
+///   }
+/// }
+/// "
+///   logging_configuration = {
+///     log_destination        ="${logGroupForSfn.arn}:*"
+///     include_execution_data = true
+///     level                  = "ERROR"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -696,8 +812,8 @@ import 'state_machine_tracing_configuration.dart';
 /// import com.pulumi.aws.sfn.StateMachine;
 /// import com.pulumi.aws.sfn.StateMachineArgs;
 /// import com.pulumi.aws.sfn.inputs.StateMachineLoggingConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -896,6 +1012,38 @@ import 'state_machine_tracing_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # ...
+/// resource "aws_sfn_statemachine" "sfn_state_machine" {
+///   name       = "my-state-machine"
+///   role_arn   = iamForSfn.arn
+///   definition ="{
+///   \"Comment\": \"A Hello World example of the Amazon States Language using an AWS Lambda Function\",
+///   \"StartAt\": \"HelloWorld\",
+///   \"States\": {
+///     \"HelloWorld\": {
+///       \"Type\": \"Task\",
+///       \"Resource\": \"${lambda.arn}\",
+///       \"End\": true
+///     }
+///   }
+/// }
+/// "
+///   encryption_configuration = {
+///     kms_key_id                        = kmsKeyForSfn.arn
+///     type                              = "CUSTOMER_MANAGED_KMS_KEY"
+///     kms_data_key_reuse_period_seconds = 900
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -905,8 +1053,8 @@ import 'state_machine_tracing_configuration.dart';
 /// import com.pulumi.aws.sfn.StateMachine;
 /// import com.pulumi.aws.sfn.StateMachineArgs;
 /// import com.pulumi.aws.sfn.inputs.StateMachineEncryptionConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -997,7 +1145,7 @@ class StateMachine extends pulumi.CustomResource {
   late final pulumi.Output<String> description;
   /// Defines what encryption configuration is used to encrypt data in the State Machine. For more information see [TBD] in the AWS Step Functions User Guide.
   late final pulumi.Output<StateMachineEncryptionConfiguration> encryptionConfiguration;
-  /// Defines what execution history events are logged and where they are logged. The `logging_configuration` parameter is valid when `type` is set to `STANDARD` or `EXPRESS`. Defaults to `OFF`. For more information see [Logging Express Workflows](https://docs.aws.amazon.com/step-functions/latest/dg/cw-logs.html), [Log Levels](https://docs.aws.amazon.com/step-functions/latest/dg/cloudwatch-log-level.html) and [Logging Configuration](https://docs.aws.amazon.com/step-functions/latest/apireference/API_CreateStateMachine.html) in the AWS Step Functions User Guide.
+  /// Defines what execution history events are logged and where they are logged. The `loggingConfiguration` parameter is valid when `type` is set to `STANDARD` or `EXPRESS`. Defaults to `OFF`. For more information see [Logging Express Workflows](https://docs.aws.amazon.com/step-functions/latest/dg/cw-logs.html), [Log Levels](https://docs.aws.amazon.com/step-functions/latest/dg/cloudwatch-log-level.html) and [Logging Configuration](https://docs.aws.amazon.com/step-functions/latest/apireference/API_CreateStateMachine.html) in the AWS Step Functions User Guide.
   late final pulumi.Output<StateMachineLoggingConfiguration> loggingConfiguration;
   /// The name of the state machine. The name should only contain `0`-`9`, `A`-`Z`, `a`-`z`, `-` and `_`. If omitted, the provider will assign a random, unique name.
   late final pulumi.Output<String> name;
@@ -1014,9 +1162,9 @@ class StateMachine extends pulumi.CustomResource {
   late final pulumi.Output<String> stateMachineVersionArn;
   /// The current status of the state machine. Either `ACTIVE` or `DELETING`.
   late final pulumi.Output<String> status;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Selects whether AWS X-Ray tracing is enabled.
   late final pulumi.Output<StateMachineTracingConfiguration> tracingConfiguration;

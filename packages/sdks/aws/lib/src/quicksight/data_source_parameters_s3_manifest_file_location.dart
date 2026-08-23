@@ -30,4 +30,3 @@ class DataSourceParametersS3ManifestFileLocation {
     );
   }
 }
-

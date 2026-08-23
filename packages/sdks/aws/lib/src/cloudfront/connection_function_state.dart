@@ -9,7 +9,7 @@ class ConnectionFunctionState {
   final pulumi.Input<String>? connectionFunctionArn;
   /// Code for the connection function. Maximum length is 40960 characters.
   final pulumi.Input<String>? connectionFunctionCode;
-  /// Configuration information for the connection function. See `connection_function_config` below.
+  /// Configuration information for the connection function. See `connectionFunctionConfig` below.
   final pulumi.Input<ConnectionFunctionConnectionFunctionConfig>? connectionFunctionConfig;
   /// ETag of the connection function.
   final pulumi.Input<String>? etag;
@@ -23,22 +23,22 @@ class ConnectionFunctionState {
   final pulumi.Input<bool>? publish;
   /// Status of the connection function.
   final pulumi.Input<String>? status;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [ConnectionFunctionState].
   /// [connectionFunctionArn] ARN of the connection function.
   /// [connectionFunctionCode] Code for the connection function. Maximum length is 40960 characters.
-  /// [connectionFunctionConfig] Configuration information for the connection function. See `connection_function_config` below.
+  /// [connectionFunctionConfig] Configuration information for the connection function. See `connectionFunctionConfig` below.
   /// [etag] ETag of the connection function.
   /// [liveStageEtag] ETag of the function's LIVE stage. Will be empty if the function has not been published.
   /// [name] Name for the connection function. Must be 1-64 characters and can contain letters, numbers, hyphens, and underscores. Changing this forces a new resource to be created.
   /// [publish] Whether to publish the function to the `LIVE` stage after creation or update. Defaults to `false`.
   /// [status] Status of the connection function.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const ConnectionFunctionState({
     this.connectionFunctionArn,
     this.connectionFunctionCode,
@@ -82,4 +82,3 @@ class ConnectionFunctionState {
     );
   }
 }
-

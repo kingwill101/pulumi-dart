@@ -77,6 +77,23 @@ import 'user_access_logging_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kinesis_stream" "example" {
+///   name        = "amazon-workspaces-web-example-stream"
+///   shard_count = 1
+/// }
+/// resource "aws_workspacesweb_useraccessloggingsettings" "example" {
+///   kinesis_stream_arn = aws_kinesis_stream.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +104,8 @@ import 'user_access_logging_settings_state.dart';
 /// import com.pulumi.aws.kinesis.StreamArgs;
 /// import com.pulumi.aws.workspacesweb.UserAccessLoggingSettings;
 /// import com.pulumi.aws.workspacesweb.UserAccessLoggingSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -218,6 +235,27 @@ import 'user_access_logging_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kinesis_stream" "example" {
+///   name        = "example-stream"
+///   shard_count = 1
+/// }
+/// resource "aws_workspacesweb_useraccessloggingsettings" "example" {
+///   kinesis_stream_arn = aws_kinesis_stream.example.arn
+///   tags = {
+///     "Name"        = "example-user-access-logging-settings"
+///     "Environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +266,8 @@ import 'user_access_logging_settings_state.dart';
 /// import com.pulumi.aws.kinesis.StreamArgs;
 /// import com.pulumi.aws.workspacesweb.UserAccessLoggingSettings;
 /// import com.pulumi.aws.workspacesweb.UserAccessLoggingSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -277,7 +315,7 @@ import 'user_access_logging_settings_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import WorkSpaces Web User Access Logging Settings using the `user_access_logging_settings_arn`. For example:
+/// Using `pulumi import`, import WorkSpaces Web User Access Logging Settings using the `userAccessLoggingSettingsArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:workspacesweb/userAccessLoggingSettings:UserAccessLoggingSettings example arn:aws:workspaces-web:us-west-2:123456789012:userAccessLoggingSettings/abcdef12345
@@ -291,9 +329,9 @@ class UserAccessLoggingSettings extends pulumi.CustomResource {
   late final pulumi.Output<String> kinesisStreamArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ARN of the user access logging settings resource.
   late final pulumi.Output<String> userAccessLoggingSettingsArn;

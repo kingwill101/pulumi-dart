@@ -30,4 +30,3 @@ class InvocationLoggingConfigurationLoggingConfigS3Config {
     );
   }
 }
-

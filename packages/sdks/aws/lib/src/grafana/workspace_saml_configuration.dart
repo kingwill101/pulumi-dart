@@ -141,7 +141,7 @@ import 'workspace_saml_configuration_state.dart';
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
 /// 					"Sid":    "",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "grafana.amazonaws.com",
 /// 					},
 /// 				},
@@ -174,13 +174,48 @@ import 'workspace_saml_configuration_state.dart';
 /// 				pulumi.String("editor"),
 /// 			},
 /// 			IdpMetadataUrl: pulumi.String("https://my_idp_metadata.url"),
-/// 			WorkspaceId:    exampleWorkspace.ID(),
+/// 			WorkspaceId:    exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_grafana_workspacesamlconfiguration" "example" {
+///   editor_role_values = ["editor"]
+///   idp_metadata_url   = "https://my_idp_metadata.url"
+///   workspace_id       = aws_grafana_workspace.example.id
+/// }
+/// resource "aws_grafana_workspace" "example" {
+///   account_access_type      = "CURRENT_ACCOUNT"
+///   authentication_providers = ["SAML"]
+///   permission_type          = "SERVICE_MANAGED"
+///   role_arn                 = aws_iam_role.assume.arn
+/// }
+/// resource "aws_iam_role" "assume" {
+///   name = "grafana-assume"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Sid"    = ""
+///       "Principal" = {
+///         "Service" = "grafana.amazonaws.com"
+///       }
+///     }]
+///   })
 /// }
 /// ```
 /// ```java
@@ -196,8 +231,8 @@ import 'workspace_saml_configuration_state.dart';
 /// import com.pulumi.aws.grafana.WorkspaceSamlConfiguration;
 /// import com.pulumi.aws.grafana.WorkspaceSamlConfigurationArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -293,9 +328,9 @@ class WorkspaceSamlConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> emailAssertion;
   /// The groups assertion.
   late final pulumi.Output<String?> groupsAssertion;
-  /// The IDP Metadata URL. Note that either `idp_metadata_url` or `idp_metadata_xml` (but not both) must be specified.
+  /// The IDP Metadata URL. Note that either `idpMetadataUrl` or `idpMetadataXml` (but not both) must be specified.
   late final pulumi.Output<String?> idpMetadataUrl;
-  /// The IDP Metadata XML. Note that either `idp_metadata_url` or `idp_metadata_xml` (but not both) must be specified.
+  /// The IDP Metadata XML. Note that either `idpMetadataUrl` or `idpMetadataXml` (but not both) must be specified.
   late final pulumi.Output<String?> idpMetadataXml;
   /// The login assertion.
   late final pulumi.Output<String> loginAssertion;

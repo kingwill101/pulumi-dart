@@ -79,6 +79,24 @@ import 'identity_provider_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_eks_identityproviderconfig" "example" {
+///   cluster_name = exampleAwsEksCluster.name
+///   oidc = {
+///     client_id                     = "your client_id"
+///     identity_provider_config_name = "example"
+///     issuer_url                    = "your issuer_url"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +106,8 @@ import 'identity_provider_config_state.dart';
 /// import com.pulumi.aws.eks.IdentityProviderConfig;
 /// import com.pulumi.aws.eks.IdentityProviderConfigArgs;
 /// import com.pulumi.aws.eks.inputs.IdentityProviderConfigOidcArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -128,25 +146,39 @@ import 'identity_provider_config_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EKS Identity Provider Configurations using the `cluster_name` and `identity_provider_config_name` separated by a colon (`:`). For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `clusterName` (String) Name of the EKS Cluster.
+/// * `identityProviderConfigName` (String) Name of the identity provider config.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Identity Provider Configurations using the `clusterName` and `identityProviderConfigName` separated by a colon (`:`). For example:
 ///
 /// ```sh
-/// $ pulumi import aws:eks/identityProviderConfig:IdentityProviderConfig my_identity_provider_config my_cluster:my_identity_provider_config
+/// $ pulumi import aws:eks/identityProviderConfig:IdentityProviderConfig example example-cluster:example-config
 /// ```
 class IdentityProviderConfig extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the EKS Identity Provider Configuration.
   late final pulumi.Output<String> arn;
   /// Name of the EKS Cluster.
   late final pulumi.Output<String> clusterName;
+  late final pulumi.Output<String> identityProviderConfigName;
   /// Nested attribute containing [OpenID Connect](https://openid.net/connect/) identity provider information for the cluster. Detailed below.
   late final pulumi.Output<IdentityProviderConfigOidc> oidc;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Status of the EKS Identity Provider Configuration.
   late final pulumi.Output<String> status;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [IdentityProviderConfig].
@@ -165,6 +197,7 @@ class IdentityProviderConfig extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     clusterName = registerOutput<String>('clusterName');
+    identityProviderConfigName = registerOutput<String>('identityProviderConfigName');
     oidc = registerOutput<IdentityProviderConfigOidc>('oidc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityProviderConfigOidc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
@@ -197,6 +230,7 @@ class IdentityProviderConfig extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     clusterName = registerOutput<String>('clusterName');
+    identityProviderConfigName = registerOutput<String>('identityProviderConfigName');
     oidc = registerOutput<IdentityProviderConfigOidc>('oidc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityProviderConfigOidc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');

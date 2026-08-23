@@ -6,17 +6,17 @@ import 'cluster_logging_info_broker_logs_firehose.dart';
 import 'cluster_logging_info_broker_logs_s3.dart';
 
 class ClusterLoggingInfoBrokerLogs {
-  /// Configuration block for Cloudwatch Logs settings. See logging_info broker_logs cloudwatch_logs Argument Reference below.
+  /// Configuration block for Cloudwatch Logs settings. See loggingInfo broker_logs cloudwatchLogs Argument Reference below.
   final pulumi.Input<ClusterLoggingInfoBrokerLogsCloudwatchLogs>? cloudwatchLogs;
-  /// Configuration block for Kinesis Data Firehose settings. See logging_info broker_logs firehose Argument Reference below.
+  /// Configuration block for Kinesis Data Firehose settings. See loggingInfo broker_logs firehose Argument Reference below.
   final pulumi.Input<ClusterLoggingInfoBrokerLogsFirehose>? firehose;
-  /// Configuration block for S3 settings. See logging_info broker_logs s3 Argument Reference below.
+  /// Configuration block for S3 settings. See loggingInfo broker_logs s3 Argument Reference below.
   final pulumi.Input<ClusterLoggingInfoBrokerLogsS3>? s3;
 
   /// Creates a new [ClusterLoggingInfoBrokerLogs].
-  /// [cloudwatchLogs] Configuration block for Cloudwatch Logs settings. See logging_info broker_logs cloudwatch_logs Argument Reference below.
-  /// [firehose] Configuration block for Kinesis Data Firehose settings. See logging_info broker_logs firehose Argument Reference below.
-  /// [s3] Configuration block for S3 settings. See logging_info broker_logs s3 Argument Reference below.
+  /// [cloudwatchLogs] Configuration block for Cloudwatch Logs settings. See loggingInfo broker_logs cloudwatchLogs Argument Reference below.
+  /// [firehose] Configuration block for Kinesis Data Firehose settings. See loggingInfo broker_logs firehose Argument Reference below.
+  /// [s3] Configuration block for S3 settings. See loggingInfo broker_logs s3 Argument Reference below.
   const ClusterLoggingInfoBrokerLogs({
     this.cloudwatchLogs,
     this.firehose,
@@ -39,4 +39,3 @@ class ClusterLoggingInfoBrokerLogs {
     );
   }
 }
-

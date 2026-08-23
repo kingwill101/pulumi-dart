@@ -10,8 +10,9 @@ class ResourceSetState {
   final pulumi.Input<String>? arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Details about the resource set to be created or updated. See `resource_set` Attribute Reference below.
+  /// Details about the resource set to be created or updated. See `resourceSet` Block below.
   final pulumi.Input<List<ResourceSetResourceSet>>? resourceSets;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<ResourceSetTimeouts>? timeouts;
@@ -19,8 +20,8 @@ class ResourceSetState {
   /// Creates a new [ResourceSetState].
   /// [arn] ARN of the Resource Set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceSets] Details about the resource set to be created or updated. See `resource_set` Attribute Reference below.
-  /// [tags] Optional.
+  /// [resourceSets] Details about the resource set to be created or updated. See `resourceSet` Block below.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [timeouts] Optional.
   const ResourceSetState({
@@ -54,4 +55,3 @@ class ResourceSetState {
     );
   }
 }
-

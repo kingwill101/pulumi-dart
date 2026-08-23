@@ -4,12 +4,12 @@
 /// Result data returned by getCredentials.
 class GetCredentialsResult {
   final String? dbName;
-  /// Temporary password that authorizes the user name returned by `db_user` to log on to the database `db_name`.
+  /// Temporary password that authorizes the user name returned by `dbUser` to log on to the database `dbName`.
   final String dbPassword;
-  /// A database user name that is authorized to log on to the database `db_name` using the password `db_password` . If the specified `db_user` exists in the database, the new user name has the same database privileges as the user named in `db_user` . By default, the user is added to PUBLIC. the user doesn't exist in the database.
+  /// A database user name that is authorized to log on to the database `dbName` using the password `dbPassword` . If the specified `dbUser` exists in the database, the new user name has the same database privileges as the user named in `dbUser` . By default, the user is added to PUBLIC. the user doesn't exist in the database.
   final String dbUser;
   final int? durationSeconds;
-  /// Date and time the password in `db_password` expires.
+  /// Date and time the password in `dbPassword` expires.
   final String expiration;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -18,10 +18,10 @@ class GetCredentialsResult {
 
   /// Creates a new [GetCredentialsResult].
   /// [dbName] Optional.
-  /// [dbPassword] Temporary password that authorizes the user name returned by `db_user` to log on to the database `db_name`.
-  /// [dbUser] A database user name that is authorized to log on to the database `db_name` using the password `db_password` . If the specified `db_user` exists in the database, the new user name has the same database privileges as the user named in `db_user` . By default, the user is added to PUBLIC. the user doesn't exist in the database.
+  /// [dbPassword] Temporary password that authorizes the user name returned by `dbUser` to log on to the database `dbName`.
+  /// [dbUser] A database user name that is authorized to log on to the database `dbName` using the password `dbPassword` . If the specified `dbUser` exists in the database, the new user name has the same database privileges as the user named in `dbUser` . By default, the user is added to PUBLIC. the user doesn't exist in the database.
   /// [durationSeconds] Optional.
-  /// [expiration] Date and time the password in `db_password` expires.
+  /// [expiration] Date and time the password in `dbPassword` expires.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [workgroupName] Required.
@@ -62,4 +62,3 @@ class GetCredentialsResult {
     );
   }
 }
-

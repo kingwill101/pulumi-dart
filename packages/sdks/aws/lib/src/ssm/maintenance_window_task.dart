@@ -156,6 +156,37 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_maintenancewindowtask" "example" {
+///   max_concurrency = 2
+///   max_errors      = 1
+///   priority        = 1
+///   task_arn        = "AWS-RestartEC2Instance"
+///   task_type       = "AUTOMATION"
+///   window_id       = exampleAwsSsmMaintenanceWindow.id
+///   targets {
+///     key    = "InstanceIds"
+///     values = [exampleAwsInstance.id]
+///   }
+///   task_invocation_parameters = {
+///     automation_parameters = {
+///       document_version = "$LATEST"
+///       parameters = [{
+///         "name"   = "InstanceId"
+///         "values" = [exampleAwsInstance.id]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -167,8 +198,9 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTargetArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersAutomationParametersArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -371,6 +403,37 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_maintenancewindowtask" "example" {
+///   max_concurrency = 2
+///   max_errors      = 1
+///   priority        = 1
+///   task_arn        = exampleAwsLambdaFunction.arn
+///   task_type       = "LAMBDA"
+///   window_id       = exampleAwsSsmMaintenanceWindow.id
+///   targets {
+///     key    = "InstanceIds"
+///     values = [exampleAwsInstance.id]
+///   }
+///   task_invocation_parameters = {
+///     lambda_parameters = {
+///       client_context = base64encode("{\"key1\":\"value1\"}")
+///       payload        = "{\"key1\":\"value1\"}"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -384,8 +447,8 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersLambdaParametersArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64encodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -635,6 +698,45 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_maintenancewindowtask" "example" {
+///   max_concurrency = 2
+///   max_errors      = 1
+///   priority        = 1
+///   task_arn        = "AWS-RunShellScript"
+///   task_type       = "RUN_COMMAND"
+///   window_id       = exampleAwsSsmMaintenanceWindow.id
+///   targets {
+///     key    = "InstanceIds"
+///     values = [exampleAwsInstance.id]
+///   }
+///   task_invocation_parameters = {
+///     run_command_parameters = {
+///       output_s3_bucket     = exampleAwsS3Bucket.id
+///       output_s3_key_prefix = "output"
+///       service_role_arn     = exampleAwsIamRole.arn
+///       timeout_seconds      = 600
+///       notification_config = {
+///         notification_arn    = exampleAwsSnsTopic.arn
+///         notification_events = ["All"]
+///         notification_type   = "Command"
+///       }
+///       parameters = [{
+///         "name"   = "commands"
+///         "values" = ["date"]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -647,8 +749,9 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -852,6 +955,34 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_maintenancewindowtask" "example" {
+///   max_concurrency = 2
+///   max_errors      = 1
+///   priority        = 1
+///   task_arn        = exampleAwsSfnActivity.id
+///   task_type       = "STEP_FUNCTIONS"
+///   window_id       = exampleAwsSsmMaintenanceWindow.id
+///   targets {
+///     key    = "InstanceIds"
+///     values = [exampleAwsInstance.id]
+///   }
+///   task_invocation_parameters = {
+///     step_functions_parameters = {
+///       input = "{\"key1\":\"value1\"}"
+///       name  = "example"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -863,8 +994,8 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTargetArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -926,16 +1057,16 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///
 /// #### Required
 ///
-/// * `window_id` - (String) ID of the maintenance window.
+/// * `windowId` - (String) ID of the maintenance window.
 /// * `id` - (String) ID of the maintenance window task.
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import AWS Maintenance Window Task using the `window_id` and `window_task_id` separated by `/`. For example:
+/// Using `pulumi import`, import AWS Maintenance Window Task using the `windowId` and `windowTaskId` separated by `/`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ssm/maintenanceWindowTask:MaintenanceWindowTask example <window_id>/<window_task_id>

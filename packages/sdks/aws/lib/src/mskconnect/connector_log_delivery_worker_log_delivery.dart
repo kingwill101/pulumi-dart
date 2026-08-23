@@ -6,7 +6,7 @@ import 'connector_log_delivery_worker_log_delivery_firehose.dart';
 import 'connector_log_delivery_worker_log_delivery_s3.dart';
 
 class ConnectorLogDeliveryWorkerLogDelivery {
-  /// Details about delivering logs to Amazon CloudWatch Logs. See `cloudwatch_logs` Block for details.
+  /// Details about delivering logs to Amazon CloudWatch Logs. See `cloudwatchLogs` Block for details.
   final pulumi.Input<ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs>? cloudwatchLogs;
   /// Details about delivering logs to Amazon Kinesis Data Firehose. See `firehose` Block for details.
   final pulumi.Input<ConnectorLogDeliveryWorkerLogDeliveryFirehose>? firehose;
@@ -14,7 +14,7 @@ class ConnectorLogDeliveryWorkerLogDelivery {
   final pulumi.Input<ConnectorLogDeliveryWorkerLogDeliveryS3>? s3;
 
   /// Creates a new [ConnectorLogDeliveryWorkerLogDelivery].
-  /// [cloudwatchLogs] Details about delivering logs to Amazon CloudWatch Logs. See `cloudwatch_logs` Block for details.
+  /// [cloudwatchLogs] Details about delivering logs to Amazon CloudWatch Logs. See `cloudwatchLogs` Block for details.
   /// [firehose] Details about delivering logs to Amazon Kinesis Data Firehose. See `firehose` Block for details.
   /// [s3] Details about delivering logs to Amazon S3. See `s3` Block for deetails.
   const ConnectorLogDeliveryWorkerLogDelivery({
@@ -39,4 +39,3 @@ class ConnectorLogDeliveryWorkerLogDelivery {
     );
   }
 }
-

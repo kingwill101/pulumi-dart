@@ -24,7 +24,7 @@ class VpcIpamResourceDiscoveryAssociationState {
   final pulumi.Input<String>? state;
   /// A map of tags to add to the IPAM resource discovery association resource.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [VpcIpamResourceDiscoveryAssociationState].
@@ -38,7 +38,7 @@ class VpcIpamResourceDiscoveryAssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] The lifecycle state of the association when you associate or disassociate a resource discovery.
   /// [tags] A map of tags to add to the IPAM resource discovery association resource.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const VpcIpamResourceDiscoveryAssociationState({
     this.arn,
     this.ipamArn,
@@ -85,4 +85,3 @@ class VpcIpamResourceDiscoveryAssociationState {
     );
   }
 }
-

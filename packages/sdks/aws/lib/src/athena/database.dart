@@ -68,13 +68,30 @@ import 'database_state.dart';
 /// 		}
 /// 		_, err = athena.NewDatabase(ctx, "example", &athena.DatabaseArgs{
 /// 			Name:   pulumi.String("database_name"),
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// resource "aws_athena_database" "example" {
+///   name   = "database_name"
+///   bucket = aws_s3_bucket.example.id
 /// }
 /// ```
 /// ```java
@@ -87,8 +104,8 @@ import 'database_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.athena.Database;
 /// import com.pulumi.aws.athena.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -135,7 +152,7 @@ import 'database_state.dart';
 /// $ pulumi import aws:athena/database:Database example example
 /// ```
 ///
-/// Certain resource arguments, like `encryption_configuration` and `bucket`, do not have an API method for reading the information after creation. If the argument is set in the Pulumi program on an imported resource, Pulumi will always show a difference. To workaround this behavior, either omit the argument from the Pulumi program or use `ignore_changes` to hide the difference. For example:
+/// Certain resource arguments, like `encryptionConfiguration` and `bucket`, do not have an API method for reading the information after creation. If the argument is set in the Pulumi program on an imported resource, Pulumi will always show a difference. To workaround this behavior, either omit the argument from the Pulumi program or use `ignoreChanges` to hide the difference. For example:
 ///
 ///
 /// ```typescript
@@ -192,6 +209,20 @@ import 'database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_athena_database" "example" {
+///   name   = "database_name"
+///   bucket = exampleAwsS3Bucket.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +231,8 @@ import 'database_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.athena.Database;
 /// import com.pulumi.aws.athena.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

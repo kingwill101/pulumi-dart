@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecretRotationRotationRules {
-  /// Specifies the number of days between automatic scheduled rotations of the secret. Either `automatically_after_days` or `schedule_expression` must be specified.
+  /// Number of days between automatic scheduled rotations of the secret. Either `automaticallyAfterDays` or `scheduleExpression` must be specified.
   final pulumi.Input<int>? automaticallyAfterDays;
   /// The length of the rotation window in hours. For example, `3h` for a three hour window.
   final pulumi.Input<String>? duration;
-  /// A `cron()` or `rate()` expression that defines the schedule for rotating your secret. Either `automatically_after_days` or `schedule_expression` must be specified.
+  /// `cron()` or `rate()` expression that defines the schedule for rotating your secret. Either `automaticallyAfterDays` or `scheduleExpression` must be specified.
   final pulumi.Input<String>? scheduleExpression;
 
   /// Creates a new [SecretRotationRotationRules].
-  /// [automaticallyAfterDays] Specifies the number of days between automatic scheduled rotations of the secret. Either `automatically_after_days` or `schedule_expression` must be specified.
+  /// [automaticallyAfterDays] Number of days between automatic scheduled rotations of the secret. Either `automaticallyAfterDays` or `scheduleExpression` must be specified.
   /// [duration] The length of the rotation window in hours. For example, `3h` for a three hour window.
-  /// [scheduleExpression] A `cron()` or `rate()` expression that defines the schedule for rotating your secret. Either `automatically_after_days` or `schedule_expression` must be specified.
+  /// [scheduleExpression] `cron()` or `rate()` expression that defines the schedule for rotating your secret. Either `automaticallyAfterDays` or `scheduleExpression` must be specified.
   const SecretRotationRotationRules({
     this.automaticallyAfterDays,
     this.duration,
@@ -36,4 +36,3 @@ class SecretRotationRotationRules {
     );
   }
 }
-

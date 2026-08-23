@@ -115,14 +115,39 @@ import 'vpc_endpoint_connection_accepter_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcEndpointConnectionAccepter(ctx, "example", &ec2.VpcEndpointConnectionAccepterArgs{
-/// 			VpcEndpointServiceId: example.ID(),
-/// 			VpcEndpointId:        exampleVpcEndpoint.ID(),
+/// 			VpcEndpointServiceId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcEndpointId:        exampleVpcEndpoint.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpcendpointservice" "example" {
+///   acceptance_required        = false
+///   network_load_balancer_arns = [exampleAwsLb.arn]
+/// }
+/// resource "aws_ec2_vpcendpoint" "example" {
+///   vpc_id              = testAlternate.id
+///   service_name        = testAwsVpcEndpointService.serviceName
+///   vpc_endpoint_type   = "Interface"
+///   private_dns_enabled = false
+///   security_group_ids  = [test.id]
+/// }
+/// resource "aws_ec2_vpcendpointconnectionaccepter" "example" {
+///   vpc_endpoint_service_id = aws_ec2_vpcendpointservice.example.id
+///   vpc_endpoint_id         = aws_ec2_vpcendpoint.example.id
 /// }
 /// ```
 /// ```java
@@ -137,8 +162,8 @@ import 'vpc_endpoint_connection_accepter_state.dart';
 /// import com.pulumi.aws.ec2.VpcEndpointArgs;
 /// import com.pulumi.aws.ec2.VpcEndpointConnectionAccepter;
 /// import com.pulumi.aws.ec2.VpcEndpointConnectionAccepterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

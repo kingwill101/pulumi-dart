@@ -118,6 +118,27 @@ import 'hosted_configuration_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appconfig_hostedconfigurationversion" "example" {
+///   application_id           = exampleAwsAppconfigApplication.id
+///   configuration_profile_id = exampleAwsAppconfigConfigurationProfile.configurationProfileId
+///   description              = "Example Freeform Hosted Configuration Version"
+///   content_type             = "application/json"
+///   content = jsonencode({
+///     "foo"            = "bar"
+///     "fruit"          = ["apple", "pear", "orange"]
+///     "isThingEnabled" = true
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +148,8 @@ import 'hosted_configuration_version_state.dart';
 /// import com.pulumi.aws.appconfig.HostedConfigurationVersion;
 /// import com.pulumi.aws.appconfig.HostedConfigurationVersionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -364,23 +385,23 @@ import 'hosted_configuration_version_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 			"flags": map[string]interface{}{
+/// 			"flags": map[string]map[string]interface{}{
 /// 				"foo": map[string]interface{}{
 /// 					"name": "foo",
-/// 					"_deprecation": map[string]interface{}{
+/// 					"_deprecation": map[string]string{
 /// 						"status": "planned",
 /// 					},
 /// 				},
 /// 				"bar": map[string]interface{}{
 /// 					"name": "bar",
-/// 					"attributes": map[string]interface{}{
-/// 						"someAttribute": map[string]interface{}{
+/// 					"attributes": map[string]map[string]map[string]interface{}{
+/// 						"someAttribute": map[string]map[string]interface{}{
 /// 							"constraints": map[string]interface{}{
 /// 								"type":     "string",
 /// 								"required": true,
 /// 							},
 /// 						},
-/// 						"someOtherAttribute": map[string]interface{}{
+/// 						"someOtherAttribute": map[string]map[string]interface{}{
 /// 							"constraints": map[string]interface{}{
 /// 								"type":     "number",
 /// 								"required": true,
@@ -390,7 +411,7 @@ import 'hosted_configuration_version_state.dart';
 /// 				},
 /// 			},
 /// 			"values": map[string]interface{}{
-/// 				"foo": map[string]interface{}{
+/// 				"foo": map[string]string{
 /// 					"enabled": "true",
 /// 				},
 /// 				"bar": map[string]interface{}{
@@ -419,6 +440,60 @@ import 'hosted_configuration_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appconfig_hostedconfigurationversion" "example" {
+///   application_id           = exampleAwsAppconfigApplication.id
+///   configuration_profile_id = exampleAwsAppconfigConfigurationProfile.configurationProfileId
+///   description              = "Example Feature Flag Configuration Version"
+///   content_type             = "application/json"
+///   content = jsonencode({
+///     "flags" = {
+///       "foo" = {
+///         "name" = "foo"
+///         "_deprecation" = {
+///           "status" = "planned"
+///         }
+///       }
+///       "bar" = {
+///         "name" = "bar"
+///         "attributes" = {
+///           "someAttribute" = {
+///             "constraints" = {
+///               "type"     = "string"
+///               "required" = true
+///             }
+///           }
+///           "someOtherAttribute" = {
+///             "constraints" = {
+///               "type"     = "number"
+///               "required" = true
+///             }
+///           }
+///         }
+///       }
+///     }
+///     "values" = {
+///       "foo" = {
+///         "enabled" = "true"
+///       }
+///       "bar" = {
+///         "enabled"            = "true"
+///         "someAttribute"      = "Hello World"
+///         "someOtherAttribute" = 123
+///       }
+///     }
+///     "version" = "1"
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -428,8 +503,8 @@ import 'hosted_configuration_version_state.dart';
 /// import com.pulumi.aws.appconfig.HostedConfigurationVersion;
 /// import com.pulumi.aws.appconfig.HostedConfigurationVersionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -662,6 +737,49 @@ import 'hosted_configuration_version_state.dart';
 ///     });
 ///
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "std_concat" "invoke_0" {
+///   input = [[for userId in appcfgEnableLoggingUserIds : {
+///     "enabled" = true
+///     "name"    ="usersWithLoggingEnabled_${userId}"
+///     "rule"    ="(or (eq $userId "${userId}"))"
+///     } ], [{
+///     "enabled" = false
+///     "name"    = "Default"
+///   }]]
+/// }
+///
+/// resource "aws_appconfig_hostedconfigurationversion" "example" {
+///   application_id           = exampleAwsAppconfigApplication.id
+///   configuration_profile_id = exampleAwsAppconfigConfigurationProfile.configurationProfileId
+///   description              = "Example Multi-variant Feature Flag Configuration Version"
+///   content_type             = "application/json"
+///   content = jsonencode({
+///     "flags" = {
+///       "loggingenabled" = {
+///         "name" = "loggingEnabled"
+///       }
+///     }
+///     "values" = {
+///       "loggingenabled" = {
+///         "_variants" = data.std_concat.invoke_0.result
+///       }
+///     }
+///     "version" = "1"
+///   })
+/// }
 /// ```
 ///
 ///

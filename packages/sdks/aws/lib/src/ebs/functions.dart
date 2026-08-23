@@ -83,6 +83,24 @@ import 'get_volume_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ebs_getdefaultkmskey" "current" {
+/// }
+///
+/// resource "aws_ebs_volume" "example" {
+///   availability_zone = "us-west-2a"
+///   encrypted         = true
+///   kms_key_id        = data.aws_ebs_getdefaultkmskey.current.key_arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +111,8 @@ import 'get_volume_result.dart';
 /// import com.pulumi.aws.ebs.inputs.GetDefaultKmsKeyArgs;
 /// import com.pulumi.aws.ebs.Volume;
 /// import com.pulumi.aws.ebs.VolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,13 +183,13 @@ Future<GetDefaultKmsKeyResult> getDefaultKmsKey(
 ///         VolumeSet: "TestVolumeSet",
 ///     },
 /// });
-/// const exampleGetVolume = example.then(example => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: aws.ebs.getVolume({
+/// const exampleGetVolume = example.then(example => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: aws.ebs.getVolume({
 ///     filters: [{
 ///         name: "volume-id",
 ///         values: [__value],
 ///     }],
-/// }) })));
-/// export const availabilityZoneToVolumeId = exampleGetVolume.apply(exampleGetVolume => Object.values(exampleGetVolume).reduce((__obj, s) => ({ ...__obj, [s.id]: s.availabilityZone })));
+/// }) }), {}));
+/// export const availabilityZoneToVolumeId = exampleGetVolume.apply(exampleGetVolume => Object.values(exampleGetVolume).reduce((__obj, s) => ({ ...__obj, [String(s.id)]: s.availabilityZone }), {}));
 /// ```
 /// ```python
 /// import pulumi
@@ -180,11 +198,11 @@ Future<GetDefaultKmsKeyResult> getDefaultKmsKey(
 /// example = aws.ebs.get_ebs_volumes(tags={
 ///     "VolumeSet": "TestVolumeSet",
 /// })
-/// example_get_volume = {__key: aws.ebs.get_volume(filters=[{
+/// example_get_volume = {str(__key): aws.ebs.get_volume(filters=[{
 ///     "name": "volume-id",
 ///     "values": [__value],
-/// }]) for __key, __value in example.ids}
-/// pulumi.export("availabilityZoneToVolumeId", {s.id: s.availability_zone for s in example_get_volume})
+/// }]) for __key, __value in enumerate(example.ids)}
+/// pulumi.export("availabilityZoneToVolumeId", {s.id: s.availability_zone for s in example_get_volume.values()})
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -215,6 +233,35 @@ Future<GetDefaultKmsKeyResult> getDefaultKmsKey(
 ///         })),
 ///     };
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ebs_getebsvolumes" "example" {
+///   tags = {
+///     "VolumeSet" = "TestVolumeSet"
+///   }
+/// }
+/// data "aws_ebs_getvolume" "invoke_1" {
+///   for_each = data.aws_ebs_getebsvolumes.example.ids
+///   filters {
+///     name   = "volume-id"
+///     values = [each.value]
+///   }
+/// }
+///
+/// locals {
+///   exampleGetVolume = {for __key, __value in data.aws_ebs_getebsvolumes.example.ids : __key => data.aws_ebs_getvolume.invoke_1[__key]}
+/// }
+/// output "availabilityZoneToVolumeId" {
+///   value = {for s in local.exampleGetVolume : s.id => s.availabilityZone}
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ebs_get_ebs_volumes_get_ebs_volumes_args_doc}
 /// [options] Invoke options controlling this call.
@@ -278,6 +325,18 @@ Future<GetEbsVolumesResult> getEbsVolumes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ebs_getencryptionbydefault" "current" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -286,8 +345,8 @@ Future<GetEbsVolumesResult> getEbsVolumes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ebs.EbsFunctions;
 /// import com.pulumi.aws.ebs.inputs.GetEncryptionByDefaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -443,6 +502,28 @@ Future<GetEncryptionByDefaultResult> getEncryptionByDefault(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ebs_getsnapshot" "ebsVolume" {
+///   most_recent = true
+///   owners      = ["self"]
+///   filters {
+///     name   = "volume-size"
+///     values = ["40"]
+///   }
+///   filters {
+///     name   = "tag:Name"
+///     values = ["Example"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -451,8 +532,9 @@ Future<GetEncryptionByDefaultResult> getEncryptionByDefault(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ebs.EbsFunctions;
 /// import com.pulumi.aws.ebs.inputs.GetSnapshotArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ebs.inputs.GetSnapshotFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -626,6 +708,27 @@ Future<GetSnapshotResult> getSnapshot(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ebs_getsnapshotids" "ebsVolumes" {
+///   owners = ["self"]
+///   filters {
+///     name   = "volume-size"
+///     values = ["40"]
+///   }
+///   filters {
+///     name   = "tag:Name"
+///     values = ["Example"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -634,8 +737,9 @@ Future<GetSnapshotResult> getSnapshot(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ebs.EbsFunctions;
 /// import com.pulumi.aws.ebs.inputs.GetSnapshotIdsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ebs.inputs.GetSnapshotIdsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -802,6 +906,27 @@ Future<GetSnapshotIdsResult> getSnapshotIds(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ebs_getvolume" "ebsVolume" {
+///   most_recent = true
+///   filters {
+///     name   = "volume-type"
+///     values = ["gp2"]
+///   }
+///   filters {
+///     name   = "tag:Name"
+///     values = ["Example"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -810,8 +935,9 @@ Future<GetSnapshotIdsResult> getSnapshotIds(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ebs.EbsFunctions;
 /// import com.pulumi.aws.ebs.inputs.GetVolumeArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ebs.inputs.GetVolumeFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

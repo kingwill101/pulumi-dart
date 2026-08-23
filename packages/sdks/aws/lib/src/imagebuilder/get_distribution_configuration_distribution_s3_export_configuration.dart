@@ -42,4 +42,3 @@ class GetDistributionConfigurationDistributionS3ExportConfiguration {
     );
   }
 }
-

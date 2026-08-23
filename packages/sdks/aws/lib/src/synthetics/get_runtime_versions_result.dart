@@ -8,13 +8,13 @@ class GetRuntimeVersionsResult {
   /// Name of the AWS region from which runtime versions are fetched.
   final String id;
   final String region;
-  /// List of runtime versions. See `runtime_versions` attribute reference.
+  /// List of runtime versions. See `runtimeVersions` attribute reference.
   final List<GetRuntimeVersionsRuntimeVersion> runtimeVersions;
 
   /// Creates a new [GetRuntimeVersionsResult].
   /// [id] Name of the AWS region from which runtime versions are fetched.
   /// [region] Required.
-  /// [runtimeVersions] List of runtime versions. See `runtime_versions` attribute reference.
+  /// [runtimeVersions] List of runtime versions. See `runtimeVersions` attribute reference.
   const GetRuntimeVersionsResult({
     required this.id,
     required this.region,
@@ -37,4 +37,3 @@ class GetRuntimeVersionsResult {
     );
   }
 }
-

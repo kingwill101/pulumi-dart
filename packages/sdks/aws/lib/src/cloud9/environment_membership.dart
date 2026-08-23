@@ -88,7 +88,7 @@ import 'environment_membership_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cloud9.NewEnvironmentMembership(ctx, "test", &cloud9.EnvironmentMembershipArgs{
-/// 			EnvironmentId: test.ID(),
+/// 			EnvironmentId: test.ID().ToIDOutput().ToStringOutput(),
 /// 			Permissions:   pulumi.String("read-only"),
 /// 			UserArn:       testUser.Arn,
 /// 		})
@@ -97,6 +97,28 @@ import 'environment_membership_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloud9_environmentec2" "test" {
+///   instance_type = "t2.micro"
+///   name          = "some-env"
+/// }
+/// resource "aws_iam_user" "test" {
+///   name = "some-user"
+/// }
+/// resource "aws_cloud9_environmentmembership" "test" {
+///   environment_id = aws_cloud9_environmentec2.test.id
+///   permissions    = "read-only"
+///   user_arn       = aws_iam_user.test.arn
 /// }
 /// ```
 /// ```java
@@ -111,8 +133,8 @@ import 'environment_membership_state.dart';
 /// import com.pulumi.aws.iam.UserArgs;
 /// import com.pulumi.aws.cloud9.EnvironmentMembership;
 /// import com.pulumi.aws.cloud9.EnvironmentMembershipArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

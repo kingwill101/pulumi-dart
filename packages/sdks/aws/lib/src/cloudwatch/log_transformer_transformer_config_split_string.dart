@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_transformer_transformer_config_split_string_entry.dart';
 
 class LogTransformerTransformerConfigSplitString {
-  /// Objects containing the information about the fields to split. You must include at least one entry, and ten at most. See `split_string` `entry` below for details.
+  /// Objects containing the information about the fields to split. You must include at least one entry, and ten at most. See `splitString` `entry` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfigSplitStringEntry>> entries;
 
   /// Creates a new [LogTransformerTransformerConfigSplitString].
-  /// [entries] Objects containing the information about the fields to split. You must include at least one entry, and ten at most. See `split_string` `entry` below for details.
+  /// [entries] Objects containing the information about the fields to split. You must include at least one entry, and ten at most. See `splitString` `entry` below for details.
   const LogTransformerTransformerConfigSplitString({
     required this.entries,
   });
@@ -25,4 +25,3 @@ class LogTransformerTransformerConfigSplitString {
     );
   }
 }
-

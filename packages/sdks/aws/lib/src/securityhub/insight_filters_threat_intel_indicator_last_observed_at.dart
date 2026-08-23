@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'insight_filters_threat_intel_indicator_last_observed_at_date_range.dart';
 
 class InsightFiltersThreatIntelIndicatorLastObservedAt {
-  /// A configuration block of the date range for the date filter. See date_range below for more details.
+  /// A configuration block of the date range for the date filter. See dateRange below for more details.
   final pulumi.Input<InsightFiltersThreatIntelIndicatorLastObservedAtDateRange>? dateRange;
-  /// An end date for the date filter. Required with `start` if `date_range` is not specified.
+  /// An end date for the date filter. Required with `start` if `dateRange` is not specified.
   final pulumi.Input<String>? end;
-  /// A start date for the date filter. Required with `end` if `date_range` is not specified.
+  /// A start date for the date filter. Required with `end` if `dateRange` is not specified.
   final pulumi.Input<String>? start;
 
   /// Creates a new [InsightFiltersThreatIntelIndicatorLastObservedAt].
-  /// [dateRange] A configuration block of the date range for the date filter. See date_range below for more details.
-  /// [end] An end date for the date filter. Required with `start` if `date_range` is not specified.
-  /// [start] A start date for the date filter. Required with `end` if `date_range` is not specified.
+  /// [dateRange] A configuration block of the date range for the date filter. See dateRange below for more details.
+  /// [end] An end date for the date filter. Required with `start` if `dateRange` is not specified.
+  /// [start] A start date for the date filter. Required with `end` if `dateRange` is not specified.
   const InsightFiltersThreatIntelIndicatorLastObservedAt({
     this.dateRange,
     this.end,
@@ -37,4 +37,3 @@ class InsightFiltersThreatIntelIndicatorLastObservedAt {
     );
   }
 }
-

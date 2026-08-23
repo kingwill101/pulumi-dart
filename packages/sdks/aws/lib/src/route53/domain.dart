@@ -249,6 +249,65 @@ import 'domain_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53domains_domain" "example" {
+///   domain_name = "example.com"
+///   auto_renew  = false
+///   admin_contact = {
+///     address_line1     = "101 Main Street"
+///     city              = "San Francisco"
+///     contact_type      = "COMPANY"
+///     country_code      = "US"
+///     email             = "pulumi-acctest@example.com"
+///     fax               = "+1.4155551234"
+///     first_name        = "Terraform"
+///     last_name         = "Team"
+///     organization_name = "HashiCorp"
+///     phone_number      = "+1.4155551234"
+///     state             = "CA"
+///     zip_code          = "94105"
+///   }
+///   registrant_contact = {
+///     address_line1     = "101 Main Street"
+///     city              = "San Francisco"
+///     contact_type      = "COMPANY"
+///     country_code      = "US"
+///     email             = "pulumi-acctest@example.com"
+///     fax               = "+1.4155551234"
+///     first_name        = "Terraform"
+///     last_name         = "Team"
+///     organization_name = "HashiCorp"
+///     phone_number      = "+1.4155551234"
+///     state             = "CA"
+///     zip_code          = "94105"
+///   }
+///   tech_contact = {
+///     address_line1     = "101 Main Street"
+///     city              = "San Francisco"
+///     contact_type      = "COMPANY"
+///     country_code      = "US"
+///     email             = "pulumi-acctest@example.com"
+///     fax               = "+1.4155551234"
+///     first_name        = "Terraform"
+///     last_name         = "Team"
+///     organization_name = "HashiCorp"
+///     phone_number      = "+1.4155551234"
+///     state             = "CA"
+///     zip_code          = "94105"
+///   }
+///   tags = {
+///     "Environment" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -260,8 +319,8 @@ import 'domain_timeouts.dart';
 /// import com.pulumi.aws.route53domains.inputs.DomainAdminContactArgs;
 /// import com.pulumi.aws.route53domains.inputs.DomainRegistrantContactArgs;
 /// import com.pulumi.aws.route53domains.inputs.DomainTechContactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -377,7 +436,7 @@ import 'domain_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import domains using the `domain_name`. For example:
+/// Using `pulumi import`, import domains using the `domainName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:route53domains/domain:Domain example example.com
@@ -407,7 +466,7 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<String> expirationDate;
   /// The ID of the public Route 53 hosted zone created for the domain. This hosted zone is deleted when the domain is deregistered.
   late final pulumi.Output<String> hostedZoneId;
-  /// The list of nameservers for the domain. See `name_server` Blocks for more details.
+  /// The list of nameservers for the domain. See `nameServer` Blocks for more details.
   late final pulumi.Output<List<Map<String, dynamic>>> nameServers;
   /// Details about the domain registrant. See Contact Blocks for more details.
   late final pulumi.Output<DomainRegistrantContact> registrantContact;
@@ -419,9 +478,9 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<String> registrarUrl;
   /// List of [domain name status codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
   late final pulumi.Output<List<String>> statusLists;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Details about the domain technical contact. See Contact Blocks for more details.
   late final pulumi.Output<DomainTechContact> techContact;
@@ -430,7 +489,7 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<DomainTimeouts?> timeouts;
   /// Whether the domain is locked for transfer. Default: `true`.
   ///
-  /// &gt; **NOTE:** You must specify the same privacy setting for `admin_privacy`, `registrant_privacy` and `tech_privacy`.
+  /// &gt; **NOTE:** You must specify the same privacy setting for `adminPrivacy`, `registrantPrivacy` and `techPrivacy`.
   late final pulumi.Output<bool> transferLock;
   /// The last updated date of the domain as found in the response to a WHOIS query.
   late final pulumi.Output<String> updatedDate;

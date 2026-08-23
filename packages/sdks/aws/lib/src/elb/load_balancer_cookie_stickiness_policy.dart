@@ -113,7 +113,7 @@ import 'load_balancer_cookie_stickiness_policy_state.dart';
 /// 		}
 /// 		_, err = elb.NewLoadBalancerCookieStickinessPolicy(ctx, "foo", &elb.LoadBalancerCookieStickinessPolicyArgs{
 /// 			Name:                   pulumi.String("foo-policy"),
-/// 			LoadBalancer:           lb.ID(),
+/// 			LoadBalancer:           lb.ID().ToIDOutput().ToStringOutput(),
 /// 			LbPort:                 pulumi.Int(80),
 /// 			CookieExpirationPeriod: pulumi.Int(600),
 /// 		})
@@ -122,6 +122,32 @@ import 'load_balancer_cookie_stickiness_policy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elb_loadbalancer" "lb" {
+///   name               = "test-lb"
+///   availability_zones = ["us-east-1a"]
+///   listeners {
+///     instance_port     = 8000
+///     instance_protocol = "http"
+///     lb_port           = 80
+///     lb_protocol       = "http"
+///   }
+/// }
+/// resource "aws_elb_loadbalancercookiestickinesspolicy" "foo" {
+///   name                     = "foo-policy"
+///   load_balancer            = aws_elb_loadbalancer.lb.id
+///   lb_port                  = 80
+///   cookie_expiration_period = 600
 /// }
 /// ```
 /// ```java
@@ -135,8 +161,8 @@ import 'load_balancer_cookie_stickiness_policy_state.dart';
 /// import com.pulumi.aws.elb.inputs.LoadBalancerListenerArgs;
 /// import com.pulumi.aws.elb.LoadBalancerCookieStickinessPolicy;
 /// import com.pulumi.aws.elb.LoadBalancerCookieStickinessPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

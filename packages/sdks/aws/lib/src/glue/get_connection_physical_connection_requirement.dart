@@ -3,14 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConnectionPhysicalConnectionRequirement {
+  /// Availability Zone used by the connection.
   final pulumi.Input<String> availabilityZone;
+  /// List of security group IDs used by the connection.
   final pulumi.Input<List<String>> securityGroupIdLists;
+  /// Subnet ID used by the connection.
   final pulumi.Input<String> subnetId;
 
   /// Creates a new [GetConnectionPhysicalConnectionRequirement].
-  /// [availabilityZone] Required.
-  /// [securityGroupIdLists] Required.
-  /// [subnetId] Required.
+  /// [availabilityZone] Availability Zone used by the connection.
+  /// [securityGroupIdLists] List of security group IDs used by the connection.
+  /// [subnetId] Subnet ID used by the connection.
   const GetConnectionPhysicalConnectionRequirement({
     required this.availabilityZone,
     required this.securityGroupIdLists,
@@ -33,4 +36,3 @@ class GetConnectionPhysicalConnectionRequirement {
     );
   }
 }
-

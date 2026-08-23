@@ -73,6 +73,23 @@ import 'alternative_contact_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_account_alternativecontact" "operations" {
+///   alternate_contact_type = "OPERATIONS"
+///   name                   = "Example"
+///   title                  = "Example"
+///   email_address          = "test@example.com"
+///   phone_number           = "+1234567890"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +98,8 @@ import 'alternative_contact_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.account.AlternativeContact;
 /// import com.pulumi.aws.account.AlternativeContactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -120,10 +137,10 @@ import 'alternative_contact_state.dart';
 ///
 /// ## Import
 ///
-/// Import the Alternate Contact for another account using the `account_id` and `alternate_contact_type` separated by a forward slash (`/`):
+/// Import the Alternate Contact for another account using the `accountId` and `alternateContactType` separated by a forward slash (`/`):
 ///
 ///
-/// **Using `pulumi import` to import** the Alternate Contact for the current or another account using the `alternate_contact_type`. For example:
+/// **Using `pulumi import` to import** the Alternate Contact for the current or another account using the `alternateContactType`. For example:
 ///
 /// Import the Alternate Contact for the current account:
 ///
@@ -131,7 +148,7 @@ import 'alternative_contact_state.dart';
 /// $ pulumi import aws:account/alternativeContact:AlternativeContact operations OPERATIONS
 /// ```
 ///
-/// Import the Alternate Contact for another account using the `account_id` and `alternate_contact_type` separated by a forward slash (`/`):
+/// Import the Alternate Contact for another account using the `accountId` and `alternateContactType` separated by a forward slash (`/`):
 ///
 /// ```sh
 /// $ pulumi import aws:account/alternativeContact:AlternativeContact operations 1234567890/OPERATIONS

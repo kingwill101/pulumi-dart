@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CapacityProviderInstanceRequirement {
   /// List of allowed instance types (e.g., `["m5.xlarge"]`).
   final pulumi.Input<List<String>> allowedInstanceTypes;
-  /// List of CPU architectures. Valid values are `["x86_64"]` and `["arm64"]`.
+  /// List of CPU architectures. Valid values are `["x8664"]` and `["arm64"]`.
   final pulumi.Input<List<String>> architectures;
-  /// List of excluded instance types. You can specify only one of `allowed_instance_types` or `excluded_instance_types`.
+  /// List of excluded instance types. You can specify only one of `allowedInstanceTypes` or `excludedInstanceTypes`.
   final pulumi.Input<List<String>> excludedInstanceTypes;
 
   /// Creates a new [CapacityProviderInstanceRequirement].
   /// [allowedInstanceTypes] List of allowed instance types (e.g., `["m5.xlarge"]`).
-  /// [architectures] List of CPU architectures. Valid values are `["x86_64"]` and `["arm64"]`.
-  /// [excludedInstanceTypes] List of excluded instance types. You can specify only one of `allowed_instance_types` or `excluded_instance_types`.
+  /// [architectures] List of CPU architectures. Valid values are `["x8664"]` and `["arm64"]`.
+  /// [excludedInstanceTypes] List of excluded instance types. You can specify only one of `allowedInstanceTypes` or `excludedInstanceTypes`.
   const CapacityProviderInstanceRequirement({
     required this.allowedInstanceTypes,
     required this.architectures,
@@ -36,4 +36,3 @@ class CapacityProviderInstanceRequirement {
     );
   }
 }
-

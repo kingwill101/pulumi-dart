@@ -4,11 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flow_destination_flow_config_destination_connector_properties_event_bridge_error_handling_config.dart';
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridge {
+  /// Settings that determine how Amazon AppFlow handles an error when placing data in the destination. See the `destination_flow_config.destination_connector_properties.zendesk.error_handling_config` Block for details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridgeErrorHandlingConfig>? errorHandlingConfig;
   final pulumi.Input<String> object_;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridge].
-  /// [errorHandlingConfig] Optional.
+  /// [errorHandlingConfig] Settings that determine how Amazon AppFlow handles an error when placing data in the destination. See the `destination_flow_config.destination_connector_properties.zendesk.error_handling_config` Block for details.
   /// [object_] Required.
   const FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridge({
     this.errorHandlingConfig,
@@ -29,4 +30,3 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridge {
     );
   }
 }
-

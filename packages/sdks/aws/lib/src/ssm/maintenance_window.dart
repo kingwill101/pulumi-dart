@@ -69,6 +69,22 @@ import 'maintenance_window_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_maintenancewindow" "production" {
+///   name     = "maintenance-window-application"
+///   schedule = "cron(0 16 ? * TUE *)"
+///   duration = 3
+///   cutoff   = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +93,8 @@ import 'maintenance_window_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.MaintenanceWindow;
 /// import com.pulumi.aws.ssm.MaintenanceWindowArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -122,7 +138,7 @@ import 'maintenance_window_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -156,9 +172,9 @@ class MaintenanceWindow extends pulumi.CustomResource {
   late final pulumi.Output<String?> scheduleTimezone;
   /// Timestamp in [ISO-8601 extended format](https://www.iso.org/iso-8601-date-and-time-format.html) when to begin the maintenance window.
   late final pulumi.Output<String?> startDate;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [MaintenanceWindow].

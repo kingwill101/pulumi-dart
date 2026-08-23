@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFrameworkControlSetControl {
+  /// Unique identifier for the framework.
   final pulumi.Input<String> id;
 
   /// Creates a new [GetFrameworkControlSetControl].
-  /// [id] Required.
+  /// [id] Unique identifier for the framework.
   const GetFrameworkControlSetControl({
     required this.id,
   });
@@ -23,4 +24,3 @@ class GetFrameworkControlSetControl {
     );
   }
 }
-

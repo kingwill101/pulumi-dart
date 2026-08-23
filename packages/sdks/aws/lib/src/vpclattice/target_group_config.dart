@@ -4,29 +4,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'target_group_config_health_check.dart';
 
 class TargetGroupConfig {
-  /// The health check configuration.
+  /// Health check configuration. See `healthCheck` Block below.
   final pulumi.Input<TargetGroupConfigHealthCheck>? healthCheck;
-  /// The type of IP address used for the target group. Valid values: `IPV4` | `IPV6`.
+  /// Type of IP address used for the target group. Valid values: `IPV4` or `IPV6`.
   final pulumi.Input<String>? ipAddressType;
-  /// The version of the event structure that the Lambda function receives. Supported only if `type` is `LAMBDA`. Valid Values are `V1` | `V2`.
+  /// Version of the event structure that the Lambda function receives. Supported only if `type` is `LAMBDA`. Valid values are `V1` or `V2`.
   final pulumi.Input<String>? lambdaEventStructureVersion;
-  /// The port on which the targets are listening.
+  /// Port on which the targets are listening.
   final pulumi.Input<int>? port;
-  /// The protocol to use for routing traffic to the targets. Valid Values are `HTTP` | `HTTPS`.
+  /// Protocol to use for routing traffic to the targets. Valid values are `HTTP` or `HTTPS`.
   final pulumi.Input<String>? protocol;
-  /// The protocol version. Valid Values are `HTTP1` | `HTTP2` | `GRPC`. Default value is `HTTP1`.
+  /// Protocol version. Valid values are `HTTP1`, `HTTP2`, or `GRPC`. Default value is `HTTP1`.
   final pulumi.Input<String>? protocolVersion;
-  /// The ID of the VPC.
+  /// ID of the VPC.
   final pulumi.Input<String>? vpcIdentifier;
 
   /// Creates a new [TargetGroupConfig].
-  /// [healthCheck] The health check configuration.
-  /// [ipAddressType] The type of IP address used for the target group. Valid values: `IPV4` | `IPV6`.
-  /// [lambdaEventStructureVersion] The version of the event structure that the Lambda function receives. Supported only if `type` is `LAMBDA`. Valid Values are `V1` | `V2`.
-  /// [port] The port on which the targets are listening.
-  /// [protocol] The protocol to use for routing traffic to the targets. Valid Values are `HTTP` | `HTTPS`.
-  /// [protocolVersion] The protocol version. Valid Values are `HTTP1` | `HTTP2` | `GRPC`. Default value is `HTTP1`.
-  /// [vpcIdentifier] The ID of the VPC.
+  /// [healthCheck] Health check configuration. See `healthCheck` Block below.
+  /// [ipAddressType] Type of IP address used for the target group. Valid values: `IPV4` or `IPV6`.
+  /// [lambdaEventStructureVersion] Version of the event structure that the Lambda function receives. Supported only if `type` is `LAMBDA`. Valid values are `V1` or `V2`.
+  /// [port] Port on which the targets are listening.
+  /// [protocol] Protocol to use for routing traffic to the targets. Valid values are `HTTP` or `HTTPS`.
+  /// [protocolVersion] Protocol version. Valid values are `HTTP1`, `HTTP2`, or `GRPC`. Default value is `HTTP1`.
+  /// [vpcIdentifier] ID of the VPC.
   const TargetGroupConfig({
     this.healthCheck,
     this.ipAddressType,
@@ -61,4 +61,3 @@ class TargetGroupConfig {
     );
   }
 }
-

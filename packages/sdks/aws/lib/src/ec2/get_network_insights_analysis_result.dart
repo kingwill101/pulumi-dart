@@ -32,7 +32,7 @@ class GetNetworkInsightsAnalysisResult {
   final List<GetNetworkInsightsAnalysisReturnPathComponent> returnPathComponents;
   /// Date/time the analysis was started.
   final String startDate;
-  /// Status of the analysis. `succeeded` means the analysis was completed, not that a path was found, for that see `path_found`.
+  /// Status of the analysis. `succeeded` means the analysis was completed, not that a path was found, for that see `pathFound`.
   final String status;
   /// Message to provide more context when the `status` is `failed`.
   final String statusMessage;
@@ -54,7 +54,7 @@ class GetNetworkInsightsAnalysisResult {
   /// [region] Required.
   /// [returnPathComponents] The components in the path from destination to source.
   /// [startDate] Date/time the analysis was started.
-  /// [status] Status of the analysis. `succeeded` means the analysis was completed, not that a path was found, for that see `path_found`.
+  /// [status] Status of the analysis. `succeeded` means the analysis was completed, not that a path was found, for that see `pathFound`.
   /// [statusMessage] Message to provide more context when the `status` is `failed`.
   /// [tags] Required.
   /// [warningMessage] Warning message.
@@ -122,4 +122,3 @@ class GetNetworkInsightsAnalysisResult {
     );
   }
 }
-

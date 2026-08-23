@@ -25,4 +25,3 @@ class RevisionAssetsAssetImportAssetsFromS3 {
     );
   }
 }
-

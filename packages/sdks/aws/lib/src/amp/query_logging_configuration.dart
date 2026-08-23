@@ -108,7 +108,7 @@ import 'query_logging_configuration_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = amp.NewQueryLoggingConfiguration(ctx, "example", &amp.QueryLoggingConfigurationArgs{
-/// 			WorkspaceId: example.ID(),
+/// 			WorkspaceId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Destinations: amp.QueryLoggingConfigurationDestinationArray{
 /// 				&amp.QueryLoggingConfigurationDestinationArgs{
 /// 					CloudwatchLogs: &amp.QueryLoggingConfigurationDestinationCloudwatchLogsArgs{
@@ -129,6 +129,33 @@ import 'query_logging_configuration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amp_workspace" "example" {
+///   alias = "example"
+/// }
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name = "/aws/prometheus/query-logs/example"
+/// }
+/// resource "aws_amp_queryloggingconfiguration" "example" {
+///   workspace_id = aws_amp_workspace.example.id
+///   destinations {
+///     cloudwatch_logs = {
+///       log_group_arn ="${aws_cloudwatch_loggroup.example.arn}:*"
+///     }
+///     filters = {
+///       qsp_threshold = 1000
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -144,8 +171,8 @@ import 'query_logging_configuration_timeouts.dart';
 /// import com.pulumi.aws.amp.inputs.QueryLoggingConfigurationDestinationArgs;
 /// import com.pulumi.aws.amp.inputs.QueryLoggingConfigurationDestinationCloudwatchLogsArgs;
 /// import com.pulumi.aws.amp.inputs.QueryLoggingConfigurationDestinationFiltersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -123,6 +123,20 @@ import 'vectors_vector_bucket_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_vectorsvectorbucketpolicy" "example" {
+///   vector_bucket_arn = exampleAwsS3vectorsVectorBucket.arn
+///   policy            = "{\n  \\\"Version\\\": \\\"2012-10-17\\\",\n  \\\"Id\\\": \\\"writePolicy\\\",\n  \\\"Statement\\\": [{\n    \\\"Sid\\\": \\\"writeStatement\\\",\n    \\\"Effect\\\": \\\"Allow\\\",\n    \\\"Principal\\\": {\n      \\\"AWS\\\": \\\"123456789012\\\"\n    },\n    \\\"Action\\\": [\n      \\\"s3vectors:PutVectors\\\"\n    ],\n    \\\"Resource\\\": \\\"*\\\"\n  }]\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -131,8 +145,8 @@ import 'vectors_vector_bucket_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3.VectorsVectorBucketPolicy;
 /// import com.pulumi.aws.s3.VectorsVectorBucketPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -195,13 +209,20 @@ import 'vectors_vector_bucket_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import S3 Vectors Vector Bucket policy using the `vector_bucket_arn`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `vectorBucketArn` (String) ARN of the S3 Vectors Vector Bucket.
+///
+///
+/// Using `pulumi import`, import S3 Vectors Vector Bucket policy using the `vectorBucketArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3/vectorsVectorBucketPolicy:VectorsVectorBucketPolicy example arn:aws:s3vectors:us-west-2:123456789012:bucket/example-bucket
 /// ```
 class VectorsVectorBucketPolicy extends pulumi.CustomResource {
-  /// The policy document.
+  /// Policy document.
   late final pulumi.Output<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

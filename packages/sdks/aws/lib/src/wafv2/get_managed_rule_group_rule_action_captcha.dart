@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_managed_rule_group_rule_action_captcha_custom_request_handling.dart';
 
 class GetManagedRuleGroupRuleActionCaptcha {
+  /// Custom handling for the counted request. See `customRequestHandling` Block for details.
   final pulumi.Input<List<GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling>> customRequestHandlings;
 
   /// Creates a new [GetManagedRuleGroupRuleActionCaptcha].
-  /// [customRequestHandlings] Required.
+  /// [customRequestHandlings] Custom handling for the counted request. See `customRequestHandling` Block for details.
   const GetManagedRuleGroupRuleActionCaptcha({
     required this.customRequestHandlings,
   });
@@ -24,4 +25,3 @@ class GetManagedRuleGroupRuleActionCaptcha {
     );
   }
 }
-

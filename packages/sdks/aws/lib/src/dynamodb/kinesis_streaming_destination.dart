@@ -128,6 +128,33 @@ import 'kinesis_streaming_destination_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dynamodb_table" "example" {
+///   name     = "orders"
+///   hash_key = "id"
+///   attributes {
+///     name = "id"
+///     type = "S"
+///   }
+/// }
+/// resource "aws_kinesis_stream" "example" {
+///   name        = "order_item_changes"
+///   shard_count = 1
+/// }
+/// resource "aws_dynamodb_kinesisstreamingdestination" "example" {
+///   stream_arn                               = aws_kinesis_stream.example.arn
+///   table_name                               = aws_dynamodb_table.example.name
+///   approximate_creation_date_time_precision = "MICROSECOND"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +168,8 @@ import 'kinesis_streaming_destination_state.dart';
 /// import com.pulumi.aws.kinesis.StreamArgs;
 /// import com.pulumi.aws.dynamodb.KinesisStreamingDestination;
 /// import com.pulumi.aws.dynamodb.KinesisStreamingDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -205,7 +232,7 @@ import 'kinesis_streaming_destination_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import DynamoDB Kinesis Streaming Destinations using the `table_name` and `stream_arn` separated by `,`. For example:
+/// Using `pulumi import`, import DynamoDB Kinesis Streaming Destinations using the `tableName` and `streamArn` separated by `,`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:dynamodb/kinesisStreamingDestination:KinesisStreamingDestination example example,arn:aws:kinesis:us-east-1:111122223333:exampleStreamName

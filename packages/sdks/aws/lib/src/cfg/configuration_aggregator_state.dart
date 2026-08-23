@@ -16,11 +16,11 @@ class ConfigurationAggregatorState {
   final pulumi.Input<ConfigurationAggregatorOrganizationAggregationSource>? organizationAggregationSource;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// Either `account_aggregation_source` or `organization_aggregation_source` must be specified.
+  /// Either `accountAggregationSource` or `organizationAggregationSource` must be specified.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [ConfigurationAggregatorState].
@@ -29,8 +29,8 @@ class ConfigurationAggregatorState {
   /// [name] The name of the configuration aggregator.
   /// [organizationAggregationSource] The organization to aggregate config data from as documented below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const ConfigurationAggregatorState({
     this.accountAggregationSource,
     this.arn,
@@ -65,4 +65,3 @@ class ConfigurationAggregatorState {
     );
   }
 }
-

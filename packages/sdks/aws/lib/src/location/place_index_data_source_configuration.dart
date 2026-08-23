@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlaceIndexDataSourceConfiguration {
-  /// Specifies how the results of an operation will be stored by the caller. Valid values: `SingleUse`, `Storage`. Default: `SingleUse`.
+  /// How the results of an operation will be stored by the caller. Valid values: `SingleUse`, `Storage`. Default: `SingleUse`.
   final pulumi.Input<String>? intendedUse;
 
   /// Creates a new [PlaceIndexDataSourceConfiguration].
-  /// [intendedUse] Specifies how the results of an operation will be stored by the caller. Valid values: `SingleUse`, `Storage`. Default: `SingleUse`.
+  /// [intendedUse] How the results of an operation will be stored by the caller. Valid values: `SingleUse`, `Storage`. Default: `SingleUse`.
   const PlaceIndexDataSourceConfiguration({
     this.intendedUse,
   });
@@ -24,4 +24,3 @@ class PlaceIndexDataSourceConfiguration {
     );
   }
 }
-

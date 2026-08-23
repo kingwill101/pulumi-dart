@@ -6,7 +6,7 @@ class GetSessionContextResult {
   final String arn;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// IAM source role ARN if `arn` corresponds to an STS assumed role. Otherwise, `issuer_arn` is equal to `arn`.
+  /// IAM source role ARN if `arn` corresponds to an STS assumed role. Otherwise, `issuerArn` is equal to `arn`.
   final String issuerArn;
   /// Unique identifier of the IAM role that issues the STS assumed role.
   final String issuerId;
@@ -18,7 +18,7 @@ class GetSessionContextResult {
   /// Creates a new [GetSessionContextResult].
   /// [arn] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [issuerArn] IAM source role ARN if `arn` corresponds to an STS assumed role. Otherwise, `issuer_arn` is equal to `arn`.
+  /// [issuerArn] IAM source role ARN if `arn` corresponds to an STS assumed role. Otherwise, `issuerArn` is equal to `arn`.
   /// [issuerId] Unique identifier of the IAM role that issues the STS assumed role.
   /// [issuerName] Name of the source role. Only available if `arn` corresponds to an STS assumed role.
   /// [sessionName] Name of the STS session. Only available if `arn` corresponds to an STS assumed role.
@@ -53,4 +53,3 @@ class GetSessionContextResult {
     );
   }
 }
-

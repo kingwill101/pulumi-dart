@@ -117,7 +117,7 @@ import 'regex_match_set_state.dart';
 /// 						Data: pulumi.String("User-Agent"),
 /// 						Type: pulumi.String("HEADER"),
 /// 					},
-/// 					RegexPatternSetId:  exampleRegexPatternSet.ID(),
+/// 					RegexPatternSetId:  exampleRegexPatternSet.ID().ToIDOutput().ToStringOutput(),
 /// 					TextTransformation: pulumi.String("NONE"),
 /// 				},
 /// 			},
@@ -127,6 +127,31 @@ import 'regex_match_set_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_waf_regexmatchset" "example" {
+///   name = "example"
+///   regex_match_tuples {
+///     field_to_match = {
+///       data = "User-Agent"
+///       type = "HEADER"
+///     }
+///     regex_pattern_set_id = aws_waf_regexpatternset.example.id
+///     text_transformation  = "NONE"
+///   }
+/// }
+/// resource "aws_waf_regexpatternset" "example" {
+///   name                  = "example"
+///   regex_pattern_strings = ["one", "two"]
 /// }
 /// ```
 /// ```java
@@ -141,8 +166,8 @@ import 'regex_match_set_state.dart';
 /// import com.pulumi.aws.waf.RegexMatchSetArgs;
 /// import com.pulumi.aws.waf.inputs.RegexMatchSetRegexMatchTupleArgs;
 /// import com.pulumi.aws.waf.inputs.RegexMatchSetRegexMatchTupleFieldToMatchArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -23,7 +23,7 @@ class NetworkProfileArgs {
   final pulumi.Input<String> projectArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The type of network profile to create. Valid values are listed are `PRIVATE` and `CURATED`.
   final pulumi.Input<String>? type;
@@ -45,7 +45,7 @@ class NetworkProfileArgs {
   /// [name] The name for the network profile.
   /// [projectArn] The ARN of the project for the network profile.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] The type of network profile to create. Valid values are listed are `PRIVATE` and `CURATED`.
   /// [uplinkBandwidthBits] The data throughput rate in bits per second, as an integer from `0` to `104857600`. Default value is `104857600`.
   /// [uplinkDelayMs] Delay time for all packets to destination in milliseconds as an integer from `0` to `2000`.
@@ -106,4 +106,3 @@ class NetworkProfileArgs {
     );
   }
 }
-

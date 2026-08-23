@@ -90,6 +90,26 @@ import 'listener_certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_acm_certificate" "example" {
+/// }
+/// resource "aws_lb_loadbalancer" "front_end" {
+/// }
+/// resource "aws_lb_listener" "front_end" {
+/// }
+/// resource "aws_lb_listenercertificate" "example" {
+///   listener_arn    = aws_lb_listener.front_end.arn
+///   certificate_arn = aws_acm_certificate.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +121,8 @@ import 'listener_certificate_state.dart';
 /// import com.pulumi.aws.lb.Listener;
 /// import com.pulumi.aws.lb.ListenerCertificate;
 /// import com.pulumi.aws.lb.ListenerCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

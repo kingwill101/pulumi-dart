@@ -13,9 +13,11 @@ class GetRestApiResult {
   final List<String> binaryMediaTypes;
   /// Description of the REST API.
   final String description;
-  /// The endpoint configuration of this RestApi showing the endpoint types of the API.
+  /// Endpoint access mode for the REST API.
+  final String endpointAccessMode;
+  /// Endpoint configuration of this REST API showing the endpoint types of the API. See below.
   final List<GetRestApiEndpointConfiguration> endpointConfigurations;
-  /// Execution ARN part to be used in `lambda_permission`'s `source_arn` when allowing API Gateway to invoke a Lambda function, e.g., `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j`, which can be concatenated with allowed stage, method and resource path.
+  /// Execution ARN part to be used in `lambdaPermission`'s `sourceArn` when allowing API Gateway to invoke a Lambda function, e.g., `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j`, which can be concatenated with allowed stage, method and resource path.
   final String executionArn;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -27,6 +29,8 @@ class GetRestApiResult {
   final String region;
   /// Set to the ID of the API Gateway Resource on the found REST API where the route matches '/'.
   final String rootResourceId;
+  /// TLS version + cipher suite for the REST API's default execute-api endpoint.
+  final String securityPolicy;
   /// Key-value map of resource tags.
   final Map<String, String> tags;
 
@@ -35,20 +39,23 @@ class GetRestApiResult {
   /// [arn] ARN of the REST API.
   /// [binaryMediaTypes] List of binary media types supported by the REST API.
   /// [description] Description of the REST API.
-  /// [endpointConfigurations] The endpoint configuration of this RestApi showing the endpoint types of the API.
-  /// [executionArn] Execution ARN part to be used in `lambda_permission`'s `source_arn` when allowing API Gateway to invoke a Lambda function, e.g., `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j`, which can be concatenated with allowed stage, method and resource path.
+  /// [endpointAccessMode] Endpoint access mode for the REST API.
+  /// [endpointConfigurations] Endpoint configuration of this REST API showing the endpoint types of the API. See below.
+  /// [executionArn] Execution ARN part to be used in `lambdaPermission`'s `sourceArn` when allowing API Gateway to invoke a Lambda function, e.g., `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j`, which can be concatenated with allowed stage, method and resource path.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [minimumCompressionSize] Minimum response size to compress for the REST API.
   /// [name] Required.
   /// [policy] JSON formatted policy document that controls access to the API Gateway.
   /// [region] Required.
   /// [rootResourceId] Set to the ID of the API Gateway Resource on the found REST API where the route matches '/'.
+  /// [securityPolicy] TLS version + cipher suite for the REST API's default execute-api endpoint.
   /// [tags] Key-value map of resource tags.
   const GetRestApiResult({
     required this.apiKeySource,
     required this.arn,
     required this.binaryMediaTypes,
     required this.description,
+    required this.endpointAccessMode,
     required this.endpointConfigurations,
     required this.executionArn,
     required this.id,
@@ -57,6 +64,7 @@ class GetRestApiResult {
     required this.policy,
     required this.region,
     required this.rootResourceId,
+    required this.securityPolicy,
     required this.tags,
   });
 
@@ -66,6 +74,7 @@ class GetRestApiResult {
       'arn': arn,
       'binaryMediaTypes': binaryMediaTypes,
       'description': description,
+      'endpointAccessMode': endpointAccessMode,
       'endpointConfigurations': pulumi.Input.encodeList<GetRestApiEndpointConfiguration, Map<String, dynamic>>(endpointConfigurations, (value) => value.toMap()),
       'executionArn': executionArn,
       'id': id,
@@ -74,6 +83,7 @@ class GetRestApiResult {
       'policy': policy,
       'region': region,
       'rootResourceId': rootResourceId,
+      'securityPolicy': securityPolicy,
       'tags': tags,
     };
   }
@@ -84,6 +94,7 @@ class GetRestApiResult {
       arn: map['arn'] as String,
       binaryMediaTypes: (map['binaryMediaTypes'] as List).cast<String>(),
       description: map['description'] as String,
+      endpointAccessMode: map['endpointAccessMode'] as String,
       endpointConfigurations: pulumi.Input.decodeList<GetRestApiEndpointConfiguration>(map['endpointConfigurations']!, (value) => GetRestApiEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       executionArn: map['executionArn'] as String,
       id: map['id'] as String,
@@ -92,8 +103,8 @@ class GetRestApiResult {
       policy: map['policy'] as String,
       region: map['region'] as String,
       rootResourceId: map['rootResourceId'] as String,
+      securityPolicy: map['securityPolicy'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

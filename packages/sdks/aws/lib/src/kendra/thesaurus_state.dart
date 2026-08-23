@@ -21,7 +21,7 @@ class ThesaurusState {
   /// The current status of the thesaurus.
   final pulumi.Input<String>? status;
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<String>? thesaurusId;
 
@@ -35,7 +35,7 @@ class ThesaurusState {
   /// [sourceS3Path] The S3 path where your thesaurus file sits in S3. Detailed below.
   /// [status] The current status of the thesaurus.
   /// [tags] Optional.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [thesaurusId] Optional.
   const ThesaurusState({
     this.arn,
@@ -83,4 +83,3 @@ class ThesaurusState {
     );
   }
 }
-

@@ -104,6 +104,29 @@ import 'pipeline_thumbnail_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elastictranscoder_pipeline" "bar" {
+///   input_bucket = inputBucket.id
+///   name         = "aws_elastictranscoder_pipeline_my_test_"
+///   role         = testRole.arn
+///   content_config = {
+///     bucket        = contentBucket.id
+///     storage_class = "Standard"
+///   }
+///   thumbnail_config = {
+///     bucket        = thumbBucket.id
+///     storage_class = "Standard"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +137,8 @@ import 'pipeline_thumbnail_config.dart';
 /// import com.pulumi.aws.elastictranscoder.PipelineArgs;
 /// import com.pulumi.aws.elastictranscoder.inputs.PipelineContentConfigArgs;
 /// import com.pulumi.aws.elastictranscoder.inputs.PipelineThumbnailConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -175,7 +198,7 @@ class Pipeline extends pulumi.CustomResource {
   late final pulumi.Output<String?> awsKmsKeyArn;
   /// The ContentConfig object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save transcoded files and playlists. (documented below)
   late final pulumi.Output<PipelineContentConfig> contentConfig;
-  /// The permissions for the `content_config` object. (documented below)
+  /// The permissions for the `contentConfig` object. (documented below)
   late final pulumi.Output<List<Map<String, dynamic>>?> contentConfigPermissions;
   /// The Amazon S3 bucket in which you saved the media files that you want to transcode and the graphics that you want to use as watermarks.
   late final pulumi.Output<String> inputBucket;
@@ -191,16 +214,16 @@ class Pipeline extends pulumi.CustomResource {
   late final pulumi.Output<String> role;
   /// The ThumbnailConfig object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail files. (documented below)
   late final pulumi.Output<PipelineThumbnailConfig> thumbnailConfig;
-  /// The permissions for the `thumbnail_config` object. (documented below)
+  /// The permissions for the `thumbnailConfig` object. (documented below)
   ///
   /// See ["Create Pipeline"](http://docs.aws.amazon.com/elastictranscoder/latest/developerguide/create-pipeline.html) in the AWS docs for reference.
   ///
-  /// The `content_config` object specifies information about the Amazon S3 bucket in
+  /// The `contentConfig` object specifies information about the Amazon S3 bucket in
   /// which you want Elastic Transcoder to save transcoded files and playlists: which
   /// bucket to use, and the storage class that you want to assign to the files. If
-  /// you specify values for `content_config`, you must also specify values for
-  /// `thumbnail_config`. If you specify values for `content_config` and
-  /// `thumbnail_config`, omit the `output_bucket` object.
+  /// you specify values for `contentConfig`, you must also specify values for
+  /// `thumbnailConfig`. If you specify values for `contentConfig` and
+  /// `thumbnailConfig`, omit the `outputBucket` object.
   late final pulumi.Output<List<Map<String, dynamic>>?> thumbnailConfigPermissions;
 
   /// Creates a new [Pipeline].

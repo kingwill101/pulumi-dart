@@ -79,6 +79,24 @@ import 'script_storage_location.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_gamelift_script" "example" {
+///   name = "example-script"
+///   storage_location = {
+///     bucket   = exampleAwsS3Bucket.id
+///     key      = exampleAwsS3Object.key
+///     role_arn = exampleAwsIamRole.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +106,8 @@ import 'script_storage_location.dart';
 /// import com.pulumi.aws.gamelift.Script;
 /// import com.pulumi.aws.gamelift.ScriptArgs;
 /// import com.pulumi.aws.gamelift.inputs.ScriptStorageLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -142,9 +160,9 @@ class Script extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Information indicating where your game script files are stored. See below.
   late final pulumi.Output<ScriptStorageLocation> storageLocation;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Version that is associated with this script.
   late final pulumi.Output<String?> version;

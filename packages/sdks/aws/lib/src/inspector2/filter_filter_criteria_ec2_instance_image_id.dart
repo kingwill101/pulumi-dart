@@ -30,4 +30,3 @@ class FilterFilterCriteriaEc2InstanceImageId {
     );
   }
 }
-

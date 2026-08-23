@@ -8,7 +8,7 @@ class ResourceSetResourceDnsTargetResource {
   final pulumi.Input<String> domainName;
   /// Hosted Zone ARN that contains the DNS record with the provided name of target resource.
   final pulumi.Input<String>? hostedZoneArn;
-  /// Route53 record set id to uniquely identify a record given a `domain_name` and a `record_type`.
+  /// Route53 record set id to uniquely identify a record given a `domainName` and a `recordType`.
   final pulumi.Input<String>? recordSetId;
   /// Type of DNS Record of target resource.
   final pulumi.Input<String>? recordType;
@@ -18,7 +18,7 @@ class ResourceSetResourceDnsTargetResource {
   /// Creates a new [ResourceSetResourceDnsTargetResource].
   /// [domainName] DNS Name that acts as the ingress point to a portion of application.
   /// [hostedZoneArn] Hosted Zone ARN that contains the DNS record with the provided name of target resource.
-  /// [recordSetId] Route53 record set id to uniquely identify a record given a `domain_name` and a `record_type`.
+  /// [recordSetId] Route53 record set id to uniquely identify a record given a `domainName` and a `recordType`.
   /// [recordType] Type of DNS Record of target resource.
   /// [targetResource] Target resource the R53 record specified with the above params points to.
   const ResourceSetResourceDnsTargetResource({
@@ -49,4 +49,3 @@ class ResourceSetResourceDnsTargetResource {
     );
   }
 }
-

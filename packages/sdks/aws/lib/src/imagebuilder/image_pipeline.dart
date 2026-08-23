@@ -8,7 +8,7 @@ import 'image_pipeline_state.dart';
 
 /// Manages an Image Builder Image Pipeline.
 ///
-/// &gt; **NOTE:** Starting with version `5.74.0`, lifecycle meta-argument `replace_triggered_by` must be used in order to prevent a dependency error on destroy.
+/// &gt; **NOTE:** Starting with version `5.74.0`, lifecycle meta-argument `replaceTriggeredBy` must be used in order to prevent a dependency error on destroy.
 ///
 /// #### Required
 ///
@@ -63,9 +63,9 @@ class ImagePipeline extends pulumi.CustomResource {
   late final pulumi.Output<ImagePipelineSchedule?> schedule;
   /// Status of the image pipeline. Valid values are `DISABLED` and `ENABLED`. Defaults to `ENABLED`.
   late final pulumi.Output<String?> status;
-  /// Key-value map of resource tags for the image pipeline. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the image pipeline. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration block with the workflow configuration. Detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>> workflows;

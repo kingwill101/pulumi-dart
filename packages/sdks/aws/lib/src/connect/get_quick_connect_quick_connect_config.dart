@@ -6,20 +6,20 @@ import 'get_quick_connect_quick_connect_config_queue_config.dart';
 import 'get_quick_connect_quick_connect_config_user_config.dart';
 
 class GetQuickConnectQuickConnectConfig {
-  /// Phone configuration of the Quick Connect. This is returned only if `quick_connect_type` is `PHONE_NUMBER`. The `phone_config` block is documented below.
+  /// Phone configuration of the Quick Connect. This is returned only if `quickConnectType` is `PHONE_NUMBER`. The `phoneConfig` block is documented below.
   final pulumi.Input<List<GetQuickConnectQuickConnectConfigPhoneConfig>> phoneConfigs;
-  /// Queue configuration of the Quick Connect. This is returned only if `quick_connect_type` is `QUEUE`. The `queue_config` block is documented below.
+  /// Queue configuration of the Quick Connect. This is returned only if `quickConnectType` is `QUEUE`. The `queueConfig` block is documented below.
   final pulumi.Input<List<GetQuickConnectQuickConnectConfigQueueConfig>> queueConfigs;
   /// Configuration type of the Quick Connect. Valid values are `PHONE_NUMBER`, `QUEUE`, `USER`.
   final pulumi.Input<String> quickConnectType;
-  /// User configuration of the Quick Connect. This is returned only if `quick_connect_type` is `USER`. The `user_config` block is documented below.
+  /// User configuration of the Quick Connect. This is returned only if `quickConnectType` is `USER`. The `userConfig` block is documented below.
   final pulumi.Input<List<GetQuickConnectQuickConnectConfigUserConfig>> userConfigs;
 
   /// Creates a new [GetQuickConnectQuickConnectConfig].
-  /// [phoneConfigs] Phone configuration of the Quick Connect. This is returned only if `quick_connect_type` is `PHONE_NUMBER`. The `phone_config` block is documented below.
-  /// [queueConfigs] Queue configuration of the Quick Connect. This is returned only if `quick_connect_type` is `QUEUE`. The `queue_config` block is documented below.
+  /// [phoneConfigs] Phone configuration of the Quick Connect. This is returned only if `quickConnectType` is `PHONE_NUMBER`. The `phoneConfig` block is documented below.
+  /// [queueConfigs] Queue configuration of the Quick Connect. This is returned only if `quickConnectType` is `QUEUE`. The `queueConfig` block is documented below.
   /// [quickConnectType] Configuration type of the Quick Connect. Valid values are `PHONE_NUMBER`, `QUEUE`, `USER`.
-  /// [userConfigs] User configuration of the Quick Connect. This is returned only if `quick_connect_type` is `USER`. The `user_config` block is documented below.
+  /// [userConfigs] User configuration of the Quick Connect. This is returned only if `quickConnectType` is `USER`. The `userConfig` block is documented below.
   const GetQuickConnectQuickConnectConfig({
     required this.phoneConfigs,
     required this.queueConfigs,
@@ -45,4 +45,3 @@ class GetQuickConnectQuickConnectConfig {
     );
   }
 }
-

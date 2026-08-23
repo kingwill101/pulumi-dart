@@ -3,16 +3,19 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanWorkflowStepEcsCapacityIncreaseConfigService {
+  /// ARN of the ECS cluster.
   final pulumi.Input<String> clusterArn;
+  /// ARN of the cross-account role to assume.
   final pulumi.Input<String>? crossAccountRole;
+  /// External ID for cross-account role assumption.
   final pulumi.Input<String>? externalId;
   /// ARN of the ECS service.
   final pulumi.Input<String> serviceArn;
 
   /// Creates a new [PlanWorkflowStepEcsCapacityIncreaseConfigService].
-  /// [clusterArn] Required.
-  /// [crossAccountRole] Optional.
-  /// [externalId] Optional.
+  /// [clusterArn] ARN of the ECS cluster.
+  /// [crossAccountRole] ARN of the cross-account role to assume.
+  /// [externalId] External ID for cross-account role assumption.
   /// [serviceArn] ARN of the ECS service.
   const PlanWorkflowStepEcsCapacityIncreaseConfigService({
     required this.clusterArn,
@@ -39,4 +42,3 @@ class PlanWorkflowStepEcsCapacityIncreaseConfigService {
     );
   }
 }
-

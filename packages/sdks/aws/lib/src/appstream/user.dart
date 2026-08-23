@@ -69,6 +69,22 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appstream_user" "example" {
+///   authentication_type = "USERPOOL"
+///   user_name           = "EMAIL"
+///   first_name          = "FIRST NAME"
+///   last_name           = "LAST NAME"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +93,8 @@ import 'user_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appstream.User;
 /// import com.pulumi.aws.appstream.UserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -114,7 +130,7 @@ import 'user_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.appstream.User` using the `user_name` and `authentication_type` separated by a slash (`/`). For example:
+/// Using `pulumi import`, import `aws.appstream.User` using the `userName` and `authenticationType` separated by a slash (`/`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appstream/user:User example UserName/AuthenticationType

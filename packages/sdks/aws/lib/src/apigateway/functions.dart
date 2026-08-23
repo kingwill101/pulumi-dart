@@ -67,6 +67,18 @@ import 'get_vpc_link_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_apigateway_getapikeys" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +87,8 @@ import 'get_vpc_link_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigateway.ApigatewayFunctions;
 /// import com.pulumi.aws.apigateway.inputs.GetApiKeysArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -174,6 +186,20 @@ Future<GetApiKeysResult> getApiKeys(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_apigateway_getauthorizer" "example" {
+///   rest_api_id   = exampleAwsApiGatewayRestApi.id
+///   authorizer_id = exampleAwsApiGatewayAuthorizers.ids[0]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -182,8 +208,8 @@ Future<GetApiKeysResult> getApiKeys(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigateway.ApigatewayFunctions;
 /// import com.pulumi.aws.apigateway.inputs.GetAuthorizerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -281,6 +307,19 @@ Future<GetAuthorizerResult> getAuthorizer(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_apigateway_getauthorizers" "example" {
+///   rest_api_id = exampleAwsApiGatewayRestApi.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -289,8 +328,8 @@ Future<GetAuthorizerResult> getAuthorizer(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigateway.ApigatewayFunctions;
 /// import com.pulumi.aws.apigateway.inputs.GetAuthorizersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -386,6 +425,19 @@ Future<GetAuthorizersResult> getAuthorizers(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_apigateway_getdomainname" "example" {
+///   domain_name = "api.example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -394,8 +446,8 @@ Future<GetAuthorizersResult> getAuthorizers(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigateway.ApigatewayFunctions;
 /// import com.pulumi.aws.apigateway.inputs.GetDomainNameArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -497,6 +549,21 @@ Future<GetDomainNameResult> getDomainName(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_apigateway_getexport" "example" {
+///   rest_api_id = exampleAwsApiGatewayStage.restApiId
+///   stage_name  = exampleAwsApiGatewayStage.stageName
+///   export_type = "oas30"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -505,8 +572,8 @@ Future<GetDomainNameResult> getDomainName(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigateway.ApigatewayFunctions;
 /// import com.pulumi.aws.apigateway.inputs.GetExportArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -607,6 +674,19 @@ Future<GetExportResult> getExport(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_apigateway_getkey" "myApiKey" {
+///   id = "ru3mpjgse6"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -615,8 +695,8 @@ Future<GetExportResult> getExport(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigateway.ApigatewayFunctions;
 /// import com.pulumi.aws.apigateway.inputs.GetKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -732,6 +812,23 @@ Future<GetKeyResult> getKey(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_apigateway_getrestapi" "myRestApi" {
+///   name = "my-rest-api"
+/// }
+/// data "aws_apigateway_getresource" "myResource" {
+///   rest_api_id = data.aws_apigateway_getrestapi.myRestApi.id
+///   path        = "/endpoint/path"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -741,8 +838,8 @@ Future<GetKeyResult> getKey(
 /// import com.pulumi.aws.apigateway.ApigatewayFunctions;
 /// import com.pulumi.aws.apigateway.inputs.GetRestApiArgs;
 /// import com.pulumi.aws.apigateway.inputs.GetResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -795,7 +892,7 @@ Future<GetResourceResult> getResource(
   return GetResourceResult.fromMap(result);
 }
 
-/// Use this data source to get the id and root_resource_id of a REST API in
+/// Use this data source to get the id and rootResourceId of a REST API in
 /// API Gateway. To fetch the REST API you must provide a name to match against.
 /// As there is no unique name constraint on REST APIs this data source will
 /// error if there is more than one match.
@@ -852,6 +949,19 @@ Future<GetResourceResult> getResource(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_apigateway_getrestapi" "myRestApi" {
+///   name = "my-rest-api"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -860,8 +970,8 @@ Future<GetResourceResult> getResource(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigateway.ApigatewayFunctions;
 /// import com.pulumi.aws.apigateway.inputs.GetRestApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -974,7 +1084,7 @@ Future<GetRestApiResult> getRestApi(
 /// 			RestApiId: exampleAwsApiGatewayStage.RestApiId,
 /// 			StageName: exampleAwsApiGatewayStage.StageName,
 /// 			SdkType:   "android",
-/// 			Parameters: map[string]interface{}{
+/// 			Parameters: map[string]string{
 /// 				"groupId":         "example",
 /// 				"artifactId":      "example",
 /// 				"artifactVersion": "example",
@@ -988,6 +1098,27 @@ Future<GetRestApiResult> getRestApi(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_apigateway_getsdk" "example" {
+///   rest_api_id = exampleAwsApiGatewayStage.restApiId
+///   stage_name  = exampleAwsApiGatewayStage.stageName
+///   sdk_type    = "android"
+///   parameters = {
+///     "groupId"         = "example"
+///     "artifactId"      = "example"
+///     "artifactVersion" = "example"
+///     "invokerPackage"  = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -996,8 +1127,8 @@ Future<GetRestApiResult> getRestApi(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigateway.ApigatewayFunctions;
 /// import com.pulumi.aws.apigateway.inputs.GetSdkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1111,6 +1242,19 @@ Future<GetSdkResult> getSdk(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_apigateway_getvpclink" "myApiGatewayVpcLink" {
+///   name = "my-vpc-link"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1119,8 +1263,8 @@ Future<GetSdkResult> getSdk(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigateway.ApigatewayFunctions;
 /// import com.pulumi.aws.apigateway.inputs.GetVpcLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

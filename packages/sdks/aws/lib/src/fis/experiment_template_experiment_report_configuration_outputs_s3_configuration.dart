@@ -3,14 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExperimentTemplateExperimentReportConfigurationOutputsS3Configuration {
-  /// The name of the destination bucket.
   final pulumi.Input<String> bucketName;
-  /// The bucket prefix.
   final pulumi.Input<String>? prefix;
 
   /// Creates a new [ExperimentTemplateExperimentReportConfigurationOutputsS3Configuration].
-  /// [bucketName] The name of the destination bucket.
-  /// [prefix] The bucket prefix.
+  /// [bucketName] Required.
+  /// [prefix] Optional.
   const ExperimentTemplateExperimentReportConfigurationOutputsS3Configuration({
     required this.bucketName,
     this.prefix,
@@ -30,4 +28,3 @@ class ExperimentTemplateExperimentReportConfigurationOutputsS3Configuration {
     );
   }
 }
-

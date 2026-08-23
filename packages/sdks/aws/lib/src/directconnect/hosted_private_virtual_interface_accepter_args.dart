@@ -11,7 +11,7 @@ class HostedPrivateVirtualInterfaceAccepterArgs {
   final pulumi.Input<String>? dxGatewayId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The ID of the Direct Connect virtual interface to accept.
   final pulumi.Input<String> virtualInterfaceId;
@@ -21,7 +21,7 @@ class HostedPrivateVirtualInterfaceAccepterArgs {
   /// Creates a new [HostedPrivateVirtualInterfaceAccepterArgs].
   /// [dxGatewayId] The ID of the Direct Connect gateway to which to connect the virtual interface.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [virtualInterfaceId] The ID of the Direct Connect virtual interface to accept.
   /// [vpnGatewayId] The ID of the virtual private gateway to which to connect the virtual interface.
   const HostedPrivateVirtualInterfaceAccepterArgs({
@@ -52,4 +52,3 @@ class HostedPrivateVirtualInterfaceAccepterArgs {
     );
   }
 }
-

@@ -117,6 +117,27 @@ import 'report_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cur_reportdefinition" "example_cur_report_definition" {
+///   report_name                = "example-cur-report-definition"
+///   time_unit                  = "HOURLY"
+///   format                     = "textORcsv"
+///   compression                = "GZIP"
+///   additional_schema_elements = ["RESOURCES", "SPLIT_COST_ALLOCATION_DATA"]
+///   s3_bucket                  = "example-bucket-name"
+///   s3_prefix                  = "example-cur-report"
+///   s3_region                  = "us-east-1"
+///   additional_artifacts       = ["REDSHIFT", "QUICKSIGHT"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -125,8 +146,8 @@ import 'report_definition_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cur.ReportDefinition;
 /// import com.pulumi.aws.cur.ReportDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -181,13 +202,13 @@ import 'report_definition_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Report Definitions using the `report_name`. For example:
+/// Using `pulumi import`, import Report Definitions using the `reportName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cur/reportDefinition:ReportDefinition example_cur_report_definition example-cur-report-definition
 /// ```
 class ReportDefinition extends pulumi.CustomResource {
-  /// A list of additional artifacts. Valid values are: `REDSHIFT`, `QUICKSIGHT`, `ATHENA`. When ATHENA exists within additional_artifacts, no other artifact type can be declared and report_versioning must be `OVERWRITE_REPORT`.
+  /// A list of additional artifacts. Valid values are: `REDSHIFT`, `QUICKSIGHT`, `ATHENA`. When ATHENA exists within additional_artifacts, no other artifact type can be declared and reportVersioning must be `OVERWRITE_REPORT`.
   late final pulumi.Output<List<String>?> additionalArtifacts;
   /// A list of schema elements. Valid values are: `RESOURCES`, `SPLIT_COST_ALLOCATION_DATA`, `MANUAL_DISCOUNT_COMPATIBILITY`.
   late final pulumi.Output<List<String>> additionalSchemaElements;
@@ -209,9 +230,9 @@ class ReportDefinition extends pulumi.CustomResource {
   late final pulumi.Output<String> s3Prefix;
   /// Region of the existing S3 bucket to hold generated reports.
   late final pulumi.Output<String> s3Region;
-  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The frequency on which report data are measured and displayed.  Valid values are: `DAILY`, `HOURLY`, `MONTHLY`.
   late final pulumi.Output<String> timeUnit;

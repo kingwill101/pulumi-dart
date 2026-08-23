@@ -2,9 +2,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_formation_stack_args.dart';
 import 'cloud_formation_stack_state.dart';
 
-/// Deploys an Application CloudFormation Stack from the Serverless Application Repository.
+/// Manages an Application CloudFormation Stack from the Serverless Application Repository.
+///
+/// &gt; **Warning:** CloudFormation masks `NoEcho` parameter values as `****` in API responses, which may set an expectation that they remain hidden. They do not — like any other argument, the configured value is persisted to state. To mask a specific parameter in plan and `terraform show` output, wrap it with Terraform's `sensitive()` function, for example `parameters = { password = sensitive(var.password) }`.
 ///
 /// ## Example Usage
+///
+/// ### Basic Usage
 ///
 ///
 /// ```typescript
@@ -117,6 +121,30 @@ import 'cloud_formation_stack_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getpartition" "current" {
+/// }
+/// data "aws_getregion" "currentGetRegion" {
+/// }
+///
+/// resource "aws_serverlessrepository_cloudformationstack" "postgres-rotator" {
+///   name           = "postgres-rotator"
+///   application_id = "arn:aws:serverlessrepo:us-east-1:297356227824:applications/SecretsManagerRDSPostgreSQLRotationSingleUser"
+///   capabilities   = ["CAPABILITY_IAM", "CAPABILITY_RESOURCE_POLICY"]
+///   parameters = {
+///     "functionName" = "func-postgres-rotator"
+///     "endpoint"     ="secretsmanager.${data.aws_getregion.currentGetRegion.region}.${data.aws_getpartition.current.dns_suffix}"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +156,8 @@ import 'cloud_formation_stack_state.dart';
 /// import com.pulumi.aws.inputs.GetRegionArgs;
 /// import com.pulumi.aws.serverlessrepository.CloudFormationStack;
 /// import com.pulumi.aws.serverlessrepository.CloudFormationStackArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -195,23 +223,23 @@ import 'cloud_formation_stack_state.dart';
 /// $ pulumi import aws:serverlessrepository/cloudFormationStack:CloudFormationStack example serverlessrepo-postgres-rotator
 /// ```
 class CloudFormationStack extends pulumi.CustomResource {
-  /// The ARN of the application from the Serverless Application Repository.
+  /// ARN of the application from the Serverless Application Repository.
   late final pulumi.Output<String> applicationId;
-  /// A list of capabilities. Valid values are `CAPABILITY_IAM`, `CAPABILITY_NAMED_IAM`, `CAPABILITY_RESOURCE_POLICY`, or `CAPABILITY_AUTO_EXPAND`
+  /// List of capabilities. Valid values are `CAPABILITY_IAM`, `CAPABILITY_NAMED_IAM`, `CAPABILITY_RESOURCE_POLICY`, or `CAPABILITY_AUTO_EXPAND`. If the application contains IAM resources, IAM resources with custom names, resource-based policies, or nested applications, the corresponding capability must be specified. If omitted, the value applied by AWS is tracked in state.
   late final pulumi.Output<List<String>> capabilities;
-  /// The name of the stack to create. The resource deployed in AWS will be prefixed with `serverlessrepo-`
+  /// Name of the stack to create. The resource deployed in AWS will be prefixed with `serverlessrepo-`
   late final pulumi.Output<String> name;
-  /// A map of outputs from the stack.
+  /// Map of outputs from the stack.
   late final pulumi.Output<Map<String, String>> outputs;
-  /// A map of Parameter structures that specify input parameters for the stack.
+  /// Map of Parameter structures that specify input parameters for the stack.
   late final pulumi.Output<Map<String, String>> parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The version of the application to deploy. If not supplied, deploys the latest version.
+  /// Version of the application to deploy. If not supplied, deploys the latest version.
   late final pulumi.Output<String> semanticVersion;
-  /// A list of tags to associate with this stack. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [CloudFormationStack].

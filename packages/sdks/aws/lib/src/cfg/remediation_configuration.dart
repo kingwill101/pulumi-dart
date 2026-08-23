@@ -209,6 +209,51 @@ import 'remediation_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cfg_rule" "this" {
+///   name = "example"
+///   source = {
+///     owner             = "AWS"
+///     source_identifier = "S3_BUCKET_VERSIONING_ENABLED"
+///   }
+/// }
+/// resource "aws_cfg_remediationconfiguration" "this" {
+///   config_rule_name = aws_cfg_rule.this.name
+///   resource_type    = "AWS::S3::Bucket"
+///   target_type      = "SSM_DOCUMENT"
+///   target_id        = "AWS-EnableS3BucketEncryption"
+///   target_version   = "1"
+///   parameters {
+///     name         = "AutomationAssumeRole"
+///     static_value = "arn:aws:iam::875924563244:role/security_config"
+///   }
+///   parameters {
+///     name           = "BucketName"
+///     resource_value = "RESOURCE_ID"
+///   }
+///   parameters {
+///     name         = "SSEAlgorithm"
+///     static_value = "AES256"
+///   }
+///   automatic                  = true
+///   maximum_automatic_attempts = 10
+///   retry_attempt_seconds      = 600
+///   execution_controls = {
+///     ssm_controls = {
+///       concurrent_execution_rate_percentage = 25
+///       error_percentage                     = 20
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -223,8 +268,8 @@ import 'remediation_configuration_state.dart';
 /// import com.pulumi.aws.cfg.inputs.RemediationConfigurationParameterArgs;
 /// import com.pulumi.aws.cfg.inputs.RemediationConfigurationExecutionControlsArgs;
 /// import com.pulumi.aws.cfg.inputs.RemediationConfigurationExecutionControlsSsmControlsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -314,10 +359,22 @@ import 'remediation_configuration_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Remediation Configurations using the name config_rule_name. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `configRuleName` (String) Name of the AWS Config rule.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Remediation Configurations using the `configRuleName`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cfg/remediationConfiguration:RemediationConfiguration this example
+/// $ pulumi import aws:cfg/remediationConfiguration:RemediationConfiguration example example
 /// ```
 class RemediationConfiguration extends pulumi.CustomResource {
   /// ARN of the Config Remediation Configuration.

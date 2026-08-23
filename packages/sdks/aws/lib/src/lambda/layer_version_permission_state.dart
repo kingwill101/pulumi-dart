@@ -8,7 +8,7 @@ class LayerVersionPermissionState {
   final pulumi.Input<String>? action;
   /// Name or ARN of the Lambda Layer.
   final pulumi.Input<String>? layerName;
-  /// AWS Organization ID that should be able to use your Lambda Layer. `principal` should be set to `*` when `organization_id` is provided.
+  /// AWS Organization ID that should be able to use your Lambda Layer. `principal` should be set to `*` when `organizationId` is provided.
   final pulumi.Input<String>? organizationId;
   /// Full Lambda Layer Permission policy.
   final pulumi.Input<String>? policy;
@@ -30,7 +30,7 @@ class LayerVersionPermissionState {
   /// Creates a new [LayerVersionPermissionState].
   /// [action] Action that will be allowed. `lambda:GetLayerVersion` is the standard value for layer access.
   /// [layerName] Name or ARN of the Lambda Layer.
-  /// [organizationId] AWS Organization ID that should be able to use your Lambda Layer. `principal` should be set to `*` when `organization_id` is provided.
+  /// [organizationId] AWS Organization ID that should be able to use your Lambda Layer. `principal` should be set to `*` when `organizationId` is provided.
   /// [policy] Full Lambda Layer Permission policy.
   /// [principal] AWS account ID that should be able to use your Lambda Layer. Use `*` to share with all AWS accounts.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -81,4 +81,3 @@ class LayerVersionPermissionState {
     );
   }
 }
-

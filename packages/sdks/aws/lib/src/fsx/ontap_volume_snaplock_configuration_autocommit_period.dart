@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OntapVolumeSnaplockConfigurationAutocommitPeriod {
-  /// The type of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume. Setting this value to `NONE` disables autocommit. Valid values: `MINUTES`, `HOURS`, `DAYS`, `MONTHS`, `YEARS`, `NONE`.
+  /// Type of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume. Setting this value to `NONE` disables autocommit. Valid values: `MINUTES`, `HOURS`, `DAYS`, `MONTHS`, `YEARS`, `NONE`.
   final pulumi.Input<String>? type;
-  /// The amount of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume.
+  /// Amount of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume.
   final pulumi.Input<int>? value;
 
   /// Creates a new [OntapVolumeSnaplockConfigurationAutocommitPeriod].
-  /// [type] The type of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume. Setting this value to `NONE` disables autocommit. Valid values: `MINUTES`, `HOURS`, `DAYS`, `MONTHS`, `YEARS`, `NONE`.
-  /// [value] The amount of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume.
+  /// [type] Type of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume. Setting this value to `NONE` disables autocommit. Valid values: `MINUTES`, `HOURS`, `DAYS`, `MONTHS`, `YEARS`, `NONE`.
+  /// [value] Amount of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume.
   const OntapVolumeSnaplockConfigurationAutocommitPeriod({
     this.type,
     this.value,
@@ -30,4 +30,3 @@ class OntapVolumeSnaplockConfigurationAutocommitPeriod {
     );
   }
 }
-

@@ -5,16 +5,16 @@ import 'domain_default_space_settings_jupyter_server_app_settings_code_repositor
 import 'domain_default_space_settings_jupyter_server_app_settings_default_resource_spec.dart';
 
 class DomainDefaultSpaceSettingsJupyterServerAppSettings {
-  /// A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. see `code_repository` Block below.
+  /// A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. see `codeRepository` Block below.
   final pulumi.Input<List<DomainDefaultSpaceSettingsJupyterServerAppSettingsCodeRepository>>? codeRepositories;
-  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `default_resource_spec` Block below.
+  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block below.
   final pulumi.Input<DomainDefaultSpaceSettingsJupyterServerAppSettingsDefaultResourceSpec>? defaultResourceSpec;
   /// The Amazon Resource Name (ARN) of the Lifecycle Configurations.
   final pulumi.Input<List<String>>? lifecycleConfigArns;
 
   /// Creates a new [DomainDefaultSpaceSettingsJupyterServerAppSettings].
-  /// [codeRepositories] A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. see `code_repository` Block below.
-  /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `default_resource_spec` Block below.
+  /// [codeRepositories] A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. see `codeRepository` Block below.
+  /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block below.
   /// [lifecycleConfigArns] The Amazon Resource Name (ARN) of the Lifecycle Configurations.
   const DomainDefaultSpaceSettingsJupyterServerAppSettings({
     this.codeRepositories,
@@ -38,4 +38,3 @@ class DomainDefaultSpaceSettingsJupyterServerAppSettings {
     );
   }
 }
-

@@ -68,7 +68,7 @@ import 'encryption_control_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcEncryptionControl(ctx, "example", &ec2.VpcEncryptionControlArgs{
-/// 			VpcId: exampleVpc.ID(),
+/// 			VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			Mode:  pulumi.String("monitor"),
 /// 		})
 /// 		if err != nil {
@@ -76,6 +76,23 @@ import 'encryption_control_timeouts.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpcencryptioncontrol" "example" {
+///   vpc_id = aws_ec2_vpc.example.id
+///   mode   = "monitor"
+/// }
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.1.0.0/16"
 /// }
 /// ```
 /// ```java
@@ -88,8 +105,8 @@ import 'encryption_control_timeouts.dart';
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.ec2.VpcEncryptionControl;
 /// import com.pulumi.aws.ec2.VpcEncryptionControlArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -130,6 +147,18 @@ import 'encryption_control_timeouts.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) VPC Encryption Control ID.
+///
+/// #### Optional
+///
+/// * `accountId` (String) Account ID where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import VPC Encryption Control using the `id`. For example:
 ///
 /// ```sh
@@ -168,15 +197,15 @@ class EncryptionControl extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// State of exclusions from encryption enforcement.
   /// Will be `nil` if `mode` is `monitor`.
-  /// See `resource_exclusions` below
+  /// See `resourceExclusions` below
   late final pulumi.Output<EncryptionControlResourceExclusions> resourceExclusions;
   /// The current state of the VPC Encryption Control.
   late final pulumi.Output<String> state;
   /// A message providing additional information about the state of the VPC Encryption Control.
   late final pulumi.Output<String> stateMessage;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<EncryptionControlTimeouts?> timeouts;
   /// Whether to exclude Virtual Private Gateways from encryption enforcement.

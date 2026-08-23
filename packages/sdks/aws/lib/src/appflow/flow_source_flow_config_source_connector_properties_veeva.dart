@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlowSourceFlowConfigSourceConnectorPropertiesVeeva {
   /// Document type specified in the Veeva document extract flow.
   final pulumi.Input<String>? documentType;
-  /// Boolean value to include All Versions of files in Veeva document extract flow.
+  /// Whether to include all versions of files in the Veeva document extract flow.
   final pulumi.Input<bool>? includeAllVersions;
-  /// Boolean value to include file renditions in Veeva document extract flow.
+  /// Whether to include file renditions in the Veeva document extract flow.
   final pulumi.Input<bool>? includeRenditions;
-  /// Boolean value to include source files in Veeva document extract flow.
+  /// Whether to include source files in the Veeva document extract flow.
   final pulumi.Input<bool>? includeSourceFiles;
   final pulumi.Input<String> object_;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesVeeva].
   /// [documentType] Document type specified in the Veeva document extract flow.
-  /// [includeAllVersions] Boolean value to include All Versions of files in Veeva document extract flow.
-  /// [includeRenditions] Boolean value to include file renditions in Veeva document extract flow.
-  /// [includeSourceFiles] Boolean value to include source files in Veeva document extract flow.
+  /// [includeAllVersions] Whether to include all versions of files in the Veeva document extract flow.
+  /// [includeRenditions] Whether to include file renditions in the Veeva document extract flow.
+  /// [includeSourceFiles] Whether to include source files in the Veeva document extract flow.
   /// [object_] Required.
   const FlowSourceFlowConfigSourceConnectorPropertiesVeeva({
     this.documentType,
@@ -47,4 +47,3 @@ class FlowSourceFlowConfigSourceConnectorPropertiesVeeva {
     );
   }
 }
-

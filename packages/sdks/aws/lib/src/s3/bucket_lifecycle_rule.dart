@@ -7,35 +7,35 @@ import 'bucket_lifecycle_rule_noncurrent_version_transition.dart';
 import 'bucket_lifecycle_rule_transition.dart';
 
 class BucketLifecycleRule {
-  /// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+  /// Number of days after initiating a multipart upload when the multipart upload must be completed.
   final pulumi.Input<int>? abortIncompleteMultipartUploadDays;
-  /// Specifies lifecycle rule status.
+  /// Lifecycle rule status.
   final pulumi.Input<bool> enabled;
-  /// Specifies a period in the object's expire. See Expiration below for details.
+  /// Configuration of the object expiration. See `expiration` Block below for details.
   final pulumi.Input<BucketLifecycleRuleExpiration>? expiration;
   /// Unique identifier for the rule. Must be less than or equal to 255 characters in length.
   final pulumi.Input<String>? id;
-  /// Specifies when noncurrent object versions expire. See Noncurrent Version Expiration below for details.
+  /// When noncurrent object versions expire. See `noncurrentVersionExpiration` Block below for details.
   final pulumi.Input<BucketLifecycleRuleNoncurrentVersionExpiration>? noncurrentVersionExpiration;
-  /// Specifies when noncurrent object versions transitions. See Noncurrent Version Transition below for details.
+  /// When noncurrent object versions transition. See `noncurrentVersionTransition` Block below for details.
   final pulumi.Input<List<BucketLifecycleRuleNoncurrentVersionTransition>>? noncurrentVersionTransitions;
   /// Object key prefix identifying one or more objects to which the rule applies.
   final pulumi.Input<String>? prefix;
-  /// Specifies object tags key and value.
+  /// Object tags key and value.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Specifies a period in the object's transitions. See Transition below for details.
+  /// Configuration of the object transition. See `transition` Block below for details.
   final pulumi.Input<List<BucketLifecycleRuleTransition>>? transitions;
 
   /// Creates a new [BucketLifecycleRule].
-  /// [abortIncompleteMultipartUploadDays] Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
-  /// [enabled] Specifies lifecycle rule status.
-  /// [expiration] Specifies a period in the object's expire. See Expiration below for details.
+  /// [abortIncompleteMultipartUploadDays] Number of days after initiating a multipart upload when the multipart upload must be completed.
+  /// [enabled] Lifecycle rule status.
+  /// [expiration] Configuration of the object expiration. See `expiration` Block below for details.
   /// [id] Unique identifier for the rule. Must be less than or equal to 255 characters in length.
-  /// [noncurrentVersionExpiration] Specifies when noncurrent object versions expire. See Noncurrent Version Expiration below for details.
-  /// [noncurrentVersionTransitions] Specifies when noncurrent object versions transitions. See Noncurrent Version Transition below for details.
+  /// [noncurrentVersionExpiration] When noncurrent object versions expire. See `noncurrentVersionExpiration` Block below for details.
+  /// [noncurrentVersionTransitions] When noncurrent object versions transition. See `noncurrentVersionTransition` Block below for details.
   /// [prefix] Object key prefix identifying one or more objects to which the rule applies.
-  /// [tags] Specifies object tags key and value.
-  /// [transitions] Specifies a period in the object's transitions. See Transition below for details.
+  /// [tags] Object tags key and value.
+  /// [transitions] Configuration of the object transition. See `transition` Block below for details.
   const BucketLifecycleRule({
     this.abortIncompleteMultipartUploadDays,
     required this.enabled,
@@ -76,4 +76,3 @@ class BucketLifecycleRule {
     );
   }
 }
-

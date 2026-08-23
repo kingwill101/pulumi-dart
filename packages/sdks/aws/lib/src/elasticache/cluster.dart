@@ -9,17 +9,17 @@ import 'cluster_state.dart';
 /// For working with Redis (Cluster Mode Enabled) replication groups, see the
 /// `aws.elasticache.ReplicationGroup` resource.
 ///
-/// &gt; **Note:** When you change an attribute, such as `num_cache_nodes`, by default
+/// &gt; **Note:** When you change an attribute, such as `numCacheNodes`, by default
 /// it is applied in the next maintenance window. Because of this, this provider may report
 /// a difference in its planning phase because the actual modification has not yet taken
-/// place. You can use the `apply_immediately` flag to instruct the service to apply the
-/// change immediately. Using `apply_immediately` can result in a brief downtime as the server reboots.
+/// place. You can use the `applyImmediately` flag to instruct the service to apply the
+/// change immediately. Using `applyImmediately` can result in a brief downtime as the server reboots.
 /// See the "Changes take effect" section of the "Details" column in the AWS Documentation on Engine specific parameters for
 /// [ElastiCache for Memcached](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/ParameterGroups.Engine.html#ParameterGroups.Memcached) or
-/// [ElastiCache for Valkey and Redis OSS](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/ParameterGroups.Engine.html#ParameterGroups.Redis)
+/// [ElastiCache for Redis OSS](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/ParameterGroups.Engine.html#ParameterGroups.Redis)
 /// for more information.
 ///
-/// &gt; **Note:** Any attribute changes that re-create the resource will be applied immediately, regardless of the value of `apply_immediately`.
+/// &gt; **Note:** Any attribute changes that re-create the resource will be applied immediately, regardless of the value of `applyImmediately`.
 ///
 /// ## Example Usage
 ///
@@ -96,6 +96,24 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_cluster" "example" {
+///   cluster_id           = "cluster-example"
+///   engine               = "memcached"
+///   node_type            = "cache.m4.large"
+///   num_cache_nodes      = 2
+///   parameter_group_name = "default.memcached1.4"
+///   port                 = 11211
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +122,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elasticache.Cluster;
 /// import com.pulumi.aws.elasticache.ClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -220,6 +238,25 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_cluster" "example" {
+///   cluster_id           = "cluster-example"
+///   engine               = "redis"
+///   node_type            = "cache.m4.large"
+///   num_cache_nodes      = 1
+///   parameter_group_name = "default.redis3.2"
+///   engine_version       = "3.2.10"
+///   port                 = 6379
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +265,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elasticache.Cluster;
 /// import com.pulumi.aws.elasticache.ClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -328,6 +365,20 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_cluster" "replica" {
+///   cluster_id           = "cluster-example"
+///   replication_group_id = example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -336,8 +387,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elasticache.Cluster;
 /// import com.pulumi.aws.elasticache.ClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -499,6 +550,36 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_cluster" "test" {
+///   cluster_id        = "mycluster"
+///   engine            = "redis"
+///   node_type         = "cache.t3.micro"
+///   num_cache_nodes   = 1
+///   port              = 6379
+///   apply_immediately = true
+///   log_delivery_configurations {
+///     destination      = example.name
+///     destination_type = "cloudwatch-logs"
+///     log_format       = "text"
+///     log_type         = "slow-log"
+///   }
+///   log_delivery_configurations {
+///     destination      = exampleAwsKinesisFirehoseDeliveryStream.name
+///     destination_type = "kinesis-firehose"
+///     log_format       = "json"
+///     log_type         = "engine-log"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -508,8 +589,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.aws.elasticache.Cluster;
 /// import com.pulumi.aws.elasticache.ClusterArgs;
 /// import com.pulumi.aws.elasticache.inputs.ClusterLogDeliveryConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -714,7 +795,7 @@ import 'cluster_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnet, err := ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
-/// 			VpcId:     exampleVpc.ID(),
+/// 			VpcId:     exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			CidrBlock: pulumi.String("10.0.1.0/24"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("my-subnet"),
@@ -726,7 +807,7 @@ import 'cluster_state.dart';
 /// 		exampleSubnetGroup, err := elasticache.NewSubnetGroup(ctx, "example", &elasticache.SubnetGroupArgs{
 /// 			Name: pulumi.String("my-cache-subnet"),
 /// 			SubnetIds: pulumi.StringArray{
-/// 				exampleSubnet.ID(),
+/// 				exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -750,6 +831,47 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_outposts_getoutposts" "example" {
+/// }
+/// data "aws_outposts_getoutpost" "exampleGetOutpost" {
+///   id = data.aws_outposts_getoutposts.example.ids[0]
+/// }
+///
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_subnet" "example" {
+///   vpc_id     = aws_ec2_vpc.example.id
+///   cidr_block = "10.0.1.0/24"
+///   tags = {
+///     "Name" = "my-subnet"
+///   }
+/// }
+/// resource "aws_elasticache_subnetgroup" "example" {
+///   name       = "my-cache-subnet"
+///   subnet_ids = [aws_ec2_subnet.example.id]
+/// }
+/// resource "aws_elasticache_cluster" "example" {
+///   cluster_id            = "cluster-example"
+///   outpost_mode          = "single-outpost"
+///   preferred_outpost_arn = data.aws_outposts_getoutpost.exampleGetOutpost.arn
+///   engine                = "memcached"
+///   node_type             = "cache.r5.large"
+///   num_cache_nodes       = 2
+///   parameter_group_name  = "default.memcached1.4"
+///   port                  = 11211
+///   subnet_group_name     = aws_elasticache_subnetgroup.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -767,8 +889,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.aws.elasticache.SubnetGroupArgs;
 /// import com.pulumi.aws.elasticache.Cluster;
 /// import com.pulumi.aws.elasticache.ClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -867,7 +989,7 @@ import 'cluster_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import ElastiCache Clusters using the `cluster_id`. For example:
+/// Using `pulumi import`, import ElastiCache Clusters using the `clusterId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:elasticache/cluster:Cluster my_cluster my_cluster
@@ -881,11 +1003,11 @@ class Cluster extends pulumi.CustomResource {
   /// Only supported for engine type `"redis"` and if the engine version is 6 or higher.
   /// Defaults to `true`.
   late final pulumi.Output<String?> autoMinorVersionUpgrade;
-  /// Availability Zone for the cache cluster. If you want to create cache nodes in multi-az, use `preferred_availability_zones` instead. Default: System chosen Availability Zone. Changing this value will re-create the resource.
+  /// Availability Zone for the cache cluster. If you want to create cache nodes in multi-az, use `preferredAvailabilityZones` instead. Default: System chosen Availability Zone. Changing this value will re-create the resource.
   late final pulumi.Output<String> availabilityZone;
-  /// Whether the nodes in this Memcached node group are created in a single Availability Zone or created across multiple Availability Zones in the cluster's region. Valid values for this parameter are `single-az` or `cross-az`, default is `single-az`. If you want to choose `cross-az`, `num_cache_nodes` must be greater than `1`.
+  /// Whether the nodes in this Memcached node group are created in a single Availability Zone or created across multiple Availability Zones in the cluster's region. Valid values for this parameter are `single-az` or `cross-az`, default is `single-az`. If you want to choose `cross-az`, `numCacheNodes` must be greater than `1`.
   late final pulumi.Output<String> azMode;
-  /// List of node objects including `id`, `address`, `port` and `availability_zone`.
+  /// List of node objects including `id`, `address`, `port` and `availabilityZone`.
   late final pulumi.Output<List<Map<String, dynamic>>> cacheNodes;
   /// (Memcached only) DNS name of the cache cluster without the port appended.
   late final pulumi.Output<String> clusterAddress;
@@ -893,7 +1015,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> clusterId;
   /// (Memcached only) Configuration endpoint to allow host discovery.
   late final pulumi.Output<String> configurationEndpoint;
-  /// Name of the cache engine to be used for this cache cluster. Valid values are `memcached`, `redis` and `valkey`.
+  /// Name of the cache engine to be used for this cache cluster. Valid values are `memcached`, `redis`.
   late final pulumi.Output<String> engine;
   /// Version number of the cache engine to be used.
   /// If not set, defaults to the latest version.
@@ -902,7 +1024,7 @@ class Cluster extends pulumi.CustomResource {
   /// When the version is 6, the major and minor version can be set, e.g., `6.2`,
   /// or the minor version can be unspecified which will use the latest version at creation time, e.g., `6.x`.
   /// Otherwise, specify the full version desired, e.g., `5.0.6`.
-  /// The actual engine version used is returned in the attribute `engine_version_actual`, see Attribute Reference below. Cannot be provided with `replication_group_id.`
+  /// The actual engine version used is returned in the attribute `engineVersionActual`, see Attribute Reference below. Cannot be provided with `replication_group_id.`
   late final pulumi.Output<String> engineVersion;
   /// Because ElastiCache pulls the latest minor or patch for a version, this attribute returns the running version of the cache engine.
   late final pulumi.Output<String> engineVersionActual;
@@ -916,10 +1038,10 @@ class Cluster extends pulumi.CustomResource {
   /// on the cache cluster is performed. The format is `ddd:hh24:mi-ddd:hh24:mi` (24H Clock UTC).
   /// The minimum maintenance window is a 60 minute period. Example: `sun:05:00-sun:09:00`.
   late final pulumi.Output<String> maintenanceWindow;
-  /// The IP versions for cache cluster connections. IPv6 is supported with Redis engine `6.2` onword or Memcached version `1.6.6` for all [Nitro system](https://aws.amazon.com/ec2/nitro/) instances. Valid values are `ipv4`, `ipv6` or `dual_stack`.
+  /// The IP versions for cache cluster connections. IPv6 is supported with Redis engine `6.2` onword or Memcached version `1.6.6` for all [Nitro system](https://aws.amazon.com/ec2/nitro/) instances. Valid values are `ipv4`, `ipv6` or `dualStack`.
   late final pulumi.Output<String> networkType;
   /// The instance class used.
-  /// See AWS documentation for information on [supported node types for Valkey or Redis OSS](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.CurrentGen) and [guidance on selecting node types for Valkey or Redis OSS](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SelectSize.html#CacheNodes.SelectSize.redis).
+  /// See AWS documentation for information on [supported node types for Redis OSS](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.CurrentGen) and [guidance on selecting node types for Redis OSS](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SelectSize.html#CacheNodes.SelectSize.redis).
   /// See AWS documentation for information on [supported node types for Memcached](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.CurrentGen-Memcached) and [guidance on selecting node types for Memcached](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SelectSize.html#CacheNodes.SelectSize.Mem).
   /// For Memcached, changing this value will re-create the resource.
   late final pulumi.Output<String> nodeType;
@@ -931,9 +1053,9 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String?> outpostMode;
   /// The name of the parameter group to associate with this cache cluster.
   late final pulumi.Output<String> parameterGroupName;
-  /// The port number on which each of the cache nodes will accept connections. For Memcached the default is 11211, and for Redis the default port is 6379. Cannot be provided with `replication_group_id`. Changing this value will re-create the resource.
+  /// The port number on which each of the cache nodes will accept connections. For Memcached the default is 11211, and for Redis the default port is 6379. Cannot be provided with `replicationGroupId`. Changing this value will re-create the resource.
   late final pulumi.Output<int> port;
-  /// List of the Availability Zones in which cache nodes are created. If you are creating your cluster in an Amazon VPC you can only locate nodes in Availability Zones that are associated with the subnets in the selected subnet group. The number of Availability Zones listed must equal the value of `num_cache_nodes`. If you want all the nodes in the same Availability Zone, use `availability_zone` instead, or repeat the Availability Zone multiple times in the list. Default: System chosen Availability Zones. Detecting drift of existing node availability zone is not currently supported. Updating this argument by itself to migrate existing node availability zones is not currently supported and will show a perpetual difference.
+  /// List of the Availability Zones in which cache nodes are created. If you are creating your cluster in an Amazon VPC you can only locate nodes in Availability Zones that are associated with the subnets in the selected subnet group. The number of Availability Zones listed must equal the value of `numCacheNodes`. If you want all the nodes in the same Availability Zone, use `availabilityZone` instead, or repeat the Availability Zone multiple times in the list. Default: System chosen Availability Zones. Detecting drift of existing node availability zone is not currently supported. Updating this argument by itself to migrate existing node availability zones is not currently supported and will show a perpetual difference.
   late final pulumi.Output<List<String>?> preferredAvailabilityZones;
   /// The outpost ARN in which the cache cluster will be created.
   late final pulumi.Output<String> preferredOutpostArn;
@@ -943,21 +1065,21 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> replicationGroupId;
   /// One or more VPC security groups associated with the cache cluster. Cannot be provided with `replication_group_id.`
   late final pulumi.Output<List<String>> securityGroupIds;
-  /// Single-element string list containing an Amazon Resource Name (ARN) of a Redis RDB snapshot file stored in Amazon S3. The object name cannot contain any commas. Changing `snapshot_arns` forces a new resource.
+  /// Single-element string list containing an Amazon Resource Name (ARN) of a Redis RDB snapshot file stored in Amazon S3. The object name cannot contain any commas. Changing `snapshotArns` forces a new resource.
   late final pulumi.Output<String?> snapshotArns;
-  /// Name of a snapshot from which to restore data into the new node group. Changing `snapshot_name` forces a new resource.
+  /// Name of a snapshot from which to restore data into the new node group. Changing `snapshotName` forces a new resource.
   late final pulumi.Output<String?> snapshotName;
-  /// Number of days for which ElastiCache will retain automatic cache cluster snapshots before deleting them. For example, if you set SnapshotRetentionLimit to 5, then a snapshot that was taken today will be retained for 5 days before being deleted. If the value of SnapshotRetentionLimit is set to zero (0), backups are turned off. Please note that setting a `snapshot_retention_limit` is not supported on cache.t1.micro cache nodes
+  /// Number of days for which ElastiCache will retain automatic cache cluster snapshots before deleting them. For example, if you set SnapshotRetentionLimit to 5, then a snapshot that was taken today will be retained for 5 days before being deleted. If the value of SnapshotRetentionLimit is set to zero (0), backups are turned off. Please note that setting a `snapshotRetentionLimit` is not supported on cache.t1.micro cache nodes
   late final pulumi.Output<int?> snapshotRetentionLimit;
   /// Daily time range (in UTC) during which ElastiCache will begin taking a daily snapshot of your cache cluster. Example: 05:00-09:00
   late final pulumi.Output<String> snapshotWindow;
   /// Name of the subnet group to be used for the cache cluster. Changing this value will re-create the resource. Cannot be provided with `replication_group_id.`
   late final pulumi.Output<String> subnetGroupName;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Enable encryption in-transit. Supported with Memcached versions `1.6.12` and later, Valkey `7.2` and later, Redis OSS versions `3.2.6`, `4.0.10` and later, running in a VPC. See the [ElastiCache in-transit encryption documentation](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/in-transit-encryption.html#in-transit-encryption-constraints) for more details.
+  /// Enable encryption in-transit. Supported with Memcached versions `1.6.12` and later, Redis OSS versions `3.2.6`, `4.0.10` and later, running in a VPC. See the [ElastiCache in-transit encryption documentation](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/in-transit-encryption.html#in-transit-encryption-constraints) for more details.
   late final pulumi.Output<bool> transitEncryptionEnabled;
 
   /// Creates a new [Cluster].

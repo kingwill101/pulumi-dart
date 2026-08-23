@@ -6,14 +6,14 @@ import 'get_contributor_managed_insight_rules_managed_rule_rule_state.dart';
 class GetContributorManagedInsightRulesManagedRule {
   /// ARN of an Amazon Web Services resource that has managed Contributor Insights rules.
   final pulumi.Input<String> resourceArn;
-  /// Describes the state of a managed rule. If the rule is enabled, it contains information about the Contributor Insights rule that contains information about the related Amazon Web Services resource. See `rule_state reference` below for details.
+  /// Describes the state of a managed rule. If the rule is enabled, it contains information about the Contributor Insights rule that contains information about the related Amazon Web Services resource. See `ruleState reference` below for details.
   final pulumi.Input<List<GetContributorManagedInsightRulesManagedRuleRuleState>> ruleStates;
   /// Template name for the managed rule. Used to enable managed rules using `PutManagedInsightRules`.
   final pulumi.Input<String> templateName;
 
   /// Creates a new [GetContributorManagedInsightRulesManagedRule].
   /// [resourceArn] ARN of an Amazon Web Services resource that has managed Contributor Insights rules.
-  /// [ruleStates] Describes the state of a managed rule. If the rule is enabled, it contains information about the Contributor Insights rule that contains information about the related Amazon Web Services resource. See `rule_state reference` below for details.
+  /// [ruleStates] Describes the state of a managed rule. If the rule is enabled, it contains information about the Contributor Insights rule that contains information about the related Amazon Web Services resource. See `ruleState reference` below for details.
   /// [templateName] Template name for the managed rule. Used to enable managed rules using `PutManagedInsightRules`.
   const GetContributorManagedInsightRulesManagedRule({
     required this.resourceArn,
@@ -37,4 +37,3 @@ class GetContributorManagedInsightRulesManagedRule {
     );
   }
 }
-

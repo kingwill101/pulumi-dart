@@ -70,7 +70,7 @@ import 'backend_environment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = amplify.NewBackendEnvironment(ctx, "example", &amplify.BackendEnvironmentArgs{
-/// 			AppId:               example.ID(),
+/// 			AppId:               example.ID().ToIDOutput().ToStringOutput(),
 /// 			EnvironmentName:     pulumi.String("example"),
 /// 			DeploymentArtifacts: pulumi.String("app-example-deployment"),
 /// 			StackName:           pulumi.String("amplify-app-example"),
@@ -80,6 +80,25 @@ import 'backend_environment_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amplify_app" "example" {
+///   name = "example"
+/// }
+/// resource "aws_amplify_backendenvironment" "example" {
+///   app_id               = aws_amplify_app.example.id
+///   environment_name     = "example"
+///   deployment_artifacts = "app-example-deployment"
+///   stack_name           = "amplify-app-example"
 /// }
 /// ```
 /// ```java
@@ -92,8 +111,8 @@ import 'backend_environment_state.dart';
 /// import com.pulumi.aws.amplify.AppArgs;
 /// import com.pulumi.aws.amplify.BackendEnvironment;
 /// import com.pulumi.aws.amplify.BackendEnvironmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -138,7 +157,7 @@ import 'backend_environment_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amplify backend environment using `app_id` and `environment_name`. For example:
+/// Using `pulumi import`, import Amplify backend environment using `appId` and `environmentName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:amplify/backendEnvironment:BackendEnvironment example d2ypk4k47z8u6/example

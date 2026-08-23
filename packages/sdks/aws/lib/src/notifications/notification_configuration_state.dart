@@ -19,10 +19,10 @@ class NotificationConfigurationState {
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
   /// Map of tags to assign to the resource. A tag is a string-to-string map of key-value pairs. If
-  /// configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those
+  /// configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those
   /// defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags`
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags`
   /// configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -32,7 +32,7 @@ class NotificationConfigurationState {
   /// [description] Description of the NotificationConfiguration. Length constraints: Minimum length of 0,
   /// [name] Name of the NotificationConfiguration. Supports RFC 3986's unreserved characters. Length
   /// [tags] Map of tags to assign to the resource. A tag is a string-to-string map of key-value pairs. If
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags`
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags`
   const NotificationConfigurationState({
     this.aggregationDuration,
     this.arn,
@@ -64,4 +64,3 @@ class NotificationConfigurationState {
     );
   }
 }
-

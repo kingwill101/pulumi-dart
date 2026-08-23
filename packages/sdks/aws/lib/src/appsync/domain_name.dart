@@ -61,6 +61,20 @@ import 'domain_name_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appsync_domainname" "example" {
+///   domain_name     = "api.example.com"
+///   certificate_arn = exampleAwsAcmCertificate.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'domain_name_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appsync.DomainName;
 /// import com.pulumi.aws.appsync.DomainNameArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -112,7 +126,7 @@ class DomainName extends pulumi.CustomResource {
   late final pulumi.Output<String> appsyncDomainName;
   /// ARN of the certificate. This can be an Certificate Manager (ACM) certificate or an Identity and Access Management (IAM) server certificate. The certifiacte must reside in us-east-1.
   late final pulumi.Output<String> certificateArn;
-  /// A description of the Domain Name.
+  /// Description of the Domain Name.
   late final pulumi.Output<String?> description;
   /// Domain name.
   late final pulumi.Output<String> domainName;

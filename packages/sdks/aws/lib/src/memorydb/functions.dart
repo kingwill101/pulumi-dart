@@ -66,6 +66,19 @@ import 'get_user_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_memorydb_getacl" "example" {
+///   name = "my-acl"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +87,8 @@ import 'get_user_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.memorydb.MemorydbFunctions;
 /// import com.pulumi.aws.memorydb.inputs.GetAclArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -171,6 +184,19 @@ Future<GetAclResult> getAcl(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_memorydb_getcluster" "example" {
+///   name = "my-cluster"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +205,8 @@ Future<GetAclResult> getAcl(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.memorydb.MemorydbFunctions;
 /// import com.pulumi.aws.memorydb.inputs.GetClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -276,6 +302,19 @@ Future<GetClusterResult> getCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_memorydb_getparametergroup" "example" {
+///   name = "my-parameter-group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -284,8 +323,8 @@ Future<GetClusterResult> getCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.memorydb.MemorydbFunctions;
 /// import com.pulumi.aws.memorydb.inputs.GetParameterGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -381,6 +420,19 @@ Future<GetParameterGroupResult> getParameterGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_memorydb_getsnapshot" "example" {
+///   name = "my-snapshot"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -389,8 +441,8 @@ Future<GetParameterGroupResult> getParameterGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.memorydb.MemorydbFunctions;
 /// import com.pulumi.aws.memorydb.inputs.GetSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -486,6 +538,19 @@ Future<GetSnapshotResult> getSnapshot(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_memorydb_getsubnetgroup" "example" {
+///   name = "my-subnet-group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -494,8 +559,8 @@ Future<GetSnapshotResult> getSnapshot(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.memorydb.MemorydbFunctions;
 /// import com.pulumi.aws.memorydb.inputs.GetSubnetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -591,6 +656,19 @@ Future<GetSubnetGroupResult> getSubnetGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_memorydb_getuser" "example" {
+///   user_name = "my-user"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -599,8 +677,8 @@ Future<GetSubnetGroupResult> getSubnetGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.memorydb.MemorydbFunctions;
 /// import com.pulumi.aws.memorydb.inputs.GetUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

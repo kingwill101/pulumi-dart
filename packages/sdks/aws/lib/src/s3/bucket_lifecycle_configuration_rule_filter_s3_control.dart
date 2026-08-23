@@ -30,4 +30,3 @@ class BucketLifecycleConfigurationRuleFilterS3Control {
     );
   }
 }
-

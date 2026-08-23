@@ -22,7 +22,7 @@ class CapabilityState {
   final pulumi.Input<String>? roleArn;
   /// Key-value map of resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<CapabilityTimeouts>? timeouts;
   /// Type of the capability. Valid values: `ACK`, `KRO`, `ARGOCD`.
@@ -39,7 +39,7 @@ class CapabilityState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] ARN of the IAM role to associate with the capability.
   /// [tags] Key-value map of resource tags.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   /// [type] Type of the capability. Valid values: `ACK`, `KRO`, `ARGOCD`.
   /// [version] Version of the capability.
@@ -92,4 +92,3 @@ class CapabilityState {
     );
   }
 }
-

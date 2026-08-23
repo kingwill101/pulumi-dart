@@ -8,9 +8,9 @@ import 'secondary_subnet_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_ec2_secondary_subnet_secondary_subnet_args_doc}
 class SecondarySubnetArgs {
-  /// Availability Zone for the secondary subnet. Cannot be specified with `availability_zone_id`.
+  /// Availability Zone for the secondary subnet. Cannot be specified with `availabilityZoneId`.
   final pulumi.Input<String>? availabilityZone;
-  /// ID of the Availability Zone for the secondary subnet. This option is preferred over `availability_zone` as it provides a consistent identifier across AWS accounts. Cannot be specified with `availability_zone`.
+  /// ID of the Availability Zone for the secondary subnet. This option is preferred over `availabilityZone` as it provides a consistent identifier across AWS accounts. Cannot be specified with `availabilityZone`.
   final pulumi.Input<String>? availabilityZoneId;
   /// IPv4 CIDR block for the secondary subnet. The CIDR block size must be between `/12` and `/28`.
   final pulumi.Input<String> ipv4CidrBlock;
@@ -18,17 +18,17 @@ class SecondarySubnetArgs {
   final pulumi.Input<String>? region;
   /// ID of the secondary network in which to create the secondary subnet.
   final pulumi.Input<String> secondaryNetworkId;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<SecondarySubnetTimeouts>? timeouts;
 
   /// Creates a new [SecondarySubnetArgs].
-  /// [availabilityZone] Availability Zone for the secondary subnet. Cannot be specified with `availability_zone_id`.
-  /// [availabilityZoneId] ID of the Availability Zone for the secondary subnet. This option is preferred over `availability_zone` as it provides a consistent identifier across AWS accounts. Cannot be specified with `availability_zone`.
+  /// [availabilityZone] Availability Zone for the secondary subnet. Cannot be specified with `availabilityZoneId`.
+  /// [availabilityZoneId] ID of the Availability Zone for the secondary subnet. This option is preferred over `availabilityZone` as it provides a consistent identifier across AWS accounts. Cannot be specified with `availabilityZone`.
   /// [ipv4CidrBlock] IPv4 CIDR block for the secondary subnet. The CIDR block size must be between `/12` and `/28`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [secondaryNetworkId] ID of the secondary network in which to create the secondary subnet.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   const SecondarySubnetArgs({
     this.availabilityZone,
@@ -64,4 +64,3 @@ class SecondarySubnetArgs {
     );
   }
 }
-

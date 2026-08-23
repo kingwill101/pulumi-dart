@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceShareAccepterArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The ARN of the resource share.
+  /// ARN of the resource share.
   final pulumi.Input<String> shareArn;
 
   /// Creates a new [ResourceShareAccepterArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [shareArn] The ARN of the resource share.
+  /// [shareArn] ARN of the resource share.
   const ResourceShareAccepterArgs({
     this.region,
     required this.shareArn,
@@ -34,4 +34,3 @@ class ResourceShareAccepterArgs {
     );
   }
 }
-

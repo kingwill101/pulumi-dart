@@ -66,6 +66,21 @@ import 'sdkvoice_global_settings_voice_connector.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_chime_sdkvoiceglobalsettings" "example" {
+///   voice_connector = {
+///     cdr_bucket = "example-bucket-name"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'sdkvoice_global_settings_voice_connector.dart';
 /// import com.pulumi.aws.chime.SdkvoiceGlobalSettings;
 /// import com.pulumi.aws.chime.SdkvoiceGlobalSettingsArgs;
 /// import com.pulumi.aws.chime.inputs.SdkvoiceGlobalSettingsVoiceConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

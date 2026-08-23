@@ -93,7 +93,7 @@ import 'method_state.dart';
 /// 			return err
 /// 		}
 /// 		myDemoResource, err := apigateway.NewResource(ctx, "MyDemoResource", &apigateway.ResourceArgs{
-/// 			RestApi:  myDemoAPI.ID(),
+/// 			RestApi:  myDemoAPI.ID().ToIDOutput().ToStringOutput(),
 /// 			ParentId: myDemoAPI.RootResourceId,
 /// 			PathPart: pulumi.String("mydemoresource"),
 /// 		})
@@ -101,8 +101,8 @@ import 'method_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewMethod(ctx, "MyDemoMethod", &apigateway.MethodArgs{
-/// 			RestApi:       myDemoAPI.ID(),
-/// 			ResourceId:    myDemoResource.ID(),
+/// 			RestApi:       myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId:    myDemoResource.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpMethod:    pulumi.String("GET"),
 /// 			Authorization: pulumi.String("NONE"),
 /// 		})
@@ -111,6 +111,31 @@ import 'method_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_restapi" "MyDemoAPI" {
+///   name        = "MyDemoAPI"
+///   description = "This is my API for demonstration purposes"
+/// }
+/// resource "aws_apigateway_resource" "MyDemoResource" {
+///   rest_api  = aws_apigateway_restapi.MyDemoAPI.id
+///   parent_id = aws_apigateway_restapi.MyDemoAPI.root_resource_id
+///   path_part = "mydemoresource"
+/// }
+/// resource "aws_apigateway_method" "MyDemoMethod" {
+///   rest_api      = aws_apigateway_restapi.MyDemoAPI.id
+///   resource_id   = aws_apigateway_resource.MyDemoResource.id
+///   http_method   = "GET"
+///   authorization = "NONE"
 /// }
 /// ```
 /// ```java
@@ -125,8 +150,8 @@ import 'method_state.dart';
 /// import com.pulumi.aws.apigateway.ResourceArgs;
 /// import com.pulumi.aws.apigateway.Method;
 /// import com.pulumi.aws.apigateway.MethodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -185,7 +210,7 @@ import 'method_state.dart';
 /// ```
 ///
 ///
-/// ## Usage with Cognito User Pool Authorizer
+/// ### Usage with Cognito User Pool Authorizer
 ///
 ///
 /// ```typescript
@@ -310,7 +335,8 @@ import 'method_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		cfg := config.New(ctx, "")
-/// 		cognitoUserPoolName := cfg.RequireObject("cognitoUserPoolName")
+/// 		var cognitoUserPoolName interface{}
+/// 		cfg.RequireObject("cognitoUserPoolName", &cognitoUserPoolName)
 /// 		this, err := cognito.GetUserPools(ctx, &cognito.GetUserPoolsArgs{
 /// 			Name: cognitoUserPoolName,
 /// 		}, nil)
@@ -324,7 +350,7 @@ import 'method_state.dart';
 /// 			return err
 /// 		}
 /// 		thisResource, err := apigateway.NewResource(ctx, "this", &apigateway.ResourceArgs{
-/// 			RestApi:  thisRestApi.ID(),
+/// 			RestApi:  thisRestApi.ID().ToIDOutput().ToStringOutput(),
 /// 			ParentId: thisRestApi.RootResourceId,
 /// 			PathPart: pulumi.String("{proxy+}"),
 /// 		})
@@ -334,18 +360,18 @@ import 'method_state.dart';
 /// 		thisAuthorizer, err := apigateway.NewAuthorizer(ctx, "this", &apigateway.AuthorizerArgs{
 /// 			Name:         pulumi.String("CognitoUserPoolAuthorizer"),
 /// 			Type:         pulumi.String("COGNITO_USER_POOLS"),
-/// 			RestApi:      thisRestApi.ID(),
-/// 			ProviderArns: interface{}(this.Arns),
+/// 			RestApi:      thisRestApi.ID().ToIDOutput().ToStringOutput(),
+/// 			ProviderArns: toPulumiStringArray(this.Arns),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewMethod(ctx, "any", &apigateway.MethodArgs{
-/// 			RestApi:       thisRestApi.ID(),
-/// 			ResourceId:    thisResource.ID(),
+/// 			RestApi:       thisRestApi.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId:    thisResource.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpMethod:    pulumi.String("ANY"),
 /// 			Authorization: pulumi.String("COGNITO_USER_POOLS"),
-/// 			AuthorizerId:  thisAuthorizer.ID(),
+/// 			AuthorizerId:  thisAuthorizer.ID().ToIDOutput().ToStringOutput(),
 /// 			RequestParameters: pulumi.BoolMap{
 /// 				"method.request.path.proxy": pulumi.Bool(true),
 /// 			},
@@ -355,6 +381,53 @@ import 'method_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// func toPulumiStringArray(arr []string) pulumi.StringArray {
+/// 	var pulumiArr pulumi.StringArray
+/// 	for _, v := range arr {
+/// 		pulumiArr = append(pulumiArr, pulumi.String(v))
+/// 	}
+/// 	return pulumiArr
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cognito_getuserpools" "this" {
+///   name = var.cognitoUserPoolName
+/// }
+///
+/// resource "aws_apigateway_restapi" "this" {
+///   name = "with-authorizer"
+/// }
+/// resource "aws_apigateway_resource" "this" {
+///   rest_api  = aws_apigateway_restapi.this.id
+///   parent_id = aws_apigateway_restapi.this.root_resource_id
+///   path_part = "{proxy+}"
+/// }
+/// resource "aws_apigateway_authorizer" "this" {
+///   name          = "CognitoUserPoolAuthorizer"
+///   type          = "COGNITO_USER_POOLS"
+///   rest_api      = aws_apigateway_restapi.this.id
+///   provider_arns = data.aws_cognito_getuserpools.this.arns
+/// }
+/// resource "aws_apigateway_method" "any" {
+///   rest_api      = aws_apigateway_restapi.this.id
+///   resource_id   = aws_apigateway_resource.this.id
+///   http_method   = "ANY"
+///   authorization = "COGNITO_USER_POOLS"
+///   authorizer_id = aws_apigateway_authorizer.this.id
+///   request_parameters = {
+///     "method.request.path.proxy" = true
+///   }
+/// }
+/// variable "cognitoUserPoolName" {
 /// }
 /// ```
 /// ```java
@@ -373,8 +446,8 @@ import 'method_state.dart';
 /// import com.pulumi.aws.apigateway.AuthorizerArgs;
 /// import com.pulumi.aws.apigateway.Method;
 /// import com.pulumi.aws.apigateway.MethodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -387,7 +460,7 @@ import 'method_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var cognitoUserPoolName = config.get("cognitoUserPoolName");
+///         final var cognitoUserPoolName = config.require("cognitoUserPoolName");
 ///         final var this = CognitoFunctions.getUserPools(GetUserPoolsArgs.builder()
 ///             .name(cognitoUserPoolName)
 ///             .build());
@@ -424,7 +497,7 @@ import 'method_state.dart';
 /// ```yaml
 /// configuration:
 ///   cognitoUserPoolName:
-///     type: dynamic
+///     type: object
 /// resources:
 ///   thisRestApi:
 ///     type: aws:apigateway:RestApi
@@ -467,6 +540,20 @@ import 'method_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `restApiId` (String) ID of the associated REST API.
+/// * `resourceId` (String) API resource ID.
+/// * `httpMethod` (String) HTTP Method.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import `aws.apigateway.Method` using `REST-API-ID/RESOURCE-ID/HTTP-METHOD`. For example:
 ///
 /// ```sh
@@ -487,12 +574,9 @@ class Method extends pulumi.CustomResource {
   late final pulumi.Output<String?> operationName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of the API models used for the request's content type
-  /// where key is the content type (e.g., `application/json`)
-  /// and value is either `Error`, `Empty` (built-in models) or `aws.apigateway.Model`'s `name`.
+  /// Map of the API models used for the request's content type where key is the content type (e.g., `application/json`) and value is either `Error`, `Empty` (built-in models) or `aws.apigateway.Model`'s `name`.
   late final pulumi.Output<Map<String, String>?> requestModels;
-  /// Map of request parameters (from the path, query string and headers) that should be passed to the integration. The boolean value indicates whether the parameter is required (`true`) or optional (`false`).
-  /// For example: `request_parameters = {"method.request.header.X-Some-Header" = true "method.request.querystring.some-query-param" = true}` would define that the header `X-Some-Header` and the query string `some-query-param` must be provided in the request.
+  /// Map of request parameters (from the path, query string and headers) that should be passed to the integration. The boolean value indicates whether the parameter is required (`true`) or optional (`false`). For example: `requestParameters = {"method.request.header.X-Some-Header" = true "method.request.querystring.some-query-param" = true}` would define that the header `X-Some-Header` and the query string `some-query-param` must be provided in the request.
   late final pulumi.Output<Map<String, bool>?> requestParameters;
   /// ID of a `aws.apigateway.RequestValidator`
   late final pulumi.Output<String?> requestValidatorId;

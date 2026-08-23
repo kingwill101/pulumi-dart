@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentMonitor {
   /// ARN of the Amazon CloudWatch alarm.
   final pulumi.Input<String> alarmArn;
-  /// ARN of an IAM role for AWS AppConfig to monitor `alarm_arn`.
+  /// ARN of an IAM role for AWS AppConfig to monitor `alarmArn`.
   final pulumi.Input<String>? alarmRoleArn;
 
   /// Creates a new [EnvironmentMonitor].
   /// [alarmArn] ARN of the Amazon CloudWatch alarm.
-  /// [alarmRoleArn] ARN of an IAM role for AWS AppConfig to monitor `alarm_arn`.
+  /// [alarmRoleArn] ARN of an IAM role for AWS AppConfig to monitor `alarmArn`.
   const EnvironmentMonitor({
     required this.alarmArn,
     this.alarmRoleArn,
@@ -30,4 +30,3 @@ class EnvironmentMonitor {
     );
   }
 }
-

@@ -6,9 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnConcentratorState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// ID of the transit gateway attachment created for the VPN concentrator.
   final pulumi.Input<String>? transitGatewayAttachmentId;
@@ -23,8 +23,8 @@ class VpnConcentratorState {
 
   /// Creates a new [VpnConcentratorState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [transitGatewayAttachmentId] ID of the transit gateway attachment created for the VPN concentrator.
   /// [transitGatewayId] ID of the transit gateway to attach the VPN concentrator to.
   /// [type] Type of VPN concentrator. Valid value: `ipsec.1`.
@@ -63,4 +63,3 @@ class VpnConcentratorState {
     );
   }
 }
-

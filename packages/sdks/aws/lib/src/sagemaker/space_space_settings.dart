@@ -11,27 +11,27 @@ import 'space_space_settings_space_storage_settings.dart';
 class SpaceSpaceSettings {
   /// The type of app created within the space.
   final pulumi.Input<String>? appType;
-  /// The Code Editor application settings. See `code_editor_app_settings` Block below.
+  /// The Code Editor application settings. See `codeEditorAppSettings` Block below.
   final pulumi.Input<SpaceSpaceSettingsCodeEditorAppSettings>? codeEditorAppSettings;
-  /// A file system, created by you, that you assign to a space for an Amazon SageMaker AI Domain. See `custom_file_system` Block below.
+  /// A file system, created by you, that you assign to a space for an Amazon SageMaker AI Domain. See `customFileSystem` Block below.
   final pulumi.Input<List<SpaceSpaceSettingsCustomFileSystem>>? customFileSystems;
-  /// The settings for the JupyterLab application. See `jupyter_lab_app_settings` Block below.
+  /// The settings for the JupyterLab application. See `jupyterLabAppSettings` Block below.
   final pulumi.Input<SpaceSpaceSettingsJupyterLabAppSettings>? jupyterLabAppSettings;
-  /// The Jupyter server's app settings. See `jupyter_server_app_settings` Block below.
+  /// The Jupyter server's app settings. See `jupyterServerAppSettings` Block below.
   final pulumi.Input<SpaceSpaceSettingsJupyterServerAppSettings>? jupyterServerAppSettings;
-  /// The kernel gateway app settings. See `kernel_gateway_app_settings` Block below.
+  /// The kernel gateway app settings. See `kernelGatewayAppSettings` Block below.
   final pulumi.Input<SpaceSpaceSettingsKernelGatewayAppSettings>? kernelGatewayAppSettings;
-  /// The storage settings. See `space_storage_settings` Block below.
+  /// The storage settings. See `spaceStorageSettings` Block below.
   final pulumi.Input<SpaceSpaceSettingsSpaceStorageSettings>? spaceStorageSettings;
 
   /// Creates a new [SpaceSpaceSettings].
   /// [appType] The type of app created within the space.
-  /// [codeEditorAppSettings] The Code Editor application settings. See `code_editor_app_settings` Block below.
-  /// [customFileSystems] A file system, created by you, that you assign to a space for an Amazon SageMaker AI Domain. See `custom_file_system` Block below.
-  /// [jupyterLabAppSettings] The settings for the JupyterLab application. See `jupyter_lab_app_settings` Block below.
-  /// [jupyterServerAppSettings] The Jupyter server's app settings. See `jupyter_server_app_settings` Block below.
-  /// [kernelGatewayAppSettings] The kernel gateway app settings. See `kernel_gateway_app_settings` Block below.
-  /// [spaceStorageSettings] The storage settings. See `space_storage_settings` Block below.
+  /// [codeEditorAppSettings] The Code Editor application settings. See `codeEditorAppSettings` Block below.
+  /// [customFileSystems] A file system, created by you, that you assign to a space for an Amazon SageMaker AI Domain. See `customFileSystem` Block below.
+  /// [jupyterLabAppSettings] The settings for the JupyterLab application. See `jupyterLabAppSettings` Block below.
+  /// [jupyterServerAppSettings] The Jupyter server's app settings. See `jupyterServerAppSettings` Block below.
+  /// [kernelGatewayAppSettings] The kernel gateway app settings. See `kernelGatewayAppSettings` Block below.
+  /// [spaceStorageSettings] The storage settings. See `spaceStorageSettings` Block below.
   const SpaceSpaceSettings({
     this.appType,
     this.codeEditorAppSettings,
@@ -66,4 +66,3 @@ class SpaceSpaceSettings {
     );
   }
 }
-

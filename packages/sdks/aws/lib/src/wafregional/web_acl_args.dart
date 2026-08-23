@@ -22,7 +22,7 @@ class WebAclArgs {
   final pulumi.Input<String>? region;
   /// Set of configuration blocks containing rules for the web ACL. Detailed below.
   final pulumi.Input<List<WebAclRule>>? rules;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [WebAclArgs].
@@ -32,7 +32,7 @@ class WebAclArgs {
   /// [name] The name or description of the web ACL.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rules] Set of configuration blocks containing rules for the web ACL. Detailed below.
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const WebAclArgs({
     required this.defaultAction,
     this.loggingConfiguration,
@@ -67,4 +67,3 @@ class WebAclArgs {
     );
   }
 }
-

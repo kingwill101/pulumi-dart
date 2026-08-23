@@ -7,13 +7,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_s3_tables_table_policy_table_policy_args_doc}
 class TablePolicyArgs {
-  /// Name of the table.
-  /// Must be between 1 and 255 characters in length.
-  /// Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
+  /// Name of the table. Must be between 1 and 255 characters in length. Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
   final pulumi.Input<String>? name;
-  /// Name of the namespace for this table.
-  /// Must be between 1 and 255 characters in length.
-  /// Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
+  /// Name of the namespace for this table. Must be between 1 and 255 characters in length. Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
   final pulumi.Input<String> namespace;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -23,8 +19,8 @@ class TablePolicyArgs {
   final pulumi.Input<String> tableBucketArn;
 
   /// Creates a new [TablePolicyArgs].
-  /// [name] Name of the table.
-  /// [namespace] Name of the namespace for this table.
+  /// [name] Name of the table. Must be between 1 and 255 characters in length. Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
+  /// [namespace] Name of the namespace for this table. Must be between 1 and 255 characters in length. Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourcePolicy] Amazon Web Services resource-based policy document in JSON format.
   /// [tableBucketArn] ARN referencing the Table Bucket that contains this Namespace.
@@ -56,4 +52,3 @@ class TablePolicyArgs {
     );
   }
 }
-

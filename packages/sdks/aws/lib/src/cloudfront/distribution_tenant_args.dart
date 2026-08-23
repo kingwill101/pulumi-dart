@@ -28,7 +28,7 @@ class DistributionTenantArgs {
   final pulumi.Input<String>? name;
   /// Set of parameter values for the distribution tenant.
   final pulumi.Input<List<DistributionTenantParameter>>? parameters;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<DistributionTenantTimeouts>? timeouts;
   /// If enabled, the resource will wait for the distribution tenant status to change from `InProgress` to `Deployed`. Setting this to `false` will skip the process. Default: `true`.
@@ -43,7 +43,7 @@ class DistributionTenantArgs {
   /// [managedCertificateRequest] Managed certificate request for CloudFront managed ACM certificate (maximum one).
   /// [name] Name of the distribution tenant.
   /// [parameters] Set of parameter values for the distribution tenant.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [waitForDeployment] If enabled, the resource will wait for the distribution tenant status to change from `InProgress` to `Deployed`. Setting this to `false` will skip the process. Default: `true`.
   const DistributionTenantArgs({
@@ -92,4 +92,3 @@ class DistributionTenantArgs {
     );
   }
 }
-

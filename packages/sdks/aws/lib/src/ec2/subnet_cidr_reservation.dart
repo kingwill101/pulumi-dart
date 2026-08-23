@@ -65,6 +65,21 @@ import 'subnet_cidr_reservation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_subnetcidrreservation" "example" {
+///   cidr_block       = "10.0.0.16/28"
+///   reservation_type = "prefix"
+///   subnet_id        = exampleAwsSubnet.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'subnet_cidr_reservation_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.SubnetCidrReservation;
 /// import com.pulumi.aws.ec2.SubnetCidrReservationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

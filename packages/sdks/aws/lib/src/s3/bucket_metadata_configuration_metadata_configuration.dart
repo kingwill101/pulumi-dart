@@ -6,17 +6,17 @@ import 'bucket_metadata_configuration_metadata_configuration_inventory_table_con
 import 'bucket_metadata_configuration_metadata_configuration_journal_table_configuration.dart';
 
 class BucketMetadataConfigurationMetadataConfiguration {
-  /// Destination information for the S3 Metadata configuration.
+  /// Destination information for the S3 Metadata configuration. See `destination` Block for details.
   final pulumi.Input<List<BucketMetadataConfigurationMetadataConfigurationDestination>>? destinations;
-  /// Inventory table configuration. See `inventory_table_configuration` Block for details.
+  /// Inventory table configuration. See `inventoryTableConfiguration` Block for details.
   final pulumi.Input<BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration> inventoryTableConfiguration;
-  /// Journal table configuration. See `journal_table_configuration` Block for details.
+  /// Journal table configuration. See `journalTableConfiguration` Block for details.
   final pulumi.Input<BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration> journalTableConfiguration;
 
   /// Creates a new [BucketMetadataConfigurationMetadataConfiguration].
-  /// [destinations] Destination information for the S3 Metadata configuration.
-  /// [inventoryTableConfiguration] Inventory table configuration. See `inventory_table_configuration` Block for details.
-  /// [journalTableConfiguration] Journal table configuration. See `journal_table_configuration` Block for details.
+  /// [destinations] Destination information for the S3 Metadata configuration. See `destination` Block for details.
+  /// [inventoryTableConfiguration] Inventory table configuration. See `inventoryTableConfiguration` Block for details.
+  /// [journalTableConfiguration] Journal table configuration. See `journalTableConfiguration` Block for details.
   const BucketMetadataConfigurationMetadataConfiguration({
     this.destinations,
     required this.inventoryTableConfiguration,
@@ -39,4 +39,3 @@ class BucketMetadataConfigurationMetadataConfiguration {
     );
   }
 }
-

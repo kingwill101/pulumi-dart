@@ -7,26 +7,26 @@ import 'gateway_route_spec_http_route_match_path.dart';
 import 'gateway_route_spec_http_route_match_query_parameter.dart';
 
 class GatewayRouteSpecHttpRouteMatch {
-  /// Client request headers to match on.
+  /// Client request headers to match on. See `spec.http2_route.match.header` Block for details.
   final pulumi.Input<List<GatewayRouteSpecHttpRouteMatchHeader>>? headers;
-  /// Host name to match on.
+  /// Host name to match on. See `spec.http2_route.match.hostname` Block for details.
   final pulumi.Input<GatewayRouteSpecHttpRouteMatchHostname>? hostname;
-  /// Client request path to match on.
+  /// Client request path to match on. See `spec.http2_route.match.path` Block for details.
   final pulumi.Input<GatewayRouteSpecHttpRouteMatchPath>? path;
-  /// The port number to match from the request.
+  /// Port number to match from the request.
   final pulumi.Input<int>? port;
-  /// Path to match requests with. This parameter must always start with `/`, which by itself matches all requests to the virtual service name.
+  /// Header value sent by the client must begin with the specified characters.
   final pulumi.Input<String>? prefix;
-  /// Client request query parameters to match on.
+  /// Client request query parameters to match on. See `spec.http2_route.match.query_parameter` Block for details.
   final pulumi.Input<List<GatewayRouteSpecHttpRouteMatchQueryParameter>>? queryParameters;
 
   /// Creates a new [GatewayRouteSpecHttpRouteMatch].
-  /// [headers] Client request headers to match on.
-  /// [hostname] Host name to match on.
-  /// [path] Client request path to match on.
-  /// [port] The port number to match from the request.
-  /// [prefix] Path to match requests with. This parameter must always start with `/`, which by itself matches all requests to the virtual service name.
-  /// [queryParameters] Client request query parameters to match on.
+  /// [headers] Client request headers to match on. See `spec.http2_route.match.header` Block for details.
+  /// [hostname] Host name to match on. See `spec.http2_route.match.hostname` Block for details.
+  /// [path] Client request path to match on. See `spec.http2_route.match.path` Block for details.
+  /// [port] Port number to match from the request.
+  /// [prefix] Header value sent by the client must begin with the specified characters.
+  /// [queryParameters] Client request query parameters to match on. See `spec.http2_route.match.query_parameter` Block for details.
   const GatewayRouteSpecHttpRouteMatch({
     this.headers,
     this.hostname,
@@ -58,4 +58,3 @@ class GatewayRouteSpecHttpRouteMatch {
     );
   }
 }
-

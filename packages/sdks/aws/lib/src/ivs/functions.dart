@@ -58,6 +58,19 @@ import 'get_stream_key_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ivs_getstreamkey" "example" {
+///   channel_arn = "arn:aws:ivs:us-west-2:326937407773:channel/0Y1lcs4U7jk5"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +79,8 @@ import 'get_stream_key_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ivs.IvsFunctions;
 /// import com.pulumi.aws.ivs.inputs.GetStreamKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

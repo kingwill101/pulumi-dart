@@ -8,68 +8,72 @@ import 'network_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_odb_network_network_args_doc}
 class NetworkArgs {
-  /// The name of the Availability Zone (AZ) where the odb network is located. Changing this will force terraform to create new resource. Make sure availability_zone maps correctly with availability_zone_id.
+  /// Name of the Availability Zone (AZ) where the odb network is located. Changing this will force terraform to create new resource. Make sure `availabilityZone` maps correctly with `availabilityZoneId`.
   final pulumi.Input<String>? availabilityZone;
-  /// The AZ ID of the AZ where the ODB network is located. Changing this will force terraform to create new resource.
+  /// AZ ID of the AZ where the ODB network is located. Changing this will force terraform to create new resource.
   final pulumi.Input<String> availabilityZoneId;
-  /// The CIDR range of the backup subnet for the ODB network. Changing this will force terraform to create new resource.
+  /// CIDR range of the backup subnet for the ODB network. Changing this will force terraform to create new resource.
   final pulumi.Input<String> backupSubnetCidr;
-  /// The CIDR notation for the network resource. Changing this will force terraform to create new resource.
+  /// CIDR notation for the network resource. Changing this will force terraform to create new resource.
   final pulumi.Input<String> clientSubnetCidr;
-  /// The name of the custom domain that the network is located. Custom_domain_name and default_dns_prefix both can't be given. Changing this will force terraform to create new resource.
+  /// List of regions enabled for cross-region restore in the ODB network.
+  final pulumi.Input<List<String>>? crossRegionS3RestoreSourcesAccesses;
+  /// Name of the custom domain that the network is located. `customDomainName` and `defaultDnsPrefix` both can't be given. Changing this will force terraform to create new resource.
   final pulumi.Input<String>? customDomainName;
-  /// The default DNS prefix for the network resource. Changing this will force terraform to create new resource. Changing this will force terraform to create new resource.
+  /// Default DNS prefix for the network resource. Changing this will force terraform to create new resource.
   final pulumi.Input<String>? defaultDnsPrefix;
   /// If set to true deletes associated OCI resources. Default false.
   final pulumi.Input<bool>? deleteAssociatedResources;
-  /// The user-friendly name for the odb network. Changing this will force terraform to create a new resource.
+  /// User-friendly name for the odb network. Changing this will force terraform to create a new resource.
   final pulumi.Input<String> displayName;
-  /// Specifies the configuration for KMS access from the ODB network.
+  /// Configuration for KMS access from the ODB network.
   final pulumi.Input<String>? kmsAccess;
-  /// Specifies the endpoint policy for KMS access from the ODB network.
+  /// Endpoint policy for KMS access from the ODB network.
   final pulumi.Input<String>? kmsPolicyDocument;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Specifies the configuration for Amazon S3 access from the ODB network.
+  /// Configuration for Amazon S3 access from the ODB network.
   final pulumi.Input<String> s3Access;
-  /// Specifies the endpoint policy for Amazon S3 access from the ODB network.
+  /// Endpoint policy for Amazon S3 access from the ODB network.
   final pulumi.Input<String>? s3PolicyDocument;
-  /// Specifies the configuration for STS access from the ODB network.
+  /// Configuration for STS access from the ODB network.
   final pulumi.Input<String>? stsAccess;
-  /// Specifies the endpoint policy for STS access from the ODB network.
+  /// Endpoint policy for STS access from the ODB network.
   final pulumi.Input<String>? stsPolicyDocument;
-  /// A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the exadata infrastructure. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<NetworkTimeouts>? timeouts;
-  /// Specifies the configuration for Zero-ETL access from the ODB network.
+  /// Configuration for Zero-ETL access from the ODB network.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> zeroEtlAccess;
 
   /// Creates a new [NetworkArgs].
-  /// [availabilityZone] The name of the Availability Zone (AZ) where the odb network is located. Changing this will force terraform to create new resource. Make sure availability_zone maps correctly with availability_zone_id.
-  /// [availabilityZoneId] The AZ ID of the AZ where the ODB network is located. Changing this will force terraform to create new resource.
-  /// [backupSubnetCidr] The CIDR range of the backup subnet for the ODB network. Changing this will force terraform to create new resource.
-  /// [clientSubnetCidr] The CIDR notation for the network resource. Changing this will force terraform to create new resource.
-  /// [customDomainName] The name of the custom domain that the network is located. Custom_domain_name and default_dns_prefix both can't be given. Changing this will force terraform to create new resource.
-  /// [defaultDnsPrefix] The default DNS prefix for the network resource. Changing this will force terraform to create new resource. Changing this will force terraform to create new resource.
+  /// [availabilityZone] Name of the Availability Zone (AZ) where the odb network is located. Changing this will force terraform to create new resource. Make sure `availabilityZone` maps correctly with `availabilityZoneId`.
+  /// [availabilityZoneId] AZ ID of the AZ where the ODB network is located. Changing this will force terraform to create new resource.
+  /// [backupSubnetCidr] CIDR range of the backup subnet for the ODB network. Changing this will force terraform to create new resource.
+  /// [clientSubnetCidr] CIDR notation for the network resource. Changing this will force terraform to create new resource.
+  /// [crossRegionS3RestoreSourcesAccesses] List of regions enabled for cross-region restore in the ODB network.
+  /// [customDomainName] Name of the custom domain that the network is located. `customDomainName` and `defaultDnsPrefix` both can't be given. Changing this will force terraform to create new resource.
+  /// [defaultDnsPrefix] Default DNS prefix for the network resource. Changing this will force terraform to create new resource.
   /// [deleteAssociatedResources] If set to true deletes associated OCI resources. Default false.
-  /// [displayName] The user-friendly name for the odb network. Changing this will force terraform to create a new resource.
-  /// [kmsAccess] Specifies the configuration for KMS access from the ODB network.
-  /// [kmsPolicyDocument] Specifies the endpoint policy for KMS access from the ODB network.
+  /// [displayName] User-friendly name for the odb network. Changing this will force terraform to create a new resource.
+  /// [kmsAccess] Configuration for KMS access from the ODB network.
+  /// [kmsPolicyDocument] Endpoint policy for KMS access from the ODB network.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [s3Access] Specifies the configuration for Amazon S3 access from the ODB network.
-  /// [s3PolicyDocument] Specifies the endpoint policy for Amazon S3 access from the ODB network.
-  /// [stsAccess] Specifies the configuration for STS access from the ODB network.
-  /// [stsPolicyDocument] Specifies the endpoint policy for STS access from the ODB network.
-  /// [tags] A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [s3Access] Configuration for Amazon S3 access from the ODB network.
+  /// [s3PolicyDocument] Endpoint policy for Amazon S3 access from the ODB network.
+  /// [stsAccess] Configuration for STS access from the ODB network.
+  /// [stsPolicyDocument] Endpoint policy for STS access from the ODB network.
+  /// [tags] Map of tags to assign to the exadata infrastructure. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  /// [zeroEtlAccess] Specifies the configuration for Zero-ETL access from the ODB network.
+  /// [zeroEtlAccess] Configuration for Zero-ETL access from the ODB network.
   const NetworkArgs({
     this.availabilityZone,
     required this.availabilityZoneId,
     required this.backupSubnetCidr,
     required this.clientSubnetCidr,
+    this.crossRegionS3RestoreSourcesAccesses,
     this.customDomainName,
     this.defaultDnsPrefix,
     this.deleteAssociatedResources,
@@ -92,6 +96,7 @@ class NetworkArgs {
       'availabilityZoneId': availabilityZoneId,
       'backupSubnetCidr': backupSubnetCidr,
       'clientSubnetCidr': clientSubnetCidr,
+      'crossRegionS3RestoreSourcesAccesses': ?crossRegionS3RestoreSourcesAccesses,
       'customDomainName': ?customDomainName,
       'defaultDnsPrefix': ?defaultDnsPrefix,
       'deleteAssociatedResources': ?deleteAssociatedResources,
@@ -115,6 +120,7 @@ class NetworkArgs {
       availabilityZoneId: pulumi.Input.fromValue(map['availabilityZoneId'] as String),
       backupSubnetCidr: pulumi.Input.fromValue(map['backupSubnetCidr'] as String),
       clientSubnetCidr: pulumi.Input.fromValue(map['clientSubnetCidr'] as String),
+      crossRegionS3RestoreSourcesAccesses: (() { final guardedValue = map['crossRegionS3RestoreSourcesAccesses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       customDomainName: (() { final guardedValue = map['customDomainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultDnsPrefix: (() { final guardedValue = map['defaultDnsPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteAssociatedResources: (() { final guardedValue = map['deleteAssociatedResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -132,4 +138,3 @@ class NetworkArgs {
     );
   }
 }
-

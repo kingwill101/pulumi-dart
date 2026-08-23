@@ -81,13 +81,32 @@ import 'target_group_target_group_health.dart';
 /// 			Name:     pulumi.String("tf-example-lb-tg"),
 /// 			Port:     pulumi.Int(80),
 /// 			Protocol: pulumi.String("HTTP"),
-/// 			VpcId:    main.ID(),
+/// 			VpcId:    main.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_targetgroup" "test" {
+///   name     = "tf-example-lb-tg"
+///   port     = 80
+///   protocol = "HTTP"
+///   vpc_id   = aws_ec2_vpc.main.id
+/// }
+/// resource "aws_ec2_vpc" "main" {
+///   cidr_block = "10.0.0.0/16"
 /// }
 /// ```
 /// ```java
@@ -100,8 +119,8 @@ import 'target_group_target_group_health.dart';
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.lb.TargetGroup;
 /// import com.pulumi.aws.lb.TargetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -217,13 +236,33 @@ import 'target_group_target_group_health.dart';
 /// 			Port:       pulumi.Int(80),
 /// 			Protocol:   pulumi.String("HTTP"),
 /// 			TargetType: pulumi.String("ip"),
-/// 			VpcId:      main.ID(),
+/// 			VpcId:      main.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_targetgroup" "ip-example" {
+///   name        = "tf-example-lb-tg"
+///   port        = 80
+///   protocol    = "HTTP"
+///   target_type = "ip"
+///   vpc_id      = aws_ec2_vpc.main.id
+/// }
+/// resource "aws_ec2_vpc" "main" {
+///   cidr_block = "10.0.0.0/16"
 /// }
 /// ```
 /// ```java
@@ -236,8 +275,8 @@ import 'target_group_target_group_health.dart';
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.lb.TargetGroup;
 /// import com.pulumi.aws.lb.TargetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -338,6 +377,20 @@ import 'target_group_target_group_health.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_targetgroup" "lambda-example" {
+///   name        = "tf-example-lb-tg"
+///   target_type = "lambda"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -346,8 +399,8 @@ import 'target_group_target_group_health.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lb.TargetGroup;
 /// import com.pulumi.aws.lb.TargetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -446,6 +499,23 @@ import 'target_group_target_group_health.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_targetgroup" "alb-example" {
+///   name        = "tf-example-lb-alb-tg"
+///   target_type = "alb"
+///   port        = 80
+///   protocol    = "TCP"
+///   vpc_id      = main.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -454,8 +524,8 @@ import 'target_group_target_group_health.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lb.TargetGroup;
 /// import com.pulumi.aws.lb.TargetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -574,6 +644,25 @@ import 'target_group_target_group_health.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_targetgroup" "tcp-example" {
+///   name     = "tf-example-lb-nlb-tg"
+///   port     = 25
+///   protocol = "TCP"
+///   vpc_id   = main.id
+///   target_health_states {
+///     enable_unhealthy_connection_termination = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -583,8 +672,8 @@ import 'target_group_target_group_health.dart';
 /// import com.pulumi.aws.lb.TargetGroup;
 /// import com.pulumi.aws.lb.TargetGroupArgs;
 /// import com.pulumi.aws.lb.inputs.TargetGroupTargetHealthStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -731,6 +820,32 @@ import 'target_group_target_group_health.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_targetgroup" "tcp-example" {
+///   name     = "tf-example-lb-nlb-tg"
+///   port     = 80
+///   protocol = "TCP"
+///   vpc_id   = main.id
+///   target_group_health = {
+///     dns_failover = {
+///       minimum_healthy_targets_count      = "1"
+///       minimum_healthy_targets_percentage = "off"
+///     }
+///     unhealthy_state_routing = {
+///       minimum_healthy_targets_count      = "1"
+///       minimum_healthy_targets_percentage = "off"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -742,8 +857,8 @@ import 'target_group_target_group_health.dart';
 /// import com.pulumi.aws.lb.inputs.TargetGroupTargetGroupHealthArgs;
 /// import com.pulumi.aws.lb.inputs.TargetGroupTargetGroupHealthDnsFailoverArgs;
 /// import com.pulumi.aws.lb.inputs.TargetGroupTargetGroupHealthUnhealthyStateRoutingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -821,28 +936,28 @@ class TargetGroup extends pulumi.CustomResource {
   late final pulumi.Output<TargetGroupHealthCheck> healthCheck;
   /// The type of IP addresses used by the target group, only supported when target type is set to `ip`. Possible values are `ipv4` or `ipv6`.
   late final pulumi.Output<String> ipAddressType;
-  /// Whether the request and response headers exchanged between the load balancer and the Lambda function include arrays of values or strings. Only applies when `target_type` is `lambda`. Default is `false`.
+  /// Whether the request and response headers exchanged between the load balancer and the Lambda function include arrays of values or strings. Only applies when `targetType` is `lambda`. Default is `false`.
   late final pulumi.Output<bool?> lambdaMultiValueHeadersEnabled;
   /// ARNs of the Load Balancers associated with the Target Group.
   late final pulumi.Output<List<String>> loadBalancerArns;
-  /// Determines how the load balancer selects targets when routing requests. Only applicable for Application Load Balancer Target Groups. The value is `round_robin`, `least_outstanding_requests`, or `weighted_random`. The default is `round_robin`.
+  /// Determines how the load balancer selects targets when routing requests. Only applicable for Application Load Balancer Target Groups. The value is `roundRobin`, `leastOutstandingRequests`, or `weightedRandom`. The default is `roundRobin`.
   late final pulumi.Output<String> loadBalancingAlgorithmType;
-  /// Determines whether to enable target anomaly mitigation.  Target anomaly mitigation is only supported by the `weighted_random` load balancing algorithm type.  See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#automatic-target-weights) for more information.  The value is `"on"` or `"off"`. The default is `"off"`.
+  /// Determines whether to enable target anomaly mitigation.  Target anomaly mitigation is only supported by the `weightedRandom` load balancing algorithm type.  See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#automatic-target-weights) for more information.  The value is `"on"` or `"off"`. The default is `"off"`.
   late final pulumi.Output<String> loadBalancingAnomalyMitigation;
-  /// Indicates whether cross zone load balancing is enabled. The value is `"true"`, `"false"` or `"use_load_balancer_configuration"`. The default is `"use_load_balancer_configuration"`.
+  /// Indicates whether cross zone load balancing is enabled. The value is `"true"`, `"false"` or `"useLoadBalancerConfiguration"`. The default is `"useLoadBalancerConfiguration"`.
   late final pulumi.Output<String> loadBalancingCrossZoneEnabled;
   /// Name of the target group. If omitted, this provider will assign a random, unique name. This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Cannot be longer than 6 characters.
   late final pulumi.Output<String> namePrefix;
-  /// Port on which targets receive traffic, unless overridden when registering a specific target. Required when `target_type` is `instance`, `ip` or `alb`. Does not apply when `target_type` is `lambda`.
+  /// Port on which targets receive traffic, unless overridden when registering a specific target. Required when `targetType` is `instance`, `ip` or `alb`. Does not apply when `targetType` is `lambda`.
   late final pulumi.Output<int?> port;
   /// Whether client IP preservation is enabled. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#client-ip-preservation) for more information.
   late final pulumi.Output<String> preserveClientIp;
   /// Protocol to use for routing traffic to the targets.
   /// Should be one of `GENEVE`, `HTTP`, `HTTPS`, `TCP`, `TCP_UDP`, `TLS`, `UDP`, `QUIC`, or `TCP_QUIC`.
-  /// Required when `target_type` is `instance`, `ip`, or `alb`.
-  /// Does not apply when `target_type` is `lambda`.
+  /// Required when `targetType` is `instance`, `ip`, or `alb`.
+  /// Does not apply when `targetType` is `lambda`.
   late final pulumi.Output<String?> protocol;
   /// Only applicable when `protocol` is `HTTP` or `HTTPS`. The protocol version. Specify `GRPC` to send requests to targets using gRPC. Specify `HTTP2` to send requests to targets using HTTP/2. The default is `HTTP1`, which sends requests to targets using HTTP/1.1
   late final pulumi.Output<String> protocolVersion;
@@ -854,17 +969,17 @@ class TargetGroup extends pulumi.CustomResource {
   late final pulumi.Output<int?> slowStart;
   /// Stickiness configuration block. Detailed below.
   late final pulumi.Output<TargetGroupStickiness> stickiness;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Port on which the target control agent and application load balancer exchange management traffic for the target optimizer feature. Only applicable for Application Load Balancer target groups when `target_type` is `instance` or `ip`.
+  /// Port on which the target control agent and application load balancer exchange management traffic for the target optimizer feature. Only applicable for Application Load Balancer target groups when `targetType` is `instance` or `ip`.
   late final pulumi.Output<int?> targetControlPort;
-  /// Target failover block. Only applicable for Gateway Load Balancer target groups. See target_failover for more information.
+  /// Target failover block. Only applicable for Gateway Load Balancer target groups. See targetFailover for more information.
   late final pulumi.Output<List<Map<String, dynamic>>> targetFailovers;
-  /// Target health requirements block. See target_group_health for more information.
+  /// Target health requirements block. See targetGroupHealth for more information.
   late final pulumi.Output<TargetGroupTargetGroupHealth> targetGroupHealth;
-  /// Target health state block. Only applicable for Network Load Balancer target groups when `protocol` is `TCP` or `TLS`. See target_health_state for more information.
+  /// Target health state block. Only applicable for Network Load Balancer target groups when `protocol` is `TCP` or `TLS`. See targetHealthState for more information.
   late final pulumi.Output<List<Map<String, dynamic>>> targetHealthStates;
   /// Type of target that you must specify when registering targets with this target group.
   /// See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_CreateTargetGroup.html) for supported values.
@@ -878,7 +993,7 @@ class TargetGroup extends pulumi.CustomResource {
   ///
   /// Application Load Balancers do not support the `alb` target type.
   late final pulumi.Output<String?> targetType;
-  /// Identifier of the VPC in which to create the target group. Required when `target_type` is `instance`, `ip` or `alb`. Does not apply when `target_type` is `lambda`.
+  /// Identifier of the VPC in which to create the target group. Required when `targetType` is `instance`, `ip` or `alb`. Does not apply when `targetType` is `lambda`.
   late final pulumi.Output<String?> vpcId;
 
   /// Creates a new [TargetGroup].

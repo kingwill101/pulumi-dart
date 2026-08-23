@@ -11,7 +11,7 @@ class BucketRequestPaymentConfigurationV2Args {
   final pulumi.Input<String> bucket;
   /// Account ID of the expected bucket owner.
   final pulumi.Input<String>? expectedBucketOwner;
-  /// Specifies who pays for the download and request fees. Valid values: `BucketOwner`, `Requester`.
+  /// Who pays for the download and request fees. Valid values: `BucketOwner`, `Requester`.
   final pulumi.Input<String> payer;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -19,7 +19,7 @@ class BucketRequestPaymentConfigurationV2Args {
   /// Creates a new [BucketRequestPaymentConfigurationV2Args].
   /// [bucket] Name of the bucket.
   /// [expectedBucketOwner] Account ID of the expected bucket owner.
-  /// [payer] Specifies who pays for the download and request fees. Valid values: `BucketOwner`, `Requester`.
+  /// [payer] Who pays for the download and request fees. Valid values: `BucketOwner`, `Requester`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const BucketRequestPaymentConfigurationV2Args({
     required this.bucket,
@@ -46,4 +46,3 @@ class BucketRequestPaymentConfigurationV2Args {
     );
   }
 }
-

@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubscriberSubscriberIdentity {
-  /// The AWS Regions where Security Lake is automatically enabled.
+  /// The external ID used to establish trust relationship with the AWS identity.
   final pulumi.Input<String> externalId;
-  /// Provides encryption details of Amazon Security Lake object.
+  /// The AWS identity principal.
   final pulumi.Input<String> principal;
 
   /// Creates a new [SubscriberSubscriberIdentity].
-  /// [externalId] The AWS Regions where Security Lake is automatically enabled.
-  /// [principal] Provides encryption details of Amazon Security Lake object.
+  /// [externalId] The external ID used to establish trust relationship with the AWS identity.
+  /// [principal] The AWS identity principal.
   const SubscriberSubscriberIdentity({
     required this.externalId,
     required this.principal,
@@ -30,4 +30,3 @@ class SubscriberSubscriberIdentity {
     );
   }
 }
-

@@ -7,85 +7,85 @@ import 'ontap_volume_tiering_policy.dart';
 
 /// Input properties used for looking up and filtering OntapVolume resources.
 class OntapVolumeState {
-  /// The Aggregate configuration only applies to `FLEXGROUP` volumes. See [`aggregate_configuration` Block] for details.
+  /// Aggregate configuration only applies to `FLEXGROUP` volumes. See [`aggregateConfiguration` Block] for details.
   final pulumi.Input<OntapVolumeAggregateConfiguration>? aggregateConfiguration;
   /// Amazon Resource Name of the volune.
   final pulumi.Input<String>? arn;
-  /// Setting this to `true` allows a SnapLock administrator to delete an FSx for ONTAP SnapLock Enterprise volume with unexpired write once, read many (WORM) files. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
+  /// Whether to allow a SnapLock administrator to delete an FSx for ONTAP SnapLock Enterprise volume with unexpired write once, read many (WORM) files. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
   final pulumi.Input<bool>? bypassSnaplockEnterpriseRetention;
-  /// A boolean flag indicating whether tags for the volume should be copied to backups. This value defaults to `false`.
+  /// Whether tags for the volume should be copied to backups. This value defaults to `false`.
   final pulumi.Input<bool>? copyTagsToBackups;
-  /// Describes the file system for the volume, e.g. `fs-12345679`
+  /// File system for the volume, e.g. `fs-12345679`
   final pulumi.Input<String>? fileSystemId;
-  /// A map of tags to apply to the volume's final backup.
+  /// Map of tags to apply to the volume's final backup.
   final pulumi.Input<Map<String, String>>? finalBackupTags;
-  /// Specifies the FlexCache endpoint type of the volume, Valid values are `NONE`, `ORIGIN`, `CACHE`. Default value is `NONE`. These can be set by the ONTAP CLI or API and are use with FlexCache feature.
+  /// FlexCache endpoint type of the volume, Valid values are `NONE`, `ORIGIN`, `CACHE`. Default value is `NONE`. These can be set by the ONTAP CLI or API and are use with FlexCache feature.
   final pulumi.Input<String>? flexcacheEndpointType;
-  /// Specifies the location in the storage virtual machine's namespace where the volume is mounted. The junction_path must have a leading forward slash, such as `/vol3`
+  /// Location in the storage virtual machine's namespace where the volume is mounted. The junctionPath must have a leading forward slash, such as `/vol3`
   final pulumi.Input<String>? junctionPath;
-  /// The name of the Volume. You can use a maximum of 203 alphanumeric characters, plus the underscore (_) special character.
+  /// Name of the Volume. You can use a maximum of 203 alphanumeric characters, plus the underscore (_) special character.
   final pulumi.Input<String>? name;
-  /// Specifies the type of volume, valid values are `RW`, `DP`. Default value is `RW`. These can be set by the ONTAP CLI or API. This setting is used as part of migration and replication [Migrating to Amazon FSx for NetApp ONTAP](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/migrating-fsx-ontap.html)
+  /// Type of volume, valid values are `RW`, `DP`. Default value is `RW`. These can be set by the ONTAP CLI or API. This setting is used as part of migration and replication [Migrating to Amazon FSx for NetApp ONTAP](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/migrating-fsx-ontap.html)
   final pulumi.Input<String>? ontapVolumeType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Specifies the volume security style, Valid values are `UNIX`, `NTFS`, and `MIXED`.
+  /// Volume security style, Valid values are `UNIX`, `NTFS`, and `MIXED`.
   final pulumi.Input<String>? securityStyle;
-  /// Specifies the size of the volume, in megabytes (MB), that you are creating. Can be used for any size but required for volumes over 2 PB. Either size_in_bytes or size_in_megabytes must be specified. Minimum size for `FLEXGROUP` volumes are 100GiB per constituent.
+  /// Size of the volume, in megabytes (MB), that you are creating. Can be used for any size but required for volumes over 2 PB. Either sizeInBytes or sizeInMegabytes must be specified. Minimum size for `FLEXGROUP` volumes are 100GiB per constituent.
   final pulumi.Input<String>? sizeInBytes;
-  /// Specifies the size of the volume, in megabytes (MB), that you are creating. Supported when creating volumes under 2 PB. Either size_in_bytes or size_in_megabytes must be specified. Minimum size for `FLEXGROUP` volumes are 100GiB per constituent.
+  /// Size of the volume, in megabytes (MB), that you are creating. Supported when creating volumes under 2 PB. Either sizeInBytes or sizeInMegabytes must be specified. Minimum size for `FLEXGROUP` volumes are 100GiB per constituent.
   final pulumi.Input<int>? sizeInMegabytes;
-  /// When enabled, will skip the default final backup taken when the volume is deleted. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
+  /// Whether to skip the default final backup taken when the volume is deleted. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
   final pulumi.Input<bool>? skipFinalBackup;
-  /// The SnapLock configuration for an FSx for ONTAP volume. See `snaplock_configuration` Block for details.
+  /// SnapLock configuration for an FSx for ONTAP volume. See `snaplockConfiguration` Block for details.
   final pulumi.Input<OntapVolumeSnaplockConfiguration>? snaplockConfiguration;
-  /// Specifies the snapshot policy for the volume. See [snapshot policies](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/snapshots-ontap.html#snapshot-policies) in the Amazon FSx ONTAP User Guide
+  /// Snapshot policy for the volume. See [snapshot policies](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/snapshots-ontap.html#snapshot-policies) in the Amazon FSx ONTAP User Guide
   final pulumi.Input<String>? snapshotPolicy;
-  /// Set to true to enable deduplication, compression, and compaction storage efficiency features on the volume.
+  /// Whether to enable deduplication, compression, and compaction storage efficiency features on the volume.
   final pulumi.Input<bool>? storageEfficiencyEnabled;
-  /// Specifies the storage virtual machine in which to create the volume.
+  /// Storage virtual machine in which to create the volume.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? storageVirtualMachineId;
-  /// A map of tags to assign to the volume. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the volume. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// The data tiering policy for an FSx for ONTAP volume. See `tiering_policy` Block for details.
+  /// Data tiering policy for an FSx for ONTAP volume. See `tieringPolicy` Block for details.
   final pulumi.Input<OntapVolumeTieringPolicy>? tieringPolicy;
-  /// The Volume's UUID (universally unique identifier).
+  /// Volume's UUID (universally unique identifier).
   final pulumi.Input<String>? uuid;
-  /// Specifies the styles of volume, valid values are `FLEXVOL`, `FLEXGROUP`. Default value is `FLEXVOL`. FLEXGROUPS have a larger minimum and maximum size. See Volume Styles for more details. [Volume Styles](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/volume-styles.html)
+  /// Styles of volume, valid values are `FLEXVOL`, `FLEXGROUP`. Default value is `FLEXVOL`. FLEXGROUPS have a larger minimum and maximum size. See Volume Styles for more details. [Volume Styles](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/volume-styles.html)
   final pulumi.Input<String>? volumeStyle;
-  /// The type of volume, currently the only valid value is `ONTAP`.
+  /// Type of volume, currently the only valid value is `ONTAP`.
   final pulumi.Input<String>? volumeType;
 
   /// Creates a new [OntapVolumeState].
-  /// [aggregateConfiguration] The Aggregate configuration only applies to `FLEXGROUP` volumes. See [`aggregate_configuration` Block] for details.
+  /// [aggregateConfiguration] Aggregate configuration only applies to `FLEXGROUP` volumes. See [`aggregateConfiguration` Block] for details.
   /// [arn] Amazon Resource Name of the volune.
-  /// [bypassSnaplockEnterpriseRetention] Setting this to `true` allows a SnapLock administrator to delete an FSx for ONTAP SnapLock Enterprise volume with unexpired write once, read many (WORM) files. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
-  /// [copyTagsToBackups] A boolean flag indicating whether tags for the volume should be copied to backups. This value defaults to `false`.
-  /// [fileSystemId] Describes the file system for the volume, e.g. `fs-12345679`
-  /// [finalBackupTags] A map of tags to apply to the volume's final backup.
-  /// [flexcacheEndpointType] Specifies the FlexCache endpoint type of the volume, Valid values are `NONE`, `ORIGIN`, `CACHE`. Default value is `NONE`. These can be set by the ONTAP CLI or API and are use with FlexCache feature.
-  /// [junctionPath] Specifies the location in the storage virtual machine's namespace where the volume is mounted. The junction_path must have a leading forward slash, such as `/vol3`
-  /// [name] The name of the Volume. You can use a maximum of 203 alphanumeric characters, plus the underscore (_) special character.
-  /// [ontapVolumeType] Specifies the type of volume, valid values are `RW`, `DP`. Default value is `RW`. These can be set by the ONTAP CLI or API. This setting is used as part of migration and replication [Migrating to Amazon FSx for NetApp ONTAP](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/migrating-fsx-ontap.html)
+  /// [bypassSnaplockEnterpriseRetention] Whether to allow a SnapLock administrator to delete an FSx for ONTAP SnapLock Enterprise volume with unexpired write once, read many (WORM) files. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
+  /// [copyTagsToBackups] Whether tags for the volume should be copied to backups. This value defaults to `false`.
+  /// [fileSystemId] File system for the volume, e.g. `fs-12345679`
+  /// [finalBackupTags] Map of tags to apply to the volume's final backup.
+  /// [flexcacheEndpointType] FlexCache endpoint type of the volume, Valid values are `NONE`, `ORIGIN`, `CACHE`. Default value is `NONE`. These can be set by the ONTAP CLI or API and are use with FlexCache feature.
+  /// [junctionPath] Location in the storage virtual machine's namespace where the volume is mounted. The junctionPath must have a leading forward slash, such as `/vol3`
+  /// [name] Name of the Volume. You can use a maximum of 203 alphanumeric characters, plus the underscore (_) special character.
+  /// [ontapVolumeType] Type of volume, valid values are `RW`, `DP`. Default value is `RW`. These can be set by the ONTAP CLI or API. This setting is used as part of migration and replication [Migrating to Amazon FSx for NetApp ONTAP](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/migrating-fsx-ontap.html)
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [securityStyle] Specifies the volume security style, Valid values are `UNIX`, `NTFS`, and `MIXED`.
-  /// [sizeInBytes] Specifies the size of the volume, in megabytes (MB), that you are creating. Can be used for any size but required for volumes over 2 PB. Either size_in_bytes or size_in_megabytes must be specified. Minimum size for `FLEXGROUP` volumes are 100GiB per constituent.
-  /// [sizeInMegabytes] Specifies the size of the volume, in megabytes (MB), that you are creating. Supported when creating volumes under 2 PB. Either size_in_bytes or size_in_megabytes must be specified. Minimum size for `FLEXGROUP` volumes are 100GiB per constituent.
-  /// [skipFinalBackup] When enabled, will skip the default final backup taken when the volume is deleted. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
-  /// [snaplockConfiguration] The SnapLock configuration for an FSx for ONTAP volume. See `snaplock_configuration` Block for details.
-  /// [snapshotPolicy] Specifies the snapshot policy for the volume. See [snapshot policies](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/snapshots-ontap.html#snapshot-policies) in the Amazon FSx ONTAP User Guide
-  /// [storageEfficiencyEnabled] Set to true to enable deduplication, compression, and compaction storage efficiency features on the volume.
-  /// [storageVirtualMachineId] Specifies the storage virtual machine in which to create the volume.
-  /// [tags] A map of tags to assign to the volume. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  /// [tieringPolicy] The data tiering policy for an FSx for ONTAP volume. See `tiering_policy` Block for details.
-  /// [uuid] The Volume's UUID (universally unique identifier).
-  /// [volumeStyle] Specifies the styles of volume, valid values are `FLEXVOL`, `FLEXGROUP`. Default value is `FLEXVOL`. FLEXGROUPS have a larger minimum and maximum size. See Volume Styles for more details. [Volume Styles](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/volume-styles.html)
-  /// [volumeType] The type of volume, currently the only valid value is `ONTAP`.
+  /// [securityStyle] Volume security style, Valid values are `UNIX`, `NTFS`, and `MIXED`.
+  /// [sizeInBytes] Size of the volume, in megabytes (MB), that you are creating. Can be used for any size but required for volumes over 2 PB. Either sizeInBytes or sizeInMegabytes must be specified. Minimum size for `FLEXGROUP` volumes are 100GiB per constituent.
+  /// [sizeInMegabytes] Size of the volume, in megabytes (MB), that you are creating. Supported when creating volumes under 2 PB. Either sizeInBytes or sizeInMegabytes must be specified. Minimum size for `FLEXGROUP` volumes are 100GiB per constituent.
+  /// [skipFinalBackup] Whether to skip the default final backup taken when the volume is deleted. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
+  /// [snaplockConfiguration] SnapLock configuration for an FSx for ONTAP volume. See `snaplockConfiguration` Block for details.
+  /// [snapshotPolicy] Snapshot policy for the volume. See [snapshot policies](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/snapshots-ontap.html#snapshot-policies) in the Amazon FSx ONTAP User Guide
+  /// [storageEfficiencyEnabled] Whether to enable deduplication, compression, and compaction storage efficiency features on the volume.
+  /// [storageVirtualMachineId] Storage virtual machine in which to create the volume.
+  /// [tags] Map of tags to assign to the volume. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tieringPolicy] Data tiering policy for an FSx for ONTAP volume. See `tieringPolicy` Block for details.
+  /// [uuid] Volume's UUID (universally unique identifier).
+  /// [volumeStyle] Styles of volume, valid values are `FLEXVOL`, `FLEXGROUP`. Default value is `FLEXVOL`. FLEXGROUPS have a larger minimum and maximum size. See Volume Styles for more details. [Volume Styles](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/volume-styles.html)
+  /// [volumeType] Type of volume, currently the only valid value is `ONTAP`.
   const OntapVolumeState({
     this.aggregateConfiguration,
     this.arn,
@@ -174,4 +174,3 @@ class OntapVolumeState {
     );
   }
 }
-

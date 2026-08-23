@@ -32,7 +32,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.s3.BucketLifecycleConfiguration("example", {
-///     bucket: bucket.id,
+///     bucket: bucket.bucket,
 ///     rules: [{
 ///         id: "rule-1",
 ///         status: "Enabled",
@@ -44,7 +44,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.s3.BucketLifecycleConfiguration("example",
-///     bucket=bucket["id"],
+///     bucket=bucket["bucket"],
 ///     rules=[{
 ///         "id": "rule-1",
 ///         "status": "Enabled",
@@ -60,7 +60,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// {
 ///     var example = new Aws.S3.BucketLifecycleConfiguration("example", new()
 ///     {
-///         Bucket = bucket.Id,
+///         Bucket = bucket.Bucket,
 ///         Rules = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketLifecycleConfigurationRuleArgs
@@ -84,7 +84,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewBucketLifecycleConfiguration(ctx, "example", &s3.BucketLifecycleConfigurationArgs{
-/// 			Bucket: pulumi.Any(bucket.Id),
+/// 			Bucket: pulumi.Any(bucket.Bucket),
 /// 			Rules: s3.BucketLifecycleConfigurationRuleArray{
 /// 				&s3.BucketLifecycleConfigurationRuleArgs{
 /// 					Id:     pulumi.String("rule-1"),
@@ -99,6 +99,23 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketlifecycleconfiguration" "example" {
+///   bucket = bucket.bucket
+///   rules {
+///     id     = "rule-1"
+///     status = "Enabled"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -108,8 +125,8 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import com.pulumi.aws.s3.BucketLifecycleConfiguration;
 /// import com.pulumi.aws.s3.BucketLifecycleConfigurationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -122,7 +139,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BucketLifecycleConfiguration("example", BucketLifecycleConfigurationArgs.builder()
-///             .bucket(bucket.id())
+///             .bucket(bucket.bucket())
 ///             .rules(BucketLifecycleConfigurationRuleArgs.builder()
 ///                 .id("rule-1")
 ///                 .status("Enabled")
@@ -137,7 +154,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///   example:
 ///     type: aws:s3:BucketLifecycleConfiguration
 ///     properties:
-///       bucket: ${bucket.id}
+///       bucket: ${bucket.bucket}
 ///       rules:
 ///         - id: rule-1
 ///           status: Enabled
@@ -154,7 +171,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.s3.BucketLifecycleConfiguration("example", {
-///     bucket: bucket.id,
+///     bucket: bucket.bucket,
 ///     rules: [{
 ///         id: "rule-1",
 ///         filter: {},
@@ -167,7 +184,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.s3.BucketLifecycleConfiguration("example",
-///     bucket=bucket["id"],
+///     bucket=bucket["bucket"],
 ///     rules=[{
 ///         "id": "rule-1",
 ///         "filter": {},
@@ -184,7 +201,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// {
 ///     var example = new Aws.S3.BucketLifecycleConfiguration("example", new()
 ///     {
-///         Bucket = bucket.Id,
+///         Bucket = bucket.Bucket,
 ///         Rules = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketLifecycleConfigurationRuleArgs
@@ -209,7 +226,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewBucketLifecycleConfiguration(ctx, "example", &s3.BucketLifecycleConfigurationArgs{
-/// 			Bucket: pulumi.Any(bucket.Id),
+/// 			Bucket: pulumi.Any(bucket.Bucket),
 /// 			Rules: s3.BucketLifecycleConfigurationRuleArray{
 /// 				&s3.BucketLifecycleConfigurationRuleArgs{
 /// 					Id:     pulumi.String("rule-1"),
@@ -225,6 +242,24 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketlifecycleconfiguration" "example" {
+///   bucket = bucket.bucket
+///   rules {
+///     id     = "rule-1"
+///     filter = {}
+///     status = "Enabled"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -235,8 +270,8 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import com.pulumi.aws.s3.BucketLifecycleConfigurationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -249,7 +284,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BucketLifecycleConfiguration("example", BucketLifecycleConfigurationArgs.builder()
-///             .bucket(bucket.id())
+///             .bucket(bucket.bucket())
 ///             .rules(BucketLifecycleConfigurationRuleArgs.builder()
 ///                 .id("rule-1")
 ///                 .filter(BucketLifecycleConfigurationRuleFilterArgs.builder()
@@ -266,7 +301,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///   example:
 ///     type: aws:s3:BucketLifecycleConfiguration
 ///     properties:
-///       bucket: ${bucket.id}
+///       bucket: ${bucket.bucket}
 ///       rules:
 ///         - id: rule-1
 ///           filter: {}
@@ -284,7 +319,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.s3.BucketLifecycleConfiguration("example", {
-///     bucket: bucket.id,
+///     bucket: bucket.bucket,
 ///     rules: [{
 ///         id: "rule-1",
 ///         filter: {
@@ -299,7 +334,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.s3.BucketLifecycleConfiguration("example",
-///     bucket=bucket["id"],
+///     bucket=bucket["bucket"],
 ///     rules=[{
 ///         "id": "rule-1",
 ///         "filter": {
@@ -318,7 +353,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// {
 ///     var example = new Aws.S3.BucketLifecycleConfiguration("example", new()
 ///     {
-///         Bucket = bucket.Id,
+///         Bucket = bucket.Bucket,
 ///         Rules = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketLifecycleConfigurationRuleArgs
@@ -346,7 +381,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewBucketLifecycleConfiguration(ctx, "example", &s3.BucketLifecycleConfigurationArgs{
-/// 			Bucket: pulumi.Any(bucket.Id),
+/// 			Bucket: pulumi.Any(bucket.Bucket),
 /// 			Rules: s3.BucketLifecycleConfigurationRuleArray{
 /// 				&s3.BucketLifecycleConfigurationRuleArgs{
 /// 					Id: pulumi.String("rule-1"),
@@ -364,6 +399,26 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketlifecycleconfiguration" "example" {
+///   bucket = bucket.bucket
+///   rules {
+///     id = "rule-1"
+///     filter = {
+///       prefix = "logs/"
+///     }
+///     status = "Enabled"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -374,8 +429,8 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import com.pulumi.aws.s3.BucketLifecycleConfigurationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -388,7 +443,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BucketLifecycleConfiguration("example", BucketLifecycleConfigurationArgs.builder()
-///             .bucket(bucket.id())
+///             .bucket(bucket.bucket())
 ///             .rules(BucketLifecycleConfigurationRuleArgs.builder()
 ///                 .id("rule-1")
 ///                 .filter(BucketLifecycleConfigurationRuleFilterArgs.builder()
@@ -406,7 +461,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///   example:
 ///     type: aws:s3:BucketLifecycleConfiguration
 ///     properties:
-///       bucket: ${bucket.id}
+///       bucket: ${bucket.bucket}
 ///       rules:
 ///         - id: rule-1
 ///           filter:
@@ -423,7 +478,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.s3.BucketLifecycleConfiguration("example", {
-///     bucket: bucket.id,
+///     bucket: bucket.bucket,
 ///     rules: [
 ///         {
 ///             id: "rule-1",
@@ -447,7 +502,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.s3.BucketLifecycleConfiguration("example",
-///     bucket=bucket["id"],
+///     bucket=bucket["bucket"],
 ///     rules=[
 ///         {
 ///             "id": "rule-1",
@@ -475,7 +530,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// {
 ///     var example = new Aws.S3.BucketLifecycleConfiguration("example", new()
 ///     {
-///         Bucket = bucket.Id,
+///         Bucket = bucket.Bucket,
 ///         Rules = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketLifecycleConfigurationRuleArgs
@@ -512,7 +567,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewBucketLifecycleConfiguration(ctx, "example", &s3.BucketLifecycleConfigurationArgs{
-/// 			Bucket: pulumi.Any(bucket.Id),
+/// 			Bucket: pulumi.Any(bucket.Bucket),
 /// 			Rules: s3.BucketLifecycleConfigurationRuleArray{
 /// 				&s3.BucketLifecycleConfigurationRuleArgs{
 /// 					Id: pulumi.String("rule-1"),
@@ -537,6 +592,33 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketlifecycleconfiguration" "example" {
+///   bucket = bucket.bucket
+///   rules {
+///     id = "rule-1"
+///     filter = {
+///       prefix = "logs/"
+///     }
+///     status = "Enabled"
+///   }
+///   rules {
+///     id = "rule-2"
+///     filter = {
+///       prefix = "tmp/"
+///     }
+///     status = "Enabled"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -547,8 +629,8 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import com.pulumi.aws.s3.BucketLifecycleConfigurationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -561,7 +643,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BucketLifecycleConfiguration("example", BucketLifecycleConfigurationArgs.builder()
-///             .bucket(bucket.id())
+///             .bucket(bucket.bucket())
 ///             .rules(
 ///                 BucketLifecycleConfigurationRuleArgs.builder()
 ///                     .id("rule-1")
@@ -587,7 +669,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///   example:
 ///     type: aws:s3:BucketLifecycleConfiguration
 ///     properties:
-///       bucket: ${bucket.id}
+///       bucket: ${bucket.bucket}
 ///       rules:
 ///         - id: rule-1
 ///           filter:
@@ -610,7 +692,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.s3.BucketLifecycleConfiguration("example", {
-///     bucket: bucket.id,
+///     bucket: bucket.bucket,
 ///     rules: [{
 ///         id: "rule-1",
 ///         filter: {
@@ -628,7 +710,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.s3.BucketLifecycleConfiguration("example",
-///     bucket=bucket["id"],
+///     bucket=bucket["bucket"],
 ///     rules=[{
 ///         "id": "rule-1",
 ///         "filter": {
@@ -650,7 +732,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// {
 ///     var example = new Aws.S3.BucketLifecycleConfiguration("example", new()
 ///     {
-///         Bucket = bucket.Id,
+///         Bucket = bucket.Bucket,
 ///         Rules = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketLifecycleConfigurationRuleArgs
@@ -682,7 +764,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewBucketLifecycleConfiguration(ctx, "example", &s3.BucketLifecycleConfigurationArgs{
-/// 			Bucket: pulumi.Any(bucket.Id),
+/// 			Bucket: pulumi.Any(bucket.Bucket),
 /// 			Rules: s3.BucketLifecycleConfigurationRuleArray{
 /// 				&s3.BucketLifecycleConfigurationRuleArgs{
 /// 					Id: pulumi.String("rule-1"),
@@ -703,6 +785,29 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketlifecycleconfiguration" "example" {
+///   bucket = bucket.bucket
+///   rules {
+///     id = "rule-1"
+///     filter = {
+///       tag = {
+///         key   = "Name"
+///         value = "Staging"
+///       }
+///     }
+///     status = "Enabled"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -714,8 +819,8 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleFilterArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleFilterTagArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -728,7 +833,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BucketLifecycleConfiguration("example", BucketLifecycleConfigurationArgs.builder()
-///             .bucket(bucket.id())
+///             .bucket(bucket.bucket())
 ///             .rules(BucketLifecycleConfigurationRuleArgs.builder()
 ///                 .id("rule-1")
 ///                 .filter(BucketLifecycleConfigurationRuleFilterArgs.builder()
@@ -749,7 +854,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///   example:
 ///     type: aws:s3:BucketLifecycleConfiguration
 ///     properties:
-///       bucket: ${bucket.id}
+///       bucket: ${bucket.bucket}
 ///       rules:
 ///         - id: rule-1
 ///           filter:
@@ -770,7 +875,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.s3.BucketLifecycleConfiguration("example", {
-///     bucket: bucket.id,
+///     bucket: bucket.bucket,
 ///     rules: [{
 ///         id: "rule-1",
 ///         filter: {
@@ -790,7 +895,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.s3.BucketLifecycleConfiguration("example",
-///     bucket=bucket["id"],
+///     bucket=bucket["bucket"],
 ///     rules=[{
 ///         "id": "rule-1",
 ///         "filter": {
@@ -814,7 +919,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// {
 ///     var example = new Aws.S3.BucketLifecycleConfiguration("example", new()
 ///     {
-///         Bucket = bucket.Id,
+///         Bucket = bucket.Bucket,
 ///         Rules = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketLifecycleConfigurationRuleArgs
@@ -849,7 +954,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewBucketLifecycleConfiguration(ctx, "example", &s3.BucketLifecycleConfigurationArgs{
-/// 			Bucket: pulumi.Any(bucket.Id),
+/// 			Bucket: pulumi.Any(bucket.Bucket),
 /// 			Rules: s3.BucketLifecycleConfigurationRuleArray{
 /// 				&s3.BucketLifecycleConfigurationRuleArgs{
 /// 					Id: pulumi.String("rule-1"),
@@ -872,6 +977,31 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketlifecycleconfiguration" "example" {
+///   bucket = bucket.bucket
+///   rules {
+///     id = "rule-1"
+///     filter = {
+///       and = {
+///         tags = {
+///           "Key1" = "Value1"
+///           "Key2" = "Value2"
+///         }
+///       }
+///     }
+///     status = "Enabled"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -883,8 +1013,8 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleFilterArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleFilterAndArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -897,7 +1027,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BucketLifecycleConfiguration("example", BucketLifecycleConfigurationArgs.builder()
-///             .bucket(bucket.id())
+///             .bucket(bucket.bucket())
 ///             .rules(BucketLifecycleConfigurationRuleArgs.builder()
 ///                 .id("rule-1")
 ///                 .filter(BucketLifecycleConfigurationRuleFilterArgs.builder()
@@ -920,7 +1050,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///   example:
 ///     type: aws:s3:BucketLifecycleConfiguration
 ///     properties:
-///       bucket: ${bucket.id}
+///       bucket: ${bucket.bucket}
 ///       rules:
 ///         - id: rule-1
 ///           filter:
@@ -942,7 +1072,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.s3.BucketLifecycleConfiguration("example", {
-///     bucket: bucket.id,
+///     bucket: bucket.bucket,
 ///     rules: [{
 ///         id: "rule-1",
 ///         filter: {
@@ -963,7 +1093,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.s3.BucketLifecycleConfiguration("example",
-///     bucket=bucket["id"],
+///     bucket=bucket["bucket"],
 ///     rules=[{
 ///         "id": "rule-1",
 ///         "filter": {
@@ -988,7 +1118,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// {
 ///     var example = new Aws.S3.BucketLifecycleConfiguration("example", new()
 ///     {
-///         Bucket = bucket.Id,
+///         Bucket = bucket.Bucket,
 ///         Rules = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketLifecycleConfigurationRuleArgs
@@ -1024,7 +1154,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewBucketLifecycleConfiguration(ctx, "example", &s3.BucketLifecycleConfigurationArgs{
-/// 			Bucket: pulumi.Any(bucket.Id),
+/// 			Bucket: pulumi.Any(bucket.Bucket),
 /// 			Rules: s3.BucketLifecycleConfigurationRuleArray{
 /// 				&s3.BucketLifecycleConfigurationRuleArgs{
 /// 					Id: pulumi.String("rule-1"),
@@ -1048,6 +1178,32 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketlifecycleconfiguration" "example" {
+///   bucket = bucket.bucket
+///   rules {
+///     id = "rule-1"
+///     filter = {
+///       and = {
+///         prefix = "logs/"
+///         tags = {
+///           "Key1" = "Value1"
+///           "Key2" = "Value2"
+///         }
+///       }
+///     }
+///     status = "Enabled"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1059,8 +1215,8 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleFilterArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleFilterAndArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1073,7 +1229,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BucketLifecycleConfiguration("example", BucketLifecycleConfigurationArgs.builder()
-///             .bucket(bucket.id())
+///             .bucket(bucket.bucket())
 ///             .rules(BucketLifecycleConfigurationRuleArgs.builder()
 ///                 .id("rule-1")
 ///                 .filter(BucketLifecycleConfigurationRuleFilterArgs.builder()
@@ -1097,7 +1253,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///   example:
 ///     type: aws:s3:BucketLifecycleConfiguration
 ///     properties:
-///       bucket: ${bucket.id}
+///       bucket: ${bucket.bucket}
 ///       rules:
 ///         - id: rule-1
 ///           filter:
@@ -1112,7 +1268,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///
 /// ### Specifying a filter based on object size
 ///
-/// Object size values are in bytes. Maximum filter size is 5TB. Amazon S3 applies a default behavior to your Lifecycle configuration that prevents objects smaller than 128 KB from being transitioned to any storage class. You can allow smaller objects to transition by adding a minimum size (`object_size_greater_than`) or a maximum size (`object_size_less_than`) filter that specifies a smaller size to the configuration. This example allows any object smaller than 128 KB to transition to the S3 Glacier Instant Retrieval storage class:
+/// Object size values are in bytes. Maximum filter size is 5TB. Amazon S3 applies a default behavior to your Lifecycle configuration that prevents objects smaller than 128 KB from being transitioned to any storage class. You can allow smaller objects to transition by adding a minimum size (`objectSizeGreaterThan`) or a maximum size (`objectSizeLessThan`) filter that specifies a smaller size to the configuration. This example allows any object smaller than 128 KB to transition to the S3 Glacier Instant Retrieval storage class:
 ///
 ///
 /// ```typescript
@@ -1120,7 +1276,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.s3.BucketLifecycleConfiguration("example", {
-///     bucket: bucket.id,
+///     bucket: bucket.bucket,
 ///     rules: [{
 ///         id: "Allow small object transitions",
 ///         filter: {
@@ -1139,7 +1295,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.s3.BucketLifecycleConfiguration("example",
-///     bucket=bucket["id"],
+///     bucket=bucket["bucket"],
 ///     rules=[{
 ///         "id": "Allow small object transitions",
 ///         "filter": {
@@ -1162,7 +1318,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// {
 ///     var example = new Aws.S3.BucketLifecycleConfiguration("example", new()
 ///     {
-///         Bucket = bucket.Id,
+///         Bucket = bucket.Bucket,
 ///         Rules = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketLifecycleConfigurationRuleArgs
@@ -1198,7 +1354,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewBucketLifecycleConfiguration(ctx, "example", &s3.BucketLifecycleConfigurationArgs{
-/// 			Bucket: pulumi.Any(bucket.Id),
+/// 			Bucket: pulumi.Any(bucket.Bucket),
 /// 			Rules: s3.BucketLifecycleConfigurationRuleArray{
 /// 				&s3.BucketLifecycleConfigurationRuleArgs{
 /// 					Id: pulumi.String("Allow small object transitions"),
@@ -1222,6 +1378,30 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketlifecycleconfiguration" "example" {
+///   bucket = bucket.bucket
+///   rules {
+///     id = "Allow small object transitions"
+///     filter = {
+///       object_size_greater_than = 1
+///     }
+///     status = "Enabled"
+///     transitions {
+///       days          = 365
+///       storage_class = "GLACIER_IR"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1232,8 +1412,9 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import com.pulumi.aws.s3.BucketLifecycleConfigurationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleFilterArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleTransitionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1246,7 +1427,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BucketLifecycleConfiguration("example", BucketLifecycleConfigurationArgs.builder()
-///             .bucket(bucket.id())
+///             .bucket(bucket.bucket())
 ///             .rules(BucketLifecycleConfigurationRuleArgs.builder()
 ///                 .id("Allow small object transitions")
 ///                 .filter(BucketLifecycleConfigurationRuleFilterArgs.builder()
@@ -1268,7 +1449,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///   example:
 ///     type: aws:s3:BucketLifecycleConfiguration
 ///     properties:
-///       bucket: ${bucket.id}
+///       bucket: ${bucket.bucket}
 ///       rules:
 ///         - id: Allow small object transitions
 ///           filter:
@@ -1282,7 +1463,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///
 /// ### Specifying a filter based on object size range and prefix
 ///
-/// The `object_size_greater_than` must be less than the `object_size_less_than`. Notice both the object size range and prefix are wrapped in the `and` configuration block.
+/// The `objectSizeGreaterThan` must be less than the `objectSizeLessThan`. Notice both the object size range and prefix are wrapped in the `and` configuration block.
 ///
 ///
 /// ```typescript
@@ -1290,7 +1471,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.s3.BucketLifecycleConfiguration("example", {
-///     bucket: bucket.id,
+///     bucket: bucket.bucket,
 ///     rules: [{
 ///         id: "rule-1",
 ///         filter: {
@@ -1309,7 +1490,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.s3.BucketLifecycleConfiguration("example",
-///     bucket=bucket["id"],
+///     bucket=bucket["bucket"],
 ///     rules=[{
 ///         "id": "rule-1",
 ///         "filter": {
@@ -1332,7 +1513,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// {
 ///     var example = new Aws.S3.BucketLifecycleConfiguration("example", new()
 ///     {
-///         Bucket = bucket.Id,
+///         Bucket = bucket.Bucket,
 ///         Rules = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketLifecycleConfigurationRuleArgs
@@ -1365,7 +1546,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewBucketLifecycleConfiguration(ctx, "example", &s3.BucketLifecycleConfigurationArgs{
-/// 			Bucket: pulumi.Any(bucket.Id),
+/// 			Bucket: pulumi.Any(bucket.Bucket),
 /// 			Rules: s3.BucketLifecycleConfigurationRuleArray{
 /// 				&s3.BucketLifecycleConfigurationRuleArgs{
 /// 					Id: pulumi.String("rule-1"),
@@ -1387,6 +1568,30 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketlifecycleconfiguration" "example" {
+///   bucket = bucket.bucket
+///   rules {
+///     id = "rule-1"
+///     filter = {
+///       and = {
+///         prefix                   = "logs/"
+///         object_size_greater_than = 500
+///         object_size_less_than    = 64000
+///       }
+///     }
+///     status = "Enabled"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1398,8 +1603,8 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleFilterArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleFilterAndArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1412,7 +1617,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BucketLifecycleConfiguration("example", BucketLifecycleConfigurationArgs.builder()
-///             .bucket(bucket.id())
+///             .bucket(bucket.bucket())
 ///             .rules(BucketLifecycleConfigurationRuleArgs.builder()
 ///                 .id("rule-1")
 ///                 .filter(BucketLifecycleConfigurationRuleFilterArgs.builder()
@@ -1434,7 +1639,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///   example:
 ///     type: aws:s3:BucketLifecycleConfiguration
 ///     properties:
-///       bucket: ${bucket.id}
+///       bucket: ${bucket.bucket}
 ///       rules:
 ///         - id: rule-1
 ///           filter:
@@ -1455,11 +1660,11 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///
 /// const bucket = new aws.s3.Bucket("bucket", {bucket: "my-bucket"});
 /// const bucketAcl = new aws.s3.BucketAcl("bucket_acl", {
-///     bucket: bucket.id,
+///     bucket: bucket.bucket,
 ///     acl: "private",
 /// });
 /// const bucket_config = new aws.s3.BucketLifecycleConfiguration("bucket-config", {
-///     bucket: bucket.id,
+///     bucket: bucket.bucket,
 ///     rules: [
 ///         {
 ///             id: "log",
@@ -1501,17 +1706,17 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// });
 /// const versioningBucket = new aws.s3.Bucket("versioning_bucket", {bucket: "my-versioning-bucket"});
 /// const versioningBucketAcl = new aws.s3.BucketAcl("versioning_bucket_acl", {
-///     bucket: versioningBucket.id,
+///     bucket: versioningBucket.bucket,
 ///     acl: "private",
 /// });
 /// const versioning = new aws.s3.BucketVersioning("versioning", {
-///     bucket: versioningBucket.id,
+///     bucket: versioningBucket.bucket,
 ///     versioningConfiguration: {
 ///         status: "Enabled",
 ///     },
 /// });
 /// const versioning_bucket_config = new aws.s3.BucketLifecycleConfiguration("versioning-bucket-config", {
-///     bucket: versioningBucket.id,
+///     bucket: versioningBucket.bucket,
 ///     rules: [{
 ///         id: "config",
 ///         filter: {
@@ -1542,10 +1747,10 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///
 /// bucket = aws.s3.Bucket("bucket", bucket="my-bucket")
 /// bucket_acl = aws.s3.BucketAcl("bucket_acl",
-///     bucket=bucket.id,
+///     bucket=bucket.bucket,
 ///     acl="private")
 /// bucket_config = aws.s3.BucketLifecycleConfiguration("bucket-config",
-///     bucket=bucket.id,
+///     bucket=bucket.bucket,
 ///     rules=[
 ///         {
 ///             "id": "log",
@@ -1586,15 +1791,15 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///     ])
 /// versioning_bucket = aws.s3.Bucket("versioning_bucket", bucket="my-versioning-bucket")
 /// versioning_bucket_acl = aws.s3.BucketAcl("versioning_bucket_acl",
-///     bucket=versioning_bucket.id,
+///     bucket=versioning_bucket.bucket,
 ///     acl="private")
 /// versioning = aws.s3.BucketVersioning("versioning",
-///     bucket=versioning_bucket.id,
+///     bucket=versioning_bucket.bucket,
 ///     versioning_configuration={
 ///         "status": "Enabled",
 ///     })
 /// versioning_bucket_config = aws.s3.BucketLifecycleConfiguration("versioning-bucket-config",
-///     bucket=versioning_bucket.id,
+///     bucket=versioning_bucket.bucket,
 ///     rules=[{
 ///         "id": "config",
 ///         "filter": {
@@ -1632,13 +1837,13 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///
 ///     var bucketAcl = new Aws.S3.BucketAcl("bucket_acl", new()
 ///     {
-///         Bucket = bucket.Id,
+///         Bucket = bucket.BucketName,
 ///         Acl = "private",
 ///     });
 ///
 ///     var bucket_config = new Aws.S3.BucketLifecycleConfiguration("bucket-config", new()
 ///     {
-///         Bucket = bucket.Id,
+///         Bucket = bucket.BucketName,
 ///         Rules = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketLifecycleConfigurationRuleArgs
@@ -1698,13 +1903,13 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///
 ///     var versioningBucketAcl = new Aws.S3.BucketAcl("versioning_bucket_acl", new()
 ///     {
-///         Bucket = versioningBucket.Id,
+///         Bucket = versioningBucket.BucketName,
 ///         Acl = "private",
 ///     });
 ///
 ///     var versioning = new Aws.S3.BucketVersioning("versioning", new()
 ///     {
-///         Bucket = versioningBucket.Id,
+///         Bucket = versioningBucket.BucketName,
 ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningVersioningConfigurationArgs
 ///         {
 ///             Status = "Enabled",
@@ -1713,7 +1918,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///
 ///     var versioning_bucket_config = new Aws.S3.BucketLifecycleConfiguration("versioning-bucket-config", new()
 ///     {
-///         Bucket = versioningBucket.Id,
+///         Bucket = versioningBucket.BucketName,
 ///         Rules = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketLifecycleConfigurationRuleArgs
@@ -1770,14 +1975,14 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "bucket_acl", &s3.BucketAclArgs{
-/// 			Bucket: bucket.ID(),
+/// 			Bucket: bucket.Bucket,
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketLifecycleConfiguration(ctx, "bucket-config", &s3.BucketLifecycleConfigurationArgs{
-/// 			Bucket: bucket.ID(),
+/// 			Bucket: bucket.Bucket,
 /// 			Rules: s3.BucketLifecycleConfigurationRuleArray{
 /// 				&s3.BucketLifecycleConfigurationRuleArgs{
 /// 					Id: pulumi.String("log"),
@@ -1827,14 +2032,14 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "versioning_bucket_acl", &s3.BucketAclArgs{
-/// 			Bucket: versioningBucket.ID(),
+/// 			Bucket: versioningBucket.Bucket,
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		versioning, err := s3.NewBucketVersioning(ctx, "versioning", &s3.BucketVersioningArgs{
-/// 			Bucket: versioningBucket.ID(),
+/// 			Bucket: versioningBucket.Bucket,
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
@@ -1843,7 +2048,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketLifecycleConfiguration(ctx, "versioning-bucket-config", &s3.BucketLifecycleConfigurationArgs{
-/// 			Bucket: versioningBucket.ID(),
+/// 			Bucket: versioningBucket.Bucket,
 /// 			Rules: s3.BucketLifecycleConfigurationRuleArray{
 /// 				&s3.BucketLifecycleConfigurationRuleArgs{
 /// 					Id: pulumi.String("config"),
@@ -1876,6 +2081,95 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "bucket" {
+///   bucket = "my-bucket"
+/// }
+/// resource "aws_s3_bucketacl" "bucket_acl" {
+///   bucket = aws_s3_bucket.bucket.bucket
+///   acl    = "private"
+/// }
+/// resource "aws_s3_bucketlifecycleconfiguration" "bucket-config" {
+///   bucket = aws_s3_bucket.bucket.bucket
+///   rules {
+///     id = "log"
+///     expiration = {
+///       days = 90
+///     }
+///     filter = {
+///       and = {
+///         prefix = "log/"
+///         tags = {
+///           "rule"      = "log"
+///           "autoclean" = "true"
+///         }
+///       }
+///     }
+///     status = "Enabled"
+///     transitions {
+///       days          = 30
+///       storage_class = "STANDARD_IA"
+///     }
+///     transitions {
+///       days          = 60
+///       storage_class = "GLACIER"
+///     }
+///   }
+///   rules {
+///     id = "tmp"
+///     filter = {
+///       prefix = "tmp/"
+///     }
+///     expiration = {
+///       date = "2023-01-13T00:00:00Z"
+///     }
+///     status = "Enabled"
+///   }
+/// }
+/// resource "aws_s3_bucket" "versioning_bucket" {
+///   bucket = "my-versioning-bucket"
+/// }
+/// resource "aws_s3_bucketacl" "versioning_bucket_acl" {
+///   bucket = aws_s3_bucket.versioning_bucket.bucket
+///   acl    = "private"
+/// }
+/// resource "aws_s3_bucketversioning" "versioning" {
+///   bucket = aws_s3_bucket.versioning_bucket.bucket
+///   versioning_configuration = {
+///     status = "Enabled"
+///   }
+/// }
+/// resource "aws_s3_bucketlifecycleconfiguration" "versioning-bucket-config" {
+///   depends_on = [aws_s3_bucketversioning.versioning]
+///   bucket     = aws_s3_bucket.versioning_bucket.bucket
+///   rules {
+///     id = "config"
+///     filter = {
+///       prefix = "config/"
+///     }
+///     noncurrent_version_expiration = {
+///       noncurrent_days = 90
+///     }
+///     noncurrent_version_transitions {
+///       noncurrent_days = 30
+///       storage_class   = "STANDARD_IA"
+///     }
+///     noncurrent_version_transitions {
+///       noncurrent_days = 60
+///       storage_class   = "GLACIER"
+///     }
+///     status = "Enabled"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1892,13 +2186,15 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleExpirationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleFilterArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleFilterAndArgs;
+/// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleTransitionArgs;
 /// import com.pulumi.aws.s3.BucketVersioning;
 /// import com.pulumi.aws.s3.BucketVersioningArgs;
 /// import com.pulumi.aws.s3.inputs.BucketVersioningVersioningConfigurationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleNoncurrentVersionExpirationArgs;
+/// import com.pulumi.aws.s3.inputs.BucketLifecycleConfigurationRuleNoncurrentVersionTransitionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1915,12 +2211,12 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///             .build());
 ///
 ///         var bucketAcl = new BucketAcl("bucketAcl", BucketAclArgs.builder()
-///             .bucket(bucket.id())
+///             .bucket(bucket.bucket())
 ///             .acl("private")
 ///             .build());
 ///
 ///         var bucket_config = new BucketLifecycleConfiguration("bucket-config", BucketLifecycleConfigurationArgs.builder()
-///             .bucket(bucket.id())
+///             .bucket(bucket.bucket())
 ///             .rules(
 ///                 BucketLifecycleConfigurationRuleArgs.builder()
 ///                     .id("log")
@@ -1964,19 +2260,19 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///             .build());
 ///
 ///         var versioningBucketAcl = new BucketAcl("versioningBucketAcl", BucketAclArgs.builder()
-///             .bucket(versioningBucket.id())
+///             .bucket(versioningBucket.bucket())
 ///             .acl("private")
 ///             .build());
 ///
 ///         var versioning = new BucketVersioning("versioning", BucketVersioningArgs.builder()
-///             .bucket(versioningBucket.id())
+///             .bucket(versioningBucket.bucket())
 ///             .versioningConfiguration(BucketVersioningVersioningConfigurationArgs.builder()
 ///                 .status("Enabled")
 ///                 .build())
 ///             .build());
 ///
 ///         var versioning_bucket_config = new BucketLifecycleConfiguration("versioning-bucket-config", BucketLifecycleConfigurationArgs.builder()
-///             .bucket(versioningBucket.id())
+///             .bucket(versioningBucket.bucket())
 ///             .rules(BucketLifecycleConfigurationRuleArgs.builder()
 ///                 .id("config")
 ///                 .filter(BucketLifecycleConfigurationRuleFilterArgs.builder()
@@ -2013,12 +2309,12 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///     type: aws:s3:BucketAcl
 ///     name: bucket_acl
 ///     properties:
-///       bucket: ${bucket.id}
+///       bucket: ${bucket.bucket}
 ///       acl: private
 ///   bucket-config:
 ///     type: aws:s3:BucketLifecycleConfiguration
 ///     properties:
-///       bucket: ${bucket.id}
+///       bucket: ${bucket.bucket}
 ///       rules:
 ///         - id: log
 ///           expiration:
@@ -2050,18 +2346,18 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///     type: aws:s3:BucketAcl
 ///     name: versioning_bucket_acl
 ///     properties:
-///       bucket: ${versioningBucket.id}
+///       bucket: ${versioningBucket.bucket}
 ///       acl: private
 ///   versioning:
 ///     type: aws:s3:BucketVersioning
 ///     properties:
-///       bucket: ${versioningBucket.id}
+///       bucket: ${versioningBucket.bucket}
 ///       versioningConfiguration:
 ///         status: Enabled
 ///   versioning-bucket-config:
 ///     type: aws:s3:BucketLifecycleConfiguration
 ///     properties:
-///       bucket: ${versioningBucket.id}
+///       bucket: ${versioningBucket.bucket}
 ///       rules:
 ///         - id: config
 ///           filter:
@@ -2082,10 +2378,22 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 ///
 /// ## Import
 ///
-/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expected_bucket_owner` separated by a comma (`,`):
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `bucket` (String) S3 bucket name.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import an S3 bucket lifecycle configuration using the `bucket` or the `bucket` and `expected_bucket_owner` separated by a comma (`,`). For example:
+/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expectedBucketOwner` separated by a comma (`,`):
+///
+///
+/// Using `pulumi import`, import an S3 bucket lifecycle configuration using the `bucket` or the `bucket` and `expectedBucketOwner` separated by a comma (`,`). For example:
 ///
 /// If the owner (account ID) of the source bucket is the same account used to configure the AWS Provider, import using the `bucket`:
 ///
@@ -2093,7 +2401,7 @@ import 'bucket_lifecycle_configuration_timeouts.dart';
 /// $ pulumi import aws:s3/bucketLifecycleConfiguration:BucketLifecycleConfiguration example bucket-name
 /// ```
 ///
-/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expected_bucket_owner` separated by a comma (`,`):
+/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expectedBucketOwner` separated by a comma (`,`):
 ///
 /// ```sh
 /// $ pulumi import aws:s3/bucketLifecycleConfiguration:BucketLifecycleConfiguration example bucket-name,123456789012
@@ -2108,7 +2416,7 @@ class BucketLifecycleConfiguration extends pulumi.CustomResource {
   /// List of configuration blocks describing the rules managing the replication. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
   late final pulumi.Output<BucketLifecycleConfigurationTimeouts?> timeouts;
-  /// The default minimum object size behavior applied to the lifecycle configuration. Valid values: `all_storage_classes_128K` (default), `varies_by_storage_class`. To customize the minimum object size for any transition you can add a `filter` that specifies a custom `object_size_greater_than` or `object_size_less_than` value. Custom filters always take precedence over the default transition behavior.
+  /// Default minimum object size behavior applied to the lifecycle configuration. Valid values: `all_storage_classes_128K` (default), `variesByStorageClass`. To customize the minimum object size for any transition you can add a `filter` that specifies a custom `objectSizeGreaterThan` or `objectSizeLessThan` value. Custom filters always take precedence over the default transition behavior.
   late final pulumi.Output<String> transitionDefaultMinimumObjectSize;
 
   /// Creates a new [BucketLifecycleConfiguration].

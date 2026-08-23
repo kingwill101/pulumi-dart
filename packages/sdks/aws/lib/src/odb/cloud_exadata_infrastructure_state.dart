@@ -7,131 +7,131 @@ import 'cloud_exadata_infrastructure_timeouts.dart';
 
 /// Input properties used for looking up and filtering CloudExadataInfrastructure resources.
 class CloudExadataInfrastructureState {
-  /// The number of storage servers requested for the Exadata infrastructure.
+  /// Number of storage servers requested for the Exadata infrastructure.
   final pulumi.Input<int>? activatedStorageCount;
-  /// The number of storage servers requested for the Exadata infrastructure.
+  /// Number of storage servers requested for the Exadata infrastructure.
   final pulumi.Input<int>? additionalStorageCount;
   /// Amazon Resource Name (ARN) of the Exadata infrastructure.
   final pulumi.Input<String>? arn;
-  /// The name of the Availability Zone (AZ) where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
+  /// Name of the Availability Zone (AZ) where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
   final pulumi.Input<String>? availabilityZone;
-  /// The AZ ID of the AZ where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
-  ///
-  /// The following arguments are optional:
+  /// AZ ID of the AZ where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
   final pulumi.Input<String>? availabilityZoneId;
-  /// The amount of available storage, in gigabytes (GB), for the Exadata infrastructure.
+  /// Amount of available storage, in gigabytes (GB), for the Exadata infrastructure.
   final pulumi.Input<int>? availableStorageSizeInGbs;
-  /// The number of compute instances that the Exadata infrastructure is located. Changing this will force terraform to create new resource.
+  /// Number of compute instances that the Exadata infrastructure is located. Changing this will force terraform to create new resource.
   final pulumi.Input<int>? computeCount;
-  /// The OCI model compute model used when you create or clone an instance: ECPU or OCPU.
+  /// OCI model compute model used when you create or clone an instance: ECPU or OCPU.
   final pulumi.Input<String>? computeModel;
-  /// The total number of CPU cores that are allocated to the Exadata infrastructure.
+  /// Total number of CPU cores that are allocated to the Exadata infrastructure.
   final pulumi.Input<int>? cpuCount;
-  /// The time when the Exadata infrastructure was created.
+  /// Time when the Exadata infrastructure was created.
   final pulumi.Input<String>? createdAt;
-  /// The email addresses of contacts to receive notification from Oracle about maintenance updates for the Exadata infrastructure. Changing this will force terraform to create new resource.
+  /// Email addresses of contacts to receive notification from Oracle about maintenance updates for the Exadata infrastructure. Changing this will force terraform to create new resource. See `customerContactsToSendToOci` Block below.
   final pulumi.Input<List<CloudExadataInfrastructureCustomerContactsToSendToOci>>? customerContactsToSendToOcis;
-  /// The size of the Exadata infrastructure's data disk group, in terabytes (TB).
+  /// Size of the Exadata infrastructure's data disk group, in terabytes (TB).
   final pulumi.Input<double>? dataStorageSizeInTbs;
-  /// The database server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
+  /// Database server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
   final pulumi.Input<String>? databaseServerType;
-  /// The size of the Exadata infrastructure's local node storage, in gigabytes (GB).
+  /// Size of the Exadata infrastructure's local node storage, in gigabytes (GB).
   final pulumi.Input<int>? dbNodeStorageSizeInGbs;
-  /// The software version of the database servers (dom0) in the Exadata infrastructure.
+  /// Software version of the database servers (dom0) in the Exadata infrastructure.
   final pulumi.Input<String>? dbServerVersion;
-  /// The user-friendly name for the Exadata infrastructure. Changing this will force terraform to create a new resource.
+  /// User-friendly name for the Exadata infrastructure. Changing this will force terraform to create a new resource.
   final pulumi.Input<String>? displayName;
-  /// The Oracle Cloud Identifier (OCID) of the last maintenance run for the Exadata infrastructure.
+  /// Oracle Cloud Identifier (OCID) of the last maintenance run for the Exadata infrastructure.
   final pulumi.Input<String>? lastMaintenanceRunId;
   /// The scheduling details for the maintenance window. Patching and system updates take place during the maintenance window
   final pulumi.Input<CloudExadataInfrastructureMaintenanceWindow>? maintenanceWindow;
-  /// The total number of CPU cores available on the Exadata infrastructure.
+  /// Total number of CPU cores available on the Exadata infrastructure.
   final pulumi.Input<int>? maxCpuCount;
-  /// The total amount of data disk group storage, in terabytes (TB), that's available on the Exadata infrastructure.
+  /// Total amount of data disk group storage, in terabytes (TB), that's available on the Exadata infrastructure.
   final pulumi.Input<double>? maxDataStorageInTbs;
-  /// The total amount of local node storage, in gigabytes (GB), that's available on the Exadata infrastructure.
+  /// Total amount of local node storage, in gigabytes (GB), that's available on the Exadata infrastructure.
   final pulumi.Input<int>? maxDbNodeStorageSizeInGbs;
-  /// The total amount of memory in gigabytes (GB) available on the Exadata infrastructure.
+  /// Total amount of memory in gigabytes (GB) available on the Exadata infrastructure.
   final pulumi.Input<int>? maxMemoryInGbs;
-  /// The amount of memory, in gigabytes (GB), that's allocated on the Exadata infrastructure
+  /// Amount of memory, in gigabytes (GB), that's allocated on the Exadata infrastructure.
   final pulumi.Input<int>? memorySizeInGbs;
-  /// The monthly software version of the database servers in the Exadata infrastructure.
+  /// Monthly software version of the database servers in the Exadata infrastructure.
   final pulumi.Input<String>? monthlyDbServerVersion;
-  /// The monthly software version of the storage servers installed on the Exadata infrastructure.
+  /// Monthly software version of the storage servers installed on the Exadata infrastructure.
   final pulumi.Input<String>? monthlyStorageServerVersion;
-  /// The OCID of the next maintenance run for the Exadata infrastructure.
+  /// OCID of the next maintenance run for the Exadata infrastructure.
   final pulumi.Input<String>? nextMaintenanceRunId;
-  /// The name of the OCI resource anchor for the Exadata infrastructure.
+  /// Name of the OCI resource anchor for the Exadata infrastructure.
   final pulumi.Input<String>? ociResourceAnchorName;
-  /// The HTTPS link to the Exadata infrastructure in OCI
+  /// HTTPS link to the Exadata infrastructure in OCI.
   final pulumi.Input<String>? ociUrl;
-  /// The OCID of the Exadata infrastructure.
+  /// OCID of the Exadata infrastructure.
   final pulumi.Input<String>? ocid;
-  /// The amount of progress made on the current operation on the Exadata infrastructure, expressed as a percentage.
+  /// Amount of progress made on the current operation on the Exadata infrastructure, expressed as a percentage.
   final pulumi.Input<double>? percentProgress;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The model name of the Exadata infrastructure. Changing this will force terraform to create new resource.
+  /// Model name of the Exadata infrastructure. Changing this will force terraform to create new resource.
   final pulumi.Input<String>? shape;
-  /// The current status of the Exadata infrastructure.
+  /// Current status of the Exadata infrastructure.
   final pulumi.Input<String>? status;
   /// Additional information about the status of the Exadata infrastructure.
   final pulumi.Input<String>? statusReason;
-  /// The number of storage servers that are activated for the Exadata infrastructure. Changing this will force terraform to create new resource.
+  /// Number of storage servers that are activated for the Exadata infrastructure. Changing this will force terraform to create new resource.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<int>? storageCount;
-  /// The storage server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
+  /// Storage server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
   final pulumi.Input<String>? storageServerType;
-  /// The software version of the storage servers on the Exadata infrastructure.
+  /// Software version of the storage servers on the Exadata infrastructure.
   final pulumi.Input<String>? storageServerVersion;
-  /// A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the exadata infrastructure. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<CloudExadataInfrastructureTimeouts>? timeouts;
-  /// The total amount of storage, in gigabytes (GB), on the Exadata infrastructure.
+  /// Total amount of storage, in gigabytes (GB), on the Exadata infrastructure.
   final pulumi.Input<int>? totalStorageSizeInGbs;
 
   /// Creates a new [CloudExadataInfrastructureState].
-  /// [activatedStorageCount] The number of storage servers requested for the Exadata infrastructure.
-  /// [additionalStorageCount] The number of storage servers requested for the Exadata infrastructure.
+  /// [activatedStorageCount] Number of storage servers requested for the Exadata infrastructure.
+  /// [additionalStorageCount] Number of storage servers requested for the Exadata infrastructure.
   /// [arn] Amazon Resource Name (ARN) of the Exadata infrastructure.
-  /// [availabilityZone] The name of the Availability Zone (AZ) where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
-  /// [availabilityZoneId] The AZ ID of the AZ where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
-  /// [availableStorageSizeInGbs] The amount of available storage, in gigabytes (GB), for the Exadata infrastructure.
-  /// [computeCount] The number of compute instances that the Exadata infrastructure is located. Changing this will force terraform to create new resource.
-  /// [computeModel] The OCI model compute model used when you create or clone an instance: ECPU or OCPU.
-  /// [cpuCount] The total number of CPU cores that are allocated to the Exadata infrastructure.
-  /// [createdAt] The time when the Exadata infrastructure was created.
-  /// [customerContactsToSendToOcis] The email addresses of contacts to receive notification from Oracle about maintenance updates for the Exadata infrastructure. Changing this will force terraform to create new resource.
-  /// [dataStorageSizeInTbs] The size of the Exadata infrastructure's data disk group, in terabytes (TB).
-  /// [databaseServerType] The database server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
-  /// [dbNodeStorageSizeInGbs] The size of the Exadata infrastructure's local node storage, in gigabytes (GB).
-  /// [dbServerVersion] The software version of the database servers (dom0) in the Exadata infrastructure.
-  /// [displayName] The user-friendly name for the Exadata infrastructure. Changing this will force terraform to create a new resource.
-  /// [lastMaintenanceRunId] The Oracle Cloud Identifier (OCID) of the last maintenance run for the Exadata infrastructure.
+  /// [availabilityZone] Name of the Availability Zone (AZ) where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
+  /// [availabilityZoneId] AZ ID of the AZ where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
+  /// [availableStorageSizeInGbs] Amount of available storage, in gigabytes (GB), for the Exadata infrastructure.
+  /// [computeCount] Number of compute instances that the Exadata infrastructure is located. Changing this will force terraform to create new resource.
+  /// [computeModel] OCI model compute model used when you create or clone an instance: ECPU or OCPU.
+  /// [cpuCount] Total number of CPU cores that are allocated to the Exadata infrastructure.
+  /// [createdAt] Time when the Exadata infrastructure was created.
+  /// [customerContactsToSendToOcis] Email addresses of contacts to receive notification from Oracle about maintenance updates for the Exadata infrastructure. Changing this will force terraform to create new resource. See `customerContactsToSendToOci` Block below.
+  /// [dataStorageSizeInTbs] Size of the Exadata infrastructure's data disk group, in terabytes (TB).
+  /// [databaseServerType] Database server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
+  /// [dbNodeStorageSizeInGbs] Size of the Exadata infrastructure's local node storage, in gigabytes (GB).
+  /// [dbServerVersion] Software version of the database servers (dom0) in the Exadata infrastructure.
+  /// [displayName] User-friendly name for the Exadata infrastructure. Changing this will force terraform to create a new resource.
+  /// [lastMaintenanceRunId] Oracle Cloud Identifier (OCID) of the last maintenance run for the Exadata infrastructure.
   /// [maintenanceWindow] The scheduling details for the maintenance window. Patching and system updates take place during the maintenance window
-  /// [maxCpuCount] The total number of CPU cores available on the Exadata infrastructure.
-  /// [maxDataStorageInTbs] The total amount of data disk group storage, in terabytes (TB), that's available on the Exadata infrastructure.
-  /// [maxDbNodeStorageSizeInGbs] The total amount of local node storage, in gigabytes (GB), that's available on the Exadata infrastructure.
-  /// [maxMemoryInGbs] The total amount of memory in gigabytes (GB) available on the Exadata infrastructure.
-  /// [memorySizeInGbs] The amount of memory, in gigabytes (GB), that's allocated on the Exadata infrastructure
-  /// [monthlyDbServerVersion] The monthly software version of the database servers in the Exadata infrastructure.
-  /// [monthlyStorageServerVersion] The monthly software version of the storage servers installed on the Exadata infrastructure.
-  /// [nextMaintenanceRunId] The OCID of the next maintenance run for the Exadata infrastructure.
-  /// [ociResourceAnchorName] The name of the OCI resource anchor for the Exadata infrastructure.
-  /// [ociUrl] The HTTPS link to the Exadata infrastructure in OCI
-  /// [ocid] The OCID of the Exadata infrastructure.
-  /// [percentProgress] The amount of progress made on the current operation on the Exadata infrastructure, expressed as a percentage.
+  /// [maxCpuCount] Total number of CPU cores available on the Exadata infrastructure.
+  /// [maxDataStorageInTbs] Total amount of data disk group storage, in terabytes (TB), that's available on the Exadata infrastructure.
+  /// [maxDbNodeStorageSizeInGbs] Total amount of local node storage, in gigabytes (GB), that's available on the Exadata infrastructure.
+  /// [maxMemoryInGbs] Total amount of memory in gigabytes (GB) available on the Exadata infrastructure.
+  /// [memorySizeInGbs] Amount of memory, in gigabytes (GB), that's allocated on the Exadata infrastructure.
+  /// [monthlyDbServerVersion] Monthly software version of the database servers in the Exadata infrastructure.
+  /// [monthlyStorageServerVersion] Monthly software version of the storage servers installed on the Exadata infrastructure.
+  /// [nextMaintenanceRunId] OCID of the next maintenance run for the Exadata infrastructure.
+  /// [ociResourceAnchorName] Name of the OCI resource anchor for the Exadata infrastructure.
+  /// [ociUrl] HTTPS link to the Exadata infrastructure in OCI.
+  /// [ocid] OCID of the Exadata infrastructure.
+  /// [percentProgress] Amount of progress made on the current operation on the Exadata infrastructure, expressed as a percentage.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [shape] The model name of the Exadata infrastructure. Changing this will force terraform to create new resource.
-  /// [status] The current status of the Exadata infrastructure.
+  /// [shape] Model name of the Exadata infrastructure. Changing this will force terraform to create new resource.
+  /// [status] Current status of the Exadata infrastructure.
   /// [statusReason] Additional information about the status of the Exadata infrastructure.
-  /// [storageCount] The number of storage servers that are activated for the Exadata infrastructure. Changing this will force terraform to create new resource.
-  /// [storageServerType] The storage server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
-  /// [storageServerVersion] The software version of the storage servers on the Exadata infrastructure.
-  /// [tags] A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [storageCount] Number of storage servers that are activated for the Exadata infrastructure. Changing this will force terraform to create new resource.
+  /// [storageServerType] Storage server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
+  /// [storageServerVersion] Software version of the storage servers on the Exadata infrastructure.
+  /// [tags] Map of tags to assign to the exadata infrastructure. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [timeouts] Optional.
-  /// [totalStorageSizeInGbs] The total amount of storage, in gigabytes (GB), on the Exadata infrastructure.
+  /// [totalStorageSizeInGbs] Total amount of storage, in gigabytes (GB), on the Exadata infrastructure.
   const CloudExadataInfrastructureState({
     this.activatedStorageCount,
     this.additionalStorageCount,
@@ -268,4 +268,3 @@ class CloudExadataInfrastructureState {
     );
   }
 }
-

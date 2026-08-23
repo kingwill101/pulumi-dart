@@ -15,7 +15,7 @@ class DomainRuleBasedMatching {
   final pulumi.Input<bool> enabled;
   /// A block that specifies the configuration for exporting Identity Resolution results. Documented below.
   final pulumi.Input<DomainRuleBasedMatchingExportingConfig>? exportingConfig;
-  /// A block that configures how the rule-based matching process should match profiles. You can have up to 15 `rule` in the `natching_rules`. Documented below.
+  /// A block that configures how the rule-based matching process should match profiles. You can have up to 15 `rule` in the `natchingRules`. Documented below.
   final pulumi.Input<List<DomainRuleBasedMatchingMatchingRule>>? matchingRules;
   /// Indicates the maximum allowed rule level for matching.
   final pulumi.Input<int>? maxAllowedRuleLevelForMatching;
@@ -28,7 +28,7 @@ class DomainRuleBasedMatching {
   /// [conflictResolution] A block that specifies how the auto-merging process should resolve conflicts between different profiles. Documented below.
   /// [enabled] The flag that enables the rule-based matching process of duplicate profiles.
   /// [exportingConfig] A block that specifies the configuration for exporting Identity Resolution results. Documented below.
-  /// [matchingRules] A block that configures how the rule-based matching process should match profiles. You can have up to 15 `rule` in the `natching_rules`. Documented below.
+  /// [matchingRules] A block that configures how the rule-based matching process should match profiles. You can have up to 15 `rule` in the `natchingRules`. Documented below.
   /// [maxAllowedRuleLevelForMatching] Indicates the maximum allowed rule level for matching.
   /// [maxAllowedRuleLevelForMerging] Indicates the maximum allowed rule level for merging.
   /// [status] Optional.
@@ -69,4 +69,3 @@ class DomainRuleBasedMatching {
     );
   }
 }
-

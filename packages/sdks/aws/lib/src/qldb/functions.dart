@@ -56,6 +56,19 @@ import 'get_ledger_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_qldb_getledger" "example" {
+///   name = "an_example_ledger"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'get_ledger_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.qldb.QldbFunctions;
 /// import com.pulumi.aws.qldb.inputs.GetLedgerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

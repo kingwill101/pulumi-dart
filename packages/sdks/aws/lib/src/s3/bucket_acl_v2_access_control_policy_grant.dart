@@ -31,4 +31,3 @@ class BucketAclV2AccessControlPolicyGrant {
     );
   }
 }
-

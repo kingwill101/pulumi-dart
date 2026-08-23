@@ -63,6 +63,20 @@ import 'data_share_authorization_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshift_datashareauthorization" "example" {
+///   consumer_identifier = "123456789012"
+///   data_share_arn      = "arn:aws:redshift:us-west-2:123456789012:datashare:3072dae5-022b-4d45-9cd3-01f010aae4b2/example_share"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'data_share_authorization_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshift.DataShareAuthorization;
 /// import com.pulumi.aws.redshift.DataShareAuthorizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

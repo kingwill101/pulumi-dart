@@ -60,6 +60,20 @@ import 'get_resource_share_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ram_getresourceshare" "example" {
+///   name           = "example"
+///   resource_owner = "SELF"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +82,8 @@ import 'get_resource_share_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ram.RamFunctions;
 /// import com.pulumi.aws.ram.inputs.GetResourceShareArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -100,7 +114,7 @@ import 'get_resource_share_result.dart';
 /// ```
 ///
 ///
-/// ## Search by filters
+/// ### Search by filters
 ///
 ///
 /// ```typescript
@@ -179,6 +193,23 @@ import 'get_resource_share_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ram_getresourceshare" "tagFilter" {
+///   resource_owner = "SELF"
+///   filters {
+///     name   = "NameOfTag"
+///     values = ["exampleNameTagValue"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -187,8 +218,9 @@ import 'get_resource_share_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ram.RamFunctions;
 /// import com.pulumi.aws.ram.inputs.GetResourceShareArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ram.inputs.GetResourceShareFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

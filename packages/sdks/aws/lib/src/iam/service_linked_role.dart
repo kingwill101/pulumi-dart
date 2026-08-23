@@ -54,6 +54,19 @@ import 'service_linked_role_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_servicelinkedrole" "elasticbeanstalk" {
+///   aws_service_name = "elasticbeanstalk.amazonaws.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -62,8 +75,8 @@ import 'service_linked_role_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.ServiceLinkedRole;
 /// import com.pulumi.aws.iam.ServiceLinkedRoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -120,9 +133,9 @@ class ServiceLinkedRole extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The path of the role.
   late final pulumi.Output<String> path;
-  /// Key-value mapping of tags for the IAM role. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of tags for the IAM role. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The stable and unique string identifying the role.
   late final pulumi.Output<String> uniqueId;

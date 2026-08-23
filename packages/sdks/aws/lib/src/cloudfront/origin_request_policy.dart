@@ -157,6 +157,38 @@ import 'origin_request_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_originrequestpolicy" "example" {
+///   name    = "example-policy"
+///   comment = "example comment"
+///   cookies_config = {
+///     cookie_behavior = "whitelist"
+///     cookies = {
+///       items = ["example"]
+///     }
+///   }
+///   headers_config = {
+///     header_behavior = "whitelist"
+///     headers = {
+///       items = ["example"]
+///     }
+///   }
+///   query_strings_config = {
+///     query_string_behavior = "whitelist"
+///     query_strings = {
+///       items = ["example"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -171,8 +203,8 @@ import 'origin_request_policy_state.dart';
 /// import com.pulumi.aws.cloudfront.inputs.OriginRequestPolicyHeadersConfigHeadersArgs;
 /// import com.pulumi.aws.cloudfront.inputs.OriginRequestPolicyQueryStringsConfigArgs;
 /// import com.pulumi.aws.cloudfront.inputs.OriginRequestPolicyQueryStringsConfigQueryStringsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

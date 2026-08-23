@@ -7,15 +7,15 @@ import 'agent_knowledge_base_knowledge_base_configuration_vector_knowledge_base_
 class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfiguration {
   /// ARN of the model used to create vector embeddings for the knowledge base.
   final pulumi.Input<String> embeddingModelArn;
-  /// The embeddings model configuration details for the vector model used in Knowledge Base.  See `embedding_model_configuration` block for details.
+  /// The embeddings model configuration details for the vector model used in Knowledge Base.  See `embeddingModelConfiguration` block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfiguration>? embeddingModelConfiguration;
-  /// supplemental_data_storage_configuration.  See `supplemental_data_storage_configuration` block for details.
+  /// supplemental_data_storage_configuration.  See `supplementalDataStorageConfiguration` block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfiguration>? supplementalDataStorageConfiguration;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfiguration].
   /// [embeddingModelArn] ARN of the model used to create vector embeddings for the knowledge base.
-  /// [embeddingModelConfiguration] The embeddings model configuration details for the vector model used in Knowledge Base.  See `embedding_model_configuration` block for details.
-  /// [supplementalDataStorageConfiguration] supplemental_data_storage_configuration.  See `supplemental_data_storage_configuration` block for details.
+  /// [embeddingModelConfiguration] The embeddings model configuration details for the vector model used in Knowledge Base.  See `embeddingModelConfiguration` block for details.
+  /// [supplementalDataStorageConfiguration] supplemental_data_storage_configuration.  See `supplementalDataStorageConfiguration` block for details.
   const AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfiguration({
     required this.embeddingModelArn,
     this.embeddingModelConfiguration,
@@ -38,4 +38,3 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurati
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'get_broker_instance.dart';
 import 'get_broker_ldap_server_metadata.dart';
 import 'get_broker_logs.dart';
 import 'get_broker_maintenance_window_start_time.dart';
+import 'get_broker_shared_resource.dart';
 import 'get_broker_user.dart';
 
 /// Result data returned by getBroker.
@@ -19,11 +20,11 @@ class GetBrokerResult {
   final bool autoMinorVersionUpgrade;
   final String brokerId;
   final String brokerName;
-  /// Configuration block for broker configuration. See Configuration below.
+  /// Configuration block for broker configuration. See `configuration` Block below.
   final GetBrokerConfiguration configuration;
   /// Deployment mode of the broker.
   final String deploymentMode;
-  /// Configuration block containing encryption options. See Encryption Options below.
+  /// Configuration block containing encryption options. See `encryptionOptions` Block below.
   final List<GetBrokerEncryptionOption> encryptionOptions;
   /// Type of broker engine.
   final String engineType;
@@ -33,26 +34,30 @@ class GetBrokerResult {
   final String hostInstanceType;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// List of information about allocated brokers (both active & standby). See Instances below.
+  /// List of information about allocated brokers (both active & standby). See `instances` Block below.
   final List<GetBrokerInstance> instances;
-  /// Configuration block for the LDAP server used to authenticate and authorize connections to the broker. See LDAP Server Metadata below.
+  /// Configuration block for the LDAP server used to authenticate and authorize connections to the broker. See `ldapServerMetadata` Block below.
   final List<GetBrokerLdapServerMetadata> ldapServerMetadatas;
-  /// Configuration block for the logging configuration of the broker. See Logs below.
+  /// Configuration block for the logging configuration of the broker. See `logs` Block below.
   final GetBrokerLogs logs;
-  /// Configuration block for the maintenance window start time. See Maintenance Window Start Time below.
+  /// Configuration block for the maintenance window start time. See `maintenanceWindowStartTime` Block below.
   final GetBrokerMaintenanceWindowStartTime maintenanceWindowStartTime;
   /// Whether to enable connections from applications outside of the VPC that hosts the broker's subnets.
   final bool publiclyAccessible;
   final String region;
+  /// Set of AWS RAM resource share ARNs that grant the broker access to shared resources for private networking. Only populated for `engineType` of `RabbitMQ`.
+  final List<String> resourceShareArns;
   /// List of security group IDs assigned to the broker.
   final List<String> securityGroups;
+  /// List of resources shared with the broker. See `sharedResources` Block below. Only populated for `engineType` of `RabbitMQ`.
+  final List<GetBrokerSharedResource> sharedResources;
   /// Storage type of the broker.
   final String storageType;
   /// List of subnet IDs in which to launch the broker.
   final List<String> subnetIds;
   /// Map of tags assigned to the broker.
   final Map<String, String> tags;
-  /// Configuration block for broker users. See User below.
+  /// Configuration block for broker users. See `user` Block below.
   final List<GetBrokerUser> users;
 
   /// Creates a new [GetBrokerResult].
@@ -61,24 +66,26 @@ class GetBrokerResult {
   /// [autoMinorVersionUpgrade] Whether to automatically upgrade to new minor versions of brokers as Amazon MQ makes releases available.
   /// [brokerId] Required.
   /// [brokerName] Required.
-  /// [configuration] Configuration block for broker configuration. See Configuration below.
+  /// [configuration] Configuration block for broker configuration. See `configuration` Block below.
   /// [deploymentMode] Deployment mode of the broker.
-  /// [encryptionOptions] Configuration block containing encryption options. See Encryption Options below.
+  /// [encryptionOptions] Configuration block containing encryption options. See `encryptionOptions` Block below.
   /// [engineType] Type of broker engine.
   /// [engineVersion] Version of the broker engine.
   /// [hostInstanceType] Broker's instance type.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [instances] List of information about allocated brokers (both active & standby). See Instances below.
-  /// [ldapServerMetadatas] Configuration block for the LDAP server used to authenticate and authorize connections to the broker. See LDAP Server Metadata below.
-  /// [logs] Configuration block for the logging configuration of the broker. See Logs below.
-  /// [maintenanceWindowStartTime] Configuration block for the maintenance window start time. See Maintenance Window Start Time below.
+  /// [instances] List of information about allocated brokers (both active & standby). See `instances` Block below.
+  /// [ldapServerMetadatas] Configuration block for the LDAP server used to authenticate and authorize connections to the broker. See `ldapServerMetadata` Block below.
+  /// [logs] Configuration block for the logging configuration of the broker. See `logs` Block below.
+  /// [maintenanceWindowStartTime] Configuration block for the maintenance window start time. See `maintenanceWindowStartTime` Block below.
   /// [publiclyAccessible] Whether to enable connections from applications outside of the VPC that hosts the broker's subnets.
   /// [region] Required.
+  /// [resourceShareArns] Set of AWS RAM resource share ARNs that grant the broker access to shared resources for private networking. Only populated for `engineType` of `RabbitMQ`.
   /// [securityGroups] List of security group IDs assigned to the broker.
+  /// [sharedResources] List of resources shared with the broker. See `sharedResources` Block below. Only populated for `engineType` of `RabbitMQ`.
   /// [storageType] Storage type of the broker.
   /// [subnetIds] List of subnet IDs in which to launch the broker.
   /// [tags] Map of tags assigned to the broker.
-  /// [users] Configuration block for broker users. See User below.
+  /// [users] Configuration block for broker users. See `user` Block below.
   const GetBrokerResult({
     required this.arn,
     required this.authenticationStrategy,
@@ -98,7 +105,9 @@ class GetBrokerResult {
     required this.maintenanceWindowStartTime,
     required this.publiclyAccessible,
     required this.region,
+    required this.resourceShareArns,
     required this.securityGroups,
+    required this.sharedResources,
     required this.storageType,
     required this.subnetIds,
     required this.tags,
@@ -125,7 +134,9 @@ class GetBrokerResult {
       'maintenanceWindowStartTime': maintenanceWindowStartTime.toMap(),
       'publiclyAccessible': publiclyAccessible,
       'region': region,
+      'resourceShareArns': resourceShareArns,
       'securityGroups': securityGroups,
+      'sharedResources': pulumi.Input.encodeList<GetBrokerSharedResource, Map<String, dynamic>>(sharedResources, (value) => value.toMap()),
       'storageType': storageType,
       'subnetIds': subnetIds,
       'tags': tags,
@@ -153,7 +164,9 @@ class GetBrokerResult {
       maintenanceWindowStartTime: GetBrokerMaintenanceWindowStartTime.fromMap((map['maintenanceWindowStartTime']! as Map).cast<String, dynamic>()),
       publiclyAccessible: map['publiclyAccessible'] as bool,
       region: map['region'] as String,
+      resourceShareArns: (map['resourceShareArns'] as List).cast<String>(),
       securityGroups: (map['securityGroups'] as List).cast<String>(),
+      sharedResources: pulumi.Input.decodeList<GetBrokerSharedResource>(map['sharedResources']!, (value) => GetBrokerSharedResource.fromMap((value as Map).cast<String, dynamic>())),
       storageType: map['storageType'] as String,
       subnetIds: (map['subnetIds'] as List).cast<String>(),
       tags: (map['tags'] as Map).cast<String, String>(),
@@ -161,4 +174,3 @@ class GetBrokerResult {
     );
   }
 }
-

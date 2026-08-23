@@ -6,13 +6,13 @@ import 'security_group_state.dart';
 ///
 /// &gt; **NOTE:** Avoid using the `ingress` and `egress` arguments of the `aws.ec2.SecurityGroup` resource to configure in-line rules, as they struggle with managing multiple CIDR blocks, and, due to the historical lack of unique IDs, tags and descriptions. To avoid these problems, use the current best practice of the `aws.vpc.SecurityGroupEgressRule` and `aws.vpc.SecurityGroupIngressRule` resources with one CIDR block per rule.
 ///
-/// !&gt; **WARNING:** You should not use the `aws.ec2.SecurityGroup` resource with _in-line rules_ (using the `ingress` and `egress` arguments of `aws.ec2.SecurityGroup`) in conjunction with the `aws.vpc.SecurityGroupEgressRule` and `aws.vpc.SecurityGroupIngressRule` resources or the `aws.ec2.SecurityGroupRule` resource. Doing so may cause rule conflicts, perpetual differences, and result in rules being overwritten.
+/// &gt; **WARNING:** You should not use the `aws.ec2.SecurityGroup` resource with _in-line rules_ (using the `ingress` and `egress` arguments of `aws.ec2.SecurityGroup`) in conjunction with the `aws.vpc.SecurityGroupEgressRule` and `aws.vpc.SecurityGroupIngressRule` resources or the `aws.ec2.SecurityGroupRule` resource. Doing so may cause rule conflicts, perpetual differences, and result in rules being overwritten.
 ///
 /// &gt; **NOTE:** Referencing Security Groups across VPC peering has certain restrictions. More information is available in the [VPC Peering User Guide](https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-security-groups.html).
 ///
 /// &gt; **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), security groups associated with Lambda Functions can take up to 45 minutes to successfully delete. To allow for successful deletion, the provider will wait for at least 45 minutes even if a shorter delete timeout is specified.
 ///
-/// &gt; **NOTE:** The `cidr_blocks` and `ipv6_cidr_blocks` parameters are optional in the `ingress` and `egress` blocks. If nothing is specified, traffic will be blocked as described in _NOTE on Egress rules_ later.
+/// &gt; **NOTE:** The `cidrBlocks` and `ipv6CidrBlocks` parameters are optional in the `ingress` and `egress` blocks. If nothing is specified, traffic will be blocked as described in _NOTE on Egress rules_ later.
 ///
 /// ## Example Usage
 ///
@@ -164,7 +164,7 @@ import 'security_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vpc.NewSecurityGroupIngressRule(ctx, "allow_tls_ipv4", &vpc.SecurityGroupIngressRuleArgs{
-/// 			SecurityGroupId: allowTls.ID(),
+/// 			SecurityGroupId: allowTls.ID().ToIDOutput().ToStringOutput(),
 /// 			CidrIpv4:        pulumi.Any(main.CidrBlock),
 /// 			FromPort:        pulumi.Int(443),
 /// 			IpProtocol:      pulumi.String("tcp"),
@@ -174,7 +174,7 @@ import 'security_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vpc.NewSecurityGroupIngressRule(ctx, "allow_tls_ipv6", &vpc.SecurityGroupIngressRuleArgs{
-/// 			SecurityGroupId: allowTls.ID(),
+/// 			SecurityGroupId: allowTls.ID().ToIDOutput().ToStringOutput(),
 /// 			CidrIpv6:        pulumi.Any(main.Ipv6CidrBlock),
 /// 			FromPort:        pulumi.Int(443),
 /// 			IpProtocol:      pulumi.String("tcp"),
@@ -184,7 +184,7 @@ import 'security_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vpc.NewSecurityGroupEgressRule(ctx, "allow_all_traffic_ipv4", &vpc.SecurityGroupEgressRuleArgs{
-/// 			SecurityGroupId: allowTls.ID(),
+/// 			SecurityGroupId: allowTls.ID().ToIDOutput().ToStringOutput(),
 /// 			CidrIpv4:        pulumi.String("0.0.0.0/0"),
 /// 			IpProtocol:      pulumi.String("-1"),
 /// 		})
@@ -192,7 +192,7 @@ import 'security_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vpc.NewSecurityGroupEgressRule(ctx, "allow_all_traffic_ipv6", &vpc.SecurityGroupEgressRuleArgs{
-/// 			SecurityGroupId: allowTls.ID(),
+/// 			SecurityGroupId: allowTls.ID().ToIDOutput().ToStringOutput(),
 /// 			CidrIpv6:        pulumi.String("::/0"),
 /// 			IpProtocol:      pulumi.String("-1"),
 /// 		})
@@ -201,6 +201,48 @@ import 'security_group_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_securitygroup" "allow_tls" {
+///   name        = "allow_tls"
+///   description = "Allow TLS inbound traffic and all outbound traffic"
+///   vpc_id      = main.id
+///   tags = {
+///     "Name" = "allow_tls"
+///   }
+/// }
+/// resource "aws_vpc_securitygroupingressrule" "allow_tls_ipv4" {
+///   security_group_id = aws_ec2_securitygroup.allow_tls.id
+///   cidr_ipv4         = main.cidrBlock
+///   from_port         = 443
+///   ip_protocol       = "tcp"
+///   to_port           = 443
+/// }
+/// resource "aws_vpc_securitygroupingressrule" "allow_tls_ipv6" {
+///   security_group_id = aws_ec2_securitygroup.allow_tls.id
+///   cidr_ipv6         = main.ipv6CidrBlock
+///   from_port         = 443
+///   ip_protocol       = "tcp"
+///   to_port           = 443
+/// }
+/// resource "aws_vpc_securitygroupegressrule" "allow_all_traffic_ipv4" {
+///   security_group_id = aws_ec2_securitygroup.allow_tls.id
+///   cidr_ipv4         = "0.0.0.0/0"
+///   ip_protocol       = "-1"
+/// }
+/// resource "aws_vpc_securitygroupegressrule" "allow_all_traffic_ipv6" {
+///   security_group_id = aws_ec2_securitygroup.allow_tls.id
+///   cidr_ipv6         = "::/0"
+///   ip_protocol       = "-1"
 /// }
 /// ```
 /// ```java
@@ -215,8 +257,8 @@ import 'security_group_state.dart';
 /// import com.pulumi.aws.vpc.SecurityGroupIngressRuleArgs;
 /// import com.pulumi.aws.vpc.SecurityGroupEgressRule;
 /// import com.pulumi.aws.vpc.SecurityGroupEgressRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -402,6 +444,25 @@ import 'security_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_securitygroup" "example" {
+///   egress {
+///     from_port        = 0
+///     to_port          = 0
+///     protocol         = "-1"
+///     cidr_blocks      = ["0.0.0.0/0"]
+///     ipv6_cidr_blocks = ["::/0"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -411,8 +472,8 @@ import 'security_group_state.dart';
 /// import com.pulumi.aws.ec2.SecurityGroup;
 /// import com.pulumi.aws.ec2.SecurityGroupArgs;
 /// import com.pulumi.aws.ec2.inputs.SecurityGroupEgressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -547,6 +608,26 @@ import 'security_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_securitygroup" "example" {
+///   egress {
+///     from_port       = 0
+///     to_port         = 0
+///     protocol        = "-1"
+///     prefix_list_ids = [aws_ec2_vpcendpoint.my_endpoint.prefix_list_id]
+///   }
+/// }
+/// resource "aws_ec2_vpcendpoint" "my_endpoint" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -557,8 +638,8 @@ import 'security_group_state.dart';
 /// import com.pulumi.aws.ec2.SecurityGroup;
 /// import com.pulumi.aws.ec2.SecurityGroupArgs;
 /// import com.pulumi.aws.ec2.inputs.SecurityGroupEgressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -670,6 +751,20 @@ import 'security_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_securitygroup" "example" {
+///   name   = "sg"
+///   vpc_id = exampleAwsVpc.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -678,8 +773,8 @@ import 'security_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.SecurityGroup;
 /// import com.pulumi.aws.ec2.SecurityGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -715,9 +810,9 @@ import 'security_group_state.dart';
 ///
 /// ### Recreating a Security Group
 ///
-/// A simple security group `name` change "forces new" the security group--the provider destroys the security group and creates a new one. (Likewise, `description`, `name_prefix`, or `vpc_id` [cannot be changed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/working-with-security-groups.html#creating-security-group).) Attempting to recreate the security group leads to a variety of complications depending on how it is used.
+/// A simple security group `name` change "forces new" the security group--the provider destroys the security group and creates a new one. (Likewise, `description`, `namePrefix`, or `vpcId` [cannot be changed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/working-with-security-groups.html#creating-security-group).) Attempting to recreate the security group leads to a variety of complications depending on how it is used.
 ///
-/// Security groups are generally associated with other resources--**more than 100** AWS Provider resources reference security groups. Referencing a resource from another resource creates a one-way dependency. For example, if you create an EC2 `aws.ec2.Instance` that has a `vpc_security_group_ids` argument that refers to an `aws.ec2.SecurityGroup` resource, the `aws.ec2.SecurityGroup` is a dependent of the `aws.ec2.Instance`. Because of this, the provider will create the security group first so that it can then be associated with the EC2 instance.
+/// Security groups are generally associated with other resources--**more than 100** AWS Provider resources reference security groups. Referencing a resource from another resource creates a one-way dependency. For example, if you create an EC2 `aws.ec2.Instance` that has a `vpcSecurityGroupIds` argument that refers to an `aws.ec2.SecurityGroup` resource, the `aws.ec2.SecurityGroup` is a dependent of the `aws.ec2.Instance`. Because of this, the provider will create the security group first so that it can then be associated with the EC2 instance.
 ///
 /// However, the dependency relationship actually goes both directions causing the _Security Group Deletion Problem_. AWS does not allow you to delete the security group associated with another resource (_e.g._, the `aws.ec2.Instance`).
 ///
@@ -779,6 +874,19 @@ import 'security_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_securitygroup" "example" {
+///   name = "izizavle"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -787,8 +895,8 @@ import 'security_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.SecurityGroup;
 /// import com.pulumi.aws.ec2.SecurityGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1024,6 +1132,51 @@ import 'security_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     null = {
+///       source = "pulumi/null"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getsecuritygroup" "default" {
+///   name = "default"
+/// }
+///
+/// resource "aws_ec2_securitygroup" "example" {
+///   name = "sg"
+///   tags = {
+///     "workaround1" = "tagged-name"
+///     "workaround2" = data.aws_ec2_getsecuritygroup.default.id
+///   }
+/// }
+/// resource "command_local_command" "exampleProvisioner0" {
+///   depends_on = [aws_ec2_securitygroup.example]
+///   create     = "true"
+///   update     = "true"
+///   delete     ="            ENDPOINT_ID=`aws ec2 describe-vpc-endpoints --filters \"Name=tag:Name,Values=${tags.workaround1}\" --query \"VpcEndpoints[0].VpcEndpointId\" --output text` &&
+///             aws ec2 modify-vpc-endpoint --vpc-endpoint-id ${ENDPOINT_ID} --add-security-group-ids ${tags.workaround2} --remove-security-group-ids ${id}
+/// "
+/// }
+/// resource "null_resource" "example" {
+///   triggers = {
+///     "rerunUponChangeOf" = join(",", exampleAwsVpcEndpoint.securityGroupIds)
+///   }
+/// }
+/// resource "command_local_command" "exampleResourceProvisioner0" {
+///   depends_on = [null_resource.example]
+///   create     ="            aws ec2 modify-vpc-endpoint --vpc-endpoint-id ${exampleAwsVpcEndpoint.id} --remove-security-group-ids ${data.aws_ec2_getsecuritygroup.default.id}
+/// "
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1041,8 +1194,8 @@ import 'security_group_state.dart';
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JoinArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1074,7 +1227,7 @@ import 'security_group_state.dart';
 ///             aws ec2 modify-vpc-endpoint --vpc-endpoint-id ${ENDPOINT_ID} --add-security-group-ids %s --remove-security-group-ids %s
 /// ", tags.workaround1(),tags.workaround2(),id))
 ///             .build(), CustomResourceOptions.builder()
-///                 .dependsOn(List.of(example))
+///                 .dependsOn(Arrays.asList(example))
 ///                 .build());
 ///
 ///         var exampleResource = new Resource("exampleResource", ResourceArgs.builder()
@@ -1089,7 +1242,7 @@ import 'security_group_state.dart';
 ///             aws ec2 modify-vpc-endpoint --vpc-endpoint-id %s --remove-security-group-ids %s
 /// ", exampleAwsVpcEndpoint.id(),default_.id()))
 ///             .build(), CustomResourceOptions.builder()
-///                 .dependsOn(List.of(exampleResource))
+///                 .dependsOn(Arrays.asList(exampleResource))
 ///                 .build());
 ///
 ///     }
@@ -1154,7 +1307,7 @@ import 'security_group_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -1182,9 +1335,9 @@ class SecurityGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Instruct the provider to revoke all of the Security Groups attached ingress and egress rules before deleting the rule itself. This is normally not needed, however certain AWS services such as Elastic Map Reduce may automatically add required rules to security groups used with the service, and those rules may contain a cyclic dependency that prevent the security groups from being destroyed without removing the dependency first. Default `false`.
   late final pulumi.Output<bool?> revokeRulesOnDelete;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// VPC ID. Defaults to the region's default VPC.
   late final pulumi.Output<String> vpcId;

@@ -99,6 +99,26 @@ import 'filter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_inspector2_filter" "example" {
+///   name   = "test"
+///   action = "NONE"
+///   filter_criterias {
+///     aws_account_ids {
+///       comparison = "EQUALS"
+///       value      = "111222333444"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -108,8 +128,9 @@ import 'filter_state.dart';
 /// import com.pulumi.aws.inspector2.Filter;
 /// import com.pulumi.aws.inspector2.FilterArgs;
 /// import com.pulumi.aws.inspector2.inputs.FilterFilterCriteriaArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.inspector2.inputs.FilterFilterCriteriaAwsAccountIdArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -151,6 +172,13 @@ import 'filter_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `arn` (String) Amazon Resource Name (ARN) of the Inspector filter.
+///
+///
 /// Using `pulumi import`, import Inspector Filter using the `arn`. For example:
 ///
 /// ```sh
@@ -173,9 +201,9 @@ class Filter extends pulumi.CustomResource {
   late final pulumi.Output<String?> reason;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Filter].

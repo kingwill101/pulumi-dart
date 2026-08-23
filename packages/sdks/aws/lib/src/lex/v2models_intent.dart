@@ -210,90 +210,149 @@ import 'v2models_intent_timeouts.dart';
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/lex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// current, err := aws.GetPartition(ctx, &aws.GetPartitionArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		current, err := aws.GetPartition(ctx, &aws.GetPartitionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 			"Version": "2012-10-17",
+/// 			"Statement": []map[string]interface{}{
+/// 				map[string]interface{}{
+/// 					"Action": "sts:AssumeRole",
+/// 					"Effect": "Allow",
+/// 					"Sid":    "",
+/// 					"Principal": map[string]string{
+/// 						"Service": "lexv2.amazonaws.com",
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		test, err := iam.NewRole(ctx, "test", &iam.RoleArgs{
+/// 			Name:             pulumi.String("botens_namn"),
+/// 			AssumeRolePolicy: pulumi.String(json0),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iam.NewRolePolicyAttachment(ctx, "test", &iam.RolePolicyAttachmentArgs{
+/// 			Role:      test.Name,
+/// 			PolicyArn: pulumi.Sprintf("arn:%v:iam::aws:policy/AmazonLexFullAccess", current.Partition),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		testV2modelsBot, err := lex.NewV2modelsBot(ctx, "test", &lex.V2modelsBotArgs{
+/// 			Name:                    pulumi.String("botens_namn"),
+/// 			IdleSessionTtlInSeconds: pulumi.Int(60),
+/// 			RoleArn:                 test.Arn,
+/// 			DataPrivacies: lex.V2modelsBotDataPrivacyArray{
+/// 				&lex.V2modelsBotDataPrivacyArgs{
+/// 					ChildDirected: pulumi.Bool(true),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		testV2modelsBotLocale, err := lex.NewV2modelsBotLocale(ctx, "test", &lex.V2modelsBotLocaleArgs{
+/// 			LocaleId:                     pulumi.String("en_US"),
+/// 			BotId:                        testV2modelsBot.ID().ToIDOutput().ToStringOutput(),
+/// 			BotVersion:                   pulumi.String("DRAFT"),
+/// 			NLuIntentConfidenceThreshold: pulumi.Float64(0.7),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = lex.NewV2modelsBotVersion(ctx, "test", &lex.V2modelsBotVersionArgs{
+/// 			BotId: testV2modelsBot.ID().ToIDOutput().ToStringOutput(),
+/// 			LocaleSpecification: testV2modelsBotLocale.LocaleId.ApplyT(func(localeId string) (map[string]map[string]string, error) {
+/// 				return map[string]map[string]string{
+/// 					localeId: map[string]string{
+/// 						"sourceBotVersion": "DRAFT",
+/// 					},
+/// 				}, nil
+/// 			}).(pulumi.MapOutput),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = lex.NewV2modelsIntent(ctx, "example", &lex.V2modelsIntentArgs{
+/// 			BotId:      testV2modelsBot.ID().ToIDOutput().ToStringOutput(),
+/// 			BotVersion: testV2modelsBotLocale.BotVersion,
+/// 			Name:       pulumi.String("botens_namn"),
+/// 			LocaleId:   testV2modelsBotLocale.LocaleId,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// "Version": "2012-10-17",
-/// "Statement": []map[string]interface{}{
-/// map[string]interface{}{
-/// "Action": "sts:AssumeRole",
-/// "Effect": "Allow",
-/// "Sid": "",
-/// "Principal": map[string]interface{}{
-/// "Service": "lexv2.amazonaws.com",
-/// },
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// json0 := string(tmpJSON0)
-/// test, err := iam.NewRole(ctx, "test", &iam.RoleArgs{
-/// Name: pulumi.String("botens_namn"),
-/// AssumeRolePolicy: pulumi.String(json0),
-/// })
-/// if err != nil {
-/// return err
+///
+/// data "aws_getpartition" "current" {
 /// }
-/// _, err = iam.NewRolePolicyAttachment(ctx, "test", &iam.RolePolicyAttachmentArgs{
-/// Role: test.Name,
-/// PolicyArn: pulumi.Sprintf("arn:%v:iam::aws:policy/AmazonLexFullAccess", current.Partition),
-/// })
-/// if err != nil {
-/// return err
+///
+/// resource "aws_iam_role" "test" {
+///   name = "botens_namn"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Sid"    = ""
+///       "Principal" = {
+///         "Service" = "lexv2.amazonaws.com"
+///       }
+///     }]
+///   })
 /// }
-/// testV2modelsBot, err := lex.NewV2modelsBot(ctx, "test", &lex.V2modelsBotArgs{
-/// Name: pulumi.String("botens_namn"),
-/// IdleSessionTtlInSeconds: pulumi.Int(60),
-/// RoleArn: test.Arn,
-/// DataPrivacies: lex.V2modelsBotDataPrivacyArray{
-/// &lex.V2modelsBotDataPrivacyArgs{
-/// ChildDirected: pulumi.Bool(true),
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
+/// resource "aws_iam_rolepolicyattachment" "test" {
+///   role       = aws_iam_role.test.name
+///   policy_arn ="arn:${data.aws_getpartition.current.partition}:iam::aws:policy/AmazonLexFullAccess"
 /// }
-/// testV2modelsBotLocale, err := lex.NewV2modelsBotLocale(ctx, "test", &lex.V2modelsBotLocaleArgs{
-/// LocaleId: pulumi.String("en_US"),
-/// BotId: testV2modelsBot.ID(),
-/// BotVersion: pulumi.String("DRAFT"),
-/// NLuIntentConfidenceThreshold: pulumi.Float64(0.7),
-/// })
-/// if err != nil {
-/// return err
+/// resource "aws_lex_v2modelsbot" "test" {
+///   name                        = "botens_namn"
+///   idle_session_ttl_in_seconds = 60
+///   role_arn                    = aws_iam_role.test.arn
+///   data_privacies {
+///     child_directed = true
+///   }
 /// }
-/// _, err = lex.NewV2modelsBotVersion(ctx, "test", &lex.V2modelsBotVersionArgs{
-/// BotId: testV2modelsBot.ID(),
-/// LocaleSpecification: testV2modelsBotLocale.LocaleId.ApplyT(func(localeId string) (map[string]map[string]interface{}, error) {
-/// return map[string]map[string]interface{}{
-/// localeId: map[string]interface{}{
-/// "sourceBotVersion": "DRAFT",
-/// },
-/// }, nil
-/// }).(pulumi.Map[string]map[string]interface{}Output),
-/// })
-/// if err != nil {
-/// return err
+/// resource "aws_lex_v2modelsbotlocale" "test" {
+///   locale_id                        = "en_US"
+///   bot_id                           = aws_lex_v2modelsbot.test.id
+///   bot_version                      = "DRAFT"
+///   n_lu_intent_confidence_threshold = 0.7
 /// }
-/// _, err = lex.NewV2modelsIntent(ctx, "example", &lex.V2modelsIntentArgs{
-/// BotId: testV2modelsBot.ID(),
-/// BotVersion: testV2modelsBotLocale.BotVersion,
-/// Name: pulumi.String("botens_namn"),
-/// LocaleId: testV2modelsBotLocale.LocaleId,
-/// })
-/// if err != nil {
-/// return err
+/// resource "aws_lex_v2modelsbotversion" "test" {
+///   bot_id = aws_lex_v2modelsbot.test.id
+///   locale_specification = {
+///     aws_lex_v2modelsbotlocale.test.locale_id = {
+///       source_bot_version = "DRAFT"
+///     }
+///   }
 /// }
-/// return nil
-/// })
+/// resource "aws_lex_v2modelsintent" "example" {
+///   bot_id      = aws_lex_v2modelsbot.test.id
+///   bot_version = aws_lex_v2modelsbotlocale.test.bot_version
+///   name        = "botens_namn"
+///   locale_id   = aws_lex_v2modelsbotlocale.test.locale_id
 /// }
 /// ```
 /// ```java
@@ -315,11 +374,12 @@ import 'v2models_intent_timeouts.dart';
 /// import com.pulumi.aws.lex.V2modelsBotLocaleArgs;
 /// import com.pulumi.aws.lex.V2modelsBotVersion;
 /// import com.pulumi.aws.lex.V2modelsBotVersionArgs;
+/// import com.pulumi.aws.lex.inputs.V2modelsBotVersionLocaleSpecificationArgs;
 /// import com.pulumi.aws.lex.V2modelsIntent;
 /// import com.pulumi.aws.lex.V2modelsIntentArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -447,9 +507,9 @@ import 'v2models_intent_timeouts.dart';
 /// ```
 ///
 ///
-/// ### `confirmation_setting` Example
+/// ### `confirmationSetting` Example
 ///
-/// When using `confirmation_setting`, if you do not provide a `prompt_attempts_specification`, AWS Lex will provide default `prompt_attempts_specification`s. As a result, Terraform will report a difference in the configuration. To avoid this behavior, include the default `prompt_attempts_specification` configuration shown below.
+/// When using `confirmationSetting`, if you do not provide a `promptAttemptsSpecification`, AWS Lex will provide default `promptAttemptsSpecification`s. As a result, Terraform will report a difference in the configuration. To avoid this behavior, include the default `promptAttemptsSpecification` configuration shown below.
 ///
 ///
 /// ```typescript
@@ -761,6 +821,77 @@ import 'v2models_intent_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lex_v2modelsintent" "example" {
+///   bot_id      = test.id
+///   bot_version = testAwsLexv2modelsBotLocale.botVersion
+///   name        = "botens_namn"
+///   locale_id   = testAwsLexv2modelsBotLocale.localeId
+///   confirmation_setting = {
+///     active = true
+///     prompt_specification = {
+///       allow_interrupt            = true
+///       max_retries                = 1
+///       message_selection_strategy = "Ordered"
+///       prompt_attempts_specifications = [{
+///         "allowInterrupt" = true
+///         "mapBlockKey"    = "Initial"
+///         "allowedInputTypes" = {
+///           "allowAudioInput" = true
+///           "allowDtmfInput"  = true
+///         }
+///         "audioAndDtmfInputSpecification" = {
+///           "startTimeoutMs" = 4000
+///           "audioSpecification" = {
+///             "endTimeoutMs" = 640
+///             "maxLengthMs"  = 15000
+///           }
+///           "dtmfSpecification" = {
+///             "deletionCharacter" = "*"
+///             "endCharacter"      = "#"
+///             "endTimeoutMs"      = 5000
+///             "maxLength"         = 513
+///           }
+///         }
+///         "textInputSpecification" = {
+///           "startTimeoutMs" = 30000
+///         }
+///         }, {
+///         "allowInterrupt" = true
+///         "mapBlockKey"    = "Retry1"
+///         "allowedInputTypes" = {
+///           "allowAudioInput" = true
+///           "allowDtmfInput"  = true
+///         }
+///         "audioAndDtmfInputSpecification" = {
+///           "startTimeoutMs" = 4000
+///           "audioSpecification" = {
+///             "endTimeoutMs" = 640
+///             "maxLengthMs"  = 15000
+///           }
+///           "dtmfSpecification" = {
+///             "deletionCharacter" = "*"
+///             "endCharacter"      = "#"
+///             "endTimeoutMs"      = 5000
+///             "maxLength"         = 513
+///           }
+///         }
+///         "textInputSpecification" = {
+///           "startTimeoutMs" = 30000
+///         }
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -771,8 +902,14 @@ import 'v2models_intent_timeouts.dart';
 /// import com.pulumi.aws.lex.V2modelsIntentArgs;
 /// import com.pulumi.aws.lex.inputs.V2modelsIntentConfirmationSettingArgs;
 /// import com.pulumi.aws.lex.inputs.V2modelsIntentConfirmationSettingPromptSpecificationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.lex.inputs.V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationArgs;
+/// import com.pulumi.aws.lex.inputs.V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypesArgs;
+/// import com.pulumi.aws.lex.inputs.V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationArgs;
+/// import com.pulumi.aws.lex.inputs.V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecificationArgs;
+/// import com.pulumi.aws.lex.inputs.V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecificationArgs;
+/// import com.pulumi.aws.lex.inputs.V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecificationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1030,6 +1167,35 @@ import 'v2models_intent_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lex_v2modelsintent" "qna_example" {
+///   bot_id                  = test.id
+///   bot_version             = testAwsLexv2modelsBotLocale.botVersion
+///   name                    = "qna_intent"
+///   locale_id               = testAwsLexv2modelsBotLocale.localeId
+///   parent_intent_signature = "AMAZON.QnAIntent"
+///   qna_intent_configuration = {
+///     data_source_configuration = {
+///       kendra_configuration = {
+///         kendra_index                = example.arn
+///         exact_response              = true
+///         query_filter_string_enabled = false
+///       }
+///     }
+///   }
+///   sample_utterances {
+///     utterance = "What is the answer?"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1042,8 +1208,8 @@ import 'v2models_intent_timeouts.dart';
 /// import com.pulumi.aws.lex.inputs.V2modelsIntentQnaIntentConfigurationDataSourceConfigurationArgs;
 /// import com.pulumi.aws.lex.inputs.V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfigurationArgs;
 /// import com.pulumi.aws.lex.inputs.V2modelsIntentSampleUtteranceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1112,25 +1278,25 @@ class V2modelsIntent extends pulumi.CustomResource {
   late final pulumi.Output<String> botId;
   /// Version of the bot associated with this intent.
   late final pulumi.Output<String> botVersion;
-  /// Configuration block for the response that Amazon Lex sends to the user when the intent is closed. See `closing_setting`.
+  /// Configuration block for the response that Amazon Lex sends to the user when the intent is closed. See `closingSetting`.
   late final pulumi.Output<V2modelsIntentClosingSetting?> closingSetting;
-  /// Configuration block for prompts that Amazon Lex sends to the user to confirm the completion of an intent. If the user answers "no," the settings contain a statement that is sent to the user to end the intent. If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default configurations for `Initial` and `Retry1` `prompt_attempts_specification`s. This will cause Terraform to report differences. Use the `confirmation_setting` configuration above in the Basic Usage example to avoid differences resulting from AWS default configuration. See `confirmation_setting`.
+  /// Configuration block for prompts that Amazon Lex sends to the user to confirm the completion of an intent. If the user answers "no," the settings contain a statement that is sent to the user to end the intent. If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default configurations for `Initial` and `Retry1` `promptAttemptsSpecification`s. This will cause Terraform to report differences. Use the `confirmationSetting` configuration above in the Basic Usage example to avoid differences resulting from AWS default configuration. See `confirmationSetting`.
   late final pulumi.Output<V2modelsIntentConfirmationSetting?> confirmationSetting;
   /// Timestamp of the date and time that the intent was created.
   late final pulumi.Output<String> creationDateTime;
   /// Description of the intent. Use the description to help identify the intent in lists.
   late final pulumi.Output<String?> description;
-  /// Configuration block for invoking the alias Lambda function for each user input. You can invoke this Lambda function to personalize user interaction. See `dialog_code_hook`.
+  /// Configuration block for invoking the alias Lambda function for each user input. You can invoke this Lambda function to personalize user interaction. See `dialogCodeHook`.
   late final pulumi.Output<V2modelsIntentDialogCodeHook?> dialogCodeHook;
-  /// Configuration block for invoking the alias Lambda function when the intent is ready for fulfillment. You can invoke this function to complete the bot's transaction with the user. See `fulfillment_code_hook`.
+  /// Configuration block for invoking the alias Lambda function when the intent is ready for fulfillment. You can invoke this function to complete the bot's transaction with the user. See `fulfillmentCodeHook`.
   late final pulumi.Output<V2modelsIntentFulfillmentCodeHook?> fulfillmentCodeHook;
-  /// Configuration block for the response that is sent to the user at the beginning of a conversation, before eliciting slot values. See `initial_response_setting`.
+  /// Configuration block for the response that is sent to the user at the beginning of a conversation, before eliciting slot values. See `initialResponseSetting`.
   late final pulumi.Output<V2modelsIntentInitialResponseSetting?> initialResponseSetting;
-  /// Configuration blocks for contexts that must be active for this intent to be considered by Amazon Lex. When an intent has an input context list, Amazon Lex only considers using the intent in an interaction with the user when the specified contexts are included in the active context list for the session. If the contexts are not active, then Amazon Lex will not use the intent. A context can be automatically activated using the outputContexts property or it can be set at runtime. See `input_context`.
+  /// Configuration blocks for contexts that must be active for this intent to be considered by Amazon Lex. When an intent has an input context list, Amazon Lex only considers using the intent in an interaction with the user when the specified contexts are included in the active context list for the session. If the contexts are not active, then Amazon Lex will not use the intent. A context can be automatically activated using the outputContexts property or it can be set at runtime. See `inputContext`.
   late final pulumi.Output<List<Map<String, dynamic>>?> inputContexts;
   /// Unique identifier for the intent.
   late final pulumi.Output<String> intentId;
-  /// Configuration block for information required to use the AMAZON.KendraSearchIntent intent to connect to an Amazon Kendra index. The AMAZON.KendraSearchIntent intent is called when Amazon Lex can't determine another intent to invoke. Cannot be used with `qna_intent_configuration`. See `kendra_configuration`.
+  /// Configuration block for information required to use the AMAZON.KendraSearchIntent intent to connect to an Amazon Kendra index. The AMAZON.KendraSearchIntent intent is called when Amazon Lex can't determine another intent to invoke. Cannot be used with `qnaIntentConfiguration`. See `kendraConfiguration`.
   late final pulumi.Output<V2modelsIntentKendraConfiguration?> kendraConfiguration;
   /// Timestamp of the last time that the intent was modified.
   late final pulumi.Output<String> lastUpdatedDateTime;
@@ -1140,17 +1306,17 @@ class V2modelsIntent extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-  /// Configuration blocks for contexts that the intent activates when it is fulfilled. You can use an output context to indicate the intents that Amazon Lex should consider for the next turn of the conversation with a customer. When you use the outputContextsList property, all of the contexts specified in the list are activated when the intent is fulfilled. You can set up to 10 output contexts. You can also set the number of conversation turns that the context should be active, or the length of time that the context should be active. See `output_context`.
+  /// Configuration blocks for contexts that the intent activates when it is fulfilled. You can use an output context to indicate the intents that Amazon Lex should consider for the next turn of the conversation with a customer. When you use the outputContextsList property, all of the contexts specified in the list are activated when the intent is fulfilled. You can set up to 10 output contexts. You can also set the number of conversation turns that the context should be active, or the length of time that the context should be active. See `outputContext`.
   late final pulumi.Output<List<Map<String, dynamic>>?> outputContexts;
   /// Identifier for the built-in intent to base this intent on.
   late final pulumi.Output<String?> parentIntentSignature;
-  /// Configuration block for QnA intent settings. This is used when `parent_intent_signature` is set to `AMAZON.QnAIntent`. Cannot be used with `kendra_configuration`. See `qna_intent_configuration`.
+  /// Configuration block for QnA intent settings. This is used when `parentIntentSignature` is set to `AMAZON.QnAIntent`. Cannot be used with `kendraConfiguration`. See `qnaIntentConfiguration`.
   late final pulumi.Output<V2modelsIntentQnaIntentConfiguration?> qnaIntentConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Configuration block for strings that a user might say to signal the intent. See `sample_utterance`.
+  /// Configuration block for strings that a user might say to signal the intent. See `sampleUtterance`.
   late final pulumi.Output<List<Map<String, dynamic>>?> sampleUtterances;
-  /// Configuration block for a new list of slots and their priorities that are contained by the intent. This is ignored on create and only valid for updates. See `slot_priority`.
+  /// Configuration block for a new list of slots and their priorities that are contained by the intent. This is ignored on create and only valid for updates. See `slotPriority`.
   late final pulumi.Output<List<Map<String, dynamic>>?> slotPriorities;
   late final pulumi.Output<V2modelsIntentTimeouts?> timeouts;
 

@@ -20,6 +20,8 @@ class CapacityBlockReservationState {
   /// Indicates the way in which the Capacity Reservation ends.
   final pulumi.Input<String>? endDateType;
   /// The number of instances for which to reserve capacity.
+  /// This value will not be set until the Capacity Block Reservation is active.
+  /// The requested instance count is set in the tag `aws:ec2capacityreservation:incrementalRequestedQuantity`.
   final pulumi.Input<int>? instanceCount;
   /// The type of operating system for which to reserve capacity. Valid options are `Linux/UNIX`, `Red Hat Enterprise Linux`, `SUSE Linux`, `Windows`, `Windows with SQL Server`, `Windows with SQL Server Enterprise`, `Windows with SQL Server Standard` or `Windows with SQL Server Web`.
   final pulumi.Input<String>? instancePlatform;
@@ -35,9 +37,9 @@ class CapacityBlockReservationState {
   final pulumi.Input<String>? reservationType;
   /// The date and time at which the Capacity Block Reservation starts. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
   final pulumi.Input<String>? startDate;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Indicates the tenancy of the Capacity Block Reservation. Specify either `default` or `dedicated`.
   final pulumi.Input<String>? tenancy;
@@ -59,8 +61,8 @@ class CapacityBlockReservationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [reservationType] The type of Capacity Reservation.
   /// [startDate] The date and time at which the Capacity Block Reservation starts. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block
   /// [tenancy] Indicates the tenancy of the Capacity Block Reservation. Specify either `default` or `dedicated`.
   /// [timeouts] Optional.
   const CapacityBlockReservationState({
@@ -133,4 +135,3 @@ class CapacityBlockReservationState {
     );
   }
 }
-

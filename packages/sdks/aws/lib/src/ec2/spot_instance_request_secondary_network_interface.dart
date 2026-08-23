@@ -14,7 +14,7 @@ class SpotInstanceRequestSecondaryNetworkInterface {
   final pulumi.Input<int> networkCardIndex;
   /// Number of private IP addresses to assign to the network interface. Defaults to `1`. Forces replacement.
   final pulumi.Input<int>? privateIpAddressCount;
-  /// List of private IP addresses to assign to the network interface. If not specified, AWS will automatically assign IP addresses based on `private_ip_address_count`. Forces replacement.
+  /// List of private IP addresses to assign to the network interface. If not specified, AWS will automatically assign IP addresses based on `privateIpAddressCount`. Forces replacement.
   final pulumi.Input<List<String>>? privateIpAddresses;
   final pulumi.Input<String>? secondaryInterfaceId;
   final pulumi.Input<String>? secondaryNetworkId;
@@ -31,7 +31,7 @@ class SpotInstanceRequestSecondaryNetworkInterface {
   /// [macAddress] Optional.
   /// [networkCardIndex] Network card index for the interface. Each network card can have one secondary interface. Forces replacement.
   /// [privateIpAddressCount] Number of private IP addresses to assign to the network interface. Defaults to `1`. Forces replacement.
-  /// [privateIpAddresses] List of private IP addresses to assign to the network interface. If not specified, AWS will automatically assign IP addresses based on `private_ip_address_count`. Forces replacement.
+  /// [privateIpAddresses] List of private IP addresses to assign to the network interface. If not specified, AWS will automatically assign IP addresses based on `privateIpAddressCount`. Forces replacement.
   /// [secondaryInterfaceId] Optional.
   /// [secondaryNetworkId] Optional.
   /// [secondarySubnetId] ID of the secondary subnet in which to create the network interface. Forces replacement.
@@ -86,4 +86,3 @@ class SpotInstanceRequestSecondaryNetworkInterface {
     );
   }
 }
-

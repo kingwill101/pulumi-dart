@@ -268,6 +268,65 @@ import 'stack_streaming_experience_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appstream_stack" "example" {
+///   name         = "stack name"
+///   description  = "stack description"
+///   display_name = "stack display name"
+///   feedback_url = "http://your-domain/feedback"
+///   redirect_url = "http://your-domain/redirect"
+///   storage_connectors {
+///     connector_type = "HOMEFOLDERS"
+///   }
+///   user_settings {
+///     action     = "AUTO_TIME_ZONE_REDIRECTION"
+///     permission = "DISABLED"
+///   }
+///   user_settings {
+///     action     = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"
+///     permission = "ENABLED"
+///   }
+///   user_settings {
+///     action     = "CLIPBOARD_COPY_TO_LOCAL_DEVICE"
+///     permission = "ENABLED"
+///   }
+///   user_settings {
+///     action     = "DOMAIN_PASSWORD_SIGNIN"
+///     permission = "ENABLED"
+///   }
+///   user_settings {
+///     action     = "DOMAIN_SMART_CARD_SIGNIN"
+///     permission = "DISABLED"
+///   }
+///   user_settings {
+///     action     = "FILE_DOWNLOAD"
+///     permission = "ENABLED"
+///   }
+///   user_settings {
+///     action     = "FILE_UPLOAD"
+///     permission = "ENABLED"
+///   }
+///   user_settings {
+///     action     = "PRINTING_TO_LOCAL_DEVICE"
+///     permission = "ENABLED"
+///   }
+///   application_settings = {
+///     enabled        = true
+///     settings_group = "SettingsGroup"
+///   }
+///   tags = {
+///     "TagName" = "TagValue"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -279,8 +338,8 @@ import 'stack_streaming_experience_settings.dart';
 /// import com.pulumi.aws.appstream.inputs.StackStorageConnectorArgs;
 /// import com.pulumi.aws.appstream.inputs.StackUserSettingArgs;
 /// import com.pulumi.aws.appstream.inputs.StackApplicationSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -389,11 +448,9 @@ import 'stack_streaming_experience_settings.dart';
 /// $ pulumi import aws:appstream/stack:Stack example stackID
 /// ```
 class Stack extends pulumi.CustomResource {
-  /// Set of configuration blocks defining the interface VPC endpoints. Users of the stack can connect to AppStream 2.0 only through the specified endpoints.
-  /// See `access_endpoints` below.
+  /// Set of configuration blocks defining the interface VPC endpoints. Users of the stack can connect to AppStream 2.0 only through the specified endpoints. See `accessEndpoints` below.
   late final pulumi.Output<List<Map<String, dynamic>>> accessEndpoints;
-  /// Settings for application settings persistence.
-  /// See `application_settings` below.
+  /// Settings for application settings persistence. See `applicationSettings` below.
   late final pulumi.Output<StackApplicationSettings> applicationSettings;
   /// ARN of the appstream stack.
   late final pulumi.Output<String> arn;
@@ -415,17 +472,14 @@ class Stack extends pulumi.CustomResource {
   late final pulumi.Output<String> redirectUrl;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Configuration block for the storage connectors to enable.
-  /// See `storage_connectors` below.
+  /// Configuration block for the storage connectors to enable. See `storageConnectors` below.
   late final pulumi.Output<List<Map<String, dynamic>>> storageConnectors;
-  /// The streaming protocol you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client.
-  /// See `streaming_experience_settings` below.
+  /// Streaming protocol you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client. See `streamingExperienceSettings` below.
   late final pulumi.Output<StackStreamingExperienceSettings> streamingExperienceSettings;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Configuration block for the actions that are enabled or disabled for users during their streaming sessions. If not provided, these settings are configured automatically by AWS. If provided, the configuration should include a block for each configurable action.
-  /// See `user_settings` below.
+  /// Configuration block for the actions that are enabled or disabled for users during their streaming sessions. If not provided, these settings are configured automatically by AWS. If provided, the configuration should include a block for each configurable action. See `userSettings` below.
   late final pulumi.Output<List<Map<String, dynamic>>> userSettings;
 
   /// Creates a new [Stack].

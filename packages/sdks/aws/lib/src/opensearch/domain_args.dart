@@ -6,6 +6,7 @@ import 'domain_aiml_options.dart';
 import 'domain_auto_tune_options.dart';
 import 'domain_cluster_config.dart';
 import 'domain_cognito_options.dart';
+import 'domain_deployment_strategy_options.dart';
 import 'domain_domain_endpoint_options.dart';
 import 'domain_ebs_options.dart';
 import 'domain_encrypt_at_rest.dart';
@@ -36,6 +37,8 @@ class DomainArgs {
   final pulumi.Input<DomainClusterConfig>? clusterConfig;
   /// Configuration block for authenticating dashboard with Cognito. Detailed below.
   final pulumi.Input<DomainCognitoOptions>? cognitoOptions;
+  /// Configuration block for the deployment strategy options of the domain. Detailed below.
+  final pulumi.Input<DomainDeploymentStrategyOptions>? deploymentStrategyOptions;
   /// Configuration block for domain endpoint HTTP(S) related options. Detailed below.
   final pulumi.Input<DomainDomainEndpointOptions>? domainEndpointOptions;
   /// Name of the domain.
@@ -66,7 +69,7 @@ class DomainArgs {
   final pulumi.Input<DomainSnapshotOptions>? snapshotOptions;
   /// Software update options for the domain. Detailed below.
   final pulumi.Input<DomainSoftwareUpdateOptions>? softwareUpdateOptions;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Configuration block for VPC related options. Adding or removing this configuration forces a new resource ([documentation](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html)). Detailed below.
   final pulumi.Input<DomainVpcOptions>? vpcOptions;
@@ -79,6 +82,7 @@ class DomainArgs {
   /// [autoTuneOptions] Configuration block for the Auto-Tune options of the domain. Detailed below.
   /// [clusterConfig] Configuration block for the cluster of the domain. Detailed below.
   /// [cognitoOptions] Configuration block for authenticating dashboard with Cognito. Detailed below.
+  /// [deploymentStrategyOptions] Configuration block for the deployment strategy options of the domain. Detailed below.
   /// [domainEndpointOptions] Configuration block for domain endpoint HTTP(S) related options. Detailed below.
   /// [domainName] Name of the domain.
   /// [ebsOptions] Configuration block for EBS related options, may be required based on chosen [instance size](https://aws.amazon.com/opensearch-service/pricing/). Detailed below.
@@ -92,7 +96,7 @@ class DomainArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [snapshotOptions] Configuration block for snapshot related options. Detailed below. DEPRECATED. For domains running OpenSearch 5.3 and later, Amazon OpenSearch takes hourly automated snapshots, making this setting irrelevant. For domains running earlier versions, OpenSearch takes daily automated snapshots.
   /// [softwareUpdateOptions] Software update options for the domain. Detailed below.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcOptions] Configuration block for VPC related options. Adding or removing this configuration forces a new resource ([documentation](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html)). Detailed below.
   const DomainArgs({
     this.accessPolicies,
@@ -102,6 +106,7 @@ class DomainArgs {
     this.autoTuneOptions,
     this.clusterConfig,
     this.cognitoOptions,
+    this.deploymentStrategyOptions,
     this.domainEndpointOptions,
     this.domainName,
     this.ebsOptions,
@@ -128,6 +133,7 @@ class DomainArgs {
       'autoTuneOptions': ?pulumi.Input.mapOptionalInputValue<DomainAutoTuneOptions, Map<String, dynamic>>(autoTuneOptions, (value) => value.toMap()),
       'clusterConfig': ?pulumi.Input.mapOptionalInputValue<DomainClusterConfig, Map<String, dynamic>>(clusterConfig, (value) => value.toMap()),
       'cognitoOptions': ?pulumi.Input.mapOptionalInputValue<DomainCognitoOptions, Map<String, dynamic>>(cognitoOptions, (value) => value.toMap()),
+      'deploymentStrategyOptions': ?pulumi.Input.mapOptionalInputValue<DomainDeploymentStrategyOptions, Map<String, dynamic>>(deploymentStrategyOptions, (value) => value.toMap()),
       'domainEndpointOptions': ?pulumi.Input.mapOptionalInputValue<DomainDomainEndpointOptions, Map<String, dynamic>>(domainEndpointOptions, (value) => value.toMap()),
       'domainName': ?domainName,
       'ebsOptions': ?pulumi.Input.mapOptionalInputValue<DomainEbsOptions, Map<String, dynamic>>(ebsOptions, (value) => value.toMap()),
@@ -155,6 +161,7 @@ class DomainArgs {
       autoTuneOptions: (() { final guardedValue = map['autoTuneOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainAutoTuneOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       clusterConfig: (() { final guardedValue = map['clusterConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cognitoOptions: (() { final guardedValue = map['cognitoOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainCognitoOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deploymentStrategyOptions: (() { final guardedValue = map['deploymentStrategyOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDeploymentStrategyOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       domainEndpointOptions: (() { final guardedValue = map['domainEndpointOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDomainEndpointOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ebsOptions: (() { final guardedValue = map['ebsOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainEbsOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -173,4 +180,3 @@ class DomainArgs {
     );
   }
 }
-

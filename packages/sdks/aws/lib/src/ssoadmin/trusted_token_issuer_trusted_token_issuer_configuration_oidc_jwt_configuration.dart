@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration {
   /// Specifies the path of the source attribute in the JWT from the trusted token issuer.
   final pulumi.Input<String> claimAttributePath;
-  /// Specifies path of the destination attribute in a JWT from IAM Identity Center. The attribute mapped by this JMESPath expression is compared against the attribute mapped by `claim_attribute_path` when a trusted token issuer token is exchanged for an IAM Identity Center token.
+  /// Specifies path of the destination attribute in a JWT from IAM Identity Center. The attribute mapped by this JMESPath expression is compared against the attribute mapped by `claimAttributePath` when a trusted token issuer token is exchanged for an IAM Identity Center token.
   final pulumi.Input<String> identityStoreAttributePath;
   /// Specifies the URL that IAM Identity Center uses for OpenID Discovery. OpenID Discovery is used to obtain the information required to verify the tokens that the trusted token issuer generates.
   final pulumi.Input<String> issuerUrl;
@@ -14,7 +14,7 @@ class TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration {
 
   /// Creates a new [TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration].
   /// [claimAttributePath] Specifies the path of the source attribute in the JWT from the trusted token issuer.
-  /// [identityStoreAttributePath] Specifies path of the destination attribute in a JWT from IAM Identity Center. The attribute mapped by this JMESPath expression is compared against the attribute mapped by `claim_attribute_path` when a trusted token issuer token is exchanged for an IAM Identity Center token.
+  /// [identityStoreAttributePath] Specifies path of the destination attribute in a JWT from IAM Identity Center. The attribute mapped by this JMESPath expression is compared against the attribute mapped by `claimAttributePath` when a trusted token issuer token is exchanged for an IAM Identity Center token.
   /// [issuerUrl] Specifies the URL that IAM Identity Center uses for OpenID Discovery. OpenID Discovery is used to obtain the information required to verify the tokens that the trusted token issuer generates.
   /// [jwksRetrievalOption] The method that the trusted token issuer can use to retrieve the JSON Web Key Set used to verify a JWT. Valid values are `OPEN_ID_DISCOVERY`
   const TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration({
@@ -42,4 +42,3 @@ class TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration {
     );
   }
 }
-

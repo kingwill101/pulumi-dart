@@ -70,6 +70,19 @@ import 'get_principal_application_assignments_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getapplication" "example" {
+///   application_arn = "arn:aws:sso::123456789012:application/ssoins-1234/apl-5678"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +91,8 @@ import 'get_principal_application_assignments_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssoadmin.SsoadminFunctions;
 /// import com.pulumi.aws.ssoadmin.inputs.GetApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -177,6 +190,19 @@ Future<GetApplicationResult> getApplication(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getapplicationassignments" "example" {
+///   application_arn = exampleAwsSsoadminApplication.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -185,8 +211,8 @@ Future<GetApplicationResult> getApplication(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssoadmin.SsoadminFunctions;
 /// import com.pulumi.aws.ssoadmin.inputs.GetApplicationAssignmentsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -277,6 +303,18 @@ Future<GetApplicationAssignmentsResult> getApplicationAssignments(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getapplicationproviders" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -285,8 +323,8 @@ Future<GetApplicationAssignmentsResult> getApplicationAssignments(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssoadmin.SsoadminFunctions;
 /// import com.pulumi.aws.ssoadmin.inputs.GetApplicationProvidersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -384,6 +422,25 @@ Future<GetApplicationProvidersResult> getApplicationProviders(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+///
+/// output "arn" {
+///   value = data.aws_ssoadmin_getinstances.example.arns[0]
+/// }
+/// output "identityStoreId" {
+///   value = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -392,8 +449,8 @@ Future<GetApplicationProvidersResult> getApplicationProviders(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssoadmin.SsoadminFunctions;
 /// import com.pulumi.aws.ssoadmin.inputs.GetInstancesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -511,6 +568,26 @@ Future<GetInstancesResult> getInstances(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+/// data "aws_ssoadmin_getpermissionset" "exampleGetPermissionSet" {
+///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+///   name         = "Example"
+/// }
+///
+/// output "arn" {
+///   value = data.aws_ssoadmin_getpermissionset.exampleGetPermissionSet.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -520,8 +597,8 @@ Future<GetInstancesResult> getInstances(
 /// import com.pulumi.aws.ssoadmin.SsoadminFunctions;
 /// import com.pulumi.aws.ssoadmin.inputs.GetInstancesArgs;
 /// import com.pulumi.aws.ssoadmin.inputs.GetPermissionSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -639,6 +716,21 @@ Future<GetPermissionSetResult> getPermissionSet(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+/// data "aws_ssoadmin_getpermissionsets" "exampleGetPermissionSets" {
+///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -648,8 +740,8 @@ Future<GetPermissionSetResult> getPermissionSet(
 /// import com.pulumi.aws.ssoadmin.SsoadminFunctions;
 /// import com.pulumi.aws.ssoadmin.inputs.GetInstancesArgs;
 /// import com.pulumi.aws.ssoadmin.inputs.GetPermissionSetsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -762,6 +854,21 @@ Future<GetPermissionSetsResult> getPermissionSets(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getprincipalapplicationassignments" "example" {
+///   instance_arn   = test.arns[0]
+///   principal_id   = testAwsIdentitystoreUser.userId
+///   principal_type = "USER"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -770,8 +877,8 @@ Future<GetPermissionSetsResult> getPermissionSets(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssoadmin.SsoadminFunctions;
 /// import com.pulumi.aws.ssoadmin.inputs.GetPrincipalApplicationAssignmentsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

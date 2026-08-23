@@ -6,16 +6,17 @@ import 'policy_security_service_policy_data_policy_option_network_firewall_polic
 import 'policy_security_service_policy_data_policy_option_third_party_firewall_policy.dart';
 
 class PolicySecurityServicePolicyDataPolicyOption {
-  /// Defines NACL rules across accounts in their AWS Organization. See the `network_acl_common_policy` block.
+  /// Network ACL rules applied across accounts in the AWS Organization. See the `networkAclCommonPolicy` block.
   final pulumi.Input<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy>? networkAclCommonPolicy;
-  /// Defines the deployment model to use for the firewall policy.  See the `network_firewall_policy` block.
+  /// Network Firewall policy options that configure a centralized deployment model. See the `networkFirewallPolicy` block.
   final pulumi.Input<PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy>? networkFirewallPolicy;
+  /// Third-party firewall policy options. See the `thirdPartyFirewallPolicy` block.
   final pulumi.Input<PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy>? thirdPartyFirewallPolicy;
 
   /// Creates a new [PolicySecurityServicePolicyDataPolicyOption].
-  /// [networkAclCommonPolicy] Defines NACL rules across accounts in their AWS Organization. See the `network_acl_common_policy` block.
-  /// [networkFirewallPolicy] Defines the deployment model to use for the firewall policy.  See the `network_firewall_policy` block.
-  /// [thirdPartyFirewallPolicy] Optional.
+  /// [networkAclCommonPolicy] Network ACL rules applied across accounts in the AWS Organization. See the `networkAclCommonPolicy` block.
+  /// [networkFirewallPolicy] Network Firewall policy options that configure a centralized deployment model. See the `networkFirewallPolicy` block.
+  /// [thirdPartyFirewallPolicy] Third-party firewall policy options. See the `thirdPartyFirewallPolicy` block.
   const PolicySecurityServicePolicyDataPolicyOption({
     this.networkAclCommonPolicy,
     this.networkFirewallPolicy,
@@ -38,4 +39,3 @@ class PolicySecurityServicePolicyDataPolicyOption {
     );
   }
 }
-

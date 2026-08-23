@@ -69,8 +69,8 @@ import 'test_grid_project_vpc_config.dart';
 /// Name: pulumi.String("example"),
 /// VpcConfig: &devicefarm.TestGridProjectVpcConfigArgs{
 /// VpcId: pulumi.Any(exampleAwsVpc.Id),
-/// SubnetIds: []pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:4,24-46)),
-/// SecurityGroupIds: []pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:5,24-53)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:4,24-46)),
+/// SecurityGroupIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:5,24-53)),
 /// },
 /// })
 /// if err != nil {
@@ -78,6 +78,24 @@ import 'test_grid_project_vpc_config.dart';
 /// }
 /// return nil
 /// })
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_devicefarm_testgridproject" "example" {
+///   name = "example"
+///   vpc_config = {
+///     vpc_id             = exampleAwsVpc.id
+///     subnet_ids         = exampleAwsSubnet[*].id
+///     security_group_ids = exampleAwsSecurityGroup[*].id
+///   }
 /// }
 /// ```
 /// ```java
@@ -89,8 +107,8 @@ import 'test_grid_project_vpc_config.dart';
 /// import com.pulumi.aws.devicefarm.TestGridProject;
 /// import com.pulumi.aws.devicefarm.TestGridProjectArgs;
 /// import com.pulumi.aws.devicefarm.inputs.TestGridProjectVpcConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -139,9 +157,9 @@ class TestGridProject extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The VPC security groups and subnets that are attached to a project. See VPC Config below.
   late final pulumi.Output<TestGridProjectVpcConfig?> vpcConfig;

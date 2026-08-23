@@ -30,4 +30,3 @@ class SecurityConfigurationEncryptionConfigurationS3Encryption {
     );
   }
 }
-

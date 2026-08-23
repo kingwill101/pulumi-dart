@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_job_definition_node_property_node_range_property_container.dart';
 
 class GetJobDefinitionNodePropertyNodeRangeProperty {
-  /// The container details for the node range.
+  /// Container details for the node range. See `container` below.
   final pulumi.Input<List<GetJobDefinitionNodePropertyNodeRangePropertyContainer>> containers;
-  /// The range of nodes, using node index values. A range of 0:3 indicates nodes with index values of 0 through 3. I
+  /// Range of nodes, using node index values. A range of 0:3 indicates nodes with index values of 0 through 3.
   final pulumi.Input<String> targetNodes;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangeProperty].
-  /// [containers] The container details for the node range.
-  /// [targetNodes] The range of nodes, using node index values. A range of 0:3 indicates nodes with index values of 0 through 3. I
+  /// [containers] Container details for the node range. See `container` below.
+  /// [targetNodes] Range of nodes, using node index values. A range of 0:3 indicates nodes with index values of 0 through 3.
   const GetJobDefinitionNodePropertyNodeRangeProperty({
     required this.containers,
     required this.targetNodes,
@@ -31,4 +31,3 @@ class GetJobDefinitionNodePropertyNodeRangeProperty {
     );
   }
 }
-

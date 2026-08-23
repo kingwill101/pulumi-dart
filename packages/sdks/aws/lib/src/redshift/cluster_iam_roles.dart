@@ -4,7 +4,7 @@ import 'cluster_iam_roles_state.dart';
 
 /// Provides a Redshift Cluster IAM Roles resource.
 ///
-/// &gt; **NOTE:** A Redshift cluster's default IAM role can be managed both by this resource's `default_iam_role_arn` argument and the `aws.redshift.Cluster` resource's `default_iam_role_arn` argument. Do not configure different values for both arguments. Doing so will cause a conflict of default IAM roles.
+/// &gt; **NOTE:** A Redshift cluster's default IAM role can be managed both by this resource's `defaultIamRoleArn` argument and the `aws.redshift.Cluster` resource's `defaultIamRoleArn` argument. Do not configure different values for both arguments. Doing so will cause a conflict of default IAM roles.
 ///
 /// ## Example Usage
 ///
@@ -68,6 +68,20 @@ import 'cluster_iam_roles_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshift_clusteriamroles" "example" {
+///   cluster_identifier = exampleAwsRedshiftCluster.clusterIdentifier
+///   iam_role_arns      = [exampleAwsIamRole.arn]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +90,8 @@ import 'cluster_iam_roles_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshift.ClusterIamRoles;
 /// import com.pulumi.aws.redshift.ClusterIamRolesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -110,7 +124,7 @@ import 'cluster_iam_roles_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Redshift Cluster IAM Roless using the `cluster_identifier`. For example:
+/// Using `pulumi import`, import Redshift Cluster IAM Roless using the `clusterIdentifier`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:redshift/clusterIamRoles:ClusterIamRoles examplegroup1 example

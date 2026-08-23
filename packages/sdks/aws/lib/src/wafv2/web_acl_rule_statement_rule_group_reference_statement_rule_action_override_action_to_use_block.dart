@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_statement_rule_group_reference_statement_rule_action_override_action_to_use_block_custom_response.dart';
 
 class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseBlock {
-  /// Defines a custom response for the web request. See `custom_response` below for details.
+  /// Custom response configuration. See Custom Response below.
   final pulumi.Input<WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseBlockCustomResponse>? customResponse;
 
   /// Creates a new [WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseBlock].
-  /// [customResponse] Defines a custom response for the web request. See `custom_response` below for details.
+  /// [customResponse] Custom response configuration. See Custom Response below.
   const WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseBlock({
     this.customResponse,
   });
@@ -25,4 +25,3 @@ class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUs
     );
   }
 }
-

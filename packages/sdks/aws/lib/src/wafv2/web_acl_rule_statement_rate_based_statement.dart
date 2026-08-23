@@ -6,30 +6,28 @@ import 'web_acl_rule_statement_rate_based_statement_forwarded_ip_config.dart';
 import 'web_acl_rule_statement_rate_based_statement_scope_down_statement.dart';
 
 class WebAclRuleStatementRateBasedStatement {
-  /// Setting that indicates how to aggregate the request counts. Valid values include: `CONSTANT`, `CUSTOM_KEYS`, `FORWARDED_IP`, or `IP`. Default: `IP`.
-  final pulumi.Input<String>? aggregateKeyType;
-  /// Aggregate the request counts using one or more web request components as the aggregate keys. See `custom_key` below for details.
+  /// Setting that indicates how to aggregate the request counts. Defaults to `IP`. Valid values: `IP`, `FORWARDED_IP`, `CUSTOM_KEYS`, `CONSTANT`.
+  final pulumi.Input<String> aggregateKeyType;
+  /// Aggregate the request counts using one or more web request components as the aggregate keys. See Custom Keys below.
   final pulumi.Input<List<WebAclRuleStatementRateBasedStatementCustomKey>>? customKeys;
-  /// The amount of time, in seconds, that AWS WAF should include in its request counts, looking back from the current time. Valid values are `60`, `120`, `300`, and `600`. Defaults to `300` (5 minutes).
-  ///
-  /// **NOTE:** This setting doesn't determine how often AWS WAF checks the rate, but how far back it looks each time it checks. AWS WAF checks the rate about every 10 seconds.
+  /// Time window for which the rate limit applies, in seconds. Defaults to `300` (5 minutes). Valid values: `60`, `120`, `300`, `600`.
   final pulumi.Input<int>? evaluationWindowSec;
-  /// Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. If `aggregate_key_type` is set to `FORWARDED_IP`, this block is required. See `forwarded_ip_config` below for details.
+  /// Configuration for inspecting IP addresses in an HTTP header instead of using the web request origin. See Forwarded IP Config below.
   final pulumi.Input<WebAclRuleStatementRateBasedStatementForwardedIpConfig>? forwardedIpConfig;
-  /// Limit on requests during the specified evaluation window for a single aggregation instance.
+  /// Rate limit threshold (requests per evaluation window period).
   final pulumi.Input<int> limit;
-  /// Optional nested statement that narrows the scope of the rate-based statement to matching web requests. This can be any nestable statement, and you can nest statements at any level below this scope-down statement. See `statement` above for details. If `aggregate_key_type` is set to `CONSTANT`, this block is required.
+  /// Additional statement to narrow the scope of requests that the rate-based rule evaluates. See Scope Down Statement below.
   final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatement>? scopeDownStatement;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatement].
-  /// [aggregateKeyType] Setting that indicates how to aggregate the request counts. Valid values include: `CONSTANT`, `CUSTOM_KEYS`, `FORWARDED_IP`, or `IP`. Default: `IP`.
-  /// [customKeys] Aggregate the request counts using one or more web request components as the aggregate keys. See `custom_key` below for details.
-  /// [evaluationWindowSec] The amount of time, in seconds, that AWS WAF should include in its request counts, looking back from the current time. Valid values are `60`, `120`, `300`, and `600`. Defaults to `300` (5 minutes).
-  /// [forwardedIpConfig] Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. If `aggregate_key_type` is set to `FORWARDED_IP`, this block is required. See `forwarded_ip_config` below for details.
-  /// [limit] Limit on requests during the specified evaluation window for a single aggregation instance.
-  /// [scopeDownStatement] Optional nested statement that narrows the scope of the rate-based statement to matching web requests. This can be any nestable statement, and you can nest statements at any level below this scope-down statement. See `statement` above for details. If `aggregate_key_type` is set to `CONSTANT`, this block is required.
+  /// [aggregateKeyType] Setting that indicates how to aggregate the request counts. Defaults to `IP`. Valid values: `IP`, `FORWARDED_IP`, `CUSTOM_KEYS`, `CONSTANT`.
+  /// [customKeys] Aggregate the request counts using one or more web request components as the aggregate keys. See Custom Keys below.
+  /// [evaluationWindowSec] Time window for which the rate limit applies, in seconds. Defaults to `300` (5 minutes). Valid values: `60`, `120`, `300`, `600`.
+  /// [forwardedIpConfig] Configuration for inspecting IP addresses in an HTTP header instead of using the web request origin. See Forwarded IP Config below.
+  /// [limit] Rate limit threshold (requests per evaluation window period).
+  /// [scopeDownStatement] Additional statement to narrow the scope of requests that the rate-based rule evaluates. See Scope Down Statement below.
   const WebAclRuleStatementRateBasedStatement({
-    this.aggregateKeyType,
+    required this.aggregateKeyType,
     this.customKeys,
     this.evaluationWindowSec,
     this.forwardedIpConfig,
@@ -39,7 +37,7 @@ class WebAclRuleStatementRateBasedStatement {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aggregateKeyType': ?aggregateKeyType,
+      'aggregateKeyType': aggregateKeyType,
       'customKeys': ?pulumi.Input.mapOptionalInputValue<List<WebAclRuleStatementRateBasedStatementCustomKey>, List<Map<String, dynamic>>>(customKeys, (value) => pulumi.Input.encodeList<WebAclRuleStatementRateBasedStatementCustomKey, Map<String, dynamic>>(value, (value) => value.toMap())),
       'evaluationWindowSec': ?evaluationWindowSec,
       'forwardedIpConfig': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementRateBasedStatementForwardedIpConfig, Map<String, dynamic>>(forwardedIpConfig, (value) => value.toMap()),
@@ -50,7 +48,7 @@ class WebAclRuleStatementRateBasedStatement {
 
   factory WebAclRuleStatementRateBasedStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatement(
-      aggregateKeyType: (() { final guardedValue = map['aggregateKeyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      aggregateKeyType: pulumi.Input.fromValue(map['aggregateKeyType'] as String),
       customKeys: (() { final guardedValue = map['customKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKey>(guardedValue, (value) => WebAclRuleStatementRateBasedStatementCustomKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
       evaluationWindowSec: (() { final guardedValue = map['evaluationWindowSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       forwardedIpConfig: (() { final guardedValue = map['forwardedIpConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleStatementRateBasedStatementForwardedIpConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -59,4 +57,3 @@ class WebAclRuleStatementRateBasedStatement {
     );
   }
 }
-

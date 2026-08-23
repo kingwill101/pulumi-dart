@@ -49,6 +49,18 @@ import 'admin_account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_fms_adminaccount" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -56,8 +68,8 @@ import 'admin_account_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.fms.AdminAccount;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -89,7 +101,7 @@ import 'admin_account_state.dart';
 /// $ pulumi import aws:fms/adminAccount:AdminAccount example 123456789012
 /// ```
 class AdminAccount extends pulumi.CustomResource {
-  /// The AWS account ID to associate with AWS Firewall Manager as the AWS Firewall Manager administrator account. This can be an AWS Organizations master account or a member account. Defaults to the current account. Must be configured to perform drift detection.
+  /// AWS account ID to associate with AWS Firewall Manager as the AWS Firewall Manager administrator account. This can be an AWS Organizations master account or a member account. Defaults to the current account. Must be configured to perform drift detection.
   late final pulumi.Output<String> accountId;
 
   /// Creates a new [AdminAccount].

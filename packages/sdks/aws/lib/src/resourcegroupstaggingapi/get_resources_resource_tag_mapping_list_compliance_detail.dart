@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResourcesResourceTagMappingListComplianceDetail {
   /// Whether the resource is compliant.
-  /// * `keys_with_noncompliant_values ` - Set of tag keys with non-compliant tag values.
-  /// * `non_compliant_keys ` - Set of non-compliant tag keys.
+  /// * `keysWithNoncompliantValues ` - Set of tag keys with non-compliant tag values.
+  /// * `nonCompliantKeys ` - Set of non-compliant tag keys.
   final pulumi.Input<bool> complianceStatus;
   final pulumi.Input<List<String>> keysWithNoncompliantValues;
   final pulumi.Input<List<String>> nonCompliantKeys;
@@ -36,4 +36,3 @@ class GetResourcesResourceTagMappingListComplianceDetail {
     );
   }
 }
-

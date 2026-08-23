@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterControlPlaneScalingConfig {
-  /// The control plane scaling tier. Valid values are `standard`, `tier-xl`, `tier-2xl`, or `tier-4xl`.
+  /// The control plane scaling tier. Valid values are `standard`, `tier-xl`, `tier-2xl`, `tier-4xl`, or `tier-8xl`.
   final pulumi.Input<String> tier;
 
   /// Creates a new [GetClusterControlPlaneScalingConfig].
-  /// [tier] The control plane scaling tier. Valid values are `standard`, `tier-xl`, `tier-2xl`, or `tier-4xl`.
+  /// [tier] The control plane scaling tier. Valid values are `standard`, `tier-xl`, `tier-2xl`, `tier-4xl`, or `tier-8xl`.
   const GetClusterControlPlaneScalingConfig({
     required this.tier,
   });
@@ -24,4 +24,3 @@ class GetClusterControlPlaneScalingConfig {
     );
   }
 }
-

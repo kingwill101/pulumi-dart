@@ -169,6 +169,39 @@ import 'model_vpc_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["sagemaker.amazonaws.com"]
+///     }
+///   }
+/// }
+/// data "aws_sagemaker_getprebuiltecrimage" "test" {
+///   repository_name = "kmeans"
+/// }
+///
+/// resource "aws_sagemaker_model" "example" {
+///   name               = "my-model"
+///   execution_role_arn = aws_iam_role.example.arn
+///   primary_container = {
+///     image = data.aws_sagemaker_getprebuiltecrimage.test.registry_path
+///   }
+/// }
+/// resource "aws_iam_role" "example" {
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,6 +210,8 @@ import 'model_vpc_config.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.sagemaker.SagemakerFunctions;
@@ -184,8 +219,8 @@ import 'model_vpc_config.dart';
 /// import com.pulumi.aws.sagemaker.Model;
 /// import com.pulumi.aws.sagemaker.ModelArgs;
 /// import com.pulumi.aws.sagemaker.inputs.ModelPrimaryContainerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -270,7 +305,7 @@ import 'model_vpc_config.dart';
 class Model extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) assigned by AWS to this model.
   late final pulumi.Output<String> arn;
-  /// Specifies containers in the inference pipeline. If not specified, the `primary_container` argument is required. Fields are documented below.
+  /// Specifies containers in the inference pipeline. If not specified, the `primaryContainer` argument is required. Fields are documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> containers;
   /// Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
   late final pulumi.Output<bool?> enableNetworkIsolation;
@@ -284,9 +319,9 @@ class Model extends pulumi.CustomResource {
   late final pulumi.Output<ModelPrimaryContainer?> primaryContainer;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Specifies the VPC that you want your model to connect to. This configuration is used in hosting services and in batch transform. See VPC Config.
   late final pulumi.Output<ModelVpcConfig?> vpcConfig;

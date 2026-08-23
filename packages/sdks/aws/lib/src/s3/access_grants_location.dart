@@ -83,6 +83,23 @@ import 'access_grants_location_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3control_accessgrantsinstance" "example" {
+/// }
+/// resource "aws_s3control_accessgrantslocation" "example" {
+///   depends_on     = [aws_s3control_accessgrantsinstance.example]
+///   iam_role_arn   = exampleAwsIamRole.arn
+///   location_scope = "s3://"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +110,8 @@ import 'access_grants_location_state.dart';
 /// import com.pulumi.aws.s3control.AccessGrantsLocation;
 /// import com.pulumi.aws.s3control.AccessGrantsLocationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -136,7 +153,7 @@ import 'access_grants_location_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import S3 Access Grants locations using the `account_id` and `access_grants_location_id`, separated by a comma (`,`). For example:
+/// Using `pulumi import`, import S3 Access Grants locations using the `accountId` and `accessGrantsLocationId`, separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3control/accessGrantsLocation:AccessGrantsLocation example 123456789012,default
@@ -146,18 +163,17 @@ class AccessGrantsLocation extends pulumi.CustomResource {
   late final pulumi.Output<String> accessGrantsLocationArn;
   /// Unique ID of the S3 Access Grants location.
   late final pulumi.Output<String> accessGrantsLocationId;
-  /// The AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
+  /// AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> accountId;
-  /// The ARN of the IAM role that S3 Access Grants should use when fulfilling runtime access
-  /// requests to the location.
+  /// ARN of the IAM role that S3 Access Grants should use when fulfilling runtime access requests to the location.
   late final pulumi.Output<String> iamRoleArn;
-  /// The default S3 URI `s3://` or the URI to a custom location, a specific bucket or prefix.
+  /// Default S3 URI `s3://` or the URI to a custom location, a specific bucket or prefix.
   late final pulumi.Output<String> locationScope;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [AccessGrantsLocation].

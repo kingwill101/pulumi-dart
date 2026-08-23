@@ -70,4 +70,3 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration {
     );
   }
 }
-

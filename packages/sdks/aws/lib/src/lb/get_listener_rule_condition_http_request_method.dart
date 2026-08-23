@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerRuleConditionHttpRequestMethod {
-  /// Set of `key`-`value` pairs indicating the query string parameters to match.
+  /// Set of source IP addresses in CIDR format for Application Load Balancers
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetListenerRuleConditionHttpRequestMethod].
-  /// [values] Set of `key`-`value` pairs indicating the query string parameters to match.
+  /// [values] Set of source IP addresses in CIDR format for Application Load Balancers
   const GetListenerRuleConditionHttpRequestMethod({
     required this.values,
   });
@@ -24,4 +24,3 @@ class GetListenerRuleConditionHttpRequestMethod {
     );
   }
 }
-

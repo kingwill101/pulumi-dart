@@ -8,7 +8,7 @@ import 'job_state.dart';
 
 /// Provides a Glue Job resource.
 ///
-/// &gt; Glue functionality, such as monitoring and logging of jobs, is typically managed with the `default_arguments` argument. See the [Special Parameters Used by AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html) topic in the Glue developer guide for additional information.
+/// &gt; Glue functionality, such as monitoring and logging of jobs, is typically managed with the `defaultArguments` argument. See the [Special Parameters Used by AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html) topic in the Glue developer guide for additional information.
 ///
 /// ## Example Usage
 ///
@@ -233,7 +233,7 @@ import 'job_state.dart';
 /// 				map[string]interface{}{
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "glue.amazonaws.com",
 /// 					},
 /// 				},
@@ -302,6 +302,70 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_job" "etl_job" {
+///   name              = "example-etl-job"
+///   description       = "An example Glue ETL job"
+///   role_arn          = aws_iam_role.glue_job_role.arn
+///   glue_version      = "5.0"
+///   max_retries       = 0
+///   timeout           = 2880
+///   number_of_workers = 2
+///   worker_type       = "G.1X"
+///   connections       = [example.name]
+///   execution_class   = "STANDARD"
+///   command = {
+///     script_location ="s3://${glueScripts.bucket}/jobs/etl_job.py"
+///     name            = "glueetl"
+///     python_version  = "3"
+///   }
+///   notification_property = {
+///     notify_delay_after = 3
+///   }
+///   # delay in minutes
+///   default_arguments = {
+///     "--job-language"                     = "python"
+///     "--continuous-log-logGroup"          = "/aws-glue/jobs"
+///     "--enable-continuous-cloudwatch-log" = "true"
+///     "--enable-continuous-log-filter"     = "true"
+///     "--enable-metrics"                   = ""
+///     "--enable-auto-scaling"              = "true"
+///   }
+///   execution_property = {
+///     max_concurrent_runs = 1
+///   }
+///   tags = {
+///     "ManagedBy" = "AWS"
+///   }
+/// }
+/// # IAM role for Glue jobs
+/// resource "aws_iam_role" "glue_job_role" {
+///   name = "glue-job-role"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "glue.amazonaws.com"
+///       }
+///     }]
+///   })
+/// }
+/// resource "aws_s3_bucketobjectv2" "glue_etl_script" {
+///   bucket = glueScripts.id
+///   key    = "jobs/etl_job.py"
+///   source = fileAsset("jobs/etl_job.py")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -319,8 +383,8 @@ import 'job_state.dart';
 /// import com.pulumi.aws.s3.BucketObjectv2Args;
 /// import com.pulumi.asset.FileAsset;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -445,7 +509,7 @@ import 'job_state.dart';
 ///       bucket: ${glueScripts.id}
 ///       key: jobs/etl_job.py
 ///       source:
-///         fn::FileAsset: jobs/etl_job.py
+///         fn::fileAsset: jobs/etl_job.py
 /// ```
 ///
 ///
@@ -645,7 +709,7 @@ import 'job_state.dart';
 /// 				map[string]interface{}{
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "glue.amazonaws.com",
 /// 					},
 /// 				},
@@ -706,6 +770,61 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_job" "python_shell_job" {
+///   name         = "example-python-shell-job"
+///   description  = "An example Python shell job"
+///   role_arn     = aws_iam_role.glue_job_role.arn
+///   max_capacity = "0.0625"
+///   max_retries  = 0
+///   timeout      = 2880
+///   connections  = [example.name]
+///   command = {
+///     script_location ="s3://${glueScripts.bucket}/jobs/shell_job.py"
+///     name            = "pythonshell"
+///     python_version  = "3.9"
+///   }
+///   default_arguments = {
+///     "--job-language"                     = "python"
+///     "--continuous-log-logGroup"          = "/aws-glue/jobs"
+///     "--enable-continuous-cloudwatch-log" = "true"
+///     "library-set"                        = "analytics"
+///   }
+///   execution_property = {
+///     max_concurrent_runs = 1
+///   }
+///   tags = {
+///     "ManagedBy" = "AWS"
+///   }
+/// }
+/// # IAM role for Glue jobs
+/// resource "aws_iam_role" "glue_job_role" {
+///   name = "glue-job-role"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "glue.amazonaws.com"
+///       }
+///     }]
+///   })
+/// }
+/// resource "aws_s3_bucketobjectv2" "python_shell_script" {
+///   bucket = glueScripts.id
+///   key    = "jobs/shell_job.py"
+///   source = fileAsset("jobs/shell_job.py")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -722,8 +841,8 @@ import 'job_state.dart';
 /// import com.pulumi.aws.s3.BucketObjectv2Args;
 /// import com.pulumi.asset.FileAsset;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -833,7 +952,7 @@ import 'job_state.dart';
 ///       bucket: ${glueScripts.id}
 ///       key: jobs/shell_job.py
 ///       source:
-///         fn::FileAsset: jobs/shell_job.py
+///         fn::fileAsset: jobs/shell_job.py
 /// ```
 ///
 ///
@@ -927,6 +1046,28 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_job" "example" {
+///   name         = "example"
+///   role_arn     = exampleAwsIamRole.arn
+///   glue_version = "4.0"
+///   worker_type  = "Z.2X"
+///   command = {
+///     name            = "glueray"
+///     python_version  = "3.9"
+///     runtime         = "Ray2.4"
+///     script_location ="s3://${exampleAwsS3Bucket.bucket}/example.py"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -936,8 +1077,8 @@ import 'job_state.dart';
 /// import com.pulumi.aws.glue.Job;
 /// import com.pulumi.aws.glue.JobArgs;
 /// import com.pulumi.aws.glue.inputs.JobCommandArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1065,6 +1206,26 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_job" "example" {
+///   name     = "example"
+///   role_arn = exampleAwsIamRole.arn
+///   command = {
+///     script_location ="s3://${exampleAwsS3Bucket.bucket}/example.scala"
+///   }
+///   default_arguments = {
+///     "--job-language" = "scala"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1074,8 +1235,8 @@ import 'job_state.dart';
 /// import com.pulumi.aws.glue.Job;
 /// import com.pulumi.aws.glue.JobArgs;
 /// import com.pulumi.aws.glue.inputs.JobCommandArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1187,6 +1348,24 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_job" "example" {
+///   name     = "example streaming job"
+///   role_arn = exampleAwsIamRole.arn
+///   command = {
+///     name            = "gluestreaming"
+///     script_location ="s3://${exampleAwsS3Bucket.bucket}/example.script"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1196,8 +1375,8 @@ import 'job_state.dart';
 /// import com.pulumi.aws.glue.Job;
 /// import com.pulumi.aws.glue.JobArgs;
 /// import com.pulumi.aws.glue.inputs.JobCommandArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1326,6 +1505,28 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name              = "example"
+///   retention_in_days = 14
+/// }
+/// resource "aws_glue_job" "example" {
+///   default_arguments = {
+///     "--continuous-log-logGroup"          = aws_cloudwatch_loggroup.example.name
+///     "--enable-continuous-cloudwatch-log" = "true"
+///     "--enable-continuous-log-filter"     = "true"
+///     "--enable-metrics"                   = ""
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1336,8 +1537,8 @@ import 'job_state.dart';
 /// import com.pulumi.aws.cloudwatch.LogGroupArgs;
 /// import com.pulumi.aws.glue.Job;
 /// import com.pulumi.aws.glue.JobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1387,10 +1588,22 @@ import 'job_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the Glue Job.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS account ID.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Glue Jobs using `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:glue/job:Job MyJob MyJob
+/// $ pulumi import aws:glue/job:Job example example
 /// ```
 class Job extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of Glue Job
@@ -1415,7 +1628,7 @@ class Job extends pulumi.CustomResource {
   late final pulumi.Output<bool?> jobRunQueuingEnabled;
   /// Specifies the day of the week and hour for the maintenance window for streaming jobs.
   late final pulumi.Output<String?> maintenanceWindow;
-  /// The maximum number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. `Required` when `pythonshell` is set, accept either `0.0625` or `1.0`. Use `number_of_workers` and `worker_type` arguments instead with `glue_version` `2.0` and above.
+  /// The maximum number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. `Required` when `pythonshell` is set, accept either `0.0625` or `1.0`. Use `numberOfWorkers` and `workerType` arguments instead with `glueVersion` `2.0` and above.
   late final pulumi.Output<double> maxCapacity;
   /// The maximum number of times to retry this job if it fails.
   late final pulumi.Output<int?> maxRetries;
@@ -1435,9 +1648,9 @@ class Job extends pulumi.CustomResource {
   late final pulumi.Output<String?> securityConfiguration;
   /// The details for a source control configuration for a job, allowing synchronization of job artifacts to or from a remote repository. Defined below.
   late final pulumi.Output<JobSourceControlDetails?> sourceControlDetails;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The job timeout in minutes. The default is 2880 minutes (48 hours) for `glueetl` and `pythonshell` jobs, and 0 (unlimited) for `gluestreaming` jobs. Leave this attribute argumnet unconfigured for `glueray` jobs.
   late final pulumi.Output<int> timeout;

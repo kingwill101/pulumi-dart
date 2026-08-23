@@ -8,7 +8,7 @@ class GetAttachmentsResult {
   final List<GetAttachmentsFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// A list of all attachments ids matching the filter. You can retrieve more information about the attachment using the [aws.ec2transitgateway.getAttachment][2] data source, searching by identifier.
+  /// A list of all attachments ids matching the filter. You can retrieve more information about the attachment using the aws.ec2transitgateway.getAttachment data source, searching by identifier.
   final List<String> ids;
   final String region;
   final Map<String, String> tags;
@@ -16,7 +16,7 @@ class GetAttachmentsResult {
   /// Creates a new [GetAttachmentsResult].
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ids] A list of all attachments ids matching the filter. You can retrieve more information about the attachment using the [aws.ec2transitgateway.getAttachment][2] data source, searching by identifier.
+  /// [ids] A list of all attachments ids matching the filter. You can retrieve more information about the attachment using the aws.ec2transitgateway.getAttachment data source, searching by identifier.
   /// [region] Required.
   /// [tags] Required.
   const GetAttachmentsResult({
@@ -47,4 +47,3 @@ class GetAttachmentsResult {
     );
   }
 }
-

@@ -12,7 +12,7 @@ class FleetLaunchTemplateConfigOverride {
   final pulumi.Input<String>? instanceType;
   /// Maximum price per unit hour that you are willing to pay for a Spot Instance.
   final pulumi.Input<String>? maxPrice;
-  /// Priority for the launch template override. If `on_demand_options` `allocation_strategy` is set to `prioritized`, EC2 Fleet uses priority to determine which launch template override to use first in fulfilling On-Demand capacity. The highest priority is launched first. The lower the number, the higher the priority. If no number is set, the launch template override has the lowest priority. Valid values are whole numbers starting at 0.
+  /// Priority for the launch template override. If `onDemandOptions` `allocationStrategy` is set to `prioritized`, EC2 Fleet uses priority to determine which launch template override to use first in fulfilling On-Demand capacity. The highest priority is launched first. The lower the number, the higher the priority. If no number is set, the launch template override has the lowest priority. Valid values are whole numbers starting at 0.
   final pulumi.Input<double>? priority;
   /// ID of the subnet in which to launch the instances.
   final pulumi.Input<String>? subnetId;
@@ -24,7 +24,7 @@ class FleetLaunchTemplateConfigOverride {
   /// [instanceRequirements] Override the instance type in the Launch Template with instance types that satisfy the requirements.
   /// [instanceType] Instance type.
   /// [maxPrice] Maximum price per unit hour that you are willing to pay for a Spot Instance.
-  /// [priority] Priority for the launch template override. If `on_demand_options` `allocation_strategy` is set to `prioritized`, EC2 Fleet uses priority to determine which launch template override to use first in fulfilling On-Demand capacity. The highest priority is launched first. The lower the number, the higher the priority. If no number is set, the launch template override has the lowest priority. Valid values are whole numbers starting at 0.
+  /// [priority] Priority for the launch template override. If `onDemandOptions` `allocationStrategy` is set to `prioritized`, EC2 Fleet uses priority to determine which launch template override to use first in fulfilling On-Demand capacity. The highest priority is launched first. The lower the number, the higher the priority. If no number is set, the launch template override has the lowest priority. Valid values are whole numbers starting at 0.
   /// [subnetId] ID of the subnet in which to launch the instances.
   /// [weightedCapacity] Number of units provided by the specified instance type.
   const FleetLaunchTemplateConfigOverride({
@@ -61,4 +61,3 @@ class FleetLaunchTemplateConfigOverride {
     );
   }
 }
-

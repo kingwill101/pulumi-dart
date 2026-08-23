@@ -4,12 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_virtual_node_spec_logging_access_log_file_format.dart';
 
 class GetVirtualNodeSpecLoggingAccessLogFile {
+  /// Format for the logs. See `spec.logging.access_log.file.format` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecLoggingAccessLogFileFormat>> formats;
+  /// File path to write access logs to.
   final pulumi.Input<String> path;
 
   /// Creates a new [GetVirtualNodeSpecLoggingAccessLogFile].
-  /// [formats] Required.
-  /// [path] Required.
+  /// [formats] Format for the logs. See `spec.logging.access_log.file.format` Block for details.
+  /// [path] File path to write access logs to.
   const GetVirtualNodeSpecLoggingAccessLogFile({
     required this.formats,
     required this.path,
@@ -29,4 +31,3 @@ class GetVirtualNodeSpecLoggingAccessLogFile {
     );
   }
 }
-

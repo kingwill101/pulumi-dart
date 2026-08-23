@@ -11,7 +11,7 @@ import 'nfs_file_share_nfs_file_share_defaults.dart';
 class NfsFileShareArgs {
   /// The Amazon Resource Name (ARN) of the storage used for audit logs.
   final pulumi.Input<String>? auditDestinationArn;
-  /// The region of the S3 bucket used by the file share. Required when specifying `vpc_endpoint_dns_name`.
+  /// The region of the S3 bucket used by the file share. Required when specifying `vpcEndpointDnsName`.
   final pulumi.Input<String>? bucketRegion;
   /// Refresh cache information. see Cache Attributes for more details.
   final pulumi.Input<NfsFileShareCacheAttributes>? cacheAttributes;
@@ -19,7 +19,7 @@ class NfsFileShareArgs {
   final pulumi.Input<List<String>> clientLists;
   /// The default [storage class](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateNFSFileShare.html#StorageGateway-CreateNFSFileShare-request-DefaultStorageClass) for objects put into an Amazon S3 bucket by the file gateway. Defaults to `S3_STANDARD`.
   final pulumi.Input<String>? defaultStorageClass;
-  /// The name of the file share. Must be set if an S3 prefix name is set in `location_arn`.
+  /// The name of the file share. Must be set if an S3 prefix name is set in `locationArn`.
   final pulumi.Input<String>? fileShareName;
   /// Amazon Resource Name (ARN) of the file gateway.
   final pulumi.Input<String> gatewayArn;
@@ -27,7 +27,7 @@ class NfsFileShareArgs {
   final pulumi.Input<bool>? guessMimeTypeEnabled;
   /// Boolean value if `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3. Defaults to `false`.
   final pulumi.Input<bool>? kmsEncrypted;
-  /// Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kms_encrypted` is true.
+  /// Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kmsEncrypted` is true.
   final pulumi.Input<String>? kmsKeyArn;
   /// The ARN of the backed storage used for storing file data.
   final pulumi.Input<String> locationArn;
@@ -47,22 +47,22 @@ class NfsFileShareArgs {
   final pulumi.Input<String> roleArn;
   /// Maps a user to anonymous user. Defaults to `RootSquash`. Valid values: `RootSquash` (only root is mapped to anonymous user), `NoSquash` (no one is mapped to anonymous user), `AllSquash` (everyone is mapped to anonymous user)
   final pulumi.Input<String>? squash;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The DNS name of the VPC endpoint for S3 PrivateLink.
   final pulumi.Input<String>? vpcEndpointDnsName;
 
   /// Creates a new [NfsFileShareArgs].
   /// [auditDestinationArn] The Amazon Resource Name (ARN) of the storage used for audit logs.
-  /// [bucketRegion] The region of the S3 bucket used by the file share. Required when specifying `vpc_endpoint_dns_name`.
+  /// [bucketRegion] The region of the S3 bucket used by the file share. Required when specifying `vpcEndpointDnsName`.
   /// [cacheAttributes] Refresh cache information. see Cache Attributes for more details.
   /// [clientLists] The list of clients that are allowed to access the file gateway. The list must contain either valid IP addresses or valid CIDR blocks. Set to `["0.0.0.0/0"]` to not limit access. Minimum 1 item. Maximum 100 items.
   /// [defaultStorageClass] The default [storage class](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateNFSFileShare.html#StorageGateway-CreateNFSFileShare-request-DefaultStorageClass) for objects put into an Amazon S3 bucket by the file gateway. Defaults to `S3_STANDARD`.
-  /// [fileShareName] The name of the file share. Must be set if an S3 prefix name is set in `location_arn`.
+  /// [fileShareName] The name of the file share. Must be set if an S3 prefix name is set in `locationArn`.
   /// [gatewayArn] Amazon Resource Name (ARN) of the file gateway.
   /// [guessMimeTypeEnabled] Boolean value that enables guessing of the MIME type for uploaded objects based on file extensions. Defaults to `true`.
   /// [kmsEncrypted] Boolean value if `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3. Defaults to `false`.
-  /// [kmsKeyArn] Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kms_encrypted` is true.
+  /// [kmsKeyArn] Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kmsEncrypted` is true.
   /// [locationArn] The ARN of the backed storage used for storing file data.
   /// [nfsFileShareDefaults] Nested argument with file share default values. More information below. see NFS File Share Defaults for more details.
   /// [notificationPolicy] The notification policy of the file share. For more information see the [AWS Documentation](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateNFSFileShare.html#StorageGateway-CreateNFSFileShare-request-NotificationPolicy). Default value is `{}`.
@@ -72,7 +72,7 @@ class NfsFileShareArgs {
   /// [requesterPays] Boolean who pays the cost of the request and the data download from the Amazon S3 bucket. Set this value to `true` if you want the requester to pay instead of the bucket owner. Defaults to `false`.
   /// [roleArn] The ARN of the AWS Identity and Access Management (IAM) role that a file gateway assumes when it accesses the underlying storage.
   /// [squash] Maps a user to anonymous user. Defaults to `RootSquash`. Valid values: `RootSquash` (only root is mapped to anonymous user), `NoSquash` (no one is mapped to anonymous user), `AllSquash` (everyone is mapped to anonymous user)
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcEndpointDnsName] The DNS name of the VPC endpoint for S3 PrivateLink.
   const NfsFileShareArgs({
     this.auditDestinationArn,
@@ -150,4 +150,3 @@ class NfsFileShareArgs {
     );
   }
 }
-

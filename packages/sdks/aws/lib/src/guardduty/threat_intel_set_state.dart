@@ -18,10 +18,12 @@ class ThreatIntelSetState {
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+  /// ID of the GuardDuty ThreatIntelSet.
+  final pulumi.Input<String>? threatIntelSetId;
 
   /// Creates a new [ThreatIntelSetState].
   /// [activate] Specifies whether GuardDuty is to start using the uploaded ThreatIntelSet.
@@ -31,8 +33,9 @@ class ThreatIntelSetState {
   /// [location] The URI of the file that contains the ThreatIntelSet.
   /// [name] The friendly name to identify the ThreatIntelSet.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [threatIntelSetId] ID of the GuardDuty ThreatIntelSet.
   const ThreatIntelSetState({
     this.activate,
     this.arn,
@@ -43,6 +46,7 @@ class ThreatIntelSetState {
     this.region,
     this.tags,
     this.tagsAll,
+    this.threatIntelSetId,
   });
 
   Map<String, dynamic> toMap() {
@@ -56,6 +60,7 @@ class ThreatIntelSetState {
       'region': ?region,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
+      'threatIntelSetId': ?threatIntelSetId,
     };
   }
 
@@ -70,7 +75,7 @@ class ThreatIntelSetState {
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      threatIntelSetId: (() { final guardedValue = map['threatIntelSetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

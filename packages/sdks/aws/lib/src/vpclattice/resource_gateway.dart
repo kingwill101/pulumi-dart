@@ -86,6 +86,24 @@ import 'resource_gateway_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_resourcegateway" "example" {
+///   name       = "Example"
+///   vpc_id     = exampleAwsVpc.id
+///   subnet_ids = [exampleAwsSubnet.id]
+///   tags = {
+///     "Environment" = "Example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +112,8 @@ import 'resource_gateway_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpclattice.ResourceGateway;
 /// import com.pulumi.aws.vpclattice.ResourceGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,6 +232,25 @@ import 'resource_gateway_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_resourcegateway" "example" {
+///   name            = "Example"
+///   vpc_id          = exampleAwsVpc.id
+///   subnet_ids      = [exampleAwsSubnet.id]
+///   ip_address_type = "DUALSTACK"
+///   tags = {
+///     "Environment" = "Example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -222,8 +259,8 @@ import 'resource_gateway_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpclattice.ResourceGateway;
 /// import com.pulumi.aws.vpclattice.ResourceGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -336,6 +373,22 @@ import 'resource_gateway_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_resourcegateway" "example" {
+///   name               = "Example"
+///   vpc_id             = exampleAwsVpc.id
+///   security_group_ids = [test.id]
+///   subnet_ids         = [exampleAwsSubnet.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -344,8 +397,8 @@ import 'resource_gateway_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpclattice.ResourceGateway;
 /// import com.pulumi.aws.vpclattice.ResourceGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -393,21 +446,23 @@ class ResourceGateway extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// IP address type used by the resource gateway. Valid values are `IPV4`, `IPV6`, and `DUALSTACK`. The IP address type of a resource gateway must be compatible with the subnets of the resource gateway and the IP address type of the resource.
   late final pulumi.Output<String> ipAddressType;
-  /// The number of IPv4 addresses per ENI for your resource. This argument is only applicable to `IPV4` and `DUALSTACK` IP address types. Defaults to `16`.
+  /// Number of IPv4 addresses per ENI for your resource. This argument is only applicable to `IPV4` and `DUALSTACK` IP address types. Defaults to `16`.
   late final pulumi.Output<int> ipv4AddressesPerEni;
   /// Name of the resource gateway.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+  /// How DNS is resolved for resource configurations associated to this resource gateway. Valid values are `IN_VPC` and `PUBLIC`. Defaults to `PUBLIC`. Changing this value will trigger a resource replacement.
+  late final pulumi.Output<String> resourceConfigDnsResolution;
   /// Security group IDs associated with the resource gateway. The security groups must be in the same VPC.
   late final pulumi.Output<List<String>> securityGroupIds;
   /// Status of the resource gateway.
   late final pulumi.Output<String> status;
   /// IDs of the VPC subnets in which to create the resource gateway.
   late final pulumi.Output<List<String>> subnetIds;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ResourceGatewayTimeouts?> timeouts;
   /// ID of the VPC for the resource gateway.
@@ -434,6 +489,7 @@ class ResourceGateway extends pulumi.CustomResource {
     ipv4AddressesPerEni = registerOutput<int>('ipv4AddressesPerEni');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
+    resourceConfigDnsResolution = registerOutput<String>('resourceConfigDnsResolution');
     securityGroupIds = registerOutput<List<String>>('securityGroupIds');
     status = registerOutput<String>('status');
     subnetIds = registerOutput<List<String>>('subnetIds');
@@ -471,6 +527,7 @@ class ResourceGateway extends pulumi.CustomResource {
     ipv4AddressesPerEni = registerOutput<int>('ipv4AddressesPerEni');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
+    resourceConfigDnsResolution = registerOutput<String>('resourceConfigDnsResolution');
     securityGroupIds = registerOutput<List<String>>('securityGroupIds');
     status = registerOutput<String>('status');
     subnetIds = registerOutput<List<String>>('subnetIds');

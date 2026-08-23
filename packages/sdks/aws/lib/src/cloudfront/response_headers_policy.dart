@@ -14,7 +14,7 @@ import 'response_headers_policy_state.dart';
 ///
 /// ## Example Usage
 ///
-/// The example below creates a CloudFront response headers policy.
+/// ### CORS Config Usage
 ///
 ///
 /// ```typescript
@@ -142,6 +142,33 @@ import 'response_headers_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_responseheaderspolicy" "example" {
+///   name    = "example-policy"
+///   comment = "test comment"
+///   cors_config = {
+///     access_control_allow_credentials = true
+///     access_control_allow_headers = {
+///       items = ["test"]
+///     }
+///     access_control_allow_methods = {
+///       items = ["GET"]
+///     }
+///     access_control_allow_origins = {
+///       items = ["test.example.comtest"]
+///     }
+///     origin_override = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -154,8 +181,8 @@ import 'response_headers_policy_state.dart';
 /// import com.pulumi.aws.cloudfront.inputs.ResponseHeadersPolicyCorsConfigAccessControlAllowHeadersArgs;
 /// import com.pulumi.aws.cloudfront.inputs.ResponseHeadersPolicyCorsConfigAccessControlAllowMethodsArgs;
 /// import com.pulumi.aws.cloudfront.inputs.ResponseHeadersPolicyCorsConfigAccessControlAllowOriginsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -210,7 +237,7 @@ import 'response_headers_policy_state.dart';
 /// ```
 ///
 ///
-/// The example below creates a CloudFront response headers policy with a custom headers config.
+/// ### Custom Headers Config Usage
 ///
 ///
 /// ```typescript
@@ -323,6 +350,30 @@ import 'response_headers_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_responseheaderspolicy" "example" {
+///   name = "example-headers-policy"
+///   custom_headers_config = {
+///     items = [{
+///       "header"   = "X-Permitted-Cross-Domain-Policies"
+///       "override" = true
+///       "value"    = "none"
+///       }, {
+///       "header"   = "X-Test"
+///       "override" = true
+///       "value"    = "none"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -332,8 +383,9 @@ import 'response_headers_policy_state.dart';
 /// import com.pulumi.aws.cloudfront.ResponseHeadersPolicy;
 /// import com.pulumi.aws.cloudfront.ResponseHeadersPolicyArgs;
 /// import com.pulumi.aws.cloudfront.inputs.ResponseHeadersPolicyCustomHeadersConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.cloudfront.inputs.ResponseHeadersPolicyCustomHeadersConfigItemArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -382,6 +434,8 @@ import 'response_headers_policy_state.dart';
 /// ```
 ///
 ///
+/// ### Mixed Config Usage
+///
 /// The example below creates a CloudFront response headers policy with a custom headers config, remove headers config and server timing headers config.
 ///
 ///
@@ -429,7 +483,7 @@ import 'response_headers_policy_state.dart';
 ///     },
 ///     server_timing_headers_config={
 ///         "enabled": True,
-///         "sampling_rate": 50,
+///         "sampling_rate": float(50),
 ///     })
 /// ```
 /// ```csharp
@@ -514,6 +568,35 @@ import 'response_headers_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_responseheaderspolicy" "example" {
+///   name = "example-headers-policy"
+///   custom_headers_config = {
+///     items = [{
+///       "header"   = "X-Permitted-Cross-Domain-Policies"
+///       "override" = true
+///       "value"    = "none"
+///     }]
+///   }
+///   remove_headers_config = {
+///     items = [{
+///       "header" = "Set-Cookie"
+///     }]
+///   }
+///   server_timing_headers_config = {
+///     enabled       = true
+///     sampling_rate = 50
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -523,10 +606,12 @@ import 'response_headers_policy_state.dart';
 /// import com.pulumi.aws.cloudfront.ResponseHeadersPolicy;
 /// import com.pulumi.aws.cloudfront.ResponseHeadersPolicyArgs;
 /// import com.pulumi.aws.cloudfront.inputs.ResponseHeadersPolicyCustomHeadersConfigArgs;
+/// import com.pulumi.aws.cloudfront.inputs.ResponseHeadersPolicyCustomHeadersConfigItemArgs;
 /// import com.pulumi.aws.cloudfront.inputs.ResponseHeadersPolicyRemoveHeadersConfigArgs;
+/// import com.pulumi.aws.cloudfront.inputs.ResponseHeadersPolicyRemoveHeadersConfigItemArgs;
 /// import com.pulumi.aws.cloudfront.inputs.ResponseHeadersPolicyServerTimingHeadersConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -583,7 +668,7 @@ import 'response_headers_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Cloudfront Response Headers Policies using the `id`. For example:
+/// Using `pulumi import`, import CloudFront response header policies using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudfront/responseHeadersPolicy:ResponseHeadersPolicy policy 658327ea-f89d-4fab-a63d-7e88639e58f9
@@ -593,7 +678,7 @@ class ResponseHeadersPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// A comment to describe the response headers policy. The comment cannot be longer than 128 characters.
   late final pulumi.Output<String?> comment;
-  /// A configuration for a set of HTTP response headers that are used for Cross-Origin Resource Sharing (CORS). See Cors Config for more information.
+  /// A configuration for a set of HTTP response headers that are used for Cross-Origin Resource Sharing (CORS). See CORS Config for more information.
   late final pulumi.Output<ResponseHeadersPolicyCorsConfig?> corsConfig;
   /// Object that contains an attribute `items` that contains a list of custom headers. See Custom Header for more information.
   late final pulumi.Output<ResponseHeadersPolicyCustomHeadersConfig?> customHeadersConfig;

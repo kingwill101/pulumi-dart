@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouteSpecHttp2RouteRetryPolicyPerRetryTimeout {
-  /// Retry unit. Valid values: `ms`, `s`.
+  /// Unit of time. Valid values: `ms`, `s`.
   final pulumi.Input<String> unit;
-  /// Retry value.
+  /// Number of time units. Minimum value of `0`.
   final pulumi.Input<int> value;
 
   /// Creates a new [RouteSpecHttp2RouteRetryPolicyPerRetryTimeout].
-  /// [unit] Retry unit. Valid values: `ms`, `s`.
-  /// [value] Retry value.
+  /// [unit] Unit of time. Valid values: `ms`, `s`.
+  /// [value] Number of time units. Minimum value of `0`.
   const RouteSpecHttp2RouteRetryPolicyPerRetryTimeout({
     required this.unit,
     required this.value,
@@ -30,4 +30,3 @@ class RouteSpecHttp2RouteRetryPolicyPerRetryTimeout {
     );
   }
 }
-

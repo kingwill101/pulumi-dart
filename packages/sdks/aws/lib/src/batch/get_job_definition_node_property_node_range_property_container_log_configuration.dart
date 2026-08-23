@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_job_definition_node_property_node_range_property_container_log_configuration_secret_option.dart';
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration {
-  /// The log driver to use for the container.
+  /// Log driver to use for the container.
   final pulumi.Input<String> logDriver;
-  /// The configuration options to send to the log driver.
+  /// Configuration options to send to the log driver.
   final pulumi.Input<Map<String, String>> options;
-  /// The secrets to pass to the log configuration.
+  /// Secrets to pass to the log configuration. See `secretOptions` below.
   final pulumi.Input<List<GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption>> secretOptions;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration].
-  /// [logDriver] The log driver to use for the container.
-  /// [options] The configuration options to send to the log driver.
-  /// [secretOptions] The secrets to pass to the log configuration.
+  /// [logDriver] Log driver to use for the container.
+  /// [options] Configuration options to send to the log driver.
+  /// [secretOptions] Secrets to pass to the log configuration. See `secretOptions` below.
   const GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration({
     required this.logDriver,
     required this.options,
@@ -37,4 +37,3 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration {
     );
   }
 }
-

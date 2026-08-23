@@ -96,6 +96,26 @@ import 'task_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_taskset" "example" {
+///   service         = exampleAwsEcsService.id
+///   cluster         = exampleAwsEcsCluster.id
+///   task_definition = exampleAwsEcsTaskDefinition.arn
+///   load_balancers {
+///     target_group_arn = exampleAwsLbTargetGroup.arn
+///     container_name   = "mongo"
+///     container_port   = 8080
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +125,8 @@ import 'task_set_state.dart';
 /// import com.pulumi.aws.ecs.TaskSet;
 /// import com.pulumi.aws.ecs.TaskSetArgs;
 /// import com.pulumi.aws.ecs.inputs.TaskSetLoadBalancerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -149,7 +169,7 @@ import 'task_set_state.dart';
 ///
 /// ### Ignoring Changes to Scale
 ///
-/// You can utilize the generic resource lifecycle configuration block with `ignore_changes` to create an ECS service with an initial count of running instances, then ignore any changes to that count caused externally (e.g. Application Autoscaling).
+/// You can utilize the generic resource lifecycle configuration block with `ignoreChanges` to create an ECS service with an initial count of running instances, then ignore any changes to that count caused externally (e.g. Application Autoscaling).
 ///
 ///
 /// ```typescript
@@ -165,7 +185,7 @@ import 'task_set_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ecs.TaskSet("example", scale={
-///     "value": 50,
+///     "value": float(50),
 /// })
 /// ```
 /// ```csharp
@@ -208,6 +228,21 @@ import 'task_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_taskset" "example" {
+///   scale = {
+///     value = 50
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -217,8 +252,8 @@ import 'task_set_state.dart';
 /// import com.pulumi.aws.ecs.TaskSet;
 /// import com.pulumi.aws.ecs.TaskSetArgs;
 /// import com.pulumi.aws.ecs.inputs.TaskSetScaleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -251,51 +286,51 @@ import 'task_set_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import ECS Task Sets using the `task_set_id`, `service`, and `cluster` separated by commas (`,`). For example:
+/// Using `pulumi import`, import ECS Task Sets using the `taskSetId`, `service`, and `cluster` separated by commas (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ecs/taskSet:TaskSet example ecs-svc/7177320696926227436,arn:aws:ecs:us-west-2:123456789101:service/example/example-1234567890,arn:aws:ecs:us-west-2:123456789101:cluster/example
 /// ```
 class TaskSet extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) that identifies the task set.
+  /// Amazon Resource Name (ARN) that identifies the task set.
   late final pulumi.Output<String> arn;
-  /// The capacity provider strategy to use for the service. Can be one or more.  Defined below.
+  /// Capacity provider strategy to use for the service. Can be one or more. Defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> capacityProviderStrategies;
-  /// The short name or ARN of the cluster that hosts the service to create the task set in.
+  /// Short name or ARN of the cluster that hosts the service to create the task set in.
   late final pulumi.Output<String> cluster;
-  /// The external ID associated with the task set.
+  /// External ID associated with the task set.
   late final pulumi.Output<String> externalId;
   /// Whether to allow deleting the task set without waiting for scaling down to 0. You can force a task set to delete even if it's in the process of scaling a resource. Normally, the provider drains all the tasks before deleting the task set. This bypasses that behavior and potentially leaves resources dangling.
   late final pulumi.Output<bool?> forceDelete;
-  /// The launch type on which to run your service. The valid values are `EC2`, `FARGATE`, and `EXTERNAL`. Defaults to `EC2`.
+  /// Launch type on which to run your service. Valid values are `EC2`, `FARGATE`, and `EXTERNAL`. Defaults to `EC2`.
   late final pulumi.Output<String> launchType;
   /// Details on load balancers that are used with a task set. Detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>?> loadBalancers;
-  /// The network configuration for the service. This parameter is required for task definitions that use the `awsvpc` network mode to receive their own Elastic Network Interface, and it is not supported for other network modes. Detailed below.
+  /// Network configuration for the service. Required for task definitions that use the `awsvpc` network mode to receive their own Elastic Network Interface, and not supported for other network modes. Detailed below.
   late final pulumi.Output<TaskSetNetworkConfiguration?> networkConfiguration;
-  /// The platform version on which to run your service. Only applicable for `launch_type` set to `FARGATE`. Defaults to `LATEST`. More information about Fargate platform versions can be found in the [AWS ECS User Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
+  /// Platform version on which to run your service. Only applicable for `launchType` set to `FARGATE`. Defaults to `LATEST`. More information about Fargate platform versions can be found in the [AWS ECS User Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
   late final pulumi.Output<String> platformVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A floating-point percentage of the desired number of tasks to place and keep running in the task set. Detailed below.
+  /// Floating-point percentage of the desired number of tasks to place and keep running in the task set. Detailed below.
   late final pulumi.Output<TaskSetScale> scale;
-  /// The short name or ARN of the ECS service.
+  /// Short name or ARN of the ECS service.
   late final pulumi.Output<String> service;
-  /// The service discovery registries for the service. The maximum number of `service_registries` blocks is `1`. Detailed below.
+  /// Service discovery registries for the service. The maximum number of `serviceRegistries` blocks is `1`. Detailed below.
   late final pulumi.Output<TaskSetServiceRegistries?> serviceRegistries;
-  /// The stability status. This indicates whether the task set has reached a steady state.
+  /// Stability status. This indicates whether the task set has reached a steady state.
   late final pulumi.Output<String> stabilityStatus;
-  /// The status of the task set.
+  /// Status of the task set.
   late final pulumi.Output<String> status;
-  /// A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copy_tags_to_backups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
+  /// Map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copyTagsToBackups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The family and revision (`family:revision`) or full ARN of the task definition that you want to run in your service.
+  /// Family and revision (`family:revision`) or full ARN of the task definition to run in your service.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> taskDefinition;
-  /// The ID of the task set.
+  /// ID of the task set.
   late final pulumi.Output<String> taskSetId;
   /// Whether the provider should wait until the task set has reached `STEADY_STATE`.
   late final pulumi.Output<bool?> waitUntilStable;

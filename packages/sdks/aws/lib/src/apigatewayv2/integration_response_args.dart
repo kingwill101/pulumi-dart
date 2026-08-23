@@ -19,7 +19,7 @@ class IntegrationResponseArgs {
   final pulumi.Input<String>? region;
   /// Map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client.
   final pulumi.Input<Map<String, String>>? responseTemplates;
-  /// The [template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration response.
+  /// [Template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration response.
   final pulumi.Input<String>? templateSelectionExpression;
 
   /// Creates a new [IntegrationResponseArgs].
@@ -29,7 +29,7 @@ class IntegrationResponseArgs {
   /// [integrationResponseKey] Integration response key.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [responseTemplates] Map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client.
-  /// [templateSelectionExpression] The [template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration response.
+  /// [templateSelectionExpression] [Template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration response.
   const IntegrationResponseArgs({
     required this.apiId,
     this.contentHandlingStrategy,
@@ -64,4 +64,3 @@ class IntegrationResponseArgs {
     );
   }
 }
-

@@ -3,20 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExpressGatewayServiceScalingTarget {
-  /// Metric to use for auto-scaling. Valid values are `CPU` and `MEMORY`.
+  /// Metric to use for auto-scaling. Valid values are `AVERAGE_CPU`, `AVERAGE_MEMORY` and `REQUEST_COUNT_PER_TARGET`.
   final pulumi.Input<String> autoScalingMetric;
   /// Target value for the auto-scaling metric (as a percentage). Defaults to `60`.
   final pulumi.Input<int> autoScalingTargetValue;
-  /// Maximum number of tasks to run.
+  /// Maximum number of tasks to run. Defaults to `20`.
   final pulumi.Input<int> maxTaskCount;
-  /// Minimum number of tasks to run.
+  /// Minimum number of tasks to run. Defaults to `1`.
   final pulumi.Input<int> minTaskCount;
 
   /// Creates a new [ExpressGatewayServiceScalingTarget].
-  /// [autoScalingMetric] Metric to use for auto-scaling. Valid values are `CPU` and `MEMORY`.
+  /// [autoScalingMetric] Metric to use for auto-scaling. Valid values are `AVERAGE_CPU`, `AVERAGE_MEMORY` and `REQUEST_COUNT_PER_TARGET`.
   /// [autoScalingTargetValue] Target value for the auto-scaling metric (as a percentage). Defaults to `60`.
-  /// [maxTaskCount] Maximum number of tasks to run.
-  /// [minTaskCount] Minimum number of tasks to run.
+  /// [maxTaskCount] Maximum number of tasks to run. Defaults to `20`.
+  /// [minTaskCount] Minimum number of tasks to run. Defaults to `1`.
   const ExpressGatewayServiceScalingTarget({
     required this.autoScalingMetric,
     required this.autoScalingTargetValue,
@@ -42,4 +42,3 @@ class ExpressGatewayServiceScalingTarget {
     );
   }
 }
-

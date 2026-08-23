@@ -60,6 +60,19 @@ import 'get_table_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_timestreamwrite_getdatabase" "test" {
+///   name = "database-example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +81,8 @@ import 'get_table_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.timestreamwrite.TimestreamwriteFunctions;
 /// import com.pulumi.aws.timestreamwrite.inputs.GetDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -171,6 +184,20 @@ Future<GetDatabaseResult> getDatabase(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_timestreamwrite_gettable" "test" {
+///   database_name = testAwsTimestreamwriteDatabase.databaseName
+///   name          = testAwsTimestreamwriteTable.tableName
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +206,8 @@ Future<GetDatabaseResult> getDatabase(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.timestreamwrite.TimestreamwriteFunctions;
 /// import com.pulumi.aws.timestreamwrite.inputs.GetTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

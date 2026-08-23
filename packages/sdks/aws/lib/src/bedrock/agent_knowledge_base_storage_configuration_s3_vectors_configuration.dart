@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration {
-  /// ARN of the S3 Vectors index. Conflicts with `index_name` and `vector_bucket_arn`.
+  /// ARN of the S3 Vectors index. Conflicts with `indexName` and `vectorBucketArn`.
   final pulumi.Input<String>? indexArn;
-  /// Name of the S3 Vectors index. Must be specified with `vector_bucket_arn`. Conflicts with `index_arn`.
+  /// Name of the S3 Vectors index. Must be specified with `vectorBucketArn`. Conflicts with `indexArn`.
   final pulumi.Input<String>? indexName;
-  /// ARN of the S3 Vectors vector bucket. Must be specified with `index_name`. Conflicts with `index_arn`.
+  /// ARN of the S3 Vectors vector bucket. Must be specified with `indexName`. Conflicts with `indexArn`.
   final pulumi.Input<String>? vectorBucketArn;
 
   /// Creates a new [AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration].
-  /// [indexArn] ARN of the S3 Vectors index. Conflicts with `index_name` and `vector_bucket_arn`.
-  /// [indexName] Name of the S3 Vectors index. Must be specified with `vector_bucket_arn`. Conflicts with `index_arn`.
-  /// [vectorBucketArn] ARN of the S3 Vectors vector bucket. Must be specified with `index_name`. Conflicts with `index_arn`.
+  /// [indexArn] ARN of the S3 Vectors index. Conflicts with `indexName` and `vectorBucketArn`.
+  /// [indexName] Name of the S3 Vectors index. Must be specified with `vectorBucketArn`. Conflicts with `indexArn`.
+  /// [vectorBucketArn] ARN of the S3 Vectors vector bucket. Must be specified with `indexName`. Conflicts with `indexArn`.
   const AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration({
     this.indexArn,
     this.indexName,
@@ -36,4 +36,3 @@ class AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration {
     );
   }
 }
-

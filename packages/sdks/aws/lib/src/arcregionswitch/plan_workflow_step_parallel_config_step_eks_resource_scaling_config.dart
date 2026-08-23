@@ -9,27 +9,27 @@ import 'plan_workflow_step_parallel_config_step_eks_resource_scaling_config_ungr
 class PlanWorkflowStepParallelConfigStepEksResourceScalingConfig {
   /// Capacity monitoring approach. Valid values: `sampledMaxInLast24Hours`, `autoscalingMaxInLast24Hours`.
   final pulumi.Input<String> capacityMonitoringApproach;
-  /// List of EKS clusters. See EKS Clusters below.
+  /// EKS clusters. See `eksClusters` Block for details.
   final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster>>? eksClusters;
-  /// Kubernetes resource type. See Kubernetes Resource Type below.
+  /// Kubernetes resource type. See `kubernetesResourceType` Block for details.
   final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigKubernetesResourceType>>? kubernetesResourceTypes;
-  /// List of scaling resources. See Scaling Resources below.
+  /// Scaling resources. See `scalingResources` Block for details.
   final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource>>? scalingResources;
   /// Target capacity percentage.
   final pulumi.Input<int> targetPercent;
   /// Timeout in minutes.
   final pulumi.Input<int>? timeoutMinutes;
-  /// Ungraceful behavior configuration. See Ungraceful Capacity below.
+  /// Ungraceful behavior configuration. See `workflow.step.eks_resource_scaling_config.ungraceful` Block for details.
   final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful>>? ungracefuls;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepEksResourceScalingConfig].
   /// [capacityMonitoringApproach] Capacity monitoring approach. Valid values: `sampledMaxInLast24Hours`, `autoscalingMaxInLast24Hours`.
-  /// [eksClusters] List of EKS clusters. See EKS Clusters below.
-  /// [kubernetesResourceTypes] Kubernetes resource type. See Kubernetes Resource Type below.
-  /// [scalingResources] List of scaling resources. See Scaling Resources below.
+  /// [eksClusters] EKS clusters. See `eksClusters` Block for details.
+  /// [kubernetesResourceTypes] Kubernetes resource type. See `kubernetesResourceType` Block for details.
+  /// [scalingResources] Scaling resources. See `scalingResources` Block for details.
   /// [targetPercent] Target capacity percentage.
   /// [timeoutMinutes] Timeout in minutes.
-  /// [ungracefuls] Ungraceful behavior configuration. See Ungraceful Capacity below.
+  /// [ungracefuls] Ungraceful behavior configuration. See `workflow.step.eks_resource_scaling_config.ungraceful` Block for details.
   const PlanWorkflowStepParallelConfigStepEksResourceScalingConfig({
     required this.capacityMonitoringApproach,
     this.eksClusters,
@@ -64,4 +64,3 @@ class PlanWorkflowStepParallelConfigStepEksResourceScalingConfig {
     );
   }
 }
-

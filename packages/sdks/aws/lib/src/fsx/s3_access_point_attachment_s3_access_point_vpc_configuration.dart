@@ -24,4 +24,3 @@ class S3AccessPointAttachmentS3AccessPointVpcConfiguration {
     );
   }
 }
-

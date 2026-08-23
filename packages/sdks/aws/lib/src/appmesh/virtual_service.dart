@@ -95,6 +95,27 @@ import 'virtual_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appmesh_virtualservice" "servicea" {
+///   name      = "servicea.simpleapp.local"
+///   mesh_name = simple.id
+///   spec = {
+///     provider = {
+///       virtual_node = {
+///         virtual_node_name = serviceb1.name
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +127,8 @@ import 'virtual_service_state.dart';
 /// import com.pulumi.aws.appmesh.inputs.VirtualServiceSpecArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualServiceSpecProviderArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualServiceSpecProviderVirtualNodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -236,6 +257,27 @@ import 'virtual_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appmesh_virtualservice" "servicea" {
+///   name      = "servicea.simpleapp.local"
+///   mesh_name = simple.id
+///   spec = {
+///     provider = {
+///       virtual_router = {
+///         virtual_router_name = serviceb.name
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -247,8 +289,8 @@ import 'virtual_service_state.dart';
 /// import com.pulumi.aws.appmesh.inputs.VirtualServiceSpecArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualServiceSpecProviderArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualServiceSpecProviderVirtualRouterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -291,7 +333,7 @@ import 'virtual_service_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import App Mesh virtual services using `mesh_name` together with the virtual service's `name`. For example:
+/// Using `pulumi import`, import App Mesh virtual services using `meshName` together with the virtual service's `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appmesh/virtualService:VirtualService servicea simpleapp/servicea.simpleapp.local
@@ -313,11 +355,11 @@ class VirtualService extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Resource owner's AWS account ID.
   late final pulumi.Output<String> resourceOwner;
-  /// Virtual service specification to apply.
+  /// Virtual service specification to apply. See `spec` Block for details.
   late final pulumi.Output<VirtualServiceSpec> spec;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [VirtualService].

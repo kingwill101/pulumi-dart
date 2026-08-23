@@ -98,7 +98,7 @@ import 'key_group_state.dart';
 /// 		_, err = cloudfront.NewKeyGroup(ctx, "example", &cloudfront.KeyGroupArgs{
 /// 			Comment: pulumi.String("example key group"),
 /// 			Items: pulumi.StringArray{
-/// 				example.ID(),
+/// 				example.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Name: pulumi.String("example-key-group"),
 /// 		})
@@ -107,6 +107,29 @@ import 'key_group_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_publickey" "example" {
+///   comment     = "example public key"
+///   encoded_key = file("public_key.pem")
+///   name        = "example-key"
+/// }
+/// resource "aws_cloudfront_keygroup" "example" {
+///   comment = "example key group"
+///   items   = [aws_cloudfront_publickey.example.id]
+///   name    = "example-key-group"
 /// }
 /// ```
 /// ```java
@@ -121,8 +144,8 @@ import 'key_group_state.dart';
 /// import com.pulumi.std.inputs.FileArgs;
 /// import com.pulumi.aws.cloudfront.KeyGroup;
 /// import com.pulumi.aws.cloudfront.KeyGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

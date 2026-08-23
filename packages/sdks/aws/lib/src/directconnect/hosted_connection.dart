@@ -73,6 +73,23 @@ import 'hosted_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directconnect_hostedconnection" "hosted" {
+///   connection_id    = "dxcon-ffabc123"
+///   bandwidth        = "100Mbps"
+///   name             = "tf-dx-hosted-connection"
+///   owner_account_id = "123456789012"
+///   vlan             = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +98,8 @@ import 'hosted_connection_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.directconnect.HostedConnection;
 /// import com.pulumi.aws.directconnect.HostedConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -143,7 +160,7 @@ class HostedConnection extends pulumi.CustomResource {
   late final pulumi.Output<String> partnerName;
   /// The name of the service provider associated with the connection.
   late final pulumi.Output<String> providerName;
-  /// (**Deprecated**) The AWS Region where the connection is located. Use `connection_region` instead.
+  /// (**Deprecated**) The AWS Region where the connection is located. Use `connectionRegion` instead.
   late final pulumi.Output<String> region;
   /// The state of the connection. Possible values include: ordering, requested, pending, available, down, deleting, deleted, rejected, unknown. See [AllocateHostedConnection](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_AllocateHostedConnection.html) for a description of each connection state.
   late final pulumi.Output<String> state;

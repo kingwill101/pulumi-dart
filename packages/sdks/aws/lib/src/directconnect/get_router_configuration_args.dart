@@ -11,7 +11,7 @@ class GetRouterConfigurationArgs {
   final pulumi.Input<String>? region;
   /// ID of the Router Type. For example: `CiscoSystemsInc-2900SeriesRouters-IOS124`
   ///
-  /// There is currently no AWS API to retrieve the full list of `router_type_identifier` values. Here is a list of known `RouterType` objects that can be used:
+  /// There is currently no AWS API to retrieve the full list of `routerTypeIdentifier` values. Here is a list of known `RouterType` objects that can be used:
   ///
   /// ```json
   /// {
@@ -57,4 +57,3 @@ class GetRouterConfigurationArgs {
     );
   }
 }
-

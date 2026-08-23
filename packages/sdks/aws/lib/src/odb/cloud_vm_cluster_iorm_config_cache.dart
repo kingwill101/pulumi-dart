@@ -4,16 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_vm_cluster_iorm_config_cache_db_plan.dart';
 
 class CloudVmClusterIormConfigCache {
+  /// List of IORM (I/O Resource Manager) database plans for the VM cluster. See `dbPlans` Block below.
   final pulumi.Input<List<CloudVmClusterIormConfigCacheDbPlan>> dbPlans;
+  /// Additional information about the current lifecycle state of the IORM configuration.
   final pulumi.Input<String> lifecycleDetails;
+  /// Current lifecycle state of the IORM configuration.
   final pulumi.Input<String> lifecycleState;
+  /// Current value for the IORM objective.
   final pulumi.Input<String> objective;
 
   /// Creates a new [CloudVmClusterIormConfigCache].
-  /// [dbPlans] Required.
-  /// [lifecycleDetails] Required.
-  /// [lifecycleState] Required.
-  /// [objective] Required.
+  /// [dbPlans] List of IORM (I/O Resource Manager) database plans for the VM cluster. See `dbPlans` Block below.
+  /// [lifecycleDetails] Additional information about the current lifecycle state of the IORM configuration.
+  /// [lifecycleState] Current lifecycle state of the IORM configuration.
+  /// [objective] Current value for the IORM objective.
   const CloudVmClusterIormConfigCache({
     required this.dbPlans,
     required this.lifecycleDetails,
@@ -39,4 +43,3 @@ class CloudVmClusterIormConfigCache {
     );
   }
 }
-

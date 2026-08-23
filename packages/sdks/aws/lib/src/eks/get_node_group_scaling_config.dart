@@ -7,13 +7,13 @@ class GetNodeGroupScalingConfig {
   final pulumi.Input<int> desiredSize;
   /// Maximum number of worker nodes.
   final pulumi.Input<int> maxSize;
-  /// Minimum number of worker nodes.
+  /// Minimum number of instances maintained in the warm pool.
   final pulumi.Input<int> minSize;
 
   /// Creates a new [GetNodeGroupScalingConfig].
   /// [desiredSize] Desired number of worker nodes.
   /// [maxSize] Maximum number of worker nodes.
-  /// [minSize] Minimum number of worker nodes.
+  /// [minSize] Minimum number of instances maintained in the warm pool.
   const GetNodeGroupScalingConfig({
     required this.desiredSize,
     required this.maxSize,
@@ -36,4 +36,3 @@ class GetNodeGroupScalingConfig {
     );
   }
 }
-

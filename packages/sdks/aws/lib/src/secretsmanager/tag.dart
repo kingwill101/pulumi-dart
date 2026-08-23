@@ -4,9 +4,9 @@ import 'tag_state.dart';
 
 /// Manages an individual AWS Secrets Manager secret tag. This resource should only be used in cases where AWS Secrets Manager secrets are created outside Terraform (e.g., [AWS Secrets Manager secrets managed by other AWS services](https://docs.aws.amazon.com/secretsmanager/latest/userguide/service-linked-secrets.html), such as RDS).
 ///
-/// &gt; **NOTE:** This tagging resource should not be combined with the Terraform resource for managing the parent resource. For example, using `aws.secretsmanager.Secret` and `aws.secretsmanager.Tag` to manage tags of the same AWS Secrets Manager secret will cause a perpetual difference where the `aws.secretsmanager.Secret` resource will try to remove the tag being added by the `aws.secretsmanager.Tag` resource. However, if the parent resource is created in the same configuration (i.e., if you have no other choice), you should add `ignore_changes = [tags]` in the parent resource's lifecycle block. This ensures that Terraform ignores differences in tags managed via the separate tagging resource, avoiding the perpetual difference mentioned above.
+/// &gt; **NOTE:** This tagging resource should not be combined with the Terraform resource for managing the parent resource. For example, using `aws.secretsmanager.Secret` and `aws.secretsmanager.Tag` to manage tags of the same AWS Secrets Manager secret will cause a perpetual difference where the `aws.secretsmanager.Secret` resource will try to remove the tag being added by the `aws.secretsmanager.Tag` resource. However, if the parent resource is created in the same configuration (i.e., if you have no other choice), you should add `ignoreChanges = [tags]` in the parent resource's lifecycle block. This ensures that Terraform ignores differences in tags managed via the separate tagging resource, avoiding the perpetual difference mentioned above.
 ///
-/// &gt; **NOTE:** This tagging resource does not use the provider `ignore_tags` configuration.
+/// &gt; **NOTE:** This tagging resource does not use the provider `ignoreTags` configuration.
 ///
 /// ## Example Usage
 ///
@@ -71,7 +71,7 @@ import 'tag_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretsmanager.NewTag(ctx, "test", &secretsmanager.TagArgs{
-/// 			SecretId: test.ID(),
+/// 			SecretId: test.ID().ToIDOutput().ToStringOutput(),
 /// 			Key:      pulumi.String("ExampleKey"),
 /// 			Value:    pulumi.String("ExampleValue"),
 /// 		})
@@ -80,6 +80,24 @@ import 'tag_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_secretsmanager_secret" "test" {
+///   name = "example-secret"
+/// }
+/// resource "aws_secretsmanager_tag" "test" {
+///   secret_id = aws_secretsmanager_secret.test.id
+///   key       = "ExampleKey"
+///   value     = "ExampleValue"
 /// }
 /// ```
 /// ```java
@@ -92,8 +110,8 @@ import 'tag_state.dart';
 /// import com.pulumi.aws.secretsmanager.SecretArgs;
 /// import com.pulumi.aws.secretsmanager.Tag;
 /// import com.pulumi.aws.secretsmanager.TagArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

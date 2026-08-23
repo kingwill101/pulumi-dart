@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'launch_template_capacity_reservation_specification_capacity_reservation_target.dart';
 
 class LaunchTemplateCapacityReservationSpecification {
-  /// Indicates the instance's Capacity Reservation preferences. Can be `capacity-reservations-only`, `open` or `none`. If `capacity_reservation_id` or `capacity_reservation_resource_group_arn` is specified in `capacity_reservation_target` block, either omit `capacity_reservation_preference` or set it to `capacity-reservations-only`.
+  /// Indicates the instance's Capacity Reservation preferences. Can be `capacity-reservations-only`, `open` or `none`. If `capacityReservationId` or `capacityReservationResourceGroupArn` is specified in `capacityReservationTarget` block, either omit `capacityReservationPreference` or set it to `capacity-reservations-only`.
   final pulumi.Input<String>? capacityReservationPreference;
   /// Used to target a specific Capacity Reservation:
   final pulumi.Input<LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget>? capacityReservationTarget;
 
   /// Creates a new [LaunchTemplateCapacityReservationSpecification].
-  /// [capacityReservationPreference] Indicates the instance's Capacity Reservation preferences. Can be `capacity-reservations-only`, `open` or `none`. If `capacity_reservation_id` or `capacity_reservation_resource_group_arn` is specified in `capacity_reservation_target` block, either omit `capacity_reservation_preference` or set it to `capacity-reservations-only`.
+  /// [capacityReservationPreference] Indicates the instance's Capacity Reservation preferences. Can be `capacity-reservations-only`, `open` or `none`. If `capacityReservationId` or `capacityReservationResourceGroupArn` is specified in `capacityReservationTarget` block, either omit `capacityReservationPreference` or set it to `capacity-reservations-only`.
   /// [capacityReservationTarget] Used to target a specific Capacity Reservation:
   const LaunchTemplateCapacityReservationSpecification({
     this.capacityReservationPreference,
@@ -31,4 +31,3 @@ class LaunchTemplateCapacityReservationSpecification {
     );
   }
 }
-

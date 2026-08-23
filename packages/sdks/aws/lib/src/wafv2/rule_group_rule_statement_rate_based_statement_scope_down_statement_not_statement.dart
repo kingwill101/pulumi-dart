@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_rule_statement.dart';
 
 class RuleGroupRuleStatementRateBasedStatementScopeDownStatementNotStatement {
-  /// The statements to combine.
+  /// The statement to negate. You can use any statement that can be nested. See Statement above for details.
   final pulumi.Input<List<RuleGroupRuleStatement>> statements;
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementNotStatement].
-  /// [statements] The statements to combine.
+  /// [statements] The statement to negate. You can use any statement that can be nested. See Statement above for details.
   const RuleGroupRuleStatementRateBasedStatementScopeDownStatementNotStatement({
     required this.statements,
   });
@@ -25,4 +25,3 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementNotStatement {
     );
   }
 }
-

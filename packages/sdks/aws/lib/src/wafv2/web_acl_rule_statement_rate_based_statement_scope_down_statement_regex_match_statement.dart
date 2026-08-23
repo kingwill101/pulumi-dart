@@ -5,28 +5,28 @@ import 'web_acl_rule_statement_rate_based_statement_scope_down_statement_regex_m
 import 'web_acl_rule_statement_rate_based_statement_scope_down_statement_regex_match_statement_text_transformation.dart';
 
 class WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatement {
-  /// The part of a web request that you want AWS WAF to inspect. See `field_to_match` below for details.
+  /// Part of the web request that you want WAF to inspect. See Field to Match below.
   final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatch>? fieldToMatch;
-  /// String representing the regular expression. Minimum of `1` and maximum of `512` characters.
+  /// Regular expression pattern to match against the web request component.
   final pulumi.Input<String> regexString;
-  /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. At least one transformation is required. See `text_transformation` below for details.
-  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementTextTransformation>> textTransformations;
+  /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. See Text Transformation below.
+  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementTextTransformation>>? textTransformations;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatement].
-  /// [fieldToMatch] The part of a web request that you want AWS WAF to inspect. See `field_to_match` below for details.
-  /// [regexString] String representing the regular expression. Minimum of `1` and maximum of `512` characters.
-  /// [textTransformations] Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. At least one transformation is required. See `text_transformation` below for details.
+  /// [fieldToMatch] Part of the web request that you want WAF to inspect. See Field to Match below.
+  /// [regexString] Regular expression pattern to match against the web request component.
+  /// [textTransformations] Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. See Text Transformation below.
   const WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatement({
     this.fieldToMatch,
     required this.regexString,
-    required this.textTransformations,
+    this.textTransformations,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fieldToMatch': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatch, Map<String, dynamic>>(fieldToMatch, (value) => value.toMap()),
       'regexString': regexString,
-      'textTransformations': pulumi.Input.mapInputValue<List<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementTextTransformation>, List<Map<String, dynamic>>>(textTransformations, (value) => pulumi.Input.encodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementTextTransformation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'textTransformations': ?pulumi.Input.mapOptionalInputValue<List<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementTextTransformation>, List<Map<String, dynamic>>>(textTransformations, (value) => pulumi.Input.encodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementTextTransformation, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -34,8 +34,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatement
     return WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatement(
       fieldToMatch: (() { final guardedValue = map['fieldToMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       regexString: pulumi.Input.fromValue(map['regexString'] as String),
-      textTransformations: pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementTextTransformation>(map['textTransformations']!, (value) => WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))),
+      textTransformations: (() { final guardedValue = map['textTransformations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementTextTransformation>(guardedValue, (value) => WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
-

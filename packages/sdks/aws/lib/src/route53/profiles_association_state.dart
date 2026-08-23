@@ -19,9 +19,9 @@ class ProfilesAssociationState {
   final pulumi.Input<String>? status;
   /// Status message of the Profile Association.
   final pulumi.Input<String>? statusMessage;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<ProfilesAssociationTimeouts>? timeouts;
 
@@ -34,8 +34,8 @@ class ProfilesAssociationState {
   /// [resourceId] Resource ID of the VPC the profile to be associated with.
   /// [status] Status of the Profile Association.
   /// [statusMessage] Status message of the Profile Association.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   const ProfilesAssociationState({
     this.arn,
@@ -83,4 +83,3 @@ class ProfilesAssociationState {
     );
   }
 }
-

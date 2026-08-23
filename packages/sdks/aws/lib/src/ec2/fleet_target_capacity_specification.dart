@@ -10,9 +10,9 @@ class FleetTargetCapacitySpecification {
   /// The number of Spot units to request.
   final pulumi.Input<int>? spotTargetCapacity;
   /// The unit for the target capacity.
-  /// If you specify `target_capacity_unit_type`, `instance_requirements` must be specified.
+  /// If you specify `targetCapacityUnitType`, `instanceRequirements` must be specified.
   final pulumi.Input<String>? targetCapacityUnitType;
-  /// The number of units to request, filled using `default_target_capacity_type`.
+  /// The number of units to request, filled using `defaultTargetCapacityType`.
   final pulumi.Input<int> totalTargetCapacity;
 
   /// Creates a new [FleetTargetCapacitySpecification].
@@ -20,7 +20,7 @@ class FleetTargetCapacitySpecification {
   /// [onDemandTargetCapacity] The number of On-Demand units to request.
   /// [spotTargetCapacity] The number of Spot units to request.
   /// [targetCapacityUnitType] The unit for the target capacity.
-  /// [totalTargetCapacity] The number of units to request, filled using `default_target_capacity_type`.
+  /// [totalTargetCapacity] The number of units to request, filled using `defaultTargetCapacityType`.
   const FleetTargetCapacitySpecification({
     required this.defaultTargetCapacityType,
     this.onDemandTargetCapacity,
@@ -49,4 +49,3 @@ class FleetTargetCapacitySpecification {
     );
   }
 }
-

@@ -8,13 +8,13 @@ import 'event_sources_config_event_source.dart';
 /// {@endtemplate}
 /// {@macro pulumi_devopsguru_event_sources_config_event_sources_config_args_doc}
 class EventSourcesConfigArgs {
-  /// Configuration information about the integration of DevOps Guru as the Consumer via EventBridge with another AWS Service. See `event_sources` below.
+  /// Configuration information about the integration of DevOps Guru as the Consumer via EventBridge with another AWS Service. See `eventSources` below.
   final pulumi.Input<List<EventSourcesConfigEventSource>> eventSources;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [EventSourcesConfigArgs].
-  /// [eventSources] Configuration information about the integration of DevOps Guru as the Consumer via EventBridge with another AWS Service. See `event_sources` below.
+  /// [eventSources] Configuration information about the integration of DevOps Guru as the Consumer via EventBridge with another AWS Service. See `eventSources` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const EventSourcesConfigArgs({
     required this.eventSources,
@@ -35,4 +35,3 @@ class EventSourcesConfigArgs {
     );
   }
 }
-

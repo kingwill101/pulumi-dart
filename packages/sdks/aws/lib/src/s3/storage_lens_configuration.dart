@@ -224,6 +224,53 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+///
+/// resource "aws_s3control_storagelensconfiguration" "example" {
+///   config_id = "example-1"
+///   storage_lens_configuration = {
+///     enabled = true
+///     account_level = {
+///       activity_metrics = {
+///         enabled = true
+///       }
+///       bucket_level = {
+///         activity_metrics = {
+///           enabled = true
+///         }
+///       }
+///     }
+///     data_export = {
+///       cloud_watch_metrics = {
+///         enabled = true
+///       }
+///       s3_bucket_destination = {
+///         account_id            = data.aws_getcalleridentity.current.account_id
+///         arn                   = target.arn
+///         format                = "CSV"
+///         output_schema_version = "V_1"
+///         encryption = {
+///           sse_s3s = [{}]
+///         }
+///       }
+///     }
+///     exclude = {
+///       buckets = [b1.arn, b2.arn]
+///       regions = ["us-east-2"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -243,9 +290,10 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 /// import com.pulumi.aws.s3control.inputs.StorageLensConfigurationStorageLensConfigurationDataExportCloudWatchMetricsArgs;
 /// import com.pulumi.aws.s3control.inputs.StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationArgs;
 /// import com.pulumi.aws.s3control.inputs.StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionArgs;
+/// import com.pulumi.aws.s3control.inputs.StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseS3Args;
 /// import com.pulumi.aws.s3control.inputs.StorageLensConfigurationStorageLensConfigurationExcludeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -342,25 +390,25 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import S3 Storage Lens configurations using the `account_id` and `config_id`, separated by a colon (`:`). For example:
+/// Using `pulumi import`, import S3 Storage Lens configurations using the `accountId` and `configId`, separated by a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3control/storageLensConfiguration:StorageLensConfiguration example 123456789012:example-1
 /// ```
 class StorageLensConfiguration extends pulumi.CustomResource {
-  /// The AWS account ID for the S3 Storage Lens configuration. Defaults to automatically determined account ID of the AWS provider.
+  /// AWS account ID for the S3 Storage Lens configuration. Defaults to automatically determined account ID of the AWS provider.
   late final pulumi.Output<String> accountId;
   /// Amazon Resource Name (ARN) of the S3 Storage Lens configuration.
   late final pulumi.Output<String> arn;
-  /// The ID of the S3 Storage Lens configuration.
+  /// ID of the S3 Storage Lens configuration.
   late final pulumi.Output<String> configId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The S3 Storage Lens configuration. See Storage Lens Configuration below for more details.
+  /// S3 Storage Lens configuration. See `storageLensConfiguration` below for more details.
   late final pulumi.Output<StorageLensConfigurationStorageLensConfiguration> storageLensConfiguration;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [StorageLensConfiguration].

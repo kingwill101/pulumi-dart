@@ -68,6 +68,21 @@ import 'user_profile_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datazone_userprofile" "example" {
+///   user_identifier   = exampleAwsIamUser.arn
+///   domain_identifier = exampleAwsDatazoneDomain.id
+///   user_type         = "IAM_USER"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +91,8 @@ import 'user_profile_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.datazone.UserProfile;
 /// import com.pulumi.aws.datazone.UserProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -110,6 +125,19 @@ import 'user_profile_timeouts.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `domainIdentifier` - (String) Identifier of the DataZone domain.
+/// * `userIdentifier` - (String) Identifier of the user.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import DataZone User Profile using the `user_identifier,domain_identifier,type`. For example:
 ///

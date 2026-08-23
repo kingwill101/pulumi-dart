@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_listener_rule_condition_query_string_value.dart';
 
 class GetListenerRuleConditionQueryString {
-  /// Set of `key`-`value` pairs indicating the query string parameters to match.
+  /// Set of source IP addresses in CIDR format for Application Load Balancers
   final pulumi.Input<List<GetListenerRuleConditionQueryStringValue>>? values;
 
   /// Creates a new [GetListenerRuleConditionQueryString].
-  /// [values] Set of `key`-`value` pairs indicating the query string parameters to match.
+  /// [values] Set of source IP addresses in CIDR format for Application Load Balancers
   const GetListenerRuleConditionQueryString({
     this.values,
   });
@@ -25,4 +25,3 @@ class GetListenerRuleConditionQueryString {
     );
   }
 }
-

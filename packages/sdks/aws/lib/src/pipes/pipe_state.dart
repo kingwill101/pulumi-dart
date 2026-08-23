@@ -22,7 +22,7 @@ class PipeState {
   final pulumi.Input<String>? kmsKeyIdentifier;
   /// Logging configuration settings for the pipe. Detailed below.
   final pulumi.Input<PipeLogConfiguration>? logConfiguration;
-  /// Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   final pulumi.Input<String>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
@@ -34,9 +34,9 @@ class PipeState {
   final pulumi.Input<String>? source;
   /// Parameters to configure a source for the pipe. Detailed below.
   final pulumi.Input<PipeSourceParameters>? sourceParameters;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Target resource of the pipe (typically an ARN).
   ///
@@ -53,14 +53,14 @@ class PipeState {
   /// [enrichmentParameters] Parameters to configure enrichment for your pipe. Detailed below.
   /// [kmsKeyIdentifier] Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt pipe data. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN. If not set, EventBridge uses an AWS owned key to encrypt pipe data.
   /// [logConfiguration] Logging configuration settings for the pipe. Detailed below.
-  /// [name] Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// [name] Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] ARN of the role that allows the pipe to send data to the target.
   /// [source] Source resource of the pipe. This field typically requires an ARN (Amazon Resource Name). However, when using a self-managed Kafka cluster, you should use a different format. Instead of an ARN, use 'smk://' followed by the bootstrap server's address.
   /// [sourceParameters] Parameters to configure a source for the pipe. Detailed below.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [target] Target resource of the pipe (typically an ARN).
   /// [targetParameters] Parameters to configure a target for your pipe. Detailed below.
   const PipeState({
@@ -127,4 +127,3 @@ class PipeState {
     );
   }
 }
-

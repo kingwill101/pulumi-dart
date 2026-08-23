@@ -25,7 +25,7 @@ class MultitenantDistributionOrigin {
   final pulumi.Input<String>? originPath;
   /// CloudFront Origin Shield configuration information. See Origin Shield below.
   final pulumi.Input<List<MultitenantDistributionOriginOriginShield>>? originShields;
-  /// Number of seconds that CloudFront waits for a response after forwarding a request to the origin. Default: 30.
+  /// Number of seconds that CloudFront waits for a response after forwarding a request to the origin. Must be integer greater than or equal to the value of `originReadTimeout` in Custom Origin Config. If omitted, no maximum value is enforced.
   final pulumi.Input<int>? responseCompletionTimeout;
   /// CloudFront VPC origin configuration. See VPC Origin Config below.
   final pulumi.Input<List<MultitenantDistributionOriginVpcOriginConfig>>? vpcOriginConfigs;
@@ -40,7 +40,7 @@ class MultitenantDistributionOrigin {
   /// [originAccessControlId] CloudFront origin access control identifier to associate with the origin.
   /// [originPath] Optional element that causes CloudFront to request your content from a directory in your Amazon S3 bucket or your custom origin.
   /// [originShields] CloudFront Origin Shield configuration information. See Origin Shield below.
-  /// [responseCompletionTimeout] Number of seconds that CloudFront waits for a response after forwarding a request to the origin. Default: 30.
+  /// [responseCompletionTimeout] Number of seconds that CloudFront waits for a response after forwarding a request to the origin. Must be integer greater than or equal to the value of `originReadTimeout` in Custom Origin Config. If omitted, no maximum value is enforced.
   /// [vpcOriginConfigs] CloudFront VPC origin configuration. See VPC Origin Config below.
   const MultitenantDistributionOrigin({
     this.connectionAttempts,
@@ -88,4 +88,3 @@ class MultitenantDistributionOrigin {
     );
   }
 }
-

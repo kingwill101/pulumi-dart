@@ -111,6 +111,30 @@ import 'sdkvoice_voice_profile_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "KMS Key for Voice Profile Domain"
+///   deletion_window_in_days = 7
+/// }
+/// resource "aws_chime_sdkvoicevoiceprofiledomain" "example" {
+///   name = "ExampleVoiceProfileDomain"
+///   server_side_encryption_configuration = {
+///     kms_key_arn = aws_kms_key.example.arn
+///   }
+///   description = "My Voice Profile Domain"
+///   tags = {
+///     "key1" = "value1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -122,8 +146,8 @@ import 'sdkvoice_voice_profile_domain_state.dart';
 /// import com.pulumi.aws.chime.SdkvoiceVoiceProfileDomain;
 /// import com.pulumi.aws.chime.SdkvoiceVoiceProfileDomainArgs;
 /// import com.pulumi.aws.chime.inputs.SdkvoiceVoiceProfileDomainServerSideEncryptionConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

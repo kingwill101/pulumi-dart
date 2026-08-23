@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_access_entry_args.dart';
 import 'get_access_entry_result.dart';
+import 'get_access_policies_args.dart';
+import 'get_access_policies_result.dart';
 import 'get_addon_args.dart';
 import 'get_addon_result.dart';
 import 'get_addon_version_args.dart';
@@ -78,9 +80,27 @@ import 'get_node_groups_result.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("eksAccessEntryOutputs", exampleAwsEksAccessEntry)
+/// 		ctx.Export("eksAccessEntryOutputs", pulumi.Any(exampleAwsEksAccessEntry))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_eks_getaccessentry" "example" {
+///   cluster_name  = exampleAwsEksCluster.name
+///   principal_arn = exampleAwsIamRole.arn
+/// }
+///
+/// output "eksAccessEntryOutputs" {
+///   value = exampleAwsEksAccessEntry
 /// }
 /// ```
 /// ```java
@@ -91,8 +111,8 @@ import 'get_node_groups_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.eks.EksFunctions;
 /// import com.pulumi.aws.eks.inputs.GetAccessEntryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -137,6 +157,92 @@ Future<GetAccessEntryResult> getAccessEntry(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccessEntryResult.fromMap(result);
+}
+
+/// Data source for managing AWS EKS (Elastic Kubernetes) Access Policies.
+///
+/// ## Example Usage
+///
+/// ### Basic Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.eks.getAccessPolicies({});
+/// export const eksAccessPolicies = example.then(example => example.accessPolicies);
+/// export const eksNetworkingPolicy = example.then(example => .filter(ap => ap.name == "AmazonEKSNetworkingPolicy").map(ap => (ap)));
+/// export const eksAccessPolicyNames = example.then(example => .map(ap => (ap.name)));
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.eks.get_access_policies()
+/// pulumi.export("eksAccessPolicies", example.access_policies)
+/// pulumi.export("eksNetworkingPolicy", [ap for ap in example.access_policies if ap.name == "AmazonEKSNetworkingPolicy"])
+/// pulumi.export("eksAccessPolicyNames", [ap.name for ap in example.access_policies])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Eks.GetAccessPolicies.Invoke();
+///
+///     return new Dictionary<string, object?>
+///     {
+///         ["eksAccessPolicies"] = example.Apply(getAccessPoliciesResult => getAccessPoliciesResult.AccessPolicies),
+///         ["eksNetworkingPolicy"] = .Where(ap => ap.Name == "AmazonEKSNetworkingPolicy").Select(ap =>
+///         {
+///             return ap;
+///         }).ToList(),
+///         ["eksAccessPolicyNames"] = .Select(ap =>
+///         {
+///             return ap.Name;
+///         }).ToList(),
+///     };
+/// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_eks_getaccesspolicies" "example" {
+/// }
+///
+/// output "eksAccessPolicies" {
+///   value = data.aws_eks_getaccesspolicies.example.access_policies
+/// }
+/// output "eksNetworkingPolicy" {
+///   value = [for ap in data.aws_eks_getaccesspolicies.example.access_policies : ap if ap.name == "AmazonEKSNetworkingPolicy"]
+/// }
+/// output "eksAccessPolicyNames" {
+///   value = [for ap in data.aws_eks_getaccesspolicies.example.access_policies : ap.name]
+/// }
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_eks_get_access_policies_get_access_policies_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAccessPoliciesResult> getAccessPolicies(
+  GetAccessPoliciesArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:eks/getAccessPolicies:getAccessPolicies',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAccessPoliciesResult.fromMap(result);
 }
 
 /// Retrieve information about an EKS add-on.
@@ -199,9 +305,27 @@ Future<GetAccessEntryResult> getAccessEntry(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("eksAddonOutputs", exampleAwsEksAddon)
+/// 		ctx.Export("eksAddonOutputs", pulumi.Any(exampleAwsEksAddon))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_eks_getaddon" "example" {
+///   addon_name   = "vpc-cni"
+///   cluster_name = exampleAwsEksCluster.name
+/// }
+///
+/// output "eksAddonOutputs" {
+///   value = exampleAwsEksAddon
 /// }
 /// ```
 /// ```java
@@ -212,8 +336,8 @@ Future<GetAccessEntryResult> getAccessEntry(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.eks.EksFunctions;
 /// import com.pulumi.aws.eks.inputs.GetAddonArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -380,6 +504,37 @@ Future<GetAddonResult> getAddon(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_eks_getaddonversion" "default" {
+///   addon_name         = "vpc-cni"
+///   kubernetes_version = example.version
+/// }
+/// data "aws_eks_getaddonversion" "latest" {
+///   addon_name         = "vpc-cni"
+///   kubernetes_version = example.version
+///   most_recent        = true
+/// }
+///
+/// resource "aws_eks_addon" "vpc_cni" {
+///   cluster_name  = example.name
+///   addon_name    = "vpc-cni"
+///   addon_version = data.aws_eks_getaddonversion.latest.version
+/// }
+/// output "default" {
+///   value = data.aws_eks_getaddonversion.default.version
+/// }
+/// output "latest" {
+///   value = data.aws_eks_getaddonversion.latest.version
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -390,8 +545,8 @@ Future<GetAddonResult> getAddon(
 /// import com.pulumi.aws.eks.inputs.GetAddonVersionArgs;
 /// import com.pulumi.aws.eks.Addon;
 /// import com.pulumi.aws.eks.AddonArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -536,6 +691,26 @@ Future<GetAddonVersionResult> getAddonVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_eks_getcluster" "example" {
+///   name = "example"
+/// }
+///
+/// output "endpoint" {
+///   value = data.aws_eks_getcluster.example.endpoint
+/// }
+/// output "kubeconfig-certificate-authority-data" {
+///   value = data.aws_eks_getcluster.example.certificate_authorities[0].data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -544,8 +719,8 @@ Future<GetAddonVersionResult> getAddonVersion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.eks.EksFunctions;
 /// import com.pulumi.aws.eks.inputs.GetClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -668,6 +843,22 @@ Future<GetClusterResult> getCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_eks_getcluster" "example" {
+///   name = "example"
+/// }
+/// data "aws_eks_getclusterauth" "exampleGetClusterAuth" {
+///   name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -677,8 +868,8 @@ Future<GetClusterResult> getCluster(
 /// import com.pulumi.aws.eks.EksFunctions;
 /// import com.pulumi.aws.eks.inputs.GetClusterArgs;
 /// import com.pulumi.aws.eks.inputs.GetClusterAuthArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -778,6 +969,28 @@ Future<GetClusterAuthResult> getClusterAuth(
 ///     };
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_eks_getclusterversions" "example" {
+/// }
+///
+/// output "eksClusterVersions" {
+///   value = data.aws_eks_getclusterversions.example.cluster_versions
+/// }
+/// output "eksClusterVersionFiltered" {
+///   value = [for version in data.aws_eks_getclusterversions.example.cluster_versions : version if version.clusterVersion == "1.33"]
+/// }
+/// output "eksClusterVersionList" {
+///   value = [for version in data.aws_eks_getclusterversions.example.cluster_versions : version.clusterVersion]
+/// }
+/// ```
 ///
 ///
 /// ### Filter by Cluster Type
@@ -832,6 +1045,19 @@ Future<GetClusterAuthResult> getClusterAuth(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_eks_getclusterversions" "example" {
+///   cluster_type = "eks"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -840,8 +1066,8 @@ Future<GetClusterAuthResult> getClusterAuth(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.eks.EksFunctions;
 /// import com.pulumi.aws.eks.inputs.GetClusterVersionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -922,6 +1148,19 @@ Future<GetClusterAuthResult> getClusterAuth(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_eks_getclusterversions" "example" {
+///   version_status = "STANDARD_SUPPORT"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -930,8 +1169,8 @@ Future<GetClusterAuthResult> getClusterAuth(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.eks.EksFunctions;
 /// import com.pulumi.aws.eks.inputs.GetClusterVersionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -986,9 +1225,9 @@ Future<GetClusterVersionsResult> getClusterVersions(
 /// const example = aws.eks.getClusters({});
 /// const exampleGetCluster = example.then(example => std.toset({
 ///     input: example.names,
-/// })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: aws.eks.getCluster({
+/// })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: aws.eks.getCluster({
 ///     name: __value,
-/// }) })));
+/// }) }), {}));
 /// ```
 /// ```python
 /// import pulumi
@@ -996,7 +1235,7 @@ Future<GetClusterVersionsResult> getClusterVersions(
 /// import pulumi_std as std
 ///
 /// example = aws.eks.get_clusters()
-/// example_get_cluster = {__key: aws.eks.get_cluster(name=__value) for __key, __value in std.toset(input=example.names).result}
+/// example_get_cluster = {str(__key): aws.eks.get_cluster(name=__value) for __key, __value in enumerate(std.toset(input=example.names).result)}
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1015,6 +1254,29 @@ Future<GetClusterVersionsResult> getClusterVersions(
 ///     }).Apply(invoke => );
 ///
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "aws_eks_getclusters" "example" {
+/// }
+/// data "aws_eks_getcluster" "invoke_1" {
+///   for_each = toset(data.aws_eks_getclusters.example.names)
+///   name     = each.value
+/// }
+///
+/// locals {
+///   exampleGetCluster = {for __key, __value in toset(data.aws_eks_getclusters.example.names) : __key => data.aws_eks_getcluster.invoke_1[__key]}
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_eks_get_clusters_get_clusters_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1089,6 +1351,20 @@ Future<GetClustersResult> getClusters(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_eks_getnodegroup" "example" {
+///   cluster_name    = "example"
+///   node_group_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1097,8 +1373,8 @@ Future<GetClustersResult> getClusters(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.eks.EksFunctions;
 /// import com.pulumi.aws.eks.inputs.GetNodeGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1154,18 +1430,18 @@ Future<GetNodeGroupResult> getNodeGroup(
 /// const example = aws.eks.getNodeGroups({
 ///     clusterName: "example",
 /// });
-/// const exampleGetNodeGroup = example.then(example => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: aws.eks.getNodeGroup({
+/// const exampleGetNodeGroup = example.then(example => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: aws.eks.getNodeGroup({
 ///     clusterName: "example",
 ///     nodeGroupName: __value,
-/// }) })));
+/// }) }), {}));
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
 /// example = aws.eks.get_node_groups(cluster_name="example")
-/// example_get_node_group = {__key: aws.eks.get_node_group(cluster_name="example",
-///     node_group_name=__value) for __key, __value in example.names}
+/// example_get_node_group = {str(__key): aws.eks.get_node_group(cluster_name="example",
+///     node_group_name=__value) for __key, __value in enumerate(example.names)}
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1183,6 +1459,28 @@ Future<GetNodeGroupResult> getNodeGroup(
 ///     var exampleGetNodeGroup = ;
 ///
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_eks_getnodegroups" "example" {
+///   cluster_name = "example"
+/// }
+/// data "aws_eks_getnodegroup" "invoke_1" {
+///   for_each        = data.aws_eks_getnodegroups.example.names
+///   cluster_name    = "example"
+///   node_group_name = each.value
+/// }
+///
+/// locals {
+///   exampleGetNodeGroup = {for __key, __value in data.aws_eks_getnodegroups.example.names : __key => data.aws_eks_getnodegroup.invoke_1[__key]}
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_eks_get_node_groups_get_node_groups_args_doc}
 /// [options] Invoke options controlling this call.

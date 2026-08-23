@@ -88,6 +88,26 @@ import 'get_connection_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpnconnection" "example" {
+///   filters {
+///     name   = "customer-gateway-id"
+///     values = ["cgw-1234567890"]
+///   }
+/// }
+///
+/// output "vpnConnectionId" {
+///   value = data.aws_ec2_getvpnconnection.example.vpn_connection_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +116,9 @@ import 'get_connection_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpnConnectionArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.GetVpnConnectionFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -194,6 +215,23 @@ import 'get_connection_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getvpnconnection" "example" {
+///   vpn_connection_id = "vpn-abcd1234567890"
+/// }
+///
+/// output "gatewayAssociationState" {
+///   value = data.aws_ec2_getvpnconnection.example.gateway_association_state
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -202,8 +240,8 @@ import 'get_connection_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpnConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

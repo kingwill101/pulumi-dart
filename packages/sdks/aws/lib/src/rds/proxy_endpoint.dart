@@ -57,7 +57,7 @@ import 'proxy_endpoint_state.dart';
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// var splat0 []interface{}
 /// for _, val0 := range testAwsSubnet {
-/// splat0 = append(splat0, val0.Id)
+/// splat0 = append(splat0, val0.(map[string]interface{})["id"])
 /// }
 /// _, err := rds.NewProxyEndpoint(ctx, "example", &rds.ProxyEndpointArgs{
 /// DbProxyName: pulumi.Any(test.Name),
@@ -79,6 +79,22 @@ import 'proxy_endpoint_state.dart';
 /// return pulumiArr
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_proxyendpoint" "example" {
+///   db_proxy_name          = test.name
+///   db_proxy_endpoint_name = "example"
+///   vpc_subnet_ids         = testAwsSubnet[*].id
+///   target_role            = "READ_ONLY"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +103,8 @@ import 'proxy_endpoint_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.ProxyEndpoint;
 /// import com.pulumi.aws.rds.ProxyEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -73,6 +73,22 @@ import 'device_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_device" "example" {
+///   device_fleet_name = exampleAwsSagemakerDeviceFleet.deviceFleetName
+///   device = {
+///     device_name = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +98,8 @@ import 'device_state.dart';
 /// import com.pulumi.aws.sagemaker.Device;
 /// import com.pulumi.aws.sagemaker.DeviceArgs;
 /// import com.pulumi.aws.sagemaker.inputs.DeviceDeviceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

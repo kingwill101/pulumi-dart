@@ -29,7 +29,7 @@ class FaqState {
   /// The status of the FAQ. It is ready to use when the status is ACTIVE.
   final pulumi.Input<String>? status;
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The date and time that the FAQ was last updated.
   final pulumi.Input<String>? updatedAt;
@@ -49,7 +49,7 @@ class FaqState {
   /// [s3Path] The S3 location of the FAQ input data. Detailed below.
   /// [status] The status of the FAQ. It is ready to use when the status is ACTIVE.
   /// [tags] Optional.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [updatedAt] The date and time that the FAQ was last updated.
   const FaqState({
     this.arn,
@@ -112,4 +112,3 @@ class FaqState {
     );
   }
 }
-

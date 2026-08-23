@@ -231,6 +231,50 @@ import 'global_table_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dynamodb_table" "us-east-1" {
+///   hash_key         = "myAttribute"
+///   name             = "myTable"
+///   stream_enabled   = true
+///   stream_view_type = "NEW_AND_OLD_IMAGES"
+///   read_capacity    = 1
+///   write_capacity   = 1
+///   attributes {
+///     name = "myAttribute"
+///     type = "S"
+///   }
+/// }
+/// resource "aws_dynamodb_table" "us-west-2" {
+///   hash_key         = "myAttribute"
+///   name             = "myTable"
+///   stream_enabled   = true
+///   stream_view_type = "NEW_AND_OLD_IMAGES"
+///   read_capacity    = 1
+///   write_capacity   = 1
+///   attributes {
+///     name = "myAttribute"
+///     type = "S"
+///   }
+/// }
+/// resource "aws_dynamodb_globaltable" "myTable" {
+///   depends_on = [aws_dynamodb_table.us-east-1, aws_dynamodb_table.us-west-2]
+///   name       = "myTable"
+///   replicas {
+///     region_name = "us-east-1"
+///   }
+///   replicas {
+///     region_name = "us-west-2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -244,8 +288,8 @@ import 'global_table_state.dart';
 /// import com.pulumi.aws.dynamodb.GlobalTableArgs;
 /// import com.pulumi.aws.dynamodb.inputs.GlobalTableReplicaArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

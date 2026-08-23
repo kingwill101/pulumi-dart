@@ -71,6 +71,22 @@ import 'get_supported_instance_types_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_emr_getreleaselabels" "example" {
+///   filters = {
+///     application = "spark@2.1.0"
+///     prefix      = "emr-5"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +96,8 @@ import 'get_supported_instance_types_result.dart';
 /// import com.pulumi.aws.emr.EmrFunctions;
 /// import com.pulumi.aws.emr.inputs.GetReleaseLabelsArgs;
 /// import com.pulumi.aws.emr.inputs.GetReleaseLabelsFiltersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -184,6 +200,19 @@ Future<GetReleaseLabelsResult> getReleaseLabels(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_emr_getsupportedinstancetypes" "example" {
+///   release_label = "ebs-6.15.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -192,8 +221,8 @@ Future<GetReleaseLabelsResult> getReleaseLabels(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.emr.EmrFunctions;
 /// import com.pulumi.aws.emr.inputs.GetSupportedInstanceTypesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -315,6 +344,32 @@ Future<GetReleaseLabelsResult> getReleaseLabels(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_emr_getsupportedinstancetypes" "test" {
+///   release_label = local.releaseLabel
+/// }
+///
+/// resource "aws_emr_cluster" "test" {
+///   release_label = local.releaseLabel
+///   master_instance_group = {
+///     instance_type = local.instanceType
+///   }
+/// }
+/// locals {
+///   instanceType = "r7g.large"
+/// }
+/// locals {
+///   releaseLabel = "emr-6.15.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -326,8 +381,8 @@ Future<GetReleaseLabelsResult> getReleaseLabels(
 /// import com.pulumi.aws.emr.Cluster;
 /// import com.pulumi.aws.emr.ClusterArgs;
 /// import com.pulumi.aws.emr.inputs.ClusterMasterInstanceGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

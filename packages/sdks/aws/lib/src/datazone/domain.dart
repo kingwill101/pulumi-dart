@@ -216,7 +216,7 @@ import 'domain_timeouts.dart';
 /// 						"sts:TagSession",
 /// 					},
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "datazone.amazonaws.com",
 /// 					},
 /// 				},
@@ -226,7 +226,7 @@ import 'domain_timeouts.dart';
 /// 						"sts:TagSession",
 /// 					},
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "cloudformation.amazonaws.com",
 /// 					},
 /// 				},
@@ -280,6 +280,50 @@ import 'domain_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_role" "domain_execution_role" {
+///   name = "my_domain_execution_role"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = ["sts:AssumeRole", "sts:TagSession"]
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "datazone.amazonaws.com"
+///       }
+///       }, {
+///       "Action" = ["sts:AssumeRole", "sts:TagSession"]
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "cloudformation.amazonaws.com"
+///       }
+///     }]
+///   })
+/// }
+/// resource "aws_iam_rolepolicy" "domain_execution_role" {
+///   role = aws_iam_role.domain_execution_role.name
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action"   = ["datazone:*", "ram:*", "sso:*", "kms:*"]
+///       "Effect"   = "Allow"
+///       "Resource" = "*"
+///     }]
+///   })
+/// }
+/// resource "aws_datazone_domain" "example" {
+///   name                  = "example"
+///   domain_execution_role = aws_iam_role.domain_execution_role.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -293,8 +337,8 @@ import 'domain_timeouts.dart';
 /// import com.pulumi.aws.datazone.Domain;
 /// import com.pulumi.aws.datazone.DomainArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -702,135 +746,212 @@ import 'domain_timeouts.dart';
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// current, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		current, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		// IAM role for Domain Execution
+/// 		assumeRoleDomainExecution, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
+/// 						"sts:TagSession",
+/// 						"sts:SetContext",
+/// 					},
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "Service",
+/// 							Identifiers: []string{
+/// 								"datazone.amazonaws.com",
+/// 							},
+/// 						},
+/// 					},
+/// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
+/// 						{
+/// 							Test: "StringEquals",
+/// 							Values: pulumi.StringArray{
+/// 								current.AccountId,
+/// 							},
+/// 							Variable: "aws:SourceAccount",
+/// 						},
+/// 						{
+/// 							Test: "ForAllValues:StringLike",
+/// 							Values: []string{
+/// 								"datazone*",
+/// 							},
+/// 							Variable: "aws:TagKeys",
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		domainExecution, err := iam.NewRole(ctx, "domain_execution", &iam.RoleArgs{
+/// 			AssumeRolePolicy: pulumi.String(assumeRoleDomainExecution.Json),
+/// 			Name:             pulumi.String("example-domain-execution-role"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		domainExecutionRole, err := iam.LookupPolicy(ctx, &iam.LookupPolicyArgs{
+/// 			Name: pulumi.StringRef("SageMakerStudioDomainExecutionRolePolicy"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iam.NewRolePolicyAttachment(ctx, "domain_execution", &iam.RolePolicyAttachmentArgs{
+/// 			PolicyArn: pulumi.String(domainExecutionRole.Arn),
+/// 			Role:      domainExecution.Name,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		// IAM role for Domain Service
+/// 		assumeRoleDomainService, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
+/// 					},
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "Service",
+/// 							Identifiers: []string{
+/// 								"datazone.amazonaws.com",
+/// 							},
+/// 						},
+/// 					},
+/// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
+/// 						{
+/// 							Test: "StringEquals",
+/// 							Values: pulumi.StringArray{
+/// 								current.AccountId,
+/// 							},
+/// 							Variable: "aws:SourceAccount",
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		domainService, err := iam.NewRole(ctx, "domain_service", &iam.RoleArgs{
+/// 			AssumeRolePolicy: pulumi.String(assumeRoleDomainService.Json),
+/// 			Name:             pulumi.String("example-domain-service-role"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		domainServiceRole, err := iam.LookupPolicy(ctx, &iam.LookupPolicyArgs{
+/// 			Name: pulumi.StringRef("SageMakerStudioDomainServiceRolePolicy"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iam.NewRolePolicyAttachment(ctx, "domain_service", &iam.RolePolicyAttachmentArgs{
+/// 			PolicyArn: pulumi.String(domainServiceRole.Arn),
+/// 			Role:      domainService.Name,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		// DataZone Domain V2
+/// 		_, err = datazone.NewDomain(ctx, "example", &datazone.DomainArgs{
+/// 			Name:                pulumi.String("example-domain"),
+/// 			DomainExecutionRole: domainExecution.Arn,
+/// 			DomainVersion:       pulumi.String("V2"),
+/// 			ServiceRole:         domainService.Arn,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// // IAM role for Domain Execution
-/// assumeRoleDomainExecution, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Actions: []string{
-/// "sts:AssumeRole",
-/// "sts:TagSession",
-/// "sts:SetContext",
-/// },
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "Service",
-/// Identifiers: []string{
-/// "datazone.amazonaws.com",
-/// },
-/// },
-/// },
-/// Conditions: []iam.GetPolicyDocumentStatementCondition{
-/// {
-/// Test: "StringEquals",
-/// Values: interface{}{
-/// current.AccountId,
-/// },
-/// Variable: "aws:SourceAccount",
-/// },
-/// {
-/// Test: "ForAllValues:StringLike",
-/// Values: []string{
-/// "datazone*",
-/// },
-/// Variable: "aws:TagKeys",
-/// },
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// domainExecution, err := iam.NewRole(ctx, "domain_execution", &iam.RoleArgs{
-/// AssumeRolePolicy: pulumi.String(assumeRoleDomainExecution.Json),
-/// Name: pulumi.String("example-domain-execution-role"),
-/// })
-/// if err != nil {
-/// return err
+///
+/// data "aws_getcalleridentity" "current" {
 /// }
-/// domainExecutionRole, err := iam.LookupPolicy(ctx, &iam.LookupPolicyArgs{
-/// Name: pulumi.StringRef("SageMakerStudioDomainExecutionRolePolicy"),
-/// }, nil);
-/// if err != nil {
-/// return err
+/// data "aws_iam_getpolicydocument" "assumeRoleDomainExecution" {
+///   statements {
+///     actions = ["sts:AssumeRole", "sts:TagSession", "sts:SetContext"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["datazone.amazonaws.com"]
+///     }
+///     conditions {
+///       test     = "StringEquals"
+///       values   = [data.aws_getcalleridentity.current.account_id]
+///       variable = "aws:SourceAccount"
+///     }
+///     conditions {
+///       test     = "ForAllValues:StringLike"
+///       values   = ["datazone*"]
+///       variable = "aws:TagKeys"
+///     }
+///   }
 /// }
-/// _, err = iam.NewRolePolicyAttachment(ctx, "domain_execution", &iam.RolePolicyAttachmentArgs{
-/// PolicyArn: pulumi.String(domainExecutionRole.Arn),
-/// Role: domainExecution.Name,
-/// })
-/// if err != nil {
-/// return err
+/// data "aws_iam_getpolicy" "domainExecutionRole" {
+///   name = "SageMakerStudioDomainExecutionRolePolicy"
 /// }
-/// // IAM role for Domain Service
-/// assumeRoleDomainService, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Actions: []string{
-/// "sts:AssumeRole",
-/// },
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "Service",
-/// Identifiers: []string{
-/// "datazone.amazonaws.com",
-/// },
-/// },
-/// },
-/// Conditions: []iam.GetPolicyDocumentStatementCondition{
-/// {
-/// Test: "StringEquals",
-/// Values: interface{}{
-/// current.AccountId,
-/// },
-/// Variable: "aws:SourceAccount",
-/// },
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// data "aws_iam_getpolicydocument" "assumeRoleDomainService" {
+///   statements {
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["datazone.amazonaws.com"]
+///     }
+///     conditions {
+///       test     = "StringEquals"
+///       values   = [data.aws_getcalleridentity.current.account_id]
+///       variable = "aws:SourceAccount"
+///     }
+///   }
 /// }
-/// domainService, err := iam.NewRole(ctx, "domain_service", &iam.RoleArgs{
-/// AssumeRolePolicy: pulumi.String(assumeRoleDomainService.Json),
-/// Name: pulumi.String("example-domain-service-role"),
-/// })
-/// if err != nil {
-/// return err
+/// data "aws_iam_getpolicy" "domainServiceRole" {
+///   name = "SageMakerStudioDomainServiceRolePolicy"
 /// }
-/// domainServiceRole, err := iam.LookupPolicy(ctx, &iam.LookupPolicyArgs{
-/// Name: pulumi.StringRef("SageMakerStudioDomainServiceRolePolicy"),
-/// }, nil);
-/// if err != nil {
-/// return err
+///
+/// resource "aws_iam_role" "domain_execution" {
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRoleDomainExecution.json
+///   name               = "example-domain-execution-role"
 /// }
-/// _, err = iam.NewRolePolicyAttachment(ctx, "domain_service", &iam.RolePolicyAttachmentArgs{
-/// PolicyArn: pulumi.String(domainServiceRole.Arn),
-/// Role: domainService.Name,
-/// })
-/// if err != nil {
-/// return err
+/// resource "aws_iam_rolepolicyattachment" "domain_execution" {
+///   policy_arn = data.aws_iam_getpolicy.domainExecutionRole.arn
+///   role       = aws_iam_role.domain_execution.name
 /// }
-/// // DataZone Domain V2
-/// _, err = datazone.NewDomain(ctx, "example", &datazone.DomainArgs{
-/// Name: pulumi.String("example-domain"),
-/// DomainExecutionRole: domainExecution.Arn,
-/// DomainVersion: pulumi.String("V2"),
-/// ServiceRole: domainService.Arn,
-/// })
-/// if err != nil {
-/// return err
+/// resource "aws_iam_role" "domain_service" {
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRoleDomainService.json
+///   name               = "example-domain-service-role"
 /// }
-/// return nil
-/// })
+/// resource "aws_iam_rolepolicyattachment" "domain_service" {
+///   policy_arn = data.aws_iam_getpolicy.domainServiceRole.arn
+///   role       = aws_iam_role.domain_service.name
 /// }
+/// # DataZone Domain V2
+/// resource "aws_datazone_domain" "example" {
+///   name                  = "example-domain"
+///   domain_execution_role = aws_iam_role.domain_execution.arn
+///   domain_version        = "V2"
+///   service_role          = aws_iam_role.domain_service.arn
+/// }
+/// # IAM role for Domain Execution
+/// # IAM role for Domain Service
 /// ```
 /// ```java
 /// package generated_program;
@@ -842,6 +963,9 @@ import 'domain_timeouts.dart';
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyArgs;
@@ -849,8 +973,8 @@ import 'domain_timeouts.dart';
 /// import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
 /// import com.pulumi.aws.datazone.Domain;
 /// import com.pulumi.aws.datazone.DomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1039,7 +1163,19 @@ import 'domain_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import DataZone Domain using the `domain_id`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` - (String) ID of the DataZone domain.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import DataZone Domain using the `domainId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:datazone/domain:Domain example domain-id-12345678
@@ -1065,14 +1201,14 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// ID of the root domain unit.
   late final pulumi.Output<String> rootDomainUnitId;
-  /// ARN of the service role used by DataZone. Required when `domain_version` is set to `V2`.
+  /// ARN of the service role used by DataZone. Required when `domainVersion` is set to `V2`.
   late final pulumi.Output<String?> serviceRole;
   /// Single sign on options, used to [enable AWS IAM Identity Center](https://docs.aws.amazon.com/datazone/latest/userguide/enable-IAM-identity-center-for-datazone.html) for DataZone.
   late final pulumi.Output<DomainSingleSignOn?> singleSignOn;
   /// Whether to skip the deletion check for the Domain.
   late final pulumi.Output<bool?> skipDeletionCheck;
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<DomainTimeouts?> timeouts;
 

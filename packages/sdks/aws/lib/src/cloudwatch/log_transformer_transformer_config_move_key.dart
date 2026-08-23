@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_transformer_transformer_config_move_key_entry.dart';
 
 class LogTransformerTransformerConfigMoveKey {
-  /// Objects containing the information about the keys to move to the log event. You must include at least one entry, and five at most. See `move_keys` `entry` below for details.
+  /// Objects containing the information about the keys to move to the log event. You must include at least one entry, and five at most. See `moveKeys` `entry` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfigMoveKeyEntry>> entries;
 
   /// Creates a new [LogTransformerTransformerConfigMoveKey].
-  /// [entries] Objects containing the information about the keys to move to the log event. You must include at least one entry, and five at most. See `move_keys` `entry` below for details.
+  /// [entries] Objects containing the information about the keys to move to the log event. You must include at least one entry, and five at most. See `moveKeys` `entry` below for details.
   const LogTransformerTransformerConfigMoveKey({
     required this.entries,
   });
@@ -25,4 +25,3 @@ class LogTransformerTransformerConfigMoveKey {
     );
   }
 }
-

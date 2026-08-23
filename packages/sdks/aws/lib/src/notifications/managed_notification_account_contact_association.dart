@@ -63,6 +63,20 @@ import 'managed_notification_account_contact_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_notifications_managednotificationaccountcontactassociation" "example" {
+///   contact_identifier                     = "ACCOUNT_PRIMARY"
+///   managed_notification_configuration_arn = "arn:aws:notifications::123456789012:managed-notification-configuration/category/AWS-Health/sub-category/Security"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'managed_notification_account_contact_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.notifications.ManagedNotificationAccountContactAssociation;
 /// import com.pulumi.aws.notifications.ManagedNotificationAccountContactAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

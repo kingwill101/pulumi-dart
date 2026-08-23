@@ -84,6 +84,25 @@ import 'logging_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_loggroup" "example" {
+/// }
+/// resource "aws_ivschat_loggingconfiguration" "example" {
+///   destination_configuration = {
+///     cloudwatch_logs = {
+///       log_group_name = aws_cloudwatch_loggroup.example.name
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +114,8 @@ import 'logging_configuration_state.dart';
 /// import com.pulumi.aws.ivschat.LoggingConfigurationArgs;
 /// import com.pulumi.aws.ivschat.inputs.LoggingConfigurationDestinationConfigurationArgs;
 /// import com.pulumi.aws.ivschat.inputs.LoggingConfigurationDestinationConfigurationCloudwatchLogsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -354,7 +373,7 @@ import 'logging_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: exampleBucket.ID(),
+/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -374,6 +393,56 @@ import 'logging_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["firehose.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// resource "aws_kinesis_firehosedeliverystream" "example" {
+///   name        = "pulumi-kinesis-firehose-extended-s3-example-stream"
+///   destination = "extended_s3"
+///   extended_s3_configuration = {
+///     role_arn   = aws_iam_role.example.arn
+///     bucket_arn = aws_s3_bucket.example.arn
+///   }
+///   tags = {
+///     "LogDeliveryEnabled" = "true"
+///   }
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket_prefix = "tf-ivschat-logging-bucket"
+/// }
+/// resource "aws_s3_bucketacl" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   acl    = "private"
+/// }
+/// resource "aws_iam_role" "example" {
+///   name               = "firehose_example_role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_ivschat_loggingconfiguration" "example" {
+///   destination_configuration = {
+///     firehose = {
+///       delivery_stream_name = aws_kinesis_firehosedeliverystream.example.name
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -384,6 +453,8 @@ import 'logging_configuration_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.kinesis.FirehoseDeliveryStream;
@@ -395,8 +466,8 @@ import 'logging_configuration_state.dart';
 /// import com.pulumi.aws.ivschat.LoggingConfigurationArgs;
 /// import com.pulumi.aws.ivschat.inputs.LoggingConfigurationDestinationConfigurationArgs;
 /// import com.pulumi.aws.ivschat.inputs.LoggingConfigurationDestinationConfigurationFirehoseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -584,7 +655,7 @@ import 'logging_configuration_state.dart';
 /// 		_, err = ivschat.NewLoggingConfiguration(ctx, "example", &ivschat.LoggingConfigurationArgs{
 /// 			DestinationConfiguration: &ivschat.LoggingConfigurationDestinationConfigurationArgs{
 /// 				S3: &ivschat.LoggingConfigurationDestinationConfigurationS3Args{
-/// 					BucketName: example.ID(),
+/// 					BucketName: example.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -593,6 +664,27 @@ import 'logging_configuration_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket_name   = "tf-ivschat-logging"
+///   force_destroy = true
+/// }
+/// resource "aws_ivschat_loggingconfiguration" "example" {
+///   destination_configuration = {
+///     s3 = {
+///       bucket_name = aws_s3_bucket.example.id
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -607,8 +699,8 @@ import 'logging_configuration_state.dart';
 /// import com.pulumi.aws.ivschat.LoggingConfigurationArgs;
 /// import com.pulumi.aws.ivschat.inputs.LoggingConfigurationDestinationConfigurationArgs;
 /// import com.pulumi.aws.ivschat.inputs.LoggingConfigurationDestinationConfigurationS3Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -678,9 +770,9 @@ class LoggingConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// State of the Logging Configuration.
   late final pulumi.Output<String> state;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [LoggingConfiguration].

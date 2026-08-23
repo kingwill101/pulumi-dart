@@ -58,6 +58,19 @@ import 'get_protection_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_shield_getprotection" "example" {
+///   protection_id = "abc123"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +79,8 @@ import 'get_protection_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.shield.ShieldFunctions;
 /// import com.pulumi.aws.shield.inputs.GetProtectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -148,6 +161,19 @@ import 'get_protection_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_shield_getprotection" "example" {
+///   resource_arn = "arn:aws:globalaccelerator::123456789012:accelerator/1234abcd-abcd-1234-abcd-1234abcdefgh"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -156,8 +182,8 @@ import 'get_protection_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.shield.ShieldFunctions;
 /// import com.pulumi.aws.shield.inputs.GetProtectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

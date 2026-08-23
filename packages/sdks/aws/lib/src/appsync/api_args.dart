@@ -8,7 +8,7 @@ import 'api_event_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_appsync_api_api_args_doc}
 class ApiArgs {
-  /// Configuration for the Event API. See Event Config below.
+  /// Configuration for the Event API. See `eventConfig` Block below.
   final pulumi.Input<ApiEventConfig> eventConfig;
   /// Name of the Event API.
   ///
@@ -18,15 +18,15 @@ class ApiArgs {
   final pulumi.Input<String>? ownerContact;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ApiArgs].
-  /// [eventConfig] Configuration for the Event API. See Event Config below.
+  /// [eventConfig] Configuration for the Event API. See `eventConfig` Block below.
   /// [name] Name of the Event API.
   /// [ownerContact] Contact information for the owner of the Event API.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ApiArgs({
     required this.eventConfig,
     this.name,
@@ -55,4 +55,3 @@ class ApiArgs {
     );
   }
 }
-

@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfigurationAuthorizationConfig {
-  /// The Amazon EFS access point ID to use.
+  /// Amazon EFS access point ID to use.
   final pulumi.Input<String> accessPointId;
   /// Whether or not to use the AWS Batch job IAM role defined in a job definition when mounting the Amazon EFS file system.
   final pulumi.Input<String> iam;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfigurationAuthorizationConfig].
-  /// [accessPointId] The Amazon EFS access point ID to use.
+  /// [accessPointId] Amazon EFS access point ID to use.
   /// [iam] Whether or not to use the AWS Batch job IAM role defined in a job definition when mounting the Amazon EFS file system.
   const GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfigurationAuthorizationConfig({
     required this.accessPointId,
@@ -30,4 +30,3 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfi
     );
   }
 }
-

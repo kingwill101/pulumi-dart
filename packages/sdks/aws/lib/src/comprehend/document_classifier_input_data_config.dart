@@ -5,8 +5,8 @@ import 'document_classifier_input_data_config_augmented_manifest.dart';
 
 class DocumentClassifierInputDataConfig {
   /// List of training datasets produced by Amazon SageMaker AI Ground Truth.
-  /// Used if `data_format` is `AUGMENTED_MANIFEST`.
-  /// See the `augmented_manifests` Configuration Block section below.
+  /// Used if `dataFormat` is `AUGMENTED_MANIFEST`.
+  /// See the `augmentedManifests` Configuration Block section below.
   final pulumi.Input<List<DocumentClassifierInputDataConfigAugmentedManifest>>? augmentedManifests;
   /// The format for the training data.
   /// One of `COMPREHEND_CSV` or `AUGMENTED_MANIFEST`.
@@ -16,7 +16,7 @@ class DocumentClassifierInputDataConfig {
   /// Default is `|`.
   final pulumi.Input<String>? labelDelimiter;
   /// Location of training documents.
-  /// Used if `data_format` is `COMPREHEND_CSV`.
+  /// Used if `dataFormat` is `COMPREHEND_CSV`.
   final pulumi.Input<String>? s3Uri;
   final pulumi.Input<String>? testS3Uri;
 
@@ -54,4 +54,3 @@ class DocumentClassifierInputDataConfig {
     );
   }
 }
-

@@ -84,6 +84,25 @@ import 'video_stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kinesis_videostream" "default" {
+///   name                    = "kinesis-video-stream"
+///   data_retention_in_hours = 1
+///   device_name             = "kinesis-video-device-name"
+///   media_type              = "video/h264"
+///   tags = {
+///     "Name" = "kinesis-video-stream"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +111,8 @@ import 'video_stream_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kinesis.VideoStream;
 /// import com.pulumi.aws.kinesis.VideoStreamArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -137,10 +156,6 @@ import 'video_stream_state.dart';
 /// ```sh
 /// $ pulumi import aws:kinesis/videoStream:VideoStream test_stream arn:aws:kinesisvideo:us-west-2:123456789012:stream/pulumi-kinesis-test/1554978910975
 /// ```
-///
-/// [1]: https://aws.amazon.com/documentation/kinesis/
-/// [2]: http://www.iana.org/assignments/media-types/media-types.xhtml
-/// [3]: https://tools.ietf.org/html/rfc6838#section-4.2
 class VideoStream extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) specifying the Stream (same as `id`)
   late final pulumi.Output<String> arn;
@@ -159,9 +174,9 @@ class VideoStream extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The version of the stream.
   late final pulumi.Output<String> version;

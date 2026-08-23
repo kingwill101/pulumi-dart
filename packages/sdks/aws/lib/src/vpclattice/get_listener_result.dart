@@ -7,27 +7,27 @@ import 'get_listener_default_action.dart';
 class GetListenerResult {
   /// ARN of the listener.
   final String arn;
-  /// The date and time that the listener was created.
+  /// Date and time that the listener was created.
   final String createdAt;
-  /// The actions for the default listener rule.
+  /// Action for the default listener rule. See `defaultAction` Block below.
   final List<GetListenerDefaultAction> defaultActions;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// The date and time the listener was last updated.
+  /// Date and time the listener was last updated.
   final String lastUpdatedAt;
-  /// The ID of the listener.
+  /// ID of the listener.
   final String listenerId;
   final String listenerIdentifier;
-  /// The name of the listener.
+  /// Name of the listener.
   final String name;
-  /// The listener port.
+  /// Listener port.
   final int port;
-  /// The listener protocol. Either `HTTPS` or `HTTP`.
+  /// Listener protocol. Either `HTTPS` or `HTTP`.
   final String protocol;
   final String region;
-  /// The ARN of the service.
+  /// ARN of the service.
   final String serviceArn;
-  /// The ID of the service.
+  /// ID of the service.
   final String serviceId;
   final String serviceIdentifier;
   /// List of tags associated with the listener.
@@ -35,18 +35,18 @@ class GetListenerResult {
 
   /// Creates a new [GetListenerResult].
   /// [arn] ARN of the listener.
-  /// [createdAt] The date and time that the listener was created.
-  /// [defaultActions] The actions for the default listener rule.
+  /// [createdAt] Date and time that the listener was created.
+  /// [defaultActions] Action for the default listener rule. See `defaultAction` Block below.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [lastUpdatedAt] The date and time the listener was last updated.
-  /// [listenerId] The ID of the listener.
+  /// [lastUpdatedAt] Date and time the listener was last updated.
+  /// [listenerId] ID of the listener.
   /// [listenerIdentifier] Required.
-  /// [name] The name of the listener.
-  /// [port] The listener port.
-  /// [protocol] The listener protocol. Either `HTTPS` or `HTTP`.
+  /// [name] Name of the listener.
+  /// [port] Listener port.
+  /// [protocol] Listener protocol. Either `HTTPS` or `HTTP`.
   /// [region] Required.
-  /// [serviceArn] The ARN of the service.
-  /// [serviceId] The ID of the service.
+  /// [serviceArn] ARN of the service.
+  /// [serviceId] ID of the service.
   /// [serviceIdentifier] Required.
   /// [tags] List of tags associated with the listener.
   const GetListenerResult({
@@ -107,4 +107,3 @@ class GetListenerResult {
     );
   }
 }
-

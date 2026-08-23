@@ -18,9 +18,9 @@ class RepositoryState {
   final pulumi.Input<String>? repositoryName;
   /// The URI of the repository.
   final pulumi.Input<String>? repositoryUri;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [RepositoryState].
@@ -31,8 +31,8 @@ class RepositoryState {
   /// [registryId] The registry ID where the repository was created.
   /// [repositoryName] Name of the repository.
   /// [repositoryUri] The URI of the repository.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const RepositoryState({
     this.arn,
     this.catalogData,
@@ -73,4 +73,3 @@ class RepositoryState {
     );
   }
 }
-

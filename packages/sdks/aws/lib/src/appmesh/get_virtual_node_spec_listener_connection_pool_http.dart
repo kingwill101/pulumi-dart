@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodeSpecListenerConnectionPoolHttp {
+  /// Maximum number of outbound TCP connections Envoy can establish concurrently with all hosts in upstream cluster.
   final pulumi.Input<int> maxConnections;
+  /// Number of overflowing requests after `maxConnections` Envoy will queue to upstream cluster.
   final pulumi.Input<int> maxPendingRequests;
 
   /// Creates a new [GetVirtualNodeSpecListenerConnectionPoolHttp].
-  /// [maxConnections] Required.
-  /// [maxPendingRequests] Required.
+  /// [maxConnections] Maximum number of outbound TCP connections Envoy can establish concurrently with all hosts in upstream cluster.
+  /// [maxPendingRequests] Number of overflowing requests after `maxConnections` Envoy will queue to upstream cluster.
   const GetVirtualNodeSpecListenerConnectionPoolHttp({
     required this.maxConnections,
     required this.maxPendingRequests,
@@ -28,4 +30,3 @@ class GetVirtualNodeSpecListenerConnectionPoolHttp {
     );
   }
 }
-

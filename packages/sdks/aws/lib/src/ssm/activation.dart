@@ -174,7 +174,7 @@ import 'activation_state.dart';
 /// 		_, err = ssm.NewActivation(ctx, "foo", &ssm.ActivationArgs{
 /// 			Name:              pulumi.String("test_ssm_activation"),
 /// 			Description:       pulumi.String("Test"),
-/// 			IamRole:           testRole.ID(),
+/// 			IamRole:           testRole.ID().ToIDOutput().ToStringOutput(),
 /// 			RegistrationLimit: pulumi.Int(5),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			testAttach,
@@ -186,6 +186,42 @@ import 'activation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["ssm.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// resource "aws_iam_role" "test_role" {
+///   name               = "test_role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "test_attach" {
+///   role       = aws_iam_role.test_role.name
+///   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+/// }
+/// resource "aws_ssm_activation" "foo" {
+///   depends_on         = [aws_iam_rolepolicyattachment.test_attach]
+///   name               = "test_ssm_activation"
+///   description        = "Test"
+///   iam_role           = aws_iam_role.test_role.id
+///   registration_limit = "5"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -194,6 +230,8 @@ import 'activation_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
@@ -201,8 +239,8 @@ import 'activation_state.dart';
 /// import com.pulumi.aws.ssm.Activation;
 /// import com.pulumi.aws.ssm.ActivationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -295,7 +333,7 @@ import 'activation_state.dart';
 /// $ pulumi import aws:ssm/activation:Activation example e488f2f6-e686-4afb-8a04-ef6dfEXAMPLE
 /// ```
 ///
-/// &gt; **Note:** The `activation_code` attribute cannot be imported.
+/// &gt; **Note:** The `activationCode` attribute cannot be imported.
 class Activation extends pulumi.CustomResource {
   /// The code the system generates when it processes the activation.
   late final pulumi.Output<String> activationCode;
@@ -315,9 +353,9 @@ class Activation extends pulumi.CustomResource {
   late final pulumi.Output<int> registrationCount;
   /// The maximum number of managed instances you want to register. The default value is 1 instance.
   late final pulumi.Output<int?> registrationLimit;
-  /// A map of tags to assign to the object. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the object. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Activation].

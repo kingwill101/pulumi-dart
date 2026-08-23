@@ -11,20 +11,20 @@ class RuleGroupState {
   final pulumi.Input<String>? arn;
   /// A friendly name for the metrics from the rule group
   final pulumi.Input<String>? metricName;
-  /// Name of the rule group. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the rule group. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   final pulumi.Input<String>? name;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [RuleGroupState].
   /// [activatedRules] A list of activated rules, see below
   /// [arn] The ARN of the WAF rule group.
   /// [metricName] A friendly name for the metrics from the rule group
-  /// [name] Name of the rule group. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [name] Name of the rule group. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const RuleGroupState({
     this.activatedRules,
     this.arn,
@@ -56,4 +56,3 @@ class RuleGroupState {
     );
   }
 }
-

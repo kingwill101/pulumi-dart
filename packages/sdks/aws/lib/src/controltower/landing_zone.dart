@@ -23,9 +23,11 @@ class LandingZone extends pulumi.CustomResource {
   late final pulumi.Output<String> manifestJson;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Tags to apply to the landing zone. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Specifies list of remediation actions to apply. Currently only supports the `INHERITANCE_DRIFT` value.
+  late final pulumi.Output<List<String>?> remediationTypes;
+  /// Tags to apply to the landing zone. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the landing zone, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the landing zone, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The landing zone version.
   late final pulumi.Output<String> version;
@@ -49,6 +51,7 @@ class LandingZone extends pulumi.CustomResource {
     latestAvailableVersion = registerOutput<String>('latestAvailableVersion');
     manifestJson = registerOutput<String>('manifestJson');
     region = registerOutput<String>('region');
+    remediationTypes = registerOutput<List<String>?>('remediationTypes');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     version = registerOutput<String>('version');
@@ -82,6 +85,7 @@ class LandingZone extends pulumi.CustomResource {
     latestAvailableVersion = registerOutput<String>('latestAvailableVersion');
     manifestJson = registerOutput<String>('manifestJson');
     region = registerOutput<String>('region');
+    remediationTypes = registerOutput<List<String>?>('remediationTypes');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     version = registerOutput<String>('version');

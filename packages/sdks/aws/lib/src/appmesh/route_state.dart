@@ -21,11 +21,11 @@ class RouteState {
   final pulumi.Input<String>? region;
   /// Resource owner's AWS account ID.
   final pulumi.Input<String>? resourceOwner;
-  /// Route specification to apply.
+  /// Route specification to apply. See `spec` Block for details.
   final pulumi.Input<RouteSpec>? spec;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Name of the virtual router in which to create the route. Must be between 1 and 255 characters in length.
   final pulumi.Input<String>? virtualRouterName;
@@ -39,9 +39,9 @@ class RouteState {
   /// [name] Name to use for the route. Must be between 1 and 255 characters in length.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceOwner] Resource owner's AWS account ID.
-  /// [spec] Route specification to apply.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [spec] Route specification to apply. See `spec` Block for details.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [virtualRouterName] Name of the virtual router in which to create the route. Must be between 1 and 255 characters in length.
   const RouteState({
     this.arn,
@@ -92,4 +92,3 @@ class RouteState {
     );
   }
 }
-

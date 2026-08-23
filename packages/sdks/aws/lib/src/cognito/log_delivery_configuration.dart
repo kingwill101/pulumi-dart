@@ -103,7 +103,7 @@ import 'log_delivery_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewLogDeliveryConfiguration(ctx, "example", &cognito.LogDeliveryConfigurationArgs{
-/// 			UserPoolId: example.ID(),
+/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			LogConfigurations: cognito.LogDeliveryConfigurationLogConfigurationArray{
 /// 				&cognito.LogDeliveryConfigurationLogConfigurationArgs{
 /// 					EventSource: pulumi.String("userNotification"),
@@ -121,6 +121,32 @@ import 'log_delivery_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpool" "example" {
+///   name = "example"
+/// }
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name = "example"
+/// }
+/// resource "aws_cognito_logdeliveryconfiguration" "example" {
+///   user_pool_id = aws_cognito_userpool.example.id
+///   log_configurations {
+///     event_source = "userNotification"
+///     log_level    = "ERROR"
+///     cloud_watch_logs_configuration = {
+///       log_group_arn = aws_cloudwatch_loggroup.example.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -135,8 +161,8 @@ import 'log_delivery_configuration_state.dart';
 /// import com.pulumi.aws.cognito.LogDeliveryConfigurationArgs;
 /// import com.pulumi.aws.cognito.inputs.LogDeliveryConfigurationLogConfigurationArgs;
 /// import com.pulumi.aws.cognito.inputs.LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -201,7 +227,10 @@ import 'log_delivery_configuration_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.cognito.UserPool("example", {name: "example"});
+/// const example = new aws.cognito.UserPool("example", {
+///     name: "example",
+///     userPoolTier: "PLUS",
+/// });
 /// const exampleLogGroup = new aws.cloudwatch.LogGroup("example", {name: "example"});
 /// const exampleBucket = new aws.s3.Bucket("example", {
 ///     bucket: "example-bucket",
@@ -262,7 +291,7 @@ import 'log_delivery_configuration_state.dart';
 ///         },
 ///         {
 ///             eventSource: "userAuthEvents",
-///             logLevel: "ERROR",
+///             logLevel: "INFO",
 ///             firehoseConfiguration: {
 ///                 streamArn: exampleFirehoseDeliveryStream.arn,
 ///             },
@@ -275,7 +304,9 @@ import 'log_delivery_configuration_state.dart';
 /// import json
 /// import pulumi_aws as aws
 ///
-/// example = aws.cognito.UserPool("example", name="example")
+/// example = aws.cognito.UserPool("example",
+///     name="example",
+///     user_pool_tier="PLUS")
 /// example_log_group = aws.cloudwatch.LogGroup("example", name="example")
 /// example_bucket = aws.s3.Bucket("example",
 ///     bucket="example-bucket",
@@ -332,7 +363,7 @@ import 'log_delivery_configuration_state.dart';
 ///         },
 ///         {
 ///             "event_source": "userAuthEvents",
-///             "log_level": "ERROR",
+///             "log_level": "INFO",
 ///             "firehose_configuration": {
 ///                 "stream_arn": example_firehose_delivery_stream.arn,
 ///             },
@@ -351,6 +382,7 @@ import 'log_delivery_configuration_state.dart';
 ///     var example = new Aws.Cognito.UserPool("example", new()
 ///     {
 ///         Name = "example",
+///         UserPoolTier = "PLUS",
 ///     });
 ///
 ///     var exampleLogGroup = new Aws.CloudWatch.LogGroup("example", new()
@@ -444,7 +476,7 @@ import 'log_delivery_configuration_state.dart';
 ///             new Aws.Cognito.Inputs.LogDeliveryConfigurationLogConfigurationArgs
 ///             {
 ///                 EventSource = "userAuthEvents",
-///                 LogLevel = "ERROR",
+///                 LogLevel = "INFO",
 ///                 FirehoseConfiguration = new Aws.Cognito.Inputs.LogDeliveryConfigurationLogConfigurationFirehoseConfigurationArgs
 ///                 {
 ///                     StreamArn = exampleFirehoseDeliveryStream.Arn,
@@ -473,7 +505,8 @@ import 'log_delivery_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := cognito.NewUserPool(ctx, "example", &cognito.UserPoolArgs{
-/// 			Name: pulumi.String("example"),
+/// 			Name:         pulumi.String("example"),
+/// 			UserPoolTier: pulumi.String("PLUS"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -497,7 +530,7 @@ import 'log_delivery_configuration_state.dart';
 /// 				map[string]interface{}{
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "firehose.amazonaws.com",
 /// 					},
 /// 				},
@@ -516,11 +549,9 @@ import 'log_delivery_configuration_state.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "firehose", &iam.RolePolicyArgs{
 /// 			Name: pulumi.String("firehose-policy"),
-/// 			Role: firehose.ID(),
-/// 			Policy: pulumi.All(exampleBucket.Arn, exampleBucket.Arn).ApplyT(func(_args []interface{}) (string, error) {
-/// 				exampleBucketArn := _args[0].(string)
-/// 				exampleBucketArn1 := _args[1].(string)
-/// 				var _zero string
+/// 			Role: firehose.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: exampleBucket.Arn.ApplyT(func(arn string) (pulumi.String, error) {
+/// 				var _zero pulumi.String
 /// 				tmpJSON1, err := json.Marshal(map[string]interface{}{
 /// 					"Version": "2012-10-17",
 /// 					"Statement": []map[string]interface{}{
@@ -535,8 +566,8 @@ import 'log_delivery_configuration_state.dart';
 /// 								"s3:PutObject",
 /// 							},
 /// 							"Resource": []string{
-/// 								exampleBucketArn,
-/// 								fmt.Sprintf("%v/*", exampleBucketArn1),
+/// 								arn,
+/// 								fmt.Sprintf("%v/*", arn),
 /// 							},
 /// 						},
 /// 					},
@@ -545,7 +576,7 @@ import 'log_delivery_configuration_state.dart';
 /// 					return _zero, err
 /// 				}
 /// 				json1 := string(tmpJSON1)
-/// 				return json1, nil
+/// 				return pulumi.String(json1), nil
 /// 			}).(pulumi.StringOutput),
 /// 		})
 /// 		if err != nil {
@@ -563,7 +594,7 @@ import 'log_delivery_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewLogDeliveryConfiguration(ctx, "example", &cognito.LogDeliveryConfigurationArgs{
-/// 			UserPoolId: example.ID(),
+/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			LogConfigurations: cognito.LogDeliveryConfigurationLogConfigurationArray{
 /// 				&cognito.LogDeliveryConfigurationLogConfigurationArgs{
 /// 					EventSource: pulumi.String("userNotification"),
@@ -574,7 +605,7 @@ import 'log_delivery_configuration_state.dart';
 /// 				},
 /// 				&cognito.LogDeliveryConfigurationLogConfigurationArgs{
 /// 					EventSource: pulumi.String("userAuthEvents"),
-/// 					LogLevel:    pulumi.String("ERROR"),
+/// 					LogLevel:    pulumi.String("INFO"),
 /// 					FirehoseConfiguration: &cognito.LogDeliveryConfigurationLogConfigurationFirehoseConfigurationArgs{
 /// 						StreamArn: exampleFirehoseDeliveryStream.Arn,
 /// 					},
@@ -586,6 +617,77 @@ import 'log_delivery_configuration_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpool" "example" {
+///   name           = "example"
+///   user_pool_tier = "PLUS"
+/// }
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name = "example"
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket        = "example-bucket"
+///   force_destroy = true
+/// }
+/// resource "aws_iam_role" "firehose" {
+///   name = "firehose-role"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "firehose.amazonaws.com"
+///       }
+///     }]
+///   })
+/// }
+/// resource "aws_iam_rolepolicy" "firehose" {
+///   name = "firehose-policy"
+///   role = aws_iam_role.firehose.id
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Effect"   = "Allow"
+///       "Action"   = ["s3:AbortMultipartUpload", "s3:GetBucketLocation", "s3:GetObject", "s3:ListBucket", "s3:ListBucketMultipartUploads", "s3:PutObject"]
+///       "Resource" = [aws_s3_bucket.example.arn, "${aws_s3_bucket.example.arn}/*"]
+///     }]
+///   })
+/// }
+/// resource "aws_kinesis_firehosedeliverystream" "example" {
+///   name        = "example-stream"
+///   destination = "extended_s3"
+///   extended_s3_configuration = {
+///     role_arn   = aws_iam_role.firehose.arn
+///     bucket_arn = aws_s3_bucket.example.arn
+///   }
+/// }
+/// resource "aws_cognito_logdeliveryconfiguration" "example" {
+///   user_pool_id = aws_cognito_userpool.example.id
+///   log_configurations {
+///     event_source = "userNotification"
+///     log_level    = "INFO"
+///     cloud_watch_logs_configuration = {
+///       log_group_arn = aws_cloudwatch_loggroup.example.arn
+///     }
+///   }
+///   log_configurations {
+///     event_source = "userAuthEvents"
+///     log_level    = "INFO"
+///     firehose_configuration = {
+///       stream_arn = aws_kinesis_firehosedeliverystream.example.arn
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -613,8 +715,8 @@ import 'log_delivery_configuration_state.dart';
 /// import com.pulumi.aws.cognito.inputs.LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfigurationArgs;
 /// import com.pulumi.aws.cognito.inputs.LogDeliveryConfigurationLogConfigurationFirehoseConfigurationArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -628,6 +730,7 @@ import 'log_delivery_configuration_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new UserPool("example", UserPoolArgs.builder()
 ///             .name("example")
+///             .userPoolTier("PLUS")
 ///             .build());
 ///
 ///         var exampleLogGroup = new LogGroup("exampleLogGroup", LogGroupArgs.builder()
@@ -657,29 +760,25 @@ import 'log_delivery_configuration_state.dart';
 ///         var firehoseRolePolicy = new RolePolicy("firehoseRolePolicy", RolePolicyArgs.builder()
 ///             .name("firehose-policy")
 ///             .role(firehose.id())
-///             .policy(Output.tuple(exampleBucket.arn(), exampleBucket.arn()).applyValue(values -> {
-///                 var exampleBucketArn = values.t1;
-///                 var exampleBucketArn1 = values.t2;
-///                 return serializeJson(
-///                     jsonObject(
-///                         jsonProperty("Version", "2012-10-17"),
-///                         jsonProperty("Statement", jsonArray(jsonObject(
-///                             jsonProperty("Effect", "Allow"),
-///                             jsonProperty("Action", jsonArray(
-///                                 "s3:AbortMultipartUpload",
-///                                 "s3:GetBucketLocation",
-///                                 "s3:GetObject",
-///                                 "s3:ListBucket",
-///                                 "s3:ListBucketMultipartUploads",
-///                                 "s3:PutObject"
-///                             )),
-///                             jsonProperty("Resource", jsonArray(
-///                                 exampleBucketArn,
-///                                 String.format("%s/*", exampleBucketArn1)
-///                             ))
-///                         )))
-///                     ));
-///             }))
+///             .policy(exampleBucket.arn().applyValue(_arn -> serializeJson(
+///                 jsonObject(
+///                     jsonProperty("Version", "2012-10-17"),
+///                     jsonProperty("Statement", jsonArray(jsonObject(
+///                         jsonProperty("Effect", "Allow"),
+///                         jsonProperty("Action", jsonArray(
+///                             "s3:AbortMultipartUpload",
+///                             "s3:GetBucketLocation",
+///                             "s3:GetObject",
+///                             "s3:ListBucket",
+///                             "s3:ListBucketMultipartUploads",
+///                             "s3:PutObject"
+///                         )),
+///                         jsonProperty("Resource", jsonArray(
+///                             _arn,
+///                             String.format("%s/*", _arn)
+///                         ))
+///                     )))
+///                 ))))
 ///             .build());
 ///
 ///         var exampleFirehoseDeliveryStream = new FirehoseDeliveryStream("exampleFirehoseDeliveryStream", FirehoseDeliveryStreamArgs.builder()
@@ -703,7 +802,7 @@ import 'log_delivery_configuration_state.dart';
 ///                     .build(),
 ///                 LogDeliveryConfigurationLogConfigurationArgs.builder()
 ///                     .eventSource("userAuthEvents")
-///                     .logLevel("ERROR")
+///                     .logLevel("INFO")
 ///                     .firehoseConfiguration(LogDeliveryConfigurationLogConfigurationFirehoseConfigurationArgs.builder()
 ///                         .streamArn(exampleFirehoseDeliveryStream.arn())
 ///                         .build())
@@ -719,6 +818,7 @@ import 'log_delivery_configuration_state.dart';
 ///     type: aws:cognito:UserPool
 ///     properties:
 ///       name: example
+///       userPoolTier: PLUS
 ///   exampleLogGroup:
 ///     type: aws:cloudwatch:LogGroup
 ///     name: example
@@ -783,7 +883,7 @@ import 'log_delivery_configuration_state.dart';
 ///           cloudWatchLogsConfiguration:
 ///             logGroupArn: ${exampleLogGroup.arn}
 ///         - eventSource: userAuthEvents
-///           logLevel: ERROR
+///           logLevel: INFO
 ///           firehoseConfiguration:
 ///             streamArn: ${exampleFirehoseDeliveryStream.arn}
 /// ```
@@ -796,7 +896,10 @@ import 'log_delivery_configuration_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.cognito.UserPool("example", {name: "example"});
+/// const example = new aws.cognito.UserPool("example", {
+///     name: "example",
+///     userPoolTier: "PLUS",
+/// });
 /// const exampleBucket = new aws.s3.Bucket("example", {
 ///     bucket: "example-bucket",
 ///     forceDestroy: true,
@@ -804,8 +907,8 @@ import 'log_delivery_configuration_state.dart';
 /// const exampleLogDeliveryConfiguration = new aws.cognito.LogDeliveryConfiguration("example", {
 ///     userPoolId: example.id,
 ///     logConfigurations: [{
-///         eventSource: "userNotification",
-///         logLevel: "ERROR",
+///         eventSource: "userAuthEvents",
+///         logLevel: "INFO",
 ///         s3Configuration: {
 ///             bucketArn: exampleBucket.arn,
 ///         },
@@ -816,15 +919,17 @@ import 'log_delivery_configuration_state.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.cognito.UserPool("example", name="example")
+/// example = aws.cognito.UserPool("example",
+///     name="example",
+///     user_pool_tier="PLUS")
 /// example_bucket = aws.s3.Bucket("example",
 ///     bucket="example-bucket",
 ///     force_destroy=True)
 /// example_log_delivery_configuration = aws.cognito.LogDeliveryConfiguration("example",
 ///     user_pool_id=example.id,
 ///     log_configurations=[{
-///         "event_source": "userNotification",
-///         "log_level": "ERROR",
+///         "event_source": "userAuthEvents",
+///         "log_level": "INFO",
 ///         "s3_configuration": {
 ///             "bucket_arn": example_bucket.arn,
 ///         },
@@ -841,6 +946,7 @@ import 'log_delivery_configuration_state.dart';
 ///     var example = new Aws.Cognito.UserPool("example", new()
 ///     {
 ///         Name = "example",
+///         UserPoolTier = "PLUS",
 ///     });
 ///
 ///     var exampleBucket = new Aws.S3.Bucket("example", new()
@@ -856,8 +962,8 @@ import 'log_delivery_configuration_state.dart';
 ///         {
 ///             new Aws.Cognito.Inputs.LogDeliveryConfigurationLogConfigurationArgs
 ///             {
-///                 EventSource = "userNotification",
-///                 LogLevel = "ERROR",
+///                 EventSource = "userAuthEvents",
+///                 LogLevel = "INFO",
 ///                 S3Configuration = new Aws.Cognito.Inputs.LogDeliveryConfigurationLogConfigurationS3ConfigurationArgs
 ///                 {
 ///                     BucketArn = exampleBucket.Arn,
@@ -880,7 +986,8 @@ import 'log_delivery_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := cognito.NewUserPool(ctx, "example", &cognito.UserPoolArgs{
-/// 			Name: pulumi.String("example"),
+/// 			Name:         pulumi.String("example"),
+/// 			UserPoolTier: pulumi.String("PLUS"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -893,11 +1000,11 @@ import 'log_delivery_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewLogDeliveryConfiguration(ctx, "example", &cognito.LogDeliveryConfigurationArgs{
-/// 			UserPoolId: example.ID(),
+/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			LogConfigurations: cognito.LogDeliveryConfigurationLogConfigurationArray{
 /// 				&cognito.LogDeliveryConfigurationLogConfigurationArgs{
-/// 					EventSource: pulumi.String("userNotification"),
-/// 					LogLevel:    pulumi.String("ERROR"),
+/// 					EventSource: pulumi.String("userAuthEvents"),
+/// 					LogLevel:    pulumi.String("INFO"),
 /// 					S3Configuration: &cognito.LogDeliveryConfigurationLogConfigurationS3ConfigurationArgs{
 /// 						BucketArn: exampleBucket.Arn,
 /// 					},
@@ -909,6 +1016,34 @@ import 'log_delivery_configuration_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpool" "example" {
+///   name           = "example"
+///   user_pool_tier = "PLUS"
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket        = "example-bucket"
+///   force_destroy = true
+/// }
+/// resource "aws_cognito_logdeliveryconfiguration" "example" {
+///   user_pool_id = aws_cognito_userpool.example.id
+///   log_configurations {
+///     event_source = "userAuthEvents"
+///     log_level    = "INFO"
+///     s3_configuration = {
+///       bucket_arn = aws_s3_bucket.example.arn
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -925,8 +1060,8 @@ import 'log_delivery_configuration_state.dart';
 /// import com.pulumi.aws.cognito.LogDeliveryConfigurationArgs;
 /// import com.pulumi.aws.cognito.inputs.LogDeliveryConfigurationLogConfigurationArgs;
 /// import com.pulumi.aws.cognito.inputs.LogDeliveryConfigurationLogConfigurationS3ConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -940,6 +1075,7 @@ import 'log_delivery_configuration_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new UserPool("example", UserPoolArgs.builder()
 ///             .name("example")
+///             .userPoolTier("PLUS")
 ///             .build());
 ///
 ///         var exampleBucket = new Bucket("exampleBucket", BucketArgs.builder()
@@ -950,8 +1086,8 @@ import 'log_delivery_configuration_state.dart';
 ///         var exampleLogDeliveryConfiguration = new LogDeliveryConfiguration("exampleLogDeliveryConfiguration", LogDeliveryConfigurationArgs.builder()
 ///             .userPoolId(example.id())
 ///             .logConfigurations(LogDeliveryConfigurationLogConfigurationArgs.builder()
-///                 .eventSource("userNotification")
-///                 .logLevel("ERROR")
+///                 .eventSource("userAuthEvents")
+///                 .logLevel("INFO")
 ///                 .s3Configuration(LogDeliveryConfigurationLogConfigurationS3ConfigurationArgs.builder()
 ///                     .bucketArn(exampleBucket.arn())
 ///                     .build())
@@ -967,6 +1103,7 @@ import 'log_delivery_configuration_state.dart';
 ///     type: aws:cognito:UserPool
 ///     properties:
 ///       name: example
+///       userPoolTier: PLUS
 ///   exampleBucket:
 ///     type: aws:s3:Bucket
 ///     name: example
@@ -979,8 +1116,8 @@ import 'log_delivery_configuration_state.dart';
 ///     properties:
 ///       userPoolId: ${example.id}
 ///       logConfigurations:
-///         - eventSource: userNotification
-///           logLevel: ERROR
+///         - eventSource: userAuthEvents
+///           logLevel: INFO
 ///           s3Configuration:
 ///             bucketArn: ${exampleBucket.arn}
 /// ```
@@ -992,15 +1129,15 @@ import 'log_delivery_configuration_state.dart';
 ///
 /// #### Required
 ///
-/// * `user_pool_id` (String) ID of the Cognito User Pool.
+/// * `userPoolId` (String) ID of the Cognito User Pool.
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import Cognito IDP (Identity Provider) Log Delivery Configuration using the `user_pool_id`. For example:
+/// Using `pulumi import`, import Cognito IDP (Identity Provider) Log Delivery Configuration using the `userPoolId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cognito/logDeliveryConfiguration:LogDeliveryConfiguration example us-west-2_example123

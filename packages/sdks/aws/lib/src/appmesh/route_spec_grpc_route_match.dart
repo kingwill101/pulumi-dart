@@ -4,21 +4,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_spec_grpc_route_match_metadata.dart';
 
 class RouteSpecGrpcRouteMatch {
-  /// Data to match from the gRPC request.
+  /// Data to match from the gRPC request. See `spec.grpc_route.match.metadata` Block for details.
   final pulumi.Input<List<RouteSpecGrpcRouteMatchMetadata>>? metadatas;
-  /// Method name to match from the request. If you specify a name, you must also specify a `service_name`.
+  /// Method name to match from the request. If you specify a name, you must also specify a `serviceName`.
   final pulumi.Input<String>? methodName;
-  /// The port number to match from the request.
+  /// Port number to match from the request.
   final pulumi.Input<int>? port;
+  /// Header value sent by the client must begin with the specified characters.
   final pulumi.Input<String>? prefix;
   /// Fully qualified domain name for the service to match from the request.
   final pulumi.Input<String>? serviceName;
 
   /// Creates a new [RouteSpecGrpcRouteMatch].
-  /// [metadatas] Data to match from the gRPC request.
-  /// [methodName] Method name to match from the request. If you specify a name, you must also specify a `service_name`.
-  /// [port] The port number to match from the request.
-  /// [prefix] Optional.
+  /// [metadatas] Data to match from the gRPC request. See `spec.grpc_route.match.metadata` Block for details.
+  /// [methodName] Method name to match from the request. If you specify a name, you must also specify a `serviceName`.
+  /// [port] Port number to match from the request.
+  /// [prefix] Header value sent by the client must begin with the specified characters.
   /// [serviceName] Fully qualified domain name for the service to match from the request.
   const RouteSpecGrpcRouteMatch({
     this.metadatas,
@@ -48,4 +49,3 @@ class RouteSpecGrpcRouteMatch {
     );
   }
 }
-

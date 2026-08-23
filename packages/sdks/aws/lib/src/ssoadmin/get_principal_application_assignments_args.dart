@@ -8,7 +8,7 @@ import 'get_principal_application_assignments_application_assignment.dart';
 /// {@endtemplate}
 /// {@macro pulumi_ssoadmin_get_principal_application_assignments_get_principal_application_assignments_args_doc}
 class GetPrincipalApplicationAssignmentsArgs {
-  /// List of principals assigned to the application. See the `application_assignments` attribute reference below.
+  /// List of principals assigned to the application. See the `applicationAssignments` attribute reference below.
   final pulumi.Input<List<GetPrincipalApplicationAssignmentsApplicationAssignment>>? applicationAssignments;
   /// ARN of the instance of IAM Identity Center.
   final pulumi.Input<String> instanceArn;
@@ -20,7 +20,7 @@ class GetPrincipalApplicationAssignmentsArgs {
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetPrincipalApplicationAssignmentsArgs].
-  /// [applicationAssignments] List of principals assigned to the application. See the `application_assignments` attribute reference below.
+  /// [applicationAssignments] List of principals assigned to the application. See the `applicationAssignments` attribute reference below.
   /// [instanceArn] ARN of the instance of IAM Identity Center.
   /// [principalId] An identifier for an object in IAM Identity Center, such as a user or group.
   /// [principalType] Entity type for which the assignment will be created. Valid values are `USER` or `GROUP`.
@@ -53,4 +53,3 @@ class GetPrincipalApplicationAssignmentsArgs {
     );
   }
 }
-

@@ -7,24 +7,23 @@ import 'route_spec_http_route.dart';
 import 'route_spec_tcp_route.dart';
 
 class RouteSpec {
-  /// GRPC routing information for the route.
+  /// GRPC routing information for the route. See `spec.grpc_route` Block for details.
   final pulumi.Input<RouteSpecGrpcRoute>? grpcRoute;
-  /// HTTP/2 routing information for the route.
+  /// HTTP/2 routing information for the route. See `spec.http2_route` Block for details.
   final pulumi.Input<RouteSpecHttp2Route>? http2Route;
-  /// HTTP routing information for the route.
+  /// HTTP routing information for the route. See `spec.http_route` Block for details.
   final pulumi.Input<RouteSpecHttpRoute>? httpRoute;
-  /// Priority for the route, between `0` and `1000`.
-  /// Routes are matched based on the specified value, where `0` is the highest priority.
+  /// Priority for the route, between `0` and `1000`. Routes are matched based on the specified value, where `0` is the highest priority.
   final pulumi.Input<int>? priority;
-  /// TCP routing information for the route.
+  /// TCP routing information for the route. See `spec.tcp_route` Block for details.
   final pulumi.Input<RouteSpecTcpRoute>? tcpRoute;
 
   /// Creates a new [RouteSpec].
-  /// [grpcRoute] GRPC routing information for the route.
-  /// [http2Route] HTTP/2 routing information for the route.
-  /// [httpRoute] HTTP routing information for the route.
-  /// [priority] Priority for the route, between `0` and `1000`.
-  /// [tcpRoute] TCP routing information for the route.
+  /// [grpcRoute] GRPC routing information for the route. See `spec.grpc_route` Block for details.
+  /// [http2Route] HTTP/2 routing information for the route. See `spec.http2_route` Block for details.
+  /// [httpRoute] HTTP routing information for the route. See `spec.http_route` Block for details.
+  /// [priority] Priority for the route, between `0` and `1000`. Routes are matched based on the specified value, where `0` is the highest priority.
+  /// [tcpRoute] TCP routing information for the route. See `spec.tcp_route` Block for details.
   const RouteSpec({
     this.grpcRoute,
     this.http2Route,
@@ -53,4 +52,3 @@ class RouteSpec {
     );
   }
 }
-

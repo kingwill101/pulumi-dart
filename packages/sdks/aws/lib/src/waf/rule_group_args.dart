@@ -12,16 +12,16 @@ class RuleGroupArgs {
   final pulumi.Input<List<RuleGroupActivatedRule>>? activatedRules;
   /// A friendly name for the metrics from the rule group
   final pulumi.Input<String> metricName;
-  /// Name of the rule group. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the rule group. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   final pulumi.Input<String>? name;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [RuleGroupArgs].
   /// [activatedRules] A list of activated rules, see below
   /// [metricName] A friendly name for the metrics from the rule group
-  /// [name] Name of the rule group. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [name] Name of the rule group. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const RuleGroupArgs({
     this.activatedRules,
     required this.metricName,
@@ -47,4 +47,3 @@ class RuleGroupArgs {
     );
   }
 }
-

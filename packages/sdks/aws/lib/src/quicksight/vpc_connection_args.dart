@@ -24,7 +24,7 @@ class VpcConnectionArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<String>> subnetIds;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<VpcConnectionTimeouts>? timeouts;
   /// The ID of the VPC connection.
@@ -38,7 +38,7 @@ class VpcConnectionArgs {
   /// [roleArn] The IAM role to associate with the VPC connection.
   /// [securityGroupIds] A list of security group IDs for the VPC connection.
   /// [subnetIds] A list of subnet IDs for the VPC connection.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [vpcConnectionId] The ID of the VPC connection.
   const VpcConnectionArgs({
@@ -84,4 +84,3 @@ class VpcConnectionArgs {
     );
   }
 }
-

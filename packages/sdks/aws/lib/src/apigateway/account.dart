@@ -229,7 +229,7 @@ import 'account_state.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "cloudwatch", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("default"),
-/// 			Role:   cloudwatchRole.ID(),
+/// 			Role:   cloudwatchRole.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy: pulumi.String(cloudwatch.Json),
 /// 		})
 /// 		if err != nil {
@@ -237,6 +237,46 @@ import 'account_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["apigateway.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "cloudwatch" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["logs:CreateLogGroup", "logs:CreateLogStream", "logs:DescribeLogGroups", "logs:DescribeLogStreams", "logs:PutLogEvents", "logs:GetLogEvents", "logs:FilterLogEvents"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_apigateway_account" "demo" {
+///   cloudwatch_role_arn = aws_iam_role.cloudwatch.arn
+/// }
+/// resource "aws_iam_role" "cloudwatch" {
+///   name               = "api_gateway_cloudwatch_global"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicy" "cloudwatch" {
+///   name   = "default"
+///   role   = aws_iam_role.cloudwatch.id
+///   policy = data.aws_iam_getpolicydocument.cloudwatch.json
 /// }
 /// ```
 /// ```java
@@ -247,14 +287,16 @@ import 'account_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.apigateway.Account;
 /// import com.pulumi.aws.apigateway.AccountArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
 /// import com.pulumi.aws.iam.RolePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -369,15 +411,15 @@ import 'account_state.dart';
 /// $ pulumi import aws:apigateway/account:Account demo 123456789012
 /// ```
 class Account extends pulumi.CustomResource {
-  /// The version of the API keys used for the account.
+  /// Version of the API keys used for the account.
   late final pulumi.Output<String> apiKeyVersion;
   /// ARN of an IAM role for CloudWatch (to allow logging & monitoring). See more [in AWS Docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-stage-settings.html#how-to-stage-settings-console). Logging & monitoring can be enabled/disabled and otherwise tuned on the API Gateway Stage level.
   late final pulumi.Output<String> cloudwatchRoleArn;
-  /// A list of features supported for the account.
+  /// List of features supported for the account.
   late final pulumi.Output<List<String>> features;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Account-Level throttle settings. See exported fields below.
+  /// Account-Level throttle settings. See `throttleSettings` Block below.
   late final pulumi.Output<List<Map<String, dynamic>>> throttleSettings;
 
   /// Creates a new [Account].

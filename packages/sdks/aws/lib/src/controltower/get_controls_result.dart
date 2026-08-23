@@ -3,7 +3,7 @@
 
 /// Result data returned by getControls.
 class GetControlsResult {
-  /// List of all the ARNs for the controls applied to the `target_identifier`.
+  /// List of all the ARNs for the controls applied to the `targetIdentifier`.
   final List<String> enabledControls;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -11,7 +11,7 @@ class GetControlsResult {
   final String targetIdentifier;
 
   /// Creates a new [GetControlsResult].
-  /// [enabledControls] List of all the ARNs for the controls applied to the `target_identifier`.
+  /// [enabledControls] List of all the ARNs for the controls applied to the `targetIdentifier`.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [targetIdentifier] Required.
@@ -40,4 +40,3 @@ class GetControlsResult {
     );
   }
 }
-

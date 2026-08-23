@@ -32,4 +32,3 @@ class FaqS3Path {
     );
   }
 }
-

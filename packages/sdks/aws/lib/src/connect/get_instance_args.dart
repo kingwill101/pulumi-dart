@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceArgs {
   /// Returns information on a specific connect instance by alias
   ///
-  /// &gt; **NOTE:** One of either `instance_id` or `instance_alias` is required.
+  /// &gt; **NOTE:** One of either `instanceId` or `instanceAlias` is required.
   final pulumi.Input<String>? instanceAlias;
   /// Returns information on a specific connect instance by id
   final pulumi.Input<String>? instanceId;
@@ -48,4 +48,3 @@ class GetInstanceArgs {
     );
   }
 }
-

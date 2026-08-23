@@ -317,7 +317,7 @@ import 'form_type_timeouts.dart';
 /// 						"sts:TagSession",
 /// 					},
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "datazone.amazonaws.com",
 /// 					},
 /// 				},
@@ -327,7 +327,7 @@ import 'form_type_timeouts.dart';
 /// 						"sts:TagSession",
 /// 					},
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "cloudformation.amazonaws.com",
 /// 					},
 /// 				},
@@ -383,7 +383,7 @@ import 'form_type_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		testProject, err := datazone.NewProject(ctx, "test", &datazone.ProjectArgs{
-/// 			DomainIdentifier: test.ID(),
+/// 			DomainIdentifier: test.ID().ToIDOutput().ToStringOutput(),
 /// 			GlossaryTerms: pulumi.StringArray{
 /// 				pulumi.String("2N8w6XJCwZf"),
 /// 			},
@@ -397,8 +397,8 @@ import 'form_type_timeouts.dart';
 /// 		_, err = datazone.NewFormType(ctx, "test", &datazone.FormTypeArgs{
 /// 			Description:             pulumi.String("desc"),
 /// 			Name:                    pulumi.String("SageMakerModelFormType"),
-/// 			DomainIdentifier:        test.ID(),
-/// 			OwningProjectIdentifier: testProject.ID(),
+/// 			DomainIdentifier:        test.ID().ToIDOutput().ToStringOutput(),
+/// 			OwningProjectIdentifier: testProject.ID().ToIDOutput().ToStringOutput(),
 /// 			Status:                  pulumi.String("DISABLED"),
 /// 			Model: &datazone.FormTypeModelArgs{
 /// 				Smithy: pulumi.String(`\tstructure SageMakerModelFormType {
@@ -422,6 +422,70 @@ import 'form_type_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_role" "domain_execution_role" {
+///   name = "example-role"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = ["sts:AssumeRole", "sts:TagSession"]
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "datazone.amazonaws.com"
+///       }
+///       }, {
+///       "Action" = ["sts:AssumeRole", "sts:TagSession"]
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "cloudformation.amazonaws.com"
+///       }
+///     }]
+///   })
+///   inline_policies {
+///     name = "example-policy"
+///     policy = jsonencode({
+///       "Version" = "2012-10-17"
+///       "Statement" = [{
+///         "Action"   = ["datazone:*", "ram:*", "sso:*", "kms:*"]
+///         "Effect"   = "Allow"
+///         "Resource" = "*"
+///       }]
+///     })
+///   }
+/// }
+/// resource "aws_datazone_domain" "test" {
+///   name                  = "example"
+///   domain_execution_role = aws_iam_role.domain_execution_role.arn
+/// }
+/// resource "aws_ec2_securitygroup" "test" {
+///   name = "example"
+/// }
+/// resource "aws_datazone_project" "test" {
+///   domain_identifier   = aws_datazone_domain.test.id
+///   glossary_terms      = ["2N8w6XJCwZf"]
+///   name                = "example name"
+///   description         = "desc"
+///   skip_deletion_check = true
+/// }
+/// resource "aws_datazone_formtype" "test" {
+///   description               = "desc"
+///   name                      = "SageMakerModelFormType"
+///   domain_identifier         = aws_datazone_domain.test.id
+///   owning_project_identifier = aws_datazone_project.test.id
+///   status                    = "DISABLED"
+///   model = {
+///     smithy = "\\tstructure SageMakerModelFormType {\n\\t\\t\\t@required\n\\t\\t\\t@amazon.datazone#searchable\n\\t\\t\\tmodelName: String\n\n\\t\\t\\t@required\n\\t\\t\\tmodelArn: String\n\n\\t\\t\\t@required\n\\t\\t\\tcreationTime: String\n\\t\\t\\t}\n"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -441,8 +505,8 @@ import 'form_type_timeouts.dart';
 /// import com.pulumi.aws.datazone.FormTypeArgs;
 /// import com.pulumi.aws.datazone.inputs.FormTypeModelArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -627,7 +691,21 @@ import 'form_type_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import DataZone Form Type using a comma separated value of `domain_identifier`,`name`,`revision`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `domainIdentifier` - (String) Identifier of the DataZone domain.
+/// * `name` - (String) Name of the form type.
+/// * `revision` - (String) Revision of the form type.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import DataZone Form Type using a comma separated value of `domainIdentifier`,`name`,`revision`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:datazone/formType:FormType example domain_identifier,name,revision

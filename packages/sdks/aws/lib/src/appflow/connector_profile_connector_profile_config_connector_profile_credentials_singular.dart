@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular {
+  /// Unique alphanumeric identifier used to authenticate a user, developer, or calling program to your API.
   final pulumi.Input<String> apiKey;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular].
-  /// [apiKey] Required.
+  /// [apiKey] Unique alphanumeric identifier used to authenticate a user, developer, or calling program to your API.
   const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular({
     required this.apiKey,
   });
@@ -23,4 +24,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular 
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'get_node_group_resource.dart';
 import 'get_node_group_scaling_config.dart';
 import 'get_node_group_taint.dart';
 import 'get_node_group_update_config.dart';
+import 'get_node_group_warm_pool_config.dart';
 
 /// Result data returned by getNodeGroup.
 class GetNodeGroupResult {
@@ -50,6 +51,8 @@ class GetNodeGroupResult {
   final List<GetNodeGroupUpdateConfig> updateConfigs;
   /// Kubernetes version.
   final String version;
+  /// Configuration block with EC2 Auto Scaling warm pool settings.
+  final List<GetNodeGroupWarmPoolConfig> warmPoolConfigs;
 
   /// Creates a new [GetNodeGroupResult].
   /// [amiType] Type of Amazon Machine Image (AMI) associated with the EKS Node Group.
@@ -74,6 +77,7 @@ class GetNodeGroupResult {
   /// [taints] List of objects containing information about taints applied to the nodes in the EKS Node Group.
   /// [updateConfigs] Required.
   /// [version] Kubernetes version.
+  /// [warmPoolConfigs] Configuration block with EC2 Auto Scaling warm pool settings.
   const GetNodeGroupResult({
     required this.amiType,
     required this.arn,
@@ -97,6 +101,7 @@ class GetNodeGroupResult {
     required this.taints,
     required this.updateConfigs,
     required this.version,
+    required this.warmPoolConfigs,
   });
 
   Map<String, dynamic> toMap() {
@@ -123,6 +128,7 @@ class GetNodeGroupResult {
       'taints': pulumi.Input.encodeList<GetNodeGroupTaint, Map<String, dynamic>>(taints, (value) => value.toMap()),
       'updateConfigs': pulumi.Input.encodeList<GetNodeGroupUpdateConfig, Map<String, dynamic>>(updateConfigs, (value) => value.toMap()),
       'version': version,
+      'warmPoolConfigs': pulumi.Input.encodeList<GetNodeGroupWarmPoolConfig, Map<String, dynamic>>(warmPoolConfigs, (value) => value.toMap()),
     };
   }
 
@@ -150,7 +156,7 @@ class GetNodeGroupResult {
       taints: pulumi.Input.decodeList<GetNodeGroupTaint>(map['taints']!, (value) => GetNodeGroupTaint.fromMap((value as Map).cast<String, dynamic>())),
       updateConfigs: pulumi.Input.decodeList<GetNodeGroupUpdateConfig>(map['updateConfigs']!, (value) => GetNodeGroupUpdateConfig.fromMap((value as Map).cast<String, dynamic>())),
       version: map['version'] as String,
+      warmPoolConfigs: pulumi.Input.decodeList<GetNodeGroupWarmPoolConfig>(map['warmPoolConfigs']!, (value) => GetNodeGroupWarmPoolConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
-

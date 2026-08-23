@@ -133,6 +133,36 @@ import 'snapshot_copy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_instance" "example" {
+///   allocated_storage       = 10
+///   engine                  = "mysql"
+///   engine_version          = "5.6.21"
+///   instance_class          = "db.t2.micro"
+///   db_name                 = "baz"
+///   password                = "barbarbarbar"
+///   username                = "foo"
+///   maintenance_window      = "Fri:09:00-Fri:09:30"
+///   backup_retention_period = 0
+///   parameter_group_name    = "default.mysql5.6"
+/// }
+/// resource "aws_rds_snapshot" "example" {
+///   db_instance_identifier = aws_rds_instance.example.identifier
+///   db_snapshot_identifier = "testsnapshot1234"
+/// }
+/// resource "aws_rds_snapshotcopy" "example" {
+///   source_db_snapshot_identifier = aws_rds_snapshot.example.db_snapshot_arn
+///   target_db_snapshot_identifier = "testsnapshot1234-copy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -145,8 +175,8 @@ import 'snapshot_copy_state.dart';
 /// import com.pulumi.aws.rds.SnapshotArgs;
 /// import com.pulumi.aws.rds.SnapshotCopy;
 /// import com.pulumi.aws.rds.SnapshotCopyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,9 +290,9 @@ class SnapshotCopy extends pulumi.CustomResource {
   late final pulumi.Output<String> sourceRegion;
   /// Specifies the storage type associated with DB snapshot.
   late final pulumi.Output<String> storageType;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The external custom Availability Zone.
   late final pulumi.Output<String?> targetCustomAvailabilityZone;

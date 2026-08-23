@@ -12,13 +12,13 @@ class GetServiceDeploymentConfiguration {
   final pulumi.Input<List<GetServiceDeploymentConfigurationAlarm>> alarms;
   /// Time to wait after deployment before terminating old tasks
   final pulumi.Input<String> bakeTimeInMinutes;
-  /// Canary deployment configuration. See `canary_configuration` Block for details.
+  /// Canary deployment configuration. See `canaryConfiguration` Block for details.
   final pulumi.Input<List<GetServiceDeploymentConfigurationCanaryConfiguration>> canaryConfigurations;
-  /// Circuit breaker configuration. See `deployment_circuit_breaker` Block for details.
+  /// Circuit breaker configuration. See `deploymentCircuitBreaker` Block for details.
   final pulumi.Input<List<GetServiceDeploymentConfigurationDeploymentCircuitBreaker>> deploymentCircuitBreakers;
-  /// Lifecycle hooks for deployments. See `lifecycle_hook` Block for details.
+  /// Lifecycle hooks for deployments. See `lifecycleHook` Block for details.
   final pulumi.Input<List<GetServiceDeploymentConfigurationLifecycleHook>> lifecycleHooks;
-  /// Linear deployment configuration. See `linear_configuration` Block for details.
+  /// Linear deployment configuration. See `linearConfiguration` Block for details.
   final pulumi.Input<List<GetServiceDeploymentConfigurationLinearConfiguration>> linearConfigurations;
   /// Upper limit on tasks during deployment
   final pulumi.Input<int> maximumPercent;
@@ -30,10 +30,10 @@ class GetServiceDeploymentConfiguration {
   /// Creates a new [GetServiceDeploymentConfiguration].
   /// [alarms] CloudWatch alarms configuration. See `alarms` Block for details.
   /// [bakeTimeInMinutes] Time to wait after deployment before terminating old tasks
-  /// [canaryConfigurations] Canary deployment configuration. See `canary_configuration` Block for details.
-  /// [deploymentCircuitBreakers] Circuit breaker configuration. See `deployment_circuit_breaker` Block for details.
-  /// [lifecycleHooks] Lifecycle hooks for deployments. See `lifecycle_hook` Block for details.
-  /// [linearConfigurations] Linear deployment configuration. See `linear_configuration` Block for details.
+  /// [canaryConfigurations] Canary deployment configuration. See `canaryConfiguration` Block for details.
+  /// [deploymentCircuitBreakers] Circuit breaker configuration. See `deploymentCircuitBreaker` Block for details.
+  /// [lifecycleHooks] Lifecycle hooks for deployments. See `lifecycleHook` Block for details.
+  /// [linearConfigurations] Linear deployment configuration. See `linearConfiguration` Block for details.
   /// [maximumPercent] Upper limit on tasks during deployment
   /// [minimumHealthyPercent] Lower limit on healthy tasks during deployment
   /// [strategy] Deployment strategy (ROLLING, BLUE_GREEN, LINEAR, or CANARY)
@@ -77,4 +77,3 @@ class GetServiceDeploymentConfiguration {
     );
   }
 }
-

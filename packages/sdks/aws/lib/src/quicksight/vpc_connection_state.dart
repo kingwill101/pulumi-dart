@@ -25,9 +25,9 @@ class VpcConnectionState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<String>>? subnetIds;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<VpcConnectionTimeouts>? timeouts;
   /// The ID of the VPC connection.
@@ -43,8 +43,8 @@ class VpcConnectionState {
   /// [roleArn] The IAM role to associate with the VPC connection.
   /// [securityGroupIds] A list of security group IDs for the VPC connection.
   /// [subnetIds] A list of subnet IDs for the VPC connection.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   /// [vpcConnectionId] The ID of the VPC connection.
   const VpcConnectionState({
@@ -99,4 +99,3 @@ class VpcConnectionState {
     );
   }
 }
-

@@ -129,7 +129,7 @@ import 'data_protection_policy_state.dart';
 /// 					"DataIdentifier": []string{
 /// 						"arn:aws:dataprotection::aws:data-identifier/EmailAddress",
 /// 					},
-/// 					"Operation": map[string]interface{}{
+/// 					"Operation": map[string]map[string]interface{}{
 /// 						"Deny": map[string]interface{}{},
 /// 					},
 /// 					"Principal": []string{
@@ -155,6 +155,36 @@ import 'data_protection_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sns_topic" "example" {
+///   name = "example"
+/// }
+/// resource "aws_sns_dataprotectionpolicy" "example" {
+///   arn = aws_sns_topic.example.arn
+///   policy = jsonencode({
+///     "Description" = "Example data protection policy"
+///     "Name"        = "__example_data_protection_policy"
+///     "Statement" = [{
+///       "DataDirection"  = "Inbound"
+///       "DataIdentifier" = ["arn:aws:dataprotection::aws:data-identifier/EmailAddress"]
+///       "Operation" = {
+///         "Deny" = {}
+///       }
+///       "Principal" = ["*"]
+///       "Sid"       = "__deny_statement_11ba9d96"
+///     }]
+///     "Version" = "2021-06-01"
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -166,8 +196,8 @@ import 'data_protection_policy_state.dart';
 /// import com.pulumi.aws.sns.DataProtectionPolicy;
 /// import com.pulumi.aws.sns.DataProtectionPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

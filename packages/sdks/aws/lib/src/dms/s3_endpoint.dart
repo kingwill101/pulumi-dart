@@ -4,9 +4,9 @@ import 's3_endpoint_state.dart';
 
 /// Provides a DMS (Data Migration Service) S3 endpoint resource. DMS S3 endpoints can be created, updated, deleted, and imported.
 ///
-/// &gt; **Note:** AWS is deprecating `extra_connection_attributes`, such as used with `aws.dms.Endpoint`. This resource is an alternative to `aws.dms.Endpoint` and does not use `extra_connection_attributes`. (AWS currently includes `extra_connection_attributes` in the raw responses to the AWS Provider requests and so they may be visible in the logs.)
+/// &gt; **Note:** AWS is deprecating `extraConnectionAttributes`, such as used with `aws.dms.Endpoint`. This resource is an alternative to `aws.dms.Endpoint` and does not use `extraConnectionAttributes`. (AWS currently includes `extraConnectionAttributes` in the raw responses to the AWS Provider requests and so they may be visible in the logs.)
 ///
-/// &gt; **Note:** Some of this resource's arguments have default values that come from the AWS Provider. Other default values are provided by AWS and subject to change without notice. When relying on AWS defaults, the provider state will often have a zero value. For example, the AWS Provider does not provide a default for `cdc_max_batch_interval` but the AWS default is `60` (seconds). However, the provider state will show `0` since this is the value return by AWS when no value is present. Below, we aim to flag the defaults that come from AWS (_e.g._, "AWS default...").
+/// &gt; **Note:** Some of this resource's arguments have default values that come from the AWS Provider. Other default values are provided by AWS and subject to change without notice. When relying on AWS defaults, the provider state will often have a zero value. For example, the AWS Provider does not provide a default for `cdcMaxBatchInterval` but the AWS default is `60` (seconds). However, the provider state will show `0` since this is the value return by AWS when no value is present. Below, we aim to flag the defaults that come from AWS (_e.g._, "AWS default...").
 ///
 /// ## Example Usage
 ///
@@ -88,6 +88,23 @@ import 's3_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dms_s3endpoint" "example" {
+///   depends_on              = [exampleAwsIamRolePolicy]
+///   endpoint_id             = "donnedtipi"
+///   endpoint_type           = "target"
+///   bucket_name             = "beckut_name"
+///   service_access_role_arn = exampleAwsIamRole.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +114,8 @@ import 's3_endpoint_state.dart';
 /// import com.pulumi.aws.dms.S3Endpoint;
 /// import com.pulumi.aws.dms.S3EndpointArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -394,6 +411,68 @@ import 's3_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dms_s3endpoint" "example" {
+///   depends_on    = [exampleAwsIamRolePolicy]
+///   endpoint_id   = "donnedtipi"
+///   endpoint_type = "target"
+///   ssl_mode      = "none"
+///   tags = {
+///     "Name"   = "donnedtipi"
+///     "Update" = "to-update"
+///     "Remove" = "to-remove"
+///   }
+///   add_column_name                             = true
+///   add_trailing_padding_character              = false
+///   bucket_folder                               = "folder"
+///   bucket_name                                 = "bucket_name"
+///   canned_acl_for_objects                      = "private"
+///   cdc_inserts_and_updates                     = true
+///   cdc_inserts_only                            = false
+///   cdc_max_batch_interval                      = 100
+///   cdc_min_file_size                           = 16
+///   cdc_path                                    = "cdc/path"
+///   compression_type                            = "GZIP"
+///   csv_delimiter                               = ";"
+///   csv_no_sup_value                            = "x"
+///   csv_null_value                              = "?"
+///   csv_row_delimiter                           = "\\r\\n"
+///   data_format                                 = "parquet"
+///   data_page_size                              = 1100000
+///   date_partition_delimiter                    = "UNDERSCORE"
+///   date_partition_enabled                      = true
+///   date_partition_sequence                     = "yyyymmddhh"
+///   date_partition_timezone                     = "Asia/Seoul"
+///   dict_page_size_limit                        = 1000000
+///   enable_statistics                           = false
+///   encoding_type                               = "plain"
+///   encryption_mode                             = "SSE_S3"
+///   expected_bucket_owner                       = current.accountId
+///   external_table_definition                   = "etd"
+///   ignore_header_rows                          = 1
+///   include_op_for_full_load                    = true
+///   max_file_size                               = 1000000
+///   parquet_timestamp_in_millisecond            = true
+///   parquet_version                             = "parquet-2-0"
+///   preserve_transactions                       = false
+///   rfc4180                                     = false
+///   row_group_length                            = 11000
+///   server_side_encryption_kms_key_id           = exampleAwsKmsKey.arn
+///   service_access_role_arn                     = exampleAwsIamRole.arn
+///   timestamp_column_name                       = "tx_commit_time"
+///   use_csv_no_sup_value                        = false
+///   use_task_start_time_for_full_load_timestamp = true
+///   glue_catalog_generation                     = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -403,8 +482,8 @@ import 's3_endpoint_state.dart';
 /// import com.pulumi.aws.dms.S3Endpoint;
 /// import com.pulumi.aws.dms.S3EndpointArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -534,7 +613,7 @@ import 's3_endpoint_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import endpoints using the `endpoint_id`. For example:
+/// Using `pulumi import`, import endpoints using the `endpointId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:dms/s3Endpoint:S3Endpoint example example-dms-endpoint-tf
@@ -558,7 +637,7 @@ class S3Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<int?> cdcMaxBatchInterval;
   /// Minimum file size condition as defined in kilobytes to output a file to Amazon S3. (AWS default is 32000 KB.)
   late final pulumi.Output<int?> cdcMinFileSize;
-  /// Folder path of CDC files. If `cdc_path` is set, AWS DMS reads CDC files from this path and replicates the data changes to the target endpoint. Supported in AWS DMS versions 3.4.2 and later. Required for CDC.
+  /// Folder path of CDC files. If `cdcPath` is set, AWS DMS reads CDC files from this path and replicates the data changes to the target endpoint. Supported in AWS DMS versions 3.4.2 and later. Required for CDC.
   late final pulumi.Output<String?> cdcPath;
   /// ARN for the certificate.
   late final pulumi.Output<String> certificateArn;
@@ -566,7 +645,7 @@ class S3Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<String?> compressionType;
   /// Delimiter used to separate columns in the source files. Default is `,`.
   late final pulumi.Output<String?> csvDelimiter;
-  /// Only applies if output files for a CDC load are written in .csv format. If `use_csv_no_sup_value` is set to `true`, string to use for all columns not included in the supplemental log. If you do not specify a string value, DMS uses the null value for these columns regardless of `use_csv_no_sup_value`. (Ignored for source endpoints.)
+  /// Only applies if output files for a CDC load are written in .csv format. If `useCsvNoSupValue` is set to `true`, string to use for all columns not included in the supplemental log. If you do not specify a string value, DMS uses the null value for these columns regardless of `useCsvNoSupValue`. (Ignored for source endpoints.)
   late final pulumi.Output<String?> csvNoSupValue;
   /// String to as null when writing to the target. (AWS default is `NULL`.)
   late final pulumi.Output<String?> csvNullValue;
@@ -580,9 +659,9 @@ class S3Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<String?> datePartitionDelimiter;
   /// Partition S3 bucket folders based on transaction commit dates. Default is `false`. (Ignored for source endpoints.)
   late final pulumi.Output<bool?> datePartitionEnabled;
-  /// Date format to use during folder partitioning. Use this parameter when `date_partition_enabled` is set to true. Valid values are `YYYYMMDD`, `YYYYMMDDHH`, `YYYYMM`, `MMYYYYDD`, and `DDMMYYYY`. (AWS default is `YYYYMMDD`.) (Ignored for source endpoints.)
+  /// Date format to use during folder partitioning. Use this parameter when `datePartitionEnabled` is set to true. Valid values are `YYYYMMDD`, `YYYYMMDDHH`, `YYYYMM`, `MMYYYYDD`, and `DDMMYYYY`. (AWS default is `YYYYMMDD`.) (Ignored for source endpoints.)
   late final pulumi.Output<String?> datePartitionSequence;
-  /// Convert the current UTC time to a timezone. The conversion occurs when a date partition folder is created and a CDC filename is generated. The timezone format is Area/Location (_e.g._, `Europe/Paris`). Use this when `date_partition_enabled` is `true`. (Ignored for source endpoints.)
+  /// Convert the current UTC time to a timezone. The conversion occurs when a date partition folder is created and a CDC filename is generated. The timezone format is Area/Location (_e.g._, `Europe/Paris`). Use this when `datePartitionEnabled` is `true`. (Ignored for source endpoints.)
   late final pulumi.Output<String?> datePartitionTimezone;
   /// Undocumented argument for use as directed by AWS Support.
   late final pulumi.Output<bool?> detachTargetOnLobLookupFailureParquet;
@@ -590,7 +669,7 @@ class S3Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<int?> dictPageSizeLimit;
   /// Whether to enable statistics for Parquet pages and row groups. Default is `true`.
   late final pulumi.Output<bool?> enableStatistics;
-  /// Type of encoding to use. Value values are `rle_dictionary`, `plain`, and `plain_dictionary`. (AWS default is `rle_dictionary`.)
+  /// Type of encoding to use. Value values are `rle-dictionary`, `plain`, and `plain-dictionary`. (AWS default is `rle-dictionary`.)
   late final pulumi.Output<String?> encodingType;
   /// Server-side encryption mode that you want to encrypt your .csv or .parquet object files copied to S3. Valid values are `SSE_S3` and `SSE_KMS`. (AWS default is `SSE_S3`.) (Ignored for source endpoints -- only `SSE_S3` is valid.)
   late final pulumi.Output<String?> encryptionMode;
@@ -614,7 +693,7 @@ class S3Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<int?> ignoreHeaderRows;
   /// Whether to enable a full load to write INSERT operations to the .csv output files only to indicate how the rows were added to the source database. Default is `false`.
   late final pulumi.Output<bool?> includeOpForFullLoad;
-  /// ARN for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kms_key_arn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
+  /// ARN for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kmsKeyArn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
   late final pulumi.Output<String> kmsKeyArn;
   /// Maximum size (in KB) of any .csv file to be created while migrating to an S3 target during full load. Valid values are from `1` to `1048576`. (AWS default is 1 GB, _i.e._, `1048576`.)
   late final pulumi.Output<int?> maxFileSize;
@@ -622,7 +701,7 @@ class S3Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<bool?> parquetTimestampInMillisecond;
   /// Version of the .parquet file format. Valid values are `parquet-1-0` and `parquet-2-0`. (AWS default is `parquet-1-0`.) (Ignored for source endpoints.)
   late final pulumi.Output<String?> parquetVersion;
-  /// Whether DMS saves the transaction order for a CDC load on the S3 target specified by `cdc_path`. Default is `false`. (Ignored for source endpoints.)
+  /// Whether DMS saves the transaction order for a CDC load on the S3 target specified by `cdcPath`. Default is `false`. (Ignored for source endpoints.)
   late final pulumi.Output<bool?> preserveTransactions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -630,7 +709,7 @@ class S3Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<bool?> rfc4180;
   /// Number of rows in a row group. (AWS default is `10000`.)
   late final pulumi.Output<int?> rowGroupLength;
-  /// When `encryption_mode` is `SSE_KMS`, ARN for the AWS KMS key. (Ignored for source endpoints -- only `SSE_S3` `encryption_mode` is valid.)
+  /// When `encryptionMode` is `SSE_KMS`, ARN for the AWS KMS key. (Ignored for source endpoints -- only `SSE_S3` `encryptionMode` is valid.)
   late final pulumi.Output<String?> serverSideEncryptionKmsKeyId;
   /// ARN of the IAM role with permissions to the S3 Bucket.
   ///
@@ -640,13 +719,13 @@ class S3Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> sslMode;
   /// Status of the endpoint.
   late final pulumi.Output<String> status;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Column to add with timestamp information to the endpoint data for an Amazon S3 target.
   late final pulumi.Output<String?> timestampColumnName;
-  /// Whether to use `csv_no_sup_value` for columns not included in the supplemental log. (Ignored for source endpoints.)
+  /// Whether to use `csvNoSupValue` for columns not included in the supplemental log. (Ignored for source endpoints.)
   late final pulumi.Output<bool?> useCsvNoSupValue;
   /// When set to `true`, uses the task start time as the timestamp column value instead of the time data is written to target. For full load, when set to `true`, each row of the timestamp column contains the task start time. For CDC loads, each row of the timestamp column contains the transaction commit time.When set to false, the full load timestamp in the timestamp column increments with the time data arrives at the target. Default is `false`.
   late final pulumi.Output<bool?> useTaskStartTimeForFullLoadTimestamp;

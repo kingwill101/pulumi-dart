@@ -5,14 +5,14 @@ import 'agentcore_agent_runtime_agent_runtime_artifact_code_configuration.dart';
 import 'agentcore_agent_runtime_agent_runtime_artifact_container_configuration.dart';
 
 class AgentcoreAgentRuntimeAgentRuntimeArtifact {
-  /// Code configuration block for the agent runtime artifact, including the source code location and execution settings. Exactly one of `code_configuration` or `container_configuration` must be specified. See `code_configuration` below.
+  /// Code configuration block for the agent runtime artifact, including the source code location and execution settings. Exactly one of `codeConfiguration` or `containerConfiguration` must be specified. See `codeConfiguration` below.
   final pulumi.Input<AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfiguration>? codeConfiguration;
-  /// Container configuration block for the agent artifact. Exactly one of `code_configuration` or `container_configuration` must be specified. See `container_configuration` below.
+  /// Container configuration block for the agent artifact. Exactly one of `codeConfiguration` or `containerConfiguration` must be specified. See `containerConfiguration` below.
   final pulumi.Input<AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration>? containerConfiguration;
 
   /// Creates a new [AgentcoreAgentRuntimeAgentRuntimeArtifact].
-  /// [codeConfiguration] Code configuration block for the agent runtime artifact, including the source code location and execution settings. Exactly one of `code_configuration` or `container_configuration` must be specified. See `code_configuration` below.
-  /// [containerConfiguration] Container configuration block for the agent artifact. Exactly one of `code_configuration` or `container_configuration` must be specified. See `container_configuration` below.
+  /// [codeConfiguration] Code configuration block for the agent runtime artifact, including the source code location and execution settings. Exactly one of `codeConfiguration` or `containerConfiguration` must be specified. See `codeConfiguration` below.
+  /// [containerConfiguration] Container configuration block for the agent artifact. Exactly one of `codeConfiguration` or `containerConfiguration` must be specified. See `containerConfiguration` below.
   const AgentcoreAgentRuntimeAgentRuntimeArtifact({
     this.codeConfiguration,
     this.containerConfiguration,
@@ -32,4 +32,3 @@ class AgentcoreAgentRuntimeAgentRuntimeArtifact {
     );
   }
 }
-

@@ -18,7 +18,7 @@ class RateBasedRuleArgs {
   final pulumi.Input<String> rateKey;
   /// The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
   final pulumi.Input<int> rateLimit;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [RateBasedRuleArgs].
@@ -27,7 +27,7 @@ class RateBasedRuleArgs {
   /// [predicates] The objects to include in a rule (documented below).
   /// [rateKey] Valid value is IP.
   /// [rateLimit] The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const RateBasedRuleArgs({
     required this.metricName,
     this.name,
@@ -59,4 +59,3 @@ class RateBasedRuleArgs {
     );
   }
 }
-

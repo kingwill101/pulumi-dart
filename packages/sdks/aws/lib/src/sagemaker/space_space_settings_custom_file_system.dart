@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'space_space_settings_custom_file_system_efs_file_system.dart';
 
 class SpaceSpaceSettingsCustomFileSystem {
-  /// A custom file system in Amazon EFS. See `efs_file_system` Block below.
+  /// A custom file system in Amazon EFS. See `efsFileSystem` Block below.
   final pulumi.Input<SpaceSpaceSettingsCustomFileSystemEfsFileSystem> efsFileSystem;
 
   /// Creates a new [SpaceSpaceSettingsCustomFileSystem].
-  /// [efsFileSystem] A custom file system in Amazon EFS. See `efs_file_system` Block below.
+  /// [efsFileSystem] A custom file system in Amazon EFS. See `efsFileSystem` Block below.
   const SpaceSpaceSettingsCustomFileSystem({
     required this.efsFileSystem,
   });
@@ -25,4 +25,3 @@ class SpaceSpaceSettingsCustomFileSystem {
     );
   }
 }
-

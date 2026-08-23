@@ -19,9 +19,9 @@ class WebAclState {
   final pulumi.Input<String>? name;
   /// Configuration blocks containing rules to associate with the web ACL and the settings for each rule. Detailed below.
   final pulumi.Input<List<WebAclRule>>? rules;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [WebAclState].
@@ -31,8 +31,8 @@ class WebAclState {
   /// [metricName] The name or description for the Amazon CloudWatch metric of this web ACL.
   /// [name] The name or description of the web ACL.
   /// [rules] Configuration blocks containing rules to associate with the web ACL and the settings for each rule. Detailed below.
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const WebAclState({
     this.arn,
     this.defaultAction,
@@ -70,4 +70,3 @@ class WebAclState {
     );
   }
 }
-

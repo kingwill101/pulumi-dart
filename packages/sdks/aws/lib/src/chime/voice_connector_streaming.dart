@@ -83,7 +83,7 @@ import 'voice_connector_streaming_state.dart';
 /// 		}
 /// 		_, err = chime.NewVoiceConnectorStreaming(ctx, "default", &chime.VoiceConnectorStreamingArgs{
 /// 			Disabled:         pulumi.Bool(false),
-/// 			VoiceConnectorId: _default.ID(),
+/// 			VoiceConnectorId: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			DataRetention:    pulumi.Int(7),
 /// 			StreamingNotificationTargets: pulumi.StringArray{
 /// 				pulumi.String("SQS"),
@@ -96,6 +96,26 @@ import 'voice_connector_streaming_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_chime_voiceconnector" "default" {
+///   name               = "vc-name-test"
+///   require_encryption = true
+/// }
+/// resource "aws_chime_voiceconnectorstreaming" "default" {
+///   disabled                       = false
+///   voice_connector_id             = aws_chime_voiceconnector.default.id
+///   data_retention                 = 7
+///   streaming_notification_targets = ["SQS"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +126,8 @@ import 'voice_connector_streaming_state.dart';
 /// import com.pulumi.aws.chime.VoiceConnectorArgs;
 /// import com.pulumi.aws.chime.VoiceConnectorStreaming;
 /// import com.pulumi.aws.chime.VoiceConnectorStreamingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -432,7 +452,7 @@ import 'voice_connector_streaming_state.dart';
 /// 		}
 /// 		_, err = chime.NewVoiceConnectorStreaming(ctx, "default", &chime.VoiceConnectorStreamingArgs{
 /// 			Disabled:         pulumi.Bool(false),
-/// 			VoiceConnectorId: _default.ID(),
+/// 			VoiceConnectorId: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			DataRetention:    pulumi.Int(7),
 /// 			StreamingNotificationTargets: pulumi.StringArray{
 /// 				pulumi.String("SQS"),
@@ -449,6 +469,65 @@ import 'voice_connector_streaming_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["mediapipelines.chime.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// resource "aws_chime_voiceconnector" "default" {
+///   name               = "vc-name-test"
+///   require_encryption = true
+/// }
+/// resource "aws_chime_voiceconnectorstreaming" "default" {
+///   disabled                       = false
+///   voice_connector_id             = aws_chime_voiceconnector.default.id
+///   data_retention                 = 7
+///   streaming_notification_targets = ["SQS"]
+///   media_insights_configuration = {
+///     disabled          = false
+///     configuration_arn = aws_chimesdkmediapipelines_mediainsightspipelineconfiguration.example.arn
+///   }
+/// }
+/// resource "aws_chimesdkmediapipelines_mediainsightspipelineconfiguration" "example" {
+///   name                     = "ExampleConfig"
+///   resource_access_role_arn = aws_iam_role.example.arn
+///   elements {
+///     type = "AmazonTranscribeCallAnalyticsProcessor"
+///     amazon_transcribe_call_analytics_processor_configuration = {
+///       language_code = "en-US"
+///     }
+///   }
+///   elements {
+///     type = "KinesisDataStreamSink"
+///     kinesis_data_stream_sink_configuration = {
+///       insights_target = aws_kinesis_stream.example.arn
+///     }
+///   }
+/// }
+/// resource "aws_iam_role" "example" {
+///   name               = "ExampleResourceAccessRole"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_kinesis_stream" "example" {
+///   name        = "ExampleStream"
+///   shard_count = 2
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -459,6 +538,8 @@ import 'voice_connector_streaming_state.dart';
 /// import com.pulumi.aws.chime.VoiceConnectorArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.kinesis.Stream;
@@ -471,8 +552,8 @@ import 'voice_connector_streaming_state.dart';
 /// import com.pulumi.aws.chime.VoiceConnectorStreaming;
 /// import com.pulumi.aws.chime.VoiceConnectorStreamingArgs;
 /// import com.pulumi.aws.chime.inputs.VoiceConnectorStreamingMediaInsightsConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -603,7 +684,7 @@ import 'voice_connector_streaming_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Chime Voice Connector Streaming using the `voice_connector_id`. For example:
+/// Using `pulumi import`, import Chime Voice Connector Streaming using the `voiceConnectorId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:chime/voiceConnectorStreaming:VoiceConnectorStreaming default abcdef1ghij2klmno3pqr4
@@ -613,7 +694,7 @@ class VoiceConnectorStreaming extends pulumi.CustomResource {
   late final pulumi.Output<int> dataRetention;
   /// When true, media streaming to Amazon Kinesis is turned off. Default: `false`
   late final pulumi.Output<bool?> disabled;
-  /// The media insights configuration. See `media_insights_configuration`.
+  /// The media insights configuration. See `mediaInsightsConfiguration`.
   late final pulumi.Output<VoiceConnectorStreamingMediaInsightsConfiguration?> mediaInsightsConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

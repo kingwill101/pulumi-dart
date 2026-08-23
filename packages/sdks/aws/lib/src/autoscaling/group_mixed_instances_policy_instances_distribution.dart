@@ -11,7 +11,7 @@ class GroupMixedInstancesPolicyInstancesDistribution {
   final pulumi.Input<int>? onDemandPercentageAboveBaseCapacity;
   /// How to allocate capacity across the Spot pools. Valid values: `lowest-price`, `capacity-optimized`, `capacity-optimized-prioritized`, and `price-capacity-optimized`. Default: `lowest-price`.
   final pulumi.Input<String>? spotAllocationStrategy;
-  /// Number of Spot pools per availability zone to allocate capacity. EC2 Auto Scaling selects the cheapest Spot pools and evenly allocates Spot capacity across the number of Spot pools that you specify. Only available with `spot_allocation_strategy` set to `lowest-price`. Otherwise it must be set to `0`, if it has been defined before. Default: `2`.
+  /// Number of Spot pools per availability zone to allocate capacity. EC2 Auto Scaling selects the cheapest Spot pools and evenly allocates Spot capacity across the number of Spot pools that you specify. Only available with `spotAllocationStrategy` set to `lowest-price`. Otherwise it must be set to `0`, if it has been defined before. Default: `2`.
   final pulumi.Input<int>? spotInstancePools;
   /// Maximum price per unit hour that the user is willing to pay for the Spot instances. Default: an empty string which means the on-demand price.
   final pulumi.Input<String>? spotMaxPrice;
@@ -21,7 +21,7 @@ class GroupMixedInstancesPolicyInstancesDistribution {
   /// [onDemandBaseCapacity] Absolute minimum amount of desired capacity that must be fulfilled by on-demand instances. Default: `0`.
   /// [onDemandPercentageAboveBaseCapacity] Percentage split between on-demand and Spot instances above the base on-demand capacity. Default: `100`.
   /// [spotAllocationStrategy] How to allocate capacity across the Spot pools. Valid values: `lowest-price`, `capacity-optimized`, `capacity-optimized-prioritized`, and `price-capacity-optimized`. Default: `lowest-price`.
-  /// [spotInstancePools] Number of Spot pools per availability zone to allocate capacity. EC2 Auto Scaling selects the cheapest Spot pools and evenly allocates Spot capacity across the number of Spot pools that you specify. Only available with `spot_allocation_strategy` set to `lowest-price`. Otherwise it must be set to `0`, if it has been defined before. Default: `2`.
+  /// [spotInstancePools] Number of Spot pools per availability zone to allocate capacity. EC2 Auto Scaling selects the cheapest Spot pools and evenly allocates Spot capacity across the number of Spot pools that you specify. Only available with `spotAllocationStrategy` set to `lowest-price`. Otherwise it must be set to `0`, if it has been defined before. Default: `2`.
   /// [spotMaxPrice] Maximum price per unit hour that the user is willing to pay for the Spot instances. Default: an empty string which means the on-demand price.
   const GroupMixedInstancesPolicyInstancesDistribution({
     this.onDemandAllocationStrategy,
@@ -54,4 +54,3 @@ class GroupMixedInstancesPolicyInstancesDistribution {
     );
   }
 }
-

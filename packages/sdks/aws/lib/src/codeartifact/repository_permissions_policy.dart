@@ -34,7 +34,7 @@ import 'repository_permissions_policy_state.dart';
 /// const exampleRepositoryPermissionsPolicy = new aws.codeartifact.RepositoryPermissionsPolicy("example", {
 ///     repository: exampleRepository.repository,
 ///     domain: exampleDomain.domain,
-///     policyDocument: example.apply(example => example.json),
+///     policyDocument: example.json,
 /// });
 /// ```
 /// ```python
@@ -180,17 +180,53 @@ import 'repository_permissions_policy_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = codeartifact.NewRepositoryPermissionsPolicy(ctx, "example", &codeartifact.RepositoryPermissionsPolicyArgs{
-/// 			Repository: exampleRepository.Repository,
-/// 			Domain:     exampleDomain.Domain,
-/// 			PolicyDocument: pulumi.String(example.ApplyT(func(example iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &example.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Repository:     exampleRepository.Repository,
+/// 			Domain:         exampleDomain.Domain,
+/// 			PolicyDocument: example.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "*"
+///       identifiers = ["*"]
+///     }
+///     actions   = ["codeartifact:ReadFromRepository"]
+///     resources = [aws_codeartifact_repository.example.arn]
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description = "domain key"
+/// }
+/// resource "aws_codeartifact_domain" "example" {
+///   domain         = "example"
+///   encryption_key = aws_kms_key.example.arn
+/// }
+/// resource "aws_codeartifact_repository" "example" {
+///   repository = "example"
+///   domain     = aws_codeartifact_domain.example.domain
+/// }
+/// resource "aws_codeartifact_repositorypermissionspolicy" "example" {
+///   repository      = aws_codeartifact_repository.example.repository
+///   domain          = aws_codeartifact_domain.example.domain
+///   policy_document = data.aws_iam_getpolicydocument.example.json
 /// }
 /// ```
 /// ```java
@@ -207,10 +243,12 @@ import 'repository_permissions_policy_state.dart';
 /// import com.pulumi.aws.codeartifact.RepositoryArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.codeartifact.RepositoryPermissionsPolicy;
 /// import com.pulumi.aws.codeartifact.RepositoryPermissionsPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -307,7 +345,7 @@ import 'repository_permissions_policy_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the CodeArtifact repository.
+/// - `resourceArn` (String) Amazon Resource Name (ARN) of the CodeArtifact repository.
 ///
 ///
 /// Using `pulumi import`, import CodeArtifact Repository Permissions Policies using the CodeArtifact Repository ARN. For example:

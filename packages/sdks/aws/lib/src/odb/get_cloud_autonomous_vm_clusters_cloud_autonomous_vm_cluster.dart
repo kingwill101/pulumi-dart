@@ -3,32 +3,32 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCloudAutonomousVmClustersCloudAutonomousVmCluster {
-  /// The Amazon Resource Name (ARN) for the Exadata infrastructure.
+  /// Amazon Resource Name (ARN) for the Exadata infrastructure.
   final pulumi.Input<String> arn;
   /// Cloud exadata infrastructure id associated with this cloud autonomous VM cluster.
   final pulumi.Input<String> cloudExadataInfrastructureId;
-  /// The display name of the Autonomous VM cluster.
+  /// Display name of the Autonomous VM cluster.
   final pulumi.Input<String> displayName;
-  /// The unique identifier of the cloud autonomous vm cluster.
+  /// Unique identifier of the cloud autonomous vm cluster.
   final pulumi.Input<String> id;
-  /// The name of the OCI resource anchor associated with this Autonomous VM cluster.
+  /// Name of the OCI resource anchor associated with this Autonomous VM cluster.
   final pulumi.Input<String> ociResourceAnchorName;
-  /// The URL for accessing the OCI console page for this Autonomous VM cluster.
+  /// URL for accessing the OCI console page for this Autonomous VM cluster.
   final pulumi.Input<String> ociUrl;
-  /// The Oracle Cloud Identifier (OCID) of the Autonomous VM cluster.
+  /// Oracle Cloud Identifier (OCID) of the Autonomous VM cluster.
   final pulumi.Input<String> ocid;
-  /// The unique identifier of the ODB network associated with this Autonomous VM cluster.
+  /// Unique identifier of the ODB network associated with this Autonomous VM cluster.
   final pulumi.Input<String> odbNetworkId;
 
   /// Creates a new [GetCloudAutonomousVmClustersCloudAutonomousVmCluster].
-  /// [arn] The Amazon Resource Name (ARN) for the Exadata infrastructure.
+  /// [arn] Amazon Resource Name (ARN) for the Exadata infrastructure.
   /// [cloudExadataInfrastructureId] Cloud exadata infrastructure id associated with this cloud autonomous VM cluster.
-  /// [displayName] The display name of the Autonomous VM cluster.
-  /// [id] The unique identifier of the cloud autonomous vm cluster.
-  /// [ociResourceAnchorName] The name of the OCI resource anchor associated with this Autonomous VM cluster.
-  /// [ociUrl] The URL for accessing the OCI console page for this Autonomous VM cluster.
-  /// [ocid] The Oracle Cloud Identifier (OCID) of the Autonomous VM cluster.
-  /// [odbNetworkId] The unique identifier of the ODB network associated with this Autonomous VM cluster.
+  /// [displayName] Display name of the Autonomous VM cluster.
+  /// [id] Unique identifier of the cloud autonomous vm cluster.
+  /// [ociResourceAnchorName] Name of the OCI resource anchor associated with this Autonomous VM cluster.
+  /// [ociUrl] URL for accessing the OCI console page for this Autonomous VM cluster.
+  /// [ocid] Oracle Cloud Identifier (OCID) of the Autonomous VM cluster.
+  /// [odbNetworkId] Unique identifier of the ODB network associated with this Autonomous VM cluster.
   const GetCloudAutonomousVmClustersCloudAutonomousVmCluster({
     required this.arn,
     required this.cloudExadataInfrastructureId,
@@ -66,4 +66,3 @@ class GetCloudAutonomousVmClustersCloudAutonomousVmCluster {
     );
   }
 }
-

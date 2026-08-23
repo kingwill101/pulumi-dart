@@ -3,16 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties {
-  /// The authorization code url required to redirect to SAP Login Page to fetch authorization code for OAuth type authentication.
+  /// Authorization code URL required to redirect to the SAP Login Page to fetch the authorization code for OAuth type authentication.
   final pulumi.Input<String> authCodeUrl;
-  /// The OAuth scopes required for OAuth type authentication.
+  /// OAuth scopes required for OAuth type authentication.
   final pulumi.Input<List<String>> oauthScopes;
+  /// Token URL required to fetch access and refresh tokens using the authorization code, and to refresh an expired access token using the refresh token.
   final pulumi.Input<String> tokenUrl;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties].
-  /// [authCodeUrl] The authorization code url required to redirect to SAP Login Page to fetch authorization code for OAuth type authentication.
-  /// [oauthScopes] The OAuth scopes required for OAuth type authentication.
-  /// [tokenUrl] Required.
+  /// [authCodeUrl] Authorization code URL required to redirect to the SAP Login Page to fetch the authorization code for OAuth type authentication.
+  /// [oauthScopes] OAuth scopes required for OAuth type authentication.
+  /// [tokenUrl] Token URL required to fetch access and refresh tokens using the authorization code, and to refresh an expired access token using the refresh token.
   const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties({
     required this.authCodeUrl,
     required this.oauthScopes,
@@ -35,4 +36,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOa
     );
   }
 }
-

@@ -7,7 +7,7 @@ import 'aws_log_source_state.dart';
 ///
 /// &gt; **NOTE:** A single `aws.securitylake.AwsLogSource` should be used to configure a log source across all regions and accounts.
 ///
-/// &gt; **NOTE:** The underlying `aws.securitylake.DataLake` must be configured before creating the `aws.securitylake.AwsLogSource`. Use a `depends_on` statement.
+/// &gt; **NOTE:** The underlying `aws.securitylake.DataLake` must be configured before creating the `aws.securitylake.AwsLogSource`. Use a `dependsOn` statement.
 ///
 /// ## Example Usage
 ///
@@ -99,6 +99,24 @@ import 'aws_log_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securitylake_awslogsource" "example" {
+///   depends_on = [exampleAwsSecuritylakeDataLake]
+///   source = {
+///     accounts    = ["123456789012"]
+///     regions     = ["eu-west-1"]
+///     source_name = "ROUTE53"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +127,8 @@ import 'aws_log_source_state.dart';
 /// import com.pulumi.aws.securitylake.AwsLogSourceArgs;
 /// import com.pulumi.aws.securitylake.inputs.AwsLogSourceSourceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

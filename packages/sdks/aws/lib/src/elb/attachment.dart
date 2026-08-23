@@ -72,6 +72,21 @@ import 'attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Create a new load balancer attachment
+/// resource "aws_elb_attachment" "baz" {
+///   elb      = bar.id
+///   instance = foo.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +95,8 @@ import 'attachment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elb.Attachment;
 /// import com.pulumi.aws.elb.AttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

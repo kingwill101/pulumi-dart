@@ -6,14 +6,14 @@ class GetNetworkManagedServiceKmsAccess {
   final pulumi.Input<String> domainName;
   final pulumi.Input<List<String>> ipv4Addresses;
   final pulumi.Input<String> kmsPolicyDocument;
-  /// The status of the network resource.
+  /// Status of the network resource.
   final pulumi.Input<String> status;
 
   /// Creates a new [GetNetworkManagedServiceKmsAccess].
   /// [domainName] Required.
   /// [ipv4Addresses] Required.
   /// [kmsPolicyDocument] Required.
-  /// [status] The status of the network resource.
+  /// [status] Status of the network resource.
   const GetNetworkManagedServiceKmsAccess({
     required this.domainName,
     required this.ipv4Addresses,
@@ -39,4 +39,3 @@ class GetNetworkManagedServiceKmsAccess {
     );
   }
 }
-

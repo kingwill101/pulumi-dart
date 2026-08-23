@@ -36,4 +36,3 @@ class FirehoseDeliveryStreamRedshiftConfigurationS3ConfigurationCloudwatchLoggin
     );
   }
 }
-

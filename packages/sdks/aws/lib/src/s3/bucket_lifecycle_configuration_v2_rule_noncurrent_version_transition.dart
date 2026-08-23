@@ -36,4 +36,3 @@ class BucketLifecycleConfigurationV2RuleNoncurrentVersionTransition {
     );
   }
 }
-

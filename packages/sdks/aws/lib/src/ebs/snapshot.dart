@@ -91,7 +91,7 @@ import 'snapshot_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ebs.NewSnapshot(ctx, "example_snapshot", &ebs.SnapshotArgs{
-/// 			VolumeId: example.ID(),
+/// 			VolumeId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("HelloWorld_snap"),
 /// 			},
@@ -101,6 +101,29 @@ import 'snapshot_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ebs_volume" "example" {
+///   availability_zone = "us-west-2a"
+///   size              = 40
+///   tags = {
+///     "Name" = "HelloWorld"
+///   }
+/// }
+/// resource "aws_ebs_snapshot" "example_snapshot" {
+///   volume_id = aws_ebs_volume.example.id
+///   tags = {
+///     "Name" = "HelloWorld_snap"
+///   }
 /// }
 /// ```
 /// ```java
@@ -113,8 +136,8 @@ import 'snapshot_state.dart';
 /// import com.pulumi.aws.ebs.VolumeArgs;
 /// import com.pulumi.aws.ebs.Snapshot;
 /// import com.pulumi.aws.ebs.SnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -189,9 +212,9 @@ class Snapshot extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The name of the storage tier. Valid values are `archive` and `standard`. Default value is `standard`.
   late final pulumi.Output<String> storageTier;
-  /// A map of tags to assign to the snapshot. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the snapshot. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Specifies the number of days for which to temporarily restore an archived snapshot. Required for temporary restores only. The snapshot will be automatically re-archived after this period.
   late final pulumi.Output<int?> temporaryRestoreDays;

@@ -6,17 +6,17 @@ import 'gateway_route_spec_http2_route_action_rewrite_path.dart';
 import 'gateway_route_spec_http2_route_action_rewrite_prefix.dart';
 
 class GatewayRouteSpecHttp2RouteActionRewrite {
-  /// Host name to rewrite.
+  /// Host name to match on. See `spec.http2_route.match.hostname` Block for details.
   final pulumi.Input<GatewayRouteSpecHttp2RouteActionRewriteHostname>? hostname;
-  /// Exact path to rewrite.
+  /// Client request path to match on. See `spec.http2_route.match.path` Block for details.
   final pulumi.Input<GatewayRouteSpecHttp2RouteActionRewritePath>? path;
-  /// Specified beginning characters to rewrite.
+  /// Header value sent by the client must begin with the specified characters.
   final pulumi.Input<GatewayRouteSpecHttp2RouteActionRewritePrefix>? prefix;
 
   /// Creates a new [GatewayRouteSpecHttp2RouteActionRewrite].
-  /// [hostname] Host name to rewrite.
-  /// [path] Exact path to rewrite.
-  /// [prefix] Specified beginning characters to rewrite.
+  /// [hostname] Host name to match on. See `spec.http2_route.match.hostname` Block for details.
+  /// [path] Client request path to match on. See `spec.http2_route.match.path` Block for details.
+  /// [prefix] Header value sent by the client must begin with the specified characters.
   const GatewayRouteSpecHttp2RouteActionRewrite({
     this.hostname,
     this.path,
@@ -39,4 +39,3 @@ class GatewayRouteSpecHttp2RouteActionRewrite {
     );
   }
 }
-

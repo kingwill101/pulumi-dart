@@ -6,14 +6,14 @@ class GetNetworkManagedServiceS3Access {
   final pulumi.Input<String> domainName;
   final pulumi.Input<List<String>> ipv4Addresses;
   final pulumi.Input<String> s3PolicyDocument;
-  /// The status of the network resource.
+  /// Status of the network resource.
   final pulumi.Input<String> status;
 
   /// Creates a new [GetNetworkManagedServiceS3Access].
   /// [domainName] Required.
   /// [ipv4Addresses] Required.
   /// [s3PolicyDocument] Required.
-  /// [status] The status of the network resource.
+  /// [status] Status of the network resource.
   const GetNetworkManagedServiceS3Access({
     required this.domainName,
     required this.ipv4Addresses,
@@ -39,4 +39,3 @@ class GetNetworkManagedServiceS3Access {
     );
   }
 }
-

@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice {
-  /// The absolute file path in the container where the tmpfs volume is mounted.
+  /// Path on the container where the host volume is mounted.
   final pulumi.Input<String> containerPath;
-  /// The path for the device on the host container instance.
+  /// Path for the device on the host container instance.
   final pulumi.Input<String> hostPath;
-  /// The explicit permissions to provide to the container for the device.
+  /// Explicit permissions to provide to the container for the device.
   final pulumi.Input<List<String>> permissions;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice].
-  /// [containerPath] The absolute file path in the container where the tmpfs volume is mounted.
-  /// [hostPath] The path for the device on the host container instance.
-  /// [permissions] The explicit permissions to provide to the container for the device.
+  /// [containerPath] Path on the container where the host volume is mounted.
+  /// [hostPath] Path for the device on the host container instance.
+  /// [permissions] Explicit permissions to provide to the container for the device.
   const GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice({
     required this.containerPath,
     required this.hostPath,
@@ -36,4 +36,3 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice
     );
   }
 }
-

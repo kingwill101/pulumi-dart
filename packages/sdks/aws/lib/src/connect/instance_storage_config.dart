@@ -91,6 +91,26 @@ import 'instance_storage_config_storage_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_instancestorageconfig" "example" {
+///   instance_id   = exampleAwsConnectInstance.id
+///   resource_type = "CONTACT_TRACE_RECORDS"
+///   storage_config = {
+///     kinesis_firehose_config = {
+///       firehose_arn = exampleAwsKinesisFirehoseDeliveryStream.arn
+///     }
+///     storage_type = "KINESIS_FIREHOSE"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +121,8 @@ import 'instance_storage_config_storage_config.dart';
 /// import com.pulumi.aws.connect.InstanceStorageConfigArgs;
 /// import com.pulumi.aws.connect.inputs.InstanceStorageConfigStorageConfigArgs;
 /// import com.pulumi.aws.connect.inputs.InstanceStorageConfigStorageConfigKinesisFirehoseConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -225,6 +245,26 @@ import 'instance_storage_config_storage_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_instancestorageconfig" "example" {
+///   instance_id   = exampleAwsConnectInstance.id
+///   resource_type = "CONTACT_TRACE_RECORDS"
+///   storage_config = {
+///     kinesis_stream_config = {
+///       stream_arn = exampleAwsKinesisStream.arn
+///     }
+///     storage_type = "KINESIS_STREAM"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -235,8 +275,8 @@ import 'instance_storage_config_storage_config.dart';
 /// import com.pulumi.aws.connect.InstanceStorageConfigArgs;
 /// import com.pulumi.aws.connect.inputs.InstanceStorageConfigStorageConfigArgs;
 /// import com.pulumi.aws.connect.inputs.InstanceStorageConfigStorageConfigKinesisStreamConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -380,6 +420,31 @@ import 'instance_storage_config_storage_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_instancestorageconfig" "example" {
+///   instance_id   = exampleAwsConnectInstance.id
+///   resource_type = "MEDIA_STREAMS"
+///   storage_config = {
+///     kinesis_video_stream_config = {
+///       prefix                 = "example"
+///       retention_period_hours = 3
+///       encryption_config = {
+///         encryption_type = "KMS"
+///         key_id          = exampleAwsKmsKey.arn
+///       }
+///     }
+///     storage_type = "KINESIS_VIDEO_STREAM"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -391,8 +456,8 @@ import 'instance_storage_config_storage_config.dart';
 /// import com.pulumi.aws.connect.inputs.InstanceStorageConfigStorageConfigArgs;
 /// import com.pulumi.aws.connect.inputs.InstanceStorageConfigStorageConfigKinesisVideoStreamConfigArgs;
 /// import com.pulumi.aws.connect.inputs.InstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -528,6 +593,27 @@ import 'instance_storage_config_storage_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_instancestorageconfig" "example" {
+///   instance_id   = exampleAwsConnectInstance.id
+///   resource_type = "CHAT_TRANSCRIPTS"
+///   storage_config = {
+///     s3_config = {
+///       bucket_name   = exampleAwsS3Bucket.id
+///       bucket_prefix = "example"
+///     }
+///     storage_type = "S3"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -538,8 +624,8 @@ import 'instance_storage_config_storage_config.dart';
 /// import com.pulumi.aws.connect.InstanceStorageConfigArgs;
 /// import com.pulumi.aws.connect.inputs.InstanceStorageConfigStorageConfigArgs;
 /// import com.pulumi.aws.connect.inputs.InstanceStorageConfigStorageConfigS3ConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -685,6 +771,31 @@ import 'instance_storage_config_storage_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_instancestorageconfig" "example" {
+///   instance_id   = exampleAwsConnectInstance.id
+///   resource_type = "CHAT_TRANSCRIPTS"
+///   storage_config = {
+///     s3_config = {
+///       bucket_name   = exampleAwsS3Bucket.id
+///       bucket_prefix = "example"
+///       encryption_config = {
+///         encryption_type = "KMS"
+///         key_id          = exampleAwsKmsKey.arn
+///       }
+///     }
+///     storage_type = "S3"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -696,8 +807,8 @@ import 'instance_storage_config_storage_config.dart';
 /// import com.pulumi.aws.connect.inputs.InstanceStorageConfigStorageConfigArgs;
 /// import com.pulumi.aws.connect.inputs.InstanceStorageConfigStorageConfigS3ConfigArgs;
 /// import com.pulumi.aws.connect.inputs.InstanceStorageConfigStorageConfigS3ConfigEncryptionConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -748,7 +859,7 @@ import 'instance_storage_config_storage_config.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amazon Connect Instance Storage Configs using the `instance_id`, `association_id`, and `resource_type` separated by a colon (`:`). For example:
+/// Using `pulumi import`, import Amazon Connect Instance Storage Configs using the `instanceId`, `associationId`, and `resourceType` separated by a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:connect/instanceStorageConfig:InstanceStorageConfig example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5:CHAT_TRANSCRIPTS

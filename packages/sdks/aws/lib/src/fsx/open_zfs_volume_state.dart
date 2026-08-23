@@ -9,56 +9,57 @@ import 'open_zfs_volume_user_and_group_quota.dart';
 class OpenZfsVolumeState {
   /// Amazon Resource Name of the file system.
   final pulumi.Input<String>? arn;
-  /// A boolean flag indicating whether tags for the file system should be copied to snapshots. The default value is false.
+  /// Whether tags for the file system should be copied to snapshots. Default is false.
   final pulumi.Input<bool>? copyTagsToSnapshots;
   /// Method used to compress the data on the volume. Valid values are `NONE` or `ZSTD`. Child volumes that don't specify compression option will inherit from parent volume. This option on file system applies to the root volume.
   final pulumi.Input<String>? dataCompressionType;
   /// Whether to delete all child volumes and snapshots. Valid values: `DELETE_CHILD_VOLUMES_AND_SNAPSHOTS`. This configuration must be applied separately before attempting to delete the resource to have the desired behavior..
   final pulumi.Input<String>? deleteVolumeOptions;
-  /// The name of the Volume. You can use a maximum of 203 alphanumeric characters, plus the underscore (_) special character.
+  /// Name of the volume. You can use a maximum of 203 alphanumeric characters, plus the underscore (_) special character.
   final pulumi.Input<String>? name;
-  /// NFS export configuration for the root volume. Exactly 1 item. See `nfs_exports` Block Below for details.
+  /// NFS export configuration for the root volume. Exactly 1 item. See `nfsExports` Block Below for details.
   final pulumi.Input<OpenZfsVolumeNfsExports>? nfsExports;
-  /// Specifies the configuration to use when creating the OpenZFS volume. See `origin_snapshot` Block below for details.
+  /// Configuration to use when creating the OpenZFS volume. See `originSnapshot` Block below for details.
   final pulumi.Input<OpenZfsVolumeOriginSnapshot>? originSnapshot;
-  /// The volume id of volume that will be the parent volume for the volume being created, this could be the root volume created from the `aws.fsx.OpenZfsFileSystem` resource with the `root_volume_id` or the `id` property of another `aws.fsx.OpenZfsVolume`.
+  /// Volume ID of the volume that will be the parent volume for the volume being created, this could be the root volume created from the `aws.fsx.OpenZfsFileSystem` resource with the `rootVolumeId` or the `id` property of another `aws.fsx.OpenZfsVolume`.
   final pulumi.Input<String>? parentVolumeId;
-  /// specifies whether the volume is read-only. Default is false.
+  /// Whether the volume is read-only. Default is false.
   final pulumi.Input<bool>? readOnly;
-  /// The record size of an OpenZFS volume, in kibibytes (KiB). Valid values are `4`, `8`, `16`, `32`, `64`, `128`, `256`, `512`, or `1024` KiB. The default is `128` KiB.
+  /// Record size of an OpenZFS volume, in kibibytes (KiB). Valid values are `4`, `8`, `16`, `32`, `64`, `128`, `256`, `512`, or `1024` KiB. Default is `128` KiB.
   final pulumi.Input<int>? recordSizeKib;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The maximum amount of storage in gibibytes (GiB) that the volume can use from its parent.
+  /// Maximum amount of storage in gibibytes (GiB) that the volume can use from its parent.
   final pulumi.Input<int>? storageCapacityQuotaGib;
-  /// The amount of storage in gibibytes (GiB) to reserve from the parent volume.
+  /// Amount of storage in gibibytes (GiB) to reserve from the parent volume.
   final pulumi.Input<int>? storageCapacityReservationGib;
-  /// A map of tags to assign to the file system. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// Specify how much storage users or groups can use on the volume. Maximum number of items defined by [FSx for OpenZFS Resource quota](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/limits.html#limits-openzfs-resources-file-system). See `user_and_group_quotas` Block Below.
+  /// Specify how much storage users or groups can use on the volume. Maximum number of items defined by [FSx for OpenZFS Resource quota](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/limits.html#limits-openzfs-resources-file-system). See `userAndGroupQuotas` Block Below.
   final pulumi.Input<List<OpenZfsVolumeUserAndGroupQuota>>? userAndGroupQuotas;
+  /// Volume type. Default is `OPENZFS`.
   final pulumi.Input<String>? volumeType;
 
   /// Creates a new [OpenZfsVolumeState].
   /// [arn] Amazon Resource Name of the file system.
-  /// [copyTagsToSnapshots] A boolean flag indicating whether tags for the file system should be copied to snapshots. The default value is false.
+  /// [copyTagsToSnapshots] Whether tags for the file system should be copied to snapshots. Default is false.
   /// [dataCompressionType] Method used to compress the data on the volume. Valid values are `NONE` or `ZSTD`. Child volumes that don't specify compression option will inherit from parent volume. This option on file system applies to the root volume.
   /// [deleteVolumeOptions] Whether to delete all child volumes and snapshots. Valid values: `DELETE_CHILD_VOLUMES_AND_SNAPSHOTS`. This configuration must be applied separately before attempting to delete the resource to have the desired behavior..
-  /// [name] The name of the Volume. You can use a maximum of 203 alphanumeric characters, plus the underscore (_) special character.
-  /// [nfsExports] NFS export configuration for the root volume. Exactly 1 item. See `nfs_exports` Block Below for details.
-  /// [originSnapshot] Specifies the configuration to use when creating the OpenZFS volume. See `origin_snapshot` Block below for details.
-  /// [parentVolumeId] The volume id of volume that will be the parent volume for the volume being created, this could be the root volume created from the `aws.fsx.OpenZfsFileSystem` resource with the `root_volume_id` or the `id` property of another `aws.fsx.OpenZfsVolume`.
-  /// [readOnly] specifies whether the volume is read-only. Default is false.
-  /// [recordSizeKib] The record size of an OpenZFS volume, in kibibytes (KiB). Valid values are `4`, `8`, `16`, `32`, `64`, `128`, `256`, `512`, or `1024` KiB. The default is `128` KiB.
+  /// [name] Name of the volume. You can use a maximum of 203 alphanumeric characters, plus the underscore (_) special character.
+  /// [nfsExports] NFS export configuration for the root volume. Exactly 1 item. See `nfsExports` Block Below for details.
+  /// [originSnapshot] Configuration to use when creating the OpenZFS volume. See `originSnapshot` Block below for details.
+  /// [parentVolumeId] Volume ID of the volume that will be the parent volume for the volume being created, this could be the root volume created from the `aws.fsx.OpenZfsFileSystem` resource with the `rootVolumeId` or the `id` property of another `aws.fsx.OpenZfsVolume`.
+  /// [readOnly] Whether the volume is read-only. Default is false.
+  /// [recordSizeKib] Record size of an OpenZFS volume, in kibibytes (KiB). Valid values are `4`, `8`, `16`, `32`, `64`, `128`, `256`, `512`, or `1024` KiB. Default is `128` KiB.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [storageCapacityQuotaGib] The maximum amount of storage in gibibytes (GiB) that the volume can use from its parent.
-  /// [storageCapacityReservationGib] The amount of storage in gibibytes (GiB) to reserve from the parent volume.
-  /// [tags] A map of tags to assign to the file system. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  /// [userAndGroupQuotas] Specify how much storage users or groups can use on the volume. Maximum number of items defined by [FSx for OpenZFS Resource quota](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/limits.html#limits-openzfs-resources-file-system). See `user_and_group_quotas` Block Below.
-  /// [volumeType] Optional.
+  /// [storageCapacityQuotaGib] Maximum amount of storage in gibibytes (GiB) that the volume can use from its parent.
+  /// [storageCapacityReservationGib] Amount of storage in gibibytes (GiB) to reserve from the parent volume.
+  /// [tags] Map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [userAndGroupQuotas] Specify how much storage users or groups can use on the volume. Maximum number of items defined by [FSx for OpenZFS Resource quota](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/limits.html#limits-openzfs-resources-file-system). See `userAndGroupQuotas` Block Below.
+  /// [volumeType] Volume type. Default is `OPENZFS`.
   const OpenZfsVolumeState({
     this.arn,
     this.copyTagsToSnapshots,
@@ -123,4 +124,3 @@ class OpenZfsVolumeState {
     );
   }
 }
-

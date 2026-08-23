@@ -4,6 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering StandardsSubscription resources.
 class StandardsSubscriptionState {
+  /// The ARN of a resource that represents your subscription to a supported standard.
+  final pulumi.Input<String>? arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// The ARN of a standard - see below.
@@ -24,15 +26,18 @@ class StandardsSubscriptionState {
   final pulumi.Input<String>? standardsArn;
 
   /// Creates a new [StandardsSubscriptionState].
+  /// [arn] The ARN of a resource that represents your subscription to a supported standard.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [standardsArn] The ARN of a standard - see below.
   const StandardsSubscriptionState({
+    this.arn,
     this.region,
     this.standardsArn,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'arn': ?arn,
       'region': ?region,
       'standardsArn': ?standardsArn,
     };
@@ -40,9 +45,9 @@ class StandardsSubscriptionState {
 
   factory StandardsSubscriptionState.fromMap(Map<String, dynamic> map) {
     return StandardsSubscriptionState(
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       standardsArn: (() { final guardedValue = map['standardsArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

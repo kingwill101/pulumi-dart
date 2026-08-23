@@ -101,6 +101,29 @@ import 'get_hosted_zone_id_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_apprunner_gethostedzoneid" "main" {
+/// }
+///
+/// resource "aws_route53_record" "www" {
+///   zone_id = primary.zoneId
+///   name    = "example.com"
+///   type    = "A"
+///   aliases {
+///     name                   = mainAwsApprunnerCustomDomainAssociation.dnsTarget
+///     zone_id                = data.aws_apprunner_gethostedzoneid.main.id
+///     evaluate_target_health = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +135,8 @@ import 'get_hosted_zone_id_result.dart';
 /// import com.pulumi.aws.route53.Record;
 /// import com.pulumi.aws.route53.RecordArgs;
 /// import com.pulumi.aws.route53.inputs.RecordAliasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

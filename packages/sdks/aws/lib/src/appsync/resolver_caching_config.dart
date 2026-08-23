@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResolverCachingConfig {
-  /// The caching keys for a resolver that has caching activated. Valid values are entries from the $context.arguments, $context.source, and $context.identity maps.
+  /// Caching keys for a resolver that has caching activated. Valid values are entries from the $context.arguments, $context.source, and $context.identity maps.
   final pulumi.Input<List<String>>? cachingKeys;
-  /// The TTL in seconds for a resolver that has caching activated. Valid values are between `1` and `3600` seconds.
+  /// TTL in seconds for a resolver that has caching activated. Valid values are between `1` and `3600` seconds.
   final pulumi.Input<int>? ttl;
 
   /// Creates a new [ResolverCachingConfig].
-  /// [cachingKeys] The caching keys for a resolver that has caching activated. Valid values are entries from the $context.arguments, $context.source, and $context.identity maps.
-  /// [ttl] The TTL in seconds for a resolver that has caching activated. Valid values are between `1` and `3600` seconds.
+  /// [cachingKeys] Caching keys for a resolver that has caching activated. Valid values are entries from the $context.arguments, $context.source, and $context.identity maps.
+  /// [ttl] TTL in seconds for a resolver that has caching activated. Valid values are between `1` and `3600` seconds.
   const ResolverCachingConfig({
     this.cachingKeys,
     this.ttl,
@@ -30,4 +30,3 @@ class ResolverCachingConfig {
     );
   }
 }
-

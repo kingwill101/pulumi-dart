@@ -227,6 +227,46 @@ import 'query_log_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "route53-query-logging-policy" {
+///   statements {
+///     actions   = ["logs:CreateLogStream", "logs:PutLogEvents"]
+///     resources = ["arn:aws:logs:*:*:log-group:/aws/route53/*"]
+///     principals {
+///       identifiers = ["route53.amazonaws.com"]
+///       type        = "Service"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_loggroup" "aws_route53_example_com" {
+///   name              ="/aws/route53/${aws_route53_zone.example_com.name}"
+///   retention_in_days = 30
+/// }
+/// resource "aws_cloudwatch_logresourcepolicy" "route53-query-logging-policy" {
+///   policy_document = data.aws_iam_getpolicydocument.route53-query-logging-policy.json
+///   policy_name     = "route53-query-logging-policy"
+/// }
+/// # Example Route53 zone with query logging
+/// resource "aws_route53_zone" "example_com" {
+///   name = "example.com"
+/// }
+/// resource "aws_route53_querylog" "example_com" {
+///   depends_on               = [aws_cloudwatch_logresourcepolicy.route53-query-logging-policy]
+///   cloudwatch_log_group_arn = aws_cloudwatch_loggroup.aws_route53_example_com.arn
+///   zone_id                  = aws_route53_zone.example_com.zone_id
+/// }
+/// # Example CloudWatch log resource policy to allow Route53 to write logs
+/// # to any log group under /aws/route53/*
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -239,13 +279,15 @@ import 'query_log_state.dart';
 /// import com.pulumi.aws.cloudwatch.LogGroupArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.cloudwatch.LogResourcePolicy;
 /// import com.pulumi.aws.cloudwatch.LogResourcePolicyArgs;
 /// import com.pulumi.aws.route53.QueryLog;
 /// import com.pulumi.aws.route53.QueryLogArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

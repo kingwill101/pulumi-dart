@@ -61,6 +61,20 @@ import 'cluster_snapshot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_neptune_clustersnapshot" "example" {
+///   db_cluster_identifier          = exampleAwsNeptuneCluster.id
+///   db_cluster_snapshot_identifier = "resourcetestsnapshot1234"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'cluster_snapshot_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.neptune.ClusterSnapshot;
 /// import com.pulumi.aws.neptune.ClusterSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -122,7 +136,7 @@ class ClusterSnapshot extends pulumi.CustomResource {
   late final pulumi.Output<String> engine;
   /// Version of the database engine for this DB cluster snapshot.
   late final pulumi.Output<String> engineVersion;
-  /// If storage_encrypted is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.
+  /// If storageEncrypted is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.
   late final pulumi.Output<String> kmsKeyId;
   /// License model information for the restored DB cluster.
   late final pulumi.Output<String> licenseModel;

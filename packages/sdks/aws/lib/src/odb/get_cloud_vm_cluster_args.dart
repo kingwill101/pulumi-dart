@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_odb_get_cloud_vm_cluster_get_cloud_vm_cluster_args_doc}
 class GetCloudVmClusterArgs {
-  /// The unique identifier of the cloud vm cluster.
+  /// Unique identifier of the cloud vm cluster.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> id;
@@ -15,7 +15,7 @@ class GetCloudVmClusterArgs {
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetCloudVmClusterArgs].
-  /// [id] The unique identifier of the cloud vm cluster.
+  /// [id] Unique identifier of the cloud vm cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetCloudVmClusterArgs({
     required this.id,
@@ -36,4 +36,3 @@ class GetCloudVmClusterArgs {
     );
   }
 }
-

@@ -7,11 +7,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_cognito_user_pool_uicustomization_user_pool_uicustomization_args_doc}
 class UserPoolUICustomizationArgs {
-  /// The client ID for the client app. Defaults to `ALL`. If `ALL` is specified, the `css` and/or `image_file` settings will be used for every client that has no UI customization set previously.
+  /// The client ID for the client app. Defaults to `ALL`. If `ALL` is specified, the `css` and/or `imageFile` settings will be used for every client that has no UI customization set previously.
   final pulumi.Input<String>? clientId;
-  /// The CSS values in the UI customization, provided as a String. At least one of `css` or `image_file` is required.
+  /// The CSS values in the UI customization, provided as a String. At least one of `css` or `imageFile` is required.
   final pulumi.Input<String>? css;
-  /// The uploaded logo image for the UI customization, provided as a base64-encoded String. Drift detection is not possible for this argument. At least one of `css` or `image_file` is required.
+  /// The uploaded logo image for the UI customization, provided as a base64-encoded String. Drift detection is not possible for this argument. At least one of `css` or `imageFile` is required.
   final pulumi.Input<String>? imageFile;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -19,9 +19,9 @@ class UserPoolUICustomizationArgs {
   final pulumi.Input<String> userPoolId;
 
   /// Creates a new [UserPoolUICustomizationArgs].
-  /// [clientId] The client ID for the client app. Defaults to `ALL`. If `ALL` is specified, the `css` and/or `image_file` settings will be used for every client that has no UI customization set previously.
-  /// [css] The CSS values in the UI customization, provided as a String. At least one of `css` or `image_file` is required.
-  /// [imageFile] The uploaded logo image for the UI customization, provided as a base64-encoded String. Drift detection is not possible for this argument. At least one of `css` or `image_file` is required.
+  /// [clientId] The client ID for the client app. Defaults to `ALL`. If `ALL` is specified, the `css` and/or `imageFile` settings will be used for every client that has no UI customization set previously.
+  /// [css] The CSS values in the UI customization, provided as a String. At least one of `css` or `imageFile` is required.
+  /// [imageFile] The uploaded logo image for the UI customization, provided as a base64-encoded String. Drift detection is not possible for this argument. At least one of `css` or `imageFile` is required.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userPoolId] The user pool ID for the user pool.
   const UserPoolUICustomizationArgs({
@@ -52,4 +52,3 @@ class UserPoolUICustomizationArgs {
     );
   }
 }
-

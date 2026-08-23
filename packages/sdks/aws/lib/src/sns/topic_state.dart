@@ -46,7 +46,7 @@ class TopicState {
   final pulumi.Input<String>? lambdaSuccessFeedbackRoleArn;
   /// Percentage of success to sample
   final pulumi.Input<int>? lambdaSuccessFeedbackSampleRate;
-  /// The name of the topic. Topic names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256 characters long. For a FIFO (first-in-first-out) topic, the name must end with the `.fifo` suffix. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`
+  /// The name of the topic. Topic names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256 characters long. For a FIFO (first-in-first-out) topic, the name must end with the `.fifo` suffix. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`
   final pulumi.Input<String>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`
   final pulumi.Input<String>? namePrefix;
@@ -64,9 +64,9 @@ class TopicState {
   final pulumi.Input<String>? sqsSuccessFeedbackRoleArn;
   /// Percentage of success to sample
   final pulumi.Input<int>? sqsSuccessFeedbackSampleRate;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Tracing mode of an Amazon SNS topic. Valid values: `"PassThrough"`, `"Active"`.
   final pulumi.Input<String>? tracingConfig;
@@ -93,7 +93,7 @@ class TopicState {
   /// [lambdaFailureFeedbackRoleArn] IAM role for failure feedback
   /// [lambdaSuccessFeedbackRoleArn] The IAM role permitted to receive success feedback for this topic
   /// [lambdaSuccessFeedbackSampleRate] Percentage of success to sample
-  /// [name] The name of the topic. Topic names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256 characters long. For a FIFO (first-in-first-out) topic, the name must end with the `.fifo` suffix. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`
+  /// [name] The name of the topic. Topic names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256 characters long. For a FIFO (first-in-first-out) topic, the name must end with the `.fifo` suffix. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`
   /// [owner] The AWS Account ID of the SNS topic owner
   /// [policy] The fully-formed AWS policy as JSON.
@@ -102,8 +102,8 @@ class TopicState {
   /// [sqsFailureFeedbackRoleArn] IAM role for failure feedback
   /// [sqsSuccessFeedbackRoleArn] The IAM role permitted to receive success feedback for this topic
   /// [sqsSuccessFeedbackSampleRate] Percentage of success to sample
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [tracingConfig] Tracing mode of an Amazon SNS topic. Valid values: `"PassThrough"`, `"Active"`.
   const TopicState({
     this.applicationFailureFeedbackRoleArn,
@@ -217,4 +217,3 @@ class TopicState {
     );
   }
 }
-

@@ -54,4 +54,3 @@ class VpnConnectionTunnel1LogOptionsCloudwatchLogOptions {
     );
   }
 }
-

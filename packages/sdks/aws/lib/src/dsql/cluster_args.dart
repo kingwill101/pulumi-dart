@@ -12,7 +12,7 @@ class ClusterArgs {
   /// Whether deletion protection is enabled in this cluster.
   /// Default value is `false`.
   final pulumi.Input<bool>? deletionProtectionEnabled;
-  /// Destroys cluster even if `deletion_protection_enabled` is set to `true`.
+  /// Destroys cluster even if `deletionProtectionEnabled` is set to `true`.
   /// Default value is `false`.
   final pulumi.Input<bool>? forceDestroy;
   /// The ARN of the AWS KMS key that encrypts data in the DSQL Cluster, or `"AWS_OWNED_KMS_KEY"`.
@@ -27,7 +27,7 @@ class ClusterArgs {
 
   /// Creates a new [ClusterArgs].
   /// [deletionProtectionEnabled] Whether deletion protection is enabled in this cluster.
-  /// [forceDestroy] Destroys cluster even if `deletion_protection_enabled` is set to `true`.
+  /// [forceDestroy] Destroys cluster even if `deletionProtectionEnabled` is set to `true`.
   /// [kmsEncryptionKey] The ARN of the AWS KMS key that encrypts data in the DSQL Cluster, or `"AWS_OWNED_KMS_KEY"`.
   /// [multiRegionProperties] Multi-region properties of the DSQL Cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -67,4 +67,3 @@ class ClusterArgs {
     );
   }
 }
-

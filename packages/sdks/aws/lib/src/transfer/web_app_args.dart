@@ -10,11 +10,11 @@ import 'web_app_web_app_unit.dart';
 /// {@endtemplate}
 /// {@macro pulumi_transfer_web_app_web_app_args_doc}
 class WebAppArgs {
-  /// URL provided to interact with the Transfer Family web app. If `endpoint_details.vpc` block is specified, `access_endpoint` must not be provided.
+  /// URL provided to interact with the Transfer Family web app. If `endpoint_details.vpc` block is specified, `accessEndpoint` must not be provided.
   final pulumi.Input<String>? accessEndpoint;
-  /// Block for the endpoint configuration for the web app. If not specified, the web app will be created with a public endpoint.
+  /// Block for the endpoint configuration for the web app. If not specified, the web app will be created with a public endpoint. See `endpointDetails` Block below.
   final pulumi.Input<WebAppEndpointDetails>? endpointDetails;
-  /// Block for details of the identity provider to use with the web app. See Identity provider details below.
+  /// Block for details of the identity provider to use with the web app. See `identityProviderDetails` Block below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<WebAppIdentityProviderDetails> identityProviderDetails;
@@ -24,18 +24,17 @@ class WebAppArgs {
   final pulumi.Input<Map<String, String>>? tags;
   /// Type of endpoint policy for the web app. Valid values are: `STANDARD`(default) or `FIPS`.
   final pulumi.Input<String>? webAppEndpointPolicy;
-  /// Block for number of concurrent connections or the user sessions on the web app.
-  /// * provisioned - (Optional) Number of units of concurrent connections.
+  /// Block for number of concurrent connections or the user sessions on the web app. See `webAppUnits` Block below.
   final pulumi.Input<List<WebAppWebAppUnit>>? webAppUnits;
 
   /// Creates a new [WebAppArgs].
-  /// [accessEndpoint] URL provided to interact with the Transfer Family web app. If `endpoint_details.vpc` block is specified, `access_endpoint` must not be provided.
-  /// [endpointDetails] Block for the endpoint configuration for the web app. If not specified, the web app will be created with a public endpoint.
-  /// [identityProviderDetails] Block for details of the identity provider to use with the web app. See Identity provider details below.
+  /// [accessEndpoint] URL provided to interact with the Transfer Family web app. If `endpoint_details.vpc` block is specified, `accessEndpoint` must not be provided.
+  /// [endpointDetails] Block for the endpoint configuration for the web app. If not specified, the web app will be created with a public endpoint. See `endpointDetails` Block below.
+  /// [identityProviderDetails] Block for details of the identity provider to use with the web app. See `identityProviderDetails` Block below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value pairs that can be used to group and search for web apps.
   /// [webAppEndpointPolicy] Type of endpoint policy for the web app. Valid values are: `STANDARD`(default) or `FIPS`.
-  /// [webAppUnits] Block for number of concurrent connections or the user sessions on the web app.
+  /// [webAppUnits] Block for number of concurrent connections or the user sessions on the web app. See `webAppUnits` Block below.
   const WebAppArgs({
     this.accessEndpoint,
     this.endpointDetails,
@@ -70,4 +69,3 @@ class WebAppArgs {
     );
   }
 }
-

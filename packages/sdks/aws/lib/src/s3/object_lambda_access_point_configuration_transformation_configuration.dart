@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_lambda_access_point_configuration_transformation_configuration_content_transformation.dart';
 
 class ObjectLambdaAccessPointConfigurationTransformationConfiguration {
-  /// The actions of an Object Lambda Access Point configuration. Valid values: `GetObject`.
+  /// Actions of an Object Lambda Access Point configuration. Valid values: `GetObject`.
   final pulumi.Input<List<String>> actions;
-  /// The content transformation of an Object Lambda Access Point configuration. See Content Transformation below for more details.
+  /// Content transformation of an Object Lambda Access Point configuration. See `contentTransformation` Block below for more details.
   final pulumi.Input<ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation> contentTransformation;
 
   /// Creates a new [ObjectLambdaAccessPointConfigurationTransformationConfiguration].
-  /// [actions] The actions of an Object Lambda Access Point configuration. Valid values: `GetObject`.
-  /// [contentTransformation] The content transformation of an Object Lambda Access Point configuration. See Content Transformation below for more details.
+  /// [actions] Actions of an Object Lambda Access Point configuration. Valid values: `GetObject`.
+  /// [contentTransformation] Content transformation of an Object Lambda Access Point configuration. See `contentTransformation` Block below for more details.
   const ObjectLambdaAccessPointConfigurationTransformationConfiguration({
     required this.actions,
     required this.contentTransformation,
@@ -31,4 +31,3 @@ class ObjectLambdaAccessPointConfigurationTransformationConfiguration {
     );
   }
 }
-

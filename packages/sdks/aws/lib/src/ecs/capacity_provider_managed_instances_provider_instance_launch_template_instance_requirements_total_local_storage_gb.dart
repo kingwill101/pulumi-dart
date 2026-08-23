@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsTotalLocalStorageGb {
+  /// Maximum total local storage, in GB.
   final pulumi.Input<double>? max;
+  /// Minimum total local storage, in GB.
   final pulumi.Input<double>? min;
 
   /// Creates a new [CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsTotalLocalStorageGb].
-  /// [max] Optional.
-  /// [min] Optional.
+  /// [max] Maximum total local storage, in GB.
+  /// [min] Minimum total local storage, in GB.
   const CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsTotalLocalStorageGb({
     this.max,
     this.min,
@@ -28,4 +30,3 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
     );
   }
 }
-

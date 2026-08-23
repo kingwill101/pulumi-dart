@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig {
-  /// Access point ID to use. If an access point is specified, the root directory value will be relative to the directory set for the access point. If specified, transit encryption must be enabled in the EFSVolumeConfiguration.
+  /// Access point ID used.
   final pulumi.Input<String> accessPointId;
-  /// Whether or not to use the Amazon ECS task IAM role defined in a task definition when mounting the Amazon EFS file system. If enabled, transit encryption must be enabled in the EFSVolumeConfiguration. Valid values: `ENABLED`, `DISABLED`. If this parameter is omitted, the default value of `DISABLED` is used.
+  /// Whether the Amazon ECS task IAM role defined in a task definition is used when mounting the Amazon EFS file system.
   final pulumi.Input<String> iam;
 
   /// Creates a new [GetTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig].
-  /// [accessPointId] Access point ID to use. If an access point is specified, the root directory value will be relative to the directory set for the access point. If specified, transit encryption must be enabled in the EFSVolumeConfiguration.
-  /// [iam] Whether or not to use the Amazon ECS task IAM role defined in a task definition when mounting the Amazon EFS file system. If enabled, transit encryption must be enabled in the EFSVolumeConfiguration. Valid values: `ENABLED`, `DISABLED`. If this parameter is omitted, the default value of `DISABLED` is used.
+  /// [accessPointId] Access point ID used.
+  /// [iam] Whether the Amazon ECS task IAM role defined in a task definition is used when mounting the Amazon EFS file system.
   const GetTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig({
     required this.accessPointId,
     required this.iam,
@@ -30,4 +30,3 @@ class GetTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig {
     );
   }
 }
-

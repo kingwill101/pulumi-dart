@@ -96,6 +96,24 @@ import 'get_received_licenses_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_licensemanager_getlicensegrants" "test" {
+///   filters {
+///     name   = "GranteePrincipalARN"
+///     values = ["arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +124,9 @@ import 'get_received_licenses_result.dart';
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
 /// import com.pulumi.aws.licensemanager.LicensemanagerFunctions;
 /// import com.pulumi.aws.licensemanager.inputs.GetLicenseGrantsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.licensemanager.inputs.GetLicenseGrantsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -218,6 +237,19 @@ Future<GetLicenseGrantsResult> getLicenseGrants(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_licensemanager_getreceivedlicense" "test" {
+///   license_arn = "arn:aws:license-manager::111111111111:license:l-ecbaa94eb71a4830b6d7e49268fecaa0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -226,8 +258,8 @@ Future<GetLicenseGrantsResult> getLicenseGrants(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.licensemanager.LicensemanagerFunctions;
 /// import com.pulumi.aws.licensemanager.inputs.GetReceivedLicenseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -348,6 +380,22 @@ Future<GetReceivedLicenseResult> getReceivedLicense(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_licensemanager_getreceivedlicenses" "test" {
+///   filters {
+///     name   = "IssuerName"
+///     values = ["AWS/Marketplace"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -356,8 +404,9 @@ Future<GetReceivedLicenseResult> getReceivedLicense(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.licensemanager.LicensemanagerFunctions;
 /// import com.pulumi.aws.licensemanager.inputs.GetReceivedLicensesArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.licensemanager.inputs.GetReceivedLicensesFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

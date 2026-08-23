@@ -17,7 +17,7 @@ class TopicSubscriptionArgs {
   final pulumi.Input<bool>? endpointAutoConfirms;
   /// JSON String with the filter policy that will be used in the subscription to filter messages seen by the target resource. Refer to the [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/message-filtering.html) for more details.
   final pulumi.Input<String>? filterPolicy;
-  /// Whether the `filter_policy` applies to `MessageAttributes` (default) or `MessageBody`.
+  /// Whether the `filterPolicy` applies to `MessageAttributes` (default) or `MessageBody`.
   final pulumi.Input<String>? filterPolicyScope;
   /// Protocol to use. Valid values are: `sqs`, `sms`, `lambda`, `firehose`, and `application`. Protocols `email`, `email-json`, `http` and `https` are also valid but partially supported. See details below.
   final pulumi.Input<String> protocol;
@@ -42,7 +42,7 @@ class TopicSubscriptionArgs {
   /// [endpoint] Endpoint to send data to. The contents vary with the protocol. See details below.
   /// [endpointAutoConfirms] Whether the endpoint is capable of [auto confirming subscription](http://docs.aws.amazon.com/sns/latest/dg/SendMessageToHttp.html#SendMessageToHttp.prepare) (e.g., PagerDuty). Default is `false`.
   /// [filterPolicy] JSON String with the filter policy that will be used in the subscription to filter messages seen by the target resource. Refer to the [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/message-filtering.html) for more details.
-  /// [filterPolicyScope] Whether the `filter_policy` applies to `MessageAttributes` (default) or `MessageBody`.
+  /// [filterPolicyScope] Whether the `filterPolicy` applies to `MessageAttributes` (default) or `MessageBody`.
   /// [protocol] Protocol to use. Valid values are: `sqs`, `sms`, `lambda`, `firehose`, and `application`. Protocols `email`, `email-json`, `http` and `https` are also valid but partially supported. See details below.
   /// [rawMessageDelivery] Whether to enable raw message delivery (the original message is directly passed, not wrapped in JSON with the original message in the message property). Default is `false`.
   /// [redrivePolicy] JSON String with the redrive policy that will be used in the subscription. Refer to the [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/sns-dead-letter-queues.html#how-messages-moved-into-dead-letter-queue) for more details.
@@ -102,4 +102,3 @@ class TopicSubscriptionArgs {
     );
   }
 }
-

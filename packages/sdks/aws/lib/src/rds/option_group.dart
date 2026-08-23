@@ -166,6 +166,39 @@ import 'option_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_optiongroup" "example" {
+///   name                     = "option-group-test"
+///   option_group_description = "Option Group"
+///   engine_name              = "sqlserver-ee"
+///   major_engine_version     = "11.00"
+///   options {
+///     option_name = "Timezone"
+///     option_settings {
+///       name  = "TIME_ZONE"
+///       value = "UTC"
+///     }
+///   }
+///   options {
+///     option_name = "SQLSERVER_BACKUP_RESTORE"
+///     option_settings {
+///       name  = "IAM_ROLE_ARN"
+///       value = exampleAwsIamRole.arn
+///     }
+///   }
+///   options {
+///     option_name = "TDE"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +208,9 @@ import 'option_group_state.dart';
 /// import com.pulumi.aws.rds.OptionGroup;
 /// import com.pulumi.aws.rds.OptionGroupArgs;
 /// import com.pulumi.aws.rds.inputs.OptionGroupOptionArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.rds.inputs.OptionGroupOptionOptionSettingArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -274,9 +308,9 @@ class OptionGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Set to true if you do not wish the option group to be deleted at destroy time, and instead just remove the option group from the Pulumi state.
   late final pulumi.Output<bool?> skipDestroy;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [OptionGroup].

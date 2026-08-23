@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppCampaignHook {
-  /// Lambda function name or ARN to be called for delivery. Conflicts with `web_url`
+  /// Lambda function name or ARN to be called for delivery. Conflicts with `webUrl`.
   final pulumi.Input<String>? lambdaFunctionName;
   /// What mode Lambda should be invoked in. Valid values for this parameter are `DELIVERY`, `FILTER`.
   final pulumi.Input<String>? mode;
-  /// Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request. Conflicts with `lambda_function_name`
+  /// Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request. Conflicts with `lambdaFunctionName`.
   final pulumi.Input<String>? webUrl;
 
   /// Creates a new [AppCampaignHook].
-  /// [lambdaFunctionName] Lambda function name or ARN to be called for delivery. Conflicts with `web_url`
+  /// [lambdaFunctionName] Lambda function name or ARN to be called for delivery. Conflicts with `webUrl`.
   /// [mode] What mode Lambda should be invoked in. Valid values for this parameter are `DELIVERY`, `FILTER`.
-  /// [webUrl] Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request. Conflicts with `lambda_function_name`
+  /// [webUrl] Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request. Conflicts with `lambdaFunctionName`.
   const AppCampaignHook({
     this.lambdaFunctionName,
     this.mode,
@@ -36,4 +36,3 @@ class AppCampaignHook {
     );
   }
 }
-

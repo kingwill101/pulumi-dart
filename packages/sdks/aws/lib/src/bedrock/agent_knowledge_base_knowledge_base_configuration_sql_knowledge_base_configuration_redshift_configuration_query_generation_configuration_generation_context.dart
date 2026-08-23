@@ -5,13 +5,13 @@ import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_con
 import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_query_generation_configuration_generation_context_table.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContext {
-  /// Information about example queries to help the query engine generate appropriate SQL queries. See `curated_query` block for details.
+  /// Information about example queries to help the query engine generate appropriate SQL queries. See `curatedQuery` block for details.
   final pulumi.Input<List<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextCuratedQuery>>? curatedQueries;
   /// Information about a table in the database. See `table` block for details.
   final pulumi.Input<List<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTable>>? tables;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContext].
-  /// [curatedQueries] Information about example queries to help the query engine generate appropriate SQL queries. See `curated_query` block for details.
+  /// [curatedQueries] Information about example queries to help the query engine generate appropriate SQL queries. See `curatedQuery` block for details.
   /// [tables] Information about a table in the database. See `table` block for details.
   const AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContext({
     this.curatedQueries,
@@ -32,4 +32,3 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
     );
   }
 }
-

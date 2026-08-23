@@ -9,7 +9,7 @@ import 'ami_ephemeral_block_device.dart';
 /// {@endtemplate}
 /// {@macro pulumi_ec2_ami_ami_args_doc}
 class AmiArgs {
-  /// Machine architecture for created instances. Defaults to `x86_64`.
+  /// Machine architecture for created instances. Defaults to `x8664`.
   final pulumi.Input<String>? architecture;
   /// Boot mode of the AMI. For more information, see [Boot modes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html) in the Amazon Elastic Compute Cloud User Guide.
   final pulumi.Input<String>? bootMode;
@@ -37,7 +37,7 @@ class AmiArgs {
   /// Name of the root device (for example, `/dev/sda1`, or `/dev/xvda`).
   final pulumi.Input<String>? rootDeviceName;
   final pulumi.Input<String>? sriovNetSupport;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the Amazon Elastic Compute Cloud User Guide.
   final pulumi.Input<String>? tpmSupport;
@@ -49,7 +49,7 @@ class AmiArgs {
   final pulumi.Input<String>? virtualizationType;
 
   /// Creates a new [AmiArgs].
-  /// [architecture] Machine architecture for created instances. Defaults to `x86_64`.
+  /// [architecture] Machine architecture for created instances. Defaults to `x8664`.
   /// [bootMode] Boot mode of the AMI. For more information, see [Boot modes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html) in the Amazon Elastic Compute Cloud User Guide.
   /// [deprecationTime] Date and time to deprecate the AMI. If you specified a value for seconds, Amazon EC2 rounds the seconds to the nearest minute. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
   /// [description] Longer, human-readable description for the AMI.
@@ -64,7 +64,7 @@ class AmiArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rootDeviceName] Name of the root device (for example, `/dev/sda1`, or `/dev/xvda`).
   /// [sriovNetSupport] Optional.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tpmSupport] If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the Amazon Elastic Compute Cloud User Guide.
   /// [uefiData] Base64 representation of the non-volatile UEFI variable store.
   /// [virtualizationType] Keyword to choose what virtualization mode created instances
@@ -138,4 +138,3 @@ class AmiArgs {
     );
   }
 }
-

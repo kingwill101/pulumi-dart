@@ -19,11 +19,11 @@ class EventSubscriptionArgs {
   final pulumi.Input<String>? severity;
   /// The ARN of the SNS topic to send events to.
   final pulumi.Input<String> snsTopicArn;
-  /// A list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. If specified, a `source_type` must also be specified.
+  /// A list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. If specified, a `sourceType` must also be specified.
   final pulumi.Input<List<String>>? sourceIds;
   /// The type of source that will be generating the events. Valid options are `cluster`, `cluster-parameter-group`, `cluster-security-group`, `cluster-snapshot`, or `scheduled-action`. If not set, all sources will be subscribed to.
   final pulumi.Input<String>? sourceType;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [EventSubscriptionArgs].
@@ -33,9 +33,9 @@ class EventSubscriptionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [severity] The event severity to be published by the notification subscription. Valid options are `INFO` or `ERROR`. Default value of `INFO`.
   /// [snsTopicArn] The ARN of the SNS topic to send events to.
-  /// [sourceIds] A list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. If specified, a `source_type` must also be specified.
+  /// [sourceIds] A list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. If specified, a `sourceType` must also be specified.
   /// [sourceType] The type of source that will be generating the events. Valid options are `cluster`, `cluster-parameter-group`, `cluster-security-group`, `cluster-snapshot`, or `scheduled-action`. If not set, all sources will be subscribed to.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const EventSubscriptionArgs({
     this.enabled,
     this.eventCategories,
@@ -76,4 +76,3 @@ class EventSubscriptionArgs {
     );
   }
 }
-

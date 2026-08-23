@@ -15,6 +15,8 @@ class ServiceState {
   final pulumi.Input<String>? customDomainName;
   /// DNS name of the service.
   final pulumi.Input<List<ServiceDnsEntry>>? dnsEntries;
+  /// Amount of time, in seconds, that a connection can remain idle (no data sent) before VPC Lattice closes it. The valid range is 60 to 600 seconds. Default is 60 seconds.
+  final pulumi.Input<int>? idleTimeoutSeconds;
   /// Name of the service. The name must be unique within the account. The valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.Must be between 3 and 40 characters in length.
   ///
   /// The following arguments are optional:
@@ -23,9 +25,9 @@ class ServiceState {
   final pulumi.Input<String>? region;
   /// Status of the service.
   final pulumi.Input<String>? status;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [ServiceState].
@@ -34,17 +36,19 @@ class ServiceState {
   /// [certificateArn] Amazon Resource Name (ARN) of the certificate.
   /// [customDomainName] Custom domain name of the service.
   /// [dnsEntries] DNS name of the service.
+  /// [idleTimeoutSeconds] Amount of time, in seconds, that a connection can remain idle (no data sent) before VPC Lattice closes it. The valid range is 60 to 600 seconds. Default is 60 seconds.
   /// [name] Name of the service. The name must be unique within the account. The valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.Must be between 3 and 40 characters in length.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Status of the service.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const ServiceState({
     this.arn,
     this.authType,
     this.certificateArn,
     this.customDomainName,
     this.dnsEntries,
+    this.idleTimeoutSeconds,
     this.name,
     this.region,
     this.status,
@@ -59,6 +63,7 @@ class ServiceState {
       'certificateArn': ?certificateArn,
       'customDomainName': ?customDomainName,
       'dnsEntries': ?pulumi.Input.mapOptionalInputValue<List<ServiceDnsEntry>, List<Map<String, dynamic>>>(dnsEntries, (value) => pulumi.Input.encodeList<ServiceDnsEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'idleTimeoutSeconds': ?idleTimeoutSeconds,
       'name': ?name,
       'region': ?region,
       'status': ?status,
@@ -74,6 +79,7 @@ class ServiceState {
       certificateArn: (() { final guardedValue = map['certificateArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customDomainName: (() { final guardedValue = map['customDomainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dnsEntries: (() { final guardedValue = map['dnsEntries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceDnsEntry>(guardedValue, (value) => ServiceDnsEntry.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      idleTimeoutSeconds: (() { final guardedValue = map['idleTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -82,4 +88,3 @@ class ServiceState {
     );
   }
 }
-

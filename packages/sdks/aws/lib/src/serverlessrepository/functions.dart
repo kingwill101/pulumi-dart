@@ -75,13 +75,40 @@ import 'get_application_result.dart';
 /// 			Name:            pulumi.String("Example"),
 /// 			ApplicationId:   pulumi.String(example.ApplicationId),
 /// 			SemanticVersion: pulumi.String(example.SemanticVersion),
-/// 			Capabilities:    interface{}(example.RequiredCapabilities),
+/// 			Capabilities:    toPulumiStringArray(example.RequiredCapabilities),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// func toPulumiStringArray(arr []string) pulumi.StringArray {
+/// 	var pulumiArr pulumi.StringArray
+/// 	for _, v := range arr {
+/// 		pulumiArr = append(pulumiArr, pulumi.String(v))
+/// 	}
+/// 	return pulumiArr
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_serverlessrepository_getapplication" "example" {
+///   application_id = "arn:aws:serverlessrepo:us-east-1:123456789012:applications/ExampleApplication"
+/// }
+///
+/// resource "aws_serverlessrepository_cloudformationstack" "example" {
+///   name             = "Example"
+///   application_id   = data.aws_serverlessrepository_getapplication.example.application_id
+///   semantic_version = data.aws_serverlessrepository_getapplication.example.semantic_version
+///   capabilities     = data.aws_serverlessrepository_getapplication.example.required_capabilities
 /// }
 /// ```
 /// ```java
@@ -94,8 +121,8 @@ import 'get_application_result.dart';
 /// import com.pulumi.aws.serverlessrepository.inputs.GetApplicationArgs;
 /// import com.pulumi.aws.serverlessrepository.CloudFormationStack;
 /// import com.pulumi.aws.serverlessrepository.CloudFormationStackArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

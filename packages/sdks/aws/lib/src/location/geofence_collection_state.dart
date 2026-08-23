@@ -18,7 +18,7 @@ class GeofenceCollectionState {
   final pulumi.Input<String>? kmsKeyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value tags for the geofence collection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the geofence collection. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The timestamp for when the geofence collection resource was last updated in ISO 8601 format.
@@ -31,7 +31,7 @@ class GeofenceCollectionState {
   /// [description] The optional description for the geofence collection.
   /// [kmsKeyId] A key identifier for an AWS KMS customer managed key assigned to the Amazon Location resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value tags for the geofence collection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value tags for the geofence collection. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [updateTime] The timestamp for when the geofence collection resource was last updated in ISO 8601 format.
   const GeofenceCollectionState({
@@ -74,4 +74,3 @@ class GeofenceCollectionState {
     );
   }
 }
-

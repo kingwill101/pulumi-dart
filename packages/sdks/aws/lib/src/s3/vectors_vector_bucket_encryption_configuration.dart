@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VectorsVectorBucketEncryptionConfiguration {
-  /// AWS KMS CMK ARN to use for the default encryption of the vector bucket. Allowed if and only if `sse_type` is set to `aws:kms`.
+  /// AWS KMS CMK ARN to use for the default encryption of the vector bucket. Allowed if and only if `sseType` is set to `aws:kms`.
   final pulumi.Input<String> kmsKeyArn;
   /// Server-side encryption type to use for the default encryption of the vector bucket. Valid values: `AES256`, `aws:kms`.
   final pulumi.Input<String> sseType;
 
   /// Creates a new [VectorsVectorBucketEncryptionConfiguration].
-  /// [kmsKeyArn] AWS KMS CMK ARN to use for the default encryption of the vector bucket. Allowed if and only if `sse_type` is set to `aws:kms`.
+  /// [kmsKeyArn] AWS KMS CMK ARN to use for the default encryption of the vector bucket. Allowed if and only if `sseType` is set to `aws:kms`.
   /// [sseType] Server-side encryption type to use for the default encryption of the vector bucket. Valid values: `AES256`, `aws:kms`.
   const VectorsVectorBucketEncryptionConfiguration({
     required this.kmsKeyArn,
@@ -30,4 +30,3 @@ class VectorsVectorBucketEncryptionConfiguration {
     );
   }
 }
-

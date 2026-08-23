@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_rule_group_rules_source_stateless_rules_and_custom_actions_custom_action_action_definition.dart';
 
 class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction {
-  /// A configuration block describing the custom action associated with the `action_name`. See Action Definition below for details.
+  /// A configuration block describing the custom action associated with the `actionName`. See Action Definition below for details.
   final pulumi.Input<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition> actionDefinition;
   /// A friendly name of the custom action.
   final pulumi.Input<String> actionName;
 
   /// Creates a new [RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction].
-  /// [actionDefinition] A configuration block describing the custom action associated with the `action_name`. See Action Definition below for details.
+  /// [actionDefinition] A configuration block describing the custom action associated with the `actionName`. See Action Definition below for details.
   /// [actionName] A friendly name of the custom action.
   const RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction({
     required this.actionDefinition,
@@ -31,4 +31,3 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction {
     );
   }
 }
-

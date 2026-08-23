@@ -16,62 +16,62 @@ import 'connector_profile_connector_profile_config_connector_profile_properties_
 import 'connector_profile_connector_profile_config_connector_profile_properties_zendesk.dart';
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileProperties {
-  /// The connector-specific credentials required when using Amplitude. See Amplitude Connector Profile Credentials for more details.
+  /// Connector-specific credentials required when using Amplitude. See `connector_profile_config.connector_profile_credentials.amplitude` Block for details.
   final pulumi.Input<Map<String, dynamic>>? amplitude;
-  /// The connector-specific profile properties required when using the custom connector. See Custom Connector Profile Properties for more details.
+  /// Connector-specific profile properties required when using the custom connector. See `connector_profile_config.connector_profile_properties.custom_connector` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnector>? customConnector;
-  /// Connector-specific properties required when using Datadog. See Generic Connector Profile Properties for more details.
+  /// Connector-specific properties required when using Datadog. See `connector_profile_config.connector_profile_properties.datadog` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog>? datadog;
-  /// The connector-specific properties required when using Dynatrace. See Generic Connector Profile Properties for more details.
+  /// Connector-specific properties required when using Dynatrace. See `connector_profile_config.connector_profile_properties.dynatrace` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDynatrace>? dynatrace;
-  /// The connector-specific credentials required when using Google Analytics. See Google Analytics Connector Profile Credentials for more details.
+  /// Connector-specific credentials required when using Google Analytics. See `connector_profile_config.connector_profile_credentials.google_analytics` Block for details.
   final pulumi.Input<Map<String, dynamic>>? googleAnalytics;
-  /// The connector-specific credentials required when using Amazon Honeycode. See Honeycode Connector Profile Credentials for more details.
+  /// Connector-specific credentials required when using Amazon Honeycode. See `connector_profile_config.connector_profile_credentials.honeycode` Block for details.
   final pulumi.Input<Map<String, dynamic>>? honeycode;
-  /// The connector-specific properties required when using Infor Nexus. See Generic Connector Profile Properties for more details.
+  /// Connector-specific properties required when using Infor Nexus. See `connector_profile_config.connector_profile_properties.infor_nexus` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesInforNexus>? inforNexus;
-  /// Connector-specific properties required when using Marketo. See Generic Connector Profile Properties for more details.
+  /// Connector-specific properties required when using Marketo. See `connector_profile_config.connector_profile_properties.marketo` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo>? marketo;
-  /// Connector-specific properties required when using Amazon Redshift. See Redshift Connector Profile Properties for more details.
+  /// Connector-specific properties required when using Amazon Redshift. See `connector_profile_config.connector_profile_properties.redshift` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift>? redshift;
-  /// The connector-specific properties required when using Salesforce. See Salesforce Connector Profile Properties for more details.
+  /// Connector-specific properties required when using Salesforce. See `connector_profile_config.connector_profile_properties.salesforce` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSalesforce>? salesforce;
-  /// The connector-specific properties required when using SAPOData. See SAPOData Connector Profile Properties for more details.
+  /// Connector-specific properties required when using SAPOData. See `connector_profile_config.connector_profile_properties.sapo_data` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData>? sapoData;
-  /// The connector-specific properties required when using ServiceNow. See Generic Connector Profile Properties for more details.
+  /// Connector-specific properties required when using ServiceNow. See `connector_profile_config.connector_profile_properties.service_now` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesServiceNow>? serviceNow;
-  /// Connector-specific credentials required when using Singular. See Singular Connector Profile Credentials for more details.
+  /// Connector-specific credentials required when using Singular. See `connector_profile_config.connector_profile_credentials.singular` Block for details.
   final pulumi.Input<Map<String, dynamic>>? singular;
-  /// Connector-specific properties required when using Slack. See Generic Connector Profile Properties for more details.
+  /// Connector-specific properties required when using Slack. See `connector_profile_config.connector_profile_properties.slack` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSlack>? slack;
-  /// The connector-specific properties required when using Snowflake. See Snowflake Connector Profile Properties for more details.
+  /// Connector-specific properties required when using Snowflake. See `connector_profile_config.connector_profile_properties.snowflake` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake>? snowflake;
-  /// The connector-specific credentials required when using Trend Micro. See Trend Micro Connector Profile Credentials for more details.
+  /// Connector-specific credentials required when using Trend Micro. See `connector_profile_config.connector_profile_credentials.trendmicro` Block for details.
   final pulumi.Input<Map<String, dynamic>>? trendmicro;
-  /// Connector-specific properties required when using Veeva. See Generic Connector Profile Properties for more details.
+  /// Connector-specific properties required when using Veeva. See `connector_profile_config.connector_profile_properties.veeva` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva>? veeva;
-  /// Connector-specific properties required when using Zendesk. See Generic Connector Profile Properties for more details.
+  /// Connector-specific properties required when using Zendesk. See `connector_profile_config.connector_profile_properties.zendesk` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesZendesk>? zendesk;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileProperties].
-  /// [amplitude] The connector-specific credentials required when using Amplitude. See Amplitude Connector Profile Credentials for more details.
-  /// [customConnector] The connector-specific profile properties required when using the custom connector. See Custom Connector Profile Properties for more details.
-  /// [datadog] Connector-specific properties required when using Datadog. See Generic Connector Profile Properties for more details.
-  /// [dynatrace] The connector-specific properties required when using Dynatrace. See Generic Connector Profile Properties for more details.
-  /// [googleAnalytics] The connector-specific credentials required when using Google Analytics. See Google Analytics Connector Profile Credentials for more details.
-  /// [honeycode] The connector-specific credentials required when using Amazon Honeycode. See Honeycode Connector Profile Credentials for more details.
-  /// [inforNexus] The connector-specific properties required when using Infor Nexus. See Generic Connector Profile Properties for more details.
-  /// [marketo] Connector-specific properties required when using Marketo. See Generic Connector Profile Properties for more details.
-  /// [redshift] Connector-specific properties required when using Amazon Redshift. See Redshift Connector Profile Properties for more details.
-  /// [salesforce] The connector-specific properties required when using Salesforce. See Salesforce Connector Profile Properties for more details.
-  /// [sapoData] The connector-specific properties required when using SAPOData. See SAPOData Connector Profile Properties for more details.
-  /// [serviceNow] The connector-specific properties required when using ServiceNow. See Generic Connector Profile Properties for more details.
-  /// [singular] Connector-specific credentials required when using Singular. See Singular Connector Profile Credentials for more details.
-  /// [slack] Connector-specific properties required when using Slack. See Generic Connector Profile Properties for more details.
-  /// [snowflake] The connector-specific properties required when using Snowflake. See Snowflake Connector Profile Properties for more details.
-  /// [trendmicro] The connector-specific credentials required when using Trend Micro. See Trend Micro Connector Profile Credentials for more details.
-  /// [veeva] Connector-specific properties required when using Veeva. See Generic Connector Profile Properties for more details.
-  /// [zendesk] Connector-specific properties required when using Zendesk. See Generic Connector Profile Properties for more details.
+  /// [amplitude] Connector-specific credentials required when using Amplitude. See `connector_profile_config.connector_profile_credentials.amplitude` Block for details.
+  /// [customConnector] Connector-specific profile properties required when using the custom connector. See `connector_profile_config.connector_profile_properties.custom_connector` Block for details.
+  /// [datadog] Connector-specific properties required when using Datadog. See `connector_profile_config.connector_profile_properties.datadog` Block for details.
+  /// [dynatrace] Connector-specific properties required when using Dynatrace. See `connector_profile_config.connector_profile_properties.dynatrace` Block for details.
+  /// [googleAnalytics] Connector-specific credentials required when using Google Analytics. See `connector_profile_config.connector_profile_credentials.google_analytics` Block for details.
+  /// [honeycode] Connector-specific credentials required when using Amazon Honeycode. See `connector_profile_config.connector_profile_credentials.honeycode` Block for details.
+  /// [inforNexus] Connector-specific properties required when using Infor Nexus. See `connector_profile_config.connector_profile_properties.infor_nexus` Block for details.
+  /// [marketo] Connector-specific properties required when using Marketo. See `connector_profile_config.connector_profile_properties.marketo` Block for details.
+  /// [redshift] Connector-specific properties required when using Amazon Redshift. See `connector_profile_config.connector_profile_properties.redshift` Block for details.
+  /// [salesforce] Connector-specific properties required when using Salesforce. See `connector_profile_config.connector_profile_properties.salesforce` Block for details.
+  /// [sapoData] Connector-specific properties required when using SAPOData. See `connector_profile_config.connector_profile_properties.sapo_data` Block for details.
+  /// [serviceNow] Connector-specific properties required when using ServiceNow. See `connector_profile_config.connector_profile_properties.service_now` Block for details.
+  /// [singular] Connector-specific credentials required when using Singular. See `connector_profile_config.connector_profile_credentials.singular` Block for details.
+  /// [slack] Connector-specific properties required when using Slack. See `connector_profile_config.connector_profile_properties.slack` Block for details.
+  /// [snowflake] Connector-specific properties required when using Snowflake. See `connector_profile_config.connector_profile_properties.snowflake` Block for details.
+  /// [trendmicro] Connector-specific credentials required when using Trend Micro. See `connector_profile_config.connector_profile_credentials.trendmicro` Block for details.
+  /// [veeva] Connector-specific properties required when using Veeva. See `connector_profile_config.connector_profile_properties.veeva` Block for details.
+  /// [zendesk] Connector-specific properties required when using Zendesk. See `connector_profile_config.connector_profile_properties.zendesk` Block for details.
   const ConnectorProfileConnectorProfileConfigConnectorProfileProperties({
     this.amplitude,
     this.customConnector,
@@ -139,4 +139,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileProperties {
     );
   }
 }
-

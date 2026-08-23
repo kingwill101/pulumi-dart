@@ -2,7 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sms_channel_args.dart';
 import 'sms_channel_state.dart';
 
-/// Use the `aws.pinpoint.SmsChannel` resource to manage Pinpoint SMS Channels.
+/// Use the `aws.pinpoint.SmsChannel` resource to manage End User Messaging SMS Channels.
+///
+/// &gt; **NOTE:** AWS has feature frozen the SMS channel of End User Messaging.
 ///
 /// ## Example Usage
 ///
@@ -62,6 +64,21 @@ import 'sms_channel_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_pinpoint_smschannel" "sms" {
+///   application_id = aws_pinpoint_app.app.application_id
+/// }
+/// resource "aws_pinpoint_app" "app" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +88,8 @@ import 'sms_channel_state.dart';
 /// import com.pulumi.aws.pinpoint.App;
 /// import com.pulumi.aws.pinpoint.SmsChannel;
 /// import com.pulumi.aws.pinpoint.SmsChannelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -106,7 +123,7 @@ import 'sms_channel_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import the Pinpoint SMS Channel using the `application_id`. For example:
+/// Using `pulumi import`, import the End User Messaging SMS Channel using the `applicationId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:pinpoint/smsChannel:SmsChannel sms application-id

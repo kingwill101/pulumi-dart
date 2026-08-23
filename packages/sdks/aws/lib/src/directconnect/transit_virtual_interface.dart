@@ -85,7 +85,7 @@ import 'transit_virtual_interface_state.dart';
 /// 		}
 /// 		_, err = directconnect.NewTransitVirtualInterface(ctx, "example", &directconnect.TransitVirtualInterfaceArgs{
 /// 			ConnectionId:  pulumi.Any(exampleAwsDxConnection.Id),
-/// 			DxGatewayId:   example.ID(),
+/// 			DxGatewayId:   example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:          pulumi.String("tf-transit-vif-example"),
 /// 			Vlan:          pulumi.Int(4094),
 /// 			AddressFamily: pulumi.String("ipv4"),
@@ -98,6 +98,28 @@ import 'transit_virtual_interface_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directconnect_gateway" "example" {
+///   name            = "tf-dxg-example"
+///   amazon_side_asn = 64512
+/// }
+/// resource "aws_directconnect_transitvirtualinterface" "example" {
+///   connection_id  = exampleAwsDxConnection.id
+///   dx_gateway_id  = aws_directconnect_gateway.example.id
+///   name           = "tf-transit-vif-example"
+///   vlan           = 4094
+///   address_family = "ipv4"
+///   bgp_asn        = 65352
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -108,8 +130,8 @@ import 'transit_virtual_interface_state.dart';
 /// import com.pulumi.aws.directconnect.GatewayArgs;
 /// import com.pulumi.aws.directconnect.TransitVirtualInterface;
 /// import com.pulumi.aws.directconnect.TransitVirtualInterfaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -196,9 +218,9 @@ class TransitVirtualInterface extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Indicates whether to enable or disable SiteLink.
   late final pulumi.Output<bool?> sitelinkEnabled;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The VLAN ID.
   late final pulumi.Output<int> vlan;

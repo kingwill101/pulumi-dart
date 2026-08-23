@@ -4,7 +4,7 @@ import 'bucket_notification_state.dart';
 
 /// Manages a S3 Bucket Notification Configuration. For additional information, see the [Configuring S3 Event Notifications section in the Amazon S3 Developer Guide](https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html).
 ///
-/// &gt; **NOTE:** S3 Buckets only support a single notification configuration resource. Declaring multiple `aws.s3.BucketNotification` resources to the same S3 Bucket will cause a perpetual difference in configuration. This resource will overwrite any existing event notifications configured for the S3 bucket it's associated with. See the example "Trigger multiple Lambda functions" for an option of how to configure multiple triggers within this resource.
+/// &gt; **NOTE:** The S3 [`PutBucketNotificationConfiguration`](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketNotificationConfiguration.html) API is atomic — it replaces the bucket's entire notification configuration on every call. Only one `aws.s3.BucketNotification` resource can manage a bucket; declaring more than one causes a perpetual diff, and applying this resource will overwrite any notifications already on the bucket. To configure multiple destinations on the same bucket, declare them all as nested blocks within a single resource (see Trigger multiple Lambda functions below). To let independent teams or Pulumi configurations subscribe to the same bucket without stepping on each other, prefer the Emit events to EventBridge pattern below. To bring existing notifications under management without losing them, see the `aws.s3.BucketNotification` data source.
 ///
 /// &gt; This resource cannot be used with S3 directory buckets.
 ///
@@ -36,7 +36,7 @@ import 'bucket_notification_state.dart';
 /// });
 /// const topicTopic = new aws.sns.Topic("topic", {
 ///     name: "s3-event-notification-topic",
-///     policy: topic.apply(topic => topic.json),
+///     policy: topic.json,
 /// });
 /// const bucketNotification = new aws.s3.BucketNotification("bucket_notification", {
 ///     bucket: bucket.id,
@@ -206,16 +206,14 @@ import 'bucket_notification_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		topicTopic, err := sns.NewTopic(ctx, "topic", &sns.TopicArgs{
-/// 			Name: pulumi.String("s3-event-notification-topic"),
-/// 			Policy: pulumi.String(topic.ApplyT(func(topic iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &topic.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:   pulumi.String("s3-event-notification-topic"),
+/// 			Policy: topic.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketNotification(ctx, "bucket_notification", &s3.BucketNotificationArgs{
-/// 			Bucket: bucket.ID(),
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Topics: s3.BucketNotificationTopicArray{
 /// 				&s3.BucketNotificationTopicArgs{
 /// 					TopicArn: topicTopic.Arn,
@@ -233,6 +231,48 @@ import 'bucket_notification_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "topic" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["s3.amazonaws.com"]
+///     }
+///     actions   = ["SNS:Publish"]
+///     resources = ["arn:aws:sns:*:*:s3-event-notification-topic"]
+///     conditions {
+///       test     = "ArnLike"
+///       variable = "aws:SourceArn"
+///       values   = [aws_s3_bucket.bucket.arn]
+///     }
+///   }
+/// }
+///
+/// resource "aws_sns_topic" "topic" {
+///   name   = "s3-event-notification-topic"
+///   policy = data.aws_iam_getpolicydocument.topic.json
+/// }
+/// resource "aws_s3_bucket" "bucket" {
+///   bucket = "your-bucket-name"
+/// }
+/// resource "aws_s3_bucketnotification" "bucket_notification" {
+///   bucket = aws_s3_bucket.bucket.id
+///   topics {
+///     topic_arn     = aws_sns_topic.topic.arn
+///     events        = ["s3:ObjectCreated:*"]
+///     filter_suffix = ".log"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -243,13 +283,16 @@ import 'bucket_notification_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.sns.Topic;
 /// import com.pulumi.aws.sns.TopicArgs;
 /// import com.pulumi.aws.s3.BucketNotification;
 /// import com.pulumi.aws.s3.BucketNotificationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketNotificationTopicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -370,7 +413,7 @@ import 'bucket_notification_state.dart';
 /// });
 /// const queueQueue = new aws.sqs.Queue("queue", {
 ///     name: "s3-event-notification-queue",
-///     policy: queue.apply(queue => queue.json),
+///     policy: queue.json,
 /// });
 /// const bucketNotification = new aws.s3.BucketNotification("bucket_notification", {
 ///     bucket: bucket.id,
@@ -540,16 +583,14 @@ import 'bucket_notification_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		queueQueue, err := sqs.NewQueue(ctx, "queue", &sqs.QueueArgs{
-/// 			Name: pulumi.String("s3-event-notification-queue"),
-/// 			Policy: pulumi.String(queue.ApplyT(func(queue iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &queue.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:   pulumi.String("s3-event-notification-queue"),
+/// 			Policy: queue.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketNotification(ctx, "bucket_notification", &s3.BucketNotificationArgs{
-/// 			Bucket: bucket.ID(),
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Queues: s3.BucketNotificationQueueArray{
 /// 				&s3.BucketNotificationQueueArgs{
 /// 					QueueArn: queueQueue.Arn,
@@ -567,6 +608,48 @@ import 'bucket_notification_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "queue" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "*"
+///       identifiers = ["*"]
+///     }
+///     actions   = ["sqs:SendMessage"]
+///     resources = ["arn:aws:sqs:*:*:s3-event-notification-queue"]
+///     conditions {
+///       test     = "ArnEquals"
+///       variable = "aws:SourceArn"
+///       values   = [aws_s3_bucket.bucket.arn]
+///     }
+///   }
+/// }
+///
+/// resource "aws_sqs_queue" "queue" {
+///   name   = "s3-event-notification-queue"
+///   policy = data.aws_iam_getpolicydocument.queue.json
+/// }
+/// resource "aws_s3_bucket" "bucket" {
+///   bucket = "your-bucket-name"
+/// }
+/// resource "aws_s3_bucketnotification" "bucket_notification" {
+///   bucket = aws_s3_bucket.bucket.id
+///   queues {
+///     queue_arn     = aws_sqs_queue.queue.arn
+///     events        = ["s3:ObjectCreated:*"]
+///     filter_suffix = ".log"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -577,13 +660,16 @@ import 'bucket_notification_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.sqs.Queue;
 /// import com.pulumi.aws.sqs.QueueArgs;
 /// import com.pulumi.aws.s3.BucketNotification;
 /// import com.pulumi.aws.s3.BucketNotificationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketNotificationQueueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -704,7 +790,7 @@ import 'bucket_notification_state.dart';
 ///     name: "example_lambda_name",
 ///     role: iamForLambda.arn,
 ///     handler: "exports.example",
-///     runtime: aws.lambda.Runtime.NodeJS20dX,
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
 /// });
 /// const bucket = new aws.s3.Bucket("bucket", {bucket: "your-bucket-name"});
 /// const allowBucket = new aws.lambda.Permission("allow_bucket", {
@@ -746,7 +832,7 @@ import 'bucket_notification_state.dart';
 ///     name="example_lambda_name",
 ///     role=iam_for_lambda.arn,
 ///     handler="exports.example",
-///     runtime=aws.lambda_.Runtime.NODE_JS20D_X)
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X)
 /// bucket = aws.s3.Bucket("bucket", bucket="your-bucket-name")
 /// allow_bucket = aws.lambda_.Permission("allow_bucket",
 ///     statement_id="AllowExecutionFromS3Bucket",
@@ -810,7 +896,7 @@ import 'bucket_notification_state.dart';
 ///         Name = "example_lambda_name",
 ///         Role = iamForLambda.Arn,
 ///         Handler = "exports.example",
-///         Runtime = Aws.Lambda.Runtime.NodeJS20dX,
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///     });
 ///
 ///     var bucket = new Aws.S3.Bucket("bucket", new()
@@ -898,7 +984,7 @@ import 'bucket_notification_state.dart';
 /// 			Name:    pulumi.String("example_lambda_name"),
 /// 			Role:    iamForLambda.Arn,
 /// 			Handler: pulumi.String("exports.example"),
-/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS20dX),
+/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -920,7 +1006,7 @@ import 'bucket_notification_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketNotification(ctx, "bucket_notification", &s3.BucketNotificationArgs{
-/// 			Bucket: bucket.ID(),
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			LambdaFunctions: s3.BucketNotificationLambdaFunctionArray{
 /// 				&s3.BucketNotificationLambdaFunctionArgs{
 /// 					LambdaFunctionArn: _func.Arn,
@@ -941,6 +1027,58 @@ import 'bucket_notification_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["lambda.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// resource "aws_iam_role" "iam_for_lambda" {
+///   name               = "iam_for_lambda"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_lambda_permission" "allow_bucket" {
+///   statement_id = "AllowExecutionFromS3Bucket"
+///   action       = "lambda:InvokeFunction"
+///   function     = aws_lambda_function.func.arn
+///   principal    = "s3.amazonaws.com"
+///   source_arn   = aws_s3_bucket.bucket.arn
+/// }
+/// resource "aws_lambda_function" "func" {
+///   code    = fileArchive("your-function.zip")
+///   name    = "example_lambda_name"
+///   role    = aws_iam_role.iam_for_lambda.arn
+///   handler = "exports.example"
+///   runtime = "nodejs24.x"
+/// }
+/// resource "aws_s3_bucket" "bucket" {
+///   bucket = "your-bucket-name"
+/// }
+/// resource "aws_s3_bucketnotification" "bucket_notification" {
+///   depends_on = [aws_lambda_permission.allow_bucket]
+///   bucket     = aws_s3_bucket.bucket.id
+///   lambda_functions {
+///     lambda_function_arn = aws_lambda_function.func.arn
+///     events              = ["s3:ObjectCreated:*"]
+///     filter_prefix       = "AWSLogs/"
+///     filter_suffix       = ".log"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -949,6 +1087,8 @@ import 'bucket_notification_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.lambda.Function;
@@ -962,8 +1102,8 @@ import 'bucket_notification_state.dart';
 /// import com.pulumi.aws.s3.inputs.BucketNotificationLambdaFunctionArgs;
 /// import com.pulumi.asset.FileArchive;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -996,7 +1136,7 @@ import 'bucket_notification_state.dart';
 ///             .name("example_lambda_name")
 ///             .role(iamForLambda.arn())
 ///             .handler("exports.example")
-///             .runtime("nodejs20.x")
+///             .runtime("nodejs24.x")
 ///             .build());
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
@@ -1047,11 +1187,11 @@ import 'bucket_notification_state.dart';
 ///     type: aws:lambda:Function
 ///     properties:
 ///       code:
-///         fn::FileArchive: your-function.zip
+///         fn::fileArchive: your-function.zip
 ///       name: example_lambda_name
 ///       role: ${iamForLambda.arn}
 ///       handler: exports.example
-///       runtime: nodejs20.x
+///       runtime: nodejs24.x
 ///   bucket:
 ///     type: aws:s3:Bucket
 ///     properties:
@@ -1112,7 +1252,7 @@ import 'bucket_notification_state.dart';
 ///     name: "example_lambda_name1",
 ///     role: iamForLambda.arn,
 ///     handler: "exports.example",
-///     runtime: aws.lambda.Runtime.NodeJS20dX,
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
 /// });
 /// const bucket = new aws.s3.Bucket("bucket", {bucket: "your-bucket-name"});
 /// const allowBucket1 = new aws.lambda.Permission("allow_bucket1", {
@@ -1178,7 +1318,7 @@ import 'bucket_notification_state.dart';
 ///     name="example_lambda_name1",
 ///     role=iam_for_lambda.arn,
 ///     handler="exports.example",
-///     runtime=aws.lambda_.Runtime.NODE_JS20D_X)
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X)
 /// bucket = aws.s3.Bucket("bucket", bucket="your-bucket-name")
 /// allow_bucket1 = aws.lambda_.Permission("allow_bucket1",
 ///     statement_id="AllowExecutionFromS3Bucket1",
@@ -1264,7 +1404,7 @@ import 'bucket_notification_state.dart';
 ///         Name = "example_lambda_name1",
 ///         Role = iamForLambda.Arn,
 ///         Handler = "exports.example",
-///         Runtime = Aws.Lambda.Runtime.NodeJS20dX,
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///     });
 ///
 ///     var bucket = new Aws.S3.Bucket("bucket", new()
@@ -1380,7 +1520,7 @@ import 'bucket_notification_state.dart';
 /// 			Name:    pulumi.String("example_lambda_name1"),
 /// 			Role:    iamForLambda.Arn,
 /// 			Handler: pulumi.String("exports.example"),
-/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS20dX),
+/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1421,7 +1561,7 @@ import 'bucket_notification_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketNotification(ctx, "bucket_notification", &s3.BucketNotificationArgs{
-/// 			Bucket: bucket.ID(),
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			LambdaFunctions: s3.BucketNotificationLambdaFunctionArray{
 /// 				&s3.BucketNotificationLambdaFunctionArgs{
 /// 					LambdaFunctionArn: func1.Arn,
@@ -1451,6 +1591,77 @@ import 'bucket_notification_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["lambda.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// resource "aws_iam_role" "iam_for_lambda" {
+///   name               = "iam_for_lambda"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_lambda_permission" "allow_bucket1" {
+///   statement_id = "AllowExecutionFromS3Bucket1"
+///   action       = "lambda:InvokeFunction"
+///   function     = aws_lambda_function.func1.arn
+///   principal    = "s3.amazonaws.com"
+///   source_arn   = aws_s3_bucket.bucket.arn
+/// }
+/// resource "aws_lambda_function" "func1" {
+///   code    = fileArchive("your-function1.zip")
+///   name    = "example_lambda_name1"
+///   role    = aws_iam_role.iam_for_lambda.arn
+///   handler = "exports.example"
+///   runtime = "nodejs24.x"
+/// }
+/// resource "aws_lambda_permission" "allow_bucket2" {
+///   statement_id = "AllowExecutionFromS3Bucket2"
+///   action       = "lambda:InvokeFunction"
+///   function     = aws_lambda_function.func2.arn
+///   principal    = "s3.amazonaws.com"
+///   source_arn   = aws_s3_bucket.bucket.arn
+/// }
+/// resource "aws_lambda_function" "func2" {
+///   code    = fileArchive("your-function2.zip")
+///   name    = "example_lambda_name2"
+///   role    = aws_iam_role.iam_for_lambda.arn
+///   handler = "exports.example"
+/// }
+/// resource "aws_s3_bucket" "bucket" {
+///   bucket = "your-bucket-name"
+/// }
+/// resource "aws_s3_bucketnotification" "bucket_notification" {
+///   depends_on = [aws_lambda_permission.allow_bucket1, aws_lambda_permission.allow_bucket2]
+///   bucket     = aws_s3_bucket.bucket.id
+///   lambda_functions {
+///     lambda_function_arn = aws_lambda_function.func1.arn
+///     events              = ["s3:ObjectCreated:*"]
+///     filter_prefix       = "AWSLogs/"
+///     filter_suffix       = ".log"
+///   }
+///   lambda_functions {
+///     lambda_function_arn = aws_lambda_function.func2.arn
+///     events              = ["s3:ObjectCreated:*"]
+///     filter_prefix       = "OtherLogs/"
+///     filter_suffix       = ".log"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1459,6 +1670,8 @@ import 'bucket_notification_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.lambda.Function;
@@ -1472,8 +1685,8 @@ import 'bucket_notification_state.dart';
 /// import com.pulumi.aws.s3.inputs.BucketNotificationLambdaFunctionArgs;
 /// import com.pulumi.asset.FileArchive;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1506,7 +1719,7 @@ import 'bucket_notification_state.dart';
 ///             .name("example_lambda_name1")
 ///             .role(iamForLambda.arn())
 ///             .handler("exports.example")
-///             .runtime("nodejs20.x")
+///             .runtime("nodejs24.x")
 ///             .build());
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
@@ -1581,11 +1794,11 @@ import 'bucket_notification_state.dart';
 ///     type: aws:lambda:Function
 ///     properties:
 ///       code:
-///         fn::FileArchive: your-function1.zip
+///         fn::fileArchive: your-function1.zip
 ///       name: example_lambda_name1
 ///       role: ${iamForLambda.arn}
 ///       handler: exports.example
-///       runtime: nodejs20.x
+///       runtime: nodejs24.x
 ///   allowBucket2:
 ///     type: aws:lambda:Permission
 ///     name: allow_bucket2
@@ -1599,7 +1812,7 @@ import 'bucket_notification_state.dart';
 ///     type: aws:lambda:Function
 ///     properties:
 ///       code:
-///         fn::FileArchive: your-function2.zip
+///         fn::fileArchive: your-function2.zip
 ///       name: example_lambda_name2
 ///       role: ${iamForLambda.arn}
 ///       handler: exports.example
@@ -1669,7 +1882,7 @@ import 'bucket_notification_state.dart';
 /// });
 /// const queueQueue = new aws.sqs.Queue("queue", {
 ///     name: "s3-event-notification-queue",
-///     policy: queue.apply(queue => queue.json),
+///     policy: queue.json,
 /// });
 /// const bucketNotification = new aws.s3.BucketNotification("bucket_notification", {
 ///     bucket: bucket.id,
@@ -1868,16 +2081,14 @@ import 'bucket_notification_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		queueQueue, err := sqs.NewQueue(ctx, "queue", &sqs.QueueArgs{
-/// 			Name: pulumi.String("s3-event-notification-queue"),
-/// 			Policy: pulumi.String(queue.ApplyT(func(queue iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &queue.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:   pulumi.String("s3-event-notification-queue"),
+/// 			Policy: queue.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketNotification(ctx, "bucket_notification", &s3.BucketNotificationArgs{
-/// 			Bucket: bucket.ID(),
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Queues: s3.BucketNotificationQueueArray{
 /// 				&s3.BucketNotificationQueueArgs{
 /// 					Id:       pulumi.String("image-upload-event"),
@@ -1904,6 +2115,55 @@ import 'bucket_notification_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "queue" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "*"
+///       identifiers = ["*"]
+///     }
+///     actions   = ["sqs:SendMessage"]
+///     resources = ["arn:aws:sqs:*:*:s3-event-notification-queue"]
+///     conditions {
+///       test     = "ArnEquals"
+///       variable = "aws:SourceArn"
+///       values   = [aws_s3_bucket.bucket.arn]
+///     }
+///   }
+/// }
+///
+/// resource "aws_sqs_queue" "queue" {
+///   name   = "s3-event-notification-queue"
+///   policy = data.aws_iam_getpolicydocument.queue.json
+/// }
+/// resource "aws_s3_bucket" "bucket" {
+///   bucket = "your-bucket-name"
+/// }
+/// resource "aws_s3_bucketnotification" "bucket_notification" {
+///   bucket = aws_s3_bucket.bucket.id
+///   queues {
+///     id            = "image-upload-event"
+///     queue_arn     = aws_sqs_queue.queue.arn
+///     events        = ["s3:ObjectCreated:*"]
+///     filter_prefix = "images/"
+///   }
+///   queues {
+///     id            = "video-upload-event"
+///     queue_arn     = aws_sqs_queue.queue.arn
+///     events        = ["s3:ObjectCreated:*"]
+///     filter_prefix = "videos/"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1914,13 +2174,16 @@ import 'bucket_notification_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.sqs.Queue;
 /// import com.pulumi.aws.sqs.QueueArgs;
 /// import com.pulumi.aws.s3.BucketNotification;
 /// import com.pulumi.aws.s3.BucketNotificationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketNotificationQueueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2053,43 +2316,220 @@ import 'bucket_notification_state.dart';
 ///
 /// ### Emit events to EventBridge
 ///
+/// For a bucket shared by multiple independent consumers — different teams, different Pulumi configurations, different applications — EventBridge is the recommended pattern. Each consumer subscribes to the bucket through its own `aws.cloudwatch.EventRule`, so they cannot overwrite one another the way notification configurations would.
+///
 ///
 /// ```typescript
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const bucket = new aws.s3.Bucket("bucket", {bucket: "your-bucket-name"});
-/// const bucketNotification = new aws.s3.BucketNotification("bucket_notification", {
-///     bucket: bucket.id,
+/// const shared = new aws.s3.Bucket("shared", {bucket: "shared-bucket"});
+/// const sharedBucketNotification = new aws.s3.BucketNotification("shared", {
+///     bucket: shared.id,
 ///     eventbridge: true,
+/// });
+/// // Team A: process new uploads under uploads/
+/// const teamA = new aws.cloudwatch.EventRule("team_a", {
+///     name: "team-a-uploads",
+///     eventPattern: pulumi.jsonStringify({
+///         source: ["aws.s3"],
+///         "detail-type": ["Object Created"],
+///         detail: {
+///             bucket: {
+///                 name: [shared.bucket],
+///             },
+///             object: {
+///                 key: [{
+///                     prefix: "uploads/",
+///                 }],
+///             },
+///         },
+///     }),
+/// });
+/// const teamAEventTarget = new aws.cloudwatch.EventTarget("team_a", {
+///     rule: teamA.name,
+///     arn: teamAProcessor.arn,
+/// });
+/// // Team B: archive deletions under archive/, declared in a separate
+/// // Pulumi configuration that knows nothing about Team A.
+/// const teamB = new aws.cloudwatch.EventRule("team_b", {
+///     name: "team-b-deletions",
+///     eventPattern: pulumi.jsonStringify({
+///         source: ["aws.s3"],
+///         "detail-type": ["Object Deleted"],
+///         detail: {
+///             bucket: {
+///                 name: [shared.bucket],
+///             },
+///             object: {
+///                 key: [{
+///                     prefix: "archive/",
+///                 }],
+///             },
+///         },
+///     }),
+/// });
+/// const teamBEventTarget = new aws.cloudwatch.EventTarget("team_b", {
+///     rule: teamB.name,
+///     arn: teamBArchive.arn,
 /// });
 /// ```
 /// ```python
 /// import pulumi
+/// import json
 /// import pulumi_aws as aws
 ///
-/// bucket = aws.s3.Bucket("bucket", bucket="your-bucket-name")
-/// bucket_notification = aws.s3.BucketNotification("bucket_notification",
-///     bucket=bucket.id,
+/// shared = aws.s3.Bucket("shared", bucket="shared-bucket")
+/// shared_bucket_notification = aws.s3.BucketNotification("shared",
+///     bucket=shared.id,
 ///     eventbridge=True)
+/// # Team A: process new uploads under uploads/
+/// team_a = aws.cloudwatch.EventRule("team_a",
+///     name="team-a-uploads",
+///     event_pattern=pulumi.Output.json_dumps({
+///         "source": ["aws.s3"],
+///         "detail-type": ["Object Created"],
+///         "detail": {
+///             "bucket": {
+///                 "name": [shared.bucket],
+///             },
+///             "object": {
+///                 "key": [{
+///                     "prefix": "uploads/",
+///                 }],
+///             },
+///         },
+///     }))
+/// team_a_event_target = aws.cloudwatch.EventTarget("team_a",
+///     rule=team_a.name,
+///     arn=team_a_processor["arn"])
+/// # Team B: archive deletions under archive/, declared in a separate
+/// # Pulumi configuration that knows nothing about Team A.
+/// team_b = aws.cloudwatch.EventRule("team_b",
+///     name="team-b-deletions",
+///     event_pattern=pulumi.Output.json_dumps({
+///         "source": ["aws.s3"],
+///         "detail-type": ["Object Deleted"],
+///         "detail": {
+///             "bucket": {
+///                 "name": [shared.bucket],
+///             },
+///             "object": {
+///                 "key": [{
+///                     "prefix": "archive/",
+///                 }],
+///             },
+///         },
+///     }))
+/// team_b_event_target = aws.cloudwatch.EventTarget("team_b",
+///     rule=team_b.name,
+///     arn=team_b_archive["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
 /// using System.Linq;
+/// using System.Text.Json;
 /// using Pulumi;
 /// using Aws = Pulumi.Aws;
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var bucket = new Aws.S3.Bucket("bucket", new()
+///     var shared = new Aws.S3.Bucket("shared", new()
 ///     {
-///         BucketName = "your-bucket-name",
+///         BucketName = "shared-bucket",
 ///     });
 ///
-///     var bucketNotification = new Aws.S3.BucketNotification("bucket_notification", new()
+///     var sharedBucketNotification = new Aws.S3.BucketNotification("shared", new()
 ///     {
-///         Bucket = bucket.Id,
+///         Bucket = shared.Id,
 ///         Eventbridge = true,
+///     });
+///
+///     // Team A: process new uploads under uploads/
+///     var teamA = new Aws.CloudWatch.EventRule("team_a", new()
+///     {
+///         Name = "team-a-uploads",
+///         EventPattern = Output.JsonSerialize(Output.Create(new Dictionary<string, object?>
+///         {
+///             ["source"] = new[]
+///             {
+///                 "aws.s3",
+///             },
+///             ["detail-type"] = new[]
+///             {
+///                 "Object Created",
+///             },
+///             ["detail"] = new Dictionary<string, object?>
+///             {
+///                 ["bucket"] = new Dictionary<string, object?>
+///                 {
+///                     ["name"] = new[]
+///                     {
+///                         shared.BucketName,
+///                     },
+///                 },
+///                 ["object"] = new Dictionary<string, object?>
+///                 {
+///                     ["key"] = new[]
+///                     {
+///                         new Dictionary<string, object?>
+///                         {
+///                             ["prefix"] = "uploads/",
+///                         },
+///                     },
+///                 },
+///             },
+///         })),
+///     });
+///
+///     var teamAEventTarget = new Aws.CloudWatch.EventTarget("team_a", new()
+///     {
+///         Rule = teamA.Name,
+///         Arn = teamAProcessor.Arn,
+///     });
+///
+///     // Team B: archive deletions under archive/, declared in a separate
+///     // Pulumi configuration that knows nothing about Team A.
+///     var teamB = new Aws.CloudWatch.EventRule("team_b", new()
+///     {
+///         Name = "team-b-deletions",
+///         EventPattern = Output.JsonSerialize(Output.Create(new Dictionary<string, object?>
+///         {
+///             ["source"] = new[]
+///             {
+///                 "aws.s3",
+///             },
+///             ["detail-type"] = new[]
+///             {
+///                 "Object Deleted",
+///             },
+///             ["detail"] = new Dictionary<string, object?>
+///             {
+///                 ["bucket"] = new Dictionary<string, object?>
+///                 {
+///                     ["name"] = new[]
+///                     {
+///                         shared.BucketName,
+///                     },
+///                 },
+///                 ["object"] = new Dictionary<string, object?>
+///                 {
+///                     ["key"] = new[]
+///                     {
+///                         new Dictionary<string, object?>
+///                         {
+///                             ["prefix"] = "archive/",
+///                         },
+///                     },
+///                 },
+///             },
+///         })),
+///     });
+///
+///     var teamBEventTarget = new Aws.CloudWatch.EventTarget("team_b", new()
+///     {
+///         Rule = teamB.Name,
+///         Arn = teamBArchive.Arn,
 ///     });
 ///
 /// });
@@ -2098,27 +2538,181 @@ import 'bucket_notification_state.dart';
 /// package main
 ///
 /// import (
+/// 	"encoding/json"
+///
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/cloudwatch"
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		bucket, err := s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
-/// 			Bucket: pulumi.String("your-bucket-name"),
+/// 		shared, err := s3.NewBucket(ctx, "shared", &s3.BucketArgs{
+/// 			Bucket: pulumi.String("shared-bucket"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = s3.NewBucketNotification(ctx, "bucket_notification", &s3.BucketNotificationArgs{
-/// 			Bucket:      bucket.ID(),
+/// 		_, err = s3.NewBucketNotification(ctx, "shared", &s3.BucketNotificationArgs{
+/// 			Bucket:      shared.ID().ToIDOutput().ToStringOutput(),
 /// 			Eventbridge: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		// Team A: process new uploads under uploads/
+/// 		teamA, err := cloudwatch.NewEventRule(ctx, "team_a", &cloudwatch.EventRuleArgs{
+/// 			Name: pulumi.String("team-a-uploads"),
+/// 			EventPattern: shared.Bucket.ApplyT(func(bucket string) (pulumi.String, error) {
+/// 				var _zero pulumi.String
+/// 				tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 					"source": []string{
+/// 						"aws.s3",
+/// 					},
+/// 					"detail-type": []string{
+/// 						"Object Created",
+/// 					},
+/// 					"detail": map[string]interface{}{
+/// 						"bucket": map[string][]string{
+/// 							"name": []string{
+/// 								bucket,
+/// 							},
+/// 						},
+/// 						"object": map[string][]map[string]string{
+/// 							"key": []map[string]string{
+/// 								{
+/// 									"prefix": "uploads/",
+/// 								},
+/// 							},
+/// 						},
+/// 					},
+/// 				})
+/// 				if err != nil {
+/// 					return _zero, err
+/// 				}
+/// 				json0 := string(tmpJSON0)
+/// 				return pulumi.String(json0), nil
+/// 			}).(pulumi.StringOutput),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = cloudwatch.NewEventTarget(ctx, "team_a", &cloudwatch.EventTargetArgs{
+/// 			Rule: teamA.Name,
+/// 			Arn:  pulumi.Any(teamAProcessor.Arn),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		// Team B: archive deletions under archive/, declared in a separate
+/// 		// Pulumi configuration that knows nothing about Team A.
+/// 		teamB, err := cloudwatch.NewEventRule(ctx, "team_b", &cloudwatch.EventRuleArgs{
+/// 			Name: pulumi.String("team-b-deletions"),
+/// 			EventPattern: shared.Bucket.ApplyT(func(bucket string) (pulumi.String, error) {
+/// 				var _zero pulumi.String
+/// 				tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 					"source": []string{
+/// 						"aws.s3",
+/// 					},
+/// 					"detail-type": []string{
+/// 						"Object Deleted",
+/// 					},
+/// 					"detail": map[string]interface{}{
+/// 						"bucket": map[string][]string{
+/// 							"name": []string{
+/// 								bucket,
+/// 							},
+/// 						},
+/// 						"object": map[string][]map[string]string{
+/// 							"key": []map[string]string{
+/// 								{
+/// 									"prefix": "archive/",
+/// 								},
+/// 							},
+/// 						},
+/// 					},
+/// 				})
+/// 				if err != nil {
+/// 					return _zero, err
+/// 				}
+/// 				json1 := string(tmpJSON1)
+/// 				return pulumi.String(json1), nil
+/// 			}).(pulumi.StringOutput),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = cloudwatch.NewEventTarget(ctx, "team_b", &cloudwatch.EventTargetArgs{
+/// 			Rule: teamB.Name,
+/// 			Arn:  pulumi.Any(teamBArchive.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "shared" {
+///   bucket = "shared-bucket"
+/// }
+/// resource "aws_s3_bucketnotification" "shared" {
+///   bucket      = aws_s3_bucket.shared.id
+///   eventbridge = true
+/// }
+/// # Team A: process new uploads under uploads/
+/// resource "aws_cloudwatch_eventrule" "team_a" {
+///   name = "team-a-uploads"
+///   event_pattern = jsonencode({
+///     "source"      = ["aws.s3"]
+///     "detail-type" = ["Object Created"]
+///     "detail" = {
+///       "bucket" = {
+///         "name" = [aws_s3_bucket.shared.bucket]
+///       }
+///       "object" = {
+///         "key" = [{
+///           "prefix" = "uploads/"
+///         }]
+///       }
+///     }
+///   })
+/// }
+/// resource "aws_cloudwatch_eventtarget" "team_a" {
+///   rule = aws_cloudwatch_eventrule.team_a.name
+///   arn  = teamAProcessor.arn
+/// }
+/// # Team B: archive deletions under archive/, declared in a separate
+/// # Pulumi configuration that knows nothing about Team A.
+/// resource "aws_cloudwatch_eventrule" "team_b" {
+///   name = "team-b-deletions"
+///   event_pattern = jsonencode({
+///     "source"      = ["aws.s3"]
+///     "detail-type" = ["Object Deleted"]
+///     "detail" = {
+///       "bucket" = {
+///         "name" = [aws_s3_bucket.shared.bucket]
+///       }
+///       "object" = {
+///         "key" = [{
+///           "prefix" = "archive/"
+///         }]
+///       }
+///     }
+///   })
+/// }
+/// resource "aws_cloudwatch_eventtarget" "team_b" {
+///   rule = aws_cloudwatch_eventrule.team_b.name
+///   arn  = teamBArchive.arn
 /// }
 /// ```
 /// ```java
@@ -2131,8 +2725,13 @@ import 'bucket_notification_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.s3.BucketNotification;
 /// import com.pulumi.aws.s3.BucketNotificationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.cloudwatch.EventRule;
+/// import com.pulumi.aws.cloudwatch.EventRuleArgs;
+/// import com.pulumi.aws.cloudwatch.EventTarget;
+/// import com.pulumi.aws.cloudwatch.EventTargetArgs;
+/// import static com.pulumi.codegen.internal.Serialization.*;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2144,13 +2743,64 @@ import 'bucket_notification_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .bucket("your-bucket-name")
+///         var shared = new Bucket("shared", BucketArgs.builder()
+///             .bucket("shared-bucket")
 ///             .build());
 ///
-///         var bucketNotification = new BucketNotification("bucketNotification", BucketNotificationArgs.builder()
-///             .bucket(bucket.id())
+///         var sharedBucketNotification = new BucketNotification("sharedBucketNotification", BucketNotificationArgs.builder()
+///             .bucket(shared.id())
 ///             .eventbridge(true)
+///             .build());
+///
+///         // Team A: process new uploads under uploads/
+///         var teamA = new EventRule("teamA", EventRuleArgs.builder()
+///             .name("team-a-uploads")
+///             .eventPattern(shared.bucket().applyValue(_bucket -> serializeJson(
+///                 jsonObject(
+///                     jsonProperty("source", jsonArray("aws.s3")),
+///                     jsonProperty("detail-type", jsonArray("Object Created")),
+///                     jsonProperty("detail", jsonObject(
+///                         jsonProperty("bucket", jsonObject(
+///                             jsonProperty("name", jsonArray(_bucket))
+///                         )),
+///                         jsonProperty("object", jsonObject(
+///                             jsonProperty("key", jsonArray(jsonObject(
+///                                 jsonProperty("prefix", "uploads/")
+///                             )))
+///                         ))
+///                     ))
+///                 ))))
+///             .build());
+///
+///         var teamAEventTarget = new EventTarget("teamAEventTarget", EventTargetArgs.builder()
+///             .rule(teamA.name())
+///             .arn(teamAProcessor.arn())
+///             .build());
+///
+///         // Team B: archive deletions under archive/, declared in a separate
+///         // Pulumi configuration that knows nothing about Team A.
+///         var teamB = new EventRule("teamB", EventRuleArgs.builder()
+///             .name("team-b-deletions")
+///             .eventPattern(shared.bucket().applyValue(_bucket -> serializeJson(
+///                 jsonObject(
+///                     jsonProperty("source", jsonArray("aws.s3")),
+///                     jsonProperty("detail-type", jsonArray("Object Deleted")),
+///                     jsonProperty("detail", jsonObject(
+///                         jsonProperty("bucket", jsonObject(
+///                             jsonProperty("name", jsonArray(_bucket))
+///                         )),
+///                         jsonProperty("object", jsonObject(
+///                             jsonProperty("key", jsonArray(jsonObject(
+///                                 jsonProperty("prefix", "archive/")
+///                             )))
+///                         ))
+///                     ))
+///                 ))))
+///             .build());
+///
+///         var teamBEventTarget = new EventTarget("teamBEventTarget", EventTargetArgs.builder()
+///             .rule(teamB.name())
+///             .arn(teamBArchive.arn())
 ///             .build());
 ///
 ///     }
@@ -2158,20 +2808,85 @@ import 'bucket_notification_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   bucket:
+///   shared:
 ///     type: aws:s3:Bucket
 ///     properties:
-///       bucket: your-bucket-name
-///   bucketNotification:
+///       bucket: shared-bucket
+///   sharedBucketNotification:
 ///     type: aws:s3:BucketNotification
-///     name: bucket_notification
+///     name: shared
 ///     properties:
-///       bucket: ${bucket.id}
+///       bucket: ${shared.id}
 ///       eventbridge: true
+///   # Team A: process new uploads under uploads/
+///   teamA:
+///     type: aws:cloudwatch:EventRule
+///     name: team_a
+///     properties:
+///       name: team-a-uploads
+///       eventPattern:
+///         fn::toJSON:
+///           source:
+///             - aws.s3
+///           detail-type:
+///             - Object Created
+///           detail:
+///             bucket:
+///               name:
+///                 - ${shared.bucket}
+///             object:
+///               key:
+///                 - prefix: uploads/
+///   teamAEventTarget:
+///     type: aws:cloudwatch:EventTarget
+///     name: team_a
+///     properties:
+///       rule: ${teamA.name}
+///       arn: ${teamAProcessor.arn}
+///   # Team B: archive deletions under archive/, declared in a separate
+///   # Pulumi configuration that knows nothing about Team A.
+///   teamB:
+///     type: aws:cloudwatch:EventRule
+///     name: team_b
+///     properties:
+///       name: team-b-deletions
+///       eventPattern:
+///         fn::toJSON:
+///           source:
+///             - aws.s3
+///           detail-type:
+///             - Object Deleted
+///           detail:
+///             bucket:
+///               name:
+///                 - ${shared.bucket}
+///             object:
+///               key:
+///                 - prefix: archive/
+///   teamBEventTarget:
+///     type: aws:cloudwatch:EventTarget
+///     name: team_b
+///     properties:
+///       rule: ${teamB.name}
+///       arn: ${teamBArchive.arn}
 /// ```
 ///
 ///
+/// For sharing a bucket between Pulumi configurations when EventBridge is not an option, use the `aws.s3.BucketNotification` data source to read existing notifications and re-emit them in your own resource.
+///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `bucket` (String) Name of the bucket.
+///
+/// #### Optional
+///
+/// * `accountId` (String) Account ID where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import S3 bucket notification using the `bucket`. For example:
 ///
@@ -2185,7 +2900,7 @@ class BucketNotification extends pulumi.CustomResource {
   late final pulumi.Output<String> bucket;
   /// Whether to enable Amazon EventBridge notifications. Defaults to `false`.
   late final pulumi.Output<bool?> eventbridge;
-  /// Used to configure notifications to a Lambda Function. See below.
+  /// Notification configuration to a Lambda Function. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> lambdaFunctions;
   /// Notification configuration to SQS Queue. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> queues;

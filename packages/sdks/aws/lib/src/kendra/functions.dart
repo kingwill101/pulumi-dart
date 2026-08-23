@@ -68,6 +68,20 @@ import 'get_thesaurus_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_kendra_getexperience" "example" {
+///   experience_id = "87654321-1234-4321-4321-321987654321"
+///   index_id      = "12345678-1234-1234-1234-123456789123"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +90,8 @@ import 'get_thesaurus_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kendra.KendraFunctions;
 /// import com.pulumi.aws.kendra.inputs.GetExperienceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -179,6 +193,20 @@ Future<GetExperienceResult> getExperience(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_kendra_getfaq" "test" {
+///   faq_id   = "87654321-1234-4321-4321-321987654321"
+///   index_id = "12345678-1234-1234-1234-123456789123"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -187,8 +215,8 @@ Future<GetExperienceResult> getExperience(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kendra.KendraFunctions;
 /// import com.pulumi.aws.kendra.inputs.GetFaqArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -286,6 +314,19 @@ Future<GetFaqResult> getFaq(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_kendra_getindex" "example" {
+///   id = "12345678-1234-1234-1234-123456789123"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -294,8 +335,8 @@ Future<GetFaqResult> getFaq(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kendra.KendraFunctions;
 /// import com.pulumi.aws.kendra.inputs.GetIndexArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -395,6 +436,20 @@ Future<GetIndexResult> getIndex(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_kendra_getquerysuggestionsblocklist" "example" {
+///   index_id                        = "12345678-1234-1234-1234-123456789123"
+///   query_suggestions_block_list_id = "87654321-1234-4321-4321-321987654321"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -403,8 +458,8 @@ Future<GetIndexResult> getIndex(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kendra.KendraFunctions;
 /// import com.pulumi.aws.kendra.inputs.GetQuerySuggestionsBlockListArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -506,6 +561,20 @@ Future<GetQuerySuggestionsBlockListResult> getQuerySuggestionsBlockList(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_kendra_getthesaurus" "example" {
+///   index_id     = "12345678-1234-1234-1234-123456789123"
+///   thesaurus_id = "87654321-1234-4321-4321-321987654321"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -514,8 +583,8 @@ Future<GetQuerySuggestionsBlockListResult> getQuerySuggestionsBlockList(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kendra.KendraFunctions;
 /// import com.pulumi.aws.kendra.inputs.GetThesaurusArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

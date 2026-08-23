@@ -5,14 +5,14 @@ import 'app_authorization_credential_api_key_credential.dart';
 import 'app_authorization_credential_oauth2_credential.dart';
 
 class AppAuthorizationCredential {
-  /// Contains API key credential information.
+  /// API key credential information. See `apiKeyCredential` Block for details.
   final pulumi.Input<List<AppAuthorizationCredentialApiKeyCredential>>? apiKeyCredentials;
-  /// Contains OAuth2 client credential information.
+  /// OAuth2 client credential information. See `oauth2Credential` Block for details.
   final pulumi.Input<AppAuthorizationCredentialOauth2Credential>? oauth2Credential;
 
   /// Creates a new [AppAuthorizationCredential].
-  /// [apiKeyCredentials] Contains API key credential information.
-  /// [oauth2Credential] Contains OAuth2 client credential information.
+  /// [apiKeyCredentials] API key credential information. See `apiKeyCredential` Block for details.
+  /// [oauth2Credential] OAuth2 client credential information. See `oauth2Credential` Block for details.
   const AppAuthorizationCredential({
     this.apiKeyCredentials,
     this.oauth2Credential,
@@ -32,4 +32,3 @@ class AppAuthorizationCredential {
     );
   }
 }
-

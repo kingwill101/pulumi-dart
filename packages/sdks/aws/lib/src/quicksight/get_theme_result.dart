@@ -26,7 +26,7 @@ class GetThemeResult {
   final String region;
   /// The theme creation status.
   final String status;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final Map<String, String> tags;
   final String themeId;
   /// A description of the current theme version being created/updated.
@@ -46,7 +46,7 @@ class GetThemeResult {
   /// [permissions] A set of resource permissions on the theme. See permissions.
   /// [region] Required.
   /// [status] The theme creation status.
-  /// [tags] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [themeId] Required.
   /// [versionDescription] A description of the current theme version being created/updated.
   /// [versionNumber] The version number of the theme version.
@@ -108,4 +108,3 @@ class GetThemeResult {
     );
   }
 }
-

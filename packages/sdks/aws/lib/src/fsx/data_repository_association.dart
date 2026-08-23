@@ -158,7 +158,7 @@ import 'data_repository_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -174,8 +174,8 @@ import 'data_repository_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = fsx.NewDataRepositoryAssociation(ctx, "example", &fsx.DataRepositoryAssociationArgs{
-/// 			FileSystemId: exampleLustreFileSystem.ID(),
-/// 			DataRepositoryPath: example.ID().ApplyT(func(id string) (string, error) {
+/// 			FileSystemId: exampleLustreFileSystem.ID().ToIDOutput().ToStringOutput(),
+/// 			DataRepositoryPath: example.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("s3://%v", id), nil
 /// 			}).(pulumi.StringOutput),
 /// 			FileSystemPath: pulumi.String("/my-bucket"),
@@ -203,6 +203,42 @@ import 'data_repository_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "my-bucket"
+/// }
+/// resource "aws_s3_bucketacl" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   acl    = "private"
+/// }
+/// resource "aws_fsx_lustrefilesystem" "example" {
+///   storage_capacity            = 1200
+///   subnet_ids                  = exampleAwsSubnet.id
+///   deployment_type             = "PERSISTENT_2"
+///   per_unit_storage_throughput = 125
+/// }
+/// resource "aws_fsx_datarepositoryassociation" "example" {
+///   file_system_id       = aws_fsx_lustrefilesystem.example.id
+///   data_repository_path ="s3://${aws_s3_bucket.example.id}"
+///   file_system_path     = "/my-bucket"
+///   s3 = {
+///     auto_export_policy = {
+///       events = ["NEW", "CHANGED", "DELETED"]
+///     }
+///     auto_import_policy = {
+///       events = ["NEW", "CHANGED", "DELETED"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -220,8 +256,8 @@ import 'data_repository_association_state.dart';
 /// import com.pulumi.aws.fsx.inputs.DataRepositoryAssociationS3Args;
 /// import com.pulumi.aws.fsx.inputs.DataRepositoryAssociationS3AutoExportPolicyArgs;
 /// import com.pulumi.aws.fsx.inputs.DataRepositoryAssociationS3AutoImportPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -323,27 +359,27 @@ import 'data_repository_association_state.dart';
 class DataRepositoryAssociation extends pulumi.CustomResource {
   /// Amazon Resource Name of the file system.
   late final pulumi.Output<String> arn;
+  /// Identifier of the data repository association.
   late final pulumi.Output<String> associationId;
   /// Set to true to run an import data repository task to import metadata from the data repository to the file system after the data repository association is created. Defaults to `false`.
   late final pulumi.Output<bool?> batchImportMetaDataOnCreate;
-  /// The path to the Amazon S3 data repository that will be linked to the file system. The path must be an S3 bucket s3://myBucket/myPrefix/. This path specifies where in the S3 data repository files will be imported from or exported to. The same S3 bucket cannot be linked more than once to the same file system.
+  /// Path to the Amazon S3 data repository that will be linked to the file system. The path must be an S3 bucket s3://myBucket/myPrefix/. This path specifies where in the S3 data repository files will be imported from or exported to. The same S3 bucket cannot be linked more than once to the same file system.
   late final pulumi.Output<String> dataRepositoryPath;
   /// Set to true to delete files from the file system upon deleting this data repository association. Defaults to `false`.
   late final pulumi.Output<bool?> deleteDataInFilesystem;
-  /// The ID of the Amazon FSx file system to on which to create a data repository association.
+  /// ID of the Amazon FSx file system to on which to create a data repository association.
   late final pulumi.Output<String> fileSystemId;
-  /// A path on the file system that points to a high-level directory (such as `/ns1/`) or subdirectory (such as `/ns1/subdir/`) that will be mapped 1-1 with `data_repository_path`. The leading forward slash in the name is required. Two data repository associations cannot have overlapping file system paths. For example, if a data repository is associated with file system path `/ns1/`, then you cannot link another data repository with file system path `/ns1/ns2`. This path specifies where in your file system files will be exported from or imported to. This file system directory can be linked to only one Amazon S3 bucket, and no other S3 bucket can be linked to the directory.
+  /// Path on the file system that points to a high-level directory (such as `/ns1/`) or subdirectory (such as `/ns1/subdir/`) that will be mapped 1-1 with `dataRepositoryPath`. The leading forward slash in the name is required. Two data repository associations cannot have overlapping file system paths. For example, if a data repository is associated with file system path `/ns1/`, then you cannot link another data repository with file system path `/ns1/ns2`. This path specifies where in your file system files will be exported from or imported to. This file system directory can be linked to only one Amazon S3 bucket, and no other S3 bucket can be linked to the directory.
   late final pulumi.Output<String> fileSystemPath;
   /// For files imported from a data repository, this value determines the stripe count and maximum amount of data per file (in MiB) stored on a single physical disk. The maximum number of disks that a single file can be striped across is limited by the total number of disks that make up the file system.
   late final pulumi.Output<int> importedFileChunkSize;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// See the `s3` configuration block. Max of 1.
-  /// The configuration for an Amazon S3 data repository linked to an Amazon FSx Lustre file system with a data repository association. The configuration defines which file events (new, changed, or deleted files or directories) are automatically imported from the linked data repository to the file system or automatically exported from the file system to the data repository.
+  /// Configuration for an Amazon S3 data repository linked to an Amazon FSx Lustre file system with a data repository association. This configuration defines which file events (new, changed, or deleted files or directories) are automatically imported from the linked data repository to the file system or automatically exported from the file system to the data repository. See the `s3` Block below. Max of 1.
   late final pulumi.Output<DataRepositoryAssociationS3> s3;
-  /// A map of tags to assign to the data repository association. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the data repository association. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [DataRepositoryAssociation].

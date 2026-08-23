@@ -3,12 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerDefaultActionForwardTargetGroup {
-  /// ARN of the listener. Required if `load_balancer_arn` and `port` is not set.
+  /// ARN of the listener. Required if `loadBalancerArn` and `port` is not set.
   final pulumi.Input<String> arn;
   final pulumi.Input<int> weight;
 
   /// Creates a new [GetListenerDefaultActionForwardTargetGroup].
-  /// [arn] ARN of the listener. Required if `load_balancer_arn` and `port` is not set.
+  /// [arn] ARN of the listener. Required if `loadBalancerArn` and `port` is not set.
   /// [weight] Required.
   const GetListenerDefaultActionForwardTargetGroup({
     required this.arn,
@@ -29,4 +29,3 @@ class GetListenerDefaultActionForwardTargetGroup {
     );
   }
 }
-

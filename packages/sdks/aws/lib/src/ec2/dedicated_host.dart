@@ -77,6 +77,24 @@ import 'dedicated_host_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Create a new host with instance type of c5.18xlarge with Auto Placement
+/// # and Host Recovery enabled.
+/// resource "aws_ec2_dedicatedhost" "test" {
+///   instance_type     = "c5.18xlarge"
+///   availability_zone = "us-west-2a"
+///   host_recovery     = "on"
+///   auto_placement    = "on"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +103,8 @@ import 'dedicated_host_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.DedicatedHost;
 /// import com.pulumi.aws.ec2.DedicatedHostArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -142,9 +160,9 @@ class DedicatedHost extends pulumi.CustomResource {
   late final pulumi.Output<String> availabilityZone;
   /// Indicates whether to enable or disable host recovery for the Dedicated Host. Valid values: `on`, `off`. Default: `off`.
   late final pulumi.Output<String?> hostRecovery;
-  /// Specifies the instance family to be supported by the Dedicated Hosts. If you specify an instance family, the Dedicated Hosts support multiple instance types within that instance family. Exactly one of `instance_family` or `instance_type` must be specified.
+  /// Specifies the instance family to be supported by the Dedicated Hosts. If you specify an instance family, the Dedicated Hosts support multiple instance types within that instance family. Exactly one of `instanceFamily` or `instanceType` must be specified.
   late final pulumi.Output<String?> instanceFamily;
-  /// Specifies the instance type to be supported by the Dedicated Hosts. If you specify an instance type, the Dedicated Hosts support instances of the specified instance type only. Exactly one of `instance_family` or `instance_type` must be specified.
+  /// Specifies the instance type to be supported by the Dedicated Hosts. If you specify an instance type, the Dedicated Hosts support instances of the specified instance type only. Exactly one of `instanceFamily` or `instanceType` must be specified.
   late final pulumi.Output<String?> instanceType;
   /// The Amazon Resource Name (ARN) of the AWS Outpost on which to allocate the Dedicated Host.
   late final pulumi.Output<String?> outpostArn;
@@ -152,9 +170,9 @@ class DedicatedHost extends pulumi.CustomResource {
   late final pulumi.Output<String> ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [DedicatedHost].

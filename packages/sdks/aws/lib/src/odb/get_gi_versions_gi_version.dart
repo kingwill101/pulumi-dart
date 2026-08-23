@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGiVersionsGiVersion {
-  /// The GI software version.
+  /// GI software version.
   final pulumi.Input<String> version;
 
   /// Creates a new [GetGiVersionsGiVersion].
-  /// [version] The GI software version.
+  /// [version] GI software version.
   const GetGiVersionsGiVersion({
     required this.version,
   });
@@ -24,4 +24,3 @@ class GetGiVersionsGiVersion {
     );
   }
 }
-

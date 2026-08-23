@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage {
+  /// Total amount, in GiB, of ephemeral storage to set for the task.
   final pulumi.Input<int> sizeInGib;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage].
-  /// [sizeInGib] Required.
+  /// [sizeInGib] Total amount, in GiB, of ephemeral storage to set for the task.
   const GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage({
     required this.sizeInGib,
   });
@@ -23,4 +24,3 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage {
     );
   }
 }
-

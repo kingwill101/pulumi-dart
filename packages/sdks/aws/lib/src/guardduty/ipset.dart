@@ -126,7 +126,7 @@ import 'ipset_state.dart';
 /// 		}
 /// 		myIPSet, err := s3.NewBucketObjectv2(ctx, "MyIPSet", &s3.BucketObjectv2Args{
 /// 			Content: pulumi.String("10.0.0.0/8\n"),
-/// 			Bucket:  bucket.ID(),
+/// 			Bucket:  bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Key:     pulumi.String("MyIPSet"),
 /// 		})
 /// 		if err != nil {
@@ -134,7 +134,7 @@ import 'ipset_state.dart';
 /// 		}
 /// 		_, err = guardduty.NewIPSet(ctx, "example", &guardduty.IPSetArgs{
 /// 			Activate:   pulumi.Bool(true),
-/// 			DetectorId: primary.ID(),
+/// 			DetectorId: primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Format:     pulumi.String("TXT"),
 /// 			Location: pulumi.All(myIPSet.Bucket, myIPSet.Key).ApplyT(func(_args []interface{}) (string, error) {
 /// 				bucket := _args[0].(string)
@@ -147,7 +147,7 @@ import 'ipset_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "bucket_acl", &s3.BucketAclArgs{
-/// 			Bucket: bucket.ID(),
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -155,6 +155,37 @@ import 'ipset_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_guardduty_ipset" "example" {
+///   activate    = true
+///   detector_id = aws_guardduty_detector.primary.id
+///   format      = "TXT"
+///   location    ="https://s3.amazonaws.com/${aws_s3_bucketobjectv2.MyIPSet.bucket}/${aws_s3_bucketobjectv2.MyIPSet.key}"
+///   name        = "MyIPSet"
+/// }
+/// resource "aws_guardduty_detector" "primary" {
+///   enable = true
+/// }
+/// resource "aws_s3_bucket" "bucket" {
+/// }
+/// resource "aws_s3_bucketacl" "bucket_acl" {
+///   bucket = aws_s3_bucket.bucket.id
+///   acl    = "private"
+/// }
+/// resource "aws_s3_bucketobjectv2" "MyIPSet" {
+///   content = "10.0.0.0/8\n"
+///   bucket  = aws_s3_bucket.bucket.id
+///   key     = "MyIPSet"
 /// }
 /// ```
 /// ```java
@@ -172,8 +203,8 @@ import 'ipset_state.dart';
 /// import com.pulumi.aws.guardduty.IPSetArgs;
 /// import com.pulumi.aws.s3.BucketAcl;
 /// import com.pulumi.aws.s3.BucketAclArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -268,15 +299,17 @@ class IPSet extends pulumi.CustomResource {
   late final pulumi.Output<String> detectorId;
   /// The format of the file that contains the IPSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
   late final pulumi.Output<String> format;
+  /// ID of the GuardDuty IPSet.
+  late final pulumi.Output<String> ipSetId;
   /// The URI of the file that contains the IPSet.
   late final pulumi.Output<String> location;
   /// The friendly name to identify the IPSet.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [IPSet].
@@ -297,6 +330,7 @@ class IPSet extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     detectorId = registerOutput<String>('detectorId');
     format = registerOutput<String>('format');
+    ipSetId = registerOutput<String>('ipSetId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -331,6 +365,7 @@ class IPSet extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     detectorId = registerOutput<String>('detectorId');
     format = registerOutput<String>('format');
+    ipSetId = registerOutput<String>('ipSetId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

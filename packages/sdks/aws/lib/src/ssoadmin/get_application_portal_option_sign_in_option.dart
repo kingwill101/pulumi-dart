@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationPortalOptionSignInOption {
+  /// URL that accepts authentication requests for an application.
   final pulumi.Input<String> applicationUrl;
+  /// How IAM Identity Center navigates the user to the target application.
   final pulumi.Input<String> origin;
 
   /// Creates a new [GetApplicationPortalOptionSignInOption].
-  /// [applicationUrl] Required.
-  /// [origin] Required.
+  /// [applicationUrl] URL that accepts authentication requests for an application.
+  /// [origin] How IAM Identity Center navigates the user to the target application.
   const GetApplicationPortalOptionSignInOption({
     required this.applicationUrl,
     required this.origin,
@@ -28,4 +30,3 @@ class GetApplicationPortalOptionSignInOption {
     );
   }
 }
-

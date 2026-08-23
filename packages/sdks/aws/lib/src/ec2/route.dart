@@ -5,9 +5,9 @@ import 'route_state.dart';
 /// Provides a resource to create a routing table entry (a route) in a VPC routing table.
 ///
 ///
-/// &gt; **NOTE on `gateway_id` attribute:** The AWS API is very forgiving with the resource ID passed in the `gateway_id` attribute. For example an `aws.ec2.Route` resource can be created with an `aws.ec2.NatGateway` or `aws.ec2.EgressOnlyInternetGateway` ID specified for the `gateway_id` attribute. Specifying anything other than an `aws.ec2.InternetGateway` or `aws.ec2.VpnGateway` ID will lead to this provider reporting a permanent diff between your configuration and recorded state, as the AWS API returns the more-specific attribute. If you are experiencing constant diffs with an `aws.ec2.Route` resource, the first thing to check is that the correct attribute is being specified.
+/// &gt; **NOTE on `gatewayId` attribute:** The AWS API is very forgiving with the resource ID passed in the `gatewayId` attribute. For example an `aws.ec2.Route` resource can be created with an `aws.ec2.NatGateway` or `aws.ec2.EgressOnlyInternetGateway` ID specified for the `gatewayId` attribute. Specifying anything other than an `aws.ec2.InternetGateway` or `aws.ec2.VpnGateway` ID will lead to this provider reporting a permanent diff between your configuration and recorded state, as the AWS API returns the more-specific attribute. If you are experiencing constant diffs with an `aws.ec2.Route` resource, the first thing to check is that the correct attribute is being specified.
 ///
-/// &gt; **NOTE on combining `vpc_endpoint_id` and `destination_prefix_list_id` attributes:** To associate a Gateway VPC Endpoint (such as S3) with destination prefix list, use the `aws.ec2.VpcEndpointRouteTableAssociation` resource instead.
+/// &gt; **NOTE on combining `vpcEndpointId` and `destinationPrefixListId` attributes:** To associate a Gateway VPC Endpoint (such as S3) with destination prefix list, use the `aws.ec2.VpcEndpointRouteTableAssociation` resource instead.
 ///
 /// ## Example Usage
 ///
@@ -70,6 +70,21 @@ import 'route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_route" "r" {
+///   route_table_id            = testing.id
+///   destination_cidr_block    = "10.0.1.0/22"
+///   vpc_peering_connection_id = "pcx-45ff3dc1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +93,8 @@ import 'route_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Route;
 /// import com.pulumi.aws.ec2.RouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -111,7 +126,7 @@ import 'route_state.dart';
 /// ```
 ///
 ///
-/// ## Example IPv6 Usage
+/// ### Example IPv6 Usage
 ///
 ///
 /// ```typescript
@@ -188,7 +203,7 @@ import 'route_state.dart';
 /// 			return err
 /// 		}
 /// 		egress, err := ec2.NewEgressOnlyInternetGateway(ctx, "egress", &ec2.EgressOnlyInternetGatewayArgs{
-/// 			VpcId: vpc.ID(),
+/// 			VpcId: vpc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -196,13 +211,35 @@ import 'route_state.dart';
 /// 		_, err = ec2.NewRoute(ctx, "r", &ec2.RouteArgs{
 /// 			RouteTableId:             pulumi.String("rtb-4fbb3ac4"),
 /// 			DestinationIpv6CidrBlock: pulumi.String("::/0"),
-/// 			EgressOnlyGatewayId:      egress.ID(),
+/// 			EgressOnlyGatewayId:      egress.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "vpc" {
+///   cidr_block                       = "10.1.0.0/16"
+///   assign_generated_ipv6_cidr_block = true
+/// }
+/// resource "aws_ec2_egressonlyinternetgateway" "egress" {
+///   vpc_id = aws_ec2_vpc.vpc.id
+/// }
+/// resource "aws_ec2_route" "r" {
+///   route_table_id              = "rtb-4fbb3ac4"
+///   destination_ipv6_cidr_block = "::/0"
+///   egress_only_gateway_id      = aws_ec2_egressonlyinternetgateway.egress.id
 /// }
 /// ```
 /// ```java
@@ -217,8 +254,8 @@ import 'route_state.dart';
 /// import com.pulumi.aws.ec2.EgressOnlyInternetGatewayArgs;
 /// import com.pulumi.aws.ec2.Route;
 /// import com.pulumi.aws.ec2.RouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -274,16 +311,16 @@ import 'route_state.dart';
 ///
 /// #### Required
 ///
-/// * `route_table_id` - (String) ID of the route table.
+/// * `routeTableId` - (String) ID of the route table.
 ///
 /// #### Optional
 ///
-/// &gt; Exactly one of of `destination_cidr_block`, `destination_ipv6_cidr_block`, or `destination_prefix_list_id` is required.
+/// &gt; Exactly one of of `destinationCidrBlock`, `destinationIpv6CidrBlock`, or `destinationPrefixListId` is required.
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
-/// * `destination_cidr_block` - (String) Destination IPv4 CIDR block.
-/// * `destination_ipv6_cidr_block` - (String) Destination IPv6 CIDR block.
-/// * `destination_prefix_list_id` - (String) Destination IPv6 CIDR block.
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `destinationCidrBlock` - (String) Destination IPv4 CIDR block.
+/// * `destinationIpv6CidrBlock` - (String) Destination IPv6 CIDR block.
+/// * `destinationPrefixListId` - (String) Destination IPv6 CIDR block.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -339,6 +376,8 @@ class Route extends pulumi.CustomResource {
   late final pulumi.Output<String?> natGatewayId;
   /// Identifier of an EC2 network interface.
   late final pulumi.Output<String> networkInterfaceId;
+  /// The Amazon Resource Name (ARN) of an ODB network.
+  late final pulumi.Output<String?> odbNetworkArn;
   /// How the route was created - `CreateRouteTable`, `CreateRoute` or `EnableVgwRoutePropagation`.
   late final pulumi.Output<String> origin;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -384,6 +423,7 @@ class Route extends pulumi.CustomResource {
     localGatewayId = registerOutput<String?>('localGatewayId');
     natGatewayId = registerOutput<String?>('natGatewayId');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    odbNetworkArn = registerOutput<String?>('odbNetworkArn');
     origin = registerOutput<String>('origin');
     region = registerOutput<String>('region');
     routeTableId = registerOutput<String>('routeTableId');
@@ -428,6 +468,7 @@ class Route extends pulumi.CustomResource {
     localGatewayId = registerOutput<String?>('localGatewayId');
     natGatewayId = registerOutput<String?>('natGatewayId');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    odbNetworkArn = registerOutput<String?>('odbNetworkArn');
     origin = registerOutput<String>('origin');
     region = registerOutput<String>('region');
     routeTableId = registerOutput<String>('routeTableId');

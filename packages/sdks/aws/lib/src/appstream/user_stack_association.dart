@@ -98,6 +98,28 @@ import 'user_stack_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appstream_stack" "test" {
+///   name = "STACK NAME"
+/// }
+/// resource "aws_appstream_user" "test" {
+///   authentication_type = "USERPOOL"
+///   user_name           = "EMAIL"
+/// }
+/// resource "aws_appstream_userstackassociation" "test" {
+///   authentication_type = aws_appstream_user.test.authentication_type
+///   stack_name          = aws_appstream_stack.test.name
+///   user_name           = aws_appstream_user.test.user_name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +132,8 @@ import 'user_stack_association_state.dart';
 /// import com.pulumi.aws.appstream.UserArgs;
 /// import com.pulumi.aws.appstream.UserStackAssociation;
 /// import com.pulumi.aws.appstream.UserStackAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,7 +187,7 @@ import 'user_stack_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import AppStream User Stack Association using the `user_name`, `authentication_type`, and `stack_name`, separated by a slash (`/`). For example:
+/// Using `pulumi import`, import AppStream User Stack Association using the `userName`, `authenticationType`, and `stackName`, separated by a slash (`/`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appstream/userStackAssociation:UserStackAssociation example userName/auhtenticationType/stackName

@@ -4,7 +4,7 @@ import 'voice_connector_termination_credentials_state.dart';
 
 /// Adds termination SIP credentials for the specified Amazon Chime Voice Connector.
 ///
-/// &gt; **Note:** Voice Connector Termination Credentials requires a Voice Connector Termination to be present. Use of `depends_on` (as shown below) is recommended to avoid race conditions.
+/// &gt; **Note:** Voice Connector Termination Credentials requires a Voice Connector Termination to be present. Use of `dependsOn` (as shown below) is recommended to avoid race conditions.
 ///
 /// ## Example Usage
 ///
@@ -139,13 +139,13 @@ import 'voice_connector_termination_credentials_state.dart';
 /// 				pulumi.String("US"),
 /// 				pulumi.String("CA"),
 /// 			},
-/// 			VoiceConnectorId: _default.ID(),
+/// 			VoiceConnectorId: _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = chime.NewVoiceConnectorTerminationCredentials(ctx, "default", &chime.VoiceConnectorTerminationCredentialsArgs{
-/// 			VoiceConnectorId: _default.ID(),
+/// 			VoiceConnectorId: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Credentials: chime.VoiceConnectorTerminationCredentialsCredentialArray{
 /// 				&chime.VoiceConnectorTerminationCredentialsCredentialArgs{
 /// 					Username: pulumi.String("test"),
@@ -162,6 +162,35 @@ import 'voice_connector_termination_credentials_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_chime_voiceconnector" "default" {
+///   name               = "test"
+///   require_encryption = true
+/// }
+/// resource "aws_chime_voiceconnectortermination" "default" {
+///   disabled           = true
+///   cps_limit          = 1
+///   cidr_allow_lists   = ["50.35.78.96/31"]
+///   calling_regions    = ["US", "CA"]
+///   voice_connector_id = aws_chime_voiceconnector.default.id
+/// }
+/// resource "aws_chime_voiceconnectorterminationcredentials" "default" {
+///   depends_on         = [aws_chime_voiceconnectortermination.default]
+///   voice_connector_id = aws_chime_voiceconnector.default.id
+///   credentials {
+///     username = "test"
+///     password = "test!"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -176,8 +205,8 @@ import 'voice_connector_termination_credentials_state.dart';
 /// import com.pulumi.aws.chime.VoiceConnectorTerminationCredentialsArgs;
 /// import com.pulumi.aws.chime.inputs.VoiceConnectorTerminationCredentialsCredentialArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -252,7 +281,7 @@ import 'voice_connector_termination_credentials_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Chime Voice Connector Termination Credentials using the `voice_connector_id`. For example:
+/// Using `pulumi import`, import Chime Voice Connector Termination Credentials using the `voiceConnectorId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:chime/voiceConnectorTerminationCredentials:VoiceConnectorTerminationCredentials default abcdef1ghij2klmno3pqr4

@@ -6,12 +6,12 @@ import 'outbound_connection_connection_properties_cross_cluster_search.dart';
 class OutboundConnectionConnectionProperties {
   /// Configuration block for cross cluster search.
   final pulumi.Input<OutboundConnectionConnectionPropertiesCrossClusterSearch>? crossClusterSearch;
-  /// The endpoint of the remote domain, is only set when `connection_mode` is `VPC_ENDPOINT` and `accept_connection` is `TRUE`.
+  /// The endpoint of the remote domain, is only set when `connectionMode` is `VPC_ENDPOINT` and `acceptConnection` is `TRUE`.
   final pulumi.Input<String>? endpoint;
 
   /// Creates a new [OutboundConnectionConnectionProperties].
   /// [crossClusterSearch] Configuration block for cross cluster search.
-  /// [endpoint] The endpoint of the remote domain, is only set when `connection_mode` is `VPC_ENDPOINT` and `accept_connection` is `TRUE`.
+  /// [endpoint] The endpoint of the remote domain, is only set when `connectionMode` is `VPC_ENDPOINT` and `acceptConnection` is `TRUE`.
   const OutboundConnectionConnectionProperties({
     this.crossClusterSearch,
     this.endpoint,
@@ -31,4 +31,3 @@ class OutboundConnectionConnectionProperties {
     );
   }
 }
-

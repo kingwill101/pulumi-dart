@@ -109,6 +109,21 @@ import 'traffic_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_trafficpolicy" "example" {
+///   name     = "example"
+///   comment  = "example comment"
+///   document = "{\n  \\\"AWSPolicyFormatVersion\\\": \\\"2015-10-01\\\",\n  \\\"RecordType\\\": \\\"A\\\",\n  \\\"Endpoints\\\": {\n    \\\"endpoint-start-NkPh\\\": {\n      \\\"Type\\\": \\\"value\\\",\n      \\\"Value\\\": \\\"10.0.0.2\\\"\n    }\n  },\n  \\\"StartEndpoint\\\": \\\"endpoint-start-NkPh\\\"\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -117,8 +132,8 @@ import 'traffic_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.TrafficPolicy;
 /// import com.pulumi.aws.route53.TrafficPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

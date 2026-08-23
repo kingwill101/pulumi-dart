@@ -11,26 +11,28 @@ import 'express_gateway_service_timeouts.dart';
 class ExpressGatewayServiceState {
   /// Name or ARN of the ECS cluster. Defaults to `default`.
   final pulumi.Input<String>? cluster;
-  /// Number of CPU units used by the task. Valid values are powers of 2 between 256 and 4096.
+  /// Number of CPU units used by the task. Valid values are powers of 2 between 256 and 4096. Defaults to `1024`.
   final pulumi.Input<String>? cpu;
-  /// ARN of the current deployment.
+  /// (**Deprecated**) ARN of the current deployment.
   final pulumi.Input<String>? currentDeployment;
   /// ARN of the IAM role that allows ECS to pull container images and publish container logs to Amazon CloudWatch.
   final pulumi.Input<String>? executionRoleArn;
-  /// Path for health check requests. Defaults to `/ping`.
+  /// Path for health check requests. Defaults to `/`.
   final pulumi.Input<String>? healthCheckPath;
   /// ARN of the IAM role that allows ECS to manage AWS infrastructure on your behalf. **Important:** The infrastructure role cannot be modified after the service is created. Changing this forces a new resource to be created.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? infrastructureRoleArn;
-  /// List of ingress paths with access type and endpoint information.
+  /// List of ingress paths for the service. See `ingressPaths` Block below.
   final pulumi.Input<List<ExpressGatewayServiceIngressPath>>? ingressPaths;
-  /// Amount of memory (in MiB) used by the task. Valid values are between 512 and 8192.
+  /// Amount of memory (in MiB) used by the task. Valid values are between 512 and 8192. Defaults to `2048`.
   final pulumi.Input<String>? memory;
+  /// Network configuration for the service. See `networkConfiguration` Block below.
   final pulumi.Input<List<ExpressGatewayServiceNetworkConfiguration>>? networkConfigurations;
   final pulumi.Input<ExpressGatewayServicePrimaryContainer>? primaryContainer;
   /// AWS region where the service will be created. If not specified, the region configured in the provider will be used.
   final pulumi.Input<String>? region;
+  /// Auto-scaling configuration for the service. See `scalingTarget` Block below.
   final pulumi.Input<List<ExpressGatewayServiceScalingTarget>>? scalingTargets;
   /// ARN of the Express Gateway Service.
   final pulumi.Input<String>? serviceArn;
@@ -38,9 +40,9 @@ class ExpressGatewayServiceState {
   final pulumi.Input<String>? serviceName;
   /// ARN of the service revision.
   final pulumi.Input<String>? serviceRevisionArn;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// ARN of the IAM role that allows your Amazon ECS container task to make calls to other AWS services.
   final pulumi.Input<String>? taskRoleArn;
@@ -50,22 +52,22 @@ class ExpressGatewayServiceState {
 
   /// Creates a new [ExpressGatewayServiceState].
   /// [cluster] Name or ARN of the ECS cluster. Defaults to `default`.
-  /// [cpu] Number of CPU units used by the task. Valid values are powers of 2 between 256 and 4096.
-  /// [currentDeployment] ARN of the current deployment.
+  /// [cpu] Number of CPU units used by the task. Valid values are powers of 2 between 256 and 4096. Defaults to `1024`.
+  /// [currentDeployment] (**Deprecated**) ARN of the current deployment.
   /// [executionRoleArn] ARN of the IAM role that allows ECS to pull container images and publish container logs to Amazon CloudWatch.
-  /// [healthCheckPath] Path for health check requests. Defaults to `/ping`.
+  /// [healthCheckPath] Path for health check requests. Defaults to `/`.
   /// [infrastructureRoleArn] ARN of the IAM role that allows ECS to manage AWS infrastructure on your behalf. **Important:** The infrastructure role cannot be modified after the service is created. Changing this forces a new resource to be created.
-  /// [ingressPaths] List of ingress paths with access type and endpoint information.
-  /// [memory] Amount of memory (in MiB) used by the task. Valid values are between 512 and 8192.
-  /// [networkConfigurations] Optional.
+  /// [ingressPaths] List of ingress paths for the service. See `ingressPaths` Block below.
+  /// [memory] Amount of memory (in MiB) used by the task. Valid values are between 512 and 8192. Defaults to `2048`.
+  /// [networkConfigurations] Network configuration for the service. See `networkConfiguration` Block below.
   /// [primaryContainer] Optional.
   /// [region] AWS region where the service will be created. If not specified, the region configured in the provider will be used.
-  /// [scalingTargets] Optional.
+  /// [scalingTargets] Auto-scaling configuration for the service. See `scalingTarget` Block below.
   /// [serviceArn] ARN of the Express Gateway Service.
   /// [serviceName] Name of the service. If not specified, a name will be generated. Changing this forces a new resource to be created.
   /// [serviceRevisionArn] ARN of the service revision.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [taskRoleArn] ARN of the IAM role that allows your Amazon ECS container task to make calls to other AWS services.
   /// [timeouts] Optional.
   /// [waitForSteadyState] Whether to wait for the service to reach a steady state before considering the operation complete. Defaults to `false`.
@@ -142,4 +144,3 @@ class ExpressGatewayServiceState {
     );
   }
 }
-

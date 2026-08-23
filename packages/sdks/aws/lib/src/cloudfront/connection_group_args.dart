@@ -8,7 +8,7 @@ import 'connection_group_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_cloudfront_connection_group_connection_group_args_doc}
 class ConnectionGroupArgs {
-  /// ID of the associated Anycast IP List. `ipv6_enabled` must not be set to `true` in order to set this argument
+  /// ID of the associated Anycast IP List. `ipv6Enabled` must not be set to `true` in order to set this argument
   final pulumi.Input<String>? anycastIpListId;
   /// Whether the connection group is enabled. Default is `true`.
   final pulumi.Input<bool>? enabled;
@@ -16,17 +16,17 @@ class ConnectionGroupArgs {
   final pulumi.Input<bool>? ipv6Enabled;
   /// Name of the connection group.
   final pulumi.Input<String>? name;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<ConnectionGroupTimeouts>? timeouts;
   final pulumi.Input<bool>? waitForDeployment;
 
   /// Creates a new [ConnectionGroupArgs].
-  /// [anycastIpListId] ID of the associated Anycast IP List. `ipv6_enabled` must not be set to `true` in order to set this argument
+  /// [anycastIpListId] ID of the associated Anycast IP List. `ipv6Enabled` must not be set to `true` in order to set this argument
   /// [enabled] Whether the connection group is enabled. Default is `true`.
   /// [ipv6Enabled] Whether IPv6 is enabled for the connection group. Default is `false`.
   /// [name] Name of the connection group.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [waitForDeployment] Optional.
   const ConnectionGroupArgs({
@@ -63,4 +63,3 @@ class ConnectionGroupArgs {
     );
   }
 }
-

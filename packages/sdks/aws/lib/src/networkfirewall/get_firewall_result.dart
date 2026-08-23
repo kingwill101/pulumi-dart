@@ -37,7 +37,7 @@ class GetFirewallResult {
   final bool subnetChangeProtection;
   /// Set of configuration blocks describing the public subnets. Each subnet must belong to a different Availability Zone in the VPC. AWS Network Firewall creates a firewall endpoint in each subnet.
   final List<GetFirewallSubnetMapping> subnetMappings;
-  /// Map of resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of resource tags to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Map<String, String> tags;
   /// The unique identifier of the transit gateway associated with this firewall.
   final String transitGatewayId;
@@ -64,7 +64,7 @@ class GetFirewallResult {
   /// [region] Required.
   /// [subnetChangeProtection] A flag indicating whether the firewall is protected against changes to the subnet associations.
   /// [subnetMappings] Set of configuration blocks describing the public subnets. Each subnet must belong to a different Availability Zone in the VPC. AWS Network Firewall creates a firewall endpoint in each subnet.
-  /// [tags] Map of resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of resource tags to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transitGatewayId] The unique identifier of the transit gateway associated with this firewall.
   /// [transitGatewayOwnerAccountId] The AWS account ID that owns the transit gateway.
   /// [updateToken] String token used when updating a firewall.
@@ -142,4 +142,3 @@ class GetFirewallResult {
     );
   }
 }
-

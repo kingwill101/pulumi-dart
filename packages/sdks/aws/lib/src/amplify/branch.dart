@@ -80,7 +80,7 @@ import 'branch_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = amplify.NewBranch(ctx, "master", &amplify.BranchArgs{
-/// 			AppId:      example.ID(),
+/// 			AppId:      example.ID().ToIDOutput().ToStringOutput(),
 /// 			BranchName: pulumi.String("master"),
 /// 			Framework:  pulumi.String("React"),
 /// 			Stage:      pulumi.String("PRODUCTION"),
@@ -95,6 +95,28 @@ import 'branch_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amplify_app" "example" {
+///   name = "app"
+/// }
+/// resource "aws_amplify_branch" "master" {
+///   app_id      = aws_amplify_app.example.id
+///   branch_name = "master"
+///   framework   = "React"
+///   stage       = "PRODUCTION"
+///   environment_variables = {
+///     "REACT_APP_API_SERVER" = "https://api.example.com"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +127,8 @@ import 'branch_state.dart';
 /// import com.pulumi.aws.amplify.AppArgs;
 /// import com.pulumi.aws.amplify.Branch;
 /// import com.pulumi.aws.amplify.BranchArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -232,7 +254,7 @@ import 'branch_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = amplify.NewBranch(ctx, "master", &amplify.BranchArgs{
-/// 			AppId:                example.ID(),
+/// 			AppId:                example.ID().ToIDOutput().ToStringOutput(),
 /// 			BranchName:           pulumi.String("master"),
 /// 			EnableBasicAuth:      pulumi.Bool(true),
 /// 			BasicAuthCredentials: pulumi.String(invokeBase64encode.Result),
@@ -242,6 +264,28 @@ import 'branch_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amplify_app" "example" {
+///   name = "app"
+/// }
+/// resource "aws_amplify_branch" "master" {
+///   app_id                 = aws_amplify_app.example.id
+///   branch_name            = "master"
+///   enable_basic_auth      = true
+///   basic_auth_credentials = base64encode("username:password")
 /// }
 /// ```
 /// ```java
@@ -256,8 +300,8 @@ import 'branch_state.dart';
 /// import com.pulumi.aws.amplify.BranchArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64encodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -308,7 +352,7 @@ import 'branch_state.dart';
 ///
 /// ### Notifications
 ///
-/// Amplify Console uses EventBridge (formerly known as CloudWatch Events) and SNS for email notifications.  To implement the same functionality, you need to set `enable_notification` in a `aws.amplify.Branch` resource, as well as creating an EventBridge Rule, an SNS topic, and SNS subscriptions.
+/// Amplify Console uses EventBridge (formerly known as CloudWatch Events) and SNS for email notifications.  To implement the same functionality, you need to set `enableNotification` in a `aws.amplify.Branch` resource, as well as creating an EventBridge Rule, an SNS topic, and SNS subscriptions.
 ///
 ///
 /// ```typescript
@@ -370,7 +414,7 @@ import 'branch_state.dart';
 /// });
 /// const amplifyAppMasterTopicPolicy = new aws.sns.TopicPolicy("amplify_app_master", {
 ///     arn: amplifyAppMasterTopic.arn,
-///     policy: amplifyAppMaster.apply(amplifyAppMaster => amplifyAppMaster.json),
+///     policy: amplifyAppMaster.json,
 /// });
 /// const _this = new aws.sns.TopicSubscription("this", {
 ///     topic: amplifyAppMasterTopic.arn,
@@ -589,7 +633,7 @@ import 'branch_state.dart';
 /// 			return err
 /// 		}
 /// 		master, err := amplify.NewBranch(ctx, "master", &amplify.BranchArgs{
-/// 			AppId:              example.ID(),
+/// 			AppId:              example.ID().ToIDOutput().ToStringOutput(),
 /// 			BranchName:         pulumi.String("master"),
 /// 			EnableNotification: pulumi.Bool(true),
 /// 		})
@@ -605,12 +649,12 @@ import 'branch_state.dart';
 /// 				return fmt.Sprintf("AWS Amplify build notifications for :  App: %v Branch: %v", app.Id, branchName), nil
 /// 			}).(pulumi.StringOutput),
 /// 			EventPattern: pulumi.All(example.ID(), master.BranchName).ApplyT(func(_args []interface{}) (string, error) {
-/// 				id := _args[0].(string)
+/// 				id := _args[0].(pulumi.ID)
 /// 				branchName := _args[1].(string)
 /// 				var _zero string
 /// 				tmpJSON0, err := json.Marshal(map[string]interface{}{
 /// 					"detail": map[string]interface{}{
-/// 						"appId": []string{
+/// 						"appId": pulumi.IDArray{
 /// 							id,
 /// 						},
 /// 						"branchName": []string{
@@ -691,10 +735,8 @@ import 'branch_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = sns.NewTopicPolicy(ctx, "amplify_app_master", &sns.TopicPolicyArgs{
-/// 			Arn: amplifyAppMasterTopic.Arn,
-/// 			Policy: pulumi.String(amplifyAppMaster.ApplyT(func(amplifyAppMaster iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &amplifyAppMaster.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Arn:    amplifyAppMasterTopic.Arn,
+/// 			Policy: amplifyAppMaster.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -709,6 +751,79 @@ import 'branch_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "amplifyAppMaster" {
+///   statements {
+///     sid     ="Allow_Publish_Events ${aws_amplify_branch.master.arn}"
+///     effect  = "Allow"
+///     actions = ["SNS:Publish"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["events.amazonaws.com"]
+///     }
+///     resources = [aws_sns_topic.amplify_app_master.arn]
+///   }
+/// }
+///
+/// resource "aws_amplify_app" "example" {
+///   name = "app"
+/// }
+/// resource "aws_amplify_branch" "master" {
+///   app_id              = aws_amplify_app.example.id
+///   branch_name         = "master"
+///   enable_notification = true
+/// }
+/// # EventBridge Rule for Amplify notifications
+/// resource "aws_cloudwatch_eventrule" "amplify_app_master" {
+///   name        ="amplify-${app.id}-${aws_amplify_branch.master.branch_name}-branch-notification"
+///   description ="AWS Amplify build notifications for :  App: ${app.id} Branch: ${aws_amplify_branch.master.branch_name}"
+///   event_pattern = jsonencode({
+///     "detail" = {
+///       "appId"      = [aws_amplify_app.example.id]
+///       "branchName" = [aws_amplify_branch.master.branch_name]
+///       "jobStatus"  = ["SUCCEED", "FAILED", "STARTED"]
+///     }
+///     "detail-type" = ["Amplify Deployment Status Change"]
+///     "source"      = ["aws.amplify"]
+///   })
+/// }
+/// resource "aws_cloudwatch_eventtarget" "amplify_app_master" {
+///   rule      = aws_cloudwatch_eventrule.amplify_app_master.name
+///   target_id = aws_amplify_branch.master.branch_name
+///   arn       = aws_sns_topic.amplify_app_master.arn
+///   input_transformer = {
+///     input_paths = {
+///       "jobId"  = "$.detail.jobId"
+///       "appId"  = "$.detail.appId"
+///       "region" = "$.region"
+///       "branch" = "$.detail.branchName"
+///       "status" = "$.detail.jobStatus"
+///     }
+///     input_template = "\"Build notification from the AWS Amplify Console for app: https://<branch>.<appId>.amplifyapp.com/. Your build status is <status>. Go to https://console.aws.amazon.com/amplify/home?region=<region>#<appId>/<branch>/<jobId> to view details on your build. \""
+///   }
+/// }
+/// # SNS Topic for Amplify notifications
+/// resource "aws_sns_topic" "amplify_app_master" {
+///   name ="amplify-${app.id}_${aws_amplify_branch.master.branch_name}"
+/// }
+/// resource "aws_sns_topicpolicy" "amplify_app_master" {
+///   arn    = aws_sns_topic.amplify_app_master.arn
+///   policy = data.aws_iam_getpolicydocument.amplifyAppMaster.json
+/// }
+/// resource "aws_sns_topicsubscription" "this" {
+///   topic    = aws_sns_topic.amplify_app_master.arn
+///   protocol = "email"
+///   endpoint = "user@acme.com"
 /// }
 /// ```
 /// ```java
@@ -730,13 +845,15 @@ import 'branch_state.dart';
 /// import com.pulumi.aws.cloudwatch.inputs.EventTargetInputTransformerArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.sns.TopicPolicy;
 /// import com.pulumi.aws.sns.TopicPolicyArgs;
 /// import com.pulumi.aws.sns.TopicSubscription;
 /// import com.pulumi.aws.sns.TopicSubscriptionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -918,7 +1035,7 @@ import 'branch_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amplify branch using `app_id` and `branch_name`. For example:
+/// Using `pulumi import`, import Amplify branch using `appId` and `branchName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:amplify/branch:Branch master d2ypk4k47z8u6/master
@@ -968,9 +1085,9 @@ class Branch extends pulumi.CustomResource {
   late final pulumi.Output<String> sourceBranch;
   /// Describes the current stage for the branch. Valid values: `PRODUCTION`, `BETA`, `DEVELOPMENT`, `EXPERIMENTAL`, `PULL_REQUEST`.
   late final pulumi.Output<String?> stage;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Content Time To Live (TTL) for the website in seconds.
   late final pulumi.Output<String?> ttl;

@@ -42,9 +42,9 @@ class SnapshotCopyState {
   final pulumi.Input<String>? sourceRegion;
   /// Specifies the storage type associated with DB snapshot.
   final pulumi.Input<String>? storageType;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The external custom Availability Zone.
   final pulumi.Input<String>? targetCustomAvailabilityZone;
@@ -74,8 +74,8 @@ class SnapshotCopyState {
   /// [sourceDbSnapshotIdentifier] Snapshot identifier of the source snapshot.
   /// [sourceRegion] The region that the DB snapshot was created in or copied from.
   /// [storageType] Specifies the storage type associated with DB snapshot.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [targetCustomAvailabilityZone] The external custom Availability Zone.
   /// [targetDbSnapshotIdentifier] The Identifier for the snapshot.
   /// [vpcId] Provides the VPC ID associated with the DB snapshot.
@@ -167,4 +167,3 @@ class SnapshotCopyState {
     );
   }
 }
-

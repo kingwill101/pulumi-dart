@@ -9,7 +9,7 @@ class ConfigurationAggregatorOrganizationAggregationSource {
   final pulumi.Input<List<String>>? regions;
   /// ARN of the IAM role used to retrieve AWS Organization details associated with the aggregator account.
   ///
-  /// Either `regions` or `all_regions` (as true) must be specified.
+  /// Either `regions` or `allRegions` (as true) must be specified.
   final pulumi.Input<String> roleArn;
 
   /// Creates a new [ConfigurationAggregatorOrganizationAggregationSource].
@@ -38,4 +38,3 @@ class ConfigurationAggregatorOrganizationAggregationSource {
     );
   }
 }
-

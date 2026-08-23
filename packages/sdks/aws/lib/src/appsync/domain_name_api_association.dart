@@ -61,6 +61,20 @@ import 'domain_name_api_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appsync_domainnameapiassociation" "example" {
+///   api_id      = exampleAwsAppsyncGraphqlApi.id
+///   domain_name = exampleAwsAppsyncDomainName.domainName
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'domain_name_api_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appsync.DomainNameApiAssociation;
 /// import com.pulumi.aws.appsync.DomainNameApiAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

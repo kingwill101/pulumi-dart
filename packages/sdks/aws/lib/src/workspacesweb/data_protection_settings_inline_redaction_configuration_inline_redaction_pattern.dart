@@ -5,11 +5,11 @@ import 'data_protection_settings_inline_redaction_configuration_inline_redaction
 import 'data_protection_settings_inline_redaction_configuration_inline_redaction_pattern_redaction_place_holder.dart';
 
 class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern {
-  /// The built-in pattern from the list of preconfigured patterns. Either a `custom_pattern` or `built_in_pattern_id` is required.
+  /// The built-in pattern from the list of preconfigured patterns. Either a `customPattern` or `builtInPatternId` is required.
   final pulumi.Input<String>? builtInPatternId;
   /// The confidence level for inline redaction pattern. This indicates the certainty of data type matches in the redaction process. Values range from 1 (low confidence) to 3 (high confidence).
   final pulumi.Input<int>? confidenceLevel;
-  /// The configuration for a custom pattern. Either a `custom_pattern` or `built_in_pattern_id` is required. Detailed below.
+  /// The configuration for a custom pattern. Either a `customPattern` or `builtInPatternId` is required. Detailed below.
   final pulumi.Input<DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern>? customPattern;
   /// The enforced URL configuration for the inline redaction pattern.
   final pulumi.Input<List<String>>? enforcedUrls;
@@ -19,9 +19,9 @@ class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern {
   final pulumi.Input<List<DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder>>? redactionPlaceHolders;
 
   /// Creates a new [DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern].
-  /// [builtInPatternId] The built-in pattern from the list of preconfigured patterns. Either a `custom_pattern` or `built_in_pattern_id` is required.
+  /// [builtInPatternId] The built-in pattern from the list of preconfigured patterns. Either a `customPattern` or `builtInPatternId` is required.
   /// [confidenceLevel] The confidence level for inline redaction pattern. This indicates the certainty of data type matches in the redaction process. Values range from 1 (low confidence) to 3 (high confidence).
-  /// [customPattern] The configuration for a custom pattern. Either a `custom_pattern` or `built_in_pattern_id` is required. Detailed below.
+  /// [customPattern] The configuration for a custom pattern. Either a `customPattern` or `builtInPatternId` is required. Detailed below.
   /// [enforcedUrls] The enforced URL configuration for the inline redaction pattern.
   /// [exemptUrls] The exempt URL configuration for the inline redaction pattern.
   /// [redactionPlaceHolders] The redaction placeholder that will replace the redacted text in session. Detailed below.
@@ -56,4 +56,3 @@ class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern {
     );
   }
 }
-

@@ -5,15 +5,17 @@ import 'multi_region_access_point_details_public_access_block.dart';
 import 'multi_region_access_point_details_region.dart';
 
 class MultiRegionAccessPointDetails {
+  /// Name of the Multi-Region Access Point.
   final pulumi.Input<String> name;
+  /// Configuration block to manage the `PublicAccessBlock` configuration that you want to apply to this Multi-Region Access Point. You can enable the configuration options in any combination. See `publicAccessBlock` Block below.
   final pulumi.Input<MultiRegionAccessPointDetailsPublicAccessBlock>? publicAccessBlock;
-  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// Region configuration block to specify the bucket associated with the Multi-Region Access Point. See `region` Block below.
   final pulumi.Input<List<MultiRegionAccessPointDetailsRegion>> regions;
 
   /// Creates a new [MultiRegionAccessPointDetails].
-  /// [name] Required.
-  /// [publicAccessBlock] Optional.
-  /// [regions] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [name] Name of the Multi-Region Access Point.
+  /// [publicAccessBlock] Configuration block to manage the `PublicAccessBlock` configuration that you want to apply to this Multi-Region Access Point. You can enable the configuration options in any combination. See `publicAccessBlock` Block below.
+  /// [regions] Region configuration block to specify the bucket associated with the Multi-Region Access Point. See `region` Block below.
   const MultiRegionAccessPointDetails({
     required this.name,
     this.publicAccessBlock,
@@ -36,4 +38,3 @@ class MultiRegionAccessPointDetails {
     );
   }
 }
-

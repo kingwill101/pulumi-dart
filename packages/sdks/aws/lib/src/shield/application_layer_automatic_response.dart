@@ -107,6 +107,31 @@ import 'application_layer_automatic_response_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+///
+/// resource "aws_shield_applicationlayerautomaticresponse" "example" {
+///   resource_arn ="arn:${data.aws_getpartition.currentGetPartition.partition}:cloudfront:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:distribution/${var.distributionId}"
+///   action       = "COUNT"
+/// }
+/// variable "distributionId" {
+///   type        = string
+///   description = "The Cloudfront Distribution on which to enable the Application Layer Automatic Response."
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +144,8 @@ import 'application_layer_automatic_response_timeouts.dart';
 /// import com.pulumi.aws.inputs.GetPartitionArgs;
 /// import com.pulumi.aws.shield.ApplicationLayerAutomaticResponse;
 /// import com.pulumi.aws.shield.ApplicationLayerAutomaticResponseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -142,7 +167,7 @@ import 'application_layer_automatic_response_timeouts.dart';
 ///         final var currentGetPartition = AwsFunctions.getPartition(GetPartitionArgs.builder()
 ///             .build());
 ///
-///         final var distributionId = config.get("distributionId");
+///         final var distributionId = config.require("distributionId");
 ///         var example = new ApplicationLayerAutomaticResponse("example", ApplicationLayerAutomaticResponseArgs.builder()
 ///             .resourceArn(String.format("arn:%s:cloudfront:%s:distribution/%s", currentGetPartition.partition(),currentGetCallerIdentity.accountId(),distributionId))
 ///             .action("COUNT")

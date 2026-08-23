@@ -6,12 +6,12 @@ import 'bucket_replication_configuration_rule.dart';
 class BucketReplicationConfiguration {
   /// ARN of the IAM role for Amazon S3 to assume when replicating the objects.
   final pulumi.Input<String> role;
-  /// Specifies the rules managing the replication (documented below).
+  /// Rules managing the replication. See `rules` Block below for details.
   final pulumi.Input<List<BucketReplicationConfigurationRule>> rules;
 
   /// Creates a new [BucketReplicationConfiguration].
   /// [role] ARN of the IAM role for Amazon S3 to assume when replicating the objects.
-  /// [rules] Specifies the rules managing the replication (documented below).
+  /// [rules] Rules managing the replication. See `rules` Block below for details.
   const BucketReplicationConfiguration({
     required this.role,
     required this.rules,
@@ -31,4 +31,3 @@ class BucketReplicationConfiguration {
     );
   }
 }
-

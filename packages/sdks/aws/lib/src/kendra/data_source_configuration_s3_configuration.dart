@@ -56,4 +56,3 @@ class DataSourceConfigurationS3Configuration {
     );
   }
 }
-

@@ -2,7 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'email_channel_args.dart';
 import 'email_channel_state.dart';
 
-/// Provides a Pinpoint Email Channel resource.
+/// &gt; **NOTE:** This resource is deprecated. AWS End User Messaging email features are being discontinued on October 30, 2026. Migrate to Amazon SES using `aws.ses.DomainIdentity`, `aws.sesv2.EmailIdentity`, and related SES/SESv2 resources. See the [AWS End User Messaging migration guide](https://docs.aws.amazon.com/pinpoint/latest/userguide/migrate.html) for details.
+///
+/// Provides an End User Messaging Email Channel resource.
 ///
 /// ## Example Usage
 ///
@@ -235,7 +237,7 @@ import 'email_channel_state.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "role_policy", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("role_policy"),
-/// 			Role:   role.ID(),
+/// 			Role:   role.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy: pulumi.String(rolePolicy.Json),
 /// 		})
 /// 		if err != nil {
@@ -243,6 +245,52 @@ import 'email_channel_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["pinpoint.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "rolePolicy" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["mobileanalytics:PutEvents", "mobileanalytics:PutItems"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_pinpoint_emailchannel" "email" {
+///   application_id = aws_pinpoint_app.app.application_id
+///   from_address   = "user@example.com"
+///   role_arn       = aws_iam_role.role.arn
+/// }
+/// resource "aws_pinpoint_app" "app" {
+/// }
+/// resource "aws_ses_domainidentity" "identity" {
+///   domain = "example.com"
+/// }
+/// resource "aws_iam_role" "role" {
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicy" "role_policy" {
+///   name   = "role_policy"
+///   role   = aws_iam_role.role.id
+///   policy = data.aws_iam_getpolicydocument.rolePolicy.json
 /// }
 /// ```
 /// ```java
@@ -254,6 +302,8 @@ import 'email_channel_state.dart';
 /// import com.pulumi.aws.pinpoint.App;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.pinpoint.EmailChannel;
@@ -262,8 +312,8 @@ import 'email_channel_state.dart';
 /// import com.pulumi.aws.ses.DomainIdentityArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
 /// import com.pulumi.aws.iam.RolePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -375,29 +425,29 @@ import 'email_channel_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Pinpoint Email Channel using the `application-id`. For example:
+/// Using `pulumi import`, import End User Messaging Email Channel using the `application-id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:pinpoint/emailChannel:EmailChannel email application-id
 /// ```
 class EmailChannel extends pulumi.CustomResource {
-  /// The application ID.
+  /// Application ID.
   late final pulumi.Output<String> applicationId;
-  /// The ARN of the Amazon SES configuration set that you want to apply to messages that you send through the channel.
+  /// ARN of the Amazon SES configuration set that you want to apply to messages that you send through the channel.
   late final pulumi.Output<String?> configurationSet;
   /// Whether the channel is enabled or disabled. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-  /// The email address used to send emails from. You can use email only (`user@example.com`) or friendly address (`User &lt;user@example.com&gt;`). This field comply with [RFC 5322](https://www.ietf.org/rfc/rfc5322.txt).
+  /// Email address used to send emails from. You can use email only (`user@example.com`) or friendly address (`User &lt;user@example.com&gt;`). This field comply with [RFC 5322](https://www.ietf.org/rfc/rfc5322.txt).
   late final pulumi.Output<String> fromAddress;
-  /// The ARN of an identity verified with SES.
+  /// ARN of an identity verified with SES.
   late final pulumi.Output<String> identity;
-  /// Messages per second that can be sent.
+  /// (**Deprecated**) Messages per second that can be sent.
   late final pulumi.Output<int> messagesPerSecond;
-  /// The ARN of an IAM role for Amazon Pinpoint to use to send email from your campaigns or journeys through Amazon SES.
+  /// ARN of an IAM role for AWS End User Messaging to use to send email from your campaigns or journeys through Amazon SES.
   late final pulumi.Output<String?> orchestrationSendingRoleArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// *Deprecated* The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service.
+  /// ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service.
   late final pulumi.Output<String?> roleArn;
 
   /// Creates a new [EmailChannel].

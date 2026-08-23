@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig {
-  /// he maximum number of records that Amazon AppFlow receives in each page of the response from your SAP application.
+  /// Maximum number of processes that Amazon AppFlow runs at the same time when it retrieves your data from your SAP application.
   final pulumi.Input<int> maxPageSize;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig].
-  /// [maxPageSize] he maximum number of records that Amazon AppFlow receives in each page of the response from your SAP application.
+  /// [maxPageSize] Maximum number of processes that Amazon AppFlow runs at the same time when it retrieves your data from your SAP application.
   const FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig({
     required this.maxPageSize,
   });
@@ -24,4 +24,3 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig {
     );
   }
 }
-

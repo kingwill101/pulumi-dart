@@ -64,6 +64,19 @@ import 'get_sinks_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_oam_getlink" "example" {
+///   link_identifier = "arn:aws:oam:us-west-1:111111111111:link/abcd1234-a123-456a-a12b-a123b456c789"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +85,8 @@ import 'get_sinks_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.oam.OamFunctions;
 /// import com.pulumi.aws.oam.inputs.GetLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -164,6 +177,18 @@ Future<GetLinkResult> getLink(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_oam_getlinks" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -172,8 +197,8 @@ Future<GetLinkResult> getLink(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.oam.OamFunctions;
 /// import com.pulumi.aws.oam.inputs.GetLinksArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -269,6 +294,19 @@ Future<GetLinksResult> getLinks(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_oam_getsink" "example" {
+///   sink_identifier = "arn:aws:oam:us-west-1:111111111111:sink/abcd1234-a123-456a-a12b-a123b456c789"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -277,8 +315,8 @@ Future<GetLinksResult> getLinks(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.oam.OamFunctions;
 /// import com.pulumi.aws.oam.inputs.GetSinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -369,6 +407,18 @@ Future<GetSinkResult> getSink(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_oam_getsinks" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -377,8 +427,8 @@ Future<GetSinkResult> getSink(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.oam.OamFunctions;
 /// import com.pulumi.aws.oam.inputs.GetSinksArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

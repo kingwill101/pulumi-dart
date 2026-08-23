@@ -19,7 +19,7 @@ class GetVirtualNodeResult {
   final String region;
   /// Resource owner's AWS account ID.
   final String resourceOwner;
-  /// Virtual node specification. See the `aws.appmesh.VirtualNode` resource for details.
+  /// Virtual node specification. See `spec` Block for details.
   final List<GetVirtualNodeSpec> specs;
   /// Map of tags.
   final Map<String, String> tags;
@@ -34,7 +34,7 @@ class GetVirtualNodeResult {
   /// [name] Required.
   /// [region] Required.
   /// [resourceOwner] Resource owner's AWS account ID.
-  /// [specs] Virtual node specification. See the `aws.appmesh.VirtualNode` resource for details.
+  /// [specs] Virtual node specification. See `spec` Block for details.
   /// [tags] Map of tags.
   const GetVirtualNodeResult({
     required this.arn,
@@ -82,4 +82,3 @@ class GetVirtualNodeResult {
     );
   }
 }
-

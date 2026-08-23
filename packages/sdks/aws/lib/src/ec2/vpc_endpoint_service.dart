@@ -7,7 +7,7 @@ import 'vpc_endpoint_service_state.dart';
 ///
 /// &gt; **NOTE on VPC Endpoint Services and VPC Endpoint Service Allowed Principals:** This provider provides
 /// both a standalone VPC Endpoint Service Allowed Principal resource
-/// and a VPC Endpoint Service resource with an `allowed_principals` attribute. Do not use the same principal ARN in both
+/// and a VPC Endpoint Service resource with an `allowedPrincipals` attribute. Do not use the same principal ARN in both
 /// a VPC Endpoint Service resource and a VPC Endpoint Service Allowed Principal resource. Doing so will cause a conflict
 /// and will overwrite the association.
 ///
@@ -75,6 +75,20 @@ import 'vpc_endpoint_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpcendpointservice" "example" {
+///   acceptance_required        = false
+///   network_load_balancer_arns = [exampleAwsLb.arn]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +97,8 @@ import 'vpc_endpoint_service_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.VpcEndpointService;
 /// import com.pulumi.aws.ec2.VpcEndpointServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -177,6 +191,20 @@ import 'vpc_endpoint_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpcendpointservice" "example" {
+///   acceptance_required        = false
+///   gateway_load_balancer_arns = [exampleAwsLb.arn]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -185,8 +213,8 @@ import 'vpc_endpoint_service_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.VpcEndpointService;
 /// import com.pulumi.aws.ec2.VpcEndpointServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -257,9 +285,9 @@ class VpcEndpointService extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> supportedIpAddressTypes;
   /// The set of regions from which service consumers can access the service.
   late final pulumi.Output<List<String>> supportedRegions;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [VpcEndpointService].

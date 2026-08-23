@@ -16,12 +16,12 @@ import 'intent_slot.dart';
 class IntentArgs {
   /// The statement that you want Amazon Lex to convey to the user
   /// after the intent is successfully fulfilled by the Lambda function. This element is relevant only if
-  /// you provide a Lambda function in the `fulfillment_activity`. If you return the intent to the client
-  /// application, you can't specify this element. The `follow_up_prompt` and `conclusion_statement` are
+  /// you provide a Lambda function in the `fulfillmentActivity`. If you return the intent to the client
+  /// application, you can't specify this element. The `followUpPrompt` and `conclusionStatement` are
   /// mutually exclusive. You can specify only one. Attributes are documented under statement.
   final pulumi.Input<IntentConclusionStatement>? conclusionStatement;
   /// Prompts the user to confirm the intent. This question should
-  /// have a yes or no answer. You you must provide both the `rejection_statement` and `confirmation_prompt`,
+  /// have a yes or no answer. You you must provide both the `rejectionStatement` and `confirmationPrompt`,
   /// or neither. Attributes are documented under prompt.
   final pulumi.Input<IntentConfirmationPrompt>? confirmationPrompt;
   /// Determines if a new slot type version is created when the initial
@@ -34,11 +34,11 @@ class IntentArgs {
   final pulumi.Input<IntentDialogCodeHook>? dialogCodeHook;
   /// Amazon Lex uses this prompt to solicit additional activity after
   /// fulfilling an intent. For example, after the OrderPizza intent is fulfilled, you might prompt the
-  /// user to order a drink. The `follow_up_prompt` field and the `conclusion_statement` field are mutually
+  /// user to order a drink. The `followUpPrompt` field and the `conclusionStatement` field are mutually
   /// exclusive. You can specify only one. Attributes are documented under follow_up_prompt.
   final pulumi.Input<IntentFollowUpPrompt>? followUpPrompt;
   /// Describes how the intent is fulfilled. For example, after a
-  /// user provides all of the information for a pizza order, `fulfillment_activity` defines how the bot
+  /// user provides all of the information for a pizza order, `fulfillmentActivity` defines how the bot
   /// places an order with a local pizza store. Attributes are documented under fulfillment_activity.
   final pulumi.Input<IntentFulfillmentActivity> fulfillmentActivity;
   /// The name of the intent, not case sensitive. Must be less than or equal to 100 characters in length.
@@ -51,8 +51,8 @@ class IntentArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// When the user answers "no" to the question defined in
-  /// `confirmation_prompt`, Amazon Lex responds with this statement to acknowledge that the intent was
-  /// canceled. You must provide both the `rejection_statement` and the `confirmation_prompt`, or neither.
+  /// `confirmationPrompt`, Amazon Lex responds with this statement to acknowledge that the intent was
+  /// canceled. You must provide both the `rejectionStatement` and the `confirmationPrompt`, or neither.
   /// Attributes are documented under statement.
   final pulumi.Input<IntentRejectionStatement>? rejectionStatement;
   /// An array of utterances (strings) that a user might say to signal
@@ -129,4 +129,3 @@ class IntentArgs {
     );
   }
 }
-

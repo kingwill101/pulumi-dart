@@ -18,9 +18,9 @@ class SchemaState {
   final pulumi.Input<String>? region;
   /// The name of the registry in which this schema belongs.
   final pulumi.Input<String>? registryName;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The type of the schema. Valid values: `OpenApi3` or `JSONSchemaDraft4`.
   final pulumi.Input<String>? type;
@@ -37,8 +37,8 @@ class SchemaState {
   /// [name] The name of the schema. Maximum of 385 characters consisting of lower case letters, upper case letters, ., -, _, @.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [registryName] The name of the registry in which this schema belongs.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [type] The type of the schema. Valid values: `OpenApi3` or `JSONSchemaDraft4`.
   /// [version] The version of the schema.
   /// [versionCreatedDate] The created date of the version of the schema.
@@ -91,4 +91,3 @@ class SchemaState {
     );
   }
 }
-

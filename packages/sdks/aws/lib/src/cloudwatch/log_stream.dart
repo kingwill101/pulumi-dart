@@ -74,6 +74,23 @@ import 'log_stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_loggroup" "yada" {
+///   name = "Yada"
+/// }
+/// resource "aws_cloudwatch_logstream" "foo" {
+///   name           = "SampleLogStream1234"
+///   log_group_name = aws_cloudwatch_loggroup.yada.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +101,8 @@ import 'log_stream_state.dart';
 /// import com.pulumi.aws.cloudwatch.LogGroupArgs;
 /// import com.pulumi.aws.cloudwatch.LogStream;
 /// import com.pulumi.aws.cloudwatch.LogStreamArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -125,10 +142,23 @@ import 'log_stream_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Cloudwatch Log Stream using the stream's `log_group_name` and `name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `logGroupName` (String) Name of the log group.
+/// * `name` (String) Name of the stream.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Log Streams using `logGroupName` and `name` separated by a colon (`:`). For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cloudwatch/logStream:LogStream foo Yada:SampleLogStream1234
+/// $ pulumi import aws:cloudwatch/logStream:LogStream example example-group:example-stream
 /// ```
 class LogStream extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) specifying the log stream.

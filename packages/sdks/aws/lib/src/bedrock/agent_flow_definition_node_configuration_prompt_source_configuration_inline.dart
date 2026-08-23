@@ -7,8 +7,9 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline {
   /// Additional fields to be included in the model request for the Prompt node.
   final pulumi.Input<String>? additionalModelRequestFields;
-  /// Contains inference configurations for the prompt. See Prompt Inference Configuration for more information.
+  /// Contains inference configurations for the prompt. See Inference Configuration for more information.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfiguration>? inferenceConfiguration;
+  /// The unique identifier of the model or [inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html) to run inference with.
   final pulumi.Input<String> modelId;
   /// Contains a prompt and variables in the prompt that can be replaced with values at runtime. See Prompt Template Configuration for more information.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration>? templateConfiguration;
@@ -17,8 +18,8 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline {
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline].
   /// [additionalModelRequestFields] Additional fields to be included in the model request for the Prompt node.
-  /// [inferenceConfiguration] Contains inference configurations for the prompt. See Prompt Inference Configuration for more information.
-  /// [modelId] Required.
+  /// [inferenceConfiguration] Contains inference configurations for the prompt. See Inference Configuration for more information.
+  /// [modelId] The unique identifier of the model or [inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html) to run inference with.
   /// [templateConfiguration] Contains a prompt and variables in the prompt that can be replaced with values at runtime. See Prompt Template Configuration for more information.
   /// [templateType] The type of prompt template. Valid values: `TEXT`, `CHAT`.
   const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline({
@@ -49,4 +50,3 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline {
     );
   }
 }
-

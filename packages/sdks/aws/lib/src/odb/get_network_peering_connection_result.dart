@@ -3,7 +3,7 @@
 
 /// Result data returned by getNetworkPeeringConnection.
 class GetNetworkPeeringConnectionResult {
-  /// The Amazon Resource Name (ARN) for the  ODB network peering connection.
+  /// Amazon Resource Name (ARN) for the  ODB network peering connection.
   final String arn;
   /// Created time of the ODB network peering connection.
   final String createdAt;
@@ -16,6 +16,8 @@ class GetNetworkPeeringConnectionResult {
   final String odbPeeringConnectionType;
   /// ARN of the peer network peering connection.
   final String peerNetworkArn;
+  /// Set of peer network cidrs.
+  final List<String> peerNetworkCidrs;
   /// Progress of the ODB network peering connection.
   final double percentProgress;
   final String region;
@@ -27,13 +29,14 @@ class GetNetworkPeeringConnectionResult {
   final Map<String, String> tags;
 
   /// Creates a new [GetNetworkPeeringConnectionResult].
-  /// [arn] The Amazon Resource Name (ARN) for the  ODB network peering connection.
+  /// [arn] Amazon Resource Name (ARN) for the  ODB network peering connection.
   /// [createdAt] Created time of the ODB network peering connection.
   /// [displayName] Display name of the ODB network peering connection.
   /// [id] Required.
   /// [odbNetworkArn] ARN of the ODB network peering connection.
   /// [odbPeeringConnectionType] Type of the ODB peering connection.
   /// [peerNetworkArn] ARN of the peer network peering connection.
+  /// [peerNetworkCidrs] Set of peer network cidrs.
   /// [percentProgress] Progress of the ODB network peering connection.
   /// [region] Required.
   /// [status] Status of the ODB network peering connection.
@@ -47,6 +50,7 @@ class GetNetworkPeeringConnectionResult {
     required this.odbNetworkArn,
     required this.odbPeeringConnectionType,
     required this.peerNetworkArn,
+    required this.peerNetworkCidrs,
     required this.percentProgress,
     required this.region,
     required this.status,
@@ -63,6 +67,7 @@ class GetNetworkPeeringConnectionResult {
       'odbNetworkArn': odbNetworkArn,
       'odbPeeringConnectionType': odbPeeringConnectionType,
       'peerNetworkArn': peerNetworkArn,
+      'peerNetworkCidrs': peerNetworkCidrs,
       'percentProgress': percentProgress,
       'region': region,
       'status': status,
@@ -80,6 +85,7 @@ class GetNetworkPeeringConnectionResult {
       odbNetworkArn: map['odbNetworkArn'] as String,
       odbPeeringConnectionType: map['odbPeeringConnectionType'] as String,
       peerNetworkArn: map['peerNetworkArn'] as String,
+      peerNetworkCidrs: (map['peerNetworkCidrs'] as List).cast<String>(),
       percentProgress: map['percentProgress'] as double,
       region: map['region'] as String,
       status: map['status'] as String,
@@ -88,4 +94,3 @@ class GetNetworkPeeringConnectionResult {
     );
   }
 }
-

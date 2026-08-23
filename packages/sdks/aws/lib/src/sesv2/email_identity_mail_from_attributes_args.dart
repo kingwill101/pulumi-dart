@@ -11,7 +11,7 @@ class EmailIdentityMailFromAttributesArgs {
   final pulumi.Input<String>? behaviorOnMxFailure;
   /// The verified email identity.
   final pulumi.Input<String> emailIdentity;
-  /// The custom MAIL FROM domain that you want the verified identity to use. Required if `behavior_on_mx_failure` is `REJECT_MESSAGE`.
+  /// The custom MAIL FROM domain that you want the verified identity to use. Required if `behaviorOnMxFailure` is `REJECT_MESSAGE`.
   final pulumi.Input<String>? mailFromDomain;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -19,7 +19,7 @@ class EmailIdentityMailFromAttributesArgs {
   /// Creates a new [EmailIdentityMailFromAttributesArgs].
   /// [behaviorOnMxFailure] The action to take if the required MX record isn't found when you send an email. Valid values: `USE_DEFAULT_VALUE`, `REJECT_MESSAGE`.
   /// [emailIdentity] The verified email identity.
-  /// [mailFromDomain] The custom MAIL FROM domain that you want the verified identity to use. Required if `behavior_on_mx_failure` is `REJECT_MESSAGE`.
+  /// [mailFromDomain] The custom MAIL FROM domain that you want the verified identity to use. Required if `behaviorOnMxFailure` is `REJECT_MESSAGE`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const EmailIdentityMailFromAttributesArgs({
     this.behaviorOnMxFailure,
@@ -46,4 +46,3 @@ class EmailIdentityMailFromAttributesArgs {
     );
   }
 }
-

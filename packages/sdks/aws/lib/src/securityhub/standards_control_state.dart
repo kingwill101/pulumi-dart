@@ -6,13 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StandardsControlState {
   /// The identifier of the security standard control.
   final pulumi.Input<String>? controlId;
-  /// The control status could be `ENABLED` or `DISABLED`. You have to specify `disabled_reason` argument for `DISABLED` control status.
+  /// The control status could be `ENABLED` or `DISABLED`. You have to specify `disabledReason` argument for `DISABLED` control status.
   final pulumi.Input<String>? controlStatus;
   /// The date and time that the status of the security standard control was most recently updated.
   final pulumi.Input<String>? controlStatusUpdatedAt;
   /// The standard control longer description. Provides information about what the control is checking for.
   final pulumi.Input<String>? description;
-  /// A description of the reason why you are disabling a security standard control. If you specify this attribute, `control_status` will be set to `DISABLED` automatically.
+  /// A description of the reason why you are disabling a security standard control. If you specify this attribute, `controlStatus` will be set to `DISABLED` automatically.
   final pulumi.Input<String>? disabledReason;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -29,10 +29,10 @@ class StandardsControlState {
 
   /// Creates a new [StandardsControlState].
   /// [controlId] The identifier of the security standard control.
-  /// [controlStatus] The control status could be `ENABLED` or `DISABLED`. You have to specify `disabled_reason` argument for `DISABLED` control status.
+  /// [controlStatus] The control status could be `ENABLED` or `DISABLED`. You have to specify `disabledReason` argument for `DISABLED` control status.
   /// [controlStatusUpdatedAt] The date and time that the status of the security standard control was most recently updated.
   /// [description] The standard control longer description. Provides information about what the control is checking for.
-  /// [disabledReason] A description of the reason why you are disabling a security standard control. If you specify this attribute, `control_status` will be set to `DISABLED` automatically.
+  /// [disabledReason] A description of the reason why you are disabling a security standard control. If you specify this attribute, `controlStatus` will be set to `DISABLED` automatically.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [relatedRequirements] The list of requirements that are related to this control.
   /// [remediationUrl] A link to remediation information for the control in the Security Hub user documentation.
@@ -85,4 +85,3 @@ class StandardsControlState {
     );
   }
 }
-

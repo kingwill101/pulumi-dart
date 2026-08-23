@@ -71,6 +71,19 @@ import 'data_lake_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lakeformation_datalakesettings" "example" {
+///   admins = [test.arn, testAwsIamRole.arn]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +92,8 @@ import 'data_lake_settings_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lakeformation.DataLakeSettings;
 /// import com.pulumi.aws.lakeformation.DataLakeSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -244,6 +257,27 @@ import 'data_lake_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lakeformation_datalakesettings" "example" {
+///   admins = [test.arn, testAwsIamRole.arn]
+///   create_database_default_permissions {
+///     permissions = ["SELECT", "ALTER", "DROP"]
+///     principal   = test.arn
+///   }
+///   create_table_default_permissions {
+///     permissions = ["ALL"]
+///     principal   = testAwsIamRole.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -254,8 +288,8 @@ import 'data_lake_settings_state.dart';
 /// import com.pulumi.aws.lakeformation.DataLakeSettingsArgs;
 /// import com.pulumi.aws.lakeformation.inputs.DataLakeSettingsCreateDatabaseDefaultPermissionArgs;
 /// import com.pulumi.aws.lakeformation.inputs.DataLakeSettingsCreateTableDefaultPermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -474,6 +508,31 @@ import 'data_lake_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lakeformation_datalakesettings" "example" {
+///   admins = [test.arn, testAwsIamRole.arn]
+///   create_database_default_permissions {
+///     permissions = ["SELECT", "ALTER", "DROP"]
+///     principal   = test.arn
+///   }
+///   create_table_default_permissions {
+///     permissions = ["ALL"]
+///     principal   = testAwsIamRole.arn
+///   }
+///   allow_external_data_filtering         = true
+///   external_data_filtering_allow_lists   = [current.accountId, thirdParty.accountId]
+///   authorized_session_tag_value_lists    = ["Amazon EMR"]
+///   allow_full_table_external_data_access = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -484,8 +543,8 @@ import 'data_lake_settings_state.dart';
 /// import com.pulumi.aws.lakeformation.DataLakeSettingsArgs;
 /// import com.pulumi.aws.lakeformation.inputs.DataLakeSettingsCreateDatabaseDefaultPermissionArgs;
 /// import com.pulumi.aws.lakeformation.inputs.DataLakeSettingsCreateTableDefaultPermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -610,6 +669,21 @@ import 'data_lake_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lakeformation_datalakesettings" "example" {
+///   parameters = {
+///     "CROSS_ACCOUNT_VERSION" = "3"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -618,8 +692,8 @@ import 'data_lake_settings_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lakeformation.DataLakeSettings;
 /// import com.pulumi.aws.lakeformation.DataLakeSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -671,7 +745,7 @@ class DataLakeSettings extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// List of the resource-owning account IDs that the caller's account can use to share their user access details (user ARNs).
   ///
-  /// &gt; **NOTE:** Although optional, not including `admins`, `create_database_default_permissions`, `create_table_default_permissions`, `parameters`, and/or `trusted_resource_owners` results in the setting being cleared.
+  /// &gt; **NOTE:** Although optional, not including `admins`, `createDatabaseDefaultPermissions`, `createTableDefaultPermissions`, `parameters`, and/or `trustedResourceOwners` results in the setting being cleared.
   late final pulumi.Output<List<String>> trustedResourceOwners;
 
   /// Creates a new [DataLakeSettings].

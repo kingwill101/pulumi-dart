@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoiceTool {
-  /// A name for the flow.
+  /// The name of the tool.
   final pulumi.Input<String> name;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoiceTool].
-  /// [name] A name for the flow.
+  /// [name] The name of the tool.
   const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoiceTool({
     required this.name,
   });
@@ -24,4 +24,3 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
     );
   }
 }
-

@@ -7,20 +7,20 @@ import 'v2models_intent_initial_response_setting_code_hook_post_code_hook_specif
 import 'v2models_intent_initial_response_setting_code_hook_post_code_hook_specification_success_response_message_group_message_ssml_message.dart';
 
 class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessage {
-  /// Configuration block for a message in a custom format defined by the client application. See `custom_payload`.
+  /// Configuration block for a message in a custom format defined by the client application. See `customPayload`.
   final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessageCustomPayload>? customPayload;
-  /// Configuration block for a message that defines a response card that the client application can show to the user. See `image_response_card`.
+  /// Configuration block for a message that defines a response card that the client application can show to the user. See `imageResponseCard`.
   final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessageImageResponseCard>? imageResponseCard;
-  /// Configuration block for a message in plain text format. See `plain_text_message`.
+  /// Configuration block for a message in plain text format. See `plainTextMessage`.
   final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessagePlainTextMessage>? plainTextMessage;
-  /// Configuration block for a message in Speech Synthesis Markup Language (SSML). See `ssml_message`.
+  /// Configuration block for a message in Speech Synthesis Markup Language (SSML). See `ssmlMessage`.
   final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessageSsmlMessage>? ssmlMessage;
 
   /// Creates a new [V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessage].
-  /// [customPayload] Configuration block for a message in a custom format defined by the client application. See `custom_payload`.
-  /// [imageResponseCard] Configuration block for a message that defines a response card that the client application can show to the user. See `image_response_card`.
-  /// [plainTextMessage] Configuration block for a message in plain text format. See `plain_text_message`.
-  /// [ssmlMessage] Configuration block for a message in Speech Synthesis Markup Language (SSML). See `ssml_message`.
+  /// [customPayload] Configuration block for a message in a custom format defined by the client application. See `customPayload`.
+  /// [imageResponseCard] Configuration block for a message that defines a response card that the client application can show to the user. See `imageResponseCard`.
+  /// [plainTextMessage] Configuration block for a message in plain text format. See `plainTextMessage`.
+  /// [ssmlMessage] Configuration block for a message in Speech Synthesis Markup Language (SSML). See `ssmlMessage`.
   const V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessage({
     this.customPayload,
     this.imageResponseCard,
@@ -46,4 +46,3 @@ class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSucce
     );
   }
 }
-

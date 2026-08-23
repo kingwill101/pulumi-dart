@@ -3,15 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerRuleMatchHttpMatchPathMatchMatch {
-  /// Specifies an exact type match.
+  /// Exact type match.
   final pulumi.Input<String>? exact;
-  /// Specifies a prefix type match.
-  /// Matches the value with the prefix.
+  /// Prefix type match. Matches the value with the prefix.
   final pulumi.Input<String>? prefix;
 
   /// Creates a new [ListenerRuleMatchHttpMatchPathMatchMatch].
-  /// [exact] Specifies an exact type match.
-  /// [prefix] Specifies a prefix type match.
+  /// [exact] Exact type match.
+  /// [prefix] Prefix type match. Matches the value with the prefix.
   const ListenerRuleMatchHttpMatchPathMatchMatch({
     this.exact,
     this.prefix,
@@ -31,4 +30,3 @@ class ListenerRuleMatchHttpMatchPathMatchMatch {
     );
   }
 }
-

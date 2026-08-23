@@ -13,9 +13,9 @@ import 'broker_state.dart';
 ///
 /// &gt; **Note:** For RabbitMQ brokers, only one administrative user can be created during provisioning. Additional users must be created via the [RabbitMQ Management API](https://www.rabbitmq.com/management.html) or the Amazon MQ console after the broker is provisioned. Terraform cannot update or manage users after broker creation. Any changes to the `user` block will trigger full broker recreation. Amazon MQ does not return RabbitMQ user information via APIs, meaning drift of the `user` attribute can not be detected.
 ///
-/// !&gt; **Warning:** Amazon MQ currently places limits on **RabbitMQ** brokers. For example, a RabbitMQ broker cannot have: instances with an associated IP address of an ENI attached to the broker, an associated LDAP server to authenticate and authorize broker connections, storage type `EFS`, or audit logging. Although this resource allows you to create RabbitMQ users, RabbitMQ users cannot have console access or groups.
+/// &gt; **Warning:** Amazon MQ currently places limits on **RabbitMQ** brokers. For example, a RabbitMQ broker cannot have: instances with an associated IP address of an ENI attached to the broker, an associated LDAP server to authenticate and authorize broker connections, storage type `EFS`, or audit logging. Although this resource allows you to create RabbitMQ users, RabbitMQ users cannot have console access or groups.
 ///
-/// !&gt; **Warning:** All arguments including the username and password will be stored in the raw state as plain-text. &gt; **Note:** Changes to an MQ Broker can occur when you change a parameter, such as `configuration` or `user`, and are reflected in the next maintenance window. Because of this, Terraform may report a difference in its planning phase because a modification has not yet taken place. You can use the `apply_immediately` flag to instruct the service to apply the change immediately (see documentation below). Using `apply_immediately` can result in a brief downtime as the broker reboots.
+/// &gt; **Warning:** All arguments including the username and password will be stored in the raw state as plain-text. &gt; **Note:** Changes to an MQ Broker can occur when you change a parameter, such as `configuration` or `user`, and are reflected in the next maintenance window. Because of this, Terraform may report a difference in its planning phase because a modification has not yet taken place. You can use the `applyImmediately` flag to instruct the service to apply the change immediately (see documentation below). Using `applyImmediately` can result in a brief downtime as the broker reboots.
 ///
 /// ## Example Usage
 ///
@@ -30,7 +30,7 @@ import 'broker_state.dart';
 ///     brokerName: "example",
 ///     configuration: {
 ///         id: test.id,
-///         revision: test.latestRevision,
+///         revision: Number(test.latestRevision),
 ///     },
 ///     engineType: "ActiveMQ",
 ///     engineVersion: "5.17.6",
@@ -50,7 +50,7 @@ import 'broker_state.dart';
 ///     broker_name="example",
 ///     configuration={
 ///         "id": test["id"],
-///         "revision": test["latestRevision"],
+///         "revision": int(test["latestRevision"]),
 ///     },
 ///     engine_type="ActiveMQ",
 ///     engine_version="5.17.6",
@@ -132,6 +132,31 @@ import 'broker_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_mq_broker" "example" {
+///   broker_name = "example"
+///   configuration = {
+///     id       = test.id
+///     revision = test.latestRevision
+///   }
+///   engine_type        = "ActiveMQ"
+///   engine_version     = "5.17.6"
+///   host_instance_type = "mq.t2.micro"
+///   security_groups    = [testAwsSecurityGroup.id]
+///   users {
+///     username = "example_user"
+///     password = "<password>"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -142,8 +167,8 @@ import 'broker_state.dart';
 /// import com.pulumi.aws.mq.BrokerArgs;
 /// import com.pulumi.aws.mq.inputs.BrokerConfigurationArgs;
 /// import com.pulumi.aws.mq.inputs.BrokerUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -205,7 +230,7 @@ import 'broker_state.dart';
 ///     brokerName: "example",
 ///     configuration: {
 ///         id: test.id,
-///         revision: test.latestRevision,
+///         revision: Number(test.latestRevision),
 ///     },
 ///     engineType: "ActiveMQ",
 ///     engineVersion: "5.17.6",
@@ -226,7 +251,7 @@ import 'broker_state.dart';
 ///     broker_name="example",
 ///     configuration={
 ///         "id": test["id"],
-///         "revision": test["latestRevision"],
+///         "revision": int(test["latestRevision"]),
 ///     },
 ///     engine_type="ActiveMQ",
 ///     engine_version="5.17.6",
@@ -311,6 +336,32 @@ import 'broker_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_mq_broker" "example" {
+///   broker_name = "example"
+///   configuration = {
+///     id       = test.id
+///     revision = test.latestRevision
+///   }
+///   engine_type        = "ActiveMQ"
+///   engine_version     = "5.17.6"
+///   storage_type       = "ebs"
+///   host_instance_type = "mq.m5.large"
+///   security_groups    = [testAwsSecurityGroup.id]
+///   users {
+///     username = "example_user"
+///     password = "<password>"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -321,8 +372,8 @@ import 'broker_state.dart';
 /// import com.pulumi.aws.mq.BrokerArgs;
 /// import com.pulumi.aws.mq.inputs.BrokerConfigurationArgs;
 /// import com.pulumi.aws.mq.inputs.BrokerUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -604,6 +655,54 @@ import 'broker_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_mq_broker" "example_primary" {
+///   apply_immediately  = true
+///   broker_name        = "example_primary"
+///   engine_type        = "ActiveMQ"
+///   engine_version     = "5.17.6"
+///   host_instance_type = "mq.m5.large"
+///   security_groups    = [examplePrimaryAwsSecurityGroup.id]
+///   deployment_mode    = "ACTIVE_STANDBY_MULTI_AZ"
+///   users {
+///     username = "example_user"
+///     password = "<password>"
+///   }
+///   users {
+///     username         = "example_replication_user"
+///     password         = "<password>"
+///     replication_user = true
+///   }
+/// }
+/// resource "aws_mq_broker" "example" {
+///   apply_immediately                   = true
+///   broker_name                         = "example"
+///   engine_type                         = "ActiveMQ"
+///   engine_version                      = "5.17.6"
+///   host_instance_type                  = "mq.m5.large"
+///   security_groups                     = [exampleAwsSecurityGroup.id]
+///   deployment_mode                     = "ACTIVE_STANDBY_MULTI_AZ"
+///   data_replication_mode               = "CRDR"
+///   data_replication_primary_broker_arn = primary.arn
+///   users {
+///     username = "example_user"
+///     password = "<password>"
+///   }
+///   users {
+///     username         = "example_replication_user"
+///     password         = "<password>"
+///     replication_user = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -613,8 +712,8 @@ import 'broker_state.dart';
 /// import com.pulumi.aws.mq.Broker;
 /// import com.pulumi.aws.mq.BrokerArgs;
 /// import com.pulumi.aws.mq.inputs.BrokerUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -727,17 +826,17 @@ class Broker extends pulumi.CustomResource {
   late final pulumi.Output<bool?> applyImmediately;
   /// ARN of the broker.
   late final pulumi.Output<String> arn;
-  /// Authentication strategy used to secure the broker. Valid values are `simple` and `ldap`. `ldap` is not supported for `engine_type` `RabbitMQ`.
+  /// Authentication strategy used to secure the broker. Valid values are `simple` and `ldap`. `ldap` is not supported for `engineType` `RabbitMQ`.
   late final pulumi.Output<String> authenticationStrategy;
   /// Whether to automatically upgrade to new minor versions of brokers as Amazon MQ makes releases available.
   late final pulumi.Output<bool?> autoMinorVersionUpgrade;
   /// Name of the broker.
   late final pulumi.Output<String> brokerName;
-  /// Configuration block for broker configuration. Applies to `engine_type` of `ActiveMQ` and `RabbitMQ` only. Detailed below.
+  /// Configuration block for broker configuration. Applies to `engineType` of `ActiveMQ` and `RabbitMQ` only. Detailed below.
   late final pulumi.Output<BrokerConfiguration> configuration;
   /// Whether this broker is part of a data replication pair. Valid values are `CRDR` and `NONE`.
   late final pulumi.Output<String> dataReplicationMode;
-  /// ARN of the primary broker used to replicate data in a data replication pair. Required when `data_replication_mode` is `CRDR`.
+  /// ARN of the primary broker used to replicate data in a data replication pair. Required when `dataReplicationMode` is `CRDR`.
   late final pulumi.Output<String?> dataReplicationPrimaryBrokerArn;
   /// Deployment mode of the broker. Valid values are `SINGLE_INSTANCE`, `ACTIVE_STANDBY_MULTI_AZ`, and `CLUSTER_MULTI_AZ`. Default is `SINGLE_INSTANCE`.
   late final pulumi.Output<String?> deploymentMode;
@@ -748,10 +847,12 @@ class Broker extends pulumi.CustomResource {
   /// Version of the broker engine.
   late final pulumi.Output<String> engineVersion;
   /// Broker's instance type. For example, `mq.t3.micro`, `mq.m5.large`.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> hostInstanceType;
   /// List of information about allocated brokers (both active & standby).
   late final pulumi.Output<List<Map<String, dynamic>>> instances;
-  /// Configuration block for the LDAP server used to authenticate and authorize connections. Not supported for `engine_type` `RabbitMQ`. Detailed below.
+  /// Configuration block for the LDAP server used to authenticate and authorize connections. Not supported for `engineType` `RabbitMQ`. Detailed below.
   late final pulumi.Output<BrokerLdapServerMetadata?> ldapServerMetadata;
   /// Configuration block for the logging configuration. Detailed below.
   late final pulumi.Output<BrokerLogs?> logs;
@@ -763,20 +864,22 @@ class Broker extends pulumi.CustomResource {
   late final pulumi.Output<bool?> publiclyAccessible;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+  /// Set of [AWS RAM](https://docs.aws.amazon.com/ram/latest/userguide/what-is.html) resource share ARNs that grant the broker access to shared resources for [private networking](https://aws.amazon.com/blogs/big-data/introducing-private-networking-for-amazon-mq-for-rabbitmq/). Applies to `engineType` of `RabbitMQ` only. Because Amazon MQ applies resource shares during a reboot, set `applyImmediately` to `true` for changes to take effect without waiting for the next maintenance window.
+  late final pulumi.Output<List<String>?> resourceShareArns;
   /// List of security group IDs assigned to the broker.
   late final pulumi.Output<List<String>?> securityGroups;
-  /// Storage type of the broker. For `engine_type` `ActiveMQ`, valid values are `efs` and `ebs` (AWS-default is `efs`). For `engine_type` `RabbitMQ`, only `ebs` is supported. When using `ebs`, only the `mq.m5` broker instance type family is supported.
+  /// List of resources shared with the broker via `resourceShareArns`. Only populated for `engineType` of `RabbitMQ`.
+  late final pulumi.Output<List<Map<String, dynamic>>> sharedResources;
+  /// Storage type of the broker. For `engineType` `ActiveMQ`, valid values are `efs` and `ebs` (AWS-default is `efs`). For `engineType` `RabbitMQ`, only `ebs` is supported. When using `ebs`, only the `mq.m5` broker instance type family is supported.
   late final pulumi.Output<String> storageType;
   /// List of subnet IDs in which to launch the broker. A `SINGLE_INSTANCE` deployment requires one subnet. An `ACTIVE_STANDBY_MULTI_AZ` deployment requires multiple subnets.
   late final pulumi.Output<List<String>> subnetIds;
-  /// Map of tags to assign to the broker. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the broker. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Configuration block for broker users. For `engine_type` of `RabbitMQ`, Amazon MQ does not return broker users preventing this resource from making user updates and drift detection. Detailed below.
-  ///
-  /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>> users;
+  /// Configuration block for broker users. For `engineType` of `RabbitMQ`, Amazon MQ does not return broker users preventing this resource from making user updates and drift detection. Detailed below.
+  late final pulumi.Output<List<Map<String, dynamic>>?> users;
 
   /// Creates a new [Broker].
   /// [name] The Pulumi resource name.
@@ -812,12 +915,14 @@ class Broker extends pulumi.CustomResource {
     pendingDataReplicationMode = registerOutput<String>('pendingDataReplicationMode');
     publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
     region = registerOutput<String>('region');
+    resourceShareArns = registerOutput<List<String>?>('resourceShareArns');
     securityGroups = registerOutput<List<String>?>('securityGroups');
+    sharedResources = registerOutput<List<Map<String, dynamic>>>('sharedResources');
     storageType = registerOutput<String>('storageType');
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    users = registerOutput<List<Map<String, dynamic>>>('users');
+    users = registerOutput<List<Map<String, dynamic>>?>('users');
   }
 
   /// Gets an existing [Broker] resource's state with the given [name] and [id].
@@ -863,11 +968,13 @@ class Broker extends pulumi.CustomResource {
     pendingDataReplicationMode = registerOutput<String>('pendingDataReplicationMode');
     publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
     region = registerOutput<String>('region');
+    resourceShareArns = registerOutput<List<String>?>('resourceShareArns');
     securityGroups = registerOutput<List<String>?>('securityGroups');
+    sharedResources = registerOutput<List<Map<String, dynamic>>>('sharedResources');
     storageType = registerOutput<String>('storageType');
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    users = registerOutput<List<Map<String, dynamic>>>('users');
+    users = registerOutput<List<Map<String, dynamic>>?>('users');
   }
 }

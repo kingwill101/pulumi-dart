@@ -141,6 +141,38 @@ import 'gateway_route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appmesh_gatewayroute" "example" {
+///   name                 = "example-gateway-route"
+///   mesh_name            = "example-service-mesh"
+///   virtual_gateway_name = exampleAwsAppmeshVirtualGateway.name
+///   spec = {
+///     http_route = {
+///       action = {
+///         target = {
+///           virtual_service = {
+///             virtual_service_name = exampleAwsAppmeshVirtualService.name
+///           }
+///         }
+///       }
+///       match = {
+///         prefix = "/"
+///       }
+///     }
+///   }
+///   tags = {
+///     "Environment" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -155,8 +187,8 @@ import 'gateway_route_state.dart';
 /// import com.pulumi.aws.appmesh.inputs.GatewayRouteSpecHttpRouteActionTargetArgs;
 /// import com.pulumi.aws.appmesh.inputs.GatewayRouteSpecHttpRouteActionTargetVirtualServiceArgs;
 /// import com.pulumi.aws.appmesh.inputs.GatewayRouteSpecHttpRouteMatchArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -215,7 +247,7 @@ import 'gateway_route_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import App Mesh gateway routes using `mesh_name` and `virtual_gateway_name` together with the gateway route's `name`. For example:
+/// Using `pulumi import`, import App Mesh gateway routes using `meshName` and `virtualGatewayName` together with the gateway route's `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appmesh/gatewayRoute:GatewayRoute example mesh/gw1/example-gateway-route
@@ -239,9 +271,9 @@ class GatewayRoute extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceOwner;
   /// Gateway route specification to apply.
   late final pulumi.Output<GatewayRouteSpec> spec;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Name of the virtual gateway to associate the gateway route with. Must be between 1 and 255 characters in length.
   late final pulumi.Output<String> virtualGatewayName;

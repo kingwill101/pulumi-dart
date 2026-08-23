@@ -80,6 +80,24 @@ import 'application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+///
+/// resource "aws_ssoadmin_application" "example" {
+///   name                     = "example"
+///   application_provider_arn = "arn:aws:sso::aws:applicationProvider/custom"
+///   instance_arn             = data.aws_ssoadmin_getinstances.example.arns[0]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +108,8 @@ import 'application_state.dart';
 /// import com.pulumi.aws.ssoadmin.inputs.GetInstancesArgs;
 /// import com.pulumi.aws.ssoadmin.Application;
 /// import com.pulumi.aws.ssoadmin.ApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -231,6 +249,31 @@ import 'application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+///
+/// resource "aws_ssoadmin_application" "example" {
+///   name                     = "example"
+///   application_provider_arn = "arn:aws:sso::aws:applicationProvider/custom"
+///   instance_arn             = data.aws_ssoadmin_getinstances.example.arns[0]
+///   portal_options = {
+///     visibility = "ENABLED"
+///     sign_in_options = {
+///       application_url = "http://example.com"
+///       origin          = "APPLICATION"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -243,8 +286,8 @@ import 'application_state.dart';
 /// import com.pulumi.aws.ssoadmin.ApplicationArgs;
 /// import com.pulumi.aws.ssoadmin.inputs.ApplicationPortalOptionsArgs;
 /// import com.pulumi.aws.ssoadmin.inputs.ApplicationPortalOptionsSignInOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -305,6 +348,10 @@ import 'application_state.dart';
 ///
 /// - `arn` (String) Amazon Resource Name (ARN) of the SSO application.
 ///
+/// #### Optional
+///
+/// - `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import SSO Admin Application using the `id`. For example:
 ///
@@ -330,15 +377,15 @@ class Application extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-  /// Options for the portal associated with an application. See `portal_options` below.
+  /// Options for the portal associated with an application. See `portalOptions` below.
   late final pulumi.Output<ApplicationPortalOptions?> portalOptions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Status of the application. Valid values are `ENABLED` and `DISABLED`.
   late final pulumi.Output<String> status;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Application].

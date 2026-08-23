@@ -162,6 +162,38 @@ import 'container_recipe_target_repository.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_imagebuilder_containerrecipe" "example" {
+///   name           = "example"
+///   version        = "1.0.0"
+///   container_type = "DOCKER"
+///   parent_image   = "arn:aws:imagebuilder:eu-central-1:aws:image/amazon-linux-x86-latest/x.x.x"
+///   target_repository = {
+///     repository_name = exampleAwsEcrRepository.name
+///     service         = "ECR"
+///   }
+///   components {
+///     component_arn = exampleAwsImagebuilderComponent.arn
+///     parameters {
+///       name  = "Parameter1"
+///       value = "Value1"
+///     }
+///     parameters {
+///       name  = "Parameter2"
+///       value = "Value2"
+///     }
+///   }
+///   dockerfile_template_data = "FROM {{{ imagebuilder:parentImage }}}\n{{{ imagebuilder:environments }}}\n{{{ imagebuilder:components }}}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -172,8 +204,9 @@ import 'container_recipe_target_repository.dart';
 /// import com.pulumi.aws.imagebuilder.ContainerRecipeArgs;
 /// import com.pulumi.aws.imagebuilder.inputs.ContainerRecipeTargetRepositoryArgs;
 /// import com.pulumi.aws.imagebuilder.inputs.ContainerRecipeComponentArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.imagebuilder.inputs.ContainerRecipeComponentParameterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -289,9 +322,9 @@ class ContainerRecipe extends pulumi.CustomResource {
   late final pulumi.Output<String?> platformOverride;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags for the container recipe. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the container recipe. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The destination repository for the container image. Detailed below.
   late final pulumi.Output<ContainerRecipeTargetRepository> targetRepository;

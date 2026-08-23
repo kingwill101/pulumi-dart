@@ -9,8 +9,6 @@ class GetInferenceProfileResult {
   final String createdAt;
   /// The description of the inference profile.
   final String description;
-  /// The provider-assigned unique ID for this managed resource.
-  final String id;
   /// The Amazon Resource Name (ARN) of the inference profile.
   final String inferenceProfileArn;
   final String inferenceProfileId;
@@ -29,7 +27,6 @@ class GetInferenceProfileResult {
   /// Creates a new [GetInferenceProfileResult].
   /// [createdAt] The time at which the inference profile was created.
   /// [description] The description of the inference profile.
-  /// [id] The provider-assigned unique ID for this managed resource.
   /// [inferenceProfileArn] The Amazon Resource Name (ARN) of the inference profile.
   /// [inferenceProfileId] Required.
   /// [inferenceProfileName] The unique identifier of the inference profile.
@@ -41,7 +38,6 @@ class GetInferenceProfileResult {
   const GetInferenceProfileResult({
     required this.createdAt,
     required this.description,
-    required this.id,
     required this.inferenceProfileArn,
     required this.inferenceProfileId,
     required this.inferenceProfileName,
@@ -56,7 +52,6 @@ class GetInferenceProfileResult {
     return <String, dynamic>{
       'createdAt': createdAt,
       'description': description,
-      'id': id,
       'inferenceProfileArn': inferenceProfileArn,
       'inferenceProfileId': inferenceProfileId,
       'inferenceProfileName': inferenceProfileName,
@@ -72,7 +67,6 @@ class GetInferenceProfileResult {
     return GetInferenceProfileResult(
       createdAt: map['createdAt'] as String,
       description: map['description'] as String,
-      id: map['id'] as String,
       inferenceProfileArn: map['inferenceProfileArn'] as String,
       inferenceProfileId: map['inferenceProfileId'] as String,
       inferenceProfileName: map['inferenceProfileName'] as String,
@@ -84,4 +78,3 @@ class GetInferenceProfileResult {
     );
   }
 }
-

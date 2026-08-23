@@ -78,6 +78,24 @@ import 'customer_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_customergateway" "main" {
+///   bgp_asn    = 65000
+///   ip_address = "172.83.124.10"
+///   type       = "ipsec.1"
+///   tags = {
+///     "Name" = "main-customer-gateway"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +104,8 @@ import 'customer_gateway_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.CustomerGateway;
 /// import com.pulumi.aws.ec2.CustomerGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -132,9 +150,9 @@ import 'customer_gateway_state.dart';
 class CustomerGateway extends pulumi.CustomResource {
   /// The ARN of the customer gateway.
   late final pulumi.Output<String> arn;
-  /// The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN). Valid values are from  `1` to `2147483647`. Conflicts with `bgp_asn_extended`.
+  /// The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN). Valid values are from  `1` to `2147483647`. Conflicts with `bgpAsnExtended`.
   late final pulumi.Output<String?> bgpAsn;
-  /// The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN). Valid values are from  `2147483648` to `4294967295` Conflicts with `bgp_asn`.
+  /// The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN). Valid values are from  `2147483648` to `4294967295` Conflicts with `bgpAsn`.
   late final pulumi.Output<String?> bgpAsnExtended;
   /// The Amazon Resource Name (ARN) for the customer gateway certificate.
   late final pulumi.Output<String?> certificateArn;
@@ -144,9 +162,9 @@ class CustomerGateway extends pulumi.CustomResource {
   late final pulumi.Output<String?> ipAddress;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Tags to apply to the gateway. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the gateway. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The type of customer gateway. The only type AWS
   /// supports at this time is "ipsec.1".

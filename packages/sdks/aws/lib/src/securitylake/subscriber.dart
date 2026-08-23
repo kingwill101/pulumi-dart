@@ -6,7 +6,7 @@ import 'subscriber_timeouts.dart';
 
 /// Resource for managing an AWS Security Lake Subscriber.
 ///
-/// &gt; **NOTE:** The underlying `aws.securitylake.DataLake` must be configured before creating the `aws.securitylake.Subscriber`. Use a `depends_on` statement.
+/// &gt; **NOTE:** The underlying `aws.securitylake.DataLake` must be configured before creating the `aws.securitylake.Subscriber`. Use a `dependsOn` statement.
 ///
 /// ## Example Usage
 ///
@@ -126,6 +126,31 @@ import 'subscriber_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securitylake_subscriber" "example" {
+///   depends_on      = [exampleAwsSecuritylakeDataLake]
+///   subscriber_name = "example-name"
+///   access_type     = "S3"
+///   sources {
+///     aws_log_source_resource = {
+///       source_name    = "ROUTE53"
+///       source_version = "1.0"
+///     }
+///   }
+///   subscriber_identity = {
+///     external_id = "example"
+///     principal   = "1234567890"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +163,8 @@ import 'subscriber_timeouts.dart';
 /// import com.pulumi.aws.securitylake.inputs.SubscriberSourceAwsLogSourceResourceArgs;
 /// import com.pulumi.aws.securitylake.inputs.SubscriberSubscriberIdentityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -337,6 +362,37 @@ import 'subscriber_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securitylake_subscriber" "example" {
+///   depends_on      = [exampleAwsSecuritylakeDataLake]
+///   subscriber_name = "example-name"
+///   access_type     = "S3"
+///   sources {
+///     aws_log_source_resource = {
+///       source_name    = "SH_FINDINGS"
+///       source_version = "2.0"
+///     }
+///   }
+///   sources {
+///     aws_log_source_resource = {
+///       source_name    = "ROUTE53"
+///       source_version = "2.0"
+///     }
+///   }
+///   subscriber_identity = {
+///     external_id = "example"
+///     principal   = "1234567890"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -349,8 +405,8 @@ import 'subscriber_timeouts.dart';
 /// import com.pulumi.aws.securitylake.inputs.SubscriberSourceAwsLogSourceResourceArgs;
 /// import com.pulumi.aws.securitylake.inputs.SubscriberSubscriberIdentityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -422,7 +478,7 @@ import 'subscriber_timeouts.dart';
 class Subscriber extends pulumi.CustomResource {
   /// The Amazon S3 or Lake Formation access type.
   late final pulumi.Output<String> accessType;
-  /// ARN of the Data Lake.
+  /// The ARN of the subscriber.
   late final pulumi.Output<String> arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -440,15 +496,15 @@ class Subscriber extends pulumi.CustomResource {
   late final pulumi.Output<String?> subscriberDescription;
   /// The subscriber endpoint to which exception messages are posted.
   late final pulumi.Output<String> subscriberEndpoint;
-  /// The AWS identity used to access your data. See `subscriber_identity` Block below.
+  /// The AWS identity used to access your data. See `subscriberIdentity` Block below.
   late final pulumi.Output<SubscriberSubscriberIdentity> subscriberIdentity;
   /// The name of your Security Lake subscriber account.
   late final pulumi.Output<String?> subscriberName;
   /// The subscriber status of the Amazon Security Lake subscriber account.
   late final pulumi.Output<String> subscriberStatus;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<SubscriberTimeouts?> timeouts;
 

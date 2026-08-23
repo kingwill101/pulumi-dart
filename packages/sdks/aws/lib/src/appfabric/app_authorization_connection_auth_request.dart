@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppAuthorizationConnectionAuthRequest {
-  /// The authorization code returned by the application after permission is granted in the application OAuth page (after clicking on the AuthURL)..
+  /// Authorization code returned by the application after permission is granted in the application OAuth page (after clicking on the AuthURL).
   final pulumi.Input<String> code;
-  /// The redirect URL that is specified in the AuthURL and the application client.
+  /// Redirect URL that is specified in the AuthURL and the application client.
   final pulumi.Input<String> redirectUri;
 
   /// Creates a new [AppAuthorizationConnectionAuthRequest].
-  /// [code] The authorization code returned by the application after permission is granted in the application OAuth page (after clicking on the AuthURL)..
-  /// [redirectUri] The redirect URL that is specified in the AuthURL and the application client.
+  /// [code] Authorization code returned by the application after permission is granted in the application OAuth page (after clicking on the AuthURL).
+  /// [redirectUri] Redirect URL that is specified in the AuthURL and the application client.
   const AppAuthorizationConnectionAuthRequest({
     required this.code,
     required this.redirectUri,
@@ -30,4 +30,3 @@ class AppAuthorizationConnectionAuthRequest {
     );
   }
 }
-

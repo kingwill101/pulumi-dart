@@ -5,16 +5,16 @@ import 'v2models_intent_confirmation_setting_prompt_specification_prompt_attempt
 import 'v2models_intent_confirmation_setting_prompt_specification_prompt_attempts_specification_audio_and_dtmf_input_specification_dtmf_specification.dart';
 
 class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification {
-  /// Configuration block for the settings on audio input. See `audio_specification`.
+  /// Configuration block for the settings on audio input. See `audioSpecification`.
   final pulumi.Input<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification>? audioSpecification;
-  /// Configuration block for the settings on DTMF input. See `dtmf_specification`.
+  /// Configuration block for the settings on DTMF input. See `dtmfSpecification`.
   final pulumi.Input<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification>? dtmfSpecification;
   /// Time for which a bot waits before assuming that the customer isn't going to speak or press a key. This timeout is shared between Audio and DTMF inputs.
   final pulumi.Input<int> startTimeoutMs;
 
   /// Creates a new [V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification].
-  /// [audioSpecification] Configuration block for the settings on audio input. See `audio_specification`.
-  /// [dtmfSpecification] Configuration block for the settings on DTMF input. See `dtmf_specification`.
+  /// [audioSpecification] Configuration block for the settings on audio input. See `audioSpecification`.
+  /// [dtmfSpecification] Configuration block for the settings on DTMF input. See `dtmfSpecification`.
   /// [startTimeoutMs] Time for which a bot waits before assuming that the customer isn't going to speak or press a key. This timeout is shared between Audio and DTMF inputs.
   const V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification({
     this.audioSpecification,
@@ -38,4 +38,3 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
     );
   }
 }
-

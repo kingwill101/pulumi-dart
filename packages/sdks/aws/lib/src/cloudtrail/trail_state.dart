@@ -7,7 +7,7 @@ import 'trail_insight_selector.dart';
 
 /// Input properties used for looking up and filtering Trail resources.
 class TrailState {
-  /// Specifies an advanced event selector for enabling data event logging. Fields documented below. Conflicts with `event_selector`.
+  /// Specifies an advanced event selector for enabling data event logging. Fields documented below. Conflicts with `eventSelector`.
   final pulumi.Input<List<TrailAdvancedEventSelector>>? advancedEventSelectors;
   /// ARN of the trail.
   final pulumi.Input<String>? arn;
@@ -19,7 +19,7 @@ class TrailState {
   final pulumi.Input<bool>? enableLogFileValidation;
   /// Enables logging for the trail. When set to `true`, logging is started by calling the [`StartLogging`](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_StartLogging.html) API. When set to `false`, logging is stopped by calling the [`StopLogging`](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_StopLogging.html) API. Defaults to `true`.
   final pulumi.Input<bool>? enableLogging;
-  /// Specifies an event selector for enabling data event logging. Fields documented below. Please note the [CloudTrail limits](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) when configuring these. Conflicts with `advanced_event_selector`.
+  /// Specifies an event selector for enabling data event logging. Fields documented below. Please note the [CloudTrail limits](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) when configuring these. Conflicts with `advancedEventSelector`.
   final pulumi.Input<List<TrailEventSelector>>? eventSelectors;
   /// Region in which the trail was created.
   final pulumi.Input<String>? homeRegion;
@@ -47,19 +47,19 @@ class TrailState {
   final pulumi.Input<String>? snsTopicArn;
   /// Name of the Amazon SNS topic defined for notification of log file delivery. Specify the SNS topic ARN if it resides in another region.
   final pulumi.Input<String>? snsTopicName;
-  /// Map of tags to assign to the trail. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the trail. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [TrailState].
-  /// [advancedEventSelectors] Specifies an advanced event selector for enabling data event logging. Fields documented below. Conflicts with `event_selector`.
+  /// [advancedEventSelectors] Specifies an advanced event selector for enabling data event logging. Fields documented below. Conflicts with `eventSelector`.
   /// [arn] ARN of the trail.
   /// [cloudWatchLogsGroupArn] Log group name using an ARN that represents the log group to which CloudTrail logs will be delivered. Note that CloudTrail requires the Log Stream wildcard.
   /// [cloudWatchLogsRoleArn] Role for the CloudWatch Logs endpoint to assume to write to a user’s log group.
   /// [enableLogFileValidation] Whether log file integrity validation is enabled. Defaults to `false`.
   /// [enableLogging] Enables logging for the trail. When set to `true`, logging is started by calling the [`StartLogging`](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_StartLogging.html) API. When set to `false`, logging is stopped by calling the [`StopLogging`](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_StopLogging.html) API. Defaults to `true`.
-  /// [eventSelectors] Specifies an event selector for enabling data event logging. Fields documented below. Please note the [CloudTrail limits](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) when configuring these. Conflicts with `advanced_event_selector`.
+  /// [eventSelectors] Specifies an event selector for enabling data event logging. Fields documented below. Please note the [CloudTrail limits](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) when configuring these. Conflicts with `advancedEventSelector`.
   /// [homeRegion] Region in which the trail was created.
   /// [includeGlobalServiceEvents] Whether the trail is publishing events from global services such as IAM to the log files. Defaults to `true`.
   /// [insightSelectors] Configuration block for identifying unusual operational activity. See details below.
@@ -72,8 +72,8 @@ class TrailState {
   /// [s3KeyPrefix] S3 key prefix that follows the name of the bucket you have designated for log file delivery.
   /// [snsTopicArn] ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered.
   /// [snsTopicName] Name of the Amazon SNS topic defined for notification of log file delivery. Specify the SNS topic ARN if it resides in another region.
-  /// [tags] Map of tags to assign to the trail. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the trail. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const TrailState({
     this.advancedEventSelectors,
     this.arn,
@@ -150,4 +150,3 @@ class TrailState {
     );
   }
 }
-

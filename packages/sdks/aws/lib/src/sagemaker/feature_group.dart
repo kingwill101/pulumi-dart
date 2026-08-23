@@ -109,6 +109,29 @@ import 'feature_group_throughput_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_featuregroup" "example" {
+///   feature_group_name             = "example"
+///   record_identifier_feature_name = "example"
+///   event_time_feature_name        = "example"
+///   role_arn                       = test.arn
+///   feature_definitions {
+///     feature_name = "example"
+///     feature_type = "String"
+///   }
+///   online_store_config = {
+///     enable_online_store = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +142,8 @@ import 'feature_group_throughput_config.dart';
 /// import com.pulumi.aws.sagemaker.FeatureGroupArgs;
 /// import com.pulumi.aws.sagemaker.inputs.FeatureGroupFeatureDefinitionArgs;
 /// import com.pulumi.aws.sagemaker.inputs.FeatureGroupOnlineStoreConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -192,11 +215,11 @@ class FeatureGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> recordIdentifierFeatureName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of the IAM execution role used to persist data into the Offline Store if an `offline_store_config` is provided.
+  /// The Amazon Resource Name (ARN) of the IAM execution role used to persist data into the Offline Store if an `offlineStoreConfig` is provided.
   late final pulumi.Output<String> roleArn;
-  /// Map of resource tags for the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of resource tags for the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<FeatureGroupThroughputConfig> throughputConfig;
 

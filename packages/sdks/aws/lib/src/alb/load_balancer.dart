@@ -94,6 +94,32 @@ import 'load_balancer_type.dart';
 ///
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_loadbalancer" "test" {
+///   name                       = "test-lb-tf"
+///   internal                   = false
+///   load_balancer_type         = "application"
+///   security_groups            = [lbSg.id]
+///   subnets                    = [for subnet in public : subnet.id]
+///   enable_deletion_protection = true
+///   access_logs = {
+///     bucket  = lbLogs.id
+///     prefix  = "test-lb"
+///     enabled = true
+///   }
+///   tags = {
+///     "Environment" = "production"
+///   }
+/// }
+/// ```
 ///
 ///
 /// ### Network Load Balancer
@@ -153,6 +179,26 @@ import 'load_balancer_type.dart';
 ///     });
 ///
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_loadbalancer" "test" {
+///   name                       = "test-lb-tf"
+///   internal                   = false
+///   load_balancer_type         = "network"
+///   subnets                    = [for subnet in public : subnet.id]
+///   enable_deletion_protection = true
+///   tags = {
+///     "Environment" = "production"
+///   }
+/// }
 /// ```
 ///
 ///
@@ -256,6 +302,28 @@ import 'load_balancer_type.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_loadbalancer" "example" {
+///   name               = "example"
+///   load_balancer_type = "network"
+///   subnet_mappings {
+///     subnet_id     = example1AwsSubnet.id
+///     allocation_id = example1.id
+///   }
+///   subnet_mappings {
+///     subnet_id     = example2AwsSubnet.id
+///     allocation_id = example2.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -265,8 +333,8 @@ import 'load_balancer_type.dart';
 /// import com.pulumi.aws.lb.LoadBalancer;
 /// import com.pulumi.aws.lb.LoadBalancerArgs;
 /// import com.pulumi.aws.lb.inputs.LoadBalancerSubnetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -410,6 +478,28 @@ import 'load_balancer_type.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_loadbalancer" "example" {
+///   name               = "example"
+///   load_balancer_type = "network"
+///   subnet_mappings {
+///     subnet_id            = example1.id
+///     private_ipv4_address = "10.0.1.15"
+///   }
+///   subnet_mappings {
+///     subnet_id            = example2.id
+///     private_ipv4_address = "10.0.2.15"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -419,8 +509,8 @@ import 'load_balancer_type.dart';
 /// import com.pulumi.aws.lb.LoadBalancer;
 /// import com.pulumi.aws.lb.LoadBalancerArgs;
 /// import com.pulumi.aws.lb.inputs.LoadBalancerSubnetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -496,7 +586,7 @@ class LoadBalancer extends pulumi.CustomResource {
   /// DNS name of the load balancer.
   /// * `subnet_mapping.*.outpost_id` - ID of the Outpost containing the load balancer.
   late final pulumi.Output<String> dnsName;
-  /// How traffic is distributed among the load balancer Availability Zones. Possible values are `any_availability_zone` (default), `availability_zone_affinity`, or `partial_availability_zone_affinity`. See   [Availability Zone DNS affinity](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#zonal-dns-affinity) for additional details. Only valid for `network` type load balancers.
+  /// How traffic is distributed among the load balancer Availability Zones. Possible values are `anyAvailabilityZone` (default), `availabilityZoneAffinity`, or `partialAvailabilityZoneAffinity`. See   [Availability Zone DNS affinity](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#zonal-dns-affinity) for additional details. Only valid for `network` type load balancers.
   late final pulumi.Output<String?> dnsRecordClientRoutingPolicy;
   /// Whether HTTP headers with header fields that are not valid are removed by the load balancer (true) or routed to targets (false). The default is false. Elastic Load Balancing requires that message header names contain only alphanumeric characters and hyphens. Only valid for Load Balancers of type `application`.
   late final pulumi.Output<bool?> dropInvalidHeaderFields;
@@ -506,6 +596,8 @@ class LoadBalancer extends pulumi.CustomResource {
   late final pulumi.Output<bool?> enableDeletionProtection;
   /// Whether HTTP/2 is enabled in `application` load balancers. Defaults to `true`.
   late final pulumi.Output<bool?> enableHttp2;
+  /// Whether to use an IPv6 prefix from each subnet for source NAT. `ipAddressType` must be `dualstack`. Valid values: `on`, `off`.
+  late final pulumi.Output<String> enablePrefixForIpv6SourceNat;
   /// Whether the two headers (`x-amzn-tls-version` and `x-amzn-tls-cipher-suite`), which contain information about the negotiated TLS version and cipher suite, are added to the client request before sending it to the target. Only valid for Load Balancers of type `application`. Defaults to `false`
   late final pulumi.Output<bool?> enableTlsVersionAndCipherSuiteHeaders;
   /// Whether to allow a WAF-enabled load balancer to route requests to targets if it is unable to forward the request to AWS WAF. Defaults to `false`.
@@ -524,7 +616,7 @@ class LoadBalancer extends pulumi.CustomResource {
   late final pulumi.Output<bool> internal;
   /// Type of IP addresses used by the subnets for your load balancer. The possible values depend upon the load balancer type: `ipv4` (all load balancer types), `dualstack` (all load balancer types), and `dualstack-without-public-ipv4` (type `application` only).
   late final pulumi.Output<String> ipAddressType;
-  /// . The IPAM pools to use with the load balancer.  Only valid for Load Balancers of type `application`. See ipam_pools for more information.
+  /// . The IPAM pools to use with the load balancer.  Only valid for Load Balancers of type `application`. See ipamPools for more information.
   late final pulumi.Output<LoadBalancerIpamPools?> ipamPools;
   /// Type of load balancer to create. Possible values are `application`, `gateway`, or `network`. The default value is `application`.
   late final pulumi.Output<LoadBalancerType?> loadBalancerType;
@@ -546,16 +638,16 @@ class LoadBalancer extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> subnetMappings;
   /// List of subnet IDs to attach to the LB. For Load Balancers of type `network` subnets can only be added (see [Availability Zones](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#availability-zones)), deleting a subnet for load balancers of type `network` will force a recreation of the resource.
   late final pulumi.Output<List<String>> subnets;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<String> vpcId;
   /// Determines how the load balancer modifies the `X-Forwarded-For` header in the HTTP request before sending the request to the target. The possible values are `append`, `preserve`, and `remove`. Only valid for Load Balancers of type `application`. The default is `append`.
   ///
-  /// &gt; **NOTE:** Please note that internal LBs can only use `ipv4` as the `ip_address_type`. You can only change to `dualstack` `ip_address_type` if the selected subnets are IPv6 enabled.
+  /// &gt; **NOTE:** Please note that internal LBs can only use `ipv4` as the `ipAddressType`. You can only change to `dualstack` `ipAddressType` if the selected subnets are IPv6 enabled.
   ///
-  /// &gt; **NOTE:** Please note that one of either `subnets` or `subnet_mapping` is required.
+  /// &gt; **NOTE:** Please note that one of either `subnets` or `subnetMapping` is required.
   late final pulumi.Output<String?> xffHeaderProcessingMode;
   /// Canonical hosted zone ID of the load balancer (to be used in a Route 53 Alias record).
   late final pulumi.Output<String> zoneId;
@@ -587,6 +679,7 @@ class LoadBalancer extends pulumi.CustomResource {
     enableCrossZoneLoadBalancing = registerOutput<bool?>('enableCrossZoneLoadBalancing');
     enableDeletionProtection = registerOutput<bool?>('enableDeletionProtection');
     enableHttp2 = registerOutput<bool?>('enableHttp2');
+    enablePrefixForIpv6SourceNat = registerOutput<String>('enablePrefixForIpv6SourceNat');
     enableTlsVersionAndCipherSuiteHeaders = registerOutput<bool?>('enableTlsVersionAndCipherSuiteHeaders');
     enableWafFailOpen = registerOutput<bool?>('enableWafFailOpen');
     enableXffClientPort = registerOutput<bool?>('enableXffClientPort');
@@ -650,6 +743,7 @@ class LoadBalancer extends pulumi.CustomResource {
     enableCrossZoneLoadBalancing = registerOutput<bool?>('enableCrossZoneLoadBalancing');
     enableDeletionProtection = registerOutput<bool?>('enableDeletionProtection');
     enableHttp2 = registerOutput<bool?>('enableHttp2');
+    enablePrefixForIpv6SourceNat = registerOutput<String>('enablePrefixForIpv6SourceNat');
     enableTlsVersionAndCipherSuiteHeaders = registerOutput<bool?>('enableTlsVersionAndCipherSuiteHeaders');
     enableWafFailOpen = registerOutput<bool?>('enableWafFailOpen');
     enableXffClientPort = registerOutput<bool?>('enableXffClientPort');

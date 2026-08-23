@@ -6,6 +6,8 @@ import 'subnet_state.dart';
 ///
 /// &gt; **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), subnets associated with Lambda Functions can take up to 45 minutes to successfully delete. To allow for successful deletion, the provider will wait for at least 45 minutes even if a shorter delete timeout is specified.
 ///
+/// &gt; **NOTE:** When AWS GuardDuty is enabled in your account, it automatically creates VPC endpoints in your VPCs to monitor network traffic. During subnet deletion, the provider automatically detects and dissociates the subnet from these GuardDuty-managed VPC endpoints if they are blocking the deletion, preserving GuardDuty protection for other subnets in the VPC. This cleanup only targets resources tagged with `GuardDutyManaged=true` and happens automatically during destroy operations with no manual intervention required. For optimal functionality, the IAM role used by Terraform should have the optional permissions listed below. If these permissions are not available, the provider will continue with the deletion attempt and surface warnings only if the deletion ultimately fails.
+///
 /// ## Example Usage
 ///
 /// ### Basic Usage
@@ -78,6 +80,23 @@ import 'subnet_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_subnet" "main" {
+///   vpc_id     = mainAwsVpc.id
+///   cidr_block = "10.0.1.0/24"
+///   tags = {
+///     "Name" = "Main"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +105,8 @@ import 'subnet_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Subnet;
 /// import com.pulumi.aws.ec2.SubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -123,7 +142,7 @@ import 'subnet_state.dart';
 /// ### Subnets In Secondary VPC CIDR Blocks
 ///
 /// When managing subnets in one of a VPC's secondary CIDR blocks created using a `aws.ec2.VpcIpv4CidrBlockAssociation`
-/// resource, it is recommended to reference that resource's `vpc_id` attribute to ensure correct dependency ordering.
+/// resource, it is recommended to reference that resource's `vpcId` attribute to ensure correct dependency ordering.
 ///
 ///
 /// ```typescript
@@ -200,6 +219,24 @@ import 'subnet_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpcipv4cidrblockassociation" "secondary_cidr" {
+///   vpc_id     = main.id
+///   cidr_block = "172.20.0.0/16"
+/// }
+/// resource "aws_ec2_subnet" "in_secondary_cidr" {
+///   vpc_id     = aws_ec2_vpcipv4cidrblockassociation.secondary_cidr.vpc_id
+///   cidr_block = "172.20.0.0/24"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -210,8 +247,8 @@ import 'subnet_state.dart';
 /// import com.pulumi.aws.ec2.VpcIpv4CidrBlockAssociationArgs;
 /// import com.pulumi.aws.ec2.Subnet;
 /// import com.pulumi.aws.ec2.SubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -267,7 +304,7 @@ import 'subnet_state.dart';
 /// const testVpcIpamPool = new aws.ec2.VpcIpamPool("test", {
 ///     addressFamily: "ipv4",
 ///     ipamScopeId: test.privateDefaultScopeId,
-///     locale: current.then(current => current.name),
+///     locale: current.then(current => current.region),
 /// });
 /// const testVpcIpamPoolCidr = new aws.ec2.VpcIpamPoolCidr("test", {
 ///     ipamPoolId: testVpcIpamPool.id,
@@ -282,12 +319,12 @@ import 'subnet_state.dart';
 /// const vpc = new aws.ec2.VpcIpamPool("vpc", {
 ///     addressFamily: "ipv4",
 ///     ipamScopeId: test.privateDefaultScopeId,
-///     locale: current.then(current => current.name),
+///     locale: current.then(current => current.region),
 ///     sourceIpamPoolId: testVpcIpamPool.id,
 ///     sourceResource: {
 ///         resourceId: testVpc.id,
 ///         resourceOwner: currentAwsCallerIdentity.accountId,
-///         resourceRegion: current.then(current => current.name),
+///         resourceRegion: current.then(current => current.region),
 ///         resourceType: "vpc",
 ///     },
 /// });
@@ -315,7 +352,7 @@ import 'subnet_state.dart';
 /// test_vpc_ipam_pool = aws.ec2.VpcIpamPool("test",
 ///     address_family="ipv4",
 ///     ipam_scope_id=test.private_default_scope_id,
-///     locale=current.name)
+///     locale=current.region)
 /// test_vpc_ipam_pool_cidr = aws.ec2.VpcIpamPoolCidr("test",
 ///     ipam_pool_id=test_vpc_ipam_pool.id,
 ///     cidr="10.0.0.0/16")
@@ -326,12 +363,12 @@ import 'subnet_state.dart';
 /// vpc = aws.ec2.VpcIpamPool("vpc",
 ///     address_family="ipv4",
 ///     ipam_scope_id=test.private_default_scope_id,
-///     locale=current.name,
+///     locale=current.region,
 ///     source_ipam_pool_id=test_vpc_ipam_pool.id,
 ///     source_resource={
 ///         "resource_id": test_vpc.id,
 ///         "resource_owner": current_aws_caller_identity["accountId"],
-///         "resource_region": current.name,
+///         "resource_region": current.region,
 ///         "resource_type": "vpc",
 ///     })
 /// vpc_vpc_ipam_pool_cidr = aws.ec2.VpcIpamPoolCidr("vpc",
@@ -369,7 +406,7 @@ import 'subnet_state.dart';
 ///     {
 ///         AddressFamily = "ipv4",
 ///         IpamScopeId = test.PrivateDefaultScopeId,
-///         Locale = current.Apply(getRegionResult => getRegionResult.Name),
+///         Locale = current.Apply(getRegionResult => getRegionResult.Region),
 ///     });
 ///
 ///     var testVpcIpamPoolCidr = new Aws.Ec2.VpcIpamPoolCidr("test", new()
@@ -394,13 +431,13 @@ import 'subnet_state.dart';
 ///     {
 ///         AddressFamily = "ipv4",
 ///         IpamScopeId = test.PrivateDefaultScopeId,
-///         Locale = current.Apply(getRegionResult => getRegionResult.Name),
+///         Locale = current.Apply(getRegionResult => getRegionResult.Region),
 ///         SourceIpamPoolId = testVpcIpamPool.Id,
 ///         SourceResource = new Aws.Ec2.Inputs.VpcIpamPoolSourceResourceArgs
 ///         {
 ///             ResourceId = testVpc.Id,
 ///             ResourceOwner = currentAwsCallerIdentity.AccountId,
-///             ResourceRegion = current.Apply(getRegionResult => getRegionResult.Name),
+///             ResourceRegion = current.Apply(getRegionResult => getRegionResult.Region),
 ///             ResourceType = "vpc",
 ///         },
 ///     });
@@ -455,20 +492,20 @@ import 'subnet_state.dart';
 /// 		testVpcIpamPool, err := ec2.NewVpcIpamPool(ctx, "test", &ec2.VpcIpamPoolArgs{
 /// 			AddressFamily: pulumi.String("ipv4"),
 /// 			IpamScopeId:   test.PrivateDefaultScopeId,
-/// 			Locale:        pulumi.String(current.Name),
+/// 			Locale:        pulumi.String(current.Region),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		testVpcIpamPoolCidr, err := ec2.NewVpcIpamPoolCidr(ctx, "test", &ec2.VpcIpamPoolCidrArgs{
-/// 			IpamPoolId: testVpcIpamPool.ID(),
+/// 			IpamPoolId: testVpcIpamPool.ID().ToIDOutput().ToStringOutput(),
 /// 			Cidr:       pulumi.String("10.0.0.0/16"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		testVpc, err := ec2.NewVpc(ctx, "test", &ec2.VpcArgs{
-/// 			Ipv4IpamPoolId:    testVpcIpamPool.ID(),
+/// 			Ipv4IpamPoolId:    testVpcIpamPool.ID().ToIDOutput().ToStringOutput(),
 /// 			Ipv4NetmaskLength: pulumi.Int(24),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			testVpcIpamPoolCidr,
@@ -479,12 +516,12 @@ import 'subnet_state.dart';
 /// 		vpc, err := ec2.NewVpcIpamPool(ctx, "vpc", &ec2.VpcIpamPoolArgs{
 /// 			AddressFamily:    pulumi.String("ipv4"),
 /// 			IpamScopeId:      test.PrivateDefaultScopeId,
-/// 			Locale:           pulumi.String(current.Name),
-/// 			SourceIpamPoolId: testVpcIpamPool.ID(),
+/// 			Locale:           pulumi.String(current.Region),
+/// 			SourceIpamPoolId: testVpcIpamPool.ID().ToIDOutput().ToStringOutput(),
 /// 			SourceResource: &ec2.VpcIpamPoolSourceResourceArgs{
-/// 				ResourceId:     testVpc.ID(),
+/// 				ResourceId:     testVpc.ID().ToIDOutput().ToStringOutput(),
 /// 				ResourceOwner:  pulumi.Any(currentAwsCallerIdentity.AccountId),
-/// 				ResourceRegion: pulumi.String(current.Name),
+/// 				ResourceRegion: pulumi.String(current.Region),
 /// 				ResourceType:   pulumi.String("vpc"),
 /// 			},
 /// 		})
@@ -492,15 +529,15 @@ import 'subnet_state.dart';
 /// 			return err
 /// 		}
 /// 		vpcVpcIpamPoolCidr, err := ec2.NewVpcIpamPoolCidr(ctx, "vpc", &ec2.VpcIpamPoolCidrArgs{
-/// 			IpamPoolId: vpc.ID(),
+/// 			IpamPoolId: vpc.ID().ToIDOutput().ToStringOutput(),
 /// 			Cidr:       testVpc.CidrBlock,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewSubnet(ctx, "test", &ec2.SubnetArgs{
-/// 			VpcId:             testVpc.ID(),
-/// 			Ipv4IpamPoolId:    vpc.ID(),
+/// 			VpcId:             testVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			Ipv4IpamPoolId:    vpc.ID().ToIDOutput().ToStringOutput(),
 /// 			Ipv4NetmaskLength: pulumi.Int(28),
 /// 			AvailabilityZone:  pulumi.Any(available.Names[0]),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -511,6 +548,61 @@ import 'subnet_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+///
+/// resource "aws_ec2_vpcipam" "test" {
+///   operating_regions {
+///     region_name = data.aws_getregion.current.region
+///   }
+/// }
+/// resource "aws_ec2_vpcipampool" "test" {
+///   address_family = "ipv4"
+///   ipam_scope_id  = aws_ec2_vpcipam.test.private_default_scope_id
+///   locale         = data.aws_getregion.current.region
+/// }
+/// resource "aws_ec2_vpcipampoolcidr" "test" {
+///   ipam_pool_id = aws_ec2_vpcipampool.test.id
+///   cidr         = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_vpc" "test" {
+///   depends_on          = [aws_ec2_vpcipampoolcidr.test]
+///   ipv4_ipam_pool_id   = aws_ec2_vpcipampool.test.id
+///   ipv4_netmask_length = 24
+/// }
+/// resource "aws_ec2_vpcipampool" "vpc" {
+///   address_family      = "ipv4"
+///   ipam_scope_id       = aws_ec2_vpcipam.test.private_default_scope_id
+///   locale              = data.aws_getregion.current.region
+///   source_ipam_pool_id = aws_ec2_vpcipampool.test.id
+///   source_resource = {
+///     resource_id     = aws_ec2_vpc.test.id
+///     resource_owner  = currentAwsCallerIdentity.accountId
+///     resource_region = data.aws_getregion.current.region
+///     resource_type   = "vpc"
+///   }
+/// }
+/// resource "aws_ec2_vpcipampoolcidr" "vpc" {
+///   ipam_pool_id = aws_ec2_vpcipampool.vpc.id
+///   cidr         = aws_ec2_vpc.test.cidr_block
+/// }
+/// resource "aws_ec2_subnet" "test" {
+///   depends_on          = [aws_ec2_vpcipampoolcidr.vpc]
+///   vpc_id              = aws_ec2_vpc.test.id
+///   ipv4_ipam_pool_id   = aws_ec2_vpcipampool.vpc.id
+///   ipv4_netmask_length = 28
+///   availability_zone   = available.names[0]
 /// }
 /// ```
 /// ```java
@@ -534,8 +626,8 @@ import 'subnet_state.dart';
 /// import com.pulumi.aws.ec2.Subnet;
 /// import com.pulumi.aws.ec2.SubnetArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -559,7 +651,7 @@ import 'subnet_state.dart';
 ///         var testVpcIpamPool = new VpcIpamPool("testVpcIpamPool", VpcIpamPoolArgs.builder()
 ///             .addressFamily("ipv4")
 ///             .ipamScopeId(test.privateDefaultScopeId())
-///             .locale(current.name())
+///             .locale(current.region())
 ///             .build());
 ///
 ///         var testVpcIpamPoolCidr = new VpcIpamPoolCidr("testVpcIpamPoolCidr", VpcIpamPoolCidrArgs.builder()
@@ -577,12 +669,12 @@ import 'subnet_state.dart';
 ///         var vpc = new VpcIpamPool("vpc", VpcIpamPoolArgs.builder()
 ///             .addressFamily("ipv4")
 ///             .ipamScopeId(test.privateDefaultScopeId())
-///             .locale(current.name())
+///             .locale(current.region())
 ///             .sourceIpamPoolId(testVpcIpamPool.id())
 ///             .sourceResource(VpcIpamPoolSourceResourceArgs.builder()
 ///                 .resourceId(testVpc.id())
 ///                 .resourceOwner(currentAwsCallerIdentity.accountId())
-///                 .resourceRegion(current.name())
+///                 .resourceRegion(current.region())
 ///                 .resourceType("vpc")
 ///                 .build())
 ///             .build());
@@ -617,7 +709,7 @@ import 'subnet_state.dart';
 ///     properties:
 ///       addressFamily: ipv4
 ///       ipamScopeId: ${test.privateDefaultScopeId}
-///       locale: ${current.name}
+///       locale: ${current.region}
 ///   testVpcIpamPoolCidr:
 ///     type: aws:ec2:VpcIpamPoolCidr
 ///     name: test
@@ -638,12 +730,12 @@ import 'subnet_state.dart';
 ///     properties:
 ///       addressFamily: ipv4
 ///       ipamScopeId: ${test.privateDefaultScopeId}
-///       locale: ${current.name}
+///       locale: ${current.region}
 ///       sourceIpamPoolId: ${testVpcIpamPool.id}
 ///       sourceResource:
 ///         resourceId: ${testVpc.id}
 ///         resourceOwner: ${currentAwsCallerIdentity.accountId}
-///         resourceRegion: ${current.name}
+///         resourceRegion: ${current.region}
 ///         resourceType: vpc
 ///   vpcVpcIpamPoolCidr:
 ///     type: aws:ec2:VpcIpamPoolCidr
@@ -680,7 +772,7 @@ import 'subnet_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -698,11 +790,11 @@ class Subnet extends pulumi.CustomResource {
   late final pulumi.Output<bool?> assignIpv6AddressOnCreation;
   /// AZ for the subnet.
   late final pulumi.Output<String> availabilityZone;
-  /// AZ ID of the subnet. This argument is not supported in all regions or partitions. If necessary, use `availability_zone` instead.
+  /// AZ ID of the subnet. This argument is not supported in all regions or partitions. If necessary, use `availabilityZone` instead.
   late final pulumi.Output<String> availabilityZoneId;
   /// The IPv4 CIDR block for the subnet.
   late final pulumi.Output<String> cidrBlock;
-  /// The customer owned IPv4 address pool. Typically used with the `map_customer_owned_ip_on_launch` argument. The `outpost_arn` argument must be specified when configured.
+  /// The customer owned IPv4 address pool. Typically used with the `mapCustomerOwnedIpOnLaunch` argument. The `outpostArn` argument must be specified when configured.
   late final pulumi.Output<String?> customerOwnedIpv4Pool;
   /// Indicates whether DNS queries made to the Amazon-provided DNS Resolver in this subnet should return synthetic IPv6 addresses for IPv4-only destinations. Default: `false`.
   late final pulumi.Output<bool?> enableDns64;
@@ -714,10 +806,10 @@ class Subnet extends pulumi.CustomResource {
   late final pulumi.Output<bool?> enableResourceNameDnsAaaaRecordOnLaunch;
   /// ID of an IPv4 VPC Resource Planning IPAM Pool. The CIDR of this pool is used to allocate the CIDR for the subnet.
   late final pulumi.Output<String?> ipv4IpamPoolId;
-  /// Netmask. Requires specifying a `ipv4_ipam_pool_id`.
+  /// Netmask. Requires specifying a `ipv4IpamPoolId`.
   late final pulumi.Output<int?> ipv4NetmaskLength;
   /// The IPv6 network range for the subnet,
-  /// in CIDR notation. The subnet size must use a /64 prefix length. If the existing IPv6 subnet was created with `assign_ipv6_address_on_creation = true`, changing this value will force resource recreation.
+  /// in CIDR notation. The subnet size must use a /64 prefix length. If the existing IPv6 subnet was created with `assignIpv6AddressOnCreation = true`, changing this value will force resource recreation.
   late final pulumi.Output<String> ipv6CidrBlock;
   /// The association ID for the IPv6 CIDR block.
   late final pulumi.Output<String> ipv6CidrBlockAssociationId;
@@ -725,9 +817,9 @@ class Subnet extends pulumi.CustomResource {
   late final pulumi.Output<String?> ipv6IpamPoolId;
   /// Indicates whether to create an IPv6-only subnet. Default: `false`.
   late final pulumi.Output<bool?> ipv6Native;
-  /// Netmask. Requires specifying a `ipv6_ipam_pool_id`. Valid values are from 44 to 64 in increments of 4.
+  /// Netmask. Requires specifying a `ipv6IpamPoolId`. Valid values are from 44 to 64 in increments of 4.
   late final pulumi.Output<int?> ipv6NetmaskLength;
-  /// Specify `true` to indicate that network interfaces created in the subnet should be assigned a customer owned IP address. The `customer_owned_ipv4_pool` and `outpost_arn` arguments must be specified when set to `true`. Default is `false`.
+  /// Specify `true` to indicate that network interfaces created in the subnet should be assigned a customer owned IP address. The `customerOwnedIpv4Pool` and `outpostArn` arguments must be specified when set to `true`. Default is `false`.
   late final pulumi.Output<bool?> mapCustomerOwnedIpOnLaunch;
   /// Specify true to indicate that instances launched into the subnet should be assigned a public IP address. Default is `false`.
   late final pulumi.Output<bool?> mapPublicIpOnLaunch;
@@ -739,9 +831,9 @@ class Subnet extends pulumi.CustomResource {
   late final pulumi.Output<String> privateDnsHostnameTypeOnLaunch;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The VPC ID.
   late final pulumi.Output<String> vpcId;

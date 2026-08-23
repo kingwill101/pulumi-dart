@@ -3,16 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTaskExecutionPlacementStrategy {
-  /// The field to apply the placement strategy against.
+  /// Field to apply the placement strategy against.
   final pulumi.Input<String>? field;
-  /// The type of placement strategy. Valid values are `random`, `spread`, and `binpack`.
-  ///
-  /// For more information, see the [Placement Strategy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PlacementStrategy.html) documentation.
+  /// Type of placement strategy. Valid values are `random`, `spread`, and `binpack`.
   final pulumi.Input<String> type;
 
   /// Creates a new [GetTaskExecutionPlacementStrategy].
-  /// [field] The field to apply the placement strategy against.
-  /// [type] The type of placement strategy. Valid values are `random`, `spread`, and `binpack`.
+  /// [field] Field to apply the placement strategy against.
+  /// [type] Type of placement strategy. Valid values are `random`, `spread`, and `binpack`.
   const GetTaskExecutionPlacementStrategy({
     this.field,
     required this.type,
@@ -32,4 +30,3 @@ class GetTaskExecutionPlacementStrategy {
     );
   }
 }
-

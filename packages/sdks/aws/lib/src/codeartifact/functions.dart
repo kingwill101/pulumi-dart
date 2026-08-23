@@ -58,6 +58,19 @@ import 'get_repository_endpoint_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_codeartifact_getauthorizationtoken" "test" {
+///   domain = testAwsCodeartifactDomain.domain
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +79,8 @@ import 'get_repository_endpoint_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.codeartifact.CodeartifactFunctions;
 /// import com.pulumi.aws.codeartifact.inputs.GetAuthorizationTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -171,6 +184,21 @@ Future<GetAuthorizationTokenResult> getAuthorizationToken(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_codeartifact_getrepositoryendpoint" "test" {
+///   domain     = testAwsCodeartifactDomain.domain
+///   repository = testAwsCodeartifactRepository.repository
+///   format     = "npm"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +207,8 @@ Future<GetAuthorizationTokenResult> getAuthorizationToken(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.codeartifact.CodeartifactFunctions;
 /// import com.pulumi.aws.codeartifact.inputs.GetRepositoryEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -3,14 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedLoadMetricSpecification {
-  /// Metric type.
   final pulumi.Input<String> predefinedMetricType;
-  /// Label that uniquely identifies a target group.
   final pulumi.Input<String>? resourceLabel;
 
   /// Creates a new [PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedLoadMetricSpecification].
-  /// [predefinedMetricType] Metric type.
-  /// [resourceLabel] Label that uniquely identifies a target group.
+  /// [predefinedMetricType] Required.
+  /// [resourceLabel] Optional.
   const PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedLoadMetricSpecification({
     required this.predefinedMetricType,
     this.resourceLabel,
@@ -30,4 +28,3 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedLoa
     );
   }
 }
-

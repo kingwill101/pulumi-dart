@@ -37,7 +37,7 @@ import 'get_registration_code_result.dart';
 /// import pulumi_kubernetes as kubernetes
 ///
 /// example = aws.iot.get_endpoint()
-/// agent = kubernetes.index.Pod("agent",
+/// agent = kubernetes.Pod("agent",
 ///     metadata=[{
 ///         name: my-device,
 ///     }],
@@ -63,7 +63,7 @@ import 'get_registration_code_result.dart';
 /// {
 ///     var example = Aws.Iot.GetEndpoint.Invoke();
 ///
-///     var agent = new Kubernetes.Index.Pod("agent", new()
+///     var agent = new Kubernetes.Pod("agent", new()
 ///     {
 ///         Metadata = new[]
 ///         {
@@ -114,13 +114,13 @@ import 'get_registration_code_result.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kubernetes.NewPod(ctx, "agent", &kubernetes.PodArgs{
-/// 			Metadata: []map[string]interface{}{
-/// 				map[string]interface{}{
+/// 			Metadata: []map[string]string{
+/// 				{
 /// 					"name": "my-device",
 /// 				},
 /// 			},
-/// 			Spec: []map[string]interface{}{
-/// 				map[string]interface{}{
+/// 			Spec: []map[string][]map[string]interface{}{
+/// 				map[string][]map[string]interface{}{
 /// 					"container": []map[string]interface{}{
 /// 						map[string]interface{}{
 /// 							"image": "gcr.io/my-project/image-name",
@@ -143,6 +143,37 @@ import 'get_registration_code_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     kubernetes = {
+///       source = "pulumi/kubernetes"
+///     }
+///   }
+/// }
+///
+/// data "aws_iot_getendpoint" "example" {
+/// }
+///
+/// resource "kubernetes_pod" "agent" {
+///   metadata = [{
+///     "name" = "my-device"
+///   }]
+///   spec = [{
+///     "container" = [{
+///       "image" = "gcr.io/my-project/image-name"
+///       "name"  = "image-name"
+///       "env" = [{
+///         "name"  = "IOT_ENDPOINT"
+///         "value" = data.aws_iot_getendpoint.example.endpoint_address
+///       }]
+///     }]
+///   }]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -153,8 +184,8 @@ import 'get_registration_code_result.dart';
 /// import com.pulumi.aws.iot.inputs.GetEndpointArgs;
 /// import com.pulumi.kubernetes.Pod;
 /// import com.pulumi.kubernetes.PodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -170,11 +201,11 @@ import 'get_registration_code_result.dart';
 ///             .build());
 ///
 ///         var agent = new Pod("agent", PodArgs.builder()
-///             .metadata(List.of(Map.of("name", "my-device")))
-///             .spec(List.of(Map.of("container", List.of(Map.ofEntries(
+///             .metadata(Arrays.asList(Map.of("name", "my-device")))
+///             .spec(Arrays.asList(Map.of("container", Arrays.asList(Map.ofEntries(
 ///                 Map.entry("image", "gcr.io/my-project/image-name"),
 ///                 Map.entry("name", "image-name"),
-///                 Map.entry("env", List.of(Map.ofEntries(
+///                 Map.entry("env", Arrays.asList(Map.ofEntries(
 ///                     Map.entry("name", "IOT_ENDPOINT"),
 ///                     Map.entry("value", example.endpointAddress())
 ///                 )))
@@ -321,6 +352,32 @@ Future<GetEndpointResult> getEndpoint(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     tls = {
+///       source = "pulumi/tls"
+///     }
+///   }
+/// }
+///
+/// data "aws_iot_getregistrationcode" "example" {
+/// }
+///
+/// resource "tls_privatekey" "verification" {
+///   algorithm = "RSA"
+/// }
+/// resource "tls_certrequest" "verification" {
+///   key_algorithm   = "RSA"
+///   private_key_pem = tls_privatekey.verification.private_key_pem
+///   subject = [{
+///     "commonName" = data.aws_iot_getregistrationcode.example.registration_code
+///   }]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -333,8 +390,8 @@ Future<GetEndpointResult> getEndpoint(
 /// import com.pulumi.tls.PrivateKeyArgs;
 /// import com.pulumi.tls.CertRequest;
 /// import com.pulumi.tls.CertRequestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -356,7 +413,7 @@ Future<GetEndpointResult> getEndpoint(
 ///         var verificationCertRequest = new CertRequest("verificationCertRequest", CertRequestArgs.builder()
 ///             .keyAlgorithm("RSA")
 ///             .privateKeyPem(verification.privateKeyPem())
-///             .subject(CertRequestSubjectArgs.builder()
+///             .subject(com.pulumi.tls.inputs.CertRequestSubjectArgs.builder()
 ///                 .commonName(example.registrationCode())
 ///                 .build())
 ///             .build());

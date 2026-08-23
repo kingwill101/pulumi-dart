@@ -19,16 +19,16 @@ class GetServiceResult {
   final String arn;
   /// Whether Availability Zone rebalancing is enabled
   final String availabilityZoneRebalancing;
-  /// Capacity provider strategy for the service. See `capacity_provider_strategy` Block for details.
+  /// Capacity provider strategy for the service. See `capacityProviderStrategy` Block for details.
   final List<GetServiceCapacityProviderStrategy> capacityProviderStrategies;
   final String clusterArn;
   /// Time when task set was created (RFC3339 format)
   final String createdAt;
   /// Principal that created the service
   final String createdBy;
-  /// Deployment configuration for the service. See `deployment_configuration` Block for details.
+  /// Deployment configuration for the service. See `deploymentConfiguration` Block for details.
   final List<GetServiceDeploymentConfiguration> deploymentConfigurations;
-  /// Deployment controller configuration. See `deployment_controller` Block for details.
+  /// Deployment controller configuration. See `deploymentController` Block for details.
   final List<GetServiceDeploymentController> deploymentControllers;
   /// Current deployments for the service. See `deployments` Block for details.
   final List<GetServiceDeployment> deployments;
@@ -48,15 +48,15 @@ class GetServiceResult {
   final String id;
   /// Launch type for the ECS Service
   final String launchType;
-  /// Load balancers for the ECS Service. See `load_balancer` Block for details.
+  /// Load balancers for the ECS Service. See `loadBalancer` Block for details.
   final List<GetServiceLoadBalancer> loadBalancers;
-  /// Network configuration for the service. See `network_configuration` Block for details.
+  /// Network configuration for the service. See `networkConfiguration` Block for details.
   final List<GetServiceNetworkConfiguration> networkConfigurations;
-  /// Placement strategy for tasks. See `ordered_placement_strategy` Block for details.
+  /// Placement strategy for tasks. See `orderedPlacementStrategy` Block for details.
   final List<GetServiceOrderedPlacementStrategy> orderedPlacementStrategies;
   /// Number of pending tasks
   final int pendingCount;
-  /// Placement constraints for tasks. See `placement_constraints` Block for details.
+  /// Placement constraints for tasks. See `placementConstraints` Block for details.
   final List<GetServicePlacementConstraint> placementConstraints;
   /// Platform family for Fargate tasks
   final String platformFamily;
@@ -70,7 +70,7 @@ class GetServiceResult {
   /// Scheduling strategy for the ECS Service
   final String schedulingStrategy;
   final String serviceName;
-  /// Service discovery registries. See `service_registries` Block for details.
+  /// Service discovery registries. See `serviceRegistries` Block for details.
   final List<GetServiceServiceRegistry> serviceRegistries;
   /// Task set status
   final String status;
@@ -78,18 +78,18 @@ class GetServiceResult {
   final Map<String, String> tags;
   /// Task definition ARN
   final String taskDefinition;
-  /// Task sets for the service. See `task_sets` Block for details.
+  /// Task sets for the service. See `taskSets` Block for details.
   final List<GetServiceTaskSet> taskSets;
 
   /// Creates a new [GetServiceResult].
   /// [arn] ARN of the task set
   /// [availabilityZoneRebalancing] Whether Availability Zone rebalancing is enabled
-  /// [capacityProviderStrategies] Capacity provider strategy for the service. See `capacity_provider_strategy` Block for details.
+  /// [capacityProviderStrategies] Capacity provider strategy for the service. See `capacityProviderStrategy` Block for details.
   /// [clusterArn] Required.
   /// [createdAt] Time when task set was created (RFC3339 format)
   /// [createdBy] Principal that created the service
-  /// [deploymentConfigurations] Deployment configuration for the service. See `deployment_configuration` Block for details.
-  /// [deploymentControllers] Deployment controller configuration. See `deployment_controller` Block for details.
+  /// [deploymentConfigurations] Deployment configuration for the service. See `deploymentConfiguration` Block for details.
+  /// [deploymentControllers] Deployment controller configuration. See `deploymentController` Block for details.
   /// [deployments] Current deployments for the service. See `deployments` Block for details.
   /// [desiredCount] Desired number of tasks
   /// [enableEcsManagedTags] Whether ECS managed tags are enabled
@@ -99,11 +99,11 @@ class GetServiceResult {
   /// [iamRole] ARN of the IAM role associated with the service
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [launchType] Launch type for the ECS Service
-  /// [loadBalancers] Load balancers for the ECS Service. See `load_balancer` Block for details.
-  /// [networkConfigurations] Network configuration for the service. See `network_configuration` Block for details.
-  /// [orderedPlacementStrategies] Placement strategy for tasks. See `ordered_placement_strategy` Block for details.
+  /// [loadBalancers] Load balancers for the ECS Service. See `loadBalancer` Block for details.
+  /// [networkConfigurations] Network configuration for the service. See `networkConfiguration` Block for details.
+  /// [orderedPlacementStrategies] Placement strategy for tasks. See `orderedPlacementStrategy` Block for details.
   /// [pendingCount] Number of pending tasks
-  /// [placementConstraints] Placement constraints for tasks. See `placement_constraints` Block for details.
+  /// [placementConstraints] Placement constraints for tasks. See `placementConstraints` Block for details.
   /// [platformFamily] Platform family for Fargate tasks
   /// [platformVersion] Platform version for Fargate tasks
   /// [propagateTags] Whether tags are propagated from task definition or service
@@ -111,11 +111,11 @@ class GetServiceResult {
   /// [runningCount] Number of running tasks
   /// [schedulingStrategy] Scheduling strategy for the ECS Service
   /// [serviceName] Required.
-  /// [serviceRegistries] Service discovery registries. See `service_registries` Block for details.
+  /// [serviceRegistries] Service discovery registries. See `serviceRegistries` Block for details.
   /// [status] Task set status
   /// [tags] Resource tags.
   /// [taskDefinition] Task definition ARN
-  /// [taskSets] Task sets for the service. See `task_sets` Block for details.
+  /// [taskSets] Task sets for the service. See `taskSets` Block for details.
   const GetServiceResult({
     required this.arn,
     required this.availabilityZoneRebalancing,
@@ -231,4 +231,3 @@ class GetServiceResult {
     );
   }
 }
-

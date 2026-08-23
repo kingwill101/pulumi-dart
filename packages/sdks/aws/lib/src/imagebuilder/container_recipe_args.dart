@@ -32,7 +32,7 @@ class ContainerRecipeArgs {
   final pulumi.Input<String>? platformOverride;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value map of resource tags for the container recipe. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the container recipe. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The destination repository for the container image. Detailed below.
   final pulumi.Input<ContainerRecipeTargetRepository> targetRepository;
@@ -55,7 +55,7 @@ class ContainerRecipeArgs {
   /// [parentImage] The base image for the container recipe.
   /// [platformOverride] Specifies the operating system platform when you use a custom base image.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value map of resource tags for the container recipe. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags for the container recipe. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetRepository] The destination repository for the container image. Detailed below.
   /// [version] Version of the container recipe.
   /// [workingDirectory] The working directory to be used during build and test workflows.
@@ -117,4 +117,3 @@ class ContainerRecipeArgs {
     );
   }
 }
-

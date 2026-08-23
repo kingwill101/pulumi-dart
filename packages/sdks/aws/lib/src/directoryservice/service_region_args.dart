@@ -16,7 +16,7 @@ class ServiceRegionArgs {
   final pulumi.Input<String>? region;
   /// The name of the Region where you want to add domain controllers for replication.
   final pulumi.Input<String> regionName;
-  /// Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// VPC information in the replicated Region. Detailed below.
   final pulumi.Input<ServiceRegionVpcSettings> vpcSettings;
@@ -26,7 +26,7 @@ class ServiceRegionArgs {
   /// [directoryId] The identifier of the directory to which you want to add Region replication.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [regionName] The name of the Region where you want to add domain controllers for replication.
-  /// [tags] Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcSettings] VPC information in the replicated Region. Detailed below.
   const ServiceRegionArgs({
     this.desiredNumberOfDomainControllers,
@@ -59,4 +59,3 @@ class ServiceRegionArgs {
     );
   }
 }
-

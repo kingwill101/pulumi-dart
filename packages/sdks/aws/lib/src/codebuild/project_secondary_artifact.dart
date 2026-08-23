@@ -30,7 +30,7 @@ class ProjectSecondaryArtifact {
   /// Type of build output artifact to create. If `type` is set to `CODEPIPELINE` or
   /// `NO_ARTIFACTS`, this value is ignored if specified. If `type` is set to `S3`, valid values are `NONE` or `ZIP`.
   final pulumi.Input<String>? packaging;
-  /// Along with `namespace_type` and `name`, the pattern that AWS CodeBuild uses to name and store the
+  /// Along with `namespaceType` and `name`, the pattern that AWS CodeBuild uses to name and store the
   /// output artifact. If `type` is set to `CODEPIPELINE` or `NO_ARTIFACTS`, this value is ignored if specified. If `type`
   /// is set to `S3`, this is the path to the output artifact.
   final pulumi.Input<String>? path;
@@ -46,7 +46,7 @@ class ProjectSecondaryArtifact {
   /// [namespaceType] Namespace to use in storing build artifacts. If `type` is set to `CODEPIPELINE` or
   /// [overrideArtifactName] Whether a name specified in the build specification overrides the artifact name.
   /// [packaging] Type of build output artifact to create. If `type` is set to `CODEPIPELINE` or
-  /// [path] Along with `namespace_type` and `name`, the pattern that AWS CodeBuild uses to name and store the
+  /// [path] Along with `namespaceType` and `name`, the pattern that AWS CodeBuild uses to name and store the
   /// [type] Build output artifact's type. Valid values `CODEPIPELINE`, `NO_ARTIFACTS`, and `S3`.
   const ProjectSecondaryArtifact({
     required this.artifactIdentifier,
@@ -91,4 +91,3 @@ class ProjectSecondaryArtifact {
     );
   }
 }
-

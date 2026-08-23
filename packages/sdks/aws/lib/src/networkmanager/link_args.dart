@@ -20,7 +20,7 @@ class LinkArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> siteId;
-  /// Key-value tags for the link. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the link. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Type of the link.
   final pulumi.Input<String>? type;
@@ -31,7 +31,7 @@ class LinkArgs {
   /// [globalNetworkId] ID of the global network.
   /// [providerName] Provider of the link.
   /// [siteId] ID of the site.
-  /// [tags] Key-value tags for the link. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value tags for the link. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] Type of the link.
   const LinkArgs({
     required this.bandwidth,
@@ -67,4 +67,3 @@ class LinkArgs {
     );
   }
 }
-

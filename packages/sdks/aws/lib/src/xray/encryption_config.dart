@@ -56,6 +56,19 @@ import 'encryption_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_xray_encryptionconfig" "example" {
+///   type = "NONE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'encryption_config_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.xray.EncryptionConfig;
 /// import com.pulumi.aws.xray.EncryptionConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -93,8 +106,7 @@ import 'encryption_config_state.dart';
 /// ```
 ///
 ///
-///
-/// ### With KMS Key
+/// ### Example Usage with KMS Key
 ///
 ///
 /// ```typescript
@@ -266,6 +278,40 @@ import 'encryption_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     sid    = "Enable IAM User Permissions"
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"]
+///     }
+///     actions   = ["kms:*"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "Some Key"
+///   deletion_window_in_days = 7
+///   policy                  = data.aws_iam_getpolicydocument.example.json
+/// }
+/// resource "aws_xray_encryptionconfig" "example" {
+///   type   = "KMS"
+///   key_id = aws_kms_key.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -276,12 +322,14 @@ import 'encryption_config_state.dart';
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.kms.Key;
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import com.pulumi.aws.xray.EncryptionConfig;
 /// import com.pulumi.aws.xray.EncryptionConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -363,17 +411,25 @@ import 'encryption_config_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Optional
+///
+/// * `accountId` (String) Account ID where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import XRay Encryption Config using the region name. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:xray/encryptionConfig:EncryptionConfig example us-west-2
 /// ```
 class EncryptionConfig extends pulumi.CustomResource {
-  /// An AWS KMS customer master key (CMK) ARN.
+  /// AWS KMS customer master key (CMK) ARN.
   late final pulumi.Output<String?> keyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The type of encryption. Set to `KMS` to use your own key for encryption. Set to `NONE` for default encryption.
+  /// Type of encryption. Set to `KMS` to use your own key for encryption. Set to `NONE` for default encryption.
   late final pulumi.Output<String> type;
 
   /// Creates a new [EncryptionConfig].

@@ -119,7 +119,7 @@ import 'managed_scaling_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = emr.NewManagedScalingPolicy(ctx, "samplepolicy", &emr.ManagedScalingPolicyArgs{
-/// 			ClusterId: sample.ID(),
+/// 			ClusterId: sample.ID().ToIDOutput().ToStringOutput(),
 /// 			ComputeLimits: emr.ManagedScalingPolicyComputeLimitArray{
 /// 				&emr.ManagedScalingPolicyComputeLimitArgs{
 /// 					UnitType:                     pulumi.String("Instances"),
@@ -137,6 +137,36 @@ import 'managed_scaling_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emr_cluster" "sample" {
+///   name          = "emr-sample-cluster"
+///   release_label = "emr-5.30.0"
+///   master_instance_group = {
+///     instance_type = "m4.large"
+///   }
+///   core_instance_group = {
+///     instance_type = "c4.large"
+///   }
+/// }
+/// resource "aws_emr_managedscalingpolicy" "samplepolicy" {
+///   cluster_id = aws_emr_cluster.sample.id
+///   compute_limits {
+///     unit_type                       = "Instances"
+///     minimum_capacity_units          = 2
+///     maximum_capacity_units          = 10
+///     maximum_ondemand_capacity_units = 2
+///     maximum_core_capacity_units     = 10
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +180,8 @@ import 'managed_scaling_policy_state.dart';
 /// import com.pulumi.aws.emr.ManagedScalingPolicy;
 /// import com.pulumi.aws.emr.ManagedScalingPolicyArgs;
 /// import com.pulumi.aws.emr.inputs.ManagedScalingPolicyComputeLimitArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -226,9 +256,9 @@ class ManagedScalingPolicy extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> computeLimits;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Specifies the scaling strategy. When set to `ADVANCED`, the `utilization_performance_index` argument can be used to configure an advanced scaling strategy. An advanced scaling strategy requires Amazon EMR on EC2 version 7.0 or later. Valid values: `ADVANCED`, `DEFAULT`.
+  /// Specifies the scaling strategy. When set to `ADVANCED`, the `utilizationPerformanceIndex` argument can be used to configure an advanced scaling strategy. An advanced scaling strategy requires Amazon EMR on EC2 version 7.0 or later. Valid values: `ADVANCED`, `DEFAULT`.
   late final pulumi.Output<String?> scalingStrategy;
-  /// Integer value that represents the advanced scaling strategy. Higher values optimize for performance, while lower values optimize for resource conservation. A value of `50` provides a balance between performance and resource conservation. See [the AWS documentation](https://docs.aws.amazon.com/emr/latest/ManagementGuide/managed-scaling-allocation-strategy-optimized.html#managed-scaling-allocation-strategy-optimized-getting-started) for more details. Required when `scaling_strategy` is set to `ADVANCED`. Valid values: `1`, `25`, `50`, `75`, `100`.
+  /// Integer value that represents the advanced scaling strategy. Higher values optimize for performance, while lower values optimize for resource conservation. A value of `50` provides a balance between performance and resource conservation. See [the AWS documentation](https://docs.aws.amazon.com/emr/latest/ManagementGuide/managed-scaling-allocation-strategy-optimized.html#managed-scaling-allocation-strategy-optimized-getting-started) for more details. Required when `scalingStrategy` is set to `ADVANCED`. Valid values: `1`, `25`, `50`, `75`, `100`.
   late final pulumi.Output<int?> utilizationPerformanceIndex;
 
   /// Creates a new [ManagedScalingPolicy].

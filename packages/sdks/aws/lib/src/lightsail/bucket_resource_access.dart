@@ -99,14 +99,38 @@ import 'bucket_resource_access_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lightsail.NewBucketResourceAccess(ctx, "example", &lightsail.BucketResourceAccessArgs{
-/// 			BucketName:   example.ID(),
-/// 			ResourceName: exampleInstance.ID(),
+/// 			BucketName:   example.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceName: exampleInstance.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_bucket" "example" {
+///   name      = "example-bucket"
+///   bundle_id = "small_1_0"
+/// }
+/// resource "aws_lightsail_instance" "example" {
+///   name              = "example-instance"
+///   availability_zone = "us-east-1b"
+///   blueprint_id      = "amazon_linux_2"
+///   bundle_id         = "nano_3_0"
+/// }
+/// resource "aws_lightsail_bucketresourceaccess" "example" {
+///   bucket_name   = aws_lightsail_bucket.example.id
+///   resource_name = aws_lightsail_instance.example.id
 /// }
 /// ```
 /// ```java
@@ -121,8 +145,8 @@ import 'bucket_resource_access_state.dart';
 /// import com.pulumi.aws.lightsail.InstanceArgs;
 /// import com.pulumi.aws.lightsail.BucketResourceAccess;
 /// import com.pulumi.aws.lightsail.BucketResourceAccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

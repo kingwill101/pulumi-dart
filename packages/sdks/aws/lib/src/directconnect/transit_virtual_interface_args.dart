@@ -30,7 +30,7 @@ class TransitVirtualInterfaceArgs {
   final pulumi.Input<String>? region;
   /// Indicates whether to enable or disable SiteLink.
   final pulumi.Input<bool>? sitelinkEnabled;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The VLAN ID.
   final pulumi.Input<int> vlan;
@@ -47,7 +47,7 @@ class TransitVirtualInterfaceArgs {
   /// [name] The name for the virtual interface.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sitelinkEnabled] Indicates whether to enable or disable SiteLink.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vlan] The VLAN ID.
   const TransitVirtualInterfaceArgs({
     required this.addressFamily,
@@ -101,4 +101,3 @@ class TransitVirtualInterfaceArgs {
     );
   }
 }
-

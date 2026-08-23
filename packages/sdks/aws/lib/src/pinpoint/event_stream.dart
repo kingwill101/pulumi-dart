@@ -2,7 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_stream_args.dart';
 import 'event_stream_state.dart';
 
-/// Provides a Pinpoint Event Stream resource.
+/// &gt; **NOTE:** This resource is deprecated. AWS End User Messaging event streams are being discontinued on October 30, 2026. After that date, this resource will no longer be available. For SMS/Voice event delivery, use `aws.pinpoint.Smsvoicev2ConfigurationSet` with an event destination.
+///
+/// Provides an End User Messaging Event Stream resource.
 ///
 /// ## Example Usage
 ///
@@ -242,7 +244,7 @@ import 'event_stream_state.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "test_role_policy", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("test_policy"),
-/// 			Role:   testRole.ID(),
+/// 			Role:   testRole.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy: pulumi.String(testRolePolicy.Json),
 /// 		})
 /// 		if err != nil {
@@ -250,6 +252,53 @@ import 'event_stream_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["pinpoint.us-east-1.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "testRolePolicy" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["kinesis:PutRecords", "kinesis:DescribeStream"]
+///     resources = ["arn:aws:kinesis:us-east-1:*:*/*"]
+///   }
+/// }
+///
+/// resource "aws_pinpoint_eventstream" "stream" {
+///   application_id         = aws_pinpoint_app.app.application_id
+///   destination_stream_arn = aws_kinesis_stream.test_stream.arn
+///   role_arn               = aws_iam_role.test_role.arn
+/// }
+/// resource "aws_pinpoint_app" "app" {
+/// }
+/// resource "aws_kinesis_stream" "test_stream" {
+///   name        = "pinpoint-kinesis-test"
+///   shard_count = 1
+/// }
+/// resource "aws_iam_role" "test_role" {
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicy" "test_role_policy" {
+///   name   = "test_policy"
+///   role   = aws_iam_role.test_role.id
+///   policy = data.aws_iam_getpolicydocument.testRolePolicy.json
 /// }
 /// ```
 /// ```java
@@ -263,14 +312,16 @@ import 'event_stream_state.dart';
 /// import com.pulumi.aws.kinesis.StreamArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.pinpoint.EventStream;
 /// import com.pulumi.aws.pinpoint.EventStreamArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
 /// import com.pulumi.aws.iam.RolePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -386,19 +437,19 @@ import 'event_stream_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Pinpoint Event Stream using the `application-id`. For example:
+/// Using `pulumi import`, import End User Messaging Event Stream using the `application-id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:pinpoint/eventStream:EventStream stream application-id
 /// ```
 class EventStream extends pulumi.CustomResource {
-  /// The application ID.
+  /// Application ID.
   late final pulumi.Output<String> applicationId;
-  /// The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.
+  /// Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.
   late final pulumi.Output<String> destinationStreamArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The IAM role that authorizes Amazon Pinpoint to publish events to the stream in your account.
+  /// IAM role that authorizes AWS End User Messaging to publish events to the stream in your account.
   late final pulumi.Output<String> roleArn;
 
   /// Creates a new [EventStream].

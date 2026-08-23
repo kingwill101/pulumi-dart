@@ -67,7 +67,7 @@ import 'topic_rule_destination_vpc_configuration.dart';
 /// SecurityGroups: pulumi.StringArray{
 /// exampleAwsSecurityGroup.Id,
 /// },
-/// SubnetIds: []pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:4,22-44)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:4,22-44)),
 /// VpcId: pulumi.Any(exampleAwsVpc.Id),
 /// },
 /// })
@@ -76,6 +76,24 @@ import 'topic_rule_destination_vpc_configuration.dart';
 /// }
 /// return nil
 /// })
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iot_topicruledestination" "example" {
+///   vpc_configuration = {
+///     role_arn        = exampleAwsIamRole.arn
+///     security_groups = [exampleAwsSecurityGroup.id]
+///     subnet_ids      = exampleAwsSubnet[*].id
+///     vpc_id          = exampleAwsVpc.id
+///   }
 /// }
 /// ```
 /// ```java
@@ -87,8 +105,8 @@ import 'topic_rule_destination_vpc_configuration.dart';
 /// import com.pulumi.aws.iot.TopicRuleDestination;
 /// import com.pulumi.aws.iot.TopicRuleDestinationArgs;
 /// import com.pulumi.aws.iot.inputs.TopicRuleDestinationVpcConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

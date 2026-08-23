@@ -166,6 +166,42 @@ import 'container_service_deployment_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_containerservicedeploymentversion" "example" {
+///   containers {
+///     container_name = "hello-world"
+///     image          = "amazon/amazon-lightsail:hello-world"
+///     commands       = []
+///     environment = {
+///       "MY_ENVIRONMENT_VARIABLE" = "my_value"
+///     }
+///     ports = {
+///       80 = "HTTP"
+///     }
+///   }
+///   public_endpoint = {
+///     container_name = "hello-world"
+///     container_port = 80
+///     health_check = {
+///       healthy_threshold   = 2
+///       unhealthy_threshold = 2
+///       timeout_seconds     = 2
+///       interval_seconds    = 5
+///       path                = "/"
+///       success_codes       = "200-499"
+///     }
+///   }
+///   service_name = exampleAwsLightsailContainerService.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +213,8 @@ import 'container_service_deployment_version_state.dart';
 /// import com.pulumi.aws.lightsail.inputs.ContainerServiceDeploymentVersionContainerArgs;
 /// import com.pulumi.aws.lightsail.inputs.ContainerServiceDeploymentVersionPublicEndpointArgs;
 /// import com.pulumi.aws.lightsail.inputs.ContainerServiceDeploymentVersionPublicEndpointHealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -245,7 +281,7 @@ import 'container_service_deployment_version_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Lightsail Container Service Deployment Version using the `service_name` and `version` separated by a slash (`/`). For example:
+/// Using `pulumi import`, import Lightsail Container Service Deployment Version using the `serviceName` and `version` separated by a slash (`/`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:lightsail/containerServiceDeploymentVersion:ContainerServiceDeploymentVersion example container-service-1/1

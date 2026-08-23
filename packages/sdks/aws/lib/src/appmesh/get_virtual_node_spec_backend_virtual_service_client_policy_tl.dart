@@ -5,16 +5,20 @@ import 'get_virtual_node_spec_backend_virtual_service_client_policy_tl_certifica
 import 'get_virtual_node_spec_backend_virtual_service_client_policy_tl_validation.dart';
 
 class GetVirtualNodeSpecBackendVirtualServiceClientPolicyTl {
+  /// Listener's TLS certificate. See `spec.listener.tls.certificate` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlCertificate>> certificates;
+  /// Whether the policy is enforced.
   final pulumi.Input<bool> enforce;
+  /// One or more ports that the policy is enforced for.
   final pulumi.Input<List<int>> ports;
+  /// Listener's Transport Layer Security (TLS) validation context. See `spec.listener.tls.validation` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidation>> validations;
 
   /// Creates a new [GetVirtualNodeSpecBackendVirtualServiceClientPolicyTl].
-  /// [certificates] Required.
-  /// [enforce] Required.
-  /// [ports] Required.
-  /// [validations] Required.
+  /// [certificates] Listener's TLS certificate. See `spec.listener.tls.certificate` Block for details.
+  /// [enforce] Whether the policy is enforced.
+  /// [ports] One or more ports that the policy is enforced for.
+  /// [validations] Listener's Transport Layer Security (TLS) validation context. See `spec.listener.tls.validation` Block for details.
   const GetVirtualNodeSpecBackendVirtualServiceClientPolicyTl({
     required this.certificates,
     required this.enforce,
@@ -40,4 +44,3 @@ class GetVirtualNodeSpecBackendVirtualServiceClientPolicyTl {
     );
   }
 }
-

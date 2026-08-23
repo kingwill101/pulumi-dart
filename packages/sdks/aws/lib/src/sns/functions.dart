@@ -58,6 +58,19 @@ import 'get_topic_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_sns_gettopic" "example" {
+///   name = "an_example_topic"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +79,8 @@ import 'get_topic_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sns.SnsFunctions;
 /// import com.pulumi.aws.sns.inputs.GetTopicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

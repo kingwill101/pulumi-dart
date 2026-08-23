@@ -6,12 +6,12 @@ import 'agentcore_agent_runtime_network_configuration_network_mode_config.dart';
 class AgentcoreAgentRuntimeNetworkConfiguration {
   /// Network mode for the agent runtime. Valid values: `PUBLIC`, `VPC`.
   final pulumi.Input<String> networkMode;
-  /// Network mode configuration. See `network_mode_config` below.
+  /// Network mode configuration. See `networkModeConfig` below.
   final pulumi.Input<AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig>? networkModeConfig;
 
   /// Creates a new [AgentcoreAgentRuntimeNetworkConfiguration].
   /// [networkMode] Network mode for the agent runtime. Valid values: `PUBLIC`, `VPC`.
-  /// [networkModeConfig] Network mode configuration. See `network_mode_config` below.
+  /// [networkModeConfig] Network mode configuration. See `networkModeConfig` below.
   const AgentcoreAgentRuntimeNetworkConfiguration({
     required this.networkMode,
     this.networkModeConfig,
@@ -31,4 +31,3 @@ class AgentcoreAgentRuntimeNetworkConfiguration {
     );
   }
 }
-

@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlanRuleLifecycle {
   /// Specifies the number of days after creation that a recovery point is moved to cold storage.
   final pulumi.Input<int>? coldStorageAfter;
-  /// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `cold_storage_after`.
+  /// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
   final pulumi.Input<int>? deleteAfter;
   /// This setting will instruct your backup plan to transition supported resources to archive (cold) storage tier in accordance with your lifecycle settings.
   final pulumi.Input<bool>? optInToArchiveForSupportedResources;
 
   /// Creates a new [PlanRuleLifecycle].
   /// [coldStorageAfter] Specifies the number of days after creation that a recovery point is moved to cold storage.
-  /// [deleteAfter] Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `cold_storage_after`.
+  /// [deleteAfter] Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
   /// [optInToArchiveForSupportedResources] This setting will instruct your backup plan to transition supported resources to archive (cold) storage tier in accordance with your lifecycle settings.
   const PlanRuleLifecycle({
     this.coldStorageAfter,
@@ -36,4 +36,3 @@ class PlanRuleLifecycle {
     );
   }
 }
-

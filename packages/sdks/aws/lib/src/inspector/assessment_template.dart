@@ -112,6 +112,26 @@ import 'assessment_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_inspector_assessmenttemplate" "example" {
+///   name               = "example"
+///   target_arn         = exampleAwsInspectorAssessmentTarget.arn
+///   duration           = 3600
+///   rules_package_arns = ["arn:aws:inspector:us-west-2:758058086616:rulespackage/0-9hgA516p", "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-H5hpSawc", "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ", "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-vg5GGHSD"]
+///   event_subscriptions {
+///     event     = "ASSESSMENT_RUN_COMPLETED"
+///     topic_arn = exampleAwsSnsTopic.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +141,8 @@ import 'assessment_template_state.dart';
 /// import com.pulumi.aws.inspector.AssessmentTemplate;
 /// import com.pulumi.aws.inspector.AssessmentTemplateArgs;
 /// import com.pulumi.aws.inspector.inputs.AssessmentTemplateEventSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -198,9 +218,9 @@ class AssessmentTemplate extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The rules to be used during the run.
   late final pulumi.Output<List<String>> rulesPackageArns;
-  /// Key-value map of tags for the Inspector assessment template. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of tags for the Inspector assessment template. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The assessment target ARN to attach the template to.
   late final pulumi.Output<String> targetArn;

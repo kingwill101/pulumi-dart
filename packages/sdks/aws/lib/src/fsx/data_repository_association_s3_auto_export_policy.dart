@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataRepositoryAssociationS3AutoExportPolicy {
-  /// A list of file event types to automatically export to your linked S3 bucket or import from the linked S3 bucket. Valid values are `NEW`, `CHANGED`, `DELETED`. Max of 3.
+  /// List of file event types to automatically export to your linked S3 bucket. Valid values are `NEW`, `CHANGED`, `DELETED`. Max of 3.
   final pulumi.Input<List<String>>? events;
 
   /// Creates a new [DataRepositoryAssociationS3AutoExportPolicy].
-  /// [events] A list of file event types to automatically export to your linked S3 bucket or import from the linked S3 bucket. Valid values are `NEW`, `CHANGED`, `DELETED`. Max of 3.
+  /// [events] List of file event types to automatically export to your linked S3 bucket. Valid values are `NEW`, `CHANGED`, `DELETED`. Max of 3.
   const DataRepositoryAssociationS3AutoExportPolicy({
     this.events,
   });
@@ -24,4 +24,3 @@ class DataRepositoryAssociationS3AutoExportPolicy {
     );
   }
 }
-

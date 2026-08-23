@@ -130,7 +130,7 @@ import 'event_subscription_state.dart';
 /// 			SnsTopicArn: defaultTopic.Arn,
 /// 			SourceType:  pulumi.String("cluster"),
 /// 			SourceIds: pulumi.StringArray{
-/// 				_default.ID(),
+/// 				_default.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Severity: pulumi.String("INFO"),
 /// 			EventCategories: pulumi.StringArray{
@@ -150,6 +150,34 @@ import 'event_subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshift_cluster" "default" {
+///   cluster_identifier = "default"
+///   database_name      = "default"
+/// }
+/// resource "aws_sns_topic" "default" {
+///   name = "redshift-events"
+/// }
+/// resource "aws_redshift_eventsubscription" "default" {
+///   name             = "redshift-event-sub"
+///   sns_topic_arn    = aws_sns_topic.default.arn
+///   source_type      = "cluster"
+///   source_ids       = [aws_redshift_cluster.default.id]
+///   severity         = "INFO"
+///   event_categories = ["configuration", "management", "monitoring", "security"]
+///   tags = {
+///     "Name" = "default"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -162,8 +190,8 @@ import 'event_subscription_state.dart';
 /// import com.pulumi.aws.sns.TopicArgs;
 /// import com.pulumi.aws.redshift.EventSubscription;
 /// import com.pulumi.aws.redshift.EventSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -257,14 +285,14 @@ class EventSubscription extends pulumi.CustomResource {
   late final pulumi.Output<String?> severity;
   /// The ARN of the SNS topic to send events to.
   late final pulumi.Output<String> snsTopicArn;
-  /// A list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. If specified, a `source_type` must also be specified.
+  /// A list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. If specified, a `sourceType` must also be specified.
   late final pulumi.Output<List<String>?> sourceIds;
   /// The type of source that will be generating the events. Valid options are `cluster`, `cluster-parameter-group`, `cluster-security-group`, `cluster-snapshot`, or `scheduled-action`. If not set, all sources will be subscribed to.
   late final pulumi.Output<String?> sourceType;
   late final pulumi.Output<String> status;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [EventSubscription].

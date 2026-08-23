@@ -111,7 +111,7 @@ import 'network_interface_permission_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewNetworkInterfacePermission(ctx, "example", &ec2.NetworkInterfacePermissionArgs{
-/// 			NetworkInterfaceId: example.ID(),
+/// 			NetworkInterfaceId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			AwsAccountId:       pulumi.String("123456789012"),
 /// 			Permission:         pulumi.String("INSTANCE-ATTACH"),
 /// 		})
@@ -120,6 +120,30 @@ import 'network_interface_permission_timeouts.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_networkinterface" "example" {
+///   subnet_id       = exampleAwsSubnet.id
+///   private_ips     = ["10.0.0.50"]
+///   security_groups = [exampleAwsSecurityGroup.id]
+///   attachments {
+///     instance     = exampleAwsInstance.id
+///     device_index = 1
+///   }
+/// }
+/// resource "aws_ec2_networkinterfacepermission" "example" {
+///   network_interface_id = aws_ec2_networkinterface.example.id
+///   aws_account_id       = "123456789012"
+///   permission           = "INSTANCE-ATTACH"
 /// }
 /// ```
 /// ```java
@@ -133,8 +157,8 @@ import 'network_interface_permission_timeouts.dart';
 /// import com.pulumi.aws.ec2.inputs.NetworkInterfaceAttachmentArgs;
 /// import com.pulumi.aws.ec2.NetworkInterfacePermission;
 /// import com.pulumi.aws.ec2.NetworkInterfacePermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -190,7 +214,7 @@ import 'network_interface_permission_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Network Interface Permissions using the `network_interface_permission_id`. For example:
+/// Using `pulumi import`, import Network Interface Permissions using the `networkInterfacePermissionId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ec2/networkInterfacePermission:NetworkInterfacePermission example eni-perm-056ad97ce2ac377ed

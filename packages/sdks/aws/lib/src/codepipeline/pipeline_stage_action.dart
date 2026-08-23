@@ -1,10 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'pipeline_stage_action_output_artifacts_for_compute_action.dart';
 
 class PipelineStageAction {
-  /// A category defines what kind of action can be taken in the stage, and constrains the provider type for the action. Possible values are `Approval`, `Build`, `Deploy`, `Invoke`, `Source` and `Test`.
+  /// A category defines what kind of action can be taken in the stage, and constrains the provider type for the action. Possible values are `Approval`, `Build`, `Deploy`, `Invoke`, `Source`, `Compute` and `Test`.
   final pulumi.Input<String> category;
+  /// A list of shell commands to run with the compute action.
+  final pulumi.Input<List<String>>? commands;
   /// A map of the action declaration's configuration. Configurations options for action types and providers can be found in the [Pipeline Structure Reference](http://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html#action-requirements) and [Action Structure Reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/action-reference.html) documentation. Note: The `DetectChanges` parameter (optional, default value is true) in the `configuration` section causes CodePipeline to automatically start your pipeline upon new commits. Please refer to AWS Documentation for more details: https://docs.aws.amazon.com/codepipeline/latest/userguide/action-reference-CodestarConnectionSource.html#action-reference-CodestarConnectionSource-config.
   final pulumi.Input<Map<String, String>>? configuration;
   /// A list of artifact names to be worked on.
@@ -13,8 +16,12 @@ class PipelineStageAction {
   final pulumi.Input<String> name;
   /// The namespace all output variables will be accessed from.
   final pulumi.Input<String>? namespace;
-  /// A list of artifact names to output. Output artifact names must be unique within a pipeline.
+  /// A list of artifact names to output. Output artifact names must be unique within a pipeline. If the action is `Compute`, this argument is ignored.
   final pulumi.Input<List<String>>? outputArtifacts;
+  /// A block of output artifacts for the compute action. If the action is not `Compute`, this argument is ignored.
+  final pulumi.Input<List<PipelineStageActionOutputArtifactsForComputeAction>>? outputArtifactsForComputeActions;
+  /// A list of variables that are to be exported from the compute action.
+  final pulumi.Input<List<String>>? outputVariables;
   /// The creator of the action being called. Possible values are `AWS`, `Custom` and `ThirdParty`.
   final pulumi.Input<String> owner;
   /// The provider of the service being called by the action. Valid providers are determined by the action category. Provider names are listed in the [Action Structure Reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/action-reference.html) documentation.
@@ -31,12 +38,15 @@ class PipelineStageAction {
   final pulumi.Input<String> version;
 
   /// Creates a new [PipelineStageAction].
-  /// [category] A category defines what kind of action can be taken in the stage, and constrains the provider type for the action. Possible values are `Approval`, `Build`, `Deploy`, `Invoke`, `Source` and `Test`.
+  /// [category] A category defines what kind of action can be taken in the stage, and constrains the provider type for the action. Possible values are `Approval`, `Build`, `Deploy`, `Invoke`, `Source`, `Compute` and `Test`.
+  /// [commands] A list of shell commands to run with the compute action.
   /// [configuration] A map of the action declaration's configuration. Configurations options for action types and providers can be found in the [Pipeline Structure Reference](http://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html#action-requirements) and [Action Structure Reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/action-reference.html) documentation. Note: The `DetectChanges` parameter (optional, default value is true) in the `configuration` section causes CodePipeline to automatically start your pipeline upon new commits. Please refer to AWS Documentation for more details: https://docs.aws.amazon.com/codepipeline/latest/userguide/action-reference-CodestarConnectionSource.html#action-reference-CodestarConnectionSource-config.
   /// [inputArtifacts] A list of artifact names to be worked on.
   /// [name] The action declaration's name.
   /// [namespace] The namespace all output variables will be accessed from.
-  /// [outputArtifacts] A list of artifact names to output. Output artifact names must be unique within a pipeline.
+  /// [outputArtifacts] A list of artifact names to output. Output artifact names must be unique within a pipeline. If the action is `Compute`, this argument is ignored.
+  /// [outputArtifactsForComputeActions] A block of output artifacts for the compute action. If the action is not `Compute`, this argument is ignored.
+  /// [outputVariables] A list of variables that are to be exported from the compute action.
   /// [owner] The creator of the action being called. Possible values are `AWS`, `Custom` and `ThirdParty`.
   /// [provider] The provider of the service being called by the action. Valid providers are determined by the action category. Provider names are listed in the [Action Structure Reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/action-reference.html) documentation.
   /// [region] The region in which to run the action.
@@ -46,11 +56,14 @@ class PipelineStageAction {
   /// [version] A string that identifies the action type.
   const PipelineStageAction({
     required this.category,
+    this.commands,
     this.configuration,
     this.inputArtifacts,
     required this.name,
     this.namespace,
     this.outputArtifacts,
+    this.outputArtifactsForComputeActions,
+    this.outputVariables,
     required this.owner,
     required this.provider,
     this.region,
@@ -63,11 +76,14 @@ class PipelineStageAction {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'category': category,
+      'commands': ?commands,
       'configuration': ?configuration,
       'inputArtifacts': ?inputArtifacts,
       'name': name,
       'namespace': ?namespace,
       'outputArtifacts': ?outputArtifacts,
+      'outputArtifactsForComputeActions': ?pulumi.Input.mapOptionalInputValue<List<PipelineStageActionOutputArtifactsForComputeAction>, List<Map<String, dynamic>>>(outputArtifactsForComputeActions, (value) => pulumi.Input.encodeList<PipelineStageActionOutputArtifactsForComputeAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'outputVariables': ?outputVariables,
       'owner': owner,
       'provider': provider,
       'region': ?region,
@@ -81,11 +97,14 @@ class PipelineStageAction {
   factory PipelineStageAction.fromMap(Map<String, dynamic> map) {
     return PipelineStageAction(
       category: pulumi.Input.fromValue(map['category'] as String),
+      commands: (() { final guardedValue = map['commands']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       inputArtifacts: (() { final guardedValue = map['inputArtifacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       outputArtifacts: (() { final guardedValue = map['outputArtifacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      outputArtifactsForComputeActions: (() { final guardedValue = map['outputArtifactsForComputeActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PipelineStageActionOutputArtifactsForComputeAction>(guardedValue, (value) => PipelineStageActionOutputArtifactsForComputeAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      outputVariables: (() { final guardedValue = map['outputVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       owner: pulumi.Input.fromValue(map['owner'] as String),
       provider: pulumi.Input.fromValue(map['provider'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -96,4 +115,3 @@ class PipelineStageAction {
     );
   }
 }
-

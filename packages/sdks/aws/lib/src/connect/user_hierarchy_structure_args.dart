@@ -8,7 +8,7 @@ import 'user_hierarchy_structure_hierarchy_structure.dart';
 /// {@endtemplate}
 /// {@macro pulumi_connect_user_hierarchy_structure_user_hierarchy_structure_args_doc}
 class UserHierarchyStructureArgs {
-  /// A block that defines the hierarchy structure's levels. The `hierarchy_structure` block is documented below.
+  /// A block that defines the hierarchy structure's levels. The `hierarchyStructure` block is documented below.
   final pulumi.Input<UserHierarchyStructureHierarchyStructure> hierarchyStructure;
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   final pulumi.Input<String> instanceId;
@@ -16,7 +16,7 @@ class UserHierarchyStructureArgs {
   final pulumi.Input<String>? region;
 
   /// Creates a new [UserHierarchyStructureArgs].
-  /// [hierarchyStructure] A block that defines the hierarchy structure's levels. The `hierarchy_structure` block is documented below.
+  /// [hierarchyStructure] A block that defines the hierarchy structure's levels. The `hierarchyStructure` block is documented below.
   /// [instanceId] Specifies the identifier of the hosting Amazon Connect Instance.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const UserHierarchyStructureArgs({
@@ -41,4 +41,3 @@ class UserHierarchyStructureArgs {
     );
   }
 }
-

@@ -115,6 +115,29 @@ import 'document_classifier_vpc_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_comprehend_documentclassifier" "example" {
+///   depends_on           = [exampleAwsIamRolePolicy]
+///   name                 = "example"
+///   data_access_role_arn = exampleAwsIamRole.arn
+///   language_code        = "en"
+///   input_data_config = {
+///     s3_uri ="s3://${test.bucket}/${aws_s3_bucketobjectv2.documents.key}"
+///   }
+/// }
+/// resource "aws_s3_bucketobjectv2" "documents" {
+/// }
+/// resource "aws_s3_bucketobjectv2" "entities" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +149,8 @@ import 'document_classifier_vpc_config.dart';
 /// import com.pulumi.aws.comprehend.DocumentClassifierArgs;
 /// import com.pulumi.aws.comprehend.inputs.DocumentClassifierInputDataConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -197,7 +220,7 @@ class DocumentClassifier extends pulumi.CustomResource {
   /// The ARN for an IAM Role which allows Comprehend to read the training and testing data.
   late final pulumi.Output<String> dataAccessRoleArn;
   /// Configuration for the training and testing data.
-  /// See the `input_data_config` Configuration Block section below.
+  /// See the `inputDataConfig` Configuration Block section below.
   late final pulumi.Output<DocumentClassifierInputDataConfig> inputDataConfig;
   /// Two-letter language code for the language.
   /// One of `en`, `es`, `fr`, `it`, `de`, or `pt`.
@@ -216,13 +239,13 @@ class DocumentClassifier extends pulumi.CustomResource {
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
   /// Configuration for the output results of training.
-  /// See the `output_data_config` Configuration Block section below.
+  /// See the `outputDataConfig` Configuration Block section below.
   late final pulumi.Output<DocumentClassifierOutputDataConfig> outputDataConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` Configuration Block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` Configuration Block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Name for the version of the Document Classifier.
   /// Each version must have a unique name within the Document Classifier.
@@ -230,18 +253,18 @@ class DocumentClassifier extends pulumi.CustomResource {
   /// If explicitly set to `""`, no version name will be set.
   /// Has a maximum length of 63 characters.
   /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
-  /// Conflicts with `version_name_prefix`.
+  /// Conflicts with `versionNamePrefix`.
   late final pulumi.Output<String> versionName;
   /// Creates a unique version name beginning with the specified prefix.
   /// Has a maximum length of 37 characters.
   /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
-  /// Conflicts with `version_name`.
+  /// Conflicts with `versionName`.
   late final pulumi.Output<String> versionNamePrefix;
   /// KMS Key used to encrypt storage volumes during job processing.
   /// Can be a KMS Key ID or a KMS Key ARN.
   late final pulumi.Output<String?> volumeKmsKeyId;
   /// Configuration parameters for VPC to contain Document Classifier resources.
-  /// See the `vpc_config` Configuration Block section below.
+  /// See the `vpcConfig` Configuration Block section below.
   late final pulumi.Output<DocumentClassifierVpcConfig?> vpcConfig;
 
   /// Creates a new [DocumentClassifier].

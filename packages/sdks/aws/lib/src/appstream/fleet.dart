@@ -136,6 +136,36 @@ import 'fleet_vpc_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appstream_fleet" "test_fleet" {
+///   name = "test-fleet"
+///   compute_capacity = {
+///     desired_instances = 1
+///   }
+///   description                        = "test fleet"
+///   idle_disconnect_timeout_in_seconds = 60
+///   display_name                       = "test-fleet"
+///   enable_default_internet_access     = false
+///   fleet_type                         = "ON_DEMAND"
+///   image_name                         = "Amazon-AppStream2-Sample-Image-03-11-2023"
+///   instance_type                      = "stream.standard.large"
+///   max_user_duration_in_seconds       = 600
+///   vpc_config = {
+///     subnet_ids = ["subnet-06e9b13400c225127"]
+///   }
+///   tags = {
+///     "TagName" = "tag-value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -146,8 +176,8 @@ import 'fleet_vpc_config.dart';
 /// import com.pulumi.aws.appstream.FleetArgs;
 /// import com.pulumi.aws.appstream.inputs.FleetComputeCapacityArgs;
 /// import com.pulumi.aws.appstream.inputs.FleetVpcConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -234,7 +264,7 @@ class Fleet extends pulumi.CustomResource {
   late final pulumi.Output<String> fleetType;
   /// ARN of the IAM role to apply to the fleet.
   late final pulumi.Output<String> iamRoleArn;
-  /// Amount of time that users can be idle (inactive) before they are disconnected from their streaming session and the `disconnect_timeout_in_seconds` time interval begins. Defaults to `0`. Valid value is between `60` and `3600 `seconds.
+  /// Amount of time that users can be idle (inactive) before they are disconnected from their streaming session and the `disconnectTimeoutInSeconds` time interval begins. Defaults to `0`. Valid value is between `60` and `3600 `seconds.
   late final pulumi.Output<int?> idleDisconnectTimeoutInSeconds;
   /// ARN of the public, private, or shared image to use.
   late final pulumi.Output<String> imageArn;
@@ -242,7 +272,7 @@ class Fleet extends pulumi.CustomResource {
   late final pulumi.Output<String> imageName;
   /// Instance type to use when launching fleet instances.
   late final pulumi.Output<String> instanceType;
-  /// The maximum number of user sessions on an instance. This only applies to multi-session fleets.
+  /// Maximum number of user sessions on an instance. This only applies to multi-session fleets.
   late final pulumi.Output<int?> maxSessionsPerInstance;
   /// Maximum amount of time that a streaming session can remain active, in seconds.
   late final pulumi.Output<int> maxUserDurationInSeconds;

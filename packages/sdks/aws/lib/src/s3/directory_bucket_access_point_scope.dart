@@ -9,7 +9,7 @@ import 'directory_bucket_access_point_scope_state.dart';
 ///
 /// &gt; For all the services in AWS Local Zones, including Amazon S3, your accountID must be enabled before you can create or access any resource in the Local Zone. You can use the `DescribeAvailabilityZones` API operation to confirm your accountID access to a Local Zone. For more information, see [AWS Documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/opt-in-directory-bucket-lz.html)
 ///
-/// &gt; Terraform provides two ways to manage access point scopes. You can use a standalone resource `aws_s3control_directory_access_point_scope` or, an in-line scope with the  `aws_s3_directory_access_point` resource. You cannot use a standalone resource at the same time as in-line, which will cause an overwrite of each other. You must use one or the other.
+/// &gt; Terraform manages access point scopes for directory buckets with the standalone `aws.s3control.DirectoryBucketAccessPointScope` resource. The `aws.s3.AccessPoint` resource does not support an in-line scope.
 ///
 /// ## Example Usage
 ///
@@ -152,7 +152,7 @@ import 'directory_bucket_access_point_scope_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewAccessPoint(ctx, "example", &s3.AccessPointArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:   pulumi.String("example--zoneId--xa-s3"),
 /// 		})
 /// 		if err != nil {
@@ -179,6 +179,38 @@ import 'directory_bucket_access_point_scope_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "available" {
+///   state = "available"
+/// }
+///
+/// resource "aws_s3_directorybucket" "example" {
+///   bucket = "example--zoneId--x-s3"
+///   location = {
+///     name = data.aws_getavailabilityzones.available.zone_ids[0]
+///   }
+/// }
+/// resource "aws_s3_accesspoint" "example" {
+///   bucket = aws_s3_directorybucket.example.id
+///   name   = "example--zoneId--xa-s3"
+/// }
+/// resource "aws_s3control_directorybucketaccesspointscope" "example" {
+///   name       = "example--zoneId--xa-s3"
+///   account_id = "123456789012"
+///   scope = {
+///     permissions = ["GetObject", "ListBucket"]
+///     prefixes    = ["myobject1.csv", "myobject2*"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +227,8 @@ import 'directory_bucket_access_point_scope_state.dart';
 /// import com.pulumi.aws.s3control.DirectoryBucketAccessPointScope;
 /// import com.pulumi.aws.s3control.DirectoryBucketAccessPointScopeArgs;
 /// import com.pulumi.aws.s3control.inputs.DirectoryBucketAccessPointScopeScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -284,9 +316,9 @@ import 'directory_bucket_access_point_scope_state.dart';
 /// $ pulumi import aws:s3control/directoryBucketAccessPointScope:DirectoryBucketAccessPointScope example example--zoneid--xa-s3,123456789012
 /// ```
 class DirectoryBucketAccessPointScope extends pulumi.CustomResource {
-  /// The AWS account ID that owns the specified access point.
+  /// AWS account ID that owns the specified access point.
   late final pulumi.Output<String> accountId;
-  /// The name of the access point that you want to apply the scope to.
+  /// Name of the access point that you want to apply the scope to.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

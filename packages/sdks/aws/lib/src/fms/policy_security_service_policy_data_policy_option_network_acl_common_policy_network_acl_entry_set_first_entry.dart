@@ -5,29 +5,29 @@ import 'policy_security_service_policy_data_policy_option_network_acl_common_pol
 import 'policy_security_service_policy_data_policy_option_network_acl_common_policy_network_acl_entry_set_first_entry_port_range.dart';
 
 class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry {
-  /// A string value containing the IPv4 network range to allow or deny, in CIDR notation.
+  /// IPv4 network range to allow or deny, in CIDR notation.
   final pulumi.Input<String>? cidrBlock;
-  /// A boolean value, if true Firewall Manager creates egress rule. If false Firewall Manager creates ingress rule.
+  /// Whether Firewall Manager creates an egress rule. If `false`, Firewall Manager creates an ingress rule.
   final pulumi.Input<bool> egress;
-  /// A configuration block for ICMP protocol: The ICMP type and code. See the `icmp_type_code` block.
+  /// ICMP protocol configuration specifying the ICMP type and code. See the `icmpTypeCode` block.
   final pulumi.Input<List<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryIcmpTypeCode>>? icmpTypeCodes;
-  /// A string value containing the IPv6 network range to allow or deny, in CIDR notation.
+  /// IPv6 network range to allow or deny, in CIDR notation.
   final pulumi.Input<String>? ipv6CidrBlock;
-  /// A configuration block for PortRange. See the `port_range` block.
+  /// Port range configuration for the rule. See the `portRange` block.
   final pulumi.Input<List<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryPortRange>>? portRanges;
-  /// The protocol number. A value of "-1" means all protocols.
+  /// Protocol number. A value of `-1` means all protocols.
   final pulumi.Input<String> protocol;
-  /// A string value that indicates whether to allow or deny the traffic that matches the rule. Valid values: `allow`, `deny`.
+  /// Whether to allow or deny the traffic that matches the rule. Valid values: `allow`, `deny`.
   final pulumi.Input<String> ruleAction;
 
   /// Creates a new [PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry].
-  /// [cidrBlock] A string value containing the IPv4 network range to allow or deny, in CIDR notation.
-  /// [egress] A boolean value, if true Firewall Manager creates egress rule. If false Firewall Manager creates ingress rule.
-  /// [icmpTypeCodes] A configuration block for ICMP protocol: The ICMP type and code. See the `icmp_type_code` block.
-  /// [ipv6CidrBlock] A string value containing the IPv6 network range to allow or deny, in CIDR notation.
-  /// [portRanges] A configuration block for PortRange. See the `port_range` block.
-  /// [protocol] The protocol number. A value of "-1" means all protocols.
-  /// [ruleAction] A string value that indicates whether to allow or deny the traffic that matches the rule. Valid values: `allow`, `deny`.
+  /// [cidrBlock] IPv4 network range to allow or deny, in CIDR notation.
+  /// [egress] Whether Firewall Manager creates an egress rule. If `false`, Firewall Manager creates an ingress rule.
+  /// [icmpTypeCodes] ICMP protocol configuration specifying the ICMP type and code. See the `icmpTypeCode` block.
+  /// [ipv6CidrBlock] IPv6 network range to allow or deny, in CIDR notation.
+  /// [portRanges] Port range configuration for the rule. See the `portRange` block.
+  /// [protocol] Protocol number. A value of `-1` means all protocols.
+  /// [ruleAction] Whether to allow or deny the traffic that matches the rule. Valid values: `allow`, `deny`.
   const PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry({
     this.cidrBlock,
     required this.egress,
@@ -62,4 +62,3 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
     );
   }
 }
-

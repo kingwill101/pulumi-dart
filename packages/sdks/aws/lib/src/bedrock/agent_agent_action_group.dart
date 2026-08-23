@@ -116,6 +116,31 @@ import 'agent_agent_action_group_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentagentactiongroup" "example" {
+///   action_group_name          = "example"
+///   agent_id                   = "GGRRAED6JP"
+///   agent_version              = "DRAFT"
+///   skip_resource_in_use_check = true
+///   action_group_executor = {
+///     lambda = "arn:aws:lambda:us-west-2:123456789012:function:example-function"
+///   }
+///   api_schema = {
+///     payload = file("path/to/schema.yaml")
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +153,8 @@ import 'agent_agent_action_group_timeouts.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentAgentActionGroupApiSchemaArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -284,6 +309,31 @@ import 'agent_agent_action_group_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentagentactiongroup" "example" {
+///   action_group_name          = "example"
+///   agent_id                   = "GGRRAED6JP"
+///   agent_version              = "DRAFT"
+///   skip_resource_in_use_check = true
+///   action_group_executor = {
+///     lambda = "arn:aws:lambda:us-west-2:123456789012:function:example-function"
+///   }
+///   api_schema = {
+///     s3 = {
+///       s3_bucket_name = "example-bucket"
+///       s3_object_key  = "path/to/schema.json"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -295,8 +345,8 @@ import 'agent_agent_action_group_timeouts.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentAgentActionGroupActionGroupExecutorArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentAgentActionGroupApiSchemaArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentAgentActionGroupApiSchemaS3Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -522,6 +572,44 @@ import 'agent_agent_action_group_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentagentactiongroup" "example" {
+///   action_group_name          = "example"
+///   agent_id                   = "GGRRAED6JP"
+///   agent_version              = "DRAFT"
+///   skip_resource_in_use_check = true
+///   action_group_executor = {
+///     lambda = "arn:aws:lambda:us-west-2:123456789012:function:example-function"
+///   }
+///   function_schema = {
+///     member_functions = {
+///       functions = [{
+///         "name"        = "example-function"
+///         "description" = "Example function"
+///         "parameters" = [{
+///           "mapBlockKey" = "param1"
+///           "type"        = "string"
+///           "description" = "The first parameter"
+///           "required"    = true
+///           }, {
+///           "mapBlockKey" = "param2"
+///           "type"        = "integer"
+///           "description" = "The second parameter"
+///           "required"    = false
+///         }]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -533,8 +621,10 @@ import 'agent_agent_action_group_timeouts.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentAgentActionGroupActionGroupExecutorArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentAgentActionGroupFunctionSchemaArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentAgentActionGroupFunctionSchemaMemberFunctionsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.bedrock.inputs.AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -714,6 +804,31 @@ import 'agent_agent_action_group_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentagentactiongroup" "example" {
+///   action_group_name          = "example"
+///   agent_id                   = "GGRRAED6JP"
+///   agent_version              = "DRAFT"
+///   skip_resource_in_use_check = true
+///   action_group_executor = {
+///     custom_control = "RETURN_CONTROL"
+///   }
+///   api_schema = {
+///     payload = file("path/to/schema.yaml")
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -726,8 +841,8 @@ import 'agent_agent_action_group_timeouts.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentAgentActionGroupApiSchemaArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -786,7 +901,7 @@ import 'agent_agent_action_group_timeouts.dart';
 /// $ pulumi import aws:bedrock/agentAgentActionGroup:AgentAgentActionGroup example MMAUDBZTH4,GGRRAED6JP,DRAFT
 /// ```
 class AgentAgentActionGroup extends pulumi.CustomResource {
-  /// ARN of the Lambda function containing the business logic that is carried out upon invoking the action or custom control method for handling the information elicited from the user. See `action_group_executor` Block for details.
+  /// ARN of the Lambda function containing the business logic that is carried out upon invoking the action or custom control method for handling the information elicited from the user. See `actionGroupExecutor` Block for details.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<AgentAgentActionGroupActionGroupExecutor?> actionGroupExecutor;
@@ -800,15 +915,15 @@ class AgentAgentActionGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> agentId;
   /// Version of the agent for which to create the action group. Valid values: `DRAFT`.
   late final pulumi.Output<String> agentVersion;
-  /// Either details about the S3 object containing the OpenAPI schema for the action group or the JSON or YAML-formatted payload defining the schema. For more information, see [Action group OpenAPI schemas](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html). See `api_schema` Block for details.
+  /// Either details about the S3 object containing the OpenAPI schema for the action group or the JSON or YAML-formatted payload defining the schema. For more information, see [Action group OpenAPI schemas](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html). See `apiSchema` Block for details.
   late final pulumi.Output<AgentAgentActionGroupApiSchema?> apiSchema;
   /// Description of the action group.
   late final pulumi.Output<String?> description;
   /// Describes the function schema for the action group.
   /// Each function represents an action in an action group.
-  /// See `function_schema` Block for details.
+  /// See `functionSchema` Block for details.
   late final pulumi.Output<AgentAgentActionGroupFunctionSchema?> functionSchema;
-  /// To allow your agent to request the user for additional information when trying to complete a task, set this argument to `AMAZON.UserInput`. You must leave the `description`, `api_schema`, and `action_group_executor` arguments blank for this action group. Valid values: `AMAZON.UserInput`.
+  /// To allow your agent to request the user for additional information when trying to complete a task, set this argument to `AMAZON.UserInput`. You must leave the `description`, `apiSchema`, and `actionGroupExecutor` arguments blank for this action group. Valid values: `AMAZON.UserInput`.
   late final pulumi.Output<String?> parentActionGroupSignature;
   /// Whether or not to prepare the agent after creation or modification. Defaults to `true`.
   late final pulumi.Output<bool> prepareAgent;

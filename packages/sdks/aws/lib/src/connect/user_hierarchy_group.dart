@@ -79,6 +79,23 @@ import 'user_hierarchy_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_userhierarchygroup" "example" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name        = "example"
+///   tags = {
+///     "Name" = "Example User Hierarchy Group"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +104,8 @@ import 'user_hierarchy_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.UserHierarchyGroup;
 /// import com.pulumi.aws.connect.UserHierarchyGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -228,6 +245,31 @@ import 'user_hierarchy_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_userhierarchygroup" "parent" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name        = "parent"
+///   tags = {
+///     "Name" = "Example User Hierarchy Group Parent"
+///   }
+/// }
+/// resource "aws_connect_userhierarchygroup" "child" {
+///   instance_id     = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name            = "child"
+///   parent_group_id = aws_connect_userhierarchygroup.parent.hierarchy_group_id
+///   tags = {
+///     "Name" = "Example User Hierarchy Group Child"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -236,8 +278,8 @@ import 'user_hierarchy_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.UserHierarchyGroup;
 /// import com.pulumi.aws.connect.UserHierarchyGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -287,7 +329,7 @@ import 'user_hierarchy_group_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amazon Connect User Hierarchy Groups using the `instance_id` and `hierarchy_group_id` separated by a colon (`:`). For example:
+/// Using `pulumi import`, import Amazon Connect User Hierarchy Groups using the `instanceId` and `hierarchyGroupId` separated by a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:connect/userHierarchyGroup:UserHierarchyGroup example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
@@ -297,7 +339,7 @@ class UserHierarchyGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The identifier for the hierarchy group.
   late final pulumi.Output<String> hierarchyGroupId;
-  /// A block that contains information about the levels in the hierarchy group. The `hierarchy_path` block is documented below.
+  /// A block that contains information about the levels in the hierarchy group. The `hierarchyPath` block is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> hierarchyPaths;
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   late final pulumi.Output<String> instanceId;
@@ -310,9 +352,9 @@ class UserHierarchyGroup extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Tags to apply to the hierarchy group. If configured with a provider
-  /// `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [UserHierarchyGroup].

@@ -6,7 +6,7 @@ import 'layer_version_state.dart';
 ///
 /// For information about Lambda Layers and how to use them, see [AWS Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 ///
-/// &gt; **Note:** Setting `skip_destroy` to `true` means that the AWS Provider will not destroy any layer version, even when running `pulumi destroy`. Layer versions are thus intentional dangling resources that are not managed by Pulumi and may incur extra expense in your AWS account.
+/// &gt; **Note:** Setting `skipDestroy` to `true` means that the AWS Provider will not destroy any layer version, even when running `pulumi destroy`. Layer versions are thus intentional dangling resources that are not managed by Pulumi and may incur extra expense in your AWS account.
 ///
 /// ## Example Usage
 ///
@@ -20,7 +20,7 @@ import 'layer_version_state.dart';
 /// const example = new aws.lambda.LayerVersion("example", {
 ///     code: new pulumi.asset.FileArchive("lambda_layer_payload.zip"),
 ///     layerName: "lambda_layer_name",
-///     compatibleRuntimes: ["nodejs20.x"],
+///     compatibleRuntimes: ["nodejs24.x"],
 /// });
 /// ```
 /// ```python
@@ -30,7 +30,7 @@ import 'layer_version_state.dart';
 /// example = aws.lambda_.LayerVersion("example",
 ///     code=pulumi.FileArchive("lambda_layer_payload.zip"),
 ///     layer_name="lambda_layer_name",
-///     compatible_runtimes=["nodejs20.x"])
+///     compatible_runtimes=["nodejs24.x"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -46,7 +46,7 @@ import 'layer_version_state.dart';
 ///         LayerName = "lambda_layer_name",
 ///         CompatibleRuntimes = new[]
 ///         {
-///             "nodejs20.x",
+///             "nodejs24.x",
 ///         },
 ///     });
 ///
@@ -66,7 +66,7 @@ import 'layer_version_state.dart';
 /// 			Code:      pulumi.NewFileArchive("lambda_layer_payload.zip"),
 /// 			LayerName: pulumi.String("lambda_layer_name"),
 /// 			CompatibleRuntimes: pulumi.StringArray{
-/// 				pulumi.String("nodejs20.x"),
+/// 				pulumi.String("nodejs24.x"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -74,6 +74,21 @@ import 'layer_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_layerversion" "example" {
+///   code                = fileArchive("lambda_layer_payload.zip")
+///   layer_name          = "lambda_layer_name"
+///   compatible_runtimes = ["nodejs24.x"]
 /// }
 /// ```
 /// ```java
@@ -85,8 +100,8 @@ import 'layer_version_state.dart';
 /// import com.pulumi.aws.lambda.LayerVersion;
 /// import com.pulumi.aws.lambda.LayerVersionArgs;
 /// import com.pulumi.asset.FileArchive;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -101,7 +116,7 @@ import 'layer_version_state.dart';
 ///         var example = new LayerVersion("example", LayerVersionArgs.builder()
 ///             .code(new FileArchive("lambda_layer_payload.zip"))
 ///             .layerName("lambda_layer_name")
-///             .compatibleRuntimes("nodejs20.x")
+///             .compatibleRuntimes("nodejs24.x")
 ///             .build());
 ///
 ///     }
@@ -113,10 +128,10 @@ import 'layer_version_state.dart';
 ///     type: aws:lambda:LayerVersion
 ///     properties:
 ///       code:
-///         fn::FileArchive: lambda_layer_payload.zip
+///         fn::fileArchive: lambda_layer_payload.zip
 ///       layerName: lambda_layer_name
 ///       compatibleRuntimes:
-///         - nodejs20.x
+///         - nodejs24.x
 /// ```
 ///
 ///
@@ -132,7 +147,7 @@ import 'layer_version_state.dart';
 ///     s3Key: lambdaLayerZip.key,
 ///     layerName: "lambda_layer_name",
 ///     compatibleRuntimes: [
-///         "nodejs20.x",
+///         "nodejs24.x",
 ///         "python3.12",
 ///     ],
 ///     compatibleArchitectures: [
@@ -150,7 +165,7 @@ import 'layer_version_state.dart';
 ///     s3_key=lambda_layer_zip["key"],
 ///     layer_name="lambda_layer_name",
 ///     compatible_runtimes=[
-///         "nodejs20.x",
+///         "nodejs24.x",
 ///         "python3.12",
 ///     ],
 ///     compatible_architectures=[
@@ -173,7 +188,7 @@ import 'layer_version_state.dart';
 ///         LayerName = "lambda_layer_name",
 ///         CompatibleRuntimes = new[]
 ///         {
-///             "nodejs20.x",
+///             "nodejs24.x",
 ///             "python3.12",
 ///         },
 ///         CompatibleArchitectures = new[]
@@ -200,7 +215,7 @@ import 'layer_version_state.dart';
 /// 			S3Key:     pulumi.Any(lambdaLayerZip.Key),
 /// 			LayerName: pulumi.String("lambda_layer_name"),
 /// 			CompatibleRuntimes: pulumi.StringArray{
-/// 				pulumi.String("nodejs20.x"),
+/// 				pulumi.String("nodejs24.x"),
 /// 				pulumi.String("python3.12"),
 /// 			},
 /// 			CompatibleArchitectures: pulumi.StringArray{
@@ -215,6 +230,23 @@ import 'layer_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_layerversion" "example" {
+///   s3_bucket                = lambdaLayerZip.bucket
+///   s3_key                   = lambdaLayerZip.key
+///   layer_name               = "lambda_layer_name"
+///   compatible_runtimes      = ["nodejs24.x", "python3.12"]
+///   compatible_architectures = ["x86_64", "arm64"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -223,8 +255,8 @@ import 'layer_version_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lambda.LayerVersion;
 /// import com.pulumi.aws.lambda.LayerVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -241,7 +273,7 @@ import 'layer_version_state.dart';
 ///             .s3Key(lambdaLayerZip.key())
 ///             .layerName("lambda_layer_name")
 ///             .compatibleRuntimes(
-///                 "nodejs20.x",
+///                 "nodejs24.x",
 ///                 "python3.12")
 ///             .compatibleArchitectures(
 ///                 "x86_64",
@@ -260,7 +292,7 @@ import 'layer_version_state.dart';
 ///       s3Key: ${lambdaLayerZip.key}
 ///       layerName: lambda_layer_name
 ///       compatibleRuntimes:
-///         - nodejs20.x
+///         - nodejs24.x
 ///         - python3.12
 ///       compatibleArchitectures:
 ///         - x86_64
@@ -285,8 +317,8 @@ import 'layer_version_state.dart';
 ///         input: "lambda_layer_payload.zip",
 ///     }).then(invoke => invoke.result),
 ///     compatibleRuntimes: [
-///         "nodejs18.x",
-///         "nodejs20.x",
+///         "nodejs22.x",
+///         "nodejs24.x",
 ///         "python3.11",
 ///         "python3.12",
 ///     ],
@@ -308,8 +340,8 @@ import 'layer_version_state.dart';
 ///     license_info="MIT",
 ///     source_code_hash=std.filebase64sha256(input="lambda_layer_payload.zip").result,
 ///     compatible_runtimes=[
-///         "nodejs18.x",
-///         "nodejs20.x",
+///         "nodejs22.x",
+///         "nodejs24.x",
 ///         "python3.11",
 ///         "python3.12",
 ///     ],
@@ -339,8 +371,8 @@ import 'layer_version_state.dart';
 ///         }).Apply(invoke => invoke.Result),
 ///         CompatibleRuntimes = new[]
 ///         {
-///             "nodejs18.x",
-///             "nodejs20.x",
+///             "nodejs22.x",
+///             "nodejs24.x",
 ///             "python3.11",
 ///             "python3.12",
 ///         },
@@ -377,8 +409,8 @@ import 'layer_version_state.dart';
 /// 			LicenseInfo:    pulumi.String("MIT"),
 /// 			SourceCodeHash: pulumi.String(invokeFilebase64sha256.Result),
 /// 			CompatibleRuntimes: pulumi.StringArray{
-/// 				pulumi.String("nodejs18.x"),
-/// 				pulumi.String("nodejs20.x"),
+/// 				pulumi.String("nodejs22.x"),
+/// 				pulumi.String("nodejs24.x"),
 /// 				pulumi.String("python3.11"),
 /// 				pulumi.String("python3.12"),
 /// 			},
@@ -394,6 +426,28 @@ import 'layer_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_layerversion" "example" {
+///   code                     = fileArchive("lambda_layer_payload.zip")
+///   layer_name               = "multi_runtime_layer"
+///   description              = "Shared utilities for Lambda functions"
+///   license_info             = "MIT"
+///   source_code_hash         = filebase64sha256("lambda_layer_payload.zip")
+///   compatible_runtimes      = ["nodejs22.x", "nodejs24.x", "python3.11", "python3.12"]
+///   compatible_architectures = ["x86_64", "arm64"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -405,8 +459,8 @@ import 'layer_version_state.dart';
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64sha256Args;
 /// import com.pulumi.asset.FileArchive;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -427,8 +481,8 @@ import 'layer_version_state.dart';
 ///                 .input("lambda_layer_payload.zip")
 ///                 .build()).result())
 ///             .compatibleRuntimes(
-///                 "nodejs18.x",
-///                 "nodejs20.x",
+///                 "nodejs22.x",
+///                 "nodejs24.x",
 ///                 "python3.11",
 ///                 "python3.12")
 ///             .compatibleArchitectures(
@@ -445,7 +499,7 @@ import 'layer_version_state.dart';
 ///     type: aws:lambda:LayerVersion
 ///     properties:
 ///       code:
-///         fn::FileArchive: lambda_layer_payload.zip
+///         fn::fileArchive: lambda_layer_payload.zip
 ///       layerName: multi_runtime_layer
 ///       description: Shared utilities for Lambda functions
 ///       licenseInfo: MIT
@@ -456,8 +510,8 @@ import 'layer_version_state.dart';
 ///             input: lambda_layer_payload.zip
 ///           return: result
 ///       compatibleRuntimes:
-///         - nodejs18.x
-///         - nodejs20.x
+///         - nodejs22.x
+///         - nodejs24.x
 ///         - python3.11
 ///         - python3.12
 ///       compatibleArchitectures:
@@ -466,17 +520,28 @@ import 'layer_version_state.dart';
 /// ```
 ///
 ///
-/// ## Specifying the Deployment Package
+/// AWS Lambda Layers expect source code to be provided as a deployment package whose structure varies depending on which `compatibleRuntimes` this layer specifies. See [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleRuntimes) for the valid values of `compatibleRuntimes`.
 ///
-/// AWS Lambda Layers expect source code to be provided as a deployment package whose structure varies depending on which `compatible_runtimes` this layer specifies. See [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleRuntimes) for the valid values of `compatible_runtimes`.
-///
-/// Once you have created your deployment package you can specify it either directly as a local file (using the `filename` argument) or indirectly via Amazon S3 (using the `s3_bucket`, `s3_key` and `s3_object_version` arguments). When providing the deployment package via S3 it may be useful to use the `aws.s3.BucketObjectv2` resource to upload it.
+/// Once you have created your deployment package you can specify it either directly as a local file (using the `filename` argument) or indirectly via Amazon S3 (using the `s3Bucket`, `s3Key` and `s3ObjectVersion` arguments). When providing the deployment package via S3 it may be useful to use the `aws.s3.BucketObjectv2` resource to upload it.
 ///
 /// For larger deployment packages it is recommended by Amazon to upload via S3, since the S3 API has better support for uploading large files efficiently.
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Lambda Layers using `arn`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `layerName` (String) Unique name for the Lambda Layer.
+/// * `version` (String) Lambda Layer version number.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Lambda Layer Versions using the `arn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:lambda/layerVersion:LayerVersion example arn:aws:lambda:us-west-2:123456789012:layer:example:1
@@ -488,7 +553,7 @@ class LayerVersion extends pulumi.CustomResource {
   late final pulumi.Output<dynamic> code;
   /// Base64-encoded representation of raw SHA-256 sum of the zip file.
   late final pulumi.Output<String> codeSha256;
-  /// List of [Architectures](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleArchitectures) this layer is compatible with. Currently `x86_64` and `arm64` can be specified.
+  /// List of [Architectures](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleArchitectures) this layer is compatible with. Currently `x8664` and `arm64` can be specified.
   late final pulumi.Output<List<String>?> compatibleArchitectures;
   /// List of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleRuntimes) this layer is compatible with. Up to 15 runtimes can be specified.
   late final pulumi.Output<List<String>?> compatibleRuntimes;
@@ -516,9 +581,9 @@ class LayerVersion extends pulumi.CustomResource {
   late final pulumi.Output<String> signingJobArn;
   /// ARN for a signing profile version.
   late final pulumi.Output<String> signingProfileVersionArn;
-  /// Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_architectures`, `compatible_runtimes`, `description`, `filename`, `layer_name`, `license_info`, `s3_bucket`, `s3_key`, `s3_object_version`, or `source_code_hash` forces deletion of the existing layer version and creation of a new layer version.
+  /// Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatibleArchitectures`, `compatibleRuntimes`, `description`, `filename`, `layerName`, `licenseInfo`, `s3Bucket`, `s3Key`, `s3ObjectVersion`, or `sourceCodeHash` forces deletion of the existing layer version and creation of a new layer version.
   late final pulumi.Output<bool?> skipDestroy;
-  /// Virtual attribute used to trigger replacement when source code changes. Must be set to a base64-encoded SHA256 hash of the package file specified with either `filename` or `s3_key`. The usual way to set this is `filebase64sha256("file.zip")` or `base64sha256(file("file.zip"))`, where "file.zip" is the local filename of the lambda layer source archive.
+  /// Virtual attribute used to trigger replacement when source code changes. Must be set to a base64-encoded SHA256 hash of the package file specified with either `filename` or `s3Key`. The usual way to set this is `filebase64sha256("file.zip")` or `base64sha256(file("file.zip"))`, where "file.zip" is the local filename of the lambda layer source archive.
   late final pulumi.Output<String> sourceCodeHash;
   /// Size in bytes of the function .zip file.
   late final pulumi.Output<int> sourceCodeSize;

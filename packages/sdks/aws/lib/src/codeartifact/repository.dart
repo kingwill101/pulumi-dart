@@ -96,6 +96,27 @@ import 'repository_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description = "domain key"
+/// }
+/// resource "aws_codeartifact_domain" "example" {
+///   domain         = "example"
+///   encryption_key = aws_kms_key.example.arn
+/// }
+/// resource "aws_codeartifact_repository" "test" {
+///   repository = "example"
+///   domain     = aws_codeartifact_domain.example.domain
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -108,8 +129,8 @@ import 'repository_state.dart';
 /// import com.pulumi.aws.codeartifact.DomainArgs;
 /// import com.pulumi.aws.codeartifact.Repository;
 /// import com.pulumi.aws.codeartifact.RepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -158,8 +179,7 @@ import 'repository_state.dart';
 /// ```
 ///
 ///
-///
-/// ### With Upstream Repository
+/// ### Example Usage with upstream repository
 ///
 ///
 /// ```typescript
@@ -254,6 +274,27 @@ import 'repository_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codeartifact_repository" "upstream" {
+///   repository = "upstream"
+///   domain     = testAwsCodeartifactDomain.domain
+/// }
+/// resource "aws_codeartifact_repository" "test" {
+///   repository = "example"
+///   domain     = example.domain
+///   upstreams {
+///     repository_name = aws_codeartifact_repository.upstream.repository
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -263,8 +304,8 @@ import 'repository_state.dart';
 /// import com.pulumi.aws.codeartifact.Repository;
 /// import com.pulumi.aws.codeartifact.RepositoryArgs;
 /// import com.pulumi.aws.codeartifact.inputs.RepositoryUpstreamArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -309,8 +350,7 @@ import 'repository_state.dart';
 /// ```
 ///
 ///
-///
-/// ### With External Connection
+/// ### Example Usage with external connection
 ///
 ///
 /// ```typescript
@@ -400,6 +440,27 @@ import 'repository_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codeartifact_repository" "upstream" {
+///   repository = "upstream"
+///   domain     = testAwsCodeartifactDomain.domain
+/// }
+/// resource "aws_codeartifact_repository" "test" {
+///   repository = "example"
+///   domain     = example.domain
+///   external_connections = {
+///     external_connection_name = "public:npmjs"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -409,8 +470,8 @@ import 'repository_state.dart';
 /// import com.pulumi.aws.codeartifact.Repository;
 /// import com.pulumi.aws.codeartifact.RepositoryArgs;
 /// import com.pulumi.aws.codeartifact.inputs.RepositoryExternalConnectionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -486,9 +547,9 @@ class Repository extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The name of the repository to create.
   late final pulumi.Output<String> repository;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// A list of upstream repositories to associate with the repository. The order of the upstream repositories in the list determines their priority order when AWS CodeArtifact looks for a requested package version. see Upstream
   late final pulumi.Output<List<Map<String, dynamic>>?> upstreams;

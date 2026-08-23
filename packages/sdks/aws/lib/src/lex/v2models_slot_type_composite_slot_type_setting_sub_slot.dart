@@ -6,7 +6,7 @@ class V2modelsSlotTypeCompositeSlotTypeSettingSubSlot {
   /// Name of a constituent sub slot inside a composite slot.
   final pulumi.Input<String> name;
   /// Unique identifier assigned to a slot type.
-  /// This refers to either a built-in slot type or the unique `slot_type_id` of a custom slot type.
+  /// This refers to either a built-in slot type or the unique `slotTypeId` of a custom slot type.
   final pulumi.Input<String> slotTypeId;
 
   /// Creates a new [V2modelsSlotTypeCompositeSlotTypeSettingSubSlot].
@@ -31,4 +31,3 @@ class V2modelsSlotTypeCompositeSlotTypeSettingSubSlot {
     );
   }
 }
-

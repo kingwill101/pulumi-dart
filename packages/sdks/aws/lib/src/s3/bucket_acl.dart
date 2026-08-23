@@ -100,7 +100,7 @@ import 'bucket_acl_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketOwnershipControls, err := s3.NewBucketOwnershipControls(ctx, "example", &s3.BucketOwnershipControlsArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Rule: &s3.BucketOwnershipControlsRuleArgs{
 /// 				ObjectOwnership: pulumi.String("BucketOwnerPreferred"),
 /// 			},
@@ -109,7 +109,7 @@ import 'bucket_acl_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("private"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleBucketOwnershipControls,
@@ -119,6 +119,30 @@ import 'bucket_acl_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "my-tf-example-bucket"
+/// }
+/// resource "aws_s3_bucketownershipcontrols" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   rule = {
+///     object_ownership = "BucketOwnerPreferred"
+///   }
+/// }
+/// resource "aws_s3_bucketacl" "example" {
+///   depends_on = [aws_s3_bucketownershipcontrols.example]
+///   bucket     = aws_s3_bucket.example.id
+///   acl        = "private"
 /// }
 /// ```
 /// ```java
@@ -135,8 +159,8 @@ import 'bucket_acl_state.dart';
 /// import com.pulumi.aws.s3.BucketAcl;
 /// import com.pulumi.aws.s3.BucketAclArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -315,7 +339,7 @@ import 'bucket_acl_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketOwnershipControls, err := s3.NewBucketOwnershipControls(ctx, "example", &s3.BucketOwnershipControlsArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Rule: &s3.BucketOwnershipControlsRuleArgs{
 /// 				ObjectOwnership: pulumi.String("BucketOwnerPreferred"),
 /// 			},
@@ -324,7 +348,7 @@ import 'bucket_acl_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketPublicAccessBlock, err := s3.NewBucketPublicAccessBlock(ctx, "example", &s3.BucketPublicAccessBlockArgs{
-/// 			Bucket:                example.ID(),
+/// 			Bucket:                example.ID().ToIDOutput().ToStringOutput(),
 /// 			BlockPublicAcls:       pulumi.Bool(false),
 /// 			BlockPublicPolicy:     pulumi.Bool(false),
 /// 			IgnorePublicAcls:      pulumi.Bool(false),
@@ -334,7 +358,7 @@ import 'bucket_acl_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("public-read"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleBucketOwnershipControls,
@@ -345,6 +369,37 @@ import 'bucket_acl_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "my-tf-example-bucket"
+/// }
+/// resource "aws_s3_bucketownershipcontrols" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   rule = {
+///     object_ownership = "BucketOwnerPreferred"
+///   }
+/// }
+/// resource "aws_s3_bucketpublicaccessblock" "example" {
+///   bucket                  = aws_s3_bucket.example.id
+///   block_public_acls       = false
+///   block_public_policy     = false
+///   ignore_public_acls      = false
+///   restrict_public_buckets = false
+/// }
+/// resource "aws_s3_bucketacl" "example" {
+///   depends_on = [aws_s3_bucketownershipcontrols.example, aws_s3_bucketpublicaccessblock.example]
+///   bucket     = aws_s3_bucket.example.id
+///   acl        = "public-read"
 /// }
 /// ```
 /// ```java
@@ -363,8 +418,8 @@ import 'bucket_acl_state.dart';
 /// import com.pulumi.aws.s3.BucketAcl;
 /// import com.pulumi.aws.s3.BucketAclArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -606,7 +661,7 @@ import 'bucket_acl_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketOwnershipControls, err := s3.NewBucketOwnershipControls(ctx, "example", &s3.BucketOwnershipControlsArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Rule: &s3.BucketOwnershipControlsRuleArgs{
 /// 				ObjectOwnership: pulumi.String("BucketOwnerPreferred"),
 /// 			},
@@ -615,7 +670,7 @@ import 'bucket_acl_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			AccessControlPolicy: &s3.BucketAclAccessControlPolicyArgs{
 /// 				Grants: s3.BucketAclAccessControlPolicyGrantArray{
 /// 					&s3.BucketAclAccessControlPolicyGrantArgs{
@@ -647,6 +702,50 @@ import 'bucket_acl_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getcanonicaluserid" "current" {
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "my-tf-example-bucket"
+/// }
+/// resource "aws_s3_bucketownershipcontrols" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   rule = {
+///     object_ownership = "BucketOwnerPreferred"
+///   }
+/// }
+/// resource "aws_s3_bucketacl" "example" {
+///   depends_on = [aws_s3_bucketownershipcontrols.example]
+///   bucket     = aws_s3_bucket.example.id
+///   access_control_policy = {
+///     grants = [{
+///       "grantee" = {
+///         "id"   = data.aws_s3_getcanonicaluserid.current.id
+///         "type" = "CanonicalUser"
+///       }
+///       "permission" = "READ"
+///       }, {
+///       "grantee" = {
+///         "type" = "Group"
+///         "uri"  = "http://acs.amazonaws.com/groups/s3/LogDelivery"
+///       }
+///       "permission" = "READ_ACP"
+///     }]
+///     owner = {
+///       id = data.aws_s3_getcanonicaluserid.current.id
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -662,10 +761,12 @@ import 'bucket_acl_state.dart';
 /// import com.pulumi.aws.s3.BucketAcl;
 /// import com.pulumi.aws.s3.BucketAclArgs;
 /// import com.pulumi.aws.s3.inputs.BucketAclAccessControlPolicyArgs;
+/// import com.pulumi.aws.s3.inputs.BucketAclAccessControlPolicyGrantArgs;
+/// import com.pulumi.aws.s3.inputs.BucketAclAccessControlPolicyGrantGranteeArgs;
 /// import com.pulumi.aws.s3.inputs.BucketAclAccessControlPolicyOwnerArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -770,7 +871,7 @@ import 'bucket_acl_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -778,14 +879,14 @@ import 'bucket_acl_state.dart';
 /// [canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl) (i.e. predefined grant), import using the `bucket` and `acl` separated by a comma (`,`):
 ///
 ///
-/// If the owner (account ID) of the source bucket _differs_ from the account used to configure the AWS Provider, and the source bucket is **not configured** with a [canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl) (i.e. predefined grant), imported using the `bucket` and `expected_bucket_owner` separated by a comma (`,`):
+/// If the owner (account ID) of the source bucket _differs_ from the account used to configure the AWS Provider, and the source bucket is **not configured** with a [canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl) (i.e. predefined grant), imported using the `bucket` and `expectedBucketOwner` separated by a comma (`,`):
 ///
 ///
 /// If the owner (account ID) of the source bucket _differs_ from the account used to configure the AWS Provider, and the source bucket is **configured** with a
-/// [canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl) (i.e. predefined grant), imported using the `bucket`, `expected_bucket_owner`, and `acl` separated by commas (`,`):
+/// [canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl) (i.e. predefined grant), imported using the `bucket`, `expectedBucketOwner`, and `acl` separated by commas (`,`):
 ///
 ///
-/// **Using `pulumi import` to import** using `bucket`, `expected_bucket_owner`, and/or `acl`, depending on your situation. For example:
+/// **Using `pulumi import` to import** using `bucket`, `expectedBucketOwner`, and/or `acl`, depending on your situation. For example:
 ///
 /// If the owner (account ID) of the source bucket is the _same_ account used to configure the AWS Provider, and the source bucket is **not configured** with a
 /// [canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl) (i.e. predefined grant), import using the `bucket`:
@@ -800,23 +901,21 @@ import 'bucket_acl_state.dart';
 /// $ pulumi import aws:s3/bucketAcl:BucketAcl example bucket-name,private
 /// ```
 ///
-/// If the owner (account ID) of the source bucket _differs_ from the account used to configure the AWS Provider, and the source bucket is **not configured** with a [canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl) (i.e. predefined grant), imported using the `bucket` and `expected_bucket_owner` separated by a comma (`,`):
+/// If the owner (account ID) of the source bucket _differs_ from the account used to configure the AWS Provider, and the source bucket is **not configured** with a [canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl) (i.e. predefined grant), imported using the `bucket` and `expectedBucketOwner` separated by a comma (`,`):
 ///
 /// ```sh
 /// $ pulumi import aws:s3/bucketAcl:BucketAcl example bucket-name,123456789012
 /// ```
 ///
-/// If the owner (account ID) of the source bucket _differs_ from the account used to configure the AWS Provider, and the source bucket is **configured** with a [canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl) (i.e. predefined grant), imported using the `bucket`, `expected_bucket_owner`, and `acl` separated by commas (`,`):
+/// If the owner (account ID) of the source bucket _differs_ from the account used to configure the AWS Provider, and the source bucket is **configured** with a [canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl) (i.e. predefined grant), imported using the `bucket`, `expectedBucketOwner`, and `acl` separated by commas (`,`):
 ///
 /// ```sh
 /// $ pulumi import aws:s3/bucketAcl:BucketAcl example bucket-name,123456789012,private
 /// ```
-///
-/// [1]: https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl
 class BucketAcl extends pulumi.CustomResource {
   /// Configuration block that sets the ACL permissions for an object per grantee. See below.
   late final pulumi.Output<BucketAclAccessControlPolicy> accessControlPolicy;
-  /// Specifies the Canned ACL to apply to the bucket. Valid values: `private`, `public-read`, `public-read-write`, `aws-exec-read`, `authenticated-read`, `bucket-owner-read`, `bucket-owner-full-control`, `log-delivery-write`. Full details are available on the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl).
+  /// Canned ACL to apply to the bucket. Valid values: `private`, `public-read`, `public-read-write`, `aws-exec-read`, `authenticated-read`, `bucket-owner-read`, `bucket-owner-full-control`, `log-delivery-write`. Full details are available on the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl).
   late final pulumi.Output<String?> acl;
   /// Bucket to which to apply the ACL.
   late final pulumi.Output<String> bucket;

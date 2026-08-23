@@ -8,7 +8,7 @@ class V2modelsSlotSubSlotSettingSlotSpecification {
   /// Unique identifier assigned to the slot type.
   final pulumi.Input<String> slotTypeId;
   /// Elicitation setting details for constituent sub slots of a composite slot.
-  /// See the `value_elicitation_setting` argument reference below.
+  /// See the `valueElicitationSetting` argument reference below.
   final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting>>? valueElicitationSettings;
 
   /// Creates a new [V2modelsSlotSubSlotSettingSlotSpecification].
@@ -37,4 +37,3 @@ class V2modelsSlotSubSlotSettingSlotSpecification {
     );
   }
 }
-

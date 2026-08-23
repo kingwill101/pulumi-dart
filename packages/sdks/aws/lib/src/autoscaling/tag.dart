@@ -7,7 +7,7 @@ import 'tag_tag.dart';
 ///
 /// &gt; **NOTE:** This tagging resource should not be combined with the resource for managing the parent resource. For example, using `aws.autoscaling.Group` and `aws.autoscaling.Tag` to manage tags of the same ASG will cause a perpetual difference where the `aws.autoscaling.Group` resource will try to remove the tag being added by the `aws.autoscaling.Tag` resource.
 ///
-/// &gt; **NOTE:** This tagging resource does not use the provider `ignore_tags` configuration.
+/// &gt; **NOTE:** This tagging resource does not use the provider `ignoreTags` configuration.
 ///
 /// ## Example Usage
 ///
@@ -26,8 +26,8 @@ import 'tag_tag.dart';
 ///     input: std.flattenOutput({
 ///         input: example.resources.apply(resources => resources.map(resources => (resources.autoscalingGroups))),
 ///     }).apply(invoke => .map(asg => (asg.name))),
-/// }).apply(invoke => {
-///     for (const range of invoke.result.map((v, k) => ({key: k, value: v}))) {
+/// }).result.apply(rangeBody => {
+///     for (const range of rangeBody.map((v, k) => ({key: k, value: v}))) {
 ///         exampleTag.push(new aws.autoscaling.Tag(`example-${range.key}`, {
 ///             autoscalingGroupName: range.value,
 ///             tag: {
@@ -41,24 +41,25 @@ import 'tag_tag.dart';
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 /// import pulumi_std as std
 ///
 /// example = aws.eks.NodeGroup("example",
 ///     cluster_name="example",
 ///     node_group_name="example")
-/// example_tag = []
+/// example_tag: list[aws.autoscaling.Tag] = []
 /// def create_example(range_body):
-///     for range in [{"key": k, "value": v} for [k, v] in enumerate(range_body)]:
-///         example_tag.append(aws.autoscaling.Tag(f"example-{range['key']}",
-///             autoscaling_group_name=range["value"],
+///     for example_tag_range in [{"key": k, "value": v} for [k, v] in enumerate(range_body)]:
+///         example_tag.append(aws.autoscaling.Tag(f"example-{example_tag_range['key']}",
+///             autoscaling_group_name=example_tag_range["value"],
 ///             tag={
 ///                 "key": "k8s.io/cluster-autoscaler/node-template/label/eks.amazonaws.com/capacityType",
 ///                 "value": "SPOT",
 ///                 "propagate_at_launch": False,
 ///             }))
 ///
-/// std.toset_output(input=std.flatten_output(input=example.resources.apply(lambda resources: [resources.autoscaling_groups for resources in resources])).apply(lambda invoke: [asg["name"] for asg in invoke.result])).apply(lambda resolved_outputs: create_example(resolved_outputs['invoke'].result))
+/// invoke.result.apply(create_example)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -90,6 +91,32 @@ import 'tag_tag.dart';
 ///         }));
 ///     }
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_eks_nodegroup" "example" {
+///   cluster_name    = "example"
+///   node_group_name = "example"
+/// }
+/// resource "aws_autoscaling_tag" "example" {
+///   for_each               = toset([for asg in flatten([for resources in aws_eks_nodegroup.example.resources : resources.autoscalingGroups]) : asg.name])
+///   autoscaling_group_name = each.value
+///   tag = {
+///     key                 = "k8s.io/cluster-autoscaler/node-template/label/eks.amazonaws.com/capacityType"
+///     value               = "SPOT"
+///     propagate_at_launch = false
+///   }
+/// }
 /// ```
 /// ```yaml
 /// resources:

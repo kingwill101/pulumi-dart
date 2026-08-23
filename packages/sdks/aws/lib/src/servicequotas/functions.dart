@@ -62,6 +62,19 @@ import 'get_templates_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_servicequotas_getservice" "example" {
+///   service_name = "Amazon Virtual Private Cloud (Amazon VPC)"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +83,8 @@ import 'get_templates_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicequotas.ServicequotasFunctions;
 /// import com.pulumi.aws.servicequotas.inputs.GetServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -192,6 +205,24 @@ Future<GetServiceResult> getService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_servicequotas_getservicequota" "byQuotaCode" {
+///   quota_code   = "L-F678F1CE"
+///   service_code = "vpc"
+/// }
+/// data "aws_servicequotas_getservicequota" "byQuotaName" {
+///   quota_name   = "VPCs per Region"
+///   service_code = "vpc"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +231,8 @@ Future<GetServiceResult> getService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicequotas.ServicequotasFunctions;
 /// import com.pulumi.aws.servicequotas.inputs.GetServiceQuotaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -312,6 +343,19 @@ Future<GetServiceQuotaResult> getServiceQuota(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_servicequotas_gettemplates" "example" {
+///   aws_region = "us-east-1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -320,8 +364,8 @@ Future<GetServiceQuotaResult> getServiceQuota(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicequotas.ServicequotasFunctions;
 /// import com.pulumi.aws.servicequotas.inputs.GetTemplatesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

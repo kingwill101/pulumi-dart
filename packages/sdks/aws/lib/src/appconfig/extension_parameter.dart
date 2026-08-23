@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExtensionParameter {
   /// Information about the parameter.
   final pulumi.Input<String>? description;
-  /// The parameter name.
+  /// Parameter name.
   final pulumi.Input<String> name;
-  /// Determines if a parameter value must be specified in the extension association.
+  /// Whether a parameter value must be specified in the extension association.
   final pulumi.Input<bool>? required;
 
   /// Creates a new [ExtensionParameter].
   /// [description] Information about the parameter.
-  /// [name] The parameter name.
-  /// [required] Determines if a parameter value must be specified in the extension association.
+  /// [name] Parameter name.
+  /// [required] Whether a parameter value must be specified in the extension association.
   const ExtensionParameter({
     this.description,
     required this.name,
@@ -36,4 +36,3 @@ class ExtensionParameter {
     );
   }
 }
-

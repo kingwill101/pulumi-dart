@@ -62,6 +62,20 @@ import 'network_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2clientvpn_networkassociation" "example" {
+///   client_vpn_endpoint_id = exampleAwsEc2ClientVpnEndpoint.id
+///   subnet_id              = exampleAwsSubnet.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +84,8 @@ import 'network_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2clientvpn.NetworkAssociation;
 /// import com.pulumi.aws.ec2clientvpn.NetworkAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

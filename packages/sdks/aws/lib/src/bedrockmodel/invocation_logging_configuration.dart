@@ -23,7 +23,7 @@ import 'invocation_logging_configuration_state.dart';
 /// });
 /// const exampleBucketPolicy = new aws.s3.BucketPolicy("example", {
 ///     bucket: example.bucket,
-///     policy: Promise.all([example.arn, current, current]).then(([arn, current, current1]) => `{
+///     policy: pulumi.all([example.arn, current]).apply(([arn, current]) => `{
 ///   \"Version\": \"2012-10-17\",
 ///   \"Statement\": [
 ///     {
@@ -42,7 +42,7 @@ import 'invocation_logging_configuration_state.dart';
 ///           \"aws:SourceAccount\": \"${current.accountId}\"
 ///         },
 ///         \"ArnLike\": {
-///           \"aws:SourceArn\": \"arn:aws:bedrock:us-east-1:${current1.accountId}:*\"
+///           \"aws:SourceArn\": \"arn:aws:bedrock:us-east-1:${current.accountId}:*\"
 ///         }
 ///       }
 ///     }
@@ -130,11 +130,10 @@ import 'invocation_logging_configuration_state.dart';
 ///     var exampleBucketPolicy = new Aws.S3.BucketPolicy("example", new()
 ///     {
 ///         Bucket = example.BucketName,
-///         Policy = Output.Tuple(example.Arn, current, current).Apply(values =>
+///         Policy = Output.Tuple(example.Arn, current).Apply(values =>
 ///         {
 ///             var arn = values.Item1;
 ///             var current = values.Item2;
-///             var current1 = values.Item3;
 ///             return @$"{{
 ///   \""Version\"": \""2012-10-17\"",
 ///   \""Statement\"": [
@@ -154,7 +153,7 @@ import 'invocation_logging_configuration_state.dart';
 ///           \""aws:SourceAccount\"": \""{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}\""
 ///         }},
 ///         \""ArnLike\"": {{
-///           \""aws:SourceArn\"": \""arn:aws:bedrock:us-east-1:{current1.AccountId}:*\""
+///           \""aws:SourceArn\"": \""arn:aws:bedrock:us-east-1:{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}:*\""
 ///         }}
 ///       }}
 ///     }}
@@ -254,7 +253,7 @@ import 'invocation_logging_configuration_state.dart';
 /// 				TextDataDeliveryEnabled:      pulumi.Bool(true),
 /// 				VideoDataDeliveryEnabled:     pulumi.Bool(true),
 /// 				S3Config: &bedrockmodel.InvocationLoggingConfigurationLoggingConfigS3ConfigArgs{
-/// 					BucketName: example.ID(),
+/// 					BucketName: example.ID().ToIDOutput().ToStringOutput(),
 /// 					KeyPrefix:  pulumi.String("bedrock"),
 /// 				},
 /// 			},
@@ -266,6 +265,65 @@ import 'invocation_logging_configuration_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket        = "example"
+///   force_destroy = true
+/// }
+/// resource "aws_s3_bucketpolicy" "example" {
+///   bucket = aws_s3_bucket.example.bucket
+///   policy ="{
+///   \"Version\": \"2012-10-17\",
+///   \"Statement\": [
+///     {
+///       \"Effect\": \"Allow\",
+///       \"Principal\": {
+///         \"Service\": \"bedrock.amazonaws.com\"
+///       },
+///       \"Action\": [
+///         \"s3:*\"
+///       ],
+///       \"Resource\": [
+///         \"${aws_s3_bucket.example.arn}/*\"
+///       ],
+///       \"Condition\": {
+///         \"StringEquals\": {
+///           \"aws:SourceAccount\": \"${data.aws_getcalleridentity.current.account_id}\"
+///         },
+///         \"ArnLike\": {
+///           \"aws:SourceArn\": \"arn:aws:bedrock:us-east-1:${data.aws_getcalleridentity.current.account_id}:*\"
+///         }
+///       }
+///     }
+///   ]
+/// }
+/// "
+/// }
+/// resource "aws_bedrockmodel_invocationloggingconfiguration" "example" {
+///   depends_on = [aws_s3_bucketpolicy.example]
+///   logging_config = {
+///     embedding_data_delivery_enabled = true
+///     image_data_delivery_enabled     = true
+///     text_data_delivery_enabled      = true
+///     video_data_delivery_enabled     = true
+///     s3_config = {
+///       bucket_name = aws_s3_bucket.example.id
+///       key_prefix  = "bedrock"
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -285,8 +343,8 @@ import 'invocation_logging_configuration_state.dart';
 /// import com.pulumi.aws.bedrockmodel.inputs.InvocationLoggingConfigurationLoggingConfigArgs;
 /// import com.pulumi.aws.bedrockmodel.inputs.InvocationLoggingConfigurationLoggingConfigS3ConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -418,13 +476,21 @@ import 'invocation_logging_configuration_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Bedrock custom model using the `id` set to the AWS Region. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:bedrockmodel/invocationLoggingConfiguration:InvocationLoggingConfiguration my_config us-east-1
 /// ```
 class InvocationLoggingConfiguration extends pulumi.CustomResource {
-  /// The logging configuration values to set. See `logging_config` Block for details.
+  /// The logging configuration values to set. See `loggingConfig` Block for details.
   late final pulumi.Output<InvocationLoggingConfigurationLoggingConfig> loggingConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

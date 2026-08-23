@@ -50,7 +50,7 @@ import 'ssh_key_state.dart';
 ///     userName: exampleUser.userName,
 ///     body: std.trimspaceOutput({
 ///         input: examplePrivateKey.publicKeyOpenssh,
-///     }).apply(invoke => invoke.result),
+///     }).result,
 /// });
 /// const example = aws.iam.getPolicyDocument({
 ///     statements: [{
@@ -101,7 +101,7 @@ import 'ssh_key_state.dart';
 /// example_ssh_key = aws.transfer.SshKey("example",
 ///     server_id=example_server.id,
 ///     user_name=example_user.user_name,
-///     body=std.trimspace_output(input=example_private_key.public_key_openssh).apply(lambda invoke: invoke.result))
+///     body=std.trimspace_output(input=example_private_key.public_key_openssh).result)
 /// example = aws.iam.get_policy_document(statements=[{
 ///     "sid": "AllowFullAccesstoS3",
 ///     "effect": "Allow",
@@ -278,7 +278,7 @@ import 'ssh_key_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleUser, err := transfer.NewUser(ctx, "example", &transfer.UserArgs{
-/// 			ServerId: exampleServer.ID(),
+/// 			ServerId: exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			UserName: pulumi.String("tftestuser"),
 /// 			Role:     exampleRole.Arn,
 /// 			Tags: pulumi.StringMap{
@@ -289,13 +289,11 @@ import 'ssh_key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = transfer.NewSshKey(ctx, "example", &transfer.SshKeyArgs{
-/// 			ServerId: exampleServer.ID(),
+/// 			ServerId: exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			UserName: exampleUser.UserName,
-/// 			Body: pulumi.String(std.TrimspaceOutput(ctx, std.TrimspaceOutputArgs{
+/// 			Body: std.TrimspaceOutput(ctx, std.TrimspaceOutputArgs{
 /// 				Input: examplePrivateKey.PublicKeyOpenssh,
-/// 			}, nil).ApplyT(func(invoke std.TrimspaceResult) (*string, error) {
-/// 				return invoke.Result, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}, nil).Result(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -319,7 +317,7 @@ import 'ssh_key_state.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("tf-test-transfer-user-iam-policy"),
-/// 			Role:   exampleRole.ID(),
+/// 			Role:   exampleRole.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy: pulumi.String(example.Json),
 /// 		})
 /// 		if err != nil {
@@ -327,6 +325,73 @@ import 'ssh_key_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///     tls = {
+///       source = "pulumi/tls"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["transfer.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     sid       = "AllowFullAccesstoS3"
+///     effect    = "Allow"
+///     actions   = ["s3:*"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "tls_privatekey" "example" {
+///   algorithm = "RSA"
+///   rsa_bits  = 4096
+/// }
+/// resource "aws_transfer_sshkey" "example" {
+///   server_id = aws_transfer_server.example.id
+///   user_name = aws_transfer_user.example.user_name
+///   body      = trimspace(tls_privatekey.example.public_key_openssh)
+/// }
+/// resource "aws_transfer_server" "example" {
+///   identity_provider_type = "SERVICE_MANAGED"
+///   tags = {
+///     "NAME" = "tf-acc-test-transfer-server"
+///   }
+/// }
+/// resource "aws_transfer_user" "example" {
+///   server_id = aws_transfer_server.example.id
+///   user_name = "tftestuser"
+///   role      = aws_iam_role.example.arn
+///   tags = {
+///     "NAME" = "tftestuser"
+///   }
+/// }
+/// resource "aws_iam_role" "example" {
+///   name               = "tf-test-transfer-user-iam-role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicy" "example" {
+///   name   = "tf-test-transfer-user-iam-policy"
+///   role   = aws_iam_role.example.id
+///   policy = data.aws_iam_getpolicydocument.example.json
 /// }
 /// ```
 /// ```java
@@ -341,6 +406,8 @@ import 'ssh_key_state.dart';
 /// import com.pulumi.aws.transfer.ServerArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.transfer.User;
@@ -351,8 +418,8 @@ import 'ssh_key_state.dart';
 /// import com.pulumi.std.inputs.TrimspaceArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
 /// import com.pulumi.aws.iam.RolePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -501,20 +568,21 @@ import 'ssh_key_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Transfer SSH Public Key using the `server_id` and `user_name` and `ssh_public_key_id` separated by `/`. For example:
+/// Using `pulumi import`, import Transfer SSH Public Key using the `serverId` and `userName` and `sshPublicKeyId` separated by `/`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:transfer/sshKey:SshKey bar s-12345678/test-username/key-12345
 /// ```
 class SshKey extends pulumi.CustomResource {
-  /// The public key portion of an SSH key pair.
+  /// Public key portion of an SSH key pair.
   late final pulumi.Output<String> body;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Server ID of the Transfer Server (e.g., `s-12345678`)
+  /// Server ID of the Transfer Server (e.g., `s-12345678`)
   late final pulumi.Output<String> serverId;
+  /// ID of the SSH public key.
   late final pulumi.Output<String> sshKeyId;
-  /// The name of the user account that is assigned to one or more servers.
+  /// Name of the user account that is assigned to one or more servers.
   late final pulumi.Output<String> userName;
 
   /// Creates a new [SshKey].

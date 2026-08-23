@@ -47,4 +47,3 @@ class BucketCorsConfigurationV2Args {
     );
   }
 }
-

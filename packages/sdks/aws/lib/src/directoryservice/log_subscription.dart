@@ -30,7 +30,7 @@ import 'log_subscription_state.dart';
 ///     }],
 /// });
 /// const ad_log_policyLogResourcePolicy = new aws.cloudwatch.LogResourcePolicy("ad-log-policy", {
-///     policyDocument: ad_log_policy.apply(ad_log_policy => ad_log_policy.json),
+///     policyDocument: ad_log_policy.json,
 ///     policyName: "ad-log-policy",
 /// });
 /// const exampleLogSubscription = new aws.directoryservice.LogSubscription("example", {
@@ -169,10 +169,8 @@ import 'log_subscription_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = cloudwatch.NewLogResourcePolicy(ctx, "ad-log-policy", &cloudwatch.LogResourcePolicyArgs{
-/// 			PolicyDocument: pulumi.String(ad_log_policy.ApplyT(func(ad_log_policy iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &ad_log_policy.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			PolicyName: pulumi.String("ad-log-policy"),
+/// 			PolicyDocument: ad_log_policy.Json(),
+/// 			PolicyName:     pulumi.String("ad-log-policy"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -188,6 +186,40 @@ import 'log_subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "ad-log-policy" {
+///   statements {
+///     actions = ["logs:CreateLogStream", "logs:PutLogEvents"]
+///     principals {
+///       identifiers = ["ds.amazonaws.com"]
+///       type        = "Service"
+///     }
+///     resources = ["${aws_cloudwatch_loggroup.example.arn}:*"]
+///     effect    = "Allow"
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name              ="/aws/directoryservice/${exampleAwsDirectoryServiceDirectory.id}"
+///   retention_in_days = 14
+/// }
+/// resource "aws_cloudwatch_logresourcepolicy" "ad-log-policy" {
+///   policy_document = data.aws_iam_getpolicydocument.ad-log-policy.json
+///   policy_name     = "ad-log-policy"
+/// }
+/// resource "aws_directoryservice_logsubscription" "example" {
+///   directory_id   = exampleAwsDirectoryServiceDirectory.id
+///   log_group_name = aws_cloudwatch_loggroup.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -198,12 +230,14 @@ import 'log_subscription_state.dart';
 /// import com.pulumi.aws.cloudwatch.LogGroupArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.cloudwatch.LogResourcePolicy;
 /// import com.pulumi.aws.cloudwatch.LogResourcePolicyArgs;
 /// import com.pulumi.aws.directoryservice.LogSubscription;
 /// import com.pulumi.aws.directoryservice.LogSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -62,6 +62,20 @@ import 'application_snapshot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kinesisanalyticsv2_applicationsnapshot" "example" {
+///   application_name = exampleAwsKinesisanalyticsv2Application.name
+///   snapshot_name    = "example-snapshot"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +84,8 @@ import 'application_snapshot_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kinesisanalyticsv2.ApplicationSnapshot;
 /// import com.pulumi.aws.kinesisanalyticsv2.ApplicationSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -103,7 +117,7 @@ import 'application_snapshot_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.kinesisanalyticsv2.Application` using `application_name` together with `snapshot_name`. For example:
+/// Using `pulumi import`, import `aws.kinesisanalyticsv2.Application` using `applicationName` together with `snapshotName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:kinesisanalyticsv2/applicationSnapshot:ApplicationSnapshot example example-application/example-snapshot

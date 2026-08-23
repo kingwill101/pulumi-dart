@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionEksPropertyPodPropertyVolumeSecret {
-  /// Specifies whether the secret or the secret's keys must be defined.
+  /// Whether the secret or the secret's keys must be defined.
   final pulumi.Input<bool> optional;
-  /// The name of the secret. The name must be allowed as a DNS subdomain name
+  /// Name of the secret. The name must be allowed as a DNS subdomain name.
   final pulumi.Input<String> secretName;
 
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyVolumeSecret].
-  /// [optional] Specifies whether the secret or the secret's keys must be defined.
-  /// [secretName] The name of the secret. The name must be allowed as a DNS subdomain name
+  /// [optional] Whether the secret or the secret's keys must be defined.
+  /// [secretName] Name of the secret. The name must be allowed as a DNS subdomain name.
   const GetJobDefinitionEksPropertyPodPropertyVolumeSecret({
     required this.optional,
     required this.secretName,
@@ -30,4 +30,3 @@ class GetJobDefinitionEksPropertyPodPropertyVolumeSecret {
     );
   }
 }
-

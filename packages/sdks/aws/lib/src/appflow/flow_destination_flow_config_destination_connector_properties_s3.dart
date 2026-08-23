@@ -6,12 +6,13 @@ import 'flow_destination_flow_config_destination_connector_properties_s3_s3_outp
 class FlowDestinationFlowConfigDestinationConnectorPropertiesS3 {
   final pulumi.Input<String> bucketName;
   final pulumi.Input<String>? bucketPrefix;
+  /// Configuration that determines how Amazon AppFlow formats the flow output data when Upsolver is used as the destination. See the `destination_flow_config.destination_connector_properties.upsolver.s3_output_format_config` Block for details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfig>? s3OutputFormatConfig;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesS3].
   /// [bucketName] Required.
   /// [bucketPrefix] Optional.
-  /// [s3OutputFormatConfig] Optional.
+  /// [s3OutputFormatConfig] Configuration that determines how Amazon AppFlow formats the flow output data when Upsolver is used as the destination. See the `destination_flow_config.destination_connector_properties.upsolver.s3_output_format_config` Block for details.
   const FlowDestinationFlowConfigDestinationConnectorPropertiesS3({
     required this.bucketName,
     this.bucketPrefix,
@@ -34,4 +35,3 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesS3 {
     );
   }
 }
-

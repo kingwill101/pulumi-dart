@@ -85,7 +85,7 @@ import 'organization_configuration_feature_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = guardduty.NewOrganizationConfigurationFeature(ctx, "eks_runtime_monitoring", &guardduty.OrganizationConfigurationFeatureArgs{
-/// 			DetectorId: example.ID(),
+/// 			DetectorId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:       pulumi.String("EKS_RUNTIME_MONITORING"),
 /// 			AutoEnable: pulumi.String("ALL"),
 /// 			AdditionalConfigurations: guardduty.OrganizationConfigurationFeatureAdditionalConfigurationArray{
@@ -102,6 +102,28 @@ import 'organization_configuration_feature_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_guardduty_detector" "example" {
+///   enable = true
+/// }
+/// resource "aws_guardduty_organizationconfigurationfeature" "eks_runtime_monitoring" {
+///   detector_id = aws_guardduty_detector.example.id
+///   name        = "EKS_RUNTIME_MONITORING"
+///   auto_enable = "ALL"
+///   additional_configurations {
+///     name        = "EKS_ADDON_MANAGEMENT"
+///     auto_enable = "NEW"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +135,8 @@ import 'organization_configuration_feature_state.dart';
 /// import com.pulumi.aws.guardduty.OrganizationConfigurationFeature;
 /// import com.pulumi.aws.guardduty.OrganizationConfigurationFeatureArgs;
 /// import com.pulumi.aws.guardduty.inputs.OrganizationConfigurationFeatureAdditionalConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -167,7 +189,7 @@ class OrganizationConfigurationFeature extends pulumi.CustomResource {
   late final pulumi.Output<String> autoEnable;
   /// The ID of the detector that configures the delegated administrator.
   late final pulumi.Output<String> detectorId;
-  /// The name of the feature that will be configured for the organization. Valid values: `S3_DATA_EVENTS`, `EKS_AUDIT_LOGS`, `EBS_MALWARE_PROTECTION`, `RDS_LOGIN_EVENTS`, `EKS_RUNTIME_MONITORING`, `LAMBDA_NETWORK_LOGS`, `RUNTIME_MONITORING`. Only one of two features `EKS_RUNTIME_MONITORING` or `RUNTIME_MONITORING` can be added, adding both features will cause an error. Refer to the [AWS Documentation](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DetectorFeatureConfiguration.html) for the current list of supported values.
+  /// The name of the feature that will be configured for the organization. Valid values: `S3_DATA_EVENTS`, `EKS_AUDIT_LOGS`, `EBS_MALWARE_PROTECTION`, `RDS_LOGIN_EVENTS`, `EKS_RUNTIME_MONITORING`, `LAMBDA_NETWORK_LOGS`, `RUNTIME_MONITORING`, `AI_PROTECTION`, `AI_ANALYST`. Only one of two features `EKS_RUNTIME_MONITORING` or `RUNTIME_MONITORING` can be added, adding both features will cause an error. Refer to the [AWS Documentation](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DetectorFeatureConfiguration.html) for the current list of supported values.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

@@ -31,4 +31,3 @@ class ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterion {
     );
   }
 }
-

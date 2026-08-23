@@ -7,17 +7,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_vpclattice_resource_policy_resource_policy_args_doc}
 class ResourcePolicyArgs {
-  /// An IAM policy. The policy string in JSON must not contain newlines or blank lines.
+  /// IAM policy. The policy string in JSON must not contain newlines or blank lines.
   final pulumi.Input<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The ID or Amazon Resource Name (ARN) of the service network or service for which the policy is created.
+  /// ID or Amazon Resource Name (ARN) of the service network or service for which the policy is created.
   final pulumi.Input<String> resourceArn;
 
   /// Creates a new [ResourcePolicyArgs].
-  /// [policy] An IAM policy. The policy string in JSON must not contain newlines or blank lines.
+  /// [policy] IAM policy. The policy string in JSON must not contain newlines or blank lines.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceArn] The ID or Amazon Resource Name (ARN) of the service network or service for which the policy is created.
+  /// [resourceArn] ID or Amazon Resource Name (ARN) of the service network or service for which the policy is created.
   const ResourcePolicyArgs({
     required this.policy,
     this.region,
@@ -40,4 +40,3 @@ class ResourcePolicyArgs {
     );
   }
 }
-

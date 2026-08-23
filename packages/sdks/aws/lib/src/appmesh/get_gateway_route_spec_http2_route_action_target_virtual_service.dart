@@ -23,4 +23,3 @@ class GetGatewayRouteSpecHttp2RouteActionTargetVirtualService {
     );
   }
 }
-

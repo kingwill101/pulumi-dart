@@ -90,7 +90,7 @@ import 'trust_store_association_state.dart';
 /// 			return err
 /// 		}
 /// 		invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-/// 			Input: std.File(ctx, &std.FileArgs{
+/// 			Input: std.File(ctx, std.FileArgs{
 /// 				Input: "certificate.pem",
 /// 			}, nil).Result,
 /// 		}, nil)
@@ -116,6 +116,29 @@ import 'trust_store_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspacesweb_portal" "example" {
+///   display_name = "example"
+/// }
+/// resource "aws_workspacesweb_truststore" "example" {
+///   certificate_list = [base64encode(file("certificate.pem"))]
+/// }
+/// resource "aws_workspacesweb_truststoreassociation" "example" {
+///   trust_store_arn = aws_workspacesweb_truststore.example.trust_store_arn
+///   portal_arn      = aws_workspacesweb_portal.example.portal_arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -131,8 +154,8 @@ import 'trust_store_association_state.dart';
 /// import com.pulumi.std.inputs.Base64encodeArgs;
 /// import com.pulumi.aws.workspacesweb.TrustStoreAssociation;
 /// import com.pulumi.aws.workspacesweb.TrustStoreAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -149,7 +172,7 @@ import 'trust_store_association_state.dart';
 ///             .build());
 ///
 ///         var exampleTrustStore = new TrustStore("exampleTrustStore", TrustStoreArgs.builder()
-///             .certificateList(List.of(StdFunctions.base64encode(Base64encodeArgs.builder()
+///             .certificateList(Arrays.asList(StdFunctions.base64encode(Base64encodeArgs.builder()
 ///                 .input(StdFunctions.file(FileArgs.builder()
 ///                     .input("certificate.pem")
 ///                     .build()).result())

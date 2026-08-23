@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAmiIdsFilter {
+  /// Name of the filter. For a full reference, check out [describe-images in the AWS CLI reference](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html).
   final pulumi.Input<String> name;
+  /// Set of values that are accepted for the given filter.
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetAmiIdsFilter].
-  /// [name] Required.
-  /// [values] Required.
+  /// [name] Name of the filter. For a full reference, check out [describe-images in the AWS CLI reference](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html).
+  /// [values] Set of values that are accepted for the given filter.
   const GetAmiIdsFilter({
     required this.name,
     required this.values,
@@ -28,4 +30,3 @@ class GetAmiIdsFilter {
     );
   }
 }
-

@@ -148,8 +148,8 @@ import 'hosted_transit_virtual_interface_acceptor_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directconnect.NewHostedTransitVirtualInterfaceAcceptor(ctx, "accepter", &directconnect.HostedTransitVirtualInterfaceAcceptorArgs{
-/// 			VirtualInterfaceId: creator.ID(),
-/// 			DxGatewayId:        example.ID(),
+/// 			VirtualInterfaceId: creator.ID().ToIDOutput().ToStringOutput(),
+/// 			DxGatewayId:        example.ID().ToIDOutput().ToStringOutput(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Side": pulumi.String("Accepter"),
 /// 			},
@@ -159,6 +159,41 @@ import 'hosted_transit_virtual_interface_acceptor_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "accepter" {
+/// }
+///
+/// # Creator's side of the VIF
+/// resource "aws_directconnect_hostedtransitvirtualinterface" "creator" {
+///   depends_on       = [aws_directconnect_gateway.example]
+///   connection_id    = "dxcon-zzzzzzzz"
+///   owner_account_id = data.aws_getcalleridentity.accepter.account_id
+///   name             = "tf-transit-vif-example"
+///   vlan             = 4094
+///   address_family   = "ipv4"
+///   bgp_asn          = 65352
+/// }
+/// # Accepter's side of the VIF.
+/// resource "aws_directconnect_gateway" "example" {
+///   name            = "tf-dxg-example"
+///   amazon_side_asn = 64512
+/// }
+/// resource "aws_directconnect_hostedtransitvirtualinterfaceacceptor" "accepter" {
+///   virtual_interface_id = aws_directconnect_hostedtransitvirtualinterface.creator.id
+///   dx_gateway_id        = aws_directconnect_gateway.example.id
+///   tags = {
+///     "Side" = "Accepter"
+///   }
 /// }
 /// ```
 /// ```java
@@ -176,8 +211,8 @@ import 'hosted_transit_virtual_interface_acceptor_state.dart';
 /// import com.pulumi.aws.directconnect.HostedTransitVirtualInterfaceAcceptor;
 /// import com.pulumi.aws.directconnect.HostedTransitVirtualInterfaceAcceptorArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -271,9 +306,9 @@ class HostedTransitVirtualInterfaceAcceptor extends pulumi.CustomResource {
   late final pulumi.Output<String> dxGatewayId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The ID of the Direct Connect virtual interface to accept.
   late final pulumi.Output<String> virtualInterfaceId;

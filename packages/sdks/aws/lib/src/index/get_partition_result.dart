@@ -5,7 +5,7 @@
 class GetPartitionResult {
   /// Base DNS domain name for the current partition (e.g., `amazonaws.com` in AWS Commercial, `amazonaws.com.cn` in AWS China).
   final String dnsSuffix;
-  /// Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
+  /// (**Deprecated**) Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China). Use `partition` instead.
   final String id;
   /// Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
   final String partition;
@@ -14,7 +14,7 @@ class GetPartitionResult {
 
   /// Creates a new [GetPartitionResult].
   /// [dnsSuffix] Base DNS domain name for the current partition (e.g., `amazonaws.com` in AWS Commercial, `amazonaws.com.cn` in AWS China).
-  /// [id] Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
+  /// [id] (**Deprecated**) Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China). Use `partition` instead.
   /// [partition] Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
   /// [reverseDnsPrefix] Prefix of service names (e.g., `com.amazonaws` in AWS Commercial, `cn.com.amazonaws` in AWS China).
   const GetPartitionResult({
@@ -42,4 +42,3 @@ class GetPartitionResult {
     );
   }
 }
-

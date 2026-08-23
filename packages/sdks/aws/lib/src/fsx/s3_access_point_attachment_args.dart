@@ -12,11 +12,11 @@ import 's3_access_point_attachment_timeouts.dart';
 class S3AccessPointAttachmentArgs {
   /// Name of the S3 access point.
   final pulumi.Input<String>? name;
-  /// Configuration to use when creating and attaching an S3 access point to an FSx for OpenZFS volume. See `openzfs_configuration` Block for details.
+  /// Configuration to use when creating and attaching an S3 access point to an FSx for OpenZFS volume. See `openzfsConfiguration` Block for details.
   final pulumi.Input<S3AccessPointAttachmentOpenzfsConfiguration> openzfsConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// S3 access point configuration. See `s3_access_point` Block for details.
+  /// S3 access point configuration. See `s3AccessPoint` Block for details.
   final pulumi.Input<S3AccessPointAttachmentS3AccessPoint>? s3AccessPoint;
   final pulumi.Input<S3AccessPointAttachmentTimeouts>? timeouts;
   /// Type of S3 access point. Valid values: `OpenZFS`.
@@ -26,9 +26,9 @@ class S3AccessPointAttachmentArgs {
 
   /// Creates a new [S3AccessPointAttachmentArgs].
   /// [name] Name of the S3 access point.
-  /// [openzfsConfiguration] Configuration to use when creating and attaching an S3 access point to an FSx for OpenZFS volume. See `openzfs_configuration` Block for details.
+  /// [openzfsConfiguration] Configuration to use when creating and attaching an S3 access point to an FSx for OpenZFS volume. See `openzfsConfiguration` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [s3AccessPoint] S3 access point configuration. See `s3_access_point` Block for details.
+  /// [s3AccessPoint] S3 access point configuration. See `s3AccessPoint` Block for details.
   /// [timeouts] Optional.
   /// [type] Type of S3 access point. Valid values: `OpenZFS`.
   const S3AccessPointAttachmentArgs({
@@ -62,4 +62,3 @@ class S3AccessPointAttachmentArgs {
     );
   }
 }
-

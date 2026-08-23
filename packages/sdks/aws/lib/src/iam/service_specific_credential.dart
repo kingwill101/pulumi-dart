@@ -76,6 +76,23 @@ import 'service_specific_credential_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_user" "example" {
+///   name = "example"
+/// }
+/// resource "aws_iam_servicespecificcredential" "example" {
+///   service_name = "codecommit.amazonaws.com"
+///   user_name    = aws_iam_user.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +103,8 @@ import 'service_specific_credential_state.dart';
 /// import com.pulumi.aws.iam.UserArgs;
 /// import com.pulumi.aws.iam.ServiceSpecificCredential;
 /// import com.pulumi.aws.iam.ServiceSpecificCredentialArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -200,6 +217,24 @@ import 'service_specific_credential_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_user" "example" {
+///   name = "example"
+/// }
+/// resource "aws_iam_servicespecificcredential" "bedrock" {
+///   service_name        = "bedrock.amazonaws.com"
+///   user_name           = aws_iam_user.example.name
+///   credential_age_days = 30 # API key expires after 30 days
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -210,8 +245,8 @@ import 'service_specific_credential_state.dart';
 /// import com.pulumi.aws.iam.UserArgs;
 /// import com.pulumi.aws.iam.ServiceSpecificCredential;
 /// import com.pulumi.aws.iam.ServiceSpecificCredentialArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

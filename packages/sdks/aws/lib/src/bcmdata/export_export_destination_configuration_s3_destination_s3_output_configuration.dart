@@ -42,4 +42,3 @@ class ExportExportDestinationConfigurationS3DestinationS3OutputConfiguration {
     );
   }
 }
-

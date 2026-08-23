@@ -19,20 +19,20 @@ class KxEnvironmentState {
   /// Unique identifier for the AWS environment infrastructure account.
   final pulumi.Input<String>? infrastructureAccountId;
   /// KMS key ID to encrypt your data in the FinSpace environment.
-  ///
-  /// The following arguments are optional:
   final pulumi.Input<String>? kmsKeyId;
   /// Last timestamp at which the environment was updated in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
   final pulumi.Input<String>? lastModifiedTimestamp;
   /// Name of the KX environment that you want to create.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// Status of environment creation
   final pulumi.Input<String>? status;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Transit gateway and network configuration that is used to connect the KX environment to an internal network. Defined below.
   final pulumi.Input<KxEnvironmentTransitGatewayConfiguration>? transitGatewayConfiguration;
@@ -49,8 +49,8 @@ class KxEnvironmentState {
   /// [name] Name of the KX environment that you want to create.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Status of environment creation
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [transitGatewayConfiguration] Transit gateway and network configuration that is used to connect the KX environment to an internal network. Defined below.
   const KxEnvironmentState({
     this.arn,
@@ -107,4 +107,3 @@ class KxEnvironmentState {
     );
   }
 }
-

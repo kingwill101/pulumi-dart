@@ -9,19 +9,19 @@ class V2modelsIntentConfirmationSettingPromptSpecification {
   final pulumi.Input<bool>? allowInterrupt;
   /// Maximum number of times the bot tries to elicit a response from the user using this prompt.
   final pulumi.Input<int> maxRetries;
-  /// Configuration block for messages that Amazon Lex can send to the user. Amazon Lex chooses the actual message to send at runtime. See `message_group`.
+  /// Configuration block for messages that Amazon Lex can send to the user. Amazon Lex chooses the actual message to send at runtime. See `messageGroup`.
   final pulumi.Input<List<V2modelsIntentConfirmationSettingPromptSpecificationMessageGroup>>? messageGroups;
   /// How a message is selected from a message group among retries. Valid values are `Random` and `Ordered`.
   final pulumi.Input<String>? messageSelectionStrategy;
-  /// Configuration block for advanced settings on each attempt of the prompt. See `prompt_attempts_specification`.
+  /// Configuration block for advanced settings on each attempt of the prompt. See `promptAttemptsSpecification`.
   final pulumi.Input<List<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification>>? promptAttemptsSpecifications;
 
   /// Creates a new [V2modelsIntentConfirmationSettingPromptSpecification].
   /// [allowInterrupt] Whether the user can interrupt a speech prompt from the bot.
   /// [maxRetries] Maximum number of times the bot tries to elicit a response from the user using this prompt.
-  /// [messageGroups] Configuration block for messages that Amazon Lex can send to the user. Amazon Lex chooses the actual message to send at runtime. See `message_group`.
+  /// [messageGroups] Configuration block for messages that Amazon Lex can send to the user. Amazon Lex chooses the actual message to send at runtime. See `messageGroup`.
   /// [messageSelectionStrategy] How a message is selected from a message group among retries. Valid values are `Random` and `Ordered`.
-  /// [promptAttemptsSpecifications] Configuration block for advanced settings on each attempt of the prompt. See `prompt_attempts_specification`.
+  /// [promptAttemptsSpecifications] Configuration block for advanced settings on each attempt of the prompt. See `promptAttemptsSpecification`.
   const V2modelsIntentConfirmationSettingPromptSpecification({
     this.allowInterrupt,
     required this.maxRetries,
@@ -50,4 +50,3 @@ class V2modelsIntentConfirmationSettingPromptSpecification {
     );
   }
 }
-

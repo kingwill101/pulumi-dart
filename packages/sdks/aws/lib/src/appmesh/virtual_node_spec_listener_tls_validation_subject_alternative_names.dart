@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_node_spec_listener_tls_validation_subject_alternative_names_match.dart';
 
 class VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames {
-  /// Criteria for determining a SAN's match.
+  /// Criteria for determining a SAN's match. See `spec.listener.tls.validation.subject_alternative_names.match` Block for details.
   final pulumi.Input<VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch> match;
 
   /// Creates a new [VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames].
-  /// [match] Criteria for determining a SAN's match.
+  /// [match] Criteria for determining a SAN's match. See `spec.listener.tls.validation.subject_alternative_names.match` Block for details.
   const VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames({
     required this.match,
   });
@@ -25,4 +25,3 @@ class VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames {
     );
   }
 }
-

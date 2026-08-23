@@ -121,7 +121,7 @@ import 'drt_access_role_arn_association_timeouts.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "drt.shield.amazonaws.com",
 /// 					},
 /// 					"Action": "sts:AssumeRole",
@@ -156,6 +156,37 @@ import 'drt_access_role_arn_association_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_shield_drtaccessrolearnassociation" "example" {
+///   role_arn = aws_iam_role.example.arn
+/// }
+/// resource "aws_iam_role" "example" {
+///   name = "example-role"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Sid"    = ""
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "drt.shield.amazonaws.com"
+///       }
+///       "Action" = "sts:AssumeRole"
+///     }]
+///   })
+/// }
+/// resource "aws_iam_rolepolicyattachment" "example" {
+///   role       = aws_iam_role.example.name
+///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -169,8 +200,8 @@ import 'drt_access_role_arn_association_timeouts.dart';
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
 /// import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

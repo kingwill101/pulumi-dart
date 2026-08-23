@@ -72,14 +72,33 @@ import 'internet_gateway_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewInternetGatewayAttachment(ctx, "example", &ec2.InternetGatewayAttachmentArgs{
-/// 			InternetGatewayId: exampleInternetGateway.ID(),
-/// 			VpcId:             exampleVpc.ID(),
+/// 			InternetGatewayId: exampleInternetGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:             exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_internetgatewayattachment" "example" {
+///   internet_gateway_id = aws_ec2_internetgateway.example.id
+///   vpc_id              = aws_ec2_vpc.example.id
+/// }
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.1.0.0/16"
+/// }
+/// resource "aws_ec2_internetgateway" "example" {
 /// }
 /// ```
 /// ```java
@@ -93,8 +112,8 @@ import 'internet_gateway_attachment_state.dart';
 /// import com.pulumi.aws.ec2.InternetGateway;
 /// import com.pulumi.aws.ec2.InternetGatewayAttachment;
 /// import com.pulumi.aws.ec2.InternetGatewayAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -90,7 +90,7 @@ import 'model_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"type": "object",
 /// 		})
 /// 		if err != nil {
@@ -98,7 +98,7 @@ import 'model_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = apigateway.NewModel(ctx, "MyDemoModel", &apigateway.ModelArgs{
-/// 			RestApi:     myDemoAPI.ID(),
+/// 			RestApi:     myDemoAPI.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:        pulumi.String("user"),
 /// 			Description: pulumi.String("a JSON schema"),
 /// 			ContentType: pulumi.String("application/json"),
@@ -109,6 +109,29 @@ import 'model_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_restapi" "MyDemoAPI" {
+///   name        = "MyDemoAPI"
+///   description = "This is my API for demonstration purposes"
+/// }
+/// resource "aws_apigateway_model" "MyDemoModel" {
+///   rest_api     = aws_apigateway_restapi.MyDemoAPI.id
+///   name         = "user"
+///   description  = "a JSON schema"
+///   content_type = "application/json"
+///   schema = jsonencode({
+///     "type" = "object"
+///   })
 /// }
 /// ```
 /// ```java
@@ -122,8 +145,8 @@ import 'model_state.dart';
 /// import com.pulumi.aws.apigateway.Model;
 /// import com.pulumi.aws.apigateway.ModelArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

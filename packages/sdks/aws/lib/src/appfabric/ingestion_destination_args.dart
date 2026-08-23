@@ -10,27 +10,29 @@ import 'ingestion_destination_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_appfabric_ingestion_destination_ingestion_destination_args_doc}
 class IngestionDestinationArgs {
-  /// The Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// Amazon Resource Name (ARN) of the app bundle to use for the request.
   final pulumi.Input<String> appBundleArn;
-  /// Contains information about the destination of ingested data.
+  /// Configuration for the destination of ingested data. See `destinationConfiguration` Block below.
   final pulumi.Input<IngestionDestinationDestinationConfiguration> destinationConfiguration;
-  /// The Amazon Resource Name (ARN) of the ingestion to use for the request.
+  /// Amazon Resource Name (ARN) of the ingestion to use for the request.
   final pulumi.Input<String> ingestionArn;
-  /// Contains information about how ingested data is processed.
+  /// Configuration for how ingested data is processed. See `processingConfiguration` Block below.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<IngestionDestinationProcessingConfiguration> processingConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<IngestionDestinationTimeouts>? timeouts;
 
   /// Creates a new [IngestionDestinationArgs].
-  /// [appBundleArn] The Amazon Resource Name (ARN) of the app bundle to use for the request.
-  /// [destinationConfiguration] Contains information about the destination of ingested data.
-  /// [ingestionArn] The Amazon Resource Name (ARN) of the ingestion to use for the request.
-  /// [processingConfiguration] Contains information about how ingested data is processed.
+  /// [appBundleArn] Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// [destinationConfiguration] Configuration for the destination of ingested data. See `destinationConfiguration` Block below.
+  /// [ingestionArn] Amazon Resource Name (ARN) of the ingestion to use for the request.
+  /// [processingConfiguration] Configuration for how ingested data is processed. See `processingConfiguration` Block below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   const IngestionDestinationArgs({
     required this.appBundleArn,
@@ -66,4 +68,3 @@ class IngestionDestinationArgs {
     );
   }
 }
-

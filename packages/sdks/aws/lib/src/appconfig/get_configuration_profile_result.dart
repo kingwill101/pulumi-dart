@@ -13,6 +13,7 @@ class GetConfigurationProfileResult {
   final String description;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+  /// KMS key identifier for encrypting the configuration data.
   final String kmsKeyIdentifier;
   /// Location URI of the Configuration Profile.
   final String locationUri;
@@ -34,7 +35,7 @@ class GetConfigurationProfileResult {
   /// [configurationProfileId] Required.
   /// [description] Description of the Configuration Profile.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [kmsKeyIdentifier] Required.
+  /// [kmsKeyIdentifier] KMS key identifier for encrypting the configuration data.
   /// [locationUri] Location URI of the Configuration Profile.
   /// [name] Name of the Configuration Profile.
   /// [region] Required.
@@ -94,4 +95,3 @@ class GetConfigurationProfileResult {
     );
   }
 }
-

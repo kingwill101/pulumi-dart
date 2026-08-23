@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_data_source_data_source_configuration_confluence_configuration_crawler_configuration_filter_configuration.dart';
 
 class AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration {
-  /// The Salesforce standard object configuration. See `filter_configuration` block for details.
+  /// The Salesforce standard object configuration. See `filterConfiguration` block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfiguration>? filterConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration].
-  /// [filterConfiguration] The Salesforce standard object configuration. See `filter_configuration` block for details.
+  /// [filterConfiguration] The Salesforce standard object configuration. See `filterConfiguration` block for details.
   const AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration({
     this.filterConfiguration,
   });
@@ -25,4 +25,3 @@ class AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfig
     );
   }
 }
-

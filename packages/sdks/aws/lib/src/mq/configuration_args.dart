@@ -23,7 +23,9 @@ class ConfigurationArgs {
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Set to `true` if you do not wish the configuration to be deleted at destroy time, and instead just remove the configuration from the Terraform state. Default is `false`.
+  final pulumi.Input<bool>? skipDestroy;
+  /// Key-value map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ConfigurationArgs].
@@ -34,7 +36,8 @@ class ConfigurationArgs {
   /// [engineVersion] Version of the broker engine.
   /// [name] Name of the configuration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [skipDestroy] Set to `true` if you do not wish the configuration to be deleted at destroy time, and instead just remove the configuration from the Terraform state. Default is `false`.
+  /// [tags] Key-value map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ConfigurationArgs({
     this.authenticationStrategy,
     required this.data,
@@ -43,6 +46,7 @@ class ConfigurationArgs {
     required this.engineVersion,
     this.name,
     this.region,
+    this.skipDestroy,
     this.tags,
   });
 
@@ -55,6 +59,7 @@ class ConfigurationArgs {
       'engineVersion': engineVersion,
       'name': ?name,
       'region': ?region,
+      'skipDestroy': ?skipDestroy,
       'tags': ?tags,
     };
   }
@@ -68,8 +73,8 @@ class ConfigurationArgs {
       engineVersion: pulumi.Input.fromValue(map['engineVersion'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      skipDestroy: (() { final guardedValue = map['skipDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
-

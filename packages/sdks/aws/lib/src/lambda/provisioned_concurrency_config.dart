@@ -4,7 +4,7 @@ import 'provisioned_concurrency_config_state.dart';
 
 /// Manages an AWS Lambda Provisioned Concurrency Configuration. Use this resource to configure provisioned concurrency for Lambda functions.
 ///
-/// &gt; **Note:** Setting `skip_destroy` to `true` means that the AWS Provider will not destroy a provisioned concurrency configuration, even when running `pulumi destroy`. The configuration is thus an intentional dangling resource that is not managed by Pulumi and may incur extra expense in your AWS account.
+/// &gt; **Note:** Setting `skipDestroy` to `true` means that the AWS Provider will not destroy a provisioned concurrency configuration, even when running `pulumi destroy`. The configuration is thus an intentional dangling resource that is not managed by Pulumi and may incur extra expense in your AWS account.
 ///
 /// ## Example Usage
 ///
@@ -69,6 +69,21 @@ import 'provisioned_concurrency_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_provisionedconcurrencyconfig" "example" {
+///   function_name                     = exampleAwsLambdaAlias.functionName
+///   provisioned_concurrent_executions = 1
+///   qualifier                         = exampleAwsLambdaAlias.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +92,8 @@ import 'provisioned_concurrency_config_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lambda.ProvisionedConcurrencyConfig;
 /// import com.pulumi.aws.lambda.ProvisionedConcurrencyConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -171,6 +186,21 @@ import 'provisioned_concurrency_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_provisionedconcurrencyconfig" "example" {
+///   function_name                     = exampleAwsLambdaFunction.functionName
+///   provisioned_concurrent_executions = 1
+///   qualifier                         = exampleAwsLambdaFunction.version
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +209,8 @@ import 'provisioned_concurrency_config_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lambda.ProvisionedConcurrencyConfig;
 /// import com.pulumi.aws.lambda.ProvisionedConcurrencyConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,7 +244,7 @@ import 'provisioned_concurrency_config_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import a Lambda Provisioned Concurrency Configuration using the `function_name` and `qualifier` separated by a comma (`,`). For example:
+/// Using `pulumi import`, import a Lambda Provisioned Concurrency Configuration using the `functionName` and `qualifier` separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:lambda/provisionedConcurrencyConfig:ProvisionedConcurrencyConfig example example,production

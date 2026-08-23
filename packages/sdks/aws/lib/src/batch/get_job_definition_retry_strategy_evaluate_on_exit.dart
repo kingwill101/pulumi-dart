@@ -3,20 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionRetryStrategyEvaluateOnExit {
-  /// Specifies the action to take if all of the specified conditions (onStatusReason, onReason, and onExitCode) are met. The values aren't case sensitive.
+  /// Action to take if all of the specified conditions (onStatusReason, onReason, and onExitCode) are met. The values aren't case sensitive.
   final pulumi.Input<String> action;
-  /// Contains a glob pattern to match against the decimal representation of the ExitCode returned for a job.
+  /// Glob pattern to match against the decimal representation of the ExitCode returned for a job.
   final pulumi.Input<String> onExitCode;
-  /// Contains a glob pattern to match against the Reason returned for a job.
+  /// Glob pattern to match against the Reason returned for a job.
   final pulumi.Input<String> onReason;
-  /// Contains a glob pattern to match against the StatusReason returned for a job.
+  /// Glob pattern to match against the StatusReason returned for a job.
   final pulumi.Input<String> onStatusReason;
 
   /// Creates a new [GetJobDefinitionRetryStrategyEvaluateOnExit].
-  /// [action] Specifies the action to take if all of the specified conditions (onStatusReason, onReason, and onExitCode) are met. The values aren't case sensitive.
-  /// [onExitCode] Contains a glob pattern to match against the decimal representation of the ExitCode returned for a job.
-  /// [onReason] Contains a glob pattern to match against the Reason returned for a job.
-  /// [onStatusReason] Contains a glob pattern to match against the StatusReason returned for a job.
+  /// [action] Action to take if all of the specified conditions (onStatusReason, onReason, and onExitCode) are met. The values aren't case sensitive.
+  /// [onExitCode] Glob pattern to match against the decimal representation of the ExitCode returned for a job.
+  /// [onReason] Glob pattern to match against the Reason returned for a job.
+  /// [onStatusReason] Glob pattern to match against the StatusReason returned for a job.
   const GetJobDefinitionRetryStrategyEvaluateOnExit({
     required this.action,
     required this.onExitCode,
@@ -42,4 +42,3 @@ class GetJobDefinitionRetryStrategyEvaluateOnExit {
     );
   }
 }
-

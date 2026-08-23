@@ -16,8 +16,8 @@ class GetAccessEntryResult {
   final String modifiedAt;
   final String principalArn;
   final String region;
-  final Map<String, String>? tags;
-  /// (Optional) Key-value map of resource tags, including those inherited from the provider `default_tags` configuration block.
+  final Map<String, String> tags;
+  /// (Optional) Key-value map of resource tags, including those inherited from the provider `defaultTags` configuration block.
   final Map<String, String> tagsAll;
   /// Defaults to STANDARD which provides the standard workflow. EC2_LINUX, EC2_WINDOWS, FARGATE_LINUX types disallow users to input a username or groups, and prevent associations.
   final String type;
@@ -33,8 +33,8 @@ class GetAccessEntryResult {
   /// [modifiedAt] Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the EKS add-on was updated.
   /// [principalArn] Required.
   /// [region] Required.
-  /// [tags] Optional.
-  /// [tagsAll] (Optional) Key-value map of resource tags, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Required.
+  /// [tagsAll] (Optional) Key-value map of resource tags, including those inherited from the provider `defaultTags` configuration block.
   /// [type] Defaults to STANDARD which provides the standard workflow. EC2_LINUX, EC2_WINDOWS, FARGATE_LINUX types disallow users to input a username or groups, and prevent associations.
   /// [userName] Defaults to principal ARN if user is principal else defaults to assume-role/session-name is role is used.
   const GetAccessEntryResult({
@@ -46,7 +46,7 @@ class GetAccessEntryResult {
     required this.modifiedAt,
     required this.principalArn,
     required this.region,
-    this.tags,
+    required this.tags,
     required this.tagsAll,
     required this.type,
     required this.userName,
@@ -62,7 +62,7 @@ class GetAccessEntryResult {
       'modifiedAt': modifiedAt,
       'principalArn': principalArn,
       'region': region,
-      'tags': ?tags,
+      'tags': tags,
       'tagsAll': tagsAll,
       'type': type,
       'userName': userName,
@@ -79,11 +79,10 @@ class GetAccessEntryResult {
       modifiedAt: map['modifiedAt'] as String,
       principalArn: map['principalArn'] as String,
       region: map['region'] as String,
-      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      tags: (map['tags'] as Map).cast<String, String>(),
       tagsAll: (map['tagsAll'] as Map).cast<String, String>(),
       type: map['type'] as String,
       userName: map['userName'] as String,
     );
   }
 }
-

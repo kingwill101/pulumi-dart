@@ -6,17 +6,17 @@ import 'rule_group_rule_statement_byte_match_statement_field_to_match_json_body_
 class RuleGroupRuleStatementByteMatchStatementFieldToMatchJsonBody {
   /// What to do when JSON parsing fails. Defaults to evaluating up to the first parsing failure. Valid values are `EVALUATE_AS_STRING`, `MATCH` and `NO_MATCH`.
   final pulumi.Input<String>? invalidFallbackBehavior;
-  /// The patterns to look for in the JSON body. You must specify exactly one setting: either `all` or `included_paths`. See [JsonMatchPattern](https://docs.aws.amazon.com/waf/latest/APIReference/API_JsonMatchPattern.html) for details.
+  /// The patterns to look for in the JSON body. You must specify exactly one setting: either `all` or `includedPaths`. See [JsonMatchPattern](https://docs.aws.amazon.com/waf/latest/APIReference/API_JsonMatchPattern.html) for details.
   final pulumi.Input<RuleGroupRuleStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern> matchPattern;
-  /// The parts of the JSON to match against using the `match_pattern`. Valid values are `ALL`, `KEY` and `VALUE`.
+  /// The parts of the JSON to match against using the `matchPattern`. Valid values are `ALL`, `KEY` and `VALUE`.
   final pulumi.Input<String> matchScope;
   /// What to do if the body is larger than can be inspected. Valid values are `CONTINUE` (default), `MATCH` and `NO_MATCH`.
   final pulumi.Input<String>? oversizeHandling;
 
   /// Creates a new [RuleGroupRuleStatementByteMatchStatementFieldToMatchJsonBody].
   /// [invalidFallbackBehavior] What to do when JSON parsing fails. Defaults to evaluating up to the first parsing failure. Valid values are `EVALUATE_AS_STRING`, `MATCH` and `NO_MATCH`.
-  /// [matchPattern] The patterns to look for in the JSON body. You must specify exactly one setting: either `all` or `included_paths`. See [JsonMatchPattern](https://docs.aws.amazon.com/waf/latest/APIReference/API_JsonMatchPattern.html) for details.
-  /// [matchScope] The parts of the JSON to match against using the `match_pattern`. Valid values are `ALL`, `KEY` and `VALUE`.
+  /// [matchPattern] The patterns to look for in the JSON body. You must specify exactly one setting: either `all` or `includedPaths`. See [JsonMatchPattern](https://docs.aws.amazon.com/waf/latest/APIReference/API_JsonMatchPattern.html) for details.
+  /// [matchScope] The parts of the JSON to match against using the `matchPattern`. Valid values are `ALL`, `KEY` and `VALUE`.
   /// [oversizeHandling] What to do if the body is larger than can be inspected. Valid values are `CONTINUE` (default), `MATCH` and `NO_MATCH`.
   const RuleGroupRuleStatementByteMatchStatementFieldToMatchJsonBody({
     this.invalidFallbackBehavior,
@@ -43,4 +43,3 @@ class RuleGroupRuleStatementByteMatchStatementFieldToMatchJsonBody {
     );
   }
 }
-

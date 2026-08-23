@@ -18,9 +18,9 @@ class TransitGatewayPeeringState {
   final pulumi.Input<String>? peeringType;
   /// Resource ARN of the peer.
   final pulumi.Input<String>? resourceArn;
-  /// Key-value tags for the peering. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the peering. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// ARN of the transit gateway for the peering request.
   ///
@@ -37,8 +37,8 @@ class TransitGatewayPeeringState {
   /// [ownerAccountId] ID of the account owner.
   /// [peeringType] Type of peering. This will be `TRANSIT_GATEWAY`.
   /// [resourceArn] Resource ARN of the peer.
-  /// [tags] Key-value tags for the peering. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value tags for the peering. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [transitGatewayArn] ARN of the transit gateway for the peering request.
   /// [transitGatewayPeeringAttachmentId] ID of the transit gateway peering attachment.
   const TransitGatewayPeeringState({
@@ -87,4 +87,3 @@ class TransitGatewayPeeringState {
     );
   }
 }
-

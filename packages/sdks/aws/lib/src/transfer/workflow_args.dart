@@ -9,23 +9,23 @@ import 'workflow_step.dart';
 /// {@endtemplate}
 /// {@macro pulumi_transfer_workflow_workflow_args_doc}
 class WorkflowArgs {
-  /// A textual description for the workflow.
+  /// Textual description for the workflow.
   final pulumi.Input<String>? description;
-  /// Specifies the steps (actions) to take if errors are encountered during execution of the workflow. See Workflow Steps below.
+  /// Steps (actions) to take if errors are encountered during execution of the workflow. See `onExceptionSteps` Block below.
   final pulumi.Input<List<WorkflowOnExceptionStep>>? onExceptionSteps;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Specifies the details for the steps that are in the specified workflow. See Workflow Steps below.
+  /// Details for the steps that are in the specified workflow. See `steps` Block below.
   final pulumi.Input<List<WorkflowStep>> steps;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [WorkflowArgs].
-  /// [description] A textual description for the workflow.
-  /// [onExceptionSteps] Specifies the steps (actions) to take if errors are encountered during execution of the workflow. See Workflow Steps below.
+  /// [description] Textual description for the workflow.
+  /// [onExceptionSteps] Steps (actions) to take if errors are encountered during execution of the workflow. See `onExceptionSteps` Block below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [steps] Specifies the details for the steps that are in the specified workflow. See Workflow Steps below.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [steps] Details for the steps that are in the specified workflow. See `steps` Block below.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const WorkflowArgs({
     this.description,
     this.onExceptionSteps,
@@ -54,4 +54,3 @@ class WorkflowArgs {
     );
   }
 }
-

@@ -105,6 +105,30 @@ import 'workgroup_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_athena_workgroup" "example" {
+///   name = "example"
+///   configuration = {
+///     enforce_workgroup_configuration    = true
+///     publish_cloudwatch_metrics_enabled = true
+///     result_configuration = {
+///       output_location ="s3://${exampleAwsS3Bucket.bucket}/output/"
+///       encryption_configuration = {
+///         encryption_option = "SSE_KMS"
+///         kms_key_arn       = exampleAwsKmsKey.arn
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -116,8 +140,8 @@ import 'workgroup_state.dart';
 /// import com.pulumi.aws.athena.inputs.WorkgroupConfigurationArgs;
 /// import com.pulumi.aws.athena.inputs.WorkgroupConfigurationResultConfigurationArgs;
 /// import com.pulumi.aws.athena.inputs.WorkgroupConfigurationResultConfigurationEncryptionConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -186,9 +210,9 @@ class Workgroup extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// State of the workgroup. Valid values are `DISABLED` or `ENABLED`. Defaults to `ENABLED`.
   late final pulumi.Output<String?> state;
-  /// Key-value map of resource tags for the workgroup. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the workgroup. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Workgroup].

@@ -94,6 +94,28 @@ import 'user_login_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_user" "example" {
+///   name          = "example"
+///   path          = "/"
+///   force_destroy = true
+/// }
+/// resource "aws_iam_userloginprofile" "example" {
+///   user    = aws_iam_user.example.name
+///   pgp_key = "keybase:some_person_that_exists"
+/// }
+/// output "password" {
+///   value = aws_iam_userloginprofile.example.encrypted_password
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +126,8 @@ import 'user_login_profile_state.dart';
 /// import com.pulumi.aws.iam.UserArgs;
 /// import com.pulumi.aws.iam.UserLoginProfile;
 /// import com.pulumi.aws.iam.UserLoginProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -159,7 +181,7 @@ import 'user_login_profile_state.dart';
 /// $ pulumi import aws:iam/userLoginProfile:UserLoginProfile example myusername
 /// ```
 ///
-/// Since Pulumi has no method to read the PGP or password information during import, use the resource options `ignore_changes` argument to ignore them (unless you want to recreate a password). For example:
+/// Since Pulumi has no method to read the PGP or password information during import, use the resource options `ignoreChanges` argument to ignore them (unless you want to recreate a password). For example:
 ///
 ///
 /// ```typescript
@@ -204,6 +226,18 @@ import 'user_login_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_userloginprofile" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -211,8 +245,8 @@ import 'user_login_profile_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.UserLoginProfile;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -239,7 +273,7 @@ class UserLoginProfile extends pulumi.CustomResource {
   late final pulumi.Output<String> encryptedPassword;
   /// The fingerprint of the PGP key used to encrypt the password. Only available if password was handled on this provider resource creation, not import.
   late final pulumi.Output<String> keyFingerprint;
-  /// The plain text password, only available when `pgp_key` is not provided.
+  /// The plain text password, only available when `pgpKey` is not provided.
   late final pulumi.Output<String> password;
   /// The length of the generated password on resource creation. Only applies on resource creation. Drift detection is not possible with this argument. Default value is `20`.
   late final pulumi.Output<int?> passwordLength;

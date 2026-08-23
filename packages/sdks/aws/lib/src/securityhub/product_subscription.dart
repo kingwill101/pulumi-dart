@@ -82,6 +82,25 @@ import 'product_subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+///
+/// resource "aws_securityhub_account" "example" {
+/// }
+/// resource "aws_securityhub_productsubscription" "example" {
+///   depends_on  = [aws_securityhub_account.example]
+///   product_arn ="arn:aws:securityhub:${data.aws_getregion.current.region}:733251395267:product/alertlogic/althreatmanagement"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +113,8 @@ import 'product_subscription_state.dart';
 /// import com.pulumi.aws.securityhub.ProductSubscription;
 /// import com.pulumi.aws.securityhub.ProductSubscriptionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -143,10 +162,23 @@ import 'product_subscription_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Security Hub product subscriptions using `product_arn,arn`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `arn` (String) Subscription ARN.
+/// * `productArn` (String) Product ARN.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Security Hub product subscriptions using `productArn` and `arn` separated by a comma (`,`). For example:
 ///
 /// ```sh
-/// $ pulumi import aws:securityhub/productSubscription:ProductSubscription example arn:aws:securityhub:eu-west-1:733251395267:product/alertlogic/althreatmanagement,arn:aws:securityhub:eu-west-1:123456789012:product-subscription/alertlogic/althreatmanagement
+/// $ pulumi import aws:securityhub/productSubscription:ProductSubscription example arn:aws:securityhub:eu-west-1::product/alertlogic/althreatmanagement,arn:aws:securityhub:eu-west-1:123456789012:product-subscription/alertlogic/althreatmanagement
 /// ```
 class ProductSubscription extends pulumi.CustomResource {
   /// The ARN of a resource that represents your subscription to the product that generates the findings that you want to import into Security Hub.

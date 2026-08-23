@@ -132,7 +132,7 @@ import 'field_level_encryption_profile_state.dart';
 /// 			EncryptionEntities: &cloudfront.FieldLevelEncryptionProfileEncryptionEntitiesArgs{
 /// 				Items: cloudfront.FieldLevelEncryptionProfileEncryptionEntitiesItemArray{
 /// 					&cloudfront.FieldLevelEncryptionProfileEncryptionEntitiesItemArgs{
-/// 						PublicKeyId: example.ID(),
+/// 						PublicKeyId: example.ID().ToIDOutput().ToStringOutput(),
 /// 						ProviderId:  pulumi.String("test provider"),
 /// 						FieldPatterns: &cloudfront.FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatternsArgs{
 /// 							Items: pulumi.StringArray{
@@ -150,6 +150,37 @@ import 'field_level_encryption_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_publickey" "example" {
+///   comment     = "test public key"
+///   encoded_key = file("public_key.pem")
+///   name        = "test_key"
+/// }
+/// resource "aws_cloudfront_fieldlevelencryptionprofile" "test" {
+///   comment = "test comment"
+///   name    = "test profile"
+///   encryption_entities = {
+///     items = [{
+///       "publicKeyId" = aws_cloudfront_publickey.example.id
+///       "providerId"  = "test provider"
+///       "fieldPatterns" = {
+///         "items" = ["DateOfBirth"]
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -163,8 +194,10 @@ import 'field_level_encryption_profile_state.dart';
 /// import com.pulumi.aws.cloudfront.FieldLevelEncryptionProfile;
 /// import com.pulumi.aws.cloudfront.FieldLevelEncryptionProfileArgs;
 /// import com.pulumi.aws.cloudfront.inputs.FieldLevelEncryptionProfileEncryptionEntitiesArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.cloudfront.inputs.FieldLevelEncryptionProfileEncryptionEntitiesItemArgs;
+/// import com.pulumi.aws.cloudfront.inputs.FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatternsArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

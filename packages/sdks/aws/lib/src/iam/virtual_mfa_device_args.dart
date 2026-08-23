@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMfaDeviceArgs {
   /// Path for the virtual MFA device.
   final pulumi.Input<String>? path;
-  /// Map of resource tags for the virtual mfa device. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of resource tags for the virtual mfa device. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.
   final pulumi.Input<String> virtualMfaDeviceName;
 
   /// Creates a new [VirtualMfaDeviceArgs].
   /// [path] Path for the virtual MFA device.
-  /// [tags] Map of resource tags for the virtual mfa device. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of resource tags for the virtual mfa device. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [virtualMfaDeviceName] Name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.
   const VirtualMfaDeviceArgs({
     this.path,
@@ -40,4 +40,3 @@ class VirtualMfaDeviceArgs {
     );
   }
 }
-

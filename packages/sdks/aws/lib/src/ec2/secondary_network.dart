@@ -78,6 +78,23 @@ import 'secondary_network_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_secondarynetwork" "example" {
+///   ipv4_cidr_block = "10.0.0.0/16"
+///   network_type    = "rdma"
+///   tags = {
+///     "Name" = "example-secondary-network"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +103,8 @@ import 'secondary_network_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.SecondaryNetwork;
 /// import com.pulumi.aws.ec2.SecondaryNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -130,7 +147,7 @@ import 'secondary_network_timeouts.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -155,9 +172,9 @@ class SecondaryNetwork extends pulumi.CustomResource {
   late final pulumi.Output<String> secondaryNetworkId;
   /// State of the IPv4 CIDR block association.
   late final pulumi.Output<String> state;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<SecondaryNetworkTimeouts?> timeouts;
 

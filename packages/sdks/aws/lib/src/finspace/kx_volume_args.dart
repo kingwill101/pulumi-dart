@@ -8,38 +8,37 @@ import 'kx_volume_nas1_configuration.dart';
 /// {@endtemplate}
 /// {@macro pulumi_finspace_kx_volume_kx_volume_args_doc}
 class KxVolumeArgs {
-  /// The identifier of the AWS Availability Zone IDs.
-  ///
-  /// The following arguments are optional:
+  /// Identifier of the AWS Availability Zone IDs.
   final pulumi.Input<List<String>> availabilityZones;
-  /// The number of availability zones you want to assign per volume. Currently, Finspace only support SINGLE for volumes.
-  /// * `SINGLE` - Assigns one availability zone per volume.
+  /// Number of availability zones you want to assign per volume. Currently, FinSpace only supports `SINGLE` for volumes, which assigns one availability zone per volume.
   final pulumi.Input<String> azMode;
   /// Description of the volume.
   final pulumi.Input<String>? description;
-  /// A unique identifier for the kdb environment, whose clusters can attach to the volume.
+  /// Unique identifier for the kdb environment, whose clusters can attach to the volume.
   final pulumi.Input<String> environmentId;
-  /// Unique name for the volumr that you want to create.
+  /// Unique name for the volume that you want to create.
   final pulumi.Input<String>? name;
-  /// Specifies the configuration for the Network attached storage (`NAS_1`) file system volume. This parameter is required when `volume_type` is `NAS_1`. See `nas1_configuration` Argument Reference below.
+  /// Configuration for the Network attached storage (`NAS_1`) file system volume. This parameter is required when `volumeType` is `NAS_1`. See `nas1Configuration` Block below.
   final pulumi.Input<List<KxVolumeNas1Configuration>>? nas1Configurations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A list of key-value pairs to label the volume. You can add up to 50 tags to a volume
+  /// Key-value pairs to label the volume. You can add up to 50 tags to a volume.
   final pulumi.Input<Map<String, String>>? tags;
-  /// The type of file system volume. Currently, FinSpace only supports the `NAS_1` volume type. When you select the `NAS_1` volume type, you must also provide `nas1_configuration`.
+  /// Type of file system volume. Currently, FinSpace only supports the `NAS_1` volume type. When you select the `NAS_1` volume type, you must also provide `nas1Configuration`.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String> type;
 
   /// Creates a new [KxVolumeArgs].
-  /// [availabilityZones] The identifier of the AWS Availability Zone IDs.
-  /// [azMode] The number of availability zones you want to assign per volume. Currently, Finspace only support SINGLE for volumes.
+  /// [availabilityZones] Identifier of the AWS Availability Zone IDs.
+  /// [azMode] Number of availability zones you want to assign per volume. Currently, FinSpace only supports `SINGLE` for volumes, which assigns one availability zone per volume.
   /// [description] Description of the volume.
-  /// [environmentId] A unique identifier for the kdb environment, whose clusters can attach to the volume.
-  /// [name] Unique name for the volumr that you want to create.
-  /// [nas1Configurations] Specifies the configuration for the Network attached storage (`NAS_1`) file system volume. This parameter is required when `volume_type` is `NAS_1`. See `nas1_configuration` Argument Reference below.
+  /// [environmentId] Unique identifier for the kdb environment, whose clusters can attach to the volume.
+  /// [name] Unique name for the volume that you want to create.
+  /// [nas1Configurations] Configuration for the Network attached storage (`NAS_1`) file system volume. This parameter is required when `volumeType` is `NAS_1`. See `nas1Configuration` Block below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A list of key-value pairs to label the volume. You can add up to 50 tags to a volume
-  /// [type] The type of file system volume. Currently, FinSpace only supports the `NAS_1` volume type. When you select the `NAS_1` volume type, you must also provide `nas1_configuration`.
+  /// [tags] Key-value pairs to label the volume. You can add up to 50 tags to a volume.
+  /// [type] Type of file system volume. Currently, FinSpace only supports the `NAS_1` volume type. When you select the `NAS_1` volume type, you must also provide `nas1Configuration`.
   const KxVolumeArgs({
     required this.availabilityZones,
     required this.azMode,
@@ -80,4 +79,3 @@ class KxVolumeArgs {
     );
   }
 }
-

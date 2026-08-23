@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NatGatewayAvailabilityZoneAddress {
   /// List of allocation IDs of the Elastic IP addresses (EIPs) to be used for handling outbound NAT traffic in this specific Availability Zone.
   final pulumi.Input<List<String>>? allocationIds;
-  /// Availability Zone (e.g. `us-west-2a`) where this specific NAT gateway configuration will be active. Exactly one of `availability_zone` or `availability_zone_id` must be specified.
+  /// Availability Zone (e.g. `us-west-2a`) where this specific NAT gateway configuration will be active. Exactly one of `availabilityZone` or `availabilityZoneId` must be specified.
   final pulumi.Input<String>? availabilityZone;
-  /// Availability Zone ID (e.g. `usw2-az2`) where this specific NAT gateway configuration will be active. Exactly one of `availability_zone` or `availability_zone_id` must be specified.
+  /// Availability Zone ID (e.g. `usw2-az2`) where this specific NAT gateway configuration will be active. Exactly one of `availabilityZone` or `availabilityZoneId` must be specified.
   final pulumi.Input<String>? availabilityZoneId;
 
   /// Creates a new [NatGatewayAvailabilityZoneAddress].
   /// [allocationIds] List of allocation IDs of the Elastic IP addresses (EIPs) to be used for handling outbound NAT traffic in this specific Availability Zone.
-  /// [availabilityZone] Availability Zone (e.g. `us-west-2a`) where this specific NAT gateway configuration will be active. Exactly one of `availability_zone` or `availability_zone_id` must be specified.
-  /// [availabilityZoneId] Availability Zone ID (e.g. `usw2-az2`) where this specific NAT gateway configuration will be active. Exactly one of `availability_zone` or `availability_zone_id` must be specified.
+  /// [availabilityZone] Availability Zone (e.g. `us-west-2a`) where this specific NAT gateway configuration will be active. Exactly one of `availabilityZone` or `availabilityZoneId` must be specified.
+  /// [availabilityZoneId] Availability Zone ID (e.g. `usw2-az2`) where this specific NAT gateway configuration will be active. Exactly one of `availabilityZone` or `availabilityZoneId` must be specified.
   const NatGatewayAvailabilityZoneAddress({
     this.allocationIds,
     this.availabilityZone,
@@ -36,4 +36,3 @@ class NatGatewayAvailabilityZoneAddress {
     );
   }
 }
-

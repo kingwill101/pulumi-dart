@@ -127,6 +127,35 @@ import 'thing_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iot_thinggroup" "parent" {
+///   name = "parent"
+/// }
+/// resource "aws_iot_thinggroup" "example" {
+///   name              = "example"
+///   parent_group_name = aws_iot_thinggroup.parent.name
+///   properties = {
+///     attribute_payload = {
+///       attributes = {
+///         "One" = "11111"
+///         "Two" = "TwoTwo"
+///       }
+///     }
+///     description = "This is my thing group"
+///   }
+///   tags = {
+///     "managed" = "true"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -137,8 +166,8 @@ import 'thing_group_state.dart';
 /// import com.pulumi.aws.iot.ThingGroupArgs;
 /// import com.pulumi.aws.iot.inputs.ThingGroupPropertiesArgs;
 /// import com.pulumi.aws.iot.inputs.ThingGroupPropertiesAttributePayloadArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

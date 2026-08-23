@@ -4,7 +4,7 @@ import 'endpoint_private_dns_state.dart';
 
 /// Resource for enabling private DNS on an AWS VPC (Virtual Private Cloud) Endpoint.
 ///
-/// &gt; When using this resource, the `private_dns_enabled` argument should be omitted on the parent `aws.ec2.VpcEndpoint` resource.
+/// &gt; When using this resource, the `privateDnsEnabled` argument should be omitted on the parent `aws.ec2.VpcEndpoint` resource.
 /// Setting the value both places can lead to unintended behavior and persistent differences.
 ///
 /// ## Example Usage
@@ -66,6 +66,20 @@ import 'endpoint_private_dns_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpc_endpointprivatedns" "example" {
+///   vpc_endpoint_id     = exampleAwsVpcEndpoint.id
+///   private_dns_enabled = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +88,8 @@ import 'endpoint_private_dns_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpc.EndpointPrivateDns;
 /// import com.pulumi.aws.vpc.EndpointPrivateDnsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -107,7 +121,7 @@ import 'endpoint_private_dns_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import a VPC (Virtual Private Cloud) Endpoint Private DNS using the `vpc_endpoint_id`. For example:
+/// Using `pulumi import`, import a VPC (Virtual Private Cloud) Endpoint Private DNS using the `vpcEndpointId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:vpc/endpointPrivateDns:EndpointPrivateDns example vpce-abcd-1234

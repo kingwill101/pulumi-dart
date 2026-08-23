@@ -63,6 +63,20 @@ import 'ami_launch_permission_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_amilaunchpermission" "example" {
+///   image_id   = "ami-12345678"
+///   account_id = "123456789012"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'ami_launch_permission_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.AmiLaunchPermission;
 /// import com.pulumi.aws.ec2.AmiLaunchPermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -159,6 +173,20 @@ import 'ami_launch_permission_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_amilaunchpermission" "example" {
+///   image_id = "ami-12345678"
+///   group    = "all"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -167,8 +195,8 @@ import 'ami_launch_permission_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.AmiLaunchPermission;
 /// import com.pulumi.aws.ec2.AmiLaunchPermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -264,6 +292,23 @@ import 'ami_launch_permission_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_organizations_getorganization" "current" {
+/// }
+///
+/// resource "aws_ec2_amilaunchpermission" "example" {
+///   image_id         = "ami-12345678"
+///   organization_arn = data.aws_organizations_getorganization.current.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -274,8 +319,8 @@ import 'ami_launch_permission_state.dart';
 /// import com.pulumi.aws.organizations.inputs.GetOrganizationArgs;
 /// import com.pulumi.aws.ec2.AmiLaunchPermission;
 /// import com.pulumi.aws.ec2.AmiLaunchPermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -314,6 +359,22 @@ import 'ami_launch_permission_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `imageId` (String) ID of the AMI.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `group` (String) Name of the group for the launch permission.
+/// * `launchPermissionAccountId` (String) AWS account ID for the launch permission.
+/// * `organizationArn` (String) ARN of an organization for the launch permission.
+/// * `organizationalUnitArn` (String) ARN of an organizational unit for the launch permission.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import AMI Launch Permissions using `[ACCOUNT-ID|GROUP-NAME|ORGANIZATION-ARN|ORGANIZATIONAL-UNIT-ARN]/IMAGE-ID`. For example:
 ///

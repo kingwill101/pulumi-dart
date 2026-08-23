@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption {
-  /// The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
+  /// Name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
   final pulumi.Input<String> name;
-  /// The secret to expose to the container. The supported values are either the full Amazon Resource Name (ARN) of the AWS Secrets Manager secret or the full ARN of the parameter in the AWS Systems Manager Parameter Store.
+  /// Secret to expose to the container.
   final pulumi.Input<String> valueFrom;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption].
-  /// [name] The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
-  /// [valueFrom] The secret to expose to the container. The supported values are either the full Amazon Resource Name (ARN) of the AWS Secrets Manager secret or the full ARN of the parameter in the AWS Systems Manager Parameter Store.
+  /// [name] Name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
+  /// [valueFrom] Secret to expose to the container.
   const GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption({
     required this.name,
     required this.valueFrom,
@@ -30,4 +30,3 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecr
     );
   }
 }
-

@@ -26,6 +26,8 @@ class GetClusterResult {
   final String clusterName;
   /// UUID of the MSK cluster, for use in IAM policies.
   final String clusterUuid;
+  /// Status indicating whether Amazon MSK requires customer action for the cluster. Valid values are `NONE`, `ACTION_RECOMMENDED`, and `CRITICAL_ACTION_REQUIRED`.
+  final String customerActionStatus;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   /// Apache Kafka version.
@@ -35,7 +37,7 @@ class GetClusterResult {
   final String region;
   /// Map of key-value pairs assigned to the cluster.
   final Map<String, String> tags;
-  /// A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster. The returned values are sorted alphbetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
+  /// A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
   final String zookeeperConnectString;
   /// A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster via TLS. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
   final String zookeeperConnectStringTls;
@@ -52,12 +54,13 @@ class GetClusterResult {
   /// [brokerNodeGroupInfos] Configuration block for the broker nodes of the Kafka cluster.
   /// [clusterName] Required.
   /// [clusterUuid] UUID of the MSK cluster, for use in IAM policies.
+  /// [customerActionStatus] Status indicating whether Amazon MSK requires customer action for the cluster. Valid values are `NONE`, `ACTION_RECOMMENDED`, and `CRITICAL_ACTION_REQUIRED`.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [kafkaVersion] Apache Kafka version.
   /// [numberOfBrokerNodes] Number of broker nodes in the cluster.
   /// [region] Required.
   /// [tags] Map of key-value pairs assigned to the cluster.
-  /// [zookeeperConnectString] A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster. The returned values are sorted alphbetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
+  /// [zookeeperConnectString] A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
   /// [zookeeperConnectStringTls] A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster via TLS. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
   const GetClusterResult({
     required this.arn,
@@ -71,6 +74,7 @@ class GetClusterResult {
     required this.brokerNodeGroupInfos,
     required this.clusterName,
     required this.clusterUuid,
+    required this.customerActionStatus,
     required this.id,
     required this.kafkaVersion,
     required this.numberOfBrokerNodes,
@@ -93,6 +97,7 @@ class GetClusterResult {
       'brokerNodeGroupInfos': pulumi.Input.encodeList<GetClusterBrokerNodeGroupInfo, Map<String, dynamic>>(brokerNodeGroupInfos, (value) => value.toMap()),
       'clusterName': clusterName,
       'clusterUuid': clusterUuid,
+      'customerActionStatus': customerActionStatus,
       'id': id,
       'kafkaVersion': kafkaVersion,
       'numberOfBrokerNodes': numberOfBrokerNodes,
@@ -116,6 +121,7 @@ class GetClusterResult {
       brokerNodeGroupInfos: pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfo>(map['brokerNodeGroupInfos']!, (value) => GetClusterBrokerNodeGroupInfo.fromMap((value as Map).cast<String, dynamic>())),
       clusterName: map['clusterName'] as String,
       clusterUuid: map['clusterUuid'] as String,
+      customerActionStatus: map['customerActionStatus'] as String,
       id: map['id'] as String,
       kafkaVersion: map['kafkaVersion'] as String,
       numberOfBrokerNodes: map['numberOfBrokerNodes'] as int,
@@ -126,4 +132,3 @@ class GetClusterResult {
     );
   }
 }
-

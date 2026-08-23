@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_statement_rule_group_reference_statement_rule_action_override_action_to_use_block_custom_response_response_header.dart';
 
 class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseBlockCustomResponse {
-  /// References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `custom_response_body` block of this resource.
+  /// Key of a custom response body defined in the Web ACL.
   final pulumi.Input<String>? customResponseBodyKey;
-  /// The HTTP status code to return to the client.
+  /// HTTP status code to return (200-599).
   final pulumi.Input<int> responseCode;
-  /// The `response_header` blocks used to define the HTTP response headers added to the response. See `response_header` below for details.
+  /// Custom headers to include in the response. See Response Header below.
   final pulumi.Input<List<WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseBlockCustomResponseResponseHeader>>? responseHeaders;
 
   /// Creates a new [WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseBlockCustomResponse].
-  /// [customResponseBodyKey] References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `custom_response_body` block of this resource.
-  /// [responseCode] The HTTP status code to return to the client.
-  /// [responseHeaders] The `response_header` blocks used to define the HTTP response headers added to the response. See `response_header` below for details.
+  /// [customResponseBodyKey] Key of a custom response body defined in the Web ACL.
+  /// [responseCode] HTTP status code to return (200-599).
+  /// [responseHeaders] Custom headers to include in the response. See Response Header below.
   const WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseBlockCustomResponse({
     this.customResponseBodyKey,
     required this.responseCode,
@@ -37,4 +37,3 @@ class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUs
     );
   }
 }
-

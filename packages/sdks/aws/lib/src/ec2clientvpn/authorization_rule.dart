@@ -66,6 +66,21 @@ import 'authorization_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2clientvpn_authorizationrule" "example" {
+///   client_vpn_endpoint_id = exampleAwsEc2ClientVpnEndpoint.id
+///   target_network_cidr    = exampleAwsSubnet.cidrBlock
+///   authorize_all_groups   = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +89,8 @@ import 'authorization_rule_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2clientvpn.AuthorizationRule;
 /// import com.pulumi.aws.ec2clientvpn.AuthorizationRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -126,9 +141,9 @@ import 'authorization_rule_state.dart';
 /// $ pulumi import aws:ec2clientvpn/authorizationRule:AuthorizationRule example cvpn-endpoint-0ac3a1abbccddd666,10.1.0.0/24,team-a
 /// ```
 class AuthorizationRule extends pulumi.CustomResource {
-  /// The ID of the group to which the authorization rule grants access. One of `access_group_id` or `authorize_all_groups` must be set.
+  /// The ID of the group to which the authorization rule grants access. One of `accessGroupId` or `authorizeAllGroups` must be set.
   late final pulumi.Output<String?> accessGroupId;
-  /// Indicates whether the authorization rule grants access to all clients. One of `access_group_id` or `authorize_all_groups` must be set.
+  /// Indicates whether the authorization rule grants access to all clients. One of `accessGroupId` or `authorizeAllGroups` must be set.
   late final pulumi.Output<bool?> authorizeAllGroups;
   /// The ID of the Client VPN endpoint.
   late final pulumi.Output<String> clientVpnEndpointId;

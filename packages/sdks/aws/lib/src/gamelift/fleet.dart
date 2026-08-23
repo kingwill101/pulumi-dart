@@ -103,6 +103,28 @@ import 'fleet_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_gamelift_fleet" "example" {
+///   build_id          = exampleAwsGameliftBuild.id
+///   ec2_instance_type = "t2.micro"
+///   fleet_type        = "ON_DEMAND"
+///   name              = "example-fleet-name"
+///   runtime_configuration = {
+///     server_processes = [{
+///       "concurrentExecutions" = 1
+///       "launchPath"           = "C:\\game\\GomokuServer.exe"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +134,9 @@ import 'fleet_state.dart';
 /// import com.pulumi.aws.gamelift.Fleet;
 /// import com.pulumi.aws.gamelift.FleetArgs;
 /// import com.pulumi.aws.gamelift.inputs.FleetRuntimeConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.gamelift.inputs.FleetRuntimeConfigurationServerProcessArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,7 +192,7 @@ class Fleet extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Build ARN.
   late final pulumi.Output<String> buildArn;
-  /// ID of the GameLift Build to be deployed on the fleet. Conflicts with `script_id`.
+  /// ID of the GameLift Build to be deployed on the fleet. Conflicts with `scriptId`.
   late final pulumi.Output<String?> buildId;
   /// Prompts GameLift to generate a TLS/SSL certificate for the fleet. See certificate_configuration.
   late final pulumi.Output<FleetCertificateConfiguration> certificateConfiguration;
@@ -200,11 +223,11 @@ class Fleet extends pulumi.CustomResource {
   late final pulumi.Output<FleetRuntimeConfiguration?> runtimeConfiguration;
   /// Script ARN.
   late final pulumi.Output<String> scriptArn;
-  /// ID of the GameLift Script to be deployed on the fleet. Conflicts with `build_id`.
+  /// ID of the GameLift Script to be deployed on the fleet. Conflicts with `buildId`.
   late final pulumi.Output<String?> scriptId;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Fleet].

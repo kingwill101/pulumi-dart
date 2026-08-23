@@ -5,7 +5,7 @@ import 'get_access_points_access_point.dart';
 
 /// Result data returned by getAccessPoints.
 class GetAccessPointsResult {
-  /// A list of access points matching the search criteria. See `access_points` below.
+  /// List of access points matching the search criteria. See `accessPoints` below.
   final List<GetAccessPointsAccessPoint> accessPoints;
   final String? accountId;
   /// Name of the bucket associated with the access point.
@@ -14,17 +14,14 @@ class GetAccessPointsResult {
   final String? dataSourceId;
   /// Type of the data source that the access point is attached to.
   final String? dataSourceType;
-  /// The provider-assigned unique ID for this managed resource.
-  final String id;
   final String region;
 
   /// Creates a new [GetAccessPointsResult].
-  /// [accessPoints] A list of access points matching the search criteria. See `access_points` below.
+  /// [accessPoints] List of access points matching the search criteria. See `accessPoints` below.
   /// [accountId] Optional.
   /// [bucket] Name of the bucket associated with the access point.
   /// [dataSourceId] Unique identifier for the data source of the access point.
   /// [dataSourceType] Type of the data source that the access point is attached to.
-  /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   const GetAccessPointsResult({
     required this.accessPoints,
@@ -32,7 +29,6 @@ class GetAccessPointsResult {
     this.bucket,
     this.dataSourceId,
     this.dataSourceType,
-    required this.id,
     required this.region,
   });
 
@@ -43,7 +39,6 @@ class GetAccessPointsResult {
       'bucket': ?bucket,
       'dataSourceId': ?dataSourceId,
       'dataSourceType': ?dataSourceType,
-      'id': id,
       'region': region,
     };
   }
@@ -55,9 +50,7 @@ class GetAccessPointsResult {
       bucket: (() { final guardedValue = map['bucket']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dataSourceId: (() { final guardedValue = map['dataSourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dataSourceType: (() { final guardedValue = map['dataSourceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
       region: map['region'] as String,
     );
   }
 }
-

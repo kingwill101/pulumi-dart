@@ -29,7 +29,7 @@ class EndpointPostgresSettings {
   final pulumi.Input<bool>? mapBooleanAsBoolean;
   /// Optional When true, DMS migrates JSONB values as CLOB.
   final pulumi.Input<bool>? mapJsonbAsClob;
-  /// Optional When true, DMS migrates LONG values as VARCHAR.
+  /// Specifies how DMS maps LONG VARCHAR values. Valid values are `wstring`, `clob`, and `nclob`.
   final pulumi.Input<String>? mapLongVarcharAs;
   /// Specifies the maximum size (in KB) of any .csv file used to transfer data to PostgreSQL. Default is `32,768 KB`.
   final pulumi.Input<int>? maxFileSize;
@@ -54,7 +54,7 @@ class EndpointPostgresSettings {
   /// [heartbeatSchema] Sets the schema in which the heartbeat artifacts are created. Default value is `public`.
   /// [mapBooleanAsBoolean] You can use PostgreSQL endpoint settings to map a boolean as a boolean from your PostgreSQL source to a Amazon Redshift target. Default value is `false`.
   /// [mapJsonbAsClob] Optional When true, DMS migrates JSONB values as CLOB.
-  /// [mapLongVarcharAs] Optional When true, DMS migrates LONG values as VARCHAR.
+  /// [mapLongVarcharAs] Specifies how DMS maps LONG VARCHAR values. Valid values are `wstring`, `clob`, and `nclob`.
   /// [maxFileSize] Specifies the maximum size (in KB) of any .csv file used to transfer data to PostgreSQL. Default is `32,768 KB`.
   /// [pluginName] Specifies the plugin to use to create a replication slot. Valid values: `pglogical`, `test-decoding`.
   /// [serviceAccessRoleArn] Specifies the IAM role to use to authenticate the connection.
@@ -126,4 +126,3 @@ class EndpointPostgresSettings {
     );
   }
 }
-

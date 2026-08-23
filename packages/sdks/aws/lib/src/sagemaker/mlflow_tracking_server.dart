@@ -67,6 +67,21 @@ import 'mlflow_tracking_server_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_mlflowtrackingserver" "example" {
+///   tracking_server_name = "example"
+///   role_arn             = exampleAwsIamRole.arn
+///   artifact_store_uri   ="s3://${exampleAwsS3Bucket.bucket}/path"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'mlflow_tracking_server_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sagemaker.MlflowTrackingServer;
 /// import com.pulumi.aws.sagemaker.MlflowTrackingServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -110,7 +125,7 @@ import 'mlflow_tracking_server_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SageMaker AI MLFlow Tracking Servers using the `workteam_name`. For example:
+/// Using `pulumi import`, import SageMaker AI MLFlow Tracking Servers using the `workteamName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sagemaker/mlflowTrackingServer:MlflowTrackingServer example example
@@ -120,7 +135,7 @@ class MlflowTrackingServer extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The S3 URI for a general purpose bucket to use as the MLflow Tracking Server artifact store.
   late final pulumi.Output<String> artifactStoreUri;
-  /// A list of Member Definitions that contains objects that identify the workers that make up the work team.
+  /// Whether to enable or disable automatic registration of new MLflow models to the SageMaker Model Registry. Defaults to false.
   late final pulumi.Output<bool?> automaticModelRegistration;
   /// The version of MLflow that the tracking server uses. To see which MLflow versions are available to use, see [How it works](https://docs.aws.amazon.com/sagemaker/latest/dg/mlflow.html#mlflow-create-tracking-server-how-it-works).
   late final pulumi.Output<String> mlflowVersion;
@@ -128,9 +143,9 @@ class MlflowTrackingServer extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The Amazon Resource Name (ARN) for an IAM role in your account that the MLflow Tracking Server uses to access the artifact store in Amazon S3. The role should have AmazonS3FullAccess permissions. For more information on IAM permissions for tracking server creation, see [Set up IAM permissions for MLflow](https://docs.aws.amazon.com/sagemaker/latest/dg/mlflow-create-tracking-server-iam.html).
   late final pulumi.Output<String> roleArn;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// A unique string identifying the tracking server name. This string is part of the tracking server ARN.
   late final pulumi.Output<String> trackingServerName;

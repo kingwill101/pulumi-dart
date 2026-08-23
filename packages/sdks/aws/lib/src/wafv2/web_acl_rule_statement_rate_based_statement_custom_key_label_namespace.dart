@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace {
-  /// The namespace to use for aggregation
+  /// Label namespace to use as the custom key.
   final pulumi.Input<String> namespace;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace].
-  /// [namespace] The namespace to use for aggregation
+  /// [namespace] Label namespace to use as the custom key.
   const WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace({
     required this.namespace,
   });
@@ -24,4 +24,3 @@ class WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace {
     );
   }
 }
-

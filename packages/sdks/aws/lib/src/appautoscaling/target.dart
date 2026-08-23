@@ -5,7 +5,7 @@ import 'target_suspended_state.dart';
 
 /// Provides an Application AutoScaling ScalableTarget resource. To manage policies which get attached to the target, see the `aws.appautoscaling.Policy` resource.
 ///
-/// &gt; **NOTE:** Scalable targets created before 2023-03-20 may not have an assigned `arn`. These resource cannot use `tags` or participate in `default_tags`. To prevent `pulumi preview` showing differences that can never be reconciled, use the `lifecycle.ignore_changes` meta-argument. See the example below.
+/// &gt; **NOTE:** Scalable targets created before 2023-03-20 may not have an assigned `arn`. These resource cannot use `tags` or participate in `defaultTags`. To prevent `pulumi preview` showing differences that can never be reconciled, use the `lifecycle.ignore_changes` meta-argument. See the example below.
 ///
 /// &gt; **NOTE:** The [Application Auto Scaling service automatically attempts to manage IAM Service-Linked Roles](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles) when registering certain service namespaces for the first time. To manually manage this role, see the `aws.iam.ServiceLinkedRole` resource.
 ///
@@ -80,6 +80,23 @@ import 'target_suspended_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appautoscaling_target" "dynamodb_table_read_target" {
+///   max_capacity       = 100
+///   min_capacity       = 5
+///   resource_id        ="table/${example.name}"
+///   scalable_dimension = "dynamodb:table:ReadCapacityUnits"
+///   service_namespace  = "dynamodb"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +105,8 @@ import 'target_suspended_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appautoscaling.Target;
 /// import com.pulumi.aws.appautoscaling.TargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -195,6 +212,23 @@ import 'target_suspended_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appautoscaling_target" "dynamodb_index_read_target" {
+///   max_capacity       = 100
+///   min_capacity       = 5
+///   resource_id        ="table/${example.name}/index/${indexName}"
+///   scalable_dimension = "dynamodb:index:ReadCapacityUnits"
+///   service_namespace  = "dynamodb"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -203,8 +237,8 @@ import 'target_suspended_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appautoscaling.Target;
 /// import com.pulumi.aws.appautoscaling.TargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -310,6 +344,23 @@ import 'target_suspended_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appautoscaling_target" "ecs_target" {
+///   max_capacity       = 4
+///   min_capacity       = 1
+///   resource_id        ="service/${example.name}/${exampleAwsEcsService.name}"
+///   scalable_dimension = "ecs:service:DesiredCount"
+///   service_namespace  = "ecs"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -318,8 +369,8 @@ import 'target_suspended_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appautoscaling.Target;
 /// import com.pulumi.aws.appautoscaling.TargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -425,6 +476,23 @@ import 'target_suspended_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appautoscaling_target" "replicas" {
+///   service_namespace  = "rds"
+///   scalable_dimension = "rds:cluster:ReadReplicaCount"
+///   resource_id        ="cluster:${example.id}"
+///   min_capacity       = 1
+///   max_capacity       = 15
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -433,8 +501,8 @@ import 'target_suspended_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appautoscaling.Target;
 /// import com.pulumi.aws.appautoscaling.TargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -470,7 +538,7 @@ import 'target_suspended_state.dart';
 /// ```
 ///
 ///
-/// ### Suppressing `tags_all` Differences For Older Resources
+/// ### Suppressing `tagsAll` Differences For Older Resources
 ///
 ///
 /// ```typescript
@@ -539,6 +607,23 @@ import 'target_suspended_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appautoscaling_target" "ecs_target" {
+///   max_capacity       = 4
+///   min_capacity       = 1
+///   resource_id        ="service/${example.name}/${exampleAwsEcsService.name}"
+///   scalable_dimension = "ecs:service:DesiredCount"
+///   service_namespace  = "ecs"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -547,8 +632,8 @@ import 'target_suspended_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appautoscaling.Target;
 /// import com.pulumi.aws.appautoscaling.TargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -654,6 +739,23 @@ import 'target_suspended_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appautoscaling_target" "msk_target" {
+///   service_namespace  = "kafka"
+///   scalable_dimension = "kafka:broker-storage:VolumeSize"
+///   resource_id        = example.arn
+///   min_capacity       = 1
+///   max_capacity       = 8
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -662,8 +764,8 @@ import 'target_suspended_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appautoscaling.Target;
 /// import com.pulumi.aws.appautoscaling.TargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -702,13 +804,27 @@ import 'target_suspended_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `resourceId` - (String) Resource type and unique identifier string for the resource associated with the scalable target.
+/// * `scalableDimension` - (String) Scalable dimension of the scalable target.
+/// * `serviceNamespace` - (String) AWS service namespace of the scalable target.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Application AutoScaling Target using the `service-namespace` , `resource-id` and `scalable-dimension` separated by `/`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appautoscaling/target:Target test-target service-namespace/resource-id/scalable-dimension
 /// ```
 class Target extends pulumi.CustomResource {
-  /// The ARN of the scalable target.
+  /// ARN of the scalable target.
   late final pulumi.Output<String> arn;
   /// Max capacity of the scalable target.
   late final pulumi.Output<int> maxCapacity;
@@ -724,11 +840,11 @@ class Target extends pulumi.CustomResource {
   late final pulumi.Output<String> scalableDimension;
   /// AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
   late final pulumi.Output<String> serviceNamespace;
-  /// Specifies whether the scaling activities for a scalable target are in a suspended state.
+  /// Whether the scaling activities for a scalable target are in a suspended state.
   late final pulumi.Output<TargetSuspendedState> suspendedState;
-  /// Map of tags to assign to the scalable target. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the scalable target. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Target].

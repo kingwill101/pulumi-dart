@@ -71,6 +71,22 @@ import 'platform_application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sns_platformapplication" "apns_application" {
+///   name                = "apns_application"
+///   platform            = "APNS"
+///   platform_credential = "<APNS PRIVATE KEY>"
+///   platform_principal  = "<APNS CERTIFICATE>"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +95,8 @@ import 'platform_application_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sns.PlatformApplication;
 /// import com.pulumi.aws.sns.PlatformApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -188,6 +204,24 @@ import 'platform_application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sns_platformapplication" "apns_application" {
+///   name                     = "apns_application"
+///   platform                 = "APNS"
+///   platform_credential      = "<APNS SIGNING KEY>"
+///   platform_principal       = "<APNS SIGNING KEY ID>"
+///   apple_platform_team_id   = "<APPLE TEAM ID>"
+///   apple_platform_bundle_id = "<APPLE BUNDLE ID>"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -196,8 +230,8 @@ import 'platform_application_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sns.PlatformApplication;
 /// import com.pulumi.aws.sns.PlatformApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -297,6 +331,21 @@ import 'platform_application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sns_platformapplication" "gcm_application" {
+///   name                = "gcm_application"
+///   platform            = "GCM"
+///   platform_credential = "<GCM API KEY>"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -305,8 +354,8 @@ import 'platform_application_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sns.PlatformApplication;
 /// import com.pulumi.aws.sns.PlatformApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -367,9 +416,9 @@ class PlatformApplication extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The platform that the app is registered with. See [Platform](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for supported platforms.
   late final pulumi.Output<String> platform;
-  /// Application Platform credential. See [Credential](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for type of credential required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
+  /// Application Platform credential. See [Credential](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for type of credential required for platform. The value of this attribute when stored into the Terraform state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
   late final pulumi.Output<String> platformCredential;
-  /// Application Platform principal. See [Principal](http://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformApplication.html) for type of principal required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
+  /// Application Platform principal. See [Principal](http://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformApplication.html) for type of principal required for platform. The value of this attribute when stored into the Terraform state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
   late final pulumi.Output<String?> platformPrincipal;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

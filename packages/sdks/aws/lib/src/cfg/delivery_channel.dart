@@ -5,7 +5,7 @@ import 'delivery_channel_state.dart';
 
 /// Provides an AWS Config Delivery Channel.
 ///
-/// &gt; **Note:** Delivery Channel requires a Configuration Recorder to be present. Use of `depends_on` (as shown below) is recommended to avoid race conditions.
+/// &gt; **Note:** Delivery Channel requires a Configuration Recorder to be present. Use of `dependsOn` (as shown below) is recommended to avoid race conditions.
 ///
 /// ## Example Usage
 ///
@@ -55,7 +55,7 @@ import 'delivery_channel_state.dart';
 /// const pRolePolicy = new aws.iam.RolePolicy("p", {
 ///     name: "awsconfig-example",
 ///     role: r.id,
-///     policy: p.apply(p => p.json),
+///     policy: p.json,
 /// });
 /// ```
 /// ```python
@@ -271,17 +271,65 @@ import 'delivery_channel_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "p", &iam.RolePolicyArgs{
-/// 			Name: pulumi.String("awsconfig-example"),
-/// 			Role: r.ID(),
-/// 			Policy: pulumi.String(p.ApplyT(func(p iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &p.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:   pulumi.String("awsconfig-example"),
+/// 			Role:   r.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: p.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["config.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "p" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["s3:*"]
+///     resources = [aws_s3_bucket.b.arn, "${aws_s3_bucket.b.arn}/*"]
+///   }
+/// }
+///
+/// resource "aws_cfg_deliverychannel" "foo" {
+///   depends_on     = [aws_cfg_recorder.foo]
+///   name           = "example"
+///   s3_bucket_name = aws_s3_bucket.b.bucket
+/// }
+/// resource "aws_s3_bucket" "b" {
+///   bucket        = "example-awsconfig"
+///   force_destroy = true
+/// }
+/// resource "aws_cfg_recorder" "foo" {
+///   name     = "example"
+///   role_arn = aws_iam_role.r.arn
+/// }
+/// resource "aws_iam_role" "r" {
+///   name               = "awsconfig-example"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicy" "p" {
+///   name   = "awsconfig-example"
+///   role   = aws_iam_role.r.id
+///   policy = data.aws_iam_getpolicydocument.p.json
 /// }
 /// ```
 /// ```java
@@ -294,6 +342,8 @@ import 'delivery_channel_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.cfg.Recorder;
@@ -303,8 +353,8 @@ import 'delivery_channel_state.dart';
 /// import com.pulumi.aws.iam.RolePolicy;
 /// import com.pulumi.aws.iam.RolePolicyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -430,10 +480,22 @@ import 'delivery_channel_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Delivery Channel using the name. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the delivery channel.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Delivery Channels using the `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cfg/deliveryChannel:DeliveryChannel foo example
+/// $ pulumi import aws:cfg/deliveryChannel:DeliveryChannel example example
 /// ```
 class DeliveryChannel extends pulumi.CustomResource {
   /// The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.

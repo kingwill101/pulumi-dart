@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodeSpecListenerConnectionPoolGrpc {
+  /// Maximum number of inflight requests Envoy can concurrently support across hosts in upstream cluster.
   final pulumi.Input<int> maxRequests;
 
   /// Creates a new [GetVirtualNodeSpecListenerConnectionPoolGrpc].
-  /// [maxRequests] Required.
+  /// [maxRequests] Maximum number of inflight requests Envoy can concurrently support across hosts in upstream cluster.
   const GetVirtualNodeSpecListenerConnectionPoolGrpc({
     required this.maxRequests,
   });
@@ -23,4 +24,3 @@ class GetVirtualNodeSpecListenerConnectionPoolGrpc {
     );
   }
 }
-

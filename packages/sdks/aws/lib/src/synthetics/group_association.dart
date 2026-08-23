@@ -63,6 +63,20 @@ import 'group_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_synthetics_groupassociation" "example" {
+///   group_name = exampleAwsSyntheticsGroup.name
+///   canary_arn = exampleAwsSyntheticsCanary.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'group_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.synthetics.GroupAssociation;
 /// import com.pulumi.aws.synthetics.GroupAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

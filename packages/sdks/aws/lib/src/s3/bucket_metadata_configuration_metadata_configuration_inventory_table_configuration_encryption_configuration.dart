@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration {
-  /// KMS key ARN when `sse_algorithm` is `aws:kms`.
+  /// KMS key ARN when `sseAlgorithm` is `aws:kms`.
   final pulumi.Input<String>? kmsKeyArn;
   /// Encryption type for the metadata table. Valid values: `aws:kms`, `AES256`.
   final pulumi.Input<String> sseAlgorithm;
 
   /// Creates a new [BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration].
-  /// [kmsKeyArn] KMS key ARN when `sse_algorithm` is `aws:kms`.
+  /// [kmsKeyArn] KMS key ARN when `sseAlgorithm` is `aws:kms`.
   /// [sseAlgorithm] Encryption type for the metadata table. Valid values: `aws:kms`, `AES256`.
   const BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration({
     this.kmsKeyArn,
@@ -30,4 +30,3 @@ class BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguratio
     );
   }
 }
-

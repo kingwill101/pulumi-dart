@@ -15,33 +15,33 @@ import 'configuration_set_vdm_options.dart';
 class ConfigurationSetArgs {
   /// The name of the configuration set.
   final pulumi.Input<String> configurationSetName;
-  /// An object that defines the dedicated IP pool that is used to send emails that you send using the configuration set. See `delivery_options` Block for details.
+  /// An object that defines the dedicated IP pool that is used to send emails that you send using the configuration set. See `deliveryOptions` Block for details.
   final pulumi.Input<ConfigurationSetDeliveryOptions>? deliveryOptions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// An object that defines whether or not Amazon SES collects reputation metrics for the emails that you send that use the configuration set. See `reputation_options` Block for details.
+  /// An object that defines whether or not Amazon SES collects reputation metrics for the emails that you send that use the configuration set. See `reputationOptions` Block for details.
   final pulumi.Input<ConfigurationSetReputationOptions>? reputationOptions;
-  /// An object that defines whether or not Amazon SES can send email that you send using the configuration set. See `sending_options` Block for details.
+  /// An object that defines whether or not Amazon SES can send email that you send using the configuration set. See `sendingOptions` Block for details.
   final pulumi.Input<ConfigurationSetSendingOptions>? sendingOptions;
-  /// An object that contains information about the suppression list preferences for your account. See `suppression_options` Block for details.
+  /// An object that contains information about the suppression list preferences for your account. See `suppressionOptions` Block for details.
   final pulumi.Input<ConfigurationSetSuppressionOptions>? suppressionOptions;
-  /// A map of tags to assign to the service. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the service. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// An object that defines the open and click tracking options for emails that you send using the configuration set. See `tracking_options` Block for details.
+  /// An object that defines the open and click tracking options for emails that you send using the configuration set. See `trackingOptions` Block for details.
   final pulumi.Input<ConfigurationSetTrackingOptions>? trackingOptions;
-  /// An object that defines the VDM settings that apply to emails that you send using the configuration set. See `vdm_options` Block for details.
+  /// An object that defines the VDM settings that apply to emails that you send using the configuration set. See `vdmOptions` Block for details.
   final pulumi.Input<ConfigurationSetVdmOptions>? vdmOptions;
 
   /// Creates a new [ConfigurationSetArgs].
   /// [configurationSetName] The name of the configuration set.
-  /// [deliveryOptions] An object that defines the dedicated IP pool that is used to send emails that you send using the configuration set. See `delivery_options` Block for details.
+  /// [deliveryOptions] An object that defines the dedicated IP pool that is used to send emails that you send using the configuration set. See `deliveryOptions` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [reputationOptions] An object that defines whether or not Amazon SES collects reputation metrics for the emails that you send that use the configuration set. See `reputation_options` Block for details.
-  /// [sendingOptions] An object that defines whether or not Amazon SES can send email that you send using the configuration set. See `sending_options` Block for details.
-  /// [suppressionOptions] An object that contains information about the suppression list preferences for your account. See `suppression_options` Block for details.
-  /// [tags] A map of tags to assign to the service. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [trackingOptions] An object that defines the open and click tracking options for emails that you send using the configuration set. See `tracking_options` Block for details.
-  /// [vdmOptions] An object that defines the VDM settings that apply to emails that you send using the configuration set. See `vdm_options` Block for details.
+  /// [reputationOptions] An object that defines whether or not Amazon SES collects reputation metrics for the emails that you send that use the configuration set. See `reputationOptions` Block for details.
+  /// [sendingOptions] An object that defines whether or not Amazon SES can send email that you send using the configuration set. See `sendingOptions` Block for details.
+  /// [suppressionOptions] An object that contains information about the suppression list preferences for your account. See `suppressionOptions` Block for details.
+  /// [tags] A map of tags to assign to the service. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [trackingOptions] An object that defines the open and click tracking options for emails that you send using the configuration set. See `trackingOptions` Block for details.
+  /// [vdmOptions] An object that defines the VDM settings that apply to emails that you send using the configuration set. See `vdmOptions` Block for details.
   const ConfigurationSetArgs({
     required this.configurationSetName,
     this.deliveryOptions,
@@ -82,4 +82,3 @@ class ConfigurationSetArgs {
     );
   }
 }
-

@@ -7,22 +7,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_fsx_backup_backup_args_doc}
 class BackupArgs {
-  /// The ID of the file system to back up. Required if backing up Lustre or Windows file systems.
+  /// ID of the file system to back up. Required if backing up Lustre or Windows file systems.
   final pulumi.Input<String>? fileSystemId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copy_tags_to_backups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
+  /// Map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copyTagsToBackups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
   final pulumi.Input<Map<String, String>>? tags;
-  /// The ID of the volume to back up. Required if backing up a ONTAP Volume.
-  ///
-  /// Note - One of `file_system_id` or `volume_id` can be specified. `file_system_id` is used for Lustre and Windows, `volume_id` is used for ONTAP.
+  /// ID of the volume to back up. Required if backing up a ONTAP Volume.
   final pulumi.Input<String>? volumeId;
 
   /// Creates a new [BackupArgs].
-  /// [fileSystemId] The ID of the file system to back up. Required if backing up Lustre or Windows file systems.
+  /// [fileSystemId] ID of the file system to back up. Required if backing up Lustre or Windows file systems.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copy_tags_to_backups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
-  /// [volumeId] The ID of the volume to back up. Required if backing up a ONTAP Volume.
+  /// [tags] Map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copyTagsToBackups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
+  /// [volumeId] ID of the volume to back up. Required if backing up a ONTAP Volume.
   const BackupArgs({
     this.fileSystemId,
     this.region,
@@ -48,4 +46,3 @@ class BackupArgs {
     );
   }
 }
-

@@ -213,4 +213,3 @@ class GetEndpointS3Setting {
     );
   }
 }
-

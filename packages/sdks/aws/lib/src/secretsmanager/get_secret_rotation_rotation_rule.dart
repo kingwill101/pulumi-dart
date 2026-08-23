@@ -7,13 +7,13 @@ class GetSecretRotationRotationRule {
   final pulumi.Input<int> automaticallyAfterDays;
   /// Length of the rotation window in hours.
   final pulumi.Input<String> duration;
-  /// A `cron()` or `rate()` expression that defines the schedule for rotating the secret.
+  /// `cron()` or `rate()` expression that defines the schedule for rotating the secret.
   final pulumi.Input<String> scheduleExpression;
 
   /// Creates a new [GetSecretRotationRotationRule].
   /// [automaticallyAfterDays] Number of days between automatic scheduled rotations of the secret.
   /// [duration] Length of the rotation window in hours.
-  /// [scheduleExpression] A `cron()` or `rate()` expression that defines the schedule for rotating the secret.
+  /// [scheduleExpression] `cron()` or `rate()` expression that defines the schedule for rotating the secret.
   const GetSecretRotationRotationRule({
     required this.automaticallyAfterDays,
     required this.duration,
@@ -36,4 +36,3 @@ class GetSecretRotationRotationRule {
     );
   }
 }
-

@@ -67,7 +67,7 @@ import 'cluster_snapshot_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"AllowDBUserOverride": "1",
 /// 			"Client_ID":           "ExampleClientID",
 /// 			"App_ID":              "example",
@@ -87,6 +87,24 @@ import 'cluster_snapshot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshift_clustersnapshot" "example" {
+///   cluster_snapshot_name = "example"
+///   cluster_snapshot_content = jsonencode({
+///     "AllowDBUserOverride" = "1"
+///     "Client_ID"           = "ExampleClientID"
+///     "App_ID"              = "example"
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +114,8 @@ import 'cluster_snapshot_state.dart';
 /// import com.pulumi.aws.redshift.ClusterSnapshot;
 /// import com.pulumi.aws.redshift.ClusterSnapshotArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -138,7 +156,7 @@ import 'cluster_snapshot_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Redshift Cluster Snapshots using `snapshot_identifier`. For example:
+/// Using `pulumi import`, import Redshift Cluster Snapshots using `snapshotIdentifier`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:redshift/clusterSnapshot:ClusterSnapshot test example
@@ -158,9 +176,9 @@ class ClusterSnapshot extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// A unique identifier for the snapshot that you are requesting. This identifier must be unique for all snapshots within the Amazon Web Services account.
   late final pulumi.Output<String> snapshotIdentifier;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ClusterSnapshot].

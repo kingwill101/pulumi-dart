@@ -9,7 +9,7 @@ import 'policy_predictive_scaling_configuration_metric_specification_predefined_
 import 'policy_predictive_scaling_configuration_metric_specification_predefined_scaling_metric_specification.dart';
 
 class PolicyPredictiveScalingConfigurationMetricSpecification {
-  /// Customized capacity metric specification. The field is only valid when you use `customized_load_metric_specification`
+  /// Customized capacity metric specification. The field is only valid when you use `customizedLoadMetricSpecification`
   final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification>? customizedCapacityMetricSpecification;
   /// Customized load metric specification.
   final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification>? customizedLoadMetricSpecification;
@@ -25,7 +25,7 @@ class PolicyPredictiveScalingConfigurationMetricSpecification {
   final pulumi.Input<double> targetValue;
 
   /// Creates a new [PolicyPredictiveScalingConfigurationMetricSpecification].
-  /// [customizedCapacityMetricSpecification] Customized capacity metric specification. The field is only valid when you use `customized_load_metric_specification`
+  /// [customizedCapacityMetricSpecification] Customized capacity metric specification. The field is only valid when you use `customizedLoadMetricSpecification`
   /// [customizedLoadMetricSpecification] Customized load metric specification.
   /// [customizedScalingMetricSpecification] Customized scaling metric specification.
   /// [predefinedLoadMetricSpecification] Predefined load metric specification.
@@ -66,4 +66,3 @@ class PolicyPredictiveScalingConfigurationMetricSpecification {
     );
   }
 }
-

@@ -24,4 +24,3 @@ class RuleGroupRuleStatementRegexMatchStatementFieldToMatchJa4Fingerprint {
     );
   }
 }
-

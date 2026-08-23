@@ -122,13 +122,44 @@ import 'inbound_connection_accepter_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = opensearch.NewInboundConnectionAccepter(ctx, "foo", &opensearch.InboundConnectionAccepterArgs{
-/// 			ConnectionId: foo.ID(),
+/// 			ConnectionId: foo.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getregion" "currentGetRegion" {
+/// }
+///
+/// resource "aws_opensearch_outboundconnection" "foo" {
+///   connection_alias = "outbound_connection"
+///   local_domain_info = {
+///     owner_id    = data.aws_getcalleridentity.current.account_id
+///     region      = data.aws_getregion.currentGetRegion.region
+///     domain_name = localDomain.domainName
+///   }
+///   remote_domain_info = {
+///     owner_id    = data.aws_getcalleridentity.current.account_id
+///     region      = data.aws_getregion.currentGetRegion.region
+///     domain_name = remoteDomain.domainName
+///   }
+/// }
+/// resource "aws_opensearch_inboundconnectionaccepter" "foo" {
+///   connection_id = aws_opensearch_outboundconnection.foo.id
 /// }
 /// ```
 /// ```java
@@ -146,8 +177,8 @@ import 'inbound_connection_accepter_state.dart';
 /// import com.pulumi.aws.opensearch.inputs.OutboundConnectionRemoteDomainInfoArgs;
 /// import com.pulumi.aws.opensearch.InboundConnectionAccepter;
 /// import com.pulumi.aws.opensearch.InboundConnectionAccepterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

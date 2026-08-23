@@ -4,7 +4,7 @@ import 'keyvaluestore_key_state.dart';
 
 /// Resource for managing an AWS CloudFront KeyValueStore Key.
 ///
-/// !&gt; This resource manages individual key value pairs in a KeyValueStore. This can lead to high costs associated with accessing the CloudFront KeyValueStore API when performing terraform operations with many key value pairs defined. For large key value stores, consider the `aws.cloudfront.KeyvaluestoreKeysExclusive` resource to minimize the number of API calls made to the CloudFront KeyValueStore API.
+/// &gt; This resource manages individual key value pairs in a KeyValueStore. This can lead to high costs associated with accessing the CloudFront KeyValueStore API when performing terraform operations with many key value pairs defined. For large key value stores, consider the `aws.cloudfront.KeyvaluestoreKeysExclusive` resource to minimize the number of API calls made to the CloudFront KeyValueStore API.
 ///
 /// ## Example Usage
 ///
@@ -89,6 +89,25 @@ import 'keyvaluestore_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_keyvaluestore" "example" {
+///   name    = "ExampleKeyValueStore"
+///   comment = "This is an example key value store"
+/// }
+/// resource "aws_cloudfront_keyvaluestorekey" "example" {
+///   key_value_store_arn = aws_cloudfront_keyvaluestore.example.arn
+///   key                 = "Test Key"
+///   value               = "Test Value"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +118,8 @@ import 'keyvaluestore_key_state.dart';
 /// import com.pulumi.aws.cloudfront.KeyValueStoreArgs;
 /// import com.pulumi.aws.cloudfront.KeyvaluestoreKey;
 /// import com.pulumi.aws.cloudfront.KeyvaluestoreKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -149,15 +168,15 @@ import 'keyvaluestore_key_state.dart';
 ///
 /// #### Required
 ///
-/// * `key_value_store_arn` (String) ARN of the CloudFront Key Value Store.
+/// * `keyValueStoreArn` (String) ARN of the CloudFront Key Value Store.
 /// * `key` (String) Key name.
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import CloudFront KeyValueStore Key using the `key_value_store_arn` and 'key' separated by `,`. For example:
+/// Using `pulumi import`, import CloudFront KeyValueStore Key using the `keyValueStoreArn` and 'key' separated by `,`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudfront/keyvaluestoreKey:KeyvaluestoreKey example arn:aws:cloudfront::111111111111:key-value-store/8562g61f-caba-2845-9d99-b97diwae5d3c,someKey

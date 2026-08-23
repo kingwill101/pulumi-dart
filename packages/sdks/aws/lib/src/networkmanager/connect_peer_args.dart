@@ -8,7 +8,7 @@ import 'connect_peer_bgp_options.dart';
 /// {@endtemplate}
 /// {@macro pulumi_networkmanager_connect_peer_connect_peer_args_doc}
 class ConnectPeerArgs {
-  /// Connect peer BGP options. See bgp_options for more information.
+  /// Connect peer BGP options. See bgpOptions for more information.
   final pulumi.Input<ConnectPeerBgpOptions>? bgpOptions;
   /// ID of the connection attachment.
   final pulumi.Input<String> connectAttachmentId;
@@ -22,17 +22,17 @@ class ConnectPeerArgs {
   final pulumi.Input<String> peerAddress;
   /// Subnet ARN for the Connect peer. Required when the Connect attachment protocol is `NO_ENCAP`. See `aws.networkmanager.ConnectAttachment` for details.
   final pulumi.Input<String>? subnetArn;
-  /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ConnectPeerArgs].
-  /// [bgpOptions] Connect peer BGP options. See bgp_options for more information.
+  /// [bgpOptions] Connect peer BGP options. See bgpOptions for more information.
   /// [connectAttachmentId] ID of the connection attachment.
   /// [coreNetworkAddress] Connect peer core network address.
   /// [insideCidrBlocks] Inside IP addresses used for BGP peering. Required when the Connect attachment protocol is `GRE`. See `aws.networkmanager.ConnectAttachment` for details.
   /// [peerAddress] Connect peer address.
   /// [subnetArn] Subnet ARN for the Connect peer. Required when the Connect attachment protocol is `NO_ENCAP`. See `aws.networkmanager.ConnectAttachment` for details.
-  /// [tags] Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ConnectPeerArgs({
     this.bgpOptions,
     required this.connectAttachmentId,
@@ -67,4 +67,3 @@ class ConnectPeerArgs {
     );
   }
 }
-

@@ -137,7 +137,7 @@ import 'hosted_public_virtual_interface_accepter_state.dart';
 /// 		}
 /// 		// Accepter's side of the VIF.
 /// 		_, err = directconnect.NewHostedPublicVirtualInterfaceAccepter(ctx, "accepter", &directconnect.HostedPublicVirtualInterfaceAccepterArgs{
-/// 			VirtualInterfaceId: creator.ID(),
+/// 			VirtualInterfaceId: creator.ID().ToIDOutput().ToStringOutput(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Side": pulumi.String("Accepter"),
 /// 			},
@@ -147,6 +147,38 @@ import 'hosted_public_virtual_interface_accepter_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "accepter" {
+/// }
+///
+/// # Creator's side of the VIF
+/// resource "aws_directconnect_hostedpublicvirtualinterface" "creator" {
+///   connection_id         = "dxcon-zzzzzzzz"
+///   owner_account_id      = data.aws_getcalleridentity.accepter.account_id
+///   name                  = "vif-foo"
+///   vlan                  = 4094
+///   address_family        = "ipv4"
+///   bgp_asn               = 65352
+///   customer_address      = "175.45.176.1/30"
+///   amazon_address        = "175.45.176.2/30"
+///   route_filter_prefixes = ["210.52.109.0/24", "175.45.176.0/22"]
+/// }
+/// # Accepter's side of the VIF.
+/// resource "aws_directconnect_hostedpublicvirtualinterfaceaccepter" "accepter" {
+///   virtual_interface_id = aws_directconnect_hostedpublicvirtualinterface.creator.id
+///   tags = {
+///     "Side" = "Accepter"
+///   }
 /// }
 /// ```
 /// ```java
@@ -161,8 +193,8 @@ import 'hosted_public_virtual_interface_accepter_state.dart';
 /// import com.pulumi.aws.directconnect.HostedPublicVirtualInterfaceArgs;
 /// import com.pulumi.aws.directconnect.HostedPublicVirtualInterfaceAccepter;
 /// import com.pulumi.aws.directconnect.HostedPublicVirtualInterfaceAccepterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -246,9 +278,9 @@ class HostedPublicVirtualInterfaceAccepter extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The ID of the Direct Connect virtual interface to accept.
   late final pulumi.Output<String> virtualInterfaceId;

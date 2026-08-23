@@ -11,13 +11,13 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecification {
   /// If the active field isn't specified, the default is `true`.
   final pulumi.Input<bool>? active;
   /// Response that Amazon Lex sends to indicate that the bot is ready to continue the conversation.
-  /// See the `continue_response` argument reference below.
+  /// See the `continueResponse` argument reference below.
   final pulumi.Input<List<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponse>>? continueResponses;
   /// Response that Amazon Lex sends periodically to the user to indicate that the bot is still waiting for input from the user.
-  /// See the `still_waiting_response` argument reference below.
+  /// See the `stillWaitingResponse` argument reference below.
   final pulumi.Input<List<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse>>? stillWaitingResponses;
   /// Response that Amazon Lex sends to indicate that the bot is waiting for the conversation to continue.
-  /// See the `waiting_response` argument reference below.
+  /// See the `waitingResponse` argument reference below.
   final pulumi.Input<List<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponse>>? waitingResponses;
 
   /// Creates a new [V2modelsSlotValueElicitationSettingWaitAndContinueSpecification].
@@ -50,4 +50,3 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecification {
     );
   }
 }
-

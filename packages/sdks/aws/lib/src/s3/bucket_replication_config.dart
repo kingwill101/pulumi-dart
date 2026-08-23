@@ -67,7 +67,7 @@ import 'bucket_replication_config_state.dart';
 /// });
 /// const replicationPolicy = new aws.iam.Policy("replication", {
 ///     name: "tf-iam-role-policy-replication-12345",
-///     policy: replication.apply(replication => replication.json),
+///     policy: replication.json,
 /// });
 /// const replicationRolePolicyAttachment = new aws.iam.RolePolicyAttachment("replication", {
 ///     role: replicationRole.name,
@@ -446,10 +446,8 @@ import 'bucket_replication_config_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		replicationPolicy, err := iam.NewPolicy(ctx, "replication", &iam.PolicyArgs{
-/// 			Name: pulumi.String("tf-iam-role-policy-replication-12345"),
-/// 			Policy: pulumi.String(replication.ApplyT(func(replication iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &replication.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:   pulumi.String("tf-iam-role-policy-replication-12345"),
+/// 			Policy: replication.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -462,7 +460,7 @@ import 'bucket_replication_config_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketVersioning(ctx, "destination", &s3.BucketVersioningArgs{
-/// 			Bucket: destination.ID(),
+/// 			Bucket: destination.ID().ToIDOutput().ToStringOutput(),
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
@@ -471,14 +469,14 @@ import 'bucket_replication_config_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "source_bucket_acl", &s3.BucketAclArgs{
-/// 			Bucket: source.ID(),
+/// 			Bucket: source.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		sourceBucketVersioning, err := s3.NewBucketVersioning(ctx, "source", &s3.BucketVersioningArgs{
-/// 			Bucket: source.ID(),
+/// 			Bucket: source.ID().ToIDOutput().ToStringOutput(),
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
@@ -488,7 +486,7 @@ import 'bucket_replication_config_state.dart';
 /// 		}
 /// 		_, err = s3.NewBucketReplicationConfig(ctx, "replication", &s3.BucketReplicationConfigArgs{
 /// 			Role:   replicationRole.Arn,
-/// 			Bucket: source.ID(),
+/// 			Bucket: source.ID().ToIDOutput().ToStringOutput(),
 /// 			Rules: s3.BucketReplicationConfigRuleArray{
 /// 				&s3.BucketReplicationConfigRuleArgs{
 /// 					Id: pulumi.String("examplerule"),
@@ -512,6 +510,94 @@ import 'bucket_replication_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["s3.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "replication" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["s3:GetReplicationConfiguration", "s3:ListBucket"]
+///     resources = [aws_s3_bucket.source.arn]
+///   }
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["s3:GetObjectVersionForReplication", "s3:GetObjectVersionAcl", "s3:GetObjectVersionTagging"]
+///     resources = ["${aws_s3_bucket.source.arn}/*"]
+///   }
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["s3:ReplicateObject", "s3:ReplicateDelete", "s3:ReplicateTags"]
+///     resources = ["${aws_s3_bucket.destination.arn}/*"]
+///   }
+/// }
+///
+/// resource "aws_iam_role" "replication" {
+///   name               = "tf-iam-role-replication-12345"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_policy" "replication" {
+///   name   = "tf-iam-role-policy-replication-12345"
+///   policy = data.aws_iam_getpolicydocument.replication.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "replication" {
+///   role       = aws_iam_role.replication.name
+///   policy_arn = aws_iam_policy.replication.arn
+/// }
+/// resource "aws_s3_bucket" "destination" {
+///   bucket = "tf-test-bucket-destination-12345"
+/// }
+/// resource "aws_s3_bucketversioning" "destination" {
+///   bucket = aws_s3_bucket.destination.id
+///   versioning_configuration = {
+///     status = "Enabled"
+///   }
+/// }
+/// resource "aws_s3_bucket" "source" {
+///   bucket = "tf-test-bucket-source-12345"
+/// }
+/// resource "aws_s3_bucketacl" "source_bucket_acl" {
+///   bucket = aws_s3_bucket.source.id
+///   acl    = "private"
+/// }
+/// resource "aws_s3_bucketversioning" "source" {
+///   bucket = aws_s3_bucket.source.id
+///   versioning_configuration = {
+///     status = "Enabled"
+///   }
+/// }
+/// resource "aws_s3_bucketreplicationconfig" "replication" {
+///   depends_on = [aws_s3_bucketversioning.source]
+///   role       = aws_iam_role.replication.arn
+///   bucket     = aws_s3_bucket.source.id
+///   rules {
+///     id = "examplerule"
+///     filter = {
+///       prefix = "example"
+///     }
+///     status = "Enabled"
+///     destination = {
+///       bucket        = aws_s3_bucket.destination.arn
+///       storage_class = "STANDARD"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -520,6 +606,8 @@ import 'bucket_replication_config_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.s3.Bucket;
@@ -539,8 +627,8 @@ import 'bucket_replication_config_state.dart';
 /// import com.pulumi.aws.s3.inputs.BucketReplicationConfigRuleFilterArgs;
 /// import com.pulumi.aws.s3.inputs.BucketReplicationConfigRuleDestinationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -817,7 +905,7 @@ import 'bucket_replication_config_state.dart';
 /// });
 /// const replicationPolicy = new aws.iam.Policy("replication", {
 ///     name: "tf-iam-role-policy-replication-12345",
-///     policy: replication.apply(replication => replication.json),
+///     policy: replication.json,
 /// });
 /// const replicationRolePolicyAttachment = new aws.iam.RolePolicyAttachment("replication", {
 ///     role: replicationRole.name,
@@ -1209,10 +1297,8 @@ import 'bucket_replication_config_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		replicationPolicy, err := iam.NewPolicy(ctx, "replication", &iam.PolicyArgs{
-/// 			Name: pulumi.String("tf-iam-role-policy-replication-12345"),
-/// 			Policy: pulumi.String(replication.ApplyT(func(replication iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &replication.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:   pulumi.String("tf-iam-role-policy-replication-12345"),
+/// 			Policy: replication.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1225,7 +1311,7 @@ import 'bucket_replication_config_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketVersioning(ctx, "destination", &s3.BucketVersioningArgs{
-/// 			Bucket: destination.ID(),
+/// 			Bucket: destination.ID().ToIDOutput().ToStringOutput(),
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
@@ -1235,7 +1321,7 @@ import 'bucket_replication_config_state.dart';
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "source_bucket_acl", &s3.BucketAclArgs{
 /// 			Region: pulumi.String("eu-central-1"),
-/// 			Bucket: source.ID(),
+/// 			Bucket: source.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -1243,7 +1329,7 @@ import 'bucket_replication_config_state.dart';
 /// 		}
 /// 		sourceBucketVersioning, err := s3.NewBucketVersioning(ctx, "source", &s3.BucketVersioningArgs{
 /// 			Region: pulumi.String("eu-central-1"),
-/// 			Bucket: source.ID(),
+/// 			Bucket: source.ID().ToIDOutput().ToStringOutput(),
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
@@ -1254,7 +1340,7 @@ import 'bucket_replication_config_state.dart';
 /// 		_, err = s3.NewBucketReplicationConfig(ctx, "replication", &s3.BucketReplicationConfigArgs{
 /// 			Region: pulumi.String("eu-central-1"),
 /// 			Role:   replicationRole.Arn,
-/// 			Bucket: source.ID(),
+/// 			Bucket: source.ID().ToIDOutput().ToStringOutput(),
 /// 			Rules: s3.BucketReplicationConfigRuleArray{
 /// 				&s3.BucketReplicationConfigRuleArgs{
 /// 					Id: pulumi.String("examplerule"),
@@ -1278,6 +1364,98 @@ import 'bucket_replication_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["s3.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "replication" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["s3:GetReplicationConfiguration", "s3:ListBucket"]
+///     resources = [aws_s3_bucket.source.arn]
+///   }
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["s3:GetObjectVersionForReplication", "s3:GetObjectVersionAcl", "s3:GetObjectVersionTagging"]
+///     resources = ["${aws_s3_bucket.source.arn}/*"]
+///   }
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["s3:ReplicateObject", "s3:ReplicateDelete", "s3:ReplicateTags"]
+///     resources = ["${aws_s3_bucket.destination.arn}/*"]
+///   }
+/// }
+///
+/// resource "aws_iam_role" "replication" {
+///   name               = "tf-iam-role-replication-12345"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_policy" "replication" {
+///   name   = "tf-iam-role-policy-replication-12345"
+///   policy = data.aws_iam_getpolicydocument.replication.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "replication" {
+///   role       = aws_iam_role.replication.name
+///   policy_arn = aws_iam_policy.replication.arn
+/// }
+/// resource "aws_s3_bucket" "destination" {
+///   bucket = "tf-test-bucket-destination-12345"
+/// }
+/// resource "aws_s3_bucketversioning" "destination" {
+///   bucket = aws_s3_bucket.destination.id
+///   versioning_configuration = {
+///     status = "Enabled"
+///   }
+/// }
+/// resource "aws_s3_bucket" "source" {
+///   region = "eu-central-1"
+///   bucket = "tf-test-bucket-source-12345"
+/// }
+/// resource "aws_s3_bucketacl" "source_bucket_acl" {
+///   region = "eu-central-1"
+///   bucket = aws_s3_bucket.source.id
+///   acl    = "private"
+/// }
+/// resource "aws_s3_bucketversioning" "source" {
+///   region = "eu-central-1"
+///   bucket = aws_s3_bucket.source.id
+///   versioning_configuration = {
+///     status = "Enabled"
+///   }
+/// }
+/// resource "aws_s3_bucketreplicationconfig" "replication" {
+///   depends_on = [aws_s3_bucketversioning.source]
+///   region     = "eu-central-1"
+///   role       = aws_iam_role.replication.arn
+///   bucket     = aws_s3_bucket.source.id
+///   rules {
+///     id = "examplerule"
+///     filter = {
+///       prefix = "example"
+///     }
+///     status = "Enabled"
+///     destination = {
+///       bucket        = aws_s3_bucket.destination.arn
+///       storage_class = "STANDARD"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1286,6 +1464,8 @@ import 'bucket_replication_config_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.s3.Bucket;
@@ -1305,8 +1485,8 @@ import 'bucket_replication_config_state.dart';
 /// import com.pulumi.aws.s3.inputs.BucketReplicationConfigRuleFilterArgs;
 /// import com.pulumi.aws.s3.inputs.BucketReplicationConfigRuleDestinationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1753,7 +1933,7 @@ import 'bucket_replication_config_state.dart';
 /// 			return err
 /// 		}
 /// 		eastBucketVersioning, err := s3.NewBucketVersioning(ctx, "east", &s3.BucketVersioningArgs{
-/// 			Bucket: east.ID(),
+/// 			Bucket: east.ID().ToIDOutput().ToStringOutput(),
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
@@ -1768,7 +1948,7 @@ import 'bucket_replication_config_state.dart';
 /// 			return err
 /// 		}
 /// 		westBucketVersioning, err := s3.NewBucketVersioning(ctx, "west", &s3.BucketVersioningArgs{
-/// 			Bucket: west.ID(),
+/// 			Bucket: west.ID().ToIDOutput().ToStringOutput(),
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
@@ -1778,7 +1958,7 @@ import 'bucket_replication_config_state.dart';
 /// 		}
 /// 		_, err = s3.NewBucketReplicationConfig(ctx, "east_to_west", &s3.BucketReplicationConfigArgs{
 /// 			Role:   pulumi.Any(eastReplication.Arn),
-/// 			Bucket: east.ID(),
+/// 			Bucket: east.ID().ToIDOutput().ToStringOutput(),
 /// 			Rules: s3.BucketReplicationConfigRuleArray{
 /// 				&s3.BucketReplicationConfigRuleArgs{
 /// 					Id: pulumi.String("foobar"),
@@ -1800,7 +1980,7 @@ import 'bucket_replication_config_state.dart';
 /// 		}
 /// 		_, err = s3.NewBucketReplicationConfig(ctx, "west_to_east", &s3.BucketReplicationConfigArgs{
 /// 			Role:   pulumi.Any(westReplication.Arn),
-/// 			Bucket: west.ID(),
+/// 			Bucket: west.ID().ToIDOutput().ToStringOutput(),
 /// 			Rules: s3.BucketReplicationConfigRuleArray{
 /// 				&s3.BucketReplicationConfigRuleArgs{
 /// 					Id: pulumi.String("foobar"),
@@ -1824,6 +2004,67 @@ import 'bucket_replication_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # ... other configuration ...
+/// resource "aws_s3_bucket" "east" {
+///   bucket = "tf-test-bucket-east-12345"
+/// }
+/// resource "aws_s3_bucketversioning" "east" {
+///   bucket = aws_s3_bucket.east.id
+///   versioning_configuration = {
+///     status = "Enabled"
+///   }
+/// }
+/// resource "aws_s3_bucket" "west" {
+///   bucket = "tf-test-bucket-west-12345"
+/// }
+/// resource "aws_s3_bucketversioning" "west" {
+///   bucket = aws_s3_bucket.west.id
+///   versioning_configuration = {
+///     status = "Enabled"
+///   }
+/// }
+/// resource "aws_s3_bucketreplicationconfig" "east_to_west" {
+///   depends_on = [aws_s3_bucketversioning.east]
+///   role       = eastReplication.arn
+///   bucket     = aws_s3_bucket.east.id
+///   rules {
+///     id = "foobar"
+///     filter = {
+///       prefix = "foo"
+///     }
+///     status = "Enabled"
+///     destination = {
+///       bucket        = aws_s3_bucket.west.arn
+///       storage_class = "STANDARD"
+///     }
+///   }
+/// }
+/// resource "aws_s3_bucketreplicationconfig" "west_to_east" {
+///   depends_on = [aws_s3_bucketversioning.west]
+///   role       = westReplication.arn
+///   bucket     = aws_s3_bucket.west.id
+///   rules {
+///     id = "foobar"
+///     filter = {
+///       prefix = "foo"
+///     }
+///     status = "Enabled"
+///     destination = {
+///       bucket        = aws_s3_bucket.east.arn
+///       storage_class = "STANDARD"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1841,8 +2082,8 @@ import 'bucket_replication_config_state.dart';
 /// import com.pulumi.aws.s3.inputs.BucketReplicationConfigRuleFilterArgs;
 /// import com.pulumi.aws.s3.inputs.BucketReplicationConfigRuleDestinationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1993,16 +2234,8 @@ class BucketReplicationConfig extends pulumi.CustomResource {
   /// ARN of the IAM role for Amazon S3 to assume when replicating the objects.
   late final pulumi.Output<String> role;
   /// List of configuration blocks describing the rules managing the replication. See below.
-  ///
-  /// &gt; **NOTE:** Replication to multiple destination buckets requires that `priority` is specified in the `rule` object. If the corresponding rule requires no filter, an empty configuration block `filter {}` must be specified.
-  ///
-  /// &gt; **NOTE:** Amazon S3's latest version of the replication configuration is V2, which includes the `filter` attribute for replication rules.
-  ///
-  /// &gt; **NOTE:** The `existing_object_replication` parameter is not supported by Amazon S3 at this time and should not be included in your `rule` configurations. Specifying this parameter will result in `MalformedXML` errors.
-  /// To replicate existing objects, please refer to the [Replicating existing objects with S3 Batch Replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-batch-replication-batch.html) documentation in the Amazon S3 User Guide.
   late final pulumi.Output<List<Map<String, dynamic>>> rules;
-  /// Token to allow replication to be enabled on an Object Lock-enabled bucket. You must contact AWS support for the bucket's "Object Lock token".
-  /// For more details, see [Using S3 Object Lock with replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-managing.html#object-lock-managing-replication).
+  /// Token to allow replication to be enabled on an Object Lock-enabled bucket. You must contact AWS support for the bucket's "Object Lock token". For more details, see [Using S3 Object Lock with replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-managing.html#object-lock-managing-replication).
   late final pulumi.Output<String?> token;
 
   /// Creates a new [BucketReplicationConfig].

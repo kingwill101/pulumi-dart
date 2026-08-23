@@ -10,13 +10,13 @@ class BudgetFilterExpressionOrOr {
   final pulumi.Input<BudgetFilterExpressionOrOrCostCategories>? costCategories;
   /// (Optional) A Dimension Filter block.
   final pulumi.Input<BudgetFilterExpressionOrOrDimensions>? dimensions;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<BudgetFilterExpressionOrOrTags>? tags;
 
   /// Creates a new [BudgetFilterExpressionOrOr].
   /// [costCategories] (Optional) A Cost Category Filter block.
   /// [dimensions] (Optional) A Dimension Filter block.
-  /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const BudgetFilterExpressionOrOr({
     this.costCategories,
     this.dimensions,
@@ -39,4 +39,3 @@ class BudgetFilterExpressionOrOr {
     );
   }
 }
-

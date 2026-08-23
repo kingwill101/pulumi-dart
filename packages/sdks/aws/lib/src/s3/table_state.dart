@@ -13,17 +13,13 @@ class TableState {
   final pulumi.Input<String>? createdAt;
   /// Account ID of the account that created the namespace.
   final pulumi.Input<String>? createdBy;
-  /// A single table bucket encryption configuration object.
-  /// See `encryption_configuration` below.
+  /// Single table bucket encryption configuration object. See `encryptionConfiguration` below.
   final pulumi.Input<TableEncryptionConfiguration>? encryptionConfiguration;
-  /// Format of the table.
-  /// Must be `ICEBERG`.
+  /// Format of the table. Must be `ICEBERG`.
   final pulumi.Input<String>? format;
-  /// A single table bucket maintenance configuration object.
-  /// See `maintenance_configuration` below.
+  /// Single table bucket maintenance configuration object. See `maintenanceConfiguration` below.
   final pulumi.Input<TableMaintenanceConfiguration>? maintenanceConfiguration;
-  /// Contains details about the table metadata. This configuration specifies the metadata format and schema for the table. Currently only supports Iceberg format.
-  /// See `metadata` below.
+  /// Details about the table metadata. This configuration specifies the metadata format and schema for the table. Currently only supports Iceberg format. See `metadata` below.
   final pulumi.Input<TableMetadata>? metadata;
   /// Location of table metadata.
   final pulumi.Input<String>? metadataLocation;
@@ -31,14 +27,9 @@ class TableState {
   final pulumi.Input<String>? modifiedAt;
   /// Account ID of the account that last modified the namespace.
   final pulumi.Input<String>? modifiedBy;
-  /// Name of the table.
-  /// Must be between 1 and 255 characters in length.
-  /// Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
-  /// A full list of table naming rules can be found in the [S3 Tables documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets-naming.html#naming-rules-table).
+  /// Name of the table. Must be between 1 and 255 characters in length. Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number. A full list of table naming rules can be found in the [S3 Tables documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets-naming.html#naming-rules-table).
   final pulumi.Input<String>? name;
-  /// Name of the namespace for this table.
-  /// Must be between 1 and 255 characters in length.
-  /// Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
+  /// Name of the namespace for this table. Must be between 1 and 255 characters in length. Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
   final pulumi.Input<String>? namespace;
   /// Account ID of the account that owns the namespace.
   final pulumi.Input<String>? ownerAccountId;
@@ -48,12 +39,11 @@ class TableState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? tableBucketArn;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// Type of the table.
-  /// One of `customer` or `aws`.
+  /// Type of the table. One of `customer` or `aws`.
   final pulumi.Input<String>? type;
   /// Identifier for the current version of table data.
   final pulumi.Input<String>? versionToken;
@@ -64,21 +54,21 @@ class TableState {
   /// [arn] ARN of the table.
   /// [createdAt] Date and time when the namespace was created.
   /// [createdBy] Account ID of the account that created the namespace.
-  /// [encryptionConfiguration] A single table bucket encryption configuration object.
-  /// [format] Format of the table.
-  /// [maintenanceConfiguration] A single table bucket maintenance configuration object.
-  /// [metadata] Contains details about the table metadata. This configuration specifies the metadata format and schema for the table. Currently only supports Iceberg format.
+  /// [encryptionConfiguration] Single table bucket encryption configuration object. See `encryptionConfiguration` below.
+  /// [format] Format of the table. Must be `ICEBERG`.
+  /// [maintenanceConfiguration] Single table bucket maintenance configuration object. See `maintenanceConfiguration` below.
+  /// [metadata] Details about the table metadata. This configuration specifies the metadata format and schema for the table. Currently only supports Iceberg format. See `metadata` below.
   /// [metadataLocation] Location of table metadata.
   /// [modifiedAt] Date and time when the namespace was last modified.
   /// [modifiedBy] Account ID of the account that last modified the namespace.
-  /// [name] Name of the table.
-  /// [namespace] Name of the namespace for this table.
+  /// [name] Name of the table. Must be between 1 and 255 characters in length. Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number. A full list of table naming rules can be found in the [S3 Tables documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets-naming.html#naming-rules-table).
+  /// [namespace] Name of the namespace for this table. Must be between 1 and 255 characters in length. Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
   /// [ownerAccountId] Account ID of the account that owns the namespace.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableBucketArn] ARN referencing the Table Bucket that contains this Namespace.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  /// [type] Type of the table.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [type] Type of the table. One of `customer` or `aws`.
   /// [versionToken] Identifier for the current version of table data.
   /// [warehouseLocation] S3 URI pointing to the S3 Bucket that contains the table data.
   const TableState({
@@ -154,4 +144,3 @@ class TableState {
     );
   }
 }
-

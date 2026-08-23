@@ -83,6 +83,24 @@ import 'v2models_bot_version_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lex_v2modelsbotversion" "test" {
+///   bot_id = testAwsLexv2modelsBot.id
+///   locale_specification = {
+///     "en_US" = {
+///       source_bot_version = "DRAFT"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +109,9 @@ import 'v2models_bot_version_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lex.V2modelsBotVersion;
 /// import com.pulumi.aws.lex.V2modelsBotVersionArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.lex.inputs.V2modelsBotVersionLocaleSpecificationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

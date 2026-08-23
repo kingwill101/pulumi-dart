@@ -56,6 +56,19 @@ import 'block_public_access_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emr_blockpublicaccessconfiguration" "example" {
+///   block_public_security_group_rules = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'block_public_access_configuration_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.emr.BlockPublicAccessConfiguration;
 /// import com.pulumi.aws.emr.BlockPublicAccessConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -170,6 +183,23 @@ import 'block_public_access_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emr_blockpublicaccessconfiguration" "example" {
+///   block_public_security_group_rules = true
+///   permitted_public_security_group_rule_ranges {
+///     min_range = 22
+///     max_range = 22
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +209,8 @@ import 'block_public_access_configuration_state.dart';
 /// import com.pulumi.aws.emr.BlockPublicAccessConfiguration;
 /// import com.pulumi.aws.emr.BlockPublicAccessConfigurationArgs;
 /// import com.pulumi.aws.emr.inputs.BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRangeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -219,7 +249,7 @@ import 'block_public_access_configuration_state.dart';
 ///
 /// ### Multiple Permitted Public Security Group Rule Ranges
 ///
-/// The resource permits specification of multiple `permitted_public_security_group_rule_range` blocks.
+/// The resource permits specification of multiple `permittedPublicSecurityGroupRuleRange` blocks.
 ///
 ///
 /// ```typescript
@@ -315,6 +345,27 @@ import 'block_public_access_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emr_blockpublicaccessconfiguration" "example" {
+///   block_public_security_group_rules = true
+///   permitted_public_security_group_rule_ranges {
+///     min_range = 22
+///     max_range = 22
+///   }
+///   permitted_public_security_group_rule_ranges {
+///     min_range = 100
+///     max_range = 101
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -324,8 +375,8 @@ import 'block_public_access_configuration_state.dart';
 /// import com.pulumi.aws.emr.BlockPublicAccessConfiguration;
 /// import com.pulumi.aws.emr.BlockPublicAccessConfigurationArgs;
 /// import com.pulumi.aws.emr.inputs.BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRangeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -419,6 +470,19 @@ import 'block_public_access_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emr_blockpublicaccessconfiguration" "example" {
+///   block_public_security_group_rules = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -427,8 +491,8 @@ import 'block_public_access_configuration_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.emr.BlockPublicAccessConfiguration;
 /// import com.pulumi.aws.emr.BlockPublicAccessConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -468,7 +532,7 @@ class BlockPublicAccessConfiguration extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<bool> blockPublicSecurityGroupRules;
-  /// Configuration block for defining permitted public security group rule port ranges. Can be defined multiple times per resource. Only valid if `block_public_security_group_rules` is set to `true`.
+  /// Configuration block for defining permitted public security group rule port ranges. Can be defined multiple times per resource. Only valid if `blockPublicSecurityGroupRules` is set to `true`.
   late final pulumi.Output<List<Map<String, dynamic>>?> permittedPublicSecurityGroupRuleRanges;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

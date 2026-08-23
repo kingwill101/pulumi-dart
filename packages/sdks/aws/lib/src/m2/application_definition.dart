@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationDefinition {
-  /// JSON application definition. Either this or `s3_location` must be specified.
+  /// JSON application definition. Either this or `s3Location` must be specified.
   final pulumi.Input<String>? content;
   /// Location of the application definition in S3. Either this or `content` must be specified.
   final pulumi.Input<String>? s3Location;
 
   /// Creates a new [ApplicationDefinition].
-  /// [content] JSON application definition. Either this or `s3_location` must be specified.
+  /// [content] JSON application definition. Either this or `s3Location` must be specified.
   /// [s3Location] Location of the application definition in S3. Either this or `content` must be specified.
   const ApplicationDefinition({
     this.content,
@@ -30,4 +30,3 @@ class ApplicationDefinition {
     );
   }
 }
-

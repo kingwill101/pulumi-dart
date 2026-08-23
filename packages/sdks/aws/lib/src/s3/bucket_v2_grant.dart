@@ -42,4 +42,3 @@ class BucketV2Grant {
     );
   }
 }
-

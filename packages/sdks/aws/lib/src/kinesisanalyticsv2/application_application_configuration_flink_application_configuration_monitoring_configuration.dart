@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration {
-  /// Describes whether to use the default CloudWatch logging configuration for an application. Valid values: `CUSTOM`, `DEFAULT`. Set this attribute to `CUSTOM` in order for any specified `log_level` or `metrics_level` attribute values to be effective.
+  /// Describes whether to use the default CloudWatch logging configuration for an application. Valid values: `CUSTOM`, `DEFAULT`. Set this attribute to `CUSTOM` in order for any specified `logLevel` or `metricsLevel` attribute values to be effective.
   final pulumi.Input<String> configurationType;
   /// Describes the verbosity of the CloudWatch Logs for an application. Valid values: `DEBUG`, `ERROR`, `INFO`, `WARN`.
   final pulumi.Input<String>? logLevel;
@@ -11,7 +11,7 @@ class ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoring
   final pulumi.Input<String>? metricsLevel;
 
   /// Creates a new [ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration].
-  /// [configurationType] Describes whether to use the default CloudWatch logging configuration for an application. Valid values: `CUSTOM`, `DEFAULT`. Set this attribute to `CUSTOM` in order for any specified `log_level` or `metrics_level` attribute values to be effective.
+  /// [configurationType] Describes whether to use the default CloudWatch logging configuration for an application. Valid values: `CUSTOM`, `DEFAULT`. Set this attribute to `CUSTOM` in order for any specified `logLevel` or `metricsLevel` attribute values to be effective.
   /// [logLevel] Describes the verbosity of the CloudWatch Logs for an application. Valid values: `DEBUG`, `ERROR`, `INFO`, `WARN`.
   /// [metricsLevel] Describes the granularity of the CloudWatch Logs for an application. Valid values: `APPLICATION`, `OPERATOR`, `PARALLELISM`, `TASK`.
   const ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration({
@@ -36,4 +36,3 @@ class ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoring
     );
   }
 }
-

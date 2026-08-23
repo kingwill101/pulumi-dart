@@ -67,6 +67,21 @@ import 'route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2transitgateway_route" "example" {
+///   destination_cidr_block         = "0.0.0.0/0"
+///   transit_gateway_attachment_id  = exampleAwsEc2TransitGatewayVpcAttachment.id
+///   transit_gateway_route_table_id = exampleAwsEc2TransitGateway.associationDefaultRouteTableId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'route_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Route;
 /// import com.pulumi.aws.ec2transitgateway.RouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,6 +184,21 @@ import 'route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2transitgateway_route" "example" {
+///   destination_cidr_block         = "0.0.0.0/0"
+///   blackhole                      = true
+///   transit_gateway_route_table_id = exampleAwsEc2TransitGateway.associationDefaultRouteTableId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +207,8 @@ import 'route_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Route;
 /// import com.pulumi.aws.ec2transitgateway.RouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

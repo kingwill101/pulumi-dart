@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_rule_action_block_custom_response_response_header.dart';
 
 class RuleGroupRuleActionBlockCustomResponse {
-  /// References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `custom_response_body` block of this resource.
+  /// References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `customResponseBody` block of this resource.
   final pulumi.Input<String>? customResponseBodyKey;
   /// The HTTP status code to return to the client.
   final pulumi.Input<int> responseCode;
-  /// The `response_header` blocks used to define the HTTP response headers added to the response. See Custom HTTP Header below for details.
+  /// The `responseHeader` blocks used to define the HTTP response headers added to the response. See Custom HTTP Header below for details.
   final pulumi.Input<List<RuleGroupRuleActionBlockCustomResponseResponseHeader>>? responseHeaders;
 
   /// Creates a new [RuleGroupRuleActionBlockCustomResponse].
-  /// [customResponseBodyKey] References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `custom_response_body` block of this resource.
+  /// [customResponseBodyKey] References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `customResponseBody` block of this resource.
   /// [responseCode] The HTTP status code to return to the client.
-  /// [responseHeaders] The `response_header` blocks used to define the HTTP response headers added to the response. See Custom HTTP Header below for details.
+  /// [responseHeaders] The `responseHeader` blocks used to define the HTTP response headers added to the response. See Custom HTTP Header below for details.
   const RuleGroupRuleActionBlockCustomResponse({
     this.customResponseBodyKey,
     required this.responseCode,
@@ -37,4 +37,3 @@ class RuleGroupRuleActionBlockCustomResponse {
     );
   }
 }
-

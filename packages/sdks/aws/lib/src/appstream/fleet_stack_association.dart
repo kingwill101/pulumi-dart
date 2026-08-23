@@ -111,6 +111,31 @@ import 'fleet_stack_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appstream_fleet" "example" {
+///   name          = "NAME"
+///   image_name    = "Amazon-AppStream2-Sample-Image-03-11-2023"
+///   instance_type = "stream.standard.small"
+///   compute_capacity = {
+///     desired_instances = 1
+///   }
+/// }
+/// resource "aws_appstream_stack" "example" {
+///   name = "STACK NAME"
+/// }
+/// resource "aws_appstream_fleetstackassociation" "example" {
+///   fleet_name = aws_appstream_fleet.example.name
+///   stack_name = aws_appstream_stack.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -124,8 +149,8 @@ import 'fleet_stack_association_state.dart';
 /// import com.pulumi.aws.appstream.StackArgs;
 /// import com.pulumi.aws.appstream.FleetStackAssociation;
 /// import com.pulumi.aws.appstream.FleetStackAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -184,7 +209,7 @@ import 'fleet_stack_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import AppStream Stack Fleet Association using the `fleet_name` and `stack_name` separated by a slash (`/`). For example:
+/// Using `pulumi import`, import AppStream Stack Fleet Association using the `fleetName` and `stackName` separated by a slash (`/`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appstream/fleetStackAssociation:FleetStackAssociation example fleetName/stackName

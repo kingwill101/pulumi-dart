@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_args.dart';
 import 'group_availability_zone_distribution.dart';
 import 'group_capacity_reservation_specification.dart';
+import 'group_instance_lifecycle_policy.dart';
 import 'group_instance_maintenance_policy.dart';
 import 'group_instance_refresh.dart';
 import 'group_launch_template.dart';
@@ -12,11 +13,71 @@ import 'metric.dart';
 
 /// Provides an Auto Scaling Group resource.
 ///
-/// &gt; **Note:** You must specify either `launch_configuration`, `launch_template`, or `mixed_instances_policy`.
+/// &gt; **Note:** You must specify either `launchConfiguration`, `launchTemplate`, or `mixedInstancesPolicy`.
 ///
-/// &gt; **NOTE on Auto Scaling Groups, Attachments and Traffic Source Attachments:** Pulumi provides standalone Attachment (for attaching Classic Load Balancers and Application Load Balancer, Gateway Load Balancer, or Network Load Balancer target groups) and Traffic Source Attachment (for attaching Load Balancers and VPC Lattice target groups) resources and an Auto Scaling Group resource with `load_balancers`, `target_group_arns` and `traffic_source` attributes. Do not use the same traffic source in more than one of these resources. Doing so will cause a conflict of attachments. A `lifecycle` configuration block can be used to suppress differences if necessary.
+/// &gt; **NOTE on Auto Scaling Groups, Attachments and Traffic Source Attachments:** Pulumi provides standalone Attachment (for attaching Classic Load Balancers and Application Load Balancer, Gateway Load Balancer, or Network Load Balancer target groups) and Traffic Source Attachment (for attaching Load Balancers and VPC Lattice target groups) resources and an Auto Scaling Group resource with `loadBalancers`, `targetGroupArns` and `trafficSource` attributes. Do not use the same traffic source in more than one of these resources. Doing so will cause a conflict of attachments. A `lifecycle` configuration block can be used to suppress differences if necessary.
 ///
 ///
+///
+/// A newly-created ASG is initially empty and begins to scale to `minSize` (or
+/// `desiredCapacity`, if specified) by launching instances using the provided
+/// Launch Configuration. These instances take time to launch and boot.
+///
+/// On ASG Update, changes to these values also take time to result in the target
+/// number of instances providing service.
+///
+/// This provider provides two mechanisms to help consistently manage ASG scale up
+/// time across dependent resources.
+///
+/// #### Waiting for ASG Capacity
+///
+/// The first is default behavior. This provider waits after ASG creation for
+/// `minSize` (or `desiredCapacity`, if specified) healthy instances to show up
+/// in the ASG before continuing.
+///
+/// If `minSize` or `desiredCapacity` are changed in a subsequent update,
+/// this provider will also wait for the correct number of healthy instances before
+/// continuing.
+///
+/// This provider considers an instance "healthy" when the ASG reports `HealthStatus:
+/// "Healthy"` and `LifecycleState: "InService"`. See the [AWS AutoScaling
+/// Docs](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html)
+/// for more information on an ASG's lifecycle.
+///
+/// This provider will wait for healthy instances for up to
+/// `waitForCapacityTimeout`. If ASG creation is taking more than a few minutes,
+/// it's worth investigating for scaling activity errors, which can be caused by
+/// problems with the selected Launch Configuration.
+///
+/// Setting `waitForCapacityTimeout` to `"0"` disables ASG Capacity waiting.
+///
+/// #### Waiting for ELB Capacity
+///
+/// The second mechanism is optional, and affects ASGs with attached ELBs specified
+/// via the `loadBalancers` attribute or with ALBs specified with `targetGroupArns`.
+///
+/// The `minElbCapacity` parameter causes the provider to wait for at least the
+/// requested number of instances to show up `"InService"` in all attached ELBs
+/// during ASG creation. It has no effect on ASG updates.
+///
+/// If `waitForElbCapacity` is set, the provider will wait for exactly that number
+/// of Instances to be `"InService"` in all attached ELBs on both creation and
+/// updates.
+///
+/// These parameters can be used to ensure that service is being provided before
+/// the provider moves on. If new instances don't pass the ELB's health checks for any
+/// reason, the apply will time out, and the ASG will be marked as
+/// tainted (i.e., marked to be destroyed in a follow up run).
+///
+/// As with ASG Capacity, the provider will wait for up to `waitForCapacityTimeout`
+/// for the proper number of instances to be healthy.
+///
+/// #### Troubleshooting Capacity Waiting Timeouts
+///
+/// If ASG creation takes more than a few minutes, this could indicate one of a
+/// number of configuration problems. See the [AWS Docs on Load Balancer
+/// Troubleshooting](https://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-troubleshooting.html)
+/// for more information.
 ///
 /// ## Example Usage
 ///
@@ -213,7 +274,7 @@ import 'metric.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"foo": "bar",
 /// 		})
 /// 		if err != nil {
@@ -228,7 +289,7 @@ import 'metric.dart';
 /// 			HealthCheckType:        pulumi.String("ELB"),
 /// 			DesiredCapacity:        pulumi.Int(4),
 /// 			ForceDelete:            pulumi.Bool(true),
-/// 			PlacementGroup:         test.ID(),
+/// 			PlacementGroup:         test.ID().ToIDOutput().ToStringOutput(),
 /// 			LaunchConfiguration:    pulumi.Any(foobar.Name),
 /// 			VpcZoneIdentifiers: pulumi.StringArray{
 /// 				example1.Id,
@@ -269,6 +330,57 @@ import 'metric.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_placementgroup" "test" {
+///   name     = "test"
+///   strategy = "cluster"
+/// }
+/// resource "aws_autoscaling_group" "bar" {
+///   name                      = "foobar3-test"
+///   max_size                  = 5
+///   min_size                  = 2
+///   health_check_grace_period = 300
+///   health_check_type         = "ELB"
+///   desired_capacity          = 4
+///   force_delete              = true
+///   placement_group           = aws_ec2_placementgroup.test.id
+///   launch_configuration      = foobar.name
+///   vpc_zone_identifiers      = [example1.id, example2.id]
+///   instance_maintenance_policy = {
+///     min_healthy_percentage = 90
+///     max_healthy_percentage = 120
+///   }
+///   initial_lifecycle_hooks {
+///     name                 = "foobar"
+///     default_result       = "CONTINUE"
+///     heartbeat_timeout    = 2000
+///     lifecycle_transition = "autoscaling:EC2_INSTANCE_LAUNCHING"
+///     notification_metadata = jsonencode({
+///       "foo" = "bar"
+///     })
+///     notification_target_arn = "arn:aws:sqs:us-east-1:444455556666:queue1*"
+///     role_arn                = "arn:aws:iam::123456789012:role/S3Access"
+///   }
+///   tags {
+///     key                 = "foo"
+///     value               = "bar"
+///     propagate_at_launch = true
+///   }
+///   tags {
+///     key                 = "lorem"
+///     value               = "ipsum"
+///     propagate_at_launch = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -283,8 +395,8 @@ import 'metric.dart';
 /// import com.pulumi.aws.autoscaling.inputs.GroupInitialLifecycleHookArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupTagArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -492,7 +604,7 @@ import 'metric.dart';
 /// 			MaxSize:         pulumi.Int(1),
 /// 			MinSize:         pulumi.Int(1),
 /// 			LaunchTemplate: &autoscaling.GroupLaunchTemplateArgs{
-/// 				Id:      foobar.ID(),
+/// 				Id:      foobar.ID().ToIDOutput().ToStringOutput(),
 /// 				Version: pulumi.String("$Latest"),
 /// 			},
 /// 		})
@@ -501,6 +613,31 @@ import 'metric.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_launchtemplate" "foobar" {
+///   name_prefix   = "foobar"
+///   image_id      = "ami-1a2b3c"
+///   instance_type = "t2.micro"
+/// }
+/// resource "aws_autoscaling_group" "bar" {
+///   availability_zones = ["us-east-1a"]
+///   desired_capacity   = 1
+///   max_size           = 1
+///   min_size           = 1
+///   launch_template = {
+///     id      = aws_ec2_launchtemplate.foobar.id
+///     version = "$Latest"
+///   }
 /// }
 /// ```
 /// ```java
@@ -514,8 +651,8 @@ import 'metric.dart';
 /// import com.pulumi.aws.autoscaling.Group;
 /// import com.pulumi.aws.autoscaling.GroupArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupLaunchTemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -716,7 +853,7 @@ import 'metric.dart';
 /// 			MixedInstancesPolicy: &autoscaling.GroupMixedInstancesPolicyArgs{
 /// 				LaunchTemplate: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateArgs{
 /// 					LaunchTemplateSpecification: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs{
-/// 						LaunchTemplateId: example.ID(),
+/// 						LaunchTemplateId: example.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 					Overrides: autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArray{
 /// 						&autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs{
@@ -738,6 +875,41 @@ import 'metric.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_launchtemplate" "example" {
+///   name_prefix   = "example"
+///   image_id      = exampleAwsAmi.id
+///   instance_type = "c5.large"
+/// }
+/// resource "aws_autoscaling_group" "example" {
+///   availability_zones = ["us-east-1a"]
+///   desired_capacity   = 1
+///   max_size           = 1
+///   min_size           = 1
+///   mixed_instances_policy = {
+///     launch_template = {
+///       launch_template_specification = {
+///         launch_template_id = aws_ec2_launchtemplate.example.id
+///       }
+///       overrides = [{
+///         "instanceType"     = "c4.large"
+///         "weightedCapacity" = "3"
+///         }, {
+///         "instanceType"     = "c3.large"
+///         "weightedCapacity" = "2"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -751,8 +923,9 @@ import 'metric.dart';
 /// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyLaunchTemplateArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1005,7 +1178,7 @@ import 'metric.dart';
 /// 				},
 /// 				LaunchTemplate: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateArgs{
 /// 					LaunchTemplateSpecification: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs{
-/// 						LaunchTemplateId: example.ID(),
+/// 						LaunchTemplateId: example.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 					Overrides: autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArray{
 /// 						&autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs{
@@ -1027,6 +1200,47 @@ import 'metric.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_launchtemplate" "example" {
+///   name_prefix   = "example"
+///   image_id      = exampleAwsAmi.id
+///   instance_type = "c5.large"
+/// }
+/// resource "aws_autoscaling_group" "example" {
+///   capacity_rebalance   = true
+///   desired_capacity     = 12
+///   max_size             = 15
+///   min_size             = 12
+///   vpc_zone_identifiers = [example1.id, example2.id]
+///   mixed_instances_policy = {
+///     instances_distribution = {
+///       on_demand_base_capacity                  = 0
+///       on_demand_percentage_above_base_capacity = 25
+///       spot_allocation_strategy                 = "capacity-optimized"
+///     }
+///     launch_template = {
+///       launch_template_specification = {
+///         launch_template_id = aws_ec2_launchtemplate.example.id
+///       }
+///       overrides = [{
+///         "instanceType"     = "c4.large"
+///         "weightedCapacity" = "3"
+///         }, {
+///         "instanceType"     = "c3.large"
+///         "weightedCapacity" = "2"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1041,8 +1255,9 @@ import 'metric.dart';
 /// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyInstancesDistributionArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyLaunchTemplateArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1308,7 +1523,7 @@ import 'metric.dart';
 /// 			MixedInstancesPolicy: &autoscaling.GroupMixedInstancesPolicyArgs{
 /// 				LaunchTemplate: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateArgs{
 /// 					LaunchTemplateSpecification: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs{
-/// 						LaunchTemplateId: example.ID(),
+/// 						LaunchTemplateId: example.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 					Overrides: autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArray{
 /// 						&autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs{
@@ -1318,7 +1533,7 @@ import 'metric.dart';
 /// 						&autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs{
 /// 							InstanceType: pulumi.String("c6g.large"),
 /// 							LaunchTemplateSpecification: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationArgs{
-/// 								LaunchTemplateId: example2.ID(),
+/// 								LaunchTemplateId: example2.ID().ToIDOutput().ToStringOutput(),
 /// 							},
 /// 							WeightedCapacity: pulumi.String("2"),
 /// 						},
@@ -1331,6 +1546,48 @@ import 'metric.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_launchtemplate" "example" {
+///   name_prefix   = "example"
+///   image_id      = exampleAwsAmi.id
+///   instance_type = "c5.large"
+/// }
+/// resource "aws_ec2_launchtemplate" "example2" {
+///   name_prefix = "example2"
+///   image_id    = example2AwsAmi.id
+/// }
+/// resource "aws_autoscaling_group" "example" {
+///   availability_zones = ["us-east-1a"]
+///   desired_capacity   = 1
+///   max_size           = 1
+///   min_size           = 1
+///   mixed_instances_policy = {
+///     launch_template = {
+///       launch_template_specification = {
+///         launch_template_id = aws_ec2_launchtemplate.example.id
+///       }
+///       overrides = [{
+///         "instanceType"     = "c4.large"
+///         "weightedCapacity" = "3"
+///         }, {
+///         "instanceType" = "c6g.large"
+///         "launchTemplateSpecification" = {
+///           "launchTemplateId" = aws_ec2_launchtemplate.example2.id
+///         }
+///         "weightedCapacity" = "2"
+///       }]
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -1346,8 +1603,10 @@ import 'metric.dart';
 /// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyLaunchTemplateArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs;
+/// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1588,7 +1847,7 @@ import 'metric.dart';
 /// 			MixedInstancesPolicy: &autoscaling.GroupMixedInstancesPolicyArgs{
 /// 				LaunchTemplate: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateArgs{
 /// 					LaunchTemplateSpecification: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs{
-/// 						LaunchTemplateId: example.ID(),
+/// 						LaunchTemplateId: example.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 					Overrides: autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArray{
 /// 						&autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs{
@@ -1612,6 +1871,44 @@ import 'metric.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_launchtemplate" "example" {
+///   name_prefix   = "example"
+///   image_id      = exampleAwsAmi.id
+///   instance_type = "c5.large"
+/// }
+/// resource "aws_autoscaling_group" "example" {
+///   availability_zones = ["us-east-1a"]
+///   desired_capacity   = 1
+///   max_size           = 1
+///   min_size           = 1
+///   mixed_instances_policy = {
+///     launch_template = {
+///       launch_template_specification = {
+///         launch_template_id = aws_ec2_launchtemplate.example.id
+///       }
+///       overrides = [{
+///         "instanceRequirements" = {
+///           "memoryMib" = {
+///             "min" = 1000
+///           }
+///           "vcpuCount" = {
+///             "min" = 4
+///           }
+///         }
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1625,8 +1922,12 @@ import 'metric.dart';
 /// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyLaunchTemplateArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs;
+/// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs;
+/// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs;
+/// import com.pulumi.aws.autoscaling.inputs.GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1896,6 +2197,44 @@ import 'metric.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_autoscaling_group" "test" {
+///   tags {
+///     key                 = "explicit1"
+///     value               = "value1"
+///     propagate_at_launch = true
+///   }
+///   tags {
+///     key                 = "explicit2"
+///     value               = "value2"
+///     propagate_at_launch = true
+///   }
+///   name                 = "foobar3-test"
+///   max_size             = 5
+///   min_size             = 2
+///   launch_configuration = foobar.name
+///   vpc_zone_identifiers = [example1.id, example2.id]
+/// }
+/// variable "extraTags" {
+///   default = [{
+///     "key"               = "Foo"
+///     "propagateAtLaunch" = true
+///     "value"             = "Bar"
+///     }, {
+///     "key"               = "Baz"
+///     "propagateAtLaunch" = true
+///     "value"             = "Bam"
+///   }]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1905,8 +2244,8 @@ import 'metric.dart';
 /// import com.pulumi.aws.autoscaling.Group;
 /// import com.pulumi.aws.autoscaling.GroupArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupTagArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1919,7 +2258,7 @@ import 'metric.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var extraTags = config.get("extraTags").orElse(List.of(
+///         final var extraTags = config.get("extraTags").orElse(Arrays.asList(
 ///             Map.ofEntries(
 ///                 Map.entry("key", "Foo"),
 ///                 Map.entry("propagateAtLaunch", true),
@@ -1957,7 +2296,7 @@ import 'metric.dart';
 /// ```yaml
 /// configuration:
 ///   extraTags:
-///     type: dynamic
+///     type: object
 ///     default:
 ///       - key: Foo
 ///         propagateAtLaunch: true
@@ -2012,7 +2351,7 @@ import 'metric.dart';
 ///     minSize: 1,
 ///     launchTemplate: {
 ///         id: exampleLaunchTemplate.id,
-///         version: exampleLaunchTemplate.latestVersion,
+///         version: exampleLaunchTemplate.latestVersion.apply(x =>String(x)),
 ///     },
 ///     tags: [{
 ///         key: "Key",
@@ -2048,7 +2387,7 @@ import 'metric.dart';
 ///     min_size=1,
 ///     launch_template={
 ///         "id": example_launch_template.id,
-///         "version": example_launch_template.latest_version,
+///         "version": example_launch_template.latest_version.apply(lambda x: str(x)),
 ///     },
 ///     tags=[{
 ///         "key": "Key",
@@ -2179,7 +2518,7 @@ import 'metric.dart';
 /// 			MaxSize:         pulumi.Int(2),
 /// 			MinSize:         pulumi.Int(1),
 /// 			LaunchTemplate: &autoscaling.GroupLaunchTemplateArgs{
-/// 				Id:      exampleLaunchTemplate.ID(),
+/// 				Id:      exampleLaunchTemplate.ID().ToIDOutput().ToStringOutput(),
 /// 				Version: exampleLaunchTemplate.LatestVersion,
 /// 			},
 /// 			Tags: autoscaling.GroupTagArray{
@@ -2206,6 +2545,51 @@ import 'metric.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getami" "example" {
+///   most_recent = true
+///   owners      = ["amazon"]
+///   filters {
+///     name   = "name"
+///     values = ["amzn-ami-hvm-*-x86_64-gp2"]
+///   }
+/// }
+///
+/// resource "aws_autoscaling_group" "example" {
+///   availability_zones = ["us-east-1a"]
+///   desired_capacity   = 1
+///   max_size           = 2
+///   min_size           = 1
+///   launch_template = {
+///     id      = aws_ec2_launchtemplate.example.id
+///     version = aws_ec2_launchtemplate.example.latest_version
+///   }
+///   tags {
+///     key                 = "Key"
+///     value               = "Value"
+///     propagate_at_launch = true
+///   }
+///   instance_refresh = {
+///     strategy = "Rolling"
+///     preferences = {
+///       min_healthy_percentage = 50
+///     }
+///     triggers = ["tag"]
+///   }
+/// }
+/// resource "aws_ec2_launchtemplate" "example" {
+///   image_id      = data.aws_ec2_getami.example.id
+///   instance_type = "t3.nano"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2214,6 +2598,7 @@ import 'metric.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetAmiArgs;
+/// import com.pulumi.aws.ec2.inputs.GetAmiFilterArgs;
 /// import com.pulumi.aws.ec2.LaunchTemplate;
 /// import com.pulumi.aws.ec2.LaunchTemplateArgs;
 /// import com.pulumi.aws.autoscaling.Group;
@@ -2222,8 +2607,8 @@ import 'metric.dart';
 /// import com.pulumi.aws.autoscaling.inputs.GroupTagArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupInstanceRefreshArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupInstanceRefreshPreferencesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2449,6 +2834,35 @@ import 'metric.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_launchtemplate" "example" {
+///   name_prefix   = "example"
+///   image_id      = exampleAwsAmi.id
+///   instance_type = "c5.large"
+/// }
+/// resource "aws_autoscaling_group" "example" {
+///   availability_zones = ["us-east-1a"]
+///   desired_capacity   = 1
+///   max_size           = 5
+///   min_size           = 1
+///   warm_pool = {
+///     pool_state                  = "Hibernated"
+///     min_size                    = 1
+///     max_group_prepared_capacity = 10
+///     instance_reuse_policy = {
+///       reuse_on_scale_in = true
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2461,8 +2875,8 @@ import 'metric.dart';
 /// import com.pulumi.aws.autoscaling.GroupArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupWarmPoolArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupWarmPoolInstanceReusePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2550,7 +2964,7 @@ import 'metric.dart';
 ///     traffic_sources=[{
 ///         "identifier": entry["value"]["arn"],
 ///         "type": "vpc-lattice",
-///     } for entry in [{"key": k, "value": v} for k, v in [__item for __item in test_aws_vpclattice_target_group]]],
+///     } for entry in [{"key": k, "value": v} for k, v in sorted([__item for __item in test_aws_vpclattice_target_group].items())]],
 ///     vpc_zone_identifiers=test_aws_subnet["id"],
 ///     max_size=1,
 ///     min_size=1,
@@ -2582,87 +2996,60 @@ import 'metric.dart';
 ///
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
 ///
+/// resource "aws_autoscaling_group" "test" {
+///   dynamic "traffic_sources" {
+///     for_each = entries(testAwsVpclatticeTargetGroup[*])
+///     content {
+///       identifier = traffic_sources.value.value.arn
+///       type       = "vpc-lattice"
+///     }
+///   }
+///   vpc_zone_identifiers = testAwsSubnet.id
+///   max_size             = 1
+///   min_size             = 1
+///   force_delete         = true
+/// }
+/// ```
 ///
-/// ## Waiting for Capacity
-///
-/// A newly-created ASG is initially empty and begins to scale to `min_size` (or
-/// `desired_capacity`, if specified) by launching instances using the provided
-/// Launch Configuration. These instances take time to launch and boot.
-///
-/// On ASG Update, changes to these values also take time to result in the target
-/// number of instances providing service.
-///
-/// This provider provides two mechanisms to help consistently manage ASG scale up
-/// time across dependent resources.
-///
-/// #### Waiting for ASG Capacity
-///
-/// The first is default behavior. This provider waits after ASG creation for
-/// `min_size` (or `desired_capacity`, if specified) healthy instances to show up
-/// in the ASG before continuing.
-///
-/// If `min_size` or `desired_capacity` are changed in a subsequent update,
-/// this provider will also wait for the correct number of healthy instances before
-/// continuing.
-///
-/// This provider considers an instance "healthy" when the ASG reports `HealthStatus:
-/// "Healthy"` and `LifecycleState: "InService"`. See the [AWS AutoScaling
-/// Docs](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html)
-/// for more information on an ASG's lifecycle.
-///
-/// This provider will wait for healthy instances for up to
-/// `wait_for_capacity_timeout`. If ASG creation is taking more than a few minutes,
-/// it's worth investigating for scaling activity errors, which can be caused by
-/// problems with the selected Launch Configuration.
-///
-/// Setting `wait_for_capacity_timeout` to `"0"` disables ASG Capacity waiting.
-///
-/// #### Waiting for ELB Capacity
-///
-/// The second mechanism is optional, and affects ASGs with attached ELBs specified
-/// via the `load_balancers` attribute or with ALBs specified with `target_group_arns`.
-///
-/// The `min_elb_capacity` parameter causes the provider to wait for at least the
-/// requested number of instances to show up `"InService"` in all attached ELBs
-/// during ASG creation. It has no effect on ASG updates.
-///
-/// If `wait_for_elb_capacity` is set, the provider will wait for exactly that number
-/// of Instances to be `"InService"` in all attached ELBs on both creation and
-/// updates.
-///
-/// These parameters can be used to ensure that service is being provided before
-/// the provider moves on. If new instances don't pass the ELB's health checks for any
-/// reason, the apply will time out, and the ASG will be marked as
-/// tainted (i.e., marked to be destroyed in a follow up run).
-///
-/// As with ASG Capacity, the provider will wait for up to `wait_for_capacity_timeout`
-/// for the proper number of instances to be healthy.
-///
-/// #### Troubleshooting Capacity Waiting Timeouts
-///
-/// If ASG creation takes more than a few minutes, this could indicate one of a
-/// number of configuration problems. See the [AWS Docs on Load Balancer
-/// Troubleshooting](https://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-troubleshooting.html)
-/// for more information.
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the Auto Scaling Group.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import Auto Scaling Groups using the `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:autoscaling/group:Group web web-asg
+/// $ pulumi import aws:autoscaling/group:Group example example
 /// ```
 class Group extends pulumi.CustomResource {
   /// ARN for this Auto Scaling Group
   late final pulumi.Output<String> arn;
-  /// The instance capacity distribution across Availability Zones. See Availability Zone Distribution below for more details.
+  /// The instance capacity distribution across Availability Zones. See `availabilityZoneDistribution` Block below for more details.
   late final pulumi.Output<GroupAvailabilityZoneDistribution> availabilityZoneDistribution;
-  /// A list of Availability Zones where instances in the Auto Scaling group can be created. Used for launching into the default VPC subnet in each Availability Zone when not using the `vpc_zone_identifier` attribute, or for attaching a network interface when an existing network interface ID is specified in a launch template. Conflicts with `vpc_zone_identifier`.
+  /// A list of Availability Zones where instances in the Auto Scaling group can be created. Used for launching into the default VPC subnet in each Availability Zone when not using the `vpcZoneIdentifier` attribute, or for attaching a network interface when an existing network interface ID is specified in a launch template. Conflicts with `vpcZoneIdentifier`.
   late final pulumi.Output<List<String>> availabilityZones;
   /// Whether capacity rebalance is enabled. Otherwise, capacity rebalance is disabled.
   late final pulumi.Output<bool?> capacityRebalance;
-  /// The capacity reservation specification for the Auto Scaling group allows you to prioritize launching into On-Demand Capacity Reservations. See Capacity Reservation Specification below for more details.
+  /// The capacity reservation specification for the Auto Scaling group allows you to prioritize launching into On-Demand Capacity Reservations. See `capacityReservationSpecification` Block below for more details.
   late final pulumi.Output<GroupCapacityReservationSpecification> capacityReservationSpecification;
   /// Reserved.
   late final pulumi.Output<String?> context;
@@ -2674,7 +3061,7 @@ class Group extends pulumi.CustomResource {
   /// should be running in the group. (See also Waiting for
   /// Capacity below.)
   late final pulumi.Output<int> desiredCapacity;
-  /// The unit of measurement for the value specified for `desired_capacity`. Supported for attribute-based instance type selection only. Valid values: `"units"`, `"vcpu"`, `"memory-mib"`.
+  /// The unit of measurement for the value specified for `desiredCapacity`. Supported for attribute-based instance type selection only. Valid values: `"units"`, `"vcpu"`, `"memory-mib"`.
   late final pulumi.Output<String?> desiredCapacityType;
   /// List of metrics to collect. The allowed values are defined by the [underlying AWS API](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html).
   late final pulumi.Output<List<Metric>?> enabledMetrics;
@@ -2697,9 +3084,11 @@ class Group extends pulumi.CustomResource {
   /// to attach to the Auto Scaling Group **before** instances are launched. The
   /// syntax is exactly the same as the separate
   /// `aws.autoscaling.LifecycleHook`
-  /// resource, without the `autoscaling_group_name` attribute. Please note that this will only work when creating
+  /// resource, without the `autoscalingGroupName` attribute. Please note that this will only work when creating
   /// a new Auto Scaling Group. For all other use-cases, please use `aws.autoscaling.LifecycleHook` resource.
   late final pulumi.Output<List<Map<String, dynamic>>?> initialLifecycleHooks;
+  /// If this block is configured, adds an instance lifecycle policy to the specified Auto Scaling Group. Defined below.
+  late final pulumi.Output<GroupInstanceLifecyclePolicy> instanceLifecyclePolicy;
   /// If this block is configured, add a instance maintenance policy to the specified Auto Scaling group. Defined below.
   late final pulumi.Output<GroupInstanceMaintenancePolicy?> instanceMaintenancePolicy;
   /// If this block is configured, start an
@@ -2708,10 +3097,10 @@ class Group extends pulumi.CustomResource {
   late final pulumi.Output<GroupInstanceRefresh?> instanceRefresh;
   /// Name of the launch configuration to use.
   late final pulumi.Output<String?> launchConfiguration;
-  /// Nested argument with Launch template specification to use to launch instances. See Launch Template below for more details.
+  /// Nested argument with Launch template specification to use to launch instances. See `launchTemplate` Block below for more details.
   late final pulumi.Output<GroupLaunchTemplate> launchTemplate;
   /// List of elastic load balancer names to add to the autoscaling
-  /// group names. Only valid for classic load balancers. For ALBs, use `target_group_arns` instead. To remove all load balancer attachments an empty list should be specified.
+  /// group names. Only valid for classic load balancers. For ALBs, use `targetGroupArns` instead. To remove all load balancer attachments an empty list should be specified.
   late final pulumi.Output<List<String>> loadBalancers;
   /// Maximum amount of time, in seconds, that an instance can be in service, values must be either equal to 0 or between 86400 and 31536000 seconds.
   late final pulumi.Output<int?> maxInstanceLifetime;
@@ -2727,9 +3116,9 @@ class Group extends pulumi.CustomResource {
   /// Minimum size of the Auto Scaling Group.
   /// (See also Waiting for Capacity below.)
   late final pulumi.Output<int> minSize;
-  /// Configuration block containing settings to define launch targets for Auto Scaling groups. See Mixed Instances Policy below for more details.
+  /// Configuration block containing settings to define launch targets for Auto Scaling groups. See `mixedInstancesPolicy` Block below for more details.
   late final pulumi.Output<GroupMixedInstancesPolicy> mixedInstancesPolicy;
-  /// Name of the Auto Scaling Group. By default generated by Pulumi. Conflicts with `name_prefix`.
+  /// Name of the Auto Scaling Group. By default generated by Pulumi. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified
   /// prefix. Conflicts with `name`.
@@ -2751,7 +3140,7 @@ class Group extends pulumi.CustomResource {
   /// List of processes to suspend for the Auto Scaling Group. The allowed values are `Launch`, `Terminate`, `HealthCheck`, `ReplaceUnhealthy`, `AZRebalance`, `AlarmNotification`, `ScheduledActions`, `AddToLoadBalancer`, `InstanceRefresh`.
   /// Note that if you suspend either the `Launch` or `Terminate` process types, it can prevent your Auto Scaling Group from functioning properly.
   late final pulumi.Output<List<String>?> suspendedProcesses;
-  /// Configuration block(s) containing resource tags. See Tag below for more details.
+  /// Configuration block(s) containing resource tags. See `tag` Block below for more details.
   late final pulumi.Output<List<Map<String, dynamic>>?> tags;
   /// Set of `aws.lb.TargetGroup` ARNs, for use with Application or Network Load Balancing. To remove all target group attachments an empty list should be specified.
   late final pulumi.Output<List<String>> targetGroupArns;
@@ -2759,7 +3148,7 @@ class Group extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> terminationPolicies;
   /// Attaches one or more traffic sources to the specified Auto Scaling group.
   late final pulumi.Output<List<Map<String, dynamic>>> trafficSources;
-  /// List of subnet IDs to launch resources in. Subnets automatically determine which availability zones the group will reside. Conflicts with `availability_zones`.
+  /// List of subnet IDs to launch resources in. Subnets automatically determine which availability zones the group will reside. Conflicts with `availabilityZones`.
   late final pulumi.Output<List<String>> vpcZoneIdentifiers;
   /// Maximum
   /// [duration](https://golang.org/pkg/time/#ParseDuration) that the provider should
@@ -2770,7 +3159,7 @@ class Group extends pulumi.CustomResource {
   /// Setting this will cause Pulumi to wait
   /// for exactly this number of healthy instances from this Auto Scaling Group in
   /// all attached load balancers on both create and update operations. (Takes
-  /// precedence over `min_elb_capacity` behavior.)
+  /// precedence over `minElbCapacity` behavior.)
   /// (See also Waiting for Capacity below.)
   late final pulumi.Output<int?> waitForElbCapacity;
   /// If this block is configured, add a [Warm Pool](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-warm-pools.html)
@@ -2810,6 +3199,7 @@ class Group extends pulumi.CustomResource {
     healthCheckType = registerOutput<String>('healthCheckType');
     ignoreFailedScalingActivities = registerOutput<bool?>('ignoreFailedScalingActivities');
     initialLifecycleHooks = registerOutput<List<Map<String, dynamic>>?>('initialLifecycleHooks');
+    instanceLifecyclePolicy = registerOutput<GroupInstanceLifecyclePolicy>('instanceLifecyclePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceLifecyclePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceMaintenancePolicy = registerOutput<GroupInstanceMaintenancePolicy?>('instanceMaintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceRefresh = registerOutput<GroupInstanceRefresh?>('instanceRefresh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceRefresh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     launchConfiguration = registerOutput<String?>('launchConfiguration');
@@ -2880,6 +3270,7 @@ class Group extends pulumi.CustomResource {
     healthCheckType = registerOutput<String>('healthCheckType');
     ignoreFailedScalingActivities = registerOutput<bool?>('ignoreFailedScalingActivities');
     initialLifecycleHooks = registerOutput<List<Map<String, dynamic>>?>('initialLifecycleHooks');
+    instanceLifecyclePolicy = registerOutput<GroupInstanceLifecyclePolicy>('instanceLifecyclePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceLifecyclePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceMaintenancePolicy = registerOutput<GroupInstanceMaintenancePolicy?>('instanceMaintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceRefresh = registerOutput<GroupInstanceRefresh?>('instanceRefresh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceRefresh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     launchConfiguration = registerOutput<String?>('launchConfiguration');

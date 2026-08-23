@@ -8,25 +8,26 @@ import 'workflow_on_exception_step_delete_step_details.dart';
 import 'workflow_on_exception_step_tag_step_details.dart';
 
 class WorkflowOnExceptionStep {
-  /// Details for a step that performs a file copy. See Copy Step Details below.
+  /// Details for a step that performs a file copy. See `copyStepDetails` Block below.
   final pulumi.Input<WorkflowOnExceptionStepCopyStepDetails>? copyStepDetails;
-  /// Details for a step that invokes a lambda function.
+  /// Details for a step that invokes a lambda function. See `customStepDetails` Block below.
   final pulumi.Input<WorkflowOnExceptionStepCustomStepDetails>? customStepDetails;
-  /// Details for a step that decrypts the file.
+  /// Details for a step that decrypts the file. See `decryptStepDetails` Block below.
   final pulumi.Input<WorkflowOnExceptionStepDecryptStepDetails>? decryptStepDetails;
-  /// Details for a step that deletes the file.
+  /// Details for a step that deletes the file. See `deleteStepDetails` Block below.
   final pulumi.Input<WorkflowOnExceptionStepDeleteStepDetails>? deleteStepDetails;
-  /// Details for a step that creates one or more tags.
+  /// Details for a step that creates one or more tags. See `tagStepDetails` Block below.
   final pulumi.Input<WorkflowOnExceptionStepTagStepDetails>? tagStepDetails;
+  /// Step type. Valid values are `COPY`, `CUSTOM`, `DECRYPT`, `DELETE`, and `TAG`.
   final pulumi.Input<String> type;
 
   /// Creates a new [WorkflowOnExceptionStep].
-  /// [copyStepDetails] Details for a step that performs a file copy. See Copy Step Details below.
-  /// [customStepDetails] Details for a step that invokes a lambda function.
-  /// [decryptStepDetails] Details for a step that decrypts the file.
-  /// [deleteStepDetails] Details for a step that deletes the file.
-  /// [tagStepDetails] Details for a step that creates one or more tags.
-  /// [type] Required.
+  /// [copyStepDetails] Details for a step that performs a file copy. See `copyStepDetails` Block below.
+  /// [customStepDetails] Details for a step that invokes a lambda function. See `customStepDetails` Block below.
+  /// [decryptStepDetails] Details for a step that decrypts the file. See `decryptStepDetails` Block below.
+  /// [deleteStepDetails] Details for a step that deletes the file. See `deleteStepDetails` Block below.
+  /// [tagStepDetails] Details for a step that creates one or more tags. See `tagStepDetails` Block below.
+  /// [type] Step type. Valid values are `COPY`, `CUSTOM`, `DECRYPT`, `DELETE`, and `TAG`.
   const WorkflowOnExceptionStep({
     this.copyStepDetails,
     this.customStepDetails,
@@ -58,4 +59,3 @@ class WorkflowOnExceptionStep {
     );
   }
 }
-

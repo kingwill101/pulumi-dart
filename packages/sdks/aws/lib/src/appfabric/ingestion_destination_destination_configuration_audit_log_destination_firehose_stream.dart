@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream {
+  /// Name of the Amazon Data Firehose delivery stream.
   final pulumi.Input<String> streamName;
 
   /// Creates a new [IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream].
-  /// [streamName] Required.
+  /// [streamName] Name of the Amazon Data Firehose delivery stream.
   const IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream({
     required this.streamName,
   });
@@ -23,4 +24,3 @@ class IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStr
     );
   }
 }
-

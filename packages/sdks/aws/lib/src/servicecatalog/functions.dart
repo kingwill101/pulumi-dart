@@ -74,6 +74,19 @@ import 'get_provisioning_artifacts_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_servicecatalog_getappregistryapplication" "example" {
+///   id = "application-1234"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +95,8 @@ import 'get_provisioning_artifacts_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicecatalog.ServicecatalogFunctions;
 /// import com.pulumi.aws.servicecatalog.inputs.GetAppregistryApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -181,6 +194,19 @@ Future<GetAppregistryApplicationResult> getAppregistryApplication(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_servicecatalog_getappregistryattributegroup" "example" {
+///   name = "example_attribute_group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -189,8 +215,8 @@ Future<GetAppregistryApplicationResult> getAppregistryApplication(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicecatalog.ServicecatalogFunctions;
 /// import com.pulumi.aws.servicecatalog.inputs.GetAppregistryAttributeGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -288,6 +314,19 @@ Future<GetAppregistryAttributeGroupResult> getAppregistryAttributeGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_servicecatalog_getappregistryattributegroupassociations" "example" {
+///   id = "12456778723424sdffsdfsdq34,12234t3564dsfsdf34asff4ww3"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -296,8 +335,8 @@ Future<GetAppregistryAttributeGroupResult> getAppregistryAttributeGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicecatalog.ServicecatalogFunctions;
 /// import com.pulumi.aws.servicecatalog.inputs.GetAppregistryAttributeGroupAssociationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -399,6 +438,20 @@ Future<GetAppregistryAttributeGroupAssociationsResult> getAppregistryAttributeGr
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_servicecatalog_getconstraint" "example" {
+///   accept_language = "en"
+///   id              = "cons-hrvy0335"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -407,8 +460,8 @@ Future<GetAppregistryAttributeGroupAssociationsResult> getAppregistryAttributeGr
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicecatalog.ServicecatalogFunctions;
 /// import com.pulumi.aws.servicecatalog.inputs.GetConstraintArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -508,6 +561,19 @@ Future<GetConstraintResult> getConstraint(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_servicecatalog_getlaunchpaths" "example" {
+///   product_id = "prod-yakog5pdriver"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -516,8 +582,8 @@ Future<GetConstraintResult> getConstraint(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicecatalog.ServicecatalogFunctions;
 /// import com.pulumi.aws.servicecatalog.inputs.GetLaunchPathsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -613,6 +679,19 @@ Future<GetLaunchPathsResult> getLaunchPaths(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_servicecatalog_getportfolio" "portfolio" {
+///   id = "port-07052002"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -621,8 +700,8 @@ Future<GetLaunchPathsResult> getLaunchPaths(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicecatalog.ServicecatalogFunctions;
 /// import com.pulumi.aws.servicecatalog.inputs.GetPortfolioArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -720,6 +799,19 @@ Future<GetPortfolioResult> getPortfolio(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_servicecatalog_getportfolioconstraints" "example" {
+///   portfolio_id = "port-3lli3b3an"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -728,8 +820,8 @@ Future<GetPortfolioResult> getPortfolio(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicecatalog.ServicecatalogFunctions;
 /// import com.pulumi.aws.servicecatalog.inputs.GetPortfolioConstraintsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -829,6 +921,19 @@ Future<GetPortfolioConstraintsResult> getPortfolioConstraints(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_servicecatalog_getproduct" "example" {
+///   id = "prod-dnigbtea24ste"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -837,8 +942,8 @@ Future<GetPortfolioConstraintsResult> getPortfolioConstraints(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicecatalog.ServicecatalogFunctions;
 /// import com.pulumi.aws.servicecatalog.inputs.GetProductArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -936,6 +1041,19 @@ Future<GetProductResult> getProduct(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_servicecatalog_getprovisioningartifacts" "example" {
+///   product_id = "prod-yakog5pdriver"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -944,8 +1062,8 @@ Future<GetProductResult> getProduct(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicecatalog.ServicecatalogFunctions;
 /// import com.pulumi.aws.servicecatalog.inputs.GetProvisioningArtifactsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

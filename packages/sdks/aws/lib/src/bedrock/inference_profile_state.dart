@@ -13,7 +13,7 @@ class InferenceProfileState {
   final pulumi.Input<String>? createdAt;
   /// The description of the inference profile.
   final pulumi.Input<String>? description;
-  /// The source of the model this inference profile will track metrics and cost for. See `model_source`.
+  /// The source of the model this inference profile will track metrics and cost for. See `modelSource`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<InferenceProfileModelSource>? modelSource;
@@ -38,7 +38,7 @@ class InferenceProfileState {
   /// [arn] The Amazon Resource Name (ARN) of the inference profile.
   /// [createdAt] The time at which the inference profile was created.
   /// [description] The description of the inference profile.
-  /// [modelSource] The source of the model this inference profile will track metrics and cost for. See `model_source`.
+  /// [modelSource] The source of the model this inference profile will track metrics and cost for. See `modelSource`.
   /// [models] A list of information about each model in the inference profile. See `models`.
   /// [name] The name of the inference profile.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -100,4 +100,3 @@ class InferenceProfileState {
     );
   }
 }
-

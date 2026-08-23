@@ -10,11 +10,11 @@ class SizeConstraintSetSizeConstraint {
   final pulumi.Input<String> comparisonOperator;
   /// Specifies where in a web request to look for the size constraint.
   final pulumi.Input<SizeConstraintSetSizeConstraintFieldToMatch> fieldToMatch;
-  /// The size in bytes that you want to compare against the size of the specified `field_to_match`.
+  /// The size in bytes that you want to compare against the size of the specified `fieldToMatch`.
   /// Valid values are between 0 - 21474836480 bytes (0 - 20 GB).
   final pulumi.Input<int> size;
   /// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
-  /// If you specify a transformation, AWS WAF performs the transformation on `field_to_match` before inspecting a request for a match.
+  /// If you specify a transformation, AWS WAF performs the transformation on `fieldToMatch` before inspecting a request for a match.
   /// e.g., `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
   /// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SizeConstraint.html#WAF-Type-SizeConstraint-TextTransformation)
   /// for all supported values.
@@ -24,7 +24,7 @@ class SizeConstraintSetSizeConstraint {
   /// Creates a new [SizeConstraintSetSizeConstraint].
   /// [comparisonOperator] The type of comparison you want to perform.
   /// [fieldToMatch] Specifies where in a web request to look for the size constraint.
-  /// [size] The size in bytes that you want to compare against the size of the specified `field_to_match`.
+  /// [size] The size in bytes that you want to compare against the size of the specified `fieldToMatch`.
   /// [textTransformation] Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
   const SizeConstraintSetSizeConstraint({
     required this.comparisonOperator,
@@ -51,4 +51,3 @@ class SizeConstraintSetSizeConstraint {
     );
   }
 }
-

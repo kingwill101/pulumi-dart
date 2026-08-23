@@ -17,7 +17,7 @@ import 'agent_agent_alias_timeouts.dart';
 /// const current = aws.getCallerIdentity({});
 /// const currentGetPartition = aws.getPartition({});
 /// const currentGetRegion = aws.getRegion({});
-/// const exampleAgentTrust = Promise.all([current, currentGetPartition, currentGetRegion, current]).then(([current, currentGetPartition, currentGetRegion, current1]) => aws.iam.getPolicyDocument({
+/// const exampleAgentTrust = Promise.all([current, currentGetPartition, currentGetRegion]).then(([current, currentGetPartition, currentGetRegion]) => aws.iam.getPolicyDocument({
 ///     statements: [{
 ///         actions: ["sts:AssumeRole"],
 ///         principals: [{
@@ -32,7 +32,7 @@ import 'agent_agent_alias_timeouts.dart';
 ///             },
 ///             {
 ///                 test: "ArnLike",
-///                 values: [`arn:${currentGetPartition.partition}:bedrock:${currentGetRegion.region}:${current1.accountId}:agent/*`],
+///                 values: [`arn:${currentGetPartition.partition}:bedrock:${currentGetRegion.region}:${current.accountId}:agent/*`],
 ///                 variable: "AWS:SourceArn",
 ///             },
 ///         ],
@@ -228,107 +228,166 @@ import 'agent_agent_alias_timeouts.dart';
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// current, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		current, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		currentGetPartition, err := aws.GetPartition(ctx, &aws.GetPartitionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		currentGetRegion, err := aws.GetRegion(ctx, &aws.GetRegionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleAgentTrust, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
+/// 					},
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Identifiers: []string{
+/// 								"bedrock.amazonaws.com",
+/// 							},
+/// 							Type: "Service",
+/// 						},
+/// 					},
+/// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
+/// 						{
+/// 							Test: "StringEquals",
+/// 							Values: pulumi.StringArray{
+/// 								current.AccountId,
+/// 							},
+/// 							Variable: "aws:SourceAccount",
+/// 						},
+/// 						{
+/// 							Test: "ArnLike",
+/// 							Values: []string{
+/// 								fmt.Sprintf("arn:%v:bedrock:%v:%v:agent/*", currentGetPartition.Partition, currentGetRegion.Region, current.AccountId),
+/// 							},
+/// 							Variable: "AWS:SourceArn",
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleAgentPermissions, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Actions: []string{
+/// 						"bedrock:InvokeModel",
+/// 					},
+/// 					Resources: []string{
+/// 						fmt.Sprintf("arn:%v:bedrock:%v::foundation-model/anthropic.claude-v2", currentGetPartition.Partition, currentGetRegion.Region),
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example, err := iam.NewRole(ctx, "example", &iam.RoleArgs{
+/// 			AssumeRolePolicy: pulumi.String(exampleAgentTrust.Json),
+/// 			NamePrefix:       pulumi.String("AmazonBedrockExecutionRoleForAgents_"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
+/// 			Policy: pulumi.String(exampleAgentPermissions.Json),
+/// 			Role:   example.ID().ToIDOutput().ToStringOutput(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleAgentAgent, err := bedrock.NewAgentAgent(ctx, "example", &bedrock.AgentAgentArgs{
+/// 			AgentName:            pulumi.String("my-agent-name"),
+/// 			AgentResourceRoleArn: example.Arn,
+/// 			IdleTtl:              500,
+/// 			FoundationModel:      pulumi.String("anthropic.claude-v2"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = bedrock.NewAgentAgentAlias(ctx, "example", &bedrock.AgentAgentAliasArgs{
+/// 			AgentAliasName: pulumi.String("my-agent-alias"),
+/// 			AgentId:        exampleAgentAgent.AgentId,
+/// 			Description:    pulumi.String("Test Alias"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// currentGetPartition, err := aws.GetPartition(ctx, &aws.GetPartitionArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// currentGetRegion, err := aws.GetRegion(ctx, &aws.GetRegionArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+///
+/// data "aws_getcalleridentity" "current" {
 /// }
-/// exampleAgentTrust, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Actions: []string{
-/// "sts:AssumeRole",
-/// },
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Identifiers: []string{
-/// "bedrock.amazonaws.com",
-/// },
-/// Type: "Service",
-/// },
-/// },
-/// Conditions: []iam.GetPolicyDocumentStatementCondition{
-/// {
-/// Test: "StringEquals",
-/// Values: interface{}{
-/// current.AccountId,
-/// },
-/// Variable: "aws:SourceAccount",
-/// },
-/// {
-/// Test: "ArnLike",
-/// Values: []string{
-/// fmt.Sprintf("arn:%v:bedrock:%v:%v:agent/*", currentGetPartition.Partition, currentGetRegion.Region, current.AccountId),
-/// },
-/// Variable: "AWS:SourceArn",
-/// },
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// data "aws_getpartition" "currentGetPartition" {
 /// }
-/// exampleAgentPermissions, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Actions: []string{
-/// "bedrock:InvokeModel",
-/// },
-/// Resources: []string{
-/// fmt.Sprintf("arn:%v:bedrock:%v::foundation-model/anthropic.claude-v2", currentGetPartition.Partition, currentGetRegion.Region),
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// data "aws_getregion" "currentGetRegion" {
 /// }
-/// example, err := iam.NewRole(ctx, "example", &iam.RoleArgs{
-/// AssumeRolePolicy: pulumi.String(exampleAgentTrust.Json),
-/// NamePrefix: pulumi.String("AmazonBedrockExecutionRoleForAgents_"),
-/// })
-/// if err != nil {
-/// return err
+/// data "aws_iam_getpolicydocument" "exampleAgentTrust" {
+///   statements {
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       identifiers = ["bedrock.amazonaws.com"]
+///       type        = "Service"
+///     }
+///     conditions {
+///       test     = "StringEquals"
+///       values   = [data.aws_getcalleridentity.current.account_id]
+///       variable = "aws:SourceAccount"
+///     }
+///     conditions {
+///       test     = "ArnLike"
+///       values   = ["arn:${data.aws_getpartition.currentGetPartition.partition}:bedrock:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:agent/*"]
+///       variable = "AWS:SourceArn"
+///     }
+///   }
 /// }
-/// _, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
-/// Policy: pulumi.String(exampleAgentPermissions.Json),
-/// Role: example.ID(),
-/// })
-/// if err != nil {
-/// return err
+/// data "aws_iam_getpolicydocument" "exampleAgentPermissions" {
+///   statements {
+///     actions   = ["bedrock:InvokeModel"]
+///     resources = ["arn:${data.aws_getpartition.currentGetPartition.partition}:bedrock:${data.aws_getregion.currentGetRegion.region}::foundation-model/anthropic.claude-v2"]
+///   }
 /// }
-/// exampleAgentAgent, err := bedrock.NewAgentAgent(ctx, "example", &bedrock.AgentAgentArgs{
-/// AgentName: pulumi.String("my-agent-name"),
-/// AgentResourceRoleArn: example.Arn,
-/// IdleTtl: 500,
-/// FoundationModel: pulumi.String("anthropic.claude-v2"),
-/// })
-/// if err != nil {
-/// return err
+///
+/// resource "aws_iam_role" "example" {
+///   assume_role_policy = data.aws_iam_getpolicydocument.exampleAgentTrust.json
+///   name_prefix        = "AmazonBedrockExecutionRoleForAgents_"
 /// }
-/// _, err = bedrock.NewAgentAgentAlias(ctx, "example", &bedrock.AgentAgentAliasArgs{
-/// AgentAliasName: pulumi.String("my-agent-alias"),
-/// AgentId: exampleAgentAgent.AgentId,
-/// Description: pulumi.String("Test Alias"),
-/// })
-/// if err != nil {
-/// return err
+/// resource "aws_iam_rolepolicy" "example" {
+///   policy = data.aws_iam_getpolicydocument.exampleAgentPermissions.json
+///   role   = aws_iam_role.example.id
 /// }
-/// return nil
-/// })
+/// resource "aws_bedrock_agentagent" "example" {
+///   agent_name              = "my-agent-name"
+///   agent_resource_role_arn = aws_iam_role.example.arn
+///   idle_ttl                = 500
+///   foundation_model        = "anthropic.claude-v2"
+/// }
+/// resource "aws_bedrock_agentagentalias" "example" {
+///   agent_alias_name = "my-agent-alias"
+///   agent_id         = aws_bedrock_agentagent.example.agent_id
+///   description      = "Test Alias"
 /// }
 /// ```
 /// ```java
@@ -343,6 +402,9 @@ import 'agent_agent_alias_timeouts.dart';
 /// import com.pulumi.aws.inputs.GetRegionArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
@@ -351,8 +413,8 @@ import 'agent_agent_alias_timeouts.dart';
 /// import com.pulumi.aws.bedrock.AgentAgentArgs;
 /// import com.pulumi.aws.bedrock.AgentAgentAlias;
 /// import com.pulumi.aws.bedrock.AgentAgentAliasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -522,11 +584,11 @@ class AgentAgentAlias extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Details about the routing configuration of the alias. See `routing_configuration` Block for details.
+  /// Details about the routing configuration of the alias. See `routingConfiguration` Block for details.
   late final pulumi.Output<List<Map<String, dynamic>>> routingConfigurations;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentAgentAliasTimeouts?> timeouts;
 

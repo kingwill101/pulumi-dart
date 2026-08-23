@@ -78,6 +78,23 @@ import 'segment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_evidently_segment" "example" {
+///   name    = "example"
+///   pattern = "{\"Price\":[{\"numeric\":[\">\",10,\"<=\",20]}]}"
+///   tags = {
+///     "Key1" = "example Segment"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +103,8 @@ import 'segment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.evidently.Segment;
 /// import com.pulumi.aws.evidently.SegmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -218,6 +235,23 @@ import 'segment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_evidently_segment" "example" {
+///   name    = "example"
+///   pattern = "  {\n    \\\"Price\\\": [\n      {\n        \\\"numeric\\\": [\\\">\\\",10,\\\"<=\\\",20]\n      }\n    ]\n  }\n"
+///   tags = {
+///     "Key1" = "example Segment"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -226,8 +260,8 @@ import 'segment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.evidently.Segment;
 /// import com.pulumi.aws.evidently.SegmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -336,6 +370,21 @@ import 'segment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_evidently_segment" "example" {
+///   name        = "example"
+///   pattern     = "{\"Price\":[{\"numeric\":[\">\",10,\"<=\",20]}]}"
+///   description = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -344,8 +393,8 @@ import 'segment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.evidently.Segment;
 /// import com.pulumi.aws.evidently.SegmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -403,9 +452,9 @@ class Segment extends pulumi.CustomResource {
   late final pulumi.Output<String> pattern;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Tags to apply to the segment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the segment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Segment].

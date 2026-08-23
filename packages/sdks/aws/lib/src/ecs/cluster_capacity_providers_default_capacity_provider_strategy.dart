@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterCapacityProvidersDefaultCapacityProviderStrategy {
-  /// The number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined. Defaults to `0`.
+  /// Number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined. Defaults to `0`.
   final pulumi.Input<int>? base;
   /// Name of the capacity provider.
   final pulumi.Input<String> capacityProvider;
-  /// The relative percentage of the total number of launched tasks that should use the specified capacity provider. The `weight` value is taken into consideration after the `base` count of tasks has been satisfied. Defaults to `0`.
+  /// Relative percentage of the total number of launched tasks that should use the specified capacity provider. The `weight` value is taken into consideration after the `base` count of tasks has been satisfied. Defaults to `0`.
   final pulumi.Input<int>? weight;
 
   /// Creates a new [ClusterCapacityProvidersDefaultCapacityProviderStrategy].
-  /// [base] The number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined. Defaults to `0`.
+  /// [base] Number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined. Defaults to `0`.
   /// [capacityProvider] Name of the capacity provider.
-  /// [weight] The relative percentage of the total number of launched tasks that should use the specified capacity provider. The `weight` value is taken into consideration after the `base` count of tasks has been satisfied. Defaults to `0`.
+  /// [weight] Relative percentage of the total number of launched tasks that should use the specified capacity provider. The `weight` value is taken into consideration after the `base` count of tasks has been satisfied. Defaults to `0`.
   const ClusterCapacityProvidersDefaultCapacityProviderStrategy({
     this.base,
     required this.capacityProvider,
@@ -36,4 +36,3 @@ class ClusterCapacityProvidersDefaultCapacityProviderStrategy {
     );
   }
 }
-

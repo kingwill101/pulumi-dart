@@ -4,17 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_target_tracking_scaling_policy_configuration_customized_metric_specification_metric_metric_stat_metric_dimension.dart';
 
 class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetric {
-  /// Dimensions of the metric.
+  /// Dimensions of the metric. See `target_tracking_scaling_policy_configuration.customized_metric_specification.metrics.metric_stat.metric.dimensions` Block for details.
   final pulumi.Input<List<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetricDimension>>? dimensions;
-  /// Name of the metric.
   final pulumi.Input<String> metricName;
-  /// Namespace of the metric.
   final pulumi.Input<String> namespace;
 
   /// Creates a new [PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetric].
-  /// [dimensions] Dimensions of the metric.
-  /// [metricName] Name of the metric.
-  /// [namespace] Namespace of the metric.
+  /// [dimensions] Dimensions of the metric. See `target_tracking_scaling_policy_configuration.customized_metric_specification.metrics.metric_stat.metric.dimensions` Block for details.
+  /// [metricName] Required.
+  /// [namespace] Required.
   const PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetric({
     this.dimensions,
     required this.metricName,
@@ -37,4 +35,3 @@ class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificatio
     );
   }
 }
-

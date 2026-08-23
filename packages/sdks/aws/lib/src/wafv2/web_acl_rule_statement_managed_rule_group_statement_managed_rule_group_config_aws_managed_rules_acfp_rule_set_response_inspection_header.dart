@@ -3,17 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionHeader {
-  /// Values in the response header with the specified name that indicate a failed login attempt.
   final pulumi.Input<List<String>> failureValues;
-  /// The name of the header to use.
+  /// Name of the rule. Must be unique within the Web ACL.
   final pulumi.Input<String> name;
-  /// Values in the response header with the specified name that indicate a successful login attempt.
   final pulumi.Input<List<String>> successValues;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionHeader].
-  /// [failureValues] Values in the response header with the specified name that indicate a failed login attempt.
-  /// [name] The name of the header to use.
-  /// [successValues] Values in the response header with the specified name that indicate a successful login attempt.
+  /// [failureValues] Required.
+  /// [name] Name of the rule. Must be unique within the Web ACL.
+  /// [successValues] Required.
   const WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionHeader({
     required this.failureValues,
     required this.name,
@@ -36,4 +34,3 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
     );
   }
 }
-

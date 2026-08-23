@@ -113,6 +113,30 @@ import 'feature_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_evidently_feature" "example" {
+///   name        = "example"
+///   project     = exampleAwsEvidentlyProject.name
+///   description = "example description"
+///   variations {
+///     name = "Variation1"
+///     value = {
+///       string_value = "example"
+///     }
+///   }
+///   tags = {
+///     "Key1" = "example Feature"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +147,8 @@ import 'feature_state.dart';
 /// import com.pulumi.aws.evidently.FeatureArgs;
 /// import com.pulumi.aws.evidently.inputs.FeatureVariationArgs;
 /// import com.pulumi.aws.evidently.inputs.FeatureVariationValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -291,6 +315,33 @@ import 'feature_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_evidently_feature" "example" {
+///   name              = "example"
+///   project           = exampleAwsEvidentlyProject.name
+///   default_variation = "Variation2"
+///   variations {
+///     name = "Variation1"
+///     value = {
+///       string_value = "exampleval1"
+///     }
+///   }
+///   variations {
+///     name = "Variation2"
+///     value = {
+///       string_value = "exampleval2"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -301,8 +352,8 @@ import 'feature_state.dart';
 /// import com.pulumi.aws.evidently.FeatureArgs;
 /// import com.pulumi.aws.evidently.inputs.FeatureVariationArgs;
 /// import com.pulumi.aws.evidently.inputs.FeatureVariationValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -485,6 +536,35 @@ import 'feature_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_evidently_feature" "example" {
+///   name    = "example"
+///   project = exampleAwsEvidentlyProject.name
+///   entity_overrides = {
+///     "test1" = "Variation1"
+///   }
+///   variations {
+///     name = "Variation1"
+///     value = {
+///       string_value = "exampleval1"
+///     }
+///   }
+///   variations {
+///     name = "Variation2"
+///     value = {
+///       string_value = "exampleval2"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -495,8 +575,8 @@ import 'feature_state.dart';
 /// import com.pulumi.aws.evidently.FeatureArgs;
 /// import com.pulumi.aws.evidently.inputs.FeatureVariationArgs;
 /// import com.pulumi.aws.evidently.inputs.FeatureVariationValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -654,6 +734,30 @@ import 'feature_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_evidently_feature" "example" {
+///   name                = "example"
+///   project             = exampleAwsEvidentlyProject.name
+///   evaluation_strategy = "ALL_RULES"
+///   entity_overrides = {
+///     "test1" = "Variation1"
+///   }
+///   variations {
+///     name = "Variation1"
+///     value = {
+///       string_value = "exampleval1"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -664,8 +768,8 @@ import 'feature_state.dart';
 /// import com.pulumi.aws.evidently.FeatureArgs;
 /// import com.pulumi.aws.evidently.inputs.FeatureVariationArgs;
 /// import com.pulumi.aws.evidently.inputs.FeatureVariationValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -722,7 +826,7 @@ class Feature extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The date and time that the feature is created.
   late final pulumi.Output<String> createdTime;
-  /// The name of the variation to use as the default variation. The default variation is served to users who are not allocated to any ongoing launches or experiments of this feature. This variation must also be listed in the `variations` structure. If you omit `default_variation`, the first variation listed in the `variations` structure is used as the default variation.
+  /// The name of the variation to use as the default variation. The default variation is served to users who are not allocated to any ongoing launches or experiments of this feature. This variation must also be listed in the `variations` structure. If you omit `defaultVariation`, the first variation listed in the `variations` structure is used as the default variation.
   late final pulumi.Output<String> defaultVariation;
   /// Specifies the description of the feature.
   late final pulumi.Output<String?> description;
@@ -742,9 +846,9 @@ class Feature extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The current state of the feature. Valid values are `AVAILABLE` and `UPDATING`.
   late final pulumi.Output<String> status;
-  /// Tags to apply to the feature. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the feature. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Defines the type of value used to define the different feature variations. Valid Values: `STRING`, `LONG`, `DOUBLE`, `BOOLEAN`.
   late final pulumi.Output<String> valueType;

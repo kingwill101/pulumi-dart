@@ -14,9 +14,9 @@ class CellState {
   final pulumi.Input<List<String>>? cells;
   /// List of readiness scopes (recovery groups or cells) that contain this cell.
   final pulumi.Input<List<String>>? parentReadinessScopes;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [CellState].
@@ -24,8 +24,8 @@ class CellState {
   /// [cellName] Unique name describing the cell.
   /// [cells] List of cell arns to add as nested fault domains within this cell.
   /// [parentReadinessScopes] List of readiness scopes (recovery groups or cells) that contain this cell.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const CellState({
     this.arn,
     this.cellName,
@@ -57,4 +57,3 @@ class CellState {
     );
   }
 }
-

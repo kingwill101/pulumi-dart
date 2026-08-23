@@ -80,6 +80,22 @@ import 'resource_set_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_fms_resourceset" "example" {
+///   resource_sets {
+///     name                = "testing"
+///     resource_type_lists = ["AWS::NetworkFirewall::Firewall"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +105,8 @@ import 'resource_set_timeouts.dart';
 /// import com.pulumi.aws.fms.ResourceSet;
 /// import com.pulumi.aws.fms.ResourceSetArgs;
 /// import com.pulumi.aws.fms.inputs.ResourceSetResourceSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -136,8 +152,9 @@ class ResourceSet extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Details about the resource set to be created or updated. See `resource_set` Attribute Reference below.
+  /// Details about the resource set to be created or updated. See `resourceSet` Block below.
   late final pulumi.Output<List<Map<String, dynamic>>?> resourceSets;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ResourceSetTimeouts?> timeouts;

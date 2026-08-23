@@ -70,6 +70,21 @@ import 'parameter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_parameter" "foo" {
+///   name  = "foo"
+///   type  = "String"
+///   value = "bar"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +93,8 @@ import 'parameter_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.Parameter;
 /// import com.pulumi.aws.ssm.ParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -242,6 +257,37 @@ import 'parameter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_instance" "default" {
+///   allocated_storage    = 10
+///   storage_type         = "gp2"
+///   engine               = "mysql"
+///   engine_version       = "5.7.16"
+///   instance_class       = "db.t2.micro"
+///   db_name              = "mydb"
+///   username             = "foo"
+///   password             = databaseMasterPassword
+///   db_subnet_group_name = "my_database_subnet_group"
+///   parameter_group_name = "default.mysql5.7"
+/// }
+/// resource "aws_ssm_parameter" "secret" {
+///   name        = "/production/database/password/master"
+///   description = "The parameter description"
+///   type        = "SecureString"
+///   value       = databaseMasterPassword
+///   tags = {
+///     "environment" = "production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -252,8 +298,8 @@ import 'parameter_state.dart';
 /// import com.pulumi.aws.rds.InstanceArgs;
 /// import com.pulumi.aws.ssm.Parameter;
 /// import com.pulumi.aws.ssm.ParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -326,7 +372,7 @@ import 'parameter_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -344,7 +390,7 @@ class Parameter extends pulumi.CustomResource {
   late final pulumi.Output<String> dataType;
   /// Description of the parameter.
   late final pulumi.Output<String?> description;
-  /// Indicates whether the resource has a `value_wo` set.
+  /// Indicates whether the resource has a `valueWo` set.
   late final pulumi.Output<bool> hasValueWo;
   /// Value of the parameter. **Use caution:** This value is _never_ marked as sensitive in the pulumi preview output. This argument is not valid with a `type` of `SecureString`.
   late final pulumi.Output<String> insecureValue;
@@ -356,9 +402,9 @@ class Parameter extends pulumi.CustomResource {
   late final pulumi.Output<bool?> overwrite;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the object. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Parameter tier to assign to the parameter. If not specified, will use the default parameter tier for the region. Valid tiers are `Standard`, `Advanced`, and `Intelligent-Tiering`. Downgrading an `Advanced` tier parameter to `Standard` will recreate the resource. For more information on parameter tiers, see the [AWS SSM Parameter tier comparison and guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html).
   late final pulumi.Output<String> tier;
@@ -369,11 +415,11 @@ class Parameter extends pulumi.CustomResource {
   /// Value of the parameter. This value is always marked as sensitive in the pulumi preview output, regardless of `type
   late final pulumi.Output<String> value;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Value of the parameter. This value is always marked as sensitive in the pulumi preview output, regardless of `type`. Additionally, `write-only` values are never stored to state. `value_wo_version` can be used to trigger an update and is required with this argument.
+  /// Value of the parameter. This value is always marked as sensitive in the pulumi preview output, regardless of `type`. Additionally, `write-only` values are never stored to state. `valueWoVersion` can be used to trigger an update and is required with this argument.
   late final pulumi.Output<String?> valueWo;
-  /// Used together with `value_wo` to trigger an update. Increment this value when an update to the `value_wo` is required.
+  /// Used together with `valueWo` to trigger an update. Increment this value when an update to the `valueWo` is required.
   ///
-  /// &gt; **NOTE:** `aws:ssm:integration` data_type parameters must be of the type `SecureString` and the name must start with the prefix `/d9d01087-4a3f-49e0-b0b4-d568d7826553/ssm/integrations/webhook/`. See [here](https://docs.aws.amazon.com/systems-manager/latest/userguide/creating-integrations.html) for information on the usage of `aws:ssm:integration` parameters.
+  /// &gt; **NOTE:** `aws:ssm:integration` dataType parameters must be of the type `SecureString` and the name must start with the prefix `/d9d01087-4a3f-49e0-b0b4-d568d7826553/ssm/integrations/webhook/`. See [here](https://docs.aws.amazon.com/systems-manager/latest/userguide/creating-integrations.html) for information on the usage of `aws:ssm:integration` parameters.
   late final pulumi.Output<int?> valueWoVersion;
   /// Version of the parameter.
   late final pulumi.Output<int> version;

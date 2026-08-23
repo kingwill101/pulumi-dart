@@ -86,6 +86,25 @@ import 'bucket_object_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketobject" "object" {
+///   bucket = "your_bucket_name"
+///   key    = "new_object_key"
+///   source = fileAsset("path/to/file")
+///   etag   = filemd5("path/to/file")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +116,8 @@ import 'bucket_object_state.dart';
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filemd5Args;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -130,7 +149,7 @@ import 'bucket_object_state.dart';
 ///       bucket: your_bucket_name
 ///       key: new_object_key
 ///       source:
-///         fn::FileAsset: path/to/file
+///         fn::fileAsset: path/to/file
 ///       etag:
 ///         fn::invoke:
 ///           function: std:filemd5
@@ -240,7 +259,7 @@ import 'bucket_object_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: examplebucket.ID(),
+/// 			Bucket: examplebucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -248,7 +267,7 @@ import 'bucket_object_state.dart';
 /// 		}
 /// 		_, err = s3.NewBucketObject(ctx, "example", &s3.BucketObjectArgs{
 /// 			Key:      pulumi.String("someobject"),
-/// 			Bucket:   examplebucket.ID(),
+/// 			Bucket:   examplebucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Source:   pulumi.NewFileAsset("index.html"),
 /// 			KmsKeyId: examplekms.Arn,
 /// 		})
@@ -257,6 +276,33 @@ import 'bucket_object_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "examplekms" {
+///   description             = "KMS key 1"
+///   deletion_window_in_days = 7
+/// }
+/// resource "aws_s3_bucket" "examplebucket" {
+///   bucket = "examplebuckettftest"
+/// }
+/// resource "aws_s3_bucketacl" "example" {
+///   bucket = aws_s3_bucket.examplebucket.id
+///   acl    = "private"
+/// }
+/// resource "aws_s3_bucketobject" "example" {
+///   key        = "someobject"
+///   bucket     = aws_s3_bucket.examplebucket.id
+///   source     = fileAsset("index.html")
+///   kms_key_id = aws_kms_key.examplekms.arn
 /// }
 /// ```
 /// ```java
@@ -274,8 +320,8 @@ import 'bucket_object_state.dart';
 /// import com.pulumi.aws.s3.BucketObject;
 /// import com.pulumi.aws.s3.BucketObjectArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -334,7 +380,7 @@ import 'bucket_object_state.dart';
 ///       key: someobject
 ///       bucket: ${examplebucket.id}
 ///       source:
-///         fn::FileAsset: index.html
+///         fn::fileAsset: index.html
 ///       kmsKeyId: ${examplekms.arn}
 /// ```
 ///
@@ -418,7 +464,7 @@ import 'bucket_object_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: examplebucket.ID(),
+/// 			Bucket: examplebucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -426,7 +472,7 @@ import 'bucket_object_state.dart';
 /// 		}
 /// 		_, err = s3.NewBucketObject(ctx, "example", &s3.BucketObjectArgs{
 /// 			Key:                  pulumi.String("someobject"),
-/// 			Bucket:               examplebucket.ID(),
+/// 			Bucket:               examplebucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Source:               pulumi.NewFileAsset("index.html"),
 /// 			ServerSideEncryption: pulumi.String("aws:kms"),
 /// 		})
@@ -435,6 +481,29 @@ import 'bucket_object_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "examplebucket" {
+///   bucket = "examplebuckettftest"
+/// }
+/// resource "aws_s3_bucketacl" "example" {
+///   bucket = aws_s3_bucket.examplebucket.id
+///   acl    = "private"
+/// }
+/// resource "aws_s3_bucketobject" "example" {
+///   key                    = "someobject"
+///   bucket                 = aws_s3_bucket.examplebucket.id
+///   source                 = fileAsset("index.html")
+///   server_side_encryption = "aws:kms"
 /// }
 /// ```
 /// ```java
@@ -450,8 +519,8 @@ import 'bucket_object_state.dart';
 /// import com.pulumi.aws.s3.BucketObject;
 /// import com.pulumi.aws.s3.BucketObjectArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -500,7 +569,7 @@ import 'bucket_object_state.dart';
 ///       key: someobject
 ///       bucket: ${examplebucket.id}
 ///       source:
-///         fn::FileAsset: index.html
+///         fn::fileAsset: index.html
 ///       serverSideEncryption: aws:kms
 /// ```
 ///
@@ -584,7 +653,7 @@ import 'bucket_object_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: examplebucket.ID(),
+/// 			Bucket: examplebucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -592,7 +661,7 @@ import 'bucket_object_state.dart';
 /// 		}
 /// 		_, err = s3.NewBucketObject(ctx, "example", &s3.BucketObjectArgs{
 /// 			Key:                  pulumi.String("someobject"),
-/// 			Bucket:               examplebucket.ID(),
+/// 			Bucket:               examplebucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Source:               pulumi.NewFileAsset("index.html"),
 /// 			ServerSideEncryption: pulumi.String("AES256"),
 /// 		})
@@ -601,6 +670,29 @@ import 'bucket_object_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "examplebucket" {
+///   bucket = "examplebuckettftest"
+/// }
+/// resource "aws_s3_bucketacl" "example" {
+///   bucket = aws_s3_bucket.examplebucket.id
+///   acl    = "private"
+/// }
+/// resource "aws_s3_bucketobject" "example" {
+///   key                    = "someobject"
+///   bucket                 = aws_s3_bucket.examplebucket.id
+///   source                 = fileAsset("index.html")
+///   server_side_encryption = "AES256"
 /// }
 /// ```
 /// ```java
@@ -616,8 +708,8 @@ import 'bucket_object_state.dart';
 /// import com.pulumi.aws.s3.BucketObject;
 /// import com.pulumi.aws.s3.BucketObjectArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -666,7 +758,7 @@ import 'bucket_object_state.dart';
 ///       key: someobject
 ///       bucket: ${examplebucket.id}
 ///       source:
-///         fn::FileAsset: index.html
+///         fn::fileAsset: index.html
 ///       serverSideEncryption: AES256
 /// ```
 ///
@@ -795,14 +887,14 @@ import 'bucket_object_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: examplebucket.ID(),
+/// 			Bucket: examplebucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleBucketVersioning, err := s3.NewBucketVersioning(ctx, "example", &s3.BucketVersioningArgs{
-/// 			Bucket: examplebucket.ID(),
+/// 			Bucket: examplebucket.ID().ToIDOutput().ToStringOutput(),
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
@@ -812,7 +904,7 @@ import 'bucket_object_state.dart';
 /// 		}
 /// 		_, err = s3.NewBucketObject(ctx, "example", &s3.BucketObjectArgs{
 /// 			Key:                       pulumi.String("someobject"),
-/// 			Bucket:                    examplebucket.ID(),
+/// 			Bucket:                    examplebucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Source:                    pulumi.NewFileAsset("important.txt"),
 /// 			ObjectLockLegalHoldStatus: pulumi.String("ON"),
 /// 			ObjectLockMode:            pulumi.String("GOVERNANCE"),
@@ -826,6 +918,40 @@ import 'bucket_object_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "examplebucket" {
+///   bucket              = "examplebuckettftest"
+///   object_lock_enabled = true
+/// }
+/// resource "aws_s3_bucketacl" "example" {
+///   bucket = aws_s3_bucket.examplebucket.id
+///   acl    = "private"
+/// }
+/// resource "aws_s3_bucketversioning" "example" {
+///   bucket = aws_s3_bucket.examplebucket.id
+///   versioning_configuration = {
+///     status = "Enabled"
+///   }
+/// }
+/// resource "aws_s3_bucketobject" "example" {
+///   depends_on                    = [aws_s3_bucketversioning.example]
+///   key                           = "someobject"
+///   bucket                        = aws_s3_bucket.examplebucket.id
+///   source                        = fileAsset("important.txt")
+///   object_lock_legal_hold_status = "ON"
+///   object_lock_mode              = "GOVERNANCE"
+///   object_lock_retain_until_date = "2021-12-31T23:59:60Z"
+///   force_destroy                 = true
 /// }
 /// ```
 /// ```java
@@ -845,8 +971,8 @@ import 'bucket_object_state.dart';
 /// import com.pulumi.aws.s3.BucketObjectArgs;
 /// import com.pulumi.asset.FileAsset;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -916,7 +1042,7 @@ import 'bucket_object_state.dart';
 ///       key: someobject
 ///       bucket: ${examplebucket.id}
 ///       source:
-///         fn::FileAsset: important.txt
+///         fn::fileAsset: important.txt
 ///       objectLockLegalHoldStatus: ON
 ///       objectLockMode: GOVERNANCE
 ///       objectLockRetainUntilDate: 2021-12-31T23:59:60Z
@@ -926,6 +1052,8 @@ import 'bucket_object_state.dart';
 ///         - ${exampleBucketVersioning}
 /// ```
 ///
+///
+/// If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
 ///
 /// ## Import
 ///
@@ -938,7 +1066,7 @@ import 'bucket_object_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -963,17 +1091,17 @@ class BucketObject extends pulumi.CustomResource {
   late final pulumi.Output<String?> acl;
   /// ARN of the object.
   late final pulumi.Output<String> arn;
-  /// Name of the bucket to put the file in. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified.
+  /// Name of the bucket to put the file in. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified. Use the `aws.s3.BucketObjectv2` resource instead.
   late final pulumi.Output<String> bucket;
   /// Whether or not to use [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) for SSE-KMS.
   late final pulumi.Output<bool> bucketKeyEnabled;
-  /// Caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+  /// Caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
   late final pulumi.Output<String?> cacheControl;
   /// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
   late final pulumi.Output<String?> content;
   /// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
   late final pulumi.Output<String?> contentBase64;
-  /// Presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+  /// Presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
   late final pulumi.Output<String?> contentDisposition;
   /// Content encodings that have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
   late final pulumi.Output<String?> contentEncoding;
@@ -981,15 +1109,15 @@ class BucketObject extends pulumi.CustomResource {
   late final pulumi.Output<String?> contentLanguage;
   /// Standard MIME type describing the format of the object data, e.g., application/octet-stream. All Valid MIME Types are valid for this input.
   late final pulumi.Output<String> contentType;
-  /// Triggers updates when the value changes. This attribute is not compatible with KMS encryption, `kms_key_id` or `server_side_encryption = "aws:kms"` (see `source_hash` instead).
+  /// Triggers updates when the value changes. This attribute is not compatible with KMS encryption, `kmsKeyId` or `serverSideEncryption = "aws:kms"` (see `sourceHash` instead).
   late final pulumi.Output<String> etag;
   /// Whether to allow the object to be deleted by removing any legal hold on any object version. Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
   late final pulumi.Output<bool?> forceDestroy;
-  /// Name of the object once it is in the bucket.
+  /// Name of the object once it is in the bucket. Use the `aws.s3.BucketObjectv2` resource instead.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> key;
-  /// ARN of the KMS Key to use for object encryption. If the S3 Bucket has server-side encryption enabled, that value will automatically be used. If referencing the `aws.kms.Key` resource, use the `arn` attribute. If referencing the `aws.kms.Alias` data source or resource, use the `target_key_arn` attribute. The provider will only perform drift detection if a configuration value is provided.
+  /// ARN of the KMS Key to use for object encryption. If the S3 Bucket has server-side encryption enabled, that value will automatically be used. If referencing the `aws.kms.Key` resource, use the `arn` attribute. If referencing the `aws.kms.Alias` data source or resource, use the `targetKeyArn` attribute. The provider will only perform drift detection if a configuration value is provided.
   late final pulumi.Output<String> kmsKeyId;
   /// Map of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
   late final pulumi.Output<Map<String, String>?> metadata;
@@ -1009,17 +1137,15 @@ class BucketObject extends pulumi.CustomResource {
   late final pulumi.Output<String?> sourceHash;
   /// [Storage Class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html#AmazonS3-PutObject-request-header-StorageClass) for the object. Defaults to "`STANDARD`".
   late final pulumi.Output<String> storageClass;
-  /// Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the object. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Unique version ID value for the object, if bucket versioning is enabled.
   late final pulumi.Output<String> versionId;
   /// Target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
   ///
-  /// If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
-  ///
-  /// &gt; **Note:** If you specify `content_encoding` you are responsible for encoding the body appropriately. `source`, `content`, and `content_base64` all expect already encoded/compressed bytes.
+  /// &gt; **Note:** If you specify `contentEncoding` you are responsible for encoding the body appropriately. `source`, `content`, and `contentBase64` all expect already encoded/compressed bytes.
   late final pulumi.Output<String?> websiteRedirect;
 
   /// Creates a new [BucketObject].

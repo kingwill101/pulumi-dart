@@ -10,6 +10,7 @@ import 'get_instance_profiles_args.dart';
 import 'get_instance_profiles_result.dart';
 import 'get_open_id_connect_provider_args.dart';
 import 'get_open_id_connect_provider_result.dart';
+import 'get_outbound_web_identity_federation_result.dart';
 import 'get_policy_args.dart';
 import 'get_policy_document_args.dart';
 import 'get_policy_document_result.dart';
@@ -17,6 +18,10 @@ import 'get_policy_result.dart';
 import 'get_principal_policy_simulation_args.dart';
 import 'get_principal_policy_simulation_iam_result.dart';
 import 'get_role_args.dart';
+import 'get_role_policies_args.dart';
+import 'get_role_policies_result.dart';
+import 'get_role_policy_attachments_args.dart';
+import 'get_role_policy_attachments_result.dart';
 import 'get_role_result.dart';
 import 'get_roles_args.dart';
 import 'get_roles_result.dart';
@@ -88,6 +93,19 @@ import 'get_users_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getaccesskeys" "example" {
+///   user = "an_example_user_name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +114,8 @@ import 'get_users_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetAccessKeysArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -194,6 +212,22 @@ Future<GetAccessKeysResult> getAccessKeys(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getaccountalias" "current" {
+/// }
+///
+/// output "accountAlias" {
+///   value = data.aws_iam_getaccountalias.current.account_alias
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -201,8 +235,8 @@ Future<GetAccessKeysResult> getAccessKeys(
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -299,6 +333,19 @@ Future<GetAccountAliasResult> getAccountAlias(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getgroup" "example" {
+///   group_name = "an_example_group_name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -307,8 +354,8 @@ Future<GetAccountAliasResult> getAccountAlias(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -406,6 +453,19 @@ Future<GetGroupResult> getGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getinstanceprofile" "example" {
+///   name = "an_example_instance_profile_name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -414,8 +474,8 @@ Future<GetGroupResult> getGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetInstanceProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -513,6 +573,19 @@ Future<GetInstanceProfileResult> getInstanceProfile(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getinstanceprofiles" "example" {
+///   role_name = "an_example_iam_role_name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -521,8 +594,8 @@ Future<GetInstanceProfileResult> getInstanceProfile(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetInstanceProfilesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -620,6 +693,19 @@ Future<GetInstanceProfilesResult> getInstanceProfiles(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getopenidconnectprovider" "example" {
+///   arn = "arn:aws:iam::123456789012:oidc-provider/accounts.google.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -628,8 +714,8 @@ Future<GetInstanceProfilesResult> getInstanceProfiles(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetOpenIdConnectProviderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -708,6 +794,19 @@ Future<GetInstanceProfilesResult> getInstanceProfiles(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getopenidconnectprovider" "example" {
+///   url = "https://accounts.google.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -716,8 +815,8 @@ Future<GetInstanceProfilesResult> getInstanceProfiles(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetOpenIdConnectProviderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -757,6 +856,111 @@ Future<GetOpenIdConnectProviderResult> getOpenIdConnectProvider(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOpenIdConnectProviderResult.fromMap(result);
+}
+
+/// Use this data source to retrieve information about an AWS IAM (Identity & Access Management) Outbound Web Identity Federation.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.iam.getOutboundWebIdentityFederation({});
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.iam.get_outbound_web_identity_federation()
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Iam.GetOutboundWebIdentityFederation.Invoke();
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := iam.LookupOutboundWebIdentityFederation(ctx, map[string]interface{}{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getoutboundwebidentityfederation" "example" {
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.iam.IamFunctions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = IamFunctions.getOutboundWebIdentityFederation(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:iam:getOutboundWebIdentityFederation
+///       arguments: {}
+/// ```
+/// [options] Invoke options controlling this call.
+Future<GetOutboundWebIdentityFederationResult> getOutboundWebIdentityFederation(
+  {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:iam/getOutboundWebIdentityFederation:getOutboundWebIdentityFederation',
+    const <String, dynamic>{},
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetOutboundWebIdentityFederationResult.fromMap(result);
 }
 
 /// This data source can be used to fetch information about a specific
@@ -816,6 +1020,19 @@ Future<GetOpenIdConnectProviderResult> getOpenIdConnectProvider(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicy" "example" {
+///   arn = "arn:aws:iam::123456789012:policy/UsersManageOwnCredentials"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -824,8 +1041,8 @@ Future<GetOpenIdConnectProviderResult> getOpenIdConnectProvider(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -906,6 +1123,19 @@ Future<GetOpenIdConnectProviderResult> getOpenIdConnectProvider(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicy" "example" {
+///   name = "test_policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -914,8 +1144,8 @@ Future<GetOpenIdConnectProviderResult> getOpenIdConnectProvider(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1190,6 +1420,42 @@ Future<GetPolicyResult> getPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     sid       = "1"
+///     actions   = ["s3:ListAllMyBuckets", "s3:GetBucketLocation"]
+///     resources = ["arn:aws:s3:::*"]
+///   }
+///   statements {
+///     actions   = ["s3:ListBucket"]
+///     resources = ["arn:aws:s3:::${s3BucketName}"]
+///     conditions {
+///       test     = "StringLike"
+///       variable = "s3:prefix"
+///       values   = ["", "home/", "home/&{aws:username}/"]
+///     }
+///   }
+///   statements {
+///     actions   = ["s3:*"]
+///     resources = ["arn:aws:s3:::${s3BucketName}/home/&{aws:username}", "arn:aws:s3:::${s3BucketName}/home/&{aws:username}/*"]
+///   }
+/// }
+///
+/// resource "aws_iam_policy" "example" {
+///   name   = "example_policy"
+///   path   = "/"
+///   policy = data.aws_iam_getpolicydocument.example.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1198,10 +1464,12 @@ Future<GetPolicyResult> getPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.iam.Policy;
 /// import com.pulumi.aws.iam.PolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1476,6 +1744,37 @@ Future<GetPolicyResult> getPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "exampleMultipleConditionKeysAndValues" {
+///   statements {
+///     actions   = ["kms:Decrypt", "kms:GenerateDataKey"]
+///     resources = ["*"]
+///     conditions {
+///       test     = "ForAnyValue:StringEquals"
+///       variable = "kms:EncryptionContext:service"
+///       values   = ["pi"]
+///     }
+///     conditions {
+///       test     = "ForAnyValue:StringEquals"
+///       variable = "kms:EncryptionContext:aws:pi:service"
+///       values   = ["rds"]
+///     }
+///     conditions {
+///       test     = "ForAnyValue:StringEquals"
+///       variable = "kms:EncryptionContext:aws:rds:db-id"
+///       values   = ["db-AAAAABBBBBCCCCCDDDDDEEEEE", "db-EEEEEDDDDDCCCCCBBBBBAAAAA"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1484,8 +1783,10 @@ Future<GetPolicyResult> getPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1703,43 +2004,71 @@ Future<GetPolicyResult> getPolicy(
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Actions: []string{
-/// "sts:AssumeRole",
-/// },
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "Service",
-/// Identifiers: []string{
-/// "firehose.amazonaws.com",
-/// },
-/// },
-/// {
-/// Type: "AWS",
-/// Identifiers: interface{}{
-/// trustedRoleArn,
-/// },
-/// },
-/// {
-/// Type: "Federated",
-/// Identifiers: []string{
-/// fmt.Sprintf("arn:aws:iam::%v:saml-provider/%v", accountId, providerName),
-/// "cognito-identity.amazonaws.com",
-/// },
-/// },
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
+/// 					},
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "Service",
+/// 							Identifiers: []string{
+/// 								"firehose.amazonaws.com",
+/// 							},
+/// 						},
+/// 						{
+/// 							Type: "AWS",
+/// 							Identifiers: pulumi.StringArray{
+/// 								trustedRoleArn,
+/// 							},
+/// 						},
+/// 						{
+/// 							Type: "Federated",
+/// 							Identifiers: []string{
+/// 								fmt.Sprintf("arn:aws:iam::%v:saml-provider/%v", accountId, providerName),
+/// 								"cognito-identity.amazonaws.com",
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// return nil
-/// })
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "eventStreamBucketRoleAssumeRolePolicy" {
+///   statements {
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["firehose.amazonaws.com"]
+///     }
+///     principals {
+///       type        = "AWS"
+///       identifiers = [trustedRoleArn]
+///     }
+///     principals {
+///       type        = "Federated"
+///       identifiers = ["arn:aws:iam::${accountId}:saml-provider/${providerName}", "cognito-identity.amazonaws.com"]
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -1750,8 +2079,10 @@ Future<GetPolicyResult> getPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1938,54 +2269,84 @@ Future<GetPolicyResult> getPolicy(
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// source, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Actions: []string{
-/// "ec2:*",
-/// },
-/// Resources: []string{
-/// "*",
-/// },
-/// },
-/// {
-/// Sid: pulumi.StringRef("SidToOverride"),
-/// Actions: []string{
-/// "s3:*",
-/// },
-/// Resources: []string{
-/// "*",
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		source, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Actions: []string{
+/// 						"ec2:*",
+/// 					},
+/// 					Resources: []string{
+/// 						"*",
+/// 					},
+/// 				},
+/// 				{
+/// 					Sid: pulumi.StringRef("SidToOverride"),
+/// 					Actions: []string{
+/// 						"s3:*",
+/// 					},
+/// 					Resources: []string{
+/// 						"*",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			SourcePolicyDocuments: pulumi.StringArray{
+/// 				source.Json,
+/// 			},
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Sid: pulumi.StringRef("SidToOverride"),
+/// 					Actions: []string{
+/// 						"s3:*",
+/// 					},
+/// 					Resources: []string{
+/// 						"arn:aws:s3:::somebucket",
+/// 						"arn:aws:s3:::somebucket/*",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// _, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// SourcePolicyDocuments: interface{}{
-/// source.Json,
-/// },
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Sid: pulumi.StringRef("SidToOverride"),
-/// Actions: []string{
-/// "s3:*",
-/// },
-/// Resources: []string{
-/// "arn:aws:s3:::somebucket",
-/// "arn:aws:s3:::somebucket/*",
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// return nil
-/// })
+///
+/// data "aws_iam_getpolicydocument" "source" {
+///   statements {
+///     actions   = ["ec2:*"]
+///     resources = ["*"]
+///   }
+///   statements {
+///     sid       = "SidToOverride"
+///     actions   = ["s3:*"]
+///     resources = ["*"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "sourceDocumentExample" {
+///   source_policy_documents = [data.aws_iam_getpolicydocument.source.json]
+///   statements {
+///     sid       = "SidToOverride"
+///     actions   = ["s3:*"]
+///     resources = ["arn:aws:s3:::somebucket", "arn:aws:s3:::somebucket/*"]
+///   }
 /// }
 /// ```
 /// ```java
@@ -1996,8 +2357,9 @@ Future<GetPolicyResult> getPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2221,54 +2583,84 @@ Future<GetPolicyResult> getPolicy(
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// override, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Sid: pulumi.StringRef("SidToOverride"),
-/// Actions: []string{
-/// "s3:*",
-/// },
-/// Resources: []string{
-/// "*",
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		override, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Sid: pulumi.StringRef("SidToOverride"),
+/// 					Actions: []string{
+/// 						"s3:*",
+/// 					},
+/// 					Resources: []string{
+/// 						"*",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			OverridePolicyDocuments: pulumi.StringArray{
+/// 				override.Json,
+/// 			},
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Actions: []string{
+/// 						"ec2:*",
+/// 					},
+/// 					Resources: []string{
+/// 						"*",
+/// 					},
+/// 				},
+/// 				{
+/// 					Sid: pulumi.StringRef("SidToOverride"),
+/// 					Actions: []string{
+/// 						"s3:*",
+/// 					},
+/// 					Resources: []string{
+/// 						"arn:aws:s3:::somebucket",
+/// 						"arn:aws:s3:::somebucket/*",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// _, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// OverridePolicyDocuments: interface{}{
-/// override.Json,
-/// },
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Actions: []string{
-/// "ec2:*",
-/// },
-/// Resources: []string{
-/// "*",
-/// },
-/// },
-/// {
-/// Sid: pulumi.StringRef("SidToOverride"),
-/// Actions: []string{
-/// "s3:*",
-/// },
-/// Resources: []string{
-/// "arn:aws:s3:::somebucket",
-/// "arn:aws:s3:::somebucket/*",
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// return nil
-/// })
+///
+/// data "aws_iam_getpolicydocument" "override" {
+///   statements {
+///     sid       = "SidToOverride"
+///     actions   = ["s3:*"]
+///     resources = ["*"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "overridePolicyDocumentExample" {
+///   override_policy_documents = [data.aws_iam_getpolicydocument.override.json]
+///   statements {
+///     actions   = ["ec2:*"]
+///     resources = ["*"]
+///   }
+///   statements {
+///     sid       = "SidToOverride"
+///     actions   = ["s3:*"]
+///     resources = ["arn:aws:s3:::somebucket", "arn:aws:s3:::somebucket/*"]
+///   }
 /// }
 /// ```
 /// ```java
@@ -2279,8 +2671,9 @@ Future<GetPolicyResult> getPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2375,7 +2768,7 @@ Future<GetPolicyResult> getPolicy(
 ///
 /// ### Example with Both Source and Override Documents
 ///
-/// You can also combine `source_policy_documents` and `override_policy_documents` in the same document.
+/// You can also combine `sourcePolicyDocuments` and `overridePolicyDocuments` in the same document.
 ///
 ///
 /// ```typescript
@@ -2485,53 +2878,82 @@ Future<GetPolicyResult> getPolicy(
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// source, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Sid: pulumi.StringRef("OverridePlaceholder"),
-/// Actions: []string{
-/// "ec2:DescribeAccountAttributes",
-/// },
-/// Resources: []string{
-/// "*",
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		source, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Sid: pulumi.StringRef("OverridePlaceholder"),
+/// 					Actions: []string{
+/// 						"ec2:DescribeAccountAttributes",
+/// 					},
+/// 					Resources: []string{
+/// 						"*",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		override, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Sid: pulumi.StringRef("OverridePlaceholder"),
+/// 					Actions: []string{
+/// 						"s3:GetObject",
+/// 					},
+/// 					Resources: []string{
+/// 						"*",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			SourcePolicyDocuments: pulumi.StringArray{
+/// 				source.Json,
+/// 			},
+/// 			OverridePolicyDocuments: pulumi.StringArray{
+/// 				override.Json,
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// override, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Sid: pulumi.StringRef("OverridePlaceholder"),
-/// Actions: []string{
-/// "s3:GetObject",
-/// },
-/// Resources: []string{
-/// "*",
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// _, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// SourcePolicyDocuments: interface{}{
-/// source.Json,
-/// },
-/// OverridePolicyDocuments: interface{}{
-/// override.Json,
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+///
+/// data "aws_iam_getpolicydocument" "source" {
+///   statements {
+///     sid       = "OverridePlaceholder"
+///     actions   = ["ec2:DescribeAccountAttributes"]
+///     resources = ["*"]
+///   }
 /// }
-/// return nil
-/// })
+/// data "aws_iam_getpolicydocument" "override" {
+///   statements {
+///     sid       = "OverridePlaceholder"
+///     actions   = ["s3:GetObject"]
+///     resources = ["*"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "politik" {
+///   source_policy_documents   = [data.aws_iam_getpolicydocument.source.json]
+///   override_policy_documents = [data.aws_iam_getpolicydocument.override.json]
 /// }
 /// ```
 /// ```java
@@ -2542,8 +2964,9 @@ Future<GetPolicyResult> getPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2630,7 +3053,7 @@ Future<GetPolicyResult> getPolicy(
 ///
 /// ### Example of Merging Source Documents
 ///
-/// Multiple documents can be combined using the `source_policy_documents` or `override_policy_documents` attributes. `source_policy_documents` requires that all documents have unique Sids, while `override_policy_documents` will iteratively override matching Sids.
+/// Multiple documents can be combined using the `sourcePolicyDocuments` or `overridePolicyDocuments` attributes. `sourcePolicyDocuments` requires that all documents have unique Sids, while `overridePolicyDocuments` will iteratively override matching Sids.
 ///
 ///
 /// ```typescript
@@ -2787,67 +3210,103 @@ Future<GetPolicyResult> getPolicy(
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// sourceOne, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Actions: []string{
-/// "ec2:*",
-/// },
-/// Resources: []string{
-/// "*",
-/// },
-/// },
-/// {
-/// Sid: pulumi.StringRef("UniqueSidOne"),
-/// Actions: []string{
-/// "s3:*",
-/// },
-/// Resources: []string{
-/// "*",
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		sourceOne, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Actions: []string{
+/// 						"ec2:*",
+/// 					},
+/// 					Resources: []string{
+/// 						"*",
+/// 					},
+/// 				},
+/// 				{
+/// 					Sid: pulumi.StringRef("UniqueSidOne"),
+/// 					Actions: []string{
+/// 						"s3:*",
+/// 					},
+/// 					Resources: []string{
+/// 						"*",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		sourceTwo, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Sid: pulumi.StringRef("UniqueSidTwo"),
+/// 					Actions: []string{
+/// 						"iam:*",
+/// 					},
+/// 					Resources: []string{
+/// 						"*",
+/// 					},
+/// 				},
+/// 				{
+/// 					Actions: []string{
+/// 						"lambda:*",
+/// 					},
+/// 					Resources: []string{
+/// 						"*",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			SourcePolicyDocuments: pulumi.StringArray{
+/// 				sourceOne.Json,
+/// 				sourceTwo.Json,
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// sourceTwo, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Sid: pulumi.StringRef("UniqueSidTwo"),
-/// Actions: []string{
-/// "iam:*",
-/// },
-/// Resources: []string{
-/// "*",
-/// },
-/// },
-/// {
-/// Actions: []string{
-/// "lambda:*",
-/// },
-/// Resources: []string{
-/// "*",
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// _, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// SourcePolicyDocuments: interface{}{
-/// sourceOne.Json,
-/// sourceTwo.Json,
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+///
+/// data "aws_iam_getpolicydocument" "sourceOne" {
+///   statements {
+///     actions   = ["ec2:*"]
+///     resources = ["*"]
+///   }
+///   statements {
+///     sid       = "UniqueSidOne"
+///     actions   = ["s3:*"]
+///     resources = ["*"]
+///   }
 /// }
-/// return nil
-/// })
+/// data "aws_iam_getpolicydocument" "sourceTwo" {
+///   statements {
+///     sid       = "UniqueSidTwo"
+///     actions   = ["iam:*"]
+///     resources = ["*"]
+///   }
+///   statements {
+///     actions   = ["lambda:*"]
+///     resources = ["*"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "combined" {
+///   source_policy_documents = [data.aws_iam_getpolicydocument.sourceOne.json, data.aws_iam_getpolicydocument.sourceTwo.json]
 /// }
 /// ```
 /// ```java
@@ -2858,8 +3317,9 @@ Future<GetPolicyResult> getPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3188,92 +3648,141 @@ Future<GetPolicyResult> getPolicy(
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// policyOne, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Sid: pulumi.StringRef("OverridePlaceHolderOne"),
-/// Effect: pulumi.StringRef("Allow"),
-/// Actions: []string{
-/// "s3:*",
-/// },
-/// Resources: []string{
-/// "*",
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		policyOne, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Sid:    pulumi.StringRef("OverridePlaceHolderOne"),
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"s3:*",
+/// 					},
+/// 					Resources: []string{
+/// 						"*",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		policyTwo, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"ec2:*",
+/// 					},
+/// 					Resources: []string{
+/// 						"*",
+/// 					},
+/// 				},
+/// 				{
+/// 					Sid:    pulumi.StringRef("OverridePlaceHolderTwo"),
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"iam:*",
+/// 					},
+/// 					Resources: []string{
+/// 						"*",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		policyThree, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Sid:    pulumi.StringRef("OverridePlaceHolderOne"),
+/// 					Effect: pulumi.StringRef("Deny"),
+/// 					Actions: []string{
+/// 						"logs:*",
+/// 					},
+/// 					Resources: []string{
+/// 						"*",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			OverridePolicyDocuments: pulumi.StringArray{
+/// 				policyOne.Json,
+/// 				policyTwo.Json,
+/// 				policyThree.Json,
+/// 			},
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Sid:    pulumi.StringRef("OverridePlaceHolderTwo"),
+/// 					Effect: pulumi.StringRef("Deny"),
+/// 					Actions: []string{
+/// 						"*",
+/// 					},
+/// 					Resources: []string{
+/// 						"*",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// policyTwo, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Effect: pulumi.StringRef("Allow"),
-/// Actions: []string{
-/// "ec2:*",
-/// },
-/// Resources: []string{
-/// "*",
-/// },
-/// },
-/// {
-/// Sid: pulumi.StringRef("OverridePlaceHolderTwo"),
-/// Effect: pulumi.StringRef("Allow"),
-/// Actions: []string{
-/// "iam:*",
-/// },
-/// Resources: []string{
-/// "*",
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// policyThree, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Sid: pulumi.StringRef("OverridePlaceHolderOne"),
-/// Effect: pulumi.StringRef("Deny"),
-/// Actions: []string{
-/// "logs:*",
-/// },
-/// Resources: []string{
-/// "*",
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+///
+/// data "aws_iam_getpolicydocument" "policyOne" {
+///   statements {
+///     sid       = "OverridePlaceHolderOne"
+///     effect    = "Allow"
+///     actions   = ["s3:*"]
+///     resources = ["*"]
+///   }
 /// }
-/// _, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// OverridePolicyDocuments: interface{}{
-/// policyOne.Json,
-/// policyTwo.Json,
-/// policyThree.Json,
-/// },
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Sid: pulumi.StringRef("OverridePlaceHolderTwo"),
-/// Effect: pulumi.StringRef("Deny"),
-/// Actions: []string{
-/// "*",
-/// },
-/// Resources: []string{
-/// "*",
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// data "aws_iam_getpolicydocument" "policyTwo" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["ec2:*"]
+///     resources = ["*"]
+///   }
+///   statements {
+///     sid       = "OverridePlaceHolderTwo"
+///     effect    = "Allow"
+///     actions   = ["iam:*"]
+///     resources = ["*"]
+///   }
 /// }
-/// return nil
-/// })
+/// data "aws_iam_getpolicydocument" "policyThree" {
+///   statements {
+///     sid       = "OverridePlaceHolderOne"
+///     effect    = "Deny"
+///     actions   = ["logs:*"]
+///     resources = ["*"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "combined" {
+///   override_policy_documents = [data.aws_iam_getpolicydocument.policyOne.json, data.aws_iam_getpolicydocument.policyTwo.json, data.aws_iam_getpolicydocument.policyThree.json]
+///   statements {
+///     sid       = "OverridePlaceHolderTwo"
+///     effect    = "Deny"
+///     actions   = ["*"]
+///     resources = ["*"]
+///   }
 /// }
 /// ```
 /// ```java
@@ -3284,8 +3793,9 @@ Future<GetPolicyResult> getPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3548,6 +4058,23 @@ Future<GetPolicyDocumentResult> getPolicyDocument(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_iam_getprincipalpolicysimulation" "s3ObjectAccess" {
+///   action_names      = ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"]
+///   policy_source_arn = data.aws_getcalleridentity.current.arn
+///   resource_arns     = ["arn:aws:s3:::my-test-bucket"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3558,8 +4085,8 @@ Future<GetPolicyDocumentResult> getPolicyDocument(
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPrincipalPolicySimulationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3606,7 +4133,7 @@ Future<GetPolicyDocumentResult> getPolicyDocument(
 /// ```
 ///
 ///
-/// If you intend to use this data source to quickly raise an error when the given credentials are insufficient then you must use `depends_on` inside any resource which would require those credentials, to ensure that the policy check will run first:
+/// If you intend to use this data source to quickly raise an error when the given credentials are insufficient then you must use `dependsOn` inside any resource which would require those credentials, to ensure that the policy check will run first:
 ///
 ///
 /// ```typescript
@@ -3667,6 +4194,20 @@ Future<GetPolicyDocumentResult> getPolicyDocument(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketobjectv2" "example" {
+///   depends_on = [s3ObjectAccess]
+///   bucket     = "my-test-bucket"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3676,8 +4217,8 @@ Future<GetPolicyDocumentResult> getPolicyDocument(
 /// import com.pulumi.aws.s3.BucketObjectv2;
 /// import com.pulumi.aws.s3.BucketObjectv2Args;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3918,8 +4459,8 @@ Future<GetPolicyDocumentResult> getPolicyDocument(
 /// 				var _zero pulumi.String
 /// 				tmpJSON0, err := json.Marshal(map[string]interface{}{
 /// 					"Version": "2012-10-17",
-/// 					"Statement": []map[string]interface{}{
-/// 						map[string]interface{}{
+/// 					"Statement": []map[string]string{
+/// 						{
 /// 							"Action":   "s3:GetObject",
 /// 							"Effect":   "Allow",
 /// 							"Resource": arn,
@@ -3938,10 +4479,8 @@ Future<GetPolicyDocumentResult> getPolicyDocument(
 /// 		}
 /// 		accountAccess, err := s3.NewBucketPolicy(ctx, "account_access", &s3.BucketPolicyArgs{
 /// 			Bucket: exampleBucket.Bucket,
-/// 			Policy: pulumi.All(exampleBucket.Arn, exampleBucket.Arn).ApplyT(func(_args []interface{}) (string, error) {
-/// 				exampleBucketArn := _args[0].(string)
-/// 				exampleBucketArn1 := _args[1].(string)
-/// 				var _zero string
+/// 			Policy: exampleBucket.Arn.ApplyT(func(arn string) (pulumi.String, error) {
+/// 				var _zero pulumi.String
 /// 				tmpJSON1, err := json.Marshal(map[string]interface{}{
 /// 					"Version": "2012-10-17",
 /// 					"Statement": []map[string]interface{}{
@@ -3952,8 +4491,8 @@ Future<GetPolicyDocumentResult> getPolicyDocument(
 /// 								"AWS": current.AccountId,
 /// 							},
 /// 							"Resource": []string{
-/// 								exampleBucketArn,
-/// 								fmt.Sprintf("%v/*", exampleBucketArn1),
+/// 								arn,
+/// 								fmt.Sprintf("%v/*", arn),
 /// 							},
 /// 						},
 /// 					},
@@ -3962,7 +4501,7 @@ Future<GetPolicyDocumentResult> getPolicyDocument(
 /// 					return _zero, err
 /// 				}
 /// 				json1 := string(tmpJSON1)
-/// 				return json1, nil
+/// 				return pulumi.String(json1), nil
 /// 			}).(pulumi.StringOutput),
 /// 		})
 /// 		if err != nil {
@@ -3980,6 +4519,57 @@ Future<GetPolicyDocumentResult> getPolicyDocument(
 /// 		}, nil)
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_iam_getprincipalpolicysimulation" "s3ObjectAccess" {
+///   action_names         = ["s3:GetObject"]
+///   policy_source_arn    = aws_iam_user.example.arn
+///   resource_arns        = [aws_s3_bucket.example.arn]
+///   resource_policy_json = aws_s3_bucketpolicy.account_access.policy
+/// }
+///
+/// resource "aws_iam_user" "example" {
+///   name = "example"
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "my-test-bucket"
+/// }
+/// resource "aws_iam_userpolicy" "s3_access" {
+///   name = "example_s3_access"
+///   user = aws_iam_user.example.name
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action"   = "s3:GetObject"
+///       "Effect"   = "Allow"
+///       "Resource" = aws_s3_bucket.example.arn
+///     }]
+///   })
+/// }
+/// resource "aws_s3_bucketpolicy" "account_access" {
+///   bucket = aws_s3_bucket.example.bucket
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "s3:*"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" = data.aws_getcalleridentity.current.account_id
+///       }
+///       "Resource" = [aws_s3_bucket.example.arn, "${aws_s3_bucket.example.arn}/*"]
+///     }]
+///   })
 /// }
 /// ```
 /// ```java
@@ -4001,8 +4591,8 @@ Future<GetPolicyDocumentResult> getPolicyDocument(
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPrincipalPolicySimulationArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4041,25 +4631,21 @@ Future<GetPolicyDocumentResult> getPolicyDocument(
 ///
 ///         var accountAccess = new BucketPolicy("accountAccess", BucketPolicyArgs.builder()
 ///             .bucket(exampleBucket.bucket())
-///             .policy(Output.tuple(exampleBucket.arn(), exampleBucket.arn()).applyValue(values -> {
-///                 var exampleBucketArn = values.t1;
-///                 var exampleBucketArn1 = values.t2;
-///                 return serializeJson(
-///                     jsonObject(
-///                         jsonProperty("Version", "2012-10-17"),
-///                         jsonProperty("Statement", jsonArray(jsonObject(
-///                             jsonProperty("Action", "s3:*"),
-///                             jsonProperty("Effect", "Allow"),
-///                             jsonProperty("Principal", jsonObject(
-///                                 jsonProperty("AWS", current.accountId())
-///                             )),
-///                             jsonProperty("Resource", jsonArray(
-///                                 exampleBucketArn,
-///                                 String.format("%s/*", exampleBucketArn1)
-///                             ))
-///                         )))
-///                     ));
-///             }))
+///             .policy(exampleBucket.arn().applyValue(_arn -> serializeJson(
+///                 jsonObject(
+///                     jsonProperty("Version", "2012-10-17"),
+///                     jsonProperty("Statement", jsonArray(jsonObject(
+///                         jsonProperty("Action", "s3:*"),
+///                         jsonProperty("Effect", "Allow"),
+///                         jsonProperty("Principal", jsonObject(
+///                             jsonProperty("AWS", current.accountId())
+///                         )),
+///                         jsonProperty("Resource", jsonArray(
+///                             _arn,
+///                             String.format("%s/*", _arn)
+///                         ))
+///                     )))
+///                 ))))
 ///             .build());
 ///
 ///         final var s3ObjectAccess = IamFunctions.getPrincipalPolicySimulation(GetPrincipalPolicySimulationArgs.builder()
@@ -4130,7 +4716,7 @@ Future<GetPolicyDocumentResult> getPolicyDocument(
 /// ```
 ///
 ///
-/// When using `aws.iam.getPrincipalPolicySimulation` to test the effect of a policy declared elsewhere in the same configuration, it's important to use `depends_on` to make sure that the needed policy has been fully created or updated before running the simulation.
+/// When using `aws.iam.getPrincipalPolicySimulation` to test the effect of a policy declared elsewhere in the same configuration, it's important to use `dependsOn` to make sure that the needed policy has been fully created or updated before running the simulation.
 /// [args] Arguments passed to this invoke. {@macro pulumi_iam_get_principal_policy_simulation_get_principal_policy_simulation_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPrincipalPolicySimulationIamResult> getPrincipalPolicySimulation(
@@ -4202,6 +4788,19 @@ Future<GetPrincipalPolicySimulationIamResult> getPrincipalPolicySimulation(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getrole" "example" {
+///   name = "an_example_role_name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4210,8 +4809,8 @@ Future<GetPrincipalPolicySimulationIamResult> getPrincipalPolicySimulation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetRoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4251,6 +4850,244 @@ Future<GetRoleResult> getRole(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRoleResult.fromMap(result);
+}
+
+/// Use this data source to get the names of inline policies associated with an IAM role.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.iam.getRolePolicies({
+///     roleName: "my-role-name",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.iam.get_role_policies(role_name="my-role-name")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Iam.GetRolePolicies.Invoke(new()
+///     {
+///         RoleName = "my-role-name",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := iam.GetRolePolicies(ctx, &iam.GetRolePoliciesArgs{
+/// 			RoleName: "my-role-name",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getrolepolicies" "example" {
+///   role_name = "my-role-name"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.iam.IamFunctions;
+/// import com.pulumi.aws.iam.inputs.GetRolePoliciesArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = IamFunctions.getRolePolicies(GetRolePoliciesArgs.builder()
+///             .roleName("my-role-name")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:iam:getRolePolicies
+///       arguments:
+///         roleName: my-role-name
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_iam_get_role_policies_get_role_policies_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetRolePoliciesResult> getRolePolicies(
+  GetRolePoliciesArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:iam/getRolePolicies:getRolePolicies',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetRolePoliciesResult.fromMap(result);
+}
+
+/// Provides details about the managed policies attached to an AWS IAM Role.
+///
+/// ## Example Usage
+///
+/// ### Basic Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.iam.getRolePolicyAttachments({
+///     roleName: "example-role",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.iam.get_role_policy_attachments(role_name="example-role")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Iam.GetRolePolicyAttachments.Invoke(new()
+///     {
+///         RoleName = "example-role",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := iam.GetRolePolicyAttachments(ctx, &iam.GetRolePolicyAttachmentsArgs{
+/// 			RoleName: "example-role",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getrolepolicyattachments" "example" {
+///   role_name = "example-role"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.iam.IamFunctions;
+/// import com.pulumi.aws.iam.inputs.GetRolePolicyAttachmentsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = IamFunctions.getRolePolicyAttachments(GetRolePolicyAttachmentsArgs.builder()
+///             .roleName("example-role")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:iam:getRolePolicyAttachments
+///       arguments:
+///         roleName: example-role
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_iam_get_role_policy_attachments_get_role_policy_attachments_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetRolePolicyAttachmentsResult> getRolePolicyAttachments(
+  GetRolePolicyAttachmentsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:iam/getRolePolicyAttachments:getRolePolicyAttachments',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetRolePolicyAttachmentsResult.fromMap(result);
 }
 
 /// Use this data source to get the ARNs and Names of IAM Roles.
@@ -4302,6 +5139,18 @@ Future<GetRoleResult> getRole(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getroles" "roles" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4310,8 +5159,8 @@ Future<GetRoleResult> getRole(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetRolesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4392,6 +5241,19 @@ Future<GetRoleResult> getRole(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getroles" "roles" {
+///   name_regex = ".*project.*"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4400,8 +5262,8 @@ Future<GetRoleResult> getRole(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetRolesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4482,6 +5344,19 @@ Future<GetRoleResult> getRole(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getroles" "roles" {
+///   path_prefix = "/custom-path"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4490,8 +5365,8 @@ Future<GetRoleResult> getRole(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetRolesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4574,6 +5449,19 @@ Future<GetRoleResult> getRole(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getroles" "roles" {
+///   path_prefix = "/aws-reserved/sso.amazonaws.com/"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4582,8 +5470,8 @@ Future<GetRoleResult> getRole(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetRolesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4668,6 +5556,20 @@ Future<GetRoleResult> getRole(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getroles" "roles" {
+///   name_regex  = "AWSReservedSSO_permission_set_name_.*"
+///   path_prefix = "/aws-reserved/sso.amazonaws.com/"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4676,8 +5578,8 @@ Future<GetRoleResult> getRole(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetRolesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4777,6 +5679,19 @@ Future<GetRolesResult> getRoles(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getsamlprovider" "example" {
+///   arn = "arn:aws:iam::123456789:saml-provider/myprovider"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4785,8 +5700,8 @@ Future<GetRolesResult> getRoles(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetSamlProviderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4937,6 +5852,31 @@ Future<GetSamlProviderResult> getSamlProvider(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getservercertificate" "my-domain" {
+///   name_prefix = "my-domain.org"
+///   latest      = true
+/// }
+///
+/// resource "aws_elb_loadbalancer" "elb" {
+///   name = "my-domain-elb"
+///   listeners {
+///     instance_port      = 8000
+///     instance_protocol  = "https"
+///     lb_port            = 443
+///     lb_protocol        = "https"
+///     ssl_certificate_id = data.aws_iam_getservercertificate.my-domain.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4948,8 +5888,8 @@ Future<GetSamlProviderResult> getSamlProvider(
 /// import com.pulumi.aws.elb.LoadBalancer;
 /// import com.pulumi.aws.elb.LoadBalancerArgs;
 /// import com.pulumi.aws.elb.inputs.LoadBalancerListenerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5015,7 +5955,7 @@ Future<GetServerCertificateResult> getServerCertificate(
   return GetServerCertificateResult.fromMap(result);
 }
 
-/// This data source provides information on the IAM source role of an STS assumed role. For non-role ARNs, this data source simply passes the ARN through in `issuer_arn`.
+/// This data source provides information on the IAM source role of an STS assumed role. For non-role ARNs, this data source simply passes the ARN through in `issuerArn`.
 ///
 /// For some AWS resources, multiple types of principals are allowed in the same argument (e.g., IAM users and IAM roles). However, these arguments often do not allow assumed-role (i.e., STS, temporary credential) principals. Given an STS ARN, this data source provides the ARN for the source IAM role.
 ///
@@ -5073,6 +6013,19 @@ Future<GetServerCertificateResult> getServerCertificate(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getsessioncontext" "example" {
+///   arn = "arn:aws:sts::123456789012:assumed-role/Audien-Heaven/MatyNoyes"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5081,8 +6034,8 @@ Future<GetServerCertificateResult> getServerCertificate(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetSessionContextArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5113,7 +6066,7 @@ Future<GetServerCertificateResult> getServerCertificate(
 ///
 /// ### Find the Runner's Source Role
 ///
-/// Combined with `aws.getCallerIdentity`, you can get the current user's source IAM role ARN (`issuer_arn`) if you're using an assumed role. If you're not using an assumed role, the caller's (e.g., an IAM user's) ARN will simply be passed through. In environments where both IAM users and individuals using assumed roles need to apply the same configurations, this data source enables seamless use.
+/// Combined with `aws.getCallerIdentity`, you can get the current user's source IAM role ARN (`issuerArn`) if you're using an assumed role. If you're not using an assumed role, the caller's (e.g., an IAM user's) ARN will simply be passed through. In environments where both IAM users and individuals using assumed roles need to apply the same configurations, this data source enables seamless use.
 ///
 ///
 /// ```typescript
@@ -5174,6 +6127,21 @@ Future<GetServerCertificateResult> getServerCertificate(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_iam_getsessioncontext" "example" {
+///   arn = data.aws_getcalleridentity.current.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5184,8 +6152,8 @@ Future<GetServerCertificateResult> getServerCertificate(
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetSessionContextArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5290,6 +6258,19 @@ Future<GetSessionContextResult> getSessionContext(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getuser" "example" {
+///   user_name = "an_example_user_name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5298,8 +6279,8 @@ Future<GetSessionContextResult> getSessionContext(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5403,6 +6384,21 @@ Future<GetUserResult> getUser(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getusersshkey" "example" {
+///   encoding          = "SSH"
+///   ssh_public_key_id = "APKARUZ32GUTKIGARLXE"
+///   username          = "test-user"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5411,8 +6407,8 @@ Future<GetUserResult> getUser(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetUserSshKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5507,6 +6503,18 @@ Future<GetUserSshKeyResult> getUserSshKey(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getusers" "users" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5515,8 +6523,8 @@ Future<GetUserSshKeyResult> getUserSshKey(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetUsersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5597,6 +6605,19 @@ Future<GetUserSshKeyResult> getUserSshKey(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getusers" "users" {
+///   name_regex = ".*abc.*"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5605,8 +6626,8 @@ Future<GetUserSshKeyResult> getUserSshKey(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetUsersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5687,6 +6708,19 @@ Future<GetUserSshKeyResult> getUserSshKey(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getusers" "users" {
+///   path_prefix = "/custom-path"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5695,8 +6729,8 @@ Future<GetUserSshKeyResult> getUserSshKey(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetUsersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

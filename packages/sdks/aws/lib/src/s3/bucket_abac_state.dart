@@ -5,11 +5,11 @@ import 'bucket_abac_abac_status.dart';
 
 /// Input properties used for looking up and filtering BucketAbac resources.
 class BucketAbacState {
-  /// ABAC status configuration. See `abac_status` Block for details.
-  ///
-  /// The following arguments are optional:
+  /// ABAC status configuration. See `abacStatus` Block for details.
   final pulumi.Input<BucketAbacAbacStatus>? abacStatus;
   /// General purpose bucket that you want to create the metadata configuration for.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String>? bucket;
   /// Account ID of the expected bucket owner.
   final pulumi.Input<String>? expectedBucketOwner;
@@ -17,7 +17,7 @@ class BucketAbacState {
   final pulumi.Input<String>? region;
 
   /// Creates a new [BucketAbacState].
-  /// [abacStatus] ABAC status configuration. See `abac_status` Block for details.
+  /// [abacStatus] ABAC status configuration. See `abacStatus` Block for details.
   /// [bucket] General purpose bucket that you want to create the metadata configuration for.
   /// [expectedBucketOwner] Account ID of the expected bucket owner.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -46,4 +46,3 @@ class BucketAbacState {
     );
   }
 }
-

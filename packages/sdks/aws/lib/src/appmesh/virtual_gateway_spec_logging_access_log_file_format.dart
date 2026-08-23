@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_gateway_spec_logging_access_log_file_format_json.dart';
 
 class VirtualGatewaySpecLoggingAccessLogFileFormat {
-  /// The logging format for JSON.
+  /// Logging format for JSON. See `json` Block for details.
   final pulumi.Input<List<VirtualGatewaySpecLoggingAccessLogFileFormatJson>>? jsons;
-  /// The logging format for text. Must be between 1 and 1000 characters in length.
+  /// Logging format for text. Must be between 1 and 1000 characters in length.
   final pulumi.Input<String>? text;
 
   /// Creates a new [VirtualGatewaySpecLoggingAccessLogFileFormat].
-  /// [jsons] The logging format for JSON.
-  /// [text] The logging format for text. Must be between 1 and 1000 characters in length.
+  /// [jsons] Logging format for JSON. See `json` Block for details.
+  /// [text] Logging format for text. Must be between 1 and 1000 characters in length.
   const VirtualGatewaySpecLoggingAccessLogFileFormat({
     this.jsons,
     this.text,
@@ -31,4 +31,3 @@ class VirtualGatewaySpecLoggingAccessLogFileFormat {
     );
   }
 }
-

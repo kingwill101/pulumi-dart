@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_gateway_spec_logging_access_log.dart';
 
 class VirtualGatewaySpecLogging {
-  /// Access log configuration for a virtual gateway.
+  /// Access log configuration for a virtual gateway. See `accessLog` Block for details.
   final pulumi.Input<VirtualGatewaySpecLoggingAccessLog>? accessLog;
 
   /// Creates a new [VirtualGatewaySpecLogging].
-  /// [accessLog] Access log configuration for a virtual gateway.
+  /// [accessLog] Access log configuration for a virtual gateway. See `accessLog` Block for details.
   const VirtualGatewaySpecLogging({
     this.accessLog,
   });
@@ -25,4 +25,3 @@ class VirtualGatewaySpecLogging {
     );
   }
 }
-

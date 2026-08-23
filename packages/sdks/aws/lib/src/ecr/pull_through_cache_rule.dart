@@ -68,6 +68,21 @@ import 'pull_through_cache_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecr_pullthroughcacherule" "example" {
+///   ecr_repository_prefix = "ecr-public"
+///   upstream_registry_url = "public.ecr.aws"
+///   credential_arn        = "arn:aws:secretsmanager:us-east-1:123456789:secret:ecr-pullthroughcache/ecrpublic"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +91,8 @@ import 'pull_through_cache_rule_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecr.PullThroughCacheRule;
 /// import com.pulumi.aws.ecr.PullThroughCacheRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -111,7 +126,7 @@ import 'pull_through_cache_rule_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import a pull-through cache rule using the `ecr_repository_prefix`. For example:
+/// Using `pulumi import`, import a pull-through cache rule using the `ecrRepositoryPrefix`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ecr/pullThroughCacheRule:PullThroughCacheRule example ecr-public

@@ -185,6 +185,47 @@ import 'get_product_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_pricing_getproduct" "example" {
+///   service_code = "AmazonEC2"
+///   filters {
+///     field = "instanceType"
+///     value = "c5.xlarge"
+///   }
+///   filters {
+///     field = "operatingSystem"
+///     value = "Linux"
+///   }
+///   filters {
+///     field = "location"
+///     value = "US East (N. Virginia)"
+///   }
+///   filters {
+///     field = "preInstalledSw"
+///     value = "NA"
+///   }
+///   filters {
+///     field = "licenseModel"
+///     value = "No License required"
+///   }
+///   filters {
+///     field = "tenancy"
+///     value = "Shared"
+///   }
+///   filters {
+///     field = "capacitystatus"
+///     value = "Used"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +234,9 @@ import 'get_product_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.pricing.PricingFunctions;
 /// import com.pulumi.aws.pricing.inputs.GetProductArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.pricing.inputs.GetProductFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -360,6 +402,27 @@ import 'get_product_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_pricing_getproduct" "example" {
+///   service_code = "AmazonRedshift"
+///   filters {
+///     field = "instanceType"
+///     value = "ds1.xlarge"
+///   }
+///   filters {
+///     field = "location"
+///     value = "US East (N. Virginia)"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -368,8 +431,9 @@ import 'get_product_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.pricing.PricingFunctions;
 /// import com.pulumi.aws.pricing.inputs.GetProductArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.pricing.inputs.GetProductFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

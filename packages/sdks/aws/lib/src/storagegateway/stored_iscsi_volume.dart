@@ -77,6 +77,23 @@ import 'stored_iscsi_volume_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_storagegateway_storediscsivolume" "example" {
+///   gateway_arn            = exampleAwsStoragegatewayCache.gatewayArn
+///   network_interface_id   = exampleAwsInstance.privateIp
+///   target_name            = "example"
+///   preserve_existing_data = false
+///   disk_id                = test.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +102,8 @@ import 'stored_iscsi_volume_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.storagegateway.StoredIscsiVolume;
 /// import com.pulumi.aws.storagegateway.StoredIscsiVolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -195,6 +212,24 @@ import 'stored_iscsi_volume_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_storagegateway_storediscsivolume" "example" {
+///   gateway_arn            = exampleAwsStoragegatewayCache.gatewayArn
+///   network_interface_id   = exampleAwsInstance.privateIp
+///   snapshot_id            = exampleAwsEbsSnapshot.id
+///   target_name            = "example"
+///   preserve_existing_data = false
+///   disk_id                = test.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -203,8 +238,8 @@ import 'stored_iscsi_volume_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.storagegateway.StoredIscsiVolume;
 /// import com.pulumi.aws.storagegateway.StoredIscsiVolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,7 +295,7 @@ class StoredIscsiVolume extends pulumi.CustomResource {
   late final pulumi.Output<String> gatewayArn;
   /// `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3. Optional.
   late final pulumi.Output<bool?> kmsEncrypted;
-  /// The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. This value can only be set when `kms_encrypted` is `true`.
+  /// The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. This value can only be set when `kmsEncrypted` is `true`.
   late final pulumi.Output<String?> kmsKey;
   /// Logical disk number.
   late final pulumi.Output<int> lunNumber;
@@ -274,9 +309,9 @@ class StoredIscsiVolume extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The snapshot ID of the snapshot to restore as the new stored volumeE.g., `snap-1122aabb`.
   late final pulumi.Output<String?> snapshotId;
-  /// Key-value mapping of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Target Amazon Resource Name (ARN), e.g., `arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/target/iqn.1997-05.com.amazon:TargetName`.
   late final pulumi.Output<String> targetArn;

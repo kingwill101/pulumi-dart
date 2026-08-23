@@ -119,6 +119,30 @@ import 'report_plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_backup_reportplan" "example" {
+///   name        = "example_name"
+///   description = "example description"
+///   report_delivery_channel = {
+///     formats        = ["CSV", "JSON"]
+///     s3_bucket_name = "example-bucket-name"
+///   }
+///   report_setting = {
+///     report_template = "RESTORE_JOB_REPORT"
+///   }
+///   tags = {
+///     "Name" = "Example Report Plan"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -129,8 +153,8 @@ import 'report_plan_state.dart';
 /// import com.pulumi.aws.backup.ReportPlanArgs;
 /// import com.pulumi.aws.backup.inputs.ReportPlanReportDeliveryChannelArgs;
 /// import com.pulumi.aws.backup.inputs.ReportPlanReportSettingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -187,25 +211,25 @@ import 'report_plan_state.dart';
 /// $ pulumi import aws:backup/reportPlan:ReportPlan test <id>
 /// ```
 class ReportPlan extends pulumi.CustomResource {
-  /// The ARN of the backup report plan.
+  /// ARN of the backup report plan.
   late final pulumi.Output<String> arn;
-  /// The date and time that a report plan is created, in Unix format and Coordinated Universal Time (UTC).
+  /// Date and time that a report plan is created, in Unix format and Coordinated Universal Time (UTC).
   late final pulumi.Output<String> creationTime;
-  /// The deployment status of a report plan. The statuses are: `CREATE_IN_PROGRESS` | `UPDATE_IN_PROGRESS` | `DELETE_IN_PROGRESS` | `COMPLETED`.
+  /// Deployment status of a report plan. The statuses are: `CREATE_IN_PROGRESS` | `UPDATE_IN_PROGRESS` | `DELETE_IN_PROGRESS` | `COMPLETED`.
   late final pulumi.Output<String> deploymentStatus;
-  /// The description of the report plan with a maximum of 1,024 characters
+  /// Description of the report plan with a maximum of 1,024 characters.
   late final pulumi.Output<String?> description;
-  /// The unique name of the report plan. The name must be between 1 and 256 characters, starting with a letter, and consisting of letters, numbers, and underscores.
+  /// Unique name of the report plan. The name must be between 1 and 256 characters, starting with a letter, and consisting of letters, numbers, and underscores.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// An object that contains information about where and how to deliver your reports, specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your reports. Detailed below.
+  /// Object that contains information about where and how to deliver your reports, specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your reports. Detailed below.
   late final pulumi.Output<ReportPlanReportDeliveryChannel> reportDeliveryChannel;
-  /// An object that identifies the report template for the report. Reports are built using a report template. Detailed below.
+  /// Object that identifies the report template for the report. Reports are built using a report template. Detailed below.
   late final pulumi.Output<ReportPlanReportSetting> reportSetting;
-  /// Metadata that you can assign to help organize the report plans you create. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Metadata that you can assign to help organize the report plans you create. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ReportPlan].

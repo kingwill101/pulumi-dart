@@ -59,6 +59,19 @@ import 'email_identity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sesv2_emailidentity" "example" {
+///   email_identity = "testing@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +80,8 @@ import 'email_identity_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sesv2.EmailIdentity;
 /// import com.pulumi.aws.sesv2.EmailIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -146,6 +159,19 @@ import 'email_identity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sesv2_emailidentity" "example" {
+///   email_identity = "example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -154,8 +180,8 @@ import 'email_identity_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sesv2.EmailIdentity;
 /// import com.pulumi.aws.sesv2.EmailIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -253,6 +279,23 @@ import 'email_identity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sesv2_configurationset" "example" {
+///   configuration_set_name = "example"
+/// }
+/// resource "aws_sesv2_emailidentity" "example" {
+///   email_identity         = "example.com"
+///   configuration_set_name = aws_sesv2_configurationset.example.configuration_set_name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -263,8 +306,8 @@ import 'email_identity_state.dart';
 /// import com.pulumi.aws.sesv2.ConfigurationSetArgs;
 /// import com.pulumi.aws.sesv2.EmailIdentity;
 /// import com.pulumi.aws.sesv2.EmailIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -373,6 +416,23 @@ import 'email_identity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sesv2_emailidentity" "example" {
+///   email_identity = "example.com"
+///   dkim_signing_attributes = {
+///     domain_signing_private_key = "MIIJKAIBAAKCAgEA2Se7p8zvnI4yh+Gh9j2rG5e2aRXjg03Y8saiupLnadPH9xvM..."
+///     domain_signing_selector    = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -382,8 +442,8 @@ import 'email_identity_state.dart';
 /// import com.pulumi.aws.sesv2.EmailIdentity;
 /// import com.pulumi.aws.sesv2.EmailIdentityArgs;
 /// import com.pulumi.aws.sesv2.inputs.EmailIdentityDkimSigningAttributesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -420,7 +480,7 @@ import 'email_identity_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SESv2 (Simple Email V2) Email Identity using the `email_identity`. For example:
+/// Using `pulumi import`, import SESv2 (Simple Email V2) Email Identity using the `emailIdentity`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sesv2/emailIdentity:EmailIdentity example example.com
@@ -440,9 +500,9 @@ class EmailIdentity extends pulumi.CustomResource {
   late final pulumi.Output<String> identityType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The verification status of the identity. The status can be one of the following: `PENDING`, `SUCCESS`, `FAILED`, `TEMPORARY_FAILURE`, and `NOT_STARTED`.
   late final pulumi.Output<String> verificationStatus;

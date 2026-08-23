@@ -252,7 +252,7 @@ import 'key_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "Enable IAM User Permissions",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:aws:iam::%v:root", current.AccountId),
 /// 					},
 /// 					"Action":   "kms:*",
@@ -261,7 +261,7 @@ import 'key_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "Allow administration of the key",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:aws:iam::%v:user/Alice", current.AccountId),
 /// 					},
 /// 					"Action": []string{
@@ -284,7 +284,7 @@ import 'key_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "Allow use of the key",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:aws:iam::%v:user/Bob", current.AccountId),
 /// 					},
 /// 					"Action": []string{
@@ -307,13 +307,60 @@ import 'key_state.dart';
 /// 			Description:          pulumi.String("An example symmetric encryption KMS key"),
 /// 			EnableKeyRotation:    pulumi.Bool(true),
 /// 			DeletionWindowInDays: pulumi.Int(20),
-/// 			Policy:               pulumi.String(json0),
+/// 			Policy:               json0,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "An example symmetric encryption KMS key"
+///   enable_key_rotation     = true
+///   deletion_window_in_days = 20
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Id"      = "key-default-1"
+///     "Statement" = [{
+///       "Sid"    = "Enable IAM User Permissions"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///       }
+///       "Action"   = "kms:*"
+///       "Resource" = "*"
+///       }, {
+///       "Sid"    = "Allow administration of the key"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:user/Alice"
+///       }
+///       "Action"   = ["kms:ReplicateKey", "kms:Create*", "kms:Describe*", "kms:Enable*", "kms:List*", "kms:Put*", "kms:Update*", "kms:Revoke*", "kms:Disable*", "kms:Get*", "kms:Delete*", "kms:ScheduleKeyDeletion", "kms:CancelKeyDeletion"]
+///       "Resource" = "*"
+///       }, {
+///       "Sid"    = "Allow use of the key"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:user/Bob"
+///       }
+///       "Action"   = ["kms:DescribeKey", "kms:Encrypt", "kms:Decrypt", "kms:ReEncrypt*", "kms:GenerateDataKey", "kms:GenerateDataKeyWithoutPlaintext"]
+///       "Resource" = "*"
+///     }]
+///   })
 /// }
 /// ```
 /// ```java
@@ -327,8 +374,8 @@ import 'key_state.dart';
 /// import com.pulumi.aws.kms.Key;
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -598,7 +645,7 @@ import 'key_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "Enable IAM User Permissions",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:aws:iam::%v:root", current.AccountId),
 /// 					},
 /// 					"Action":   "kms:*",
@@ -611,14 +658,48 @@ import 'key_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = kms.NewKeyPolicy(ctx, "example", &kms.KeyPolicyArgs{
-/// 			KeyId:  example.ID(),
-/// 			Policy: pulumi.String(json0),
+/// 			KeyId:  example.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: json0,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "An example symmetric encryption KMS key"
+///   enable_key_rotation     = true
+///   deletion_window_in_days = 20
+/// }
+/// resource "aws_kms_keypolicy" "example" {
+///   key_id = aws_kms_key.example.id
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Id"      = "key-default-1"
+///     "Statement" = [{
+///       "Sid"    = "Enable IAM User Permissions"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///       }
+///       "Action"   = "kms:*"
+///       "Resource" = "*"
+///     }]
+///   })
 /// }
 /// ```
 /// ```java
@@ -634,8 +715,8 @@ import 'key_state.dart';
 /// import com.pulumi.aws.kms.KeyPolicy;
 /// import com.pulumi.aws.kms.KeyPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -942,7 +1023,7 @@ import 'key_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "Enable IAM User Permissions",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:aws:iam::%v:root", current.AccountId),
 /// 					},
 /// 					"Action":   "kms:*",
@@ -951,7 +1032,7 @@ import 'key_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "Allow administration of the key",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:aws:iam::%v:role/Admin", current.AccountId),
 /// 					},
 /// 					"Action": []string{
@@ -973,7 +1054,7 @@ import 'key_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "Allow use of the key",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:aws:iam::%v:role/Developer", current.AccountId),
 /// 					},
 /// 					"Action": []string{
@@ -994,13 +1075,61 @@ import 'key_state.dart';
 /// 			CustomerMasterKeySpec: pulumi.String("RSA_3072"),
 /// 			KeyUsage:              pulumi.String("SIGN_VERIFY"),
 /// 			EnableKeyRotation:     pulumi.Bool(false),
-/// 			Policy:                pulumi.String(json0),
+/// 			Policy:                json0,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description              = "RSA-3072 asymmetric KMS key for signing and verification"
+///   customer_master_key_spec = "RSA_3072"
+///   key_usage                = "SIGN_VERIFY"
+///   enable_key_rotation      = false
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Id"      = "key-default-1"
+///     "Statement" = [{
+///       "Sid"    = "Enable IAM User Permissions"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///       }
+///       "Action"   = "kms:*"
+///       "Resource" = "*"
+///       }, {
+///       "Sid"    = "Allow administration of the key"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:role/Admin"
+///       }
+///       "Action"   = ["kms:Create*", "kms:Describe*", "kms:Enable*", "kms:List*", "kms:Put*", "kms:Update*", "kms:Revoke*", "kms:Disable*", "kms:Get*", "kms:Delete*", "kms:ScheduleKeyDeletion", "kms:CancelKeyDeletion"]
+///       "Resource" = "*"
+///       }, {
+///       "Sid"    = "Allow use of the key"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:role/Developer"
+///       }
+///       "Action"   = ["kms:Sign", "kms:Verify", "kms:DescribeKey"]
+///       "Resource" = "*"
+///     }]
+///   })
 /// }
 /// ```
 /// ```java
@@ -1014,8 +1143,8 @@ import 'key_state.dart';
 /// import com.pulumi.aws.kms.Key;
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1379,7 +1508,7 @@ import 'key_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "Enable IAM User Permissions",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:aws:iam::%v:root", current.AccountId),
 /// 					},
 /// 					"Action":   "kms:*",
@@ -1388,7 +1517,7 @@ import 'key_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "Allow administration of the key",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:aws:iam::%v:role/Admin", current.AccountId),
 /// 					},
 /// 					"Action": []string{
@@ -1410,7 +1539,7 @@ import 'key_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "Allow use of the key",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:aws:iam::%v:role/Developer", current.AccountId),
 /// 					},
 /// 					"Action": []string{
@@ -1431,13 +1560,61 @@ import 'key_state.dart';
 /// 			CustomerMasterKeySpec: pulumi.String("HMAC_384"),
 /// 			KeyUsage:              pulumi.String("GENERATE_VERIFY_MAC"),
 /// 			EnableKeyRotation:     pulumi.Bool(false),
-/// 			Policy:                pulumi.String(json0),
+/// 			Policy:                json0,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description              = "HMAC_384 key for tokens"
+///   customer_master_key_spec = "HMAC_384"
+///   key_usage                = "GENERATE_VERIFY_MAC"
+///   enable_key_rotation      = false
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Id"      = "key-default-1"
+///     "Statement" = [{
+///       "Sid"    = "Enable IAM User Permissions"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///       }
+///       "Action"   = "kms:*"
+///       "Resource" = "*"
+///       }, {
+///       "Sid"    = "Allow administration of the key"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:role/Admin"
+///       }
+///       "Action"   = ["kms:Create*", "kms:Describe*", "kms:Enable*", "kms:List*", "kms:Put*", "kms:Update*", "kms:Revoke*", "kms:Disable*", "kms:Get*", "kms:Delete*", "kms:ScheduleKeyDeletion", "kms:CancelKeyDeletion"]
+///       "Resource" = "*"
+///       }, {
+///       "Sid"    = "Allow use of the key"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:role/Developer"
+///       }
+///       "Action"   = ["kms:GenerateMac", "kms:VerifyMac", "kms:DescribeKey"]
+///       "Resource" = "*"
+///     }]
+///   })
 /// }
 /// ```
 /// ```java
@@ -1451,8 +1628,8 @@ import 'key_state.dart';
 /// import com.pulumi.aws.kms.Key;
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1828,7 +2005,7 @@ import 'key_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "Enable IAM User Permissions",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:aws:iam::%v:root", current.AccountId),
 /// 					},
 /// 					"Action":   "kms:*",
@@ -1837,7 +2014,7 @@ import 'key_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "Allow administration of the key",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:aws:iam::%v:user/Alice", current.AccountId),
 /// 					},
 /// 					"Action": []string{
@@ -1860,7 +2037,7 @@ import 'key_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "Allow use of the key",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:aws:iam::%v:user/Bob", current.AccountId),
 /// 					},
 /// 					"Action": []string{
@@ -1884,13 +2061,61 @@ import 'key_state.dart';
 /// 			MultiRegion:          pulumi.Bool(true),
 /// 			EnableKeyRotation:    pulumi.Bool(true),
 /// 			DeletionWindowInDays: pulumi.Int(10),
-/// 			Policy:               pulumi.String(json0),
+/// 			Policy:               json0,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "An example multi-Region primary key"
+///   multi_region            = true
+///   enable_key_rotation     = true
+///   deletion_window_in_days = 10
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Id"      = "key-default-1"
+///     "Statement" = [{
+///       "Sid"    = "Enable IAM User Permissions"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///       }
+///       "Action"   = "kms:*"
+///       "Resource" = "*"
+///       }, {
+///       "Sid"    = "Allow administration of the key"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:user/Alice"
+///       }
+///       "Action"   = ["kms:ReplicateKey", "kms:Create*", "kms:Describe*", "kms:Enable*", "kms:List*", "kms:Put*", "kms:Update*", "kms:Revoke*", "kms:Disable*", "kms:Get*", "kms:Delete*", "kms:ScheduleKeyDeletion", "kms:CancelKeyDeletion"]
+///       "Resource" = "*"
+///       }, {
+///       "Sid"    = "Allow use of the key"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:user/Bob"
+///       }
+///       "Action"   = ["kms:DescribeKey", "kms:Encrypt", "kms:Decrypt", "kms:ReEncrypt*", "kms:GenerateDataKey", "kms:GenerateDataKeyWithoutPlaintext"]
+///       "Resource" = "*"
+///     }]
+///   })
 /// }
 /// ```
 /// ```java
@@ -1904,8 +2129,8 @@ import 'key_state.dart';
 /// import com.pulumi.aws.kms.Key;
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2054,7 +2279,7 @@ import 'key_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -2101,9 +2326,9 @@ class Key extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Custom period of time between each rotation date. Must be a number between 90 and 2560 (inclusive).
   late final pulumi.Output<int> rotationPeriodInDays;
-  /// A map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the object. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Identifies the external key that serves as key material for the KMS key in an external key store.
   late final pulumi.Output<String?> xksKeyId;

@@ -36,4 +36,3 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBur
     );
   }
 }
-

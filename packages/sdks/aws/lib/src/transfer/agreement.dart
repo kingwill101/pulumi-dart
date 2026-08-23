@@ -79,6 +79,24 @@ import 'agreement_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transfer_agreement" "example" {
+///   access_role        = test.arn
+///   base_directory     = "/DOC-EXAMPLE-BUCKET/home/mydirectory"
+///   description        = "example"
+///   local_profile_id   = local.profileId
+///   partner_profile_id = partner.profileId
+///   server_id          = testAwsTransferServer.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +105,8 @@ import 'agreement_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.transfer.Agreement;
 /// import com.pulumi.aws.transfer.AgreementArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -134,26 +152,27 @@ import 'agreement_state.dart';
 /// $ pulumi import aws:transfer/agreement:Agreement example s-4221a88afd5f4362a/a-4221a88afd5f4362a
 /// ```
 class Agreement extends pulumi.CustomResource {
-  /// The IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
+  /// IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
   late final pulumi.Output<String> accessRole;
-  /// The unique identifier for the AS2 agreement.
+  /// Unique identifier for the AS2 agreement.
   late final pulumi.Output<String> agreementId;
-  /// The ARN of the agreement.
+  /// ARN of the agreement.
   late final pulumi.Output<String> arn;
-  /// The landing directory for the files transferred by using the AS2 protocol.
+  /// Landing directory for the files transferred by using the AS2 protocol.
   late final pulumi.Output<String> baseDirectory;
-  /// The Optional description of the transdfer.
+  /// Optional description of the transdfer.
   late final pulumi.Output<String?> description;
-  /// The unique identifier for the AS2 local profile.
+  /// Unique identifier for the AS2 local profile.
   late final pulumi.Output<String> localProfileId;
-  /// The unique identifier for the AS2 partner profile.
+  /// Unique identifier for the AS2 partner profile.
   late final pulumi.Output<String> partnerProfileId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The unique server identifier for the server instance. This is the specific server the agreement uses.
+  /// Unique server identifier for the server instance. This is the specific server the agreement uses.
   late final pulumi.Output<String> serverId;
+  /// Status of the agreement which is either ACTIVE or INACTIVE.
   late final pulumi.Output<String> status;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
 

@@ -5,7 +5,7 @@ import 'network_acl_association_state.dart';
 /// Provides an network ACL association resource which allows you to associate your network ACL with any subnet(s).
 ///
 /// &gt; **NOTE on Network ACLs and Network ACL Associations:** the provider provides both a standalone network ACL association resource
-/// and a network ACL resource with a `subnet_ids` attribute. Do not use the same subnet ID in both a network ACL
+/// and a network ACL resource with a `subnetIds` attribute. Do not use the same subnet ID in both a network ACL
 /// resource and a network ACL association resource. Doing so will cause a conflict of associations and will overwrite the association.
 ///
 /// ## Example Usage
@@ -65,6 +65,20 @@ import 'network_acl_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_networkaclassociation" "main" {
+///   network_acl_id = mainAwsNetworkAcl.id
+///   subnet_id      = mainAwsSubnet.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +87,8 @@ import 'network_acl_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.NetworkAclAssociation;
 /// import com.pulumi.aws.ec2.NetworkAclAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

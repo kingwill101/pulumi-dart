@@ -10,7 +10,7 @@ import 'directory_workspace_creation_properties.dart';
 
 /// Input properties used for looking up and filtering Directory resources.
 class DirectoryState {
-  /// Configuration for Active Directory integration when `workspace_type` is set to `POOLS`. Defined below.
+  /// Configuration for Active Directory integration when `workspaceType` is set to `POOLS`. Defined below.
   final pulumi.Input<DirectoryActiveDirectoryConfig>? activeDirectoryConfig;
   /// The directory alias.
   final pulumi.Input<String>? alias;
@@ -36,27 +36,27 @@ class DirectoryState {
   final pulumi.Input<String>? registrationCode;
   /// Configuration of SAML authentication integration. Defined below.
   final pulumi.Input<DirectorySamlProperties>? samlProperties;
-  /// Permissions to enable or disable self-service capabilities when `workspace_type` is set to `PERSONAL`.. Defined below.
+  /// Permissions to enable or disable self-service capabilities when `workspaceType` is set to `PERSONAL`.. Defined below.
   final pulumi.Input<DirectorySelfServicePermissions>? selfServicePermissions;
   /// The identifiers of the subnets where the directory resides.
   final pulumi.Input<List<String>>? subnetIds;
-  /// A map of tags assigned to the WorkSpaces directory. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags assigned to the WorkSpaces directory. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Tenancy of the WorkSpaces directory. Valid values are `DEDICATED` or `SHARED`.
   final pulumi.Input<String>? tenancy;
   /// Specifies the user identity type for the WorkSpaces directory. Valid values are `CUSTOMER_MANAGED`, `AWS_DIRECTORY_SERVICE`, `AWS_IAM_IDENTITY_CENTER`.
   ///
-  /// &gt; **Note:** When `workspace_type` is set to `POOLS`, the `directory_id` is automatically generated and cannot be manually set.
+  /// &gt; **Note:** When `workspaceType` is set to `POOLS`, the `directoryId` is automatically generated and cannot be manually set.
   final pulumi.Input<String>? userIdentityType;
   /// Specifies which devices and operating systems users can use to access their WorkSpaces. Defined below.
   final pulumi.Input<DirectoryWorkspaceAccessProperties>? workspaceAccessProperties;
   /// Default properties that are used for creating WorkSpaces. Defined below.
   final pulumi.Input<DirectoryWorkspaceCreationProperties>? workspaceCreationProperties;
-  /// The description of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
+  /// The description of the WorkSpaces directory when `workspaceType` is set to `POOLS`.
   final pulumi.Input<String>? workspaceDirectoryDescription;
-  /// The name of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
+  /// The name of the WorkSpaces directory when `workspaceType` is set to `POOLS`.
   final pulumi.Input<String>? workspaceDirectoryName;
   /// The identifier of the security group that is assigned to new WorkSpaces.
   final pulumi.Input<String>? workspaceSecurityGroupId;
@@ -64,7 +64,7 @@ class DirectoryState {
   final pulumi.Input<String>? workspaceType;
 
   /// Creates a new [DirectoryState].
-  /// [activeDirectoryConfig] Configuration for Active Directory integration when `workspace_type` is set to `POOLS`. Defined below.
+  /// [activeDirectoryConfig] Configuration for Active Directory integration when `workspaceType` is set to `POOLS`. Defined below.
   /// [alias] The directory alias.
   /// [certificateBasedAuthProperties] Configuration of certificate-based authentication (CBA) integration. Requires SAML authentication to be enabled. Defined below.
   /// [customerUserName] The user name for the service account.
@@ -77,16 +77,16 @@ class DirectoryState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [registrationCode] The registration code for the directory. This is the code that users enter in their Amazon WorkSpaces client application to connect to the directory.
   /// [samlProperties] Configuration of SAML authentication integration. Defined below.
-  /// [selfServicePermissions] Permissions to enable or disable self-service capabilities when `workspace_type` is set to `PERSONAL`.. Defined below.
+  /// [selfServicePermissions] Permissions to enable or disable self-service capabilities when `workspaceType` is set to `PERSONAL`.. Defined below.
   /// [subnetIds] The identifiers of the subnets where the directory resides.
-  /// [tags] A map of tags assigned to the WorkSpaces directory. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags assigned to the WorkSpaces directory. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [tenancy] Tenancy of the WorkSpaces directory. Valid values are `DEDICATED` or `SHARED`.
   /// [userIdentityType] Specifies the user identity type for the WorkSpaces directory. Valid values are `CUSTOMER_MANAGED`, `AWS_DIRECTORY_SERVICE`, `AWS_IAM_IDENTITY_CENTER`.
   /// [workspaceAccessProperties] Specifies which devices and operating systems users can use to access their WorkSpaces. Defined below.
   /// [workspaceCreationProperties] Default properties that are used for creating WorkSpaces. Defined below.
-  /// [workspaceDirectoryDescription] The description of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
-  /// [workspaceDirectoryName] The name of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
+  /// [workspaceDirectoryDescription] The description of the WorkSpaces directory when `workspaceType` is set to `POOLS`.
+  /// [workspaceDirectoryName] The name of the WorkSpaces directory when `workspaceType` is set to `POOLS`.
   /// [workspaceSecurityGroupId] The identifier of the security group that is assigned to new WorkSpaces.
   /// [workspaceType] Specifies the type of WorkSpaces directory. Valid values are `PERSONAL` and `POOLS`. Default is `PERSONAL`.
   const DirectoryState({
@@ -177,4 +177,3 @@ class DirectoryState {
     );
   }
 }
-

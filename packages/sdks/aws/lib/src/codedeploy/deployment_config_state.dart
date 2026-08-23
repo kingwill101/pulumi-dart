@@ -15,13 +15,13 @@ class DeploymentConfigState {
   final pulumi.Input<String>? deploymentConfigId;
   /// The name of the deployment config.
   final pulumi.Input<String>? deploymentConfigName;
-  /// A minimum_healthy_hosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
+  /// A minimumHealthyHosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
   final pulumi.Input<DeploymentConfigMinimumHealthyHosts>? minimumHealthyHosts;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A traffic_routing_config block. Traffic Routing Config is documented below.
+  /// A trafficRoutingConfig block. Traffic Routing Config is documented below.
   final pulumi.Input<DeploymentConfigTrafficRoutingConfig>? trafficRoutingConfig;
-  /// A zonal_config block. Zonal Config is documented below.
+  /// A zonalConfig block. Zonal Config is documented below.
   final pulumi.Input<DeploymentConfigZonalConfig>? zonalConfig;
 
   /// Creates a new [DeploymentConfigState].
@@ -29,10 +29,10 @@ class DeploymentConfigState {
   /// [computePlatform] The compute platform can be `Server`, `Lambda`, or `ECS`. Default is `Server`.
   /// [deploymentConfigId] The AWS Assigned deployment config id
   /// [deploymentConfigName] The name of the deployment config.
-  /// [minimumHealthyHosts] A minimum_healthy_hosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
+  /// [minimumHealthyHosts] A minimumHealthyHosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [trafficRoutingConfig] A traffic_routing_config block. Traffic Routing Config is documented below.
-  /// [zonalConfig] A zonal_config block. Zonal Config is documented below.
+  /// [trafficRoutingConfig] A trafficRoutingConfig block. Traffic Routing Config is documented below.
+  /// [zonalConfig] A zonalConfig block. Zonal Config is documented below.
   const DeploymentConfigState({
     this.arn,
     this.computePlatform,
@@ -70,4 +70,3 @@ class DeploymentConfigState {
     );
   }
 }
-

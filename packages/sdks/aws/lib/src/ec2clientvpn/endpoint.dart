@@ -5,6 +5,7 @@ import 'endpoint_client_login_banner_options.dart';
 import 'endpoint_client_route_enforcement_options.dart';
 import 'endpoint_connection_log_options.dart';
 import 'endpoint_state.dart';
+import 'endpoint_transit_gateway_configuration.dart';
 
 /// Provides an AWS Client VPN endpoint for OpenVPN clients. For more information on usage, please see the
 /// [AWS Client VPN Administrator's Guide](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html).
@@ -113,6 +114,30 @@ import 'endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2clientvpn_endpoint" "example" {
+///   description            = "clientvpn-example"
+///   server_certificate_arn = cert.arn
+///   client_cidr_block      = "10.0.0.0/16"
+///   authentication_options {
+///     type                       = "certificate-authentication"
+///     root_certificate_chain_arn = rootCert.arn
+///   }
+///   connection_log_options = {
+///     enabled               = true
+///     cloudwatch_log_group  = lg.name
+///     cloudwatch_log_stream = ls.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +148,8 @@ import 'endpoint_state.dart';
 /// import com.pulumi.aws.ec2clientvpn.EndpointArgs;
 /// import com.pulumi.aws.ec2clientvpn.inputs.EndpointAuthenticationOptionArgs;
 /// import com.pulumi.aws.ec2clientvpn.inputs.EndpointConnectionLogOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -182,21 +207,21 @@ import 'endpoint_state.dart';
 class Endpoint extends pulumi.CustomResource {
   /// The ARN of the Client VPN endpoint.
   late final pulumi.Output<String> arn;
-  /// Information about the authentication method to be used to authenticate clients.
+  /// Information about the authentication method to be used to authenticate clients. See `authenticationOptions` Block Reference below for details.
   late final pulumi.Output<List<Map<String, dynamic>>> authenticationOptions;
-  /// The IPv4 address range, in CIDR notation, from which to assign client IP addresses. The address range cannot overlap with the local CIDR of the VPC in which the associated subnet is located, or the routes that you add manually. The address range cannot be changed after the Client VPN endpoint has been created. The CIDR block should be /22 or greater. When `traffic_ip_address_type` is set to `ipv6`, it must not be specified. Otherwise, it is required.
+  /// The IPv4 address range, in CIDR notation, from which to assign client IP addresses. The address range cannot overlap with the local CIDR of the VPC in which the associated subnet is located, or the routes that you add manually. The address range cannot be changed after the Client VPN endpoint has been created. The CIDR block should be /22 or greater. When `trafficIpAddressType` is set to `ipv6`, it must not be specified. Otherwise, it is required.
   late final pulumi.Output<String?> clientCidrBlock;
-  /// The options for managing connection authorization for new client connections.
+  /// The options for managing connection authorization for new client connections. See `clientConnectOptions` Block Reference below for details.
   late final pulumi.Output<EndpointClientConnectOptions> clientConnectOptions;
-  /// Options for enabling a customizable text banner that will be displayed on AWS provided clients when a VPN session is established.
+  /// Options for enabling a customizable text banner that will be displayed on AWS provided clients when a VPN session is established. See `clientLoginBannerOptions` Block Reference below for details.
   late final pulumi.Output<EndpointClientLoginBannerOptions> clientLoginBannerOptions;
-  /// Options for enforce administrator defined routes on devices connected through the VPN.
+  /// Options for enforce administrator defined routes on devices connected through the VPN. See `clientRouteEnforcementOptions` Block Reference below for details.
   late final pulumi.Output<EndpointClientRouteEnforcementOptions> clientRouteEnforcementOptions;
-  /// Information about the client connection logging options.
+  /// Information about the client connection logging options. See `connectionLogOptions` Block Reference below for details.
   late final pulumi.Output<EndpointConnectionLogOptions> connectionLogOptions;
   /// A brief description of the Client VPN endpoint.
   late final pulumi.Output<String?> description;
-  /// Indicates whether the client VPN session is disconnected after the maximum `session_timeout_hours` is reached. If `true`, users are prompted to reconnect client VPN. If `false`, client VPN attempts to reconnect automatically. The default value is `false`.
+  /// Indicates whether the client VPN session is disconnected after the maximum `sessionTimeoutHours` is reached. If `true`, users are prompted to reconnect client VPN. If `false`, client VPN attempts to reconnect automatically. The default value is `false`.
   late final pulumi.Output<bool> disconnectOnSessionTimeout;
   /// The DNS name to be used by clients when establishing their VPN session.
   late final pulumi.Output<String> dnsName;
@@ -206,7 +231,7 @@ class Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> endpointIpAddressType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The IDs of one or more security groups to apply to the target network. You must also specify the ID of the VPC that contains the security groups.
+  /// The IDs of one or more security groups to apply to the target network. You must also specify the ID of the VPC that contains the security groups. Conflicts with `transitGatewayConfiguration`.
   late final pulumi.Output<List<String>> securityGroupIds;
   /// Specify whether to enable the self-service portal for the Client VPN endpoint. Values can be `enabled` or `disabled`. Default value is `disabled`.
   late final pulumi.Output<String?> selfServicePortal;
@@ -218,15 +243,17 @@ class Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<int?> sessionTimeoutHours;
   /// Indicates whether split-tunnel is enabled on VPN endpoint. Default value is `false`.
   late final pulumi.Output<bool?> splitTunnel;
-  /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// IP address type for traffic within the Client VPN tunnel. Valid values are `ipv4`, `ipv6`, or `dual-stack`. Defaults to `ipv4`. When it is set to `ipv6`, `client_cidr_block` must not be specified.
+  /// IP address type for traffic within the Client VPN tunnel. Valid values are `ipv4`, `ipv6`, or `dual-stack`. Defaults to `ipv4`. When it is set to `ipv6`, `clientCidrBlock` must not be specified.
   late final pulumi.Output<String> trafficIpAddressType;
+  /// Configuration block for associating the Client VPN endpoint with a Transit Gateway. Conflicts with `vpcId` and `securityGroupIds`. See `transitGatewayConfiguration` Block Reference below for details.
+  late final pulumi.Output<EndpointTransitGatewayConfiguration> transitGatewayConfiguration;
   /// The transport protocol to be used by the VPN session. Default value is `udp`.
   late final pulumi.Output<String?> transportProtocol;
-  /// The ID of the VPC to associate with the Client VPN endpoint. If no security group IDs are specified in the request, the default security group for the VPC is applied.
+  /// The ID of the VPC to associate with the Client VPN endpoint. If no security group IDs are specified in the request, the default security group for the VPC is applied. Conflicts with `transitGatewayConfiguration`.
   late final pulumi.Output<String> vpcId;
   /// The port number for the Client VPN endpoint. Valid values are `443` and `1194`. Default value is `443`.
   late final pulumi.Output<int?> vpnPort;
@@ -267,6 +294,7 @@ class Endpoint extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     trafficIpAddressType = registerOutput<String>('trafficIpAddressType');
+    transitGatewayConfiguration = registerOutput<EndpointTransitGatewayConfiguration>('transitGatewayConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointTransitGatewayConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     transportProtocol = registerOutput<String?>('transportProtocol');
     vpcId = registerOutput<String>('vpcId');
     vpnPort = registerOutput<int?>('vpnPort');
@@ -317,6 +345,7 @@ class Endpoint extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     trafficIpAddressType = registerOutput<String>('trafficIpAddressType');
+    transitGatewayConfiguration = registerOutput<EndpointTransitGatewayConfiguration>('transitGatewayConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointTransitGatewayConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     transportProtocol = registerOutput<String?>('transportProtocol');
     vpcId = registerOutput<String>('vpcId');
     vpnPort = registerOutput<int?>('vpnPort');

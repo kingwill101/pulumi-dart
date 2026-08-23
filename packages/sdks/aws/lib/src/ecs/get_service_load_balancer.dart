@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_service_load_balancer_advanced_configuration.dart';
 
 class GetServiceLoadBalancer {
-  /// Settings for Blue/Green deployment. See `advanced_configuration` Block for details.
+  /// Settings for Blue/Green deployment. See `advancedConfiguration` Block for details.
   final pulumi.Input<List<GetServiceLoadBalancerAdvancedConfiguration>> advancedConfigurations;
   /// Name of the container to associate with the load balancer.
   final pulumi.Input<String> containerName;
@@ -16,7 +16,7 @@ class GetServiceLoadBalancer {
   final pulumi.Input<String> targetGroupArn;
 
   /// Creates a new [GetServiceLoadBalancer].
-  /// [advancedConfigurations] Settings for Blue/Green deployment. See `advanced_configuration` Block for details.
+  /// [advancedConfigurations] Settings for Blue/Green deployment. See `advancedConfiguration` Block for details.
   /// [containerName] Name of the container to associate with the load balancer.
   /// [containerPort] Port on the container to associate with the load balancer.
   /// [elbName] Name of the load balancer.
@@ -49,4 +49,3 @@ class GetServiceLoadBalancer {
     );
   }
 }
-

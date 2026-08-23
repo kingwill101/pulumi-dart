@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_managed_rule_group_rule_action_allow_custom_request_handling_insert_header.dart';
 
 class GetManagedRuleGroupRuleActionAllowCustomRequestHandling {
+  /// Headers inserted into the request. See `insertHeader` Block for details.
   final pulumi.Input<List<GetManagedRuleGroupRuleActionAllowCustomRequestHandlingInsertHeader>> insertHeaders;
 
   /// Creates a new [GetManagedRuleGroupRuleActionAllowCustomRequestHandling].
-  /// [insertHeaders] Required.
+  /// [insertHeaders] Headers inserted into the request. See `insertHeader` Block for details.
   const GetManagedRuleGroupRuleActionAllowCustomRequestHandling({
     required this.insertHeaders,
   });
@@ -24,4 +25,3 @@ class GetManagedRuleGroupRuleActionAllowCustomRequestHandling {
     );
   }
 }
-

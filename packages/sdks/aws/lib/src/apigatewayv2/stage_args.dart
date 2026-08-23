@@ -10,15 +10,13 @@ import 'stage_route_setting.dart';
 /// {@endtemplate}
 /// {@macro pulumi_apigatewayv2_stage_stage_args_doc}
 class StageArgs {
-  /// Settings for logging access in this stage.
-  /// Use the `aws.apigateway.Account` resource to configure [permissions for CloudWatch Logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#set-up-access-logging-permissions).
+  /// Settings for logging access in this stage. Use the `aws.apigateway.Account` resource to configure [permissions for CloudWatch Logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#set-up-access-logging-permissions).
   final pulumi.Input<StageAccessLogSettings>? accessLogSettings;
   /// API identifier.
   final pulumi.Input<String> apiId;
   /// Whether updates to an API automatically trigger a new deployment. Defaults to `false`. Applicable for HTTP APIs.
   final pulumi.Input<bool>? autoDeploy;
-  /// Identifier of a client certificate for the stage. Use the `aws.apigateway.ClientCertificate` resource to configure a client certificate.
-  /// Supported only for WebSocket APIs.
+  /// Identifier of a client certificate for the stage. Use the `aws.apigateway.ClientCertificate` resource to configure a client certificate. Supported only for WebSocket APIs.
   final pulumi.Input<String>? clientCertificateId;
   /// Default route settings for the stage.
   final pulumi.Input<StageDefaultRouteSettings>? defaultRouteSettings;
@@ -36,14 +34,14 @@ class StageArgs {
   final pulumi.Input<List<StageRouteSetting>>? routeSettings;
   /// Map that defines the stage variables for the stage.
   final pulumi.Input<Map<String, String>>? stageVariables;
-  /// Map of tags to assign to the stage. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the stage. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [StageArgs].
-  /// [accessLogSettings] Settings for logging access in this stage.
+  /// [accessLogSettings] Settings for logging access in this stage. Use the `aws.apigateway.Account` resource to configure [permissions for CloudWatch Logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#set-up-access-logging-permissions).
   /// [apiId] API identifier.
   /// [autoDeploy] Whether updates to an API automatically trigger a new deployment. Defaults to `false`. Applicable for HTTP APIs.
-  /// [clientCertificateId] Identifier of a client certificate for the stage. Use the `aws.apigateway.ClientCertificate` resource to configure a client certificate.
+  /// [clientCertificateId] Identifier of a client certificate for the stage. Use the `aws.apigateway.ClientCertificate` resource to configure a client certificate. Supported only for WebSocket APIs.
   /// [defaultRouteSettings] Default route settings for the stage.
   /// [deploymentId] Deployment identifier of the stage. Use the `aws.apigatewayv2.Deployment` resource to configure a deployment.
   /// [description] Description for the stage. Must be less than or equal to 1024 characters in length.
@@ -51,7 +49,7 @@ class StageArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routeSettings] Route settings for the stage.
   /// [stageVariables] Map that defines the stage variables for the stage.
-  /// [tags] Map of tags to assign to the stage. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the stage. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const StageArgs({
     this.accessLogSettings,
     required this.apiId,
@@ -101,4 +99,3 @@ class StageArgs {
     );
   }
 }
-

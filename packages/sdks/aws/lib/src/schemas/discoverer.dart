@@ -77,6 +77,23 @@ import 'discoverer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventbus" "messenger" {
+///   name = "chat-messages"
+/// }
+/// resource "aws_schemas_discoverer" "test" {
+///   source_arn  = aws_cloudwatch_eventbus.messenger.arn
+///   description = "Auto discover event schemas"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +104,8 @@ import 'discoverer_state.dart';
 /// import com.pulumi.aws.cloudwatch.EventBusArgs;
 /// import com.pulumi.aws.schemas.Discoverer;
 /// import com.pulumi.aws.schemas.DiscovererArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -142,9 +159,9 @@ class Discoverer extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The ARN of the event bus to discover event schemas on.
   late final pulumi.Output<String> sourceArn;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Discoverer].

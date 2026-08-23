@@ -106,6 +106,28 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_identitystore_user" "example" {
+///   identity_store_id = exampleAwsSsoadminInstances.identityStoreIds[0]
+///   display_name      = "John Doe"
+///   user_name         = "johndoe"
+///   name = {
+///     given_name  = "John"
+///     family_name = "Doe"
+///   }
+///   emails = {
+///     value = "john@example.com"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -116,8 +138,8 @@ import 'user_state.dart';
 /// import com.pulumi.aws.identitystore.UserArgs;
 /// import com.pulumi.aws.identitystore.inputs.UserNameArgs;
 /// import com.pulumi.aws.identitystore.inputs.UserEmailsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -203,6 +225,8 @@ class User extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> userName;
+  /// The current status of the user account.
+  late final pulumi.Output<String> userStatus;
   /// The user type.
   ///
   /// &gt; Unless specified otherwise, all fields can contain up to 1024 characters of free-form text.
@@ -238,6 +262,7 @@ class User extends pulumi.CustomResource {
     title = registerOutput<String?>('title');
     userId = registerOutput<String>('userId');
     userName = registerOutput<String>('userName');
+    userStatus = registerOutput<String>('userStatus');
     userType = registerOutput<String?>('userType');
   }
 
@@ -280,6 +305,7 @@ class User extends pulumi.CustomResource {
     title = registerOutput<String?>('title');
     userId = registerOutput<String>('userId');
     userName = registerOutput<String>('userName');
+    userStatus = registerOutput<String>('userStatus');
     userType = registerOutput<String?>('userType');
   }
 }

@@ -58,6 +58,19 @@ import 'get_server_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_transfer_getconnector" "test" {
+///   id = "c-xxxxxxxxxxxxxx"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +79,8 @@ import 'get_server_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.transfer.TransferFunctions;
 /// import com.pulumi.aws.transfer.inputs.GetConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -164,6 +177,19 @@ Future<GetConnectorResult> getConnector(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_transfer_getserver" "example" {
+///   server_id = "s-1234567"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -172,8 +198,8 @@ Future<GetConnectorResult> getConnector(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.transfer.TransferFunctions;
 /// import com.pulumi.aws.transfer.inputs.GetServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost {
-  /// The path on the host container instance that's presented to the container.
+  /// Path on the host container instance that's presented to the container.
   final pulumi.Input<String> sourcePath;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost].
-  /// [sourcePath] The path on the host container instance that's presented to the container.
+  /// [sourcePath] Path on the host container instance that's presented to the container.
   const GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost({
     required this.sourcePath,
   });
@@ -24,4 +24,3 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost {
     );
   }
 }
-

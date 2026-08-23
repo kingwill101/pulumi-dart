@@ -6,9 +6,9 @@ import 'launch_configuration_state.dart';
 
 /// Provides a resource to create a new launch configuration, used for autoscaling groups.
 ///
-/// !&gt; **WARNING:** The use of launch configurations is discouraged in favor of launch templates. Read more in the [AWS EC2 Documentation](https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-configurations.html).
+/// &gt; **WARNING:** The use of launch configurations is discouraged in favor of launch templates. Read more in the [AWS EC2 Documentation](https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-configurations.html).
 ///
-/// &gt; **Note** When using `aws.ec2.LaunchConfiguration` with `aws.autoscaling.Group`, it is recommended to use the `name_prefix` (Optional) instead of the `name` (Optional) attribute.
+/// &gt; **Note** When using `aws.ec2.LaunchConfiguration` with `aws.autoscaling.Group`, it is recommended to use the `namePrefix` (Optional) instead of the `name` (Optional) attribute.
 ///
 /// ## Example Usage
 ///
@@ -148,6 +148,35 @@ import 'launch_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getami" "ubuntu" {
+///   most_recent = true
+///   filters {
+///     name   = "name"
+///     values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
+///   }
+///   filters {
+///     name   = "virtualization-type"
+///     values = ["hvm"]
+///   }
+///   owners = ["099720109477"]
+/// }
+///
+/// # Canonical
+/// resource "aws_ec2_launchconfiguration" "as_conf" {
+///   name          = "web_config"
+///   image_id      = data.aws_ec2_getami.ubuntu.id
+///   instance_type = "t2.micro"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -156,10 +185,11 @@ import 'launch_configuration_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetAmiArgs;
+/// import com.pulumi.aws.ec2.inputs.GetAmiFilterArgs;
 /// import com.pulumi.aws.ec2.LaunchConfiguration;
 /// import com.pulumi.aws.ec2.LaunchConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -221,12 +251,16 @@ import 'launch_configuration_state.dart';
 /// ```
 ///
 ///
-/// ## Import
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import launch configurations using the `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:ec2/launchConfiguration:LaunchConfiguration as_conf pulumi-lg-123456
+/// $ pulumi import aws:ec2/launchConfiguration:LaunchConfiguration example example
 /// ```
 class LaunchConfiguration extends pulumi.CustomResource {
   /// The Amazon Resource Name of the launch configuration.
@@ -253,7 +287,7 @@ class LaunchConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> keyName;
   /// The metadata options for the instance.
   late final pulumi.Output<LaunchConfigurationMetadataOptions> metadataOptions;
-  /// The name of the launch configuration. If you leave this blank, this provider will auto-generate a unique name. Conflicts with `name_prefix`.
+  /// The name of the launch configuration. If you leave this blank, this provider will auto-generate a unique name. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
@@ -267,9 +301,9 @@ class LaunchConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> securityGroups;
   /// The maximum price to use for reserving spot instances.
   late final pulumi.Output<String?> spotPrice;
-  /// The user data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see `user_data_base64` instead.
+  /// The user data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see `userDataBase64` instead.
   late final pulumi.Output<String?> userData;
-  /// Can be used instead of `user_data` to pass base64-encoded binary data directly. Use this instead of `user_data` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption.
+  /// Can be used instead of `userData` to pass base64-encoded binary data directly. Use this instead of `userData` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption.
   late final pulumi.Output<String?> userDataBase64;
 
   /// Creates a new [LaunchConfiguration].

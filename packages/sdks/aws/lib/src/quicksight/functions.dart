@@ -66,6 +66,19 @@ import 'get_theme_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_quicksight_getdataset" "example" {
+///   data_set_id = "example-id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +87,8 @@ import 'get_theme_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.quicksight.QuicksightFunctions;
 /// import com.pulumi.aws.quicksight.inputs.GetDataSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -173,6 +186,19 @@ Future<GetDataSetResult> getDataSet(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_quicksight_getquicksightanalysis" "example" {
+///   analysis_id = "example-id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -181,8 +207,8 @@ Future<GetDataSetResult> getDataSet(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.quicksight.QuicksightFunctions;
 /// import com.pulumi.aws.quicksight.inputs.GetQuicksightAnalysisArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -282,6 +308,19 @@ Future<GetQuicksightAnalysisResult> getQuicksightAnalysis(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_quicksight_getquicksightgroup" "example" {
+///   group_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -290,8 +329,8 @@ Future<GetQuicksightAnalysisResult> getQuicksightAnalysis(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.quicksight.QuicksightFunctions;
 /// import com.pulumi.aws.quicksight.inputs.GetQuicksightGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -391,6 +430,19 @@ Future<GetQuicksightGroupResult> getQuicksightGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_quicksight_getquicksightuser" "example" {
+///   user_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -399,8 +451,8 @@ Future<GetQuicksightGroupResult> getQuicksightGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.quicksight.QuicksightFunctions;
 /// import com.pulumi.aws.quicksight.inputs.GetQuicksightUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -498,6 +550,19 @@ Future<GetQuicksightUserResult> getQuicksightUser(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_quicksight_gettheme" "example" {
+///   theme_id = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -506,8 +571,8 @@ Future<GetQuicksightUserResult> getQuicksightUser(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.quicksight.QuicksightFunctions;
 /// import com.pulumi.aws.quicksight.inputs.GetThemeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

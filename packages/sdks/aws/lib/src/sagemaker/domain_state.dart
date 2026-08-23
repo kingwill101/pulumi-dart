@@ -16,13 +16,13 @@ class DomainState {
   final pulumi.Input<String>? arn;
   /// The mode of authentication that members use to access the domain. Valid values are `IAM` and `SSO`.
   final pulumi.Input<String>? authMode;
-  /// The default space settings. See `default_space_settings` Block below.
+  /// The default space settings. See `defaultSpaceSettings` Block below.
   final pulumi.Input<DomainDefaultSpaceSettings>? defaultSpaceSettings;
-  /// The default user settings. See `default_user_settings` Block below.
+  /// The default user settings. See `defaultUserSettings` Block below.
   final pulumi.Input<DomainDefaultUserSettings>? defaultUserSettings;
   /// The domain name.
   final pulumi.Input<String>? domainName;
-  /// The domain settings. See `domain_settings` Block below.
+  /// The domain settings. See `domainSettings` Block below.
   final pulumi.Input<DomainDomainSettings>? domainSettings;
   /// The ID of the Amazon Elastic File System (EFS) managed by this Domain.
   final pulumi.Input<String>? homeEfsFileSystemId;
@@ -30,7 +30,7 @@ class DomainState {
   final pulumi.Input<String>? kmsKeyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The retention policy for this domain, which specifies whether resources will be retained after the Domain is deleted. By default, all resources are retained. See `retention_policy` Block below.
+  /// The retention policy for this domain, which specifies whether resources will be retained after the Domain is deleted. By default, all resources are retained. See `retentionPolicy` Block below.
   final pulumi.Input<DomainRetentionPolicy>? retentionPolicy;
   /// The ID of the security group that authorizes traffic between the RSessionGateway apps and the RStudioServerPro app.
   final pulumi.Input<String>? securityGroupIdForDomainBoundary;
@@ -42,9 +42,9 @@ class DomainState {
   final pulumi.Input<List<String>>? subnetIds;
   /// Indicates whether custom tag propagation is supported for the domain. Defaults to `DISABLED`. Valid values are: `ENABLED` and `DISABLED`.
   final pulumi.Input<String>? tagPropagation;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The domain's URL.
   final pulumi.Input<String>? url;
@@ -58,21 +58,21 @@ class DomainState {
   /// [appSecurityGroupManagement] The entity that creates and manages the required security groups for inter-app communication in `VPCOnly` mode. Valid values are `Service` and `Customer`.
   /// [arn] The Amazon Resource Name (ARN) assigned by AWS to this Domain.
   /// [authMode] The mode of authentication that members use to access the domain. Valid values are `IAM` and `SSO`.
-  /// [defaultSpaceSettings] The default space settings. See `default_space_settings` Block below.
-  /// [defaultUserSettings] The default user settings. See `default_user_settings` Block below.
+  /// [defaultSpaceSettings] The default space settings. See `defaultSpaceSettings` Block below.
+  /// [defaultUserSettings] The default user settings. See `defaultUserSettings` Block below.
   /// [domainName] The domain name.
-  /// [domainSettings] The domain settings. See `domain_settings` Block below.
+  /// [domainSettings] The domain settings. See `domainSettings` Block below.
   /// [homeEfsFileSystemId] The ID of the Amazon Elastic File System (EFS) managed by this Domain.
   /// [kmsKeyId] The AWS KMS customer managed CMK used to encrypt the EFS volume attached to the domain.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [retentionPolicy] The retention policy for this domain, which specifies whether resources will be retained after the Domain is deleted. By default, all resources are retained. See `retention_policy` Block below.
+  /// [retentionPolicy] The retention policy for this domain, which specifies whether resources will be retained after the Domain is deleted. By default, all resources are retained. See `retentionPolicy` Block below.
   /// [securityGroupIdForDomainBoundary] The ID of the security group that authorizes traffic between the RSessionGateway apps and the RStudioServerPro app.
   /// [singleSignOnApplicationArn] The ARN of the application managed by SageMaker AI in IAM Identity Center. This value is only returned for domains created after September 19, 2023.
   /// [singleSignOnManagedApplicationInstanceId] The SSO managed application instance ID.
   /// [subnetIds] The VPC subnets that Studio uses for communication.
   /// [tagPropagation] Indicates whether custom tag propagation is supported for the domain. Defaults to `DISABLED`. Valid values are: `ENABLED` and `DISABLED`.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [url] The domain's URL.
   /// [vpcId] The ID of the Amazon Virtual Private Cloud (VPC) that Studio uses for communication.
   const DomainState({
@@ -151,4 +151,3 @@ class DomainState {
     );
   }
 }
-

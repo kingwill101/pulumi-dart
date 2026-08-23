@@ -9,7 +9,7 @@ class GetAvailabilityZonesResult {
   final List<String>? excludeNames;
   final List<String>? excludeZoneIds;
   final List<GetAvailabilityZonesFilter>? filters;
-  /// A set of the Availability Zone Group names. For Availability Zones, this is the same value as the Region name. For Local Zones, the name of the associated group, for example `us-west-2-lax-1`.
+  /// Set of the Availability Zone Group names. For Availability Zones, this is the same value as the Region name. For Local Zones, the name of the associated group, for example `us-west-2-lax-1`.
   final List<String> groupNames;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -25,7 +25,7 @@ class GetAvailabilityZonesResult {
   /// [excludeNames] Optional.
   /// [excludeZoneIds] Optional.
   /// [filters] Optional.
-  /// [groupNames] A set of the Availability Zone Group names. For Availability Zones, this is the same value as the Region name. For Local Zones, the name of the associated group, for example `us-west-2-lax-1`.
+  /// [groupNames] Set of the Availability Zone Group names. For Availability Zones, this is the same value as the Region name. For Local Zones, the name of the associated group, for example `us-west-2-lax-1`.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [names] List of the Availability Zone names available to the account.
   /// [region] Required.
@@ -74,4 +74,3 @@ class GetAvailabilityZonesResult {
     );
   }
 }
-

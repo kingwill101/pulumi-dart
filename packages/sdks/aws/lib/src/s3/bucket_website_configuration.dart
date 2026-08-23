@@ -11,7 +11,7 @@ import 'bucket_website_configuration_state.dart';
 ///
 /// ## Example Usage
 ///
-/// ### With `routing_rule` configured
+/// ### With `routingRule` configured
 ///
 ///
 /// ```typescript
@@ -130,6 +130,33 @@ import 'bucket_website_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketwebsiteconfiguration" "example" {
+///   bucket = exampleAwsS3Bucket.id
+///   index_document = {
+///     suffix = "index.html"
+///   }
+///   error_document = {
+///     key = "error.html"
+///   }
+///   routing_rules {
+///     condition = {
+///       key_prefix_equals = "docs/"
+///     }
+///     redirect = {
+///       replace_key_prefix_with = "documents/"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -143,8 +170,8 @@ import 'bucket_website_configuration_state.dart';
 /// import com.pulumi.aws.s3.inputs.BucketWebsiteConfigurationRoutingRuleArgs;
 /// import com.pulumi.aws.s3.inputs.BucketWebsiteConfigurationRoutingRuleConditionArgs;
 /// import com.pulumi.aws.s3.inputs.BucketWebsiteConfigurationRoutingRuleRedirectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -195,7 +222,7 @@ import 'bucket_website_configuration_state.dart';
 /// ```
 ///
 ///
-/// ### With `routing_rules` configured
+/// ### With `routingRules` configured
 ///
 ///
 /// ```typescript
@@ -310,6 +337,26 @@ import 'bucket_website_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketwebsiteconfiguration" "example" {
+///   bucket = exampleAwsS3Bucket.id
+///   index_document = {
+///     suffix = "index.html"
+///   }
+///   error_document = {
+///     key = "error.html"
+///   }
+///   routing_rule_details = "[{\n    \\\"Condition\\\": {\n        \\\"KeyPrefixEquals\\\": \\\"docs/\\\"\n    },\n    \\\"Redirect\\\": {\n        \\\"ReplaceKeyPrefixWith\\\": \\\"\\\"\n    }\n}]\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -320,8 +367,8 @@ import 'bucket_website_configuration_state.dart';
 /// import com.pulumi.aws.s3.BucketWebsiteConfigurationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketWebsiteConfigurationIndexDocumentArgs;
 /// import com.pulumi.aws.s3.inputs.BucketWebsiteConfigurationErrorDocumentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -388,14 +435,14 @@ import 'bucket_website_configuration_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expected_bucket_owner` separated by a comma (`,`):
+/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expectedBucketOwner` separated by a comma (`,`):
 ///
 ///
-/// **Using `pulumi import` to import** S3 bucket website configuration using the `bucket` or using the `bucket` and `expected_bucket_owner` separated by a comma (`,`). For example:
+/// **Using `pulumi import` to import** S3 bucket website configuration using the `bucket` or using the `bucket` and `expectedBucketOwner` separated by a comma (`,`). For example:
 ///
 /// If the owner (account ID) of the source bucket is the same account used to configure the AWS Provider, import using the `bucket`:
 ///
@@ -403,7 +450,7 @@ import 'bucket_website_configuration_state.dart';
 /// $ pulumi import aws:s3/bucketWebsiteConfiguration:BucketWebsiteConfiguration example bucket-name
 /// ```
 ///
-/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expected_bucket_owner` separated by a comma (`,`):
+/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expectedBucketOwner` separated by a comma (`,`):
 ///
 /// ```sh
 /// $ pulumi import aws:s3/bucketWebsiteConfiguration:BucketWebsiteConfiguration example bucket-name,123456789012
@@ -417,12 +464,11 @@ class BucketWebsiteConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String?> expectedBucketOwner;
   /// Name of the index document for the website. See below.
   late final pulumi.Output<BucketWebsiteConfigurationIndexDocument?> indexDocument;
-  /// Redirect behavior for every request to this bucket's website endpoint. See below. Conflicts with `error_document`, `index_document`, and `routing_rule`.
+  /// Redirect behavior for every request to this bucket's website endpoint. See below. Conflicts with `errorDocument`, `indexDocument`, and `routingRule`.
   late final pulumi.Output<BucketWebsiteConfigurationRedirectAllRequestsTo?> redirectAllRequestsTo;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// JSON array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html)
-  /// describing redirect behavior and when redirects are applied. Use this parameter when your routing rules contain empty String values (`""`) as seen in the example above.
+  /// JSON array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html) describing redirect behavior and when redirects are applied. Use this parameter when your routing rules contain empty String values (`""`) as seen in the example above.
   late final pulumi.Output<String> routingRuleDetails;
   /// List of rules that define when a redirect is applied and the redirect behavior. See below.
   late final pulumi.Output<List<Map<String, dynamic>>> routingRules;

@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryPortRange {
-  /// The beginning port number of the range.
+  /// Beginning port number of the range.
   final pulumi.Input<int>? from;
-  /// The ending port number of the range.
+  /// Ending port number of the range.
   final pulumi.Input<int>? to;
 
   /// Creates a new [PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryPortRange].
-  /// [from] The beginning port number of the range.
-  /// [to] The ending port number of the range.
+  /// [from] Beginning port number of the range.
+  /// [to] Ending port number of the range.
   const PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryPortRange({
     this.from,
     this.to,
@@ -30,4 +30,3 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
     );
   }
 }
-

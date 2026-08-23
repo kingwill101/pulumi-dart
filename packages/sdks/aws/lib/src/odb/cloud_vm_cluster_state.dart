@@ -7,154 +7,153 @@ import 'cloud_vm_cluster_timeouts.dart';
 
 /// Input properties used for looking up and filtering CloudVmCluster resources.
 class CloudVmClusterState {
-  /// The Amazon Resource Name (ARN) for the cloud vm cluster.
+  /// Amazon Resource Name (ARN) for the cloud vm cluster.
   final pulumi.Input<String>? arn;
-  /// The ARN of the Exadata infrastructure for this VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
+  /// ARN of the Exadata infrastructure for this VM cluster. Changing this will create a new resource. Either the combination of cloudExadataInfrastructureId and odbNetworkId or cloudExadataInfrastructureArn and odbNetworkArn must be used.
   final pulumi.Input<String>? cloudExadataInfrastructureArn;
-  /// The unique identifier of the Exadata infrastructure for this VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
+  /// Unique identifier of the Exadata infrastructure for this VM cluster. Changing this will create a new resource. Either the combination of cloudExadataInfrastructureId and odbNetworkId or cloudExadataInfrastructureArn and odbNetworkArn must be used.
   final pulumi.Input<String>? cloudExadataInfrastructureId;
-  /// The name of the Grid Infrastructure (GI) cluster. Changing this will create a new resource.
+  /// Name of the Grid Infrastructure (GI) cluster. Changing this will create a new resource.
   final pulumi.Input<String>? clusterName;
-  /// The compute model used when the instance is created or cloned — either ECPU or OCPU. ECPU is a virtualized compute unit; OCPU is a physical processor core with hyper-threading.
+  /// Compute model used when the instance is created or cloned — either ECPU or OCPU. ECPU is a virtualized compute unit; OCPU is a physical processor core with hyper-threading.
   final pulumi.Input<String>? computeModel;
-  /// The number of CPU cores to enable on the VM cluster. Changing this will create a new resource.
+  /// Number of CPU cores to enable on the VM cluster. Changing this will create a new resource.
   final pulumi.Input<int>? cpuCoreCount;
-  /// The timestamp when the VM cluster was created.
+  /// Timestamp when the VM cluster was created.
   final pulumi.Input<String>? createdAt;
-  /// The set of preferences for the various diagnostic collection options for the VM cluster.
+  /// Set of preferences for the various diagnostic collection options for the VM cluster. See `dataCollectionOptions` Block below. Changing this will create a new resource.
   final pulumi.Input<CloudVmClusterDataCollectionOptions>? dataCollectionOptions;
-  /// The size of the data disk group, in terabytes (TBs), to allocate for the VM cluster. Changing this will create a new resource.
-  ///
-  /// The following arguments are optional:
+  /// Size of the data disk group, in terabytes (TBs), to allocate for the VM cluster. Changing this will create a new resource.
   final pulumi.Input<double>? dataStorageSizeInTbs;
-  /// The amount of local node storage, in gigabytes (GBs), to allocate for the VM cluster. Changing this will create a new resource.
+  /// Amount of local node storage, in gigabytes (GBs), to allocate for the VM cluster. Changing this will create a new resource.
   final pulumi.Input<int>? dbNodeStorageSizeInGbs;
-  /// The list of database servers for the VM cluster. Changing this will create a new resource.
+  /// List of database servers for the VM cluster. Changing this will create a new resource.
   final pulumi.Input<List<String>>? dbServers;
-  /// The type of redundancy for the VM cluster: NORMAL (2-way) or HIGH (3-way).
-  /// * `AttrDomain` - The domain name associated with the VM cluster.
+  /// Type of redundancy for the VM cluster: NORMAL (2-way) or HIGH (3-way).
   final pulumi.Input<String>? diskRedundancy;
-  /// A user-friendly name for the VM cluster. Changing this will create a new resource.
+  /// User-friendly name for the VM cluster. Changing this will create a new resource.
   final pulumi.Input<String>? displayName;
-  /// The domain name associated with the VM cluster.
+  /// Domain name associated with the VM cluster.
   final pulumi.Input<String>? domain;
-  /// A valid software version of Oracle Grid Infrastructure (GI). To get the list of valid values, use the ListGiVersions operation and specify the shape of the Exadata infrastructure. Example: 19.0.0.0 Changing this will create a new resource.
+  /// Valid Oracle Grid Infrastructure (GI) software version. To get valid values, use the ListGiVersions operation for the Exadata infrastructure shape. Example: `19.0.0.0`. Changing this creates a new resource. Prefer to provide `odb:input_gi_version` tag. If `odb:input_gi_version` tag is provided, its value must exactly match `giVersion`, otherwise Terraform returns an error. See the `With GI Version Tag` example above.
   final pulumi.Input<String>? giVersion;
-  /// A complete software version of Oracle Grid Infrastructure (GI).
+  /// Complete software version of Oracle Grid Infrastructure (GI).
   final pulumi.Input<String>? giVersionComputed;
-  /// The host name prefix for the VM cluster. Constraints: - Can't be "localhost" or "hostname". - Can't contain "-version". - The maximum length of the combined hostname and domain is 63 characters. - The hostname must be unique within the subnet. Changing this will create a new resource.
+  /// Host name prefix for the VM cluster. Constraints: - Can't be "localhost" or "hostname". - Can't contain "-version". - Maximum length of the combined hostname and domain is 63 characters. - Hostname must be unique within the subnet. Changing this will create a new resource.
   final pulumi.Input<String>? hostnamePrefix;
-  /// The host name for the VM cluster. Constraints: - Can't be "localhost" or "hostname". - Can't contain "-version". - The maximum length of the combined hostname and domain is 63 characters. - The hostname must be unique within the subnet. This member is required. Changing this will create a new resource.
+  /// Host name for the VM cluster. Constraints: - Can't be "localhost" or "hostname". - Can't contain "-version". - Maximum length of the combined hostname and domain is 63 characters. - Hostname must be unique within the subnet.
   final pulumi.Input<String>? hostnamePrefixComputed;
-  /// The Exadata IORM (I/O Resource Manager) configuration cache details for the VM cluster.
+  /// Exadata IORM (I/O Resource Manager) configuration cache details for the VM cluster. See `iormConfigCache` Block below.
   final pulumi.Input<List<CloudVmClusterIormConfigCache>>? iormConfigCaches;
-  /// Specifies whether to enable database backups to local Exadata storage for the VM cluster. Changing this will create a new resource.
+  /// Whether to enable database backups to local Exadata storage for the VM cluster. Changing this will create a new resource.
   final pulumi.Input<bool>? isLocalBackupEnabled;
-  /// Specifies whether to create a sparse disk group for the VM cluster. Changing this will create a new resource.
+  /// Whether to create a sparse disk group for the VM cluster. Changing this will create a new resource.
   final pulumi.Input<bool>? isSparseDiskgroupEnabled;
-  /// The OCID of the most recent maintenance update history entry.
+  /// OCID of the most recent maintenance update history entry.
   final pulumi.Input<String>? lastUpdateHistoryEntryId;
-  /// The Oracle license model to apply to the VM cluster. Default: LICENSE_INCLUDED. Changing this will create a new resource.
+  /// Oracle license model to apply to the VM cluster. Default: LICENSE_INCLUDED. Changing this will create a new resource.
   final pulumi.Input<String>? licenseModel;
-  /// The listener port number configured on the VM cluster.
+  /// Listener port number configured on the VM cluster.
   final pulumi.Input<int>? listenerPort;
-  /// The amount of memory, in gigabytes (GBs), to allocate for the VM cluster. Changing this will create a new resource.
+  /// Amount of memory, in gigabytes (GBs), to allocate for the VM cluster. Changing this will create a new resource.
   final pulumi.Input<int>? memorySizeInGbs;
-  /// The total number of nodes in the VM cluster.
+  /// Total number of nodes in the VM cluster.
   final pulumi.Input<int>? nodeCount;
-  /// The name of the OCI resource anchor associated with the VM cluster.
+  /// Name of the OCI resource anchor associated with the VM cluster.
   final pulumi.Input<String>? ociResourceAnchorName;
-  /// The HTTPS link to the VM cluster resource in OCI.
+  /// HTTPS link to the VM cluster resource in OCI.
   final pulumi.Input<String>? ociUrl;
-  /// The OCID (Oracle Cloud Identifier) of the VM cluster.
+  /// OCID (Oracle Cloud Identifier) of the VM cluster.
   final pulumi.Input<String>? ocid;
-  /// The ARN of the ODB network for the VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
+  /// ARN of the ODB network for the VM cluster. Changing this will create a new resource. Either the combination of cloudExadataInfrastructureId and odbNetworkId or cloudExadataInfrastructureArn and odbNetworkArn must be used.
   final pulumi.Input<String>? odbNetworkArn;
-  /// The unique identifier of the ODB network for the VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
+  /// Unique identifier of the ODB network for the VM cluster. Changing this will create a new resource. Either the combination of cloudExadataInfrastructureId and odbNetworkId or cloudExadataInfrastructureArn and odbNetworkArn must be used.
   final pulumi.Input<String>? odbNetworkId;
-  /// The percentage of progress made on the current operation for the VM cluster.
+  /// Percentage of progress made on the current operation for the VM cluster.
   final pulumi.Input<double>? percentProgress;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The fully qualified domain name (FQDN) for the SCAN IP addresses associated with the VM cluster.
+  /// Fully qualified domain name (FQDN) for the SCAN IP addresses associated with the VM cluster.
   final pulumi.Input<String>? scanDnsName;
-  /// The OCID of the DNS record for the SCAN IPs linked to the VM cluster.
+  /// OCID of the DNS record for the SCAN IPs linked to the VM cluster.
   final pulumi.Input<String>? scanDnsRecordId;
-  /// The list of OCIDs for SCAN IP addresses associated with the VM cluster.
+  /// List of OCIDs for SCAN IP addresses associated with the VM cluster.
   final pulumi.Input<List<String>>? scanIpIds;
-  /// The port number for TCP connections to the single client access name (SCAN) listener. Valid values: 1024–8999, except 2484, 6100, 6200, 7060, 7070, 7085, and 7879. Default: 1521. Changing this will create a new resource.
+  /// Port number for TCP connections to the single client access name (SCAN) listener. Valid values: 1024–8999, except 2484, 6100, 6200, 7060, 7070, 7085, and 7879. Default: 1521. Changing this will create a new resource.
   final pulumi.Input<int>? scanListenerPortTcp;
-  /// The hardware model name of the Exadata infrastructure running the VM cluster.
+  /// Hardware model name of the Exadata infrastructure running the VM cluster.
   final pulumi.Input<String>? shape;
-  /// The public key portion of one or more key pairs used for SSH access to the VM cluster. Changing this will create a new resource.
+  /// Public key portion of one or more key pairs used for SSH access to the VM cluster. Changing this will create a new resource.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<List<String>>? sshPublicKeys;
-  /// The current lifecycle status of the VM cluster.
+  /// Current lifecycle status of the VM cluster.
   final pulumi.Input<String>? status;
   /// Additional information regarding the current status of the VM cluster.
   final pulumi.Input<String>? statusReason;
-  /// The local node storage allocated to the VM cluster, in gigabytes (GB).
+  /// Local node storage allocated to the VM cluster, in gigabytes (GB).
   final pulumi.Input<int>? storageSizeInGbs;
-  /// The operating system version of the image chosen for the VM cluster.
+  /// Operating system version of the image chosen for the VM cluster.
   final pulumi.Input<String>? systemVersion;
-  /// A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the exadata infrastructure. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// The combined set of user-defined and provider-defined tags.
+  /// Combined set of user-defined and provider-defined tags.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<CloudVmClusterTimeouts>? timeouts;
-  /// The configured time zone of the VM cluster. Changing this will create a new resource.
+  /// Configured time zone of the VM cluster. Changing this will create a new resource.
   final pulumi.Input<String>? timezone;
-  /// The virtual IP (VIP) addresses assigned to the VM cluster. CRS assigns one VIP per node for failover support.
+  /// Virtual IP (VIP) addresses assigned to the VM cluster. CRS assigns one VIP per node for failover support.
   final pulumi.Input<List<String>>? vipIds;
 
   /// Creates a new [CloudVmClusterState].
-  /// [arn] The Amazon Resource Name (ARN) for the cloud vm cluster.
-  /// [cloudExadataInfrastructureArn] The ARN of the Exadata infrastructure for this VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
-  /// [cloudExadataInfrastructureId] The unique identifier of the Exadata infrastructure for this VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
-  /// [clusterName] The name of the Grid Infrastructure (GI) cluster. Changing this will create a new resource.
-  /// [computeModel] The compute model used when the instance is created or cloned — either ECPU or OCPU. ECPU is a virtualized compute unit; OCPU is a physical processor core with hyper-threading.
-  /// [cpuCoreCount] The number of CPU cores to enable on the VM cluster. Changing this will create a new resource.
-  /// [createdAt] The timestamp when the VM cluster was created.
-  /// [dataCollectionOptions] The set of preferences for the various diagnostic collection options for the VM cluster.
-  /// [dataStorageSizeInTbs] The size of the data disk group, in terabytes (TBs), to allocate for the VM cluster. Changing this will create a new resource.
-  /// [dbNodeStorageSizeInGbs] The amount of local node storage, in gigabytes (GBs), to allocate for the VM cluster. Changing this will create a new resource.
-  /// [dbServers] The list of database servers for the VM cluster. Changing this will create a new resource.
-  /// [diskRedundancy] The type of redundancy for the VM cluster: NORMAL (2-way) or HIGH (3-way).
-  /// [displayName] A user-friendly name for the VM cluster. Changing this will create a new resource.
-  /// [domain] The domain name associated with the VM cluster.
-  /// [giVersion] A valid software version of Oracle Grid Infrastructure (GI). To get the list of valid values, use the ListGiVersions operation and specify the shape of the Exadata infrastructure. Example: 19.0.0.0 Changing this will create a new resource.
-  /// [giVersionComputed] A complete software version of Oracle Grid Infrastructure (GI).
-  /// [hostnamePrefix] The host name prefix for the VM cluster. Constraints: - Can't be "localhost" or "hostname". - Can't contain "-version". - The maximum length of the combined hostname and domain is 63 characters. - The hostname must be unique within the subnet. Changing this will create a new resource.
-  /// [hostnamePrefixComputed] The host name for the VM cluster. Constraints: - Can't be "localhost" or "hostname". - Can't contain "-version". - The maximum length of the combined hostname and domain is 63 characters. - The hostname must be unique within the subnet. This member is required. Changing this will create a new resource.
-  /// [iormConfigCaches] The Exadata IORM (I/O Resource Manager) configuration cache details for the VM cluster.
-  /// [isLocalBackupEnabled] Specifies whether to enable database backups to local Exadata storage for the VM cluster. Changing this will create a new resource.
-  /// [isSparseDiskgroupEnabled] Specifies whether to create a sparse disk group for the VM cluster. Changing this will create a new resource.
-  /// [lastUpdateHistoryEntryId] The OCID of the most recent maintenance update history entry.
-  /// [licenseModel] The Oracle license model to apply to the VM cluster. Default: LICENSE_INCLUDED. Changing this will create a new resource.
-  /// [listenerPort] The listener port number configured on the VM cluster.
-  /// [memorySizeInGbs] The amount of memory, in gigabytes (GBs), to allocate for the VM cluster. Changing this will create a new resource.
-  /// [nodeCount] The total number of nodes in the VM cluster.
-  /// [ociResourceAnchorName] The name of the OCI resource anchor associated with the VM cluster.
-  /// [ociUrl] The HTTPS link to the VM cluster resource in OCI.
-  /// [ocid] The OCID (Oracle Cloud Identifier) of the VM cluster.
-  /// [odbNetworkArn] The ARN of the ODB network for the VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
-  /// [odbNetworkId] The unique identifier of the ODB network for the VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
-  /// [percentProgress] The percentage of progress made on the current operation for the VM cluster.
+  /// [arn] Amazon Resource Name (ARN) for the cloud vm cluster.
+  /// [cloudExadataInfrastructureArn] ARN of the Exadata infrastructure for this VM cluster. Changing this will create a new resource. Either the combination of cloudExadataInfrastructureId and odbNetworkId or cloudExadataInfrastructureArn and odbNetworkArn must be used.
+  /// [cloudExadataInfrastructureId] Unique identifier of the Exadata infrastructure for this VM cluster. Changing this will create a new resource. Either the combination of cloudExadataInfrastructureId and odbNetworkId or cloudExadataInfrastructureArn and odbNetworkArn must be used.
+  /// [clusterName] Name of the Grid Infrastructure (GI) cluster. Changing this will create a new resource.
+  /// [computeModel] Compute model used when the instance is created or cloned — either ECPU or OCPU. ECPU is a virtualized compute unit; OCPU is a physical processor core with hyper-threading.
+  /// [cpuCoreCount] Number of CPU cores to enable on the VM cluster. Changing this will create a new resource.
+  /// [createdAt] Timestamp when the VM cluster was created.
+  /// [dataCollectionOptions] Set of preferences for the various diagnostic collection options for the VM cluster. See `dataCollectionOptions` Block below. Changing this will create a new resource.
+  /// [dataStorageSizeInTbs] Size of the data disk group, in terabytes (TBs), to allocate for the VM cluster. Changing this will create a new resource.
+  /// [dbNodeStorageSizeInGbs] Amount of local node storage, in gigabytes (GBs), to allocate for the VM cluster. Changing this will create a new resource.
+  /// [dbServers] List of database servers for the VM cluster. Changing this will create a new resource.
+  /// [diskRedundancy] Type of redundancy for the VM cluster: NORMAL (2-way) or HIGH (3-way).
+  /// [displayName] User-friendly name for the VM cluster. Changing this will create a new resource.
+  /// [domain] Domain name associated with the VM cluster.
+  /// [giVersion] Valid Oracle Grid Infrastructure (GI) software version. To get valid values, use the ListGiVersions operation for the Exadata infrastructure shape. Example: `19.0.0.0`. Changing this creates a new resource. Prefer to provide `odb:input_gi_version` tag. If `odb:input_gi_version` tag is provided, its value must exactly match `giVersion`, otherwise Terraform returns an error. See the `With GI Version Tag` example above.
+  /// [giVersionComputed] Complete software version of Oracle Grid Infrastructure (GI).
+  /// [hostnamePrefix] Host name prefix for the VM cluster. Constraints: - Can't be "localhost" or "hostname". - Can't contain "-version". - Maximum length of the combined hostname and domain is 63 characters. - Hostname must be unique within the subnet. Changing this will create a new resource.
+  /// [hostnamePrefixComputed] Host name for the VM cluster. Constraints: - Can't be "localhost" or "hostname". - Can't contain "-version". - Maximum length of the combined hostname and domain is 63 characters. - Hostname must be unique within the subnet.
+  /// [iormConfigCaches] Exadata IORM (I/O Resource Manager) configuration cache details for the VM cluster. See `iormConfigCache` Block below.
+  /// [isLocalBackupEnabled] Whether to enable database backups to local Exadata storage for the VM cluster. Changing this will create a new resource.
+  /// [isSparseDiskgroupEnabled] Whether to create a sparse disk group for the VM cluster. Changing this will create a new resource.
+  /// [lastUpdateHistoryEntryId] OCID of the most recent maintenance update history entry.
+  /// [licenseModel] Oracle license model to apply to the VM cluster. Default: LICENSE_INCLUDED. Changing this will create a new resource.
+  /// [listenerPort] Listener port number configured on the VM cluster.
+  /// [memorySizeInGbs] Amount of memory, in gigabytes (GBs), to allocate for the VM cluster. Changing this will create a new resource.
+  /// [nodeCount] Total number of nodes in the VM cluster.
+  /// [ociResourceAnchorName] Name of the OCI resource anchor associated with the VM cluster.
+  /// [ociUrl] HTTPS link to the VM cluster resource in OCI.
+  /// [ocid] OCID (Oracle Cloud Identifier) of the VM cluster.
+  /// [odbNetworkArn] ARN of the ODB network for the VM cluster. Changing this will create a new resource. Either the combination of cloudExadataInfrastructureId and odbNetworkId or cloudExadataInfrastructureArn and odbNetworkArn must be used.
+  /// [odbNetworkId] Unique identifier of the ODB network for the VM cluster. Changing this will create a new resource. Either the combination of cloudExadataInfrastructureId and odbNetworkId or cloudExadataInfrastructureArn and odbNetworkArn must be used.
+  /// [percentProgress] Percentage of progress made on the current operation for the VM cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [scanDnsName] The fully qualified domain name (FQDN) for the SCAN IP addresses associated with the VM cluster.
-  /// [scanDnsRecordId] The OCID of the DNS record for the SCAN IPs linked to the VM cluster.
-  /// [scanIpIds] The list of OCIDs for SCAN IP addresses associated with the VM cluster.
-  /// [scanListenerPortTcp] The port number for TCP connections to the single client access name (SCAN) listener. Valid values: 1024–8999, except 2484, 6100, 6200, 7060, 7070, 7085, and 7879. Default: 1521. Changing this will create a new resource.
-  /// [shape] The hardware model name of the Exadata infrastructure running the VM cluster.
-  /// [sshPublicKeys] The public key portion of one or more key pairs used for SSH access to the VM cluster. Changing this will create a new resource.
-  /// [status] The current lifecycle status of the VM cluster.
+  /// [scanDnsName] Fully qualified domain name (FQDN) for the SCAN IP addresses associated with the VM cluster.
+  /// [scanDnsRecordId] OCID of the DNS record for the SCAN IPs linked to the VM cluster.
+  /// [scanIpIds] List of OCIDs for SCAN IP addresses associated with the VM cluster.
+  /// [scanListenerPortTcp] Port number for TCP connections to the single client access name (SCAN) listener. Valid values: 1024–8999, except 2484, 6100, 6200, 7060, 7070, 7085, and 7879. Default: 1521. Changing this will create a new resource.
+  /// [shape] Hardware model name of the Exadata infrastructure running the VM cluster.
+  /// [sshPublicKeys] Public key portion of one or more key pairs used for SSH access to the VM cluster. Changing this will create a new resource.
+  /// [status] Current lifecycle status of the VM cluster.
   /// [statusReason] Additional information regarding the current status of the VM cluster.
-  /// [storageSizeInGbs] The local node storage allocated to the VM cluster, in gigabytes (GB).
-  /// [systemVersion] The operating system version of the image chosen for the VM cluster.
-  /// [tags] A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] The combined set of user-defined and provider-defined tags.
+  /// [storageSizeInGbs] Local node storage allocated to the VM cluster, in gigabytes (GB).
+  /// [systemVersion] Operating system version of the image chosen for the VM cluster.
+  /// [tags] Map of tags to assign to the exadata infrastructure. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Combined set of user-defined and provider-defined tags.
   /// [timeouts] Optional.
-  /// [timezone] The configured time zone of the VM cluster. Changing this will create a new resource.
-  /// [vipIds] The virtual IP (VIP) addresses assigned to the VM cluster. CRS assigns one VIP per node for failover support.
+  /// [timezone] Configured time zone of the VM cluster. Changing this will create a new resource.
+  /// [vipIds] Virtual IP (VIP) addresses assigned to the VM cluster. CRS assigns one VIP per node for failover support.
   const CloudVmClusterState({
     this.arn,
     this.cloudExadataInfrastructureArn,
@@ -312,4 +311,3 @@ class CloudVmClusterState {
     );
   }
 }
-

@@ -19,9 +19,9 @@ class HubState {
   final pulumi.Input<String>? region;
   /// The Amazon S3 storage configuration for the hub. See S3 Storage Config details below.
   final pulumi.Input<HubS3StorageConfig>? s3StorageConfig;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [HubState].
@@ -32,8 +32,8 @@ class HubState {
   /// [hubSearchKeywords] The searchable keywords for the hub.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [s3StorageConfig] The Amazon S3 storage configuration for the hub. See S3 Storage Config details below.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const HubState({
     this.arn,
     this.hubDescription,
@@ -74,4 +74,3 @@ class HubState {
     );
   }
 }
-

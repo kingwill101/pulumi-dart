@@ -17,7 +17,7 @@ class LbCertificateArgs {
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Set of domains that should be SANs in the issued certificate. `domain_name` attribute is automatically added as a Subject Alternative Name.
+  /// Set of domains that should be SANs in the issued certificate. `domainName` attribute is automatically added as a Subject Alternative Name.
   final pulumi.Input<List<String>>? subjectAlternativeNames;
 
   /// Creates a new [LbCertificateArgs].
@@ -25,7 +25,7 @@ class LbCertificateArgs {
   /// [lbName] Load balancer name where you want to create the SSL/TLS certificate.
   /// [name] SSL/TLS certificate name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [subjectAlternativeNames] Set of domains that should be SANs in the issued certificate. `domain_name` attribute is automatically added as a Subject Alternative Name.
+  /// [subjectAlternativeNames] Set of domains that should be SANs in the issued certificate. `domainName` attribute is automatically added as a Subject Alternative Name.
   const LbCertificateArgs({
     this.domainName,
     required this.lbName,
@@ -54,4 +54,3 @@ class LbCertificateArgs {
     );
   }
 }
-

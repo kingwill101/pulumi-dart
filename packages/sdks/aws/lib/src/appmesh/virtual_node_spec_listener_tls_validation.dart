@@ -5,14 +5,14 @@ import 'virtual_node_spec_listener_tls_validation_subject_alternative_names.dart
 import 'virtual_node_spec_listener_tls_validation_trust.dart';
 
 class VirtualNodeSpecListenerTlsValidation {
-  /// SANs for a TLS validation context.
+  /// SANs for a TLS validation context. See `spec.listener.tls.validation.subject_alternative_names` Block for details.
   final pulumi.Input<VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames>? subjectAlternativeNames;
-  /// TLS validation context trust.
+  /// TLS validation context trust. See `spec.listener.tls.validation.trust` Block for details.
   final pulumi.Input<VirtualNodeSpecListenerTlsValidationTrust> trust;
 
   /// Creates a new [VirtualNodeSpecListenerTlsValidation].
-  /// [subjectAlternativeNames] SANs for a TLS validation context.
-  /// [trust] TLS validation context trust.
+  /// [subjectAlternativeNames] SANs for a TLS validation context. See `spec.listener.tls.validation.subject_alternative_names` Block for details.
+  /// [trust] TLS validation context trust. See `spec.listener.tls.validation.trust` Block for details.
   const VirtualNodeSpecListenerTlsValidation({
     this.subjectAlternativeNames,
     required this.trust,
@@ -32,4 +32,3 @@ class VirtualNodeSpecListenerTlsValidation {
     );
   }
 }
-

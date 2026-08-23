@@ -6,14 +6,14 @@ class OpenZfsVolumeUserAndGroupQuota {
   /// The ID of the user or group. Valid values between `0` and `2147483647`
   final pulumi.Input<int> id;
   /// The amount of storage that the user or group can use in gibibytes (GiB). Valid values between `0` and `2147483647`
-  /// * `Type` - (Required) - A value that specifies whether the quota applies to a user or group. Valid values are `USER` or `GROUP`.
   final pulumi.Input<int> storageCapacityQuotaGib;
+  /// A value that specifies whether the quota applies to a user or group. Valid values are `USER` or `GROUP`.
   final pulumi.Input<String> type;
 
   /// Creates a new [OpenZfsVolumeUserAndGroupQuota].
   /// [id] The ID of the user or group. Valid values between `0` and `2147483647`
   /// [storageCapacityQuotaGib] The amount of storage that the user or group can use in gibibytes (GiB). Valid values between `0` and `2147483647`
-  /// [type] Required.
+  /// [type] A value that specifies whether the quota applies to a user or group. Valid values are `USER` or `GROUP`.
   const OpenZfsVolumeUserAndGroupQuota({
     required this.id,
     required this.storageCapacityQuotaGib,
@@ -36,4 +36,3 @@ class OpenZfsVolumeUserAndGroupQuota {
     );
   }
 }
-

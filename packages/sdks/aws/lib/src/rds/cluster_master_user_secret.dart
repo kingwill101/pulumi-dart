@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterMasterUserSecret {
-  /// ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
+  /// ARN for the KMS encryption key. When specifying `kmsKeyId`, `storageEncrypted` needs to be set to true.
   final pulumi.Input<String>? kmsKeyId;
   /// Amazon Resource Name (ARN) of the secret.
   final pulumi.Input<String>? secretArn;
@@ -11,7 +11,7 @@ class ClusterMasterUserSecret {
   final pulumi.Input<String>? secretStatus;
 
   /// Creates a new [ClusterMasterUserSecret].
-  /// [kmsKeyId] ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
+  /// [kmsKeyId] ARN for the KMS encryption key. When specifying `kmsKeyId`, `storageEncrypted` needs to be set to true.
   /// [secretArn] Amazon Resource Name (ARN) of the secret.
   /// [secretStatus] Status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
   const ClusterMasterUserSecret({
@@ -36,4 +36,3 @@ class ClusterMasterUserSecret {
     );
   }
 }
-

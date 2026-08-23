@@ -44,4 +44,3 @@ class BucketServerSideEncryptionConfigurationV2State {
     );
   }
 }
-

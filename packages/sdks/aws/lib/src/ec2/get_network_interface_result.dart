@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_network_interface_association.dart';
 import 'get_network_interface_attachment.dart';
+import 'get_network_interface_ena_srd_specification.dart';
 import 'get_network_interface_filter.dart';
 
 /// Result data returned by getNetworkInterface.
@@ -17,6 +18,8 @@ class GetNetworkInterfaceResult {
   final String availabilityZone;
   /// Description of the network interface.
   final String description;
+  /// ENA Express configuration for the network interface. See enaSrdSpecification below.
+  final List<GetNetworkInterfaceEnaSrdSpecification> enaSrdSpecifications;
   final List<GetNetworkInterfaceFilter>? filters;
   final String id;
   /// Type of interface.
@@ -53,6 +56,7 @@ class GetNetworkInterfaceResult {
   /// [attachments] Attachment of the ENI. See attachment below.
   /// [availabilityZone] Availability Zone.
   /// [description] Description of the network interface.
+  /// [enaSrdSpecifications] ENA Express configuration for the network interface. See enaSrdSpecification below.
   /// [filters] Optional.
   /// [id] Required.
   /// [interfaceType] Type of interface.
@@ -75,6 +79,7 @@ class GetNetworkInterfaceResult {
     required this.attachments,
     required this.availabilityZone,
     required this.description,
+    required this.enaSrdSpecifications,
     this.filters,
     required this.id,
     required this.interfaceType,
@@ -100,6 +105,7 @@ class GetNetworkInterfaceResult {
       'attachments': pulumi.Input.encodeList<GetNetworkInterfaceAttachment, Map<String, dynamic>>(attachments, (value) => value.toMap()),
       'availabilityZone': availabilityZone,
       'description': description,
+      'enaSrdSpecifications': pulumi.Input.encodeList<GetNetworkInterfaceEnaSrdSpecification, Map<String, dynamic>>(enaSrdSpecifications, (value) => value.toMap()),
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNetworkInterfaceFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'interfaceType': interfaceType,
@@ -126,6 +132,7 @@ class GetNetworkInterfaceResult {
       attachments: pulumi.Input.decodeList<GetNetworkInterfaceAttachment>(map['attachments']!, (value) => GetNetworkInterfaceAttachment.fromMap((value as Map).cast<String, dynamic>())),
       availabilityZone: map['availabilityZone'] as String,
       description: map['description'] as String,
+      enaSrdSpecifications: pulumi.Input.decodeList<GetNetworkInterfaceEnaSrdSpecification>(map['enaSrdSpecifications']!, (value) => GetNetworkInterfaceEnaSrdSpecification.fromMap((value as Map).cast<String, dynamic>())),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNetworkInterfaceFilter>(guardedValue, (value) => GetNetworkInterfaceFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
       interfaceType: map['interfaceType'] as String,
@@ -145,4 +152,3 @@ class GetNetworkInterfaceResult {
     );
   }
 }
-

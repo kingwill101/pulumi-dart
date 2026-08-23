@@ -16,7 +16,7 @@ import 'template_alias_state.dart';
 /// const example = new aws.quicksight.TemplateAlias("example", {
 ///     aliasName: "example-alias",
 ///     templateId: test.templateId,
-///     templateVersionNumber: test.versionNumber,
+///     templateVersionNumber: Number(test.versionNumber),
 /// });
 /// ```
 /// ```python
@@ -26,7 +26,7 @@ import 'template_alias_state.dart';
 /// example = aws.quicksight.TemplateAlias("example",
 ///     alias_name="example-alias",
 ///     template_id=test["templateId"],
-///     template_version_number=test["versionNumber"])
+///     template_version_number=int(test["versionNumber"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -67,6 +67,21 @@ import 'template_alias_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_templatealias" "example" {
+///   alias_name              = "example-alias"
+///   template_id             = test.templateId
+///   template_version_number = test.versionNumber
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'template_alias_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.quicksight.TemplateAlias;
 /// import com.pulumi.aws.quicksight.TemplateAliasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

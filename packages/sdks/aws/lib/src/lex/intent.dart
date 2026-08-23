@@ -408,6 +408,86 @@ import 'intent_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lex_intent" "order_flowers_intent" {
+///   confirmation_prompt = {
+///     max_attempts = 2
+///     messages = [{
+///       "content"     = "Okay, your {FlowerType} will be ready for pickup by {PickupTime} on {PickupDate}.  Does this sound okay?"
+///       "contentType" = "PlainText"
+///     }]
+///   }
+///   create_version = false
+///   name           = "OrderFlowers"
+///   description    = "Intent to order a bouquet of flowers for pick up"
+///   fulfillment_activity = {
+///     type = "ReturnIntent"
+///   }
+///   rejection_statement = {
+///     messages = [{
+///       "content"     = "Okay, I will not place your order."
+///       "contentType" = "PlainText"
+///     }]
+///   }
+///   sample_utterances = ["I would like to order some flowers", "I would like to pick up flowers"]
+///   slots {
+///     description       = "The type of flowers to pick up"
+///     name              = "FlowerType"
+///     priority          = 1
+///     sample_utterances = ["I would like to order {FlowerType}"]
+///     slot_constraint   = "Required"
+///     slot_type         = "FlowerTypes"
+///     slot_type_version = "$$LATEST"
+///     value_elicitation_prompt = {
+///       max_attempts = 2
+///       messages = [{
+///         "content"     = "What type of flowers would you like to order?"
+///         "contentType" = "PlainText"
+///       }]
+///     }
+///   }
+///   slots {
+///     description       = "The date to pick up the flowers"
+///     name              = "PickupDate"
+///     priority          = 2
+///     sample_utterances = ["I would like to order {FlowerType}"]
+///     slot_constraint   = "Required"
+///     slot_type         = "AMAZON.DATE"
+///     slot_type_version = "$$LATEST"
+///     value_elicitation_prompt = {
+///       max_attempts = 2
+///       messages = [{
+///         "content"     = "What day do you want the {FlowerType} to be picked up?"
+///         "contentType" = "PlainText"
+///       }]
+///     }
+///   }
+///   slots {
+///     description       = "The time to pick up the flowers"
+///     name              = "PickupTime"
+///     priority          = 3
+///     sample_utterances = ["I would like to order {FlowerType}"]
+///     slot_constraint   = "Required"
+///     slot_type         = "AMAZON.TIME"
+///     slot_type_version = "$$LATEST"
+///     value_elicitation_prompt = {
+///       max_attempts = 2
+///       messages = [{
+///         "content"     = "Pick up the {FlowerType} at what time on {PickupDate}?"
+///         "contentType" = "PlainText"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -417,12 +497,15 @@ import 'intent_state.dart';
 /// import com.pulumi.aws.lex.Intent;
 /// import com.pulumi.aws.lex.IntentArgs;
 /// import com.pulumi.aws.lex.inputs.IntentConfirmationPromptArgs;
+/// import com.pulumi.aws.lex.inputs.IntentConfirmationPromptMessageArgs;
 /// import com.pulumi.aws.lex.inputs.IntentFulfillmentActivityArgs;
 /// import com.pulumi.aws.lex.inputs.IntentRejectionStatementArgs;
+/// import com.pulumi.aws.lex.inputs.IntentRejectionStatementMessageArgs;
 /// import com.pulumi.aws.lex.inputs.IntentSlotArgs;
 /// import com.pulumi.aws.lex.inputs.IntentSlotValueElicitationPromptArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.lex.inputs.IntentSlotValueElicitationPromptMessageArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -592,12 +675,12 @@ class Intent extends pulumi.CustomResource {
   late final pulumi.Output<String> checksum;
   /// The statement that you want Amazon Lex to convey to the user
   /// after the intent is successfully fulfilled by the Lambda function. This element is relevant only if
-  /// you provide a Lambda function in the `fulfillment_activity`. If you return the intent to the client
-  /// application, you can't specify this element. The `follow_up_prompt` and `conclusion_statement` are
+  /// you provide a Lambda function in the `fulfillmentActivity`. If you return the intent to the client
+  /// application, you can't specify this element. The `followUpPrompt` and `conclusionStatement` are
   /// mutually exclusive. You can specify only one. Attributes are documented under statement.
   late final pulumi.Output<IntentConclusionStatement?> conclusionStatement;
   /// Prompts the user to confirm the intent. This question should
-  /// have a yes or no answer. You you must provide both the `rejection_statement` and `confirmation_prompt`,
+  /// have a yes or no answer. You you must provide both the `rejectionStatement` and `confirmationPrompt`,
   /// or neither. Attributes are documented under prompt.
   late final pulumi.Output<IntentConfirmationPrompt?> confirmationPrompt;
   /// Determines if a new slot type version is created when the initial
@@ -612,11 +695,11 @@ class Intent extends pulumi.CustomResource {
   late final pulumi.Output<IntentDialogCodeHook?> dialogCodeHook;
   /// Amazon Lex uses this prompt to solicit additional activity after
   /// fulfilling an intent. For example, after the OrderPizza intent is fulfilled, you might prompt the
-  /// user to order a drink. The `follow_up_prompt` field and the `conclusion_statement` field are mutually
+  /// user to order a drink. The `followUpPrompt` field and the `conclusionStatement` field are mutually
   /// exclusive. You can specify only one. Attributes are documented under follow_up_prompt.
   late final pulumi.Output<IntentFollowUpPrompt?> followUpPrompt;
   /// Describes how the intent is fulfilled. For example, after a
-  /// user provides all of the information for a pizza order, `fulfillment_activity` defines how the bot
+  /// user provides all of the information for a pizza order, `fulfillmentActivity` defines how the bot
   /// places an order with a local pizza store. Attributes are documented under fulfillment_activity.
   late final pulumi.Output<IntentFulfillmentActivity> fulfillmentActivity;
   /// The date when the $LATEST version of this intent was updated.
@@ -631,8 +714,8 @@ class Intent extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// When the user answers "no" to the question defined in
-  /// `confirmation_prompt`, Amazon Lex responds with this statement to acknowledge that the intent was
-  /// canceled. You must provide both the `rejection_statement` and the `confirmation_prompt`, or neither.
+  /// `confirmationPrompt`, Amazon Lex responds with this statement to acknowledge that the intent was
+  /// canceled. You must provide both the `rejectionStatement` and the `confirmationPrompt`, or neither.
   /// Attributes are documented under statement.
   late final pulumi.Output<IntentRejectionStatement?> rejectionStatement;
   /// An array of utterances (strings) that a user might say to signal

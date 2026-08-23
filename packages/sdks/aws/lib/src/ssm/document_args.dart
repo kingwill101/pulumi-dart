@@ -8,7 +8,7 @@ import 'document_attachments_source.dart';
 /// {@endtemplate}
 /// {@macro pulumi_ssm_document_document_args_doc}
 class DocumentArgs {
-  /// One or more configuration blocks describing attachments sources to a version of a document. See `attachments_source` block below for details.
+  /// One or more configuration blocks describing attachments sources to a version of a document. See `attachmentsSource` block below for details.
   final pulumi.Input<List<DocumentAttachmentsSource>>? attachmentsSources;
   /// The content for the SSM document in JSON or YAML format. The content of the document must not exceed 64KB. This quota also includes the content specified for input parameters at runtime. We recommend storing the contents for your new document in an external JSON or YAML file and referencing the file in a command.
   final pulumi.Input<String> content;
@@ -22,7 +22,7 @@ class DocumentArgs {
   final pulumi.Input<Map<String, String>>? permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the object. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the object. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The target type which defines the kinds of resources the document can run on. For example, `/AWS::EC2::Instance`. For a list of valid resource types, see [AWS resource and property types reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
   final pulumi.Input<String>? targetType;
@@ -30,14 +30,14 @@ class DocumentArgs {
   final pulumi.Input<String>? versionName;
 
   /// Creates a new [DocumentArgs].
-  /// [attachmentsSources] One or more configuration blocks describing attachments sources to a version of a document. See `attachments_source` block below for details.
+  /// [attachmentsSources] One or more configuration blocks describing attachments sources to a version of a document. See `attachmentsSource` block below for details.
   /// [content] The content for the SSM document in JSON or YAML format. The content of the document must not exceed 64KB. This quota also includes the content specified for input parameters at runtime. We recommend storing the contents for your new document in an external JSON or YAML file and referencing the file in a command.
   /// [documentFormat] The format of the document. Valid values: `JSON`, `TEXT`, `YAML`.
   /// [documentType] The type of the document. For a list of valid values, see the [API Reference](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_CreateDocument.html#systemsmanager-CreateDocument-request-DocumentType).
   /// [name] The name of the document.
   /// [permissions] Additional permissions to attach to the document. See Permissions below for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the object. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the object. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetType] The target type which defines the kinds of resources the document can run on. For example, `/AWS::EC2::Instance`. For a list of valid resource types, see [AWS resource and property types reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
   /// [versionName] The version of the artifact associated with the document. For example, `12.6`. This value is unique across all versions of a document, and can't be changed.
   const DocumentArgs({
@@ -83,4 +83,3 @@ class DocumentArgs {
     );
   }
 }
-

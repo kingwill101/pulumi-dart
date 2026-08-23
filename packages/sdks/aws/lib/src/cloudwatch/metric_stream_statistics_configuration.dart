@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metric_stream_statistics_configuration_include_metric.dart';
 
 class MetricStreamStatisticsConfiguration {
-  /// The additional statistics to stream for the metrics listed in `include_metrics`.
+  /// The additional statistics to stream for the metrics listed in `includeMetrics`.
   final pulumi.Input<List<String>> additionalStatistics;
   /// An array that defines the metrics that are to have additional statistics streamed. See details below.
   final pulumi.Input<List<MetricStreamStatisticsConfigurationIncludeMetric>> includeMetrics;
 
   /// Creates a new [MetricStreamStatisticsConfiguration].
-  /// [additionalStatistics] The additional statistics to stream for the metrics listed in `include_metrics`.
+  /// [additionalStatistics] The additional statistics to stream for the metrics listed in `includeMetrics`.
   /// [includeMetrics] An array that defines the metrics that are to have additional statistics streamed. See details below.
   const MetricStreamStatisticsConfiguration({
     required this.additionalStatistics,
@@ -31,4 +31,3 @@ class MetricStreamStatisticsConfiguration {
     );
   }
 }
-

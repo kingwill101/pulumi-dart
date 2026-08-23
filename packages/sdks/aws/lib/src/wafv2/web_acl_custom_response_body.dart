@@ -7,13 +7,13 @@ class WebAclCustomResponseBody {
   final pulumi.Input<String> content;
   /// Type of content in the payload that you are defining in the `content` argument. Valid values are `TEXT_PLAIN`, `TEXT_HTML`, or `APPLICATION_JSON`.
   final pulumi.Input<String> contentType;
-  /// Unique key identifying the custom response body. This is referenced by the `custom_response_body_key` argument in the `custom_response` block.
+  /// Unique key identifying the custom response body. This is referenced by the `customResponseBodyKey` argument in the `customResponse` block.
   final pulumi.Input<String> key;
 
   /// Creates a new [WebAclCustomResponseBody].
   /// [content] Payload of the custom response.
   /// [contentType] Type of content in the payload that you are defining in the `content` argument. Valid values are `TEXT_PLAIN`, `TEXT_HTML`, or `APPLICATION_JSON`.
-  /// [key] Unique key identifying the custom response body. This is referenced by the `custom_response_body_key` argument in the `custom_response` block.
+  /// [key] Unique key identifying the custom response body. This is referenced by the `customResponseBodyKey` argument in the `customResponse` block.
   const WebAclCustomResponseBody({
     required this.content,
     required this.contentType,
@@ -36,4 +36,3 @@ class WebAclCustomResponseBody {
     );
   }
 }
-

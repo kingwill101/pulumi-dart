@@ -155,8 +155,8 @@ import 'log_account_policy_state.dart';
 /// 					"DataIdentifier": []string{
 /// 						"arn:aws:dataprotection::aws:data-identifier/EmailAddress",
 /// 					},
-/// 					"Operation": map[string]interface{}{
-/// 						"Audit": map[string]interface{}{
+/// 					"Operation": map[string]map[string]map[string]interface{}{
+/// 						"Audit": map[string]map[string]interface{}{
 /// 							"FindingsDestination": map[string]interface{}{},
 /// 						},
 /// 					},
@@ -166,8 +166,8 @@ import 'log_account_policy_state.dart';
 /// 					"DataIdentifier": []string{
 /// 						"arn:aws:dataprotection::aws:data-identifier/EmailAddress",
 /// 					},
-/// 					"Operation": map[string]interface{}{
-/// 						"Deidentify": map[string]interface{}{
+/// 					"Operation": map[string]map[string]map[string]interface{}{
+/// 						"Deidentify": map[string]map[string]interface{}{
 /// 							"MaskConfig": map[string]interface{}{},
 /// 						},
 /// 					},
@@ -190,6 +190,41 @@ import 'log_account_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_logaccountpolicy" "data_protection" {
+///   policy_name = "data-protection"
+///   policy_type = "DATA_PROTECTION_POLICY"
+///   policy_document = jsonencode({
+///     "Name"    = "DataProtection"
+///     "Version" = "2021-06-01"
+///     "Statement" = [{
+///       "Sid"            = "Audit"
+///       "DataIdentifier" = ["arn:aws:dataprotection::aws:data-identifier/EmailAddress"]
+///       "Operation" = {
+///         "Audit" = {
+///           "FindingsDestination" = {}
+///         }
+///       }
+///       }, {
+///       "Sid"            = "Redact"
+///       "DataIdentifier" = ["arn:aws:dataprotection::aws:data-identifier/EmailAddress"]
+///       "Operation" = {
+///         "Deidentify" = {
+///           "MaskConfig" = {}
+///         }
+///       }
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -199,8 +234,8 @@ import 'log_account_policy_state.dart';
 /// import com.pulumi.aws.cloudwatch.LogAccountPolicy;
 /// import com.pulumi.aws.cloudwatch.LogAccountPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -364,6 +399,25 @@ import 'log_account_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_logaccountpolicy" "subscription_filter" {
+///   policy_name = "subscription-filter"
+///   policy_type = "SUBSCRIPTION_FILTER_POLICY"
+///   policy_document = jsonencode({
+///     "DestinationArn" = test.arn
+///     "FilterPattern"  = "test"
+///   })
+///   selection_criteria = "LogGroupName NOT IN [\"excluded_log_group_name\"]"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -373,8 +427,8 @@ import 'log_account_policy_state.dart';
 /// import com.pulumi.aws.cloudwatch.LogAccountPolicy;
 /// import com.pulumi.aws.cloudwatch.LogAccountPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -486,7 +540,7 @@ import 'log_account_policy_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string][]string{
 /// 			"Fields": []string{
 /// 				"field1",
 /// 				"field2",
@@ -508,6 +562,23 @@ import 'log_account_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_logaccountpolicy" "field_index" {
+///   policy_name = "field-index"
+///   policy_type = "FIELD_INDEX_POLICY"
+///   policy_document = jsonencode({
+///     "Fields" = ["field1", "field2"]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -517,8 +588,8 @@ import 'log_account_policy_state.dart';
 /// import com.pulumi.aws.cloudwatch.LogAccountPolicy;
 /// import com.pulumi.aws.cloudwatch.LogAccountPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -563,7 +634,20 @@ import 'log_account_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import this resource using the `policy_name` and `policy_type` separated by `:`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `policyName` (String) Name of the account policy.
+/// * `policyType` (String) Type of account policy.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Account Policies using `policyName` and `policyType` separated by a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudwatch/logAccountPolicy:LogAccountPolicy example "my-account-policy:SUBSCRIPTION_FILTER_POLICY"

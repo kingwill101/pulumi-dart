@@ -5,7 +5,7 @@ import 'link_state.dart';
 
 /// Resource for managing an AWS CloudWatch Observability Access Manager Link.
 ///
-/// &gt; **NOTE:** Creating an `aws.oam.Link` may sometimes fail if the `aws.oam.SinkPolicy` for the attached `aws.oam.Sink` is not created before the `aws.oam.Link`. To prevent this, declare an explicit dependency using a `depends_on` meta-argument.
+/// &gt; **NOTE:** Creating an `aws.oam.Link` may sometimes fail if the `aws.oam.SinkPolicy` for the attached `aws.oam.Sink` is not created before the `aws.oam.Link`. To prevent this, declare an explicit dependency using a `dependsOn` meta-argument.
 ///
 /// ## Example Usage
 ///
@@ -120,6 +120,30 @@ import 'link_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_oam_link" "example" {
+///   depends_on      = [aws_oam_sinkpolicy.example]
+///   label_template  = "$AccountName"
+///   resource_types  = ["AWS::CloudWatch::Metric"]
+///   sink_identifier = aws_oam_sink.example.arn
+///   tags = {
+///     "Env" = "prod"
+///   }
+/// }
+/// resource "aws_oam_sink" "example" {
+/// }
+/// resource "aws_oam_sinkpolicy" "example" {
+///   sink_identifier = aws_oam_sink.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -132,8 +156,8 @@ import 'link_state.dart';
 /// import com.pulumi.aws.oam.Link;
 /// import com.pulumi.aws.oam.LinkArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -287,6 +311,27 @@ import 'link_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_oam_link" "example" {
+///   depends_on     = [exampleAwsOamSinkPolicy]
+///   label_template = "$AccountName"
+///   link_configuration = {
+///     log_group_configuration = {
+///       filter = "LogGroupName LIKE 'aws/lambda/%' OR LogGroupName LIKE 'AWSLogs%'"
+///     }
+///   }
+///   resource_types  = ["AWS::Logs::LogGroup"]
+///   sink_identifier = exampleAwsOamSink.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -298,8 +343,8 @@ import 'link_state.dart';
 /// import com.pulumi.aws.oam.inputs.LinkLinkConfigurationArgs;
 /// import com.pulumi.aws.oam.inputs.LinkLinkConfigurationLogGroupConfigurationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -444,6 +489,27 @@ import 'link_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_oam_link" "example" {
+///   depends_on     = [exampleAwsOamSinkPolicy]
+///   label_template = "$AccountName"
+///   link_configuration = {
+///     metric_configuration = {
+///       filter = "Namespace IN ('AWS/EC2', 'AWS/ELB', 'AWS/S3')"
+///     }
+///   }
+///   resource_types  = ["AWS::CloudWatch::Metric"]
+///   sink_identifier = exampleAwsOamSink.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -455,8 +521,8 @@ import 'link_state.dart';
 /// import com.pulumi.aws.oam.inputs.LinkLinkConfigurationArgs;
 /// import com.pulumi.aws.oam.inputs.LinkLinkConfigurationMetricConfigurationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -516,7 +582,7 @@ class Link extends pulumi.CustomResource {
   late final pulumi.Output<String> label;
   /// Human-readable name to use to identify this source account when you are viewing data from it in the monitoring account.
   late final pulumi.Output<String> labelTemplate;
-  /// Configuration for creating filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account. See `link_configuration` Block for details.
+  /// Configuration for creating filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account. See `linkConfiguration` Block for details.
   late final pulumi.Output<LinkLinkConfiguration?> linkConfiguration;
   /// ID string that AWS generated as part of the link ARN.
   late final pulumi.Output<String> linkId;
@@ -530,7 +596,7 @@ class Link extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> sinkIdentifier;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
 

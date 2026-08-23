@@ -8,13 +8,13 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledg
   final pulumi.Input<String> bedrockKnowledgeBaseArn;
   /// Whether to return exact responses from the knowledge base. Defaults to `false`.
   final pulumi.Input<bool>? exactResponse;
-  /// Configuration block for exact response fields. See `exact_response_fields`.
+  /// Configuration block for exact response fields. See `exactResponseFields`.
   final pulumi.Input<V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields>? exactResponseFields;
 
   /// Creates a new [V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfiguration].
   /// [bedrockKnowledgeBaseArn] ARN of the Bedrock Knowledge Base.
   /// [exactResponse] Whether to return exact responses from the knowledge base. Defaults to `false`.
-  /// [exactResponseFields] Configuration block for exact response fields. See `exact_response_fields`.
+  /// [exactResponseFields] Configuration block for exact response fields. See `exactResponseFields`.
   const V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfiguration({
     required this.bedrockKnowledgeBaseArn,
     this.exactResponse,
@@ -37,4 +37,3 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledg
     );
   }
 }
-

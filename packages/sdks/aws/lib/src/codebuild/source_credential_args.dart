@@ -16,7 +16,7 @@ class SourceCredentialArgs {
   /// The source provider used for this project.
   final pulumi.Input<String> serverType;
   /// For a GitHub and GitHub Enterprise, this is the personal access token. For Bitbucket, this is the
-  /// app password. When using an AWS CodeStar connection (`auth_type = "CODECONNECTIONS")`, this is an AWS CodeStar
+  /// app password. When using an AWS CodeStar connection (`authType = "CODECONNECTIONS")`, this is an AWS CodeStar
   /// Connection ARN.
   final pulumi.Input<String> token;
   /// The Bitbucket username when the authType is `BASIC_AUTH`. This parameter is not valid for
@@ -57,4 +57,3 @@ class SourceCredentialArgs {
     );
   }
 }
-

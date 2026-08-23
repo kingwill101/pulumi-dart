@@ -151,6 +151,33 @@ import 'resolver_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_resolverendpoint" "foo" {
+///   name                   = "foo"
+///   direction              = "INBOUND"
+///   resolver_endpoint_type = "IPV4"
+///   security_group_ids     = [sg1.id, sg2.id]
+///   ip_addresses {
+///     subnet_id = sn1.id
+///   }
+///   ip_addresses {
+///     subnet_id = sn2.id
+///     ip        = "10.0.64.4"
+///   }
+///   protocols = ["Do53", "DoH"]
+///   tags = {
+///     "Environment" = "Prod"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -160,8 +187,8 @@ import 'resolver_endpoint_state.dart';
 /// import com.pulumi.aws.route53.ResolverEndpoint;
 /// import com.pulumi.aws.route53.ResolverEndpointArgs;
 /// import com.pulumi.aws.route53.inputs.ResolverEndpointIpAddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -252,9 +279,9 @@ class ResolverEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<bool> rniEnhancedMetricsEnabled;
   /// ID of one or more security groups that you want to use to control access to this VPC.
   late final pulumi.Output<List<String>> securityGroupIds;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Boolean indicating whether target name server metrics are enabled for the outbound Resolver endpoints. Defaults to `false`. This argument is supported only for outbound endpoints. Once set, changing the value back to `false` requires explicitly specifying `false` rather than removing the argument.
   late final pulumi.Output<bool> targetNameServerMetricsEnabled;

@@ -24,9 +24,9 @@ class ReplicationInstanceArgs {
   final pulumi.Input<String>? engineVersion;
   /// Configuration block for settings required for Kerberos authentication. See below.
   final pulumi.Input<ReplicationInstanceKerberosAuthenticationSettings>? kerberosAuthenticationSettings;
-  /// The Amazon Resource Name (ARN) for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kms_key_arn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
+  /// The Amazon Resource Name (ARN) for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kmsKeyArn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
   final pulumi.Input<String>? kmsKeyArn;
-  /// Specifies if the replication instance is a multi-az deployment. You cannot set the `availability_zone` parameter if the `multi_az` parameter is set to `true`.
+  /// Specifies if the replication instance is a multi-az deployment. You cannot set the `availabilityZone` parameter if the `multiAz` parameter is set to `true`.
   final pulumi.Input<bool>? multiAz;
   /// The type of IP address protocol used by a replication instance. Valid values: `IPV4`, `DUAL`.
   final pulumi.Input<String>? networkType;
@@ -42,7 +42,7 @@ class ReplicationInstanceArgs {
   final pulumi.Input<String> replicationInstanceId;
   /// A subnet group to associate with the replication instance.
   final pulumi.Input<String>? replicationSubnetGroupId;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// A list of VPC security group IDs to be used with the replication instance. The VPC security groups must work with the VPC containing the replication instance.
   final pulumi.Input<List<String>>? vpcSecurityGroupIds;
@@ -56,8 +56,8 @@ class ReplicationInstanceArgs {
   /// [dnsNameServers] A list of custom DNS name servers supported for the replication instance to access your on-premise source or target database. This list overrides the default name servers supported by the replication instance. You can specify a comma-separated list of internet addresses for up to four on-premise DNS name servers.
   /// [engineVersion] The engine version number of the replication instance.
   /// [kerberosAuthenticationSettings] Configuration block for settings required for Kerberos authentication. See below.
-  /// [kmsKeyArn] The Amazon Resource Name (ARN) for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kms_key_arn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
-  /// [multiAz] Specifies if the replication instance is a multi-az deployment. You cannot set the `availability_zone` parameter if the `multi_az` parameter is set to `true`.
+  /// [kmsKeyArn] The Amazon Resource Name (ARN) for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kmsKeyArn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
+  /// [multiAz] Specifies if the replication instance is a multi-az deployment. You cannot set the `availabilityZone` parameter if the `multiAz` parameter is set to `true`.
   /// [networkType] The type of IP address protocol used by a replication instance. Valid values: `IPV4`, `DUAL`.
   /// [preferredMaintenanceWindow] The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).
   /// [publiclyAccessible] Specifies the accessibility options for the replication instance. A value of true represents an instance with a public IP address. A value of false represents an instance with a private IP address.
@@ -65,7 +65,7 @@ class ReplicationInstanceArgs {
   /// [replicationInstanceClass] The compute and memory capacity of the replication instance as specified by the replication instance class. See [AWS DMS User Guide](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReplicationInstance.Types.html) for available instance sizes and advice on which one to choose.
   /// [replicationInstanceId] The replication instance identifier. This parameter is stored as a lowercase string.
   /// [replicationSubnetGroupId] A subnet group to associate with the replication instance.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcSecurityGroupIds] A list of VPC security group IDs to be used with the replication instance. The VPC security groups must work with the VPC containing the replication instance.
   const ReplicationInstanceArgs({
     this.allocatedStorage,
@@ -137,4 +137,3 @@ class ReplicationInstanceArgs {
     );
   }
 }
-

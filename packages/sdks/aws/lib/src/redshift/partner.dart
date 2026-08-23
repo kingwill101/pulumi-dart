@@ -69,6 +69,22 @@ import 'partner_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshift_partner" "example" {
+///   cluster_identifier = exampleAwsRedshiftCluster.id
+///   account_id         = 1234567910
+///   database_name      = exampleAwsRedshiftCluster.databaseName
+///   partner_name       = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +93,8 @@ import 'partner_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshift.Partner;
 /// import com.pulumi.aws.redshift.PartnerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

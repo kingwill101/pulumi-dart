@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainRuleBasedMatchingMatchingRule {
-  /// A single rule level of the `match_rules`. Configures how the rule-based matching process should match profiles.
+  /// A single rule level of the `matchRules`. Configures how the rule-based matching process should match profiles.
   final pulumi.Input<List<String>> rules;
 
   /// Creates a new [DomainRuleBasedMatchingMatchingRule].
-  /// [rules] A single rule level of the `match_rules`. Configures how the rule-based matching process should match profiles.
+  /// [rules] A single rule level of the `matchRules`. Configures how the rule-based matching process should match profiles.
   const DomainRuleBasedMatchingMatchingRule({
     required this.rules,
   });
@@ -24,4 +24,3 @@ class DomainRuleBasedMatchingMatchingRule {
     );
   }
 }
-

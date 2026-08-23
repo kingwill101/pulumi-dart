@@ -3,26 +3,26 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReportPlanReportSetting {
-  /// (Optional) Specifies the list of accounts a report covers.
+  /// List of accounts a report covers.
   final pulumi.Input<List<String>> accounts;
   /// ARNs of the frameworks a report covers.
   final pulumi.Input<List<String>> frameworkArns;
-  /// Specifies the number of frameworks a report covers.
+  /// Number of frameworks a report covers.
   final pulumi.Input<int> numberOfFrameworks;
-  /// (Optional) Specifies the list of Organizational Units a report covers.
+  /// List of Organizational Units a report covers.
   final pulumi.Input<List<String>> organizationUnits;
-  /// (Optional) Specifies the list of regions a report covers.
+  /// List of regions a report covers.
   final pulumi.Input<List<String>> regions;
-  /// Identifies the report template for the report. Reports are built using a report template.
+  /// Report template for the report. Reports are built using a report template.
   final pulumi.Input<String> reportTemplate;
 
   /// Creates a new [GetReportPlanReportSetting].
-  /// [accounts] (Optional) Specifies the list of accounts a report covers.
+  /// [accounts] List of accounts a report covers.
   /// [frameworkArns] ARNs of the frameworks a report covers.
-  /// [numberOfFrameworks] Specifies the number of frameworks a report covers.
-  /// [organizationUnits] (Optional) Specifies the list of Organizational Units a report covers.
-  /// [regions] (Optional) Specifies the list of regions a report covers.
-  /// [reportTemplate] Identifies the report template for the report. Reports are built using a report template.
+  /// [numberOfFrameworks] Number of frameworks a report covers.
+  /// [organizationUnits] List of Organizational Units a report covers.
+  /// [regions] List of regions a report covers.
+  /// [reportTemplate] Report template for the report. Reports are built using a report template.
   const GetReportPlanReportSetting({
     required this.accounts,
     required this.frameworkArns,
@@ -54,4 +54,3 @@ class GetReportPlanReportSetting {
     );
   }
 }
-

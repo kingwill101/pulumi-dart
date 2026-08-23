@@ -12,7 +12,7 @@ class ReplicationSetArgs {
   final pulumi.Input<List<ReplicationSetRegion>>? region;
   /// The replication set's Regions.
   final pulumi.Input<List<ReplicationSetRegion>>? regions;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For information about the maximum allowed number of Regions and tag value constraints, see [CreateReplicationSet in the *AWS Systems Manager Incident Manager API Reference*](https://docs.aws.amazon.com/incident-manager/latest/APIReference/API_CreateReplicationSet.html).
   ///
@@ -30,7 +30,7 @@ class ReplicationSetArgs {
   /// Creates a new [ReplicationSetArgs].
   /// [region] The replication set's Regions. Use `regions` instead.
   /// [regions] The replication set's Regions.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ReplicationSetArgs({
     this.region,
     this.regions,
@@ -53,4 +53,3 @@ class ReplicationSetArgs {
     );
   }
 }
-

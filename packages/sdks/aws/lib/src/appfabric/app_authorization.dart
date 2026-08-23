@@ -118,6 +118,30 @@ import 'app_authorization_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appfabric_appauthorization" "example" {
+///   app            = "TERRAFORMCLOUD"
+///   app_bundle_arn = arn
+///   auth_type      = "apiKey"
+///   credential = {
+///     api_key_credentials = [{
+///       "apiKey" = "exampleapikeytoken"
+///     }]
+///   }
+///   tenants {
+///     tenant_display_name = "example"
+///     tenant_identifier   = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,9 +151,10 @@ import 'app_authorization_timeouts.dart';
 /// import com.pulumi.aws.appfabric.AppAuthorization;
 /// import com.pulumi.aws.appfabric.AppAuthorizationArgs;
 /// import com.pulumi.aws.appfabric.inputs.AppAuthorizationCredentialArgs;
+/// import com.pulumi.aws.appfabric.inputs.AppAuthorizationCredentialApiKeyCredentialArgs;
 /// import com.pulumi.aws.appfabric.inputs.AppAuthorizationTenantArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -175,29 +200,34 @@ import 'app_authorization_timeouts.dart';
 ///           tenantIdentifier: example
 /// ```
 class AppAuthorization extends pulumi.CustomResource {
-  /// The name of the application for valid values see https://docs.aws.amazon.com/appfabric/latest/api/API_CreateAppAuthorization.html.
+  /// Name of the application. For valid values, see the [CreateAppAuthorization API reference](https://docs.aws.amazon.com/appfabric/latest/api/API_CreateAppAuthorization.html).
   late final pulumi.Output<String> app;
-  /// The Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// Amazon Resource Name (ARN) of the app bundle to use for the request.
   late final pulumi.Output<String> appBundleArn;
-  /// ARN of the App Authorization. Do not begin the description with "An", "The", "Defines", "Indicates", or "Specifies," as these are verbose. In other words, "Indicates the amount of storage," can be rewritten as "Amount of storage," without losing any information.
+  /// ARN of the App Authorization.
   late final pulumi.Output<String> arn;
-  /// The authorization type for the app authorization valid values are oauth2 and apiKey.
+  /// Authorization type for the app authorization. Valid values are `oauth2` and `apiKey`.
   late final pulumi.Output<String> authType;
-  /// The application URL for the OAuth flow.
+  /// Application URL for the OAuth flow.
   late final pulumi.Output<String> authUrl;
+  /// Timestamp of when the app authorization was created.
   late final pulumi.Output<String> createdAt;
-  /// Contains credentials for the application, such as an API key or OAuth2 client ID and secret.
-  /// Specify credentials that match the authorization type for your request. For example, if the authorization type for your request is OAuth2 (oauth2), then you should provide only the OAuth2 credentials.
+  /// Credentials for the application, such as an API key or OAuth2 client ID and secret. Specify credentials that match the authorization type for your request. For example, if the authorization type for your request is OAuth2 (`oauth2`), then you should provide only the OAuth2 credentials. See `credential` Block for details.
   late final pulumi.Output<AppAuthorizationCredential> credential;
-  /// The user persona of the app authorization.
+  /// User persona of the app authorization.
   late final pulumi.Output<String> persona;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Contains information about an application tenant, such as the application display name and identifier.
+  /// Information about an application tenant, such as the application display name and identifier. See `tenant` Block for details.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<List<Map<String, dynamic>>> tenants;
   late final pulumi.Output<AppAuthorizationTimeouts?> timeouts;
+  /// Timestamp of when the app authorization was last updated.
   late final pulumi.Output<String> updatedAt;
 
   /// Creates a new [AppAuthorization].

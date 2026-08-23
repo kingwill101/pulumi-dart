@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InventorySchedule {
-  /// Specifies how frequently inventory results are produced. Valid values: `Daily`, `Weekly`.
+  /// How frequently inventory results are produced. Valid values: `Daily`, `Weekly`.
   final pulumi.Input<String> frequency;
 
   /// Creates a new [InventorySchedule].
-  /// [frequency] Specifies how frequently inventory results are produced. Valid values: `Daily`, `Weekly`.
+  /// [frequency] How frequently inventory results are produced. Valid values: `Daily`, `Weekly`.
   const InventorySchedule({
     required this.frequency,
   });
@@ -24,4 +24,3 @@ class InventorySchedule {
     );
   }
 }
-

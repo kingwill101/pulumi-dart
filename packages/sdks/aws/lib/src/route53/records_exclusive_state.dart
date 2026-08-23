@@ -7,7 +7,7 @@ import 'records_exclusive_timeouts.dart';
 /// Input properties used for looking up and filtering RecordsExclusive resources.
 class RecordsExclusiveState {
   /// A list of all resource record sets associated with the hosted zone.
-  /// See `resource_record_set` below.
+  /// See `resourceRecordSet` below.
   final pulumi.Input<List<RecordsExclusiveResourceRecordSet>>? resourceRecordSets;
   final pulumi.Input<RecordsExclusiveTimeouts>? timeouts;
   /// ID of the hosted zone containing the resource record sets.
@@ -41,4 +41,3 @@ class RecordsExclusiveState {
     );
   }
 }
-

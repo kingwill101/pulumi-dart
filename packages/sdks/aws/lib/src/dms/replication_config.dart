@@ -5,7 +5,7 @@ import 'replication_config_state.dart';
 
 /// Provides a DMS Serverless replication config resource.
 ///
-/// &gt; **NOTE:** Changing most arguments will stop the replication if it is running. You can set `start_replication` to resume the replication afterwards.
+/// &gt; **NOTE:** Changing most arguments will stop the replication if it is running. You can set `startReplication` to resume the replication afterwards.
 ///
 /// ## Example Usage
 ///
@@ -118,6 +118,31 @@ import 'replication_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dms_replicationconfig" "name" {
+///   replication_config_identifier = "test-dms-serverless-replication-tf"
+///   resource_identifier           = "test-dms-serverless-replication-tf"
+///   replication_type              = "cdc"
+///   source_endpoint_arn           = source.endpointArn
+///   target_endpoint_arn           = target.endpointArn
+///   table_mappings                = "  {\n    \\\"rules\\\":[{\\\"rule-type\\\":\\\"selection\\\",\\\"rule-id\\\":\\\"1\\\",\\\"rule-name\\\":\\\"1\\\",\\\"rule-action\\\":\\\"include\\\",\\\"object-locator\\\":{\\\"schema-name\\\":\\\"%%\\\",\\\"table-name\\\":\\\"%%\\\"}}]\n  }\n"
+///   start_replication             = true
+///   compute_config = {
+///     replication_subnet_group_id  = default.replicationSubnetGroupId
+///     max_capacity_units           = "64"
+///     min_capacity_units           = "2"
+///     preferred_maintenance_window = "sun:23:45-mon:00:30"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +152,8 @@ import 'replication_config_state.dart';
 /// import com.pulumi.aws.dms.ReplicationConfig;
 /// import com.pulumi.aws.dms.ReplicationConfigArgs;
 /// import com.pulumi.aws.dms.inputs.ReplicationConfigComputeConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -223,9 +248,9 @@ class ReplicationConfig extends pulumi.CustomResource {
   late final pulumi.Output<String?> supplementalSettings;
   /// An escaped JSON string that contains the table mappings. For information on table mapping see [Using Table Mapping with an AWS Database Migration Service Task to Select and Filter Data](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.html)
   late final pulumi.Output<String> tableMappings;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The Amazon Resource Name (ARN) string that uniquely identifies the target endpoint.
   late final pulumi.Output<String> targetEndpointArn;

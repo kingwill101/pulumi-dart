@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'distribution_args.dart';
+import 'distribution_cache_tag_config.dart';
 import 'distribution_connection_function_association.dart';
 import 'distribution_default_cache_behavior.dart';
 import 'distribution_logging_config.dart';
@@ -12,7 +13,7 @@ import 'distribution_viewer_mtls_config.dart';
 ///
 /// For information about CloudFront distributions, see the [Amazon CloudFront Developer Guide](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html). For specific information about creating CloudFront web distributions, see the [POST Distribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) page in the Amazon CloudFront API Reference.
 ///
-/// &gt; **NOTE:** CloudFront distributions take about 15 minutes to reach a deployed state after creation or modification. During this time, deletes to resources will be blocked. If you need to delete a distribution that is enabled and you do not want to wait, you need to use the `retain_on_delete` flag.
+/// &gt; **NOTE:** CloudFront distributions take about 15 minutes to reach a deployed state after creation or modification. During this time, deletes to resources will be blocked. If you need to delete a distribution that is enabled and you do not want to wait, you need to use the `retainOnDelete` flag.
 ///
 /// ## Example Usage
 ///
@@ -179,7 +180,7 @@ import 'distribution_viewer_mtls_config.dart';
 /// });
 /// const bBucketPolicy = new aws.s3.BucketPolicy("b", {
 ///     bucket: b.bucket,
-///     policy: originBucketPolicy.apply(originBucketPolicy => originBucketPolicy.json),
+///     policy: originBucketPolicy.json,
 /// });
 /// // Create Route53 records for the CloudFront distribution aliases
 /// const myDomainGetZone = aws.route53.getZone({
@@ -203,6 +204,7 @@ import 'distribution_viewer_mtls_config.dart';
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 ///
 /// b = aws.s3.Bucket("b",
@@ -355,12 +357,12 @@ import 'distribution_viewer_mtls_config.dart';
 ///     policy=origin_bucket_policy.json)
 /// # Create Route53 records for the CloudFront distribution aliases
 /// my_domain_get_zone = aws.route53.get_zone(name=my_domain)
-/// cloudfront = []
+/// cloudfront: list[aws.route53.Record] = []
 /// def create_cloudfront(range_body):
-///     for range in [{"key": k, "value": v} for [k, v] in enumerate(range_body)]:
-///         cloudfront.append(aws.route53.Record(f"cloudfront-{range['key']}",
+///     for cloudfront_range in [{"key": k, "value": v} for [k, v] in enumerate(range_body)]:
+///         cloudfront.append(aws.route53.Record(f"cloudfront-{cloudfront_range['key']}",
 ///             zone_id=my_domain_get_zone.zone_id,
-///             name=range["value"],
+///             name=cloudfront_range["value"],
 ///             type=aws.route53.RecordType.A,
 ///             aliases=[{
 ///                 "name": s3_distribution.domain_name,
@@ -610,24 +612,28 @@ import 'distribution_viewer_mtls_config.dart';
 ///     });
 ///
 ///     var cloudfront = new List<Aws.Route53.Record>();
-///     foreach (var range in )
+///     s3Distribution.Aliases.Apply(rangeBody =>
 ///     {
-///         cloudfront.Add(new Aws.Route53.Record($"cloudfront-{range.Key}", new()
+///         foreach (var range in )
 ///         {
-///             ZoneId = myDomainGetZone.Apply(getZoneResult => getZoneResult.ZoneId),
-///             Name = range.Value,
-///             Type = Aws.Route53.RecordType.A,
-///             Aliases = new[]
+///             cloudfront.Add(new Aws.Route53.Record($"cloudfront-{range.Key}", new()
 ///             {
-///                 new Aws.Route53.Inputs.RecordAliasArgs
+///                 ZoneId = myDomainGetZone.Apply(getZoneResult => getZoneResult.ZoneId),
+///                 Name = range.Value,
+///                 Type = Aws.Route53.RecordType.A,
+///                 Aliases = new[]
 ///                 {
-///                     Name = s3Distribution.DomainName,
-///                     ZoneId = s3Distribution.HostedZoneId,
-///                     EvaluateTargetHealth = false,
+///                     new Aws.Route53.Inputs.RecordAliasArgs
+///                     {
+///                         Name = s3Distribution.DomainName,
+///                         ZoneId = s3Distribution.HostedZoneId,
+///                         EvaluateTargetHealth = false,
+///                     },
 ///                 },
-///             },
-///         }));
-///     }
+///             }));
+///         }
+///         return 0;
+///     });
 /// });
 /// ```
 /// ```go
@@ -680,7 +686,7 @@ import 'distribution_viewer_mtls_config.dart';
 /// 			Origins: cloudfront.DistributionOriginArray{
 /// 				&cloudfront.DistributionOriginArgs{
 /// 					DomainName:            b.BucketRegionalDomainName,
-/// 					OriginAccessControlId: _default.ID(),
+/// 					OriginAccessControlId: _default.ID().ToIDOutput().ToStringOutput(),
 /// 					OriginId:              pulumi.String(s3OriginId),
 /// 				},
 /// 			},
@@ -832,9 +838,7 @@ import 'distribution_viewer_mtls_config.dart';
 /// 		}, nil)
 /// 		_, err = s3.NewBucketPolicy(ctx, "b", &s3.BucketPolicyArgs{
 /// 			Bucket: b.Bucket,
-/// 			Policy: pulumi.String(originBucketPolicy.ApplyT(func(originBucketPolicy iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &originBucketPolicy.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Policy: originBucketPolicy.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -846,7 +850,7 @@ import 'distribution_viewer_mtls_config.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		var cloudfront []*route53.Record
+/// 		var cloudfront2 []*route53.Record
 /// 		for key0, val0 := range s3Distribution.Aliases {
 /// 			__res, err := route53.NewRecord(ctx, fmt.Sprintf("cloudfront-%v", key0), &route53.RecordArgs{
 /// 				ZoneId: pulumi.String(myDomainGetZone.ZoneId),
@@ -863,11 +867,158 @@ import 'distribution_viewer_mtls_config.dart';
 /// 			if err != nil {
 /// 				return err
 /// 			}
-/// 			cloudfront = append(cloudfront, __res)
+/// 			cloudfront2 = append(cloudfront2, __res)
 /// 		}
 /// 		return nil
 /// 	})
 /// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "originBucketPolicy" {
+///   statements {
+///     sid    = "AllowCloudFrontServicePrincipalReadWrite"
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["cloudfront.amazonaws.com"]
+///     }
+///     actions   = ["s3:GetObject", "s3:PutObject"]
+///     resources = ["${aws_s3_bucket.b.arn}/*"]
+///     conditions {
+///       test     = "StringEquals"
+///       variable = "AWS:SourceArn"
+///       values   = [aws_cloudfront_distribution.s3_distribution.arn]
+///     }
+///   }
+/// }
+/// data "aws_acm_getcertificate" "myDomainGetCertificate" {
+///   region   = "us-east-1"
+///   domain   ="*.${local.myDomain}"
+///   statuses = ["ISSUED"]
+/// }
+/// data "aws_route53_getzone" "myDomainGetZone" {
+///   name = local.myDomain
+/// }
+///
+/// resource "aws_s3_bucket" "b" {
+///   bucket = "mybucket"
+///   tags = {
+///     "Name" = "My bucket"
+///   }
+/// }
+/// resource "aws_s3_bucketpolicy" "b" {
+///   bucket = aws_s3_bucket.b.bucket
+///   policy = data.aws_iam_getpolicydocument.originBucketPolicy.json
+/// }
+/// resource "aws_cloudfront_originaccesscontrol" "default" {
+///   name                              = "default-oac"
+///   origin_access_control_origin_type = "s3"
+///   signing_behavior                  = "always"
+///   signing_protocol                  = "sigv4"
+/// }
+/// resource "aws_cloudfront_distribution" "s3_distribution" {
+///   origins {
+///     domain_name              = aws_s3_bucket.b.bucket_regional_domain_name
+///     origin_access_control_id = aws_cloudfront_originaccesscontrol.default.id
+///     origin_id                = local.s3OriginId
+///   }
+///   enabled             = true
+///   is_ipv6_enabled     = true
+///   comment             = "Some comment"
+///   default_root_object = "index.html"
+///   aliases             = ["mysite.${local.myDomain}", "yoursite.${local.myDomain}"]
+///   default_cache_behavior = {
+///     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+///     cached_methods   = ["GET", "HEAD"]
+///     target_origin_id = local.s3OriginId
+///     forwarded_values = {
+///       query_string = false
+///       cookies = {
+///         forward = "none"
+///       }
+///     }
+///     viewer_protocol_policy = "allow-all"
+///     min_ttl                = 0
+///     default_ttl            = 3600
+///     max_ttl                = 86400
+///   }
+///   ordered_cache_behaviors {
+///     path_pattern     = "/content/immutable/*"
+///     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
+///     cached_methods   = ["GET", "HEAD", "OPTIONS"]
+///     target_origin_id = local.s3OriginId
+///     forwarded_values = {
+///       query_string = false
+///       headers      = ["Origin"]
+///       cookies = {
+///         forward = "none"
+///       }
+///     }
+///     min_ttl                = 0
+///     default_ttl            = 86400
+///     max_ttl                = 31536000
+///     compress               = true
+///     viewer_protocol_policy = "redirect-to-https"
+///   }
+///   ordered_cache_behaviors {
+///     path_pattern     = "/content/*"
+///     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
+///     cached_methods   = ["GET", "HEAD"]
+///     target_origin_id = local.s3OriginId
+///     forwarded_values = {
+///       query_string = false
+///       cookies = {
+///         forward = "none"
+///       }
+///     }
+///     min_ttl                = 0
+///     default_ttl            = 3600
+///     max_ttl                = 86400
+///     compress               = true
+///     viewer_protocol_policy = "redirect-to-https"
+///   }
+///   price_class = "PriceClass_200"
+///   restrictions = {
+///     geo_restriction = {
+///       restriction_type = "whitelist"
+///       locations        = ["US", "CA", "GB", "DE"]
+///     }
+///   }
+///   tags = {
+///     "Environment" = "production"
+///   }
+///   viewer_certificate = {
+///     acm_certificate_arn = data.aws_acm_getcertificate.myDomainGetCertificate.arn
+///     ssl_support_method  = "sni-only"
+///   }
+/// }
+/// resource "aws_route53_record" "cloudfront" {
+///   for_each = aws_cloudfront_distribution.s3_distribution.aliases
+///   zone_id  = data.aws_route53_getzone.myDomainGetZone.zone_id
+///   name     = each.value
+///   type     = "A"
+///   aliases {
+///     name                   = aws_cloudfront_distribution.s3_distribution.domain_name
+///     zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
+///     evaluate_target_health = false
+///   }
+/// }
+/// # See https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html
+/// locals {
+///   s3OriginId = "myS3Origin"
+/// }
+/// locals {
+///   myDomain = "mydomain.com"
+/// }
+/// # Create Route53 records for the CloudFront distribution aliases
 /// ```
 /// ```java
 /// package generated_program;
@@ -895,6 +1046,9 @@ import 'distribution_viewer_mtls_config.dart';
 /// import com.pulumi.aws.cloudfront.inputs.DistributionViewerCertificateArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.s3.BucketPolicy;
 /// import com.pulumi.aws.s3.BucketPolicyArgs;
 /// import com.pulumi.aws.route53.Route53Functions;
@@ -903,8 +1057,8 @@ import 'distribution_viewer_mtls_config.dart';
 /// import com.pulumi.aws.route53.RecordArgs;
 /// import com.pulumi.aws.route53.inputs.RecordAliasArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1471,6 +1625,47 @@ import 'distribution_viewer_mtls_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_distribution" "s3_distribution" {
+///   origin_groups {
+///     origin_id = "groupS3"
+///     failover_criteria = {
+///       status_codes = [403, 404, 500, 502]
+///     }
+///     members {
+///       origin_id = "primaryS3"
+///     }
+///     members {
+///       origin_id = "failoverS3"
+///     }
+///   }
+///   origins {
+///     domain_name = primary.bucketRegionalDomainName
+///     origin_id   = "primaryS3"
+///     s3_origin_config = {
+///       origin_access_identity = default.cloudfrontAccessIdentityPath
+///     }
+///   }
+///   origins {
+///     domain_name = failover.bucketRegionalDomainName
+///     origin_id   = "failoverS3"
+///     s3_origin_config = {
+///       origin_access_identity = default.cloudfrontAccessIdentityPath
+///     }
+///   }
+///   default_cache_behavior = {
+///     target_origin_id = "groupS3"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1481,11 +1676,12 @@ import 'distribution_viewer_mtls_config.dart';
 /// import com.pulumi.aws.cloudfront.DistributionArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionOriginGroupArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionOriginGroupFailoverCriteriaArgs;
+/// import com.pulumi.aws.cloudfront.inputs.DistributionOriginGroupMemberArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionOriginArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionOriginS3OriginConfigArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionDefaultCacheBehaviorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1795,6 +1991,49 @@ import 'distribution_viewer_mtls_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_distribution" "s3_distribution" {
+///   origins {
+///     domain_name = primary.bucketRegionalDomainName
+///     origin_id   = "myS3Origin"
+///     s3_origin_config = {
+///       origin_access_identity = default.cloudfrontAccessIdentityPath
+///     }
+///   }
+///   enabled             = true
+///   is_ipv6_enabled     = true
+///   comment             = "Some comment"
+///   default_root_object = "index.html"
+///   default_cache_behavior = {
+///     cache_policy_id        = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
+///     allowed_methods        = ["GET", "HEAD", "OPTIONS"]
+///     cached_methods         = ["GET", "HEAD"]
+///     target_origin_id       = local.s3OriginId
+///     viewer_protocol_policy = "allow-all"
+///   }
+///   # Using the CachingDisabled managed policy ID:
+///   restrictions = {
+///     geo_restriction = {
+///       restriction_type = "whitelist"
+///       locations        = ["US", "CA", "GB", "DE"]
+///     }
+///   }
+///   viewer_certificate = {
+///     cloudfront_default_certificate = true
+///   }
+/// }
+/// locals {
+///   s3OriginId = "myS3Origin"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1809,8 +2048,8 @@ import 'distribution_viewer_mtls_config.dart';
 /// import com.pulumi.aws.cloudfront.inputs.DistributionRestrictionsArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionRestrictionsGeoRestrictionArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionViewerCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2087,6 +2326,44 @@ import 'distribution_viewer_mtls_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_distribution" "example" {
+/// }
+/// resource "aws_cloudwatch_logdeliverysource" "example" {
+///   region       = "us-east-1"
+///   name         = "example"
+///   log_type     = "ACCESS_LOGS"
+///   resource_arn = aws_cloudfront_distribution.example.arn
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket        = "testbucket"
+///   force_destroy = true
+/// }
+/// resource "aws_cloudwatch_logdeliverydestination" "example" {
+///   region        = "us-east-1"
+///   name          = "s3-destination"
+///   output_format = "parquet"
+///   delivery_destination_configuration = {
+///     destination_resource_arn ="${aws_s3_bucket.example.arn}/prefix"
+///   }
+/// }
+/// resource "aws_cloudwatch_logdelivery" "example" {
+///   region                   = "us-east-1"
+///   delivery_source_name     = aws_cloudwatch_logdeliverysource.example.name
+///   delivery_destination_arn = aws_cloudwatch_logdeliverydestination.example.arn
+///   s3_delivery_configurations {
+///     suffix_path = "/123456678910/{DistributionId}/{yyyy}/{MM}/{dd}/{HH}"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2104,8 +2381,8 @@ import 'distribution_viewer_mtls_config.dart';
 /// import com.pulumi.aws.cloudwatch.LogDelivery;
 /// import com.pulumi.aws.cloudwatch.LogDeliveryArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.LogDeliveryS3DeliveryConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2358,6 +2635,43 @@ import 'distribution_viewer_mtls_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_distribution" "example" {
+/// }
+/// resource "aws_kinesis_firehosedeliverystream" "cloudfront_logs" {
+///   region = "us-east-1"
+///   tags = {
+///     "LogDeliveryEnabled" = "true"
+///   }
+/// }
+/// resource "aws_cloudwatch_logdeliverysource" "example" {
+///   region       = "us-east-1"
+///   name         = "cloudfront-logs-source"
+///   log_type     = "ACCESS_LOGS"
+///   resource_arn = aws_cloudfront_distribution.example.arn
+/// }
+/// resource "aws_cloudwatch_logdeliverydestination" "example" {
+///   region        = "us-east-1"
+///   name          = "firehose-destination"
+///   output_format = "json"
+///   delivery_destination_configuration = {
+///     destination_resource_arn = aws_kinesis_firehosedeliverystream.cloudfront_logs.arn
+///   }
+/// }
+/// resource "aws_cloudwatch_logdelivery" "example" {
+///   region                   = "us-east-1"
+///   delivery_source_name     = aws_cloudwatch_logdeliverysource.example.name
+///   delivery_destination_arn = aws_cloudwatch_logdeliverydestination.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2374,8 +2688,8 @@ import 'distribution_viewer_mtls_config.dart';
 /// import com.pulumi.aws.cloudwatch.inputs.LogDeliveryDestinationDeliveryDestinationConfigurationArgs;
 /// import com.pulumi.aws.cloudwatch.LogDelivery;
 /// import com.pulumi.aws.cloudwatch.LogDeliveryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2563,12 +2877,12 @@ import 'distribution_viewer_mtls_config.dart';
 /// 		}
 /// 		_, err = cloudfront.NewDistribution(ctx, "example", &cloudfront.DistributionArgs{
 /// 			ConnectionFunctionAssociation: &cloudfront.DistributionConnectionFunctionAssociationArgs{
-/// 				Id: example.ID(),
+/// 				Id: example.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			ViewerMtlsConfig: &cloudfront.DistributionViewerMtlsConfigArgs{
 /// 				Mode: pulumi.String("verify"),
 /// 				TrustStoreConfig: &cloudfront.DistributionViewerMtlsConfigTrustStoreConfigArgs{
-/// 					TrustStoreId:               exampleTrustStore.ID(),
+/// 					TrustStoreId:               exampleTrustStore.ID().ToIDOutput().ToStringOutput(),
 /// 					AdvertiseTrustStoreCaNames: pulumi.Bool(true),
 /// 					IgnoreCertificateExpiry:    pulumi.Bool(false),
 /// 				},
@@ -2579,6 +2893,35 @@ import 'distribution_viewer_mtls_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_connectionfunction" "example" {
+///   name = "example-connection-function"
+/// }
+/// resource "aws_cloudfront_truststore" "example" {
+///   name = "example-trust-store"
+/// }
+/// resource "aws_cloudfront_distribution" "example" {
+///   connection_function_association = {
+///     id = aws_cloudfront_connectionfunction.example.id
+///   }
+///   viewer_mtls_config = {
+///     mode = "verify"
+///     trust_store_config = {
+///       trust_store_id                 = aws_cloudfront_truststore.example.id
+///       advertise_trust_store_ca_names = true
+///       ignore_certificate_expiry      = false
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -2596,8 +2939,8 @@ import 'distribution_viewer_mtls_config.dart';
 /// import com.pulumi.aws.cloudfront.inputs.DistributionConnectionFunctionAssociationArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionViewerMtlsConfigArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionViewerMtlsConfigTrustStoreConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2662,6 +3005,17 @@ import 'distribution_viewer_mtls_config.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) CloudFront distribution ID.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+///
+///
 /// Using `pulumi import`, import CloudFront Distributions using the `id`. For example:
 ///
 /// ```sh
@@ -2674,6 +3028,8 @@ class Distribution extends pulumi.CustomResource {
   late final pulumi.Output<String?> anycastIpListId;
   /// ARN for the distribution. For example: `arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5`, where `123456789012` is your AWS account ID.
   late final pulumi.Output<String> arn;
+  /// Cache tag configuration block for cache tag extraction from origin responses (maximum one). See the [AWS documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/invalidation-by-tags.html) for more information about cache tags.
+  late final pulumi.Output<DistributionCacheTagConfig?> cacheTagConfig;
   /// Internal value used by CloudFront to allow future updates to the distribution configuration.
   late final pulumi.Output<String> callerReference;
   /// Any comments you want to include about the distribution.
@@ -2684,7 +3040,7 @@ class Distribution extends pulumi.CustomResource {
   late final pulumi.Output<String> continuousDeploymentPolicyId;
   /// One or more custom error response elements (multiples allowed).
   late final pulumi.Output<List<Map<String, dynamic>>?> customErrorResponses;
-  /// Default cache behavior for this distribution (maximum one). Requires either `cache_policy_id` (preferred) or `forwarded_values` (deprecated) be set.
+  /// Default cache behavior for this distribution (maximum one). Requires either `cachePolicyId` (preferred) or `forwardedValues` (deprecated) be set.
   late final pulumi.Output<DistributionDefaultCacheBehavior> defaultCacheBehavior;
   /// Object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
   late final pulumi.Output<String?> defaultRootObject;
@@ -2710,7 +3066,7 @@ class Distribution extends pulumi.CustomResource {
   late final pulumi.Output<bool> loggingV1Enabled;
   /// Ordered list of cache behaviors resource for this distribution. List from top to bottom in order of precedence. The topmost cache behavior will have precedence 0.
   late final pulumi.Output<List<Map<String, dynamic>>?> orderedCacheBehaviors;
-  /// One or more origin_group for this distribution (multiples allowed).
+  /// One or more originGroup for this distribution (multiples allowed).
   late final pulumi.Output<List<Map<String, dynamic>>?> originGroups;
   /// One or more origins for this distribution (multiples allowed).
   late final pulumi.Output<List<Map<String, dynamic>>> origins;
@@ -2724,9 +3080,9 @@ class Distribution extends pulumi.CustomResource {
   late final pulumi.Output<bool?> staging;
   /// Current status of the distribution. `Deployed` if the distribution's information is fully propagated throughout the Amazon CloudFront system.
   late final pulumi.Output<String> status;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// List of nested attributes for active trusted key groups, if the distribution is set up to serve private content with signed URLs.
   late final pulumi.Output<List<Map<String, dynamic>>> trustedKeyGroups;
@@ -2758,6 +3114,7 @@ class Distribution extends pulumi.CustomResource {
     aliases = registerOutput<List<String>?>('aliases');
     anycastIpListId = registerOutput<String?>('anycastIpListId');
     arn = registerOutput<String>('arn');
+    cacheTagConfig = registerOutput<DistributionCacheTagConfig?>('cacheTagConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionCacheTagConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     callerReference = registerOutput<String>('callerReference');
     comment = registerOutput<String?>('comment');
     connectionFunctionAssociation = registerOutput<DistributionConnectionFunctionAssociation?>('connectionFunctionAssociation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionConnectionFunctionAssociation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2819,6 +3176,7 @@ class Distribution extends pulumi.CustomResource {
     aliases = registerOutput<List<String>?>('aliases');
     anycastIpListId = registerOutput<String?>('anycastIpListId');
     arn = registerOutput<String>('arn');
+    cacheTagConfig = registerOutput<DistributionCacheTagConfig?>('cacheTagConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionCacheTagConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     callerReference = registerOutput<String>('callerReference');
     comment = registerOutput<String?>('comment');
     connectionFunctionAssociation = registerOutput<DistributionConnectionFunctionAssociation?>('connectionFunctionAssociation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionConnectionFunctionAssociation.fromMap((guardedValue as Map).cast<String, dynamic>()); });

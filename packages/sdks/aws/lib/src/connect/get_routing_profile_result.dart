@@ -15,10 +15,10 @@ class GetRoutingProfileResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
-  /// One or more `media_concurrencies` blocks that specify the channels that agents can handle in the Contact Control Panel (CCP) for this Routing Profile. The `media_concurrencies` block is documented below.
+  /// One or more `mediaConcurrencies` blocks that specify the channels that agents can handle in the Contact Control Panel (CCP) for this Routing Profile. The `mediaConcurrencies` block is documented below.
   final List<GetRoutingProfileMediaConcurrency> mediaConcurrencies;
   final String name;
-  /// One or more `queue_configs` blocks that specify the inbound queues associated with the routing profile. If no queue is added, the agent only can make outbound calls. The `queue_configs` block is documented below.
+  /// One or more `queueConfigs` blocks that specify the inbound queues associated with the routing profile. If no queue is added, the agent only can make outbound calls. The `queueConfigs` block is documented below.
   final List<GetRoutingProfileQueueConfig> queueConfigs;
   final String region;
   final String routingProfileId;
@@ -31,9 +31,9 @@ class GetRoutingProfileResult {
   /// [description] Description of the Routing Profile.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [instanceId] Required.
-  /// [mediaConcurrencies] One or more `media_concurrencies` blocks that specify the channels that agents can handle in the Contact Control Panel (CCP) for this Routing Profile. The `media_concurrencies` block is documented below.
+  /// [mediaConcurrencies] One or more `mediaConcurrencies` blocks that specify the channels that agents can handle in the Contact Control Panel (CCP) for this Routing Profile. The `mediaConcurrencies` block is documented below.
   /// [name] Required.
-  /// [queueConfigs] One or more `queue_configs` blocks that specify the inbound queues associated with the routing profile. If no queue is added, the agent only can make outbound calls. The `queue_configs` block is documented below.
+  /// [queueConfigs] One or more `queueConfigs` blocks that specify the inbound queues associated with the routing profile. If no queue is added, the agent only can make outbound calls. The `queueConfigs` block is documented below.
   /// [region] Required.
   /// [routingProfileId] Required.
   /// [tags] Map of tags to assign to the Routing Profile.
@@ -83,4 +83,3 @@ class GetRoutingProfileResult {
     );
   }
 }
-

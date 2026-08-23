@@ -21,6 +21,8 @@ class GetSecretResult {
   final String region;
   /// Tags of the secret.
   final Map<String, String> tags;
+  /// Type of secret for managed external secrets.
+  final String type;
 
   /// Creates a new [GetSecretResult].
   /// [arn] ARN of the secret.
@@ -33,6 +35,7 @@ class GetSecretResult {
   /// [policy] Resource-based policy document that's attached to the secret.
   /// [region] Required.
   /// [tags] Tags of the secret.
+  /// [type] Type of secret for managed external secrets.
   const GetSecretResult({
     required this.arn,
     required this.createdDate,
@@ -44,6 +47,7 @@ class GetSecretResult {
     required this.policy,
     required this.region,
     required this.tags,
+    required this.type,
   });
 
   Map<String, dynamic> toMap() {
@@ -58,6 +62,7 @@ class GetSecretResult {
       'policy': policy,
       'region': region,
       'tags': tags,
+      'type': type,
     };
   }
 
@@ -73,7 +78,7 @@ class GetSecretResult {
       policy: map['policy'] as String,
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
+      type: map['type'] as String,
     );
   }
 }
-

@@ -7,23 +7,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_apigateway_domain_name_access_association_domain_name_access_association_args_doc}
 class DomainNameAccessAssociationArgs {
-  /// The identifier of the domain name access association source. For a `VPCE`, the value is the VPC endpoint ID.
+  /// Identifier of the domain name access association source. For a `VPCE`, the value is the VPC endpoint ID.
   final pulumi.Input<String> accessAssociationSource;
-  /// The type of the domain name access association source. Valid values are `VPCE`.
+  /// Type of the domain name access association source. Valid values are `VPCE`.
   final pulumi.Input<String> accessAssociationSourceType;
-  /// The ARN of the domain name.
+  /// ARN of the domain name.
   final pulumi.Input<String> domainNameArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [DomainNameAccessAssociationArgs].
-  /// [accessAssociationSource] The identifier of the domain name access association source. For a `VPCE`, the value is the VPC endpoint ID.
-  /// [accessAssociationSourceType] The type of the domain name access association source. Valid values are `VPCE`.
-  /// [domainNameArn] The ARN of the domain name.
+  /// [accessAssociationSource] Identifier of the domain name access association source. For a `VPCE`, the value is the VPC endpoint ID.
+  /// [accessAssociationSourceType] Type of the domain name access association source. Valid values are `VPCE`.
+  /// [domainNameArn] ARN of the domain name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const DomainNameAccessAssociationArgs({
     required this.accessAssociationSource,
     required this.accessAssociationSourceType,
@@ -52,4 +52,3 @@ class DomainNameAccessAssociationArgs {
     );
   }
 }
-

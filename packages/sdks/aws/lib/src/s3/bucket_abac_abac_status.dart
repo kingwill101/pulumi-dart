@@ -3,13 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketAbacAbacStatus {
-  /// ABAC status of the general purpose bucket.
-  /// Valid values are `Enabled` and `Disabled`.
-  /// By default, ABAC is disabled for all Amazon S3 general purpose buckets.
+  /// ABAC status of the general purpose bucket. Valid values are `Enabled` and `Disabled`. By default, ABAC is disabled for all Amazon S3 general purpose buckets.
   final pulumi.Input<String> status;
 
   /// Creates a new [BucketAbacAbacStatus].
-  /// [status] ABAC status of the general purpose bucket.
+  /// [status] ABAC status of the general purpose bucket. Valid values are `Enabled` and `Disabled`. By default, ABAC is disabled for all Amazon S3 general purpose buckets.
   const BucketAbacAbacStatus({
     required this.status,
   });
@@ -26,4 +24,3 @@ class BucketAbacAbacStatus {
     );
   }
 }
-

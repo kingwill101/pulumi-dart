@@ -11,13 +11,13 @@ class GetWindowsFileSystemArgs {
   final pulumi.Input<String> id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The tags to associate with the file system.
+  /// Tags to associate with the file system.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetWindowsFileSystemArgs].
   /// [id] Identifier of the file system (e.g. `fs-12345678`).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] The tags to associate with the file system.
+  /// [tags] Tags to associate with the file system.
   const GetWindowsFileSystemArgs({
     required this.id,
     this.region,
@@ -40,4 +40,3 @@ class GetWindowsFileSystemArgs {
     );
   }
 }
-

@@ -16,6 +16,7 @@ class GetRouteResult {
   final String localGatewayId;
   final String natGatewayId;
   final String networkInterfaceId;
+  final String odbNetworkArn;
   final String region;
   final String routeTableId;
   final String transitGatewayId;
@@ -34,6 +35,7 @@ class GetRouteResult {
   /// [localGatewayId] Required.
   /// [natGatewayId] Required.
   /// [networkInterfaceId] Required.
+  /// [odbNetworkArn] Required.
   /// [region] Required.
   /// [routeTableId] Required.
   /// [transitGatewayId] Required.
@@ -51,6 +53,7 @@ class GetRouteResult {
     required this.localGatewayId,
     required this.natGatewayId,
     required this.networkInterfaceId,
+    required this.odbNetworkArn,
     required this.region,
     required this.routeTableId,
     required this.transitGatewayId,
@@ -71,6 +74,7 @@ class GetRouteResult {
       'localGatewayId': localGatewayId,
       'natGatewayId': natGatewayId,
       'networkInterfaceId': networkInterfaceId,
+      'odbNetworkArn': odbNetworkArn,
       'region': region,
       'routeTableId': routeTableId,
       'transitGatewayId': transitGatewayId,
@@ -92,6 +96,7 @@ class GetRouteResult {
       localGatewayId: map['localGatewayId'] as String,
       natGatewayId: map['natGatewayId'] as String,
       networkInterfaceId: map['networkInterfaceId'] as String,
+      odbNetworkArn: map['odbNetworkArn'] as String,
       region: map['region'] as String,
       routeTableId: map['routeTableId'] as String,
       transitGatewayId: map['transitGatewayId'] as String,
@@ -99,4 +104,3 @@ class GetRouteResult {
     );
   }
 }
-

@@ -62,6 +62,19 @@ import 'get_stream_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_kinesis_getfirehosedeliverystream" "stream" {
+///   name = "stream-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +83,8 @@ import 'get_stream_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kinesis.KinesisFunctions;
 /// import com.pulumi.aws.kinesis.inputs.GetFirehoseDeliveryStreamArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -170,6 +183,19 @@ Future<GetFirehoseDeliveryStreamResult> getFirehoseDeliveryStream(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_kinesis_getstream" "stream" {
+///   name = "stream-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -178,8 +204,8 @@ Future<GetFirehoseDeliveryStreamResult> getFirehoseDeliveryStream(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kinesis.KinesisFunctions;
 /// import com.pulumi.aws.kinesis.inputs.GetStreamArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -281,6 +307,20 @@ Future<GetStreamResult> getStream(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_kinesis_getstreamconsumer" "example" {
+///   name       = "example-consumer"
+///   stream_arn = exampleAwsKinesisStream.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -289,8 +329,8 @@ Future<GetStreamResult> getStream(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kinesis.KinesisFunctions;
 /// import com.pulumi.aws.kinesis.inputs.GetStreamConsumerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

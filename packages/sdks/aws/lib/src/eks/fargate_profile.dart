@@ -70,7 +70,7 @@ import 'fargate_profile_state.dart';
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// var splat0 []interface{}
 /// for _, val0 := range exampleAwsSubnet {
-/// splat0 = append(splat0, val0.Id)
+/// splat0 = append(splat0, val0.(map[string]interface{})["id"])
 /// }
 /// _, err := eks.NewFargateProfile(ctx, "example", &eks.FargateProfileArgs{
 /// ClusterName: pulumi.Any(exampleAwsEksCluster.Name),
@@ -97,6 +97,25 @@ import 'fargate_profile_state.dart';
 /// return pulumiArr
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_eks_fargateprofile" "example" {
+///   cluster_name           = exampleAwsEksCluster.name
+///   fargate_profile_name   = "example"
+///   pod_execution_role_arn = exampleAwsIamRole.arn
+///   subnet_ids             = exampleAwsSubnet[*].id
+///   selectors {
+///     namespace = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +125,8 @@ import 'fargate_profile_state.dart';
 /// import com.pulumi.aws.eks.FargateProfile;
 /// import com.pulumi.aws.eks.FargateProfileArgs;
 /// import com.pulumi.aws.eks.inputs.FargateProfileSelectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -235,7 +254,7 @@ import 'fargate_profile_state.dart';
 /// 				map[string]interface{}{
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "eks-fargate-pods.amazonaws.com",
 /// 					},
 /// 				},
@@ -264,6 +283,33 @@ import 'fargate_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_role" "example" {
+///   name = "eks-fargate-profile-example"
+///   assume_role_policy = jsonencode({
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "eks-fargate-pods.amazonaws.com"
+///       }
+///     }]
+///     "Version" = "2012-10-17"
+///   })
+/// }
+/// resource "aws_iam_rolepolicyattachment" "example-AmazonEKSFargatePodExecutionRolePolicy" {
+///   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSFargatePodExecutionRolePolicy"
+///   role       = aws_iam_role.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -275,8 +321,8 @@ import 'fargate_profile_state.dart';
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
 /// import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -335,10 +381,23 @@ import 'fargate_profile_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EKS Fargate Profiles using the `cluster_name` and `fargate_profile_name` separated by a colon (`:`). For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `clusterName` (String) Name of the EKS Cluster.
+/// * `fargateProfileName` (String) Name of the Fargate profile.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Fargate Profiles using `clusterName` and `fargateProfileName` separated by a colon (`:`). For example:
 ///
 /// ```sh
-/// $ pulumi import aws:eks/fargateProfile:FargateProfile my_fargate_profile my_cluster:my_fargate_profile
+/// $ pulumi import aws:eks/fargateProfile:FargateProfile example example-cluster:example-profile
 /// ```
 class FargateProfile extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the EKS Fargate Profile.
@@ -359,9 +418,9 @@ class FargateProfile extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<String>?> subnetIds;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [FargateProfile].

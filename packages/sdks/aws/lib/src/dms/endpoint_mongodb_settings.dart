@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointMongodbSettings {
   /// Authentication mechanism to access the MongoDB source endpoint. Default is `default`.
   final pulumi.Input<String>? authMechanism;
-  /// Authentication database name. Not used when `auth_type` is `no`. Default is `admin`.
+  /// Authentication database name. Not used when `authType` is `no`. Default is `admin`.
   final pulumi.Input<String>? authSource;
   /// Authentication type to access the MongoDB source endpoint. Default is `password`.
   final pulumi.Input<String>? authType;
-  /// Number of documents to preview to determine the document organization. Use this setting when `nesting_level` is set to `one`. Default is `1000`.
+  /// Number of documents to preview to determine the document organization. Use this setting when `nestingLevel` is set to `one`. Default is `1000`.
   final pulumi.Input<String>? docsToInvestigate;
-  /// Document ID. Use this setting when `nesting_level` is set to `none`. Default is `false`.
+  /// Document ID. Use this setting when `nestingLevel` is set to `none`. Default is `false`.
   final pulumi.Input<String>? extractDocId;
   /// Specifies either document or table mode. Default is `none`. Valid values are `one` (table mode) and `none` (document mode).
   final pulumi.Input<String>? nestingLevel;
@@ -20,10 +20,10 @@ class EndpointMongodbSettings {
 
   /// Creates a new [EndpointMongodbSettings].
   /// [authMechanism] Authentication mechanism to access the MongoDB source endpoint. Default is `default`.
-  /// [authSource] Authentication database name. Not used when `auth_type` is `no`. Default is `admin`.
+  /// [authSource] Authentication database name. Not used when `authType` is `no`. Default is `admin`.
   /// [authType] Authentication type to access the MongoDB source endpoint. Default is `password`.
-  /// [docsToInvestigate] Number of documents to preview to determine the document organization. Use this setting when `nesting_level` is set to `one`. Default is `1000`.
-  /// [extractDocId] Document ID. Use this setting when `nesting_level` is set to `none`. Default is `false`.
+  /// [docsToInvestigate] Number of documents to preview to determine the document organization. Use this setting when `nestingLevel` is set to `one`. Default is `1000`.
+  /// [extractDocId] Document ID. Use this setting when `nestingLevel` is set to `none`. Default is `false`.
   /// [nestingLevel] Specifies either document or table mode. Default is `none`. Valid values are `one` (table mode) and `none` (document mode).
   /// [useUpdateLookup] If `true`, DMS retrieves the entire document from the MongoDB source during migration. Default is `false`.
   const EndpointMongodbSettings({
@@ -60,4 +60,3 @@ class EndpointMongodbSettings {
     );
   }
 }
-

@@ -146,6 +146,31 @@ import 'table_item_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dynamodb_tableitem" "example" {
+///   table_name = aws_dynamodb_table.example.name
+///   hash_key   = aws_dynamodb_table.example.hash_key
+///   item       = "{\n  \\\"exampleHashKey\\\": {\\\"S\\\": \\\"something\\\"},\n  \\\"one\\\": {\\\"N\\\": \\\"11111\\\"},\n  \\\"two\\\": {\\\"N\\\": \\\"22222\\\"},\n  \\\"three\\\": {\\\"N\\\": \\\"33333\\\"},\n  \\\"four\\\": {\\\"N\\\": \\\"44444\\\"}\n}\n"
+/// }
+/// resource "aws_dynamodb_table" "example" {
+///   name           = "example-name"
+///   read_capacity  = 10
+///   write_capacity = 10
+///   hash_key       = "exampleHashKey"
+///   attributes {
+///     name = "exampleHashKey"
+///     type = "S"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -157,8 +182,8 @@ import 'table_item_state.dart';
 /// import com.pulumi.aws.dynamodb.inputs.TableAttributeArgs;
 /// import com.pulumi.aws.dynamodb.TableItem;
 /// import com.pulumi.aws.dynamodb.TableItemArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -229,14 +254,45 @@ import 'table_item_state.dart';
 ///
 /// ## Import
 ///
-/// You cannot import DynamoDB table items.
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `tableName` (String) Name of the DynamoDB table.
+/// * `hashKeyValue` (String) Canonical value of the hash key (base64 for `B`, verbatim for `N` and `S`).
+///
+/// #### Optional
+///
+/// * `rangeKeyValue` (String) Canonical value of the range key, required for tables that define a range key.
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// For tables with a range key, append the range key value:
+///
+///
+/// Use `pulumi import` for the same effect on the command line:
+///
+/// ```sh
+/// $ pulumi import aws:dynamodb/tableItem:TableItem example example-name,something
+/// ```
+///
+/// &gt; **Note:** Importing requires `dynamodb:DescribeTable` in addition to `dynamodb:GetItem`. The DescribeTable call is used to recover the key attribute names and types from the table's schema.
+///
+/// &gt; **Note:** If a hash key or range key value contains the separator character (`,`), use the `import` block with the `identity` attribute. The legacy `pulumi import` command and `id`-based `import` block cannot disambiguate separators from value content.
+///
+/// For Binary (`B`) key attributes, the value in the import ID and the identity attribute must be standard base64.
 class TableItem extends pulumi.CustomResource {
   /// Hash key to use for lookups and identification of the item
   late final pulumi.Output<String> hashKey;
+  /// Canonical string representation of the hash key value. Binary values are base64-encoded; numbers and strings are taken verbatim.
+  late final pulumi.Output<String> hashKeyValue;
   /// JSON representation of a map of attribute name/value pairs, one for each attribute. Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.
   late final pulumi.Output<String> item;
   /// Range key to use for lookups and identification of the item. Required if there is range key defined in the table.
   late final pulumi.Output<String?> rangeKey;
+  /// Canonical string representation of the range key value, when the table has a range key. Same encoding as `hashKeyValue`.
+  late final pulumi.Output<String> rangeKeyValue;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Name or ARN of the table to contain the item.
@@ -259,8 +315,10 @@ class TableItem extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     hashKey = registerOutput<String>('hashKey');
+    hashKeyValue = registerOutput<String>('hashKeyValue');
     item = registerOutput<String>('item');
     rangeKey = registerOutput<String?>('rangeKey');
+    rangeKeyValue = registerOutput<String>('rangeKeyValue');
     region = registerOutput<String>('region');
     tableName = registerOutput<String>('tableName');
   }
@@ -289,8 +347,10 @@ class TableItem extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     hashKey = registerOutput<String>('hashKey');
+    hashKeyValue = registerOutput<String>('hashKeyValue');
     item = registerOutput<String>('item');
     rangeKey = registerOutput<String?>('rangeKey');
+    rangeKeyValue = registerOutput<String>('rangeKeyValue');
     region = registerOutput<String>('region');
     tableName = registerOutput<String>('tableName');
   }

@@ -23,8 +23,8 @@ import 'static_ip_attachment_state.dart';
 ///     bundleId: "nano_2_0",
 /// });
 /// const exampleStaticIpAttachment = new aws.lightsail.StaticIpAttachment("example", {
-///     staticIpName: example.id,
-///     instanceName: exampleInstance.id,
+///     staticIpName: example.name,
+///     instanceName: exampleInstance.name,
 /// });
 /// ```
 /// ```python
@@ -38,8 +38,8 @@ import 'static_ip_attachment_state.dart';
 ///     blueprint_id="ubuntu_20_04",
 ///     bundle_id="nano_2_0")
 /// example_static_ip_attachment = aws.lightsail.StaticIpAttachment("example",
-///     static_ip_name=example.id,
-///     instance_name=example_instance.id)
+///     static_ip_name=example.name,
+///     instance_name=example_instance.name)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -64,8 +64,8 @@ import 'static_ip_attachment_state.dart';
 ///
 ///     var exampleStaticIpAttachment = new Aws.LightSail.StaticIpAttachment("example", new()
 ///     {
-///         StaticIpName = example.Id,
-///         InstanceName = exampleInstance.Id,
+///         StaticIpName = example.Name,
+///         InstanceName = exampleInstance.Name,
 ///     });
 ///
 /// });
@@ -96,14 +96,37 @@ import 'static_ip_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lightsail.NewStaticIpAttachment(ctx, "example", &lightsail.StaticIpAttachmentArgs{
-/// 			StaticIpName: example.ID(),
-/// 			InstanceName: exampleInstance.ID(),
+/// 			StaticIpName: example.Name,
+/// 			InstanceName: exampleInstance.Name,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_staticip" "example" {
+///   name = "example"
+/// }
+/// resource "aws_lightsail_instance" "example" {
+///   name              = "example"
+///   availability_zone = "us-east-1a"
+///   blueprint_id      = "ubuntu_20_04"
+///   bundle_id         = "nano_2_0"
+/// }
+/// resource "aws_lightsail_staticipattachment" "example" {
+///   static_ip_name = aws_lightsail_staticip.example.name
+///   instance_name  = aws_lightsail_instance.example.name
 /// }
 /// ```
 /// ```java
@@ -118,8 +141,8 @@ import 'static_ip_attachment_state.dart';
 /// import com.pulumi.aws.lightsail.InstanceArgs;
 /// import com.pulumi.aws.lightsail.StaticIpAttachment;
 /// import com.pulumi.aws.lightsail.StaticIpAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -143,8 +166,8 @@ import 'static_ip_attachment_state.dart';
 ///             .build());
 ///
 ///         var exampleStaticIpAttachment = new StaticIpAttachment("exampleStaticIpAttachment", StaticIpAttachmentArgs.builder()
-///             .staticIpName(example.id())
-///             .instanceName(exampleInstance.id())
+///             .staticIpName(example.name())
+///             .instanceName(exampleInstance.name())
 ///             .build());
 ///
 ///     }
@@ -168,8 +191,8 @@ import 'static_ip_attachment_state.dart';
 ///     type: aws:lightsail:StaticIpAttachment
 ///     name: example
 ///     properties:
-///       staticIpName: ${example.id}
-///       instanceName: ${exampleInstance.id}
+///       staticIpName: ${example.name}
+///       instanceName: ${exampleInstance.name}
 /// ```
 ///
 ///

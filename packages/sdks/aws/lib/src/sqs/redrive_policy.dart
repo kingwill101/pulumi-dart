@@ -129,7 +129,7 @@ import 'redrive_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sqs.NewRedrivePolicy(ctx, "q", &sqs.RedrivePolicyArgs{
-/// 			QueueUrl: q.ID(),
+/// 			QueueUrl: q.ID().ToIDOutput().ToStringOutput(),
 /// 			RedrivePolicy: ddl.Arn.ApplyT(func(arn string) (pulumi.String, error) {
 /// 				var _zero pulumi.String
 /// 				tmpJSON1, err := json.Marshal(map[string]interface{}{
@@ -150,6 +150,33 @@ import 'redrive_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sqs_queue" "q" {
+///   name = "examplequeue"
+/// }
+/// resource "aws_sqs_queue" "ddl" {
+///   name = "examplequeue-ddl"
+///   redrive_allow_policy = jsonencode({
+///     "redrivePermission" = "byQueue"
+///     "sourceQueueArns"   = [aws_sqs_queue.q.arn]
+///   })
+/// }
+/// resource "aws_sqs_redrivepolicy" "q" {
+///   queue_url = aws_sqs_queue.q.id
+///   redrive_policy = jsonencode({
+///     "deadLetterTargetArn" = aws_sqs_queue.ddl.arn
+///     "maxReceiveCount"     = 4
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -161,8 +188,8 @@ import 'redrive_policy_state.dart';
 /// import com.pulumi.aws.sqs.RedrivePolicy;
 /// import com.pulumi.aws.sqs.RedrivePolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -227,6 +254,13 @@ import 'redrive_policy_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `queueUrl` (String) URL of the SQS Queue.
+///
 ///
 /// Using `pulumi import`, import SQS Queue Redrive Policies using the queue URL. For example:
 ///

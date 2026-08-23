@@ -3,14 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionStatusCode {
-  /// Status codes in the response that indicate a failed login attempt.
   final pulumi.Input<List<int>> failureCodes;
-  /// Status codes in the response that indicate a successful login attempt.
   final pulumi.Input<List<int>> successCodes;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionStatusCode].
-  /// [failureCodes] Status codes in the response that indicate a failed login attempt.
-  /// [successCodes] Status codes in the response that indicate a successful login attempt.
+  /// [failureCodes] Required.
+  /// [successCodes] Required.
   const WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionStatusCode({
     required this.failureCodes,
     required this.successCodes,
@@ -30,4 +28,3 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
     );
   }
 }
-

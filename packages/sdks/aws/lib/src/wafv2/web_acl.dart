@@ -10,9 +10,9 @@ import 'web_acl_visibility_config.dart';
 
 /// Creates a WAFv2 Web ACL resource.
 ///
-/// &gt; **Note** In `field_to_match` blocks, *e.g.*, in `byte_match_statement`, the `body` block includes an optional argument `oversize_handling`. AWS indicates this argument will be required starting February 2023. To avoid configurations breaking when that change happens, treat the `oversize_handling` argument as **required** as soon as possible.
+/// &gt; **Note:** Inline `rule` blocks in this resource have several known limitations. Consider using `aws.wafv2.WebAclRule` to manage rules as separate resources instead. Limitations include: **Deletion ordering errors:** When removing a rule that references an IP set or rule group, AWS requires the rule to be detached before the referenced resource is deleted. Terraform's dependency graph cannot model this correctly for inline rules, resulting in `WAFAssociatedItemException` errors. **Spurious diffs:** AWS returns rules in an unpredictable order, which can cause Terraform to detect changes even when the configuration has not changed. **Coupled updates:** Modifying one inline rule may cause all rules to be recreated, which can be disruptive.
 ///
-/// !&gt; **Warning:** If you use the `aws.wafv2.WebAclRuleGroupAssociation` resource to associate rule groups with this Web ACL, you must add `lifecycle { ignore_changes = [rule] }` to this resource to prevent configuration drift. The association resource modifies the Web ACL's rules outside of this resource's direct management.
+/// &gt; **Warning:** If you use the `aws.wafv2.WebAclRule` or `aws.wafv2.WebAclRuleGroupAssociation` resources with this Web ACL, you must add `lifecycle { ignoreChanges = [rule] }` to this resource to prevent configuration drift. Those resources manage the Web ACL's rules outside of this resource's direct management.
 ///
 /// ## Import
 ///
@@ -26,42 +26,42 @@ class WebAcl extends pulumi.CustomResource {
   late final pulumi.Output<String> applicationIntegrationUrl;
   /// The ARN of the WAF WebACL.
   late final pulumi.Output<String> arn;
-  /// Specifies custom configurations for the associations between the web ACL and protected resources. See `association_config` below for details.
+  /// Specifies custom configurations for the associations between the web ACL and protected resources. See `associationConfig` below for details.
   late final pulumi.Output<WebAclAssociationConfig?> associationConfig;
   /// Web ACL capacity units (WCUs) currently being used by this web ACL.
   late final pulumi.Output<int> capacity;
-  /// Specifies how AWS WAF should handle CAPTCHA evaluations on the ACL level (used by [AWS Bot Control](https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-bot.html)). See `captcha_config` below for details.
+  /// Specifies how AWS WAF should handle CAPTCHA evaluations on the ACL level (used by [AWS Bot Control](https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-bot.html)). See `captchaConfig` below for details.
   late final pulumi.Output<WebAclCaptchaConfig?> captchaConfig;
-  /// Specifies how AWS WAF should handle Challenge evaluations on the ACL level (used by [AWS Bot Control](https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-bot.html)). See `challenge_config` below for details.
+  /// Specifies how AWS WAF should handle Challenge evaluations on the ACL level (used by [AWS Bot Control](https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-bot.html)). See `challengeConfig` below for details.
   late final pulumi.Output<WebAclChallengeConfig?> challengeConfig;
-  /// Defines custom response bodies that can be referenced by `custom_response` actions. See `custom_response_body` below for details.
+  /// Defines custom response bodies that can be referenced by `customResponse` actions. See `customResponseBody` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> customResponseBodies;
-  /// Specifies data protection to apply to the web request data for the web ACL. This is a web ACL level data protection option. See `data_protection_config` below for details.
+  /// Specifies data protection to apply to the web request data for the web ACL. This is a web ACL level data protection option. See `dataProtectionConfig` below for details.
   late final pulumi.Output<WebAclDataProtectionConfig?> dataProtectionConfig;
-  /// Action to perform if none of the `rules` contained in the WebACL match. See `default_action` below for details.
+  /// Action to perform if none of the `rules` contained in the WebACL match. See `defaultAction` below for details.
   late final pulumi.Output<WebAclDefaultAction> defaultAction;
   /// Friendly description of the WebACL.
   late final pulumi.Output<String?> description;
   late final pulumi.Output<String> lockToken;
-  /// Friendly name of the WebACL. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Friendly name of the WebACL. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Raw JSON string to allow more than three nested statements. Conflicts with `rule` attribute. This is for advanced use cases where more than 3 levels of nested statements are required. **There is no drift detection at this time**. If you use this attribute instead of `rule`, you will be foregoing drift detection. Additionally, importing an existing web ACL into a configuration with `rule_json` set will result in a one time in-place update as the remote rule configuration is initially written to the `rule` attribute. See the AWS [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_CreateWebACL.html) for the JSON structure.
+  /// Raw JSON string to allow more than three nested statements. Conflicts with `rule` attribute. This is for advanced use cases where more than 3 levels of nested statements are required. **There is no drift detection at this time**. If you use this attribute instead of `rule`, you will be foregoing drift detection. Additionally, importing an existing web ACL into a configuration with `ruleJson` set will result in a one time in-place update as the remote rule configuration is initially written to the `rule` attribute. See the AWS [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_CreateWebACL.html) for the JSON structure.
   late final pulumi.Output<String?> ruleJson;
-  /// Rule blocks used to identify the web requests that you want to `allow`, `block`, or `count`. See `rule` below for details.
+  /// **`rule` blocks in this resource have several known limitations.** Consider using `aws.wafv2.WebAclRule` to manage rules as separate resources instead. Rule blocks used to identify the web requests that you want to `allow`, `block`, or `count`. See `rule` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
   /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
   late final pulumi.Output<String> scope;
-  /// Map of key-value pairs to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of key-value pairs to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Specifies the domains that AWS WAF should accept in a web request token. This enables the use of tokens across multiple protected websites. When AWS WAF provides a token, it uses the domain of the AWS resource that the web ACL is protecting. If you don't specify a list of token domains, AWS WAF accepts tokens only for the domain of the protected resource. With a token domain list, AWS WAF accepts the resource's host domain plus all domains in the token domain list, including their prefixed subdomains.
   late final pulumi.Output<List<String>?> tokenDomains;
-  /// Defines and enables Amazon CloudWatch metrics and web request sample collection. See `visibility_config` below for details.
+  /// Defines and enables Amazon CloudWatch metrics and web request sample collection. See `visibilityConfig` below for details.
   late final pulumi.Output<WebAclVisibilityConfig> visibilityConfig;
 
   /// Creates a new [WebAcl].

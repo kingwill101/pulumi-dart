@@ -14,6 +14,216 @@ import 'pod_identity_association_state.dart';
 ///
 /// ## Example Usage
 ///
+/// ### With Inline Session Policy
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.eks.PodIdentityAssociation("example", {
+///     clusterName: exampleAwsEksCluster.name,
+///     namespace: "example",
+///     serviceAccount: "example-sa",
+///     roleArn: exampleAwsIamRole.arn,
+///     disableSessionTags: true,
+///     policy: JSON.stringify({
+///         Version: "2012-10-17",
+///         Statement: [{
+///             Effect: "Allow",
+///             Action: ["s3:GetObject"],
+///             Resource: "arn:aws:s3:::my-bucket/*",
+///         }],
+///     }),
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import json
+/// import pulumi_aws as aws
+///
+/// example = aws.eks.PodIdentityAssociation("example",
+///     cluster_name=example_aws_eks_cluster["name"],
+///     namespace="example",
+///     service_account="example-sa",
+///     role_arn=example_aws_iam_role["arn"],
+///     disable_session_tags=True,
+///     policy=json.dumps({
+///         "Version": "2012-10-17",
+///         "Statement": [{
+///             "Effect": "Allow",
+///             "Action": ["s3:GetObject"],
+///             "Resource": "arn:aws:s3:::my-bucket/*",
+///         }],
+///     }))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using System.Text.Json;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Eks.PodIdentityAssociation("example", new()
+///     {
+///         ClusterName = exampleAwsEksCluster.Name,
+///         Namespace = "example",
+///         ServiceAccount = "example-sa",
+///         RoleArn = exampleAwsIamRole.Arn,
+///         DisableSessionTags = true,
+///         Policy = JsonSerializer.Serialize(new Dictionary<string, object?>
+///         {
+///             ["Version"] = "2012-10-17",
+///             ["Statement"] = new[]
+///             {
+///                 new Dictionary<string, object?>
+///                 {
+///                     ["Effect"] = "Allow",
+///                     ["Action"] = new[]
+///                     {
+///                         "s3:GetObject",
+///                     },
+///                     ["Resource"] = "arn:aws:s3:::my-bucket/*",
+///                 },
+///             },
+///         }),
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"encoding/json"
+///
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/eks"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 			"Version": "2012-10-17",
+/// 			"Statement": []map[string]interface{}{
+/// 				map[string]interface{}{
+/// 					"Effect": "Allow",
+/// 					"Action": []string{
+/// 						"s3:GetObject",
+/// 					},
+/// 					"Resource": "arn:aws:s3:::my-bucket/*",
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		_, err = eks.NewPodIdentityAssociation(ctx, "example", &eks.PodIdentityAssociationArgs{
+/// 			ClusterName:        pulumi.Any(exampleAwsEksCluster.Name),
+/// 			Namespace:          pulumi.String("example"),
+/// 			ServiceAccount:     pulumi.String("example-sa"),
+/// 			RoleArn:            pulumi.Any(exampleAwsIamRole.Arn),
+/// 			DisableSessionTags: pulumi.Bool(true),
+/// 			Policy:             pulumi.String(json0),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_eks_podidentityassociation" "example" {
+///   cluster_name         = exampleAwsEksCluster.name
+///   namespace            = "example"
+///   service_account      = "example-sa"
+///   role_arn             = exampleAwsIamRole.arn
+///   disable_session_tags = true
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Effect"   = "Allow"
+///       "Action"   = ["s3:GetObject"]
+///       "Resource" = "arn:aws:s3:::my-bucket/*"
+///     }]
+///   })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.eks.PodIdentityAssociation;
+/// import com.pulumi.aws.eks.PodIdentityAssociationArgs;
+/// import static com.pulumi.codegen.internal.Serialization.*;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new PodIdentityAssociation("example", PodIdentityAssociationArgs.builder()
+///             .clusterName(exampleAwsEksCluster.name())
+///             .namespace("example")
+///             .serviceAccount("example-sa")
+///             .roleArn(exampleAwsIamRole.arn())
+///             .disableSessionTags(true)
+///             .policy(serializeJson(
+///                 jsonObject(
+///                     jsonProperty("Version", "2012-10-17"),
+///                     jsonProperty("Statement", jsonArray(jsonObject(
+///                         jsonProperty("Effect", "Allow"),
+///                         jsonProperty("Action", jsonArray("s3:GetObject")),
+///                         jsonProperty("Resource", "arn:aws:s3:::my-bucket/*")
+///                     )))
+///                 )))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:eks:PodIdentityAssociation
+///     properties:
+///       clusterName: ${exampleAwsEksCluster.name}
+///       namespace: example
+///       serviceAccount: example-sa
+///       roleArn: ${exampleAwsIamRole.arn}
+///       disableSessionTags: true
+///       policy:
+///         fn::toJSON:
+///           Version: 2012-10-17
+///           Statement:
+///             - Effect: Allow
+///               Action:
+///                 - s3:GetObject
+///               Resource: arn:aws:s3:::my-bucket/*
+/// ```
+///
+///
 /// ### Basic Usage
 ///
 ///
@@ -193,6 +403,41 @@ import 'pod_identity_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["pods.eks.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole", "sts:TagSession"]
+///   }
+/// }
+///
+/// resource "aws_iam_role" "example" {
+///   name               = "eks-pod-identity-example"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "example_s3" {
+///   policy_arn = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
+///   role       = aws_iam_role.example.name
+/// }
+/// resource "aws_eks_podidentityassociation" "example" {
+///   cluster_name    = exampleAwsEksCluster.name
+///   namespace       = "example"
+///   service_account = "example-sa"
+///   role_arn        = aws_iam_role.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -201,14 +446,16 @@ import 'pod_identity_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
 /// import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
 /// import com.pulumi.aws.eks.PodIdentityAssociation;
 /// import com.pulumi.aws.eks.PodIdentityAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -293,10 +540,23 @@ import 'pod_identity_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EKS (Elastic Kubernetes) Pod Identity Association using the `cluster_name` and `association_id` separated by a comma (`,`). For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `clusterName` (String) Name of the EKS Cluster.
+/// * `associationId` (String) ID of the association.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Pod Identity Associations using `clusterName` and `associationId` separated by a comma (`,`). For example:
 ///
 /// ```sh
-/// $ pulumi import aws:eks/podIdentityAssociation:PodIdentityAssociation example example,a-12345678
+/// $ pulumi import aws:eks/podIdentityAssociation:PodIdentityAssociation example example-cluster,a-yrpsdroc4ei7k6xps
 /// ```
 class PodIdentityAssociation extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the association.
@@ -305,12 +565,14 @@ class PodIdentityAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> associationId;
   /// The name of the cluster to create the association in.
   late final pulumi.Output<String> clusterName;
-  /// Disable the tags that are automatically added to role session by Amazon EKS.
+  /// Disable the tags that are automatically added to role session by Amazon EKS. Must be set to `true` when `policy` is specified.
   late final pulumi.Output<bool> disableSessionTags;
   /// The unique identifier for this association for a target IAM role. You put this value in the trust policy of the target role, in a Condition to match the sts.ExternalId.
   late final pulumi.Output<String> externalId;
   /// The name of the Kubernetes namespace inside the cluster to create the association in. The service account and the pods that use the service account must be in this namespace.
   late final pulumi.Output<String> namespace;
+  /// An IAM policy in JSON format (as an escaped string) that applies additional restrictions to this Pod Identity association beyond the IAM policies attached to the IAM role. The effective permissions are the intersection of the role's policies and this policy, allowing you to enforce least privilege across multiple associations that share the same role. Requires `disableSessionTags = true`.
+  late final pulumi.Output<String?> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The Amazon Resource Name (ARN) of the IAM role to associate with the service account. The EKS Pod Identity agent manages credentials to assume this role for applications in the containers in the pods that use this service account.
@@ -319,11 +581,11 @@ class PodIdentityAssociation extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> serviceAccount;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The Amazon Resource Name (ARN) of the IAM role to be chained to the the IAM role specified as `role_arn`.
+  /// The Amazon Resource Name (ARN) of the IAM role to be chained to the the IAM role specified as `roleArn`.
   late final pulumi.Output<String?> targetRoleArn;
 
   /// Creates a new [PodIdentityAssociation].
@@ -346,6 +608,7 @@ class PodIdentityAssociation extends pulumi.CustomResource {
     disableSessionTags = registerOutput<bool>('disableSessionTags');
     externalId = registerOutput<String>('externalId');
     namespace = registerOutput<String>('namespace');
+    policy = registerOutput<String?>('policy');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     serviceAccount = registerOutput<String>('serviceAccount');
@@ -383,6 +646,7 @@ class PodIdentityAssociation extends pulumi.CustomResource {
     disableSessionTags = registerOutput<bool>('disableSessionTags');
     externalId = registerOutput<String>('externalId');
     namespace = registerOutput<String>('namespace');
+    policy = registerOutput<String?>('policy');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     serviceAccount = registerOutput<String>('serviceAccount');

@@ -105,6 +105,27 @@ import 'distribution_tenant_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_distributiontenant" "example" {
+///   name            = "example-tenant"
+///   distribution_id = exampleAwsCloudfrontMultitenantDistribution.id
+///   enabled         = true
+///   domains {
+///     domain = "tenant.example.com"
+///   }
+///   tags = {
+///     "Environment" = "production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +135,8 @@ import 'distribution_tenant_timeouts.dart';
 /// import com.pulumi.aws.cloudfront.DistributionTenant;
 /// import com.pulumi.aws.cloudfront.DistributionTenantArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionTenantDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -320,6 +341,41 @@ import 'distribution_tenant_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_distributiontenant" "example" {
+///   name            = "example-tenant"
+///   distribution_id = exampleAwsCloudfrontMultitenantDistribution.id
+///   enabled         = false
+///   domains {
+///     domain = "tenant.example.com"
+///   }
+///   customizations = {
+///     geo_restriction = {
+///       restriction_type = "whitelist"
+///       locations        = ["US", "CA"]
+///     }
+///     certificate = {
+///       arn = tenantCert.arn
+///     }
+///     web_acl = {
+///       action = "override"
+///       arn    = tenantWaf.arn
+///     }
+///   }
+///   tags = {
+///     "Environment" = "production"
+///     "Tenant"      = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -333,8 +389,8 @@ import 'distribution_tenant_timeouts.dart';
 /// import com.pulumi.aws.cloudfront.inputs.DistributionTenantCustomizationsGeoRestrictionArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionTenantCustomizationsCertificateArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionTenantCustomizationsWebAclArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -434,9 +490,9 @@ class DistributionTenant extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
   /// Current status of the distribution tenant.
   late final pulumi.Output<String> status;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<DistributionTenantTimeouts?> timeouts;
   /// If enabled, the resource will wait for the distribution tenant status to change from `InProgress` to `Deployed`. Setting this to `false` will skip the process. Default: `true`.

@@ -67,7 +67,7 @@ import 'authorizer_state.dart';
 /// const invocationPolicyRolePolicy = new aws.iam.RolePolicy("invocation_policy", {
 ///     name: "default",
 ///     role: invocationRole.id,
-///     policy: invocationPolicy.apply(invocationPolicy => invocationPolicy.json),
+///     policy: invocationPolicy.json,
 /// });
 /// ```
 /// ```python
@@ -316,7 +316,7 @@ import 'authorizer_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		lambda, err := iam.NewRole(ctx, "lambda", &iam.RoleArgs{
+/// 		lambda2, err := iam.NewRole(ctx, "lambda", &iam.RoleArgs{
 /// 			Name:             pulumi.String("demo-lambda"),
 /// 			AssumeRolePolicy: pulumi.String(lambdaAssumeRole.Json),
 /// 		})
@@ -332,7 +332,7 @@ import 'authorizer_state.dart';
 /// 		authorizer, err := lambda.NewFunction(ctx, "authorizer", &lambda.FunctionArgs{
 /// 			Code:           pulumi.NewFileArchive("lambda-function.zip"),
 /// 			Name:           pulumi.String("api_gateway_authorizer"),
-/// 			Role:           lambda.Arn,
+/// 			Role:           lambda2.Arn,
 /// 			Handler:        pulumi.String("exports.example"),
 /// 			SourceCodeHash: pulumi.String(invokeFilebase64sha256.Result),
 /// 		})
@@ -341,7 +341,7 @@ import 'authorizer_state.dart';
 /// 		}
 /// 		_, err = apigateway.NewAuthorizer(ctx, "demo", &apigateway.AuthorizerArgs{
 /// 			Name:                  pulumi.String("demo"),
-/// 			RestApi:               demoRestApi.ID(),
+/// 			RestApi:               demoRestApi.ID().ToIDOutput().ToStringOutput(),
 /// 			AuthorizerUri:         authorizer.InvokeArn,
 /// 			AuthorizerCredentials: invocationRole.Arn,
 /// 		})
@@ -362,17 +362,86 @@ import 'authorizer_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "invocation_policy", &iam.RolePolicyArgs{
-/// 			Name: pulumi.String("default"),
-/// 			Role: invocationRole.ID(),
-/// 			Policy: pulumi.String(invocationPolicy.ApplyT(func(invocationPolicy iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &invocationPolicy.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:   pulumi.String("default"),
+/// 			Role:   invocationRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: invocationPolicy.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "invocationAssumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["apigateway.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "invocationPolicy" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["lambda:InvokeFunction"]
+///     resources = [aws_lambda_function.authorizer.arn]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "lambdaAssumeRole" {
+///   statements {
+///     effect  = "Allow"
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["lambda.amazonaws.com"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_authorizer" "demo" {
+///   name                   = "demo"
+///   rest_api               = aws_apigateway_restapi.demo.id
+///   authorizer_uri         = aws_lambda_function.authorizer.invoke_arn
+///   authorizer_credentials = aws_iam_role.invocation_role.arn
+/// }
+/// resource "aws_apigateway_restapi" "demo" {
+///   name = "auth-demo"
+/// }
+/// resource "aws_iam_role" "invocation_role" {
+///   name               = "api_gateway_auth_invocation"
+///   path               = "/"
+///   assume_role_policy = data.aws_iam_getpolicydocument.invocationAssumeRole.json
+/// }
+/// resource "aws_iam_rolepolicy" "invocation_policy" {
+///   name   = "default"
+///   role   = aws_iam_role.invocation_role.id
+///   policy = data.aws_iam_getpolicydocument.invocationPolicy.json
+/// }
+/// resource "aws_iam_role" "lambda" {
+///   name               = "demo-lambda"
+///   assume_role_policy = data.aws_iam_getpolicydocument.lambdaAssumeRole.json
+/// }
+/// resource "aws_lambda_function" "authorizer" {
+///   code             = fileArchive("lambda-function.zip")
+///   name             = "api_gateway_authorizer"
+///   role             = aws_iam_role.lambda.arn
+///   handler          = "exports.example"
+///   source_code_hash = filebase64sha256("lambda-function.zip")
 /// }
 /// ```
 /// ```java
@@ -385,6 +454,8 @@ import 'authorizer_state.dart';
 /// import com.pulumi.aws.apigateway.RestApiArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.lambda.Function;
@@ -396,8 +467,8 @@ import 'authorizer_state.dart';
 /// import com.pulumi.aws.iam.RolePolicy;
 /// import com.pulumi.aws.iam.RolePolicyArgs;
 /// import com.pulumi.asset.FileArchive;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -517,7 +588,7 @@ import 'authorizer_state.dart';
 ///     type: aws:lambda:Function
 ///     properties:
 ///       code:
-///         fn::FileArchive: lambda-function.zip
+///         fn::fileArchive: lambda-function.zip
 ///       name: api_gateway_authorizer
 ///       role: ${lambda.arn}
 ///       handler: exports.example
@@ -579,8 +650,7 @@ class Authorizer extends pulumi.CustomResource {
   late final pulumi.Output<String?> authorizerCredentials;
   /// TTL of cached authorizer results in seconds. Defaults to `300`.
   late final pulumi.Output<int?> authorizerResultTtlInSeconds;
-  /// Authorizer's Uniform Resource Identifier (URI). This must be a well-formed Lambda function URI in the form of `arn:aws:apigateway:{region}:lambda:path/{service_api}`,
-  /// e.g., `arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:012345678912:function:my-function/invocations`
+  /// Authorizer's Uniform Resource Identifier (URI). This must be a well-formed Lambda function URI in the form of `arn:aws:apigateway:{region}:lambda:path/{service_api}`, e.g., `arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:012345678912:function:my-function/invocations`
   late final pulumi.Output<String?> authorizerUri;
   /// Source of the identity in an incoming request. Defaults to `method.request.header.Authorization`. For `REQUEST` type, this may be a comma-separated list of values, including headers, query string parameters and stage variables - e.g., `"method.request.header.SomeHeaderName,method.request.querystring.SomeQueryStringName,stageVariables.SomeStageVariableName"`
   late final pulumi.Output<String?> identitySource;

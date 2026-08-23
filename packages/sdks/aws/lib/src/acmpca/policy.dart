@@ -189,73 +189,116 @@ import 'policy_state.dart';
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// example, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Sid: pulumi.StringRef("1"),
-/// Effect: pulumi.StringRef("Allow"),
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "AWS",
-/// Identifiers: interface{}{
-/// current.AccountId,
-/// },
-/// },
-/// },
-/// Actions: []string{
-/// "acm-pca:DescribeCertificateAuthority",
-/// "acm-pca:GetCertificate",
-/// "acm-pca:GetCertificateAuthorityCertificate",
-/// "acm-pca:ListPermissions",
-/// "acm-pca:ListTags",
-/// },
-/// Resources: interface{}{
-/// exampleAwsAcmpcaCertificateAuthority.Arn,
-/// },
-/// },
-/// {
-/// Sid: pulumi.StringRef("2"),
-/// Effect: pulumi.StringRef(allow),
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "AWS",
-/// Identifiers: interface{}{
-/// current.AccountId,
-/// },
-/// },
-/// },
-/// Actions: []string{
-/// "acm-pca:IssueCertificate",
-/// },
-/// Resources: interface{}{
-/// exampleAwsAcmpcaCertificateAuthority.Arn,
-/// },
-/// Conditions: []iam.GetPolicyDocumentStatementCondition{
-/// {
-/// Test: "StringEquals",
-/// Variable: "acm-pca:TemplateArn",
-/// Values: []string{
-/// "arn:aws:acm-pca:::template/EndEntityCertificate/V1",
-/// },
-/// },
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Sid:    pulumi.StringRef("1"),
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "AWS",
+/// 							Identifiers: pulumi.StringArray{
+/// 								current.AccountId,
+/// 							},
+/// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"acm-pca:DescribeCertificateAuthority",
+/// 						"acm-pca:GetCertificate",
+/// 						"acm-pca:GetCertificateAuthorityCertificate",
+/// 						"acm-pca:ListPermissions",
+/// 						"acm-pca:ListTags",
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						exampleAwsAcmpcaCertificateAuthority.Arn,
+/// 					},
+/// 				},
+/// 				{
+/// 					Sid:    pulumi.StringRef("2"),
+/// 					Effect: pulumi.StringRef(allow),
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "AWS",
+/// 							Identifiers: pulumi.StringArray{
+/// 								current.AccountId,
+/// 							},
+/// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"acm-pca:IssueCertificate",
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						exampleAwsAcmpcaCertificateAuthority.Arn,
+/// 					},
+/// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
+/// 						{
+/// 							Test:     "StringEquals",
+/// 							Variable: "acm-pca:TemplateArn",
+/// 							Values: []string{
+/// 								"arn:aws:acm-pca:::template/EndEntityCertificate/V1",
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = acmpca.NewPolicy(ctx, "example", &acmpca.PolicyArgs{
+/// 			ResourceArn: pulumi.Any(exampleAwsAcmpcaCertificateAuthority.Arn),
+/// 			Policy:      pulumi.String(example.Json),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// _, err = acmpca.NewPolicy(ctx, "example", &acmpca.PolicyArgs{
-/// ResourceArn: pulumi.Any(exampleAwsAcmpcaCertificateAuthority.Arn),
-/// Policy: pulumi.String(example.Json),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// return nil
-/// })
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     sid    = "1"
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = [current.accountId]
+///     }
+///     actions   = ["acm-pca:DescribeCertificateAuthority", "acm-pca:GetCertificate", "acm-pca:GetCertificateAuthorityCertificate", "acm-pca:ListPermissions", "acm-pca:ListTags"]
+///     resources = [exampleAwsAcmpcaCertificateAuthority.arn]
+///   }
+///   statements {
+///     sid    = "2"
+///     effect = allow
+///     principals {
+///       type        = "AWS"
+///       identifiers = [current.accountId]
+///     }
+///     actions   = ["acm-pca:IssueCertificate"]
+///     resources = [exampleAwsAcmpcaCertificateAuthority.arn]
+///     conditions {
+///       test     = "StringEquals"
+///       variable = "acm-pca:TemplateArn"
+///       values   = ["arn:aws:acm-pca:::template/EndEntityCertificate/V1"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_acmpca_policy" "example" {
+///   resource_arn = exampleAwsAcmpcaCertificateAuthority.arn
+///   policy       = data.aws_iam_getpolicydocument.example.json
 /// }
 /// ```
 /// ```java
@@ -266,10 +309,13 @@ import 'policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.acmpca.Policy;
 /// import com.pulumi.aws.acmpca.PolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -375,10 +421,10 @@ import 'policy_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the ACM PCA certificate authority.
+/// - `resourceArn` (String) Amazon Resource Name (ARN) of the ACM PCA certificate authority.
 ///
 ///
-/// Using `pulumi import`, import `aws.acmpca.Policy` using the `resource_arn` value. For example:
+/// Using `pulumi import`, import `aws.acmpca.Policy` using the `resourceArn` value. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:acmpca/policy:Policy example arn:aws:acm-pca:us-east-1:123456789012:certificate-authority/12345678-1234-1234-1234-123456789012

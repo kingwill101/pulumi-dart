@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodeSpecListenerTimeoutGrpcPerRequest {
+  /// Unit of time.
   final pulumi.Input<String> unit;
+  /// Value for the JSON.
   final pulumi.Input<int> value;
 
   /// Creates a new [GetVirtualNodeSpecListenerTimeoutGrpcPerRequest].
-  /// [unit] Required.
-  /// [value] Required.
+  /// [unit] Unit of time.
+  /// [value] Value for the JSON.
   const GetVirtualNodeSpecListenerTimeoutGrpcPerRequest({
     required this.unit,
     required this.value,
@@ -28,4 +30,3 @@ class GetVirtualNodeSpecListenerTimeoutGrpcPerRequest {
     );
   }
 }
-

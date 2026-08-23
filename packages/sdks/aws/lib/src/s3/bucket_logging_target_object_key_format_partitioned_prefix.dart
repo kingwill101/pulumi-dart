@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketLoggingTargetObjectKeyFormatPartitionedPrefix {
-  /// Specifies the partition date source for the partitioned prefix. Valid values: `EventTime`, `DeliveryTime`.
+  /// Partition date source for the partitioned prefix. Valid values: `EventTime`, `DeliveryTime`.
   final pulumi.Input<String> partitionDateSource;
 
   /// Creates a new [BucketLoggingTargetObjectKeyFormatPartitionedPrefix].
-  /// [partitionDateSource] Specifies the partition date source for the partitioned prefix. Valid values: `EventTime`, `DeliveryTime`.
+  /// [partitionDateSource] Partition date source for the partitioned prefix. Valid values: `EventTime`, `DeliveryTime`.
   const BucketLoggingTargetObjectKeyFormatPartitionedPrefix({
     required this.partitionDateSource,
   });
@@ -24,4 +24,3 @@ class BucketLoggingTargetObjectKeyFormatPartitionedPrefix {
     );
   }
 }
-

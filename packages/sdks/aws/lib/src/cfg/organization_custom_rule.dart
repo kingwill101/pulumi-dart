@@ -2,9 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'organization_custom_rule_args.dart';
 import 'organization_custom_rule_state.dart';
 
-/// Manages a Config Organization Custom Rule. More information about these rules can be found in the [Enabling AWS Config Rules Across all Accounts in Your Organization](https://docs.aws.amazon.com/config/latest/developerguide/config-rule-multi-account-deployment.html) and [AWS Config Managed Rules](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html) documentation. For working with Organization Managed Rules (those invoking an AWS managed rule), see the `aws_config_organization_managed__rule` resource.
+/// Manages a Config Organization Custom Rule. More information about these rules can be found in the [Enabling AWS Config Rules Across all Accounts in Your Organization](https://docs.aws.amazon.com/config/latest/developerguide/config-rule-multi-account-deployment.html) and [AWS Config Managed Rules](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html) documentation. For working with Organization Managed Rules (those invoking an AWS managed rule), see the `aws.cfg.OrganizationManagedRule` resource.
 ///
-/// &gt; **NOTE:** This resource must be created in the Organization master account and rules will include the master account unless its ID is added to the `excluded_accounts` argument.
+/// &gt; **NOTE:** This resource must be created in the Organization master account and rules will include the master account unless its ID is added to the `excludedAccounts` argument.
 ///
 /// &gt; **NOTE:** The proper Lambda permission to allow the AWS Config service invoke the Lambda Function must be in place before the rule will successfully create or update. See also the `aws.lambda.Permission` resource.
 ///
@@ -148,6 +148,32 @@ import 'organization_custom_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_permission" "example" {
+///   action       = "lambda:InvokeFunction"
+///   function     = exampleAwsLambdaFunction.arn
+///   principal    = "config.amazonaws.com"
+///   statement_id = "AllowExecutionFromConfig"
+/// }
+/// resource "aws_organizations_organization" "example" {
+///   aws_service_access_principals = ["config-multiaccountsetup.amazonaws.com"]
+///   feature_set                   = "ALL"
+/// }
+/// resource "aws_cfg_organizationcustomrule" "example" {
+///   depends_on          = [aws_lambda_permission.example, aws_organizations_organization.example]
+///   lambda_function_arn = exampleAwsLambdaFunction.arn
+///   name                = "example"
+///   trigger_types       = ["ConfigurationItemChangeNotification"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -161,8 +187,8 @@ import 'organization_custom_rule_state.dart';
 /// import com.pulumi.aws.cfg.OrganizationCustomRule;
 /// import com.pulumi.aws.cfg.OrganizationCustomRuleArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -232,7 +258,19 @@ import 'organization_custom_rule_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Config Organization Custom Rules using the name. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the rule.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Config Organization Custom Rules using the `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cfg/organizationCustomRule:OrganizationCustomRule example example

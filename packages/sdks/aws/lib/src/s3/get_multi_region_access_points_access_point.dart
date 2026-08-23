@@ -11,7 +11,7 @@ class GetMultiRegionAccessPointsAccessPoint {
   final pulumi.Input<String> createdAt;
   /// Name of the multi-region access point.
   final pulumi.Input<String> name;
-  /// Public access block configuration for this multi-region access point. See `public_access_block` below.
+  /// Public access block configuration for this multi-region access point. See `publicAccessBlock` below.
   final pulumi.Input<List<GetMultiRegionAccessPointsAccessPointPublicAccessBlock>> publicAccessBlocks;
   /// List of AWS Regions where the multi-region access point has data support. See `regions` below.
   final pulumi.Input<List<GetMultiRegionAccessPointsAccessPointRegion>> regions;
@@ -22,7 +22,7 @@ class GetMultiRegionAccessPointsAccessPoint {
   /// [alias] Alias for the multi-region access point.
   /// [createdAt] Time the multi-region access point was created.
   /// [name] Name of the multi-region access point.
-  /// [publicAccessBlocks] Public access block configuration for this multi-region access point. See `public_access_block` below.
+  /// [publicAccessBlocks] Public access block configuration for this multi-region access point. See `publicAccessBlock` below.
   /// [regions] List of AWS Regions where the multi-region access point has data support. See `regions` below.
   /// [status] Current status of the multi-region access point.
   const GetMultiRegionAccessPointsAccessPoint({
@@ -56,4 +56,3 @@ class GetMultiRegionAccessPointsAccessPoint {
     );
   }
 }
-

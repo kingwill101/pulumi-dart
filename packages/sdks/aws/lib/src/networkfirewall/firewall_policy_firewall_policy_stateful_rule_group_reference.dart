@@ -10,7 +10,7 @@ class FirewallPolicyFirewallPolicyStatefulRuleGroupReference {
   final pulumi.Input<String>? deepThreatInspection;
   /// Configuration block for override values
   final pulumi.Input<FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride>? override;
-  /// An integer setting that indicates the order in which to apply the stateful rule groups in a single policy. This argument must be specified if the policy has a `stateful_engine_options` block with a `rule_order` value of `STRICT_ORDER`. AWS Network Firewall applies each stateful rule group to a packet starting with the group that has the lowest priority setting.
+  /// An integer setting that indicates the order in which to apply the stateful rule groups in a single policy. This argument must be specified if the policy has a `statefulEngineOptions` block with a `ruleOrder` value of `STRICT_ORDER`. AWS Network Firewall applies each stateful rule group to a packet starting with the group that has the lowest priority setting.
   final pulumi.Input<int>? priority;
   /// The Amazon Resource Name (ARN) of the stateful rule group.
   final pulumi.Input<String> resourceArn;
@@ -18,7 +18,7 @@ class FirewallPolicyFirewallPolicyStatefulRuleGroupReference {
   /// Creates a new [FirewallPolicyFirewallPolicyStatefulRuleGroupReference].
   /// [deepThreatInspection] Whether to enable deep threat inspection, which allows AWS to analyze service logs of network traffic processed by these rule groups to identify threat indicators across customers. AWS will use these threat indicators to improve the active threat defense managed rule groups and protect the security of AWS customers and services. This only applies to active threat defense maanaged rule groups.
   /// [override] Configuration block for override values
-  /// [priority] An integer setting that indicates the order in which to apply the stateful rule groups in a single policy. This argument must be specified if the policy has a `stateful_engine_options` block with a `rule_order` value of `STRICT_ORDER`. AWS Network Firewall applies each stateful rule group to a packet starting with the group that has the lowest priority setting.
+  /// [priority] An integer setting that indicates the order in which to apply the stateful rule groups in a single policy. This argument must be specified if the policy has a `statefulEngineOptions` block with a `ruleOrder` value of `STRICT_ORDER`. AWS Network Firewall applies each stateful rule group to a packet starting with the group that has the lowest priority setting.
   /// [resourceArn] The Amazon Resource Name (ARN) of the stateful rule group.
   const FirewallPolicyFirewallPolicyStatefulRuleGroupReference({
     this.deepThreatInspection,
@@ -45,4 +45,3 @@ class FirewallPolicyFirewallPolicyStatefulRuleGroupReference {
     );
   }
 }
-

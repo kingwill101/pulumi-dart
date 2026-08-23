@@ -68,6 +68,21 @@ import 'project_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rekognition_project" "example" {
+///   name        = "example-project"
+///   auto_update = "ENABLED"
+///   feature     = "CONTENT_MODERATION"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +91,8 @@ import 'project_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rekognition.Project;
 /// import com.pulumi.aws.rekognition.ProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -166,6 +181,20 @@ import 'project_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rekognition_project" "example" {
+///   name    = "example-project"
+///   feature = "CUSTOM_LABELS"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -174,8 +203,8 @@ import 'project_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rekognition.Project;
 /// import com.pulumi.aws.rekognition.ProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -207,6 +236,18 @@ import 'project_timeouts.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` - (String) Desired name of the project.
+///
+/// #### Optional
+///
+/// * `accountId` - (String) AWS Account where this resource is managed.
+/// * `region` - (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Rekognition Project using the `name`. For example:
 ///
 /// ```sh
@@ -218,16 +259,16 @@ class Project extends pulumi.CustomResource {
   /// Specify if automatic retraining should occur. Valid values are `ENABLED` or `DISABLED`. Must be set when `feature` is `CONTENT_MODERATION`, but do not set otherwise.
   late final pulumi.Output<String> autoUpdate;
   /// Specify the feature being customized. Valid values are `CONTENT_MODERATION` or `CUSTOM_LABELS`. Defaults to `CUSTOM_LABELS`.
-  late final pulumi.Output<String?> feature;
+  late final pulumi.Output<String> feature;
   /// Desired name of the project.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ProjectTimeouts?> timeouts;
 
@@ -247,7 +288,7 @@ class Project extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     autoUpdate = registerOutput<String>('autoUpdate');
-    feature = registerOutput<String?>('feature');
+    feature = registerOutput<String>('feature');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -280,7 +321,7 @@ class Project extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     autoUpdate = registerOutput<String>('autoUpdate');
-    feature = registerOutput<String?>('feature');
+    feature = registerOutput<String>('feature');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');

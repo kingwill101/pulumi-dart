@@ -15,6 +15,8 @@ class EnvironmentBlueprintConfigurationArgs {
   final pulumi.Input<List<String>> enabledRegions;
   /// ID of the Environment Blueprint
   final pulumi.Input<String> environmentBlueprintId;
+  /// A map of global parameters to configure for the blueprint across all regions.
+  final pulumi.Input<Map<String, String>>? globalParameters;
   /// ARN of the manage access role with which this blueprint is created.
   final pulumi.Input<String>? manageAccessRoleArn;
   /// ARN of the provisioning role with which this blueprint is created.
@@ -28,6 +30,7 @@ class EnvironmentBlueprintConfigurationArgs {
   /// [domainId] ID of the Domain.
   /// [enabledRegions] Regions in which the blueprint is enabled
   /// [environmentBlueprintId] ID of the Environment Blueprint
+  /// [globalParameters] A map of global parameters to configure for the blueprint across all regions.
   /// [manageAccessRoleArn] ARN of the manage access role with which this blueprint is created.
   /// [provisioningRoleArn] ARN of the provisioning role with which this blueprint is created.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -36,6 +39,7 @@ class EnvironmentBlueprintConfigurationArgs {
     required this.domainId,
     required this.enabledRegions,
     required this.environmentBlueprintId,
+    this.globalParameters,
     this.manageAccessRoleArn,
     this.provisioningRoleArn,
     this.region,
@@ -47,6 +51,7 @@ class EnvironmentBlueprintConfigurationArgs {
       'domainId': domainId,
       'enabledRegions': enabledRegions,
       'environmentBlueprintId': environmentBlueprintId,
+      'globalParameters': ?globalParameters,
       'manageAccessRoleArn': ?manageAccessRoleArn,
       'provisioningRoleArn': ?provisioningRoleArn,
       'region': ?region,
@@ -59,6 +64,7 @@ class EnvironmentBlueprintConfigurationArgs {
       domainId: pulumi.Input.fromValue(map['domainId'] as String),
       enabledRegions: pulumi.Input.fromValue((map['enabledRegions'] as List).cast<String>()),
       environmentBlueprintId: pulumi.Input.fromValue(map['environmentBlueprintId'] as String),
+      globalParameters: (() { final guardedValue = map['globalParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       manageAccessRoleArn: (() { final guardedValue = map['manageAccessRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisioningRoleArn: (() { final guardedValue = map['provisioningRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -66,4 +72,3 @@ class EnvironmentBlueprintConfigurationArgs {
     );
   }
 }
-

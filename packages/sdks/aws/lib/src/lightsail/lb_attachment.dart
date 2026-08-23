@@ -169,6 +169,42 @@ import 'lb_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "available" {
+///   state = "available"
+///   filters {
+///     name   = "opt-in-status"
+///     values = ["opt-in-not-required"]
+///   }
+/// }
+///
+/// resource "aws_lightsail_lb" "example" {
+///   name              = "example-load-balancer"
+///   health_check_path = "/"
+///   instance_port     = "80"
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "aws_lightsail_instance" "example" {
+///   name              = "example-instance"
+///   availability_zone = data.aws_getavailabilityzones.available.names[0]
+///   blueprint_id      = "amazon_linux_2"
+///   bundle_id         = "nano_3_0"
+/// }
+/// resource "aws_lightsail_lbattachment" "example" {
+///   lb_name       = aws_lightsail_lb.example.name
+///   instance_name = aws_lightsail_instance.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,14 +213,15 @@ import 'lb_attachment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetAvailabilityZonesArgs;
+/// import com.pulumi.aws.inputs.GetAvailabilityZonesFilterArgs;
 /// import com.pulumi.aws.lightsail.Lb;
 /// import com.pulumi.aws.lightsail.LbArgs;
 /// import com.pulumi.aws.lightsail.Instance;
 /// import com.pulumi.aws.lightsail.InstanceArgs;
 /// import com.pulumi.aws.lightsail.LbAttachment;
 /// import com.pulumi.aws.lightsail.LbAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

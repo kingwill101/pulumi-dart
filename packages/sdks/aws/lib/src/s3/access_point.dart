@@ -74,7 +74,7 @@ import 'access_point_vpc_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewAccessPoint(ctx, "example", &s3.AccessPointArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:   pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
@@ -82,6 +82,23 @@ import 'access_point_vpc_configuration.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// resource "aws_s3_accesspoint" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   name   = "example"
 /// }
 /// ```
 /// ```java
@@ -94,8 +111,8 @@ import 'access_point_vpc_configuration.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.s3.AccessPoint;
 /// import com.pulumi.aws.s3.AccessPointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -222,7 +239,7 @@ import 'access_point_vpc_configuration.dart';
 /// 			Bucket: example.Arn,
 /// 			Name:   pulumi.String("example"),
 /// 			VpcConfiguration: &s3.AccessPointVpcConfigurationArgs{
-/// 				VpcId: exampleVpc.ID(),
+/// 				VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -230,6 +247,29 @@ import 'access_point_vpc_configuration.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3control_bucket" "example" {
+///   bucket = "example"
+/// }
+/// resource "aws_s3_accesspoint" "example" {
+///   bucket = aws_s3control_bucket.example.arn
+///   name   = "example"
+///   vpc_configuration = {
+///     vpc_id = aws_ec2_vpc.example.id
+///   }
+/// }
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.0.0.0/16"
 /// }
 /// ```
 /// ```java
@@ -245,8 +285,8 @@ import 'access_point_vpc_configuration.dart';
 /// import com.pulumi.aws.s3.AccessPoint;
 /// import com.pulumi.aws.s3.AccessPointArgs;
 /// import com.pulumi.aws.s3.inputs.AccessPointVpcConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -401,6 +441,30 @@ import 'access_point_vpc_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "available" {
+///   state = "available"
+/// }
+///
+/// resource "aws_s3_directorybucket" "example" {
+///   bucket = "example--zoneId--x-s3"
+///   location = {
+///     name = data.aws_getavailabilityzones.available.zone_ids[0]
+///   }
+/// }
+/// resource "aws_s3_accesspoint" "example" {
+///   bucket = test.bucket
+///   name   = "example--zoneId--xa-s3"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -414,8 +478,8 @@ import 'access_point_vpc_configuration.dart';
 /// import com.pulumi.aws.s3.inputs.DirectoryBucketLocationArgs;
 /// import com.pulumi.aws.s3.AccessPoint;
 /// import com.pulumi.aws.s3.AccessPointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -476,7 +540,7 @@ import 'access_point_vpc_configuration.dart';
 ///
 /// **Using `pulumi import` to import.** For example:
 ///
-/// Import using the `account_id` and `name` separated by a colon (`:`) for Access Points associated with an AWS Partition S3 Bucket:
+/// Import using the `accountId` and `name` separated by a colon (`:`) for Access Points associated with an AWS Partition S3 Bucket:
 ///
 /// ```sh
 /// $ pulumi import aws:s3/accessPoint:AccessPoint example 123456789012:example
@@ -498,18 +562,17 @@ class AccessPoint extends pulumi.CustomResource {
   late final pulumi.Output<String> bucket;
   /// AWS account ID associated with the S3 bucket associated with this access point.
   late final pulumi.Output<String> bucketAccountId;
-  /// DNS domain name of the S3 Access Point in the format _`name`_-_`account_id`_.s3-accesspoint._region_.amazonaws.com.
-  /// Note: S3 access points only support secure access by HTTPS. HTTP isn't supported.
+  /// DNS domain name of the S3 Access Point in the format _`name`_-_`accountId`_.s3-accesspoint._region_.amazonaws.com. S3 access points only support secure access by HTTPS. HTTP isn't supported.
   late final pulumi.Output<String> domainName;
   /// VPC endpoints for the S3 Access Point.
   late final pulumi.Output<Map<String, String>> endpoints;
-  /// Indicates whether this access point currently has a policy that allows public access.
+  /// Whether this access point currently has a policy that allows public access.
   late final pulumi.Output<bool> hasPublicAccessPolicy;
   /// Name you want to assign to this access point. See the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-access-points.html?icmpid=docs_amazons3_console#access-points-names) for naming conditions.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-  /// Indicates whether this access point allows access from the public Internet. Values are `VPC` (the access point doesn't allow access from the public Internet) and `Internet` (the access point allows access from the public Internet, subject to the access point and bucket access policies).
+  /// Whether this access point allows access from the public Internet. Values are `VPC` (the access point doesn't allow access from the public Internet) and `Internet` (the access point allows access from the public Internet, subject to the access point and bucket access policies).
   late final pulumi.Output<String> networkOrigin;
   /// Valid JSON document that specifies the policy that you want to apply to this access point. Removing `policy` from your configuration or setting `policy` to null or an empty string (i.e., `policy = ""`) _will not_ delete the policy since it could have been set by `aws.s3control.AccessPointPolicy`. To remove the `policy`, set it to `"{}"` (an empty JSON document).
   late final pulumi.Output<String> policy;
@@ -517,9 +580,9 @@ class AccessPoint extends pulumi.CustomResource {
   late final pulumi.Output<AccessPointPublicAccessBlockConfiguration?> publicAccessBlockConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags to assign to the bucket. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the bucket. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration block to restrict access to this access point to requests from the specified Virtual Private Cloud (VPC). Required for S3 on Outposts. Detailed below.
   late final pulumi.Output<AccessPointVpcConfiguration?> vpcConfiguration;

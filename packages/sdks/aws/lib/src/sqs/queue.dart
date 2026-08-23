@@ -4,7 +4,7 @@ import 'queue_state.dart';
 
 /// Amazon SQS (Simple Queue Service) is a fully managed message queuing service that enables decoupling and scaling of microservices, distributed systems, and serverless applications. This resource allows you to create, configure, and manage an SQS queue, which acts as a reliable message buffer between producers and consumers. With support for standard and FIFO queues, SQS ensures secure, scalable, and asynchronous message processing. Use this resource to define queue attributes, configure access policies, and integrate seamlessly with AWS services like Lambda, SNS, and EC2.
 ///
-/// !&gt; AWS will hang indefinitely, leading to a `timeout while waiting` error, when creating or updating an `aws.sqs.Queue` with an associated `aws.sqs.QueuePolicy` if `Version = "2012-10-17"` is not explicitly set in the policy.
+/// &gt; AWS will hang indefinitely, leading to a `timeout while waiting` error, when creating or updating an `aws.sqs.Queue` with an associated `aws.sqs.QueuePolicy` if `Version = "2012-10-17"` is not explicitly set in the policy.
 ///
 /// ## Example Usage
 ///
@@ -114,6 +114,30 @@ import 'queue_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sqs_queue" "queue" {
+///   name                      = "example-queue"
+///   delay_seconds             = 90
+///   max_message_size          = 2048
+///   message_retention_seconds = 86400
+///   receive_wait_time_seconds = 10
+///   redrive_policy = jsonencode({
+///     "deadLetterTargetArn" = queueDeadletter.arn
+///     "maxReceiveCount"     = 4
+///   })
+///   tags = {
+///     "Environment" = "production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +147,8 @@ import 'queue_state.dart';
 /// import com.pulumi.aws.sqs.Queue;
 /// import com.pulumi.aws.sqs.QueueArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -172,7 +196,7 @@ import 'queue_state.dart';
 /// ```
 ///
 ///
-/// ## FIFO queue
+/// ### FIFO queue
 ///
 ///
 /// ```typescript
@@ -233,6 +257,21 @@ import 'queue_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sqs_queue" "queue" {
+///   name                        = "example-queue.fifo"
+///   fifo_queue                  = true
+///   content_based_deduplication = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -241,8 +280,8 @@ import 'queue_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sqs.Queue;
 /// import com.pulumi.aws.sqs.QueueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -274,7 +313,7 @@ import 'queue_state.dart';
 /// ```
 ///
 ///
-/// ## High-throughput FIFO queue
+/// ### High-throughput FIFO queue
 ///
 ///
 /// ```typescript
@@ -339,6 +378,22 @@ import 'queue_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sqs_queue" "queue" {
+///   name                  = "pulumi-example-queue.fifo"
+///   fifo_queue            = true
+///   deduplication_scope   = "messageGroup"
+///   fifo_throughput_limit = "perMessageGroupId"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -347,8 +402,8 @@ import 'queue_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sqs.Queue;
 /// import com.pulumi.aws.sqs.QueueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -382,26 +437,26 @@ import 'queue_state.dart';
 /// ```
 ///
 ///
-/// ## Dead-letter queue
+/// ### Dead-letter queue
 ///
 ///
 /// ```typescript
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
+/// const exampleQueueDeadletter = new aws.sqs.Queue("example_queue_deadletter", {name: "pulumi-example-deadletter-queue"});
 /// const queue = new aws.sqs.Queue("queue", {
 ///     name: "pulumi-example-queue",
-///     redrivePolicy: JSON.stringify({
-///         deadLetterTargetArn: queueDeadletter.arn,
+///     redrivePolicy: pulumi.jsonStringify({
+///         deadLetterTargetArn: exampleQueueDeadletter.arn,
 ///         maxReceiveCount: 4,
 ///     }),
 /// });
-/// const exampleQueueDeadletter = new aws.sqs.Queue("example_queue_deadletter", {name: "pulumi-example-deadletter-queue"});
 /// const exampleQueueRedriveAllowPolicy = new aws.sqs.RedriveAllowPolicy("example_queue_redrive_allow_policy", {
 ///     queueUrl: exampleQueueDeadletter.id,
-///     redriveAllowPolicy: JSON.stringify({
+///     redriveAllowPolicy: pulumi.jsonStringify({
 ///         redrivePermission: "byQueue",
-///         sourceQueueArns: [exampleQueue.arn],
+///         sourceQueueArns: [queue.arn],
 ///     }),
 /// });
 /// ```
@@ -410,18 +465,18 @@ import 'queue_state.dart';
 /// import json
 /// import pulumi_aws as aws
 ///
+/// example_queue_deadletter = aws.sqs.Queue("example_queue_deadletter", name="pulumi-example-deadletter-queue")
 /// queue = aws.sqs.Queue("queue",
 ///     name="pulumi-example-queue",
-///     redrive_policy=json.dumps({
-///         "deadLetterTargetArn": queue_deadletter["arn"],
+///     redrive_policy=pulumi.Output.json_dumps({
+///         "deadLetterTargetArn": example_queue_deadletter.arn,
 ///         "maxReceiveCount": 4,
 ///     }))
-/// example_queue_deadletter = aws.sqs.Queue("example_queue_deadletter", name="pulumi-example-deadletter-queue")
 /// example_queue_redrive_allow_policy = aws.sqs.RedriveAllowPolicy("example_queue_redrive_allow_policy",
 ///     queue_url=example_queue_deadletter.id,
-///     redrive_allow_policy=json.dumps({
+///     redrive_allow_policy=pulumi.Output.json_dumps({
 ///         "redrivePermission": "byQueue",
-///         "sourceQueueArns": [example_queue["arn"]],
+///         "sourceQueueArns": [queue.arn],
 ///     }))
 /// ```
 /// ```csharp
@@ -433,32 +488,32 @@ import 'queue_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var queue = new Aws.Sqs.Queue("queue", new()
-///     {
-///         Name = "pulumi-example-queue",
-///         RedrivePolicy = JsonSerializer.Serialize(new Dictionary<string, object?>
-///         {
-///             ["deadLetterTargetArn"] = queueDeadletter.Arn,
-///             ["maxReceiveCount"] = 4,
-///         }),
-///     });
-///
 ///     var exampleQueueDeadletter = new Aws.Sqs.Queue("example_queue_deadletter", new()
 ///     {
 ///         Name = "pulumi-example-deadletter-queue",
 ///     });
 ///
+///     var queue = new Aws.Sqs.Queue("queue", new()
+///     {
+///         Name = "pulumi-example-queue",
+///         RedrivePolicy = Output.JsonSerialize(Output.Create(new Dictionary<string, object?>
+///         {
+///             ["deadLetterTargetArn"] = exampleQueueDeadletter.Arn,
+///             ["maxReceiveCount"] = 4,
+///         })),
+///     });
+///
 ///     var exampleQueueRedriveAllowPolicy = new Aws.Sqs.RedriveAllowPolicy("example_queue_redrive_allow_policy", new()
 ///     {
 ///         QueueUrl = exampleQueueDeadletter.Id,
-///         RedriveAllowPolicyName = JsonSerializer.Serialize(new Dictionary<string, object?>
+///         RedriveAllowPolicyName = Output.JsonSerialize(Output.Create(new Dictionary<string, object?>
 ///         {
 ///             ["redrivePermission"] = "byQueue",
 ///             ["sourceQueueArns"] = new[]
 ///             {
-///                 exampleQueue.Arn,
+///                 queue.Arn,
 ///             },
-///         }),
+///         })),
 ///     });
 ///
 /// });
@@ -475,46 +530,79 @@ import 'queue_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 			"deadLetterTargetArn": queueDeadletter.Arn,
-/// 			"maxReceiveCount":     4,
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		json0 := string(tmpJSON0)
-/// 		_, err = sqs.NewQueue(ctx, "queue", &sqs.QueueArgs{
-/// 			Name:          pulumi.String("pulumi-example-queue"),
-/// 			RedrivePolicy: pulumi.String(json0),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
 /// 		exampleQueueDeadletter, err := sqs.NewQueue(ctx, "example_queue_deadletter", &sqs.QueueArgs{
 /// 			Name: pulumi.String("pulumi-example-deadletter-queue"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
-/// 			"redrivePermission": "byQueue",
-/// 			"sourceQueueArns": []interface{}{
-/// 				exampleQueue.Arn,
-/// 			},
+/// 		queue, err := sqs.NewQueue(ctx, "queue", &sqs.QueueArgs{
+/// 			Name: pulumi.String("pulumi-example-queue"),
+/// 			RedrivePolicy: exampleQueueDeadletter.Arn.ApplyT(func(arn string) (pulumi.String, error) {
+/// 				var _zero pulumi.String
+/// 				tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 					"deadLetterTargetArn": arn,
+/// 					"maxReceiveCount":     4,
+/// 				})
+/// 				if err != nil {
+/// 					return _zero, err
+/// 				}
+/// 				json0 := string(tmpJSON0)
+/// 				return pulumi.String(json0), nil
+/// 			}).(pulumi.StringOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		json1 := string(tmpJSON1)
 /// 		_, err = sqs.NewRedriveAllowPolicy(ctx, "example_queue_redrive_allow_policy", &sqs.RedriveAllowPolicyArgs{
-/// 			QueueUrl:           exampleQueueDeadletter.ID(),
-/// 			RedriveAllowPolicy: pulumi.String(json1),
+/// 			QueueUrl: exampleQueueDeadletter.ID().ToIDOutput().ToStringOutput(),
+/// 			RedriveAllowPolicy: queue.Arn.ApplyT(func(arn string) (pulumi.String, error) {
+/// 				var _zero pulumi.String
+/// 				tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 					"redrivePermission": "byQueue",
+/// 					"sourceQueueArns": []string{
+/// 						arn,
+/// 					},
+/// 				})
+/// 				if err != nil {
+/// 					return _zero, err
+/// 				}
+/// 				json1 := string(tmpJSON1)
+/// 				return pulumi.String(json1), nil
+/// 			}).(pulumi.StringOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sqs_queue" "queue" {
+///   name = "pulumi-example-queue"
+///   redrive_policy = jsonencode({
+///     "deadLetterTargetArn" = aws_sqs_queue.example_queue_deadletter.arn
+///     "maxReceiveCount"     = 4
+///   })
+/// }
+/// resource "aws_sqs_queue" "example_queue_deadletter" {
+///   name = "pulumi-example-deadletter-queue"
+/// }
+/// resource "aws_sqs_redriveallowpolicy" "example_queue_redrive_allow_policy" {
+///   queue_url = aws_sqs_queue.example_queue_deadletter.id
+///   redrive_allow_policy = jsonencode({
+///     "redrivePermission" = "byQueue"
+///     "sourceQueueArns"   = [aws_sqs_queue.queue.arn]
+///   })
 /// }
 /// ```
 /// ```java
@@ -528,8 +616,8 @@ import 'queue_state.dart';
 /// import com.pulumi.aws.sqs.RedriveAllowPolicy;
 /// import com.pulumi.aws.sqs.RedriveAllowPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -541,26 +629,26 @@ import 'queue_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var queue = new Queue("queue", QueueArgs.builder()
-///             .name("pulumi-example-queue")
-///             .redrivePolicy(serializeJson(
-///                 jsonObject(
-///                     jsonProperty("deadLetterTargetArn", queueDeadletter.arn()),
-///                     jsonProperty("maxReceiveCount", 4)
-///                 )))
-///             .build());
-///
 ///         var exampleQueueDeadletter = new Queue("exampleQueueDeadletter", QueueArgs.builder()
 ///             .name("pulumi-example-deadletter-queue")
 ///             .build());
 ///
+///         var queue = new Queue("queue", QueueArgs.builder()
+///             .name("pulumi-example-queue")
+///             .redrivePolicy(exampleQueueDeadletter.arn().applyValue(_arn -> serializeJson(
+///                 jsonObject(
+///                     jsonProperty("deadLetterTargetArn", _arn),
+///                     jsonProperty("maxReceiveCount", 4)
+///                 ))))
+///             .build());
+///
 ///         var exampleQueueRedriveAllowPolicy = new RedriveAllowPolicy("exampleQueueRedriveAllowPolicy", RedriveAllowPolicyArgs.builder()
 ///             .queueUrl(exampleQueueDeadletter.id())
-///             .redriveAllowPolicy(serializeJson(
+///             .redriveAllowPolicy(queue.arn().applyValue(_arn -> serializeJson(
 ///                 jsonObject(
 ///                     jsonProperty("redrivePermission", "byQueue"),
-///                     jsonProperty("sourceQueueArns", jsonArray(exampleQueue.arn()))
-///                 )))
+///                     jsonProperty("sourceQueueArns", jsonArray(_arn))
+///                 ))))
 ///             .build());
 ///
 ///     }
@@ -574,7 +662,7 @@ import 'queue_state.dart';
 ///       name: pulumi-example-queue
 ///       redrivePolicy:
 ///         fn::toJSON:
-///           deadLetterTargetArn: ${queueDeadletter.arn}
+///           deadLetterTargetArn: ${exampleQueueDeadletter.arn}
 ///           maxReceiveCount: 4
 ///   exampleQueueDeadletter:
 ///     type: aws:sqs:Queue
@@ -590,11 +678,11 @@ import 'queue_state.dart';
 ///         fn::toJSON:
 ///           redrivePermission: byQueue
 ///           sourceQueueArns:
-///             - ${exampleQueue.arn}
+///             - ${queue.arn}
 /// ```
 ///
 ///
-/// ## Server-side encryption (SSE)
+/// ### Server-side encryption (SSE)
 ///
 /// Using [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html):
 ///
@@ -653,6 +741,20 @@ import 'queue_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sqs_queue" "queue" {
+///   name                    = "pulumi-example-queue"
+///   sqs_managed_sse_enabled = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -661,8 +763,8 @@ import 'queue_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sqs.Queue;
 /// import com.pulumi.aws.sqs.QueueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -753,6 +855,21 @@ import 'queue_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sqs_queue" "queue" {
+///   name                              = "example-queue"
+///   kms_master_key_id                 = "alias/aws/sqs"
+///   kms_data_key_reuse_period_seconds = 300
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -761,8 +878,8 @@ import 'queue_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sqs.Queue;
 /// import com.pulumi.aws.sqs.QueueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -829,7 +946,7 @@ class Queue extends pulumi.CustomResource {
   late final pulumi.Output<int?> maxMessageSize;
   /// Number of seconds Amazon SQS retains a message. Integer representing seconds, from 60 (1 minute) to 1209600 (14 days). The default for this attribute is 345600 (4 days).
   late final pulumi.Output<int?> messageRetentionSeconds;
-  /// Name of the queue. Queue names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 80 characters long. For a FIFO (first-in-first-out) queue, the name must end with the `.fifo` suffix. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the queue. Queue names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 80 characters long. For a FIFO (first-in-first-out) queue, the name must end with the `.fifo` suffix. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
@@ -845,9 +962,9 @@ class Queue extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Boolean to enable server-side encryption (SSE) of message content with SQS-owned encryption keys. See [Encryption at rest](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html). The provider will only perform drift detection of its value when present in a configuration.
   late final pulumi.Output<bool> sqsManagedSseEnabled;
-  /// Map of tags to assign to the queue. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the queue. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Same as `id`: The URL for the created Amazon SQS queue.
   late final pulumi.Output<String> url;

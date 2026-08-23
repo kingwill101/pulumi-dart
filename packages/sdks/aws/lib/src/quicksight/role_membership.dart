@@ -65,6 +65,20 @@ import 'role_membership_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_rolemembership" "example" {
+///   member_name = "example-group"
+///   role        = "READER"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +87,8 @@ import 'role_membership_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.quicksight.RoleMembership;
 /// import com.pulumi.aws.quicksight.RoleMembershipArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -106,7 +120,7 @@ import 'role_membership_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import QuickSight Role Membership using a comma-delimited string combining the `aws_account_id`, `namespace`, `role`, and `member_name`. For example:
+/// Using `pulumi import`, import QuickSight Role Membership using a comma-delimited string combining the `awsAccountId`, `namespace`, `role`, and `memberName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:quicksight/roleMembership:RoleMembership example 012345678901,default,READER,example-group

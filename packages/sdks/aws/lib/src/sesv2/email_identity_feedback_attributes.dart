@@ -76,6 +76,23 @@ import 'email_identity_feedback_attributes_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sesv2_emailidentity" "example" {
+///   email_identity = "example.com"
+/// }
+/// resource "aws_sesv2_emailidentityfeedbackattributes" "example" {
+///   email_identity           = aws_sesv2_emailidentity.example.email_identity
+///   email_forwarding_enabled = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +103,8 @@ import 'email_identity_feedback_attributes_state.dart';
 /// import com.pulumi.aws.sesv2.EmailIdentityArgs;
 /// import com.pulumi.aws.sesv2.EmailIdentityFeedbackAttributes;
 /// import com.pulumi.aws.sesv2.EmailIdentityFeedbackAttributesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -128,7 +145,7 @@ import 'email_identity_feedback_attributes_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SESv2 (Simple Email V2) Email Identity Feedback Attributes using the `email_identity`. For example:
+/// Using `pulumi import`, import SESv2 (Simple Email V2) Email Identity Feedback Attributes using the `emailIdentity`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sesv2/emailIdentityFeedbackAttributes:EmailIdentityFeedbackAttributes example example.com

@@ -70,6 +70,19 @@ import 'get_secrets_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_kms_getalias" "s3" {
+///   name = "alias/aws/s3"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +91,8 @@ import 'get_secrets_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kms.KmsFunctions;
 /// import com.pulumi.aws.kms.inputs.GetAliasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -211,6 +224,25 @@ Future<GetAliasResult> getAlias(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_kms_getciphertext" "oauth" {
+///   key_id    = aws_kms_key.oauth_config.key_id
+///   plaintext = "{\n  \\\"client_id\\\": \\\"e587dbae22222f55da22\\\",\n  \\\"client_secret\\\": \\\"8289575d00000ace55e1815ec13673955721b8a5\\\"\n}\n"
+/// }
+///
+/// resource "aws_kms_key" "oauth_config" {
+///   description = "oauth config"
+///   is_enabled  = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -221,8 +253,8 @@ Future<GetAliasResult> getAlias(
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import com.pulumi.aws.kms.KmsFunctions;
 /// import com.pulumi.aws.kms.inputs.GetCipherTextArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -343,6 +375,19 @@ Future<GetCipherTextResult> getCipherText(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_kms_getcustomkeystore" "keystore" {
+///   custom_key_store_name = "my_cloudhsm"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -351,8 +396,8 @@ Future<GetCipherTextResult> getCipherText(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kms.KmsFunctions;
 /// import com.pulumi.aws.kms.inputs.GetCustomKeyStoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -496,6 +541,28 @@ Future<GetCustomKeyStoreResult> getCustomKeyStore(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_kms_getkey" "byAlias" {
+///   key_id = "alias/my-key"
+/// }
+/// data "aws_kms_getkey" "byId" {
+///   key_id = "1234abcd-12ab-34cd-56ef-1234567890ab"
+/// }
+/// data "aws_kms_getkey" "byAliasArn" {
+///   key_id = "arn:aws:kms:us-east-1:111122223333:alias/my-key"
+/// }
+/// data "aws_kms_getkey" "byKeyArn" {
+///   key_id = "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -504,8 +571,8 @@ Future<GetCustomKeyStoreResult> getCustomKeyStore(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kms.KmsFunctions;
 /// import com.pulumi.aws.kms.inputs.GetKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -673,6 +740,28 @@ Future<GetKeyResult> getKey(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_kms_getpublickey" "byAlias" {
+///   key_id = "alias/my-key"
+/// }
+/// data "aws_kms_getpublickey" "byId" {
+///   key_id = "1234abcd-12ab-34cd-56ef-1234567890ab"
+/// }
+/// data "aws_kms_getpublickey" "byAliasArn" {
+///   key_id = "arn:aws:kms:us-east-1:111122223333:alias/my-key"
+/// }
+/// data "aws_kms_getpublickey" "byKeyArn" {
+///   key_id = "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -681,8 +770,8 @@ Future<GetKeyResult> getKey(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kms.KmsFunctions;
 /// import com.pulumi.aws.kms.inputs.GetPublicKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -751,7 +840,7 @@ Future<GetPublicKeyResult> getPublicKey(
   return GetPublicKeyResult.fromMap(result);
 }
 
-/// !&gt; **WARNING:** This data source's functionality was removed in version 2.0.0 of the AWS Provider. You can migrate existing configurations to the `aws.kms.getSecrets` data source following instructions available in the Version 2 Upgrade Guide. This data source will be removed in a future version.
+/// &gt; **WARNING:** This data source's functionality was removed in version 2.0.0 of the AWS Provider. You can migrate existing configurations to the `aws.kms.getSecrets` data source following instructions available in the Version 2 Upgrade Guide. This data source will be removed in a future version.
 /// [args] Arguments passed to this invoke. {@macro pulumi_kms_get_secret_get_secret_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSecretResult> getSecret(

@@ -3,16 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GeoMatchSetGeoMatchConstraint {
-  /// The type of geographical area you want AWS WAF to search for. Currently Country is the only valid value.
+  /// Type of geographical area you want AWS WAF to search for. Currently `Country` is the only valid value.
   final pulumi.Input<String> type;
-  /// The country that you want AWS WAF to search for.
-  /// This is the two-letter country code, e.g., `US`, `CA`, `RU`, `CN`, etc.
-  /// See [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_GeoMatchConstraint.html) for all supported values.
+  /// Two-letter country code that you want AWS WAF to search for, e.g., `US`, `CA`, `RU`, `CN`. See [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_GeoMatchConstraint.html) for all supported values.
   final pulumi.Input<String> value;
 
   /// Creates a new [GeoMatchSetGeoMatchConstraint].
-  /// [type] The type of geographical area you want AWS WAF to search for. Currently Country is the only valid value.
-  /// [value] The country that you want AWS WAF to search for.
+  /// [type] Type of geographical area you want AWS WAF to search for. Currently `Country` is the only valid value.
+  /// [value] Two-letter country code that you want AWS WAF to search for, e.g., `US`, `CA`, `RU`, `CN`. See [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_GeoMatchConstraint.html) for all supported values.
   const GeoMatchSetGeoMatchConstraint({
     required this.type,
     required this.value,
@@ -32,4 +30,3 @@ class GeoMatchSetGeoMatchConstraint {
     );
   }
 }
-

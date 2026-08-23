@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionFileSystemConfig {
-  /// ARN of the Amazon EFS Access Point.
+  /// ARN of the Amazon EFS Access Point, or the Amazon S3 Files access point.
   final pulumi.Input<String> arn;
   /// Path where the function can access the file system. Must start with `/mnt/`.
   final pulumi.Input<String> localMountPath;
 
   /// Creates a new [FunctionFileSystemConfig].
-  /// [arn] ARN of the Amazon EFS Access Point.
+  /// [arn] ARN of the Amazon EFS Access Point, or the Amazon S3 Files access point.
   /// [localMountPath] Path where the function can access the file system. Must start with `/mnt/`.
   const FunctionFileSystemConfig({
     required this.arn,
@@ -30,4 +30,3 @@ class FunctionFileSystemConfig {
     );
   }
 }
-

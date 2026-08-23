@@ -18,7 +18,7 @@ class ParameterGroupArgs {
   final pulumi.Input<List<ParameterGroupParameter>>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// You can read more about the parameters that Redshift supports in the [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
   final pulumi.Input<Map<String, String>>? tags;
@@ -29,7 +29,7 @@ class ParameterGroupArgs {
   /// [name] The name of the Redshift parameter.
   /// [parameters] A list of Redshift parameters to apply.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ParameterGroupArgs({
     this.description,
     required this.family,
@@ -61,4 +61,3 @@ class ParameterGroupArgs {
     );
   }
 }
-

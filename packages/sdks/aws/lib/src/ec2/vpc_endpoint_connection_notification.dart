@@ -186,7 +186,7 @@ import 'vpc_endpoint_connection_notification_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcEndpointConnectionNotification(ctx, "foo", &ec2.VpcEndpointConnectionNotificationArgs{
-/// 			VpcEndpointServiceId:      foo.ID(),
+/// 			VpcEndpointServiceId:      foo.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionNotificationArn: topicTopic.Arn,
 /// 			ConnectionEvents: pulumi.StringArray{
 /// 				pulumi.String("Accept"),
@@ -200,6 +200,41 @@ import 'vpc_endpoint_connection_notification_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "topic" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["vpce.amazonaws.com"]
+///     }
+///     actions   = ["SNS:Publish"]
+///     resources = ["arn:aws:sns:*:*:vpce-notification-topic"]
+///   }
+/// }
+///
+/// resource "aws_sns_topic" "topic" {
+///   name   = "vpce-notification-topic"
+///   policy = data.aws_iam_getpolicydocument.topic.json
+/// }
+/// resource "aws_ec2_vpcendpointservice" "foo" {
+///   acceptance_required        = false
+///   network_load_balancer_arns = [test.arn]
+/// }
+/// resource "aws_ec2_vpcendpointconnectionnotification" "foo" {
+///   vpc_endpoint_service_id     = aws_ec2_vpcendpointservice.foo.id
+///   connection_notification_arn = aws_sns_topic.topic.arn
+///   connection_events           = ["Accept", "Reject"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -208,14 +243,16 @@ import 'vpc_endpoint_connection_notification_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.sns.Topic;
 /// import com.pulumi.aws.sns.TopicArgs;
 /// import com.pulumi.aws.ec2.VpcEndpointService;
 /// import com.pulumi.aws.ec2.VpcEndpointServiceArgs;
 /// import com.pulumi.aws.ec2.VpcEndpointConnectionNotification;
 /// import com.pulumi.aws.ec2.VpcEndpointConnectionNotificationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -311,7 +348,7 @@ import 'vpc_endpoint_connection_notification_state.dart';
 class VpcEndpointConnectionNotification extends pulumi.CustomResource {
   /// One or more endpoint [events](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpcEndpointConnectionNotification.html#API_CreateVpcEndpointConnectionNotification_RequestParameters) for which to receive notifications.
   ///
-  /// &gt; **NOTE:** One of `vpc_endpoint_service_id` or `vpc_endpoint_id` must be specified.
+  /// &gt; **NOTE:** One of `vpcEndpointServiceId` or `vpcEndpointId` must be specified.
   late final pulumi.Output<List<String>> connectionEvents;
   /// The ARN of the SNS topic for the notifications.
   late final pulumi.Output<String> connectionNotificationArn;

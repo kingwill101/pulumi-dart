@@ -15,7 +15,7 @@ class CiphertextState {
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Data to be encrypted. Note that this may show up in logs. It will not be stored in the state file.
   final pulumi.Input<String>? plaintextWo;
-  /// Used together with `plaintext_wo` to trigger a replacement. Modify this value when a replacement is required.
+  /// Used together with `plaintextWo` to trigger a replacement. Modify this value when a replacement is required.
   final pulumi.Input<String>? plaintextWoVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -26,7 +26,7 @@ class CiphertextState {
   /// [keyId] Globally unique key ID for the customer master key.
   /// [plaintext] Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
   /// [plaintextWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [plaintextWoVersion] Used together with `plaintext_wo` to trigger a replacement. Modify this value when a replacement is required.
+  /// [plaintextWoVersion] Used together with `plaintextWo` to trigger a replacement. Modify this value when a replacement is required.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const CiphertextState({
     this.ciphertextBlob,
@@ -62,4 +62,3 @@ class CiphertextState {
     );
   }
 }
-

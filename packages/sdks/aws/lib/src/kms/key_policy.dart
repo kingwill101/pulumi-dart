@@ -115,7 +115,7 @@ import 'key_policy_state.dart';
 /// 				map[string]interface{}{
 /// 					"Action": "kms:*",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": "*",
 /// 					},
 /// 					"Resource": "*",
@@ -129,7 +129,7 @@ import 'key_policy_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = kms.NewKeyPolicy(ctx, "example", &kms.KeyPolicyArgs{
-/// 			KeyId:  example.ID(),
+/// 			KeyId:  example.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -137,6 +137,35 @@ import 'key_policy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description = "example"
+/// }
+/// resource "aws_kms_keypolicy" "example" {
+///   key_id = aws_kms_key.example.id
+///   policy = jsonencode({
+///     "Id" = "example"
+///     "Statement" = [{
+///       "Action" = "kms:*"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" = "*"
+///       }
+///       "Resource" = "*"
+///       "Sid"      = "Enable IAM User Permissions"
+///     }]
+///     "Version" = "2012-10-17"
+///   })
 /// }
 /// ```
 /// ```java
@@ -150,8 +179,8 @@ import 'key_policy_state.dart';
 /// import com.pulumi.aws.kms.KeyPolicy;
 /// import com.pulumi.aws.kms.KeyPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -215,7 +244,7 @@ import 'key_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import KMS Key Policies using the `key_id`. For example:
+/// Using `pulumi import`, import KMS Key Policies using the `keyId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:kms/keyPolicy:KeyPolicy a 1234abcd-12ab-34cd-56ef-1234567890ab

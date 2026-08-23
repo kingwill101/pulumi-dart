@@ -14,8 +14,10 @@ class RouteState {
   final pulumi.Input<String>? origin;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN.
+  /// The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN. Required for VPC-based Client VPN endpoints. Not applicable for Transit Gateway-based Client VPN endpoints.
   final pulumi.Input<String>? targetVpcSubnetId;
+  /// The ID of the Transit Gateway attachment, if the route targets a Transit Gateway-based Client VPN endpoint.
+  final pulumi.Input<String>? transitGatewayAttachmentId;
   /// The type of the route.
   final pulumi.Input<String>? type;
 
@@ -25,7 +27,8 @@ class RouteState {
   /// [destinationCidrBlock] The IPv4 or IPv6 address range, in CIDR notation, of the route destination.
   /// [origin] Indicates how the Client VPN route was added. Will be `add-route` for routes created by this resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [targetVpcSubnetId] The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN.
+  /// [targetVpcSubnetId] The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN. Required for VPC-based Client VPN endpoints. Not applicable for Transit Gateway-based Client VPN endpoints.
+  /// [transitGatewayAttachmentId] The ID of the Transit Gateway attachment, if the route targets a Transit Gateway-based Client VPN endpoint.
   /// [type] The type of the route.
   const RouteState({
     this.clientVpnEndpointId,
@@ -34,6 +37,7 @@ class RouteState {
     this.origin,
     this.region,
     this.targetVpcSubnetId,
+    this.transitGatewayAttachmentId,
     this.type,
   });
 
@@ -45,6 +49,7 @@ class RouteState {
       'origin': ?origin,
       'region': ?region,
       'targetVpcSubnetId': ?targetVpcSubnetId,
+      'transitGatewayAttachmentId': ?transitGatewayAttachmentId,
       'type': ?type,
     };
   }
@@ -57,8 +62,8 @@ class RouteState {
       origin: (() { final guardedValue = map['origin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetVpcSubnetId: (() { final guardedValue = map['targetVpcSubnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitGatewayAttachmentId: (() { final guardedValue = map['transitGatewayAttachmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

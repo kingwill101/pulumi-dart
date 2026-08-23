@@ -55,6 +55,19 @@ import 'enrollment_status_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_computeoptimizer_enrollmentstatus" "example" {
+///   status = "Active"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +76,8 @@ import 'enrollment_status_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.computeoptimizer.EnrollmentStatus;
 /// import com.pulumi.aws.computeoptimizer.EnrollmentStatusArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -31,9 +31,9 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings {
   final pulumi.Input<int> framerateNumerator;
   /// Frequency of closed GOPs.
   final pulumi.Input<int>? gopClosedCadence;
-  /// GOP size in units of either frames of seconds per `gop_size_units`.
+  /// GOP size in units of either frames of seconds per `gopSizeUnits`.
   final pulumi.Input<double>? gopSize;
-  /// Indicates if the `gop_size` is specified in frames or seconds.
+  /// Indicates if the `gopSize` is specified in frames or seconds.
   final pulumi.Input<String>? gopSizeUnits;
   /// H265 level.
   final pulumi.Input<String>? level;
@@ -94,8 +94,8 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings {
   /// [framerateDenominator] Framerate denominator.
   /// [framerateNumerator] Framerate numerator.
   /// [gopClosedCadence] Frequency of closed GOPs.
-  /// [gopSize] GOP size in units of either frames of seconds per `gop_size_units`.
-  /// [gopSizeUnits] Indicates if the `gop_size` is specified in frames or seconds.
+  /// [gopSize] GOP size in units of either frames of seconds per `gopSizeUnits`.
+  /// [gopSizeUnits] Indicates if the `gopSize` is specified in frames or seconds.
   /// [level] H265 level.
   /// [lookAheadRateControl] Amount of lookahead.
   /// [maxBitrate] Set the maximum bitrate in order to accommodate expected spikes in the complexity of the video.
@@ -242,4 +242,3 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings {
     );
   }
 }
-

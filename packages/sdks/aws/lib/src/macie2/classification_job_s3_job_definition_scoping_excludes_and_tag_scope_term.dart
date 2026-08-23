@@ -43,4 +43,3 @@ class ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTerm {
     );
   }
 }
-

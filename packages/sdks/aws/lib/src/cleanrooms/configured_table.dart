@@ -119,6 +119,29 @@ import 'configured_table_table_reference.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cleanrooms_configuredtable" "test_configured_table" {
+///   name            = "pulumi-example-table"
+///   description     = "I made this table with Pulumi!"
+///   analysis_method = "DIRECT_QUERY"
+///   allowed_columns = ["column1", "column2", "column3"]
+///   table_reference = {
+///     database_name = "example_database"
+///     table_name    = "example_table"
+///   }
+///   tags = {
+///     "Project" = "Pulumi"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +151,8 @@ import 'configured_table_table_reference.dart';
 /// import com.pulumi.aws.cleanrooms.ConfiguredTable;
 /// import com.pulumi.aws.cleanrooms.ConfiguredTableArgs;
 /// import com.pulumi.aws.cleanrooms.inputs.ConfiguredTableTableReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -190,7 +213,7 @@ import 'configured_table_table_reference.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///

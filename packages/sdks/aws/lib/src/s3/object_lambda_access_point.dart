@@ -120,7 +120,7 @@ import 'object_lambda_access_point_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleAccessPoint, err := s3.NewAccessPoint(ctx, "example", &s3.AccessPointArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:   pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
@@ -151,6 +151,37 @@ import 'object_lambda_access_point_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// resource "aws_s3_accesspoint" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   name   = "example"
+/// }
+/// resource "aws_s3control_objectlambdaaccesspoint" "example" {
+///   name = "example"
+///   configuration = {
+///     supporting_access_point = aws_s3_accesspoint.example.arn
+///     transformation_configurations = [{
+///       "actions" = ["GetObject"]
+///       "contentTransformation" = {
+///         "awsLambda" = {
+///           "functionArn" = exampleAwsLambdaFunction.arn
+///         }
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -164,8 +195,11 @@ import 'object_lambda_access_point_state.dart';
 /// import com.pulumi.aws.s3control.ObjectLambdaAccessPoint;
 /// import com.pulumi.aws.s3control.ObjectLambdaAccessPointArgs;
 /// import com.pulumi.aws.s3control.inputs.ObjectLambdaAccessPointConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.s3control.inputs.ObjectLambdaAccessPointConfigurationTransformationConfigurationArgs;
+/// import com.pulumi.aws.s3control.inputs.ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationArgs;
+/// import com.pulumi.aws.s3control.inputs.ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambdaArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -234,21 +268,21 @@ import 'object_lambda_access_point_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Object Lambda Access Points using the `account_id` and `name`, separated by a colon (`:`). For example:
+/// Using `pulumi import`, import Object Lambda Access Points using the `accountId` and `name`, separated by a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3control/objectLambdaAccessPoint:ObjectLambdaAccessPoint example 123456789012:example
 /// ```
 class ObjectLambdaAccessPoint extends pulumi.CustomResource {
-  /// The AWS account ID for the owner of the bucket for which you want to create an Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.
+  /// AWS account ID for the owner of the bucket for which you want to create an Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.
   late final pulumi.Output<String> accountId;
   /// Alias for the S3 Object Lambda Access Point.
   late final pulumi.Output<String> alias;
   /// Amazon Resource Name (ARN) of the Object Lambda Access Point.
   late final pulumi.Output<String> arn;
-  /// A configuration block containing details about the Object Lambda Access Point. See Configuration below for more details.
+  /// Configuration block containing details about the Object Lambda Access Point. See `configuration` Block below for more details.
   late final pulumi.Output<ObjectLambdaAccessPointConfiguration> configuration;
-  /// The name for this Object Lambda Access Point.
+  /// Name for this Object Lambda Access Point.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

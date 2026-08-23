@@ -5,35 +5,35 @@ import 'cloud_exadata_infrastructure_maintenance_window_days_of_week.dart';
 import 'cloud_exadata_infrastructure_maintenance_window_month.dart';
 
 class CloudExadataInfrastructureMaintenanceWindow {
-  /// The custom action timeout in minutes for the maintenance window.
+  /// Custom action timeout in minutes for the maintenance window.
   final pulumi.Input<int> customActionTimeoutInMins;
-  /// The days of the week when maintenance can be performed.
+  /// Days of the week when maintenance can be performed. See `daysOfWeek` Block below.
   final pulumi.Input<List<CloudExadataInfrastructureMaintenanceWindowDaysOfWeek>>? daysOfWeeks;
-  /// The hours of the day when maintenance can be performed.
+  /// Hours of the day when maintenance can be performed.
   final pulumi.Input<List<int>>? hoursOfDays;
-  /// ndicates whether custom action timeout is enabled for the maintenance window.
+  /// Whether custom action timeout is enabled for the maintenance window.
   final pulumi.Input<bool> isCustomActionTimeoutEnabled;
-  /// The lead time in weeks before the maintenance window.
+  /// Lead time in weeks before the maintenance window.
   final pulumi.Input<int>? leadTimeInWeeks;
-  /// The months when maintenance can be performed.
+  /// Months when maintenance can be performed. See `months` Block below.
   final pulumi.Input<List<CloudExadataInfrastructureMaintenanceWindowMonth>>? months;
-  /// The patching mode for the maintenance window.
+  /// Patching mode for the maintenance window.
   final pulumi.Input<String> patchingMode;
-  /// The preference for the maintenance window scheduling.
+  /// Preference for the maintenance window scheduling.
   final pulumi.Input<String> preference;
-  /// The weeks of the month when maintenance can be performed.
+  /// Weeks of the month when maintenance can be performed.
   final pulumi.Input<List<int>>? weeksOfMonths;
 
   /// Creates a new [CloudExadataInfrastructureMaintenanceWindow].
-  /// [customActionTimeoutInMins] The custom action timeout in minutes for the maintenance window.
-  /// [daysOfWeeks] The days of the week when maintenance can be performed.
-  /// [hoursOfDays] The hours of the day when maintenance can be performed.
-  /// [isCustomActionTimeoutEnabled] ndicates whether custom action timeout is enabled for the maintenance window.
-  /// [leadTimeInWeeks] The lead time in weeks before the maintenance window.
-  /// [months] The months when maintenance can be performed.
-  /// [patchingMode] The patching mode for the maintenance window.
-  /// [preference] The preference for the maintenance window scheduling.
-  /// [weeksOfMonths] The weeks of the month when maintenance can be performed.
+  /// [customActionTimeoutInMins] Custom action timeout in minutes for the maintenance window.
+  /// [daysOfWeeks] Days of the week when maintenance can be performed. See `daysOfWeek` Block below.
+  /// [hoursOfDays] Hours of the day when maintenance can be performed.
+  /// [isCustomActionTimeoutEnabled] Whether custom action timeout is enabled for the maintenance window.
+  /// [leadTimeInWeeks] Lead time in weeks before the maintenance window.
+  /// [months] Months when maintenance can be performed. See `months` Block below.
+  /// [patchingMode] Patching mode for the maintenance window.
+  /// [preference] Preference for the maintenance window scheduling.
+  /// [weeksOfMonths] Weeks of the month when maintenance can be performed.
   const CloudExadataInfrastructureMaintenanceWindow({
     required this.customActionTimeoutInMins,
     this.daysOfWeeks,
@@ -74,4 +74,3 @@ class CloudExadataInfrastructureMaintenanceWindow {
     );
   }
 }
-

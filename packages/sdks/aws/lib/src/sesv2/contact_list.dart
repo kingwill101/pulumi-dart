@@ -56,6 +56,19 @@ import 'contact_list_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sesv2_contactlist" "example" {
+///   contact_list_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'contact_list_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sesv2.ContactList;
 /// import com.pulumi.aws.sesv2.ContactListArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -180,6 +193,26 @@ import 'contact_list_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sesv2_contactlist" "example" {
+///   contact_list_name = "example"
+///   description       = "description"
+///   topics {
+///     default_subscription_status = "OPT_IN"
+///     description                 = "topic description"
+///     display_name                = "Example Topic"
+///     topic_name                  = "example-topic"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -189,8 +222,8 @@ import 'contact_list_state.dart';
 /// import com.pulumi.aws.sesv2.ContactList;
 /// import com.pulumi.aws.sesv2.ContactListArgs;
 /// import com.pulumi.aws.sesv2.inputs.ContactListTopicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -252,7 +285,7 @@ class ContactList extends pulumi.CustomResource {
   late final pulumi.Output<String> lastUpdatedTimestamp;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags for the contact list. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the contact list. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration block(s) with topic for the contact list. Detailed below.

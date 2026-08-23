@@ -52,7 +52,7 @@ import 'data_source_state.dart';
 /// const exampleRolePolicy = new aws.iam.RolePolicy("example", {
 ///     name: "example",
 ///     role: exampleRole.id,
-///     policy: example.apply(example => example.json),
+///     policy: example.json,
 /// });
 /// const exampleGraphQLApi = new aws.appsync.GraphQLApi("example", {
 ///     authenticationType: "API_KEY",
@@ -284,11 +284,9 @@ import 'data_source_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
-/// 			Name: pulumi.String("example"),
-/// 			Role: exampleRole.ID(),
-/// 			Policy: pulumi.String(example.ApplyT(func(example iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &example.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:   pulumi.String("example"),
+/// 			Role:   exampleRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: example.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -301,7 +299,7 @@ import 'data_source_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appsync.NewDataSource(ctx, "example", &appsync.DataSourceArgs{
-/// 			ApiId:          exampleGraphQLApi.ID(),
+/// 			ApiId:          exampleGraphQLApi.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:           pulumi.String("my_appsync_example"),
 /// 			ServiceRoleArn: exampleRole.Arn,
 /// 			Type:           pulumi.String("AMAZON_DYNAMODB"),
@@ -316,6 +314,66 @@ import 'data_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["appsync.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["dynamodb:*"]
+///     resources = [aws_dynamodb_table.example.arn]
+///   }
+/// }
+///
+/// resource "aws_dynamodb_table" "example" {
+///   name           = "example"
+///   read_capacity  = 1
+///   write_capacity = 1
+///   hash_key       = "UserId"
+///   attributes {
+///     name = "UserId"
+///     type = "S"
+///   }
+/// }
+/// resource "aws_iam_role" "example" {
+///   name               = "example"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicy" "example" {
+///   name   = "example"
+///   role   = aws_iam_role.example.id
+///   policy = data.aws_iam_getpolicydocument.example.json
+/// }
+/// resource "aws_appsync_graphqlapi" "example" {
+///   authentication_type = "API_KEY"
+///   name                = "my_appsync_example"
+/// }
+/// resource "aws_appsync_datasource" "example" {
+///   api_id           = aws_appsync_graphqlapi.example.id
+///   name             = "my_appsync_example"
+///   service_role_arn = aws_iam_role.example.arn
+///   type             = "AMAZON_DYNAMODB"
+///   dynamodb_config = {
+///     table_name = aws_dynamodb_table.example.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -327,6 +385,8 @@ import 'data_source_state.dart';
 /// import com.pulumi.aws.dynamodb.inputs.TableAttributeArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
@@ -336,8 +396,8 @@ import 'data_source_state.dart';
 /// import com.pulumi.aws.appsync.DataSource;
 /// import com.pulumi.aws.appsync.DataSourceArgs;
 /// import com.pulumi.aws.appsync.inputs.DataSourceDynamodbConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -478,7 +538,7 @@ import 'data_source_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.appsync.DataSource` using the `api_id`, a hyphen, and `name`. For example:
+/// Using `pulumi import`, import `aws.appsync.DataSource` using the `apiId`, a hyphen, and `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appsync/dataSource:DataSource example abcdef123456-example
@@ -490,23 +550,23 @@ class DataSource extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Description of the data source.
   late final pulumi.Output<String?> description;
-  /// DynamoDB settings. See `dynamodb_config` Block for details.
+  /// DynamoDB settings. See `dynamodbConfig` Block for details.
   late final pulumi.Output<DataSourceDynamodbConfig?> dynamodbConfig;
-  /// Amazon Elasticsearch settings. See `elasticsearch_config` Block for details.
+  /// Amazon Elasticsearch settings. See `elasticsearchConfig` Block for details.
   late final pulumi.Output<DataSourceElasticsearchConfig?> elasticsearchConfig;
-  /// AWS EventBridge settings. See `event_bridge_config` Block for details.
+  /// AWS EventBridge settings. See `eventBridgeConfig` Block for details.
   late final pulumi.Output<DataSourceEventBridgeConfig?> eventBridgeConfig;
-  /// HTTP settings. See `http_config` Block for details.
+  /// HTTP settings. See `httpConfig` Block for details.
   late final pulumi.Output<DataSourceHttpConfig?> httpConfig;
-  /// AWS Lambda settings. See `lambda_config` Block for details.
+  /// AWS Lambda settings. See `lambdaConfig` Block for details.
   late final pulumi.Output<DataSourceLambdaConfig?> lambdaConfig;
   /// User-supplied name for the data source.
   late final pulumi.Output<String> name;
-  /// Amazon OpenSearch Service settings. See `opensearchservice_config` Block for details.
+  /// Amazon OpenSearch Service settings. See `opensearchserviceConfig` Block for details.
   late final pulumi.Output<DataSourceOpensearchserviceConfig?> opensearchserviceConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// AWS RDS settings. See `relational_database_config` Block for details.
+  /// AWS RDS settings. See `relationalDatabaseConfig` Block for details.
   late final pulumi.Output<DataSourceRelationalDatabaseConfig?> relationalDatabaseConfig;
   /// IAM service role ARN for the data source. Required if `type` is specified as `AWS_LAMBDA`, `AMAZON_DYNAMODB`, `AMAZON_ELASTICSEARCH`, `AMAZON_EVENTBRIDGE`, or `AMAZON_OPENSEARCH_SERVICE`.
   late final pulumi.Output<String?> serviceRoleArn;

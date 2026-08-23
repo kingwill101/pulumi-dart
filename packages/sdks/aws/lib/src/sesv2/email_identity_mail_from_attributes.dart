@@ -84,6 +84,24 @@ import 'email_identity_mail_from_attributes_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sesv2_emailidentity" "example" {
+///   email_identity = "example.com"
+/// }
+/// resource "aws_sesv2_emailidentitymailfromattributes" "example" {
+///   email_identity         = aws_sesv2_emailidentity.example.email_identity
+///   behavior_on_mx_failure = "REJECT_MESSAGE"
+///   mail_from_domain       ="subdomain.${aws_sesv2_emailidentity.example.email_identity}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +112,8 @@ import 'email_identity_mail_from_attributes_state.dart';
 /// import com.pulumi.aws.sesv2.EmailIdentityArgs;
 /// import com.pulumi.aws.sesv2.EmailIdentityMailFromAttributes;
 /// import com.pulumi.aws.sesv2.EmailIdentityMailFromAttributesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -138,7 +156,7 @@ import 'email_identity_mail_from_attributes_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SESv2 (Simple Email V2) Email Identity Mail From Attributes using the `email_identity`. For example:
+/// Using `pulumi import`, import SESv2 (Simple Email V2) Email Identity Mail From Attributes using the `emailIdentity`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sesv2/emailIdentityMailFromAttributes:EmailIdentityMailFromAttributes example example.com
@@ -148,7 +166,7 @@ class EmailIdentityMailFromAttributes extends pulumi.CustomResource {
   late final pulumi.Output<String?> behaviorOnMxFailure;
   /// The verified email identity.
   late final pulumi.Output<String> emailIdentity;
-  /// The custom MAIL FROM domain that you want the verified identity to use. Required if `behavior_on_mx_failure` is `REJECT_MESSAGE`.
+  /// The custom MAIL FROM domain that you want the verified identity to use. Required if `behaviorOnMxFailure` is `REJECT_MESSAGE`.
   late final pulumi.Output<String?> mailFromDomain;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

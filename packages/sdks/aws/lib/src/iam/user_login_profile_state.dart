@@ -8,7 +8,7 @@ class UserLoginProfileState {
   final pulumi.Input<String>? encryptedPassword;
   /// The fingerprint of the PGP key used to encrypt the password. Only available if password was handled on this provider resource creation, not import.
   final pulumi.Input<String>? keyFingerprint;
-  /// The plain text password, only available when `pgp_key` is not provided.
+  /// The plain text password, only available when `pgpKey` is not provided.
   final pulumi.Input<String>? password;
   /// The length of the generated password on resource creation. Only applies on resource creation. Drift detection is not possible with this argument. Default value is `20`.
   final pulumi.Input<int>? passwordLength;
@@ -22,7 +22,7 @@ class UserLoginProfileState {
   /// Creates a new [UserLoginProfileState].
   /// [encryptedPassword] The encrypted password, base64 encoded. Only available if password was handled on resource creation, not import.
   /// [keyFingerprint] The fingerprint of the PGP key used to encrypt the password. Only available if password was handled on this provider resource creation, not import.
-  /// [password] The plain text password, only available when `pgp_key` is not provided.
+  /// [password] The plain text password, only available when `pgpKey` is not provided.
   /// [passwordLength] The length of the generated password on resource creation. Only applies on resource creation. Drift detection is not possible with this argument. Default value is `20`.
   /// [passwordResetRequired] Whether the user should be forced to reset the generated password on resource creation. Only applies on resource creation.
   /// [pgpKey] Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:username`. Only applies on resource creation. Drift detection is not possible with this argument.
@@ -61,4 +61,3 @@ class UserLoginProfileState {
     );
   }
 }
-

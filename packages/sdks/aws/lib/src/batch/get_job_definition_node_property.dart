@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_job_definition_node_property_node_range_property.dart';
 
 class GetJobDefinitionNodeProperty {
-  /// Specifies the node index for the main node of a multi-node parallel job. This node index value must be fewer than the number of nodes.
+  /// Node index for the main node of a multi-node parallel job. This node index value must be fewer than the number of nodes.
   final pulumi.Input<int> mainNode;
-  /// A list of node ranges and their properties that are associated with a multi-node parallel job.
+  /// List of node ranges and their properties that are associated with a multi-node parallel job. See `nodeRangeProperties` below.
   final pulumi.Input<List<GetJobDefinitionNodePropertyNodeRangeProperty>> nodeRangeProperties;
-  /// The number of nodes that are associated with a multi-node parallel job.
+  /// Number of nodes that are associated with a multi-node parallel job.
   final pulumi.Input<int> numNodes;
 
   /// Creates a new [GetJobDefinitionNodeProperty].
-  /// [mainNode] Specifies the node index for the main node of a multi-node parallel job. This node index value must be fewer than the number of nodes.
-  /// [nodeRangeProperties] A list of node ranges and their properties that are associated with a multi-node parallel job.
-  /// [numNodes] The number of nodes that are associated with a multi-node parallel job.
+  /// [mainNode] Node index for the main node of a multi-node parallel job. This node index value must be fewer than the number of nodes.
+  /// [nodeRangeProperties] List of node ranges and their properties that are associated with a multi-node parallel job. See `nodeRangeProperties` below.
+  /// [numNodes] Number of nodes that are associated with a multi-node parallel job.
   const GetJobDefinitionNodeProperty({
     required this.mainNode,
     required this.nodeRangeProperties,
@@ -37,4 +37,3 @@ class GetJobDefinitionNodeProperty {
     );
   }
 }
-

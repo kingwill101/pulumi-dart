@@ -107,7 +107,7 @@ import 'usage_plan_key_state.dart';
 /// 			Name: pulumi.String("my_usage_plan"),
 /// 			ApiStages: apigateway.UsagePlanApiStageArray{
 /// 				&apigateway.UsagePlanApiStageArgs{
-/// 					ApiId: test.ID(),
+/// 					ApiId: test.ID().ToIDOutput().ToStringOutput(),
 /// 					Stage: pulumi.Any(foo.StageName),
 /// 				},
 /// 			},
@@ -122,15 +122,44 @@ import 'usage_plan_key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewUsagePlanKey(ctx, "main", &apigateway.UsagePlanKeyArgs{
-/// 			KeyId:       mykey.ID(),
+/// 			KeyId:       mykey.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:     pulumi.String("API_KEY"),
-/// 			UsagePlanId: myusageplan.ID(),
+/// 			UsagePlanId: myusageplan.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_restapi" "test" {
+///   name = "MyDemoAPI"
+/// }
+/// # ...
+/// resource "aws_apigateway_usageplan" "myusageplan" {
+///   name = "my_usage_plan"
+///   api_stages {
+///     api_id = aws_apigateway_restapi.test.id
+///     stage  = foo.stageName
+///   }
+/// }
+/// resource "aws_apigateway_apikey" "mykey" {
+///   name = "my_key"
+/// }
+/// resource "aws_apigateway_usageplankey" "main" {
+///   key_id        = aws_apigateway_apikey.mykey.id
+///   key_type      = "API_KEY"
+///   usage_plan_id = aws_apigateway_usageplan.myusageplan.id
 /// }
 /// ```
 /// ```java
@@ -148,8 +177,8 @@ import 'usage_plan_key_state.dart';
 /// import com.pulumi.aws.apigateway.ApiKeyArgs;
 /// import com.pulumi.aws.apigateway.UsagePlanKey;
 /// import com.pulumi.aws.apigateway.UsagePlanKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

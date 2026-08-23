@@ -23,7 +23,7 @@ class CostCategoryArgs {
   final pulumi.Input<List<CostCategoryRule>> rules;
   /// Configuration block for the split charge rules used to allocate your charges between your Cost Category values. See below.
   final pulumi.Input<List<CostCategorySplitChargeRule>>? splitChargeRules;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [CostCategoryArgs].
@@ -33,7 +33,7 @@ class CostCategoryArgs {
   /// [ruleVersion] Rule schema version in this particular Cost Category.
   /// [rules] Configuration block for the Cost Category rules used to categorize costs. See below.
   /// [splitChargeRules] Configuration block for the split charge rules used to allocate your charges between your Cost Category values. See below.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const CostCategoryArgs({
     this.defaultValue,
     this.effectiveStart,
@@ -68,4 +68,3 @@ class CostCategoryArgs {
     );
   }
 }
-

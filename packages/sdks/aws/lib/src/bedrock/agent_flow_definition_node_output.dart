@@ -3,13 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeOutput {
-  /// A name for the flow.
+  /// A name for the output that you can reference.
   final pulumi.Input<String> name;
+  /// The data type of the output. If the output doesn’t match this type at runtime, a validation error will be thrown.
   final pulumi.Input<String> type;
 
   /// Creates a new [AgentFlowDefinitionNodeOutput].
-  /// [name] A name for the flow.
-  /// [type] Required.
+  /// [name] A name for the output that you can reference.
+  /// [type] The data type of the output. If the output doesn’t match this type at runtime, a validation error will be thrown.
   const AgentFlowDefinitionNodeOutput({
     required this.name,
     required this.type,
@@ -29,4 +30,3 @@ class AgentFlowDefinitionNodeOutput {
     );
   }
 }
-

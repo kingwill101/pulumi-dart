@@ -66,4 +66,3 @@ class BucketLoggingV2Args {
     );
   }
 }
-

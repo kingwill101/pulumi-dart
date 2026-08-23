@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_authorization_token_args.dart';
 import 'get_authorization_token_result.dart';
+import 'get_credentials_args.dart';
+import 'get_credentials_result.dart';
 import 'get_image_args.dart';
 import 'get_image_result.dart';
 import 'get_images_args.dart';
@@ -63,6 +65,18 @@ import 'get_repository_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ecr_getauthorizationtoken" "token" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'get_repository_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecr.EcrFunctions;
 /// import com.pulumi.aws.ecr.inputs.GetAuthorizationTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -110,6 +124,21 @@ Future<GetAuthorizationTokenResult> getAuthorizationToken(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAuthorizationTokenResult.fromMap(result);
+}
+
+/// [args] Arguments passed to this invoke. {@macro pulumi_ecr_get_credentials_get_credentials_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetCredentialsResult> getCredentials(
+  GetCredentialsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:ecr/getCredentials:getCredentials',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetCredentialsResult.fromMap(result);
 }
 
 /// The ECR Image data source allows the details of an image with a particular tag or digest to be retrieved.
@@ -170,6 +199,20 @@ Future<GetAuthorizationTokenResult> getAuthorizationToken(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ecr_getimage" "serviceImage" {
+///   repository_name = "my/service"
+///   image_tag       = "latest"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -178,8 +221,8 @@ Future<GetAuthorizationTokenResult> getAuthorizationToken(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecr.EcrFunctions;
 /// import com.pulumi.aws.ecr.inputs.GetImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -243,8 +286,8 @@ Future<GetImageResult> getImage(
 /// import pulumi_aws as aws
 ///
 /// example = aws.ecr.get_images(repository_name="my-repository")
-/// pulumi.export("imageDigests", [img.image_digest for img in example.image_ids if img.image_digest != None])
-/// pulumi.export("imageTags", [img.image_tag for img in example.image_ids if img.image_tag != None])
+/// pulumi.export("imageDigests", [img.image_digest for img in example.image_ids if img.image_digest is not None])
+/// pulumi.export("imageTags", [img.image_tag for img in example.image_ids if img.image_tag is not None])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -271,6 +314,26 @@ Future<GetImageResult> getImage(
 ///         }).ToList(),
 ///     };
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ecr_getimages" "example" {
+///   repository_name = "my-repository"
+/// }
+///
+/// output "imageDigests" {
+///   value = [for img in data.aws_ecr_getimages.example.image_ids : img.imageDigest if img.imageDigest != null]
+/// }
+/// output "imageTags" {
+///   value = [for img in data.aws_ecr_getimages.example.image_ids : img.imageTag if img.imageTag != null]
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ecr_get_images_get_images_args_doc}
 /// [options] Invoke options controlling this call.
@@ -411,6 +474,33 @@ Future<GetImagesResult> getImages(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ecr_getlifecyclepolicydocument" "example" {
+///   rules {
+///     priority    = 1
+///     description = "This is a test."
+///     selection = {
+///       tag_status       = "tagged"
+///       tag_prefix_lists = ["prod"]
+///       count_type       = "imageCountMoreThan"
+///       count_number     = 100
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecr_lifecyclepolicy" "example" {
+///   repository = exampleAwsEcrRepository.name
+///   policy     = data.aws_ecr_getlifecyclepolicydocument.example.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -419,10 +509,12 @@ Future<GetImagesResult> getImages(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecr.EcrFunctions;
 /// import com.pulumi.aws.ecr.inputs.GetLifecyclePolicyDocumentArgs;
+/// import com.pulumi.aws.ecr.inputs.GetLifecyclePolicyDocumentRuleArgs;
+/// import com.pulumi.aws.ecr.inputs.GetLifecyclePolicyDocumentRuleSelectionArgs;
 /// import com.pulumi.aws.ecr.LifecyclePolicy;
 /// import com.pulumi.aws.ecr.LifecyclePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -547,6 +639,19 @@ Future<GetLifecyclePolicyDocumentResult> getLifecyclePolicyDocument(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ecr_getpullthroughcacherule" "ecrPublic" {
+///   ecr_repository_prefix = "ecr-public"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -555,8 +660,8 @@ Future<GetLifecyclePolicyDocumentResult> getLifecyclePolicyDocument(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecr.EcrFunctions;
 /// import com.pulumi.aws.ecr.inputs.GetPullThroughCacheRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -647,6 +752,18 @@ Future<GetPullThroughCacheRuleResult> getPullThroughCacheRule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ecr_getrepositories" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -655,8 +772,8 @@ Future<GetPullThroughCacheRuleResult> getPullThroughCacheRule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecr.EcrFunctions;
 /// import com.pulumi.aws.ecr.inputs.GetRepositoriesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -750,6 +867,19 @@ Future<GetRepositoriesResult> getRepositories(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ecr_getrepository" "service" {
+///   name = "ecr-repository"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -758,8 +888,8 @@ Future<GetRepositoriesResult> getRepositories(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecr.EcrFunctions;
 /// import com.pulumi.aws.ecr.inputs.GetRepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -855,6 +985,19 @@ Future<GetRepositoryResult> getRepository(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ecr_getrepositorycreationtemplate" "example" {
+///   prefix = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -863,8 +1006,8 @@ Future<GetRepositoryResult> getRepository(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecr.EcrFunctions;
 /// import com.pulumi.aws.ecr.inputs.GetRepositoryCreationTemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

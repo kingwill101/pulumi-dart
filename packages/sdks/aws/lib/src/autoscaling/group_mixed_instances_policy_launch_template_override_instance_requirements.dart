@@ -50,7 +50,7 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements {
   final pulumi.Input<List<String>>? acceleratorTypes;
   /// List of instance types to apply your specified attributes against. All other instance types are ignored, even if they match your specified attributes. You can use strings with one or more wild cards, represented by an asterisk (\*), to allow an instance type, size, or generation. The following are examples: `m5.8xlarge`, `c5*.*`, `m5a.*`, `r*`, `*3*`. For example, if you specify `c5*`, you are allowing the entire C5 instance family, which includes all C5a and C5n instance types. If you specify `m5a.*`, you are allowing all the M5a instance types, but not the M5n instance types. Maximum of 400 entries in the list; each entry is limited to 30 characters. Default is all instance types.
   ///
-  /// &gt; **NOTE:** If you specify `allowed_instance_types`, you can't specify `excluded_instance_types`.
+  /// &gt; **NOTE:** If you specify `allowedInstanceTypes`, you can't specify `excludedInstanceTypes`.
   final pulumi.Input<List<String>>? allowedInstanceTypes;
   /// Indicate whether bare metal instace types should be `included`, `excluded`, or `required`. Default is `excluded`.
   final pulumi.Input<String>? bareMetal;
@@ -71,7 +71,7 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements {
   final pulumi.Input<List<String>>? cpuManufacturers;
   /// List of instance types to exclude. You can use strings with one or more wild cards, represented by an asterisk (\*), to exclude an instance type, size, or generation. The following are examples: `m5.8xlarge`, `c5*.*`, `m5a.*`, `r*`, `*3*`. For example, if you specify `c5*`, you are excluding the entire C5 instance family, which includes all C5a and C5n instance types. If you specify `m5a.*`, you are excluding all the M5a instance types, but not the M5n instance types. Maximum of 400 entries in the list; each entry is limited to 30 characters. Default is no excluded instance types.
   ///
-  /// &gt; **NOTE:** If you specify `excluded_instance_types`, you can't specify `allowed_instance_types`.
+  /// &gt; **NOTE:** If you specify `excludedInstanceTypes`, you can't specify `allowedInstanceTypes`.
   final pulumi.Input<List<String>>? excludedInstanceTypes;
   /// List of instance generation names. Default is any generation.
   ///
@@ -91,7 +91,7 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements {
   /// * ssd - solid state drive
   /// ```
   final pulumi.Input<List<String>>? localStorageTypes;
-  /// The price protection threshold for Spot Instances. This is the maximum you’ll pay for a Spot Instance, expressed as a percentage higher than the cheapest M, C, or R instance type with your specified attributes. When Amazon EC2 Auto Scaling selects instance types with your attributes, we will exclude instance types whose price is higher than your threshold. The parameter accepts an integer, which Amazon EC2 Auto Scaling interprets as a percentage. To turn off price protection, specify a high value, such as 999999. Conflicts with `spot_max_price_percentage_over_lowest_price`
+  /// The price protection threshold for Spot Instances. This is the maximum you’ll pay for a Spot Instance, expressed as a percentage higher than the cheapest M, C, or R instance type with your specified attributes. When Amazon EC2 Auto Scaling selects instance types with your attributes, we will exclude instance types whose price is higher than your threshold. The parameter accepts an integer, which Amazon EC2 Auto Scaling interprets as a percentage. To turn off price protection, specify a high value, such as 999999. Conflicts with `spotMaxPricePercentageOverLowestPrice`
   final pulumi.Input<int>? maxSpotPriceAsPercentageOfOptimalOnDemandPrice;
   /// Block describing the minimum and maximum amount of memory (GiB) per vCPU. Default is no minimum or maximum.
   final pulumi.Input<GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryGibPerVcpu>? memoryGibPerVcpu;
@@ -107,7 +107,7 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements {
   final pulumi.Input<int>? onDemandMaxPricePercentageOverLowestPrice;
   /// Indicate whether instance types must support On-Demand Instance Hibernation, either `true` or `false`. Default is `false`.
   final pulumi.Input<bool>? requireHibernateSupport;
-  /// Price protection threshold for Spot Instances. This is the maximum you’ll pay for a Spot Instance, expressed as a percentage higher than the cheapest M, C, or R instance type with your specified attributes. When Amazon EC2 Auto Scaling selects instance types with your attributes, we will exclude instance types whose price is higher than your threshold. The parameter accepts an integer, which Amazon EC2 Auto Scaling interprets as a percentage. To turn off price protection, specify a high value, such as 999999. Default is 100. Conflicts with `max_spot_price_as_percentage_of_optimal_on_demand_price`
+  /// Price protection threshold for Spot Instances. This is the maximum you’ll pay for a Spot Instance, expressed as a percentage higher than the cheapest M, C, or R instance type with your specified attributes. When Amazon EC2 Auto Scaling selects instance types with your attributes, we will exclude instance types whose price is higher than your threshold. The parameter accepts an integer, which Amazon EC2 Auto Scaling interprets as a percentage. To turn off price protection, specify a high value, such as 999999. Default is 100. Conflicts with `maxSpotPriceAsPercentageOfOptimalOnDemandPrice`
   ///
   /// If you set DesiredCapacityType to vcpu or memory-mib, the price protection threshold is applied based on the per vCPU or per memory price instead of the per instance price.
   final pulumi.Input<int>? spotMaxPricePercentageOverLowestPrice;
@@ -131,14 +131,14 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements {
   /// [instanceGenerations] List of instance generation names. Default is any generation.
   /// [localStorage] Indicate whether instance types with local storage volumes are `included`, `excluded`, or `required`. Default is `included`.
   /// [localStorageTypes] List of local storage type names. Default any storage type.
-  /// [maxSpotPriceAsPercentageOfOptimalOnDemandPrice] The price protection threshold for Spot Instances. This is the maximum you’ll pay for a Spot Instance, expressed as a percentage higher than the cheapest M, C, or R instance type with your specified attributes. When Amazon EC2 Auto Scaling selects instance types with your attributes, we will exclude instance types whose price is higher than your threshold. The parameter accepts an integer, which Amazon EC2 Auto Scaling interprets as a percentage. To turn off price protection, specify a high value, such as 999999. Conflicts with `spot_max_price_percentage_over_lowest_price`
+  /// [maxSpotPriceAsPercentageOfOptimalOnDemandPrice] The price protection threshold for Spot Instances. This is the maximum you’ll pay for a Spot Instance, expressed as a percentage higher than the cheapest M, C, or R instance type with your specified attributes. When Amazon EC2 Auto Scaling selects instance types with your attributes, we will exclude instance types whose price is higher than your threshold. The parameter accepts an integer, which Amazon EC2 Auto Scaling interprets as a percentage. To turn off price protection, specify a high value, such as 999999. Conflicts with `spotMaxPricePercentageOverLowestPrice`
   /// [memoryGibPerVcpu] Block describing the minimum and maximum amount of memory (GiB) per vCPU. Default is no minimum or maximum.
   /// [memoryMib] Block describing the minimum and maximum amount of memory (MiB). Default is no maximum.
   /// [networkBandwidthGbps] Block describing the minimum and maximum amount of network bandwidth, in gigabits per second (Gbps). Default is no minimum or maximum.
   /// [networkInterfaceCount] Block describing the minimum and maximum number of network interfaces. Default is no minimum or maximum.
   /// [onDemandMaxPricePercentageOverLowestPrice] Price protection threshold for On-Demand Instances. This is the maximum you’ll pay for an On-Demand Instance, expressed as a percentage higher than the cheapest M, C, or R instance type with your specified attributes. When Amazon EC2 Auto Scaling selects instance types with your attributes, we will exclude instance types whose price is higher than your threshold. The parameter accepts an integer, which Amazon EC2 Auto Scaling interprets as a percentage. To turn off price protection, specify a high value, such as 999999. Default is 20.
   /// [requireHibernateSupport] Indicate whether instance types must support On-Demand Instance Hibernation, either `true` or `false`. Default is `false`.
-  /// [spotMaxPricePercentageOverLowestPrice] Price protection threshold for Spot Instances. This is the maximum you’ll pay for a Spot Instance, expressed as a percentage higher than the cheapest M, C, or R instance type with your specified attributes. When Amazon EC2 Auto Scaling selects instance types with your attributes, we will exclude instance types whose price is higher than your threshold. The parameter accepts an integer, which Amazon EC2 Auto Scaling interprets as a percentage. To turn off price protection, specify a high value, such as 999999. Default is 100. Conflicts with `max_spot_price_as_percentage_of_optimal_on_demand_price`
+  /// [spotMaxPricePercentageOverLowestPrice] Price protection threshold for Spot Instances. This is the maximum you’ll pay for a Spot Instance, expressed as a percentage higher than the cheapest M, C, or R instance type with your specified attributes. When Amazon EC2 Auto Scaling selects instance types with your attributes, we will exclude instance types whose price is higher than your threshold. The parameter accepts an integer, which Amazon EC2 Auto Scaling interprets as a percentage. To turn off price protection, specify a high value, such as 999999. Default is 100. Conflicts with `maxSpotPriceAsPercentageOfOptimalOnDemandPrice`
   /// [totalLocalStorageGb] Block describing the minimum and maximum total local storage (GB). Default is no minimum or maximum.
   /// [vcpuCount] Block describing the minimum and maximum number of vCPUs. Default is no maximum.
   const GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements({
@@ -226,4 +226,3 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements {
     );
   }
 }
-

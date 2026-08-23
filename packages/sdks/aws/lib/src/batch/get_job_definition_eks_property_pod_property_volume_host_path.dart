@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionEksPropertyPodPropertyVolumeHostPath {
-  /// The path of the file or directory on the host to mount into containers on the pod.
+  /// Path of the file or directory on the host to mount into containers on the pod.
   final pulumi.Input<String> path;
 
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyVolumeHostPath].
-  /// [path] The path of the file or directory on the host to mount into containers on the pod.
+  /// [path] Path of the file or directory on the host to mount into containers on the pod.
   const GetJobDefinitionEksPropertyPodPropertyVolumeHostPath({
     required this.path,
   });
@@ -24,4 +24,3 @@ class GetJobDefinitionEksPropertyPodPropertyVolumeHostPath {
     );
   }
 }
-

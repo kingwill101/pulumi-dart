@@ -63,4 +63,3 @@ class BucketLoggingV2State {
     );
   }
 }
-

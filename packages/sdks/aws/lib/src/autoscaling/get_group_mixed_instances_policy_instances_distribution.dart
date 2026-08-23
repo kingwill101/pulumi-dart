@@ -7,6 +7,7 @@ class GetGroupMixedInstancesPolicyInstancesDistribution {
   final pulumi.Input<String> onDemandAllocationStrategy;
   /// Absolute minimum amount of desired capacity that must be fulfilled by on-demand instances.
   final pulumi.Input<int> onDemandBaseCapacity;
+  /// Percentages of On-Demand Instances and Spot Instances for your additional capacity beyond `onDemandBaseCapacity`.
   final pulumi.Input<int> onDemandPercentageAboveBaseCapacity;
   /// Strategy used when launching Spot instances.
   final pulumi.Input<String> spotAllocationStrategy;
@@ -18,7 +19,7 @@ class GetGroupMixedInstancesPolicyInstancesDistribution {
   /// Creates a new [GetGroupMixedInstancesPolicyInstancesDistribution].
   /// [onDemandAllocationStrategy] Strategy used when launching on-demand instances.
   /// [onDemandBaseCapacity] Absolute minimum amount of desired capacity that must be fulfilled by on-demand instances.
-  /// [onDemandPercentageAboveBaseCapacity] Required.
+  /// [onDemandPercentageAboveBaseCapacity] Percentages of On-Demand Instances and Spot Instances for your additional capacity beyond `onDemandBaseCapacity`.
   /// [spotAllocationStrategy] Strategy used when launching Spot instances.
   /// [spotInstancePools] Number of Spot pools per availability zone to allocate capacity.
   /// [spotMaxPrice] Maximum price per unit hour that the user is willing to pay for the Spot instances.
@@ -53,4 +54,3 @@ class GetGroupMixedInstancesPolicyInstancesDistribution {
     );
   }
 }
-

@@ -116,6 +116,31 @@ import 'listener_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_loadbalancer" "front_end" {
+/// }
+/// resource "aws_lb_targetgroup" "front_end" {
+/// }
+/// resource "aws_lb_listener" "front_end" {
+///   load_balancer_arn = aws_lb_loadbalancer.front_end.arn
+///   port              = "443"
+///   protocol          = "HTTPS"
+///   ssl_policy        = "ELBSecurityPolicy-2016-08"
+///   certificate_arn   = "arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4"
+///   default_actions {
+///     type             = "forward"
+///     target_group_arn = aws_lb_targetgroup.front_end.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +152,8 @@ import 'listener_state.dart';
 /// import com.pulumi.aws.lb.Listener;
 /// import com.pulumi.aws.lb.ListenerArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerDefaultActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -345,6 +370,41 @@ import 'listener_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_loadbalancer" "front_end" {
+/// }
+/// resource "aws_lb_targetgroup" "front_end_blue" {
+/// }
+/// resource "aws_lb_targetgroup" "front_end_green" {
+/// }
+/// resource "aws_lb_listener" "front_end" {
+///   load_balancer_arn = aws_lb_loadbalancer.front_end.arn
+///   port              = "443"
+///   protocol          = "HTTPS"
+///   ssl_policy        = "ELBSecurityPolicy-2016-08"
+///   certificate_arn   = "arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4"
+///   default_actions {
+///     type = "forward"
+///     forward = {
+///       target_groups = [{
+///         "arn"    = aws_lb_targetgroup.front_end_blue.arn
+///         "weight" = 100
+///         }, {
+///         "arn"    = aws_lb_targetgroup.front_end_green.arn
+///         "weight" = 0
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -357,8 +417,9 @@ import 'listener_state.dart';
 /// import com.pulumi.aws.lb.ListenerArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerDefaultActionArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerDefaultActionForwardArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.lb.inputs.ListenerDefaultActionForwardTargetGroupArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -527,6 +588,28 @@ import 'listener_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_listener" "front_end" {
+///   load_balancer_arn = frontEndAwsLb.arn
+///   port              = "443"
+///   protocol          = "TLS"
+///   ssl_policy        = "ELBSecurityPolicy-2016-08"
+///   certificate_arn   = "arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4"
+///   alpn_policy       = "HTTP2Preferred"
+///   default_actions {
+///     type             = "forward"
+///     target_group_arn = frontEndAwsLbTargetGroup.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -536,8 +619,8 @@ import 'listener_state.dart';
 /// import com.pulumi.aws.lb.Listener;
 /// import com.pulumi.aws.lb.ListenerArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerDefaultActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -691,6 +774,31 @@ import 'listener_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_loadbalancer" "front_end" {
+/// }
+/// resource "aws_lb_listener" "front_end" {
+///   load_balancer_arn = aws_lb_loadbalancer.front_end.arn
+///   port              = "80"
+///   protocol          = "HTTP"
+///   default_actions {
+///     type = "redirect"
+///     redirect = {
+///       port        = "443"
+///       protocol    = "HTTPS"
+///       status_code = "HTTP_301"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -702,8 +810,8 @@ import 'listener_state.dart';
 /// import com.pulumi.aws.lb.ListenerArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerDefaultActionArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerDefaultActionRedirectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -863,6 +971,31 @@ import 'listener_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_loadbalancer" "front_end" {
+/// }
+/// resource "aws_lb_listener" "front_end" {
+///   load_balancer_arn = aws_lb_loadbalancer.front_end.arn
+///   port              = "80"
+///   protocol          = "HTTP"
+///   default_actions {
+///     type = "fixed-response"
+///     fixed_response = {
+///       content_type = "text/plain"
+///       message_body = "Fixed response content"
+///       status_code  = "200"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -874,8 +1007,8 @@ import 'listener_state.dart';
 /// import com.pulumi.aws.lb.ListenerArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerDefaultActionArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerDefaultActionFixedResponseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1072,7 +1205,7 @@ import 'listener_state.dart';
 /// 					Type: pulumi.String("authenticate-cognito"),
 /// 					AuthenticateCognito: &lb.ListenerDefaultActionAuthenticateCognitoArgs{
 /// 						UserPoolArn:      pool.Arn,
-/// 						UserPoolClientId: client.ID(),
+/// 						UserPoolClientId: client.ID().ToIDOutput().ToStringOutput(),
 /// 						UserPoolDomain:   domain.Domain,
 /// 					},
 /// 				},
@@ -1087,6 +1220,43 @@ import 'listener_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_loadbalancer" "front_end" {
+/// }
+/// resource "aws_lb_targetgroup" "front_end" {
+/// }
+/// resource "aws_cognito_userpool" "pool" {
+/// }
+/// resource "aws_cognito_userpoolclient" "client" {
+/// }
+/// resource "aws_cognito_userpooldomain" "domain" {
+/// }
+/// resource "aws_lb_listener" "front_end" {
+///   load_balancer_arn = aws_lb_loadbalancer.front_end.arn
+///   port              = "80"
+///   protocol          = "HTTP"
+///   default_actions {
+///     type = "authenticate-cognito"
+///     authenticate_cognito = {
+///       user_pool_arn       = aws_cognito_userpool.pool.arn
+///       user_pool_client_id = aws_cognito_userpoolclient.client.id
+///       user_pool_domain    = aws_cognito_userpooldomain.domain.domain
+///     }
+///   }
+///   default_actions {
+///     type             = "forward"
+///     target_group_arn = aws_lb_targetgroup.front_end.arn
+///   }
 /// }
 /// ```
 /// ```java
@@ -1104,8 +1274,8 @@ import 'listener_state.dart';
 /// import com.pulumi.aws.lb.ListenerArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerDefaultActionArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerDefaultActionAuthenticateCognitoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1330,6 +1500,40 @@ import 'listener_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_loadbalancer" "front_end" {
+/// }
+/// resource "aws_lb_targetgroup" "front_end" {
+/// }
+/// resource "aws_lb_listener" "front_end" {
+///   load_balancer_arn = aws_lb_loadbalancer.front_end.arn
+///   port              = "80"
+///   protocol          = "HTTP"
+///   default_actions {
+///     type = "authenticate-oidc"
+///     authenticate_oidc = {
+///       authorization_endpoint = "https://example.com/authorization_endpoint"
+///       client_id              = "client_id"
+///       client_secret          = "client_secret"
+///       issuer                 = "https://example.com"
+///       token_endpoint         = "https://example.com/token_endpoint"
+///       user_info_endpoint     = "https://example.com/user_info_endpoint"
+///     }
+///   }
+///   default_actions {
+///     type             = "forward"
+///     target_group_arn = aws_lb_targetgroup.front_end.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1342,8 +1546,8 @@ import 'listener_state.dart';
 /// import com.pulumi.aws.lb.ListenerArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerDefaultActionArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerDefaultActionAuthenticateOidcArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1607,6 +1811,43 @@ import 'listener_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_listener" "test" {
+///   load_balancer_arn = testAwsLb.id
+///   protocol          = "HTTPS"
+///   port              = "443"
+///   ssl_policy        = "ELBSecurityPolicy-2016-08"
+///   certificate_arn   = testAwsIamServerCertificate.arn
+///   default_actions {
+///     type = "jwt-validation"
+///     jwt_validation = {
+///       issuer        = "https://example.com"
+///       jwks_endpoint = "https://example.com/.well-known/jwks.json"
+///       additional_claims = [{
+///         "format" = "string-array"
+///         "name"   = "claim_name1"
+///         "values" = ["value1", "value2"]
+///         }, {
+///         "format" = "single-string"
+///         "name"   = "claim_name2"
+///         "values" = ["value1"]
+///       }]
+///     }
+///   }
+///   default_actions {
+///     target_group_arn = testAwsLbTargetGroup.id
+///     type             = "forward"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1617,8 +1858,9 @@ import 'listener_state.dart';
 /// import com.pulumi.aws.lb.ListenerArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerDefaultActionArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerDefaultActionJwtValidationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.lb.inputs.ListenerDefaultActionJwtValidationAdditionalClaimArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1839,10 +2081,10 @@ import 'listener_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lb.NewListener(ctx, "example", &lb.ListenerArgs{
-/// 			LoadBalancerArn: example.ID(),
+/// 			LoadBalancerArn: example.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultActions: lb.ListenerDefaultActionArray{
 /// 				&lb.ListenerDefaultActionArgs{
-/// 					TargetGroupArn: exampleTargetGroup.ID(),
+/// 					TargetGroupArn: exampleTargetGroup.ID().ToIDOutput().ToStringOutput(),
 /// 					Type:           pulumi.String("forward"),
 /// 				},
 /// 			},
@@ -1852,6 +2094,40 @@ import 'listener_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_loadbalancer" "example" {
+///   load_balancer_type = "gateway"
+///   name               = "example"
+///   subnet_mappings {
+///     subnet_id = exampleAwsSubnet.id
+///   }
+/// }
+/// resource "aws_lb_targetgroup" "example" {
+///   name     = "example"
+///   port     = 6081
+///   protocol = "GENEVE"
+///   vpc_id   = exampleAwsVpc.id
+///   health_check = {
+///     port     = 80
+///     protocol = "HTTP"
+///   }
+/// }
+/// resource "aws_lb_listener" "example" {
+///   load_balancer_arn = aws_lb_loadbalancer.example.id
+///   default_actions {
+///     target_group_arn = aws_lb_targetgroup.example.id
+///     type             = "forward"
+///   }
 /// }
 /// ```
 /// ```java
@@ -1869,8 +2145,8 @@ import 'listener_state.dart';
 /// import com.pulumi.aws.lb.Listener;
 /// import com.pulumi.aws.lb.ListenerArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerDefaultActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2037,10 +2313,10 @@ import 'listener_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lb.NewListener(ctx, "example", &lb.ListenerArgs{
-/// 			LoadBalancerArn: example.ID(),
+/// 			LoadBalancerArn: example.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultActions: lb.ListenerDefaultActionArray{
 /// 				&lb.ListenerDefaultActionArgs{
-/// 					TargetGroupArn: exampleTargetGroup.ID(),
+/// 					TargetGroupArn: exampleTargetGroup.ID().ToIDOutput().ToStringOutput(),
 /// 					Type:           pulumi.String("forward"),
 /// 				},
 /// 			},
@@ -2056,6 +2332,32 @@ import 'listener_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_loadbalancer" "example" {
+///   load_balancer_type = "application"
+/// }
+/// resource "aws_lb_targetgroup" "example" {
+/// }
+/// resource "aws_lb_listener" "example" {
+///   load_balancer_arn = aws_lb_loadbalancer.example.id
+///   default_actions {
+///     target_group_arn = aws_lb_targetgroup.example.id
+///     type             = "forward"
+///   }
+///   mutual_authentication = {
+///     mode            = "verify"
+///     trust_store_arn = "..."
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2069,8 +2371,8 @@ import 'listener_state.dart';
 /// import com.pulumi.aws.lb.ListenerArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerDefaultActionArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerMutualAuthenticationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2201,11 +2503,11 @@ class Listener extends pulumi.CustomResource {
   late final pulumi.Output<String> routingHttpResponseXFrameOptionsHeaderValue;
   /// Name of the SSL Policy for the listener. Required if `protocol` is `HTTPS` or `TLS`. Default is `ELBSecurityPolicy-2016-08`.
   late final pulumi.Output<String> sslPolicy;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// &gt; **Note::** When a `Name` key is specified in the map, the AWS Console maps the value to the `Name Tag` column value inside the `Listener Rules` table within a specific load balancer listener page. Otherwise, the value resolves to `Default`.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// TCP idle timeout value in seconds. Can only be set if protocol is `TCP` on Network Load Balancer, or with a Gateway Load Balancer. Not supported for Application Load Balancers. Valid values are between `60` and `6000` inclusive. Default: `350`.
   late final pulumi.Output<int> tcpIdleTimeoutSeconds;

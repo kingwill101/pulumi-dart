@@ -11,7 +11,7 @@ class ReplicationConfigurationTemplatePitPolicy {
   final pulumi.Input<int> retentionDuration;
   /// ID of the rule. Valid values are integers.
   final pulumi.Input<int>? ruleId;
-  /// Units used to measure the `interval` and `retention_duration`. Valid values are `MINUTE`, `HOUR`, and `DAY`.
+  /// Units used to measure the `interval` and `retentionDuration`. Valid values are `MINUTE`, `HOUR`, and `DAY`.
   final pulumi.Input<String> units;
 
   /// Creates a new [ReplicationConfigurationTemplatePitPolicy].
@@ -19,7 +19,7 @@ class ReplicationConfigurationTemplatePitPolicy {
   /// [interval] How often, in the chosen units, a snapshot should be taken.
   /// [retentionDuration] Duration to retain a snapshot for, in the chosen `units`.
   /// [ruleId] ID of the rule. Valid values are integers.
-  /// [units] Units used to measure the `interval` and `retention_duration`. Valid values are `MINUTE`, `HOUR`, and `DAY`.
+  /// [units] Units used to measure the `interval` and `retentionDuration`. Valid values are `MINUTE`, `HOUR`, and `DAY`.
   const ReplicationConfigurationTemplatePitPolicy({
     this.enabled,
     required this.interval,
@@ -48,4 +48,3 @@ class ReplicationConfigurationTemplatePitPolicy {
     );
   }
 }
-

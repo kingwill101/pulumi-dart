@@ -217,86 +217,140 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Effect: pulumi.StringRef("Allow"),
-/// Actions: []string{
-/// "sts:AssumeRole",
-/// },
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "Service",
-/// Identifiers: []string{
-/// "bedrock-agentcore.amazonaws.com",
-/// },
-/// },
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
+/// 					},
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "Service",
+/// 							Identifiers: []string{
+/// 								"bedrock-agentcore.amazonaws.com",
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ecrPermissions, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Actions: []string{
+/// 						"ecr:GetAuthorizationToken",
+/// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Resources: []string{
+/// 						"*",
+/// 					},
+/// 				},
+/// 				{
+/// 					Actions: []string{
+/// 						"ecr:BatchGetImage",
+/// 						"ecr:GetDownloadUrlForLayer",
+/// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Resources: pulumi.StringArray{
+/// 						exampleAwsEcrRepository.Arn,
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example, err := iam.NewRole(ctx, "example", &iam.RoleArgs{
+/// 			Name:             pulumi.String("bedrock-agentcore-runtime-role"),
+/// 			AssumeRolePolicy: pulumi.String(assumeRole.Json),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
+/// 			Role:   example.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: pulumi.String(ecrPermissions.Json),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = bedrock.NewAgentcoreAgentRuntime(ctx, "example", &bedrock.AgentcoreAgentRuntimeArgs{
+/// 			AgentRuntimeName: pulumi.String("example_agent_runtime"),
+/// 			RoleArn:          example.Arn,
+/// 			AgentRuntimeArtifact: &bedrock.AgentcoreAgentRuntimeAgentRuntimeArtifactArgs{
+/// 				ContainerConfiguration: &bedrock.AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs{
+/// 					ContainerUri: pulumi.Sprintf("%v:latest", exampleAwsEcrRepository.RepositoryUrl),
+/// 				},
+/// 			},
+/// 			NetworkConfiguration: &bedrock.AgentcoreAgentRuntimeNetworkConfigurationArgs{
+/// 				NetworkMode: pulumi.String("PUBLIC"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// ecrPermissions, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Actions: []string{
-/// "ecr:GetAuthorizationToken",
-/// },
-/// Effect: pulumi.StringRef("Allow"),
-/// Resources: []string{
-/// "*",
-/// },
-/// },
-/// {
-/// Actions: []string{
-/// "ecr:BatchGetImage",
-/// "ecr:GetDownloadUrlForLayer",
-/// },
-/// Effect: pulumi.StringRef("Allow"),
-/// Resources: interface{}{
-/// exampleAwsEcrRepository.Arn,
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// example, err := iam.NewRole(ctx, "example", &iam.RoleArgs{
-/// Name: pulumi.String("bedrock-agentcore-runtime-role"),
-/// AssumeRolePolicy: pulumi.String(assumeRole.Json),
-/// })
-/// if err != nil {
-/// return err
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect  = "Allow"
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["bedrock-agentcore.amazonaws.com"]
+///     }
+///   }
 /// }
-/// _, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
-/// Role: example.ID(),
-/// Policy: pulumi.String(ecrPermissions.Json),
-/// })
-/// if err != nil {
-/// return err
+/// data "aws_iam_getpolicydocument" "ecrPermissions" {
+///   statements {
+///     actions   = ["ecr:GetAuthorizationToken"]
+///     effect    = "Allow"
+///     resources = ["*"]
+///   }
+///   statements {
+///     actions   = ["ecr:BatchGetImage", "ecr:GetDownloadUrlForLayer"]
+///     effect    = "Allow"
+///     resources = [exampleAwsEcrRepository.arn]
+///   }
 /// }
-/// _, err = bedrock.NewAgentcoreAgentRuntime(ctx, "example", &bedrock.AgentcoreAgentRuntimeArgs{
-/// AgentRuntimeName: pulumi.String("example_agent_runtime"),
-/// RoleArn: example.Arn,
-/// AgentRuntimeArtifact: &bedrock.AgentcoreAgentRuntimeAgentRuntimeArtifactArgs{
-/// ContainerConfiguration: &bedrock.AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs{
-/// ContainerUri: pulumi.Sprintf("%v:latest", exampleAwsEcrRepository.RepositoryUrl),
-/// },
-/// },
-/// NetworkConfiguration: &bedrock.AgentcoreAgentRuntimeNetworkConfigurationArgs{
-/// NetworkMode: pulumi.String("PUBLIC"),
-/// },
-/// })
-/// if err != nil {
-/// return err
+///
+/// resource "aws_iam_role" "example" {
+///   name               = "bedrock-agentcore-runtime-role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
 /// }
-/// return nil
-/// })
+/// resource "aws_iam_rolepolicy" "example" {
+///   role   = aws_iam_role.example.id
+///   policy = data.aws_iam_getpolicydocument.ecrPermissions.json
+/// }
+/// resource "aws_bedrock_agentcoreagentruntime" "example" {
+///   agent_runtime_name = "example_agent_runtime"
+///   role_arn           = aws_iam_role.example.arn
+///   agent_runtime_artifact = {
+///     container_configuration = {
+///       container_uri ="${exampleAwsEcrRepository.repositoryUrl}:latest"
+///     }
+///   }
+///   network_configuration = {
+///     network_mode = "PUBLIC"
+///   }
 /// }
 /// ```
 /// ```java
@@ -307,6 +361,8 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
@@ -316,8 +372,8 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreAgentRuntimeNetworkConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -469,6 +525,10 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///                 "client-123",
 ///                 "client-456",
 ///             ],
+///             allowedScopes: [
+///                 "openid",
+///                 "email",
+///             ],
 ///         },
 ///     },
 ///     networkConfiguration: {
@@ -506,6 +566,10 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///             "allowed_clients": [
 ///                 "client-123",
 ///                 "client-456",
+///             ],
+///             "allowed_scopes": [
+///                 "openid",
+///                 "email",
 ///             ],
 ///         },
 ///     },
@@ -556,6 +620,11 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///                     "client-123",
 ///                     "client-456",
 ///                 },
+///                 AllowedScopes = new[]
+///                 {
+///                     "openid",
+///                     "email",
+///                 },
 ///             },
 ///         },
 ///         NetworkConfiguration = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeNetworkConfigurationArgs
@@ -604,6 +673,10 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// 						pulumi.String("client-123"),
 /// 						pulumi.String("client-456"),
 /// 					},
+/// 					AllowedScopes: pulumi.StringArray{
+/// 						pulumi.String("openid"),
+/// 						pulumi.String("email"),
+/// 					},
 /// 				},
 /// 			},
 /// 			NetworkConfiguration: &bedrock.AgentcoreAgentRuntimeNetworkConfigurationArgs{
@@ -620,6 +693,44 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcoreagentruntime" "example" {
+///   agent_runtime_name = "example_agent_runtime"
+///   description        = "Agent runtime with JWT authorization"
+///   role_arn           = exampleAwsIamRole.arn
+///   agent_runtime_artifact = {
+///     container_configuration = {
+///       container_uri ="${exampleAwsEcrRepository.repositoryUrl}:v1.0"
+///     }
+///   }
+///   environment_variables = {
+///     "LOG_LEVEL" = "INFO"
+///     "ENV"       = "production"
+///   }
+///   authorizer_configuration = {
+///     custom_jwt_authorizer = {
+///       discovery_url     = "https://accounts.google.com/.well-known/openid-configuration"
+///       allowed_audiences = ["my-app", "mobile-app"]
+///       allowed_clients   = ["client-123", "client-456"]
+///       allowed_scopes    = ["openid", "email"]
+///     }
+///   }
+///   network_configuration = {
+///     network_mode = "PUBLIC"
+///   }
+///   protocol_configuration = {
+///     server_protocol = "MCP"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -634,8 +745,8 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizerArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreAgentRuntimeNetworkConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreAgentRuntimeProtocolConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -669,6 +780,9 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///                     .allowedClients(
 ///                         "client-123",
 ///                         "client-456")
+///                     .allowedScopes(
+///                         "openid",
+///                         "email")
 ///                     .build())
 ///                 .build())
 ///             .networkConfiguration(AgentcoreAgentRuntimeNetworkConfigurationArgs.builder()
@@ -705,10 +819,211 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///           allowedClients:
 ///             - client-123
 ///             - client-456
+///           allowedScopes:
+///             - openid
+///             - email
 ///       networkConfiguration:
 ///         networkMode: PUBLIC
 ///       protocolConfiguration:
 ///         serverProtocol: MCP
+/// ```
+///
+///
+/// ### AG-UI Server
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.bedrock.AgentcoreAgentRuntime("example", {
+///     agentRuntimeName: "example_agui_runtime",
+///     description: "Agent runtime with AG-UI protocol",
+///     roleArn: exampleAwsIamRole.arn,
+///     agentRuntimeArtifact: {
+///         containerConfiguration: {
+///             containerUri: `${exampleAwsEcrRepository.repositoryUrl}:latest`,
+///         },
+///     },
+///     networkConfiguration: {
+///         networkMode: "PUBLIC",
+///     },
+///     protocolConfiguration: {
+///         serverProtocol: "AGUI",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.bedrock.AgentcoreAgentRuntime("example",
+///     agent_runtime_name="example_agui_runtime",
+///     description="Agent runtime with AG-UI protocol",
+///     role_arn=example_aws_iam_role["arn"],
+///     agent_runtime_artifact={
+///         "container_configuration": {
+///             "container_uri": f"{example_aws_ecr_repository['repositoryUrl']}:latest",
+///         },
+///     },
+///     network_configuration={
+///         "network_mode": "PUBLIC",
+///     },
+///     protocol_configuration={
+///         "server_protocol": "AGUI",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Bedrock.AgentcoreAgentRuntime("example", new()
+///     {
+///         AgentRuntimeName = "example_agui_runtime",
+///         Description = "Agent runtime with AG-UI protocol",
+///         RoleArn = exampleAwsIamRole.Arn,
+///         AgentRuntimeArtifact = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactArgs
+///         {
+///             ContainerConfiguration = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs
+///             {
+///                 ContainerUri = $"{exampleAwsEcrRepository.RepositoryUrl}:latest",
+///             },
+///         },
+///         NetworkConfiguration = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeNetworkConfigurationArgs
+///         {
+///             NetworkMode = "PUBLIC",
+///         },
+///         ProtocolConfiguration = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeProtocolConfigurationArgs
+///         {
+///             ServerProtocol = "AGUI",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/bedrock"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := bedrock.NewAgentcoreAgentRuntime(ctx, "example", &bedrock.AgentcoreAgentRuntimeArgs{
+/// 			AgentRuntimeName: pulumi.String("example_agui_runtime"),
+/// 			Description:      pulumi.String("Agent runtime with AG-UI protocol"),
+/// 			RoleArn:          pulumi.Any(exampleAwsIamRole.Arn),
+/// 			AgentRuntimeArtifact: &bedrock.AgentcoreAgentRuntimeAgentRuntimeArtifactArgs{
+/// 				ContainerConfiguration: &bedrock.AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs{
+/// 					ContainerUri: pulumi.Sprintf("%v:latest", exampleAwsEcrRepository.RepositoryUrl),
+/// 				},
+/// 			},
+/// 			NetworkConfiguration: &bedrock.AgentcoreAgentRuntimeNetworkConfigurationArgs{
+/// 				NetworkMode: pulumi.String("PUBLIC"),
+/// 			},
+/// 			ProtocolConfiguration: &bedrock.AgentcoreAgentRuntimeProtocolConfigurationArgs{
+/// 				ServerProtocol: pulumi.String("AGUI"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcoreagentruntime" "example" {
+///   agent_runtime_name = "example_agui_runtime"
+///   description        = "Agent runtime with AG-UI protocol"
+///   role_arn           = exampleAwsIamRole.arn
+///   agent_runtime_artifact = {
+///     container_configuration = {
+///       container_uri ="${exampleAwsEcrRepository.repositoryUrl}:latest"
+///     }
+///   }
+///   network_configuration = {
+///     network_mode = "PUBLIC"
+///   }
+///   protocol_configuration = {
+///     server_protocol = "AGUI"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.bedrock.AgentcoreAgentRuntime;
+/// import com.pulumi.aws.bedrock.AgentcoreAgentRuntimeArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentcoreAgentRuntimeNetworkConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentcoreAgentRuntimeProtocolConfigurationArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new AgentcoreAgentRuntime("example", AgentcoreAgentRuntimeArgs.builder()
+///             .agentRuntimeName("example_agui_runtime")
+///             .description("Agent runtime with AG-UI protocol")
+///             .roleArn(exampleAwsIamRole.arn())
+///             .agentRuntimeArtifact(AgentcoreAgentRuntimeAgentRuntimeArtifactArgs.builder()
+///                 .containerConfiguration(AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs.builder()
+///                     .containerUri(String.format("%s:latest", exampleAwsEcrRepository.repositoryUrl()))
+///                     .build())
+///                 .build())
+///             .networkConfiguration(AgentcoreAgentRuntimeNetworkConfigurationArgs.builder()
+///                 .networkMode("PUBLIC")
+///                 .build())
+///             .protocolConfiguration(AgentcoreAgentRuntimeProtocolConfigurationArgs.builder()
+///                 .serverProtocol("AGUI")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:bedrock:AgentcoreAgentRuntime
+///     properties:
+///       agentRuntimeName: example_agui_runtime
+///       description: Agent runtime with AG-UI protocol
+///       roleArn: ${exampleAwsIamRole.arn}
+///       agentRuntimeArtifact:
+///         containerConfiguration:
+///           containerUri: ${exampleAwsEcrRepository.repositoryUrl}:latest
+///       networkConfiguration:
+///         networkMode: PUBLIC
+///       protocolConfiguration:
+///         serverProtocol: AGUI
 /// ```
 ///
 ///
@@ -839,6 +1154,35 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcoreagentruntime" "example" {
+///   agent_runtime_name = "example_agent_runtime"
+///   role_arn           = exampleAwsIamRole.arn
+///   agent_runtime_artifact = {
+///     code_configuration = {
+///       entry_points = ["main.py"]
+///       runtime      = "PYTHON_3_13"
+///       code = {
+///         s3 = {
+///           bucket = "example-bucket"
+///           prefix = "example-agent-runtime-code.zip"
+///         }
+///       }
+///     }
+///   }
+///   network_configuration = {
+///     network_mode = "PUBLIC"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -852,8 +1196,8 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3Args;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreAgentRuntimeNetworkConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -911,7 +1255,7 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Bedrock AgentCore Agent Runtime using `agent_runtime_id`. For example:
+/// Using `pulumi import`, import Bedrock AgentCore Agent Runtime using `agentRuntimeId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:bedrock/agentcoreAgentRuntime:AgentcoreAgentRuntime example agent-runtime-12345
@@ -919,7 +1263,7 @@ import 'agentcore_agent_runtime_timeouts.dart';
 class AgentcoreAgentRuntime extends pulumi.CustomResource {
   /// ARN of the Agent Runtime.
   late final pulumi.Output<String> agentRuntimeArn;
-  /// Container artifact configuration. See `agent_runtime_artifact` below.
+  /// Container artifact configuration. See `agentRuntimeArtifact` below.
   late final pulumi.Output<AgentcoreAgentRuntimeAgentRuntimeArtifact> agentRuntimeArtifact;
   /// Unique identifier of the Agent Runtime.
   late final pulumi.Output<String> agentRuntimeId;
@@ -927,32 +1271,34 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
   late final pulumi.Output<String> agentRuntimeName;
   /// Version of the Agent Runtime.
   late final pulumi.Output<String> agentRuntimeVersion;
-  /// Authorization configuration for authenticating incoming requests. See `authorizer_configuration` below.
+  /// Authorization configuration for authenticating incoming requests. See `authorizerConfiguration` below.
   late final pulumi.Output<AgentcoreAgentRuntimeAuthorizerConfiguration?> authorizerConfiguration;
   /// Description of the agent runtime.
   late final pulumi.Output<String?> description;
   /// Map of environment variables to pass to the container.
   late final pulumi.Output<Map<String, String>?> environmentVariables;
-  /// Runtime session and resource lifecycle configuration for the agent runtime. See `lifecycle_configuration` below.
+  /// List of filesystems to mount into the agent runtime. Up to 5 entries are supported. Each entry is one of session storage, Amazon S3 Files access point, or Amazon EFS access point. See `filesystemConfiguration` below.
+  late final pulumi.Output<List<Map<String, dynamic>>?> filesystemConfigurations;
+  /// Runtime session and resource lifecycle configuration for the agent runtime. See `lifecycleConfiguration` below.
   late final pulumi.Output<List<Map<String, dynamic>>> lifecycleConfigurations;
-  /// Network configuration for the agent runtime. See `network_configuration` below.
+  /// Network configuration for the agent runtime. See `networkConfiguration` below.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<AgentcoreAgentRuntimeNetworkConfiguration> networkConfiguration;
-  /// Protocol configuration for the agent runtime. See `protocol_configuration` below.
+  /// Protocol configuration for the agent runtime. See `protocolConfiguration` below.
   late final pulumi.Output<AgentcoreAgentRuntimeProtocolConfiguration?> protocolConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Configuration for HTTP request headers that will be passed through to the runtime. See `request_header_configuration` below.
+  /// Configuration for HTTP request headers that will be passed through to the runtime. See `requestHeaderConfiguration` below.
   late final pulumi.Output<AgentcoreAgentRuntimeRequestHeaderConfiguration?> requestHeaderConfiguration;
   /// ARN of the IAM role that the agent runtime assumes to access AWS services.
   late final pulumi.Output<String> roleArn;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreAgentRuntimeTimeouts?> timeouts;
-  /// Workload identity details for the agent runtime. See `workload_identity_details` below.
+  /// Workload identity details for the agent runtime. See `workloadIdentityDetails` below.
   late final pulumi.Output<List<Map<String, dynamic>>> workloadIdentityDetails;
 
   /// Creates a new [AgentcoreAgentRuntime].
@@ -977,6 +1323,7 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
     authorizerConfiguration = registerOutput<AgentcoreAgentRuntimeAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
+    filesystemConfigurations = registerOutput<List<Map<String, dynamic>>?>('filesystemConfigurations');
     lifecycleConfigurations = registerOutput<List<Map<String, dynamic>>>('lifecycleConfigurations');
     networkConfiguration = registerOutput<AgentcoreAgentRuntimeNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     protocolConfiguration = registerOutput<AgentcoreAgentRuntimeProtocolConfiguration?>('protocolConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeProtocolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1020,6 +1367,7 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
     authorizerConfiguration = registerOutput<AgentcoreAgentRuntimeAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
+    filesystemConfigurations = registerOutput<List<Map<String, dynamic>>?>('filesystemConfigurations');
     lifecycleConfigurations = registerOutput<List<Map<String, dynamic>>>('lifecycleConfigurations');
     networkConfiguration = registerOutput<AgentcoreAgentRuntimeNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     protocolConfiguration = registerOutput<AgentcoreAgentRuntimeProtocolConfiguration?>('protocolConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeProtocolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

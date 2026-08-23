@@ -107,6 +107,30 @@ import 's3_access_point_attachment_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_fsx_s3accesspointattachment" "example" {
+///   name = "example-attachment"
+///   type = "OPENZFS"
+///   openzfs_configuration = {
+///     volume_id = exampleAwsFsxOpenzfsVolume.id
+///     file_system_identity = {
+///       type = "POSIX"
+///       posix_user = {
+///         uid = 1001
+///         gid = 1001
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -118,8 +142,8 @@ import 's3_access_point_attachment_timeouts.dart';
 /// import com.pulumi.aws.fsx.inputs.S3AccessPointAttachmentOpenzfsConfigurationArgs;
 /// import com.pulumi.aws.fsx.inputs.S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityArgs;
 /// import com.pulumi.aws.fsx.inputs.S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -176,11 +200,11 @@ import 's3_access_point_attachment_timeouts.dart';
 class S3AccessPointAttachment extends pulumi.CustomResource {
   /// Name of the S3 access point.
   late final pulumi.Output<String> name;
-  /// Configuration to use when creating and attaching an S3 access point to an FSx for OpenZFS volume. See `openzfs_configuration` Block for details.
+  /// Configuration to use when creating and attaching an S3 access point to an FSx for OpenZFS volume. See `openzfsConfiguration` Block for details.
   late final pulumi.Output<S3AccessPointAttachmentOpenzfsConfiguration> openzfsConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// S3 access point configuration. See `s3_access_point` Block for details.
+  /// S3 access point configuration. See `s3AccessPoint` Block for details.
   late final pulumi.Output<S3AccessPointAttachmentS3AccessPoint?> s3AccessPoint;
   /// S3 access point's alias.
   late final pulumi.Output<String> s3AccessPointAlias;

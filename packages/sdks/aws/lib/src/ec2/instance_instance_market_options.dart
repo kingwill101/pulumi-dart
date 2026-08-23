@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_instance_market_options_spot_options.dart';
 
 class InstanceInstanceMarketOptions {
-  /// Type of market for the instance. Valid values are `spot` and `capacity-block`. Defaults to `spot`. Required if `spot_options` is specified.
+  /// Type of market for the instance. Valid values are `spot`, `capacity-block`, and `interruptible-capacity-reservation`. Use `interruptible-capacity-reservation` to launch instances into [interruptible Capacity Reservations](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-consumer-procedures.html). Defaults to `spot`. Required if `spotOptions` is specified.
   final pulumi.Input<String>? marketType;
   /// Block to configure the options for Spot Instances. See Spot Options below for details on attributes.
   final pulumi.Input<InstanceInstanceMarketOptionsSpotOptions>? spotOptions;
 
   /// Creates a new [InstanceInstanceMarketOptions].
-  /// [marketType] Type of market for the instance. Valid values are `spot` and `capacity-block`. Defaults to `spot`. Required if `spot_options` is specified.
+  /// [marketType] Type of market for the instance. Valid values are `spot`, `capacity-block`, and `interruptible-capacity-reservation`. Use `interruptible-capacity-reservation` to launch instances into [interruptible Capacity Reservations](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-consumer-procedures.html). Defaults to `spot`. Required if `spotOptions` is specified.
   /// [spotOptions] Block to configure the options for Spot Instances. See Spot Options below for details on attributes.
   const InstanceInstanceMarketOptions({
     this.marketType,
@@ -31,4 +31,3 @@ class InstanceInstanceMarketOptions {
     );
   }
 }
-

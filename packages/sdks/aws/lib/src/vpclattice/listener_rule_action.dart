@@ -5,16 +5,14 @@ import 'listener_rule_action_fixed_response.dart';
 import 'listener_rule_action_forward.dart';
 
 class ListenerRuleAction {
-  /// Describes the rule action that returns a custom HTTP response.
-  /// See `fixed_response` Block for details.
+  /// Rule action that returns a custom HTTP response. See `fixedResponse` Block for details.
   final pulumi.Input<ListenerRuleActionFixedResponse>? fixedResponse;
-  /// The forward action. Traffic that matches the rule is forwarded to the specified target groups.
-  /// See `forward` Block for details.
+  /// Forward action. Traffic that matches the rule is forwarded to the specified target groups. See `forward` Block for details.
   final pulumi.Input<ListenerRuleActionForward>? forward;
 
   /// Creates a new [ListenerRuleAction].
-  /// [fixedResponse] Describes the rule action that returns a custom HTTP response.
-  /// [forward] The forward action. Traffic that matches the rule is forwarded to the specified target groups.
+  /// [fixedResponse] Rule action that returns a custom HTTP response. See `fixedResponse` Block for details.
+  /// [forward] Forward action. Traffic that matches the rule is forwarded to the specified target groups. See `forward` Block for details.
   const ListenerRuleAction({
     this.fixedResponse,
     this.forward,
@@ -34,4 +32,3 @@ class ListenerRuleAction {
     );
   }
 }
-

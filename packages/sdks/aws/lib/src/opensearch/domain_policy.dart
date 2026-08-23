@@ -33,7 +33,7 @@ import 'domain_policy_state.dart';
 /// });
 /// const mainDomainPolicy = new aws.opensearch.DomainPolicy("main", {
 ///     domainName: example.domainName,
-///     accessPolicies: main.apply(main => main.json),
+///     accessPolicies: main.json,
 /// });
 /// ```
 /// ```python
@@ -178,16 +178,49 @@ import 'domain_policy_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = opensearch.NewDomainPolicy(ctx, "main", &opensearch.DomainPolicyArgs{
-/// 			DomainName: example.DomainName,
-/// 			AccessPolicies: pulumi.String(main.ApplyT(func(main iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &main.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			DomainName:     example.DomainName,
+/// 			AccessPolicies: main.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "main" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "*"
+///       identifiers = ["*"]
+///     }
+///     actions   = ["es:*"]
+///     resources = ["${aws_opensearch_domain.example.arn}/*"]
+///     conditions {
+///       test     = "IpAddress"
+///       variable = "aws:SourceIp"
+///       values   = ["127.0.0.1/32"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_domain" "example" {
+///   domain_name    = "tf-test"
+///   engine_version = "OpenSearch_1.1"
+/// }
+/// resource "aws_opensearch_domainpolicy" "main" {
+///   domain_name     = aws_opensearch_domain.example.domain_name
+///   access_policies = data.aws_iam_getpolicydocument.main.json
 /// }
 /// ```
 /// ```java
@@ -200,10 +233,13 @@ import 'domain_policy_state.dart';
 /// import com.pulumi.aws.opensearch.DomainArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.opensearch.DomainPolicy;
 /// import com.pulumi.aws.opensearch.DomainPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -283,7 +319,7 @@ import 'domain_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import OpenSearch Domain Policy using `domain_name` prefixed with `esd-policy-`. For example:
+/// Using `pulumi import`, import OpenSearch Domain Policy using `domainName` prefixed with `esd-policy-`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:opensearch/domainPolicy:DomainPolicy example esd-policy-tf-test

@@ -9,7 +9,7 @@ import 'recorder_recording_mode.dart';
 /// {@endtemplate}
 /// {@macro pulumi_cfg_recorder_recorder_args_doc}
 class RecorderArgs {
-  /// The name of the recorder. Defaults to `default`. Changing it recreates the resource.
+  /// The name of the configuration recorder. Defaults to `default`. Changing it recreates the resource.
   final pulumi.Input<String>? name;
   /// Recording group - see below.
   final pulumi.Input<RecorderRecordingGroup>? recordingGroup;
@@ -21,7 +21,7 @@ class RecorderArgs {
   final pulumi.Input<String> roleArn;
 
   /// Creates a new [RecorderArgs].
-  /// [name] The name of the recorder. Defaults to `default`. Changing it recreates the resource.
+  /// [name] The name of the configuration recorder. Defaults to `default`. Changing it recreates the resource.
   /// [recordingGroup] Recording group - see below.
   /// [recordingMode] Recording mode - see below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -54,4 +54,3 @@ class RecorderArgs {
     );
   }
 }
-

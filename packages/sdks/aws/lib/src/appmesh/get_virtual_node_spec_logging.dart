@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_virtual_node_spec_logging_access_log.dart';
 
 class GetVirtualNodeSpecLogging {
+  /// Access log configuration for a virtual node. See `spec.logging.access_log` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecLoggingAccessLog>> accessLogs;
 
   /// Creates a new [GetVirtualNodeSpecLogging].
-  /// [accessLogs] Required.
+  /// [accessLogs] Access log configuration for a virtual node. See `spec.logging.access_log` Block for details.
   const GetVirtualNodeSpecLogging({
     required this.accessLogs,
   });
@@ -24,4 +25,3 @@ class GetVirtualNodeSpecLogging {
     );
   }
 }
-

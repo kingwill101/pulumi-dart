@@ -32,4 +32,3 @@ class ClassificationJobS3JobDefinitionScoping {
     );
   }
 }
-

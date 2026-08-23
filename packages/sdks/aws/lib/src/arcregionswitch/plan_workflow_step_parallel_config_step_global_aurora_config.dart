@@ -16,7 +16,7 @@ class PlanWorkflowStepParallelConfigStepGlobalAuroraConfig {
   final pulumi.Input<String> globalClusterIdentifier;
   /// Timeout in minutes.
   final pulumi.Input<int>? timeoutMinutes;
-  /// Ungraceful behavior configuration. See Ungraceful Aurora below.
+  /// Ungraceful behavior configuration. See `workflow.step.global_aurora_config.ungraceful` Block for details.
   final pulumi.Input<List<PlanWorkflowStepParallelConfigStepGlobalAuroraConfigUngraceful>>? ungracefuls;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepGlobalAuroraConfig].
@@ -26,7 +26,7 @@ class PlanWorkflowStepParallelConfigStepGlobalAuroraConfig {
   /// [externalId] External ID for cross-account role assumption.
   /// [globalClusterIdentifier] Global cluster identifier.
   /// [timeoutMinutes] Timeout in minutes.
-  /// [ungracefuls] Ungraceful behavior configuration. See Ungraceful Aurora below.
+  /// [ungracefuls] Ungraceful behavior configuration. See `workflow.step.global_aurora_config.ungraceful` Block for details.
   const PlanWorkflowStepParallelConfigStepGlobalAuroraConfig({
     required this.behavior,
     this.crossAccountRole,
@@ -61,4 +61,3 @@ class PlanWorkflowStepParallelConfigStepGlobalAuroraConfig {
     );
   }
 }
-

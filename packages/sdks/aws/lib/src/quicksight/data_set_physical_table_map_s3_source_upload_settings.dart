@@ -48,4 +48,3 @@ class DataSetPhysicalTableMapS3SourceUploadSettings {
     );
   }
 }
-

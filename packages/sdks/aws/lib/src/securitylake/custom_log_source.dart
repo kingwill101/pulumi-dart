@@ -5,7 +5,7 @@ import 'custom_log_source_state.dart';
 
 /// Resource for managing an AWS Security Lake Custom Log Source.
 ///
-/// &gt; **NOTE:** The underlying `aws.securitylake.DataLake` must be configured before creating the `aws.securitylake.CustomLogSource`. Use a `depends_on` statement.
+/// &gt; **NOTE:** The underlying `aws.securitylake.DataLake` must be configured before creating the `aws.securitylake.CustomLogSource`. Use a `dependsOn` statement.
 ///
 /// ## Example Usage
 ///
@@ -125,6 +125,31 @@ import 'custom_log_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securitylake_customlogsource" "example" {
+///   depends_on     = [exampleAwsSecuritylakeDataLake]
+///   source_name    = "example-name"
+///   source_version = "1.0"
+///   event_classes  = ["FILE_ACTIVITY"]
+///   configuration = {
+///     crawler_configuration = {
+///       role_arn = customLog.arn
+///     }
+///     provider_identity = {
+///       external_id = "example-id"
+///       principal   = "123456789012"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -137,8 +162,8 @@ import 'custom_log_source_state.dart';
 /// import com.pulumi.aws.securitylake.inputs.CustomLogSourceConfigurationCrawlerConfigurationArgs;
 /// import com.pulumi.aws.securitylake.inputs.CustomLogSourceConfigurationProviderIdentityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

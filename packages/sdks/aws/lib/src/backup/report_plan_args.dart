@@ -9,26 +9,26 @@ import 'report_plan_report_setting.dart';
 /// {@endtemplate}
 /// {@macro pulumi_backup_report_plan_report_plan_args_doc}
 class ReportPlanArgs {
-  /// The description of the report plan with a maximum of 1,024 characters
+  /// Description of the report plan with a maximum of 1,024 characters.
   final pulumi.Input<String>? description;
-  /// The unique name of the report plan. The name must be between 1 and 256 characters, starting with a letter, and consisting of letters, numbers, and underscores.
+  /// Unique name of the report plan. The name must be between 1 and 256 characters, starting with a letter, and consisting of letters, numbers, and underscores.
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// An object that contains information about where and how to deliver your reports, specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your reports. Detailed below.
+  /// Object that contains information about where and how to deliver your reports, specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your reports. Detailed below.
   final pulumi.Input<ReportPlanReportDeliveryChannel> reportDeliveryChannel;
-  /// An object that identifies the report template for the report. Reports are built using a report template. Detailed below.
+  /// Object that identifies the report template for the report. Reports are built using a report template. Detailed below.
   final pulumi.Input<ReportPlanReportSetting> reportSetting;
-  /// Metadata that you can assign to help organize the report plans you create. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Metadata that you can assign to help organize the report plans you create. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ReportPlanArgs].
-  /// [description] The description of the report plan with a maximum of 1,024 characters
-  /// [name] The unique name of the report plan. The name must be between 1 and 256 characters, starting with a letter, and consisting of letters, numbers, and underscores.
+  /// [description] Description of the report plan with a maximum of 1,024 characters.
+  /// [name] Unique name of the report plan. The name must be between 1 and 256 characters, starting with a letter, and consisting of letters, numbers, and underscores.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [reportDeliveryChannel] An object that contains information about where and how to deliver your reports, specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your reports. Detailed below.
-  /// [reportSetting] An object that identifies the report template for the report. Reports are built using a report template. Detailed below.
-  /// [tags] Metadata that you can assign to help organize the report plans you create. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [reportDeliveryChannel] Object that contains information about where and how to deliver your reports, specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your reports. Detailed below.
+  /// [reportSetting] Object that identifies the report template for the report. Reports are built using a report template. Detailed below.
+  /// [tags] Metadata that you can assign to help organize the report plans you create. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ReportPlanArgs({
     this.description,
     this.name,
@@ -60,4 +60,3 @@ class ReportPlanArgs {
     );
   }
 }
-

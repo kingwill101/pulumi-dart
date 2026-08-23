@@ -15,6 +15,9 @@ class ReservedCacheNodeState {
   final pulumi.Input<String>? cacheNodeType;
   /// Duration of the reservation as an RFC3339 duration.
   final pulumi.Input<String>? duration;
+  /// Customer-specified identifier to track this reservation.
+  /// If not specified, AWS will assign a random ID.
+  final pulumi.Input<String>? elasticacheReservedCacheNodeId;
   /// Fixed price charged for this reserved cache node.
   final pulumi.Input<double>? fixedPrice;
   /// Offering type of this reserved cache node.
@@ -26,7 +29,7 @@ class ReservedCacheNodeState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// ID of the reserved cache node offering to purchase.
-  /// To determine an `reserved_cache_nodes_offering_id`, see the `aws.elasticache.getReservedCacheNodeOffering` data source.
+  /// To determine an `reservedCacheNodesOfferingId`, see the `aws.elasticache.getReservedCacheNodeOffering` data source.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? reservedCacheNodesOfferingId;
@@ -34,9 +37,9 @@ class ReservedCacheNodeState {
   final pulumi.Input<String>? startTime;
   /// State of the reserved cache node.
   final pulumi.Input<String>? state;
-  /// Map of tags to assign to the reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the reservation. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<ReservedCacheNodeTimeouts>? timeouts;
   /// Hourly price charged for this reserved cache node.
@@ -47,6 +50,7 @@ class ReservedCacheNodeState {
   /// [cacheNodeCount] Number of cache node instances to reserve.
   /// [cacheNodeType] Node type for the reserved cache nodes.
   /// [duration] Duration of the reservation as an RFC3339 duration.
+  /// [elasticacheReservedCacheNodeId] Customer-specified identifier to track this reservation.
   /// [fixedPrice] Fixed price charged for this reserved cache node.
   /// [offeringType] Offering type of this reserved cache node.
   /// [productDescription] Engine type for the reserved cache node.
@@ -55,8 +59,8 @@ class ReservedCacheNodeState {
   /// [reservedCacheNodesOfferingId] ID of the reserved cache node offering to purchase.
   /// [startTime] Time the reservation started.
   /// [state] State of the reserved cache node.
-  /// [tags] Map of tags to assign to the reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the reservation. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   /// [usagePrice] Hourly price charged for this reserved cache node.
   const ReservedCacheNodeState({
@@ -64,6 +68,7 @@ class ReservedCacheNodeState {
     this.cacheNodeCount,
     this.cacheNodeType,
     this.duration,
+    this.elasticacheReservedCacheNodeId,
     this.fixedPrice,
     this.offeringType,
     this.productDescription,
@@ -84,6 +89,7 @@ class ReservedCacheNodeState {
       'cacheNodeCount': ?cacheNodeCount,
       'cacheNodeType': ?cacheNodeType,
       'duration': ?duration,
+      'elasticacheReservedCacheNodeId': ?elasticacheReservedCacheNodeId,
       'fixedPrice': ?fixedPrice,
       'offeringType': ?offeringType,
       'productDescription': ?productDescription,
@@ -105,6 +111,7 @@ class ReservedCacheNodeState {
       cacheNodeCount: (() { final guardedValue = map['cacheNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       cacheNodeType: (() { final guardedValue = map['cacheNodeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      elasticacheReservedCacheNodeId: (() { final guardedValue = map['elasticacheReservedCacheNodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fixedPrice: (() { final guardedValue = map['fixedPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       offeringType: (() { final guardedValue = map['offeringType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       productDescription: (() { final guardedValue = map['productDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -120,4 +127,3 @@ class ReservedCacheNodeState {
     );
   }
 }
-

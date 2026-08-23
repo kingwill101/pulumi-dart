@@ -28,4 +28,3 @@ class GetRouteSpecHttp2RouteRetryPolicyPerRetryTimeout {
     );
   }
 }
-

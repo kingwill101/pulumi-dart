@@ -111,6 +111,27 @@ import 'classifier_xml_classifier.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_classifier" "example" {
+///   name = "example"
+///   csv_classifier = {
+///     allow_single_column    = false
+///     contains_header        = "PRESENT"
+///     delimiter              = ","
+///     disable_value_trimming = false
+///     headers                = ["example1", "example2"]
+///     quote_symbol           = "'"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -120,8 +141,8 @@ import 'classifier_xml_classifier.dart';
 /// import com.pulumi.aws.glue.Classifier;
 /// import com.pulumi.aws.glue.ClassifierArgs;
 /// import com.pulumi.aws.glue.inputs.ClassifierCsvClassifierArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -238,6 +259,23 @@ import 'classifier_xml_classifier.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_classifier" "example" {
+///   name = "example"
+///   grok_classifier = {
+///     classification = "example"
+///     grok_pattern   = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -247,8 +285,8 @@ import 'classifier_xml_classifier.dart';
 /// import com.pulumi.aws.glue.Classifier;
 /// import com.pulumi.aws.glue.ClassifierArgs;
 /// import com.pulumi.aws.glue.inputs.ClassifierGrokClassifierArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -349,6 +387,22 @@ import 'classifier_xml_classifier.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_classifier" "example" {
+///   name = "example"
+///   json_classifier = {
+///     json_path = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -358,8 +412,8 @@ import 'classifier_xml_classifier.dart';
 /// import com.pulumi.aws.glue.Classifier;
 /// import com.pulumi.aws.glue.ClassifierArgs;
 /// import com.pulumi.aws.glue.inputs.ClassifierJsonClassifierArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -462,6 +516,23 @@ import 'classifier_xml_classifier.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_classifier" "example" {
+///   name = "example"
+///   xml_classifier = {
+///     classification = "example"
+///     row_tag        = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -471,8 +542,8 @@ import 'classifier_xml_classifier.dart';
 /// import com.pulumi.aws.glue.Classifier;
 /// import com.pulumi.aws.glue.ClassifierArgs;
 /// import com.pulumi.aws.glue.inputs.ClassifierXmlClassifierArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

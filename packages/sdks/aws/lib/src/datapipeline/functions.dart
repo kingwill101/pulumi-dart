@@ -58,6 +58,19 @@ import 'get_pipeline_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_datapipeline_getpipeline" "example" {
+///   pipeline_id = "pipelineID"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +79,8 @@ import 'get_pipeline_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.datapipeline.DatapipelineFunctions;
 /// import com.pulumi.aws.datapipeline.inputs.GetPipelineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -163,6 +176,19 @@ Future<GetPipelineResult> getPipeline(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_datapipeline_getpipelinedefinition" "example" {
+///   pipeline_id = "pipelineID"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -171,8 +197,8 @@ Future<GetPipelineResult> getPipeline(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.datapipeline.DatapipelineFunctions;
 /// import com.pulumi.aws.datapipeline.inputs.GetPipelineDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

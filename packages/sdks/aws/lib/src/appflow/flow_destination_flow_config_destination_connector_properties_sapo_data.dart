@@ -5,19 +5,22 @@ import 'flow_destination_flow_config_destination_connector_properties_sapo_data_
 import 'flow_destination_flow_config_destination_connector_properties_sapo_data_success_response_handling_config.dart';
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData {
+  /// Settings that determine how Amazon AppFlow handles an error when placing data in the destination. See the `destination_flow_config.destination_connector_properties.zendesk.error_handling_config` Block for details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandlingConfig>? errorHandlingConfig;
+  /// Name of the field that Amazon AppFlow uses as an ID when performing a write operation such as update or delete.
   final pulumi.Input<List<String>>? idFieldNames;
   final pulumi.Input<String> objectPath;
-  /// Determines how Amazon AppFlow handles the success response that it gets from the connector after placing data. See Success Response Handling Config for more details.
+  /// Settings that determine how Amazon AppFlow handles the success response it gets from the connector after placing data. See the `destination_flow_config.destination_connector_properties.sapo_data.success_response_handling_config` Block for details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig>? successResponseHandlingConfig;
+  /// Type of write operation to be performed in Zendesk. When the value is `UPSERT`, `idFieldNames` is required. Valid values are `INSERT`, `UPSERT`, `UPDATE`, and `DELETE`.
   final pulumi.Input<String>? writeOperationType;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData].
-  /// [errorHandlingConfig] Optional.
-  /// [idFieldNames] Optional.
+  /// [errorHandlingConfig] Settings that determine how Amazon AppFlow handles an error when placing data in the destination. See the `destination_flow_config.destination_connector_properties.zendesk.error_handling_config` Block for details.
+  /// [idFieldNames] Name of the field that Amazon AppFlow uses as an ID when performing a write operation such as update or delete.
   /// [objectPath] Required.
-  /// [successResponseHandlingConfig] Determines how Amazon AppFlow handles the success response that it gets from the connector after placing data. See Success Response Handling Config for more details.
-  /// [writeOperationType] Optional.
+  /// [successResponseHandlingConfig] Settings that determine how Amazon AppFlow handles the success response it gets from the connector after placing data. See the `destination_flow_config.destination_connector_properties.sapo_data.success_response_handling_config` Block for details.
+  /// [writeOperationType] Type of write operation to be performed in Zendesk. When the value is `UPSERT`, `idFieldNames` is required. Valid values are `INSERT`, `UPSERT`, `UPDATE`, and `DELETE`.
   const FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData({
     this.errorHandlingConfig,
     this.idFieldNames,
@@ -46,4 +49,3 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData {
     );
   }
 }
-

@@ -14,20 +14,20 @@ class DistributionOrigin {
   final pulumi.Input<int>? connectionTimeout;
   /// One or more sub-resources with `name` and `value` parameters that specify header data that will be sent to the origin (multiples allowed).
   final pulumi.Input<List<DistributionOriginCustomHeader>>? customHeaders;
-  /// The CloudFront custom origin configuration information. If an S3 origin is required, use `origin_access_control_id` or `s3_origin_config` instead.
+  /// The CloudFront custom origin configuration information. If an S3 origin is required, use `originAccessControlId` or `s3OriginConfig` instead.
   final pulumi.Input<DistributionOriginCustomOriginConfig>? customOriginConfig;
   /// Domain name corresponding to the distribution. For example: `d604721fxaaqy9.cloudfront.net`.
   final pulumi.Input<String> domainName;
-  /// Unique identifier of a [CloudFront origin access control][8] for this origin.
+  /// Unique identifier of a CloudFront origin access control for this origin.
   final pulumi.Input<String>? originAccessControlId;
   final pulumi.Input<String> originId;
   /// Optional element that causes CloudFront to request your content from a directory in your Amazon S3 bucket or your custom origin.
   final pulumi.Input<String>? originPath;
   /// CloudFront Origin Shield configuration information. Using Origin Shield can help reduce the load on your origin. For more information, see [Using Origin Shield](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/origin-shield.html) in the Amazon CloudFront Developer Guide.
   final pulumi.Input<DistributionOriginOriginShield>? originShield;
-  /// Time (in seconds) that a request from CloudFront to the origin can stay open and wait for a response. Must be integer greater than or equal to the value of `origin_read_timeout`. If omitted or explicitly set to `0`, no maximum value is enforced.
+  /// Time (in seconds) that a request from CloudFront to the origin can stay open and wait for a response. Must be integer greater than or equal to the value of `originReadTimeout`. If omitted or explicitly set to `0`, no maximum value is enforced.
   final pulumi.Input<int>? responseCompletionTimeout;
-  /// CloudFront S3 origin configuration information. If a custom origin is required, use `custom_origin_config` instead.
+  /// CloudFront S3 origin configuration information. If a custom origin is required, use `customOriginConfig` instead.
   final pulumi.Input<DistributionOriginS3OriginConfig>? s3OriginConfig;
   /// The VPC origin configuration.
   final pulumi.Input<DistributionOriginVpcOriginConfig>? vpcOriginConfig;
@@ -36,14 +36,14 @@ class DistributionOrigin {
   /// [connectionAttempts] Number of times that CloudFront attempts to connect to the origin. Must be between 1-3. Defaults to 3.
   /// [connectionTimeout] Number of seconds that CloudFront waits when trying to establish a connection to the origin. Must be between 1-10. Defaults to 10.
   /// [customHeaders] One or more sub-resources with `name` and `value` parameters that specify header data that will be sent to the origin (multiples allowed).
-  /// [customOriginConfig] The CloudFront custom origin configuration information. If an S3 origin is required, use `origin_access_control_id` or `s3_origin_config` instead.
+  /// [customOriginConfig] The CloudFront custom origin configuration information. If an S3 origin is required, use `originAccessControlId` or `s3OriginConfig` instead.
   /// [domainName] Domain name corresponding to the distribution. For example: `d604721fxaaqy9.cloudfront.net`.
-  /// [originAccessControlId] Unique identifier of a [CloudFront origin access control][8] for this origin.
+  /// [originAccessControlId] Unique identifier of a CloudFront origin access control for this origin.
   /// [originId] Required.
   /// [originPath] Optional element that causes CloudFront to request your content from a directory in your Amazon S3 bucket or your custom origin.
   /// [originShield] CloudFront Origin Shield configuration information. Using Origin Shield can help reduce the load on your origin. For more information, see [Using Origin Shield](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/origin-shield.html) in the Amazon CloudFront Developer Guide.
-  /// [responseCompletionTimeout] Time (in seconds) that a request from CloudFront to the origin can stay open and wait for a response. Must be integer greater than or equal to the value of `origin_read_timeout`. If omitted or explicitly set to `0`, no maximum value is enforced.
-  /// [s3OriginConfig] CloudFront S3 origin configuration information. If a custom origin is required, use `custom_origin_config` instead.
+  /// [responseCompletionTimeout] Time (in seconds) that a request from CloudFront to the origin can stay open and wait for a response. Must be integer greater than or equal to the value of `originReadTimeout`. If omitted or explicitly set to `0`, no maximum value is enforced.
+  /// [s3OriginConfig] CloudFront S3 origin configuration information. If a custom origin is required, use `customOriginConfig` instead.
   /// [vpcOriginConfig] The VPC origin configuration.
   const DistributionOrigin({
     this.connectionAttempts,
@@ -94,4 +94,3 @@ class DistributionOrigin {
     );
   }
 }
-

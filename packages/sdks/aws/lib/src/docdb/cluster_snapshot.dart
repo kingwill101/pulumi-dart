@@ -61,6 +61,20 @@ import 'cluster_snapshot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_docdb_clustersnapshot" "example" {
+///   db_cluster_identifier          = exampleAwsDocdbCluster.id
+///   db_cluster_snapshot_identifier = "resourcetestsnapshot1234"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'cluster_snapshot_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.docdb.ClusterSnapshot;
 /// import com.pulumi.aws.docdb.ClusterSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -120,7 +134,7 @@ class ClusterSnapshot extends pulumi.CustomResource {
   late final pulumi.Output<String> engine;
   /// Version of the database engine for this DocumentDB cluster snapshot.
   late final pulumi.Output<String> engineVersion;
-  /// If storage_encrypted is true, the AWS KMS key identifier for the encrypted DocumentDB cluster snapshot.
+  /// If storageEncrypted is true, the AWS KMS key identifier for the encrypted DocumentDB cluster snapshot.
   late final pulumi.Output<String> kmsKeyId;
   /// Port that the DocumentDB cluster was listening on at the time of the snapshot.
   late final pulumi.Output<int> port;

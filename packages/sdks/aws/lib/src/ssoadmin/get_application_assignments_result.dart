@@ -7,14 +7,14 @@ import 'get_application_assignments_application_assignment.dart';
 class GetApplicationAssignmentsResult {
   /// ARN of the application.
   final String applicationArn;
-  /// List of principals assigned to the application. See the `application_assignments` attribute reference below.
+  /// List of principals assigned to the application. See the `applicationAssignments` attribute reference below.
   final List<GetApplicationAssignmentsApplicationAssignment> applicationAssignments;
   final String id;
   final String region;
 
   /// Creates a new [GetApplicationAssignmentsResult].
   /// [applicationArn] ARN of the application.
-  /// [applicationAssignments] List of principals assigned to the application. See the `application_assignments` attribute reference below.
+  /// [applicationAssignments] List of principals assigned to the application. See the `applicationAssignments` attribute reference below.
   /// [id] Required.
   /// [region] Required.
   const GetApplicationAssignmentsResult({
@@ -42,4 +42,3 @@ class GetApplicationAssignmentsResult {
     );
   }
 }
-

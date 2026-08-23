@@ -11,7 +11,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigGoogleOauth2ProviderC
   final pulumi.Input<String>? clientSecret;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   final pulumi.Input<String>? clientSecretWo;
-  /// OAuth discovery configuration. See `oauth_discovery` below.
+  /// OAuth discovery configuration. See `oauthDiscovery` below.
   final pulumi.Input<List<AgentcoreOauth2CredentialProviderOauth2ProviderConfigGoogleOauth2ProviderConfigOauthDiscovery>>? oauthDiscoveries;
 
   /// Creates a new [AgentcoreOauth2CredentialProviderOauth2ProviderConfigGoogleOauth2ProviderConfig].
@@ -20,7 +20,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigGoogleOauth2ProviderC
   /// [clientIdWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// [clientSecret] Optional.
   /// [clientSecretWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [oauthDiscoveries] OAuth discovery configuration. See `oauth_discovery` below.
+  /// [oauthDiscoveries] OAuth discovery configuration. See `oauthDiscovery` below.
   const AgentcoreOauth2CredentialProviderOauth2ProviderConfigGoogleOauth2ProviderConfig({
     this.clientCredentialsWoVersion,
     this.clientId,
@@ -52,4 +52,3 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigGoogleOauth2ProviderC
     );
   }
 }
-

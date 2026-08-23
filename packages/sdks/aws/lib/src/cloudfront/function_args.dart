@@ -21,6 +21,8 @@ class FunctionArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> runtime;
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [FunctionArgs].
   /// [code] Source code of the function
@@ -29,6 +31,7 @@ class FunctionArgs {
   /// [name] Unique name for your CloudFront Function.
   /// [publish] Whether to publish creation/change as Live CloudFront Function Version. Defaults to `true`.
   /// [runtime] Identifier of the function's runtime. Valid values are `cloudfront-js-1.0` and `cloudfront-js-2.0`.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const FunctionArgs({
     required this.code,
     this.comment,
@@ -36,6 +39,7 @@ class FunctionArgs {
     this.name,
     this.publish,
     required this.runtime,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
@@ -46,6 +50,7 @@ class FunctionArgs {
       'name': ?name,
       'publish': ?publish,
       'runtime': runtime,
+      'tags': ?tags,
     };
   }
 
@@ -57,7 +62,7 @@ class FunctionArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publish: (() { final guardedValue = map['publish']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       runtime: pulumi.Input.fromValue(map['runtime'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
-

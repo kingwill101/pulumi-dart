@@ -71,7 +71,7 @@ import 'replication_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = efs.NewReplicationConfiguration(ctx, "example", &efs.ReplicationConfigurationArgs{
-/// 			SourceFileSystemId: example.ID(),
+/// 			SourceFileSystemId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Destination: &efs.ReplicationConfigurationDestinationArgs{
 /// 				Region: pulumi.String("us-west-2"),
 /// 			},
@@ -81,6 +81,24 @@ import 'replication_configuration_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_efs_filesystem" "example" {
+/// }
+/// resource "aws_efs_replicationconfiguration" "example" {
+///   source_file_system_id = aws_efs_filesystem.example.id
+///   destination = {
+///     region = "us-west-2"
+///   }
 /// }
 /// ```
 /// ```java
@@ -93,8 +111,8 @@ import 'replication_configuration_state.dart';
 /// import com.pulumi.aws.efs.ReplicationConfiguration;
 /// import com.pulumi.aws.efs.ReplicationConfigurationArgs;
 /// import com.pulumi.aws.efs.inputs.ReplicationConfigurationDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -197,7 +215,7 @@ import 'replication_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = efs.NewReplicationConfiguration(ctx, "example", &efs.ReplicationConfigurationArgs{
-/// 			SourceFileSystemId: example.ID(),
+/// 			SourceFileSystemId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Destination: &efs.ReplicationConfigurationDestinationArgs{
 /// 				AvailabilityZoneName: pulumi.String("us-west-2b"),
 /// 				KmsKeyId:             pulumi.String("1234abcd-12ab-34cd-56ef-1234567890ab"),
@@ -210,6 +228,25 @@ import 'replication_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_efs_filesystem" "example" {
+/// }
+/// resource "aws_efs_replicationconfiguration" "example" {
+///   source_file_system_id = aws_efs_filesystem.example.id
+///   destination = {
+///     availability_zone_name = "us-west-2b"
+///     kms_key_id             = "1234abcd-12ab-34cd-56ef-1234567890ab"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -220,8 +257,8 @@ import 'replication_configuration_state.dart';
 /// import com.pulumi.aws.efs.ReplicationConfiguration;
 /// import com.pulumi.aws.efs.ReplicationConfigurationArgs;
 /// import com.pulumi.aws.efs.inputs.ReplicationConfigurationDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -326,7 +363,7 @@ import 'replication_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = efs.NewReplicationConfiguration(ctx, "example", &efs.ReplicationConfigurationArgs{
-/// 			SourceFileSystemId: example.ID(),
+/// 			SourceFileSystemId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Destination: &efs.ReplicationConfigurationDestinationArgs{
 /// 				FileSystemId: pulumi.String("fs-1234567890"),
 /// 				Region:       pulumi.String("us-west-2"),
@@ -339,6 +376,25 @@ import 'replication_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_efs_filesystem" "example" {
+/// }
+/// resource "aws_efs_replicationconfiguration" "example" {
+///   source_file_system_id = aws_efs_filesystem.example.id
+///   destination = {
+///     file_system_id = "fs-1234567890"
+///     region         = "us-west-2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -349,8 +405,8 @@ import 'replication_configuration_state.dart';
 /// import com.pulumi.aws.efs.ReplicationConfiguration;
 /// import com.pulumi.aws.efs.ReplicationConfigurationArgs;
 /// import com.pulumi.aws.efs.inputs.ReplicationConfigurationDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -392,7 +448,7 @@ import 'replication_configuration_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EFS Replication Configurations using the file system ID of either the source or destination file system. When importing, the `availability_zone_name` and `kms_key_id` attributes must **not** be set in the configuration. The AWS API does not return these values when querying the replication configuration and their presence will therefore show as a diff in a subsequent plan. For example:
+/// Using `pulumi import`, import EFS Replication Configurations using the file system ID of either the source or destination file system. When importing, the `availabilityZoneName` and `kmsKeyId` attributes must **not** be set in the configuration. The AWS API does not return these values when querying the replication configuration and their presence will therefore show as a diff in a subsequent plan. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:efs/replicationConfiguration:ReplicationConfiguration example fs-id

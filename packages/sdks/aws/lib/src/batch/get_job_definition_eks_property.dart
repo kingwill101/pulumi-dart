@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_job_definition_eks_property_pod_property.dart';
 
 class GetJobDefinitionEksProperty {
-  /// The properties for the Kubernetes pod resources of a job.
+  /// Properties for the Kubernetes pod resources of a job. See `podProperties` below.
   final pulumi.Input<List<GetJobDefinitionEksPropertyPodProperty>> podProperties;
 
   /// Creates a new [GetJobDefinitionEksProperty].
-  /// [podProperties] The properties for the Kubernetes pod resources of a job.
+  /// [podProperties] Properties for the Kubernetes pod resources of a job. See `podProperties` below.
   const GetJobDefinitionEksProperty({
     required this.podProperties,
   });
@@ -25,4 +25,3 @@ class GetJobDefinitionEksProperty {
     );
   }
 }
-

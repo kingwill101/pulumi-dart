@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_virtual_node_spec_backend_default_client_policy_tl.dart';
 
 class GetVirtualNodeSpecBackendDefaultClientPolicy {
+  /// Transport Layer Security (TLS) properties for the listener. See `spec.listener.tls` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecBackendDefaultClientPolicyTl>> tls;
 
   /// Creates a new [GetVirtualNodeSpecBackendDefaultClientPolicy].
-  /// [tls] Required.
+  /// [tls] Transport Layer Security (TLS) properties for the listener. See `spec.listener.tls` Block for details.
   const GetVirtualNodeSpecBackendDefaultClientPolicy({
     required this.tls,
   });
@@ -24,4 +25,3 @@ class GetVirtualNodeSpecBackendDefaultClientPolicy {
     );
   }
 }
-

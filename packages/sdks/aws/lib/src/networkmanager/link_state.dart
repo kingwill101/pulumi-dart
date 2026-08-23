@@ -19,9 +19,9 @@ class LinkState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? siteId;
-  /// Key-value tags for the link. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the link. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Type of the link.
   final pulumi.Input<String>? type;
@@ -33,8 +33,8 @@ class LinkState {
   /// [globalNetworkId] ID of the global network.
   /// [providerName] Provider of the link.
   /// [siteId] ID of the site.
-  /// [tags] Key-value tags for the link. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value tags for the link. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [type] Type of the link.
   const LinkState({
     this.arn,
@@ -76,4 +76,3 @@ class LinkState {
     );
   }
 }
-

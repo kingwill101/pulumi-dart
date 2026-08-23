@@ -6,12 +6,12 @@ import 'get_broker_engine_types_broker_engine_type_engine_version.dart';
 class GetBrokerEngineTypesBrokerEngineType {
   /// MQ engine type to return version details for.
   final pulumi.Input<String> engineType;
-  /// List of engine versions. See Engine Versions.
+  /// List of engine versions. See `engineVersions` Block.
   final pulumi.Input<List<GetBrokerEngineTypesBrokerEngineTypeEngineVersion>> engineVersions;
 
   /// Creates a new [GetBrokerEngineTypesBrokerEngineType].
   /// [engineType] MQ engine type to return version details for.
-  /// [engineVersions] List of engine versions. See Engine Versions.
+  /// [engineVersions] List of engine versions. See `engineVersions` Block.
   const GetBrokerEngineTypesBrokerEngineType({
     required this.engineType,
     required this.engineVersions,
@@ -31,4 +31,3 @@ class GetBrokerEngineTypesBrokerEngineType {
     );
   }
 }
-

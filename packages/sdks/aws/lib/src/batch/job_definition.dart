@@ -198,26 +198,26 @@ import 'job_definition_timeout.dart';
 /// 				"-la",
 /// 			},
 /// 			"image": "busybox",
-/// 			"resourceRequirements": []map[string]interface{}{
-/// 				map[string]interface{}{
+/// 			"resourceRequirements": []map[string]string{
+/// 				{
 /// 					"type":  "VCPU",
 /// 					"value": "0.25",
 /// 				},
-/// 				map[string]interface{}{
+/// 				{
 /// 					"type":  "MEMORY",
 /// 					"value": "512",
 /// 				},
 /// 			},
 /// 			"volumes": []map[string]interface{}{
 /// 				map[string]interface{}{
-/// 					"host": map[string]interface{}{
+/// 					"host": map[string]string{
 /// 						"sourcePath": "/tmp",
 /// 					},
 /// 					"name": "tmp",
 /// 				},
 /// 			},
-/// 			"environment": []map[string]interface{}{
-/// 				map[string]interface{}{
+/// 			"environment": []map[string]string{
+/// 				{
 /// 					"name":  "VARNAME",
 /// 					"value": "VARVAL",
 /// 				},
@@ -253,6 +253,51 @@ import 'job_definition_timeout.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_batch_jobdefinition" "test" {
+///   name = "my_test_batch_job_definition"
+///   type = "container"
+///   container_properties = jsonencode({
+///     "command" = ["ls", "-la"]
+///     "image"   = "busybox"
+///     "resourceRequirements" = [{
+///       "type"  = "VCPU"
+///       "value" = "0.25"
+///       }, {
+///       "type"  = "MEMORY"
+///       "value" = "512"
+///     }]
+///     "volumes" = [{
+///       "host" = {
+///         "sourcePath" = "/tmp"
+///       }
+///       "name" = "tmp"
+///     }]
+///     "environment" = [{
+///       "name"  = "VARNAME"
+///       "value" = "VARVAL"
+///     }]
+///     "mountPoints" = [{
+///       "sourceVolume"  = "tmp"
+///       "containerPath" = "/tmp"
+///       "readOnly"      = false
+///     }]
+///     "ulimits" = [{
+///       "hardLimit" = 1024
+///       "name"      = "nofile"
+///       "softLimit" = 1024
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -262,8 +307,8 @@ import 'job_definition_timeout.dart';
 /// import com.pulumi.aws.batch.JobDefinition;
 /// import com.pulumi.aws.batch.JobDefinitionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -551,6 +596,41 @@ import 'job_definition_timeout.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_batch_jobdefinition" "test" {
+///   name = "tf_test_batch_job_definition_multinode"
+///   type = "multinode"
+///   node_properties = jsonencode({
+///     "mainNode" = 0
+///     "nodeRangeProperties" = [{
+///       "container" = {
+///         "command" = ["ls", "-la"]
+///         "image"   = "busybox"
+///         "memory"  = 128
+///         "vcpus"   = 1
+///       }
+///       "targetNodes" = "0:"
+///       }, {
+///       "container" = {
+///         "command" = ["echo", "test"]
+///         "image"   = "busybox"
+///         "memory"  = 128
+///         "vcpus"   = 1
+///       }
+///       "targetNodes" = "1:"
+///     }]
+///     "numNodes" = 2
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -560,8 +640,8 @@ import 'job_definition_timeout.dart';
 /// import com.pulumi.aws.batch.JobDefinition;
 /// import com.pulumi.aws.batch.JobDefinitionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -805,6 +885,40 @@ import 'job_definition_timeout.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_batch_jobdefinition" "test" {
+///   name = " tf_test_batch_job_definition_eks"
+///   type = "container"
+///   eks_properties = {
+///     pod_properties = {
+///       host_network = true
+///       containers = [{
+///         "image"    = "public.ecr.aws/amazonlinux/amazonlinux:1"
+///         "commands" = ["sleep", "60"]
+///         "resources" = {
+///           "limits" = {
+///             "cpu"    = "1"
+///             "memory" = "1024Mi"
+///           }
+///         }
+///       }]
+///       metadata = {
+///         labels = {
+///           "environment" = "test"
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -815,9 +929,11 @@ import 'job_definition_timeout.dart';
 /// import com.pulumi.aws.batch.JobDefinitionArgs;
 /// import com.pulumi.aws.batch.inputs.JobDefinitionEksPropertiesArgs;
 /// import com.pulumi.aws.batch.inputs.JobDefinitionEksPropertiesPodPropertiesArgs;
+/// import com.pulumi.aws.batch.inputs.JobDefinitionEksPropertiesPodPropertiesContainerArgs;
+/// import com.pulumi.aws.batch.inputs.JobDefinitionEksPropertiesPodPropertiesContainerResourcesArgs;
 /// import com.pulumi.aws.batch.inputs.JobDefinitionEksPropertiesPodPropertiesMetadataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1127,15 +1243,15 @@ import 'job_definition_timeout.dart';
 /// 					},
 /// 					"image":      "busybox",
 /// 					"jobRoleArn": "arn:aws:iam::123456789012:role/AWSBatchS3ReadOnly",
-/// 					"fargatePlatformConfiguration": map[string]interface{}{
+/// 					"fargatePlatformConfiguration": map[string]string{
 /// 						"platformVersion": "LATEST",
 /// 					},
-/// 					"resourceRequirements": []map[string]interface{}{
-/// 						map[string]interface{}{
+/// 					"resourceRequirements": []map[string]string{
+/// 						{
 /// 							"type":  "VCPU",
 /// 							"value": "0.25",
 /// 						},
-/// 						map[string]interface{}{
+/// 						{
 /// 							"type":  "MEMORY",
 /// 							"value": "512",
 /// 						},
@@ -1156,6 +1272,55 @@ import 'job_definition_timeout.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRolePolicy" {
+///   statements {
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["ecs-tasks.amazonaws.com"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_role" "ecs_task_execution_role" {
+///   name               = "my_test_batch_exec_role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRolePolicy.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "ecs_task_execution_role_policy" {
+///   role       = aws_iam_role.ecs_task_execution_role.name
+///   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+/// }
+/// resource "aws_batch_jobdefinition" "test" {
+///   name                  = "my_test_batch_job_definition"
+///   type                  = "container"
+///   platform_capabilities = ["FARGATE"]
+///   container_properties = jsonencode({
+///     "command"    = ["echo", "test"]
+///     "image"      = "busybox"
+///     "jobRoleArn" = "arn:aws:iam::123456789012:role/AWSBatchS3ReadOnly"
+///     "fargatePlatformConfiguration" = {
+///       "platformVersion" = "LATEST"
+///     }
+///     "resourceRequirements" = [{
+///       "type"  = "VCPU"
+///       "value" = "0.25"
+///       }, {
+///       "type"  = "MEMORY"
+///       "value" = "512"
+///     }]
+///     "executionRoleArn" = aws_iam_role.ecs_task_execution_role.arn
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1164,6 +1329,8 @@ import 'job_definition_timeout.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
@@ -1171,8 +1338,8 @@ import 'job_definition_timeout.dart';
 /// import com.pulumi.aws.batch.JobDefinition;
 /// import com.pulumi.aws.batch.JobDefinitionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1287,7 +1454,7 @@ import 'job_definition_timeout.dart';
 /// ```
 ///
 ///
-/// ### Job definition of type container using `ecs_properties`
+/// ### Job definition of type container using `ecsProperties`
 ///
 ///
 /// ```typescript
@@ -1574,7 +1741,7 @@ import 'job_definition_timeout.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string][]map[string]interface{}{
 /// 			"taskProperties": []map[string]interface{}{
 /// 				map[string]interface{}{
 /// 					"executionRoleArn": ecsTaskExecutionRole.Arn,
@@ -1585,20 +1752,20 @@ import 'job_definition_timeout.dart';
 /// 								"sleep",
 /// 								"60",
 /// 							},
-/// 							"dependsOn": []map[string]interface{}{
-/// 								map[string]interface{}{
+/// 							"dependsOn": []map[string]string{
+/// 								{
 /// 									"containerName": "container_b",
 /// 									"condition":     "COMPLETE",
 /// 								},
 /// 							},
-/// 							"secrets": []map[string]interface{}{
-/// 								map[string]interface{}{
+/// 							"secrets": []map[string]string{
+/// 								{
 /// 									"name":      "TEST",
 /// 									"valueFrom": "DUMMY",
 /// 								},
 /// 							},
-/// 							"environment": []map[string]interface{}{
-/// 								map[string]interface{}{
+/// 							"environment": []map[string]string{
+/// 								{
 /// 									"name":  "test",
 /// 									"value": "Environment Variable",
 /// 								},
@@ -1606,7 +1773,7 @@ import 'job_definition_timeout.dart';
 /// 							"essential": true,
 /// 							"logConfiguration": map[string]interface{}{
 /// 								"logDriver": "awslogs",
-/// 								"options": map[string]interface{}{
+/// 								"options": map[string]string{
 /// 									"awslogs-group":         "tf_test_batch_job",
 /// 									"awslogs-region":        "us-west-2",
 /// 									"awslogs-stream-prefix": "ecs",
@@ -1615,12 +1782,12 @@ import 'job_definition_timeout.dart';
 /// 							"name":                   "container_a",
 /// 							"privileged":             false,
 /// 							"readonlyRootFilesystem": false,
-/// 							"resourceRequirements": []map[string]interface{}{
-/// 								map[string]interface{}{
+/// 							"resourceRequirements": []map[string]string{
+/// 								{
 /// 									"value": "1.0",
 /// 									"type":  "VCPU",
 /// 								},
-/// 								map[string]interface{}{
+/// 								{
 /// 									"value": "2048",
 /// 									"type":  "MEMORY",
 /// 								},
@@ -1634,12 +1801,12 @@ import 'job_definition_timeout.dart';
 /// 							},
 /// 							"name":      "container_b",
 /// 							"essential": false,
-/// 							"resourceRequirements": []map[string]interface{}{
-/// 								map[string]interface{}{
+/// 							"resourceRequirements": []map[string]string{
+/// 								{
 /// 									"value": "1.0",
 /// 									"type":  "VCPU",
 /// 								},
-/// 								map[string]interface{}{
+/// 								{
 /// 									"value": "2048",
 /// 									"type":  "MEMORY",
 /// 								},
@@ -1668,6 +1835,73 @@ import 'job_definition_timeout.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_batch_jobdefinition" "test" {
+///   name                  = "my_test_batch_job_definition"
+///   type                  = "container"
+///   platform_capabilities = ["FARGATE"]
+///   ecs_properties = jsonencode({
+///     "taskProperties" = [{
+///       "executionRoleArn" = ecsTaskExecutionRole.arn
+///       "containers" = [{
+///         "image"   = "public.ecr.aws/amazonlinux/amazonlinux:1"
+///         "command" = ["sleep", "60"]
+///         "dependsOn" = [{
+///           "containerName" = "container_b"
+///           "condition"     = "COMPLETE"
+///         }]
+///         "secrets" = [{
+///           "name"      = "TEST"
+///           "valueFrom" = "DUMMY"
+///         }]
+///         "environment" = [{
+///           "name"  = "test"
+///           "value" = "Environment Variable"
+///         }]
+///         "essential" = true
+///         "logConfiguration" = {
+///           "logDriver" = "awslogs"
+///           "options" = {
+///             "awslogs-group"         = "tf_test_batch_job"
+///             "awslogs-region"        = "us-west-2"
+///             "awslogs-stream-prefix" = "ecs"
+///           }
+///         }
+///         "name"                   = "container_a"
+///         "privileged"             = false
+///         "readonlyRootFilesystem" = false
+///         "resourceRequirements" = [{
+///           "value" = "1.0"
+///           "type"  = "VCPU"
+///           }, {
+///           "value" = "2048"
+///           "type"  = "MEMORY"
+///         }]
+///         }, {
+///         "image"     = "public.ecr.aws/amazonlinux/amazonlinux:1"
+///         "command"   = ["sleep", "360"]
+///         "name"      = "container_b"
+///         "essential" = false
+///         "resourceRequirements" = [{
+///           "value" = "1.0"
+///           "type"  = "VCPU"
+///           }, {
+///           "value" = "2048"
+///           "type"  = "MEMORY"
+///         }]
+///       }]
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1677,8 +1911,8 @@ import 'job_definition_timeout.dart';
 /// import com.pulumi.aws.batch.JobDefinition;
 /// import com.pulumi.aws.batch.JobDefinitionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1862,15 +2096,15 @@ class JobDefinition extends pulumi.CustomResource {
   late final pulumi.Output<bool?> propagateTags;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Retry strategy to use for failed jobs that are submitted with this job definition. Maximum number of `retry_strategy` is `1`.  Defined below.
+  /// Retry strategy to use for failed jobs that are submitted with this job definition. Maximum number of `retryStrategy` is `1`.  Defined below.
   late final pulumi.Output<JobDefinitionRetryStrategy?> retryStrategy;
   /// Revision of the job definition.
   late final pulumi.Output<int> revision;
   /// Scheduling priority of the job definition. This only affects jobs in job queues with a fair share policy. Jobs with a higher scheduling priority are scheduled before jobs with a lower scheduling priority. Allowed values `0` through `9999`.
   late final pulumi.Output<int?> schedulingPriority;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Timeout for jobs so that if a job runs longer, AWS Batch terminates the job. Maximum number of `timeout` is `1`. Defined below.
   late final pulumi.Output<JobDefinitionTimeout?> timeout;

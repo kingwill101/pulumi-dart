@@ -124,6 +124,32 @@ import 'app_cookie_stickiness_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elb_loadbalancer" "lb" {
+///   name               = "test-lb"
+///   availability_zones = ["us-east-1a"]
+///   listeners {
+///     instance_port     = 8000
+///     instance_protocol = "http"
+///     lb_port           = 80
+///     lb_protocol       = "http"
+///   }
+/// }
+/// resource "aws_elb_appcookiestickinesspolicy" "foo" {
+///   name          = "foo_policy"
+///   load_balancer = aws_elb_loadbalancer.lb.name
+///   lb_port       = 80
+///   cookie_name   = "MyAppCookie"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -135,8 +161,8 @@ import 'app_cookie_stickiness_policy_state.dart';
 /// import com.pulumi.aws.elb.inputs.LoadBalancerListenerArgs;
 /// import com.pulumi.aws.elb.AppCookieStickinessPolicy;
 /// import com.pulumi.aws.elb.AppCookieStickinessPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -202,12 +228,9 @@ import 'app_cookie_stickiness_policy_state.dart';
 class AppCookieStickinessPolicy extends pulumi.CustomResource {
   /// Application cookie whose lifetime the ELB's cookie should follow.
   late final pulumi.Output<String> cookieName;
-  /// Load balancer port to which the policy
-  /// should be applied. This must be an active listener on the load
-  /// balancer.
+  /// Load balancer port to which the policy should be applied. This must be an active listener on the load balancer.
   late final pulumi.Output<int> lbPort;
-  /// Name of load balancer to which the policy
-  /// should be attached.
+  /// Name of load balancer to which the policy should be attached.
   late final pulumi.Output<String> loadBalancer;
   /// Name of the stickiness policy.
   late final pulumi.Output<String> name;
