@@ -45,3 +45,20 @@ func TestMakeSchemaEnumSpec(t *testing.T) {
 	require.Equal(t, "String", spec.UnderlyingType)
 	require.Equal(t, []packageEnumValueSpec{{Name: "brightRed", Literal: `"red"`}}, spec.Values)
 }
+
+func TestMakeSchemaEnumSpecAcceptsBoundIntegerValues(t *testing.T) {
+	spec := makeSchemaEnumSpec("Permission", "index", &schema.EnumType{
+		ElementType: schema.IntType,
+		Elements: []*schema.Enum{
+			{Name: "Read", Value: int32(101)},
+			{Name: "Edit", Value: int32(102)},
+		},
+	}, "sample")
+
+	require.NotNil(t, spec)
+	require.Equal(t, "int", spec.UnderlyingType)
+	require.Equal(t, []packageEnumValueSpec{
+		{Name: "read", Literal: "101"},
+		{Name: "edit", Literal: "102"},
+	}, spec.Values)
+}

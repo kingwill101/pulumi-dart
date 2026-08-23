@@ -42,8 +42,28 @@ func dartIntegerLiteral(value any) (string, bool) {
 	switch value := value.(type) {
 	case int:
 		return strconv.Itoa(value), true
+	case int8:
+		return strconv.FormatInt(int64(value), 10), true
+	case int16:
+		return strconv.FormatInt(int64(value), 10), true
+	case int32:
+		return strconv.FormatInt(int64(value), 10), true
 	case int64:
 		return strconv.FormatInt(value, 10), true
+	case uint:
+		return strconv.FormatUint(uint64(value), 10), true
+	case uint8:
+		return strconv.FormatUint(uint64(value), 10), true
+	case uint16:
+		return strconv.FormatUint(uint64(value), 10), true
+	case uint32:
+		return strconv.FormatUint(uint64(value), 10), true
+	case uint64:
+		return strconv.FormatUint(value, 10), true
+	case float32:
+		if value == float32(int64(value)) {
+			return strconv.FormatInt(int64(value), 10), true
+		}
 	case float64:
 		if value == float64(int64(value)) {
 			return strconv.FormatInt(int64(value), 10), true
@@ -54,12 +74,30 @@ func dartIntegerLiteral(value any) (string, bool) {
 
 func dartDoubleLiteral(value any) (string, bool) {
 	switch value := value.(type) {
+	case float32:
+		return strconv.FormatFloat(float64(value), 'f', -1, 32), true
 	case float64:
 		return strconv.FormatFloat(value, 'f', -1, 64), true
 	case int:
 		return strconv.FormatFloat(float64(value), 'f', -1, 64), true
+	case int8:
+		return strconv.FormatInt(int64(value), 10), true
+	case int16:
+		return strconv.FormatInt(int64(value), 10), true
+	case int32:
+		return strconv.FormatInt(int64(value), 10), true
 	case int64:
-		return strconv.FormatFloat(float64(value), 'f', -1, 64), true
+		return strconv.FormatInt(value, 10), true
+	case uint:
+		return strconv.FormatUint(uint64(value), 10), true
+	case uint8:
+		return strconv.FormatUint(uint64(value), 10), true
+	case uint16:
+		return strconv.FormatUint(uint64(value), 10), true
+	case uint32:
+		return strconv.FormatUint(uint64(value), 10), true
+	case uint64:
+		return strconv.FormatUint(value, 10), true
 	}
 	return "", false
 }
